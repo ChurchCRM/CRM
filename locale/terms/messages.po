@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-07 16:37-0800\n"
+"POT-Creation-Date: 2026-03-14 12:37-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -192,6 +192,9 @@ msgid "A ChurchCRM account was created for you"
 msgstr ""
 
 msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr ""
+
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
 msgstr ""
 
 msgid "A new password has been generated and sent to your email address."
@@ -790,6 +793,9 @@ msgstr ""
 msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
 msgstr ""
 
+msgid "Automatically detect coordinates using address"
+msgstr ""
+
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
@@ -925,6 +931,9 @@ msgid "Based on filters below.."
 msgstr ""
 
 msgid "Baseline"
+msgstr ""
+
+msgid "Basic Information"
 msgstr ""
 
 msgid "Batch Winner Entry"
@@ -1349,12 +1358,6 @@ msgstr ""
 msgid "Church Checking Account Number"
 msgstr ""
 
-msgid "Church City"
-msgstr ""
-
-msgid "Church Email"
-msgstr ""
-
 msgid "Church Email not set, please visit the settings page"
 msgstr ""
 
@@ -1376,16 +1379,16 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
-msgid "Church Phone"
-msgstr ""
-
 msgid "Church Services"
 msgstr ""
 
-msgid "Church State"
+msgid "Church information saved successfully."
 msgstr ""
 
-msgid "Church Zip"
+msgid "Church name is required."
+msgstr ""
+
+msgid "Church name is required. Please complete the Basic Information tab."
 msgstr ""
 
 msgid "Church name is set to default value"
@@ -1411,6 +1414,9 @@ msgid "City"
 msgstr ""
 
 msgid "City is required"
+msgstr ""
+
+msgid "City is required."
 msgstr ""
 
 msgid "City, State, Zip"
@@ -1544,6 +1550,9 @@ msgid "Complete these tasks to ensure accurate year-end tax reporting for your d
 msgstr ""
 
 msgid "Compose New Message"
+msgstr ""
+
+msgid "Configuration item not found"
 msgstr ""
 
 msgid "Configuration:"
@@ -1727,6 +1736,9 @@ msgstr ""
 msgid "Country"
 msgstr ""
 
+msgid "Country is required."
+msgstr ""
+
 msgid "Create"
 msgstr ""
 
@@ -1815,6 +1827,10 @@ msgid "Created via Family"
 msgstr ""
 
 msgid "Credit Card"
+msgstr ""
+
+#. Context: query_qry
+msgid "Credit Card People"
 msgstr ""
 
 msgid "Critical Configuration Error"
@@ -2328,6 +2344,9 @@ msgstr ""
 msgid "Dismiss"
 msgstr ""
 
+msgid "Display Preview"
+msgstr ""
+
 msgid "Display bill counts on deposit slip"
 msgstr ""
 
@@ -2615,6 +2634,9 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
+msgid "Email address is required."
+msgstr ""
+
 msgid "Email export"
 msgstr ""
 
@@ -2862,7 +2884,6 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -3233,6 +3254,10 @@ msgstr ""
 msgid "Family Navigation"
 msgstr ""
 
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
 msgid "Family Pledges"
 msgstr ""
 
@@ -3274,6 +3299,9 @@ msgid "Family added to cart"
 msgstr ""
 
 msgid "Family has no emails to use"
+msgstr ""
+
+msgid "Family has no street address to geocode"
 msgstr ""
 
 msgid "Family name is required"
@@ -3422,14 +3450,14 @@ msgstr ""
 msgid "Find Duplicate Emails"
 msgstr ""
 
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
 msgid "Find family->"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -3498,7 +3526,12 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -3687,6 +3720,15 @@ msgstr ""
 msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr ""
 
+msgid "Geocoded coordinates:"
+msgstr ""
+
+msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding successful"
+msgstr ""
+
 #. Context: countries
 msgid "Georgia (საქართველო)"
 msgstr ""
@@ -3738,9 +3780,6 @@ msgid "Go to Dashboard"
 msgstr ""
 
 msgid "Go to Login"
-msgstr ""
-
-msgid "Google Maps API Key used for Geocoding addresses"
 msgstr ""
 
 msgid "Graphic"
@@ -3835,6 +3874,10 @@ msgid "Group management access"
 msgstr ""
 
 msgid "Group not found"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
 msgstr ""
 
 msgid "Group removed from cart"
@@ -4406,6 +4449,9 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
+msgid "Language & Localization"
+msgstr ""
+
 msgid "Language updated to"
 msgstr ""
 
@@ -4483,9 +4529,6 @@ msgid "Latest People"
 msgstr ""
 
 msgid "Latitude"
-msgstr ""
-
-msgid "Latitude of the church, used to center the Google map"
 msgstr ""
 
 #. Context: countries
@@ -4636,6 +4679,12 @@ msgstr ""
 msgid "Location & Contact Information"
 msgstr ""
 
+msgid "Location & Map"
+msgstr ""
+
+msgid "Location Information"
+msgstr ""
+
 msgid "Locked Users"
 msgstr ""
 
@@ -4667,9 +4716,6 @@ msgid "Login Name is required"
 msgstr ""
 
 msgid "Longitude"
-msgstr ""
-
-msgid "Longitude of the church, used to center the Google map"
 msgstr ""
 
 #. Context: countries
@@ -4713,6 +4759,12 @@ msgid "Mailchimp"
 msgstr ""
 
 msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Main contact email for church communications."
+msgstr ""
+
+msgid "Main contact phone number for the church."
 msgstr ""
 
 msgid "Make Data File"
@@ -4793,13 +4845,13 @@ msgstr ""
 msgid "Manual Backup"
 msgstr ""
 
+msgid "Map"
+msgstr ""
+
 msgid "Map Cart"
 msgstr ""
 
 msgid "Map Settings"
-msgstr ""
-
-msgid "Map Zoom Level"
 msgstr ""
 
 msgid "Map this group"
@@ -5024,13 +5076,6 @@ msgid "Missing PHP ZipArchive"
 msgstr ""
 
 msgid "Missing calendar access token"
-msgstr ""
-
-msgid "Missing families? Update coordinates to include them on the map."
-msgstr ""
-
-#. Context: query_qry
-msgid "Missing people"
 msgstr ""
 
 #. Context: query_qry
@@ -5716,6 +5761,9 @@ msgstr ""
 msgid "Optional notes about attendance..."
 msgstr ""
 
+msgid "Optional. URL for your church website."
+msgstr ""
+
 msgid "Order"
 msgstr ""
 
@@ -5937,6 +5985,10 @@ msgid "People not in"
 msgstr ""
 
 #. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
@@ -6064,6 +6116,9 @@ msgid "Phone Type"
 msgstr ""
 
 msgid "Phone number"
+msgstr ""
+
+msgid "Phone number is required."
 msgstr ""
 
 msgid "Photo Directory"
@@ -6281,6 +6336,10 @@ msgid "Pledge comparison"
 msgstr ""
 
 msgid "Pledge or Payment"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -6536,6 +6595,9 @@ msgstr ""
 msgid "Redirecting in"
 msgstr ""
 
+msgid "Refresh Coordinates"
+msgstr ""
+
 msgid "Refresh List"
 msgstr ""
 
@@ -6555,6 +6617,10 @@ msgid "Register a New Family"
 msgstr ""
 
 msgid "Register another family!"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
 msgstr ""
 
 msgid "Registration Complete"
@@ -6697,6 +6763,9 @@ msgid "Required fields"
 msgstr ""
 
 msgid "Required permission"
+msgstr ""
+
+msgid "Required. Used on all reports and communications."
 msgstr ""
 
 msgid "Reset"
@@ -6926,6 +6995,9 @@ msgstr ""
 msgid "Save Changes"
 msgstr ""
 
+msgid "Save Church Information"
+msgstr ""
+
 msgid "Save Event Type"
 msgstr ""
 
@@ -6994,6 +7066,9 @@ msgid "Search for adult..."
 msgstr ""
 
 msgid "Search for supervisor..."
+msgstr ""
+
+msgid "Search or select..."
 msgstr ""
 
 msgid "Season"
@@ -7115,10 +7190,6 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select start and end date/time"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Select the desired event"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -7514,16 +7585,25 @@ msgstr ""
 msgid "State (Other)"
 msgstr ""
 
+msgid "State is required."
+msgstr ""
+
 msgid "Status"
 msgstr ""
 
 msgid "Status:"
 msgstr ""
 
+msgid "Street Address"
+msgstr ""
+
 msgid "Street Atlas USA"
 msgstr ""
 
 msgid "Street address"
+msgstr ""
+
+msgid "Street address is required."
 msgstr ""
 
 msgid "Students"
@@ -7664,6 +7744,9 @@ msgid "System Upgrade Wizard"
 msgstr ""
 
 msgid "System Users"
+msgstr ""
+
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
 msgstr ""
 
 msgid "System upgrade completed successfully!"
@@ -7911,6 +7994,9 @@ msgstr ""
 msgid "This group currently has no properties!  You can add them in the Group Editor."
 msgstr ""
 
+msgid "This is how your church information will appear on reports and directories."
+msgstr ""
+
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
 msgstr ""
 
@@ -7975,6 +8061,9 @@ msgid "This will reset the system data and will restart the system as a new inst
 msgstr ""
 
 msgid "Thursdays"
+msgstr ""
+
+msgid "Time Zone"
 msgstr ""
 
 msgid "Time zone"
@@ -8345,6 +8434,9 @@ msgstr ""
 msgid "Updated People"
 msgstr ""
 
+msgid "Updated automatically on every save."
+msgstr ""
+
 msgid "Updated via Family"
 msgstr ""
 
@@ -8403,6 +8495,9 @@ msgstr ""
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
+msgid "Used for scheduling events and reporting times."
+msgstr ""
+
 msgid "Used to end a letter before Signer"
 msgstr ""
 
@@ -8459,6 +8554,10 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "User permission to create directories"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to export CSV files"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -8754,6 +8853,9 @@ msgstr ""
 msgid "WebDAV username is required."
 msgstr ""
 
+msgid "Website"
+msgstr ""
+
 msgid "Wedding"
 msgstr ""
 
@@ -8937,9 +9039,6 @@ msgstr ""
 msgid "Your Cart is Empty"
 msgstr ""
 
-msgid "Your Church's Website"
-msgstr ""
-
 msgid "Your ChurchCRM Account was Deleted."
 msgstr ""
 
@@ -9027,6 +9126,12 @@ msgstr ""
 msgid "Your verification request has been received. Thank you for keeping your information up to date."
 msgstr ""
 
+msgid "ZIP Code"
+msgstr ""
+
+msgid "ZIP code is required."
+msgstr ""
+
 #. Context: countries
 msgid "Zambia"
 msgstr ""
@@ -9042,9 +9147,6 @@ msgid "Zimbabwe"
 msgstr ""
 
 msgid "Zip"
-msgstr ""
-
-msgid "Zip / Postal Code"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -9332,6 +9434,12 @@ msgstr ""
 
 #. Context: countries
 msgid "Åland Islands (Åland)"
+msgstr ""
+
+msgid "— Select Country —"
+msgstr ""
+
+msgid "— Select State —"
 msgstr ""
 
 msgid "✓ CheckOut"
