@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -19,12 +20,9 @@ if (isset($_GET['groupId'])) {
     $iGroupId = InputUtils::legacyFilterInput($_GET['groupId'], 'int');
 }
 
-$sSQL = 'select * from group_grp where grp_ID = ' . (int) $iGroupId;
-$rsSundaySchoolClass = RunQuery($sSQL);
-if ($rsSundaySchoolClass) {
-    while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
-        $iGroupName = $aRow['grp_Name'];
-    }
+$thisGroup = GroupQuery::create()->findPk((int) $iGroupId);
+if ($thisGroup !== null) {
+    $iGroupName = $thisGroup->getName();
 }
 
 $birthDayMonthChartArray = [];

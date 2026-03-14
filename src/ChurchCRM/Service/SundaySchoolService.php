@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
-use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -97,10 +96,9 @@ class SundaySchoolService
         }
 
         $memberships = Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId((int) $groupId)
-            ->filterByRoleId($roleOption->getOptionId())
             ->joinWithPerson()
-            ->find();
+            ->filterByRoleId($roleOption->getOptionId())
+            ->findByGroupId((int) $groupId);
 
         $members = [];
         foreach ($memberships as $membership) {
@@ -228,13 +226,11 @@ class SundaySchoolService
         }
 
         $memberships = Person2group2roleP2g2rQuery::create()
-            ->filterByGroupId((int) $groupId)
-            ->filterByRoleId($roleOption->getOptionId())
             ->joinWithPerson()
-            ->orderBy(PersonTableMap::COL_PER_LASTNAME)
-            ->_and()
-            ->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
-            ->find();
+            ->filterByRoleId($roleOption->getOptionId())
+            ->addAscendingOrderByColumn('per_LastName')
+            ->addAscendingOrderByColumn('per_FirstName')
+            ->findByGroupId((int) $groupId);
 
         $kids = [];
         foreach ($memberships as $membership) {
