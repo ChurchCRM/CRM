@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 
 $sundaySchoolService = new SundaySchoolService();
@@ -18,29 +19,50 @@ if (isset($_GET['groupId'])) {
     $iGroupId = InputUtils::legacyFilterInput($_GET['groupId'], 'int');
 }
 
-$sSQL = 'select * from group_grp where grp_ID =' . $iGroupId;
+$sSQL = 'select * from group_grp where grp_ID = ' . (int) $iGroupId;
 $rsSundaySchoolClass = RunQuery($sSQL);
-while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
-    $iGroupName = $aRow['grp_Name'];
+if ($rsSundaySchoolClass) {
+    while ($aRow = mysqli_fetch_array($rsSundaySchoolClass)) {
+        $iGroupName = $aRow['grp_Name'];
+    }
 }
 
 $birthDayMonthChartArray = [];
-foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
-    $birthDayMonthChartArray[] = [
-        gettext($birthDayMonth),
-        $kidsCount
-    ];
+$rsTeachers = [];
+$thisClassChildren = [];
+
+try {
+    foreach ($sundaySchoolService->getKidsBirthdayMonth($iGroupId) as $birthDayMonth => $kidsCount) {
+        $birthDayMonthChartArray[] = [
+            gettext($birthDayMonth),
+            $kidsCount
+        ];
+    }
+} catch (Throwable $e) {
+    LoggerUtils::getAppLogger()->error('SundaySchoolClassView: Error getting birthday months', ['exception' => $e->getMessage()]);
 }
+
 $birthDayMonthChartJSON = json_encode($birthDayMonthChartArray, JSON_THROW_ON_ERROR);
 
-$rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
+try {
+    $rsTeachers = $sundaySchoolService->getClassByRole($iGroupId, 'Teacher');
+} catch (Throwable $e) {
+    LoggerUtils::getAppLogger()->error('SundaySchoolClassView: Error getting teachers', ['exception' => $e->getMessage()]);
+    $rsTeachers = [];
+}
+
 $sPageTitle = gettext('Sunday School') . ': ' . $iGroupName;
 
 $TeachersEmails = [];
 $KidsEmails = [];
 $ParentsEmails = [];
 
-$thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
+try {
+    $thisClassChildren = $sundaySchoolService->getKidsFullDetails($iGroupId);
+} catch (Throwable $e) {
+    LoggerUtils::getAppLogger()->error('SundaySchoolClassView: Error getting kids full details', ['exception' => $e->getMessage()]);
+    $thisClassChildren = [];
+}
 
 foreach ($thisClassChildren as $child) {
     if (!empty($child['dadEmail'])) {
@@ -61,6 +83,8 @@ foreach ($rsTeachers as $teacher) {
 require_once __DIR__ . '/../Include/Header.php';
 
 ?>
+
+<h1 class="page-header"><?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong></h1>
 
 <div class="card card-info card-outline">
   <div class="card-header">
