@@ -357,6 +357,41 @@ npm run docker:test:down
 
 ## Test File Best Practices
 
+### Avoid Complex Async Operations in Session Tests <!-- learned: 2026-03-14 -->
+
+When using `cy.setupStandardSession()` or similar session-based setup, **do not make API calls or complex async operations before or within test blocks**. These can interfere with Cypress session caching and cause login timeouts.
+
+**❌ WRONG — API call in test causes login to hang:**
+```typescript
+describe('Standard Sunday School', () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it('View class and verify students', () => {
+        // This API call interferes with session setup
+        cy.makePrivateAdminAPICall('GET', '/api/groups/42', null, 200);
+
+        cy.visit('sundayschool/SundaySchoolClassView.php?groupid=42');
+        cy.get('table tbody tr').should('have.length.greaterThan', 0);
+    });
+});
+```
+
+**✅ CORRECT — Direct UI verification without API calls:**
+```typescript
+describe('Standard Sunday School', () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it('View class and verify students display', () => {
+        // Just visit and assert UI state
+        cy.visit('sundayschool/SundaySchoolClassView.php?groupid=42');
+        cy.get('table tbody tr').should('have.length.greaterThan', 0);
+        cy.contains('Student').should('be.visible');
+    });
+});
+```
+
+**Why:** `cy.session()` maintains login state across tests. Adding API calls or async operations in `beforeEach()` or test blocks can break session caching and cause the login phase to hang. Let the session setup handle authentication; tests verify UI.
+
 ### Clean Test Files
 
 ❌ **WRONG:**

@@ -20,6 +20,16 @@ This skill covers UI development practices, conventions, and tools used in Churc
 3. **CSS and Assets**:
    - Use `SystemURLs::getRootPath()` for asset paths (e.g., CSS, images).
    - Avoid inline styles; use Bootstrap classes or external CSS.
+   - Move inline `<style>` blocks to webpack assets: `src/assets/css/` for CSS and `src/assets/js/` for JS modules.
+
+4. **Table Design for User-Facing Lists** <!-- learned: 2026-03-14 -->:
+   - Keep visible columns focused on essential info (5-6 columns max for scannable views).
+   - Use modal popups for detailed information rather than expandable rows (better for print-friendly layouts).
+   - For role-specific views (e.g., Sunday School teachers):
+     - Show quick-glance stats in cards above the table (enrollment, gender breakdown, activity metrics).
+     - Include actionable columns: clickable links to profiles, phone/email for quick contact.
+     - Use Bootstrap responsive grid: `col-12 col-md-6 col-lg-4` for mobile-first stacking.
+   - Example: Sunday School class view shows (Name, Age, Mobile, Email, Father, Mother) with info icon opening modal for address/parent details.
 
 4. **Internationalization (i18n)**:
    - Wrap all user-facing text in `i18next.t()` (JavaScript) or `gettext()` (PHP).
