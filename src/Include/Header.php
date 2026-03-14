@@ -240,8 +240,8 @@ $MenuFirst = 1;
                     <a href="#" id="reportIssue" class="dropdown-item" data-toggle="modal" data-target="#IssueReportModal"  title="<?= gettext('Report an issue') ?>">
                         <i class="fa-solid fa-bug"></i> <?= gettext('Report an issue') ?>
                     </a>
-                    <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" class="dropdown-item" title="<?= gettext('Developer Chat') ?>">
-                        <i class="fa-regular fa-comment-dots"></i> <?= gettext('Developer Chat') ?>
+                    <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item" title="<?= gettext('Discord Chat') ?>">
+                        <i class="fa-brands fa-discord"></i> <?= gettext('Discord Chat') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" class="dropdown-item" title="<?= gettext('Contributing') ?>">

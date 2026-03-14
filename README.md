@@ -46,7 +46,7 @@ We welcome contributions from everyone! Whether it's bug reports, feature reques
 - Quick contributions: fork the repository, create a feature branch, run the test suite, and open a pull request; see CONTRIBUTING.md for details.
 
 [![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)](https://github.com/ChurchCRM/CRM/graphs/contributors)
-[![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at Discord](https://img.shields.io/badge/Discord-ChurchCRM-5865F2?logo=discord&logoColor=white)](https://discord.gg/tuWyFzj3Nj)
 
 ## 📚 Documentation
 
@@ -55,7 +55,7 @@ If you notice anything missing or unclear, feel free to open an issue or submit 
 
 ## 🤝 Community
 
-Join our [Gitter chat](https://gitter.im/ChurchCRM/CRM) to connect with other users, ask questions, and share your experiences.
+Join our [Discord community](https://discord.gg/tuWyFzj3Nj) to connect with other users, ask questions, and share your experiences.
 We believe in the power of a supportive community!
 
 ## 🙏 Thank You
@@ -79,7 +79,7 @@ Follow us for release announcements, tips, and community highlights:
 [![Facebook](https://img.shields.io/badge/Facebook-getChurchCRM-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/getChurchCRM)
 [![Instagram](https://img.shields.io/badge/Instagram-@getchurchcrm-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/getchurchcrm/)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-ChurchCRM-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/company/getchurchcrm/)
-[![Gitter Chat](https://img.shields.io/badge/Gitter-Chat-brightgreen?logo=gitter)](https://gitter.im/ChurchCRM/CRM)
+[![Discord Chat](https://img.shields.io/badge/Discord-Chat-5865F2?logo=discord&logoColor=white)](https://discord.gg/tuWyFzj3Nj)
 
 Happy coding and community building! 🎉
 
