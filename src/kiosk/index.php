@@ -95,7 +95,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     $logger = LoggerUtils::getAppLogger();
 
     if ($exception instanceof HttpNotFoundException) {
-        $logger->info('Kiosk 404 redirect', ['path' => $request->getUri()->getPath()]);
+        $logger->debug('Kiosk 404 redirect', ['path' => $request->getUri()->getPath()]);
         $response = $app->getResponseFactory()->createResponse(302);
 
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/kiosk/admin');

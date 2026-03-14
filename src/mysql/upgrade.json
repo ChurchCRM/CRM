@@ -248,9 +248,14 @@
     ],
     "dbVersion": "7.0.0"
   },
-  "current": {
+  "pre-7.0.2": {
     "versions": ["7.0.0", "7.0.1"],
     "scripts": ["/mysql/upgrade/7.0.2-2fa.sql"],
     "dbVersion": "7.0.2"
+  },
+  "current": {
+    "versions": ["7.0.2"],
+    "scripts": [],
+    "dbVersion": "7.0.3"
   }
 }

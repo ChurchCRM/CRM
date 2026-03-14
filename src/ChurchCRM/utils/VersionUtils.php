@@ -12,6 +12,16 @@ class VersionUtils
     private const COMPOSER_NAME = 'churchcrm/crm';
     private static ?string $cachedVersion = null;
 
+    /**
+     * Reset the in-process static version cache.
+     * Call this after a code upgrade so that the next call to getInstalledVersion()
+     * re-reads from the Composer autoloader with the newly-deployed package data.
+     */
+    public static function resetCache(): void
+    {
+        self::$cachedVersion = null;
+    }
+
     public static function getInstalledVersion(): string
     {
         // Return cached version if already fetched in this request
@@ -25,7 +35,7 @@ class VersionUtils
             return $version;
         }
 
-        LoggerUtils::getAppLogger()->info('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
+        LoggerUtils::getAppLogger()->warning('could not determine version from composer autoloader, falling back to legacy composer.json parsing');
         $composerFile = file_get_contents(SystemURLs::getDocumentRoot() . '/composer.json');
         $composerJson = json_decode($composerFile, true, 512, JSON_THROW_ON_ERROR);
 
