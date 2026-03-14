@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\Base\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCounts;
+use ChurchCRM\Service\EventService;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
@@ -29,6 +30,7 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
 
     $group->post('/', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/repeat', 'createRepeatEvents')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
@@ -304,6 +306,84 @@ function newEvent(Request $request, Response $response, array $args): Response
     $event->save();
 
     return SlimUtils::renderSuccessJSON($response);
+}
+
+/**
+ * @OA\Post(
+ *     path="/events/repeat",
+ *     operationId="createRepeatEvents",
+ *     summary="Create a series of repeat events",
+ *     description="Generates individual event records for each occurrence of a recurring event within a date range. Each created event is independently editable.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"Title","Type","StartTime","EndTime","RecurType","RangeStart","RangeEnd"},
+ *         @OA\Property(property="Title", type="string", example="Sunday Worship Service"),
+ *         @OA\Property(property="Type", type="integer", example=1, description="Event type ID from GET /events/types"),
+ *         @OA\Property(property="Desc", type="string", nullable=true),
+ *         @OA\Property(property="Text", type="string", nullable=true, description="Rich text body (HTML allowed)"),
+ *         @OA\Property(property="StartTime", type="string", example="09:00", description="Event start time in HH:MM format"),
+ *         @OA\Property(property="EndTime", type="string", example="10:30", description="Event end time in HH:MM format"),
+ *         @OA\Property(property="RecurType", type="string", enum={"weekly","monthly","yearly"}, example="weekly"),
+ *         @OA\Property(property="RecurDOW", type="string", example="Sunday", description="Day of week for weekly recurrence (e.g. Sunday)"),
+ *         @OA\Property(property="RecurDOM", type="integer", example=1, description="Day of month (1-31) for monthly recurrence"),
+ *         @OA\Property(property="RecurDOY", type="string", example="04-12", description="Month-day in MM-DD format for yearly recurrence"),
+ *         @OA\Property(property="RangeStart", type="string", format="date", example="2026-01-01", description="First date of the repetition range (inclusive)"),
+ *         @OA\Property(property="RangeEnd", type="string", format="date", example="2026-12-31", description="Last date of the repetition range (inclusive)"),
+ *         @OA\Property(property="PinnedCalendars", type="array", @OA\Items(type="integer"), nullable=true),
+ *         @OA\Property(property="LinkedGroupId", type="integer", nullable=true),
+ *         @OA\Property(property="Inactive", type="integer", enum={0,1}, nullable=true)
+ *     )),
+ *     @OA\Response(response=200, description="Repeat events created",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="success", type="boolean", example=true),
+ *             @OA\Property(property="count", type="integer", example=52),
+ *             @OA\Property(property="eventIds", type="array", @OA\Items(type="integer"))
+ *         )
+ *     ),
+ *     @OA\Response(response=400, description="Invalid input (bad event type, invalid dates, unknown recurrence type)"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required")
+ * )
+ */
+function createRepeatEvents(Request $request, Response $response, array $args): Response
+{
+    $input = $request->getParsedBody();
+
+    $validRecurTypes = ['weekly', 'monthly', 'yearly'];
+    $recurType = $input['RecurType'] ?? '';
+    if (!in_array($recurType, $validRecurTypes, true)) {
+        throw new HttpBadRequestException($request, gettext('invalid recurrence type'));
+    }
+
+    try {
+        $service = new EventService();
+        $createdIds = $service->createRepeatEvents([
+            'title'          => $input['Title'],
+            'typeId'         => (int) ($input['Type'] ?? 0),
+            'desc'           => $input['Desc'] ?? '',
+            'text'           => $input['Text'] ?? '',
+            'startTime'      => $input['StartTime'] ?? '09:00',
+            'endTime'        => $input['EndTime'] ?? '10:00',
+            'recurType'      => $recurType,
+            'recurDOW'       => $input['RecurDOW'] ?? null,
+            'recurDOM'       => isset($input['RecurDOM']) ? (int) $input['RecurDOM'] : null,
+            'recurDOY'       => $input['RecurDOY'] ?? null,
+            'rangeStart'     => $input['RangeStart'],
+            'rangeEnd'       => $input['RangeEnd'],
+            'pinnedCalendars' => array_map('intval', is_array($input['PinnedCalendars'] ?? null) ? $input['PinnedCalendars'] : []),
+            'linkedGroupId'  => (int) ($input['LinkedGroupId'] ?? 0),
+            'inactive'       => (int) ($input['Inactive'] ?? 0),
+        ]);
+    } catch (\InvalidArgumentException $e) {
+        throw new HttpBadRequestException($request, $e->getMessage());
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'success'  => true,
+        'count'    => count($createdIds),
+        'eventIds' => $createdIds,
+    ]);
 }
 
 /**

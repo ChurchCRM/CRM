@@ -25,6 +25,7 @@ module.exports = {
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
+    'repeat-event-editor': './webpack/repeat-event-editor',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

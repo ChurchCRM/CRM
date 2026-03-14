@@ -341,9 +341,13 @@ foreach ($allMonths as $mVal) {
 ?>
 
 <div class="text-center mt-4 mb-3">
-  <a href="EventEditor.php" class="btn btn-primary">
+  <a href="EventEditor.php" class="btn btn-primary mr-2">
     <i class="fas fa-plus mr-1"></i>
     <?= gettext('Add New') . ' ' . gettext('Event') ?>
+  </a>
+  <a href="RepeatEventEditor.php" class="btn btn-outline-primary">
+    <i class="fas fa-redo mr-1"></i>
+    <?= gettext('Create Repeat Events') ?>
   </a>
 </div>
 
