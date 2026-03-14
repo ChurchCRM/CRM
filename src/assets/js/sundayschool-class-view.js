@@ -6,7 +6,6 @@
 export function initializeSundaySchoolClassView() {
   // Birthday filter functionality for student table
   const birthDayFilter = $(".birthday-filter");
-  const birthDayMonth = birthDayFilter.find(".month");
   const dataTable = $(".data-table").DataTable();
 
   function hideBirthDayFilter() {
