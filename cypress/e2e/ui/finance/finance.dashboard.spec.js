@@ -121,7 +121,7 @@ describe("Finance Dashboard", () => {
             .contains("Settings")
             .click();
 
-        cy.url().should("contain", "SystemSettings.php");
+        cy.url().should("contain", "admin/system/church-info");
     });
 
     it("should link deposits checklist to FindDepositSlip", () => {
