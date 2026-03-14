@@ -9,8 +9,8 @@ describe("People classification filters", () => {
 
         cy.url().should("include", "/v2/people?Classification=1");
 
-        // The hidden select should be initialized from the URL value
-        cy.get(".filter-Classification", { timeout: 10000 }).should("have.value", "1");
+        // The hidden select should be initialized from the URL value (as array since it's multiple select)
+        cy.get(".filter-Classification", { timeout: 10000 }).invoke('val').should('deep.equal', ['1']);
 
         // And the Select2 label should show the selected classification
         cy.get(".filter-Classification")
