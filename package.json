@@ -72,6 +72,7 @@
         "lint": "biome check react/",
         "lint:fix": "biome check --write react/",
         "locale:lint": "node scripts/locale-check.js",
+        "logs:clear": "rm -rf src/logs/*.log",
         "package": "npm run deploy && node scripts/package-release.js",
         "test": "npx cypress run --config-file cypress/configs/docker.config.ts",
         "test:open": "npx cypress open --e2e --config-file cypress/configs/docker.config.ts --browser chrome",
