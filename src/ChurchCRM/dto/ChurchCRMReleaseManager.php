@@ -111,9 +111,9 @@ class ChurchCRMReleaseManager
     public static function checkForUpdates(): void
     {
         $logger = LoggerUtils::getAppLogger();
-        $logger->info('=== checkForUpdates() CALLED ===');
+        $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
-        $logger->info('=== checkForUpdates() COMPLETE - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached ===');
+        $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
@@ -187,24 +187,24 @@ class ChurchCRMReleaseManager
         $rs = array_values($_SESSION['ChurchCRMReleases']);
         $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (PATCH) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (patch): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMinor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MINOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (minor): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMajor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MAJOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (major): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
 
         if (null === $nextStepRelease) {
             // Check if current version is at or ahead of all available releases (e.g., development version)
             if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
-                $logger->info('*** Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                $logger->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
                 return null;
             }
             $logger->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
@@ -245,30 +245,54 @@ class ChurchCRMReleaseManager
         // Download the file with retry logic (3 attempts total)
         $maxAttempts = 3;
         $downloadContent = false;
-        $lastError = null;
+        $lastErrorMsg = 'Unknown error';
 
         for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
             $logger->info('Download attempt ' . $attempt . ' of ' . $maxAttempts);
 
-            // Clear any previous error
-            @error_clear_last();
+            if (function_exists('curl_init')) {
+                // Use cURL for download (works even when allow_url_fopen is disabled)
+                $ch = curl_init($url);
+                if ($ch === false) {
+                    $lastErrorMsg = 'curl_init() failed to initialize (possibly malformed URL)';
+                } else {
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                    curl_setopt($ch, CURLOPT_USERAGENT, 'ChurchCRM/' . VersionUtils::getInstalledVersion());
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 300);
+                    $result = curl_exec($ch);
+                    $curlErrno = curl_errno($ch);
+                    $curlError = curl_error($ch);
+                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
 
-            $downloadContent = @file_get_contents($url);
+                    if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
+                        $downloadContent = $result;
+                        $logger->info('Download succeeded on attempt ' . $attempt . ' via cURL (HTTP ' . $httpCode . ')');
+                        break;
+                    }
 
-            // Check if download succeeded and content is not empty
-            if ($downloadContent !== false && strlen($downloadContent) > 0) {
-                $logger->info('Download succeeded on attempt ' . $attempt);
-                break;
+                    $lastErrorMsg = !empty($curlError) ? 'cURL error (' . $curlErrno . '): ' . $curlError : 'HTTP ' . $httpCode;
+                }
+            } else {
+                // Fallback: file_get_contents (requires allow_url_fopen = On)
+                @error_clear_last();
+                $result = @file_get_contents($url);
+                if ($result !== false && strlen($result) > 0) {
+                    $downloadContent = $result;
+                    $logger->info('Download succeeded on attempt ' . $attempt . ' via file_get_contents');
+                    break;
+                }
+                $phpError = error_get_last();
+                $lastErrorMsg = $phpError['message'] ?? 'Unknown error or empty response';
             }
-
-            // Capture the error for logging
-            $lastError = error_get_last();
-            $errorMsg = $lastError['message'] ?? 'Unknown error or empty response';
 
             if ($attempt < $maxAttempts) {
                 $logger->warning('Download attempt ' . $attempt . ' failed, retrying...', [
                     'url' => $url,
-                    'error' => $errorMsg,
+                    'error' => $lastErrorMsg,
                 ]);
                 // Wait before retry (1 second, then 2 seconds)
                 sleep($attempt);
@@ -277,12 +301,11 @@ class ChurchCRMReleaseManager
 
         // Check if all attempts failed
         if ($downloadContent === false) {
-            $errorMsg = $lastError['message'] ?? 'Unknown error';
             $logger->error('Failed to download release file after ' . $maxAttempts . ' attempts', [
                 'url' => $url,
-                'error' => $errorMsg,
+                'error' => $lastErrorMsg,
             ]);
-            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $errorMsg);
+            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $lastErrorMsg);
         }
 
         // Check if downloaded content is empty

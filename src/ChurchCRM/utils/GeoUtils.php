@@ -4,35 +4,116 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
-use Geocoder\Provider\GoogleMaps\GoogleMaps;
-use Geocoder\Query\GeocodeQuery;
-use Geocoder\StatefulGeocoder;
-use Http\Adapter\Guzzle7\Client;
 
 class GeoUtils
 {
-    public static function getLatLong(string $address): array
-    {
+    /**
+     * Geocode an address to latitude/longitude using OpenStreetMap's Nominatim service.
+     *
+     * Nominatim is free and requires no API key. No admin configuration needed.
+     * Supports both concatenated address strings and structured components.
+     *
+     * @param string $address The address to geocode (can be full address or just street)
+     * @param string|null $city City name (improves accuracy when provided)
+     * @param string|null $state State/province (improves accuracy when provided)
+     * @param string|null $zip Postal code (improves accuracy when provided)
+     * @param string|null $country Country name (improves accuracy when provided)
+     * @return array{Latitude: float, Longitude: float} Latitude and longitude, or [0, 0] if not found
+     */
+    public static function getLatLong(
+        string $address,
+        ?string $city = null,
+        ?string $state = null,
+        ?string $zip = null,
+        ?string $country = null
+    ): array {
         $logger = LoggerUtils::getAppLogger();
         $localeInfo = Bootstrapper::getCurrentLocale();
-
-        $adapter = new Client();
-        $provider = new GoogleMaps($adapter, null, SystemConfig::getValue('sGoogleMapsGeocodeKey'));
 
         $lat = 0;
         $long = 0;
 
+        if (empty(trim($address))) {
+            $logger->warning('Geocoding: empty address provided');
+            return ['Latitude' => $lat, 'Longitude' => $long];
+        }
+
         try {
-            $logger->debug('Using: Geo Provider -  ' . $provider->getName());
-            $geoCoder = new StatefulGeocoder($provider, $localeInfo->getShortLocale());
-            $result = $geoCoder->geocodeQuery(GeocodeQuery::create($address));
-            $logger->debug('We have ' . $result->count() . ' results');
-            $firstResult = $result->get(0);
-            $coordinates = $firstResult->getCoordinates();
-            $lat = $coordinates->getLatitude();
-            $long = $coordinates->getLongitude();
-        } catch (\Exception $exception) {
-            $logger->warning('issue creating geoCoder ' . $exception->getMessage());
+            $logger->debug('Using: Geo Provider - Nominatim (OpenStreetMap)');
+
+            // Build structured query for better Nominatim accuracy
+            $params = [
+                'format' => 'json',
+                'limit' => 1,
+                'accept-language' => $localeInfo->getShortLocale(),
+            ];
+
+            // Build address for simple query with proper formatting
+            $simplifiedAddress = trim($address);
+
+            // Use structured query if components provided
+            if (!empty($city) || !empty($state) || !empty($zip)) {
+                $params['street'] = trim($address);
+                if (!empty($city)) {
+                    $params['city'] = trim($city);
+                }
+                if (!empty($state)) {
+                    $params['state'] = trim($state);
+                }
+                if (!empty($zip)) {
+                    $params['postalcode'] = trim($zip);
+                }
+                // Only add country if it's actually provided (not empty/null)
+                if (!empty($country)) {
+                    $params['country'] = trim($country);
+                }
+            } else {
+                // Fallback: construct a clean address from available components
+                $parts = [];
+                $parts[] = $simplifiedAddress;
+                if (!empty($city)) {
+                    $parts[] = trim($city);
+                }
+                if (!empty($state)) {
+                    $parts[] = trim($state);
+                }
+                if (!empty($zip)) {
+                    $parts[] = trim($zip);
+                }
+                // Don't add country to simple query - it often causes matching to fail
+                $params['q'] = implode(', ', $parts);
+            }
+
+            $url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
+
+            // Nominatim ToS requires a User-Agent header; add timeout to avoid hanging PHP workers
+            $context = stream_context_create([
+                'http' => [
+                    'method'  => 'GET',
+                    'header'  => "User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)\r\n",
+                    'timeout' => 10,
+                ],
+            ]);
+
+            $response = file_get_contents($url, false, $context);
+            if ($response === false) {
+                $logger->warning('Geocoding failed: Nominatim API request failed');
+                return ['Latitude' => $lat, 'Longitude' => $long];
+            }
+
+            $results = json_decode($response, true, 512, JSON_THROW_ON_ERROR);
+            if (empty($results) || !\is_array($results)) {
+                $logger->warning('Geocoding: No results found for address (see service log for familyId)');
+                return ['Latitude' => $lat, 'Longitude' => $long];
+            }
+
+            $firstResult = $results[0];
+            $lat = (float) $firstResult['lat'];
+            $long = (float) $firstResult['lon'];
+
+            $logger->debug('Geocoding successful: lat=' . $lat . ', lng=' . $long);
+        } catch (\Throwable $exception) {
+            $logger->warning('Geocoding error: ' . $exception->getMessage());
         }
 
         return [

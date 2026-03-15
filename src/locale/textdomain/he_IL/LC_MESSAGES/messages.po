@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "כניסה אחרונה"
 
 #: 
-msgid "Total Logins"
-msgstr "סך הכל כניסות"
-
-#: 
 msgid "Failed Logins"
 msgstr "כניסות שנכשלו"
 
@@ -4128,11 +4124,6 @@ msgstr "תו מפריד להפרדת אימיילים בקישורי mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "הרשאת משתמש ליצירת תיקיות"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "הרשאת משתמש לייצוא קבצי CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6727,14 +6718,6 @@ msgid "View User"
 msgstr "הצג משתמש"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "בקשה לא חוקית: מזהה לוח שנה חסר"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "לא נמצא: מזהה לוח שנה לא מוכר"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "לא נמצא או משתמש ללא אימייל"
@@ -6902,10 +6885,6 @@ msgstr "מזהה סוג אירוע לא חוקי"
 #: 
 msgid "invalid calendar pinning"
 msgstr "נעיצת לוח שנה לא חוקית"
-
-#: 
-msgid "invalid group id"
-msgstr "מזהה קבוצה לא חוקי"
 
 #: 
 msgid "invalid status value"
@@ -7080,10 +7059,6 @@ msgid "Age Histogram"
 msgstr "היסטוגרמת גילאים"
 
 #: 
-msgid "Missing event id"
-msgstr "מזהה אירוע חסר"
-
-#: 
 msgid "Event not found"
 msgstr "לא נמצא אירוע"
 
@@ -7228,14 +7203,6 @@ msgid "Holiday"
 msgstr "חופשה"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "אפשר למשתמשים להירשם באופן עצמאי לאימות דו-שלבי"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "דורש ממשתמשים להירשם באופן עצמאי לאימות דו-שלבי"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7276,32 +7243,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "שם משפחה, שם פרטי שם אמצעי"
 
 #: 
-msgid "Two Factor Status"
-msgstr "מצב אימות דו-שלבי"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "תצורת אימות דו-שלבי לא נתמכת"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "לא ניתן להתחיל הרשמה לאימות דו-שלבי"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "אימות דו-שלבי דורש ממנהלי ChurchCRM להגדיר מספר פרמטרים"
-
-#: 
-msgid "System configuration "
-msgstr "הגדרות מערכת "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "חייב להיות מוגדר כ-'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7452,10 +7395,6 @@ msgstr "עזור לתרגם את הפרויקט הזה"
 #: 
 msgid "Afrikaans"
 msgstr "אפריקאנס"
-
-#: 
-msgid " has a type mismatch"
-msgstr "ישנו חוסר התאמה בסוג"
 
 #: 
 msgid "Loading"
@@ -7661,16 +7600,6 @@ msgstr "תכונה"
 #: 
 msgid "Default Zip"
 msgstr "מיקוד ברירת מחדל"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "אנשים עם כרטיס אשראי"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "אנשים שמוגדרים לשלם בכרטיס אשראי."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8058,14 +7987,6 @@ msgid "City is required"
 msgstr "עיר היא שדה חובה"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "פורט שרת מסד הנתונים נדרש (למשל, 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "שם המשתמש למסד הנתונים הוא שדה חובה"
-
-#: 
 msgid "Email Address"
 msgstr "כתובת אימייל"
 
@@ -8168,10 +8089,6 @@ msgstr "מספר טלפון"
 #: 
 msgid "Please add at least one family member."
 msgstr "אנא הוסף לפחות בן משפחה אחד."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "אנא תקן את שגיאות האימות לפני שתמשיך."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8534,10 +8451,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "לא הוחזרו רשומות מהדוח הקודם."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "אנא הזן שם תפריט (2-50 תווים)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "אנא הזן כתובת URL תקינה המתחילה ב-http:// או https://"
 
@@ -8546,28 +8459,12 @@ msgid "All system file signatures match the expected values."
 msgstr "כל חתימות קבצי המערכת תואמות לערכים הצפויים."
 
 #: 
-msgid "Files with issues"
-msgstr "קבצים עם בעיות"
-
-#: 
-msgid "Integrity check failed"
-msgstr "בדיקת תקינות נכשלה"
-
-#: 
-msgid "Integrity check passed"
-msgstr "בדיקת תקינות עברה"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "קובץ הגדרת החתימה קיים אך אינו קריא. בדוק הרשאות קבצים."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "קובץ הגדרת החתימה חסר ב-%s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "לא ניתן ליצור קשר עם נקודת הקצה של התקינות."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8939,6 +8836,7 @@ msgstr "עורך אירוע"
 msgid "Enter event title..."
 msgstr "הזן כותרת לאירוע..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "אירוע"
@@ -9950,10 +9848,6 @@ msgid "Membership Reports"
 msgstr "דוחות חברות"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "מפתחות סודיים חסרים"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "ניתן לייצא את רוב הדוחות כ-PDF או CSV."
 
@@ -10092,10 +9986,6 @@ msgstr "הגדרות שרת SMTP אינן מוגדרות"
 #: 
 msgid "Save and Add New Family"
 msgstr "שמור והוסף משפחה חדשה"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "מפתחות סודיים חסרים בקובץ Config.php"
 
 #: 
 msgid "Sep"
@@ -10298,10 +10188,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(הזן מדינה/מחוז עבור מדינות ללא רשימה מוגדרת)"
 
 #: 
-msgid "Available"
-msgstr "זמין"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "תצורת Base URL לא תקינה. נא לבדוק את קובץ ה-Config.php."
 
@@ -10386,10 +10272,6 @@ msgid "No locales configured"
 msgstr "לא הוגדרו שפות"
 
 #: 
-msgid "Not Available"
-msgstr "לא זמין"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "פתח קובץ זה בעורך טקסט:"
 
@@ -10422,10 +10304,6 @@ msgid "System Locale Support"
 msgstr "תמיכה בשפת מערכת"
 
 #: 
-msgid "System Support"
-msgstr "תמיכת מערכת"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "ה-URL אינו מכיל שם מארח תקין"
 
@@ -10444,18 +10322,6 @@ msgstr "ה-URL חייב להסתיים בלוכסן (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "ה-URL חייב להתחיל ב-http:// או https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "לא ניתן לזהות שפות מערכת"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "לא ניתן לקבוע שפות זמינות"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "לא ניתן לטעון פרטי שפה"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10674,10 +10540,6 @@ msgid "Remote backup failed"
 msgstr "גיבוי מרוחק נכשל"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "גיבויי WebDAV לא מוגדרים."
-
-#: 
 msgid "2FA Enabled"
 msgstr "אימות דו-שלבי פעיל"
 
@@ -10804,10 +10666,6 @@ msgstr "אימות דו-שלבי"
 #: 
 msgid "Validation pending"
 msgstr "ממתין לאימות"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "חייב להיות מוגדר עם מפתח הצפנה"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11162,14 +11020,6 @@ msgid "No people found matching your criteria."
 msgstr "לא נמצאו אנשים התואמים לקריטריונים שלך."
 
 #: 
-msgid "Off"
-msgstr "כבוי"
-
-#: 
-msgid "On"
-msgstr "פעיל"
-
-#: 
 msgid "Photo Directory"
 msgstr "ספריית תמונות"
 
@@ -11182,26 +11032,12 @@ msgid "Show only people with photos"
 msgstr "הצג רק אנשים עם תמונות"
 
 #: 
-msgid "Checkout All"
-msgstr "תשלום לכולם"
-
-#: 
 msgid "Expected"
 msgstr "צפוי"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "מחיקת הקיוסק נכשלה"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחתית לפי שנת כספים"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "חפש תלמידים רשומים"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12412,4 +12248,107 @@ msgstr "אם תמחק סוג זה, תסיר גם את כל המאפיינים ה
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "העבר תרומות למשפחה הנבחרת"
+
+#: 
+msgid "Calendar not found"
+msgstr "לוח השנה לא נמצא"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "המשך ללוח הבקרה"
+
+#: 
+msgid "Current Password"
+msgstr "סיסמה נוכחית"
+
+#: 
+msgid "Deposit not found"
+msgstr "הפקדה לא נמצאה"
+
+#: 
+msgid "Group not found"
+msgstr "הקבוצה לא נמצאה"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON לא חוקי סופק לתצורה"
+
+#: 
+msgid "Password Change Required"
+msgstr "נדרש שינוי סיסמה"
+
+#: 
+msgid "Password Change Successful"
+msgstr "שינוי הסיסמה הצליח"
+
+#: 
+msgid "Password Changed"
+msgstr "הסיסמה שונתה"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "הסיסמאות חייבות להיות לפחות"
+
+#: 
+msgid "Property not found"
+msgstr "המאפיין לא נמצא"
+
+#: 
+msgid "Set New Password"
+msgstr "הגדר סיסמה חדשה"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "הסיסמה עבור %s עודכנה."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "לא ניתן לקודד מחדש את JSON לתצורה"
+
+#: 
+msgid "User not found"
+msgstr "המשתמש לא נמצא"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "עליך להגדיר סיסמה חדשה לפני שתמשיך."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "הסיסמה שלך עודכנה בהצלחה."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "למשפחה שנבחרה אין קואורדינטות"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "השאר ריק לשמירה על הקיים"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#: 
+msgid "Not enrolled"
+msgstr "לא רשום"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
 

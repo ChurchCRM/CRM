@@ -2710,10 +2710,6 @@ msgid "Last Login"
 msgstr "最後登入"
 
 #: 
-msgid "Total Logins"
-msgstr "總計登入次數"
-
-#: 
 msgid "Failed Logins"
 msgstr "登入失敗次數"
 
@@ -4256,11 +4252,6 @@ msgstr "用於分隔 郵件到：鏈接 的電子郵件的分隔符"
 #: 
 msgid "User permission to create directories"
 msgstr "用戶創建目錄的權限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "用戶導出CSV文件的權限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6869,14 +6860,6 @@ msgid "View User"
 msgstr "查看用戶"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "請求無效：缺少日曆ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "找不到：未知的日曆ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "沒有找到或沒有電子郵件的用戶"
@@ -7046,10 +7029,6 @@ msgstr "無效的事件類型ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "無效的日曆pinning"
-
-#: 
-msgid "invalid group id"
-msgstr "無效的組ID"
 
 #: 
 msgid "invalid status value"
@@ -7244,11 +7223,6 @@ msgstr "年齡直方圖"
 
 #: 
 #, fuzzy
-msgid "Missing event id"
-msgstr "缺少事件ID"
-
-#: 
-#, fuzzy
 msgid "Event not found"
 msgstr "事件未找到"
 
@@ -7416,16 +7390,6 @@ msgstr "假日"
 
 #: 
 #, fuzzy
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "允許用戶自行註冊兩因素身份驗證"
-
-#: 
-#, fuzzy
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "要求用戶自行註冊兩因素身份驗證"
-
-#: 
-#, fuzzy
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7471,32 +7435,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名 中間名"
 
 #: 
-msgid "Two Factor Status"
-msgstr "雙重認證狀態"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "請確認為此用戶禁用雙重認證"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "不支持的雙重認證配置"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "無法開始雙重認證註冊"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "雙重認證要求ChurchCRM管理員配置一些參數"
-
-#: 
-msgid "System configuration "
-msgstr "系統配置 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "必須設置為'true'"
 
 #: 
 #, fuzzy
@@ -7671,11 +7611,6 @@ msgstr "幫助翻譯此專案"
 #, fuzzy
 msgid "Afrikaans"
 msgstr "南非語"
-
-#: 
-#, fuzzy
-msgid " has a type mismatch"
-msgstr " 類型不匹配"
 
 #: 
 #, fuzzy
@@ -7920,16 +7855,6 @@ msgstr "屬性"
 #: 
 msgid "Default Zip"
 msgstr "預設郵遞區號"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡支付人員"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置為透過信用卡支付的人員。"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8317,14 +8242,6 @@ msgid "City is required"
 msgstr "城市是必填項"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "資料庫伺服器連接埠是必填項（例如：3306）"
-
-#: 
-msgid "Database username is required"
-msgstr "資料庫使用者名稱是必填項"
-
-#: 
 msgid "Email Address"
 msgstr "電子郵件地址"
 
@@ -8427,10 +8344,6 @@ msgstr "電話號碼"
 #: 
 msgid "Please add at least one family member."
 msgstr "請至少添加一名家庭成員。"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "請在繼續之前糾正驗證錯誤。"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8793,10 +8706,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "之前的報告未返回任何記錄。請調整您的篩選器或日期範圍，然後重試。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "請輸入功能表名稱（2-50 個字元）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "請輸入以 http:// 或 https:// 開頭的有效 URL"
 
@@ -8805,28 +8714,12 @@ msgid "All system file signatures match the expected values."
 msgstr "所有系統檔案簽名均符合預期值。"
 
 #: 
-msgid "Files with issues"
-msgstr "有問題的檔案"
-
-#: 
-msgid "Integrity check failed"
-msgstr "完整性檢查失敗"
-
-#: 
-msgid "Integrity check passed"
-msgstr "完整性檢查通過"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "簽名定義檔案存在但不可讀。檢查檔案權限。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "位於 %s 的簽名定義檔案遺失。請執行打包任務或部署官方版本以重新生成簽名。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "無法聯繫完整性端點。請檢查 Web 伺服器錯誤日誌。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -9197,6 +9090,7 @@ msgstr "正在編輯活動"
 msgid "Enter event title..."
 msgstr "輸入活動標題..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "活動"
@@ -10207,10 +10101,6 @@ msgid "Membership Reports"
 msgstr "成員報告"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "缺少密鑰"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "大多數報告可以匯出為 PDF 供列印，或匯出為 CSV 供電子表格分析。"
 
@@ -10349,10 +10239,6 @@ msgstr "SMTP 伺服器設定未配置"
 #: 
 msgid "Save and Add New Family"
 msgstr "儲存並新增家庭"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.php 中缺少密鑰"
 
 #: 
 msgid "Sep"
@@ -10555,10 +10441,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "（為沒有預定義州/省的國家輸入州/省）"
 
 #: 
-msgid "Available"
-msgstr "可用"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基礎 URL 配置無效。請檢查您的 Config.php 檔案。"
 
@@ -10643,10 +10525,6 @@ msgid "No locales configured"
 msgstr "未配置語言環境"
 
 #: 
-msgid "Not Available"
-msgstr "不可用"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "在文本編輯器中打開此檔案："
 
@@ -10679,10 +10557,6 @@ msgid "System Locale Support"
 msgstr "系統語言環境支援"
 
 #: 
-msgid "System Support"
-msgstr "系統支援"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL 不包含有效的主機名"
 
@@ -10701,18 +10575,6 @@ msgstr "URL 必須以結尾斜槓 (/) 結束"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL 必須以 http:// 或 https:// 開始"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "無法偵測系統語言環境"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "無法確定可用的語言環境"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "無法載入語言環境資訊"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10931,10 +10793,6 @@ msgid "Remote backup failed"
 msgstr "遠端備份失敗"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV 備份配置不正確。請確保已設置終端點、使用者名稱和密碼"
-
-#: 
 msgid "2FA Enabled"
 msgstr "已啟用二階段驗證 (2FA)"
 
@@ -11061,10 +10919,6 @@ msgstr "二階段驗證 (2FA)"
 #: 
 msgid "Validation pending"
 msgstr "等待驗證"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "必須配置加密密鑰"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11415,14 +11269,6 @@ msgid "No people found matching your criteria."
 msgstr "未找到符合您條件的人員。"
 
 #: 
-msgid "Off"
-msgstr "關閉"
-
-#: 
-msgid "On"
-msgstr "開啟"
-
-#: 
 msgid "Photo Directory"
 msgstr "照片目錄"
 
@@ -11435,26 +11281,12 @@ msgid "Show only people with photos"
 msgstr "只顯示有照片的人"
 
 #: 
-msgid "Checkout All"
-msgstr "全部簽出"
-
-#: 
 msgid "Expected"
 msgstr "預期"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "刪除自助終端失敗"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "按財年的家庭承諾"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "查找已註冊學生"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12664,4 +12496,107 @@ msgstr "如果刪除此類型，您還將刪除所有使用它的屬性，並失
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "將奉獻移至所選家庭"
+
+#: 
+msgid "Calendar not found"
+msgstr "找不到行事曆"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "繼續前往儀表板"
+
+#: 
+msgid "Current Password"
+msgstr "目前密碼"
+
+#: 
+msgid "Deposit not found"
+msgstr "找不到奉獻記錄"
+
+#: 
+msgid "Group not found"
+msgstr "找不到小組"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "設定所提供的JSON無效"
+
+#: 
+msgid "Password Change Required"
+msgstr "需要更改密碼"
+
+#: 
+msgid "Password Change Successful"
+msgstr "密碼更改成功"
+
+#: 
+msgid "Password Changed"
+msgstr "密碼已更改"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "密碼長度至少為"
+
+#: 
+msgid "Property not found"
+msgstr "找不到屬性"
+
+#: 
+msgid "Set New Password"
+msgstr "設定新密碼"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s的密碼已更新。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "無法重新編碼設定的JSON"
+
+#: 
+msgid "User not found"
+msgstr "找不到使用者"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "繼續之前您必須設定新密碼。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "您的密碼已成功更新。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "所選家庭沒有座標"
+
+#: 
+msgid "2FA"
+msgstr "雙重驗證"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未參加活動的人員"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "留空以保留現有內容"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人員"
+
+#: 
+msgid "Not enrolled"
+msgstr "未註冊"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "要求所有使用者註冊雙重身份驗證"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "選擇所需活動"
 

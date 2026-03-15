@@ -1,16 +1,17 @@
 <?php
 
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\model\ChurchCRM\Deposit;
-use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Service\DepositService;
+use ChurchCRM\Slim\Middleware\Api\DepositMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\RequestParameterValidationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -39,25 +40,14 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->post('', function (Request $request, Response $response, array $args): Response {
         $depositService = new DepositService();
         $input = $request->getParsedBody();
-        $depositType = $input['depositType'] ?? '';
-        $depositComment = InputUtils::sanitizeText($input['depositComment']) ?? '';
+        $depositType = $input['depositType'];
+        $depositComment = $input['depositComment'] ?? '';
         $depositDate = $input['depositDate'] ?? DateTimeUtils::getTodayDate();
-
-        // Validate depositType against allowed values
-        $allowedTypes = ['Bank', 'CreditCard', 'BankDraft'];
-        if (!in_array($depositType, $allowedTypes, true)) {
-            $errorMsg = $depositType === ''
-                ? 'Deposit type is required. Please provide one of: ' . implode(', ', $allowedTypes)
-                : "Deposit type '$depositType' is invalid. Allowed types: " . implode(', ', $allowedTypes);
-            return SlimUtils::renderJSON($response->withStatus(400), [
-                'error' => $errorMsg,
-                'allowedTypes' => $allowedTypes
-            ]);
-        }
 
         $deposit = $depositService->createDeposit($depositType, $depositComment, $depositDate);
         return SlimUtils::renderJSON($response, $deposit->toArray());
-    });
+    })->add(new InputSanitizationMiddleware(['depositComment' => 'text']))
+      ->add(new RequestParameterValidationMiddleware(enums: ['depositType' => ['Bank', 'CreditCard', 'BankDraft']]));
 
     /**
      * @OA\Get(
@@ -110,10 +100,8 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = (int) $args['id'];
-        $deposit = DepositQuery::create()->findOneById($id);
-        return SlimUtils::renderJSON($response, $deposit->toArray());
-    });
+        return SlimUtils::renderJSON($response, $request->getAttribute('deposit')->toArray());
+    })->add(DepositMiddleware::class);
 
     /**
      * @OA\Post(
@@ -136,16 +124,16 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = (int) $args['id'];
         $input = $request->getParsedBody();
-        $appDeposit = DepositQuery::create()->findOneById($id);
-        $appDeposit->setType($input['depositType']);
-        $appDeposit->setComment(InputUtils::escapeHTML($input['depositComment'] ?? ''));
-        $appDeposit->setDate($input['depositDate']);
-        $appDeposit->setClosed($input['depositClosed']);
-        $appDeposit->save();
-        return SlimUtils::renderJSON($response, $appDeposit->toArray());
-    });
+        $deposit = $request->getAttribute('deposit');
+        $deposit->setType($input['depositType']);
+        $deposit->setComment($input['depositComment'] ?? '');
+        $deposit->setDate($input['depositDate']);
+        $deposit->setClosed($input['depositClosed']);
+        $deposit->save();
+        return SlimUtils::renderJSON($response, $deposit->toArray());
+    })->add(new InputSanitizationMiddleware(['depositComment' => 'text']))
+      ->add(DepositMiddleware::class);
 
     /**
      * @OA\Get(
@@ -161,15 +149,10 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/{id:[0-9]+}/ofx', function (Request $request, Response $response, array $args): Response {
-        $id = (int) $args['id'];
-        $deposit = DepositQuery::create()->findOneById($id);
-        if ($deposit === null) {
-            return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'Deposit not found']);
-        }
-        $OFX = $deposit->getOFX();
+        $OFX = $request->getAttribute('deposit')->getOFX();
         header($OFX->header);
         return SlimUtils::renderJSON($response, ['content' => $OFX->content]);
-    });
+    })->add(DepositMiddleware::class);
 
     /**
      * @OA\Get(
@@ -198,13 +181,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
             return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'No Payments on this Deposit']);
         }
 
-        $deposit = DepositQuery::create()->findOneById($id);
-        if ($deposit === null) {
-            return SlimUtils::renderJSON($response->withStatus(404), ['message' => 'Deposit not found']);
-        }
-        $deposit->getPDF();
+        $request->getAttribute('deposit')->getPDF();
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(DepositMiddleware::class);
 
     /**
      * @OA\Get(
@@ -253,13 +232,9 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->delete('/{id:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $id = (int) $args['id'];
-        $deposit = DepositQuery::create()->findOneById($id);
-        if ($deposit) {
-            $deposit->delete();
-        }
+        $request->getAttribute('deposit')->delete();
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(DepositMiddleware::class);
 
     /**
      * @OA\Get(

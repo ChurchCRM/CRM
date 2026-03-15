@@ -2639,10 +2639,6 @@ msgid "Last Login"
 msgstr "Đăng nhập mới nhất"
 
 #: 
-msgid "Total Logins"
-msgstr "Tổng số lần đăng nhập"
-
-#: 
 msgid "Failed Logins"
 msgstr "Đăng nhập thất bại"
 
@@ -4145,11 +4141,6 @@ msgstr "Dấu phân cách để tách các email trong mailto: links"
 #: 
 msgid "User permission to create directories"
 msgstr "Thành viên có quyền tạo ra danh bạ"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Thành viên có quyền xuất tập tin CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6742,14 +6733,6 @@ msgid "View User"
 msgstr "Xem thành viên"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Yêu cầu không hợp lệ: Thiếu id lịch"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Không tìm thấy: Id lịch không xác định"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "không tìm thấy hoặc người dùng không có email"
@@ -6918,10 +6901,6 @@ msgstr "id loại sự kiện không hợp lệ"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ghim lịch không hợp lệ"
-
-#: 
-msgid "invalid group id"
-msgstr "id nhóm không hợp lệ"
 
 #: 
 msgid "invalid status value"
@@ -7097,10 +7076,6 @@ msgid "Age Histogram"
 msgstr "Biểu đồ tuổi"
 
 #: 
-msgid "Missing event id"
-msgstr "Thiếu id sự kiện"
-
-#: 
 msgid "Event not found"
 msgstr "Không tìm thấy sự kiện"
 
@@ -7236,14 +7211,6 @@ msgid "Holiday"
 msgstr "Ngày lễ"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Cho phép người dùng tự đăng ký xác thực 2 yếu tố"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Yêu cầu người dùng tự đăng ký xác thực 2 yếu tố"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7284,32 +7251,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Trạng thái hai yếu tố"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Cấu hình xác thực hai yếu tố không được hỗ trợ"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Không thể bắt đầu đăng ký xác thực hai yếu tố"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Xác thực hai yếu tố yêu cầu quản trị viên ChurchCRM định cấu hình một vài tham số"
-
-#: 
-msgid "System configuration "
-msgstr "Cấu hình hệ thông"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Phải được đặt thành 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7461,10 +7404,6 @@ msgstr "Giúp dịch dự án này"
 #: 
 msgid "Afrikaans"
 msgstr "Người Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr "có kiểu không khớp"
 
 #: 
 msgid "Loading"
@@ -7670,16 +7609,6 @@ msgstr "thuộc tính"
 #: 
 msgid "Default Zip"
 msgstr "Mã vùng mặc định"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Người có phương thức thanh toán là thẻ tín dụng"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được cài đặt thanh toán bằng thẻ tín dụng."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8067,14 +7996,6 @@ msgid "City is required"
 msgstr "Yêu cầu tên thành phố"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Yêu cầu cổng máy chủ cơ sở dữ liệu (ví dụ: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Yêu cầu tên người dùng cơ sở dữ liệu"
-
-#: 
 msgid "Email Address"
 msgstr "Địa chỉ Email"
 
@@ -8177,10 +8098,6 @@ msgstr "Số điện thoại"
 #: 
 msgid "Please add at least one family member."
 msgstr "Vui lòng thêm ít nhất một thành viên trong gia đình."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Vui lòng sửa các lỗi xác thực trước khi tiếp tục."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8543,10 +8460,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Không có bản ghi nào được trả về từ báo cáo trước. Vui lòng điều chỉnh bộ lọc hoặc khoảng ngày và thử lại."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Vui lòng nhập tên menu (2-50 ký tự)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Vui lòng nhập URL hợp lệ bắt đầu bằng http:// hoặc https://"
 
@@ -8555,28 +8468,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Tất cả chữ ký tệp hệ thống đều khớp với giá trị dự kiến."
 
 #: 
-msgid "Files with issues"
-msgstr "Các tệp có vấn đề"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Kiểm tra tính toàn vẹn thất bại"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Kiểm tra tính toàn vẹn thành công"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Tệp định nghĩa chữ ký tồn tại nhưng không thể đọc. Kiểm tra quyền của tệp."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Thiếu tệp định nghĩa chữ ký tại %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Không thể kết nối với điểm cuối kiểm tra tính toàn vẹn. Kiểm tra nhật ký lỗi máy chủ."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8947,6 +8844,7 @@ msgstr "Đang chỉnh sửa sự kiện"
 msgid "Enter event title..."
 msgstr "Nhập tiêu đề sự kiện..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Sự kiện"
@@ -9957,10 +9855,6 @@ msgid "Membership Reports"
 msgstr "Báo cáo thành viên"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Thiếu các khóa bí mật (Secret Keys)"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Hầu hết các báo cáo có thể xuất ra PDF hoặc CSV."
 
@@ -10099,10 +9993,6 @@ msgstr "Cài đặt máy chủ SMTP chưa được cấu hình"
 #: 
 msgid "Save and Add New Family"
 msgstr "Lưu và Thêm gia đình mới"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Thiếu các khóa bí mật trong file Config.php"
 
 #: 
 msgid "Sep"
@@ -10305,10 +10195,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Nhập tỉnh/thành phố cho các quốc gia không có danh sách sẵn)"
 
 #: 
-msgid "Available"
-msgstr "Có sẵn"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Cấu hình URL cơ sở không hợp lệ. Vui lòng kiểm tra file Config.php."
 
@@ -10393,10 +10279,6 @@ msgid "No locales configured"
 msgstr "Chưa có ngôn ngữ nào được cấu hình"
 
 #: 
-msgid "Not Available"
-msgstr "Không khả dụng"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Mở tệp này bằng trình soạn thảo văn bản:"
 
@@ -10429,10 +10311,6 @@ msgid "System Locale Support"
 msgstr "Hỗ trợ ngôn ngữ hệ thống"
 
 #: 
-msgid "System Support"
-msgstr "Hỗ trợ hệ thống"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL không chứa tên máy chủ hợp lệ"
 
@@ -10451,18 +10329,6 @@ msgstr "URL phải kết thúc bằng dấu gạch chéo (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL phải bắt đầu bằng http:// hoặc https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Không thể phát hiện ngôn ngữ hệ thống"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Không thể xác định các ngôn ngữ có sẵn"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Không thể tải thông tin ngôn ngữ"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10681,10 +10547,6 @@ msgid "Remote backup failed"
 msgstr "Sao lưu từ xa thất bại"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Sao lưu WebDAV chưa được cấu hình đúng."
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA Đã bật"
 
@@ -10811,10 +10673,6 @@ msgstr "Xác thực 2 lớp (2FA)"
 #: 
 msgid "Validation pending"
 msgstr "Đang chờ xác thực"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "phải được cấu hình với một khóa mã hóa"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11165,14 +11023,6 @@ msgid "No people found matching your criteria."
 msgstr "Không tìm thấy người nào phù hợp với tiêu chí của bạn."
 
 #: 
-msgid "Off"
-msgstr "Tắt"
-
-#: 
-msgid "On"
-msgstr "Bật"
-
-#: 
 msgid "Photo Directory"
 msgstr "Thư mục Ảnh"
 
@@ -11183,4 +11033,1324 @@ msgstr "Đặt lại Bộ lọc"
 #: 
 msgid "Show only people with photos"
 msgstr "Chỉ hiển thị người có ảnh"
+
+#: 
+msgid "Expected"
+msgstr "Dự kiến"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Không thể xóa ki-ốt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Năm tài chính."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Nhóm học sinh đã đăng ký"
+
+#: 
+msgid "Here"
+msgstr "Tại đây"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Loại phân công không hợp lệ"
+
+#: 
+msgid "Invalid person ID"
+msgstr "ID người dùng không hợp lệ"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Đã tắt đăng ký ki-ốt"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Không tìm thấy ki-ốt"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Liên kết sự kiện này với một nhóm để sử dụng chức năng check-in ki-ốt. Các thành viên nhóm sẽ xuất hiện trên ki-ốt."
+
+#: 
+msgid "Linked Group"
+msgstr "Nhóm được liên kết"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Đăng ký thiết bị ki-ốt mới hiện đang bị tắt. Vui lòng liên hệ quản trị viên hệ thống để bật đăng ký ki-ốt."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Không có nhóm (Chọn để check-in ki-ốt)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Chưa có ai check-in"
+
+#: 
+msgid "Person not found"
+msgstr "Không tìm thấy người dùng"
+
+#: 
+msgid "Pickup Request"
+msgstr "Yêu cầu đón"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Vui lòng đến lớp học càng sớm càng tốt."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Tóm tắt cam kết theo tên gia đình cho từng quỹ của năm tài chính đã chọn"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Học sinh đã đăng ký"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Giáo viên đã gửi thông báo này lúc"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Ki-ốt này hiển thị tốt nhất trên máy tính bảng ở chế độ ngang để có trải nghiệm check-in tốt nhất."
+
+#: 
+msgid "Tip"
+msgstr "Mẹo"
+
+#: 
+msgid "Try Again"
+msgstr "Thử lại"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Sinh nhật sắp tới"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Đang chờ check-in"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Khi bật, các thiết bị ki-ốt mới có thể đăng ký trong 30 giây."
+
+#: 
+msgid "Your child"
+msgstr "Con bạn"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "cần được đón từ"
+
+#: 
+msgid "their classroom"
+msgstr "lớp học của con"
+
+#: 
+msgid "All timezones match"
+msgstr "Tất cả múi giờ khớp nhau"
+
+#: 
+msgid "Baseline"
+msgstr "Cơ sở"
+
+#: 
+msgid "Browser"
+msgstr "Trình duyệt"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Trình duyệt khác với cấu hình hệ thống – ngày tháng có thể hiển thị không chính xác cho người dùng này."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Không thể ghi vào thư mục cài đặt ChurchCRM. Vui lòng kiểm tra quyền ghi của máy chủ web."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Đang so sánh múi giờ..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Thư mục đích không tồn tại. Vui lòng xác minh ChurchCRM được cài đặt đúng cách."
+
+#: 
+msgid "Does not match system config"
+msgstr "Không khớp với cấu hình hệ thống"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Tệp phát hành đã tải xuống trống. Điều này có thể do sự cố mạng hoặc giới hạn tốc độ GitHub. Vui lòng thử lại sau."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Đã giải nén xong nhưng không tìm thấy tệp nâng cấp. Tệp lưu trữ nâng cấp có thể bị hỏng."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Không thể áp dụng nâng cấp. Vui lòng kiểm tra nhật ký máy chủ để biết chi tiết."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Không thể tạo thư mục nâng cấp. Vui lòng kiểm tra quyền tệp."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Không thể tải tệp phát hành từ GitHub sau nhiều lần thử. Vui lòng kiểm tra kết nối internet của máy chủ và thử lại."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Không thể giải nén tệp lưu trữ nâng cấp. Vui lòng kiểm tra dung lượng đĩa và quyền tệp."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Không thể mở tệp lưu trữ nâng cấp. Tệp đã tải xuống có thể bị hỏng."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Không thể lưu tệp phát hành đã tải xuống. Vui lòng kiểm tra dung lượng đĩa và quyền."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Định dạng ngày không hợp lệ trong tham số bắt đầu"
+
+#: 
+msgid "Mismatch"
+msgstr "Không khớp"
+
+#: 
+msgid "Not set"
+msgstr "Chưa đặt"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP đang hoạt động"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Thư mục nguồn không tồn tại. Tệp lưu trữ nâng cấp có thể không được giải nén đúng cách. Vui lòng kiểm tra quyền tệp và dung lượng đĩa."
+
+#: 
+msgid "System Config"
+msgstr "Cấu hình hệ thống"
+
+#: 
+msgid "Timezone Information"
+msgstr "Thông tin múi giờ"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Phát hiện múi giờ không khớp"
+
+#: 
+msgid "mismatch detected"
+msgstr "phát hiện không khớp"
+
+#: 
+msgid "mismatches detected"
+msgstr "phát hiện không khớp"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d giờ"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Giới thiệu về sao lưu WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Thêm liên kết"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Thêm lớp bảo mật cho tài khoản của bạn"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Thêm liên kết bên ngoài tùy chỉnh vào menu điều hướng."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Cho phép chứng chỉ tự ký"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Đã xảy ra lỗi khi xử lý yêu cầu plugin"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Bạn có chắc muốn tắt xác thực hai yếu tố không? Tài khoản của bạn sẽ kém bảo mật hơn."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Trong quá trình khôi phục, sao lưu bên ngoài đã bị tắt. Nếu bạn muốn tiếp tục sao lưu tự động, hãy bật lại plugin Sao lưu ngoài trong Quản trị > Plugin."
+
+#: 
+msgid "Audiences"
+msgstr "Đối tượng"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Xác thực thất bại. Vui lòng kiểm tra tên người dùng và mật khẩu."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Khoảng thời gian sao lưu tự động"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Tự động sao lưu cơ sở dữ liệu ChurchCRM lên bộ nhớ đám mây bên ngoài qua WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Tỷ lệ nhấp trung bình"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Tỷ lệ mở trung bình"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Quay lại bảng điều khiển"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Đã tạo bản sao lưu nhưng không thể sao chép lên máy chủ từ xa"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Sao lưu lên WebDAV ngay"
+
+#: 
+msgid "Before You Start"
+msgstr "Trước khi bắt đầu"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Đã phát hiện tùy chọn ngôn ngữ trình duyệt"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Thành viên CRM chưa đăng ký"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Chiến dịch đã gửi"
+
+#: 
+msgid "Can't scan?"
+msgstr "Không thể quét?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Thay đổi địa phương"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM hỗ trợ kiến trúc plugin để mở rộng chức năng."
+
+#: 
+msgid "Cleaned"
+msgstr "Đã dọn dẹp"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Nhấp vào nút bên dưới để kiểm tra cài đặt kết nối WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Plugin cộng đồng"
+
+#: 
+msgid "Community plugins"
+msgstr "Plugin cộng đồng"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Cấu hình sao lưu ngoài"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Cấu hình MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Cấu hình các cài đặt này trong"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Cấu hình plugin này để tự động sao lưu cơ sở dữ liệu ChurchCRM lên dịch vụ lưu trữ đám mây tương thích WebDAV như Nextcloud, ownCloud hoặc bất kỳ máy chủ WebDAV nào. Bản sao lưu được mã hóa trong quá trình truyền qua HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Đã cấu hình"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Xác nhận bằng mã từ ứng dụng xác thực"
+
+#: 
+msgid "Connected"
+msgstr "Đã kết nối"
+
+#: 
+msgid "Connection failed"
+msgstr "Kết nối thất bại"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Kết nối thất bại với mã HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Kết nối thành công! Điểm cuối WebDAV có thể truy cập."
+
+#: 
+msgid "Connection test failed"
+msgstr "Kiểm tra kết nối thất bại"
+
+#: 
+msgid "Core Plugins"
+msgstr "Plugin cốt lõi"
+
+#: 
+msgid "Core plugins"
+msgstr "Plugin cốt lõi"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Tạo bản sao lưu ngay và tải lên máy chủ WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Tạo đối tượng trong MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Tùy chỉnh"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Liên kết menu tùy chỉnh"
+
+#: 
+msgid "Default Image Style"
+msgstr "Kiểu hình ảnh mặc định"
+
+#: 
+msgid "Default List ID"
+msgstr "ID danh sách mặc định"
+
+#: 
+msgid "Disable"
+msgstr "Tắt"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Tắt plugin"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Tắt xác thực hai yếu tố"
+
+#: 
+msgid "Dismiss"
+msgstr "Bỏ qua"
+
+#: 
+msgid "Done"
+msgstr "Xong"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Định dạng E.164, ví dụ: +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Mỗi plugin yêu cầu một"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Mỗi lần đăng nhập, bạn cần xác nhận bằng mã từ ứng dụng xác thực"
+
+#: 
+msgid "Email Addresses"
+msgstr "Địa chỉ email"
+
+#: 
+msgid "Enable"
+msgstr "Bật"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Bật plugin sao lưu ngoài"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Bật plugin"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Bật xác thực hai yếu tố"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Bật plugin Sao lưu ngoài cho lưu trữ đám mây WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Chỉ bật điều này cho máy chủ mạng nội bộ có chứng chỉ SSL tự ký. Tắt xác minh chứng chỉ."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL điểm cuối"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Nhập mã 6 chữ số từ ứng dụng xác thực"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Nhập tên người dùng và mật khẩu như thường lệ"
+
+#: 
+msgid "External Backup"
+msgstr "Sao lưu ngoài"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Sao lưu ngoài (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Cài đặt sao lưu ngoài"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "Plugin sao lưu ngoài đã bật nhưng chưa cấu hình."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "Plugin sao lưu ngoài chưa được cấu hình. Vui lòng cấu hình cài đặt WebDAV trong plugin."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "Plugin sao lưu ngoài chưa được bật. Vui lòng bật và cấu hình nó trong Quản lý Plugin."
+
+#: 
+msgid "Failed to create link"
+msgstr "Không thể tạo liên kết"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Không thể xóa liên kết"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Không thể tắt plugin"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Không thể bật plugin"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Không thể lấy thông tin chi tiết plugin"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Không thể liệt kê plugin"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Không thể đặt lại cài đặt"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Không thể gửi SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Trạng thái gia đình"
+
+#: 
+msgid "Family not found"
+msgstr "Không tìm thấy gia đình"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Tìm trong MailChimp: Đối tượng > Cài đặt > Tên đối tượng và mặc định > ID đối tượng"
+
+#: 
+msgid "From Phone Number"
+msgstr "Số điện thoại gửi"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Từ dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "ID đo lường GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Tạo mã mới"
+
+#: 
+msgid "Get Started"
+msgstr "Bắt đầu"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Lấy khóa API từ MailChimp: Cài đặt tài khoản > Extras > Khóa API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Chuẩn bị sẵn ứng dụng xác thực (Google Authenticator, Microsoft Authenticator, Authy, v.v.)"
+
+#: 
+msgid "Help"
+msgstr "Trợ giúp"
+
+#: 
+msgid "Id"
+msgstr "Id"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Hình ảnh hiển thị khi không có Gravatar cho địa chỉ email"
+
+#: 
+msgid "Important"
+msgstr "Quan trọng"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Cài đặt plugin bằng cách đặt chúng vào"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Mã không hợp lệ. Vui lòng thử lại."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "URL điểm cuối không hợp lệ. Phải là URL đầy đủ bắt đầu bằng https:// (ví dụ: https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Không tìm thấy thiết bị ki-ốt"
+
+#: 
+msgid "Last Backup"
+msgstr "Lần sao lưu cuối"
+
+#: 
+msgid "Last Campaign"
+msgstr "Chiến dịch cuối"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Người đăng ký cuối"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Lần sao lưu thành công cuối"
+
+#: 
+msgid "Last campaign"
+msgstr "Chiến dịch cuối"
+
+#: 
+msgid "Link Name"
+msgstr "Tên liên kết"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Địa chỉ liên kết không được chứa thẻ HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "Địa chỉ liên kết là bắt buộc"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Liên kết phải là URL hợp lệ"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Liên kết phải bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "Link not found"
+msgstr "Không tìm thấy liên kết"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Đang tải mã khôi phục"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "Khóa API MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Bảng điều khiển MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Quản lý liên kết"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Quản lý xác thực hai yếu tố"
+
+#: 
+msgid "Manual Backup"
+msgstr "Sao lưu thủ công"
+
+#: 
+msgid "Menu Links"
+msgstr "Liên kết menu"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Tên menu không được chứa thẻ HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "Tên menu là bắt buộc"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Tên menu phải từ 50 ký tự trở xuống"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Tên menu phải có ít nhất 2 ký tự"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Phải bắt đầu bằng http:// hoặc https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Cần cấu hình"
+
+#: 
+msgid "Never"
+msgstr "Không bao giờ"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Không tìm thấy đối tượng"
+
+#: 
+msgid "No backups recorded"
+msgstr "Không có bản sao lưu nào được ghi lại"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Không có plugin cộng đồng nào được cài đặt"
+
+#: 
+msgid "No core plugins found"
+msgstr "Không tìm thấy plugin cốt lõi"
+
+#: 
+msgid "No settings provided"
+msgstr "Không có cài đặt nào được cung cấp"
+
+#: 
+msgid "Not Configured"
+msgstr "Chưa cấu hình"
+
+#: 
+msgid "Not in CRM"
+msgstr "Không có trong CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Mã một lần"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Mở MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Mở ứng dụng xác thực và quét mã QR này"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL máy chủ OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Tùy chọn – chỉ cần thiết nếu xác thực OpenLP được bật"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Số điện thoại và tin nhắn là bắt buộc"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Vui lòng cấu hình điểm cuối, tên người dùng và mật khẩu trước."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Vui lòng cấu hình cài đặt WebDAV trước khi tạo bản sao lưu từ xa."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Vui lòng cấu hình cài đặt WebDAV trước khi kiểm tra kết nối."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Vui lòng cấu hình khóa API MailChimp để sử dụng tích hợp này."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Vui lòng nhập tên liên kết (2–50 ký tự)"
+
+#: 
+msgid "Please try again"
+msgstr "Vui lòng thử lại"
+
+#: 
+msgid "Plugin Development"
+msgstr "Phát triển plugin"
+
+#: 
+msgid "Plugin Help"
+msgstr "Trợ giúp plugin"
+
+#: 
+msgid "Plugin Management"
+msgstr "Quản lý plugin"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Cài đặt plugin"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Plugin không thể tắt vì các plugin khác phụ thuộc vào nó"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Plugin không thể bật do yêu cầu phụ thuộc hoặc phiên bản"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Đã tắt plugin thành công"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Đã bật plugin thành công"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Plugin tải thất bại"
+
+#: 
+msgid "Plugin not found"
+msgstr "Không tìm thấy plugin"
+
+#: 
+msgid "Plugins"
+msgstr "Plugin"
+
+#: 
+msgid "Print"
+msgstr "In"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Người nhận và tin nhắn là bắt buộc"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Mã khôi phục"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Sao lưu từ xa thất bại. Kiểm tra nhật ký máy chủ để biết chi tiết."
+
+#: 
+msgid "SMS sent"
+msgstr "Đã gửi SMS"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Lưu các mã khôi phục này ở nơi an toàn. Bạn có thể dùng chúng để truy cập tài khoản nếu mất quyền truy cập ứng dụng xác thực."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Quét mã QR"
+
+#: 
+msgid "Secure"
+msgstr "Bảo mật"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Cài đặt ứng dụng xác thực"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Đã đặt lại cài đặt thành công"
+
+#: 
+msgid "Setup Complete"
+msgstr "Cài đặt hoàn tất"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Đi kèm với ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Đăng nhập"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Một số cài đặt không thể đặt lại"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Một số cài đặt không thể lưu"
+
+#: 
+msgid "Subscribers"
+msgstr "Người đăng ký"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Người đăng ký không có trong CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Kiểm tra kết nối"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Kiểm tra kết nối WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Các liên kết này xuất hiện trong menu \"Liên kết\" ở thanh điều hướng khi plugin này được bật."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Những người này đã đăng ký vào đối tượng MailChimp nhưng không tồn tại trong ChurchCRM. Hãy xem xét thêm họ vào cơ sở dữ liệu hoặc xóa khỏi MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Những người này tồn tại trong ChurchCRM với địa chỉ email nhưng chưa đăng ký vào đối tượng MailChimp này. Hãy mời họ đăng ký."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Tiện ích mở rộng bên thứ ba."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Điều này sẽ thay thế mọi phương thức 2FA đã đăng ký trước đó"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Tổng chiến dịch"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Tổng người đăng ký"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Lỗi đăng ký hai yếu tố"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Xác thực hai yếu tố đã bị tắt"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Xác thực hai yếu tố là một trong những cách tốt nhất để bảo vệ tài khoản. Chúng tôi khuyến nghị giữ tính năng này bật."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL đến máy chủ OpenLP của bạn (ví dụ: http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Không thể tải"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Đã hủy đăng ký"
+
+#: 
+msgid "Use a different account"
+msgstr "Dùng tài khoản khác"
+
+#: 
+msgid "Value is configured"
+msgstr "Giá trị đã được cấu hình"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Giá trị đã được đặt – để trống để giữ nguyên"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Xác minh và đăng nhập"
+
+#: 
+msgid "Verify Code"
+msgstr "Xác minh mã"
+
+#: 
+msgid "Verifying"
+msgstr "Đang xác minh"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Khóa API Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Bí mật API Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Cấu hình WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Kết nối WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Sao lưu WebDAV chưa được cấu hình đúng. Vui lòng đảm bảo điểm cuối, tên người dùng và mật khẩu đã được đặt."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "URL điểm cuối WebDAV là bắt buộc."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Mật khẩu WebDAV là bắt buộc."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Tên người dùng WebDAV là bắt buộc."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Bạn cũng có thể dùng mã khôi phục dự phòng nếu mất quyền truy cập ứng dụng"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Bạn có thể dùng ứng dụng xác thực để đăng nhập. Mỗi mã có hiệu lực trong 30 giây."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Bạn sẽ nhận được mã dự phòng có thể dùng nếu mất quyền truy cập ứng dụng"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "ID đo lường GA4 của bạn (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Tài khoản MailChimp của bạn chưa cấu hình đối tượng (danh sách) nào."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Tài khoản của bạn hiện đã được bảo vệ"
+
+#: 
+msgid "Your account is protected"
+msgstr "Tài khoản của bạn được bảo vệ"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Ứng dụng xác thực của bạn đã được đăng ký thành công"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Tùy chọn ngôn ngữ trình duyệt của bạn khác với địa phương ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "ví dụ: Trang web Hội Thánh"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "người đăng ký"
+
+#: 
+msgid "API Key is required."
+msgstr "Khóa API là bắt buộc."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Không thể kết nối đến OpenLP tại %s. Kiểm tra URL máy chủ và đảm bảo OpenLP đang chạy."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Không thể kết nối đến OpenLP tại %s. Máy chủ trả về HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Bản Đồ Hội Thánh"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Bản Đồ Hội Thánh — Cần cài đặt"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Đã kết nối MailChimp! Tài khoản: %s (%d người đăng ký)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Đã kết nối đến máy chủ OpenLP thành công."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Đã kết nối OpenLP! Phiên bản: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Đã kết nối! Số dư tài khoản: €%.2f. Sẵn sàng gửi SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Không thể kết nối MailChimp. Vui lòng kiểm tra khóa API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Không thể kết nối đến máy chủ OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Xem chỉ đường"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Bao gồm mã quốc gia, ví dụ: +14155551234 (Mỹ) hoặc +447911123456 (Anh)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Số gửi\" không hợp lệ: \"%s\". Bao gồm mã quốc gia, ví dụ: +14155551234 (Mỹ) hoặc +447911123456 (Anh)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Thông tin API không hợp lệ. Vui lòng xác minh Khóa API và Bí mật API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Định dạng khóa API không hợp lệ. Kiểm tra khóa API MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL điểm cuối không hợp lệ. Phải là URL đầy đủ bắt đầu bằng https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Định dạng URL máy chủ không hợp lệ."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Kết nối MailChimp thất bại."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Mức thu phóng bản đồ"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Thiếu gia đình? Cập nhật tọa độ để thêm họ vào bản đồ."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Thiếu cài đặt bắt buộc: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Người này không có gia đình"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Không tìm thấy plugin hoặc plugin không hoạt động"
+
+#: 
+msgid "Server URL is required."
+msgstr "URL máy chủ là bắt buộc."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Plugin này không hỗ trợ kiểm tra kết nối."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Không thể hiển thị bản đồ: địa chỉ hội thánh chưa được mã hóa địa lý."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Cập nhật địa chỉ hội thánh trong Cài đặt."
+
+#: 
+msgid "Username and password are required."
+msgstr "Tên người dùng và mật khẩu là bắt buộc."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Xác thực thất bại: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Lỗi máy chủ Vonage. Vui lòng thử lại sau."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "URL điểm cuối WebDAV là bắt buộc."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Bạn có chắc muốn xóa vĩnh viễn bản ghi cam kết này không?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Hủy và quay lại chế độ xem gia đình"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Nếu bạn xóa loại này, bạn cũng sẽ xóa tất cả thuộc tính sử dụng nó và mất mọi phân công thuộc tính tương ứng."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Di Chuyển Đóng Góp đến gia đình đã chọn"
+
+#: 
+msgid "Calendar not found"
+msgstr "Không tìm thấy lịch"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Tiếp tục đến bảng điều khiển"
+
+#: 
+msgid "Current Password"
+msgstr "Mật khẩu hiện tại"
+
+#: 
+msgid "Deposit not found"
+msgstr "Không tìm thấy tiền dâng hiến"
+
+#: 
+msgid "Group not found"
+msgstr "Không tìm thấy nhóm"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON không hợp lệ được cung cấp cho cấu hình"
+
+#: 
+msgid "Password Change Required"
+msgstr "Yêu cầu đổi mật khẩu"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Đổi mật khẩu thành công"
+
+#: 
+msgid "Password Changed"
+msgstr "Mật khẩu đã được đổi"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Mật khẩu phải có ít nhất"
+
+#: 
+msgid "Property not found"
+msgstr "Không tìm thấy thuộc tính"
+
+#: 
+msgid "Set New Password"
+msgstr "Đặt mật khẩu mới"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Mật khẩu cho %s đã được cập nhật."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Không thể mã hóa lại JSON cho cấu hình"
+
+#: 
+msgid "User not found"
+msgstr "Không tìm thấy người dùng"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Bạn phải đặt mật khẩu mới trước khi tiếp tục."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Mật khẩu của bạn đã được cập nhật thành công."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "gia đình đã chọn không có tọa độ"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tìm những người không tham dự sự kiện"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Để trống để giữ nguyên giá trị hiện có"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Người vắng mặt"
+
+#: 
+msgid "Not enrolled"
+msgstr "Chưa đăng ký"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Yêu cầu tất cả người dùng đăng ký xác thực hai yếu tố"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
 

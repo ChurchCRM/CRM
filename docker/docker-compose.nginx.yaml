@@ -1,0 +1,75 @@
+# docker-compose.nginx.yaml — Example nginx + PHP-FPM deployment for ChurchCRM
+#
+# This is a REFERENCE CONFIGURATION for self-hosted deployments using nginx +
+# PHP-FPM instead of Apache. It is NOT used by the automated test suite (which
+# uses docker-compose.yaml with Apache). Use this as a starting point for your
+# own production or staging environment.
+#
+# QUICK START
+# -----------
+#   1. Copy this file and docker/nginx/default.conf to your deployment directory.
+#   2. Copy docker/Config.php to Include/Config.php in your ChurchCRM source tree
+#      and set the database connection details to match the values below.
+#   3. Set MYSQL_ROOT_PASSWORD and MYSQL_PASSWORD to strong secrets.
+#   4. Run: docker compose -f docker-compose.nginx.yaml up -d
+#   5. Visit http://localhost/ - you will be redirected to the setup wizard on
+#      first run (no Config.php) or to the login page after installation.
+#
+# IMPORTANT: Change all passwords before exposing this to the internet.
+
+services:
+
+  database:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-changeme_root}
+      MYSQL_DATABASE: churchcrm
+      MYSQL_USER: churchcrm
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-changeme}
+    volumes:
+      - churchcrm-db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
+    hostname: database
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: Dockerfile.churchcrm-fpm-php8
+      target: prod
+    image: churchcrm/crm:php8-fpm
+    restart: unless-stopped
+    volumes:
+      # Mount ChurchCRM source (the contents of src/) here.
+      # Options:
+      #   a) Replace with a bind mount to a local directory:
+      #        - /path/to/churchcrm/src:/var/www/html
+      #   b) Copy files into this named volume after the first `docker compose up`:
+      #        docker cp /path/to/churchcrm/src/. churchcrm-php-fpm-1:/var/www/html/
+      #   c) Build a custom image with COPY instructions in your own Dockerfile.
+      - churchcrm-www:/var/www/html
+    depends_on:
+      database:
+        condition: service_healthy
+    hostname: php-fpm
+
+  webserver:
+    image: nginx:stable-alpine
+    restart: unless-stopped
+    ports:
+      - "${WEBSERVER_PORT:-80}:80"
+    volumes:
+      # Same source volume as php-fpm so nginx can serve static files directly
+      - churchcrm-www:/var/www/html:ro
+      # Mount the nginx configuration
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      - php-fpm
+    hostname: webserver
+
+volumes:
+  churchcrm-db:
+  churchcrm-www:

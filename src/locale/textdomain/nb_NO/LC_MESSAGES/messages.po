@@ -2726,10 +2726,6 @@ msgid "Last Login"
 msgstr "Sist logget inn"
 
 #: 
-msgid "Total Logins"
-msgstr "Totalt pålogginger"
-
-#: 
 msgid "Failed Logins"
 msgstr "Mislykkede pålogginger"
 
@@ -4248,11 +4244,6 @@ msgstr "Skilletegn for e-postadresser i mailto-lenker"
 #: 
 msgid "User permission to create directories"
 msgstr "Brukertillatelse til å opprette kataloger"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Brukertillatelse til å eksportere CSV-filer"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6838,14 +6829,6 @@ msgid "View User"
 msgstr "Vis bruker"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ugyldig forespørsel: Mangler kalender-ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Ikke funnet: Ukjent kalender-ID"
-
-#: 
 msgid "not found or user without an email"
 msgstr "ikke funnet eller bruker uten e-post"
 
@@ -7012,10 +6995,6 @@ msgstr "ugyldig hendelsestype-ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "ugyldig kalenderfeste"
-
-#: 
-msgid "invalid group id"
-msgstr "ugyldig gruppe-ID"
 
 #: 
 msgid "invalid status value"
@@ -7188,10 +7167,6 @@ msgid "Age Histogram"
 msgstr "Aldershistogram"
 
 #: 
-msgid "Missing event id"
-msgstr "Hendelses-ID mangler"
-
-#: 
 msgid "Event not found"
 msgstr "Hendelse ikke funnet"
 
@@ -7330,14 +7305,6 @@ msgid "Holiday"
 msgstr "Helligdag"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Tillat brukere å melde seg på tofaktorautentisering selv"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Krever at brukere melder seg på tofaktorautentisering selv"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7378,32 +7345,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Etternavn, Fornavn Mellomnavn"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Status for totrinnsverifisering"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Ikke støttet konfigurasjon for totrinnsverifisering"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kan ikke starte påmelding til totrinnsverifisering"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Totrinnsverifisering krever at ChurchCRM-administratorer konfigurerer noen parametere"
-
-#: 
-msgid "System configuration "
-msgstr "Systemkonfigurasjon "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Må settes til 'true'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7554,10 +7497,6 @@ msgstr "Hjelp til med å oversette dette prosjektet"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " har en type-uoverensstemmelse"
 
 #: 
 msgid "Loading"
@@ -7763,16 +7702,6 @@ msgstr "egenskap"
 #: 
 msgid "Default Zip"
 msgstr "Standard postnummer"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredittkortpersoner"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som er konfigurert til å betale med kredittkort."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8160,14 +8089,6 @@ msgid "City is required"
 msgstr "Sted er obligatorisk"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Port for databaseserver er obligatorisk (f.eks. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Brukernavn for database er obligatorisk"
-
-#: 
 msgid "Email Address"
 msgstr "E-postadresse"
 
@@ -8270,10 +8191,6 @@ msgstr "Telefonnummer"
 #: 
 msgid "Please add at least one family member."
 msgstr "Vennligst legg til minst ett familiemedlem."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Vennligst rett valideringsfeilene før du fortsetter."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8636,10 +8553,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Ingen poster ble returnert fra den forrige rapporten. Vennligst juster filtrene eller datointervallet og prøv igjen."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Vennligst skriv inn et menynavn (2-50 tegn)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Vennligst skriv inn en gyldig URL som starter med http:// eller https://"
 
@@ -8648,28 +8561,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Alle filsignaturer i systemet samsvarer med forventede verdier."
 
 #: 
-msgid "Files with issues"
-msgstr "Filer med problemer"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Integritetssjekk mislyktes"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Integritetssjekk bestått"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Signaturdefinisjonsfilen eksisterer, men er ikke lesbar. Sjekk filrettigheter."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Signaturdefinisjonsfilen mangler på %s. Kjør pakkeverktøyet eller bruk en offisiell utgivelse for å regenerere signaturer."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Kunne ikke kontakte endepunkt for integritetssjekk. Sjekk feillogger for webserver."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -9041,6 +8938,7 @@ msgstr "Redigerer hendelse"
 msgid "Enter event title..."
 msgstr "Skriv inn tittel på hendelse..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Hendelse"
@@ -10052,10 +9950,6 @@ msgid "Membership Reports"
 msgstr "Medlemskapsrapporter"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Manglende hemmelige nøkler"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "De fleste rapporter kan eksporteres som PDF for utskrift eller CSV for regnearkanalyse."
 
@@ -10194,10 +10088,6 @@ msgstr "Innstillinger for SMTP-server er ikke konfigurert"
 #: 
 msgid "Save and Add New Family"
 msgstr "Lagre og legg til ny familie"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Hemmelige nøkler mangler i Config.php"
 
 #: 
 msgid "Sep"
@@ -10400,10 +10290,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Skriv inn fylke/provins for land uten forhåndsdefinerte stater)"
 
 #: 
-msgid "Available"
-msgstr "Tilgjengelig"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasjon av base-URL er ugyldig. Vennligst sjekk Config.php-filen din."
 
@@ -10488,10 +10374,6 @@ msgid "No locales configured"
 msgstr "Ingen lokaler konfigurert"
 
 #: 
-msgid "Not Available"
-msgstr "Ikke tilgjengelig"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Åpne denne filen i et tekstredigeringsprogram:"
 
@@ -10524,10 +10406,6 @@ msgid "System Locale Support"
 msgstr "Støtte for systemlokale"
 
 #: 
-msgid "System Support"
-msgstr "Systemstøtte"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL-en inneholder ikke et gyldig vertsnavn"
 
@@ -10546,18 +10424,6 @@ msgstr "URL-en må ende med en skråstrek (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL-en må starte med http:// eller https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Kan ikke oppdage systemlokaler"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Kan ikke bestemme tilgjengelige lokaler"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kan ikke laste lokaleinformasjon"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10776,10 +10642,6 @@ msgid "Remote backup failed"
 msgstr "Ekstern sikkerhetskopiering mislyktes"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV-sikkerhetskopier er ikke riktig konfigurert. Vennligst sjekk at endepunkt, brukernavn og passord er satt"
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA aktivert"
 
@@ -10906,10 +10768,6 @@ msgstr "Totrinnsverifisering"
 #: 
 msgid "Validation pending"
 msgstr "Venter på validering"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "må konfigureres med en krypteringsnøkkel"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11264,14 +11122,6 @@ msgid "No people found matching your criteria."
 msgstr "Ingen personer funnet som matcher kriteriene dine."
 
 #: 
-msgid "Off"
-msgstr "Av"
-
-#: 
-msgid "On"
-msgstr "På"
-
-#: 
 msgid "Photo Directory"
 msgstr "Bildekatalog"
 
@@ -11282,4 +11132,1325 @@ msgstr "Tilbakestill Filtre"
 #: 
 msgid "Show only people with photos"
 msgstr "Vis bare personer med bilder"
+
+#: 
+msgid "Expected"
+msgstr "Forventet"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Kunne ikke slette kiosk"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Regnskapsår."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Gruppe av registrerte elever"
+
+#: 
+msgid "Here"
+msgstr "Her"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Ugyldig oppgavetype"
+
+#: 
+msgid "Invalid person ID"
+msgstr "Ugyldig person-ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Kioskregistrering deaktivert"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Kiosk ikke funnet"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Koble dette arrangementet til en gruppe for kiosk-innsjekkfunksjonalitet. Gruppemedlemmene vil vises på kiosken."
+
+#: 
+msgid "Linked Group"
+msgstr "Tilknyttet gruppe"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "Registrering av nye kioskenheter er for øyeblikket deaktivert. Kontakt systemadministratoren for å aktivere kioskregistrering."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Ingen gruppe (Velg for kiosk-innsjekk)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Ingen har sjekket inn ennå"
+
+#: 
+msgid "Person not found"
+msgstr "Person ikke funnet"
+
+#: 
+msgid "Pickup Request"
+msgstr "Hentingsforespørsel"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Gå til klasserommet så snart som mulig."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Løfteoppsummering etter familienavn for hvert fond for valgt regnskapsår"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Registrerte elever"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "Læreren sendte dette varselet"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Denne kiosken vises best på et nettbrett i liggende modus for optimal innsjekkopplevelse."
+
+#: 
+msgid "Tip"
+msgstr "Tips"
+
+#: 
+msgid "Try Again"
+msgstr "Prøv igjen"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Kommende bursdager"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "Venter på innsjekk"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Når aktivert kan nye kioskenheter registrere seg i 30 sekunder."
+
+#: 
+msgid "Your child"
+msgstr "Ditt barn"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "må hentes fra"
+
+#: 
+msgid "their classroom"
+msgstr "klasserommet sitt"
+
+#: 
+msgid "All timezones match"
+msgstr "Alle tidssoner stemmer overens"
+
+#: 
+msgid "Baseline"
+msgstr "Grunnlinje"
+
+#: 
+msgid "Browser"
+msgstr "Nettleser"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "Nettleseren avviker fra systemkonfigurasjonen – datoer kan vises feil for denne brukeren."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Kan ikke skrive til ChurchCRM-installasjonskatalogen. Kontroller at webserveren har skrivetillatelse."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "Sammenligner tidssoner..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "Målkatalogen finnes ikke. Kontroller at ChurchCRM er installert riktig."
+
+#: 
+msgid "Does not match system config"
+msgstr "Samsvarer ikke med systemkonfigurasjonen"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "Den nedlastede utgivelsesfilen er tom. Dette kan skyldes nettverksproblemer eller GitHub-hastighetsbegrensning. Prøv igjen senere."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Utpakking fullført, men oppgraderingsfiler ikke funnet. Oppgraderingsarkivet kan være skadet."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Kunne ikke bruke oppgraderingen. Se serverloggene for detaljer."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Kunne ikke opprette oppgraderingskatalog. Kontroller filtillatelsene."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Kunne ikke laste ned utgivelsesfilen fra GitHub etter flere forsøk. Sjekk serverens internettforbindelse og prøv igjen."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Kunne ikke pakke ut oppgraderingsarkivet. Kontroller diskplass og filtillatelser."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Kunne ikke åpne oppgraderingsarkivet. Den nedlastede filen kan være skadet."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Kunne ikke lagre den nedlastede utgivelsesfilen. Kontroller diskplass og tillatelser."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Ugyldig datoformat i startparameter"
+
+#: 
+msgid "Mismatch"
+msgstr "Avvik"
+
+#: 
+msgid "Not set"
+msgstr "Ikke angitt"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP aktiv"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "Kildekatalogen finnes ikke. Oppgraderingsarkivet kan ikke ha blitt pakket ut riktig. Kontroller filtillatelser og diskplass."
+
+#: 
+msgid "System Config"
+msgstr "Systemkonfigurasjon"
+
+#: 
+msgid "Timezone Information"
+msgstr "Tidssoneinformasjon"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Tidssoneavvik oppdaget"
+
+#: 
+msgid "mismatch detected"
+msgstr "avvik oppdaget"
+
+#: 
+msgid "mismatches detected"
+msgstr "avvik oppdaget"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d time"
+msgstr[1] "%d timer"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Om WebDAV-sikkerhetskopier"
+
+#: 
+msgid "Add Link"
+msgstr "Legg til lenke"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Legg til et ekstra sikkerhetslag for kontoen din"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Legg til tilpassede eksterne lenker i navigasjonsmenyen."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Tillat selvsignerte sertifikater"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Det oppstod en feil under behandling av programtilleggsforespørselen"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Er du sikker på at du vil deaktivere totrinnsbekreftelse? Kontoen din vil bli mindre sikker."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Som en del av gjenopprettingen har eksterne sikkerhetskopier blitt deaktivert. Hvis du ønsker å fortsette automatiske sikkerhetskopier, aktiver External Backup-programtillegget under Admin > Programtillegg."
+
+#: 
+msgid "Audiences"
+msgstr "Målgrupper"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Autentisering mislyktes. Kontroller brukernavn og passord."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Automatisk sikkerhetskopiintervall"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Sikkerhetskopier ChurchCRM-databasen din automatisk til ekstern skylagring via WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Gjennomsnittlig klikkfrekvens"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Gjennomsnittlig åpningsrate"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Tilbake til dashbord"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Sikkerhetskopi opprettet, men kunne ikke kopieres til ekstern server"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Sikkerhetskopier til WebDAV nå"
+
+#: 
+msgid "Before You Start"
+msgstr "Før du begynner"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Nettleserens språkinnstilling oppdaget"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "CRM-medlemmer som ikke er abonnert"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Kampanjer sendt"
+
+#: 
+msgid "Can't scan?"
+msgstr "Kan ikke skanne?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Endre din locale"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM støtter en programtilleggsarkitektur for å utvide funksjonaliteten."
+
+#: 
+msgid "Cleaned"
+msgstr "Ryddet"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Klikk på knappen nedenfor for å teste WebDAV-tilkoblingsinnstillingene dine."
+
+#: 
+msgid "Community Plugins"
+msgstr "Fellesskapsprogramtillegg"
+
+#: 
+msgid "Community plugins"
+msgstr "Fellesskapsprogramtillegg"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Konfigurer ekstern sikkerhetskopi"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Konfigurer MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Konfigurer disse innstillingene i"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Konfigurer dette programtillegget for automatisk å sikkerhetskopiere ChurchCRM-databasen din til WebDAV-kompatible skylagringstjenester som Nextcloud, ownCloud eller en hvilken som helst WebDAV-server. Sikkerhetskopier krypteres under overføring ved hjelp av HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Konfigurert"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Bekreft med en kode fra autentiseringsappen din"
+
+#: 
+msgid "Connected"
+msgstr "Tilkoblet"
+
+#: 
+msgid "Connection failed"
+msgstr "Tilkobling mislyktes"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Tilkobling mislyktes med HTTP-kode"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Tilkobling vellykket! WebDAV-endepunktet er tilgjengelig."
+
+#: 
+msgid "Connection test failed"
+msgstr "Tilkoblingstest mislyktes"
+
+#: 
+msgid "Core Plugins"
+msgstr "Kjerneprogramtillegg"
+
+#: 
+msgid "Core plugins"
+msgstr "Kjerneprogramtillegg"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Opprett en sikkerhetskopi nå og last den opp til WebDAV-serveren din."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Opprett en målgruppe i MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Tilpasset"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Tilpassede menylenker"
+
+#: 
+msgid "Default Image Style"
+msgstr "Standard bildestil"
+
+#: 
+msgid "Default List ID"
+msgstr "Standard liste-ID"
+
+#: 
+msgid "Disable"
+msgstr "Deaktiver"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Deaktiver programtillegg"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Deaktiver totrinnsbekreftelse"
+
+#: 
+msgid "Dismiss"
+msgstr "Avvis"
+
+#: 
+msgid "Done"
+msgstr "Ferdig"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164-format, f.eks. +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Hvert programtillegg krever en"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Hver gang du logger inn, må du bekrefte med en kode fra autentiseringsappen din"
+
+#: 
+msgid "Email Addresses"
+msgstr "E-postadresser"
+
+#: 
+msgid "Enable"
+msgstr "Aktiver"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Aktiver External Backup-programtillegg"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Aktiver programtillegg"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Aktiver totrinnsbekreftelse"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Aktiver External Backup-programtillegget for WebDAV-skylagring."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Aktiver dette kun for lokale nettverksservere med selvsignerte SSL-sertifikater. Deaktiverer sertifikatverifisering."
+
+#: 
+msgid "Endpoint URL"
+msgstr "Endepunkt-URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Skriv inn den 6-sifrede koden fra autentiseringsappen din"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Skriv inn brukernavn og passord som vanlig"
+
+#: 
+msgid "External Backup"
+msgstr "Ekstern sikkerhetskopi"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Ekstern sikkerhetskopi (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Innstillinger for ekstern sikkerhetskopi"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "External Backup-programtillegget er aktivert, men ikke konfigurert."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "External Backup-programtillegget er ikke konfigurert. Konfigurer WebDAV-innstillingene i programtillegget."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "External Backup-programtillegget er ikke aktivert. Aktiver og konfigurer det under Programtilleggsadministrasjon."
+
+#: 
+msgid "Failed to create link"
+msgstr "Kunne ikke opprette lenke"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Kunne ikke slette lenke"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Kunne ikke deaktivere programtillegg"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Kunne ikke aktivere programtillegg"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Kunne ikke hente programtilleggsdetaljer"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Kunne ikke liste programtillegg"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Kunne ikke tilbakestille innstillinger"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Kunne ikke sende SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Familiestatus"
+
+#: 
+msgid "Family not found"
+msgstr "Familie ikke funnet"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Finn i MailChimp: Målgruppe > Innstillinger > Målgruppenavn og standarder > Målgruppe-ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "Fra telefonnummer"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "Fra dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4-målings-ID"
+
+#: 
+msgid "Generate new code"
+msgstr "Generer ny kode"
+
+#: 
+msgid "Get Started"
+msgstr "Kom i gang"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Hent API-nøkkelen din fra MailChimp: Kontoinnstillinger > Ekstra > API-nøkler"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Ha autentiseringsappen din klar (Google Authenticator, Microsoft Authenticator, Authy osv.)"
+
+#: 
+msgid "Help"
+msgstr "Hjelp"
+
+#: 
+msgid "Id"
+msgstr "ID"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Bilde som vises når det ikke finnes noe Gravatar for e-postadressen"
+
+#: 
+msgid "Important"
+msgstr "Viktig"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Installer programtillegg ved å plassere dem i"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Ugyldig kode. Prøv igjen."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Ugyldig endepunkt-URL. Må være en fullstendig URL som starter med https:// (f.eks. https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kioskenhet ikke funnet"
+
+#: 
+msgid "Last Backup"
+msgstr "Siste sikkerhetskopi"
+
+#: 
+msgid "Last Campaign"
+msgstr "Siste kampanje"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Siste abonnent"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Siste vellykkede sikkerhetskopi"
+
+#: 
+msgid "Last campaign"
+msgstr "Siste kampanje"
+
+#: 
+msgid "Link Name"
+msgstr "Lenkenavn"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Lenkeadressen kan ikke inneholde HTML-tagger"
+
+#: 
+msgid "Link address is required"
+msgstr "Lenkeadresse er påkrevd"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Lenken må være en gyldig URL"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Lenken må starte med http:// eller https://"
+
+#: 
+msgid "Link not found"
+msgstr "Lenke ikke funnet"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Laster gjenopprettingskoder"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API-nøkkel"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp-dashbord"
+
+#: 
+msgid "Manage Links"
+msgstr "Administrer lenker"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Administrer totrinnsbekreftelse"
+
+#: 
+msgid "Manual Backup"
+msgstr "Manuell sikkerhetskopi"
+
+#: 
+msgid "Menu Links"
+msgstr "Menylenker"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Menynavnet kan ikke inneholde HTML-tagger"
+
+#: 
+msgid "Menu name is required"
+msgstr "Menynavn er påkrevd"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Menynavnet må være 50 tegn eller kortere"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Menynavnet må være minst 2 tegn"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Må starte med http:// eller https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Krever konfigurasjon"
+
+#: 
+msgid "Never"
+msgstr "Aldri"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Ingen målgrupper funnet"
+
+#: 
+msgid "No backups recorded"
+msgstr "Ingen sikkerhetskopier registrert"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Ingen fellesskapsprogramtillegg installert"
+
+#: 
+msgid "No core plugins found"
+msgstr "Ingen kjerneprogramtillegg funnet"
+
+#: 
+msgid "No settings provided"
+msgstr "Ingen innstillinger oppgitt"
+
+#: 
+msgid "Not Configured"
+msgstr "Ikke konfigurert"
+
+#: 
+msgid "Not in CRM"
+msgstr "Ikke i CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Enganskode"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Åpne MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Åpne autentiseringsappen din og skann denne QR-koden"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP-server-URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Valgfritt – kun påkrevd hvis OpenLP-autentisering er aktivert"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Telefonnummer og melding er påkrevd"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Konfigurer endepunkt, brukernavn og passord først."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Konfigurer WebDAV-innstillingene før du oppretter en ekstern sikkerhetskopi."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Konfigurer WebDAV-innstillingene før du tester tilkoblingen."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Konfigurer MailChimp API-nøkkelen din for å bruke denne integrasjonen."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Skriv inn et lenkenavn (2–50 tegn)"
+
+#: 
+msgid "Please try again"
+msgstr "Prøv igjen"
+
+#: 
+msgid "Plugin Development"
+msgstr "Programtilleggsutvikling"
+
+#: 
+msgid "Plugin Help"
+msgstr "Hjelp for programtillegg"
+
+#: 
+msgid "Plugin Management"
+msgstr "Programtilleggsadministrasjon"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Programtilleggsinnstillinger"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Programtillegget kan ikke deaktiveres fordi andre programtillegg er avhengige av det"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Programtillegget kan ikke aktiveres på grunn av avhengighets- eller versjonskrav"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Programtillegg deaktivert"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Programtillegg aktivert"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Programtillegg kunne ikke lastes"
+
+#: 
+msgid "Plugin not found"
+msgstr "Programtillegg ikke funnet"
+
+#: 
+msgid "Plugins"
+msgstr "Programtillegg"
+
+#: 
+msgid "Print"
+msgstr "Skriv ut"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Mottakere og melding er påkrevd"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Gjenopprettingskoder"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Ekstern sikkerhetskopi mislyktes. Se serverloggene for detaljer."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS sendt"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Lagre disse gjenopprettingskodene på et trygt sted. Du kan bruke dem for å få tilgang til kontoen din hvis du mister tilgang til autentiseringsappen."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Skann QR-kode"
+
+#: 
+msgid "Secure"
+msgstr "Sikker"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Konfigurer autentiserer"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Innstillinger tilbakestilt"
+
+#: 
+msgid "Setup Complete"
+msgstr "Oppsett fullført"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Leveres med ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Logg inn"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Noen innstillinger kunne ikke tilbakestilles"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Noen innstillinger kunne ikke lagres"
+
+#: 
+msgid "Subscribers"
+msgstr "Abonnenter"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Abonnenter som ikke er i CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Test tilkobling"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Test WebDAV-tilkobling"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Disse lenkene vises i \"Lenker\"-menyen i navigasjonssidefeltet når dette programtillegget er aktivert."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Disse personene abonnerer på MailChimp-målgruppen din, men finnes ikke i ChurchCRM. Vurder å legge dem til i databasen din eller fjerne dem fra MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Disse personene finnes i ChurchCRM med e-postadresser, men abonnerer ikke på denne MailChimp-målgruppen. Vurder å invitere dem til å abonnere."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Tredjepartsutvidelser."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Dette vil erstatte eventuelle tidligere registrerte 2FA-metoder"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Totale kampanjer"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Totale abonnenter"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Feil ved registrering av tofaktorautentisering"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Totrinnsbekreftelse er deaktivert"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Totrinnsbekreftelse er en av de beste måtene å beskytte kontoen din på. Vi anbefaler sterkt å beholde den aktivert."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL til OpenLP-serveren din (f.eks. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Kan ikke laste"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Avmeldt"
+
+#: 
+msgid "Use a different account"
+msgstr "Bruk en annen konto"
+
+#: 
+msgid "Value is configured"
+msgstr "Verdien er konfigurert"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Verdien er angitt – la stå tomt for å beholde gjeldende"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Bekreft og logg inn"
+
+#: 
+msgid "Verify Code"
+msgstr "Bekreft kode"
+
+#: 
+msgid "Verifying"
+msgstr "Bekrefter"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API-nøkkel"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API-hemmelighet"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV-konfigurasjon"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV-tilkobling"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV-sikkerhetskopier er ikke riktig konfigurert. Sørg for at endepunkt, brukernavn og passord er angitt."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV-endepunkt-URL er påkrevd."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV-passord er påkrevd."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV-brukernavn er påkrevd."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Du kan også bruke reservegjenopprettingskoder hvis du mister tilgang til appen din"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Du kan nå bruke autentiseringsappen din til å logge inn. Hver kode er gyldig i 30 sekunder."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Du vil motta reservekoder som kan brukes hvis du mister tilgang til appen din"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "GA4-målings-ID-en din (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "MailChimp-kontoen din har ingen konfigurerte målgrupper (lister)."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Kontoen din er nå beskyttet"
+
+#: 
+msgid "Your account is protected"
+msgstr "Kontoen din er beskyttet"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Autentiseringsappen din er vellykket registrert"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Nettleserens språkinnstilling avviker fra ChurchCRM-locale"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "f.eks. Kirkens nettside"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "abonnenter"
+
+#: 
+msgid "API Key is required."
+msgstr "API-nøkkel er påkrevd."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Kan ikke koble til OpenLP på %s. Sjekk server-URL og at OpenLP kjører."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Kan ikke koble til OpenLP på %s. Serveren returnerte HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Menighetskart"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Menighetskart — Oppsett påkrevd"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Koblet til MailChimp! Konto: %s (%d abonnenter)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Koblet til OpenLP-server."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Koblet til OpenLP! Versjon: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Koblet til! Kontosaldo: €%.2f. Klar til å sende SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Kunne ikke koble til MailChimp. Kontroller API-nøkkelen din."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Kunne ikke koble til OpenLP-server."
+
+#: 
+msgid "Get Directions"
+msgstr "Få veibeskrivelse"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Inkluder landskode, f.eks. +14155551234 (USA) eller +447911123456 (UK)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Ugyldig \"Fra-nummer\": \"%s\". Inkluder landskode, f.eks. +14155551234 (USA) eller +447911123456 (UK)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Ugyldige API-legitimasjonsbeskrivelser. Bekreft API-nøkkelen og API-hemmeligheten din."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Ugyldig API-nøkkelformat. Kontroller MailChimp API-nøkkelen din."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Ugyldig endepunkt-URL. Må være en fullstendig URL som starter med https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Ugyldig server-URL-format."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp-tilkobling mislyktes."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Kartzoomnivå"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Mangler familier? Oppdater koordinater for å inkludere dem på kartet."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Manglende påkrevde innstillinger: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Personen har ingen familie"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Programtillegg ikke funnet eller ikke aktivt"
+
+#: 
+msgid "Server URL is required."
+msgstr "Server-URL er påkrevd."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Dette programtillegget støtter ikke tilkoblingstesting."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Kan ikke vise kart: kirkens adresse er ikke geokodert ennå."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Oppdater kirkens adresse i Innstillinger."
+
+#: 
+msgid "Username and password are required."
+msgstr "Brukernavn og passord er påkrevd."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validering mislyktes: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage-serverfeil. Prøv igjen senere."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV-endepunkt-URL er påkrevd."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Er du sikker på at du vil slette denne løfteposten permanent?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Avbryt og gå tilbake til familievisning"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Hvis du sletter denne typen, fjerner du også alle egenskaper som bruker den, og mister eventuelle tilsvarende egenskapstildelinger."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Flytt donasjoner til valgt familie"
+
+#: 
+msgid "Calendar not found"
+msgstr "Kalender ikke funnet"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Fortsett til dashbord"
+
+#: 
+msgid "Current Password"
+msgstr "Gjeldende passord"
+
+#: 
+msgid "Deposit not found"
+msgstr "Innskudd ikke funnet"
+
+#: 
+msgid "Group not found"
+msgstr "Gruppe ikke funnet"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Ugyldig JSON oppgitt for konfigurasjon"
+
+#: 
+msgid "Password Change Required"
+msgstr "Passordendring påkrevd"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Passordendring vellykket"
+
+#: 
+msgid "Password Changed"
+msgstr "Passord endret"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Passord må være minst"
+
+#: 
+msgid "Property not found"
+msgstr "Egenskap ikke funnet"
+
+#: 
+msgid "Set New Password"
+msgstr "Angi nytt passord"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Passordet for %s er oppdatert."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Kan ikke re-kode JSON for konfigurasjon"
+
+#: 
+msgid "User not found"
+msgstr "Bruker ikke funnet"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Du må angi et nytt passord før du fortsetter."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Passordet ditt er oppdatert."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "valgt familie har ingen koordinater"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Finn personer som ikke deltok på et arrangement"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "La stå tomt for å beholde eksisterende verdi"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Manglende menighetsmedlemmer"
+
+#: 
+msgid "Not enrolled"
+msgstr "Ikke registrert"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Krev at alle brukere registrerer seg for tofaktorautentisering"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Velg ønsket arrangement"
 

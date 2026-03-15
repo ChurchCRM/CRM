@@ -98,6 +98,93 @@ These rules apply to **every code change** in this project.
 
 ---
 
+## Mandatory Code Review Before Any Commit
+
+**NEVER commit or push without first showing the user the diff and getting explicit approval.**
+
+This applies even when the user asks you to "fix" or "make changes" — finishing the code is not permission to commit.
+
+### Required sequence for every commit:
+
+1. Make the changes
+2. Run `git diff` and show the output to the user
+3. Explicitly ask: *"Please review the changes above. Shall I commit?"*
+4. Wait for explicit approval (e.g. "yes", "looks good", "commit it")
+5. Only then run `git add` + `git commit` + `git push`
+
+### What counts as explicit approval
+
+✅ "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+
+❌ Silence, continuing the conversation, asking follow-up questions — these are NOT approval
+
+### No exceptions
+
+Even if you are confident the changes are correct, even if the user said "fix the bug" — always show the diff and wait for approval before committing.
+
+---
+
 ## Git & PR Workflow
 
 @.agents/skills/churchcrm/git-workflow.md
+
+---
+
+## Test Review & Commit Workflow
+
+**MANDATORY: Always test changes to test files BEFORE committing.**
+
+When fixing a failed test:
+
+1. **Run the failing test in isolation** — use `--spec` flag to test only that file
+2. **Identify root cause** — check logs, API responses, or browser errors
+3. **Update relevant skills** — if you discover a pattern, add it with `<!-- learned: YYYY-MM-DD -->`
+4. **Update master SKILL.md** — if it's a new testing category, add row to skill index
+5. **Commit with documentation**:
+   ```
+   test: fix {test name} - {reason}
+
+   - Root cause: {what was wrong}
+   - Fix: {what changed}
+   - Updated: cypress-testing.md with {pattern/learning}
+   - Requires: Docker|Local environment
+   ```
+
+### Test-Related Skills to Update
+
+- `cypress-testing.md` — API patterns, session setup, data handling
+- `database-operations.md` — ORM query patterns
+- `webpack-typescript.md` — React/component patterns
+- `code-standards.md` — General best practices
+
+**Remember: Skills get documented the moment you learn something. Never defer skill updates.**
+
+---
+
+## Mandatory Pre-Commit Checklist
+
+**NEVER commit or push without completing ALL of the following steps in order.**
+
+### Required sequence for every commit:
+
+1. Make the changes
+2. **Run `npm run lint`** — catches Biome lint errors before CI does
+3. **Run `npm run build`** — full build: PHP syntax + TypeScript compilation + Biome format
+4. Fix any errors reported by steps 2–3 before continuing
+5. Run `git diff` and show the full output to the user
+6. Ask: *"Build and lint passed. Please review the changes above. Shall I commit?"*
+7. Wait for explicit approval — "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+8. Only then: `git add` → `git commit` → `git push`
+
+### What each command validates
+
+| Command | Validates |
+|---------|-----------|
+| `npm run lint` | Biome lint rules — type safety, hook deps, correctness (`react/`) |
+| `npm run build` | TypeScript types (webpack), PHP syntax, Biome format |
+
+### No exceptions
+
+- Do not skip build/lint even for "small" or "obvious" fixes
+- Do not commit even when the user says "fix it" — build + review first
+- Silence or follow-up questions from the user are NOT approval to commit

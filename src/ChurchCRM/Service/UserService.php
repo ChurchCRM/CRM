@@ -115,7 +115,6 @@ class UserService
             'iMinPasswordLength',
             'iMinPasswordChange',
             'aDisallowedPasswords',
-            'bEnable2FA',
             'bRequire2FA',
             's2FAApplicationName'
         ];

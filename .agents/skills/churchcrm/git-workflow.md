@@ -191,6 +191,28 @@ Fixes #7698
 - **Testing** - How to verify, test commands
 - **Related Issues** - Links to related issues/PRs
 
+### Keeping Branches Up to Date
+
+**Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.
+
+```bash
+git fetch origin
+git checkout <branch-name>
+git merge origin/master   # Bring branch up to date
+
+# If conflicts arise: resolve, stage, commit, push
+git add <resolved-files>
+git commit -m "Merge master into <branch-name> to resolve conflicts"
+git push origin <branch-name>
+```
+
+**Rules:**
+- Resolve conflicts in favour of the PR's intent — do not silently drop changes
+- Push the merge commit back to origin so CI runs against the updated state
+- If you resolve conflicts on someone else's PR, leave a comment explaining what was resolved
+
+---
+
 ### Code Review Checklist
 
 Before marking PR ready for review, ensure:
@@ -295,29 +317,61 @@ Before marking PR ready for review, ensure:
 
 ## Agent-Specific Behaviors
 
-### Regarding Auto-Commits
+### Mandatory Pre-Commit Sequence <!-- learned: 2026-03-03 -->
 
-**DO NOT auto-commit changes** without explicit user request.
+**NEVER commit or push without completing ALL steps in order.**
 
-**Pattern:**
 ```
-❌ WRONG - Auto-commits without asking
-I'll make these changes and commit them.
-[makes changes, runs git commit]
-
-✅ CORRECT - Ask permission first
-I've completed the changes and tests pass locally. Ready to commit with this message: 
-"Fix issue #1234: ..."
-
-Would you like me to proceed?
+1. Make the changes
+2. npm run lint          ← Biome lint (catches what CI catches)
+3. npm run build         ← TypeScript + PHP syntax + Biome format
+4. Fix any errors
+5. git diff              ← Show the full diff to the user
+6. Ask for approval      ← "Build passed. Please review. Shall I commit?"
+7. Wait for explicit yes ← "yes" / "lgtm" / "commit it" / "go ahead"
+8. git add → git commit → git push
 ```
+
+**Examples:**
+
+```
+❌ WRONG — commits without building or showing diff
+I've fixed the bug. [runs git commit]
+
+❌ WRONG — asks to commit without running build first
+Changes look good. Ready to commit — shall I proceed?
+
+✅ CORRECT
+npm run lint  → 0 errors
+npm run build → Build successful
+
+Here is the diff:
+[git diff output]
+
+Build and lint passed. Please review the changes above. Shall I commit with:
+"fix: ..."?
+```
+
+**Explicit approval:** "yes", "looks good", "lgtm", "commit it", "go ahead", "ship it"
+
+**Not approval:** silence, a follow-up question, or continuing the conversation.
+
+**No exceptions** — not even for "small" or "obvious" changes.
 
 ### When User Asks to Commit
 
-If user explicitly requests a commit:
+Even when the user says "commit it" — still run build + lint first if not done yet, then show the diff:
 
 ```bash
-git add .
+# 1. Validate
+npm run lint
+npm run build
+
+# 2. Show diff
+git diff
+
+# 3. After user approves:
+git add <specific files>
 git commit -m "Fix issue #1234: Replace deprecated HTML with CSS"
 git push origin fix/issue-1234-description
 ```
@@ -457,4 +511,4 @@ git push origin fix/issue-1234-description --force-with-lease
 
 ---
 
-Last updated: February 16, 2026
+Last updated: March 3, 2026

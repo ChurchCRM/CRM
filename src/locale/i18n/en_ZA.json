@@ -58,16 +58,11 @@
     "Show Family Head of House Names": "Show Family Head of Household Names",
     "PersonID for Cart must be numeric": "Person ID for Cart must be numeric",
     "Set the encryption system to use - ssl (deprecated) or tls": "Set the encryption system to use - SSL (deprecated) or TLS",
-    "Invalid request: Missing calendar id": "Invalid request: Missing calendar ID",
-    "Not Found: Unknown calendar id": "Not Found: Unknown calendar ID",
     "not found or user without an email": "not found or user without an email",
     "Foreground Color": "Foreground Colour",
     "Background Color": "Background Colour",
     "invalid event type id": "invalid event type ID",
-    "invalid group id": "invalid group ID",
-    "Missing event id": "Missing event ID",
     "Unexpected Person Id": "Unexpected Person ID",
-    "Unable To Begin Two Factor Authentication Enrollment": "Unable To Begin Two Factor Authentication Enrolment",
     "Invalid List id": "Invalid List ID",
     "Default Zip": "Default Postcode"
 }

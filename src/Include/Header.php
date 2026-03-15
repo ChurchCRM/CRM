@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemConfig;
@@ -241,8 +240,8 @@ $MenuFirst = 1;
                     <a href="#" id="reportIssue" class="dropdown-item" data-toggle="modal" data-target="#IssueReportModal"  title="<?= gettext('Report an issue') ?>">
                         <i class="fa-solid fa-bug"></i> <?= gettext('Report an issue') ?>
                     </a>
-                    <a href="https://gitter.im/ChurchCRM/CRM" target="_blank" class="dropdown-item" title="<?= gettext('Developer Chat') ?>">
-                        <i class="fa-regular fa-comment-dots"></i> <?= gettext('Developer Chat') ?>
+                    <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item" title="<?= gettext('Discord Chat') ?>">
+                        <i class="fa-brands fa-discord"></i> <?= gettext('Discord Chat') ?>
                     </a>
                     <div class="dropdown-divider"></div>
                     <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" class="dropdown-item" title="<?= gettext('Contributing') ?>">
@@ -263,11 +262,9 @@ $MenuFirst = 1;
                       <i class="fa-solid fa-key"></i> <?= gettext('Change Password') ?></a>
                   <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>" class="dropdown-item">
                       <i class="fa-solid fa-cogs"></i> <?= gettext('Change Settings') ?></a>
-                  <?php if (LocalAuthentication::getIsTwoFactorAuthSupported()) { ?>
-                      <div class="dropdown-divider"></div>
-                      <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
-                          <i class="fa-solid fa-shield"></i> <?= gettext("Manage Two-Factor Authentication") ?></a>
-                  <?php } ?>
+                  <div class="dropdown-divider"></div>
+                  <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+                      <i class="fa-solid fa-shield"></i> <?= gettext("Manage Two-Factor Authentication") ?></a>
                      <div class="dropdown-divider"></div>
                     <a href="<?= SystemURLs::getRootPath() ?>/session/end" class="dropdown-item">
                       <i class="fa-solid fa-sign-out-alt"></i> <?= gettext('Sign out') ?></a>

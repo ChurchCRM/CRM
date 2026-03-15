@@ -11,7 +11,6 @@ describe("Admin Settings", () => {
         cy.contains("Email Setup");
         cy.contains("People Setup");
         cy.contains("Enabled Features");
-        cy.contains("Map Settings");
         cy.contains("Report Settings");
         cy.contains("Financial Settings");
         cy.contains("Quick Search");

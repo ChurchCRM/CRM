@@ -6,11 +6,12 @@ use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
-use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
+use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -103,9 +104,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         '/{groupID:[0-9]+}',
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
-            GroupQuery::create()->findOneById($args['groupID'])->toArray()
+            $request->getAttribute('group')->toArray()
         )
-    );
+    )->add(GroupMiddleware::class);
 
     /**
      * @OA\Get(
@@ -123,9 +124,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         '/{groupID:[0-9]+}/cartStatus',
         fn (Request $request, Response $response, array $args): Response => SlimUtils::renderJSON(
             $response,
-            ['isInCart' => GroupQuery::create()->findOneById($args['groupID'])->checkAgainstCart()]
+            ['isInCart' => $request->getAttribute('group')->checkAgainstCart()]
         )
-    );
+    )->add(GroupMiddleware::class);
 
     /**
      * @OA\Get(
@@ -192,11 +193,10 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->get('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $group = GroupQuery::create()->findOneById($groupID);
+        $group = $request->getAttribute('group');
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
-    });
+    })->add(GroupMiddleware::class);
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {
@@ -225,8 +225,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         if ($groupSettings['isSundaySchool'] ?? false) {
             $group->makeSundaySchool();
         }
-        $group->setName(InputUtils::sanitizeText($groupSettings['groupName']));
-        $group->setDescription(InputUtils::sanitizeText($groupSettings['description'] ?? ''));
+        $group->setName($groupSettings['groupName']);
+        $group->setDescription($groupSettings['description'] ?? '');
         // Only set the explicit group type if it was provided in the request.
         // This prevents overwriting types set by helper methods like makeSundaySchool().
         if (isset($groupSettings['groupType'])) {
@@ -234,7 +234,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         }
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
-    });
+    })->add(new InputSanitizationMiddleware(['groupName' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Post(
@@ -255,15 +255,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
         $input = $request->getParsedBody();
-        $group = GroupQuery::create()->findOneById($groupID);
-        $group->setName(InputUtils::sanitizeText($input['groupName']));
+        $group = $request->getAttribute('group');
+        $group->setName($input['groupName']);
         $group->setType($input['groupType']);
-        $group->setDescription(InputUtils::sanitizeText($input['description'] ?? ''));
+        $group->setDescription($input['description'] ?? '');
         $group->save();
         return SlimUtils::renderJSON($response, $group->toArray());
-    });
+    })->add(GroupMiddleware::class)
+      ->add(new InputSanitizationMiddleware(['groupName' => 'text', 'description' => 'text']));
 
     /**
      * @OA\Delete(
@@ -277,10 +277,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->delete('/{groupID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        GroupQuery::create()->findOneById($groupID)->delete();
+        $request->getAttribute('group')->delete();
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(GroupMiddleware::class);
 
     /**
      * @OA\Delete(
@@ -295,10 +294,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->delete('/{groupID:[0-9]+}/removeperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $userID = $args['userID'];
-        $person = PersonQuery::create()->findPk($userID);
-        $group = GroupQuery::create()->findPk($groupID);
+        $person = $request->getAttribute('person');
+        $group = $request->getAttribute('group');
         $groupRoleMemberships = $group->getPerson2group2roleP2g2rs();
         foreach ($groupRoleMemberships as $groupRoleMembership) {
             if ($groupRoleMembership->getPersonId() == $person->getId()) {
@@ -312,7 +309,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
         }
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(new PersonMiddleware('userID'))->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
@@ -336,9 +333,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->post('/{groupID:[0-9]+}/addperson/{userID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
-        $person = PersonQuery::create()->findPk($userID);
+        $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
-        $group = GroupQuery::create()->findPk($groupID);
+        $group = $request->getAttribute('group');
 
         $roleID = $input['RoleID'] ?? $group->getDefaultRole();
 
@@ -356,7 +353,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             ->filterByPersonId($input['PersonID'])
             ->findByGroupId($groupID);
         return SlimUtils::renderJSON($response, $members->toArray());
-    });
+    })->add(new PersonMiddleware('userID'))->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
@@ -404,17 +401,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      */
     $group->post('/{groupID:[0-9]+}/roles/{roleID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
         try {
-            $groupID = $args['groupID'];
             $roleID = $args['roleID'];
             $input = $request->getParsedBody();
-            $group = GroupQuery::create()->findOneById($groupID);
+            $group = $request->getAttribute('group');
             if (isset($input['groupRoleName'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
-                // Sanitize role name to prevent XSS
-                $groupRole->setOptionName(InputUtils::sanitizeText($input['groupRoleName']));
+                $groupRole->setOptionName($input['groupRoleName']);
                 $groupRole->save();
 
-                return SlimUtils::renderSuccessJSON($response);
+                return SlimUtils::renderJSON($response, $groupRole->toArray());
             } elseif (isset($input['groupRoleOrder'])) {
                 $groupRole = ListOptionQuery::create()->filterById($group->getRoleListId())->filterByOptionId($roleID)->findOne();
                 $groupRole->setOptionSequence($input['groupRoleOrder']);
@@ -427,7 +422,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
             return SlimUtils::renderErrorJSON($response, gettext('Failed to update role. Please try again.'), [], $status, $e, $request);
         }
-    });
+    })->add(GroupMiddleware::class)
+      ->add(new InputSanitizationMiddleware(['groupRoleName' => 'text']));
 
     /**
      * @OA\Delete(
@@ -481,7 +477,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $status = $e->getCode() >= 400 && $e->getCode() < 600 ? $e->getCode() : 500;
             return SlimUtils::renderErrorJSON($response, gettext('Failed to add role. Please try again.'), [], $status, $e, $request);
         }
-    });
+    })->add(GroupMiddleware::class)
+      ->add(new InputSanitizationMiddleware(['roleName' => 'text']));
 
     /**
      * @OA\Post(
@@ -498,13 +495,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{groupID:[0-9]+}/defaultRole', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
         $roleID = $request->getParsedBody()['roleID'];
-        $group = GroupQuery::create()->findPk($groupID);
+        $group = $request->getAttribute('group');
         $group->setDefaultRole($roleID);
         $group->save();
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
@@ -555,22 +551,16 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{groupID:[0-9]+}/settings/active/{value}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
-            $group = GroupQuery::create()->findOneById($groupID);
-            if ($group === null) {
-                throw new \Exception(gettext('invalid group id'));
-            }
-
+            $group = $request->getAttribute('group');
             $group->setActive($flag);
             $group->save();
-
             return SlimUtils::renderSuccessJSON($response);
         } else {
             throw new \Exception(gettext('invalid status value'));
         }
-    });
+    })->add(GroupMiddleware::class);
 
     /**
      * @OA\Post(
@@ -585,20 +575,14 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * )
      */
     $group->post('/{groupID:[0-9]+}/settings/email/export/{value}', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
         $flag = $args['value'];
         if ($flag == 'true' || $flag == 'false') {
-            $group = GroupQuery::create()->findOneById($groupID);
-            if ($group === null) {
-                throw new \Exception(gettext('invalid group id'));
-            }
-
+            $group = $request->getAttribute('group');
             $group->setIncludeInEmailExport($flag);
             $group->save();
-
             return SlimUtils::renderSuccessJSON($response);
         } else {
             throw new \Exception(gettext('invalid export value'));
         }
-    });
+    })->add(GroupMiddleware::class);
 })->add(ManageGroupRoleAuthMiddleware::class);

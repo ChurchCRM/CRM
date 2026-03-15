@@ -6,9 +6,9 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\EventCounts;
 use ChurchCRM\Slim\Middleware\EventsMiddleware;
+use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
-use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -22,17 +22,17 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->get('/types', 'getEventTypes');
     $group->get('/{id}', 'getEvent')->add(new EventsMiddleware());
     $group->get('/{id}/', 'getEvent')->add(new EventsMiddleware());
-    $group->get('/{id}/primarycontact', 'getEventPrimaryContact');
-    $group->get('/{id}/secondarycontact', 'getEventSecondaryContact');
-    $group->get('/{id}/location', 'getEventLocation');
-    $group->get('/{id}/audience', 'getEventAudience');
+    $group->get('/{id}/primarycontact', 'getEventPrimaryContact')->add(new EventsMiddleware());
+    $group->get('/{id}/secondarycontact', 'getEventSecondaryContact')->add(new EventsMiddleware());
+    $group->get('/{id}/location', 'getEventLocation')->add(new EventsMiddleware());
+    $group->get('/{id}/audience', 'getEventAudience')->add(new EventsMiddleware());
 
-    $group->post('/', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $group->post('', 'newEvent')->add(new AddEventsRoleAuthMiddleware());
-    $group->post('/{id}', 'updateEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
-    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
+    $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
+    $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
-    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware());
+    $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 });
 
 /**
@@ -173,13 +173,10 @@ function getEvent(Request $request, Response $response, $args): Response
 function getEventPrimaryContact(Request $request, Response $response, array $args): Response
 {
     /** @var Event $Event */
-    $Event = EventQuery::create()
-        ->findOneById($args['id']);
-    if (!empty($Event)) {
-        $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
-        if ($Contact) {
-            return SlimUtils::renderStringJSON($response, $Contact->toJSON());
-        }
+    $Event = $request->getAttribute('event');
+    $Contact = $Event->getPersonRelatedByPrimaryContactPersonId();
+    if ($Contact) {
+        return SlimUtils::renderStringJSON($response, $Contact->toJSON());
     }
     throw new HttpNotFoundException($request);
 }
@@ -199,10 +196,8 @@ function getEventPrimaryContact(Request $request, Response $response, array $arg
  */
 function getEventSecondaryContact(Request $request, Response $response, array $args): Response
 {
-    $Contact = EventQuery::create()
-        ->findOneById($args['id'])
-        ->getPersonRelatedBySecondaryContactPersonId();
-    if (!empty($Contact)) {
+    $Contact = $request->getAttribute('event')->getPersonRelatedBySecondaryContactPersonId();
+    if (empty($Contact)) {
         throw new HttpNotFoundException($request);
     }
     return SlimUtils::renderStringJSON($response, $Contact->toJSON());
@@ -223,9 +218,7 @@ function getEventSecondaryContact(Request $request, Response $response, array $a
  */
 function getEventLocation(Request $request, Response $response, array $args): Response
 {
-    $Location = EventQuery::create()
-        ->findOneById($args['id'])
-        ->getLocation();
+    $Location = $request->getAttribute('event')->getLocation();
     if (empty($Location)) {
         throw new HttpNotFoundException($request);
     }
@@ -248,9 +241,7 @@ function getEventLocation(Request $request, Response $response, array $args): Re
  */
 function getEventAudience(Request $request, Response $response, array $args): Response
 {
-    $Audience = EventQuery::create()
-        ->findOneById($args['id'])
-        ->getEventAudiencesJoinGroup();
+    $Audience = $request->getAttribute('event')->getEventAudiencesJoinGroup();
     if (empty($Audience)) {
         throw new HttpNotFoundException($request);
     }
@@ -303,12 +294,12 @@ function newEvent(Request $request, Response $response, array $args): Response
 
     // we have event type and pined calendars.  now create the event.
     $event = new Event();
-    $event->setTitle(InputUtils::sanitizeText($input['Title']));
+    $event->setTitle($input['Title']);
     $event->setEventType($type);
-    $event->setDesc(InputUtils::sanitizeHTML($input['Desc']));
+    $event->setDesc($input['Desc']);
     $event->setStart(str_replace('T', ' ', $input['Start']));
     $event->setEnd(str_replace('T', ' ', $input['End']));
-    $event->setText(InputUtils::sanitizeHTML($input['Text']));
+    $event->setText($input['Text']);
     $event->setCalendars($calendars);
     $event->save();
 
@@ -346,17 +337,6 @@ function updateEvent(Request $request, Response $response, array $args): Respons
     $Event = $request->getAttribute('event');
     $id = $Event->getId();
 
-    // Sanitize user-controlled fields before applying to the model
-    if (isset($input['Title'])) {
-        $input['Title'] = InputUtils::sanitizeText($input['Title']);
-    }
-    if (isset($input['Desc'])) {
-        $input['Desc'] = InputUtils::sanitizeHTML($input['Desc']);
-    }
-    if (isset($input['Text'])) {
-        $input['Text'] = InputUtils::sanitizeHTML($input['Text']);
-    }
-
     $Event->fromArray($input);
     $Event->setId($id);
     $PinnedCalendars = CalendarQuery::create()
@@ -393,12 +373,7 @@ function updateEvent(Request $request, Response $response, array $args): Respons
 function setEventTime(Request $request, Response $response, array $args): Response
 {
     $input = $request->getParsedBody();
-
-    $event = EventQuery::create()
-        ->findOneById($args['id']);
-    if (!$event) {
-        throw new HttpNotFoundException($request);
-    }
+    $event = $request->getAttribute('event');
     $event->setStart($input['startTime']);
     $event->setEnd($input['endTime']);
     $event->save();
@@ -453,11 +428,7 @@ function unusedSetEventAttendance(): void
  */
 function deleteEvent(Request $request, Response $response, array $args): Response
 {
-    $event = EventQuery::create()->findOneById($args['id']);
-    if (!$event) {
-        throw new HttpNotFoundException($request);
-    }
-    $event->delete();
+    $request->getAttribute('event')->delete();
 
     return SlimUtils::renderSuccessJSON($response);
 }

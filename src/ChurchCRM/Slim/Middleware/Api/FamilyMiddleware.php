@@ -3,31 +3,26 @@
 namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\Slim\SlimUtils;
 
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
-use Laminas\Diactoros\Response;
-
-class FamilyMiddleware implements MiddlewareInterface
+class FamilyMiddleware extends AbstractEntityMiddleware
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    protected function getRouteParamName(): string
     {
-        $response = new Response();
-        $familyId = SlimUtils::getRouteArgument($request, 'familyId');
-        if (empty(trim($familyId))) {
-            return $response->withStatus(412, gettext('Missing') . ' FamilyId');
-        }
+        return 'familyId';
+    }
 
-        $family = FamilyQuery::create()->findPk($familyId);
-        if (empty($family)) {
-            return $response->withStatus(412, 'FamilyId: ' . $familyId . ' ' . gettext('not found'));
-        }
+    protected function getAttributeName(): string
+    {
+        return 'family';
+    }
 
-        $request = $request->withAttribute('family', $family);
+    protected function loadEntity(string $id): mixed
+    {
+        return FamilyQuery::create()->findPk($id);
+    }
 
-        return $handler->handle($request);
+    protected function getNotFoundMessage(): string
+    {
+        return gettext('Family not found');
     }
 }

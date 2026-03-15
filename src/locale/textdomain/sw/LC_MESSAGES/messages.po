@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "Mwisho wa Kuingia"
 
 #: 
-msgid "Total Logins"
-msgstr "Jumla ya Ingia"
-
-#: 
 msgid "Failed Logins"
 msgstr "Imeshindwa Kuingia"
 
@@ -4128,11 +4124,6 @@ msgstr "Delimiter kutenganisha barua pepe katika mailto: viungo"
 #: 
 msgid "User permission to create directories"
 msgstr "Ruhusa ya mtumiaji kuunda saraka"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Ruhusa ya mtumiaji kuhamisha faili za CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6725,14 +6716,6 @@ msgid "View User"
 msgstr "Tazama Mtumiaji"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ombi batili: Kitambulisho cha kalenda kinakosekana"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Haijapatikana: Kitambulisho cha kalenda kisichojulikana"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "hakuna kupatikana au mtumiaji bila barua pepe"
@@ -6900,10 +6883,6 @@ msgstr "kitambulisho cha aina ya tukio batili"
 #: 
 msgid "invalid calendar pinning"
 msgstr "kubandika kalenda batili"
-
-#: 
-msgid "invalid group id"
-msgstr "kitambulisho batili cha kikundi"
 
 #: 
 msgid "invalid status value"
@@ -7078,10 +7057,6 @@ msgid "Age Histogram"
 msgstr "Histogram ya umri"
 
 #: 
-msgid "Missing event id"
-msgstr "Kitambulisho cha tukio hakipo"
-
-#: 
 msgid "Event not found"
 msgstr "Tukio halijapatikana"
 
@@ -7226,14 +7201,6 @@ msgid "Holiday"
 msgstr "Sikukuu"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Ruhusu watumiaji wajiandikishe wenyewe katika uthibitishaji wa vipengele viwili"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Inahitaji watumiaji kujiandikisha wenyewe katika uthibitishaji wa sababu 2"
-
-#: 
 msgid "ChurchCRM"
 msgstr "KanisaCRM"
 
@@ -7274,32 +7241,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Jina la Mwisho, Jina la Kwanza Jina la Kati"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Hali ya Mambo Mbili"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Usanidi wa Uthibitishaji wa Factor Mbili Usiotumika"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Haijaweza Kuanza Uandikishaji wa Uthibitishaji wa Mambo Mbili"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Uthibitishaji wa sababu mbili unahitaji wasimamizi wa ChurchCRM kusanidi vigezo vichache"
-
-#: 
-msgid "System configuration "
-msgstr "Usanidi wa mfumo "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Lazima iwekwe kuwa 'kweli'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7450,10 +7393,6 @@ msgstr "Saidia kutafsiri mradi huu"
 #: 
 msgid "Afrikaans"
 msgstr "Kiafrikana"
-
-#: 
-msgid " has a type mismatch"
-msgstr " ina aina ya kutolingana"
 
 #: 
 msgid "Loading"
@@ -7659,16 +7598,6 @@ msgstr "mali"
 #: 
 msgid "Default Zip"
 msgstr "Zip Chaguomsingi"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Watu wa Kadi ya Mkopo"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Watu ambao wamesanidiwa kulipa kwa kadi ya mkopo."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8056,14 +7985,6 @@ msgid "City is required"
 msgstr "Mji/Jiji linahitajika"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Mlango (port) wa seva ya hifadhidata unahitajika"
-
-#: 
-msgid "Database username is required"
-msgstr "Jina la mtumiaji wa hifadhidata linahitajika"
-
-#: 
 msgid "Email Address"
 msgstr "Barua Pepe"
 
@@ -8166,10 +8087,6 @@ msgstr "Namba ya simu"
 #: 
 msgid "Please add at least one family member."
 msgstr "Tafadhali ongeza angalau mwanachama mmoja wa familia."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Tafadhali rekebisha makosa ya uhakiki kabla ya kuendelea."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8532,10 +8449,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Hakuna kumbukumbu zilizopatikana kutoka kwa ripoti iliyopita. Tafadhali rekebisha vichujio au muda wa tarehe na ujaribu tena."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Tafadhali ingiza jina la orodha (herufi 2-50)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Tafadhali ingiza URL sahihi inayoanza na http:// au https://"
 
@@ -8544,28 +8457,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Sahihi zote za faili za mfumo zinalingana na thamani zinazotarajiwa."
 
 #: 
-msgid "Files with issues"
-msgstr "Faili zenye matatizo"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Ukaguzi wa uadilifu umeshindikana"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Ukaguzi wa uadilifu umefaulu"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Faili la ufafanuzi wa sahihi lipo lakini haliwezi kusomwa. Kagua ruhusa za faili."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Faili la ufafanuzi wa sahihi linakosekana katika %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Imeshindikana kuwasiliana na upande wa uadilifu. Kagua kumbukumbu za seva."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8937,6 +8834,7 @@ msgstr "Inahariri Tukio"
 msgid "Enter event title..."
 msgstr "Ingiza kichwa cha tukio..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Tukio"
@@ -9948,10 +9846,6 @@ msgid "Membership Reports"
 msgstr "Ripoti za Uanachama"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Funguo za Siri Zinakosekana"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Ripoti nyingi zinaweza kutolewa kama PDF au CSV."
 
@@ -10090,10 +9984,6 @@ msgstr "Mipangilio ya seva ya SMTP haijasanidiwa"
 #: 
 msgid "Save and Add New Family"
 msgstr "Hifadhi na Ongeza Familia Mpya"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Funguo za siri zinakosekana kwenye Config.php"
 
 #: 
 msgid "Sep"
@@ -10296,10 +10186,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Ingiza mkoa/jimbo kwa nchi zisizo na mikoa iliyofafanuliwa)"
 
 #: 
-msgid "Available"
-msgstr "Inapatikana"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Usanidi wa URL ya Msingi si sahihi. Tafadhali kagua faili yako ya Config.php."
 
@@ -10384,10 +10270,6 @@ msgid "No locales configured"
 msgstr "Hakuna lugha zilizosanidiwa"
 
 #: 
-msgid "Not Available"
-msgstr "Haipatikani"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Fungua faili hili kwenye kihariri cha maandishi:"
 
@@ -10420,10 +10302,6 @@ msgid "System Locale Support"
 msgstr "Usaidizi wa Lugha wa Mfumo"
 
 #: 
-msgid "System Support"
-msgstr "Usaidizi wa Mfumo"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL haina jina la seva sahihi"
 
@@ -10442,18 +10320,6 @@ msgstr "URL lazima iishe na mkwaju (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL lazima ianze na http:// au https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Imeshindikana kutambua lugha za mfumo"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Imeshindikana kuamua lugha zinazopatikana"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Imeshindikana kupakia taarifa za lugha"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10672,10 +10538,6 @@ msgid "Remote backup failed"
 msgstr "Nakala ya mbali imeshindikana"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Nakala za WebDAV hazijasanidiwa kwa usahihi."
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA Imewashwa"
 
@@ -10802,10 +10664,6 @@ msgstr "Uthibitishaji wa Hatua Mbili (2FA)"
 #: 
 msgid "Validation pending"
 msgstr "Inasubiri uhakiki"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "lazima isanidiwe na ufunguo wa usimbuaji"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11160,14 +11018,6 @@ msgid "No people found matching your criteria."
 msgstr "Hakuna watu waliopatikana wanaolingana na vigezo vyako."
 
 #: 
-msgid "Off"
-msgstr "Zima"
-
-#: 
-msgid "On"
-msgstr "Washa"
-
-#: 
 msgid "Photo Directory"
 msgstr "Saraka ya Picha"
 
@@ -11180,26 +11030,12 @@ msgid "Show only people with photos"
 msgstr "Onyesha watu wenye picha pekee"
 
 #: 
-msgid "Checkout All"
-msgstr "Toa Wote"
-
-#: 
 msgid "Expected"
 msgstr "Inayotarajiwa"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Imeshindwa kufuta kiosk"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Ahadi za Familia kwa Mwaka wa Fedha"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tafuta wanafunzi waliosajiliwa"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11750,4 +11586,767 @@ msgstr "Familia haikupatikana"
 #: 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
 msgstr "Tafuta katika MailChimp: Hadhira > Mipangilio > Jina la hadhira na chaguo-msingi > Kitambulisho cha Hadhira"
+
+#: 
+msgid "From Phone Number"
+msgstr "Kutoka Nambari ya Simu"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "kutoka dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "Kitambulisho cha Kipimo cha GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Tengeneza msimbo mpya"
+
+#: 
+msgid "Get Started"
+msgstr "Anza"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Pata ufunguo wako wa API kutoka MailChimp: Mipangilio ya Akaunti > Ziada > Funguo za API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Kuwa tayari na programu yako ya uthibitishaji (Google Authenticator, Microsoft Authenticator, Authy, n.k.)"
+
+#: 
+msgid "Help"
+msgstr "Msaada"
+
+#: 
+msgid "Id"
+msgstr "Kitambulisho"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Picha inayoonyeshwa pale ambapo Gravatar haipo kwa anwani ya barua pepe"
+
+#: 
+msgid "Important"
+msgstr "Muhimu"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Sakinisha programu-jalizi kwa kuziweka katika"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Msimbo batili. Tafadhali jaribu tena."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "URL ya mwisho batili. Lazima iwe URL kamili inayoanza na https:// (mfano, https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kifaa cha kiosk hakikupatikana"
+
+#: 
+msgid "Last Backup"
+msgstr "Nakala Rudia ya Mwisho"
+
+#: 
+msgid "Last Campaign"
+msgstr "Kampeni ya Mwisho"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Mwanachama wa Mwisho"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Nakala Rudia Iliyofaulu ya Mwisho"
+
+#: 
+msgid "Last campaign"
+msgstr "Kampeni ya mwisho"
+
+#: 
+msgid "Link Name"
+msgstr "Jina la Kiungo"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Anwani ya kiungo haiwezi kuwa na vitambulisho vya HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "Anwani ya kiungo inahitajika"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Kiungo lazima kiwe URL halali"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Kiungo lazima kianze na http:// au https://"
+
+#: 
+msgid "Link not found"
+msgstr "Kiungo hakikupatikana"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Inapakia misimbo ya uokoaji"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "Ufunguo wa API wa MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Dashibodi ya MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Simamia Viungo"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Simamia Uthibitishaji wa Hatua Mbili"
+
+#: 
+msgid "Manual Backup"
+msgstr "Nakala Rudia ya Mkono"
+
+#: 
+msgid "Menu Links"
+msgstr "Viungo vya Menyu"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Jina la menyu haliwezi kuwa na vitambulisho vya HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "Jina la menyu linahitajika"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Jina la menyu lazima liwe herufi 50 au chini"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Jina la menyu lazima liwe angalau herufi 2"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Lazima ianze na http:// au https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Inahitaji Usanidi"
+
+#: 
+msgid "Never"
+msgstr "Kamwe"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Hadhira Haikupatikana"
+
+#: 
+msgid "No backups recorded"
+msgstr "Hakuna nakala rudia zilizorekodiwa"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Hakuna programu-jalizi za jamii zilizosakinishwa"
+
+#: 
+msgid "No core plugins found"
+msgstr "Hakuna programu-jalizi za msingi zilizopatikana"
+
+#: 
+msgid "No settings provided"
+msgstr "Hakuna mipangilio iliyotolewa"
+
+#: 
+msgid "Not Configured"
+msgstr "Haijasakinishwa"
+
+#: 
+msgid "Not in CRM"
+msgstr "Haipo katika CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Msimbo wa Matumizi Moja"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Fungua MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Fungua programu yako ya uthibitishaji na upige picha msimbo huu wa QR"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL ya Seva ya OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Si lazima - inahitajika tu ikiwa uthibitishaji wa OpenLP umewezeshwa"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Nambari ya simu na ujumbe vinahitajika"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Tafadhali sanidi mwisho, jina la mtumiaji, na nywila kwanza."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Tafadhali sanidi mipangilio ya WebDAV kabla ya kuunda nakala rudia ya mbali."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Tafadhali sanidi mipangilio ya WebDAV kabla ya kujaribu muunganisho."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Tafadhali sanidi ufunguo wako wa API wa MailChimp kutumia muundo huu."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Tafadhali ingiza jina la kiungo (herufi 2-50)"
+
+#: 
+msgid "Please try again"
+msgstr "Tafadhali jaribu tena"
+
+#: 
+msgid "Plugin Development"
+msgstr "Ukuzaji wa Programu-jalizi"
+
+#: 
+msgid "Plugin Help"
+msgstr "Msaada wa Programu-jalizi"
+
+#: 
+msgid "Plugin Management"
+msgstr "Usimamizi wa Programu-jalizi"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Mipangilio ya Programu-jalizi"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Programu-jalizi haiwezi kuzimwa kwa sababu programu-jalizi nyingine zinategemea"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Programu-jalizi haiwezi kuwezeshwa kwa sababu ya mahitaji ya utegemezi au toleo"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Programu-jalizi imezimwa kwa mafanikio"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Programu-jalizi imewezeshwa kwa mafanikio"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Programu-jalizi imeshindwa kupakia"
+
+#: 
+msgid "Plugin not found"
+msgstr "Programu-jalizi haikupatikana"
+
+#: 
+msgid "Plugins"
+msgstr "Programu-jalizi"
+
+#: 
+msgid "Print"
+msgstr "Chapisha"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Wapokeaji na ujumbe vinahitajika"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Misimbo ya Uokoaji"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Nakala rudia ya mbali imeshindwa. Angalia kumbukumbu za seva kwa maelezo."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS imetumwa"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Hifadhi misimbo hii ya uokoaji mahali salama. Unaweza kuitumia kupata akaunti yako ukipoteza ufikiaji wa programu yako ya uthibitishaji."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Piga Picha Msimbo wa QR"
+
+#: 
+msgid "Secure"
+msgstr "Salama"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Sanidi Uthibitishaji"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Mipangilio imewekwa upya kwa mafanikio"
+
+#: 
+msgid "Setup Complete"
+msgstr "Usanidi Umekamilika"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Inakuja na ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Ingia"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Baadhi ya mipangilio haikuweza kuwekwa upya"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Baadhi ya mipangilio haikuweza kuhifadhiwa"
+
+#: 
+msgid "Subscribers"
+msgstr "Wanachama"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Wanachama Wasiopo katika CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Jaribu Muunganisho"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Jaribu Muunganisho wa WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" kwenye upau wa nagivesheni wakati programu-jalizi hii imewezeshwa."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Watu hawa wameandikishwa kwenye hadhira yako ya MailChimp lakini hawako katika ChurchCRM. Fikiria kuwaongeza kwenye hifadhidata yako au kuwaondoa kutoka MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Watu hawa wako katika ChurchCRM na anwani za barua pepe lakini hawajandikishwa kwenye hadhira hii ya MailChimp. Fikiria kuwaalika kuandikisha."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Nyongeza za watu wengine."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Hii itabadilisha mbinu zozote za 2FA zilizosajiliwa awali"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Jumla ya Kampeni"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Jumla ya Wanachama"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Hitilafu ya Usajili wa Hatua Mbili"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "Uthibitishaji wa hatua mbili umezimwa"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "Uthibitishaji wa hatua mbili ni moja ya njia bora za kulinda akaunti yako. Tunapendekeza sana kuuendelea kuwa umewezeshwa."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL ya seva yako ya OpenLP (mfano, http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Haiwezi kupakia"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Ameacha Uanachama"
+
+#: 
+msgid "Use a different account"
+msgstr "Tumia akaunti nyingine"
+
+#: 
+msgid "Value is configured"
+msgstr "Thamani imesanidiwa"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Thamani imewekwa - acha tupu ili kudumisha ya sasa"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Thibitisha & Ingia"
+
+#: 
+msgid "Verify Code"
+msgstr "Thibitisha Msimbo"
+
+#: 
+msgid "Verifying"
+msgstr "Inathibitisha"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Ufunguo wa API wa Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Siri ya API ya Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Usanidi wa WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Muunganisho wa WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Nakala rudia za WebDAV hazijasanidiwa ipasavyo. Tafadhali hakikisha mwisho, jina la mtumiaji, na nywila vimewekwa."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "URL ya mwisho wa WebDAV inahitajika."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "Nywila ya WebDAV inahitajika."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "Jina la mtumiaji la WebDAV linahitajika."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Unaweza pia kutumia misimbo ya uokoaji ya nakala rudia ukipoteza ufikiaji wa programu yako"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Sasa unaweza kutumia programu yako ya uthibitishaji kuingia. Kila msimbo ni halali kwa sekunde 30."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Utapokea misimbo ya nakala rudia ambayo inaweza kutumika ukipoteza ufikiaji wa programu yako"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "Kitambulisho chako cha Kipimo cha GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "Akaunti yako ya MailChimp haina hadhira (orodha) zilizosanidiwa."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Akaunti yako sasa inalindwa"
+
+#: 
+msgid "Your account is protected"
+msgstr "Akaunti yako inalindwa"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Programu yako ya uthibitishaji imesajiliwa kwa mafanikio"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Upendeleo wako wa lugha ya kivinjari ni tofauti na eneo lako la ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "mfano, Tovuti ya Kanisa"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "wanachama"
+
+#: 
+msgid "API Key is required."
+msgstr "Ufunguo wa API unahitajika."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Haiwezekani kuunganika na OpenLP kwenye %s. Angalia URL ya seva na hakikisha OpenLP inaendesha."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Haiwezekani kuunganika na OpenLP kwenye %s. Seva ilirudisha HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Ramani ya Wanachama"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Ramani ya Wanachama — Usanidi Unahitajika"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Imeunganishwa na MailChimp! Akaunti: %s (wanachama %d)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Imeunganishwa na seva ya OpenLP kwa mafanikio."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Imeunganishwa na OpenLP! Toleo: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Imeunganishwa! Salio la akaunti: €%.2f. Tayari kutuma SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Haikuweza kuunganika na MailChimp. Tafadhali angalia ufunguo wako wa API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Imeshindwa kuunganika na seva ya OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Pata Maelekezo"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Jumuisha nambari ya nchi, mfano +14155551234 (Marekani) au +447911123456 (Uingereza)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Nambari ya Kutuma\" batili: \"%s\". Jumuisha nambari ya nchi, mfano +14155551234 (Marekani) au +447911123456 (Uingereza)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Vithibitisho vya API batili. Tafadhali thibitisha Ufunguo wako wa API na Siri ya API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Muundo wa ufunguo wa API batili. Angalia ufunguo wako wa API wa MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL ya mwisho batili. Lazima iwe URL kamili inayoanza na https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Muundo wa URL ya seva batili."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Muunganisho wa MailChimp umeshindwa."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Kiwango cha Kukuza Ramani"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Familia zinakosekana? Sasisha kuratibu ili kuzijumuisha kwenye ramani."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Mipangilio inayohitajika inakosekana: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Mtu hana familia"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Programu-jalizi haikupatikana au haiko amilifu"
+
+#: 
+msgid "Server URL is required."
+msgstr "URL ya seva inahitajika."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Programu-jalizi hii haisaidii majaribio ya muunganisho."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Haiwezekani kuonyesha ramani: anwani ya kanisa bado haijapewa kuratibu."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Sasisha anwani ya kanisa katika Mipangilio."
+
+#: 
+msgid "Username and password are required."
+msgstr "Jina la mtumiaji na nywila vinahitajika."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Uthibitishaji umeshindwa: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Hitilafu ya seva ya Vonage. Tafadhali jaribu tena baadaye."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "URL ya Mwisho wa WebDAV inahitajika."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Je, una uhakika unataka kufuta kwa kudumu rekodi hii ya ahadi?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Ghairi na Rudi kwa Muonekano wa Familia"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Ukifuta aina hii, utaondoa pia mali zote zinazotumia na kupoteza mgawanyo wowote wa mali unaohusiana."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Hamisha Matoleo kwa Familia Iliyochaguliwa"
+
+#: 
+msgid "Calendar not found"
+msgstr "Kalenda haikupatikana"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Endelea kwa Dashibodi"
+
+#: 
+msgid "Current Password"
+msgstr "Nywila ya Sasa"
+
+#: 
+msgid "Deposit not found"
+msgstr "Matoleo hayakupatikana"
+
+#: 
+msgid "Group not found"
+msgstr "Kikundi hakikupatikana"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON batili ilitolewa kwa usanidi"
+
+#: 
+msgid "Password Change Required"
+msgstr "Mabadiliko ya Nywila Yanahitajika"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Mabadiliko ya Nywila Yamefanikia"
+
+#: 
+msgid "Password Changed"
+msgstr "Nywila Imebadilishwa"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Nywila lazima ziwe angalau"
+
+#: 
+msgid "Property not found"
+msgstr "Mali haikupatikana"
+
+#: 
+msgid "Set New Password"
+msgstr "Weka Nywila Mpya"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Nywila ya %s imesasishwa."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Haiwezekani kuimarisha JSON tena kwa usanidi"
+
+#: 
+msgid "User not found"
+msgstr "Mtumiaji hakupatikana"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Lazima uweke nywila mpya kabla ya kuendelea."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Nywila yako imesasishwa kwa mafanikio."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "familia iliyochaguliwa haina kuratibu"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Acha wazi ili kuhifadhi thamani iliyopo"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Watu wanaokosekana"
+
+#: 
+msgid "Not enrolled"
+msgstr "Haijasajiliwa"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbili"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chagua tukio unalotaka"
 

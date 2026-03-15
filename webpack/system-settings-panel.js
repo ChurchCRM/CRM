@@ -28,14 +28,14 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="custom-control custom-switch mt-2">
-                            <input type="checkbox" class="custom-control-input setting-input" 
+                            <input type="checkbox" class="custom-control-input setting-input"
                                    id="${setting.name}" name="${setting.name}"
                                    data-type="boolean"
                                    ${checked ? "checked" : ""}>
                             <label class="custom-control-label" for="${setting.name}">
                                 ${setting.label}
+                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ml-1" data-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
                             </label>
-                            ${setting.tooltip ? `<small class="form-text text-muted d-block">${setting.tooltip}</small>` : ""}
                         </div>
                     </div>
                 `;
@@ -117,34 +117,49 @@ import "../src/skin/scss/system-settings-panel.scss";
         return el.value;
       },
     },
+    // Password fields never fetch or display the current value.
+    // Leave blank to keep the existing value; type a new value to change it.
+    // Set setting.generate = true to add a "Generate" button that fills the field.
     password: {
-      render: function (setting, value) {
+      render: function (setting) {
+        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
+        const generateBtn = setting.generate
+          ? `<div class="input-group-append">
+               <button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
+                 <i class="fa-solid fa-key mr-1"></i>${t("Generate")}
+               </button>
+             </div>`
+          : "";
         return `
-                    <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
-                            ${setting.label}
-                        </label>
-                        <input type="password" class="form-control setting-input" 
-                               id="${setting.name}" name="${setting.name}"
-                               data-type="password"
-                               value="${value || ""}"
-                               autocomplete="new-password">
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
-                    </div>
-                `;
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                ${setting.label}
+              </label>
+              <div class="input-group">
+                <input type="password" class="form-control setting-input"
+                     id="${setting.name}" name="${setting.name}"
+                     data-type="password"
+                     autocomplete="new-password"
+                     placeholder="${t("Leave blank to keep existing")}">
+                ${generateBtn}
+              </div>
+              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+            </div>
+          `;
       },
       getValue: function (el) {
-        return el.value;
+        // Return null for empty passwords so they are skipped in the bulk save
+        return el.value || null;
       },
     },
   };
 
-  // Escape HTML to prevent XSS
+  // Escape HTML for safe use in both text content and attribute values (title="...", value="...")
   function escapeHtml(str) {
     if (!str) return "";
     const div = document.createElement("div");
     div.textContent = str;
-    return div.innerHTML;
+    return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
 
   // Month choices helper
@@ -294,7 +309,12 @@ import "../src/skin/scss/system-settings-panel.scss";
     // Load current setting values from API
     loadSettings() {
       const self = this;
-      const settingNames = this.options.settings.map((s) => (typeof s === "string" ? s : s.name));
+      // Password fields never fetch their current value — always rendered blank
+      const settingsToFetch = this.options.settings.filter((s) => {
+        const cfg = this.getSettingConfig(s);
+        return cfg.type !== "password";
+      });
+      const settingNames = settingsToFetch.map((s) => (typeof s === "string" ? s : s.name));
 
       // Fetch all setting values
       const promises = settingNames.map((name) => {
@@ -384,6 +404,12 @@ import "../src/skin/scss/system-settings-panel.scss";
     // Bind event handlers
     bindEvents() {
       const self = this;
+
+      // Initialize Bootstrap tooltips on help icons
+      if (window.$ && $.fn.tooltip) {
+        $(this.container).find('[data-toggle="tooltip"]').tooltip();
+      }
+
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
 
       if (saveBtn) {
@@ -391,6 +417,16 @@ import "../src/skin/scss/system-settings-panel.scss";
           self.save();
         });
       }
+
+      // Generate button for password fields — fills the input with a random key
+      this.container.querySelectorAll(".generate-password-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const input = document.getElementById(btn.dataset.target);
+          if (input) {
+            input.value = SettingsPanel.generateSecretHex();
+          }
+        });
+      });
 
       // Toggle button handling
       if (this.options.toggleButton) {
@@ -401,6 +437,15 @@ import "../src/skin/scss/system-settings-panel.scss";
           });
         }
       }
+    }
+
+    // Generate a secure random hex string of 32 bytes (64 hex chars)
+    static generateSecretHex() {
+      const array = new Uint8Array(32);
+      window.crypto.getRandomValues(array);
+      return Array.from(array)
+        .map((b) => ("00" + b.toString(16)).slice(-2))
+        .join("");
     }
 
     // Save all settings
@@ -414,13 +459,16 @@ import "../src/skin/scss/system-settings-panel.scss";
       saveBtn.disabled = true;
       saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> ' + t("Saving...");
 
-      // Collect all setting values
+      // Collect all setting values (empty passwords return null from getValue and are skipped)
       const settings = {};
       this.container.querySelectorAll(".setting-input").forEach(function (input) {
         const type = input.dataset.type;
         const renderer = SettingTypes[type];
         if (renderer) {
-          settings[input.name] = renderer.getValue(input);
+          const val = renderer.getValue(input);
+          if (val !== null) {
+            settings[input.name] = val;
+          }
         }
       });
 

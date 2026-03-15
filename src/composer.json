@@ -3,7 +3,7 @@
   "description": "Free Church CRM Software",
   "license": "MIT",
   "type": "project",
-  "version": "7.0.1",
+  "version": "7.0.3",
   "keywords": ["church", "crm"],
   "authors": [
     {
@@ -15,7 +15,7 @@
   "support": {
     "email": "info@churchcrm.io",
     "issues": "https://github.com/ChurchCRM/CRM/issues",
-    "chat": "https://gitter.im/ChurchCRM/CRM",
+    "chat": "https://discord.gg/tuWyFzj3Nj",
     "source": "https://github.com/ChurchCRM/CRM",
     "docs": "https://github.com/ChurchCRM/CRM/wiki"
   },
@@ -40,7 +40,6 @@
     "drewm/mailchimp-api": "^2.5.4",
     "endroid/qr-code": "^6.1.3",
     "ezyang/htmlpurifier": "^4.17.0",
-    "geocoder-php/google-maps-provider": "^4.7.1",
     "ifsnop/mysqldump-php": "^2.12",
     "knplabs/github-api": "^3.12.0",
     "league/csv": "^9.16.0",

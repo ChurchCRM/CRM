@@ -359,6 +359,51 @@ cd docs.churchcrm.io && npm run regen
 
 Defined in `src/api/openapi/openapi-public-info.php` and `src/api/openapi/openapi-private-info.php`. If you add a new tag, add it there first.
 
+## Calling External APIs: Nominatim Geocoding <!-- learned: 2026-03-08 -->
+
+When calling external APIs like Nominatim (OpenStreetMap geocoding), use **comma-separated address format** without country code in simple queries. Structured parameters work better for precise results.
+
+**Pattern: GeoUtils.getLatLong()**
+
+```php
+// ✅ CORRECT - Comma-separated format (no country code)
+$params = [
+    'q' => '13216 NE 100th St, Kirkland, WA, 98033',
+    'format' => 'json',
+    'limit' => 1
+];
+$url = 'https://nominatim.openstreetmap.org/search?' . http_build_query($params);
+
+// ✅ PREFERRED - Structured parameters (better accuracy)
+$params = [
+    'street' => '13216 NE 100th St',
+    'city' => 'Kirkland',
+    'state' => 'WA',
+    'postalcode' => '98033',
+    'format' => 'json',
+    'limit' => 1
+];
+
+// ❌ WRONG - Appending country code (causes matching to fail)
+$params = [
+    'q' => '13216 NE 100th St Kirkland WA 98033 US',  // Fails to match
+    'format' => 'json'
+];
+
+// ❌ WRONG - Space-separated without commas
+$params = [
+    'q' => implode(' ', [$street, $city, $state, $zip, $country]),
+    'format' => 'json'
+];
+```
+
+**Key Points:**
+- Always use comma-separated format: `street, city, state, zip`
+- Omit country code from simple queries (causes matching failures)
+- Prefer structured parameters (street, city, state, postalcode) when components available
+- Include required Nominatim headers: `User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)`
+- Log API calls and responses for debugging geocoding issues
+
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`

@@ -2627,10 +2627,6 @@ msgid "Last Login"
 msgstr "Dernière Connexion"
 
 #: 
-msgid "Total Logins"
-msgstr "Nombre totale de Connexion"
-
-#: 
 msgid "Failed Logins"
 msgstr "Échec de Connexion"
 
@@ -4133,11 +4129,6 @@ msgstr "Délimiteur pour séparer les adresses email dans les liens Mailto"
 #: 
 msgid "User permission to create directories"
 msgstr "Permission de l&#39;utilisateur pour créer des annuaires."
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permission de l&#39;utilisateur pour exporter des fichiers CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6730,14 +6721,6 @@ msgid "View User"
 msgstr "Voir l'utilisateur"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Requête invalide: ID de calendrier manquant"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Introuvable : ID de calendrier inconnu"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "introuvable ou utilisateur sans e-mail"
@@ -6906,10 +6889,6 @@ msgstr "ID de type d'événement invalide"
 #: 
 msgid "invalid calendar pinning"
 msgstr "épinglage de calendrier non valide"
-
-#: 
-msgid "invalid group id"
-msgstr "ID de groupe incorrect"
 
 #: 
 msgid "invalid status value"
@@ -7085,10 +7064,6 @@ msgid "Age Histogram"
 msgstr "Histogramme des âges"
 
 #: 
-msgid "Missing event id"
-msgstr "ID d'événement manquant"
-
-#: 
 msgid "Event not found"
 msgstr "Evénement introuvable"
 
@@ -7232,14 +7207,6 @@ msgid "Holiday"
 msgstr "Vacances"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Autoriser les utilisateurs à s'inscrire eux-mêmes à l'authentification à 2 facteurs"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Exige que les utilisateurs s'auto-inscrivent à l'authentification à 2 facteurs"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7280,32 +7247,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Nom, prénom, deuxième prénom"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Statut à deux facteurs"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Veuillez confirmer la désactivation de l'authentification à 2 facteurs pour cet utilisateur"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Authentification à 2 facteurs non supportée"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Impossible de démarrer le souscription de l'authentification à 2 facteurs"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "L'authentification à 2 facteurs nécessite une intervention de l'administrateur ChurchCRM"
-
-#: 
-msgid "System configuration "
-msgstr "Configuration Système "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Doit être défini sur \"vrai\""
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7457,10 +7400,6 @@ msgstr "Aidez à traduire ce projet"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr "présente une faute de frappe"
 
 #: 
 msgid "Loading"
@@ -7667,16 +7606,6 @@ msgstr "propriété"
 #: 
 msgid "Default Zip"
 msgstr "Zip par défaut"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Personnes de carte de crédit"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Les personnes configurées pour payer par carte de crédit."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8064,14 +7993,6 @@ msgid "City is required"
 msgstr "La ville est obligatoire"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Le port du serveur de base de données est obligatoire (par exemple, 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Le nom d'utilisateur de la base de données est obligatoire"
-
-#: 
 msgid "Email Address"
 msgstr "Adresse email"
 
@@ -8174,10 +8095,6 @@ msgstr "Numéro de téléphone"
 #: 
 msgid "Please add at least one family member."
 msgstr "Veuillez ajouter au moins un membre de la famille."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Veuillez corriger les erreurs de validation avant de continuer."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8540,10 +8457,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Aucun enregistrement n'a été trouvé dans le rapport précédent. Veuillez modifier vos filtres ou votre plage de dates et réessayer."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Veuillez saisir un nom de menu (2 à 50 caractères)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Veuillez saisir une URL valide commençant par http:// ou https://"
 
@@ -8552,28 +8465,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Toutes les signatures des fichiers système correspondent aux valeurs attendues"
 
 #: 
-msgid "Files with issues"
-msgstr "Fichiers avec des problèmes"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Le contrôle d'intégrité a échoué"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Contrôle d'intégrité réussi"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Le fichier de définition de signature existe, mais il est illisible. Vérifiez les permissions du fichier."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Le fichier de définition de signature est manquant à l'emplacement %s. Exécutez la tâche de packaging ou déployez une version officielle pour régénérer les signatures."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Impossible de contacter le point de terminaison d'intégrité. Consultez les journaux d'erreurs du serveur web."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8945,6 +8842,7 @@ msgstr "Modification de l'événement"
 msgid "Enter event title..."
 msgstr "Entrez le titre de l'événement..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Événement"
@@ -9956,10 +9854,6 @@ msgid "Membership Reports"
 msgstr "Rapports d'adhésion"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Clés secrètes manquantes"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "La plupart des rapports peuvent être exportés en PDF pour l'impression ou en CSV pour l'analyse des feuilles de calcul."
 
@@ -10098,10 +9992,6 @@ msgstr "Les paramètres du serveur SMTP ne sont pas configurés"
 #: 
 msgid "Save and Add New Family"
 msgstr "Enregistrer et ajouter une nouvelle famille"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Clés secrètes manquantes dans Config.php"
 
 #: 
 msgid "Sep"
@@ -10304,10 +10194,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Entrez l'état/province pour les pays sans états prédéfinis)"
 
 #: 
-msgid "Available"
-msgstr "Disponible"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "La configuration de l'URL de base est invalide. Veuillez vérifier votre fichier Config.php."
 
@@ -10392,10 +10278,6 @@ msgid "No locales configured"
 msgstr "Aucun paramètre régional configuré"
 
 #: 
-msgid "Not Available"
-msgstr "Non disponible"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Ouvrez ce fichier dans un éditeur de texte:"
 
@@ -10428,10 +10310,6 @@ msgid "System Locale Support"
 msgstr "Support des paramètres régionaux du système"
 
 #: 
-msgid "System Support"
-msgstr "Support du système"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "L'URL ne contient pas un nom d'hôte valide"
 
@@ -10450,18 +10328,6 @@ msgstr "L'URL doit se terminer par une barre oblique (/))"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "L'URL doit commencer par http:// ou https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Impossible de détecter les paramètres régionaux du système"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Impossible de déterminer les paramètres régionaux disponibles"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Impossible de charger les informations sur les paramètres régionaux"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10680,10 +10546,6 @@ msgid "Remote backup failed"
 msgstr "Échec de la sauvegarde distante"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Les sauvegardes WebDAV ne sont pas correctement configurées. Assurez-vous que le point de terminaison, le nom d'utilisateur et le mot de passe sont définis"
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA activé"
 
@@ -10810,10 +10672,6 @@ msgstr "Authentification à deux facteurs"
 #: 
 msgid "Validation pending"
 msgstr "Validation en attente"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "doit être configuré avec une clé de chiffrement"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11168,14 +11026,6 @@ msgid "No people found matching your criteria."
 msgstr "Aucune personne trouvée correspondant à vos critères."
 
 #: 
-msgid "Off"
-msgstr "Désactivé"
-
-#: 
-msgid "On"
-msgstr "Activé"
-
-#: 
 msgid "Photo Directory"
 msgstr "Répertoire Photos"
 
@@ -11188,26 +11038,12 @@ msgid "Show only people with photos"
 msgstr "Afficher uniquement les personnes avec photos"
 
 #: 
-msgid "Checkout All"
-msgstr "Enregistrer la sortie de tous"
-
-#: 
 msgid "Expected"
 msgstr "Attendu"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Échec de la suppression du kiosque"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Engagement familial par année fiscale"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Trouver les étudiants inscrits"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12418,4 +12254,107 @@ msgstr "Si vous supprimez ce type, vous supprimerez également toutes les propri
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "Déplacer les offrandes vers la famille sélectionnée"
+
+#: 
+msgid "Calendar not found"
+msgstr "Calendrier introuvable"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Continuer vers le Tableau de bord"
+
+#: 
+msgid "Current Password"
+msgstr "Mot de passe actuel"
+
+#: 
+msgid "Deposit not found"
+msgstr "Offrande introuvable"
+
+#: 
+msgid "Group not found"
+msgstr "Groupe introuvable"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON invalide fourni pour la configuration"
+
+#: 
+msgid "Password Change Required"
+msgstr "Changement de mot de passe requis"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Changement de mot de passe réussi"
+
+#: 
+msgid "Password Changed"
+msgstr "Mot de passe modifié"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Les mots de passe doivent comporter au moins"
+
+#: 
+msgid "Property not found"
+msgstr "Propriété introuvable"
+
+#: 
+msgid "Set New Password"
+msgstr "Définir un nouveau mot de passe"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Le mot de passe pour %s a été mis à jour."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Impossible de ré-encoder le JSON pour la configuration"
+
+#: 
+msgid "User not found"
+msgstr "Utilisateur introuvable"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Vous devez définir un nouveau mot de passe avant de continuer."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Votre mot de passe a été mis à jour avec succès."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "la famille sélectionnée n'a pas de coordonnées"
+
+#: 
+msgid "2FA"
+msgstr "A2F"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Trouver les personnes qui n'ont pas assisté à un événement"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Laisser vide pour conserver la valeur actuelle"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Personnes manquantes"
+
+#: 
+msgid "Not enrolled"
+msgstr "Non inscrit"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Exiger que tous les utilisateurs s'inscrivent à l'authentification à deux facteurs"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Sélectionner l'événement souhaité"
 

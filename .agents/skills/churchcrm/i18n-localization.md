@@ -107,6 +107,31 @@ echo strftime('%B %d, %Y', $timestamp);  // Not localized
 
 ---
 
+## i18next Load Order — Always Use $(document).ready() <!-- learned: 2026-03-07 -->
+
+`i18next` is loaded by `Footer.php` at the **end** of the page. Any inline `<script>` block that calls `i18next.t()` before the footer runs will throw `ReferenceError: i18next is not defined`.
+
+**Always wrap i18next calls in `$(document).ready()`:**
+
+```javascript
+// ✅ CORRECT — deferred until Footer.php has loaded i18next
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        title: i18next.t('Map Settings'),
+        // ...
+    });
+});
+
+// ❌ WRONG — i18next not yet loaded at script parse time
+window.CRM.settingsPanel.init({
+    title: i18next.t('Map Settings'),  // ReferenceError!
+});
+```
+
+This applies to all inline scripts in PHP templates that use `i18next.t()`. Webpack entry points are unaffected (they use `DOMContentLoaded`).
+
+---
+
 ## Adding New UI Terms
 
 ### Workflow
@@ -571,6 +596,130 @@ Consolidation reduces workload from 45+ languages:
 
 ---
 
+## AI-Assisted Translation Instructions
+
+When using AI models (ChatGPT, Claude, etc.) to translate ChurchCRM terms, use the following prompt template to ensure accurate, culturally appropriate translations for church volunteers.
+
+### Translation Prompt Template
+
+```
+Role: You are an expert localization specialist with deep knowledge of [Target Language] 
+and Christian church culture.
+
+Context: You are translating a software platform used for Church Management (ChMS). 
+This includes modules for:
+- Member directories and people management
+- Small groups and community organization
+- Financial stewardship (tithes, offerings, and accounting)
+
+Target Audience: The end-users are church volunteers. They are deeply committed to their 
+faith but are generally non-technical. The tone should be welcoming, respectful, and 
+communal, rather than corporate or clinical.
+
+Instructions:
+
+1. **Ecclesiastical Accuracy**: Use terms that feel natural in a [Target Language] 
+   church setting. For example:
+   - Use the local word for "Congregation," "Parish," or "Community" instead of "Customer Base"
+   - Use worship-appropriate terminology (e.g., "Offering" vs. "Donation")
+   - Reference titles that are recognized in your church culture (e.g., "Pastor," "Elder," "Deacon")
+
+2. **Simplify Technical Terms**: Avoid "dev-speak." Use plain language that church 
+   volunteers understand:
+   - Instead of: "Execute Batch Transaction"
+   - Use: "Post Contributions" or "Record Gifts"
+   - Instead of: "Initialize Data Sync"
+   - Use: "Update Information"
+   - Instead of: "Validate Input Schema"
+   - Use: "Check Information"
+
+3. **Consistency**: Ensure key terms are translated consistently throughout:
+   - **Giving** (not "Donations" mixed with "Offerings")
+   - **Pledge** (not "Promise" or "Commitment" interchangeably)
+   - **Member** (not "Person" or "Individual")
+   - **Active / Inactive** (not "Enabled / Disabled")
+   - **Set Active** (not "Activate" for family/person status)
+   - **Contribution** (not "Payment" or "Transaction")
+
+4. **Constraint**: Keep translations concise so they fit within software UI buttons, 
+   headers, and labels. Aim for 1-3 words when possible; never exceed what appears 
+   in the English version's character count.
+
+Input Data: [INSERT YOUR TERMS OR JSON HERE]
+
+Please provide translations that maintain the spiritual tone while remaining practical 
+for volunteers managing church operations.
+```
+
+### Usage Example: Using Missing Terms Files
+
+ChurchCRM maintains missing term files for each language in `locale/terms/missing/[LANGUAGE]/`.
+These JSON files contain untranslated strings with empty values:
+
+**File:** `locale/terms/missing/es-SV/es-SV-1.json`
+```json
+{
+  "Add Link": "",
+  "Allow Self-Signed Certificates": "",
+  "Audiences": "",
+  "Back to Dashboard": "",
+  "Change Your Locale": "",
+  "Configure MailChimp": "",
+  "CRM Members Not Subscribed": "",
+  "Enable Two-Factor Authentication": "",
+  "Post Contributions": "",
+  "Set Active": ""
+}
+```
+
+**Workflow:**
+
+1. **Extract missing terms** for your target language from `locale/terms/missing/[LANGUAGE]/`
+2. **Use the translation prompt** (above) with these actual terms from ChurchCRM
+3. **Fill in the translations** so the empty strings `""` become properly translated values
+4. **Verify consistency** against ecclesiastical and UI principle guidelines
+
+**Example Output (Spanish-El Salvador):**
+```json
+{
+  "Add Link": "Agregar enlace",
+  "Allow Self-Signed Certificates": "Permitir certificados auto-firmados",
+  "Audiences": "Audiencias",
+  "Back to Dashboard": "Volver al panel de control",
+  "Change Your Locale": "Cambiar idioma",
+  "Configure MailChimp": "Configurar MailChimp",
+  "CRM Members Not Subscribed": "Miembros no suscritos",
+  "Enable Two-Factor Authentication": "Habilitar autenticación de dos factores",
+  "Post Contributions": "Registrar contribuciones",
+  "Set Active": "Marcar como activo"
+}
+```
+
+### Guidelines for Adjustment
+
+When using this template with ChurchCRM missing terms files:
+
+- **Locate missing terms**: Find your language in `locale/terms/missing/[LANGUAGE]/` 
+  - Files are split into numbered chunks (e.g., `es-SV-1.json`, `es-SV-2.json`)
+  - Empty strings `""` indicate untranslated terms that need your attention
+- **Update [Target Language]** with the actual language code (es-SV, pt-BR, ja, etc.)
+- **Adjust ecclesiastical examples** to match the target language's church culture
+  - Catholic churches might use "Offering" differently than Protestant churches
+  - Orthodox traditions have different spiritual terminology
+  - Some cultures emphasize "Community" over "Congregation"
+- **Fill missing JSON values** with proper translations—never copy English terms
+- **Test translations locally** by running `npm run locale:build` and `npm run build`
+- **Include context** for ambiguous terms in your translation notes
+
+**Common Missing Terms in ChurchCRM:**
+- "Add Link", "Configure [Plugin]", "Enable Two-Factor Authentication"
+- "Post Contributions", "CRM Members Not Subscribed", "Audiences"
+- "Back to Dashboard", "Set Active", "Allow Self-Signed Certificates"
+
+Refer to existing translations in `locale/locales/[LANGUAGE].json` for consistency with already-translated terms.
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist
@@ -579,4 +728,4 @@ Consolidation reduces workload from 45+ languages:
 
 ---
 
-Last updated: February 16, 2026
+Last updated: March 1, 2026

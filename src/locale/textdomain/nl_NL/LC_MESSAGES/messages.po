@@ -2625,10 +2625,6 @@ msgid "Last Login"
 msgstr "Laatste Login"
 
 #: 
-msgid "Total Logins"
-msgstr "Aantal logins"
-
-#: 
 msgid "Failed Logins"
 msgstr "Mislukte Logins"
 
@@ -4134,11 +4130,6 @@ msgstr "Scheidingsteken om e-mails in mailto te scheiden: links"
 #: 
 msgid "User permission to create directories"
 msgstr "Gebruikersrechten om mappen te maken"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Gebruikersrechten om CSV-bestanden te exporteren"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6730,14 +6721,6 @@ msgid "View User"
 msgstr "Weergave gebruiker"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Ongeldig verzoek: agenda-ID ontbreekt"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Niets gevonden: onbekende agenda-ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "Niets gevonden of gebruiker zonder e-mail"
@@ -6905,10 +6888,6 @@ msgstr "Ongeldige identificatie code voor een \"event\""
 #: 
 msgid "invalid calendar pinning"
 msgstr "Het vastmaken van de kalender is ongeldig"
-
-#: 
-msgid "invalid group id"
-msgstr "Ongeldige groepscode"
 
 #: 
 msgid "invalid status value"
@@ -7083,10 +7062,6 @@ msgid "Age Histogram"
 msgstr "Leeftijd histogram"
 
 #: 
-msgid "Missing event id"
-msgstr "Ontbrekende evenement-ID"
-
-#: 
 msgid "Event not found"
 msgstr "Evenement niet gevonden"
 
@@ -7231,14 +7206,6 @@ msgid "Holiday"
 msgstr "Feestdag"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Sta gebruikers toe om zichzelf in te schrijven voor 2-factor authenticatie"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Vereist dat gebruikers zichzelf inschrijven voor 2-factor authenticatie"
-
-#: 
 msgid "ChurchCRM"
 msgstr "KerkCRM"
 
@@ -7279,32 +7246,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Achternaam, Voornaam Tussennaam"
 
 #: 
-msgid "Two Factor Status"
-msgstr "2-factor status"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Niet-ondersteunde configuratie voor twee-factorenauthenticatie"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Kan uitrol van 2-factorauthenticatie niet starten"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Twee-factor-authenticatie vereist dat ChurchCRM-beheerders een paar parameters configureren"
-
-#: 
-msgid "System configuration "
-msgstr "Systeem configuratie "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Moet zijn ingesteld op 'waar'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7455,10 +7398,6 @@ msgstr "Help dit project te vertalen"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " heeft een type mismatch"
 
 #: 
 msgid "Loading"
@@ -7664,16 +7603,6 @@ msgstr "Bezit"
 #: 
 msgid "Default Zip"
 msgstr "Standaard Postcode"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Credit Card mensen"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Mensen die staan ingesteld op betaling met creditcard"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8061,14 +7990,6 @@ msgid "City is required"
 msgstr "Plaats is verplicht"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Database server port is verplicht (bijv 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Database gebruikersnaam is verplicht"
-
-#: 
 msgid "Email Address"
 msgstr "E-mailadres"
 
@@ -8171,10 +8092,6 @@ msgstr "Telefoonnummer"
 #: 
 msgid "Please add at least one family member."
 msgstr "Voeg minimaal één gezinslid toe"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Verbeter de fouten voordat je verder gaat."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8538,10 +8455,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Geen records geretourneerd uit het vorige rapport. Pas uw filters of datumbereik aan en probeer het opnieuw."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Voer een menunaam in (2-50 tekens)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Voer een geldige URL in die begint met http:// of https://"
 
@@ -8550,28 +8463,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Alle systeembestandshandtekeningen komen overeen met de verwachte waarden."
 
 #: 
-msgid "Files with issues"
-msgstr "Bestanden met problemen"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Integriteitscontrole mislukt"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Integriteitscontrole geslaagd"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "Handtekeningdefinitiebestand bestaat maar is niet leesbaar. Controleer bestandsmachtigingen."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "Handtekeningdefinitiebestand ontbreekt op %s. Voer de verpakkingstaak uit of implementeer een officiële release om handtekeningen opnieuw te genereren."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Kan integriteitsendpunt niet bereiken. Controleer webserver-foutlogboeken."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8943,6 +8840,7 @@ msgstr "Evenement aan het bewerken"
 msgid "Enter event title..."
 msgstr "Voer evenementtitel in..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Evenement"
@@ -9954,10 +9852,6 @@ msgid "Membership Reports"
 msgstr "Lidmaatschapsrapporten"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Ontbrekende Geheime Sleutels"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "De meeste rapporten kunnen als PDF voor afdrukken of CSV voor spreadsheetanalyse worden geëxporteerd."
 
@@ -10096,10 +9990,6 @@ msgstr "SMTP-serverinstellingen zijn niet geconfigureerd"
 #: 
 msgid "Save and Add New Family"
 msgstr "Opslaan en Nieuwe Familie Toevoegen"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Geheime sleutels ontbreken in Config.php"
 
 #: 
 msgid "Sep"
@@ -10302,10 +10192,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Voer staat/provincie in voor landen zonder vooraf bepaalde staten)"
 
 #: 
-msgid "Available"
-msgstr "Beschikbaar"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Base URL-configuratie is ongeldig. Controleer uw Config.php-bestand."
 
@@ -10390,10 +10276,6 @@ msgid "No locales configured"
 msgstr "Geen talen geconfigureerd"
 
 #: 
-msgid "Not Available"
-msgstr "Niet beschikbaar"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Open dit bestand in een teksteditor:"
 
@@ -10426,10 +10308,6 @@ msgid "System Locale Support"
 msgstr "Systeem Taalondersteuning"
 
 #: 
-msgid "System Support"
-msgstr "Systeemondersteuning"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL bevat geen geldige hostnaam"
 
@@ -10448,18 +10326,6 @@ msgstr "URL moet eindigen met een trailing slash (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL moet beginnen met http:// of https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Kan systeemtalen niet detecteren"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Kan beschikbare talen niet bepalen"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Kan taalinformatie niet laden"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10678,10 +10544,6 @@ msgid "Remote backup failed"
 msgstr "Externe back-up mislukt"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV back-ups zijn niet correct geconfigureerd. Zorg ervoor dat eindpunt, gebruikersnaam en wachtwoord zijn ingesteld"
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA Ingeschakeld"
 
@@ -10808,10 +10670,6 @@ msgstr "Twee-Factor-Authenticatie"
 #: 
 msgid "Validation pending"
 msgstr "Validatie in behandeling"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "moet worden geconfigureerd met een versleutelingssleutel"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11166,14 +11024,6 @@ msgid "No people found matching your criteria."
 msgstr "Geen personen gevonden die aan uw criteria voldoen."
 
 #: 
-msgid "Off"
-msgstr "Uit"
-
-#: 
-msgid "On"
-msgstr "Aan"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotomap"
 
@@ -11186,26 +11036,12 @@ msgid "Show only people with photos"
 msgstr "Toon alleen personen met foto's"
 
 #: 
-msgid "Checkout All"
-msgstr "Iedereen uitchecken"
-
-#: 
 msgid "Expected"
 msgstr "Verwacht"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Kiosk verwijderen mislukt"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familie toezegging per boekjaar"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Geregistreerde studenten zoeken"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12416,4 +12252,107 @@ msgstr "Als u dit type verwijdert, verwijdert u ook alle eigenschappen die het g
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "Gaven verplaatsen naar geselecteerd gezin"
+
+#: 
+msgid "Calendar not found"
+msgstr "Kalender niet gevonden"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Doorgaan naar Dashboard"
+
+#: 
+msgid "Current Password"
+msgstr "Huidig Wachtwoord"
+
+#: 
+msgid "Deposit not found"
+msgstr "Bijdrage niet gevonden"
+
+#: 
+msgid "Group not found"
+msgstr "Groep niet gevonden"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Ongeldige JSON opgegeven voor configuratie"
+
+#: 
+msgid "Password Change Required"
+msgstr "Wachtwoordwijziging Vereist"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Wachtwoord Succesvol Gewijzigd"
+
+#: 
+msgid "Password Changed"
+msgstr "Wachtwoord Gewijzigd"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Wachtwoorden moeten minimaal"
+
+#: 
+msgid "Property not found"
+msgstr "Eigenschap niet gevonden"
+
+#: 
+msgid "Set New Password"
+msgstr "Nieuw Wachtwoord Instellen"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Het wachtwoord voor %s is bijgewerkt."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Kan JSON voor configuratie niet opnieuw coderen"
+
+#: 
+msgid "User not found"
+msgstr "Gebruiker niet gevonden"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "U moet een nieuw wachtwoord instellen voordat u verder kunt gaan."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Uw wachtwoord is succesvol bijgewerkt."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "geselecteerde familie heeft geen coördinaten"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Zoek mensen die een evenement niet hebben bijgewoond"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Leeg laten om het bestaande te behouden"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Ontbrekende personen"
+
+#: 
+msgid "Not enrolled"
+msgstr "Niet ingeschreven"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Vereis dat alle gebruikers zich inschrijven voor tweefactorauthenticatie"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selecteer het gewenste evenement"
 

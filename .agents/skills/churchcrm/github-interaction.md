@@ -2,6 +2,8 @@
 
 Purpose: practical, step-by-step actions for handling reviews, commits, and PRs. This file is an actionable companion to the canonical `git-workflow.md` (policy) and the `gh-cli` skill (commands).
 
+For a **full PR review workflow** (fetching changes, standards checklist, doc updates, manual validation, capturing learnings), see [`pr-review.md`](./pr-review.md).
+
 Quick checklist — Addressing reviews
 - Read comments and ask clarifying questions if needed.
 - Make one focused change per review thread; add tests where applicable.

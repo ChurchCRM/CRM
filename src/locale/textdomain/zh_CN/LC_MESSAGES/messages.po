@@ -2702,10 +2702,6 @@ msgid "Last Login"
 msgstr "最后登录"
 
 #: 
-msgid "Total Logins"
-msgstr "总计登录"
-
-#: 
 msgid "Failed Logins"
 msgstr "登录失败"
 
@@ -4227,11 +4223,6 @@ msgstr "用于分隔 邮件到：链接 的电子邮件的分隔符"
 #: 
 msgid "User permission to create directories"
 msgstr "用户创建目录的权限"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "用户导出CSV文件的权限"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6827,14 +6818,6 @@ msgid "View User"
 msgstr "查看用户"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "请求无效：缺少日历ID"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "找不到：未知的日历ID"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "没有找到或没有电子邮件的用户"
@@ -7003,10 +6986,6 @@ msgstr "无效的事件类型ID"
 #: 
 msgid "invalid calendar pinning"
 msgstr "无效的日历pinning"
-
-#: 
-msgid "invalid group id"
-msgstr "无效的组ID"
 
 #: 
 msgid "invalid status value"
@@ -7182,10 +7161,6 @@ msgid "Age Histogram"
 msgstr "年龄直方图"
 
 #: 
-msgid "Missing event id"
-msgstr "缺少事件ID"
-
-#: 
 msgid "Event not found"
 msgstr "找不到活动"
 
@@ -7328,14 +7303,6 @@ msgid "Holiday"
 msgstr "假期"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "允许用户自行注册2因子身份验证"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "要求用户自行注册2要素身份验证"
-
-#: 
 msgid "ChurchCRM"
 msgstr "教会客户关系管理"
 
@@ -7376,32 +7343,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓，名，中间名"
 
 #: 
-msgid "Two Factor Status"
-msgstr "两要素状态"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "不支持的两因素身份验证配置"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "无法开始两因素身份验证注册"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "两因素身份验证要求ChurchCRM管理员配置一些参数"
-
-#: 
-msgid "System configuration "
-msgstr "系统配置 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "必须设置为“ true”"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7553,10 +7496,6 @@ msgstr "帮助翻译这个项目"
 #: 
 msgid "Afrikaans"
 msgstr "南非语"
-
-#: 
-msgid " has a type mismatch"
-msgstr " 类型不匹配"
 
 #: 
 msgid "Loading"
@@ -7762,16 +7701,6 @@ msgstr "属性"
 #: 
 msgid "Default Zip"
 msgstr "默认邮编"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡支付人员"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为通过信用卡支付的人员。"
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8159,14 +8088,6 @@ msgid "City is required"
 msgstr "城市是必填项"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "数据库服务器端口是必填项（例如：3306）"
-
-#: 
-msgid "Database username is required"
-msgstr "数据库用户名是必填项"
-
-#: 
 msgid "Email Address"
 msgstr "电子邮件地址"
 
@@ -8269,10 +8190,6 @@ msgstr "电话号码"
 #: 
 msgid "Please add at least one family member."
 msgstr "请至少添加一名家庭成员。"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "请在继续之前纠正验证错误。"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8635,10 +8552,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "之前的报告未返回任何记录。请调整您的过滤器或日期范围，然后重试。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "请输入菜单名称（2-50 个字符）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "请输入以 http:// 或 https:// 开头的有效 URL"
 
@@ -8647,28 +8560,12 @@ msgid "All system file signatures match the expected values."
 msgstr "所有系统文件签名均符合预期值。"
 
 #: 
-msgid "Files with issues"
-msgstr "有问题的文件"
-
-#: 
-msgid "Integrity check failed"
-msgstr "完整性检查失败"
-
-#: 
-msgid "Integrity check passed"
-msgstr "完整性检查通过"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "签名定义文件存在但不可读。检查文件权限。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "位于 %s 的签名定义文件丢失。请运行打包任务或部署官方版本以重新生成签名。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "无法联系完整性端点。请检查 Web 服务器错误日志。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -9039,6 +8936,7 @@ msgstr "正在编辑活动"
 msgid "Enter event title..."
 msgstr "输入活动标题..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "活动"
@@ -10049,10 +9947,6 @@ msgid "Membership Reports"
 msgstr "成员报告"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "缺失密钥"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "大多数报告可以导出为 PDF 供打印，或导出为 CSV 供电子表格分析。"
 
@@ -10191,10 +10085,6 @@ msgstr "SMTP 服务器设置未配置"
 #: 
 msgid "Save and Add New Family"
 msgstr "保存并添加家庭"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.php 中缺失密钥"
 
 #: 
 msgid "Sep"
@@ -10397,10 +10287,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "（为没有预定义州/省的国家输入州/省）"
 
 #: 
-msgid "Available"
-msgstr "可用"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "基础 URL 配置无效。请检查您的 Config.php 文件。"
 
@@ -10485,10 +10371,6 @@ msgid "No locales configured"
 msgstr "未配置语言环境"
 
 #: 
-msgid "Not Available"
-msgstr "不可用"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "在文本编辑器中打开此文件："
 
@@ -10521,10 +10403,6 @@ msgid "System Locale Support"
 msgstr "系统语言环境支持"
 
 #: 
-msgid "System Support"
-msgstr "系统支持"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL 不包含有效的主机名"
 
@@ -10543,18 +10421,6 @@ msgstr "URL 必须以结尾斜杠 (/) 结束"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL 必须以 http:// 或 https:// 开始"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "无法检测系统语言环境"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "无法确定可用语言环境"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "无法加载语言环境信息"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10773,10 +10639,6 @@ msgid "Remote backup failed"
 msgstr "远程备份失败"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV 备份配置不正确。请确保已设置终端点、用户名和密码"
-
-#: 
 msgid "2FA Enabled"
 msgstr "已启用双重身份验证 (2FA)"
 
@@ -10903,10 +10765,6 @@ msgstr "双重身份验证 (2FA)"
 #: 
 msgid "Validation pending"
 msgstr "等待验证"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "必须配置加密密钥"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11257,14 +11115,6 @@ msgid "No people found matching your criteria."
 msgstr "未找到符合您条件的人员。"
 
 #: 
-msgid "Off"
-msgstr "关闭"
-
-#: 
-msgid "On"
-msgstr "开启"
-
-#: 
 msgid "Photo Directory"
 msgstr "照片目录"
 
@@ -11277,26 +11127,12 @@ msgid "Show only people with photos"
 msgstr "只显示有照片的人"
 
 #: 
-msgid "Checkout All"
-msgstr "全部签出"
-
-#: 
 msgid "Expected"
 msgstr "预期"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "删除自助终端失败"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "按财年的家庭承诺"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "查找已注册学生"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12506,4 +12342,107 @@ msgstr "如果删除此类型，您还将删除所有使用它的属性，并失
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "将奉献移至所选家庭"
+
+#: 
+msgid "Calendar not found"
+msgstr "日历未找到"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "继续到仪表板"
+
+#: 
+msgid "Current Password"
+msgstr "当前密码"
+
+#: 
+msgid "Deposit not found"
+msgstr "奉献记录未找到"
+
+#: 
+msgid "Group not found"
+msgstr "小组未找到"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "为配置提供的JSON无效"
+
+#: 
+msgid "Password Change Required"
+msgstr "需要更改密码"
+
+#: 
+msgid "Password Change Successful"
+msgstr "密码更改成功"
+
+#: 
+msgid "Password Changed"
+msgstr "密码已更改"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "密码长度至少为"
+
+#: 
+msgid "Property not found"
+msgstr "属性未找到"
+
+#: 
+msgid "Set New Password"
+msgstr "设置新密码"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s的密码已更新。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "无法为配置重新编码JSON"
+
+#: 
+msgid "User not found"
+msgstr "用户未找到"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "继续之前您必须设置新密码。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "您的密码已成功更新。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "所选家庭没有坐标"
+
+#: 
+msgid "2FA"
+msgstr "双重验证"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未参加活动的人员"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "留空以保留现有内容"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人员"
+
+#: 
+msgid "Not enrolled"
+msgstr "未注册"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "要求所有用户注册双重身份验证"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "选择所需活动"
 

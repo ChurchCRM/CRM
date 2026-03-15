@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e2457dd0da4ceee306fdbbd07fa11262",
+    "content-hash": "d0663d600ee0ef36d1113f4cc61c5170",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -613,126 +613,6 @@
                 "source": "https://github.com/php-fig/http-message-util/tree/1.1.5"
             },
             "time": "2020-11-24T22:02:12+00:00"
-        },
-        {
-            "name": "geocoder-php/common-http",
-            "version": "4.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/geocoder-php/php-common-http.git",
-                "reference": "4209be6c31946ed5a658f6240ab21faaf5413f61"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/php-common-http/zipball/4209be6c31946ed5a658f6240ab21faaf5413f61",
-                "reference": "4209be6c31946ed5a658f6240ab21faaf5413f61",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8.0",
-                "php-http/discovery": "^1.17",
-                "psr/http-client-implementation": "^1.0",
-                "psr/http-factory-implementation": "^1.0",
-                "willdurand/geocoder": "^4.0|^5.0"
-            },
-            "require-dev": {
-                "nyholm/psr7": "^1.0",
-                "php-http/message": "^1.0",
-                "php-http/mock-client": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "symfony/stopwatch": "~2.5 || ~5.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Geocoder\\Http\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tobias Nyholm",
-                    "email": "tobias.nyholm@gmail.com"
-                }
-            ],
-            "description": "Common files for HTTP based Geocoders",
-            "homepage": "http://geocoder-php.org",
-            "keywords": [
-                "http geocoder"
-            ],
-            "support": {
-                "source": "https://github.com/geocoder-php/php-common-http/tree/4.7.0"
-            },
-            "time": "2025-04-15T12:38:11+00:00"
-        },
-        {
-            "name": "geocoder-php/google-maps-provider",
-            "version": "4.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/geocoder-php/google-maps-provider.git",
-                "reference": "587aac3647ebd2ce2090b613fc56c753b9dee9a7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/google-maps-provider/zipball/587aac3647ebd2ce2090b613fc56c753b9dee9a7",
-                "reference": "587aac3647ebd2ce2090b613fc56c753b9dee9a7",
-                "shasum": ""
-            },
-            "require": {
-                "geocoder-php/common-http": "^4.0",
-                "php": "^8.0",
-                "willdurand/geocoder": "^4.0|^5.0"
-            },
-            "provide": {
-                "geocoder-php/provider-implementation": "1.0"
-            },
-            "require-dev": {
-                "geocoder-php/provider-integration-tests": "^1.6.3",
-                "php-http/message": "^1.0",
-                "phpunit/phpunit": "^9.5"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "4.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Geocoder\\Provider\\GoogleMaps\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com"
-                }
-            ],
-            "description": "Geocoder GoogleMaps adapter",
-            "homepage": "http://geocoder-php.org/Geocoder/",
-            "support": {
-                "source": "https://github.com/geocoder-php/google-maps-provider/tree/4.8.0"
-            },
-            "time": "2025-04-15T13:24:32+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -3472,16 +3352,16 @@
         },
         {
             "name": "symfony/config",
-            "version": "v7.4.6",
+            "version": "v7.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/config.git",
-                "reference": "9400e2f9226b3b64ebb0a8ae967ae84e54e39640"
+                "reference": "6c17162555bfb58957a55bb0e43e00035b6ae3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/config/zipball/9400e2f9226b3b64ebb0a8ae967ae84e54e39640",
-                "reference": "9400e2f9226b3b64ebb0a8ae967ae84e54e39640",
+                "url": "https://api.github.com/repos/symfony/config/zipball/6c17162555bfb58957a55bb0e43e00035b6ae3d5",
+                "reference": "6c17162555bfb58957a55bb0e43e00035b6ae3d5",
                 "shasum": ""
             },
             "require": {
@@ -3527,7 +3407,7 @@
             "description": "Helps you find, load, combine, autofill and validate configuration values of any kind",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/config/tree/v7.4.6"
+                "source": "https://github.com/symfony/config/tree/v7.4.7"
             },
             "funding": [
                 {
@@ -3547,20 +3427,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-25T16:50:00+00:00"
+            "time": "2026-03-06T10:41:14+00:00"
         },
         {
             "name": "symfony/console",
-            "version": "v7.4.6",
+            "version": "v7.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6d643a93b47398599124022eb24d97c153c12f27"
+                "reference": "e1e6770440fb9c9b0cf725f81d1361ad1835329d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6d643a93b47398599124022eb24d97c153c12f27",
-                "reference": "6d643a93b47398599124022eb24d97c153c12f27",
+                "url": "https://api.github.com/repos/symfony/console/zipball/e1e6770440fb9c9b0cf725f81d1361ad1835329d",
+                "reference": "e1e6770440fb9c9b0cf725f81d1361ad1835329d",
                 "shasum": ""
             },
             "require": {
@@ -3625,7 +3505,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v7.4.6"
+                "source": "https://github.com/symfony/console/tree/v7.4.7"
             },
             "funding": [
                 {
@@ -3645,7 +3525,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-25T17:02:47+00:00"
+            "time": "2026-03-06T14:06:20+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -4767,16 +4647,16 @@
         },
         {
             "name": "symfony/validator",
-            "version": "v6.4.34",
+            "version": "v6.4.35",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/validator.git",
-                "reference": "7c3897b7f739d4ab913481e680405ca82d08084d"
+                "reference": "9dc02b6c7502f7c4b68a741d2826bbec061c5953"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/validator/zipball/7c3897b7f739d4ab913481e680405ca82d08084d",
-                "reference": "7c3897b7f739d4ab913481e680405ca82d08084d",
+                "url": "https://api.github.com/repos/symfony/validator/zipball/9dc02b6c7502f7c4b68a741d2826bbec061c5953",
+                "reference": "9dc02b6c7502f7c4b68a741d2826bbec061c5953",
                 "shasum": ""
             },
             "require": {
@@ -4844,7 +4724,7 @@
             "description": "Provides tools to validate values",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/validator/tree/v6.4.34"
+                "source": "https://github.com/symfony/validator/tree/v6.4.35"
             },
             "funding": [
                 {
@@ -4864,7 +4744,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-23T17:49:24+00:00"
+            "time": "2026-03-02T17:53:19+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -5253,68 +5133,6 @@
                 "source": "https://github.com/Nexmo/vonage-php-nexmo-bridge/tree/0.1.2"
             },
             "time": "2023-02-14T15:54:06+00:00"
-        },
-        {
-            "name": "willdurand/geocoder",
-            "version": "5.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/geocoder-php/php-common.git",
-                "reference": "a749e00819d2929bd0ec40fb79853956332970ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/geocoder-php/php-common/zipball/a749e00819d2929bd0ec40fb79853956332970ba",
-                "reference": "a749e00819d2929bd0ec40fb79853956332970ba",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2"
-            },
-            "require-dev": {
-                "nyholm/nsa": "^1.1",
-                "phpunit/phpunit": "^9.5",
-                "symfony/stopwatch": "~2.5 || ~5.0"
-            },
-            "suggest": {
-                "symfony/stopwatch": "If you want to use the TimedGeocoder"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Geocoder\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "William Durand",
-                    "email": "william.durand1@gmail.com"
-                }
-            ],
-            "description": "Common files for PHP Geocoder",
-            "homepage": "http://geocoder-php.org",
-            "keywords": [
-                "abstraction",
-                "geocoder",
-                "geocoding",
-                "geoip"
-            ],
-            "support": {
-                "source": "https://github.com/geocoder-php/php-common/tree/5.0.0"
-            },
-            "time": "2025-01-01T15:52:42+00:00"
         }
     ],
     "packages-dev": [
@@ -5772,5 +5590,5 @@
     "platform-overrides": {
         "php": "8.4"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }

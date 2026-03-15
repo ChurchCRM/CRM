@@ -268,8 +268,8 @@ describe('API - User Creation', () => {
 # 1. Clear logs before reproducing
 rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
-# 2. Run the failing test
-npx cypress run --spec "cypress/e2e/api/path/to/test.spec.js"
+# 2. Run the failing test (always include --config-file)
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/path/to/test.spec.js"
 
 # 3. Check PHP logs for error
 cat src/logs/$(date +%Y-%m-%d)-php.log | tail -50
@@ -289,61 +289,108 @@ cat src/logs/$(date +%Y-%m-%d)-app.log
 
 ## Configuration
 
-### Cypress Config Files
+### Cypress Config Files <!-- learned: 2026-03-07 -->
 
-**Development:** `cypress.config.ts`
-```typescript
-export default defineConfig({
-    e2e: {
-        baseUrl: 'http://localhost:8000',
-        env: {
-            'admin.username': 'admin',
-            'admin.password': 'changeme',
-        }
-    }
-});
-```
+Config files live in `cypress/configs/` (NOT `docker/`):
 
-**CI/Docker:** `docker/cypress.config.ts`
-```typescript
-export default defineConfig({
-    e2e: {
-        baseUrl: 'http://web:8080',  // Docker service name
-        specPattern: 'cypress/e2e/**/*.spec.ts',
-    }
-});
-```
+- `cypress/configs/docker.config.ts` — standard CI/dev config (uses Docker container at `http://localhost`)
+- `cypress/configs/new-system.config.ts` — setup wizard / fresh install tests
+- `cypress/configs/base.config.ts` + `_shared.ts` — shared base configuration
 
-### Running Tests Locally
+**CRITICAL: `npx cypress run` without `--config-file` will fail** — Cypress won't find baseUrl or test credentials. Always pass the config file.
+
+**CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
+- Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
+- If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
+- The config points at a Docker container. Start the stack (`npm run docker:test`) before running tests.
+
+### Running Tests (ALWAYS use --config-file) <!-- learned: 2026-03-07 -->
 
 ```bash
-# Interactive browser testing
-npm run test:ui
-
-# Headless testing (CI mode)
+# Full suite headless (standard)
 npm run test
 
-# Run specific test file
-npx cypress run --spec "cypress/e2e/ui/users/create-user.cy.ts"
+# Interactive browser runner
+npm run test:open
 
-# Run with debug logging
-DEBUG=cypress:* npm run test
+# API tests only
+npm run test:api
+
+# UI tests only
+npm run test:ui
+
+# Single spec file — ALWAYS pass --config-file
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+
+# Or use npm script with -- to forward the --spec flag
+npm run test:ui -- --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+
+# Setup wizard tests
+npm run test:new-system
 ```
 
-### Running Tests in Docker
+### Running Tests in Docker (Required Workflow)
+
+Tests cannot run locally without Docker — the app server lives in a container.
 
 ```bash
-# Start test containers
-npm run docker:test:start
+# 0. Ensure Node 24 is active (project requires >=24 <25)
+node --version  # must be v24.x
 
-# Run all tests
-npx cypress run
+# 1. Start test containers
+npm run docker:test
 
-# View logs after failures
+# 2. Run tests
+npm run test                          # full suite
+npm run test:ui                       # UI tests only
+npm run test:api                      # API tests only
+
+# 3. Single spec
+npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+
+# 4. View logs after failures
 npm run docker:test:logs
+
+# 5. Teardown
+npm run docker:test:down
 ```
 
 ## Test File Best Practices
+
+### Avoid Complex Async Operations in Session Tests <!-- learned: 2026-03-14 -->
+
+When using `cy.setupStandardSession()` or similar session-based setup, **do not make API calls or complex async operations before or within test blocks**. These can interfere with Cypress session caching and cause login timeouts.
+
+**❌ WRONG — API call in test causes login to hang:**
+```typescript
+describe('Standard Sunday School', () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it('View class and verify students', () => {
+        // This API call interferes with session setup
+        cy.makePrivateAdminAPICall('GET', '/api/groups/42', null, 200);
+
+        cy.visit('sundayschool/SundaySchoolClassView.php?groupid=42');
+        cy.get('table tbody tr').should('have.length.greaterThan', 0);
+    });
+});
+```
+
+**✅ CORRECT — Direct UI verification without API calls:**
+```typescript
+describe('Standard Sunday School', () => {
+    beforeEach(() => cy.setupStandardSession());
+
+    it('View class and verify students display', () => {
+        // Just visit and assert UI state
+        cy.visit('sundayschool/SundaySchoolClassView.php?groupid=42');
+        cy.get('table tbody tr').should('have.length.greaterThan', 0);
+        cy.contains('Student').should('be.visible');
+    });
+});
+```
+
+**Why:** `cy.session()` maintains login state across tests. Adding API calls or async operations in `beforeEach()` or test blocks can break session caching and cause the login phase to hang. Let the session setup handle authentication; tests verify UI.
 
 ### Clean Test Files
 

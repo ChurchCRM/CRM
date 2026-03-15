@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-02-23 13:22-0800\n"
+"POT-Creation-Date: 2026-03-07 16:37-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,9 +52,6 @@ msgid " for all funds"
 msgstr ""
 
 msgid " for fund "
-msgstr ""
-
-msgid " has a type mismatch"
 msgstr ""
 
 msgid " more entries will fit."
@@ -174,6 +171,9 @@ msgid "0 - No Minimum"
 msgstr ""
 
 msgid "2-50 characters"
+msgstr ""
+
+msgid "2FA"
 msgstr ""
 
 msgid "2FA Enabled"
@@ -537,9 +537,6 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "Allow user to add new event"
-msgstr ""
-
-msgid "Allow users to self-enroll in 2 factor authentication"
 msgstr ""
 
 msgid "Already in a family"
@@ -1123,6 +1120,9 @@ msgstr ""
 msgid "Calendar access token not found"
 msgstr ""
 
+msgid "Calendar not found"
+msgstr ""
+
 msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
 msgstr ""
 
@@ -1674,6 +1674,9 @@ msgstr ""
 msgid "Continue to Backup"
 msgstr ""
 
+msgid "Continue to Dashboard"
+msgstr ""
+
 msgid "Continue to Download & Apply"
 msgstr ""
 
@@ -1814,10 +1817,6 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
-#. Context: query_qry
-msgid "Credit Card People"
-msgstr ""
-
 msgid "Critical Configuration Error"
 msgstr ""
 
@@ -1843,6 +1842,9 @@ msgid "Current Deposit"
 msgstr ""
 
 msgid "Current Fiscal Year"
+msgstr ""
+
+msgid "Current Password"
 msgstr ""
 
 msgid "Current Role"
@@ -2245,6 +2247,9 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit closed"
+msgstr ""
+
+msgid "Deposit not found"
 msgstr ""
 
 msgid "Deposit saved successfully"
@@ -2857,6 +2862,7 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -3227,10 +3233,6 @@ msgstr ""
 msgid "Family Navigation"
 msgstr ""
 
-#. Context: query_qry
-msgid "Family Pledge by Fiscal Year"
-msgstr ""
-
 msgid "Family Pledges"
 msgstr ""
 
@@ -3420,14 +3422,14 @@ msgstr ""
 msgid "Find Duplicate Emails"
 msgstr ""
 
-#. Context: query_qry
-msgid "Find Registered students"
-msgstr ""
-
 msgid "Find family->"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -3496,12 +3498,7 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Fiscal Year"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -3837,8 +3834,7 @@ msgstr ""
 msgid "Group management access"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Group of registered students"
+msgid "Group not found"
 msgstr ""
 
 msgid "Group removed from cart"
@@ -4211,6 +4207,9 @@ msgstr ""
 msgid "Invalid Entry"
 msgstr ""
 
+msgid "Invalid JSON provided for configuration"
+msgstr ""
+
 msgid "Invalid List id"
 msgstr ""
 
@@ -4257,9 +4256,6 @@ msgid "Invalid person ID"
 msgstr ""
 
 msgid "Invalid request data"
-msgstr ""
-
-msgid "Invalid request: Missing calendar id"
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -4494,6 +4490,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Latvia (Latvija)"
+msgstr ""
+
+msgid "Leave blank to keep existing"
 msgstr ""
 
 msgid "Leave blank to keep existing password"
@@ -5024,16 +5023,14 @@ msgstr ""
 msgid "Missing PHP ZipArchive"
 msgstr ""
 
-msgid "Missing Secret Keys"
-msgstr ""
-
 msgid "Missing calendar access token"
 msgstr ""
 
-msgid "Missing event id"
+msgid "Missing families? Update coordinates to include them on the map."
 msgstr ""
 
-msgid "Missing families? Update coordinates to include them on the map."
+#. Context: query_qry
+msgid "Missing people"
 msgstr ""
 
 #. Context: query_qry
@@ -5168,9 +5165,6 @@ msgid "Must be a valid URL starting with http:// or https:// (e.g., http://local
 msgstr ""
 
 msgid "Must be a valid port number (e.g., 3306)"
-msgstr ""
-
-msgid "Must be set to 'true'"
 msgstr ""
 
 msgid "Must specify non-zero check number"
@@ -5537,9 +5531,6 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-msgid "Not Found: Unknown calendar id"
-msgstr ""
-
 msgid "Not Subscribed"
 msgstr ""
 
@@ -5562,6 +5553,9 @@ msgid "Not assigned"
 msgstr ""
 
 msgid "Not configured"
+msgstr ""
+
+msgid "Not enrolled"
 msgstr ""
 
 msgid "Not in CRM"
@@ -5849,6 +5843,15 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password Change Required"
+msgstr ""
+
+msgid "Password Change Successful"
+msgstr ""
+
+msgid "Password Changed"
+msgstr ""
+
 msgid "Password Reset"
 msgstr ""
 
@@ -5868,6 +5871,9 @@ msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Passwords do not match"
+msgstr ""
+
+msgid "Passwords must be at least"
 msgstr ""
 
 msgid "Patriarch"
@@ -5928,10 +5934,6 @@ msgid "People in Cart (filters ignored)"
 msgstr ""
 
 msgid "People not in"
-msgstr ""
-
-#. Context: query_qry
-msgid "People who are configured to pay by credit card."
 msgstr ""
 
 #. Context: query_qry
@@ -6281,10 +6283,6 @@ msgstr ""
 msgid "Pledge or Payment"
 msgstr ""
 
-#. Context: query_qry
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -6427,6 +6425,9 @@ msgstr ""
 msgid "Property Types"
 msgstr ""
 
+msgid "Property not found"
+msgstr ""
+
 msgid "Property successfully assigned."
 msgstr ""
 
@@ -6556,10 +6557,6 @@ msgstr ""
 msgid "Register another family!"
 msgstr ""
 
-#. Context: query_qry
-msgid "Registered students"
-msgstr ""
-
 msgid "Registration Complete"
 msgstr ""
 
@@ -6684,6 +6681,9 @@ msgstr ""
 msgid "Request Password Reset"
 msgstr ""
 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr ""
+
 msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
@@ -6697,9 +6697,6 @@ msgid "Required fields"
 msgstr ""
 
 msgid "Required permission"
-msgstr ""
-
-msgid "Requires users to self-enroll in 2 factor authentication"
 msgstr ""
 
 msgid "Reset"
@@ -7014,9 +7011,6 @@ msgstr ""
 msgid "Second volunteer opportunity choice"
 msgstr ""
 
-msgid "Secret keys missing from Config.php"
-msgstr ""
-
 msgid "Secure"
 msgstr ""
 
@@ -7124,6 +7118,10 @@ msgid "Select start and end date/time"
 msgstr ""
 
 #. Context: queryparameters_qrp
+msgid "Select the desired event"
+msgstr ""
+
+#. Context: queryparameters_qrp
 msgid "Select the desired family role."
 msgstr ""
 
@@ -7222,6 +7220,9 @@ msgid "Set Active"
 msgstr ""
 
 msgid "Set Inactive"
+msgstr ""
+
+msgid "Set New Password"
 msgstr ""
 
 msgid "Set Permission True to give new users the ability to change their current value.<BR>"
@@ -7665,9 +7666,6 @@ msgstr ""
 msgid "System Users"
 msgstr ""
 
-msgid "System configuration "
-msgstr ""
-
 msgid "System upgrade completed successfully!"
 msgstr ""
 
@@ -7803,6 +7801,10 @@ msgid "The minimum age for which you want records returned."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr ""
+
+#, php-format
+msgid "The password for %s has been updated."
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8072,9 +8074,6 @@ msgstr ""
 msgid "Total Deposits:"
 msgstr ""
 
-msgid "Total Logins"
-msgstr ""
-
 msgid "Total Members"
 msgstr ""
 
@@ -8158,13 +8157,7 @@ msgstr ""
 msgid "Two Factor Enrollment Error"
 msgstr ""
 
-msgid "Two Factor Status"
-msgstr ""
-
 msgid "Two characters from FirstName"
-msgstr ""
-
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
 msgstr ""
 
 msgid "Two-Factor Authentication"
@@ -8226,9 +8219,6 @@ msgstr ""
 msgid "Ukrainian"
 msgstr ""
 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr ""
-
 msgid "Unable to display map: church address has not been geocoded yet."
 msgstr ""
 
@@ -8242,6 +8232,9 @@ msgid "Unable to load verification info"
 msgstr ""
 
 msgid "Unable to open file"
+msgstr ""
+
+msgid "Unable to re-encode JSON for configuration"
 msgstr ""
 
 msgid "Unassigned"
@@ -8299,9 +8292,6 @@ msgid "Unsubscribed"
 msgstr ""
 
 msgid "Unsuccessful API Key authentication attempt"
-msgstr ""
-
-msgid "Unsupported Two Factor Authentication Configuration"
 msgstr ""
 
 msgid "Upcoming Birthdays"
@@ -8464,12 +8454,11 @@ msgstr ""
 msgid "User must have Menu Options permission"
 msgstr ""
 
-#. Context: userconfig_ucfg
-msgid "User permission to create directories"
+msgid "User not found"
 msgstr ""
 
 #. Context: userconfig_ucfg
-msgid "User permission to export CSV files"
+msgid "User permission to create directories"
 msgstr ""
 
 #. Context: userconfig_ucfg
@@ -8930,6 +8919,9 @@ msgstr ""
 msgid "You must select a type"
 msgstr ""
 
+msgid "You must set a new password before continuing."
+msgstr ""
+
 msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
 msgstr ""
 
@@ -9021,6 +9013,9 @@ msgid "Your new password must not match your old one."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been updated successfully."
 msgstr ""
 
 msgid "Your previous session timed out.  Please login again."
@@ -9165,9 +9160,6 @@ msgstr ""
 msgid "invalid export value"
 msgstr ""
 
-msgid "invalid group id"
-msgstr ""
-
 msgid "invalid group request"
 msgstr ""
 
@@ -9205,9 +9197,6 @@ msgid "mismatch detected"
 msgstr ""
 
 msgid "mismatches detected"
-msgstr ""
-
-msgid "must be configured with an encryption key"
 msgstr ""
 
 msgid "needs to be picked up from"
@@ -9291,6 +9280,9 @@ msgid "seconds..."
 msgstr ""
 
 msgid "select an option"
+msgstr ""
+
+msgid "selected family has no coordinates"
 msgstr ""
 
 msgid "subscribers"

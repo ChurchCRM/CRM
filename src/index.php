@@ -54,7 +54,7 @@ AuthenticationManager::ensureAuthentication();
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard
     RedirectUtils::redirect('v2/dashboard');
-} elseif (file_exists($shortName)) {
+} elseif (is_file($shortName)) {
     // Try actual path
     require $shortName;
 } elseif (file_exists($fileName)) {

@@ -2628,10 +2628,6 @@ msgid "Last Login"
 msgstr "Login terakhir"
 
 #: 
-msgid "Total Logins"
-msgstr "Login Total"
-
-#: 
 msgid "Failed Logins"
 msgstr "Info Masuk Gagal"
 
@@ -4134,11 +4130,6 @@ msgstr "Pembatas untuk memisahkan email dalam tautan mailto:"
 #: 
 msgid "User permission to create directories"
 msgstr "Izin pengguna untuk membuat direktori"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Izin pengguna untuk mengekspor file CSV"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6731,14 +6722,6 @@ msgid "View User"
 msgstr "Lihat Pengguna"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Permintaan tidak valid: Id kalender tidak ada"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Tidak Ditemukan: Id kalender tidak dikenal"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "tidak ditemukan atau pengguna tanpa email"
@@ -6907,10 +6890,6 @@ msgstr "id jenis acara tidak valid"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Pinning kalender tidak valid"
-
-#: 
-msgid "invalid group id"
-msgstr "id grup tidak valid"
 
 #: 
 msgid "invalid status value"
@@ -7086,10 +7065,6 @@ msgid "Age Histogram"
 msgstr "Histogram Usia"
 
 #: 
-msgid "Missing event id"
-msgstr "Id acara tidak ada"
-
-#: 
 msgid "Event not found"
 msgstr "Acara tidak ditemukan"
 
@@ -7225,14 +7200,6 @@ msgid "Holiday"
 msgstr "Hari libur"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Izinkan pengguna mendaftar sendiri dalam otentikasi 2 faktor"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Mengharuskan pengguna untuk mendaftar sendiri dalam otentikasi 2 faktor"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7273,32 +7240,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "LastName, FirstName MiddleName"
 
 #: 
-msgid "Two Factor Status"
-msgstr "Status Dua Faktor"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Konfigurasi Otentikasi Dua Faktor yang Tidak Didukung"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Tidak Dapat Memulai Pendaftaran Dua Faktor Otentikasi"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "Otentikasi dua faktor memerlukan administrator ChurchCRM untuk mengonfigurasi beberapa parameter"
-
-#: 
-msgid "System configuration "
-msgstr "Sistem konfigurasi "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Harus disetel ke 'benar'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7450,10 +7393,6 @@ msgstr "Bantu terjemahkan proyek ini"
 #: 
 msgid "Afrikaans"
 msgstr "Afrika"
-
-#: 
-msgid " has a type mismatch"
-msgstr "memiliki tipe yang tidak sesuai"
 
 #: 
 msgid "Loading"
@@ -7659,16 +7598,6 @@ msgstr "properti"
 #: 
 msgid "Default Zip"
 msgstr "Kode Pos Standar"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Pengguna Kartu Kredit"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Orang-orang yang membayar dengan kartu kredit."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8056,14 +7985,6 @@ msgid "City is required"
 msgstr "Kota wajib diisi"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Port server wajib diisi"
-
-#: 
-msgid "Database username is required"
-msgstr "Username database wajib diisi"
-
-#: 
 msgid "Email Address"
 msgstr "Alamat Email"
 
@@ -8166,10 +8087,6 @@ msgstr "Nomor telepon"
 #: 
 msgid "Please add at least one family member."
 msgstr "Harap tambahkan setidaknya satu anggota keluarga."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Harap perbaiki kesalahan sebelum melanjutkan."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8532,10 +8449,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Tidak ada data pada laporan sebelumnya. Harap sesuaikan filter atau rentang tanggal."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Harap masukkan nama menu (2-50 karakter)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Harap masukkan URL valid yang diawali http:// atau https://"
 
@@ -8544,28 +8457,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Semua tanda tangan file sistem sesuai."
 
 #: 
-msgid "Files with issues"
-msgstr "File bermasalah"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Pemeriksaan integritas gagal"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Pemeriksaan integritas berhasil"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "File definisi tanda tangan ada namun tidak dapat dibaca. Cek izin file."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "File definisi tanda tangan hilang di %s."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Tidak dapat menghubungi endpoint integritas. Periksa log error server."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8936,6 +8833,7 @@ msgstr "Mengubah Kegiatan"
 msgid "Enter event title..."
 msgstr "Masukkan judul kegiatan..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Kegiatan"
@@ -9946,10 +9844,6 @@ msgid "Membership Reports"
 msgstr "Laporan Keanggotaan"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Kunci Rahasia Hilang"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Hampir semua laporan dapat diekspor ke PDF atau CSV."
 
@@ -10088,10 +9982,6 @@ msgstr "Pengaturan server SMTP belum dikonfigurasi"
 #: 
 msgid "Save and Add New Family"
 msgstr "Simpan dan Tambah Keluarga Baru"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Kunci rahasia hilang dari Config.php"
 
 #: 
 msgid "Sep"
@@ -10294,10 +10184,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Masukkan provinsi jika tidak ada dalam daftar)"
 
 #: 
-msgid "Available"
-msgstr "Tersedia"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Konfigurasi URL Dasar tidak valid. Periksa file Config.php."
 
@@ -10382,10 +10268,6 @@ msgid "No locales configured"
 msgstr "Bahasa tidak dikonfigurasi"
 
 #: 
-msgid "Not Available"
-msgstr "Tidak Tersedia"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Buka file ini di editor teks:"
 
@@ -10418,10 +10300,6 @@ msgid "System Locale Support"
 msgstr "Dukungan Bahasa Sistem"
 
 #: 
-msgid "System Support"
-msgstr "Dukungan Sistem"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL tidak berisi nama host yang valid"
 
@@ -10440,18 +10318,6 @@ msgstr "URL harus diakhiri garis miring (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL harus diawali http:// atau https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Gagal mendeteksi bahasa sistem"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Gagal menentukan bahasa yang tersedia"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Gagal memuat informasi bahasa"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10670,10 +10536,6 @@ msgid "Remote backup failed"
 msgstr "Pencadangan jarak jauh gagal"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Cadangan WebDAV tidak dikonfigurasi dengan benar."
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA Aktif"
 
@@ -10800,10 +10662,6 @@ msgstr "Autentikasi Dua Faktor (2FA)"
 #: 
 msgid "Validation pending"
 msgstr "Menunggu validasi"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "harus dikonfigurasi dengan kunci enkripsi"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11154,14 +11012,6 @@ msgid "No people found matching your criteria."
 msgstr "Tidak ada orang ditemukan yang sesuai dengan kriteria Anda."
 
 #: 
-msgid "Off"
-msgstr "Mati"
-
-#: 
-msgid "On"
-msgstr "Hidup"
-
-#: 
 msgid "Photo Directory"
 msgstr "Direktori Foto"
 
@@ -11174,26 +11024,12 @@ msgid "Show only people with photos"
 msgstr "Tampilkan hanya orang dengan foto"
 
 #: 
-msgid "Checkout All"
-msgstr "Checkout Semua"
-
-#: 
 msgid "Expected"
 msgstr "Diharapkan"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Gagal menghapus kiosk"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Janji Keluarga per Tahun Fiskal"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Cari siswa terdaftar"
 
 #. Context: queryparameters_qrp
 #: 
@@ -12403,4 +12239,107 @@ msgstr "Jika Anda menghapus tipe ini, Anda juga akan menghapus semua properti ya
 #: 
 msgid "Move Donations to Selected Family"
 msgstr "Pindahkan Persembahan ke Keluarga yang Dipilih"
+
+#: 
+msgid "Calendar not found"
+msgstr "Kalender tidak ditemukan"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Lanjutkan ke Dasbor"
+
+#: 
+msgid "Current Password"
+msgstr "Kata Sandi Saat Ini"
+
+#: 
+msgid "Deposit not found"
+msgstr "Persembahan tidak ditemukan"
+
+#: 
+msgid "Group not found"
+msgstr "Kelompok tidak ditemukan"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON tidak valid untuk konfigurasi"
+
+#: 
+msgid "Password Change Required"
+msgstr "Perubahan Kata Sandi Diperlukan"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Perubahan Kata Sandi Berhasil"
+
+#: 
+msgid "Password Changed"
+msgstr "Kata Sandi Diubah"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Kata sandi harus minimal"
+
+#: 
+msgid "Property not found"
+msgstr "Properti tidak ditemukan"
+
+#: 
+msgid "Set New Password"
+msgstr "Atur Kata Sandi Baru"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "Kata sandi untuk %s telah diperbarui."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Tidak dapat menyandikan ulang JSON untuk konfigurasi"
+
+#: 
+msgid "User not found"
+msgstr "Pengguna tidak ditemukan"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Anda harus mengatur kata sandi baru sebelum melanjutkan."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Kata sandi Anda telah berhasil diperbarui."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "keluarga yang dipilih tidak memiliki koordinat"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Temukan orang-orang yang tidak hadir dalam suatu acara"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Biarkan kosong untuk mempertahankan nilai yang ada"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Orang yang tidak hadir"
+
+#: 
+msgid "Not enrolled"
+msgstr "Belum terdaftar"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Pilih acara yang diinginkan"
 

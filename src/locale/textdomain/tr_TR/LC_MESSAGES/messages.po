@@ -2627,10 +2627,6 @@ msgid "Last Login"
 msgstr "Son giriş"
 
 #: 
-msgid "Total Logins"
-msgstr "Toplam girişler"
-
-#: 
 msgid "Failed Logins"
 msgstr "Başarısız girişler"
 
@@ -4133,11 +4129,6 @@ msgstr "Mailto'daki e -postaları ayıracak sınırlayıcı: bağlantılar"
 #: 
 msgid "User permission to create directories"
 msgstr "Dizinler oluşturmak için kullanıcı izni"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
 
 #. Context: userconfig_ucfg
 #: 
@@ -6730,14 +6721,6 @@ msgid "View User"
 msgstr "Kullanıcıyı görüntüle"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Geçersiz istek: Eksik takvim kimliği"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Bulunmadı: Bilinmeyen Takvim Kimliği"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "E -posta olmadan bulunamadı veya kullanıcı"
@@ -6906,10 +6889,6 @@ msgstr "Geçersiz olay türü kimliği"
 #: 
 msgid "invalid calendar pinning"
 msgstr "Geçersiz takvim sabitleme"
-
-#: 
-msgid "invalid group id"
-msgstr "Geçersiz grup kimliği"
 
 #: 
 msgid "invalid status value"
@@ -7085,10 +7064,6 @@ msgid "Age Histogram"
 msgstr "Yaş histogramı"
 
 #: 
-msgid "Missing event id"
-msgstr "Eksik Olay Kimliği"
-
-#: 
 msgid "Event not found"
 msgstr "Olay bulunamadı"
 
@@ -7233,14 +7208,6 @@ msgid "Holiday"
 msgstr "Tatil"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasına izin verin"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Kullanıcıların 2 faktörlü kimlik doğrulamasında kendi kendine kayıt yapmasını gerektirir"
-
-#: 
 msgid "ChurchCRM"
 msgstr "Churchcrm"
 
@@ -7281,32 +7248,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Son ad ilk ad ikinci ad"
 
 #: 
-msgid "Two Factor Status"
-msgstr "İki Faktör Durumu"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Desteklenmemiş iki faktörlü kimlik doğrulama yapılandırması"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "İki faktörlü kimlik doğrulama kaydına başlayamıyor"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "İki faktörlü kimlik doğrulaması, ChurchCRM yöneticilerinin birkaç parametre yapılandırmasını gerektirir"
-
-#: 
-msgid "System configuration "
-msgstr "Sistem yapılandırması"
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "'True' olarak ayarlanmalı"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7458,10 +7401,6 @@ msgstr "Bu projeyi tercüme etmeye yardım edin"
 #: 
 msgid "Afrikaans"
 msgstr "Afrikaans"
-
-#: 
-msgid " has a type mismatch"
-msgstr " Tip bir uyumsuzluk var"
 
 #: 
 msgid "Loading"
@@ -7667,16 +7606,6 @@ msgstr "özellik"
 #: 
 msgid "Default Zip"
 msgstr "Varsayılan Posta Kodu"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredi Kartı Kullanan Kişiler"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Kredi kartı ile ödeme yapacak şekilde yapılandırılmış kişiler."
 
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
@@ -8064,14 +7993,6 @@ msgid "City is required"
 msgstr "Şehir gereklidir"
 
 #: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Veritabanı sunucusu bağlantı noktası (port) gereklidir (örn. 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Veritabanı kullanıcı adı gereklidir"
-
-#: 
 msgid "Email Address"
 msgstr "E-posta Adresi"
 
@@ -8174,10 +8095,6 @@ msgstr "Telefon numarası"
 #: 
 msgid "Please add at least one family member."
 msgstr "Lütfen en az bir aile üyesi ekleyin."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Lütfen devam etmeden önce doğrulama hatalarını düzeltin."
 
 #: 
 msgid "Please enter a valid URL"
@@ -8540,10 +8457,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Önceki rapordan hiçbir kayıt dönmedi. Lütfen filtrelerinizi veya tarih aralığınızı ayarlayıp tekrar deneyin."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Lütfen bir menü adı girin (2-50 karakter)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Lütfen http:// veya https:// ile başlayan geçerli bir URL girin"
 
@@ -8552,28 +8465,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Tüm sistem dosyası imzaları beklenen değerlerle eşleşiyor."
 
 #: 
-msgid "Files with issues"
-msgstr "Sorunlu dosyalar"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Bütünlük kontrolü başarısız oldu"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Bütünlük kontrolü başarıyla geçti"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "İmza tanımlama dosyası mevcut ancak okunabilir değil. Dosya izinlerini kontrol edin."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "İmza tanımlama dosyası %s konumunda eksik. İmzaları yeniden oluşturmak için paketleme görevini çalıştırın veya resmi bir sürüm yayınlayın."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Bütünlük uç noktasına ulaşılamıyor. Web sunucusu hata günlüklerini kontrol edin."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -8945,6 +8842,7 @@ msgstr "Etkinlik Düzenleniyor"
 msgid "Enter event title..."
 msgstr "Etkinlik başlığı girin..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Etkinlik"
@@ -9956,10 +9854,6 @@ msgid "Membership Reports"
 msgstr "Üyelik Raporları"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Eksik Gizli Anahtarlar"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "Çoğu rapor, yazdırmak için PDF veya hesap çizelgesi analizi için CSV olarak dışa aktarılabilir."
 
@@ -10098,10 +9992,6 @@ msgstr "SMTP sunucu ayarları yapılandırılmamış"
 #: 
 msgid "Save and Add New Family"
 msgstr "Kaydet ve Yeni Aile Ekle"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Gizli anahtarlar Config.php dosyasında eksik"
 
 #: 
 msgid "Sep"
@@ -10304,10 +10194,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Önceden tanımlanmış eyaletleri olmayan ülkeler için eyalet/il girin)"
 
 #: 
-msgid "Available"
-msgstr "Mevcut"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "Temel URL yapılandırması geçersiz. Lütfen Config.php dosyanızı kontrol edin."
 
@@ -10392,10 +10278,6 @@ msgid "No locales configured"
 msgstr "Yapılandırılmış yerel ayar yok"
 
 #: 
-msgid "Not Available"
-msgstr "Mevcut Değil"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Bu dosyayı bir metin düzenleyicide açın:"
 
@@ -10428,10 +10310,6 @@ msgid "System Locale Support"
 msgstr "Sistem Yerel Ayar Desteği"
 
 #: 
-msgid "System Support"
-msgstr "Sistem Desteği"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URL geçerli bir ana bilgisayar adı içermiyor"
 
@@ -10450,18 +10328,6 @@ msgstr "URL bir eğik çizgi (/) ile bitmelidir"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URL http:// veya https:// ile başlamalıdır"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Sistem yerel ayarları tespit edilemiyor"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Mevcut yerel ayarlar belirlenemiyor"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Yerel ayar bilgileri yüklenemiyor"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10680,10 +10546,6 @@ msgid "Remote backup failed"
 msgstr "Uzak yedekleme başarısız oldu"
 
 #: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAV yedeklemeleri doğru yapılandırılmamış. Lütfen uç nokta, kullanıcı adı ve şifrenin ayarlandığından emin olun"
-
-#: 
 msgid "2FA Enabled"
 msgstr "2FA Etkin"
 
@@ -10810,10 +10672,6 @@ msgstr "İki Faktörlü Doğrulama"
 #: 
 msgid "Validation pending"
 msgstr "Doğrulama bekleniyor"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "bir şifreleme anahtarı ile yapılandırılmalıdır"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11168,14 +11026,6 @@ msgid "No people found matching your criteria."
 msgstr "Kriterlerinize uyan kişi bulunamadı."
 
 #: 
-msgid "Off"
-msgstr "Kapalı"
-
-#: 
-msgid "On"
-msgstr "Açık"
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotoğraf Dizini"
 
@@ -11188,26 +11038,12 @@ msgid "Show only people with photos"
 msgstr "Yalnızca fotoğrafı olan kişileri göster"
 
 #: 
-msgid "Checkout All"
-msgstr "Tümünü Çıkış Yap"
-
-#: 
 msgid "Expected"
 msgstr "Beklenen"
 
 #: 
 msgid "Failed to delete kiosk"
 msgstr "Kiosk silinemedi"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Mali Yıla Göre Aile Mali Taahhüdü"
-
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Kayıtlı öğrencileri bul"
 
 #. Context: queryparameters_qrp
 #: 
@@ -11762,4 +11598,763 @@ msgstr "MailChimp'te bulun: Hedef Kitle > Ayarlar > Hedef kitle adı ve varsayı
 #: 
 msgid "From Phone Number"
 msgstr "Gönderen Telefon Numarası"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "dashboard.vonage.com adresinden"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 Ölçüm Kimliği"
+
+#: 
+msgid "Generate new code"
+msgstr "Yeni kod oluştur"
+
+#: 
+msgid "Get Started"
+msgstr "Başla"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "MailChimp'ten API anahtarınızı alın: Hesap Ayarları > Ekstralar > API Anahtarları"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Kimlik doğrulayıcı uygulamanızı hazır bulundurun (Google Authenticator, Microsoft Authenticator, Authy vb.)"
+
+#: 
+msgid "Help"
+msgstr "Yardım"
+
+#: 
+msgid "Id"
+msgstr "Kimlik"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "E-posta adresi için Gravatar bulunmadığında gösterilen görsel"
+
+#: 
+msgid "Important"
+msgstr "Önemli"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Eklentileri şuraya yerleştirerek yükleyin:"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Geçersiz kod. Lütfen tekrar deneyin."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "Geçersiz uç nokta URL'si. https:// ile başlayan tam bir URL olmalıdır (örn. https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Kiosk cihazı bulunamadı"
+
+#: 
+msgid "Last Backup"
+msgstr "Son Yedekleme"
+
+#: 
+msgid "Last Campaign"
+msgstr "Son Kampanya"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Son Abone"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Son Başarılı Yedekleme"
+
+#: 
+msgid "Last campaign"
+msgstr "Son kampanya"
+
+#: 
+msgid "Link Name"
+msgstr "Bağlantı Adı"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "Bağlantı adresi HTML etiketi içeremez"
+
+#: 
+msgid "Link address is required"
+msgstr "Bağlantı adresi gereklidir"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "Bağlantı geçerli bir URL olmalıdır"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "Bağlantı http:// veya https:// ile başlamalıdır"
+
+#: 
+msgid "Link not found"
+msgstr "Bağlantı bulunamadı"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "Kurtarma kodları yükleniyor"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API Anahtarı"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp Kontrol Paneli"
+
+#: 
+msgid "Manage Links"
+msgstr "Bağlantıları Yönet"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "İki Faktörlü Kimlik Doğrulamayı Yönet"
+
+#: 
+msgid "Manual Backup"
+msgstr "Manuel Yedekleme"
+
+#: 
+msgid "Menu Links"
+msgstr "Menü Bağlantıları"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "Menü adı HTML etiketi içeremez"
+
+#: 
+msgid "Menu name is required"
+msgstr "Menü adı gereklidir"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "Menü adı en fazla 50 karakter olmalıdır"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "Menü adı en az 2 karakter olmalıdır"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "http:// veya https:// ile başlamalıdır"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Yapılandırma Gerekiyor"
+
+#: 
+msgid "Never"
+msgstr "Hiçbir zaman"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Hedef Kitle Bulunamadı"
+
+#: 
+msgid "No backups recorded"
+msgstr "Yedekleme kaydedilmemiş"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Topluluk eklentisi yüklü değil"
+
+#: 
+msgid "No core plugins found"
+msgstr "Temel eklenti bulunamadı"
+
+#: 
+msgid "No settings provided"
+msgstr "Ayar sağlanmadı"
+
+#: 
+msgid "Not Configured"
+msgstr "Yapılandırılmamış"
+
+#: 
+msgid "Not in CRM"
+msgstr "CRM'de Yok"
+
+#: 
+msgid "One-Time Code"
+msgstr "Tek Kullanımlık Kod"
+
+#: 
+msgid "Open MailChimp"
+msgstr "MailChimp'i Aç"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Kimlik doğrulayıcı uygulamanızı açın ve bu QR kodunu tarayın"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP Sunucu URL'si"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "İsteğe bağlı - yalnızca OpenLP kimlik doğrulaması etkinleştirilmişse gereklidir"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Telefon numarası ve mesaj gereklidir"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Lütfen önce uç nokta, kullanıcı adı ve şifreyi yapılandırın."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Uzak yedekleme oluşturmadan önce lütfen WebDAV ayarlarını yapılandırın."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Bağlantıyı test etmeden önce lütfen WebDAV ayarlarını yapılandırın."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Bu entegrasyonu kullanmak için lütfen MailChimp API anahtarınızı yapılandırın."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Lütfen bir bağlantı adı girin (2-50 karakter)"
+
+#: 
+msgid "Please try again"
+msgstr "Lütfen tekrar deneyin"
+
+#: 
+msgid "Plugin Development"
+msgstr "Eklenti Geliştirme"
+
+#: 
+msgid "Plugin Help"
+msgstr "Eklenti Yardımı"
+
+#: 
+msgid "Plugin Management"
+msgstr "Eklenti Yönetimi"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Eklenti Ayarları"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "Bu eklentiye bağımlı başka eklentiler olduğundan devre dışı bırakılamaz"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "Bağımlılık veya sürüm gereksinimleri nedeniyle eklenti etkinleştirilemiyor"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Eklenti başarıyla devre dışı bırakıldı"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Eklenti başarıyla etkinleştirildi"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Eklenti yüklenemedi"
+
+#: 
+msgid "Plugin not found"
+msgstr "Eklenti bulunamadı"
+
+#: 
+msgid "Plugins"
+msgstr "Eklentiler"
+
+#: 
+msgid "Print"
+msgstr "Yazdır"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Alıcılar ve mesaj gereklidir"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Kurtarma Kodları"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Uzak yedekleme başarısız oldu. Ayrıntılar için sunucu günlüklerini kontrol edin."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS gönderildi"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Bu kurtarma kodlarını güvenli bir yerde saklayın. Kimlik doğrulayıcı uygulamanıza erişimi kaybederseniz hesabınıza erişmek için kullanabilirsiniz."
+
+#: 
+msgid "Scan QR Code"
+msgstr "QR Kodunu Tara"
+
+#: 
+msgid "Secure"
+msgstr "Güvenli"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Kimlik Doğrulayıcı Kur"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Ayarlar başarıyla sıfırlandı"
+
+#: 
+msgid "Setup Complete"
+msgstr "Kurulum Tamamlandı"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "ChurchCRM ile birlikte gelir."
+
+#: 
+msgid "Sign In"
+msgstr "Giriş Yap"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Bazı ayarlar sıfırlanamadı"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Bazı ayarlar kaydedilemedi"
+
+#: 
+msgid "Subscribers"
+msgstr "Aboneler"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "CRM'de Olmayan Aboneler"
+
+#: 
+msgid "Test Connection"
+msgstr "Bağlantıyı Test Et"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "WebDAV Bağlantısını Test Et"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Bu bağlantılar, eklenti etkinleştirildiğinde gezinme kenar çubuğundaki \"Bağlantılar\" menüsünde görünür."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Bu kişiler MailChimp hedef kitlenize abone, ancak ChurchCRM'de mevcut değil. Veritabanına eklemeyi veya MailChimp'ten kaldırmayı düşünün."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Bu kişiler ChurchCRM'de e-posta adresleriyle mevcut, ancak bu MailChimp hedef kitlesine abone değil. Abone olmalarını davet etmeyi düşünün."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Üçüncü taraf uzantıları."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Bu, daha önce kaydedilmiş 2FA yöntemlerinin yerini alacak"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Toplam Kampanyalar"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Toplam Aboneler"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "İki Faktör Kayıt Hatası"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "İki faktörlü kimlik doğrulama devre dışı bırakıldı"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "İki faktörlü kimlik doğrulama, hesabınızı korumanın en iyi yollarından biridir. Etkin tutmanızı şiddetle tavsiye ederiz."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "OpenLP sunucunuzun URL'si (örn. http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Yüklenemiyor"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Abonelikten Çıkıldı"
+
+#: 
+msgid "Use a different account"
+msgstr "Farklı bir hesap kullan"
+
+#: 
+msgid "Value is configured"
+msgstr "Değer yapılandırılmış"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Değer ayarlanmış - mevcut değeri korumak için boş bırakın"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Doğrula ve Giriş Yap"
+
+#: 
+msgid "Verify Code"
+msgstr "Kodu Doğrula"
+
+#: 
+msgid "Verifying"
+msgstr "Doğrulanıyor"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API Anahtarı"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API Gizli Anahtarı"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV Yapılandırması"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV Bağlantısı"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV yedeklemeleri doğru yapılandırılmamış. Uç nokta, kullanıcı adı ve şifrenin ayarlandığından emin olun."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV uç nokta URL'si gereklidir."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV şifresi gereklidir."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV kullanıcı adı gereklidir."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Uygulamanıza erişimi kaybederseniz yedek kurtarma kodlarını da kullanabilirsiniz"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Artık giriş yapmak için kimlik doğrulayıcı uygulamanızı kullanabilirsiniz. Her kod 30 saniye geçerlidir."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Uygulamanıza erişimi kaybetmeniz durumunda kullanılabilecek yedek kodlar alacaksınız"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "GA4 Ölçüm Kimliğiniz (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "MailChimp hesabınızda herhangi bir hedef kitle (liste) yapılandırılmamış."
+
+#: 
+msgid "Your account is now protected"
+msgstr "Hesabınız artık korunuyor"
+
+#: 
+msgid "Your account is protected"
+msgstr "Hesabınız korunuyor"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "Kimlik doğrulayıcı uygulamanız başarıyla kaydedildi"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "Tarayıcı dil tercihiniz ChurchCRM yerel ayarınızdan farklı"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "örn. Kilise Web Sitesi"
+
+#: 
+msgid "manifest."
+msgstr "manifest."
+
+#: 
+msgid "subscribers"
+msgstr "aboneler"
+
+#: 
+msgid "API Key is required."
+msgstr "API Anahtarı gereklidir."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu URL'sini ve OpenLP'nin çalıştığını kontrol edin."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "%s adresindeki OpenLP'ye bağlanılamıyor. Sunucu HTTP %d döndürdü."
+
+#: 
+msgid "Congregation Map"
+msgstr "Cemaat Haritası"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Cemaat Haritası — Kurulum Gerekli"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "MailChimp'e bağlandı! Hesap: %s (%d abone)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "OpenLP sunucusuna başarıyla bağlandı."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "OpenLP'ye bağlandı! Sürüm: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Bağlandı! Hesap bakiyesi: €%.2f. SMS gönderilebilir."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "MailChimp'e bağlanılamadı. Lütfen API anahtarınızı kontrol edin."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "OpenLP sunucusuna bağlanılamadı."
+
+#: 
+msgid "Get Directions"
+msgstr "Yol Tarifi Al"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Ülke kodunu dahil edin, örn. +14155551234 (ABD) veya +447911123456 (İngiltere)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Geçersiz \"Gönderen Numara\": \"%s\". Ülke kodunu dahil edin, örn. +14155551234 (ABD) veya +447911123456 (İngiltere)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Geçersiz API kimlik bilgileri. Lütfen API Anahtarınızı ve API Gizli Anahtarınızı doğrulayın."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Geçersiz API anahtarı formatı. MailChimp API anahtarınızı kontrol edin."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "Geçersiz uç nokta URL'si. https:// ile başlayan tam bir URL olmalıdır"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Geçersiz sunucu URL'si formatı."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp bağlantısı başarısız."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Harita Yakınlaştırma Seviyesi"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Eksik aileler mi? Haritaya eklemek için koordinatları güncelleyin."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Gerekli ayarlar eksik: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Kişinin ailesi yok"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Eklenti bulunamadı veya etkin değil"
+
+#: 
+msgid "Server URL is required."
+msgstr "Sunucu URL'si gereklidir."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Bu eklenti bağlantı testini desteklemiyor."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Harita görüntülenemiyor: kilise adresi henüz coğrafi kodlanmamış."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Kilise adresini Ayarlar'dan güncelleyin."
+
+#: 
+msgid "Username and password are required."
+msgstr "Kullanıcı adı ve şifre gereklidir."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Doğrulama başarısız: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage sunucu hatası. Lütfen daha sonra tekrar deneyin."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV Uç Nokta URL'si gereklidir."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Bu taahhüt kaydını kalıcı olarak silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "İptal Et ve Aile Görünümüne Dön"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Bu türü silerseniz, onu kullanan tüm özellikleri de kaldırır ve ilgili özellik atamalarını kaybedersiniz."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Bağışları Seçilen Aileye Taşı"
+
+#: 
+msgid "Calendar not found"
+msgstr "Takvim bulunamadı"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Kontrol Paneline Devam Et"
+
+#: 
+msgid "Current Password"
+msgstr "Mevcut Şifre"
+
+#: 
+msgid "Deposit not found"
+msgstr "Bağış bulunamadı"
+
+#: 
+msgid "Group not found"
+msgstr "Grup bulunamadı"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "Yapılandırma için geçersiz JSON sağlandı"
+
+#: 
+msgid "Password Change Required"
+msgstr "Şifre Değişikliği Gerekli"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Şifre Değişikliği Başarılı"
+
+#: 
+msgid "Password Changed"
+msgstr "Şifre Değiştirildi"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "Şifreler en az"
+
+#: 
+msgid "Property not found"
+msgstr "Özellik bulunamadı"
+
+#: 
+msgid "Set New Password"
+msgstr "Yeni Şifre Belirle"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s için şifre güncellendi."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Yapılandırma için JSON yeniden kodlanamıyor"
+
+#: 
+msgid "User not found"
+msgstr "Kullanıcı bulunamadı"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Devam etmeden önce yeni bir şifre belirlemelisiniz."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "Şifreniz başarıyla güncellendi."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "seçilen ailenin koordinatları yok"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Bir etkinliğe katılmayan kişileri bul"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Mevcut değeri korumak için boş bırakın"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Eksik kişiler"
+
+#: 
+msgid "Not enrolled"
+msgstr "Kayıt yok"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını zorunlu kılın"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "İstenen etkinliği seçin"
 
