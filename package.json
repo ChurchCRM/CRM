@@ -85,7 +85,7 @@
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^4.4.3",
         "@uppy/webcam": "^4.3.2",
-        "@uppy/xhr-upload": "^4.4.2",
+        "@uppy/xhr-upload": "^5.1.1",
         "admin-lte": "3.2.0",
         "avatar-initials": "^6.0.0",
         "bootbox": "^6.0.4",
@@ -116,7 +116,7 @@
         "quill": "2.0.3",
         "react": "^19.2.4",
         "react-bootstrap": "^2.10.10",
-        "react-datepicker": "^8.9.0",
+        "react-datepicker": "^9.1.0",
         "react-dom": "^19.2.4",
         "react-select": "^5.10.2",
         "select2": "^4.0.13"

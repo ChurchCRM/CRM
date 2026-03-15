@@ -2295,9 +2295,6 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-msgid "Developer Chat"
-msgstr ""
-
 #. Context: countries
 msgid "Diego Garcia"
 msgstr ""
@@ -2339,6 +2336,9 @@ msgid "Discard"
 msgstr ""
 
 msgid "Disclaimer"
+msgstr ""
+
+msgid "Discord Chat"
 msgstr ""
 
 msgid "Dismiss"
