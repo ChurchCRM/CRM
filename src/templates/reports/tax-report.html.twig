@@ -1,12 +1,12 @@
 {#
   tax-report.html.twig
   --------------------
-  Giving Report / Tax Statement.  Extends _letter.html.twig so each family
-  receives a separate letter page with the church letterhead.
+  Giving Report / Tax Statement.  Generates one letter section per family,
+  separated by mPDF page breaks within a single HTML document.
 
   Variables expected (supplied by the finance/routes/reports.php handler):
     -- letterhead config --
-    letterhead       (string) : "graphic" | "none" | ""
+    letterhead       (string) : "graphic" | "none" | "" (default: text letterhead)
     churchName       (string)
     churchAddress    (string)
     churchCity       (string)
@@ -43,7 +43,7 @@
           .method        (string)
           .fundName      (string)
           .memo          (string)
-          .amount        (string) : formatted, e.g. "$ 100.00"
+          .amount        (string) : formatted, e.g. "100.00"
       .totalAmount         (float)
       .totalNonDeductible  (float)
       .remittance          (bool)
@@ -51,7 +51,6 @@
     -- options --
     remittance       (bool)  : include remittance slip on every page
 #}
-{% for family in families %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,6 +107,8 @@
     </style>
 </head>
 <body>
+
+{% for family in families %}
 
 {# ── Letterhead ─────────────────────────────────────────────────────── #}
 {% if letterhead == 'graphic' and letterheadImage %}
@@ -227,9 +228,12 @@
 </div>
 {% endif %}
 
+{# Page break between families (not after the last one) #}
+{% if not loop.last %}
+    <pagebreak />
+{% endif %}
+
+{% endfor %}
+
 </body>
 </html>
-{% if not loop.last %}
-    <mpdf:pagebreak />
-{% endif %}
-{% endfor %}
