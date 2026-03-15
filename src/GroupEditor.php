@@ -21,7 +21,7 @@ $groupService = new GroupService();
 if (array_key_exists('GroupID', $_GET)) {
     $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 } else {
-    RedirectUtils::redirect('GroupList.php');
+    RedirectUtils::redirect('groups/dashboard');
 }
 
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
@@ -153,7 +153,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="row">
           <div class="col-sm-6">
             <input type="submit" id="saveGroup" class="btn btn-primary" <?= 'value="' . gettext('Save') . '"' ?> Name="GroupSubmit">
-            <a href="GroupList.php" class="btn btn-secondary">
+            <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="btn btn-secondary">
               <i class="fa fa-arrow-left"></i> <?= gettext('Back to Group List') ?>
             </a>
           </div>

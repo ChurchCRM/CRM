@@ -22,13 +22,10 @@ function initializeGroupList() {
     const groupName = $("#groupName").val().trim();
 
     if (!groupName) {
-      window.CRM.notify(i18next.t("Please enter a group name."), {
-        type: "danger",
-        delay: 5000,
-      });
-      $("#groupName").focus();
+      $("#groupName").addClass("is-invalid").focus();
       return;
     }
+    $("#groupName").removeClass("is-invalid");
 
     const newGroup = { groupName };
 
@@ -139,17 +136,18 @@ function initializeGroupList() {
 
         const isDisabled = numberOfMembers === 0 ? " disabled" : "";
 
-        if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
+        if (numberOfMembers === 0) {
+          $element.html(`<span class="badge badge-light text-muted">${i18next.t("No members")}</span>`);
+        } else if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
           $element.html(
-            `<span>${i18next.t("All members of this group are in the cart")}</span>` +
-              `<button class="RemoveFromCart btn btn-danger" data-cart-id="${objectID}" data-cart-type="group">` +
-              `${i18next.t("Remove all")}</button>`,
+            `<span class="badge badge-success mr-2"><i class="fa-solid fa-check"></i> ${i18next.t("In Cart")}</span>` +
+              `<button class="RemoveFromCart btn btn-sm btn-outline-danger" data-cart-id="${objectID}" data-cart-type="group">` +
+              `<i class="fa-solid fa-times"></i> ${i18next.t("Remove all")}</button>`,
           );
         } else {
           $element.html(
-            `<span>${i18next.t("Not all members of this group are in the cart")}</span>` +
-              `<button class="AddToCart btn btn-primary${isDisabled}" data-cart-id="${objectID}" data-cart-type="group">` +
-              `<i class="fa-solid fa-cart-plus"></i></button>`,
+            `<button class="AddToCart btn btn-sm btn-primary" data-cart-id="${objectID}" data-cart-type="group">` +
+              `<i class="fa-solid fa-cart-plus"></i> ${i18next.t("Add all to cart")}</button>`,
           );
         }
       });

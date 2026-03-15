@@ -15,7 +15,7 @@ use ChurchCRM\Utils\RedirectUtils;
 $iGroupID = (int) InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
 
 if ($iGroupID < 1) {
-    RedirectUtils::redirect('GroupList.php');
+    RedirectUtils::redirect('groups/dashboard');
 }
 
 // Get the data on this group
@@ -459,7 +459,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                                     path: "groups/" + window.CRM.currentGroup,
                                 }).done(function(data) {
                                     if (data.status == "success")
-                                        window.location.href = window.CRM.root + "/GroupList.php";
+                                        window.location.href = window.CRM.root + "/groups/dashboard";
                                 });
                             }
                         }

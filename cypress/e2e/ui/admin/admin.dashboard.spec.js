@@ -104,6 +104,6 @@ describe("Admin Dashboard", () => {
         cy.visit("admin/");
         
         cy.contains("a.quick-start-card", "Groups").click();
-        cy.url().should("include", "GroupList.php");
+        cy.url().should("include", "groups/dashboard");
     });
 });
