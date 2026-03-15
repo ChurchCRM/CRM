@@ -660,6 +660,15 @@ class Person extends BasePerson implements PhotoInterface
         return preg_replace('/\D/', '', $this->getCellPhone());
     }
 
+    /**
+     * Returns the best available phone number for this person.
+     * Prefers cell phone; falls back to this person's home phone.
+     */
+    public function getBestPhone(): string
+    {
+        return $this->getCellPhone() ?: $this->getHomePhone();
+    }
+
     public function postSave(?ConnectionInterface $con = null): void
     {
         $this->getPhoto()->refresh();

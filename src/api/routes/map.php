@@ -79,7 +79,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                     'classificationId' => (int) $person->getClsId(),
                     'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
                     'directionsUrl'    => $person->getDirectionsUrl(),
-                    'phone'            => $person->getCellPhone() ?: $person->getHomePhone(),
+                    'phone'            => $person->getBestPhone(),
                 ];
             }
         }
@@ -107,7 +107,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'classificationId' => (int) $person->getClsId(),
                 'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
                 'directionsUrl'    => $person->getDirectionsUrl(),
-                'phone'            => $person->getCellPhone() ?: $person->getHomePhone(),
+                'phone'            => $person->getBestPhone(),
             ];
         }
     } else {
