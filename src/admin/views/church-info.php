@@ -18,7 +18,7 @@ $validationError     = $validationError ?? '';
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="church-info-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" id="basic-tab"
+                        <a class="nav-link active" id="basic-tab"
                            data-toggle="tab" href="#basic" role="tab"
                            aria-controls="basic" aria-selected="true">
                             <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic Information') ?>
@@ -47,7 +47,7 @@ $validationError     = $validationError ?? '';
                     <div class="tab-content" id="church-info-tab-content">
 
                         <!-- Tab 1: Basic Information & Contact -->
-                        <div class="tab-pane fade" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                        <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
                             <h5 class="mb-4"><?= gettext('Basic Information') ?></h5>
 
                             <div class="form-group">
@@ -324,6 +324,32 @@ $validationError     = $validationError ?? '';
                     </div>
 
                 </form>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                (function () {
+                    // Tab IDs that contain required fields, in priority order
+                    var tabFields = {
+                        'basic-tab':    ['sChurchName', 'sChurchPhone', 'sChurchEmail'],
+                        'location-tab': ['sChurchAddress', 'sChurchCity', 'sChurchZip', 'sChurchCountry'],
+                    };
+
+                    document.getElementById('church-info-form').addEventListener('submit', function (e) {
+                        for (var tabId in tabFields) {
+                            var fields = tabFields[tabId];
+                            for (var i = 0; i < fields.length; i++) {
+                                var el = document.getElementById(fields[i]);
+                                if (el && !el.value.trim()) {
+                                    // Switch to the tab containing the empty field
+                                    document.getElementById(tabId).click();
+                                    // Let the browser show its native validation tooltip
+                                    el.focus();
+                                    e.preventDefault();
+                                    return;
+                                }
+                            }
+                        }
+                    });
+                })();
+                </script>
             </div><!-- /.card-body -->
         </div><!-- /.card -->
     </div>
