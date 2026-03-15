@@ -114,14 +114,13 @@ describe("Finance Dashboard", () => {
     it("should navigate to settings from Church Information checklist item", () => {
         cy.visit("/finance/");
 
-        // Find the Settings button in the Church Information row
-        cy.contains("Church Information")
-            .parents(".list-group-item")
+        // Find the Settings button in the Church Information checklist row
+        cy.contains(".list-group-item", "Church Information")
             .find("a")
             .contains("Settings")
             .click();
 
-        cy.url().should("contain", "SystemSettings.php");
+        cy.url().should("contain", "admin/system/church-info");
     });
 
     it("should link deposits checklist to FindDepositSlip", () => {

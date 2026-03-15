@@ -800,7 +800,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="form-group col-md-2">
                     <label for="Zip">
                         <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
-                        <?= gettext('Zip / Postal Code') ?>:
+                        <?= gettext('Zip Code') ?>:
                         <?= $bFamilyZip ? '</span>' : '' ?>
                     </label>
                     <input type="text" name="Zip" id="Zip" class="form-control"
