@@ -205,7 +205,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         
                         <!-- Groups -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="quick-start-card">
                                 <div class="quick-start-icon bg-warning">
                                     <i class="fa-solid fa-sitemap"></i>
                                 </div>
