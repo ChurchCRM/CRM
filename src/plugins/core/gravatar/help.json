@@ -1,0 +1,27 @@
+{
+  "summary": "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM.",
+  "sections": [
+    {
+      "title": "How it works",
+      "content": "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+    },
+    {
+      "title": "Default Image Styles",
+      "content": "Choose what appears when no Gravatar exists:\n• Mystery Person - Gray silhouette outline\n• Identicon - Geometric pattern based on email\n• MonsterID - Unique generated monster face\n• Wavatar - Abstract generated face\n• Retro - 8-bit arcade-style pixel art\n• RoboHash - Unique generated robot\n• Blank - Transparent (falls back to initials)"
+    },
+    {
+      "title": "Privacy Note",
+      "content": "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+    }
+  ],
+  "links": [
+    {
+      "label": "Gravatar Website",
+      "url": "https://gravatar.com"
+    },
+    {
+      "label": "Gravatar Image Options",
+      "url": "https://docs.gravatar.com/general/images/"
+    }
+  ]
+}

@@ -291,6 +291,79 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
         </div>
     </div>
+    <!-- Timezone Information -->
+    <?php
+    $serverTimezone = date_default_timezone_get();
+    $configuredTimezone = SystemConfig::getValue('sTimeZone');
+    $currentServerTime = new DateTime('now', new DateTimeZone($serverTimezone));
+    $serverConfigMismatch = !empty($configuredTimezone) && $configuredTimezone !== $serverTimezone;
+    ?>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header" id="headingTimezone">
+                <h4 data-toggle="collapse" data-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
+                    <i class="fa fa-clock mr-2"></i><?= gettext('Timezone Information') ?>
+                    <?php if ($serverConfigMismatch): ?>
+                        <i class="fa fa-exclamation-triangle text-warning ml-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                    <?php else: ?>
+                        <i class="fa fa-exclamation-triangle text-warning ml-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                    <?php endif; ?>
+                    <i class="fa fa-chevron-down float-right"></i>
+                </h4>
+            </div>
+            <div id="collapseTimezone" class="collapse" aria-labelledby="headingTimezone">
+                <div class="card-body p-0">
+                    <!-- System Config (Baseline) -->
+                    <div class="p-3 bg-light border-bottom">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
+                                <strong class="h6 mb-0"><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
+                            </div>
+                            <span class="badge badge-primary"><?= gettext('Baseline') ?></span>
+                        </div>
+                    </div>
+                    
+                    <!-- PHP Active -->
+                    <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-light' : '' ?>">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('PHP Active') ?></small>
+                                <strong class="mb-0"><?= InputUtils::escapeHTML($serverTimezone) ?></strong>
+                                <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
+                            </div>
+                            <?php if ($serverConfigMismatch): ?>
+                                <span class="badge badge-warning" title="<?= gettext('Does not match system config') ?>">
+                                    <i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>
+                                </span>
+                            <?php elseif (!empty($configuredTimezone)): ?>
+                                <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                            <?php else: ?>
+                                <span class="badge badge-secondary"><?= gettext('Default') ?></span>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                    
+                    <!-- Browser -->
+                    <div class="p-3 border-bottom" id="browser-tz-row">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <small class="text-muted d-block"><?= gettext('Browser') ?></small>
+                                <strong class="mb-0" id="browser-timezone"><?= gettext('Loading...') ?></strong>
+                                <small class="text-muted d-block" id="browser-time"><?= gettext('Loading...') ?></small>
+                            </div>
+                            <span class="badge" id="browser-tz-badge"><?= gettext('Loading...') ?></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Summary -->
+                    <div class="p-3" id="timezone-summary">
+                        <small class="text-muted"><i class="fa fa-spinner fa-spin mr-1"></i><?= gettext('Comparing timezones...') ?></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingPHP">
@@ -369,6 +442,12 @@ EOD;
     </div>
 </div>
 
+<style nonce="<?= SystemURLs::getCSPNonce() ?>">
+.bg-warning-light {
+    background-color: rgba(255, 193, 7, 0.1) !important;
+}
+</style>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     var callback = function() {
         $("#fileIntegrityCheckResultsTable").DataTable({
@@ -388,6 +467,76 @@ EOD;
     }
 
     var initializeDebugPage = function() {
+        // Populate browser timezone information with guard for older browsers
+        var browserTimezone;
+        try {
+            browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '<?= gettext('Unknown') ?>';
+        } catch (e) {
+            browserTimezone = '<?= gettext('Unknown') ?>';
+        }
+        var now = new Date();
+        var browserOffset = -now.getTimezoneOffset();
+        var offsetHours = Math.floor(Math.abs(browserOffset) / 60);
+        var offsetMinutes = Math.abs(browserOffset) % 60;
+        var offsetSign = browserOffset >= 0 ? '+' : '-';
+        var offsetString = 'UTC' + offsetSign + String(offsetHours).padStart(2, '0') + ':' + String(offsetMinutes).padStart(2, '0');
+        
+        var browserTimeString = now.getFullYear() + '-' + 
+            String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+            String(now.getDate()).padStart(2, '0') + ' ' +
+            String(now.getHours()).padStart(2, '0') + ':' + 
+            String(now.getMinutes()).padStart(2, '0') + ':' + 
+            String(now.getSeconds()).padStart(2, '0');
+        
+        // Update browser timezone display - .text() handles escaping
+        $('#browser-timezone').text(browserTimezone);
+        $('#browser-time').text(browserTimeString + ' (' + offsetString + ')');
+        
+        // Compare against baseline (configured timezone, or server if not configured)
+        var serverTimezone = <?= json_encode($serverTimezone) ?>;
+        var configuredTimezone = <?= json_encode($configuredTimezone) ?>;
+        var baselineTimezone = configuredTimezone || serverTimezone;
+        
+        var browserMatchesBaseline = (browserTimezone === baselineTimezone);
+        var $badge = $('#browser-tz-badge');
+        var $row = $('#browser-tz-row');
+        var $headerAlert = $('#tz-header-alert');
+        
+        if (browserMatchesBaseline) {
+            $badge.removeClass('badge-warning badge-secondary').addClass('badge-success')
+                  .html('<i class="fa fa-check"></i>');
+            $row.removeClass('bg-warning-light');
+        } else {
+            $badge.removeClass('badge-success badge-secondary').addClass('badge-warning')
+                  .html('<i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>');
+            $row.addClass('bg-warning-light');
+            // Show alert icon in card header
+            $headerAlert.removeClass('d-none');
+        }
+        
+        // Update summary
+        var serverConfigMismatch = configuredTimezone && (configuredTimezone !== serverTimezone);
+        var issueCount = 0;
+        if (serverConfigMismatch) issueCount++;
+        if (!browserMatchesBaseline) issueCount++;
+        
+        // Update header alert visibility based on any mismatch
+        if (issueCount > 0) {
+            $headerAlert.removeClass('d-none');
+        }
+        
+        var summaryHtml = '';
+        if (issueCount === 0) {
+            summaryHtml = '<span class="text-success"><i class="fa fa-check-circle mr-1"></i><?= gettext('All timezones match') ?></span>';
+        } else {
+            summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle mr-1"></i>' + 
+                          issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
+            if (!browserMatchesBaseline) {
+                summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';
+            }
+        }
+        $('#timezone-summary').html(summaryHtml);
+        
         $(document).on('click', '.copy-btn', function() {
             var txt = $(this).data('copy');
             if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -437,8 +586,15 @@ EOD;
         });
     };
 
+    // Initialize page once locales (i18next) are ready, with DOM-ready fallback
     if (window.CRM && typeof window.CRM.onLocalesReady === 'function') {
-        window.CRM.onLocalesReady(initializeDebugPage);
+        window.CRM.onLocalesReady(function() {
+            initializeDebugPage();
+        });
+    } else {
+        $(document).ready(function() {
+            initializeDebugPage();
+        });
     }
 </script>
 <?php

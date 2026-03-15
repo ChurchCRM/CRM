@@ -258,9 +258,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <p class="mb-0 small text-muted"><?= gettext('Verify church name, address, and contact info appears on tax statements.') ?></p>
                             </div>
                             <div>
-                                <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
+                                <?php if ($isAdmin): ?>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
                                 </a>
+                                <?php endif; ?>
                             </div>
                         </div>
 

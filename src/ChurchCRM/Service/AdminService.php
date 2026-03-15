@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\URLValidator;
 
 /**
@@ -72,16 +71,6 @@ class AdminService
                 'title' => gettext('Unmet Prerequisites'),
                 'desc' => gettext('Some application prerequisites are not met'),
                 'link' => SystemURLs::getRootPath() . '/admin/system/debug',
-                'severity' => 'danger',
-            ];
-        }
-
-        // Secrets configuration check - only show if 2FA is enabled
-        if (SystemConfig::getBooleanValue('bEnable2FA') && !KeyManagerUtils::getAreAllSecretsDefined()) {
-            $warnings[] = [
-                'title' => gettext('Missing Secret Keys'),
-                'desc' => gettext('Secret keys missing from Config.php'),
-                'link' => SystemURLs::getSupportURL('SecretsConfigurationCheckTask'),
                 'severity' => 'danger',
             ];
         }

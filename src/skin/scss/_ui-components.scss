@@ -1,204 +1,204 @@
 /**
  * UI Components
- * 
+ *
  * Custom styling for ChurchCRM UI components that extend AdminLTE and Bootstrap.
  * Only includes styles that are not available in the base frameworks.
  */
 
 // Enhanced btn-app buttons for dashboard actions
 .btn-app {
-    // AdminLTE provides base .btn-app styling, we only override what's needed
-    min-width: 100px;
-    min-height: 110px;
-    height: auto;
-    white-space: normal;
-    word-wrap: break-word;
-    padding: 15px 10px;
+  // AdminLTE provides base .btn-app styling, we only override what's needed
+  min-width: 100px;
+  min-height: 110px;
+  height: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 15px 10px;
 
-    // Large icon styling with proper spacing
-    > .fa-3x {
-        display: block;
-        margin-bottom: 10px;
-    }
+  // Large icon styling with proper spacing
+  > .fa-3x {
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 // Fix dropdown icon spacing for split buttons
 .dropdown-toggle.dropdown-icon::after {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 // Floating Action Buttons (FAB) - Gmail-style add buttons
 .fab-container {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    transition:
-        opacity 0.3s ease,
-        transform 0.3s ease;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 
-    &.hidden {
-        opacity: 0;
-        transform: translateY(20px);
-        pointer-events: none;
-    }
+  &.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+  }
 }
 
 // Person View specific FAB - always visible, doesn't hide
 .fab-person-view {
-    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+  z-index: 1040; // Higher than AdminLTE sidebar (1030)
 
-    // Override the hidden behavior - these buttons stay visible
-    &.hidden {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-    }
+  // Override the hidden behavior - these buttons stay visible
+  &.hidden {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 .fab-button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  .fab-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    text-decoration: none;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease;
+  }
+
+  .fab-label {
+    position: absolute;
+    right: 70px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  &:hover {
+    text-decoration: none;
 
     .fab-icon {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+      transform: scale(1.1);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     }
 
     .fab-label {
-        position: absolute;
-        right: 70px;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: white;
-        padding: 8px 16px;
-        border-radius: 4px;
-        white-space: nowrap;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(10px);
-        transition: all 0.3s ease;
-        font-size: 14px;
-        font-weight: 500;
+      opacity: 1;
+      transform: translateX(0);
     }
+  }
 
-    &:hover {
-        text-decoration: none;
+  // Color variants - consolidated
+  &.fab-person .fab-icon {
+    background-color: #007bff; // Bootstrap primary
+  }
 
-        .fab-icon {
-            transform: scale(1.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-        }
+  &.fab-person:hover .fab-icon {
+    background-color: #0056b3;
+  }
 
-        .fab-label {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
+  &.fab-family .fab-icon {
+    background-color: #28a745; // Bootstrap success
+  }
 
-    // Color variants - consolidated
-    &.fab-person .fab-icon {
-        background-color: #007bff; // Bootstrap primary
-    }
+  &.fab-family:hover .fab-icon {
+    background-color: #218838;
+  }
 
-    &.fab-person:hover .fab-icon {
-        background-color: #0056b3;
-    }
+  &.fab-edit .fab-icon {
+    background-color: #007bff; // Bootstrap primary
+  }
 
-    &.fab-family .fab-icon {
-        background-color: #28a745; // Bootstrap success
-    }
+  &.fab-edit:hover .fab-icon {
+    background-color: #0056b3;
+  }
 
-    &.fab-family:hover .fab-icon {
-        background-color: #218838;
-    }
+  &.fab-note .fab-icon {
+    background-color: #6f42c1; // Bootstrap purple/indigo
+  }
 
-    &.fab-edit .fab-icon {
-        background-color: #007bff; // Bootstrap primary
-    }
+  &.fab-note:hover .fab-icon {
+    background-color: #5a32a3;
+  }
 
-    &.fab-edit:hover .fab-icon {
-        background-color: #0056b3;
-    }
+  &.fab-save .fab-icon {
+    background-color: #28a745; // Bootstrap success/green
+  }
 
-    &.fab-note .fab-icon {
-        background-color: #6f42c1; // Bootstrap purple/indigo
-    }
+  &.fab-save:hover .fab-icon {
+    background-color: #218838;
+  }
 
-    &.fab-note:hover .fab-icon {
-        background-color: #5a32a3;
-    }
+  &.fab-save-add .fab-icon {
+    background-color: #007bff; // Bootstrap primary/blue
+  }
 
-    &.fab-save .fab-icon {
-        background-color: #28a745; // Bootstrap success/green
-    }
+  &.fab-save-add:hover .fab-icon {
+    background-color: #0056b3;
+  }
 
-    &.fab-save:hover .fab-icon {
-        background-color: #218838;
-    }
+  &.fab-cancel .fab-icon {
+    background-color: #6c757d; // Bootstrap secondary/gray
+  }
 
-    &.fab-save-add .fab-icon {
-        background-color: #007bff; // Bootstrap primary/blue
-    }
-
-    &.fab-save-add:hover .fab-icon {
-        background-color: #0056b3;
-    }
-
-    &.fab-cancel .fab-icon {
-        background-color: #6c757d; // Bootstrap secondary/gray
-    }
-
-    &.fab-cancel:hover .fab-icon {
-        background-color: #5a6268;
-    }
+  &.fab-cancel:hover .fab-icon {
+    background-color: #5a6268;
+  }
 }
 
 // Person Editor specific FAB - always visible, doesn't hide
 .fab-person-editor {
-    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+  z-index: 1040; // Higher than AdminLTE sidebar (1030)
 
-    // Override the hidden behavior - these buttons stay visible
-    &.hidden {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-    }
+  // Override the hidden behavior - these buttons stay visible
+  &.hidden {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 // Family Editor specific FAB - always visible, doesn't hide
 .fab-family-editor {
-    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+  z-index: 1040; // Higher than AdminLTE sidebar (1030)
 
-    // Override the hidden behavior - these buttons stay visible
-    &.hidden {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-    }
+  // Override the hidden behavior - these buttons stay visible
+  &.hidden {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }
 
 // Family View specific FAB - always visible, doesn't hide
 .fab-family-view {
-    z-index: 1040; // Higher than AdminLTE sidebar (1030)
+  z-index: 1040; // Higher than AdminLTE sidebar (1030)
 
-    // Override the hidden behavior - these buttons stay visible
-    &.hidden {
-        opacity: 1;
-        transform: none;
-        pointer-events: auto;
-    }
+  // Override the hidden behavior - these buttons stay visible
+  &.hidden {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
 }

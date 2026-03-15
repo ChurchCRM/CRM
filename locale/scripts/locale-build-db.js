@@ -13,8 +13,17 @@
  * - Generates PHP files with gettext() calls
  * - Handles countries and locales data
  * 
+ * Requires environment variables:
+ * - DB_HOST (default: localhost)
+ * - DB_PORT (default: 3306)
+ * - DB_NAME (default: churchcrm)
+ * - DB_USER (default: churchcrm)
+ * - DB_PASSWORD (default: changeme)
+ * 
  * Output: Creates PHP files in db-strings/ directory for xgettext processing
  */
+
+require('dotenv').config();
 
 const fs = require('fs');
 const mysql = require('mysql2/promise');
@@ -29,39 +38,29 @@ if (process.argv.includes('--temp-dir')) {
 
 class DatabaseTermExtractor {
     constructor() {
-        this.configPath = config.buildConfigJson;
-        this.configExamplePath = config.buildConfigExample;
         this.stringsDir = config.temp.dbStrings;
         this.stringFiles = [];
         this.connection = null;
     }
 
     /**
-     * Load database configuration from BuildConfig.json or BuildConfig.json.example
+     * Load database configuration from environment variables
      */
     loadConfig() {
         console.log('=====================================================');
         console.log('========== Building locale from DB started ==========');
         console.log('=====================================================\n');
 
-        let configFile = this.configPath;
-        if (!fs.existsSync(this.configPath)) {
-            if (fs.existsSync(this.configExamplePath)) {
-                console.log(`⚠️  BuildConfig.json not found, using BuildConfig.json.example\n`);
-                configFile = this.configExamplePath;
-            } else {
-                throw new Error(`ERROR: Neither ${this.configPath} nor ${this.configExamplePath} exist`);
-            }
-        }
+        const dbConfig = {
+            server: process.env.DB_HOST || 'localhost',
+            port: process.env.DB_PORT || 3306,
+            database: process.env.DB_NAME || 'churchcrm',
+            user: process.env.DB_USER || 'churchcrm',
+            password: process.env.DB_PASSWORD || 'changeme'
+        };
 
-        const buildConfig = fs.readFileSync(configFile, 'utf8');
-        const config = JSON.parse(buildConfig);
-
-        if (!config.Env?.local?.database) {
-            throw new Error(`ERROR: The configuration file does not have local db env, check BuildConfig.json.example for schema`);
-        }
-
-        return config.Env.local.database;
+        console.log(`📦 Using database: ${dbConfig.user}@${dbConfig.server}:${dbConfig.port}/${dbConfig.database}`);
+        return dbConfig;
     }
 
     /**

@@ -1,0 +1,9 @@
+# Plugins MVC application routing
+# Routes all requests to plugins/index.php (Slim app)
+
+Options -Indexes
+RewriteEngine On
+
+# Pass all requests to the plugins Slim application
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php [QSA,L]

@@ -4,8 +4,9 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
-$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$linkBack = RedirectUtils::getLinkBackFromRequest('');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

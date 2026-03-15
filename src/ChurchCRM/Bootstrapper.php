@@ -15,6 +15,7 @@ use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\SQLUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
+use Monolog\Level;
 use Monolog\Logger;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\ConnectionWrapper;
@@ -29,7 +30,7 @@ class Bootstrapper
     private const LOCALE_DOMAIN = 'messages';
     private const SESSION_PREFIX = 'CRM-';
     private const DEFAULT_CHARSET = 'utf8mb4';
-    private const PROPEL_MIN_VERSION = '2.0.0-dev';
+    private const PROPEL_CONFIG_VERSION = 2; // Perpl ORM configuration version
     private const LOCALHOST_IDENTIFIER = 'localhost';
     
     private static ?ConnectionManagerSingle $manager = null;
@@ -94,9 +95,9 @@ class Bootstrapper
             self::handleBootstrapFailure($e, 'SystemURLs initialization failed');
         }
         if ($debugBootstrapper) {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::DEBUG);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Debug->value);
         } else {
-            self::$bootStrapLogger = LoggerUtils::getAppLogger(Logger::INFO);
+            self::$bootStrapLogger = LoggerUtils::getAppLogger(Level::Info->value);
         }
 
         self::$bootStrapLogger->debug("Starting ChurchCRM");
@@ -143,7 +144,6 @@ class Bootstrapper
         
         // Mark as initialized
         self::$initialized = true;
-        self::$bootStrapLogger->debug("ChurchCRM bootstrap completed successfully");
     }
     
     /**
@@ -373,13 +373,14 @@ class Bootstrapper
         // ==== ORM
         self::$dbClassName = '\\' . ConnectionWrapper::class;
         self::$serviceContainer = Propel::getServiceContainer();
-        self::$serviceContainer->checkVersion(self::PROPEL_MIN_VERSION);
+        self::$serviceContainer->checkVersion(self::PROPEL_CONFIG_VERSION);
         self::$serviceContainer->setAdapterClass('default', 'mysql');
-        self::$manager = new ConnectionManagerSingle();
+        self::$manager = new ConnectionManagerSingle('default');
         self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-        self::$manager->setName('default');
-        self::$serviceContainer->setConnectionManager('default', self::$manager);
+        self::$serviceContainer->setConnectionManager(self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
+        // Load database map from Include directory (Perpl ORM requirement)
+        require_once __DIR__ . '/../Include/LoadDatabaseMap.php';
         self::$bootStrapLogger->debug("Initialized Propel ORM");
     }
     private static function isDatabaseEmpty(): bool
@@ -440,14 +441,35 @@ class Bootstrapper
         ini_set('log_errors', 1);
         ini_set('error_log', $phpLogPath);
 
-        // ORM Logs
-        if (SystemConfig::debugEnabled()) {
+        // ORM Logs - only enabled when BOTH debug mode is on AND log level is DEBUG.
+        // Root cause: Propel's ConnectionWrapper::log() hardcodes $logger->info()
+        // for every SQL query - the level is not configurable from outside.
+        // Fix: a processor remaps every INFO record to DEBUG before it hits the handler,
+        // so ORM queries are correctly classified as DEBUG-level entries.
+        if (SystemConfig::debugEnabled() && LoggerUtils::isDebugLogLevel()) {
             $ormLogPath = LoggerUtils::buildLogFilePath("orm");
             $ormLogger = new Logger('ormLogger');
             self::$bootStrapLogger->debug("Configuring ORM logs at :" . $ormLogPath);
             self::$dbClassName = '\\' . DebugPDO::class;
             self::$manager->setConfiguration(self::buildConnectionManagerConfig());
-            $ormLogger->pushHandler(new StreamHandler($ormLogPath, LoggerUtils::getLogLevel()));
+
+            // Remap INFO → DEBUG: Propel hardcodes ->info() for all SQL queries.
+            // Without this, every SQL entry appears as INFO regardless of log level config.
+            $ormLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+                if ($record->level === Level::Info) {
+                    return new \Monolog\LogRecord(
+                        datetime: $record->datetime,
+                        channel: $record->channel,
+                        level: Level::Debug,
+                        message: $record->message,
+                        context: $record->context,
+                        extra: $record->extra,
+                    );
+                }
+                return $record;
+            });
+
+            $ormLogger->pushHandler(new StreamHandler($ormLogPath, Level::Debug->value));
             self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
         }
     }

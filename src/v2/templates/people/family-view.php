@@ -6,15 +6,15 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\MailChimpService;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle =  $family->getName() . " - " . gettext("Family");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-$curYear = (new DateTime())->format("Y");
+$curYear = DateTimeUtils::getCurrentYear();
 $familyAddress = $family->getAddress();
-$mailchimp = new MailChimpService();
 
 $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 if (array_key_exists('idefaultFY', $_SESSION)) {
@@ -25,6 +25,9 @@ $memberCount = count($family->getPeople());
 
 // Get unique family emails for the verification modal
 $familyEmails = $family->getEmails();
+
+// Store family email for JavaScript (used by MailChimp plugin if active)
+$familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '';
 ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -32,7 +35,8 @@ $familyEmails = $family->getEmails();
     window.CRM.currentFamilyName = "<?= $family->getName() ?>";
     window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.plugin.mailchimp = <?= $mailchimp->isActive() ? "true" : "false" ?>;
+    window.CRM.familyEmail = "<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
+    window.CRM.familyEmailMD5 = "<?= $familyEmailMD5 ?>";
 </script>
 
 <div id="family-deactivated" class="alert alert-warning d-none">
@@ -46,7 +50,7 @@ $familyEmails = $family->getEmails();
         <div class="card card-primary">
             <div class="card-header">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
@@ -98,12 +102,12 @@ $familyEmails = $family->getEmails();
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
+                        <a class="btn btn-secondary btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
                             <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
                         </a>
                     </div>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-default btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                        <a class="btn btn-secondary btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                             <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
                         </a>
                     </div>
@@ -129,34 +133,44 @@ $familyEmails = $family->getEmails();
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
             </div>
             <div class="card-body">
-                <a href="http://maps.google.com/?q=<?= $familyAddress ?>"
-                   target="_blank"><?= $familyAddress ?></a>
-                <!-- Maps Start -->
-                <?php if (!empty(SystemConfig::getValue("sGoogleMapsRenderKey")) && !empty($family->getLatitude())) : ?>
+                <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
+                   target="_blank" rel="noopener noreferrer"><?= $familyAddress ?></a>
+                <?php $directionsUrl = $family->getDirectionsUrl(); ?>
+                <div class="mt-2">
+                    <?php if (!empty($directionsUrl)) : ?>
+                    <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
+                       class="btn btn-sm btn-outline-primary">
+                        <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                    </a>
+                    <?php endif; ?>
+                    <?php if (!$family->hasLatitudeAndLongitude()) : ?>
+                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
+                            data-family-id="<?= $family->getId() ?>"
+                            title="<?= gettext('Automatically detect coordinates using address') ?>">
+                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                    </button>
+                    <?php endif; ?>
+                </div>
+
+                <!-- Family location map (Leaflet + OpenStreetMap) -->
+                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                <?php if ($family->hasLatitudeAndLongitude()) : ?>
                     <div class="border-right border-left mt-2">
-                        <section id="map">
-                            <div id="map1"></div>
-                        </section>
+                        <div id="map1" style="height: 200px;"></div>
                     </div>
-                    <!-- Map Scripts -->
-                    <script
-                            src="//maps.googleapis.com/maps/api/js?key=<?= SystemConfig::getValue("sGoogleMapsRenderKey") ?>&sensor=false"></script>
-                    <script>
-                        var LatLng = new google.maps.LatLng(<?= $family->getLatitude() ?>, <?= $family->getLongitude() ?>)
+                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                        window.CRM = window.CRM || {};
+                        window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
                     </script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/js/Map.js') ?>"></script>
-                    <style>
-                        #map1 {
-                            height: 200px;
-                        }
-                    </style>
                 <?php endif; ?>
+                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
             </div>
         </div>
 
@@ -199,10 +213,12 @@ $familyEmails = $family->getEmails();
                         <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext("Email") ?>:<a
                                 href="mailto:<?= $family->getEmail() ?>">
                                 <span><?= $family->getEmail() ?></span></a></li>
-                        <?php if ($mailchimp->isActive()) { ?>
-                         <li><i class="fa-li fa-regular fa-paper-plane"></i><?= gettext("Mailchimp") ?>:
-                         <span id="<?= md5($family->getEmail())?>">... <?= gettext("loading")?> ...</span></li>
-                        <?php }
+                        <!-- MailChimp status - populated by JavaScript if plugin is active -->
+                        <li class="d-none" id="mailchimp-status-container">
+                            <i class="fa-li fa-regular fa-paper-plane"></i><?= gettext("Mailchimp") ?>:
+                            <span id="mailchimp-status">... <?= gettext("loading")?> ...</span>
+                        </li>
+                        <?php
                     }
                     foreach ($familyCustom as $customField) {
                         echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>' . $customField->getDisplayValue() . ': <span>';
@@ -221,7 +237,7 @@ $familyEmails = $family->getEmails();
         <div class="card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
@@ -281,7 +297,7 @@ $familyEmails = $family->getEmails();
         <div class="card card-outline card-info collapsed-card mb-3">
             <div class="card-header">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -463,11 +479,11 @@ $familyEmails = $family->getEmails();
                                     <?php 
                                         $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
                                     ?>
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>" class="btn-link">
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
                                     </a>
-                                    
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>" class="btn-link">
+
+                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>">
                                         <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
                                     </a>
                                     

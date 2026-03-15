@@ -50,11 +50,19 @@ class ChurchCRMReleaseManager
 
         try {
             if ($allowPrerelease) {
-                $gitHubReleases = $client->api('repo')->releases()->all(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME,
-                    ['per_page' => 5, 'page' => 1]
-                );
+                // Use the GitHub API client with proper method chaining
+                // knplabs/github-api v3 uses repos()->releases()
+                try {
+                    $gitHubReleases = $client->repo()
+                        ->releases()
+                        ->all(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch all releases from GitHub API', ['error' => $e->getMessage()]);
+                    $gitHubReleases = [];
+                }
 
                 foreach ($gitHubReleases as $r) {
                     $release = new ChurchCRMRelease($r);
@@ -67,10 +75,17 @@ class ChurchCRMReleaseManager
                     }
                 }
             } else {
-                $latestRelease = $client->api('repo')->releases()->latest(
-                    ChurchCRMReleaseManager::GITHUB_USER_NAME,
-                    ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
-                );
+                try {
+                    $latestRelease = $client->repo()
+                        ->releases()
+                        ->latest(
+                            ChurchCRMReleaseManager::GITHUB_USER_NAME,
+                            ChurchCRMReleaseManager::GITHUB_REPOSITORY_NAME
+                        );
+                } catch (\Exception $e) {
+                    LoggerUtils::getAppLogger()->warning('Failed to fetch latest release from GitHub API', ['error' => $e->getMessage()]);
+                    $latestRelease = null;
+                }
 
                 if (is_array($latestRelease) && !empty($latestRelease)) {
                     $release = new ChurchCRMRelease($latestRelease);
@@ -96,9 +111,9 @@ class ChurchCRMReleaseManager
     public static function checkForUpdates(): void
     {
         $logger = LoggerUtils::getAppLogger();
-        $logger->info('=== checkForUpdates() CALLED ===');
+        $logger->debug('checkForUpdates() called');
         $_SESSION['ChurchCRMReleases'] = self::populateReleases();
-        $logger->info('=== checkForUpdates() COMPLETE - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached ===');
+        $logger->debug('checkForUpdates() complete - ' . count($_SESSION['ChurchCRMReleases']) . ' releases cached');
     }
 
     public static function isReleaseCurrent(ChurchCRMRelease $Release): bool
@@ -172,24 +187,24 @@ class ChurchCRMReleaseManager
         $rs = array_values($_SESSION['ChurchCRMReleases']);
         $nextStepRelease = self::getReleaseNextPatch($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (PATCH) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (patch): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMinor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MINOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (minor): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
         $nextStepRelease = self::getReleaseNextMajor($rs, $currentRelease);
         if ($nextStepRelease !== null) {
-            $logger->info('=== UPDATE FOUND (MAJOR) === Next: ' . $nextStepRelease);
+            $logger->info('Update found (major): next release is ' . $nextStepRelease);
             return $nextStepRelease;
         }
 
         if (null === $nextStepRelease) {
             // Check if current version is at or ahead of all available releases (e.g., development version)
             if (!empty($rs) && $currentRelease->compareTo($rs[0]) >= 0) {
-                $logger->info('*** Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
+                $logger->debug('Current version ' . $currentRelease . ' is at or ahead of highest available release ' . $rs[0] . '. No upgrade available.');
                 return null;
             }
             $logger->warning('Could not identify a suitable upgrade target release.  Current software version: ' . $currentRelease . '.  Highest available release: ' . (!empty($rs) ? $rs[0] : 'None'));
@@ -226,13 +241,112 @@ class ChurchCRMReleaseManager
         $logger->debug('Using temp directory: ' . $UpgradeDir);
         $logger->info('Downloading release from: ' . $url . ' to: ' . $UpgradeDir . '/' . basename($url));
         $executionTime = new ExecutionTime();
-        file_put_contents($UpgradeDir . '/' . basename($url), file_get_contents($url));
+
+        // Download the file with retry logic (3 attempts total)
+        $maxAttempts = 3;
+        $downloadContent = false;
+        $lastErrorMsg = 'Unknown error';
+
+        for ($attempt = 1; $attempt <= $maxAttempts; $attempt++) {
+            $logger->info('Download attempt ' . $attempt . ' of ' . $maxAttempts);
+
+            if (function_exists('curl_init')) {
+                // Use cURL for download (works even when allow_url_fopen is disabled)
+                $ch = curl_init($url);
+                if ($ch === false) {
+                    $lastErrorMsg = 'curl_init() failed to initialize (possibly malformed URL)';
+                } else {
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+                    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+                    curl_setopt($ch, CURLOPT_USERAGENT, 'ChurchCRM/' . VersionUtils::getInstalledVersion());
+                    curl_setopt($ch, CURLOPT_TIMEOUT, 300);
+                    $result = curl_exec($ch);
+                    $curlErrno = curl_errno($ch);
+                    $curlError = curl_error($ch);
+                    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                    curl_close($ch);
+
+                    if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
+                        $downloadContent = $result;
+                        $logger->info('Download succeeded on attempt ' . $attempt . ' via cURL (HTTP ' . $httpCode . ')');
+                        break;
+                    }
+
+                    $lastErrorMsg = !empty($curlError) ? 'cURL error (' . $curlErrno . '): ' . $curlError : 'HTTP ' . $httpCode;
+                }
+            } else {
+                // Fallback: file_get_contents (requires allow_url_fopen = On)
+                @error_clear_last();
+                $result = @file_get_contents($url);
+                if ($result !== false && strlen($result) > 0) {
+                    $downloadContent = $result;
+                    $logger->info('Download succeeded on attempt ' . $attempt . ' via file_get_contents');
+                    break;
+                }
+                $phpError = error_get_last();
+                $lastErrorMsg = $phpError['message'] ?? 'Unknown error or empty response';
+            }
+
+            if ($attempt < $maxAttempts) {
+                $logger->warning('Download attempt ' . $attempt . ' failed, retrying...', [
+                    'url' => $url,
+                    'error' => $lastErrorMsg,
+                ]);
+                // Wait before retry (1 second, then 2 seconds)
+                sleep($attempt);
+            }
+        }
+
+        // Check if all attempts failed
+        if ($downloadContent === false) {
+            $logger->error('Failed to download release file after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'error' => $lastErrorMsg,
+            ]);
+            throw new \Exception(gettext('Failed to download the release file from GitHub after multiple attempts. Please check your server\'s internet connection and try again.') . ' Error: ' . $lastErrorMsg);
+        }
+
+        // Check if downloaded content is empty
+        $downloadSize = strlen($downloadContent);
+        if ($downloadSize === 0) {
+            $logger->error('Downloaded release file is empty after ' . $maxAttempts . ' attempts', [
+                'url' => $url,
+                'size' => 0,
+            ]);
+            throw new \Exception(gettext('Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later.'));
+        }
+
+        // Minimum expected size for a ChurchCRM release ZIP (at least 1MB)
+        $minExpectedSize = 1024 * 1024;
+        if ($downloadSize < $minExpectedSize) {
+            $logger->warning('Downloaded file is smaller than expected', [
+                'url' => $url,
+                'size' => $downloadSize,
+                'minExpectedSize' => $minExpectedSize,
+            ]);
+        }
+
+        $destPath = $UpgradeDir . '/' . basename($url);
+        $writeResult = file_put_contents($destPath, $downloadContent);
+
+        if ($writeResult === false) {
+            $logger->error('Failed to write downloaded file to disk', [
+                'destPath' => $destPath,
+                'downloadSize' => $downloadSize,
+            ]);
+            throw new \Exception(gettext('Failed to save the downloaded release file. Please check disk space and permissions.'));
+        }
+
         $logger->info('Finished downloading file.  Execution time: ' . $executionTime->getMilliseconds() . ' ms');
+        $logger->info('Downloaded file size: ' . $downloadSize . ' bytes');
+
         $returnFile = [];
         $returnFile['fileName'] = basename($url);
         $returnFile['releaseNotes'] = $release->getReleaseNotes();
-        $returnFile['fullPath'] = $UpgradeDir . '/' . basename($url);
-        $returnFile['sha1'] = sha1_file($UpgradeDir . '/' . basename($url));
+        $returnFile['fullPath'] = $destPath;
+        $returnFile['sha1'] = sha1_file($destPath);
         $logger->info('SHA1 hash for ' . $returnFile['fullPath'] . ': ' . $returnFile['sha1']);
         $logger->info('Release notes: ' . $returnFile['releaseNotes']);
 
@@ -274,6 +388,59 @@ class ChurchCRMReleaseManager
         $logger = LoggerUtils::getAppLogger();
         $logger->info('Beginning upgrade process');
         $logger->info('PHP max_execution_time is now: ' . ini_get('max_execution_time'));
+
+        // Pre-flight validation: Check if we can create the Upgrade directory
+        $docRoot = SystemURLs::getDocumentRoot();
+        $upgradeDir = $docRoot . '/Upgrade';
+        $logger->info('Document root: ' . $docRoot);
+        $logger->info('Upgrade directory will be: ' . $upgradeDir);
+
+        // Check if document root is writable
+        if (!is_writable($docRoot)) {
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+
+            // Safely determine the directory owner name, handling environments
+            // where POSIX functions or lookups may fail.
+            $ownerName = 'N/A';
+            if (function_exists('posix_getpwuid')) {
+                $fileOwner = @fileowner($docRoot);
+                if ($fileOwner !== false) {
+                    $ownerInfo = @posix_getpwuid($fileOwner);
+                    if (is_array($ownerInfo) && isset($ownerInfo['name'])) {
+                        $ownerName = $ownerInfo['name'];
+                    } else {
+                        $ownerName = 'unknown';
+                    }
+                } else {
+                    $ownerName = 'unknown';
+                }
+            }
+
+            $logger->error('Cannot write to ChurchCRM installation directory', [
+                'docRoot' => $docRoot,
+                'isWritable' => false,
+                'permissions' => substr(sprintf('%o', fileperms($docRoot)), -4),
+                'owner' => $ownerName,
+            ]);
+            throw new \Exception(gettext('Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions.'));
+        }
+
+        // Create Upgrade directory if it doesn't exist
+        if (!is_dir($upgradeDir)) {
+            $logger->info('Creating Upgrade directory: ' . $upgradeDir);
+            if (!@mkdir($upgradeDir, 0755, true)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $error = error_get_last();
+                $logger->error('Failed to create Upgrade directory', [
+                    'upgradeDir' => $upgradeDir,
+                    'lastError' => $error,
+                ]);
+                throw new \Exception(gettext('Failed to create Upgrade directory. Please check file permissions.'));
+            }
+        }
+
         $logger->info('Beginning hash validation on ' . $zipFilename);
 
         // Log detailed file information before attempting hash
@@ -283,8 +450,12 @@ class ChurchCRMReleaseManager
         $perms = $fileExists ? @fileperms($zipFilename) : false;
         $filePerms = ($perms !== false) ? substr(sprintf('%o', $perms), -4) : 'N/A';
         $currentUser = get_current_user();
-        $pwuid = $fileExists ? posix_getpwuid(fileowner($zipFilename)) : false;
-        $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        $fileOwner = 'unknown';
+        // Only call posix_getpwuid if the function exists (not available on Windows)
+        if ($fileExists && function_exists('posix_getpwuid')) {
+            $pwuid = @posix_getpwuid(fileowner($zipFilename));
+            $fileOwner = ($pwuid !== false && isset($pwuid['name'])) ? $pwuid['name'] : 'unknown';
+        }
         $logger->debug('File pre-flight check', [
             'zipFilename' => $zipFilename,
             'fileExists' => $fileExists,
@@ -345,23 +516,57 @@ class ChurchCRMReleaseManager
         $zip = new \ZipArchive();
         $codeDeploySuccessful = false;
 
-        if ($zip->open($zipFilename) === true) {
-            $logger->info('Extracting ' . $zipFilename . ' to: ' . SystemURLs::getDocumentRoot() . '/Upgrade');
+        $openResult = $zip->open($zipFilename);
+        if ($openResult === true) {
+            $logger->info('Extracting ' . $zipFilename . ' to: ' . $upgradeDir);
 
             $executionTime = new ExecutionTime();
-            $isSuccessful = $zip->extractTo(SystemURLs::getDocumentRoot() . '/Upgrade');
-            MiscUtils::throwIfFailed($isSuccessful);
+            $isSuccessful = $zip->extractTo($upgradeDir);
+            if (!$isSuccessful) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Failed to extract upgrade archive', [
+                    'zipFilename' => $zipFilename,
+                    'upgradeDir' => $upgradeDir,
+                    'diskFreeSpace' => disk_free_space($docRoot),
+                ]);
+                $zip->close();
+                throw new \Exception(gettext('Failed to extract upgrade archive. Please check disk space and file permissions.'));
+            }
 
             $zip->close();
 
             $logger->info('Extraction completed.  Took:' . $executionTime->getMilliseconds());
+
+            // Verify the extracted directory exists
+            $extractedChurchCRM = $upgradeDir . '/churchcrm';
+            if (!is_dir($extractedChurchCRM)) {
+                self::$isUpgradeInProgress = false;
+                ini_set('display_errors', $displayErrors);
+                $logger->error('Extraction completed but expected directory not found', [
+                    'upgradeDir' => $upgradeDir,
+                    'expectedDir' => $extractedChurchCRM,
+                    'upgradeDirContents' => @scandir($upgradeDir),
+                ]);
+                throw new \Exception(gettext('Extraction completed but upgrade files not found. The upgrade archive may be corrupted.'));
+            }
+
             $logger->info('Moving extracted zip into place');
 
             $executionTime = new ExecutionTime();
 
-            FileSystemUtils::moveDir(SystemURLs::getDocumentRoot() . '/Upgrade/churchcrm', SystemURLs::getDocumentRoot());
+            FileSystemUtils::moveDir($extractedChurchCRM, $docRoot);
             $codeDeploySuccessful = true;
             $logger->info('Move completed.  Took:' . $executionTime->getMilliseconds());
+        } else {
+            // ZipArchive::open() failed - log the error code and throw
+            self::$isUpgradeInProgress = false;
+            ini_set('display_errors', $displayErrors);
+            $logger->error('Failed to open upgrade archive', [
+                'zipFilename' => $zipFilename,
+                'errorCode' => $openResult,
+            ]);
+            throw new \Exception(gettext('Failed to open upgrade archive. The downloaded file may be corrupted.'));
         }
         $logger->info('Deleting zip archive: ' . $zipFilename);
         unlink($zipFilename);

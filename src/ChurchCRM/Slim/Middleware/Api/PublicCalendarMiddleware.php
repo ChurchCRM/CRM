@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\Map\EventTableMap;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use DateTime;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -41,18 +42,26 @@ class PublicCalendarMiddleware implements MiddlewareInterface
 
         $request = $request->withAttribute('calendar', $calendar);
         $events = $this->getEvents($request, $calendar);
+        if ($events === null) {
+            return SlimUtils::renderJSON($response, ['message' => gettext('Invalid date format in start parameter')], 400);
+        }
         $request = $request->withAttribute('events', $events);
 
         return $handler->handle($request);
     }
 
-    private function getEvents(ServerRequestInterface $request, Calendar $calendar)
+    private function getEvents(ServerRequestInterface $request, Calendar $calendar): mixed
     {
         $params = $request->getQueryParams();
         if (isset($params['start'])) {
-            $start_date = DateTime::createFromFormat('Y-m-d', $params['start']);
+            $start_date = DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
+            if ($start_date === false) {
+                // Invalid date format - return null to indicate error
+                return null;
+            }
         } else {
-            $start_date = new DateTime();
+            // Use configured timezone for default start date
+            $start_date = DateTimeUtils::getStartOfToday();
         }
         $start_date->setTime(0, 0, 0);
 

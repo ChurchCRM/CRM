@@ -34,7 +34,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                     <span class="fa-solid fa-user form-control-feedback"></span>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12 text-center">
+                    <div class="col-12 text-center">
                         <button type="submit" class="btn bg-olive"><?= gettext("Next"); ?></button>
                     </div>
                     <!-- /.col -->

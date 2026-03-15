@@ -14,15 +14,15 @@ describe("Standard People", () => {
         cy.wait(500);
         
         // Search for Admin
-        cy.get("#members_filter input").type("Admin");
+        cy.get(".dt-search input").first().type("Admin");
         cy.get("#members tbody").contains("Admin").should("exist");
         
         // Clear and search for Joel
-        cy.get("#members_filter input").clear().type("Joel");
+        cy.get(".dt-search input").first().clear().type("Joel");
         cy.get("#members tbody").contains("Joel").should("exist");
         
         // Clear and search for Emma
-        cy.get("#members_filter input").clear().type("Emma");
+        cy.get(".dt-search input").first().clear().type("Emma");
         cy.get("#members tbody").contains("Emma").should("exist");
     });
 
@@ -32,15 +32,15 @@ describe("Standard People", () => {
         cy.wait(500);
         
         // Search for Admin (male)
-        cy.get("#members_filter input").type("Admin");
+        cy.get(".dt-search input").first().type("Admin");
         cy.get("#members tbody").contains("Admin").should("exist");
         
         // Clear and search for Kennedy (male)
-        cy.get("#members_filter input").clear().type("Kennedy");
+        cy.get(".dt-search input").first().clear().type("Kennedy");
         cy.get("#members tbody").contains("Kennedy").should("exist");
         
         // Clear search and verify no female entries appear in the filtered results
-        cy.get("#members_filter input").clear().type("Emma");
+        cy.get(".dt-search input").first().clear().type("Emma");
         cy.get("#members tbody").should("not.contain", "Female");
     });
 

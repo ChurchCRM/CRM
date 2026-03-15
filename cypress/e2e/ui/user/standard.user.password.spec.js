@@ -4,7 +4,7 @@ describe("User 2FA", () => {
     beforeEach(() => cy.setupStandardSession());
     
     it("Ensure QR code displays", () => {
-        cy.visit("v2/user/current/enroll2fa");
+        cy.visit("v2/user/current/manage2fa");
         cy.get("#begin2faEnrollment")
             .should("exist")
             .should("be.visible")
@@ -15,6 +15,7 @@ describe("User 2FA", () => {
             .should("be.visible")
             .should("have.attr", "src");
     });
+
 });
 
 describe("Standard User Password", () => {

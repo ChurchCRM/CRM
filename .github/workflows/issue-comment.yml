@@ -25,12 +25,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 1  # Shallow clone - only need template files
 
       - name: Comment on bug reports
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const fs = require('fs');
@@ -82,6 +82,12 @@ jobs:
             // STEP 2: Extract issue content for classification
             // =========================================================
             const issue = context.payload.issue || {};
+            // Skip auto-comments for issues opened by the repository owner/bot (DawoudIO)
+            const author = (issue.user && issue.user.login) ? issue.user.login.toLowerCase() : '';
+            if (author === 'dawoudio') {
+              console.log('Skipping auto-comment: issue opened by DawoudIO');
+              return;
+            }
             const title = (issue.title || '');
             const body = (issue.body || '');
             const titleLower = title.toLowerCase();

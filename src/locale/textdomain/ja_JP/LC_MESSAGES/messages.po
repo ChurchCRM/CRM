@@ -1803,14 +1803,6 @@ msgid "Assign starting at #"
 msgstr "割り当て開始番号 #"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "教会の緯度または経度が不足しているため、地図を表示できません。設定メニューで教会の住所を更新してください。"
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "Google Map API キーが設定されていません。小規模な地点セットでのみ動作します。設定メニューの地図セクションでキーを作成してください。"
-
-#: 
 msgid "Member Role Change"
 msgstr "メンバーのロールを変更"
 
@@ -2300,14 +2292,6 @@ msgid "This property type is still being used by at least one property."
 msgstr "このプロパティタイプはまだ少なくとも1つのプロパティで使用されています。"
 
 #: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "このタイプを削除すると、これを使用しているすべてのプロパティも削除され、"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "対応するプロパティの割り当てが失われます。"
-
-#: 
 msgid "Please confirm deletion of this Property Type"
 msgstr "このプロパティタイプの削除を確認してください"
 
@@ -2611,10 +2595,6 @@ msgstr "ユーザー設定"
 #: 
 msgid "Last Login"
 msgstr "最終ログイン"
-
-#: 
-msgid "Total Logins"
-msgstr "総ログイン数"
 
 #: 
 msgid "Failed Logins"
@@ -3253,10 +3233,6 @@ msgid "Email Export"
 msgstr "メール・エクスポート"
 
 #: 
-msgid "List"
-msgstr "一覧"
-
-#: 
 msgid "Import Data"
 msgstr "データをインポート"
 
@@ -3359,26 +3335,6 @@ msgstr "バックアップが完了しました。ダウンロード可能です
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "バックアップがダウンロードされました。サーバー上のコピーは削除されました"
-
-#: 
-msgid "Campaigns:"
-msgstr "キャンペーン:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "配信停止数:"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "最終送信以降の配信停止数:"
-
-#: 
-msgid "Cleaned count:"
-msgstr "クリーニング済み件数:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "最終送信以降のクリーニング済み件数:"
 
 #: 
 msgid "Functions"
@@ -3505,10 +3461,6 @@ msgid "CSV Import"
 msgstr "CSVインポート"
 
 #: 
-msgid "Members:"
-msgstr "メンバー:"
-
-#: 
 msgid "There were "
 msgstr "ありました "
 
@@ -3583,10 +3535,6 @@ msgstr "これらは配偶者として指定された役割番号です"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "これらは子供として指定された役割番号です"
-
-#: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "管理者のみがCSVエクスポートシステムとディレクトリレポートにアクセスできるようにしますか?"
 
 #: 
 msgid "Minimum length a user may set their password to"
@@ -3673,10 +3621,6 @@ msgid "Unit used to measure distance, miles or km."
 msgstr "距離を測定するために使用される単位(マイルまたはkm)"
 
 #: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "分類順のGoogleマップのマーカーの名前"
-
-#: 
 msgid "Enable non-deductible payments"
 msgstr "控除不可能な支払いを有効にします"
 
@@ -3755,34 +3699,6 @@ msgstr "ディレクトリレポートの文言"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "教会レターヘッドパスとファイル"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "ローカル画像がない場合、Gravatarでユーザー画像を検索します"
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "クラウドサービスへのリモートバックアップを有効にする"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "クラウドサービスタイプ (サポート値: WebDAV、Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "リモートバックアップユーザー名"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "リモートバックアップパスワード"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "自動リモートバックアップの間隔(時間)"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "最後のバックアップタイムスタンプ"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4176,11 +4092,6 @@ msgstr "ディレクトリを作成するユーザー権限"
 
 #. Context: userconfig_ucfg
 #: 
-msgid "User permission to export CSV files"
-msgstr "CSVファイルをエクスポートするユーザー権限"
-
-#. Context: userconfig_ucfg
-#: 
 msgid "Allow user to add new event"
 msgstr "ユーザーが新しいイベントを追加することを許可します"
 
@@ -4319,14 +4230,6 @@ msgstr "マイル"
 #: 
 msgid "kilometers"
 msgstr "キロメートル"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "ローカル"
 
 #. Context: countries
 #: 
@@ -4622,6 +4525,11 @@ msgstr "クック諸島"
 #: 
 msgid "Costa Rica"
 msgstr "コスタリカ"
+
+#. Context: countries
+#: 
+msgid "Côte d’Ivoire"
+msgstr "コートジボワール"
 
 #. Context: countries
 #: 
@@ -5662,10 +5570,6 @@ msgstr "ユーザーが入力した郵便番号をデータベースに保存す
 msgid "Used to end a letter before Signer"
 msgstr "署名者の前に手紙を終了するために使用されます"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Googleアナリティクストラッキングコード"
-
 #. Context: locales
 #: 
 msgid "English - United States"
@@ -5819,10 +5723,6 @@ msgid "payment(s)?"
 msgstr "支払い?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "これが本当にしたいことであることを確認してください。"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "非アクティブ化を確認"
 
@@ -5971,10 +5871,6 @@ msgid "Your Cart is Empty"
 msgstr "カートは空です"
 
 #: 
-msgid "View on Map"
-msgstr "マップで表示"
-
-#: 
 msgid "Legend"
 msgstr "凡例"
 
@@ -6019,18 +5915,6 @@ msgid "The role could not be assigned."
 msgstr "役割を割り当てられませんでした。"
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "Bing Map APIには一意のキーが必要です"
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Googleマップズーム"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "ジオコーダープロバイダーを選択"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "ChurchCRMアカウントがロックされました。"
 
@@ -6073,10 +5957,6 @@ msgstr "管理者によりシステムユーザーパスワードが変更され
 #: 
 msgid "system user login reset"
 msgstr "システムユーザーログインがリセットされました"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "家族が見つかりませんか？今すぐ家族の緯度または経度を更新してください。"
 
 #: 
 msgid "Families without Geo Info"
@@ -6155,30 +6035,6 @@ msgid "Time zone"
 msgstr "タイムゾーン"
 
 #: 
-msgid "Nexmo SMS API Key"
-msgstr "Nexmo SMS APIキー"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Nexmo SMS APIシークレット"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Nexmo SMSの送信元番号"
-
-#: 
-msgid "OpenLP URL"
-msgstr "OpenLP URL"
-
-#: 
-msgid "OpenLP Username"
-msgstr "OpenLPユーザー名"
-
-#: 
-msgid "OpenLP Password"
-msgstr "OpenLPパスワード"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "キオスク表示タイムスタンプ"
 
@@ -6191,24 +6047,8 @@ msgid "Backup"
 msgstr "バックアップ"
 
 #: 
-msgid "Integration"
-msgstr "統合"
-
-#: 
-msgid "Notification"
-msgstr "通知"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "保護者"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "クラスルームティーチャーによって通知がトリガーされました"
-
-#: 
-msgid "Please go to this location"
-msgstr "この場所に移動してください"
 
 #: 
 msgid "Your ChurchCRM password has been changed"
@@ -6376,10 +6216,6 @@ msgstr "インドネシア語 - インドネシア"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "件のレコードが選択したグループに正常に追加されました。"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "ヨーロッパの文字セットにエクスポートするには ; を使用"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -6838,14 +6674,6 @@ msgid "View User"
 msgstr "ユーザーを表示"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "無効なリクエスト：カレンダーIDがありません"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "見つかりません：不明なカレンダーID"
-
-#: 
 msgid "not found or user without an email"
 msgstr "見つからない、またはメールのないユーザー"
 
@@ -6938,10 +6766,6 @@ msgid "Links"
 msgstr "リンク"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "左側のメニューにカスタムリンクを表示。"
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "日曜学校の左メニューを有効化。"
 
@@ -6968,10 +6792,6 @@ msgstr "有効な機能"
 #: 
 msgid "Validation Error"
 msgstr "検証エラー"
-
-#: 
-msgid "Link Not found"
-msgstr "リンクが見つかりません"
 
 #: 
 msgid "Email Functions"
@@ -7014,20 +6834,12 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "ChurchCRM中央通知URL"
 
 #: 
-msgid "Follow us on"
-msgstr "フォローしてください"
-
-#: 
 msgid "invalid event type id"
 msgstr "無効なイベントタイプID"
 
 #: 
 msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
-
-#: 
-msgid "invalid group id"
-msgstr "無効なグループID"
 
 #: 
 msgid "invalid status value"
@@ -7062,10 +6874,6 @@ msgid "Updated People"
 msgstr "更新された人物"
 
 #: 
-msgid "Custom Menus"
-msgstr "カスタムメニュー"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "ユーザーはグループ管理権限が必要です"
 
@@ -7084,26 +6892,6 @@ msgstr "自分自身は削除できません"
 #: 
 msgid "The role could not be found."
 msgstr "役割が見つかりませんでした。"
-
-#: 
-msgid "Add Menu"
-msgstr "メニューを追加"
-
-#: 
-msgid "Menu Name"
-msgstr "メニュー名"
-
-#: 
-msgid "Link Address"
-msgstr "リンクアドレス"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "http://またはhttps://で始める"
-
-#: 
-msgid "Menus"
-msgstr "メニュー"
 
 #: 
 msgid "is disabled"
@@ -7220,16 +7008,8 @@ msgid "Error decoding signature definition file"
 msgstr "署名定義ファイルのデコードエラー"
 
 #: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "リモートバックアップエンドポイント。WebDAVの場合、URLエンコードが必要です。"
-
-#: 
 msgid "Age Histogram"
 msgstr "年齢ヒストグラム"
-
-#: 
-msgid "Missing event id"
-msgstr "イベントIDがありません"
 
 #: 
 msgid "Event not found"
@@ -7373,14 +7153,6 @@ msgid "Holiday"
 msgstr "祝日"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "ユーザーが2要素認証に自己登録することを許可"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "ユーザーに2要素認証への自己登録を要求"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7421,48 +7193,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "姓, 名, ミドルネーム"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "2要素認証を管理"
-
-#: 
-msgid "Two Factor Status"
-msgstr "2要素認証ステータス"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "2FAコードを入力してください"
-
-#: 
-msgid "2FA Code"
-msgstr "2FAコード"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "2要素認証の登録"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "サポートされていない2要素認証設定"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "2要素認証登録を開始できません"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "2要素認証では、ChurchCRM管理者がいくつかのパラメータを設定する必要があります"
-
-#: 
-msgid "System configuration "
-msgstr "システム設定 "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "'true'に設定する必要があります"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7471,10 +7203,6 @@ msgstr "住所のジオコーディングに使用されるGoogle Maps APIキー
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "アカウントが削除されたときにユーザーに通知メールを送信"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "ブラウザでマップをレンダリングするために使用されるGoogle Maps APIキー"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7520,11 +7248,6 @@ msgstr "読み込み中"
 msgid "List not found"
 msgstr "リストが見つかりません"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "リストに含まれていません"
-
 #: 
 msgid "People not in"
 msgstr "含まれていない人"
@@ -7541,18 +7264,6 @@ msgstr "オーディエンスがChurchCRMにありません"
 msgid "Web Server"
 msgstr "Webサーバ"
 
-#: 
-msgid "List maintenance"
-msgstr "リストメンテナンス"
-
-#: 
-msgid "People not in list"
-msgstr "リストにない人物"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "オーディエンスがCRMにありません"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7561,10 +7272,6 @@ msgstr "ヘブライ語"
 #: 
 msgid "open rate"
 msgstr "開封率"
-
-#: 
-msgid "Not Subscribed "
-msgstr "購読していません "
 
 #: 
 msgid "Login Info"
@@ -7631,86 +7338,6 @@ msgid "Event Description"
 msgstr "イベントの説明"
 
 #: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "ChurchCRMユーザーアカウントを2要素認証に登録すると、アカウントにアクセスしようとする悪意のある人物に対する追加の防御層が提供されます。"
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "ChurchCRM 2要素認証は任意のTOTP認証アプリをサポートしているため、Microsoft Authenticator、Google Authenticator、Authy、LastPassなどから自由に選択できます"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "ChurchCRMにサインインするとき、通常どおりユーザー名とパスワードを入力します"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "ただし、ログインを完了するには、認証デバイスからのワンタイムコードも必要です"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "資格情報とワンタイムコードの両方を正常に入力すると、通常どおりログインできます"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "ChurchCRMアカウントからロックアウトされるのを防ぐため、開始をクリックする前に2要素認証登録を完了する準備ができていることを確認してください"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "登録を開始すると、以前に登録した 2 要素デバイスとリカバリ コードが無効になります"
-
-#: 
-msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "次へ　をクリックすると、QR コードをスキャンして認証アプリを登録するように求められます"
-
-#: 
-msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "登録を確認するには、認証アプリによって生成されたコードを入力する必要があります"
-
-#: 
-msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "アプリの登録を確認すると、使い捨てリカバリコードが生成されて表示されます。"
-
-#: 
-msgid "Recovery codes can be used instead of a code generated from your authenticator app."
-msgstr "リカバリコードは、認証アプリから生成されたコードの代わりに使用できます。"
-
-#: 
-msgid "Store these in a secure location"
-msgstr "これらを安全な場所に保管してください"
-
-#: 
-msgid "Begin Two Factor Authentication Enrollment"
-msgstr "2要素認証登録を開始"
-
-#: 
-msgid "2 Factor Authentication Secret"
-msgstr "2要素認証シークレット"
-
-#: 
-msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "2要素認証シークレットを再生成"
-
-#: 
-msgid "Remove 2 Factor Authentication Secret"
-msgstr "2要素認証シークレットを削除"
-
-#: 
-msgid "Enter TOTP code to confirm enrollment"
-msgstr "登録を確認するためにTOTPコードを入力"
-
-#: 
-msgid "2 Factor Authentication Enrollment Success"
-msgstr "2要素認証登録成功"
-
-#: 
-msgid "Please store these recovery codes in a safe location"
-msgstr "これらのリカバリコードを安全な場所に保管してください"
-
-#: 
-msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "新しく登録した認証アプリにアクセスできなくなった場合は、リカバリコードを使用してアカウントにアクセスする必要があります"
-
-#: 
 msgid "Help translate this project"
 msgstr "このプロジェクトの翻訳にご協力ください"
 
@@ -7718,10 +7345,6 @@ msgstr "このプロジェクトの翻訳にご協力ください"
 #: 
 msgid "Afrikaans"
 msgstr "アフリカーンス語"
-
-#: 
-msgid " has a type mismatch"
-msgstr " に型の不一致があります"
 
 #: 
 msgid "Loading"
@@ -7928,20 +7551,6 @@ msgstr "プロパティ"
 msgid "Default Zip"
 msgstr "デフォルト郵便番号"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "クレジットカード支払者"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "クレジットカードで支払うように設定されている人物。"
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "復元の一環として、外部バックアップが無効になりました。自動バックアップを続行する場合は、bEnableExternalBackupTarget設定を手動で再有効化する必要があります。"
-
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "前回の整合性チェックに合格しました。すべてのシステムファイルハッシュが期待値と一致しています。"
@@ -7953,10 +7562,6 @@ msgstr "非アクティブとして表示する分類のカンマ区切りリス
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimpが設定されていません"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "MailChimp APIキーを更新してください："
 
 #. Context: locales
 #: 
@@ -8328,28 +7933,8 @@ msgid "Address is required"
 msgstr "住所は必須です"
 
 #: 
-msgid "Base URL is required"
-msgstr "ベースURLが必要です"
-
-#: 
 msgid "City is required"
 msgstr "市区町村が必要です"
-
-#: 
-msgid "Database name is required"
-msgstr "データベース名が必要です"
-
-#: 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr "データベースサーバーホスト名またはIPアドレスが必要です (例: localhostまたは127.0.0.1)"
-
-#: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "データベースサーバーポートが必要です (例: 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "データベースユーザー名は必須です"
 
 #: 
 msgid "Email Address"
@@ -8454,10 +8039,6 @@ msgstr "電話番号"
 #: 
 msgid "Please add at least one family member."
 msgstr "少なくとも1人の家族メンバーを追加してください。"
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "続行する前に検証エラーを修正してください。"
 
 #: 
 msgid "Please enter a valid URL"
@@ -8820,10 +8401,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "前回のレポートからレコードが返されませんでした。フィルターまたは日付範囲を調整して、もう一度お試しください。"
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "メニュー名を入力してください（2〜50文字）"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "http://またはhttps://で始まる有効なURLを入力してください"
 
@@ -8832,28 +8409,12 @@ msgid "All system file signatures match the expected values."
 msgstr "すべてのシステムファイル署名が期待値と一致しています。"
 
 #: 
-msgid "Files with issues"
-msgstr "問題のあるファイル"
-
-#: 
-msgid "Integrity check failed"
-msgstr "整合性チェックに失敗しました"
-
-#: 
-msgid "Integrity check passed"
-msgstr "整合性チェックに合格しました"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "署名定義ファイルは存在しますが、読み取りできません。ファイル権限を確認してください。"
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "署名定義ファイルが%sにありません。パッケージングタスクを実行するか、公式リリースをデプロイして署名を再生成してください。"
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "整合性エンドポイントに接続できません。Webサーバーエラーログを確認してください。"
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -9224,6 +8785,7 @@ msgstr "イベントを編集中"
 msgid "Enter event title..."
 msgstr "イベントタイトルを入力..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "イベント"
@@ -9484,10 +9046,6 @@ msgstr "外部ストレージへバックアップ"
 #: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "注意：バックアップを復元すると、既存のデータベースが完全に消去され、バックアップデータに置き換えられます。"
-
-#: 
-msgid "CSV export permission"
-msgstr "CSVエクスポート権限"
 
 #: 
 msgid "Close & Refresh"
@@ -9910,10 +9468,6 @@ msgid "Birth & Family"
 msgstr "出生と家族"
 
 #: 
-msgid "CSV export is restricted to administrators."
-msgstr "CSVエクスポートは管理者に制限されています。"
-
-#: 
 msgid "Cart"
 msgstr "カート"
 
@@ -10242,10 +9796,6 @@ msgid "Membership Reports"
 msgstr "会員レポート"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "秘密鍵が不足しています"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "ほとんどのレポートは、印刷用にPDFとして、またはスプレッドシート分析用にCSVとしてエクスポートできます。"
 
@@ -10384,10 +9934,6 @@ msgstr "SMTPサーバー設定が構成されていません"
 #: 
 msgid "Save and Add New Family"
 msgstr "保存して新しい家族を追加"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Config.phpに秘密鍵がありません"
 
 #: 
 msgid "Sep"
@@ -10590,10 +10136,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "（事前定義された州がない国の場合は、州/県を入力してください）"
 
 #: 
-msgid "Available"
-msgstr "利用可能"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "ベースURL設定が無効です。Config.phpファイルを確認してください。"
 
@@ -10678,10 +10220,6 @@ msgid "No locales configured"
 msgstr "ロケールが設定されていません"
 
 #: 
-msgid "Not Available"
-msgstr "利用不可"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "このファイルをテキストエディタで開く："
 
@@ -10714,10 +10252,6 @@ msgid "System Locale Support"
 msgstr "システムロケールサポート"
 
 #: 
-msgid "System Support"
-msgstr "システムサポート"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "URLに有効なホスト名が含まれていません"
 
@@ -10736,18 +10270,6 @@ msgstr "URLは末尾のスラッシュ（/）で終わる必要があります"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "URLはhttp://またはhttps://で始まる必要があります"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "システムロケールを検出できません"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "利用可能なロケールを判断できません"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "ロケール情報を読み込めません"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -10942,10 +10464,6 @@ msgid "Download failed"
 msgstr "ダウンロードに失敗しました"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "アップグレードの適用に失敗しました"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "孤立ファイルの削除に失敗しました"
 
@@ -10968,10 +10486,6 @@ msgstr "人物写真のアップロードに失敗しました"
 #: 
 msgid "Remote backup failed"
 msgstr "リモートバックアップに失敗しました"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "WebDAVバックアップが正しく設定されていません。エンドポイント、ユーザー名、パスワードが設定されていることを確認してください"
 
 #: 
 msgid "2FA Enabled"
@@ -11100,10 +10614,6 @@ msgstr "二要素認証"
 #: 
 msgid "Validation pending"
 msgstr "検証保留中"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "暗号化キーで設定する必要があります"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11454,14 +10964,6 @@ msgid "No people found matching your criteria."
 msgstr "条件に一致する人物が見つかりません。"
 
 #: 
-msgid "Off"
-msgstr "オフ"
-
-#: 
-msgid "On"
-msgstr "オン"
-
-#: 
 msgid "Photo Directory"
 msgstr "写真ディレクトリ"
 
@@ -11472,4 +10974,1324 @@ msgstr "フィルターをリセット"
 #: 
 msgid "Show only people with photos"
 msgstr "写真のある人物のみ表示"
+
+#: 
+msgid "Expected"
+msgstr "予定"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "キオスクの削除に失敗しました"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "会計年度。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "登録済み学生グループ"
+
+#: 
+msgid "Here"
+msgstr "こちら"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "無効な割り当てタイプ"
+
+#: 
+msgid "Invalid person ID"
+msgstr "無効な人物ID"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "キオスク登録が無効です"
+
+#: 
+msgid "Kiosk not found"
+msgstr "キオスクが見つかりません"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "キオスクチェックイン機能のためにこのイベントをグループにリンクします。グループメンバーがキオスクに表示されます。"
+
+#: 
+msgid "Linked Group"
+msgstr "リンクされたグループ"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "新しいキオスクデバイスの登録は現在無効になっています。キオスク登録を有効にするには、システム管理者にお問い合わせください。"
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "グループなし（キオスクチェックイン用に選択）"
+
+#: 
+msgid "No one checked in yet"
+msgstr "まだ誰もチェックインしていません"
+
+#: 
+msgid "Person not found"
+msgstr "人物が見つかりません"
+
+#: 
+msgid "Pickup Request"
+msgstr "お迎えリクエスト"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "できるだけ早く教室にお越しください。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "選択した会計年度の各基金の家族名別誓約概要"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "登録済み学生"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "先生がこのアラートを送信した時刻"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "このキオスクは、最適なチェックイン体験のためにタブレットの横向きモードで表示することをお勧めします。"
+
+#: 
+msgid "Tip"
+msgstr "ヒント"
+
+#: 
+msgid "Try Again"
+msgstr "再試行"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "近日中の誕生日"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "チェックイン待ち"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "有効にすると、新しいキオスクデバイスは30秒間登録できます。"
+
+#: 
+msgid "Your child"
+msgstr "お子様"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "から迎えに来てください"
+
+#: 
+msgid "their classroom"
+msgstr "教室"
+
+#: 
+msgid "All timezones match"
+msgstr "すべてのタイムゾーンが一致しています"
+
+#: 
+msgid "Baseline"
+msgstr "基準値"
+
+#: 
+msgid "Browser"
+msgstr "ブラウザ"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "ブラウザがシステム設定と異なります。このユーザーの日付表示が正しくない場合があります。"
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "ChurchCRMのインストールディレクトリに書き込めません。Webサーバーに書き込み権限があることをご確認ください。"
+
+#: 
+msgid "Comparing timezones..."
+msgstr "タイムゾーンを比較中..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "インストール先ディレクトリが存在しません。ChurchCRMが正しくインストールされているかご確認ください。"
+
+#: 
+msgid "Does not match system config"
+msgstr "システム設定と一致しません"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "ダウンロードしたリリースファイルが空です。ネットワークの問題またはGitHubのレート制限が原因の可能性があります。後でもう一度お試しください。"
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "展開は完了しましたが、アップグレードファイルが見つかりません。アップグレードアーカイブが破損している可能性があります。"
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "アップグレードの適用に失敗しました。詳細はサーバーログをご確認ください。"
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "アップグレードディレクトリの作成に失敗しました。ファイルの権限をご確認ください。"
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "複数回試みましたが、GitHubからリリースファイルのダウンロードに失敗しました。サーバーのインターネット接続をご確認の上、再度お試しください。"
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "アップグレードアーカイブの展開に失敗しました。ディスク容量とファイルの権限をご確認ください。"
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "アップグレードアーカイブを開けませんでした。ダウンロードしたファイルが破損している可能性があります。"
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "ダウンロードしたリリースファイルの保存に失敗しました。ディスク容量と権限をご確認ください。"
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "開始パラメータの日付形式が無効です"
+
+#: 
+msgid "Mismatch"
+msgstr "不一致"
+
+#: 
+msgid "Not set"
+msgstr "未設定"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP 有効"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "ソースディレクトリが存在しません。アップグレードアーカイブが正しく展開されていない可能性があります。ファイルの権限とディスク容量をご確認ください。"
+
+#: 
+msgid "System Config"
+msgstr "システム設定"
+
+#: 
+msgid "Timezone Information"
+msgstr "タイムゾーン情報"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "タイムゾーンの不一致が検出されました"
+
+#: 
+msgid "mismatch detected"
+msgstr "件の不一致が検出されました"
+
+#: 
+msgid "mismatches detected"
+msgstr "件の不一致が検出されました"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d時間"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "WebDAV バックアップについて"
+
+#: 
+msgid "Add Link"
+msgstr "リンクを追加"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "アカウントにセキュリティを追加する"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "ナビゲーションメニューにカスタム外部リンクを追加します。"
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "自己署名証明書を許可する"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "プラグインリクエストの処理中にエラーが発生しました"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "二要素認証を無効にしてよろしいですか？アカウントのセキュリティが低下します。"
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "復元の一環として、外部バックアップが無効になりました。自動バックアップを継続する場合は、管理者 > プラグイン から外部バックアッププラグインを再度有効にしてください。"
+
+#: 
+msgid "Audiences"
+msgstr "オーディエンス"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "認証に失敗しました。ユーザー名とパスワードをご確認ください。"
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "自動バックアップの間隔"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "WebDAV を使用して ChurchCRM データベースを外部クラウドストレージに自動バックアップします。"
+
+#: 
+msgid "Avg Click Rate"
+msgstr "平均クリック率"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "平均開封率"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "ダッシュボードに戻る"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "バックアップは作成されましたが、リモートサーバーへのコピーに失敗しました"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "今すぐ WebDAV にバックアップ"
+
+#: 
+msgid "Before You Start"
+msgstr "開始前に"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "ブラウザの言語設定が検出されました"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "未購読の CRM メンバー"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "送信済みキャンペーン"
+
+#: 
+msgid "Can't scan?"
+msgstr "スキャンできませんか？"
+
+#: 
+msgid "Change Your Locale"
+msgstr "ロケールを変更する"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "ChurchCRM は機能を拡張するためのプラグインアーキテクチャをサポートしています。"
+
+#: 
+msgid "Cleaned"
+msgstr "クリーン済み"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "下のボタンをクリックして WebDAV 接続設定をテストしてください。"
+
+#: 
+msgid "Community Plugins"
+msgstr "コミュニティプラグイン"
+
+#: 
+msgid "Community plugins"
+msgstr "コミュニティプラグイン"
+
+#: 
+msgid "Configure External Backup"
+msgstr "外部バックアップを設定する"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "MailChimp を設定する"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "次の場所でこれらの設定を行う："
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "このプラグインを設定すると、ChurchCRM データベースを Nextcloud、ownCloud、またはその他の WebDAV サーバーなどの WebDAV 対応クラウドストレージに自動バックアップします。バックアップは HTTPS を使用して転送中に暗号化されます。"
+
+#: 
+msgid "Configured"
+msgstr "設定済み"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "認証アプリのコードで確認する"
+
+#: 
+msgid "Connected"
+msgstr "接続済み"
+
+#: 
+msgid "Connection failed"
+msgstr "接続に失敗しました"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "HTTP コードで接続に失敗しました"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "接続に成功しました！WebDAV エンドポイントにアクセスできます。"
+
+#: 
+msgid "Connection test failed"
+msgstr "接続テストに失敗しました"
+
+#: 
+msgid "Core Plugins"
+msgstr "コアプラグイン"
+
+#: 
+msgid "Core plugins"
+msgstr "コアプラグイン"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "今すぐバックアップを作成し、WebDAV サーバーにアップロードします。"
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "MailChimp でオーディエンスを作成する"
+
+#: 
+msgid "Custom"
+msgstr "カスタム"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "カスタムメニューリンク"
+
+#: 
+msgid "Default Image Style"
+msgstr "デフォルト画像スタイル"
+
+#: 
+msgid "Default List ID"
+msgstr "デフォルトリスト ID"
+
+#: 
+msgid "Disable"
+msgstr "無効にする"
+
+#: 
+msgid "Disable Plugin"
+msgstr "プラグインを無効にする"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "二要素認証を無効にする"
+
+#: 
+msgid "Dismiss"
+msgstr "閉じる"
+
+#: 
+msgid "Done"
+msgstr "完了"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "E.164 形式（例：+14155551234）"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "各プラグインには"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "サインインするたびに、認証アプリのコードで確認する必要があります"
+
+#: 
+msgid "Email Addresses"
+msgstr "メールアドレス"
+
+#: 
+msgid "Enable"
+msgstr "有効にする"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "外部バックアッププラグインを有効にする"
+
+#: 
+msgid "Enable Plugin"
+msgstr "プラグインを有効にする"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "二要素認証を有効にする"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "WebDAV クラウドストレージ用の外部バックアッププラグインを有効にします。"
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "自己署名 SSL 証明書を使用するローカルネットワークサーバーの場合のみ有効にしてください。証明書の検証が無効になります。"
+
+#: 
+msgid "Endpoint URL"
+msgstr "エンドポイント URL"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "認証アプリの6桁のコードを入力してください"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "通常通りユーザー名とパスワードを入力してください"
+
+#: 
+msgid "External Backup"
+msgstr "外部バックアップ"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "外部バックアップ（WebDAV）"
+
+#: 
+msgid "External Backup Settings"
+msgstr "外部バックアップ設定"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "外部バックアッププラグインは有効ですが、設定されていません。"
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "外部バックアッププラグインが設定されていません。プラグインで WebDAV 設定を行ってください。"
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "外部バックアッププラグインが有効になっていません。プラグイン管理で有効にして設定してください。"
+
+#: 
+msgid "Failed to create link"
+msgstr "リンクの作成に失敗しました"
+
+#: 
+msgid "Failed to delete link"
+msgstr "リンクの削除に失敗しました"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "プラグインの無効化に失敗しました"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "プラグインの有効化に失敗しました"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "プラグインの詳細の取得に失敗しました"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "プラグイン一覧の取得に失敗しました"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "設定のリセットに失敗しました"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "SMS の送信に失敗しました"
+
+#: 
+msgid "Family Status"
+msgstr "家族の状態"
+
+#: 
+msgid "Family not found"
+msgstr "家族が見つかりません"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "MailChimp で確認：オーディエンス > 設定 > オーディエンス名とデフォルト > オーディエンス ID"
+
+#: 
+msgid "From Phone Number"
+msgstr "送信元電話番号"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "dashboard.vonage.com から"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "GA4 測定 ID"
+
+#: 
+msgid "Generate new code"
+msgstr "新しいコードを生成する"
+
+#: 
+msgid "Get Started"
+msgstr "はじめる"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "MailChimp から API キーを取得：アカウント設定 > その他 > API キー"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "認証アプリを準備してください（Google Authenticator、Microsoft Authenticator、Authy など）"
+
+#: 
+msgid "Help"
+msgstr "ヘルプ"
+
+#: 
+msgid "Id"
+msgstr "ID"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "メールアドレスに対応する Gravatar が存在しない場合に表示される画像"
+
+#: 
+msgid "Important"
+msgstr "重要"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "プラグインを次の場所に配置してインストールする："
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "無効なコードです。もう一度お試しください。"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "エンドポイント URL が無効です。https:// で始まる完全な URL を入力してください（例：https://cloud.example.com/remote.php/dav/files/user/backups/）"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "キオスクデバイスが見つかりません"
+
+#: 
+msgid "Last Backup"
+msgstr "最後のバックアップ"
+
+#: 
+msgid "Last Campaign"
+msgstr "最後のキャンペーン"
+
+#: 
+msgid "Last Subscriber"
+msgstr "最後の購読者"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "最後の成功したバックアップ"
+
+#: 
+msgid "Last campaign"
+msgstr "最後のキャンペーン"
+
+#: 
+msgid "Link Name"
+msgstr "リンク名"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "リンクアドレスに HTML タグを含めることはできません"
+
+#: 
+msgid "Link address is required"
+msgstr "リンクアドレスは必須です"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "リンクは有効な URL である必要があります"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "リンクは http:// または https:// で始まる必要があります"
+
+#: 
+msgid "Link not found"
+msgstr "リンクが見つかりません"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "リカバリーコードを読み込み中"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "MailChimp API キー"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "MailChimp ダッシュボード"
+
+#: 
+msgid "Manage Links"
+msgstr "リンクを管理する"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "二要素認証を管理する"
+
+#: 
+msgid "Manual Backup"
+msgstr "手動バックアップ"
+
+#: 
+msgid "Menu Links"
+msgstr "メニューリンク"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "メニュー名に HTML タグを含めることはできません"
+
+#: 
+msgid "Menu name is required"
+msgstr "メニュー名は必須です"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "メニュー名は50文字以下である必要があります"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "メニュー名は2文字以上である必要があります"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "http:// または https:// で始まる必要があります"
+
+#: 
+msgid "Needs Configuration"
+msgstr "設定が必要です"
+
+#: 
+msgid "Never"
+msgstr "なし"
+
+#: 
+msgid "No Audiences Found"
+msgstr "オーディエンスが見つかりません"
+
+#: 
+msgid "No backups recorded"
+msgstr "バックアップが記録されていません"
+
+#: 
+msgid "No community plugins installed"
+msgstr "コミュニティプラグインがインストールされていません"
+
+#: 
+msgid "No core plugins found"
+msgstr "コアプラグインが見つかりません"
+
+#: 
+msgid "No settings provided"
+msgstr "設定が指定されていません"
+
+#: 
+msgid "Not Configured"
+msgstr "未設定"
+
+#: 
+msgid "Not in CRM"
+msgstr "CRM に存在しない"
+
+#: 
+msgid "One-Time Code"
+msgstr "ワンタイムコード"
+
+#: 
+msgid "Open MailChimp"
+msgstr "MailChimp を開く"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "認証アプリを開いてこの QR コードをスキャンしてください"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "OpenLP サーバー URL"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "任意 - OpenLP 認証が有効な場合のみ必要です"
+
+#: 
+msgid "Phone number and message required"
+msgstr "電話番号とメッセージが必要です"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "最初にエンドポイント、ユーザー名、パスワードを設定してください。"
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "リモートバックアップを作成する前に WebDAV 設定を行ってください。"
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "接続をテストする前に WebDAV 設定を行ってください。"
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "この連携を使用するには MailChimp API キーを設定してください。"
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "リンク名を入力してください（2〜50文字）"
+
+#: 
+msgid "Please try again"
+msgstr "もう一度お試しください"
+
+#: 
+msgid "Plugin Development"
+msgstr "プラグイン開発"
+
+#: 
+msgid "Plugin Help"
+msgstr "プラグインのヘルプ"
+
+#: 
+msgid "Plugin Management"
+msgstr "プラグイン管理"
+
+#: 
+msgid "Plugin Settings"
+msgstr "プラグイン設定"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "他のプラグインが依存しているため、このプラグインを無効にできません"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "依存関係またはバージョン要件のため、このプラグインを有効にできません"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "プラグインを正常に無効にしました"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "プラグインを正常に有効にしました"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "プラグインの読み込みに失敗しました"
+
+#: 
+msgid "Plugin not found"
+msgstr "プラグインが見つかりません"
+
+#: 
+msgid "Plugins"
+msgstr "プラグイン"
+
+#: 
+msgid "Print"
+msgstr "印刷"
+
+#: 
+msgid "Recipients and message required"
+msgstr "受信者とメッセージが必要です"
+
+#: 
+msgid "Recovery Codes"
+msgstr "リカバリーコード"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "リモートバックアップに失敗しました。詳細はサーバーログをご確認ください。"
+
+#: 
+msgid "SMS sent"
+msgstr "SMS を送信しました"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "これらのリカバリーコードを安全な場所に保存してください。認証アプリにアクセスできなくなった場合に、アカウントへのアクセスに使用できます。"
+
+#: 
+msgid "Scan QR Code"
+msgstr "QR コードをスキャン"
+
+#: 
+msgid "Secure"
+msgstr "セキュア"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "認証アプリを設定する"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "設定を正常にリセットしました"
+
+#: 
+msgid "Setup Complete"
+msgstr "設定完了"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "ChurchCRM に同梱されています。"
+
+#: 
+msgid "Sign In"
+msgstr "サインイン"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "一部の設定をリセットできませんでした"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "一部の設定を保存できませんでした"
+
+#: 
+msgid "Subscribers"
+msgstr "購読者"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "CRM に存在しない購読者"
+
+#: 
+msgid "Test Connection"
+msgstr "接続をテスト"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "WebDAV 接続をテスト"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "このプラグインが有効な場合、これらのリンクはナビゲーションサイドバーの「リンク」メニューに表示されます。"
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "これらのユーザーは MailChimp オーディエンスを購読していますが、ChurchCRM に存在しません。データベースに追加するか、MailChimp から削除することをご検討ください。"
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "これらのユーザーはメールアドレス付きで ChurchCRM に存在しますが、この MailChimp オーディエンスを購読していません。購読への招待をご検討ください。"
+
+#: 
+msgid "Third-party extensions."
+msgstr "サードパーティ拡張機能。"
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "以前に登録された2FA方法はすべて置き換えられます"
+
+#: 
+msgid "Total Campaigns"
+msgstr "総キャンペーン数"
+
+#: 
+msgid "Total Subscribers"
+msgstr "総購読者数"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "二要素認証の登録エラー"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "二要素認証が無効になりました"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "二要素認証はアカウントを保護する最良の方法の一つです。有効のままにされることを強くお勧めします。"
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "OpenLP サーバーの URL（例：http://192.168.1.100:4316）"
+
+#: 
+msgid "Unable to load"
+msgstr "読み込めません"
+
+#: 
+msgid "Unsubscribed"
+msgstr "購読解除"
+
+#: 
+msgid "Use a different account"
+msgstr "別のアカウントを使用する"
+
+#: 
+msgid "Value is configured"
+msgstr "値が設定されています"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "値が設定されています - 現在の値を保持するには空白のままにしてください"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "確認してサインイン"
+
+#: 
+msgid "Verify Code"
+msgstr "コードを確認する"
+
+#: 
+msgid "Verifying"
+msgstr "確認中"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Vonage API キー"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Vonage API シークレット"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "WebDAV 設定"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "WebDAV 接続"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "WebDAV バックアップが正しく設定されていません。エンドポイント、ユーザー名、パスワードが設定されていることをご確認ください。"
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "WebDAV エンドポイント URL は必須です。"
+
+#: 
+msgid "WebDAV password is required."
+msgstr "WebDAV パスワードは必須です。"
+
+#: 
+msgid "WebDAV username is required."
+msgstr "WebDAV ユーザー名は必須です。"
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "アプリにアクセスできなくなった場合は、バックアップリカバリーコードを使用することもできます"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "認証アプリを使用してサインインできるようになりました。各コードは30秒間有効です。"
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "アプリにアクセスできなくなった場合に使用できるバックアップコードが発行されます"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "GA4 測定 ID（G-XXXXXXXXXX）"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "MailChimp アカウントにオーディエンス（リスト）が設定されていません。"
+
+#: 
+msgid "Your account is now protected"
+msgstr "アカウントが保護されました"
+
+#: 
+msgid "Your account is protected"
+msgstr "アカウントは保護されています"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "認証アプリが正常に登録されました"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "ブラウザの言語設定が ChurchCRM のロケールと異なります"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "例：教会のウェブサイト"
+
+#: 
+msgid "manifest."
+msgstr "マニフェスト。"
+
+#: 
+msgid "subscribers"
+msgstr "購読者"
+
+#: 
+msgid "API Key is required."
+msgstr "API キーは必須です。"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "%s の OpenLP に接続できません。サーバー URL と OpenLP が起動していることをご確認ください。"
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "%s の OpenLP に接続できません。サーバーが HTTP %d を返しました。"
+
+#: 
+msgid "Congregation Map"
+msgstr "会衆マップ"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "会衆マップ — 設定が必要です"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "MailChimp に接続しました！アカウント：%s（%d名の購読者）"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "OpenLP サーバーに正常に接続しました。"
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "OpenLP に接続しました！バージョン：%s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "接続しました！アカウント残高：€%.2f。SMS の送信準備ができました。"
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "MailChimp に接続できませんでした。API キーをご確認ください。"
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "OpenLP サーバーへの接続に失敗しました。"
+
+#: 
+msgid "Get Directions"
+msgstr "道順を取得する"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "国番号を含めてください（例：+14155551234（米国）または +447911123456（英国））"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "無効な「送信元番号」：\"%s\"。国番号を含めてください（例：+14155551234（米国）または +447911123456（英国））。"
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "無効な API 認証情報です。API キーと API シークレットをご確認ください。"
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "無効な API キー形式です。MailChimp の API キーをご確認ください。"
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "無効なエンドポイント URL です。https:// で始まる完全な URL を入力してください"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "無効なサーバー URL 形式です。"
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "MailChimp への接続に失敗しました。"
+
+#: 
+msgid "Map Zoom Level"
+msgstr "マップのズームレベル"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "家族が表示されていませんか？座標を更新してマップに追加してください。"
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "必須設定が不足しています：%s"
+
+#: 
+msgid "Person has no family"
+msgstr "この人物には家族が登録されていません"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "プラグインが見つからないか、有効ではありません"
+
+#: 
+msgid "Server URL is required."
+msgstr "サーバー URL は必須です。"
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "このプラグインは接続テストをサポートしていません。"
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "マップを表示できません：教会の住所がまだジオコーディングされていません。"
+
+#: 
+msgid "Update church address in Settings."
+msgstr "設定で教会の住所を更新してください。"
+
+#: 
+msgid "Username and password are required."
+msgstr "ユーザー名とパスワードは必須です。"
+
+#: 
+msgid "Validation failed: %s"
+msgstr "バリデーションに失敗しました：%s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Vonage サーバーエラーです。後でもう一度お試しください。"
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "WebDAV エンドポイント URL は必須です。"
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "この誓約記録を完全に削除してもよいですか？"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "キャンセルして家族表示に戻る"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "このタイプを削除すると、それを使用するすべての属性も削除され、対応するすべての属性割り当てが失われます。"
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "献金を選択した家族に移動"
+
+#: 
+msgid "Calendar not found"
+msgstr "カレンダーが見つかりません"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "ダッシュボードへ進む"
+
+#: 
+msgid "Current Password"
+msgstr "現在のパスワード"
+
+#: 
+msgid "Deposit not found"
+msgstr "献金記録が見つかりません"
+
+#: 
+msgid "Group not found"
+msgstr "グループが見つかりません"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "設定に無効なJSONが指定されました"
+
+#: 
+msgid "Password Change Required"
+msgstr "パスワードの変更が必要です"
+
+#: 
+msgid "Password Change Successful"
+msgstr "パスワードが正常に変更されました"
+
+#: 
+msgid "Password Changed"
+msgstr "パスワードが変更されました"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "パスワードは最低でも"
+
+#: 
+msgid "Property not found"
+msgstr "プロパティが見つかりません"
+
+#: 
+msgid "Set New Password"
+msgstr "新しいパスワードを設定"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "%s のパスワードが更新されました。"
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "設定用のJSONを再エンコードできません"
+
+#: 
+msgid "User not found"
+msgstr "ユーザーが見つかりません"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "続行する前に新しいパスワードを設定してください。"
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "パスワードが正常に更新されました。"
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "選択した家族に座標がありません"
+
+#: 
+msgid "2FA"
+msgstr "二段階認証"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "イベントに参加しなかった人を検索する"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "既存の値を保持するには空白のままにしてください"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "欠席者"
+
+#: 
+msgid "Not enrolled"
+msgstr "未登録"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "すべてのユーザーに二段階認証への登録を要求する"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "目的のイベントを選択してください"
 

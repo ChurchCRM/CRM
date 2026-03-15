@@ -835,7 +835,7 @@ if ($iStage === 1) {
 }
 
 if ($iStage === 3) {
-    echo '<p class="MediumLargeText">' . gettext('Data import successful.') . ' ' . $importCount . ' ' . gettext('people were imported') . '</p>';
+    echo '<p class="lead">' . gettext('Data import successful.') . ' ' . $importCount . ' ' . gettext('people were imported') . '</p>';
 }
 
 // Returns a date array [year,month,day]

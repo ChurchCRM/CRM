@@ -237,7 +237,7 @@ function DoQuery()
             if ($fieldInfo->name === 'AddToCart') {
                 ?>
                 <td>
-                    <button class="AddToCart" data-cart-id="<?= $aRow[$iCount] ?>" data-cart-type="person">
+                    <button class="btn btn-sm btn-secondary AddToCart" data-cart-id="<?= $aRow[$iCount] ?>" data-cart-type="person">
                         <span class="fa-stack">
                         <i class="fa-solid fa-square fa-stack-2x"></i>
                         <i class="fa-solid fa-cart-plus fa-stack-1x fa-inverse"></i>
@@ -301,7 +301,7 @@ function DoQuery()
 </div>
 
 <div class="card card-info">
-    <div class="card-header with-border">
+    <div class="card-header">
         <div class="card-title">Query</div>
     </div>
     <div class="card-body">

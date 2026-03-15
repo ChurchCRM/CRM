@@ -1,31 +1,36 @@
-describe("template spec", () => {
+describe("People classification filters", () => {
     beforeEach(() => {
         cy.setupAdminSession();
     });
 
-    it("filter-by-classification", () => {
-        // Test that we can filter people by classifications
-        cy.visit("v2/people?familyActiveStatus=all");
-        
-        // Verify table has data before filtering
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
-        
-        // Test filtering by email
-        cy.get("#members_filter input").type("tony.wade@example.com");
-        
-        // Wait for filter results to update (either shows record or "No matching records")
-        cy.get("#members tbody").then(($tbody) => {
-            // Either we find the person or get "No matching records found"
-            const hasRecord = $tbody.text().includes("tony.wade@example.com");
-            if (!hasRecord) {
-                cy.contains("No matching records found").should("exist");
-            } else {
-                cy.get("#members tbody").contains("tony.wade@example.com").should("exist");
-            }
-        });
-        
-        // Clear filter and verify table reloads
-        cy.get("#members_filter input").clear();
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
+    it("applies the Classification URL filter on initial load", () => {
+        // Load with a classification filter in the URL (regression for #8208)
+        cy.visit("v2/people?Classification=1&familyActiveStatus=all");
+
+        cy.url().should("include", "/v2/people?Classification=1");
+
+        // The hidden select should be initialized from the URL value (as array since it's multiple select)
+        cy.get(".filter-Classification", { timeout: 10000 }).invoke('val').should('deep.equal', ['1']);
+
+        // And the Select2 label should show the selected classification
+        cy.get(".filter-Classification")
+            .parent()
+            .find(".select2-selection__rendered")
+            .should("contain", "Member");
+
+        // Grid remains loaded after initial filter application
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
+    });
+
+    it("applies Classification query filter on initial load", () => {
+        cy.visit("v2/people?Classification=1&familyActiveStatus=all");
+
+        cy.url().should("include", "Classification=1");
+        cy.get(".filter-Classification")
+            .siblings(".select2-container")
+            .find(".select2-selection__rendered")
+            .should("contain", "Member");
+
+        cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
 });

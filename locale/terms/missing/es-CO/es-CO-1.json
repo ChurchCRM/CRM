@@ -1,0 +1,12 @@
+{
+  "%d event in %s": {
+    "one": "%d evento en %s",
+    "many": "",
+    "other": "%d eventos en %s"
+  },
+  "person": {
+    "one": "Persona",
+    "many": "",
+    "other": "Personas"
+  }
+}

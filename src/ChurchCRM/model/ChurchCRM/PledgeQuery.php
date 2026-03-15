@@ -3,6 +3,9 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\PledgeQuery as BasePledgeQuery;
+use ChurchCRM\model\ChurchCRM\Map\DepositTableMap;
+use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
+use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
@@ -118,11 +121,9 @@ class PledgeQuery extends BasePledgeQuery
         if (!empty($familyIds)) {
             $this->filterByFamId($familyIds, Criteria::IN);
         }
-        // Handle payment methods - filter each method
+        // Handle payment methods - use IN clause (supports array)
         if (!empty($methods)) {
-            foreach ($methods as $method) {
-                $this->addOr(PledgeQuery::create()->filterByMethod($method));
-            }
+            $this->filterByMethod($methods, Criteria::IN);
         }
         // Note: Classification filtering is complex and requires post-processing
         // as it involves a relationship through ListOption. Can be added to service layer if needed.
@@ -133,15 +134,15 @@ class PledgeQuery extends BasePledgeQuery
             ->leftJoinWithPerson();
 
         // Add columns from joined tables to avoid needing foreign objects in toArray()
-        $this->withColumn('Family.Name', 'FamilyName')
-            ->withColumn('Family.Address1', 'FamilyAddress1')
-            ->withColumn('Family.Address2', 'FamilyAddress2')
-            ->withColumn('Family.City', 'FamilyCity')
-            ->withColumn('Family.State', 'FamilyState')
-            ->withColumn('Family.Zip', 'FamilyZip')
-            ->withColumn('Family.Country', 'FamilyCountry')
-            ->withColumn('DonationFund.Name', 'FundName')
-            ->withColumn('Deposit.Date', 'DepositDate');
+        $this->withColumn(FamilyTableMap::COL_FAM_NAME, 'FamilyName')
+            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS1, 'FamilyAddress1')
+            ->withColumn(FamilyTableMap::COL_FAM_ADDRESS2, 'FamilyAddress2')
+            ->withColumn(FamilyTableMap::COL_FAM_CITY, 'FamilyCity')
+            ->withColumn(FamilyTableMap::COL_FAM_STATE, 'FamilyState')
+            ->withColumn(FamilyTableMap::COL_FAM_ZIP, 'FamilyZip')
+            ->withColumn(FamilyTableMap::COL_FAM_COUNTRY, 'FamilyCountry')
+            ->withColumn(DonationFundTableMap::COL_FUN_NAME, 'FundName')
+            ->withColumn(DepositTableMap::COL_DEP_DATE, 'DepositDate');
 
         // Apply sorting
         if ($sort === 'fund') {

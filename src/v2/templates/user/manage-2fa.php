@@ -2,7 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle = $user->getFullName() . gettext("2 Factor Authentication enrollment");
+$sPageTitle = $user->getFullName() . ' - ' . gettext("Two-Factor Authentication");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div id="two-factor-enrollment-react-app"> </div>

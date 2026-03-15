@@ -30,7 +30,7 @@ class Pledge extends BasePledge
      *
      * @return bool
      */
-    public function preDelete(ConnectionInterface $con = null)
+    public function preDelete(ConnectionInterface $con = null): bool
     {
         $deposit = DepositQuery::create()->findOneById($this->getDepId());
         if (!$deposit->getClosed()) {
@@ -40,7 +40,7 @@ class Pledge extends BasePledge
         }
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
         $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         

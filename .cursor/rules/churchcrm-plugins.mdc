@@ -1,0 +1,20 @@
+---
+description: ChurchCRM plugin system architecture
+globs: "src/plugins/**"
+alwaysApply: false
+---
+
+# ChurchCRM Plugins
+
+## Structure
+- Core: `src/plugins/core/{plugin-name}/`
+- Requires: `plugin.json`, `src/{PluginName}Plugin.php` extending AbstractPlugin
+
+## URLs
+- Management: `/plugins/management`
+- API: `/plugins/api/plugins`, `/plugins/api/plugins/{id}/enable`
+
+## Error Middleware
+- Use `SystemConfig::debugEnabled()` for displayErrorDetails
+- Custom handler with `SlimUtils::renderErrorJSON()` for sanitized responses
+- Never throw HTTP exceptions in API routes

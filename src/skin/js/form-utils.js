@@ -13,50 +13,50 @@
  * @param {string} inputName - Name of the phone input field
  */
 export function togglePhoneMask(checkboxName, inputName) {
-    var checkbox = $('input[name="' + checkboxName + '"]');
-    var input = $('input[name="' + inputName + '"]');
+  var checkbox = $('input[name="' + checkboxName + '"]');
+  var input = $('input[name="' + inputName + '"]');
 
-    if (input.length === 0 || checkbox.length === 0) {
-        return;
+  if (input.length === 0 || checkbox.length === 0) {
+    return;
+  }
+
+  function updateMask() {
+    var currentVal = input.val();
+
+    // Always remove any existing mask first
+    try {
+      input.inputmask("remove");
+    } catch (e) {
+      // ignore if no mask was initialized
     }
 
-    function updateMask() {
-        var currentVal = input.val();
-
-        // Always remove any existing mask first
+    if (checkbox.is(":checked")) {
+      // "No format" is checked - leave field without mask
+      // Just restore the value
+      input.val(currentVal);
+    } else {
+      // "No format" is unchecked - apply the mask
+      // Get mask format from data-phone-mask attribute (NOT data-inputmask to avoid auto-init)
+      var maskConfig = input.attr("data-phone-mask");
+      if (maskConfig) {
         try {
-            input.inputmask("remove");
+          // Parse the JSON config - it's already valid JSON like {"mask": "(999) 999-9999"}
+          var config = JSON.parse(maskConfig);
+          input.inputmask(config);
         } catch (e) {
-            // ignore if no mask was initialized
+          console.error("Error parsing mask config:", e, maskConfig);
         }
-
-        if (checkbox.is(":checked")) {
-            // "No format" is checked - leave field without mask
-            // Just restore the value
-            input.val(currentVal);
-        } else {
-            // "No format" is unchecked - apply the mask
-            // Get mask format from data-phone-mask attribute (NOT data-inputmask to avoid auto-init)
-            var maskConfig = input.attr("data-phone-mask");
-            if (maskConfig) {
-                try {
-                    // Parse the JSON config - it's already valid JSON like {"mask": "(999) 999-9999"}
-                    var config = JSON.parse(maskConfig);
-                    input.inputmask(config);
-                } catch (e) {
-                    console.error("Error parsing mask config:", e, maskConfig);
-                }
-            }
-            // Restore value to trigger mask formatting
-            input.val(currentVal);
-        }
+      }
+      // Restore value to trigger mask formatting
+      input.val(currentVal);
     }
+  }
 
-    // Set initial state on page load
-    updateMask();
+  // Set initial state on page load
+  updateMask();
 
-    // Listen for checkbox changes
-    checkbox.change(updateMask);
+  // Listen for checkbox changes
+  checkbox.change(updateMask);
 }
 
 /**
@@ -64,9 +64,9 @@ export function togglePhoneMask(checkboxName, inputName) {
  * @param {Array} phoneFields - Array of objects with checkboxName and inputName
  */
 export function initializePhoneMaskToggles(phoneFields) {
-    phoneFields.forEach(function (field) {
-        togglePhoneMask(field.checkboxName, field.inputName);
-    });
+  phoneFields.forEach(function (field) {
+    togglePhoneMask(field.checkboxName, field.inputName);
+  });
 }
 
 /**
@@ -75,42 +75,42 @@ export function initializePhoneMaskToggles(phoneFields) {
  * and their corresponding input fields
  */
 export function initializeAllPhoneMaskToggles() {
-    // Find all potential phone 'no format' checkboxes
-    $('input[type="checkbox"][name^="NoFormat_"], input[type="checkbox"][name$="noformat"]').each(function () {
-        var checkbox = $(this);
-        var checkboxName = checkbox.attr("name");
-        var inputName = null;
+  // Find all potential phone 'no format' checkboxes
+  $('input[type="checkbox"][name^="NoFormat_"], input[type="checkbox"][name$="noformat"]').each(function () {
+    var checkbox = $(this);
+    var checkboxName = checkbox.attr("name");
+    var inputName = null;
 
-        // Determine input field name based on checkbox naming convention
-        if (/^NoFormat_/i.test(checkboxName)) {
-            // NoFormat_HomePhone -> HomePhone
-            inputName = checkboxName.replace(/^NoFormat_/i, "");
-        } else {
-            // c1noformat -> c1
-            inputName = checkboxName.replace(/noformat$/i, "");
-        }
+    // Determine input field name based on checkbox naming convention
+    if (/^NoFormat_/i.test(checkboxName)) {
+      // NoFormat_HomePhone -> HomePhone
+      inputName = checkboxName.replace(/^NoFormat_/i, "");
+    } else {
+      // c1noformat -> c1
+      inputName = checkboxName.replace(/noformat$/i, "");
+    }
 
-        // Clean up any extra underscores
-        inputName = inputName.replace(/^_+|_+$/g, "");
+    // Clean up any extra underscores
+    inputName = inputName.replace(/^_+|_+$/g, "");
 
-        // Find the corresponding input field
-        var input = $('input[name="' + inputName + '"]');
+    // Find the corresponding input field
+    var input = $('input[name="' + inputName + '"]');
 
-        if (input.length > 0) {
-            togglePhoneMask(checkboxName, inputName);
-        }
-    });
+    if (input.length > 0) {
+      togglePhoneMask(checkboxName, inputName);
+    }
+  });
 }
 
 // Attach to window.CRM for legacy script access
 if (typeof window !== "undefined") {
-    if (!window.CRM) {
-        window.CRM = {};
-    }
-    if (!window.CRM.formUtils) {
-        window.CRM.formUtils = {};
-    }
-    window.CRM.formUtils.togglePhoneMask = togglePhoneMask;
-    window.CRM.formUtils.initializePhoneMaskToggles = initializePhoneMaskToggles;
-    window.CRM.formUtils.initializeAllPhoneMaskToggles = initializeAllPhoneMaskToggles;
+  if (!window.CRM) {
+    window.CRM = {};
+  }
+  if (!window.CRM.formUtils) {
+    window.CRM.formUtils = {};
+  }
+  window.CRM.formUtils.togglePhoneMask = togglePhoneMask;
+  window.CRM.formUtils.initializePhoneMaskToggles = initializePhoneMaskToggles;
+  window.CRM.formUtils.initializeAllPhoneMaskToggles = initializeAllPhoneMaskToggles;
 }

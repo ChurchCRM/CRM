@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Small boxes (Stat box) -->
 <div class="row">
-    <div class="col-lg-2 col-xs-4">
+    <div class="col-lg-2 col-4">
         <!-- small box -->
         <div class="small-box bg-olive">
             <div class="inner">
@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-2 col-xs-4">
+    <div class="col-lg-2 col-4">
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
@@ -47,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </a>
         </div>
     </div><!-- ./col -->
-    <div class="col-lg-2 col-xs-4">
+    <div class="col-lg-2 col-4">
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
@@ -68,7 +68,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div><!-- ./col -->
     <?php if ($sundaySchoolEnabled) {
         ?>
-        <div class="col-lg-2 col-xs-4">
+        <div class="col-lg-2 col-4">
             <!-- small box -->
             <div class="small-box bg-orange">
                 <div class="inner">
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
     if ($eventsEnabled) {
         ?>
-    <div class="col-lg-2 col-xs-4">
+    <div class="col-lg-2 col-4">
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
@@ -134,13 +134,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php
 if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
     ?>
-    <div class="card card-info"  id="depositChartRow">
+    <div class="card card-info" id="depositChartRow">
         <div class="card-header">
             <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Deposit Tracking') ?></h3>
-            <div class="card-tools pull-right">
+            <div class="card-tools float-right">
                 <div id="deposit-graph" class="chart-legend"></div>
             </div>
-        </div><!-- /.box-header -->
+        </div>
         <div class="card-body" style="height: 200px">
             <canvas id="deposit-lineGraph" style="height:125px; width:100%"></canvas>
         </div>
@@ -150,7 +150,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 ?>
 
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
         <div class="card-title"><h4><?= gettext('People') ?></h4></div>
     </div>
     <div class="card-header p-0 pt-1 border-bottom-0">

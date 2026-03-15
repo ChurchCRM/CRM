@@ -109,7 +109,7 @@ require_once __DIR__ . '/Include/Header.php';
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
             $navItemId = str_replace(" ", '', $category);
             $shouldBeSelected = false;
-            if ($category == 'Church Information') {
+            if ($category == 'Enabled Features') {
                 $shouldBeSelected = true;
             } ?>
         <a class="nav-link <?= $shouldBeSelected ? "active" : "" ?>" id="<?= $navItemId ?>-tab" data-toggle="pill" href="#<?= $navItemId ?>" role="tab" aria-controls="vert-tabs-profile" aria-selected="<?= $shouldBeSelected ?>"><?= gettext($category) ?></a>
@@ -125,7 +125,7 @@ require_once __DIR__ . '/Include/Header.php';
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
             $navItemId = str_replace(" ", '', $category);
             $shouldBeSelected = false;
-            if ($category == 'Church Information') {
+            if ($category == 'Enabled Features') {
                 $shouldBeSelected = true;
             } ?>
         <div class="tab-pane fade <?= $shouldBeSelected ? "show active" : "" ?>" id="<?= $navItemId ?>" role="tabpanel" aria-labelledby="<?= $navItemId ?>-tab">
@@ -195,7 +195,7 @@ require_once __DIR__ . '/Include/Header.php';
                     } elseif ($setting->getType() == 'json') {
                         ?>
                       <input type="hidden" name='new_value[<?= $setting->getId() ?>]' value='<?= $setting->getValue() ?>'>
-                      <button class="btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>" data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings') ?>
+                      <button class="btn btn-primary jsonSettingsEdit" id="set_value<?= $setting->getId() ?>" data-cfgid="<?= $setting->getId() ?>"><?= gettext('Edit Settings') ?>
                       </button>
                         <?php
                     } elseif ($setting->getType() == 'ajax') {

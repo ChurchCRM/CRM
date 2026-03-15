@@ -3,6 +3,10 @@
 .idea/
 .DS_Store
 
+# Environment variables (local and overrides)
+.env
+.env.local
+
 #Exclude folders
 vendor
 node_modules
@@ -14,6 +18,9 @@ locale/terms/base
 # Uploaded Images
 src/Images/Family/*
 src/Images/Person/*
+# Keep the directories for CI/fresh installs
+!src/Images/Family/.gitkeep
+!src/Images/Person/.gitkeep
 
 #skins
 src/skin/v2/
@@ -21,7 +28,10 @@ src/skin/external
 
 # Configuration files with passwords
 src/Include/Config.php
-BuildConfig.json
+orm/propel.php
+
+# Perpl/Propel generated config
+src/generated-conf/
 
 src/admin/data/signatures.json
 src/ChurchCRM/model/ChurchCRM/Base
@@ -34,4 +44,5 @@ cypress/screenshots
 cypress/videos
 cypress/downloads
 cypress.config.ts
+cypress.env.json
 

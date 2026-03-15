@@ -84,7 +84,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
     </div></div>
     <?php
 } else {
-        echo '<p class="text-center LargeText">' . gettext('Your cart is empty!') . '</p>';
+        echo '<p class="text-center lead">' . gettext('Your cart is empty!') . '</p>';
 }
 
 require_once __DIR__ . '/Include/Footer.php';

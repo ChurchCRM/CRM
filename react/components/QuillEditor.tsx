@@ -1,6 +1,6 @@
-import * as React from "react";
-import { useEffect, useRef } from "react";
 import Quill from "quill";
+import type * as React from "react";
+import { useEffect, useRef } from "react";
 import "quill/dist/quill.snow.css";
 
 declare global {
@@ -18,8 +18,26 @@ const QuillEditor: React.FunctionComponent<{
 }> = ({ name, value, onChange, placeholder = "Enter text here...", minHeight = "200px" }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const quillRef = useRef<Quill | null>(null);
+  // Keep a ref to the latest onChange so the text-change handler never goes stale
+  // without causing Quill to re-initialize on every render.
+  const onChangeRef = useRef(onChange);
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
 
-  // Initialize Quill editor once on mount
+  // Sync value prop changes into Quill without re-initializing.
+  useEffect(() => {
+    if (quillRef.current && quillRef.current.root.innerHTML !== (value ?? "")) {
+      quillRef.current.root.innerHTML = value ?? "";
+    }
+  }, [value]);
+
+  // Initialize Quill editor once on mount only.
+  // Using an empty dependency array is intentional: re-running this effect would
+  // create a duplicate toolbar inside the same container element each time the
+  // parent re-renders (e.g. when the user interacts with other form fields).
+  // name and placeholder are treated as mount-time constants.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: initialized once on mount; re-running appends duplicate toolbars. onChange handled via onChangeRef; value synced by separate effect above; name/placeholder are mount-time constants.
   useEffect(() => {
     if (!editorRef.current || quillRef.current) {
       return;
@@ -53,9 +71,10 @@ const QuillEditor: React.FunctionComponent<{
       quill.root.innerHTML = value;
     }
 
-    // Handle changes
+    // Handle changes via ref so the handler always calls the latest onChange
+    // without needing onChange in the dependency array.
     quill.on("text-change", () => {
-      onChange(name, quill.root.innerHTML);
+      onChangeRef.current(name, quill.root.innerHTML);
     });
 
     // Expose to global registry for Cypress testing
@@ -71,7 +90,7 @@ const QuillEditor: React.FunctionComponent<{
         delete window.quillEditors[name];
       }
     };
-  }, [name]);
+  }, []);
 
   return (
     <div

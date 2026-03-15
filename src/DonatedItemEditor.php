@@ -11,7 +11,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $iDonatedItemID = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int'));
-$linkBack = InputUtils::legacyFilterInputArr($_GET, 'linkBack');
+$linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $iCurrentFundraiser = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser'));
 
 if ($iDonatedItemID > 0) {
@@ -109,11 +109,11 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
-            RedirectUtils::redirect('DonatedItemEditor.php?DonatedItemID=' . $iDonatedItemID . '&linkBack=', $linkBack);
+            RedirectUtils::redirect('DonatedItemEditor.php?DonatedItemID=' . $iDonatedItemID . '&linkBack=' . $linkBack);
         }
     } elseif (isset($_POST['DonatedItemSubmitAndAdd'])) {
         //Reload to editor to add another record
-        RedirectUtils::redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=", $linkBack);
+        RedirectUtils::redirect("DonatedItemEditor.php?CurrentFundraiser=$iCurrentFundraiser&linkBack=" . $linkBack);
     }
 } else {
     //FirstPass
@@ -181,7 +181,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-2 col-xs-6">
+                    <div class="col-md-4 col-md-offset-2 col-6">
                         <div class="form-group">
                             <label><?= gettext('Item') ?>:</label>
                             <input type="text" name="Item" id="Item" value="<?= $sItem ?>" class="form-control">
@@ -240,7 +240,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     </div>
 
-                    <div class="col-md-4 col-xs-6">
+                    <div class="col-md-4 col-6">
                         <div class="form-group">
                             <label><?= gettext('Buyer') ?>:</label>
                             <?php if ($bMultibuy) {
@@ -282,7 +282,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     </div>
 
-                    <div class="col-md-6 col-md-offset-2 col-xs-12">
+                    <div class="col-md-6 col-md-offset-2 col-12">
                         <div class="form-group">
                             <label><?= gettext('Description') ?>:</label>
                             <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
@@ -307,7 +307,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">
                 <?php endif; ?>
-                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="javascript:document.location = '<?= strlen($linkBack) > 0 ? $linkBack : 'v2/dashboard'; ?>';">
+                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="DonatedItemCancel" onclick="document.location = '<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard'); ?>';">
             </div>
 
         </div>

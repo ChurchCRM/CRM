@@ -61,7 +61,8 @@ Thank you for your understanding and cooperation in making ChurchCRM a more secu
 
 | Version     | Supported          | PHP Version |
 |-------------| ------------------ |-------------|
-| 6.0 +       | :white_check_mark: | >=8.2      |
+| 7.0 +       | :white_check_mark: | >=8.3      |
+| 6.0 - 6.x   | :x:                | >=8.2      |
 | 5.3 +       | :x:                | >=8.1      |
 | 5.0 - 5.2.x | :x:                | 8.1        |
 | 4.0.x       | :x:                | 7.2.x 7.3.x |

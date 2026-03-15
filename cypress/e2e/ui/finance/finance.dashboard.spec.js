@@ -114,14 +114,13 @@ describe("Finance Dashboard", () => {
     it("should navigate to settings from Church Information checklist item", () => {
         cy.visit("/finance/");
 
-        // Find the Settings button in the Church Information row
-        cy.contains("Church Information")
-            .parents(".list-group-item")
+        // Find the Settings button in the Church Information checklist row
+        cy.contains(".list-group-item", "Church Information")
             .find("a")
             .contains("Settings")
             .click();
 
-        cy.url().should("contain", "SystemSettings.php");
+        cy.url().should("contain", "admin/system/church-info");
     });
 
     it("should link deposits checklist to FindDepositSlip", () => {
@@ -152,6 +151,18 @@ describe("Finance Dashboard - Standard User Access", () => {
         
         // Metrics should be visible
         cy.get(".finance-metric-card").should("have.length.at.least", 3);
+    });
+
+    it("should not show the Church Information settings link to non-admin users", () => {
+        cy.visit("/finance/");
+
+        // The Church Information checklist row should be visible (badge/status)
+        cy.contains(".list-group-item", "Church Information").should("exist");
+
+        // But the Settings link to admin/system/church-info should NOT be visible
+        cy.contains(".list-group-item", "Church Information")
+            .find("a[href*='admin/system/church-info']")
+            .should("not.exist");
     });
 });
 

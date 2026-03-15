@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -22,17 +23,38 @@ use Slim\HttpCache\Cache;
 
 // Photo and avatar routes (no FamilyMiddleware to speed up page loads)
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/photo",
+     *     summary="Get uploaded photo for a family (binary image)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Binary image data"),
+     *     @OA\Response(response=404, description="No uploaded photo exists for this family")
+     * )
+     */
     // Returns uploaded photo only - 404 if no uploaded photo
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $photo = new Photo('Family', (int)$args['familyId']);
-        
+
         if (!$photo->hasUploadedPhoto()) {
             throw new HttpNotFoundException($request, 'No uploaded photo exists for this family');
         }
-        
+
         return SlimUtils::renderPhoto($response, $photo);
     })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
-    
+
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/avatar",
+     *     summary="Get avatar info JSON for a family (for client-side rendering)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Avatar info object (type, url, initials, color, etc.)")
+     * )
+     */
     // Returns avatar info JSON for client-side rendering
     // No cache middleware - needs to reflect immediate photo upload changes
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
@@ -43,11 +65,31 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
 
 // Routes that require FamilyMiddleware
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/photo",
+     *     summary="Upload a family photo from base64 data (EditRecords role required)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(@OA\Property(property="imgBase64", type="string", description="Base64-encoded image data"))
+     *     ),
+     *     @OA\Response(response=200, description="Photo uploaded successfully",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="hasPhoto", type="boolean")
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="Failed to upload photo"),
+     *     @OA\Response(response=403, description="EditRecords role required")
+     * )
+     */
     $group->post('/photo', function (Request $request, Response $response): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
         $input = $request->getParsedBody();
-        
+
         try {
             $family->setImageFromBase64($input['imgBase64']);
             // Refresh photo status and return updated info
@@ -61,6 +103,19 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
 
+    /**
+     * @OA\Delete(
+     *     path="/family/{familyId}/photo",
+     *     summary="Delete a family's uploaded photo (EditRecords role required)",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Photo deletion result",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     ),
+     *     @OA\Response(response=403, description="EditRecords role required")
+     * )
+     */
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -68,6 +123,17 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, ['success' => $family->deletePhoto()]);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}",
+     *     summary="Get a family object by ID",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Family object"),
+     *     @OA\Response(response=404, description="Family not found")
+     * )
+     */
     $group->get('', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -75,6 +141,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, $family->toArray());
     });
 
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/geolocation",
+     *     summary="Get geolocation and driving distance from church for a family",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Latitude, longitude, and driving distance info from church address")
+     * )
+     */
     $group->get('/geolocation', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -90,6 +166,21 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, $geoLocationInfo);
     });
 
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/nav",
+     *     summary="Get previous and next family IDs for navigation",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Navigation IDs",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="PreFamilyId", type="integer"),
+     *             @OA\Property(property="NextFamilyId", type="integer")
+     *         )
+     *     )
+     * )
+     */
     $group->get('/nav', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -116,6 +207,17 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, $familyNav);
     });
 
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/verify",
+     *     summary="Send a verification email to the family",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Verification email sent successfully"),
+     *     @OA\Response(response=500, description="Error sending email")
+     * )
+     */
     $group->post('/verify', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -129,6 +231,18 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
     });
 
+    /**
+     * @OA\Get(
+     *     path="/family/{familyId}/verify/url",
+     *     summary="Generate a new family self-verify URL token",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Verification URL",
+     *         @OA\JsonContent(@OA\Property(property="url", type="string", format="uri"))
+     *     )
+     * )
+     */
     $group->get('/verify/url', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -145,6 +259,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, ['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
     });
 
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/verify/now",
+     *     summary="Mark a family as verified immediately",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Family marked as verified")
+     * )
+     */
     $group->post('/verify/now', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
@@ -153,6 +277,21 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderSuccessJSON($response);
     });
 
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/activate/{status}",
+     *     summary="Activate or deactivate a family",
+     *     description="Pass status=true to activate or status=false to deactivate the family.",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Parameter(name="status", in="path", required=true, @OA\Schema(type="string", enum={"true","false"})),
+     *     @OA\Response(response=200, description="Family activation status updated",
+     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *     ),
+     *     @OA\Response(response=400, description="Invalid status value")
+     * )
+     */
     /**
      * Update the family status to activated or deactivated with :familyId and :status true/false.
      * Pass true to activate and false to deactivate.
@@ -197,5 +336,48 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
+    });
+
+    /**
+     * @OA\Post(
+     *     path="/family/{familyId}/geocode",
+     *     summary="Refresh geocoding (latitude/longitude) for a family's address",
+     *     tags={"Families"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Geocoding result with lat/lng",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="message", type="string"),
+     *             @OA\Property(property="latitude", type="number", format="float"),
+     *             @OA\Property(property="longitude", type="number", format="float")
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="Family has no street address to geocode")
+     * )
+     */
+    $group->post('/geocode', function (Request $request, Response $response, array $args): Response {
+        $family = $request->getAttribute('family');
+
+        if (empty(trim($family->getAddress1() ?? ''))) {
+            return SlimUtils::renderErrorJSON(
+                $response,
+                gettext('Family has no street address to geocode'),
+                [],
+                400
+            );
+        }
+
+        $familyService = new FamilyService();
+        $success = $familyService->autoGeocodeFamily($family);
+
+        $result = [
+            'success' => $success,
+            'message' => $success ? gettext('Geocoding successful') : gettext('Geocoding failed'),
+            'latitude' => $family->getLatitude(),
+            'longitude' => $family->getLongitude(),
+        ];
+
+        return SlimUtils::renderJSON($response, $result, $success ? 200 : 400);
     });
 })->add(FamilyMiddleware::class);

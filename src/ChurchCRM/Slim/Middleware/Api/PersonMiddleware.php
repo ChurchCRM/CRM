@@ -3,30 +3,28 @@
 namespace ChurchCRM\Slim\Middleware\Api;
 
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Slim\SlimUtils;
-use Laminas\Diactoros\Response;
-use Psr\Http\Message\ServerRequestInterface;
-use Psr\Http\Server\RequestHandlerInterface;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Message\ResponseInterface;
 
-class PersonMiddleware implements MiddlewareInterface
+class PersonMiddleware extends AbstractEntityMiddleware
 {
-    public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
+    public function __construct(private readonly string $routeParamName = 'personId') {}
+
+    protected function getRouteParamName(): string
     {
-        $response = new Response();
-        $personId = SlimUtils::getRouteArgument($request, 'personId');
-        if (empty(trim($personId))) {
-            return $response->withStatus(412, gettext('Missing') . ' PersonId');
-        }
+        return $this->routeParamName;
+    }
 
-        $person = PersonQuery::create()->findPk($personId);
-        if (empty($person)) {
-            return $response->withStatus(412, 'PersonId : ' . $personId . ' ' . gettext('not found'));
-        }
+    protected function getAttributeName(): string
+    {
+        return 'person';
+    }
 
-        $request = $request->withAttribute('person', $person);
+    protected function loadEntity(string $id): mixed
+    {
+        return PersonQuery::create()->findPk($id);
+    }
 
-        return $handler->handle($request);
+    protected function getNotFoundMessage(): string
+    {
+        return gettext('Person not found');
     }
 }

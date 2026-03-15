@@ -10,6 +10,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -286,6 +287,6 @@ if ($output === 'pdf') {
         // basename: 'PledgeSummary', includeDateInFilename: true adds today's date, .csv is added automatically
         CsvExporter::create($headers, $rows, 'PledgeSummary', 'UTF-8', true);
     } else {
-        header('Location: ../FinancialReports.php?ReturnMessage=NoRows&ReportType=Pledge%20Summary');
+        RedirectUtils::redirect('FinancialReports.php?ReturnMessage=NoRows&ReportType=Pledge%20Summary');
     }
 }

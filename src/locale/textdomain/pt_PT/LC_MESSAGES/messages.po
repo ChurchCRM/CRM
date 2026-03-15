@@ -1892,14 +1892,6 @@ msgid "Assign starting at #"
 msgstr "Assinalada por:"
 
 #: 
-msgid "Unable to display map due to missing Church Latitude or Longitude. Please update the church Address in the settings menu."
-msgstr "Não é possível exibir o mapa devido à falta da Latitude ou Longitude da Igreja . Por favor, atualize o endereço da igreja no menu de configurações."
-
-#: 
-msgid "Google Map API key is not set. The Map will work for smaller set of locations. Please create a Key in the maps sections of the setting menu."
-msgstr "A chave de API do Google Map não está definida. O mapa irá funcionar para um pequeno grupo de locais. Por favor, crie uma chave nas seções mapas do menu de configuração."
-
-#: 
 msgid "Member Role Change"
 msgstr "Mudança de papel do membro"
 
@@ -2412,14 +2404,6 @@ msgid "This property type is still being used by at least one property."
 msgstr "Este tipo de propriedade ainda está sendo usado por pelo menos um proprietario."
 
 #: 
-msgid "If you delete this type, you will also remove all properties using"
-msgstr "Se eliminar este tipo, você também vai remover todas as propriedades que utilizam"
-
-#: 
-msgid "it and lose any corresponding property assignments."
-msgstr "e perder as atribuições de propriedade correspondentes."
-
-#: 
 #, fuzzy
 msgid "Please confirm deletion of this Property Type"
 msgstr "Por favor, confirme a exclusão deste tipo de imóvel"
@@ -2745,10 +2729,6 @@ msgstr "Configurações do Utilizador"
 #: 
 msgid "Last Login"
 msgstr "Último Login"
-
-#: 
-msgid "Total Logins"
-msgstr "Total de Logins"
 
 #: 
 msgid "Failed Logins"
@@ -3420,11 +3400,6 @@ msgid "Email Export"
 msgstr "Exportar e-mail"
 
 #: 
-#, fuzzy
-msgid "List"
-msgstr "Lista"
-
-#: 
 msgid "Import Data"
 msgstr "Importar Dados"
 
@@ -3527,26 +3502,6 @@ msgstr "Backup completo, Pronto para Download."
 #: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup baixado, copiado ou removido do sistema"
-
-#: 
-msgid "Campaigns:"
-msgstr "Campanhas:"
-
-#: 
-msgid "Unsubscribed count:"
-msgstr "Contador de desinscrição"
-
-#: 
-msgid "Unsubscribed count since last send:"
-msgstr "Desinscritos desde o último envio"
-
-#: 
-msgid "Cleaned count:"
-msgstr "Contadores zerados:"
-
-#: 
-msgid "Cleaned count since last send:"
-msgstr "Contador desde o último envio:"
 
 #: 
 msgid "Functions"
@@ -3675,10 +3630,6 @@ msgid "CSV Import"
 msgstr "Importar CSV"
 
 #: 
-msgid "Members:"
-msgstr "Membros:"
-
-#: 
 #, fuzzy
 msgid "There were "
 msgstr "fazem"
@@ -3758,10 +3709,6 @@ msgstr "Estes são os números papel familiar designados como esposa"
 #: 
 msgid "These are the family role numbers designated as child"
 msgstr "Estes são os números de papíes famíliares designados como filhos"
-
-#: 
-msgid "Should only administrators have access to the CSV export system and directory report?"
-msgstr "Só os administradores terão acesso ao sistema de exportação CSV e ao relatório de diretório?"
 
 #: 
 msgid "Minimum length a user may set their password to"
@@ -3850,10 +3797,6 @@ msgid "Unit used to measure distance, miles or km."
 msgstr "Unidade usada para medir distância, milhas ou km."
 
 #: 
-msgid "Names of markers for Google Maps in order of classification"
-msgstr "Nomes dos Marcadores no Google Maps em ordem de classificação"
-
-#: 
 msgid "Enable non-deductible payments"
 msgstr "Habilitar pagamentos não dedutíveis"
 
@@ -3932,34 +3875,6 @@ msgstr "Termo para um relatório de diretório"
 #: 
 msgid "Church Letterhead path and file"
 msgstr "Caminho do Arquivo de Cabeçalho de Carta da Igreja"
-
-#: 
-msgid "lookup user images on Gravatar when no local image is present"
-msgstr "pesquisar imagens de utilizador no Gravatar quando nenhuma imagem local está presente "
-
-#: 
-msgid "Enable Remote Backups to Cloud Services"
-msgstr "Habilitar Serviço de Backup Remoto na nuvem"
-
-#: 
-msgid "Cloud Service Type (Supported values: WebDAV, Local)"
-msgstr "Tipo de Serviço de Nuvem (Valores Possíveis: WebDAV, Local)"
-
-#: 
-msgid "Remote Backup Username"
-msgstr "Utilizador para backup remoto"
-
-#: 
-msgid "Remote Backup Password"
-msgstr "Senha para backup remoto"
-
-#: 
-msgid "Interval in Hours for Automatic Remote Backups"
-msgstr "Intervalo em horas para backups automáticos remotos"
-
-#: 
-msgid "Last Backup Timestamp"
-msgstr "Data e hora do último backup"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -4354,11 +4269,6 @@ msgstr "Permissão para o utilizador criar diretórios"
 
 #. Context: userconfig_ucfg
 #: 
-msgid "User permission to export CSV files"
-msgstr "Permissão para o utilizador exportar ficheiros CSV"
-
-#. Context: userconfig_ucfg
-#: 
 msgid "Allow user to add new event"
 msgstr "Permite ao utilizador adicionar um novo evento"
 
@@ -4497,14 +4407,6 @@ msgstr "milhas"
 #: 
 msgid "kilometers"
 msgstr "kilômetros"
-
-#: 
-msgid "WebDAV"
-msgstr "WebDAV"
-
-#: 
-msgid "Local"
-msgstr "Local"
 
 #. Context: countries
 #: 
@@ -5845,10 +5747,6 @@ msgstr "Faça com que o utilizador digite CEP/ Códigos Postais com MAIÚSCULAS 
 msgid "Used to end a letter before Signer"
 msgstr "Usado para terminar uma carta, antes da assinatura"
 
-#: 
-msgid "Google Analytics Tracking Code"
-msgstr "Código de rastreio do Google Analytics"
-
 #. Context: locales
 #: 
 #, fuzzy
@@ -6025,10 +5923,6 @@ msgid "payment(s)?"
 msgstr "pagamento(s)?"
 
 #: 
-msgid "Please ensure this what you want to do.</p>"
-msgstr "Por favor, assegure-se que é isso que você pretende fazer. </ P>"
-
-#: 
 msgid "Confirm Deactivation"
 msgstr "Confirme a Desativação"
 
@@ -6179,10 +6073,6 @@ msgid "Your Cart is Empty"
 msgstr "Seu carrinho está vazio"
 
 #: 
-msgid "View on Map"
-msgstr "Ver no Mapa"
-
-#: 
 msgid "Legend"
 msgstr "Legenda"
 
@@ -6227,18 +6117,6 @@ msgid "The role could not be assigned."
 msgstr "O papel não pôde ser atribuído."
 
 #: 
-msgid "Bing map API requires a unique key"
-msgstr "A API do mapa do Bing requer uma chave única."
-
-#: 
-msgid "Google Maps Zoom"
-msgstr "Zoom do Google Maps"
-
-#: 
-msgid "Select GeoCoder Provider"
-msgstr "Selecione o ser provedor de GeoCode"
-
-#: 
 msgid "Your ChurchCRM account was locked."
 msgstr "A sua conta do churchCRM foi bloqueada."
 
@@ -6281,10 +6159,6 @@ msgstr "Senha do utilizador do sistema alterada pelo administrador"
 #: 
 msgid "system user login reset"
 msgstr "Login do utilizador do sistema reinicializado"
-
-#: 
-msgid "Missing Families? Update Family Latitude or Longitude now."
-msgstr "Família Perdidas? Atualize a latitude ou a longitude agora."
 
 #: 
 msgid "Families without Geo Info"
@@ -6363,30 +6237,6 @@ msgid "Time zone"
 msgstr "Zona de Tempo"
 
 #: 
-msgid "Nexmo SMS API Key"
-msgstr "Chave API do NEXMO SMS"
-
-#: 
-msgid "Nexmo SMS API Secret"
-msgstr "Senha API do NEXMO SMS"
-
-#: 
-msgid "Nexmo SMS From Number"
-msgstr "Número \"De\" do Nexmo SMS"
-
-#: 
-msgid "OpenLP URL"
-msgstr "URL do OpenLP"
-
-#: 
-msgid "OpenLP Username"
-msgstr "Utilizador do OpenLP"
-
-#: 
-msgid "OpenLP Password"
-msgstr "Senha do OpenLP"
-
-#: 
 msgid "KioskVisibilityTimestamp"
 msgstr "Visibilidade da Hora no Quiosque"
 
@@ -6399,24 +6249,8 @@ msgid "Backup"
 msgstr "Backup"
 
 #: 
-msgid "Integration"
-msgstr "Integração"
-
-#: 
-msgid "Notification"
-msgstr "Notificação"
-
-#: 
 msgid "Guardian(s) of"
 msgstr "Responsável por"
-
-#: 
-msgid "A notification was triggered by the classroom teacher at"
-msgstr "Uma notificação foi desencadeada pelo professor da sala de aula em"
-
-#: 
-msgid "Please go to this location"
-msgstr "Por favor, vá para esta localização"
 
 #: 
 #, fuzzy
@@ -6587,10 +6421,6 @@ msgstr "Indonésio - Indonésia"
 #: 
 msgid "records(s) successfully added to selected Group."
 msgstr "registo(s) adicionado(s) com sucesso ao grupo selecionado"
-
-#: 
-msgid "To export to another For european CharSet use ;"
-msgstr "Para exportar para outro formato europeu CharSet use ;"
 
 #: 
 msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
@@ -7050,14 +6880,6 @@ msgid "View User"
 msgstr "Ver Utilizador"
 
 #: 
-msgid "Invalid request: Missing calendar id"
-msgstr "Solicitação inválida: Sem ID do calendário"
-
-#: 
-msgid "Not Found: Unknown calendar id"
-msgstr "Não encontrado: ID do calendário Desconhecido"
-
-#: 
 #, fuzzy
 msgid "not found or user without an email"
 msgstr "Não encontrado ou utilizador sem um E-mail"
@@ -7152,10 +6974,6 @@ msgid "Links"
 msgstr "Links"
 
 #: 
-msgid "Show custom links on the left menu."
-msgstr "Mostrar links personalizados no menu à esquerda."
-
-#: 
 msgid "Enable Sunday School left menu."
 msgstr "Ative o menu esquerdo da Escola Dominical."
 
@@ -7182,10 +7000,6 @@ msgstr "Recursos Ativados"
 #: 
 msgid "Validation Error"
 msgstr "Erro de Validação"
-
-#: 
-msgid "Link Not found"
-msgstr "Link não Encontrado"
 
 #: 
 msgid "Email Functions"
@@ -7228,21 +7042,12 @@ msgid "ChurchCRM Central Notifications URL"
 msgstr "URL de notificações da ChurchCRM Central"
 
 #: 
-#, fuzzy
-msgid "Follow us on"
-msgstr "Siga-nos no"
-
-#: 
 msgid "invalid event type id"
 msgstr "Tipo de evento inválido"
 
 #: 
 msgid "invalid calendar pinning"
 msgstr "marcação de calendário inválida"
-
-#: 
-msgid "invalid group id"
-msgstr "ID de grupo inválido"
 
 #: 
 msgid "invalid status value"
@@ -7279,10 +7084,6 @@ msgid "Updated People"
 msgstr "Pessoas Atualizadas"
 
 #: 
-msgid "Custom Menus"
-msgstr "Menus Personalizados"
-
-#: 
 msgid "User must have Manage Groups permission"
 msgstr "O utilizador deve ter permissão para gerenciar os Grupos"
 
@@ -7301,26 +7102,6 @@ msgstr "Você não pode se deletar"
 #: 
 msgid "The role could not be found."
 msgstr "A função não pôde ser encontrada."
-
-#: 
-msgid "Add Menu"
-msgstr "Adicionar Menu"
-
-#: 
-msgid "Menu Name"
-msgstr "Nome do menu"
-
-#: 
-msgid "Link Address"
-msgstr "Endereço de Link"
-
-#: 
-msgid "Start with http:// or https://"
-msgstr "omece com http:// ou https://"
-
-#: 
-msgid "Menus"
-msgstr "Menus"
 
 #: 
 msgid "is disabled"
@@ -7439,16 +7220,8 @@ msgid "Error decoding signature definition file"
 msgstr "Erro ao decodificar o arquivo de definição de assinatura"
 
 #: 
-msgid "Remote Backup Endpoint.  If WebDAV, this must be url encoded. "
-msgstr "Ponto final do backup remoto. Se WebDAV, isso deve ser codificado por url"
-
-#: 
 msgid "Age Histogram"
 msgstr "Histograma de Idade"
-
-#: 
-msgid "Missing event id"
-msgstr "Falta ID do evento"
 
 #: 
 msgid "Event not found"
@@ -7595,14 +7368,6 @@ msgid "Holiday"
 msgstr "Feriado"
 
 #: 
-msgid "Allow users to self-enroll in 2 factor authentication"
-msgstr "Permitir que os utilizadores se inscrevam automaticamente na autenticação por dois fatores"
-
-#: 
-msgid "Requires users to self-enroll in 2 factor authentication"
-msgstr "Requer que os utilizadores se inscrevam automaticamente na autenticação por dois fatores"
-
-#: 
 msgid "ChurchCRM"
 msgstr "ChurchCRM"
 
@@ -7643,48 +7408,8 @@ msgid "LastName, FirstName MiddleName"
 msgstr "Sobrenome, Nome"
 
 #: 
-msgid "Manage 2 Factor Authentication"
-msgstr "Autenticação por 2 fatores"
-
-#: 
-msgid "Two Factor Status"
-msgstr "Status de dois fatores"
-
-#: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Confirme a desactivação da autenticação de 2 factores para este utilizador"
-
-#: 
-msgid "Please enter 2FA code"
-msgstr "Digite o código 2FA"
-
-#: 
-msgid "2FA Code"
-msgstr "2FA Code"
-
-#: 
-msgid "2 Factor Authentication enrollment"
-msgstr "Registo de autenticação por 2 factores"
-
-#: 
-msgid "Unsupported Two Factor Authentication Configuration"
-msgstr "Configuração de autenticação de dois factores não suportada"
-
-#: 
-msgid "Unable To Begin Two Factor Authentication Enrollment"
-msgstr "Não é possível iniciar a inscrição de autenticação por dois factores"
-
-#: 
-msgid "Two factor authentication requires ChurchCRM administrators to configure a few parameters"
-msgstr "A autenticação por dois factores requer que os administradores do ChurchCRM configurem alguns parâmetros"
-
-#: 
-msgid "System configuration "
-msgstr "Configuração do sistema "
-
-#: 
-msgid "Must be set to 'true'"
-msgstr "Deve ser definido como 'verdadeiro'"
 
 #: 
 msgid "Google Maps API Key used for Geocoding addresses"
@@ -7693,10 +7418,6 @@ msgstr "Chave da API do Google Maps usada para endereços de geocodificação"
 #: 
 msgid "Send an email notifying users when their account has been deleted"
 msgstr "Enviar um e-mail notificando os utilizadores quando sua conta foi excluída"
-
-#: 
-msgid "Google Maps API Key used for rendering maps in browser"
-msgstr "Chave da API do Google Maps usada para renderizar mapas no navegador"
 
 #: 
 msgid "Incorrect password supplied for current user"
@@ -7743,11 +7464,6 @@ msgstr "A carregar"
 msgid "List not found"
 msgstr "Lista não encontrada"
 
-#. typo
-#: 
-msgid "List not in the list"
-msgstr "Lista não está na lista"
-
 #: 
 msgid "People not in"
 msgstr "Pessoas não em"
@@ -7764,18 +7480,6 @@ msgstr "Audiência não está no ChurchCRM"
 msgid "Web Server"
 msgstr "Servidor Web"
 
-#: 
-msgid "List maintenance"
-msgstr "Manutenção de lista"
-
-#: 
-msgid "People not in list"
-msgstr "Pessoas não na lista"
-
-#: 
-msgid "Audience not in the CRM"
-msgstr "Audiência não está no CRM"
-
 #. Context: locales
 #: 
 msgid "Hebrew"
@@ -7784,10 +7488,6 @@ msgstr "Hebreu"
 #: 
 msgid "open rate"
 msgstr "taxa de abertura"
-
-#: 
-msgid "Not Subscribed "
-msgstr "Não inscrito "
 
 #: 
 msgid "Login Info"
@@ -7854,86 +7554,6 @@ msgid "Event Description"
 msgstr "Descrição do evento"
 
 #: 
-msgid "Enrolling your ChurchCRM user account in Two Factor Authention provides an additional layer of defense against bad actors trying to access your account."
-msgstr "Inscrever sua conta de usuário do ChurchCRM em Autenticação de dois fatores fornece uma camada adicional de defesa contra atores maliciosos tentando acessar sua conta."
-
-#: 
-msgid "ChurchCRM Two factor supports any TOTP authenticator app, so you're free to choose between Microsoft Authenticator, Google Authenticator, Authy, LastPass, and others"
-msgstr "O ChurchCRM Two Factor suporta qualquer aplicativo autenticador TOTP, então você é livre para escolher entre Microsoft Authenticator, Google Authenticator, Authy, LastPass e outros"
-
-#: 
-msgid "When you sign in to ChurchCRM, you'll still enter your username and password like normal"
-msgstr "Quando você entra no ChurchCRM, você ainda pode inserir seu nome de usuário e senha normalmente"
-
-#: 
-msgid "However, you'll also need to supply a one-time code from your authenticator device to complete your login"
-msgstr "No entanto, você também precisará fornecer um código único do seu dispositivo autenticador para concluir seu login"
-
-#: 
-msgid "After successfully entering both your credentials, and the one-time code, you'll be logged in as normal"
-msgstr "Após inserir com sucesso suas credenciais e o código único, você será conectado normalmente"
-
-#: 
-msgid "To prevent being locked out of your ChurchCRM account, please ensure you're ready to complete two factor enrollment before clicking begin"
-msgstr "Para evitar ser bloqueado em sua conta do ChurchCRM, certifique-se de estar pronto para concluir o registro de dois fatores antes de clicar em começar"
-
-#: 
-msgid "Beginning enrollment will invalidate any previously enrolled 2 factor devices and recovery codes."
-msgstr "O início do registro invalidará qualquer dispositivo de dois fatores registrado anteriormente e códigos de recuperação."
-
-#: 
-msgid "When you click next, you'll be prompted to scan a QR code to enroll your authenticator app."
-msgstr "Quando você clica em seguinte, será solicitado que você digitalize um código QR para inscrever seu aplicativo autenticador."
-
-#: 
-msgid "To confirm enrollment, you'll need to enter the code generated by your authenticator app"
-msgstr "Para confirmar o registro, você precisará inserir o código gerado por seu aplicativo autenticador"
-
-#: 
-msgid "After confirming app enrollment, single-use recovery codes will be generated and displayed."
-msgstr "Após confirmar o registro do aplicativo, códigos de recuperação de uso único serão gerados e exibidos."
-
-#: 
-msgid "Recovery codes can be used instead of a code generated from your authenticator app."
-msgstr "Códigos de recuperação podem ser usados em vez de um código gerado a partir do seu aplicativo autenticador."
-
-#: 
-msgid "Store these in a secure location"
-msgstr "Armazene estes em um local seguro"
-
-#: 
-msgid "Begin Two Factor Authentication Enrollment"
-msgstr "Iniciar inscrição em autenticação de dois fatores"
-
-#: 
-msgid "2 Factor Authentication Secret"
-msgstr "Segredo de autenticação de dois fatores"
-
-#: 
-msgid "Regenerate 2 Factor Authentication Secret"
-msgstr "Regenerar segredo de autenticação de dois fatores"
-
-#: 
-msgid "Remove 2 Factor Authentication Secret"
-msgstr "Remover segredo de autenticação de dois fatores"
-
-#: 
-msgid "Enter TOTP code to confirm enrollment"
-msgstr "Digite o código TOTP para confirmar o registro"
-
-#: 
-msgid "2 Factor Authentication Enrollment Success"
-msgstr "Sucesso no registro de autenticação de dois fatores"
-
-#: 
-msgid "Please store these recovery codes in a safe location"
-msgstr "Por favor, armazene estes códigos de recuperação em um local seguro"
-
-#: 
-msgid "If you ever lose access to your newly enrolled authenticator app, you'll need to use a recovery code to gain access to your account"
-msgstr "Se você perder o acesso ao seu aplicativo autenticador recém-inscrito, será necessário usar um código de recuperação para acessar sua conta"
-
-#: 
 msgid "Help translate this project"
 msgstr "Ajude a traduzir este projeto"
 
@@ -7941,10 +7561,6 @@ msgstr "Ajude a traduzir este projeto"
 #: 
 msgid "Afrikaans"
 msgstr "Africâner"
-
-#: 
-msgid " has a type mismatch"
-msgstr " tem uma incompatibilidade de tipo"
 
 #: 
 msgid "Loading"
@@ -8151,20 +7767,6 @@ msgstr "propriedade"
 msgid "Default Zip"
 msgstr "CEP padrão"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Pessoas com cartão de crédito"
-
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Pessoas configuradas para pagar com cartão de crédito."
-
-#: 
-msgid "As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting."
-msgstr "Como parte da restauração, os backups externos foram desabilitados. Se deseja continuar com backups automáticos, você deve ativar novamente a configuração bEnableExternalBackupTarget manualmente."
-
 #: 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
 msgstr "A verificação de integridade anterior passou. Todos os hashes de arquivo do sistema correspondem aos valores esperados."
@@ -8176,10 +7778,6 @@ msgstr "Lista separada por vírgulas de classificações que devem aparecer como
 #: 
 msgid "MailChimp is not configured"
 msgstr "MailChimp não está configurado"
-
-#: 
-msgid "Please update the MailChimp API key in:"
-msgstr "Por favor, atualize a chave de API do MailChimp em:"
 
 #. Context: locales
 #: 
@@ -8551,28 +8149,8 @@ msgid "Address is required"
 msgstr "Endereço é obrigatório"
 
 #: 
-msgid "Base URL is required"
-msgstr "URL base é obrigatória"
-
-#: 
 msgid "City is required"
 msgstr "Cidade é obrigatória"
-
-#: 
-msgid "Database name is required"
-msgstr "Nome do banco de dados é obrigatório"
-
-#: 
-msgid "Database server hostname or IP address is required (e.g., localhost or 127.0.0.1)"
-msgstr "Nome do servidor de banco de dados ou endereço IP é necessário (por exemplo, localhost ou 127.0.0.1)"
-
-#: 
-msgid "Database server port is required (e.g., 3306)"
-msgstr "Porta do servidor de banco de dados é obrigatória (por exemplo, 3306)"
-
-#: 
-msgid "Database username is required"
-msgstr "Nome de usuário do banco de dados é obrigatório"
 
 #: 
 msgid "Email Address"
@@ -8677,10 +8255,6 @@ msgstr "Número de telefone"
 #: 
 msgid "Please add at least one family member."
 msgstr "Por favor, adicione pelo menos um membro da família."
-
-#: 
-msgid "Please correct the validation errors before continuing."
-msgstr "Por favor, corrija os erros de validação antes de continuar."
 
 #: 
 msgid "Please enter a valid URL"
@@ -9043,10 +8617,6 @@ msgid "No records were returned from the previous report. Please adjust your fil
 msgstr "Nenhum registro foi retornado do relatório anterior. Por favor, ajuste seus filtros ou intervalo de datas e tente novamente."
 
 #: 
-msgid "Please enter a menu name (2-50 characters)"
-msgstr "Por favor, insira um nome de menu (2-50 caracteres)"
-
-#: 
 msgid "Please enter a valid URL starting with http:// or https://"
 msgstr "Por favor, insira uma URL válida começando com http:// ou https://"
 
@@ -9055,28 +8625,12 @@ msgid "All system file signatures match the expected values."
 msgstr "Todas as assinaturas de arquivo do sistema correspondem aos valores esperados."
 
 #: 
-msgid "Files with issues"
-msgstr "Arquivos com problemas"
-
-#: 
-msgid "Integrity check failed"
-msgstr "Verificação de integridade falhou"
-
-#: 
-msgid "Integrity check passed"
-msgstr "Verificação de integridade passou"
-
-#: 
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr "O arquivo de definição de assinatura existe, mas não é legível. Verifique as permissões do arquivo."
 
 #: 
 msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
 msgstr "O arquivo de definição de assinatura está faltando em %s. Execute a tarefa de empacotamento ou implante um lançamento oficial para regenerar assinaturas."
-
-#: 
-msgid "Unable to contact integrity endpoint. Check web server error logs."
-msgstr "Não é possível contatar o endpoint de integridade. Verifique os logs de erro do servidor web."
 
 #: 
 msgid "Add any additional notes about this deposit"
@@ -9448,6 +9002,7 @@ msgstr "Editando evento"
 msgid "Enter event title..."
 msgstr "Digite o título do evento..."
 
+#. Context: queryparameters_qrp
 #: 
 msgid "Event"
 msgstr "Evento"
@@ -9709,10 +9264,6 @@ msgstr "Backup para armazenamento externo"
 #: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "CUIDADO: restaurar um backup apagará completamente o banco de dados existente e o substituirá pelos dados de backup."
-
-#: 
-msgid "CSV export permission"
-msgstr "Permissão de exportação CSV"
 
 #: 
 msgid "Close & Refresh"
@@ -10135,10 +9686,6 @@ msgid "Birth & Family"
 msgstr "Nascimento e família"
 
 #: 
-msgid "CSV export is restricted to administrators."
-msgstr "A exportação CSV é restrita aos administradores."
-
-#: 
 msgid "Cart"
 msgstr "Carrinho"
 
@@ -10467,10 +10014,6 @@ msgid "Membership Reports"
 msgstr "Relatórios de membresía"
 
 #: 
-msgid "Missing Secret Keys"
-msgstr "Chaves secretas faltando"
-
-#: 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
 msgstr "A maioria dos relatórios pode ser exportada como PDF para impressão ou CSV para análise de planilha."
 
@@ -10609,10 +10152,6 @@ msgstr "As configurações do servidor SMTP não estão configuradas"
 #: 
 msgid "Save and Add New Family"
 msgstr "Salvar e adicionar nova família"
-
-#: 
-msgid "Secret keys missing from Config.php"
-msgstr "Chaves secretas faltando em Config.php"
 
 #: 
 msgid "Sep"
@@ -10815,10 +10354,6 @@ msgid "(Enter state/province for countries without predefined states)"
 msgstr "(Digite estado/província para países sem estados predefinidos)"
 
 #: 
-msgid "Available"
-msgstr "Disponível"
-
-#: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
 msgstr "A configuração de URL base é inválida. Por favor, verifique seu arquivo Config.php."
 
@@ -10903,10 +10438,6 @@ msgid "No locales configured"
 msgstr "Sem locais configurados"
 
 #: 
-msgid "Not Available"
-msgstr "Não disponível"
-
-#: 
 msgid "Open this file in a text editor:"
 msgstr "Abra este arquivo em um editor de texto:"
 
@@ -10939,10 +10470,6 @@ msgid "System Locale Support"
 msgstr "Suporte de localidade do sistema"
 
 #: 
-msgid "System Support"
-msgstr "Suporte do sistema"
-
-#: 
 msgid "URL does not contain a valid hostname"
 msgstr "A URL não contém um nome de host válido"
 
@@ -10961,18 +10488,6 @@ msgstr "A URL deve terminar com uma barra diagonal (/)"
 #: 
 msgid "URL must start with http:// or https://"
 msgstr "A URL deve começar com http:// ou https://"
-
-#: 
-msgid "Unable to detect system locales"
-msgstr "Não é possível detectar locais do sistema"
-
-#: 
-msgid "Unable to determine available locales"
-msgstr "Não é possível determinar as locais disponíveis"
-
-#: 
-msgid "Unable to load locale information"
-msgstr "Não é possível carregar informações de localidade"
 
 #: 
 msgid "Unable to load state list. Please check your network connection or try again later."
@@ -11167,10 +10682,6 @@ msgid "Download failed"
 msgstr "Falha no download"
 
 #: 
-msgid "Failed to apply upgrade"
-msgstr "Falha ao aplicar atualização"
-
-#: 
 msgid "Failed to delete orphaned files"
 msgstr "Falha ao excluir arquivos órfãos"
 
@@ -11193,10 +10704,6 @@ msgstr "Falha ao fazer upload de foto da pessoa"
 #: 
 msgid "Remote backup failed"
 msgstr "Falha no backup remoto"
-
-#: 
-msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set"
-msgstr "Os backups do WebDAV não estão configurados corretamente. Certifique-se de que o endpoint, o nome de usuário e a senha estejam configurados"
 
 #: 
 msgid "2FA Enabled"
@@ -11325,10 +10832,6 @@ msgstr "Autenticação de dois fatores"
 #: 
 msgid "Validation pending"
 msgstr "Validação pendente"
-
-#: 
-msgid "must be configured with an encryption key"
-msgstr "deve ser configurado com uma chave de criptografia"
 
 #: 
 msgid "%d Person added to the Cart."
@@ -11683,14 +11186,6 @@ msgid "No people found matching your criteria."
 msgstr "Não foram encontradas pessoas que correspondam aos seus critérios."
 
 #: 
-msgid "Off"
-msgstr "Desligado"
-
-#: 
-msgid "On"
-msgstr "Ligado"
-
-#: 
 msgid "Photo Directory"
 msgstr "Diretório de Fotos"
 
@@ -11701,4 +11196,1325 @@ msgstr "Repor Filtros"
 #: 
 msgid "Show only people with photos"
 msgstr "Mostrar apenas pessoas com fotos"
+
+#: 
+msgid "Expected"
+msgstr "Esperado"
+
+#: 
+msgid "Failed to delete kiosk"
+msgstr "Falha ao eliminar quiosque"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Ano fiscal."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupo de alunos registados"
+
+#: 
+msgid "Here"
+msgstr "Aqui"
+
+#: 
+msgid "Invalid assignment type"
+msgstr "Tipo de atribuição inválido"
+
+#: 
+msgid "Invalid person ID"
+msgstr "ID de pessoa inválido"
+
+#: 
+msgid "Kiosk Registration Disabled"
+msgstr "Registo de quiosque desativado"
+
+#: 
+msgid "Kiosk not found"
+msgstr "Quiosque não encontrado"
+
+#: 
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr "Associe este evento a um grupo para a funcionalidade de check-in no quiosque. Os membros do grupo aparecerão no quiosque."
+
+#: 
+msgid "Linked Group"
+msgstr "Grupo associado"
+
+#: 
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr "O registo de novos dispositivos de quiosque está atualmente desativado. Por favor contacte o administrador do sistema para ativar o registo de quiosques."
+
+#: 
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr "Sem grupo (Selecionar para check-in no quiosque)"
+
+#: 
+msgid "No one checked in yet"
+msgstr "Ninguém fez check-in ainda"
+
+#: 
+msgid "Person not found"
+msgstr "Pessoa não encontrada"
+
+#: 
+msgid "Pickup Request"
+msgstr "Pedido de recolha"
+
+#: 
+msgid "Please proceed to the classroom as soon as possible."
+msgstr "Por favor dirija-se à sala de aula o mais rapidamente possível."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Resumo de compromissos por nome de família para cada fundo do ano fiscal selecionado"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Alunos registados"
+
+#: 
+msgid "The teacher sent this alert at"
+msgstr "O professor enviou este alerta às"
+
+#: 
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr "Este quiosque é melhor visualizado num tablet em modo paisagem para uma experiência de check-in ideal."
+
+#: 
+msgid "Tip"
+msgstr "Dica"
+
+#: 
+msgid "Try Again"
+msgstr "Tentar novamente"
+
+#: 
+msgid "Upcoming Birthdays"
+msgstr "Próximos aniversários"
+
+#: 
+msgid "Waiting to Check In"
+msgstr "A aguardar check-in"
+
+#: 
+msgid "When enabled, new kiosk devices can register for 30 seconds."
+msgstr "Quando ativado, os novos dispositivos de quiosque podem registar-se durante 30 segundos."
+
+#: 
+msgid "Your child"
+msgstr "O seu filho"
+
+#: 
+msgid "needs to be picked up from"
+msgstr "precisa de ser recolhido de"
+
+#: 
+msgid "their classroom"
+msgstr "a sua sala de aula"
+
+#: 
+msgid "All timezones match"
+msgstr "Todos os fusos horários correspondem"
+
+#: 
+msgid "Baseline"
+msgstr "Referência"
+
+#: 
+msgid "Browser"
+msgstr "Navegador"
+
+#: 
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr "O navegador difere da configuração do sistema - as datas podem ser exibidas incorretamente para este utilizador."
+
+#: 
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr "Não é possível escrever no diretório de instalação do ChurchCRM. Por favor verifique se o servidor web tem permissões de escrita."
+
+#: 
+msgid "Comparing timezones..."
+msgstr "A comparar fusos horários..."
+
+#: 
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr "O diretório de destino não existe. Por favor verifique se o ChurchCRM está instalado corretamente."
+
+#: 
+msgid "Does not match system config"
+msgstr "Não corresponde à configuração do sistema"
+
+#: 
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr "O ficheiro de versão transferido está vazio. Isto pode dever-se a problemas de rede ou limitação de taxa do GitHub. Por favor tente novamente mais tarde."
+
+#: 
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr "Extração concluída mas ficheiros de atualização não encontrados. O arquivo de atualização pode estar corrompido."
+
+#: 
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr "Falha ao aplicar a atualização. Por favor verifique os registos do servidor para detalhes."
+
+#: 
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr "Falha ao criar o diretório de atualização. Por favor verifique as permissões dos ficheiros."
+
+#: 
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr "Falha ao transferir o ficheiro de versão do GitHub após várias tentativas. Por favor verifique a ligação à Internet do seu servidor e tente novamente."
+
+#: 
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr "Falha ao extrair o arquivo de atualização. Por favor verifique o espaço em disco e as permissões dos ficheiros."
+
+#: 
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr "Falha ao abrir o arquivo de atualização. O ficheiro transferido pode estar corrompido."
+
+#: 
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr "Falha ao guardar o ficheiro de versão transferido. Por favor verifique o espaço em disco e as permissões."
+
+#: 
+msgid "Invalid date format in start parameter"
+msgstr "Formato de data inválido no parâmetro de início"
+
+#: 
+msgid "Mismatch"
+msgstr "Discrepância"
+
+#: 
+msgid "Not set"
+msgstr "Não definido"
+
+#: 
+msgid "PHP Active"
+msgstr "PHP ativo"
+
+#: 
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr "O diretório de origem não existe. O arquivo de atualização pode não ter sido extraído corretamente. Por favor verifique as permissões dos ficheiros e o espaço em disco."
+
+#: 
+msgid "System Config"
+msgstr "Configuração do sistema"
+
+#: 
+msgid "Timezone Information"
+msgstr "Informação de fuso horário"
+
+#: 
+msgid "Timezone mismatch detected"
+msgstr "Discrepância de fuso horário detetada"
+
+#: 
+msgid "mismatch detected"
+msgstr "discrepância detetada"
+
+#: 
+msgid "mismatches detected"
+msgstr "discrepâncias detetadas"
+
+#: 
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] "%d hora"
+msgstr[1] "%d horas"
+
+#: 
+msgid "About WebDAV Backups"
+msgstr "Sobre Backups WebDAV"
+
+#: 
+msgid "Add Link"
+msgstr "Adicionar Ligação"
+
+#: 
+msgid "Add an extra layer of security to your account"
+msgstr "Adicione uma camada extra de segurança à sua conta"
+
+#: 
+msgid "Add custom external links to the navigation menu."
+msgstr "Adicione ligações externas personalizadas ao menu de navegação."
+
+#: 
+msgid "Allow Self-Signed Certificates"
+msgstr "Permitir Certificados Autoassinados"
+
+#: 
+msgid "An error occurred processing the plugin request"
+msgstr "Ocorreu um erro ao processar o pedido do plugin"
+
+#: 
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr "Tem a certeza de que pretende desativar a autenticação de dois fatores? A sua conta ficará menos segura."
+
+#: 
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr "Como parte da restauração, os backups externos foram desativados. Se pretender continuar com backups automáticos, reative o plugin de Backup Externo em Admin > Plugins."
+
+#: 
+msgid "Audiences"
+msgstr "Audiências"
+
+#: 
+msgid "Authentication failed. Please check username and password."
+msgstr "Autenticação falhou. Verifique o utilizador e a palavra-passe."
+
+#: 
+msgid "Auto-Backup Interval"
+msgstr "Intervalo de Backup Automático"
+
+#: 
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr "Faça backup automático da base de dados do ChurchCRM para armazenamento em nuvem externo via WebDAV."
+
+#: 
+msgid "Avg Click Rate"
+msgstr "Taxa Média de Cliques"
+
+#: 
+msgid "Avg Open Rate"
+msgstr "Taxa Média de Abertura"
+
+#: 
+msgid "Back to Dashboard"
+msgstr "Voltar ao Painel"
+
+#: 
+msgid "Backup created but failed to copy to remote server"
+msgstr "Backup criado, mas falhou ao copiar para o servidor remoto"
+
+#: 
+msgid "Backup to WebDAV Now"
+msgstr "Fazer Backup via WebDAV Agora"
+
+#: 
+msgid "Before You Start"
+msgstr "Antes de Começar"
+
+#: 
+msgid "Browser language preference detected"
+msgstr "Preferência de idioma do navegador detetada"
+
+#: 
+msgid "CRM Members Not Subscribed"
+msgstr "Membros do CRM Não Subscritos"
+
+#: 
+msgid "Campaigns Sent"
+msgstr "Campanhas Enviadas"
+
+#: 
+msgid "Can't scan?"
+msgstr "Não consegue digitalizar?"
+
+#: 
+msgid "Change Your Locale"
+msgstr "Alterar o Seu Idioma"
+
+#: 
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr "O ChurchCRM suporta uma arquitetura de plugins para ampliar funcionalidades."
+
+#: 
+msgid "Cleaned"
+msgstr "Limpo"
+
+#: 
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr "Clique no botão abaixo para testar as definições de ligação WebDAV."
+
+#: 
+msgid "Community Plugins"
+msgstr "Plugins da Comunidade"
+
+#: 
+msgid "Community plugins"
+msgstr "Plugins da comunidade"
+
+#: 
+msgid "Configure External Backup"
+msgstr "Configurar Backup Externo"
+
+#: 
+msgid "Configure MailChimp"
+msgstr "Configurar MailChimp"
+
+#: 
+msgid "Configure these settings in the"
+msgstr "Configure estas definições no"
+
+#: 
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr "Configure este plugin para fazer backup automático da base de dados do ChurchCRM em serviços de armazenamento em nuvem compatíveis com WebDAV, como Nextcloud, ownCloud ou qualquer servidor WebDAV. Os backups são encriptados durante a transferência via HTTPS."
+
+#: 
+msgid "Configured"
+msgstr "Configurado"
+
+#: 
+msgid "Confirm with a code from your authenticator app"
+msgstr "Confirme com um código da sua aplicação autenticadora"
+
+#: 
+msgid "Connected"
+msgstr "Ligado"
+
+#: 
+msgid "Connection failed"
+msgstr "Ligação falhou"
+
+#: 
+msgid "Connection failed with HTTP code"
+msgstr "Ligação falhou com código HTTP"
+
+#: 
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr "Ligação bem-sucedida! O endpoint WebDAV está acessível."
+
+#: 
+msgid "Connection test failed"
+msgstr "Teste de ligação falhou"
+
+#: 
+msgid "Core Plugins"
+msgstr "Plugins Principais"
+
+#: 
+msgid "Core plugins"
+msgstr "Plugins principais"
+
+#: 
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr "Crie um backup agora e carregue-o para o seu servidor WebDAV."
+
+#: 
+msgid "Create an Audience in MailChimp"
+msgstr "Criar uma Audiência no MailChimp"
+
+#: 
+msgid "Custom"
+msgstr "Personalizado"
+
+#: 
+msgid "Custom Menu Links"
+msgstr "Ligações de Menu Personalizadas"
+
+#: 
+msgid "Default Image Style"
+msgstr "Estilo de Imagem Predefinido"
+
+#: 
+msgid "Default List ID"
+msgstr "ID de Lista Predefinido"
+
+#: 
+msgid "Disable"
+msgstr "Desativar"
+
+#: 
+msgid "Disable Plugin"
+msgstr "Desativar Plugin"
+
+#: 
+msgid "Disable Two-Factor Authentication"
+msgstr "Desativar Autenticação de Dois Fatores"
+
+#: 
+msgid "Dismiss"
+msgstr "Dispensar"
+
+#: 
+msgid "Done"
+msgstr "Concluído"
+
+#: 
+msgid "E.164 format, e.g., +14155551234"
+msgstr "Formato E.164, ex.: +14155551234"
+
+#: 
+msgid "Each plugin requires a"
+msgstr "Cada plugin requer um"
+
+#: 
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr "Cada vez que iniciar sessão, terá de confirmar com um código da sua aplicação autenticadora"
+
+#: 
+msgid "Email Addresses"
+msgstr "Endereços de E-mail"
+
+#: 
+msgid "Enable"
+msgstr "Ativar"
+
+#: 
+msgid "Enable External Backup Plugin"
+msgstr "Ativar Plugin de Backup Externo"
+
+#: 
+msgid "Enable Plugin"
+msgstr "Ativar Plugin"
+
+#: 
+msgid "Enable Two-Factor Authentication"
+msgstr "Ativar Autenticação de Dois Fatores"
+
+#: 
+msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr "Ative o plugin de Backup Externo para armazenamento em nuvem WebDAV."
+
+#: 
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr "Ative apenas para servidores de rede local com certificados SSL autoassinados. Desativa a verificação de certificado."
+
+#: 
+msgid "Endpoint URL"
+msgstr "URL do Endpoint"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr "Introduza o código de 6 dígitos da sua aplicação autenticadora"
+
+#: 
+msgid "Enter your username and password as usual"
+msgstr "Introduza o seu utilizador e palavra-passe normalmente"
+
+#: 
+msgid "External Backup"
+msgstr "Backup Externo"
+
+#: 
+msgid "External Backup (WebDAV)"
+msgstr "Backup Externo (WebDAV)"
+
+#: 
+msgid "External Backup Settings"
+msgstr "Definições de Backup Externo"
+
+#: 
+msgid "External Backup plugin is enabled but not configured."
+msgstr "O plugin de Backup Externo está ativado, mas não configurado."
+
+#: 
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr "O plugin de Backup Externo não está configurado. Configure as definições WebDAV no plugin."
+
+#: 
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr "O plugin de Backup Externo não está ativado. Ative-o e configure-o em Gestão de Plugins."
+
+#: 
+msgid "Failed to create link"
+msgstr "Falha ao criar ligação"
+
+#: 
+msgid "Failed to delete link"
+msgstr "Falha ao eliminar ligação"
+
+#: 
+msgid "Failed to disable plugin"
+msgstr "Falha ao desativar plugin"
+
+#: 
+msgid "Failed to enable plugin"
+msgstr "Falha ao ativar plugin"
+
+#: 
+msgid "Failed to get plugin details"
+msgstr "Falha ao obter detalhes do plugin"
+
+#: 
+msgid "Failed to list plugins"
+msgstr "Falha ao listar plugins"
+
+#: 
+msgid "Failed to reset settings"
+msgstr "Falha ao repor definições"
+
+#: 
+msgid "Failed to send SMS"
+msgstr "Falha ao enviar SMS"
+
+#: 
+msgid "Family Status"
+msgstr "Estado da Família"
+
+#: 
+msgid "Family not found"
+msgstr "Família não encontrada"
+
+#: 
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr "Encontre no MailChimp: Audiência > Definições > Nome e predefinições da audiência > ID da audiência"
+
+#: 
+msgid "From Phone Number"
+msgstr "Número de Telefone de Origem"
+
+#: 
+msgid "From dashboard.vonage.com"
+msgstr "De dashboard.vonage.com"
+
+#: 
+msgid "GA4 Measurement ID"
+msgstr "ID de Medição GA4"
+
+#: 
+msgid "Generate new code"
+msgstr "Gerar novo código"
+
+#: 
+msgid "Get Started"
+msgstr "Começar"
+
+#: 
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr "Obtenha a sua chave de API no MailChimp: Definições da Conta > Extras > Chaves de API"
+
+#: 
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr "Tenha a sua aplicação autenticadora pronta (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+
+#: 
+msgid "Help"
+msgstr "Ajuda"
+
+#: 
+msgid "Id"
+msgstr "Id"
+
+#: 
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr "Imagem apresentada quando não existe Gravatar para o endereço de e-mail"
+
+#: 
+msgid "Important"
+msgstr "Importante"
+
+#: 
+msgid "Install plugins by placing them in"
+msgstr "Instale plugins colocando-os em"
+
+#: 
+msgid "Invalid code. Please try again."
+msgstr "Código inválido. Por favor, tente novamente."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr "URL do endpoint inválida. Deve ser uma URL completa começando com https:// (ex.: https://cloud.example.com/remote.php/dav/files/user/backups/)"
+
+#: 
+msgid "Kiosk device not found"
+msgstr "Dispositivo de quiosque não encontrado"
+
+#: 
+msgid "Last Backup"
+msgstr "Último Backup"
+
+#: 
+msgid "Last Campaign"
+msgstr "Última Campanha"
+
+#: 
+msgid "Last Subscriber"
+msgstr "Último Subscritor"
+
+#: 
+msgid "Last Successful Backup"
+msgstr "Último Backup Bem-sucedido"
+
+#: 
+msgid "Last campaign"
+msgstr "Última campanha"
+
+#: 
+msgid "Link Name"
+msgstr "Nome da Ligação"
+
+#: 
+msgid "Link address cannot contain HTML tags"
+msgstr "O endereço da ligação não pode conter tags HTML"
+
+#: 
+msgid "Link address is required"
+msgstr "O endereço da ligação é obrigatório"
+
+#: 
+msgid "Link must be a valid URL"
+msgstr "A ligação deve ser uma URL válida"
+
+#: 
+msgid "Link must start with http:// or https://"
+msgstr "A ligação deve começar com http:// ou https://"
+
+#: 
+msgid "Link not found"
+msgstr "Ligação não encontrada"
+
+#: 
+msgid "Loading recovery codes"
+msgstr "A carregar códigos de recuperação"
+
+#: 
+msgid "MailChimp"
+msgstr "MailChimp"
+
+#: 
+msgid "MailChimp API Key"
+msgstr "Chave de API do MailChimp"
+
+#: 
+msgid "MailChimp Dashboard"
+msgstr "Painel do MailChimp"
+
+#: 
+msgid "Manage Links"
+msgstr "Gerir Ligações"
+
+#: 
+msgid "Manage Two-Factor Authentication"
+msgstr "Gerir Autenticação de Dois Fatores"
+
+#: 
+msgid "Manual Backup"
+msgstr "Backup Manual"
+
+#: 
+msgid "Menu Links"
+msgstr "Ligações do Menu"
+
+#: 
+msgid "Menu name cannot contain HTML tags"
+msgstr "O nome do menu não pode conter tags HTML"
+
+#: 
+msgid "Menu name is required"
+msgstr "O nome do menu é obrigatório"
+
+#: 
+msgid "Menu name must be 50 characters or less"
+msgstr "O nome do menu deve ter no máximo 50 caracteres"
+
+#: 
+msgid "Menu name must be at least 2 characters"
+msgstr "O nome do menu deve ter pelo menos 2 caracteres"
+
+#: 
+msgid "Must start with http:// or https://"
+msgstr "Deve começar com http:// ou https://"
+
+#: 
+msgid "Needs Configuration"
+msgstr "Necessita de Configuração"
+
+#: 
+msgid "Never"
+msgstr "Nunca"
+
+#: 
+msgid "No Audiences Found"
+msgstr "Nenhuma Audiência Encontrada"
+
+#: 
+msgid "No backups recorded"
+msgstr "Nenhum backup registado"
+
+#: 
+msgid "No community plugins installed"
+msgstr "Nenhum plugin da comunidade instalado"
+
+#: 
+msgid "No core plugins found"
+msgstr "Nenhum plugin principal encontrado"
+
+#: 
+msgid "No settings provided"
+msgstr "Nenhuma definição fornecida"
+
+#: 
+msgid "Not Configured"
+msgstr "Não Configurado"
+
+#: 
+msgid "Not in CRM"
+msgstr "Não está no CRM"
+
+#: 
+msgid "One-Time Code"
+msgstr "Código de Utilização Única"
+
+#: 
+msgid "Open MailChimp"
+msgstr "Abrir MailChimp"
+
+#: 
+msgid "Open your authenticator app and scan this QR code"
+msgstr "Abra a sua aplicação autenticadora e digitalize este código QR"
+
+#: 
+msgid "OpenLP Server URL"
+msgstr "URL do Servidor OpenLP"
+
+#: 
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr "Opcional - apenas necessário se a autenticação do OpenLP estiver ativada"
+
+#: 
+msgid "Phone number and message required"
+msgstr "Número de telefone e mensagem são obrigatórios"
+
+#: 
+msgid "Please configure endpoint, username, and password first."
+msgstr "Configure o endpoint, utilizador e palavra-passe primeiro."
+
+#: 
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr "Configure as definições WebDAV antes de criar um backup remoto."
+
+#: 
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr "Configure as definições WebDAV antes de testar a ligação."
+
+#: 
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr "Configure a sua chave de API do MailChimp para utilizar esta integração."
+
+#: 
+msgid "Please enter a link name (2-50 characters)"
+msgstr "Introduza um nome de ligação (2-50 caracteres)"
+
+#: 
+msgid "Please try again"
+msgstr "Por favor, tente novamente"
+
+#: 
+msgid "Plugin Development"
+msgstr "Desenvolvimento de Plugin"
+
+#: 
+msgid "Plugin Help"
+msgstr "Ajuda do Plugin"
+
+#: 
+msgid "Plugin Management"
+msgstr "Gestão de Plugins"
+
+#: 
+msgid "Plugin Settings"
+msgstr "Definições do Plugin"
+
+#: 
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr "O plugin não pode ser desativado porque outros plugins dependem dele"
+
+#: 
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr "O plugin não pode ser ativado devido a requisitos de dependência ou versão"
+
+#: 
+msgid "Plugin disabled successfully"
+msgstr "Plugin desativado com sucesso"
+
+#: 
+msgid "Plugin enabled successfully"
+msgstr "Plugin ativado com sucesso"
+
+#: 
+msgid "Plugin failed to load"
+msgstr "Falha ao carregar o plugin"
+
+#: 
+msgid "Plugin not found"
+msgstr "Plugin não encontrado"
+
+#: 
+msgid "Plugins"
+msgstr "Plugins"
+
+#: 
+msgid "Print"
+msgstr "Imprimir"
+
+#: 
+msgid "Recipients and message required"
+msgstr "Destinatários e mensagem são obrigatórios"
+
+#: 
+msgid "Recovery Codes"
+msgstr "Códigos de Recuperação"
+
+#: 
+msgid "Remote backup failed. Check server logs for details."
+msgstr "Backup remoto falhou. Verifique os registos do servidor para mais detalhes."
+
+#: 
+msgid "SMS sent"
+msgstr "SMS enviado"
+
+#: 
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr "Guarde estes códigos de recuperação num local seguro. Pode utilizá-los para aceder à sua conta se perder acesso à sua aplicação autenticadora."
+
+#: 
+msgid "Scan QR Code"
+msgstr "Digitalizar Código QR"
+
+#: 
+msgid "Secure"
+msgstr "Seguro"
+
+#: 
+msgid "Set Up Authenticator"
+msgstr "Configurar Autenticador"
+
+#: 
+msgid "Settings reset successfully"
+msgstr "Definições repostas com sucesso"
+
+#: 
+msgid "Setup Complete"
+msgstr "Configuração Concluída"
+
+#: 
+msgid "Shipped with ChurchCRM."
+msgstr "Incluído com o ChurchCRM."
+
+#: 
+msgid "Sign In"
+msgstr "Iniciar Sessão"
+
+#: 
+msgid "Some settings could not be reset"
+msgstr "Algumas definições não puderam ser repostas"
+
+#: 
+msgid "Some settings could not be saved"
+msgstr "Algumas definições não puderam ser guardadas"
+
+#: 
+msgid "Subscribers"
+msgstr "Subscritores"
+
+#: 
+msgid "Subscribers Not in CRM"
+msgstr "Subscritores Não no CRM"
+
+#: 
+msgid "Test Connection"
+msgstr "Testar Ligação"
+
+#: 
+msgid "Test WebDAV Connection"
+msgstr "Testar Ligação WebDAV"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Estas ligações aparecem no menu \"Ligações\" na barra lateral de navegação quando este plugin está ativado."
+
+#: 
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr "Estas pessoas estão subscritas na sua audiência do MailChimp, mas não existem no ChurchCRM. Considere adicioná-las à sua base de dados ou removê-las do MailChimp."
+
+#: 
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr "Estas pessoas existem no ChurchCRM com endereços de e-mail, mas não estão subscritas nesta audiência do MailChimp. Considere convidá-las para subscrever."
+
+#: 
+msgid "Third-party extensions."
+msgstr "Extensões de terceiros."
+
+#: 
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr "Isto substituirá quaisquer métodos de 2FA previamente registados"
+
+#: 
+msgid "Total Campaigns"
+msgstr "Total de Campanhas"
+
+#: 
+msgid "Total Subscribers"
+msgstr "Total de Subscritores"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Erro de Registo de Dois Fatores"
+
+#: 
+msgid "Two-factor authentication has been disabled"
+msgstr "A autenticação de dois fatores foi desativada"
+
+#: 
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr "A autenticação de dois fatores é uma das melhores formas de proteger a sua conta. Recomendamos vivamente mantê-la ativada."
+
+#: 
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr "URL do seu servidor OpenLP (ex.: http://192.168.1.100:4316)"
+
+#: 
+msgid "Unable to load"
+msgstr "Não foi possível carregar"
+
+#: 
+msgid "Unsubscribed"
+msgstr "Cancelou subscrição"
+
+#: 
+msgid "Use a different account"
+msgstr "Utilizar uma conta diferente"
+
+#: 
+msgid "Value is configured"
+msgstr "Valor está configurado"
+
+#: 
+msgid "Value is set - leave blank to keep current"
+msgstr "Valor está definido - deixe em branco para manter o atual"
+
+#: 
+msgid "Verify & Sign In"
+msgstr "Verificar e Iniciar Sessão"
+
+#: 
+msgid "Verify Code"
+msgstr "Verificar Código"
+
+#: 
+msgid "Verifying"
+msgstr "A verificar"
+
+#: 
+msgid "Vonage API Key"
+msgstr "Chave de API do Vonage"
+
+#: 
+msgid "Vonage API Secret"
+msgstr "Segredo de API do Vonage"
+
+#: 
+msgid "WebDAV Configuration"
+msgstr "Configuração WebDAV"
+
+#: 
+msgid "WebDAV Connection"
+msgstr "Ligação WebDAV"
+
+#: 
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr "Os backups WebDAV não estão configurados corretamente. Certifique-se de que o endpoint, utilizador e palavra-passe estão definidos."
+
+#: 
+msgid "WebDAV endpoint URL is required."
+msgstr "A URL do endpoint WebDAV é obrigatória."
+
+#: 
+msgid "WebDAV password is required."
+msgstr "A palavra-passe WebDAV é obrigatória."
+
+#: 
+msgid "WebDAV username is required."
+msgstr "O utilizador WebDAV é obrigatório."
+
+#: 
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr "Também pode utilizar códigos de recuperação de backup se perder acesso à sua aplicação"
+
+#: 
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr "Agora pode utilizar a sua aplicação autenticadora para iniciar sessão. Cada código é válido durante 30 segundos."
+
+#: 
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr "Receberá códigos de backup que podem ser utilizados se perder acesso à sua aplicação"
+
+#: 
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr "O seu ID de Medição GA4 (G-XXXXXXXXXX)"
+
+#: 
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr "A sua conta do MailChimp não tem nenhuma audiência (lista) configurada."
+
+#: 
+msgid "Your account is now protected"
+msgstr "A sua conta está agora protegida"
+
+#: 
+msgid "Your account is protected"
+msgstr "A sua conta está protegida"
+
+#: 
+msgid "Your authenticator app has been successfully enrolled"
+msgstr "A sua aplicação autenticadora foi registada com sucesso"
+
+#: 
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr "A preferência de idioma do seu navegador é diferente do idioma do ChurchCRM"
+
+#: 
+msgid "e.g., Church Website"
+msgstr "ex.: Website da Igreja"
+
+#: 
+msgid "manifest."
+msgstr "manifesto."
+
+#: 
+msgid "subscribers"
+msgstr "subscritores"
+
+#: 
+msgid "API Key is required."
+msgstr "A chave de API é obrigatória."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr "Não é possível ligar ao OpenLP em %s. Verifique a URL do servidor e se o OpenLP está em execução."
+
+#: 
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr "Não é possível ligar ao OpenLP em %s. O servidor devolveu HTTP %d."
+
+#: 
+msgid "Congregation Map"
+msgstr "Mapa dos Fiéis"
+
+#: 
+msgid "Congregation Map — Setup Required"
+msgstr "Mapa dos Fiéis — Configuração Necessária"
+
+#: 
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr "Ligado ao MailChimp! Conta: %s (%d subscritores)"
+
+#: 
+msgid "Connected to OpenLP server successfully."
+msgstr "Ligado ao servidor OpenLP com sucesso."
+
+#: 
+msgid "Connected to OpenLP! Version: %s"
+msgstr "Ligado ao OpenLP! Versão: %s"
+
+#: 
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr "Ligado! Saldo da conta: €%.2f. Pronto para enviar SMS."
+
+#: 
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr "Não foi possível ligar ao MailChimp. Verifique a sua chave de API."
+
+#: 
+msgid "Failed to connect to OpenLP server."
+msgstr "Falha ao ligar ao servidor OpenLP."
+
+#: 
+msgid "Get Directions"
+msgstr "Obter Indicações"
+
+#: 
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr "Inclua o indicativo do país, ex.: +14155551234 (EUA) ou +447911123456 (RU)"
+
+#: 
+msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Número de Origem\" inválido: \"%s\". Inclua o indicativo do país, ex.: +14155551234 (EUA) ou +447911123456 (RU)."
+
+#: 
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr "Credenciais de API inválidas. Verifique a sua Chave de API e Segredo de API."
+
+#: 
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr "Formato de chave de API inválido. Verifique a sua chave de API do MailChimp."
+
+#: 
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr "URL do endpoint inválida. Deve ser uma URL completa começando com https://"
+
+#: 
+msgid "Invalid server URL format."
+msgstr "Formato de URL do servidor inválido."
+
+#: 
+msgid "MailChimp connection failed."
+msgstr "Ligação ao MailChimp falhou."
+
+#: 
+msgid "Map Zoom Level"
+msgstr "Nível de Zoom do Mapa"
+
+#: 
+msgid "Missing families? Update coordinates to include them on the map."
+msgstr "Famílias em falta? Atualize as coordenadas para as incluir no mapa."
+
+#: 
+msgid "Missing required settings: %s"
+msgstr "Definições obrigatórias em falta: %s"
+
+#: 
+msgid "Person has no family"
+msgstr "Pessoa não tem família"
+
+#: 
+msgid "Plugin not found or not active"
+msgstr "Plugin não encontrado ou não ativo"
+
+#: 
+msgid "Server URL is required."
+msgstr "A URL do servidor é obrigatória."
+
+#: 
+msgid "This plugin does not support connection testing."
+msgstr "Este plugin não suporta teste de ligação."
+
+#: 
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr "Não é possível apresentar o mapa: o endereço da igreja ainda não foi geocodificado."
+
+#: 
+msgid "Update church address in Settings."
+msgstr "Atualize o endereço da igreja nas Definições."
+
+#: 
+msgid "Username and password are required."
+msgstr "Utilizador e palavra-passe são obrigatórios."
+
+#: 
+msgid "Validation failed: %s"
+msgstr "Validação falhou: %s"
+
+#: 
+msgid "Vonage server error. Please try again later."
+msgstr "Erro no servidor Vonage. Tente novamente mais tarde."
+
+#: 
+msgid "WebDAV Endpoint URL is required."
+msgstr "A URL do Endpoint WebDAV é obrigatória."
+
+#: 
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr "Tem a certeza de que pretende eliminar permanentemente este registo de promessa?"
+
+#: 
+msgid "Cancel and Return to Family View"
+msgstr "Cancelar e Regressar à Vista da Família"
+
+#: 
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr "Se eliminar este tipo, também removerá todas as propriedades que o utilizam e perderá as atribuições de propriedade correspondentes."
+
+#: 
+msgid "Move Donations to Selected Family"
+msgstr "Mover Ofertas para a Família Selecionada"
+
+#: 
+msgid "Calendar not found"
+msgstr "Calendário não encontrado"
+
+#: 
+msgid "Continue to Dashboard"
+msgstr "Continuar para o Painel"
+
+#: 
+msgid "Current Password"
+msgstr "Palavra-passe Atual"
+
+#: 
+msgid "Deposit not found"
+msgstr "Depósito não encontrado"
+
+#: 
+msgid "Group not found"
+msgstr "Grupo não encontrado"
+
+#: 
+msgid "Invalid JSON provided for configuration"
+msgstr "JSON inválido fornecido para configuração"
+
+#: 
+msgid "Password Change Required"
+msgstr "Alteração de Palavra-passe Necessária"
+
+#: 
+msgid "Password Change Successful"
+msgstr "Alteração de Palavra-passe Bem-sucedida"
+
+#: 
+msgid "Password Changed"
+msgstr "Palavra-passe Alterada"
+
+#: 
+msgid "Passwords must be at least"
+msgstr "As palavras-passe devem ter pelo menos"
+
+#: 
+msgid "Property not found"
+msgstr "Propriedade não encontrada"
+
+#: 
+msgid "Set New Password"
+msgstr "Definir Nova Palavra-passe"
+
+#: 
+msgid "The password for %s has been updated."
+msgstr "A palavra-passe de %s foi atualizada."
+
+#: 
+msgid "Unable to re-encode JSON for configuration"
+msgstr "Não foi possível recodificar o JSON para configuração"
+
+#: 
+msgid "User not found"
+msgstr "Utilizador não encontrado"
+
+#: 
+msgid "You must set a new password before continuing."
+msgstr "Deve definir uma nova palavra-passe antes de continuar."
+
+#: 
+msgid "Your password has been updated successfully."
+msgstr "A sua palavra-passe foi atualizada com sucesso."
+
+#: 
+msgid "selected family has no coordinates"
+msgstr "a família selecionada não tem coordenadas"
+
+#: 
+msgid "2FA"
+msgstr "2FA"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Encontrar pessoas que não participaram num evento"
+
+#: 
+msgid "Leave blank to keep existing"
+msgstr "Deixe em branco para manter o valor existente"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Pessoas em falta"
+
+#: 
+msgid "Not enrolled"
+msgstr "Não inscrito"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Exigir que todos os utilizadores se inscrevam na autenticação de dois fatores"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selecione o evento pretendido"
 

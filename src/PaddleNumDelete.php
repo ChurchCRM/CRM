@@ -7,7 +7,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 $iPaddleNumID = InputUtils::legacyFilterInput($_GET['PaddleNumID'], 'int');
-$linkBack = InputUtils::legacyFilterInput($_GET['linkBack'], 'string');
+$linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
 
 $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 

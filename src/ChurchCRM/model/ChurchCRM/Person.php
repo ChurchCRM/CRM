@@ -140,7 +140,7 @@ class Person extends BasePerson implements PhotoInterface
         return $classificationName;
     }
 
-    public function postInsert(ConnectionInterface $con = null): void
+    public function postInsert(?ConnectionInterface $con = null): void
     {
         $this->createTimeLineNote('create');
         if (!empty(SystemConfig::getValue('sNewPersonNotificationRecipientIDs'))) {
@@ -151,7 +151,7 @@ class Person extends BasePerson implements PhotoInterface
         }
     }
 
-    public function postUpdate(ConnectionInterface $con = null): void
+    public function postUpdate(?ConnectionInterface $con = null): void
     {
         if (!empty($this->getDateLastEdited())) {
             $this->createTimeLineNote('edit');
@@ -315,6 +315,35 @@ class Person extends BasePerson implements PhotoInterface
             'Latitude'  => $lat,
             'Longitude' => $lng,
         ];
+    }
+
+    /**
+     * Returns a Google Maps directions deep-link for this person's address.
+     *
+     * - Person has own address (Address1 set): use address string only — no family info.
+     * - Person has no own address, family has stored lat/lng: use coordinates (accurate, no API call).
+     * - Person has no own address, family has address only: use family address string.
+     * - No address anywhere: return empty string.
+     *
+     * Note: per_Latitude/per_Longitude columns do not yet exist on person_per.
+     * When added (issue #8045) this method should be updated to prefer them.
+     */
+    public function getDirectionsUrl(): string
+    {
+        if (!empty($this->getAddress1())) {
+            return GeoUtils::buildDirectionsUrl($this->getAddress());
+        }
+
+        $family = $this->getFamily();
+        if ($family === null) {
+            return '';
+        }
+
+        if ($family->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildDirectionsUrl('', (float) $family->getLatitude(), (float) $family->getLongitude());
+        }
+
+        return GeoUtils::buildDirectionsUrl($family->getAddress());
     }
 
     public function deletePhoto(): bool
@@ -503,7 +532,7 @@ class Person extends BasePerson implements PhotoInterface
         return $nameString;
     }
 
-    public function preDelete(ConnectionInterface $con = null)
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $this->deletePhoto();
 
@@ -628,10 +657,19 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getNumericCellPhone(): string
     {
-        return '1' . preg_replace('/[^\.0-9]/', '', $this->getCellPhone());
+        return preg_replace('/\D/', '', $this->getCellPhone());
     }
 
-    public function postSave(ConnectionInterface $con = null): void
+    /**
+     * Returns the best available phone number for this person.
+     * Prefers cell phone; falls back to this person's home phone.
+     */
+    public function getBestPhone(): string
+    {
+        return $this->getCellPhone() ?: $this->getHomePhone() ?? '';
+    }
+
+    public function postSave(?ConnectionInterface $con = null): void
     {
         $this->getPhoto()->refresh();
 
@@ -682,9 +720,9 @@ class Person extends BasePerson implements PhotoInterface
         return $this->getFullName() . ' ' . $this->getAge();
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
-        $array = parent::toArray();
+        $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['Address'] = $this->getAddress();
         $array['FullName'] = $this->getFullName();
         $array['HasPhoto'] = $this->getPhoto()->hasUploadedPhoto();

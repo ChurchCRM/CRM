@@ -160,9 +160,16 @@ class RestoreJob extends JobBase
         //When restoring a database, do NOT let the database continue to create remote backups.
         //This can be very troublesome for users in a testing environment.
         LoggerUtils::getAppLogger()->debug('Starting post-restore cleanup');
-        SystemConfig::setValue('bEnableExternalBackupTarget', '0');
-        $this->Messages[] = gettext('As part of the restore, external backups have been disabled.  If you wish to continue automatic backups, you must manually re-enable the bEnableExternalBackupTarget setting.');
-        LoggerUtils::getAppLogger()->debug('Reset System Settings for: bEnableExternalBackupTarget');
+        
+        // Disable the external backup plugin if it was enabled
+        try {
+            SystemConfig::setValue('plugin.external-backup.enabled', '0');
+            $this->Messages[] = gettext('As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins.');
+            LoggerUtils::getAppLogger()->debug('Reset System Settings for: plugin.external-backup.enabled');
+        } catch (\Throwable $e) {
+            // Config key might not exist in restored database - that's OK
+            LoggerUtils::getAppLogger()->debug('Could not disable external backup plugin (config may not exist): ' . $e->getMessage());
+        }
 
         // Rebuild views to ensure they are current after restore
         $this->rebuildViews();

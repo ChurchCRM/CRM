@@ -9,7 +9,7 @@ declare global {
     };
   }
 }
-$(document).ready(function () {
+$(document).ready(() => {
   const container = document.getElementById("two-factor-enrollment-react-app");
   if (container) {
     const root = createRoot(container);

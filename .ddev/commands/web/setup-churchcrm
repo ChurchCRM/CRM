@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+## Description: Install Node packages and build ChurchCRM frontend assets
+## Usage: setup-churchcrm
+## Example: "ddev setup-churchcrm"
+## ExecRaw: false
+## Flags: []
+## AutocompleteTerminators: []
+## CanRunGlobally: false
+## OSTypes: []
+
+set -e
+
+echo ""
+echo "========================================================"
+echo "  ChurchCRM DDEV Setup"
+echo "========================================================"
+echo ""
+echo "Installing Node.js dependencies..."
+cd /var/www/html
+npm ci
+echo "✓ Node.js dependencies installed"
+echo ""
+echo "Building frontend assets (JS/CSS)..."
+npm run build:frontend
+echo "✓ Frontend assets built"
+echo ""
+echo "========================================================"
+echo "  Setup Complete!"
+echo "========================================================"
+echo ""
+echo "ChurchCRM is ready at: https://churchcrm.ddev.site"
+echo "  Login:    admin / changeme"
+echo "  Mailpit:  https://churchcrm.ddev.site:8025"
+echo ""
+echo "Useful commands:"
+echo "  ddev describe        — show service URLs and status"
+echo "  ddev logs            — view web server logs"
+echo "  ddev ssh             — open a shell in the web container"
+echo "  ddev mysql           — open a MySQL prompt"
+echo "  ddev import-db --file=cypress/data/seed.sql  — re-import demo DB"
+echo ""

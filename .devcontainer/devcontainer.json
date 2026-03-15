@@ -1,13 +1,13 @@
 {
   "name": "ChurchCRM Development",
-  "image": "mcr.microsoft.com/devcontainers/php:8.2-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/php:8.4-bullseye",
   "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
   "shutdownAction": "none",
   
   "features": {
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
-      "version": "22"
+      "version": "24"
     },
     "ghcr.io/devcontainers/features/git:1": {
       "ppa": true,

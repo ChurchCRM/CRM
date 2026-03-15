@@ -60,14 +60,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
 <!-- Default box -->
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-app bg-primary">
-            <i class="fa-solid fa-user fa-3x"></i><br>
-            <?= gettext('All People') ?>
-        </a>
         <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app bg-info">
             <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
             <?= gettext('Verify People') ?>
@@ -77,23 +73,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <i class="fa-solid fa-user-plus fa-3x"></i><br>
             <?= gettext('Self Register') ?>
         </div>
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-app bg-success">
-            <i class="fa-solid fa-people-roof fa-3x"></i><br>
-            <?= gettext('All Families') ?>
-        </a>
-        <a href="MapUsingGoogle.php?GroupID=-1" class="btn btn-app bg-warning">
-            <i class="fa-solid fa-map fa-3x"></i><br>
-            <?= gettext('Family Map') ?>
-        </a>
-        <a href="GeoPage.php" class="btn btn-app bg-info">
-            <i class="fa-solid fa-globe fa-3x"></i><br>
-            <?= gettext('Family Geographic') ?>
-        </a>
-        <a href="UpdateAllLatLon.php" class="btn btn-app bg-purple">
-            <i class="fa-solid fa-map-pin fa-3x"></i><br>
-            <?= gettext('Update All Family Coordinates') ?>
-        </a>
-
         <?php
         if ($sEmailLink) {
             // Add default email if default email has been set and is not already in string
@@ -214,7 +193,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="icon">
                 <i class="fa-solid fa-users"></i>
             </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
+            <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="small-box-footer">
                 <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
             </a>
         </div>
@@ -225,9 +204,9 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-info">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-file-lines"></i> <?= gettext('Reports') ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
@@ -255,15 +234,15 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
     </div>
     <div class="col-lg-6">
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('People Classification') ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
             </div>
-            <div class="card-body no-padding">
-                <table class="table table-condensed">
+            <div class="card-body p-0">
+                <table class="table table-sm">
                     <tr>
                         <th><?= gettext('Classification') ?></th>
                         <th>% <?= gettext('of People') ?></th>
@@ -274,8 +253,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <tr>
                             <td><a href='v2/people?Classification=<?= $classificationStats[$key]['id'] ?>'><?= gettext($key) ?></a></td>
                             <td>
-                                <div class="progress progress-xs progress-striped active">
-                                    <div class="progress-bar progress-bar-success" style="width: <?= round($classificationStats[$key]['count'] / $personCount * 100) ?>%"></div>
+                                <div class="progress progress-xs">
+                                    <div class="progress-bar bg-success" style="width: <?= round($classificationStats[$key]['count'] / $personCount * 100) ?>%"></div>
                                 </div>
                             </td>
                             <td><span class="badge bg-green"><?= $classificationStats[$key]['count'] ?></span></td>
@@ -283,7 +262,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         <?php
                     } ?>
                 </table>
-                <!-- /.box-body-->
             </div>
         </div>
     </div>
@@ -291,15 +269,15 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-primary">
-            <div class="card-header with-border">
+            <div class="card-header">
                 <h3 class="card-title"> <i class="fa-solid fa-people-group"></i> <?= gettext('Family Roles') ?></h3>
-                <div class="card-tools pull-right">
+                <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
             </div>
-            <div class="card-body no-padding">
-                <table class="table table-condensed">
+            <div class="card-body p-0">
+                <table class="table table-sm">
                     <tr>
                         <th><?= gettext('Role / Gender') ?></th>
                         <th>% <?= gettext('of People') ?></th>
@@ -317,8 +295,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                             <tr>
                                 <td><a href="v2/people?Gender=<?= $genderId ?>&FamilyRole=<?= $roleId ?>"><?= $roldGenderName ?></a></td>
                                 <td>
-                                    <div class="progress progress-xs progress-striped active">
-                                        <div class="progress-bar progress-bar-success" style="width: <?= round(($roleGenderCount / $personCount) * 100) ?>%" title="<?= round(($roleGenderCount / $personCount) * 100) ?>%"></div>
+                                    <div class="progress progress-xs">
+                                        <div class="progress-bar bg-success" style="width: <?= round(($roleGenderCount / $personCount) * 100) ?>%" title="<?= round(($roleGenderCount / $personCount) * 100) ?>%"></div>
                                     </div>
                                 </td>
                                 <td><span class="badge bg-green"><?= $roleGenderCount ?></span></td>
@@ -338,14 +316,13 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
             </div>
-            <!-- /.box-header -->
             <div class="card-body">
                 <table class="table table-sm table-hover">
                     <thead class="table-light">
                         <tr>
                             <th><?= gettext('Gender') ?></th>
-                            <th class="text-end"><?= gettext('Count') ?></th>
-                            <th class="text-end"><?= gettext('Percentage') ?></th>
+                            <th class="text-right"><?= gettext('Count') ?></th>
+                            <th class="text-right"><?= gettext('Percentage') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -357,8 +334,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr>
                             <td><?= gettext($gender) ?></td>
-                            <td class="text-end"><strong><?= $count ?></strong></td>
-                            <td class="text-end"><?= $percentage ?>%</td>
+                            <td class="text-right"><strong><?= $count ?></strong></td>
+                            <td class="text-right"><?= $percentage ?>%</td>
                         </tr>
                         <?php
                             endif;
@@ -366,8 +343,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr class="table-light">
                             <td><strong><?= gettext('Total') ?></strong></td>
-                            <td class="text-end"><strong><?= $totalGender ?></strong></td>
-                            <td class="text-end"><strong>100%</strong></td>
+                            <td class="text-right"><strong><?= $totalGender ?></strong></td>
+                            <td class="text-right"><strong>100%</strong></td>
                         </tr>
                     </tbody>
                 </table>
@@ -377,7 +354,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="card-header">
                 <h3 class="card-title"><i class="fa-solid fa-birthday-cake"></i> <?= gettext('Age Histogram') ?></h3>
             </div>
-            <!-- /.box-header -->
             <div class="card-body" style="height: 400px">
                 <canvas id="age-stats-bar" style="height:250px"></canvas>
             </div>

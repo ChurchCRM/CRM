@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 
 ?>
 <div class="card">
-  <div class="card-header with-border">
+  <div class="card-header">
     <h3 class="card-title">Cart Functions</h3>
   </div>
   <div class="card-body">
@@ -27,7 +27,7 @@ use ChurchCRM\dto\SystemURLs;
     <a href="<?= SystemURLs::getRootPath() . "/CSVExport.php?Source=cart" ?>" class="btn btn-app bg-warning"><i
         class="fa-solid fa-file-csv fa-3x"></i><br><?= gettext('CSV Export') ?></a>
 
-    <a href="<?= SystemURLs::getRootPath() . "/MapUsingGoogle.php?GroupID=0"?>" class="btn btn-app bg-purple"><i
+    <a href="<?= SystemURLs::getRootPath() . "/v2/map?groupId=0"?>" class="btn btn-app bg-purple"><i
         class="fa-solid fa-map-marker fa-3x"></i><br><?= gettext('Map Cart') ?></a>
     <a href="<?= SystemURLs::getRootPath() . "/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36"?>" class="btn btn-app bg-primary"><i
         class="fa-solid fa-file-pdf fa-3x"></i><br><?= gettext('Name Tags') ?></a>
@@ -73,5 +73,4 @@ use ChurchCRM\dto\SystemURLs;
       //-->
                 </SCRIPT>
               </div>
-              <!-- /.box-body -->
             </div>

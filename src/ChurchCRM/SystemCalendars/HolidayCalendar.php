@@ -6,6 +6,7 @@ use ChurchCRM\data\Countries;
 use ChurchCRM\data\Country;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Event;
+use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Yasumi\Holiday;
 use Yasumi\Yasumi;
@@ -50,8 +51,8 @@ class HolidayCalendar implements SystemCalendar
     public function getEvents(string $start, string $end): ObjectCollection
     {
         $Country = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
-        $year = date('Y');
-        $holidays = Yasumi::create($Country->getCountryNameYasumi(), (int) $year);
+        $year = DateTimeUtils::getCurrentYear();
+        $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
         $events = new ObjectCollection();
         $events->setModel(Event::class);
 

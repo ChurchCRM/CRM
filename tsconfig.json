@@ -17,6 +17,7 @@
     "src/vendor",
     "tests/vendor",
     "cypress.config.ts",
-    "docker/cypress.config.ts"
+    "docker/cypress.config.ts",
+    "cypress/configs/*"
   ]
 }

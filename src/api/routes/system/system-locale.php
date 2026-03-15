@@ -14,6 +14,20 @@ $app->group('/locale', function (RouteCollectorProxy $group): void {
     $group->get('/database/terms', 'getDBTerms');
 })->add(AdminRoleAuthMiddleware::class);
 
+/**
+ * @OA\Get(
+ *     path="/locale/database/terms",
+ *     summary="Get all translatable terms stored in the database (Admin role required)",
+ *     description="Returns distinct tooltip strings, query parameter options, report names/descriptions, and query parameter names/descriptions for i18n extraction.",
+ *     tags={"System"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Array of translatable term strings",
+ *         @OA\JsonContent(@OA\Property(property="terms", type="array", @OA\Items(type="string")))
+ *     ),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="Admin role required")
+ * )
+ */
 function getDBTerms(Request $request, Response $response, array $args): Response
 {
     $terms = [];

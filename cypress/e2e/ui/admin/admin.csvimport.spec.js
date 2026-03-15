@@ -13,9 +13,7 @@ describe(
 
         it("Verify CSV Import", () => {
             cy.visit("CSVImport.php");
-            cy.get("#CSVFileChooser").selectFile(
-                "cypress/data/test_import.csv",
-            );
+            cy.get("#CSVFileChooser").selectFile("cypress/fixtures/test_import.csv");
             cy.get("#UploadCSVBtn").click();
             cy.contains("Total number of rows in the CSV file: 3");
             // It is not clear why, but it seems that force:true was needed to get the selections to work

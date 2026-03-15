@@ -3,22 +3,17 @@
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use Slim\Factory\AppFactory;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 // Get base path by combining $sRootPath from Config.php with /v2 endpoint
 // Examples: '' + '/v2' = '/v2' (root install)
 //           '/churchcrm' + '/v2' = '/churchcrm/v2' (subdirectory install)
 $basePath = SlimUtils::getBasePath('/v2');
 
-
-$container = new ContainerBuilder();
-// Register custom error handlers
-
-AppFactory::setContainer($container);
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
@@ -28,10 +23,12 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
-// CorsMiddleware runs FIRST, AuthMiddleware runs SECOND, VersionMiddleware runs LAST
+// Middleware are added in reverse execution order: added last runs first.
+// Execution order: VersionMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → CorsMiddleware
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 $app->add(new CorsMiddleware());
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
@@ -45,6 +42,7 @@ require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/cart.php';
 require __DIR__ . '/routes/user-current.php';
 require __DIR__ . '/routes/root.php';
+require __DIR__ . '/routes/map.php';
 
 // Run app
 $app->run();

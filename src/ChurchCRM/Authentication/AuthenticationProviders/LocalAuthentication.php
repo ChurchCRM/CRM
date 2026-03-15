@@ -10,11 +10,11 @@ use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\LockedEmail;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use DateTimeZone;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;
 
@@ -48,10 +48,6 @@ class LocalAuthentication implements IAuthenticationProvider
         return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
     }
 
-    public static function getIsTwoFactorAuthSupported(): bool
-    {
-        return SystemConfig::getBooleanValue('bEnable2FA') && KeyManagerUtils::getAreAllSecretsDefined();
-    }
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
@@ -61,10 +57,11 @@ class LocalAuthentication implements IAuthenticationProvider
             $username,
             $secret
         );
-        $qrCode = new QrCode($g2faUrl);
-        $qrCode->setSize(300);
 
-        return $qrCode;
+        return new QrCode(
+            data: $g2faUrl,
+            size: 300
+        );
     }
 
     public function getCurrentUser(): ?User
@@ -87,7 +84,7 @@ class LocalAuthentication implements IAuthenticationProvider
     private function prepareSuccessfulLoginOperations(): void
     {
         // Set the LastLogin and Increment the LoginCount
-        $date = new \DateTimeImmutable('now', new DateTimeZone(SystemConfig::getValue('sTimeZone')));
+        $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
         $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
         $this->currentUser->setFailedLogins(0);
@@ -144,21 +141,21 @@ class LocalAuthentication implements IAuthenticationProvider
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
                 LoggerUtils::getAuthLogger()->warning('Invalid login attempt', $logCtx);
-            } elseif (SystemConfig::getBooleanValue('bEnable2FA') && $this->currentUser->is2FactorAuthEnabled()) {
-                // Only redirect the user to the 2FA sign-ing page if it's
-                // enabled both at system AND user level.
+            } elseif ($this->currentUser->is2FactorAuthEnabled()) {
+                // User has enrolled in 2FA — redirect to verification step
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
                 $this->bPendingTwoFactorAuth = true;
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
             } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled()) {
-                $authenticationResult->isAuthenticated = false;
-                $authenticationResult->message = gettext('Invalid login or password');
-                LoggerUtils::getAuthLogger()->warning('User attempted login with valid credentials, but missing mandatory 2FA enrollment.  Denying access for user', $logCtx);
+                // Allow login but force enrollment — user will be redirected on every request until enrolled
+                $this->prepareSuccessfulLoginOperations();
+                $authenticationResult->isAuthenticated = true;
+                LoggerUtils::getAuthLogger()->info('User logged in, redirecting to mandatory 2FA enrollment', $logCtx);
             } else {
                 $this->prepareSuccessfulLoginOperations();
                 $authenticationResult->isAuthenticated = true;
-                LoggerUtils::getAuthLogger()->debug('User successfully logged in without 2FA', $logCtx);
+                LoggerUtils::getAuthLogger()->info('User successfully logged in without 2FA', $logCtx);
             }
         } elseif ($AuthenticationRequest instanceof LocalTwoFactorTokenRequest && $this->bPendingTwoFactorAuth) {
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
@@ -174,7 +171,7 @@ class LocalAuthentication implements IAuthenticationProvider
             } else {
                 LoggerUtils::getAuthLogger()->info('Invalid 2FA code provided by partially authenticated user', $logCtx);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor';
+                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1';
             }
         }
 
@@ -231,6 +228,16 @@ class LocalAuthentication implements IAuthenticationProvider
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
             $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
+        }
+
+        // If 2FA is required and user hasn't enrolled, redirect to enrollment on every request
+        // but don't redirect if they're already on the enrollment page
+        $enrollmentURL = SystemURLs::getRootPath() . '/v2/user/current/manage2fa';
+        $isOnEnrollmentPage = str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/manage2fa')
+            || str_contains($_SERVER['REQUEST_URI'], '/v2/user/current/enroll2fa');
+        if (SystemConfig::getBooleanValue('bRequire2FA') && !$this->currentUser->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+            LoggerUtils::getAuthLogger()->info('User must enroll in mandatory 2FA before accessing system', $logCtx);
+            $authenticationResult->nextStepURL = $enrollmentURL;
         }
 
         // Finally, if the above tests pass, this user "is authenticated"

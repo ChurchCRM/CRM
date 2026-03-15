@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
@@ -84,7 +84,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/self-verify",
                 dataSrc: 'families'
             },
-            responsive: false,
+
             autoWidth: false,
             columns: [
                 {
@@ -128,7 +128,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
-            responsive: false,
+
             autoWidth: false,
             columns: [
                 {

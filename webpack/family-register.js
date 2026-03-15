@@ -1,2 +1,2 @@
 // Family Registration webpack entry point
-import './family-register.css';
+import "./family-register.css";

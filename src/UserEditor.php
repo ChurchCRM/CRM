@@ -474,7 +474,6 @@ require_once __DIR__ . '/Include/Header.php';
                 </table>
             </div>
     </div>
-    <!-- /.box-body -->
 </div>
 <!-- /.box -->
 <!-- Default box -->
@@ -592,7 +591,6 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         </form>
     </div>
-    <!-- /.box-body -->
 </div>
 <!-- /.box -->
 

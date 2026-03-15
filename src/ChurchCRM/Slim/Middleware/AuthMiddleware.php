@@ -14,9 +14,15 @@ use Psr\Http\Message\ResponseInterface;
 
 class AuthMiddleware implements MiddlewareInterface
 {
+    use BrowserRequestTrait;
+
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        if (!str_starts_with($request->getUri()->getPath(), '/api/public')) {
+        // Construct the full public API path including any subdirectory installation
+        // Examples: '/api/public' (root install), '/crm/api/public' (subdirectory install)
+        $publicApiPath = SystemURLs::getRootPath() . '/api/public';
+        
+        if (!str_starts_with($request->getUri()->getPath(), $publicApiPath)) {
             $apiKey = $request->getHeader('x-api-key');
             if (!empty($apiKey)) {
                 $logger = LoggerUtils::getAppLogger();
@@ -44,7 +50,14 @@ class AuthMiddleware implements MiddlewareInterface
                 // since /background operations do not connotate user activity.
 
                 // User with an active browser session is still authenticated.
-                // don't really need to do anything here...
+                // For browser requests (non-background), enforce any required redirect steps (e.g. forced password change).
+                // Use a PSR-15 response redirect rather than calling ensureAuthentication() which exits via header().
+                if ($this->isBrowserRequest($request) && !$this->isPath($request, 'background')) {
+                    $result = AuthenticationManager::getAuthenticationProvider()->validateUserSessionIsActive(true);
+                    if ($result->nextStepURL !== null) {
+                        return (new Response())->withStatus(302)->withHeader('Location', $result->nextStepURL);
+                    }
+                }
             } else {
                 $logger = LoggerUtils::getAppLogger();
                 $logger->warning('No authenticated user or session', [
@@ -69,46 +82,10 @@ class AuthMiddleware implements MiddlewareInterface
 
     private function isPath(ServerRequestInterface $request, string $pathPart): bool
     {
+        // explode produces an empty string at index 0 for paths starting with '/',
+        // so use in_array to check if the segment exists anywhere in the path
         $pathAry = explode('/', $request->getUri()->getPath());
-        if ($pathAry[0] === $pathPart) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Check if request is from a browser (expects HTML) vs API client (expects JSON)
-     */
-    private function isBrowserRequest(ServerRequestInterface $request): bool
-    {
-        $path = $request->getUri()->getPath();
-
-        // API routes should always return JSON
-        if (str_contains($path, '/api/')) {
-            return false;
-        }
-
-        // Check Accept header - browsers typically send text/html
-        $acceptHeader = $request->getHeaderLine('Accept');
-        if (!empty($acceptHeader)) {
-            // If client explicitly wants JSON, it's an API request
-            if (str_contains($acceptHeader, 'application/json') && !str_contains($acceptHeader, 'text/html')) {
-                return false;
-            }
-            // If client accepts HTML, treat as browser
-            if (str_contains($acceptHeader, 'text/html')) {
-                return true;
-            }
-        }
-
-        // Check X-Requested-With header (AJAX requests)
-        if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
-            return false;
-        }
-
-        // Default to browser for non-API routes
-        return true;
+        return in_array($pathPart, $pathAry, true);
     }
 
     /**

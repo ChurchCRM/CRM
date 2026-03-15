@@ -26,7 +26,8 @@ describe('PHP Error Page - Unauthenticated Access', () => {
       url: '/php-error.php',
       failOnStatusCode: false
     }).then((response) => {
-      expect(response.body).to.include('ChurchCRM requires PHP 8.2 or later');
+      // Check for dynamic version requirement text (reads from composer.json)
+      expect(response.body).to.match(/ChurchCRM requires PHP \d+\.\d+ or later/);
       expect(response.body).to.include('Contact your hosting provider');
       expect(response.body).to.include('Current Version');
       expect(response.body).to.include('Required Version');

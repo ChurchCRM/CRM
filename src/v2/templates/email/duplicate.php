@@ -30,7 +30,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 url: window.CRM.root + "/api/persons/duplicate/emails",
                 dataSrc: 'emails'
             },
-            responsive: false,
             autoWidth: false,
             columns: [
                 {

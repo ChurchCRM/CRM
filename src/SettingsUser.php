@@ -4,8 +4,8 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -58,7 +58,7 @@ $rsConfigs = RunQuery($sSQL);
 ?>
 <!-- Default box -->
 <div class="card">
-    <div class="card-header with-border">
+    <div class="card-header">
 
         <form method=post action=SettingsUser.php'>
             <div class="alert alert-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
@@ -140,7 +140,7 @@ $rsConfigs = RunQuery($sSQL);
                     <tr>
                         <td colspan='3' class='text-center'>
                             <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?> ">
-                            <input type=submit class=btn name=cancel value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn"><?= gettext('Cancel') ?></a>
                         </td>
                     </tr>
                 </table>

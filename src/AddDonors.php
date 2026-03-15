@@ -6,10 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
-$linkBack = '';
-if (array_key_exists('linkBack', $_GET)) {
-    InputUtils::legacyFilterInput($_GET['linkBack']);
-}
+$linkBack = RedirectUtils::getLinkBackFromRequest('');
 $iFundRaiserID = InputUtils::filterInt($_GET['FundRaiserID']);
 
 if ($linkBack === '') {

@@ -1,9 +1,9 @@
-import * as React from "react";
-import CRMEvent from "../../interfaces/CRMEvent";
-import Calendar from "../../interfaces/Calendar";
-import EventType from "../../interfaces/EventType";
-import Select, { SingleValue, MultiValue, ActionMeta } from "react-select";
+import type * as React from "react";
 import DatePicker from "react-datepicker";
+import Select, { type ActionMeta, type MultiValue, type SingleValue } from "react-select";
+import type Calendar from "../../interfaces/Calendar";
+import type CRMEvent from "../../interfaces/CRMEvent";
+import type EventType from "../../interfaces/EventType";
 import QuillEditor from "../QuillEditor";
 
 interface Option {
@@ -40,7 +40,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
     label: eventType.Name,
   }));
   const initialPinnedCalendarValue: Option[] = calendars
-    .filter((Pcal: Calendar) => event.PinnedCalendars && event.PinnedCalendars.includes(Pcal.Id))
+    .filter((Pcal: Calendar) => event.PinnedCalendars?.includes(Pcal.Id))
     .map((Pcal: Calendar) => ({ value: Pcal.Id, label: Pcal.Name }));
   const initialEventTypeValue: Option | undefined = eventTypes
     .map((eventType: EventType) => {
@@ -51,7 +51,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
     })
     .find((option) => option !== undefined);
   return (
-    <table className="table w-100" style={{ tableLayout: 'fixed' }}>
+    <table className="table w-100" style={{ tableLayout: "fixed" }}>
       <tbody>
         <tr>
           <td className="LabelColumn">{window.i18next.t("Event Type")}</td>
@@ -68,12 +68,12 @@ const EventPropertiesEditor: React.FunctionComponent<{
         <tr>
           <td className="LabelColumn">{window.i18next.t("Description")}</td>
           <td className="TextColumn">
-            <QuillEditor 
-              name="Desc" 
-              value={event.Desc || ""} 
+            <QuillEditor
+              name="Desc"
+              value={event.Desc || ""}
               onChange={(name: string, html: string) => {
                 const changeEvent = {
-                  target: { name, value: html }
+                  target: { name, value: html },
                 } as unknown as React.ChangeEvent<HTMLInputElement>;
                 changeHandler(changeEvent);
               }}
@@ -117,9 +117,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
           </td>
         </tr>
         <tr>
-          <td className="LabelColumn">
-            {window.i18next.t("Pinned Calendars")}
-          </td>
+          <td className="LabelColumn">{window.i18next.t("Pinned Calendars")}</td>
           <td className="TextColumn">
             <Select
               name="PinnedCalendars"
@@ -140,12 +138,12 @@ const EventPropertiesEditor: React.FunctionComponent<{
         <tr>
           <td className="LabelColumn">{window.i18next.t("Text")}</td>
           <td className="TextColumn">
-            <QuillEditor 
-              name="Text" 
-              value={event.Text || ""} 
+            <QuillEditor
+              name="Text"
+              value={event.Text || ""}
               onChange={(name: string, html: string) => {
                 const changeEvent = {
-                  target: { name, value: html }
+                  target: { name, value: html },
                 } as unknown as React.ChangeEvent<HTMLInputElement>;
                 changeHandler(changeEvent);
               }}

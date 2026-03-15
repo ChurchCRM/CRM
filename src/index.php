@@ -4,8 +4,10 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
 
 // Get required PHP version from composer.json (single source of truth)
@@ -50,11 +52,22 @@ if (!empty($_GET['location'])) {
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
 
+// On a fresh install (sChurchName empty), redirect admin users to complete setup.
+if (empty(SystemConfig::getValue('sChurchName'))) {
+    try {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->isAdmin()) {
+            RedirectUtils::redirect('admin/system/church-info');
+        }
+    } catch (\Throwable) {
+        // Not logged in or session error — ensureAuthentication() above handles it
+    }
+}
+
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard
-    header('Location: ' . SystemURLs::getRootPath() . '/v2/dashboard');
-    exit;
-} elseif (file_exists($shortName)) {
+    RedirectUtils::redirect('v2/dashboard');
+} elseif (is_file($shortName)) {
     // Try actual path
     require $shortName;
 } elseif (file_exists($fileName)) {
@@ -64,6 +77,5 @@ if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.p
     header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found', true, 404);
     exit;
 } else {
-    header('Location: index.php');
-    exit;
+    RedirectUtils::redirect('index.php');
 }

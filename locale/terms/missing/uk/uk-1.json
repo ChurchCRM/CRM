@@ -1,0 +1,50 @@
+{
+  "%d month old": {
+    "one": "%d місяця",
+    "few": "",
+    "many": "",
+    "other": "%d місяців"
+  },
+  "%d year old": {
+    "one": "%d річний",
+    "few": "",
+    "many": "",
+    "other": "%d років"
+  },
+  "%d event in %s": {
+    "one": "%d подія у %s",
+    "few": "",
+    "many": "",
+    "other": "%d подій у %s"
+  },
+  "person": {
+    "one": "особа",
+    "few": "",
+    "many": "",
+    "other": "осіб"
+  },
+  "%d Person added to the Cart.": {
+    "one": "%d особу додано до кошика.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб додано до кошика."
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "%d особу успішно додано до вибраної сім'ї.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб успішно додано до вибраної сім'ї."
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "%d особу успішно додано до вибраної групи.",
+    "few": "",
+    "many": "",
+    "other": "%d осіб успішно додано до вибраної групи."
+  },
+  "%d person": {
+    "one": "%d особа",
+    "few": "",
+    "many": "",
+    "other": "%d осіб"
+  }
+}

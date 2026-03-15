@@ -41,21 +41,19 @@ module.exports = function (grunt) {
                         src: ["node_modules/bootbox/dist/bootbox.min.js"],
                         dest: "src/skin/external/bootbox/",
                     },
+                    // Leaflet: interactive maps (JS + CSS + marker images)
+                    // CSS references images/ relatively, so directory structure must be preserved
+                    {
+                        expand: true,
+                        cwd: "node_modules/leaflet/dist",
+                        src: ["leaflet.js", "leaflet.css", "images/**"],
+                        dest: "src/skin/external/leaflet/",
+                    },
                     {
                         expand: true,
                         cwd: "node_modules/bootstrap/dist",
                         src: ["js/**"],
                         dest: "src/skin/external/bootstrap/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: [
-                            "node_modules/bootstrap-toggle/css/bootstrap-toggle.css",
-                            "node_modules/bootstrap-toggle/js/bootstrap-toggle.js",
-                        ],
-                        dest: "src/skin/external/bootstrap-toggle/",
                     },
                     {
                         expand: true,
@@ -137,7 +135,7 @@ module.exports = function (grunt) {
                         filter: "isFile",
                         flatten: true,
                         src: [
-                            "node_modules/datatables.net/js/jquery.dataTables.min.js",
+                            "node_modules/datatables.net/js/dataTables.min.js",
                         ],
                         dest: "src/skin/external/datatables/",
                     },

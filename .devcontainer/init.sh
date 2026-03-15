@@ -77,8 +77,7 @@ cd src
 if ! composer validate --no-check-publish 2>/dev/null; then
     echo "WARNING: composer.json validation warning (non-critical)"
 fi
-# Use composer update on first setup to sync lock file with composer.json
-composer update --no-dev --no-interaction --prefer-dist
+composer install --no-dev --no-interaction --prefer-dist
 cd ..
 echo "✓ Composer dependencies installed"
 

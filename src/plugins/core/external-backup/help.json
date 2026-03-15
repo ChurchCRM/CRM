@@ -1,0 +1,33 @@
+{
+  "title": "External Backup (WebDAV)",
+  "sections": [
+    {
+      "title": "Overview",
+      "content": "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+    },
+    {
+      "title": "Configuration",
+      "content": "To configure external backups:\n1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n2. Click the settings icon to expand the configuration panel\n3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n4. Enter your username and password\n5. Optionally set an auto-backup interval in hours\n6. Save your settings"
+    },
+    {
+      "title": "Auto-Backup",
+      "content": "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n\nRecommended intervals:\n- Daily backup: 24 hours\n- Twice daily: 12 hours\n- Weekly: 168 hours"
+    },
+    {
+      "title": "Manual Backup",
+      "content": "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos."
+    },
+    {
+      "title": "Testing Connection",
+      "content": "Before relying on external backups, test your connection:\n1. Go to Plugins > External Backup\n2. Click 'Test WebDAV Connection'\n3. Verify you see a success message\n\nCommon issues:\n- 401/403 errors: Check username and password\n- Connection timeout: Verify the endpoint URL is correct\n- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+    },
+    {
+      "title": "Supported Services",
+      "content": "Any WebDAV-compatible service works with this plugin:\n\n- Nextcloud (recommended)\n- ownCloud\n- Synology NAS\n- QNAP NAS\n- Box.com (with WebDAV)\n- Apache mod_dav\n- nginx with WebDAV module\n\nNote: Some services require app-specific passwords for WebDAV access."
+    },
+    {
+      "title": "Security Considerations",
+      "content": "Important security notes:\n\n1. Always use HTTPS endpoints to encrypt backups in transit\n2. Use app-specific passwords when available (Nextcloud, ownCloud)\n3. Store backups in a folder with restricted access\n4. Periodically download and verify your backups are valid\n5. Consider encrypting sensitive backups with external tools before uploading"
+    }
+  ]
+}

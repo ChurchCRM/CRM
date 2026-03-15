@@ -14,6 +14,11 @@
  * - Saves comprehensive audit report to locale/poeditor-audit.md
  * - No external dependencies (uses Node.js built-ins)
  * 
+ * Requires environment variables:
+ * - POEDITOR_TOKEN (from POEditor API Access)
+ * 
+ * Note: POEditor project ID is hardcoded as 77079 (ChurchCRM official project)
+ * 
  * Output Files:
  * - Console: Formatted table output for immediate review
  * - src/locale/poeditor.json: Raw API response (for compatibility)
@@ -23,40 +28,29 @@
  * reports as they represent base locales rather than translation targets.
  */
 
+require('dotenv').config();
+
 const fs = require('fs');
 const path = require('path');
 const config = require('./locale-config');
 
 class LocaleAuditor {
     constructor() {
-        this.configPath = config.buildConfigJson;
-        this.configExamplePath = config.buildConfigExample;
         this.localesPath = config.localesJson;
         this.outputPath = config.poeditor.outputJson;
         this.reportPath = config.poeditor.auditReport;
-        this.config = null;
+        this.projectId = '77079'; // ChurchCRM POEditor project ID
+        this.apiToken = process.env.POEDITOR_TOKEN;
         this.locales = null;
     }
 
     /**
-     * Load configuration from BuildConfig.json or BuildConfig.json.example
+     * Load configuration from environment variables
      */
     loadConfig() {
         try {
-            let configFile = this.configPath;
-            if (!fs.existsSync(this.configPath)) {
-                if (fs.existsSync(this.configExamplePath)) {
-                    console.log('⚠️  BuildConfig.json not found, using BuildConfig.json.example');
-                    configFile = this.configExamplePath;
-                } else {
-                    throw new Error(`Configuration file not found: neither ${this.configPath} nor ${this.configExamplePath} exist`);
-                }
-            }
-            
-            this.config = JSON.parse(fs.readFileSync(configFile, 'utf8'));
-            
-            if (!this.config.POEditor || !this.config.POEditor.token || !this.config.POEditor.id) {
-                throw new Error('POEditor configuration missing in BuildConfig.json');
+            if (!this.apiToken) {
+                throw new Error('POEDITOR_TOKEN environment variable is required');
             }
             
             console.log('✅ Configuration loaded successfully');
@@ -93,8 +87,8 @@ class LocaleAuditor {
             console.log('🌍 Downloading language statistics from POEditor...');
             
             const formData = new URLSearchParams();
-            formData.append('api_token', this.config.POEditor.token);
-            formData.append('id', this.config.POEditor.id);
+            formData.append('api_token', this.apiToken);
+            formData.append('id', this.projectId);
 
             const response = await fetch('https://api.poeditor.com/v2/languages/list', {
                 method: 'POST',
@@ -278,7 +272,7 @@ class LocaleAuditor {
         markdown += `- Locales with 📝 **Monitor** (<5% completion) are tracked for future addition when they reach 5%\n`;
 
         markdown += `\n## Technical Notes\n\n`;
-        markdown += `- **Data Source:** POEditor API (Project ID: ${this.config.POEditor.id})\n`;
+        markdown += `- **Data Source:** POEditor API (Project ID: ${this.projectId})\n`;
         markdown += `- **Audit Script:** \`locale/locale-audit.js\`\n`;
         markdown += `- **Configuration:** \`src/locale/locales.json\`\n`;
         markdown += `- **Command:** \`npm run locale-audit\`\n\n`;

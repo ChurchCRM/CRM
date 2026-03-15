@@ -1,12 +1,12 @@
 import * as React from "react";
-import CRMEvent from "../../interfaces/CRMEvent";
-import Calendar from "../../interfaces/Calendar";
-import EventType from "../../interfaces/EventType";
 import { Modal } from "react-bootstrap";
+import type { MultiValue, SingleValue } from "react-select";
+import type Calendar from "../../interfaces/Calendar";
+import type CRMEvent from "../../interfaces/CRMEvent";
+import type EventType from "../../interfaces/EventType";
 import CRMRoot from "../../window-context-service.jsx";
-import EventPropertiesViewer from "./EventPropertiesViewer";
 import EventPropertiesEditor from "./EventPropertiesEditor";
-import { SingleValue, MultiValue } from "react-select";
+import EventPropertiesViewer from "./EventPropertiesViewer";
 
 interface Option {
   value: number;
@@ -71,7 +71,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   componentDidMount() {
     if (this.props.eventId !== 0) {
       // when the component mounts to the DOM, then we should execute an XHR query to find the details for the supplied event id.
-      fetch(CRMRoot + "/api/events/" + this.props.eventId, {
+      fetch(`${CRMRoot}/api/events/${this.props.eventId}`, {
         credentials: "include",
       })
         .then((response) => response.json())
@@ -87,7 +87,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         });
     }
 
-    fetch(CRMRoot + "/api/calendars", {
+    fetch(`${CRMRoot}/api/calendars`, {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -95,7 +95,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         this.setState({ calendars: data.Calendars });
       });
 
-    fetch(CRMRoot + "/api/events/types", {
+    fetch(`${CRMRoot}/api/events/types`, {
       credentials: "include",
     })
       .then((response) => response.json())
@@ -182,24 +182,19 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
       return value;
     };
     if (!this.state.event) return;
-    fetch(
-      CRMRoot +
-        "/api/events" +
-        (this.state.event.Id !== 0 ? "/" + this.state.event.Id : ""),
-      {
-        credentials: "include",
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(this.state.event, DateReplacer),
+    fetch(`${CRMRoot}/api/events${this.state.event.Id !== 0 ? `/${this.state.event.Id}` : ""}`, {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
-    ).then(() => this.exit());
+      body: JSON.stringify(this.state.event, DateReplacer),
+    }).then(() => this.exit());
   }
 
   delete() {
-    fetch(CRMRoot + "/api/events/" + this.props.eventId, {
+    fetch(`${CRMRoot}/api/events/${this.props.eventId}`, {
       credentials: "include",
       method: "DELETE",
       headers: {
@@ -213,18 +208,18 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     if (this.state.event === null || this.state.event === undefined) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}} size="xl">
+          <Modal show={true} onHide={() => {}} size="xl">
             <Modal.Header>
               <h2>Loading...</h2>
             </Modal.Header>
           </Modal>
         </div>
       );
-  }
+    }
     if (this.state.isEditMode) {
       return (
         <div>
-          <Modal show={true} onHide={function () {}} size="xl">
+          <Modal show={true} onHide={() => {}} size="xl">
             <Modal.Header>
               <div style={{ width: "100%" }}>
                 <input
@@ -235,7 +230,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
                   className="form-control form-control-lg"
                   style={{ fontSize: "1.5rem", fontWeight: "bold" }}
                 />
-                {this.state.event && this.state.event.Title && this.state.event.Title.length === 0 && (
+                {this.state.event?.Title && this.state.event.Title.length === 0 && (
                   <div className="text-danger small mt-2">
                     <i className="fas fa-exclamation-circle me-1"></i>
                     {window.i18next.t("This field is required")}
@@ -258,23 +253,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               </div>
             </Modal.Body>
             <Modal.Footer>
-              <button
-                disabled={!this.isFormComplete()}
-                className="btn btn-success"
-                onClick={this.save}
-              >
+              <button type="button" disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>
                 Save
               </button>
-              <button
-                className="btn btn-danger pull-left"
-                onClick={this.delete}
-              >
+              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
                 Delete
               </button>
-              <button
-                className="btn btn-default pull-right"
-                onClick={this.exit}
-              >
+              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>
@@ -284,7 +269,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
     } else {
       return (
         <div>
-          <Modal show={true} onHide={function () {}} size="xl">
+          <Modal show={true} onHide={() => {}} size="xl">
             <Modal.Header>
               <h2>{this.state.event.Title}</h2>
             </Modal.Header>
@@ -296,19 +281,13 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               />
             </Modal.Body>
             <Modal.Footer>
-              <button className="btn btn-success" onClick={this.setEditMode}>
+              <button type="button" className="btn btn-success" onClick={this.setEditMode}>
                 Edit
               </button>
-              <button
-                className="btn btn-danger pull-left"
-                onClick={this.delete}
-              >
+              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
                 Delete
               </button>
-              <button
-                className="btn btn-default pull-right"
-                onClick={this.exit}
-              >
+              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>

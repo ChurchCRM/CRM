@@ -4,6 +4,7 @@ namespace ChurchCRM\SystemCalendars;
 
 use ChurchCRM\model\ChurchCRM\Event;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 
@@ -42,7 +43,7 @@ class AnniversariesCalendar implements SystemCalendar
     public function getEvents(string $start, string $end): ObjectCollection
     {
         $families = FamilyQuery::create()
-            ->filterByWeddingdate('', Criteria::NOT_EQUAL)
+            ->filterByWeddingdate(null, Criteria::ISNOTNULL)
             ->find();
 
         return $this->familyCollectionToEvents($families);
@@ -51,7 +52,7 @@ class AnniversariesCalendar implements SystemCalendar
     public function getEventById(int $Id): ObjectCollection
     {
         $families = FamilyQuery::create()
-            ->filterByWeddingdate('', Criteria::NOT_EQUAL)
+            ->filterByWeddingdate(null, Criteria::ISNOTNULL)
             ->filterById($Id)
             ->find();
 
@@ -67,7 +68,7 @@ class AnniversariesCalendar implements SystemCalendar
             $anniversary->setId($family->getId());
             $anniversary->setEditable(false);
             $anniversary->setTitle(gettext('Anniversary') . ': ' . $family->getFamilyString());
-            $year = date('Y');
+            $year = DateTimeUtils::getCurrentYear();
             $anniversary->setStart($year . '-' . $family->getWeddingMonth() . '-' . $family->getWeddingDay());
             $anniversary->setURL($family->getViewURI());
             $events->push($anniversary);

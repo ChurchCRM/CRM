@@ -5,6 +5,7 @@ namespace ChurchCRM\Search;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -41,9 +42,9 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
 
         try {
             $Payments = PledgeQuery::create()
-            ->withColumn('SUM(Pledge.Amount)', 'GroupAmount')
-            ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
+            ->withColumn('SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')', 'GroupAmount')
+            ->withColumn('CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')', 'displayName')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')', 'uri')
             //->limit(SystemConfig::getValue("bSearchIncludePaymentsMax")) // this can't be limited here due to how Propel ORM doesn't handle HAVING clause nicely, so we do it in PHP
             ->groupByGroupKey()
             ->find();
@@ -76,8 +77,8 @@ class FinancePaymentSearchResultProvider extends BaseSearchResultProvider
         try {
             $Payments = PledgeQuery::create()
             ->filterByCheckNo("$SearchQuery", Criteria::EQUAL)
-            ->withColumn('CONCAT("#",Pledge.Id)', 'displayName')
-            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",Pledge.DepId)', 'uri')
+            ->withColumn('CONCAT("#",' . PledgeTableMap::COL_PLG_PLGID . ')', 'displayName')
+            ->withColumn('CONCAT("' . SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=",' . PledgeTableMap::COL_PLG_DEPID . ')', 'uri')
             ->limit(SystemConfig::getValue('bSearchIncludePaymentsMax'))
             ->groupByGroupKey()
             ->find();

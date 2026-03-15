@@ -4,8 +4,8 @@ describe("Family Verification Page", () => {
     const familyId = 1;
 
     beforeEach(() => {
-        cy.setupAdminSession();
-        // Get a fresh verification URL for each test (token is consumed on use)
+        // No browser session needed: API call uses x-api-key header auth,
+        // and the verify page is public (token-based, no login required)
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
             cy.wrap(response.body.url).as("verifyUrl");
         });

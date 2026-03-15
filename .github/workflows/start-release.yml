@@ -18,14 +18,14 @@ jobs:
     
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node.js (from .nvmrc)
+        uses: actions/setup-node@v6
         with:
-          node-version: '22'
+          node-version-file: '.nvmrc'
           cache: 'npm'
       
       - name: Install dependencies
@@ -46,7 +46,7 @@ jobs:
       
       - name: Commit version changes
         run: |
-          git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json demo/ChurchCRM-Database.sql
+          git add package.json package-lock.json src/composer.json src/composer.lock src/mysql/upgrade.json cypress/data/seed.sql
           git commit -m "Start ${{ inputs.version }} release"
       
       - name: Push branch

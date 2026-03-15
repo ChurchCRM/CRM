@@ -1,2 +1,2 @@
 // Kiosk registration closed page styles
-import './kiosk-registration-closed.scss';
+import "./kiosk-registration-closed.scss";

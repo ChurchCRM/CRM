@@ -22,7 +22,7 @@ class MenuEventsCount
     public static function getAnniversaries(): array
     {
         $Anniversaries = FamilyQuery::create()
-              ->filterByWeddingDate(['min' => '0001-00-00']) // a Wedding Date
+              ->filterByWeddingDate(null, Criteria::ISNOTNULL) // Has a Wedding Date (MySQL 8.0 strict mode safe)
               ->filterByDateDeactivated(null, Criteria::EQUAL) //Date Deactivated is null (active)
               ->find();
 

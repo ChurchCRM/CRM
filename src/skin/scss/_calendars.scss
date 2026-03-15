@@ -1,10 +1,10 @@
 /**
  * ChurchCRM Calendar Decorative Elements & DatePicker Overrides
- * 
+ *
  * Minimal custom styles after Bootstrap utility migration:
  * - Strike-through text divider for "Add New Calendar" button
  * - DatePicker styling overrides for modal z-index and compatibility
- * 
+ *
  * Bootstrap utilities handle: table layouts (w-100), form validation (text-danger, invisible), field sizing
  * Used in: react/components/Events/, src/skin/js/Calendar.js
  */
@@ -16,54 +16,54 @@
    ================================================ */
 
 .strike {
-    display: block;
-    text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .strike > span {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .strike:hover {
-    font-size: 22px;
-    color: lime;
+  font-size: 22px;
+  color: lime;
 }
 
 .strike > span:before,
 .strike > span:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 9999px;
-    height: 1px;
-    background: grey;
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  height: 1px;
+  background: grey;
 }
 
 .strike > span:before {
-    right: 100%;
-    margin-right: 15px;
+  right: 100%;
+  margin-right: 15px;
 }
 
 .strike > span:after {
-    left: 100%;
-    margin-left: 15px;
+  left: 100%;
+  margin-left: 15px;
 }
 
 /**
  * React DatePicker Styling Overrides
- * 
+ *
  * Critical overrides for react-datepicker in modal context:
  * - Z-index: Ensures dropdown appears above Bootstrap modals
- * 
+ *
  * Note: Core react-datepicker CSS is imported from npm package
  * (webpack/skin-main.js line 22)
  */
 
 .react-datepicker-popper {
-    z-index: 1050 !important;
+  z-index: 1050 !important;
 }
 
 /* Bootstrap / jQuery datepicker popup (non-react)
@@ -72,5 +72,5 @@
 .datepicker,
 .datepicker.dropdown-menu,
 .bootstrap-datepicker {
-    z-index: 2000 !important;
+  z-index: 2000 !important;
 }

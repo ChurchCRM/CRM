@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
@@ -16,8 +17,18 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="float-right d-none d-sm-block">
         <b><?= gettext('Version') ?></b> <?= $_SESSION['sSoftwareInstalledVersion'] ?>
     </div>
-    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
-    | <a href="https://twitter.com/church_crm" target="_blank"><?= gettext("Follow us on") ?> <i class="fa-brands fa-x-twitter"></i></a>
+    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> <a href="https://churchcrm.io" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a>.</strong> <?= gettext('All rights reserved') ?>.
+    <span class="ml-2">
+        <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer">Facebook <i class="fa-brands fa-facebook"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer">Instagram <i class="fa-brands fa-instagram"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer">X <i class="fa-brands fa-x-twitter"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer">LinkedIn <i class="fa-brands fa-linkedin"></i></a>
+        &nbsp;|&nbsp;
+        <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer">YouTube <i class="fa-brands fa-youtube"></i></a>
+    </span>
 </footer>
 
 <!-- Floating Action Buttons -->
@@ -52,7 +63,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-daterangepicker/daterangepicker.js') ?>"></script>
 
 <!-- DataTables: Core library and Bootstrap 4 integration -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/jquery.dataTables.min.js') ?>"></script>
+<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.bootstrap4.min.js') ?>"></script>
 <!-- DataTables: Extensions -->
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.buttons.min.js') ?>"></script>
@@ -73,7 +84,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap-toggle/bootstrap-toggle.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
 
@@ -100,7 +110,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <?php
 } ?>
 
-<?php  include_once('analyticstracking.php'); ?>
+<?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
 <?php

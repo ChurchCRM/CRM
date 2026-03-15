@@ -2,7 +2,7 @@
 
 ## 🌟 **Welcome to ChurchCRM!** 🌟
 
-Thank you for visiting our GitHub repository! Visit our homepage at https://churchcrm.io. We’re excited to have you as part of the ChurchCRM community!
+Welcome to ChurchCRM — an open-source church management system. Visit https://churchcrm.io to learn more.
 
 ## ⛪️ About ChurchCRM
 
@@ -10,25 +10,27 @@ ChurchCRM is an open-source church management system that helps congregations ma
 Whether you’re a developer, designer, tester, or simply passionate about improving church management, there’s a place for you here!
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-[![Total All-Time Downloads](https://img.shields.io/github/downloads/churchcrm/crm/total.svg?label=Total%20All-Time%20Downloads)](https://github.com/ChurchCRM/CRM/releases)
-[![Latest Release](https://img.shields.io/github/downloads/churchcrm/crm/latest/total.svg?label=Latest%20Release)](https://github.com/ChurchCRM/CRM/releases/latest)
+[![GitHub All Releases](https://img.shields.io/github/downloads/ChurchCRM/CRM/total?color=blue&logo=github)](https://github.com/ChurchCRM/CRM/releases)
+[![Latest Release](https://img.shields.io/github/v/release/churchcrm/crm?label=Latest%20Release)](https://github.com/ChurchCRM/CRM/releases/latest)
+[![Latest Release Downloads](https://img.shields.io/github/downloads/ChurchCRM/CRM/latest/total?label=latest%20downloads&color=green)](https://github.com/ChurchCRM/CRM/releases/latest)
 
 ## 🚀 Get Started
 
-If you're new to ChurchCRM, the **[official installation guide](https://churchcrm.io/install.html)** is the best place to begin.
-You'll find step-by-step instructions for all installation methods (Softaculous, cPanel, Direct Download).
+If you're new to ChurchCRM, start with our **[official manual](https://docs.churchcrm.io/manual/)** on docs.churchcrm.io.
+You'll find step-by-step installation instructions, configuration notes, and user guides there.
 
-For detailed technical documentation, see our [GitHub Wiki](https://github.com/ChurchCRM/CRM/wiki).
+Quick start: see the "Quick Start" section in the manual for a fast setup.
 
-To test the demo, you can use either our public sandbox or the Softaculous demo:
+For detailed technical documentation and developer guides, see our official docs at https://docs.churchcrm.io/.
 
-- Public sandbox: [https://demo.churchcrm.io](https://demo.churchcrm.io) — NOTE: this is a shared, read-write demo that may be reset regularly and contains only sample data; do not use it for any sensitive or production data.
-- Softaculous demo: [Demo System via Softaculous](https://softaculous.com/demos/churchcrm)
+To test the demo, visit our official demo page:
+
+- Demo: [https://churchcrm.io/demo.html](https://churchcrm.io/demo.html) — NOTE: this is a shared, read-write demo that may be reset regularly and contains only sample data; do not use it for any sensitive or production data.
 
 ## 🌐 Localization Support
 
 One of ChurchCRM's strengths is its commitment to inclusivity.
-ChurchCRM proudly supports localization in **40+ languages**, ensuring accessibility for diverse communities worldwide.
+ChurchCRM proudly supports localization in **40+ locales**, ensuring accessibility for diverse communities worldwide.
 Whether you speak English, Spanish, French, or another supported language, you can use ChurchCRM in a familiar way.
 
 Join our [localization team on poeditor.com](https://poeditor.com/join/project/RABdnDSqAt) to contribute to your language’s support.
@@ -39,10 +41,12 @@ See the latest translation status and audit report: [locale/poeditor-audit.md](l
 
 We welcome contributions from everyone! Whether it's bug reports, feature requests, or code contributions, your input is invaluable.
 
-Check out our [contribution guidelines](CONTRIBUTING.md) to get started.
+[See the [contribution guidelines](CONTRIBUTING.md) for how to file issues and submit pull requests.]
 
-[![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)]()
-[![Join the chat at https://gitter.im/ChurchCRM/CRM](https://badges.gitter.im/ChurchCRM/CRM.svg)](https://gitter.im/ChurchCRM/CRM?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+- Quick contributions: fork the repository, create a feature branch, run the test suite, and open a pull request; see CONTRIBUTING.md for details.
+
+[![GitHub contributors](https://img.shields.io/github/contributors/churchcrm/crm.svg)](https://github.com/ChurchCRM/CRM/graphs/contributors)
+[![Join the chat at Discord](https://img.shields.io/badge/Discord-ChurchCRM-5865F2?logo=discord&logoColor=white)](https://discord.gg/tuWyFzj3Nj)
 
 ## 📚 Documentation
 
@@ -51,7 +55,7 @@ If you notice anything missing or unclear, feel free to open an issue or submit 
 
 ## 🤝 Community
 
-Join our [Matrix Chat](https://gitter.im/ChurchCRM/CRM) to connect with other users, ask questions, and share your experiences.
+Join our [Discord community](https://discord.gg/tuWyFzj3Nj) to connect with other users, ask questions, and share your experiences.
 We believe in the power of a supportive community!
 
 ## 🙏 Thank You
@@ -68,9 +72,14 @@ A heartfelt thank you to all our contributors, past and present. Your efforts ma
 
 ## 🌐 Stay Connected
 
-- [Website](https://churchcrm.io/)
-- [Matrix Chat](https://gitter.im/ChurchCRM/CRM)
-- [Documentation](https://github.com/ChurchCRM/CRM/wiki)
+Follow us for release announcements, tips, and community highlights:
+
+[![Website](https://img.shields.io/badge/Website-churchcrm.io-blue)](https://churchcrm.io/)
+[![X / Twitter](https://img.shields.io/badge/X-@getChurchCRM-black?logo=x)](https://x.com/getChurchCRM)
+[![Facebook](https://img.shields.io/badge/Facebook-getChurchCRM-1877F2?logo=facebook&logoColor=white)](https://www.facebook.com/getChurchCRM)
+[![Instagram](https://img.shields.io/badge/Instagram-@getchurchcrm-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/getchurchcrm/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-ChurchCRM-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/company/getchurchcrm/)
+[![Discord Chat](https://img.shields.io/badge/Discord-Chat-5865F2?logo=discord&logoColor=white)](https://discord.gg/tuWyFzj3Nj)
 
 Happy coding and community building! 🎉
 

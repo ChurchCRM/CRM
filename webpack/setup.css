@@ -1,149 +1,710 @@
 /* Import Bootstrap and Font Awesome styles */
-@import '~bootstrap/dist/css/bootstrap.min.css';
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
-@import '~bs-stepper/dist/css/bs-stepper.min.css';
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~bs-stepper/dist/css/bs-stepper.min.css";
 
-/* ChurchCRM Setup Wizard Styles */
+/* ==========================================================================
+   ChurchCRM Setup Wizard - Modern Installation UI
+   ========================================================================== */
 
+:root {
+  --setup-primary: #007bff;
+  --setup-success: #28a745;
+  --setup-warning: #ffc107;
+  --setup-danger: #dc3545;
+  --setup-gray-100: #f8f9fa;
+  --setup-gray-200: #e9ecef;
+  --setup-gray-600: #6c757d;
+  --setup-border-radius: 12px;
+  --setup-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --setup-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* Base Styles */
 body {
-    padding-bottom: 60px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  min-height: 100vh;
+  padding-bottom: 40px;
 }
 
-/* Main container - constrain and center everything */
-/* Higher specificity to override AdminLTE's .container-fluid {width:100%} */
-#setup-stepper .container-fluid,
-body .container-fluid {
-    max-width: 1000px !important;
-    margin: 0 auto !important;
-    padding-left: 15px !important;
-    padding-right: 15px !important;
+/* Setup Container - Centered, max-width */
+.setup-container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-/* Jumbotron */
-.jumbotron {
-    padding: 2rem 1rem;
-    margin-bottom: 1.5rem;
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.setup-hero {
+  text-align: center;
+  padding: 30px 20px 20px;
 }
 
-/* BS Stepper */
+.setup-logo {
+  max-width: 320px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.setup-version {
+  font-size: 1.1rem;
+  color: var(--setup-gray-600);
+  margin-bottom: 8px;
+}
+
+.setup-tagline {
+  color: var(--setup-gray-600);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   BS Stepper - Clean Progress Indicator
+   ========================================================================== */
+
 #setup-stepper.bs-stepper {
-    box-shadow: none;
+  background: transparent;
+  box-shadow: none;
 }
 
 #setup-stepper .bs-stepper-header {
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 0.25rem;
-    margin-bottom: 1.5rem;
+  background: white;
+  padding: 24px 32px;
+  border-radius: var(--setup-border-radius);
+  box-shadow: var(--setup-shadow);
+  margin-bottom: 24px;
+  justify-content: center;
+  gap: 0;
+}
+
+#setup-stepper .bs-stepper-header .step {
+  padding: 0;
+  position: relative;
+}
+
+#setup-stepper .bs-stepper-header .step-trigger {
+  padding: 12px 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+#setup-stepper .bs-stepper-header .step-trigger:hover {
+  background: var(--setup-gray-100);
+}
+
+#setup-stepper .bs-stepper-circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--setup-gray-100);
+  color: var(--setup-gray-500);
+  border: 2px solid var(--setup-gray-300);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+#setup-stepper .step.active .bs-stepper-circle {
+  background: var(--setup-primary);
+  color: white;
+  border-color: var(--setup-primary);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.35);
+}
+
+/* Completed step styling */
+#setup-stepper .step.completed .bs-stepper-circle {
+  background: var(--setup-success);
+  color: white;
+  border-color: var(--setup-success);
+}
+
+#setup-stepper .bs-stepper-label {
+  font-size: 0.875rem;
+  color: var(--setup-gray-500);
+  margin-left: 0;
+  transition: color 0.2s ease;
+}
+
+#setup-stepper .step.active .bs-stepper-label {
+  color: var(--setup-primary);
+  font-weight: 600;
+}
+
+#setup-stepper .step.completed .bs-stepper-label {
+  color: var(--setup-success);
+  font-weight: 500;
+}
+
+#setup-stepper .line {
+  flex: 0 0 80px;
+  height: 2px;
+  background: var(--setup-gray-200);
+  margin: 0 8px;
+  margin-bottom: 28px; /* Align with circle center */
+  border-radius: 1px;
+  transition: background 0.3s ease;
+}
+
+/* Line after completed step */
+#setup-stepper .step.completed + .line {
+  background: var(--setup-success);
 }
 
 #setup-stepper .bs-stepper-content {
-    display: flex;
-    align-items: flex-start;
-    min-height: 500px;
-    width: 100%;
+  padding: 0;
 }
 
 #setup-stepper .content {
-    display: none;
-    width: 100%;
-    max-width: 100%;
+  display: none;
 }
 
 #setup-stepper .content.active {
-    display: block;
+  display: block;
+}
+
+/* ==========================================================================
+   Status Banner - Overall Check Status
+   ========================================================================== */
+
+.status-banner {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  border-radius: var(--setup-border-radius);
+  margin-bottom: 20px;
+  background: white;
+  box-shadow: var(--setup-shadow);
+}
+
+.status-banner.status-checking {
+  border-left: 4px solid var(--setup-primary);
+}
+
+.status-banner.status-success {
+  border-left: 4px solid var(--setup-success);
+  background: linear-gradient(90deg, rgba(40, 167, 69, 0.05) 0%, white 100%);
+}
+
+.status-banner.status-warning {
+  border-left: 4px solid var(--setup-warning);
+  background: linear-gradient(90deg, rgba(255, 193, 7, 0.08) 0%, white 100%);
+}
+
+.status-banner.status-error {
+  border-left: 4px solid var(--setup-danger);
+  background: linear-gradient(90deg, rgba(220, 53, 69, 0.05) 0%, white 100%);
+}
+
+.status-icon {
+  font-size: 1.5rem;
+  margin-right: 16px;
+  width: 40px;
+  text-align: center;
+}
+
+.status-checking .status-icon {
+  color: var(--setup-primary);
+}
+
+.status-success .status-icon {
+  color: var(--setup-success);
+}
+
+.status-warning .status-icon {
+  color: var(--setup-warning);
+}
+
+.status-error .status-icon {
+  color: var(--setup-danger);
+}
+
+.status-text strong {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.status-detail {
+  font-size: 0.875rem;
+  color: var(--setup-gray-600);
+}
+
+/* ==========================================================================
+   Check Cards - Collapsible Sections
+   ========================================================================== */
+
+.check-card {
+  background: white;
+  border-radius: var(--setup-border-radius);
+  box-shadow: var(--setup-shadow);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.check-card:hover {
+  box-shadow: var(--setup-shadow-hover);
+}
+
+.check-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.check-header:hover {
+  background: var(--setup-gray-100);
+}
+
+.check-header-warning {
+  background: rgba(255, 193, 7, 0.1);
+}
+
+.check-title {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.check-icon {
+  margin-right: 12px;
+  font-size: 1.1rem;
+  color: var(--setup-gray-600);
+  width: 20px;
+  text-align: center;
+}
+
+.check-badges .badge {
+  font-weight: 500;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  margin-left: 6px;
+}
+
+.check-status {
+  font-size: 1rem;
+}
+
+.check-details {
+  border-top: 1px solid var(--setup-gray-200);
+  background: var(--setup-gray-50);
+}
+
+.check-details .table {
+  margin: 0;
+  font-size: 0.875rem;
+  background: transparent;
+}
+
+.check-details .table td {
+  padding: 12px 20px;
+  vertical-align: middle;
+  border-top: none;
+  border-bottom: 1px solid var(--setup-gray-100);
+}
+
+.check-details .table td:first-child {
+  font-weight: 500;
+  color: var(--setup-gray-700);
+}
+
+.check-details .table td:last-child {
+  text-align: right;
+}
+
+.check-details .table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Integrity check details */
+.integrity-details-row {
+  background: #fff5f5;
+}
+
+.integrity-details-row td {
+  padding: 16px 20px !important;
+}
+
+.integrity-details-header {
+  font-weight: 600;
+  color: var(--setup-danger);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+}
+
+.integrity-files-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.integrity-files-list li {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.8rem;
+  color: var(--setup-gray-700);
+  padding: 6px 12px;
+  background: white;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  border-left: 3px solid var(--setup-danger);
+}
+
+.integrity-files-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Step Intro - Section Headers
+   ========================================================================== */
+
+.step-intro {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.step-intro h4 {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #212529;
+}
+
+.step-intro p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Form Cards - Configuration Panels
+   ========================================================================== */
+
+.form-card {
+  background: white;
+  border-radius: var(--setup-border-radius);
+  box-shadow: var(--setup-shadow);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.form-card .form-group {
+  margin-bottom: 20px;
+}
+
+.form-card .form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-card label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.form-card .form-control {
+  border-radius: 8px;
+  border: 1px solid var(--setup-gray-200);
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.form-card .form-control:focus {
+  border-color: var(--setup-primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+.form-card .form-control.form-control-lg {
+  padding: 12px 16px;
+  font-size: 1rem;
+}
+
+.form-card .form-text {
+  font-size: 0.8rem;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   Advanced Settings (collapsed by default)
+   ========================================================================== */
+
+.advanced-settings {
+  padding: 0;
+  overflow: hidden;
+}
+
+.advanced-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--setup-gray-600);
+  transition: background 0.2s ease;
+}
+
+.advanced-header:hover {
+  background: var(--setup-gray-100);
+}
+
+.advanced-header .toggle-icon {
+  transition: transform 0.2s ease;
+}
+
+.advanced-header[aria-expanded="true"] .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.advanced-body {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--setup-gray-200);
+  background: var(--setup-gray-50);
+}
+
+.advanced-body .form-group {
+  margin-bottom: 16px;
+}
+
+.advanced-body .form-control {
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   Action Buttons
+   ========================================================================== */
+
+.setup-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 0 16px;
+  margin-top: 24px;
+  border-top: 1px solid var(--setup-gray-200);
+}
+
+.setup-actions .btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.setup-actions .btn {
+  min-width: 200px;
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 12px 32px;
+}
+
+.setup-actions .btn-primary {
+  background: var(--setup-primary);
+  border-color: var(--setup-primary);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.setup-actions .btn-primary:hover {
+  background: #0069d9;
+  border-color: #0062cc;
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+}
+
+.setup-actions .btn-success {
+  background: var(--setup-success);
+  border-color: var(--setup-success);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+}
+
+.setup-actions .btn-success:hover {
+  background: #218838;
+  border-color: #1e7e34;
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+}
+
+.setup-actions .btn-outline-secondary {
+  color: var(--setup-gray-500);
+  border: none;
+  background: transparent;
+  font-size: 0.95rem;
+  padding: 8px 16px;
+  min-width: auto;
+}
+
+.setup-actions .btn-outline-secondary:hover {
+  background: var(--setup-gray-100);
+  color: var(--setup-gray-700);
+}
+
+.setup-actions .btn-outline-secondary i {
+  font-size: 0.85rem;
+}
+
+.setup-actions .btn-outline-warning {
+  color: #856404;
+  border-color: var(--setup-warning);
+  background: rgba(255, 193, 7, 0.1);
+  font-size: 0.9rem;
+  padding: 10px 24px;
+  min-width: 180px;
+}
+
+.setup-actions .btn-outline-warning:hover {
+  background: var(--setup-warning);
+  color: #212529;
+}
+
+/* ==========================================================================
+   Modals
+   ========================================================================== */
+
+.modal-content {
+  border-radius: var(--setup-border-radius);
+  border: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  border-bottom: 1px solid var(--setup-gray-200);
+  border-radius: var(--setup-border-radius) var(--setup-border-radius) 0 0;
+}
+
+.modal-footer {
+  border-top: 1px solid var(--setup-gray-200);
+}
+
+/* Success checkmark animation */
+.success-checkmark {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  #setup-stepper .line {
+    flex: 0 0 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .setup-container {
+    padding: 12px;
+  }
+
+  .setup-hero {
+    padding: 20px 12px 16px;
+  }
+
+  .setup-logo {
+    max-width: 260px;
+  }
+
+  #setup-stepper .bs-stepper-header {
+    padding: 16px 12px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  #setup-stepper .bs-stepper-header .step-trigger {
+    padding: 8px 12px;
+  }
+
+  #setup-stepper .bs-stepper-circle {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+
+  #setup-stepper .bs-stepper-label {
+    font-size: 0.75rem;
+  }
+
+  #setup-stepper .line {
+    flex: 0 0 30px;
+    margin: 0 4px;
+    margin-bottom: 24px;
+  }
+
+  .status-banner {
+    padding: 14px 16px;
+  }
+
+  .check-header {
+    padding: 12px 16px;
+  }
+
+  .check-badges {
+    display: none;
+  }
+
+  .form-card {
+    padding: 20px 16px;
+  }
+
+  .setup-actions {
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 24px;
+  }
+
+  .setup-actions .btn {
     width: 100%;
-}
+    min-width: unset;
+  }
 
-/* Force all cards to full width */
-#setup-stepper .card {
-    width: 100% !important;
-    max-width: 100% !important;
-}
-
-/* Step prerequisites specific layout */
-#step-prerequisites .row {
+  .setup-actions .btn-row {
+    flex-direction: column;
     width: 100%;
-    margin-left: 0;
-    margin-right: 0;
-}
+  }
 
-#step-prerequisites .col-lg-8,
-#step-prerequisites .col-lg-4 {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-#step-prerequisites .col-lg-8 {
-    padding-right: 15px;
-}
-
-/* Responsive: Stack on smaller screens */
-@media (max-width: 991px) {
-    #step-prerequisites .col-lg-8 {
-        padding-right: 0;
-    }
-}
-
-/* Collapsible section headers in card body */
-#step-prerequisites .card-body h6 {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    border-bottom: none !important;
-}
-
-#step-prerequisites .card-body h6 a {
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-    background-color: #f8f9fa;
-    border-radius: 0.25rem;
-    font-weight: 600;
-}
-
-#step-prerequisites .card-body h6 a:hover {
-    background-color: #e9ecef;
-    text-decoration: none;
-}
-
-#step-prerequisites .card-body h6 a i.fa-chevron-down,
-#step-prerequisites .card-body h6 a i.fa-chevron-up {
+  .setup-actions .btn-outline-warning {
     font-size: 0.875rem;
-    transition: transform 0.2s ease;
+  }
 }
 
-/* Bootstrap standard: Hide chevron-up when collapsed, show chevron-down */
-#step-prerequisites .card-body h6 a.collapsed .fa-chevron-up {
-    display: none;
-}
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
 
-#step-prerequisites .card-body h6 a.collapsed .fa-chevron-down {
-    display: inline-block;
+.text-success {
+  color: var(--setup-success) !important;
 }
-
-/* Bootstrap standard: Show chevron-up when expanded, hide chevron-down */
-#step-prerequisites .card-body h6 a:not(.collapsed) .fa-chevron-up {
-    display: inline-block;
+.text-warning {
+  color: #d39e00 !important;
 }
-
-#step-prerequisites .card-body h6 a:not(.collapsed) .fa-chevron-down {
-    display: none;
+.text-danger {
+  color: var(--setup-danger) !important;
 }
-
-/* Spacing for collapsible sections */
-#step-prerequisites .card-body > h6:not(:first-child) {
-    margin-top: 1rem;
-}
-
-/* Remove text decoration from collapsible card header buttons */
-.card-header .btn-link {
-    text-decoration: none;
-}
-
-.card-header .btn-link:hover {
-    text-decoration: none;
+.text-muted {
+  color: var(--setup-gray-600) !important;
 }

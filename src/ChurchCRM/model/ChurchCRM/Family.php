@@ -313,7 +313,7 @@ class Family extends BaseFamily implements PhotoInterface
         $html = '<a href="' . $this->getViewURI() . '">' . $name . '</a>';
 
         if ($includePhoto && $this->getPhoto() && $this->getPhoto()->hasUploadedPhoto()) {
-            $html .= ' <button class="btn btn-xs btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
+            $html .= ' <button class="btn btn-sm btn-outline-secondary view-family-photo ml-1" data-family-id="' . $this->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
         }
 
         return $html;
@@ -339,6 +339,19 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Returns a Google Maps directions deep-link for this family's address.
+     * Uses stored lat/lng when available (more accurate); falls back to the address string.
+     * Returns an empty string when no address is set.
+     */
+    public function getDirectionsUrl(): string
+    {
+        if ($this->hasLatitudeAndLongitude()) {
+            return GeoUtils::buildDirectionsUrl('', (float) $this->getLatitude(), (float) $this->getLongitude());
+        }
+        return GeoUtils::buildDirectionsUrl($this->getAddress());
+    }
+
+    /**
      * if the latitude or longitude is empty find the lat/lng from the address and update the lat lng for the family.
      */
     public function updateLanLng(): void
@@ -353,9 +366,9 @@ class Family extends BaseFamily implements PhotoInterface
         }
     }
 
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = [], $includeForeignObjects = false)
+    public function toArray(string $keyType = TableMap::TYPE_PHPNAME, bool $includeLazyLoadColumns = true, array $alreadyDumpedObjects = [], bool $includeForeignObjects = false): array
     {
-        $array = parent::toArray();
+        $array = parent::toArray($keyType, $includeLazyLoadColumns, $alreadyDumpedObjects, $includeForeignObjects);
         $array['Address'] = $this->getAddress();
         $array['FamilyString'] = $this->getFamilyString();
 

@@ -1,0 +1,13 @@
+---
+description: Git branch workflow - always use feature branches, never commit to master
+alwaysApply: true
+---
+
+# Git Branch Workflow
+
+**For any command that results in code changes:**
+
+1. **Create a new branch** before making edits. Do not work directly on `master`.
+2. **Never commit to `master`.** All commits must be on a feature/task branch.
+3. Use a descriptive branch name (e.g., `chore/webpack-upgrade`, `feat/add-login`, `fix/button-styling`).
+4. If the user is on `master` with uncommitted changes, create a new branch first so the changes are captured there.

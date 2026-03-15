@@ -206,6 +206,15 @@ class TermExtractor {
     }
 
     /**
+     * Extract plugin help terms from help.json files
+     */
+    async extractPluginHelpTerms() {
+        this.log('🔌', 'Extracting plugin help terms...');
+        await this.execNode('locale/scripts/locale-build-plugin-help.js');
+        return this.getTempDir('locale/scripts/locale-build-plugin-help.js');
+    }
+
+    /**
      * Extract PHP terms
      */
     extractPHPTerms() {
@@ -284,10 +293,15 @@ class TermExtractor {
             const staticTempDir = await this.extractStaticData();
             const staticTermsFile = staticTempDir ? path.join(staticTempDir, 'static-terms.po') : null;
 
+            // 3. Extract plugin help terms
+            const pluginHelpTempDir = await this.extractPluginHelpTerms();
+            const pluginHelpTermsFile = pluginHelpTempDir ? path.join(pluginHelpTempDir, 'plugin-help-terms.po') : null;
+
             this.log('📁', `Using database temp directory: ${dbTempDir}`);
             this.log('📁', `Using static temp directory: ${staticTempDir}`);
+            this.log('📁', `Using plugin help temp directory: ${pluginHelpTempDir}`);
 
-            // 3. Start with database terms as the base
+            // 4. Start with database terms as the base
             if (dbTermsFile && this.fileExists(dbTermsFile)) {
                 this.log('📄', 'Starting with database terms...');
                 this.copyFile(dbTermsFile, this.messagesFile);
@@ -296,7 +310,7 @@ class TermExtractor {
                 this.createFile(this.messagesFile, '# ChurchCRM locale file\n');
             }
 
-            // 4. Merge static data
+            // 5. Merge static data
             if (staticTermsFile && this.fileExists(staticTermsFile)) {
                 this.log('🔗', 'Merging static data (countries and locales)...');
                 const mergeSuccess = this.mergePOFiles(this.messagesFile, staticTermsFile, this.messagesFile);
@@ -307,14 +321,22 @@ class TermExtractor {
                 this.log('⚠️', 'No static terms file found');
             }
 
-            // 5. Extract and merge PHP terms
+            // 6. Merge plugin help terms
+            if (pluginHelpTermsFile && this.fileExists(pluginHelpTermsFile)) {
+                this.log('🔗', 'Merging plugin help terms...');
+                this.mergePOFiles(this.messagesFile, pluginHelpTermsFile, this.messagesFile);
+            } else {
+                this.log('⚠️', 'No plugin help terms file found');
+            }
+
+            // 7. Extract and merge PHP terms
             this.extractPHPTerms();
 
-            // 6. Extract and merge JavaScript terms
+            // 8. Extract and merge JavaScript terms
             this.extractJavaScriptTerms();
 
-            // 7. Final sort to ensure consistent ordering
-            this.log('�', 'Sorting messages.po for consistent ordering...');
+            // 9. Final sort to ensure consistent ordering
+            this.log('📋', 'Sorting messages.po for consistent ordering...');
             // Remove numeric-only msgids before final sort
             this.filterOutNumericOnlyTerms(this.messagesFile);
 
@@ -337,9 +359,10 @@ class TermExtractor {
             } catch (err) {
                 console.error('Failed to save terms/base copies:', err.message);
             }
-            // 8. Cleanup temporary directories
+            // 10. Cleanup temporary directories
             this.cleanup(dbTempDir);
             this.cleanup(staticTempDir);
+            this.cleanup(pluginHelpTempDir);
 
             this.log('✅', 'Term extraction completed!');
 

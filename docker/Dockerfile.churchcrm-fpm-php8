@@ -1,0 +1,94 @@
+# PHP-FPM Dockerfile for ChurchCRM (nginx deployments)
+#
+# Use this image with the nginx configuration in docker/nginx/default.conf.
+# For the Apache-based development/CI setup, see Dockerfile.churchcrm-apache-php8.
+#
+# Build:
+#   docker build -f Dockerfile.churchcrm-fpm-php8 -t churchcrm/crm:php8-fpm .
+#
+# Required PHP extensions for ChurchCRM:
+#   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
+#   opcache, pdo_mysql, sodium, xml, zip
+
+FROM php:8-fpm AS base
+LABEL maintainer="ChurchCRM"
+
+EXPOSE 9000
+
+# Install system dependencies required by PHP extensions
+RUN apt-get update && \
+    apt-get install -y \
+        libcurl4-openssl-dev \
+        libfreetype6-dev \
+        libicu-dev \
+        libjpeg-dev \
+        libonig-dev \
+        libpng-dev \
+        libxml2-dev \
+        libzip-dev \
+        gettext \
+        locales \
+        locales-all \
+        unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install and configure PHP extensions
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
+    docker-php-ext-install -j$(nproc) \
+        bcmath \
+        curl \
+        exif \
+        gd \
+        gettext \
+        iconv \
+        intl \
+        mbstring \
+        mysqli \
+        opcache \
+        pdo_mysql \
+        xml \
+        zip
+
+# Sodium is bundled with PHP 7.2+ but needs to be enabled
+RUN docker-php-ext-enable sodium
+
+# Configure PHP settings
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
+    sed -i 's/^upload_max_filesize.*$/upload_max_filesize = 2G/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^post_max_size.*$/post_max_size = 2G/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^memory_limit.*$/memory_limit = 256M/g' $PHP_INI_DIR/php.ini && \
+    sed -i 's/^max_execution_time.*$/max_execution_time = 120/g' $PHP_INI_DIR/php.ini
+
+
+# Production stage - minimal runtime
+FROM base AS prod
+
+
+# Dev stage - includes build tools for local development inside the container
+FROM base AS dev
+
+# Install development tools
+RUN apt-get update && \
+    apt-get install -y \
+        git \
+        make \
+        python3 \
+        unzip \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Xdebug for step-debugging
+RUN pecl install xdebug && docker-php-ext-enable xdebug
+
+# Install Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
+    php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+    rm composer-setup.php
+
+# Install NVM + Node.js (needed to run npm run deploy inside the container)
+RUN curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh -o /opt/node-install.sh && \
+    chmod a+x /opt/node-install.sh && \
+    /opt/node-install.sh && \
+    rm /opt/node-install.sh
+
+RUN /bin/bash -c "source /root/.nvm/nvm.sh && nvm install 24 && npm install -g node-gyp"

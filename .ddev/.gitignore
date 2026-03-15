@@ -1,0 +1,9 @@
+# DDEV auto-generated gitignore — do not delete
+# User-specific settings that should not be shared
+.env
+.env.*
+auth.json
+import-db
+db_snapshots/
+sequelpro.spf
+.DS_Store

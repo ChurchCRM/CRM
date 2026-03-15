@@ -4,6 +4,7 @@ describe("Test Post Setup block", () => {
     
     it("Redirects to session/begin", () => {
         cy.visit("/setup");
-        cy.location("pathname").should("eq", "/session/begin");
+        // Use 'include' instead of 'eq' to support both root (/) and subdirectory (/churchcrm/) installations
+        cy.location("pathname").should("include", "/session/begin");
     });
 });

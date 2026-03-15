@@ -1,0 +1,34 @@
+name: churchcrm
+type: php
+docroot: src
+php_version: "8.4"
+webserver_type: apache-fpm
+database:
+  type: mariadb
+  version: "10.11"
+nodejs_version: "24"
+
+# DDEV router settings
+router_http_port: "80"
+router_https_port: "443"
+use_dns_when_possible: true
+
+# Environment variables available in the web container
+web_environment:
+  - COMPOSER_ALLOW_SUPERUSER=1
+  - NODE_ENV=development
+
+# Mailpit (email testing) is built into DDEV
+# Access at: https://churchcrm.ddev.site:8025  OR  run: ddev mailpit
+
+# Hooks run automatically after `ddev start`
+hooks:
+  post-start:
+    # Copy DDEV-specific Config.php if the source exists and the destination doesn't
+    - exec: "[ -f /var/www/html/.ddev/Config.ddev.php ] && [ ! -f /var/www/html/src/Include/Config.php ] && cp /var/www/html/.ddev/Config.ddev.php /var/www/html/src/Include/Config.php || true"
+    # Ensure logs directory exists and is writable
+    - exec: "mkdir -p /var/www/html/src/logs && chmod -R 777 /var/www/html/src/logs"
+    # Install PHP (Composer) dependencies if not already present
+    - exec: "[ -f /var/www/html/src/vendor/autoload.php ] || (cd /var/www/html/src && composer install --no-dev --no-interaction)"
+    # Import demo database on first start (when the database has no tables yet)
+    - exec: "mysql -udb -pdb -hdb db -e 'SHOW TABLES' | grep -q . && echo 'Database already populated.' || (echo 'Importing ChurchCRM demo database...' && mysql -udb -pdb -hdb db < /var/www/html/cypress/data/seed.sql && echo 'Demo database imported.')"
