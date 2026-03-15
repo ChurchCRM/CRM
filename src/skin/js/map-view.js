@@ -61,11 +61,7 @@
         '<strong><a href="' + item.profileUrl + '">' + item.salutation + "</a></strong>" + "<br>" + item.address;
       if (item.phone) {
         html +=
-          '<br><a href="tel:' +
-          encodeURIComponent(item.phone) +
-          '">' +
-          window.CRM.escapeHtml(item.phone) +
-          "</a>";
+          '<br><a href="tel:' + encodeURIComponent(item.phone) + '">' + window.CRM.escapeHtml(item.phone) + "</a>";
       }
       if (item.directionsUrl) {
         html +=
