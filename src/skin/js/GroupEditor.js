@@ -75,7 +75,7 @@ function initializeGroupEditor() {
         if (data.groupType === i18next.t("Sunday School")) {
           window.location.href = `${window.CRM.root}/sundayschool/SundaySchoolDashboard.php`;
         } else {
-          window.location.href = `${window.CRM.root}/GroupList.php`;
+          window.location.href = `${window.CRM.root}/groups/dashboard`;
         }
       })
       .fail((xhr, status, error) => {
