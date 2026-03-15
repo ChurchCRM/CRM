@@ -526,6 +526,59 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
 ```
 
+## Cross-Spec Environment Variable Persistence <!-- learned: 2026-03-15 -->
+
+**GOTCHA:** `Cypress.env()` mutations in one spec file do NOT reliably persist to other spec files because each spec runs in a fresh browser context.
+
+### ❌ WRONG - Relying on cross-spec env mutation
+```typescript
+// spec-01-setup-wizard.spec.js
+it('should change password', () => {
+    const newPassword = 'AdminP@ss1234!';
+    // ... change password ...
+    Cypress.env('newSystemAdminPassword', newPassword);  // Persists to spec file scope only!
+});
+
+// spec-02-demo-import.spec.js
+const password = Cypress.env('newSystemAdminPassword');  // ❌ NULL/undefined - not persisted!
+// Falls back to default password which may not match current state
+```
+
+### ✅ CORRECT - Use stable config source
+```typescript
+// cypress.config.ts
+env: {
+    'admin.password': 'changeme',
+    'admin.new.password': 'AdminP@ss1234!',  // Define stable password upfront
+}
+
+// spec-01-setup-wizard.spec.js
+const newAdminPassword = Cypress.env('admin.new.password');
+// Use and test with this password
+
+// spec-02-demo-import.spec.js
+const password = Cypress.env('admin.new.password');  // Same source - always consistent
+```
+
+### Alternative: Use cy.task() for Cross-Spec State
+```typescript
+// For dynamic values that MUST persist across specs, use cy.task()
+it('should store password', () => {
+    cy.task('setPassword', newPassword);
+});
+
+// cypress.config.ts - register task
+on('task', {
+    setPassword: (pwd) => {
+        require('fs').writeFileSync('.temp/test-pwd', pwd);
+        return null;
+    },
+    getPassword: () => {
+        return require('fs').readFileSync('.temp/test-pwd', 'utf8');
+    }
+});
+```
+
 ## Related Knowledge
 - **Session Management**: Cypress documentation on `cy.session()`
 - **Test Organization**: BDD/Cucumber patterns
