@@ -3,18 +3,6 @@
 describe("API Private Group Operations", () => {
     let groupID = 1; // Use existing group ID for testing
 
-    after(() => {
-        // Restore group 1 to its original seed-data state so that downstream
-        // specs (e.g. standard.sundayschool.spec.js) are not affected by the
-        // mutations made during these tests (name change, type change to 0).
-        cy.makePrivateAdminAPICall(
-            "POST",
-            `/api/groups/${groupID}`,
-            { groupName: "Angels class", groupType: 4, description: "" },
-            200
-        );
-    });
-
     describe("Group Member Operations", () => {
         it("Add member to group and verify response structure", () => {
             // Test adding a person to a group
@@ -258,18 +246,32 @@ describe("API Private Group Operations", () => {
         });
 
         it("Sanitizes XSS in groupName when updating a group", () => {
+            // Create a temporary group to avoid mutating seed data (group 1 is used by
+            // Sunday School tests which rely on its name and type remaining unchanged).
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}`,
-                {
-                    groupName: "<img src=x onerror=alert(1)>CleanName",
-                    groupType: 4,
-                    description: "",
-                },
+                `/api/groups/`,
+                { groupName: "XSSTestGroup", description: "" },
                 200
-            ).then((resp) => {
-                expect(resp.body).to.have.property("Name");
-                expect(resp.body.Name).to.not.include("onerror");
+            ).then((createResp) => {
+                const tempGroupId = createResp.body.Id;
+
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${tempGroupId}`,
+                    {
+                        groupName: "<img src=x onerror=alert(1)>CleanName",
+                        groupType: 0,
+                        description: "",
+                    },
+                    200
+                ).then((resp) => {
+                    expect(resp.body).to.have.property("Name");
+                    expect(resp.body.Name).to.not.include("onerror");
+
+                    // Clean up the temporary group
+                    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${tempGroupId}`, null, 200);
+                });
             });
         });
 
