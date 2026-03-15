@@ -59,6 +59,23 @@ Order Added               Execution Order
 - CORS should run first (allow/deny early)
 - Body parsing last (only needed after routing)
 
+### Documenting Execution Order in Code <!-- learned: 2026-03-15 -->
+
+Always add a comment documenting the **actual execution order** (not the add order) when the middleware stack is non-obvious. This prevents future developers from accidentally mis-ordering security/redirect middleware:
+
+```php
+// ✅ CORRECT - Document execution order, not add order
+// Execution order: VersionMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → CorsMiddleware
+$app->add(new CorsMiddleware());              // Added 1st, runs LAST
+$app->add(new ChurchInfoRequiredMiddleware()); // Added 2nd, runs 3rd
+$app->add(AuthMiddleware::class);              // Added 3rd, runs 2nd
+$app->add(VersionMiddleware::class);           // Added 4th, runs FIRST
+
+// ❌ WRONG - Documents add order instead of execution order
+// This causes confusion and security bugs when middleware is reordered
+// Execution order: CorsMiddleware → ChurchInfoRequiredMiddleware → AuthMiddleware → VersionMiddleware
+```
+
 ## Route Grouping & Prefix Patterns
 
 ### Basic Group with Middleware
