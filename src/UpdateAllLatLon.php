@@ -12,9 +12,8 @@ require_once __DIR__ . '/Include/Header.php';
 echo '<div class="card card-body">';
 
 $families = FamilyQuery::create()
-    ->filterByLongitude([null, 0], Criteria::IN)
-    ->_or()
-    ->filterByLatitude([null, 0], Criteria::IN)
+    ->filterByAddress1('', Criteria::NOT_EQUAL)
+    ->where('(family_fam.fam_Latitude IS NULL OR family_fam.fam_Latitude = 0) OR (family_fam.fam_Longitude IS NULL OR family_fam.fam_Longitude = 0)')
     ->limit(250)
     ->find();
 

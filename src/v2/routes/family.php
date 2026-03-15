@@ -97,10 +97,7 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         // Has a street address entered but latitude/longitude are not set
         // Matches hasLatitudeAndLongitude(): consider unverified when either coordinate is missing
         $familiesQuery->filterByAddress1('', Criteria::NOT_EQUAL);
-        $familiesQuery->condition('noLat', 'family_fam.fam_Latitude IS NULL');
-        $familiesQuery->condition('noLon', 'family_fam.fam_Longitude IS NULL');
-        $familiesQuery->combine(['noLat', 'noLon'], Criteria::LOGICAL_OR, 'noCoords');
-        $familiesQuery->where('noCoords');
+        $familiesQuery->where('(family_fam.fam_Latitude IS NULL OR family_fam.fam_Latitude = 0) OR (family_fam.fam_Longitude IS NULL OR family_fam.fam_Longitude = 0)');
         $sMode = $sMode . ' - ' . gettext('Unverified Addresses');
     }
 
