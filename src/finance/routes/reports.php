@@ -83,7 +83,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         $familyIds  = array_map('intval', (array) ($body['family'] ?? []));
 
         // Normalize date range
-        $today = DateTimeUtils::getTodayDate();
+        $defaultDate = DateTimeUtils::getTodayDate();
         if (!$sDateEnd && $sDateStart) {
             $sDateEnd = $sDateStart;
         }
@@ -91,8 +91,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             $sDateStart = $sDateEnd;
         }
         if (!$sDateStart && !$sDateEnd) {
-            $sDateStart = $today;
-            $sDateEnd   = $today;
+            $sDateStart = $defaultDate;
+            $sDateEnd   = $defaultDate;
         }
         if ($sDateStart > $sDateEnd) {
             [$sDateStart, $sDateEnd] = [$sDateEnd, $sDateStart];
@@ -199,13 +199,19 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         $filename = 'TaxReport' . date(SystemConfig::getValue('sDateFilenameFormat'));
 
-        // Render PDF and stream to browser (exits/sends output internally)
+        // Render PDF to string and return as a proper PSR-7 response
         $renderer = new MpdfRenderer();
-        $renderer->render('tax-report', $data, $filename);
+        $pdfContent = $renderer->renderToString('tax-report', $data);
 
-        // MpdfRenderer::render() calls mpdf->Output() which exits.
-        // Return the (unused) response to satisfy the Slim handler signature.
-        return $response;
+        $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'D' : 'I';
+        $disposition = $outputMode === 'D' ? 'attachment' : 'inline';
+
+        $response->getBody()->write($pdfContent);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', $disposition . '; filename="' . $filename . '.pdf"')
+            ->withHeader('Content-Length', (string) strlen($pdfContent));
     });
 
 });
