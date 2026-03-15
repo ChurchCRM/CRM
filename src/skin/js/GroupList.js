@@ -134,8 +134,6 @@ function initializeGroupList() {
         const objectID = $element.data("groupid");
         const numberOfMembers = $element.data("membercount");
 
-        const isDisabled = numberOfMembers === 0 ? " disabled" : "";
-
         if (numberOfMembers === 0) {
           $element.html(`<span class="badge badge-light text-muted">${i18next.t("No members")}</span>`);
         } else if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
