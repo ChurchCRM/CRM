@@ -39,7 +39,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <label for="DateStart"><?= gettext('Report Start Date') ?></label>
                             <input type="text" name="DateStart" id="DateStart"
                                    class="form-control date-picker"
-                                   value="<?= InputUtils::escapeHTML($today) ?>"
+                                   value="<?= InputUtils::escapeHTML($today ?? '') ?>"
                                    maxlength="10" required>
                         </div>
                     </div>
@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <label for="DateEnd"><?= gettext('Report End Date') ?></label>
                             <input type="text" name="DateEnd" id="DateEnd"
                                    class="form-control date-picker"
-                                   value="<?= InputUtils::escapeHTML($today) ?>"
+                                   value="<?= InputUtils::escapeHTML($today ?? '') ?>"
                                    maxlength="10" required>
                         </div>
                     </div>
