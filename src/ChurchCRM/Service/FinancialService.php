@@ -556,6 +556,7 @@ class FinancialService
                 $pledgeData['Family'] = [
                     'Id' => $family->getId(),
                     'Name' => $family->getName(),
+                    'Salutation' => $family->getSalutation(),
                     'Address1' => $family->getAddress1(),
                     'Address2' => $family->getAddress2(),
                     'City' => $family->getCity(),

@@ -1,0 +1,58 @@
+{#
+  _base.html.twig
+  ---------------
+  Root template for all mPDF-rendered reports.
+
+  Provides:
+    - UTF-8 charset declaration
+    - mPDF @page rule with configurable paper size and margins
+    - Base typography (Times New Roman, 10 pt)
+
+  Blocks available for child templates:
+    - page_style   : additional @page / @media CSS
+    - extra_style  : additional CSS rules
+    - body         : page body content
+
+  Variables expected (pass via MpdfRenderer::render()):
+    - paperFormat  (optional, default "Letter") – mPDF format string
+    - marginTop    (optional, default 20) – top margin in mm
+    - marginRight  (optional, default 15) – right margin in mm
+    - marginBottom (optional, default 20) – bottom margin in mm
+    - marginLeft   (optional, default 20) – left margin in mm
+#}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        @page {
+            margin-top: {{ marginTop|default(20) }}mm;
+            margin-right: {{ marginRight|default(15) }}mm;
+            margin-bottom: {{ marginBottom|default(20) }}mm;
+            margin-left: {{ marginLeft|default(20) }}mm;
+            {% block page_style %}{% endblock %}
+        }
+
+        body {
+            font-family: "Times New Roman", Times, serif;
+            font-size: 10pt;
+            color: #000;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 2mm 3mm;
+            vertical-align: top;
+        }
+
+        {% block extra_style %}{% endblock %}
+    </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+</html>
