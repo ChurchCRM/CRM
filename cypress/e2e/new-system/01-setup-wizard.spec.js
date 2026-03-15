@@ -150,6 +150,9 @@ describe('01 - Setup Wizard', () => {
 
             // ChurchInfoRequiredMiddleware redirects admin to church-info when sChurchName is empty
             cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+
+            // Store new password in Cypress env so 02-demo-import.spec.js can read it
+            cy.then(() => { Cypress.env('newSystemAdminPassword', newAdminPassword); });
         });
     });
 

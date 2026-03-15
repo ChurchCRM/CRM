@@ -242,11 +242,11 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should reset admin password back to changeme for subsequent tests', () => {
-            // Tests 03-04 expect 'changeme' as the default password
-            // Change password from 'Cypress@01!' back to 'changeme'
+            // Tests 03-04 expect 'changeme' as the default password.
+            // The current password was set by 01-setup-wizard (stored in newSystemAdminPassword env var).
             cy.visit('/v2/user/current/changepassword');
 
-            const currentPassword = 'Cypress@01!';
+            const currentPassword = Cypress.env('newSystemAdminPassword') || 'AdminP@ss1234!';
             const newPassword = 'changeme';
 
             // Fill in change password form
