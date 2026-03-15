@@ -242,7 +242,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-            
+
             // Check people API - should return mostly empty (only admin user)
             cy.request({
                 method: 'GET',
@@ -255,6 +255,23 @@ describe('01 - Setup Wizard', () => {
                     expect(response.body.people.length).to.be.lessThan(3);
                 }
             });
+        });
+
+        it('should reset admin password back to changeme for subsequent specs', () => {
+            // Cypress.env() does not persist across spec files, so specs 02-04
+            // cannot know the password set here. Reset to the default 'changeme'
+            // so all downstream specs can login with the well-known credentials.
+            cy.visit('/login');
+            cy.get('input[name=User]').type(adminCredentials.username);
+            cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
+            cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+
+            cy.visit('/v2/user/current/changepassword');
+            cy.get('#OldPassword').type(newAdminPassword);
+            cy.get('#NewPassword1').type(adminCredentials.password);
+            cy.get('#NewPassword2').type(adminCredentials.password);
+            cy.get('input[type=submit]').click();
+            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
         });
     });
 });

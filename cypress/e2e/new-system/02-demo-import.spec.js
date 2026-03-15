@@ -17,29 +17,14 @@ describe('02 - Demo Data Import', () => {
         password: 'changeme'
     };
 
-    // Helper function to login, handling forced password-change redirect on first login
+    // Helper function to login.
+    // Spec 01 resets the admin password back to 'changeme' before finishing,
+    // so we can always use the default credentials here.
     const loginAsAdmin = () => {
-        // Try to read the new password that was set by 01-setup-wizard.spec.js
-        // Fallback to default if not set. Uses Cypress.env() which may not persist
-        // across specs, so this may retry the forced password change flow.
-        const password = Cypress.env('newSystemAdminPassword') || adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
-        cy.get('input[name=Password]').type(password + '{enter}');
+        cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
         cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
-
-        // Fresh-install admin has NeedPasswordChange=true; complete the forced form if needed
-        cy.url().then((url) => {
-            if (url.includes('/changepassword')) {
-                const newPassword = 'Cypress@01!';
-                cy.get('#OldPassword').type(password);
-                cy.get('#NewPassword1').type(newPassword);
-                cy.get('#NewPassword2').type(newPassword);
-                cy.get('button[type=submit]').click();
-                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
-                Cypress.env('newSystemAdminPassword', newPassword);
-            }
-        });
     };
 
     describe('Import Demo Data via Admin UI', () => {
@@ -244,22 +229,5 @@ describe('02 - Demo Data Import', () => {
             cy.contains('Finance Dashboard').should('be.visible');
         });
 
-        it('should reset admin password back to changeme for subsequent tests', () => {
-            // Tests 03-04 expect 'changeme' as the default password.
-            // The current password was set by 01-setup-wizard (stored in newSystemAdminPassword env var).
-            cy.visit('/v2/user/current/changepassword');
-
-            const currentPassword = Cypress.env('newSystemAdminPassword') || 'AdminP@ss1234!';
-            const newPassword = 'changeme';
-
-            // Fill in change password form
-            cy.get('#OldPassword').type(currentPassword);
-            cy.get('#NewPassword1').type(newPassword);
-            cy.get('#NewPassword2').type(newPassword);
-            cy.get('input[type=submit]').click();
-
-            // Should show success message
-            cy.contains('Password Change Successful', { timeout: 10000 }).should('be.visible');
-        });
     });
 });
