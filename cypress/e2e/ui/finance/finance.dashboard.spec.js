@@ -152,6 +152,18 @@ describe("Finance Dashboard - Standard User Access", () => {
         // Metrics should be visible
         cy.get(".finance-metric-card").should("have.length.at.least", 3);
     });
+
+    it("should not show the Church Information settings link to non-admin users", () => {
+        cy.visit("/finance/");
+
+        // The Church Information checklist row should be visible (badge/status)
+        cy.contains(".list-group-item", "Church Information").should("exist");
+
+        // But the Settings link to admin/system/church-info should NOT be visible
+        cy.contains(".list-group-item", "Church Information")
+            .find("a[href*='admin/system/church-info']")
+            .should("not.exist");
+    });
 });
 
 describe("Finance Dashboard - No Finance Permission", () => {
