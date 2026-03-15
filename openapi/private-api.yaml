@@ -1691,7 +1691,7 @@ paths:
               schema:
                 type: array
                 items:
-                  properties: { id: { type: integer }, type: { type: string, enum: [family, person] }, name: { type: string }, salutation: { type: string }, address: { type: string }, latitude: { type: number, format: float }, longitude: { type: number, format: float }, classificationId: { type: integer }, profileUrl: { type: string } }
+                  properties: { id: { type: integer }, type: { type: string, enum: [family, person] }, name: { type: string }, salutation: { type: string }, address: { type: string }, latitude: { type: number, format: float }, longitude: { type: number, format: float }, classificationId: { type: integer }, profileUrl: { type: string }, directionsUrl: { type: string }, phone: { type: string } }
                   type: object
       security:
         -
