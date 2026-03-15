@@ -370,10 +370,13 @@ $validationError     = $validationError ?? '';
                         this.submit();
                     });
 
-                    // Clear is-invalid on input so the user gets live feedback
+                    // Clear is-invalid on input/change so the user gets live feedback
+                    // Both 'input' (text/number) and 'change' (select, Select2) must be covered.
                     document.querySelectorAll('#church-info-form input, #church-info-form select').forEach(function (el) {
-                        el.addEventListener('input', function () {
-                            if (this.value.trim()) { this.classList.remove('is-invalid'); }
+                        ['input', 'change'].forEach(function (evtName) {
+                            el.addEventListener(evtName, function () {
+                                if (this.value && this.value.trim()) { this.classList.remove('is-invalid'); }
+                            });
                         });
                     });
                 })();

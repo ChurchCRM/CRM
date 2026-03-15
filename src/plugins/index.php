@@ -107,7 +107,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
 
 // Auth middleware (LIFO - added last, runs first)
 // Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
-// Order: Version added first (runs last), Auth second, CORS last (runs first)
+// Execution order: CorsMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → VersionMiddleware
 $app->add(VersionMiddleware::class);
 $app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
