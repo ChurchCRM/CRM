@@ -3,6 +3,18 @@
 describe("API Private Group Operations", () => {
     let groupID = 1; // Use existing group ID for testing
 
+    after(() => {
+        // Restore group 1 to its original seed-data state so that downstream
+        // specs (e.g. standard.sundayschool.spec.js) are not affected by the
+        // mutations made during these tests (name change, type change to 0).
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/groups/${groupID}`,
+            { groupName: "Angels class", groupType: 4, description: "" },
+            200
+        );
+    });
+
     describe("Group Member Operations", () => {
         it("Add member to group and verify response structure", () => {
             // Test adding a person to a group
@@ -251,7 +263,7 @@ describe("API Private Group Operations", () => {
                 `/api/groups/${groupID}`,
                 {
                     groupName: "<img src=x onerror=alert(1)>CleanName",
-                    groupType: 0,
+                    groupType: 4,
                     description: "",
                 },
                 200

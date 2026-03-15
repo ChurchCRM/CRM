@@ -7,6 +7,19 @@
 const ANGELS_CLASS_GROUP_ID = 1;
 
 describe("Standard Sunday School", () => {
+    before(() => {
+        // Reset group 1 (Angels class) to its seed-data state before any tests run.
+        // The private.people.groups spec mutates group 1 (renames it, changes its type)
+        // as part of XSS-sanitization and CRUD tests, which causes these tests to fail
+        // when they run afterwards.  This reset ensures a consistent starting state.
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/groups/${ANGELS_CLASS_GROUP_ID}`,
+            { groupName: "Angels class", groupType: 4, description: "" },
+            200
+        );
+    });
+
     beforeEach(() => cy.setupStandardSession());
     
     it("View Sunday School dashboard", () => {
