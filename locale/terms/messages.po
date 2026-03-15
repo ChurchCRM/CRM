@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-07 16:37-0800\n"
+"POT-Creation-Date: 2026-03-15 03:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -790,6 +790,9 @@ msgstr ""
 msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
 msgstr ""
 
+msgid "Automatically detect coordinates using address"
+msgstr ""
+
 msgid "Automatically enable SMTP encryption if offered by the relaying server."
 msgstr ""
 
@@ -1546,6 +1549,9 @@ msgstr ""
 msgid "Compose New Message"
 msgstr ""
 
+msgid "Configuration item not found"
+msgstr ""
+
 msgid "Configuration:"
 msgstr ""
 
@@ -2279,9 +2285,6 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-msgid "Developer Chat"
-msgstr ""
-
 #. Context: countries
 msgid "Diego Garcia"
 msgstr ""
@@ -2323,6 +2326,9 @@ msgid "Discard"
 msgstr ""
 
 msgid "Disclaimer"
+msgstr ""
+
+msgid "Discord Chat"
 msgstr ""
 
 msgid "Dismiss"
@@ -3276,6 +3282,9 @@ msgstr ""
 msgid "Family has no emails to use"
 msgstr ""
 
+msgid "Family has no street address to geocode"
+msgstr ""
+
 msgid "Family name is required"
 msgstr ""
 
@@ -3687,6 +3696,12 @@ msgstr ""
 msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr ""
 
+msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding successful"
+msgstr ""
+
 #. Context: countries
 msgid "Georgia (საქართველო)"
 msgstr ""
@@ -3738,9 +3753,6 @@ msgid "Go to Dashboard"
 msgstr ""
 
 msgid "Go to Login"
-msgstr ""
-
-msgid "Google Maps API Key used for Geocoding addresses"
 msgstr ""
 
 msgid "Graphic"
@@ -4485,7 +4497,7 @@ msgstr ""
 msgid "Latitude"
 msgstr ""
 
-msgid "Latitude of the church, used to center the Google map"
+msgid "Latitude of the church, used to center the map"
 msgstr ""
 
 #. Context: countries
@@ -4669,7 +4681,7 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-msgid "Longitude of the church, used to center the Google map"
+msgid "Longitude of the church, used to center the map"
 msgstr ""
 
 #. Context: countries
@@ -5024,9 +5036,6 @@ msgid "Missing PHP ZipArchive"
 msgstr ""
 
 msgid "Missing calendar access token"
-msgstr ""
-
-msgid "Missing families? Update coordinates to include them on the map."
 msgstr ""
 
 #. Context: query_qry
@@ -6534,6 +6543,9 @@ msgid "Recurrence Pattern"
 msgstr ""
 
 msgid "Redirecting in"
+msgstr ""
+
+msgid "Refresh Coordinates"
 msgstr ""
 
 msgid "Refresh List"
