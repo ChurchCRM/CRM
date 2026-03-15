@@ -23,7 +23,8 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
-// Execution order: CorsMiddleware → ChurchInfoRequiredMiddleware → AuthMiddleware → VersionMiddleware
+// Middleware are added in reverse execution order: added last runs first.
+// Execution order: VersionMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → CorsMiddleware
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 $app->add(new CorsMiddleware());
