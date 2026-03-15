@@ -1,4 +1,8 @@
 RewriteEngine On
+
+# Block direct access to PHP files in views/ (must go through index.php Slim app)
+RewriteRule ^views/.*\.php$ - [F,L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]

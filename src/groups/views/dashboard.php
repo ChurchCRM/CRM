@@ -6,10 +6,10 @@ use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Dashboard metrics
+// Dashboard metrics — 2 queries: total+active at DB level; inactive = total - active
 $totalGroups      = GroupQuery::create()->count();
 $activeGroups     = GroupQuery::create()->filterByActive(true)->count();
-$inactiveGroups   = GroupQuery::create()->filterByActive(false)->count();
+$inactiveGroups   = $totalGroups - $activeGroups;
 $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 ?>
@@ -19,40 +19,40 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
     <!-- Key Metrics Row -->
     <div class="row">
         <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4" style="background: linear-gradient(135deg, #007bff, #0056b3); color: #fff;">
-                    <div style="font-size: 2.2rem; font-weight: 700;"><?= $totalGroups ?></div>
-                    <div class="text-uppercase small font-weight-bold mt-2" style="opacity: .8;">
+            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-total">
+                <div class="card-body text-center py-4">
+                    <div class="metric-value"><?= $totalGroups ?></div>
+                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
                         <?= gettext('Total Groups') ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4" style="background: linear-gradient(135deg, #28a745, #1e7e34); color: #fff;">
-                    <div style="font-size: 2.2rem; font-weight: 700;"><?= $activeGroups ?></div>
-                    <div class="text-uppercase small font-weight-bold mt-2" style="opacity: .8;">
+            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-active">
+                <div class="card-body text-center py-4">
+                    <div class="metric-value"><?= $activeGroups ?></div>
+                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
                         <?= gettext('Active Groups') ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4" style="background: linear-gradient(135deg, #6c757d, #495057); color: #fff;">
-                    <div style="font-size: 2.2rem; font-weight: 700;"><?= $inactiveGroups ?></div>
-                    <div class="text-uppercase small font-weight-bold mt-2" style="opacity: .8;">
+            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-inactive">
+                <div class="card-body text-center py-4">
+                    <div class="metric-value"><?= $inactiveGroups ?></div>
+                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
                         <?= gettext('Inactive Groups') ?>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4" style="background: linear-gradient(135deg, #fd7e14, #dc6502); color: #fff;">
-                    <div style="font-size: 2.2rem; font-weight: 700;"><?= $totalMemberships ?></div>
-                    <div class="text-uppercase small font-weight-bold mt-2" style="opacity: .8;">
+            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-memberships">
+                <div class="card-body text-center py-4">
+                    <div class="metric-value"><?= $totalMemberships ?></div>
+                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
                         <?= gettext('Total Memberships') ?>
                     </div>
                 </div>
@@ -77,7 +77,11 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             <?= gettext('Group Name') ?> <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control" name="groupName" id="groupName"
-                               placeholder="<?= gettext('Enter group name') ?>">
+                               placeholder="<?= gettext('Enter group name') ?>"
+                               aria-describedby="groupNameFeedback">
+                        <div id="groupNameFeedback" class="invalid-feedback" role="alert">
+                            <?= gettext('Please enter a group name.') ?>
+                        </div>
                         <small class="form-text text-muted"><?= gettext('Required') ?></small>
                     </div>
                     <button type="button" class="btn btn-primary" id="addNewGroup">
