@@ -18,6 +18,7 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -104,10 +105,12 @@ $errorMiddleware->setDefaultErrorHandler(function (
     return SlimUtils::renderErrorJSON($response, gettext('An error occurred processing the plugin request'), [], 500, $exception, $request);
 });
 
-// Auth middleware (LIFO - added last, runs first)
-// Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
-// Order: Version added first (runs last), Auth second, CORS last (runs first)
+// CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
+// Middleware are added in reverse execution order: added last runs first.
+// Execution order: CorsMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → VersionMiddleware
+// Note: AdminRoleAuthMiddleware is applied to specific route groups above, not in this global stack.
 $app->add(VersionMiddleware::class);
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
 

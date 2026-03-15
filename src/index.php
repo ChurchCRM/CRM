@@ -4,6 +4,7 @@
 require_once __DIR__ . '/vendor/autoload.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -50,6 +51,18 @@ if (!empty($_GET['location'])) {
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();
+
+// On a fresh install (sChurchName empty), redirect admin users to complete setup.
+if (empty(SystemConfig::getValue('sChurchName'))) {
+    try {
+        $currentUser = AuthenticationManager::getCurrentUser();
+        if ($currentUser->isAdmin()) {
+            RedirectUtils::redirect('admin/system/church-info');
+        }
+    } catch (\Throwable) {
+        // Not logged in or session error — ensureAuthentication() above handles it
+    }
+}
 
 if (strtolower($shortName) === 'index.php' || strtolower($fileName) === 'index.php') {
     // Index.php -> v2/dashboard

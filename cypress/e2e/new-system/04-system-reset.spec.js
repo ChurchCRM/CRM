@@ -44,7 +44,29 @@ describe('04 - System Reset', () => {
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');
                 cy.get('button[type=submit]').click();
-                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
+                // ChurchInfoRequiredMiddleware redirects to church-info when sChurchName is empty
+                cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            }
+        });
+
+        // After a DB reset sChurchName is empty; fill in the minimum required fields so the
+        // middleware stops redirecting and subsequent test navigation works normally.
+        cy.url().then((url) => {
+            if (url.includes('/admin/system/church-info')) {
+                cy.get('#sChurchName').clear().type('Test Community Church');
+                cy.get('#sChurchPhone').clear().type('(555) 123-4567');
+                cy.get('#sChurchEmail').clear().type('info@testchurch.org');
+                cy.get('#location-tab').click();
+                cy.get('#sChurchAddress').clear().type('123 Main Street');
+                cy.get('#sChurchCity').clear().type('Springfield');
+                cy.get('#sChurchCountry', { timeout: 5000 }).should('have.class', 'select2-hidden-accessible');
+                cy.get('#sChurchCountry').then(($el) => { $el.val('US').trigger('change'); });
+                cy.get('#sChurchState', { timeout: 10000 }).should('have.class', 'select2-hidden-accessible');
+                cy.get('#sChurchState').then(($el) => { $el.val('IL').trigger('change'); });
+                cy.get('#sChurchZip').clear().type('62701');
+                cy.wait(500);
+                cy.get('#church-info-form').submit();
+                cy.url({ timeout: 10000 }).should('include', 'church-info');
             }
         });
     };

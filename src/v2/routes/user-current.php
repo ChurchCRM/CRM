@@ -39,9 +39,16 @@ function changepassword(Request $request, Response $response, array $args): Resp
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
+        $wasForced = $curUser->getNeedPasswordChange();
 
         try {
             $curUser->userChangePassword($loginRequestBody['OldPassword'], $loginRequestBody['NewPassword1']);
+
+            if ($wasForced) {
+                // Forced password change complete — redirect so that ChurchInfoRequiredMiddleware
+                // can route the admin to the church-info setup page (or the dashboard if already set).
+                return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
+            }
 
             return $renderer->render($response, 'common/success-changepassword.php', $pageArgs);
         } catch (PasswordChangeException $pwChangeExc) {
