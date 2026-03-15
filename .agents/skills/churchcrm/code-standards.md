@@ -202,6 +202,42 @@ $logger->error('Operation failed', ['error' => $e->getMessage()]);
 
 **Always include context** as second parameter array for meaningful logs.
 
+## Localization Standards <!-- learned: 2026-03-15 -->
+
+### Punctuation & Colon Placement
+
+**RULE: Colons are UI punctuation, not translatable content.** Move colons OUTSIDE gettext() and i18next.t() calls.
+
+```php
+// ❌ WRONG - Colon inside translation
+echo gettext('Birth Date:');
+echo gettext('Type:');
+echo gettext('File Name:');
+
+// ✅ CORRECT - Colon outside translation
+echo gettext('Birth Date') . ':';
+echo gettext('Type') . ':';
+echo gettext('File Name') . ':';
+```
+
+**Why:** Translators should translate content, not punctuation. Each language has different punctuation conventions that should be applied by the UI, not the translator.
+
+**Apply to:** All UI labels, field names, and sentence-ending colons (introducing lists).
+
+**Also update messages.po:** When moving a colon out of a gettext call, update the `msgid` in `locale/terms/messages.po`:
+
+```gettext
+# BEFORE
+msgid "Birth Date:"
+msgstr ""
+
+# AFTER
+msgid "Birth Date"
+msgstr ""
+```
+
+The `msgid` key must exactly match the string passed to gettext() in PHP code.
+
 ## File Operations (Git)
 
 ### Moving/Renaming Files
