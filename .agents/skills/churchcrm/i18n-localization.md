@@ -464,6 +464,68 @@ echo gettext("User's Name");   // Better
 echo gettext('Hello, ' . $name);  // $name won't translate
 ```
 
+### Punctuation & Colon Placement <!-- learned: 2026-03-15 -->
+
+**Rule: Move colons OUTSIDE gettext() calls.** Colons are UI punctuation, not translatable content. Translators should not include punctuation.
+
+**Pattern:**
+```php
+// ❌ WRONG - Colon inside translation
+echo gettext('Birth Date:');
+echo gettext('Type:');
+echo gettext('File Name:');
+
+// ✅ CORRECT - Colon outside translation
+echo gettext('Birth Date') . ':';
+echo gettext('Type') . ':';
+echo gettext('File Name') . ':';
+```
+
+**With spaces after colon (label separator):**
+```php
+// ❌ WRONG
+echo gettext('Label: ');
+
+// ✅ CORRECT
+echo gettext('Label') . ': ';
+```
+
+**In sentence-ending colons (introducing a list):**
+```php
+// ❌ WRONG
+echo gettext('Please select from the following:');
+
+// ✅ CORRECT
+echo gettext('Please select from the following') . ':';
+```
+
+**In HTML attributes or templates:**
+```php
+// ✅ CORRECT - Inline concatenation
+<?= gettext('Birth Date') . ':' ?>
+
+// ✅ CORRECT - Attribute context
+<label><?= gettext('Type') . ':' ?></label>
+
+// ✅ CORRECT - More readable format (if wrapping is needed)
+echo '<label>'
+    . gettext('Type')
+    . ':</label>';
+```
+
+**Update messages.po when making this change:**
+```gettext
+# BEFORE
+msgid "Birth Date:"
+msgstr ""
+
+# AFTER
+msgid "Birth Date"
+msgstr ""
+```
+
+The msgid key must match what's passed to gettext() in PHP code.
+
 ### Plural Forms
 
 ```php
