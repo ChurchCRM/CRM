@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-15 03:34+0000\n"
+"POT-Creation-Date: 2026-03-15 08:49-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -248,6 +248,9 @@ msgstr ""
 msgid "Active"
 msgstr ""
 
+msgid "Active Groups"
+msgstr ""
+
 msgid "Active Kiosks"
 msgstr ""
 
@@ -323,6 +326,9 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
+msgid "Add New Group"
+msgstr ""
+
 msgid "Add Payment"
 msgstr ""
 
@@ -351,6 +357,9 @@ msgid "Add Students"
 msgstr ""
 
 msgid "Add Your First Property Type"
+msgstr ""
+
+msgid "Add all to cart"
 msgstr ""
 
 msgid "Add an extra layer of security to your account"
@@ -503,9 +512,6 @@ msgid "All information is correct"
 msgstr ""
 
 msgid "All members already in cart"
-msgstr ""
-
-msgid "All members of this group are in the cart"
 msgstr ""
 
 msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
@@ -1426,6 +1432,9 @@ msgstr ""
 msgid "Class"
 msgstr ""
 
+msgid "Class Overview"
+msgstr ""
+
 msgid "Classes"
 msgstr ""
 
@@ -1461,6 +1470,9 @@ msgid "Clear Filters"
 msgstr ""
 
 msgid "Clear all data and start fresh. Cannot be undone."
+msgstr ""
+
+msgid "Clear filter"
 msgstr ""
 
 msgid "Click a bar to filter payments"
@@ -1953,15 +1965,6 @@ msgid "DEBUG"
 msgstr ""
 
 msgid "DSN"
-msgstr ""
-
-msgid "Dad Email"
-msgstr ""
-
-msgid "Dad Mobile"
-msgstr ""
-
-msgid "Dad Name"
 msgstr ""
 
 msgid "Dashboard"
@@ -2589,6 +2592,9 @@ msgid "Email"
 msgstr ""
 
 msgid "Email (BCC)"
+msgstr ""
+
+msgid "Email (To)"
 msgstr ""
 
 msgid "Email Address"
@@ -3314,6 +3320,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+msgid "Father"
 msgstr ""
 
 msgid "Feb"
@@ -4125,10 +4134,16 @@ msgstr ""
 msgid "Imported"
 msgstr ""
 
+msgid "In Cart"
+msgstr ""
+
 msgid "In Use"
 msgstr ""
 
 msgid "Inactive"
+msgstr ""
+
+msgid "Inactive Groups"
 msgstr ""
 
 msgid "Include"
@@ -4384,6 +4399,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Kenya"
+msgstr ""
+
+msgid "Kids Email"
 msgstr ""
 
 msgid "Kids Emails"
@@ -4785,6 +4803,9 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
+msgid "Male / Female"
+msgstr ""
+
 #. Context: countries
 msgid "Mali"
 msgstr ""
@@ -5090,15 +5111,6 @@ msgstr ""
 msgid "Moldova (Republica Moldova)"
 msgstr ""
 
-msgid "Mom Email"
-msgstr ""
-
-msgid "Mom Mobile"
-msgstr ""
-
-msgid "Mom Name"
-msgstr ""
-
 #. Context: countries
 msgid "Monaco"
 msgstr ""
@@ -5152,6 +5164,9 @@ msgid "Morocco (‫المغرب‬‎)"
 msgstr ""
 
 msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr ""
+
+msgid "Mother"
 msgstr ""
 
 msgid "Move"
@@ -5461,6 +5476,9 @@ msgstr ""
 msgid "No logged in user"
 msgstr ""
 
+msgid "No members"
+msgstr ""
+
 msgid "No notes have been added for this family."
 msgstr ""
 
@@ -5577,9 +5595,6 @@ msgid "Not a valid Wedding Date"
 msgstr ""
 
 msgid "Not a valid date"
-msgstr ""
-
-msgid "Not all members of this group are in the cart"
 msgstr ""
 
 msgid "Not assigned"
@@ -5868,6 +5883,9 @@ msgid "Paraguay"
 msgstr ""
 
 msgid "Parents Emails"
+msgstr ""
+
+msgid "Parents/Guardians"
 msgstr ""
 
 msgid "Part"
@@ -6515,9 +6533,6 @@ msgid "Quick Settings"
 msgstr ""
 
 msgid "Quick Start"
-msgstr ""
-
-msgid "Quick Status"
 msgstr ""
 
 msgid "QuickBooks Deposit Ticket Settings"
@@ -7227,6 +7242,12 @@ msgstr ""
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr ""
+
+msgid "Send email with recipients in To field"
+msgstr ""
+
 msgid "Send family email"
 msgstr ""
 
@@ -7584,6 +7605,9 @@ msgid "Street address"
 msgstr ""
 
 msgid "Street address is required."
+msgstr ""
+
+msgid "Student Information"
 msgstr ""
 
 msgid "Students"
@@ -8107,6 +8131,9 @@ msgstr ""
 msgid "Toggle Sidebar"
 msgstr ""
 
+msgid "Toggle overview"
+msgstr ""
+
 msgid "Toggle the left sidebar's state (open or collapse)"
 msgstr ""
 
@@ -8143,7 +8170,16 @@ msgstr ""
 msgid "Total Deposits:"
 msgstr ""
 
+msgid "Total Enrolled"
+msgstr ""
+
+msgid "Total Groups"
+msgstr ""
+
 msgid "Total Members"
+msgstr ""
+
+msgid "Total Memberships"
 msgstr ""
 
 msgid "Total Payments"
@@ -8691,6 +8727,9 @@ msgstr ""
 msgid "View Family Page"
 msgstr ""
 
+msgid "View Full Details"
+msgstr ""
+
 msgid "View Group"
 msgstr ""
 
@@ -8701,6 +8740,9 @@ msgid "View Person Page"
 msgstr ""
 
 msgid "View Photo"
+msgstr ""
+
+msgid "View Profile"
 msgstr ""
 
 msgid "View Properties"

@@ -383,7 +383,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         ?>
             <div class="alert alert-danger" role="alert">
                 <i class="fa-solid fa-circle-exclamation"></i>
-                <strong><?= gettext('Error:') ?></strong>
+                <strong><?= gettext('Error') . ':' ?></strong>
                 <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
             </div>
         <?php

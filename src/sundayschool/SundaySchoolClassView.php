@@ -367,9 +367,9 @@ require_once __DIR__ . '/../Include/Header.php';
                 <div class="col-md-6">
                   <h6 class="font-weight-bold mb-3"><i class="fa-solid fa-circle-info"></i> <?= gettext('Student Information') ?></h6>
                   <dl class="row">
-                    <dt class="col-sm-5"><?= gettext('Birth Date:') ?></dt>
+                    <dt class="col-sm-5"><?= gettext('Birth Date') . ':' ?></dt>
                     <dd class="col-sm-7"><?= $birthDate ?></dd>
-                    <dt class="col-sm-5"><?= gettext('Kids Email:') ?></dt>
+                    <dt class="col-sm-5"><?= gettext('Kids Email') . ':' ?></dt>
                     <dd class="col-sm-7">
                       <?php if ($child['kidEmail']) { ?>
                         <a href="mailto:<?= $child['kidEmail'] ?>"><?= htmlspecialchars($child['kidEmail']) ?></a>
@@ -377,7 +377,7 @@ require_once __DIR__ . '/../Include/Header.php';
                         <span class="text-muted">—</span>
                       <?php } ?>
                     </dd>
-                    <dt class="col-sm-5"><?= gettext('Mobile:') ?></dt>
+                    <dt class="col-sm-5"><?= gettext('Mobile') . ':' ?></dt>
                     <dd class="col-sm-7">
                       <?php if ($child['mobilePhone']) { ?>
                         <a href="tel:<?= urlencode($child['mobilePhone']) ?>"><?= $child['mobilePhone'] ?></a>
@@ -385,7 +385,7 @@ require_once __DIR__ . '/../Include/Header.php';
                         <span class="text-muted">—</span>
                       <?php } ?>
                     </dd>
-                    <dt class="col-sm-5"><?= gettext('Home Phone:') ?></dt>
+                    <dt class="col-sm-5"><?= gettext('Home Phone') . ':' ?></dt>
                     <dd class="col-sm-7">
                       <?php if ($child['homePhone']) { ?>
                         <a href="tel:<?= urlencode($child['homePhone']) ?>"><?= $child['homePhone'] ?></a>
@@ -409,7 +409,7 @@ require_once __DIR__ . '/../Include/Header.php';
                   <?php if ($child['dadFirstName'] || $child['momFirstName']) { ?>
                     <dl class="row">
                       <?php if ($child['dadFirstName']) { ?>
-                        <dt class="col-sm-5"><?= gettext('Father:') ?></dt>
+                        <dt class="col-sm-5"><?= gettext('Father') . ':' ?></dt>
                         <dd class="col-sm-7">
                           <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['dadId'] ?>">
                             <?= htmlspecialchars($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>
@@ -423,7 +423,7 @@ require_once __DIR__ . '/../Include/Header.php';
                         </dd>
                       <?php } ?>
                       <?php if ($child['momFirstName']) { ?>
-                        <dt class="col-sm-5"><?= gettext('Mother:') ?></dt>
+                        <dt class="col-sm-5"><?= gettext('Mother') . ':' ?></dt>
                         <dd class="col-sm-7">
                           <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $child['momId'] ?>">
                             <?= htmlspecialchars($child['momFirstName'] . ' ' . $child['momLastName']) ?>
