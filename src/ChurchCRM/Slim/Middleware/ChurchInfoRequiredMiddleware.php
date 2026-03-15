@@ -38,6 +38,7 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
      */
     private const EXEMPT_PATHS = [
         self::CHURCH_INFO_PATH,
+        '/v2/user/current/changepassword',
     ];
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
