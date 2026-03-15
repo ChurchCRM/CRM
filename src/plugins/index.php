@@ -18,6 +18,7 @@ require_once __DIR__ . '/../Include/LoadConfigs.php';
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
@@ -108,6 +109,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
 // Note: AdminRoleAuthMiddleware is applied to specific route groups above, not globally
 // Order: Version added first (runs last), Auth second, CORS last (runs first)
 $app->add(VersionMiddleware::class);
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(new CorsMiddleware());
 

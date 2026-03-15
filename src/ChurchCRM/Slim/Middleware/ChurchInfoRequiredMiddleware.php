@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Slim\Middleware;
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use Laminas\Diactoros\Response;
@@ -13,10 +14,10 @@ use Psr\Http\Server\RequestHandlerInterface;
 /**
  * Middleware that enforces church name configuration on first run.
  *
- * When sChurchName is empty (fresh install), all browser requests to the
- * admin module are redirected to the church-info setup page. API routes
- * and the church-info page itself are exempt from the redirect so the
- * administrator can fill in the required information.
+ * When sChurchName is empty (fresh install), browser requests from admin
+ * users are redirected to the church-info setup page. API routes and the
+ * church-info page itself are exempt from the redirect. Non-admin users
+ * pass through since they cannot complete the setup.
  */
 class ChurchInfoRequiredMiddleware implements MiddlewareInterface
 {
@@ -48,6 +49,17 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
 
         // If church name is already configured, nothing to do.
         if (!empty(SystemConfig::getValue('sChurchName'))) {
+            return $handler->handle($request);
+        }
+
+        // Only admins can complete the church-info setup; let non-admins through.
+        try {
+            $user = AuthenticationManager::getCurrentUser();
+        } catch (\Throwable) {
+            return $handler->handle($request);
+        }
+
+        if (!$user->isAdmin()) {
             return $handler->handle($request);
         }
 

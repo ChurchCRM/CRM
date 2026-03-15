@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -26,6 +27,7 @@ SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 $app->add(new CorsMiddleware());
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
