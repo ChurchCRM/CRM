@@ -317,6 +317,33 @@ Before marking PR ready for review, ensure:
 
 ## Agent-Specific Behaviors
 
+### Deleting a File <!-- learned: 2026-03-15 -->
+
+Before deleting any file, always search these locations for references:
+
+```bash
+# 1. Source code references (links, requires, includes, route registrations)
+grep -r "FileName.php" src/ --include="*.php" --include="*.js" --include="*.ts" -l
+
+# 2. Cypress / test specs
+grep -r "FileName" cypress/ -l
+
+# 3. Docs site
+grep -r "FileName" /path/to/docs.churchcrm.io -l
+
+# 4. Wiki
+grep -r "FileName" /path/to/wiki -l
+```
+
+Remove every reference found before (or as part of) the deletion commit:
+- **Templates / views** — remove buttons, links, menu items
+- **Test specs** — remove the `it()` block that visits/tests the page
+- **Docs & wiki** — remove or update any page that describes the feature
+
+❌ Don't delete the file and leave dead links, broken tests, or stale docs behind.
+
+---
+
 ### Mandatory Pre-Commit Sequence <!-- learned: 2026-03-03 -->
 
 **NEVER commit or push without completing ALL steps in order.**
