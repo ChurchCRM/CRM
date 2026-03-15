@@ -92,5 +92,5 @@ describe("Congregation Map (/v2/map)", () => {
         });
     });
 
-    
+        
 });

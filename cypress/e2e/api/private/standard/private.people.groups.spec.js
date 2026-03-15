@@ -246,18 +246,32 @@ describe("API Private Group Operations", () => {
         });
 
         it("Sanitizes XSS in groupName when updating a group", () => {
+            // Create a temporary group to avoid mutating seed data (group 1 is used by
+            // Sunday School tests which rely on its name and type remaining unchanged).
             cy.makePrivateAdminAPICall(
                 "POST",
-                `/api/groups/${groupID}`,
-                {
-                    groupName: "<img src=x onerror=alert(1)>CleanName",
-                    groupType: 0,
-                    description: "",
-                },
+                `/api/groups/`,
+                { groupName: "XSSTestGroup", description: "" },
                 200
-            ).then((resp) => {
-                expect(resp.body).to.have.property("Name");
-                expect(resp.body.Name).to.not.include("onerror");
+            ).then((createResp) => {
+                const tempGroupId = createResp.body.Id;
+
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${tempGroupId}`,
+                    {
+                        groupName: "<img src=x onerror=alert(1)>CleanName",
+                        groupType: 0,
+                        description: "",
+                    },
+                    200
+                ).then((resp) => {
+                    expect(resp.body).to.have.property("Name");
+                    expect(resp.body.Name).to.not.include("onerror");
+
+                    // Clean up the temporary group
+                    cy.makePrivateAdminAPICall("DELETE", `/api/groups/${tempGroupId}`, null, 200);
+                });
             });
         });
 

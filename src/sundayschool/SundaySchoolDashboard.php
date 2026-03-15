@@ -197,10 +197,10 @@ require_once __DIR__ . '/../Include/Header.php';
 
             $birthDate = 'N/A';
             $age = 'N/A';
-            $hideAge = $flags == 1 || empty($birthYear);
+            // $hideAge comes from $child array (via extract) returned by getKidsWithoutClasses()
             try {
                 if (!$hideAge) {
-                    $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, $flags);
+                    $birthDate = MiscUtils::formatBirthDate($birthYear, $birthMonth, $birthDay, $hideAge);
                     $age = MiscUtils::formatAge($birthMonth, $birthDay, $birthYear);
                 }
             } catch (\Throwable $ex) {
