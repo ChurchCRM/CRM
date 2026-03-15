@@ -88,8 +88,8 @@ require_once __DIR__ . '/../Include/Header.php';
     $roleEmails['Kids'] = implode($sMailtoDelimiter, $KidsEmails) . ',';
     $sEmailLink = implode($sMailtoDelimiter, $allEmails) . ',';
     // Add default email if default email has been set and is not already in string
-    if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, (string) SystemConfig::getValue('sToEmailAddress'))) {
-        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
+    if (SystemConfig::getValue('plugin.smtp.bccAddress') != '' && !stristr($sEmailLink, (string) SystemConfig::getValue('plugin.smtp.bccAddress'))) {
+        $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('plugin.smtp.bccAddress');
     }
     $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
     ?>
