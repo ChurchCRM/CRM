@@ -19,6 +19,9 @@ describe('02 - Demo Data Import', () => {
 
     // Helper function to login, handling forced password-change redirect on first login
     const loginAsAdmin = () => {
+        // Try to read the new password that was set by 01-setup-wizard.spec.js
+        // Fallback to default if not set. Uses Cypress.env() which may not persist
+        // across specs, so this may retry the forced password change flow.
         const password = Cypress.env('newSystemAdminPassword') || adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
