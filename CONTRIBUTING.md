@@ -10,7 +10,7 @@ The project welcomes, and depends on, contributions from developers and users in
 ## First Steps
 1. Read this whole page "top to bottom."
 2. Make sure you have a [GitHub account](https://github.com/signup/free).
-3. Introduce yourself in the developer chat at [Gitter](https://gitter.im/ChurchCRM/CRM).
+3. Introduce yourself in the developer chat at [Discord](https://discord.gg/tuWyFzj3Nj).
 4. Take a look at the [Open Issues](https://github.com/ChurchCRM/CRM/issues) page. We've made it easy for beginners with the [good first issue](https://github.com/ChurchCRM/CRM/labels/good%20first%20issue) label — these are issues that should be relatively easy to fix.
 5. Have fun!
 
