@@ -34,6 +34,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <label for="filterState"><?= gettext('State') ?></label>
                         <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= InputUtils::escapeAttribute($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
                     </div>
+                    <div class="form-group">
+                        <label for="filterGeocoded"><?= gettext('Address Status') ?></label>
+                        <select id="filterGeocoded" name="geocoded" class="form-control family-filter-field">
+                            <option value="all" <?= (isset($filterGeocoded) && $filterGeocoded === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
+                            <option value="unverified" <?= (isset($filterGeocoded) && $filterGeocoded === 'unverified') ? 'selected' : '' ?>><?= gettext('Unverified Addresses') ?></option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -57,6 +64,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <tr>
                     <th><?= gettext('Name') ?></th>
                     <th><?= gettext('Address') ?></th>
+                    <th><?= gettext('Address Status') ?></th>
                     <th><?= gettext('Home Phone') ?></th>
                     <th><?= gettext('Email') ?></th>
                     <th><?= gettext('Created') ?></th>
@@ -100,6 +108,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php endif; ?>
                         <br><?= $family->getCityStateShort() ?>
                     </td>
+                    <td data-order="<?= $family->hasLatitudeAndLongitude() ? 2 : ($family->hasAddress() ? 1 : 0) ?>">
+                        <?php if ($family->hasLatitudeAndLongitude()): ?>
+                            <span class="badge badge-success" title="<?= gettext('Geocoded') ?>">
+                                <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
+                            </span>
+                        <?php elseif ($family->hasAddress()): ?>
+                            <span class="badge badge-warning" title="<?= gettext('Unverified') ?>">
+                                <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
+                            </span>
+                        <?php endif; ?>
+                    </td>
                     <td><?= InputUtils::escapeHTML($family->getHomePhone()) ?></td>
                     <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
                     <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
@@ -142,7 +161,13 @@ $(document).ready(function() {
             "lengthChange": true,
             "searching": true,
             // Column definitions
+            // Column order: 0=Name, 1=Address, 2=Address Status, 3=Home Phone, 4=Email, 5=Created, 6=Edited, 7=Actions
             "columnDefs": [
+                {
+                    "targets": 2, // Address Status column (0-indexed) — uses data-order attribute for sorting
+                    "orderable": true,
+                    "searchable": false
+                },
                 {
                     "targets": -1, // Last column (Actions)
                     "orderable": false,
@@ -178,6 +203,7 @@ $(document).ready(function() {
         $('#filterCity').val('');
         $('#filterState').val('');
         $('#familyActiveStatus').val('all');
+        $('#filterGeocoded').val('all');
         // Submit the form to clear filters
         $('#family-filters').submit();
     });
