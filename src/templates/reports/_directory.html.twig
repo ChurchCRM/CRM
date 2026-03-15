@@ -1,0 +1,70 @@
+{#
+  _directory.html.twig
+  --------------------
+  Extends _base.html.twig.  Multi-column layout for a church photo/member directory.
+
+  Variables expected:
+    - columns       (int, default 3) : number of directory columns
+    - columnGap     (string, default "4mm") : gap between columns
+    - disclaimer1   (string, optional) : footer disclaimer line 1
+    - disclaimer2   (string, optional) : footer disclaimer line 2
+    - entries       (array) : directory entries; each passed to the `entry` block
+
+  Blocks:
+    - directory_header : page header / title (printed once at top)
+    - entry_style      : extra CSS for entry layout
+    - entry            : renders one directory entry; receives `entry` variable
+    - directory_footer : footer content (disclaimer, etc.)
+#}
+{% extends "_base.html.twig" %}
+
+{% block page_style %}
+    margin-top: 13mm;
+    margin-bottom: 13mm;
+    margin-left: 13mm;
+    margin-right: 13mm;
+{% endblock %}
+
+{% block extra_style %}
+    .directory-header {
+        text-align: center;
+        margin-bottom: 6mm;
+    }
+    .directory-columns {
+        column-count: {{ columns|default(3) }};
+        column-gap: {{ columnGap|default('4mm') }};
+    }
+    .directory-entry {
+        break-inside: avoid;
+        margin-bottom: 4mm;
+        font-size: 9pt;
+    }
+    .directory-footer {
+        margin-top: 8mm;
+        font-size: 8pt;
+        font-style: italic;
+        text-align: center;
+    }
+    {% block entry_style %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    <div class="directory-header">
+        {% block directory_header %}{% endblock %}
+    </div>
+
+    <div class="directory-columns">
+        {% for entry in entries %}
+            <div class="directory-entry">
+                {% block entry %}{% endblock %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="directory-footer">
+        {% block directory_footer %}
+            {% if disclaimer1 %}<p>{{ disclaimer1 }}</p>{% endif %}
+            {% if disclaimer2 %}<p>{{ disclaimer2 }}</p>{% endif %}
+        {% endblock %}
+    </div>
+{% endblock %}
