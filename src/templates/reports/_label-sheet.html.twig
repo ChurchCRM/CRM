@@ -1,0 +1,66 @@
+{#
+  _label-sheet.html.twig
+  ----------------------
+  Extends _base.html.twig.  Provides a fixed-size grid suitable for Avery-style
+  address / name-tag label sheets.
+
+  Variables expected:
+    - labelColumns  (int, default 3) : number of columns per row
+    - labelWidth    (string, default "63mm") : width of each label cell
+    - labelHeight   (string, default "25mm") : height of each label cell
+    - labelPadding  (string, default "2mm")  : inner padding for each cell
+    - items         (array)                  : array of labels; each item is
+                                               passed to the `label` block
+
+  Blocks:
+    - label_style : extra CSS for label content
+    - label       : renders one label; receives `item` variable
+#}
+{% extends "_base.html.twig" %}
+
+{% block page_style %}
+    margin-top: 10mm;
+    margin-bottom: 10mm;
+    margin-left: 10mm;
+    margin-right: 10mm;
+{% endblock %}
+
+{% block extra_style %}
+    .label-grid {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .label-cell {
+        width: {{ labelWidth|default('63mm') }};
+        height: {{ labelHeight|default('25mm') }};
+        padding: {{ labelPadding|default('2mm') }};
+        vertical-align: top;
+        overflow: hidden;
+    }
+    {% block label_style %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+<table class="label-grid">
+    {% set cols = labelColumns|default(3) %}
+    {% set col  = 0 %}
+    {% for item in items %}
+        {% if col == 0 %}<tr>{% endif %}
+        <td class="label-cell">
+            {% block label %}{% endblock %}
+        </td>
+        {% set col = col + 1 %}
+        {% if col == cols %}
+            </tr>
+            {% set col = 0 %}
+        {% endif %}
+    {% endfor %}
+    {# Close open row if items count is not a multiple of cols #}
+    {% if col > 0 %}
+        {% for _i in range(col, cols - 1) %}
+            <td class="label-cell"></td>
+        {% endfor %}
+        </tr>
+    {% endif %}
+</table>
+{% endblock %}
