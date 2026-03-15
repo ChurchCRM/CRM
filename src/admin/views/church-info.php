@@ -43,7 +43,8 @@ $validationError     = $validationError ?? '';
             <div class="card-body">
                 <form method="POST"
                       action="<?= $sRootPath ?>/admin/system/church-info"
-                      id="church-info-form">
+                      id="church-info-form"
+                      novalidate>
                     <div class="tab-content" id="church-info-tab-content">
 
                         <!-- Tab 1: Basic Information & Contact -->
@@ -326,27 +327,54 @@ $validationError     = $validationError ?? '';
                 </form>
                 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                 (function () {
-                    // Tab IDs that contain required fields, in priority order
+                    // Required fields grouped by the tab nav-link that contains them
                     var tabFields = {
                         'basic-tab':    ['sChurchName', 'sChurchPhone', 'sChurchEmail'],
                         'location-tab': ['sChurchAddress', 'sChurchCity', 'sChurchZip', 'sChurchCountry'],
                     };
 
                     document.getElementById('church-info-form').addEventListener('submit', function (e) {
+                        e.preventDefault(); // always prevent — we submit manually when valid
+
+                        var firstInvalidTab = null;
+                        var firstInvalidField = null;
+                        var hasErrors = false;
+
                         for (var tabId in tabFields) {
                             var fields = tabFields[tabId];
                             for (var i = 0; i < fields.length; i++) {
                                 var el = document.getElementById(fields[i]);
-                                if (el && !el.value.trim()) {
-                                    // Switch to the tab containing the empty field
-                                    document.getElementById(tabId).click();
-                                    // Let the browser show its native validation tooltip
-                                    el.focus();
-                                    e.preventDefault();
-                                    return;
+                                if (!el) { continue; }
+
+                                if (!el.value.trim()) {
+                                    el.classList.add('is-invalid');
+                                    hasErrors = true;
+                                    if (!firstInvalidTab) {
+                                        firstInvalidTab  = tabId;
+                                        firstInvalidField = el;
+                                    }
+                                } else {
+                                    el.classList.remove('is-invalid');
                                 }
                             }
                         }
+
+                        if (hasErrors) {
+                            // Switch to the tab that has the first error and focus the field
+                            document.getElementById(firstInvalidTab).click();
+                            firstInvalidField.focus();
+                            return;
+                        }
+
+                        // All valid — submit for real
+                        this.submit();
+                    });
+
+                    // Clear is-invalid on input so the user gets live feedback
+                    document.querySelectorAll('#church-info-form input, #church-info-form select').forEach(function (el) {
+                        el.addEventListener('input', function () {
+                            if (this.value.trim()) { this.classList.remove('is-invalid'); }
+                        });
                     });
                 })();
                 </script>
