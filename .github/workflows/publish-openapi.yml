@@ -50,10 +50,4 @@ jobs:
           commit_user_name: 'github-actions[bot]'
           commit_user_email: 'github-actions[bot]@users.noreply.github.com'
 
-      - name: Trigger docs.churchcrm.io rebuild
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.DOCS_DEPLOY_TOKEN }}
-          repository: ChurchCRM/docs.churchcrm.io
-          event-type: openapi-updated
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
+      # Removed automatic dispatch to docs repo; docs site will rebuild on schedule.
