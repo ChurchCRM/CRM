@@ -33,6 +33,8 @@ describe("API Private Map", () => {
                     expect(item).to.have.property("longitude");
                     expect(item).to.have.property("classificationId");
                     expect(item).to.have.property("profileUrl");
+                    expect(item).to.have.property("directionsUrl");
+                    expect(item).to.have.property("phone");
                 },
             );
         });
@@ -50,6 +52,8 @@ describe("API Private Map", () => {
                         expect(item.longitude).to.be.a("number");
                         expect(item.classificationId).to.be.a("number");
                         expect(item.profileUrl).to.be.a("string");
+                        expect(item.directionsUrl).to.be.a("string");
+                        expect(item.phone).to.be.a("string");
                     });
                 },
             );
@@ -81,6 +85,20 @@ describe("API Private Map", () => {
                 (response) => {
                     response.body.forEach((item) => {
                         expect(item.profileUrl).to.include("/v2/family/" + item.id);
+                    });
+                },
+            );
+        });
+
+        it("directionsUrl contains a Google Maps destination link", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/map/families", null, 200).then(
+                (response) => {
+                    response.body.forEach((item) => {
+                        if (item.directionsUrl !== "") {
+                            expect(item.directionsUrl).to.include(
+                                "https://www.google.com/maps/dir/?api=1&destination=",
+                            );
+                        }
                     });
                 },
             );
