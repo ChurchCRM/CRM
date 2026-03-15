@@ -666,7 +666,7 @@ class Person extends BasePerson implements PhotoInterface
      */
     public function getBestPhone(): string
     {
-        return $this->getCellPhone() ?: $this->getHomePhone();
+        return $this->getCellPhone() ?: $this->getHomePhone() ?? '';
     }
 
     public function postSave(?ConnectionInterface $con = null): void

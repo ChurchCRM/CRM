@@ -133,7 +133,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'classificationId' => $classificationId,
                 'profileUrl'       => SystemURLs::getRootPath() . '/v2/family/' . $family->getId(),
                 'directionsUrl'    => $family->getDirectionsUrl(),
-                'phone'            => $family->getHomePhone(),
+                'phone'            => $family->getHomePhone() ?? '',
             ];
         }
     }
