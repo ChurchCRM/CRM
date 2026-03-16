@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Numara"
 
 #: 
-msgid "Developer Chat"
-msgstr "Geliştirici sohbeti"
-
-#: 
 msgid "Event Checkin"
 msgstr "Olay kontrolü"
 
@@ -3099,10 +3095,6 @@ msgid "Send Message"
 msgstr "Mesaj gönder"
 
 #: 
-msgid "Quick Status"
-msgstr "Hızlı Durum"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Aylara göre doğum günleri"
 
@@ -3117,30 +3109,6 @@ msgstr "Hareketli"
 #: 
 msgid "Home Address"
 msgstr "Ev Adresi"
-
-#: 
-msgid "Dad Name"
-msgstr "Baba adı"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Baba mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Baba E -posta"
-
-#: 
-msgid "Mom Name"
-msgstr "Anne Adı"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Anne Mobile"
-
-#: 
-msgid "Mom Email"
-msgstr "Anne e -posta"
 
 #: 
 msgid "Compose New Message"
@@ -3554,10 +3522,6 @@ msgid "with this property..."
 msgstr "Bu mülkle .."
 
 #: 
-msgid "Church Email"
-msgstr "Kilise e -posta"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Yalnızca bu sınıflandırmaları dizine ekleyin, virgül ayrılmış"
@@ -3620,14 +3584,6 @@ msgid "First month of the fiscal year"
 msgstr "Mali yılın ilk ayı"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Google haritasını ortalamak için kullanılan kilisenin enlemi"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Google haritasını ortalamak için kullanılan kilisenin boylamı"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Kişiler editöründe arkadaş tarihini devre dışı bırakmak için true ayarlayın. Kişiler Editöründe Arkadaş Tarihini Girmeyi Etkinleştirmek için Yanlış Ayarlayın."
 
@@ -3674,22 +3630,6 @@ msgstr "Sol kenar boşluğu (1 = 1/100. İnç)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Çizgi kalınlığı (1 = 1/100. İnç"
-
-#: 
-msgid "Church City"
-msgstr "Kilise şehri"
-
-#: 
-msgid "Church State"
-msgstr "Kilise devleti"
-
-#: 
-msgid "Church Zip"
-msgstr "Kilise zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Kilise telefonu"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6145,10 +6085,6 @@ msgid "Text Cart"
 msgstr "Metin arabası"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Kilisenizin web sitesi"
-
-#: 
 msgid "Self Verification"
 msgstr "Kendini doğrulama"
 
@@ -6193,16 +6129,8 @@ msgid "Checking Cart Status"
 msgstr "Sepet Durumunu Kontrol Etme"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Bu grubun tüm üyeleri arabada"
-
-#: 
 msgid "Remove all"
 msgstr "Hepsini kaldır"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Bu grubun tüm üyeleri arabada değil"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7250,10 +7178,6 @@ msgstr "Son ad ilk ad ikinci ad"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Coğrafi kodlama adresleri için kullanılan Google Haritalar API Anahtarı"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10140,10 +10064,6 @@ msgstr "Aile üyelerini şimdi oluşturabilir veya daha sonra ekleyebilirsiniz. 
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Mali yılınızın başladığı ay:"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Posta Kodu"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

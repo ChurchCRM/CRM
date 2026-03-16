@@ -480,10 +480,6 @@ msgid "No"
 msgstr "కాదు"
 
 #: 
-msgid "Developer Chat"
-msgstr "డెవలపర్ చాట్"
-
-#: 
 msgid "Event Checkin"
 msgstr "ఈవెంట్ తనిఖీ"
 
@@ -3081,10 +3077,6 @@ msgid "Send Message"
 msgstr "సందేశం పంపండి"
 
 #: 
-msgid "Quick Status"
-msgstr "త్వరిత స్థితి"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "నెల వారీ పుట్టినరోజులు"
 
@@ -3099,30 +3091,6 @@ msgstr "మొబైల్"
 #: 
 msgid "Home Address"
 msgstr "ఇంటి చిరునామా"
-
-#: 
-msgid "Dad Name"
-msgstr "నాన్న పేరు"
-
-#: 
-msgid "Dad Mobile"
-msgstr "నాన్న మొబైల్"
-
-#: 
-msgid "Dad Email"
-msgstr "నాన్న ఇమెయిల్"
-
-#: 
-msgid "Mom Name"
-msgstr "అమ్మ పేరు"
-
-#: 
-msgid "Mom Mobile"
-msgstr "అమ్మ మొబైల్"
-
-#: 
-msgid "Mom Email"
-msgstr "అమ్మ ఇమెయిల్"
 
 #: 
 msgid "Compose New Message"
@@ -3533,10 +3501,6 @@ msgid "with this property..."
 msgstr "ఈ ప్రాపర్టీతో..."
 
 #: 
-msgid "Church Email"
-msgstr "చర్చి ఇమెయిల్"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "డైరెక్టరీలో ఈ వర్గీకరణలను మాత్రమే చేర్చండి, కామాతో వేరు చేయబడినవి"
 
@@ -3597,14 +3561,6 @@ msgid "First month of the fiscal year"
 msgstr "ఆర్థిక సంవత్సరం యొక్క మొదటి నెల"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "చర్చి యొక్క అక్షాంశం, Google మ్యాప్‌ను కేంద్రీకరించడానికి ఉపయోగించబడుతుంది"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "చర్చి యొక్క రేఖాంశం, Google మ్యాప్‌ను కేంద్రీకరించడానికి ఉపయోగించబడుతుంది"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "పర్సన్ ఎడిటర్‌లో ఫ్రెండ్ డేట్ ఎంటర్ చేయడాన్ని నిలిపివేయడానికి true సెట్ చేయండి. పర్సన్ ఎడిటర్‌లో ఫ్రెండ్ డేట్ ఎంటర్ చేయడాన్ని ప్రారంభించడానికి false సెట్ చేయండి."
 
@@ -3651,22 +3607,6 @@ msgstr "ఎడమ మార్జిన్ (1 = 1/100వ అంగుళం)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "రేఖ మందం (1 = 1/100వ అంగుళం"
-
-#: 
-msgid "Church City"
-msgstr "చర్చి నగరం"
-
-#: 
-msgid "Church State"
-msgstr "చర్చి రాష్ట్రం"
-
-#: 
-msgid "Church Zip"
-msgstr "చర్చి జిప్"
-
-#: 
-msgid "Church Phone"
-msgstr "చర్చి ఫోన్"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6115,10 +6055,6 @@ msgid "Text Cart"
 msgstr "వచన కార్ట్"
 
 #: 
-msgid "Your Church's Website"
-msgstr "మీ చర్చి వెబ్‌సైట్"
-
-#: 
 msgid "Self Verification"
 msgstr "స్వయం ధృవీకరణ"
 
@@ -6163,16 +6099,8 @@ msgid "Checking Cart Status"
 msgstr "కార్ట్ స్థితిని తనిఖీ చేస్తున్నాం"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "ఈ సమూహంలోని అందరు సభ్యులు కార్ట్‌లో ఉన్నారు"
-
-#: 
 msgid "Remove all"
 msgstr "అన్నింటినీ తొలగించండి"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "ఈ సమూహంలోని అందరు సభ్యులు కార్ట్‌లో లేరు"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7213,10 +7141,6 @@ msgstr "ఇంటిపేరు, మొదటిపేరు మధ్యపే
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "ఈ వినియోగదారు కోసం 2 కారకాల ప్రామాణీకరణను నిలిపివేయడాన్ని దయచేసి నిర్ధారించండి"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "చిరునామాలను జియోకోడ్ చేయడానికి ఉపయోగించే Google Maps API కీ"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10102,10 +10026,6 @@ msgstr "మీరు ఇప్పుడు కుటుంబ సభ్యుల
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "మీ ఆర్థిక సంవత్సరం నెలలో ప్రారంభమవుతుంది"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "జిప్ / పోస్టల్ కోడ్"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

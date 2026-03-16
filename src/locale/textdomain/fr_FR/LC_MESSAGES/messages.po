@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Non"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat pour développeurs"
-
-#: 
 msgid "Event Checkin"
 msgstr "Enregistrement Événements"
 
@@ -3099,10 +3095,6 @@ msgid "Send Message"
 msgstr "Envoyer un message"
 
 #: 
-msgid "Quick Status"
-msgstr "Status rapide"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Date d'Anniversaire par mois"
 
@@ -3117,30 +3109,6 @@ msgstr "Téléphone portable"
 #: 
 msgid "Home Address"
 msgstr "Adresse personnelle"
-
-#: 
-msgid "Dad Name"
-msgstr "Nom du père"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Téléphone portable du père"
-
-#: 
-msgid "Dad Email"
-msgstr "Email du père"
-
-#: 
-msgid "Mom Name"
-msgstr "Nom de la mère"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Téléphone portable de la mère"
-
-#: 
-msgid "Mom Email"
-msgstr "Email de la mère"
 
 #: 
 msgid "Compose New Message"
@@ -3554,10 +3522,6 @@ msgid "with this property..."
 msgstr "avec cette propriété..."
 
 #: 
-msgid "Church Email"
-msgstr "Email de l'église"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inclure uniquement ces catégories dans le répertoire, séparées par une virgule"
@@ -3620,14 +3584,6 @@ msgid "First month of the fiscal year"
 msgstr "Premier mois de l&#39;année fiscale"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Latitude de l&#39;église, utilisé pour centrer Google Map"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Longitude de l&#39;église, utilisé pour centrer Google Map"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Cocher Vrai pour désactiver la saisie de Date d'amitié dans le Gestionnaire d'individu. Cocher Faux pour activer la saisie de Date d'amitié dans le Gestionnaire d'individu."
 
@@ -3674,22 +3630,6 @@ msgstr "Marge de gauche (1=1/100 Inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Épaisseur de la ligne (1=1/100 Inch)"
-
-#: 
-msgid "Church City"
-msgstr "Ville de l&#39;église"
-
-#: 
-msgid "Church State"
-msgstr "Région de l'église"
-
-#: 
-msgid "Church Zip"
-msgstr "Code postal de l'église"
-
-#: 
-msgid "Church Phone"
-msgstr "Téléphone de l'église"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6145,10 +6085,6 @@ msgid "Text Cart"
 msgstr "texto au panier"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Votre site internet de l'église"
-
-#: 
 msgid "Self Verification"
 msgstr "Autovérification"
 
@@ -6193,16 +6129,8 @@ msgid "Checking Cart Status"
 msgstr "Vérifier le statut du panier"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Tous les membres du groupes sont dans le panier"
-
-#: 
 msgid "Remove all"
 msgstr "Tout supprimer"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Le panier ne contient pas tous les membres du groupe"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7249,10 +7177,6 @@ msgstr "Nom, prénom, deuxième prénom"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Veuillez confirmer la désactivation de l'authentification à 2 facteurs pour cet utilisateur"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Clé API Google Maps utilisée pour le géocodage des adresses"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10140,10 +10064,6 @@ msgstr "Vous pouvez créer les membres de la famille maintenant ou les ajouter p
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Votre année fiscale commence au mois"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Code postal / Code postal"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

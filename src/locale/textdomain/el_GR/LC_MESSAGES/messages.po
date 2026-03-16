@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Οχι"
 
 #: 
-msgid "Developer Chat"
-msgstr "Συνομιλία προγραμματιστή"
-
-#: 
 msgid "Event Checkin"
 msgstr "Checkin εκδήλωσης"
 
@@ -3099,10 +3095,6 @@ msgid "Send Message"
 msgstr "Να στείλετε μήνυμα"
 
 #: 
-msgid "Quick Status"
-msgstr "Γρήγορη κατάσταση"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Γενέθλια ανά μήνα"
 
@@ -3117,30 +3109,6 @@ msgstr "Κινητό"
 #: 
 msgid "Home Address"
 msgstr "Διεύθυνση σπιτιού"
-
-#: 
-msgid "Dad Name"
-msgstr "Όνομα μπαμπά"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Μπαμπάς Κινητό"
-
-#: 
-msgid "Dad Email"
-msgstr "Email του μπαμπά"
-
-#: 
-msgid "Mom Name"
-msgstr "Όνομα μαμάς"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Μαμά Κινητό"
-
-#: 
-msgid "Mom Email"
-msgstr "Email της μαμάς"
 
 #: 
 msgid "Compose New Message"
@@ -3554,10 +3522,6 @@ msgid "with this property..."
 msgstr "με αυτό το ακίνητο..."
 
 #: 
-msgid "Church Email"
-msgstr "Email Εκκλησίας"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Συμπεριλάβετε μόνο αυτές τις ταξινομήσεις στον κατάλογο, διαχωρισμένες με κόμματα"
@@ -3620,14 +3584,6 @@ msgid "First month of the fiscal year"
 msgstr "Πρώτος μήνας του οικονομικού έτους"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Γεωγραφικό πλάτος της εκκλησίας, που χρησιμοποιείται για το κέντρο του χάρτη Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Γεωγραφικό μήκος της εκκλησίας, που χρησιμοποιείται για το κέντρο του χάρτη της Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Ορίστε το true για να απενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor. Ορίστε το false για να ενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor."
 
@@ -3674,22 +3630,6 @@ msgstr "Αριστερό περιθώριο (1 = 1/100η ίντσα)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Πάχος γραμμής (1 = 1/100η ίντσα"
-
-#: 
-msgid "Church City"
-msgstr "Εκκλησία της πόλης"
-
-#: 
-msgid "Church State"
-msgstr "Εκκλησιαστική Πολιτεία"
-
-#: 
-msgid "Church Zip"
-msgstr "Τ.Κ. Εκκλησίας"
-
-#: 
-msgid "Church Phone"
-msgstr "Τηλέφωνο Εκκλησίας"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6145,10 +6085,6 @@ msgid "Text Cart"
 msgstr "Καλάθι κειμένου"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Ο ιστότοπος της Εκκλησίας σας"
-
-#: 
 msgid "Self Verification"
 msgstr "Αυτοεπαλήθευση"
 
@@ -6193,16 +6129,8 @@ msgid "Checking Cart Status"
 msgstr "Έλεγχος κατάστασης καλαθιού"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Όλα τα μέλη αυτής της ομάδας βρίσκονται στο καλάθι"
-
-#: 
 msgid "Remove all"
 msgstr "Αφαίρεση όλων"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Δεν είναι όλα τα μέλη αυτής της ομάδας στο καλάθι"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7250,10 +7178,6 @@ msgstr "Επώνυμο, Όνομα MiddleName"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Επιβεβαιώστε την απενεργοποίηση του 2 Factor Auth για αυτόν τον χρήστη"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Κλειδί API Χαρτών Google που χρησιμοποιείται για διευθύνσεις Γεωκωδικοποίησης"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10140,10 +10064,6 @@ msgstr "Μπορείτε να δημιουργήσετε μέλη οικογέν
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Το οικονομικό σας έτος ξεκινά σε μήνα"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Τ.Κ. / Ταχυδρομικός Κώδικας"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

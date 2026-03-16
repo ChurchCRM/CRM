@@ -498,10 +498,6 @@ msgid "No"
 msgstr "Ingen"
 
 #: 
-msgid "Developer Chat"
-msgstr "Utvikler samtale"
-
-#: 
 msgid "Event Checkin"
 msgstr "Hendelse Checkin"
 
@@ -3213,10 +3209,6 @@ msgid "Send Message"
 msgstr "Send melding"
 
 #: 
-msgid "Quick Status"
-msgstr "Rask status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Bursdager etter måned"
 
@@ -3231,30 +3223,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Hjemmeadresse"
-
-#: 
-msgid "Dad Name"
-msgstr "Fars navn"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Fars mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Fars email"
-
-#: 
-msgid "Mom Name"
-msgstr "Mors navn"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mors mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mors email"
 
 #: 
 msgid "Compose New Message"
@@ -3672,10 +3640,6 @@ msgid "with this property..."
 msgstr "med denne egenskapen..."
 
 #: 
-msgid "Church Email"
-msgstr "Kirkens e-post"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkluder kun disse klassifiseringene i katalogen, kommaseparert"
 
@@ -3736,14 +3700,6 @@ msgid "First month of the fiscal year"
 msgstr "Første måned i regnskapsåret"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Kirkens breddegrad, brukt til å sentrere Google-kartet"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kirkens lengdegrad, brukt til å sentrere Google-kartet"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Sett til 'Sann' for å deaktivere inntasting av venneskapsdato i personredigering. Sett til 'Usann' for å aktivere."
 
@@ -3790,22 +3746,6 @@ msgstr "Venstremargin (1 = 1/100 tomme)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Linjetykkelse (1 = 1/100 tomme)"
-
-#: 
-msgid "Church City"
-msgstr "Kirkens by"
-
-#: 
-msgid "Church State"
-msgstr "Kirkens fylke/stat"
-
-#: 
-msgid "Church Zip"
-msgstr "Kirkens postnummer"
-
-#: 
-msgid "Church Phone"
-msgstr "Kirkens telefonnummer"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6254,10 +6194,6 @@ msgid "Text Cart"
 msgstr "Tekstkurv"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Menighetens nettside"
-
-#: 
 msgid "Self Verification"
 msgstr "Egenverifisering"
 
@@ -6302,16 +6238,8 @@ msgid "Checking Cart Status"
 msgstr "Sjekker status for handlekurv"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alle medlemmer i denne gruppen er i handlekurven"
-
-#: 
 msgid "Remove all"
 msgstr "Fjern alle"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Ikke alle medlemmer i denne gruppen er i handlekurven"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7347,10 +7275,6 @@ msgstr "Etternavn, Fornavn Mellomnavn"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API-nøkkel brukt for geokoding av adresser"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10236,10 +10160,6 @@ msgstr "Du kan opprette familiemedlemmer nå eller legge dem til senere. Alle op
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Regnskapsåret ditt starter i måned"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Postnummer"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

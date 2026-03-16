@@ -499,10 +499,6 @@ msgid "No"
 msgstr "Nej"
 
 #: 
-msgid "Developer Chat"
-msgstr "Utvecklarchatt"
-
-#: 
 msgid "Event Checkin"
 msgstr "Evenemang inchekning"
 
@@ -3217,10 +3213,6 @@ msgid "Send Message"
 msgstr "Skicka meddelande"
 
 #: 
-msgid "Quick Status"
-msgstr "Snabb status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Födelsedagar per månad"
 
@@ -3235,30 +3227,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Hemadress"
-
-#: 
-msgid "Dad Name"
-msgstr "Pappa Namn"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Pappa mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Pappa e-post"
-
-#: 
-msgid "Mom Name"
-msgstr "Mamma Namn"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mamma mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mamma e-post"
 
 #: 
 msgid "Compose New Message"
@@ -3679,10 +3647,6 @@ msgid "with this property..."
 msgstr "med den här egenskapen ..."
 
 #: 
-msgid "Church Email"
-msgstr "Kyrkans e-post"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkludera endast dessa klassificeringar i katalogen, kommaseparerad"
@@ -3745,14 +3709,6 @@ msgid "First month of the fiscal year"
 msgstr "Första månaden av räkenskapsåret"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Kyrkans bredd, används för att centrera Google-kartan"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kyrkans longitud, används för att centrera Google-kartan"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Ställ in true för att inaktivera att ange Friend Date i Person Editor. Ställ in falskt för att aktivera att ange Friend Date i Person Editor."
 
@@ -3799,22 +3755,6 @@ msgstr "Vänster marginal (1 = 1 / 100th inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Linjetjocklek (1 = 1 / 100th inch)"
-
-#: 
-msgid "Church City"
-msgstr "Church City"
-
-#: 
-msgid "Church State"
-msgstr "Church State"
-
-#: 
-msgid "Church Zip"
-msgstr "Church Zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Kyrktelefon"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6270,10 +6210,6 @@ msgid "Text Cart"
 msgstr "Textvagn"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Din kyrkas webbplats"
-
-#: 
 msgid "Self Verification"
 msgstr "Självverifiering"
 
@@ -6318,16 +6254,8 @@ msgid "Checking Cart Status"
 msgstr "Kontrollera kundvagnens status"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alla medlemmar i denna grupp är i vagnen"
-
-#: 
 msgid "Remove all"
 msgstr "Ta bort alla"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Inte alla medlemmar i denna grupp är i vagnen"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7375,10 +7303,6 @@ msgstr "Efternamn, Förstanamn andra namn"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bekräfta att du avaktiverar 2 Factor Auth för denna användare"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API-nyckel som används för geokodningsadresser"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10265,10 +10189,6 @@ msgstr "Du kan skapa familjemedlemmar nu eller lägga till dem senare. Alla post
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Ditt räkenskapsår börjar i månad"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Postnummer"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

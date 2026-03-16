@@ -494,10 +494,6 @@ msgid "No"
 msgstr "Nincs"
 
 #: 
-msgid "Developer Chat"
-msgstr "Fejlesztői csevegés"
-
-#: 
 msgid "Event Checkin"
 msgstr "Event Checkin"
 
@@ -3175,10 +3171,6 @@ msgid "Send Message"
 msgstr "Üzenet küldése"
 
 #: 
-msgid "Quick Status"
-msgstr "Gyors állapot"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Születésnapok hónap szerint"
 
@@ -3193,30 +3185,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Lakcím"
-
-#: 
-msgid "Dad Name"
-msgstr "Apa neve"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Apa mobilja"
-
-#: 
-msgid "Dad Email"
-msgstr "Apa e-mail címe"
-
-#: 
-msgid "Mom Name"
-msgstr "Anya neve"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Anya mobilja"
-
-#: 
-msgid "Mom Email"
-msgstr "Anya e-mail címe"
 
 #: 
 msgid "Compose New Message"
@@ -3633,10 +3601,6 @@ msgid "with this property..."
 msgstr "ezzel a tulajdonsággal..."
 
 #: 
-msgid "Church Email"
-msgstr "Egyházi e-mail"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Csak ezeket a besorolásokat tartalmazza a névjegyzék, vesszővel elválasztva"
 
@@ -3697,14 +3661,6 @@ msgid "First month of the fiscal year"
 msgstr "A pénzügyi év első hónapja"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "A templom szélességi foka, a Google térkép középre igazításához"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "A templom hosszúsági foka, a Google térkép középre igazításához"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Állítsa Igazra a Barát Dátum megadásának letiltásához a Személyszerkesztőben. Állítsa Hamisra az engedélyezéséhez."
 
@@ -3751,22 +3707,6 @@ msgstr "Bal margó (1 = 1/100 hüvelyk)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Vonalvastagság (1 = 1/100 hüvelyk)"
-
-#: 
-msgid "Church City"
-msgstr "Templom városa"
-
-#: 
-msgid "Church State"
-msgstr "Templom állama"
-
-#: 
-msgid "Church Zip"
-msgstr "Templom irányítószáma"
-
-#: 
-msgid "Church Phone"
-msgstr "Templom telefonszáma"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6215,10 +6155,6 @@ msgid "Text Cart"
 msgstr "Szöveges kosár"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Az Ön egyházának weboldala"
-
-#: 
 msgid "Self Verification"
 msgstr "Önellenőrzés"
 
@@ -6263,16 +6199,8 @@ msgid "Checking Cart Status"
 msgstr "Kosár állapotának ellenőrzése"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "A csoport minden tagja a kosárban van"
-
-#: 
 msgid "Remove all"
 msgstr "Összes eltávolítása"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Nem minden csapattag van a kosárban"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7313,10 +7241,6 @@ msgstr "Vezetéknév, Keresztnév KözépsőNév"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Kérjük, erősítse meg a kétlépcsős azonosítás letiltását ehhez a felhasználóhoz"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API kulcs a címek geokódolásához"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10202,10 +10126,6 @@ msgstr "A családtagokat létrehozhatja most, vagy hozzáadhatja őket később 
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "A pénzügyi év kezdő hónapja"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Irányítószám"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

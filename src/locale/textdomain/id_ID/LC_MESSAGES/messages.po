@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Tidak"
 
 #: 
-msgid "Developer Chat"
-msgstr "Kontak Pengembang"
-
-#: 
 msgid "Event Checkin"
 msgstr "Kehadiran di Acara"
 
@@ -3100,10 +3096,6 @@ msgid "Send Message"
 msgstr "Mengirim pesan"
 
 #: 
-msgid "Quick Status"
-msgstr "Status cepat"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ulang tahun per bulan"
 
@@ -3118,30 +3110,6 @@ msgstr "Mobile"
 #: 
 msgid "Home Address"
 msgstr "Alamat rumah"
-
-#: 
-msgid "Dad Name"
-msgstr "Nama Ayah"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Ayah Mobile"
-
-#: 
-msgid "Dad Email"
-msgstr "Email Ayah"
-
-#: 
-msgid "Mom Name"
-msgstr "Nama Ibu"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mom Mobile"
-
-#: 
-msgid "Mom Email"
-msgstr "Email Ibu"
 
 #: 
 msgid "Compose New Message"
@@ -3555,10 +3523,6 @@ msgid "with this property..."
 msgstr "dengan properti ini ..."
 
 #: 
-msgid "Church Email"
-msgstr "Email Gereja"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Masukkan hanya klasifikasi ini dalam direktori, pisahkan dengan koma"
@@ -3621,14 +3585,6 @@ msgid "First month of the fiscal year"
 msgstr "Bulan pertama tahun fiskal"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Lintang gereja, digunakan untuk memusatkan peta Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Bujur gereja, digunakan untuk memusatkan peta Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Set true untuk menonaktifkan memasukkan Tanggal Teman di Editor Orang. Set false untuk mengaktifkan memasukkan Tanggal Teman di Editor Orang."
 
@@ -3675,22 +3631,6 @@ msgstr "Margin Kiri (1 = 1/100 inci)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Ketebalan Garis (1 = 1/100 inci)"
-
-#: 
-msgid "Church City"
-msgstr "Kota /Kabupaten Gereja"
-
-#: 
-msgid "Church State"
-msgstr "Provinsi Gereja"
-
-#: 
-msgid "Church Zip"
-msgstr "Kodepos Gereja"
-
-#: 
-msgid "Church Phone"
-msgstr "Telepon Gereja"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6146,10 +6086,6 @@ msgid "Text Cart"
 msgstr "Troli Teks"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Situs web Gereja Anda"
-
-#: 
 msgid "Self Verification"
 msgstr "Verifikasi diri"
 
@@ -6194,16 +6130,8 @@ msgid "Checking Cart Status"
 msgstr "Memeriksa Status Troli"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Semua anggota grup ini ada di troli"
-
-#: 
 msgid "Remove all"
 msgstr "Menghapus semua"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Tidak semua anggota grup ini ada di troli"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7242,10 +7170,6 @@ msgstr "LastName, FirstName MiddleName"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Kunci API Google Maps digunakan untuk alamat Geocoding"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10130,10 +10054,6 @@ msgstr "Anda dapat menambah anggota keluarga sekarang atau nanti."
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Tahun fiskal Anda dimulai pada bulan"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Kode Pos"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
