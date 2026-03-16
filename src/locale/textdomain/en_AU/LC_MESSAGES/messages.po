@@ -117,10 +117,6 @@ msgstr "Localisation"
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
-#: 
-msgid "Church Zip"
-msgstr "Church Postcode"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"

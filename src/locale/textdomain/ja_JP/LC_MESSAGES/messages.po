@@ -476,10 +476,6 @@ msgid "No"
 msgstr "いいえ"
 
 #: 
-msgid "Developer Chat"
-msgstr "開発者チャット"
-
-#: 
 msgid "Event Checkin"
 msgstr "イベント・チェックイン"
 
@@ -3065,10 +3061,6 @@ msgid "Send Message"
 msgstr "メッセージを送信"
 
 #: 
-msgid "Quick Status"
-msgstr "クイックステータス"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "月別誕生日"
 
@@ -3083,30 +3075,6 @@ msgstr "携帯"
 #: 
 msgid "Home Address"
 msgstr "自宅住所"
-
-#: 
-msgid "Dad Name"
-msgstr "父親の名前"
-
-#: 
-msgid "Dad Mobile"
-msgstr "父親の携帯"
-
-#: 
-msgid "Dad Email"
-msgstr "父親のメール"
-
-#: 
-msgid "Mom Name"
-msgstr "母親の名前"
-
-#: 
-msgid "Mom Mobile"
-msgstr "母親の携帯"
-
-#: 
-msgid "Mom Email"
-msgstr "母親のメール"
 
 #: 
 msgid "Compose New Message"
@@ -3517,10 +3485,6 @@ msgid "with this property..."
 msgstr "このプロパティで..."
 
 #: 
-msgid "Church Email"
-msgstr "教会メール"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "ディレクトリにこれらの分類のみを含める(カンマ区切り)"
 
@@ -3581,14 +3545,6 @@ msgid "First month of the fiscal year"
 msgstr "会計年度の最初の月"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "教会の緯度(Googleマップの中心に使用)"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "教会の経度(Googleマップの中心に使用)"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "人物エディタで友人日付の入力を無効にするには、trueを設定します。人物エディタで友人日付の入力を有効にするには、falseを設定します。"
 
@@ -3635,22 +3591,6 @@ msgstr "左マージン (1 = 1/100インチ)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "線の太さ (1 = 1/100インチ)"
-
-#: 
-msgid "Church City"
-msgstr "教会市区町村"
-
-#: 
-msgid "Church State"
-msgstr "教会都道府県"
-
-#: 
-msgid "Church Zip"
-msgstr "教会郵便番号"
-
-#: 
-msgid "Church Phone"
-msgstr "教会電話"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6099,10 +6039,6 @@ msgid "Text Cart"
 msgstr "テキストカート"
 
 #: 
-msgid "Your Church's Website"
-msgstr "教会のウェブサイト"
-
-#: 
 msgid "Self Verification"
 msgstr "自己確認"
 
@@ -6147,16 +6083,8 @@ msgid "Checking Cart Status"
 msgstr "カートのステータスを確認中"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "このグループのすべてのメンバーがカートに入っています"
-
-#: 
 msgid "Remove all"
 msgstr "すべて削除"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "このグループのすべてのメンバーがカートに入っているわけではありません"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7195,10 +7123,6 @@ msgstr "姓, 名, ミドルネーム"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "住所のジオコーディングに使用されるGoogle Maps APIキー"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10082,10 +10006,6 @@ msgstr "今すぐ家族メンバーを作成するか、後で追加できます
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "あなたの会計年度は月に始まります"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "郵便番号"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

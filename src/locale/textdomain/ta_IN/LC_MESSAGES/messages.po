@@ -480,10 +480,6 @@ msgid "No"
 msgstr "இல்லை"
 
 #: 
-msgid "Developer Chat"
-msgstr "உருவாக்குபவர் பேச்சு"
-
-#: 
 msgid "Event Checkin"
 msgstr "நிகழ்வு சரிபார்ப்பு"
 
@@ -3097,10 +3093,6 @@ msgid "Send Message"
 msgstr "செய்தி அனுப்ப"
 
 #: 
-msgid "Quick Status"
-msgstr "விரைவான நிலை"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "மாதவாரியாக பிறந்தநாள்"
 
@@ -3115,30 +3107,6 @@ msgstr "கைபேசி"
 #: 
 msgid "Home Address"
 msgstr "வீட்டு முகவரி"
-
-#: 
-msgid "Dad Name"
-msgstr "அப்பா பெயர்"
-
-#: 
-msgid "Dad Mobile"
-msgstr "அப்பா மொபைல்/கைபேசி"
-
-#: 
-msgid "Dad Email"
-msgstr "அப்பா மின்னஞ்சல்"
-
-#: 
-msgid "Mom Name"
-msgstr "அம்மா பெயர்"
-
-#: 
-msgid "Mom Mobile"
-msgstr "அம்மா மொபைல்/கைபேசி"
-
-#: 
-msgid "Mom Email"
-msgstr "அம்மா மின்னஞ்சல்"
 
 #: 
 msgid "Compose New Message"
@@ -3552,10 +3520,6 @@ msgid "with this property..."
 msgstr "இந்த பண்புடன்..."
 
 #: 
-msgid "Church Email"
-msgstr "சர்ச் மின்னஞ்சல்"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "கோப்பகத்தில் இந்த வகைப்பாடுகளை மட்டும் சேர்த்து, கமா பிரிக்கப்பட்டது"
 
@@ -3616,14 +3580,6 @@ msgid "First month of the fiscal year"
 msgstr "நிதியாண்டின் முதல் மாதம்"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "தேவாலயத்தின் அட்சரேகை, கூகிள் வரைபடத்தை மையமாக பயன்படுத்தப்படுகிறது"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "தேவாலயத்தின் தீர்க்கரேகை, கூகிள் வரைபடத்தை மையமாக பயன்படுத்தப்படுகிறது"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "தனிப்பட்ட எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை முடக்குவதற்கு சரி என அமைக்கவும். நபர் எடிட்டரில் நண்பர் தேதியை உள்ளிடுவதை இயக்குவதற்கு தவறானவை அமைக்கவும்."
 
@@ -3670,22 +3626,6 @@ msgstr "இடது ஓரம் (1 = 1/100வது அங்குலம்)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "கோடு தடிமன் (1 = 1/100வது அங்குலம்"
-
-#: 
-msgid "Church City"
-msgstr "சர்ச் சிட்டி"
-
-#: 
-msgid "Church State"
-msgstr "சர்ச் மாநிலம்"
-
-#: 
-msgid "Church Zip"
-msgstr "சர்ச் ஜிப்/பின் குறியீடு"
-
-#: 
-msgid "Church Phone"
-msgstr "சர்ச் ஃபோன்"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6139,10 +6079,6 @@ msgid "Text Cart"
 msgstr "உரை மென்வண்டி"
 
 #: 
-msgid "Your Church's Website"
-msgstr "உங்கள் தேவாலயத்தின் இணையதளம்"
-
-#: 
 msgid "Self Verification"
 msgstr "சுய சரிபார்ப்பு"
 
@@ -6187,16 +6123,8 @@ msgid "Checking Cart Status"
 msgstr "மென்வண்டியின் நிலையைச் சரிபார்க்கிறது"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "இந்தக் குழுவின் அனைத்து உறுப்பினர்களும் மென்வண்டியில்  உள்ளனர்"
-
-#: 
 msgid "Remove all"
 msgstr "அனைத்தையும் அகற்று"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "இந்தக் குழுவின் அனைத்து உறுப்பினர்களும் மென்வண்டியில்  இல்லை"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7246,10 +7174,6 @@ msgstr "கடைசிப்பெயர், முதல்பெயர் ந
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "இந்தப் பயனருக்கு 2 காரணி அங்கீகாரத்தை முடக்குவதை உறுதிப்படுத்தவும்"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "ஜியோகோடிங் முகவரிகளுக்கு கூகுள் வரைபடம் API விசை பயன்படுத்தப்படுகிறது"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10140,10 +10064,6 @@ msgstr "நீங்கள் இப்போது குடும்ப உற
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "உங்கள் நிதியாண்டு இந்த மாதத்தில் தொடங்குகிறது"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "ஜிப் / அஞ்சல் குறியீடு"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Hapana"
 
 #: 
-msgid "Developer Chat"
-msgstr "Mazungumzo na watengenezaji"
-
-#: 
 msgid "Event Checkin"
 msgstr "Kuingia kwa Tukio"
 
@@ -3097,10 +3093,6 @@ msgid "Send Message"
 msgstr "Tuma Ujumbe"
 
 #: 
-msgid "Quick Status"
-msgstr "Hali ya Haraka"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Siku za kuzaliwa kwa Mwezi"
 
@@ -3115,30 +3107,6 @@ msgstr "Rununu"
 #: 
 msgid "Home Address"
 msgstr "Anwani ya nyumbani"
-
-#: 
-msgid "Dad Name"
-msgstr "Jina la Baba"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Baba Mkono"
-
-#: 
-msgid "Dad Email"
-msgstr "Baba Barua pepe"
-
-#: 
-msgid "Mom Name"
-msgstr "Jina la Mama"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mama Mkono"
-
-#: 
-msgid "Mom Email"
-msgstr "Mama Barua pepe"
 
 #: 
 msgid "Compose New Message"
@@ -3552,10 +3520,6 @@ msgid "with this property..."
 msgstr "na mali hii.."
 
 #: 
-msgid "Church Email"
-msgstr "Barua pepe ya Kanisa"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Jumuisha uainishaji huu pekee kwenye saraka, iliyotenganishwa kwa koma"
 
@@ -3616,14 +3580,6 @@ msgid "First month of the fiscal year"
 msgstr "Mwezi wa kwanza wa mwaka wa fedha"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Latitudo ya kanisa, inayotumika kuweka katikati ramani ya Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Longitude ya kanisa, inayotumika kuweka katikati ramani ya Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Weka kweli ili kuzima kuweka Tarehe ya Rafiki katika Kihariri cha Mtu. Weka sivyo ili kuwezesha kuweka Tarehe ya Rafiki katika Kihariri cha Mtu."
 
@@ -3670,22 +3626,6 @@ msgstr "Pambizo la Kushoto (1 = inchi 1/100)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Unene wa Mstari (1 = inchi 1/100"
-
-#: 
-msgid "Church City"
-msgstr "Jiji la Kanisa"
-
-#: 
-msgid "Church State"
-msgstr "Jimbo la Kanisa"
-
-#: 
-msgid "Church Zip"
-msgstr "Zip ya Kanisa"
-
-#: 
-msgid "Church Phone"
-msgstr "Simu ya Kanisa"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6140,10 +6080,6 @@ msgid "Text Cart"
 msgstr "Mkokoteni wa maandishi"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Tovuti ya Kanisa lako"
-
-#: 
 msgid "Self Verification"
 msgstr "Kujithibitisha"
 
@@ -6188,16 +6124,8 @@ msgid "Checking Cart Status"
 msgstr "Kuangalia Hali ya Rukwama"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Washiriki wote wa kikundi hiki wako kwenye rukwama"
-
-#: 
 msgid "Remove all"
 msgstr "Ondoa zote"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Sio washiriki wote wa kikundi hiki walio kwenye rukwama"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7243,10 +7171,6 @@ msgstr "Jina la Mwisho, Jina la Kwanza Jina la Kati"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Ufunguo wa API ya Ramani za Google hutumiwa kwa anwani za Geocoding"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10132,10 +10056,6 @@ msgstr "Unaweza kuunda wanachama wa familia sasa au baadaye."
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Mwaka wako wa fedha unaanza mwezi wa"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Sanduku la Posta / Zip Code"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

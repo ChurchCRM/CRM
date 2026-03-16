@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Nee"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat met ontwikkelaar"
-
-#: 
 msgid "Event Checkin"
 msgstr "Mutaties per activiteit"
 
@@ -3097,10 +3093,6 @@ msgid "Send Message"
 msgstr "Stuur bericht"
 
 #: 
-msgid "Quick Status"
-msgstr "Status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Verjaardagen per maand"
 
@@ -3115,30 +3107,6 @@ msgstr "Mobiel"
 #: 
 msgid "Home Address"
 msgstr "Huis adres"
-
-#: 
-msgid "Dad Name"
-msgstr "Naam vader"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Telefoon nummer"
-
-#: 
-msgid "Dad Email"
-msgstr "E-mail"
-
-#: 
-msgid "Mom Name"
-msgstr "Naam moeder"
-
-#: 
-msgid "Mom Mobile"
-msgstr "telefoon nummer"
-
-#: 
-msgid "Mom Email"
-msgstr "e-mail"
 
 #: 
 msgid "Compose New Message"
@@ -3554,10 +3522,6 @@ msgid "with this property..."
 msgstr "Met dit kenmerk...."
 
 #: 
-msgid "Church Email"
-msgstr "Email adres van de kerk"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
@@ -3618,14 +3582,6 @@ msgid "First month of the fiscal year"
 msgstr "Eerste maand van het fiscale jaar"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Hoogtecoördinatoren van het kerkgebouw, voor plaatsbepaling in Google maps. "
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Lengtecoördinatoren van het kerkgebouw, voor plaatsbepaling in Google maps. "
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Kies \"aan\" om het invoeren van vrienddatum in persoonseditor uit te schakelen.\n"
 "Kies \"uit\" om het invoeren van vrienddatum in persoonseditor in te schakelen."
@@ -3674,22 +3630,6 @@ msgstr "Linkermarge (1 = 1 / 100ste inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Lijndikte (1 = 1 / 100ste inch)"
-
-#: 
-msgid "Church City"
-msgstr "Plaats van de kerk"
-
-#: 
-msgid "Church State"
-msgstr "Staat"
-
-#: 
-msgid "Church Zip"
-msgstr "Postcode kerk"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefoonnummer kerk"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6145,10 +6085,6 @@ msgid "Text Cart"
 msgstr "Tekst werkbestand"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Uw gemeente website"
-
-#: 
 msgid "Self Verification"
 msgstr "Zelfverificatie"
 
@@ -6193,16 +6129,8 @@ msgid "Checking Cart Status"
 msgstr "Werkbestandstatus controleren"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alle leden van deze groep zitten in uw werkbestand"
-
-#: 
 msgid "Remove all"
 msgstr "Verwijder alles"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Niet alle leden van deze groep zitten in uw werkbestand"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7248,10 +7176,6 @@ msgstr "Achternaam, Voornaam Tussennaam"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API-sleutel gebruikt voor geocodering van adressen"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10138,10 +10062,6 @@ msgstr "U kunt familieleden nu toevoegen of later toevoegen. Alle vermeldingen w
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Uw fiscale jaar begint in maand"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Postcode"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

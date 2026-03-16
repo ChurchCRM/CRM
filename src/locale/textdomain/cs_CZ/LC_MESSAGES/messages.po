@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Ne"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat vývojářů"
-
-#: 
 msgid "Event Checkin"
 msgstr "Přihlašování na událost"
 
@@ -3095,10 +3091,6 @@ msgid "Send Message"
 msgstr "Poslat zprávu"
 
 #: 
-msgid "Quick Status"
-msgstr "Rychlý stav"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Narozeniny podle měsíce"
 
@@ -3113,30 +3105,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresa domů"
-
-#: 
-msgid "Dad Name"
-msgstr "Jméno táty"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Tátův mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Tátův e-mail"
-
-#: 
-msgid "Mom Name"
-msgstr "Jméno mámy"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mámin mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mámin e-mail"
 
 #: 
 msgid "Compose New Message"
@@ -3548,10 +3516,6 @@ msgid "with this property..."
 msgstr "s touto vlastností..."
 
 #: 
-msgid "Church Email"
-msgstr "E-mail sboru"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Do adresáře zahrnout pouze tyto klasifikace oddělené čárkou"
 
@@ -3612,14 +3576,6 @@ msgid "First month of the fiscal year"
 msgstr "První měsíc fiskálního roku"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Zeměpisná šířka sboru, je použita k vycentrování mapy Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Zeměpisná délka sboru, je použita k vycentrování mapy Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Nastavením hodnoty true zakážete zadávání data spřátelení v Editoru osob.  Nastavením false povolíte zadávání data spřátelení v Editoru osob."
 
@@ -3666,22 +3622,6 @@ msgstr "Levý okraj (1 = 1/100 palce)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Tloušťka čáry (1 = 1/100 palce)"
-
-#: 
-msgid "Church City"
-msgstr "Město sboru"
-
-#: 
-msgid "Church State"
-msgstr "Stát sboru"
-
-#: 
-msgid "Church Zip"
-msgstr "PSČ sboru"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefon sboru"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6132,10 +6072,6 @@ msgid "Text Cart"
 msgstr "Poslat košík pomocí SMS"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Webová stránka sboru"
-
-#: 
 msgid "Self Verification"
 msgstr "Vlastní ověření"
 
@@ -6180,16 +6116,8 @@ msgid "Checking Cart Status"
 msgstr "Kontrola stavu košíku"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Všichni členové této skupiny jsou v košíku"
-
-#: 
 msgid "Remove all"
 msgstr "Odebrat vše"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Ne všichni členové této skupiny jsou v košíku"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7232,10 +7160,6 @@ msgstr "Příjmení, KřestníJméno ProstředníJméno"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte zakázání dvoufaktorového ověření pro tohoto uživatele"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Klíč Google Maps API používaný pro geokódování adres"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10123,10 +10047,6 @@ msgstr "Členy rodiny můžete vytvořit hned nebo je přidat později. Všechny
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Váš fiskální rok začíná v měsíci"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "PSČ"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
