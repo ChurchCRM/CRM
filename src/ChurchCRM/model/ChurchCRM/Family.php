@@ -339,6 +339,15 @@ class Family extends BaseFamily implements PhotoInterface
     }
 
     /**
+     * Returns true when the family has a street address entered (Address1 is non-empty).
+     * Used to distinguish "no address" from "unverified address" (has address but no geocode).
+     */
+    public function hasAddress(): bool
+    {
+        return !empty(trim($this->getAddress1() ?? ''));
+    }
+
+    /**
      * Returns a Google Maps directions deep-link for this family's address.
      * Uses stored lat/lng when available (more accurate); falls back to the address string.
      * Returns an empty string when no address is set.
