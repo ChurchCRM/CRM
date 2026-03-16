@@ -12240,3 +12240,255 @@ msgstr "అన్ని వినియోగదారులు రెండు-
 msgid "Select the desired event"
 msgstr "కోరుకున్న కార్యక్రమాన్ని ఎంచుకోండి"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "వీధి చిరునామా నిల్వ చేసిన తర్వాత ఇక్కడ మ్యాప్ కనిపిస్తుంది. కోఆర్డినేట్లు స్వయంచాలకంగా గుర్తించబడతాయి — మాన్యువల్ ఎంట్రీ అవసరం లేదు."
+
+#: 
+msgid "Active Groups"
+msgstr "చురుకైన గ్రూప్‌లు"
+
+#: 
+msgid "Add New Group"
+msgstr "కొత్త గ్రూప్ జోడించు"
+
+#: 
+msgid "Add all to cart"
+msgstr "అందరినీ జాబితాకు జోడించు"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "చిరునామా ఉపయోగించి కోఆర్డినేట్లను స్వయంచాలకంగా గుర్తించు"
+
+#: 
+msgid "Basic Information"
+msgstr "ప్రాథమిక సమాచారం"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "చర్చి సమాచారం విజయవంతంగా నిల్వ చేయబడింది."
+
+#: 
+msgid "Church name is required."
+msgstr "చర్చి పేరు అవసరం."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "చర్చి పేరు అవసరం. దయచేసి ప్రాథమిక సమాచారం ట్యాబ్ పూర్తి చేయండి."
+
+#: 
+msgid "City is required."
+msgstr "నగరం అవసరం."
+
+#: 
+msgid "Class Overview"
+msgstr "క్లాస్ వివరాలు"
+
+#: 
+msgid "Clear filter"
+msgstr "ఫిల్టర్ క్లియర్ చేయి"
+
+#: 
+msgid "Configuration item not found"
+msgstr "కాన్ఫిగరేషన్ అంశం కనుగొనబడలేదు"
+
+#: 
+msgid "Country is required."
+msgstr "దేశం అవసరం."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord చాట్"
+
+#: 
+msgid "Display Preview"
+msgstr "ప్రివ్యూ చూపించు"
+
+#: 
+msgid "Email (To)"
+msgstr "ఇమెయిల్ (కు)"
+
+#: 
+msgid "Email address is required."
+msgstr "ఇమెయిల్ చిరునామా అవసరం."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "కుటుంబానికి జియోకోడింగ్ కోసం వీధి చిరునామా లేదు"
+
+#: 
+msgid "Father"
+msgstr "తండ్రి"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "జియోకోడ్ చేసిన కోఆర్డినేట్లు:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "జియోకోడింగ్ విఫలమైంది"
+
+#: 
+msgid "Geocoding successful"
+msgstr "జియోకోడింగ్ విజయవంతమైంది"
+
+#: 
+msgid "In Cart"
+msgstr "జాబితాలో"
+
+#: 
+msgid "Inactive Groups"
+msgstr "నిష్క్రియ గ్రూప్‌లు"
+
+#: 
+msgid "Kids Email"
+msgstr "పిల్లల ఇమెయిల్"
+
+#: 
+msgid "Language & Localization"
+msgstr "భాష & స్థానికీకరణ"
+
+#: 
+msgid "Location & Map"
+msgstr "స్థానం & మ్యాప్"
+
+#: 
+msgid "Location Information"
+msgstr "స్థాన సమాచారం"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "చర్చి కమ్యూనికేషన్ కోసం ప్రధాన సంప్రదింపు ఇమెయిల్."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "చర్చి యొక్క ప్రధాన సంప్రదింపు ఫోన్ నంబర్."
+
+#: 
+msgid "Male / Female"
+msgstr "పురుషుడు / స్త్రీ"
+
+#: 
+msgid "Map"
+msgstr "మ్యాప్"
+
+#: 
+msgid "Mother"
+msgstr "తల్లి"
+
+#: 
+msgid "No members"
+msgstr "సభ్యులు లేరు"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "ఐచ్ఛికం. మీ చర్చి వెబ్‌సైట్ URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "తల్లిదండ్రులు/సంరక్షకులు"
+
+#: 
+msgid "Phone number is required."
+msgstr "ఫోన్ నంబర్ అవసరం."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "కోఆర్డినేట్లు రిఫ్రెష్ చేయి"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "అవసరం. అన్ని నివేదికలు మరియు కమ్యూనికేషన్లలో ఉపయోగించబడుతుంది."
+
+#: 
+msgid "Save Church Information"
+msgstr "చర్చి సమాచారం నిల్వ చేయి"
+
+#: 
+msgid "Search or select..."
+msgstr "వెతకండి లేదా ఎంచుకోండి..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCC ఫీల్డ్‌లో గ్రహీతలతో ఇమెయిల్ పంపు (ఒకరికొకరు కనిపించకుండా)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "To ఫీల్డ్‌లో గ్రహీతలతో ఇమెయిల్ పంపు"
+
+#: 
+msgid "State is required."
+msgstr "రాష్ట్రం అవసరం."
+
+#: 
+msgid "Street Address"
+msgstr "వీధి చిరునామా"
+
+#: 
+msgid "Street address is required."
+msgstr "వీధి చిరునామా అవసరం."
+
+#: 
+msgid "Student Information"
+msgstr "విద్యార్థి సమాచారం"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "చర్చి కోసం సిస్టమ్ భాష. తేదీ ఆకృతులు, ఫోన్ ఆకృతులు మరియు ఇతర స్థానికీకరణలను ప్రభావితం చేస్తుంది."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "మీ చర్చి సమాచారం నివేదికలు మరియు డైరెక్టరీలలో ఇలా కనిపిస్తుంది."
+
+#: 
+msgid "Time Zone"
+msgstr "సమయ మండలం"
+
+#: 
+msgid "Toggle overview"
+msgstr "వివరాల టోగుల్"
+
+#: 
+msgid "Total Enrolled"
+msgstr "మొత్తం నమోదు"
+
+#: 
+msgid "Total Groups"
+msgstr "మొత్తం గ్రూప్‌లు"
+
+#: 
+msgid "Total Memberships"
+msgstr "మొత్తం సభ్యత్వాలు"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "ప్రతి సేవ్‌కు స్వయంచాలకంగా అప్‌డేట్ అవుతుంది."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "ఈవెంట్లు షెడ్యూలింగ్ మరియు నివేదించే సమయాలకు ఉపయోగించబడుతుంది."
+
+#: 
+msgid "View Full Details"
+msgstr "పూర్తి వివరాలు చూడు"
+
+#: 
+msgid "View Profile"
+msgstr "ప్రొఫైల్ చూడు"
+
+#: 
+msgid "Website"
+msgstr "వెబ్‌సైట్"
+
+#: 
+msgid "ZIP code is required."
+msgstr "పిన్ కోడ్ అవసరం."
+
+#: 
+msgid "— Select Country —"
+msgstr "— దేశం ఎంచుకోండి —"
+
+#: 
+msgid "— Select State —"
+msgstr "— రాష్ట్రం ఎంచుకోండి —"
+

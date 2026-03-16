@@ -12374,3 +12374,255 @@ msgstr "Krev at alle brukere registrerer seg for tofaktorautentisering"
 msgid "Select the desired event"
 msgstr "Velg ønsket arrangement"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Et kart vil vises her når en gateadresse er lagret. Koordinater oppdages automatisk — ingen manuell inntasting kreves."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktive grupper"
+
+#: 
+msgid "Add New Group"
+msgstr "Legg til ny gruppe"
+
+#: 
+msgid "Add all to cart"
+msgstr "Legg alle til utvalget"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Finn koordinater automatisk fra adresse"
+
+#: 
+msgid "Basic Information"
+msgstr "Grunnleggende informasjon"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Menighetsinformasjon lagret."
+
+#: 
+msgid "Church name is required."
+msgstr "Menighetsnavn er påkrevd."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Menighetsnavn er påkrevd. Fyll ut fanen Grunnleggende informasjon."
+
+#: 
+msgid "City is required."
+msgstr "By er påkrevd."
+
+#: 
+msgid "Class Overview"
+msgstr "Klasseoversikt"
+
+#: 
+msgid "Clear filter"
+msgstr "Fjern filter"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurasjonselement ikke funnet"
+
+#: 
+msgid "Country is required."
+msgstr "Land er påkrevd."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Vis forhåndsvisning"
+
+#: 
+msgid "Email (To)"
+msgstr "E-post (Til)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-postadresse er påkrevd."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familien har ingen gateadresse for geokoding"
+
+#: 
+msgid "Father"
+msgstr "Far"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokodede koordinater:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokoding mislyktes"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokoding vellykket"
+
+#: 
+msgid "In Cart"
+msgstr "I utvalget"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inaktive grupper"
+
+#: 
+msgid "Kids Email"
+msgstr "Barnas e-post"
+
+#: 
+msgid "Language & Localization"
+msgstr "Språk og lokalisering"
+
+#: 
+msgid "Location & Map"
+msgstr "Sted og kart"
+
+#: 
+msgid "Location Information"
+msgstr "Stedsinformasjon"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Hoved kontakt-e-post for menighetskommunikasjon."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Hovedtelefonnummer for menigheten."
+
+#: 
+msgid "Male / Female"
+msgstr "Mann / Kvinne"
+
+#: 
+msgid "Map"
+msgstr "Kart"
+
+#: 
+msgid "Mother"
+msgstr "Mor"
+
+#: 
+msgid "No members"
+msgstr "Ingen medlemmer"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Valgfritt. URL til menighetens nettside."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Foreldre/Foresatte"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefonnummer er påkrevd."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Oppdater koordinater"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Påkrevd. Brukes på alle rapporter og kommunikasjoner."
+
+#: 
+msgid "Save Church Information"
+msgstr "Lagre menighetsinformasjon"
+
+#: 
+msgid "Search or select..."
+msgstr "Søk eller velg..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Send e-post med mottakere i BCC-feltet (skjult for hverandre)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Send e-post med mottakere i Til-feltet"
+
+#: 
+msgid "State is required."
+msgstr "Fylke er påkrevd."
+
+#: 
+msgid "Street Address"
+msgstr "Gateadresse"
+
+#: 
+msgid "Street address is required."
+msgstr "Gateadresse er påkrevd."
+
+#: 
+msgid "Student Information"
+msgstr "Elevinfo"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systemspråk for menigheten. Påvirker datoformat, telefonformat og andre lokaliseringer."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Slik vil menighetsinformasjonen din vises i rapporter og kataloger."
+
+#: 
+msgid "Time Zone"
+msgstr "Tidssone"
+
+#: 
+msgid "Toggle overview"
+msgstr "Veksle oversikt"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Totalt påmeldte"
+
+#: 
+msgid "Total Groups"
+msgstr "Totalt grupper"
+
+#: 
+msgid "Total Memberships"
+msgstr "Totalt medlemskap"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Oppdateres automatisk ved hver lagring."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Brukes til planlegging av arrangementer og rapporteringstider."
+
+#: 
+msgid "View Full Details"
+msgstr "Se alle detaljer"
+
+#: 
+msgid "View Profile"
+msgstr "Se profil"
+
+#: 
+msgid "Website"
+msgstr "Nettside"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postnummer er påkrevd."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Velg land —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Velg fylke —"
+

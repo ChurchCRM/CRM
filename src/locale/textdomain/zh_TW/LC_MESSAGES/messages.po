@@ -12519,3 +12519,255 @@ msgstr "要求所有使用者註冊雙重身份驗證"
 msgid "Select the desired event"
 msgstr "選擇所需活動"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "儲存街道地址後，此處將顯示地圖。座標自動偵測 — 無需手動輸入。"
+
+#: 
+msgid "Active Groups"
+msgstr "活躍小組"
+
+#: 
+msgid "Add New Group"
+msgstr "新增小組"
+
+#: 
+msgid "Add all to cart"
+msgstr "全部加入清單"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "使用地址自動偵測座標"
+
+#: 
+msgid "Basic Information"
+msgstr "基本資訊"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "教會資訊已成功儲存。"
+
+#: 
+msgid "Church name is required."
+msgstr "教會名稱為必填欄位。"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "教會名稱為必填欄位。請完成基本資訊標籤。"
+
+#: 
+msgid "City is required."
+msgstr "城市為必填欄位。"
+
+#: 
+msgid "Class Overview"
+msgstr "班級概覽"
+
+#: 
+msgid "Clear filter"
+msgstr "清除篩選"
+
+#: 
+msgid "Configuration item not found"
+msgstr "找不到設定項目"
+
+#: 
+msgid "Country is required."
+msgstr "國家為必填欄位。"
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord 聊天"
+
+#: 
+msgid "Display Preview"
+msgstr "顯示預覽"
+
+#: 
+msgid "Email (To)"
+msgstr "電子郵件（收件人）"
+
+#: 
+msgid "Email address is required."
+msgstr "電子郵件地址為必填欄位。"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "該家庭沒有可進行地理編碼的街道地址"
+
+#: 
+msgid "Father"
+msgstr "父親"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "地理編碼座標："
+
+#: 
+msgid "Geocoding failed"
+msgstr "地理編碼失敗"
+
+#: 
+msgid "Geocoding successful"
+msgstr "地理編碼成功"
+
+#: 
+msgid "In Cart"
+msgstr "在清單中"
+
+#: 
+msgid "Inactive Groups"
+msgstr "非活躍小組"
+
+#: 
+msgid "Kids Email"
+msgstr "兒童電子郵件"
+
+#: 
+msgid "Language & Localization"
+msgstr "語言與本地化"
+
+#: 
+msgid "Location & Map"
+msgstr "位置與地圖"
+
+#: 
+msgid "Location Information"
+msgstr "位置資訊"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "教會通訊的主要聯絡電子郵件。"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "教會主要聯絡電話。"
+
+#: 
+msgid "Male / Female"
+msgstr "男 / 女"
+
+#: 
+msgid "Map"
+msgstr "地圖"
+
+#: 
+msgid "Mother"
+msgstr "母親"
+
+#: 
+msgid "No members"
+msgstr "無會友"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "選填。您的教會網站網址。"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "家長/監護人"
+
+#: 
+msgid "Phone number is required."
+msgstr "電話號碼為必填欄位。"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "重新整理座標"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "必填。用於所有報告和通訊。"
+
+#: 
+msgid "Save Church Information"
+msgstr "儲存教會資訊"
+
+#: 
+msgid "Search or select..."
+msgstr "搜尋或選擇..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "將收件人放在密件副本欄位發送郵件（互相隱藏）"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "將收件人放在收件人欄位發送郵件"
+
+#: 
+msgid "State is required."
+msgstr "縣/市為必填欄位。"
+
+#: 
+msgid "Street Address"
+msgstr "街道地址"
+
+#: 
+msgid "Street address is required."
+msgstr "街道地址為必填欄位。"
+
+#: 
+msgid "Student Information"
+msgstr "學生資訊"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "教會的系統語言。影響日期格式、電話格式和其他本地化設定。"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "您的教會資訊將在報告和目錄中如此顯示。"
+
+#: 
+msgid "Time Zone"
+msgstr "時區"
+
+#: 
+msgid "Toggle overview"
+msgstr "切換概覽"
+
+#: 
+msgid "Total Enrolled"
+msgstr "總登記人數"
+
+#: 
+msgid "Total Groups"
+msgstr "小組總數"
+
+#: 
+msgid "Total Memberships"
+msgstr "會友總數"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "每次儲存時自動更新。"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "用於安排活動和報告時間。"
+
+#: 
+msgid "View Full Details"
+msgstr "查看完整詳情"
+
+#: 
+msgid "View Profile"
+msgstr "查看個人資料"
+
+#: 
+msgid "Website"
+msgstr "網站"
+
+#: 
+msgid "ZIP code is required."
+msgstr "郵遞區號為必填欄位。"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 選擇國家 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 選擇縣/市 —"
+

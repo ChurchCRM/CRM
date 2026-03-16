@@ -6,7 +6,8 @@ Welcome to ChurchCRM — an open-source church management system. Visit https://
 
 ## ⛪️ About ChurchCRM
 
-ChurchCRM is an open-source church management system that helps congregations manage members, track contributions, and streamline communication.
+ChurchCRM exists to serve the Church — every congregation, in every country, in every language. We believe that God’s people deserve world-class tools without the burden of licensing fees, vendor lock-in, or data ownership concerns. This software is our ministry: open-source, community-built, freely given.
+
 Whether you’re a developer, designer, tester, or simply passionate about improving church management, there’s a place for you here!
 
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)

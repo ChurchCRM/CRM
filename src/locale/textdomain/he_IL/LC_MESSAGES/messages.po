@@ -12272,3 +12272,255 @@ msgstr "דרוש מכל המשתמשים להירשם לאימות דו-שלבי
 msgid "Select the desired event"
 msgstr "בחר את האירוע הרצוי"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "מפה תופיע כאן לאחר שתישמר כתובת. הקואורדינטות מזוהות אוטומטית — אין צורך בהזנה ידנית."
+
+#: 
+msgid "Active Groups"
+msgstr "קבוצות פעילות"
+
+#: 
+msgid "Add New Group"
+msgstr "הוסף קבוצה חדשה"
+
+#: 
+msgid "Add all to cart"
+msgstr "הוסף הכל לרשימה"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "זהה קואורדינטות אוטומטית לפי כתובת"
+
+#: 
+msgid "Basic Information"
+msgstr "מידע בסיסי"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "פרטי הקהילה נשמרו בהצלחה."
+
+#: 
+msgid "Church name is required."
+msgstr "שם הקהילה נדרש."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "שם הקהילה נדרש. אנא מלא את לשונית המידע הבסיסי."
+
+#: 
+msgid "City is required."
+msgstr "עיר נדרשת."
+
+#: 
+msgid "Class Overview"
+msgstr "סקירת כיתה"
+
+#: 
+msgid "Clear filter"
+msgstr "נקה מסנן"
+
+#: 
+msgid "Configuration item not found"
+msgstr "פריט תצורה לא נמצא"
+
+#: 
+msgid "Country is required."
+msgstr "מדינה נדרשת."
+
+#: 
+msgid "Discord Chat"
+msgstr "צ'אט Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "הצג תצוגה מקדימה"
+
+#: 
+msgid "Email (To)"
+msgstr "דוא\"ל (אל)"
+
+#: 
+msgid "Email address is required."
+msgstr "כתובת דוא\"ל נדרשת."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "למשפחה אין כתובת לגיאוקידוד"
+
+#: 
+msgid "Father"
+msgstr "אב"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "קואורדינטות מגיאוקודות:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "גיאוקידוד נכשל"
+
+#: 
+msgid "Geocoding successful"
+msgstr "גיאוקידוד הצליח"
+
+#: 
+msgid "In Cart"
+msgstr "ברשימה"
+
+#: 
+msgid "Inactive Groups"
+msgstr "קבוצות לא פעילות"
+
+#: 
+msgid "Kids Email"
+msgstr "דוא\"ל ילדים"
+
+#: 
+msgid "Language & Localization"
+msgstr "שפה ולוקליזציה"
+
+#: 
+msgid "Location & Map"
+msgstr "מיקום ומפה"
+
+#: 
+msgid "Location Information"
+msgstr "פרטי מיקום"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "דוא\"ל איש קשר ראשי לתקשורת הקהילה."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "מספר טלפון ראשי של הקהילה."
+
+#: 
+msgid "Male / Female"
+msgstr "זכר / נקבה"
+
+#: 
+msgid "Map"
+msgstr "מפה"
+
+#: 
+msgid "Mother"
+msgstr "אם"
+
+#: 
+msgid "No members"
+msgstr "אין חברים"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "אופציונלי. כתובת URL לאתר הקהילה."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "הורים/אפוטרופוסים"
+
+#: 
+msgid "Phone number is required."
+msgstr "מספר טלפון נדרש."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "רענן קואורדינטות"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "נדרש. משמש בכל הדוחות והתקשורת."
+
+#: 
+msgid "Save Church Information"
+msgstr "שמור פרטי קהילה"
+
+#: 
+msgid "Search or select..."
+msgstr "חפש או בחר..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "שלח דוא\"ל עם נמענים בשדה עותק נסתר (מוסתרים זה מזה)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "שלח דוא\"ל עם נמענים בשדה אל"
+
+#: 
+msgid "State is required."
+msgstr "מחוז נדרש."
+
+#: 
+msgid "Street Address"
+msgstr "כתובת"
+
+#: 
+msgid "Street address is required."
+msgstr "כתובת נדרשת."
+
+#: 
+msgid "Student Information"
+msgstr "פרטי תלמיד"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "שפת המערכת לקהילה. משפיעה על פורמטי תאריך, טלפון ולוקליזציות אחרות."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "כך יופיעו פרטי הקהילה בדוחות ובספריות."
+
+#: 
+msgid "Time Zone"
+msgstr "אזור זמן"
+
+#: 
+msgid "Toggle overview"
+msgstr "החלף סקירה"
+
+#: 
+msgid "Total Enrolled"
+msgstr "סה\"כ רשומים"
+
+#: 
+msgid "Total Groups"
+msgstr "סה\"כ קבוצות"
+
+#: 
+msgid "Total Memberships"
+msgstr "סה\"כ חברויות"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "מתעדכן אוטומטית בכל שמירה."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "משמש לתזמון אירועים ושעות דיווח."
+
+#: 
+msgid "View Full Details"
+msgstr "הצג פרטים מלאים"
+
+#: 
+msgid "View Profile"
+msgstr "הצג פרופיל"
+
+#: 
+msgid "Website"
+msgstr "אתר אינטרנט"
+
+#: 
+msgid "ZIP code is required."
+msgstr "מיקוד נדרש."
+
+#: 
+msgid "— Select Country —"
+msgstr "— בחר מדינה —"
+
+#: 
+msgid "— Select State —"
+msgstr "— בחר מחוז —"
+

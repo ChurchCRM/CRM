@@ -12226,3 +12226,255 @@ msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงท
 msgid "Select the desired event"
 msgstr "เลือกกิจกรรมที่ต้องการ"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "แผนที่จะปรากฏที่นี่เมื่อบันทึกที่อยู่แล้ว พิกัดจะถูกตรวจจับอัตโนมัติ — ไม่จำเป็นต้องป้อนข้อมูลด้วยตนเอง"
+
+#: 
+msgid "Active Groups"
+msgstr "กลุ่มที่ใช้งานอยู่"
+
+#: 
+msgid "Add New Group"
+msgstr "เพิ่มกลุ่มใหม่"
+
+#: 
+msgid "Add all to cart"
+msgstr "เพิ่มทั้งหมดไปยังรายการ"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "ตรวจจับพิกัดอัตโนมัติโดยใช้ที่อยู่"
+
+#: 
+msgid "Basic Information"
+msgstr "ข้อมูลพื้นฐาน"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "บันทึกข้อมูลคริสตจักรสำเร็จ"
+
+#: 
+msgid "Church name is required."
+msgstr "ต้องระบุชื่อคริสตจักร"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "ต้องระบุชื่อคริสตจักร กรุณากรอกข้อมูลในแท็บข้อมูลพื้นฐาน"
+
+#: 
+msgid "City is required."
+msgstr "ต้องระบุเมือง"
+
+#: 
+msgid "Class Overview"
+msgstr "ภาพรวมชั้นเรียน"
+
+#: 
+msgid "Clear filter"
+msgstr "ล้างตัวกรอง"
+
+#: 
+msgid "Configuration item not found"
+msgstr "ไม่พบรายการการกำหนดค่า"
+
+#: 
+msgid "Country is required."
+msgstr "ต้องระบุประเทศ"
+
+#: 
+msgid "Discord Chat"
+msgstr "แชท Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "แสดงตัวอย่าง"
+
+#: 
+msgid "Email (To)"
+msgstr "อีเมล (ถึง)"
+
+#: 
+msgid "Email address is required."
+msgstr "ต้องระบุที่อยู่อีเมล"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "ครอบครัวไม่มีที่อยู่สำหรับการระบุพิกัด"
+
+#: 
+msgid "Father"
+msgstr "พ่อ"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "พิกัดที่ระบุแล้ว:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "การระบุพิกัดล้มเหลว"
+
+#: 
+msgid "Geocoding successful"
+msgstr "การระบุพิกัดสำเร็จ"
+
+#: 
+msgid "In Cart"
+msgstr "ในรายการ"
+
+#: 
+msgid "Inactive Groups"
+msgstr "กลุ่มที่ไม่ได้ใช้งาน"
+
+#: 
+msgid "Kids Email"
+msgstr "อีเมลเด็ก"
+
+#: 
+msgid "Language & Localization"
+msgstr "ภาษาและการแปลภาษา"
+
+#: 
+msgid "Location & Map"
+msgstr "ที่ตั้งและแผนที่"
+
+#: 
+msgid "Location Information"
+msgstr "ข้อมูลที่ตั้ง"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "อีเมลติดต่อหลักสำหรับการสื่อสารของคริสตจักร"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "หมายเลขโทรศัพท์ติดต่อหลักของคริสตจักร"
+
+#: 
+msgid "Male / Female"
+msgstr "ชาย / หญิง"
+
+#: 
+msgid "Map"
+msgstr "แผนที่"
+
+#: 
+msgid "Mother"
+msgstr "แม่"
+
+#: 
+msgid "No members"
+msgstr "ไม่มีสมาชิก"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "ไม่บังคับ URL ของเว็บไซต์คริสตจักรของคุณ"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "ผู้ปกครอง/ผู้ดูแล"
+
+#: 
+msgid "Phone number is required."
+msgstr "ต้องระบุหมายเลขโทรศัพท์"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "รีเฟรชพิกัด"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "จำเป็น ใช้ในรายงานและการสื่อสารทั้งหมด"
+
+#: 
+msgid "Save Church Information"
+msgstr "บันทึกข้อมูลคริสตจักร"
+
+#: 
+msgid "Search or select..."
+msgstr "ค้นหาหรือเลือก..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "ส่งอีเมลพร้อมผู้รับในช่อง BCC (ซ่อนจากกันและกัน)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "ส่งอีเมลพร้อมผู้รับในช่องถึง"
+
+#: 
+msgid "State is required."
+msgstr "ต้องระบุจังหวัด"
+
+#: 
+msgid "Street Address"
+msgstr "ที่อยู่"
+
+#: 
+msgid "Street address is required."
+msgstr "ต้องระบุที่อยู่"
+
+#: 
+msgid "Student Information"
+msgstr "ข้อมูลนักเรียน"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "ภาษาระบบสำหรับคริสตจักร ส่งผลต่อรูปแบบวันที่ รูปแบบโทรศัพท์ และการแปลภาษาอื่นๆ"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "ข้อมูลคริสตจักรของคุณจะปรากฏในรายงานและไดเรกทอรีแบบนี้"
+
+#: 
+msgid "Time Zone"
+msgstr "เขตเวลา"
+
+#: 
+msgid "Toggle overview"
+msgstr "สลับภาพรวม"
+
+#: 
+msgid "Total Enrolled"
+msgstr "ลงทะเบียนทั้งหมด"
+
+#: 
+msgid "Total Groups"
+msgstr "กลุ่มทั้งหมด"
+
+#: 
+msgid "Total Memberships"
+msgstr "การเป็นสมาชิกทั้งหมด"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "อัปเดตอัตโนมัติในทุกการบันทึก"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "ใช้สำหรับการกำหนดเวลากิจกรรมและการรายงานเวลา"
+
+#: 
+msgid "View Full Details"
+msgstr "ดูรายละเอียดทั้งหมด"
+
+#: 
+msgid "View Profile"
+msgstr "ดูโปรไฟล์"
+
+#: 
+msgid "Website"
+msgstr "เว็บไซต์"
+
+#: 
+msgid "ZIP code is required."
+msgstr "ต้องระบุรหัสไปรษณีย์"
+
+#: 
+msgid "— Select Country —"
+msgstr "— เลือกประเทศ —"
+
+#: 
+msgid "— Select State —"
+msgstr "— เลือกจังหวัด —"
+

@@ -12374,3 +12374,255 @@ msgstr "Требовать от всех пользователей регист
 msgid "Select the desired event"
 msgstr "Выберите нужное мероприятие"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Карта появится здесь после сохранения адреса. Координаты определяются автоматически — ручной ввод не требуется."
+
+#: 
+msgid "Active Groups"
+msgstr "Активные группы"
+
+#: 
+msgid "Add New Group"
+msgstr "Добавить новую группу"
+
+#: 
+msgid "Add all to cart"
+msgstr "Добавить всё в список"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Автоматически определить координаты по адресу"
+
+#: 
+msgid "Basic Information"
+msgstr "Основная информация"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Информация о приходе успешно сохранена."
+
+#: 
+msgid "Church name is required."
+msgstr "Название прихода обязательно."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Название прихода обязательно. Заполните вкладку «Основная информация»."
+
+#: 
+msgid "City is required."
+msgstr "Город обязателен."
+
+#: 
+msgid "Class Overview"
+msgstr "Обзор класса"
+
+#: 
+msgid "Clear filter"
+msgstr "Очистить фильтр"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Элемент конфигурации не найден"
+
+#: 
+msgid "Country is required."
+msgstr "Страна обязательна."
+
+#: 
+msgid "Discord Chat"
+msgstr "Чат Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Показать предварительный просмотр"
+
+#: 
+msgid "Email (To)"
+msgstr "Эл. почта (Кому)"
+
+#: 
+msgid "Email address is required."
+msgstr "Адрес электронной почты обязателен."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "У семьи нет адреса для геокодирования"
+
+#: 
+msgid "Father"
+msgstr "Отец"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Геокодированные координаты:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Геокодирование не удалось"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Геокодирование выполнено"
+
+#: 
+msgid "In Cart"
+msgstr "В списке"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Неактивные группы"
+
+#: 
+msgid "Kids Email"
+msgstr "Эл. почта детей"
+
+#: 
+msgid "Language & Localization"
+msgstr "Язык и локализация"
+
+#: 
+msgid "Location & Map"
+msgstr "Расположение и карта"
+
+#: 
+msgid "Location Information"
+msgstr "Информация о местоположении"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Основной контактный адрес эл. почты для общения с приходом."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Основной контактный телефон прихода."
+
+#: 
+msgid "Male / Female"
+msgstr "Мужской / Женский"
+
+#: 
+msgid "Map"
+msgstr "Карта"
+
+#: 
+msgid "Mother"
+msgstr "Мать"
+
+#: 
+msgid "No members"
+msgstr "Нет прихожан"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Необязательно. URL сайта вашего прихода."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Родители/Опекуны"
+
+#: 
+msgid "Phone number is required."
+msgstr "Номер телефона обязателен."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Обновить координаты"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Обязательно. Используется во всех отчётах и сообщениях."
+
+#: 
+msgid "Save Church Information"
+msgstr "Сохранить информацию о приходе"
+
+#: 
+msgid "Search or select..."
+msgstr "Поиск или выбор..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Отправить письмо с получателями в поле СК (скрытыми друг от друга)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Отправить письмо с получателями в поле «Кому»"
+
+#: 
+msgid "State is required."
+msgstr "Регион обязателен."
+
+#: 
+msgid "Street Address"
+msgstr "Адрес"
+
+#: 
+msgid "Street address is required."
+msgstr "Адрес обязателен."
+
+#: 
+msgid "Student Information"
+msgstr "Информация об ученике"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Язык системы для прихода. Влияет на форматы даты, телефона и другие параметры локализации."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Так информация о приходе будет отображаться в отчётах и каталогах."
+
+#: 
+msgid "Time Zone"
+msgstr "Часовой пояс"
+
+#: 
+msgid "Toggle overview"
+msgstr "Переключить обзор"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Всего зачислено"
+
+#: 
+msgid "Total Groups"
+msgstr "Всего групп"
+
+#: 
+msgid "Total Memberships"
+msgstr "Всего членств"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Обновляется автоматически при каждом сохранении."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Используется для планирования мероприятий и времени отчётности."
+
+#: 
+msgid "View Full Details"
+msgstr "Просмотр полной информации"
+
+#: 
+msgid "View Profile"
+msgstr "Просмотр профиля"
+
+#: 
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Почтовый индекс обязателен."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Выберите страну —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Выберите регион —"
+

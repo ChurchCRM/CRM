@@ -10,45 +10,45 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `af` | Afrikaans | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `de` | German | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 2949 | 97.91% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 2947 | 97.84% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 2941 | 97.64% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian Bokmål | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3012 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3012 | 100% | 🟢 Complete | ✅ Yes |
 | `sl` | Slovenian | 81 | 2.69% | 🟠 Needs Work | ❌ No |
 | `my` | Burmese | 80 | 2.66% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 74 | 2.46% | 🟠 Needs Work | ❌ No |
