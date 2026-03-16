@@ -12279,3 +12279,255 @@ msgstr "Vereis dat alle gebruikers tweefaktor-verifikasie aktiveer"
 msgid "Select the desired event"
 msgstr "Kies die gewenste geleentheid"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "'n Kaart sal hier verskyn sodra 'n straatadres gestoor is. Koördinate word outomaties opgespoor — geen handmatige invoer benodig nie."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktiewe Groepe"
+
+#: 
+msgid "Add New Group"
+msgstr "Voeg Nuwe Groep By"
+
+#: 
+msgid "Add all to cart"
+msgstr "Voeg alles by lys"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Koördinate outomaties opspoor via adres"
+
+#: 
+msgid "Basic Information"
+msgstr "Basiese Inligting"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Kerkinligting suksesvol gestoor."
+
+#: 
+msgid "Church name is required."
+msgstr "Kerknaam is verpligtend."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Kerknaam is verpligtend. Voltooi asseblief die Basiese Inligting-oortjie."
+
+#: 
+msgid "City is required."
+msgstr "Stad is verpligtend."
+
+#: 
+msgid "Class Overview"
+msgstr "Klas-oorsig"
+
+#: 
+msgid "Clear filter"
+msgstr "Vee filter uit"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurasiepunt nie gevind nie"
+
+#: 
+msgid "Country is required."
+msgstr "Land is verpligtend."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-klets"
+
+#: 
+msgid "Display Preview"
+msgstr "Wys voorskou"
+
+#: 
+msgid "Email (To)"
+msgstr "E-pos (Aan)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-posadres is verpligtend."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familie het geen straatadres vir geokodeering nie"
+
+#: 
+msgid "Father"
+msgstr "Vader"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Georekodeerde koördinate:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokodeering het misluk"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokodeering suksesvol"
+
+#: 
+msgid "In Cart"
+msgstr "In lys"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Onaktiewe Groepe"
+
+#: 
+msgid "Kids Email"
+msgstr "Kinders se e-pos"
+
+#: 
+msgid "Language & Localization"
+msgstr "Taal en Lokalisering"
+
+#: 
+msgid "Location & Map"
+msgstr "Ligging en Kaart"
+
+#: 
+msgid "Location Information"
+msgstr "Liggingsinligting"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Hoofkontak-e-pos vir kerkkommunikasie."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Hoofkontaknommer vir die kerk."
+
+#: 
+msgid "Male / Female"
+msgstr "Manlik / Vroulik"
+
+#: 
+msgid "Map"
+msgstr "Kaart"
+
+#: 
+msgid "Mother"
+msgstr "Moeder"
+
+#: 
+msgid "No members"
+msgstr "Geen lede nie"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Opsioneel. URL vir u kerkwebwerf."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Ouers/Voogde"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefoonnommer is verpligtend."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Verfris koördinate"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Verpligtend. Word gebruik in alle verslae en kommunikasies."
+
+#: 
+msgid "Save Church Information"
+msgstr "Stoor Kerkinligting"
+
+#: 
+msgid "Search or select..."
+msgstr "Soek of kies..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Stuur e-pos met ontvangers in BCC-veld (verborge van mekaar)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Stuur e-pos met ontvangers in Aan-veld"
+
+#: 
+msgid "State is required."
+msgstr "Streek is verpligtend."
+
+#: 
+msgid "Street Address"
+msgstr "Straatadres"
+
+#: 
+msgid "Street address is required."
+msgstr "Straatadres is verpligtend."
+
+#: 
+msgid "Student Information"
+msgstr "Leerlinginligting"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Sisteemtaal vir die kerk. Beïnvloed datumformate, telefoonformate en ander lokaliserings."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "So sal u kerkinligting op verslae en gidse verskyn."
+
+#: 
+msgid "Time Zone"
+msgstr "Tydsone"
+
+#: 
+msgid "Toggle overview"
+msgstr "Wissel oorsig"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Totaal Ingeskryf"
+
+#: 
+msgid "Total Groups"
+msgstr "Totale Groepe"
+
+#: 
+msgid "Total Memberships"
+msgstr "Totale Lidmaatskappe"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Outomaties opgedateer by elke stoor."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Gebruik vir die skedulering van gebeure en verslagtye."
+
+#: 
+msgid "View Full Details"
+msgstr "Bekyk Volledige Besonderhede"
+
+#: 
+msgid "View Profile"
+msgstr "Bekyk Profiel"
+
+#: 
+msgid "Website"
+msgstr "Webwerf"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Poskode is verpligtend."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Kies Land —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Kies Streek —"
+

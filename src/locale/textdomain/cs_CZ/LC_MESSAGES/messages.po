@@ -12266,3 +12266,255 @@ msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému 
 msgid "Select the desired event"
 msgstr "Vyberte požadovanou akci"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Mapa se zobrazí, jakmile bude uložena adresa. Souřadnice jsou detekovány automaticky — ruční zadávání není potřeba."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktivní skupiny"
+
+#: 
+msgid "Add New Group"
+msgstr "Přidat novou skupinu"
+
+#: 
+msgid "Add all to cart"
+msgstr "Přidat vše do výběru"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Automaticky zjistit souřadnice pomocí adresy"
+
+#: 
+msgid "Basic Information"
+msgstr "Základní informace"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informace o sboru byly úspěšně uloženy."
+
+#: 
+msgid "Church name is required."
+msgstr "Název sboru je povinný."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Název sboru je povinný. Vyplňte záložku Základní informace."
+
+#: 
+msgid "City is required."
+msgstr "Město je povinné."
+
+#: 
+msgid "Class Overview"
+msgstr "Přehled třídy"
+
+#: 
+msgid "Clear filter"
+msgstr "Vymazat filtr"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurační položka nenalezena"
+
+#: 
+msgid "Country is required."
+msgstr "Země je povinná."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Zobrazit náhled"
+
+#: 
+msgid "Email (To)"
+msgstr "E-mail (Komu)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-mailová adresa je povinná."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Rodina nemá adresu pro geokódování"
+
+#: 
+msgid "Father"
+msgstr "Otec"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokódované souřadnice:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokódování selhalo"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokódování úspěšné"
+
+#: 
+msgid "In Cart"
+msgstr "Ve výběru"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Neaktivní skupiny"
+
+#: 
+msgid "Kids Email"
+msgstr "E-mail dětí"
+
+#: 
+msgid "Language & Localization"
+msgstr "Jazyk a lokalizace"
+
+#: 
+msgid "Location & Map"
+msgstr "Umístění a mapa"
+
+#: 
+msgid "Location Information"
+msgstr "Informace o umístění"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Hlavní kontaktní e-mail pro komunikaci sboru."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Hlavní kontaktní telefon sboru."
+
+#: 
+msgid "Male / Female"
+msgstr "Muž / Žena"
+
+#: 
+msgid "Map"
+msgstr "Mapa"
+
+#: 
+msgid "Mother"
+msgstr "Matka"
+
+#: 
+msgid "No members"
+msgstr "Žádní členové"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Volitelné. URL webu vašeho sboru."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Rodiče/Opatrovníci"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefonní číslo je povinné."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Obnovit souřadnice"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Povinné. Používá se ve všech zprávách a komunikacích."
+
+#: 
+msgid "Save Church Information"
+msgstr "Uložit informace o sboru"
+
+#: 
+msgid "Search or select..."
+msgstr "Vyhledat nebo vybrat..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Odeslat e-mail s příjemci v poli skryté kopie (skrytí navzájem)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Odeslat e-mail s příjemci v poli Komu"
+
+#: 
+msgid "State is required."
+msgstr "Kraj je povinný."
+
+#: 
+msgid "Street Address"
+msgstr "Adresa"
+
+#: 
+msgid "Street address is required."
+msgstr "Adresa je povinná."
+
+#: 
+msgid "Student Information"
+msgstr "Informace o žákovi"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Jazyk systému pro sbor. Ovlivňuje formáty dat, telefonů a dalších lokalizací."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Takto se budou informace o sboru zobrazovat v reportech a adresářích."
+
+#: 
+msgid "Time Zone"
+msgstr "Časové pásmo"
+
+#: 
+msgid "Toggle overview"
+msgstr "Přepnout přehled"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Celkem zapsaných"
+
+#: 
+msgid "Total Groups"
+msgstr "Skupin celkem"
+
+#: 
+msgid "Total Memberships"
+msgstr "Členství celkem"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Aktualizováno automaticky při každém uložení."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Používá se pro plánování akcí a časy reportů."
+
+#: 
+msgid "View Full Details"
+msgstr "Zobrazit úplné podrobnosti"
+
+#: 
+msgid "View Profile"
+msgstr "Zobrazit profil"
+
+#: 
+msgid "Website"
+msgstr "Webová stránka"
+
+#: 
+msgid "ZIP code is required."
+msgstr "PSČ je povinné."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Vyberte zemi —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Vyberte kraj —"
+

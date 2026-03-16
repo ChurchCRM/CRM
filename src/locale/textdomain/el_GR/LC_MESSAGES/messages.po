@@ -12278,3 +12278,255 @@ msgstr "Απαιτήστε από όλους τους χρήστες να εγγ
 msgid "Select the desired event"
 msgstr "Επιλέξτε την επιθυμητή εκδήλωση"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Ένας χάρτης θα εμφανιστεί εδώ μόλις αποθηκευτεί μια διεύθυνση. Οι συντεταγμένες ανιχνεύονται αυτόματα — δεν απαιτείται χειροκίνητη εισαγωγή."
+
+#: 
+msgid "Active Groups"
+msgstr "Ενεργές ομάδες"
+
+#: 
+msgid "Add New Group"
+msgstr "Προσθήκη νέας ομάδας"
+
+#: 
+msgid "Add all to cart"
+msgstr "Προσθήκη όλων στη λίστα"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Αυτόματη ανίχνευση συντεταγμένων από διεύθυνση"
+
+#: 
+msgid "Basic Information"
+msgstr "Βασικές πληροφορίες"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Οι πληροφορίες της ενορίας αποθηκεύτηκαν επιτυχώς."
+
+#: 
+msgid "Church name is required."
+msgstr "Το όνομα της ενορίας είναι υποχρεωτικό."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Το όνομα της ενορίας είναι υποχρεωτικό. Συμπληρώστε την καρτέλα Βασικές πληροφορίες."
+
+#: 
+msgid "City is required."
+msgstr "Η πόλη είναι υποχρεωτική."
+
+#: 
+msgid "Class Overview"
+msgstr "Επισκόπηση τάξης"
+
+#: 
+msgid "Clear filter"
+msgstr "Εκκαθάριση φίλτρου"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Το στοιχείο διαμόρφωσης δεν βρέθηκε"
+
+#: 
+msgid "Country is required."
+msgstr "Η χώρα είναι υποχρεωτική."
+
+#: 
+msgid "Discord Chat"
+msgstr "Συνομιλία Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Εμφάνιση προεπισκόπησης"
+
+#: 
+msgid "Email (To)"
+msgstr "Email (Προς)"
+
+#: 
+msgid "Email address is required."
+msgstr "Η διεύθυνση email είναι υποχρεωτική."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Η οικογένεια δεν έχει διεύθυνση για γεωκωδικοποίηση"
+
+#: 
+msgid "Father"
+msgstr "Πατέρας"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Γεωκωδικοποιημένες συντεταγμένες:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Αποτυχία γεωκωδικοποίησης"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Επιτυχής γεωκωδικοποίηση"
+
+#: 
+msgid "In Cart"
+msgstr "Στη λίστα"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Ανενεργές ομάδες"
+
+#: 
+msgid "Kids Email"
+msgstr "Email παιδιών"
+
+#: 
+msgid "Language & Localization"
+msgstr "Γλώσσα και τοπικές ρυθμίσεις"
+
+#: 
+msgid "Location & Map"
+msgstr "Τοποθεσία και χάρτης"
+
+#: 
+msgid "Location Information"
+msgstr "Πληροφορίες τοποθεσίας"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Κύριο email επικοινωνίας για τις ανακοινώσεις της ενορίας."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Κύριος τηλεφωνικός αριθμός της ενορίας."
+
+#: 
+msgid "Male / Female"
+msgstr "Άνδρας / Γυναίκα"
+
+#: 
+msgid "Map"
+msgstr "Χάρτης"
+
+#: 
+msgid "Mother"
+msgstr "Μητέρα"
+
+#: 
+msgid "No members"
+msgstr "Δεν υπάρχουν ενορίτες"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Προαιρετικό. URL της ιστοσελίδας της ενορίας σας."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Γονείς/Κηδεμόνες"
+
+#: 
+msgid "Phone number is required."
+msgstr "Ο αριθμός τηλεφώνου είναι υποχρεωτικός."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Ανανέωση συντεταγμένων"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Υποχρεωτικό. Χρησιμοποιείται σε όλες τις αναφορές και ανακοινώσεις."
+
+#: 
+msgid "Save Church Information"
+msgstr "Αποθήκευση πληροφοριών ενορίας"
+
+#: 
+msgid "Search or select..."
+msgstr "Αναζήτηση ή επιλογή..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Αποστολή email με παραλήπτες στο πεδίο ΚΚ (κρυφοί μεταξύ τους)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Αποστολή email με παραλήπτες στο πεδίο Προς"
+
+#: 
+msgid "State is required."
+msgstr "Η περιφέρεια είναι υποχρεωτική."
+
+#: 
+msgid "Street Address"
+msgstr "Διεύθυνση"
+
+#: 
+msgid "Street address is required."
+msgstr "Η διεύθυνση είναι υποχρεωτική."
+
+#: 
+msgid "Student Information"
+msgstr "Πληροφορίες μαθητή"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Γλώσσα συστήματος για την ενορία. Επηρεάζει τις μορφές ημερομηνίας, τηλεφώνου και άλλες τοπικές ρυθμίσεις."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Έτσι θα εμφανίζονται οι πληροφορίες της ενορίας σας σε αναφορές και καταλόγους."
+
+#: 
+msgid "Time Zone"
+msgstr "Ζώνη ώρας"
+
+#: 
+msgid "Toggle overview"
+msgstr "Εναλλαγή επισκόπησης"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Σύνολο εγγεγραμμένων"
+
+#: 
+msgid "Total Groups"
+msgstr "Σύνολο ομάδων"
+
+#: 
+msgid "Total Memberships"
+msgstr "Σύνολο μελών"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Ενημερώνεται αυτόματα σε κάθε αποθήκευση."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Χρησιμοποιείται για τον προγραμματισμό εκδηλώσεων και ωρών αναφοράς."
+
+#: 
+msgid "View Full Details"
+msgstr "Προβολή πλήρων λεπτομερειών"
+
+#: 
+msgid "View Profile"
+msgstr "Προβολή προφίλ"
+
+#: 
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Ο ταχυδρομικός κώδικας είναι υποχρεωτικός."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Επιλογή χώρας —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Επιλογή περιφέρειας —"
+

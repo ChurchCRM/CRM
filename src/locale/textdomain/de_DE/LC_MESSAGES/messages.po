@@ -12387,3 +12387,255 @@ msgstr "Alle Benutzer zur Anmeldung bei der Zwei-Faktor-Authentifizierung verpfl
 msgid "Select the desired event"
 msgstr "Gewünschte Veranstaltung auswählen"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Eine Karte erscheint hier, sobald eine Adresse gespeichert wird. Koordinaten werden automatisch ermittelt — keine manuelle Eingabe erforderlich."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktive Gruppen"
+
+#: 
+msgid "Add New Group"
+msgstr "Neue Gruppe hinzufügen"
+
+#: 
+msgid "Add all to cart"
+msgstr "Alle zur Auswahl hinzufügen"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Koordinaten automatisch anhand der Adresse ermitteln"
+
+#: 
+msgid "Basic Information"
+msgstr "Grundinformationen"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Gemeindeinformationen erfolgreich gespeichert."
+
+#: 
+msgid "Church name is required."
+msgstr "Der Gemeindename ist erforderlich."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Der Gemeindename ist erforderlich. Bitte füllen Sie die Registerkarte Grundinformationen aus."
+
+#: 
+msgid "City is required."
+msgstr "Die Stadt ist erforderlich."
+
+#: 
+msgid "Class Overview"
+msgstr "Klassenübersicht"
+
+#: 
+msgid "Clear filter"
+msgstr "Filter löschen"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurationselement nicht gefunden"
+
+#: 
+msgid "Country is required."
+msgstr "Das Land ist erforderlich."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-Chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Vorschau anzeigen"
+
+#: 
+msgid "Email (To)"
+msgstr "E-Mail (An)"
+
+#: 
+msgid "Email address is required."
+msgstr "Die E-Mail-Adresse ist erforderlich."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familie hat keine Adresse für die Geokodierung"
+
+#: 
+msgid "Father"
+msgstr "Vater"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokodierte Koordinaten:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokodierung fehlgeschlagen"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokodierung erfolgreich"
+
+#: 
+msgid "In Cart"
+msgstr "In der Auswahl"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inaktive Gruppen"
+
+#: 
+msgid "Kids Email"
+msgstr "E-Mail der Kinder"
+
+#: 
+msgid "Language & Localization"
+msgstr "Sprache und Lokalisierung"
+
+#: 
+msgid "Location & Map"
+msgstr "Standort und Karte"
+
+#: 
+msgid "Location Information"
+msgstr "Standortinformationen"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Haupt-E-Mail für Gemeindekommunikation."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Haupttelefonnummer der Gemeinde."
+
+#: 
+msgid "Male / Female"
+msgstr "Männlich / Weiblich"
+
+#: 
+msgid "Map"
+msgstr "Karte"
+
+#: 
+msgid "Mother"
+msgstr "Mutter"
+
+#: 
+msgid "No members"
+msgstr "Keine Mitglieder"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Optional. URL der Website Ihrer Gemeinde."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Eltern/Erziehungsberechtigte"
+
+#: 
+msgid "Phone number is required."
+msgstr "Die Telefonnummer ist erforderlich."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Koordinaten aktualisieren"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Erforderlich. Wird in allen Berichten und Kommunikationen verwendet."
+
+#: 
+msgid "Save Church Information"
+msgstr "Gemeindeinformationen speichern"
+
+#: 
+msgid "Search or select..."
+msgstr "Suchen oder auswählen..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "E-Mail mit Empfängern im BCC-Feld senden (füreinander verborgen)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "E-Mail mit Empfängern im An-Feld senden"
+
+#: 
+msgid "State is required."
+msgstr "Das Bundesland ist erforderlich."
+
+#: 
+msgid "Street Address"
+msgstr "Straßenadresse"
+
+#: 
+msgid "Street address is required."
+msgstr "Die Straßenadresse ist erforderlich."
+
+#: 
+msgid "Student Information"
+msgstr "Schülerinformationen"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systemsprache für die Gemeinde. Beeinflusst Datumsformate, Telefonnummernformate und andere Lokalisierungen."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "So erscheinen Ihre Gemeindeinformationen in Berichten und Verzeichnissen."
+
+#: 
+msgid "Time Zone"
+msgstr "Zeitzone"
+
+#: 
+msgid "Toggle overview"
+msgstr "Übersicht umschalten"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Gesamt eingeschrieben"
+
+#: 
+msgid "Total Groups"
+msgstr "Gruppen gesamt"
+
+#: 
+msgid "Total Memberships"
+msgstr "Mitgliedschaften gesamt"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Wird bei jedem Speichern automatisch aktualisiert."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Wird für die Planung von Veranstaltungen und Berichtszeiten verwendet."
+
+#: 
+msgid "View Full Details"
+msgstr "Vollständige Details anzeigen"
+
+#: 
+msgid "View Profile"
+msgstr "Profil anzeigen"
+
+#: 
+msgid "Website"
+msgstr "Website"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Die Postleitzahl ist erforderlich."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Land auswählen —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Bundesland auswählen —"
+

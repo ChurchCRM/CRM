@@ -12261,3 +12261,255 @@ msgstr "모든 사용자에게 이중 인증 등록 요구"
 msgid "Select the desired event"
 msgstr "원하는 행사 선택"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "주소가 저장되면 여기에 지도가 표시됩니다. 좌표는 자동으로 감지됩니다 — 수동 입력이 필요하지 않습니다."
+
+#: 
+msgid "Active Groups"
+msgstr "활성 그룹"
+
+#: 
+msgid "Add New Group"
+msgstr "새 그룹 추가"
+
+#: 
+msgid "Add all to cart"
+msgstr "모두 목록에 추가"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "주소를 사용하여 좌표 자동 감지"
+
+#: 
+msgid "Basic Information"
+msgstr "기본 정보"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "교회 정보가 성공적으로 저장되었습니다."
+
+#: 
+msgid "Church name is required."
+msgstr "교회 이름은 필수입니다."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "교회 이름은 필수입니다. 기본 정보 탭을 완성해 주세요."
+
+#: 
+msgid "City is required."
+msgstr "도시는 필수입니다."
+
+#: 
+msgid "Class Overview"
+msgstr "반 개요"
+
+#: 
+msgid "Clear filter"
+msgstr "필터 지우기"
+
+#: 
+msgid "Configuration item not found"
+msgstr "구성 항목을 찾을 수 없습니다"
+
+#: 
+msgid "Country is required."
+msgstr "국가는 필수입니다."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord 채팅"
+
+#: 
+msgid "Display Preview"
+msgstr "미리보기 표시"
+
+#: 
+msgid "Email (To)"
+msgstr "이메일 (받는 사람)"
+
+#: 
+msgid "Email address is required."
+msgstr "이메일 주소는 필수입니다."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "가족에게 지오코딩할 주소가 없습니다"
+
+#: 
+msgid "Father"
+msgstr "아버지"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "지오코딩된 좌표:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "지오코딩 실패"
+
+#: 
+msgid "Geocoding successful"
+msgstr "지오코딩 성공"
+
+#: 
+msgid "In Cart"
+msgstr "목록에 있음"
+
+#: 
+msgid "Inactive Groups"
+msgstr "비활성 그룹"
+
+#: 
+msgid "Kids Email"
+msgstr "자녀 이메일"
+
+#: 
+msgid "Language & Localization"
+msgstr "언어 및 지역화"
+
+#: 
+msgid "Location & Map"
+msgstr "위치 및 지도"
+
+#: 
+msgid "Location Information"
+msgstr "위치 정보"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "교회 소통을 위한 주요 연락 이메일."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "교회의 주요 연락 전화번호."
+
+#: 
+msgid "Male / Female"
+msgstr "남성 / 여성"
+
+#: 
+msgid "Map"
+msgstr "지도"
+
+#: 
+msgid "Mother"
+msgstr "어머니"
+
+#: 
+msgid "No members"
+msgstr "성도 없음"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "선택사항. 교회 웹사이트 URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "부모/보호자"
+
+#: 
+msgid "Phone number is required."
+msgstr "전화번호는 필수입니다."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "좌표 새로고침"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "필수. 모든 보고서 및 통신에 사용됩니다."
+
+#: 
+msgid "Save Church Information"
+msgstr "교회 정보 저장"
+
+#: 
+msgid "Search or select..."
+msgstr "검색 또는 선택..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCC 필드에 수신자를 넣어 이메일 보내기 (서로 숨겨짐)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "받는 사람 필드에 수신자를 넣어 이메일 보내기"
+
+#: 
+msgid "State is required."
+msgstr "시/도는 필수입니다."
+
+#: 
+msgid "Street Address"
+msgstr "주소"
+
+#: 
+msgid "Street address is required."
+msgstr "주소는 필수입니다."
+
+#: 
+msgid "Student Information"
+msgstr "학생 정보"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "교회의 시스템 언어. 날짜 형식, 전화 형식 및 기타 지역화에 영향을 줍니다."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "교회 정보는 보고서 및 디렉토리에 이렇게 표시됩니다."
+
+#: 
+msgid "Time Zone"
+msgstr "시간대"
+
+#: 
+msgid "Toggle overview"
+msgstr "개요 토글"
+
+#: 
+msgid "Total Enrolled"
+msgstr "총 등록 인원"
+
+#: 
+msgid "Total Groups"
+msgstr "총 그룹 수"
+
+#: 
+msgid "Total Memberships"
+msgstr "총 성도 수"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "저장할 때마다 자동으로 업데이트됩니다."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "이벤트 일정 및 보고 시간에 사용됩니다."
+
+#: 
+msgid "View Full Details"
+msgstr "전체 상세 정보 보기"
+
+#: 
+msgid "View Profile"
+msgstr "프로필 보기"
+
+#: 
+msgid "Website"
+msgstr "웹사이트"
+
+#: 
+msgid "ZIP code is required."
+msgstr "우편번호는 필수입니다."
+
+#: 
+msgid "— Select Country —"
+msgstr "— 국가 선택 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 시/도 선택 —"
+

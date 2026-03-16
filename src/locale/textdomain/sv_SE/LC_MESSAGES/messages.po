@@ -12403,3 +12403,255 @@ msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 msgid "Select the desired event"
 msgstr "Välj önskat evenemang"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "En karta visas här när en gatuadress sparas. Koordinater detekteras automatiskt — ingen manuell inmatning krävs."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktiva grupper"
+
+#: 
+msgid "Add New Group"
+msgstr "Lägg till ny grupp"
+
+#: 
+msgid "Add all to cart"
+msgstr "Lägg till alla i urvalet"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Detektera koordinater automatiskt med adress"
+
+#: 
+msgid "Basic Information"
+msgstr "Grundinformation"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Församlingsinformation sparad."
+
+#: 
+msgid "Church name is required."
+msgstr "Församlingsnamn är obligatoriskt."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Församlingsnamn är obligatoriskt. Fyll i fliken Grundinformation."
+
+#: 
+msgid "City is required."
+msgstr "Stad är obligatoriskt."
+
+#: 
+msgid "Class Overview"
+msgstr "Klassöversikt"
+
+#: 
+msgid "Clear filter"
+msgstr "Rensa filter"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurationsobjekt hittades inte"
+
+#: 
+msgid "Country is required."
+msgstr "Land är obligatoriskt."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chatt"
+
+#: 
+msgid "Display Preview"
+msgstr "Visa förhandsgranskning"
+
+#: 
+msgid "Email (To)"
+msgstr "E-post (Till)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-postadress är obligatorisk."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familjen saknar gatuadress för geokodning"
+
+#: 
+msgid "Father"
+msgstr "Far"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokodade koordinater:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokodning misslyckades"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokodning lyckades"
+
+#: 
+msgid "In Cart"
+msgstr "I urvalet"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inaktiva grupper"
+
+#: 
+msgid "Kids Email"
+msgstr "Barns e-post"
+
+#: 
+msgid "Language & Localization"
+msgstr "Språk och lokalisering"
+
+#: 
+msgid "Location & Map"
+msgstr "Plats och karta"
+
+#: 
+msgid "Location Information"
+msgstr "Platsinformation"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Primär kontakt-e-post för församlingskommunikation."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Primärt telefonnummer för församlingen."
+
+#: 
+msgid "Male / Female"
+msgstr "Man / Kvinna"
+
+#: 
+msgid "Map"
+msgstr "Karta"
+
+#: 
+msgid "Mother"
+msgstr "Mor"
+
+#: 
+msgid "No members"
+msgstr "Inga medlemmar"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Valfritt. URL till din församlings webbplats."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Föräldrar/Vårdnadshavare"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefonnummer är obligatoriskt."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Uppdatera koordinater"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Obligatoriskt. Används på alla rapporter och kommunikationer."
+
+#: 
+msgid "Save Church Information"
+msgstr "Spara församlingsinformation"
+
+#: 
+msgid "Search or select..."
+msgstr "Sök eller välj..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Skicka e-post med mottagare i BCC-fältet (dolda för varandra)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Skicka e-post med mottagare i Till-fältet"
+
+#: 
+msgid "State is required."
+msgstr "Län är obligatoriskt."
+
+#: 
+msgid "Street Address"
+msgstr "Gatuadress"
+
+#: 
+msgid "Street address is required."
+msgstr "Gatuadress är obligatorisk."
+
+#: 
+msgid "Student Information"
+msgstr "Elevinfo"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systemspråk för församlingen. Påverkar datumformat, telefonformat och andra lokaliseringar."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Så här visas din församlingsinformation i rapporter och kataloger."
+
+#: 
+msgid "Time Zone"
+msgstr "Tidszon"
+
+#: 
+msgid "Toggle overview"
+msgstr "Växla översikt"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Totalt inskrivna"
+
+#: 
+msgid "Total Groups"
+msgstr "Totalt grupper"
+
+#: 
+msgid "Total Memberships"
+msgstr "Totalt medlemskap"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Uppdateras automatiskt vid varje sparning."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Används för schemaläggning av händelser och rapporteringstider."
+
+#: 
+msgid "View Full Details"
+msgstr "Visa fullständiga detaljer"
+
+#: 
+msgid "View Profile"
+msgstr "Visa profil"
+
+#: 
+msgid "Website"
+msgstr "Webbplats"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postnummer är obligatoriskt."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Välj land —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Välj län —"
+

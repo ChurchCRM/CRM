@@ -12215,3 +12215,255 @@ msgstr "すべてのユーザーに二段階認証への登録を要求する"
 msgid "Select the desired event"
 msgstr "目的のイベントを選択してください"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "住所が保存されると、ここに地図が表示されます。座標は自動的に検出されます — 手動入力は不要です。"
+
+#: 
+msgid "Active Groups"
+msgstr "アクティブなグループ"
+
+#: 
+msgid "Add New Group"
+msgstr "新しいグループを追加"
+
+#: 
+msgid "Add all to cart"
+msgstr "全員をリストに追加"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "住所を使用して座標を自動検出"
+
+#: 
+msgid "Basic Information"
+msgstr "基本情報"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "教会情報を正常に保存しました。"
+
+#: 
+msgid "Church name is required."
+msgstr "教会名は必須です。"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "教会名は必須です。基本情報タブを完成させてください。"
+
+#: 
+msgid "City is required."
+msgstr "市区町村は必須です。"
+
+#: 
+msgid "Class Overview"
+msgstr "クラスの概要"
+
+#: 
+msgid "Clear filter"
+msgstr "フィルターをクリア"
+
+#: 
+msgid "Configuration item not found"
+msgstr "設定項目が見つかりません"
+
+#: 
+msgid "Country is required."
+msgstr "国は必須です。"
+
+#: 
+msgid "Discord Chat"
+msgstr "Discordチャット"
+
+#: 
+msgid "Display Preview"
+msgstr "プレビューを表示"
+
+#: 
+msgid "Email (To)"
+msgstr "メール（宛先）"
+
+#: 
+msgid "Email address is required."
+msgstr "メールアドレスは必須です。"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "この家族にはジオコーディング用の住所がありません"
+
+#: 
+msgid "Father"
+msgstr "父"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "ジオコーディングされた座標："
+
+#: 
+msgid "Geocoding failed"
+msgstr "ジオコーディングに失敗しました"
+
+#: 
+msgid "Geocoding successful"
+msgstr "ジオコーディングに成功しました"
+
+#: 
+msgid "In Cart"
+msgstr "リスト内"
+
+#: 
+msgid "Inactive Groups"
+msgstr "非アクティブなグループ"
+
+#: 
+msgid "Kids Email"
+msgstr "子どものメール"
+
+#: 
+msgid "Language & Localization"
+msgstr "言語とローカライゼーション"
+
+#: 
+msgid "Location & Map"
+msgstr "場所と地図"
+
+#: 
+msgid "Location Information"
+msgstr "場所情報"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "教会の連絡用メインメールアドレス。"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "教会のメイン連絡先電話番号。"
+
+#: 
+msgid "Male / Female"
+msgstr "男性 / 女性"
+
+#: 
+msgid "Map"
+msgstr "地図"
+
+#: 
+msgid "Mother"
+msgstr "母"
+
+#: 
+msgid "No members"
+msgstr "メンバーなし"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "任意。教会のウェブサイトのURL。"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "保護者/後見人"
+
+#: 
+msgid "Phone number is required."
+msgstr "電話番号は必須です。"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "座標を更新"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "必須。すべてのレポートおよび連絡で使用されます。"
+
+#: 
+msgid "Save Church Information"
+msgstr "教会情報を保存"
+
+#: 
+msgid "Search or select..."
+msgstr "検索または選択..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCCフィールドに受信者を入れてメールを送信（お互いに非表示）"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "宛先フィールドに受信者を入れてメールを送信"
+
+#: 
+msgid "State is required."
+msgstr "都道府県は必須です。"
+
+#: 
+msgid "Street Address"
+msgstr "住所"
+
+#: 
+msgid "Street address is required."
+msgstr "住所は必須です。"
+
+#: 
+msgid "Student Information"
+msgstr "生徒情報"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "教会のシステム言語。日付形式、電話形式、その他のローカライゼーションに影響します。"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "教会情報はレポートおよびディレクトリにこのように表示されます。"
+
+#: 
+msgid "Time Zone"
+msgstr "タイムゾーン"
+
+#: 
+msgid "Toggle overview"
+msgstr "概要を切り替え"
+
+#: 
+msgid "Total Enrolled"
+msgstr "登録者数合計"
+
+#: 
+msgid "Total Groups"
+msgstr "グループ数合計"
+
+#: 
+msgid "Total Memberships"
+msgstr "メンバーシップ数合計"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "保存のたびに自動的に更新されます。"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "イベントのスケジュールとレポート時間に使用されます。"
+
+#: 
+msgid "View Full Details"
+msgstr "詳細を表示"
+
+#: 
+msgid "View Profile"
+msgstr "プロフィールを表示"
+
+#: 
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: 
+msgid "ZIP code is required."
+msgstr "郵便番号は必須です。"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 国を選択 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 都道府県を選択 —"
+
