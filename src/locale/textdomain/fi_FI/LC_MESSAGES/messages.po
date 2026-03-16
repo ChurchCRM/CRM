@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Ei"
 
 #: 
-msgid "Developer Chat"
-msgstr "Kehittäjän chat"
-
-#: 
 msgid "Event Checkin"
 msgstr "Tapahtumaan sisäänkirjautuminen"
 
@@ -3073,10 +3069,6 @@ msgid "Send Message"
 msgstr "Lähetä viesti"
 
 #: 
-msgid "Quick Status"
-msgstr "Pikatila"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Syntymäpäivät kuukausittain"
 
@@ -3091,30 +3083,6 @@ msgstr "Matkapuhelin"
 #: 
 msgid "Home Address"
 msgstr "Kotiosoite"
-
-#: 
-msgid "Dad Name"
-msgstr "Isän nimi"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Isän matkapuhelin"
-
-#: 
-msgid "Dad Email"
-msgstr "Isän sähköposti"
-
-#: 
-msgid "Mom Name"
-msgstr "Äidin nimi"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Äidin matkapuhelin"
-
-#: 
-msgid "Mom Email"
-msgstr "Äidin sähköposti"
 
 #: 
 msgid "Compose New Message"
@@ -3525,10 +3493,6 @@ msgid "with this property..."
 msgstr "tällä ominaisuudella..."
 
 #: 
-msgid "Church Email"
-msgstr "Kirkon sähköposti"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Sisällytä hakemistoon vain nämä luokitukset (pilkulla erotettuna)"
 
@@ -3589,14 +3553,6 @@ msgid "First month of the fiscal year"
 msgstr "Tilikauden ensimmäinen kuukausi"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Kirkon leveysaste, käytetään Google-kartan keskittämiseen"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kirkon pituusaste, käytetään Google-kartan keskittämiseen"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Aseta 'Tosi' poistaaksesi Ystävyyspäivän syöttämisen käytöstä. Aseta 'Epätosi' salliaksesi sen."
 
@@ -3643,22 +3599,6 @@ msgstr "Vasen marginaali (1 = 1/100 tuumaa)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Viivan paksuus (1 = 1/100 tuumaa)"
-
-#: 
-msgid "Church City"
-msgstr "Kirkon kaupunki"
-
-#: 
-msgid "Church State"
-msgstr "Kirkon lääni/osavaltio"
-
-#: 
-msgid "Church Zip"
-msgstr "Kirkon postinumero"
-
-#: 
-msgid "Church Phone"
-msgstr "Kirkon puhelinnumero"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6107,10 +6047,6 @@ msgid "Text Cart"
 msgstr "Tekstiviestikori"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Kirkkosi verkkosivusto"
-
-#: 
 msgid "Self Verification"
 msgstr "Itsevahvistus"
 
@@ -6155,16 +6091,8 @@ msgid "Checking Cart Status"
 msgstr "Tarkistetaan korin tilaa"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Kaikki tämän ryhmän jäsenet ovat korissa"
-
-#: 
 msgid "Remove all"
 msgstr "Poista kaikki"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Kaikki tämän ryhmän jäsenet eivät ole korissa"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7200,10 +7128,6 @@ msgstr "Sukunimi, Etunimi Toinen-nimi"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API -avain osoitteiden geokoodaukseen"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10089,10 +10013,6 @@ msgstr "Voit luoda perheenjäsenet nyt tai lisätä heidät myöhemmin. Kaikista
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Tilikausi alkaa kuukaudessa"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Postinumero"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

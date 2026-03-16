@@ -487,10 +487,6 @@ msgid "No"
 msgstr "ไม่"
 
 #: 
-msgid "Developer Chat"
-msgstr "แชทนักพัฒนา"
-
-#: 
 msgid "Event Checkin"
 msgstr "เช็คอินกิจกรรม"
 
@@ -3076,10 +3072,6 @@ msgid "Send Message"
 msgstr "ส่งข้อความ"
 
 #: 
-msgid "Quick Status"
-msgstr "สถานะด่วน"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "วันเกิดตามเดือน"
 
@@ -3094,30 +3086,6 @@ msgstr "มือถือ"
 #: 
 msgid "Home Address"
 msgstr "ที่อยู่บ้าน"
-
-#: 
-msgid "Dad Name"
-msgstr "ชื่อพ่อ"
-
-#: 
-msgid "Dad Mobile"
-msgstr "มือถือพ่อ"
-
-#: 
-msgid "Dad Email"
-msgstr "อีเมลพ่อ"
-
-#: 
-msgid "Mom Name"
-msgstr "ชื่อแม่"
-
-#: 
-msgid "Mom Mobile"
-msgstr "มือถือแม่"
-
-#: 
-msgid "Mom Email"
-msgstr "อีเมลแม่"
 
 #: 
 msgid "Compose New Message"
@@ -3528,10 +3496,6 @@ msgid "with this property..."
 msgstr "กับคุณสมบัตินี้..."
 
 #: 
-msgid "Church Email"
-msgstr "อีเมลคริสตจักร"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "รวมเฉพาะการจัดประเภทเหล่านี้ในไดเรกทอรี คั่นด้วยคอมมา"
 
@@ -3592,14 +3556,6 @@ msgid "First month of the fiscal year"
 msgstr "เดือนแรกของปีงบประมาณ"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "ละติจูดของคริสตจักร ใช้เพื่อกำหนดศูนย์กลางแผนที่ Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "ลองจิจูดของคริสตจักร ใช้เพื่อกำหนดศูนย์กลางแผนที่ Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล ตั้งเป็นเท็จเพื่อเปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล"
 
@@ -3646,22 +3602,6 @@ msgstr "ขอบซ้าย (1 = 1/100 นิ้ว)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "ความหนาของเส้น (1 = 1/100 นิ้ว"
-
-#: 
-msgid "Church City"
-msgstr "เมืองคริสตจักร"
-
-#: 
-msgid "Church State"
-msgstr "รัฐคริสตจักร"
-
-#: 
-msgid "Church Zip"
-msgstr "รหัสไปรษณีย์คริสตจักร"
-
-#: 
-msgid "Church Phone"
-msgstr "โทรศัพท์คริสตจักร"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6110,10 +6050,6 @@ msgid "Text Cart"
 msgstr "ส่งข้อความตะกร้า"
 
 #: 
-msgid "Your Church's Website"
-msgstr "เว็บไซต์คริสตจักรของคุณ"
-
-#: 
 msgid "Self Verification"
 msgstr "การยืนยันตนเอง"
 
@@ -6158,16 +6094,8 @@ msgid "Checking Cart Status"
 msgstr "กำลังตรวจสอบสถานะตะกร้า"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "สมาชิกทั้งหมดของกลุ่มนี้อยู่ในตะกร้า"
-
-#: 
 msgid "Remove all"
 msgstr "ลบทั้งหมด"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "ไม่ใช่สมาชิกทั้งหมดของกลุ่มนี้อยู่ในตะกร้า"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7206,10 +7134,6 @@ msgstr "นามสกุล, ชื่อจริง ชื่อกลาง
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "คีย์ API Google Maps ที่ใช้สำหรับการเข้ารหัสภูมิศาสตร์ที่อยู่"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10093,10 +10017,6 @@ msgstr "คุณอาจสร้างสมาชิกครอบครั
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "รหัสไปรษณีย์"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

@@ -492,10 +492,6 @@ msgid "No"
 msgstr "Không"
 
 #: 
-msgid "Developer Chat"
-msgstr "Trò chuyện nhà phát triển"
-
-#: 
 msgid "Event Checkin"
 msgstr "Đăng ký sự kiện"
 
@@ -3111,10 +3107,6 @@ msgid "Send Message"
 msgstr "Gửi đi"
 
 #: 
-msgid "Quick Status"
-msgstr "Trạng thái"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ngày sinh theo tháng"
 
@@ -3129,30 +3121,6 @@ msgstr "Di động"
 #: 
 msgid "Home Address"
 msgstr "Địa chỉ nhà"
-
-#: 
-msgid "Dad Name"
-msgstr "Tên Bố"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Điện thoại của Bố"
-
-#: 
-msgid "Dad Email"
-msgstr "Email của Bố"
-
-#: 
-msgid "Mom Name"
-msgstr "Tên Mẹ"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Điện thoại của Mẹ"
-
-#: 
-msgid "Mom Email"
-msgstr "Email của Mẹ"
 
 #: 
 msgid "Compose New Message"
@@ -3566,10 +3534,6 @@ msgid "with this property..."
 msgstr "với tài sản này .."
 
 #: 
-msgid "Church Email"
-msgstr "Email Nhà thờ"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Chỉ bao gồm các phân loại này trong thư mục, được phân tách bằng dấu phẩy"
@@ -3632,14 +3596,6 @@ msgid "First month of the fiscal year"
 msgstr "Tháng đầu tiên của năm tài chính"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Vĩ độ của nhà thờ, được sử dụng để căn giữa bản đồ Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kinh độ của nhà thờ, được sử dụng để căn giữa bản đồ Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Đặt true để tắt tính năng nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân. Đặt false để cho phép nhập Ngày kết bạn trong Trình chỉnh sửa cá nhân."
 
@@ -3686,22 +3642,6 @@ msgstr "Lề trái (1 = 1/100 inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Độ dày dòng (1 = 1/100 inch"
-
-#: 
-msgid "Church City"
-msgstr "Thành phố nhà thờ"
-
-#: 
-msgid "Church State"
-msgstr "Nhà nước Giáo hội"
-
-#: 
-msgid "Church Zip"
-msgstr "Nhà thờ Zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Điện thoại nhà thờ"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6157,10 +6097,6 @@ msgid "Text Cart"
 msgstr "Giỏ nội dung"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Trang web của Giáo hội của bạn"
-
-#: 
 msgid "Self Verification"
 msgstr "Tự xác minh"
 
@@ -6205,16 +6141,8 @@ msgid "Checking Cart Status"
 msgstr "Kiểm tra tình trạng giỏ hàng"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Tất cả các thành viên của nhóm này đều có trong giỏ hàng"
-
-#: 
 msgid "Remove all"
 msgstr "Xóa bỏ tất cả"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Không phải tất cả thành viên của nhóm này đều có trong giỏ hàng"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7253,10 +7181,6 @@ msgstr "LastName, FirstName MiddleName"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Khóa API của Google Maps được sử dụng cho các địa chỉ Mã hóa địa lý"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10141,10 +10065,6 @@ msgstr "Bạn có thể tạo các thành viên ngay bây giờ hoặc thêm sau
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Năm tài chính của bạn bắt đầu vào tháng"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Mã bưu điện"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

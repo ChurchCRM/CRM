@@ -496,10 +496,6 @@ msgid "No"
 msgstr "没有"
 
 #: 
-msgid "Developer Chat"
-msgstr "开发者聊天"
-
-#: 
 msgid "Event Checkin"
 msgstr "事件入住"
 
@@ -3187,10 +3183,6 @@ msgid "Send Message"
 msgstr "发送信息"
 
 #: 
-msgid "Quick Status"
-msgstr "快速状态"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "生日月"
 
@@ -3205,30 +3197,6 @@ msgstr "收机"
 #: 
 msgid "Home Address"
 msgstr "家庭住址"
-
-#: 
-msgid "Dad Name"
-msgstr "父亲名称"
-
-#: 
-msgid "Dad Mobile"
-msgstr "父亲手机"
-
-#: 
-msgid "Dad Email"
-msgstr "父亲邮箱"
-
-#: 
-msgid "Mom Name"
-msgstr "母亲名称"
-
-#: 
-msgid "Mom Mobile"
-msgstr "母亲手机"
-
-#: 
-msgid "Mom Email"
-msgstr "目前邮件"
 
 #: 
 msgid "Compose New Message"
@@ -3648,10 +3616,6 @@ msgid "with this property..."
 msgstr "有这个属性.."
 
 #: 
-msgid "Church Email"
-msgstr "教会电邮"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "仅在目录中包含这些分类，逗号分隔"
@@ -3714,14 +3678,6 @@ msgid "First month of the fiscal year"
 msgstr "财政年度的第一个月"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "教堂的纬度，用于居中谷歌地图"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "教堂的经度，用于居中谷歌地图"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入Friend Date。设置为false(否)以启用在Person Editor(人员编辑)中输入Friend Date。"
 
@@ -3768,22 +3724,6 @@ msgstr "左边距（1 = 1/100英寸）"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "线厚度（1 = 1/100英寸"
-
-#: 
-msgid "Church City"
-msgstr "教会城市"
-
-#: 
-msgid "Church State"
-msgstr "教会州"
-
-#: 
-msgid "Church Zip"
-msgstr "教会邮编"
-
-#: 
-msgid "Church Phone"
-msgstr "教会电话"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6239,10 +6179,6 @@ msgid "Text Cart"
 msgstr "Text Cart"
 
 #: 
-msgid "Your Church's Website"
-msgstr "您教会的网站"
-
-#: 
 msgid "Self Verification"
 msgstr "自助验证"
 
@@ -6287,16 +6223,8 @@ msgid "Checking Cart Status"
 msgstr "检查购物车状态"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "该群组的所有成员都在购物车中"
-
-#: 
 msgid "Remove all"
 msgstr "移除所有"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "并非该群组的所有成员都在购物车中"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7345,10 +7273,6 @@ msgstr "姓，名，中间名"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "用于地址编码的Google Maps API密钥"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10233,10 +10157,6 @@ msgstr "您可以现在创建家庭成员，也可以稍后添加。所有条目
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "您的财政年度开始月份为"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "邮政编码"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

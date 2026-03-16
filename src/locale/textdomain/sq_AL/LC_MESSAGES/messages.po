@@ -481,10 +481,6 @@ msgid "No"
 msgstr "Jo"
 
 #: 
-msgid "Developer Chat"
-msgstr "Bisedë me zhvilluesit"
-
-#: 
 msgid "Event Checkin"
 msgstr "Checkin Event"
 
@@ -3099,10 +3095,6 @@ msgid "Send Message"
 msgstr "Dërgo mesazh"
 
 #: 
-msgid "Quick Status"
-msgstr "Statusi i shpejtë"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ditëlindjet sipas muajit"
 
@@ -3117,30 +3109,6 @@ msgstr "Celulari"
 #: 
 msgid "Home Address"
 msgstr "Adresa e shtëpisë"
-
-#: 
-msgid "Dad Name"
-msgstr "Emri i babait"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Celulari i babait"
-
-#: 
-msgid "Dad Email"
-msgstr "Emaili i babait"
-
-#: 
-msgid "Mom Name"
-msgstr "Emri i nënës"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Celulari i nënës"
-
-#: 
-msgid "Mom Email"
-msgstr "Emaili i nënës"
 
 #: 
 msgid "Compose New Message"
@@ -3551,10 +3519,6 @@ msgid "with this property..."
 msgstr "me këtë veçori..."
 
 #: 
-msgid "Church Email"
-msgstr "Email-i i kishës"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Përfshini vetëm këto klasifikime në direktori, të ndara me presje"
 
@@ -3615,14 +3579,6 @@ msgid "First month of the fiscal year"
 msgstr "Muaji i parë i vitit fiskal"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Gjerësia gjeografike e kishës, e përdorur për të qendërzuar hartën e Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Gjatësia gjeografike e kishës, e përdorur për të qendërzuar hartën e Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Caktoni 'True' për të çaktivizuar futjen e datës së mikut në redaktorin e personit. Caktoni 'False' për ta aktivizuar."
 
@@ -3669,22 +3625,6 @@ msgstr "Margjina e majtë (1 = 1/100 inç)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Trashësia e vijës (1 = 1/100 inç)"
-
-#: 
-msgid "Church City"
-msgstr "Qyteti i kishës"
-
-#: 
-msgid "Church State"
-msgstr "Shteti i kishës"
-
-#: 
-msgid "Church Zip"
-msgstr "Kodi postar i kishës"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefoni i kishës"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6133,10 +6073,6 @@ msgid "Text Cart"
 msgstr "Shporta e tekstit"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Faqja e internetit e kishës suaj"
-
-#: 
 msgid "Self Verification"
 msgstr "Vetë-verifikimi"
 
@@ -6181,16 +6117,8 @@ msgid "Checking Cart Status"
 msgstr "Duke kontrolluar statusin e shportës"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Të gjithë anëtarët e këtij grupi janë në shportë"
-
-#: 
 msgid "Remove all"
 msgstr "Hiq të gjithë"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Jo të gjithë anëtarët e këtij grupi janë në shportë"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7231,10 +7159,6 @@ msgstr "Mbiemri, Emri Emri i mesëm"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Ju lutem konfirmoni çaktivizimin e vërtetimit 2-faktorësh për këtë përdorues"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Çelësi API i Google Maps i përdorur për gjeokodimin e adresave"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10120,10 +10044,6 @@ msgstr "Mund të krijoni anëtarë familjeje tani ose t'i shtoni më vonë. Të 
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Viti juaj fiskal fillon në muajin"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Kodi postar"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

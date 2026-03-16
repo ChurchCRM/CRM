@@ -480,10 +480,6 @@ msgid "No"
 msgstr "لا"
 
 #: 
-msgid "Developer Chat"
-msgstr "مطور الدردشة"
-
-#: 
 msgid "Event Checkin"
 msgstr "تسجيل دخول الحدث"
 
@@ -3099,10 +3095,6 @@ msgid "Send Message"
 msgstr "ارسال رساله"
 
 #: 
-msgid "Quick Status"
-msgstr "الحالة سريعة"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "تواريخ الميلاد بالشهر"
 
@@ -3117,30 +3109,6 @@ msgstr "موبايل"
 #: 
 msgid "Home Address"
 msgstr "عنوان المنزل"
-
-#: 
-msgid "Dad Name"
-msgstr "اسم أبي"
-
-#: 
-msgid "Dad Mobile"
-msgstr "أبي موبايل"
-
-#: 
-msgid "Dad Email"
-msgstr "ايميل الاب"
-
-#: 
-msgid "Mom Name"
-msgstr "اسم الام"
-
-#: 
-msgid "Mom Mobile"
-msgstr "موبايل الام"
-
-#: 
-msgid "Mom Email"
-msgstr "ايميل الام"
 
 #: 
 msgid "Compose New Message"
@@ -3554,10 +3522,6 @@ msgid "with this property..."
 msgstr "مع هذه الخاصية ..."
 
 #: 
-msgid "Church Email"
-msgstr "الكنيسة البريد الإلكتروني"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "تشمل فقط هذه التصنيفات في الدليل، مفصولة بفواصل"
@@ -3620,14 +3584,6 @@ msgid "First month of the fiscal year"
 msgstr "الشهر الأول من السنة المالية"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "خط العرض الكنيسة، وتستخدم لتوسيط خريطة جوجل"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "خط الطول للكنيسة، وتستخدم لتوسيط خريطة جوجل"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "تعيين وفيا لتعطيل دخول صديق التسجيل في محرر شخص. مجموعة كاذبة لتمكين دخول صديق التسجيل في محرر شخص."
 
@@ -3674,22 +3630,6 @@ msgstr "الهامش الأيسر (1 = 1 / 100th بوصة)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "خط سمك (1 = 1 / 100th بوصة"
-
-#: 
-msgid "Church City"
-msgstr "كنيسة مدينة"
-
-#: 
-msgid "Church State"
-msgstr "الكنيسة الرسمية للدولة"
-
-#: 
-msgid "Church Zip"
-msgstr "الرمز البريدي الكنيسة"
-
-#: 
-msgid "Church Phone"
-msgstr "الكنيسة الهاتف"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6145,10 +6085,6 @@ msgid "Text Cart"
 msgstr "سلة النص"
 
 #: 
-msgid "Your Church's Website"
-msgstr "موقع كنيسة الخاص بك"
-
-#: 
 msgid "Self Verification"
 msgstr "التأكيد الذاتي"
 
@@ -6193,16 +6129,8 @@ msgid "Checking Cart Status"
 msgstr "التحقق من حالة العربة"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "جميع أعضاء هذه المجموعة في العربة"
-
-#: 
 msgid "Remove all"
 msgstr "ازالة الكل"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "ليس كل أعضاء هذه المجموعة في العربة"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7251,10 +7179,6 @@ msgstr "الاسم الاخير الاسم الاول والاسم الاوسط"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "الرجاء التأكد من تعطيل 2 عامل أصيل لهذا المستخدم"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "مفتاح API لخرائط Google المستخدم لعناوين الترميز الجغرافي"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10149,10 +10073,6 @@ msgstr "يمكنك إنشاء أفراد العائلة الآن أو إضافت
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "تبدأ السنة المالية الخاصة بك في الشهر"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "الرمز البريدي"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

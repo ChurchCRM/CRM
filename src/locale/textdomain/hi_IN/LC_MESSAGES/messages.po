@@ -480,10 +480,6 @@ msgid "No"
 msgstr "नहीं"
 
 #: 
-msgid "Developer Chat"
-msgstr "डेवलपर चैट"
-
-#: 
 msgid "Event Checkin"
 msgstr "इवेंट चेकइन"
 
@@ -3069,10 +3065,6 @@ msgid "Send Message"
 msgstr "संदेश भेजें"
 
 #: 
-msgid "Quick Status"
-msgstr "त्वरित स्थिति"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "महीने के अनुसार जन्मदिन"
 
@@ -3087,30 +3079,6 @@ msgstr "मोबाइल"
 #: 
 msgid "Home Address"
 msgstr "घर का पता"
-
-#: 
-msgid "Dad Name"
-msgstr "पिता का नाम"
-
-#: 
-msgid "Dad Mobile"
-msgstr "पिता का मोबाइल"
-
-#: 
-msgid "Dad Email"
-msgstr "पिता का ईमेल"
-
-#: 
-msgid "Mom Name"
-msgstr "माता का नाम"
-
-#: 
-msgid "Mom Mobile"
-msgstr "माता का मोबाइल"
-
-#: 
-msgid "Mom Email"
-msgstr "माता का ईमेल"
 
 #: 
 msgid "Compose New Message"
@@ -3521,10 +3489,6 @@ msgid "with this property..."
 msgstr "इस गुण के साथ..."
 
 #: 
-msgid "Church Email"
-msgstr "चर्च ईमेल"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "निर्देशिका में केवल इन वर्गीकरणों को शामिल करें, अल्पविराम से अलग करके"
 
@@ -3585,14 +3549,6 @@ msgid "First month of the fiscal year"
 msgstr "वित्तीय वर्ष का पहला महीना"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "चर्च का अक्षांश, गूगल मैप को केंद्र में रखने के लिए उपयोग किया जाता है"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "चर्च का देशांतर, गूगल मैप को केंद्र में रखने के लिए उपयोग किया जाता है"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "व्यक्ति संपादक में मित्र तिथि दर्ज करने को अक्षम करने के लिए true सेट करें। सक्षम करने के लिए false सेट करें।"
 
@@ -3639,22 +3595,6 @@ msgstr "बायां मार्जिन (1 = 1/100 इंच)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "रेखा की मोटाई (1 = 1/100 इंच)"
-
-#: 
-msgid "Church City"
-msgstr "चर्च शहर"
-
-#: 
-msgid "Church State"
-msgstr "चर्च राज्य"
-
-#: 
-msgid "Church Zip"
-msgstr "चर्च ज़िप"
-
-#: 
-msgid "Church Phone"
-msgstr "चर्च फ़ोन"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6103,10 +6043,6 @@ msgid "Text Cart"
 msgstr "टेक्स्ट कार्ट"
 
 #: 
-msgid "Your Church's Website"
-msgstr "आपके चर्च की वेबसाइट"
-
-#: 
 msgid "Self Verification"
 msgstr "स्व-सत्यापन"
 
@@ -6151,16 +6087,8 @@ msgid "Checking Cart Status"
 msgstr "कार्ट स्थिति की जाँच की जा रही है"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "इस समूह के सभी सदस्य कार्ट में हैं"
-
-#: 
 msgid "Remove all"
 msgstr "सभी निकालें"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "इस समूह के सभी सदस्य कार्ट में नहीं हैं"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7197,10 +7125,6 @@ msgstr "अंतिमनाम, प्रथमनाम मध्यमना
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "कृपया इस उपयोगकर्ता के लिए 2 फैक्टर ऑथेंटिकेशन अक्षम करने की पुष्टि करें"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "पतों की जियोकोडिंग के लिए उपयोग की जाने वाली गूगल मैप्स API कुंजी"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10086,10 +10010,6 @@ msgstr "आप अभी परिवार के सदस्य बना स
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "आपका वित्तीय वर्ष महीने में शुरू होता है"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "पिन कोड"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

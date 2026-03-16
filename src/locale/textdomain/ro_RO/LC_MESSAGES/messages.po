@@ -496,10 +496,6 @@ msgid "No"
 msgstr "Nu"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat pentru dezvoltatori"
-
-#: 
 msgid "Event Checkin"
 msgstr "Evenimentul Checkin"
 
@@ -3181,10 +3177,6 @@ msgid "Send Message"
 msgstr "Trimite mesaj"
 
 #: 
-msgid "Quick Status"
-msgstr "Situație rapidă"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "ZIle de naștere în funcție de lună"
 
@@ -3199,30 +3191,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresă casă"
-
-#: 
-msgid "Dad Name"
-msgstr "Nume tată"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Mobil tată"
-
-#: 
-msgid "Dad Email"
-msgstr "Email tată"
-
-#: 
-msgid "Mom Name"
-msgstr "Nume mamă"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mobil mamă"
-
-#: 
-msgid "Mom Email"
-msgstr "Email soție"
 
 #: 
 msgid "Compose New Message"
@@ -3642,10 +3610,6 @@ msgid "with this property..."
 msgstr "cu această proprietate..."
 
 #: 
-msgid "Church Email"
-msgstr "Email biserică"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Include în director, numai aceste clarificări, separate de virgulă"
@@ -3708,14 +3672,6 @@ msgid "First month of the fiscal year"
 msgstr "Prima luna a anului fiscal"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Latitudinea bisericii, folosită pentru centrarea hărții"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Longitudinea bisericii, folosită pentru centrarea hărții"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Setați true pentru a dezactiva introducerea datei prietenului în editorul de persoane. Setați false pentru a activa introducerea datei prietenului în editorul de persoane"
 
@@ -3762,22 +3718,6 @@ msgstr "Margine stânga (1 = 1/100th inchi)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Grosime linie (1 = 1/100th inci)"
-
-#: 
-msgid "Church City"
-msgstr "Orașul bisericii"
-
-#: 
-msgid "Church State"
-msgstr "Județul bisericii"
-
-#: 
-msgid "Church Zip"
-msgstr "Cod poștal biserică"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefon biserică"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6234,10 +6174,6 @@ msgid "Text Cart"
 msgstr "Text coș"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Adresă web biserică"
-
-#: 
 msgid "Self Verification"
 msgstr "Auto verificare"
 
@@ -6282,16 +6218,8 @@ msgid "Checking Cart Status"
 msgstr "Verificăm stadiul coșului"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Toți membrii acestui grup sunt în coș"
-
-#: 
 msgid "Remove all"
 msgstr "Elimină tot"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Nu toți membrii din acest grup sunt în coș"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7338,10 +7266,6 @@ msgstr "Nume, prenume, al doile prenume"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Cheia API Google Maps utilizată pentru geocodificarea adreselor"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10229,10 +10153,6 @@ msgstr "Puteți crea membri ai familiei acum sau îi puteți adăuga mai târziu
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Anul dvs. fiscal începe în luna"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Cod poștal"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

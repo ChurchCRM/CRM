@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Немає"
 
 #: 
-msgid "Developer Chat"
-msgstr "Чат розробника"
-
-#: 
 msgid "Event Checkin"
 msgstr "Реєстрація події"
 
@@ -3100,10 +3096,6 @@ msgid "Send Message"
 msgstr "Відправити повідомлення"
 
 #: 
-msgid "Quick Status"
-msgstr "Швидкий статус"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Дні народження за місяцями"
 
@@ -3118,30 +3110,6 @@ msgstr "Мобільний"
 #: 
 msgid "Home Address"
 msgstr "Домашня адреса"
-
-#: 
-msgid "Dad Name"
-msgstr "Тато Ім'я"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Тато Мобіль"
-
-#: 
-msgid "Dad Email"
-msgstr "Тато електронною поштою"
-
-#: 
-msgid "Mom Name"
-msgstr "Ім'я мами"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Мама Мобільна"
-
-#: 
-msgid "Mom Email"
-msgstr "Мама електронною поштою"
 
 #: 
 msgid "Compose New Message"
@@ -3555,10 +3523,6 @@ msgid "with this property..."
 msgstr "з цією властивістю ..."
 
 #: 
-msgid "Church Email"
-msgstr "Церковна електронна пошта"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включіть лише ці класифікації в каталог, розділені комами"
@@ -3621,14 +3585,6 @@ msgid "First month of the fiscal year"
 msgstr "Перший місяць фінансового року"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Широта церкви, що використовується для центру мапи Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Довгота церкви, що використовується для центру мапи Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Встановіть значення true, щоб вимкнути введення дати друга в редакторі особи. Встановіть значення false, щоб увімкнути введення дати друга в редакторі особи."
 
@@ -3675,22 +3631,6 @@ msgstr "Лівий край (1 = 1/100 дюйма)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Товщина лінії (1 = 1/100 дюйма"
-
-#: 
-msgid "Church City"
-msgstr "Церковне місто"
-
-#: 
-msgid "Church State"
-msgstr "Церковна держава"
-
-#: 
-msgid "Church Zip"
-msgstr "Церковний Zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Церковний телефон"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6146,10 +6086,6 @@ msgid "Text Cart"
 msgstr "Текстовий кошик"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Веб-сайт вашої церкви"
-
-#: 
 msgid "Self Verification"
 msgstr "Самоперевірка"
 
@@ -6194,16 +6130,8 @@ msgid "Checking Cart Status"
 msgstr "Перевірка стану кошика"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Всі учасники цієї групи знаходяться в кошику"
-
-#: 
 msgid "Remove all"
 msgstr "Видалити всі"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Не всі учасники цієї групи знаходяться в кошику"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7239,10 +7167,6 @@ msgstr "Прізвище, Ім'я Середнє Ім'я"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Будь ласка, підтвердьте вимкнення 2-факторної авторизації для цього користувача"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Ключ API Google Maps, що використовується для геокодування адрес"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10117,10 +10041,6 @@ msgstr "Ви можете додати членів сім'ї зараз або 
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "Ваш фінансовий рік починається у місяці"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "Поштовий індекс"
 
 #: 
 msgid "ZipArchive extension required for upgrades"

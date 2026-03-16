@@ -480,10 +480,6 @@ msgid "No"
 msgstr "לא"
 
 #: 
-msgid "Developer Chat"
-msgstr "צ'ט מפתחים"
-
-#: 
 msgid "Event Checkin"
 msgstr "כניסה לאירוע"
 
@@ -3097,10 +3093,6 @@ msgid "Send Message"
 msgstr "שלח הודעה"
 
 #: 
-msgid "Quick Status"
-msgstr "סטטוס מהיר"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "ימי הולדת לפי חודש"
 
@@ -3115,30 +3107,6 @@ msgstr "טלפון נייד"
 #: 
 msgid "Home Address"
 msgstr "כתובת מגורים"
-
-#: 
-msgid "Dad Name"
-msgstr "שם האבא"
-
-#: 
-msgid "Dad Mobile"
-msgstr "טלפון של אבא"
-
-#: 
-msgid "Dad Email"
-msgstr "כתובת מייל של אבא"
-
-#: 
-msgid "Mom Name"
-msgstr "שם האם"
-
-#: 
-msgid "Mom Mobile"
-msgstr "טלפון של אמא"
-
-#: 
-msgid "Mom Email"
-msgstr "כתובת מייל של אמא"
 
 #: 
 msgid "Compose New Message"
@@ -3552,10 +3520,6 @@ msgid "with this property..."
 msgstr "עם מאפיין זה.."
 
 #: 
-msgid "Church Email"
-msgstr "דוא\"ל של המוסד"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "כלול רק סיווגים אלה במדריך, מופרדים בפסיקים"
 
@@ -3616,14 +3580,6 @@ msgid "First month of the fiscal year"
 msgstr "החודש הראשון של שנת הכספים"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "קו הרוחב של המוסד, משמש למרכוז מפת Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "קו האורך של המוסד, משמש למרכוז מפת Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "הגדר כ-true כדי להשבית הזנת תאריך חברות בעורך האיש. הגדר כ-false כדי לאפשר הזנת תאריך חברות בעורך האיש."
 
@@ -3670,22 +3626,6 @@ msgstr "שוליים שמאליים (1 = 1/100 אינץ')"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "עובי קו (1 = 1/100 אינץ')"
-
-#: 
-msgid "Church City"
-msgstr "עיר המוסד"
-
-#: 
-msgid "Church State"
-msgstr "מדינת המוסד"
-
-#: 
-msgid "Church Zip"
-msgstr "מיקוד של המוסד"
-
-#: 
-msgid "Church Phone"
-msgstr "טלפון המוסד"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6142,10 +6082,6 @@ msgid "Text Cart"
 msgstr "עגלת טקסט"
 
 #: 
-msgid "Your Church's Website"
-msgstr "אתר האינטרנט של המוסד שלך"
-
-#: 
 msgid "Self Verification"
 msgstr "אימות עצמי"
 
@@ -6190,16 +6126,8 @@ msgid "Checking Cart Status"
 msgstr "בודק מצב עגלה"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "כל חברי הקבוצה הזו נמצאים בעגלה"
-
-#: 
 msgid "Remove all"
 msgstr "הסר הכל"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "לא כל חברי הקבוצה הזו נמצאים בעגלה"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -7245,10 +7173,6 @@ msgstr "שם משפחה, שם פרטי שם אמצעי"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "מפתח API של Google Maps המשמש לקידוד גיאוגרפי של כתובות"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -10134,10 +10058,6 @@ msgstr "ניתן ליצור בני משפחה כעת או להוסיף מאוח�
 #: 
 msgid "Your fiscal year starts in month"
 msgstr "שנת הכספים שלך מתחילה בחודש"
-
-#: 
-msgid "Zip / Postal Code"
-msgstr "מיקוד"
 
 #: 
 msgid "ZipArchive extension required for upgrades"
