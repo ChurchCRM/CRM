@@ -7092,6 +7092,22 @@ msgid "Maximum number of Calendar Events"
 msgstr "Максимальна кількість подій календаря"
 
 #: 
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] "%d місяця"
+msgstr[1] "%d місяці"
+msgstr[2] "%d місяців"
+msgstr[3] "%d місяців"
+
+#: 
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] "%d річний"
+msgstr[1] "%d роки"
+msgstr[2] "%d років"
+msgstr[3] "%d років"
+
+#: 
 msgid "Missing PHP ZipArchive"
 msgstr "Відсутній PHP ZipArchive"
 
@@ -8642,6 +8658,14 @@ msgid "deposit(s) with no payments"
 msgstr "депозит(и) без платежів"
 
 #: 
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] "%d подія у %s"
+msgstr[1] "%d події у %s"
+msgstr[2] "%d подій у %s"
+msgstr[3] "%d подій у %s"
+
+#: 
 msgid "All Event Types"
 msgstr "Усі типи подій"
 
@@ -8893,6 +8917,14 @@ msgstr "наприклад, Недільна школа, біблійні зан
 #: 
 msgid "optional"
 msgstr "необов'язково"
+
+#: 
+msgid "person"
+msgid_plural "people"
+msgstr[0] "особа"
+msgstr[1] "особи"
+msgstr[2] "осіб"
+msgstr[3] "осіб"
 
 #: 
 msgid "✓ CheckOut"
@@ -10571,6 +10603,30 @@ msgid "Validation pending"
 msgstr "Очікується підтвердження"
 
 #: 
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] "%d особу додано до кошика."
+msgstr[1] "%d особи додано до кошика."
+msgstr[2] "%d осіб додано до кошика."
+msgstr[3] "%d осіб додано до кошика."
+
+#: 
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] "%d особу успішно додано до вибраної сім'ї."
+msgstr[1] "%d особи успішно додано до вибраної сім'ї."
+msgstr[2] "%d осіб успішно додано до вибраної сім'ї."
+msgstr[3] "%d осіб успішно додано до вибраної сім'ї."
+
+#: 
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] "%d особу успішно додано до вибраної групи."
+msgstr[1] "%d особи успішно додано до вибраної групи."
+msgstr[2] "%d осіб успішно додано до вибраної групи."
+msgstr[3] "%d осіб успішно додано до вибраної групи."
+
+#: 
 msgid "A "
 msgstr "A "
 
@@ -10889,6 +10945,14 @@ msgstr "записів"
 #: 
 msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
 msgstr "Повинно починатися з / якщо не порожнє; без завершальної косої риски. Дозволено лише букви, цифри, підкреслення, дефіс, крапка та /."
+
+#: 
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] "%d особа"
+msgstr[1] "%d особи"
+msgstr[2] "%d осіб"
+msgstr[3] "%d осіб"
 
 #: 
 msgid "All Classifications"
@@ -12232,4 +12296,256 @@ msgstr "Вимагати від усіх користувачів реєстра
 #: 
 msgid "Select the desired event"
 msgstr "Виберіть потрібну подію"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Карта з'явиться тут після збереження адреси. Координати визначаються автоматично — ручне введення не потрібне."
+
+#: 
+msgid "Active Groups"
+msgstr "Активні групи"
+
+#: 
+msgid "Add New Group"
+msgstr "Додати нову групу"
+
+#: 
+msgid "Add all to cart"
+msgstr "Додати все до списку"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Автоматично визначати координати за адресою"
+
+#: 
+msgid "Basic Information"
+msgstr "Основна інформація"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Інформацію про парафію успішно збережено."
+
+#: 
+msgid "Church name is required."
+msgstr "Назва парафії є обов'язковою."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Назва парафії є обов'язковою. Будь ласка, заповніть вкладку «Основна інформація»."
+
+#: 
+msgid "City is required."
+msgstr "Місто є обов'язковим."
+
+#: 
+msgid "Class Overview"
+msgstr "Огляд класу"
+
+#: 
+msgid "Clear filter"
+msgstr "Очистити фільтр"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Елемент конфігурації не знайдено"
+
+#: 
+msgid "Country is required."
+msgstr "Країна є обов'язковою."
+
+#: 
+msgid "Discord Chat"
+msgstr "Чат Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Показати попередній перегляд"
+
+#: 
+msgid "Email (To)"
+msgstr "Ел. пошта (Кому)"
+
+#: 
+msgid "Email address is required."
+msgstr "Адреса електронної пошти є обов'язковою."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Сім'я не має адреси для геокодування"
+
+#: 
+msgid "Father"
+msgstr "Батько"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Геокодовані координати:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Геокодування не вдалося"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Геокодування виконано успішно"
+
+#: 
+msgid "In Cart"
+msgstr "У списку"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Неактивні групи"
+
+#: 
+msgid "Kids Email"
+msgstr "Ел. пошта дітей"
+
+#: 
+msgid "Language & Localization"
+msgstr "Мова та локалізація"
+
+#: 
+msgid "Location & Map"
+msgstr "Розташування та карта"
+
+#: 
+msgid "Location Information"
+msgstr "Інформація про місцезнаходження"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Основна контактна ел. пошта для зв'язку з парафією."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Основний контактний телефон парафії."
+
+#: 
+msgid "Male / Female"
+msgstr "Чоловічий / Жіночий"
+
+#: 
+msgid "Map"
+msgstr "Карта"
+
+#: 
+msgid "Mother"
+msgstr "Мати"
+
+#: 
+msgid "No members"
+msgstr "Немає парафіян"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Необов'язково. URL сайту вашої парафії."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Батьки/Опікуни"
+
+#: 
+msgid "Phone number is required."
+msgstr "Номер телефону є обов'язковим."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Оновити координати"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Обов'язково. Використовується у всіх звітах і повідомленнях."
+
+#: 
+msgid "Save Church Information"
+msgstr "Зберегти інформацію про парафію"
+
+#: 
+msgid "Search or select..."
+msgstr "Пошук або вибір..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Надіслати лист з одержувачами у полі ПК (приховані один від одного)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Надіслати лист з одержувачами в полі «Кому»"
+
+#: 
+msgid "State is required."
+msgstr "Область є обов'язковою."
+
+#: 
+msgid "Street Address"
+msgstr "Адреса"
+
+#: 
+msgid "Street address is required."
+msgstr "Адреса є обов'язковою."
+
+#: 
+msgid "Student Information"
+msgstr "Інформація про учня"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Мова системи для парафії. Впливає на формати дати, телефону та інші параметри локалізації."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Так інформація про парафію відображатиметься у звітах і каталогах."
+
+#: 
+msgid "Time Zone"
+msgstr "Часовий пояс"
+
+#: 
+msgid "Toggle overview"
+msgstr "Перемкнути огляд"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Всього зараховано"
+
+#: 
+msgid "Total Groups"
+msgstr "Всього груп"
+
+#: 
+msgid "Total Memberships"
+msgstr "Всього членств"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Оновлюється автоматично при кожному збереженні."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Використовується для планування заходів і часу звітності."
+
+#: 
+msgid "View Full Details"
+msgstr "Переглянути повну інформацію"
+
+#: 
+msgid "View Profile"
+msgstr "Переглянути профіль"
+
+#: 
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Поштовий індекс є обов'язковим."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Виберіть країну —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Виберіть область —"
 

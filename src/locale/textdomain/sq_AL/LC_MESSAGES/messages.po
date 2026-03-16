@@ -12258,3 +12258,255 @@ msgstr "Kërko që të gjithë përdoruesit të regjistrohen në vërtetimin me 
 msgid "Select the desired event"
 msgstr "Zgjidhni ngjarjen e dëshiruar"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Një hartë do të shfaqet këtu sapo të ruhet një adresë rruge. Koordinatat zbulohen automatikisht — nuk kërkohet hyrje manuale."
+
+#: 
+msgid "Active Groups"
+msgstr "Grupet aktive"
+
+#: 
+msgid "Add New Group"
+msgstr "Shto grup të ri"
+
+#: 
+msgid "Add all to cart"
+msgstr "Shto të gjithë në listë"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Zbullo automatikisht koordinatat duke përdorur adresën"
+
+#: 
+msgid "Basic Information"
+msgstr "Informacioni bazë"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informacioni i kishës u ruajt me sukses."
+
+#: 
+msgid "Church name is required."
+msgstr "Emri i kishës është i detyrueshëm."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Emri i kishës është i detyrueshëm. Ju lutemi plotësoni skedën Informacioni bazë."
+
+#: 
+msgid "City is required."
+msgstr "Qyteti është i detyrueshëm."
+
+#: 
+msgid "Class Overview"
+msgstr "Pasqyrë e klasës"
+
+#: 
+msgid "Clear filter"
+msgstr "Pastro filtrin"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Elementi i konfigurimit nuk u gjet"
+
+#: 
+msgid "Country is required."
+msgstr "Vendi është i detyrueshëm."
+
+#: 
+msgid "Discord Chat"
+msgstr "Bisedë Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Shfaq pamjen paraprake"
+
+#: 
+msgid "Email (To)"
+msgstr "Email (Për)"
+
+#: 
+msgid "Email address is required."
+msgstr "Adresa e emailit është e detyrueshme."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familja nuk ka adresë rruge për të gjeokoduar"
+
+#: 
+msgid "Father"
+msgstr "Baba"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Koordinatat e gjeokodifikuara:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Gjeokoduimi dështoi"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Gjeokoduimi i suksesshëm"
+
+#: 
+msgid "In Cart"
+msgstr "Në listë"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Grupet joaktive"
+
+#: 
+msgid "Kids Email"
+msgstr "Email i fëmijëve"
+
+#: 
+msgid "Language & Localization"
+msgstr "Gjuha dhe lokalizimi"
+
+#: 
+msgid "Location & Map"
+msgstr "Vendndodhja dhe harta"
+
+#: 
+msgid "Location Information"
+msgstr "Informacioni i vendndodhjes"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Email kryesor i kontaktit për komunikimet e kishës."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Numri kryesor i telefonit të kishës."
+
+#: 
+msgid "Male / Female"
+msgstr "Mashkull / Femër"
+
+#: 
+msgid "Map"
+msgstr "Hartë"
+
+#: 
+msgid "Mother"
+msgstr "Nënë"
+
+#: 
+msgid "No members"
+msgstr "Nuk ka anëtarë"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Opsionale. URL e faqes së internetit të kishës suaj."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Prindërit/Kujdestarët"
+
+#: 
+msgid "Phone number is required."
+msgstr "Numri i telefonit është i detyrueshëm."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Rifresko koordinatat"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "I detyrueshëm. Përdoret në të gjitha raportet dhe komunikimet."
+
+#: 
+msgid "Save Church Information"
+msgstr "Ruaj informacionin e kishës"
+
+#: 
+msgid "Search or select..."
+msgstr "Kërko ose zgjidh..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Dërgo email me marrës në fushën BCC (të fshehur nga njëri-tjetri)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Dërgo email me marrës në fushën Për"
+
+#: 
+msgid "State is required."
+msgstr "Rajoni është i detyrueshëm."
+
+#: 
+msgid "Street Address"
+msgstr "Adresa rrugore"
+
+#: 
+msgid "Street address is required."
+msgstr "Adresa rrugore është e detyrueshme."
+
+#: 
+msgid "Student Information"
+msgstr "Informacioni i studentit"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Gjuha e sistemit për kishën. Ndikon formatet e datës, telefonit dhe lokalizimeve të tjera."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Kështu do të shfaqet informacioni i kishës suaj në raporte dhe direktori."
+
+#: 
+msgid "Time Zone"
+msgstr "Zona kohore"
+
+#: 
+msgid "Toggle overview"
+msgstr "Kaloni pasqyrën"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Gjithsej të regjistruar"
+
+#: 
+msgid "Total Groups"
+msgstr "Gjithsej grupet"
+
+#: 
+msgid "Total Memberships"
+msgstr "Gjithsej anëtarësitë"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Përditësohet automatikisht me çdo ruajtje."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Përdoret për planifikimin e ngjarjeve dhe kohët e raportimit."
+
+#: 
+msgid "View Full Details"
+msgstr "Shiko detajet e plota"
+
+#: 
+msgid "View Profile"
+msgstr "Shiko profilin"
+
+#: 
+msgid "Website"
+msgstr "Faqe interneti"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Kodi postar është i detyrueshëm."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Zgjidhni vendin —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Zgjidhni rajonin —"
+

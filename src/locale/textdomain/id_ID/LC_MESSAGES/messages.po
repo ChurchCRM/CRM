@@ -12263,3 +12263,255 @@ msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 msgid "Select the desired event"
 msgstr "Pilih acara yang diinginkan"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Peta akan muncul di sini setelah alamat tersimpan. Koordinat terdeteksi secara otomatis — tidak diperlukan input manual."
+
+#: 
+msgid "Active Groups"
+msgstr "Kelompok Aktif"
+
+#: 
+msgid "Add New Group"
+msgstr "Tambah Kelompok Baru"
+
+#: 
+msgid "Add all to cart"
+msgstr "Tambah semua ke daftar"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Deteksi koordinat otomatis menggunakan alamat"
+
+#: 
+msgid "Basic Information"
+msgstr "Informasi Dasar"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informasi jemaat berhasil disimpan."
+
+#: 
+msgid "Church name is required."
+msgstr "Nama jemaat wajib diisi."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Nama jemaat wajib diisi. Lengkapi tab Informasi Dasar."
+
+#: 
+msgid "City is required."
+msgstr "Kota wajib diisi."
+
+#: 
+msgid "Class Overview"
+msgstr "Ikhtisar Kelas"
+
+#: 
+msgid "Clear filter"
+msgstr "Hapus filter"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Item konfigurasi tidak ditemukan"
+
+#: 
+msgid "Country is required."
+msgstr "Negara wajib diisi."
+
+#: 
+msgid "Discord Chat"
+msgstr "Obrolan Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Tampilkan Pratinjau"
+
+#: 
+msgid "Email (To)"
+msgstr "Email (Kepada)"
+
+#: 
+msgid "Email address is required."
+msgstr "Alamat email wajib diisi."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Keluarga tidak memiliki alamat untuk dikodekan secara geografis"
+
+#: 
+msgid "Father"
+msgstr "Ayah"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Koordinat tergeokode:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokoding gagal"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokoding berhasil"
+
+#: 
+msgid "In Cart"
+msgstr "Dalam daftar"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Kelompok Tidak Aktif"
+
+#: 
+msgid "Kids Email"
+msgstr "Email anak-anak"
+
+#: 
+msgid "Language & Localization"
+msgstr "Bahasa & Lokalisasi"
+
+#: 
+msgid "Location & Map"
+msgstr "Lokasi & Peta"
+
+#: 
+msgid "Location Information"
+msgstr "Informasi Lokasi"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Email kontak utama untuk komunikasi jemaat."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Nomor telepon utama jemaat."
+
+#: 
+msgid "Male / Female"
+msgstr "Laki-laki / Perempuan"
+
+#: 
+msgid "Map"
+msgstr "Peta"
+
+#: 
+msgid "Mother"
+msgstr "Ibu"
+
+#: 
+msgid "No members"
+msgstr "Tidak ada anggota"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Opsional. URL situs web jemaat Anda."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Orang Tua/Wali"
+
+#: 
+msgid "Phone number is required."
+msgstr "Nomor telepon wajib diisi."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Perbarui Koordinat"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Wajib. Digunakan di semua laporan dan komunikasi."
+
+#: 
+msgid "Save Church Information"
+msgstr "Simpan Informasi Jemaat"
+
+#: 
+msgid "Search or select..."
+msgstr "Cari atau pilih..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Kirim email dengan penerima di kolom BCC (tersembunyi satu sama lain)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Kirim email dengan penerima di kolom Kepada"
+
+#: 
+msgid "State is required."
+msgstr "Provinsi wajib diisi."
+
+#: 
+msgid "Street Address"
+msgstr "Alamat"
+
+#: 
+msgid "Street address is required."
+msgstr "Alamat wajib diisi."
+
+#: 
+msgid "Student Information"
+msgstr "Informasi Siswa"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Bahasa sistem untuk jemaat. Memengaruhi format tanggal, format telepon, dan lokalisasi lainnya."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Begini cara informasi jemaat Anda akan tampil di laporan dan direktori."
+
+#: 
+msgid "Time Zone"
+msgstr "Zona Waktu"
+
+#: 
+msgid "Toggle overview"
+msgstr "Tampilkan/sembunyikan ikhtisar"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Total Terdaftar"
+
+#: 
+msgid "Total Groups"
+msgstr "Total Kelompok"
+
+#: 
+msgid "Total Memberships"
+msgstr "Total Keanggotaan"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Diperbarui otomatis setiap kali disimpan."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Digunakan untuk penjadwalan acara dan pelaporan waktu."
+
+#: 
+msgid "View Full Details"
+msgstr "Lihat Detail Lengkap"
+
+#: 
+msgid "View Profile"
+msgstr "Lihat Profil"
+
+#: 
+msgid "Website"
+msgstr "Situs Web"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Kode pos wajib diisi."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Pilih Negara —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Pilih Provinsi —"
+

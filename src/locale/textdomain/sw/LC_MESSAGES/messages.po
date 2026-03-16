@@ -12270,3 +12270,255 @@ msgstr "Lazimisha watumiaji wote kujiandikisha katika uthibitishaji wa hatua mbi
 msgid "Select the desired event"
 msgstr "Chagua tukio unalotaka"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Ramani itaonekana hapa baada ya anwani ya mtaa kuhifadhiwa. Kuratibu zinagunduliwa kiotomatiki — hakuna uingizaji wa mkono unaohitajika."
+
+#: 
+msgid "Active Groups"
+msgstr "Vikundi Vilivyo Hai"
+
+#: 
+msgid "Add New Group"
+msgstr "Ongeza Kikundi Kipya"
+
+#: 
+msgid "Add all to cart"
+msgstr "Ongeza wote kwenye orodha"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Gundua kuratibu kiotomatiki kwa kutumia anwani"
+
+#: 
+msgid "Basic Information"
+msgstr "Taarifa za Msingi"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Taarifa za kanisa zimehifadhiwa kwa mafanikio."
+
+#: 
+msgid "Church name is required."
+msgstr "Jina la kanisa linahitajika."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Jina la kanisa linahitajika. Tafadhali kamilisha kichupo cha Taarifa za Msingi."
+
+#: 
+msgid "City is required."
+msgstr "Mji unahitajika."
+
+#: 
+msgid "Class Overview"
+msgstr "Muhtasari wa Darasa"
+
+#: 
+msgid "Clear filter"
+msgstr "Futa kichujio"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Kipengele cha usanidi hakikupatikana"
+
+#: 
+msgid "Country is required."
+msgstr "Nchi inahitajika."
+
+#: 
+msgid "Discord Chat"
+msgstr "Mazungumzo ya Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Onyesha muhtasari"
+
+#: 
+msgid "Email (To)"
+msgstr "Barua pepe (Kwa)"
+
+#: 
+msgid "Email address is required."
+msgstr "Anwani ya barua pepe inahitajika."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familia haina anwani ya mtaa kwa ajili ya kuandika ramani"
+
+#: 
+msgid "Father"
+msgstr "Baba"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Kuratibu zilizogeokodiwa:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Jeokodishaji imeshindwa"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Jeokodishaji imefanikiwa"
+
+#: 
+msgid "In Cart"
+msgstr "Kwenye orodha"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Vikundi Visivyo Hai"
+
+#: 
+msgid "Kids Email"
+msgstr "Barua pepe ya watoto"
+
+#: 
+msgid "Language & Localization"
+msgstr "Lugha na Ujanibishaji"
+
+#: 
+msgid "Location & Map"
+msgstr "Mahali na Ramani"
+
+#: 
+msgid "Location Information"
+msgstr "Taarifa za Mahali"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Barua pepe kuu ya mawasiliano ya kanisa."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Nambari kuu ya simu ya kanisa."
+
+#: 
+msgid "Male / Female"
+msgstr "Mwanaume / Mwanamke"
+
+#: 
+msgid "Map"
+msgstr "Ramani"
+
+#: 
+msgid "Mother"
+msgstr "Mama"
+
+#: 
+msgid "No members"
+msgstr "Hakuna wanachama"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Hiari. URL ya tovuti ya kanisa lako."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Wazazi/Walezi"
+
+#: 
+msgid "Phone number is required."
+msgstr "Nambari ya simu inahitajika."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Onyesha upya kuratibu"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Inahitajika. Inatumika katika ripoti na mawasiliano yote."
+
+#: 
+msgid "Save Church Information"
+msgstr "Hifadhi Taarifa za Kanisa"
+
+#: 
+msgid "Search or select..."
+msgstr "Tafuta au chagua..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Tuma barua pepe kwa wapokeaji katika sehemu ya BCC (wamefichwa kutoka kwa kila mmoja)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Tuma barua pepe kwa wapokeaji katika sehemu ya Kwa"
+
+#: 
+msgid "State is required."
+msgstr "Mkoa unahitajika."
+
+#: 
+msgid "Street Address"
+msgstr "Anwani ya Mtaa"
+
+#: 
+msgid "Street address is required."
+msgstr "Anwani ya mtaa inahitajika."
+
+#: 
+msgid "Student Information"
+msgstr "Taarifa za Mwanafunzi"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Lugha ya mfumo kwa kanisa. Inaathiri miundo ya tarehe, miundo ya simu na ujanibishaji mwingine."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Hivi ndivyo taarifa za kanisa lako zitakavyoonekana kwenye ripoti na saraka."
+
+#: 
+msgid "Time Zone"
+msgstr "Ukanda wa Saa"
+
+#: 
+msgid "Toggle overview"
+msgstr "Badilisha muhtasari"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Jumla Walioandikishwa"
+
+#: 
+msgid "Total Groups"
+msgstr "Jumla ya Vikundi"
+
+#: 
+msgid "Total Memberships"
+msgstr "Jumla ya Uanachama"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Husasishwa kiotomatiki kila wakati inapohifadhiwa."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Inatumika kwa kupanga matukio na nyakati za kuripoti."
+
+#: 
+msgid "View Full Details"
+msgstr "Angalia Maelezo Kamili"
+
+#: 
+msgid "View Profile"
+msgstr "Angalia Wasifu"
+
+#: 
+msgid "Website"
+msgstr "Tovuti"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Msimbo wa posta unahitajika."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Chagua Nchi —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Chagua Mkoa —"
+

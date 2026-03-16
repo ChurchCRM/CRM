@@ -12278,3 +12278,255 @@ msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını
 msgid "Select the desired event"
 msgstr "İstenen etkinliği seçin"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Bir sokak adresi kaydedildiğinde burada bir harita görünecektir. Koordinatlar otomatik olarak algılanır — manuel giriş gerekmez."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktif Gruplar"
+
+#: 
+msgid "Add New Group"
+msgstr "Yeni Grup Ekle"
+
+#: 
+msgid "Add all to cart"
+msgstr "Tümünü listeye ekle"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Adres kullanarak koordinatları otomatik algıla"
+
+#: 
+msgid "Basic Information"
+msgstr "Temel Bilgiler"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Kilise bilgileri başarıyla kaydedildi."
+
+#: 
+msgid "Church name is required."
+msgstr "Kilise adı zorunludur."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Kilise adı zorunludur. Lütfen Temel Bilgiler sekmesini tamamlayın."
+
+#: 
+msgid "City is required."
+msgstr "Şehir zorunludur."
+
+#: 
+msgid "Class Overview"
+msgstr "Sınıf Genel Bakış"
+
+#: 
+msgid "Clear filter"
+msgstr "Filtreyi temizle"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Yapılandırma öğesi bulunamadı"
+
+#: 
+msgid "Country is required."
+msgstr "Ülke zorunludur."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord Sohbeti"
+
+#: 
+msgid "Display Preview"
+msgstr "Önizlemeyi Göster"
+
+#: 
+msgid "Email (To)"
+msgstr "E-posta (Kime)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-posta adresi zorunludur."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Ailenin coğrafi kodlama için sokak adresi yok"
+
+#: 
+msgid "Father"
+msgstr "Baba"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Coğrafi kodlanmış koordinatlar:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Coğrafi kodlama başarısız oldu"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Coğrafi kodlama başarılı"
+
+#: 
+msgid "In Cart"
+msgstr "Listede"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Aktif Olmayan Gruplar"
+
+#: 
+msgid "Kids Email"
+msgstr "Çocukların E-postası"
+
+#: 
+msgid "Language & Localization"
+msgstr "Dil ve Yerelleştirme"
+
+#: 
+msgid "Location & Map"
+msgstr "Konum ve Harita"
+
+#: 
+msgid "Location Information"
+msgstr "Konum Bilgisi"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Kilise iletişimi için ana iletişim e-postası."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Kilisenin ana iletişim telefon numarası."
+
+#: 
+msgid "Male / Female"
+msgstr "Erkek / Kadın"
+
+#: 
+msgid "Map"
+msgstr "Harita"
+
+#: 
+msgid "Mother"
+msgstr "Anne"
+
+#: 
+msgid "No members"
+msgstr "Üye yok"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "İsteğe bağlı. Kilise web sitenizin URL'si."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Ebeveynler/Vasiler"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefon numarası zorunludur."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Koordinatları Yenile"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Zorunlu. Tüm raporlarda ve iletişimlerde kullanılır."
+
+#: 
+msgid "Save Church Information"
+msgstr "Kilise Bilgilerini Kaydet"
+
+#: 
+msgid "Search or select..."
+msgstr "Ara veya seç..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Alıcıları GCC alanında e-posta gönder (birbirinden gizli)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Alıcıları Kime alanında e-posta gönder"
+
+#: 
+msgid "State is required."
+msgstr "İl zorunludur."
+
+#: 
+msgid "Street Address"
+msgstr "Sokak Adresi"
+
+#: 
+msgid "Street address is required."
+msgstr "Sokak adresi zorunludur."
+
+#: 
+msgid "Student Information"
+msgstr "Öğrenci Bilgisi"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Kilise için sistem dili. Tarih biçimlerini, telefon biçimlerini ve diğer yerelleştirmeleri etkiler."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Kilise bilgileriniz raporlarda ve dizinlerde böyle görünecektir."
+
+#: 
+msgid "Time Zone"
+msgstr "Saat Dilimi"
+
+#: 
+msgid "Toggle overview"
+msgstr "Genel bakışı aç/kapat"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Toplam Kayıtlı"
+
+#: 
+msgid "Total Groups"
+msgstr "Toplam Gruplar"
+
+#: 
+msgid "Total Memberships"
+msgstr "Toplam Üyelikler"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Her kaydedildiğinde otomatik olarak güncellenir."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Etkinlik planlaması ve raporlama zamanları için kullanılır."
+
+#: 
+msgid "View Full Details"
+msgstr "Tüm Ayrıntıları Görüntüle"
+
+#: 
+msgid "View Profile"
+msgstr "Profili Görüntüle"
+
+#: 
+msgid "Website"
+msgstr "Web Sitesi"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Posta kodu zorunludur."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Ülke Seçin —"
+
+#: 
+msgid "— Select State —"
+msgstr "— İl Seçin —"
+

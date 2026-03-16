@@ -12227,3 +12227,255 @@ msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen tode
 msgid "Select the desired event"
 msgstr "Valitse haluttu tapahtuma"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Kartta näkyy tässä, kun katuosoite on tallennettu. Koordinaatit havaitaan automaattisesti — manuaalista syöttöä ei tarvita."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktiiviset ryhmät"
+
+#: 
+msgid "Add New Group"
+msgstr "Lisää uusi ryhmä"
+
+#: 
+msgid "Add all to cart"
+msgstr "Lisää kaikki valintaan"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Havaitse koordinaatit automaattisesti osoitteen avulla"
+
+#: 
+msgid "Basic Information"
+msgstr "Perustiedot"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Seurakunnan tiedot tallennettu onnistuneesti."
+
+#: 
+msgid "Church name is required."
+msgstr "Seurakunnan nimi on pakollinen."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Seurakunnan nimi on pakollinen. Täytä Perustiedot-välilehti."
+
+#: 
+msgid "City is required."
+msgstr "Kaupunki on pakollinen."
+
+#: 
+msgid "Class Overview"
+msgstr "Luokan yhteenveto"
+
+#: 
+msgid "Clear filter"
+msgstr "Tyhjennä suodatin"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Kokoonpanokohdetta ei löydy"
+
+#: 
+msgid "Country is required."
+msgstr "Maa on pakollinen."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Näytä esikatselu"
+
+#: 
+msgid "Email (To)"
+msgstr "Sähköposti (Vastaanottaja)"
+
+#: 
+msgid "Email address is required."
+msgstr "Sähköpostiosoite on pakollinen."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Perheellä ei ole katuosoitetta geokoodausta varten"
+
+#: 
+msgid "Father"
+msgstr "Isä"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokoodatut koordinaatit:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokoodaus epäonnistui"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokoodaus onnistui"
+
+#: 
+msgid "In Cart"
+msgstr "Valinnassa"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Passiiviset ryhmät"
+
+#: 
+msgid "Kids Email"
+msgstr "Lasten sähköposti"
+
+#: 
+msgid "Language & Localization"
+msgstr "Kieli ja lokalisointi"
+
+#: 
+msgid "Location & Map"
+msgstr "Sijainti ja kartta"
+
+#: 
+msgid "Location Information"
+msgstr "Sijaintitiedot"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Pääasiallinen yhteyssähköposti seurakunnan viestintään."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Seurakunnan pääasiallinen puhelinnumero."
+
+#: 
+msgid "Male / Female"
+msgstr "Mies / Nainen"
+
+#: 
+msgid "Map"
+msgstr "Kartta"
+
+#: 
+msgid "Mother"
+msgstr "Äiti"
+
+#: 
+msgid "No members"
+msgstr "Ei jäseniä"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Valinnainen. Seurakunnan verkkosivuston URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Vanhemmat/Huoltajat"
+
+#: 
+msgid "Phone number is required."
+msgstr "Puhelinnumero on pakollinen."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Päivitä koordinaatit"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Pakollinen. Käytetään kaikissa raporteissa ja viestinnässä."
+
+#: 
+msgid "Save Church Information"
+msgstr "Tallenna seurakunnan tiedot"
+
+#: 
+msgid "Search or select..."
+msgstr "Etsi tai valitse..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Lähetä sähköposti BCC-kenttää käyttäen (vastaanottajat piilossa toisiltaan)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Lähetä sähköposti Vastaanottaja-kenttää käyttäen"
+
+#: 
+msgid "State is required."
+msgstr "Maakunta on pakollinen."
+
+#: 
+msgid "Street Address"
+msgstr "Katuosoite"
+
+#: 
+msgid "Street address is required."
+msgstr "Katuosoite on pakollinen."
+
+#: 
+msgid "Student Information"
+msgstr "Oppilastiedot"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Järjestelmän kieli seurakunnalle. Vaikuttaa päivämäärä-, puhelinnumero- ja muihin lokalisointeihin."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Näin seurakunnan tiedot näkyvät raporteissa ja hakemistoissa."
+
+#: 
+msgid "Time Zone"
+msgstr "Aikavyöhyke"
+
+#: 
+msgid "Toggle overview"
+msgstr "Vaihda yhteenväto"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Yhteensä ilmoittautuneita"
+
+#: 
+msgid "Total Groups"
+msgstr "Ryhmiä yhteensä"
+
+#: 
+msgid "Total Memberships"
+msgstr "Jäsenyyksiä yhteensä"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Päivitetään automaattisesti jokaisen tallennuksen yhteydessä."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Käytetään tapahtumien aikatauluttamiseen ja raportointiaikoihin."
+
+#: 
+msgid "View Full Details"
+msgstr "Näytä täydet tiedot"
+
+#: 
+msgid "View Profile"
+msgstr "Näytä profiili"
+
+#: 
+msgid "Website"
+msgstr "Verkkosivusto"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postinumero on pakollinen."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Valitse maa —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Valitse maakunta —"
+

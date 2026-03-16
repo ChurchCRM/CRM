@@ -12284,3 +12284,255 @@ msgstr "அனைத்து பயனர்களும் இரு கார
 msgid "Select the desired event"
 msgstr "விரும்பிய நிகழ்வைத் தேர்ந்தெடுக்கவும்"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "ஒரு தெரு முகவரி சேமிக்கப்பட்டதும் இங்கே ஒரு வரைபடம் தோன்றும். ஆயகலைகள் தானாகவே கண்டறியப்படும் — கைமுறை உள்ளீடு தேவையில்லை."
+
+#: 
+msgid "Active Groups"
+msgstr "செயலில் உள்ள குழுக்கள்"
+
+#: 
+msgid "Add New Group"
+msgstr "புதிய குழு சேர்க்கவும்"
+
+#: 
+msgid "Add all to cart"
+msgstr "அனைவரையும் பட்டியலில் சேர்க்கவும்"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "முகவரி மூலம் ஆயகலைகளை தானாகக் கண்டறியவும்"
+
+#: 
+msgid "Basic Information"
+msgstr "அடிப்படை தகவல்"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "திருச்சபை தகவல் வெற்றிகரமாக சேமிக்கப்பட்டது."
+
+#: 
+msgid "Church name is required."
+msgstr "திருச்சபையின் பெயர் தேவை."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "திருச்சபையின் பெயர் தேவை. தயவுசெய்து அடிப்படை தகவல் தாவலை நிரப்பவும்."
+
+#: 
+msgid "City is required."
+msgstr "நகரம் தேவை."
+
+#: 
+msgid "Class Overview"
+msgstr "வகுப்பு கண்ணோட்டம்"
+
+#: 
+msgid "Clear filter"
+msgstr "வடிகட்டியை அழிக்கவும்"
+
+#: 
+msgid "Configuration item not found"
+msgstr "உள்ளமைவு உருப்படி கிடைக்கவில்லை"
+
+#: 
+msgid "Country is required."
+msgstr "நாடு தேவை."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord அரட்டை"
+
+#: 
+msgid "Display Preview"
+msgstr "முன்னோட்டத்தை காட்டு"
+
+#: 
+msgid "Email (To)"
+msgstr "மின்னஞ்சல் (கு)"
+
+#: 
+msgid "Email address is required."
+msgstr "மின்னஞ்சல் முகவரி தேவை."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "குடும்பத்திற்கு புவியியல் குறியாக்கத்திற்கு தெரு முகவரி இல்லை"
+
+#: 
+msgid "Father"
+msgstr "தந்தை"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "புவியியல் குறியாக்க ஆயகலைகள்:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "புவியியல் குறியாக்கம் தோல்வியடைந்தது"
+
+#: 
+msgid "Geocoding successful"
+msgstr "புவியியல் குறியாக்கம் வெற்றிகரமாக முடிந்தது"
+
+#: 
+msgid "In Cart"
+msgstr "பட்டியலில்"
+
+#: 
+msgid "Inactive Groups"
+msgstr "செயலற்ற குழுக்கள்"
+
+#: 
+msgid "Kids Email"
+msgstr "குழந்தைகளின் மின்னஞ்சல்"
+
+#: 
+msgid "Language & Localization"
+msgstr "மொழி & உள்ளூர்மயமாக்கல்"
+
+#: 
+msgid "Location & Map"
+msgstr "இடம் & வரைபடம்"
+
+#: 
+msgid "Location Information"
+msgstr "இட தகவல்"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "திருச்சபை தொடர்புகளுக்கான முக்கிய தொடர்பு மின்னஞ்சல்."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "திருச்சபையின் முக்கிய தொடர்பு தொலைபேசி எண்."
+
+#: 
+msgid "Male / Female"
+msgstr "ஆண் / பெண்"
+
+#: 
+msgid "Map"
+msgstr "வரைபடம்"
+
+#: 
+msgid "Mother"
+msgstr "தாய்"
+
+#: 
+msgid "No members"
+msgstr "உறுப்பினர்கள் இல்லை"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "விருப்பமானது. உங்கள் திருச்சபை வலைத்தளத்தின் URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "பெற்றோர்/பாதுகாவலர்கள்"
+
+#: 
+msgid "Phone number is required."
+msgstr "தொலைபேசி எண் தேவை."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "ஆயகலைகளை புதுப்பிக்கவும்"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "தேவையானது. அனைத்து அறிக்கைகள் மற்றும் தொடர்புகளிலும் பயன்படுத்தப்படுகிறது."
+
+#: 
+msgid "Save Church Information"
+msgstr "திருச்சபை தகவலை சேமிக்கவும்"
+
+#: 
+msgid "Search or select..."
+msgstr "தேடுங்கள் அல்லது தேர்வு செய்யுங்கள்..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCC புலத்தில் பெறுநர்களுடன் மின்னஞ்சல் அனுப்புக (ஒருவருக்கொருவர் மறைக்கப்பட்டது)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "கு புலத்தில் பெறுநர்களுடன் மின்னஞ்சல் அனுப்புக"
+
+#: 
+msgid "State is required."
+msgstr "மாநிலம் தேவை."
+
+#: 
+msgid "Street Address"
+msgstr "தெரு முகவரி"
+
+#: 
+msgid "Street address is required."
+msgstr "தெரு முகவரி தேவை."
+
+#: 
+msgid "Student Information"
+msgstr "மாணவர் தகவல்"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "திருச்சபைக்கான அமைப்பு மொழி. தேதி வடிவமைப்புகள், தொலைபேசி வடிவமைப்புகள் மற்றும் பிற உள்ளூர்மயமாக்கல்களை பாதிக்கிறது."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "உங்கள் திருச்சபை தகவல் அறிக்கைகள் மற்றும் கோப்பகங்களில் இப்படி தோன்றும்."
+
+#: 
+msgid "Time Zone"
+msgstr "நேர மண்டலம்"
+
+#: 
+msgid "Toggle overview"
+msgstr "கண்ணோட்டத்தை மாற்றவும்"
+
+#: 
+msgid "Total Enrolled"
+msgstr "மொத்தம் சேர்ந்தவர்கள்"
+
+#: 
+msgid "Total Groups"
+msgstr "மொத்த குழுக்கள்"
+
+#: 
+msgid "Total Memberships"
+msgstr "மொத்த உறுப்பினர்கள்"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "ஒவ்வொரு சேமிப்பிலும் தானாகவே புதுப்பிக்கப்படும்."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "நிகழ்வுகளை திட்டமிடவும் நேரங்களை அறிக்கையிடவும் பயன்படுத்தப்படுகிறது."
+
+#: 
+msgid "View Full Details"
+msgstr "முழு விவரங்களைக் காணவும்"
+
+#: 
+msgid "View Profile"
+msgstr "சுயவிவரத்தைக் காணவும்"
+
+#: 
+msgid "Website"
+msgstr "வலைத்தளம்"
+
+#: 
+msgid "ZIP code is required."
+msgstr "அஞ்சல் குறியீடு தேவை."
+
+#: 
+msgid "— Select Country —"
+msgstr "— நாட்டை தேர்வு செய்யுங்கள் —"
+
+#: 
+msgid "— Select State —"
+msgstr "— மாநிலத்தை தேர்வு செய்யுங்கள் —"
+

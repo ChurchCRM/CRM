@@ -12307,3 +12307,255 @@ msgstr "طلب من جميع المستخدمين التسجيل في المصا
 msgid "Select the desired event"
 msgstr "حدد الحدث المطلوب"
 
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "ستظهر خريطة هنا بمجرد حفظ عنوان الشارع. يتم اكتشاف الإحداثيات تلقائياً — لا يلزم الإدخال اليدوي."
+
+#: 
+msgid "Active Groups"
+msgstr "المجموعات النشطة"
+
+#: 
+msgid "Add New Group"
+msgstr "إضافة مجموعة جديدة"
+
+#: 
+msgid "Add all to cart"
+msgstr "إضافة الجميع إلى القائمة"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "اكتشاف الإحداثيات تلقائياً باستخدام العنوان"
+
+#: 
+msgid "Basic Information"
+msgstr "المعلومات الأساسية"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "تم حفظ معلومات الكنيسة بنجاح."
+
+#: 
+msgid "Church name is required."
+msgstr "اسم الكنيسة مطلوب."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "اسم الكنيسة مطلوب. يرجى إكمال تبويب المعلومات الأساسية."
+
+#: 
+msgid "City is required."
+msgstr "المدينة مطلوبة."
+
+#: 
+msgid "Class Overview"
+msgstr "نظرة عامة على الفصل"
+
+#: 
+msgid "Clear filter"
+msgstr "مسح الفلتر"
+
+#: 
+msgid "Configuration item not found"
+msgstr "عنصر التكوين غير موجود"
+
+#: 
+msgid "Country is required."
+msgstr "الدولة مطلوبة."
+
+#: 
+msgid "Discord Chat"
+msgstr "دردشة Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "عرض المعاينة"
+
+#: 
+msgid "Email (To)"
+msgstr "البريد الإلكتروني (إلى)"
+
+#: 
+msgid "Email address is required."
+msgstr "عنوان البريد الإلكتروني مطلوب."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "العائلة ليس لها عنوان شارع للترميز الجغرافي"
+
+#: 
+msgid "Father"
+msgstr "الأب"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "الإحداثيات الجغرافية:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "فشل الترميز الجغرافي"
+
+#: 
+msgid "Geocoding successful"
+msgstr "تم الترميز الجغرافي بنجاح"
+
+#: 
+msgid "In Cart"
+msgstr "في القائمة"
+
+#: 
+msgid "Inactive Groups"
+msgstr "المجموعات غير النشطة"
+
+#: 
+msgid "Kids Email"
+msgstr "البريد الإلكتروني للأطفال"
+
+#: 
+msgid "Language & Localization"
+msgstr "اللغة والتعريب"
+
+#: 
+msgid "Location & Map"
+msgstr "الموقع والخريطة"
+
+#: 
+msgid "Location Information"
+msgstr "معلومات الموقع"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "البريد الإلكتروني الرئيسي للتواصل مع الكنيسة."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "رقم الهاتف الرئيسي للكنيسة."
+
+#: 
+msgid "Male / Female"
+msgstr "ذكر / أنثى"
+
+#: 
+msgid "Map"
+msgstr "خريطة"
+
+#: 
+msgid "Mother"
+msgstr "الأم"
+
+#: 
+msgid "No members"
+msgstr "لا يوجد أعضاء"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "اختياري. رابط موقع كنيستك."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "الوالدان/الأولياء"
+
+#: 
+msgid "Phone number is required."
+msgstr "رقم الهاتف مطلوب."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "تحديث الإحداثيات"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "مطلوب. يُستخدم في جميع التقارير والاتصالات."
+
+#: 
+msgid "Save Church Information"
+msgstr "حفظ معلومات الكنيسة"
+
+#: 
+msgid "Search or select..."
+msgstr "بحث أو اختيار..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "إرسال بريد إلكتروني مع المستلمين في حقل النسخة المخفية (مخفيون عن بعضهم)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "إرسال بريد إلكتروني مع المستلمين في حقل إلى"
+
+#: 
+msgid "State is required."
+msgstr "المحافظة مطلوبة."
+
+#: 
+msgid "Street Address"
+msgstr "عنوان الشارع"
+
+#: 
+msgid "Street address is required."
+msgstr "عنوان الشارع مطلوب."
+
+#: 
+msgid "Student Information"
+msgstr "معلومات الطالب"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "لغة النظام للكنيسة. تؤثر على تنسيقات التاريخ والهاتف وغيرها من التعريبات."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "هكذا ستظهر معلومات كنيستك في التقارير والأدلة."
+
+#: 
+msgid "Time Zone"
+msgstr "المنطقة الزمنية"
+
+#: 
+msgid "Toggle overview"
+msgstr "تبديل النظرة العامة"
+
+#: 
+msgid "Total Enrolled"
+msgstr "إجمالي المسجلين"
+
+#: 
+msgid "Total Groups"
+msgstr "إجمالي المجموعات"
+
+#: 
+msgid "Total Memberships"
+msgstr "إجمالي الأعضاء"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "يُحدَّث تلقائياً عند كل حفظ."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "يُستخدم لجدولة الفعاليات وأوقات التقارير."
+
+#: 
+msgid "View Full Details"
+msgstr "عرض التفاصيل الكاملة"
+
+#: 
+msgid "View Profile"
+msgstr "عرض الملف الشخصي"
+
+#: 
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+#: 
+msgid "ZIP code is required."
+msgstr "الرمز البريدي مطلوب."
+
+#: 
+msgid "— Select Country —"
+msgstr "— اختر الدولة —"
+
+#: 
+msgid "— Select State —"
+msgstr "— اختر المحافظة —"
+
