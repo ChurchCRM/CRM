@@ -91,17 +91,21 @@ class PledgeQuery extends BasePledgeQuery
         // CRITICAL: Use innerJoinWithDeposit (INNER JOIN) when filtering by deposit date
         // This ensures deposits exist and date filtering works correctly (matches 5.22.0 SQL behavior)
         if ($datetype === 'Deposit') {
-            // Inner join with deposit and filter by deposit date
+            // Inner join with deposit and filter by deposit date.
+            // Both date conditions must be applied within a single useDepositQuery() block to
+            // ensure Propel generates a single JOIN clause with both conditions on the same alias.
+            // Using two separate useDepositQuery() calls would create two JOINs with different
+            // aliases, causing the date range filter to return no results.
             $this->innerJoinWithDeposit();
-            if (!empty($dateStart)) {
-                $this->useDepositQuery()
-                    ->filterByDate($dateStart, Criteria::GREATER_EQUAL)
-                    ->endUse();
-            }
-            if (!empty($dateEnd)) {
-                $this->useDepositQuery()
-                    ->filterByDate($dateEnd, Criteria::LESS_EQUAL)
-                    ->endUse();
+            if (!empty($dateStart) || !empty($dateEnd)) {
+                $depositQuery = $this->useDepositQuery();
+                if (!empty($dateStart)) {
+                    $depositQuery->filterByDate($dateStart, Criteria::GREATER_EQUAL);
+                }
+                if (!empty($dateEnd)) {
+                    $depositQuery->filterByDate($dateEnd, Criteria::LESS_EQUAL);
+                }
+                $depositQuery->endUse();
             }
         } else {
             // Filter by payment date
