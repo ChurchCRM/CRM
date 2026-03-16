@@ -312,6 +312,9 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                     <i class="fas fa-plus mr-1"></i><?= gettext('Create') ?>
                   </button>
                 </form>
+                <a href="RepeatEventEditor.php?EN_tyid=<?= $aTypeID[$row] ?>" class="btn btn-outline-success btn-sm" title="<?= gettext('Create Repeat Events') ?>">
+                  <i class="fas fa-redo mr-1"></i><?= gettext('Repeat') ?>
+                </a>
                 <a href="EditEventTypes.php?EN_tyid=<?= $aTypeID[$row] ?>" class="btn btn-outline-secondary btn-sm" title="<?= gettext('Edit') ?>">
                   <i class="fas fa-pen"></i>
                 </a>
