@@ -170,7 +170,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 <div class="icon">
                     <i class="fa-solid fa-children"></i>
                 </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="small-box-footer">
+                <a href="<?= SystemURLs::getRootPath() ?>/groups/sundayschool/dashboard" class="small-box-footer">
                     <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
                 </a>
             </div>

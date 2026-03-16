@@ -421,6 +421,32 @@ useEffect(() => {
 
 ---
 
+## JS vs TypeScript: When to Use Each <!-- learned: 2026-03-15 -->
+
+Use **TypeScript** (`.ts` / `.tsx`) when:
+- Making API calls (use `api-utils.ts` typed helpers)
+- Writing React components
+- Working with custom typed interfaces or response shapes
+
+Use **plain JavaScript** (`.js`) when:
+- The entry is primarily jQuery plugin initialization (DataTables, Select2, etc.)
+- The file is a thin DOM-ready event-handler wrapper with no API calls
+- Adding DataTables types to tsconfig is not worth the effort
+
+**Why:** `datatables.net` augments the jQuery `JQuery<T>` interface via side-effect import. This requires either:
+- `import 'datatables.net'` (would bundle DataTables, wasting ~200 KB since it's loaded globally)
+- Adding `"datatables.net"` to tsconfig `types` array (untested — may conflict)
+
+Existing JS-only entries: `admin-dashboard.js`, `backup.js`, `restore.js`, `church-info.js`.
+
+```javascript
+// webpack/groups-sundayschool-dashboard.js — jQuery-heavy, plain JS
+document.addEventListener("DOMContentLoaded", () => {
+  $(".data-table").DataTable(window.CRM.plugin.dataTable);
+  // ...
+});
+```
+
 ## Related Knowledge
 - **API Utilities**: See webpack/api-utils.ts source
 - **Bootstrap Build**: See `npm run build:frontend` documentation
