@@ -218,7 +218,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         
                         <!-- Sunday School -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/sundayschool/SundaySchoolDashboard.php" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/groups/sundayschool/dashboard" class="quick-start-card">
                                 <div class="quick-start-icon bg-orange">
                                     <i class="fa-solid fa-children"></i>
                                 </div>

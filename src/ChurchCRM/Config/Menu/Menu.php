@@ -168,12 +168,12 @@ class Menu
     private static function getSundaySchoolMenu(bool $isAdmin): MenuItem
     {
         $sundaySchoolMenu = new MenuItem(gettext('Sunday School'), '', SystemConfig::getBooleanValue('bEnabledSundaySchool'), 'fa-children');
-        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'sundayschool/SundaySchoolDashboard.php', true, 'fa-chalkboard-teacher'));
+        $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/sundayschool/dashboard', true, 'fa-chalkboard-teacher'));
         $sundaySchoolMenu->addSubMenu(new MenuItem(gettext('Kiosk Manager'), 'kiosk/admin', $isAdmin, 'fa-desktop'));
         $classes = GroupQuery::create()->filterByType(4)->orderByName()->select(['Id','Name'])->find()->toArray();
         if (!empty($classes)) {
             foreach ($classes as $group) {
-                $sundaySchoolMenu->addSubMenu(new MenuItem($group['Name'], 'sundayschool/SundaySchoolClassView.php?groupId=' . $group['Id'], true, 'fa-user-tag'));
+                $sundaySchoolMenu->addSubMenu(new MenuItem($group['Name'], 'groups/sundayschool/class/' . $group['Id'], true, 'fa-user-tag'));
             }
         }
 

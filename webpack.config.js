@@ -26,6 +26,8 @@ module.exports = {
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',
     'people-person-view': './webpack/people/person-view',
+    'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
+    'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
   },
   output: {
     path: path.resolve('./src/skin/v2'),
