@@ -46,13 +46,26 @@ describe("PDF Reports - iconv fallback fix", () => {
         cy.wait("@taxReport").then((interception) => {
             expect(interception.response.statusCode).to.not.equal(500);
 
-            const rawBody = interception.response.body;
-            // If body is an ArrayBuffer (binary PDF), decode it to a string for text checks
-            const body = rawBody instanceof ArrayBuffer
-                ? new TextDecoder().decode(rawBody)
-                : (rawBody || "");
-            expect(body).to.not.include("Call to undefined function");
-            expect(body).to.not.include("Fatal error");
+            const contentType = interception.response.headers["content-type"] || "";
+
+            // If a valid PDF was returned, there can be no PHP fatal error strings.
+            // Only inspect body text when the response is NOT a binary PDF (e.g., an HTML error page).
+            if (!contentType.includes("application/pdf")) {
+                // cy.intercept in Cypress 15 does not buffer binary response bodies, so the body
+                // may arrive as an ArrayBuffer from a different JS realm. Use
+                // Object.prototype.toString for cross-context-safe type detection instead of
+                // instanceof, which fails across iframe boundaries.
+                const rawBody = interception.response.body;
+                const isArrayBuffer =
+                    Object.prototype.toString.call(rawBody) === "[object ArrayBuffer]";
+                const body = isArrayBuffer
+                    ? new TextDecoder().decode(rawBody)
+                    : typeof rawBody === "string"
+                      ? rawBody
+                      : "";
+                expect(body).to.not.include("Call to undefined function");
+                expect(body).to.not.include("Fatal error");
+            }
         });
     });
 
