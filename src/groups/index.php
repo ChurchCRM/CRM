@@ -21,6 +21,7 @@ $app->setBasePath($basePath);
 
 // Register routes FIRST before middleware
 require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/sundayschool.php';
 
 // Body parsing and routing middleware
 $app->addBodyParsingMiddleware();
