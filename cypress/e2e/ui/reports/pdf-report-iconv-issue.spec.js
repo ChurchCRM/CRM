@@ -46,7 +46,11 @@ describe("PDF Reports - iconv fallback fix", () => {
         cy.wait("@taxReport").then((interception) => {
             expect(interception.response.statusCode).to.not.equal(500);
 
-            const body = interception.response.body || "";
+            const rawBody = interception.response.body;
+            // If body is an ArrayBuffer (binary PDF), decode it to a string for text checks
+            const body = rawBody instanceof ArrayBuffer
+                ? new TextDecoder().decode(rawBody)
+                : (rawBody || "");
             expect(body).to.not.include("Call to undefined function");
             expect(body).to.not.include("Fatal error");
         });

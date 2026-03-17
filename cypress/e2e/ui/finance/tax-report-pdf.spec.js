@@ -46,7 +46,11 @@ describe("Tax Report PDF Generation - Issue #7906", () => {
             // If we got a PDF, verify it's not blank
             if (contentType && contentType.includes("application/pdf")) {
                 // PDF was generated - verify it has content
-                expect(interception.response.body.length).to.be.greaterThan(100);
+                // Cypress returns binary responses as ArrayBuffer; use byteLength
+                const bodyLength = interception.response.body instanceof ArrayBuffer
+                    ? interception.response.body.byteLength
+                    : (interception.response.body?.length ?? 0);
+                expect(bodyLength).to.be.greaterThan(100);
             } else if (contentType && contentType.includes("text/html")) {
                 // If HTML was returned, check if it's a redirect for "No Data"
                 const body = interception.response.body;
