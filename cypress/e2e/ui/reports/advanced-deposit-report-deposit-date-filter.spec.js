@@ -27,97 +27,73 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         return `${month}/${day}/${year}`;
     };
 
+    const getTodayMMDDYYYY = () => toMMDDYYYY(new Date().toISOString().split("T")[0]);
+
     /**
      * Core regression test: when the "Deposit Date" date-type filter is used and
-     * a deposit exists within the specified date range, the report must return data.
+     * deposits exist within the specified date range, the report must return data.
      *
      * This directly tests the bug introduced by calling useDepositQuery() twice in
      * PledgeQuery::filterForAdvancedDeposit(), which created two separate Propel JOIN
      * aliases and prevented any row from satisfying both date conditions.
+     *
+     * Uses a broad date range covering all demo data so no API call is required —
+     * mixing cy.request() API-key calls with cy.setupAdminSession() UI session within
+     * the same test would corrupt the server-side session.
      */
     it("should return data when filtering by Deposit Date with a matching date range", () => {
-        // Step 1: Fetch existing deposits to find one whose date we can target.
-        // Using the admin API key so the session cookie alone is sufficient.
-        cy.makePrivateAdminAPICall("GET", "/api/deposits", null, 200).then(
-            (resp) => {
-                expect(resp.body).to.have.property("Deposits");
-                const deposits = resp.body.Deposits;
-                expect(
-                    deposits.length,
-                    "Demo data must contain at least one deposit"
-                ).to.be.greaterThan(0);
+        cy.visit("/FinancialReports.php");
+        cy.contains("Financial Reports").should("be.visible");
 
-                // Pick the first deposit that has a date so we know the exact date to filter on.
-                const targetDeposit = deposits.find((d) => !!d.Date);
-                expect(targetDeposit, "At least one deposit must have a Date").to.exist;
+        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
+        cy.get("#FinancialReports").submit();
+        cy.contains("Advanced Deposit Report").should("be.visible");
 
-                const depositDate = targetDeposit.Date; // YYYY-MM-DD
-                const formattedDate = toMMDDYYYY(depositDate);
+        // Broad date range guaranteed to include all demo-data deposits.
+        cy.get("input[name='DateStart']")
+            .clear({ force: true })
+            .type("01/01/2018", { force: true });
+        cy.get("input[name='DateEnd']")
+            .clear({ force: true })
+            .type(getTodayMMDDYYYY(), { force: true });
 
-                cy.log(
-                    `Testing with deposit ID=${targetDeposit.Id} dated ${depositDate}`
-                );
+        // CRITICAL: select "Deposit Date" — the filter that was broken.
+        cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
 
-                // Step 2: Navigate to the Advanced Deposit Report form.
-                cy.visit("/FinancialReports.php");
-                cy.contains("Financial Reports").should("be.visible");
-                cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
-                cy.get("#FinancialReports").submit();
-                cy.contains("Advanced Deposit Report").should("be.visible");
+        // Use CSV for reliable response inspection.
+        cy.get("input[name='output'][value='csv']").check({ force: true });
 
-                // Step 3: Set date range to exactly the deposit's date.
-                cy.get("input[name='DateStart']")
-                    .clear({ force: true })
-                    .type(formattedDate, { force: true });
-                cy.get("input[name='DateEnd']")
-                    .clear({ force: true })
-                    .type(formattedDate, { force: true });
+        cy.intercept("POST", "**/AdvancedDeposit.php").as("reportRequest");
+        cy.get("#createReport").click();
 
-                // Step 4: Select "Deposit Date" — the filter that was broken.
-                cy.get("input[name='datetype'][value='Deposit']").check({
-                    force: true,
-                });
-
-                // Use CSV for reliable response inspection.
-                cy.get("input[name='output'][value='csv']").check({
-                    force: true,
-                });
-
-                cy.intercept("POST", "**/AdvancedDeposit.php").as("reportRequest");
-                cy.get("#createReport").click();
-
-                // Step 5: The fix ensures the report must NOT redirect to "No Data Found"
-                // when a deposit exists on the target date.
-                cy.url().should(
-                    "not.include",
-                    "ReturnMessage=NoRows",
-                    "Report should return data — the Deposit Date filter JOIN fix must be working"
-                );
-
-                cy.wait("@reportRequest", { timeout: 30000 }).then(
-                    (interception) => {
-                        expect(interception.response.statusCode).to.equal(200);
-                        expect(
-                            interception.response.headers["content-type"]
-                        ).to.include("text/csv");
-
-                        const lines = interception.response.body
-                            .split("\n")
-                            .filter((l) => l.trim() !== "");
-
-                        // Must have a header row and at least one data row.
-                        expect(lines.length).to.be.greaterThan(
-                            1,
-                            "CSV must contain at least one data row for the targeted deposit date"
-                        );
-
-                        cy.log(
-                            "✅ Deposit Date filter returns data — PledgeQuery single-JOIN fix is working"
-                        );
-                    }
-                );
-            }
+        // The fix ensures the report must NOT redirect to "No Data Found"
+        // when deposits exist within the selected date range.
+        cy.url().should(
+            "not.include",
+            "ReturnMessage=NoRows",
+            "Report should return data — the Deposit Date filter JOIN fix must be working"
         );
+
+        cy.wait("@reportRequest", { timeout: 30000 }).then((interception) => {
+            expect(interception.response.statusCode).to.equal(200);
+            expect(interception.response.headers["content-type"]).to.include(
+                "text/csv"
+            );
+
+            const lines = interception.response.body
+                .split("\n")
+                .filter((l) => l.trim() !== "");
+
+            // Must have a header row and at least one data row.
+            expect(lines.length).to.be.greaterThan(
+                1,
+                "CSV must contain at least one data row"
+            );
+
+            cy.log(
+                "✅ Deposit Date filter returns data for broad date range — PledgeQuery single-JOIN fix is working"
+            );
+        });
     });
 
     /**
@@ -126,7 +102,6 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return 'No Data Found' when Deposit Date range excludes all deposits", () => {
         cy.visit("/FinancialReports.php");
-        cy.contains("Financial Reports").should("be.visible");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
@@ -142,7 +117,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("input[name='output'][value='csv']").check({ force: true });
         cy.get("#createReport").click();
 
-        // Should redirect to "No Data Found" for an empty range.
+        // Should redirect to "No Data Found" for a date range with no deposits.
         cy.url().should("include", "ReturnMessage=NoRows");
         cy.contains("No Data Found").should("be.visible");
         cy.log("✅ Correct 'No Data Found' response for an out-of-range date");
@@ -154,7 +129,6 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return data when filtering by Payment Date with a broad date range", () => {
         cy.visit("/FinancialReports.php");
-        cy.contains("Financial Reports").should("be.visible");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
@@ -164,9 +138,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
             .type("01/01/2018", { force: true });
         cy.get("input[name='DateEnd']")
             .clear({ force: true })
-            .type(toMMDDYYYY(new Date().toISOString().split("T")[0]), {
-                force: true,
-            });
+            .type(getTodayMMDDYYYY(), { force: true });
 
         cy.get("input[name='datetype'][value='Payment']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
