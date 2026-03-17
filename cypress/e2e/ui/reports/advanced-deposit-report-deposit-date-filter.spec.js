@@ -60,6 +60,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
 
                 // Step 2: Navigate to the Advanced Deposit Report form.
                 cy.visit("/FinancialReports.php");
+                cy.contains("Financial Reports").should("be.visible");
                 cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
                 cy.get("#FinancialReports").submit();
                 cy.contains("Advanced Deposit Report").should("be.visible");
@@ -125,6 +126,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return 'No Data Found' when Deposit Date range excludes all deposits", () => {
         cy.visit("/FinancialReports.php");
+        cy.contains("Financial Reports").should("be.visible");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
@@ -152,6 +154,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
      */
     it("should return data when filtering by Payment Date with a broad date range", () => {
         cy.visit("/FinancialReports.php");
+        cy.contains("Financial Reports").should("be.visible");
         cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
