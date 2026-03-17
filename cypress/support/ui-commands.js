@@ -28,8 +28,9 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
             cy.visit('/login');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
-            // Wait for redirect away from login
-            cy.url().should('not.include', '/login');
+            // Wait for redirect away from session/login pages
+            // ChurchCRM's login page is /session/begin, not /login
+            cy.url().should('not.include', '/session/begin');
         },
         {
             // Validate session by checking for a CRM cookie
