@@ -472,6 +472,13 @@ class DemoDataService
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
 
+                if (!empty($m['notes'])) {
+                    $note = new Note();
+                    $note->setPerId($person->getId());
+                    $note->setText($m['notes']);
+                    $note->save();
+                }
+
                 $logger->info('Individual imported', [
                     'name' => $person->getFirstName() . ' ' . $person->getLastName(),
                     'person_id' => $person->getId()
