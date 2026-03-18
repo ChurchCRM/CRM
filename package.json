@@ -81,7 +81,7 @@
         "test:new-system": "npx cypress run --config-file cypress/configs/new-system.config.ts"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "^6.7.2",
+        "@fortawesome/fontawesome-free": "^7.2.0",
         "@ttskch/select2-bootstrap4-theme": "^1.5.2",
         "@uppy/core": "^5.2.0",
         "@uppy/dashboard": "^4.4.3",
