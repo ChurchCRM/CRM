@@ -349,7 +349,7 @@ class DemoDataService
                         $person->setEmail($m['email'] ?? null);
                         $person->setHomePhone($m['phone'] ?? null);
                         if (!empty($m['hideAge'])) {
-                            $person->setFlags(1);
+                            $person->setFlags(1); // Per Person::hideAge(): flag value 1 = hide age
                         }
                         if (!empty($m['createdAt'])) {
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
@@ -463,7 +463,7 @@ class DemoDataService
                 $person->setEmail($m['email'] ?? null);
                 $person->setHomePhone($m['phone'] ?? null);
                 if (!empty($m['hideAge'])) {
-                    $person->setFlags(1);
+                    $person->setFlags(1); // Per Person::hideAge(): flag value 1 = hide age
                 }
                 if (!empty($m['createdAt'])) {
                     try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
@@ -472,11 +472,22 @@ class DemoDataService
                 $this->personMap[$person->getId()] = $person;
                 $this->importResult['imported']['people']++;
 
-                if (!empty($m['notes'])) {
-                    $note = new Note();
-                    $note->setPerId($person->getId());
-                    $note->setText($m['notes']);
-                    $note->save();
+                $pnotes = $m['notes'] ?? [];
+                foreach ($pnotes as $pn) {
+                    try {
+                        $note = new Note();
+                        $note->setPerId($person->getId());
+                        $note->setType($pn['type'] ?? null);
+                        $note->setText($pn['text'] ?? null);
+                        if (!empty($pn['date'])) {
+                            try { $note->setDateEntered(new DateTime($pn['date'])); } catch (Exception $e) {}
+                        }
+                        $note->setPrivate(!empty($pn['private']) ? 1 : 0);
+                        $note->save();
+                        $this->importResult['imported']['notes']++;
+                    } catch (Exception $e) {
+                        $this->addWarning("Individual note import failed: {$e->getMessage()}", ['exception' => $e->getMessage()]);
+                    }
                 }
 
                 $logger->info('Individual imported', [
