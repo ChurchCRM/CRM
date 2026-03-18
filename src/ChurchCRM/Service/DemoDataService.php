@@ -490,7 +490,6 @@ class DemoDataService
                     'error' => $e->getMessage()
                 ]);
             }
-            $personIndex++;
         }
 
         // Build email -> personId map from imported people
