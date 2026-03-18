@@ -348,6 +348,9 @@ class DemoDataService
                         }
                         $person->setEmail($m['email'] ?? null);
                         $person->setHomePhone($m['phone'] ?? null);
+                        if (!empty($m['hideAge'])) {
+                            $person->setFlags(1);
+                        }
                         if (!empty($m['createdAt'])) {
                             try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
                         }
@@ -434,6 +437,55 @@ class DemoDataService
             }
         }
         
+        // Process individuals (people without families)
+        $individuals = $json['individuals'] ?? [];
+        $logger->info('Starting individuals import', ['total_individuals' => count($individuals)]);
+        foreach ($individuals as $m) {
+            try {
+                $person = new Person();
+                $person->setFirstName($m['firstName'] ?? null);
+                $person->setLastName($m['lastName'] ?? null);
+                $person->setMiddleName($m['middleName'] ?? null);
+                if (!empty($m['birthYear']) && !empty($m['birthMonth']) && !empty($m['birthDay'])) {
+                    $person->setBirthYear((int)$m['birthYear']);
+                    $person->setBirthMonth((int)$m['birthMonth']);
+                    $person->setBirthDay((int)$m['birthDay']);
+                }
+                if (!empty($m['gender'])) {
+                    $person->setGender(strtolower($m['gender']) === 'male' ? 1 : (strtolower($m['gender']) === 'female' ? 2 : 0));
+                }
+                if (!empty($m['classification']) && isset($classificationMap[$m['classification']])) {
+                    $person->setClsId($classificationMap[$m['classification']]);
+                }
+                if (!empty($m['familyRole'])) {
+                    $person->setFmrId((int)$m['familyRole']);
+                }
+                $person->setEmail($m['email'] ?? null);
+                $person->setHomePhone($m['phone'] ?? null);
+                if (!empty($m['hideAge'])) {
+                    $person->setFlags(1);
+                }
+                if (!empty($m['createdAt'])) {
+                    try { $person->setDateEntered(new DateTime($m['createdAt'])); } catch (Exception $e) {}
+                }
+                $person->save();
+                $this->personMap[$person->getId()] = $person;
+                $this->importResult['imported']['people']++;
+
+                $logger->info('Individual imported', [
+                    'name' => $person->getFirstName() . ' ' . $person->getLastName(),
+                    'person_id' => $person->getId()
+                ]);
+            } catch (Exception $e) {
+                $name = ($m['firstName'] ?? '') . ' ' . ($m['lastName'] ?? '');
+                $this->addWarning("Individual '{$name}' import failed: {$e->getMessage()}", [
+                    'name' => $name,
+                    'error' => $e->getMessage()
+                ]);
+            }
+            $personIndex++;
+        }
+
         // Build email -> personId map from imported people
         foreach ($this->personMap as $pid => $personObj) {
             try {
