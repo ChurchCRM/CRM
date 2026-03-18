@@ -8,7 +8,9 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -120,23 +122,42 @@ class Bootstrapper
         self::configureUserEnvironment();
         self::configureLocale();
         if (!self::isDBCurrent()) {
-            // If we just ran the DB upgrade, avoid immediately redirecting back (prevents redirect loop)
-            if (session_status() !== PHP_SESSION_ACTIVE) {
-                @session_start();
-            }
-            if (!empty($_SESSION['dbUpgradeJustRan'])) {
-                unset($_SESSION['dbUpgradeJustRan']);
-                self::$bootStrapLogger->info('Database upgrade just ran; skipping immediate redirect to upgrade page.');
+            $dbVersion = VersionUtils::getDBVersion();
+            $softwareVersion = VersionUtils::getInstalledVersion();
+
+            if (version_compare($softwareVersion, $dbVersion, '>')) {
+                // Software is newer than DB — auto-upgrade the database
+                if (session_status() !== PHP_SESSION_ACTIVE) {
+                    @session_start();
+                }
+                if (!empty($_SESSION['dbUpgradeJustRan']) || !empty($_SESSION['dbUpgradeError'])) {
+                    // Issue 1 fix: skip retry if upgrade just ran or previously failed —
+                    // prevents infinite redirect loop when auto-upgrade throws an exception.
+                    unset($_SESSION['dbUpgradeJustRan']);
+                    self::$bootStrapLogger->info('Database auto-upgrade just ran or failed; continuing normally.');
+                } else {
+                    try {
+                        self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
+                        UpgradeService::upgradeDatabaseVersion();
+                        AppIntegrityService::clearIntegrityCache();
+                        self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
+                    } catch (\Exception $e) {
+                        // Issue 2 fix: log the full exception detail but store only a generic
+                        // message in session — the error page is unauthenticated, so we must
+                        // not expose SQL, table names, or filesystem paths.
+                        self::$bootStrapLogger->error('Database auto-upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
+                        $_SESSION['dbUpgradeError'] = gettext('An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.');
+                        RedirectUtils::redirect('external/system/db-upgrade');
+                    }
+                }
             } else {
-                // Minimal, robust check to avoid redirect loops when already on the external upgrade page
+                // DB version is newer than software — user must upgrade the software
                 $requestUri = $_SERVER['REQUEST_URI'] ?? $_SERVER['SCRIPT_NAME'] ?? '';
                 $isOnUpgradePage = (strpos($requestUri, '/external/system') !== false);
 
                 if (!$isOnUpgradePage) {
-                    self::$bootStrapLogger->info("Database is not current, redirecting to external/system/db-upgrade");
+                    self::$bootStrapLogger->warning("Database ($dbVersion) is newer than software ($softwareVersion); redirecting to version mismatch page");
                     RedirectUtils::redirect('external/system/db-upgrade');
-                } else {
-                    self::$bootStrapLogger->debug("Database is not current, not redirecting to SystemDBUpdate since we're already on it");
                 }
             }
         }
