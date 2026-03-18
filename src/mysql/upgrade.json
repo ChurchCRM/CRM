@@ -258,6 +258,11 @@
     "scripts": [],
     "dbVersion": "7.0.4"
   },
+  "pre-7.0.6": {
+    "versions": ["7.0.5"],
+    "scripts": [],
+    "dbVersion": "7.0.6"
+  },
   "current": {
     "versions": ["7.0.2", "7.0.4"],
     "scripts": [],
