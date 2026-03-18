@@ -21,11 +21,20 @@ use Psr\Http\Message\ServerRequestInterface as Request;
             unset($_SESSION['dbUpgradeError']);
         }
 
+        $dbVersion = VersionUtils::getDBVersion();
+        $softwareVersion = VersionUtils::getInstalledVersion();
+
+        // Issue 3 fix: if versions match and no upgrade error, there is nothing to show here.
+        // Redirect to root so a direct visit to this URL is not misleading.
+        if (empty($errorMessage) && version_compare($softwareVersion, $dbVersion, '>=')) {
+            return $response->withHeader('Location', SystemURLs::getRootPath() . '/')->withStatus(302);
+        }
+
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Version Mismatch'),
-            'dbVersion' => VersionUtils::getDBVersion(),
-            'softwareVersion' => VersionUtils::getInstalledVersion(),
+            'dbVersion' => $dbVersion,
+            'softwareVersion' => $softwareVersion,
             'errorMessage' => $errorMessage,
         ];
         return $renderer->render($response, 'system-db-update.php', $pageArgs);

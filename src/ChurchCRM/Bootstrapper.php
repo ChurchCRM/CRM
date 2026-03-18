@@ -130,9 +130,11 @@ class Bootstrapper
                 if (session_status() !== PHP_SESSION_ACTIVE) {
                     @session_start();
                 }
-                if (!empty($_SESSION['dbUpgradeJustRan'])) {
+                if (!empty($_SESSION['dbUpgradeJustRan']) || !empty($_SESSION['dbUpgradeError'])) {
+                    // Issue 1 fix: skip retry if upgrade just ran or previously failed —
+                    // prevents infinite redirect loop when auto-upgrade throws an exception.
                     unset($_SESSION['dbUpgradeJustRan']);
-                    self::$bootStrapLogger->info('Database auto-upgrade just ran; continuing normally.');
+                    self::$bootStrapLogger->info('Database auto-upgrade just ran or failed; continuing normally.');
                 } else {
                     try {
                         self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
@@ -140,8 +142,11 @@ class Bootstrapper
                         AppIntegrityService::clearIntegrityCache();
                         self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
                     } catch (\Exception $e) {
-                        self::$bootStrapLogger->error('Database auto-upgrade failed: ' . $e->getMessage());
-                        $_SESSION['dbUpgradeError'] = $e->getMessage();
+                        // Issue 2 fix: log the full exception detail but store only a generic
+                        // message in session — the error page is unauthenticated, so we must
+                        // not expose SQL, table names, or filesystem paths.
+                        self::$bootStrapLogger->error('Database auto-upgrade failed: ' . $e->getMessage(), ['exception' => $e]);
+                        $_SESSION['dbUpgradeError'] = gettext('An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.');
                         RedirectUtils::redirect('external/system/db-upgrade');
                     }
                 }
