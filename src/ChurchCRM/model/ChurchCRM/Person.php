@@ -283,12 +283,13 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * If person address found, return latitude and Longitude of person address
-     * Otherwise, return the family latitude and Longitude.
+     * If person has their own address, geocode and return it.
+     * Otherwise, return the stored family latitude and longitude (falling back to
+     * geocoding the family address when not yet cached).
      */
     public function getLatLng(): array
     {
-        $bUseFamilyAddress = !empty($this->getAddress1()) && $this->getFamily();
+        $bUseFamilyAddress = empty($this->getAddress1()) && $this->getFamily();
 
         $lat = 0;
         $lng = 0;
