@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-17 14:35+0000\n"
+"POT-Creation-Date: 2026-03-18 23:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -575,6 +575,12 @@ msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
 msgid "An error occurred"
@@ -2003,6 +2009,9 @@ msgstr ""
 msgid "Database Server"
 msgstr ""
 
+msgid "Database Upgrade Failed"
+msgstr ""
+
 msgid "Database Version"
 msgstr ""
 
@@ -2016,9 +2025,6 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
-msgstr ""
-
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
 msgstr ""
 
 msgid "Database:"
@@ -4206,6 +4212,9 @@ msgstr ""
 msgid "Install plugins by placing them in"
 msgstr ""
 
+msgid "Installed Software Version"
+msgstr ""
+
 msgid "Integrity Check Details:"
 msgstr ""
 
@@ -6288,6 +6297,9 @@ msgstr ""
 msgid "Please update our records with corrections"
 msgstr ""
 
+msgid "Please upgrade ChurchCRM to version"
+msgstr ""
+
 msgid "Please verify your family's information"
 msgstr ""
 
@@ -7445,6 +7457,9 @@ msgstr ""
 msgid "Software"
 msgstr ""
 
+msgid "Software Update Required"
+msgstr ""
+
 msgid "Software Version"
 msgstr ""
 
@@ -8447,13 +8462,7 @@ msgstr ""
 msgid "Upgrade Complete!"
 msgstr ""
 
-msgid "Upgrade Required"
-msgstr ""
-
 msgid "Upgrade Summary"
-msgstr ""
-
-msgid "Upgrade database now"
 msgstr ""
 
 msgid "Upgrade failed."
@@ -8678,6 +8687,9 @@ msgid "Version"
 msgstr ""
 
 msgid "Version Information"
+msgstr ""
+
+msgid "Version Mismatch"
 msgstr ""
 
 msgid "Version:"
@@ -9060,9 +9072,6 @@ msgstr ""
 msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr ""
-
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
@@ -9100,6 +9109,9 @@ msgid "Your cart is empty!"
 msgstr ""
 
 msgid "Your child"
+msgstr ""
+
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
 msgid "Your fiscal year starts in month"
@@ -9329,6 +9341,9 @@ msgid "optional"
 msgstr ""
 
 msgid "or click to browse"
+msgstr ""
+
+msgid "or later to continue."
 msgstr ""
 
 msgid "payment(s)?"
