@@ -14,7 +14,7 @@ use Monolog\Processor\PsrLogMessageProcessor;
 class LoggerUtils
 {
     /** Number of daily log files to retain before the oldest is deleted. */
-    private const LOG_RETENTION_DAYS = 3;
+    public const LOG_RETENTION_DAYS = 3;
 
     private static ?Logger $appLogger = null;
     private static ?RotatingFileHandler $appLogHandler = null;
@@ -66,7 +66,7 @@ class LoggerUtils
      * JsonFormatter breaks that filter, so LineFormatter is always used.
      * Stack traces are included only at DEBUG level for readability.
      */
-    private static function createFormatter(): LineFormatter
+    public static function createFormatter(): LineFormatter
     {
         $formatter = new LineFormatter(null, 'Y-m-d\TH:i:s.uP', false, true);
         $formatter->includeStacktraces(self::isDebugLogLevel());
@@ -94,7 +94,7 @@ class LoggerUtils
      * getTimedFilename() preserves it, producing the standard YYYY-MM-DD-{type}.log
      * when combined with setFilenameFormat('{date}-{filename}', 'Y-m-d').
      */
-    private static function buildRotatingLogBasePath(string $type): string
+    public static function buildRotatingLogBasePath(string $type): string
     {
         try {
             $docRoot = SystemURLs::getDocumentRoot();

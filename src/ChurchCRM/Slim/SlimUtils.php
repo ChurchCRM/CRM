@@ -5,7 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
-use Monolog\Handler\StreamHandler;
+use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
 use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -109,12 +109,14 @@ class SlimUtils
      */
     public static function setupErrorLogger($errorMiddleware)
     {
-        $logPath = LoggerUtils::buildLogFilePath('slim-error');
         $logger = new Logger('slim');
         // Slim errors should be logged at WARNING level minimum to capture all errors
         // regardless of system log level configuration
         $logLevel = max(LoggerUtils::getLogLevel()->value, Level::Warning->value);
-        $logger->pushHandler(new StreamHandler($logPath, $logLevel));
+        $handler = new RotatingFileHandler(LoggerUtils::buildRotatingLogBasePath('slim-error'), LoggerUtils::LOG_RETENTION_DAYS, $logLevel);
+        $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
+        $handler->setFormatter(LoggerUtils::createFormatter());
+        $logger->pushHandler($handler);
         $errorMiddleware->setDefaultErrorHandler(function (
             Request $request,
             Throwable $exception,

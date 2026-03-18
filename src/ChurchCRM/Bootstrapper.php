@@ -469,7 +469,9 @@ class Bootstrapper
                 return $record;
             });
 
-            $ormLogger->pushHandler(new StreamHandler($ormLogPath, Level::Debug->value));
+            $ormHandler = new StreamHandler($ormLogPath, Level::Debug->value);
+            $ormHandler->setFormatter(LoggerUtils::createFormatter());
+            $ormLogger->pushHandler($ormHandler);
             self::$serviceContainer->setLogger('defaultLogger', $ormLogger);
         }
     }
