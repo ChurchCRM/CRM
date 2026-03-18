@@ -125,31 +125,18 @@ describe('04 - System Reset', () => {
     });
 
     describe('Step 10c: Verify System Reset and Login', () => {
-        it('should redirect to login or db-upgrade after reset', () => {
+        it('should redirect to login after reset', () => {
             // Clear any cached sessions since we just reset the database
             cy.clearCookies();
             cy.clearLocalStorage();
-            
-            // Visit homepage - should redirect somewhere after reset
+
+            // Visit homepage - should redirect to login after reset.
+            // A DB reset recreates the schema at the current version, so no version
+            // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
-            
-            // After reset, may go to:
-            // - /session/begin or /login (if DB version matches code)
-            // - /external/system/db-upgrade (if DB needs upgrade)
+
             cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || 
-                       url.includes('/login') || 
-                       url.includes('/db-upgrade');
-            });
-            
-            // If on db-upgrade page, wait for it to complete and redirect
-            cy.url().then((url) => {
-                if (url.includes('/db-upgrade')) {
-                    cy.log('DB upgrade required after reset');
-                    cy.url({ timeout: 60000 }).should('satisfy', (newUrl) => {
-                        return newUrl.includes('/session/begin') || newUrl.includes('/login');
-                    });
-                }
+                return url.includes('/session/begin') || url.includes('/login');
             });
         });
 
