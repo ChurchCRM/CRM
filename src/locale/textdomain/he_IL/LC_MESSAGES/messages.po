@@ -1857,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "מיקום גיאוגרפי משפחתי"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "עדכן את כל קואורדינטות המשפחה"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "הזדמנויות התנדבות"
 
@@ -2529,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "שנה לוח שנה"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "עדכן קו רוחב וקו אורך"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "אישור מחיקת משתמש"
 
@@ -3089,10 +3081,6 @@ msgid "Teachers"
 msgstr "מורים"
 
 #: 
-msgid "Send Message"
-msgstr "שלח הודעה"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "ימי הולדת לפי חודש"
 
@@ -3107,34 +3095,6 @@ msgstr "טלפון נייד"
 #: 
 msgid "Home Address"
 msgstr "כתובת מגורים"
-
-#: 
-msgid "Compose New Message"
-msgstr "כתוב הודעה חדשה"
-
-#: 
-msgid "Kids Emails"
-msgstr "אימיילים של ילדים"
-
-#: 
-msgid "Parents Emails"
-msgstr "אימיילים של הורים"
-
-#: 
-msgid "Teachers Emails"
-msgstr "אימיילים של מורים"
-
-#: 
-msgid "Attachment"
-msgstr "קובץ מצורף"
-
-#: 
-msgid "Max. 32MB"
-msgstr "מקסימום  32 מגה בית"
-
-#: 
-msgid "Discard"
-msgstr "מחק"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3359,10 +3319,6 @@ msgstr "מהדורה חדשה"
 #: 
 msgid "Self Registration"
 msgstr "הרשמה עצמית"
-
-#: 
-msgid "No coordinates found"
-msgstr "לא נמצאו קואורדינטות"
 
 #: 
 msgid "Anonymous"
@@ -5942,10 +5898,6 @@ msgid "system user login reset"
 msgstr "איפוס התחברות משתמש מערכת"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "משפחות ללא מידע גיאוגרפי"
-
-#: 
 msgid "Notification for"
 msgstr "הודעה עבור"
 
@@ -6531,10 +6483,6 @@ msgstr "אנשים"
 #: 
 msgid "System Upgrade"
 msgstr "שדרוג מערכת"
-
-#: 
-msgid "Upgrade Required"
-msgstr "נדרש שדרוג"
 
 #: 
 msgid "Help & Manual"
@@ -8721,10 +8669,6 @@ msgid "Current Software Version"
 msgstr "גרסת תוכנה נוכחית"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "שדרוג מסד הנתונים הושלם בהצלחה. מעביר ללוח הבקרה..."
-
-#: 
 msgid "Date & Time"
 msgstr "תאריך ושעה"
 
@@ -8884,14 +8828,6 @@ msgstr "טקסט דרשה / אירוע"
 #: 
 msgid "Unclassified"
 msgstr "לא מסווג"
-
-#: 
-msgid "Upgrade database now"
-msgstr "שדרג מסד נתונים כעת"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "התקנת ה-ChurchCRM שלך זקוקה לשדרוג מסד נתונים כדי להתאים לגרסת התוכנה המותקנת. פעולה זו תחיל שינויי מבנה ונתונים. ודא שיש לך גיבוי עדכני לפני שתמשיך."
 
 #: 
 msgid "added to this event"
@@ -10959,16 +10895,6 @@ msgstr "צפוי"
 msgid "Failed to delete kiosk"
 msgstr "מחיקת הקיוסק נכשלה"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "שנת כספים."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "קבוצת תלמידים רשומים"
-
 #: 
 msgid "Here"
 msgstr "כאן"
@@ -11020,16 +10946,6 @@ msgstr "בקשת איסוף"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "אנא פנה לכיתה בהקדם האפשרי."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "סיכום התחייבויות לפי שם משפחה עבור כל קרן לשנת הכספים שנבחרה"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "תלמידים רשומים"
 
 #: 
 msgid "The teacher sent this alert at"

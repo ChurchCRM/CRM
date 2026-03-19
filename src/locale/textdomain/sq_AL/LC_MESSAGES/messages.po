@@ -1855,10 +1855,6 @@ msgid "Family Geographic"
 msgstr "Gjeografia e familjes"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Update të gjitha koordinatat Family"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Mundësitë vullnetare"
 
@@ -2528,10 +2524,6 @@ msgid "Calendar Year"
 msgstr "Viti Kalendari"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Përditëso gjerësinë dhe gjatësinë gjeografike"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "User Fshije Konfirmimi"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "Mësuesit"
 
 #: 
-msgid "Send Message"
-msgstr "Dërgo mesazh"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ditëlindjet sipas muajit"
 
@@ -3109,34 +3097,6 @@ msgstr "Celulari"
 #: 
 msgid "Home Address"
 msgstr "Adresa e shtëpisë"
-
-#: 
-msgid "Compose New Message"
-msgstr "Shkruaj mesazh të ri"
-
-#: 
-msgid "Kids Emails"
-msgstr "Emailet e fëmijëve"
-
-#: 
-msgid "Parents Emails"
-msgstr "Emailet e prindërve"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Emailet e mësuesve"
-
-#: 
-msgid "Attachment"
-msgstr "Bashkëngjitje"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Hidhe"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Version i ri"
 #: 
 msgid "Self Registration"
 msgstr "Vetë-regjistrim"
-
-#: 
-msgid "No coordinates found"
-msgstr "Nuk u gjetën koordinata"
 
 #: 
 msgid "Anonymous"
@@ -5933,10 +5889,6 @@ msgid "system user login reset"
 msgstr "hyrja e përdoruesit të sistemit u rivendos"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familje pa informacion gjeografik"
-
-#: 
 msgid "Notification for"
 msgstr "Njoftim për"
 
@@ -6522,10 +6474,6 @@ msgstr "e personave"
 #: 
 msgid "System Upgrade"
 msgstr "Përmirësimi i sistemit"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Kërkohet përmirësim"
 
 #: 
 msgid "Help & Manual"
@@ -8707,10 +8655,6 @@ msgid "Current Software Version"
 msgstr "Versioni aktual i softuerit"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Përmirësimi i bazës së të dhënave përfundoi me sukses. Duke ridrejtuar në panel..."
-
-#: 
 msgid "Date & Time"
 msgstr "Data dhe ora"
 
@@ -8870,14 +8814,6 @@ msgstr "Teksti i predikimit / ngjarjes"
 #: 
 msgid "Unclassified"
 msgstr "I paklasifikuar"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Përmirëso bazën e të dhënave tani"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Instalimi juaj i ChurchCRM ka nevojë për përmirësim të bazës së të dhënave për t'u përputhur me versionin e softuerit të instaluar. Ky operacion do të aplikojë migrimin e skemës dhe të dhënave. Ju lutem sigurohuni që keni një kopje rezervë të kohëve të fundit para se të vazhdoni."
 
 #: 
 msgid "added to this event"
@@ -10945,16 +10881,6 @@ msgstr "Pritshmëri"
 msgid "Failed to delete kiosk"
 msgstr "Dështoi fshirja e kioskut"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Viti Fiskal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grup studentësh të regjistruar"
-
 #: 
 msgid "Here"
 msgstr "Këtu"
@@ -11006,16 +10932,6 @@ msgstr "Kërkesë Tërheqjeje"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Ju lutemi shkoni në klasë sa më shpejt të jetë e mundur."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Përmbledhje zotimesh sipas emrit të familjes për çdo fond për vitin fiskal të zgjedhur"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Studentët e Regjistruar"
 
 #: 
 msgid "The teacher sent this alert at"

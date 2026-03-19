@@ -1859,10 +1859,6 @@ msgid "Family Geographic"
 msgstr "Keluarga Geografis"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Perbarui Semua Koordinat Keluarga"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Peluang Relawan"
 
@@ -2531,10 +2527,6 @@ msgid "Calendar Year"
 msgstr "Tahun kalender"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Perbarui Latitude & Longitude"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Pengguna"
 
@@ -3092,10 +3084,6 @@ msgid "Teachers"
 msgstr "Guru"
 
 #: 
-msgid "Send Message"
-msgstr "Mengirim pesan"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ulang tahun per bulan"
 
@@ -3110,34 +3098,6 @@ msgstr "Mobile"
 #: 
 msgid "Home Address"
 msgstr "Alamat rumah"
-
-#: 
-msgid "Compose New Message"
-msgstr "Tulis Pesan Baru"
-
-#: 
-msgid "Kids Emails"
-msgstr "Email Anak"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email Orang Tua"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email Guru"
-
-#: 
-msgid "Attachment"
-msgstr "Lampiran"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Membuang"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3362,10 +3322,6 @@ msgstr "Rilis Baru"
 #: 
 msgid "Self Registration"
 msgstr "Pendaftaran Mandiri"
-
-#: 
-msgid "No coordinates found"
-msgstr "Tidak ditemukan koordinat"
 
 #: 
 msgid "Anonymous"
@@ -5945,10 +5901,6 @@ msgid "system user login reset"
 msgstr "reset login pengguna sistem"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Keluarga tanpa Info Geo"
-
-#: 
 msgid "Notification for"
 msgstr "Pemberitahuan untuk"
 
@@ -6535,10 +6487,6 @@ msgstr "Orang"
 #: 
 msgid "System Upgrade"
 msgstr "Sistem Upgrade"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Upgrade Diperlukan"
 
 #: 
 msgid "Help & Manual"
@@ -8718,10 +8666,6 @@ msgid "Current Software Version"
 msgstr "Versi Software Saat Ini"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Pembaruan database berhasil. Mengalihkan ke dasbor..."
-
-#: 
 msgid "Date & Time"
 msgstr "Tanggal & Waktu"
 
@@ -8881,14 +8825,6 @@ msgstr "Teks Khotbah / Kegiatan"
 #: 
 msgid "Unclassified"
 msgstr "Tanpa Klasifikasi"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Perbarui database sekarang"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM memerlukan pembaruan database. Operasi ini akan menerapkan migrasi data. Pastikan Anda memiliki cadangan terbaru sebelum melanjutkan."
 
 #: 
 msgid "added to this event"
@@ -10951,16 +10887,6 @@ msgstr "Diharapkan"
 msgid "Failed to delete kiosk"
 msgstr "Gagal menghapus kiosk"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tahun Fiskal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kelompok siswa terdaftar"
-
 #: 
 msgid "Here"
 msgstr "Di sini"
@@ -11012,16 +10938,6 @@ msgstr "Permintaan Penjemputan"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Harap segera menuju ke ruang kelas."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Ringkasan janji berdasarkan nama keluarga untuk setiap dana pada tahun fiskal yang dipilih"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Siswa terdaftar"
 
 #: 
 msgid "The teacher sent this alert at"

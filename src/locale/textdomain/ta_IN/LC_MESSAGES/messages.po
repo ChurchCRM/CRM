@@ -1857,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "குடும்ப புவியியல்"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "அனைத்து குடும்ப ஒருங்கிணைப்புகளையும் புதுப்பிக்கவும்"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "தன்னார்வ வாய்ப்புகள்"
 
@@ -2529,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "காலண்டர் ஆண்டு"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "அட்சரேகை மற்றும் தீர்க்கரேகையைப் புதுப்பிக்கவும்"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "பயனர் நீக்குதல் உறுதிப்படுத்தல்"
 
@@ -3089,10 +3081,6 @@ msgid "Teachers"
 msgstr "ஆசிரியர்கள்"
 
 #: 
-msgid "Send Message"
-msgstr "செய்தி அனுப்ப"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "மாதவாரியாக பிறந்தநாள்"
 
@@ -3107,34 +3095,6 @@ msgstr "கைபேசி"
 #: 
 msgid "Home Address"
 msgstr "வீட்டு முகவரி"
-
-#: 
-msgid "Compose New Message"
-msgstr "புதிய செய்தியை எழுதுங்கள்"
-
-#: 
-msgid "Kids Emails"
-msgstr "குழந்தைகள் மின்னஞ்சல்கள்"
-
-#: 
-msgid "Parents Emails"
-msgstr "பெற்றோர் மின்னஞ்சல்கள்"
-
-#: 
-msgid "Teachers Emails"
-msgstr "ஆசிரியர்களின் மின்னஞ்சல்கள்"
-
-#: 
-msgid "Attachment"
-msgstr "இணைப்பு"
-
-#: 
-msgid "Max. 32MB"
-msgstr "அதிகபட்சம். 32எம்பி"
-
-#: 
-msgid "Discard"
-msgstr "நிராகரி"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3359,10 +3319,6 @@ msgstr "புதிய வெளியீடு"
 #: 
 msgid "Self Registration"
 msgstr "சுய பதிவு"
-
-#: 
-msgid "No coordinates found"
-msgstr "ஆயத்தொகுப்புகள் எதுவும் இல்லை"
 
 #: 
 msgid "Anonymous"
@@ -5939,10 +5895,6 @@ msgid "system user login reset"
 msgstr "கணினி பயனர் உள்நுழைவு மீட்டமைப்பு"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "புவியியல் தகவல் இல்லாத குடும்பங்கள்"
-
-#: 
 msgid "Notification for"
 msgstr "இதற்கான அறிவிப்பு"
 
@@ -6528,10 +6480,6 @@ msgstr "மக்கள்"
 #: 
 msgid "System Upgrade"
 msgstr "கணினி மேம்படுத்தல்"
-
-#: 
-msgid "Upgrade Required"
-msgstr "மேம்படுத்தல் தேவை"
 
 #: 
 msgid "Help & Manual"
@@ -8724,10 +8672,6 @@ msgid "Current Software Version"
 msgstr "தற்போதைய மென்பொருள் பதிப்பு"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "தரவுத்தள மேம்படுத்தல் வெற்றிகரமாக முடிந்தது. டாஷ்போர்டுக்கு திருப்பிவிடப்படுகிறது..."
-
-#: 
 msgid "Date & Time"
 msgstr "தேதி & நேரம்"
 
@@ -8887,14 +8831,6 @@ msgstr "பிரசங்கம் / நிகழ்வு உரை"
 #: 
 msgid "Unclassified"
 msgstr "வகைப்படுத்தப்படாதது"
-
-#: 
-msgid "Upgrade database now"
-msgstr "தரவுத்தளத்தை இப்போது மேம்படுத்தவும்"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "உங்கள் ChurchCRM நிறுவல், நிறுவப்பட்ட மென்பொருள் பதிப்போடு பொருந்த, ஒரு தரவுத்தள மேம்படுத்தல் தேவைப்படுகிறது. இந்தச் செயல்பாடு ஸ்கீமா மற்றும் தரவு இடமாற்றங்களைப் பயன்படுத்தும். தொடர்வதற்கு முன், உங்களிடம் சமீபத்திய காப்புப்பிரதி இருப்பதை உறுதிப்படுத்தவும்."
 
 #: 
 msgid "added to this event"
@@ -10970,16 +10906,6 @@ msgstr "எதிர்பார்க்கப்பட்டது"
 msgid "Failed to delete kiosk"
 msgstr "கியோஸ்க்கை நீக்கத் தவறிவிட்டது"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "நிதியாண்டு."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "பதிவுசெய்யப்பட்ட மாணவர்களின் குழு"
-
 #: 
 msgid "Here"
 msgstr "இங்கே"
@@ -11031,16 +10957,6 @@ msgstr "பிக்அப் கோரிக்கை"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "தயவுசெய்து கூடிய விரைவில் வகுப்பறைக்குச் செல்லவும்."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "தேர்ந்தெடுக்கப்பட்ட நிதியாண்டுக்கான ஒவ்வொரு நிதிக்கும் குடும்பப் பெயர் வாரியான உறுதிமொழிச் சுருக்கம்"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "பதிவு செய்யப்பட்ட மாணவர்கள்"
 
 #: 
 msgid "The teacher sent this alert at"
