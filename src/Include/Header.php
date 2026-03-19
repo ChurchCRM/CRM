@@ -244,7 +244,7 @@ $MenuFirst = 1;
                         <i class="fa-brands fa-discord"></i> <?= gettext('Discord Chat') ?>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="https://github.com/ChurchCRM/CRM/wiki/Contributing" target="_blank" class="dropdown-item" title="<?= gettext('Contributing') ?>">
+                    <a href="https://docs.churchcrm.io/contributing" target="_blank" class="dropdown-item" title="<?= gettext('Contributing') ?>">
                         <i class="fab fa-github"></i> <?= gettext('Contributing') ?>
                     </a>
                 </div>

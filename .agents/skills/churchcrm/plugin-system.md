@@ -694,6 +694,32 @@ $app->run();
 
 ---
 
+---
+
+## PluginManager Init Timing — Slim Route vs Header.php <!-- learned: 2026-03-19 -->
+
+`PluginManager::init()` is called by `Header.php` during view rendering. **Slim route closures run before the view is rendered**, so `$discoveredPlugins` is empty if you call `hasAnyActivePlugin()` or any method that depends on discovered plugins from inside a route.
+
+**Fix:** Call `PluginManager::init()` explicitly in the route closure before using the manager. `init()` is idempotent — the `$initialized` guard makes the second call from `Header.php` a no-op.
+
+```php
+// Inside a Slim route closure — before the view renders:
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+$hasPlugins = PluginManager::hasAnyActivePlugin();
+```
+
+**Do NOT** use `getAllPlugins()` to check if any plugin is active. Its catch block hardcodes `'isActive' => false` for any exception, silently making all plugins appear inactive. Use `isPluginActive($id)` (pure config read, never throws) or `hasAnyActivePlugin()` instead.
+
+```php
+// ✅ CORRECT — reads plugin.{id}.enabled from SystemConfig directly
+PluginManager::hasAnyActivePlugin();
+
+// ❌ WRONG — getAllPlugins() catch block returns isActive: false on any error
+$anyActive = array_filter(PluginManager::getAllPlugins(), fn($p) => $p['isActive']);
+```
+
+---
+
 **Related Skills:**
 - [Routing & Project Architecture](./routing-architecture.md) - Plugin route patterns
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Entry point configuration
@@ -701,4 +727,4 @@ $app->run();
 
 ---
 
-Last updated: February 16, 2026
+Last updated: 2026-03-19

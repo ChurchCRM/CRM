@@ -35,7 +35,7 @@ This directory contains all localization tools and workflows for ChurchCRM — f
 ### Setup (one-time)
 
 1. Copy `.env.example` → `.env` (or `.env.local`)
-2. Add `POEDITOR_TOKEN` from [https://poeditor.com/account/api](https://poeditor.com/account/api)
+2. Add `POEDITOR_TOKEN` from the [POEditor account API](https://poeditor.com/account/api)
 3. Database defaults work for local dev: `localhost/churchcrm/changeme`
 
 ### Translation cycle
@@ -191,7 +191,7 @@ Full release guide: [.claude/commands/locale-release.md](../../.claude/commands/
 
 ✅ Check: `echo $POEDITOR_TOKEN` in terminal  
 ✅ Verify: `.env` file has `POEDITOR_TOKEN=...`  
-✅ Regenerate: Get fresh token from [https://poeditor.com/account/api](https://poeditor.com/account/api)
+✅ Regenerate: Get a fresh token from the [POEditor account API](https://poeditor.com/account/api)
 
 ### Terms not extracting
 
@@ -224,10 +224,10 @@ node locale/scripts/poeditor-downloader.js --locale fr --verbose
 
 | Resource | URL |
 |----------|-----|
-| POEditor Docs | https://poeditor.com/docs/ |
-| GNU Gettext | https://www.gnu.org/software/gettext/manual/ |
-| i18next Docs | https://www.i18next.com/ |
-| ChurchCRM Translation Guide | https://github.com/ChurchCRM/CRM/wiki/Translation |
+| POEditor Docs | [POEditor Docs](https://poeditor.com/docs/) |
+| GNU Gettext | [GNU Gettext Manual](https://www.gnu.org/software/gettext/manual/) |
+| i18next Docs | [i18next](https://www.i18next.com/) |
+| ChurchCRM Translation Guide | [Translation Guide (wiki)](https://github.com/ChurchCRM/CRM/wiki/Translation) |
 
 ---
 
@@ -241,4 +241,4 @@ node locale/scripts/poeditor-downloader.js --locale fr --verbose
 
 ## Questions?
 
-Open an issue: [github.com/ChurchCRM/CRM/issues](https://github.com/ChurchCRM/CRM/issues)
+Open an issue: [GitHub Issues](https://github.com/ChurchCRM/CRM/issues)
