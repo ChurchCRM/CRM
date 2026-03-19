@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-19 21:55+0000\n"
+"POT-Creation-Date: 2026-03-19 23:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,6 +194,12 @@ msgstr ""
 msgid "A comma-separated list of disallowed (too obvious) passwords."
 msgstr ""
 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr ""
+
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr ""
+
 msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
 msgstr ""
 
@@ -204,6 +210,9 @@ msgid "A new version of ChurchCRM is available for installation."
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr ""
+
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
@@ -308,6 +317,9 @@ msgstr ""
 msgid "Add Family Member"
 msgstr ""
 
+msgid "Add First Family"
+msgstr ""
+
 msgid "Add Group"
 msgstr ""
 
@@ -330,6 +342,9 @@ msgid "Add New Group"
 msgstr ""
 
 msgid "Add Payment"
+msgstr ""
+
+msgid "Add People to the Family"
 msgstr ""
 
 msgid "Add Pledge"
@@ -359,7 +374,13 @@ msgstr ""
 msgid "Add Your Data"
 msgstr ""
 
+msgid "Add Your First Family"
+msgstr ""
+
 msgid "Add Your First Property Type"
+msgstr ""
+
+msgid "Add a Person"
 msgstr ""
 
 msgid "Add all to cart"
@@ -610,6 +631,9 @@ msgstr ""
 msgid "An error occurred. Please contact your system administrator."
 msgstr ""
 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr ""
+
 msgid "An invalid configuration id has been requested"
 msgstr ""
 
@@ -855,6 +879,9 @@ msgid "Back to Deposits"
 msgstr ""
 
 msgid "Back to Families"
+msgstr ""
+
+msgid "Back to Get Started"
 msgstr ""
 
 msgid "Back to Group List"
@@ -2439,6 +2466,9 @@ msgstr ""
 msgid "Donation Funds"
 msgstr ""
 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr ""
+
 msgid "Done"
 msgstr ""
 
@@ -2504,6 +2534,9 @@ msgid "ERROR: the uploaded CSV file no longer exists!"
 msgstr ""
 
 msgid "ESE"
+msgstr ""
+
+msgid "Each person can have their own email and mobile number."
 msgstr ""
 
 msgid "Each plugin requires a"
@@ -3233,6 +3266,9 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
+msgid "Families share an address and phone number."
+msgstr ""
+
 msgid "Family"
 msgstr ""
 
@@ -3349,6 +3385,12 @@ msgid "Family not found"
 msgstr ""
 
 msgid "Family removed from cart"
+msgstr ""
+
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr ""
+
+msgid "Family vs Person"
 msgstr ""
 
 msgid "FamilyID for Cart must be numeric"
@@ -3568,6 +3610,9 @@ msgid "Fiscal Year"
 msgstr ""
 
 msgid "Focus"
+msgstr ""
+
+msgid "Follow these two steps to add your church members quickly and correctly."
 msgstr ""
 
 msgid "Font"
@@ -3821,6 +3866,9 @@ msgstr ""
 msgid "Graphic"
 msgstr ""
 
+msgid "Great choice! Here's how to add your church members."
+msgstr ""
+
 #. Context: countries
 msgid "Greece (Ελλάδα)"
 msgstr ""
@@ -3996,6 +4044,9 @@ msgstr ""
 msgid "Haiti"
 msgstr ""
 
+msgid "Have Existing Data?"
+msgstr ""
+
 msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
 msgstr ""
 
@@ -4122,6 +4173,9 @@ msgstr ""
 msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
 msgstr ""
 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr ""
+
 msgid "If you need access to this feature, please contact your church administrator."
 msgstr ""
 
@@ -4159,6 +4213,9 @@ msgid "Import contacts from your MailChimp audiences"
 msgstr ""
 
 msgid "Import failed"
+msgstr ""
+
+msgid "Import from CSV"
 msgstr ""
 
 msgid "Import from a Spreadsheet"
@@ -4612,6 +4669,9 @@ msgid "Lesotho"
 msgstr ""
 
 msgid "Let's get your system set up and ready to use"
+msgstr ""
+
+msgid "Let's restore your previous ChurchCRM data."
 msgstr ""
 
 msgid "Letters and Mailing Labels"
@@ -5749,6 +5809,9 @@ msgstr ""
 msgid "Once"
 msgstr ""
 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr ""
+
 msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
 msgstr ""
 
@@ -6595,6 +6658,9 @@ msgstr ""
 msgid "Quick Start"
 msgstr ""
 
+msgid "Quick Tips"
+msgstr ""
+
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr ""
 
@@ -6621,6 +6687,9 @@ msgid "Recipient Naming Method"
 msgstr ""
 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
+msgstr ""
+
+msgid "Recommended Order"
 msgstr ""
 
 msgid "Record"
@@ -7501,6 +7570,9 @@ msgstr ""
 msgid "Since"
 msgstr ""
 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr ""
+
 #. Context: countries
 msgid "Singapore"
 msgstr ""
@@ -7651,6 +7723,12 @@ msgstr ""
 msgid "Start Date/Time"
 msgstr ""
 
+msgid "Start Fresh"
+msgstr ""
+
+msgid "Start Fresh — Manual Data Entry"
+msgstr ""
+
 msgid "Start Row"
 msgstr ""
 
@@ -7765,6 +7843,9 @@ msgid "Sundays"
 msgstr ""
 
 msgid "Supported formats:"
+msgstr ""
+
+msgid "Supports backups from ChurchCRM and ChurchInfo."
 msgstr ""
 
 #. Context: countries
@@ -8967,6 +9048,9 @@ msgstr ""
 msgid "Weekly on"
 msgstr ""
 
+msgid "Welcome Back!"
+msgstr ""
+
 msgid "Welcome to"
 msgstr ""
 
@@ -9078,6 +9162,9 @@ msgstr ""
 msgid "You can also use backup recovery codes if you lose access to your app"
 msgstr ""
 
+msgid "You can always import more data later via CSV."
+msgstr ""
+
 msgid "You can create/delete sunday school group. "
 msgstr ""
 
@@ -9172,6 +9259,12 @@ msgid "Your account is protected"
 msgstr ""
 
 msgid "Your authenticator app has been successfully enrolled"
+msgstr ""
+
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr ""
+
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
 msgstr ""
 
 msgid "Your browser language preference differs from your ChurchCRM locale"
