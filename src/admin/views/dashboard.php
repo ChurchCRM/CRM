@@ -276,7 +276,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <div class="border rounded p-3 h-100">
                                 <h6 class="text-warning"><i class="fa-solid fa-upload"></i> <?= gettext('Restore Database') ?></h6>
                                 <p class="small text-muted mb-2"><?= gettext('Restore from a backup file. Erases existing data.') ?></p>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore?context=onboarding" class="btn btn-sm btn-outline-warning">
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="btn btn-sm btn-outline-warning">
                                     <?= gettext('Restore') ?>
                                 </a>
                             </div>
