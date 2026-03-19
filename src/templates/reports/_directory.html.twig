@@ -63,7 +63,10 @@
     {#
       Default implementation: split entries into N columns using an HTML table.
       mPDF does not support CSS column-count, so a table-based approach is used.
-      Each entry is placed in a <td> cell.  Rows are created every `columns` cells.
+
+      Each `entry` item is rendered directly ({{ entry }}) — it is expected to be
+      a pre-formatted HTML string.  Override this block in child templates when
+      you need to render structured objects rather than strings.
     #}
     {% set cols = columns|default(3) %}
     {% set col  = 0 %}
