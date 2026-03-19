@@ -5,6 +5,7 @@ namespace ChurchCRM\Service\PdfRenderer;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Twig\GettextExtension;
 use Mpdf\Mpdf;
+use Psr\Http\Message\ResponseInterface;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -15,14 +16,22 @@ use Twig\Loader\FilesystemLoader;
  * iconv-based Latin-1 conversion that the legacy FPDF-based ChurchInfoReport
  * required.
  *
- * Usage (direct instantiation):
+ * Usage (direct instantiation via renderToString):
  *
  *   $renderer = new MpdfRenderer();
- *   $renderer->render('tax-report', $data, 'TaxReport-2024');
+ *   $pdfBytes = $renderer->renderToString('tax-report', $data);
+ *   $response->getBody()->write($pdfBytes);
+ *
+ * Usage (render directly to PSR-7 response):
+ *
+ *   $renderer = new MpdfRenderer();
+ *   return $renderer->render('tax-report', $data, 'TaxReport-2024', $response);
  *
  * Usage (injected Twig environment, e.g. from DI container):
  *
  *   $renderer = new MpdfRenderer($twigEnvironment);
+ *
+ * @todo Register in Slim 4 DI container so routes receive it via injection rather than `new`.
  */
 class MpdfRenderer implements PdfRendererInterface
 {
@@ -49,12 +58,17 @@ class MpdfRenderer implements PdfRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(string $template, array $data, string $filename): void
+    public function render(string $template, array $data, string $filename, ResponseInterface $response): ResponseInterface
     {
-        $mpdf = $this->createMpdf();
-        $mpdf->WriteHTML($this->twig->render($template . '.html.twig', $data));
-        $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'D' : 'I';
-        $mpdf->Output($filename . '.pdf', $outputMode);
+        $pdfContent = $this->renderToString($template, $data);
+        $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'attachment' : 'inline';
+
+        $response->getBody()->write($pdfContent);
+
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', $outputMode . '; filename="' . $filename . '.pdf"')
+            ->withHeader('Content-Length', (string) strlen($pdfContent));
     }
 
     /**

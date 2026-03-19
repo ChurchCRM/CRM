@@ -1,20 +1,25 @@
 {#
   _directory.html.twig
   --------------------
-  Extends _base.html.twig.  Multi-column layout for a church photo/member directory.
+  Extends _base.html.twig.  Multi-column layout for a church photo/member
+  directory.
+
+  NOTE: mPDF does not support CSS `column-count` / `column-gap`.  Multi-column
+  layout is implemented with an HTML table.  Child templates override
+  `directory_content` and render their own table (splitting entries into N
+  columns), or they may use the `columns` variable to build a table via Twig.
 
   Variables expected:
     - columns       (int, default 3) : number of directory columns
-    - columnGap     (string, default "4mm") : gap between columns
     - disclaimer1   (string, optional) : footer disclaimer line 1
     - disclaimer2   (string, optional) : footer disclaimer line 2
-    - entries       (array) : directory entries; each passed to the `entry` block
+    - entries       (array) : directory entries (available to child for iteration)
 
   Blocks:
-    - directory_header : page header / title (printed once at top)
-    - entry_style      : extra CSS for entry layout
-    - entry            : renders one directory entry; receives `entry` variable
-    - directory_footer : footer content (disclaimer, etc.)
+    - directory_header  : page header / title (printed once at top)
+    - entry_style       : extra CSS for entry layout
+    - directory_content : full multi-column content area (child renders the table)
+    - directory_footer  : footer content (disclaimer, etc.)
 #}
 {% extends "_base.html.twig" %}
 
@@ -30,13 +35,14 @@
         text-align: center;
         margin-bottom: 6mm;
     }
-    .directory-columns {
-        column-count: {{ columns|default(3) }};
-        column-gap: {{ columnGap|default('4mm') }};
+    .directory-table {
+        width: 100%;
+        border-collapse: collapse;
+        vertical-align: top;
     }
-    .directory-entry {
-        break-inside: avoid;
-        margin-bottom: 4mm;
+    .directory-cell {
+        vertical-align: top;
+        padding: 0 2mm 4mm 0;
         font-size: 9pt;
     }
     .directory-footer {
@@ -53,13 +59,35 @@
         {% block directory_header %}{% endblock %}
     </div>
 
-    <div class="directory-columns">
+    {% block directory_content %}
+    {#
+      Default implementation: split entries into N columns using an HTML table.
+      mPDF does not support CSS column-count, so a table-based approach is used.
+      Each entry is placed in a <td> cell.  Rows are created every `columns` cells.
+    #}
+    {% set cols = columns|default(3) %}
+    {% set col  = 0 %}
+    <table class="directory-table">
         {% for entry in entries %}
-            <div class="directory-entry">
-                {% block entry %}{% endblock %}
-            </div>
+            {% if col == 0 %}<tr>{% endif %}
+            <td class="directory-cell" style="width:{{ (100 / cols)|round(1) }}%;">
+                {{ entry }}
+            </td>
+            {% set col = col + 1 %}
+            {% if col == cols %}
+                </tr>
+                {% set col = 0 %}
+            {% endif %}
         {% endfor %}
-    </div>
+        {# Pad the last row with empty cells if needed #}
+        {% if col > 0 %}
+            {% for _i in range(col, cols - 1) %}
+                <td class="directory-cell"></td>
+            {% endfor %}
+            </tr>
+        {% endif %}
+    </table>
+    {% endblock %}
 
     <div class="directory-footer">
         {% block directory_footer %}
