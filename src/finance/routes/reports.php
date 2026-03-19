@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\ReportConfig;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
@@ -30,7 +31,26 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports.php', $pageArgs);
     });
 
-    // Tax Year Report (Giving Report) configuration form
+    /**
+     * @OA\Get(
+     *     path="/finance/reports/tax-statements",
+     *     operationId="getTaxStatementForm",
+     *     summary="Tax Statement configuration form",
+     *     description="Renders the Giving Report configuration form. Requires Finance role.",
+     *     tags={"Reports"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(
+     *         name="NoRows",
+     *         in="query",
+     *         required=false,
+     *         description="When set to 1, displays a 'No Data Found' alert (set by redirect from tax-report POST)",
+     *         @OA\Schema(type="integer", enum={0, 1})
+     *     ),
+     *     @OA\Response(response=200, description="HTML configuration form page"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     */
     $group->get('/tax-statements', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -72,9 +92,40 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return $renderer->render($response, 'reports/tax-statements.php', $pageArgs);
     });
 
-    // POST: Generate Tax Statement PDF using mPDF renderer (migrated from Reports/TaxReport.php)
-    // @todo Register MpdfRenderer in the Slim 4 DI container so it can be injected
-    //       rather than instantiated with `new` here.
+    /**
+     * @OA\Post(
+     *     path="/finance/reports/tax-report",
+     *     operationId="generateTaxReportPdf",
+     *     summary="Generate Tax Statement PDF",
+     *     description="Generates a Giving Report / Tax Statement PDF via mPDF. Requires Finance role. Redirects to tax-statements?NoRows=1 when no matching data is found.",
+     *     tags={"Reports"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 @OA\Property(property="DateStart", type="string", format="date", description="Report start date"),
+     *                 @OA\Property(property="DateEnd", type="string", format="date", description="Report end date"),
+     *                 @OA\Property(property="letterhead", type="string", enum={"graphic", "address", "none"}, description="Letterhead style"),
+     *                 @OA\Property(property="remittance", type="string", enum={"yes", "no"}, description="Include remittance slip"),
+     *                 @OA\Property(property="minimum", type="integer", description="Minimum giving amount filter"),
+     *                 @OA\Property(property="deposit", type="integer", description="Filter by deposit ID (0 = all)"),
+     *                 @OA\Property(property="classList", type="array", @OA\Items(type="integer"), description="Classification IDs to include"),
+     *                 @OA\Property(property="funds", type="array", @OA\Items(type="integer"), description="Fund IDs to include"),
+     *                 @OA\Property(property="family", type="array", @OA\Items(type="integer"), description="Family IDs to include")
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="PDF binary stream (application/pdf)"),
+     *     @OA\Response(response=302, description="Redirect to tax-statements?NoRows=1 when no data matches"),
+     *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="Finance role required")
+     * )
+     *
+     * @todo Register MpdfRenderer in the Slim 4 DI container so it can be injected
+     *       rather than instantiated with `new` here.
+     */
     $group->post('/tax-report', function (Request $request, Response $response): Response {
         $body = $request->getParsedBody() ?? [];
 
@@ -124,6 +175,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         }
 
         // Group pledges by family into the structure expected by tax-report.html.twig
+        $reportConfig = new ReportConfig();
         $familiesMap = [];
         foreach ($pledges as $pledge) {
             $famId  = $pledge['FamId'] ?? 0;
@@ -140,7 +192,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                     'recipientZip'       => $family['Zip'] ?? '',
                     'recipientCountry'   => $family['Country'] ?? '',
                     'envelopeNumber'     => $family['Envelope'] ?? '',
-                    'useDonationEnvelopes' => (bool) SystemConfig::getBooleanValue('bUseDonationEnvelopes'),
+                    'useDonationEnvelopes' => $reportConfig->useDonationEnvelopes,
                     'dateRange'          => DateTimeUtils::formatDateRange($sDateStart, $sDateEnd),
                     'remittance'         => $remittance,
                     'payments'           => [],
@@ -178,33 +230,13 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             $familiesMap[$famId]['totalNonDeductible'] += $nonDeductible;
         }
 
-        // Build template data
-        $data = [
-            // Letterhead config
-            'letterhead'       => $letterhead,
-            'churchName'       => SystemConfig::getValue('sChurchName'),
-            'churchAddress'    => SystemConfig::getValue('sChurchAddress'),
-            'churchCity'       => SystemConfig::getValue('sChurchCity'),
-            'churchState'      => SystemConfig::getValue('sChurchState'),
-            'churchZip'        => SystemConfig::getValue('sChurchZip'),
-            'churchPhone'      => SystemConfig::getValue('sChurchPhone'),
-            'churchEmail'      => SystemConfig::getValue('sChurchEmail'),
-            'letterheadImage'  => SystemConfig::getValue('bDirLetterHead'),
-            'today'            => date(SystemConfig::getValue('sDateFormatLong')),
-            'defaultCountry'   => SystemConfig::getValue('sDefaultCountry'),
+        // Build template data using the ReportConfig already created above
+        $data = array_merge($reportConfig->toTaxReportArray(), [
+            'letterhead' => $letterhead,
+            'families'   => array_values($familiesMap),
+        ]);
 
-            // Report text
-            'taxReport1'       => SystemConfig::getValue('sTaxReport1'),
-            'taxReport2'       => SystemConfig::getValue('sTaxReport2'),
-            'taxReport3'       => SystemConfig::getValue('sTaxReport3'),
-            'confirmSincerely' => SystemConfig::getValue('sConfirmSincerely'),
-            'taxSigner'        => SystemConfig::getValue('sTaxSigner'),
-
-            // Families (reset array keys)
-            'families' => array_values($familiesMap),
-        ];
-
-        $filename = 'TaxReport' . date(SystemConfig::getValue('sDateFilenameFormat'));
+        $filename = 'TaxReport' . date($reportConfig->dateFilenameFormat);
 
         // Render PDF via PSR-7 response using MpdfRenderer::render()
         $renderer = new MpdfRenderer();
