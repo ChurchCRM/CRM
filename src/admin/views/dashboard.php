@@ -368,7 +368,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
                         </a>
                     </div>
-                    <a href="http://docs.churchcrm.io/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
+                    <a href="https://docs.churchcrm.io/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
                         <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
                     </a>
                 </div>
