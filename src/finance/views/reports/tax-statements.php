@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php foreach ($funds as $fund): ?>
                             <option value="<?= (int) $fund->getId() ?>">
                                 <?= InputUtils::escapeHTML($fund->getName()) ?>
-                                <?php if ($fund->getActive() === 'false'): ?>
+                                <?php if (strtolower((string) $fund->getActive()) !== 'true'): ?>
                                     &nbsp;(<?= gettext('Inactive') ?>)
                                 <?php endif; ?>
                             </option>
