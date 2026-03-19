@@ -255,9 +255,30 @@ The checklist card auto-hides when `$allDone === true`. The Quick Start shortcut
 
 ## Get Started Wizard — /admin/get-started <!-- learned: 2026-03-19 -->
 
-A dedicated onboarding wizard for new installs. View: `src/admin/views/get-started.php`. Route: `src/admin/routes/dashboard.php` (`GET /get-started`). Webpack entry: `webpack/get-started.js` + `webpack/get-started.css`.
+A dedicated onboarding wizard for new installs with 4 data-import paths:
 
-Uses `.gs-card` with top-border color accents (`.gs-card--green`, `--blue`, `--teal`, `--orange`) inside `.gs-wrap` (max-width: 900px). Grid: `col-sm-6` (2×2). Demo data trigger: `<a href="#" id="importDemoDataV2">`.
+| Card | Link | Notes |
+|------|------|-------|
+| Explore with Demo Data | `#importDemoDataV2` (JS trigger) | `<a role="button">` — never `<button>` (breaks card padding) |
+| Import from a Spreadsheet | `CSVImport.php` | |
+| Enter Data Manually | `/admin/get-started/manual` | guided intro page (see below) |
+| Restore a Backup | `/admin/system/restore?context=onboarding` | |
+
+**Files:** View: `src/admin/views/get-started.php`. Route: `GET /get-started` in `src/admin/routes/dashboard.php`. Webpack: `webpack/get-started.js` + `webpack/get-started.css`.
+
+Uses `.gs-card` with top-border accents (`.gs-card--green`, `--blue`, `--teal`, `--orange`) inside `.gs-wrap` (max-width: 900px). Grid: `col-sm-6` (2×2).
+
+## Start Fresh Guided Page — /admin/get-started/manual <!-- learned: 2026-03-19 -->
+
+Guided manual-entry intro explaining the Family → Person recommended order. Key content:
+
+- Numbered steps: Add a Family first (shared address/phone) → then add People to it
+- Quick Tips including: **donations are tracked at the family level** — individuals who live alone need a single-person family to record giving against
+- Sidebar: Family vs Person concept explainer + "Have Existing Data?" CSV shortcut
+
+**Files:** View: `src/admin/views/get-started-manual.php`. Route: `GET /get-started/manual` in `src/admin/routes/get-started.php` (registered in `src/admin/index.php` after `dashboard.php`). No webpack entry — inherits admin styles.
+
+**Important:** `GET /get-started` (landing) lives in `dashboard.php`. `routes/get-started.php` only registers `/manual` — do not add a `$group->get('', ...)` handler there or Slim will silently register the same route twice (first wins).
 
 ## Files
 
