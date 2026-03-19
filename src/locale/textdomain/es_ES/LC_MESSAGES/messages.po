@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Geográficas de familia"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Actualizar todas las Coordenadas de familias"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Oportunidades de Voluntariado"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Año calendario"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Actualizar latitud y longitud"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "confirmación de eliminación de usuario"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "Profesores"
 
 #: 
-msgid "Send Message"
-msgstr "Enviar Mensaje"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Cumpleaños por Mes"
 
@@ -3109,34 +3097,6 @@ msgstr "Teléfono Móvil"
 #: 
 msgid "Home Address"
 msgstr "Dirección de Hogar"
-
-#: 
-msgid "Compose New Message"
-msgstr "Redactar nuevo Mensaje"
-
-#: 
-msgid "Kids Emails"
-msgstr "Emails de Niños"
-
-#: 
-msgid "Parents Emails"
-msgstr "Emails de Padres"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Emails de Profesores"
-
-#: 
-msgid "Attachment"
-msgstr "Adjunto"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Máx. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Descartar"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Nueva Publicación"
 #: 
 msgid "Self Registration"
 msgstr "Auto registro"
-
-#: 
-msgid "No coordinates found"
-msgstr "Coordenadas no encontradas"
 
 #: 
 msgid "Anonymous"
@@ -5966,10 +5922,6 @@ msgid "system user login reset"
 msgstr "Ingreso de usuario de sistema restablecido"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familias sin Info de Geo"
-
-#: 
 msgid "Notification for"
 msgstr "Notificación para"
 
@@ -6558,10 +6510,6 @@ msgstr "de personas"
 #: 
 msgid "System Upgrade"
 msgstr "Actualización de sistema"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Actualización requerida"
 
 #: 
 msgid "Help & Manual"
@@ -8753,10 +8701,6 @@ msgid "Current Software Version"
 msgstr "Versión actual del software"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Actualización de la base de datos completada correctamente. Redireccionando al panel de control..."
-
-#: 
 msgid "Date & Time"
 msgstr "Fecha y hora"
 
@@ -8916,14 +8860,6 @@ msgstr "Texto del sermón/evento"
 #: 
 msgid "Unclassified"
 msgstr "Sin clasificar"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Actualizar la base de datos ahora"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Su instalación de ChurchCRM necesita una actualización de la base de datos para que coincida con la versión del software instalado. Esta operación aplicará migraciones de esquemas y datos. Asegúrese de tener una copia de seguridad reciente antes de continuar."
 
 #: 
 msgid "added to this event"
@@ -10991,16 +10927,6 @@ msgstr "Esperado"
 msgid "Failed to delete kiosk"
 msgstr "Error al eliminar el quiosco"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Año fiscal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupo de estudiantes registrados"
-
 #: 
 msgid "Here"
 msgstr "Aquí"
@@ -11052,16 +10978,6 @@ msgstr "Solicitud de recogida"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Por favor diríjase al aula lo antes posible."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Resumen de compromisos por nombre de familia para cada fondo del año fiscal seleccionado"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Estudiantes registrados"
 
 #: 
 msgid "The teacher sent this alert at"

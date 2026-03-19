@@ -1842,10 +1842,6 @@ msgid "Family Geographic"
 msgstr "ภูมิศาสตร์ครอบครัว"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "อัปเดตพิกัดครอบครัวทั้งหมด"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "โอกาสอาสาสมัคร"
 
@@ -2512,10 +2508,6 @@ msgid "Calendar Year"
 msgstr "ปีปฏิทิน"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "อัปเดตละติจูดและลองจิจูด"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "การยืนยันการลบผู้ใช้"
 
@@ -3068,10 +3060,6 @@ msgid "Teachers"
 msgstr "ครู"
 
 #: 
-msgid "Send Message"
-msgstr "ส่งข้อความ"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "วันเกิดตามเดือน"
 
@@ -3086,34 +3074,6 @@ msgstr "มือถือ"
 #: 
 msgid "Home Address"
 msgstr "ที่อยู่บ้าน"
-
-#: 
-msgid "Compose New Message"
-msgstr "เขียนข้อความใหม่"
-
-#: 
-msgid "Kids Emails"
-msgstr "อีเมลเด็ก"
-
-#: 
-msgid "Parents Emails"
-msgstr "อีเมลผู้ปกครอง"
-
-#: 
-msgid "Teachers Emails"
-msgstr "อีเมลครู"
-
-#: 
-msgid "Attachment"
-msgstr "ไฟล์แนบ"
-
-#: 
-msgid "Max. 32MB"
-msgstr "สูงสุด 32MB"
-
-#: 
-msgid "Discard"
-msgstr "ยกเลิก"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3338,10 +3298,6 @@ msgstr "เวอร์ชันใหม่"
 #: 
 msgid "Self Registration"
 msgstr "ลงทะเบียนด้วยตนเอง"
-
-#: 
-msgid "No coordinates found"
-msgstr "ไม่พบพิกัด"
 
 #: 
 msgid "Anonymous"
@@ -5910,10 +5866,6 @@ msgid "system user login reset"
 msgstr "รีเซ็ตการเข้าสู่ระบบผู้ใช้ระบบแล้ว"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "ครอบครัวที่ไม่มีข้อมูลภูมิศาสตร์"
-
-#: 
 msgid "Notification for"
 msgstr "การแจ้งเตือนสำหรับ"
 
@@ -6499,10 +6451,6 @@ msgstr "ของคน"
 #: 
 msgid "System Upgrade"
 msgstr "อัปเกรดระบบ"
-
-#: 
-msgid "Upgrade Required"
-msgstr "จำเป็นต้องอัปเกรด"
 
 #: 
 msgid "Help & Manual"
@@ -8681,10 +8629,6 @@ msgid "Current Software Version"
 msgstr "เวอร์ชันซอฟต์แวร์ปัจจุบัน"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "อัปเกรดฐานข้อมูลสำเร็จ กำลังเปลี่ยนเส้นทางไปยังแดชบอร์ด..."
-
-#: 
 msgid "Date & Time"
 msgstr "วันที่และเวลา"
 
@@ -8844,14 +8788,6 @@ msgstr "ข้อความเทศนา / กิจกรรม"
 #: 
 msgid "Unclassified"
 msgstr "ไม่จัดประเภท"
-
-#: 
-msgid "Upgrade database now"
-msgstr "อัปเกรดฐานข้อมูลตอนนี้"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "การติดตั้ง ChurchCRM ของคุณต้องอัปเกรดฐานข้อมูลเพื่อให้ตรงกับเวอร์ชันซอฟต์แวร์ที่ติดตั้ง การดำเนินการนี้จะใช้การย้ายข้อมูลสคีมาและข้อมูล กรุณาตรวจสอบให้แน่ใจว่าคุณมีการสำรองข้อมูลล่าสุดก่อนดำเนินการ"
 
 #: 
 msgid "added to this event"
@@ -10914,16 +10850,6 @@ msgstr "คาดหวัง"
 msgid "Failed to delete kiosk"
 msgstr "ลบคีออสก์ไม่สำเร็จ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "ปีงบประมาณ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "กลุ่มนักเรียนที่ลงทะเบียน"
-
 #: 
 msgid "Here"
 msgstr "ที่นี่"
@@ -10975,16 +10901,6 @@ msgstr "คำขอรับตัว"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "กรุณาไปที่ห้องเรียนโดยเร็วที่สุด"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "สรุปคำมั่นสัญญาตามชื่อครอบครัวสำหรับแต่ละกองทุนในปีงบประมาณที่เลือก"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "นักเรียนที่ลงทะเบียน"
 
 #: 
 msgid "The teacher sent this alert at"

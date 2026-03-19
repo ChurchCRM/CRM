@@ -1920,10 +1920,6 @@ msgid "Family Geographic"
 msgstr "Familie geografi"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Oppdater alle Family Koordinater"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Muligheter for frivillige"
 
@@ -2618,10 +2614,6 @@ msgid "Calendar Year"
 msgstr "Kalenderår"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Oppdater Lengdegrad & Breddegrad"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bruker Slett Bekreftelse"
 
@@ -3205,10 +3197,6 @@ msgid "Teachers"
 msgstr "Lærere"
 
 #: 
-msgid "Send Message"
-msgstr "Send melding"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Bursdager etter måned"
 
@@ -3223,34 +3211,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Hjemmeadresse"
-
-#: 
-msgid "Compose New Message"
-msgstr "Skriv ny melding"
-
-#: 
-msgid "Kids Emails"
-msgstr "Barns epost"
-
-#: 
-msgid "Parents Emails"
-msgstr "Forelres epost"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Lærers epost"
-
-#: 
-msgid "Attachment"
-msgstr "Vedlegg"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Forkast"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3482,10 +3442,6 @@ msgstr "Ny utgave"
 #: 
 msgid "Self Registration"
 msgstr "Selvregistrering"
-
-#: 
-msgid "No coordinates found"
-msgstr "Ingen koordinater funnet"
 
 #: 
 msgid "Anonymous"
@@ -6054,10 +6010,6 @@ msgid "system user login reset"
 msgstr "innlogging for systembruker tilbakestilt"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familier uten geografisk info"
-
-#: 
 msgid "Notification for"
 msgstr "Varsel for"
 
@@ -6643,10 +6595,6 @@ msgstr "av personer"
 #: 
 msgid "System Upgrade"
 msgstr "Systemoppgradering"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Oppgradering kreves"
 
 #: 
 msgid "Help & Manual"
@@ -8823,10 +8771,6 @@ msgid "Current Software Version"
 msgstr "Nåværende programvareversjon"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Databaseoppgraderingen var vellykket. Viderekobler til oversikten..."
-
-#: 
 msgid "Date & Time"
 msgstr "Dato og tid"
 
@@ -8986,14 +8930,6 @@ msgstr "Tekst for preken / hendelse"
 #: 
 msgid "Unclassified"
 msgstr "Uklassifisert"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Oppgrader database nå"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Din ChurchCRM-installasjon trenger en databaseoppgradering. Dette vil utføre overføring av skjema og data. Vennligst sørg for at du har en nylig sikkerhetskopi før du fortsetter."
 
 #: 
 msgid "added to this event"
@@ -11061,16 +10997,6 @@ msgstr "Forventet"
 msgid "Failed to delete kiosk"
 msgstr "Kunne ikke slette kiosk"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Regnskapsår."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Gruppe av registrerte elever"
-
 #: 
 msgid "Here"
 msgstr "Her"
@@ -11122,16 +11048,6 @@ msgstr "Hentingsforespørsel"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Gå til klasserommet så snart som mulig."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Løfteoppsummering etter familienavn for hvert fond for valgt regnskapsår"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerte elever"
 
 #: 
 msgid "The teacher sent this alert at"

@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "የቤተሰብ ጂኦግራፊያዊ"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "ሁሉንም የቤተሰብ መጋጠሚያዎች ያዘምኑ"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "የበጎ ፈቃደኞች እድሎች"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "አመት፣ በእትዬጵያ አቆጣጠር"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Latitude እና Longitude ያሻሽሉ"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "የተጠቃሚ ሰርዝ ማረጋገጫ"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "አስተማሪዎች"
 
 #: 
-msgid "Send Message"
-msgstr "መልዕክት ላክ"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "የልደት ቀናት በወር"
 
@@ -3109,34 +3097,6 @@ msgstr "ሞባይል"
 #: 
 msgid "Home Address"
 msgstr "የቤት አድራሻ"
-
-#: 
-msgid "Compose New Message"
-msgstr "አዲስ መልእክት ጻፍ"
-
-#: 
-msgid "Kids Emails"
-msgstr "የልጆች ኢሜይሎች"
-
-#: 
-msgid "Parents Emails"
-msgstr "የወላጆች ኢሜይሎች"
-
-#: 
-msgid "Teachers Emails"
-msgstr "የመምህራን ኢሜይሎች"
-
-#: 
-msgid "Attachment"
-msgstr "አባሪ"
-
-#: 
-msgid "Max. 32MB"
-msgstr "ከፍተኛ. 32 ሜባ"
-
-#: 
-msgid "Discard"
-msgstr "አስወግድ"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "አዲስ የተለቀቀ"
 #: 
 msgid "Self Registration"
 msgstr "ራስን መመዝገብ"
-
-#: 
-msgid "No coordinates found"
-msgstr "ምንም መጋጠሚያዎች አልተገኙም"
 
 #: 
 msgid "Anonymous"
@@ -5945,10 +5901,6 @@ msgid "system user login reset"
 msgstr "የሲስተም ተጠቃሚ መግቢያ ዳግም ማስጀመር"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "የጂኦ መረጃ የሌላቸው ቤተሰቦች"
-
-#: 
 msgid "Notification for"
 msgstr "ማስታወቂያ ለ"
 
@@ -6535,10 +6487,6 @@ msgstr "ከሰዎች"
 #: 
 msgid "System Upgrade"
 msgstr "ሲስተም ማዘመን"
-
-#: 
-msgid "Upgrade Required"
-msgstr "ማዘመን አለብዎት"
 
 #: 
 msgid "Help & Manual"
@@ -8739,10 +8687,6 @@ msgid "Current Software Version"
 msgstr "የአሁኑ የሶፍትዌር ስሪት"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "የዳታቤዝ ማሻሻያ በተሳካ ሁኔታ ተጠናቋል። ወደ ዳሽቦርድ በመመለስ ላይ..."
-
-#: 
 msgid "Date & Time"
 msgstr "ቀን እና ሰዓት"
 
@@ -8902,14 +8846,6 @@ msgstr "የስብከት / የኩነት ጽሁፍ"
 #: 
 msgid "Unclassified"
 msgstr "ያልተመደበ"
-
-#: 
-msgid "Upgrade database now"
-msgstr "ዳታቤዝን አሁን አሻሽል"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "የChurchCRM ጭነትዎ ከተጫነው የሶፍትዌር ስሪት ጋር እንዲዛመድ የዳታቤዝ ማሻሻያ ያስፈልገዋል። ይህ ተግባር የዳታቤዝ መዋቅር እና የመረጃ ሽግግሮችን ይተገብራል። ከመቀጠልዎ በፊት የቅርብ ጊዜ መጠባበቂያ መኖሩን ያረጋግጡ።"
 
 #: 
 msgid "added to this event"
@@ -10977,16 +10913,6 @@ msgstr "የሚጠበቅ"
 msgid "Failed to delete kiosk"
 msgstr "ኪዮስክን መሰረዝ አልተሳካም"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "ፊስካል ዓመት።"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "የተመዘገቡ ተማሪዎች ቡድን"
-
 #: 
 msgid "Here"
 msgstr "እዚህ"
@@ -11038,16 +10964,6 @@ msgstr "የመውሰጃ ጥያቄ"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "እባክዎ በተቻለ ፍጥነት ወደ ክፍሉ ይሂዱ።"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "ለተመረጠው ፊስካል ዓመት ለእያንዳንዱ ፈንድ በቤተሰብ ስም የቃል ኪዳን ማጠቃለያ"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "የተመዘገቡ ተማሪዎች"
 
 #: 
 msgid "The teacher sent this alert at"

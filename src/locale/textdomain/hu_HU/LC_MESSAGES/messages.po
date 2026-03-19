@@ -1899,10 +1899,6 @@ msgid "Family Geographic"
 msgstr "Családi földrajzi adatok"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Frissítse All Family Koordináták"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Önkéntes lehetőségek"
 
@@ -2582,10 +2578,6 @@ msgid "Calendar Year"
 msgstr "Naptári év"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Szélesség és hosszúság frissítése"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Felhasználó törlése megerősítése"
 
@@ -3167,10 +3159,6 @@ msgid "Teachers"
 msgstr "Tanárok"
 
 #: 
-msgid "Send Message"
-msgstr "Üzenet küldése"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Születésnapok hónap szerint"
 
@@ -3185,34 +3173,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Lakcím"
-
-#: 
-msgid "Compose New Message"
-msgstr "Új üzenet írása"
-
-#: 
-msgid "Kids Emails"
-msgstr "Gyerekek e-mail címei"
-
-#: 
-msgid "Parents Emails"
-msgstr "Szülők e-mail címei"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Tanárok e-mail címei"
-
-#: 
-msgid "Attachment"
-msgstr "Melléklet"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Elvetés"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3443,10 +3403,6 @@ msgstr "Új kiadás"
 #: 
 msgid "Self Registration"
 msgstr "Önregisztráció"
-
-#: 
-msgid "No coordinates found"
-msgstr "Koordináták nem találhatók"
 
 #: 
 msgid "Anonymous"
@@ -6015,10 +5971,6 @@ msgid "system user login reset"
 msgstr "rendszerfelhasználó bejelentkezése visszaállítva"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Földrajzi adatok nélküli családok"
-
-#: 
 msgid "Notification for"
 msgstr "Értesítés:"
 
@@ -6604,10 +6556,6 @@ msgstr "Az emberekről"
 #: 
 msgid "System Upgrade"
 msgstr "Rendszerfrissítés"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Frissítés szükséges"
 
 #: 
 msgid "Help & Manual"
@@ -8789,10 +8737,6 @@ msgid "Current Software Version"
 msgstr "Jelenlegi Szoftver Verzió"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Az adatbázis frissítése sikeresen befejeződött. Átirányítás a műszerfalra..."
-
-#: 
 msgid "Date & Time"
 msgstr "Dátum és Időpont"
 
@@ -8952,14 +8896,6 @@ msgstr "Prédikáció / Eseményszöveg"
 #: 
 msgid "Unclassified"
 msgstr "Besorolatlan"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Adatbázis Frissítése Most"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "A ChurchCRM telepítéshez adatbázis-frissítésre van szükség a telepített szoftver verziójához. Ez a művelet séma- és adatmigrációkat alkalmaz. Kérjük, győződjön meg arról, hogy van egy friss biztonsági másolata a folytatás előtt."
 
 #: 
 msgid "added to this event"
@@ -11027,16 +10963,6 @@ msgstr "Várható"
 msgid "Failed to delete kiosk"
 msgstr "A kiosk törlése sikertelen"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Pénzügyi év."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Regisztrált tanulók csoportja"
-
 #: 
 msgid "Here"
 msgstr "Itt"
@@ -11088,16 +11014,6 @@ msgstr "Elviteli kérés"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Kérem, menjen a tanterembe a lehető leghamarabb."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Kötelezettségvállalás összesítője családnév szerint, alaponként a kiválasztott pénzügyi évre"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Regisztrált tanulók"
 
 #: 
 msgid "The teacher sent this alert at"

@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Οικογενειακή Γεωγραφική"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Ενημέρωση όλων των οικογενειακών συντεταγμένων"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Ευκαιρίες Εθελοντισμού"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Ημερολογιακό έτος"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Ενημέρωση γεωγραφικού πλάτους και γεωγραφικού μήκους"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Επιβεβαίωση διαγραφής χρήστη"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "Δάσκαλοι"
 
 #: 
-msgid "Send Message"
-msgstr "Να στείλετε μήνυμα"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Γενέθλια ανά μήνα"
 
@@ -3109,34 +3097,6 @@ msgstr "Κινητό"
 #: 
 msgid "Home Address"
 msgstr "Διεύθυνση σπιτιού"
-
-#: 
-msgid "Compose New Message"
-msgstr "Σύνταξη νέου μηνύματος"
-
-#: 
-msgid "Kids Emails"
-msgstr "Παιδικά email"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email γονέων"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email καθηγητών"
-
-#: 
-msgid "Attachment"
-msgstr "Συνημμένο"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Μέγιστη. 32 MB"
-
-#: 
-msgid "Discard"
-msgstr "Απορρίπτω"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Νέα έκδοση"
 #: 
 msgid "Self Registration"
 msgstr "Αυτοεγγραφή"
-
-#: 
-msgid "No coordinates found"
-msgstr "Δεν βρέθηκαν συντεταγμένες"
 
 #: 
 msgid "Anonymous"
@@ -5944,10 +5900,6 @@ msgid "system user login reset"
 msgstr "επαναφορά σύνδεσης χρήστη συστήματος"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Οικογένειες χωρίς γεωγραφικές πληροφορίες"
-
-#: 
 msgid "Notification for"
 msgstr "Ειδοποίηση για"
 
@@ -6534,10 +6486,6 @@ msgstr "των ανθρώπων"
 #: 
 msgid "System Upgrade"
 msgstr "Αναβάθμιση συστήματος"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Απαιτείται αναβάθμιση"
 
 #: 
 msgid "Help & Manual"
@@ -8727,10 +8675,6 @@ msgid "Current Software Version"
 msgstr "Τρέχουσα έκδοση λογισμικού"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Η αναβάθμιση της βάσης δεδομένων ολοκληρώθηκε επιτυχώς. Γίνεται ανακατεύθυνση στο ταμπλό..."
-
-#: 
 msgid "Date & Time"
 msgstr "Ημερομηνία & Ώρα"
 
@@ -8890,14 +8834,6 @@ msgstr "Sermon / Εκδήλωση Text"
 #: 
 msgid "Unclassified"
 msgstr "Ανταξιόλογο"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Αναβάθμιση βάσης δεδομένων τώρα"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Η εγκατάσταση του ChurchCRM χρειάζεται αναβάθμιση της βάσης δεδομένων. Αυτή η διαδικασία θα εφαρμόσει αλλαγές στο σχήμα και τα δεδομένα. Βεβαιωθείτε ότι έχετε πρόσφατο αντίγραφο ασφαλείας."
 
 #: 
 msgid "added to this event"
@@ -10965,16 +10901,6 @@ msgstr "Αναμενόμενο"
 msgid "Failed to delete kiosk"
 msgstr "Αποτυχία διαγραφής κιόσκι"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Οικονομικό έτος."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Ομάδα εγγεγραμμένων μαθητών"
-
 #: 
 msgid "Here"
 msgstr "Εδώ"
@@ -11026,16 +10952,6 @@ msgstr "Αίτημα παραλαβής"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Παρακαλώ μεταβείτε στην αίθουσα το συντομότερο δυνατό."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Σύνοψη υποσχέσεων ανά οικογενειακό όνομα για κάθε ταμείο για το επιλεγμένο οικονομικό έτος"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Εγγεγραμμένοι μαθητές"
 
 #: 
 msgid "The teacher sent this alert at"

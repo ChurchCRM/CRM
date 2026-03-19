@@ -1870,10 +1870,6 @@ msgid "Family Geographic"
 msgstr "Trợ giúp địa lý"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Cập nhật tất cả tọa độ của gia đình"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Mục vụ đã tham gia"
 
@@ -2542,10 +2538,6 @@ msgid "Calendar Year"
 msgstr "Lịch năm"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Cập nhật Vĩ độ và Kinh độ"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Xác nhận xóa người dùng"
 
@@ -3103,10 +3095,6 @@ msgid "Teachers"
 msgstr "Giáo viên"
 
 #: 
-msgid "Send Message"
-msgstr "Gửi đi"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ngày sinh theo tháng"
 
@@ -3121,34 +3109,6 @@ msgstr "Di động"
 #: 
 msgid "Home Address"
 msgstr "Địa chỉ nhà"
-
-#: 
-msgid "Compose New Message"
-msgstr "Soạn nội dung"
-
-#: 
-msgid "Kids Emails"
-msgstr "Email của con"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email của phụ huynh"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email của giáo viên"
-
-#: 
-msgid "Attachment"
-msgstr "Đính kèm"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Tối đa 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Bỏ đi"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3373,10 +3333,6 @@ msgstr "Phiên bản mới"
 #: 
 msgid "Self Registration"
 msgstr "Tự đăng ký"
-
-#: 
-msgid "No coordinates found"
-msgstr "Không tìm thấy tọa độ"
 
 #: 
 msgid "Anonymous"
@@ -5956,10 +5912,6 @@ msgid "system user login reset"
 msgstr "hệ thống thành viên khôi phục đăng nhập"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Gia đình không có thông tin tọa độ"
-
-#: 
 msgid "Notification for"
 msgstr "Thông báo cho"
 
@@ -6546,10 +6498,6 @@ msgstr "của thành viên"
 #: 
 msgid "System Upgrade"
 msgstr "Nâng cấp hệ thống"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Yêu cầu nâng cấp"
 
 #: 
 msgid "Help & Manual"
@@ -8729,10 +8677,6 @@ msgid "Current Software Version"
 msgstr "Phiên bản phần mềm hiện tại"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Nâng cấp cơ sở dữ liệu thành công. Đang chuyển hướng đến bảng điều khiển..."
-
-#: 
 msgid "Date & Time"
 msgstr "Ngày & Giờ"
 
@@ -8892,14 +8836,6 @@ msgstr "Nội dung Bài giảng / Sự kiện"
 #: 
 msgid "Unclassified"
 msgstr "Chưa phân loại"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Nâng cấp cơ sở dữ liệu ngay"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Bản cài đặt ChurchCRM của bạn cần nâng cấp cơ sở dữ liệu. Vui lòng đảm bảo bạn có bản sao lưu gần đây trước khi tiếp tục."
 
 #: 
 msgid "added to this event"
@@ -10962,16 +10898,6 @@ msgstr "Dự kiến"
 msgid "Failed to delete kiosk"
 msgstr "Không thể xóa ki-ốt"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Năm tài chính."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Nhóm học sinh đã đăng ký"
-
 #: 
 msgid "Here"
 msgstr "Tại đây"
@@ -11023,16 +10949,6 @@ msgstr "Yêu cầu đón"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Vui lòng đến lớp học càng sớm càng tốt."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Tóm tắt cam kết theo tên gia đình cho từng quỹ của năm tài chính đã chọn"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Học sinh đã đăng ký"
 
 #: 
 msgid "The teacher sent this alert at"

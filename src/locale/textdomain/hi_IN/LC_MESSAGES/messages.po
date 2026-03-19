@@ -1835,10 +1835,6 @@ msgid "Family Geographic"
 msgstr "पारिवारिक भौगोलिक"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "सभी पारिवारिक निर्देशांक अपडेट करें"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "स्वयंसेवी अवसर"
 
@@ -2505,10 +2501,6 @@ msgid "Calendar Year"
 msgstr "कैलेंडर वर्ष"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "अक्षांश और देशांतर अपडेट करें"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "उपयोगकर्ता विलोपन पुष्टि"
 
@@ -3061,10 +3053,6 @@ msgid "Teachers"
 msgstr "शिक्षक"
 
 #: 
-msgid "Send Message"
-msgstr "संदेश भेजें"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "महीने के अनुसार जन्मदिन"
 
@@ -3079,34 +3067,6 @@ msgstr "मोबाइल"
 #: 
 msgid "Home Address"
 msgstr "घर का पता"
-
-#: 
-msgid "Compose New Message"
-msgstr "नया संदेश लिखें"
-
-#: 
-msgid "Kids Emails"
-msgstr "बच्चों के ईमेल"
-
-#: 
-msgid "Parents Emails"
-msgstr "अभिभावकों के ईमेल"
-
-#: 
-msgid "Teachers Emails"
-msgstr "शिक्षकों के ईमेल"
-
-#: 
-msgid "Attachment"
-msgstr "अनुलग्नक"
-
-#: 
-msgid "Max. 32MB"
-msgstr "अधिकतम 32MB"
-
-#: 
-msgid "Discard"
-msgstr "खारिज करें"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3331,10 +3291,6 @@ msgstr "नई रिलीज़"
 #: 
 msgid "Self Registration"
 msgstr "स्व-पंजीकरण"
-
-#: 
-msgid "No coordinates found"
-msgstr "कोई निर्देशांक नहीं मिले"
 
 #: 
 msgid "Anonymous"
@@ -5903,10 +5859,6 @@ msgid "system user login reset"
 msgstr "सिस्टम उपयोगकर्ता लॉगिन रीसेट"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "भौगोलिक जानकारी के बिना परिवार"
-
-#: 
 msgid "Notification for"
 msgstr "इसके लिए अधिसूचना"
 
@@ -6492,10 +6444,6 @@ msgstr "व्यक्तियों का"
 #: 
 msgid "System Upgrade"
 msgstr "सिस्टम अपग्रेड"
-
-#: 
-msgid "Upgrade Required"
-msgstr "अपग्रेड आवश्यक है"
 
 #: 
 msgid "Help & Manual"
@@ -8673,10 +8621,6 @@ msgid "Current Software Version"
 msgstr "वर्तमान सॉफ्टवेयर संस्करण"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "डेटाबेस अपग्रेड सफलतापूर्वक पूरा हुआ। डैशबोर्ड पर रीडायरेक्ट हो रहा है..."
-
-#: 
 msgid "Date & Time"
 msgstr "तिथि और समय"
 
@@ -8836,14 +8780,6 @@ msgstr "उपदेश / इवेंट टेक्स्ट"
 #: 
 msgid "Unclassified"
 msgstr "अवर्गीकृत"
-
-#: 
-msgid "Upgrade database now"
-msgstr "डेटाबेस को अभी अपग्रेड करें"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "आपके ChurchCRM इंस्टॉलेशन को इंस्टॉल किए गए सॉफ़्टवेयर संस्करण से मेल खाने के लिए डेटाबेस अपग्रेड की आवश्यकता है। यह ऑपरेशन स्कीमा और डेटा माइग्रेशन लागू करेगा। कृपया आगे बढ़ने से पहले सुनिश्चित करें कि आपके पास हाल का बैकअप है।"
 
 #: 
 msgid "added to this event"
@@ -10911,16 +10847,6 @@ msgstr "अपेक्षित"
 msgid "Failed to delete kiosk"
 msgstr "कियोस्क हटाने में विफल"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "वित्तीय वर्ष।"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "पंजीकृत छात्रों का समूह"
-
 #: 
 msgid "Here"
 msgstr "यहाँ"
@@ -10972,16 +10898,6 @@ msgstr "पिकअप अनुरोध"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "कृपया जितनी जल्दी हो सके कक्षा में जाएं।"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "चयनित वित्तीय वर्ष के लिए प्रत्येक फंड के लिए परिवार के नाम के अनुसार प्रतिज्ञा सारांश"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "पंजीकृत छात्र"
 
 #: 
 msgid "The teacher sent this alert at"
