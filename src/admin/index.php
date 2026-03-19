@@ -21,6 +21,7 @@ $app->setBasePath($basePath);
 
 // Register routes FIRST before middleware
 require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/get-started.php';
 require __DIR__ . '/routes/api/demo.php';
 require __DIR__ . '/routes/api/database.php';
 require __DIR__ . '/routes/api/orphaned-files.php';

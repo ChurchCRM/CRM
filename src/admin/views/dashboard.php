@@ -241,6 +241,19 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                 </div>
                             </a>
                         </div>
+
+                        <!-- Start Fresh -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started/manual" class="quick-start-card">
+                                <div class="quick-start-icon bg-success">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Start Fresh') ?></h6>
+                                    <small><?= gettext('Add families and people manually') ?></small>
+                                </div>
+                            </a>
+                        </div>
                         
                         <!-- Financial Settings -->
                         <div class="col-md-6 col-lg-4 mb-3">
@@ -310,6 +323,21 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
         <!-- Sidebar -->
         <div class="col-lg-4">
+            <!-- Get Started Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-header bg-primary text-white py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-play-circle"></i> <?= gettext('Get Started') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="small mb-3"><?= gettext('New to ChurchCRM? Follow the guided setup to add families and people, import CSV data, or explore with demo records.') ?></p>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started" class="btn btn-primary btn-block">
+                        <i class="fa-solid fa-arrow-right mr-1"></i> <?= gettext('Get Started') ?>
+                    </a>
+                </div>
+            </div>
+
             <!-- Try Demo Data Card -->
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-header bg-success text-white py-2">
