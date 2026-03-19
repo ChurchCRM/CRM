@@ -429,6 +429,22 @@ class PluginManager
     }
 
     /**
+     * Returns true if at least one discovered plugin is enabled.
+     * Uses isPluginActive() directly (config key read only) to avoid
+     * the exception-swallowing in getAllPlugins().
+     */
+    public static function hasAnyActivePlugin(): bool
+    {
+        foreach (array_keys(self::$discoveredPlugins) as $pluginId) {
+            if (self::isPluginActive($pluginId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Get the plugins base path.
      */
     public static function getPluginsPath(): string

@@ -82,3 +82,12 @@
 .btn-group .btn {
   border-radius: 0.25rem;
 }
+
+/* Setup progress checklist */
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.list-group-item:last-child {
+  border-bottom: 0;
+}

@@ -1,0 +1,275 @@
+/* =========================================================
+   Get Started — onboarding wizard page
+   Bootstrap 4.6.2 / AdminLTE 3 context
+   ========================================================= */
+
+/* ── Constrain to a comfortable reading width ─────────────── */
+.gs-wrap {
+  max-width: 900px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.gs-hero {
+  background: linear-gradient(135deg, #1565c0 0%, #1a73e8 100%);
+  border-radius: 0.75rem;
+  padding: 2.25rem 2rem;
+  margin-bottom: 2rem;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.gs-hero::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 260px;
+  height: 260px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gs-hero::after {
+  content: "";
+  position: absolute;
+  bottom: -40px;
+  right: 60px;
+  width: 140px;
+  height: 140px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.gs-hero h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.gs-hero p {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 0;
+}
+
+/* ── Section label ────────────────────────────────────────── */
+.gs-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #adb5bd;
+  margin-bottom: 1rem;
+}
+
+/* ── Option cards ─────────────────────────────────────────── */
+.gs-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-top: 4px solid transparent;
+  border-radius: 0.625rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    border-top-color 0.2s ease,
+    transform 0.2s ease;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  /* reset button defaults */
+  background-color: #fff;
+  width: 100%;
+  text-align: left;
+  -webkit-appearance: none;
+}
+
+.gs-card:hover,
+.gs-card:focus {
+  text-decoration: none;
+  color: inherit;
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Colour top-border variants */
+.gs-card--green {
+  border-top-color: #28a745;
+}
+.gs-card--blue {
+  border-top-color: #007bff;
+}
+.gs-card--teal {
+  border-top-color: #20c997;
+}
+.gs-card--orange {
+  border-top-color: #fd7e14;
+}
+
+/* Icon wrapper */
+.gs-card-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 0.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 1.1rem;
+  flex-shrink: 0;
+}
+
+.gs-card--green .gs-card-icon {
+  background: #e8f5e9;
+  color: #28a745;
+}
+.gs-card--blue .gs-card-icon {
+  background: #e3f2fd;
+  color: #007bff;
+}
+.gs-card--teal .gs-card-icon {
+  background: #e0f2f1;
+  color: #20c997;
+}
+.gs-card--orange .gs-card-icon {
+  background: #fff3e0;
+  color: #fd7e14;
+}
+
+/* Title */
+.gs-card h5 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: #212529;
+}
+
+/* Body text */
+.gs-card p {
+  font-size: 0.85rem;
+  color: #6c757d;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 1.5rem;
+}
+
+/* CTA row */
+.gs-card-cta {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: gap 0.15s ease;
+}
+
+.gs-card--green .gs-card-cta {
+  color: #28a745;
+}
+.gs-card--blue .gs-card-cta {
+  color: #007bff;
+}
+.gs-card--teal .gs-card-cta {
+  color: #20c997;
+}
+.gs-card--orange .gs-card-cta {
+  color: #fd7e14;
+}
+
+.gs-card:hover .gs-card-cta {
+  gap: 0.65rem;
+}
+
+/* ── Divider ──────────────────────────────────────────────── */
+.gs-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.5rem 0;
+  color: #adb5bd;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.gs-divider::before,
+.gs-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e9ecef;
+}
+
+/* ── Plugin strip ─────────────────────────────────────────── */
+.gs-plugin-strip {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 0.625rem;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.gs-plugin-strip-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6c757d;
+  white-space: nowrap;
+}
+
+.gs-plugin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 2rem;
+  padding: 0.3rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #495057;
+  text-decoration: none;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
+}
+
+.gs-plugin-badge:hover {
+  border-color: #adb5bd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  color: #212529;
+}
+
+.gs-plugin-badge .badge {
+  font-size: 0.65rem;
+  padding: 0.15em 0.45em;
+}
+
+/* ── Skip row ─────────────────────────────────────────────── */
+.gs-skip {
+  text-align: center;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.83rem;
+  color: #6c757d;
+}
+
+.gs-skip a {
+  color: #495057;
+  font-weight: 500;
+}
+
+.gs-skip a:hover {
+  color: #212529;
+}
