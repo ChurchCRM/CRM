@@ -43,8 +43,13 @@ class UpgradeService
             opcache_reset();
         }
         
-        // Reset VersionUtils in-process static cache so this request also picks up the new version
-        VersionUtils::resetCache();
+        // Reset VersionUtils in-process static cache so this request also picks up the new version.
+        // Guard with method_exists: during an in-place upgrade the old class definition may still
+        // be loaded in memory (resetCache() was added in 7.0.3), so calling it unconditionally
+        // would fatal on upgrades from any release that predates the method.
+        if (method_exists(VersionUtils::class, 'resetCache')) {
+            VersionUtils::resetCache();
+        }
         
         $db_version = VersionUtils::getDBVersion();
         $installed_version = VersionUtils::getInstalledVersion();
