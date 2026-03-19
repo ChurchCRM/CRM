@@ -43,7 +43,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         // Fetch all donation funds via ORM
         $funds = DonationFundQuery::create()->find();
 
-        // Fetch all families via ORM (ordered by name)
+        // Fetch all families via ORM (ordered by name).
+        // @todo For large churches this loads all families to populate a <select>.
+        //       Replace with a lazy-loaded typeahead using /api/families once that
+        //       endpoint supports name-search queries.
         $families = FamilyQuery::create()->orderByName()->find();
 
         // Fetch recent deposits (last 200) via ORM
@@ -52,12 +55,14 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             ->limit(200)
             ->find();
 
-        $today = date('Y-m-d');
+        $queryParams = $request->getQueryParams();
 
         $pageArgs = [
             'sRootPath'       => SystemURLs::getRootPath(),
             'sPageTitle'      => gettext('Tax Statements (Giving Report)'),
-            'today'           => $today,
+            'today'           => DateTimeUtils::getTodayDate(),
+            'datePickerFormat' => SystemConfig::getValue('sDatePickerFormat'),
+            'noRows'          => !empty($queryParams['NoRows']),
             'classifications' => $classifications,
             'funds'           => $funds,
             'families'        => $families,
@@ -68,6 +73,8 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     });
 
     // POST: Generate Tax Statement PDF using mPDF renderer (migrated from Reports/TaxReport.php)
+    // @todo Register MpdfRenderer in the Slim 4 DI container so it can be injected
+    //       rather than instantiated with `new` here.
     $group->post('/tax-report', function (Request $request, Response $response): Response {
         $body = $request->getParsedBody() ?? [];
 
@@ -112,7 +119,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         if (empty($pledges)) {
             return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/finance/reports?NoRows=1')
+                ->withHeader('Location', SystemURLs::getRootPath() . '/finance/reports/tax-statements?NoRows=1')
                 ->withStatus(302);
         }
 
@@ -134,7 +141,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                     'recipientCountry'   => $family['Country'] ?? '',
                     'envelopeNumber'     => $family['Envelope'] ?? '',
                     'useDonationEnvelopes' => (bool) SystemConfig::getBooleanValue('bUseDonationEnvelopes'),
-                    'dateRange'          => formatTaxReportDateRange($sDateStart, $sDateEnd),
+                    'dateRange'          => DateTimeUtils::formatDateRange($sDateStart, $sDateEnd),
                     'remittance'         => $remittance,
                     'payments'           => [],
                     'totalAmount'        => 0.0,
@@ -199,31 +206,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
 
         $filename = 'TaxReport' . date(SystemConfig::getValue('sDateFilenameFormat'));
 
-        // Render PDF to string and return as a proper PSR-7 response
+        // Render PDF via PSR-7 response using MpdfRenderer::render()
         $renderer = new MpdfRenderer();
-        $pdfContent = $renderer->renderToString('tax-report', $data);
 
-        $outputMode = SystemConfig::getIntValue('iPDFOutputType') === 1 ? 'D' : 'I';
-        $disposition = $outputMode === 'D' ? 'attachment' : 'inline';
-
-        $response->getBody()->write($pdfContent);
-
-        return $response
-            ->withHeader('Content-Type', 'application/pdf')
-            ->withHeader('Content-Disposition', $disposition . '; filename="' . $filename . '.pdf"')
-            ->withHeader('Content-Length', (string) strlen($pdfContent));
+        return $renderer->render('tax-report', $data, $filename, $response);
     });
 
 });
-
-/**
- * Format a date range string for display in tax report letters.
- * Returns a single date if start == end, otherwise a range.
- */
-function formatTaxReportDateRange(string $dateStart, string $dateEnd): string
-{
-    if ($dateStart === $dateEnd) {
-        return date('F j, Y', strtotime($dateStart));
-    }
-    return date('M j, Y', strtotime($dateStart)) . ' – ' . date('M j, Y', strtotime($dateEnd));
-}

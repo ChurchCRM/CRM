@@ -1,15 +1,30 @@
 {#
   _letter.html.twig
   -----------------
-  Extends _base.html.twig.  Renders a standard church letterhead at the top of
-  every page, followed by a recipient address block.
+  Embeddable letter partial — does NOT extend any base template so it can be
+  used with Twig's {% embed %} tag (which requires non-extending templates).
+
+  For a standalone single-letter page extend _base.html.twig and embed this
+  partial inside {% block body %}.
+
+  For multi-family reports (e.g. tax-report.html.twig), extend _base.html.twig,
+  loop over families, and embed this template for each family:
+
+      {% for family in families %}
+          {% embed '_letter.html.twig' with { ... family context ... } %}
+              {% block letter_body %}
+                  ... family-specific content ...
+              {% endblock %}
+          {% endembed %}
+          {% if not loop.last %}<pagebreak />{% endif %}
+      {% endfor %}
 
   Letterhead modes (letterhead variable):
     "graphic" – church letterhead image (bDirLetterHead system config path)
     "none"    – blank header space (for pre-printed letterhead paper)
     anything else / omitted – text letterhead built from sChurchName, etc.
 
-  Variables expected (in addition to _base variables):
+  Variables expected:
     - letterhead        (string)  : "graphic" | "none" | "" (default: text letterhead)
     - churchName        (string)  : from SystemConfig::getValue('sChurchName')
     - churchAddress     (string)  : from SystemConfig::getValue('sChurchAddress')
@@ -33,9 +48,7 @@
     - letter_body : the main content area between address block and closing
     - closing     : signature block (default: sConfirmSincerely + sTaxSigner)
 #}
-{% extends "_base.html.twig" %}
-
-{% block extra_style %}
+<style>
     .letterhead-text { margin-bottom: 6mm; }
     .letterhead-text .church-name { font-size: 14pt; font-weight: bold; }
     .letterhead-text .church-contact { font-size: 9pt; }
@@ -49,50 +62,48 @@
 
     .closing-block { margin-top: 8mm; }
     .closing-block .signature { margin-top: 8mm; }
-{% endblock %}
+</style>
 
-{% block body %}
-    {# ── Letterhead ─────────────────────────────────────────────────────── #}
-    {% if letterhead == 'graphic' and letterheadImage %}
-        <div style="text-align:center; margin-bottom:6mm;">
-            <img src="{{ letterheadImage }}" style="max-width:100%; max-height:30mm;" alt="">
-        </div>
-    {% elseif letterhead == 'none' %}
-        {# Leave blank space for pre-printed letterhead paper #}
-        <div style="height:30mm;"></div>
-    {% else %}
-        <div class="letterhead-text">
-            <div class="church-name">{{ churchName }}</div>
-            <div class="church-contact">{{ churchAddress }}</div>
-            <div class="church-contact">{{ churchCity }}, {{ churchState }}  {{ churchZip }}</div>
-            <div class="church-contact">{{ churchPhone }}  {{ churchEmail }}</div>
-        </div>
+{# ── Letterhead ─────────────────────────────────────────────────────── #}
+{% if letterhead == 'graphic' and letterheadImage %}
+    <div style="text-align:center; margin-bottom:6mm;">
+        <img src="{{ letterheadImage }}" style="max-width:100%; max-height:30mm;" alt="">
+    </div>
+{% elseif letterhead == 'none' %}
+    {# Leave blank space for pre-printed letterhead paper #}
+    <div style="height:30mm;"></div>
+{% else %}
+    <div class="letterhead-text">
+        <div class="church-name">{{ churchName }}</div>
+        <div class="church-contact">{{ churchAddress }}</div>
+        <div class="church-contact">{{ churchCity }}, {{ churchState }}  {{ churchZip }}</div>
+        <div class="church-contact">{{ churchPhone }}  {{ churchEmail }}</div>
+    </div>
+{% endif %}
+
+{# ── Date ────────────────────────────────────────────────────────────── #}
+<div class="date-line">{{ today }}</div>
+
+{# ── Recipient address block ─────────────────────────────────────────── #}
+<div class="recipient-block">
+    <p>{{ salutation }}</p>
+    {% if recipientAddress1 %}<p>{{ recipientAddress1 }}</p>{% endif %}
+    {% if recipientAddress2 %}<p>{{ recipientAddress2 }}</p>{% endif %}
+    <p>{{ recipientCity }}, {{ recipientState }}  {{ recipientZip }}</p>
+    {% if recipientCountry and recipientCountry != defaultCountry %}
+        <p>{{ recipientCountry }}</p>
     {% endif %}
+</div>
 
-    {# ── Date ────────────────────────────────────────────────────────────── #}
-    <div class="date-line">{{ today }}</div>
+{# ── Main letter content ─────────────────────────────────────────────── #}
+<div class="letter-content">
+    {% block letter_body %}{% endblock %}
+</div>
 
-    {# ── Recipient address block ─────────────────────────────────────────── #}
-    <div class="recipient-block">
-        <p>{{ salutation }}</p>
-        {% if recipientAddress1 %}<p>{{ recipientAddress1 }}</p>{% endif %}
-        {% if recipientAddress2 %}<p>{{ recipientAddress2 }}</p>{% endif %}
-        <p>{{ recipientCity }}, {{ recipientState }}  {{ recipientZip }}</p>
-        {% if recipientCountry and recipientCountry != defaultCountry %}
-            <p>{{ recipientCountry }}</p>
-        {% endif %}
-    </div>
-
-    {# ── Main letter content ─────────────────────────────────────────────── #}
-    <div class="letter-content">
-        {% block letter_body %}{% endblock %}
-    </div>
-
-    {# ── Closing / signature ─────────────────────────────────────────────── #}
-    <div class="closing-block">
-        {% block closing %}
-            <p>{{ confirmSincerely }},</p>
-            <p class="signature">{{ taxSigner }}</p>
-        {% endblock %}
-    </div>
-{% endblock %}
+{# ── Closing / signature ─────────────────────────────────────────────── #}
+<div class="closing-block">
+    {% block closing %}
+        <p>{{ confirmSincerely }},</p>
+        <p class="signature">{{ taxSigner }}</p>
+    {% endblock %}
+</div>

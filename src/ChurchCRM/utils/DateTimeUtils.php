@@ -177,4 +177,26 @@ class DateTimeUtils
 
         return $date->format($format);
     }
+
+    /**
+     * Format a date range string for display in report letters.
+     *
+     * Returns a single date if start == end, otherwise a range.
+     * Uses the configured timezone for date parsing.
+     *
+     * @param string $dateStart Start date in Y-m-d format
+     * @param string $dateEnd   End date in Y-m-d format
+     *
+     * @return string e.g. "January 1, 2024" or "Jan 1, 2024 – Dec 31, 2024"
+     */
+    public static function formatDateRange(string $dateStart, string $dateEnd): string
+    {
+        if ($dateStart === $dateEnd) {
+            return self::createDateTime($dateStart)->format('F j, Y');
+        }
+
+        return self::createDateTime($dateStart)->format('M j, Y')
+            . ' – '
+            . self::createDateTime($dateEnd)->format('M j, Y');
+    }
 }
