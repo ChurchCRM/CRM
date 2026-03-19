@@ -476,10 +476,6 @@ msgid "No"
 msgstr "いいえ"
 
 #: 
-msgid "Developer Chat"
-msgstr "開発者チャット"
-
-#: 
 msgid "Event Checkin"
 msgstr "イベント・チェックイン"
 
@@ -1835,10 +1831,6 @@ msgid "Family Geographic"
 msgstr "世帯位置情報"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "すべての世帯座標を更新"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "ボランティアの機会"
 
@@ -2505,10 +2497,6 @@ msgid "Calendar Year"
 msgstr "カレンダー年"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "緯度と経度を更新"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "ユーザー削除の確認"
 
@@ -3061,14 +3049,6 @@ msgid "Teachers"
 msgstr "教師"
 
 #: 
-msgid "Send Message"
-msgstr "メッセージを送信"
-
-#: 
-msgid "Quick Status"
-msgstr "クイックステータス"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "月別誕生日"
 
@@ -3083,58 +3063,6 @@ msgstr "携帯"
 #: 
 msgid "Home Address"
 msgstr "自宅住所"
-
-#: 
-msgid "Dad Name"
-msgstr "父親の名前"
-
-#: 
-msgid "Dad Mobile"
-msgstr "父親の携帯"
-
-#: 
-msgid "Dad Email"
-msgstr "父親のメール"
-
-#: 
-msgid "Mom Name"
-msgstr "母親の名前"
-
-#: 
-msgid "Mom Mobile"
-msgstr "母親の携帯"
-
-#: 
-msgid "Mom Email"
-msgstr "母親のメール"
-
-#: 
-msgid "Compose New Message"
-msgstr "新しいメッセージを作成"
-
-#: 
-msgid "Kids Emails"
-msgstr "子供たちのメール"
-
-#: 
-msgid "Parents Emails"
-msgstr "保護者のメール"
-
-#: 
-msgid "Teachers Emails"
-msgstr "教師のメール"
-
-#: 
-msgid "Attachment"
-msgstr "添付ファイル"
-
-#: 
-msgid "Max. 32MB"
-msgstr "最大 32MB"
-
-#: 
-msgid "Discard"
-msgstr "破棄"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3289,6 @@ msgid "Self Registration"
 msgstr "セルフ登録"
 
 #: 
-msgid "No coordinates found"
-msgstr "座標が見つかりませんでした"
-
-#: 
 msgid "Anonymous"
 msgstr "匿名"
 
@@ -3517,10 +3441,6 @@ msgid "with this property..."
 msgstr "このプロパティで..."
 
 #: 
-msgid "Church Email"
-msgstr "教会メール"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "ディレクトリにこれらの分類のみを含める(カンマ区切り)"
 
@@ -3581,14 +3501,6 @@ msgid "First month of the fiscal year"
 msgstr "会計年度の最初の月"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "教会の緯度(Googleマップの中心に使用)"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "教会の経度(Googleマップの中心に使用)"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "人物エディタで友人日付の入力を無効にするには、trueを設定します。人物エディタで友人日付の入力を有効にするには、falseを設定します。"
 
@@ -3635,22 +3547,6 @@ msgstr "左マージン (1 = 1/100インチ)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "線の太さ (1 = 1/100インチ)"
-
-#: 
-msgid "Church City"
-msgstr "教会市区町村"
-
-#: 
-msgid "Church State"
-msgstr "教会都道府県"
-
-#: 
-msgid "Church Zip"
-msgstr "教会郵便番号"
-
-#: 
-msgid "Church Phone"
-msgstr "教会電話"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -5959,10 +5855,6 @@ msgid "system user login reset"
 msgstr "システムユーザーログインがリセットされました"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "地理情報のない家族"
-
-#: 
 msgid "Notification for"
 msgstr "の通知"
 
@@ -6099,10 +5991,6 @@ msgid "Text Cart"
 msgstr "テキストカート"
 
 #: 
-msgid "Your Church's Website"
-msgstr "教会のウェブサイト"
-
-#: 
 msgid "Self Verification"
 msgstr "自己確認"
 
@@ -6147,16 +6035,8 @@ msgid "Checking Cart Status"
 msgstr "カートのステータスを確認中"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "このグループのすべてのメンバーがカートに入っています"
-
-#: 
 msgid "Remove all"
 msgstr "すべて削除"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "このグループのすべてのメンバーがカートに入っているわけではありません"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6560,10 +6440,6 @@ msgstr "人物の"
 #: 
 msgid "System Upgrade"
 msgstr "システムアップグレード"
-
-#: 
-msgid "Upgrade Required"
-msgstr "アップグレードが必要です"
 
 #: 
 msgid "Help & Manual"
@@ -7195,10 +7071,6 @@ msgstr "姓, 名, ミドルネーム"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "住所のジオコーディングに使用されるGoogle Maps APIキー"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8746,10 +8618,6 @@ msgid "Current Software Version"
 msgstr "現在のソフトウェアバージョン"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "データベースのアップグレードが正常に完了しました。ダッシュボードにリダイレクト中..."
-
-#: 
 msgid "Date & Time"
 msgstr "日付と時刻"
 
@@ -8909,14 +8777,6 @@ msgstr "説教/イベントテキスト"
 #: 
 msgid "Unclassified"
 msgstr "未分類"
-
-#: 
-msgid "Upgrade database now"
-msgstr "今すぐデータベースをアップグレード"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRMインストールは、インストールされたソフトウェアバージョンに合わせてデータベースのアップグレードが必要です。この操作はスキーマとデータの移行を適用します。続行する前に最近のバックアップがあることを確認してください。"
 
 #: 
 msgid "added to this event"
@@ -10084,10 +9944,6 @@ msgid "Your fiscal year starts in month"
 msgstr "あなたの会計年度は月に始まります"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "郵便番号"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "アップグレードにはZipArchive拡張が必要です"
 
@@ -10983,16 +10839,6 @@ msgstr "予定"
 msgid "Failed to delete kiosk"
 msgstr "キオスクの削除に失敗しました"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "会計年度。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "登録済み学生グループ"
-
 #: 
 msgid "Here"
 msgstr "こちら"
@@ -11044,16 +10890,6 @@ msgstr "お迎えリクエスト"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "できるだけ早く教室にお越しください。"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "選択した会計年度の各基金の家族名別誓約概要"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "登録済み学生"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12294,4 +12130,256 @@ msgstr "すべてのユーザーに二段階認証への登録を要求する"
 #: 
 msgid "Select the desired event"
 msgstr "目的のイベントを選択してください"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "住所が保存されると、ここに地図が表示されます。座標は自動的に検出されます — 手動入力は不要です。"
+
+#: 
+msgid "Active Groups"
+msgstr "アクティブなグループ"
+
+#: 
+msgid "Add New Group"
+msgstr "新しいグループを追加"
+
+#: 
+msgid "Add all to cart"
+msgstr "全員をリストに追加"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "住所を使用して座標を自動検出"
+
+#: 
+msgid "Basic Information"
+msgstr "基本情報"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "教会情報を正常に保存しました。"
+
+#: 
+msgid "Church name is required."
+msgstr "教会名は必須です。"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "教会名は必須です。基本情報タブを完成させてください。"
+
+#: 
+msgid "City is required."
+msgstr "市区町村は必須です。"
+
+#: 
+msgid "Class Overview"
+msgstr "クラスの概要"
+
+#: 
+msgid "Clear filter"
+msgstr "フィルターをクリア"
+
+#: 
+msgid "Configuration item not found"
+msgstr "設定項目が見つかりません"
+
+#: 
+msgid "Country is required."
+msgstr "国は必須です。"
+
+#: 
+msgid "Discord Chat"
+msgstr "Discordチャット"
+
+#: 
+msgid "Display Preview"
+msgstr "プレビューを表示"
+
+#: 
+msgid "Email (To)"
+msgstr "メール（宛先）"
+
+#: 
+msgid "Email address is required."
+msgstr "メールアドレスは必須です。"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "この家族にはジオコーディング用の住所がありません"
+
+#: 
+msgid "Father"
+msgstr "父"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "ジオコーディングされた座標："
+
+#: 
+msgid "Geocoding failed"
+msgstr "ジオコーディングに失敗しました"
+
+#: 
+msgid "Geocoding successful"
+msgstr "ジオコーディングに成功しました"
+
+#: 
+msgid "In Cart"
+msgstr "リスト内"
+
+#: 
+msgid "Inactive Groups"
+msgstr "非アクティブなグループ"
+
+#: 
+msgid "Kids Email"
+msgstr "子どものメール"
+
+#: 
+msgid "Language & Localization"
+msgstr "言語とローカライゼーション"
+
+#: 
+msgid "Location & Map"
+msgstr "場所と地図"
+
+#: 
+msgid "Location Information"
+msgstr "場所情報"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "教会の連絡用メインメールアドレス。"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "教会のメイン連絡先電話番号。"
+
+#: 
+msgid "Male / Female"
+msgstr "男性 / 女性"
+
+#: 
+msgid "Map"
+msgstr "地図"
+
+#: 
+msgid "Mother"
+msgstr "母"
+
+#: 
+msgid "No members"
+msgstr "メンバーなし"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "任意。教会のウェブサイトのURL。"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "保護者/後見人"
+
+#: 
+msgid "Phone number is required."
+msgstr "電話番号は必須です。"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "座標を更新"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "必須。すべてのレポートおよび連絡で使用されます。"
+
+#: 
+msgid "Save Church Information"
+msgstr "教会情報を保存"
+
+#: 
+msgid "Search or select..."
+msgstr "検索または選択..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCCフィールドに受信者を入れてメールを送信（お互いに非表示）"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "宛先フィールドに受信者を入れてメールを送信"
+
+#: 
+msgid "State is required."
+msgstr "都道府県は必須です。"
+
+#: 
+msgid "Street Address"
+msgstr "住所"
+
+#: 
+msgid "Street address is required."
+msgstr "住所は必須です。"
+
+#: 
+msgid "Student Information"
+msgstr "生徒情報"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "教会のシステム言語。日付形式、電話形式、その他のローカライゼーションに影響します。"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "教会情報はレポートおよびディレクトリにこのように表示されます。"
+
+#: 
+msgid "Time Zone"
+msgstr "タイムゾーン"
+
+#: 
+msgid "Toggle overview"
+msgstr "概要を切り替え"
+
+#: 
+msgid "Total Enrolled"
+msgstr "登録者数合計"
+
+#: 
+msgid "Total Groups"
+msgstr "グループ数合計"
+
+#: 
+msgid "Total Memberships"
+msgstr "メンバーシップ数合計"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "保存のたびに自動的に更新されます。"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "イベントのスケジュールとレポート時間に使用されます。"
+
+#: 
+msgid "View Full Details"
+msgstr "詳細を表示"
+
+#: 
+msgid "View Profile"
+msgstr "プロフィールを表示"
+
+#: 
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: 
+msgid "ZIP code is required."
+msgstr "郵便番号は必須です。"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 国を選択 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 都道府県を選択 —"
 

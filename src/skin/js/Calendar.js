@@ -399,17 +399,32 @@ function initializeCalendar() {
     window.CRM.fullcalendar.destroy();
   }
 
+  var mobileHeaderToolbar = {
+    start: "prev,next",
+    center: "title",
+    end: "today",
+  };
+  var desktopHeaderToolbar = {
+    start: "prev,next today",
+    center: "title",
+    end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+  };
+  var mobileFooterToolbar = { end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth" };
+
   // initialize the calendar
   // -----------------------------------------------------------------
   window.CRM.fullcalendar = new FullCalendar.Calendar(document.getElementById("calendar"), {
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
-    headerToolbar: {
-      start: "prev,next today",
-      center: "title",
-      end: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+    headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
+    footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
+    contentHeight: "auto",
+    windowResizeDelay: 200,
+    windowResize: function () {
+      var nowMobile = window.innerWidth < 768;
+      window.CRM.fullcalendar.setOption("headerToolbar", nowMobile ? mobileHeaderToolbar : desktopHeaderToolbar);
+      window.CRM.fullcalendar.setOption("footerToolbar", nowMobile ? mobileFooterToolbar : false);
     },
-    height: 600,
     selectable: true,
     editable: window.CRM.calendarJSArgs.isModifiable,
     eventDrop: window.moveEventModal.handleEventDrop,

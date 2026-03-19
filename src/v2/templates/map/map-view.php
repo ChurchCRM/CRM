@@ -27,9 +27,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= $sRootPath ?>/GeoPage.php" class="btn btn-sm btn-info">
                 <i class="fa-solid fa-globe"></i> <?= gettext('Family Geographic') ?>
             </a>
-            <a href="<?= $sRootPath ?>/UpdateAllLatLon.php" class="btn btn-sm btn-warning">
-                <i class="fa-solid fa-map-pin"></i> <?= gettext('Update All Family Coordinates') ?>
-            </a>
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
             <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
                 <i class="fa-solid fa-cog"></i> <?= gettext('Map Settings') ?>

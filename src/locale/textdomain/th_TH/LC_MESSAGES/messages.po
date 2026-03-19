@@ -487,10 +487,6 @@ msgid "No"
 msgstr "ไม่"
 
 #: 
-msgid "Developer Chat"
-msgstr "แชทนักพัฒนา"
-
-#: 
 msgid "Event Checkin"
 msgstr "เช็คอินกิจกรรม"
 
@@ -1846,10 +1842,6 @@ msgid "Family Geographic"
 msgstr "ภูมิศาสตร์ครอบครัว"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "อัปเดตพิกัดครอบครัวทั้งหมด"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "โอกาสอาสาสมัคร"
 
@@ -2516,10 +2508,6 @@ msgid "Calendar Year"
 msgstr "ปีปฏิทิน"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "อัปเดตละติจูดและลองจิจูด"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "การยืนยันการลบผู้ใช้"
 
@@ -3072,14 +3060,6 @@ msgid "Teachers"
 msgstr "ครู"
 
 #: 
-msgid "Send Message"
-msgstr "ส่งข้อความ"
-
-#: 
-msgid "Quick Status"
-msgstr "สถานะด่วน"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "วันเกิดตามเดือน"
 
@@ -3094,58 +3074,6 @@ msgstr "มือถือ"
 #: 
 msgid "Home Address"
 msgstr "ที่อยู่บ้าน"
-
-#: 
-msgid "Dad Name"
-msgstr "ชื่อพ่อ"
-
-#: 
-msgid "Dad Mobile"
-msgstr "มือถือพ่อ"
-
-#: 
-msgid "Dad Email"
-msgstr "อีเมลพ่อ"
-
-#: 
-msgid "Mom Name"
-msgstr "ชื่อแม่"
-
-#: 
-msgid "Mom Mobile"
-msgstr "มือถือแม่"
-
-#: 
-msgid "Mom Email"
-msgstr "อีเมลแม่"
-
-#: 
-msgid "Compose New Message"
-msgstr "เขียนข้อความใหม่"
-
-#: 
-msgid "Kids Emails"
-msgstr "อีเมลเด็ก"
-
-#: 
-msgid "Parents Emails"
-msgstr "อีเมลผู้ปกครอง"
-
-#: 
-msgid "Teachers Emails"
-msgstr "อีเมลครู"
-
-#: 
-msgid "Attachment"
-msgstr "ไฟล์แนบ"
-
-#: 
-msgid "Max. 32MB"
-msgstr "สูงสุด 32MB"
-
-#: 
-msgid "Discard"
-msgstr "ยกเลิก"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3372,10 +3300,6 @@ msgid "Self Registration"
 msgstr "ลงทะเบียนด้วยตนเอง"
 
 #: 
-msgid "No coordinates found"
-msgstr "ไม่พบพิกัด"
-
-#: 
 msgid "Anonymous"
 msgstr "ไม่ระบุชื่อ"
 
@@ -3528,10 +3452,6 @@ msgid "with this property..."
 msgstr "กับคุณสมบัตินี้..."
 
 #: 
-msgid "Church Email"
-msgstr "อีเมลคริสตจักร"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "รวมเฉพาะการจัดประเภทเหล่านี้ในไดเรกทอรี คั่นด้วยคอมมา"
 
@@ -3592,14 +3512,6 @@ msgid "First month of the fiscal year"
 msgstr "เดือนแรกของปีงบประมาณ"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "ละติจูดของคริสตจักร ใช้เพื่อกำหนดศูนย์กลางแผนที่ Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "ลองจิจูดของคริสตจักร ใช้เพื่อกำหนดศูนย์กลางแผนที่ Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "ตั้งเป็นจริงเพื่อปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล ตั้งเป็นเท็จเพื่อเปิดการป้อนวันที่เพื่อนในตัวแก้ไขบุคคล"
 
@@ -3646,22 +3558,6 @@ msgstr "ขอบซ้าย (1 = 1/100 นิ้ว)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "ความหนาของเส้น (1 = 1/100 นิ้ว"
-
-#: 
-msgid "Church City"
-msgstr "เมืองคริสตจักร"
-
-#: 
-msgid "Church State"
-msgstr "รัฐคริสตจักร"
-
-#: 
-msgid "Church Zip"
-msgstr "รหัสไปรษณีย์คริสตจักร"
-
-#: 
-msgid "Church Phone"
-msgstr "โทรศัพท์คริสตจักร"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -5970,10 +5866,6 @@ msgid "system user login reset"
 msgstr "รีเซ็ตการเข้าสู่ระบบผู้ใช้ระบบแล้ว"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "ครอบครัวที่ไม่มีข้อมูลภูมิศาสตร์"
-
-#: 
 msgid "Notification for"
 msgstr "การแจ้งเตือนสำหรับ"
 
@@ -6110,10 +6002,6 @@ msgid "Text Cart"
 msgstr "ส่งข้อความตะกร้า"
 
 #: 
-msgid "Your Church's Website"
-msgstr "เว็บไซต์คริสตจักรของคุณ"
-
-#: 
 msgid "Self Verification"
 msgstr "การยืนยันตนเอง"
 
@@ -6158,16 +6046,8 @@ msgid "Checking Cart Status"
 msgstr "กำลังตรวจสอบสถานะตะกร้า"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "สมาชิกทั้งหมดของกลุ่มนี้อยู่ในตะกร้า"
-
-#: 
 msgid "Remove all"
 msgstr "ลบทั้งหมด"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "ไม่ใช่สมาชิกทั้งหมดของกลุ่มนี้อยู่ในตะกร้า"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6571,10 +6451,6 @@ msgstr "ของคน"
 #: 
 msgid "System Upgrade"
 msgstr "อัปเกรดระบบ"
-
-#: 
-msgid "Upgrade Required"
-msgstr "จำเป็นต้องอัปเกรด"
 
 #: 
 msgid "Help & Manual"
@@ -7206,10 +7082,6 @@ msgstr "นามสกุล, ชื่อจริง ชื่อกลาง
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "คีย์ API Google Maps ที่ใช้สำหรับการเข้ารหัสภูมิศาสตร์ที่อยู่"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8757,10 +8629,6 @@ msgid "Current Software Version"
 msgstr "เวอร์ชันซอฟต์แวร์ปัจจุบัน"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "อัปเกรดฐานข้อมูลสำเร็จ กำลังเปลี่ยนเส้นทางไปยังแดชบอร์ด..."
-
-#: 
 msgid "Date & Time"
 msgstr "วันที่และเวลา"
 
@@ -8920,14 +8788,6 @@ msgstr "ข้อความเทศนา / กิจกรรม"
 #: 
 msgid "Unclassified"
 msgstr "ไม่จัดประเภท"
-
-#: 
-msgid "Upgrade database now"
-msgstr "อัปเกรดฐานข้อมูลตอนนี้"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "การติดตั้ง ChurchCRM ของคุณต้องอัปเกรดฐานข้อมูลเพื่อให้ตรงกับเวอร์ชันซอฟต์แวร์ที่ติดตั้ง การดำเนินการนี้จะใช้การย้ายข้อมูลสคีมาและข้อมูล กรุณาตรวจสอบให้แน่ใจว่าคุณมีการสำรองข้อมูลล่าสุดก่อนดำเนินการ"
 
 #: 
 msgid "added to this event"
@@ -10095,10 +9955,6 @@ msgid "Your fiscal year starts in month"
 msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "รหัสไปรษณีย์"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "ต้องมีส่วนขยาย ZipArchive สำหรับการอัปเกรด"
 
@@ -10994,16 +10850,6 @@ msgstr "คาดหวัง"
 msgid "Failed to delete kiosk"
 msgstr "ลบคีออสก์ไม่สำเร็จ"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "ปีงบประมาณ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "กลุ่มนักเรียนที่ลงทะเบียน"
-
 #: 
 msgid "Here"
 msgstr "ที่นี่"
@@ -11055,16 +10901,6 @@ msgstr "คำขอรับตัว"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "กรุณาไปที่ห้องเรียนโดยเร็วที่สุด"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "สรุปคำมั่นสัญญาตามชื่อครอบครัวสำหรับแต่ละกองทุนในปีงบประมาณที่เลือก"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "นักเรียนที่ลงทะเบียน"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12305,4 +12141,256 @@ msgstr "กำหนดให้ผู้ใช้ทั้งหมดลงท
 #: 
 msgid "Select the desired event"
 msgstr "เลือกกิจกรรมที่ต้องการ"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "แผนที่จะปรากฏที่นี่เมื่อบันทึกที่อยู่แล้ว พิกัดจะถูกตรวจจับอัตโนมัติ — ไม่จำเป็นต้องป้อนข้อมูลด้วยตนเอง"
+
+#: 
+msgid "Active Groups"
+msgstr "กลุ่มที่ใช้งานอยู่"
+
+#: 
+msgid "Add New Group"
+msgstr "เพิ่มกลุ่มใหม่"
+
+#: 
+msgid "Add all to cart"
+msgstr "เพิ่มทั้งหมดไปยังรายการ"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "ตรวจจับพิกัดอัตโนมัติโดยใช้ที่อยู่"
+
+#: 
+msgid "Basic Information"
+msgstr "ข้อมูลพื้นฐาน"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "บันทึกข้อมูลคริสตจักรสำเร็จ"
+
+#: 
+msgid "Church name is required."
+msgstr "ต้องระบุชื่อคริสตจักร"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "ต้องระบุชื่อคริสตจักร กรุณากรอกข้อมูลในแท็บข้อมูลพื้นฐาน"
+
+#: 
+msgid "City is required."
+msgstr "ต้องระบุเมือง"
+
+#: 
+msgid "Class Overview"
+msgstr "ภาพรวมชั้นเรียน"
+
+#: 
+msgid "Clear filter"
+msgstr "ล้างตัวกรอง"
+
+#: 
+msgid "Configuration item not found"
+msgstr "ไม่พบรายการการกำหนดค่า"
+
+#: 
+msgid "Country is required."
+msgstr "ต้องระบุประเทศ"
+
+#: 
+msgid "Discord Chat"
+msgstr "แชท Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "แสดงตัวอย่าง"
+
+#: 
+msgid "Email (To)"
+msgstr "อีเมล (ถึง)"
+
+#: 
+msgid "Email address is required."
+msgstr "ต้องระบุที่อยู่อีเมล"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "ครอบครัวไม่มีที่อยู่สำหรับการระบุพิกัด"
+
+#: 
+msgid "Father"
+msgstr "พ่อ"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "พิกัดที่ระบุแล้ว:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "การระบุพิกัดล้มเหลว"
+
+#: 
+msgid "Geocoding successful"
+msgstr "การระบุพิกัดสำเร็จ"
+
+#: 
+msgid "In Cart"
+msgstr "ในรายการ"
+
+#: 
+msgid "Inactive Groups"
+msgstr "กลุ่มที่ไม่ได้ใช้งาน"
+
+#: 
+msgid "Kids Email"
+msgstr "อีเมลเด็ก"
+
+#: 
+msgid "Language & Localization"
+msgstr "ภาษาและการแปลภาษา"
+
+#: 
+msgid "Location & Map"
+msgstr "ที่ตั้งและแผนที่"
+
+#: 
+msgid "Location Information"
+msgstr "ข้อมูลที่ตั้ง"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "อีเมลติดต่อหลักสำหรับการสื่อสารของคริสตจักร"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "หมายเลขโทรศัพท์ติดต่อหลักของคริสตจักร"
+
+#: 
+msgid "Male / Female"
+msgstr "ชาย / หญิง"
+
+#: 
+msgid "Map"
+msgstr "แผนที่"
+
+#: 
+msgid "Mother"
+msgstr "แม่"
+
+#: 
+msgid "No members"
+msgstr "ไม่มีสมาชิก"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "ไม่บังคับ URL ของเว็บไซต์คริสตจักรของคุณ"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "ผู้ปกครอง/ผู้ดูแล"
+
+#: 
+msgid "Phone number is required."
+msgstr "ต้องระบุหมายเลขโทรศัพท์"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "รีเฟรชพิกัด"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "จำเป็น ใช้ในรายงานและการสื่อสารทั้งหมด"
+
+#: 
+msgid "Save Church Information"
+msgstr "บันทึกข้อมูลคริสตจักร"
+
+#: 
+msgid "Search or select..."
+msgstr "ค้นหาหรือเลือก..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "ส่งอีเมลพร้อมผู้รับในช่อง BCC (ซ่อนจากกันและกัน)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "ส่งอีเมลพร้อมผู้รับในช่องถึง"
+
+#: 
+msgid "State is required."
+msgstr "ต้องระบุจังหวัด"
+
+#: 
+msgid "Street Address"
+msgstr "ที่อยู่"
+
+#: 
+msgid "Street address is required."
+msgstr "ต้องระบุที่อยู่"
+
+#: 
+msgid "Student Information"
+msgstr "ข้อมูลนักเรียน"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "ภาษาระบบสำหรับคริสตจักร ส่งผลต่อรูปแบบวันที่ รูปแบบโทรศัพท์ และการแปลภาษาอื่นๆ"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "ข้อมูลคริสตจักรของคุณจะปรากฏในรายงานและไดเรกทอรีแบบนี้"
+
+#: 
+msgid "Time Zone"
+msgstr "เขตเวลา"
+
+#: 
+msgid "Toggle overview"
+msgstr "สลับภาพรวม"
+
+#: 
+msgid "Total Enrolled"
+msgstr "ลงทะเบียนทั้งหมด"
+
+#: 
+msgid "Total Groups"
+msgstr "กลุ่มทั้งหมด"
+
+#: 
+msgid "Total Memberships"
+msgstr "การเป็นสมาชิกทั้งหมด"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "อัปเดตอัตโนมัติในทุกการบันทึก"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "ใช้สำหรับการกำหนดเวลากิจกรรมและการรายงานเวลา"
+
+#: 
+msgid "View Full Details"
+msgstr "ดูรายละเอียดทั้งหมด"
+
+#: 
+msgid "View Profile"
+msgstr "ดูโปรไฟล์"
+
+#: 
+msgid "Website"
+msgstr "เว็บไซต์"
+
+#: 
+msgid "ZIP code is required."
+msgstr "ต้องระบุรหัสไปรษณีย์"
+
+#: 
+msgid "— Select Country —"
+msgstr "— เลือกประเทศ —"
+
+#: 
+msgid "— Select State —"
+msgstr "— เลือกจังหวัด —"
 

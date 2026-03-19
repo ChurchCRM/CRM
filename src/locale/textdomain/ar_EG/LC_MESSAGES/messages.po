@@ -480,10 +480,6 @@ msgid "No"
 msgstr "لا"
 
 #: 
-msgid "Developer Chat"
-msgstr "مطور الدردشة"
-
-#: 
 msgid "Event Checkin"
 msgstr "تسجيل دخول الحدث"
 
@@ -1862,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "الجغرافية الأسرة"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "تحديث جميع الاحداثيات الأسرة"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "فرص التطوع"
 
@@ -2534,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "تقويم سنوي"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "تحديث خط العرض والطول"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "العضو تأكيد حذف"
 
@@ -3095,14 +3083,6 @@ msgid "Teachers"
 msgstr "الخدام"
 
 #: 
-msgid "Send Message"
-msgstr "ارسال رساله"
-
-#: 
-msgid "Quick Status"
-msgstr "الحالة سريعة"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "تواريخ الميلاد بالشهر"
 
@@ -3117,58 +3097,6 @@ msgstr "موبايل"
 #: 
 msgid "Home Address"
 msgstr "عنوان المنزل"
-
-#: 
-msgid "Dad Name"
-msgstr "اسم أبي"
-
-#: 
-msgid "Dad Mobile"
-msgstr "أبي موبايل"
-
-#: 
-msgid "Dad Email"
-msgstr "ايميل الاب"
-
-#: 
-msgid "Mom Name"
-msgstr "اسم الام"
-
-#: 
-msgid "Mom Mobile"
-msgstr "موبايل الام"
-
-#: 
-msgid "Mom Email"
-msgstr "ايميل الام"
-
-#: 
-msgid "Compose New Message"
-msgstr "إنشاء رسالة جديدة"
-
-#: 
-msgid "Kids Emails"
-msgstr "رسائل البريد الإلكتروني الاطفال"
-
-#: 
-msgid "Parents Emails"
-msgstr "ايميل الوالدين"
-
-#: 
-msgid "Teachers Emails"
-msgstr "ايميل الخدام"
-
-#: 
-msgid "Attachment"
-msgstr "مرفقات"
-
-#: 
-msgid "Max. 32MB"
-msgstr "ماكس. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "تجاهل"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3395,10 +3323,6 @@ msgid "Self Registration"
 msgstr "التسجيل الذاتي"
 
 #: 
-msgid "No coordinates found"
-msgstr "لم يتم العثور على الإحداثيات"
-
-#: 
 msgid "Anonymous"
 msgstr "مجهول"
 
@@ -3554,10 +3478,6 @@ msgid "with this property..."
 msgstr "مع هذه الخاصية ..."
 
 #: 
-msgid "Church Email"
-msgstr "الكنيسة البريد الإلكتروني"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "تشمل فقط هذه التصنيفات في الدليل، مفصولة بفواصل"
@@ -3620,14 +3540,6 @@ msgid "First month of the fiscal year"
 msgstr "الشهر الأول من السنة المالية"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "خط العرض الكنيسة، وتستخدم لتوسيط خريطة جوجل"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "خط الطول للكنيسة، وتستخدم لتوسيط خريطة جوجل"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "تعيين وفيا لتعطيل دخول صديق التسجيل في محرر شخص. مجموعة كاذبة لتمكين دخول صديق التسجيل في محرر شخص."
 
@@ -3674,22 +3586,6 @@ msgstr "الهامش الأيسر (1 = 1 / 100th بوصة)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "خط سمك (1 = 1 / 100th بوصة"
-
-#: 
-msgid "Church City"
-msgstr "كنيسة مدينة"
-
-#: 
-msgid "Church State"
-msgstr "الكنيسة الرسمية للدولة"
-
-#: 
-msgid "Church Zip"
-msgstr "الرمز البريدي الكنيسة"
-
-#: 
-msgid "Church Phone"
-msgstr "الكنيسة الهاتف"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6004,10 +5900,6 @@ msgid "system user login reset"
 msgstr "إعادة تعيين تسجيل دخول المستخدم نظام"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "عائلات دون معلومات الجغرافية"
-
-#: 
 msgid "Notification for"
 msgstr "التبليغ عن"
 
@@ -6145,10 +6037,6 @@ msgid "Text Cart"
 msgstr "سلة النص"
 
 #: 
-msgid "Your Church's Website"
-msgstr "موقع كنيسة الخاص بك"
-
-#: 
 msgid "Self Verification"
 msgstr "التأكيد الذاتي"
 
@@ -6193,16 +6081,8 @@ msgid "Checking Cart Status"
 msgstr "التحقق من حالة العربة"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "جميع أعضاء هذه المجموعة في العربة"
-
-#: 
 msgid "Remove all"
 msgstr "ازالة الكل"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "ليس كل أعضاء هذه المجموعة في العربة"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6606,10 +6486,6 @@ msgstr "من الناس. من العامة"
 #: 
 msgid "System Upgrade"
 msgstr "ترقية نظام"
-
-#: 
-msgid "Upgrade Required"
-msgstr "مطلوب ترقية"
 
 #: 
 msgid "Help & Manual"
@@ -7251,10 +7127,6 @@ msgstr "الاسم الاخير الاسم الاول والاسم الاوسط"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "الرجاء التأكد من تعطيل 2 عامل أصيل لهذا المستخدم"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "مفتاح API لخرائط Google المستخدم لعناوين الترميز الجغرافي"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8808,10 +8680,6 @@ msgid "Current Software Version"
 msgstr "إصدار البرنامج الحالي"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "اكتمل ترقية قاعدة البيانات بنجاح. إعادة التوجيه إلى لوحة التحكم..."
-
-#: 
 msgid "Date & Time"
 msgstr "التاريخ والوقت"
 
@@ -8971,14 +8839,6 @@ msgstr "الخطبة / نص الحدث"
 #: 
 msgid "Unclassified"
 msgstr "غير مصنف"
-
-#: 
-msgid "Upgrade database now"
-msgstr "ترقية قاعدة البيانات الآن"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "يحتاج تثبيت ChurchCRM الخاص بك إلى ترقية قاعدة البيانات لمطابقة إصدار البرنامج المثبت. ستطبق هذه العملية هجرات المخطط والبيانات. يرجى التأكد من وجود نسخة احتياطية حديثة قبل المتابعة."
 
 #: 
 msgid "added to this event"
@@ -10151,10 +10011,6 @@ msgid "Your fiscal year starts in month"
 msgstr "تبدأ السنة المالية الخاصة بك في الشهر"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "الرمز البريدي"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "ملحق ZipArchive مطلوب للترقيات"
 
@@ -11070,16 +10926,6 @@ msgstr "متوقع"
 msgid "Failed to delete kiosk"
 msgstr "فشل في حذف الكشك"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "السنة المالية."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "مجموعة الطلاب المسجلين"
-
 #: 
 msgid "Here"
 msgstr "هنا"
@@ -11131,16 +10977,6 @@ msgstr "طلب استلام"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "يرجى التوجه إلى الفصل في أقرب وقت ممكن."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "ملخص التعهدات حسب اسم العائلة لكل صندوق للسنة المالية المحددة"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "الطلاب المسجلون"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12386,4 +12222,256 @@ msgstr "طلب من جميع المستخدمين التسجيل في المصا
 #: 
 msgid "Select the desired event"
 msgstr "حدد الحدث المطلوب"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "ستظهر خريطة هنا بمجرد حفظ عنوان الشارع. يتم اكتشاف الإحداثيات تلقائياً — لا يلزم الإدخال اليدوي."
+
+#: 
+msgid "Active Groups"
+msgstr "المجموعات النشطة"
+
+#: 
+msgid "Add New Group"
+msgstr "إضافة مجموعة جديدة"
+
+#: 
+msgid "Add all to cart"
+msgstr "إضافة الجميع إلى القائمة"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "اكتشاف الإحداثيات تلقائياً باستخدام العنوان"
+
+#: 
+msgid "Basic Information"
+msgstr "المعلومات الأساسية"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "تم حفظ معلومات الكنيسة بنجاح."
+
+#: 
+msgid "Church name is required."
+msgstr "اسم الكنيسة مطلوب."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "اسم الكنيسة مطلوب. يرجى إكمال تبويب المعلومات الأساسية."
+
+#: 
+msgid "City is required."
+msgstr "المدينة مطلوبة."
+
+#: 
+msgid "Class Overview"
+msgstr "نظرة عامة على الفصل"
+
+#: 
+msgid "Clear filter"
+msgstr "مسح الفلتر"
+
+#: 
+msgid "Configuration item not found"
+msgstr "عنصر التكوين غير موجود"
+
+#: 
+msgid "Country is required."
+msgstr "الدولة مطلوبة."
+
+#: 
+msgid "Discord Chat"
+msgstr "دردشة Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "عرض المعاينة"
+
+#: 
+msgid "Email (To)"
+msgstr "البريد الإلكتروني (إلى)"
+
+#: 
+msgid "Email address is required."
+msgstr "عنوان البريد الإلكتروني مطلوب."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "العائلة ليس لها عنوان شارع للترميز الجغرافي"
+
+#: 
+msgid "Father"
+msgstr "الأب"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "الإحداثيات الجغرافية:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "فشل الترميز الجغرافي"
+
+#: 
+msgid "Geocoding successful"
+msgstr "تم الترميز الجغرافي بنجاح"
+
+#: 
+msgid "In Cart"
+msgstr "في القائمة"
+
+#: 
+msgid "Inactive Groups"
+msgstr "المجموعات غير النشطة"
+
+#: 
+msgid "Kids Email"
+msgstr "البريد الإلكتروني للأطفال"
+
+#: 
+msgid "Language & Localization"
+msgstr "اللغة والتعريب"
+
+#: 
+msgid "Location & Map"
+msgstr "الموقع والخريطة"
+
+#: 
+msgid "Location Information"
+msgstr "معلومات الموقع"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "البريد الإلكتروني الرئيسي للتواصل مع الكنيسة."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "رقم الهاتف الرئيسي للكنيسة."
+
+#: 
+msgid "Male / Female"
+msgstr "ذكر / أنثى"
+
+#: 
+msgid "Map"
+msgstr "خريطة"
+
+#: 
+msgid "Mother"
+msgstr "الأم"
+
+#: 
+msgid "No members"
+msgstr "لا يوجد أعضاء"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "اختياري. رابط موقع كنيستك."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "الوالدان/الأولياء"
+
+#: 
+msgid "Phone number is required."
+msgstr "رقم الهاتف مطلوب."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "تحديث الإحداثيات"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "مطلوب. يُستخدم في جميع التقارير والاتصالات."
+
+#: 
+msgid "Save Church Information"
+msgstr "حفظ معلومات الكنيسة"
+
+#: 
+msgid "Search or select..."
+msgstr "بحث أو اختيار..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "إرسال بريد إلكتروني مع المستلمين في حقل النسخة المخفية (مخفيون عن بعضهم)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "إرسال بريد إلكتروني مع المستلمين في حقل إلى"
+
+#: 
+msgid "State is required."
+msgstr "المحافظة مطلوبة."
+
+#: 
+msgid "Street Address"
+msgstr "عنوان الشارع"
+
+#: 
+msgid "Street address is required."
+msgstr "عنوان الشارع مطلوب."
+
+#: 
+msgid "Student Information"
+msgstr "معلومات الطالب"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "لغة النظام للكنيسة. تؤثر على تنسيقات التاريخ والهاتف وغيرها من التعريبات."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "هكذا ستظهر معلومات كنيستك في التقارير والأدلة."
+
+#: 
+msgid "Time Zone"
+msgstr "المنطقة الزمنية"
+
+#: 
+msgid "Toggle overview"
+msgstr "تبديل النظرة العامة"
+
+#: 
+msgid "Total Enrolled"
+msgstr "إجمالي المسجلين"
+
+#: 
+msgid "Total Groups"
+msgstr "إجمالي المجموعات"
+
+#: 
+msgid "Total Memberships"
+msgstr "إجمالي الأعضاء"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "يُحدَّث تلقائياً عند كل حفظ."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "يُستخدم لجدولة الفعاليات وأوقات التقارير."
+
+#: 
+msgid "View Full Details"
+msgstr "عرض التفاصيل الكاملة"
+
+#: 
+msgid "View Profile"
+msgstr "عرض الملف الشخصي"
+
+#: 
+msgid "Website"
+msgstr "الموقع الإلكتروني"
+
+#: 
+msgid "ZIP code is required."
+msgstr "الرمز البريدي مطلوب."
+
+#: 
+msgid "— Select Country —"
+msgstr "— اختر الدولة —"
+
+#: 
+msgid "— Select State —"
+msgstr "— اختر المحافظة —"
 

@@ -499,10 +499,6 @@ msgid "No"
 msgstr "Nej"
 
 #: 
-msgid "Developer Chat"
-msgstr "Utvecklarchatt"
-
-#: 
 msgid "Event Checkin"
 msgstr "Evenemang inchekning"
 
@@ -1927,10 +1923,6 @@ msgid "Family Geographic"
 msgstr "Familj geografi"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Uppdatera alla familj koordinat"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Volontärmöjligheter"
 
@@ -2625,10 +2617,6 @@ msgid "Calendar Year"
 msgstr "Kalender år"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Uppdatera Latitude &amp; Longitud"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bekräfta radera användare"
 
@@ -3213,14 +3201,6 @@ msgid "Teachers"
 msgstr "lärare"
 
 #: 
-msgid "Send Message"
-msgstr "Skicka meddelande"
-
-#: 
-msgid "Quick Status"
-msgstr "Snabb status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Födelsedagar per månad"
 
@@ -3235,58 +3215,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Hemadress"
-
-#: 
-msgid "Dad Name"
-msgstr "Pappa Namn"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Pappa mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Pappa e-post"
-
-#: 
-msgid "Mom Name"
-msgstr "Mamma Namn"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mamma mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mamma e-post"
-
-#: 
-msgid "Compose New Message"
-msgstr "Skriv ett nytt meddelande"
-
-#: 
-msgid "Kids Emails"
-msgstr "Barnemails"
-
-#: 
-msgid "Parents Emails"
-msgstr "Föräldrar e-post"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Lärares e-post"
-
-#: 
-msgid "Attachment"
-msgstr "Anknytning"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Kassera"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3520,10 +3448,6 @@ msgid "Self Registration"
 msgstr "Självregistrering"
 
 #: 
-msgid "No coordinates found"
-msgstr "Inga koordinater hittades"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonym"
 
@@ -3679,10 +3603,6 @@ msgid "with this property..."
 msgstr "med den här egenskapen ..."
 
 #: 
-msgid "Church Email"
-msgstr "Kyrkans e-post"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Inkludera endast dessa klassificeringar i katalogen, kommaseparerad"
@@ -3745,14 +3665,6 @@ msgid "First month of the fiscal year"
 msgstr "Första månaden av räkenskapsåret"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Kyrkans bredd, används för att centrera Google-kartan"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kyrkans longitud, används för att centrera Google-kartan"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Ställ in true för att inaktivera att ange Friend Date i Person Editor. Ställ in falskt för att aktivera att ange Friend Date i Person Editor."
 
@@ -3799,22 +3711,6 @@ msgstr "Vänster marginal (1 = 1 / 100th inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Linjetjocklek (1 = 1 / 100th inch)"
-
-#: 
-msgid "Church City"
-msgstr "Church City"
-
-#: 
-msgid "Church State"
-msgstr "Church State"
-
-#: 
-msgid "Church Zip"
-msgstr "Church Zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Kyrktelefon"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6129,10 +6025,6 @@ msgid "system user login reset"
 msgstr "återställning av systemanvändares system"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familjer utan geoinformation"
-
-#: 
 msgid "Notification for"
 msgstr "Meddelande om"
 
@@ -6270,10 +6162,6 @@ msgid "Text Cart"
 msgstr "Textvagn"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Din kyrkas webbplats"
-
-#: 
 msgid "Self Verification"
 msgstr "Självverifiering"
 
@@ -6318,16 +6206,8 @@ msgid "Checking Cart Status"
 msgstr "Kontrollera kundvagnens status"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alla medlemmar i denna grupp är i vagnen"
-
-#: 
 msgid "Remove all"
 msgstr "Ta bort alla"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Inte alla medlemmar i denna grupp är i vagnen"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6731,10 +6611,6 @@ msgstr "Av personer"
 #: 
 msgid "System Upgrade"
 msgstr "Systemuppgradering"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Uppgradering krävs"
 
 #: 
 msgid "Help & Manual"
@@ -7375,10 +7251,6 @@ msgstr "Efternamn, Förstanamn andra namn"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bekräfta att du avaktiverar 2 Factor Auth för denna användare"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API-nyckel som används för geokodningsadresser"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8928,10 +8800,6 @@ msgid "Current Software Version"
 msgstr "Nuvarande programvaruversion"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Databasuppgraderingen slutfördes. Omdirigerar till panelen..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum & Tid"
 
@@ -9091,14 +8959,6 @@ msgstr "Prediko- / händelsetext"
 #: 
 msgid "Unclassified"
 msgstr "Oklassificerad"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Uppgradera databas nu"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Din ChurchCRM-installation behöver en databasuppgradering för att matcha den installerade programvaruversionen. Denna åtgärd kommer att tillämpa schema- och datamigreringar. Se till att du har en aktuell säkerhetskopia innan du fortsätter."
 
 #: 
 msgid "added to this event"
@@ -10267,10 +10127,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Ditt räkenskapsår börjar i månad"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Postnummer"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-tillägget krävs för uppgraderingar"
 
@@ -11170,16 +11026,6 @@ msgstr "Förväntat"
 msgid "Failed to delete kiosk"
 msgstr "Det gick inte att ta bort kiosken"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupp av registrerade elever"
-
 #: 
 msgid "Here"
 msgstr "Här"
@@ -11231,16 +11077,6 @@ msgstr "Hämtningsbegäran"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Vänligen gå till klassrummet så snart som möjligt."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Löftessammanfattning per familjenamn för varje fond för valt räkenskapsår"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerade elever"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12482,4 +12318,256 @@ msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
 #: 
 msgid "Select the desired event"
 msgstr "Välj önskat evenemang"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "En karta visas här när en gatuadress sparas. Koordinater detekteras automatiskt — ingen manuell inmatning krävs."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktiva grupper"
+
+#: 
+msgid "Add New Group"
+msgstr "Lägg till ny grupp"
+
+#: 
+msgid "Add all to cart"
+msgstr "Lägg till alla i urvalet"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Detektera koordinater automatiskt med adress"
+
+#: 
+msgid "Basic Information"
+msgstr "Grundinformation"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Församlingsinformation sparad."
+
+#: 
+msgid "Church name is required."
+msgstr "Församlingsnamn är obligatoriskt."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Församlingsnamn är obligatoriskt. Fyll i fliken Grundinformation."
+
+#: 
+msgid "City is required."
+msgstr "Stad är obligatoriskt."
+
+#: 
+msgid "Class Overview"
+msgstr "Klassöversikt"
+
+#: 
+msgid "Clear filter"
+msgstr "Rensa filter"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurationsobjekt hittades inte"
+
+#: 
+msgid "Country is required."
+msgstr "Land är obligatoriskt."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chatt"
+
+#: 
+msgid "Display Preview"
+msgstr "Visa förhandsgranskning"
+
+#: 
+msgid "Email (To)"
+msgstr "E-post (Till)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-postadress är obligatorisk."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familjen saknar gatuadress för geokodning"
+
+#: 
+msgid "Father"
+msgstr "Far"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokodade koordinater:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokodning misslyckades"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokodning lyckades"
+
+#: 
+msgid "In Cart"
+msgstr "I urvalet"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inaktiva grupper"
+
+#: 
+msgid "Kids Email"
+msgstr "Barns e-post"
+
+#: 
+msgid "Language & Localization"
+msgstr "Språk och lokalisering"
+
+#: 
+msgid "Location & Map"
+msgstr "Plats och karta"
+
+#: 
+msgid "Location Information"
+msgstr "Platsinformation"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Primär kontakt-e-post för församlingskommunikation."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Primärt telefonnummer för församlingen."
+
+#: 
+msgid "Male / Female"
+msgstr "Man / Kvinna"
+
+#: 
+msgid "Map"
+msgstr "Karta"
+
+#: 
+msgid "Mother"
+msgstr "Mor"
+
+#: 
+msgid "No members"
+msgstr "Inga medlemmar"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Valfritt. URL till din församlings webbplats."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Föräldrar/Vårdnadshavare"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefonnummer är obligatoriskt."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Uppdatera koordinater"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Obligatoriskt. Används på alla rapporter och kommunikationer."
+
+#: 
+msgid "Save Church Information"
+msgstr "Spara församlingsinformation"
+
+#: 
+msgid "Search or select..."
+msgstr "Sök eller välj..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Skicka e-post med mottagare i BCC-fältet (dolda för varandra)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Skicka e-post med mottagare i Till-fältet"
+
+#: 
+msgid "State is required."
+msgstr "Län är obligatoriskt."
+
+#: 
+msgid "Street Address"
+msgstr "Gatuadress"
+
+#: 
+msgid "Street address is required."
+msgstr "Gatuadress är obligatorisk."
+
+#: 
+msgid "Student Information"
+msgstr "Elevinfo"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systemspråk för församlingen. Påverkar datumformat, telefonformat och andra lokaliseringar."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Så här visas din församlingsinformation i rapporter och kataloger."
+
+#: 
+msgid "Time Zone"
+msgstr "Tidszon"
+
+#: 
+msgid "Toggle overview"
+msgstr "Växla översikt"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Totalt inskrivna"
+
+#: 
+msgid "Total Groups"
+msgstr "Totalt grupper"
+
+#: 
+msgid "Total Memberships"
+msgstr "Totalt medlemskap"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Uppdateras automatiskt vid varje sparning."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Används för schemaläggning av händelser och rapporteringstider."
+
+#: 
+msgid "View Full Details"
+msgstr "Visa fullständiga detaljer"
+
+#: 
+msgid "View Profile"
+msgstr "Visa profil"
+
+#: 
+msgid "Website"
+msgstr "Webbplats"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postnummer är obligatoriskt."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Välj land —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Välj län —"
 

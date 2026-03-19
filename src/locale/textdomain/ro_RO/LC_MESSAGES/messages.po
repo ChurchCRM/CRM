@@ -496,10 +496,6 @@ msgid "No"
 msgstr "Nu"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat pentru dezvoltatori"
-
-#: 
 msgid "Event Checkin"
 msgstr "Evenimentul Checkin"
 
@@ -1912,10 +1908,6 @@ msgid "Family Geographic"
 msgstr "Geografia familiei"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Actualizare toate coordonatele de familie"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Oportunități voluntari"
 
@@ -2594,10 +2586,6 @@ msgid "Calendar Year"
 msgstr "An calendaristic"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Actualizează latitudine și longitudine"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Ștergere utilizator Confirmarea"
 
@@ -3177,14 +3165,6 @@ msgid "Teachers"
 msgstr "Învățători"
 
 #: 
-msgid "Send Message"
-msgstr "Trimite mesaj"
-
-#: 
-msgid "Quick Status"
-msgstr "Situație rapidă"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "ZIle de naștere în funcție de lună"
 
@@ -3199,58 +3179,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresă casă"
-
-#: 
-msgid "Dad Name"
-msgstr "Nume tată"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Mobil tată"
-
-#: 
-msgid "Dad Email"
-msgstr "Email tată"
-
-#: 
-msgid "Mom Name"
-msgstr "Nume mamă"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mobil mamă"
-
-#: 
-msgid "Mom Email"
-msgstr "Email soție"
-
-#: 
-msgid "Compose New Message"
-msgstr "Scrie mesaj nou"
-
-#: 
-msgid "Kids Emails"
-msgstr "Email-uri copii"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email-uri părinți"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email-uri învățători"
-
-#: 
-msgid "Attachment"
-msgstr "Atașament"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32Mb"
-
-#: 
-msgid "Discard"
-msgstr "Renunță"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3483,10 +3411,6 @@ msgid "Self Registration"
 msgstr "Auto înregistrare"
 
 #: 
-msgid "No coordinates found"
-msgstr "Nu au fost găsite coordonate"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
 
@@ -3642,10 +3566,6 @@ msgid "with this property..."
 msgstr "cu această proprietate..."
 
 #: 
-msgid "Church Email"
-msgstr "Email biserică"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Include în director, numai aceste clarificări, separate de virgulă"
@@ -3708,14 +3628,6 @@ msgid "First month of the fiscal year"
 msgstr "Prima luna a anului fiscal"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Latitudinea bisericii, folosită pentru centrarea hărții"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Longitudinea bisericii, folosită pentru centrarea hărții"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Setați true pentru a dezactiva introducerea datei prietenului în editorul de persoane. Setați false pentru a activa introducerea datei prietenului în editorul de persoane"
 
@@ -3762,22 +3674,6 @@ msgstr "Margine stânga (1 = 1/100th inchi)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Grosime linie (1 = 1/100th inci)"
-
-#: 
-msgid "Church City"
-msgstr "Orașul bisericii"
-
-#: 
-msgid "Church State"
-msgstr "Județul bisericii"
-
-#: 
-msgid "Church Zip"
-msgstr "Cod poștal biserică"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefon biserică"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6093,10 +5989,6 @@ msgid "system user login reset"
 msgstr "resetare autentificare pentru utilizatorul sistemului"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familii fără informații de localizare"
-
-#: 
 msgid "Notification for"
 msgstr "Notificări de la"
 
@@ -6234,10 +6126,6 @@ msgid "Text Cart"
 msgstr "Text coș"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Adresă web biserică"
-
-#: 
 msgid "Self Verification"
 msgstr "Auto verificare"
 
@@ -6282,16 +6170,8 @@ msgid "Checking Cart Status"
 msgstr "Verificăm stadiul coșului"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Toți membrii acestui grup sunt în coș"
-
-#: 
 msgid "Remove all"
 msgstr "Elimină tot"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Nu toți membrii din acest grup sunt în coș"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6695,10 +6575,6 @@ msgstr "al persoanelor"
 #: 
 msgid "System Upgrade"
 msgstr "Actualizare sistem"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Actualizare necesară"
 
 #: 
 msgid "Help & Manual"
@@ -7338,10 +7214,6 @@ msgstr "Nume, prenume, al doile prenume"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Cheia API Google Maps utilizată pentru geocodificarea adreselor"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8891,10 +8763,6 @@ msgid "Current Software Version"
 msgstr "Versiune actuală software"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Actualizarea bazei de date s-a finalizat cu succes. Se redirecționează către panou..."
-
-#: 
 msgid "Date & Time"
 msgstr "Dată și oră"
 
@@ -9054,14 +8922,6 @@ msgstr "Text Predică / Eveniment"
 #: 
 msgid "Unclassified"
 msgstr "Neclasificat"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Actualizați baza de date acum"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Instalarea dumneavoastră ChurchCRM are nevoie de o actualizare a bazei de date pentru a corespunde versiunii de software instalate. Această operațiune va aplica migrări de schemă și date. Vă rugăm să vă asigurați că aveți o copie de rezervă recentă înainte de a continua."
 
 #: 
 msgid "added to this event"
@@ -10231,10 +10091,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Anul dvs. fiscal începe în luna"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Cod poștal"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Extensia ZipArchive este necesară pentru actualizări"
 
@@ -11138,16 +10994,6 @@ msgstr "Așteptat"
 msgid "Failed to delete kiosk"
 msgstr "Ștergerea chioșcului a eșuat"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "An Fiscal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grup de studenți înregistrați"
-
 #: 
 msgid "Here"
 msgstr "Aici"
@@ -11199,16 +11045,6 @@ msgstr "Solicitare de Ridicare"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Vă rugăm să vă îndreptați spre clasă cât mai curând posibil."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rezumat angajamente pe nume de familie pentru fiecare fond al anului fiscal selectat"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Studenți înregistrați"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12451,4 +12287,256 @@ msgstr "Solicitați tuturor utilizatorilor să se înscrie pentru autentificarea
 #: 
 msgid "Select the desired event"
 msgstr "Selectați evenimentul dorit"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "O hartă va apărea aici după ce se salvează o adresă. Coordonatele sunt detectate automat — nu este necesară introducerea manuală."
+
+#: 
+msgid "Active Groups"
+msgstr "Grupuri active"
+
+#: 
+msgid "Add New Group"
+msgstr "Adăugați un grup nou"
+
+#: 
+msgid "Add all to cart"
+msgstr "Adăugați totul în selecție"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Detectați automat coordonatele folosind adresa"
+
+#: 
+msgid "Basic Information"
+msgstr "Informații de bază"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informațiile parohiei au fost salvate cu succes."
+
+#: 
+msgid "Church name is required."
+msgstr "Numele parohiei este obligatoriu."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Numele parohiei este obligatoriu. Completați fila Informații de bază."
+
+#: 
+msgid "City is required."
+msgstr "Orașul este obligatoriu."
+
+#: 
+msgid "Class Overview"
+msgstr "Prezentare generală a clasei"
+
+#: 
+msgid "Clear filter"
+msgstr "Ștergeți filtrul"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Elementul de configurare nu a fost găsit"
+
+#: 
+msgid "Country is required."
+msgstr "Țara este obligatorie."
+
+#: 
+msgid "Discord Chat"
+msgstr "Chat Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Afișați previzualizarea"
+
+#: 
+msgid "Email (To)"
+msgstr "E-mail (Către)"
+
+#: 
+msgid "Email address is required."
+msgstr "Adresa de e-mail este obligatorie."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familia nu are o adresă pentru geocodificare"
+
+#: 
+msgid "Father"
+msgstr "Tată"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Coordonate geocodificate:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geocodificarea a eșuat"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geocodificare reușită"
+
+#: 
+msgid "In Cart"
+msgstr "În selecție"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Grupuri inactive"
+
+#: 
+msgid "Kids Email"
+msgstr "E-mail copii"
+
+#: 
+msgid "Language & Localization"
+msgstr "Limbă și localizare"
+
+#: 
+msgid "Location & Map"
+msgstr "Locație și hartă"
+
+#: 
+msgid "Location Information"
+msgstr "Informații de locație"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "E-mail de contact principal pentru comunicările parohiei."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Numărul de telefon principal al parohiei."
+
+#: 
+msgid "Male / Female"
+msgstr "Masculin / Feminin"
+
+#: 
+msgid "Map"
+msgstr "Hartă"
+
+#: 
+msgid "Mother"
+msgstr "Mamă"
+
+#: 
+msgid "No members"
+msgstr "Niciun membru"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Opțional. URL-ul site-ului web al parohiei dvs."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Părinți/Tutori"
+
+#: 
+msgid "Phone number is required."
+msgstr "Numărul de telefon este obligatoriu."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Actualizați coordonatele"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Obligatoriu. Folosit în toate rapoartele și comunicările."
+
+#: 
+msgid "Save Church Information"
+msgstr "Salvați informațiile parohiei"
+
+#: 
+msgid "Search or select..."
+msgstr "Căutați sau selectați..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Trimiteți e-mail cu destinatarii în câmpul BCC (ascunși unii față de alții)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Trimiteți e-mail cu destinatarii în câmpul Către"
+
+#: 
+msgid "State is required."
+msgstr "Județul este obligatoriu."
+
+#: 
+msgid "Street Address"
+msgstr "Adresă"
+
+#: 
+msgid "Street address is required."
+msgstr "Adresa este obligatorie."
+
+#: 
+msgid "Student Information"
+msgstr "Informații student"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Limba sistemului pentru parohie. Afectează formatele de dată, telefon și alte localizări."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Astfel vor apărea informațiile parohiei dvs. în rapoarte și directoare."
+
+#: 
+msgid "Time Zone"
+msgstr "Fus orar"
+
+#: 
+msgid "Toggle overview"
+msgstr "Comutați prezentarea generală"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Total înscriși"
+
+#: 
+msgid "Total Groups"
+msgstr "Total grupuri"
+
+#: 
+msgid "Total Memberships"
+msgstr "Total membrii"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Actualizat automat la fiecare salvare."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Folosit pentru programarea evenimentelor și timpii de raportare."
+
+#: 
+msgid "View Full Details"
+msgstr "Vizualizați detalii complete"
+
+#: 
+msgid "View Profile"
+msgstr "Vizualizați profilul"
+
+#: 
+msgid "Website"
+msgstr "Site web"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Codul poștal este obligatoriu."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Selectați țara —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Selectați județul —"
 

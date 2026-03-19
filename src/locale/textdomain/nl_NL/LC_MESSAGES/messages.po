@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Nee"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat met ontwikkelaar"
-
-#: 
 msgid "Event Checkin"
 msgstr "Mutaties per activiteit"
 
@@ -1861,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "Overzicht per gezin"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Alles bijwerken Family Coördinaten"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Vrijwilligers mogelijkheden"
 
@@ -2533,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "Kalender Jaar"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Breedte en lengtegraad updaten"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bevestiging Verwijderen Gebruiker"
 
@@ -3093,14 +3081,6 @@ msgid "Teachers"
 msgstr "Docenten"
 
 #: 
-msgid "Send Message"
-msgstr "Stuur bericht"
-
-#: 
-msgid "Quick Status"
-msgstr "Status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Verjaardagen per maand"
 
@@ -3115,58 +3095,6 @@ msgstr "Mobiel"
 #: 
 msgid "Home Address"
 msgstr "Huis adres"
-
-#: 
-msgid "Dad Name"
-msgstr "Naam vader"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Telefoon nummer"
-
-#: 
-msgid "Dad Email"
-msgstr "E-mail"
-
-#: 
-msgid "Mom Name"
-msgstr "Naam moeder"
-
-#: 
-msgid "Mom Mobile"
-msgstr "telefoon nummer"
-
-#: 
-msgid "Mom Email"
-msgstr "e-mail"
-
-#: 
-msgid "Compose New Message"
-msgstr "Maak een nieuw bericht"
-
-#: 
-msgid "Kids Emails"
-msgstr "E-mail kinderen"
-
-#: 
-msgid "Parents Emails"
-msgstr "E-mail ouders"
-
-#: 
-msgid "Teachers Emails"
-msgstr "E-mail leraar"
-
-#: 
-msgid "Attachment"
-msgstr "Bijlage"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32 MB"
-
-#: 
-msgid "Discard"
-msgstr "Verwijder"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3395,10 +3323,6 @@ msgid "Self Registration"
 msgstr "Zelf registratie"
 
 #: 
-msgid "No coordinates found"
-msgstr "Geen coördinaten gevonden"
-
-#: 
 msgid "Anonymous"
 msgstr "Anoniem"
 
@@ -3554,10 +3478,6 @@ msgid "with this property..."
 msgstr "Met dit kenmerk...."
 
 #: 
-msgid "Church Email"
-msgstr "Email adres van de kerk"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Neem alleen deze classificaties in de directory, gescheiden door een komma"
 
@@ -3618,14 +3538,6 @@ msgid "First month of the fiscal year"
 msgstr "Eerste maand van het fiscale jaar"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Hoogtecoördinatoren van het kerkgebouw, voor plaatsbepaling in Google maps. "
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Lengtecoördinatoren van het kerkgebouw, voor plaatsbepaling in Google maps. "
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Kies \"aan\" om het invoeren van vrienddatum in persoonseditor uit te schakelen.\n"
 "Kies \"uit\" om het invoeren van vrienddatum in persoonseditor in te schakelen."
@@ -3674,22 +3586,6 @@ msgstr "Linkermarge (1 = 1 / 100ste inch)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Lijndikte (1 = 1 / 100ste inch)"
-
-#: 
-msgid "Church City"
-msgstr "Plaats van de kerk"
-
-#: 
-msgid "Church State"
-msgstr "Staat"
-
-#: 
-msgid "Church Zip"
-msgstr "Postcode kerk"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefoonnummer kerk"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6005,10 +5901,6 @@ msgid "system user login reset"
 msgstr "Systeemgebruiker login reset"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Gezinnen zonder kaart"
-
-#: 
 msgid "Notification for"
 msgstr "Melding voor"
 
@@ -6145,10 +6037,6 @@ msgid "Text Cart"
 msgstr "Tekst werkbestand"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Uw gemeente website"
-
-#: 
 msgid "Self Verification"
 msgstr "Zelfverificatie"
 
@@ -6193,16 +6081,8 @@ msgid "Checking Cart Status"
 msgstr "Werkbestandstatus controleren"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alle leden van deze groep zitten in uw werkbestand"
-
-#: 
 msgid "Remove all"
 msgstr "Verwijder alles"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Niet alle leden van deze groep zitten in uw werkbestand"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6606,10 +6486,6 @@ msgstr "van personen"
 #: 
 msgid "System Upgrade"
 msgstr "Systeem upgrade"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Upgrade vereist"
 
 #: 
 msgid "Help & Manual"
@@ -7248,10 +7124,6 @@ msgstr "Achternaam, Voornaam Tussennaam"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API-sleutel gebruikt voor geocodering van adressen"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8801,10 +8673,6 @@ msgid "Current Software Version"
 msgstr "Huidige Softwareversie"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Database-upgrade met succes voltooid. Doorsturen naar dashboard..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum en Tijd"
 
@@ -8964,14 +8832,6 @@ msgstr "Preek / Evenementtekst"
 #: 
 msgid "Unclassified"
 msgstr "Niet geclassificeerd"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Database nu upgraden"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Uw ChurchCRM-installatie moet een database-upgrade uitvoeren om overeen te stemmen met de geïnstalleerde softwareversie. Deze bewerking past schema's en gegevensmigraties toe. Zorg ervoor dat je een recente back-up hebt voordat je doorgaat."
 
 #: 
 msgid "added to this event"
@@ -10140,10 +10000,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Uw fiscale jaar begint in maand"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Postcode"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-uitbreiding vereist voor upgrades"
 
@@ -11043,16 +10899,6 @@ msgstr "Verwacht"
 msgid "Failed to delete kiosk"
 msgstr "Kiosk verwijderen mislukt"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Boekjaar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groep van geregistreerde studenten"
-
 #: 
 msgid "Here"
 msgstr "Hier"
@@ -11104,16 +10950,6 @@ msgstr "Ophaalverzoek"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Ga alstublieft zo snel mogelijk naar het klaslokaal."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Overzicht van toezeggingen per familienaam voor elk fonds voor het geselecteerde boekjaar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde studenten"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12355,4 +12191,256 @@ msgstr "Vereis dat alle gebruikers zich inschrijven voor tweefactorauthenticatie
 #: 
 msgid "Select the desired event"
 msgstr "Selecteer het gewenste evenement"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Een kaart verschijnt hier zodra een straatadres is opgeslagen. Coördinaten worden automatisch gedetecteerd — geen handmatige invoer vereist."
+
+#: 
+msgid "Active Groups"
+msgstr "Actieve groepen"
+
+#: 
+msgid "Add New Group"
+msgstr "Nieuwe groep toevoegen"
+
+#: 
+msgid "Add all to cart"
+msgstr "Alles aan selectie toevoegen"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Coördinaten automatisch detecteren via adres"
+
+#: 
+msgid "Basic Information"
+msgstr "Basisinformatie"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Gemeenteinformatie succesvol opgeslagen."
+
+#: 
+msgid "Church name is required."
+msgstr "De naam van de gemeente is verplicht."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "De naam van de gemeente is verplicht. Vul het tabblad Basisinformatie in."
+
+#: 
+msgid "City is required."
+msgstr "De stad is verplicht."
+
+#: 
+msgid "Class Overview"
+msgstr "Klasoverzicht"
+
+#: 
+msgid "Clear filter"
+msgstr "Filter wissen"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Configuratie-item niet gevonden"
+
+#: 
+msgid "Country is required."
+msgstr "Het land is verplicht."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Voorvertoning weergeven"
+
+#: 
+msgid "Email (To)"
+msgstr "E-mail (Aan)"
+
+#: 
+msgid "Email address is required."
+msgstr "Het e-mailadres is verplicht."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familie heeft geen straatadres om te geocoderen"
+
+#: 
+msgid "Father"
+msgstr "Vader"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Gegeocodeerde coördinaten:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geocodering mislukt"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geocodering geslaagd"
+
+#: 
+msgid "In Cart"
+msgstr "In selectie"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inactieve groepen"
+
+#: 
+msgid "Kids Email"
+msgstr "E-mail van kinderen"
+
+#: 
+msgid "Language & Localization"
+msgstr "Taal en lokalisatie"
+
+#: 
+msgid "Location & Map"
+msgstr "Locatie en kaart"
+
+#: 
+msgid "Location Information"
+msgstr "Locatie-informatie"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Hoofd contact e-mail voor gemeentecommunicatie."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Hoofd telefoonnummer van de gemeente."
+
+#: 
+msgid "Male / Female"
+msgstr "Mannelijk / Vrouwelijk"
+
+#: 
+msgid "Map"
+msgstr "Kaart"
+
+#: 
+msgid "Mother"
+msgstr "Moeder"
+
+#: 
+msgid "No members"
+msgstr "Geen leden"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Optioneel. URL van de website van uw gemeente."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Ouders/Voogden"
+
+#: 
+msgid "Phone number is required."
+msgstr "Het telefoonnummer is verplicht."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Coördinaten vernieuwen"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Verplicht. Gebruikt in alle rapporten en communicaties."
+
+#: 
+msgid "Save Church Information"
+msgstr "Gemeenteinformatie opslaan"
+
+#: 
+msgid "Search or select..."
+msgstr "Zoeken of selecteren..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "E-mail sturen met ontvangers in BCC-veld (verborgen voor elkaar)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "E-mail sturen met ontvangers in Aan-veld"
+
+#: 
+msgid "State is required."
+msgstr "De provincie is verplicht."
+
+#: 
+msgid "Street Address"
+msgstr "Straatnaam en huisnummer"
+
+#: 
+msgid "Street address is required."
+msgstr "Het straatadres is verplicht."
+
+#: 
+msgid "Student Information"
+msgstr "Leerlinginformatie"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systeemtaal voor de gemeente. Beïnvloedt datumnotaties, telefoonnummers en andere lokalisaties."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Zo verschijnt uw gemeenteinformatie in rapporten en directories."
+
+#: 
+msgid "Time Zone"
+msgstr "Tijdzone"
+
+#: 
+msgid "Toggle overview"
+msgstr "Overzicht wisselen"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Totaal ingeschreven"
+
+#: 
+msgid "Total Groups"
+msgstr "Totaal groepen"
+
+#: 
+msgid "Total Memberships"
+msgstr "Totaal lidmaatschappen"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Automatisch bijgewerkt bij elke opslag."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Gebruikt voor het plannen van evenementen en rapportagetijden."
+
+#: 
+msgid "View Full Details"
+msgstr "Volledige details bekijken"
+
+#: 
+msgid "View Profile"
+msgstr "Profiel bekijken"
+
+#: 
+msgid "Website"
+msgstr "Website"
+
+#: 
+msgid "ZIP code is required."
+msgstr "De postcode is verplicht."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Selecteer land —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Selecteer provincie —"
 

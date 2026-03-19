@@ -496,10 +496,6 @@ msgid "No"
 msgstr "没有"
 
 #: 
-msgid "Developer Chat"
-msgstr "开发者聊天"
-
-#: 
 msgid "Event Checkin"
 msgstr "事件入住"
 
@@ -1913,10 +1909,6 @@ msgid "Family Geographic"
 msgstr "家庭地理位置"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "更新所有家庭坐标"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "志愿者机会"
 
@@ -2596,10 +2588,6 @@ msgid "Calendar Year"
 msgstr "日历年份"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "更新经纬度"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "用户删除确认书，"
 
@@ -3183,14 +3171,6 @@ msgid "Teachers"
 msgstr "教士"
 
 #: 
-msgid "Send Message"
-msgstr "发送信息"
-
-#: 
-msgid "Quick Status"
-msgstr "快速状态"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "生日月"
 
@@ -3205,58 +3185,6 @@ msgstr "收机"
 #: 
 msgid "Home Address"
 msgstr "家庭住址"
-
-#: 
-msgid "Dad Name"
-msgstr "父亲名称"
-
-#: 
-msgid "Dad Mobile"
-msgstr "父亲手机"
-
-#: 
-msgid "Dad Email"
-msgstr "父亲邮箱"
-
-#: 
-msgid "Mom Name"
-msgstr "母亲名称"
-
-#: 
-msgid "Mom Mobile"
-msgstr "母亲手机"
-
-#: 
-msgid "Mom Email"
-msgstr "目前邮件"
-
-#: 
-msgid "Compose New Message"
-msgstr "撰写新信息"
-
-#: 
-msgid "Kids Emails"
-msgstr "孩子邮箱"
-
-#: 
-msgid "Parents Emails"
-msgstr "父母邮箱"
-
-#: 
-msgid "Teachers Emails"
-msgstr "教士邮箱"
-
-#: 
-msgid "Attachment"
-msgstr "附件"
-
-#: 
-msgid "Max. 32MB"
-msgstr "最大32MB"
-
-#: 
-msgid "Discard"
-msgstr "放弃"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3489,10 +3417,6 @@ msgid "Self Registration"
 msgstr "自助登记"
 
 #: 
-msgid "No coordinates found"
-msgstr "找不到坐标"
-
-#: 
 msgid "Anonymous"
 msgstr "匿名"
 
@@ -3648,10 +3572,6 @@ msgid "with this property..."
 msgstr "有这个属性.."
 
 #: 
-msgid "Church Email"
-msgstr "教会电邮"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "仅在目录中包含这些分类，逗号分隔"
@@ -3714,14 +3634,6 @@ msgid "First month of the fiscal year"
 msgstr "财政年度的第一个月"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "教堂的纬度，用于居中谷歌地图"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "教堂的经度，用于居中谷歌地图"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "设置为true(是)以禁用在Person Editor(人员编辑)中输入Friend Date。设置为false(否)以启用在Person Editor(人员编辑)中输入Friend Date。"
 
@@ -3768,22 +3680,6 @@ msgstr "左边距（1 = 1/100英寸）"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "线厚度（1 = 1/100英寸"
-
-#: 
-msgid "Church City"
-msgstr "教会城市"
-
-#: 
-msgid "Church State"
-msgstr "教会州"
-
-#: 
-msgid "Church Zip"
-msgstr "教会邮编"
-
-#: 
-msgid "Church Phone"
-msgstr "教会电话"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6098,10 +5994,6 @@ msgid "system user login reset"
 msgstr "系统用户登录重置"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "没有（Geo）地理信息的家庭"
-
-#: 
 msgid "Notification for"
 msgstr "通知"
 
@@ -6239,10 +6131,6 @@ msgid "Text Cart"
 msgstr "Text Cart"
 
 #: 
-msgid "Your Church's Website"
-msgstr "您教会的网站"
-
-#: 
 msgid "Self Verification"
 msgstr "自助验证"
 
@@ -6287,16 +6175,8 @@ msgid "Checking Cart Status"
 msgstr "检查购物车状态"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "该群组的所有成员都在购物车中"
-
-#: 
 msgid "Remove all"
 msgstr "移除所有"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "并非该群组的所有成员都在购物车中"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6703,10 +6583,6 @@ msgstr "的人"
 #: 
 msgid "System Upgrade"
 msgstr "系统升级"
-
-#: 
-msgid "Upgrade Required"
-msgstr "要求升级"
 
 #: 
 msgid "Help & Manual"
@@ -7345,10 +7221,6 @@ msgstr "姓，名，中间名"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "用于地址编码的Google Maps API密钥"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8897,10 +8769,6 @@ msgid "Current Software Version"
 msgstr "当前软件版本"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "数据库升级成功完成。正在重定向到仪表板..."
-
-#: 
 msgid "Date & Time"
 msgstr "日期与时间"
 
@@ -9060,14 +8928,6 @@ msgstr "讲道/活动文本"
 #: 
 msgid "Unclassified"
 msgstr "未分类"
-
-#: 
-msgid "Upgrade database now"
-msgstr "立即升级数据库"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "您的 ChurchCRM 安装需要升级数据库以匹配已安装的软件版本。此操作将应用架构和数据迁移。在继续之前，请确保您已有最近的备份。"
 
 #: 
 msgid "added to this event"
@@ -10235,10 +10095,6 @@ msgid "Your fiscal year starts in month"
 msgstr "您的财政年度开始月份为"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "邮政编码"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "升级需要 ZipArchive 扩展"
 
@@ -11134,16 +10990,6 @@ msgstr "预期"
 msgid "Failed to delete kiosk"
 msgstr "删除自助终端失败"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "财年。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "已注册学生群组"
-
 #: 
 msgid "Here"
 msgstr "这里"
@@ -11195,16 +11041,6 @@ msgstr "接送请求"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "请尽快前往教室。"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "所选财年每个基金按家庭名称的承诺摘要"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "已注册学生"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12445,4 +12281,256 @@ msgstr "要求所有用户注册双重身份验证"
 #: 
 msgid "Select the desired event"
 msgstr "选择所需活动"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "保存街道地址后，此处将显示地图。坐标自动检测 — 无需手动输入。"
+
+#: 
+msgid "Active Groups"
+msgstr "活跃小组"
+
+#: 
+msgid "Add New Group"
+msgstr "添加新小组"
+
+#: 
+msgid "Add all to cart"
+msgstr "全部添加到列表"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "使用地址自动检测坐标"
+
+#: 
+msgid "Basic Information"
+msgstr "基本信息"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "教会信息已成功保存。"
+
+#: 
+msgid "Church name is required."
+msgstr "教会名称为必填项。"
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "教会名称为必填项。请完成基本信息标签页。"
+
+#: 
+msgid "City is required."
+msgstr "城市为必填项。"
+
+#: 
+msgid "Class Overview"
+msgstr "班级概况"
+
+#: 
+msgid "Clear filter"
+msgstr "清除筛选"
+
+#: 
+msgid "Configuration item not found"
+msgstr "未找到配置项"
+
+#: 
+msgid "Country is required."
+msgstr "国家为必填项。"
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord 聊天"
+
+#: 
+msgid "Display Preview"
+msgstr "显示预览"
+
+#: 
+msgid "Email (To)"
+msgstr "电子邮件（收件人）"
+
+#: 
+msgid "Email address is required."
+msgstr "电子邮件地址为必填项。"
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "该家庭没有可进行地理编码的街道地址"
+
+#: 
+msgid "Father"
+msgstr "父亲"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "地理编码坐标："
+
+#: 
+msgid "Geocoding failed"
+msgstr "地理编码失败"
+
+#: 
+msgid "Geocoding successful"
+msgstr "地理编码成功"
+
+#: 
+msgid "In Cart"
+msgstr "在列表中"
+
+#: 
+msgid "Inactive Groups"
+msgstr "非活跃小组"
+
+#: 
+msgid "Kids Email"
+msgstr "儿童电子邮件"
+
+#: 
+msgid "Language & Localization"
+msgstr "语言和本地化"
+
+#: 
+msgid "Location & Map"
+msgstr "位置和地图"
+
+#: 
+msgid "Location Information"
+msgstr "位置信息"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "教会通讯的主要联系电子邮件。"
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "教会主要联系电话。"
+
+#: 
+msgid "Male / Female"
+msgstr "男 / 女"
+
+#: 
+msgid "Map"
+msgstr "地图"
+
+#: 
+msgid "Mother"
+msgstr "母亲"
+
+#: 
+msgid "No members"
+msgstr "无会众"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "可选。您的教会网站网址。"
+
+#: 
+msgid "Parents/Guardians"
+msgstr "家长/监护人"
+
+#: 
+msgid "Phone number is required."
+msgstr "电话号码为必填项。"
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "刷新坐标"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "必填。用于所有报告和通讯。"
+
+#: 
+msgid "Save Church Information"
+msgstr "保存教会信息"
+
+#: 
+msgid "Search or select..."
+msgstr "搜索或选择..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "将收件人放在密送字段发送邮件（互相隐藏）"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "将收件人放在收件人字段发送邮件"
+
+#: 
+msgid "State is required."
+msgstr "省/自治区为必填项。"
+
+#: 
+msgid "Street Address"
+msgstr "街道地址"
+
+#: 
+msgid "Street address is required."
+msgstr "街道地址为必填项。"
+
+#: 
+msgid "Student Information"
+msgstr "学生信息"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "教会的系统语言。影响日期格式、电话格式和其他本地化设置。"
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "您的教会信息将在报告和目录中如此显示。"
+
+#: 
+msgid "Time Zone"
+msgstr "时区"
+
+#: 
+msgid "Toggle overview"
+msgstr "切换概览"
+
+#: 
+msgid "Total Enrolled"
+msgstr "总登记人数"
+
+#: 
+msgid "Total Groups"
+msgstr "小组总数"
+
+#: 
+msgid "Total Memberships"
+msgstr "会众总数"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "每次保存时自动更新。"
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "用于安排活动和报告时间。"
+
+#: 
+msgid "View Full Details"
+msgstr "查看完整详情"
+
+#: 
+msgid "View Profile"
+msgstr "查看个人资料"
+
+#: 
+msgid "Website"
+msgstr "网站"
+
+#: 
+msgid "ZIP code is required."
+msgstr "邮政编码为必填项。"
+
+#: 
+msgid "— Select Country —"
+msgstr "— 选择国家 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 选择省/自治区 —"
 

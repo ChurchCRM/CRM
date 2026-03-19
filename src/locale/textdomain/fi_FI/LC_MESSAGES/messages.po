@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Ei"
 
 #: 
-msgid "Developer Chat"
-msgstr "Kehittäjän chat"
-
-#: 
 msgid "Event Checkin"
 msgstr "Tapahtumaan sisäänkirjautuminen"
 
@@ -1843,10 +1839,6 @@ msgid "Family Geographic"
 msgstr "Perheiden maantiede"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Päivitä kaikkien perheiden koordinaatit"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Vapaaehtoistyömahdollisuudet"
 
@@ -2513,10 +2505,6 @@ msgid "Calendar Year"
 msgstr "Kalenterivuosi"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Päivitä koordinaatit"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Käyttäjän poiston vahvistus"
 
@@ -3069,14 +3057,6 @@ msgid "Teachers"
 msgstr "Opettajat"
 
 #: 
-msgid "Send Message"
-msgstr "Lähetä viesti"
-
-#: 
-msgid "Quick Status"
-msgstr "Pikatila"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Syntymäpäivät kuukausittain"
 
@@ -3091,58 +3071,6 @@ msgstr "Matkapuhelin"
 #: 
 msgid "Home Address"
 msgstr "Kotiosoite"
-
-#: 
-msgid "Dad Name"
-msgstr "Isän nimi"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Isän matkapuhelin"
-
-#: 
-msgid "Dad Email"
-msgstr "Isän sähköposti"
-
-#: 
-msgid "Mom Name"
-msgstr "Äidin nimi"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Äidin matkapuhelin"
-
-#: 
-msgid "Mom Email"
-msgstr "Äidin sähköposti"
-
-#: 
-msgid "Compose New Message"
-msgstr "Kirjoita uusi viesti"
-
-#: 
-msgid "Kids Emails"
-msgstr "Lasten sähköpostit"
-
-#: 
-msgid "Parents Emails"
-msgstr "Vanhempien sähköpostit"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Opettajien sähköpostit"
-
-#: 
-msgid "Attachment"
-msgstr "Liite"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Hylkää"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3369,10 +3297,6 @@ msgid "Self Registration"
 msgstr "Itse rekisteröityminen"
 
 #: 
-msgid "No coordinates found"
-msgstr "Koordinaatteja ei löytynyt"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonyymi"
 
@@ -3525,10 +3449,6 @@ msgid "with this property..."
 msgstr "tällä ominaisuudella..."
 
 #: 
-msgid "Church Email"
-msgstr "Kirkon sähköposti"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Sisällytä hakemistoon vain nämä luokitukset (pilkulla erotettuna)"
 
@@ -3589,14 +3509,6 @@ msgid "First month of the fiscal year"
 msgstr "Tilikauden ensimmäinen kuukausi"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Kirkon leveysaste, käytetään Google-kartan keskittämiseen"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Kirkon pituusaste, käytetään Google-kartan keskittämiseen"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Aseta 'Tosi' poistaaksesi Ystävyyspäivän syöttämisen käytöstä. Aseta 'Epätosi' salliaksesi sen."
 
@@ -3643,22 +3555,6 @@ msgstr "Vasen marginaali (1 = 1/100 tuumaa)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Viivan paksuus (1 = 1/100 tuumaa)"
-
-#: 
-msgid "Church City"
-msgstr "Kirkon kaupunki"
-
-#: 
-msgid "Church State"
-msgstr "Kirkon lääni/osavaltio"
-
-#: 
-msgid "Church Zip"
-msgstr "Kirkon postinumero"
-
-#: 
-msgid "Church Phone"
-msgstr "Kirkon puhelinnumero"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -5967,10 +5863,6 @@ msgid "system user login reset"
 msgstr "järjestelmäkäyttäjän kirjautumisen nollaus"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Perheet ilman sijaintitietoja"
-
-#: 
 msgid "Notification for"
 msgstr "Ilmoitus kohteelle"
 
@@ -6107,10 +5999,6 @@ msgid "Text Cart"
 msgstr "Tekstiviestikori"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Kirkkosi verkkosivusto"
-
-#: 
 msgid "Self Verification"
 msgstr "Itsevahvistus"
 
@@ -6155,16 +6043,8 @@ msgid "Checking Cart Status"
 msgstr "Tarkistetaan korin tilaa"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Kaikki tämän ryhmän jäsenet ovat korissa"
-
-#: 
 msgid "Remove all"
 msgstr "Poista kaikki"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Kaikki tämän ryhmän jäsenet eivät ole korissa"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6568,10 +6448,6 @@ msgstr "henkilöistä"
 #: 
 msgid "System Upgrade"
 msgstr "Järjestelmän päivitys"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Päivitys vaaditaan"
 
 #: 
 msgid "Help & Manual"
@@ -7200,10 +7076,6 @@ msgstr "Sukunimi, Etunimi Toinen-nimi"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Google Maps API -avain osoitteiden geokoodaukseen"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8752,10 +8624,6 @@ msgid "Current Software Version"
 msgstr "Nykyinen ohjelmistoversio"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Tietokannan päivitys onnistui. Siirrytään ohjausnäkymään..."
-
-#: 
 msgid "Date & Time"
 msgstr "Päivämäärä ja aika"
 
@@ -8915,14 +8783,6 @@ msgstr "Saarna / Tapahtuman teksti"
 #: 
 msgid "Unclassified"
 msgstr "Luokittelematon"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Päivitä tietokanta nyt"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM-asennuksesi vaatii tietokannan päivityksen vastaamaan asennettua ohjelmistoversion. Tämä toiminto soveltaa skeeman ja tietojen siirtoja. Varmista, että sinulla on viimeaikainen varmuuskopio ennen jatkamista."
 
 #: 
 msgid "added to this event"
@@ -10091,10 +9951,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Tilikausi alkaa kuukaudessa"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Postinumero"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Zip-arkistolaajennos vaaditaan päivityksille"
 
@@ -10994,16 +10850,6 @@ msgstr "Odotettu"
 msgid "Failed to delete kiosk"
 msgstr "Kioskiasetusten poistaminen epäonnistui"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tilikausi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Rekisteröityjen opiskelijoiden ryhmä"
-
 #: 
 msgid "Here"
 msgstr "Tässä"
@@ -11055,16 +10901,6 @@ msgstr "Noutoilmoitus"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Siirry luokkahuoneeseen mahdollisimman pian."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Lupausten yhteenveto perhenimen mukaan kustakin rahastosta valitulle tilikaudelle"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Rekisteröidyt opiskelijat"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12306,4 +12142,256 @@ msgstr "Edellytä kaikkien käyttäjien rekisteröitymistä kaksivaiheiseen tode
 #: 
 msgid "Select the desired event"
 msgstr "Valitse haluttu tapahtuma"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Kartta näkyy tässä, kun katuosoite on tallennettu. Koordinaatit havaitaan automaattisesti — manuaalista syöttöä ei tarvita."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktiiviset ryhmät"
+
+#: 
+msgid "Add New Group"
+msgstr "Lisää uusi ryhmä"
+
+#: 
+msgid "Add all to cart"
+msgstr "Lisää kaikki valintaan"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Havaitse koordinaatit automaattisesti osoitteen avulla"
+
+#: 
+msgid "Basic Information"
+msgstr "Perustiedot"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Seurakunnan tiedot tallennettu onnistuneesti."
+
+#: 
+msgid "Church name is required."
+msgstr "Seurakunnan nimi on pakollinen."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Seurakunnan nimi on pakollinen. Täytä Perustiedot-välilehti."
+
+#: 
+msgid "City is required."
+msgstr "Kaupunki on pakollinen."
+
+#: 
+msgid "Class Overview"
+msgstr "Luokan yhteenveto"
+
+#: 
+msgid "Clear filter"
+msgstr "Tyhjennä suodatin"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Kokoonpanokohdetta ei löydy"
+
+#: 
+msgid "Country is required."
+msgstr "Maa on pakollinen."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Näytä esikatselu"
+
+#: 
+msgid "Email (To)"
+msgstr "Sähköposti (Vastaanottaja)"
+
+#: 
+msgid "Email address is required."
+msgstr "Sähköpostiosoite on pakollinen."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Perheellä ei ole katuosoitetta geokoodausta varten"
+
+#: 
+msgid "Father"
+msgstr "Isä"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokoodatut koordinaatit:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokoodaus epäonnistui"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokoodaus onnistui"
+
+#: 
+msgid "In Cart"
+msgstr "Valinnassa"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Passiiviset ryhmät"
+
+#: 
+msgid "Kids Email"
+msgstr "Lasten sähköposti"
+
+#: 
+msgid "Language & Localization"
+msgstr "Kieli ja lokalisointi"
+
+#: 
+msgid "Location & Map"
+msgstr "Sijainti ja kartta"
+
+#: 
+msgid "Location Information"
+msgstr "Sijaintitiedot"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Pääasiallinen yhteyssähköposti seurakunnan viestintään."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Seurakunnan pääasiallinen puhelinnumero."
+
+#: 
+msgid "Male / Female"
+msgstr "Mies / Nainen"
+
+#: 
+msgid "Map"
+msgstr "Kartta"
+
+#: 
+msgid "Mother"
+msgstr "Äiti"
+
+#: 
+msgid "No members"
+msgstr "Ei jäseniä"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Valinnainen. Seurakunnan verkkosivuston URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Vanhemmat/Huoltajat"
+
+#: 
+msgid "Phone number is required."
+msgstr "Puhelinnumero on pakollinen."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Päivitä koordinaatit"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Pakollinen. Käytetään kaikissa raporteissa ja viestinnässä."
+
+#: 
+msgid "Save Church Information"
+msgstr "Tallenna seurakunnan tiedot"
+
+#: 
+msgid "Search or select..."
+msgstr "Etsi tai valitse..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Lähetä sähköposti BCC-kenttää käyttäen (vastaanottajat piilossa toisiltaan)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Lähetä sähköposti Vastaanottaja-kenttää käyttäen"
+
+#: 
+msgid "State is required."
+msgstr "Maakunta on pakollinen."
+
+#: 
+msgid "Street Address"
+msgstr "Katuosoite"
+
+#: 
+msgid "Street address is required."
+msgstr "Katuosoite on pakollinen."
+
+#: 
+msgid "Student Information"
+msgstr "Oppilastiedot"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Järjestelmän kieli seurakunnalle. Vaikuttaa päivämäärä-, puhelinnumero- ja muihin lokalisointeihin."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Näin seurakunnan tiedot näkyvät raporteissa ja hakemistoissa."
+
+#: 
+msgid "Time Zone"
+msgstr "Aikavyöhyke"
+
+#: 
+msgid "Toggle overview"
+msgstr "Vaihda yhteenväto"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Yhteensä ilmoittautuneita"
+
+#: 
+msgid "Total Groups"
+msgstr "Ryhmiä yhteensä"
+
+#: 
+msgid "Total Memberships"
+msgstr "Jäsenyyksiä yhteensä"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Päivitetään automaattisesti jokaisen tallennuksen yhteydessä."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Käytetään tapahtumien aikatauluttamiseen ja raportointiaikoihin."
+
+#: 
+msgid "View Full Details"
+msgstr "Näytä täydet tiedot"
+
+#: 
+msgid "View Profile"
+msgstr "Näytä profiili"
+
+#: 
+msgid "Website"
+msgstr "Verkkosivusto"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postinumero on pakollinen."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Valitse maa —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Valitse maakunta —"
 

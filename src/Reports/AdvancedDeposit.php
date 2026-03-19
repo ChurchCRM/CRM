@@ -49,7 +49,11 @@ if (!empty($_POST['family'])) {
 
 if (!empty($_POST['method'])) {
     foreach ($_POST['method'] as $methodItem) {
-        $methods[] = InputUtils::legacyFilterInput($methodItem);
+        $filtered = InputUtils::legacyFilterInput($methodItem);
+        // '0' is the "All Methods" sentinel value from the form — skip it
+        if ($filtered && $filtered !== '0') {
+            $methods[] = $filtered;
+        }
     }
 }
 

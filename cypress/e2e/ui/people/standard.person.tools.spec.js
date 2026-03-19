@@ -30,8 +30,4 @@ describe("People Tools", () => {
         cy.contains("Family Geographic Utilities");
     });
 
-    it("Update Lat & Long ", () => {
-        cy.visit("UpdateAllLatLon.php");
-        cy.contains("Update Latitude & Longitude");
-    });
 });

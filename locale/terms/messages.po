@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-15 08:49-0700\n"
+"POT-Creation-Date: 2026-03-18 23:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -404,6 +404,15 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+msgid "Address Status"
+msgstr ""
+
+msgid "Address entered but coordinates not yet set"
+msgstr ""
+
+msgid "Address has been geocoded (coordinates stored)"
+msgstr ""
+
 msgid "Address is required"
 msgstr ""
 
@@ -566,6 +575,12 @@ msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
 msgid "An error occurred"
@@ -750,9 +765,6 @@ msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
 msgid "At least one group must be selected to make class lists or attendance sheets."
-msgstr ""
-
-msgid "Attachment"
 msgstr ""
 
 msgid "Attendance Count Categories"
@@ -1561,9 +1573,6 @@ msgstr ""
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr ""
 
-msgid "Compose New Message"
-msgstr ""
-
 msgid "Configuration item not found"
 msgstr ""
 
@@ -2000,6 +2009,9 @@ msgstr ""
 msgid "Database Server"
 msgstr ""
 
+msgid "Database Upgrade Failed"
+msgstr ""
+
 msgid "Database Version"
 msgstr ""
 
@@ -2013,9 +2025,6 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
-msgstr ""
-
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
 msgstr ""
 
 msgid "Database:"
@@ -2329,9 +2338,6 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Disabled for this group."
-msgstr ""
-
-msgid "Discard"
 msgstr ""
 
 msgid "Disclaimer"
@@ -3194,9 +3200,6 @@ msgstr ""
 msgid "Families Without Emails"
 msgstr ""
 
-msgid "Families without Geo Info"
-msgstr ""
-
 msgid "Family"
 msgstr ""
 
@@ -3717,6 +3720,9 @@ msgstr ""
 msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
 msgstr ""
 
+msgid "Geocoded"
+msgstr ""
+
 msgid "Geocoded coordinates:"
 msgstr ""
 
@@ -4206,6 +4212,9 @@ msgstr ""
 msgid "Install plugins by placing them in"
 msgstr ""
 
+msgid "Installed Software Version"
+msgstr ""
+
 msgid "Integrity Check Details:"
 msgstr ""
 
@@ -4402,9 +4411,6 @@ msgid "Kenya"
 msgstr ""
 
 msgid "Kids Email"
-msgstr ""
-
-msgid "Kids Emails"
 msgstr ""
 
 msgid "Kiosk Manager"
@@ -4898,9 +4904,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Mauritius (Moris)"
-msgstr ""
-
-msgid "Max. 32MB"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -5431,9 +5434,6 @@ msgstr ""
 msgid "No community plugins installed"
 msgstr ""
 
-msgid "No coordinates found"
-msgstr ""
-
 msgid "No core plugins found"
 msgstr ""
 
@@ -5882,9 +5882,6 @@ msgstr ""
 msgid "Paraguay"
 msgstr ""
 
-msgid "Parents Emails"
-msgstr ""
-
 msgid "Parents/Guardians"
 msgstr ""
 
@@ -6298,6 +6295,9 @@ msgid "Please try again"
 msgstr ""
 
 msgid "Please update our records with corrections"
+msgstr ""
+
+msgid "Please upgrade ChurchCRM to version"
 msgstr ""
 
 msgid "Please verify your family's information"
@@ -7230,9 +7230,6 @@ msgstr ""
 msgid "Sell to everyone"
 msgstr ""
 
-msgid "Send Message"
-msgstr ""
-
 msgid "Send Newsletter"
 msgstr ""
 
@@ -7460,6 +7457,9 @@ msgstr ""
 msgid "Software"
 msgstr ""
 
+msgid "Software Update Required"
+msgstr ""
+
 msgid "Software Version"
 msgstr ""
 
@@ -7677,6 +7677,9 @@ msgstr ""
 msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr ""
 
+msgid "Sunday School is disabled"
+msgstr ""
+
 msgid "Sundays"
 msgstr ""
 
@@ -7798,9 +7801,6 @@ msgid "Tax Year Reporting Checklist"
 msgstr ""
 
 msgid "Teachers"
-msgstr ""
-
-msgid "Teachers Emails"
 msgstr ""
 
 #. Context: locales
@@ -8399,13 +8399,16 @@ msgstr ""
 msgid "Unsuccessful API Key authentication attempt"
 msgstr ""
 
+msgid "Unverified"
+msgstr ""
+
+msgid "Unverified Addresses"
+msgstr ""
+
 msgid "Upcoming Birthdays"
 msgstr ""
 
 msgid "Update"
-msgstr ""
-
-msgid "Update All Family Coordinates"
 msgstr ""
 
 msgid "Update Available!"
@@ -8418,9 +8421,6 @@ msgid "Update Envelopes"
 msgstr ""
 
 msgid "Update Family Records"
-msgstr ""
-
-msgid "Update Latitude & Longitude"
 msgstr ""
 
 msgid "Update Package Details"
@@ -8462,13 +8462,7 @@ msgstr ""
 msgid "Upgrade Complete!"
 msgstr ""
 
-msgid "Upgrade Required"
-msgstr ""
-
 msgid "Upgrade Summary"
-msgstr ""
-
-msgid "Upgrade database now"
 msgstr ""
 
 msgid "Upgrade failed."
@@ -8693,6 +8687,9 @@ msgid "Version"
 msgstr ""
 
 msgid "Version Information"
+msgstr ""
+
+msgid "Version Mismatch"
 msgstr ""
 
 msgid "Version:"
@@ -9075,9 +9072,6 @@ msgstr ""
 msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr ""
-
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
@@ -9115,6 +9109,9 @@ msgid "Your cart is empty!"
 msgstr ""
 
 msgid "Your child"
+msgstr ""
+
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
 msgid "Your fiscal year starts in month"
@@ -9344,6 +9341,9 @@ msgid "optional"
 msgstr ""
 
 msgid "or click to browse"
+msgstr ""
+
+msgid "or later to continue."
 msgstr ""
 
 msgid "payment(s)?"

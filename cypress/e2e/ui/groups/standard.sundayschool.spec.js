@@ -8,16 +8,16 @@ const ANGELS_CLASS_GROUP_ID = 1;
 
 describe("Standard Sunday School", () => {
     beforeEach(() => cy.setupStandardSession());
-    
+
     it("View Sunday School dashboard", () => {
-        cy.visit("sundayschool/SundaySchoolDashboard.php");
+        cy.visit("groups/sundayschool/dashboard");
         cy.contains("Sunday School Dashboard");
         cy.contains("Sunday School Classes");
         cy.contains("Students not in a Sunday School Class");
     });
 
     it("SundaySchoolClassView shows students in the table (regression: deactivated-family students must not be excluded)", () => {
-        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
         cy.contains("Angels class");
 
         // Verify student table has rows (3 students in seed data)
@@ -28,14 +28,14 @@ describe("Standard Sunday School", () => {
     });
 
     it("SundaySchoolClassView renders the class page without errors", () => {
-        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
         cy.contains("Angels class");
         cy.get("#sundayschool").should("exist");
         cy.get(".card-title").should("contain", "Students");
     });
 
     it("Class Overview section displays correctly", () => {
-        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
         // Verify Class Overview card exists
         cy.contains("Class Overview").should("exist");
@@ -52,7 +52,7 @@ describe("Standard Sunday School", () => {
     });
 
     it("Student table has correct columns and functionality", () => {
-        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
         // Verify table headers
         cy.get("#sundayschool thead th").should((headers) => {
@@ -70,7 +70,7 @@ describe("Standard Sunday School", () => {
     });
 
     it("Student details modal exists in page", () => {
-        cy.visit(`sundayschool/SundaySchoolClassView.php?groupId=${ANGELS_CLASS_GROUP_ID}`);
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
         // Verify modal exists in the DOM (one for each student)
         cy.get("[id^='studentModal-']").should("have.length.greaterThan", 0);

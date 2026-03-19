@@ -44,7 +44,29 @@ describe('04 - System Reset', () => {
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');
                 cy.get('button[type=submit]').click();
-                cy.contains('Password Changed', { timeout: 10000 }).should('be.visible');
+                // ChurchInfoRequiredMiddleware redirects to church-info when sChurchName is empty
+                cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
+            }
+        });
+
+        // After a DB reset sChurchName is empty; fill in the minimum required fields so the
+        // middleware stops redirecting and subsequent test navigation works normally.
+        cy.url().then((url) => {
+            if (url.includes('/admin/system/church-info')) {
+                cy.get('#sChurchName').clear().type('Test Community Church');
+                cy.get('#sChurchPhone').clear().type('(555) 123-4567');
+                cy.get('#sChurchEmail').clear().type('info@testchurch.org');
+                cy.get('#location-tab').click();
+                cy.get('#sChurchAddress').clear().type('123 Main Street');
+                cy.get('#sChurchCity').clear().type('Springfield');
+                cy.get('#sChurchCountry', { timeout: 5000 }).should('have.class', 'select2-hidden-accessible');
+                cy.get('#sChurchCountry').then(($el) => { $el.val('US').trigger('change'); });
+                cy.get('#sChurchState', { timeout: 10000 }).should('have.class', 'select2-hidden-accessible');
+                cy.get('#sChurchState').then(($el) => { $el.val('IL').trigger('change'); });
+                cy.get('#sChurchZip').clear().type('62701');
+                cy.wait(500);
+                cy.get('#church-info-form').submit();
+                cy.url({ timeout: 10000 }).should('include', 'church-info');
             }
         });
     };
@@ -103,31 +125,18 @@ describe('04 - System Reset', () => {
     });
 
     describe('Step 10c: Verify System Reset and Login', () => {
-        it('should redirect to login or db-upgrade after reset', () => {
+        it('should redirect to login after reset', () => {
             // Clear any cached sessions since we just reset the database
             cy.clearCookies();
             cy.clearLocalStorage();
-            
-            // Visit homepage - should redirect somewhere after reset
+
+            // Visit homepage - should redirect to login after reset.
+            // A DB reset recreates the schema at the current version, so no version
+            // mismatch occurs and the db-upgrade page is never shown.
             cy.visit('/');
-            
-            // After reset, may go to:
-            // - /session/begin or /login (if DB version matches code)
-            // - /external/system/db-upgrade (if DB needs upgrade)
+
             cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || 
-                       url.includes('/login') || 
-                       url.includes('/db-upgrade');
-            });
-            
-            // If on db-upgrade page, wait for it to complete and redirect
-            cy.url().then((url) => {
-                if (url.includes('/db-upgrade')) {
-                    cy.log('DB upgrade required after reset');
-                    cy.url({ timeout: 60000 }).should('satisfy', (newUrl) => {
-                        return newUrl.includes('/session/begin') || newUrl.includes('/login');
-                    });
-                }
+                return url.includes('/session/begin') || url.includes('/login');
             });
         });
 

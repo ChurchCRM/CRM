@@ -25,7 +25,6 @@
     "Cell": "Mobile",
     "Localization": "Localisation",
     "Internationalization (I18n) support": "Internationalisation (I18n) support",
-    "Church Zip": "Church Postcode",
     "Zip Code": "Postcode",
     "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email.": "Enter any part of the following: Name, City, State, Postcode, Home Phone, Email, or Work Email.",
     "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "Make user-entered postcodes UPPERCASE when saving to the database.",

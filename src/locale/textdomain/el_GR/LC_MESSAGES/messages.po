@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Οχι"
 
 #: 
-msgid "Developer Chat"
-msgstr "Συνομιλία προγραμματιστή"
-
-#: 
 msgid "Event Checkin"
 msgstr "Checkin εκδήλωσης"
 
@@ -1862,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Οικογενειακή Γεωγραφική"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Ενημέρωση όλων των οικογενειακών συντεταγμένων"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Ευκαιρίες Εθελοντισμού"
 
@@ -2534,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Ημερολογιακό έτος"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Ενημέρωση γεωγραφικού πλάτους και γεωγραφικού μήκους"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Επιβεβαίωση διαγραφής χρήστη"
 
@@ -3095,14 +3083,6 @@ msgid "Teachers"
 msgstr "Δάσκαλοι"
 
 #: 
-msgid "Send Message"
-msgstr "Να στείλετε μήνυμα"
-
-#: 
-msgid "Quick Status"
-msgstr "Γρήγορη κατάσταση"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Γενέθλια ανά μήνα"
 
@@ -3117,58 +3097,6 @@ msgstr "Κινητό"
 #: 
 msgid "Home Address"
 msgstr "Διεύθυνση σπιτιού"
-
-#: 
-msgid "Dad Name"
-msgstr "Όνομα μπαμπά"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Μπαμπάς Κινητό"
-
-#: 
-msgid "Dad Email"
-msgstr "Email του μπαμπά"
-
-#: 
-msgid "Mom Name"
-msgstr "Όνομα μαμάς"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Μαμά Κινητό"
-
-#: 
-msgid "Mom Email"
-msgstr "Email της μαμάς"
-
-#: 
-msgid "Compose New Message"
-msgstr "Σύνταξη νέου μηνύματος"
-
-#: 
-msgid "Kids Emails"
-msgstr "Παιδικά email"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email γονέων"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email καθηγητών"
-
-#: 
-msgid "Attachment"
-msgstr "Συνημμένο"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Μέγιστη. 32 MB"
-
-#: 
-msgid "Discard"
-msgstr "Απορρίπτω"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3395,10 +3323,6 @@ msgid "Self Registration"
 msgstr "Αυτοεγγραφή"
 
 #: 
-msgid "No coordinates found"
-msgstr "Δεν βρέθηκαν συντεταγμένες"
-
-#: 
 msgid "Anonymous"
 msgstr "Ανώνυμος"
 
@@ -3554,10 +3478,6 @@ msgid "with this property..."
 msgstr "με αυτό το ακίνητο..."
 
 #: 
-msgid "Church Email"
-msgstr "Email Εκκλησίας"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Συμπεριλάβετε μόνο αυτές τις ταξινομήσεις στον κατάλογο, διαχωρισμένες με κόμματα"
@@ -3620,14 +3540,6 @@ msgid "First month of the fiscal year"
 msgstr "Πρώτος μήνας του οικονομικού έτους"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Γεωγραφικό πλάτος της εκκλησίας, που χρησιμοποιείται για το κέντρο του χάρτη Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Γεωγραφικό μήκος της εκκλησίας, που χρησιμοποιείται για το κέντρο του χάρτη της Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Ορίστε το true για να απενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor. Ορίστε το false για να ενεργοποιήσετε την εισαγωγή Ημερομηνίας φίλου στο Person Editor."
 
@@ -3674,22 +3586,6 @@ msgstr "Αριστερό περιθώριο (1 = 1/100η ίντσα)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Πάχος γραμμής (1 = 1/100η ίντσα"
-
-#: 
-msgid "Church City"
-msgstr "Εκκλησία της πόλης"
-
-#: 
-msgid "Church State"
-msgstr "Εκκλησιαστική Πολιτεία"
-
-#: 
-msgid "Church Zip"
-msgstr "Τ.Κ. Εκκλησίας"
-
-#: 
-msgid "Church Phone"
-msgstr "Τηλέφωνο Εκκλησίας"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6004,10 +5900,6 @@ msgid "system user login reset"
 msgstr "επαναφορά σύνδεσης χρήστη συστήματος"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Οικογένειες χωρίς γεωγραφικές πληροφορίες"
-
-#: 
 msgid "Notification for"
 msgstr "Ειδοποίηση για"
 
@@ -6145,10 +6037,6 @@ msgid "Text Cart"
 msgstr "Καλάθι κειμένου"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Ο ιστότοπος της Εκκλησίας σας"
-
-#: 
 msgid "Self Verification"
 msgstr "Αυτοεπαλήθευση"
 
@@ -6193,16 +6081,8 @@ msgid "Checking Cart Status"
 msgstr "Έλεγχος κατάστασης καλαθιού"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Όλα τα μέλη αυτής της ομάδας βρίσκονται στο καλάθι"
-
-#: 
 msgid "Remove all"
 msgstr "Αφαίρεση όλων"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Δεν είναι όλα τα μέλη αυτής της ομάδας στο καλάθι"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6606,10 +6486,6 @@ msgstr "των ανθρώπων"
 #: 
 msgid "System Upgrade"
 msgstr "Αναβάθμιση συστήματος"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Απαιτείται αναβάθμιση"
 
 #: 
 msgid "Help & Manual"
@@ -7250,10 +7126,6 @@ msgstr "Επώνυμο, Όνομα MiddleName"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Επιβεβαιώστε την απενεργοποίηση του 2 Factor Auth για αυτόν τον χρήστη"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Κλειδί API Χαρτών Google που χρησιμοποιείται για διευθύνσεις Γεωκωδικοποίησης"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8803,10 +8675,6 @@ msgid "Current Software Version"
 msgstr "Τρέχουσα έκδοση λογισμικού"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Η αναβάθμιση της βάσης δεδομένων ολοκληρώθηκε επιτυχώς. Γίνεται ανακατεύθυνση στο ταμπλό..."
-
-#: 
 msgid "Date & Time"
 msgstr "Ημερομηνία & Ώρα"
 
@@ -8966,14 +8834,6 @@ msgstr "Sermon / Εκδήλωση Text"
 #: 
 msgid "Unclassified"
 msgstr "Ανταξιόλογο"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Αναβάθμιση βάσης δεδομένων τώρα"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Η εγκατάσταση του ChurchCRM χρειάζεται αναβάθμιση της βάσης δεδομένων. Αυτή η διαδικασία θα εφαρμόσει αλλαγές στο σχήμα και τα δεδομένα. Βεβαιωθείτε ότι έχετε πρόσφατο αντίγραφο ασφαλείας."
 
 #: 
 msgid "added to this event"
@@ -10142,10 +10002,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Το οικονομικό σας έτος ξεκινά σε μήνα"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Τ.Κ. / Ταχυδρομικός Κώδικας"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Απαιτείται η επέκταση ZipArchive για αναβαθμίσεις"
 
@@ -11045,16 +10901,6 @@ msgstr "Αναμενόμενο"
 msgid "Failed to delete kiosk"
 msgstr "Αποτυχία διαγραφής κιόσκι"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Οικονομικό έτος."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Ομάδα εγγεγραμμένων μαθητών"
-
 #: 
 msgid "Here"
 msgstr "Εδώ"
@@ -11106,16 +10952,6 @@ msgstr "Αίτημα παραλαβής"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Παρακαλώ μεταβείτε στην αίθουσα το συντομότερο δυνατό."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Σύνοψη υποσχέσεων ανά οικογενειακό όνομα για κάθε ταμείο για το επιλεγμένο οικονομικό έτος"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Εγγεγραμμένοι μαθητές"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12357,4 +12193,256 @@ msgstr "Απαιτήστε από όλους τους χρήστες να εγγ
 #: 
 msgid "Select the desired event"
 msgstr "Επιλέξτε την επιθυμητή εκδήλωση"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Ένας χάρτης θα εμφανιστεί εδώ μόλις αποθηκευτεί μια διεύθυνση. Οι συντεταγμένες ανιχνεύονται αυτόματα — δεν απαιτείται χειροκίνητη εισαγωγή."
+
+#: 
+msgid "Active Groups"
+msgstr "Ενεργές ομάδες"
+
+#: 
+msgid "Add New Group"
+msgstr "Προσθήκη νέας ομάδας"
+
+#: 
+msgid "Add all to cart"
+msgstr "Προσθήκη όλων στη λίστα"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Αυτόματη ανίχνευση συντεταγμένων από διεύθυνση"
+
+#: 
+msgid "Basic Information"
+msgstr "Βασικές πληροφορίες"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Οι πληροφορίες της ενορίας αποθηκεύτηκαν επιτυχώς."
+
+#: 
+msgid "Church name is required."
+msgstr "Το όνομα της ενορίας είναι υποχρεωτικό."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Το όνομα της ενορίας είναι υποχρεωτικό. Συμπληρώστε την καρτέλα Βασικές πληροφορίες."
+
+#: 
+msgid "City is required."
+msgstr "Η πόλη είναι υποχρεωτική."
+
+#: 
+msgid "Class Overview"
+msgstr "Επισκόπηση τάξης"
+
+#: 
+msgid "Clear filter"
+msgstr "Εκκαθάριση φίλτρου"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Το στοιχείο διαμόρφωσης δεν βρέθηκε"
+
+#: 
+msgid "Country is required."
+msgstr "Η χώρα είναι υποχρεωτική."
+
+#: 
+msgid "Discord Chat"
+msgstr "Συνομιλία Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Εμφάνιση προεπισκόπησης"
+
+#: 
+msgid "Email (To)"
+msgstr "Email (Προς)"
+
+#: 
+msgid "Email address is required."
+msgstr "Η διεύθυνση email είναι υποχρεωτική."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Η οικογένεια δεν έχει διεύθυνση για γεωκωδικοποίηση"
+
+#: 
+msgid "Father"
+msgstr "Πατέρας"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Γεωκωδικοποιημένες συντεταγμένες:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Αποτυχία γεωκωδικοποίησης"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Επιτυχής γεωκωδικοποίηση"
+
+#: 
+msgid "In Cart"
+msgstr "Στη λίστα"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Ανενεργές ομάδες"
+
+#: 
+msgid "Kids Email"
+msgstr "Email παιδιών"
+
+#: 
+msgid "Language & Localization"
+msgstr "Γλώσσα και τοπικές ρυθμίσεις"
+
+#: 
+msgid "Location & Map"
+msgstr "Τοποθεσία και χάρτης"
+
+#: 
+msgid "Location Information"
+msgstr "Πληροφορίες τοποθεσίας"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Κύριο email επικοινωνίας για τις ανακοινώσεις της ενορίας."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Κύριος τηλεφωνικός αριθμός της ενορίας."
+
+#: 
+msgid "Male / Female"
+msgstr "Άνδρας / Γυναίκα"
+
+#: 
+msgid "Map"
+msgstr "Χάρτης"
+
+#: 
+msgid "Mother"
+msgstr "Μητέρα"
+
+#: 
+msgid "No members"
+msgstr "Δεν υπάρχουν ενορίτες"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Προαιρετικό. URL της ιστοσελίδας της ενορίας σας."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Γονείς/Κηδεμόνες"
+
+#: 
+msgid "Phone number is required."
+msgstr "Ο αριθμός τηλεφώνου είναι υποχρεωτικός."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Ανανέωση συντεταγμένων"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Υποχρεωτικό. Χρησιμοποιείται σε όλες τις αναφορές και ανακοινώσεις."
+
+#: 
+msgid "Save Church Information"
+msgstr "Αποθήκευση πληροφοριών ενορίας"
+
+#: 
+msgid "Search or select..."
+msgstr "Αναζήτηση ή επιλογή..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Αποστολή email με παραλήπτες στο πεδίο ΚΚ (κρυφοί μεταξύ τους)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Αποστολή email με παραλήπτες στο πεδίο Προς"
+
+#: 
+msgid "State is required."
+msgstr "Η περιφέρεια είναι υποχρεωτική."
+
+#: 
+msgid "Street Address"
+msgstr "Διεύθυνση"
+
+#: 
+msgid "Street address is required."
+msgstr "Η διεύθυνση είναι υποχρεωτική."
+
+#: 
+msgid "Student Information"
+msgstr "Πληροφορίες μαθητή"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Γλώσσα συστήματος για την ενορία. Επηρεάζει τις μορφές ημερομηνίας, τηλεφώνου και άλλες τοπικές ρυθμίσεις."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Έτσι θα εμφανίζονται οι πληροφορίες της ενορίας σας σε αναφορές και καταλόγους."
+
+#: 
+msgid "Time Zone"
+msgstr "Ζώνη ώρας"
+
+#: 
+msgid "Toggle overview"
+msgstr "Εναλλαγή επισκόπησης"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Σύνολο εγγεγραμμένων"
+
+#: 
+msgid "Total Groups"
+msgstr "Σύνολο ομάδων"
+
+#: 
+msgid "Total Memberships"
+msgstr "Σύνολο μελών"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Ενημερώνεται αυτόματα σε κάθε αποθήκευση."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Χρησιμοποιείται για τον προγραμματισμό εκδηλώσεων και ωρών αναφοράς."
+
+#: 
+msgid "View Full Details"
+msgstr "Προβολή πλήρων λεπτομερειών"
+
+#: 
+msgid "View Profile"
+msgstr "Προβολή προφίλ"
+
+#: 
+msgid "Website"
+msgstr "Ιστοσελίδα"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Ο ταχυδρομικός κώδικας είναι υποχρεωτικός."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Επιλογή χώρας —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Επιλογή περιφέρειας —"
 

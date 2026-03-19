@@ -500,10 +500,6 @@ msgid "No"
 msgstr "Nein"
 
 #: 
-msgid "Developer Chat"
-msgstr "Entwicklerchat"
-
-#: 
 msgid "Event Checkin"
 msgstr "Anmeldung zur Veranstaltung"
 
@@ -1922,10 +1918,6 @@ msgid "Family Geographic"
 msgstr "Familienorte"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Alle Familienkoordinaten aktualisieren"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Möglichkeiten zur Freiwilligenarbeit"
 
@@ -2607,10 +2599,6 @@ msgid "Calendar Year"
 msgstr "Kalenderjahr"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Latitude & Longitude aktualisieren"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bestätigung Benutzer löschen"
 
@@ -3197,14 +3185,6 @@ msgid "Teachers"
 msgstr "Lehrer"
 
 #: 
-msgid "Send Message"
-msgstr "Nachricht senden"
-
-#: 
-msgid "Quick Status"
-msgstr "Status"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Geburtstage nach Monat"
 
@@ -3219,58 +3199,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Heimatadresse"
-
-#: 
-msgid "Dad Name"
-msgstr "Name des Vaters"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Mobiltelefon des Vaters"
-
-#: 
-msgid "Dad Email"
-msgstr "Email Vater"
-
-#: 
-msgid "Mom Name"
-msgstr "Mutter Name"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mutter Mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mutter Email"
-
-#: 
-msgid "Compose New Message"
-msgstr "Neue Nachricht verfassen"
-
-#: 
-msgid "Kids Emails"
-msgstr "Kinder Email"
-
-#: 
-msgid "Parents Emails"
-msgstr "Eltern Email"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Lehrer Email"
-
-#: 
-msgid "Attachment"
-msgstr "Anhang"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Verwerfen"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3504,10 +3432,6 @@ msgid "Self Registration"
 msgstr "Selbstregistrierung"
 
 #: 
-msgid "No coordinates found"
-msgstr "Keine Koordinaten gefunden"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonym"
 
@@ -3663,10 +3587,6 @@ msgid "with this property..."
 msgstr "mit der Eigenschaft..."
 
 #: 
-msgid "Church Email"
-msgstr "E-Mail-Adresse der Gemeinde"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Nur diese Klassifikation im Verzeichnis inkludieren, mit Komma getrennt"
@@ -3728,14 +3648,6 @@ msgid "First month of the fiscal year"
 msgstr "Erster Monat des Steuerjahres"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Breitengrad der Gemeinde, der zur Zentrierung der Google-Karte verwendet wird"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Längengrad der Kirche, der zur Zentrierung der Google-Karte verwendet wird"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Setzen Sie true, um die Eingabe des Freundschaftsdatums im Personen-Editor zu deaktivieren.  Setzen Sie false, um die Eingabe des Freundschaftsdatums im Personen-Editor zu aktivieren."
 
@@ -3782,22 +3694,6 @@ msgstr "Linker Rand (1 = 1/100stel Zoll)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Linienstärke (1 = 1/100 Zoll)"
-
-#: 
-msgid "Church City"
-msgstr "Ort der Gemeinde"
-
-#: 
-msgid "Church State"
-msgstr "Bundesland der Gemeinde:"
-
-#: 
-msgid "Church Zip"
-msgstr "PLZ der Gemeinde"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefonnummer der Gemeinde"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6113,10 +6009,6 @@ msgid "system user login reset"
 msgstr "System-Benutzeranmeldung zurücksetzen"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familien ohne Koordinaten"
-
-#: 
 msgid "Notification for"
 msgstr "Benachrichtigung für"
 
@@ -6254,10 +6146,6 @@ msgid "Text Cart"
 msgstr "Textnachricht"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Webseite Ihrer Gemeinde"
-
-#: 
 msgid "Self Verification"
 msgstr "Selbstüberprüfung"
 
@@ -6302,16 +6190,8 @@ msgid "Checking Cart Status"
 msgstr "Überprüfen des Warenkorb-Status"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Alle Mitglieder dieser Gruppe befinden sich im Warenkorb."
-
-#: 
 msgid "Remove all"
 msgstr "Alle entfernen"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Nicht alle Mitglieder dieser Gruppe befinden sich im Warenkorb."
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6715,10 +6595,6 @@ msgstr "von Personen"
 #: 
 msgid "System Upgrade"
 msgstr "System Upgrade"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Upgrade erforderlich"
 
 #: 
 msgid "Help & Manual"
@@ -7359,10 +7235,6 @@ msgstr "Nachname, Vorname mittlerer Name"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bitte bestätigen Sie die Deaktivierung der Zwei-Faktor-Authentifizierung für diesen Benutzer"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Für die Geokodierung von Adressen verwendeter Google Maps API-Schlüssel"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8912,10 +8784,6 @@ msgid "Current Software Version"
 msgstr "Aktuelle Softwareversion"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Datenbankupgrade erfolgreich abgeschlossen. Leitet zum Dashboard weiter..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum & Zeit"
 
@@ -9075,14 +8943,6 @@ msgstr "Predigt / Ereignistext"
 #: 
 msgid "Unclassified"
 msgstr "Nicht klassifiziert"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Datenbank jetzt aktualisieren"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Ihre ChurchCRM-Installation benötigt ein Datenbankupgrade, um der installierten Softwareversion zu entsprechen. Dieser Vorgang wendet Schema- und Datenmigration an. Stellen Sie sicher, dass Sie eine aktuelle Sicherung haben, bevor Sie fortfahren."
 
 #: 
 msgid "added to this event"
@@ -10251,10 +10111,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Ihr Geschäftsjahr beginnt im Monat"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Postleitzahl"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-Erweiterung erforderlich für Upgrades"
 
@@ -11154,16 +11010,6 @@ msgstr "Erwartet"
 msgid "Failed to delete kiosk"
 msgstr "Kiosk konnte nicht gelöscht werden"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Geschäftsjahr."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Gruppe der registrierten Schüler"
-
 #: 
 msgid "Here"
 msgstr "Hier"
@@ -11215,16 +11061,6 @@ msgstr "Abholanfrage"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Bitte begeben Sie sich so schnell wie möglich zum Klassenzimmer."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Zusagenübersicht nach Familienname für jeden Fonds für das ausgewählte Geschäftsjahr"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrierte Schüler"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12466,4 +12302,256 @@ msgstr "Alle Benutzer zur Anmeldung bei der Zwei-Faktor-Authentifizierung verpfl
 #: 
 msgid "Select the desired event"
 msgstr "Gewünschte Veranstaltung auswählen"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Eine Karte erscheint hier, sobald eine Adresse gespeichert wird. Koordinaten werden automatisch ermittelt — keine manuelle Eingabe erforderlich."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktive Gruppen"
+
+#: 
+msgid "Add New Group"
+msgstr "Neue Gruppe hinzufügen"
+
+#: 
+msgid "Add all to cart"
+msgstr "Alle zur Auswahl hinzufügen"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Koordinaten automatisch anhand der Adresse ermitteln"
+
+#: 
+msgid "Basic Information"
+msgstr "Grundinformationen"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Gemeindeinformationen erfolgreich gespeichert."
+
+#: 
+msgid "Church name is required."
+msgstr "Der Gemeindename ist erforderlich."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Der Gemeindename ist erforderlich. Bitte füllen Sie die Registerkarte Grundinformationen aus."
+
+#: 
+msgid "City is required."
+msgstr "Die Stadt ist erforderlich."
+
+#: 
+msgid "Class Overview"
+msgstr "Klassenübersicht"
+
+#: 
+msgid "Clear filter"
+msgstr "Filter löschen"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurationselement nicht gefunden"
+
+#: 
+msgid "Country is required."
+msgstr "Das Land ist erforderlich."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord-Chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Vorschau anzeigen"
+
+#: 
+msgid "Email (To)"
+msgstr "E-Mail (An)"
+
+#: 
+msgid "Email address is required."
+msgstr "Die E-Mail-Adresse ist erforderlich."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Familie hat keine Adresse für die Geokodierung"
+
+#: 
+msgid "Father"
+msgstr "Vater"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokodierte Koordinaten:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokodierung fehlgeschlagen"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokodierung erfolgreich"
+
+#: 
+msgid "In Cart"
+msgstr "In der Auswahl"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Inaktive Gruppen"
+
+#: 
+msgid "Kids Email"
+msgstr "E-Mail der Kinder"
+
+#: 
+msgid "Language & Localization"
+msgstr "Sprache und Lokalisierung"
+
+#: 
+msgid "Location & Map"
+msgstr "Standort und Karte"
+
+#: 
+msgid "Location Information"
+msgstr "Standortinformationen"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Haupt-E-Mail für Gemeindekommunikation."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Haupttelefonnummer der Gemeinde."
+
+#: 
+msgid "Male / Female"
+msgstr "Männlich / Weiblich"
+
+#: 
+msgid "Map"
+msgstr "Karte"
+
+#: 
+msgid "Mother"
+msgstr "Mutter"
+
+#: 
+msgid "No members"
+msgstr "Keine Mitglieder"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Optional. URL der Website Ihrer Gemeinde."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Eltern/Erziehungsberechtigte"
+
+#: 
+msgid "Phone number is required."
+msgstr "Die Telefonnummer ist erforderlich."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Koordinaten aktualisieren"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Erforderlich. Wird in allen Berichten und Kommunikationen verwendet."
+
+#: 
+msgid "Save Church Information"
+msgstr "Gemeindeinformationen speichern"
+
+#: 
+msgid "Search or select..."
+msgstr "Suchen oder auswählen..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "E-Mail mit Empfängern im BCC-Feld senden (füreinander verborgen)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "E-Mail mit Empfängern im An-Feld senden"
+
+#: 
+msgid "State is required."
+msgstr "Das Bundesland ist erforderlich."
+
+#: 
+msgid "Street Address"
+msgstr "Straßenadresse"
+
+#: 
+msgid "Street address is required."
+msgstr "Die Straßenadresse ist erforderlich."
+
+#: 
+msgid "Student Information"
+msgstr "Schülerinformationen"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Systemsprache für die Gemeinde. Beeinflusst Datumsformate, Telefonnummernformate und andere Lokalisierungen."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "So erscheinen Ihre Gemeindeinformationen in Berichten und Verzeichnissen."
+
+#: 
+msgid "Time Zone"
+msgstr "Zeitzone"
+
+#: 
+msgid "Toggle overview"
+msgstr "Übersicht umschalten"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Gesamt eingeschrieben"
+
+#: 
+msgid "Total Groups"
+msgstr "Gruppen gesamt"
+
+#: 
+msgid "Total Memberships"
+msgstr "Mitgliedschaften gesamt"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Wird bei jedem Speichern automatisch aktualisiert."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Wird für die Planung von Veranstaltungen und Berichtszeiten verwendet."
+
+#: 
+msgid "View Full Details"
+msgstr "Vollständige Details anzeigen"
+
+#: 
+msgid "View Profile"
+msgstr "Profil anzeigen"
+
+#: 
+msgid "Website"
+msgstr "Website"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Die Postleitzahl ist erforderlich."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Land auswählen —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Bundesland auswählen —"
 

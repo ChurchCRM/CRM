@@ -62,6 +62,12 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $filterState = InputUtils::legacyFilterInput($queryParams['State']);
     }
 
+    // Geocoding status filter: 'unverified' = has address but no lat/lon
+    $filterGeocoded = '';
+    if (!empty($queryParams['geocoded'])) {
+        $filterGeocoded = InputUtils::legacyFilterInput($queryParams['geocoded']);
+    }
+
     // Build the base query and apply filters
     $familiesQuery = FamilyQuery::create()->orderByName();
 
@@ -87,6 +93,14 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         $sMode = $sMode . ' - ' . $filterState;
     }
 
+    if ($filterGeocoded === 'unverified') {
+        // Has a street address entered but latitude/longitude are not set
+        // Matches hasLatitudeAndLongitude(): consider unverified when either coordinate is missing
+        $familiesQuery->filterByAddress1('', Criteria::NOT_EQUAL);
+        $familiesQuery->where('(family_fam.fam_Latitude IS NULL OR family_fam.fam_Latitude = 0) OR (family_fam.fam_Longitude IS NULL OR family_fam.fam_Longitude = 0)');
+        $sMode = $sMode . ' - ' . gettext('Unverified Addresses');
+    }
+
     $families = $familiesQuery->find();
     $pageArgs = [
         'sMode' => $sMode,
@@ -94,6 +108,7 @@ function listFamilies(Request $request, Response $response, array $args): Respon
         'families' => $families,
         'filterCity' => $filterCity,
         'filterState' => $filterState,
+        'filterGeocoded' => $filterGeocoded,
         'familyActiveStatus' => $familyActiveStatus,
     ];
 

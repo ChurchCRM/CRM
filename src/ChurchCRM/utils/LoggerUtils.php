@@ -4,7 +4,6 @@ namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use Monolog\Formatter\JsonFormatter;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
@@ -15,7 +14,7 @@ use Monolog\Processor\PsrLogMessageProcessor;
 class LoggerUtils
 {
     /** Number of daily log files to retain before the oldest is deleted. */
-    private const LOG_RETENTION_DAYS = 3;
+    public const LOG_RETENTION_DAYS = 3;
 
     private static ?Logger $appLogger = null;
     private static ?RotatingFileHandler $appLogHandler = null;
@@ -60,30 +59,18 @@ class LoggerUtils
     }
 
     /**
-     * Create a formatter based on the current log level.
-     * A new instance is returned each time so that loggers initialised before
-     * the database is ready (e.g. the app logger during bootstrap) re-evaluate
-     * the level correctly when they are later rebuilt — avoids a stale cached
-     * JSON formatter being used even when the system is in debug mode.
-     *
-     * Debug  → LineFormatter  (human-readable, one entry per line)
-     * Other  → JsonFormatter  (one JSON object per line, compatible with ELK/Splunk/Datadog)
+     * Create a LineFormatter for all log levels.
+     * The log viewer at /admin/system/logs filters by matching ".LEVEL" (e.g. ".INFO", ".WARNING")
+     * in each line, which requires the standard Monolog LineFormatter output:
+     *   [datetime] channel.LEVEL: message context extra
+     * JsonFormatter breaks that filter, so LineFormatter is always used.
+     * Stack traces are included only at DEBUG level for readability.
      */
-    private static function createFormatter(): LineFormatter|JsonFormatter
+    public static function createFormatter(): LineFormatter
     {
-        if (self::isDebugLogLevel()) {
-            $formatter = new LineFormatter(null, 'Y-m-d\TH:i:s.uP', false, true);
-            $formatter->includeStacktraces(true);
-            return $formatter;
-        }
-
-        // Monolog v3 JsonFormatter(batchMode, appendNewline, ignoreEmptyContextAndExtra, includeStacktraces)
-        return new JsonFormatter(
-            JsonFormatter::BATCH_MODE_NEWLINES,
-            true,
-            true,
-            false
-        );
+        $formatter = new LineFormatter(null, 'Y-m-d\TH:i:s.uP', false, true);
+        $formatter->includeStacktraces(self::isDebugLogLevel());
+        return $formatter;
     }
 
     public static function buildLogFilePath(string $type): string
@@ -107,7 +94,7 @@ class LoggerUtils
      * getTimedFilename() preserves it, producing the standard YYYY-MM-DD-{type}.log
      * when combined with setFilenameFormat('{date}-{filename}', 'Y-m-d').
      */
-    private static function buildRotatingLogBasePath(string $type): string
+    public static function buildRotatingLogBasePath(string $type): string
     {
         try {
             $docRoot = SystemURLs::getDocumentRoot();

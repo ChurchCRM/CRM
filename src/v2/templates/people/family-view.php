@@ -132,7 +132,17 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <!-- Address Card -->
         <div class="card mb-3">
             <div class="card-header">
-                <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?>
+                    <?php if ($family->hasLatitudeAndLongitude()): ?>
+                    <span class="badge badge-success ml-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
+                        <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
+                    </span>
+                    <?php elseif ($family->hasAddress()): ?>
+                    <span class="badge badge-warning ml-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
+                        <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
+                    </span>
+                    <?php endif; ?>
+                </h3>
                 <div class="card-tools float-right">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>

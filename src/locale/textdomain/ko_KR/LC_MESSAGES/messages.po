@@ -480,10 +480,6 @@ msgid "No"
 msgstr "아니요"
 
 #: 
-msgid "Developer Chat"
-msgstr "개발자 채팅"
-
-#: 
 msgid "Event Checkin"
 msgstr "행사 체크인"
 
@@ -1861,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "가족 위치"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "가족 좌표 일괄 업데이트"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "사역"
 
@@ -2533,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "연도 선택"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "위도·경도 업데이트"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "사용자 삭제 확인"
 
@@ -3093,14 +3081,6 @@ msgid "Teachers"
 msgstr "교사"
 
 #: 
-msgid "Send Message"
-msgstr "메시지 보내기"
-
-#: 
-msgid "Quick Status"
-msgstr "빠른 현황"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "월별 생일"
 
@@ -3115,58 +3095,6 @@ msgstr "휴대전화"
 #: 
 msgid "Home Address"
 msgstr "집 주소"
-
-#: 
-msgid "Dad Name"
-msgstr "아버지 이름"
-
-#: 
-msgid "Dad Mobile"
-msgstr "아버지 휴대전화"
-
-#: 
-msgid "Dad Email"
-msgstr "아버지 이메일"
-
-#: 
-msgid "Mom Name"
-msgstr "어머니 이름"
-
-#: 
-msgid "Mom Mobile"
-msgstr "어머니 휴대전화"
-
-#: 
-msgid "Mom Email"
-msgstr "어머니 이메일"
-
-#: 
-msgid "Compose New Message"
-msgstr "새 메시지 작성"
-
-#: 
-msgid "Kids Emails"
-msgstr "학생 이메일"
-
-#: 
-msgid "Parents Emails"
-msgstr "학부모 이메일"
-
-#: 
-msgid "Teachers Emails"
-msgstr "교사 이메일"
-
-#: 
-msgid "Attachment"
-msgstr "첨부 파일"
-
-#: 
-msgid "Max. 32MB"
-msgstr "최대 32MB"
-
-#: 
-msgid "Discard"
-msgstr "삭제"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3393,10 +3321,6 @@ msgid "Self Registration"
 msgstr "자가 등록"
 
 #: 
-msgid "No coordinates found"
-msgstr "좌표를 찾을 수 없습니다"
-
-#: 
 msgid "Anonymous"
 msgstr "익명"
 
@@ -3552,10 +3476,6 @@ msgid "with this property..."
 msgstr "이 속성을 가진..."
 
 #: 
-msgid "Church Email"
-msgstr "교회 이메일"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "명부에 포함할 분류를 쉼표로 구분해 입력하세요."
 
@@ -3616,14 +3536,6 @@ msgid "First month of the fiscal year"
 msgstr "회계 연도 시작 월"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "교회의 위도(지도를 중앙에 맞출 때 사용)"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "교회의 경도(지도를 중앙에 맞출 때 사용)"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "True로 설정하면 개인 정보 편집에서 교제 등록일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
 
@@ -3670,22 +3582,6 @@ msgstr "왼쪽 여백(1 = 1/100인치)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "선 두께(1 = 1/100인치)"
-
-#: 
-msgid "Church City"
-msgstr "교회 도시"
-
-#: 
-msgid "Church State"
-msgstr "교회 주/도"
-
-#: 
-msgid "Church Zip"
-msgstr "교회 우편번호"
-
-#: 
-msgid "Church Phone"
-msgstr "교회 전화번호"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -5999,10 +5895,6 @@ msgid "system user login reset"
 msgstr "시스템 사용자 로그인 초기화"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "좌표 정보가 없는 가족"
-
-#: 
 msgid "Notification for"
 msgstr "알림 대상:"
 
@@ -6139,10 +6031,6 @@ msgid "Text Cart"
 msgstr "문자 발송 카트"
 
 #: 
-msgid "Your Church's Website"
-msgstr "교회 웹사이트"
-
-#: 
 msgid "Self Verification"
 msgstr "자가 확인"
 
@@ -6187,16 +6075,8 @@ msgid "Checking Cart Status"
 msgstr "카트 상태 확인 중"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "이 그룹의 구성원이 모두 카트에 있습니다"
-
-#: 
 msgid "Remove all"
 msgstr "모두 제거"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "이 그룹의 일부만 카트에 있습니다"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6600,10 +6480,6 @@ msgstr "명의 교인"
 #: 
 msgid "System Upgrade"
 msgstr "시스템 업그레이드"
-
-#: 
-msgid "Upgrade Required"
-msgstr "업그레이드 필요"
 
 #: 
 msgid "Help & Manual"
@@ -7239,10 +7115,6 @@ msgstr "성, 이름 미들네임"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "이 사용자의 2단계 인증을 해제할지 확인하세요"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "주소 지오코딩에 사용되는 Google Maps API 키"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8790,10 +8662,6 @@ msgid "Current Software Version"
 msgstr "현재 소프트웨어 버전"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "데이터베이스 업그레이드가 완료되었습니다. 대시보드로 이동하는 중..."
-
-#: 
 msgid "Date & Time"
 msgstr "날짜 및 시간"
 
@@ -8953,14 +8821,6 @@ msgstr "설교 / 행사 텍스트"
 #: 
 msgid "Unclassified"
 msgstr "미분류"
-
-#: 
-msgid "Upgrade database now"
-msgstr "지금 데이터베이스 업그레이드"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM 설치에 설치된 소프트웨어 버전과 일치하도록 데이터베이스 업그레이드가 필요합니다. 이 작업은 스키마 및 데이터 마이그레이션을 적용합니다. 진행하기 전에 최근 백업이 있는지 확인하세요."
 
 #: 
 msgid "added to this event"
@@ -10129,10 +9989,6 @@ msgid "Your fiscal year starts in month"
 msgstr "회계연도 시작 월"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "우편번호"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "업그레이드에 ZipArchive 확장이 필요합니다"
 
@@ -11029,16 +10885,6 @@ msgstr "예상"
 msgid "Failed to delete kiosk"
 msgstr "키오스크 삭제 실패"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "회계연도."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "등록된 학생 그룹"
-
 #: 
 msgid "Here"
 msgstr "여기"
@@ -11090,16 +10936,6 @@ msgstr "픽업 요청"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "가능한 빨리 교실로 와주세요."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "선택한 회계연도의 각 펀드에 대한 가족 이름별 서약 요약"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "등록된 학생"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12340,4 +12176,256 @@ msgstr "모든 사용자에게 이중 인증 등록 요구"
 #: 
 msgid "Select the desired event"
 msgstr "원하는 행사 선택"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "주소가 저장되면 여기에 지도가 표시됩니다. 좌표는 자동으로 감지됩니다 — 수동 입력이 필요하지 않습니다."
+
+#: 
+msgid "Active Groups"
+msgstr "활성 그룹"
+
+#: 
+msgid "Add New Group"
+msgstr "새 그룹 추가"
+
+#: 
+msgid "Add all to cart"
+msgstr "모두 목록에 추가"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "주소를 사용하여 좌표 자동 감지"
+
+#: 
+msgid "Basic Information"
+msgstr "기본 정보"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "교회 정보가 성공적으로 저장되었습니다."
+
+#: 
+msgid "Church name is required."
+msgstr "교회 이름은 필수입니다."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "교회 이름은 필수입니다. 기본 정보 탭을 완성해 주세요."
+
+#: 
+msgid "City is required."
+msgstr "도시는 필수입니다."
+
+#: 
+msgid "Class Overview"
+msgstr "반 개요"
+
+#: 
+msgid "Clear filter"
+msgstr "필터 지우기"
+
+#: 
+msgid "Configuration item not found"
+msgstr "구성 항목을 찾을 수 없습니다"
+
+#: 
+msgid "Country is required."
+msgstr "국가는 필수입니다."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord 채팅"
+
+#: 
+msgid "Display Preview"
+msgstr "미리보기 표시"
+
+#: 
+msgid "Email (To)"
+msgstr "이메일 (받는 사람)"
+
+#: 
+msgid "Email address is required."
+msgstr "이메일 주소는 필수입니다."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "가족에게 지오코딩할 주소가 없습니다"
+
+#: 
+msgid "Father"
+msgstr "아버지"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "지오코딩된 좌표:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "지오코딩 실패"
+
+#: 
+msgid "Geocoding successful"
+msgstr "지오코딩 성공"
+
+#: 
+msgid "In Cart"
+msgstr "목록에 있음"
+
+#: 
+msgid "Inactive Groups"
+msgstr "비활성 그룹"
+
+#: 
+msgid "Kids Email"
+msgstr "자녀 이메일"
+
+#: 
+msgid "Language & Localization"
+msgstr "언어 및 지역화"
+
+#: 
+msgid "Location & Map"
+msgstr "위치 및 지도"
+
+#: 
+msgid "Location Information"
+msgstr "위치 정보"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "교회 소통을 위한 주요 연락 이메일."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "교회의 주요 연락 전화번호."
+
+#: 
+msgid "Male / Female"
+msgstr "남성 / 여성"
+
+#: 
+msgid "Map"
+msgstr "지도"
+
+#: 
+msgid "Mother"
+msgstr "어머니"
+
+#: 
+msgid "No members"
+msgstr "성도 없음"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "선택사항. 교회 웹사이트 URL."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "부모/보호자"
+
+#: 
+msgid "Phone number is required."
+msgstr "전화번호는 필수입니다."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "좌표 새로고침"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "필수. 모든 보고서 및 통신에 사용됩니다."
+
+#: 
+msgid "Save Church Information"
+msgstr "교회 정보 저장"
+
+#: 
+msgid "Search or select..."
+msgstr "검색 또는 선택..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "BCC 필드에 수신자를 넣어 이메일 보내기 (서로 숨겨짐)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "받는 사람 필드에 수신자를 넣어 이메일 보내기"
+
+#: 
+msgid "State is required."
+msgstr "시/도는 필수입니다."
+
+#: 
+msgid "Street Address"
+msgstr "주소"
+
+#: 
+msgid "Street address is required."
+msgstr "주소는 필수입니다."
+
+#: 
+msgid "Student Information"
+msgstr "학생 정보"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "교회의 시스템 언어. 날짜 형식, 전화 형식 및 기타 지역화에 영향을 줍니다."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "교회 정보는 보고서 및 디렉토리에 이렇게 표시됩니다."
+
+#: 
+msgid "Time Zone"
+msgstr "시간대"
+
+#: 
+msgid "Toggle overview"
+msgstr "개요 토글"
+
+#: 
+msgid "Total Enrolled"
+msgstr "총 등록 인원"
+
+#: 
+msgid "Total Groups"
+msgstr "총 그룹 수"
+
+#: 
+msgid "Total Memberships"
+msgstr "총 성도 수"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "저장할 때마다 자동으로 업데이트됩니다."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "이벤트 일정 및 보고 시간에 사용됩니다."
+
+#: 
+msgid "View Full Details"
+msgstr "전체 상세 정보 보기"
+
+#: 
+msgid "View Profile"
+msgstr "프로필 보기"
+
+#: 
+msgid "Website"
+msgstr "웹사이트"
+
+#: 
+msgid "ZIP code is required."
+msgstr "우편번호는 필수입니다."
+
+#: 
+msgid "— Select Country —"
+msgstr "— 국가 선택 —"
+
+#: 
+msgid "— Select State —"
+msgstr "— 시/도 선택 —"
 

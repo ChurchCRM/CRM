@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Tidak"
 
 #: 
-msgid "Developer Chat"
-msgstr "Kontak Pengembang"
-
-#: 
 msgid "Event Checkin"
 msgstr "Kehadiran di Acara"
 
@@ -1863,10 +1859,6 @@ msgid "Family Geographic"
 msgstr "Keluarga Geografis"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Perbarui Semua Koordinat Keluarga"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Peluang Relawan"
 
@@ -2535,10 +2527,6 @@ msgid "Calendar Year"
 msgstr "Tahun kalender"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Perbarui Latitude & Longitude"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Konfirmasi Penghapusan Pengguna"
 
@@ -3096,14 +3084,6 @@ msgid "Teachers"
 msgstr "Guru"
 
 #: 
-msgid "Send Message"
-msgstr "Mengirim pesan"
-
-#: 
-msgid "Quick Status"
-msgstr "Status cepat"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Ulang tahun per bulan"
 
@@ -3118,58 +3098,6 @@ msgstr "Mobile"
 #: 
 msgid "Home Address"
 msgstr "Alamat rumah"
-
-#: 
-msgid "Dad Name"
-msgstr "Nama Ayah"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Ayah Mobile"
-
-#: 
-msgid "Dad Email"
-msgstr "Email Ayah"
-
-#: 
-msgid "Mom Name"
-msgstr "Nama Ibu"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mom Mobile"
-
-#: 
-msgid "Mom Email"
-msgstr "Email Ibu"
-
-#: 
-msgid "Compose New Message"
-msgstr "Tulis Pesan Baru"
-
-#: 
-msgid "Kids Emails"
-msgstr "Email Anak"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email Orang Tua"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email Guru"
-
-#: 
-msgid "Attachment"
-msgstr "Lampiran"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Membuang"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3396,10 +3324,6 @@ msgid "Self Registration"
 msgstr "Pendaftaran Mandiri"
 
 #: 
-msgid "No coordinates found"
-msgstr "Tidak ditemukan koordinat"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
 
@@ -3555,10 +3479,6 @@ msgid "with this property..."
 msgstr "dengan properti ini ..."
 
 #: 
-msgid "Church Email"
-msgstr "Email Gereja"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Masukkan hanya klasifikasi ini dalam direktori, pisahkan dengan koma"
@@ -3621,14 +3541,6 @@ msgid "First month of the fiscal year"
 msgstr "Bulan pertama tahun fiskal"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Lintang gereja, digunakan untuk memusatkan peta Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Bujur gereja, digunakan untuk memusatkan peta Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Set true untuk menonaktifkan memasukkan Tanggal Teman di Editor Orang. Set false untuk mengaktifkan memasukkan Tanggal Teman di Editor Orang."
 
@@ -3675,22 +3587,6 @@ msgstr "Margin Kiri (1 = 1/100 inci)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Ketebalan Garis (1 = 1/100 inci)"
-
-#: 
-msgid "Church City"
-msgstr "Kota /Kabupaten Gereja"
-
-#: 
-msgid "Church State"
-msgstr "Provinsi Gereja"
-
-#: 
-msgid "Church Zip"
-msgstr "Kodepos Gereja"
-
-#: 
-msgid "Church Phone"
-msgstr "Telepon Gereja"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6005,10 +5901,6 @@ msgid "system user login reset"
 msgstr "reset login pengguna sistem"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Keluarga tanpa Info Geo"
-
-#: 
 msgid "Notification for"
 msgstr "Pemberitahuan untuk"
 
@@ -6146,10 +6038,6 @@ msgid "Text Cart"
 msgstr "Troli Teks"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Situs web Gereja Anda"
-
-#: 
 msgid "Self Verification"
 msgstr "Verifikasi diri"
 
@@ -6194,16 +6082,8 @@ msgid "Checking Cart Status"
 msgstr "Memeriksa Status Troli"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Semua anggota grup ini ada di troli"
-
-#: 
 msgid "Remove all"
 msgstr "Menghapus semua"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Tidak semua anggota grup ini ada di troli"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6607,10 +6487,6 @@ msgstr "Orang"
 #: 
 msgid "System Upgrade"
 msgstr "Sistem Upgrade"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Upgrade Diperlukan"
 
 #: 
 msgid "Help & Manual"
@@ -7242,10 +7118,6 @@ msgstr "LastName, FirstName MiddleName"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Kunci API Google Maps digunakan untuk alamat Geocoding"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8794,10 +8666,6 @@ msgid "Current Software Version"
 msgstr "Versi Software Saat Ini"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Pembaruan database berhasil. Mengalihkan ke dasbor..."
-
-#: 
 msgid "Date & Time"
 msgstr "Tanggal & Waktu"
 
@@ -8957,14 +8825,6 @@ msgstr "Teks Khotbah / Kegiatan"
 #: 
 msgid "Unclassified"
 msgstr "Tanpa Klasifikasi"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Perbarui database sekarang"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM memerlukan pembaruan database. Operasi ini akan menerapkan migrasi data. Pastikan Anda memiliki cadangan terbaru sebelum melanjutkan."
 
 #: 
 msgid "added to this event"
@@ -10132,10 +9992,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Tahun fiskal Anda dimulai pada bulan"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Kode Pos"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Ekstensi ZipArchive diperlukan untuk pembaruan"
 
@@ -11031,16 +10887,6 @@ msgstr "Diharapkan"
 msgid "Failed to delete kiosk"
 msgstr "Gagal menghapus kiosk"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tahun Fiskal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kelompok siswa terdaftar"
-
 #: 
 msgid "Here"
 msgstr "Di sini"
@@ -11092,16 +10938,6 @@ msgstr "Permintaan Penjemputan"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Harap segera menuju ke ruang kelas."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Ringkasan janji berdasarkan nama keluarga untuk setiap dana pada tahun fiskal yang dipilih"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Siswa terdaftar"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12342,4 +12178,256 @@ msgstr "Haruskan semua pengguna mendaftar di autentikasi dua faktor"
 #: 
 msgid "Select the desired event"
 msgstr "Pilih acara yang diinginkan"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Peta akan muncul di sini setelah alamat tersimpan. Koordinat terdeteksi secara otomatis — tidak diperlukan input manual."
+
+#: 
+msgid "Active Groups"
+msgstr "Kelompok Aktif"
+
+#: 
+msgid "Add New Group"
+msgstr "Tambah Kelompok Baru"
+
+#: 
+msgid "Add all to cart"
+msgstr "Tambah semua ke daftar"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Deteksi koordinat otomatis menggunakan alamat"
+
+#: 
+msgid "Basic Information"
+msgstr "Informasi Dasar"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informasi jemaat berhasil disimpan."
+
+#: 
+msgid "Church name is required."
+msgstr "Nama jemaat wajib diisi."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Nama jemaat wajib diisi. Lengkapi tab Informasi Dasar."
+
+#: 
+msgid "City is required."
+msgstr "Kota wajib diisi."
+
+#: 
+msgid "Class Overview"
+msgstr "Ikhtisar Kelas"
+
+#: 
+msgid "Clear filter"
+msgstr "Hapus filter"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Item konfigurasi tidak ditemukan"
+
+#: 
+msgid "Country is required."
+msgstr "Negara wajib diisi."
+
+#: 
+msgid "Discord Chat"
+msgstr "Obrolan Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Tampilkan Pratinjau"
+
+#: 
+msgid "Email (To)"
+msgstr "Email (Kepada)"
+
+#: 
+msgid "Email address is required."
+msgstr "Alamat email wajib diisi."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Keluarga tidak memiliki alamat untuk dikodekan secara geografis"
+
+#: 
+msgid "Father"
+msgstr "Ayah"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Koordinat tergeokode:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokoding gagal"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokoding berhasil"
+
+#: 
+msgid "In Cart"
+msgstr "Dalam daftar"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Kelompok Tidak Aktif"
+
+#: 
+msgid "Kids Email"
+msgstr "Email anak-anak"
+
+#: 
+msgid "Language & Localization"
+msgstr "Bahasa & Lokalisasi"
+
+#: 
+msgid "Location & Map"
+msgstr "Lokasi & Peta"
+
+#: 
+msgid "Location Information"
+msgstr "Informasi Lokasi"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Email kontak utama untuk komunikasi jemaat."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Nomor telepon utama jemaat."
+
+#: 
+msgid "Male / Female"
+msgstr "Laki-laki / Perempuan"
+
+#: 
+msgid "Map"
+msgstr "Peta"
+
+#: 
+msgid "Mother"
+msgstr "Ibu"
+
+#: 
+msgid "No members"
+msgstr "Tidak ada anggota"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Opsional. URL situs web jemaat Anda."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Orang Tua/Wali"
+
+#: 
+msgid "Phone number is required."
+msgstr "Nomor telepon wajib diisi."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Perbarui Koordinat"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Wajib. Digunakan di semua laporan dan komunikasi."
+
+#: 
+msgid "Save Church Information"
+msgstr "Simpan Informasi Jemaat"
+
+#: 
+msgid "Search or select..."
+msgstr "Cari atau pilih..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Kirim email dengan penerima di kolom BCC (tersembunyi satu sama lain)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Kirim email dengan penerima di kolom Kepada"
+
+#: 
+msgid "State is required."
+msgstr "Provinsi wajib diisi."
+
+#: 
+msgid "Street Address"
+msgstr "Alamat"
+
+#: 
+msgid "Street address is required."
+msgstr "Alamat wajib diisi."
+
+#: 
+msgid "Student Information"
+msgstr "Informasi Siswa"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Bahasa sistem untuk jemaat. Memengaruhi format tanggal, format telepon, dan lokalisasi lainnya."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Begini cara informasi jemaat Anda akan tampil di laporan dan direktori."
+
+#: 
+msgid "Time Zone"
+msgstr "Zona Waktu"
+
+#: 
+msgid "Toggle overview"
+msgstr "Tampilkan/sembunyikan ikhtisar"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Total Terdaftar"
+
+#: 
+msgid "Total Groups"
+msgstr "Total Kelompok"
+
+#: 
+msgid "Total Memberships"
+msgstr "Total Keanggotaan"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Diperbarui otomatis setiap kali disimpan."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Digunakan untuk penjadwalan acara dan pelaporan waktu."
+
+#: 
+msgid "View Full Details"
+msgstr "Lihat Detail Lengkap"
+
+#: 
+msgid "View Profile"
+msgstr "Lihat Profil"
+
+#: 
+msgid "Website"
+msgstr "Situs Web"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Kode pos wajib diisi."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Pilih Negara —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Pilih Provinsi —"
 

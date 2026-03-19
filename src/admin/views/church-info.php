@@ -18,7 +18,7 @@ $validationError     = $validationError ?? '';
             <div class="card-header p-0 pt-1">
                 <ul class="nav nav-tabs" id="church-info-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link" id="basic-tab"
+                        <a class="nav-link active" id="basic-tab"
                            data-toggle="tab" href="#basic" role="tab"
                            aria-controls="basic" aria-selected="true">
                             <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic Information') ?>
@@ -43,11 +43,12 @@ $validationError     = $validationError ?? '';
             <div class="card-body">
                 <form method="POST"
                       action="<?= $sRootPath ?>/admin/system/church-info"
-                      id="church-info-form">
+                      id="church-info-form"
+                      novalidate>
                     <div class="tab-content" id="church-info-tab-content">
 
                         <!-- Tab 1: Basic Information & Contact -->
-                        <div class="tab-pane fade" id="basic" role="tabpanel" aria-labelledby="basic-tab">
+                        <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
                             <h5 class="mb-4"><?= gettext('Basic Information') ?></h5>
 
                             <div class="form-group">
@@ -324,6 +325,62 @@ $validationError     = $validationError ?? '';
                     </div>
 
                 </form>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                (function () {
+                    // Required fields grouped by the tab nav-link that contains them
+                    var tabFields = {
+                        'basic-tab':    ['sChurchName', 'sChurchPhone', 'sChurchEmail'],
+                        'location-tab': ['sChurchAddress', 'sChurchCity', 'sChurchZip', 'sChurchCountry'],
+                    };
+
+                    document.getElementById('church-info-form').addEventListener('submit', function (e) {
+                        e.preventDefault(); // always prevent — we submit manually when valid
+
+                        var firstInvalidTab = null;
+                        var firstInvalidField = null;
+                        var hasErrors = false;
+
+                        for (var tabId in tabFields) {
+                            var fields = tabFields[tabId];
+                            for (var i = 0; i < fields.length; i++) {
+                                var el = document.getElementById(fields[i]);
+                                if (!el) { continue; }
+
+                                if (!el.value.trim()) {
+                                    el.classList.add('is-invalid');
+                                    hasErrors = true;
+                                    if (!firstInvalidTab) {
+                                        firstInvalidTab  = tabId;
+                                        firstInvalidField = el;
+                                    }
+                                } else {
+                                    el.classList.remove('is-invalid');
+                                }
+                            }
+                        }
+
+                        if (hasErrors) {
+                            // Switch to the tab that has the first error and focus the field
+                            document.getElementById(firstInvalidTab).click();
+                            firstInvalidField.focus();
+                            return;
+                        }
+
+                        // All valid — submit for real
+                        this.submit();
+                    });
+
+                    // Clear is-invalid on input/change so the user gets live feedback
+                    // Both 'input' (text/number) and 'change' (select, Select2) must be covered.
+                    document.querySelectorAll('#church-info-form input, #church-info-form select').forEach(function (el) {
+                        ['input', 'change'].forEach(function (evtName) {
+                            el.addEventListener(evtName, function () {
+                                if (this.value && this.value.trim()) { this.classList.remove('is-invalid'); }
+                            });
+                        });
+                    });
+                })();
+                </script>
             </div><!-- /.card-body -->
         </div><!-- /.card -->
     </div>

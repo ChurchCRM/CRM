@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Ne"
 
 #: 
-msgid "Developer Chat"
-msgstr "Chat vývojářů"
-
-#: 
 msgid "Event Checkin"
 msgstr "Přihlašování na událost"
 
@@ -1859,10 +1855,6 @@ msgid "Family Geographic"
 msgstr "Geografie rodiny"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Aktualizovat souřadnice všech rodin"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Dobrovolnické příležitosti"
 
@@ -2531,10 +2523,6 @@ msgid "Calendar Year"
 msgstr "Kalendářní rok"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Aktualizovat zeměpisnou šířku & délku"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Potvrzení smazání uživatele"
 
@@ -3091,14 +3079,6 @@ msgid "Teachers"
 msgstr "Učitelé"
 
 #: 
-msgid "Send Message"
-msgstr "Poslat zprávu"
-
-#: 
-msgid "Quick Status"
-msgstr "Rychlý stav"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Narozeniny podle měsíce"
 
@@ -3113,58 +3093,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresa domů"
-
-#: 
-msgid "Dad Name"
-msgstr "Jméno táty"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Tátův mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Tátův e-mail"
-
-#: 
-msgid "Mom Name"
-msgstr "Jméno mámy"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mámin mobil"
-
-#: 
-msgid "Mom Email"
-msgstr "Mámin e-mail"
-
-#: 
-msgid "Compose New Message"
-msgstr "Napsat novou zprávu"
-
-#: 
-msgid "Kids Emails"
-msgstr "E-maily dětí"
-
-#: 
-msgid "Parents Emails"
-msgstr "E-maily rodičů"
-
-#: 
-msgid "Teachers Emails"
-msgstr "E-maily učitelů"
-
-#: 
-msgid "Attachment"
-msgstr "Příloha"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Zrušit"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3391,10 +3319,6 @@ msgid "Self Registration"
 msgstr "Samostatná registrace"
 
 #: 
-msgid "No coordinates found"
-msgstr "Nebyly nalezeny žádné souřadnice"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonymní"
 
@@ -3548,10 +3472,6 @@ msgid "with this property..."
 msgstr "s touto vlastností..."
 
 #: 
-msgid "Church Email"
-msgstr "E-mail sboru"
-
-#: 
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Do adresáře zahrnout pouze tyto klasifikace oddělené čárkou"
 
@@ -3612,14 +3532,6 @@ msgid "First month of the fiscal year"
 msgstr "První měsíc fiskálního roku"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Zeměpisná šířka sboru, je použita k vycentrování mapy Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Zeměpisná délka sboru, je použita k vycentrování mapy Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Nastavením hodnoty true zakážete zadávání data spřátelení v Editoru osob.  Nastavením false povolíte zadávání data spřátelení v Editoru osob."
 
@@ -3666,22 +3578,6 @@ msgstr "Levý okraj (1 = 1/100 palce)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Tloušťka čáry (1 = 1/100 palce)"
-
-#: 
-msgid "Church City"
-msgstr "Město sboru"
-
-#: 
-msgid "Church State"
-msgstr "Stát sboru"
-
-#: 
-msgid "Church Zip"
-msgstr "PSČ sboru"
-
-#: 
-msgid "Church Phone"
-msgstr "Telefon sboru"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -5992,10 +5888,6 @@ msgid "system user login reset"
 msgstr "reset přihlášení uživatele systému"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Rodiny bez geoinformace"
-
-#: 
 msgid "Notification for"
 msgstr "Oznámení pro"
 
@@ -6132,10 +6024,6 @@ msgid "Text Cart"
 msgstr "Poslat košík pomocí SMS"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Webová stránka sboru"
-
-#: 
 msgid "Self Verification"
 msgstr "Vlastní ověření"
 
@@ -6180,16 +6068,8 @@ msgid "Checking Cart Status"
 msgstr "Kontrola stavu košíku"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Všichni členové této skupiny jsou v košíku"
-
-#: 
 msgid "Remove all"
 msgstr "Odebrat vše"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Ne všichni členové této skupiny jsou v košíku"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6593,10 +6473,6 @@ msgstr "osob"
 #: 
 msgid "System Upgrade"
 msgstr "Upgrade systému"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Vyžadován upgrade"
 
 #: 
 msgid "Help & Manual"
@@ -7232,10 +7108,6 @@ msgstr "Příjmení, KřestníJméno ProstředníJméno"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte zakázání dvoufaktorového ověření pro tohoto uživatele"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Klíč Google Maps API používaný pro geokódování adres"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8785,10 +8657,6 @@ msgid "Current Software Version"
 msgstr "Aktuální verze softwaru"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Aktualizace databáze byla úspěšně dokončena. Budete přesměrováni na nástěnku..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum a čas"
 
@@ -8948,14 +8816,6 @@ msgstr "Text kázání / události"
 #: 
 msgid "Unclassified"
 msgstr "Neklasifikováno"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Aktualizovat databázi"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Vaše instalace ChurchCRM vyžaduje aktualizaci databáze, aby odpovídala nainstalované verzi softwaru. Tato operace bude zahrnovat migraci schématu a dat. Před pokračováním se ujistěte, že máte aktuální zálohu."
 
 #: 
 msgid "added to this event"
@@ -10125,10 +9985,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Váš fiskální rok začíná v měsíci"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "PSČ"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Pro aktualizace je nutné rozšíření ZipArchive"
 
@@ -11032,16 +10888,6 @@ msgstr "Očekáváno"
 msgid "Failed to delete kiosk"
 msgstr "Nepodařilo se smazat kiosek"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných studentů"
-
 #: 
 msgid "Here"
 msgstr "Zde"
@@ -11093,16 +10939,6 @@ msgstr "Žádost o vyzvednutí"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Prosím, dostavte se do třídy co nejdříve."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Přehled závazků podle jména rodiny pro každý fond za vybraný fiskální rok"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrovaní studenti"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12345,4 +12181,256 @@ msgstr "Vyžadovat, aby se všichni uživatelé přihlásili k dvoufaktorovému 
 #: 
 msgid "Select the desired event"
 msgstr "Vyberte požadovanou akci"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Mapa se zobrazí, jakmile bude uložena adresa. Souřadnice jsou detekovány automaticky — ruční zadávání není potřeba."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktivní skupiny"
+
+#: 
+msgid "Add New Group"
+msgstr "Přidat novou skupinu"
+
+#: 
+msgid "Add all to cart"
+msgstr "Přidat vše do výběru"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Automaticky zjistit souřadnice pomocí adresy"
+
+#: 
+msgid "Basic Information"
+msgstr "Základní informace"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Informace o sboru byly úspěšně uloženy."
+
+#: 
+msgid "Church name is required."
+msgstr "Název sboru je povinný."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Název sboru je povinný. Vyplňte záložku Základní informace."
+
+#: 
+msgid "City is required."
+msgstr "Město je povinné."
+
+#: 
+msgid "Class Overview"
+msgstr "Přehled třídy"
+
+#: 
+msgid "Clear filter"
+msgstr "Vymazat filtr"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Konfigurační položka nenalezena"
+
+#: 
+msgid "Country is required."
+msgstr "Země je povinná."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord chat"
+
+#: 
+msgid "Display Preview"
+msgstr "Zobrazit náhled"
+
+#: 
+msgid "Email (To)"
+msgstr "E-mail (Komu)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-mailová adresa je povinná."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Rodina nemá adresu pro geokódování"
+
+#: 
+msgid "Father"
+msgstr "Otec"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Geokódované souřadnice:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Geokódování selhalo"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Geokódování úspěšné"
+
+#: 
+msgid "In Cart"
+msgstr "Ve výběru"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Neaktivní skupiny"
+
+#: 
+msgid "Kids Email"
+msgstr "E-mail dětí"
+
+#: 
+msgid "Language & Localization"
+msgstr "Jazyk a lokalizace"
+
+#: 
+msgid "Location & Map"
+msgstr "Umístění a mapa"
+
+#: 
+msgid "Location Information"
+msgstr "Informace o umístění"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Hlavní kontaktní e-mail pro komunikaci sboru."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Hlavní kontaktní telefon sboru."
+
+#: 
+msgid "Male / Female"
+msgstr "Muž / Žena"
+
+#: 
+msgid "Map"
+msgstr "Mapa"
+
+#: 
+msgid "Mother"
+msgstr "Matka"
+
+#: 
+msgid "No members"
+msgstr "Žádní členové"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Volitelné. URL webu vašeho sboru."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Rodiče/Opatrovníci"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefonní číslo je povinné."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Obnovit souřadnice"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Povinné. Používá se ve všech zprávách a komunikacích."
+
+#: 
+msgid "Save Church Information"
+msgstr "Uložit informace o sboru"
+
+#: 
+msgid "Search or select..."
+msgstr "Vyhledat nebo vybrat..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Odeslat e-mail s příjemci v poli skryté kopie (skrytí navzájem)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Odeslat e-mail s příjemci v poli Komu"
+
+#: 
+msgid "State is required."
+msgstr "Kraj je povinný."
+
+#: 
+msgid "Street Address"
+msgstr "Adresa"
+
+#: 
+msgid "Street address is required."
+msgstr "Adresa je povinná."
+
+#: 
+msgid "Student Information"
+msgstr "Informace o žákovi"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Jazyk systému pro sbor. Ovlivňuje formáty dat, telefonů a dalších lokalizací."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Takto se budou informace o sboru zobrazovat v reportech a adresářích."
+
+#: 
+msgid "Time Zone"
+msgstr "Časové pásmo"
+
+#: 
+msgid "Toggle overview"
+msgstr "Přepnout přehled"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Celkem zapsaných"
+
+#: 
+msgid "Total Groups"
+msgstr "Skupin celkem"
+
+#: 
+msgid "Total Memberships"
+msgstr "Členství celkem"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Aktualizováno automaticky při každém uložení."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Používá se pro plánování akcí a časy reportů."
+
+#: 
+msgid "View Full Details"
+msgstr "Zobrazit úplné podrobnosti"
+
+#: 
+msgid "View Profile"
+msgstr "Zobrazit profil"
+
+#: 
+msgid "Website"
+msgstr "Webová stránka"
+
+#: 
+msgid "ZIP code is required."
+msgstr "PSČ je povinné."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Vyberte zemi —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Vyberte kraj —"
 

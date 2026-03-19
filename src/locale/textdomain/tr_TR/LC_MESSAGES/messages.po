@@ -480,10 +480,6 @@ msgid "No"
 msgstr "Numara"
 
 #: 
-msgid "Developer Chat"
-msgstr "Geliştirici sohbeti"
-
-#: 
 msgid "Event Checkin"
 msgstr "Olay kontrolü"
 
@@ -1862,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Aile Geographic"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Tüm aile koordinatlarını güncelleyin"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Gönüllü fırsatlar"
 
@@ -2534,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Takvim yılı"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Enlem ve Boylamı Güncelle"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Kullanıcı Silme Onayı"
 
@@ -3095,14 +3083,6 @@ msgid "Teachers"
 msgstr "Öğretmen"
 
 #: 
-msgid "Send Message"
-msgstr "Mesaj gönder"
-
-#: 
-msgid "Quick Status"
-msgstr "Hızlı Durum"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Aylara göre doğum günleri"
 
@@ -3117,58 +3097,6 @@ msgstr "Hareketli"
 #: 
 msgid "Home Address"
 msgstr "Ev Adresi"
-
-#: 
-msgid "Dad Name"
-msgstr "Baba adı"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Baba mobil"
-
-#: 
-msgid "Dad Email"
-msgstr "Baba E -posta"
-
-#: 
-msgid "Mom Name"
-msgstr "Anne Adı"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Anne Mobile"
-
-#: 
-msgid "Mom Email"
-msgstr "Anne e -posta"
-
-#: 
-msgid "Compose New Message"
-msgstr "Yeni mesaj oluştur"
-
-#: 
-msgid "Kids Emails"
-msgstr "Çocuk e -postaları"
-
-#: 
-msgid "Parents Emails"
-msgstr "Ebeveyn e -postaları"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Öğretmen e -postaları"
-
-#: 
-msgid "Attachment"
-msgstr "Ek"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Atmak"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3395,10 +3323,6 @@ msgid "Self Registration"
 msgstr "Kendi Kayıt"
 
 #: 
-msgid "No coordinates found"
-msgstr "Koordinat bulunamadı"
-
-#: 
 msgid "Anonymous"
 msgstr "Anonim"
 
@@ -3554,10 +3478,6 @@ msgid "with this property..."
 msgstr "Bu mülkle .."
 
 #: 
-msgid "Church Email"
-msgstr "Kilise e -posta"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Yalnızca bu sınıflandırmaları dizine ekleyin, virgül ayrılmış"
@@ -3620,14 +3540,6 @@ msgid "First month of the fiscal year"
 msgstr "Mali yılın ilk ayı"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Google haritasını ortalamak için kullanılan kilisenin enlemi"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Google haritasını ortalamak için kullanılan kilisenin boylamı"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Kişiler editöründe arkadaş tarihini devre dışı bırakmak için true ayarlayın. Kişiler Editöründe Arkadaş Tarihini Girmeyi Etkinleştirmek için Yanlış Ayarlayın."
 
@@ -3674,22 +3586,6 @@ msgstr "Sol kenar boşluğu (1 = 1/100. İnç)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Çizgi kalınlığı (1 = 1/100. İnç"
-
-#: 
-msgid "Church City"
-msgstr "Kilise şehri"
-
-#: 
-msgid "Church State"
-msgstr "Kilise devleti"
-
-#: 
-msgid "Church Zip"
-msgstr "Kilise zip"
-
-#: 
-msgid "Church Phone"
-msgstr "Kilise telefonu"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6004,10 +5900,6 @@ msgid "system user login reset"
 msgstr "Sistem Kullanıcı Oturum Açma Sıfırlama"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Coğrafi bilgisi olmayan aileler"
-
-#: 
 msgid "Notification for"
 msgstr "İçin bildirim"
 
@@ -6145,10 +6037,6 @@ msgid "Text Cart"
 msgstr "Metin arabası"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Kilisenizin web sitesi"
-
-#: 
 msgid "Self Verification"
 msgstr "Kendini doğrulama"
 
@@ -6193,16 +6081,8 @@ msgid "Checking Cart Status"
 msgstr "Sepet Durumunu Kontrol Etme"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Bu grubun tüm üyeleri arabada"
-
-#: 
 msgid "Remove all"
 msgstr "Hepsini kaldır"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Bu grubun tüm üyeleri arabada değil"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6606,10 +6486,6 @@ msgstr "insanların"
 #: 
 msgid "System Upgrade"
 msgstr "Sistem güncellemesi"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Yükseltme Gerekli"
 
 #: 
 msgid "Help & Manual"
@@ -7250,10 +7126,6 @@ msgstr "Son ad ilk ad ikinci ad"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Coğrafi kodlama adresleri için kullanılan Google Haritalar API Anahtarı"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8803,10 +8675,6 @@ msgid "Current Software Version"
 msgstr "Mevcut Yazılım Sürümü"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Veritabanı yükseltme başarıyla tamamlandı. Panoya yönlendiriliyor..."
-
-#: 
 msgid "Date & Time"
 msgstr "Tarih ve Saat"
 
@@ -8966,14 +8834,6 @@ msgstr "Vaaz / Etkinlik Metni"
 #: 
 msgid "Unclassified"
 msgstr "Sınıflandırılmamış"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Veritabanını şimdi yükselt"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM kurulumunuzun, yüklü yazılım sürümüyle eşleşmesi için bir veritabanı yükseltmesine ihtiyacı var. Bu işlem şema ve veri göçlerini uygulayacaktır. Lütfen devam etmeden önce güncel bir yedeğiniz olduğundan emin olun."
 
 #: 
 msgid "added to this event"
@@ -10142,10 +10002,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Mali yılınızın başladığı ay:"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Posta Kodu"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Yükseltmeler için ZipArchive eklentisi gereklidir"
 
@@ -11045,16 +10901,6 @@ msgstr "Beklenen"
 msgid "Failed to delete kiosk"
 msgstr "Kiosk silinemedi"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mali Yıl."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kayıtlı öğrenciler grubu"
-
 #: 
 msgid "Here"
 msgstr "Buraya"
@@ -11106,16 +10952,6 @@ msgstr "Teslim Alma Talebi"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Lütfen en kısa sürede sınıfa geçin."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Seçili mali yıl için her fon bazında aile adına göre mali taahhüt özeti"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Kayıtlı öğrenciler"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12357,4 +12193,256 @@ msgstr "Tüm kullanıcıların iki faktörlü kimlik doğrulamaya kaydolmasını
 #: 
 msgid "Select the desired event"
 msgstr "İstenen etkinliği seçin"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Bir sokak adresi kaydedildiğinde burada bir harita görünecektir. Koordinatlar otomatik olarak algılanır — manuel giriş gerekmez."
+
+#: 
+msgid "Active Groups"
+msgstr "Aktif Gruplar"
+
+#: 
+msgid "Add New Group"
+msgstr "Yeni Grup Ekle"
+
+#: 
+msgid "Add all to cart"
+msgstr "Tümünü listeye ekle"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Adres kullanarak koordinatları otomatik algıla"
+
+#: 
+msgid "Basic Information"
+msgstr "Temel Bilgiler"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Kilise bilgileri başarıyla kaydedildi."
+
+#: 
+msgid "Church name is required."
+msgstr "Kilise adı zorunludur."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Kilise adı zorunludur. Lütfen Temel Bilgiler sekmesini tamamlayın."
+
+#: 
+msgid "City is required."
+msgstr "Şehir zorunludur."
+
+#: 
+msgid "Class Overview"
+msgstr "Sınıf Genel Bakış"
+
+#: 
+msgid "Clear filter"
+msgstr "Filtreyi temizle"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Yapılandırma öğesi bulunamadı"
+
+#: 
+msgid "Country is required."
+msgstr "Ülke zorunludur."
+
+#: 
+msgid "Discord Chat"
+msgstr "Discord Sohbeti"
+
+#: 
+msgid "Display Preview"
+msgstr "Önizlemeyi Göster"
+
+#: 
+msgid "Email (To)"
+msgstr "E-posta (Kime)"
+
+#: 
+msgid "Email address is required."
+msgstr "E-posta adresi zorunludur."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "Ailenin coğrafi kodlama için sokak adresi yok"
+
+#: 
+msgid "Father"
+msgstr "Baba"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Coğrafi kodlanmış koordinatlar:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Coğrafi kodlama başarısız oldu"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Coğrafi kodlama başarılı"
+
+#: 
+msgid "In Cart"
+msgstr "Listede"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Aktif Olmayan Gruplar"
+
+#: 
+msgid "Kids Email"
+msgstr "Çocukların E-postası"
+
+#: 
+msgid "Language & Localization"
+msgstr "Dil ve Yerelleştirme"
+
+#: 
+msgid "Location & Map"
+msgstr "Konum ve Harita"
+
+#: 
+msgid "Location Information"
+msgstr "Konum Bilgisi"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Kilise iletişimi için ana iletişim e-postası."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Kilisenin ana iletişim telefon numarası."
+
+#: 
+msgid "Male / Female"
+msgstr "Erkek / Kadın"
+
+#: 
+msgid "Map"
+msgstr "Harita"
+
+#: 
+msgid "Mother"
+msgstr "Anne"
+
+#: 
+msgid "No members"
+msgstr "Üye yok"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "İsteğe bağlı. Kilise web sitenizin URL'si."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Ebeveynler/Vasiler"
+
+#: 
+msgid "Phone number is required."
+msgstr "Telefon numarası zorunludur."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Koordinatları Yenile"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Zorunlu. Tüm raporlarda ve iletişimlerde kullanılır."
+
+#: 
+msgid "Save Church Information"
+msgstr "Kilise Bilgilerini Kaydet"
+
+#: 
+msgid "Search or select..."
+msgstr "Ara veya seç..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Alıcıları GCC alanında e-posta gönder (birbirinden gizli)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Alıcıları Kime alanında e-posta gönder"
+
+#: 
+msgid "State is required."
+msgstr "İl zorunludur."
+
+#: 
+msgid "Street Address"
+msgstr "Sokak Adresi"
+
+#: 
+msgid "Street address is required."
+msgstr "Sokak adresi zorunludur."
+
+#: 
+msgid "Student Information"
+msgstr "Öğrenci Bilgisi"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Kilise için sistem dili. Tarih biçimlerini, telefon biçimlerini ve diğer yerelleştirmeleri etkiler."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Kilise bilgileriniz raporlarda ve dizinlerde böyle görünecektir."
+
+#: 
+msgid "Time Zone"
+msgstr "Saat Dilimi"
+
+#: 
+msgid "Toggle overview"
+msgstr "Genel bakışı aç/kapat"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Toplam Kayıtlı"
+
+#: 
+msgid "Total Groups"
+msgstr "Toplam Gruplar"
+
+#: 
+msgid "Total Memberships"
+msgstr "Toplam Üyelikler"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Her kaydedildiğinde otomatik olarak güncellenir."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Etkinlik planlaması ve raporlama zamanları için kullanılır."
+
+#: 
+msgid "View Full Details"
+msgstr "Tüm Ayrıntıları Görüntüle"
+
+#: 
+msgid "View Profile"
+msgstr "Profili Görüntüle"
+
+#: 
+msgid "Website"
+msgstr "Web Sitesi"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Posta kodu zorunludur."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Ülke Seçin —"
+
+#: 
+msgid "— Select State —"
+msgstr "— İl Seçin —"
 

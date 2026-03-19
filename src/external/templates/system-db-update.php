@@ -1,13 +1,15 @@
 <?php
 /**
- * Template for System DB Update
- * Expects $this->errorMessage to be available when included via the controller
+ * Template for System DB Version Mismatch
+ *
+ * Shown when:
+ *  1. The DB version is newer than the installed software (downgrade detected)
+ *  2. An automatic database upgrade failed (error from Bootstrapper)
  */
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\VersionUtils;
 
-$sPageTitle = gettext('Upgrade Required');
+$sPageTitle = gettext('Version Mismatch');
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
@@ -15,33 +17,33 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-start">
-                <div class="mr-3"><i class="fa-solid fa-triangle-exclamation fa-2x text-warning"></i></div>
+                <div class="mr-3"><i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i></div>
                 <div>
-                    <h3 class="mb-1"><?= gettext('Upgrade Required') ?></h3>
-                    <p class="text-muted mb-2"><?= gettext('Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding.') ?></p>
+                    <?php if (!empty($errorMessage)) { ?>
+                        <h3 class="mb-1"><?= gettext('Database Upgrade Failed') ?></h3>
+                        <p class="text-muted mb-2"><?= gettext('An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.') ?></p>
 
-                    <ul class="list-unstyled small text-muted">
-                        <li><strong><?= gettext('Current DB Version') ?>:</strong> <?= VersionUtils::getDBVersion() ?></li>
-                        <li><strong><?= gettext('Current Software Version') ?>:</strong> <?= VersionUtils::getInstalledVersion() ?></li>
-                    </ul>
+                        <ul class="list-unstyled small text-muted">
+                            <li><strong><?= gettext('Current DB Version') ?>:</strong> <?= InputUtils::escapeHTML($dbVersion) ?></li>
+                            <li><strong><?= gettext('Current Software Version') ?>:</strong> <?= InputUtils::escapeHTML($softwareVersion) ?></li>
+                        </ul>
 
-                    <?php if (!empty($successMessage)) { ?>
-                        <div class="alert alert-success mt-3" role="alert">
-                            <i class="fa-solid fa-check-circle fa-fw"></i>
-                            <?= InputUtils::escapeHTML($successMessage) ?>
-                        </div>
-                        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                            // Redirect to dashboard after short delay
-                            setTimeout(function(){ window.location = "<?= SystemURLs::getRootPath() ?>/v2/dashboard"; }, 2500);
-                        </script>
-                    <?php } else if (empty($errorMessage)) { ?>
-                        <form id="dbUpgradeForm" class="mt-3" method="post" action="<?= SystemURLs::getRootPath() ?>/external/system/db-upgrade">
-                            <button type="submit" class="btn btn-primary" id="upgradeDatabase"><i class="fa-solid fa-database"></i> <?= gettext('Upgrade database now') ?></button>
-                        </form>
-                    <?php } else { ?>
                         <div class="alert alert-danger mt-3" role="alert">
                             <i class="fa-solid fa-triangle-exclamation fa-fw"></i>
                             <?= InputUtils::escapeHTML($errorMessage) ?>
+                        </div>
+                    <?php } else { ?>
+                        <h3 class="mb-1"><?= gettext('Software Update Required') ?></h3>
+                        <p class="text-muted mb-2"><?= gettext('Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.') ?></p>
+
+                        <ul class="list-unstyled small text-muted">
+                            <li><strong><?= gettext('Current DB Version') ?>:</strong> <?= InputUtils::escapeHTML($dbVersion) ?></li>
+                            <li><strong><?= gettext('Installed Software Version') ?>:</strong> <?= InputUtils::escapeHTML($softwareVersion) ?></li>
+                        </ul>
+
+                        <div class="alert alert-warning mt-3" role="alert">
+                            <i class="fa-solid fa-info-circle fa-fw"></i>
+                            <?= gettext('Please upgrade ChurchCRM to version') ?> <strong><?= InputUtils::escapeHTML($dbVersion) ?></strong> <?= gettext('or later to continue.') ?>
                         </div>
                     <?php } ?>
                 </div>

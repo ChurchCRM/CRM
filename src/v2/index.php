@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
+use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -22,10 +23,12 @@ SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
-// CorsMiddleware runs FIRST, AuthMiddleware runs SECOND, VersionMiddleware runs LAST
+// Middleware are added in reverse execution order: added last runs first.
+// Execution order: VersionMiddleware → AuthMiddleware → ChurchInfoRequiredMiddleware → CorsMiddleware
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 $app->add(new CorsMiddleware());
+$app->add(new ChurchInfoRequiredMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 

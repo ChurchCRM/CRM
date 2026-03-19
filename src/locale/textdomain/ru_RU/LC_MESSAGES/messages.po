@@ -492,10 +492,6 @@ msgid "No"
 msgstr "Нет"
 
 #: 
-msgid "Developer Chat"
-msgstr "Чат разработчика"
-
-#: 
 msgid "Event Checkin"
 msgstr "Чек-ин мероприятия"
 
@@ -1910,10 +1906,6 @@ msgid "Family Geographic"
 msgstr "География семей "
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Обновить все семейные координаты"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Служения"
 
@@ -2593,10 +2585,6 @@ msgid "Calendar Year"
 msgstr "Календарный год"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Обновить широту и долготу"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Пользователь подтверждения удаления"
 
@@ -3179,14 +3167,6 @@ msgid "Teachers"
 msgstr "Учителя"
 
 #: 
-msgid "Send Message"
-msgstr "Отправить сообщение"
-
-#: 
-msgid "Quick Status"
-msgstr "Быстрый статус"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Дни рождения по месяцам"
 
@@ -3201,58 +3181,6 @@ msgstr "Мобильный телефон"
 #: 
 msgid "Home Address"
 msgstr "Домашний адрес"
-
-#: 
-msgid "Dad Name"
-msgstr "Имя отца"
-
-#: 
-msgid "Dad Mobile"
-msgstr "Мобильный телефон отца"
-
-#: 
-msgid "Dad Email"
-msgstr "Электронная почта отца"
-
-#: 
-msgid "Mom Name"
-msgstr "Имя мамы"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Мобильный телефон мамы"
-
-#: 
-msgid "Mom Email"
-msgstr "Электронная почта мамы"
-
-#: 
-msgid "Compose New Message"
-msgstr "Написать новое сообщение"
-
-#: 
-msgid "Kids Emails"
-msgstr "Электронная почта детей"
-
-#: 
-msgid "Parents Emails"
-msgstr "Электронная почта родителей"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Электронная почта учителей"
-
-#: 
-msgid "Attachment"
-msgstr "Вложение"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Максимально 32 MB"
-
-#: 
-msgid "Discard"
-msgstr "Отменить"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3484,10 +3412,6 @@ msgid "Self Registration"
 msgstr "Самостоятельная регистрация"
 
 #: 
-msgid "No coordinates found"
-msgstr "Координаты не найдены"
-
-#: 
 msgid "Anonymous"
 msgstr "Анонимный"
 
@@ -3642,10 +3566,6 @@ msgid "with this property..."
 msgstr "с этим свойством"
 
 #: 
-msgid "Church Email"
-msgstr "Электронная почта церкви"
-
-#: 
 #, fuzzy
 msgid "Include only these classifications in the directory, comma separated"
 msgstr "Включать в каталог только эти классификации, разделенные запятыми."
@@ -3708,14 +3628,6 @@ msgid "First month of the fiscal year"
 msgstr "Первый месяц финансового года"
 
 #: 
-msgid "Latitude of the church, used to center the Google map"
-msgstr "Широта церкви, используемая для центрирования карты Google"
-
-#: 
-msgid "Longitude of the church, used to center the Google map"
-msgstr "Долгота церкви, используемая для центрирования карты Google"
-
-#: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr "Установите true, чтобы запретить ввод даты вступления в друзья в редакторе персон. Установите false, чтобы разрешить."
 
@@ -3762,22 +3674,6 @@ msgstr "Левое поле (1 = 1/100 дюйма)"
 #: 
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr "Толщина линии (1 = 1/100 дюйма"
-
-#: 
-msgid "Church City"
-msgstr "В каком городе находится церковь"
-
-#: 
-msgid "Church State"
-msgstr "В какой области находится церковь"
-
-#: 
-msgid "Church Zip"
-msgstr "Почтовый индекс"
-
-#: 
-msgid "Church Phone"
-msgstr "Номер телеофна церкви"
 
 #: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
@@ -6088,10 +5984,6 @@ msgid "system user login reset"
 msgstr "сброс логина пользователя"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Семьи без гео-данных"
-
-#: 
 msgid "Notification for"
 msgstr "Уведомление для"
 
@@ -6228,10 +6120,6 @@ msgid "Text Cart"
 msgstr "Текстовая корзина"
 
 #: 
-msgid "Your Church's Website"
-msgstr "Сайт вашей церкви"
-
-#: 
 msgid "Self Verification"
 msgstr "Самостоятельная проверка"
 
@@ -6276,16 +6164,8 @@ msgid "Checking Cart Status"
 msgstr "Проверка статуса корзины"
 
 #: 
-msgid "All members of this group are in the cart"
-msgstr "Все участники этой группы в корзине"
-
-#: 
 msgid "Remove all"
 msgstr "Удалить всех"
-
-#: 
-msgid "Not all members of this group are in the cart"
-msgstr "Не все участники этой группы в корзине"
 
 #: 
 msgid "Are you sure you want to remove the selected group members?"
@@ -6689,10 +6569,6 @@ msgstr "людей"
 #: 
 msgid "System Upgrade"
 msgstr "Обновление системы"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Требуется обновление"
 
 #: 
 msgid "Help & Manual"
@@ -7332,10 +7208,6 @@ msgstr "Фамилия, Имя Отчество"
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Пожалуйста подтвердите отключение двухфакторной аутентификации для данного пользователя"
-
-#: 
-msgid "Google Maps API Key used for Geocoding addresses"
-msgstr "Ключ API карт Google, используемый для геокодирования адресов"
 
 #: 
 msgid "Send an email notifying users when their account has been deleted"
@@ -8887,10 +8759,6 @@ msgid "Current Software Version"
 msgstr "Текущая версия ПО"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "БД обновлена. Перенаправление..."
-
-#: 
 msgid "Date & Time"
 msgstr "Дата и время"
 
@@ -9050,14 +8918,6 @@ msgstr "Текст проповеди / события"
 #: 
 msgid "Unclassified"
 msgstr "Без классификации"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Обновить базу данных сейчас"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Необходимо обновить базу данных под текущую версию ПО. Убедитесь в наличии бэкапа."
 
 #: 
 msgid "added to this event"
@@ -10228,10 +10088,6 @@ msgid "Your fiscal year starts in month"
 msgstr "Ваш финансовый год начинается в месяце"
 
 #: 
-msgid "Zip / Postal Code"
-msgstr "Почтовый индекс"
-
-#: 
 msgid "ZipArchive extension required for upgrades"
 msgstr "Для обновлений нужно расширение ZipArchive"
 
@@ -11139,16 +10995,6 @@ msgstr "Ожидается"
 msgid "Failed to delete kiosk"
 msgstr "Не удалось удалить киоск"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Финансовый год."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Группа зарегистрированных студентов"
-
 #: 
 msgid "Here"
 msgstr "Здесь"
@@ -11200,16 +11046,6 @@ msgstr "Запрос на забор"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Пожалуйста, пройдите в класс как можно скорее."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Сводка обязательств по семейному имени для каждого фонда за выбранный финансовый год"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Зарегистрированные студенты"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12453,4 +12289,256 @@ msgstr "Требовать от всех пользователей регист
 #: 
 msgid "Select the desired event"
 msgstr "Выберите нужное мероприятие"
+
+#: 
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr "Карта появится здесь после сохранения адреса. Координаты определяются автоматически — ручной ввод не требуется."
+
+#: 
+msgid "Active Groups"
+msgstr "Активные группы"
+
+#: 
+msgid "Add New Group"
+msgstr "Добавить новую группу"
+
+#: 
+msgid "Add all to cart"
+msgstr "Добавить всё в список"
+
+#: 
+msgid "Automatically detect coordinates using address"
+msgstr "Автоматически определить координаты по адресу"
+
+#: 
+msgid "Basic Information"
+msgstr "Основная информация"
+
+#: 
+msgid "Church information saved successfully."
+msgstr "Информация о приходе успешно сохранена."
+
+#: 
+msgid "Church name is required."
+msgstr "Название прихода обязательно."
+
+#: 
+msgid "Church name is required. Please complete the Basic Information tab."
+msgstr "Название прихода обязательно. Заполните вкладку «Основная информация»."
+
+#: 
+msgid "City is required."
+msgstr "Город обязателен."
+
+#: 
+msgid "Class Overview"
+msgstr "Обзор класса"
+
+#: 
+msgid "Clear filter"
+msgstr "Очистить фильтр"
+
+#: 
+msgid "Configuration item not found"
+msgstr "Элемент конфигурации не найден"
+
+#: 
+msgid "Country is required."
+msgstr "Страна обязательна."
+
+#: 
+msgid "Discord Chat"
+msgstr "Чат Discord"
+
+#: 
+msgid "Display Preview"
+msgstr "Показать предварительный просмотр"
+
+#: 
+msgid "Email (To)"
+msgstr "Эл. почта (Кому)"
+
+#: 
+msgid "Email address is required."
+msgstr "Адрес электронной почты обязателен."
+
+#: 
+msgid "Family has no street address to geocode"
+msgstr "У семьи нет адреса для геокодирования"
+
+#: 
+msgid "Father"
+msgstr "Отец"
+
+#: 
+msgid "Geocoded coordinates:"
+msgstr "Геокодированные координаты:"
+
+#: 
+msgid "Geocoding failed"
+msgstr "Геокодирование не удалось"
+
+#: 
+msgid "Geocoding successful"
+msgstr "Геокодирование выполнено"
+
+#: 
+msgid "In Cart"
+msgstr "В списке"
+
+#: 
+msgid "Inactive Groups"
+msgstr "Неактивные группы"
+
+#: 
+msgid "Kids Email"
+msgstr "Эл. почта детей"
+
+#: 
+msgid "Language & Localization"
+msgstr "Язык и локализация"
+
+#: 
+msgid "Location & Map"
+msgstr "Расположение и карта"
+
+#: 
+msgid "Location Information"
+msgstr "Информация о местоположении"
+
+#: 
+msgid "Main contact email for church communications."
+msgstr "Основной контактный адрес эл. почты для общения с приходом."
+
+#: 
+msgid "Main contact phone number for the church."
+msgstr "Основной контактный телефон прихода."
+
+#: 
+msgid "Male / Female"
+msgstr "Мужской / Женский"
+
+#: 
+msgid "Map"
+msgstr "Карта"
+
+#: 
+msgid "Mother"
+msgstr "Мать"
+
+#: 
+msgid "No members"
+msgstr "Нет прихожан"
+
+#: 
+msgid "Optional. URL for your church website."
+msgstr "Необязательно. URL сайта вашего прихода."
+
+#: 
+msgid "Parents/Guardians"
+msgstr "Родители/Опекуны"
+
+#: 
+msgid "Phone number is required."
+msgstr "Номер телефона обязателен."
+
+#: 
+msgid "Refresh Coordinates"
+msgstr "Обновить координаты"
+
+#: 
+msgid "Required. Used on all reports and communications."
+msgstr "Обязательно. Используется во всех отчётах и сообщениях."
+
+#: 
+msgid "Save Church Information"
+msgstr "Сохранить информацию о приходе"
+
+#: 
+msgid "Search or select..."
+msgstr "Поиск или выбор..."
+
+#: 
+msgid "Send email with recipients in BCC field (hidden from each other)"
+msgstr "Отправить письмо с получателями в поле СК (скрытыми друг от друга)"
+
+#: 
+msgid "Send email with recipients in To field"
+msgstr "Отправить письмо с получателями в поле «Кому»"
+
+#: 
+msgid "State is required."
+msgstr "Регион обязателен."
+
+#: 
+msgid "Street Address"
+msgstr "Адрес"
+
+#: 
+msgid "Street address is required."
+msgstr "Адрес обязателен."
+
+#: 
+msgid "Student Information"
+msgstr "Информация об ученике"
+
+#: 
+msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgstr "Язык системы для прихода. Влияет на форматы даты, телефона и другие параметры локализации."
+
+#: 
+msgid "This is how your church information will appear on reports and directories."
+msgstr "Так информация о приходе будет отображаться в отчётах и каталогах."
+
+#: 
+msgid "Time Zone"
+msgstr "Часовой пояс"
+
+#: 
+msgid "Toggle overview"
+msgstr "Переключить обзор"
+
+#: 
+msgid "Total Enrolled"
+msgstr "Всего зачислено"
+
+#: 
+msgid "Total Groups"
+msgstr "Всего групп"
+
+#: 
+msgid "Total Memberships"
+msgstr "Всего членств"
+
+#: 
+msgid "Updated automatically on every save."
+msgstr "Обновляется автоматически при каждом сохранении."
+
+#: 
+msgid "Used for scheduling events and reporting times."
+msgstr "Используется для планирования мероприятий и времени отчётности."
+
+#: 
+msgid "View Full Details"
+msgstr "Просмотр полной информации"
+
+#: 
+msgid "View Profile"
+msgstr "Просмотр профиля"
+
+#: 
+msgid "Website"
+msgstr "Веб-сайт"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Почтовый индекс обязателен."
+
+#: 
+msgid "— Select Country —"
+msgstr "— Выберите страну —"
+
+#: 
+msgid "— Select State —"
+msgstr "— Выберите регион —"
 

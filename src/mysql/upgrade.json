@@ -254,8 +254,8 @@
     "dbVersion": "7.0.2"
   },
   "current": {
-    "versions": ["7.0.2"],
+    "versions": ["7.0.2", "7.0.3", "7.0.4"],
     "scripts": [],
-    "dbVersion": "7.0.3"
+    "dbVersion": "7.0.5"
   }
 }

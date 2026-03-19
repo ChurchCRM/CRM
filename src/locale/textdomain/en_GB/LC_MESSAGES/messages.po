@@ -62,10 +62,6 @@ msgstr "Mobile Phone"
 msgid "Cell"
 msgstr "Mobile"
 
-#: 
-msgid "Church Zip"
-msgstr "Church Post Code"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"

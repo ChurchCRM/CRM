@@ -152,14 +152,6 @@ msgid "Mobile"
 msgstr "Cell"
 
 #: 
-msgid "Dad Mobile"
-msgstr "Dad Cell"
-
-#: 
-msgid "Mom Mobile"
-msgstr "Mom Cell"
-
-#: 
 msgid "To select multiple hold CTL"
 msgstr "To select multiple press Ctrl key"
 
@@ -187,14 +179,6 @@ msgstr "Number of cheques for Deposit Slip Report"
 #: 
 msgid "Set true to enable use of scanned checks"
 msgstr "Set true to enable use of scanned cheques"
-
-#: 
-msgid "Church State"
-msgstr "Church Province"
-
-#: 
-msgid "Church Zip"
-msgstr "Church Postcode"
 
 #. Context: queryparameteroptions_qpo
 #: 

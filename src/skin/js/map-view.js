@@ -56,9 +56,23 @@
       weight: 2,
     });
 
-    marker.bindPopup(
-      '<strong><a href="' + item.profileUrl + '">' + item.salutation + "</a></strong>" + "<br>" + item.address,
-    );
+    marker.bindPopup(function () {
+      var html =
+        '<strong><a href="' + item.profileUrl + '">' + item.salutation + "</a></strong>" + "<br>" + item.address;
+      if (item.phone) {
+        html +=
+          '<br><a href="tel:' + encodeURIComponent(item.phone) + '">' + window.CRM.escapeHtml(item.phone) + "</a>";
+      }
+      if (item.directionsUrl) {
+        html +=
+          '<br><a href="' +
+          window.CRM.escapeHtml(item.directionsUrl) +
+          '" target="_blank" rel="noopener noreferrer" ' +
+          'class="btn btn-sm btn-outline-primary mt-1">' +
+          '<i class="fa-solid fa-diamond-turn-right mr-1"></i>Get Directions</a>';
+      }
+      return html;
+    });
     marker.addTo(map);
 
     var cid = item.classificationId;
