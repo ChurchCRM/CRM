@@ -84,9 +84,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-check-circle text-success mr-2"></i>
                             <?= gettext('Family roles (Head of Household, Spouse, Child, etc.) help organise your records.') ?>
                         </li>
-                        <li class="mb-0">
+                        <li class="mb-2">
                             <i class="fa-solid fa-check-circle text-success mr-2"></i>
                             <?= gettext('You can always import more data later via CSV.') ?>
+                        </li>
+                        <li class="mb-0">
+                            <i class="fa-solid fa-circle-info text-info mr-2"></i>
+                            <?= gettext('Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them.') ?>
                         </li>
                     </ul>
                 </div>
