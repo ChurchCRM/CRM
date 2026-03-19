@@ -19,15 +19,7 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.setupAdminSession();
     });
 
-    /**
-     * Convert a YYYY-MM-DD date string to MM/DD/YYYY for the date picker inputs.
-     */
-    const toMMDDYYYY = (isoDate) => {
-        const [year, month, day] = isoDate.split("-");
-        return `${month}/${day}/${year}`;
-    };
-
-    const getTodayMMDDYYYY = () => toMMDDYYYY(new Date().toISOString().split("T")[0]);
+    const getTodayISO = () => new Date().toISOString().split("T")[0];
 
     /**
      * Core regression test: when the "Deposit Date" date-type filter is used and
@@ -50,12 +42,11 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.contains("Advanced Deposit Report").should("be.visible");
 
         // Broad date range guaranteed to include all demo-data deposits.
-        cy.get("input[name='DateStart']")
-            .clear({ force: true })
-            .type("01/01/2018", { force: true });
-        cy.get("input[name='DateEnd']")
-            .clear({ force: true })
-            .type(getTodayMMDDYYYY(), { force: true });
+        // Use invoke('val') to bypass Bootstrap datepicker keystroke interception,
+        // which mangles dates typed via .type(). filterDate() on the server handles
+        // both YYYY-MM-DD and MM/DD/YYYY formats.
+        cy.get("input[name='DateStart']").invoke("val", "2018-01-01");
+        cy.get("input[name='DateEnd']").invoke("val", getTodayISO());
 
         // CRITICAL: select "Deposit Date" — the filter that was broken.
         cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
@@ -106,12 +97,8 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
 
-        cy.get("input[name='DateStart']")
-            .clear({ force: true })
-            .type("01/01/1900", { force: true });
-        cy.get("input[name='DateEnd']")
-            .clear({ force: true })
-            .type("01/01/1900", { force: true });
+        cy.get("input[name='DateStart']").invoke("val", "1900-01-01");
+        cy.get("input[name='DateEnd']").invoke("val", "1900-01-01");
 
         cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
@@ -133,12 +120,8 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
 
-        cy.get("input[name='DateStart']")
-            .clear({ force: true })
-            .type("01/01/2018", { force: true });
-        cy.get("input[name='DateEnd']")
-            .clear({ force: true })
-            .type(getTodayMMDDYYYY(), { force: true });
+        cy.get("input[name='DateStart']").invoke("val", "2018-01-01");
+        cy.get("input[name='DateEnd']").invoke("val", getTodayISO());
 
         cy.get("input[name='datetype'][value='Payment']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
