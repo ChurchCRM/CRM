@@ -87,10 +87,16 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $dashboardCounts['Groups'] = GroupQuery::create()
         ->count();
 
+    // Count only attendances that are checked-in and not checked-out
+    // and that are linked to an existing, active event. This prevents
+    // orphaned or invalid event_attend rows (for example event_id=0)
+    // from inflating the dashboard number.
     $dashboardCounts['events'] = EventAttendQuery::create()
         ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
         ->filterByCheckoutDate(null, Criteria::EQUAL)
-        ->find()
+        ->useEventQuery()
+            ->filterByInActive(0)
+        ->endUse()
         ->count();
 
     // Data quality checks for people
