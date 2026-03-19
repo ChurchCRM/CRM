@@ -28,6 +28,6 @@ If you're an admin and can access the app, the fastest way to collect debug info
 
 **Advanced users**: If this is a UI workflow reproducible in the browser, a Cypress Recorder capture (exported spec) helps us add tests faster.
 
-👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
 
 Thank you for your report! 🙂

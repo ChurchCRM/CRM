@@ -231,6 +231,34 @@ $app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true
 - **Set custom error handler** that uses `SlimUtils::renderErrorJSON()` for sanitized responses
 - **Never throw HTTP exceptions in API routes** - always catch and return sanitized JSON errors
 
+## Admin Dashboard Setup Checklist Pattern <!-- learned: 2026-03-19 -->
+
+The admin dashboard (`/admin/`) includes a **Setup Progress checklist** computed in the route and passed to the view. Pattern for adding a new checklist step:
+
+**Route** (`src/admin/routes/dashboard.php`): compute a `$hasX` boolean, add it to `$completedSteps`, and add an entry to `$setupChecklist`.
+
+```php
+// Call PluginManager::init() before any plugin state checks — see plugin-system.md
+PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
+$hasPlugins = PluginManager::hasAnyActivePlugin();
+
+$setupChecklist[] = [
+    'done'  => $hasPlugins,
+    'label' => gettext('Enable Plugins'),
+    'desc'  => gettext('Extend ChurchCRM with MailChimp, backups, and more'),
+    'link'  => SystemURLs::getRootPath() . '/plugins/management',
+    'icon'  => 'fa-plug',
+];
+```
+
+The checklist card auto-hides when `$allDone === true`. The Quick Start shortcuts mirror the checklist steps in the same order.
+
+## Get Started Wizard — /admin/get-started <!-- learned: 2026-03-19 -->
+
+A dedicated onboarding wizard for new installs. View: `src/admin/views/get-started.php`. Route: `src/admin/routes/dashboard.php` (`GET /get-started`). Webpack entry: `webpack/get-started.js` + `webpack/get-started.css`.
+
+Uses `.gs-card` with top-border color accents (`.gs-card--green`, `--blue`, `--teal`, `--orange`) inside `.gs-wrap` (max-width: 900px). Grid: `col-sm-6` (2×2). Demo data trigger: `<a href="#" id="importDemoDataV2">`.
+
 ## Files
 
 **Views:** `src/admin/views/`, `src/finance/views/`
