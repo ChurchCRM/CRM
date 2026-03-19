@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 
-    <?php if (!empty($_GET['NoRows'])): ?>
+    <?php if ($noRows ?? false): ?>
     <div class="alert alert-warning" role="alert">
         <i class="fas fa-exclamation-triangle"></i>
         <strong><?= gettext('No Data Found') ?></strong><br>
@@ -38,18 +38,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="form-group">
                             <label for="DateStart"><?= gettext('Report Start Date') ?></label>
                             <input type="text" name="DateStart" id="DateStart"
-                                   class="form-control date-picker"
-                                   value="<?= InputUtils::escapeHTML($today ?? '') ?>"
-                                   maxlength="10" required>
+                           class="form-control date-picker"
+                           value="<?= InputUtils::escapeHTML($today ?? '') ?>"
+                           data-date-format="<?= InputUtils::escapeHTML($datePickerFormat ?? 'yyyy-mm-dd') ?>"
+                           maxlength="10" required>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="DateEnd"><?= gettext('Report End Date') ?></label>
                             <input type="text" name="DateEnd" id="DateEnd"
-                                   class="form-control date-picker"
-                                   value="<?= InputUtils::escapeHTML($today ?? '') ?>"
-                                   maxlength="10" required>
+                           class="form-control date-picker"
+                           value="<?= InputUtils::escapeHTML($today ?? '') ?>"
+                           data-date-format="<?= InputUtils::escapeHTML($datePickerFormat ?? 'yyyy-mm-dd') ?>"
+                           maxlength="10" required>
                         </div>
                     </div>
                 </div><!-- /.row -->
