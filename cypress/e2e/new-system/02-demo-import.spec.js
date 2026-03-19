@@ -34,21 +34,22 @@ describe('02 - Demo Data Import', () => {
 
         it('should navigate to admin dashboard', () => {
             cy.visit('/admin/');
-            
+
             // Should see admin dashboard
             cy.contains('Admin Dashboard').should('be.visible');
-            
-            // Should see Demo Data card
-            cy.contains('Demo Data').should('be.visible');
+
+            // Should see Quick Start section (demo data moved to /admin/get-started)
+            cy.contains('Quick Start').should('be.visible');
         });
 
         it('should click Import Demo Data button and see confirmation', () => {
-            cy.visit('/admin/');
-            
+            // Demo data import is on the Get Started page
+            cy.visit('/admin/get-started');
+
             // Wait for page to fully load
             cy.get('#importDemoDataV2', { timeout: 10000 }).should('be.visible');
-            
-            // Click the Import Demo Data button
+
+            // Click the Import Demo Data card
             cy.get('#importDemoDataV2').click();
             
             // Should see confirmation overlay
@@ -63,9 +64,10 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should successfully import demo data', () => {
-            cy.visit('/admin/');
-            
-            // Click Import Demo Data button
+            // Demo data import is on the Get Started page
+            cy.visit('/admin/get-started');
+
+            // Click Import Demo Data card
             cy.get('#importDemoDataV2', { timeout: 10000 }).click();
             
             // Wait for confirmation overlay

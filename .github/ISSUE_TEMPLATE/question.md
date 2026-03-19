@@ -24,6 +24,6 @@ Add environment details only if relevant (version, hosting type, etc.).
 
 **Advanced users**: If this is a UI flow you can reproduce, the Cypress Recorder helps. Capture the steps and attach an exported spec.
 
-👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
 
 Short answers are fine — we'll follow up if needed. Thanks! 🙏

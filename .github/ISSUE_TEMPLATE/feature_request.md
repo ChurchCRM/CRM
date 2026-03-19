@@ -21,4 +21,4 @@ Examples or screenshots are great — short notes work too! Thanks for the idea!
 
 **Advanced users**: If this relates to a UI workflow you can reproduce, a Cypress Recorder capture (exported spec) helps us prototype and validate faster.
 
-👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**

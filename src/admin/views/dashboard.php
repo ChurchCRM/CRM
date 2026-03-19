@@ -166,6 +166,56 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     <div class="row">
         <!-- Main Content -->
         <div class="col-lg-8">
+            <!-- Setup Progress Card -->
+            <?php if (!$allDone): ?>
+            <div class="card shadow-sm border-0 mb-4 setup-progress-card">
+                <div class="card-header bg-primary text-white py-2 d-flex align-items-center justify-content-between">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-list-check mr-1"></i> <?= gettext('Setup Progress') ?>
+                    </h5>
+                    <small class="text-white-50"><?= $completedSteps ?>/<?= $totalSteps ?> <?= gettext('complete') ?></small>
+                </div>
+                <div class="card-body p-0">
+                    <!-- Progress bar -->
+                    <div class="progress" style="height: 4px; border-radius: 0;">
+                        <div class="progress-bar bg-success" role="progressbar"
+                             style="width: <?= round(($completedSteps / $totalSteps) * 100) ?>%"
+                             aria-valuenow="<?= round(($completedSteps / $totalSteps) * 100) ?>"
+                             aria-valuemin="0"
+                             aria-valuemax="100"></div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <?php foreach ($setupChecklist as $step): ?>
+                        <li class="list-group-item px-3 py-2">
+                            <div class="d-flex align-items-center">
+                                <div class="mr-3" style="width: 1.5rem; text-align: center; flex-shrink: 0;">
+                                    <?php if ($step['done']): ?>
+                                        <i class="fa-solid fa-circle-check text-success"></i>
+                                    <?php else: ?>
+                                        <i class="fa-regular fa-circle text-muted"></i>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="flex-grow-1 <?= $step['done'] ? 'text-muted' : '' ?>">
+                                    <span class="font-weight-600 <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
+                                        <?= $step['label'] ?>
+                                    </span>
+                                    <?php if (!$step['done']): ?>
+                                        <br><small class="text-muted"><?= $step['desc'] ?></small>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if (!$step['done']): ?>
+                                <a href="<?= $step['link'] ?>" class="btn btn-sm btn-outline-primary ml-3 flex-shrink-0">
+                                    <?= gettext('Set up') ?> <i class="fa-solid fa-arrow-right fa-xs ml-1"></i>
+                                </a>
+                                <?php endif; ?>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            </div>
+            <?php endif; ?>
+
             <!-- Quick Start Card -->
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-header bg-primary text-white py-2">
@@ -174,103 +224,77 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </h5>
                 </div>
                 <div class="card-body">
-                    <p class="text-muted mb-3"><?= gettext('Complete these essential setup tasks to get ChurchCRM running smoothly:') ?></p>
-                    
+                    <p class="text-muted mb-3"><?= gettext('Jump to any setup step:') ?></p>
+
                     <div class="row">
-                        <!-- System Settings -->
+                        <!-- 1. Church Information -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info" class="quick-start-card">
                                 <div class="quick-start-icon bg-primary">
-                                    <i class="fa-solid fa-cog"></i>
+                                    <i class="fa-solid fa-church"></i>
                                 </div>
                                 <div class="quick-start-content">
-                                    <h6><?= gettext('System Settings') ?></h6>
-                                    <small><?= gettext('Organization, timezone, email') ?></small>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Manage Users -->
-                        <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="quick-start-card">
-                                <div class="quick-start-icon bg-info">
-                                    <i class="fa-solid fa-users"></i>
-                                </div>
-                                <div class="quick-start-content">
-                                    <h6><?= gettext('Manage Users') ?></h6>
-                                    <small><?= gettext('User accounts and roles') ?></small>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Groups -->
-                        <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="quick-start-card">
-                                <div class="quick-start-icon bg-warning">
-                                    <i class="fa-solid fa-sitemap"></i>
-                                </div>
-                                <div class="quick-start-content">
-                                    <h6><?= gettext('Groups') ?></h6>
-                                    <small><?= gettext('Organizational structure') ?></small>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- Sunday School -->
-                        <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/groups/sundayschool/dashboard" class="quick-start-card">
-                                <div class="quick-start-icon bg-orange">
-                                    <i class="fa-solid fa-children"></i>
-                                </div>
-                                <div class="quick-start-content">
-                                    <h6><?= gettext('Sunday School') ?></h6>
-                                    <small><?= gettext('Classes and enrollments') ?></small>
-                                </div>
-                            </a>
-                        </div>
-                        
-                        <!-- CSV Import -->
-                        <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/CSVImport.php" class="quick-start-card">
-                                <div class="quick-start-icon bg-secondary">
-                                    <i class="fa-solid fa-file-import"></i>
-                                </div>
-                                <div class="quick-start-content">
-                                    <h6><?= gettext('Import Data') ?></h6>
-                                    <small><?= gettext('Import from CSV files') ?></small>
+                                    <h6><?= gettext('Church Information') ?></h6>
+                                    <small><?= gettext('Name, address, contact details') ?></small>
                                 </div>
                             </a>
                         </div>
 
-                        <!-- Start Fresh -->
+                        <!-- 2. Add Your Data -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started/manual" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started" class="quick-start-card">
                                 <div class="quick-start-icon bg-success">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                    <i class="fa-solid fa-users"></i>
                                 </div>
                                 <div class="quick-start-content">
-                                    <h6><?= gettext('Start Fresh') ?></h6>
-                                    <small><?= gettext('Add families and people manually') ?></small>
+                                    <h6><?= gettext('Add Your Data') ?></h6>
+                                    <small><?= gettext('Import, restore, or enter manually') ?></small>
                                 </div>
                             </a>
                         </div>
-                        
-                        <!-- Financial Settings -->
+
+                        <!-- 3. Configure Email -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="quick-start-card">
-                                <div class="quick-start-icon bg-success">
-                                    <i class="fa-solid fa-dollar-sign"></i>
+                            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="quick-start-card">
+                                <div class="quick-start-icon bg-info">
+                                    <i class="fa-solid fa-envelope"></i>
                                 </div>
                                 <div class="quick-start-content">
-                                    <h6><?= gettext('Donation Funds') ?></h6>
-                                    <small><?= gettext('Giving funds and categories') ?></small>
+                                    <h6><?= gettext('Configure Email') ?></h6>
+                                    <small><?= gettext('SMTP server for sending emails') ?></small>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 4. Invite Your Team -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="quick-start-card">
+                                <div class="quick-start-icon bg-warning">
+                                    <i class="fa-solid fa-user-plus"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Invite Your Team') ?></h6>
+                                    <small><?= gettext('Add staff and volunteers') ?></small>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- 5. Enable Plugins -->
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/plugins/management" class="quick-start-card">
+                                <div class="quick-start-icon bg-secondary">
+                                    <i class="fa-solid fa-plug"></i>
+                                </div>
+                                <div class="quick-start-content">
+                                    <h6><?= gettext('Enable Plugins') ?></h6>
+                                    <small><?= gettext('MailChimp, backups, and more') ?></small>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    
+
                     <div class="alert alert-light border mb-0 py-2">
-                        <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip:') ?></strong> <?= gettext('Complete these in any order. Use Demo Data to explore with sample records.') ?></small>
+                        <small><i class="fa-solid fa-lightbulb text-warning"></i> <strong><?= gettext('Tip:') ?></strong> <?= gettext('Complete these in any order to get ChurchCRM ready for your congregation.') ?></small>
                     </div>
                 </div>
             </div>
@@ -323,36 +347,6 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
         <!-- Sidebar -->
         <div class="col-lg-4">
-            <!-- Get Started Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-play-circle"></i> <?= gettext('Get Started') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="small mb-3"><?= gettext('New to ChurchCRM? Follow the guided setup to add families and people, import CSV data, or explore with demo records.') ?></p>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started" class="btn btn-primary btn-block">
-                        <i class="fa-solid fa-arrow-right mr-1"></i> <?= gettext('Get Started') ?>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Try Demo Data Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-success text-white py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-database"></i> <?= gettext('Demo Data') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="small mb-3"><?= gettext('Import sample families, people, and groups to explore ChurchCRM with realistic data.') ?></p>
-                    <button type="button" id="importDemoDataV2" class="btn btn-success btn-lg btn-block">
-                        <i class="fa-solid fa-download"></i> <?= gettext('Import Demo Data') ?>
-                    </button>
-                </div>
-            </div>
-
             <!-- System Info Card -->
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-header bg-info text-white py-2">
@@ -377,7 +371,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
                         </a>
                     </div>
-                    <a href="https://github.com/ChurchCRM/CRM/wiki" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
+                    <a href="https://docs.churchcrm.io/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
                         <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
                     </a>
                 </div>

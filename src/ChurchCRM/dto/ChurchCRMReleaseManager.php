@@ -368,7 +368,7 @@ class ChurchCRMReleaseManager
 
             echo \json_encode([
                 'code'    => 500,
-                'message' => 'Maximum execution time threshold exceeded: ' . ini_get('max_execution_time') . '.  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://github.com/ChurchCRM/CRM/wiki/Recovering-from-a-failed-update',
+                'message' => 'Maximum execution time threshold exceeded: ' . ini_get('max_execution_time') . '.  This ChurchCRM installation may now be in an unstable state.  Please review the documentation at https://docs.churchcrm.io/administration/troubleshooting',
             ], JSON_THROW_ON_ERROR);
         }
     }

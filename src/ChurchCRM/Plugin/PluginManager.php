@@ -429,6 +429,33 @@ class PluginManager
     }
 
     /**
+     * Returns true if at least one discovered plugin is enabled.
+     * Uses isPluginActive() directly (config key read only) to avoid
+     * the exception-swallowing in getAllPlugins().
+     *
+     * IMPORTANT: Requires init() to have been called first. If the plugin
+     * system has not been initialized, $discoveredPlugins will be empty and
+     * this method will return false (with a debug log).
+     */
+    public static function hasAnyActivePlugin(): bool
+    {
+        if (!self::$initialized) {
+            LoggerUtils::getAppLogger()->debug(
+                'hasAnyActivePlugin() called before PluginManager::init() — returning false'
+            );
+            return false;
+        }
+
+        foreach (array_keys(self::$discoveredPlugins) as $pluginId) {
+            if (self::isPluginActive($pluginId)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Get the plugins base path.
      */
     public static function getPluginsPath(): string
