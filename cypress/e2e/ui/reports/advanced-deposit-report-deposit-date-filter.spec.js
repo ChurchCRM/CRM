@@ -44,9 +44,10 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.contains("Advanced Deposit Report").should("be.visible");
 
         // Broad date range guaranteed to include all demo-data deposits.
-        // Use yyyy-mm-dd format to match the Bootstrap Datepicker format config.
-        cy.get("#DateStart").clear().type("2018-01-01");
-        cy.get("#DateEnd").clear().type("2099-12-31");
+        // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception —
+        // .type() triggers datepicker events that mangle the input value.
+        cy.get("#DateStart").invoke("val", "2018-01-01");
+        cy.get("#DateEnd").invoke("val", "2099-12-31");
 
         // CRITICAL: select "Deposit Date" — the filter that was broken.
         cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
@@ -97,9 +98,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
 
-        // Use yyyy-mm-dd format to match the Bootstrap Datepicker format config.
-        cy.get("#DateStart").clear().type("1900-01-01");
-        cy.get("#DateEnd").clear().type("1900-01-01");
+        // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
+        cy.get("#DateStart").invoke("val", "1900-01-01");
+        cy.get("#DateEnd").invoke("val", "1900-01-01");
 
         cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
@@ -121,9 +122,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.get("#FinancialReports").submit();
         cy.contains("Advanced Deposit Report").should("be.visible");
 
-        // Use yyyy-mm-dd format to match the Bootstrap Datepicker format config.
-        cy.get("#DateStart").clear().type("2018-01-01");
-        cy.get("#DateEnd").clear().type("2099-12-31");
+        // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
+        cy.get("#DateStart").invoke("val", "2018-01-01");
+        cy.get("#DateEnd").invoke("val", "2099-12-31");
 
         cy.get("input[name='datetype'][value='Payment']").check({ force: true });
         cy.get("input[name='output'][value='csv']").check({ force: true });
