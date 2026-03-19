@@ -12438,3 +12438,67 @@ msgstr "— Chagua Nchi —"
 msgid "— Select State —"
 msgstr "— Chagua Mkoa —"
 
+#: 
+msgid "Address Status"
+msgstr "Hali ya Anwani"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Anwani imeingizwa lakini kuratibu hazijaanzishwa bado"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Anwani imepewa msimbo wa kijiografia (kuratibu zimehifadhiwa)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali angalia kumbukumbu za seva au wasiliana na msimamizi wako wa mfumo."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali kagua hitilafu hapa chini na wasiliana na msimamizi wako wa mfumo."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Kuboresha Hifadhidata Kumeshindwa"
+
+#: 
+msgid "Geocoded"
+msgstr "Imepewa msimbo wa kijiografia"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Toleo la Programu Iliyosakinishwa"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Tafadhali boresha ChurchCRM hadi toleo"
+
+#: 
+msgid "Software Update Required"
+msgstr "Sasisho la Programu Linahitajika"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Shule ya Jumapili imezimwa"
+
+#: 
+msgid "Unverified"
+msgstr "Haijathibitishwa"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Anwani Ambazo Hazijathibitishwa"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Kutofautiana kwa Toleo"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Toleo la hifadhidata yako ni jipya zaidi kuliko programu iliyosakinishwa. Hii kawaida inamaanisha programu ilirejeshwa kwa toleo la zamani zaidi. Tafadhali boresha ChurchCRM ili ilingane na hifadhidata yako."
+
+#: 
+msgid "or later to continue."
+msgstr "au zaidi ili kuendelea."
+

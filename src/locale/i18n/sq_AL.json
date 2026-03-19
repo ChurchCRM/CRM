@@ -3017,5 +3017,21 @@
     "Website": "Faqe interneti",
     "ZIP code is required.": "Kodi postar është i detyrueshëm.",
     "— Select Country —": "— Zgjidhni vendin —",
-    "— Select State —": "— Zgjidhni rajonin —"
+    "— Select State —": "— Zgjidhni rajonin —",
+    "Address Status": "Statusi i Adresës",
+    "Address entered but coordinates not yet set": "Adresa e futur por koordinatat ende nuk janë vendosur",
+    "Address has been geocoded (coordinates stored)": "Adresa është gjeokodifikuar (koordinatat janë ruajtur)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "U tentua një përditësim automatik i bazës së të dhënave, por dështoi. Ju lutemi kontrolloni regjistrat e serverit ose kontaktoni administratorin e sistemit.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "U tentua një përditësim automatik i bazës së të dhënave, por dështoi. Ju lutemi shqyrtoni gabimin më poshtë dhe kontaktoni administratorin e sistemit.",
+    "Database Upgrade Failed": "Përditësimi i Bazës së të Dhënave Dështoi",
+    "Geocoded": "Gjeokodifikuar",
+    "Installed Software Version": "Versioni i Softuerit të Instaluar",
+    "Please upgrade ChurchCRM to version": "Ju lutemi azhurnoni ChurchCRM në versionin",
+    "Software Update Required": "Nevojitet Përditësimi i Softuerit",
+    "Sunday School is disabled": "Shkolla e Dielë është e çaktivizuar",
+    "Unverified": "I paverifikuar",
+    "Unverified Addresses": "Adresa të Paverifikuara",
+    "Version Mismatch": "Mospërputhje e Versionit",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Versioni i bazës suaj të të dhënave është më i ri se softueri i instaluar. Kjo zakonisht nënkupton se softueri u kthye në një version më të vjetër. Ju lutemi azhurnoni ChurchCRM në mënyrë që të përputhet me bazën tuaj të të dhënave.",
+    "or later to continue.": "ose më vonë për të vazhduar."
 }

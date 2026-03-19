@@ -12458,3 +12458,67 @@ msgstr "— ሀገር ምረጥ —"
 msgid "— Select State —"
 msgstr "— ክልል ምረጥ —"
 
+#: 
+msgid "Address Status"
+msgstr "የአድራሻ ሁኔታ"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "አድራሻ ተጭኗል ነገር ግን መጋጠሚያዎቹ እስካሁን አልተቀናበሩም"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "አድራሻ ጂኦኮድ ተደርጓል (መጋጠሚያዎቹ ተቀምጠዋል)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "ራስ-ሰር የውሂብ ቋት ማሻሻል ሞክሮ ነበር ነገር ግን አልተሳካም። እባክዎ የሰርቨር ምዝገባዎችን ያረጋግጡ ወይም የስርዓት አስተዳዳሪዎን ያነጋግሩ።"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "ራስ-ሰር የውሂብ ቋት ማሻሻል ሞክሮ ነበር ነገር ግን አልተሳካም። እባክዎ ከዚህ በታች ያለውን ስህተት ይገምግሙ እና የስርዓት አስተዳዳሪዎን ያነጋግሩ።"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "የውሂብ ቋት ማሻሻል አልተሳካም"
+
+#: 
+msgid "Geocoded"
+msgstr "ጂኦኮድ ተደርጓል"
+
+#: 
+msgid "Installed Software Version"
+msgstr "የተጫነ ሶፍትዌር ስሪት"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "እባክዎ ChurchCRM ወደ ስሪት ያሻሽሉ"
+
+#: 
+msgid "Software Update Required"
+msgstr "የሶፍትዌር ዝማኔ ያስፈልጋል"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "የእሁድ ትምህርት ቤት ተሰናክሏል"
+
+#: 
+msgid "Unverified"
+msgstr "ያልተረጋገጠ"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "ያልተረጋገጡ አድራሻዎች"
+
+#: 
+msgid "Version Mismatch"
+msgstr "የስሪት ልዩነት"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "የውሂብ ቋትዎ ስሪት ከተጫነው ሶፍትዌር አዲስ ነው። ይህ ብዙ ጊዜ ሶፍትዌሩ ወደ ቀደመ ስሪት ተመልሷል ማለት ነው። እባክዎ ChurchCRM ከውሂብ ቋትዎ ጋር እንዲዛመድ ያሻሽሉ።"
+
+#: 
+msgid "or later to continue."
+msgstr "ወይም ቆይቶ ለመቀጠል።"
+

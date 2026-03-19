@@ -12429,3 +12429,67 @@ msgstr "— 국가 선택 —"
 msgid "— Select State —"
 msgstr "— 시/도 선택 —"
 
+#: 
+msgid "Address Status"
+msgstr "주소 상태"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "주소는 입력되었지만 좌표가 아직 설정되지 않았습니다"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "주소가 지오코딩되었습니다 (좌표 저장됨)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "자동 데이터베이스 업그레이드를 시도했지만 실패했습니다. 서버 로그를 확인하거나 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "자동 데이터베이스 업그레이드를 시도했지만 실패했습니다. 아래 오류를 검토하고 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "데이터베이스 업그레이드 실패"
+
+#: 
+msgid "Geocoded"
+msgstr "지오코딩됨"
+
+#: 
+msgid "Installed Software Version"
+msgstr "설치된 소프트웨어 버전"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "ChurchCRM을 버전으로 업그레이드하세요"
+
+#: 
+msgid "Software Update Required"
+msgstr "소프트웨어 업데이트 필요"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "주일학교가 비활성화되어 있습니다"
+
+#: 
+msgid "Unverified"
+msgstr "미확인"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "미확인 주소"
+
+#: 
+msgid "Version Mismatch"
+msgstr "버전 불일치"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "데이터베이스 버전이 설치된 소프트웨어보다 최신입니다. 이는 일반적으로 소프트웨어가 이전 버전으로 롤백되었음을 의미합니다. 데이터베이스와 일치하도록 ChurchCRM을 업그레이드하세요."
+
+#: 
+msgid "or later to continue."
+msgstr "이상 버전이 계속하려면 필요합니다."
+

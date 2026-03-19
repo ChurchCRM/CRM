@@ -12434,3 +12434,67 @@ msgstr "— Vyberte zemi —"
 msgid "— Select State —"
 msgstr "— Vyberte kraj —"
 
+#: 
+msgid "Address Status"
+msgstr "Stav adresy"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresa zadána, ale souřadnice zatím nebyly nastaveny"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adresa byla geokódována (souřadnice uloženy)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Byl proveden pokus o automatický upgrade databáze, ale selhal. Zkontrolujte prosím protokoly serveru nebo kontaktujte správce systému."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Byl proveden pokus o automatický upgrade databáze, ale selhal. Zkontrolujte prosím chybu níže a kontaktujte správce systému."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Upgrade databáze se nezdařil"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokódováno"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Nainstalovaná verze softwaru"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Prosím upgradujte ChurchCRM na verzi"
+
+#: 
+msgid "Software Update Required"
+msgstr "Vyžadována aktualizace softwaru"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Nedělní škola je zakázána"
+
+#: 
+msgid "Unverified"
+msgstr "Neověřeno"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Neověřené adresy"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Neshoda verzí"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Verze vaší databáze je novější než nainstalovaný software. To obvykle znamená, že software byl vrácen na starší verzi. Prosím upgradujte ChurchCRM, aby odpovídalo vaší databázi."
+
+#: 
+msgid "or later to continue."
+msgstr "nebo novějšího pro pokračování."
+

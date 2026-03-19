@@ -12440,3 +12440,67 @@ msgstr "— בחר מדינה —"
 msgid "— Select State —"
 msgstr "— בחר מחוז —"
 
+#: 
+msgid "Address Status"
+msgstr "סטטוס כתובת"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "כתובת הוזנה אך הקואורדינטות טרם הוגדרו"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "הכתובת עברה גאוקידוד (קואורדינטות נשמרו)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "בוצע ניסיון לשדרוג אוטומטי של מסד הנתונים אך הוא נכשל. אנא בדוק את יומני השרת או פנה למנהל המערכת."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "בוצע ניסיון לשדרוג אוטומטי של מסד הנתונים אך הוא נכשל. אנא עיין בשגיאה למטה ופנה למנהל המערכת."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "שדרוג מסד הנתונים נכשל"
+
+#: 
+msgid "Geocoded"
+msgstr "עבר גאוקידוד"
+
+#: 
+msgid "Installed Software Version"
+msgstr "גרסת תוכנה מותקנת"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "אנא שדרג את ChurchCRM לגרסה"
+
+#: 
+msgid "Software Update Required"
+msgstr "נדרש עדכון תוכנה"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "בית ספר יום ראשון מושבת"
+
+#: 
+msgid "Unverified"
+msgstr "לא מאומת"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "כתובות לא מאומתות"
+
+#: 
+msgid "Version Mismatch"
+msgstr "אי-התאמת גרסה"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "גרסת מסד הנתונים שלך חדשה יותר מהתוכנה המותקנת. משמעות הדבר היא בדרך כלל שהתוכנה הוחזרה לגרסה ישנה יותר. אנא שדרג את ChurchCRM כך שיתאים למסד הנתונים שלך."
+
+#: 
+msgid "or later to continue."
+msgstr "או גרסה מאוחרת יותר להמשיך."
+

@@ -12446,3 +12446,67 @@ msgstr "— Sélectionner un pays —"
 msgid "— Select State —"
 msgstr "— Sélectionner une région —"
 
+#: 
+msgid "Address Status"
+msgstr "Statut de l'adresse"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresse saisie mais les coordonnées ne sont pas encore définies"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "L'adresse a été géocodée (coordonnées enregistrées)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Une mise à niveau automatique de la base de données a été tentée mais a échoué. Veuillez vérifier les journaux du serveur ou contacter votre administrateur système."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Une mise à niveau automatique de la base de données a été tentée mais a échoué. Veuillez consulter l'erreur ci-dessous et contacter votre administrateur système."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Échec de la mise à niveau de la base de données"
+
+#: 
+msgid "Geocoded"
+msgstr "Géocodé"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Version du logiciel installé"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Veuillez mettre à niveau ChurchCRM vers la version"
+
+#: 
+msgid "Software Update Required"
+msgstr "Mise à jour du logiciel requise"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "L'école du dimanche est désactivée"
+
+#: 
+msgid "Unverified"
+msgstr "Non vérifié"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Adresses non vérifiées"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Incompatibilité de version"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "La version de votre base de données est plus récente que le logiciel installé. Cela signifie généralement que le logiciel a été rétrogradé vers une version antérieure. Veuillez mettre à niveau ChurchCRM pour correspondre à votre base de données."
+
+#: 
+msgid "or later to continue."
+msgstr "ou ultérieur pour continuer."
+

@@ -12447,3 +12447,67 @@ msgstr "— Kies Land —"
 msgid "— Select State —"
 msgstr "— Kies Streek —"
 
+#: 
+msgid "Address Status"
+msgstr "Adres Status"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres ingevoer maar koördinate nog nie gestel nie"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres is gegeocode (koördinate gestoor)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "ʼn Outomatiese databasis-opgradering is probeer maar het misluk. Kontroleer asseblief die bedienerloglêers of kontak u stelseladministrateur."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "ʼn Outomatiese databasis-opgradering is probeer maar het misluk. Hersien asseblief die fout hieronder en kontak u stelseladministrateur."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Databasis-opgradering het misluk"
+
+#: 
+msgid "Geocoded"
+msgstr "Gegeocode"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Geïnstalleerde sagteware weergawe"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Gradeer asseblief ChurchCRM op na weergawe"
+
+#: 
+msgid "Software Update Required"
+msgstr "Sagteware-opdatering verlang"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Sondagskool is gedeaktiveer"
+
+#: 
+msgid "Unverified"
+msgstr "Onverifieer"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Onvergiftigde adresse"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Weergawe nie-ooreenkoms"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "U databasis weergawe is nuwer as die geïnstalleerde sagteware. Dit beteken gewoonlik dat die sagteware na ʼn ouer weergawe teruggekeer het. Gradeer asseblief ChurchCRM op om by u databasis te pas."
+
+#: 
+msgid "or later to continue."
+msgstr "of later om voort te gaan."
+

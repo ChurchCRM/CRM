@@ -3026,5 +3026,21 @@
     "Website": "Strona internetowa",
     "ZIP code is required.": "Kod pocztowy jest wymagany.",
     "— Select Country —": "— Wybierz kraj —",
-    "— Select State —": "— Wybierz województwo —"
+    "— Select State —": "— Wybierz województwo —",
+    "Address Status": "Status adresu",
+    "Address entered but coordinates not yet set": "Adres wprowadzony, ale współrzędne nie zostały jeszcze ustawione",
+    "Address has been geocoded (coordinates stored)": "Adres został geokodowany (współrzędne zapisane)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Sprawdź logi serwera lub skontaktuj się z administratorem systemu.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Przejrzyj błąd poniżej i skontaktuj się z administratorem systemu.",
+    "Database Upgrade Failed": "Aktualizacja bazy danych nie powiodła się",
+    "Geocoded": "Geokodowany",
+    "Installed Software Version": "Zainstalowana wersja oprogramowania",
+    "Please upgrade ChurchCRM to version": "Zaktualizuj ChurchCRM do wersji",
+    "Software Update Required": "Wymagana aktualizacja oprogramowania",
+    "Sunday School is disabled": "Szkoła niedzielna jest wyłączona",
+    "Unverified": "Niezweryfikowany",
+    "Unverified Addresses": "Niezweryfikowane adresy",
+    "Version Mismatch": "Niezgodność wersji",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Wersja Twojej bazy danych jest nowsza niż zainstalowane oprogramowanie. Zazwyczaj oznacza to, że oprogramowanie zostało cofnięte do starszej wersji. Zaktualizuj ChurchCRM, aby pasowało do Twojej bazy danych.",
+    "or later to continue.": "lub nowszej, aby kontynuować."
 }

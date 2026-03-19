@@ -3035,5 +3035,21 @@
     "Website": "Веб-сайт",
     "ZIP code is required.": "Поштовий індекс є обов'язковим.",
     "— Select Country —": "— Виберіть країну —",
-    "— Select State —": "— Виберіть область —"
+    "— Select State —": "— Виберіть область —",
+    "Address Status": "Статус адреси",
+    "Address entered but coordinates not yet set": "Адресу введено, але координати ще не встановлено",
+    "Address has been geocoded (coordinates stored)": "Адресу геокодовано (координати збережено)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Була здійснена спроба автоматичного оновлення бази даних, але вона не вдалася. Перевірте журнали сервера або зверніться до системного адміністратора.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Була здійснена спроба автоматичного оновлення бази даних, але вона не вдалася. Перегляньте помилку нижче та зверніться до системного адміністратора.",
+    "Database Upgrade Failed": "Оновлення бази даних не вдалося",
+    "Geocoded": "Геокодовано",
+    "Installed Software Version": "Версія встановленого програмного забезпечення",
+    "Please upgrade ChurchCRM to version": "Будь ласка, оновіть ChurchCRM до версії",
+    "Software Update Required": "Потрібне оновлення програмного забезпечення",
+    "Sunday School is disabled": "Недільну школу вимкнено",
+    "Unverified": "Неперевірено",
+    "Unverified Addresses": "Неперевірені адреси",
+    "Version Mismatch": "Невідповідність версій",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Версія вашої бази даних новіша за встановлене програмне забезпечення. Зазвичай це означає, що програмне забезпечення було відкочено до старішої версії. Будь ласка, оновіть ChurchCRM, щоб воно відповідало вашій базі даних.",
+    "or later to continue.": "або пізнішу версію для продовження."
 }

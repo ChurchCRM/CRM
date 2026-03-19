@@ -12571,3 +12571,67 @@ msgstr "— Välj land —"
 msgid "— Select State —"
 msgstr "— Välj län —"
 
+#: 
+msgid "Address Status"
+msgstr "Adressstatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adress angiven men koordinater har inte angetts ännu"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adressen har geokodats (koordinater sparade)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Ett automatiskt databasuppgraderingsförsök gjordes men misslyckades. Kontrollera serverloggarna eller kontakta din systemadministratör."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Ett automatiskt databasuppgraderingsförsök gjordes men misslyckades. Granska felet nedan och kontakta din systemadministratör."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Databasuppgradering misslyckades"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodad"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Installerad programvaruversion"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Uppgradera ChurchCRM till version"
+
+#: 
+msgid "Software Update Required"
+msgstr "Programvaruuppdatering krävs"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Söndagsskolan är inaktiverad"
+
+#: 
+msgid "Unverified"
+msgstr "Overifierad"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Overifierade adresser"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versionskonflikt"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Din databasversion är nyare än den installerade programvaran. Det innebär vanligtvis att programvaran har återställts till en äldre version. Uppgradera ChurchCRM för att matcha din databas."
+
+#: 
+msgid "or later to continue."
+msgstr "eller senare för att fortsätta."
+

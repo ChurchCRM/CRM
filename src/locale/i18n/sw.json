@@ -3017,5 +3017,21 @@
     "Website": "Tovuti",
     "ZIP code is required.": "Msimbo wa posta unahitajika.",
     "— Select Country —": "— Chagua Nchi —",
-    "— Select State —": "— Chagua Mkoa —"
+    "— Select State —": "— Chagua Mkoa —",
+    "Address Status": "Hali ya Anwani",
+    "Address entered but coordinates not yet set": "Anwani imeingizwa lakini kuratibu hazijaanzishwa bado",
+    "Address has been geocoded (coordinates stored)": "Anwani imepewa msimbo wa kijiografia (kuratibu zimehifadhiwa)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali angalia kumbukumbu za seva au wasiliana na msimamizi wako wa mfumo.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali kagua hitilafu hapa chini na wasiliana na msimamizi wako wa mfumo.",
+    "Database Upgrade Failed": "Kuboresha Hifadhidata Kumeshindwa",
+    "Geocoded": "Imepewa msimbo wa kijiografia",
+    "Installed Software Version": "Toleo la Programu Iliyosakinishwa",
+    "Please upgrade ChurchCRM to version": "Tafadhali boresha ChurchCRM hadi toleo",
+    "Software Update Required": "Sasisho la Programu Linahitajika",
+    "Sunday School is disabled": "Shule ya Jumapili imezimwa",
+    "Unverified": "Haijathibitishwa",
+    "Unverified Addresses": "Anwani Ambazo Hazijathibitishwa",
+    "Version Mismatch": "Kutofautiana kwa Toleo",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Toleo la hifadhidata yako ni jipya zaidi kuliko programu iliyosakinishwa. Hii kawaida inamaanisha programu ilirejeshwa kwa toleo la zamani zaidi. Tafadhali boresha ChurchCRM ili ilingane na hifadhidata yako.",
+    "or later to continue.": "au zaidi ili kuendelea."
 }

@@ -3017,5 +3017,21 @@
     "Website": "אתר אינטרנט",
     "ZIP code is required.": "מיקוד נדרש.",
     "— Select Country —": "— בחר מדינה —",
-    "— Select State —": "— בחר מחוז —"
+    "— Select State —": "— בחר מחוז —",
+    "Address Status": "סטטוס כתובת",
+    "Address entered but coordinates not yet set": "כתובת הוזנה אך הקואורדינטות טרם הוגדרו",
+    "Address has been geocoded (coordinates stored)": "הכתובת עברה גאוקידוד (קואורדינטות נשמרו)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "בוצע ניסיון לשדרוג אוטומטי של מסד הנתונים אך הוא נכשל. אנא בדוק את יומני השרת או פנה למנהל המערכת.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "בוצע ניסיון לשדרוג אוטומטי של מסד הנתונים אך הוא נכשל. אנא עיין בשגיאה למטה ופנה למנהל המערכת.",
+    "Database Upgrade Failed": "שדרוג מסד הנתונים נכשל",
+    "Geocoded": "עבר גאוקידוד",
+    "Installed Software Version": "גרסת תוכנה מותקנת",
+    "Please upgrade ChurchCRM to version": "אנא שדרג את ChurchCRM לגרסה",
+    "Software Update Required": "נדרש עדכון תוכנה",
+    "Sunday School is disabled": "בית ספר יום ראשון מושבת",
+    "Unverified": "לא מאומת",
+    "Unverified Addresses": "כתובות לא מאומתות",
+    "Version Mismatch": "אי-התאמת גרסה",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "גרסת מסד הנתונים שלך חדשה יותר מהתוכנה המותקנת. משמעות הדבר היא בדרך כלל שהתוכנה הוחזרה לגרסה ישנה יותר. אנא שדרג את ChurchCRM כך שיתאים למסד הנתונים שלך.",
+    "or later to continue.": "או גרסה מאוחרת יותר להמשיך."
 }

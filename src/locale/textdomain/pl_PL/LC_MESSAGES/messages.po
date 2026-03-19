@@ -12536,3 +12536,67 @@ msgstr "— Wybierz kraj —"
 msgid "— Select State —"
 msgstr "— Wybierz województwo —"
 
+#: 
+msgid "Address Status"
+msgstr "Status adresu"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres wprowadzony, ale współrzędne nie zostały jeszcze ustawione"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres został geokodowany (współrzędne zapisane)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Sprawdź logi serwera lub skontaktuj się z administratorem systemu."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Przejrzyj błąd poniżej i skontaktuj się z administratorem systemu."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Aktualizacja bazy danych nie powiodła się"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodowany"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Zainstalowana wersja oprogramowania"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Zaktualizuj ChurchCRM do wersji"
+
+#: 
+msgid "Software Update Required"
+msgstr "Wymagana aktualizacja oprogramowania"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Szkoła niedzielna jest wyłączona"
+
+#: 
+msgid "Unverified"
+msgstr "Niezweryfikowany"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Niezweryfikowane adresy"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Niezgodność wersji"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Wersja Twojej bazy danych jest nowsza niż zainstalowane oprogramowanie. Zazwyczaj oznacza to, że oprogramowanie zostało cofnięte do starszej wersji. Zaktualizuj ChurchCRM, aby pasowało do Twojej bazy danych."
+
+#: 
+msgid "or later to continue."
+msgstr "lub nowszej, aby kontynuować."
+

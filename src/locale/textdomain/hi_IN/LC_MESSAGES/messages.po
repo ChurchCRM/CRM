@@ -12392,3 +12392,67 @@ msgstr "— देश चुनें —"
 msgid "— Select State —"
 msgstr "— राज्य चुनें —"
 
+#: 
+msgid "Address Status"
+msgstr "पता स्थिति"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "पता दर्ज किया गया लेकिन निर्देशांक अभी तक सेट नहीं किए गए"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "पते को जियोकोड किया गया है (निर्देशांक संग्रहीत हैं)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "एक स्वचालित डेटाबेस अपग्रेड का प्रयास किया गया लेकिन विफल हुआ। कृपया सर्वर लॉग जांचें या अपने सिस्टम प्रशासक से संपर्क करें।"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "एक स्वचालित डेटाबेस अपग्रेड का प्रयास किया गया लेकिन विफल हुआ। कृपया नीचे दी गई त्रुटि की समीक्षा करें और अपने सिस्टम प्रशासक से संपर्क करें।"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "डेटाबेस अपग्रेड विफल"
+
+#: 
+msgid "Geocoded"
+msgstr "जियोकोड किया गया"
+
+#: 
+msgid "Installed Software Version"
+msgstr "स्थापित सॉफ़्टवेयर संस्करण"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "कृपया ChurchCRM को संस्करण में अपग्रेड करें"
+
+#: 
+msgid "Software Update Required"
+msgstr "सॉफ़्टवेयर अपडेट आवश्यक है"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "रविवार स्कूल अक्षम है"
+
+#: 
+msgid "Unverified"
+msgstr "असत्यापित"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "असत्यापित पते"
+
+#: 
+msgid "Version Mismatch"
+msgstr "संस्करण बेमेल"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "आपका डेटाबेस संस्करण स्थापित सॉफ़्टवेयर से अधिक नया है। इसका आमतौर पर मतलब है कि सॉफ़्टवेयर को पुराने संस्करण में वापस रोल किया गया था। अपने डेटाबेस से मेल खाने के लिए ChurchCRM को अपग्रेड करें।"
+
+#: 
+msgid "or later to continue."
+msgstr "या बाद में जारी रखने के लिए।"
+

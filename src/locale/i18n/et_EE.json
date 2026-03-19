@@ -3017,5 +3017,21 @@
     "Website": "Veebisait",
     "ZIP code is required.": "Sihtnumber on kohustuslik.",
     "— Select Country —": "— Vali riik —",
-    "— Select State —": "— Vali maakond —"
+    "— Select State —": "— Vali maakond —",
+    "Address Status": "Aadressi olek",
+    "Address entered but coordinates not yet set": "Aadress sisestatud, kuid koordinaadid pole veel määratud",
+    "Address has been geocoded (coordinates stored)": "Aadress on geokodeeritud (koordinaadid salvestatud)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Katse teha andmebaasi automaatne uuendus ebaõnnestus. Palun kontrollige serveri logisid või võtke ühendust süsteemiadministraatoriga.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Katse teha andmebaasi automaatne uuendus ebaõnnestus. Palun vaadake allpool olevat viga ja võtke ühendust süsteemiadministraatoriga.",
+    "Database Upgrade Failed": "Andmebaasi uuendus ebaõnnestus",
+    "Geocoded": "Geokodeeritud",
+    "Installed Software Version": "Paigaldatud tarkvara versioon",
+    "Please upgrade ChurchCRM to version": "Palun uuendage ChurchCRM versioonile",
+    "Software Update Required": "Tarkvara uuendus vajalik",
+    "Sunday School is disabled": "Pühapäevakool on keelatud",
+    "Unverified": "Kontrollimata",
+    "Unverified Addresses": "Kontrollimata aadressid",
+    "Version Mismatch": "Versiooni erinevus",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Teie andmebaasi versioon on uuem kui installitud tarkvara. See tähendab tavaliselt, et tarkvara pöörati tagasi vanemale versioonile. Palun uuendage ChurchCRM oma andmebaasiga kooskõlastamiseks.",
+    "or later to continue.": "või hilisem jätkamiseks."
 }

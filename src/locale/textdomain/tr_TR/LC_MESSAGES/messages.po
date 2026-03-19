@@ -12446,3 +12446,67 @@ msgstr "— Ülke Seçin —"
 msgid "— Select State —"
 msgstr "— İl Seçin —"
 
+#: 
+msgid "Address Status"
+msgstr "Adres Durumu"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres girildi ancak koordinatlar henüz ayarlanmadı"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres coğrafi olarak kodlandı (koordinatlar depolandı)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen sunucu günlüklerini kontrol edin veya sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen aşağıdaki hatayı inceleyin ve sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Veritabanı Yükseltmesi Başarısız"
+
+#: 
+msgid "Geocoded"
+msgstr "Coğrafi olarak kodlandı"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Yüklü Yazılım Sürümü"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Lütfen ChurchCRM'yi sürüme yükseltin"
+
+#: 
+msgid "Software Update Required"
+msgstr "Yazılım Güncellemesi Gerekiyor"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Pazar Okulu devre dışı bırakıldı"
+
+#: 
+msgid "Unverified"
+msgstr "Doğrulanmamış"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Doğrulanmamış Adresler"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Sürüm Uyumsuzluğu"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Veritabanı sürümünüz yüklü yazılımdan daha yeni. Bu genellikle yazılımın daha eski bir sürüme geri döndürüldüğü anlamına gelir. Veritabanınızla eşleşmesi için lütfen ChurchCRM'yi yükseltin."
+
+#: 
+msgid "or later to continue."
+msgstr "veya devam etmek için daha sonrası."
+
