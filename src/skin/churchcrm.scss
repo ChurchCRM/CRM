@@ -20,6 +20,24 @@
 @import "external/adminlte/adminlte.min.css";
 @import "external/bs-stepper/bs-stepper.min.css";
 
+// Font Awesome 7 compatibility: keep v6 default icon width unless explicitly fixed.
+.fa,
+.fa-solid,
+.fas,
+.fa-regular,
+.far,
+.fa-brands,
+.fab {
+    --fa-width: auto;
+}
+
+// Preserve explicit fixed-width icon behavior used throughout the app.
+.fa-fw {
+    --fa-width: 1.25em;
+    width: var(--fa-width);
+    text-align: center;
+}
+
 // Import ChurchCRM custom styles
 
 // Utility Classes - Reusable CSS classes for common styling patterns
