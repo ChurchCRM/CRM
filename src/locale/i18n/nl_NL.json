@@ -3017,5 +3017,21 @@
     "Website": "Website",
     "ZIP code is required.": "De postcode is verplicht.",
     "— Select Country —": "— Selecteer land —",
-    "— Select State —": "— Selecteer provincie —"
+    "— Select State —": "— Selecteer provincie —",
+    "Address Status": "Adresstatus",
+    "Address entered but coordinates not yet set": "Adres ingevoerd maar coördinaten nog niet ingesteld",
+    "Address has been geocoded (coordinates stored)": "Adres is gegeocodeerd (coördinaten opgeslagen)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Controleer de serverlogboeken of neem contact op met uw systeembeheerder.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Bekijk de onderstaande fout en neem contact op met uw systeembeheerder.",
+    "Database Upgrade Failed": "Database-upgrade mislukt",
+    "Geocoded": "Gegeocodeerd",
+    "Installed Software Version": "Geïnstalleerde softwareversie",
+    "Please upgrade ChurchCRM to version": "Upgrade ChurchCRM naar versie",
+    "Software Update Required": "Software-update vereist",
+    "Sunday School is disabled": "Zondagsschool is uitgeschakeld",
+    "Unverified": "Niet geverifieerd",
+    "Unverified Addresses": "Niet geverifieerde adressen",
+    "Version Mismatch": "Versie-mismatch",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Uw databaseversie is nieuwer dan de geïnstalleerde software. Dit betekent meestal dat de software is teruggedraaid naar een oudere versie. Upgrade ChurchCRM om overeen te komen met uw database.",
+    "or later to continue.": "of later om door te gaan."
 }

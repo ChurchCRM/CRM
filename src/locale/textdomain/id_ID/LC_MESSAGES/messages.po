@@ -12431,3 +12431,67 @@ msgstr "— Pilih Negara —"
 msgid "— Select State —"
 msgstr "— Pilih Provinsi —"
 
+#: 
+msgid "Address Status"
+msgstr "Status Alamat"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Alamat dimasukkan tetapi koordinat belum ditetapkan"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Alamat telah dikodekan secara geografis (koordinat disimpan)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Percobaan upgrade database otomatis dilakukan tetapi gagal. Silakan periksa log server atau hubungi administrator sistem Anda."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Percobaan upgrade database otomatis dilakukan tetapi gagal. Silakan tinjau kesalahan di bawah dan hubungi administrator sistem Anda."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Upgrade Database Gagal"
+
+#: 
+msgid "Geocoded"
+msgstr "Telah dikodekan secara geografis"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Versi Perangkat Lunak yang Diinstal"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Harap upgrade ChurchCRM ke versi"
+
+#: 
+msgid "Software Update Required"
+msgstr "Pembaruan Perangkat Lunak Diperlukan"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Sekolah Minggu dinonaktifkan"
+
+#: 
+msgid "Unverified"
+msgstr "Belum diverifikasi"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Alamat yang Belum Diverifikasi"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Ketidakcocokan Versi"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini biasanya berarti perangkat lunak dikembalikan ke versi yang lebih lama. Silakan upgrade ChurchCRM untuk sesuai dengan database Anda."
+
+#: 
+msgid "or later to continue."
+msgstr "atau lebih baru untuk melanjutkan."
+

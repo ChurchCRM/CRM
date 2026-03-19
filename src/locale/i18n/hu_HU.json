@@ -3017,5 +3017,21 @@
     "Website": "Weboldal",
     "ZIP code is required.": "Az irányítószám megadása kötelező.",
     "— Select Country —": "— Ország kiválasztása —",
-    "— Select State —": "— Megye kiválasztása —"
+    "— Select State —": "— Megye kiválasztása —",
+    "Address Status": "Cím állapota",
+    "Address entered but coordinates not yet set": "Cím megadva, de a koordináták még nincsenek beállítva",
+    "Address has been geocoded (coordinates stored)": "A cím geokódolva lett (koordináták tárolva)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Automatikus adatbázis-frissítési kísérletet hajtottak végre, de az sikertelen volt. Kérjük, ellenőrizze a szerver naplóit, vagy vegye fel a kapcsolatot a rendszergazdával.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Automatikus adatbázis-frissítési kísérletet hajtottak végre, de az sikertelen volt. Kérjük, tekintse át az alábbi hibát, és vegye fel a kapcsolatot a rendszergazdával.",
+    "Database Upgrade Failed": "Az adatbázis-frissítés sikertelen",
+    "Geocoded": "Geokódolva",
+    "Installed Software Version": "Telepített szoftver verziója",
+    "Please upgrade ChurchCRM to version": "Kérjük, frissítse a ChurchCRM-et a következő verzióra:",
+    "Software Update Required": "Szoftverfrissítés szükséges",
+    "Sunday School is disabled": "A vasárnapi iskola le van tiltva",
+    "Unverified": "Nem ellenőrzött",
+    "Unverified Addresses": "Nem ellenőrzött címek",
+    "Version Mismatch": "Verziók nem egyeznek",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Az adatbázis verziója újabb, mint a telepített szoftver. Ez általában azt jelenti, hogy a szoftvert egy régebbi verzióra visszaállították. Frissítse a ChurchCRM-et, hogy megfeleljen az adatbázisának.",
+    "or later to continue.": "vagy újabb a folytatáshoz."
 }

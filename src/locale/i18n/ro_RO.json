@@ -3026,5 +3026,21 @@
     "Website": "Site web",
     "ZIP code is required.": "Codul poștal este obligatoriu.",
     "— Select Country —": "— Selectați țara —",
-    "— Select State —": "— Selectați județul —"
+    "— Select State —": "— Selectați județul —",
+    "Address Status": "Starea adresei",
+    "Address entered but coordinates not yet set": "Adresă introdusă, dar coordonatele nu au fost încă setate",
+    "Address has been geocoded (coordinates stored)": "Adresa a fost geocodată (coordonatele sunt stocate)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "S-a încercat o actualizare automată a bazei de date, dar a eșuat. Vă rugăm verificați jurnalele serverului sau contactați administratorul de sistem.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "S-a încercat o actualizare automată a bazei de date, dar a eșuat. Vă rugăm revizuiți eroarea de mai jos și contactați administratorul de sistem.",
+    "Database Upgrade Failed": "Actualizarea bazei de date a eșuat",
+    "Geocoded": "Geocodat",
+    "Installed Software Version": "Versiunea software instalat",
+    "Please upgrade ChurchCRM to version": "Vă rugăm actualizați ChurchCRM la versiunea",
+    "Software Update Required": "Actualizare software necesară",
+    "Sunday School is disabled": "Școala de Duminică este dezactivată",
+    "Unverified": "Neverificat",
+    "Unverified Addresses": "Adrese neverificate",
+    "Version Mismatch": "Nepotrivire de versiune",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Versiunea bazei dvs. de date este mai nouă decât software-ul instalat. Aceasta înseamnă de obicei că software-ul a fost retrogradat la o versiune mai veche. Vă rugăm actualizați ChurchCRM pentru a corespunde bazei dvs. de date.",
+    "or later to continue.": "sau o versiune mai nouă pentru a continua."
 }

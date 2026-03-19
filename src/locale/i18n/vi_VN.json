@@ -3008,5 +3008,21 @@
     "Website": "Trang web",
     "ZIP code is required.": "Mã bưu điện là bắt buộc.",
     "— Select Country —": "— Chọn quốc gia —",
-    "— Select State —": "— Chọn tỉnh/thành phố —"
+    "— Select State —": "— Chọn tỉnh/thành phố —",
+    "Address Status": "Trạng thái địa chỉ",
+    "Address entered but coordinates not yet set": "Địa chỉ đã nhập nhưng tọa độ chưa được đặt",
+    "Address has been geocoded (coordinates stored)": "Địa chỉ đã được mã hóa địa lý (tọa độ đã lưu)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Đã thử nâng cấp cơ sở dữ liệu tự động nhưng thất bại. Vui lòng kiểm tra nhật ký máy chủ hoặc liên hệ với quản trị viên hệ thống của bạn.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Đã thử nâng cấp cơ sở dữ liệu tự động nhưng thất bại. Vui lòng xem xét lỗi bên dưới và liên hệ với quản trị viên hệ thống của bạn.",
+    "Database Upgrade Failed": "Nâng cấp cơ sở dữ liệu thất bại",
+    "Geocoded": "Đã mã hóa địa lý",
+    "Installed Software Version": "Phiên bản phần mềm đã cài đặt",
+    "Please upgrade ChurchCRM to version": "Vui lòng nâng cấp ChurchCRM lên phiên bản",
+    "Software Update Required": "Cần cập nhật phần mềm",
+    "Sunday School is disabled": "Trường Chúa Nhật bị tắt",
+    "Unverified": "Chưa được xác minh",
+    "Unverified Addresses": "Địa chỉ chưa được xác minh",
+    "Version Mismatch": "Phiên bản không khớp",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Phiên bản cơ sở dữ liệu của bạn mới hơn phần mềm đã cài đặt. Điều này thường có nghĩa là phần mềm đã được khôi phục về phiên bản cũ hơn. Vui lòng nâng cấp ChurchCRM để phù hợp với cơ sở dữ liệu của bạn.",
+    "or later to continue.": "hoặc mới hơn để tiếp tục."
 }

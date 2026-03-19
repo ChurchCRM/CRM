@@ -12542,3 +12542,67 @@ msgstr "— Velg land —"
 msgid "— Select State —"
 msgstr "— Velg fylke —"
 
+#: 
+msgid "Address Status"
+msgstr "Adressestatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresse lagt inn, men koordinater er ennå ikke angitt"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adressen er geokodert (koordinater lagret)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Et automatisk databaseoppgraderingsforsøk ble utført, men mislyktes. Sjekk serverloggene eller kontakt systemadministratoren."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Et automatisk databaseoppgraderingsforsøk ble utført, men mislyktes. Gjennomgå feilen nedenfor og kontakt systemadministratoren."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Databaseoppgradering mislyktes"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodert"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Installert programvareversjon"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Oppgrader ChurchCRM til versjon"
+
+#: 
+msgid "Software Update Required"
+msgstr "Programvareoppdatering kreves"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Søndagsskole er deaktivert"
+
+#: 
+msgid "Unverified"
+msgstr "Ubekreftet"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Ubekreftede adresser"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versjonuoverensstemmelse"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Databaseversjonen din er nyere enn den installerte programvaren. Dette betyr vanligvis at programvaren ble rullet tilbake til en eldre versjon. Oppgrader ChurchCRM for å matche databasen din."
+
+#: 
+msgid "or later to continue."
+msgstr "eller nyere for å fortsette."
+

@@ -12686,3 +12686,67 @@ msgstr "— 選擇國家 —"
 msgid "— Select State —"
 msgstr "— 選擇縣/市 —"
 
+#: 
+msgid "Address Status"
+msgstr "地址狀態"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "已輸入地址但尚未設定座標"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "地址已進行地理編碼（座標已儲存）"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "嘗試自動升級資料庫但失敗。請檢查伺服器日誌或聯繫您的系統管理員。"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "嘗試自動升級資料庫但失敗。請查看下面的錯誤並聯繫您的系統管理員。"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "資料庫升級失敗"
+
+#: 
+msgid "Geocoded"
+msgstr "已地理編碼"
+
+#: 
+msgid "Installed Software Version"
+msgstr "已安裝軟體版本"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "請將ChurchCRM升級到版本"
+
+#: 
+msgid "Software Update Required"
+msgstr "需要軟體更新"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "主日學已停用"
+
+#: 
+msgid "Unverified"
+msgstr "未驗證"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "未驗證地址"
+
+#: 
+msgid "Version Mismatch"
+msgstr "版本不符"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "您的資料庫版本比已安裝的軟體更新。這通常意味著軟體被回滾到了舊版本。請升級ChurchCRM以符合您的資料庫。"
+
+#: 
+msgid "or later to continue."
+msgstr "或更高版本以繼續。"
+

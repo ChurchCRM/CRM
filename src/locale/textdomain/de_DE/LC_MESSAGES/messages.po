@@ -12555,3 +12555,67 @@ msgstr "— Land auswählen —"
 msgid "— Select State —"
 msgstr "— Bundesland auswählen —"
 
+#: 
+msgid "Address Status"
+msgstr "Adressstatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresse eingegeben, aber Koordinaten noch nicht festgelegt"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adresse wurde geokodiert (Koordinaten gespeichert)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Ein automatisches Datenbank-Upgrade wurde versucht, ist aber fehlgeschlagen. Bitte überprüfen Sie die Server-Protokolle oder wenden Sie sich an Ihren Systemadministrator."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Ein automatisches Datenbank-Upgrade wurde versucht, ist aber fehlgeschlagen. Bitte überprüfen Sie den Fehler unten und wenden Sie sich an Ihren Systemadministrator."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Datenbank-Upgrade fehlgeschlagen"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodiert"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Installierte Softwareversion"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Bitte aktualisieren Sie ChurchCRM auf Version"
+
+#: 
+msgid "Software Update Required"
+msgstr "Software-Update erforderlich"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Sonntagsschule ist deaktiviert"
+
+#: 
+msgid "Unverified"
+msgstr "Nicht verifiziert"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Nicht verifizierte Adressen"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versionskonflikt"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Ihre Datenbankversion ist neuer als die installierte Software. Dies bedeutet normalerweise, dass die Software auf eine ältere Version zurückgesetzt wurde. Bitte aktualisieren Sie ChurchCRM, damit es zu Ihrer Datenbank passt."
+
+#: 
+msgid "or later to continue."
+msgstr "oder höher, um fortzufahren."
+

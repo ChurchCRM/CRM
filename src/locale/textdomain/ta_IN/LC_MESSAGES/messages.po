@@ -12452,3 +12452,67 @@ msgstr "— நாட்டை தேர்வு செய்யுங்கள
 msgid "— Select State —"
 msgstr "— மாநிலத்தை தேர்வு செய்யுங்கள் —"
 
+#: 
+msgid "Address Status"
+msgstr "முகவரி நிலை"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "முகவரி உள்ளிடப்பட்டது ஆனால் ஆய மதிப்புகள் இன்னும் அமைக்கப்படவில்லை"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "முகவரி புவியியல் குறியீட்டு செய்யப்பட்டுள்ளது (ஆய மதிப்புகள் சேமிக்கப்பட்டன)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "தானியங்கி தரவுத்தள மேம்படுத்தல் முயற்சி செய்யப்பட்டது ஆனால் தோல்வியடைந்தது. சர்வர் பதிவுகளை சரிபார்க்கவும் அல்லது உங்கள் கணினி நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "தானியங்கி தரவுத்தள மேம்படுத்தல் முயற்சி செய்யப்பட்டது ஆனால் தோல்வியடைந்தது. கீழே உள்ள பிழையை மதிப்பாய்வு செய்து உங்கள் கணினி நிர்வாகியை தொடர்பு கொள்ளவும்."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "தரவுத்தள மேம்படுத்தல் தோல்வியடைந்தது"
+
+#: 
+msgid "Geocoded"
+msgstr "புவியியல் குறியீட்டு செய்யப்பட்டது"
+
+#: 
+msgid "Installed Software Version"
+msgstr "நிறுவப்பட்ட மென்பொருள் பதிப்பு"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "ChurchCRM ஐ பதிப்பிற்கு மேம்படுத்தவும்"
+
+#: 
+msgid "Software Update Required"
+msgstr "மென்பொருள் புதுப்பிப்பு தேவை"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "ஞாயிற்றுக்கிழமை பள்ளி முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Unverified"
+msgstr "சரிபார்க்கப்படாதது"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "சரிபார்க்கப்படாத முகவரிகள்"
+
+#: 
+msgid "Version Mismatch"
+msgstr "பதிப்பு பொருந்தாமை"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "உங்கள் தரவுத்தள பதிப்பு நிறுவப்பட்ட மென்பொருளை விட புதியது. இது பொதுவாக மென்பொருள் பழைய பதிப்பிற்கு திரும்பியது என்பதை குறிக்கிறது. உங்கள் தரவுத்தளத்துடன் பொருந்துமாறு ChurchCRM ஐ மேம்படுத்தவும்."
+
+#: 
+msgid "or later to continue."
+msgstr "அல்லது தொடர பிறகு."
+

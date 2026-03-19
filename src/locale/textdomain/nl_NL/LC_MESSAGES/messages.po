@@ -12444,3 +12444,67 @@ msgstr "— Selecteer land —"
 msgid "— Select State —"
 msgstr "— Selecteer provincie —"
 
+#: 
+msgid "Address Status"
+msgstr "Adresstatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres ingevoerd maar coördinaten nog niet ingesteld"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres is gegeocodeerd (coördinaten opgeslagen)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Controleer de serverlogboeken of neem contact op met uw systeembeheerder."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Bekijk de onderstaande fout en neem contact op met uw systeembeheerder."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Database-upgrade mislukt"
+
+#: 
+msgid "Geocoded"
+msgstr "Gegeocodeerd"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Geïnstalleerde softwareversie"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Upgrade ChurchCRM naar versie"
+
+#: 
+msgid "Software Update Required"
+msgstr "Software-update vereist"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Zondagsschool is uitgeschakeld"
+
+#: 
+msgid "Unverified"
+msgstr "Niet geverifieerd"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Niet geverifieerde adressen"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versie-mismatch"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Uw databaseversie is nieuwer dan de geïnstalleerde software. Dit betekent meestal dat de software is teruggedraaid naar een oudere versie. Upgrade ChurchCRM om overeen te komen met uw database."
+
+#: 
+msgid "or later to continue."
+msgstr "of later om door te gaan."
+

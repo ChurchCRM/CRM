@@ -12442,3 +12442,67 @@ msgstr "— Chọn quốc gia —"
 msgid "— Select State —"
 msgstr "— Chọn tỉnh/thành phố —"
 
+#: 
+msgid "Address Status"
+msgstr "Trạng thái địa chỉ"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Địa chỉ đã nhập nhưng tọa độ chưa được đặt"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Địa chỉ đã được mã hóa địa lý (tọa độ đã lưu)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Đã thử nâng cấp cơ sở dữ liệu tự động nhưng thất bại. Vui lòng kiểm tra nhật ký máy chủ hoặc liên hệ với quản trị viên hệ thống của bạn."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Đã thử nâng cấp cơ sở dữ liệu tự động nhưng thất bại. Vui lòng xem xét lỗi bên dưới và liên hệ với quản trị viên hệ thống của bạn."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Nâng cấp cơ sở dữ liệu thất bại"
+
+#: 
+msgid "Geocoded"
+msgstr "Đã mã hóa địa lý"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Phiên bản phần mềm đã cài đặt"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Vui lòng nâng cấp ChurchCRM lên phiên bản"
+
+#: 
+msgid "Software Update Required"
+msgstr "Cần cập nhật phần mềm"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Trường Chúa Nhật bị tắt"
+
+#: 
+msgid "Unverified"
+msgstr "Chưa được xác minh"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Địa chỉ chưa được xác minh"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Phiên bản không khớp"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Phiên bản cơ sở dữ liệu của bạn mới hơn phần mềm đã cài đặt. Điều này thường có nghĩa là phần mềm đã được khôi phục về phiên bản cũ hơn. Vui lòng nâng cấp ChurchCRM để phù hợp với cơ sở dữ liệu của bạn."
+
+#: 
+msgid "or later to continue."
+msgstr "hoặc mới hơn để tiếp tục."
+

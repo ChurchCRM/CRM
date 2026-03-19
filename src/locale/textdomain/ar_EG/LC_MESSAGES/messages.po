@@ -12475,3 +12475,67 @@ msgstr "— اختر الدولة —"
 msgid "— Select State —"
 msgstr "— اختر المحافظة —"
 
+#: 
+msgid "Address Status"
+msgstr "حالة العنوان"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "تم إدخال العنوان لكن الإحداثيات لم تُحدَّد بعد"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "تم ترميز العنوان جغرافيًا (الإحداثيات مخزنة)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "تمت محاولة ترقية تلقائية لقاعدة البيانات لكنها فشلت. يرجى التحقق من سجلات الخادم أو التواصل مع مسؤول النظام."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "تمت محاولة ترقية تلقائية لقاعدة البيانات لكنها فشلت. يرجى مراجعة الخطأ أدناه والتواصل مع مسؤول النظام."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "فشل ترقية قاعدة البيانات"
+
+#: 
+msgid "Geocoded"
+msgstr "تم الترميز الجغرافي"
+
+#: 
+msgid "Installed Software Version"
+msgstr "إصدار البرنامج المثبت"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "يرجى ترقية ChurchCRM إلى الإصدار"
+
+#: 
+msgid "Software Update Required"
+msgstr "مطلوب تحديث البرنامج"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "مدرسة الأحد معطلة"
+
+#: 
+msgid "Unverified"
+msgstr "غير موثق"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "عناوين غير موثقة"
+
+#: 
+msgid "Version Mismatch"
+msgstr "تعارض الإصدارات"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "إصدار قاعدة بياناتك أحدث من البرنامج المثبت. يعني هذا عادةً أن البرنامج تم التراجع إلى إصدار أقدم. يرجى ترقية ChurchCRM ليتوافق مع قاعدة بياناتك."
+
+#: 
+msgid "or later to continue."
+msgstr "أو أحدث للمتابعة."
+

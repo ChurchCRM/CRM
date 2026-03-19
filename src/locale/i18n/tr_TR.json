@@ -3017,5 +3017,21 @@
     "Website": "Web Sitesi",
     "ZIP code is required.": "Posta kodu zorunludur.",
     "— Select Country —": "— Ülke Seçin —",
-    "— Select State —": "— İl Seçin —"
+    "— Select State —": "— İl Seçin —",
+    "Address Status": "Adres Durumu",
+    "Address entered but coordinates not yet set": "Adres girildi ancak koordinatlar henüz ayarlanmadı",
+    "Address has been geocoded (coordinates stored)": "Adres coğrafi olarak kodlandı (koordinatlar depolandı)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen sunucu günlüklerini kontrol edin veya sistem yöneticinizle iletişime geçin.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen aşağıdaki hatayı inceleyin ve sistem yöneticinizle iletişime geçin.",
+    "Database Upgrade Failed": "Veritabanı Yükseltmesi Başarısız",
+    "Geocoded": "Coğrafi olarak kodlandı",
+    "Installed Software Version": "Yüklü Yazılım Sürümü",
+    "Please upgrade ChurchCRM to version": "Lütfen ChurchCRM'yi sürüme yükseltin",
+    "Software Update Required": "Yazılım Güncellemesi Gerekiyor",
+    "Sunday School is disabled": "Pazar Okulu devre dışı bırakıldı",
+    "Unverified": "Doğrulanmamış",
+    "Unverified Addresses": "Doğrulanmamış Adresler",
+    "Version Mismatch": "Sürüm Uyumsuzluğu",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Veritabanı sürümünüz yüklü yazılımdan daha yeni. Bu genellikle yazılımın daha eski bir sürüme geri döndürüldüğü anlamına gelir. Veritabanınızla eşleşmesi için lütfen ChurchCRM'yi yükseltin.",
+    "or later to continue.": "veya devam etmek için daha sonrası."
 }

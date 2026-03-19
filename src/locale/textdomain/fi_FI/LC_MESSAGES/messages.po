@@ -12395,3 +12395,67 @@ msgstr "— Valitse maa —"
 msgid "— Select State —"
 msgstr "— Valitse maakunta —"
 
+#: 
+msgid "Address Status"
+msgstr "Osoitteen tila"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Osoite syötetty, mutta koordinaatteja ei ole vielä asetettu"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Osoite on geokoodattu (koordinaatit tallennettu)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Tietokannalle yritettiin tehdä automaattinen päivitys, mutta se epäonnistui. Tarkista palvelinlokit tai ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Tietokannalle yritettiin tehdä automaattinen päivitys, mutta se epäonnistui. Tarkista alla oleva virhe ja ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Tietokannan päivitys epäonnistui"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokoodattu"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Asennetun ohjelmiston versio"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Päivitä ChurchCRM versioon"
+
+#: 
+msgid "Software Update Required"
+msgstr "Ohjelmistopäivitys vaaditaan"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Pyhäkoulu on poistettu käytöstä"
+
+#: 
+msgid "Unverified"
+msgstr "Vahvistamaton"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Vahvistamattomat osoitteet"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versioristiriita"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Tietokantaversiosi on uudempi kuin asennettu ohjelmisto. Tämä tarkoittaa yleensä, että ohjelmisto palautettiin vanhempaan versioon. Päivitä ChurchCRM vastaamaan tietokantaasi."
+
+#: 
+msgid "or later to continue."
+msgstr "tai uudempi jatkaaksesi."
+

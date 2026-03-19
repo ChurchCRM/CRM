@@ -12383,3 +12383,67 @@ msgstr "— 国を選択 —"
 msgid "— Select State —"
 msgstr "— 都道府県を選択 —"
 
+#: 
+msgid "Address Status"
+msgstr "住所ステータス"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "住所が入力されましたが、座標はまだ設定されていません"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "住所はジオコードされています（座標が保存されています）"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "自動データベースアップグレードが試みられましたが失敗しました。サーバーログを確認するか、システム管理者にお問い合わせください。"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "自動データベースアップグレードが試みられましたが失敗しました。以下のエラーを確認し、システム管理者にお問い合わせください。"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "データベースのアップグレードに失敗しました"
+
+#: 
+msgid "Geocoded"
+msgstr "ジオコード済み"
+
+#: 
+msgid "Installed Software Version"
+msgstr "インストール済みソフトウェアバージョン"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "ChurchCRMをバージョンにアップグレードしてください"
+
+#: 
+msgid "Software Update Required"
+msgstr "ソフトウェアの更新が必要です"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "日曜学校は無効になっています"
+
+#: 
+msgid "Unverified"
+msgstr "未確認"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "未確認の住所"
+
+#: 
+msgid "Version Mismatch"
+msgstr "バージョンの不一致"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "データベースのバージョンがインストール済みソフトウェアより新しいです。これは通常、ソフトウェアが古いバージョンにロールバックされたことを意味します。データベースに合わせてChurchCRMをアップグレードしてください。"
+
+#: 
+msgid "or later to continue."
+msgstr "以降のバージョンが継続には必要です。"
+
