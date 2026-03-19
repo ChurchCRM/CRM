@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Famille géographique"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Mettre à jour les Coordonnées de toutes les familles"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Opportunités de bénévolats"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Année civile"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Mettre à jour la Latitude & longitude"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Utilisateur supprimé"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "Moniteurs"
 
 #: 
-msgid "Send Message"
-msgstr "Envoyer un message"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Date d'Anniversaire par mois"
 
@@ -3109,34 +3097,6 @@ msgstr "Téléphone portable"
 #: 
 msgid "Home Address"
 msgstr "Adresse personnelle"
-
-#: 
-msgid "Compose New Message"
-msgstr "Composer un nouveau message"
-
-#: 
-msgid "Kids Emails"
-msgstr "Emails des enfants"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email des Parents"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email des Moniteurs"
-
-#: 
-msgid "Attachment"
-msgstr "Pièce jointe"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maximum 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Rejeter"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Nouvelle mise à jour"
 #: 
 msgid "Self Registration"
 msgstr "Enregistrement automatique"
-
-#: 
-msgid "No coordinates found"
-msgstr "Aucune coordonnées trouvées"
 
 #: 
 msgid "Anonymous"
@@ -5944,10 +5900,6 @@ msgid "system user login reset"
 msgstr "l'identifiant de l'utilisateur système a été réinitialisé"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familles sans Info Géographique"
-
-#: 
 msgid "Notification for"
 msgstr "Notification pour"
 
@@ -6534,10 +6486,6 @@ msgstr "de Personne"
 #: 
 msgid "System Upgrade"
 msgstr "Mise à jour système"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Mise à jour requise"
 
 #: 
 msgid "Help & Manual"
@@ -8727,10 +8675,6 @@ msgid "Current Software Version"
 msgstr "Version actuelle du logiciel"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "La mise à jour de la base de données est terminée avec succès. Redémarrage du tableau de bord..."
-
-#: 
 msgid "Date & Time"
 msgstr "Date & heure"
 
@@ -8890,14 +8834,6 @@ msgstr "Sermon / texte de l'événement"
 #: 
 msgid "Unclassified"
 msgstr "Non classé"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Mettre à jour la base de données maintenant"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Votre installation de ChurchCRM nécessite une mise à jour de la base de données pour correspondre à la version du logiciel installé. Cette opération appliquera des migrations de schéma et de données. Assurez-vous d'avoir une sauvegarde récente avant de continuer."
 
 #: 
 msgid "added to this event"
@@ -10965,16 +10901,6 @@ msgstr "Attendu"
 msgid "Failed to delete kiosk"
 msgstr "Échec de la suppression du kiosque"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Année fiscale."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groupe d'étudiants inscrits"
-
 #: 
 msgid "Here"
 msgstr "Ici"
@@ -11026,16 +10952,6 @@ msgstr "Demande de récupération"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Veuillez vous rendre à la salle de classe dès que possible."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Résumé des engagements par nom de famille pour chaque fonds de l'année fiscale sélectionnée"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Étudiants inscrits"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12529,4 +12445,68 @@ msgstr "— Sélectionner un pays —"
 #: 
 msgid "— Select State —"
 msgstr "— Sélectionner une région —"
+
+#: 
+msgid "Address Status"
+msgstr "Statut de l'adresse"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresse saisie mais les coordonnées ne sont pas encore définies"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "L'adresse a été géocodée (coordonnées enregistrées)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Une mise à niveau automatique de la base de données a été tentée mais a échoué. Veuillez vérifier les journaux du serveur ou contacter votre administrateur système."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Une mise à niveau automatique de la base de données a été tentée mais a échoué. Veuillez consulter l'erreur ci-dessous et contacter votre administrateur système."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Échec de la mise à niveau de la base de données"
+
+#: 
+msgid "Geocoded"
+msgstr "Géocodé"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Version du logiciel installé"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Veuillez mettre à niveau ChurchCRM vers la version"
+
+#: 
+msgid "Software Update Required"
+msgstr "Mise à jour du logiciel requise"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "L'école du dimanche est désactivée"
+
+#: 
+msgid "Unverified"
+msgstr "Non vérifié"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Adresses non vérifiées"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Incompatibilité de version"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "La version de votre base de données est plus récente que le logiciel installé. Cela signifie généralement que le logiciel a été rétrogradé vers une version antérieure. Veuillez mettre à niveau ChurchCRM pour correspondre à votre base de données."
+
+#: 
+msgid "or later to continue."
+msgstr "ou ultérieur pour continuer."
 

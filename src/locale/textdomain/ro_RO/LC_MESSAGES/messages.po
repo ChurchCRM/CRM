@@ -1908,10 +1908,6 @@ msgid "Family Geographic"
 msgstr "Geografia familiei"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Actualizare toate coordonatele de familie"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Oportunități voluntari"
 
@@ -2590,10 +2586,6 @@ msgid "Calendar Year"
 msgstr "An calendaristic"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Actualizează latitudine și longitudine"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Ștergere utilizator Confirmarea"
 
@@ -3173,10 +3165,6 @@ msgid "Teachers"
 msgstr "Învățători"
 
 #: 
-msgid "Send Message"
-msgstr "Trimite mesaj"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "ZIle de naștere în funcție de lună"
 
@@ -3191,34 +3179,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresă casă"
-
-#: 
-msgid "Compose New Message"
-msgstr "Scrie mesaj nou"
-
-#: 
-msgid "Kids Emails"
-msgstr "Email-uri copii"
-
-#: 
-msgid "Parents Emails"
-msgstr "Email-uri părinți"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Email-uri învățători"
-
-#: 
-msgid "Attachment"
-msgstr "Atașament"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32Mb"
-
-#: 
-msgid "Discard"
-msgstr "Renunță"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3449,10 +3409,6 @@ msgstr "Versiune nouă"
 #: 
 msgid "Self Registration"
 msgstr "Auto înregistrare"
-
-#: 
-msgid "No coordinates found"
-msgstr "Nu au fost găsite coordonate"
 
 #: 
 msgid "Anonymous"
@@ -6033,10 +5989,6 @@ msgid "system user login reset"
 msgstr "resetare autentificare pentru utilizatorul sistemului"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familii fără informații de localizare"
-
-#: 
 msgid "Notification for"
 msgstr "Notificări de la"
 
@@ -6623,10 +6575,6 @@ msgstr "al persoanelor"
 #: 
 msgid "System Upgrade"
 msgstr "Actualizare sistem"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Actualizare necesară"
 
 #: 
 msgid "Help & Manual"
@@ -8815,10 +8763,6 @@ msgid "Current Software Version"
 msgstr "Versiune actuală software"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Actualizarea bazei de date s-a finalizat cu succes. Se redirecționează către panou..."
-
-#: 
 msgid "Date & Time"
 msgstr "Dată și oră"
 
@@ -8978,14 +8922,6 @@ msgstr "Text Predică / Eveniment"
 #: 
 msgid "Unclassified"
 msgstr "Neclasificat"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Actualizați baza de date acum"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Instalarea dumneavoastră ChurchCRM are nevoie de o actualizare a bazei de date pentru a corespunde versiunii de software instalate. Această operațiune va aplica migrări de schemă și date. Vă rugăm să vă asigurați că aveți o copie de rezervă recentă înainte de a continua."
 
 #: 
 msgid "added to this event"
@@ -11058,16 +10994,6 @@ msgstr "Așteptat"
 msgid "Failed to delete kiosk"
 msgstr "Ștergerea chioșcului a eșuat"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "An Fiscal."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grup de studenți înregistrați"
-
 #: 
 msgid "Here"
 msgstr "Aici"
@@ -11119,16 +11045,6 @@ msgstr "Solicitare de Ridicare"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Vă rugăm să vă îndreptați spre clasă cât mai curând posibil."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rezumat angajamente pe nume de familie pentru fiecare fond al anului fiscal selectat"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Studenți înregistrați"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12623,4 +12539,68 @@ msgstr "— Selectați țara —"
 #: 
 msgid "— Select State —"
 msgstr "— Selectați județul —"
+
+#: 
+msgid "Address Status"
+msgstr "Starea adresei"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresă introdusă, dar coordonatele nu au fost încă setate"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adresa a fost geocodată (coordonatele sunt stocate)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "S-a încercat o actualizare automată a bazei de date, dar a eșuat. Vă rugăm verificați jurnalele serverului sau contactați administratorul de sistem."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "S-a încercat o actualizare automată a bazei de date, dar a eșuat. Vă rugăm revizuiți eroarea de mai jos și contactați administratorul de sistem."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Actualizarea bazei de date a eșuat"
+
+#: 
+msgid "Geocoded"
+msgstr "Geocodat"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Versiunea software instalat"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Vă rugăm actualizați ChurchCRM la versiunea"
+
+#: 
+msgid "Software Update Required"
+msgstr "Actualizare software necesară"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Școala de Duminică este dezactivată"
+
+#: 
+msgid "Unverified"
+msgstr "Neverificat"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Adrese neverificate"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Nepotrivire de versiune"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Versiunea bazei dvs. de date este mai nouă decât software-ul instalat. Aceasta înseamnă de obicei că software-ul a fost retrogradat la o versiune mai veche. Vă rugăm actualizați ChurchCRM pentru a corespunde bazei dvs. de date."
+
+#: 
+msgid "or later to continue."
+msgstr "sau o versiune mai nouă pentru a continua."
 

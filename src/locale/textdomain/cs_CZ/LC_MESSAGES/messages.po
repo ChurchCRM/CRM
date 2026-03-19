@@ -1855,10 +1855,6 @@ msgid "Family Geographic"
 msgstr "Geografie rodiny"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Aktualizovat souřadnice všech rodin"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Dobrovolnické příležitosti"
 
@@ -2527,10 +2523,6 @@ msgid "Calendar Year"
 msgstr "Kalendářní rok"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Aktualizovat zeměpisnou šířku & délku"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Potvrzení smazání uživatele"
 
@@ -3087,10 +3079,6 @@ msgid "Teachers"
 msgstr "Učitelé"
 
 #: 
-msgid "Send Message"
-msgstr "Poslat zprávu"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Narozeniny podle měsíce"
 
@@ -3105,34 +3093,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Adresa domů"
-
-#: 
-msgid "Compose New Message"
-msgstr "Napsat novou zprávu"
-
-#: 
-msgid "Kids Emails"
-msgstr "E-maily dětí"
-
-#: 
-msgid "Parents Emails"
-msgstr "E-maily rodičů"
-
-#: 
-msgid "Teachers Emails"
-msgstr "E-maily učitelů"
-
-#: 
-msgid "Attachment"
-msgstr "Příloha"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Zrušit"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3357,10 +3317,6 @@ msgstr "Nová verze"
 #: 
 msgid "Self Registration"
 msgstr "Samostatná registrace"
-
-#: 
-msgid "No coordinates found"
-msgstr "Nebyly nalezeny žádné souřadnice"
 
 #: 
 msgid "Anonymous"
@@ -5932,10 +5888,6 @@ msgid "system user login reset"
 msgstr "reset přihlášení uživatele systému"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Rodiny bez geoinformace"
-
-#: 
 msgid "Notification for"
 msgstr "Oznámení pro"
 
@@ -6521,10 +6473,6 @@ msgstr "osob"
 #: 
 msgid "System Upgrade"
 msgstr "Upgrade systému"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Vyžadován upgrade"
 
 #: 
 msgid "Help & Manual"
@@ -8709,10 +8657,6 @@ msgid "Current Software Version"
 msgstr "Aktuální verze softwaru"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Aktualizace databáze byla úspěšně dokončena. Budete přesměrováni na nástěnku..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum a čas"
 
@@ -8872,14 +8816,6 @@ msgstr "Text kázání / události"
 #: 
 msgid "Unclassified"
 msgstr "Neklasifikováno"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Aktualizovat databázi"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Vaše instalace ChurchCRM vyžaduje aktualizaci databáze, aby odpovídala nainstalované verzi softwaru. Tato operace bude zahrnovat migraci schématu a dat. Před pokračováním se ujistěte, že máte aktuální zálohu."
 
 #: 
 msgid "added to this event"
@@ -10952,16 +10888,6 @@ msgstr "Očekáváno"
 msgid "Failed to delete kiosk"
 msgstr "Nepodařilo se smazat kiosek"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných studentů"
-
 #: 
 msgid "Here"
 msgstr "Zde"
@@ -11013,16 +10939,6 @@ msgstr "Žádost o vyzvednutí"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Prosím, dostavte se do třídy co nejdříve."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Přehled závazků podle jména rodiny pro každý fond za vybraný fiskální rok"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrovaní studenti"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12517,4 +12433,68 @@ msgstr "— Vyberte zemi —"
 #: 
 msgid "— Select State —"
 msgstr "— Vyberte kraj —"
+
+#: 
+msgid "Address Status"
+msgstr "Stav adresy"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adresa zadána, ale souřadnice zatím nebyly nastaveny"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adresa byla geokódována (souřadnice uloženy)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Byl proveden pokus o automatický upgrade databáze, ale selhal. Zkontrolujte prosím protokoly serveru nebo kontaktujte správce systému."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Byl proveden pokus o automatický upgrade databáze, ale selhal. Zkontrolujte prosím chybu níže a kontaktujte správce systému."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Upgrade databáze se nezdařil"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokódováno"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Nainstalovaná verze softwaru"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Prosím upgradujte ChurchCRM na verzi"
+
+#: 
+msgid "Software Update Required"
+msgstr "Vyžadována aktualizace softwaru"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Nedělní škola je zakázána"
+
+#: 
+msgid "Unverified"
+msgstr "Neověřeno"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Neověřené adresy"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Neshoda verzí"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Verze vaší databáze je novější než nainstalovaný software. To obvykle znamená, že software byl vrácen na starší verzi. Prosím upgradujte ChurchCRM, aby odpovídalo vaší databázi."
+
+#: 
+msgid "or later to continue."
+msgstr "nebo novějšího pro pokračování."
 

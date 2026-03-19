@@ -1831,10 +1831,6 @@ msgid "Family Geographic"
 msgstr "世帯位置情報"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "すべての世帯座標を更新"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "ボランティアの機会"
 
@@ -2501,10 +2497,6 @@ msgid "Calendar Year"
 msgstr "カレンダー年"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "緯度と経度を更新"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "ユーザー削除の確認"
 
@@ -3057,10 +3049,6 @@ msgid "Teachers"
 msgstr "教師"
 
 #: 
-msgid "Send Message"
-msgstr "メッセージを送信"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "月別誕生日"
 
@@ -3075,34 +3063,6 @@ msgstr "携帯"
 #: 
 msgid "Home Address"
 msgstr "自宅住所"
-
-#: 
-msgid "Compose New Message"
-msgstr "新しいメッセージを作成"
-
-#: 
-msgid "Kids Emails"
-msgstr "子供たちのメール"
-
-#: 
-msgid "Parents Emails"
-msgstr "保護者のメール"
-
-#: 
-msgid "Teachers Emails"
-msgstr "教師のメール"
-
-#: 
-msgid "Attachment"
-msgstr "添付ファイル"
-
-#: 
-msgid "Max. 32MB"
-msgstr "最大 32MB"
-
-#: 
-msgid "Discard"
-msgstr "破棄"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3327,10 +3287,6 @@ msgstr "新しいリリース"
 #: 
 msgid "Self Registration"
 msgstr "セルフ登録"
-
-#: 
-msgid "No coordinates found"
-msgstr "座標が見つかりませんでした"
 
 #: 
 msgid "Anonymous"
@@ -5899,10 +5855,6 @@ msgid "system user login reset"
 msgstr "システムユーザーログインがリセットされました"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "地理情報のない家族"
-
-#: 
 msgid "Notification for"
 msgstr "の通知"
 
@@ -6488,10 +6440,6 @@ msgstr "人物の"
 #: 
 msgid "System Upgrade"
 msgstr "システムアップグレード"
-
-#: 
-msgid "Upgrade Required"
-msgstr "アップグレードが必要です"
 
 #: 
 msgid "Help & Manual"
@@ -8670,10 +8618,6 @@ msgid "Current Software Version"
 msgstr "現在のソフトウェアバージョン"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "データベースのアップグレードが正常に完了しました。ダッシュボードにリダイレクト中..."
-
-#: 
 msgid "Date & Time"
 msgstr "日付と時刻"
 
@@ -8833,14 +8777,6 @@ msgstr "説教/イベントテキスト"
 #: 
 msgid "Unclassified"
 msgstr "未分類"
-
-#: 
-msgid "Upgrade database now"
-msgstr "今すぐデータベースをアップグレード"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRMインストールは、インストールされたソフトウェアバージョンに合わせてデータベースのアップグレードが必要です。この操作はスキーマとデータの移行を適用します。続行する前に最近のバックアップがあることを確認してください。"
 
 #: 
 msgid "added to this event"
@@ -10903,16 +10839,6 @@ msgstr "予定"
 msgid "Failed to delete kiosk"
 msgstr "キオスクの削除に失敗しました"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "会計年度。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "登録済み学生グループ"
-
 #: 
 msgid "Here"
 msgstr "こちら"
@@ -10964,16 +10890,6 @@ msgstr "お迎えリクエスト"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "できるだけ早く教室にお越しください。"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "選択した会計年度の各基金の家族名別誓約概要"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "登録済み学生"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12466,4 +12382,68 @@ msgstr "— 国を選択 —"
 #: 
 msgid "— Select State —"
 msgstr "— 都道府県を選択 —"
+
+#: 
+msgid "Address Status"
+msgstr "住所ステータス"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "住所が入力されましたが、座標はまだ設定されていません"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "住所はジオコードされています（座標が保存されています）"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "自動データベースアップグレードが試みられましたが失敗しました。サーバーログを確認するか、システム管理者にお問い合わせください。"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "自動データベースアップグレードが試みられましたが失敗しました。以下のエラーを確認し、システム管理者にお問い合わせください。"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "データベースのアップグレードに失敗しました"
+
+#: 
+msgid "Geocoded"
+msgstr "ジオコード済み"
+
+#: 
+msgid "Installed Software Version"
+msgstr "インストール済みソフトウェアバージョン"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "ChurchCRMをバージョンにアップグレードしてください"
+
+#: 
+msgid "Software Update Required"
+msgstr "ソフトウェアの更新が必要です"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "日曜学校は無効になっています"
+
+#: 
+msgid "Unverified"
+msgstr "未確認"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "未確認の住所"
+
+#: 
+msgid "Version Mismatch"
+msgstr "バージョンの不一致"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "データベースのバージョンがインストール済みソフトウェアより新しいです。これは通常、ソフトウェアが古いバージョンにロールバックされたことを意味します。データベースに合わせてChurchCRMをアップグレードしてください。"
+
+#: 
+msgid "or later to continue."
+msgstr "以降のバージョンが継続には必要です。"
 

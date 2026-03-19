@@ -33,7 +33,7 @@ class Prerequisite implements \JsonSerializable
 
     public function getWikiLink(): string
     {
-        return 'https://github.com/ChurchCRM/CRM/wiki/ChurchCRM-Application-Platform-Prerequisites#' . MiscUtils::getGitHubWikiAnchorLink($this->name);
+        return 'https://docs.churchcrm.io/installation/system-requirements#' . MiscUtils::getGitHubWikiAnchorLink($this->name);
     }
 
     public function getStatusText(): string

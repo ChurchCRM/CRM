@@ -1907,10 +1907,6 @@ msgid "Family Geographic"
 msgstr "Rodziny na Mapie"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Aktualizuj Współrzędne dla Wszystkich Rodzin"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Możliwości wolontariatu"
 
@@ -2590,10 +2586,6 @@ msgid "Calendar Year"
 msgstr "Rok Kalendarzowy"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Aktualizuj Szerokość i Długość Geograficzną"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Potwierdznie Usunięcia Użytkownika"
 
@@ -3177,10 +3169,6 @@ msgid "Teachers"
 msgstr "Nauczyciele"
 
 #: 
-msgid "Send Message"
-msgstr "Wyślij wiadomość"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Urodziny według miesięcy"
 
@@ -3195,34 +3183,6 @@ msgstr "Komórka"
 #: 
 msgid "Home Address"
 msgstr "Adres domowy"
-
-#: 
-msgid "Compose New Message"
-msgstr "Nowa wiadomość"
-
-#: 
-msgid "Kids Emails"
-msgstr "E-maile dzieci"
-
-#: 
-msgid "Parents Emails"
-msgstr "E-maile rodziców"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Emaile nauczycieli"
-
-#: 
-msgid "Attachment"
-msgstr "Załącznik"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Odrzuć"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3453,10 +3413,6 @@ msgstr "Nowa wersja"
 #: 
 msgid "Self Registration"
 msgstr "Samodzielna Rejestracja"
-
-#: 
-msgid "No coordinates found"
-msgstr "Nie znaleziono współrzędnych"
 
 #: 
 msgid "Anonymous"
@@ -6027,10 +5983,6 @@ msgid "system user login reset"
 msgstr "reset logowania użytkownika"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Rodziny bez danych geograficznych"
-
-#: 
 msgid "Notification for"
 msgstr "Powiadomienie dla"
 
@@ -6616,10 +6568,6 @@ msgstr "osób"
 #: 
 msgid "System Upgrade"
 msgstr "Aktualizacja systemu"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Wymagana aktualizacja"
 
 #: 
 msgid "Help & Manual"
@@ -8811,10 +8759,6 @@ msgid "Current Software Version"
 msgstr "Obecna wersja oprogramowania"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Aktualizacja bazy pomyślna. Przekierowanie..."
-
-#: 
 msgid "Date & Time"
 msgstr "Data i czas"
 
@@ -8974,14 +8918,6 @@ msgstr "Tekst kazania / wydarzenia"
 #: 
 msgid "Unclassified"
 msgstr "Niesklasyfikowane"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Zaktualizuj bazę danych teraz"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Wymagana aktualizacja bazy danych. Przed kontynuacją upewnij się, że masz kopię zapasową."
 
 #: 
 msgid "added to this event"
@@ -11054,16 +10990,6 @@ msgstr "Oczekiwany"
 msgid "Failed to delete kiosk"
 msgstr "Nie udało się usunąć kiosku"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Rok podatkowy."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupa zarejestrowanych uczniów"
-
 #: 
 msgid "Here"
 msgstr "Tutaj"
@@ -11115,16 +11041,6 @@ msgstr "Prośba o odbiór"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Proszę udać się do klasy jak najszybciej."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Podsumowanie zobowiązań według nazwiska rodziny dla każdego funduszu za wybrany rok podatkowy"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Zarejestrowani uczniowie"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12619,4 +12535,68 @@ msgstr "— Wybierz kraj —"
 #: 
 msgid "— Select State —"
 msgstr "— Wybierz województwo —"
+
+#: 
+msgid "Address Status"
+msgstr "Status adresu"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres wprowadzony, ale współrzędne nie zostały jeszcze ustawione"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres został geokodowany (współrzędne zapisane)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Sprawdź logi serwera lub skontaktuj się z administratorem systemu."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Podjęto próbę automatycznej aktualizacji bazy danych, ale nie powiodła się. Przejrzyj błąd poniżej i skontaktuj się z administratorem systemu."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Aktualizacja bazy danych nie powiodła się"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodowany"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Zainstalowana wersja oprogramowania"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Zaktualizuj ChurchCRM do wersji"
+
+#: 
+msgid "Software Update Required"
+msgstr "Wymagana aktualizacja oprogramowania"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Szkoła niedzielna jest wyłączona"
+
+#: 
+msgid "Unverified"
+msgstr "Niezweryfikowany"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Niezweryfikowane adresy"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Niezgodność wersji"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Wersja Twojej bazy danych jest nowsza niż zainstalowane oprogramowanie. Zazwyczaj oznacza to, że oprogramowanie zostało cofnięte do starszej wersji. Zaktualizuj ChurchCRM, aby pasowało do Twojej bazy danych."
+
+#: 
+msgid "or later to continue."
+msgstr "lub nowszej, aby kontynuować."
 

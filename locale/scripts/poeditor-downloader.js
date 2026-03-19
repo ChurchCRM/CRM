@@ -475,11 +475,12 @@ function parseArguments() {
 function validateLocale(localeKey) {
     const lowerKey = localeKey.toLowerCase();
     
-    // First try exact match
+    // First try exact match (locale code, display name, or POEditor dash-code)
     let matching = Object.entries(localesConfig).find(
         ([key, config]) => 
             config.locale.toLowerCase() === lowerKey || 
-            key.toLowerCase() === lowerKey
+            key.toLowerCase() === lowerKey ||
+            (config.poEditor && config.poEditor.toLowerCase() === lowerKey)
     );
     
     // If no exact match, try language code prefix (e.g., "fi" matches "fi_FI")

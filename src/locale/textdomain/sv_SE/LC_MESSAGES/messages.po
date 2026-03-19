@@ -1923,10 +1923,6 @@ msgid "Family Geographic"
 msgstr "Familj geografi"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Uppdatera alla familj koordinat"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Volontärmöjligheter"
 
@@ -2621,10 +2617,6 @@ msgid "Calendar Year"
 msgstr "Kalender år"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Uppdatera Latitude &amp; Longitud"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bekräfta radera användare"
 
@@ -3209,10 +3201,6 @@ msgid "Teachers"
 msgstr "lärare"
 
 #: 
-msgid "Send Message"
-msgstr "Skicka meddelande"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Födelsedagar per månad"
 
@@ -3227,34 +3215,6 @@ msgstr "Mobil"
 #: 
 msgid "Home Address"
 msgstr "Hemadress"
-
-#: 
-msgid "Compose New Message"
-msgstr "Skriv ett nytt meddelande"
-
-#: 
-msgid "Kids Emails"
-msgstr "Barnemails"
-
-#: 
-msgid "Parents Emails"
-msgstr "Föräldrar e-post"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Lärares e-post"
-
-#: 
-msgid "Attachment"
-msgstr "Anknytning"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Kassera"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3486,10 +3446,6 @@ msgstr "Nya utgåvan"
 #: 
 msgid "Self Registration"
 msgstr "Självregistrering"
-
-#: 
-msgid "No coordinates found"
-msgstr "Inga koordinater hittades"
 
 #: 
 msgid "Anonymous"
@@ -6069,10 +6025,6 @@ msgid "system user login reset"
 msgstr "återställning av systemanvändares system"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familjer utan geoinformation"
-
-#: 
 msgid "Notification for"
 msgstr "Meddelande om"
 
@@ -6659,10 +6611,6 @@ msgstr "Av personer"
 #: 
 msgid "System Upgrade"
 msgstr "Systemuppgradering"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Uppgradering krävs"
 
 #: 
 msgid "Help & Manual"
@@ -8852,10 +8800,6 @@ msgid "Current Software Version"
 msgstr "Nuvarande programvaruversion"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Databasuppgraderingen slutfördes. Omdirigerar till panelen..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum & Tid"
 
@@ -9015,14 +8959,6 @@ msgstr "Prediko- / händelsetext"
 #: 
 msgid "Unclassified"
 msgstr "Oklassificerad"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Uppgradera databas nu"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Din ChurchCRM-installation behöver en databasuppgradering för att matcha den installerade programvaruversionen. Denna åtgärd kommer att tillämpa schema- och datamigreringar. Se till att du har en aktuell säkerhetskopia innan du fortsätter."
 
 #: 
 msgid "added to this event"
@@ -11090,16 +11026,6 @@ msgstr "Förväntat"
 msgid "Failed to delete kiosk"
 msgstr "Det gick inte att ta bort kiosken"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupp av registrerade elever"
-
 #: 
 msgid "Here"
 msgstr "Här"
@@ -11151,16 +11077,6 @@ msgstr "Hämtningsbegäran"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Vänligen gå till klassrummet så snart som möjligt."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Löftessammanfattning per familjenamn för varje fond för valt räkenskapsår"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerade elever"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12654,4 +12570,68 @@ msgstr "— Välj land —"
 #: 
 msgid "— Select State —"
 msgstr "— Välj län —"
+
+#: 
+msgid "Address Status"
+msgstr "Adressstatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adress angiven men koordinater har inte angetts ännu"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adressen har geokodats (koordinater sparade)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Ett automatiskt databasuppgraderingsförsök gjordes men misslyckades. Kontrollera serverloggarna eller kontakta din systemadministratör."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Ett automatiskt databasuppgraderingsförsök gjordes men misslyckades. Granska felet nedan och kontakta din systemadministratör."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Databasuppgradering misslyckades"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokodad"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Installerad programvaruversion"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Uppgradera ChurchCRM till version"
+
+#: 
+msgid "Software Update Required"
+msgstr "Programvaruuppdatering krävs"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Söndagsskolan är inaktiverad"
+
+#: 
+msgid "Unverified"
+msgstr "Overifierad"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Overifierade adresser"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versionskonflikt"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Din databasversion är nyare än den installerade programvaran. Det innebär vanligtvis att programvaran har återställts till en äldre version. Uppgradera ChurchCRM för att matcha din databas."
+
+#: 
+msgid "or later to continue."
+msgstr "eller senare för att fortsätta."
 

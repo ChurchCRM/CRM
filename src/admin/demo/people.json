@@ -501,7 +501,8 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 3,
-          "photo": "joseph.scott37.jpg"
+          "photo": "joseph.scott37.jpg",
+          "hideAge": true
         },
         {
           "title": null,
@@ -519,7 +520,8 @@
           "classification": "Member",
           "maidenName": null,
           "familyRole": 3,
-          "photo": "daniel.scott2.jpg"
+          "photo": "daniel.scott2.jpg",
+          "hideAge": true
         },
         {
           "title": null,
@@ -4118,7 +4120,8 @@
           "birthDay": 23,
           "classification": "Member",
           "maidenName": null,
-          "familyRole": 3
+          "familyRole": 3,
+          "hideAge": true
         }
       ],
       "notes": [],
@@ -5839,6 +5842,145 @@
       "weddingDate": "2019-12-19",
       "active": true,
       "verified": false
+    },
+    {
+      "name": "Campbell",
+      "address": {
+        "line1": "512 Elm Street",
+        "line2": null,
+        "city": "Independence",
+        "state": "MO",
+        "zip": "64050",
+        "country": "United States"
+      },
+      "contact": {
+        "phone": {
+          "home": "(816) 555-0142",
+          "work": null,
+          "cell": null
+        },
+        "email": "family.campbell61@demo.churchcrm.io"
+      },
+      "members": [
+        {
+          "title": "Mr",
+          "firstName": "Robert",
+          "middleName": null,
+          "lastName": "Campbell",
+          "birthYear": 1978,
+          "gender": "male",
+          "email": "robert.campbell@demo.churchcrm.io",
+          "phone": "(816) 555-0143",
+          "notes": [],
+          "createdAt": "2024-04-01T08:00:00.000Z",
+          "birthMonth": 3,
+          "birthDay": 22,
+          "classification": "Member",
+          "maidenName": null,
+          "familyRole": 1
+        },
+        {
+          "title": "Mrs",
+          "firstName": "Patricia",
+          "middleName": null,
+          "lastName": "Campbell",
+          "birthYear": 1980,
+          "gender": "female",
+          "email": "patricia.campbell@demo.churchcrm.io",
+          "phone": null,
+          "notes": [],
+          "createdAt": "2024-04-01T08:00:00.000Z",
+          "birthMonth": 6,
+          "birthDay": 14,
+          "classification": "Member",
+          "maidenName": null,
+          "familyRole": 2
+        }
+      ],
+      "notes": [],
+      "createdAt": "2024-04-01",
+      "weddingDate": "2003-08-10",
+      "active": true,
+      "verified": false
+    }
+  ],
+  "individuals": [
+    {
+      "firstName": "Marcus",
+      "middleName": null,
+      "lastName": "Webb",
+      "birthYear": 1985,
+      "birthMonth": 4,
+      "birthDay": 10,
+      "gender": "male",
+      "email": "marcus.webb@demo.churchcrm.io",
+      "phone": "(816) 555-0201",
+      "notes": [],
+      "createdAt": "2024-05-01T08:00:00.000Z",
+      "classification": "Member",
+      "familyRole": 1
+    },
+    {
+      "firstName": "Grace",
+      "middleName": null,
+      "lastName": "Owens",
+      "birthYear": 1990,
+      "birthMonth": 9,
+      "birthDay": 25,
+      "gender": "female",
+      "email": "grace.owens@demo.churchcrm.io",
+      "phone": "(816) 555-0202",
+      "notes": [],
+      "createdAt": "2024-05-05T08:00:00.000Z",
+      "classification": "Guest",
+      "familyRole": 1
+    },
+    {
+      "firstName": "Lily",
+      "middleName": null,
+      "lastName": "Turner",
+      "birthYear": 2018,
+      "birthMonth": 3,
+      "birthDay": 7,
+      "gender": "female",
+      "email": "lily.turner@demo.churchcrm.io",
+      "phone": null,
+      "notes": [],
+      "createdAt": "2024-05-10T08:00:00.000Z",
+      "classification": "Member",
+      "familyRole": 3,
+      "hideAge": true
+    },
+    {
+      "firstName": "Noah",
+      "middleName": null,
+      "lastName": "Cooper",
+      "birthYear": 2015,
+      "birthMonth": 6,
+      "birthDay": 19,
+      "gender": "male",
+      "email": "noah.cooper@demo.churchcrm.io",
+      "phone": null,
+      "notes": [],
+      "createdAt": "2024-05-12T08:00:00.000Z",
+      "classification": "Member",
+      "familyRole": 3,
+      "hideAge": true
+    },
+    {
+      "firstName": "Zoe",
+      "middleName": null,
+      "lastName": "Parker",
+      "birthYear": 2010,
+      "birthMonth": 11,
+      "birthDay": 3,
+      "gender": "female",
+      "email": "zoe.parker@demo.churchcrm.io",
+      "phone": null,
+      "notes": [],
+      "createdAt": "2024-05-15T08:00:00.000Z",
+      "classification": "Member",
+      "familyRole": 3
     }
   ]
 }

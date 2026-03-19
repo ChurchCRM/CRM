@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "Aile Geographic"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Tüm aile koordinatlarını güncelleyin"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Gönüllü fırsatlar"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "Takvim yılı"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Enlem ve Boylamı Güncelle"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Kullanıcı Silme Onayı"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "Öğretmen"
 
 #: 
-msgid "Send Message"
-msgstr "Mesaj gönder"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Aylara göre doğum günleri"
 
@@ -3109,34 +3097,6 @@ msgstr "Hareketli"
 #: 
 msgid "Home Address"
 msgstr "Ev Adresi"
-
-#: 
-msgid "Compose New Message"
-msgstr "Yeni mesaj oluştur"
-
-#: 
-msgid "Kids Emails"
-msgstr "Çocuk e -postaları"
-
-#: 
-msgid "Parents Emails"
-msgstr "Ebeveyn e -postaları"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Öğretmen e -postaları"
-
-#: 
-msgid "Attachment"
-msgstr "Ek"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Atmak"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Yeni sürüm"
 #: 
 msgid "Self Registration"
 msgstr "Kendi Kayıt"
-
-#: 
-msgid "No coordinates found"
-msgstr "Koordinat bulunamadı"
 
 #: 
 msgid "Anonymous"
@@ -5944,10 +5900,6 @@ msgid "system user login reset"
 msgstr "Sistem Kullanıcı Oturum Açma Sıfırlama"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Coğrafi bilgisi olmayan aileler"
-
-#: 
 msgid "Notification for"
 msgstr "İçin bildirim"
 
@@ -6534,10 +6486,6 @@ msgstr "insanların"
 #: 
 msgid "System Upgrade"
 msgstr "Sistem güncellemesi"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Yükseltme Gerekli"
 
 #: 
 msgid "Help & Manual"
@@ -8727,10 +8675,6 @@ msgid "Current Software Version"
 msgstr "Mevcut Yazılım Sürümü"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Veritabanı yükseltme başarıyla tamamlandı. Panoya yönlendiriliyor..."
-
-#: 
 msgid "Date & Time"
 msgstr "Tarih ve Saat"
 
@@ -8890,14 +8834,6 @@ msgstr "Vaaz / Etkinlik Metni"
 #: 
 msgid "Unclassified"
 msgstr "Sınıflandırılmamış"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Veritabanını şimdi yükselt"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM kurulumunuzun, yüklü yazılım sürümüyle eşleşmesi için bir veritabanı yükseltmesine ihtiyacı var. Bu işlem şema ve veri göçlerini uygulayacaktır. Lütfen devam etmeden önce güncel bir yedeğiniz olduğundan emin olun."
 
 #: 
 msgid "added to this event"
@@ -10965,16 +10901,6 @@ msgstr "Beklenen"
 msgid "Failed to delete kiosk"
 msgstr "Kiosk silinemedi"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mali Yıl."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kayıtlı öğrenciler grubu"
-
 #: 
 msgid "Here"
 msgstr "Buraya"
@@ -11026,16 +10952,6 @@ msgstr "Teslim Alma Talebi"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Lütfen en kısa sürede sınıfa geçin."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Seçili mali yıl için her fon bazında aile adına göre mali taahhüt özeti"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Kayıtlı öğrenciler"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12529,4 +12445,68 @@ msgstr "— Ülke Seçin —"
 #: 
 msgid "— Select State —"
 msgstr "— İl Seçin —"
+
+#: 
+msgid "Address Status"
+msgstr "Adres Durumu"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres girildi ancak koordinatlar henüz ayarlanmadı"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres coğrafi olarak kodlandı (koordinatlar depolandı)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen sunucu günlüklerini kontrol edin veya sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Otomatik bir veritabanı yükseltmesi denendi ancak başarısız oldu. Lütfen aşağıdaki hatayı inceleyin ve sistem yöneticinizle iletişime geçin."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Veritabanı Yükseltmesi Başarısız"
+
+#: 
+msgid "Geocoded"
+msgstr "Coğrafi olarak kodlandı"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Yüklü Yazılım Sürümü"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Lütfen ChurchCRM'yi sürüme yükseltin"
+
+#: 
+msgid "Software Update Required"
+msgstr "Yazılım Güncellemesi Gerekiyor"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Pazar Okulu devre dışı bırakıldı"
+
+#: 
+msgid "Unverified"
+msgstr "Doğrulanmamış"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Doğrulanmamış Adresler"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Sürüm Uyumsuzluğu"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Veritabanı sürümünüz yüklü yazılımdan daha yeni. Bu genellikle yazılımın daha eski bir sürüme geri döndürüldüğü anlamına gelir. Veritabanınızla eşleşmesi için lütfen ChurchCRM'yi yükseltin."
+
+#: 
+msgid "or later to continue."
+msgstr "veya devam etmek için daha sonrası."
 

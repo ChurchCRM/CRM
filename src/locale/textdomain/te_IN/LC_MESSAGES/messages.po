@@ -1847,10 +1847,6 @@ msgid "Family Geographic"
 msgstr "కుటుంబ భౌగోళిక"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "అన్ని కుటుంబ కోఆర్డినేట్‌లను అప్‌డేట్ చేయండి"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "వాలంటీర్ అవకాశాలు"
 
@@ -2517,10 +2513,6 @@ msgid "Calendar Year"
 msgstr "క్యాలెండర్ సంవత్సరం"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "అక్షాంశం & రేఖాంశాన్ని అప్‌డేట్ చేయండి"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "వినియోగదారు తొలగింపు నిర్ధారణ"
 
@@ -3073,10 +3065,6 @@ msgid "Teachers"
 msgstr "ఉపాధ్యాయులు"
 
 #: 
-msgid "Send Message"
-msgstr "సందేశం పంపండి"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "నెల వారీ పుట్టినరోజులు"
 
@@ -3091,34 +3079,6 @@ msgstr "మొబైల్"
 #: 
 msgid "Home Address"
 msgstr "ఇంటి చిరునామా"
-
-#: 
-msgid "Compose New Message"
-msgstr "కొత్త సందేశాన్ని రాయండి"
-
-#: 
-msgid "Kids Emails"
-msgstr "పిల్లల ఇమెయిల్‌లు"
-
-#: 
-msgid "Parents Emails"
-msgstr "తల్లిదండ్రుల ఇమెయిల్‌లు"
-
-#: 
-msgid "Teachers Emails"
-msgstr "ఉపాధ్యాయుల ఇమెయిల్‌లు"
-
-#: 
-msgid "Attachment"
-msgstr "అటాచ్‌మెంట్"
-
-#: 
-msgid "Max. 32MB"
-msgstr "గరిష్టం 32MB"
-
-#: 
-msgid "Discard"
-msgstr "విస్మరించు"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3343,10 +3303,6 @@ msgstr "కొత్త విడుదల"
 #: 
 msgid "Self Registration"
 msgstr "స్వయం నమోదు"
-
-#: 
-msgid "No coordinates found"
-msgstr "కోఆర్డినేట్‌లు కనుగొనబడలేదు"
 
 #: 
 msgid "Anonymous"
@@ -5915,10 +5871,6 @@ msgid "system user login reset"
 msgstr "సిస్టమ్ వినియోగదారు లాగిన్ రీసెట్ చేయబడింది"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "భౌగోళిక సమాచారం లేని కుటుంబాలు"
-
-#: 
 msgid "Notification for"
 msgstr "కోసం నోటిఫికేషన్"
 
@@ -6504,10 +6456,6 @@ msgstr "వ్యక్తుల"
 #: 
 msgid "System Upgrade"
 msgstr "సిస్టమ్ అప్‌గ్రేడ్"
-
-#: 
-msgid "Upgrade Required"
-msgstr "అప్‌గ్రేడ్ అవసరం"
 
 #: 
 msgid "Help & Manual"
@@ -8689,10 +8637,6 @@ msgid "Current Software Version"
 msgstr "ప్రస్తుత సాఫ్ట్‌వేర్ వెర్షన్"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "డేటాబేస్ అప్‌గ్రేడ్ విజయవంతంగా పూర్తయింది. డ్యాష్‌బోర్డ్‌కు మళ్ళిస్తోంది..."
-
-#: 
 msgid "Date & Time"
 msgstr "తేదీ & సమయం"
 
@@ -8852,14 +8796,6 @@ msgstr "ప్రసంగం / ఈవెంట్ టెక్స్ట్"
 #: 
 msgid "Unclassified"
 msgstr "వర్గీకరించబడలేదు"
-
-#: 
-msgid "Upgrade database now"
-msgstr "ఇప్పుడు డేటాబేస్‌ను అప్‌గ్రేడ్ చేయండి"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "మీ ChurchCRM ఇన్‌స్టాలేషన్‌కు ఇన్‌స్టాల్ చేయబడిన సాఫ్ట్‌వేర్ వెర్షన్‌తో సరిపోలడానికి డేటాబేస్ అప్‌గ్రేడ్ అవసరం. ఈ ఆపరేషన్ స్కీమా మరియు డేటా మైగ్రేషన్‌లను వర్తింపజేస్తుంది. కొనసాగడానికి ముందు మీకు ఇటీవల బ్యాకప్ ఉందని నిర్ధారించుకోండి."
 
 #: 
 msgid "added to this event"
@@ -10927,16 +10863,6 @@ msgstr "అంచనా వేయబడినది"
 msgid "Failed to delete kiosk"
 msgstr "కియోస్క్ తొలగించడంలో విఫలమైంది"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "ఆర్థిక సంవత్సరం."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "నమోదిత విద్యార్థుల సమూహం"
-
 #: 
 msgid "Here"
 msgstr "ఇక్కడ"
@@ -10988,16 +10914,6 @@ msgstr "పిక్అప్ అభ్యర్థన"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "దయచేసి వీలైనంత త్వరగా తరగతి గదికి వెళ్లండి."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "ఎంచుకున్న ఆర్థిక సంవత్సరానికి ప్రతి నిధికి కుటుంబం పేరు ద్వారా వాగ్దాన సారాంశం"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "నమోదిత విద్యార్థులు"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12491,4 +12407,68 @@ msgstr "— దేశం ఎంచుకోండి —"
 #: 
 msgid "— Select State —"
 msgstr "— రాష్ట్రం ఎంచుకోండి —"
+
+#: 
+msgid "Address Status"
+msgstr "చిరునామా స్థితి"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "చిరునామా నమోదు చేయబడింది కానీ కోఆర్డినేట్‌లు ఇంకా సెట్ చేయబడలేదు"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "చిరునామా జియోకోడ్ చేయబడింది (కోఆర్డినేట్‌లు నిల్వ చేయబడ్డాయి)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "స్వయంచాలక డేటాబేస్ అప్‌గ్రేడ్ ప్రయత్నించబడింది కానీ విఫలమైంది. సర్వర్ లాగ్‌లను తనిఖీ చేయండి లేదా మీ సిస్టమ్ అడ్మినిస్ట్రేటర్‌ని సంప్రదించండి."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "స్వయంచాలక డేటాబేస్ అప్‌గ్రేడ్ ప్రయత్నించబడింది కానీ విఫలమైంది. దయచేసి క్రింది లోపాన్ని సమీక్షించి మీ సిస్టమ్ అడ్మినిస్ట్రేటర్‌ని సంప్రదించండి."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "డేటాబేస్ అప్‌గ్రేడ్ విఫలమైంది"
+
+#: 
+msgid "Geocoded"
+msgstr "జియోకోడ్ చేయబడింది"
+
+#: 
+msgid "Installed Software Version"
+msgstr "ఇన్‌స్టాల్ చేసిన సాఫ్ట్‌వేర్ వెర్షన్"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "దయచేసి ChurchCRM ని వెర్షన్‌కు అప్‌గ్రేడ్ చేయండి"
+
+#: 
+msgid "Software Update Required"
+msgstr "సాఫ్ట్‌వేర్ అప్‌డేట్ అవసరం"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "సండే స్కూల్ నిలిపివేయబడింది"
+
+#: 
+msgid "Unverified"
+msgstr "ధృవీకరించబడలేదు"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "ధృవీకరించబడని చిరునామాలు"
+
+#: 
+msgid "Version Mismatch"
+msgstr "వెర్షన్ అసమతుల్యత"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "మీ డేటాబేస్ వెర్షన్ ఇన్‌స్టాల్ చేసిన సాఫ్ట్‌వేర్ కంటే కొత్తది. ఇది సాధారణంగా సాఫ్ట్‌వేర్ పాత వెర్షన్‌కు వెనక్కి వెళ్ళిందని అర్థం. మీ డేటాబేస్‌తో సరిపోలడానికి ChurchCRM ని అప్‌గ్రేడ్ చేయండి."
+
+#: 
+msgid "or later to continue."
+msgstr "లేదా కొనసాగించడానికి తర్వాత."
 

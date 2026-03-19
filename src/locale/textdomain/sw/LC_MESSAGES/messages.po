@@ -1857,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "Kijiografia cha Familia"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Sasisha Viratibu Zote za Familia"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Fursa za Kujitolea"
 
@@ -2529,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "Mwaka wa Kalenda"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Sasisha Latitudo na Longitude"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Uthibitishaji wa Futa Mtumiaji"
 
@@ -3089,10 +3081,6 @@ msgid "Teachers"
 msgstr "Walimu"
 
 #: 
-msgid "Send Message"
-msgstr "Tuma Ujumbe"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Siku za kuzaliwa kwa Mwezi"
 
@@ -3107,34 +3095,6 @@ msgstr "Rununu"
 #: 
 msgid "Home Address"
 msgstr "Anwani ya nyumbani"
-
-#: 
-msgid "Compose New Message"
-msgstr "Tunga Ujumbe Mpya"
-
-#: 
-msgid "Kids Emails"
-msgstr "Barua pepe za watoto"
-
-#: 
-msgid "Parents Emails"
-msgstr "Barua pepe za Wazazi"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Barua pepe za Walimu"
-
-#: 
-msgid "Attachment"
-msgstr "Kiambatisho"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Tupa"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3359,10 +3319,6 @@ msgstr "Toleo Jipya"
 #: 
 msgid "Self Registration"
 msgstr "Kujiandikisha"
-
-#: 
-msgid "No coordinates found"
-msgstr "Hakuna viwianishi vilivyopatikana"
 
 #: 
 msgid "Anonymous"
@@ -5939,10 +5895,6 @@ msgid "system user login reset"
 msgstr "kuweka upya mfumo wa kuingia kwa mtumiaji"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Familia zisizo na Maelezo ya Geo"
-
-#: 
 msgid "Notification for"
 msgstr "Taarifa kwa"
 
@@ -6529,10 +6481,6 @@ msgstr "ya Watu"
 #: 
 msgid "System Upgrade"
 msgstr "Uboreshaji wa Mfumo"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Uboreshaji Unahitajika"
 
 #: 
 msgid "Help & Manual"
@@ -8719,10 +8667,6 @@ msgid "Current Software Version"
 msgstr "Toleo la sasa la Programu"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Sasisho la hifadhidata limekamilika. Inakupeleka kwenye dashibodi..."
-
-#: 
 msgid "Date & Time"
 msgstr "Tarehe na Muda"
 
@@ -8882,14 +8826,6 @@ msgstr "Andiko la Mahubiri / Tukio"
 #: 
 msgid "Unclassified"
 msgstr "Hajaainishwa"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Sasisha hifadhidata sasa"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Mfumo wako wa ChurchCRM unahitaji sasisho la hifadhidata ili kulingana na toleo la programu. Tafadhali hakikisha una nakala ya sasa kabla ya kuendelea."
 
 #: 
 msgid "added to this event"
@@ -10957,16 +10893,6 @@ msgstr "Inayotarajiwa"
 msgid "Failed to delete kiosk"
 msgstr "Imeshindwa kufuta kiosk"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mwaka wa Fedha."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kundi la wanafunzi waliosajiliwa"
-
 #: 
 msgid "Here"
 msgstr "Hapa"
@@ -11018,16 +10944,6 @@ msgstr "Ombi la Kuchukua"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Tafadhali nenda darasani haraka iwezekanavyo."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Muhtasari wa ahadi kwa jina la familia kwa kila mfuko kwa mwaka wa fedha uliochaguliwa"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Wanafunzi waliosajiliwa"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12521,4 +12437,68 @@ msgstr "— Chagua Nchi —"
 #: 
 msgid "— Select State —"
 msgstr "— Chagua Mkoa —"
+
+#: 
+msgid "Address Status"
+msgstr "Hali ya Anwani"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Anwani imeingizwa lakini kuratibu hazijaanzishwa bado"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Anwani imepewa msimbo wa kijiografia (kuratibu zimehifadhiwa)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali angalia kumbukumbu za seva au wasiliana na msimamizi wako wa mfumo."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Jaribio la kuboresha hifadhidata kiotomatiki lilifanywa lakini lilishindwa. Tafadhali kagua hitilafu hapa chini na wasiliana na msimamizi wako wa mfumo."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Kuboresha Hifadhidata Kumeshindwa"
+
+#: 
+msgid "Geocoded"
+msgstr "Imepewa msimbo wa kijiografia"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Toleo la Programu Iliyosakinishwa"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Tafadhali boresha ChurchCRM hadi toleo"
+
+#: 
+msgid "Software Update Required"
+msgstr "Sasisho la Programu Linahitajika"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Shule ya Jumapili imezimwa"
+
+#: 
+msgid "Unverified"
+msgstr "Haijathibitishwa"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Anwani Ambazo Hazijathibitishwa"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Kutofautiana kwa Toleo"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Toleo la hifadhidata yako ni jipya zaidi kuliko programu iliyosakinishwa. Hii kawaida inamaanisha programu ilirejeshwa kwa toleo la zamani zaidi. Tafadhali boresha ChurchCRM ili ilingane na hifadhidata yako."
+
+#: 
+msgid "or later to continue."
+msgstr "au zaidi ili kuendelea."
 

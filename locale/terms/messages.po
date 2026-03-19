@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-17 14:35+0000\n"
+"POT-Creation-Date: 2026-03-19 21:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -356,6 +356,9 @@ msgstr ""
 msgid "Add Students"
 msgstr ""
 
+msgid "Add Your Data"
+msgstr ""
+
 msgid "Add Your First Property Type"
 msgstr ""
 
@@ -374,10 +377,22 @@ msgstr ""
 msgid "Add event permission"
 msgstr ""
 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr ""
+
+msgid "Add first family"
+msgstr ""
+
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
 msgstr ""
 
 msgid "Add records permission"
+msgstr ""
+
+msgid "Add staff and volunteers"
+msgstr ""
+
+msgid "Add staff or volunteers as system users"
 msgstr ""
 
 msgid "Add to Cart"
@@ -575,6 +590,12 @@ msgid "Amount exceeds maximum allowed value (999999.99)."
 msgstr ""
 
 msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
 msgid "An error occurred"
@@ -1047,6 +1068,12 @@ msgstr ""
 msgid "British Virgin Islands"
 msgstr ""
 
+msgid "Browse all available plugins"
+msgstr ""
+
+msgid "Browse all plugins"
+msgstr ""
+
 msgid "Browser"
 msgstr ""
 
@@ -1357,6 +1384,9 @@ msgstr ""
 msgid "Choose customer person field"
 msgstr ""
 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr ""
+
 msgid "Choose opportunities..."
 msgstr ""
 
@@ -1442,9 +1472,6 @@ msgid "Class Overview"
 msgstr ""
 
 msgid "Classes"
-msgstr ""
-
-msgid "Classes and enrollments"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -1558,10 +1585,7 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
-msgstr ""
-
-msgid "Complete these in any order. Use Demo Data to explore with sample records."
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
 msgstr ""
 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -1648,6 +1672,9 @@ msgid "Congregation Map"
 msgstr ""
 
 msgid "Congregation Map — Setup Required"
+msgstr ""
+
+msgid "Connect an SMTP server so ChurchCRM can send emails"
 msgstr ""
 
 msgid "Connect to your server via SSH, FTP, or your hosting control panel"
@@ -2003,6 +2030,9 @@ msgstr ""
 msgid "Database Server"
 msgstr ""
 
+msgid "Database Upgrade Failed"
+msgstr ""
+
 msgid "Database Version"
 msgstr ""
 
@@ -2016,9 +2046,6 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
-msgstr ""
-
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
 msgstr ""
 
 msgid "Database:"
@@ -2198,9 +2225,6 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "Delimiter to separate emails in mailto: links"
-msgstr ""
-
-msgid "Demo Data"
 msgstr ""
 
 msgid "Demo data import failed"
@@ -2690,6 +2714,9 @@ msgstr ""
 msgid "Enable Plugin"
 msgstr ""
 
+msgid "Enable Plugins"
+msgstr ""
+
 msgid "Enable Sunday School left menu."
 msgstr ""
 
@@ -2700,6 +2727,9 @@ msgid "Enable non-deductible payments"
 msgstr ""
 
 msgid "Enable the External Backup plugin for WebDAV cloud storage."
+msgstr ""
+
+msgid "Enable the MailChimp plugin to sync contacts"
 msgstr ""
 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
@@ -2758,6 +2788,9 @@ msgid "English - United States"
 msgstr ""
 
 msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr ""
+
+msgid "Enter Data Manually"
 msgstr ""
 
 msgid "Enter Name"
@@ -2965,6 +2998,9 @@ msgstr ""
 msgid "Expected Hash"
 msgstr ""
 
+msgid "Explore with Demo Data"
+msgstr ""
+
 msgid "Export All Classes, Kids, and Parent to CSV file"
 msgstr ""
 
@@ -2993,6 +3029,9 @@ msgid "Exporting..."
 msgstr ""
 
 msgid "Exports database structure and data. Smaller file size."
+msgstr ""
+
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr ""
 
 msgid "External Backup"
@@ -3744,6 +3783,9 @@ msgstr ""
 msgid "Get Started"
 msgstr ""
 
+msgid "Get Your Data Into ChurchCRM"
+msgstr ""
+
 msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
 msgstr ""
 
@@ -3765,9 +3807,6 @@ msgid "Girls"
 msgstr ""
 
 msgid "Giving Report (Tax Statements)"
-msgstr ""
-
-msgid "Giving funds and categories"
 msgstr ""
 
 msgid "Go"
@@ -4107,19 +4146,28 @@ msgstr ""
 msgid "Images Root"
 msgstr ""
 
+msgid "Import CSV"
+msgstr ""
+
 msgid "Import Data"
 msgstr ""
 
 msgid "Import Demo Data"
 msgstr ""
 
+msgid "Import contacts from your MailChimp audiences"
+msgstr ""
+
 msgid "Import failed"
 msgstr ""
 
-msgid "Import from CSV files"
+msgid "Import from a Spreadsheet"
 msgstr ""
 
-msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
+msgid "Import, restore, or enter manually"
+msgstr ""
+
+msgid "Import, restore, or manually enter your congregation"
 msgstr ""
 
 msgid "Important"
@@ -4204,6 +4252,9 @@ msgid "Install TLS/SSL certificate for better security"
 msgstr ""
 
 msgid "Install plugins by placing them in"
+msgstr ""
+
+msgid "Installed Software Version"
 msgstr ""
 
 msgid "Integrity Check Details:"
@@ -4306,6 +4357,9 @@ msgstr ""
 msgid "Invalid status"
 msgstr ""
 
+msgid "Invite Your Team"
+msgstr ""
+
 #. Context: countries
 msgid "Iran (‫ایران‬‎)"
 msgstr ""
@@ -4382,6 +4436,9 @@ msgid "Jul"
 msgstr ""
 
 msgid "July"
+msgstr ""
+
+msgid "Jump to any setup step:"
 msgstr ""
 
 msgid "Jun"
@@ -4648,6 +4705,12 @@ msgstr ""
 msgid "Load Authorized"
 msgstr ""
 
+msgid "Load demo data"
+msgstr ""
+
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr ""
+
 msgid "Loading"
 msgstr ""
 
@@ -4754,6 +4817,9 @@ msgstr ""
 msgid "MailChimp is not configured"
 msgstr ""
 
+msgid "MailChimp, backups, and more"
+msgstr ""
+
 msgid "Mailchimp"
 msgstr ""
 
@@ -4839,9 +4905,6 @@ msgid "Manage Properties and Classifications"
 msgstr ""
 
 msgid "Manage Two-Factor Authentication"
-msgstr ""
-
-msgid "Manage Users"
 msgstr ""
 
 msgid "Manual Backup"
@@ -5181,6 +5244,9 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr ""
+
 #. Context: countries
 msgid "Mozambique (Moçambique)"
 msgstr ""
@@ -5257,6 +5323,9 @@ msgid "Name Tags"
 msgstr ""
 
 msgid "Name for New"
+msgstr ""
+
+msgid "Name, address, contact details"
 msgstr ""
 
 #. Context: countries
@@ -5600,6 +5669,9 @@ msgstr ""
 msgid "Not in CRM"
 msgstr ""
 
+msgid "Not ready yet?"
+msgstr ""
+
 msgid "Not set"
 msgstr ""
 
@@ -5759,12 +5831,6 @@ msgid "Optional. URL for your church website."
 msgstr ""
 
 msgid "Order"
-msgstr ""
-
-msgid "Organization, timezone, email"
-msgstr ""
-
-msgid "Organizational structure"
 msgstr ""
 
 msgid "Orphaned Files"
@@ -6120,6 +6186,9 @@ msgstr ""
 msgid "Photos"
 msgstr ""
 
+msgid "Pick a path to get started"
+msgstr ""
+
 msgid "Pickup Request"
 msgstr ""
 
@@ -6286,6 +6355,9 @@ msgid "Please try again"
 msgstr ""
 
 msgid "Please update our records with corrections"
+msgstr ""
+
+msgid "Please upgrade ChurchCRM to version"
 msgstr ""
 
 msgid "Please verify your family's information"
@@ -6780,6 +6852,12 @@ msgstr ""
 msgid "Restore Status"
 msgstr ""
 
+msgid "Restore a Backup"
+msgstr ""
+
+msgid "Restore backup"
+msgstr ""
+
 msgid "Restore failed."
 msgstr ""
 
@@ -6905,6 +6983,9 @@ msgid "SMTP Server timeout in sec"
 msgstr ""
 
 msgid "SMTP Username"
+msgstr ""
+
+msgid "SMTP server for sending emails"
 msgstr ""
 
 msgid "SMTP server settings are not configured"
@@ -7321,6 +7402,12 @@ msgstr ""
 msgid "Set true to enable use of scanned checks"
 msgstr ""
 
+msgid "Set up"
+msgstr ""
+
+msgid "Set your church name, address, and contact email"
+msgstr ""
+
 msgid "Setting saved"
 msgstr ""
 
@@ -7340,6 +7427,9 @@ msgid "Settings saved successfully"
 msgstr ""
 
 msgid "Setup Complete"
+msgstr ""
+
+msgid "Setup Progress"
 msgstr ""
 
 msgid "Setup Tasks:"
@@ -7428,6 +7518,9 @@ msgstr ""
 msgid "Skip records with incomplete mail address"
 msgstr ""
 
+msgid "Skip — go to Admin Dashboard"
+msgstr ""
+
 msgid "Skipped"
 msgstr ""
 
@@ -7443,6 +7536,9 @@ msgid "Social Media"
 msgstr ""
 
 msgid "Software"
+msgstr ""
+
+msgid "Software Update Required"
 msgstr ""
 
 msgid "Software Version"
@@ -8447,13 +8543,7 @@ msgstr ""
 msgid "Upgrade Complete!"
 msgstr ""
 
-msgid "Upgrade Required"
-msgstr ""
-
 msgid "Upgrade Summary"
-msgstr ""
-
-msgid "Upgrade database now"
 msgstr ""
 
 msgid "Upgrade failed."
@@ -8472,6 +8562,9 @@ msgid "Upload CSV File"
 msgstr ""
 
 msgid "Upload Photo"
+msgstr ""
+
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
 msgstr ""
 
 #. Context: countries
@@ -8518,9 +8611,6 @@ msgid "User Management"
 msgstr ""
 
 msgid "User Settings"
-msgstr ""
-
-msgid "User accounts and roles"
 msgstr ""
 
 msgid "User authenticated via API Key: "
@@ -8678,6 +8768,9 @@ msgid "Version"
 msgstr ""
 
 msgid "Version Information"
+msgstr ""
+
+msgid "Version Mismatch"
 msgstr ""
 
 msgid "Version:"
@@ -9060,9 +9153,6 @@ msgstr ""
 msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr ""
-
 msgid "Your ChurchCRM password has been changed"
 msgstr ""
 
@@ -9100,6 +9190,9 @@ msgid "Your cart is empty!"
 msgstr ""
 
 msgid "Your child"
+msgstr ""
+
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
 msgstr ""
 
 msgid "Your fiscal year starts in month"
@@ -9197,6 +9290,9 @@ msgid "characters"
 msgstr ""
 
 msgid "characters in length."
+msgstr ""
+
+msgid "complete"
 msgstr ""
 
 msgid "data for member"
@@ -9329,6 +9425,12 @@ msgid "optional"
 msgstr ""
 
 msgid "or click to browse"
+msgstr ""
+
+msgid "or connect an external service"
+msgstr ""
+
+msgid "or later to continue."
 msgstr ""
 
 msgid "payment(s)?"

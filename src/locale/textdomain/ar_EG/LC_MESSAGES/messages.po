@@ -1858,10 +1858,6 @@ msgid "Family Geographic"
 msgstr "الجغرافية الأسرة"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "تحديث جميع الاحداثيات الأسرة"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "فرص التطوع"
 
@@ -2530,10 +2526,6 @@ msgid "Calendar Year"
 msgstr "تقويم سنوي"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "تحديث خط العرض والطول"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "العضو تأكيد حذف"
 
@@ -3091,10 +3083,6 @@ msgid "Teachers"
 msgstr "الخدام"
 
 #: 
-msgid "Send Message"
-msgstr "ارسال رساله"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "تواريخ الميلاد بالشهر"
 
@@ -3109,34 +3097,6 @@ msgstr "موبايل"
 #: 
 msgid "Home Address"
 msgstr "عنوان المنزل"
-
-#: 
-msgid "Compose New Message"
-msgstr "إنشاء رسالة جديدة"
-
-#: 
-msgid "Kids Emails"
-msgstr "رسائل البريد الإلكتروني الاطفال"
-
-#: 
-msgid "Parents Emails"
-msgstr "ايميل الوالدين"
-
-#: 
-msgid "Teachers Emails"
-msgstr "ايميل الخدام"
-
-#: 
-msgid "Attachment"
-msgstr "مرفقات"
-
-#: 
-msgid "Max. 32MB"
-msgstr "ماكس. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "تجاهل"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "إصدار جديد"
 #: 
 msgid "Self Registration"
 msgstr "التسجيل الذاتي"
-
-#: 
-msgid "No coordinates found"
-msgstr "لم يتم العثور على الإحداثيات"
 
 #: 
 msgid "Anonymous"
@@ -5944,10 +5900,6 @@ msgid "system user login reset"
 msgstr "إعادة تعيين تسجيل دخول المستخدم نظام"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "عائلات دون معلومات الجغرافية"
-
-#: 
 msgid "Notification for"
 msgstr "التبليغ عن"
 
@@ -6534,10 +6486,6 @@ msgstr "من الناس. من العامة"
 #: 
 msgid "System Upgrade"
 msgstr "ترقية نظام"
-
-#: 
-msgid "Upgrade Required"
-msgstr "مطلوب ترقية"
 
 #: 
 msgid "Help & Manual"
@@ -8732,10 +8680,6 @@ msgid "Current Software Version"
 msgstr "إصدار البرنامج الحالي"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "اكتمل ترقية قاعدة البيانات بنجاح. إعادة التوجيه إلى لوحة التحكم..."
-
-#: 
 msgid "Date & Time"
 msgstr "التاريخ والوقت"
 
@@ -8895,14 +8839,6 @@ msgstr "الخطبة / نص الحدث"
 #: 
 msgid "Unclassified"
 msgstr "غير مصنف"
-
-#: 
-msgid "Upgrade database now"
-msgstr "ترقية قاعدة البيانات الآن"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "يحتاج تثبيت ChurchCRM الخاص بك إلى ترقية قاعدة البيانات لمطابقة إصدار البرنامج المثبت. ستطبق هذه العملية هجرات المخطط والبيانات. يرجى التأكد من وجود نسخة احتياطية حديثة قبل المتابعة."
 
 #: 
 msgid "added to this event"
@@ -10990,16 +10926,6 @@ msgstr "متوقع"
 msgid "Failed to delete kiosk"
 msgstr "فشل في حذف الكشك"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "السنة المالية."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "مجموعة الطلاب المسجلين"
-
 #: 
 msgid "Here"
 msgstr "هنا"
@@ -11051,16 +10977,6 @@ msgstr "طلب استلام"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "يرجى التوجه إلى الفصل في أقرب وقت ممكن."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "ملخص التعهدات حسب اسم العائلة لكل صندوق للسنة المالية المحددة"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "الطلاب المسجلون"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12558,4 +12474,68 @@ msgstr "— اختر الدولة —"
 #: 
 msgid "— Select State —"
 msgstr "— اختر المحافظة —"
+
+#: 
+msgid "Address Status"
+msgstr "حالة العنوان"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "تم إدخال العنوان لكن الإحداثيات لم تُحدَّد بعد"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "تم ترميز العنوان جغرافيًا (الإحداثيات مخزنة)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "تمت محاولة ترقية تلقائية لقاعدة البيانات لكنها فشلت. يرجى التحقق من سجلات الخادم أو التواصل مع مسؤول النظام."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "تمت محاولة ترقية تلقائية لقاعدة البيانات لكنها فشلت. يرجى مراجعة الخطأ أدناه والتواصل مع مسؤول النظام."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "فشل ترقية قاعدة البيانات"
+
+#: 
+msgid "Geocoded"
+msgstr "تم الترميز الجغرافي"
+
+#: 
+msgid "Installed Software Version"
+msgstr "إصدار البرنامج المثبت"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "يرجى ترقية ChurchCRM إلى الإصدار"
+
+#: 
+msgid "Software Update Required"
+msgstr "مطلوب تحديث البرنامج"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "مدرسة الأحد معطلة"
+
+#: 
+msgid "Unverified"
+msgstr "غير موثق"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "عناوين غير موثقة"
+
+#: 
+msgid "Version Mismatch"
+msgstr "تعارض الإصدارات"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "إصدار قاعدة بياناتك أحدث من البرنامج المثبت. يعني هذا عادةً أن البرنامج تم التراجع إلى إصدار أقدم. يرجى ترقية ChurchCRM ليتوافق مع قاعدة بياناتك."
+
+#: 
+msgid "or later to continue."
+msgstr "أو أحدث للمتابعة."
 

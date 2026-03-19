@@ -475,6 +475,32 @@ A classic bug: the "Refresh Coordinates" button is shown when a family has no co
 
 **Rule:** JS bundles that contain event handlers must always be loaded. Use `if (!config) return;` guards inside the JS, not PHP conditionals wrapping the `<script>` tag.
 
+## importDemoData.js — Demo Data Trigger <!-- learned: 2026-03-19 -->
+
+`src/skin/js/importDemoData.js` listens on these selectors and shows the import overlay:
+- `#importDemoData`
+- `#importDemoDataQuickBtn`
+- `#importDemoDataV2`
+
+The handler calls `e.preventDefault()`, so **use `<a href="#">`** as the trigger element, never a `<button>` with Bootstrap utility classes like `p-0 border-0` — those override padding on any wrapping card and break layout.
+
+```html
+<!-- ✅ CORRECT — <a> element, no Bootstrap utility conflicts -->
+<a href="#" id="importDemoDataV2" class="gs-card gs-card--green">
+    ...card content...
+</a>
+
+<!-- ❌ WRONG — Bootstrap p-0/border-0 strips padding from the card -->
+<button id="importDemoDataV2" class="p-0 border-0 gs-card gs-card--green">
+    ...
+</button>
+```
+
+Include the script after your page content:
+```php
+<script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
+```
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`

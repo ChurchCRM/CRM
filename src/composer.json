@@ -3,7 +3,11 @@
   "description": "Free Church CRM Software",
   "license": "MIT",
   "type": "project",
+<<<<<<< dependabot/npm_and_yarn/fortawesome/fontawesome-free-7.2.0
   "version": "7.0.4",
+=======
+  "version": "7.1.0",
+>>>>>>> master
   "keywords": ["church", "crm"],
   "authors": [
     {

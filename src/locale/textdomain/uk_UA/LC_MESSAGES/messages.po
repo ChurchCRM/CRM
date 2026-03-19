@@ -1859,10 +1859,6 @@ msgid "Family Geographic"
 msgstr "Family Geographic"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Оновіть усі сімейні координати"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Волонтерські можливості"
 
@@ -2531,10 +2527,6 @@ msgid "Calendar Year"
 msgstr "Календарний рік"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Оновлення широти та довготи"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Підтвердження видалення користувача"
 
@@ -3092,10 +3084,6 @@ msgid "Teachers"
 msgstr "Вчителі"
 
 #: 
-msgid "Send Message"
-msgstr "Відправити повідомлення"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Дні народження за місяцями"
 
@@ -3110,34 +3098,6 @@ msgstr "Мобільний"
 #: 
 msgid "Home Address"
 msgstr "Домашня адреса"
-
-#: 
-msgid "Compose New Message"
-msgstr "Створити нове повідомлення"
-
-#: 
-msgid "Kids Emails"
-msgstr "Дитячі електронні листи"
-
-#: 
-msgid "Parents Emails"
-msgstr "Електронні листи батьків"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Електронна пошта вчителів"
-
-#: 
-msgid "Attachment"
-msgstr "Прикріплення"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Макс. 32 Мб"
-
-#: 
-msgid "Discard"
-msgstr "Викинути"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3362,10 +3322,6 @@ msgstr "Новий випуск"
 #: 
 msgid "Self Registration"
 msgstr "Самореєстрація"
-
-#: 
-msgid "No coordinates found"
-msgstr "Не знайдено координат"
 
 #: 
 msgid "Anonymous"
@@ -5945,10 +5901,6 @@ msgid "system user login reset"
 msgstr "скидання входу користувача системи"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Сім'ї без геоінформації"
-
-#: 
 msgid "Notification for"
 msgstr "Повідомлення для"
 
@@ -6535,10 +6487,6 @@ msgstr "людей"
 #: 
 msgid "System Upgrade"
 msgstr "Оновлення системи"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Потрібне оновлення"
 
 #: 
 msgid "Help & Manual"
@@ -8734,10 +8682,6 @@ msgid "Current Software Version"
 msgstr "Поточна версія ПЗ"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Оновлення бази даних завершено успішно. Перенаправлення на панель керування..."
-
-#: 
 msgid "Date & Time"
 msgstr "Дата та час"
 
@@ -8897,14 +8841,6 @@ msgstr "Текст проповіді / події"
 #: 
 msgid "Unclassified"
 msgstr "Без класифікації"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Оновити базу даних зараз"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Ваша інсталяція ChurchCRM потребує оновлення бази даних для відповідності встановленій версії ПЗ. Ця операція застосує міграції схеми та даних. Будь ласка, переконайтеся, що у вас є свіжа резервна копія перед продовженням."
 
 #: 
 msgid "added to this event"
@@ -10982,16 +10918,6 @@ msgstr "Очікувано"
 msgid "Failed to delete kiosk"
 msgstr "Не вдалося видалити кіоск"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Фінансовий рік."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Група зареєстрованих учнів"
-
 #: 
 msgid "Here"
 msgstr "Тут"
@@ -11043,16 +10969,6 @@ msgstr "Запит на забір"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Будь ласка, якомога швидше пройдіть до класу."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Зведення пожертв за прізвищем сім'ї для кожного фонду за обраний фінансовий рік"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Зареєстровані учні"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12548,4 +12464,68 @@ msgstr "— Виберіть країну —"
 #: 
 msgid "— Select State —"
 msgstr "— Виберіть область —"
+
+#: 
+msgid "Address Status"
+msgstr "Статус адреси"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Адресу введено, але координати ще не встановлено"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Адресу геокодовано (координати збережено)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Була здійснена спроба автоматичного оновлення бази даних, але вона не вдалася. Перевірте журнали сервера або зверніться до системного адміністратора."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Була здійснена спроба автоматичного оновлення бази даних, але вона не вдалася. Перегляньте помилку нижче та зверніться до системного адміністратора."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Оновлення бази даних не вдалося"
+
+#: 
+msgid "Geocoded"
+msgstr "Геокодовано"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Версія встановленого програмного забезпечення"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Будь ласка, оновіть ChurchCRM до версії"
+
+#: 
+msgid "Software Update Required"
+msgstr "Потрібне оновлення програмного забезпечення"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Недільну школу вимкнено"
+
+#: 
+msgid "Unverified"
+msgstr "Неперевірено"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Неперевірені адреси"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Невідповідність версій"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Версія вашої бази даних новіша за встановлене програмне забезпечення. Зазвичай це означає, що програмне забезпечення було відкочено до старішої версії. Будь ласка, оновіть ChurchCRM, щоб воно відповідало вашій базі даних."
+
+#: 
+msgid "or later to continue."
+msgstr "або пізнішу версію для продовження."
 

@@ -1914,10 +1914,6 @@ msgid "Family Geographic"
 msgstr "家庭地理位置"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "更新所有家庭坐標"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "志願者機會"
 
@@ -2601,10 +2597,6 @@ msgid "Calendar Year"
 msgstr "日曆年份"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "更新經緯度"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "用戶刪除確認書，"
 
@@ -3189,10 +3181,6 @@ msgid "Teachers"
 msgstr "教師"
 
 #: 
-msgid "Send Message"
-msgstr "發送信息"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "生日月"
 
@@ -3207,35 +3195,6 @@ msgstr "收機"
 #: 
 msgid "Home Address"
 msgstr "家庭住址"
-
-#: 
-msgid "Compose New Message"
-msgstr "撰寫新信息"
-
-#: 
-msgid "Kids Emails"
-msgstr "孩子郵箱"
-
-#: 
-msgid "Parents Emails"
-msgstr "父母郵箱"
-
-#: 
-#, fuzzy
-msgid "Teachers Emails"
-msgstr "教師郵箱"
-
-#: 
-msgid "Attachment"
-msgstr "附件"
-
-#: 
-msgid "Max. 32MB"
-msgstr "最大32MB"
-
-#: 
-msgid "Discard"
-msgstr "放棄"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3468,10 +3427,6 @@ msgstr "新發佈"
 #: 
 msgid "Self Registration"
 msgstr "自助登記"
-
-#: 
-msgid "No coordinates found"
-msgstr "找不到坐標"
 
 #: 
 msgid "Anonymous"
@@ -6072,10 +6027,6 @@ msgid "system user login reset"
 msgstr "系統用戶登錄重置"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "沒有（Geo）地理信息的家庭"
-
-#: 
 msgid "Notification for"
 msgstr "通知"
 
@@ -6672,10 +6623,6 @@ msgstr "人數"
 #: 
 msgid "System Upgrade"
 msgstr "系統升級"
-
-#: 
-msgid "Upgrade Required"
-msgstr "要求升級"
 
 #: 
 msgid "Help & Manual"
@@ -8974,10 +8921,6 @@ msgid "Current Software Version"
 msgstr "目前軟體版本"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "資料庫升級成功完成。正在重新定向到儀表板..."
-
-#: 
 msgid "Date & Time"
 msgstr "日期與時間"
 
@@ -9137,14 +9080,6 @@ msgstr "講道/活動文字"
 #: 
 msgid "Unclassified"
 msgstr "未分類"
-
-#: 
-msgid "Upgrade database now"
-msgstr "立即升級資料庫"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "您的 ChurchCRM 安裝需要升級資料庫以匹配已安裝的軟體版本。此操作將套用架構和數據遷移。在繼續之前，請確保您已有最近的備份。"
 
 #: 
 msgid "added to this event"
@@ -11207,16 +11142,6 @@ msgstr "預期"
 msgid "Failed to delete kiosk"
 msgstr "刪除自助終端失敗"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "財年。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "已註冊學生群組"
-
 #: 
 msgid "Here"
 msgstr "這裡"
@@ -11268,16 +11193,6 @@ msgstr "接送請求"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "請儘快前往教室。"
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "所選財年每個基金按家庭名稱的承諾摘要"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "已註冊學生"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12770,4 +12685,68 @@ msgstr "— 選擇國家 —"
 #: 
 msgid "— Select State —"
 msgstr "— 選擇縣/市 —"
+
+#: 
+msgid "Address Status"
+msgstr "地址狀態"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "已輸入地址但尚未設定座標"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "地址已進行地理編碼（座標已儲存）"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "嘗試自動升級資料庫但失敗。請檢查伺服器日誌或聯繫您的系統管理員。"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "嘗試自動升級資料庫但失敗。請查看下面的錯誤並聯繫您的系統管理員。"
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "資料庫升級失敗"
+
+#: 
+msgid "Geocoded"
+msgstr "已地理編碼"
+
+#: 
+msgid "Installed Software Version"
+msgstr "已安裝軟體版本"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "請將ChurchCRM升級到版本"
+
+#: 
+msgid "Software Update Required"
+msgstr "需要軟體更新"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "主日學已停用"
+
+#: 
+msgid "Unverified"
+msgstr "未驗證"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "未驗證地址"
+
+#: 
+msgid "Version Mismatch"
+msgstr "版本不符"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "您的資料庫版本比已安裝的軟體更新。這通常意味著軟體被回滾到了舊版本。請升級ChurchCRM以符合您的資料庫。"
+
+#: 
+msgid "or later to continue."
+msgstr "或更高版本以繼續。"
 

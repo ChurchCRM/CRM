@@ -1839,10 +1839,6 @@ msgid "Family Geographic"
 msgstr "Perheiden maantiede"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Päivitä kaikkien perheiden koordinaatit"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Vapaaehtoistyömahdollisuudet"
 
@@ -2509,10 +2505,6 @@ msgid "Calendar Year"
 msgstr "Kalenterivuosi"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Päivitä koordinaatit"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Käyttäjän poiston vahvistus"
 
@@ -3065,10 +3057,6 @@ msgid "Teachers"
 msgstr "Opettajat"
 
 #: 
-msgid "Send Message"
-msgstr "Lähetä viesti"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Syntymäpäivät kuukausittain"
 
@@ -3083,34 +3071,6 @@ msgstr "Matkapuhelin"
 #: 
 msgid "Home Address"
 msgstr "Kotiosoite"
-
-#: 
-msgid "Compose New Message"
-msgstr "Kirjoita uusi viesti"
-
-#: 
-msgid "Kids Emails"
-msgstr "Lasten sähköpostit"
-
-#: 
-msgid "Parents Emails"
-msgstr "Vanhempien sähköpostit"
-
-#: 
-msgid "Teachers Emails"
-msgstr "Opettajien sähköpostit"
-
-#: 
-msgid "Attachment"
-msgstr "Liite"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Maks. 32MB"
-
-#: 
-msgid "Discard"
-msgstr "Hylkää"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3335,10 +3295,6 @@ msgstr "Uusi julkaisu"
 #: 
 msgid "Self Registration"
 msgstr "Itse rekisteröityminen"
-
-#: 
-msgid "No coordinates found"
-msgstr "Koordinaatteja ei löytynyt"
 
 #: 
 msgid "Anonymous"
@@ -5907,10 +5863,6 @@ msgid "system user login reset"
 msgstr "järjestelmäkäyttäjän kirjautumisen nollaus"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Perheet ilman sijaintitietoja"
-
-#: 
 msgid "Notification for"
 msgstr "Ilmoitus kohteelle"
 
@@ -6496,10 +6448,6 @@ msgstr "henkilöistä"
 #: 
 msgid "System Upgrade"
 msgstr "Järjestelmän päivitys"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Päivitys vaaditaan"
 
 #: 
 msgid "Help & Manual"
@@ -8676,10 +8624,6 @@ msgid "Current Software Version"
 msgstr "Nykyinen ohjelmistoversio"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Tietokannan päivitys onnistui. Siirrytään ohjausnäkymään..."
-
-#: 
 msgid "Date & Time"
 msgstr "Päivämäärä ja aika"
 
@@ -8839,14 +8783,6 @@ msgstr "Saarna / Tapahtuman teksti"
 #: 
 msgid "Unclassified"
 msgstr "Luokittelematon"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Päivitä tietokanta nyt"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM-asennuksesi vaatii tietokannan päivityksen vastaamaan asennettua ohjelmistoversion. Tämä toiminto soveltaa skeeman ja tietojen siirtoja. Varmista, että sinulla on viimeaikainen varmuuskopio ennen jatkamista."
 
 #: 
 msgid "added to this event"
@@ -10914,16 +10850,6 @@ msgstr "Odotettu"
 msgid "Failed to delete kiosk"
 msgstr "Kioskiasetusten poistaminen epäonnistui"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tilikausi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Rekisteröityjen opiskelijoiden ryhmä"
-
 #: 
 msgid "Here"
 msgstr "Tässä"
@@ -10975,16 +10901,6 @@ msgstr "Noutoilmoitus"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Siirry luokkahuoneeseen mahdollisimman pian."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Lupausten yhteenveto perhenimen mukaan kustakin rahastosta valitulle tilikaudelle"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Rekisteröidyt opiskelijat"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12478,4 +12394,68 @@ msgstr "— Valitse maa —"
 #: 
 msgid "— Select State —"
 msgstr "— Valitse maakunta —"
+
+#: 
+msgid "Address Status"
+msgstr "Osoitteen tila"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Osoite syötetty, mutta koordinaatteja ei ole vielä asetettu"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Osoite on geokoodattu (koordinaatit tallennettu)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Tietokannalle yritettiin tehdä automaattinen päivitys, mutta se epäonnistui. Tarkista palvelinlokit tai ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Tietokannalle yritettiin tehdä automaattinen päivitys, mutta se epäonnistui. Tarkista alla oleva virhe ja ota yhteyttä järjestelmänvalvojaan."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Tietokannan päivitys epäonnistui"
+
+#: 
+msgid "Geocoded"
+msgstr "Geokoodattu"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Asennetun ohjelmiston versio"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Päivitä ChurchCRM versioon"
+
+#: 
+msgid "Software Update Required"
+msgstr "Ohjelmistopäivitys vaaditaan"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Pyhäkoulu on poistettu käytöstä"
+
+#: 
+msgid "Unverified"
+msgstr "Vahvistamaton"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Vahvistamattomat osoitteet"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versioristiriita"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Tietokantaversiosi on uudempi kuin asennettu ohjelmisto. Tämä tarkoittaa yleensä, että ohjelmisto palautettiin vanhempaan versioon. Päivitä ChurchCRM vastaamaan tietokantaasi."
+
+#: 
+msgid "or later to continue."
+msgstr "tai uudempi jatkaaksesi."
 

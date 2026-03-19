@@ -1857,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "가족 위치"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "가족 좌표 일괄 업데이트"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "사역"
 
@@ -2529,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "연도 선택"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "위도·경도 업데이트"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "사용자 삭제 확인"
 
@@ -3089,10 +3081,6 @@ msgid "Teachers"
 msgstr "교사"
 
 #: 
-msgid "Send Message"
-msgstr "메시지 보내기"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "월별 생일"
 
@@ -3107,34 +3095,6 @@ msgstr "휴대전화"
 #: 
 msgid "Home Address"
 msgstr "집 주소"
-
-#: 
-msgid "Compose New Message"
-msgstr "새 메시지 작성"
-
-#: 
-msgid "Kids Emails"
-msgstr "학생 이메일"
-
-#: 
-msgid "Parents Emails"
-msgstr "학부모 이메일"
-
-#: 
-msgid "Teachers Emails"
-msgstr "교사 이메일"
-
-#: 
-msgid "Attachment"
-msgstr "첨부 파일"
-
-#: 
-msgid "Max. 32MB"
-msgstr "최대 32MB"
-
-#: 
-msgid "Discard"
-msgstr "삭제"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3359,10 +3319,6 @@ msgstr "새 릴리스"
 #: 
 msgid "Self Registration"
 msgstr "자가 등록"
-
-#: 
-msgid "No coordinates found"
-msgstr "좌표를 찾을 수 없습니다"
 
 #: 
 msgid "Anonymous"
@@ -5939,10 +5895,6 @@ msgid "system user login reset"
 msgstr "시스템 사용자 로그인 초기화"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "좌표 정보가 없는 가족"
-
-#: 
 msgid "Notification for"
 msgstr "알림 대상:"
 
@@ -6528,10 +6480,6 @@ msgstr "명의 교인"
 #: 
 msgid "System Upgrade"
 msgstr "시스템 업그레이드"
-
-#: 
-msgid "Upgrade Required"
-msgstr "업그레이드 필요"
 
 #: 
 msgid "Help & Manual"
@@ -8714,10 +8662,6 @@ msgid "Current Software Version"
 msgstr "현재 소프트웨어 버전"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "데이터베이스 업그레이드가 완료되었습니다. 대시보드로 이동하는 중..."
-
-#: 
 msgid "Date & Time"
 msgstr "날짜 및 시간"
 
@@ -8877,14 +8821,6 @@ msgstr "설교 / 행사 텍스트"
 #: 
 msgid "Unclassified"
 msgstr "미분류"
-
-#: 
-msgid "Upgrade database now"
-msgstr "지금 데이터베이스 업그레이드"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "ChurchCRM 설치에 설치된 소프트웨어 버전과 일치하도록 데이터베이스 업그레이드가 필요합니다. 이 작업은 스키마 및 데이터 마이그레이션을 적용합니다. 진행하기 전에 최근 백업이 있는지 확인하세요."
 
 #: 
 msgid "added to this event"
@@ -10949,16 +10885,6 @@ msgstr "예상"
 msgid "Failed to delete kiosk"
 msgstr "키오스크 삭제 실패"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "회계연도."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "등록된 학생 그룹"
-
 #: 
 msgid "Here"
 msgstr "여기"
@@ -11010,16 +10936,6 @@ msgstr "픽업 요청"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "가능한 빨리 교실로 와주세요."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "선택한 회계연도의 각 펀드에 대한 가족 이름별 서약 요약"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "등록된 학생"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12512,4 +12428,68 @@ msgstr "— 국가 선택 —"
 #: 
 msgid "— Select State —"
 msgstr "— 시/도 선택 —"
+
+#: 
+msgid "Address Status"
+msgstr "주소 상태"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "주소는 입력되었지만 좌표가 아직 설정되지 않았습니다"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "주소가 지오코딩되었습니다 (좌표 저장됨)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "자동 데이터베이스 업그레이드를 시도했지만 실패했습니다. 서버 로그를 확인하거나 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "자동 데이터베이스 업그레이드를 시도했지만 실패했습니다. 아래 오류를 검토하고 시스템 관리자에게 문의하세요."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "데이터베이스 업그레이드 실패"
+
+#: 
+msgid "Geocoded"
+msgstr "지오코딩됨"
+
+#: 
+msgid "Installed Software Version"
+msgstr "설치된 소프트웨어 버전"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "ChurchCRM을 버전으로 업그레이드하세요"
+
+#: 
+msgid "Software Update Required"
+msgstr "소프트웨어 업데이트 필요"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "주일학교가 비활성화되어 있습니다"
+
+#: 
+msgid "Unverified"
+msgstr "미확인"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "미확인 주소"
+
+#: 
+msgid "Version Mismatch"
+msgstr "버전 불일치"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "데이터베이스 버전이 설치된 소프트웨어보다 최신입니다. 이는 일반적으로 소프트웨어가 이전 버전으로 롤백되었음을 의미합니다. 데이터베이스와 일치하도록 ChurchCRM을 업그레이드하세요."
+
+#: 
+msgid "or later to continue."
+msgstr "이상 버전이 계속하려면 필요합니다."
 

@@ -1857,10 +1857,6 @@ msgid "Family Geographic"
 msgstr "Overzicht per gezin"
 
 #: 
-msgid "Update All Family Coordinates"
-msgstr "Alles bijwerken Family Coördinaten"
-
-#: 
 msgid "Volunteer Opportunities"
 msgstr "Vrijwilligers mogelijkheden"
 
@@ -2529,10 +2525,6 @@ msgid "Calendar Year"
 msgstr "Kalender Jaar"
 
 #: 
-msgid "Update Latitude & Longitude"
-msgstr "Breedte en lengtegraad updaten"
-
-#: 
 msgid "User Delete Confirmation"
 msgstr "Bevestiging Verwijderen Gebruiker"
 
@@ -3089,10 +3081,6 @@ msgid "Teachers"
 msgstr "Docenten"
 
 #: 
-msgid "Send Message"
-msgstr "Stuur bericht"
-
-#: 
 msgid "Birthdays by Month"
 msgstr "Verjaardagen per maand"
 
@@ -3107,34 +3095,6 @@ msgstr "Mobiel"
 #: 
 msgid "Home Address"
 msgstr "Huis adres"
-
-#: 
-msgid "Compose New Message"
-msgstr "Maak een nieuw bericht"
-
-#: 
-msgid "Kids Emails"
-msgstr "E-mail kinderen"
-
-#: 
-msgid "Parents Emails"
-msgstr "E-mail ouders"
-
-#: 
-msgid "Teachers Emails"
-msgstr "E-mail leraar"
-
-#: 
-msgid "Attachment"
-msgstr "Bijlage"
-
-#: 
-msgid "Max. 32MB"
-msgstr "Max. 32 MB"
-
-#: 
-msgid "Discard"
-msgstr "Verwijder"
 
 #: 
 msgid "Sunday School Dashboard"
@@ -3361,10 +3321,6 @@ msgstr "Nieuwe release"
 #: 
 msgid "Self Registration"
 msgstr "Zelf registratie"
-
-#: 
-msgid "No coordinates found"
-msgstr "Geen coördinaten gevonden"
 
 #: 
 msgid "Anonymous"
@@ -5945,10 +5901,6 @@ msgid "system user login reset"
 msgstr "Systeemgebruiker login reset"
 
 #: 
-msgid "Families without Geo Info"
-msgstr "Gezinnen zonder kaart"
-
-#: 
 msgid "Notification for"
 msgstr "Melding voor"
 
@@ -6534,10 +6486,6 @@ msgstr "van personen"
 #: 
 msgid "System Upgrade"
 msgstr "Systeem upgrade"
-
-#: 
-msgid "Upgrade Required"
-msgstr "Upgrade vereist"
 
 #: 
 msgid "Help & Manual"
@@ -8725,10 +8673,6 @@ msgid "Current Software Version"
 msgstr "Huidige Softwareversie"
 
 #: 
-msgid "Database upgrade completed successfully. Redirecting to dashboard..."
-msgstr "Database-upgrade met succes voltooid. Doorsturen naar dashboard..."
-
-#: 
 msgid "Date & Time"
 msgstr "Datum en Tijd"
 
@@ -8888,14 +8832,6 @@ msgstr "Preek / Evenementtekst"
 #: 
 msgid "Unclassified"
 msgstr "Niet geclassificeerd"
-
-#: 
-msgid "Upgrade database now"
-msgstr "Database nu upgraden"
-
-#: 
-msgid "Your ChurchCRM installation needs a database upgrade to match the installed software version. This operation will apply schema and data migrations. Please ensure you have a recent backup before proceeding."
-msgstr "Uw ChurchCRM-installatie moet een database-upgrade uitvoeren om overeen te stemmen met de geïnstalleerde softwareversie. Deze bewerking past schema's en gegevensmigraties toe. Zorg ervoor dat je een recente back-up hebt voordat je doorgaat."
 
 #: 
 msgid "added to this event"
@@ -10963,16 +10899,6 @@ msgstr "Verwacht"
 msgid "Failed to delete kiosk"
 msgstr "Kiosk verwijderen mislukt"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Boekjaar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groep van geregistreerde studenten"
-
 #: 
 msgid "Here"
 msgstr "Hier"
@@ -11024,16 +10950,6 @@ msgstr "Ophaalverzoek"
 #: 
 msgid "Please proceed to the classroom as soon as possible."
 msgstr "Ga alstublieft zo snel mogelijk naar het klaslokaal."
-
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Overzicht van toezeggingen per familienaam voor elk fonds voor het geselecteerde boekjaar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde studenten"
 
 #: 
 msgid "The teacher sent this alert at"
@@ -12527,4 +12443,68 @@ msgstr "— Selecteer land —"
 #: 
 msgid "— Select State —"
 msgstr "— Selecteer provincie —"
+
+#: 
+msgid "Address Status"
+msgstr "Adresstatus"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Adres ingevoerd maar coördinaten nog niet ingesteld"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "Adres is gegeocodeerd (coördinaten opgeslagen)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Controleer de serverlogboeken of neem contact op met uw systeembeheerder."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Er is een automatische database-upgrade geprobeerd, maar die is mislukt. Bekijk de onderstaande fout en neem contact op met uw systeembeheerder."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "Database-upgrade mislukt"
+
+#: 
+msgid "Geocoded"
+msgstr "Gegeocodeerd"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Geïnstalleerde softwareversie"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Upgrade ChurchCRM naar versie"
+
+#: 
+msgid "Software Update Required"
+msgstr "Software-update vereist"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "Zondagsschool is uitgeschakeld"
+
+#: 
+msgid "Unverified"
+msgstr "Niet geverifieerd"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Niet geverifieerde adressen"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Versie-mismatch"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "Uw databaseversie is nieuwer dan de geïnstalleerde software. Dit betekent meestal dat de software is teruggedraaid naar een oudere versie. Upgrade ChurchCRM om overeen te komen met uw database."
+
+#: 
+msgid "or later to continue."
+msgstr "of later om door te gaan."
 
