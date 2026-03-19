@@ -1026,7 +1026,6 @@ function FindMemberClassID()
 }
 
 //Function to check email
-//From http://www.tienhuis.nl/php-email-address-validation-with-verify-probe
 //Functions checkndsrr and getmxrr are not enabled on windows platforms & therefore are disabled
 //Future use may be to enable a Admin option to enable these options
 //domainCheck verifies domain is valid using dns, verify uses SMTP to verify actual account exists on server

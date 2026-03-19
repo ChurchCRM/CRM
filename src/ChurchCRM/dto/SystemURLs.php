@@ -57,19 +57,22 @@ class SystemURLs
     public static function getSupportURL($topic = ''): string
     {
         $supportURLs = [
-            'HttpsTask'                     => 'https://github.com/ChurchCRM/CRM/wiki/SSL',
-            'CheckExecutionTimeTask'        => 'https://github.com/ChurchCRM/CRM/wiki/PHP-Max-Execution-Time',
-            'SecretsConfigurationCheckTask' => 'https://github.com/ChurchCRM/CRM/wiki/Secret-Keys-in-Config.php',
-            'UnsupportedPaymentDataCheck'   => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
-            'UnsupportedDepositCheck'       => 'https://github.com/ChurchCRM/CRM/wiki/Finances',
-            'CheckUploadSizeTask'           => 'https://mediatemple.net/community/products/dv/204404784/how-do-i-increase-the-php-upload-limits',
+            // User-facing guidance moved to docs.churchcrm.io
+            'HttpsTask'                     => 'https://docs.churchcrm.io/installation/ssl-https',
+            'CheckExecutionTimeTask'        => 'https://docs.churchcrm.io/installation/system-requirements#php-max-execution-time',
+            'SecretsConfigurationCheckTask' => 'https://docs.churchcrm.io/administration/secret-keys',
+            'UnsupportedPaymentDataCheck'   => 'https://docs.churchcrm.io/user-guide/finances',
+            'UnsupportedDepositCheck'       => 'https://docs.churchcrm.io/user-guide/finances',
+            // File upload guidance lives in system requirements
+            'CheckUploadSizeTask'           => 'https://docs.churchcrm.io/installation/system-requirements#file-uploads',
         ];
 
         if (array_key_exists($topic, $supportURLs)) {
             return $supportURLs[$topic];
-        } else {
-            return 'https://github.com/ChurchCRM/CRM/wiki';
         }
+
+        // Default to the public user documentation site
+        return 'https://docs.churchcrm.io';
     }
 
     public static function getURL($index = 0)

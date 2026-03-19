@@ -17,8 +17,8 @@ $sDATABASE = '||DB_NAME||';
 // Root path of your ChurchCRM installation ( THIS MUST BE SET CORRECTLY! )
 //
 // Examples:
-// - if you will be accessing from http://www.yourdomain.com/churchcrm then you would enter '/churchcrm' here.
-// - if you will be accessing from http://www.yourdomain.com then you would enter '' ... an empty string for a top level installation.
+// - if you will be accessing from https://www.yourdomain.com/churchcrm then you would enter '/churchcrm' here.
+// - if you will be accessing from https://www.yourdomain.com then you would enter '' ... an empty string for a top level installation.
 //
 // NOTE:
 // - the path SHOULD Start with slash, if not ''.
@@ -51,7 +51,7 @@ $URL[0] = '||URL||';
 // you may need to add the shared SSL server name as well as your host name to
 // the URL.  See example $URL[4]
 
-// Sets which PHP errors are reported see http://php.net/manual/en/errorfunc.constants.php
+// Sets which PHP errors are reported see https://www.php.net/manual/en/errorfunc.constants.php
 error_reporting(E_ERROR);
 
 //
