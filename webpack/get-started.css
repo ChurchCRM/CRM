@@ -90,13 +90,22 @@
   -webkit-appearance: none;
 }
 
-.gs-card:hover,
+.gs-card:hover {
+  text-decoration: none;
+  color: inherit;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
 .gs-card:focus {
   text-decoration: none;
   color: inherit;
-  outline: none;
+  outline: 3px solid #0d6efd;
+  outline-offset: 3px;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 0 0 2px rgba(13, 110, 253, 0.25),
+    0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* Colour top-border variants */

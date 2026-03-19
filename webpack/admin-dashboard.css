@@ -88,6 +88,6 @@
   font-weight: 600;
 }
 
-.list-group-item:last-child {
+.setup-progress-card .list-group-item:last-child {
   border-bottom: 0;
 }

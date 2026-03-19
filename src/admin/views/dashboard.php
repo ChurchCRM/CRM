@@ -168,7 +168,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
         <div class="col-lg-8">
             <!-- Setup Progress Card -->
             <?php if (!$allDone): ?>
-            <div class="card shadow-sm border-0 mb-4">
+            <div class="card shadow-sm border-0 mb-4 setup-progress-card">
                 <div class="card-header bg-primary text-white py-2 d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-list-check mr-1"></i> <?= gettext('Setup Progress') ?>
@@ -179,7 +179,10 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     <!-- Progress bar -->
                     <div class="progress" style="height: 4px; border-radius: 0;">
                         <div class="progress-bar bg-success" role="progressbar"
-                             style="width: <?= round(($completedSteps / $totalSteps) * 100) ?>%"></div>
+                             style="width: <?= round(($completedSteps / $totalSteps) * 100) ?>%"
+                             aria-valuenow="<?= round(($completedSteps / $totalSteps) * 100) ?>"
+                             aria-valuemin="0"
+                             aria-valuemax="100"></div>
                     </div>
                     <ul class="list-group list-group-flush">
                         <?php foreach ($setupChecklist as $step): ?>

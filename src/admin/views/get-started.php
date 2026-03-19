@@ -27,7 +27,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
         <!-- Explore with Demo Data -->
         <div class="col-sm-6 mb-4">
             <!-- <a> wrapping the whole card; JS intercepts the click via id -->
-            <a href="#" id="importDemoDataV2" class="gs-card gs-card--green">
+            <a href="#" id="importDemoDataV2" role="button" class="gs-card gs-card--green">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-flask"></i>
                 </div>

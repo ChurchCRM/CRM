@@ -32,7 +32,8 @@ $app->get('/', function (Request $request, Response $response) {
     $churchEmail   = SystemConfig::getValue('sChurchEmail');
 
     $hasChurchInfo  = $churchName !== 'Some Church' && $churchName !== '' && $churchAddress !== '' && $churchEmail !== '';
-    $hasData        = FamilyQuery::create()->count() > 0 || PersonQuery::create()->count() > 1;
+    $hasData        = FamilyQuery::create()->select('Id')->findOne() !== null
+        || PersonQuery::create()->select('Id')->findOne() !== null;
     $hasEmail       = SystemConfig::hasValidMailServerSettings();
     $userCount      = UserQuery::create()->count();
     $hasMultiUser   = $userCount > 1;
