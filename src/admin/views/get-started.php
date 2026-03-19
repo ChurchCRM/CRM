@@ -72,7 +72,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
         <!-- Restore Backup -->
         <div class="col-sm-6 mb-4">
-            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore" class="gs-card gs-card--orange">
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/restore?context=onboarding" class="gs-card gs-card--orange">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-cloud-arrow-up"></i>
                 </div>

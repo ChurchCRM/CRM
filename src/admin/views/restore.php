@@ -6,8 +6,33 @@ use ChurchCRM\Service\SystemService;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $maxUploadSize = SystemService::getMaxUploadFileSize();
+// $isOnboarding is injected by the route handler when ?context=onboarding is present
+$isOnboarding = $isOnboarding ?? false;
 ?>
 
+<?php if ($isOnboarding): ?>
+<!-- Onboarding Welcome Card -->
+<div class="card card-primary">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-circle-check mr-2"></i><?= gettext('Welcome Back!') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-1 text-center d-none d-md-block">
+                <i class="fa-solid fa-database fa-3x text-primary"></i>
+            </div>
+            <div class="col-md-11">
+                <p class="mb-2 lead"><?= gettext("Let's restore your previous ChurchCRM data.") ?></p>
+                <ul class="mb-2">
+                    <li><?= gettext('Since this is a fresh installation, restoring will simply load your backup data.') ?></li>
+                    <li><?= gettext('Supports backups from ChurchCRM and ChurchInfo.') ?></li>
+                    <li><?= gettext('Your backup will be automatically upgraded to the latest database schema if needed.') ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<?php else: ?>
 <!-- Warning Card -->
 <div class="card card-danger">
     <div class="card-header">
@@ -30,6 +55,7 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
         </div>
     </div>
 </div>
+<?php endif; ?>
 
 <!-- Restore Form Card -->
 <div class="card card-warning">
@@ -108,7 +134,11 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
                 <i class="fa-solid fa-check-circle fa-5x text-success mb-4"></i>
                 <h3 class="text-success mb-3"><?= gettext('Database Restored Successfully!') ?></h3>
                 <div id="restoreModalMessages" class="text-left mb-3"></div>
+                <?php if ($isOnboarding): ?>
+                <p class="text-muted mb-2"><?= gettext('Your backup data has been loaded. You will be redirected to log in with your previous credentials.') ?></p>
+                <?php else: ?>
                 <p class="text-muted mb-2"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
+                <?php endif; ?>
                 <div class="mt-4">
                     <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
                         <span class="sr-only"><?= gettext('Loading...') ?></span>
@@ -135,6 +165,9 @@ $maxUploadSize = SystemService::getMaxUploadFileSize();
 }
 </style>
 
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    window.CRM.restoreContext = <?= json_encode($isOnboarding ? 'onboarding' : 'standard') ?>;
+</script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/restore.min.js') ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

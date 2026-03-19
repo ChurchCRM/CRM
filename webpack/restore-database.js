@@ -155,13 +155,13 @@ function handleRestoreSubmit($form) {
       // Show success modal overlay
       $("#restoreSuccessModal").modal("show");
 
-      // Log out the user via API
+      // Log out the user via API (session will be invalid after DB restore)
       $.ajax({
         url: window.CRM.root + "/session/end",
         type: "GET",
       });
 
-      // Start countdown and redirect
+      // Start countdown and redirect to login page
       var countdown = 5;
       var countdownInterval = setInterval(function () {
         countdown--;
