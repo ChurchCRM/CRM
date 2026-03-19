@@ -7,27 +7,26 @@ describe("Admin Get Started", () => {
 
     it("should display the Get Started landing page", () => {
         cy.visit("admin/get-started");
-        cy.contains("Get Started");
-        cy.contains("Start Fresh");
-        cy.contains("Import from CSV");
-        cy.contains("Use Demo Data");
+        cy.contains("Get Your Data Into ChurchCRM");
+        cy.contains("Explore with Demo Data");
+        cy.contains("Import from a Spreadsheet");
+        cy.contains("Enter Data Manually");
+        cy.contains("Restore a Backup");
     });
 
-    it("should show Back to Admin Dashboard link on Get Started page", () => {
+    it("should show skip link back to Admin Dashboard", () => {
         cy.visit("admin/get-started");
-        cy.contains("Back to Admin Dashboard").should("have.attr", "href").and("include", "admin/");
+        cy.contains("a", "Skip — go to Admin Dashboard").should("have.attr", "href").and("include", "admin/");
     });
 
-    it("Start Fresh card links to the manual data entry guide", () => {
+    it("Enter Data Manually card links to the manual data entry guide", () => {
         cy.visit("admin/get-started");
-        cy.contains("a", "Start Fresh").first().click();
-        cy.url().should("include", "admin/get-started/manual");
+        cy.contains("a.gs-card", "Enter Data Manually").should("have.attr", "href").and("include", "admin/get-started/manual");
     });
 
-    it("Import CSV card links to CSVImport.php", () => {
+    it("Import from a Spreadsheet card links to CSVImport.php", () => {
         cy.visit("admin/get-started");
-        cy.contains("a", "Import CSV").click();
-        cy.url().should("include", "CSVImport.php");
+        cy.contains("a.gs-card", "Import from a Spreadsheet").should("have.attr", "href").and("include", "CSVImport.php");
     });
 
     it("should display the manual data entry guide page", () => {
@@ -59,16 +58,5 @@ describe("Admin Get Started", () => {
         cy.contains("Families share an address and phone number.");
         cy.contains("Each person can have their own email and mobile number.");
         cy.contains("You can always import more data later via CSV.");
-    });
-
-    it("admin dashboard should show Start Fresh quick-start card", () => {
-        cy.visit("admin/");
-        cy.contains("a.quick-start-card", "Start Fresh").should("have.attr", "href").and("include", "admin/get-started/manual");
-    });
-
-    it("admin dashboard sidebar should show Get Started card", () => {
-        cy.visit("admin/");
-        cy.contains("Get Started");
-        cy.contains("a", "Get Started").should("have.attr", "href").and("include", "admin/get-started");
     });
 });

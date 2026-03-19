@@ -57,7 +57,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
         <!-- Enter Manually -->
         <div class="col-sm-6 mb-4">
-            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="gs-card gs-card--teal">
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started/manual" class="gs-card gs-card--teal">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-user-plus"></i>
                 </div>
