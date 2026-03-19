@@ -60,11 +60,9 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
 
         // The fix ensures the report must NOT redirect to "No Data Found"
         // when deposits exist within the selected date range.
-        cy.url().should(
-            "not.include",
-            "ReturnMessage=NoRows",
-            "Report should return data — the Deposit Date filter JOIN fix must be working"
-        );
+        cy.url().then((url) => {
+            expect(url, "Report should return data — the Deposit Date filter JOIN fix must be working").to.not.include("ReturnMessage=NoRows");
+        });
 
         cy.wait("@reportRequest", { timeout: 30000 }).then((interception) => {
             expect(interception.response.statusCode).to.equal(200);
@@ -113,6 +111,51 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
     });
 
     /**
+     * PDF output test: Deposit Date filter must produce a valid PDF (not a server error or redirect).
+     * PDF is the default output format — verifies the full render path works end-to-end.
+     */
+    it("should return a valid PDF when filtering by Deposit Date", () => {
+        cy.visit("/FinancialReports.php");
+        cy.get("#FinancialReportTypes").select("Advanced Deposit Report");
+        cy.get("#FinancialReports").submit();
+        cy.contains("Advanced Deposit Report").should("be.visible");
+
+        // Use invoke('val') to bypass Bootstrap Datepicker keystroke interception.
+        cy.get("#DateStart").invoke("val", "2018-01-01");
+        cy.get("#DateEnd").invoke("val", "2099-12-31");
+
+        cy.get("input[name='datetype'][value='Deposit']").check({ force: true });
+        // PDF is the default output — select explicitly for clarity.
+        cy.get("input[name='output'][value='pdf']").check({ force: true });
+
+        cy.intercept("POST", "**/AdvancedDeposit.php").as("pdfReport");
+        cy.get("#createReport").click();
+
+        cy.url().should("not.include", "ReturnMessage=NoRows");
+
+        cy.wait("@pdfReport", { timeout: 30000 }).then((interception) => {
+            expect(interception.response.statusCode).to.equal(200);
+
+            const contentType = interception.response.headers["content-type"] || "";
+            expect(contentType).to.include("application/pdf");
+
+            // Verify the response is a real PDF by checking the %PDF- magic bytes.
+            // cy.intercept may return binary bodies as ArrayBuffer in Cypress 15.
+            const rawBody = interception.response.body;
+            const isArrayBuffer =
+                Object.prototype.toString.call(rawBody) === "[object ArrayBuffer]";
+            const pdfHeader = isArrayBuffer
+                ? new TextDecoder().decode(new Uint8Array(rawBody, 0, 5))
+                : typeof rawBody === "string"
+                  ? rawBody.slice(0, 5)
+                  : "";
+            expect(pdfHeader).to.equal("%PDF-");
+
+            cy.log("✅ Deposit Date PDF report generated successfully");
+        });
+    });
+
+    /**
      * Parity test: the Payment Date path must also return data for a broad range.
      * This confirms neither the fix nor any regression has broken the existing path.
      */
@@ -132,22 +175,12 @@ describe("Advanced Deposit Report - Deposit Date Filter (Issue Fix)", () => {
         cy.intercept("POST", "**/AdvancedDeposit.php").as("paymentDateReport");
         cy.get("#createReport").click();
 
-        cy.url().then((url) => {
-            if (!url.includes("ReturnMessage=NoRows")) {
-                cy.wait("@paymentDateReport", { timeout: 30000 }).then(
-                    (interception) => {
-                        expect(interception.response.statusCode).to.equal(200);
-                        expect(
-                            interception.response.headers["content-type"]
-                        ).to.include("text/csv");
-                        cy.log("✅ Payment Date filter returns data correctly");
-                    }
-                );
-            } else {
-                cy.log(
-                    "⚠️ No payment data found for broad date range — test environment may be empty"
-                );
-            }
+        cy.url().should("not.include", "ReturnMessage=NoRows");
+
+        cy.wait("@paymentDateReport", { timeout: 30000 }).then((interception) => {
+            expect(interception.response.statusCode).to.equal(200);
+            expect(interception.response.headers["content-type"]).to.include("text/csv");
+            cy.log("✅ Payment Date filter returns data correctly");
         });
     });
 });
