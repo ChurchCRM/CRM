@@ -23,7 +23,7 @@ We couldn't auto-detect the issue type. To help us route your issue correctly, p
 
 **Advanced users**: If the issue is reproducible in the UI, the Cypress Recorder helps. Capture the steps and attach an exported spec.
 
-👉 **[Bug Reporting & Diagnostics Guide](https://github.com/ChurchCRM/CRM/wiki/Bug-Reporting-and-Diagnostics)**
+👉 **[Bug Reporting & Diagnostics Guide](https://docs.churchcrm.io/administration/bug-reporting-and-diagnostics)**
 
 ---
 

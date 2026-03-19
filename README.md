@@ -2,7 +2,7 @@
 
 ## 🌟 **Welcome to ChurchCRM!** 🌟
 
-Welcome to ChurchCRM — an open-source church management system. Visit https://churchcrm.io to learn more.
+Welcome to ChurchCRM — an open-source church management system. Visit [churchcrm.io](https://churchcrm.io) to learn more.
 
 ## ⛪️ About ChurchCRM
 
@@ -22,11 +22,11 @@ You'll find step-by-step installation instructions, configuration notes, and use
 
 Quick start: see the "Quick Start" section in the manual for a fast setup.
 
-For detailed technical documentation and developer guides, see our official docs at https://docs.churchcrm.io/.
+For detailed technical documentation and developer guides, see our official docs at [docs.churchcrm.io](https://docs.churchcrm.io/).
 
 To test the demo, visit our official demo page:
 
-- Demo: [https://churchcrm.io/demo.html](https://churchcrm.io/demo.html) — NOTE: this is a shared, read-write demo that may be reset regularly and contains only sample data; do not use it for any sensitive or production data.
+-- Demo: [Demo site](https://churchcrm.io/demo.html) — NOTE: this is a shared, read-write demo that may be reset regularly and contains only sample data; do not use it for any sensitive or production data.
 
 ## 🌐 Localization Support
 
@@ -51,7 +51,7 @@ We welcome contributions from everyone! Whether it's bug reports, feature reques
 
 ## 📚 Documentation
 
-Our [documentation](https://github.com/ChurchCRM/CRM/wiki) is your go-to resource for understanding ChurchCRM.
+Our [documentation](https://docs.churchcrm.io) is your go-to resource for understanding ChurchCRM.
 If you notice anything missing or unclear, feel free to open an issue or submit a pull request.
 
 ## 🤝 Community
