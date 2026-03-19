@@ -187,6 +187,8 @@ class DateTimeUtils
      * @param string $dateStart Start date in Y-m-d format
      * @param string $dateEnd   End date in Y-m-d format
      *
+     * @throws \Exception If either date string cannot be parsed
+     *
      * @return string e.g. "January 1, 2024" or "Jan 1, 2024 – Dec 31, 2024"
      */
     public static function formatDateRange(string $dateStart, string $dateEnd): string
