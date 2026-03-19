@@ -46,10 +46,14 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     // Restore Database page
     $group->get('/restore', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+        $params = $request->getQueryParams();
+        $isOnboarding = ($params['context'] ?? '') === 'onboarding';
         
         $pageArgs = [
-            'sRootPath' => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Restore Database'),
+            'sRootPath'    => SystemURLs::getRootPath(),
+            'sPageTitle'   => gettext('Restore Database'),
+            'isOnboarding' => $isOnboarding,
         ];
         
         return $renderer->render($response, 'restore.php', $pageArgs);
