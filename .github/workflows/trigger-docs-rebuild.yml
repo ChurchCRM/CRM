@@ -1,0 +1,38 @@
+name: Trigger Docs Rebuild
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Optional reason for rebuild'
+        required: false
+
+jobs:
+  dispatch:
+    name: Send repository_dispatch to docs.churchcrm.io
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Trigger docs rebuild via repository_dispatch
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const owner = 'ChurchCRM';
+            const repo = 'docs.churchcrm.io';
+            const event_type = 'openapi-updated';
+            const clientPayload = {
+              triggered_by: process.env.GITHUB_ACTOR,
+              reason: '${{ github.event.inputs.reason || "manual" }}'
+            };
+            await github.repos.createDispatchEvent({ owner, repo, event_type, client_payload: clientPayload });
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Log
+        run: echo "Dispatched '${event_type}' to ${owner}/${repo}"
+
+# Notes:
+# - This uses the repository's `GITHUB_TOKEN`. If the docs repository is private or
+#   your organization policy prevents cross-repo dispatch with `GITHUB_TOKEN`, create
+#   a personal access token with `repo` scope and add it as the secret `DOCS_REPO_TOKEN`,
+#   then replace `github-token` above with `${{ secrets.DOCS_REPO_TOKEN }}`.
