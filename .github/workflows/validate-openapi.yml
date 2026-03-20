@@ -50,7 +50,7 @@ jobs:
         run: cd src && composer run openapi-private
 
       - name: Upload generated specs as artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v7
         with:
           name: openapi-specs-${{ github.run_id }}
           path: openapi/*.yaml

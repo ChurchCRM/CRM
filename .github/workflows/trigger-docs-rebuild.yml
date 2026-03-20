@@ -21,15 +21,17 @@ jobs:
             const owner = 'ChurchCRM';
             const repo = 'docs.churchcrm.io';
             const event_type = 'openapi-updated';
+            // Compute reason from workflow_dispatch inputs; fallback to 'manual'
+            const reason = (context.payload && context.payload.inputs && context.payload.inputs.reason) ? context.payload.inputs.reason : 'manual';
             const clientPayload = {
               triggered_by: process.env.GITHUB_ACTOR,
-              reason: '${{ github.event.inputs.reason || "manual" }}'
+              reason: reason
             };
             await github.repos.createDispatchEvent({ owner, repo, event_type, client_payload: clientPayload });
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log
-        run: echo "Dispatched '${event_type}' to ${owner}/${repo}"
+        run: echo "Dispatched 'openapi-updated' to ChurchCRM/docs.churchcrm.io"
 
 # Notes:
 # - This uses the repository's `GITHUB_TOKEN`. If the docs repository is private or
