@@ -29,7 +29,8 @@ require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-logs.php';
 require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/api/user-admin.php';
-require __DIR__ . '/routes/api/import/csv-template.php';
+require __DIR__ . '/routes/api/import.php';
+require __DIR__ . '/routes/import.php';
 require __DIR__ . '/routes/system.php';
 
 // Body parsing and routing middleware
