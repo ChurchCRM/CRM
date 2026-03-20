@@ -108,7 +108,7 @@ jobs:
         echo "✅ Docker image saved: $(ls -lh ../temp/docker-image.tar.gz | awk '{print $5}')"
 
     - name: Upload Build Artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: build-${{ github.run_id }}
         path: |
@@ -135,7 +135,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8.0.1
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -202,7 +202,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (Root)
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-root-${{ github.run_id }}
         path: |
@@ -236,7 +236,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8.0.1
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -303,7 +303,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (Subdir)
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-subdir-${{ github.run_id }}
         path: |
@@ -337,7 +337,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8.0.1
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -417,7 +417,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (New System)
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-new-system-${{ github.run_id }}
         path: |
@@ -451,7 +451,7 @@ jobs:
       run: npm ci
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8.0.1
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -530,7 +530,7 @@ jobs:
 
     - name: Upload Cypress Artifacts (New System - Subdir)
       if: failure()
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: cypress-artifacts-new-system-subdir-${{ github.run_id }}
         path: |
@@ -582,7 +582,7 @@ jobs:
       uses: martinbeentjes/npm-get-version-action@v1.3.1
 
     - name: Download Build Artifact
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v8.0.1
       with:
         name: build-${{ github.run_id }}
         path: .
@@ -601,7 +601,7 @@ jobs:
         fi
   
     - name: Upload release artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v7
       with:
         name: >-
           ${{ github.ref == 'refs/heads/master' && 
