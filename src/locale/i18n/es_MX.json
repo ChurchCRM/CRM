@@ -3017,5 +3017,21 @@
     "Website": "Sitio web",
     "ZIP code is required.": "El código postal es obligatorio.",
     "— Select Country —": "— Seleccionar país —",
-    "— Select State —": "— Seleccionar estado —"
+    "— Select State —": "— Seleccionar estado —",
+    "Address Status": "Estado de la dirección",
+    "Address entered but coordinates not yet set": "Dirección ingresada pero las coordenadas aún no están establecidas",
+    "Address has been geocoded (coordinates stored)": "La dirección ha sido geocodificada (coordenadas almacenadas)",
+    "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator.": "Se intentó una actualización automática de la base de datos, pero falló. Revise los registros del servidor o comuníquese con el administrador del sistema.",
+    "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator.": "Se intentó una actualización automática de la base de datos, pero falló. Revise el error a continuación y comuníquese con el administrador del sistema.",
+    "Database Upgrade Failed": "La actualización de la base de datos falló",
+    "Geocoded": "Geocodificado",
+    "Installed Software Version": "Versión del software instalado",
+    "Please upgrade ChurchCRM to version": "Actualice ChurchCRM a la versión",
+    "Software Update Required": "Se requiere actualización de software",
+    "Sunday School is disabled": "La Escuela Dominical está desactivada",
+    "Unverified": "Sin verificar",
+    "Unverified Addresses": "Direcciones sin verificar",
+    "Version Mismatch": "Discrepancia de versión",
+    "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "La versión de su base de datos es más reciente que el software instalado. Esto generalmente significa que el software fue revertido a una versión anterior. Actualice ChurchCRM para que coincida con su base de datos.",
+    "or later to continue.": "o posterior para continuar."
 }

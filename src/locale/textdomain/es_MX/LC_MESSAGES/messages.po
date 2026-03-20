@@ -12394,3 +12394,67 @@ msgstr "— Seleccionar país —"
 msgid "— Select State —"
 msgstr "— Seleccionar estado —"
 
+#: 
+msgid "Address Status"
+msgstr "Estado de la dirección"
+
+#: 
+msgid "Address entered but coordinates not yet set"
+msgstr "Dirección ingresada pero las coordenadas aún no están establecidas"
+
+#: 
+msgid "Address has been geocoded (coordinates stored)"
+msgstr "La dirección ha sido geocodificada (coordenadas almacenadas)"
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr "Se intentó una actualización automática de la base de datos, pero falló. Revise los registros del servidor o comuníquese con el administrador del sistema."
+
+#: 
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr "Se intentó una actualización automática de la base de datos, pero falló. Revise el error a continuación y comuníquese con el administrador del sistema."
+
+#: 
+msgid "Database Upgrade Failed"
+msgstr "La actualización de la base de datos falló"
+
+#: 
+msgid "Geocoded"
+msgstr "Geocodificado"
+
+#: 
+msgid "Installed Software Version"
+msgstr "Versión del software instalado"
+
+#: 
+msgid "Please upgrade ChurchCRM to version"
+msgstr "Actualice ChurchCRM a la versión"
+
+#: 
+msgid "Software Update Required"
+msgstr "Se requiere actualización de software"
+
+#: 
+msgid "Sunday School is disabled"
+msgstr "La Escuela Dominical está desactivada"
+
+#: 
+msgid "Unverified"
+msgstr "Sin verificar"
+
+#: 
+msgid "Unverified Addresses"
+msgstr "Direcciones sin verificar"
+
+#: 
+msgid "Version Mismatch"
+msgstr "Discrepancia de versión"
+
+#: 
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr "La versión de su base de datos es más reciente que el software instalado. Esto generalmente significa que el software fue revertido a una versión anterior. Actualice ChurchCRM para que coincida con su base de datos."
+
+#: 
+msgid "or later to continue."
+msgstr "o posterior para continuar."
+
