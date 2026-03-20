@@ -108,7 +108,7 @@ jobs:
         echo "✅ Docker image saved: $(ls -lh ../temp/docker-image.tar.gz | awk '{print $5}')"
 
     - name: Upload Build Artifact
-      uses: actions/upload-artifact@v8
+      uses: actions/upload-artifact@v3
       with:
         name: build-${{ github.run_id }}
         path: |
