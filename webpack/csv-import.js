@@ -1,5 +1,5 @@
 /**
- * CSV Import — drag-and-drop UI with Uppy XHR upload
+ * CSV Import — drag-and-drop upload + auto-detected column mapping
  */
 
 import Uppy from "@uppy/core";
@@ -12,7 +12,7 @@ $(document).ready(function () {
   const $fileName = $("#fileName");
   const $fileSize = $("#fileSize");
 
-  // --- Uppy instance (upload only, no Dashboard UI) ---
+  // --- Uppy ---
   const uppy = new Uppy({
     id: "csv-import",
     autoProceed: false,
@@ -21,31 +21,30 @@ $(document).ready(function () {
     endpoint: window.CRM.root + "/admin/api/import/csv/upload",
     fieldName: "csvFile",
     withCredentials: true,
-    getResponseData: (responseText) => {
-      try {
-        return JSON.parse(responseText);
-      } catch {
-        return { message: responseText };
-      }
-    },
   });
 
-  uppy.on("upload-success", () => {
+  uppy.on("upload-success", (_file, response) => {
+    // Uppy v5 auto-parses JSON responses into response.body
+    const data = response.body;
+    if (!data || !Array.isArray(data.headers) || data.headers.length === 0) {
+      setStatus("error", i18next.t("Server returned an unexpected response. Please try again."));
+      return;
+    }
     setStatus("idle");
-    window.CRM.notify(i18next.t("CSV uploaded successfully"), { type: "success", delay: 3000 });
+    showMappingStep(data.token, data.headers, data.mappings, data.fields, data.sample);
   });
 
-  uppy.on("upload-error", (_file, error) => {
-    setStatus("error", error.message || i18next.t("Upload failed. Please check the file and try again."));
+  uppy.on("upload-error", (_file, error, response) => {
+    const msg =
+      response?.body?.message || error.message || i18next.t("Upload failed. Please check the file and try again.");
+    setStatus("error", msg);
   });
 
-  // --- Dropzone interaction ---
+  // --- Dropzone ---
   $dropzone.on("click", function (e) {
     if (e.target !== $fileInput[0]) $fileInput[0].click();
   });
-
   $fileInput.on("click", (e) => e.stopPropagation());
-
   $fileInput.on("change", function () {
     if (this.files[0]) setFile(this.files[0]);
   });
@@ -55,13 +54,11 @@ $(document).ready(function () {
     e.stopPropagation();
     $(this).addClass("dragover");
   });
-
   $dropzone.on("dragleave dragend", function (e) {
     e.preventDefault();
     e.stopPropagation();
     $(this).removeClass("dragover");
   });
-
   $dropzone.on("drop", function (e) {
     e.preventDefault();
     e.stopPropagation();
@@ -80,27 +77,127 @@ $(document).ready(function () {
     $dropzone.addClass("has-file");
   }
 
-  // --- Form submit ---
+  // --- Submit ---
   $("#csv-import-form").on("submit", function (e) {
     e.preventDefault();
     const file = $fileInput[0].files[0];
-
     if (!file) {
       window.CRM.notify(i18next.t("Please select a CSV file"), { type: "error", delay: 3000 });
       return;
     }
-    if (!file.name.toLowerCase().endsWith(".csv")) {
-      window.CRM.notify(i18next.t("Only .csv files are supported"), { type: "error", delay: 3000 });
-      return;
-    }
-
     uppy.cancelAll();
     uppy.addFile({ name: file.name, type: file.type || "text/csv", data: file });
-
     setStatus("running");
     uppy.upload();
   });
+
+  // --- Execute import ---
+  $("#execute-import").on("click", function () {
+    const token = $("#mapping-token").val();
+    const mapping = {};
+    $("#mapping-tbody .mapping-select").each(function () {
+      const header = $(this).data("header");
+      const field = $(this).val();
+      if (field) mapping[header] = field;
+    });
+
+    if (Object.keys(mapping).length === 0) {
+      window.CRM.notify(i18next.t("Please map at least one column before importing"), { type: "error", delay: 3000 });
+      return;
+    }
+
+    const $btn = $(this)
+      .prop("disabled", true)
+      .html(`<span class="spinner-border spinner-border-sm mr-2"></span>${i18next.t("Importing...")}`);
+
+    $.ajax({
+      url: window.CRM.root + "/admin/api/import/csv/execute",
+      type: "POST",
+      contentType: "application/json",
+      data: JSON.stringify({ token, mapping }),
+    })
+      .done(function (data) {
+        $("#mapping-card").addClass("d-none");
+        setStatus("idle");
+        window.CRM.notify(
+          i18next.t("Import complete: {{imported}} people, {{families}} families imported.", {
+            imported: data.imported,
+            families: data.families,
+          }),
+          { type: "success", delay: 6000 },
+        );
+      })
+      .fail(function (xhr) {
+        const msg = xhr.responseJSON?.message || i18next.t("Import failed. Please try again.");
+        window.CRM.notify(msg, { type: "error", delay: 5000 });
+        $btn.prop("disabled", false).html(`<i class="fa-solid fa-file-import mr-2"></i>${i18next.t("Import Data")}`);
+      });
+  });
+
+  // --- Start Over ---
+  $("#restart-import").on("click", function () {
+    uppy.cancelAll();
+    $fileInput.val("");
+    $fileInfo.addClass("d-none");
+    $dropzone.removeClass("has-file");
+    $("#mapping-card").addClass("d-none");
+    $("#upload-card").removeClass("d-none");
+    setStatus("idle");
+  });
 });
+
+// --- Mapping step ---
+function showMappingStep(token, headers, mappings, fields, sample) {
+  $("#upload-card").addClass("d-none");
+  $("#mapping-card").removeClass("d-none");
+
+  const $tbody = $("#mapping-tbody").empty();
+
+  headers.forEach((header) => {
+    const mapped = mappings[header] || null;
+    const sampleValue = sample ? (sample[header] ?? "") : "";
+    const rowClass = mapped ? "table-success" : "table-warning";
+    const badge = mapped
+      ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t("Auto-mapped")}</span>`
+      : `<span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation mr-1"></i>${i18next.t("Unmapped")}</span>`;
+
+    const options = fields.map((f) => `<option value="${f}" ${f === mapped ? "selected" : ""}>${f}</option>`).join("");
+
+    $tbody.append(`
+      <tr class="${rowClass}">
+        <td><code>${header}</code></td>
+        <td><small class="text-muted">${sampleValue}</small></td>
+        <td>${badge}</td>
+        <td>
+          <select class="form-control form-control-sm mapping-select" data-header="${header}">
+            <option value="">${i18next.t("— Ignore —")}</option>
+            ${options}
+          </select>
+        </td>
+      </tr>
+    `);
+  });
+
+  // Manual override styling
+  $("#mapping-tbody").on("change", ".mapping-select", function () {
+    const $row = $(this).closest("tr");
+    $row.removeClass("table-success table-warning table-secondary");
+    const val = $(this).val();
+    if (val) {
+      $row.addClass("table-success");
+      $row
+        .find(".badge")
+        .replaceWith(
+          `<span class="badge badge-primary"><i class="fa-solid fa-pen mr-1"></i>${i18next.t("Manual")}</span>`,
+        );
+    } else {
+      $row.addClass("table-secondary");
+      $row.find(".badge").replaceWith(`<span class="badge badge-secondary">${i18next.t("Ignored")}</span>`);
+    }
+  });
+
+  $("#mapping-token").val(token);
+}
 
 function formatSize(bytes) {
   if (bytes === 0) return "0 Bytes";
@@ -111,7 +208,7 @@ function formatSize(bytes) {
 }
 
 function setStatus(status, errorMessage) {
-  $("#statusCard").toggleClass("d-none", status === "idle");
+  $("#status-card").toggleClass("d-none", status === "idle");
   $("#statusRunning, #statusError").addClass("d-none");
   if (status === "running") $("#statusRunning").removeClass("d-none");
   if (status === "error") {

@@ -30,10 +30,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<!-- Upload Card -->
-<div class="card card-warning">
+<!-- Step 1: Upload Card -->
+<div class="card card-warning" id="upload-card">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Upload CSV File') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Step 1 — Upload CSV File') ?></h3>
     </div>
     <div class="card-body">
         <form id="csv-import-form" enctype="multipart/form-data">
@@ -52,14 +52,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <button type="submit" class="btn btn-warning btn-lg btn-block">
-                <i class="fa-solid fa-upload mr-2"></i><?= gettext('Import CSV') ?>
+                <i class="fa-solid fa-upload mr-2"></i><?= gettext('Upload CSV') ?>
             </button>
         </form>
     </div>
 </div>
 
-<!-- Status Card -->
-<div class="card d-none" id="statusCard">
+<!-- Upload Status -->
+<div class="card d-none" id="status-card">
     <div class="card-body">
         <div id="statusRunning" class="text-center py-4 d-none">
             <div class="spinner-border text-warning mb-3" role="status" style="width: 3rem; height: 3rem;">
@@ -72,6 +72,41 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <p class="mb-2 font-weight-bold text-danger"><?= gettext('Upload failed.') ?></p>
             <p class="text-muted" id="errorMessage"></p>
         </div>
+    </div>
+</div>
+
+<!-- Step 2: Column Mapping -->
+<div class="card card-primary d-none" id="mapping-card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-table-columns mr-2"></i><?= gettext('Step 2 — Map Columns') ?></h3>
+    </div>
+    <div class="card-body">
+        <p class="mb-3">
+            <span class="badge badge-success mr-2"><i class="fa-solid fa-check mr-1"></i><?= gettext('Auto-mapped') ?></span><?= gettext('Column was automatically matched to a ChurchCRM field.') ?>
+            <span class="badge badge-warning ml-3 mr-2"><i class="fa-solid fa-triangle-exclamation mr-1"></i><?= gettext('Unmapped') ?></span><?= gettext('No match found — select a field or leave as Ignore.') ?>
+        </p>
+        <div class="table-responsive">
+            <table class="table table-sm table-bordered mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th><?= gettext('CSV Column') ?></th>
+                        <th><?= gettext('Sample Data') ?></th>
+                        <th><?= gettext('Status') ?></th>
+                        <th><?= gettext('Map to Field') ?></th>
+                    </tr>
+                </thead>
+                <tbody id="mapping-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <input type="hidden" id="mapping-token">
+        <button class="btn btn-primary btn-lg" id="execute-import">
+            <i class="fa-solid fa-file-import mr-2"></i><?= gettext('Import Data') ?>
+        </button>
+        <button class="btn btn-outline-secondary ml-2" id="restart-import">
+            <i class="fa-solid fa-rotate-left mr-2"></i><?= gettext('Start Over') ?>
+        </button>
     </div>
 </div>
 
