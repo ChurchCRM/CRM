@@ -119,13 +119,10 @@ $(document).ready(function () {
       .done(function (data) {
         $("#mapping-card").addClass("d-none");
         setStatus("idle");
-        window.CRM.notify(
-          i18next.t("Import complete: {{imported}} people, {{families}} families imported.", {
-            imported: data.imported,
-            families: data.families,
-          }),
-          { type: "success", delay: 6000 },
-        );
+        $("#summary-imported").text(data.imported);
+        $("#summary-families").text(data.families);
+        $("#summary-skipped").text(data.skipped ?? 0);
+        $("#summary-card").removeClass("d-none");
       })
       .fail(function (xhr) {
         const msg = xhr.responseJSON?.message || i18next.t("Import failed. Please try again.");
@@ -135,15 +132,17 @@ $(document).ready(function () {
   });
 
   // --- Start Over ---
-  $("#restart-import").on("click", function () {
+  function resetImport() {
     uppy.cancelAll();
     $fileInput.val("");
     $fileInfo.addClass("d-none");
     $dropzone.removeClass("has-file");
-    $("#mapping-card").addClass("d-none");
+    $("#mapping-card, #summary-card").addClass("d-none");
     $("#upload-card").removeClass("d-none");
     setStatus("idle");
-  });
+  }
+  $("#restart-import").on("click", resetImport);
+  $("#restart-import-summary").on("click", resetImport);
 });
 
 // --- Mapping step ---

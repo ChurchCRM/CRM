@@ -75,6 +75,52 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<!-- Step 3: Import Summary -->
+<div class="card card-success d-none" id="summary-card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-circle-check mr-2"></i><?= gettext('Import Complete') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-4">
+                <div class="info-box bg-success">
+                    <span class="info-box-icon"><i class="fa-solid fa-person"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text"><?= gettext('People') ?></span>
+                        <span class="info-box-number" id="summary-imported">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="info-box bg-primary">
+                    <span class="info-box-icon"><i class="fa-solid fa-house-user"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text"><?= gettext('Families') ?></span>
+                        <span class="info-box-number" id="summary-families">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="info-box bg-warning">
+                    <span class="info-box-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text"><?= gettext('Skipped') ?></span>
+                        <span class="info-box-number" id="summary-skipped">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="btn btn-success">
+            <i class="fa-solid fa-people-group mr-2"></i><?= gettext('View People') ?>
+        </a>
+        <button class="btn btn-outline-secondary ml-2" id="restart-import-summary">
+            <i class="fa-solid fa-rotate-left mr-2"></i><?= gettext('Import Another File') ?>
+        </button>
+    </div>
+</div>
+
 <!-- Step 2: Column Mapping -->
 <div class="card card-primary d-none" id="mapping-card">
     <div class="card-header">
