@@ -3,6 +3,26 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bs-stepper/dist/css/bs-stepper.min.css";
 
+/*
+ * Font Awesome 7 defaults to fixed-width icon canvases.
+ * Keep v6-era layout behavior unless fixed width is explicitly requested.
+ */
+.fa,
+.fa-solid,
+.fas,
+.fa-regular,
+.far,
+.fa-brands,
+.fab {
+  --fa-width: auto;
+}
+
+.fa-fw {
+  --fa-width: 1.25em;
+  width: var(--fa-width);
+  text-align: center;
+}
+
 /* ==========================================================================
    ChurchCRM Setup Wizard - Modern Installation UI
    ========================================================================== */
