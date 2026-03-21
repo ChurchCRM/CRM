@@ -169,7 +169,10 @@ When fixing a failed test:
 
 1. Make the changes
 2. **Run `npm run lint`** — catches Biome lint errors before CI does
-3. **Run `npm run build`** — full build: PHP syntax + TypeScript compilation + Biome format
+3. **Build** — use the fastest build that covers your changes:
+   - JS/CSS only → `npm run build:webpack` (fast)
+   - PHP only → `npm run build:php`
+   - Everything → `npm run build` (full: PHP + webpack + Biome format)
 4. Fix any errors reported by steps 2–3 before continuing
 5. Run `git diff` and show the full output to the user
 6. Ask: *"Build and lint passed. Please review the changes above. Shall I commit?"*
@@ -178,10 +181,12 @@ When fixing a failed test:
 
 ### What each command validates
 
-| Command | Validates |
-|---------|-----------|
-| `npm run lint` | Biome lint rules — type safety, hook deps, correctness (`react/`) |
-| `npm run build` | TypeScript types (webpack), PHP syntax, Biome format |
+| Command | Validates | When to use |
+|---------|-----------|-------------|
+| `npm run lint` | Biome lint rules — type safety, hook deps, correctness | Always |
+| `npm run build:webpack` | TypeScript + JS bundle compilation only | JS/CSS changes only |
+| `npm run build:php` | PHP syntax validation only | PHP-only changes |
+| `npm run build` | Everything: webpack + PHP + Biome format | Mixed changes or pre-commit |
 
 ### No exceptions
 

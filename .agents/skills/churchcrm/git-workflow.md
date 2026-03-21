@@ -350,12 +350,15 @@ Remove every reference found before (or as part of) the deletion commit:
 
 ```
 1. Make the changes
-2. npm run lint          ← Biome lint (catches what CI catches)
-3. npm run build         ← TypeScript + PHP syntax + Biome format
+2. npm run lint                ← Biome lint (catches what CI catches)
+3. Build — use fastest option:
+   - JS/CSS only  → npm run build:webpack   (fast)
+   - PHP only     → npm run build:php
+   - Mixed/all    → npm run build
 4. Fix any errors
-5. git diff              ← Show the full diff to the user
-6. Ask for approval      ← "Build passed. Please review. Shall I commit?"
-7. Wait for explicit yes ← "yes" / "lgtm" / "commit it" / "go ahead"
+5. git diff                    ← Show the full diff to the user
+6. Ask for approval            ← "Build passed. Please review. Shall I commit?"
+7. Wait for explicit yes       ← "yes" / "lgtm" / "commit it" / "go ahead"
 8. git add → git commit → git push
 ```
 

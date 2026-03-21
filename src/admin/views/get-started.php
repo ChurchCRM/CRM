@@ -42,7 +42,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
         <!-- Import from CSV -->
         <div class="col-sm-6 mb-4">
-            <a href="<?= SystemURLs::getRootPath() ?>/CSVImport.php" class="gs-card gs-card--blue">
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/import/csv" class="gs-card gs-card--blue">
                 <div class="gs-card-icon">
                     <i class="fa-solid fa-file-csv"></i>
                 </div>

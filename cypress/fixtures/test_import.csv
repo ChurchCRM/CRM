@@ -1,3 +1,4 @@
-ImportTest,hasBday,"123 Main St", Downtown, TX, 77777,myBday@example.com,2001-07-04,888-555-1212
-ImportTest,noYrBday,"123 Main St", Downtown, TX, 77777,noYrBday@example.com,0000-07-04,888-555-1212
-ImportTest,noBday,"123 Main St", Downtown, TX, 77777,noBday@example.com,,
+FamilyID,LastName,FirstName,Address1,City,State,Zip,Email,BirthDate,HomePhone
+100,ImportTest,hasBday,123 Main St,Downtown,TX,77777,myBday@example.com,2001-07-04,888-555-1212
+100,ImportTest,noYrBday,123 Main St,Downtown,TX,77777,noYrBday@example.com,0000-07-04,888-555-1212
+100,ImportTest,noBday,123 Main St,Downtown,TX,77777,noBday@example.com,,

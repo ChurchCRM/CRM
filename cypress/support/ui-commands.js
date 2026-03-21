@@ -169,21 +169,21 @@ Cypress.Commands.add('deletePersonByName', (name) => {
 });
 
 Cypress.Commands.add('createPeopleViaCSV', (peopleData) => {
-    // Create CSV content with simple format matching the existing test pattern
-    let csvContent = '';
-    
+    // Build CSV with headers that auto-map to ChurchCRM fields
+    const headers = 'LastName,FirstName,Address1,City,State,Zip,Email,BirthDate,HomePhone';
+    let csvContent = headers + '\n';
+
     Object.values(peopleData).forEach(person => {
-        // Format: LastName,FirstName,Address,City,State,Zip,Email,BirthDate,Phone
-        const birthDate = person.year ? 
+        const birthDate = person.year ?
             `${person.year}-${String(person.month).padStart(2, '0')}-${String(person.day).padStart(2, '0')}` :
-            (person.month > 0 && person.day > 0) ? 
+            (person.month > 0 && person.day > 0) ?
                 `0000-${String(person.month).padStart(2, '0')}-${String(person.day).padStart(2, '0')}` :
                 '';
-        
+
         const row = [
             'TestUser',
             person.name,
-            '"123 Test St"',
+            '123 Test St',
             'TestCity',
             'TX',
             '77777',
@@ -193,28 +193,22 @@ Cypress.Commands.add('createPeopleViaCSV', (peopleData) => {
         ].join(',');
         csvContent += row + '\n';
     });
-    
-    // Write CSV file and import it
+
+    // Write file and import via new Slim 4 CSV import UI
     cy.writeFile('cypress/downloads/test_birthday_people.csv', csvContent);
-    
-    cy.visit('/CSVImport.php');
-    cy.get('#CSVFileChooser').selectFile('cypress/downloads/test_birthday_people.csv');
-    cy.get('#UploadCSVBtn').click();
-    
-    // Map the fields to match our CSV structure
-    cy.get('#SelField0').select('Last Name', { force: true });
-    cy.get('#SelField1').select('First Name', { force: true });
-    cy.get('#SelField2').select('Address 1', { force: true });
-    cy.get('#SelField3').select('City', { force: true });
-    cy.get('#SelField4').select('State', { force: true });
-    cy.get('#SelField5').select('Zip', { force: true });
-    cy.get('#SelField6').select('Email', { force: true });
-    cy.get('#SelField7').select('Birth Date', { force: true });
-    cy.get('#SelField8').select('Home Phone', { force: true });
-    
-    // Execute the import
-    cy.get('#DoImportBtn').click();
-    cy.contains('Data import successful.', { timeout: 10000 });
+
+    cy.visit('/admin/import/csv');
+    cy.get('#csvFile').selectFile('cypress/downloads/test_birthday_people.csv', { force: true });
+    cy.get('#csv-import-form').submit();
+
+    // Wait for mapping step (upload + auto-map)
+    cy.get('#mapping-card', { timeout: 10000 }).should('be.visible');
+
+    // Execute import (fields are auto-mapped from headers)
+    cy.get('#execute-import').click();
+
+    // Wait for summary card
+    cy.get('#summary-card', { timeout: 10000 }).should('be.visible');
 });
 
 // ============================================================

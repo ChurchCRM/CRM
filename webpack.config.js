@@ -17,6 +17,7 @@ module.exports = {
     'locale-loader': './webpack/locale-loader',
     backup: './webpack/backup',
     restore: './webpack/restore',
+    'csv-import': './webpack/csv-import',
     'admin-dashboard': './webpack/admin-dashboard',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',

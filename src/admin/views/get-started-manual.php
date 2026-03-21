@@ -155,7 +155,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <p class="small text-muted mb-3">
                         <?= gettext('If you have many records in a spreadsheet, the CSV import may be faster than entering data manually.') ?>
                     </p>
-                    <a href="<?= SystemURLs::getRootPath() ?>/CSVImport.php" class="btn btn-outline-info btn-sm btn-block">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/import/csv" class="btn btn-outline-info btn-sm btn-block">
                         <i class="fa-solid fa-upload mr-1"></i> <?= gettext('Import from CSV') ?>
                     </a>
                 </div>
