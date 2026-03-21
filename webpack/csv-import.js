@@ -65,7 +65,9 @@ $(document).ready(function () {
     $(this).removeClass("dragover");
     const files = e.originalEvent.dataTransfer.files;
     if (files.length > 0) {
-      $fileInput[0].files = files;
+      const dt = new DataTransfer();
+      dt.items.add(files[0]);
+      $fileInput[0].files = dt.files;
       setFile(files[0]);
     }
   });
@@ -160,25 +162,23 @@ function showMappingStep(token, headers, mappings, fields, sample) {
       ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>${i18next.t("Auto-mapped")}</span>`
       : `<span class="badge badge-warning"><i class="fa-solid fa-triangle-exclamation mr-1"></i>${i18next.t("Unmapped")}</span>`;
 
-    const options = fields.map((f) => `<option value="${f}" ${f === mapped ? "selected" : ""}>${f}</option>`).join("");
+    const $select = $('<select class="form-control form-control-sm mapping-select">').attr("data-header", header);
+    $select.append($("<option>").val("").text(i18next.t("— Ignore —")));
+    fields.forEach((f) => {
+      $select.append($("<option>").val(f).text(f).prop("selected", f === mapped));
+    });
 
-    $tbody.append(`
-      <tr class="${rowClass}">
-        <td><code>${header}</code></td>
-        <td><small class="text-muted">${sampleValue}</small></td>
-        <td>${badge}</td>
-        <td>
-          <select class="form-control form-control-sm mapping-select" data-header="${header}">
-            <option value="">${i18next.t("— Ignore —")}</option>
-            ${options}
-          </select>
-        </td>
-      </tr>
-    `);
+    const $row = $(`<tr class="${rowClass}">`);
+    $("<td>").append($("<code>").text(header)).appendTo($row);
+    $("<td>").append($("<small>").addClass("text-muted").text(sampleValue)).appendTo($row);
+    $("<td>").html(badge).appendTo($row);
+    $("<td>").append($select).appendTo($row);
+
+    $tbody.append($row);
   });
 
   // Manual override styling
-  $("#mapping-tbody").on("change", ".mapping-select", function () {
+  $("#mapping-tbody").off("change", ".mapping-select").on("change", ".mapping-select", function () {
     const $row = $(this).closest("tr");
     $row.removeClass("table-success table-warning table-secondary");
     const val = $(this).val();

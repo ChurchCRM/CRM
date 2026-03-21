@@ -1,7 +1,7 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
-use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -51,7 +51,7 @@ function autoMapHeader(string $header): ?string
 $app->group('/api/import', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
-     *     path="/import/csv/families",
+     *     path="/admin/api/import/csv/families",
      *     summary="Download a CSV import template for families (Admin role required)",
      *     tags={"Import"},
      *     security={{"ApiKeyAuth":{}}},
@@ -77,7 +77,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Post(
-     *     path="/api/import/csv/upload",
+     *     path="/admin/api/import/csv/upload",
      *     summary="Upload a CSV file and return headers with auto-detected field mappings",
      *     tags={"Import"},
      *     security={{"ApiKeyAuth":{}}},
@@ -113,6 +113,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         $token = bin2hex(random_bytes(16));
         $tmpPath = sys_get_temp_dir() . '/churchcrm-csv-' . $token . '.csv';
         $upload->moveTo($tmpPath);
+        $_SESSION['csv_import_tokens'][$token] = true;
 
         // Parse headers and grab first data row as sample
         $csv = Reader::createFromPath($tmpPath, 'r');
@@ -142,7 +143,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
     });
     /**
      * @OA\Post(
-     *     path="/api/import/csv/execute",
+     *     path="/admin/api/import/csv/execute",
      *     summary="Execute a CSV import using a previously uploaded file and column mapping",
      *     tags={"Import"},
      *     security={{"ApiKeyAuth":{}}},
@@ -160,6 +161,11 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         if (empty($token) || empty($mapping)) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid import request'), [], 400, null, $request);
         }
+
+        if (empty($_SESSION['csv_import_tokens'][$token])) {
+            return SlimUtils::renderErrorJSON($response, gettext('Upload session expired. Please upload the file again.'), [], 400, null, $request);
+        }
+        unset($_SESSION['csv_import_tokens'][$token]);
 
         $tmpPath = sys_get_temp_dir() . '/churchcrm-csv-' . $token . '.csv';
         if (!file_exists($tmpPath)) {
@@ -187,7 +193,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     }
                 }
 
-                if (empty($data['FirstName']) && empty($data['LastName'])) {
+                if (empty($data['FirstName']) || empty($data['LastName'])) {
                     $skipped++;
                     continue;
                 }
@@ -215,7 +221,8 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                             $ts = strtotime($data['WeddingDate']);
                             if ($ts !== false) $family->setWeddingdate(date('Y-m-d', $ts));
                         }
-                        $family->setDateEntered(date('Y-m-d'));
+                        $family->setDateEntered(date('YmdHis'));
+                        $family->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                         $family->save($con);
                         $familyCache[$csvFamilyId] = $family;
                     }
@@ -269,16 +276,18 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     $person->setFamId($family->getId());
                 }
 
-                $person->setDateEntered(date('Y-m-d'));
+                $person->setDateEntered(date('YmdHis'));
+                $person->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
                 $person->save($con);
                 $imported++;
             }
 
             $con->commit();
-            @unlink($tmpPath);
         } catch (\Throwable $e) {
             $con->rollBack();
             return SlimUtils::renderErrorJSON($response, gettext('Import failed: ') . $e->getMessage(), [], 500, $e, $request);
+        } finally {
+            @unlink($tmpPath);
         }
 
         return SlimUtils::renderJSON($response, [
