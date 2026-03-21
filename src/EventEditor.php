@@ -13,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -468,12 +469,29 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 ?>
 
 <?php
-// Only show the Linked Group selector when the selected Event Type defines a group (type_grpid)
+// Centralize Event Type ID resolution once for the page
+// Priority: explicit EventTypeID POST -> EN_tyid POST -> tyid (from type-list) -> event's type (when editing)
 $showLinkedGroup = false;
+if (empty($iTypeID)) {
+    if (!empty($_POST['EventTypeID'])) {
+        $iTypeID = InputUtils::legacyFilterInput($_POST['EventTypeID'], 'int');
+    } elseif (!empty($_POST['EN_tyid'])) {
+        $iTypeID = InputUtils::filterInt($_POST['EN_tyid']);
+    } elseif (!empty($tyid)) {
+        $iTypeID = (int)$tyid;
+    } elseif (isset($event) && $event !== null) {
+        $iTypeID = (int)$event->getType();
+    }
+}
+
 if (!empty($iTypeID)) {
-    $evtTypeObj = \ChurchCRM\model\ChurchCRM\EventTypeQuery::create()->findOneById((int)$iTypeID);
-    if ($evtTypeObj !== null && (int)$evtTypeObj->getTypeGrpid() > 0) {
-        $showLinkedGroup = true;
+    $evtTypeObj = EventTypeQuery::create()->findOneById((int)$iTypeID);
+    if ($evtTypeObj !== null) {
+        // Show linked group selector when the EventType defines a linked group
+        // or when the EventType's linked group is a Sunday School group
+        if ($evtTypeObj->getGroupId() || $evtTypeObj->isSundaySchool()) {
+            $showLinkedGroup = true;
+        }
     }
 }
 ?>

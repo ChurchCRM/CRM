@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\model\ChurchCRM\GroupQuery;
 
 AuthenticationManager::redirectHomeIfNotAdmin();
 
@@ -71,6 +72,19 @@ if (strpos($_POST['Action'], 'DELETE_', 0) === 0) {
             $theID = '';
             $_POST['Action'] = '';
             break;
+          case 'SAVE':
+            $theID = InputUtils::legacyFilterInput($_POST['EN_tyid'], 'int');
+            $eventType = EventTypeQuery::create()->findOneById($theID);
+            if ($eventType) {
+              $active = isset($_POST['type_active']) ? InputUtils::legacyFilterInput($_POST['type_active'], 'int') : 0;
+              $groupId = isset($_POST['type_grpid']) ? InputUtils::legacyFilterInput($_POST['type_grpid'], 'int') : 0;
+              $eventType->setActive($active);
+              $eventType->setGroupId($groupId);
+              $eventType->save();
+            }
+            $theID = '';
+            $_POST['Action'] = '';
+            break;
     }
 }
 
@@ -92,9 +106,13 @@ if ($eventType) {
   } else {
     $aEventStartTime = '9:00 AM';
   }
+  $aActive = $eventType->getActive();
+  $aGroupId = $eventType->getGroupId();
 } else {
   $aTypeID = $aTypeName = $aDefStartTime = $aDefRecurDOW = $aDefRecurDOM = $aDefRecurDOY = $aDefRecurType = null;
   $aEventStartTime = '9:00 AM';
+  $aActive = 1;
+  $aGroupId = 0;
 }
 switch ($aDefRecurType) {
     case 'none':
@@ -149,6 +167,34 @@ if ($numCounts) {
             </button>
           </div>
         </div>
+
+          <div class="form-group">
+            <label class="font-weight-bold"><?= gettext('Settings') ?></label>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="1" id="type_active" name="type_active" <?= ($aActive == 1) ? 'checked' : '' ?> />
+                  <label class="form-check-label" for="type_active"><?= gettext('Active') ?></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="sr-only" for="type_grpid"><?= gettext('Linked Group') ?></label>
+                <select class="form-control" id="type_grpid" name="type_grpid">
+                  <option value="0"><?= gettext('No Group') ?></option>
+                  <?php
+                  $groups = GroupQuery::create()->orderByName()->find();
+                  foreach ($groups as $group) {
+                      $sel = ($aGroupId == $group->getId()) ? 'selected' : '';
+                      echo '<option value="' . $group->getId() . '" ' . $sel . '>' . InputUtils::escapeHTML($group->getName()) . '</option>';
+                  }
+                  ?>
+                </select>
+              </div>
+              <div class="col-md-2">
+                <button type="submit" name="Action" value="SAVE" class="btn btn-secondary"><?php echo gettext('Save Settings') ?></button>
+              </div>
+            </div>
+          </div>
       </div>
 
       <div class="form-group">
