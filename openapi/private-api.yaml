@@ -144,6 +144,64 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/import/csv/families:
+    get:
+      tags:
+        - Import
+      summary: 'Download a CSV import template for families (Admin role required)'
+      responses:
+        '200':
+          description: 'CSV file attachment'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/import/csv/upload:
+    post:
+      tags:
+        - Import
+      summary: 'Upload a CSV file and return headers with auto-detected field mappings'
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              properties:
+                csvFile:
+                  type: string
+                  format: binary
+              type: object
+      responses:
+        '200':
+          description: 'Headers and auto-mapped suggestions returned'
+        '400':
+          description: 'Invalid file'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/import/csv/execute:
+    post:
+      tags:
+        - Import
+      summary: 'Execute a CSV import using a previously uploaded file and column mapping'
+      responses:
+        '200':
+          description: 'Import completed'
+        '400':
+          description: 'Invalid token or mapping'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /api/orphaned-files:
     get:
       tags:
@@ -4334,3 +4392,6 @@ tags:
   -
     name: Plugins
     description: 'Plugin management (Admin role required)'
+  -
+    name: Import
+    description: Import
