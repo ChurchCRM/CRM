@@ -467,6 +467,17 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 }
 ?>
 
+<?php
+// Only show the Linked Group selector when the selected Event Type defines a group (type_grpid)
+$showLinkedGroup = false;
+if (!empty($iTypeID)) {
+    $evtTypeObj = \ChurchCRM\model\ChurchCRM\EventTypeQuery::create()->findOneById((int)$iTypeID);
+    if ($evtTypeObj !== null && (int)$evtTypeObj->getTypeGrpid() > 0) {
+        $showLinkedGroup = true;
+    }
+}
+?>
+
 <div class="mb-3 d-flex justify-content-between align-items-center">
     <a href="ListEvents.php" class="btn btn-outline-secondary">
         <i class="fas fa-chevron-left mr-1"></i>
@@ -562,6 +573,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
                     </td>
                 </tr>
+                <?php if ($showLinkedGroup): ?>
                 <tr>
                     <td class="LabelColumn"><?= gettext('Linked Group') ?></td>
                     <td class="TextColumn" colspan="3">
@@ -580,6 +592,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <small class="form-text text-muted"><?= gettext('Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk.') ?></small>
                     </td>
                 </tr>
+                <?php endif; ?>
                 <tr>
                     <td class="LabelColumn">
                         <div><?= gettext('Attendance Counts') ?></div>
