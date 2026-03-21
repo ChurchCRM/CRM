@@ -24,9 +24,9 @@ describe("Admin Get Started", () => {
         cy.contains("a.gs-card", "Enter Data Manually").should("have.attr", "href").and("include", "admin/get-started/manual");
     });
 
-    it("Import from a Spreadsheet card links to CSVImport.php", () => {
+    it("Import from a Spreadsheet card links to /admin/import/csv", () => {
         cy.visit("admin/get-started");
-        cy.contains("a.gs-card", "Import from a Spreadsheet").should("have.attr", "href").and("include", "CSVImport.php");
+        cy.contains("a.gs-card", "Import from a Spreadsheet").should("have.attr", "href").and("include", "/admin/import/csv");
     });
 
     it("should display the manual data entry guide page", () => {
