@@ -165,7 +165,12 @@ function showMappingStep(token, headers, mappings, fields, sample) {
     const $select = $('<select class="form-control form-control-sm mapping-select">').attr("data-header", header);
     $select.append($("<option>").val("").text(i18next.t("— Ignore —")));
     fields.forEach((f) => {
-      $select.append($("<option>").val(f).text(f).prop("selected", f === mapped));
+      $select.append(
+        $("<option>")
+          .val(f)
+          .text(f)
+          .prop("selected", f === mapped),
+      );
     });
 
     const $row = $(`<tr class="${rowClass}">`);
@@ -178,22 +183,24 @@ function showMappingStep(token, headers, mappings, fields, sample) {
   });
 
   // Manual override styling
-  $("#mapping-tbody").off("change", ".mapping-select").on("change", ".mapping-select", function () {
-    const $row = $(this).closest("tr");
-    $row.removeClass("table-success table-warning table-secondary");
-    const val = $(this).val();
-    if (val) {
-      $row.addClass("table-success");
-      $row
-        .find(".badge")
-        .replaceWith(
-          `<span class="badge badge-primary"><i class="fa-solid fa-pen mr-1"></i>${i18next.t("Manual")}</span>`,
-        );
-    } else {
-      $row.addClass("table-secondary");
-      $row.find(".badge").replaceWith(`<span class="badge badge-secondary">${i18next.t("Ignored")}</span>`);
-    }
-  });
+  $("#mapping-tbody")
+    .off("change", ".mapping-select")
+    .on("change", ".mapping-select", function () {
+      const $row = $(this).closest("tr");
+      $row.removeClass("table-success table-warning table-secondary");
+      const val = $(this).val();
+      if (val) {
+        $row.addClass("table-success");
+        $row
+          .find(".badge")
+          .replaceWith(
+            `<span class="badge badge-primary"><i class="fa-solid fa-pen mr-1"></i>${i18next.t("Manual")}</span>`,
+          );
+      } else {
+        $row.addClass("table-secondary");
+        $row.find(".badge").replaceWith(`<span class="badge badge-secondary">${i18next.t("Ignored")}</span>`);
+      }
+    });
 
   $("#mapping-token").val(token);
 }
