@@ -13,14 +13,37 @@
 import $ from "jquery";
 window.jQuery = window.$ = $;
 
+// Import Tabler JS (Bootstrap 5 + Popper bundled) — replaces AdminLTE JS
+// Must come after jQuery so legacy jQuery plugins can still work
+import "@tabler/core";
+
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Import flag-icons CSS - flags are automatically bundled by webpack
 import "flag-icons/css/flag-icons.min.css";
 
-// Import Select2 Bootstrap 4 theme
-import "@ttskch/select2-bootstrap4-theme/dist/select2-bootstrap4.min.css";
+// Import Tabler CSS (Bootstrap 5 admin UI) - fonts bundled automatically by webpack
+import "@tabler/core/dist/css/tabler.min.css";
+
+// Import Tabler Icons webfont - font files bundled automatically by webpack
+import "@tabler/icons-webfont/dist/tabler-icons.min.css";
+
+// DataTables Bootstrap 5 integration CSS
+import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
+import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
+import "datatables.net-select-bs5/css/select.bootstrap5.min.css";
+
+// Select2 base CSS (Tom Select migration is Phase 5)
+import "select2/dist/css/select2.min.css";
+
+// Bootstrap DatePicker and DateRangePicker CSS
+import "bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css";
+import "daterangepicker/daterangepicker.css";
+
+// bs-stepper CSS
+import "bs-stepper/dist/css/bs-stepper.min.css";
 
 // Import React DatePicker CSS - required for calendar styling
 import "react-datepicker/dist/react-datepicker.min.css";
@@ -78,7 +101,7 @@ if (typeof window !== "undefined") {
 if (typeof window !== "undefined") {
   window.addEventListener("DOMContentLoaded", function () {
     if (window.$ && window.$.fn && window.$.fn.select2) {
-      window.$.fn.select2.defaults.set("theme", "bootstrap4");
+      window.$.fn.select2.defaults.set("theme", "default");
 
       // Set Select2 language based on current locale
       // The Select2 i18n files are bundled by Grunt into locale-specific JS files

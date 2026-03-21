@@ -34,11 +34,25 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | Skill | When to Use |
 |-------|------------|
 | [Frontend Development](./frontend-development.md) | UI changes, Bootstrap 4, i18n |
-| [Bootstrap 4.6.2 & AdminLTE](./bootstrap-adminlte.md) | UI components, layouts, admin pages |
+| [Bootstrap 4.6.2 & AdminLTE](./bootstrap-adminlte.md) | UI components, layouts, admin pages (LEGACY) |
+| [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
 | [UI Development](./ui-development.md) | General UI development practices |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
 | [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
+
+## Tabler Migration (Vision 2026)
+
+| Skill | When to Use |
+|-------|------------|
+| [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons — the new UI reference |
+| [Library Replacement Guide](./tabler-library-replacement.md) | Which 3rd-party libs to swap (Select2→Tom Select, etc.), npm/webpack/Grunt changes |
+| [Migration Playbook](./tabler-migration-playbook.md) | Per-page migration steps, full codebase audit inventory, phased execution plan |
+| [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Data attribute renames, CSS class mapping, JS API changes (shared with Frontend section) |
+
+**Agent-only skill file**: `.claudecode/migration-rules.md` — strict rules for the Tabler shell, personas, iconography, and legacy bridge.
+
+**Epic Issue**: [#8301 — UI Migration: AdminLTE to Tabler 2026](https://github.com/ChurchCRM/CRM/issues/8301)
 
 ## Security
 
@@ -108,3 +122,5 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
+- **Migrate a page to Tabler**: `tabler-migration-playbook.md` → `tabler-components.md` → `bootstrap-5-migration.md` → `git-workflow.md`
+- **Swap a 3rd-party library**: `tabler-library-replacement.md` → `webpack-typescript.md` → `git-workflow.md`

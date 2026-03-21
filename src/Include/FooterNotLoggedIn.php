@@ -22,12 +22,6 @@ use ChurchCRM\Service\SystemService;
 
   <script src="<?= SystemURLs::assetVersioned('/skin/external/select2/select2.full.min.js') ?>"></script>
 
-  <!-- Bootstrap 3.3.5 -->
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/bootstrap/js/bootstrap.min.js') ?>"></script>
-
-  <!-- AdminLTE App -->
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/adminlte/adminlte.min.js') ?>"></script>
-
   <!-- InputMask -->
   <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/jquery.inputmask.min.js') ?>"></script>
   <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/inputmask.binding.js') ?>"></script>

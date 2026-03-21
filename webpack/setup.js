@@ -7,6 +7,11 @@ window.jQuery = $;
 const bootstrap = require("bootstrap");
 window.bootstrap = bootstrap;
 
+// Helper: get or create a Bootstrap 5 Modal instance
+function getModal(id) {
+  return bootstrap.Modal.getOrCreateInstance(document.getElementById(id));
+}
+
 const i18next = require("i18next");
 window.i18next = i18next;
 
@@ -722,7 +727,7 @@ window.Stepper = Stepper;
     }
 
     // Show the setup modal
-    $("#setupModal").modal("show");
+    getModal("setupModal").show();
 
     $.ajax({
       url: rootPath + "/setup/",
@@ -749,7 +754,7 @@ window.Stepper = Stepper;
             .text("Close")
             .off("click")
             .on("click", function () {
-              $("#setupModal").modal("hide");
+              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
               setTimeout(function () {
                 $("#setup-progress").show();
                 $("#setup-success").hide();
@@ -913,7 +918,7 @@ window.Stepper = Stepper;
       forceBtn.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $("#forceInstallModal").modal("show");
+        getModal("forceInstallModal").show();
       });
     }
 
@@ -922,7 +927,7 @@ window.Stepper = Stepper;
     if (confirmBtn) {
       confirmBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        $("#forceInstallModal").modal("hide");
+        bootstrap.Modal.getInstance(document.getElementById("forceInstallModal"))?.hide();
         // Wait for modal to hide before proceeding
         setTimeout(function () {
           skipCheck();

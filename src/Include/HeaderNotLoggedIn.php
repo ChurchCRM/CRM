@@ -22,7 +22,7 @@ require_once __DIR__ . '/Header-Security.php';
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
 </head>
-<body class="hold-transition login-page">
+<body class="antialiased">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles

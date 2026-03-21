@@ -1,4 +1,4 @@
-/* Import Bootstrap and Font Awesome styles */
+/* Import Bootstrap 5, Font Awesome and bs-stepper styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bs-stepper/dist/css/bs-stepper.min.css";

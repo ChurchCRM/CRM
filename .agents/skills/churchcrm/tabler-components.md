@@ -1,0 +1,748 @@
+---
+title: "Tabler UI Component Reference"
+intent: "Complete reference for Tabler framework layout, cards, tables, forms, navigation, and utility components used in ChurchCRM"
+tags: ["frontend", "tabler", "bootstrap5", "ui", "components"]
+prereqs: ["bootstrap-5-migration.md", "frontend-development.md"]
+complexity: "intermediate"
+---
+
+# Skill: Tabler UI Component Reference <!-- learned: 2026-03-21 -->
+
+## Overview
+
+Tabler is built on Bootstrap 5.3.x. Every Bootstrap 5 class works in Tabler. Tabler adds its own component layer on top with CSS variables prefixed `--tblr-*`.
+
+**Key constraint**: ChurchCRM keeps jQuery and DataTables.net. Tabler works alongside jQuery — Bootstrap 5 auto-detects jQuery and registers plugin constructors on `$.fn`.
+
+---
+
+## 1. Page Layout (The Shell)
+
+### Combo Layout (Sidebar + Topbar) — ChurchCRM Default
+
+```html
+<body class="antialiased">
+<div class="page">
+  <!-- Sidebar -->
+  <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#sidebar-menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="/" class="navbar-brand navbar-brand-autodark">
+        <img src="/logo.png" alt="Logo" class="navbar-brand-image">
+      </a>
+      <div class="collapse navbar-collapse" id="sidebar-menu">
+        <ul class="navbar-nav pt-lg-3">
+          <!-- nav items -->
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Topbar -->
+  <header class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none sticky-top">
+    <div class="container-xl">
+      <div class="navbar-nav flex-row order-md-last">
+        <!-- right-side icons -->
+      </div>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <!-- search bar -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Content -->
+  <div class="page-wrapper">
+    <div class="page-header d-print-none">
+      <div class="container-xl">
+        <div class="row g-2 align-items-center">
+          <div class="col-auto"><h2 class="page-title">Page Title</h2></div>
+        </div>
+      </div>
+    </div>
+    <div class="page-body">
+      <div class="container-xl">
+        <!-- page content -->
+      </div>
+    </div>
+    <footer class="footer footer-transparent d-print-none">
+      <div class="container-xl">
+        <!-- footer -->
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+```
+
+### Container: Always Use `container-xl`
+
+Tabler uses `container-xl` (max-width: 1320px) by default, not `container-fluid`. This gives content breathing room on large screens.
+
+### Key Layout Classes
+
+| Class | Purpose |
+|-------|---------|
+| `.page` | Root wrapper (replaces `.wrapper`) |
+| `.page-wrapper` | Content area (replaces `.content-wrapper`) |
+| `.page-header` | Title + breadcrumb area (replaces `.content-header`) |
+| `.page-body` | Main content (replaces `.content`) |
+| `.page-title` | Page heading (`<h2>`) |
+| `.navbar-vertical` | Sidebar layout |
+| `.navbar-brand-autodark` | Logo auto-inverts in dark mode |
+| `.navbar-brand-image` | Logo image sizing (32px height) |
+
+---
+
+## 2. Cards
+
+### Basic Card
+
+```html
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Title</h3>
+    <div class="card-actions">
+      <a href="#" class="btn btn-primary btn-sm">Action</a>
+    </div>
+  </div>
+  <div class="card-body">Content</div>
+  <div class="card-footer">Footer</div>
+</div>
+```
+
+### Status Card (Leader Persona — colored top bar)
+
+```html
+<div class="card">
+  <div class="card-status-top bg-primary"></div>
+  <div class="card-body">
+    <h3 class="card-title">Active Members</h3>
+    <p class="text-secondary">124 this month</p>
+  </div>
+</div>
+```
+
+Variants: `card-status-top`, `card-status-start` (left), `card-status-bottom`.
+Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
+
+### Stamp Card (Leader Persona — icon stamp)
+
+```html
+<div class="card card-sm">
+  <div class="card-body">
+    <div class="row align-items-center">
+      <div class="col-auto">
+        <span class="card-stamp">
+          <span class="card-stamp-icon bg-primary-lt">
+            <i class="ti ti-users"></i>
+          </span>
+        </span>
+      </div>
+      <div class="col">
+        <div class="fw-medium">Active Members</div>
+        <div class="text-secondary">124</div>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Card Table (Admin Persona — data density)
+
+```html
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Recent People</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table table-sm table-hover">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>John Doe</td>
+          <td>Member</td>
+          <td><span class="badge bg-success">Active</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+```
+
+### Card with Tabs
+
+```html
+<div class="card">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" data-bs-toggle="tabs">
+      <li class="nav-item">
+        <a href="#tab-info" class="nav-link active" data-bs-toggle="tab">Info</a>
+      </li>
+      <li class="nav-item">
+        <a href="#tab-activity" class="nav-link" data-bs-toggle="tab">Activity</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-info">Info content</div>
+      <div class="tab-pane" id="tab-activity">Activity content</div>
+    </div>
+  </div>
+</div>
+```
+
+### Card Sizing
+
+| Class | Description |
+|-------|-------------|
+| `.card-sm` | Compact padding |
+| `.card-lg` | Extra padding |
+| `.card-stacked` | Stacked visual effect (appears as pile) |
+
+---
+
+## 3. Tables
+
+### Standard Tabler Table
+
+```html
+<div class="table-responsive">
+  <table class="table table-vcenter">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th class="w-1">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>John Doe</td>
+        <td class="text-secondary">john@example.com</td>
+        <td>
+          <a href="#" class="btn btn-ghost-primary btn-sm">
+            <i class="ti ti-pencil"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+### Table Utility Classes
+
+| Class | Purpose |
+|-------|---------|
+| `.table-vcenter` | Vertically center all cells |
+| `.table-sm` | Compact rows (Admin persona) |
+| `.table-hover` | Row hover highlight |
+| `.table-striped` | Alternating row colors |
+| `.table-nowrap` | Prevent text wrapping |
+| `.table-responsive` | Horizontal scroll on small screens |
+| `.card-table` | Remove card-body padding for full-width table |
+| `.w-1` | Shrink column to content width (for action buttons) |
+
+### DataTables Integration
+
+DataTables.net works with Tabler. Use Bootstrap 5 DataTables integration (`dataTables.bootstrap5`), not Bootstrap 4.
+
+```js
+$('#myTable').DataTable({
+  ...window.CRM.plugin.dataTable,
+  // DataTables auto-applies Tabler styling via bootstrap5 integration
+});
+```
+
+---
+
+## 4. Forms
+
+### Standard Form Layout
+
+```html
+<form>
+  <div class="mb-3">
+    <label class="form-label">First Name</label>
+    <input type="text" class="form-control" placeholder="Enter name">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Classification</label>
+    <select class="form-select">
+      <option>Member</option>
+      <option>Visitor</option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label class="form-check">
+      <input type="checkbox" class="form-check-input">
+      <span class="form-check-label">Active</span>
+    </label>
+  </div>
+</form>
+```
+
+### Form Layout Patterns
+
+```html
+<!-- Horizontal form -->
+<div class="row mb-3">
+  <label class="col-3 col-form-label">Name</label>
+  <div class="col">
+    <input type="text" class="form-control">
+  </div>
+</div>
+
+<!-- Row of inputs -->
+<div class="row g-2">
+  <div class="col-6">
+    <input type="text" class="form-control" placeholder="First">
+  </div>
+  <div class="col-6">
+    <input type="text" class="form-control" placeholder="Last">
+  </div>
+</div>
+```
+
+### Key Form Class Changes (BS4 → Tabler/BS5)
+
+| Old (BS4) | New (Tabler/BS5) |
+|-----------|-----------------|
+| `.form-group` | `<div class="mb-3">` |
+| `.custom-select` | `.form-select` |
+| `.custom-control .custom-checkbox` | `.form-check` |
+| `.custom-control-input` | `.form-check-input` |
+| `.custom-control-label` | `.form-check-label` |
+| `.form-control-file` | `.form-control` (on `<input type="file">`) |
+| `.input-group-append` | Removed — nest directly in `.input-group` |
+| `.input-group-prepend` | Removed — nest directly in `.input-group` |
+
+### Input Groups (BS5 — no append/prepend wrappers)
+
+```html
+<!-- BS4 (old) -->
+<div class="input-group">
+  <input type="text" class="form-control">
+  <div class="input-group-append">
+    <button class="btn btn-primary">Go</button>
+  </div>
+</div>
+
+<!-- BS5/Tabler (new) — no wrapper needed -->
+<div class="input-group">
+  <input type="text" class="form-control">
+  <button class="btn btn-primary">Go</button>
+</div>
+```
+
+### Switches (replaces custom toggles)
+
+```html
+<label class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" checked>
+  <span class="form-check-label">Enable notifications</span>
+</label>
+```
+
+### Validation Styling
+
+```html
+<div class="mb-3">
+  <label class="form-label">Email</label>
+  <input type="email" class="form-control is-invalid">
+  <div class="invalid-feedback">Please enter a valid email.</div>
+</div>
+```
+
+---
+
+## 5. Navigation
+
+### Sidebar Nav Item
+
+```html
+<li class="nav-item">
+  <a class="nav-link" href="/people">
+    <span class="nav-link-icon"><i class="ti ti-users"></i></span>
+    <span class="nav-link-title">People</span>
+  </a>
+</li>
+```
+
+### Sidebar Nav with Submenu (Dropdown)
+
+```html
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+     data-bs-auto-close="false">
+    <span class="nav-link-icon"><i class="ti ti-box"></i></span>
+    <span class="nav-link-title">Admin</span>
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="/admin/settings">Settings</a>
+    <a class="dropdown-item" href="/admin/users">Users</a>
+  </div>
+</li>
+```
+
+### Breadcrumbs
+
+```html
+<ol class="breadcrumb" aria-label="breadcrumbs">
+  <li class="breadcrumb-item"><a href="/">Home</a></li>
+  <li class="breadcrumb-item"><a href="/people">People</a></li>
+  <li class="breadcrumb-item active" aria-current="page">John Doe</li>
+</ol>
+```
+
+### Tabs (inside card or standalone)
+
+```html
+<ul class="nav nav-tabs" data-bs-toggle="tabs">
+  <li class="nav-item"><a href="#info" class="nav-link active" data-bs-toggle="tab">Info</a></li>
+  <li class="nav-item"><a href="#notes" class="nav-link" data-bs-toggle="tab">Notes</a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="info">...</div>
+  <div class="tab-pane" id="notes">...</div>
+</div>
+```
+
+---
+
+## 6. Buttons
+
+### Standard Variants
+
+```html
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-success">Success</button>
+<button class="btn btn-danger">Danger</button>
+<button class="btn btn-warning">Warning</button>
+<button class="btn btn-outline-primary">Outline</button>
+<button class="btn btn-ghost-primary">Ghost</button> <!-- Tabler-only: transparent bg -->
+```
+
+### Sizes
+
+| Class | Usage |
+|-------|-------|
+| `.btn-sm` | Compact — Admin tables |
+| (default) | Standard — desktop forms |
+| `.btn-lg` | Large — Volunteer/mobile touch targets |
+
+### Icon Buttons
+
+```html
+<!-- Icon only -->
+<a href="#" class="btn btn-icon btn-ghost-primary">
+  <i class="ti ti-pencil"></i>
+</a>
+
+<!-- Icon + text -->
+<a href="#" class="btn btn-primary">
+  <i class="ti ti-plus me-1"></i> Add Person
+</a>
+```
+
+---
+
+## 7. Badges, Avatars & Status
+
+### Badges
+
+```html
+<span class="badge bg-primary">Active</span>
+<span class="badge bg-success-lt">Approved</span>  <!-- light variant -->
+<span class="badge bg-danger-lt">Overdue</span>
+```
+
+Light variants: append `-lt` to any color (e.g., `bg-primary-lt`, `bg-success-lt`).
+
+### Avatars
+
+```html
+<!-- Image avatar -->
+<span class="avatar" style="background-image: url(photo.jpg)"></span>
+
+<!-- Initials avatar -->
+<span class="avatar bg-blue-lt">JD</span>
+
+<!-- Sizes -->
+<span class="avatar avatar-sm">SM</span>
+<span class="avatar avatar-md">MD</span>
+<span class="avatar avatar-lg">LG</span>
+<span class="avatar avatar-xl">XL</span>
+
+<!-- Avatar list -->
+<div class="avatar-list avatar-list-stacked">
+  <span class="avatar">A</span>
+  <span class="avatar">B</span>
+  <span class="avatar">+3</span>
+</div>
+```
+
+### Status Dots
+
+```html
+<span class="status status-green">Active</span>
+<span class="status status-red">Inactive</span>
+<span class="status status-yellow">Pending</span>
+```
+
+### Status Indicator (on avatar)
+
+```html
+<span class="avatar">
+  JD
+  <span class="badge bg-success"></span> <!-- green dot in corner -->
+</span>
+```
+
+---
+
+## 8. Modals
+
+```html
+<div class="modal fade" id="confirmModal" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-status bg-danger"></div> <!-- colored top bar -->
+      <div class="modal-body text-center py-4">
+        <i class="ti ti-alert-triangle text-danger mb-2" style="font-size: 3rem;"></i>
+        <h3>Are you sure?</h3>
+        <p class="text-secondary">This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-link link-secondary" data-bs-dismiss="modal">Cancel</a>
+        <a href="#" class="btn btn-danger ms-auto">Yes, delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### Modal Sizes
+
+| Class | Width |
+|-------|-------|
+| `.modal-sm` | 300px |
+| (default) | 500px |
+| `.modal-lg` | 800px |
+| `.modal-xl` | 1140px |
+| `.modal-fullscreen` | 100% |
+
+### Show/Hide via JS
+
+```js
+// Create
+var modal = new bootstrap.Modal(document.getElementById('confirmModal'));
+modal.show();
+modal.hide();
+
+// jQuery also works (BS5 auto-registers):
+$('#confirmModal').modal('show');
+$('#confirmModal').modal('hide');
+```
+
+---
+
+## 9. Toasts
+
+```html
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="toast" role="alert" data-bs-autohide="true" data-bs-delay="3000">
+    <div class="toast-header">
+      <span class="avatar avatar-xs bg-primary me-2">!</span>
+      <strong class="me-auto">Notification</strong>
+      <button type="button" class="ms-2 btn-close" data-bs-dismiss="toast"></button>
+    </div>
+    <div class="toast-body">Record saved successfully.</div>
+  </div>
+</div>
+```
+
+```js
+// Show toast via JS
+var toast = new bootstrap.Toast(document.querySelector('.toast'));
+toast.show();
+```
+
+---
+
+## 10. Steps / Wizard
+
+```html
+<div class="card">
+  <div class="card-header">
+    <ul class="steps">
+      <li class="step-item active">
+        <a href="#" class="step-link"><span class="step-number">1</span>Basic Info</a>
+      </li>
+      <li class="step-item">
+        <a href="#" class="step-link"><span class="step-number">2</span>Details</a>
+      </li>
+      <li class="step-item">
+        <a href="#" class="step-link"><span class="step-number">3</span>Confirm</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <!-- step content (manage via JS) -->
+  </div>
+</div>
+```
+
+**Note**: This is CSS-only. Step navigation logic must be written in JS. For full wizard functionality, keep BS Stepper or write custom JS.
+
+---
+
+## 11. Empty States
+
+```html
+<div class="empty">
+  <div class="empty-icon">
+    <i class="ti ti-mood-sad" style="font-size: 3rem;"></i>
+  </div>
+  <p class="empty-title">No results found</p>
+  <p class="empty-subtitle text-secondary">
+    Try adjusting your search or filter to find what you're looking for.
+  </p>
+  <div class="empty-action">
+    <a href="#" class="btn btn-primary"><i class="ti ti-plus me-1"></i>Add New</a>
+  </div>
+</div>
+```
+
+---
+
+## 12. Tabler CSS Variables
+
+```css
+:root {
+  --tblr-primary:      #206bc4;
+  --tblr-primary-lt:   #d7e8f7;
+  --tblr-secondary:    #667382;
+  --tblr-success:      #2fb344;
+  --tblr-success-lt:   #d3f2d8;
+  --tblr-info:         #4dabf7;
+  --tblr-warning:      #f76707;
+  --tblr-danger:       #d63939;
+  --tblr-danger-lt:    #fce8e8;
+  --tblr-body-color:   #1d273b;
+  --tblr-body-bg:      #f1f5f9;
+  --tblr-card-bg:      #fff;
+  --tblr-border-color: rgba(98, 105, 118, 0.16);
+  --tblr-border-radius: 4px;
+  --tblr-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+```
+
+### Dark Mode
+
+```html
+<body data-bs-theme="dark">
+```
+
+Toggle via JS:
+```js
+document.body.setAttribute('data-bs-theme',
+  document.body.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark'
+);
+```
+
+---
+
+## 13. Utility Quick Reference
+
+### Spacing (Bootstrap 5)
+
+| BS4 | BS5/Tabler |
+|-----|-----------|
+| `ml-*` | `ms-*` (margin-start) |
+| `mr-*` | `me-*` (margin-end) |
+| `pl-*` | `ps-*` (padding-start) |
+| `pr-*` | `pe-*` (padding-end) |
+
+### Typography
+
+| Class | Purpose |
+|-------|---------|
+| `.fw-bold` | Font weight bold (replaces `.font-weight-bold`) |
+| `.fw-medium` | Font weight 500 |
+| `.fw-normal` | Font weight normal |
+| `.fs-1` to `.fs-6` | Font size scale |
+| `.text-secondary` | Muted/secondary text |
+
+### Display
+
+| Class | Purpose |
+|-------|---------|
+| `.d-print-none` | Hide when printing |
+| `.visually-hidden` | Screen reader only (replaces `.sr-only`) |
+
+---
+
+## 14. Iconography Dual System
+
+### UI Actions → Tabler Icons (`ti-`)
+
+```html
+<i class="ti ti-pencil"></i>      <!-- Edit -->
+<i class="ti ti-trash"></i>       <!-- Delete -->
+<i class="ti ti-device-floppy"></i> <!-- Save -->
+<i class="ti ti-x"></i>           <!-- Close -->
+<i class="ti ti-search"></i>      <!-- Search -->
+<i class="ti ti-filter"></i>      <!-- Filter -->
+<i class="ti ti-settings"></i>    <!-- Settings -->
+<i class="ti ti-plus"></i>        <!-- Add -->
+<i class="ti ti-download"></i>    <!-- Download -->
+<i class="ti ti-upload"></i>      <!-- Upload -->
+<i class="ti ti-maximize"></i>    <!-- Fullscreen -->
+<i class="ti ti-menu-2"></i>      <!-- Menu toggle -->
+<i class="ti ti-logout"></i>      <!-- Sign out -->
+<i class="ti ti-key"></i>         <!-- Password -->
+<i class="ti ti-shield"></i>      <!-- Security/2FA -->
+<i class="ti ti-bug"></i>         <!-- Report issue -->
+<i class="ti ti-book"></i>        <!-- Documentation -->
+<i class="ti ti-headset"></i>     <!-- Support -->
+<i class="ti ti-confetti"></i>    <!-- New release -->
+<i class="ti ti-users"></i>       <!-- Group/team -->
+```
+
+### Domain Entities → FontAwesome 7 Duotone
+
+```html
+<i class="fa-duotone fa-solid fa-user"></i>           <!-- Person -->
+<i class="fa-duotone fa-solid fa-house-user"></i>     <!-- Family -->
+<i class="fa-duotone fa-solid fa-people-group"></i>   <!-- Group -->
+<i class="fa-duotone fa-solid fa-circle-dollar"></i>  <!-- Finance -->
+<i class="fa-duotone fa-solid fa-calendar-days"></i>  <!-- Event -->
+<i class="fa-duotone fa-solid fa-cart-shopping"></i>   <!-- Cart -->
+<i class="fa-duotone fa-solid fa-clipboard-check"></i> <!-- Check-in -->
+```
+
+### CSS for Tabler Icons (add to Header-HTML-Scripts.php)
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+```
+
+Or install via npm and add to webpack:
+```bash
+npm install @tabler/icons-webfont
+```
+```scss
+// In churchcrm.scss
+@import "~@tabler/icons-webfont/dist/tabler-icons.min.css";
+```
