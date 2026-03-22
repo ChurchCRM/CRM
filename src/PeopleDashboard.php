@@ -58,147 +58,125 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 }
 ?>
 
-<!-- Default box -->
-<div class="card">
+<!-- Overview Card -->
+<div class="card card-info card-outline mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('People Functions') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-people-group"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
-        <div class="btn-group" role="group">
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-outline-info" title="<?= gettext('Verify People') ?>">
-                <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify') ?>
-            </a>
-            <div class="btn btn-outline-secondary disabled" style="pointer-events: none;">
-                <span class="badge <?= $selfRegColor ?> me-2"><?= $selfRegText ?></span>
-                <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Self Register') ?>
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-secondary">
+                                <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-people-roof"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Families') ?></div>
+                            <div class="h2 m-0"><?= $familyCount['familyCount'] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-success">
+                                <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('People') ?></div>
+                            <div class="h2 m-0"><?= $personCount ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php if (SystemConfig::getValue('bEnabledSundaySchool')) { ?>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-warning">
+                                <div class="stat-icon bg-warning text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-children"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('SS Kids') ?></div>
+                            <div class="h2 m-0"><?= $groupStats['sundaySchoolkids'] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-primary">
+                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Groups') ?></div>
+                            <div class="h2 m-0"><?= $groupStats['groups'] ?></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <?php
-        if ($sEmailLink) {
-            // Add default email if default email has been set and is not already in string
-            if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
-                $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
-            }
-            $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
-            if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
-                // Display link
-                ?>
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="emailAllDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email to all people') ?>">
-                        <i class="fa-solid fa-mail-bulk me-2"></i><?= gettext('Email All') ?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
-                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
-                        <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="btn-group" role="group">
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-outline-info" title="<?= gettext('Verify People') ?>">
+                        <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify') ?>
+                    </a>
+                    <div class="btn btn-outline-secondary disabled" style="pointer-events: none;">
+                        <span class="badge <?= $selfRegColor ?> me-2"><?= $selfRegText ?></span>
+                        <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Self Register') ?>
                     </div>
+                    <?php
+                    if ($sEmailLink) {
+                        // Add default email if default email has been set and is not already in string
+                        if (SystemConfig::getValue('sToEmailAddress') != '' && !stristr($sEmailLink, SystemConfig::getValue('sToEmailAddress'))) {
+                            $sEmailLink .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
+                        }
+                        $sEmailLink = urlencode($sEmailLink);  // Mailto should comply with RFC 2368
+                        if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
+                            // Display link
+                            ?>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="emailAllDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email to all people') ?>">
+                                    <i class="fa-solid fa-mail-bulk me-2"></i><?= gettext('Email All') ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
+                                    <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
+                                    <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+                                </div>
+                            </div>
+                            <div class="dropdown d-inline-block">
+                                <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email with hidden recipients') ?>">
+                                    <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
+                                    <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
+                                    <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
+                                </div>
+                            </div>
+                            <?php
+                        }
+                    }
+                    ?>
                 </div>
-                <div class="dropdown d-inline-block">
-                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email with hidden recipients') ?>">
-                        <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
-                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
-                        <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                    </div>
-                </div>
-                <?php
-            }
-        }
-        ?>
+            </div>
+        </div>
     </div>
 </div>
-<!-- Small boxes (Stat box) -->
+
 <div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-gray">
-            <div class="inner">
-                <h3>
-                    <?= $familyCount['familyCount'] ?>
-                </h3>
-
-                <p>
-                    <?= gettext('Families') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-people-roof"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
-                <?= gettext('See all Families') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div>
-    <!-- ./col -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3>
-                    <?= $personCount ?>
-                </h3>
-
-                <p>
-                    <?= gettext('People') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div>
-    <?php if (SystemConfig::getValue('bEnabledSundaySchool')) {
-        ?>
-        <!-- ./col -->
-        <div class="col-lg-3 col-md-6 col-sm-6">
-            <!-- small box -->
-            <div class="small-box bg-yellow">
-                <div class="inner">
-                    <h3>
-                        <?= $groupStats['sundaySchoolkids'] ?>
-                    </h3>
-
-                    <p>
-                        <?= gettext('Sunday School Kids') ?>
-                    </p>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-children"></i>
-                </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/groups/sundayschool/dashboard" class="small-box-footer">
-                    <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div>
-        <?php
-    } ?>
-    <!-- ./col -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
-        <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3>
-                    <?= $groupStats['groups'] ?>
-                </h3>
-
-                <p>
-                    <?= gettext('Groups') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-users"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/groups/dashboard" class="small-box-footer">
-                <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div>
-    <!-- ./col -->
-
-</div><!-- /.row -->
 <div class="row">
     <div class="col-lg-6">
         <div class="card card-info mb-3">

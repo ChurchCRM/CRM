@@ -6,9 +6,37 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
+
+<!-- Overview Card -->
+<div class="card card-primary card-outline mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-envelope"></i> <?= gettext('Overview') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-4 col-md-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-primary">
+                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Email Functions') ?></div>
+                            <div class="text-muted small"><?= gettext('Manage email operations') ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Email Functions Card -->
 <div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Email Functions') ?></h3>
+        <h3 class="card-title"><?= gettext('Email Tools') ?></h3>
     </div>
     <div class="card-body">
         <div class="btn-group" role="group">

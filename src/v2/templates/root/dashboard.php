@@ -7,112 +7,97 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<!-- Small boxes (Stat box) -->
+<!-- Overview Card -->
+<div class="card card-info card-outline mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Overview') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-secondary">
+                                <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-people-roof"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Families') ?></div>
+                            <div class="h2 m-0" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-success">
+                                <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('People') ?></div>
+                            <div class="h2 m-0" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-primary">
+                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Groups') ?></div>
+                            <div class="h2 m-0" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php if ($sundaySchoolEnabled) { ?>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-warning">
+                                <div class="stat-icon bg-warning text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-child"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Sunday School') ?></div>
+                            <div class="h2 m-0" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+            <?php if ($eventsEnabled) { ?>
+            <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-info">
+                                <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-regular fa-calendar-check"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Check-ins') ?></div>
+                            <div class="h2 m-0"><?= $dashboardCounts["events"] ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+
 <div class="row">
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-olive">
-            <div class="inner">
-                <h3 id="familyCountDashboard">
-                    <?= $dashboardCounts["families"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Families') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user-friends"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="small-box-footer">
-                <?= gettext('See all Families') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3 id="peopleStatsDashboard">
-                    <?= $dashboardCounts["People"] ?>
-                </h3>
-                <p>
-                    <?= gettext('People') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/people" class="small-box-footer">
-                <?= gettext('See All People') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3 id="groupsCountDashboard">
-                    <?= $dashboardCounts["Groups"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Groups') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-users"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/GroupList.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-    <?php if ($sundaySchoolEnabled) {
-        ?>
-        <div class="col-lg-2 col-4">
-            <!-- small box -->
-            <div class="small-box bg-orange">
-                <div class="inner">
-                    <h3 id="groupStatsSundaySchool">
-                        <?= $dashboardCounts["SundaySchool"] ?>
-                    </h3>
-                    <p>
-                        <?= gettext('Sunday School Classes') ?>
-                    </p>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-child"></i>
-                </div>
-                <a href="<?= SystemURLs::getRootPath() ?>/groups/sundayschool/dashboard" class="small-box-footer">
-                    <?= gettext('More info') ?> <i class="fa-solid fa-arrow-circle-right"></i>
-                </a>
-            </div>
-        </div><!-- ./col -->
-        <?php
-    }
-    if ($eventsEnabled) {
-        ?>
-    <div class="col-lg-2 col-4">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-            <div class="inner">
-                <h3>
-                    <?= $dashboardCounts["events"] ?>
-                </h3>
-                <p>
-                    <?= gettext('Attendees Checked In') ?>
-                </p>
-            </div>
-            <div class="icon">
-                <i class="fa-regular fa-calendar-check"></i>
-            </div>
-            <a href="<?= SystemURLs::getRootPath() ?>/ListEvents.php" class="small-box-footer">
-                <?= gettext('More info') ?>  <i class="fa-solid fa-arrow-circle-right"></i>
-            </a>
-        </div>
-    </div><!-- ./col -->
-        <?php
-    } ?>
-</div><!-- /.row -->
 
 <div class="row">
     <div class="card col-md-6" id="birthdayCard">

@@ -10,7 +10,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="card card-info card-outline mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Sunday School Overview') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
