@@ -63,59 +63,71 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="collapse mb-3" id="financialSettings"></div>
     <?php endif; ?>
 
-    <!-- Key Metrics Row -->
-    <div class="row">
-        <!-- YTD Payments -->
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4 finance-metric-card metric-payments">
-                    <div class="finance-metric-value">
-                        $<?= number_format($ytdPaymentTotal ?? 0, 2) ?>
-                    </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
-                        <?= gettext('YTD Payments') ?>
+    <!-- Overview Card -->
+    <div class="card card-success card-outline mb-3">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Overview') ?></h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-success">
+                                    <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('YTD Payments') ?></div>
+                                <div class="h2 m-0">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- YTD Pledges -->
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4 finance-metric-card metric-pledges">
-                    <div class="finance-metric-value">
-                        $<?= number_format($ytdPledgeTotal ?? 0, 2) ?>
-                    </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
-                        <?= gettext('YTD Pledges') ?>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Donor Families -->
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4 finance-metric-card metric-donors">
-                    <div class="finance-metric-value">
-                        <?= number_format($ytdDonorFamilies ?? 0) ?>
-                    </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
-                        <?= gettext('Donor Families') ?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-primary">
+                                    <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('YTD Pledges') ?></div>
+                                <div class="h2 m-0">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Payment Count -->
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-body text-center py-4 finance-metric-card metric-count">
-                    <div class="finance-metric-value">
-                        <?= number_format($ytdPaymentCount) ?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-secondary">
+                                    <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-people-roof"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Donor Families') ?></div>
+                                <div class="h2 m-0"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
-                        <?= gettext('Total Payments') ?>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-info">
+                                    <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-receipt"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Total Payments') ?></div>
+                                <div class="h2 m-0"><?= number_format($ytdPaymentCount) ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
