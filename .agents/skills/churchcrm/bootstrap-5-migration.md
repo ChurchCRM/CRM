@@ -705,6 +705,129 @@ Responsive variants follow the same pattern:
 <button class="btn btn-primary w-100">Full Width</button>
 ```
 
+### 3.12a AdminLTE `.btn-app` → Bootstrap 5 `.btn btn-outline-*` <!-- learned: 2026-03-21 -->
+
+**ChurchCRM Pattern**: Large dashboard/action buttons using `.btn-app` (a custom AdminLTE class) with `.fa-3x` stacked vertical icons have been **fully migrated to Bootstrap 5 native classes**.
+
+#### Pattern Conversion
+
+```html
+<!-- AdminLTE: .btn-app with stacked icon and text -->
+<a class="btn btn-app bg-info">
+  <i class="fa-solid fa-print fa-3x"></i><br>
+  Printable Page
+</a>
+
+<!-- Bootstrap 5: .btn btn-outline-* with inline icon -->
+<button class="btn btn-outline-info" title="Printable Page">
+  <i class="fa-solid fa-print me-2"></i>Print
+</button>
+```
+
+#### Key Changes
+
+| Aspect | AdminLTE | Bootstrap 5 |
+|--------|----------|-------------|
+| **Button class** | `.btn-app bg-info` | `.btn btn-outline-info` |
+| **Icon size** | `fa-3x` (large) | `fa-solid` (normal) |
+| **Icon spacing** | Stacked: `<br>` between icon and text | Inline: `me-2` (margin-end) |
+| **Button size** | Fixed `min-width: 100px; min-height: 110px` | Flexible, respects padding |
+| **Text format** | Multi-line allowed | Single-line preferred |
+| **Grouping** | `.row` (grid layout) | `.btn-group` (semantic) |
+
+#### Color Mapping
+
+| AdminLTE | Bootstrap 5 | Use Case |
+|----------|-------------|----------|
+| `.btn-app.bg-primary` | `.btn-outline-primary` | Primary actions |
+| `.btn-app.bg-success` | `.btn-outline-success` | Positive actions (approve, add) |
+| `.btn-app.bg-danger` | `.btn-outline-danger` | Destructive actions (delete) |
+| `.btn-app.bg-warning` | `.btn-outline-warning` | Cautions (edit, change) |
+| `.btn-app.bg-info` | `.btn-outline-info` | Info/view actions |
+| `.btn-app.bg-secondary` | `.btn-outline-secondary` | Secondary actions |
+| ~~`.btn-app.bg-purple`~~ | `.btn-outline-secondary` | Use secondary instead |
+| ~~`.btn-app.bg-maroon`~~ | `.btn-outline-danger` | Use danger instead |
+| ~~`.btn-app.bg-navy`~~ | `.btn-outline-primary` | Use primary instead |
+| ~~`.btn-app.bg-teal`~~ | `.btn-outline-info` | Use info instead |
+
+#### Migration Checklist
+
+- [ ] Replace `.btn btn-app bg-COLOR` with `.btn btn-outline-COLOR`
+- [ ] Remove `fa-3x` from icon, keep normal icon size
+- [ ] Remove `<br>` between icon and text
+- [ ] Add `me-2` (margin-end) to icon for inline spacing
+- [ ] Wrap related buttons in `.btn-group` containers
+- [ ] Add `title` attribute for accessibility
+- [ ] Simplify multi-line text to single-line format
+- [ ] Test responsive behavior on mobile (buttons should wrap naturally)
+- [ ] Remove unused `.btn-app` CSS rule after all conversions complete
+
+#### Example: Dashboard Button Group Migration
+
+```html
+<!-- BEFORE: AdminLTE -->
+<div class="row">
+  <a class="btn btn-app bg-info">
+    <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
+    Verify People
+  </a>
+  <a class="btn btn-app bg-primary dropdown-toggle" data-toggle="dropdown">
+    <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
+    Email All
+  </a>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">All People</a>
+  </div>
+</div>
+
+<!-- AFTER: Bootstrap 5 -->
+<div class="btn-group" role="group">
+  <a class="btn btn-outline-info" title="Verify People">
+    <i class="fa-solid fa-clipboard-check me-2"></i>Verify
+  </a>
+  <div class="dropdown d-inline-block">
+    <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown" title="Email all people">
+      <i class="fa-solid fa-mail-bulk me-2"></i>Email
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">All People</a></li>
+    </ul>
+  </div>
+</div>
+```
+
+#### CSS Cleanup: Remove `.btn-app` SCSS
+
+After all template conversions, the `.btn-app` SCSS rule can be removed:
+
+```scss
+// DELETE THIS from src/skin/scss/_ui-components.scss
+.btn-app {
+  min-width: 100px;
+  min-height: 110px;
+  height: auto;
+  white-space: normal;
+  word-wrap: break-word;
+  padding: 15px 10px;
+  > .fa-3x {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+```
+
+#### Implementation Status
+
+**✅ COMPLETE** — All 40+ `.btn-app` buttons converted across:
+- PersonView.php (12 buttons)
+- PeopleDashboard.php (4 buttons)
+- email/dashboard.php (4 buttons)
+- cart/cartfunctions.php (8 buttons)
+- groups/class-view.php (4 buttons)
+- people/verify-view.php (2 buttons)
+
+**Status**: `.btn-app` CSS rule removed, all templates use `.btn btn-outline-*`
+
 ### 3.13 Dropdowns
 
 | Bootstrap 4 | Bootstrap 5 |
