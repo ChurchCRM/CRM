@@ -4,6 +4,27 @@
  */
 
 export function initializeMainDashboard() {
+  // Helper to generate Tabler simple avatar with initials
+  function generateTablerAvatar(name, id, type = "person") {
+    const parts = name.trim().split(/\s+/);
+    let initials = "";
+    if (parts.length >= 2) {
+      initials = (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+    } else if (parts.length === 1) {
+      initials = parts[0].substring(0, 2).toUpperCase();
+    }
+    
+    // Deterministic color based on name
+    const colors = ["#667eea", "#764ba2", "#f093fb", "#4facfe", "#00f2fe", "#43e97b", "#fa709a", "#fee140"];
+    const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const color = colors[hash % colors.length];
+    
+    const dataAttr = type === "person" ? `data-person-id="${id}"` : `data-family-id="${id}"`;
+    const viewClass = type === "person" ? "view-person-photo" : "view-family-photo";
+    
+    return `<span class="avatar avatar-sm rounded-circle ${viewClass}" ${dataAttr} style="background-color: ${color}; cursor: pointer;" title="${i18next.t('View Photo')}"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
+  }
+
   let dataTableDashboardDefaults = {
     paging: false,
     ordering: false,
@@ -49,17 +70,15 @@ export function initializeMainDashboard() {
       title: i18next.t("Name"),
       data: "Name",
       render: function (data, type, row) {
+        // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = "";
         if (row.HasPhoto) {
-          photoIcon =
-            ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
-            row.FamilyId +
-            '" title="' +
-            i18next.t("View Photo") +
-            '">' +
-            '<i class="fa-solid fa-camera"></i>' +
-            "</button>";
+          photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' + row.FamilyId + '" alt="" />';
+        } else {
+          photoIcon = generateTablerAvatar(row.Name, row.FamilyId, "family");
         }
+        photoIcon += " ";
+        
         // Render status badge only for inactive families
         let statusHtml = "";
         if (row.StatusText && row.IsActive === false) {
@@ -72,7 +91,9 @@ export function initializeMainDashboard() {
         }
 
         return (
-          '<a href="' +
+          '<div class="d-flex align-items-center gap-2">' +
+          photoIcon +
+          ' <a href="' +
           window.CRM.root +
           "/v2/family/" +
           row.FamilyId +
@@ -80,7 +101,7 @@ export function initializeMainDashboard() {
           row.Name +
           "</strong></a>" +
           statusHtml +
-          photoIcon
+          "</div>"
         );
       },
     },
@@ -190,27 +211,26 @@ export function initializeMainDashboard() {
         data: "FirstName",
         render: function (data, type, row) {
           var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
+          // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = "";
           if (row.HasPhoto) {
-            photoIcon =
-              ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
-              row.PersonId +
-              '" title="' +
-              i18next.t("View Photo") +
-              '">' +
-              '<i class="fa-solid fa-camera"></i>' +
-              "</button>";
+            photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' + row.PersonId + '" alt="" />';
+          } else {
+            photoIcon = generateTablerAvatar(row.FormattedName, row.PersonId, "person");
           }
+          photoIcon += " ";
           return (
-            '<a href="' +
+            '<div class="d-flex align-items-center gap-3">' +
+            photoIcon +
+            ' <div><a href="' +
             window.CRM.root +
             "/PersonView.php?PersonID=" +
             row.PersonId +
             '"><strong>' +
             row.FormattedName +
             "</strong></a>" +
-            photoIcon +
-            ageText
+            ageText +
+            "</div></div>"
           );
         },
       },
@@ -285,26 +305,24 @@ export function initializeMainDashboard() {
         title: i18next.t("Name"),
         data: "Name",
         render: function (data, type, row) {
+          // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = "";
           if (row.HasPhoto) {
-            photoIcon =
-              ' <button class="btn btn-xs btn-outline-secondary view-family-photo" data-family-id="' +
-              row.FamilyId +
-              '" title="' +
-              i18next.t("View Photo") +
-              '">' +
-              '<i class="fa-solid fa-camera"></i>' +
-              "</button>";
+            photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' + row.FamilyId + '" alt="" />';
+          } else {
+            photoIcon = generateTablerAvatar(data, row.FamilyId, "family");
           }
+          photoIcon += " ";
           return (
-            '<a href="' +
+            '<div class="d-flex align-items-center gap-3">' +
+            photoIcon +
+            ' <a href="' +
             window.CRM.root +
             "/v2/family/" +
             row.FamilyId +
             '"><strong>' +
             data +
-            "</strong></a>" +
-            photoIcon
+            "</strong></a></div>"
           );
         },
       },
@@ -406,19 +424,18 @@ export function initializeMainDashboard() {
       title: i18next.t("Name"),
       data: "FirstName",
       render: function (data, type, row) {
+        // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = "";
         if (row.HasPhoto) {
-          photoIcon =
-            ' <button class="btn btn-xs btn-outline-secondary view-person-photo" data-person-id="' +
-            row.PersonId +
-            '" title="' +
-            i18next.t("View Photo") +
-            '">' +
-            '<i class="fa-solid fa-camera"></i>' +
-            "</button>";
+          photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' + row.PersonId + '" alt="" />';
+        } else {
+          photoIcon = generateTablerAvatar(row.FirstName + " " + row.LastName, row.PersonId, "person");
         }
+        photoIcon += " ";
         return (
-          '<a href="' +
+          '<div class="d-flex align-items-center gap-2">' +
+          photoIcon +
+          ' <a href="' +
           window.CRM.root +
           "/PersonView.php?PersonID=" +
           row.PersonId +
@@ -426,8 +443,7 @@ export function initializeMainDashboard() {
           row.FirstName +
           " " +
           row.LastName +
-          "</strong></a>" +
-          photoIcon
+          "</strong></a></div>"
         );
       },
     },
