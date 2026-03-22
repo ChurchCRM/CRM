@@ -17,52 +17,40 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header">
         <h3 class="card-title"><i class="fa-solid fa-bars"></i> <?= gettext('Sunday School Class Functions') ?></h3>
     </div>
-    <div class="card-body row">
-        <div class="col-12 col-md-3">
-                <a class="btn btn-app bg-success w-100" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>">
-                <i class="fa-solid fa-user-plus fa-3x"></i><br>
-                <?= gettext('Add Students') ?>
+    <div class="card-body">
+        <div class="btn-group" role="group">
+            <a class="btn btn-outline-success" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Add students to this class') ?>">
+                <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Add') ?>
             </a>
-        </div>
-
-        <div class="col-12 col-md-3">
-            <a class="btn btn-app bg-primary w-100" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
-                <i class="fa-solid fa-pen fa-3x"></i><br>
-                <?= gettext('Edit this Class') ?>
+            <a class="btn btn-outline-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Edit class details') ?>">
+                <i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?>
             </a>
-        </div>
 
-        <?php if ($canEmail) { ?>
-            <div class="col-12 col-md-3">
-                <div class="dropdown">
-                        <button class="btn btn-app bg-teal w-100 dropdown-toggle" type="button"
-                                id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+            <?php if ($canEmail) { ?>
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-outline-info dropdown-toggle" type="button"
+                            id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="<?= gettext('Send email with recipients in To field') ?>">
-                        <i class="fa-solid fa-paper-plane fa-3x"></i><br>
-                        <?= gettext('Email (To)') ?>
+                            <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email (To)') ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
                         <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12 col-md-3">
-                <div class="dropdown">
-                    <button class="btn btn-app bg-navy w-100 dropdown-toggle" type="button"
+                <div class="dropdown d-inline-block">
+                    <button class="btn btn-outline-warning dropdown-toggle" type="button"
                             id="emailClassBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
-                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
-                        <?= gettext('Email (BCC)') ?>
+                            <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
                         <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
                         <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                     </div>
                 </div>
-            </div>
-        <?php } ?>
+            <?php } ?>
     </div>
 </div>
 
@@ -239,7 +227,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <span class="text-muted">—</span>
                                 <?php } ?>
                                 <button class="btn btn-xs btn-outline-primary float-right ms-2"
-                                        data-toggle="modal" data-target="#studentModal-<?= $child['kidId'] ?>"
+                                        data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"
                                         title="<?= gettext('View Full Details') ?>">
                                     <i class="fa-solid fa-info-circle"></i>
                                 </button>

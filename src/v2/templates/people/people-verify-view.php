@@ -11,14 +11,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-app bg-danger">
-            <i class="fa-solid fa-file-pdf fa-3x"></i><br>
-            <?= gettext('Download family letters') ?>
-        </a>
-        <button type="button" class="btn btn-app bg-primary" id="verifyEmail">
-            <i class="fa-solid fa-envelope fa-3x"></i><br>
-            <?= gettext('Send family email') ?>
-        </button>
+        <div class="btn-group" role="group">
+            <a href="<?= SystemURLs::getRootPath()?>/Reports/ConfirmReport.php" class="btn btn-outline-danger" title="<?= gettext('Generate and download confirmation letters') ?>">
+                <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Letters') ?>
+            </a>
+            <button type="button" class="btn btn-outline-primary" id="verifyEmail" title="<?= gettext('Send email to families') ?>">
+                <i class="fa-solid fa-envelope me-2"></i><?= gettext('Email Families') ?>
+            </button>
+        </div>
     </div>
 </div>
 

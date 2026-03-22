@@ -64,14 +64,14 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-app bg-info">
-            <i class="fa-solid fa-clipboard-check fa-3x"></i><br>
-            <?= gettext('Verify People') ?>
-        </a>
-        <div class="btn btn-app bg-secondary">
-            <span class="badge <?= $selfRegColor ?>"><?= $selfRegText ?></span>
-            <i class="fa-solid fa-user-plus fa-3x"></i><br>
-            <?= gettext('Self Register') ?>
+        <div class="btn-group" role="group">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/people/verify" class="btn btn-outline-info" title="<?= gettext('Verify People') ?>">
+                <i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Verify') ?>
+            </a>
+            <div class="btn btn-outline-secondary disabled" style="pointer-events: none;">
+                <span class="badge <?= $selfRegColor ?> me-2"><?= $selfRegText ?></span>
+                <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Self Register') ?>
+            </div>
         </div>
         <?php
         if ($sEmailLink) {
@@ -84,9 +84,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 // Display link
                 ?>
                 <div class="dropdown d-inline-block">
-                    <button class="btn btn-app bg-primary dropdown-toggle" type="button" id="emailAllDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa-solid fa-mail-bulk fa-3x"></i><br>
-                        <?= gettext('Email All') ?>
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="emailAllDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email to all people') ?>">
+                        <i class="fa-solid fa-mail-bulk me-2"></i><?= gettext('Email All') ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="emailAllDropdown">
                         <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
@@ -94,9 +93,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                     </div>
                 </div>
                 <div class="dropdown d-inline-block">
-                    <button class="btn btn-app bg-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
-                        <?= gettext('Email All (BCC)') ?>
+                    <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email with hidden recipients') ?>">
+                        <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
                         <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All People') ?></a>
