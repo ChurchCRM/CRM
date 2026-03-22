@@ -16,44 +16,71 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 <div class="container-fluid">
 
-    <!-- Key Metrics Row -->
-    <div class="row">
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-total">
-                <div class="card-body text-center py-4">
-                    <div class="metric-value"><?= $totalGroups ?></div>
-                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
-                        <?= gettext('Total Groups') ?>
+    <!-- Overview Card -->
+    <div class="card card-primary card-outline mb-3">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title"><i class="fa-solid fa-sitemap"></i> <?= gettext('Overview') ?></h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-primary">
+                                    <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-users"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Total Groups') ?></div>
+                                <div class="h2 m-0"><?= $totalGroups ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-active">
-                <div class="card-body text-center py-4">
-                    <div class="metric-value"><?= $activeGroups ?></div>
-                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
-                        <?= gettext('Active Groups') ?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-success">
+                                    <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-check-circle"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Active Groups') ?></div>
+                                <div class="h2 m-0"><?= $activeGroups ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-inactive">
-                <div class="card-body text-center py-4">
-                    <div class="metric-value"><?= $inactiveGroups ?></div>
-                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
-                        <?= gettext('Inactive Groups') ?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-danger">
+                                    <div class="stat-icon bg-danger text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-ban"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Inactive Groups') ?></div>
+                                <div class="h2 m-0"><?= $inactiveGroups ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-3">
-            <div class="card shadow-sm border-0 h-100 groups-metric-card metric-memberships">
-                <div class="card-body text-center py-4">
-                    <div class="metric-value"><?= $totalMemberships ?></div>
-                    <div class="metric-label text-uppercase small font-weight-bold mt-2">
-                        <?= gettext('Total Memberships') ?>
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="card card-sm">
+                        <div class="card-body">
+                            <div class="text-truncate">
+                                <h3 class="card-title text-info">
+                                    <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                        <i class="fa-solid fa-user-tie"></i>
+                                    </div>
+                                </h3>
+                                <div class="h6 text-muted"><?= gettext('Memberships') ?></div>
+                                <div class="h2 m-0"><?= $totalMemberships ?></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
