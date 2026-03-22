@@ -493,47 +493,33 @@ $bOkToEdit = (
         </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
-        <div class="row">
-            <a class="btn btn-app bg-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-print fa-3x"></i><br><?= gettext("Printable Page") ?></a>
-            <button class="btn btn-app bg-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus fa-3x"></i><br><span class="cartActionDescription"><?= gettext("Add to Cart") ?></span></button>
-            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) {
-            ?>
-                <a class="btn btn-app bg-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-question-circle fa-3x"></i><br><?= gettext("Edit \"Why Came\" Notes") ?></a>
-            <?php
-            }
-            if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-            ?>
-                <a class="btn btn-app bg-info" id="addGroup"><i class="fa-solid fa-users fa-3x"></i><br><?= gettext("Assign New Group") ?></a>
-            <?php
-            } ?>
-            <a class="btn btn-app bg-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list fa-3x"></i><br><?= gettext("List Members") ?></a>
-            <?php
-            if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) {
-            ?>
-                <a id="deletePersonBtn" class="btn btn-app bg-maroon delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can fa-3x"></i><br><?= gettext("Delete this Record") ?></a>
-            <?php
-            }
-            ?>
-            <br />
-            <?php
-            if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-                if (!$person->isUser()) {
-            ?>
-                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard fa-3x"></i><br><?= gettext('Make User') ?></a>
-                <?php
-                } else {
-                ?>
-                    <a class="btn btn-app bg-purple" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret fa-3x"></i><br><?= gettext('Edit User') ?></a>
-                    <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
-                    <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
-                <?php
-                }
-            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
-                ?>
-                <a class="btn btn-app bg-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye fa-3x"></i><br><?= gettext('View User') ?></a>
-                <a class="btn btn-app bg-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key fa-3x"></i><br><?= gettext("Change Password") ?></a>
-            <?php
-            } ?>
+        <div class="btn-group" role="group">
+            <a class="btn btn-outline-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-2"></i><?= gettext("Print") ?></a>
+            <button class="btn btn-outline-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-2"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
+            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                <a class="btn btn-outline-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Why They Came") ?>"><i class="fa-solid fa-question-circle me-2"></i><?= gettext("Why Came") ?></a>
+            <?php } ?>
+            <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
+                <a class="btn btn-outline-info" id="addGroup" title="<?= gettext("Assign New Group") ?>"><i class="fa-solid fa-users me-2"></i><?= gettext("Add Group") ?></a>
+            <?php } ?>
+            <a class="btn btn-outline-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people" title="<?= gettext("List Members") ?>"><i class="fa-solid fa-list me-2"></i><?= gettext("List") ?></a>
+            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
+                <a id="deletePersonBtn" class="btn btn-outline-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>" title="<?= gettext("Delete this Record") ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete") ?></a>
+            <?php } ?>
+        </div>
+        <div class="btn-group ms-2" role="group">
+            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+                if (!$person->isUser()) { ?>
+                    <a class="btn btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>" title="<?= gettext('Make User') ?>"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Make User') ?></a>
+                <?php } else { ?>
+                    <a class="btn btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext('Edit User') ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Edit') ?></a>
+                    <a class="btn btn-outline-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>" title="<?= gettext('View User') ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
+                    <a class="btn btn-outline-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword" title="<?= gettext("Change Password") ?>"><i class="fa-solid fa-key me-2"></i><?= gettext("Password") ?></a>
+                <?php }
+            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) { ?>
+                <a class="btn btn-outline-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>" title="<?= gettext('View User') ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
+                <a class="btn btn-outline-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" title="<?= gettext("Change Password") ?>"><i class="fa-solid fa-key me-2"></i><?= gettext("Password") ?></a>
+            <?php } ?>
         </div>
 
         <div class="card">
@@ -836,7 +822,7 @@ $bOkToEdit = (
                                                         <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
                                                         <div class="btn-group">
                                                             <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
-                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown">
+                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
                                                                 <span class="caret"></span>
                                                                 <span class="sr-only">Toggle Dropdown</span>
                                                             </button>
