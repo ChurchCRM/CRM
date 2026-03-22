@@ -9,9 +9,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Login Info") ?></h3>
-                <div class="card-tools">
+                <div class="card-tools ms-auto">
                     <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-pen"></i> <?= _("Edit") ?></a>
                 </div>
             </div>
@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Api Key") ?></h3>
             </div>
             <div class="card-body">
@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("User Interface") ?></h3>
             </div>
             <div class="card-body">
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Permissions") ?></h3>
             </div>
             <div class="card-body">
@@ -85,7 +85,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Tables Settings") ?></h3>
             </div>
             <div class="card-body">

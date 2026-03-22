@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-md-8">
         <!-- general form elements -->
         <div class="card card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <?= gettext('Enter new user password. Administratively set passwords are not subject to length or complexity requirements') . '</p>' ?>
             </div>
             <!-- form start -->

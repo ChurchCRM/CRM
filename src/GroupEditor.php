@@ -50,7 +50,7 @@ require_once __DIR__ . '/Include/Header.php';
 <!-- END GROUP SPECIFIC PROPERTIES MODAL-->
 
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= (($thisGroup->isSundaySchool()) ? gettext("Special Group Settings : Sunday School Type") : gettext('Group Settings')) ?></h3>
   </div>
   <div class="card-body">
@@ -163,7 +163,7 @@ require_once __DIR__ . '/Include/Header.php';
   </div>
 </div>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Group Roles') ?>:</h3>
   </div>
   <div class="card-body">

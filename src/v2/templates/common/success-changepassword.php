@@ -35,7 +35,7 @@ if ($isForced) {
 <div class="row">
     <div class="col-md-6">
         <div class="card card-success">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Password Change Successful') ?></h3>
             </div>
             <div class="card-body">

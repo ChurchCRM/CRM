@@ -48,9 +48,9 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     <div class="col-lg-4">
         <!-- Family Photo Card -->
         <div class="card card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
@@ -96,7 +96,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Family Actions -->
         <div class="card mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-bolt"></i> <?= gettext("Actions") ?></h3>
             </div>
             <div class="card-body">
@@ -131,7 +131,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Address Card -->
         <div class="card mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
                     <span class="badge badge-success ml-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
@@ -143,7 +143,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </span>
                     <?php endif; ?>
                 </h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
                     </button>
                 </div>
@@ -186,7 +186,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Contact Info Card -->
         <div class="card card-primary mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-address-book"></i> <?= gettext("Contact Info") ?></h3>
             </div>
             <div class="card-body">
@@ -245,9 +245,9 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Properties Card -->
         <div class="card mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
                         <i class="fa-solid fa-plus-circle text-blue"></i>
@@ -305,9 +305,9 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Timeline Card -->
         <div class="card card-outline card-info collapsed-card mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                     </button>
                 </div>
@@ -383,7 +383,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             ?>
             <!-- Notes Card -->
             <div class="card card-outline card-secondary collapsed-card mb-3">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center">
                     <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
                     <div class="card-tools d-flex align-items-center">
                         <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
@@ -456,7 +456,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
         <!-- Family Members Card -->
         <div class="card card-outline card-success mb-3">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
                 <div class="card-tools d-flex align-items-center">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
@@ -565,7 +565,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext("Pledges and Payments") ?></h3>
             </div>
             <div class="card-body">

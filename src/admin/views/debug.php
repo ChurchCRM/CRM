@@ -20,7 +20,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header" id="headingInstallation">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
                     <i class="fa fa-cubes mr-2"></i><?= gettext('ChurchCRM Installation') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseInstallation" class="collapse" aria-labelledby="headingInstallation">
@@ -133,7 +133,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header" id="headingPrerequisites">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
                     <i class="fa fa-check-circle mr-2"></i><?= gettext('Application Prerequisites') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapsePrerequisites" class="collapse" aria-labelledby="collapsePrerequisites">
@@ -179,7 +179,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header <?= $localeDetected ? 'bg-success' : 'bg-warning' ?> text-white" id="headingLocaleSupport">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
                     <i class="fa fa-globe mr-2"></i><?= gettext('Locale Support') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
@@ -231,7 +231,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header" id="headingSystemConfig">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
                     <i class="fa fa-cogs mr-2"></i><?= gettext('System & Configuration') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseSystemConfig" class="collapse" aria-labelledby="headingSystemConfig">
@@ -308,7 +308,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                     <?php else: ?>
                         <i class="fa fa-exclamation-triangle text-warning ml-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
                     <?php endif; ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseTimezone" class="collapse" aria-labelledby="headingTimezone">
@@ -369,7 +369,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header" id="headingPHP">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
                     <i class="fa fa-code mr-2"></i><?= gettext('PHP Configuration') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapsePHP" class="collapse" aria-labelledby="headingPHP">
@@ -409,7 +409,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header" id="headingWebServer">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
                     <i class="fa fa-globe mr-2"></i><?= gettext('Web Server') ?>
-                    <i class="fa fa-chevron-down float-right"></i>
+                    <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseWebServer" class="collapse" aria-labelledby="headingWebServer">

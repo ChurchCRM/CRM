@@ -559,7 +559,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 1: Family Info -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Family Info') ?></h3>
         </div>
         <div class="card-body">
@@ -599,7 +599,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 2: Location & Contact Information -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Location & Contact Information') ?></h3>
         </div>
         <div class="card-body">
@@ -738,7 +738,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
     <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
         <div class="card card-info clearfix">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Envelope Info') ?></h3>
             <div class="card-body">
                 <div class="row">
@@ -759,7 +759,7 @@ require_once __DIR__ . '/Include/Header.php';
     if ($numCustomFields > 0) {
         ?>
         <div class="card card-info clearfix">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div>
             <div class="card-body">
@@ -787,7 +787,7 @@ require_once __DIR__ . '/Include/Header.php';
     <?php
     } ?>
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Family Members') ?></h3>
         </div>
         <div class="card-body">

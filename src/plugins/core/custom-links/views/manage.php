@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h4><i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Link') ?></h4>
             </div>
             <div class="card-body">
@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h4><i class="fa-solid fa-link mr-2"></i><?= gettext('Menu Links') ?></h4>
             </div>
             <div class="card-body">

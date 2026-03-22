@@ -59,7 +59,7 @@ if ($isForced) {
     <div class="col-md-8">
         <!-- general form elements -->
         <div class="card card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters in length.') ?>
             </div>
             <!-- form start -->

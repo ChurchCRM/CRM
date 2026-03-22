@@ -63,7 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Configuration Card -->
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-cog mr-2"></i><?= gettext('WebDAV Configuration') ?></h3>
     </div>
     <div class="card-body">
@@ -127,7 +127,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Test Connection Card -->
 <div class="card card-secondary">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-plug mr-2"></i><?= gettext('Test Connection') ?></h3>
     </div>
     <div class="card-body">
@@ -150,7 +150,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Manual Backup Card -->
 <div class="card card-success">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-cloud-upload-alt mr-2"></i><?= gettext('Manual Backup') ?></h3>
     </div>
     <div class="card-body">

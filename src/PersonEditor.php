@@ -592,7 +592,7 @@ require_once __DIR__ . '/Include/Header.php';
     } ?>
     <!-- Card 1: Name & Identity -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Name & Identity') ?></h3>
         </div>
         <div class="card-body">
@@ -650,7 +650,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 2: Birth & Family -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Birth & Family') ?></h3>
         </div>
         <div class="card-body">
@@ -740,7 +740,7 @@ require_once __DIR__ . '/Include/Header.php';
     <!-- Card 2: Address -->
     <?php if (!SystemConfig::getValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Address') ?></h3>
         </div>
         <div class="card-body">
@@ -832,7 +832,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 3: Contact Information -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Contact Information') ?></h3>
         </div>
         <div class="card-body">
@@ -970,7 +970,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 4: Social Media -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Social Media') ?></h3>
         </div>
         <div class="card-body">
@@ -1023,7 +1023,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <!-- Card 5: Church Membership -->
     <div class="card card-info clearfix">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Church Membership') ?></h3>
         </div>
         <div class="card-body">
@@ -1079,7 +1079,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
     <?php if ($numCustomFields > 0) { ?>
         <div class="card card-info clearfix">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div>
             <div class="card-body">

@@ -183,11 +183,11 @@ $bOkToEdit = (
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
         <div class="card card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
                     <?= $person->getFullName() ?>
                 </h3>
-                <div class="card-tools">
+                <div class="card-tools ms-auto">
                     <span class="badge badge-secondary"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
                 </div>
             </div>
@@ -264,7 +264,7 @@ $bOkToEdit = (
 
         <!-- Contact & Personal Info -->
         <div class="card card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Contact & Personal Info') ?></h3>
             </div>
             <div class="card-body">
@@ -523,7 +523,7 @@ $bOkToEdit = (
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
                         <a class="nav-link active" id="nav-item-family" href="#family" data-bs-toggle="tab">
@@ -782,10 +782,10 @@ $bOkToEdit = (
                                             <p><br /></p>
                                             <!-- Info box -->
                                             <div class="card card-info">
-                                                <div class="card-header">
+                                                <div class="card-header d-flex align-items-center">
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
-                                                    <div class="card-tools float-right">
+                                                    <div class="card-tools ms-auto">
                                                         <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
                                                     </div>
                                                 </div>
@@ -900,7 +900,7 @@ $bOkToEdit = (
 
                         <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
                             <div class="card mt-3">
-                                <div class="card-header">
+                                <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
                                         <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Property') ?>
                                     </h5>
@@ -1000,7 +1000,7 @@ $bOkToEdit = (
 
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && $rsVolunteerOpps->num_rows) : ?>
                             <div class="card mt-3">
-                                <div class="card-header">
+                                <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
                                         <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
                                     </h5>

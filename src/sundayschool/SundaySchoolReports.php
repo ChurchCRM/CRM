@@ -166,7 +166,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 
 ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Report Details')?></h3>
   </div>
   <div class="card-body">
@@ -273,7 +273,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
               </div>
           </td>
           <td width="35%">
-            <div class="col-rd-12 float-right">
+            <div class="col-rd-12 float-end">
                 <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
           </td>

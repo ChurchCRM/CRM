@@ -149,7 +149,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 ?>
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Editing') ?> <i> <?= $grp_Name ?> </i> <?= gettext('data for member') ?> <i> <?= $per_FirstName . ' ' . $per_LastName ?> </i></h3>
         </div>
         <div class="card-body">

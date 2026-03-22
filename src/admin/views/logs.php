@@ -8,7 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h4><?= gettext('Log Settings') ?></h4>
             </div>
             <div class="card-body">
@@ -39,11 +39,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h4><?= gettext('System Logs') ?></h4>
                 <p class="text-muted"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
                 <?php if (!empty($logFiles)): ?>
-                <button class="btn btn-danger float-right" id="deleteAllLogs">
+                <button class="btn btn-danger float-end" id="deleteAllLogs">
                     <i class="fa-solid fa-trash"></i> <?= gettext('Delete All Logs') ?>
                 </button>
                 <?php endif; ?>

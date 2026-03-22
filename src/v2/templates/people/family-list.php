@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card card-primary mb-3">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-filter"></i> <?= gettext('Filters') ?></h3>
     </div>
     <div class="card-body">
@@ -55,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Families') ?></h3>
     </div>
     <div class="card-body p-2">

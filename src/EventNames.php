@@ -262,10 +262,10 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
 // Construct the form
 ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Event Types') ?></h3>
     <?php if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW'): ?>
-    <div class="card-tools">
+    <div class="card-tools ms-auto">
       <form name="AddEventNames" action="EventNames.php" method="POST" class="mb-0">
         <button type="submit" name="Action" value="NEW" class="btn btn-primary btn-sm">
           <i class="fas fa-plus mr-1"></i><?= gettext('Add Event Type') ?>

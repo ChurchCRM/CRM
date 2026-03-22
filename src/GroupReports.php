@@ -20,7 +20,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Select the group you would like to report') ?>:</h3>
             </div>
             <div class="card-body">
@@ -81,7 +81,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><?= gettext('Select which information you want to include') ?></h3>
                 </div>
                 <div class="card-body">

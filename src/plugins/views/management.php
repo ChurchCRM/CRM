@@ -28,7 +28,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     <div class="card <?= $hasError ? 'card-danger' : ($isActive ? 'card-success' : 'card-secondary') ?> card-outline collapsed-card" 
          data-plugin-id="<?= $pluginId ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
                     <i class="fas fa-exclamation-triangle text-danger mr-2"></i>
@@ -50,7 +50,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <span class="badge badge-secondary ml-2"><?= gettext('Disabled') ?></span>
                 <?php endif; ?>
             </h3>
-            <div class="card-tools">
+            <div class="card-tools ms-auto">
                 <?php if ($hasHelp): ?>
                     <button type="button" class="btn btn-tool btn-plugin-help text-info" 
                             data-plugin-id="<?= $pluginId ?>"
@@ -259,7 +259,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     <div class="col-lg-4">
         <!-- Plugin Info -->
         <div class="card card-outline card-info">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
                     <i class="fas fa-info-circle mr-2"></i><?= gettext('Plugin Development') ?>
                 </h3>

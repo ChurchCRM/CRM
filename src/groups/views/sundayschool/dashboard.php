@@ -8,8 +8,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="card card-info card-outline">
-    <div class="card-header">
+<div class="card card-info card-outline mb-3">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Sunday School Overview') ?></h3>
     </div>
     <div class="card-body">
@@ -125,10 +125,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-primary card-outline">
-    <div class="card-header">
+<div class="card card-primary card-outline mb-3">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
-        <div class="card-tools float-right">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>
@@ -162,10 +162,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-warning card-outline">
-    <div class="card-header">
+<div class="card card-warning card-outline mb-3">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
-        <div class="card-tools float-right">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>

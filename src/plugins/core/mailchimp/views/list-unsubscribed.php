@@ -30,11 +30,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-12">
         <div class="card card-outline card-primary">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
                     <i class="fa-solid fa-user-plus mr-2"></i><?= gettext('CRM Members Not Subscribed') ?>
                 </h3>
-                <div class="card-tools">
+                <div class="card-tools ms-auto">
                     <span class="badge badge-primary" id="count-badge">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                     </span>

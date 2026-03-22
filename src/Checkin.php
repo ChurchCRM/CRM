@@ -129,7 +129,7 @@ if ($EventID > 0) {
     <div class="row">
         <div class="col-12">
             <div class="card card-primary">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><?= gettext('Select Event for Check-In') ?></h3>
                 </div>
                 <div class="card-body">
@@ -323,7 +323,7 @@ if (
         <div class="row">
             <div class="col-12">
                 <div class="card card-primary">
-                    <div class="card-header">
+                    <div class="card-header d-flex align-items-center">
                         <h3 class="card-title"><?= $formTitle ?></h3>
                     </div>
 

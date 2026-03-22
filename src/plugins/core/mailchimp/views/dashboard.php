@@ -116,11 +116,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php foreach ($mailChimpLists as $list) : ?>
             <div class="col-lg-6 col-md-12 mb-4">
                 <div class="card card-outline card-primary h-100">
-                    <div class="card-header">
+                    <div class="card-header d-flex align-items-center">
                         <h3 class="card-title">
                             <i class="fa-solid fa-list mr-2"></i><?= htmlspecialchars($list['name'], ENT_QUOTES, 'UTF-8') ?>
                         </h3>
-                        <div class="card-tools">
+                        <div class="card-tools ms-auto">
                             <span class="badge badge-info"><?= number_format($list['stats']['member_count'] ?? 0) ?> <?= gettext('subscribers') ?></span>
                         </div>
                     </div>

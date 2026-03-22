@@ -259,9 +259,9 @@ $families = FamilyQuery::create()
 
         <!--Datafile section -->
         <div class="card card-default collapsed-box">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
                 </div><!-- /.card-tools -->
             <div class="card-body">

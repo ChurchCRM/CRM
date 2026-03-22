@@ -60,7 +60,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
 <!-- Default box -->
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('People Functions') ?></h3>
     </div>
     <div class="card-body">
@@ -201,10 +201,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div><!-- /.row -->
 <div class="row">
     <div class="col-lg-6">
-        <div class="card card-info">
-            <div class="card-header">
+        <div class="card card-info mb-3">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-file-lines"></i> <?= gettext('Reports') ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
@@ -231,10 +231,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="card card-primary">
-            <div class="card-header">
+        <div class="card card-primary mb-3">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('People Classification') ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
@@ -266,10 +266,10 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="card card-primary">
-            <div class="card-header">
+        <div class="card card-primary mb-3">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"> <i class="fa-solid fa-people-group"></i> <?= gettext('Family Roles') ?></h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                     <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
                 </div>
@@ -311,7 +311,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
     <div class="col-lg-6">
         <div class="card card-info">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
             </div>
             <div class="card-body">
@@ -349,7 +349,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             </div>
         </div>
         <div class="card card-info">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-birthday-cake"></i> <?= gettext('Age Histogram') ?></h3>
             </div>
             <div class="card-body" style="height: 400px">

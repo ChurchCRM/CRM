@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <i class="fa-solid fa-images mr-2"></i>
             <?= gettext('Photo Directory') ?>
         </h3>
-        <div class="card-tools">
+        <div class="card-tools ms-auto">
             <span class="badge badge-light">
                 <?= sprintf(ngettext('%d person', '%d people', $totalPeople), $totalPeople) ?>
             </span>

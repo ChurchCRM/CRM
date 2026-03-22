@@ -301,7 +301,7 @@ function DoQuery()
 </div>
 
 <div class="card card-info">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <div class="card-title">Query</div>
     </div>
     <div class="card-body">

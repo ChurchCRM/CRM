@@ -13,7 +13,7 @@ $isOnboarding = $isOnboarding ?? false;
 <?php if ($isOnboarding): ?>
 <!-- Onboarding Welcome Card -->
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-circle-check mr-2"></i><?= gettext('Welcome Back!') ?></h3>
     </div>
     <div class="card-body">
@@ -35,7 +35,7 @@ $isOnboarding = $isOnboarding ?? false;
 <?php else: ?>
 <!-- Warning Card -->
 <div class="card card-danger">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-exclamation-triangle mr-2"></i><?= gettext('Important Warning') ?></h3>
     </div>
     <div class="card-body">
@@ -59,7 +59,7 @@ $isOnboarding = $isOnboarding ?? false;
 
 <!-- Restore Form Card -->
 <div class="card card-warning">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Restore Database') ?></h3>
     </div>
     <div class="card-body">
@@ -97,7 +97,7 @@ $isOnboarding = $isOnboarding ?? false;
 
 <!-- Restore Status Card -->
 <div class="card" id="statusCard">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-tasks mr-2"></i><?= gettext('Restore Status') ?></h3>
     </div>
     <div class="card-body">

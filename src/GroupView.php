@@ -117,7 +117,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
 
 <div class="card card-info card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
     <div class="card-body">
@@ -218,7 +218,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 </div>
 
 <div class="card card-primary card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-list-check"></i> <?= gettext('Group Properties') ?></h3>
     </div>
     <div class="card-body">
@@ -390,7 +390,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 </div>
 
 <div class="card card-success card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Group Members') ?></h3>
     </div>
     <div class="card-body">

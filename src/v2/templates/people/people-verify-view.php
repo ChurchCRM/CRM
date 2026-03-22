@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Functions') ?></h3>
     </div>
     <div class="card-body">
@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Self Verify") ?></h3>
             </div>
             <div class="card-body">
@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
             </div>
             <div class="card-body">

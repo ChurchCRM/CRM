@@ -14,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <h1 class="page-header"><?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong></h1>
 
 <div class="card card-info card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-bars"></i> <?= gettext('Sunday School Class Functions') ?></h3>
     </div>
     <div class="card-body">
@@ -55,9 +55,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="card card-info card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Class Overview') ?></h3>
-        <div class="card-tools float-right">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="<?= gettext('Toggle overview') ?>">
                 <i class="fa-solid fa-chevron-up"></i>
             </button>
@@ -80,7 +80,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- Birthday Chart -->
         <div class="col-12 col-lg-6">
             <div class="card card-primary card-outline">
-                <div class="card-header">
+                <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('Birthdays by Month') ?></h3>
                 </div>
                 <div class="card-body">
@@ -120,7 +120,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="card card-success card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-person-chalkboard"></i> <?= gettext('Teachers') ?></h3>
     </div>
     <div class="card-body row">
@@ -150,7 +150,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <div class="card card-primary card-outline">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title">
             <i class="fa-solid fa-users"></i> <?= gettext('Students') ?>
             <span class="badge badge-primary"><?= count($thisClassChildren) ?></span>
@@ -159,7 +159,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <h4 class="birthday-filter d-none alert alert-info mb-3">
             <?= gettext('Showing students with birthdays in') ?> <span class="month font-weight-bold"></span>
-            <i class="icon fa-solid fa-times float-right birthday-filter-clear" title="<?= gettext('Clear filter') ?>"></i>
+            <i class="icon fa-solid fa-times float-end birthday-filter-clear" title="<?= gettext('Clear filter') ?>"></i>
         </h4>
         <div class="table-responsive">
             <table id="sundayschool" class="table table-striped table-hover data-table w-100">
@@ -226,7 +226,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
-                                <button class="btn btn-xs btn-outline-primary float-right ms-2"
+                                <button class="btn btn-xs btn-outline-primary float-end ms-2"
                                         data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"
                                         title="<?= gettext('View Full Details') ?>">
                                     <i class="fa-solid fa-info-circle"></i>

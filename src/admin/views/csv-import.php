@@ -7,7 +7,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Info Card -->
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-file-csv mr-2"></i><?= gettext('Import from Spreadsheet') ?></h3>
     </div>
     <div class="card-body">
@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Step 1: Upload Card -->
 <div class="card card-warning" id="upload-card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Step 1 — Upload CSV File') ?></h3>
     </div>
     <div class="card-body">
@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Step 3: Import Summary -->
 <div class="card card-success d-none" id="summary-card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-circle-check mr-2"></i><?= gettext('Import Complete') ?></h3>
     </div>
     <div class="card-body">
@@ -120,7 +120,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Step 2: Column Mapping -->
 <div class="card card-primary d-none" id="mapping-card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-table-columns mr-2"></i><?= gettext('Step 2 — Map Columns') ?></h3>
     </div>
     <div class="card-body">

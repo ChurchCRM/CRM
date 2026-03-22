@@ -16,9 +16,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Best Practices Card -->
 <div class="card card-info">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-lightbulb mr-2"></i><?= gettext('Backup Best Practices') ?></h3>
-        <div class="card-tools">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fa-solid fa-minus"></i>
             </button>
@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Backup Form Card -->
 <div class="card card-primary">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-database mr-2"></i><?= gettext('Create Backup') ?></h3>
     </div>
     <div class="card-body">

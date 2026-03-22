@@ -91,9 +91,9 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-list mr-2"></i><?= _('User Management') ?></h3>
-        <div class="card-tools">
+        <div class="card-tools ms-auto">
             <span class="badge badge-info"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>

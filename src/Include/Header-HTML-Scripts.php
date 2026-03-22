@@ -13,4 +13,7 @@ use ChurchCRM\dto\SystemURLs;
 <!-- Core ChurchCRM bundle (includes jQuery) -->
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.js') ?>"></script>
 
+<!-- Card Widget Handler for Bootstrap 5 -->
+<script src="<?= SystemURLs::assetVersioned('/skin/js/card-widgets.js') ?>"></script>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>

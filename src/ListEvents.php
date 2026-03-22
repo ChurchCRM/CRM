@@ -80,7 +80,7 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
 
 ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Filter Events') ?></h3>
   </div>
   <div class="card-body">
@@ -192,7 +192,7 @@ foreach ($allMonths as $mVal) {
     $monthName = date('F', mktime(0, 0, 0, (int) $mVal, 1, (int) $EventYear));
     ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title">
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>

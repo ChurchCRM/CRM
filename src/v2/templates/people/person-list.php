@@ -153,7 +153,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 <?php endif; ?>
 
 <div class="card card-primary mb-3">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-filter"></i> <span id="filters-title"></span></h3>
     </div>
 
@@ -204,7 +204,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 </div>
 
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
     </div>
     <div class="card-body p-2">

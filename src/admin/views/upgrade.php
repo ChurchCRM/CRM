@@ -194,7 +194,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <!-- Upgrade Wizard Stepper -->
         <div class="card<?= $isUpdateAvailable ? ' show' : '' ?>" id="upgrade-wizard-card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title mb-0"><?= gettext('System Upgrade Wizard') ?></h3>
             </div>
             <div class="card-body p-0">
@@ -287,7 +287,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                                                     data-bs-target="#collapseMissingFiles" aria-expanded="false" 
                                                                                     aria-controls="collapseMissingFiles">
                                                         <i class="fa fa-times-circle mr-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
-                                                        <i class="fa fa-chevron-down float-right"></i>
+                                                        <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
                                             </div>
@@ -324,7 +324,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                             data-target="#collapseModifiedFiles" aria-expanded="false" 
                                                             aria-controls="collapseModifiedFiles">
                                                         <i class="fa fa-edit mr-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
-                                                        <i class="fa fa-chevron-down float-right"></i>
+                                                        <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
                                             </div>
@@ -374,7 +374,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     data-target="#collapseOrphanedFiles" aria-expanded="false" 
                                                     aria-controls="collapseOrphanedFiles">
                                                 <i class="fa fa-trash mr-2"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)
-                                                <i class="fa fa-chevron-down float-right ml-2"></i>
+                                                <i class="fa fa-chevron-down float-end ml-2"></i>
                                             </button>
                                         </h6>
                                     </div>
@@ -466,7 +466,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             
                             <!-- Update Package Details (shown after download) -->
                             <div id="updateDetails" style="display: none;" class="card mb-3">
-                                <div class="card-header">
+                                <div class="card-header d-flex align-items-center">
                                     <h5><?= gettext('Update Package Details') ?></h5>
                                 </div>
                                 <div class="card-body">

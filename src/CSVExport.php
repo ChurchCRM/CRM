@@ -41,7 +41,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
           <h3 class="card-title"><?= gettext('Field Selection') ?></h3>
         </div>
         <div class="card-body">
@@ -175,7 +175,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
-          <div class="card-header">
+          <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Custom Field Selection') ?></h3>
           </div>
           <div class="card-body">
@@ -228,15 +228,15 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
           <h3 class="card-title"><?= gettext('Filters') ?></h3>
         </div>
         <div class="card-body">
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -254,9 +254,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -278,9 +278,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -302,9 +302,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -321,9 +321,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -344,9 +344,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -360,9 +360,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Birth Date') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -376,9 +376,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Anniversary Date') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -392,9 +392,9 @@ require_once __DIR__ . '/Include/Header.php';
 
           <div class="col-lg-4">
             <div class="card card-danger collapsed-box">
-              <div class="card-header">
+              <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Date Entered') ?>:</h3>
-                <div class="card-tools float-right">
+                <div class="card-tools ms-auto">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
                   </button>
                 </div>
@@ -412,7 +412,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
           <h3 class="card-title"><?= gettext('Output Method:') ?></h3>
         </div>
         <div class="card-body">
@@ -435,7 +435,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
-        <div class="card-header">
+        <div class="card-header d-flex align-items-center">
           <h3 class="card-title"><?= gettext('ChMeetings Export') ?></h3>
         </div>
         <div class="card-body">

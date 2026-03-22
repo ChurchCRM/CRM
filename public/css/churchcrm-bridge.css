@@ -172,3 +172,17 @@ body {
     height: 3.5rem;
   }
 }
+
+/* --- Card Widget States (Bootstrap 5 Collapse/Remove) -------------------- */
+.card.collapsed-card .card-body,
+.card.collapsed-card .card-footer {
+  display: none !important;
+}
+
+.card {
+  transition: opacity 0.3s ease;
+}
+
+.card.fade {
+  opacity: 1;
+}
