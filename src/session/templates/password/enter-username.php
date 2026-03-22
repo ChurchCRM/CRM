@@ -8,41 +8,184 @@ $sPageTitle = gettext("Password Reset");
 require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 ?>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6 col-lg-4">
-                <div class="text-center my-4">
-            <a href="<?= SystemURLs::getRootPath() ?>/"><?= ChurchMetaData::getChurchName() ?></a>
-                </div>
+<style>
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h4 class="card-title text-center"><?= gettext('Reset your password') ?></h4>
-                        <p class="text-center text-muted mb-4"><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
+  .forgot-password-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+  }
 
-                        <form id="resetPasswordForm">
-                            <div class="form-group">
-                                <label for="username" class="sr-only"><?= gettext('Login Name') ?></label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
-                                    </div>
-                                    <input id="username" name="username" type="text" class="form-control" placeholder="<?= gettext('Login Name') ?>" required autofocus aria-label="<?= gettext('Login Name') ?>">
-                                </div>
-                            </div>
+  .forgot-password-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    padding: 60px 50px;
+    max-width: 440px;
+    width: 100%;
+    text-align: center;
+  }
 
-                            <button type="button" id="resetPassword" class="btn btn-primary w-100"><?= gettext('Send Reset Email'); ?></button>
+  .forgot-password-card-logo {
+    margin-bottom: 30px;
+  }
 
-                            <div class="text-center mt-3">
-                                <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+  .forgot-password-card-logo img {
+    max-width: 200px;
+    height: auto;
+  }
 
-            </div>
-        </div>
+  .forgot-password-card h2 {
+    color: #333;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .forgot-password-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  }
+
+  .form-group input::placeholder {
+    color: #999;
+  }
+
+  .btn-reset {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-bottom: 20px;
+  }
+
+  .btn-reset:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  }
+
+  .btn-reset:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .form-footer {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+  }
+
+  .form-footer a {
+    color: #667eea;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-weight: 500;
+  }
+
+  .form-footer a:hover {
+    color: #764ba2;
+    text-decoration: underline;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    .forgot-password-card {
+      padding: 40px 30px;
+    }
+
+    .forgot-password-card h2 {
+      font-size: 24px;
+    }
+
+    .forgot-password-card-logo img {
+      max-width: 150px;
+    }
+
+    body {
+      padding: 20px;
+    }
+  }
+</style>
+
+<div class="forgot-password-container">
+  <div class="forgot-password-card">
+    <div class="forgot-password-card-logo">
+      <a href="<?= SystemURLs::getRootPath() ?>/">
+        <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="<?= ChurchMetaData::getChurchName() ?>">
+      </a>
     </div>
+
+    <h2><?= gettext('Reset your password') ?></h2>
+    <p><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
+
+    <form id="resetPasswordForm">
+      <div class="form-group">
+        <label for="username"><?= gettext('Login Name') ?></label>
+        <input 
+          id="username" 
+          name="username" 
+          type="text" 
+          placeholder="<?= gettext('Enter your login name') ?>" 
+          required 
+          autofocus 
+          aria-label="<?= gettext('Login Name') ?>">
+      </div>
+
+      <button type="button" id="resetPassword" class="btn-reset"><?= gettext('Send Reset Email') ?></button>
+
+      <div class="form-footer">
+        <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>
+      </div>
+    </form>
+  </div>
+</div>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $(document).ready(function() {
             var init = function() {

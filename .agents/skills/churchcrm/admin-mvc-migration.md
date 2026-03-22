@@ -280,6 +280,149 @@ Guided manual-entry intro explaining the Family → Person recommended order. Ke
 
 **Important:** `GET /get-started` (landing) lives in `dashboard.php`. `routes/get-started.php` only registers `/manual` — do not add a `$group->get('', ...)` handler there or Slim will silently register the same route twice (first wins).
 
+## Authentication & Login Pages — Modern Tabler Styling <!-- learned: 2026-03-21 -->
+
+**When redesigning public-facing authentication pages (login, password reset, 2FA, etc.):**
+
+### Approach: Inline CSS Only
+
+✅ **DO:** Use `<style>` blocks with **inline CSS** directly in the template file
+- Keeps form pages self-contained and isolated
+- Authentication pages are simple (no complex interactions)
+- Avoids polluting global bridge stylesheets
+- Easy to maintain and iterate (all code in one file)
+
+❌ **DON'T:** Add CSS to `_tabler-bridge.scss` or other global files
+- Bridge is for systemic Tabler adjustments across entire app
+- Auth pages are standalone and don't need global presence
+- Keep infrastructure CSS separate from page-specific CSS
+
+### Architecture
+
+**File:** `src/session/templates/[page].php`
+- Single PHP file with embedded `<style>` block
+- Use CSS classes for structure (`.login-hero`, `.btn-sign-in`, etc.)
+- Leverage Tabler colors: `#667eea` (primary), `#764ba2` (dark)
+- Gradient backgrounds: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+
+### Pattern Example
+
+```php
+<?php
+use ChurchCRM\dto\SystemURLs;
+$sPageTitle = gettext('Login');
+require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
+?>
+
+<style>
+  body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .login-wrapper {
+    display: flex;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background: white;
+  }
+
+  .login-hero {
+    flex: 1;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 60px 40px;
+    color: white;
+  }
+
+  .btn-sign-in {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-sign-in:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .login-wrapper {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="login-container">
+  <div class="login-wrapper">
+    <!-- Hero and form sections -->
+  </div>
+</div>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php'; ?>
+```
+
+### Key CSS Patterns for Auth Pages
+
+| Element | Pattern | Notes |
+|---------|---------|-------|
+| **Background** | `linear-gradient(135deg, #667eea 0%, #764ba2 100%)` | Full-screen gradient |
+| **Card** | `border-radius: 12px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);` | Modern elevation |
+| **Primary Button** | Gradient fill + hover lift (`transform: translateY(-2px)`) | Focus action |
+| **Secondary Button** | White bg + border + hover background | Alternative action |
+| **Focus State** | `box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);` | Accessibility |
+| **Responsive** | `@media (max-width: 768px)` with `flex-direction: column` | Stack on mobile |
+| **Text Colors** | White on gradient (`rgba(255, 255, 255, 0.x)`) | high opacity for text, lower for borders |
+
+### Reusable CSS Utilities for Auth Forms
+
+Once pattern is established, these can be safely copied to new auth pages:
+
+```css
+/* Form group structure */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #333;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+```
+
+### Testing & Validation
+
+- Test responsive on mobile (480px, 768px breakpoints)
+- Verify all form inputs have focus states
+- Check button hover effects
+- Ensure logo and images don't have unwanted filters
+- Run `npm run build && npm run lint` before commit
+
 ## Files
 
 **Views:** `src/admin/views/`, `src/finance/views/`

@@ -21,6 +21,21 @@ require_once __DIR__ . '/Header-Security.php';
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
+    <style>
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      body > *:not(.auth-footer) {
+        flex: 1;
+      }
+    </style>
+
 </head>
 <body class="antialiased">
 
