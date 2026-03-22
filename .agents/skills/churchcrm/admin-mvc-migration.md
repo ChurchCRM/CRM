@@ -280,7 +280,26 @@ Guided manual-entry intro explaining the Family → Person recommended order. Ke
 
 **Important:** `GET /get-started` (landing) lives in `dashboard.php`. `routes/get-started.php` only registers `/manual` — do not add a `$group->get('', ...)` handler there or Slim will silently register the same route twice (first wins).
 
-## Authentication & Login Pages — Modern Tabler Styling <!-- learned: 2026-03-21 -->
+## Tabler Bridge File — TEMPORARY DO NOT USE FOR UX FIXES <!-- learned: 2026-03-21 -->
+
+**CRITICAL:** `src/skin/scss/_tabler-bridge.scss` is a **temporary bridge** that should be removed once entire app is native Tabler.
+
+❌ **DON'T** add CSS to bridge file during UX fixes or feature work
+- Bridge file is meant to be temporary (eventually deleted)
+- UX fixes should use **native Tabler classes** in HTML, not custom CSS
+- Adding custom CSS to bridge perpetuates technical debt
+
+✅ **DO** solve UX problems using:
+- **Native Tabler classes** (`.navbar-brand`, sizing utilities, spacing classes)
+- **Inline CSS** in specific templates (for auth pages)
+- **Layout adjustments** in HTML structure (flexbox, grid, alignment)
+- **Tabler variables** (colors, spacing, breakpoints) if available
+
+**Pattern:** If native Tabler doesn't have a class you need, add it inline to that specific template, NOT to the bridge file.
+
+---
+
+## Authentication & Login Pages — Modern Tabler Styling
 
 **When redesigning public-facing authentication pages (login, password reset, 2FA, etc.):**
 
@@ -293,9 +312,9 @@ Guided manual-entry intro explaining the Family → Person recommended order. Ke
 - Easy to maintain and iterate (all code in one file)
 
 ❌ **DON'T:** Add CSS to `_tabler-bridge.scss` or other global files
-- Bridge is for systemic Tabler adjustments across entire app
-- Auth pages are standalone and don't need global presence
-- Keep infrastructure CSS separate from page-specific CSS
+- Bridge is temporary and should be deleted once app is fully native Tabler
+- Page-specific styling should stay in templates, not shared infrastructure
+- Keep infrastructure CSS confined to bridge-only systemic changes
 
 ### Architecture
 

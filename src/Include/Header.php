@@ -35,6 +35,20 @@ $MenuFirst = 1;
 </head>
 
 <body class="antialiased">
+<style>
+  /* Sidebar badge contrast — ensure text is readable */
+  .navbar-vertical .badge {
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  /* Ensure light badges have dark text for contrast */
+  .navbar-vertical .badge.bg-warning,
+  .navbar-vertical .badge.bg-info,
+  .navbar-vertical .badge.bg-light {
+    color: #333 !important;
+  }
+</style>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -150,11 +164,12 @@ $MenuFirst = 1;
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
              alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: gettext('ChurchCRM')) ?>"
-             class="navbar-brand-image">
-        <span class="navbar-brand-text ps-2">
+             class="navbar-brand-image"
+             style="height: 42px; width: auto;">
+        <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= ChurchMetaData::getChurchName() ?: gettext('ChurchCRM') ?>
         </span>
       </a>
@@ -323,7 +338,7 @@ $MenuFirst = 1;
           <form action="#" method="get" class="navbar-form w-100 d-flex align-items-center">
             <div class="input-group w-100">
               <select class="form-control multiSearch"></select>
-              <button class="btn btn-outline-secondary navbar-search-btn" type="button">
+              <button class="btn btn-outline-secondary input-group-text" type="button">
                 <i class="ti ti-search"></i>
               </button>
             </div>
