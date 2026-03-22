@@ -8,119 +8,130 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="card border border-info mb-3">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Overview') ?></h3>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-secondary">
-                                <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-chalkboard"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Classes') ?></div>
-                            <div class="h2 m-0"><?= $classes ?></div>
-                        </div>
+<!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-chalkboard"></i>
+                        </span>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-success">
-                                <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-person-chalkboard"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Teachers') ?></div>
-                            <div class="h2 m-0"><?= $teachers ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-primary">
-                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-children"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Students') ?></div>
-                            <div class="h2 m-0"><?= $kids ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-info">
-                                <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-people-roof"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Families') ?></div>
-                            <div class="h2 m-0"><?= $families ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-primary">
-                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-child"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Boys') ?></div>
-                            <div class="h2 m-0"><?= $maleKids ?></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card-sm">
-                    <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-danger">
-                                <div class="stat-icon bg-danger text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                    <i class="fa-solid fa-child-dress"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Girls') ?></div>
-                            <div class="h2 m-0"><?= $femaleKids ?></div>
-                        </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $classes ?></div>
+                        <div class="text-muted"><?= gettext('Classes') ?></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="btn-group" role="group">
-                    <?php if ($canManageGroups) { ?>
-                        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add-class" title="<?= gettext('Add New Class') ?>">
-                            <i class="fa-solid fa-plus me-2"></i><?= gettext('Add New Class') ?>
-                        </button>
-                    <?php } ?>
-                    <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary" title="<?= gettext('Generate class lists and attendance sheets') ?>">
-                        <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Reports') ?>
-                    </a>
-                    <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info" title="<?= gettext('Export All Classes, Kids, and Parent to CSV file') ?>">
-                        <i class="fa-solid fa-file-csv me-2"></i><?= gettext('Export to CSV') ?>
-                    </a>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-person-chalkboard"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $teachers ?></div>
+                        <div class="text-muted"><?= gettext('Teachers') ?></div>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-children"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $kids ?></div>
+                        <div class="text-muted"><?= gettext('Students') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-info text-white avatar rounded-circle">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $families ?></div>
+                        <div class="text-muted"><?= gettext('Families') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-azure text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $maleKids ?></div>
+                        <div class="text-muted"><?= gettext('Boys') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-danger text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child-dress"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $femaleKids ?></div>
+                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="card mb-3">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="d-flex flex-wrap" style="gap:.5rem;">
+            <?php if ($canManageGroups) { ?>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-class">
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New Class') ?>
+                </button>
+            <?php } ?>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
+                <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Reports') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info">
+                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Export to CSV') ?>
+            </a>
         </div>
     </div>
 </div>

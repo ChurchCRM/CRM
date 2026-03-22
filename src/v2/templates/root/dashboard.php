@@ -7,84 +7,97 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<!-- Overview Card -->
-<div class="card mb-3">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Overview') ?></h3>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-secondary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-people-roof"></i>
-                            </div>
-                        </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Families') ?></div>
-                        <div class="h2 m-0" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
+<!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-people-roof"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
+                        <div class="text-muted"><?= gettext('Families') ?></div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-user"></i>
-                            </div>
-                        </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('People') ?></div>
-                        <div class="h2 m-0" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-users"></i>
-                            </div>
-                        </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Groups') ?></div>
-                        <div class="h2 m-0" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
-                    </div>
-                </div>
-            </div>
-            <?php if ($sundaySchoolEnabled) { ?>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-warning text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-child"></i>
-                            </div>
-                        </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Sunday School') ?></div>
-                        <div class="h2 m-0" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-            <?php if ($eventsEnabled) { ?>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-regular fa-calendar-check"></i>
-                            </div>
-                        </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Check-ins') ?></div>
-                        <div class="h2 m-0"><?= $dashboardCounts["events"] ?></div>
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
         </div>
     </div>
+    <div class="col-sm-6 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-user"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
+                        <div class="text-muted"><?= gettext('People') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
+                        <div class="text-muted"><?= gettext('Groups') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if ($sundaySchoolEnabled) { ?>
+    <div class="col-sm-6 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-warning text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
+                        <div class="text-muted"><?= gettext('Sunday School') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    <?php if ($eventsEnabled) { ?>
+    <div class="col-sm-6 col-lg">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-info text-white avatar rounded-circle">
+                            <i class="fa-regular fa-calendar-check"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="font-weight-medium"><?= $dashboardCounts["events"] ?></div>
+                        <div class="text-muted"><?= gettext('Check-ins') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
 </div>
 
 <div class="row">
