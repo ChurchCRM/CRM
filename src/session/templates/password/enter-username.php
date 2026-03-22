@@ -8,161 +8,18 @@ $sPageTitle = gettext("Password Reset");
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
-<style>
-  body {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .forgot-password-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 20px;
-  }
-
-  .forgot-password-card {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    padding: 60px 50px;
-    max-width: 440px;
-    width: 100%;
-    text-align: center;
-  }
-
-  .forgot-password-card-logo {
-    margin-bottom: 30px;
-  }
-
-  .forgot-password-card-logo img {
-    max-width: 200px;
-    height: auto;
-  }
-
-  .forgot-password-card h2 {
-    color: #333;
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 12px;
-  }
-
-  .forgot-password-card p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 30px;
-  }
-
-  .mb-3 {
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  .mb-3 label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 8px;
-  }
-
-  .mb-3 input {
-    width: 100%;
-    padding: 12px 16px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    font-family: inherit;
-  }
-
-  .mb-3 input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-  }
-
-  .mb-3 input::placeholder {
-    color: #999;
-  }
-
-  .btn-reset {
-    width: 100%;
-    padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 15px;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-bottom: 20px;
-  }
-
-  .btn-reset:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-  }
-
-  .btn-reset:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
-  }
-
-  .form-footer {
-    text-align: center;
-    font-size: 14px;
-    color: #666;
-  }
-
-  .form-footer a {
-    color: #667eea;
-    text-decoration: none;
-    transition: color 0.2s;
-    font-weight: 500;
-  }
-
-  .form-footer a:hover {
-    color: #764ba2;
-    text-decoration: underline;
-  }
-
-  /* Responsive */
-  @media (max-width: 480px) {
-    .forgot-password-card {
-      padding: 40px 30px;
-    }
-
-    .forgot-password-card h2 {
-      font-size: 24px;
-    }
-
-    .forgot-password-card-logo img {
-      max-width: 150px;
-    }
-
-    body {
-      padding: 20px;
-    }
-  }
-</style>
 
 <div class="forgot-password-container">
   <div class="forgot-password-card">
+    <!-- Header with Logo and Church Name -->
     <div class="forgot-password-card-logo">
-      <a href="<?= SystemURLs::getRootPath() ?>/">
-        <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="<?= ChurchMetaData::getChurchName() ?>">
-      </a>
+      <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
     </div>
+    <h2><?= ChurchMetaData::getChurchName() ?></h2>
+    <p class="login-header-tagline"><?= gettext('Account Recovery') ?></p>
 
-    <h2><?= gettext('Reset your password') ?></h2>
+    <!-- Form Title -->
+    <h3><i class="fa-solid fa-key me-2"></i><?= gettext('Reset your password') ?></h3>
     <p><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
 
     <form id="resetPasswordForm">

@@ -37,7 +37,7 @@ require_once __DIR__ . '/Header-Security.php';
     </style>
 
 </head>
-<body class="antialiased">
+<body class="antialiased page-auth">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles

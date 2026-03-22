@@ -6,51 +6,6 @@ use ChurchCRM\Service\SystemService;
 
 ?>
 
-<style>
-  .auth-footer {
-    margin-top: auto;
-    padding: 40px 20px 20px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 13px;
-  }
-
-  .auth-footer a {
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-
-  .auth-footer a:hover {
-    color: white;
-    text-decoration: underline;
-  }
-
-  .auth-footer-social {
-    margin-top: 15px;
-  }
-
-  .auth-footer-social a {
-    display: inline-block;
-    margin: 0 8px;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.15);
-    transition: all 0.2s;
-  }
-
-  .auth-footer-social a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateY(-2px);
-  }
-
-  .auth-footer-social i {
-    font-size: 14px;
-  }
-</style>
-
 <div class="auth-footer">
   <div>
     <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> 
