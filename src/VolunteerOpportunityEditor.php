@@ -452,7 +452,7 @@ if (isset($_POST['SaveChanges'])) {
                 </div>
 
                 <div class="d-flex mt-3 justify-content-center">
-                    <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
+                    <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
                         <i class="fa-solid fa-save"></i>
                         <?= gettext('Save Changes') ?>
                     </button>

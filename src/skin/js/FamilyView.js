@@ -262,7 +262,7 @@ function initializeFamilyView() {
                                 <h5 class="modal-title" id="verifyUrlLabel">
                                     <i class="fa-solid fa-link me-2"></i>${i18next.t("Verification URL")}
                                 </h5>
-                                <button type="button" class="btn-close btn-close-white" data-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="input-group mb-3">
@@ -276,7 +276,7 @@ function initializeFamilyView() {
                                 </p>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">${i18next.t("Close")}</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${i18next.t("Close")}</button>
                                 <a href="${data.url}" target="_blank" class="btn btn-primary">
                                     <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>${i18next.t("Open in New Tab")}
                                 </a>

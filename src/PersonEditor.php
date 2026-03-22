@@ -585,7 +585,7 @@ require_once __DIR__ . '/Include/Header.php';
         ?>
         <div class="alert alert-danger alert-dismissable">
             <i class="fa-solid fa-ban"></i>
-            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
         </div>
         <?php

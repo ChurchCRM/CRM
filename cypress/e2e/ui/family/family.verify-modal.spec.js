@@ -10,13 +10,13 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     it("should display verify button in actions", () => {
         // The Verify button should exist in the Actions section
         cy.get('.card-title').contains('Actions').should('be.visible');
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').should('be.visible');
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').should('be.visible');
         cy.contains('button, a', 'Verify').should('be.visible');
     });
 
     it("should open confirmation modal when verify button clicked", () => {
         // Click the Verify button
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').click();
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
         
         // Modal should be visible
         cy.get("#confirm-verify").should("be.visible");
@@ -24,7 +24,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display email list in modal body", () => {
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').click();
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
         cy.get("#confirm-verify").should("be.visible");
         
         // Should show instruction text about emailing
@@ -32,7 +32,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display URL button for verification", () => {
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').click();
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
         cy.get("#confirm-verify").should("be.visible");
         
         // URL button should always be present
@@ -40,7 +40,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display all verification action buttons", () => {
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').click();
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
         cy.get("#confirm-verify").should("be.visible");
         
         // Check for verification action buttons

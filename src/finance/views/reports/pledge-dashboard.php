@@ -116,9 +116,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
                     <i class="fa-solid fa-info-circle mr-2"></i>
                     <?= gettext('No pledges found for the selected fiscal year') ?>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php else: ?>
                 <div class="card finance-card shadow-sm border-0">

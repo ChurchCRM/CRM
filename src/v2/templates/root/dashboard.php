@@ -156,22 +156,22 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     <div class="card-header p-0 pt-1 border-bottom-0">
         <ul class="nav nav-tabs" id="people-tabs" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="latest-fam-tab" data-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
+                <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
                     <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest Families') ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="updated-fam-tab" data-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
+                <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
                     <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated Families') ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="latest-ppl-tab" data-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
+                <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="#latest-ppl-pane" aria-selected="false">
                     <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest People') ?>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="updated-ppl-tab" data-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
+                <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
                     <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated People') ?>
                 </a>
             </li>

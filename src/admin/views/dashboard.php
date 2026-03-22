@@ -46,9 +46,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     <?php if ($hasURLError): ?>
     <!-- Configuration URL Error Alert -->
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <div class="d-flex align-items-start">
             <div class="mr-3 mt-1">
                 <i class="fa-solid fa-exclamation-circle fa-3x"></i>
@@ -77,8 +75,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix:') ?></strong></h6>
                         <ol class="mb-2 pl-3 text-dark">
                             <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
-                            <li class="mb-2"><?= gettext('Navigate to your ChurchCRM installation directory') ?></li>
-                            <li class="mb-2"><?= gettext('Open this file in a text editor:') ?> <code class="text-primary">src/Include/Config.php</code></li>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <li class="mb-2"><?= gettext('Find the line:') ?> <code>$URL[0] = '...';</code></li>
                             <li class="mb-2"><?= gettext('Update it to a valid URL that:') ?>
                                 <ul class="mt-1">
@@ -100,8 +97,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <small class="text-muted"><?= gettext('Local development:') ?></small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
                         </div>
-                        <div class="mb-2">
-                            <small class="text-muted"><?= gettext('Subdirectory installation:') ?></small><br>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
@@ -132,10 +128,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 echo implode(' · ', $warningLinks);
                 ?>
             </div>
-        </div>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
 
@@ -156,10 +150,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 echo implode(' · ', $taskLinks);
                 ?>
             </div>
-        </div>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
 

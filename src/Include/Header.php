@@ -142,7 +142,7 @@ $MenuFirst = 1;
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-lg navbar-dark" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-lg" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -167,9 +167,14 @@ $MenuFirst = 1;
   </aside>
 
   <!-- ============================================================ -->
-  <!-- Topbar (Tabler horizontal navbar with glassmorphism)          -->
+  <!-- Page wrapper                                                  -->
   <!-- ============================================================ -->
-  <header class="navbar navbar-expand-md navbar-light d-none d-lg-flex d-print-none sticky-top navbar-glass">
+  <div class="page-wrapper">
+
+  <!-- ============================================================ -->
+  <!-- Topbar                                                        -->
+  <!-- ============================================================ -->
+  <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none sticky-top">
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"
@@ -329,10 +334,6 @@ $MenuFirst = 1;
     </div><!-- /.container-xl -->
   </header>
 
-  <!-- ============================================================ -->
-  <!-- Page wrapper                                                  -->
-  <!-- ============================================================ -->
-  <div class="page-wrapper">
     <div class="page-header d-print-none">
       <div class="container-xl">
         <div class="row g-2 align-items-center">

@@ -18,7 +18,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingInstallation">
-                <h4 data-toggle="collapse" data-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
                     <i class="fa fa-cubes mr-2"></i><?= gettext('ChurchCRM Installation') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -131,7 +131,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingPrerequisites">
-                <h4 data-toggle="collapse" data-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
                     <i class="fa fa-check-circle mr-2"></i><?= gettext('Application Prerequisites') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -177,7 +177,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
             <div class="card-header <?= $localeDetected ? 'bg-success' : 'bg-warning' ?> text-white" id="headingLocaleSupport">
-                <h4 data-toggle="collapse" data-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
                     <i class="fa fa-globe mr-2"></i><?= gettext('Locale Support') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -229,7 +229,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingSystemConfig">
-                <h4 data-toggle="collapse" data-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
                     <i class="fa fa-cogs mr-2"></i><?= gettext('System & Configuration') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -301,7 +301,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingTimezone">
-                <h4 data-toggle="collapse" data-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
                     <i class="fa fa-clock mr-2"></i><?= gettext('Timezone Information') ?>
                     <?php if ($serverConfigMismatch): ?>
                         <i class="fa fa-exclamation-triangle text-warning ml-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
@@ -367,7 +367,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingPHP">
-                <h4 data-toggle="collapse" data-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
                     <i class="fa fa-code mr-2"></i><?= gettext('PHP Configuration') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -407,7 +407,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     <div class="col-md-4">
         <div class="card">
             <div class="card-header" id="headingWebServer">
-                <h4 data-toggle="collapse" data-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
+                <h4 data-bs-toggle="collapse" data-bs-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
                     <i class="fa fa-globe mr-2"></i><?= gettext('Web Server') ?>
                     <i class="fa fa-chevron-down float-right"></i>
                 </h4>
@@ -561,7 +561,7 @@ EOD;
         });
 
         // Handle collapse icon toggles
-        $('.card-header h4[data-toggle="collapse"]').on('click', function() {
+        $('.card-header h4[data-bs-toggle="collapse"]').on('click', function() {
             var icon = $(this).find('i.fa');
             // Small delay to let Bootstrap update aria-expanded
             setTimeout(function() {
@@ -575,7 +575,7 @@ EOD;
         });
 
         // Initialize icons for expanded cards
-        $('.card-header h4[data-toggle="collapse"]').each(function() {
+        $('.card-header h4[data-bs-toggle="collapse"]').each(function() {
             var icon = $(this).find('i.fa');
             var isExpanded = $(this).attr('aria-expanded') === 'true';
             if (isExpanded) {

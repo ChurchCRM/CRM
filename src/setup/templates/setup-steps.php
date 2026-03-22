@@ -68,7 +68,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Server Environment (Always visible) -->
                     <div class="check-card">
-                        <div class="check-header" data-toggle="collapse" data-target="#server-env-details">
+                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#server-env-details">
                             <div class="check-title">
                                 <i class="fa-solid fa-server check-icon"></i>
                                 <span>Server Environment</span>
@@ -81,18 +81,18 @@ require_once __DIR__ . '/header.php';
                         </div>
                         <div id="server-env-details" class="collapse check-details">
                             <table class="table table-sm mb-0">
-                                <tr><td><i class="fa-brands fa-php text-primary mr-2"></i>PHP Version</td><td class="text-right"><strong><?= $phpVersion ?></strong></td></tr>
-                                <tr><td><i class="fa-solid fa-memory text-success mr-2"></i>Memory Limit</td><td class="text-right"><strong><?= $memoryLimit ?></strong></td></tr>
-                                <tr><td><i class="fa-solid fa-upload text-info mr-2"></i>Upload Max Size</td><td class="text-right"><strong><?= $uploadMax ?></strong></td></tr>
-                                <tr><td><i class="fa-solid fa-file-import text-warning mr-2"></i>POST Max Size</td><td class="text-right"><strong><?= $postMax ?></strong></td></tr>
-                                <tr><td><i class="fa-solid fa-clock text-secondary mr-2"></i>Max Execution Time</td><td class="text-right"><strong><?= $maxExecution ?>s</strong></td></tr>
+                                <tr><td><i class="fa-brands fa-php text-primary me-2"></i>PHP Version</td><td class="text-end"><strong><?= $phpVersion ?></strong></td></tr>
+                                <tr><td><i class="fa-solid fa-memory text-success me-2"></i>Memory Limit</td><td class="text-end"><strong><?= $memoryLimit ?></strong></td></tr>
+                                <tr><td><i class="fa-solid fa-upload text-info me-2"></i>Upload Max Size</td><td class="text-end"><strong><?= $uploadMax ?></strong></td></tr>
+                                <tr><td><i class="fa-solid fa-file-import text-warning me-2"></i>POST Max Size</td><td class="text-end"><strong><?= $postMax ?></strong></td></tr>
+                                <tr><td><i class="fa-solid fa-clock text-secondary me-2"></i>Max Execution Time</td><td class="text-end"><strong><?= $maxExecution ?>s</strong></td></tr>
                             </table>
                         </div>
                     </div>
 
                     <!-- PHP Extensions -->
                     <div class="check-card">
-                        <div class="check-header" data-toggle="collapse" data-target="#php-extensions-collapse">
+                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#php-extensions-collapse">
                             <div class="check-title">
                                 <i class="fa-brands fa-php check-icon"></i>
                                 <span>PHP Extensions</span>
@@ -108,7 +108,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- File Permissions -->
                     <div class="check-card">
-                        <div class="check-header" data-toggle="collapse" data-target="#filesystem-collapse">
+                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#filesystem-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-folder-open check-icon"></i>
                                 <span>File Permissions</span>
@@ -360,9 +360,7 @@ require_once __DIR__ . '/header.php';
                 <h5 class="modal-title" id="forceInstallModalLabel">
                     <i class="fa-solid fa-exclamation-triangle mr-2"></i>Proceed Anyway?
                 </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p>Some system requirements were not met. Proceeding may cause:</p>
@@ -374,7 +372,7 @@ require_once __DIR__ . '/header.php';
                 <p class="mb-0 font-weight-bold">We recommend fixing the issues before continuing.</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Go Back</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>
                 <button type="button" class="btn btn-warning" id="confirm-force-install">
                     Continue Anyway
                 </button>

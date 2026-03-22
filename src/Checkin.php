@@ -101,9 +101,7 @@ if ($EventID > 0) {
 <div class="alert alert-success alert-dismissible fade show" role="alert">
     <i class="fa-solid fa-check-circle mr-2"></i>
     <strong><?= $iAddedCount ?></strong> <?= ngettext('person', 'people', $iAddedCount) ?> <?= gettext('added to this event') ?>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php endif; ?>
 

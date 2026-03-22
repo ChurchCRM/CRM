@@ -65,9 +65,7 @@ function checkBrowserLocale() {
     const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
 
     alert.innerHTML = `
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <strong>${i18next.t("Browser language preference detected")}</strong>
       <div>${i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
       <div class="mt-2">

@@ -129,7 +129,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <?php if (count($modifiedFiles) > 0): ?>
                         <h6 class="mb-2">
-                            <a href="#collapseModifiedFiles" data-toggle="collapse" class="text-warning text-decoration-none">
+                            <a href="#collapseModifiedFiles" data-bs-toggle="collapse" class="text-warning text-decoration-none">
                                 <i class="fa fa-edit mr-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
                                 <i class="fa fa-chevron-down ml-2"></i>
                             </a>
@@ -283,9 +283,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card mt-3">
                                             <div class="card-header" id="headingMissingFiles">
                                                 <h6 class="mb-0">
-                                                    <button class="btn btn-link text-danger collapsed" type="button" data-toggle="collapse" 
-                                                            data-target="#collapseMissingFiles" aria-expanded="false" 
-                                                            aria-controls="collapseMissingFiles">
+                                                    <button class="btn btn-link text-danger collapsed" type="button" data-bs-toggle="collapse" 
+                                                                                    data-bs-target="#collapseMissingFiles" aria-expanded="false" 
+                                                                                    aria-controls="collapseMissingFiles">
                                                         <i class="fa fa-times-circle mr-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
                                                         <i class="fa fa-chevron-down float-right"></i>
                                                     </button>

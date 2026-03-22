@@ -33,8 +33,8 @@ $hasOrphanedFiles = $orphanedCount > 0;
                         <button type="button" class="btn btn-danger btn-lg" id="deleteAllOrphanedFiles">
                             <i class="fa fa-trash mr-2"></i><?= gettext('Delete All Orphaned Files') ?>
                         </button>
-                        <button type="button" class="btn btn-secondary ml-2" id="refreshOrphanedFiles">
-                            <i class="fa fa-sync mr-2"></i><?= gettext('Refresh List') ?>
+                        <button type="button" class="btn btn-secondary ms-2" id="refreshOrphanedFiles">
+                            <i class="fa fa-sync me-2"></i><?= gettext('Refresh List') ?>
                         </button>
                     </div>
 
@@ -94,19 +94,17 @@ $hasOrphanedFiles = $orphanedCount > 0;
                 <h5 class="modal-title" id="deleteConfirmModalLabel">
                     <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Confirm Deletion') ?>
                 </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p><?= gettext('Are you sure you want to delete all orphaned files?') ?></p>
                 <p class="text-danger"><strong><?= gettext('This action cannot be undone.') ?></strong></p>
                 <p class="text-muted"><?= sprintf(gettext('%d files will be permanently deleted.'), $orphanedCount) ?></p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
                 <button type="button" class="btn btn-danger" id="confirmDeleteAll">
-                    <i class="fa fa-trash mr-2"></i><?= gettext('Delete All Files') ?>
+                    <i class="fa fa-trash me-2"></i><?= gettext('Delete All Files') ?>
                 </button>
             </div>
         </div>
@@ -117,11 +115,9 @@ $hasOrphanedFiles = $orphanedCount > 0;
 <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" id="resultsModalHeader">
+                <div class="modal-header" id="resultsModalHeader">
                 <h5 class="modal-title" id="resultsModalLabel"><?= gettext('Deletion Results') ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="resultsModalBody">
                 <!-- Results will be populated by JavaScript -->
@@ -183,8 +179,8 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
     function deleteOrphanedFiles() {
         // Show loading state
-        $('#deleteAllOrphanedFiles').prop('disabled', true).html(
-            '<i class="fa fa-spinner fa-spin mr-2"></i>' + i18next.t('Deleting...')
+            $('#deleteAllOrphanedFiles').prop('disabled', true).html(
+            '<i class="fa fa-spinner fa-spin me-2"></i>' + i18next.t('Deleting...')
         );
 
         window.CRM.AdminAPIRequest({
@@ -207,7 +203,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
         })
         .always(function() {
             $('#deleteAllOrphanedFiles').prop('disabled', false).html(
-                '<i class="fa fa-trash mr-2"></i>' + i18next.t('Delete All Orphaned Files')
+                '<i class="fa fa-trash me-2"></i>' + i18next.t('Delete All Orphaned Files')
             );
         });
     }

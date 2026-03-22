@@ -34,7 +34,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <h4 class="modal-title" id="gsproperties-label"></h4>
       </div>
       <div class="modal-body">
@@ -169,7 +169,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-body">
     <div class="alert alert-info alert-dismissable">
       <i class="fa-solid fa-info"></i>
-      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <strong></strong><?= gettext('Group role name changes are saved as soon as the box loses focus')?>
     </div>
       <div class="table-responsive">

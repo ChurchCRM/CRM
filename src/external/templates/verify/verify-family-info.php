@@ -197,7 +197,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
 <!-- Floating Action Buttons -->
 <div class="fab-container">
-    <button type="button" class="fab fab-success" id="confirmVerifyBtn" data-toggle="modal" data-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
+    <button type="button" class="fab fab-success" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
         <i class="fa-solid fa-check"></i>
         <span class="fab-label"><?= gettext('Confirm') ?></span>
     </button>
@@ -209,9 +209,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
                 <h5 class="modal-title" id="verify-label"><?= gettext("Confirm Family Information") ?></h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body" id="confirm-modal-collect">
@@ -255,7 +253,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="onlineVerifyCancelBtn" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                <button type="button" class="btn btn-secondary" id="onlineVerifyCancelBtn" data-bs-dismiss="modal"><?= gettext("Cancel") ?></button>
                 <button type="button" class="btn btn-success" id="onlineVerifyBtn">
                     <i class="fa-solid fa-paper-plane mr-2"></i><?= gettext("Submit Verification") ?>
                 </button>

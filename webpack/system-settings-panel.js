@@ -34,7 +34,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                    ${checked ? "checked" : ""}>
                             <label class="custom-control-label" for="${setting.name}">
                                 ${setting.label}
-                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ml-1" data-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
+                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
                             </label>
                         </div>
                     </div>
@@ -407,7 +407,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Initialize Bootstrap tooltips on help icons
       if (window.$ && $.fn.tooltip) {
-        $(this.container).find('[data-toggle="tooltip"]').tooltip();
+        $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
       }
 
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");

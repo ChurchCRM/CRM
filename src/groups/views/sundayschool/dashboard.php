@@ -191,7 +191,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title" id="add-class-label">
                         <?= gettext('Add') . ' ' . gettext('Sunday School') . ' ' . gettext('Class') ?>
                     </h4>
@@ -203,7 +203,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
                     <button type="button" id="addNewClassBtn" class="btn btn-primary"
                             data-dismiss="modal"><?= gettext('Add') ?></button>
                 </div>

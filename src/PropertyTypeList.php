@@ -89,7 +89,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <th><?= gettext('Class') ?></th>
                             <th class="text-center">
                                 <?= gettext('In Use') ?>
-                                <i class="fa-solid fa-circle-info text-muted ml-1" title="<?= gettext('Number of records using this property type') ?>" data-toggle="tooltip"></i>
+                                <i class="fa-solid fa-circle-info text-muted ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
                             </th>
                             <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                             <th class="text-right"><?= gettext('Actions') ?></th>
@@ -137,7 +137,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php endif; ?>
                             </td>
                             <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
-                            <td class="text-right">
+                            <td class="text-end">
                                 <div class="btn-group btn-group-sm" role="group">
                                     <a href="PropertyTypeEditor.php?PropertyTypeID=<?= $prt_ID ?>" class="btn btn-info" title="<?= gettext('Edit') ?>">
                                         <i class="fa-solid fa-edit"></i>
@@ -178,7 +178,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function () {
-        $('[data-toggle="tooltip"]').tooltip();
+        $('[data-bs-toggle="tooltip"]').tooltip();
     });
 </script>
 

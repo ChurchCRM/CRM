@@ -89,14 +89,14 @@ require_once __DIR__ . '/Include/Header.php';
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         <h4 class="modal-title"><?= gettext('Edit JSON Settings') ?></h4>
       </div>
       <div class="modal-body" id="JSONSettingsDiv">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary jsonSettingsClose">Save</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -251,7 +251,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function() {
-    $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+    $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
       var target = $(e.target).attr("href") // activated tab
       $(target + " .choiceSelectBox").select2({
         width: 'resolve'

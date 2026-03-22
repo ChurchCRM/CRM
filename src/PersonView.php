@@ -204,7 +204,7 @@ $bOkToEdit = (
                                 <i class="fa-solid fa-camera"></i>
                             </a>
                             <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                            <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <?php endif; ?>
@@ -540,40 +540,40 @@ $bOkToEdit = (
             <div class="card-header">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" id="nav-item-family" href="#family" data-toggle="tab">
+                        <a class="nav-link active" id="nav-item-family" href="#family" data-bs-toggle="tab">
                             <i class="fa-solid fa-people-roof mr-1"></i><?= gettext('Family') ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-timeline" href="#timeline" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-timeline" href="#timeline" data-bs-toggle="tab">
                             <i class="fa-solid fa-clock mr-1"></i><?= gettext('Timeline') ?>
                         </a>
                     </li>
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-notes" href="#notes" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-notes" href="#notes" data-bs-toggle="tab">
                             <i class="fa-solid fa-sticky-note mr-1"></i><?= gettext('Notes') ?>
                         </a>
                     </li>
                     <?php } ?>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-groups" href="#groups" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-groups" href="#groups" data-bs-toggle="tab">
                             <i class="fa-solid fa-users mr-1"></i><?= gettext('Groups') ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
                             <i class="fa-solid fa-hands-helping mr-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="nav-item-properties" href="#properties" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-properties" href="#properties" data-bs-toggle="tab">
                             <i class="fa-solid fa-tags mr-1"></i><?= gettext('Properties') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
-                        <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-toggle="tab">
+                        <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
                             <i class="fa-brands fa-mailchimp mr-1"></i><?= gettext('Mailchimp') ?>
                         </a>
                     </li>
@@ -1080,7 +1080,7 @@ $bOkToEdit = (
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         <h4 class="modal-title" id="delete-Image-label"><?= gettext('Confirm Delete') ?></h4>
                     </div>
 
@@ -1091,7 +1091,7 @@ $bOkToEdit = (
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext("Cancel") ?></button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext("Cancel") ?></button>
                         <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
                     </div>
                 </div>

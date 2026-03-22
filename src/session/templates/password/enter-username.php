@@ -31,7 +31,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                 </div>
                             </div>
 
-                            <button type="button" id="resetPassword" class="btn btn-primary btn-block"><?= gettext('Send Reset Email'); ?></button>
+                            <button type="button" id="resetPassword" class="btn btn-primary w-100"><?= gettext('Send Reset Email'); ?></button>
 
                             <div class="text-center mt-3">
                                 <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>

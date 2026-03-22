@@ -19,14 +19,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-body row">
         <div class="col-12 col-md-3">
-            <a class="btn btn-app bg-success btn-block" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>">
+                <a class="btn btn-app bg-success w-100" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus fa-3x"></i><br>
                 <?= gettext('Add Students') ?>
             </a>
         </div>
 
         <div class="col-12 col-md-3">
-            <a class="btn btn-app bg-primary btn-block" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
+            <a class="btn btn-app bg-primary w-100" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
                 <i class="fa-solid fa-pen fa-3x"></i><br>
                 <?= gettext('Edit this Class') ?>
             </a>
@@ -35,8 +35,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if ($canEmail) { ?>
             <div class="col-12 col-md-3">
                 <div class="dropdown">
-                    <button class="btn btn-app bg-teal btn-block dropdown-toggle" type="button"
-                            id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        <button class="btn btn-app bg-teal w-100 dropdown-toggle" type="button"
+                                id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="<?= gettext('Send email with recipients in To field') ?>">
                         <i class="fa-solid fa-paper-plane fa-3x"></i><br>
                         <?= gettext('Email (To)') ?>
@@ -50,8 +50,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <div class="col-12 col-md-3">
                 <div class="dropdown">
-                    <button class="btn btn-app bg-navy btn-block dropdown-toggle" type="button"
-                            id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    <button class="btn btn-app bg-navy w-100 dropdown-toggle" type="button"
+                            id="emailClassBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                             title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
                         <i class="fa-solid fa-user-secret fa-3x"></i><br>
                         <?= gettext('Email (BCC)') ?>
@@ -238,7 +238,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
-                                <button class="btn btn-xs btn-outline-primary float-right ml-2"
+                                <button class="btn btn-xs btn-outline-primary float-right ms-2"
                                         data-toggle="modal" data-target="#studentModal-<?= $child['kidId'] ?>"
                                         title="<?= gettext('View Full Details') ?>">
                                     <i class="fa-solid fa-info-circle"></i>
@@ -264,7 +264,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fa-solid fa-user"></i>
                                 <?= htmlspecialchars($child['firstName'] . ' ' . $child['LastName']) ?>
                             </h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
@@ -351,7 +351,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>" class="btn btn-primary">
                                 <i class="fa-solid fa-user"></i> <?= gettext('View Profile') ?>
                             </a>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
                         </div>
                     </div>
                 </div>

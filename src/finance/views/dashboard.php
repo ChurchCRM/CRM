@@ -136,7 +136,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <div class="row">
                         <!-- Create Deposit -->
                         <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-lg btn-outline-success btn-block py-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-lg btn-outline-success w-100 py-3">
                                 <i class="fa-solid fa-plus-circle fa-2x mb-2 d-block"></i>
                                 <?= gettext('Create Deposit') ?>
                             </a>
@@ -144,7 +144,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         
                         <!-- Add Pledge -->
                         <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-lg btn-outline-warning btn-block py-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-lg btn-outline-warning w-100 py-3">
                                 <i class="fa-solid fa-file-signature fa-2x mb-2 d-block"></i>
                                 <?= gettext('Add Pledge') ?>
                             </a>
@@ -153,12 +153,12 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <!-- Add Payment -->
                         <div class="col-md-3 mb-3">
                             <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-lg btn-outline-primary btn-block py-3">
+                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-lg btn-outline-primary w-100 py-3">
                                 <i class="fa-solid fa-hand-holding-dollar fa-2x mb-2 d-block"></i>
                                 <?= gettext('Add Payment') ?>
                             </a>
                             <?php else: ?>
-                            <button type="button" class="btn btn-lg btn-outline-secondary btn-block py-3" disabled title="<?= gettext('Create or open a deposit first') ?>">
+                            <button type="button" class="btn btn-lg btn-outline-secondary w-100 py-3" disabled title="<?= gettext('Create or open a deposit first') ?>">
                                 <i class="fa-solid fa-hand-holding-dollar fa-2x mb-2 d-block"></i>
                                 <?= gettext('Add Payment') ?>
                             </button>

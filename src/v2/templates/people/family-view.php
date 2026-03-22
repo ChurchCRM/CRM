@@ -102,25 +102,25 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-body">
                 <div class="row">
                     <div class="col-6 mb-2">
-                        <a class="btn btn-secondary btn-block" href="#" data-toggle="modal" data-target="#confirm-verify">
+                        <a class="btn btn-secondary w-100" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
                             <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
                         </a>
                     </div>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-secondary btn-block AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                        <a class="btn btn-secondary w-100 AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                             <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
                         </a>
                     </div>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-warning btn-block" id="activateDeactivate">
+                        <a class="btn btn-warning w-100" id="activateDeactivate">
                             <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
                         </a>
                     </div>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                     <div class="col-6 mb-2">
-                        <a class="btn btn-danger btn-block" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
+                        <a class="btn btn-danger w-100" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
                             <i class="fa-solid fa-trash-can"></i><br><?= gettext('Delete') ?>
                         </a>
                     </div>
@@ -623,7 +623,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="modal-title" id="delete-Image-label"><?= gettext("Confirm Delete") ?></h4>
             </div>
 
@@ -635,7 +635,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
-                        data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                    data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
                 <button class="btn btn-danger danger" id="deletePhoto"><?= gettext("Delete") ?></button>
 
             </div>
@@ -706,7 +706,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 <h4 class="modal-title"
                     id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
             </div>

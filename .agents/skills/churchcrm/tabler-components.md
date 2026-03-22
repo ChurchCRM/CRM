@@ -368,31 +368,80 @@ $('#myTable').DataTable({
 
 ## 5. Navigation
 
+### Correct Page Layout Structure (Tabler vertical nav) <!-- learned: 2026-03-21 -->
+
+The `<header>` (topbar) must be **inside** `<div class="page-wrapper">`, not before it:
+
+```html
+<div class="page">
+  <aside class="navbar navbar-vertical navbar-expand-lg">...</aside>
+  <div class="page-wrapper">          <!-- ← page-wrapper wraps BOTH topbar and content -->
+    <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none sticky-top">...</header>
+    <div class="page-header">...</div>
+    <div class="page-body">...</div>
+    <footer>...</footer>
+  </div>
+</div>
+```
+
+**Do NOT use `navbar-dark` or `navbar-glass`** on the sidebar `<aside>` — the transparent vertical variant is the default with no extra class.
+
 ### Sidebar Nav Item
 
 ```html
 <li class="nav-item">
   <a class="nav-link" href="/people">
-    <span class="nav-link-icon"><i class="ti ti-users"></i></span>
+    <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-user"></i></span>
     <span class="nav-link-title">People</span>
   </a>
 </li>
 ```
 
-### Sidebar Nav with Submenu (Dropdown)
+### Sidebar Collapsible Submenu (Tabler 1.4.0) <!-- learned: 2026-03-21 -->
+
+**Critical**: Tabler 1.4.0 uses Bootstrap collapse for sidebar submenus — NOT dropdown.
+Use `data-bs-toggle="collapse"` with a `<div class="collapse">` target.
+
+**Do NOT add `navbar-collapse` to the submenu div** — inside `.navbar-expand-lg`, Bootstrap's CSS forces `.navbar-collapse` to `display:flex` on large screens, making ALL submenus always visible regardless of the `collapse` class.
+
+Sub-items use `ps-3` (Bootstrap padding class) directly on the inner `<ul>` for indentation — no custom CSS needed.
+
+`nav-link-arrow` does NOT exist in Tabler 1.4.0 — use a real FA icon with CSS rotation.
 
 ```html
-<li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-     data-bs-auto-close="false">
-    <span class="nav-link-icon"><i class="ti ti-box"></i></span>
-    <span class="nav-link-title">Admin</span>
+<!-- Parent (collapsible folder) -->
+<li class="nav-item">
+  <a class="nav-link" href="#menu-1" data-bs-toggle="collapse"
+     role="button" aria-expanded="false" aria-controls="menu-1">
+    <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-users"></i></span>
+    <span class="nav-link-title">Groups</span>
+    <span class="nav-link-arrow"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
   </a>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="/admin/settings">Settings</a>
-    <a class="dropdown-item" href="/admin/users">Users</a>
+  <div class="collapse" id="menu-1">         <!-- ← ONLY "collapse", not "navbar-collapse" -->
+    <ul class="navbar-nav ps-3">             <!-- ← ps-3 inlines indentation, no custom CSS -->
+      <li class="nav-item">
+        <a class="nav-link" href="/groups/dashboard">
+          <span class="nav-link-icon d-md-none d-lg-inline-block"><i class="fa fa-list"></i></span>
+          <span class="nav-link-title">List Groups</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </li>
+```
+
+Required CSS for the chevron (add to your custom SCSS, not the bridge):
+```scss
+.navbar-vertical .nav-link {
+  .nav-link-title { flex: 1; }
+  .nav-link-arrow {
+    display: inline-flex; align-items: center;
+    padding-left: 0.25rem; flex-shrink: 0;
+    opacity: 0.4; font-size: 0.65rem;
+    transition: transform 0.2s ease;
+  }
+  &[aria-expanded="true"] .nav-link-arrow { transform: rotate(180deg); opacity: 0.7; }
+}
 ```
 
 ### Breadcrumbs

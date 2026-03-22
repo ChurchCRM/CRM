@@ -20,7 +20,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             </p>
 
             <div class="alert alert-info d-flex" role="alert">
-                <div class="mr-3">
+                <div class="me-3">
                     <i class="fa fa-mobile-alt" aria-hidden="true"></i>
                 </div>
                 <div>
@@ -47,8 +47,8 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">
-                            <i class="fa-solid fa-right-to-bracket mr-2"></i><?= gettext('Verify & Sign In') ?>
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fa-solid fa-right-to-bracket me-2"></i><?= gettext('Verify & Sign In') ?>
                         </button>
                     </div>
                 </div>

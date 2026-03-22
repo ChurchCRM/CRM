@@ -130,7 +130,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
                         <div class="form-group mt-4 mb-0">
                             <button type="button" class="btn btn-primary btn-lg" id="family-info-next">
-                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ml-2"></i>
+                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
@@ -151,7 +151,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                 <div class="card-header member-card-header-clickable">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center flex-grow-1">
-                                            <button type="button" class="btn btn-link member-toggle-btn p-0 mr-2">
+                                            <button type="button" class="btn btn-link member-toggle-btn p-0 me-2">
                                                 <i class="fa-solid fa-chevron-down"></i>
                                             </button>
                                             <h5 class="mb-0">
@@ -271,11 +271,11 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="form-group mt-4 mb-0">
-                            <button type="button" class="btn btn-secondary btn-lg mr-2" id="members-previous">
+                            <button type="button" class="btn btn-secondary btn-lg me-2" id="members-previous">
                                 <i class="fa-solid fa-arrow-left mr-2"></i><?= gettext('Previous') ?>
                             </button>
                             <button type="button" class="btn btn-primary btn-lg" id="members-next">
-                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ml-2"></i>
+                                <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
                             </button>
                         </div>
                     </div>
@@ -377,8 +377,8 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="form-group mt-4 mb-0">
-                            <button type="button" class="btn btn-secondary btn-lg mr-2" id="review-previous">
-                                <i class="fa-solid fa-arrow-left mr-2"></i><?= gettext('Previous') ?>
+                            <button type="button" class="btn btn-secondary btn-lg me-2" id="review-previous">
+                                <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
                             <button type="button" class="btn btn-success btn-lg" id="submit-registration">
                                 <i class="fa-solid fa-check-circle mr-2"></i><?= gettext('Submit Registration') ?>

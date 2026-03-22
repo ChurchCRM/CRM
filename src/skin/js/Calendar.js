@@ -467,7 +467,7 @@ function getCalendarFilterElement(calendar, type, parent) {
     calendar.BackgroundColor +
     '">' +
     '<h4 class="card-title">' +
-    '<a data-toggle="collapse" data-parent="#' +
+    '<a data-bs-toggle="collapse" data-bs-parent="#' +
     parent +
     '" href="#' +
     boxId +

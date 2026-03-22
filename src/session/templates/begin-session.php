@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary w-100">Sign In</button>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -63,7 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) { ?>
                 <div class="mt-3 pt-2 border-top">
                     <p class="text-muted small mb-2"><?= gettext('New to') ?> <?= ChurchMetaData::getChurchName() ?>?</p>
-                    <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="btn btn-outline-primary btn-block"><?= gettext('Register a New Family'); ?></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="btn btn-outline-primary w-100"><?= gettext('Register a New Family'); ?></a>
                 </div>
             <?php } ?>
         </div>

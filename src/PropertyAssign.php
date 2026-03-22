@@ -179,7 +179,7 @@ require_once __DIR__ . '/Include/Header.php';
 
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="<?php echo ($sAction === 'add') ? gettext('Assign') : gettext('Update') ?>" name="Submit">
-            <a href="<?= $sBackPage ?>" class="btn btn-secondary ml-2"><?= gettext('Cancel') ?></a>
+            <a href="<?= $sBackPage ?>" class="btn btn-secondary ms-2"><?= gettext('Cancel') ?></a>
         </div>
 
     </form>

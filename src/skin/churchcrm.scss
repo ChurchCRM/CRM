@@ -43,7 +43,6 @@
 @include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/images");
 @include meta.load-css("scss/shortConfig");
-@include meta.load-css("scss/leftNav");
 @include meta.load-css("scss/imageOverlay");
 @include meta.load-css("scss/maps");
 @include meta.load-css("scss/SystemNotifications");
@@ -56,7 +55,7 @@
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/finance");
 
-// Tabler bridge — must be last to override AdminLTE color classes
+// Tabler custom styles — color overrides, DataTables/Select2 skins, FAB buttons
 @include meta.load-css("scss/_tabler-bridge");
 
 html,

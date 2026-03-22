@@ -36,7 +36,7 @@ require_once __DIR__ . '/Include/Header.php';
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this pledge record?') ?></p>
     <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
-        <input type="submit" class="btn btn-secondary ml-2" value="<?= gettext('Cancel') ?>" name="Cancel">
+        <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">
     </form>
 </div>
 <?php
