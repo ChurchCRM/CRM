@@ -23,7 +23,7 @@ $simpleGenderStats = $dashboardStats['simpleGenderStats'];
 $ageGroupStats = $dashboardStats['ageGroupStats'];
 $familyRoleStats = $dashboardStats['familyRoleStats'];
 
-$sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
+$sSQL ="SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName FROM person_per
           LEFT JOIN family_fam ON per_fam_ID = family_fam.fam_ID
           INNER JOIN list_lst on lst_ID=1 AND per_cls_ID = lst_OptionID
           WHERE fam_DateDeactivated is  null
@@ -43,30 +43,30 @@ while (list($per_Email, $fam_Email, $virt_RoleName) = mysqli_fetch_row($rsEmailL
         if (!stristr($sEmailLink, $sEmail)) {
             $sEmailLink .= $sEmail .= $sMailtoDelimiter;
             if (!array_key_exists($virt_RoleName, $roleEmails)) {
-                $roleEmails[$virt_RoleName] = "";
+                $roleEmails[$virt_RoleName] ="";
             }
             $roleEmails[$virt_RoleName] .= $sEmail;
         }
     }
 }
 
-$selfRegColor = "bg-red";
-$selfRegText = "Disabled";
+$selfRegColor ="bg-red";
+$selfRegText ="Disabled";
 if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
-    $selfRegColor = "bg-green";
-    $selfRegText = "Enabled";
+    $selfRegColor ="bg-green";
+    $selfRegText ="Enabled";
 }
 ?>
 
 <!-- Overview Card -->
-<div class="card card-info card-outline mb-3">
+<div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-people-group"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-secondary">
@@ -81,7 +81,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-success">
@@ -97,7 +97,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             </div>
             <?php if (SystemConfig::getValue('bEnabledSundaySchool')) { ?>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-warning">
@@ -113,7 +113,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             </div>
             <?php } ?>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-primary">
@@ -148,7 +148,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { // Does user have permission to email groups
                             // Display link
                             ?>
-                            <div class="dropdown d-inline-block">
+                            <div class="btn-group" role="group">
                                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="emailAllDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email to all people') ?>">
                                     <i class="fa-solid fa-mail-bulk me-2"></i><?= gettext('Email All') ?>
                                 </button>
@@ -157,8 +157,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                                     <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                                 </div>
                             </div>
-                            <div class="dropdown d-inline-block">
-                                <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailAllBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email with hidden recipients') ?>">
+                            <div class="btn-group" role="group">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="emailAllBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email with hidden recipients') ?>">
                                     <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="emailAllBccDropdown">
@@ -178,7 +178,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
 <div class="row">
     <div class="col-lg-6">
-        <div class="card card-info mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-file-lines"></i> <?= gettext('Reports') ?></h3>
                 <div class="card-tools ms-auto">
@@ -208,7 +208,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="card card-primary mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('People Classification') ?></h3>
                 <div class="card-tools ms-auto">
@@ -243,7 +243,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div>
 <div class="row">
     <div class="col-lg-6">
-        <div class="card card-primary mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"> <i class="fa-solid fa-people-group"></i> <?= gettext('Family Roles') ?></h3>
                 <div class="card-tools ms-auto">
@@ -287,7 +287,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
 
     <div class="col-lg-6">
-        <div class="card card-info mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
                 <div class="card-tools ms-auto">
@@ -300,8 +300,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                     <thead class="table-light">
                         <tr>
                             <th><?= gettext('Gender') ?></th>
-                            <th class="text-right"><?= gettext('Count') ?></th>
-                            <th class="text-right"><?= gettext('Percentage') ?></th>
+                            <th class="text-end"><?= gettext('Count') ?></th>
+                            <th class="text-end"><?= gettext('Percentage') ?></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -313,8 +313,8 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr>
                             <td><?= gettext($gender) ?></td>
-                            <td class="text-right"><strong><?= $count ?></strong></td>
-                            <td class="text-right"><?= $percentage ?>%</td>
+                            <td class="text-end"><strong><?= $count ?></strong></td>
+                            <td class="text-end"><?= $percentage ?>%</td>
                         </tr>
                         <?php
                             endif;
@@ -322,14 +322,14 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                         ?>
                         <tr class="table-light">
                             <td><strong><?= gettext('Total') ?></strong></td>
-                            <td class="text-right"><strong><?= $totalGender ?></strong></td>
-                            <td class="text-right"><strong>100%</strong></td>
+                            <td class="text-end"><strong><?= $totalGender ?></strong></td>
+                            <td class="text-end"><strong>100%</strong></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="card card-info mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-birthday-cake"></i> <?= gettext('Age Histogram') ?></h3>
                 <div class="card-tools ms-auto">
@@ -369,7 +369,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             },
             series: [
                 {
-                    name: "<?= gettext('Count') ?>",
+                    name:"<?= gettext('Count') ?>",
                     data: ageGroupValues
                 }
             ],
@@ -378,7 +378,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             },
             yaxis: {
                 title: {
-                    text: "<?= gettext('Count') ?>"
+                    text:"<?= gettext('Count') ?>"
                 },
                 forceNiceScale: true
             },

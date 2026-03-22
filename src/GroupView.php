@@ -32,11 +32,11 @@ if ($thisGroup->getType() > 0) {
 }
 
 // Get the Properties assigned to this Group
-$sSQL = 'SELECT * FROM record2property_r2p LEFT JOIN property_pro ON r2p_pro_ID = pro_ID LEFT JOIN propertytype_prt ON pro_prt_ID = prt_ID WHERE pro_Class = "g" AND r2p_record_ID = ' . $iGroupID . ' ORDER BY prt_Name, pro_Name';
+$sSQL = 'SELECT * FROM record2property_r2p LEFT JOIN property_pro ON r2p_pro_ID = pro_ID LEFT JOIN propertytype_prt ON pro_prt_ID = prt_ID WHERE pro_Class ="g" AND r2p_record_ID = ' . $iGroupID . ' ORDER BY prt_Name, pro_Name';
 $rsAssignedProperties = RunQuery($sSQL);
 
 // Get all the properties
-$sSQL = 'SELECT * FROM property_pro WHERE pro_Class = "g" ORDER BY pro_Name';
+$sSQL = 'SELECT * FROM property_pro WHERE pro_Class ="g" ORDER BY pro_Name';
 $rsProperties = RunQuery($sSQL);
 
 // Get data for the form as it now exists..
@@ -51,7 +51,7 @@ require_once __DIR__ . '/Include/Header.php';
 // Store email and phone data for later use in buttons
 // Email Group link
 // Note: This will email entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName
+$sSQL ="SELECT per_Email, fam_Email, lst_OptionName as virt_RoleName
     FROM person_per
     LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
     LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
@@ -62,7 +62,7 @@ WHERE per_ID NOT IN
         FROM person_per
         INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
         INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not Email')
-    AND p2g2r_grp_ID = " . $iGroupID;
+    AND p2g2r_grp_ID =" . $iGroupID;
 $rsEmailList = RunQuery($sSQL);
 $sEmailLink = '';
 $roleEmails = [];
@@ -89,7 +89,7 @@ if ($sEmailLink) {
 
 // Group Text Message Comma Delimited - added by RSBC
 // Note: This will provide cell phone numbers for the entire group, even if a specific role is currently selected.
-$sSQL = "SELECT per_CellPhone
+$sSQL ="SELECT per_CellPhone
     FROM person_per
     LEFT JOIN person2group2role_p2g2r ON per_ID = p2g2r_per_ID
     LEFT JOIN group_grp ON grp_ID = p2g2r_grp_ID
@@ -98,7 +98,7 @@ WHERE per_ID NOT IN
     FROM person_per
     INNER JOIN record2property_r2p ON r2p_record_ID = per_ID
     INNER JOIN property_pro ON r2p_pro_ID = pro_ID AND pro_Name = 'Do Not SMS')
-AND p2g2r_grp_ID = " . $iGroupID;
+AND p2g2r_grp_ID =" . $iGroupID;
 $rsPhoneList = RunQuery($sSQL);
 $sPhoneLink = '';
 $sCommaDelimiter = ', ';
@@ -116,7 +116,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 ?>
 
 
-<div class="card card-info card-outline">
+<div class="card border border-info">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
@@ -126,7 +126,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
         </div>
         <div class="row mt-3">
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <div class="h6 text-muted"><?= gettext('Type of Group') ?></div>
@@ -136,7 +136,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <div class="h6 text-muted"><?= gettext('Default Role') ?></div>
@@ -146,7 +146,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <div class="h6 text-muted"><?= gettext('Total Members') ?></div>
@@ -158,6 +158,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
         </div>
         <div class="row mt-3">
             <div class="col-12">
+                <div class="btn-group flex-wrap" role="group">
                 <?php
                 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                     <a class="btn btn-outline-info" href="GroupEditor.php?GroupID=<?= $thisGroup->getId() ?>" title="<?= gettext('Edit this Group') ?>">
@@ -182,7 +183,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <?php
                 // Email buttons
                 if ($sEmailLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-                    <div class="dropdown d-inline-block">
+                    <div class="btn-group" role="group">
                         <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailGroupDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email Group') ?>">
                             <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
                         </button>
@@ -191,7 +192,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                             <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                         </div>
                     </div>
-                    <div class="dropdown d-inline-block">
+                    <div class="btn-group" role="group">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="emailGroupBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email (BCC)') ?>">
                             <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>
                         </button>
@@ -203,21 +204,22 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <?php }
                 // Text button
                 if ($sPhoneLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-                    <a class="btn btn-outline-warning" href="javascript:void(0)" onclick="allPhonesCommaD()" title="<?= gettext('Text Group') ?>">
+                    <a class="btn btn-outline-secondary" href="javascript:void(0)" onclick="allPhonesCommaD()" title="<?= gettext('Text Group') ?>">
                         <i class="fa-solid fa-mobile-phone me-2"></i><?= gettext('Text') ?>
                     </a>
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                         function allPhonesCommaD() {
-                            prompt("<?= gettext("Press CTRL + C to copy all group members' phone numbers") ?>", "<?= mb_substr($sPhoneLink, 0, -2) ?>");
+                            prompt("<?= gettext("Press CTRL + C to copy all group members' phone numbers") ?>","<?= mb_substr($sPhoneLink, 0, -2) ?>");
                         }
                     </script>
                 <?php } ?>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card card-primary card-outline">
+<div class="card border border-primary">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-list-check"></i> <?= gettext('Group Properties') ?></h3>
     </div>
@@ -226,12 +228,12 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
             <div class="col-lg-6 col-md-12 mb-3">
                 <b><?= gettext('Status') ?>:</b> 
                 <br>
-                <input data-size="normal" id="isGroupActive" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Disabled') ?>">
+                <input data-size="normal" id="isGroupActive" type="checkbox" data-bs-toggle="toggle" data-on="<?= gettext('Active') ?>" data-off="<?= gettext('Disabled') ?>">
             </div>
             <div class="col-lg-6 col-md-12 mb-3">
                 <b><?= gettext('Email export') ?>:</b> 
                 <br>
-                <input data-size="normal" id="isGroupEmailExport" type="checkbox" data-toggle="toggle" data-on="<?= gettext('Include') ?>" data-off="<?= gettext('Exclude') ?>">
+                <input data-size="normal" id="isGroupEmailExport" type="checkbox" data-bs-toggle="toggle" data-on="<?= gettext('Include') ?>" data-off="<?= gettext('Exclude') ?>">
             </div>
         </div>
         <hr>
@@ -389,13 +391,13 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
     </div>
 </div>
 
-<div class="card card-success card-outline">
+<div class="card border border-success">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-users"></i> <?= gettext('Group Members') ?></h3>
     </div>
     <div class="card-body">
         <form action="#" method="get" class="mb-3">
-            <div class="form-group row align-items-center">
+            <div class="mb-3 row align-items-center">
                 <label for="addGroupMember" class="col-auto col-form-label"><?= gettext('Add Group Member') . ': ' ?></label>
                 <div class="col-md-4">
                     <select id="addGroupMember" class="form-control personSearch" name="addGroupMember">
@@ -415,7 +417,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <button type="button" id="addSelectedToCart" class="btn btn-success" disabled> <?= gettext('Add Selected Members to Cart') ?></button>
                 <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                     <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
+                    <span class="visually-hidden">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu">
                     <a id="addSelectedToGroup" class="dropdown-item disabled"> <?= gettext('Add Selected Members to Group') ?></a>
@@ -440,21 +442,21 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                         locale: window.CRM.shortLocale
                     }),
                     bootbox.confirm({
-                        title: "<?= gettext("Confirm Delete Group") ?>",
+                        title:"<?= gettext("Confirm Delete Group") ?>",
                         message: '<p class="text-danger">' +
-                            "<?= gettext("Please confirm deletion of this group record") ?>: " + <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> + "</p>" +
-                            "<p>" +
-                            "<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
-                            "</p><p>" +
-                            "<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
+"<?= gettext("Please confirm deletion of this group record") ?>:" + <?= json_encode($thisGroup->getName(), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> +"</p>" +
+"<p>" +
+"<?= gettext("This will also delete all Roles and Group-Specific Property data associated with this Group record.") ?>" +
+"</p><p>" +
+"<?= gettext("All group membership and properties will be destroyed.  The group members themselves will not be altered.") ?></p>",
                         callback: function(result) {
                             if (result) {
                                 window.CRM.APIRequest({
-                                    method: "DELETE",
-                                    path: "groups/" + window.CRM.currentGroup,
+                                    method:"DELETE",
+                                    path:"groups/" + window.CRM.currentGroup,
                                 }).done(function(data) {
-                                    if (data.status == "success")
-                                        window.location.href = window.CRM.root + "/groups/dashboard";
+                                    if (data.status =="success")
+                                        window.location.href = window.CRM.root +"/groups/dashboard";
                                 });
                             }
                         }
