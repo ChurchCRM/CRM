@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('MailChimp') ?></li>
             </ol>
         </nav>
-        <div class="btn-group btn-group-sm ml-2">
+        <div class="btn-group btn-group-sm ms-2">
             <a href="https://login.mailchimp.com/" target="_blank" class="btn btn-outline-warning" title="<?= gettext('Open MailChimp') ?>">
                 <i class="fa-brands fa-mailchimp fa-fw"></i> <?= gettext('Open MailChimp') ?>
             </a>
@@ -46,16 +46,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <?php if (!empty($accountInfo['account_name'])) : ?>
     <div class="alert alert-light border mb-3">
         <div class="d-flex align-items-center">
-            <i class="fa-brands fa-mailchimp fa-2x text-warning mr-3"></i>
+            <i class="fa-brands fa-mailchimp fa-2x text-warning me-3"></i>
             <div class="flex-grow-1">
                 <strong><?= htmlspecialchars($accountInfo['account_name'], ENT_QUOTES, 'UTF-8') ?></strong>
                 <?php if (!empty($accountInfo['email'])) : ?>
-                    <span class="text-muted ml-2">(<?= htmlspecialchars($accountInfo['email'], ENT_QUOTES, 'UTF-8') ?>)</span>
+                    <span class="text-muted ms-2">(<?= htmlspecialchars($accountInfo['email'], ENT_QUOTES, 'UTF-8') ?>)</span>
                 <?php endif; ?>
             </div>
             <?php if ($latestCampaignDate) : ?>
-            <div class="text-right text-muted small">
-                <i class="fa-solid fa-paper-plane mr-1"></i><?= gettext('Last campaign') ?>: 
+            <div class="text-end text-muted small">
+                <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Last campaign') ?>: 
                 <strong><?= date('M j, Y', strtotime($latestCampaignDate)) ?></strong>
             </div>
             <?php endif; ?>
@@ -115,53 +115,53 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row">
         <?php foreach ($mailChimpLists as $list) : ?>
             <div class="col-lg-6 col-md-12 mb-4">
-                <div class="card card-outline card-primary h-100">
+                <div class="card card h-100">
                     <div class="card-header d-flex align-items-center">
                         <h3 class="card-title">
-                            <i class="fa-solid fa-list mr-2"></i><?= htmlspecialchars($list['name'], ENT_QUOTES, 'UTF-8') ?>
+                            <i class="fa-solid fa-list me-2"></i><?= htmlspecialchars($list['name'], ENT_QUOTES, 'UTF-8') ?>
                         </h3>
                         <div class="card-tools ms-auto">
-                            <span class="badge badge-info"><?= number_format($list['stats']['member_count'] ?? 0) ?> <?= gettext('subscribers') ?></span>
+                            <span class="badge bg-info"><?= number_format($list['stats']['member_count'] ?? 0) ?> <?= gettext('subscribers') ?></span>
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <table class="table table-sm table-striped mb-0">
                             <tbody>
                                 <tr>
-                                    <td><i class="fa-solid fa-users text-info mr-2"></i><?= gettext('Subscribers') ?></td>
-                                    <td class="text-right"><strong><?= number_format($list['stats']['member_count'] ?? 0) ?></strong></td>
+                                    <td><i class="fa-solid fa-users text-info me-2"></i><?= gettext('Subscribers') ?></td>
+                                    <td class="text-end"><strong><?= number_format($list['stats']['member_count'] ?? 0) ?></strong></td>
                                 </tr>
                                 <tr>
-                                    <td><i class="fa-solid fa-paper-plane text-primary mr-2"></i><?= gettext('Campaigns Sent') ?></td>
-                                    <td class="text-right"><strong><?= number_format($list['stats']['campaign_count'] ?? 0) ?></strong></td>
+                                    <td><i class="fa-solid fa-paper-plane text-primary me-2"></i><?= gettext('Campaigns Sent') ?></td>
+                                    <td class="text-end"><strong><?= number_format($list['stats']['campaign_count'] ?? 0) ?></strong></td>
                                 </tr>
                                 <?php if (!empty($list['stats']['campaign_last_sent'])) : ?>
                                 <tr>
-                                    <td><i class="fa-solid fa-calendar-check text-success mr-2"></i><?= gettext('Last Campaign') ?></td>
-                                    <td class="text-right"><?= date('M j, Y', strtotime($list['stats']['campaign_last_sent'])) ?></td>
+                                    <td><i class="fa-solid fa-calendar-check text-success me-2"></i><?= gettext('Last Campaign') ?></td>
+                                    <td class="text-end"><?= date('M j, Y', strtotime($list['stats']['campaign_last_sent'])) ?></td>
                                 </tr>
                                 <?php endif; ?>
                                 <?php if (!empty($list['stats']['last_sub_date'])) : ?>
                                 <tr>
-                                    <td><i class="fa-solid fa-user-plus text-success mr-2"></i><?= gettext('Last Subscriber') ?></td>
-                                    <td class="text-right"><?= date('M j, Y', strtotime($list['stats']['last_sub_date'])) ?></td>
+                                    <td><i class="fa-solid fa-user-plus text-success me-2"></i><?= gettext('Last Subscriber') ?></td>
+                                    <td class="text-end"><?= date('M j, Y', strtotime($list['stats']['last_sub_date'])) ?></td>
                                 </tr>
                                 <?php endif; ?>
                                 <tr>
-                                    <td><i class="fa-solid fa-user-minus text-warning mr-2"></i><?= gettext('Unsubscribed') ?></td>
-                                    <td class="text-right"><?= number_format($list['stats']['unsubscribe_count'] ?? 0) ?></td>
+                                    <td><i class="fa-solid fa-user-minus text-warning me-2"></i><?= gettext('Unsubscribed') ?></td>
+                                    <td class="text-end"><?= number_format($list['stats']['unsubscribe_count'] ?? 0) ?></td>
                                 </tr>
                                 <tr>
-                                    <td><i class="fa-solid fa-broom text-secondary mr-2"></i><?= gettext('Cleaned') ?></td>
-                                    <td class="text-right"><?= number_format($list['stats']['cleaned_count'] ?? 0) ?></td>
+                                    <td><i class="fa-solid fa-broom text-secondary me-2"></i><?= gettext('Cleaned') ?></td>
+                                    <td class="text-end"><?= number_format($list['stats']['cleaned_count'] ?? 0) ?></td>
                                 </tr>
                                 <tr>
-                                    <td><i class="fa-solid fa-envelope-open text-success mr-2"></i><?= gettext('Avg Open Rate') ?></td>
-                                    <td class="text-right"><?= number_format(($list['stats']['open_rate'] ?? 0) * 100, 1) ?>%</td>
+                                    <td><i class="fa-solid fa-envelope-open text-success me-2"></i><?= gettext('Avg Open Rate') ?></td>
+                                    <td class="text-end"><?= number_format(($list['stats']['open_rate'] ?? 0) * 100, 1) ?>%</td>
                                 </tr>
                                 <tr>
-                                    <td><i class="fa-solid fa-mouse-pointer text-info mr-2"></i><?= gettext('Avg Click Rate') ?></td>
-                                    <td class="text-right"><?= number_format(($list['stats']['click_rate'] ?? 0) * 100, 1) ?>%</td>
+                                    <td><i class="fa-solid fa-mouse-pointer text-info me-2"></i><?= gettext('Avg Click Rate') ?></td>
+                                    <td class="text-end"><?= number_format(($list['stats']['click_rate'] ?? 0) * 100, 1) ?>%</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -169,10 +169,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card-footer bg-light">
                         <div class="btn-group btn-group-sm d-flex" role="group">
                             <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/list/<?= $list['id'] ?>/unsubscribed" class="btn btn-outline-primary flex-fill">
-                                <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Not Subscribed') ?>
+                                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Not Subscribed') ?>
                             </a>
                             <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/list/<?= $list['id'] ?>/missing" class="btn btn-outline-warning flex-fill">
-                                <i class="fa-solid fa-user-slash mr-1"></i><?= gettext('Not in CRM') ?>
+                                <i class="fa-solid fa-user-slash me-1"></i><?= gettext('Not in CRM') ?>
                             </a>
                         </div>
                     </div>
@@ -191,7 +191,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h4 class="text-muted"><?= gettext('No Audiences Found') ?></h4>
                     <p class="text-muted"><?= gettext('Your MailChimp account does not have any audiences (lists) configured.') ?></p>
                     <a href="https://mailchimp.com/help/create-audience/" target="_blank" class="btn btn-primary">
-                        <i class="fa-solid fa-external-link-alt mr-1"></i><?= gettext('Create an Audience in MailChimp') ?>
+                        <i class="fa-solid fa-external-link-alt me-1"></i><?= gettext('Create an Audience in MailChimp') ?>
                     </a>
                 </div>
             </div>
@@ -202,10 +202,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row">
         <div class="col-12">
             <div class="callout callout-warning">
-                <h5><i class="fa-solid fa-exclamation-triangle mr-2"></i><?= gettext('MailChimp is not configured') ?></h5>
+                <h5><i class="fa-solid fa-exclamation-triangle me-2"></i><?= gettext('MailChimp is not configured') ?></h5>
                 <p><?= gettext('Please configure your MailChimp API key to use this integration.') ?></p>
                 <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/mailchimp" class="btn btn-warning">
-                    <i class="fa-solid fa-cog mr-1"></i><?= gettext('Configure MailChimp') ?>
+                    <i class="fa-solid fa-cog me-1"></i><?= gettext('Configure MailChimp') ?>
                 </a>
             </div>
         </div>

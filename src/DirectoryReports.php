@@ -14,7 +14,7 @@ $sPageTitle = gettext('Directory reports');
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card-body">
 <form method="POST" action="Reports/DirectoryReport.php">
 <?php
 

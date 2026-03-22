@@ -38,9 +38,9 @@ if (isset($_POST['Submit'])) {
     if (!$bError) {
         // Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == 0) {
-            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass . "','" . $sName . "','" . $sDescription . "')";
+            $sSQL ="INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass ."','" . $sName ."','" . $sDescription ."')";
         } else {
-            $sSQL = "UPDATE propertytype_prt SET prt_Class = '" . $sClass . "', prt_Name = '" . $sName . "', prt_Description = '" . $sDescription . "' WHERE prt_ID = " . $iPropertyTypeID;
+            $sSQL ="UPDATE propertytype_prt SET prt_Class = '" . $sClass ."', prt_Name = '" . $sName ."', prt_Description = '" . $sDescription ."' WHERE prt_ID =" . $iPropertyTypeID;
         }
 
         // Execute the SQL
@@ -87,7 +87,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="row">
                 <div class="col-md-6">
                     <!-- Class Selection -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="class">
                             <?= gettext('Class') ?>
                             <span class="text-danger">*</span>
@@ -109,7 +109,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
 
                     <!-- Name Field -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="name">
                             <?= gettext('Name') ?>
                             <span class="text-danger">*</span>
@@ -131,7 +131,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                 <div class="col-md-6">
                     <!-- Description Field -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="description"><?= gettext('Description') ?></label>
                         <textarea class="form-control" 
                                   id="description" 

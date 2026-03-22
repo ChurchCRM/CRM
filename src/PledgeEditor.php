@@ -42,7 +42,7 @@ $checkHash = [];
 
 // Get the list of funds
 $sSQL = 'SELECT fun_ID,fun_Name,fun_Active FROM donationfund_fun';
-$sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
+$sSQL .=" WHERE fun_Active = 'true'"; // New donations should show only active funds.
 $sSQL .= ' ORDER BY fun_Order';
 
 $rsFunds = RunQuery($sSQL);
@@ -143,7 +143,7 @@ if (
     $iMethod = InputUtils::legacyFilterInput($_POST['Method']);
     if (!$iMethod) {
         if ($sGroupKey) {
-            $sSQL = "SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "'";
+            $sSQL ="SELECT DISTINCT plg_method FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey ."'";
             $rsResults = RunQuery($sSQL);
             list($iMethod) = mysqli_fetch_row($rsResults);
         } elseif ($iCurrentDeposit) {
@@ -168,18 +168,18 @@ if (
     }
 } else { // Form was not up previously, take data from existing records or make default values
     if ($sGroupKey) {
-        $sSQL = "SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey . "' GROUP BY plg_GroupKey";
+        $sSQL ="SELECT COUNT(plg_GroupKey), plg_PledgeOrPayment, plg_fundID, plg_Date, plg_FYID, plg_CheckNo, plg_Schedule, plg_method, plg_depID FROM pledge_plg WHERE plg_GroupKey='" . $sGroupKey ."' GROUP BY plg_GroupKey";
         $rsResults = RunQuery($sSQL);
         list($numGroupKeys, $PledgeOrPayment, $fundId, $dDate, $iFYID, $iCheckNo, $iSchedule, $iMethod, $iCurrentDeposit) = mysqli_fetch_row($rsResults);
 
-        $sSQL = "SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
+        $sSQL ="SELECT DISTINCT plg_famID, plg_CheckNo, plg_FYID from pledge_plg where plg_GroupKey='" . $sGroupKey ."'";
         $rsFam = RunQuery($sSQL);
         $fam_NameArray = mysqli_fetch_array($rsFam);
         $iFamily = $fam_NameArray['plg_famID'];
         $iCheckNo = $fam_NameArray['plg_CheckNo'];
         $iFYID = $fam_NameArray['plg_FYID'];
 
-        $sSQL = "SELECT plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey . "'";
+        $sSQL ="SELECT plg_fundID, plg_amount, plg_comment, plg_NonDeductible from pledge_plg where plg_GroupKey='" . $sGroupKey ."'";
         $rsAmounts = RunQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsAmounts)) {
             $plg_fundID = $aRow['plg_fundID'];
@@ -320,7 +320,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         } elseif ($iMethod === 'CHECK' && !$sGroupKey) {
             $chkKey = $iFamily . '|' . $iCheckNo;
             if (array_key_exists($chkKey, $checkHash)) {
-                $text = "Check number '" . $iCheckNo . "' for selected family already exists.";
+                $text ="Check number '" . $iCheckNo ."' for selected family already exists.";
                 $sCheckNoError = '<span class="text-danger">' . gettext($text) . '</span>';
                 $bErrorFlag = true;
             }
@@ -347,8 +347,8 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
             unset($sSQL);
             if ($fund2PlgIds && array_key_exists($fun_id, $fund2PlgIds)) {
                 if ($nAmount[$fun_id] > 0) {
-                    $sSQL = "UPDATE pledge_plg SET plg_famID = '" . $iFamily . "',plg_FYID = '" . $iFYID . "',plg_date = '" . $dDate . "', plg_amount = '" . $nAmount[$fun_id] . "', plg_schedule = '" . $iSchedule . "', plg_method = '" . $iMethod . "', plg_comment = '" . $sComment[$fun_id] . "'";
-                    $sSQL .= ", plg_DateLastEdited = '" . date('YmdHis') . "', plg_EditedBy = " . AuthenticationManager::getCurrentUser()->getId() . ", plg_CheckNo = '" . $iCheckNo . "', plg_scanString = '" . $tScanString . "', plg_aut_ID='" . $iAutID . "', plg_NonDeductible='" . $nNonDeductible[$fun_id] . "' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] . "'";
+                    $sSQL ="UPDATE pledge_plg SET plg_famID = '" . $iFamily ."',plg_FYID = '" . $iFYID ."',plg_date = '" . $dDate ."', plg_amount = '" . $nAmount[$fun_id] ."', plg_schedule = '" . $iSchedule ."', plg_method = '" . $iMethod ."', plg_comment = '" . $sComment[$fun_id] ."'";
+                    $sSQL .=", plg_DateLastEdited = '" . date('YmdHis') ."', plg_EditedBy =" . AuthenticationManager::getCurrentUser()->getId() .", plg_CheckNo = '" . $iCheckNo ."', plg_scanString = '" . $tScanString ."', plg_aut_ID='" . $iAutID ."', plg_NonDeductible='" . $nNonDeductible[$fun_id] ."' WHERE plg_plgID='" . $fund2PlgIds[$fun_id] ."'";
                 } else { // delete that record
                     $sSQL = 'DELETE FROM pledge_plg WHERE plg_plgID =' . $fund2PlgIds[$fun_id];
                 }
@@ -471,7 +471,7 @@ if ($PledgeOrPayment === 'Pledge') {
     $formTypeLabel = gettext('Pledge');
 } elseif ($iCurrentDeposit) {
     $dep_DateFormatted = ($dep_Date instanceof \DateTime) ? $dep_Date->format('Y-m-d') : $dep_Date;
-    $sPageTitle = gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit . " ($dep_DateFormatted)";
+    $sPageTitle = gettext('New Payment') . ' - ' . $dep_Type . gettext(' Deposit #') . $iCurrentDeposit ." ($dep_DateFormatted)";
     $cardHeaderClass = 'bg-primary';
     $cardHeaderTextClass = 'text-white';
     $formTypeLabel = gettext('Payment');
@@ -532,7 +532,7 @@ require_once __DIR__ . '/Include/Header.php';
     <div class="row mb-3">
         <div class="col-lg-12">
             <div class="alert <?= $PledgeOrPayment === 'Pledge' ? 'alert-warning' : 'alert-primary' ?> d-flex align-items-center" role="alert">
-                <i class="fa-solid <?= $PledgeOrPayment === 'Pledge' ? 'fa-file-signature' : 'fa-hand-holding-dollar' ?> fa-2x mr-3"></i>
+                <i class="fa-solid <?= $PledgeOrPayment === 'Pledge' ? 'fa-file-signature' : 'fa-hand-holding-dollar' ?> fa-2x me-3"></i>
                 <div>
                     <strong><?= $PledgeOrPayment === 'Pledge' ? gettext('Recording a Pledge') : gettext('Recording a Payment') ?></strong>
                     <p class="mb-0 small">
@@ -717,14 +717,14 @@ require_once __DIR__ . '/Include/Header.php';
                                 <tr>
                                     <td class="TextColumn"><?= $fun_name ?></td>
                                     <td class="TextColumn">
-                                        <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] : "") ?>"><br>
+                                        <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] :"") ?>"><br>
                                         <span class="text-danger"><?= $sAmountError[$fun_id] ?></span>
                                     </td>
                                     <?php
                                     if ($bEnableNonDeductible) {
                                         ?>
                                         <td class="TextColumn">
-                                            <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] : "") ?>" />
+                                            <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] :"") ?>" />
                                             <br>
                                             <span class="text-danger"><?= $sNonDeductibleError[$fun_id] ?></span>
                                         </td>
@@ -781,7 +781,7 @@ require_once __DIR__ . '/Include/Header.php';
                 },
                 dataType: 'json',
                 delay: 250,
-                data: "",
+                data:"",
                 processResults: function(data, params) {
                     var results = [];
                     var families = data?.Families ?? [];
@@ -815,7 +815,7 @@ require_once __DIR__ . '/Include/Header.php';
     });
 
     function EvalCheckNumberGroup() {
-        if ($("#Method option:selected").val() === "CHECK") {
+        if ($("#Method option:selected").val() ==="CHECK") {
             $("#checkNumberGroup").show();
         } else {
             $("#checkNumberGroup").hide();

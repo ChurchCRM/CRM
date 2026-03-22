@@ -50,7 +50,7 @@ if (!empty($_POST['family'])) {
 if (!empty($_POST['method'])) {
     foreach ($_POST['method'] as $methodItem) {
         $filtered = InputUtils::legacyFilterInput($methodItem);
-        // '0' is the "All Methods" sentinel value from the form — skip it
+        // '0' is the"All Methods" sentinel value from the form — skip it
         if ($filtered && $filtered !== '0') {
             $methods[] = $filtered;
         }
@@ -177,13 +177,13 @@ $page = 1;
             $this->writeAt($curX, $curY, 'Data sorted by ' . ucwords($sort));
             $curY += SystemConfig::getValue('incrementY');
             if (!$iDepID) {
-                $this->writeAt($curX, $curY, "$datetype Dates: $sDateStart through $sDateEnd");
+                $this->writeAt($curX, $curY,"$datetype Dates: $sDateStart through $sDateEnd");
                 $curY += SystemConfig::getValue('incrementY');
             }
             if ($iDepID || $_POST['family'][0] || $_POST['funds'][0] || $_POST['method'][0]) {
                 $heading = 'Filtered by ';
                 if ($iDepID) {
-                    $heading .= "Deposit #$iDepID, ";
+                    $heading .="Deposit #$iDepID,";
                 }
                 if ($_POST['family'][0]) {
                     $heading .= 'Selected Families, ';
@@ -259,7 +259,7 @@ $page = 1;
 
         public function finishPage($page): void
         {
-            $footer = "Page $page   Generated on " . date(SystemConfig::getValue('sDateTimeFormat'));
+            $footer ="Page $page   Generated on" . date(SystemConfig::getValue('sDateTimeFormat'));
             $this->SetFont('Times', 'I', 9);
             $this->writeAt(80, 258, $footer);
         }
@@ -312,7 +312,7 @@ $page = 1;
             }
             // First Deposit Heading
             if (!$currentDepositID && $detail_level != 'summary') {
-                $sDepositTitle = "Deposit #$plg_depID ($dep_Date)";
+                $sDepositTitle ="Deposit #$plg_depID ($dep_Date)";
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->writeAt(20, $curY, $sDepositTitle);
                 $curY += 1.5 * $summaryIntervalY;
@@ -325,7 +325,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -343,7 +343,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+                $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -355,7 +355,7 @@ $page = 1;
 
                 // New Deposit Title
                 if ($detail_level != 'summary') {
-                    $sDepositTitle = "Deposit #$plg_depID ($dep_Date)";
+                    $sDepositTitle ="Deposit #$plg_depID ($dep_Date)";
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAt(20, $curY, $sDepositTitle);
                     $curY += 1.5 * $summaryIntervalY;
@@ -432,7 +432,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary = "$fun_Name Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary ="$fun_Name Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -446,7 +446,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sDepositSummary = "Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
+        $sDepositSummary ="Deposit #$currentDepositID Total - $countDeposit $item:   $" . number_format($currentDepositAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sDepositSummary, 0, 0, 'R');
@@ -480,7 +480,7 @@ $page = 1;
             }
             // First Fund Heading
             if (!$currentFundName && $detail_level != 'summary') {
-                $sFundTitle = "Fund: $fun_Name";
+                $sFundTitle ="Fund: $fun_Name";
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->writeAt(20, $curY, $sFundTitle);
                 $curY += 1.5 * $summaryIntervalY;
@@ -493,7 +493,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -511,7 +511,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -523,7 +523,7 @@ $page = 1;
 
                 // New Fund Title
                 if ($detail_level != 'summary') {
-                    $sFundTitle = "Fund: $fun_Name";
+                    $sFundTitle ="Fund: $fun_Name";
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAt(20, $curY, $sFundTitle);
                     $curY += 1.5 * $summaryIntervalY;
@@ -547,7 +547,7 @@ $page = 1;
                 if (strlen($plg_CheckNo) > 8) {
                     $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
                 }
-                $sDeposit = "Dep #$plg_depID $dep_Date";
+                $sDeposit ="Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
                     $sDeposit = mb_substr($sDeposit, 0, 21) . '...';
                 }
@@ -600,7 +600,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+            $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -614,7 +614,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFundSummary = "$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+        $sFundSummary ="$currentFundName Total - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFundSummary, 0, 0, 'R');
@@ -648,7 +648,7 @@ $page = 1;
             }
             // First Family Heading
             if (!$currentFamilyID && $detail_level != 'summary') {
-                $sFamilyTitle = "$fam_Name - $fam_Address1";
+                $sFamilyTitle ="$fam_Name - $fam_Address1";
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->writeAt(20, $curY, $sFamilyTitle);
                 $curY += 1.5 * $summaryIntervalY;
@@ -661,7 +661,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFundSummary = "$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+                $sFundSummary ="$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
                 $curY += 2;
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'I', 10);
@@ -679,7 +679,7 @@ $page = 1;
                 } else {
                     $item = gettext('item');
                 }
-                $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+                $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
                 $pdf->SetXY(20, $curY);
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -691,7 +691,7 @@ $page = 1;
 
                 // New Family Title
                 if ($detail_level != 'summary') {
-                    $sFamilyTitle = "$fam_Name - $fam_Address1";
+                    $sFamilyTitle ="$fam_Name - $fam_Address1";
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAt(20, $curY, $sFamilyTitle);
                     $curY += 1.5 * $summaryIntervalY;
@@ -715,7 +715,7 @@ $page = 1;
                 if (strlen($plg_CheckNo) > 8) {
                     $plg_CheckNo = '...' . mb_substr($plg_CheckNo, -8, 8);
                 }
-                $sDeposit = "Dep #$plg_depID $dep_Date";
+                $sDeposit ="Dep #$plg_depID $dep_Date";
                 if (strlen($sDeposit) > 22) {
                     $sDeposit = mb_substr($sDeposit, 0, 21) . '...';
                 }
@@ -768,7 +768,7 @@ $page = 1;
             } else {
                 $item = gettext('item');
             }
-            $sFundSummary = "$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
+            $sFundSummary ="$currentFundName - $countFund $item:   $" . number_format($currentFundAmount, 2, '.', ',');
             $curY += 2;
             $pdf->SetXY(20, $curY);
             $pdf->SetFont('Times', 'I', 10);
@@ -782,7 +782,7 @@ $page = 1;
         } else {
             $item = gettext('item');
         }
-        $sFamilySummary = "$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
+        $sFamilySummary ="$currentFamilyName - $currentFamilyAddress - $countFamily $item:   $" . number_format($currentFamilyAmount, 2, '.', ',');
         $pdf->SetXY(20, $curY);
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(176, $summaryIntervalY, $sFamilySummary, 0, 0, 'R');
@@ -799,7 +799,7 @@ $page = 1;
     } else {
         $item = gettext('item');
     }
-    $sReportSummary = "Report Total ($countReport $item):   $" . number_format($currentReportAmount, 2, '.', ',');
+    $sReportSummary ="Report Total ($countReport $item):   $" . number_format($currentReportAmount, 2, '.', ',');
     $pdf->SetXY(20, $curY);
     $pdf->SetFont('Times', 'B', 10);
     $pdf->Cell(176, $summaryIntervalY, $sReportSummary, 0, 0, 'R');

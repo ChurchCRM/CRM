@@ -27,7 +27,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
 
 <div class="row justify-content-center">
     <div class="col-lg-6 col-md-8 col-sm-10">
-        <div class="card card-outline card-danger mt-4">
+        <div class="card border border-danger mt-4">
             <div class="card-header text-center">
                 <h3 class="card-title mb-0">
                     <i class="fa-solid fa-lock text-danger"></i>
@@ -46,7 +46,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
                 </p>
 
                 <?php if (!empty($missingRole)) : ?>
-                <div class="callout callout-warning text-left">
+                <div class="callout callout-warning text-start">
                     <h5><i class="fa-solid fa-key"></i> <?= gettext('Required Permission') ?></h5>
                     <p class="mb-0">
                         <strong><?= InputUtils::escapeHTML($roleDescription) ?></strong>
@@ -60,7 +60,7 @@ $roleDescription = isset($roleDescriptions[$missingRole])
                         <?= gettext('If you need access to this feature, please contact your church administrator.') ?>
                     </p>
                     
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg btn-block">
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg w-100">
                         <i class="fa-solid fa-home"></i> <?= gettext('Go to Dashboard') ?>
                     </a>
                 </div>

@@ -83,7 +83,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
 <form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
 <?php
 
@@ -192,7 +192,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
     if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
-        $tdTag = "<td bgcolor='red'>";
+        $tdTag ="<td bgcolor='red'>";
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = '<td>';
@@ -221,7 +221,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 function getEnvelopes(?int $classification = null): array
 {
     if ($classification) {
-        $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
+        $sSQL ="SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification ."'";
     } else {
         $sSQL = 'SELECT fam_ID, fam_Envelope FROM family_fam';
     }

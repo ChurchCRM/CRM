@@ -20,7 +20,7 @@ $sPageTitle = gettext('Convert Individuals to Families');
 
 require_once __DIR__ . '/Include/Header.php';
 
-echo '<div class="card card-body"><pre class="pre-compact">';
+echo '<div class="card-body"><pre class="pre-compact">';
 
 $curUserId = AuthenticationManager::getCurrentUser()->getId();
 
@@ -30,7 +30,7 @@ $rsLastEntry = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsLastEntry));
 
 // Get list of people that are not assigned to a family
-$sSQL = "SELECT * FROM person_per WHERE per_fam_ID='0' ORDER BY per_LastName, per_FirstName";
+$sSQL ="SELECT * FROM person_per WHERE per_fam_ID='0' ORDER BY per_LastName, per_FirstName";
 $rsList = RunQuery($sSQL);
 while ($aRow = mysqli_fetch_array($rsList)) {
     extract($aRow);
@@ -105,7 +105,7 @@ while ($aRow = mysqli_fetch_array($rsList)) {
 }
 echo '</pre>';
 echo '<div class="mt-3">';
-echo '<a href="ConvertIndividualToFamily.php" class="btn btn-primary mr-2">' . gettext('Convert Next') . '</a>';
+echo '<a href="ConvertIndividualToFamily.php" class="btn btn-primary me-2">' . gettext('Convert Next') . '</a>';
 echo '<a href="ConvertIndividualToFamily.php?all=true" class="btn btn-warning">' . gettext('Convert All') . '</a>';
 echo '</div>';
 echo '</div>';

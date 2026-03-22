@@ -123,11 +123,11 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     font-size: 13px;
   }
 
-  .form-group {
+  .mb-3 {
     margin-bottom: 15px;
   }
 
-  .form-group label {
+  .mb-3 label {
     display: block;
     margin-bottom: 6px;
     font-weight: 500;
@@ -135,7 +135,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     font-size: 13px;
   }
 
-  .form-group input {
+  .mb-3 input {
     width: 100%;
     padding: 9px 11px;
     border: 1px solid #ddd;
@@ -144,13 +144,13 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .form-group input:focus {
+  .mb-3 input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 
-  .form-group input::placeholder {
+  .mb-3 input::placeholder {
     color: #999;
   }
 
@@ -327,12 +327,12 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         ?>
 
         <form method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="UserBox"><?= gettext('Email address') ?></label>
             <input type="text" id="UserBox" name="User" placeholder="<?= gettext('name@example.com') ?>" value="<?= htmlspecialchars($prefilledUserName) ?>" required autofocus>
           </div>
 
-          <div class="form-group">
+          <div class="mb-3">
             <label for="PasswordBox"><?= gettext('Password') ?></label>
             <input type="password" id="PasswordBox" name="Password" placeholder="<?= gettext('Enter your password') ?>" required>
           </div>

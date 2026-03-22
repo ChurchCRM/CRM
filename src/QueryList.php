@@ -15,9 +15,9 @@ $aFinanceQueries = explode(',', $aFinanceQueries);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-primary">
+<div class="card">
     <div class="card-body">
-        <p class="text-right">
+        <p class="text-end">
         </p>
 
         <ul>

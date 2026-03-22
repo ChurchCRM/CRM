@@ -37,14 +37,14 @@ echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"
 // Classification list
 $ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
 $ClassificationList = [];
-$ClassificationList[] = "Unassigned";
+$ClassificationList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $ClassificationList[] = $element;
 }
 // Role list
 $ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
 $RoleList = [];
-$RoleList[] = "Unassigned";
+$RoleList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $RoleList[] = $element;
 }
@@ -63,7 +63,7 @@ $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
 
 // CREATE A MAPPING FOR CUSTOMS LIKE THIS
-// CustomMapping = {"c1":{"Name":"Father of confession", "Elements":{23:"option1", 24:"option2"}}, c2.... }
+// CustomMapping = {"c1":{"Name":"Father of confession","Elements":{23:"option1", 24:"option2"}}, c2.... }
 // allowing not only for search if has a custom set but also if is set to a given value.
 $CustomMapping = [];
 
@@ -72,7 +72,7 @@ $CustomList = [];
 foreach ($ListItem as $element) {
     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[$element["Name"]] = 0;
-        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"], "Elements" => []];
+        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"],"Elements" => []];
         if (in_array($element["TypeId"], [12])) {
             $ListElements = ListOptionQuery::create()->select(['OptionName', 'OptionId'])->filterById($element["Special"])->find()->toArray();
             foreach ($ListElements as $element2) {
@@ -86,7 +86,7 @@ foreach ($ListItem as $element) {
 // Get person group list
 $ListItem = GroupQuery::create()->find();
 $GroupList = [];
-$GroupList[] = "Unassigned";
+$GroupList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $GroupList[] = $element->getName();
 }
@@ -122,93 +122,88 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <?php if ($hasDataQualityIssues): ?>
 <!-- Data Quality Alert -->
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show mb-3" role="alert">
     <div class="d-flex align-items-center">
-        <div class="mr-3">
+        <div class="me-3">
             <i class="fa-solid fa-clipboard-check fa-2x"></i>
         </div>
-        <div class="flex-grow-1">
+        <div>
             <strong><?= gettext('Data Quality:') ?></strong>
-            <?php 
+            <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' .
                             sprintf(gettext('%d missing gender'), $genderDataCheckCount) . '</a>';
             }
             if ($roleDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' .
                             sprintf(gettext('%d missing role'), $roleDataCheckCount) . '</a>';
             }
             if ($classificationDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' .
                             sprintf(gettext('%d missing classification'), $classificationDataCheckCount) . '</a>';
             }
-
             echo implode(' · ', $issues);
             ?>
         </div>
     </div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php endif; ?>
 
-<div class="card card-primary mb-3">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-filter"></i> <span id="filters-title"></span></h3>
+<div class="card mb-3">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ti ti-filter me-1"></i> <span id="filters-title"></span></h3>
     </div>
-
     <div class="card-body">
-        <div class="row">
+        <div class="row g-3">
             <div class="col-lg-6">
-                <div class="form-group">
-                    <label id="label-family-status"></label>
-                    <select style="width: 100%;" class="form-control filter-FamilyStatus" multiple="multiple"></select>
+                <div class="mb-3">
+                    <label class="form-label" id="label-family-status"></label>
+                    <select class="form-control w-100 filter-FamilyStatus" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-gender"></label>
-                    <select style="width: 100%;" class="form-control filter-Gender" multiple="multiple"></select>
+                <div class="mb-3">
+                    <label class="form-label" id="label-gender"></label>
+                    <select class="form-control w-100 filter-Gender" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-classification"></label>
-                    <select style="width: 100%;" class="form-control filter-Classification" multiple="multiple"></select>
+                <div class="mb-3">
+                    <label class="form-label" id="label-classification"></label>
+                    <select class="form-control w-100 filter-Classification" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-role"></label>
-                    <select style="width: 100%;" class="form-control filter-Role" multiple="multiple"></select>
+                <div class="mb-0">
+                    <label class="form-label" id="label-role"></label>
+                    <select class="form-control w-100 filter-Role" multiple="multiple"></select>
                 </div>
             </div>
-
             <div class="col-lg-6">
-                <div class="form-group">
-                    <label id="label-properties"></label>
-                    <select style="width: 100%;" class="form-control filter-Properties" multiple="multiple"></select>
+                <div class="mb-3">
+                    <label class="form-label" id="label-properties"></label>
+                    <select class="form-control w-100 filter-Properties" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-custom"></label>
-                    <select style="width: 100%;" class="form-control filter-Custom" multiple="multiple"></select>
+                <div class="mb-3">
+                    <label class="form-label" id="label-custom"></label>
+                    <select class="form-control w-100 filter-Custom" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-group"></label>
-                    <select style="width: 100%;" class="form-control filter-Group" multiple="multiple"></select>
+                <div class="mb-0">
+                    <label class="form-label" id="label-group"></label>
+                    <select class="form-control w-100 filter-Group" multiple="multiple"></select>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="ClearFilter" type="button" class="btn btn-secondary btn-block">
-                    <i class="fa-solid fa-times"></i> <span id="clear-filter-text"></span>
-                </button>
-            </div>
+        <div class="mt-3">
+            <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
+                <i class="ti ti-x me-1"></i> <span id="clear-filter-text"></span>
+            </button>
         </div>
     </div>
 </div>
 
 <div class="card">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
+    <div class="card-header">
+        <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
     </div>
-    <div class="card-body p-2">
-        <table id="members" class="table table-striped table-hover data-table mb-0 w-100">
+    <div class="card-body p-0">
+        <table id="members" class="table table-vcenter table-hover card-table data-table mb-0 w-100">
             <thead>
                 <tr>
                     <?php 
@@ -257,12 +252,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $cellPhone = $person->getCellPhone();
                         $hasPhone = false;
                         if (!empty($homePhone)) {
-                            echo '<i class="fa-solid fa-house text-muted mr-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
+                            echo '<i class="fa-solid fa-house text-muted me-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
                             $hasPhone = true;
                         }
                         if (!empty($cellPhone)) {
                             if ($hasPhone) echo '<br>';
-                            echo '<i class="fa-solid fa-mobile-screen text-muted mr-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
+                            echo '<i class="fa-solid fa-mobile-screen text-muted me-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
                             $hasPhone = true;
                         }
                         if (!$hasPhone) {
@@ -292,7 +287,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
-                                echo $familyLink . ' <span class="badge badge-secondary" title="' . gettext('Inactive') . '">';
+                                echo $familyLink . ' <span class="badge bg-secondary" title="' . gettext('Inactive') . '">';
                                 echo '<i class="fa-solid fa-power-off"></i> ' . gettext('Inactive');
                                 echo '</span>';
                             } else {
@@ -309,7 +304,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                         // Make person name clickable and add gender icon, role, and photo icon
                         elseif (in_array($column->displayFunction, ['getFullName', 'getFirstName', 'getLastName'], true)) {
-                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="font-weight-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="fw-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
@@ -324,7 +319,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             }
                             // Add photo icon if person has photo
                             if ($column->displayFunction === 'getFullName' && $person->getPhoto()->hasUploadedPhoto()) {
-                                echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ml-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
+                                echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ms-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
                                 echo '<i class="fa-solid fa-camera"></i>';
                                 echo '</button>';
                             }
@@ -334,7 +329,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Always render badges for display
                                 foreach ($columnData as $group) {
-                                    echo '<span class="badge badge-info mr-1">' . InputUtils::escapeHTML($group) . '</span>';
+                                    echo '<span class="badge bg-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
                                 echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
@@ -394,9 +389,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     echo '</td>';
                 }
                 ?>
-                <td class="text-right">
+                <td class="text-end">
                     <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
+                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="ti ti-pencil"></i></button>
                     </a>
                     <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) { ?>
                         <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
@@ -462,7 +457,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 foreach ($columns as $column) {
                     $columnId++;
                     if ($column->visible === 'false') {
-                        echo "{ targets: " . $columnId . ", visible: false },\n";
+                        echo"{ targets:" . $columnId .", visible: false },\n";
                     }
                 }
                 ?>
@@ -502,7 +497,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             $firstVisibleColumnId = $columnId;
                         }
                     }
-                    echo json_encode($columnTitle) . ",\n";
+                    echo json_encode($columnTitle) .",\n";
                 }
                 ?>
                 {
@@ -512,7 +507,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 }
             ],
             // sort by first visible column
-            order: [[ <?php echo $firstVisibleColumnId ?> , "asc" ]]
+            order: [[ <?php echo $firstVisibleColumnId ?> ,"asc" ]]
         }
 
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
@@ -521,31 +516,31 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         $('.filter-Gender').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Gender')
+            placeholder: i18next.t('Select') +"" + i18next.t('Gender')
          });
         $('.filter-Classification').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Classification')
+            placeholder: i18next.t('Select') +"" + i18next.t('Classification')
         });
         $('.filter-Role').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Role')
+            placeholder: i18next.t('Select') +"" + i18next.t('Role')
         });
         $('.filter-Properties').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Properties')
+            placeholder: i18next.t('Select') +"" + i18next.t('Properties')
         });
         $('.filter-Custom').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Custom')
+            placeholder: i18next.t('Select') +"" + i18next.t('Custom')
         });
         $('.filter-FamilyStatus').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Family Status')
+            placeholder: i18next.t('Select') +"" + i18next.t('Family Status')
         });
         $('.filter-Group').select2({
             multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Group')
+            placeholder: i18next.t('Select') +"" + i18next.t('Group')
         });
 
         $('.filter-Gender').on("change", function() {
@@ -712,14 +707,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             
             bootbox.confirm({
                 title: i18next.t("Remove from Cart"),
-                message: i18next.t("Remove") + " " + filteredCount + " " + i18next.t("people from cart?"),
+                message: i18next.t("Remove") +"" + filteredCount +"" + i18next.t("people from cart?"),
                 buttons: {
                     cancel: {
                         label: i18next.t("Cancel")
                     },
                     confirm: {
                         label: i18next.t("Yes, Remove"),
-                        className: "btn-danger"
+                        className:"btn-danger"
                     }
                 },
                 callback: function (result) {
@@ -754,8 +749,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             
             // Fetch current cart state from server
             window.CRM.APIRequest({
-                method: "GET",
-                path: "cart/",
+                method:"GET",
+                path:"cart/",
                 suppressErrorDialog: true,
             }).done(function(data) {
                 // Use CartManager's syncButtonStates to update all buttons

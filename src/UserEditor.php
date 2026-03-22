@@ -496,7 +496,7 @@ require_once __DIR__ . '/Include/Header.php';
                 //First get default settings, then overwrite with settings from this user
 
                 // Get default settings
-                $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
+                $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
                 $rsDefault = RunQuery($sSQL);
                 $r = 1;
                 // List Default Settings
@@ -512,8 +512,8 @@ require_once __DIR__ . '/Include/Header.php';
                     ) = $aDefaultRow;
 
                     // Overwrite with user settings if they already exist
-                    $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID' "
-                        . "AND ucfg_id='$ucfg_id' ";
+                    $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID'"
+                        ."AND ucfg_id='$ucfg_id'";
                     $rsUser = RunQuery($sSQL);
                     while ($aUserRow = mysqli_fetch_row($rsUser)) {
                         list(
@@ -535,27 +535,27 @@ require_once __DIR__ . '/Include/Header.php';
                         $sel1 = 'SELECTED';
                         $sel2 = '';
                     }
-                    echo "\n<tr>";
-                    echo "<td><select name=\"new_permission[$ucfg_id]\">";
-                    echo "<option value=\"FALSE\" $sel1>" . gettext('False');
-                    echo "<option value=\"TRUE\" $sel2>" . gettext('True');
+                    echo"\n<tr>";
+                    echo"<td><select name=\"new_permission[$ucfg_id]\">";
+                    echo"<option value=\"FALSE\" $sel1>" . gettext('False');
+                    echo"<option value=\"TRUE\" $sel2>" . gettext('True');
                     echo '</select></td>';
 
                     // Variable Name & Type
-                    echo "<td>$ucfg_name</td>";
+                    echo"<td>$ucfg_name</td>";
 
                     // Current Value
                     if ($ucfg_type == 'text') {
-                        echo "<td>
+                        echo"<td>
             <input type=\"text\" size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
             value=\"" . InputUtils::escapeAttribute($ucfg_value) . '\"></td>';
                     } elseif ($ucfg_type == 'textarea') {
-                        echo "<td>
+                        echo"<td>
             <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
                             . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
                         echo '<td><input type="text" size="15"'
-                            . " maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
+                            ." maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
                     } elseif ($ucfg_type == 'boolean') {
                         if ($ucfg_value) {
                             $sel2 = 'SELECTED';
@@ -564,15 +564,15 @@ require_once __DIR__ . '/Include/Header.php';
                             $sel1 = 'SELECTED';
                             $sel2 = '';
                         }
-                        echo "<td><select name=\"new_value[$ucfg_id]\">";
-                        echo "<option value=\"\" $sel1>" . gettext('False');
-                        echo "<option value=\"1\" $sel2>" . gettext('True');
+                        echo"<td><select name=\"new_value[$ucfg_id]\">";
+                        echo"<option value=\"\" $sel1>" . gettext('False');
+                        echo"<option value=\"1\" $sel2>" . gettext('True');
                         echo '</select></td>';
                     }
 
                     // Notes
-                    echo "<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-            " . gettext($ucfg_tooltip) . '</td></tr>';
+                    echo"<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
+" . gettext($ucfg_tooltip) . '</td></tr>';
 
                     $r++;
                 }

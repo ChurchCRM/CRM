@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset");
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
   <div class="register-box register-box-600">
     <div class="register-logo">
@@ -30,4 +30,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   </div>
 
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

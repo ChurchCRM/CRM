@@ -60,7 +60,7 @@ if ($iRemoveVO > 0 && AuthenticationManager::getCurrentUser()->isEditRecordsEnab
 }
 
 // Get this person's data
-$sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName, b.per_ID AS EnteredId,
+$sSQL ="SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') AS sClassName, fmr.lst_OptionName AS sFamRole, b.per_FirstName AS EnteredFirstName, b.per_ID AS EnteredId,
         b.Per_LastName AS EnteredLastName, c.per_FirstName AS EditedFirstName, c.per_LastName AS EditedLastName, c.per_ID AS EditedId
       FROM person_per a
       LEFT JOIN family_fam ON a.per_fam_ID = family_fam.fam_ID
@@ -68,7 +68,7 @@ $sSQL = "SELECT a.*, family_fam.*, COALESCE(cls.lst_OptionName , 'Unassigned') A
       LEFT JOIN list_lst fmr ON a.per_fmr_ID = fmr.lst_OptionID AND fmr.lst_ID = 2
       LEFT JOIN person_per b ON a.per_EnteredBy = b.per_ID
       LEFT JOIN person_per c ON a.per_EditedBy = c.per_ID
-      WHERE a.per_ID = " . $iPersonID;
+      WHERE a.per_ID =" . $iPersonID;
 $rsPerson = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsPerson));
 
@@ -109,16 +109,16 @@ $sSQL = 'SELECT vol_ID, vol_Name FROM volunteeropportunity_vol ORDER BY vol_Orde
 $rsVolunteerOpps = RunQuery($sSQL);
 
 // Get the Properties assigned to this Person
-$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+$sSQL ="SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
 FROM record2property_r2p
 LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
 LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-WHERE pro_Class = 'p' AND r2p_record_ID = " . $iPersonID .
+WHERE pro_Class = 'p' AND r2p_record_ID =" . $iPersonID .
     ' ORDER BY prt_Name, pro_Name';
 $rsAssignedProperties = RunQuery($sSQL);
 
 // Get all the properties
-$sSQL = "SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
+$sSQL ="SELECT * FROM property_pro WHERE pro_Class = 'p' ORDER BY pro_Name";
 $rsProperties = RunQuery($sSQL);
 
 // Get Field Security List Matrix
@@ -182,13 +182,13 @@ $bOkToEdit = (
 ?>
 <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="card card-primary">
+        <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
                     <?= $person->getFullName() ?>
                 </h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge badge-secondary"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
+                    <span class="badge bg-secondary"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
                 </div>
             </div>
             <div class="card-body box-profile">
@@ -217,16 +217,16 @@ $bOkToEdit = (
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>
-                                <?php $genderClass = "fa-question";
+                                <?php $genderClass ="fa-question";
                                 $genderText = gettext('Unknown');
                                 if ($person->isMale()) {
-                                    $genderClass = "fa-person";
+                                    $genderClass ="fa-person";
                                     $genderText = gettext('Male');
                                 } elseif ($person->isFemale()) {
-                                    $genderClass = "fa-person-dress";
+                                    $genderClass ="fa-person-dress";
                                     $genderText = gettext('Female');
                                 } ?>
-                                <i class="fa <?= $genderClass ?> mr-2"></i>
+                                <i class="fa <?= $genderClass ?> me-2"></i>
                                 <strong><?= gettext('Gender') ?>:</strong> <?= $genderText ?>
                             </span>
                         </div>
@@ -234,7 +234,7 @@ $bOkToEdit = (
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>
-                                <i class="fa-solid fa-users mr-2"></i>
+                                <i class="fa-solid fa-users me-2"></i>
                                 <strong><?= gettext('Family Role') ?>:</strong> <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole) ?>
                             </span>
                             <?php if ($bOkToEdit) : ?>
@@ -247,13 +247,13 @@ $bOkToEdit = (
                     <li class="list-group-item">
                         <div class="d-flex justify-content-between align-items-center">
                             <span>
-                                <i class="fa-solid fa-id-card mr-2"></i>
+                                <i class="fa-solid fa-id-card me-2"></i>
                                 <strong><?= gettext('Classification') ?>:</strong> <?= gettext($sClassName) ?>
                             </span>
                         </div>
                         <?php if ($per_MembershipDate) : ?>
                         <small class="text-muted d-block mt-1">
-                            <i class="fa-solid fa-calendar-check mr-1"></i><?= gettext('Since') ?>: <?= FormatDate($per_MembershipDate, false) ?>
+                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Since') ?>: <?= FormatDate($per_MembershipDate, false) ?>
                         </small>
                         <?php endif; ?>
                     </li>
@@ -263,7 +263,7 @@ $bOkToEdit = (
         <!-- /.box -->
 
         <!-- Contact & Personal Info -->
-        <div class="card card-primary">
+        <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Contact & Personal Info') ?></h3>
             </div>
@@ -271,26 +271,26 @@ $bOkToEdit = (
                 <!-- Family Section -->
                 <?php if ($fam_ID != '' || !empty($formattedMailingAddress)) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-people-roof mr-1"></i><?= gettext('Family') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?php if ($fam_ID != '') : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-home mr-2 text-muted"></i>
+                            <i class="fa-solid fa-home me-2 text-muted"></i>
                             <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?></a>
                             <?php if ($bOkToEdit) : ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="ml-1" title="<?= gettext('Edit Family') ?>">
+                            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="ms-1" title="<?= gettext('Edit Family') ?>">
                                 <i class="fa-solid fa-pen fa-xs"></i>
                             </a>
                             <?php endif; ?>
                         </li>
                         <?php else : ?>
                         <li class="mb-2 text-muted">
-                            <i class="fa-solid fa-home mr-2"></i><?= gettext('No assigned family') ?>
+                            <i class="fa-solid fa-home me-2"></i><?= gettext('No assigned family') ?>
                         </li>
                         <?php endif; ?>
                         <?php if (!empty($formattedMailingAddress)) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-map-marker-alt mr-2 text-muted"></i>
+                            <i class="fa-solid fa-map-marker-alt me-2 text-muted"></i>
                             <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
                                 <?= $formattedMailingAddress ?>
                             </a>
@@ -300,7 +300,7 @@ $bOkToEdit = (
                         <li class="mb-2">
                             <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"
                                class="btn btn-sm btn-outline-primary">
-                                <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                                <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
                             </a>
                         </li>
                         <?php endif; ?>
@@ -327,7 +327,7 @@ $bOkToEdit = (
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
                             data-family-id="<?= $fam_ID ?>"
                             title="<?= gettext('Automatically detect coordinates using address') ?>">
-                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
                     </button>
                     <?php endif; ?>
                     <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
@@ -348,11 +348,11 @@ $bOkToEdit = (
                 <!-- Personal Information -->
                 <?php if ($dBirthDate || (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '')) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-user mr-1"></i><?= gettext('Personal') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-user me-1"></i><?= gettext('Personal') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?php if ($dBirthDate) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-birthday-cake mr-2 text-muted"></i>
+                            <i class="fa-solid fa-birthday-cake me-2 text-muted"></i>
                             <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) : ?>
                                 <span class="text-muted">(<?= $person->getAge() ?>)</span>
@@ -361,7 +361,7 @@ $bOkToEdit = (
                         <?php endif; ?>
                         <?php if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-handshake mr-2 text-muted"></i>
+                            <i class="fa-solid fa-handshake me-2 text-muted"></i>
                             <?= gettext('Friend Date') ?>: <?= FormatDate($per_FriendDate, false) ?>
                         </li>
                         <?php endif; ?>
@@ -372,25 +372,25 @@ $bOkToEdit = (
                 <!-- Phone Numbers -->
                 <?php if ($sCellPhone || $sHomePhone || $sWorkPhone) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-phone mr-1"></i><?= gettext('Phone') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-phone me-1"></i><?= gettext('Phone') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?php if ($sCellPhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-mobile-screen mr-2 text-muted"></i>
+                            <i class="fa-solid fa-mobile-screen me-2 text-muted"></i>
                             <a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a>
                             <small class="text-muted">(<?= gettext('Mobile') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sHomePhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-house mr-2 text-muted"></i>
+                            <i class="fa-solid fa-house me-2 text-muted"></i>
                             <a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a>
                             <small class="text-muted">(<?= gettext('Home') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sWorkPhone) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-briefcase mr-2 text-muted"></i>
+                            <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
@@ -402,17 +402,17 @@ $bOkToEdit = (
                 <!-- Email -->
                 <?php if ($sEmail != '' || $per_WorkEmail != '') : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope mr-1"></i><?= gettext('Email') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?php if ($sEmail != '') : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-at mr-2 text-muted"></i>
+                            <i class="fa-solid fa-at me-2 text-muted"></i>
                             <a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a>
                         </li>
                         <?php endif; ?>
                         <?php if ($per_WorkEmail != '') : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-briefcase mr-2 text-muted"></i>
+                            <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
@@ -424,23 +424,23 @@ $bOkToEdit = (
                 <!-- Social Media -->
                 <?php if (strlen($per_Facebook) > 0 || strlen($per_Twitter) > 0 || strlen($per_LinkedIn) > 0) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-share-nodes mr-1"></i><?= gettext('Social Media') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-share-nodes me-1"></i><?= gettext('Social Media') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?php if (strlen($per_Facebook) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-facebook mr-2 text-primary"></i>
+                            <i class="fa-brands fa-facebook me-2 text-primary"></i>
                             <a href="https://www.facebook.com/<?= InputUtils::sanitizeText($per_Facebook) ?>" target="_blank"><?= $per_Facebook ?></a>
                         </li>
                         <?php endif; ?>
                         <?php if (strlen($per_Twitter) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-x-twitter mr-2 text-dark"></i>
+                            <i class="fa-brands fa-x-twitter me-2 text-dark"></i>
                             <a href="https://www.twitter.com/<?= InputUtils::sanitizeText($per_Twitter) ?>" target="_blank">@<?= $per_Twitter ?></a>
                         </li>
                         <?php endif; ?>
                         <?php if (strlen($per_LinkedIn) > 0) : ?>
                         <li class="mb-2">
-                            <i class="fa-brands fa-linkedin mr-2 text-info"></i>
+                            <i class="fa-brands fa-linkedin me-2 text-info"></i>
                             <a href="https://www.linkedin.com/in/<?= InputUtils::sanitizeText($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a>
                         </li>
                         <?php endif; ?>
@@ -457,21 +457,21 @@ $bOkToEdit = (
                     $currentData = trim($aCustomData[$custom_Field]);
                     if ($currentData != '') {
                         $hasCustomFields = true;
-                        $displayIcon = "fa-solid fa-tag";
-                        $displayLink = "";
+                        $displayIcon ="fa-solid fa-tag";
+                        $displayLink ="";
                         if ($type_ID == 9) {
-                            $displayIcon = "fa-solid fa-user";
+                            $displayIcon ="fa-solid fa-user";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
                         } elseif ($type_ID == 11) {
                             $custom_Special = null;
-                            $displayIcon = "fa-solid fa-phone";
+                            $displayIcon ="fa-solid fa-phone";
                             // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
                             // Remove all other characters including spaces to prevent injection
                             $sanitizedPhone = preg_replace('/[^0-9+\-()e]/', '', $currentData);
-                            $displayLink = "tel:" . $sanitizedPhone;
+                            $displayLink ="tel:" . $sanitizedPhone;
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
-                        $customFieldsHtml .= '<i class="' . $displayIcon . ' mr-2 text-muted"></i>';
+                        $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-muted"></i>';
                         $temp_string = nl2br(displayCustomField($type_ID, $currentData, $custom_Special));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
@@ -483,8 +483,8 @@ $bOkToEdit = (
                 }
                 if ($hasCustomFields) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-info-circle mr-1"></i><?= gettext('Additional Information') ?></h6>
-                    <ul class="list-unstyled ml-3">
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-info-circle me-1"></i><?= gettext('Additional Information') ?></h6>
+                    <ul class="list-unstyled ms-3">
                         <?= $customFieldsHtml ?>
                     </ul>
                 </div>
@@ -527,40 +527,40 @@ $bOkToEdit = (
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
                         <a class="nav-link active" id="nav-item-family" href="#family" data-bs-toggle="tab">
-                            <i class="fa-solid fa-people-roof mr-1"></i><?= gettext('Family') ?>
+                            <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-timeline" href="#timeline" data-bs-toggle="tab">
-                            <i class="fa-solid fa-clock mr-1"></i><?= gettext('Timeline') ?>
+                            <i class="fa-solid fa-clock me-1"></i><?= gettext('Timeline') ?>
                         </a>
                     </li>
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-notes" href="#notes" data-bs-toggle="tab">
-                            <i class="fa-solid fa-sticky-note mr-1"></i><?= gettext('Notes') ?>
+                            <i class="fa-solid fa-sticky-note me-1"></i><?= gettext('Notes') ?>
                         </a>
                     </li>
                     <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-groups" href="#groups" data-bs-toggle="tab">
-                            <i class="fa-solid fa-users mr-1"></i><?= gettext('Groups') ?>
+                            <i class="fa-solid fa-users me-1"></i><?= gettext('Groups') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
-                            <i class="fa-solid fa-hands-helping mr-1"></i><?= gettext('Volunteer') ?>
+                            <i class="fa-solid fa-hands-helping me-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-properties" href="#properties" data-bs-toggle="tab">
-                            <i class="fa-solid fa-tags mr-1"></i><?= gettext('Properties') ?>
+                            <i class="fa-solid fa-tags me-1"></i><?= gettext('Properties') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
                     <li class="nav-item d-none" id="nav-item-mailchimp-container">
                         <a class="nav-link" id="nav-item-mailchimp" href="#mailchimp" data-bs-toggle="tab">
-                            <i class="fa-brands fa-mailchimp mr-1"></i><?= gettext('Mailchimp') ?>
+                            <i class="fa-brands fa-mailchimp me-1"></i><?= gettext('Mailchimp') ?>
                         </a>
                     </li>
                 </ul>
@@ -601,7 +601,7 @@ $bOkToEdit = (
                                                     <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                                 <?php } ?>
                                             </td>
-                                            <td class="text-right">
+                                            <td class="text-end">
                                                 <div class="btn-group" role="group">
                                                     <button class="AddToCart btn btn-sm btn-success" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
                                                         <i class="fa-solid fa-cart-plus"></i>
@@ -781,7 +781,7 @@ $bOkToEdit = (
                                         <div class="col-md-4">
                                             <p><br /></p>
                                             <!-- Info box -->
-                                            <div class="card card-info">
+                                            <div class="card">
                                                 <div class="card-header d-flex align-items-center">
                                                     <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
 
@@ -793,7 +793,7 @@ $bOkToEdit = (
                                                 // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
                                                 if ($grp_hasSpecialProps) {
                                                     // Get the special properties for this group
-                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID ." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                                                     $rsPropList = RunQuery($sSQL);
 
                                                     $sSQL = 'SELECT * FROM groupprop_' . $grp_ID . ' WHERE per_ID = ' . $iPersonID;
@@ -824,7 +824,7 @@ $bOkToEdit = (
                                                             <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
                                                             <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
                                                                 <span class="caret"></span>
-                                                                <span class="sr-only">Toggle Dropdown</span>
+                                                                <span class="visually-hidden">Toggle Dropdown</span>
                                                             </button>
                                                             <div class="dropdown-menu">
                                                                 <a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a>
@@ -869,7 +869,7 @@ $bOkToEdit = (
                                         <th><?= gettext('Property') ?></th>
                                         <th><?= gettext('Value') ?></th>
                                         <?php if ($bOkToEdit) : ?>
-                                            <th class="text-right"><?= gettext('Actions') ?></th>
+                                            <th class="text-end"><?= gettext('Actions') ?></th>
                                         <?php endif; ?>
                                     </tr>
                                 </thead>
@@ -880,11 +880,11 @@ $bOkToEdit = (
                                         $r2p_Value = '';
                                         extract($aRow); ?>
                                         <tr>
-                                            <td><span class="badge badge-info"><?= InputUtils::escapeHTML($prt_Name) ?></span></td>
+                                            <td><span class="badge bg-info"><?= InputUtils::escapeHTML($prt_Name) ?></span></td>
                                             <td><strong><?= InputUtils::escapeHTML($pro_Name) ?></strong></td>
                                             <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
                                             <?php if ($bOkToEdit) { ?>
-                                                <td class="text-right">
+                                                <td class="text-end">
                                                     <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove Property') ?>">
                                                         <i class="fa-solid fa-trash"></i>
                                                     </button>
@@ -902,13 +902,13 @@ $bOkToEdit = (
                             <div class="card mt-3">
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
-                                        <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Property') ?>
+                                        <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Assign a New Property') ?>
                                     </h5>
                                 </div>
                                 <div class="card-body">
                                     <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
                                         <div class="row">
-                                            <div class="form-group col-md-6">
+                                            <div class="mb-3 col-md-6">
                                                 <label for="input-person-properties"><?= gettext('Select Property') ?></label>
                                                 <select name="PropertyId" id="input-person-properties" class="form-control select2" data-placeholder="<?= gettext('Choose a property...') ?>">
                                                     <option value=""></option>
@@ -919,7 +919,7 @@ $bOkToEdit = (
                                                             }
                                                             while ($aRow = mysqli_fetch_array($rsProperties)) {
                                                                 extract($aRow);
-                                                                $attributes = "value=\"{$pro_ID}\" ";
+                                                                $attributes ="value=\"{$pro_ID}\"";
                                                                 if (!empty($pro_Prompt)) {
                                                                     $pro_Value = '';
                                                                     foreach ($assignedProperties as $assignedProperty) {
@@ -928,7 +928,7 @@ $bOkToEdit = (
                                                                         }
                                                                     }
                                                                     // GHSA-8r36-fvxj-26qv: Escape HTML attributes to prevent XSS
-                                                                    $attributes .= "data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\" ";
+                                                                    $attributes .="data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) ."\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) ."\"";
                                                                 }
 
                                                                 // GHSA-8r36-fvxj-26qv: Escape property name for defense in depth
@@ -936,7 +936,7 @@ $bOkToEdit = (
                                                                 if (in_array($pro_ID, $assignedPropertiesArray)) {
                                                                     $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
                                                                 }
-                                                                echo "<option {$attributes}>{$optionText}</option>";
+                                                                echo"<option {$attributes}>{$optionText}</option>";
                                                             } ?>
                                                 </select>
                                             </div>
@@ -946,7 +946,7 @@ $bOkToEdit = (
                                         <div class="row">
                                             <div class="col-12">
                                                 <button id="assign-property-btn" type="button" class="btn btn-primary">
-                                                    <i class="fa-solid fa-check mr-1"></i><?= gettext('Assign Property') ?>
+                                                    <i class="fa-solid fa-check me-1"></i><?= gettext('Assign Property') ?>
                                                 </button>
                                             </div>
                                         </div>
@@ -971,7 +971,7 @@ $bOkToEdit = (
                             echo '<th>' . gettext('Name') . '</th>';
                             echo '<th>' . gettext('Description') . '</th>';
                             if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                                echo '<th class="text-right">' . gettext('Actions') . '</th>';
+                                echo '<th class="text-end">' . gettext('Actions') . '</th>';
                             }
                             echo '</tr>';
                             echo '</thead>';
@@ -984,7 +984,7 @@ $bOkToEdit = (
                                 echo '<td>' . InputUtils::escapeHTML($vol_Description) . '</td>';
 
                                 if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                                    echo '<td class="text-right">';
+                                    echo '<td class="text-end">';
                                     echo '<a class="btn btn-sm btn-danger" href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $per_ID . '&RemoveVO=' . $vol_ID . '" title="' . gettext('Remove') . '">';
                                     echo '<i class="fa-solid fa-trash"></i>';
                                     echo '</a>';
@@ -1002,13 +1002,13 @@ $bOkToEdit = (
                             <div class="card mt-3">
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
-                                        <i class="fa-solid fa-plus-circle mr-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
+                                        <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
                                     </h5>
                                 </div>
                                 <div class="card-body">
                                     <form method="post" action="PersonView.php?PersonID=<?= $iPersonID ?>">
                                         <div class="row">
-                                            <div class="form-group col-md-6">
+                                            <div class="mb-3 col-md-6">
                                                 <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>
                                                 <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2" data-placeholder="<?= gettext('Choose opportunities...') ?>">
                                                     <?php
@@ -1024,7 +1024,7 @@ $bOkToEdit = (
                                         <div class="row">
                                             <div class="col-12">
                                                 <button type="submit" name="VolunteerOpportunityAssign" class="btn btn-primary">
-                                                    <i class="fa-solid fa-check mr-1"></i><?= gettext('Assign Opportunities') ?>
+                                                    <i class="fa-solid fa-check me-1"></i><?= gettext('Assign Opportunities') ?>
                                                 </button>
                                             </div>
                                         </div>

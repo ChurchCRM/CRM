@@ -97,14 +97,14 @@ if (isset($_POST['FundRaiserSubmit'])) {
         $sDescription = $fundraiser->getDescription();
 
 
-        $sSQL = "SELECT di_ID, di_Item, di_multibuy,
+        $sSQL ="SELECT di_ID, di_Item, di_multibuy,
         a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
         b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
         di_title, di_sellprice, di_estprice, di_materialvalue, di_minimum
         FROM donateditem_di
         LEFT JOIN person_per a ON di_donor_ID=a.per_ID
         LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-        WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
+        WHERE di_FR_ID = '" . $iFundRaiserID ."' ORDER BY di_multibuy,SUBSTR(di_item,1,1),cast(SUBSTR(di_item,2) as unsigned integer),SUBSTR(di_item,4)";
         $rsDonatedItems = RunQuery($sSQL);
         $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;        // Probably redundant
 
@@ -119,7 +119,7 @@ if (isset($_POST['FundRaiserSubmit'])) {
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="FundRaiserEditor.php?<?= ($linkBackProvided ? 'linkBack=' . urlencode($linkBack) . '&' : '') . 'FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
 
         <table cellpadding="3" width="100%">
@@ -154,23 +154,23 @@ require_once __DIR__ . '/Include/Header.php';
     </table>
 
 </div>
-<div class="card card-body">
+<div class="card-body">
     <table cellpadding="3" width="100%">
     <tr>
         <td>
         <?php
             if ($iFundRaiserID > 0) {
-                echo '<input id=addItem type=button class="btn btn-secondary" value="' . gettext('Add Donated Item') . "\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Catalog') . "\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Bid Sheets') . "\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Certificates') . "\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Batch Winner Entry') . "\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input id=addItem type=button class="btn btn-secondary" value="' . gettext('Add Donated Item') ."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Catalog') ."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Bid Sheets') ."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Certificates') ."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
+                echo '<input type=button class="btn btn-secondary" value="' . gettext('Batch Winner Entry') ."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
             }
         ?></td>
     </tr>
     </table>            
 </div>
-<div class="card card-body">
+<div class="card-body">
     <b><?= gettext('Donated items for this fundraiser') ?>:</b>
     <br>
     <div class="table-responsive">

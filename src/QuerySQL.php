@@ -73,7 +73,7 @@ function ExportQueryResults(string $sSQL, &$rsQueryResults)
             $sCSVstring .= $fieldInfo->name . ',';
         }
 
-        $sCSVstring .= "\n";
+        $sCSVstring .="\n";
 
         //Loop through the recordset
         while ($aRow = mysqli_fetch_array($rsQueryResults)) {
@@ -83,7 +83,7 @@ function ExportQueryResults(string $sSQL, &$rsQueryResults)
                 $sCSVstring .= '"' . $outStr . '",';
             }
 
-            $sCSVstring .= "\n";
+            $sCSVstring .="\n";
         }
     }
 
@@ -119,7 +119,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
 
         //Loop through the fields and write the header row
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-            //If this field is called "AddToCart", don't display this field...
+            //If this field is called"AddToCart", don't display this field...
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name != 'AddToCart') {
                 echo '  <td class="text-center">
@@ -136,7 +136,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
 
             //Loop through the fields and write each one
             for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                //If this field is called "AddToCart", add this to the hidden form field...
+                //If this field is called"AddToCart", add this to the hidden form field...
                 $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                 if ($fieldInfo->name === 'AddToCart') {
                     $aHiddenFormField[] = $aRow[$iCount];
@@ -165,7 +165,7 @@ function RunFreeQuery(string $sSQL, &$rsQueryResults)
         }
 
         echo '<p class="text-center"><a href="QueryList.php">' . gettext('Return to Query Menu') . '</a></p>';
-        echo '<br><p class="card card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', InputUtils::escapeHTML($sSQL)) . '</span></p>';
+        echo '<br><p class="card-body" style="border-style: solid; margin-left: 50px; margin-right: 50px; border-width: 1px;"><span class="SmallText">' . str_replace(chr(13), '<br>', InputUtils::escapeHTML($sSQL)) . '</span></p>';
     }
 }
 

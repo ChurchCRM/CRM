@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function initializeEmailWithout() {
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/email/without",
+                url: window.CRM.root +"/api/families/email/without",
                 dataSrc: 'families'
             },
             autoWidth: false,
@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'Name',
                     width: '40%',
                     render: function ( data, type, row ){
-                        return "<a href='"+ window.CRM.root + "/v2/family/" + row.Id + "' target='family' />"+ data + "</a></li>";
+                        return"<a href='"+ window.CRM.root +"/v2/family/" + row.Id +"' target='family' />"+ data +"</a></li>";
                     },
                     searchable: true
                 },

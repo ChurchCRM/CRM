@@ -42,8 +42,8 @@ if (isset($_POST['save'])) {
 
         // Save new setting
         $sSQL = 'UPDATE userconfig_ucfg '
-            . "SET ucfg_value='$value', ucfg_permission='$permission' "
-            . "WHERE ucfg_id='$id' AND ucfg_per_id='0' ";
+            ."SET ucfg_value='$value', ucfg_permission='$permission'"
+            ."WHERE ucfg_id='$id' AND ucfg_per_id='0'";
         $rsUpdate = RunQuery($sSQL);
         next($type);
     }
@@ -53,7 +53,7 @@ $sPageTitle = gettext('Default User Settings');
 require_once __DIR__ . '/Include/Header.php';
 
 // Get settings
-$sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
+$sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
 $rsConfigs = RunQuery($sSQL);
 ?>
 <!-- Default box -->
@@ -93,25 +93,25 @@ $rsConfigs = RunQuery($sSQL);
                             $sel1 = 'SELECTED ';
                             $sel2 = '';
                         }
-                        echo "<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
-                        echo "<option value=\"FALSE\" $sel1>" . gettext('False');
-                        echo "<option value=\"TRUE\" $sel2>" . gettext('True') . '
+                        echo"<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
+                        echo"<option value=\"FALSE\" $sel1>" . gettext('False');
+                        echo"<option value=\"TRUE\" $sel2>" . gettext('True') . '
                         </select></td>';
 
                         // Variable Name & Type
-                        echo "<td class=\"LabelColumn\">$ucfg_name</td>";
+                        echo"<td class=\"LabelColumn\">$ucfg_name</td>";
 
                         // Current Value
                         if ($ucfg_type == 'text') {
-                            echo "<td class=\"TextColumnWithBottomBorder\">
+                            echo"<td class=\"TextColumnWithBottomBorder\">
             <input type=text size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
-            value=\"" . InputUtils::escapeHTML($ucfg_value) . "\"></td>";
+            value=\"" . InputUtils::escapeHTML($ucfg_value) ."\"></td>";
                         } elseif ($ucfg_type == 'textarea') {
-                            echo "<td class=\"TextColumnWithBottomBorder\">
+                            echo"<td class=\"TextColumnWithBottomBorder\">
             <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
                                 . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                         } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
-                            echo "<td class=\"TextColumnWithBottomBorder\">
+                            echo"<td class=\"TextColumnWithBottomBorder\">
             <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\"
             value=\"$ucfg_value\"></td>";
                         } elseif ($ucfg_type == 'boolean') {
@@ -122,16 +122,16 @@ $rsConfigs = RunQuery($sSQL);
                                 $sel1 = 'SELECTED ';
                                 $sel2 = '';
                             }
-                            echo "<td class=\"TextColumnWithBottomBorder\">
+                            echo"<td class=\"TextColumnWithBottomBorder\">
                 <select name=\"new_value[$ucfg_id]\">
-                <option value=\"\" $sel1>" . gettext('False') . "
+                <option value=\"\" $sel1>" . gettext('False') ."
                 <option value=\"1\" $sel2>" . gettext('True') . '
                 </select></td>';
                         }
 
                         // Notes
-                        echo "<td><input type=hidden name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-        " . gettext($ucfg_tooltip) . '</td></tr>';
+                        echo"<td><input type=hidden name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
+" . gettext($ucfg_tooltip) . '</td></tr>';
 
                         $r++;
                     }
@@ -139,7 +139,7 @@ $rsConfigs = RunQuery($sSQL);
                     ?>
                     <tr>
                         <td colspan='3' class='text-center'>
-                            <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?> ">
+                            <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?>">
                             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn"><?= gettext('Cancel') ?></a>
                         </td>
                     </tr>

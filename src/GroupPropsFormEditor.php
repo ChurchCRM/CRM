@@ -33,10 +33,10 @@ $sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $g
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
+<div class="card-body">
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, propId, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
             bootbox.confirm({
@@ -122,12 +122,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $temp = 'false';
                 }
 
-                $sSQL = "UPDATE groupprop_master
-                    SET `prop_Name` = '" . $aNameFields[$iPropID] . "',
-                        `prop_Description` = '" . $aDescFields[$iPropID] . "',
-                        `prop_Special` = " . $aSpecialFields[$iPropID] . ",
-                        `prop_PersonDisplay` = '" . $temp . "'
-                    WHERE `grp_ID` = '" . $iGroupID . "' AND `prop_ID` = '" . $iPropID . "';";
+                $sSQL ="UPDATE groupprop_master
+                    SET `prop_Name` = '" . $aNameFields[$iPropID] ."',
+                        `prop_Description` = '" . $aDescFields[$iPropID] ."',
+                        `prop_Special` =" . $aSpecialFields[$iPropID] .",
+                        `prop_PersonDisplay` = '" . $temp ."'
+                    WHERE `grp_ID` = '" . $iGroupID ."' AND `prop_ID` = '" . $iPropID ."';";
 
                 RunQuery($sSQL);
             }
@@ -184,15 +184,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial = "'$newListID'";
+                        $newSpecial ="'$newListID'";
                     } else {
                         $newSpecial = 'NULL';
                     }
 
                     // Insert into the master table
-                    $sSQL = "INSERT INTO `groupprop_master`
+                    $sSQL ="INSERT INTO `groupprop_master`
                             ( `grp_ID` , `prop_ID` , `prop_Field` , `prop_Name` , `prop_Description` , `type_ID` , `prop_Special` )
-                            VALUES ('" . $iGroupID . "', '" . $newRowNum . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', '" . $newFieldDesc . "', '" . $newFieldType . "', $newSpecial);";
+                            VALUES ('" . $iGroupID ."', '" . $newRowNum ."', 'c" . $newFieldNum ."', '" . $newFieldName ."', '" . $newFieldDesc ."', '" . $newFieldType ."', $newSpecial);";
                     RunQuery($sSQL);
 
                     // Insert into the group-specific properties table
@@ -200,7 +200,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                     switch ($newFieldType) {
                         case 1:
-                            $sSQL .= "ENUM('false', 'true')";
+                            $sSQL .="ENUM('false', 'true')";
                             break;
                         case 2:
                             $sSQL .= 'DATE';
@@ -218,7 +218,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             $sSQL .= 'YEAR';
                             break;
                         case 7:
-                            $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                            $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
                             break;
                         case 8:
                             $sSQL .= 'INT';
@@ -379,7 +379,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ?>
                         <tr>
                             <td>
-                                <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                                <span class="badge bg-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                             </td>
                             <td>
                                 <input type="text" name="<?= $row ?>name" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control form-control-sm" maxlength="40">

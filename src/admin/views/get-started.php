@@ -15,7 +15,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
     <!-- ── Hero ──────────────────────────────────────────────── -->
     <div class="gs-hero mb-4">
-        <h2><i class="fa-solid fa-rocket mr-2"></i><?= gettext('Get Your Data Into ChurchCRM') ?></h2>
+        <h2><i class="fa-solid fa-rocket me-2"></i><?= gettext('Get Your Data Into ChurchCRM') ?></h2>
         <p><?= gettext('Choose how you\'d like to populate your database. You can always use a different method later.') ?></p>
     </div>
 
@@ -94,7 +94,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
     <div class="gs-plugin-strip mb-4">
         <span class="gs-plugin-strip-label">
-            <i class="fa-solid fa-plug mr-1"></i><?= gettext('Plugins') ?>
+            <i class="fa-solid fa-plug me-1"></i><?= gettext('Plugins') ?>
         </span>
 
         <?php if ($isMailChimpActive): ?>
@@ -104,7 +104,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                title="<?= gettext('Import contacts from your MailChimp audiences') ?>">
                 <i class="fa-brands fa-mailchimp text-warning"></i>
                 MailChimp
-                <span class="badge badge-success"><?= gettext('Active') ?></span>
+                <span class="badge bg-success"><?= gettext('Active') ?></span>
             </a>
         <?php else: ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"
@@ -113,7 +113,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
                 <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
                 MailChimp
-                <span class="badge badge-light border"><?= gettext('Enable') ?></span>
+                <span class="badge bg-light border"><?= gettext('Enable') ?></span>
             </a>
         <?php endif; ?>
 

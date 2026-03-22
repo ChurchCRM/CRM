@@ -5,7 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Password Reset");
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
 <style>
@@ -58,12 +58,12 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     margin-bottom: 30px;
   }
 
-  .form-group {
+  .mb-3 {
     margin-bottom: 20px;
     text-align: left;
   }
 
-  .form-group label {
+  .mb-3 label {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -71,7 +71,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     margin-bottom: 8px;
   }
 
-  .form-group input {
+  .mb-3 input {
     width: 100%;
     padding: 12px 16px;
     border: 1px solid #ddd;
@@ -81,13 +81,13 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     font-family: inherit;
   }
 
-  .form-group input:focus {
+  .mb-3 input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 
-  .form-group input::placeholder {
+  .mb-3 input::placeholder {
     color: #999;
   }
 
@@ -166,7 +166,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     <p><?= gettext('Enter your login name and we will email you a link to reset your password.') ?></p>
 
     <form id="resetPasswordForm">
-      <div class="form-group">
+      <div class="mb-3">
         <label for="username"><?= gettext('Login Name') ?></label>
         <input 
           id="username" 
@@ -238,4 +238,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
         });
     </script>
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

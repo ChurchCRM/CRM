@@ -5,18 +5,18 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
 $sPageTitle = gettext("Family Registration");
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 
 ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/family-register.min.css') ?>">
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM = {
-        root: "<?= SystemURLs::getRootPath() ?>",
-        churchWebSite: "<?= SystemURLs::getRootPath() ?>/",
+        root:"<?= SystemURLs::getRootPath() ?>",
+        churchWebSite:"<?= SystemURLs::getRootPath() ?>/",
         phoneFormats: {
-            home: "<?= SystemConfig::getValue('sPhoneFormat') ?>",
-            cell: "<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
-            work: "<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"
+            home:"<?= SystemConfig::getValue('sPhoneFormat') ?>",
+            cell:"<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
+            work:"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"
         }
     };
 </script>
@@ -28,21 +28,21 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
     <div class="card registration-card">
         <div id="registration-stepper" class="bs-stepper">
             <div class="bs-stepper-header" role="tablist">
-                <div class="step" data-target="#step-family-info">
+                <div class="step" data-bs-target="#step-family-info">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-family-info" id="step-family-info-trigger">
                         <span class="bs-stepper-circle">1</span>
                         <span class="bs-stepper-label"><?= gettext("Family Info") ?></span>
                     </button>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-target="#step-members">
+                <div class="step" data-bs-target="#step-members">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-members" id="step-members-trigger">
                         <span class="bs-stepper-circle">2</span>
                         <span class="bs-stepper-label"><?= gettext("Members") ?></span>
                     </button>
                 </div>
                 <div class="line"></div>
-                <div class="step" data-target="#step-review">
+                <div class="step" data-bs-target="#step-review">
                     <button type="button" class="step-trigger" role="tab" aria-controls="step-review" id="step-review-trigger">
                         <span class="bs-stepper-circle">3</span>
                         <span class="bs-stepper-label"><?= gettext("Review") ?></span>
@@ -56,7 +56,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                             <h4 class="text-center"><?= gettext('Family Information') ?></h4>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="familyName"><?= gettext('Family Name') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -67,7 +67,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                             <div class="invalid-feedback"></div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="familyAddress1"><?= gettext('Address') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -79,12 +79,12 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="mb-3 col-md-6">
                                 <label for="familyCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
                                 <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="mb-3 col-md-6">
                                 <label for="familyState"><?= gettext('State') ?></label>
                                 <div id="familyStateContainer">
                                     <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValue('sDefaultState') ?>" data-default="<?= SystemConfig::getValue('sDefaultState') ?>">
@@ -93,25 +93,25 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="mb-3 col-md-6">
                                 <label for="familyZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
                                 <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>" required>
                                 <div class="invalid-feedback"></div>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="mb-3 col-md-6">
                                 <label for="familyCountry"><?= gettext('Country') ?></label>
                                 <select id="familyCountry" name="familyCountry" class="form-control select2" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                                 </select>
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="familyHomePhone"><?= gettext('Home Phone') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                 </div>
-                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
+                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
                                 <div class="input-group-append">
                                     <div class="input-group-text">
                                         <div class="custom-control custom-checkbox mb-0">
@@ -128,7 +128,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                             <small><span class="text-danger">*</span> <?= gettext('Required fields') ?></small>
                         </div>
 
-                        <div class="form-group mt-4 mb-0">
+                        <div class="mb-3 mt-4 mb-0">
                             <button type="button" class="btn btn-primary btn-lg" id="family-info-next">
                                 <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
                             </button>
@@ -155,23 +155,23 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                                 <i class="fa-solid fa-chevron-down"></i>
                                             </button>
                                             <h5 class="mb-0">
-                                                <i class="fa-solid fa-user mr-2"></i>
+                                                <i class="fa-solid fa-user me-2"></i>
                                                 <span class="member-display-name"><?= gettext('Next Member') ?></span>
                                             </h5>
                                         </div>
                                         <button type="button" class="btn btn-sm btn-outline-danger remove-member-btn" style="display: none;">
-                                            <i class="fa-solid fa-trash mr-1"></i><?= gettext('Remove') ?>
+                                            <i class="fa-solid fa-trash me-1"></i><?= gettext('Remove') ?>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="card-body member-card-body" style="display: none;">
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
                                             <input class="form-control member-first-name" maxlength="50" placeholder="<?= gettext('First name') ?>" required>
                                             <div class="invalid-feedback"></div>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('Last Name') ?> <span class="text-danger">*</span></label>
                                             <input class="form-control member-last-name" maxlength="50" placeholder="<?= gettext('Last name') ?>" required>
                                             <div class="invalid-feedback"></div>
@@ -179,7 +179,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('Role in Family') ?></label>
                                             <select class="form-control member-role">
                                                 <?php foreach ($familyRoles as $role) { ?>
@@ -187,7 +187,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                                 <?php } ?>
                                             </select>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('Gender') ?></label>
                                             <select class="form-control member-gender">
                                                 <option value="1"><?= gettext('Male') ?></option>
@@ -196,7 +196,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="mb-3">
                                         <label><?= gettext('Email Address') ?></label>
                                         <div class="input-group">
                                             <div class="input-group-prepend">
@@ -208,13 +208,13 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('Phone Number') ?></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 </div>
-                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
                                                         <div class="custom-control custom-checkbox mb-0">
@@ -226,7 +226,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                             </div>
                                             <div class="invalid-feedback"></div>
                                         </div>
-                                        <div class="form-group col-md-6">
+                                        <div class="mb-3 col-md-6">
                                             <label><?= gettext('Phone Type') ?></label>
                                             <select class="form-control member-phone-type">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
@@ -236,7 +236,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-7">
+                                        <div class="mb-3 col-md-7">
                                             <label><?= gettext('Birthday') ?></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
@@ -245,7 +245,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                                 <input type="text" class="form-control inputDatePicker member-birthday" placeholder="<?= gettext('Select date') ?>">
                                             </div>
                                         </div>
-                                        <div class="form-group col-md-5">
+                                        <div class="mb-3 col-md-5">
                                             <label class="d-block">&nbsp;</label>
                                             <div class="custom-control custom-checkbox mt-2">
                                                 <input type="checkbox" class="custom-control-input member-hide-age">
@@ -262,7 +262,7 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         <!-- Add member button -->
                         <div class="mb-4">
                             <button type="button" class="btn btn-success btn-lg" id="add-member-btn">
-                                <i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Family Member') ?>
+                                <i class="fa-solid fa-plus me-2"></i><?= gettext('Add Family Member') ?>
                             </button>
                         </div>
 
@@ -270,9 +270,9 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                             <small><span class="text-danger">*</span> <?= gettext('Required fields') ?></small>
                         </div>
 
-                        <div class="form-group mt-4 mb-0">
+                        <div class="mb-3 mt-4 mb-0">
                             <button type="button" class="btn btn-secondary btn-lg me-2" id="members-previous">
-                                <i class="fa-solid fa-arrow-left mr-2"></i><?= gettext('Previous') ?>
+                                <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
                             <button type="button" class="btn btn-primary btn-lg" id="members-next">
                                 <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
@@ -286,20 +286,20 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
                         <div class="card mb-4">
                             <div class="card-header bg-primary text-white">
-                                <h5 class="mb-0"><i class="fa-solid fa-home mr-2"></i><span id="displayFamilyName"></span> <?= gettext("Family") ?></h5>
+                                <h5 class="mb-0"><i class="fa-solid fa-home me-2"></i><span id="displayFamilyName"></span> <?= gettext("Family") ?></h5>
                             </div>
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="mb-2">
-                                            <strong><i class="fa-solid fa-map-marker-alt mr-2 text-primary"></i><?= gettext("Address") ?>:</strong><br />
-                                            <span id="displayFamilyAddress" class="ml-4"></span>
+                                            <strong><i class="fa-solid fa-map-marker-alt me-2 text-primary"></i><?= gettext("Address") ?>:</strong><br />
+                                            <span id="displayFamilyAddress" class="ms-4"></span>
                                         </p>
                                     </div>
                                     <div class="col-md-6">
                                         <p class="mb-2">
-                                            <strong><i class="fa-solid fa-phone mr-2 text-primary"></i><?= gettext("Phone") ?>:</strong><br />
-                                            <span id="displayFamilyPhone" class="ml-4"></span>
+                                            <strong><i class="fa-solid fa-phone me-2 text-primary"></i><?= gettext("Phone") ?>:</strong><br />
+                                            <span id="displayFamilyPhone" class="ms-4"></span>
                                         </p>
                                     </div>
                                 </div>
@@ -308,13 +308,13 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 
                         <div class="card">
                             <div class="card-header bg-secondary text-white">
-                                <h5 class="mb-0"><i class="fa-solid fa-users mr-2"></i><?= gettext("Family Members") ?></h5>
+                                <h5 class="mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext("Family Members") ?></h5>
                             </div>
                             <div class="card-body p-0">
                                 <!-- Desktop/table view (md and up) -->
                                 <div class="table-responsive d-none d-md-block">
                                     <table class="table table-striped table-hover mb-0">
-                                        <thead class="thead-light">
+                                        <thead class="table-light">
                                             <tr>
                                                 <th><?= gettext("First Name") ?></th>
                                                 <th><?= gettext("Last Name") ?></th>
@@ -343,26 +343,26 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                                         <div id="displayFamilyPersonCard<?= $x ?>" class="card mb-3 d-none border-0 shadow-none">
                                             <div class="card-body bg-white p-3">
                                                 <div class="d-flex align-items-center mb-2">
-                                                    <i id="displayFamilyPersonCardGenderIcon<?= $x ?>" class="fa-solid fa-user text-primary mr-2"></i>
+                                                    <i id="displayFamilyPersonCardGenderIcon<?= $x ?>" class="fa-solid fa-user text-primary me-2"></i>
                                                     <h6 class="card-title mb-0">
                                                         <span id="displayFamilyPersonCardFName<?= $x ?>"></span>
                                                         <span id="displayFamilyPersonCardLName<?= $x ?>"></span>
                                                     </h6>
                                                 </div>
                                                 <div id="displayFamilyPersonCardEmailBlock<?= $x ?>" class="mb-2 d-none">
-                                                    <i class="fa-solid fa-envelope text-muted mr-2"></i>
+                                                    <i class="fa-solid fa-envelope text-muted me-2"></i>
                                                     <strong><?= gettext('Email') ?>:</strong>
-                                                    <div class="ml-4"><span id="displayFamilyPersonCardEmail<?= $x ?>"></span></div>
+                                                    <div class="ms-4"><span id="displayFamilyPersonCardEmail<?= $x ?>"></span></div>
                                                 </div>
                                                 <div id="displayFamilyPersonCardPhoneBlock<?= $x ?>" class="mb-2 d-none">
-                                                    <i class="fa-solid fa-phone text-muted mr-2"></i>
+                                                    <i class="fa-solid fa-phone text-muted me-2"></i>
                                                     <strong><?= gettext('Phone') ?>:</strong>
-                                                    <div class="ml-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
+                                                    <div class="ms-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
                                                 </div>
                                                 <div id="displayFamilyPersonCardBDayBlock<?= $x ?>" class="mb-0 d-none">
-                                                    <i class="fa-solid fa-birthday-cake text-muted mr-2"></i>
+                                                    <i class="fa-solid fa-birthday-cake text-muted me-2"></i>
                                                     <strong><?= gettext('Birthday') ?>:</strong>
-                                                    <div class="ml-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
+                                                    <div class="ms-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
                                                 </div>
                                             </div>
                                         </div>
@@ -372,16 +372,16 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="alert alert-info mt-4" role="alert">
-                            <i class="fa-solid fa-info-circle mr-2"></i>
+                            <i class="fa-solid fa-info-circle me-2"></i>
                             <?= gettext('Please review all information carefully before submitting. You can go back to make changes if needed.') ?>
                         </div>
 
-                        <div class="form-group mt-4 mb-0">
+                        <div class="mb-3 mt-4 mb-0">
                             <button type="button" class="btn btn-secondary btn-lg me-2" id="review-previous">
                                 <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
                             <button type="button" class="btn btn-success btn-lg" id="submit-registration">
-                                <i class="fa-solid fa-check-circle mr-2"></i><?= gettext('Submit Registration') ?>
+                                <i class="fa-solid fa-check-circle me-2"></i><?= gettext('Submit Registration') ?>
                             </button>
                         </div>
                     </div>
@@ -397,4 +397,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 <script src="<?= SystemURLs::assetVersioned('/skin/js/FamilyRegister.js') ?>"></script>
 
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

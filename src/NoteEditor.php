@@ -100,7 +100,7 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <form method="post">
-  <div class="card card-primary">
+  <div class="card">
     <div class="card-body">
 
       <p class="text-center">

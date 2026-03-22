@@ -99,7 +99,7 @@ if ($EventID > 0) {
 
 <?php if ($iAddedCount > 0): ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <i class="fa-solid fa-check-circle mr-2"></i>
+    <i class="fa-solid fa-check-circle me-2"></i>
     <strong><?= $iAddedCount ?></strong> <?= ngettext('person', 'people', $iAddedCount) ?> <?= gettext('added to this event') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -109,16 +109,16 @@ if ($EventID > 0) {
 <!-- Direct Event Access - Show event info bar with option to change -->
 <div class="alert alert-info d-flex justify-content-between align-items-center mb-3">
     <span>
-        <i class="fas fa-calendar-check mr-2"></i>
+        <i class="fas fa-calendar-check me-2"></i>
         <strong><?= gettext('Event') ?>:</strong> <?= InputUtils::escapeHTML($event->getTitle()) ?> 
         <span class="text-muted">(<?= $event->getStart('M j, Y') ?>)</span>
     </span>
     <div>
-        <a href="EventEditor.php?EID=<?= $EventID ?>" class="btn btn-sm btn-outline-primary mr-2">
-            <i class="fas fa-pen mr-1"></i><?= gettext('Edit Event') ?>
+        <a href="EventEditor.php?EID=<?= $EventID ?>" class="btn btn-sm btn-outline-primary me-2">
+            <i class="fas fa-pen me-1"></i><?= gettext('Edit Event') ?>
         </a>
         <a href="Checkin.php" class="btn btn-sm btn-outline-secondary">
-            <i class="fas fa-exchange-alt mr-1"></i><?= gettext('Change Event') ?>
+            <i class="fas fa-exchange-alt me-1"></i><?= gettext('Change Event') ?>
         </a>
     </div>
 </div>
@@ -128,7 +128,7 @@ if ($EventID > 0) {
     <input type="hidden" name="EventTypeID" id="EventTypeIDHidden" value="<?= $eventTypeId ?>">
     <div class="row">
         <div class="col-12">
-            <div class="card card-primary">
+            <div class="card">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><?= gettext('Select Event for Check-In') ?></h3>
                 </div>
@@ -136,12 +136,12 @@ if ($EventID > 0) {
                     <div class="row">
                         <!-- Event Type Filter -->
                         <div class="col-md-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventTypeFilter"><?= gettext('Filter by Type'); ?></label>
                                 <select id="EventTypeFilter" class="form-control" onchange="filterByType(this.value)">
                                     <option value="0"><?= gettext('All Event Types') ?></option>
                                     <?php foreach ($eventTypes as $type) { ?>
-                                        <option value="<?= $type->getId() ?>" <?= ($eventTypeId == $type->getId()) ? "selected" : "" ?>>
+                                        <option value="<?= $type->getId() ?>" <?= ($eventTypeId == $type->getId()) ?"selected" :"" ?>>
                                             <?= InputUtils::escapeHTML($type->getName()) ?>
                                         </option>
                                     <?php } ?>
@@ -151,12 +151,12 @@ if ($EventID > 0) {
 
                         <!-- Event Selector -->
                         <div class="col-md-8">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventID"><?= gettext('Select Event'); ?></label>
                                 <select id="EventID" name="EventID" class="form-control" onchange="this.form.submit()">
-                                    <option value="" disabled <?= ($EventID == 0) ? "selected" : "" ?>><?= gettext('Select event') ?></option>
+                                    <option value="" disabled <?= ($EventID == 0) ?"selected" :"" ?>><?= gettext('Select event') ?></option>
                                     <?php foreach ($activeEvents as $evt) { ?>
-                                        <option value="<?= $evt->getId() ?>" <?= ($EventID == $evt->getId()) ? "selected" : "" ?>>
+                                        <option value="<?= $evt->getId() ?>" <?= ($EventID == $evt->getId()) ?"selected" :"" ?>>
                                             <?= InputUtils::escapeHTML($evt->getTitle()) ?> (<?= $evt->getStart('M j, Y') ?>)
                                         </option>
                                     <?php } ?>
@@ -166,9 +166,9 @@ if ($EventID > 0) {
                     </div>
 
                     <div class="row">
-                        <div class="col-12 text-right">
+                        <div class="col-12 text-end">
                             <a class="btn btn-primary" href="EventEditor.php">
-                                <i class="fa-solid fa-plus mr-1"></i><?= gettext('Add New') . ' ' . gettext('Event'); ?>
+                                <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New') . ' ' . gettext('Event'); ?>
                             </a>
                         </div>
                     </div>
@@ -186,7 +186,7 @@ if ($EventID > 0) {
 if (!$CheckoutOrDelete &&  $EventID > 0) {
 ?>
 
-    <form class="well form-horizontal" method="post" action="Checkin.php" id="AddAttendees" data-toggle="validator"
+    <form class="well form-horizontal" method="post" action="Checkin.php" id="AddAttendees" data-bs-toggle="validator"
         role="form">
         <input type="hidden" id="EventID" name="EventID" value="<?= $EventID; ?>">
         <input type="hidden" id="child-id" name="child-id">
@@ -194,7 +194,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 
         <div class="row">
             <div class="col-12">
-                <div class="card card-primary">
+                <div class="card">
                     <div class="card-header bg-primary">
                         <h3 class="card-title mb-0"><?= gettext('Check In Person'); ?></h3>
                         <div class="event-meta mt-2">
@@ -212,9 +212,9 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                         <div class="row">
                             <!-- Left Column: Person Being Checked In -->
                             <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    <label for="child" class="control-label font-weight-bold">
-                                        <i class="fa-solid fa-user text-primary mr-1"></i>
+                                <div class="mb-3 mb-3">
+                                    <label for="child" class="control-label fw-bold">
+                                        <i class="fa-solid fa-user text-primary me-1"></i>
                                         <?= gettext("Person Checking In") ?> <span class="text-danger">*</span>
                                     </label>
                                     <select class="form-control person-search" id="child"
@@ -226,9 +226,9 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
 
                             <!-- Right Column: Adult Supervisor (Optional) -->
                             <div class="col-md-6">
-                                <div class="form-group mb-3">
-                                    <label for="adult" class="control-label font-weight-bold">
-                                        <i class="fa-solid fa-user-shield text-secondary mr-1"></i>
+                                <div class="mb-3 mb-3">
+                                    <label for="adult" class="control-label fw-bold">
+                                        <i class="fa-solid fa-user-shield text-secondary me-1"></i>
                                         <?= gettext('Checked In By') ?> <span class="text-muted small">(<?= gettext('optional'); ?>)</span>
                                     </label>
                                     <select class="form-control person-search" id="adult"
@@ -242,8 +242,8 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                         <!-- Action Buttons -->
                         <div class="row mt-3">
                             <div class="col-12">
-                                <button type="submit" class="btn btn-success btn-lg mr-2" name="CheckIn" tabindex="3">
-                                    <i class="fa-solid fa-check mr-1"></i> <?= gettext('Check In'); ?>
+                                <button type="submit" class="btn btn-success btn-lg me-2" name="CheckIn" tabindex="3">
+                                    <i class="fa-solid fa-check me-1"></i> <?= gettext('Check In'); ?>
                                 </button>
                                 <button type="reset" class="btn btn-outline-secondary" name="Cancel" tabindex="4">
                                     <?= gettext('Clear'); ?>
@@ -284,7 +284,7 @@ if (isset($_POST['EventID']) && isset($_POST['child-id']) && (isset($_POST['Chec
 
     //Checkout Update
     if (isset($_POST['CheckOut'])) {
-        $values = "checkout_date=NOW(), checkout_id=" . ($iAdultID ? "'" . $iAdultID . "'" : 'null');
+        $values ="checkout_date=NOW(), checkout_id=" . ($iAdultID ?"'" . $iAdultID ."'" : 'null');
         $attendee = EventAttendQuery::create()
             ->filterByEventId($EventID)
             ->findOneByPersonId($iChildID);
@@ -315,14 +315,14 @@ if (
 
     $formTitle = (isset($_POST['CheckOutBtn']) ? gettext("CheckOut Person") : gettext("Delete Checkin in Entry")); ?>
 
-    <form class="well form-horizontal" method="post" action="Checkin.php" id="CheckOut" data-toggle="validator"
+    <form class="well form-horizontal" method="post" action="Checkin.php" id="CheckOut" data-bs-toggle="validator"
         role="form">
         <input type="hidden" name="EventID" value="<?= $EventID ?>">
         <input type="hidden" name="child-id" value="<?= $iChildID ?>">
 
         <div class="row">
             <div class="col-12">
-                <div class="card card-primary">
+                <div class="card">
                     <div class="card-header d-flex align-items-center">
                         <h3 class="card-title"><?= $formTitle ?></h3>
                     </div>
@@ -337,16 +337,16 @@ if (
                             if (isset($_POST['CheckOutBtn'])) {
                             ?>
                                 <div class="col-md-6 col-sm-12">
-                                    <div class="form-group mb-3">
-                                        <label class="font-weight-bold"><?= gettext('Adult Checking Out Person') ?>:</label>
+                                    <div class="mb-3 mb-3">
+                                        <label class="fw-bold"><?= gettext('Adult Checking Out Person') ?>:</label>
                                         <small class="form-text text-muted mb-2"><?= gettext('Optional - leave blank if not tracking') ?></small>
                                         <select class="form-control person-search" id="adultout" name="adult"
                                             data-placeholder="<?= gettext('Search for adult...') ?>">
                                         </select>
                                         <input type="hidden" id="adultout-id" name="adult-id">
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <input type="submit" class="btn btn-success btn-lg mr-2"
+                                    <div class="mb-3 mb-0">
+                                        <input type="submit" class="btn btn-success btn-lg me-2"
                                             value="<?= gettext('✓ CheckOut') ?>" name="CheckOut">
                                         <input type="submit" class="btn btn-outline-secondary btn-lg" value="<?= gettext('Cancel') ?>"
                                             name="CheckoutCancel">
@@ -357,11 +357,11 @@ if (
                             ?>
                                 <div class="col-md-6 col-sm-12">
                                     <div class="alert alert-warning mb-3">
-                                        <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+                                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
                                         <?= gettext('Are you sure you want to delete this check-in record?') ?>
                                     </div>
-                                    <div class="form-group mb-0">
-                                        <input type="submit" class="btn btn-danger btn-lg mr-2"
+                                    <div class="mb-3 mb-0">
+                                        <input type="submit" class="btn btn-danger btn-lg me-2"
                                             value="<?= gettext('Delete') ?>" name="Delete">
                                         <input type="submit" class="btn btn-outline-secondary btn-lg" value="<?= gettext('Cancel') ?>"
                                             name="DeleteCancel">
@@ -381,7 +381,7 @@ if (
 // Populate data table - show when event is selected (via POST or GET)
 if ($EventID > 0) {
 ?>
-    <div class="card card-primary">
+    <div class="card">
         <div class="card-header bg-primary">
             <h3 class="card-title"><?= gettext('People Checked In'); ?></h3>
         </div>
@@ -390,10 +390,10 @@ if ($EventID > 0) {
                 <thead class="table-light">
                     <tr>
                         <th><?= gettext('Name') ?></th>
-                        <th><i class="fa-solid fa-door-open mr-1"></i><?= gettext('Checked In Time') ?></th>
-                        <th><i class="fa-solid fa-user-check mr-1"></i><?= gettext('Checked In By') ?></th>
-                        <th><i class="fa-solid fa-door-closed mr-1"></i><?= gettext('Checked Out Time') ?></th>
-                        <th><i class="fa-solid fa-user-xmark mr-1"></i><?= gettext('Checked Out By') ?></th>
+                        <th><i class="fa-solid fa-door-open me-1"></i><?= gettext('Checked In Time') ?></th>
+                        <th><i class="fa-solid fa-user-check me-1"></i><?= gettext('Checked In By') ?></th>
+                        <th><i class="fa-solid fa-door-closed me-1"></i><?= gettext('Checked Out Time') ?></th>
+                        <th><i class="fa-solid fa-user-xmark me-1"></i><?= gettext('Checked Out By') ?></th>
                         <th class="text-nowrap"><?= gettext('Action') ?></th>
                     </tr>
                 </thead>
@@ -413,7 +413,7 @@ if ($EventID > 0) {
                         $sPerson = $checkedInPerson->getFullName();
 
                         //Get Person who checked person in
-                        $sCheckinby = "";
+                        $sCheckinby ="";
                         if ($per->getCheckinId()) {
                             $checkedInBy = PersonQuery::create()
                                 ->findOneById($per->getCheckinId());
@@ -421,7 +421,7 @@ if ($EventID > 0) {
                         }
 
                         //Get Person who checked person out
-                        $sCheckoutby = "";
+                        $sCheckoutby ="";
                         if ($per->getCheckoutId()) {
                             $checkedOutBy = PersonQuery::create()
                                 ->findOneById($per->getCheckoutId());
@@ -489,11 +489,11 @@ function filterByType(typeId) {
 function loadPerson($iPersonID)
 {
     if ($iPersonID == 0) {
-        echo "";
+        echo"";
     }
     $person = PersonQuery::create()
         ->findOneById($iPersonID);
-    $familyRole = "(";
+    $familyRole ="(";
     if ($person->getFamId()) {
         if ($person->getFamilyRole()) {
             $familyRole .= $person->getFamilyRoleName();

@@ -128,7 +128,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <?php if (isset($sGlobalMessage) && !empty($sGlobalMessage)) { ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         $("document").ready(function () {
-            showGlobalMessage("<?= $sGlobalMessage ?>", "<?= $sGlobalMessageClass ?>");
+            showGlobalMessage("<?= $sGlobalMessage ?>","<?= $sGlobalMessageClass ?>");
         });
     </script>
 <?php } ?>

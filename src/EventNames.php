@@ -39,30 +39,30 @@ if (isset($_POST['Action'])) {
             $eCntNum = count($eCntArray);
             $theID = $_POST['theID'];
 
-            $insert = "INSERT INTO event_types (type_name";
-            $values = " VALUES ('" . InputUtils::legacyFilterInput($eName) . "'";
+            $insert ="INSERT INTO event_types (type_name";
+            $values =" VALUES ('" . InputUtils::legacyFilterInput($eName) ."'";
             if (!empty($eTime)) {
-                $insert .= ", type_defstarttime";
-                $values .= ",'" . InputUtils::legacyFilterInput($eTime) . "'";
+                $insert .=", type_defstarttime";
+                $values .=",'" . InputUtils::legacyFilterInput($eTime) ."'";
             }
             if (!empty($eRecur)) {
-                $insert .= ", type_defrecurtype";
-                $values .= ",'" . InputUtils::legacyFilterInput($eRecur) . "'";
+                $insert .=", type_defrecurtype";
+                $values .=",'" . InputUtils::legacyFilterInput($eRecur) ."'";
             }
             if (!empty($eDOW)) {
-                $insert .= ", type_defrecurDOW";
-                $values .= ",'" . InputUtils::legacyFilterInput($eDOW) . "'";
+                $insert .=", type_defrecurDOW";
+                $values .=",'" . InputUtils::legacyFilterInput($eDOW) ."'";
             }
             if (!empty($eDOM)) {
-                $insert .= ", type_defrecurDOM";
-                $values .= ",'" . InputUtils::legacyFilterInput($eDOM) . "'";
+                $insert .=", type_defrecurDOM";
+                $values .=",'" . InputUtils::legacyFilterInput($eDOM) ."'";
             }
             if (!empty($eDOY)) {
-                $insert .= ", type_defrecurDOY";
-                $values .= ",'" . InputUtils::legacyFilterInput($eDOY) . "'";
+                $insert .=", type_defrecurDOY";
+                $values .=",'" . InputUtils::legacyFilterInput($eDOY) ."'";
             }
-            $insert .= ")";
-            $values .= ")";
+            $insert .=")";
+            $values .=")";
 
             $sSQL = $insert . $values;
             RunQuery($sSQL);
@@ -70,7 +70,7 @@ if (isset($_POST['Action'])) {
 
             for ($j = 0; $j < $eCntNum; $j++) {
                 $cCnt = ltrim(rtrim($eCntArray[$j]));
-                $sSQL = "INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) . "','" . InputUtils::legacyFilterInput($cCnt) . "') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
+                $sSQL ="INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) ."','" . InputUtils::legacyFilterInput($cCnt) ."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
                 RunQuery($sSQL);
             }
             RedirectUtils::redirect('EventNames.php');
@@ -78,9 +78,9 @@ if (isset($_POST['Action'])) {
 
         case 'DELETE':
             $theID = $_POST['theID'];
-            $sSQL = "DELETE FROM event_types WHERE type_id='" . InputUtils::legacyFilterInput($theID) . "' LIMIT 1";
+            $sSQL ="DELETE FROM event_types WHERE type_id='" . InputUtils::legacyFilterInput($theID) ."' LIMIT 1";
             RunQuery($sSQL);
-            $sSQL = "DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($theID) . "'";
+            $sSQL ="DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($theID) ."'";
             RunQuery($sSQL);
             $theID = '';
             $_POST['Action'] = '';
@@ -132,7 +132,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     // repeats on DOW, DOM or DOY
     //
     // new - check the count definitions table for a list of count fields
-    $cSQL = "SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
+    $cSQL ="SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
     $cOpps = RunQuery($cSQL);
     $numCounts = mysqli_num_rows($cOpps);
     if ($numCounts) {
@@ -151,9 +151,9 @@ for ($row = 1; $row <= $numRows; $row++) {
 
 if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
-  <div class='card card-primary mb-4'>
+  <div class='card mb-4'>
     <div class='card-header'>
-      <h3 class="card-title mb-0"><i class="fas fa-plus mr-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?></h3>
+      <h3 class="card-title mb-0"><i class="fas fa-plus me-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?></h3>
     </div>
     <div class='card-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST">
@@ -161,14 +161,14 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
         
         <div class="row">
           <div class="col-md-6">
-            <div class="form-group">
-              <label for="newEvtName" class="font-weight-bold"><?= gettext('Event Type Name') ?> <span class="text-danger">*</span></label>
+            <div class="mb-3">
+              <label for="newEvtName" class="fw-bold"><?= gettext('Event Type Name') ?> <span class="text-danger">*</span></label>
               <input class="form-control" type="text" name="newEvtName" id="newEvtName" value="" maxlength="35" placeholder="<?= gettext('e.g., Sunday School, Bible Study...') ?>" autofocus required>
             </div>
           </div>
           <div class="col-md-6">
-            <div class="form-group">
-              <label for="newEvtStartTime" class="font-weight-bold"><?= gettext('Default Start Time') ?></label>
+            <div class="mb-3">
+              <label for="newEvtStartTime" class="fw-bold"><?= gettext('Default Start Time') ?></label>
               <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
                 <select class="form-control" id="newEvtHour" name="newEvtHour" style="width: 70px;">
                   <?php
@@ -198,8 +198,8 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
           </div>
         </div>
 
-        <div class="form-group">
-          <label class="font-weight-bold"><?= gettext('Recurrence Pattern') ?></label>
+        <div class="mb-3">
+          <label class="fw-bold"><?= gettext('Recurrence Pattern') ?></label>
           <div class="event-recurrence-patterns border rounded p-3 bg-light">
             <div class="form-check mb-2">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurNone" value="none" checked>
@@ -207,7 +207,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             </div>
             <div class="form-check mb-2 d-flex align-items-center">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurWeekly" value="weekly">
-              <label class="form-check-label mr-2" for="recurWeekly"><?= gettext('Weekly on') ?></label>
+              <label class="form-check-label me-2" for="recurWeekly"><?= gettext('Weekly on') ?></label>
               <select name="newEvtRecurDOW" class="form-control form-control-sm" style="width: 150px;" disabled>
                 <option value="1"><?= gettext('Sundays') ?></option>
                 <option value="2"><?= gettext('Mondays') ?></option>
@@ -220,7 +220,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             </div>
             <div class="form-check mb-2 d-flex align-items-center">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurMonthly" value="monthly">
-              <label class="form-check-label mr-2" for="recurMonthly"><?= gettext('Monthly on the') ?></label>
+              <label class="form-check-label me-2" for="recurMonthly"><?= gettext('Monthly on the') ?></label>
               <select name="newEvtRecurDOM" class="form-control form-control-sm" style="width: 100px;" disabled>
                 <?php for ($kk = 1; $kk <= 31; $kk++) {
                     $DOM = date('jS', mktime(0, 0, 0, 1, $kk, 2000)); ?>
@@ -230,14 +230,14 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             </div>
             <div class="form-check d-flex align-items-center">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurYearly" value="yearly">
-              <label class="form-check-label mr-2" for="recurYearly"><?= gettext('Yearly on') ?></label>
+              <label class="form-check-label me-2" for="recurYearly"><?= gettext('Yearly on') ?></label>
               <input type="text" class="form-control form-control-sm" name="newEvtRecurDOY" style="width: 150px;" placeholder="YYYY-MM-DD" data-provide="datepicker" disabled>
             </div>
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="newEvtTypeCntLst" class="font-weight-bold"><?= gettext('Attendance Count Categories') ?></label>
+        <div class="mb-3">
+          <label for="newEvtTypeCntLst" class="fw-bold"><?= gettext('Attendance Count Categories') ?></label>
           <input class="form-control" type="text" name="newEvtTypeCntLst" id="newEvtTypeCntLst" value="" maxlength="50" placeholder="<?= gettext('Members, Visitors, Children') ?>">
           <small class="form-text text-muted">
             <?= gettext('Enter comma-separated count categories (e.g., Members, Visitors, Children).') ?>
@@ -247,10 +247,10 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
         <hr>
         <div class="d-flex justify-content-between">
           <a href="EventNames.php" class="btn btn-outline-secondary">
-            <i class="fas fa-times mr-1"></i><?= gettext('Cancel') ?>
+            <i class="fas fa-times me-1"></i><?= gettext('Cancel') ?>
           </a>
           <button type="submit" name="Action" value="CREATE" class="btn btn-primary">
-            <i class="fas fa-save mr-1"></i><?= gettext('Save Event Type') ?>
+            <i class="fas fa-save me-1"></i><?= gettext('Save Event Type') ?>
           </button>
         </div>
       </form>
@@ -268,7 +268,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     <div class="card-tools ms-auto">
       <form name="AddEventNames" action="EventNames.php" method="POST" class="mb-0">
         <button type="submit" name="Action" value="NEW" class="btn btn-primary btn-sm">
-          <i class="fas fa-plus mr-1"></i><?= gettext('Add Event Type') ?>
+          <i class="fas fa-plus me-1"></i><?= gettext('Add Event Type') ?>
         </button>
       </form>
     </div>
@@ -309,7 +309,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                 <form name="CreateEvent" action="EventEditor.php" method="POST" class="d-inline">
                   <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
                   <button type="submit" name="Action" value="<?= gettext('Create Event') ?>" class="btn btn-success btn-sm" title="<?= gettext('Create Event') ?>">
-                    <i class="fas fa-plus mr-1"></i><?= gettext('Create') ?>
+                    <i class="fas fa-plus me-1"></i><?= gettext('Create') ?>
                   </button>
                 </form>
                 <a href="EditEventTypes.php?EN_tyid=<?= $aTypeID[$row] ?>" class="btn btn-outline-secondary btn-sm" title="<?= gettext('Edit') ?>">

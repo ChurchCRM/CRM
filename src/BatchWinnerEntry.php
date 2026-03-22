@@ -40,9 +40,9 @@ if (isset($_POST['EnterWinners'])) {
 }
 
 // Get Items for the drop-down
-$sDonatedItemsSQL = "SELECT di_ID, di_Item, di_title
+$sDonatedItemsSQL ="SELECT di_ID, di_Item, di_title
                      FROM donateditem_di
-                     WHERE di_FR_ID = '" . $iCurrentFundraiser . "' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
+                     WHERE di_FR_ID = '" . $iCurrentFundraiser ."' ORDER BY SUBSTR(di_Item,1,1), CONVERT(SUBSTR(di_Item,2,3),SIGNED)";
 $rsDonatedItems = RunQuery($sDonatedItemsSQL);
 
 //Get Paddles for the drop-down
@@ -57,7 +57,7 @@ $rsPaddles = RunQuery($sPaddleSQL);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card-body">
 <form method="post" action="BatchWinnerEntry.php?<?= 'CurrentFundraiser=' . '&linkBack=' . $linkBack ?>" name="BatchWinnerEntry">
 <div class="table-responsive">
 <table class="table mx-auto">
@@ -70,22 +70,22 @@ require_once __DIR__ . '/Include/Header.php';
 for ($row = 0; $row < 10; $row += 1) {
     echo '<tr>';
     echo '<td>';
-    echo '<select name="Item' . $row . "\">\n";
-    echo '<option value="0" selected>' . gettext('Unassigned') . "</option>\n";
+    echo '<select name="Item' . $row ."\">\n";
+    echo '<option value="0" selected>' . gettext('Unassigned') ."</option>\n";
 
     mysqli_data_seek($rsDonatedItems, 0);
     while ($itemArr = mysqli_fetch_array($rsDonatedItems)) {
         $di_ID = $itemArr['di_ID'];
         $di_Item = $itemArr['di_Item'];
         $di_title = $itemArr['di_title'];
-        echo '<option value="' . (int)$di_ID . '">' . InputUtils::escapeHTML($di_Item) . ' ' . InputUtils::escapeHTML($di_title) . "</option>\n";
+        echo '<option value="' . (int)$di_ID . '">' . InputUtils::escapeHTML($di_Item) . ' ' . InputUtils::escapeHTML($di_title) ."</option>\n";
     }
-    echo "</select>\n";
+    echo"</select>\n";
     echo '</td>';
 
     echo '<td>';
-    echo '<select name="Paddle' . $row . "\">\n";
-    echo '<option value="0" selected>' . gettext('Unassigned') . "</option>\n";
+    echo '<select name="Paddle' . $row ."\">\n";
+    echo '<option value="0" selected>' . gettext('Unassigned') ."</option>\n";
 
     mysqli_data_seek($rsPaddles, 0);
     while ($paddleArr = mysqli_fetch_array($rsPaddles)) {
@@ -93,12 +93,12 @@ for ($row = 0; $row < 10; $row += 1) {
         $pn_Num = $paddleArr['pn_Num'];
         $buyerFirstName = $paddleArr['buyerFirstName'];
         $buyerLastName = $paddleArr['buyerLastName'];
-        echo '<option value="' . (int)$pn_per_ID . '">' . (int)$pn_Num . ' ' . InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName) . "</option>\n";
+        echo '<option value="' . (int)$pn_per_ID . '">' . (int)$pn_Num . ' ' . InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName) ."</option>\n";
     }
-    echo "</select>\n";
+    echo"</select>\n";
     echo '</td>';
 
-    echo "<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice$row\" id=\"SellPrice\"$row value=\"\"></td>\n";
+    echo"<td class=\"TextColumn\"><input type=\"text\" name=\"SellPrice$row\" id=\"SellPrice\"$row value=\"\"></td>\n";
     echo '</tr>';
 }
 ?>

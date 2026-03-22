@@ -15,7 +15,7 @@ $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $iCurrentFundraiser = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'CurrentFundraiser'));
 
 if ($iDonatedItemID > 0) {
-    $sSQL = "SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
+    $sSQL ="SELECT * FROM donateditem_di WHERE di_ID = '$iDonatedItemID'";
     $rsDonatedItem = RunQuery($sSQL);
     $theDonatedItem = mysqli_fetch_array($rsDonatedItem);
     $iCurrentFundraiser = $theDonatedItem['di_FR_ID'];
@@ -122,7 +122,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
         //Editing....
         //Get all the data on this record
 
-        $sSQL = "SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
+        $sSQL ="SELECT di_ID, di_Item, di_multibuy, di_donor_ID, di_buyer_ID,
                            a.per_FirstName as donorFirstName, a.per_LastName as donorLastName,
                            b.per_FirstName as buyerFirstName, b.per_LastName as buyerLastName,
                            di_title, di_description, di_sellprice, di_estprice, di_materialvalue,
@@ -130,7 +130,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
              FROM donateditem_di
              LEFT JOIN person_per a ON di_donor_ID=a.per_ID
              LEFT JOIN person_per b ON di_buyer_ID=b.per_ID
-             WHERE di_ID = '" . $iDonatedItemID . "'";
+             WHERE di_ID = '" . $iDonatedItemID ."'";
         $rsDonatedItem = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsDonatedItem));
 
@@ -177,12 +177,12 @@ require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <form method="post" action="DonatedItemEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&DonatedItemID=' . $iDonatedItemID . '&linkBack=' . $linkBack; ?>" name="DonatedItemEditor">
-    <div class="card card-primary">
+    <div class="card">
         <div class="card-body">
-            <div class="form-group">
+            <div class="mb-3">
                 <div class="row">
                     <div class="col-md-4 col-md-offset-2 col-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Item') ?>:</label>
                             <input type="text" name="Item" id="Item" value="<?= $sItem ?>" class="form-control">
                         </div>
@@ -194,7 +194,7 @@ require_once __DIR__ . '/Include/Header.php';
                             </label>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Donor'); ?>:</label>
                             <select name="Donor" id="Donor" class="form-control select2">
                                 <option value="0" selected><?= gettext('Unassigned') ?></option>
@@ -218,22 +218,22 @@ require_once __DIR__ . '/Include/Header.php';
                             });
                         </script>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Title') ?>:</label>
                             <input type="text" name="Title" id="Title" value="<?= InputUtils::escapeAttribute($sTitle) ?>" class="form-control" />
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Estimated Price') ?>:</label>
                             <input type="text" name="EstPrice" id="EstPrice" value="<?= $nEstPrice ?>" class="form-control">
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Material Value') ?>:</label>
                             <input type="text" name="MaterialValue" id="MaterialValue" value="<?= $nMaterialValue ?>" class="form-control">
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Minimum Price') ?>:</label>
                             <input type="text" name="MinimumPrice" id="MinimumPrice" value="<?= $nMinimumPrice ?>" class="form-control">
                         </div>
@@ -241,7 +241,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
 
                     <div class="col-md-4 col-6">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Buyer') ?>:</label>
                             <?php if ($bMultibuy) {
                                 echo gettext('Multiple');
@@ -265,12 +265,12 @@ require_once __DIR__ . '/Include/Header.php';
                                 </select>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Final Price') ?>:</label>
                             <input type="text" name="SellPrice" id="SellPrice" value="<?= $nSellPrice ?>" class="form-control">
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Replicate item') ?></label>
                             <div class="input-group">
                                 <input type="text" name="NumberCopies" id="NumberCopies" value="0" class="form-control">
@@ -283,18 +283,18 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
 
                     <div class="col-md-6 col-md-offset-2 col-12">
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Description') ?>:</label>
                             <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>
                         </div>
 
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label><?= gettext('Picture URL') ?>:</label>
                             <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sPictureURL) ?></textarea>
                         </div>
 
                         <?php if ($sPictureURL != '') : ?>
-                            <div class="form-group"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" /></div>
+                            <div class="mb-3"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" /></div>
                         <?php endif; ?>
 
                     </div>
@@ -302,7 +302,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div> <!-- row -->
             </div>
 
-            <div class="form-group text-center">
+            <div class="mb-3 text-center">
                 <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="DonatedItemSubmit">
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) : ?>
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Save and Add'); ?>" name="DonatedItemSubmitAndAdd">

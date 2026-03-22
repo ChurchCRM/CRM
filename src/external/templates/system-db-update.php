@@ -10,14 +10,14 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext('Version Mismatch');
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
 <div class="container" style="max-width:720px; margin-top:48px;">
     <div class="card">
         <div class="card-body">
             <div class="d-flex align-items-start">
-                <div class="mr-3"><i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i></div>
+                <div class="me-3"><i class="fa-solid fa-triangle-exclamation fa-2x text-danger"></i></div>
                 <div>
                     <?php if (!empty($errorMessage)) { ?>
                         <h3 class="mb-1"><?= gettext('Database Upgrade Failed') ?></h3>
@@ -53,4 +53,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
 </div>
 
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

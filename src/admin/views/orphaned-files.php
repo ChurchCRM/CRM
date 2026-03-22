@@ -14,24 +14,24 @@ $hasOrphanedFiles = $orphanedCount > 0;
         <div class="card">
             <div class="card-header bg-danger text-white">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Orphaned Files Management') ?>
+                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Orphaned Files Management') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <h5><i class="fa fa-info-circle mr-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
+                    <h5><i class="fa fa-info-circle me-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
                     <p class="mb-0"><?= gettext('Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities.') ?></p>
                 </div>
 
                 <?php if ($hasOrphanedFiles): ?>
                     <div class="alert alert-danger">
-                        <strong><i class="fa fa-exclamation-triangle mr-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
+                        <strong><i class="fa fa-exclamation-triangle me-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Review the files below and delete them to improve security.') ?></p>
                     </div>
 
                     <div class="mb-3">
                         <button type="button" class="btn btn-danger btn-lg" id="deleteAllOrphanedFiles">
-                            <i class="fa fa-trash mr-2"></i><?= gettext('Delete All Orphaned Files') ?>
+                            <i class="fa fa-trash me-2"></i><?= gettext('Delete All Orphaned Files') ?>
                         </button>
                         <button type="button" class="btn btn-secondary ms-2" id="refreshOrphanedFiles">
                             <i class="fa fa-sync me-2"></i><?= gettext('Refresh List') ?>
@@ -40,7 +40,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
                     <div class="table-responsive">
                         <table class="table table-sm table-striped table-hover" id="orphanedFilesTable">
-                            <thead class="thead-dark">
+                            <thead class="table-dark">
                                 <tr>
                                     <th style="width: 5%;">#</th>
                                     <th><?= gettext('File Path') ?></th>
@@ -62,12 +62,12 @@ $hasOrphanedFiles = $orphanedCount > 0;
                     </div>
 
                     <div class="alert alert-warning mt-3">
-                        <strong><i class="fa fa-shield-alt mr-2"></i><?= gettext('Security Recommendation') ?></strong>
+                        <strong><i class="fa fa-shield-alt me-2"></i><?= gettext('Security Recommendation') ?></strong>
                         <p class="mb-0"><?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security.') ?></p>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-success">
-                        <i class="fa fa-check-circle mr-2"></i>
+                        <i class="fa fa-check-circle me-2"></i>
                         <strong><?= gettext('No Orphaned Files Found') ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Your ChurchCRM installation is clean. All files on the server match the official release.') ?></p>
                     </div>
@@ -75,10 +75,10 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
                 <div class="mt-3">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-outline-secondary">
-                        <i class="fa fa-arrow-left mr-2"></i><?= gettext('Back to Debug Info') ?>
+                        <i class="fa fa-arrow-left me-2"></i><?= gettext('Back to Debug Info') ?>
                     </a>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/" class="btn btn-outline-primary ml-2">
-                        <i class="fa fa-tools mr-2"></i><?= gettext('Admin Dashboard') ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/" class="btn btn-outline-primary ms-2">
+                        <i class="fa fa-tools me-2"></i><?= gettext('Admin Dashboard') ?>
                     </a>
                 </div>
             </div>
@@ -92,7 +92,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="deleteConfirmModalLabel">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Confirm Deletion') ?>
+                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Confirm Deletion') ?>
                 </h5>
                     <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -222,14 +222,14 @@ $hasOrphanedFiles = $orphanedCount > 0;
         // Summary
         if (deletedCount > 0) {
             html += '<div class="alert alert-success">';
-            html += '<i class="fa fa-check-circle mr-2"></i>';
+            html += '<i class="fa fa-check-circle me-2"></i>';
             html += '<strong>' + i18next.t('Successfully deleted') + ': ' + deletedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
 
         if (failedCount > 0) {
             html += '<div class="alert alert-danger">';
-            html += '<i class="fa fa-times-circle mr-2"></i>';
+            html += '<i class="fa fa-times-circle me-2"></i>';
             html += '<strong>' + i18next.t('Failed to delete') + ': ' + failedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
@@ -268,7 +268,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
         if (deletedCount === 0 && failedCount === 0) {
             html += '<div class="alert alert-info">';
-            html += '<i class="fa fa-info-circle mr-2"></i>';
+            html += '<i class="fa fa-info-circle me-2"></i>';
             html += i18next.t('No files were deleted.');
             html += '</div>';
         }

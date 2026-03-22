@@ -21,17 +21,17 @@ $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 switch ($sAction) {
     // Move a field up:  Swap the custom_Order (ordering) of the selected row and the one above it
     case 'up':
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID - 1) . "'";
+        $sSQL ="UPDATE person_custom_master SET custom_Order = '" . $iOrderID ."' WHERE custom_Order = '" . ($iOrderID - 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID - 1) . "' WHERE custom_Field = '" . $sField . "'";
+        $sSQL ="UPDATE person_custom_master SET custom_Order = '" . ($iOrderID - 1) ."' WHERE custom_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
 
         // Move a field down:  Swap the custom_Order (ordering) of the selected row and the one below it
     case 'down':
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . $iOrderID . "' WHERE custom_Order = '" . ($iOrderID + 1) . "'";
+        $sSQL ="UPDATE person_custom_master SET custom_Order = '" . $iOrderID ."' WHERE custom_Order = '" . ($iOrderID + 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE person_custom_master SET custom_Order = '" . ($iOrderID + 1) . "' WHERE custom_Field = '" . $sField . "'";
+        $sSQL ="UPDATE person_custom_master SET custom_Order = '" . ($iOrderID + 1) ."' WHERE custom_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
 

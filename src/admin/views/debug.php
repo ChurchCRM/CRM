@@ -19,7 +19,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingInstallation">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseInstallation" aria-expanded="false" aria-controls="collapseInstallation" style="cursor: pointer;">
-                    <i class="fa fa-cubes mr-2"></i><?= gettext('ChurchCRM Installation') ?>
+                    <i class="fa fa-cubes me-2"></i><?= gettext('ChurchCRM Installation') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -38,35 +38,35 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         <td><?= gettext('Root Path') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getRootPath() ?: '(empty - top level)' ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getRootPath() ?: '' ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getRootPath() ?: '' ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Document Root') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getDocumentRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getDocumentRoot() ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getDocumentRoot() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Base URL') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getURL() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getURL() ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getURL() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Images Root') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= SystemURLs::getImagesRoot() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= SystemURLs::getImagesRoot() ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= SystemURLs::getImagesRoot() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                     <tr>
                         <td><?= gettext('DSN') ?></td>
                         <td>
                             <code class="text-monospace" style="word-break:break-all; font-size: 0.85rem;"><?= Bootstrapper::getDSN() ?></code>
-                            <button type="button" class="btn btn-sm btn-outline-secondary ml-2 copy-btn" data-copy="<?= Bootstrapper::getDSN() ?>"><?= gettext('Copy') ?></button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary ms-2 copy-btn" data-copy="<?= Bootstrapper::getDSN() ?>"><?= gettext('Copy') ?></button>
                         </td>
                     </tr>
                 </table>
@@ -84,21 +84,21 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
             <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
                 <h4 class="mb-0">
-                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('Application Integrity') ?>
+                    <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
-                        <span class="badge badge-light ml-2"><?= $failingCount ?></span>
+                        <span class="badge bg-light ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>
                 </h4>
             </div>
             <div class="card-body">
                 <?php if ($integrityPassed): ?>
-                    <p><i class="fa fa-check-circle text-success mr-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
+                    <p><i class="fa fa-check-circle text-success me-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
                     <p class="text-muted small mb-0"><?= gettext('File signatures match the official release.') ?></p>
                 <?php else: ?>
                     <p><?= sprintf(gettext('%d files have failed integrity validation.'), $failingCount) ?></p>
                     <p class="text-muted small"><?= gettext('Files may be modified or missing. Consider re-deploying from an official release.') ?></p>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-warning btn-block">
-                        <i class="fa fa-cloud-upload-alt mr-2"></i><?= gettext('System Upgrade') ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-warning w-100">
+                        <i class="fa fa-cloud-upload-alt me-2"></i><?= gettext('System Upgrade') ?>
                     </a>
                 <?php endif; ?>
             </div>
@@ -114,15 +114,15 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card border-danger">
             <div class="card-header bg-danger text-white">
                 <h4 class="mb-0">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Orphaned Files') ?>
-                    <span class="badge badge-light ml-2"><?= $orphanedCount ?></span>
+                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Orphaned Files') ?>
+                    <span class="badge bg-light ms-2"><?= $orphanedCount ?></span>
                 </h4>
             </div>
             <div class="card-body">
                 <p><?= sprintf(gettext('%d orphaned files were detected on your server.'), $orphanedCount) ?></p>
                 <p class="text-muted small"><?= gettext('These files are not part of the official release and may pose security risks.') ?></p>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger btn-block">
-                    <i class="fa fa-trash mr-2"></i><?= gettext('Manage Orphaned Files') ?>
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-danger w-100">
+                    <i class="fa fa-trash me-2"></i><?= gettext('Manage Orphaned Files') ?>
                 </a>
             </div>
         </div>
@@ -132,7 +132,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingPrerequisites">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
-                    <i class="fa fa-check-circle mr-2"></i><?= gettext('Application Prerequisites') ?>
+                    <i class="fa fa-check-circle me-2"></i><?= gettext('Application Prerequisites') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -147,7 +147,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
                     ?>
                         <tr>
-                            <td><i class="fa <?= $iconClass ?> mr-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
+                            <td><i class="fa <?= $iconClass ?> me-2"></i><a href='<?= $prerequisite->getWikiLink() ?>' target="_blank" rel="noopener noreferrer"><?= $prerequisite->getName() ?></a></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -161,7 +161,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         $iconClass = $isOk ? 'fa-check text-success' : 'fa-times text-danger';
                     ?>
                         <tr>
-                            <td><i class="fa <?= $iconClass ?> mr-2"></i><?= $prerequisite->getName() ?></td>
+                            <td><i class="fa <?= $iconClass ?> me-2"></i><?= $prerequisite->getName() ?></td>
                         </tr>
                     <?php } ?>
                 </table>
@@ -178,18 +178,18 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
             <div class="card-header <?= $localeDetected ? 'bg-success' : 'bg-warning' ?> text-white" id="headingLocaleSupport">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
-                    <i class="fa fa-globe mr-2"></i><?= gettext('Locale Support') ?>
+                    <i class="fa fa-globe me-2"></i><?= gettext('Locale Support') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
             <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
             <div class="card-body">
                 <div class="alert <?= $localeInfo['systemLocaleDetected'] ? 'alert-success' : 'alert-warning' ?> mb-3">
-                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> mr-2"></i>
+                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> me-2"></i>
                     <strong><?= gettext('System Locale Support') ?></strong><br>
                     <small><?= InputUtils::escapeHTML($localeInfo['systemLocaleSupportSummary']) ?></small>
                 </div>
-                <h6 class="text-muted mb-3"><i class="fa fa-language mr-2"></i><?= gettext('ChurchCRM Supported Locales') ?></h6>
+                <h6 class="text-muted mb-3"><i class="fa fa-language me-2"></i><?= gettext('ChurchCRM Supported Locales') ?></h6>
                 <table class="table table-sm mb-0">
                     <thead>
                         <tr>
@@ -207,9 +207,9 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <?php if ($locale['systemAvailable']): ?>
-                                            <span class="badge badge-success"><i class="fa fa-check mr-1"></i><?= gettext('Yes') ?></span>
+                                            <span class="badge bg-success"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                         <?php else: ?>
-                                            <span class="badge badge-secondary"><i class="fa fa-times mr-1"></i><?= gettext('No') ?></span>
+                                            <span class="badge bg-secondary"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -230,7 +230,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingSystemConfig">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseSystemConfig" aria-expanded="false" aria-controls="collapseSystemConfig" style="cursor: pointer;">
-                    <i class="fa fa-cogs mr-2"></i><?= gettext('System & Configuration') ?>
+                    <i class="fa fa-cogs me-2"></i><?= gettext('System & Configuration') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -274,14 +274,14 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                         <td><?= gettext('Valid Settings') ?></td>
                         <td>
                             <?php if (SystemConfig::hasValidMailServerSettings()): ?>
-                                <i class="fa fa-check text-success mr-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-primary ml-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
+                                <i class="fa fa-check text-success me-2"></i><span class="text-success"><?= gettext('Yes') ?></span>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-primary ms-2" title="<?= gettext('Email Debug Info') ?>">
+                                    <i class="fa fa-envelope me-1"></i><?= gettext('Debug') ?>
                                 </a>
                             <?php else: ?>
-                                <i class="fa fa-times text-danger mr-2"></i><span class="text-danger"><?= gettext('No') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-danger ml-2" title="<?= gettext('Email Debug Info') ?>">
-                                    <i class="fa fa-envelope mr-1"></i><?= gettext('Debug') ?>
+                                <i class="fa fa-times text-danger me-2"></i><span class="text-danger"><?= gettext('No') ?></span>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-sm btn-outline-danger ms-2" title="<?= gettext('Email Debug Info') ?>">
+                                    <i class="fa fa-envelope me-1"></i><?= gettext('Debug') ?>
                                 </a>
                             <?php endif; ?>
                         </td>
@@ -302,11 +302,11 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingTimezone">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
-                    <i class="fa fa-clock mr-2"></i><?= gettext('Timezone Information') ?>
+                    <i class="fa fa-clock me-2"></i><?= gettext('Timezone Information') ?>
                     <?php if ($serverConfigMismatch): ?>
-                        <i class="fa fa-exclamation-triangle text-warning ml-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                        <i class="fa fa-exclamation-triangle text-warning ms-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
                     <?php else: ?>
-                        <i class="fa fa-exclamation-triangle text-warning ml-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                        <i class="fa fa-exclamation-triangle text-warning ms-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
                     <?php endif; ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
@@ -320,7 +320,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                 <small class="text-muted d-block"><?= gettext('System Config') ?> (sTimeZone)</small>
                                 <strong class="h6 mb-0"><?= InputUtils::escapeHTML($configuredTimezone ?: gettext('Not set')) ?></strong>
                             </div>
-                            <span class="badge badge-primary"><?= gettext('Baseline') ?></span>
+                            <span class="badge bg-primary"><?= gettext('Baseline') ?></span>
                         </div>
                     </div>
                     
@@ -333,13 +333,13 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                 <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
                             </div>
                             <?php if ($serverConfigMismatch): ?>
-                                <span class="badge badge-warning" title="<?= gettext('Does not match system config') ?>">
+                                <span class="badge bg-warning" title="<?= gettext('Does not match system config') ?>">
                                     <i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>
                                 </span>
                             <?php elseif (!empty($configuredTimezone)): ?>
-                                <span class="badge badge-success"><i class="fa fa-check"></i></span>
+                                <span class="badge bg-success"><i class="fa fa-check"></i></span>
                             <?php else: ?>
-                                <span class="badge badge-secondary"><?= gettext('Default') ?></span>
+                                <span class="badge bg-secondary"><?= gettext('Default') ?></span>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -358,7 +358,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                     
                     <!-- Summary -->
                     <div class="p-3" id="timezone-summary">
-                        <small class="text-muted"><i class="fa fa-spinner fa-spin mr-1"></i><?= gettext('Comparing timezones...') ?></small>
+                        <small class="text-muted"><i class="fa fa-spinner fa-spin me-1"></i><?= gettext('Comparing timezones...') ?></small>
                     </div>
                 </div>
             </div>
@@ -368,7 +368,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingPHP">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePHP" aria-expanded="false" aria-controls="collapsePHP" style="cursor: pointer;">
-                    <i class="fa fa-code mr-2"></i><?= gettext('PHP Configuration') ?>
+                    <i class="fa fa-code me-2"></i><?= gettext('PHP Configuration') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -408,7 +408,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingWebServer">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseWebServer" aria-expanded="false" aria-controls="collapseWebServer" style="cursor: pointer;">
-                    <i class="fa fa-globe mr-2"></i><?= gettext('Web Server') ?>
+                    <i class="fa fa-globe me-2"></i><?= gettext('Web Server') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -458,8 +458,8 @@ EOD;
     };
 
     if (
-        document.readyState === "complete" ||
-        (document.readyState !== "loading" && !document.documentElement.doScroll)
+        document.readyState ==="complete" ||
+        (document.readyState !=="loading" && !document.documentElement.doScroll)
     ) {
         callback();
     } else {
@@ -503,11 +503,11 @@ EOD;
         var $headerAlert = $('#tz-header-alert');
         
         if (browserMatchesBaseline) {
-            $badge.removeClass('badge-warning badge-secondary').addClass('badge-success')
+            $badge.removeClass('bg-warning bg-secondary').addClass('bg-success')
                   .html('<i class="fa fa-check"></i>');
             $row.removeClass('bg-warning-light');
         } else {
-            $badge.removeClass('badge-success badge-secondary').addClass('badge-warning')
+            $badge.removeClass('bg-success bg-secondary').addClass('bg-warning')
                   .html('<i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>');
             $row.addClass('bg-warning-light');
             // Show alert icon in card header
@@ -527,9 +527,9 @@ EOD;
         
         var summaryHtml = '';
         if (issueCount === 0) {
-            summaryHtml = '<span class="text-success"><i class="fa fa-check-circle mr-1"></i><?= gettext('All timezones match') ?></span>';
+            summaryHtml = '<span class="text-success"><i class="fa fa-check-circle me-1"></i><?= gettext('All timezones match') ?></span>';
         } else {
-            summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle mr-1"></i>' + 
+            summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle me-1"></i>' + 
                           issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
             if (!browserMatchesBaseline) {
                 summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';

@@ -51,7 +51,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
-    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
+    $sSQL ="SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
     $rsOpps = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOpps);
     extract($aRow);
@@ -81,7 +81,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                                     <th><?= gettext('Description') ?></th>
                                 </tr>
                                 <tr>
-                                    <td><span class="badge badge-secondary"><?= $vol_Order ?></span></td>
+                                    <td><span class="badge bg-secondary"><?= $vol_Order ?></span></td>
                                     <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
                                     <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
                                 </tr>
@@ -91,23 +91,23 @@ if ($sAction === 'delete' && $iOpp > 0) {
                         $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
                         $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
                         $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
-                        $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
+                        $sSQL .="WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
                         $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
                         $rsPeople = RunQuery($sSQL);
                         $numRows = mysqli_num_rows($rsPeople);
                         if ($numRows > 0) {
-                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') . "!</strong> " . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
-                            echo "<div class='ml-3 mb-3'>";
+                            echo"<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') ."!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') ."</div>";
+                            echo"<div class='ms-3 mb-3'>";
                             for ($i = 0; $i < $numRows; $i++) {
                                 $aRow = mysqli_fetch_array($rsPeople);
                                 extract($aRow);
-                                echo "<div><i class='fa-solid fa-person'></i> " . InputUtils::escapeHTML($per_FirstName) . " " . InputUtils::escapeHTML($per_LastName) . "</div>";
+                                echo"<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($per_FirstName) ."" . InputUtils::escapeHTML($per_LastName) ."</div>";
                             }
-                            echo "</div>";
+                            echo"</div>";
                         }
                         ?>
                         <div class="d-flex justify-content-center mt-4">
-                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline mr-2">
+                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline me-2">
                                 <input type="hidden" name="act" value="ConfDelete">
                                 <input type="hidden" name="Opp" value="<?= $iOpp ?>">
                                 <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
@@ -144,16 +144,16 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
     }
 
     // get the order value for the record being deleted
-    $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
+    $sSQL ="SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
     $rsOrder = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOrder);
     $orderVal = $aRow[0];
-    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
+    $sSQL ="DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
     RunQuery($sSQL);
-    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp . "'";
+    $sSQL ="DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
     RunQuery($sSQL);
     // pull back all the vol_Order fields that are higher than the one just deleted
-    $sSQL = "UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
+    $sSQL ="UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
     RunQuery($sSQL);
 }
 
@@ -171,7 +171,7 @@ if ($iRowNum === 0) {
     // If we find a '0' add it to the end of the list by changing it to
     // MAX(vol_Order)+1.
 
-    $sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
+    $sSQL ="SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0'";
     $sSQL .= 'ORDER BY `vol_ID`';
     $rsOrder = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOrder);
@@ -419,7 +419,7 @@ if (isset($_POST['SaveChanges'])) {
                         for ($row = 1; $row <= $numRows; $row++) {
                             if (array_key_exists($row, $aNameFields)) {
                                 echo '<tr>';
-                                echo '<td><span class="badge badge-secondary">' . $row . '</span></td>';
+                                echo '<td><span class="badge bg-secondary">' . $row . '</span></td>';
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'name" value="' . InputUtils::escapeAttribute($aNameFields[$row]) . '" class="form-control form-control-sm" maxlength="30">';
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {

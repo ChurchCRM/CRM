@@ -23,18 +23,18 @@ if (isset($_POST['Submit'])) {
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="TaxReport.php">
-        <div class="form-group row">
+        <div class="mb-3 row">
             <label class="col-form-label col-sm-3" for="Year"><?= gettext('Calendar Year') ?>:</label>
             <div class="col-sm-3">
                 <input type="text" name="Year" id="Year" class="form-control" value="<?= $iYear ?>">
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-            <a href="v2/dashboard" class="btn btn-secondary ml-2"><?= gettext('Cancel') ?></a>
+            <a href="v2/dashboard" class="btn btn-secondary ms-2"><?= gettext('Cancel') ?></a>
         </div>
 
     </form>

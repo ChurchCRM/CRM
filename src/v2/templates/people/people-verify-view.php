@@ -73,7 +73,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location= window.CRM.root + "/Reports/ConfirmReportEmail.php";
+                        window.location= window.CRM.root +"/Reports/ConfirmReportEmail.php";
                     }
                 }
             });
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/self-verify",
+                url: window.CRM.root +"/api/families/self-verify",
                 dataSrc: 'families'
             },
 
@@ -118,14 +118,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             ],
-            order: [[2, "desc"]]
+            order: [[2,"desc"]]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#families-complete").DataTable(dataTableConfig);
 
           dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/pending-self-verify",
+                url: window.CRM.root +"/api/families/pending-self-verify",
                 dataSrc: 'families'
             },
 
@@ -156,7 +156,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     }
                 }
             ],
-            order: [[0, "asc"]]
+            order: [[0,"asc"]]
         }
 
           $.extend(dataTableConfig, window.CRM.plugin.dataTable);

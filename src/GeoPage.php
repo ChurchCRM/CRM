@@ -145,7 +145,7 @@ if (isset($_POST['DataFile'])) {
     header("Content-Disposition: attachment; filename=$filename");
 
     if ($sCoordFileFormat === 'GPSVisualizer') {
-        echo "Name,Latitude,Longitude\n";
+        echo"Name,Latitude,Longitude\n";
     }
 
     $counter = 0;
@@ -166,11 +166,11 @@ if (isset($_POST['DataFile'])) {
         }
 
         if ($sCoordFileFormat === 'GPSVisualizer') {
-            echo $oneResult['fam_Name'] . ',' . $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . "\n";
+            echo $oneResult['fam_Name'] . ',' . $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] ."\n";
         } elseif ($sCoordFileFormat === 'StreetAtlasUSA') {
-            echo "BEGIN SYMBOL\n";
-            echo $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . ',' . $oneResult['fam_Name'] . ',' . "Green Star\n";
-            echo "END\n";
+            echo"BEGIN SYMBOL\n";
+            echo $oneResult['fam_Latitude'] . ',' . $oneResult['fam_Longitude'] . ',' . $oneResult['fam_Name'] . ',' ."Green Star\n";
+            echo"END\n";
         }
     }
 
@@ -187,7 +187,7 @@ $families = FamilyQuery::create()
 <form class="form-horizontal" method="POST" action="GeoPage.php" name="GeoPage">
     <div class="card container">
         <div class="card-body">
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="Family"
                     class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Select Family') ?>:</label>
                 <div class="col-12 col-sm-9">
@@ -195,7 +195,7 @@ $families = FamilyQuery::create()
                         <option></option>
                         <?php
                         foreach ($families as $family) {
-                            echo "\n<option value=\"" . $family->getId() . '"';
+                            echo"\n<option value=\"" . $family->getId() . '"';
                             if ($iFamily == $family->getId()) {
                                 echo ' selected';
                             }
@@ -205,22 +205,22 @@ $families = FamilyQuery::create()
                     </select>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="NumNeighbors"
                     class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Maximum number of neighbors') ?>:</label>
                 <div class="col-12 col-sm-9">
                     <input type="text" class="form-control" name="NumNeighbors" value="<?= $iNumNeighbors ?>">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="MaxDistance" class="control-label col-12 col-sm-3 col-md-3 col-lg-3">
-                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . "): " ?>
+                    <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) ."):" ?>
                 </label>
                 <div class="col-12 col-sm-9">
                     <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <label for="Classification0"
                     class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Show neighbors with these classifications') ?>:</label>
                 <div class="row col-sm-offset-3">
@@ -239,7 +239,7 @@ $families = FamilyQuery::create()
                     ?>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
                 <div class="offset-2 col-8">
                     <input type="submit" class="btn btn-primary" name="FindNeighbors"
                         value="<?= gettext('Show Neighbors') ?>">
@@ -258,14 +258,14 @@ $families = FamilyQuery::create()
         ?>
 
         <!--Datafile section -->
-        <div class="card card-default collapsed-box">
+        <div class="card-default collapsed-box">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Make Data File') ?></h3>
                 <div class="card-tools ms-auto">
                     <button class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i></button>
                 </div><!-- /.card-tools -->
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="CoordFileFormat"
                         class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Data file format') ?>:</label>
                     <div class="col-12 col-sm-9">
@@ -281,7 +281,7 @@ $families = FamilyQuery::create()
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="CoordFileFamilies"
                         class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Include families in the coordinate file') ?>:</label>
                     <div class="col-12 col-sm-9">
@@ -297,14 +297,14 @@ $families = FamilyQuery::create()
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="CoordFileName"
                         class="control-label col-12 col-sm-3 col-md-3 col-lg-3"><?= gettext('Coordinate database file name') ?>:</label>
                     <div class="col-12 col-sm-9">
                         <input type="text" class="form-control" name="CoordFileName" value="<?= $sCoordFileName ?>">
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="offset-2 col-8">
                         <input type="submit" class="btn btn-primary" name="DataFile"
                             value="<?= gettext('Make Data File') ?>">

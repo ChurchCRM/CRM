@@ -107,12 +107,12 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="col-2 col-sm-2">
     <div class="nav flex-column nav-tabs h-100" id="vert-tabs-tab" role="tablist" aria-orientation="vertical">
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
-            $navItemId = str_replace(" ", '', $category);
+            $navItemId = str_replace("", '', $category);
             $shouldBeSelected = false;
             if ($category == 'Enabled Features') {
                 $shouldBeSelected = true;
             } ?>
-        <a class="nav-link <?= $shouldBeSelected ? "active" : "" ?>" id="<?= $navItemId ?>-tab" data-bs-toggle="pill" href="#<?= $navItemId ?>" role="tab" aria-controls="vert-tabs-profile" aria-selected="<?= $shouldBeSelected ?>"><?= gettext($category) ?></a>
+        <a class="nav-link <?= $shouldBeSelected ?"active" :"" ?>" id="<?= $navItemId ?>-tab" data-bs-toggle="pill" href="#<?= $navItemId ?>" role="tab" aria-controls="vert-tabs-profile" aria-selected="<?= $shouldBeSelected ?>"><?= gettext($category) ?></a>
             <?php
       } ?>
       <hr>
@@ -123,12 +123,12 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="col-7 col-sm-9">
     <div class="tab-content" id="vert-tabs-tabContent">
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
-            $navItemId = str_replace(" ", '', $category);
+            $navItemId = str_replace("", '', $category);
             $shouldBeSelected = false;
             if ($category == 'Enabled Features') {
                 $shouldBeSelected = true;
             } ?>
-        <div class="tab-pane fade <?= $shouldBeSelected ? "show active" : "" ?>" id="<?= $navItemId ?>" role="tabpanel" aria-labelledby="<?= $navItemId ?>-tab">
+        <div class="tab-pane fade <?= $shouldBeSelected ?"show active" :"" ?>" id="<?= $navItemId ?>" role="tabpanel" aria-labelledby="<?= $navItemId ?>-tab">
           <div class="table-responsive">
             <table class="table table-striped">
               <tr>
@@ -151,7 +151,7 @@ require_once __DIR__ . '/Include/Header.php';
                       <select name='new_value[<?= $setting->getId() ?>]' class="choiceSelectBox w-100">
                         <?php
                         foreach (json_decode($setting->getData())->Choices as $choice) {
-                            if (strpos($choice, ":") === false) {
+                            if (strpos($choice,":") === false) {
                                 $text = $choice;
                                 $value = $choice;
                             } else {
@@ -159,7 +159,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 $value = $keyValue[1];
                                 $text = $keyValue[0] . ' [' . $value . ']';
                             }
-                            echo '<option value = "' . $value . '" ' . ($setting->getValue() == $value ? 'selected' : '') . '>' . $text . '</option>';
+                            echo '<option value ="' . $value . '" ' . ($setting->getValue() == $value ? 'selected' : '') . '>' . $text . '</option>';
                         } ?>
                       </select>
                         <?php
@@ -205,7 +205,7 @@ require_once __DIR__ . '/Include/Header.php';
                       </select>
                         <?php
                     } else {
-                        echo gettext("Unknown Type") . " " . $setting->getType();
+                        echo gettext("Unknown Type") ."" . $setting->getType();
                     } ?>
                   </td>
                     <?php
@@ -253,7 +253,7 @@ require_once __DIR__ . '/Include/Header.php';
   $(document).ready(function() {
     $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
       var target = $(e.target).attr("href") // activated tab
-      $(target + " .choiceSelectBox").select2({
+      $(target +" .choiceSelectBox").select2({
         width: 'resolve'
       });
     });

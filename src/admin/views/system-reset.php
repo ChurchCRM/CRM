@@ -28,8 +28,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function () {
         window.CRM.onLocalesReady(function () {
             bootbox.prompt({
-                title: i18next.t("Warning")+ "!!!",
-                message: i18next.t("This page contains operations that reset the ChurchCRM database. The operations available on this page are irreversible. Ensure that you no longer need the data or data source before you proceed with any operation on this page.") + '<br/> <br/>' + i18next.t("Please type ") + "<b>" + i18next.t("I AGREE") + "</b>" + i18next.t(" to access the database reset functions page."),
+                title: i18next.t("Warning")+"!!!",
+                message: i18next.t("This page contains operations that reset the ChurchCRM database. The operations available on this page are irreversible. Ensure that you no longer need the data or data source before you proceed with any operation on this page.") + '<br/> <br/>' + i18next.t("Please type") +"<b>" + i18next.t("I AGREE") +"</b>" + i18next.t(" to access the database reset functions page."),
                 size: 'large',
                 className: 'rubberBand animated',
                 buttons: {
@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             $("#confirm-db").click(function () {
                 bootbox.confirm({
-                    title: i18next.t("Warning") + "!!!",
+                    title: i18next.t("Warning") +"!!!",
                     message: i18next.t("This will reset the system data and will restart the system as a new install."),
                     size: 'small',
                     buttons: {
@@ -84,7 +84,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     title: i18next.t('Reset Complete'),
                                     message: message,
                                     callback: function () {
-                                        window.location.href = window.CRM.root + "/";
+                                        window.location.href = window.CRM.root +"/";
                                     }
                                 });
                             })

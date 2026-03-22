@@ -25,29 +25,29 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     $isActive = $plugin['isActive'] ?? false;
     $helpData = $hasHelp ? htmlspecialchars(json_encode($plugin['help']), ENT_QUOTES, 'UTF-8') : '';
 ?>
-    <div class="card <?= $hasError ? 'card-danger' : ($isActive ? 'card-success' : 'card-secondary') ?> card-outline collapsed-card" 
+    <div class="card <?= $hasError ? 'border-top border-danger border-3' : ($isActive ? 'border-top border-success border-3' : 'card-secondary') ?> collapsed-card" 
          data-plugin-id="<?= $pluginId ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
-                    <i class="fas fa-exclamation-triangle text-danger mr-2"></i>
+                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
                 <?php elseif ($isActive): ?>
-                    <i class="fas fa-check-circle text-success mr-2"></i>
+                    <i class="fas fa-check-circle text-success me-2"></i>
                 <?php else: ?>
-                    <i class="fas fa-times-circle text-secondary mr-2"></i>
+                    <i class="fas fa-times-circle text-secondary me-2"></i>
                 <?php endif; ?>
                 <strong><?= htmlspecialchars($plugin['name']) ?></strong>
-                <span class="badge badge-info ml-2">v<?= htmlspecialchars($plugin['version']) ?></span>
+                <span class="badge bg-info ms-2">v<?= htmlspecialchars($plugin['version']) ?></span>
                 <?php if ($hasError): ?>
-                    <span class="badge badge-danger ml-2"><?= gettext('Error') ?></span>
+                    <span class="badge bg-danger ms-2"><?= gettext('Error') ?></span>
                 <?php elseif ($isActive): ?>
-                    <span class="badge badge-success ml-2"><?= gettext('Enabled') ?></span>
+                    <span class="badge bg-success ms-2"><?= gettext('Enabled') ?></span>
                     <?php if (!$plugin['isConfigured']): ?>
-                        <span class="badge badge-warning ml-2"><?= gettext('Needs Configuration') ?></span>
+                        <span class="badge bg-warning ms-2"><?= gettext('Needs Configuration') ?></span>
                     <?php endif; ?>
                 <?php else: ?>
-                    <span class="badge badge-secondary ml-2"><?= gettext('Disabled') ?></span>
+                    <span class="badge bg-secondary ms-2"><?= gettext('Disabled') ?></span>
                 <?php endif; ?>
             </h3>
             <div class="card-tools ms-auto">
@@ -95,7 +95,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             <?php endif; ?>
             <?php if ($hasError): ?>
                 <div class="alert alert-danger mt-2 mb-2">
-                    <i class="fas fa-exclamation-triangle mr-2"></i>
+                    <i class="fas fa-exclamation-triangle me-2"></i>
                     <?= htmlspecialchars($plugin['errorMessage'] ?? gettext('Plugin failed to load')) ?>
                 </div>
             <?php endif; ?>
@@ -112,7 +112,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         $configKey = htmlspecialchars($setting['configKey'] ?? '');
                         $isRequired = !empty($setting['required']);
                     ?>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="<?= $pluginId ?>-<?= $settingKey ?>">
                                 <?= $settingLabel ?>
                                 <?php if ($isRequired): ?>
@@ -184,16 +184,16 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php endforeach; ?>
                     <div class="btn-group" role="group">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fas fa-save mr-1"></i><?= gettext('Save Settings') ?>
+                            <i class="fas fa-save me-1"></i><?= gettext('Save Settings') ?>
                         </button>
                         <?php if (!empty($plugin['hasTest'])): ?>
                         <button type="button" class="btn btn-outline-info btn-sm btn-test-settings"
                                 data-plugin-id="<?= $pluginId ?>">
-                            <i class="fas fa-plug mr-1"></i><?= gettext('Test Connection') ?>
+                            <i class="fas fa-plug me-1"></i><?= gettext('Test Connection') ?>
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
-                            <i class="fas fa-undo mr-1"></i><?= gettext('Reset') ?>
+                            <i class="fas fa-undo me-1"></i><?= gettext('Reset') ?>
                         </button>
                     </div>
                     <?php if (!empty($plugin['hasTest'])): ?>
@@ -213,7 +213,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fas fa-plug mr-2"></i><?= gettext('Core Plugins') ?>
+                    <i class="fas fa-plug me-2"></i><?= gettext('Core Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -234,7 +234,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fas fa-puzzle-piece mr-2"></i><?= gettext('Community Plugins') ?>
+                    <i class="fas fa-puzzle-piece me-2"></i><?= gettext('Community Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -258,15 +258,15 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 
     <div class="col-lg-4">
         <!-- Plugin Info -->
-        <div class="card card-outline card-info">
+        <div class="card border border-info">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
-                    <i class="fas fa-info-circle mr-2"></i><?= gettext('Plugin Development') ?>
+                    <i class="fas fa-info-circle me-2"></i><?= gettext('Plugin Development') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <p><?= gettext('ChurchCRM supports a plugin architecture for extending functionality.') ?></p>
-                <ul class="pl-3">
+                <ul class="ps-3">
                     <li><strong><?= gettext('Core plugins') ?>:</strong> <?= gettext('Shipped with ChurchCRM.') ?></li>
                     <li><strong><?= gettext('Community plugins') ?>:</strong> <?= gettext('Third-party extensions.') ?></li>
                 </ul>
@@ -284,10 +284,10 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <h5 class="modal-title" id="pluginHelpModalLabel">
-                    <i class="fas fa-question-circle mr-2"></i>
+                    <i class="fas fa-question-circle me-2"></i>
                     <span id="pluginHelpTitle"><?= gettext('Plugin Help') ?></span>
                 </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="<?= gettext('Close') ?>">
+                <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -295,7 +295,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <!-- Help content will be injected here -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <?= gettext('Close') ?>
                 </button>
             </div>
@@ -329,7 +329,7 @@ $(document).ready(function() {
         // Sections - translate titles and content
         if (helpData.sections && helpData.sections.length > 0) {
             helpData.sections.forEach(function(section) {
-                contentHtml += '<div class="card card-outline card-secondary mb-3">';
+                contentHtml += '<div class="card-secondary mb-3">';
                 contentHtml += '<div class="card-header"><h6 class="mb-0">' + escapeHtml(i18next.t(section.title)) + '</h6></div>';
                 contentHtml += '<div class="card-body"><p class="mb-0" style="white-space: pre-line;">' + escapeHtml(i18next.t(section.content)) + '</p></div>';
                 contentHtml += '</div>';
@@ -426,7 +426,7 @@ $(document).ready(function() {
             }
         });
         
-        submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Saving...'));
+        submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Saving...'));
         
         $.ajax({
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/settings',
@@ -447,7 +447,7 @@ $(document).ready(function() {
             window.CRM.notify(error, { type: 'error' });
         })
         .always(function() {
-            submitBtn.prop('disabled', false).html('<i class="fas fa-save mr-1"></i>' + i18next.t('Save Settings'));
+            submitBtn.prop('disabled', false).html('<i class="fas fa-save me-1"></i>' + i18next.t('Save Settings'));
         });
     });
 
@@ -481,7 +481,7 @@ $(document).ready(function() {
         resultDiv
             .removeClass('alert-success alert-danger')
             .addClass('alert ' + alertClass)
-            .html('<i class="fas ' + icon + ' mr-1"></i>' + escapeHtml(message))
+            .html('<i class="fas ' + icon + ' me-1"></i>' + escapeHtml(message))
             .show();
     }
 
@@ -493,7 +493,7 @@ $(document).ready(function() {
         const form     = btn.closest('form');
         const settings = collectSettings(form);
 
-        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Testing...'));
+        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Testing...'));
 
         $.ajax({
             url:         window.CRM.root + '/plugins/api/plugins/' + pluginId + '/test',
@@ -510,7 +510,7 @@ $(document).ready(function() {
             showTestResult(pluginId, false, msg);
         })
         .always(function() {
-            btn.prop('disabled', false).html('<i class="fas fa-plug mr-1"></i>' + i18next.t('Test Connection'));
+            btn.prop('disabled', false).html('<i class="fas fa-plug me-1"></i>' + i18next.t('Test Connection'));
         });
     });
 
@@ -526,7 +526,7 @@ $(document).ready(function() {
             return;
         }
         
-        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin mr-1"></i>' + i18next.t('Resetting...'));
+        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Resetting...'));
         
         $.ajax({
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/reset',
@@ -555,7 +555,7 @@ $(document).ready(function() {
             window.CRM.notify(error, { type: 'error' });
         })
         .always(function() {
-            btn.prop('disabled', false).html('<i class="fas fa-undo mr-1"></i>' + i18next.t('Reset'));
+            btn.prop('disabled', false).html('<i class="fas fa-undo me-1"></i>' + i18next.t('Reset'));
         });
     });
     

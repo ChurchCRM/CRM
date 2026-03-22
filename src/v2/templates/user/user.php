@@ -3,7 +3,7 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle = gettext("User") . " - " . $user->getFullName();
+$sPageTitle = gettext("User") ." -" . $user->getFullName();
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Api Key") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
                 </div>
                 <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i> <?= _("Regen API Key") ?></a>
@@ -41,21 +41,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("User Interface") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
                         <label class="custom-control-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Activate the boxed layout") ?></small>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
                         <label class="custom-control-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Toggle the left sidebar's state (open or collapse)") ?></small>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="user-locale-setting"><strong><?= _("Locale") ?></strong></label>
                     <select id="user-locale-setting" class="form-control user-setting-select" data-setting-name="ui.locale" data-reload="true">
                     </select>
@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= _("Tables Settings") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="tablePageLength"><strong><?= _("Page length") ?></strong></label>
                     <select id="tablePageLength" class="form-control user-setting-select" data-setting-name="ui.table.size">
                         <option value="10">10</option>

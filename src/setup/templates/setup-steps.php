@@ -34,14 +34,14 @@ require_once __DIR__ . '/header.php';
     <!-- Stepper -->
     <div id="setup-stepper" class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
-            <div class="step active" data-target="#step-prerequisites">
+            <div class="step active" data-bs-target="#step-prerequisites">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-prerequisites" id="step-prerequisites-trigger">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">System Check</span>
                 </button>
             </div>
             <div class="line"></div>
-            <div class="step" data-target="#step-database">
+            <div class="step" data-bs-target="#step-database">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-database" id="step-database-trigger">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">Configure</span>
@@ -74,9 +74,9 @@ require_once __DIR__ . '/header.php';
                                 <span>Server Environment</span>
                             </div>
                             <div class="check-badges">
-                                <span class="badge badge-info">PHP <?= $phpVersion ?></span>
-                                <span class="badge badge-secondary"><?= $memoryLimit ?> RAM</span>
-                                <span class="badge badge-secondary"><?= $uploadMax ?> Upload</span>
+                                <span class="badge bg-info">PHP <?= $phpVersion ?></span>
+                                <span class="badge bg-secondary"><?= $memoryLimit ?> RAM</span>
+                                <span class="badge bg-secondary"><?= $uploadMax ?> Upload</span>
                             </div>
                         </div>
                         <div id="server-env-details" class="collapse check-details">
@@ -180,10 +180,10 @@ require_once __DIR__ . '/header.php';
                     <!-- Action Buttons -->
                     <div class="setup-actions">
                         <button type="button" class="btn btn-lg btn-primary" id="prerequisites-next-btn" disabled>
-                            Continue to Configuration <i class="fa-solid fa-arrow-right ml-2"></i>
+                            Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
                         <button type="button" class="btn btn-outline-warning" id="prerequisites-force-btn" style="display: none;">
-                            <i class="fa-solid fa-exclamation-triangle mr-2"></i>Continue Anyway
+                            <i class="fa-solid fa-exclamation-triangle me-2"></i>Continue Anyway
                         </button>
                     </div>
                 </div>
@@ -198,7 +198,7 @@ require_once __DIR__ . '/header.php';
                     <div class="form-card">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="DB_SERVER_NAME">Database Server <span class="text-danger">*</span></label>
                                     <input type="text" name="DB_SERVER_NAME" id="DB_SERVER_NAME" value="<?= $DB_SERVER_NAME ?? 'localhost' ?>"
                                            class="form-control" placeholder="localhost" maxlength="64" required>
@@ -206,7 +206,7 @@ require_once __DIR__ . '/header.php';
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="DB_SERVER_PORT">Port <span class="text-danger">*</span></label>
                                     <input type="text" name="DB_SERVER_PORT" id="DB_SERVER_PORT" value="<?= $DB_SERVER_PORT ?? '3306' ?>"
                                            class="form-control" placeholder="3306" pattern="[0-9]+" maxlength="16" required>
@@ -214,13 +214,13 @@ require_once __DIR__ . '/header.php';
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="DB_NAME">Database Name <span class="text-danger">*</span></label>
                             <input type="text" name="DB_NAME" id="DB_NAME" value="<?= $DB_NAME ?? '' ?>"
                                    class="form-control" placeholder="churchcrm" maxlength="64" required>
                             <div class="invalid-feedback"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label for="DB_USER">Username <span class="text-danger">*</span></label>
                             <input type="text" name="DB_USER" id="DB_USER" value="<?= $DB_USER ?? '' ?>"
                                    class="form-control" placeholder="churchcrm" maxlength="64" required>
@@ -228,7 +228,7 @@ require_once __DIR__ . '/header.php';
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="DB_PASSWORD">Password</label>
                                     <input type="password" name="DB_PASSWORD" id="DB_PASSWORD" value=""
                                            class="form-control" maxlength="255">
@@ -236,7 +236,7 @@ require_once __DIR__ . '/header.php';
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="form-group mb-0">
+                                <div class="mb-3 mb-0">
                                     <label for="DB_PASSWORD_CONFIRM">Confirm Password</label>
                                     <input type="password" name="DB_PASSWORD_CONFIRM" id="DB_PASSWORD_CONFIRM" value=""
                                            class="form-control" data-match="#DB_PASSWORD" maxlength="255">
@@ -249,15 +249,15 @@ require_once __DIR__ . '/header.php';
                     <!-- Advanced Settings (collapsed) -->
                     <div class="form-card mt-3 advanced-settings">
                         <div class="advanced-header" data-bs-toggle="collapse" data-bs-target="#advanced-settings-collapse">
-                            <i class="fa-solid fa-cog mr-2"></i>
+                            <i class="fa-solid fa-cog me-2"></i>
                             <span>Advanced Settings</span>
-                            <small class="text-muted ml-2">(auto-detected)</small>
-                            <i class="fa-solid fa-chevron-down ml-auto toggle-icon"></i>
+                            <small class="text-muted ms-2">(auto-detected)</small>
+                            <i class="fa-solid fa-chevron-down ms-auto toggle-icon"></i>
                         </div>
                         <div id="advanced-settings-collapse" class="collapse">
                             <div class="advanced-body">
                                 <p class="small text-muted mb-3">These settings are auto-detected from your server. Only change them if you know what you're doing.</p>
-                                <div class="form-group">
+                                <div class="mb-3">
                                     <label for="ROOT_PATH">Root Path</label>
                                     <input type="text" name="ROOT_PATH" id="ROOT_PATH"
                                            value="<?= $rootPath ?>" class="form-control"
@@ -270,7 +270,7 @@ require_once __DIR__ . '/header.php';
                                         Example: <code>/churchcrm</code> for subdirectory, or leave empty for root.
                                     </small>
                                 </div>
-                                <div class="form-group mb-0">
+                                <div class="mb-3 mb-0">
                                     <label for="URL">Base URL <span class="text-danger">*</span></label>
                                     <input type="url" name="URL" id="URL" value="<?= $URL ?>" class="form-control"
                                            aria-describedby="URL_HELP"
@@ -287,10 +287,10 @@ require_once __DIR__ . '/header.php';
 
                     <div class="setup-actions">
                         <button type="button" class="btn btn-lg btn-success" id="submit-setup">
-                            <i class="fa-solid fa-database mr-2"></i>Install ChurchCRM
+                            <i class="fa-solid fa-database me-2"></i>Install ChurchCRM
                         </button>
                         <button type="button" class="btn btn-outline-secondary" id="database-prev-btn">
-                            <i class="fa-solid fa-arrow-left mr-1"></i>Back to System Check
+                            <i class="fa-solid fa-arrow-left me-1"></i>Back to System Check
                         </button>
                     </div>
                 </div>
@@ -307,7 +307,7 @@ require_once __DIR__ . '/header.php';
             <div class="modal-body text-center py-5">
                 <div id="setup-progress">
                     <div class="spinner-border text-primary mb-4" style="width: 3rem; height: 3rem;" role="status">
-                        <span class="sr-only">Loading...</span>
+                        <span class="visually-hidden">Loading...</span>
                     </div>
                     <h4>Installing ChurchCRM</h4>
                     <p class="text-muted">Creating database tables and configuring your system...</p>
@@ -321,31 +321,31 @@ require_once __DIR__ . '/header.php';
                         <div class="card-body">
                             <p class="text-muted mb-2">Sign in with your admin account:</p>
                             <div class="d-flex justify-content-center align-items-center mb-2">
-                                <span class="text-muted mr-2">Username:</span>
+                                <span class="text-muted me-2">Username:</span>
                                 <code class="h5 mb-0">admin</code>
                             </div>
                             <div class="d-flex justify-content-center align-items-center">
-                                <span class="text-muted mr-2">Password:</span>
+                                <span class="text-muted me-2">Password:</span>
                                 <code class="h5 mb-0">changeme</code>
                             </div>
                         </div>
                     </div>
                     <div class="alert alert-warning">
-                        <i class="fa-solid fa-exclamation-triangle mr-2"></i>
+                        <i class="fa-solid fa-exclamation-triangle me-2"></i>
                         <strong>Important:</strong> Change your password immediately after logging in.
                     </div>
                 </div>
                 <div id="setup-error" style="display: none;">
                     <i class="fa-solid fa-circle-xmark text-danger mb-4" style="font-size: 4rem;"></i>
                     <h4>Installation Failed</h4>
-                    <div class="alert alert-danger mt-3 text-left">
+                    <div class="alert alert-danger mt-3 text-start">
                         <p id="setup-error-message" class="mb-0"></p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer justify-content-center border-0" id="setup-footer" style="display: none;">
                 <button type="button" class="btn btn-lg btn-primary px-5" id="continue-to-login">
-                    Go to Login <i class="fa-solid fa-arrow-right ml-2"></i>
+                    Go to Login <i class="fa-solid fa-arrow-right ms-2"></i>
                 </button>
             </div>
         </div>
@@ -358,7 +358,7 @@ require_once __DIR__ . '/header.php';
         <div class="modal-content">
             <div class="modal-header bg-warning text-dark">
                 <h5 class="modal-title" id="forceInstallModalLabel">
-                    <i class="fa-solid fa-exclamation-triangle mr-2"></i>Proceed Anyway?
+                    <i class="fa-solid fa-exclamation-triangle me-2"></i>Proceed Anyway?
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -369,7 +369,7 @@ require_once __DIR__ . '/header.php';
                     <li>Security vulnerabilities</li>
                     <li>Unpredictable behavior</li>
                 </ul>
-                <p class="mb-0 font-weight-bold">We recommend fixing the issues before continuing.</p>
+                <p class="mb-0 fw-bold">We recommend fixing the issues before continuing.</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Go Back</button>

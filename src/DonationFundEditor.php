@@ -40,7 +40,7 @@ $sPageTitle = gettext('Donation Fund Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
+<div class="card-body">
     <?php
 
     // Get data for the form as it now exists..
@@ -120,7 +120,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteFund(fundName, fundId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fundName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fundName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this fund, you may affect historical donation records!')) ?>;
             bootbox.confirm({
@@ -132,7 +132,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location = "DonationFundEditor.php?Fund=" + fundId + "&Action=delete";
+                        window.location ="DonationFundEditor.php?Fund=" + fundId +"&Action=delete";
                     }
                 }
             });
@@ -176,7 +176,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <input type="text" id="newFieldDesc" class="form-control" name="newFieldDesc" maxlength="100">
                     </div>
                     <div class="col-md-3 d-flex align-items-end">
-                        <button type="submit" class="btn btn-success btn-block" name="AddField">
+                        <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add New') . ' ' . gettext('Fund') ?>
                         </button>

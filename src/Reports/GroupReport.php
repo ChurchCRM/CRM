@@ -85,49 +85,49 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     $sEmail = $aRow['per_Email'] ?? '';
 
     if (isset($_POST['GroupRoleEnable'])) {
-        $OutStr = gettext('Role') . ': ' . $aRoleNames[$aRow['p2g2r_rle_ID']] . "\n";
+        $OutStr = gettext('Role') . ': ' . $aRoleNames[$aRow['p2g2r_rle_ID']] ."\n";
     }
 
     if (isset($_POST['AddressEnable'])) {
         if (strlen($sAddress1)) {
-            $OutStr .= $sAddress1 . "\n";
+            $OutStr .= $sAddress1 ."\n";
         }
         if (strlen($sAddress2)) {
-            $OutStr .= $sAddress2 . "\n";
+            $OutStr .= $sAddress2 ."\n";
         }
         if (strlen($sCity)) {
-            $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip . "\n";
+            $OutStr .= $sCity . ', ' . $sState . ' ' . $sZip ."\n";
         }
     }
 
     if (isset($_POST['HomePhoneEnable']) && strlen($sHomePhone)) {
         $TempStr = $sHomePhone;
-        $OutStr .= '  ' . gettext('Phone') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Phone') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['WorkPhoneEnable']) && strlen($sWorkPhone)) {
         $TempStr = $sWorkPhone;
-        $OutStr .= '  ' . gettext('Work') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Work') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['CellPhoneEnable']) && strlen($sCellPhone)) {
         $TempStr = $sCellPhone;
-        $OutStr .= '  ' . gettext('Cell') . ': ' . $TempStr . "\n";
+        $OutStr .= '  ' . gettext('Cell') . ': ' . $TempStr ."\n";
     }
 
     if (isset($_POST['EmailEnable']) && strlen($sEmail)) {
-        $OutStr .= '  ' . gettext('Email') . ': ' . $sEmail . "\n";
+        $OutStr .= '  ' . gettext('Email') . ': ' . $sEmail ."\n";
     }
 
     if (isset($_POST['OtherEmailEnable']) && strlen($aRow['per_WorkEmail'])) {
-        $OutStr .= '  ' . gettext('Other Email') . ': ' . $aRow['per_WorkEmail'] .= "\n";
+        $OutStr .= '  ' . gettext('Other Email') . ': ' . $aRow['per_WorkEmail'] .="\n";
     }
 
     if ($bHasProps) {
         while ($aPropRow = mysqli_fetch_array($rsProps)) {
             if (isset($_POST[$aPropRow['prop_Field'] . 'enable'])) {
                 $currentData = trim($aRow[$aPropRow['prop_Field']]);
-                $OutStr .= $aPropRow['prop_Name'] . ': ' . displayCustomField($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) . "\n";
+                $OutStr .= $aPropRow['prop_Name'] . ': ' . displayCustomField($aPropRow['type_ID'], $currentData, $aPropRow['prop_Special']) ."\n";
             }
         }
         mysqli_data_seek($rsProps, 0);
@@ -136,7 +136,7 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
     // Count the number of lines in the output string
     $numlines = 1;
     $offset = 0;
-    while ($result = strpos($OutStr, "\n", $offset)) {
+    while ($result = strpos($OutStr,"\n", $offset)) {
         $offset = $result + 1;
         $numlines++;
     }

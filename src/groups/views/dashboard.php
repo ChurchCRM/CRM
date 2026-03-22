@@ -17,14 +17,14 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 <div class="container-fluid">
 
     <!-- Overview Card -->
-    <div class="card card-primary card-outline mb-3">
+    <div class="card mb-3">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><i class="fa-solid fa-sitemap"></i> <?= gettext('Overview') ?></h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -37,7 +37,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -50,7 +50,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-danger text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -63,7 +63,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -91,7 +91,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="form-group mb-2">
+                    <div class="mb-3 mb-2">
                         <label for="groupName">
                             <?= gettext('Group Name') ?> <span class="text-danger">*</span>
                         </label>

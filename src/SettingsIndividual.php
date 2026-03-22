@@ -34,7 +34,7 @@ if (isset($_POST['save'])) {
         }
         // We can't update unless values already exist.
         $sSQL = 'SELECT * FROM userconfig_ucfg '
-            . "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
+            ."WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID";
         $bRowExists = true;
         $iNumRows = mysqli_num_rows(RunQuery($sSQL));
         if ($iNumRows == 0) {
@@ -44,7 +44,7 @@ if (isset($_POST['save'])) {
         if (!$bRowExists) { // If Row does not exist then insert default values.
             // Defaults will be replaced in the following Update
             $sSQL = 'SELECT * FROM userconfig_ucfg '
-                . "WHERE ucfg_id=$id AND ucfg_per_id=0 ";
+                ."WHERE ucfg_id=$id AND ucfg_per_id=0";
             $rsDefault = RunQuery($sSQL);
             $aDefaultRow = mysqli_fetch_row($rsDefault);
             if ($aDefaultRow) {
@@ -71,8 +71,8 @@ if (isset($_POST['save'])) {
 
         // Save new setting
         $sSQL = 'UPDATE userconfig_ucfg '
-            . "SET ucfg_value='$value' "
-            . "WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID ";
+            ."SET ucfg_value='$value'"
+            ."WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID";
         $rsUpdate = RunQuery($sSQL);
         next($type);
     }
@@ -88,7 +88,7 @@ $sSQL = 'SELECT * FROM userconfig_ucfg WHERE ucfg_per_id=' . $iPersonID
     . ' ORDER BY ucfg_id';
 $rsConfigs = RunQuery($sSQL);
 ?>
-<div class="card card-body">
+<div class="card-body">
     <form method=post action=SettingsIndividual.php>
         <div class="table-responsive">
             <table class="table">
@@ -108,9 +108,9 @@ $rsConfigs = RunQuery($sSQL);
 
                     // Cancel, Save Buttons every 13 rows
                     if ($r == 13) {
-                        echo "<tr><td>&nbsp;</td>
-            <td><input type=submit class=btn name=save value='" . gettext('Save Settings') . "'>
-            <input type=submit class=btn name=cancel value='" . gettext('Cancel') . "'>
+                        echo"<tr><td>&nbsp;</td>
+            <td><input type=submit class=btn name=save value='" . gettext('Save Settings') ."'>
+            <input type=submit class=btn name=cancel value='" . gettext('Cancel') ."'>
             </td></tr>";
                         $r = 1;
                     }
@@ -121,16 +121,16 @@ $rsConfigs = RunQuery($sSQL);
 
                     // Current Value
                     if ($ucfg_type == 'text') {
-                        echo "<td class=TextColumnWithBottomBorder>
+                        echo"<td class=TextColumnWithBottomBorder>
             <input type=text size=30 maxlength=255 name='new_value[$ucfg_id]'
-            value=\"" . InputUtils::escapeHTML($ucfg_value) . "\"></td>";
+            value=\"" . InputUtils::escapeHTML($ucfg_value) ."\"></td>";
                     } elseif ($ucfg_type == 'textarea') {
-                        echo "<td class=TextColumnWithBottomBorder>
+                        echo"<td class=TextColumnWithBottomBorder>
             <textarea rows=4 cols=30 name='new_value[$ucfg_id]'>"
                             . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
                         echo '<td class=TextColumnWithBottomBorder><input type=text size=15 maxlength=15 name='
-                            . "'new_value[$ucfg_id]' value='$ucfg_value'></td>";
+                            ."'new_value[$ucfg_id]' value='$ucfg_value'></td>";
                     } elseif ($ucfg_type == 'boolean') {
                         if ($ucfg_value) {
                             $sel2 = 'SELECTED';
@@ -139,9 +139,9 @@ $rsConfigs = RunQuery($sSQL);
                             $sel1 = 'SELECTED';
                             $sel2 = '';
                         }
-                        echo "<td class=TextColumnWithBottomBorder><select name=\"new_value[$ucfg_id]\">";
-                        echo "<option value='' $sel1>" . gettext('False');
-                        echo "<option value='1' $sel2>" . gettext('True');
+                        echo"<td class=TextColumnWithBottomBorder><select name=\"new_value[$ucfg_id]\">";
+                        echo"<option value='' $sel1>" . gettext('False');
+                        echo"<option value='1' $sel2>" . gettext('True');
                         echo '</select></td>';
                     }
 

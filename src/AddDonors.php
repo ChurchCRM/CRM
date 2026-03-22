@@ -10,7 +10,7 @@ $linkBack = RedirectUtils::getLinkBackFromRequest('');
 $iFundRaiserID = InputUtils::filterInt($_GET['FundRaiserID']);
 
 if ($linkBack === '') {
-    $linkBack = "PaddleNumList.php?FundRaiserID=$iFundRaiserID";
+    $linkBack ="PaddleNumList.php?FundRaiserID=$iFundRaiserID";
 }
 
 if ($iFundRaiserID > 0) {
@@ -21,13 +21,13 @@ if ($iFundRaiserID > 0) {
 }
 
 // Get all the people listed as donors for this fundraiser
-$sSQL = "SELECT a.per_id as donorID FROM donateditem_di
+$sSQL ="SELECT a.per_id as donorID FROM donateditem_di
              LEFT JOIN person_per a ON di_donor_ID=a.per_ID
-         WHERE di_FR_ID = '" . $iFundRaiserID . "' ORDER BY a.per_id";
+         WHERE di_FR_ID = '" . $iFundRaiserID ."' ORDER BY a.per_id";
 $rsDonors = RunQuery($sSQL);
 
 $extraPaddleNum = 1;
-$sSQL = "SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $iFundRaiserID . "'";
+$sSQL ="SELECT MAX(pn_NUM) AS pn_max FROM paddlenum_pn WHERE pn_FR_ID = '" . $iFundRaiserID ."'";
 $rsMaxPaddle = RunQuery($sSQL);
 if (mysqli_num_rows($rsMaxPaddle) > 0) {
     $oneRow = mysqli_fetch_array($rsMaxPaddle);
@@ -39,11 +39,11 @@ if (mysqli_num_rows($rsMaxPaddle) > 0) {
 while ($donorRow = mysqli_fetch_array($rsDonors)) {
     $donorID = $donorRow['donorID'];
 
-    $sSQL = "SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$iFundRaiserID'";
+    $sSQL ="SELECT pn_per_id FROM paddlenum_pn WHERE pn_per_id='$donorID' AND pn_FR_ID = '$iFundRaiserID'";
     $rsBuyer = RunQuery($sSQL);
 
     if ($donorID > 0 && mysqli_num_rows($rsBuyer) === 0) {
-        $sSQL = "INSERT INTO paddlenum_pn (pn_Num, pn_fr_ID, pn_per_ID)
+        $sSQL ="INSERT INTO paddlenum_pn (pn_Num, pn_fr_ID, pn_per_ID)
                         VALUES ('$extraPaddleNum', '$iFundRaiserID', '$donorID')";
         RunQuery($sSQL);
         $extraPaddleNum = $extraPaddleNum + 1;

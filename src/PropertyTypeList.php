@@ -20,7 +20,7 @@ $filterClass = isset($_GET['class']) ? InputUtils::legacyFilterInput($_GET['clas
 // Build SQL query with optional class filter
 $sSQL = 'SELECT prt_ID, prt_Class, prt_Name, COUNT(pro_ID) AS Properties FROM propertytype_prt LEFT JOIN property_pro ON pro_prt_ID = prt_ID';
 if ($filterClass !== '') {
-    $sSQL .= " WHERE prt_Class = '" . $filterClass . "'";
+    $sSQL .=" WHERE prt_Class = '" . $filterClass ."'";
 }
 $sSQL .= ' GROUP BY prt_ID, prt_Class, prt_Name ORDER BY prt_Class, prt_Name';
 $rsPropertyTypes = RunQuery($sSQL);
@@ -92,7 +92,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <i class="fa-solid fa-circle-info text-muted ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
                             </th>
                             <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
-                            <th class="text-right"><?= gettext('Actions') ?></th>
+                            <th class="text-end"><?= gettext('Actions') ?></th>
                             <?php endif; ?>
                         </tr>
                     </thead>
@@ -114,24 +114,24 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php
                                 switch ($prt_Class) {
                                     case 'p':
-                                        echo '<span class="badge badge-info"><i class="fa-solid fa-user"></i> ' . gettext('Person') . '</span>';
+                                        echo '<span class="badge bg-info"><i class="fa-solid fa-user"></i> ' . gettext('Person') . '</span>';
                                         break;
                                     case 'f':
-                                        echo '<span class="badge badge-success"><i class="fa-solid fa-users"></i> ' . gettext('Family') . '</span>';
+                                        echo '<span class="badge bg-success"><i class="fa-solid fa-users"></i> ' . gettext('Family') . '</span>';
                                         break;
                                     case 'g':
-                                        echo '<span class="badge badge-primary"><i class="fa-solid fa-user-group"></i> ' . gettext('Group') . '</span>';
+                                        echo '<span class="badge bg-primary"><i class="fa-solid fa-user-group"></i> ' . gettext('Group') . '</span>';
                                         break;
                                 }
                                 ?>
                             </td>
                             <td class="text-center">
                                 <?php if ($Properties > 0): ?>
-                                <span class="badge badge-success" title="<?= $Properties . ' ' . gettext('records') ?>">
+                                <span class="badge bg-success" title="<?= $Properties . ' ' . gettext('records') ?>">
                                     <i class="fa-solid fa-check"></i> <?= $Properties ?>
                                 </span>
                                 <?php else: ?>
-                                <span class="badge badge-secondary">
+                                <span class="badge bg-secondary">
                                     <i class="fa-solid fa-minus"></i> 0
                                 </span>
                                 <?php endif; ?>

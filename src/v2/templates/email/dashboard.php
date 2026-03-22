@@ -8,14 +8,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Overview Card -->
-<div class="card card-primary card-outline mb-3">
+<div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-envelope"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-lg-4 col-md-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-primary">

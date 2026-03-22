@@ -8,14 +8,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="card card-info card-outline mb-3">
+<div class="card border border-info mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-secondary">
@@ -30,7 +30,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-success">
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-primary">
@@ -60,7 +60,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-info">
@@ -75,7 +75,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-primary">
@@ -90,7 +90,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <div class="text-truncate">
                             <h3 class="card-title text-danger">
@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-primary card-outline mb-3">
+<div class="card border border-primary mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
         <div class="card-tools ms-auto">
@@ -146,7 +146,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php foreach ($classStats as $class) { ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>" class="mr-2" title="<?= gettext('Edit') ?>">
+                            <a href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>" class="me-2" title="<?= gettext('Edit') ?>">
                                 <i class="fa-solid fa-pen"></i>
                             </a>
                             <a href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
@@ -162,7 +162,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-warning card-outline mb-3">
+<div class="card border border-warning mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
         <div class="card-tools ms-auto">
@@ -230,7 +230,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="mb-3">
                         <input type="text" id="new-class-name" class="form-control"
                                placeholder="<?= gettext('Enter Name') ?>" maxlength="20" required>
                     </div>

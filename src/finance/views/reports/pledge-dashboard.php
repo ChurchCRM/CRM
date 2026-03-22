@@ -13,8 +13,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- Page Header with Controls -->
     <div class="row mb-4">
         <div class="col-md-6">
-            <div class="form-group mb-0">
-                <label for="fyid" class="font-weight-bold"><?= gettext('Fiscal Year') ?></label>
+            <div class="mb-3 mb-0">
+                <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
                     <select name="fyid" id="fyid" class="form-control d-inline-block" style="width: auto;" onchange="this.form.submit();">
                         <?php foreach ($availableYears as $year): ?>
@@ -29,9 +29,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </small>
             </div>
         </div>
-        <div class="col-md-6 text-right">
+        <div class="col-md-6 text-end">
             <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-primary">
-                <i class="fa-solid fa-plus mr-1"></i>
+                <i class="fa-solid fa-plus me-1"></i>
                 <?= gettext('Add New') . ' ' . gettext('Pledge') ?>
             </a>
         </div>
@@ -47,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="finance-metric-value">
                         $<?= number_format($totalPledges, 2) ?>
                     </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
+                    <div class="text-white-50 text-uppercase small fw-bold mt-2 finance-metric-label">
                         <?= gettext('Total Pledges') ?>
                     </div>
                     <div class="text-white-50 small mt-1">
@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="finance-metric-value">
                         $<?= number_format($totalPayments, 2) ?>
                     </div>
-                    <div class="text-white-50 text-uppercase small font-weight-bold mt-2 finance-metric-label">
+                    <div class="text-white-50 text-uppercase small fw-bold mt-2 finance-metric-label">
                         <?= gettext('Total Payments') ?>
                     </div>
                     <div class="text-white-50 small mt-1">
@@ -83,12 +83,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card finance-card shadow-sm border-0 h-100">
                         <div class="card-header bg-info text-white py-2">
                             <h5 class="mb-0">
-                                <i class="fa-solid fa-donate mr-1"></i>
+                                <i class="fa-solid fa-donate me-1"></i>
                                 <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
                             </h5>
                         </div>
                         <div class="card-body">
-                            <div class="h5 mb-1 font-weight-bold text-dark">
+                            <div class="h5 mb-1 fw-bold text-dark">
                                 $<?= number_format($fundTotal['total_paid'], 2) ?>
                             </div>
                             <div class="text-muted small mb-2">
@@ -114,7 +114,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-12">
             <?php if (empty($familyPledges)): ?>
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-info-circle mr-2"></i>
+                    <i class="fa-solid fa-info-circle me-2"></i>
                     <?= gettext('No pledges found for the selected fiscal year') ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
@@ -122,24 +122,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card finance-card shadow-sm border-0">
                     <div class="card-header bg-primary text-white py-2">
                         <h5 class="mb-0">
-                            <i class="fa-solid fa-handshake mr-1"></i>
+                            <i class="fa-solid fa-handshake me-1"></i>
                             <?= gettext('Family Pledges') ?>
-                            <span class="badge badge-light ml-2"><?= count($familyPledges) ?></span>
+                            <span class="badge bg-light ms-2"><?= count($familyPledges) ?></span>
                         </h5>
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
-                                <thead class="thead-light">
+                                <thead class="table-light">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                         <th><?= gettext('Envelope') ?></th>
                                         <?php endif; ?>
                                         <th><?= gettext('Fund Name') ?></th>
-                                        <th class="text-right"><?= gettext('Pledge Amount') ?></th>
-                                        <th class="text-right"><?= gettext('Payments') ?></th>
-                                        <th class="text-right"><?= gettext('Remaining') ?></th>
+                                        <th class="text-end"><?= gettext('Pledge Amount') ?></th>
+                                        <th class="text-end"><?= gettext('Payments') ?></th>
+                                        <th class="text-end"><?= gettext('Remaining') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -150,7 +150,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         ?>
                                         <?php foreach ($family['pledges'] as $idx => $pledge): ?>
                                             <tr <?= $isMultiplePledges ? 'style="border-left: 3px solid #007bff;"' : '' ?>>
-                                                <td class="<?= $idx === 0 ? 'font-weight-bold' : 'text-muted small pl-4' ?>">
+                                                <td class="<?= $idx === 0 ? 'fw-bold' : 'text-muted small ps-4' ?>">
                                                     <?php if ($idx === 0): ?>
                                                         <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family['family_id'] ?>">
                                                             <?= InputUtils::escapeHTML($family['family_name']) ?>
@@ -165,17 +165,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 </td>
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
-                                                <td class="text-right font-weight-bold">
+                                                <td class="text-end fw-bold">
                                                     $<?= number_format($pledge['pledge_amount'], 2) ?>
                                                 </td>
-                                                <td class="text-right">
+                                                <td class="text-end">
                                                     $<?= number_format($pledge['payment_amount'], 2) ?>
                                                 </td>
                                                 <?php
                                                 $remaining = $pledge['pledge_amount'] - $pledge['payment_amount'];
                                                 $percentComplete = $pledge['pledge_amount'] > 0 ? ($pledge['payment_amount'] / $pledge['pledge_amount']) * 100 : 0;
                                                 if ($percentComplete >= 100) {
-                                                    $statusClass = 'text-success font-weight-bold';
+                                                    $statusClass = 'text-success fw-bold';
                                                 } elseif ($percentComplete >= 75) {
                                                     $statusClass = 'text-info';
                                                 } elseif ($percentComplete >= 50) {
@@ -184,7 +184,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     $statusClass = 'text-danger';
                                                 }
                                                 ?>
-                                                <td class="text-right <?= $statusClass ?>">
+                                                <td class="text-end <?= $statusClass ?>">
                                                     $<?= number_format($remaining, 2) ?>
                                                     <small class="d-block text-muted"><?= number_format($percentComplete, 0) ?>%</small>
                                                 </td>

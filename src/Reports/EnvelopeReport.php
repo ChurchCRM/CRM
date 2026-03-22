@@ -106,7 +106,7 @@ foreach ($families as $family) {
 
     // Count the number of lines in the output string
     if (strlen($OutStr)) {
-        $numlines = mb_substr_count($OutStr, "\n");
+        $numlines = mb_substr_count($OutStr,"\n");
     } else {
         $numlines = 0;
     }

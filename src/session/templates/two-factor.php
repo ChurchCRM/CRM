@@ -126,11 +126,11 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     font-size: 14px;
   }
 
-  .form-group {
+  .mb-3 {
     margin-bottom: 20px;
   }
 
-  .form-group label {
+  .mb-3 label {
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
@@ -138,7 +138,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     font-size: 14px;
   }
 
-  .form-group input {
+  .mb-3 input {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid #ddd;
@@ -147,13 +147,13 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     transition: border-color 0.2s, box-shadow 0.2s;
   }
 
-  .form-group input:focus {
+  .mb-3 input:focus {
     outline: none;
     border-color: #667eea;
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
   }
 
-  .form-group input::placeholder {
+  .mb-3 input::placeholder {
     color: #999;
   }
 
@@ -297,7 +297,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <?php } ?>
 
         <form method="post" name="TwoFAForm" action="<?= SystemURLs::getRootPath()?>/session/two-factor">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="TwoFACode"><?= gettext('Authentication Code') ?></label>
             <input type="text" id="TwoFACode" name="TwoFACode" placeholder="000000" maxlength="6" inputmode="numeric" required autofocus>
           </div>

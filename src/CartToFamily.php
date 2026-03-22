@@ -147,7 +147,7 @@ echo $sError;
                 ->orderByLastName()
                 ->find();
 
-            echo "<table class='table table-striped'>";
+            echo"<table class='table table-striped'>";
             echo '<tr>';
             echo '<td>&nbsp;</td>';
             echo '<td><b>' . gettext('Name') . '</b></td>';
@@ -281,7 +281,7 @@ echo $sError;
             <tr>
                 <td class="LabelColumn"><?= gettext('Home Phone') ?>:</td>
                 <td class="TextColumn">
-                    <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30" data-inputmask='"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+                    <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
                     <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
                                                                                     echo ' checked';
                                                                                 } ?>><?= gettext('Do not auto-format') ?>

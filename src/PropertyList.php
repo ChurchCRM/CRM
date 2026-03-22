@@ -35,12 +35,12 @@ switch ($sType) {
 $sPageTitle = $sTypeName . ' ' . gettext('Property List');
 
 // Get the properties
-$sSQL = "SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType . "' ORDER BY prt_Name,pro_Name";
+$sSQL ="SELECT * FROM property_pro, propertytype_prt WHERE prt_ID = pro_prt_ID AND pro_Class = '" . $sType ."' ORDER BY prt_Name,pro_Name";
 $rsProperties = RunQuery($sSQL);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
+<div class="card-body">
     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
         //Display the new property link and property types link
         echo '<div class="mb-3">';

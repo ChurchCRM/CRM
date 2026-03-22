@@ -25,8 +25,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card">
                 <div class="card-body">
                     <form method="GET" class="form-inline">
-                        <label for="fyid" class="mr-2"><?= gettext('Select Fiscal Year') ?>:</label>
-                        <select name="fyid" id="fyid" class="form-control mr-3" onchange="this.form.submit();">
+                        <label for="fyid" class="me-2"><?= gettext('Select Fiscal Year') ?>:</label>
+                        <select name="fyid" id="fyid" class="form-control me-3" onchange="this.form.submit();">
                             <option value="">-- <?= gettext('select an option') ?> --</option>
                             <?php foreach ($availableYears as $year): ?>
                                 <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card-header bg-light">
                         <h5 class="mb-0">
                             <?= gettext('Family Pledges') ?> 
-                            <span class="badge badge-primary ml-2"><?= count($familyPledges) ?> <?= gettext('Families') ?></span>
+                            <span class="badge bg-primary ms-2"><?= count($familyPledges) ?> <?= gettext('Families') ?></span>
                         </h5>
                     </div>
                     <div class="card-body p-0">
@@ -66,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <th><?= gettext('Envelope') ?></th>
                                         <?php endif; ?>
                                         <th><?= gettext('Fund Name') ?></th>
-                                        <th class="text-right"><?= gettext('Pledge Amount') ?></th>
+                                        <th class="text-end"><?= gettext('Pledge Amount') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -75,7 +75,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?php foreach ($family['pledges'] as $pledge): ?>
                                             <tr>
                                                 <?php if ($isFirstRow): ?>
-                                                    <td rowspan="<?= count($family['pledges']) ?>" class="align-middle font-weight-bold">
+                                                    <td rowspan="<?= count($family['pledges']) ?>" class="align-middle fw-bold">
                                                         <?= InputUtils::escapeHTML($family['family_name']) ?>
                                                     </td>
                                                     <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     <?php $isFirstRow = false; ?>
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
-                                                <td class="text-right">
+                                                <td class="text-end">
                                                     <?= number_format($pledge['pledge_amount'], 2) ?>
                                                 </td>
                                             </tr>

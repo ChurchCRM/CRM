@@ -18,7 +18,7 @@ $sPageTitle = gettext('Custom Family Fields Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
+<div class="card-body">
 
 <?php
 
@@ -118,8 +118,8 @@ if (isset($_POST['SaveChanges'])) {
                 $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM family_custom');
                 $last = mysqli_num_rows($fields) - 1;
                 // Set the new field number based on the highest existing.
-                // Chop off the "c" at the beginning of the old one's name.
-                // The "c#" naming scheme is necessary because MySQL 3.23
+                // Chop off the"c" at the beginning of the old one's name.
+                // The"c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
                 $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM family_custom');
                 $fieldInfo = mysqli_fetch_field_direct($fields, $last);
@@ -147,16 +147,16 @@ if (isset($_POST['SaveChanges'])) {
                         ->setOptionName(gettext('Default Option'));
                     $listOption->save();
 
-                    $newSpecial = "'$newListID'";
+                    $newSpecial ="'$newListID'";
                 } else {
                     $newSpecial = 'NULL';
                 }
 
                 // Insert into the master table
                 $newOrderID = $last + 1;
-                $sSQL = "INSERT INTO `family_custom_master`
+                $sSQL ="INSERT INTO `family_custom_master`
                         (`fam_custom_Order` , `fam_custom_Field` , `fam_custom_Name` ,  `fam_custom_Special` , `fam_custom_FieldSec` , `type_ID`)
-                        VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
+                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
                 RunQuery($sSQL);
 
                 // Insert into the custom fields table
@@ -164,7 +164,7 @@ if (isset($_POST['SaveChanges'])) {
 
                 switch ($newFieldType) {
                     case 1:
-                        $sSQL .= "ENUM('false', 'true')";
+                        $sSQL .="ENUM('false', 'true')";
                         break;
                     case 2:
                         $sSQL .= 'DATE';
@@ -182,7 +182,7 @@ if (isset($_POST['SaveChanges'])) {
                         $sSQL .= 'YEAR';
                         break;
                     case 7:
-                        $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                        $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
                         break;
                     case 8:
                         $sSQL .= 'INT';
@@ -250,7 +250,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         if ($aAryRow['lst_OptionName'] == $currOpt) {
             $sOptList .= ' selected';
         }
-        $sOptList .= '>' . $aAryRow['lst_OptionName'] . "</option>\n";
+        $sOptList .= '>' . $aAryRow['lst_OptionName'] ."</option>\n";
     }
     $sOptList .= '</select>';
 
@@ -262,7 +262,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     function confirmDeleteField(fieldName, fieldId) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
         msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
         msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
         bootbox.confirm({
@@ -415,7 +415,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 ?>
                 <tr>
                     <td>
-                        <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                        <span class="badge bg-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                     </td>
                     <td>
                         <input type="text" class="form-control form-control-sm" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">

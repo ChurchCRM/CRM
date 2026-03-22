@@ -130,7 +130,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         
                         <!-- Event Type Filter -->
                         <form method="POST" action="CartToEvent.php" class="mb-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventTypeFilter"><?= gettext('Filter by Event Type') ?></label>
                                 <div class="input-group">
                                     <select id="EventTypeFilter" name="EventTypeFilter" class="form-control" onchange="this.form.submit()">
@@ -147,7 +147,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         
                         <!-- Event Selection Form -->
                         <form name="CartToEvent" action="CartToEvent.php" method="POST">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventID"><?= gettext('Select Event') ?></label>
                                 <select id="EventID" name="EventID" class="form-control" required>
                                     <option value="" disabled selected><?= gettext('Choose an event...') ?></option>

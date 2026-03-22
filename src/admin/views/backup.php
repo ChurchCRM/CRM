@@ -15,9 +15,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Best Practices Card -->
-<div class="card card-info">
+<div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-lightbulb mr-2"></i><?= gettext('Backup Best Practices') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-lightbulb me-2"></i><?= gettext('Backup Best Practices') ?></h3>
         <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                 <i class="fa-solid fa-minus"></i>
@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <div class="row">
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <h3 class="card-title text-info"><i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Regular Backups') ?></h3>
                         <p class="text-muted"><?= gettext('Make a backup at least once a week unless you have automated backups.') ?></p>
@@ -35,7 +35,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <h3 class="card-title text-warning"><i class="fa-solid fa-copy me-2"></i><?= gettext('Multiple Copies') ?></h3>
                         <p class="text-muted"><?= gettext('Keep one copy in a fire-proof safe on-site and another off-site.') ?></p>
@@ -43,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card card-sm">
+                <div class="card-sm">
                     <div class="card-body">
                         <h3 class="card-title text-danger"><i class="fa-solid fa-lock me-2"></i><?= gettext('Encryption') ?></h3>
                         <p class="text-muted"><?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?></p>
@@ -55,22 +55,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Backup Form Card -->
-<div class="card card-primary">
+<div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-database mr-2"></i><?= gettext('Create Backup') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-database me-2"></i><?= gettext('Create Backup') ?></h3>
     </div>
     <div class="card-body">
         <form method="post" action="<?= SystemURLs::getRootPath() ?>/api/database/backup" id="BackupDatabase">
             <!-- Backup Type Selection -->
-            <div class="form-group">
+            <div class="mb-3">
                 <label><?= gettext('Backup Type') ?></label>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="archiveType2" name="archiveType" value="2" class="custom-control-input" checked>
                             <label class="custom-control-label" for="archiveType2">
-                                <i class="fa-solid fa-file-code mr-1"></i><?= gettext('Database Only') ?>
-                                <span class="badge badge-secondary">.sql</span>
+                                <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
+                                <span class="badge bg-secondary">.sql</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">
@@ -81,8 +81,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" id="archiveType3" name="archiveType" value="3" class="custom-control-input">
                             <label class="custom-control-label" for="archiveType3">
-                                <i class="fa-solid fa-file-archive mr-1"></i><?= gettext('Full Backup') ?>
-                                <span class="badge badge-secondary">.tar.gz</span>
+                                <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
+                                <span class="badge bg-secondary">.tar.gz</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">
@@ -97,25 +97,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <!-- Action Buttons -->
             <div class="row">
                 <div class="col-md-6 mb-2">
-                    <button type="button" class="btn btn-primary btn-block" id="doBackup">
-                        <i class="fa-solid fa-download mr-2"></i><?= gettext('Generate & Download Backup') ?>
+                    <button type="button" class="btn btn-primary w-100" id="doBackup">
+                        <i class="fa-solid fa-download me-2"></i><?= gettext('Generate & Download Backup') ?>
                     </button>
                 </div>
                 <div class="col-md-6 mb-2">
                     <?php if ($externalBackupEnabled && $externalBackupConfigured): ?>
-                        <button type="button" class="btn btn-outline-secondary btn-block" id="doRemoteBackup">
-                            <i class="fa-solid fa-cloud-upload-alt mr-2"></i><?= gettext('Backup to External Storage') ?>
+                        <button type="button" class="btn btn-outline-secondary w-100" id="doRemoteBackup">
+                            <i class="fa-solid fa-cloud-upload-alt me-2"></i><?= gettext('Backup to External Storage') ?>
                         </button>
                     <?php elseif ($externalBackupEnabled && !$externalBackupConfigured): ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/external-backup/settings" class="btn btn-outline-warning btn-block">
-                            <i class="fa-solid fa-cog mr-2"></i><?= gettext('Configure External Backup') ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/external-backup/settings" class="btn btn-outline-warning w-100">
+                            <i class="fa-solid fa-cog me-2"></i><?= gettext('Configure External Backup') ?>
                         </a>
                         <small class="form-text text-muted text-center">
                             <?= gettext('External Backup plugin is enabled but not configured.') ?>
                         </small>
                     <?php else: ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/management" class="btn btn-outline-info btn-block">
-                            <i class="fa-solid fa-plug mr-2"></i><?= gettext('Enable External Backup Plugin') ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/plugins/management" class="btn btn-outline-info w-100">
+                            <i class="fa-solid fa-plug me-2"></i><?= gettext('Enable External Backup Plugin') ?>
                         </a>
                         <small class="form-text text-muted text-center">
                             <?= gettext('Enable the External Backup plugin for WebDAV cloud storage.') ?>
@@ -130,7 +130,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Backup Status Card -->
 <div class="card" id="statusCard">
     <div class="card-header" id="statusHeader">
-        <h3 class="card-title"><i class="fa-solid fa-tasks mr-2"></i><?= gettext('Backup Status') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-tasks me-2"></i><?= gettext('Backup Status') ?></h3>
     </div>
     <div class="card-body">
         <div id="statusIdle">
@@ -142,23 +142,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div id="statusRunning" class="d-none">
             <div class="text-center py-4">
                 <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
-                    <span class="sr-only"><?= gettext('Loading...') ?></span>
+                    <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                 </div>
-                <p class="mb-0 text-primary font-weight-bold"><?= gettext('Backup in progress, please wait...') ?></p>
+                <p class="mb-0 text-primary fw-bold"><?= gettext('Backup in progress, please wait...') ?></p>
                 <small class="text-muted"><?= gettext('This may take a few minutes for large databases.') ?></small>
             </div>
         </div>
         <div id="statusComplete" class="d-none">
             <div class="text-center py-4">
                 <i class="fa-solid fa-check-circle fa-3x text-success mb-3"></i>
-                <p class="mb-2 text-success font-weight-bold" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
+                <p class="mb-2 text-success fw-bold" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
                 <div id="resultFiles" class="mt-3"></div>
             </div>
         </div>
         <div id="statusError" class="d-none">
             <div class="text-center py-4">
                 <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
-                <p class="mb-0 text-danger font-weight-bold"><?= gettext('Backup failed. Please try again.') ?></p>
+                <p class="mb-0 text-danger fw-bold"><?= gettext('Backup failed. Please try again.') ?></p>
             </div>
         </div>
     </div>

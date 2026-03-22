@@ -26,11 +26,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="card">
     <div class="card-header bg-primary">
         <h3 class="card-title">
-            <i class="fa-solid fa-images mr-2"></i>
+            <i class="fa-solid fa-images me-2"></i>
             <?= gettext('Photo Directory') ?>
         </h3>
         <div class="card-tools ms-auto">
-            <span class="badge badge-light">
+            <span class="badge bg-light">
                 <?= sprintf(ngettext('%d person', '%d people', $totalPeople), $totalPeople) ?>
             </span>
         </div>
@@ -43,7 +43,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <!-- Classification Filter -->
                 <div class="col-md-4 col-sm-6 mb-2">
                     <label for="classification">
-                        <i class="fa-solid fa-filter mr-1"></i><?= gettext('Classification') ?>
+                        <i class="fa-solid fa-filter me-1"></i><?= gettext('Classification') ?>
                     </label>
                     <select name="classification" id="classification" class="form-control" onchange="this.form.submit()">
                         <option value=""><?= gettext('All Classifications') ?></option>
@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                <?= $showOnlyWithPhotos ? 'checked' : '' ?>
                                onchange="this.form.submit()">
                         <label class="custom-control-label" for="photosOnly">
-                            <i class="fa-solid fa-camera mr-1"></i><?= gettext('Show only people with photos') ?>
+                            <i class="fa-solid fa-camera me-1"></i><?= gettext('Show only people with photos') ?>
                         </label>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="col-md-4 col-sm-12 mb-2">
                     <label class="d-block">&nbsp;</label>
                     <a href="<?= $sRootPath ?>/v2/people/photos" class="btn btn-outline-secondary">
-                        <i class="fa-solid fa-rotate-left mr-1"></i><?= gettext('Reset Filters') ?>
+                        <i class="fa-solid fa-rotate-left me-1"></i><?= gettext('Reset Filters') ?>
                     </a>
                 </div>
             </div>
@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- Photo Grid -->
         <?php if (empty($peopleData)): ?>
             <div class="alert alert-info">
-                <i class="fa-solid fa-info-circle mr-2"></i>
+                <i class="fa-solid fa-info-circle me-2"></i>
                 <?= gettext('No people found matching your criteria.') ?>
             </div>
         <?php else: ?>

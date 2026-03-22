@@ -346,7 +346,7 @@ foreach ($families as $family) {
         }
     }
 
-    if ($curY > 183) { // This insures the trailer information fits continuously on the page (3 inches of "footer"
+    if ($curY > 183) { // This insures the trailer information fits continuously on the page (3 inches of"footer"
         $curY = $pdf->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
     }
     $pdf->finishPage($curY);

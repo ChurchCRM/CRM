@@ -8,7 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 /* @var $families ObjectCollection */
 ?>
 
-<div class="card card-primary mb-3">
+<div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-filter"></i> <?= gettext('Filters') ?></h3>
     </div>
@@ -16,11 +16,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <form id="family-filters" method="get" action="<?= SystemURLs::getRootPath() ?>/v2/family/">
             <div class="row">
                 <div class="col-lg-6">
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="filterCity"><?= gettext('City') ?></label>
                         <input type="text" class="form-control family-filter-field" id="filterCity" name="City" value="<?= InputUtils::escapeAttribute($filterCity ?? '') ?>" placeholder="<?= gettext('City') ?>">
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="familyActiveStatus"><?= gettext('Status') ?></label>
                         <select id="familyActiveStatus" name="familyActiveStatus" class="form-control family-filter-field">
                             <option value="all" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
@@ -30,11 +30,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="filterState"><?= gettext('State') ?></label>
                         <input type="text" class="form-control family-filter-field" id="filterState" name="State" value="<?= InputUtils::escapeAttribute($filterState ?? '') ?>" placeholder="<?= gettext('State') ?>">
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="filterGeocoded"><?= gettext('Address Status') ?></label>
                         <select id="filterGeocoded" name="geocoded" class="form-control family-filter-field">
                             <option value="all" <?= (isset($filterGeocoded) && $filterGeocoded === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="row">
                 <div class="col-12">
-                    <button id="ClearFamilyFilter" type="button" class="btn btn-secondary btn-block">
+                    <button id="ClearFamilyFilter" type="button" class="btn btn-secondary w-100">
                         <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter') ?>
                     </button>
                 </div>
@@ -69,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Email') ?></th>
                     <th><?= gettext('Created') ?></th>
                     <th><?= gettext('Edited') ?></th>
-                    <th class="text-right" width="150"><?= gettext('Actions') ?></th>
+                    <th class="text-end" width="150"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td>
                         <?= $family->getLinkHtml(true, true) ?>
                         <?php if (!$family->isActive()) { ?>
-                            <span class="badge badge-secondary ml-2" title="<?= gettext('Inactive') ?>">
+                            <span class="badge bg-secondary ms-2" title="<?= gettext('Inactive') ?>">
                                 <i class="fa-solid fa-power-off"></i> <?= gettext('Inactive') ?>
                             </span>
                         <?php } ?>
@@ -110,11 +110,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </td>
                     <td data-order="<?= $family->hasLatitudeAndLongitude() ? 2 : ($family->hasAddress() ? 1 : 0) ?>">
                         <?php if ($family->hasLatitudeAndLongitude()): ?>
-                            <span class="badge badge-success" title="<?= gettext('Geocoded') ?>">
+                            <span class="badge bg-success" title="<?= gettext('Geocoded') ?>">
                                 <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                             </span>
                         <?php elseif ($family->hasAddress()): ?>
-                            <span class="badge badge-warning" title="<?= gettext('Unverified') ?>">
+                            <span class="badge bg-warning" title="<?= gettext('Unverified') ?>">
                                 <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
                             </span>
                         <?php endif; ?>
@@ -123,18 +123,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
                     <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
                     <td><?php if ($family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
-                    <td class="text-right">
+                    <td class="text-end">
                         <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>' class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
                             <i class="fa-solid fa-pen"></i>
                         </a>
                         <?php if ($isInCart) { ?>
-                            <span class="RemoveFromCart ml-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                            <span class="RemoveFromCart ms-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                                 <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Remove from Cart') ?>">
                                     <i class="fa-solid fa-shopping-cart fa-sm"></i>
                                 </button>
                             </span>
                         <?php } else { ?>
-                            <span class="AddToCart ml-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                            <span class="AddToCart ms-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                                 <button type="button" class="btn btn-sm btn-primary" title="<?= gettext('Add to Cart') ?>">
                                     <i class="fa-solid fa-cart-plus fa-sm"></i>
                                 </button>
@@ -156,34 +156,34 @@ $(document).ready(function() {
     if ($.fn.DataTable) {
         let dataTableConfig = {
             // Enable pagination
-            "paging": true,
-            "pageLength": 10,
-            "lengthChange": true,
-            "searching": true,
+"paging": true,
+"pageLength": 10,
+"lengthChange": true,
+"searching": true,
             // Column definitions
             // Column order: 0=Name, 1=Address, 2=Address Status, 3=Home Phone, 4=Email, 5=Created, 6=Edited, 7=Actions
-            "columnDefs": [
+"columnDefs": [
                 {
-                    "targets": 2, // Address Status column (0-indexed) — uses data-order attribute for sorting
-                    "orderable": true,
-                    "searchable": false
+"targets": 2, // Address Status column (0-indexed) — uses data-order attribute for sorting
+"orderable": true,
+"searchable": false
                 },
                 {
-                    "targets": -1, // Last column (Actions)
-                    "orderable": false,
-                    "searchable": false
+"targets": -1, // Last column (Actions)
+"orderable": false,
+"searchable": false
                 }
             ],
-            "language": {
-                "search": "<?= gettext('Search') ?>:",
-                "paginate": {
-                    "first": "<?= gettext('First') ?>",
-                    "last": "<?= gettext('Last') ?>",
-                    "next": "<?= gettext('Next') ?>",
-                    "previous": "<?= gettext('Previous') ?>"
+"language": {
+"search":"<?= gettext('Search') ?>:",
+"paginate": {
+"first":"<?= gettext('First') ?>",
+"last":"<?= gettext('Last') ?>",
+"next":"<?= gettext('Next') ?>",
+"previous":"<?= gettext('Previous') ?>"
                 },
-                "lengthMenu": "<?= gettext('Show') ?> _MENU_ <?= gettext('entries') ?>",
-                "info": "<?= gettext('Showing') ?> _START_ <?= gettext('to') ?> _END_ <?= gettext('of') ?> _TOTAL_ <?= gettext('entries') ?>"
+"lengthMenu":"<?= gettext('Show') ?> _MENU_ <?= gettext('entries') ?>",
+"info":"<?= gettext('Showing') ?> _START_ <?= gettext('to') ?> _END_ <?= gettext('of') ?> _TOTAL_ <?= gettext('entries') ?>"
             }
         };
         

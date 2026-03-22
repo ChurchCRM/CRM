@@ -39,7 +39,7 @@ if ($resArr) {
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
         <input type="submit" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="Back">
     </form>

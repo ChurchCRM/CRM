@@ -104,7 +104,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special = " . $listID;
+        $sSQL ="SELECT '' FROM person_custom_master WHERE type_ID = 12 AND custom_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid person-custom field custom list
@@ -122,7 +122,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special = " . $listID;
+        $sSQL ="SELECT '' FROM groupprop_master WHERE type_ID = 12 AND prop_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid group-specific-property field custom list
@@ -140,7 +140,7 @@ switch ($mode) {
         $listID = InputUtils::legacyFilterInput($_GET['ListID'], 'int');
         $embedded = true;
 
-        $sSQL = "SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special = " . $listID;
+        $sSQL ="SELECT '' FROM family_custom_master WHERE type_ID = 12 AND fam_custom_Special =" . $listID;
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid family_custom field custom list
@@ -165,19 +165,19 @@ if (isset($_POST['AddField'])) {
         $iNewNameError = 1;
     } else {
         // Check for a duplicate option name
-        $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName . "'";
+        $sSQL ="SELECT '' FROM list_lst WHERE lst_ID = $listID AND lst_OptionName = '" . $newFieldName ."'";
         $rsCount = RunQuery($sSQL);
         if (mysqli_num_rows($rsCount) > 0) {
             $iNewNameError = 2;
         } else {
             // Get count of the options
-            $sSQL = "SELECT '' FROM list_lst WHERE lst_ID = $listID";
+            $sSQL ="SELECT '' FROM list_lst WHERE lst_ID = $listID";
             $rsTemp = RunQuery($sSQL);
             $numRows = mysqli_num_rows($rsTemp);
             $newOptionSequence = $numRows + 1;
 
             // Get the new OptionID
-            $sSQL = "SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
+            $sSQL ="SELECT MAX(lst_OptionID) FROM list_lst WHERE lst_ID = $listID";
             $rsTemp = RunQuery($sSQL);
             $aTemp = mysqli_fetch_array($rsTemp);
             $newOptionID = $aTemp[0] + 1;
@@ -201,7 +201,7 @@ $bDuplicateFound = false;
 
 // Get the original list of options..
 //ADDITION - get Sequence Also
-$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
+$sSQL ="SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID=$listID ORDER BY lst_OptionSequence";
 $rsList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsList);
 
@@ -263,7 +263,7 @@ if (isset($_POST['SaveChanges'])) {
 
 // Get data for the form as it now exists..
 
-$sSQL = "SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
+$sSQL ="SELECT lst_OptionName, lst_OptionID, lst_OptionSequence FROM list_lst WHERE lst_ID = $listID ORDER BY lst_OptionSequence";
 $rsRows = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsRows);
 
@@ -286,14 +286,14 @@ for ($row = 1; $row <= $numRows; $row++) {
 if ($embedded) {
     require_once __DIR__ . '/Include/Header-Minimal.php';
 } else {    // in portuguese, this doesn't work because adjectives come after nouns
-    //$sPageTitle = $adj . ' ' . $noun . "s ".gettext("Editor");
+    //$sPageTitle = $adj . ' ' . $noun ."s".gettext("Editor");
     require_once __DIR__ . '/Include/Header.php';
 }
 
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     function confirmDelete(itemName, deleteUrl) {
-        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + itemName + '"?';
+        var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + itemName + '"?';
         msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
         msg += <?= json_encode(gettext('This will remove it from all people currently assigned to it.')) ?>;
         bootbox.confirm({
@@ -350,7 +350,7 @@ if ($embedded) {
 
 <div class="card">
     <div class="card-body">
-        <form method="post" action="OptionManager.php?<?= "mode=$mode&ListID=$listID" ?>" name="OptionManager">
+        <form method="post" action="OptionManager.php?<?="mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
             <?php
 
@@ -444,10 +444,10 @@ if ($embedded) {
                 ?>
                         <tr>
                             <td>
-                                <span class="badge badge-secondary">
+                                <span class="badge bg-secondary">
                                     <?php
                                     if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
-                                        echo '<span class="badge badge-info">' . gettext('Default') . '</span> ';
+                                        echo '<span class="badge bg-info">' . gettext('Default') . '</span> ';
                                     }
                                     echo $row;
                                     ?>
@@ -469,7 +469,7 @@ if ($embedded) {
                             }
                             if ($mode === 'classes') {
                                 echo '<td>';
-                                $check = in_array($aIDs[$row], $aInactiveClasses) ? "checked" : "";
+                                $check = in_array($aIDs[$row], $aInactiveClasses) ?"checked" :"";
                                 echo '<div class="form-check"><input id="inactive' . InputUtils::escapeAttribute($aIDs[$row]) . '" type="checkbox" class="form-check-input" onclick="$.get(\'OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=Inactive\')" ' . $check . '><label class="form-check-label" for="inactive' . InputUtils::escapeAttribute($aIDs[$row]) . '">' . gettext('Inactive') . '</label></div>';
                                 echo '</td>';
                             }
@@ -502,7 +502,7 @@ if ($embedded) {
     </div>
 
     <div class="d-flex mt-3 justify-content-center">
-        <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
+        <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
             <i class="fa-solid fa-save"></i>
             <?= gettext('Save Changes') ?>
         </button>

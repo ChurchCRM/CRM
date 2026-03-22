@@ -4,7 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 
-$sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
+$sPageTitle = gettext("Change Password") .":" . $user->getFullName();
 if ($isForced) {
     require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 } else {
@@ -14,7 +14,7 @@ if ($isForced) {
 
 <?php if ($isForced): ?>
 <div class="login-box">
-    <div class="card card-outline card-warning">
+    <div class="card border border-warning">
         <div class="card-header text-center">
             <a href="<?= SystemURLs::getRootPath() ?>" class="h1">
                 <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" style="max-width:280px; height:auto;" />
@@ -48,7 +48,7 @@ if ($isForced) {
                 <p class="text-muted small mb-3">
                     <?= gettext('Passwords must be at least') ?> <?= SystemConfig::getValue('iMinPasswordLength') ?> <?= gettext('characters in length.') ?>
                 </p>
-                <button type="submit" name="Submit" class="btn btn-warning btn-block"><?= gettext('Set New Password') ?></button>
+                <button type="submit" name="Submit" class="btn btn-warning w-100"><?= gettext('Set New Password') ?></button>
             </form>
         </div>
     </div>
@@ -58,7 +58,7 @@ if ($isForced) {
     <!-- left column -->
     <div class="col-md-8">
         <!-- general form elements -->
-        <div class="card card-primary">
+        <div class="card">
             <div class="card-header d-flex align-items-center">
                 <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters in length.') ?>
             </div>
@@ -66,15 +66,15 @@ if ($isForced) {
             <form method="post" action="<?= SystemURLs::getRootPath()?>/v2/user/current/changepassword" id="passwordChangeForm">
                 <?= CSRFUtils::getTokenInputField('user_change_password') ?>
                 <div class="card-body">
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="OldPassword"><?= gettext('Old Password') ?>:</label>
                         <input type="password" name="OldPassword" id="OldPassword" class="form-control" autofocus><span id="oldPasswordError" class="form-field-error"><?= $sOldPasswordError ?? '' ?></span>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                             <label for="NewPassword1"><?= gettext('New Password') ?>:</label>
                         <input type="password" name="NewPassword1" id="NewPassword1" class="form-control">
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="NewPassword2"><?= gettext('Confirm New Password') ?>:</label>
                         <input type="password" name="NewPassword2" id="NewPassword2"  class="form-control"><span id="NewPasswordError" class="form-field-error"><?= $sNewPasswordError ?? '' ?></span>
                     </div>

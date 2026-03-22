@@ -16,7 +16,7 @@ if (isset($_POST['SubmitNewsLetter']) || isset($_POST['SubmitConfirmReport']) ||
     $sFontInfo = $_POST['labelfont'];
     $sFontSize = $_POST['labelfontsize'];
     $bRecipientNamingMethod = $_POST['recipientnamingmethod'];
-    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize . "&recipientnamingmethod=" . $bRecipientNamingMethod;
+    $sLabelInfo = '&labelfont=' . urlencode($sFontInfo) . '&labelfontsize=' . $sFontSize ."&recipientnamingmethod=" . $bRecipientNamingMethod;
 
     if (isset($_POST['SubmitNewsLetter'])) {
         RedirectUtils::redirect('Reports/NewsLetterLabels.php?labeltype=' . $sLabelFormat . $sLabelInfo);

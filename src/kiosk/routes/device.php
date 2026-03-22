@@ -153,7 +153,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $groupName = $groups->count() > 0 ? $groups->getFirst()->getName() : '';
 
         // Build response array using Person object methods
-        // Use configured timezone for "today" calculations
+        // Use configured timezone for"today" calculations
         $today = DateTimeUtils::getToday();
         $currentMonth = (int) $today->format('n');
         $currentDay = (int) $today->format('j');
@@ -176,7 +176,7 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
                 $age = $ageInterval->y;
             }
 
-            // Birthday is "this month" if birthMonth matches current month
+            // Birthday is"this month" if birthMonth matches current month
             $birthdayThisMonth = ($birthMonth > 0 && $birthMonth === $currentMonth);
 
             // Calculate if birthday is upcoming (within next 14 days) or recent (within past 14 days)

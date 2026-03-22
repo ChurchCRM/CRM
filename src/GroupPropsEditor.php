@@ -98,13 +98,13 @@ if (isset($_POST['GroupPropSubmit'])) {
 } else {
     // First Pass
     // Verify that the groupprop_X table exists
-    $checkTableSQL = 'SHOW TABLES LIKE "groupprop_' . $iGroupID . '"';
+    $checkTableSQL = 'SHOW TABLES LIKE"groupprop_' . $iGroupID . '"';
     $tableCheckResult = RunQuery($checkTableSQL);
     
     if (mysqli_num_rows($tableCheckResult) === 0) {
         // Table does not exist - create it with initial per_ID column
         $createTableSQL = 'CREATE TABLE IF NOT EXISTS groupprop_' . $iGroupID . ' (
-            per_ID mediumint(8) unsigned NOT NULL default "0",
+            per_ID mediumint(8) unsigned NOT NULL default"0",
             PRIMARY KEY (per_ID),
             UNIQUE KEY per_ID (per_ID)
         ) ENGINE=InnoDB';

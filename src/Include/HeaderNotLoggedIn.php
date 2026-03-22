@@ -47,7 +47,7 @@ require_once __DIR__ . '/Header-Security.php';
     
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
-      root: "<?= SystemURLs::getRootPath() ?>",
+      root:"<?= SystemURLs::getRootPath() ?>",
       churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
     });
   </script>

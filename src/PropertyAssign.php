@@ -89,15 +89,15 @@ function UpdateProperty($iRecordID, $sValue, $iPropertyID, $sAction)
 
     if ($sAction === 'add') {
         // Make sure this property isn't already assigned
-        $sSQL = "SELECT * FROM record2property_r2p WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
+        $sSQL ="SELECT * FROM record2property_r2p WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
         $rsExistingTest = RunQuery($sSQL);
 
         if (mysqli_num_rows($rsExistingTest) === 0) {
-            $sSQL = "INSERT INTO record2property_r2p (r2p_record_ID,r2p_pro_ID,r2p_Value) VALUES ($iRecordID,$iPropertyID,'$sValue')";
+            $sSQL ="INSERT INTO record2property_r2p (r2p_record_ID,r2p_pro_ID,r2p_Value) VALUES ($iRecordID,$iPropertyID,'$sValue')";
             RunQuery($sSQL);
         }
     } else {
-        $sSQL = "UPDATE record2property_r2p SET r2p_Value = '$sValue' WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
+        $sSQL ="UPDATE record2property_r2p SET r2p_Value = '$sValue' WHERE r2p_record_ID = $iRecordID AND r2p_pro_ID = $iPropertyID";
         RunQuery($sSQL);
     }
 }
@@ -152,24 +152,24 @@ $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="PropertyAssign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID ?>">
         <input type="hidden" name="SecondPass" value="True">
         <input type="hidden" name="Action" value="<?= $sAction ?>">
 
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= $sTypeName ?>:</label>
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label fw-bold text-end"><?= $sTypeName ?>:</label>
             <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($sName) ?></div>
         </div>
 
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label font-weight-bold text-right"><?= gettext('Assigning') ?>:</label>
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label fw-bold text-end"><?= gettext('Assigning') ?>:</label>
             <div class="col-sm-9 col-form-label"><?= InputUtils::escapeHTML($sPropertyName) ?></div>
         </div>
 
         <?php if (strlen($sPrompt)) { ?>
-        <div class="form-group row">
-            <label class="col-sm-3 col-form-label font-weight-bold text-right align-top"><?= gettext('Value') ?>:</label>
+        <div class="mb-3 row">
+            <label class="col-sm-3 col-form-label fw-bold text-end align-top"><?= gettext('Value') ?>:</label>
             <div class="col-sm-9">
                 <p class="col-form-label pb-0"><?= InputUtils::escapeHTML($sPrompt) ?></p>
                 <textarea name="Value" class="form-control" rows="10"><?= InputUtils::escapeHTML($sValue) ?></textarea>
@@ -177,7 +177,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <?php } ?>
 
-        <div class="form-group">
+        <div class="mb-3">
             <input type="submit" class="btn btn-primary" value="<?php echo ($sAction === 'add') ? gettext('Assign') : gettext('Update') ?>" name="Submit">
             <a href="<?= $sBackPage ?>" class="btn btn-secondary ms-2"><?= gettext('Cancel') ?></a>
         </div>

@@ -50,7 +50,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     <div class="mb-3">
                         <label class="form-label"><?= gettext('Property to Delete') ?>:</label>
-                        <div class="form-control-plaintext font-weight-bold text-danger">
+                        <div class="form-control-plaintext fw-bold text-danger">
                             <?= InputUtils::escapeHTML($property->getProName()) ?>
                         </div>
                     </div>

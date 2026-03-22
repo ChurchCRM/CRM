@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 
 $isForced = $isForced ?? false;
-$sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
+$sPageTitle = gettext("Change Password") .":" . $user->getFullName();
 if ($isForced) {
     require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 } else {
@@ -13,7 +13,7 @@ if ($isForced) {
 
 <?php if ($isForced): ?>
 <div class="login-box">
-    <div class="card card-outline card-success">
+    <div class="card border border-success">
         <div class="card-header text-center">
             <a href="<?= SystemURLs::getRootPath() ?>" class="h1">
                 <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" style="max-width:280px; height:auto;" />
@@ -25,7 +25,7 @@ if ($isForced) {
                 <strong><?= gettext('Password Changed') ?></strong><br>
                 <small class="text-muted"><?= gettext('Your password has been updated successfully.') ?></small>
             </p>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-success btn-block">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-success w-100">
                 <?= gettext('Continue to Dashboard') ?>
             </a>
         </div>
@@ -34,7 +34,7 @@ if ($isForced) {
 <?php else: ?>
 <div class="row">
     <div class="col-md-6">
-        <div class="card card-success">
+        <div class="card border-top border-success border-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Password Change Successful') ?></h3>
             </div>

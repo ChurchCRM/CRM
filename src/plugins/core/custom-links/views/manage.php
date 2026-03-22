@@ -28,11 +28,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Link') ?></h4>
+                <h4><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h4>
             </div>
             <div class="card-body">
                 <form id="link-form" novalidate>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="LINK_NAME"><?= gettext('Link Name') ?></label>
                         <input type="text" name="LINK_NAME" id="LINK_NAME" class="form-control"
                                aria-describedby="LINK_NAME_HELP" required minlength="2" maxlength="50"
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <small id="LINK_NAME_HELP" class="form-text text-muted"><?= gettext('2-50 characters') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a link name (2-50 characters)') ?></div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="LINK_URL"><?= gettext('URL') ?></label>
                         <input type="url" name="LINK_URL" id="LINK_URL" class="form-control"
                                aria-describedby="LINK_URL_HELP" required 
@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <small id="LINK_URL_HELP" class="form-text text-muted"><?= gettext('Must start with http:// or https://') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a valid URL starting with http:// or https://') ?></div>
                     </div>
-                    <div class="text-right">
+                    <div class="text-end">
                         <button type="submit" class="btn btn-success" id="add-link">
                             <i class="fa-solid fa-plus"></i> <?= gettext('Add Link') ?>
                         </button>
@@ -63,12 +63,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><i class="fa-solid fa-link mr-2"></i><?= gettext('Menu Links') ?></h4>
+                <h4><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h4>
             </div>
             <div class="card-body">
                 <p class="text-muted mb-3">
                     <i class="fa-solid fa-info-circle"></i>
-                    <?= gettext('These links appear in the "Links" menu in the navigation sidebar when this plugin is enabled.') ?>
+                    <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
                 </p>
                 <div class="table-responsive">
                     <table id="links-table" class="table table-striped table-bordered data-table">
@@ -92,8 +92,8 @@ $(document).ready(function() {
     // Initialize DataTable
     var table = $("#links-table").DataTable({
         ajax: {
-            url: window.CRM.root + "/plugins/custom-links/api/links",
-            dataSrc: "data"
+            url: window.CRM.root +"/plugins/custom-links/api/links",
+            dataSrc:"data"
         },
         autoWidth: false,
         columns: [
@@ -129,7 +129,7 @@ $(document).ready(function() {
                 }
             }
         ],
-        order: [[1, "asc"]],
+        order: [[1,"asc"]],
         language: {
             emptyTable: i18next.t("No custom links configured. Add one above!")
         }

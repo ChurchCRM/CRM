@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <li class="breadcrumb-item active" aria-current="page"><?= gettext('Not in CRM') ?></li>
             </ol>
         </nav>
-        <div class="btn-group btn-group-sm ml-2">
+        <div class="btn-group btn-group-sm ms-2">
             <a href="https://login.mailchimp.com/" target="_blank" class="btn btn-outline-warning" title="<?= gettext('Open MailChimp') ?>">
                 <i class="fa-brands fa-mailchimp fa-fw"></i>
             </a>
@@ -29,25 +29,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <div class="row">
     <div class="col-12">
-        <div class="card card-outline card-warning">
+        <div class="card border border-warning">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
-                    <i class="fa-solid fa-user-slash mr-2"></i><?= gettext('Subscribers Not in CRM') ?>
+                    <i class="fa-solid fa-user-slash me-2"></i><?= gettext('Subscribers Not in CRM') ?>
                 </h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge badge-warning" id="count-badge">
+                    <span class="badge bg-warning" id="count-badge">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                     </span>
                 </div>
             </div>
             <div class="card-body">
                 <p class="text-muted mb-3">
-                    <i class="fa-solid fa-info-circle mr-1"></i>
+                    <i class="fa-solid fa-info-circle me-1"></i>
                     <?= gettext('These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp.') ?>
                 </p>
                 <div class="table-responsive">
                     <table id="missingTable" class="table table-striped table-hover data-table" style="width:100%">
-                        <thead class="thead-light">
+                        <thead class="table-light">
                             <tr>
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Email') ?></th>
@@ -60,7 +60,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-footer">
                 <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard" class="btn btn-secondary">
-                    <i class="fa-solid fa-arrow-left mr-1"></i><?= gettext('Back to Dashboard') ?>
+                    <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Back to Dashboard') ?>
                 </a>
             </div>
         </div>
@@ -79,10 +79,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function initializeMissingTable() {
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/plugins/mailchimp/api/list/<?= $listId ?>/missing",
+                url: window.CRM.root +"/plugins/mailchimp/api/list/<?= $listId ?>/missing",
                 dataSrc: function(json) {
                     var count = json.data.members ? json.data.members.length : 0;
-                    $("#count-badge").text(count + " " + i18next.t("people"));
+                    $("#count-badge").text(count +"" + i18next.t("people"));
                     return json.data.members || [];
                 }
             },
@@ -93,7 +93,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Name'),
                     data: 'last',
                     render: function (data, type, row) {
-                        return '<i class="fa-solid fa-user text-muted mr-2"></i>' + escapeHtml(row.first || '') + " " + escapeHtml(row.last || '');
+                        return '<i class="fa-solid fa-user text-muted me-2"></i>' + escapeHtml(row.first || '') +"" + escapeHtml(row.last || '');
                     },
                     searchable: true
                 },
@@ -109,11 +109,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     title: i18next.t('Status'),
                     data: 'status',
                     render: function(data) {
-                        var badgeClass = 'badge-secondary';
+                        var badgeClass = 'bg-secondary';
                         var status = escapeHtml(data);
-                        if (data === 'subscribed') badgeClass = 'badge-success';
-                        else if (data === 'unsubscribed') badgeClass = 'badge-warning';
-                        else if (data === 'cleaned') badgeClass = 'badge-danger';
+                        if (data === 'subscribed') badgeClass = 'bg-success';
+                        else if (data === 'unsubscribed') badgeClass = 'bg-warning';
+                        else if (data === 'cleaned') badgeClass = 'bg-danger';
                         return '<span class="badge ' + badgeClass + '">' + status + '</span>';
                     }
                 }

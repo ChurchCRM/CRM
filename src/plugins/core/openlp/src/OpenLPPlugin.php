@@ -203,13 +203,13 @@ class OpenLPPlugin extends AbstractPlugin
             $httpOptions = [
                 'method'        => 'GET',
                 'timeout'       => 5,
-                'header'        => "Accept: application/json\r\n",
+                'header'        =>"Accept: application/json\r\n",
                 'ignore_errors' => true,
             ];
 
             if (!empty($username)) {
                 $auth = 'Basic ' . base64_encode($username . ':' . $password);
-                $httpOptions['header'] .= "Authorization: $auth\r\n";
+                $httpOptions['header'] .="Authorization: $auth\r\n";
             }
 
             $contextOptions = ['http' => $httpOptions];

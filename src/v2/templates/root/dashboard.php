@@ -8,14 +8,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Overview Card -->
-<div class="card card-info card-outline mb-3">
+<div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Overview') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card card-sm h-100">
+                <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
                             <div class="stat-icon bg-secondary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card card-sm h-100">
+                <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
                             <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -41,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card card-sm h-100">
+                <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
                             <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -55,7 +55,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <?php if ($sundaySchoolEnabled) { ?>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card card-sm h-100">
+                <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
                             <div class="stat-icon bg-warning text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php } ?>
             <?php if ($eventsEnabled) { ?>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card card-sm h-100">
+                <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="d-flex align-items-center mb-3">
                             <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -117,7 +117,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
     ?>
 <div class="row">
     <div class="col-12">
-        <div class="card card-info mb-3" id="depositChartRow">
+        <div class="card mb-3" id="depositChartRow">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
             </div>
@@ -141,22 +141,22 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                 <ul class="nav nav-tabs" id="people-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                            <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest Families') ?>
+                            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Latest Families') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                            <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated Families') ?>
+                            <i class="fa-solid fa-pen me-1"></i><?= gettext('Updated Families') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="#latest-ppl-pane" aria-selected="false">
-                            <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Latest People') ?>
+                            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Latest People') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                            <i class="fa-solid fa-pen mr-1"></i><?= gettext('Updated People') ?>
+                            <i class="fa-solid fa-pen me-1"></i><?= gettext('Updated People') ?>
                         </a>
                     </li>
                 </ul>

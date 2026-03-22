@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     function initializeDuplicateEmails() {
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/persons/duplicate/emails",
+                url: window.CRM.root +"/api/persons/duplicate/emails",
                 dataSrc: 'emails'
             },
             autoWidth: false,
@@ -44,9 +44,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function ( data, type, row ){
                         var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
-                            render += "<li><a href='"+ window.CRM.root + "/PersonView.php?PersonID=" +value.id + "' target='user' />"+ value.name + "</a></li>";
+                            render +="<li><a href='"+ window.CRM.root +"/PersonView.php?PersonID=" +value.id +"' target='user' />"+ value.name +"</a></li>";
                         });
-                        render += "</ul>"
+                        render +="</ul>"
                         return render;
                     },
                     searchable: true
@@ -58,9 +58,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     render: function ( data, type, row ){
                         var render ="<ul class='mb-0'>";
                         $.each( data, function( key, value ) {
-                            render += "<li><a href='"+ window.CRM.root + "/v2/family/" +value.id + "' target='family' />"+ value.name + "</a></li>";
+                            render +="<li><a href='"+ window.CRM.root +"/v2/family/" +value.id +"' target='family' />"+ value.name +"</a></li>";
                         });
-                        render += "</ul>"
+                        render +="</ul>"
                         return render;
                     },
                     searchable: true

@@ -10,7 +10,7 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
-$sPageTitle =  $family->getName() . " - " . gettext("Family");
+$sPageTitle =  $family->getName() ." -" . gettext("Family");
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = DateTimeUtils::getCurrentYear();
@@ -32,11 +32,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.currentFamily = <?= $family->getId() ?>;
-    window.CRM.currentFamilyName = "<?= $family->getName() ?>";
-    window.CRM.currentActive = <?= $family->isActive() ? "true" : "false" ?>;
+    window.CRM.currentFamilyName ="<?= $family->getName() ?>";
+    window.CRM.currentActive = <?= $family->isActive() ?"true" :"false" ?>;
     window.CRM.currentFamilyView = 2;
-    window.CRM.familyEmail = "<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
-    window.CRM.familyEmailMD5 = "<?= $familyEmailMD5 ?>";
+    window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
+    window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
 </script>
 
 <div id="family-deactivated" class="alert alert-warning d-none">
@@ -47,11 +47,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     <!-- LEFT COLUMN: Photo, Address, Metadata -->
     <div class="col-lg-4">
         <!-- Family Photo Card -->
-        <div class="card card-primary">
+        <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge badge-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
+                    <span class="badge bg-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
             <div class="card-body text-center">
@@ -79,14 +79,14 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </div>
                 </div>
                 <div class="mt-3">
-                    <span class="badge badge-<?= $family->isActive() ? 'success' : 'secondary' ?> mr-1">
+                    <span class="badge badge-<?= $family->isActive() ? 'success' : 'secondary' ?> me-1">
                         <i class="fa-solid fa-circle"></i> <?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                     </span>
-                    <span class="badge badge-info mr-1">
+                    <span class="badge bg-info me-1">
                         <i class="fa-solid fa-users"></i> <?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?>
                     </span>
                     <?php if ($family->getEnvelope()) { ?>
-                        <span class="badge badge-primary">
+                        <span class="badge bg-primary">
                             <i class="fa-solid fa-envelope"></i> #<?= $family->getEnvelope() ?>
                         </span>
                     <?php } ?>
@@ -134,11 +134,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
-                    <span class="badge badge-success ml-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
+                    <span class="badge bg-success ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                     </span>
                     <?php elseif ($family->hasAddress()): ?>
-                    <span class="badge badge-warning ml-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
+                    <span class="badge bg-warning ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
                         <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
                     </span>
                     <?php endif; ?>
@@ -156,14 +156,14 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     <?php if (!empty($directionsUrl)) : ?>
                     <a href="<?= $directionsUrl ?>" target="_blank" rel="noopener noreferrer"
                        class="btn btn-sm btn-outline-primary">
-                        <i class="fa-solid fa-diamond-turn-right mr-1"></i><?= gettext('Get Directions') ?>
+                        <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
                     </a>
                     <?php endif; ?>
                     <?php if (!$family->hasLatitudeAndLongitude()) : ?>
                     <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
                             data-family-id="<?= $family->getId() ?>"
                             title="<?= gettext('Automatically detect coordinates using address') ?>">
-                        <i class="fa-solid fa-location-dot mr-1"></i><?= gettext('Refresh Coordinates') ?>
+                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
                     </button>
                     <?php endif; ?>
                 </div>
@@ -185,7 +185,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         </div>
 
         <!-- Contact Info Card -->
-        <div class="card card-primary mb-3">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-address-book"></i> <?= gettext("Contact Info") ?></h3>
             </div>
@@ -194,8 +194,8 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     <?php
                     if (!SystemConfig::getBooleanValue("bHideFamilyNewsletter")) { /* Newsletter can be hidden - General Settings */ ?>
                         <li><i class="fa-li fa-solid fa-newspaper"></i><?= gettext("Send Newsletter") ?>:
-                            <span class="<?= ($family->isSendNewsletter() ? "text-success" : "text-danger") ?>"><i
-                                    class="fa-solid fa-<?= ($family->isSendNewsletter() ? "check" : "times") ?>"></i></span>
+                            <span class="<?= ($family->isSendNewsletter() ?"text-success" :"text-danger") ?>"><i
+                                    class="fa-solid fa-<?= ($family->isSendNewsletter() ?"check" :"times") ?>"></i></span>
                         </li>
                         <?php
                     }
@@ -218,7 +218,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         </li>
                         <?php
                     }
-                    if ($family->getEmail() !== "") {
+                    if ($family->getEmail() !=="") {
                         ?>
                         <li><i class="fa-li fa-solid fa-envelope"></i><?= gettext("Email") ?>:<a
                                 href="mailto:<?= $family->getEmail() ?>">
@@ -233,7 +233,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     foreach ($familyCustom as $customField) {
                         echo '<li><i class="fa-li ' . $customField->getIcon() . '"></i>' . $customField->getDisplayValue() . ': <span>';
                         if ($customField->getLink()) {
-                            echo "<a href=\"" . $customField->getLink() . "\">" . $customField->getFormattedValue() . "</a>";
+                            echo"<a href=\"" . $customField->getLink() ."\">" . $customField->getFormattedValue() ."</a>";
                         } else {
                             echo $customField->getFormattedValue();
                         }
@@ -304,7 +304,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         </div>
 
         <!-- Timeline Card -->
-        <div class="card card-outline card-info collapsed-card mb-3">
+        <div class="card border border-info collapsed-card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
                 <div class="card-tools ms-auto">
@@ -382,11 +382,11 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             $latestNote = !empty($familyNotes) ? $familyNotes[0] : null;
             ?>
             <!-- Notes Card -->
-            <div class="card card-outline card-secondary collapsed-card mb-3">
+            <div class="card-secondary collapsed-card mb-3">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
                     <div class="card-tools d-flex align-items-center">
-                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
+                        <a class="btn btn-outline-success btn-sm me-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
                             <i class="fa-solid fa-plus"></i> <?= gettext('Add New') . ' ' . gettext('Note') ?>
                         </a>
                         <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
@@ -455,12 +455,12 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         <?php } ?>
 
         <!-- Family Members Card -->
-        <div class="card card-outline card-success mb-3">
+        <div class="card border border-success mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof"></i> <?= gettext("Family Members") ?></h3>
                 <div class="card-tools d-flex align-items-center">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                        <a class="btn btn-outline-success btn-sm mr-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Member') ?>">
+                        <a class="btn btn-outline-success btn-sm me-2" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Member') ?>">
                             <i class="fa-solid fa-user-plus"></i> <?= gettext('Add New') . ' ' . gettext('Member') ?>
                         </a>
                     <?php } ?>
@@ -471,7 +471,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <div class="row">
                 <?php foreach ($family->getPeople() as $person) { ?>
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="card card-primary h-100">
+                        <div class="card h-100">
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <a href="<?= $person->getViewURI()?>" ?>
@@ -481,7 +481,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                                         <h3 class="profile-username"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
                                     </a>
                                     <p class="text-muted"><i
-                                            class="fa-solid fa-<?= ($person->isMale() ? "person" : "person-dress") ?>"></i> <?= $person->getFamilyRoleName() ?>
+                                            class="fa-solid fa-<?= ($person->isMale() ?"person" :"person-dress") ?>"></i> <?= $person->getFamilyRoleName() ?>
                                     </p>
                                 </div>
 
@@ -571,12 +571,12 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-md-6 mb-2">
-                        <a class="btn btn-success btn-block" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
+                        <a class="btn btn-success w-100" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Pledge">
                             <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext('Add Pledge') ?>
                         </a>
                     </div>
                     <div class="col-md-6 mb-2">
-                        <a class="btn btn-success btn-block" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
+                        <a class="btn btn-success w-100" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                             <i class="fa-solid fa-money-bill-wave"></i> <?= gettext('Add Payment') ?>
                         </a>
                     </div>
@@ -584,15 +584,15 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <div class="row mb-3">
                     <div class="col-12">
                         <div class="d-flex flex-wrap align-items-center">
-                            <label class="mb-0 mr-3">
-                                <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ? "checked" : "" ?>> 
+                            <label class="mb-0 me-3">
+                                <input type="checkbox" id="ShowPledges" <?= AuthenticationManager::getCurrentUser()->isShowPledges() ?"checked" :"" ?>> 
                                 <?= gettext("Show Pledges") ?>
                             </label>
-                            <label class="mb-0 mr-3">
-                                <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ? "checked" : "" ?>> 
+                            <label class="mb-0 me-3">
+                                <input type="checkbox" id="ShowPayments" <?= AuthenticationManager::getCurrentUser()->isShowPayments() ?"checked" :"" ?>> 
                                 <?= gettext("Show Payments") ?>
                             </label>
-                            <label class="mb-0 mr-2"><?= gettext("Since") ?>:</label>
+                            <label class="mb-0 me-2"><?= gettext("Since") ?>:</label>
                             <input type="text" class="date-picker form-control form-control-sm" id="ShowSinceDate" style="width: 150px;"
                                    value="<?= AuthenticationManager::getCurrentUser()->getShowSince() ?>" maxlength="10">
                         </div>
@@ -659,7 +659,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         }
         
         window.CRM.photoUploader = window.CRM.createPhotoUploader({
-            uploadUrl: window.CRM.root + "/api/family/" + window.CRM.currentFamily + "/photo",
+            uploadUrl: window.CRM.root +"/api/family/" + window.CRM.currentFamily +"/photo",
             maxFileSize: window.CRM.maxUploadSizeBytes,
             photoHeight: <?= Photo::PHOTO_HEIGHT ?>,
             photoWidth: <?= Photo::PHOTO_WIDTH ?>,

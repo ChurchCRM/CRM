@@ -12,11 +12,11 @@ $iFundRaiserID = $_SESSION['iCurrentFundraiser'];
 
 if ($iFundRaiserID > 0) {
     //Get the paddlenum records for this fundraiser
-    $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
+    $sSQL ="SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                     a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
              FROM paddlenum_pn
              LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-             WHERE pn_FR_ID = '" . $iFundRaiserID . "' ORDER BY pn_Num";
+             WHERE pn_FR_ID = '" . $iFundRaiserID ."' ORDER BY pn_Num";
     $rsPaddleNums = RunQuery($sSQL);
 } else {
     $rsPaddleNums = 0;
@@ -25,18 +25,18 @@ if ($iFundRaiserID > 0) {
 $sPageTitle = gettext('Buyers for this fundraiser:');
 require_once __DIR__ . '/Include/Header.php';
 ?>
-<div class="card card-body">
+<div class="card-body">
     <?php
-    echo "<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID\">\n";
+    echo"<form method=\"post\" action=\"Reports/FundRaiserStatement.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID\">\n";
     if ($iFundRaiserID > 0) {
-        echo '<input type=button class=btn value="' . gettext('Select all') . "\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+        echo '<input type=button class=btn value="' . gettext('Select all') ."\" name=SelectAll onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&SelectAll=1&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
     }
-    echo '<input type=button class=btn value="' . gettext('Select none') . "\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-    echo '<input type=button class=btn value="' . gettext('Add Buyer') . "\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-    echo '<input type=submit class=btn value="' . gettext('Generate Statements for Selected') . "\" name=GenerateStatements>\n";
+    echo '<input type=button class=btn value="' . gettext('Select none') ."\" name=SelectNone onclick=\"javascript:document.location='PaddleNumList.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+    echo '<input type=button class=btn value="' . gettext('Add Buyer') ."\" name=AddBuyer onclick=\"javascript:document.location='PaddleNumEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=PaddleNumList.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
+    echo '<input type=submit class=btn value="' . gettext('Generate Statements for Selected') ."\" name=GenerateStatements>\n";
     ?>
 </div>
-<div class="card card-body">
+<div class="card-body">
 
     <table class="table table-striped">
 
@@ -64,7 +64,7 @@ require_once __DIR__ . '/Include/Header.php';
                         } ?>></input>
             </td>
             <td>
-                <?= '<a href="PaddleNumEditor.php?PaddleNumID=' . (int)$pn_ID . '&linkBack=PaddleNumList.php"> ' . (int)$pn_Num . "</a>\n" ?>
+                <?= '<a href="PaddleNumEditor.php?PaddleNumID=' . (int)$pn_ID . '&linkBack=PaddleNumList.php"> ' . (int)$pn_Num ."</a>\n" ?>
             </td>
 
             <td>

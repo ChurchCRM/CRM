@@ -128,38 +128,38 @@ if ($numCounts) {
 
 // Construct the form
 ?>
-<div class='card card-primary'>
+<div class='card'>
   <div class='card-header'>
-    <h3 class='card-title mb-0'><i class="fas fa-edit mr-2"></i><?= gettext('Edit Event Type') ?></h3>
+    <h3 class='card-title mb-0'><i class="fas fa-edit me-2"></i><?= gettext('Edit Event Type') ?></h3>
   </div>
 
   <div class='card-body'>
     <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
       <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
 
-      <div class="form-group">
-        <label for="newEvtName" class="font-weight-bold"><?= gettext('Event Type Name') ?></label>
+      <div class="mb-3">
+        <label for="newEvtName" class="fw-bold"><?= gettext('Event Type Name') ?></label>
         <div class="row">
           <div class="col-md-8">
             <input type="text" class="form-control" name="newEvtName" id="newEvtName" value="<?= InputUtils::escapeAttribute($aTypeName) ?>" maxlength="35" autofocus />
           </div>
           <div class="col-md-4">
             <button type="submit" name="Action" value="NAME" class="btn btn-primary">
-              <i class="fas fa-save mr-1"></i><?= gettext('Save Name') ?>
+              <i class="fas fa-save me-1"></i><?= gettext('Save Name') ?>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Recurrence Pattern') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Recurrence Pattern') ?></label>
         <div class="border rounded p-3 bg-light">
           <?= $recur ?>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Default Start Time') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Default Start Time') ?></label>
         <div class="row">
           <div class="col-md-8">
             <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
@@ -190,11 +190,11 @@ if ($numCounts) {
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Attendance Count Categories') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Attendance Count Categories') ?></label>
         <div class="table-responsive">
           <table class="table table-sm table-bordered">
-            <thead class="thead-light">
+            <thead class="table-light">
               <tr>
                 <th><?= gettext('Category Name') ?></th>
                 <th style="width: 120px;"><?= gettext('Actions') ?></th>
@@ -210,7 +210,7 @@ if ($numCounts) {
                     <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
                             class="btn btn-outline-danger btn-sm" data-cy="remove-attendance-count"
                             onclick="return confirm('<?= gettext('Remove this attendance count?') ?>');">
-                      <i class="fas fa-trash mr-1"></i><?= gettext('Remove') ?>
+                      <i class="fas fa-trash me-1"></i><?= gettext('Remove') ?>
                     </button>
                   </td>
                 </tr>
@@ -225,7 +225,7 @@ if ($numCounts) {
                 <td class="text-center">
                   <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
                           data-cy="add-attendance-count">
-                    <i class="fas fa-plus mr-1"></i><?= gettext('Add') ?>
+                    <i class="fas fa-plus me-1"></i><?= gettext('Add') ?>
                   </button>
                 </td>
               </tr>
@@ -259,7 +259,7 @@ $(document).ready(function() {
 
 <div class="mb-4">
   <a href="EventNames.php" class='btn btn-outline-secondary'>
-    <i class='fas fa-chevron-left mr-1'></i><?= gettext('Return to Event Types') ?>
+    <i class='fas fa-chevron-left me-1'></i><?= gettext('Return to Event Types') ?>
   </a>
 </div>
 <?php

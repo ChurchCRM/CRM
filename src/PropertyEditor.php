@@ -115,7 +115,7 @@ if (isset($_POST['Submit'])) {
 }
 
 // Get the Property Types
-$sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType . "' ORDER BY prt_Name";
+$sSQL ="SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType ."' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
 require_once __DIR__ . '/Include/Header.php';
@@ -165,7 +165,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
                         </div>
                         <div class="d-flex">
-                            <button type="submit" class="btn btn-success mr-2" name="Submit">
+                            <button type="submit" class="btn btn-success me-2" name="Submit">
                                 <i class="fa-solid fa-save"></i>
                                 <?= gettext('Save') ?>
                             </button>

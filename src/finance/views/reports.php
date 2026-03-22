@@ -52,12 +52,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-file-invoice text-success mr-2"></i>
+                                        <i class="fa-solid fa-file-invoice text-success me-2"></i>
                                         <?= gettext('Giving Report (Tax Statements)') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
                                 </div>
-                                <span class="badge badge-success badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-success badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                         
@@ -66,12 +66,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-user-slash text-warning mr-2"></i>
+                                        <i class="fa-solid fa-user-slash text-warning me-2"></i>
                                         <?= gettext('Zero Givers') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
                                 </div>
-                                <span class="badge badge-warning badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -98,12 +98,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-chart-bar text-info mr-2"></i>
+                                        <i class="fa-solid fa-chart-bar text-info me-2"></i>
                                         <?= gettext('Pledge Summary') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Summary of pledges vs payments by fund for the fiscal year.') ?></small>
                                 </div>
-                                <span class="badge badge-info badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-info badge-pill"><?= gettext('PDF/CSV') ?></span>
                             </div>
                         </a>
                         
@@ -112,12 +112,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-users text-info mr-2"></i>
+                                        <i class="fa-solid fa-users text-info me-2"></i>
                                         <?= gettext('Pledge Family Summary') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Detailed breakdown of pledges and payments by family.') ?></small>
                                 </div>
-                                <span class="badge badge-info badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-info badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                         
@@ -126,12 +126,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-bell text-warning mr-2"></i>
+                                        <i class="fa-solid fa-bell text-warning me-2"></i>
                                         <?= gettext('Pledge Reminders') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
                                 </div>
-                                <span class="badge badge-warning badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -158,12 +158,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-file-invoice text-primary mr-2"></i>
+                                        <i class="fa-solid fa-file-invoice text-primary me-2"></i>
                                         <?= gettext('Individual Deposit Report') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Detailed breakdown of a single deposit slip.') ?></small>
                                 </div>
-                                <span class="badge badge-primary badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-primary badge-pill"><?= gettext('PDF/CSV') ?></span>
                             </div>
                         </a>
                         
@@ -172,12 +172,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-database text-secondary mr-2"></i>
+                                        <i class="fa-solid fa-database text-secondary me-2"></i>
                                         <?= gettext('Advanced Deposit Report') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
                                 </div>
-                                <span class="badge badge-secondary badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-secondary badge-pill"><?= gettext('PDF/CSV') ?></span>
                             </div>
                         </a>
                     </div>
@@ -204,12 +204,12 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-vote-yea text-dark mr-2"></i>
+                                        <i class="fa-solid fa-vote-yea text-dark me-2"></i>
                                         <?= gettext('Voting Members') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>
                                 </div>
-                                <span class="badge badge-dark badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-dark badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>

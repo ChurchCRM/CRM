@@ -87,7 +87,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
     $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
 
-    if ($_POST['stateType'] == "dropDown") {
+    if ($_POST['stateType'] =="dropDown") {
         $sState = InputUtils::legacyFilterInput($_POST['State']);
     } else {
         $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
@@ -121,12 +121,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
         if (intval($nEnvelope) == floatval($nEnvelope)) {
-            $nEnvelope = "'" . intval($nEnvelope) . "'";
+            $nEnvelope ="'" . intval($nEnvelope) ."'";
         } else {
-            $nEnvelope = "'0'";
+            $nEnvelope ="'0'";
         }
     } else {
-        $nEnvelope = "'0'";
+        $nEnvelope ="'0'";
     }
 
     $iPropertyID = 0;
@@ -282,12 +282,12 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();
-            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID . "')";
+            $sSQL ="INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID ."')";
             RunQuery($sSQL);
 
             // Add property if assigned
             if ($iPropertyID) {
-                $sSQL = "INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES ($iPropertyID, $iFamilyID)";
+                $sSQL ="INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID) VALUES ($iPropertyID, $iFamilyID)";
                 RunQuery($sSQL);
             }
 
@@ -449,7 +449,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // No display formatting — keep stored value as-is
 
-        // Set "No format" checkbox based on whether field has data
+        // Set"No format" checkbox based on whether field has data
         // If field has data: checkbox checked, no mask
         // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
@@ -558,13 +558,13 @@ require_once __DIR__ . '/Include/Header.php';
     <input type="hidden" id="stateType" name="stateType" value="">
 
     <!-- Card 1: Family Info -->
-    <div class="card card-info clearfix">
+    <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Family Info') ?></h3>
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <label for="FamilyName"><?= gettext('Family Name') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -580,7 +580,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if (empty($dWeddingDate)) {
                         $dWeddingDate = '';
                     } ?>
-                <div class="form-group col-md-4">
+                <div class="mb-3 col-md-4">
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -598,7 +598,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 
     <!-- Card 2: Location & Contact Information -->
-    <div class="card card-info clearfix">
+    <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Location & Contact Information') ?></h3>
         </div>
@@ -610,7 +610,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <label for="Address1"><?= gettext('Address') ?> 1:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -619,7 +619,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <input type="text" id="Address1" name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1) ?>" maxlength="250" class="form-control">
                     </div>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <label for="Address2"><?= gettext('Address') ?> 2:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -630,7 +630,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-4">
+                <div class="mb-3 col-md-4">
                     <label for="City"><?= gettext('City') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -639,16 +639,16 @@ require_once __DIR__ . '/Include/Header.php';
                         <input type="text" id="City" name="City" value="<?= InputUtils::escapeAttribute($sCity) ?>" maxlength="50" class="form-control">
                     </div>
                 </div>
-                <div id="stateOptionDiv" class="form-group col-md-3">
+                <div id="stateOptionDiv" class="mb-3 col-md-3">
                     <label for="State"><?= gettext('State') ?>:</label>
                     <select id="State" name="State" class="form-control select2" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
-                <div id="stateInputDiv" class="form-group col-md-3 d-none">
+                <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
                     <label for="StateTextbox"><?= gettext('State') ?>:</label>
                     <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= InputUtils::escapeAttribute($sState) ?>" maxlength="30">
                 </div>
-                <div class="form-group col-md-2">
+                <div class="mb-3 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
                     <input type="text" id="Zip" name="Zip" class="form-control" <?php
                     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
@@ -656,7 +656,7 @@ require_once __DIR__ . '/Include/Header.php';
                     }
                     echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
                 </div>
-                <div class="form-group col-md-3">
+                <div class="mb-3 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
                     <select id="Country" name="Country" class="form-control select2" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                     </select>
@@ -666,7 +666,7 @@ require_once __DIR__ . '/Include/Header.php';
                 if (!$bHaveXML) { // No point entering if values will just be overwritten
                     ?>
                     <div class="row">
-                        <div class="form-group col-md-3">
+                        <div class="mb-3 col-md-3">
                             <label for="Latitude"><?= gettext('Latitude') ?>:</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -675,7 +675,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude != 0 ? $nLatitude : '' ?>" maxlength="50">
                             </div>
                         </div>
-                        <div class="form-group col-md-3">
+                        <div class="mb-3 col-md-3">
                             <label for="Longitude"><?= gettext('Longitude') ?>:</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -696,22 +696,22 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <label for="HomePhone"><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         </div>
-                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask": "<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
+                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                <label class="mb-0 ml-1 small"><?= gettext('No format') ?></label>
+                                <label class="mb-0 ms-1 small"><?= gettext('No format') ?></label>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <label for="Email"><?= gettext('Email') ?>:</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -726,7 +726,7 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
             <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
             <div class="row">
-                <div class="form-group col-md-6">
+                <div class="mb-3 col-md-6">
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="SendNewsLetter" name="SendNewsLetter" value="1" <?= $bSendNewsLetter ? 'checked' : '' ?>>
                         <label class="custom-control-label" for="SendNewsLetter"><?= gettext('Send Newsletter') ?></label>
@@ -737,12 +737,12 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
     </div>
     <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
-        <div class="card card-info clearfix">
+        <div class="card clearfix">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Envelope Info') ?></h3>
             <div class="card-body">
                 <div class="row">
-                    <div class="form-group col-md-4">
+                    <div class="mb-3 col-md-4">
                         <label for="Envelope"><?= gettext('Envelope Number') ?>:</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -758,7 +758,7 @@ require_once __DIR__ . '/Include/Header.php';
     }
     if ($numCustomFields > 0) {
         ?>
-        <div class="card card-info clearfix">
+        <div class="card clearfix">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Custom Fields') ?></h3>
             </div>
@@ -771,7 +771,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                         ?>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="mb-3 col-md-6">
                                 <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
@@ -786,7 +786,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
     <?php
     } ?>
-    <div class="card card-info clearfix">
+    <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Family Members') ?></h3>
         </div>
@@ -802,7 +802,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php } ?>
                                 <div class="table-responsive">
                                     <table class="table table-striped table-hover">
-                                        <thead class="thead-light">
+                                        <thead class="table-light">
                                             <tr class="text-center">
                                                 <th><?= gettext('First') ?></th>
                                                 <th><?= gettext('Middle') ?></th>

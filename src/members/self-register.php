@@ -49,7 +49,7 @@ use ChurchCRM\dto\SystemURLs;
 
         var dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/families/self-register",
+                url: window.CRM.root +"/api/families/self-register",
                 dataSrc: 'families'
             },
             autoWidth: false,
@@ -79,7 +79,7 @@ use ChurchCRM\dto\SystemURLs;
                     }
                 }
             ],
-            order: [[2, "desc"]]
+            order: [[2,"desc"]]
         }
 
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
@@ -88,7 +88,7 @@ use ChurchCRM\dto\SystemURLs;
 
         dataTableConfig = {
             ajax: {
-                url: window.CRM.root + "/api/persons/self-register",
+                url: window.CRM.root +"/api/persons/self-register",
                 dataSrc: 'people'
             },
             autoWidth: false,
@@ -124,7 +124,7 @@ use ChurchCRM\dto\SystemURLs;
                     }
                 }
             ],
-            order: [[3, "desc"]]
+            order: [[3,"desc"]]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#people").DataTable(dataTableConfig);

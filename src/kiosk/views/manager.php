@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <h3 class="card-title"><?= gettext('Kiosk Manager') ?></h3>
       </div>
       <div class="card-body">
-        <div class="form-group">
+        <div class="mb-3">
           <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
           <div class="custom-control custom-switch">
             <input type="checkbox" class="custom-control-input" id="isNewKioskRegistrationActive">
@@ -121,7 +121,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       }
       
       var html = '<div class="d-flex align-items-center">';
-      html += '<select class="assignmentMenu form-control form-control-sm mr-2" data-kioskid="' + data.Id + '">' + options + '</select>';
+      html += '<select class="assignmentMenu form-control form-control-sm me-2" data-kioskid="' + data.Id + '">' + options + '</select>';
       
       // Add edit link if an event is assigned
       if (currentEventId) {
@@ -158,7 +158,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
   });
 
-  $(document).on("change", ".assignmentMenu", function(event) {
+  $(document).on("change",".assignmentMenu", function(event) {
     var kioskId = $(event.currentTarget).data("kioskid");
     var selected = $(event.currentTarget).val();
     var assignmentSplit = selected.split("-");
@@ -200,8 +200,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   // Load future events from API
   function loadFutureEvents() {
     return window.CRM.APIRequest({
-      path: "events/",
-      method: "GET"
+      path:"events/",
+      method:"GET"
     }).done(function(data) {
       // Filter to events that:
       // 1. Haven't ended yet (end date >= now)
@@ -231,8 +231,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   function initKioskTable() {
     var dataTableConfig = {
       ajax: {
-        url: window.CRM.root + "/kiosk/api/devices",
-        dataSrc: "KioskDevices",
+        url: window.CRM.root +"/kiosk/api/devices",
+        dataSrc:"KioskDevices",
         statusCode: {
           401: function(xhr, error, thrown) {
             window.location = window.location.origin + '/session/begin?location=' + window.location.pathname;
@@ -259,7 +259,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             if (row && row.KioskAssignments && row.KioskAssignments.length > 0) {
               return row.KioskAssignments[0];
             } else {
-              return "None";
+              return"None";
             }
           },
           render: function(data, type, full, meta) {
@@ -283,9 +283,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           data: 'Accepted',
           render: function(data, type, full, meta) {
             if (full.Accepted) {
-              return '<span class="badge badge-success">' + i18next.t('Yes') + '</span>';
+              return '<span class="badge bg-success">' + i18next.t('Yes') + '</span>';
             } else {
-              return '<span class="badge badge-warning">' + i18next.t('No') + '</span>';
+              return '<span class="badge bg-warning">' + i18next.t('No') + '</span>';
             }
           }
         },
@@ -302,7 +302,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             if (!full.Accepted) {
               buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fas fa-check"></i></button>';
             }
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g, "\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fas fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fas fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }

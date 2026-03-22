@@ -70,14 +70,14 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
     <div class="col-12">
         <div class="card">
             <div class="card-body text-center">
-                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success mr-2">
-                    <i class="fa-solid fa-user-plus mr-1"></i><?= gettext('Add New') . ' ' . gettext('User') ?>
+                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success me-2">
+                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add New') . ' ' . gettext('User') ?>
                 </a>
                 <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
-                    <i class="fa-solid fa-cog mr-1"></i><?= gettext('User Settings') ?>
+                    <i class="fa-solid fa-cog me-1"></i><?= gettext('User Settings') ?>
                 </a>
                 <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#userSettingsPanel" aria-expanded="false">
-                    <i class="fa-solid fa-sliders mr-1"></i><?= gettext('Quick Settings') ?>
+                    <i class="fa-solid fa-sliders me-1"></i><?= gettext('Quick Settings') ?>
                 </button>
             </div>
         </div>
@@ -92,9 +92,9 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 
 <div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-list mr-2"></i><?= _('User Management') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-list me-2"></i><?= _('User Management') ?></h3>
         <div class="card-tools ms-auto">
-            <span class="badge badge-info"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
+            <span class="badge bg-info"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
     <div class="card-body">
@@ -122,16 +122,16 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center">
                                 <?php if ($user->getFailedLogins() > 0) { ?>
-                                    <span class="badge <?= $user->isLocked() ? 'badge-danger' : 'badge-warning' ?>"><?= $user->getFailedLogins() ?></span>
+                                    <span class="badge <?= $user->isLocked() ? 'bg-danger' : 'bg-warning' ?>"><?= $user->getFailedLogins() ?></span>
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
-                                    <span class="badge badge-success"><?= gettext('Enabled') ?></span>
+                                    <span class="badge bg-success"><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
-                                    <span class="badge badge-secondary"><?= gettext('Not enrolled') ?></span>
+                                    <span class="badge bg-secondary"><?= gettext('Not enrolled') ?></span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">

@@ -13,8 +13,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body">
                 <form class="form-inline">
-                    <div class="form-group mr-3">
-                        <label for="logLevel" class="mr-2"><?= gettext('Log Level:') ?></label>
+                    <div class="mb-3 me-3">
+                        <label for="logLevel" class="me-2"><?= gettext('Log Level:') ?></label>
                         <select class="form-control" id="logLevel">
                             <option value="100">DEBUG (100)</option>
                             <option value="200" selected>INFO (200)</option>
@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <button type="button" class="btn btn-primary" id="saveLogLevel">
                         <i class="fa-solid fa-save"></i> <?= gettext('Save Log Level') ?>
                     </button>
-                    <span id="logLevelStatus" class="ml-3"></span>
+                    <span id="logLevelStatus" class="ms-3"></span>
                 </form>
             </div>
         </div>
@@ -105,7 +105,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <label><?= gettext('Filter by log level:') ?></label>
                     <div class="btn-group btn-group-sm" role="group">
                         <button type="button" class="btn btn-outline-secondary log-filter active" data-level="all"><?= gettext('All') ?></button>
@@ -115,7 +115,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <button type="button" class="btn btn-outline-secondary log-filter" data-level="DEBUG"><?= gettext('Debug') ?></button>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label><?= gettext('Number of lines to display:') ?></label>
                     <select class="form-control form-control-sm" id="logLinesLimit" style="width: auto; display: inline-block;">
                         <option value="50">50</option>
@@ -132,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
             </div>
         </div>
     </div>

@@ -21,21 +21,21 @@ $validationError     = $validationError ?? '';
                         <a class="nav-link active" id="basic-tab"
                            data-bs-toggle="tab" href="#basic" role="tab"
                            aria-controls="basic" aria-selected="true">
-                            <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic Information') ?>
+                            <i class="fa-solid fa-church me-1"></i><?= gettext('Basic Information') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="location-tab"
                            data-bs-toggle="tab" href="#location" role="tab"
                            aria-controls="location" aria-selected="false">
-                            <i class="fa-solid fa-map mr-1"></i><?= gettext('Location & Map') ?>
+                            <i class="fa-solid fa-map me-1"></i><?= gettext('Location & Map') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="display-tab"
                            data-bs-toggle="tab" href="#display" role="tab"
                            aria-controls="display" aria-selected="false">
-                            <i class="fa-solid fa-desktop mr-1"></i><?= gettext('Display Preview') ?>
+                            <i class="fa-solid fa-desktop me-1"></i><?= gettext('Display Preview') ?>
                         </a>
                     </li>
                 </ul>
@@ -51,7 +51,7 @@ $validationError     = $validationError ?? '';
                         <div class="tab-pane fade show active" id="basic" role="tabpanel" aria-labelledby="basic-tab">
                             <h5 class="mb-4"><?= gettext('Basic Information') ?></h5>
 
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="sChurchName">
                                     <?= gettext('Church Name') ?>
                                     <span class="text-danger">*</span>
@@ -72,7 +72,7 @@ $validationError     = $validationError ?? '';
                                 <?php endif; ?>
                             </div>
 
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="sChurchWebSite"><?= gettext('Website') ?></label>
                                 <input type="url"
                                        class="form-control"
@@ -90,7 +90,7 @@ $validationError     = $validationError ?? '';
                             <h5 class="mb-3"><?= gettext('Contact Information') ?></h5>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="mb-3 col-md-6">
                                     <label for="sChurchPhone">
                                         <?= gettext('Phone Number') ?>
                                         <span class="text-danger">*</span>
@@ -108,7 +108,7 @@ $validationError     = $validationError ?? '';
                                     </small>
                                 </div>
 
-                                <div class="form-group col-md-6">
+                                <div class="mb-3 col-md-6">
                                     <label for="sChurchEmail">
                                         <?= gettext('Email Address') ?>
                                         <span class="text-danger">*</span>
@@ -131,7 +131,7 @@ $validationError     = $validationError ?? '';
                             <h5 class="mb-3"><?= gettext('Language & Localization') ?></h5>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="mb-3 col-md-6">
                                     <label for="sLanguage"><?= gettext('Language') ?></label>
                                     <select class="form-control select2" id="sLanguage" name="sLanguage" style="width: 100%;">
                                         <?php
@@ -150,7 +150,7 @@ $validationError     = $validationError ?? '';
                                         <?= gettext('System language for the church. Affects date formats, phone formats, and other localizations.') ?>
                                     </small>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="mb-3 col-md-6">
                                     <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
                                     <select class="form-control select2" id="sTimeZone" name="sTimeZone" style="width: 100%;">
                                         <?php foreach ($timezones as $tz): ?>
@@ -171,7 +171,7 @@ $validationError     = $validationError ?? '';
                         <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
                             <h5 class="mb-4"><?= gettext('Location Information') ?></h5>
 
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="sChurchAddress">
                                     <?= gettext('Street Address') ?>
                                     <span class="text-danger">*</span>
@@ -186,7 +186,7 @@ $validationError     = $validationError ?? '';
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-4">
+                                <div class="mb-3 col-md-4">
                                     <label for="sChurchCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
                                     <input type="text"
                                            class="form-control"
@@ -196,13 +196,13 @@ $validationError     = $validationError ?? '';
                                            maxlength="100"
                                            required>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="mb-3 col-md-3">
                                     <label for="sChurchState"><?= gettext('State') ?> <span class="text-danger">*</span></label>
                                     <div id="sChurchStateContainer" style="width: 100%;"
                                          data-user-selected-state="<?= InputUtils::escapeHTML($churchInfo['sChurchState']) ?>">
                                     </div>
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="mb-3 col-md-2">
                                     <label for="sChurchZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
                                     <input type="text"
                                            class="form-control"
@@ -212,7 +212,7 @@ $validationError     = $validationError ?? '';
                                            maxlength="20"
                                            required>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="mb-3 col-md-3">
                                     <label for="sChurchCountry"><?= gettext('Country') ?> <span class="text-danger">*</span></label>
                                     <select class="form-control" id="sChurchCountry" name="sChurchCountry" style="width: 100%;"
                                             data-user-selected="<?= InputUtils::escapeHTML($churchInfo['sChurchCountry']) ?>">
@@ -235,7 +235,7 @@ $validationError     = $validationError ?? '';
                             <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
                             <div id="church-location-map" class="mb-2 rounded border" style="height:280px;"></div>
                             <p class="text-muted small mb-3">
-                                <i class="fa-solid fa-location-dot mr-1"></i>
+                                <i class="fa-solid fa-location-dot me-1"></i>
                                 <?= gettext('Geocoded coordinates:') ?>
                                 <?= InputUtils::escapeHTML($churchInfo['iChurchLatitude']) ?>,
                                 <?= InputUtils::escapeHTML($churchInfo['iChurchLongitude']) ?>
@@ -252,7 +252,7 @@ $validationError     = $validationError ?? '';
                             <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
                             <?php else: ?>
                             <div class="alert alert-info">
-                                <i class="fa-solid fa-location-dot mr-2"></i>
+                                <i class="fa-solid fa-location-dot me-2"></i>
                                 <?= gettext('A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required.') ?>
                             </div>
                             <?php endif; ?>
@@ -265,7 +265,7 @@ $validationError     = $validationError ?? '';
                                 <?= gettext('This is how your church information will appear on reports and directories.') ?>
                             </p>
 
-                            <div class="card card-body bg-light">
+                            <div class="card-body bg-light">
                                 <address class="mb-0">
                                     <?php if (!empty($churchInfo['sChurchName'])): ?>
                                     <strong><?= InputUtils::escapeHTML($churchInfo['sChurchName']) ?></strong><br>
@@ -287,20 +287,20 @@ $validationError     = $validationError ?? '';
                                     <?= InputUtils::escapeHTML($countries[$churchInfo['sChurchCountry']] ?? $churchInfo['sChurchCountry']) ?><br>
                                     <?php endif; ?>
                                     <?php if (!empty($churchInfo['sChurchPhone'])): ?>
-                                    <i class="fa-solid fa-phone mr-1"></i><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?><br>
+                                    <i class="fa-solid fa-phone me-1"></i><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?><br>
                                     <?php endif; ?>
                                     <?php if (!empty($churchInfo['sChurchEmail'])): ?>
-                                    <i class="fa-solid fa-envelope mr-1"></i><a href="mailto:<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
+                                    <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
                                     <?php endif; ?>
                                     <?php if (!empty($churchInfo['sChurchWebSite'])): ?>
-                                    <i class="fa-solid fa-globe mr-1"></i><a href="<?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
+                                    <i class="fa-solid fa-globe me-1"></i><a href="<?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
                                     <?php endif; ?>
                                 </address>
                             </div>
 
                             <?php if (empty($churchInfo['sChurchName'])): ?>
                             <div class="alert alert-warning mt-3">
-                                <i class="fa-solid fa-triangle-exclamation mr-2"></i>
+                                <i class="fa-solid fa-triangle-exclamation me-2"></i>
                                 <?= gettext('Church name is required. Please complete the Basic Information tab.') ?>
                             </div>
                             <?php endif; ?>
@@ -312,10 +312,10 @@ $validationError     = $validationError ?? '';
                     <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
                         <div>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa-solid fa-save mr-1"></i>
+                                <i class="fa-solid fa-save me-1"></i>
                                 <?= gettext('Save Church Information') ?>
                             </button>
-                            <a href="<?= $sRootPath ?>/admin/" class="btn btn-secondary ml-2">
+                            <a href="<?= $sRootPath ?>/admin/" class="btn btn-secondary ms-2">
                                 <?= gettext('Cancel') ?>
                             </a>
                         </div>

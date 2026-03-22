@@ -67,9 +67,9 @@ if ($eType === 'All') {
            FROM events_event
            ORDER BY year DESC';
 } else {
-    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) as year
+    $sSQL ="SELECT DISTINCT YEAR(events_event.event_start) as year
            FROM events_event
-           WHERE events_event.event_type = '" . (int) $eType . "'
+           WHERE events_event.event_type = '" . (int) $eType ."'
            ORDER BY year DESC";
 }
 $rsOpps = RunQuery($sSQL);
@@ -87,7 +87,7 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
     <form name="EventFilterForm" method="POST" action="ListEvents.php">
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="WhichType"><?= gettext('Event Type') ?></label>
             <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-control">
               <option value="All"><?= gettext('All Types') ?></option>
@@ -100,7 +100,7 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="WhichYear"><?= gettext('Year') ?></label>
             <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-control">
               <?php foreach ($availableYears as $year): ?>
@@ -246,22 +246,22 @@ foreach ($allMonths as $mVal) {
               <td><?= InputUtils::escapeHTML($event['type_name']) ?></td>
               <td class="text-center">
                 <a href="Checkin.php?EventID=<?= $eventId ?>" class="btn btn-sm btn-outline-info" title="<?= gettext('Manage Check-ins') ?>">
-                  <i class="fas fa-clipboard-check mr-1"></i><?= gettext('Check-in') ?>
+                  <i class="fas fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
                   <?php if ($event['attendee_count'] > 0): ?>
-                    <span class="badge badge-info ml-1"><?= $event['attendee_count'] ?></span>
+                    <span class="badge bg-info ms-1"><?= $event['attendee_count'] ?></span>
                   <?php endif; ?>
                 </a>
               </td>
               <td class="text-center">
                 <?php if ($event['checked_in_count'] > 0): ?>
-                  <span class="badge badge-success"><?= $event['checked_in_count'] ?></span>
+                  <span class="badge bg-success"><?= $event['checked_in_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
               </td>
               <td class="text-center">
                 <?php if ($event['checked_out_count'] > 0): ?>
-                  <span class="badge badge-secondary"><?= $event['checked_out_count'] ?></span>
+                  <span class="badge bg-secondary"><?= $event['checked_out_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
@@ -289,9 +289,9 @@ foreach ($allMonths as $mVal) {
               <td><?= FormatDate($event['start'], 1) ?></td>
               <td class="text-center">
                 <?php if ($event['inactive']): ?>
-                  <span class="badge badge-secondary"><?= gettext('No') ?></span>
+                  <span class="badge bg-secondary"><?= gettext('No') ?></span>
                 <?php else: ?>
-                  <span class="badge badge-success"><?= gettext('Yes') ?></span>
+                  <span class="badge bg-success"><?= gettext('Yes') ?></span>
                 <?php endif; ?>
               </td>
             </tr>
@@ -300,12 +300,12 @@ foreach ($allMonths as $mVal) {
           <?php
           // Calculate and display monthly averages if filtering by type
           if ($eType !== 'All' && !empty($events[0]['counts'])):
-              $avgSQL = "SELECT evtcnt_countname, AVG(evtcnt_countcount) as avg_count
+              $avgSQL ="SELECT evtcnt_countname, AVG(evtcnt_countcount) as avg_count
                         FROM eventcounts_evtcnt, events_event
                         WHERE eventcounts_evtcnt.evtcnt_eventid = events_event.event_id
-                        AND events_event.event_type = " . (int) $eType . "
-                        AND MONTH(events_event.event_start) = " . (int) $mVal . "
-                        AND YEAR(events_event.event_start) = " . (int) $EventYear . "
+                        AND events_event.event_type =" . (int) $eType ."
+                        AND MONTH(events_event.event_start) =" . (int) $mVal ."
+                        AND YEAR(events_event.event_start) =" . (int) $EventYear ."
                         GROUP BY evtcnt_countid ORDER BY evtcnt_countid ASC";
               $avgResult = RunQuery($avgSQL);
               $averages = [];
@@ -342,7 +342,7 @@ foreach ($allMonths as $mVal) {
 
 <div class="text-center mt-4 mb-3">
   <a href="EventEditor.php" class="btn btn-primary">
-    <i class="fas fa-plus mr-1"></i>
+    <i class="fas fa-plus me-1"></i>
     <?= gettext('Add New') . ' ' . gettext('Event') ?>
   </a>
 </div>

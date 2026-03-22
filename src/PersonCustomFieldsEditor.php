@@ -18,7 +18,7 @@ $sPageTitle = gettext('Custom Person Fields Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
+<div class="card-body">
     <?php
 
     $bErrorFlag = false;
@@ -115,8 +115,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM person_custom');
                     $last = mysqli_num_rows($fields) - 1;
 
-                    // Set the new field number based on the highest existing.  Chop off the "c" at the beginning of the old one's name.
-                    // The "c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
+                    // Set the new field number based on the highest existing.  Chop off the"c" at the beginning of the old one's name.
+                    // The"c#" naming scheme is necessary because MySQL 3.23 doesn't allow numeric-only field (table column) names.
                     $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM person_custom');
                     $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                     $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
@@ -141,16 +141,16 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             ->setOptionName(gettext('Default Option'));
                         $listOption->save();
 
-                        $newSpecial = "'$newListID'";
+                        $newSpecial ="'$newListID'";
                     } else {
                         $newSpecial = 'NULL';
                     }
 
                     // Insert into the master table
                     $newOrderID = $last + 1;
-                    $sSQL = "INSERT INTO person_custom_master
+                    $sSQL ="INSERT INTO person_custom_master
                         (custom_Order , custom_Field , custom_Name ,  custom_Special , custom_FieldSec, type_ID)
-                        VALUES ('" . $newOrderID . "', 'c" . $newFieldNum . "', '" . $newFieldName . "', " . $newSpecial . ", '" . $newFieldSec . "', '" . $newFieldType . "');";
+                        VALUES ('" . $newOrderID ."', 'c" . $newFieldNum ."', '" . $newFieldName ."'," . $newSpecial .", '" . $newFieldSec ."', '" . $newFieldType ."');";
                     RunQuery($sSQL);
 
                     // Insert into the custom fields table
@@ -158,7 +158,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                     switch ($newFieldType) {
                         case 1:
-                            $sSQL .= "ENUM('false', 'true')";
+                            $sSQL .="ENUM('false', 'true')";
                             break;
                         case 2:
                             $sSQL .= 'DATE';
@@ -176,7 +176,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             $sSQL .= 'YEAR';
                             break;
                         case 7:
-                            $sSQL .= "ENUM('winter', 'spring', 'summer', 'fall')";
+                            $sSQL .="ENUM('winter', 'spring', 'summer', 'fall')";
                             break;
                         case 8:
                             $sSQL .= 'INT';
@@ -240,11 +240,11 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             $aAryRow = $aSecGrp[$i];
             //extract($aAryRow);
             $sOptList .= '<option value="' . $aAryRow['lst_OptionID'] . '"';
-            //        echo "lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
+            //        echo"lst_OptionName:".$aAryRow['lst_OptionName']."<br>";
             if ($aAryRow['lst_OptionName'] == $currOpt) {
                 $sOptList .= ' selected';
             }
-            $sOptList .= '>' . $aAryRow['lst_OptionName'] . "</option>\n";
+            $sOptList .= '>' . $aAryRow['lst_OptionName'] ."</option>\n";
         }
         $sOptList .= '</select>';
 
@@ -255,7 +255,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     ?>
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, fieldId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fieldName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this field, you will irrevocably lose all person data assigned for this field!')) ?>;
             bootbox.confirm({
@@ -408,7 +408,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         ?>
                         <tr>
                             <td>
-                                <span class="badge badge-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                                <span class="badge bg-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                             </td>
                             <td>
                                 <input type="text" name="<?= $row ?>name" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" class="form-control form-control-sm" maxlength="40">

@@ -65,7 +65,7 @@ $MenuFirst = 1;
             <div class="alert alert-info alert-dismissible">
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true"></button>
               <h5><i class="ti ti-info-circle me-1"></i><?= gettext('Alert!') ?></h5>
-              <?= gettext('When you click "Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?>
+              <?= gettext('When you click"Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?>
               <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
             </div>
           </div>
@@ -96,21 +96,21 @@ $MenuFirst = 1;
 
       // Extend window.CRM with server-side configuration (preserving existing properties like notify)
       Object.assign(window.CRM, {
-          root: "<?= SystemURLs::getRootPath() ?>",
+          root:"<?= SystemURLs::getRootPath() ?>",
           fullURL:"<?= SystemURLs::getURL() ?>",
-          lang: "<?= $localeInfo->getLanguageCode() ?>",
-          userId: "<?= AuthenticationManager::getCurrentUser()->getId() ?>",
-          version: "<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
-          systemLocale: "<?= $localeInfo->getSystemLocale() ?>",
-          locale: "<?= $localeInfo->getLocale() ?>",
-          shortLocale: "<?= $localeInfo->getShortLocale() ?>",
-          timeZone: "<?= SystemConfig::getValue('sTimeZone') ?>",
-          maxUploadSize: "<?= SystemService::getMaxUploadFileSize(true) ?>",
-          maxUploadSizeBytes: "<?= SystemService::getMaxUploadFileSize(false) ?>",
+          lang:"<?= $localeInfo->getLanguageCode() ?>",
+          userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
+          version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
+          systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
+          locale:"<?= $localeInfo->getLocale() ?>",
+          shortLocale:"<?= $localeInfo->getShortLocale() ?>",
+          timeZone:"<?= SystemConfig::getValue('sTimeZone') ?>",
+          maxUploadSize:"<?= SystemService::getMaxUploadFileSize(true) ?>",
+          maxUploadSizeBytes:"<?= SystemService::getMaxUploadFileSize(false) ?>",
           datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
           churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
           systemConfigs: {
-            sDateTimeFormat: "<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
           },
           iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
           // Plugin configs from active plugins (via getClientConfig())
@@ -119,10 +119,10 @@ $MenuFirst = 1;
           bEnableGravatarPhotos: <?= json_encode(PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false) ?>,
           plugin: {
               dataTable : {
-                  "pageLength": <?= $tableSize ?>,
-                  "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-                  "language": {
-                      "url": "<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
+"pageLength": <?= $tableSize ?>,
+"lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100,"All"]],
+"language": {
+"url":"<?= SystemURLs::getRootPath() ?>/locale/vendor/datatables/<?= $localeInfo->getDataTables() ?>.json"
                   },
                   responsive: true,
                   layout: {

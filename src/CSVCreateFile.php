@@ -90,7 +90,7 @@ if ($sSource === 'cart') {
                 $sWhereExt .= ' OR per_cls_ID = ' . $Class[$i];
             }
             $sWhereExt .= ') ';
-            // this is silly: should be something like..  $sWhereExt .= "AND per_cls_ID IN
+            // this is silly: should be something like..  $sWhereExt .="AND per_cls_ID IN
         }
     }
 
@@ -140,20 +140,20 @@ if ($sSource === 'cart') {
     }
 
     if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .= "AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_MembershipDate >= '" . InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10) ."'";
     }
     if ($_POST['MembershipDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_MembershipDate <= '" . InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10) ."'";
     }
 
     $refDate = getdate(time());
 
     if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= '" . InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10) ."'";
     }
 
     if ($_POST['BirthDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) . "' ";
+        $sWhereExt .="AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= '" . InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10) ."'";
     }
 
     if (!empty($_POST['AnniversaryDate1'])) {
@@ -161,9 +161,9 @@ if ($sSource === 'cart') {
 
         // Add year to query if not in future
         if ($annivStart['year'] < date('Y') || ($annivStart['year'] == date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
-            $sWhereExt .= "AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "' ";
+            $sWhereExt .="AND fam_WeddingDate >= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."'";
         } else {
-            $sWhereExt .= "AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) . "') ";
+            $sWhereExt .="AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10) ."')";
         }
     }
 
@@ -172,25 +172,25 @@ if ($sSource === 'cart') {
 
         // Add year to query if not in future
         if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] == date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
-            $sWhereExt .= "AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "' ";
+            $sWhereExt .="AND  fam_WeddingDate <= '" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."'";
         } else {
             $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
-            $sWhereExt .= "AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) . "') ";
+            $sWhereExt .="AND  DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR('" . InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10) ."')";
         }
     }
 
     if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .= "AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_DateEntered >= '" . InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10) ."'";
     }
     if ($_POST['EnterDate2'] != date('Y-m-d')) {
-        $sWhereExt .= "AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) . "' ";
+        $sWhereExt .="AND per_DateEntered <= '" . InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10) ."'";
     }
 }
 
 if ($sFormat === 'addtocart') {
     // Get individual records to add to the cart
 
-    $sSQL = "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
+    $sSQL ="SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy";
     $sSQL .= ' ORDER BY per_LastName';
     $rsLabelsToWrite = RunQuery($sSQL);
     while ($aRow = mysqli_fetch_array($rsLabelsToWrite)) {
@@ -202,11 +202,11 @@ if ($sFormat === 'addtocart') {
     // Build the complete SQL statement
 
     if ($sFormat === 'rollup') {
-        $sSQL = "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
+        $sSQL ="(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
         UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe";
     } else {
-        $sSQL = "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
+        $sSQL ="SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName";
     }
 
     //Execute whatever SQL was entered

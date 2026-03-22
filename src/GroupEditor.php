@@ -41,7 +41,7 @@ require_once __DIR__ . '/Include/Header.php';
         <span class="text-danger"></span>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close')?></button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close')?></button>
         <button name="setgroupSpecificProperties" id="setgroupSpecificProperties" type="button" class="btn btn-danger"></button>
       </div>
     </div>
@@ -55,7 +55,7 @@ require_once __DIR__ . '/Include/Header.php';
   </div>
   <div class="card-body">
     <form name="groupEditForm" id="groupEditForm">
-      <div class="form-group">
+      <div class="mb-3">
         <div class="row">
           <div class="col-sm-4">
             <label for="Name"><?= gettext('Name') ?>:</label>
@@ -73,9 +73,9 @@ require_once __DIR__ . '/Include/Header.php';
             <label for="GroupType"><?= gettext('Type of Group') ?>:</label>
             <?php
             if ($thisGroup->isSundaySchool()) {
-                $hide = "class=\"d-none\"";
+                $hide ="class=\"d-none\"";
             } else {
-                $hide = "";
+                $hide ="";
             }
             ?>
             <select class="form-control input-small" name="GroupType" <?= $hide ?>>
@@ -97,7 +97,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <p><?= gettext("Sunday School group can't be modified, only in this two cases :")?></p>
                 <ul>
                                 <li>
-                                    <?= gettext("You can create/delete sunday school group. ")?>
+                                    <?= gettext("You can create/delete sunday school group.")?>
                                 </li>
                                 <li>
                                     <?= gettext("Add new roles, but not modify or rename the Student and the Teacher roles.")?>

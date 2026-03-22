@@ -217,9 +217,8 @@ class AvatarLoader {
       } else {
         viewBtn.classList.add("hide-if-no-photo");
       }
-    } else {
-      console.warn("Could not find view-larger-image-btn button for entity", img.dataset);
     }
+    // No button found — normal on list/dashboard pages where no view-larger-image button exists
   }
 
   /**

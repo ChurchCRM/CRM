@@ -46,7 +46,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="row mb-3">
         <div class="col-12 d-flex align-items-center">
             <p class="text-muted mb-0 flex-grow-1">
-                <i class="fa-solid fa-calendar-alt mr-1"></i>
+                <i class="fa-solid fa-calendar-alt me-1"></i>
                 <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong> 
                 (<?= date('M j, Y', strtotime($fyStartDate)) ?> - <?= date('M j, Y', strtotime($fyEndDate)) ?>)
             </p>
@@ -64,14 +64,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <?php endif; ?>
 
     <!-- Overview Card -->
-    <div class="card card-success card-outline mb-3">
+    <div class="card border border-success mb-3">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Overview') ?></h3>
         </div>
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -84,7 +84,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -97,7 +97,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-secondary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -110,7 +110,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card card-sm h-100">
+                    <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
                             <div class="d-flex align-items-center mb-3">
                                 <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
@@ -171,11 +171,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <div class="list-group list-group-flush">
                         <!-- Close All Deposits -->
                         <div class="list-group-item d-flex align-items-center px-0">
-                            <div class="mr-3">
+                            <div class="me-3">
                                 <?php if ($openDeposits === 0): ?>
-                                <span class="badge badge-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
+                                <span class="badge bg-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge badge-warning rounded-circle p-2"><i class="fa-solid fa-exclamation"></i></span>
+                                <span class="badge bg-warning rounded-circle p-2"><i class="fa-solid fa-exclamation"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -184,9 +184,9 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <?php if ($openDeposits > 0): ?>
-                                <span class="badge badge-pill badge-warning"><?= $openDeposits ?> <?= gettext('open') ?></span>
+                                <span class="badge badge-pill bg-warning"><?= $openDeposits ?> <?= gettext('open') ?></span>
                                 <?php endif; ?>
-                                <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ml-2">
+                                <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-eye"></i> <?= gettext('View') ?>
                                 </a>
                             </div>
@@ -194,11 +194,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
                         <!-- Review Donation Funds -->
                         <div class="list-group-item d-flex align-items-center px-0">
-                            <div class="mr-3">
+                            <div class="me-3">
                                 <?php if ($activeFundCount > 0): ?>
-                                <span class="badge badge-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
+                                <span class="badge bg-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge badge-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -206,8 +206,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <p class="mb-0 small text-muted"><?= gettext('Verify fund names and descriptions are accurate for statements.') ?></p>
                             </div>
                             <div>
-                                <span class="badge badge-pill badge-info"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ml-2">
+                                <span class="badge badge-pill bg-info"><?= $activeFundCount ?> <?= gettext('active') ?></span>
+                                <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
                                     <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
@@ -215,14 +215,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
                         <!-- Update Church Info -->
                         <div class="list-group-item d-flex align-items-center px-0">
-                            <div class="mr-3">
+                            <div class="me-3">
                                 <?php 
                                 $hasChurchInfo = !empty(SystemConfig::getValue('sChurchName')) && !empty(SystemConfig::getValue('sChurchAddress'));
                                 ?>
                                 <?php if ($hasChurchInfo): ?>
-                                <span class="badge badge-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
+                                <span class="badge bg-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge badge-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
+                                <span class="badge bg-danger rounded-circle p-2"><i class="fa-solid fa-times"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -240,8 +240,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
                         <!-- Review Tax Report Text -->
                         <div class="list-group-item d-flex align-items-center px-0">
-                            <div class="mr-3">
-                                <span class="badge badge-info rounded-circle p-2"><i class="fa-solid fa-file-alt"></i></span>
+                            <div class="me-3">
+                                <span class="badge bg-info rounded-circle p-2"><i class="fa-solid fa-file-alt"></i></span>
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Tax Report Verbiage') ?></strong>
@@ -256,8 +256,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
                         <!-- Generate Tax Statements -->
                         <div class="list-group-item d-flex align-items-center px-0 bg-light">
-                            <div class="mr-3">
-                                <span class="badge badge-primary rounded-circle p-2"><i class="fa-solid fa-file-invoice-dollar"></i></span>
+                            <div class="me-3">
+                                <span class="badge bg-primary rounded-circle p-2"><i class="fa-solid fa-file-invoice-dollar"></i></span>
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Generate Tax Statements') ?></strong>
@@ -280,20 +280,20 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <i class="fa-solid fa-clock-rotate-left"></i> <?= gettext('Recent Deposits') ?>
                     </h5>
                     <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-light">
-                        <i class="fa-solid fa-list mr-1"></i><?= gettext('View All Deposits') ?>
+                        <i class="fa-solid fa-list me-1"></i><?= gettext('View All Deposits') ?>
                     </a>
                 </div>
                 <div class="card-body p-0">
                     <?php if ($recentDeposits->count() > 0): ?>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
-                            <thead class="thead-light">
+                            <thead class="table-light">
                                 <tr>
                                     <th><?= gettext('ID') ?></th>
                                     <th><?= gettext('Date') ?></th>
                                     <th><?= gettext('Type') ?></th>
                                     <th><?= gettext('Comment') ?></th>
-                                    <th class="text-right"><?= gettext('Total') ?></th>
+                                    <th class="text-end"><?= gettext('Total') ?></th>
                                     <th><?= gettext('Status') ?></th>
                                 </tr>
                             </thead>
@@ -306,14 +306,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                         </a>
                                     </td>
                                     <td><?= $deposit->getDate('M j, Y') ?></td>
-                                    <td><span class="badge badge-info"><?= $deposit->getType() ?></span></td>
+                                    <td><span class="badge bg-info"><?= $deposit->getType() ?></span></td>
                                     <td class="text-truncate finance-truncate"><?= InputUtils::escapeHTML($deposit->getComment() ?? '') ?></td>
-                                    <td class="text-right font-weight-bold">$<?= number_format($deposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></td>
+                                    <td class="text-end fw-bold">$<?= number_format($deposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></td>
                                     <td>
                                         <?php if ($deposit->getClosed()): ?>
-                                        <span class="badge badge-success"><?= gettext('Closed') ?></span>
+                                        <span class="badge bg-success"><?= gettext('Closed') ?></span>
                                         <?php else: ?>
-                                        <span class="badge badge-warning"><?= gettext('Open') ?></span>
+                                        <span class="badge bg-warning"><?= gettext('Open') ?></span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -355,14 +355,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted"><?= gettext('Type:') ?></span>
-                        <span class="badge badge-info"><?= $currentDeposit->getType() ?></span>
+                        <span class="badge bg-info"><?= $currentDeposit->getType() ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span class="text-muted"><?= gettext('Status:') ?></span>
                         <?php if ($currentDeposit->getClosed()): ?>
-                        <span class="badge badge-secondary"><?= gettext('Closed') ?></span>
+                        <span class="badge bg-secondary"><?= gettext('Closed') ?></span>
                         <?php else: ?>
-                        <span class="badge badge-success"><?= gettext('Open') ?></span>
+                        <span class="badge bg-success"><?= gettext('Open') ?></span>
                         <?php endif; ?>
                     </div>
                     <hr>
@@ -370,7 +370,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <div class="h3 text-success mb-0">$<?= number_format($currentDeposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></div>
                         <small class="text-muted"><?= gettext('Total Amount') ?></small>
                     </div>
-                    <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary btn-block">
+                    <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
                         <i class="fa-solid fa-edit"></i> <?= gettext('Edit Deposit') ?>
                     </a>
                 </div>
@@ -406,11 +406,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span><?= gettext('Open Deposits:') ?></span>
-                        <span class="badge badge-warning"><?= $openDeposits ?></span>
+                        <span class="badge bg-warning"><?= $openDeposits ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span><?= gettext('Closed Deposits:') ?></span>
-                        <span class="badge badge-success"><?= $closedDeposits ?></span>
+                        <span class="badge bg-success"><?= $closedDeposits ?></span>
                     </div>
                     
                     <?php if ($totalDeposits > 0): ?>
@@ -430,7 +430,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <h5 class="mb-0">
                         <i class="fa-solid fa-piggy-bank"></i> <?= gettext('Donation Funds') ?>
                     </h5>
-                    <span class="badge badge-light"><?= $activeFundCount ?></span>
+                    <span class="badge bg-light"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0): ?>
@@ -438,7 +438,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <?php foreach ($activeFunds as $fund): ?>
                         <li class="list-group-item d-flex justify-content-between align-items-center py-2">
                             <span><?= InputUtils::escapeHTML($fund->getName()) ?></span>
-                            <span class="badge badge-success badge-pill">
+                            <span class="badge bg-success badge-pill">
                                 <i class="fa-solid fa-check"></i>
                             </span>
                         </li>
@@ -452,7 +452,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
                     <div class="card-footer bg-light">
-                        <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary btn-block">
+                        <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary w-100">
                             <i class="fa-solid fa-cog"></i> <?= gettext('Manage Funds') ?>
                         </a>
                     </div>

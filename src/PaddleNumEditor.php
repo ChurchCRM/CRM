@@ -12,7 +12,7 @@ $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 
 if ($iPaddleNumID > 0) {
-    $sSQL = "SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
+    $sSQL ="SELECT * FROM paddlenum_pn WHERE pn_ID = '$iPaddleNumID'";
     $rsPaddleNum = RunQuery($sSQL);
     $thePaddleNum = mysqli_fetch_array($rsPaddleNum);
     $iCurrentFundraiser = $thePaddleNum['pn_fr_ID'];
@@ -32,7 +32,7 @@ if ($iCurrentFundraiser) {
 }
 
 // SQL to get multibuy items
-$sMultibuyItemsSQL = "SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
+$sMultibuyItemsSQL ="SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
 
 $sPageTitle = gettext('Buyer Number Editor');
 
@@ -101,11 +101,11 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
     if (strlen($iPaddleNumID) > 0) {
         //Editing....
         //Get all the data on this record
-        $sSQL = "SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
+        $sSQL ="SELECT pn_ID, pn_fr_ID, pn_Num, pn_per_ID,
                            a.per_FirstName as buyerFirstName, a.per_LastName as buyerLastName
              FROM paddlenum_pn
              LEFT JOIN person_per a ON pn_per_ID=a.per_ID
-             WHERE pn_ID = '" . $iPaddleNumID . "'";
+             WHERE pn_ID = '" . $iPaddleNumID ."'";
         $rsPaddleNum = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsPaddleNum));
 
@@ -129,7 +129,7 @@ $sPeopleSQL = 'SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_Cit
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="PaddleNumEditor.php?<?= 'CurrentFundraiser=' . $iCurrentFundraiser . '&PaddleNumID=' . $iPaddleNumID . '&linkBack=' . $linkBack ?>" name="PaddleNumEditor">
         <div class="table-responsive">
             <table class="table mx-auto">
@@ -138,7 +138,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <input type="submit" class="btn btn-secondary" value="<?= gettext('Save') ?>" name="PaddleNumSubmit">
                         <input type="submit" class="btn btn-secondary" value="<?= gettext('Generate Statement') ?>" name="GenerateStatement">
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-                            echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') . "\" name=\"PaddleNumSubmitAndAdd\">\n";
+                            echo '<input type="submit" class="btn btn-secondary" value="' . gettext('Save and Add') ."\" name=\"PaddleNumSubmitAndAdd\">\n";
                         } ?>
                         <input type="button" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="PaddleNumCancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'v2/dashboard') ?>';">
                     </td>

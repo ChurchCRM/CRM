@@ -57,11 +57,11 @@ $sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS ro
 $rsAssignedGroups = RunQuery($sSQL);
 
 // Get the Properties assigned to this Person
-$sSQL = "SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
+$sSQL ="SELECT pro_Name, pro_ID, pro_Prompt, r2p_Value, prt_Name, pro_prt_ID
         FROM record2property_r2p
         LEFT JOIN property_pro ON pro_ID = r2p_pro_ID
         LEFT JOIN propertytype_prt ON propertytype_prt.prt_ID = property_pro.pro_prt_ID
-        WHERE pro_Class = 'p' AND r2p_record_ID = " . $iPersonID .
+        WHERE pro_Class = 'p' AND r2p_record_ID =" . $iPersonID .
     ' ORDER BY prt_Name, pro_Name';
 $rsAssignedProperties = RunQuery($sSQL);
 
@@ -99,21 +99,21 @@ require_once __DIR__ . '/Include/Header-Short.php';
 <table width="200">
     <tr>
         <td>
-            <p class="card card-body">
+            <p class="card-body">
 
                 <?php
 
                 $personSheet = PersonQuery::create()->findPk($per_ID);
 
                 if ($personSheet) {
-                    echo "<table>";
-                    echo "    <tr>";
-                    echo "    <td  style=\"padding:5px;\">";
-                    $imgName = SystemURLs::getRootPath() . "/api/person/" . $personSheet->getId() . "/photo";
-                    echo "<img src=\"" . $imgName . "\"/>";
-                    echo "</td><td>";
+                    echo"<table>";
+                    echo"    <tr>";
+                    echo"    <td  style=\"padding:5px;\">";
+                    $imgName = SystemURLs::getRootPath() ."/api/person/" . $personSheet->getId() ."/photo";
+                    echo"<img src=\"" . $imgName ."\"/>";
+                    echo"</td><td>";
                     echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
-                    echo "</td></tr></table>";
+                    echo"</td></tr></table>";
                 } else {
                     echo '<b><span style="font-size: 1.25rem;">' . $personSheet->getFullName() . '</span></b><br>';
                 }
@@ -383,7 +383,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
                 $firstRow = true;
                 // Get the special properties for this group
                 $sSQL = 'SELECT groupprop_master.* FROM groupprop_master
-                                    WHERE grp_ID = ' . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                                    WHERE grp_ID = ' . $grp_ID ." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
                 $rsPropList = RunQuery($sSQL);
 
                 $sSQL = 'SELECT * FROM groupprop_' . $grp_ID . ' WHERE per_ID = ' . $iPersonID;
@@ -457,7 +457,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
         // Loop through all the notes
         while ($aRow = mysqli_fetch_array($rsNotes)) {
             extract($aRow);
-            echo '<p class="card card-body")>' . InputUtils::escapeHTML($nte_Text) . '</p>';
+            echo '<p class="card-body")>' . InputUtils::escapeHTML($nte_Text) . '</p>';
             echo '<span class="SmallText">' . gettext('Entered') . ': ' . FormatDate($nte_DateEntered, true) . '</span><br>';
 
             if (strlen($nte_DateLastEdited)) {

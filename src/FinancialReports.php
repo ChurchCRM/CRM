@@ -46,7 +46,7 @@ if (array_key_exists('datetype', $_POST)) {
     $datetype = InputUtils::legacyFilterInput($_GET['datetype']);
 }
 ?>
-<div class="card card-body">
+<div class="card-body">
 <!-- Styles for this page moved into the project's SCSS: `src/skin/scss/_financial-reports.scss` -->
 <?php
 
@@ -61,26 +61,26 @@ if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRo
 
 if ($sReportType == '') {
     // First Pass - Choose report type
-    echo "<form method=post id='FinancialReports' action='FinancialReports.php'>";
+    echo"<form method=post id='FinancialReports' action='FinancialReports.php'>";
     echo '<table cellpadding=3 align=left>';
     echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>';
     echo '<td class=TextColumn><select name=ReportType id=FinancialReportTypes>';
     echo '<option selected="selected" disabled value="0">' . gettext('Select Report Type') . '</option>';
-    echo "<option value='Pledge Summary'>" . gettext('Pledge Summary') . '</option>';
-    echo "<option value='Pledge Family Summary'>" . gettext('Pledge Family Summary') . '</option>';
-    echo "<option value='Pledge Reminders'>" . gettext('Pledge Reminders') . '</option>';
-    echo "<option value='Voting Members'>" . gettext('Voting Members') . '</option>';
-    echo "<option value='Giving Report'>" . gettext('Giving Report (Tax Statements)') . '</option>';
-    echo "<option value='Zero Givers'>" . gettext('Zero Givers') . '</option>';
-    echo "<option value='Individual Deposit Report'>" . gettext('Individual Deposit Report') . '</option>';
-    echo "<option value='Advanced Deposit Report'>" . gettext('Advanced Deposit Report') . '</option>';
+    echo"<option value='Pledge Summary'>" . gettext('Pledge Summary') . '</option>';
+    echo"<option value='Pledge Family Summary'>" . gettext('Pledge Family Summary') . '</option>';
+    echo"<option value='Pledge Reminders'>" . gettext('Pledge Reminders') . '</option>';
+    echo"<option value='Voting Members'>" . gettext('Voting Members') . '</option>';
+    echo"<option value='Giving Report'>" . gettext('Giving Report (Tax Statements)') . '</option>';
+    echo"<option value='Zero Givers'>" . gettext('Zero Givers') . '</option>';
+    echo"<option value='Individual Deposit Report'>" . gettext('Individual Deposit Report') . '</option>';
+    echo"<option value='Advanced Deposit Report'>" . gettext('Advanced Deposit Report') . '</option>';
     echo '</select>';
     echo '</td></tr>';
     // First Pass Cancel, Next Buttons
-    echo "<tr><td>&nbsp;</td>
-        <td><input type=button class='btn btn-secondary' name=Cancel value='" . gettext('Cancel') . "'
+    echo"<tr><td>&nbsp;</td>
+        <td><input type=button class='btn btn-secondary' name=Cancel value='" . gettext('Cancel') ."'
         onclick=\"javascript:document.location='v2/dashboard';\">
-        <input type=submit class='btn btn-primary' name=Submit1 value='" . gettext('Next') . "'>
+        <input type=submit class='btn btn-primary' name=Submit1 value='" . gettext('Next') ."'>
         </td></tr>
         </table></form>";
 } else {
@@ -114,8 +114,8 @@ if ($sReportType == '') {
             $action = 'Reports/AdvancedDeposit.php';
             break;
     }
-    echo "<form method=post action=\"$action\">";
-    echo "<input type=hidden name=ReportType value='$sReportType'>";
+    echo"<form method=post action=\"$action\">";
+    echo"<input type=hidden name=ReportType value='$sReportType'>";
     echo '<table cellpadding=3 align=left>';
     echo '<tr><td><h3>' . gettext('Filters') . '</h3></td></tr>';
 
@@ -161,7 +161,7 @@ if ($sReportType == '') {
         $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
         // Add Spouse to criteria
         if (intval($sDirRoleSpouse) > 0) {
-            $head_criteria .= " OR per_fmr_ID = $sDirRoleSpouse";
+            $head_criteria .=" OR per_fmr_ID = $sDirRoleSpouse";
         }
         // Build array of Head of Households and Spouses with fam_ID as the key
         $sSQL = 'SELECT per_FirstName, per_fam_ID FROM person_per WHERE per_fam_ID > 0 AND (' . $head_criteria . ') ORDER BY per_fam_ID';
@@ -199,16 +199,16 @@ if ($sReportType == '') {
         $today = date('Y-m-d');
         $startVal = $sDateStart ? $sDateStart : $today;
         $endVal = $sDateEnd ? $sDateEnd : $today;
-        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date') . "</td>
-            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) . "'></td></tr>";
-        echo '<tr><td class=LabelColumn>' . gettext('Report End Date') . "</td>
-            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) . "'></td></tr>";
+        echo '<tr><td class=LabelColumn>' . gettext('Report Start Date') ."</td>
+            <td class=TextColumn><input type=text name=DateStart class='date-picker' maxlength=10 id=DateStart size=11 value='" . InputUtils::escapeHTML($startVal) ."'></td></tr>";
+        echo '<tr><td class=LabelColumn>' . gettext('Report End Date') ."</td>
+            <td class=TextColumn><input type=text name=DateEnd class='date-picker' maxlength=10 id=DateEnd size=11 value='" . InputUtils::escapeHTML($endVal) ."'></td></tr>";
         if (in_array($sReportType, ['Giving Report', 'Advanced Deposit Report'])) {
-            $depChecked = ($datetype !== 'Payment') ? " checked" : "";
-            $payChecked = ($datetype === 'Payment') ? " checked" : "";
+            $depChecked = ($datetype !== 'Payment') ?" checked" :"";
+            $payChecked = ($datetype === 'Payment') ?" checked" :"";
             echo '<tr><td class=LabelColumn>' . gettext('Apply Report Dates To') . ':</td>';
-            echo "<td class=TextColumnWithBottomBorder><input name=datetype type=radio value='Deposit' $depChecked>" . gettext('Deposit Date (Default)');
-            echo " &nbsp; <input name=datetype type=radio value='Payment' $payChecked>" . gettext('Payment Date') . '</tr>';
+            echo"<td class=TextColumnWithBottomBorder><input name=datetype type=radio value='Deposit' $depChecked>" . gettext('Deposit Date (Default)');
+            echo" &nbsp; <input name=datetype type=radio value='Payment' $payChecked>" . gettext('Payment Date') . '</tr>';
         }
     }
 
@@ -274,10 +274,10 @@ if ($sReportType == '') {
             . gettext('Use Ctrl Key to select multiple');
         echo '</div><select name=method[] size=5 multiple>';
         echo '<option value=0 selected>' . gettext('All Methods');
-        echo "<option value='CHECK'>" . gettext('Check')
-            . "<option value='CASH'>" . gettext('Cash')
-            . "<option value='CREDITCARD'>" . gettext('Credit Card')
-            . "<option value='BANKDRAFT'>" . gettext('Bank Draft');
+        echo"<option value='CHECK'>" . gettext('Check')
+            ."<option value='CASH'>" . gettext('Cash')
+            ."<option value='CREDITCARD'>" . gettext('Credit Card')
+            ."<option value='BANKDRAFT'>" . gettext('Bank Draft');
         echo '</select></td></tr>';
     }
 
@@ -285,7 +285,7 @@ if ($sReportType == '') {
             echo '<tr><td class=LabelColumn>' . gettext('Minimum Total Amount:') . '</td>'
             . '<td class=TextColumnWithBottomBorder><div class=SmallText>'
             . gettext('0 - No Minimum') . '</div>'
-            . "<input name=minimum type=text value='0' size=8></td></tr>";
+            ."<input name=minimum type=text value='0' size=8></td></tr>";
     }
 
     // Other Settings
@@ -293,32 +293,32 @@ if ($sReportType == '') {
 
     if ($sReportType === 'Pledge Reminders') {
         echo '<tr><td class=LabelColumn>' . gettext('Include') . ':</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>" . gettext('Only Payments with Pledges')
-            . " &nbsp; <input name=pledge_filter type=radio value='all'>" . gettext('All Payments') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=pledge_filter type=radio value='pledge' checked>" . gettext('Only Payments with Pledges')
+            ." &nbsp; <input name=pledge_filter type=radio value='all'>" . gettext('All Payments') . '</td></tr>';
         echo '<tr><td class=LabelColumn>' . gettext('Generate') . ':</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=only_owe type=radio value='yes' checked>" . gettext('Only Families with unpaid pledges')
-            . " &nbsp; <input name=only_owe type=radio value='no'>" . gettext('All Families') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=only_owe type=radio value='yes' checked>" . gettext('Only Families with unpaid pledges')
+            ." &nbsp; <input name=only_owe type=radio value='no'>" . gettext('All Families') . '</td></tr>';
     }
 
     if (in_array($sReportType, ['Giving Report', 'Zero Givers'])) {
         echo '<tr><td class=LabelColumn>' . gettext('Report Heading:') . '</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>" . gettext('Graphic')
-            . " <input name=letterhead type=radio value='address' checked>" . gettext('Church Address')
-            . " <input name=letterhead type=radio value='none'>" . gettext('Blank') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=letterhead type=radio value='graphic'>" . gettext('Graphic')
+            ." <input name=letterhead type=radio value='address' checked>" . gettext('Church Address')
+            ." <input name=letterhead type=radio value='none'>" . gettext('Blank') . '</td></tr>';
         echo '<tr><td class=LabelColumn>' . gettext('Remittance Slip:') . '</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=remittance type=radio value='yes'>" . gettext('Yes')
-            . " <input name=remittance type=radio value='no' checked>" . gettext('No') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=remittance type=radio value='yes'>" . gettext('Yes')
+            ." <input name=remittance type=radio value='no' checked>" . gettext('No') . '</td></tr>';
     }
 
     if ($sReportType === 'Advanced Deposit Report') {
         echo '<tr><td class=LabelColumn>' . gettext('Sort Data by:') . '</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>" . gettext('Deposit')
-            . " &nbsp;<input name=sort type=radio value='fund'>" . gettext('Fund')
-            . " &nbsp;<input name=sort type=radio value='family'>" . gettext('Family') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=sort type=radio value='deposit' checked>" . gettext('Deposit')
+            ." &nbsp;<input name=sort type=radio value='fund'>" . gettext('Fund')
+            ." &nbsp;<input name=sort type=radio value='family'>" . gettext('Family') . '</td></tr>';
         echo '<tr><td class=LabelColumn>' . gettext('Report Type') . ':</td>'
-            . "<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>" . gettext('All Data')
-            . " <input name=detail_level type=radio value='medium'>" . gettext('Moderate Detail')
-            . " <input name=detail_level type=radio value='summary'>" . gettext('Summary Data') . '</td></tr>';
+            ."<td class=TextColumnWithBottomBorder><input name=detail_level type=radio value='detail' checked>" . gettext('All Data')
+            ." <input name=detail_level type=radio value='medium'>" . gettext('Moderate Detail')
+            ." <input name=detail_level type=radio value='summary'>" . gettext('Summary Data') . '</td></tr>';
     }
 
     if ($sReportType === 'Voting Members') {
@@ -329,10 +329,10 @@ if ($sReportType == '') {
     // Show CSV output option for reports that support it
     if (in_array($sReportType, ['Pledge Summary', 'Giving Report', 'Individual Deposit Report', 'Advanced Deposit Report', 'Zero Givers'])) {
         echo '<tr><td class=LabelColumn>' . gettext('Output Method:') . '</td>';
-        echo "<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
-        echo " <input name=output type=radio value='csv'>" . gettext('CSV') . '</tr>';
+        echo"<td class=TextColumnWithBottomBorder><input name=output type=radio checked value='pdf'>PDF";
+        echo" <input name=output type=radio value='csv'>" . gettext('CSV') . '</tr>';
     } else {
-        echo "<input name=output type=hidden value='pdf'>";
+        echo"<input name=output type=hidden value='pdf'>";
     }
 
     // Back, Next Buttons
@@ -347,7 +347,7 @@ if ($sReportType == '') {
     </td>
 </tr>
 EOD;
-    echo "</table></form>";
+    echo"</table></form>";
 }
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
@@ -388,8 +388,8 @@ $(document).ready(function() {
         $("#fundsList").val(null).trigger("change");
   });
 
-  // Handle report download - clear "No Data Found" banner when exporting
-  $(document).on("click", "button[type='submit'], input[type='submit']", function() {
+  // Handle report download - clear"No Data Found" banner when exporting
+  $(document).on("click","button[type='submit'], input[type='submit']", function() {
     // Simply hide the No Data Found alert banner when any submit button is clicked
     $(".alert-warning").hide();
   });

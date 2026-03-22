@@ -78,7 +78,7 @@ if (!empty($_POST['family'])) {
     }
     if ($count === 1) {
         if ($fam[0]) {
-            $q = " fam_ID='$fam[0]'";
+            $q =" fam_ID='$fam[0]'";
             if ($criteria) {
                 $criteria .= ' AND' . $q;
             } else {
@@ -86,14 +86,14 @@ if (!empty($_POST['family'])) {
             }
         }
     } else {
-        $q = " (fam_ID='$fam[0]'";
+        $q =" (fam_ID='$fam[0]'";
         if ($criteria) {
             $criteria .= ' AND' . $q;
         } else {
             $criteria = $q;
         }
         for ($i = 1; $i < $count; $i++) {
-            $criteria .= " OR fam_ID='$fam[$i]'";
+            $criteria .=" OR fam_ID='$fam[$i]'";
         }
         $criteria .= ')';
     }
@@ -125,12 +125,12 @@ if (!empty($_POST['funds'])) {
     }
     if ($fundCount === 1) {
         if ($fund[0]) {
-            $sSQLFundCriteria .= " AND plg_fundID='$fund[0]' ";
+            $sSQLFundCriteria .=" AND plg_fundID='$fund[0]'";
         }
     } else {
-        $sSQLFundCriteria .= " AND (plg_fundID ='$fund[0]'";
+        $sSQLFundCriteria .=" AND (plg_fundID ='$fund[0]'";
         for ($i = 1; $i < $fundCount; $i++) {
-            $sSQLFundCriteria .= " OR plg_fundID='$fund[$i]'";
+            $sSQLFundCriteria .=" OR plg_fundID='$fund[$i]'";
         }
         $sSQLFundCriteria .= ') ';
     }
@@ -204,7 +204,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
     // Check for pledges if filtering by pledges
     if ($pledge_filter === 'pledge') {
-        $temp = "SELECT plg_plgID FROM pledge_plg
+        $temp ="SELECT plg_plgID FROM pledge_plg
             WHERE plg_FamID='$fam_ID' AND plg_PledgeOrPayment='Pledge' AND plg_FYID=$iFYID" . $sSQLFundCriteria;
         $rsPledgeCheck = RunQuery($temp);
         if (mysqli_num_rows($rsPledgeCheck) === 0) {
@@ -260,7 +260,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get pledges only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
+             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria ." AND plg_PledgeOrPayment = 'Pledge' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPledges = 0;
@@ -338,7 +338,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
     // Get payments only
     $sSQL = 'SELECT *, b.fun_Name AS fundName FROM pledge_plg
              LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
-             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria . " AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
+             WHERE plg_FamID = ' . $fam_ID . ' AND plg_FYID = ' . $iFYID . $sSQLFundCriteria ." AND plg_PledgeOrPayment = 'Payment' ORDER BY plg_date";
     $rsPledges = RunQuery($sSQL);
 
     $totalAmountPayments = 0;

@@ -18,14 +18,14 @@ $fundraisersQuery = FundraiserQuery::Create()
 
 if (array_key_exists('DateStart', $_GET)) {
     $dDateStart = InputUtils::legacyFilterInput($_GET['DateStart']);
-    if ($dDateStart !== "") {
+    if ($dDateStart !=="") {
         $dDateStartObj = DateTime::createFromFormat($sDateFormat, $dDateStart);
         $fundraisersQuery->filterByDate($dDateStartObj, Criteria::GREATER_EQUAL);
     }
 }
 if (array_key_exists('DateEnd', $_GET)) {
     $dDateEnd = InputUtils::legacyFilterInput($_GET['DateEnd']);
-    if ($dDateEnd !== "") {
+    if ($dDateEnd !=="") {
         $dDateEndObj = DateTime::createFromFormat($sDateFormat, $dDateEnd);
         $fundraisersQuery->filterByDate($dDateEndObj, Criteria::LESS_EQUAL);
     }
@@ -37,7 +37,7 @@ $fundraisers = $fundraisersQuery->find();
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-body">
+<div class="card-body">
     <form method="get" action="FindFundRaiser.php" name="FindFundRaiser">
         <tr>
             <td>
@@ -59,7 +59,7 @@ require_once __DIR__ . '/Include/Header.php';
     </form>
     </table>
 </div>
-<div class="card card-body">
+<div class="card-body">
   <div class="card-body table-responsive">
     <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
         <thead>

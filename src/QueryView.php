@@ -143,7 +143,7 @@ function ProcessSQL()
         extract($aRow);
 
         // Debugging code
-        // echo "--" . $qry_SQL . "<br>--" . "~" . $qrp_Alias . "~" . "<br>--" . $vPOST[$qrp_Alias] . "<p>";
+        // echo"--" . $qry_SQL ."<br>--" ."~" . $qrp_Alias ."~" ."<br>--" . $vPOST[$qrp_Alias] ."<p>";
 
         // Replace the placeholder with the parameter value
         // GHSA-qc2c-qmw4-52fp: Properly escape values before SQL substitution to prevent injection
@@ -158,7 +158,7 @@ function escapeQueryParameter($value, $connection)
     if (is_array($value)) {
         // For arrays, escape each element and quote it, then join with commas
         $escapedValues = array_map(function($val) use ($connection) {
-            return "'" . $connection->real_escape_string((string)$val) . "'";
+            return"'" . $connection->real_escape_string((string)$val) ."'";
         }, $value);
         return implode(',', $escapedValues);
     }
@@ -170,7 +170,7 @@ function escapeQueryParameter($value, $connection)
     }
     
     // String values need quotes and escaping
-    return "'" . $connection->real_escape_string((string)$value) . "'";
+    return"'" . $connection->real_escape_string((string)$value) ."'";
 }
 
 // Checks if a count is to be displayed, and displays it if required
@@ -201,10 +201,10 @@ function DoQuery()
 
     // Run the SQL
     $rsQueryResults = RunQuery($qry_SQL); ?>
-<div class="card card-primary">
+<div class="card">
 
     <div class="card-body">
-        <p class="text-right">
+        <p class="text-end">
             <?= $qry_Count ? mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned') : ''; ?>
         </p>
 
@@ -214,7 +214,7 @@ function DoQuery()
                 <?php
                     // Loop through the fields and write the header row
                 for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-                    // If this field is called "AddToCart", provision a headerless column to hold the cart action buttons
+                    // If this field is called"AddToCart", provision a headerless column to hold the cart action buttons
                     $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
                     if ($fieldInfo->name != 'AddToCart') {
                         echo '<th>' . $fieldInfo->name . '</th>';
@@ -232,7 +232,7 @@ function DoQuery()
 
         // Loop through the fields and write each one
         for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
-            // If this field is called "AddToCart", add a cart button to the form
+            // If this field is called"AddToCart", add a cart button to the form
             $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
             if ($fieldInfo->name === 'AddToCart') {
                 ?>
@@ -293,14 +293,14 @@ function DoQuery()
         <?php } ?>
         </p>
 
-        <p class="text-right">
+        <p class="text-end">
             <?= '<a href="QueryView.php?QueryID=' . $iQueryID . '">' . gettext('Run Query Again') . '</a>'; ?>
         </p>
     </div>
 
 </div>
 
-<div class="card card-info">
+<div class="card">
     <div class="card-header d-flex align-items-center">
         <div class="card-title">Query</div>
     </div>
@@ -316,7 +316,7 @@ function DisplayQueryInfo()
 {
     global $qry_Name;
     global $qry_Description; ?>
-<div class="card card-info">
+<div class="card">
     <div class="card-body">
         <p><strong><?= gettext($qry_Name); ?></strong></p>
         <p><?= gettext($qry_Description); ?></p>
@@ -396,10 +396,10 @@ function getQueryFormInput($queryParameters)
     if ($aErrorText[$qrp_Alias]) {
         $errorMsg = '<div>' . $aErrorText[$qrp_Alias] . '</div>';
         $helpBlock = '<div class="help-block">' . $helpMsg . $errorMsg . '</div>';
-        return '<div class="form-group has-error">' . $label . $input . $helpBlock . '</div>';
+        return '<div class="mb-3 has-error">' . $label . $input . $helpBlock . '</div>';
     }
 
-    return '<div class="form-group">' . $label . $input . $helpBlock . '</div>';
+    return '<div class="mb-3">' . $label . $input . $helpBlock . '</div>';
 }
 
 // Displays a form to enter values for each parameter, creating INPUT boxes and SELECT drop-downs as necessary
@@ -410,7 +410,7 @@ function DisplayParameterForm()
 <div class="row">
     <div class="col-md-8">
 
-        <div class="card card-primary">
+        <div class="card">
 
             <div class="card-body">
 
@@ -424,7 +424,7 @@ function DisplayParameterForm()
         echo getQueryFormInput($aRow);
     } ?>
 
-                    <div class="form-group text-right">
+                    <div class="mb-3 text-end">
                         <input class="btn btn-primary" type="Submit" value="<?= gettext("Execute Query") ?>" name="Submit">
                     </div>
                 </form>

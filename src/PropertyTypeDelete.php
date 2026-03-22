@@ -41,7 +41,7 @@ $sType = '';
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
-<div class="card card-body text-center">
+<div class="card-body text-center">
     <?php if (isset($_GET['Warn'])) { ?>
     <div class="alert alert-warning">
         <strong><?= gettext('Warning') ?>:</strong>
@@ -54,7 +54,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     <div>
         <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?= $iPropertyTypeID ?>" class="btn btn-danger"><?= gettext('Yes, delete this record') ?></a>
-        <a href="PropertyTypeList.php?Type=<?= $sType ?>" class="btn btn-secondary ml-2"><?= gettext('No, cancel this deletion') ?></a>
+        <a href="PropertyTypeList.php?Type=<?= $sType ?>" class="btn btn-secondary ms-2"><?= gettext('No, cancel this deletion') ?></a>
     </div>
 </div>
 <?php
