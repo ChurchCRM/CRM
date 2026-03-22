@@ -177,7 +177,6 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 </div>
 
 <div class="row">
-<div class="row">
     <div class="col-lg-6">
         <div class="card card-info mb-3">
             <div class="card-header d-flex align-items-center">
@@ -222,7 +221,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                     <tr>
                         <th><?= gettext('Classification') ?></th>
                         <th>% <?= gettext('of People') ?></th>
-                        <th style="width: 40px"><?= gettext('Count') ?></th>
+                        <th class="text-end" style="width: 40px;"><?= gettext('Count') ?></th>
                     </tr>
                     <?php foreach (array_keys($classificationStats) as $key) {
                         ?>
@@ -257,7 +256,7 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                     <tr>
                         <th><?= gettext('Role / Gender') ?></th>
                         <th>% <?= gettext('of People') ?></th>
-                        <th style="width: 40px"><?= gettext('Count') ?></th>
+                        <th class="text-end" style="width: 40px;"><?= gettext('Count') ?></th>
                     </tr>
                     <?php
                     foreach (array_keys($familyRoleStats) as $key) {
@@ -288,11 +287,15 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
 
 
     <div class="col-lg-6">
-        <div class="card card-info">
+        <div class="card card-info mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-id-card-clip"></i> <?= gettext('Gender Demographics') ?></h3>
+                <div class="card-tools ms-auto">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
+                </div>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <table class="table table-sm table-hover">
                     <thead class="table-light">
                         <tr>
@@ -326,12 +329,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
                 </table>
             </div>
         </div>
-        <div class="card card-info">
+        <div class="card card-info mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-birthday-cake"></i> <?= gettext('Age Histogram') ?></h3>
+                <div class="card-tools ms-auto">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
+                </div>
             </div>
-            <div class="card-body" style="height: 400px">
-                <canvas id="age-stats-bar" style="height:250px"></canvas>
+            <div class="card-body">
+                <div id="age-stats-bar" style="min-height: 400px;"></div>
             </div>
         </div>
     </div>
@@ -344,51 +351,48 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
         var ageGroupLabels = <?= json_encode(array_keys($ageGroupStats)); ?>;
         var ageGroupValues = <?= json_encode(array_values($ageGroupStats)); ?>;
 
-        var ctx = document.getElementById("age-stats-bar").getContext('2d');
-        var AgeChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ageGroupLabels,
-                datasets: [
-                    {
-                        label: "Count",
-                        data: ageGroupValues,
-                        backgroundColor: "#3366ff",
-                        yAxisID: 'y'
-                    }
-                ]
+        var ageChartOptions = {
+            chart: {
+                type: 'bar',
+                height: 400,
+                toolbar: {
+                    show: true
+                }
             },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: true
-                    },
-                    title: {
-                        display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        display: true,
-                        ticks: {
-                            maxRotation: 45,
-                            minRotation: 45,
-                            font: {
-                                size: 10
-                            }
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            stepSize: 1
-                        }
+            plotOptions: {
+                bar: {
+                    borderRadius: 4,
+                    dataLabels: {
+                        position: 'top'
                     }
                 }
+            },
+            series: [
+                {
+                    name: "<?= gettext('Count') ?>",
+                    data: ageGroupValues
+                }
+            ],
+            xaxis: {
+                categories: ageGroupLabels,
+            },
+            yaxis: {
+                title: {
+                    text: "<?= gettext('Count') ?>"
+                },
+                forceNiceScale: true
+            },
+            colors: ['#3366ff'],
+            dataLabels: {
+                enabled: false
             }
-        });
+        };
+
+        var ageChartElement = document.getElementById("age-stats-bar");
+        if (ageChartElement && window.ApexCharts) {
+            var ageChart = new window.ApexCharts(ageChartElement, ageChartOptions);
+            ageChart.render();
+        }
     });
 </script>
 <?php

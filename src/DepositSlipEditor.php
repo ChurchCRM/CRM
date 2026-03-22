@@ -233,7 +233,7 @@ require_once __DIR__ . '/Include/Header.php';
         </button>
       </div>
       <div class="card-body" style="padding: 1rem 0.75rem 1rem 1.5rem;">
-        <canvas id="fund-bar"></canvas>
+        <div id="fund-bar"></div>
       </div>
     </div>
   </div>

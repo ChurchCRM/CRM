@@ -1,50 +1,77 @@
 /**
  * Sunday School Class View — webpack entry
- * Handles DataTable initialization, Chart.js birthday chart, and birthday filter.
+ * Handles DataTable initialization, ApexCharts birthday chart, and birthday filter.
  */
 
-import { Chart, BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from "chart.js";
+import ApexCharts from "apexcharts";
 import "./groups-sundayschool-class-view.css";
-
-Chart.register(BarController, BarElement, CategoryScale, LinearScale, Tooltip, Legend);
 
 document.addEventListener("DOMContentLoaded", () => {
   const dataTable = $(".data-table").DataTable(window.CRM.plugin.dataTable);
 
-  // Birthday chart — data stored in data-chart attribute on the canvas element
-  const canvas = /** @type {HTMLCanvasElement|null} */ (document.getElementById("bar-chart"));
-  if (!canvas) return;
+  // Birthday chart — data stored in data-chart attribute on the div element
+  const chartElement = document.getElementById("bar-chart");
+  if (!chartElement) return;
 
-  const barData = JSON.parse(canvas.dataset.chart || "[]");
+  const barData = JSON.parse(chartElement.dataset.chart || "[]");
   const barLabels = barData.map((d) => d[0]);
   const barValues = barData.map((d) => d[1]);
   const maxBarValue = barValues.length > 0 ? Math.max(...barValues) : 0;
 
-  const barChart = new Chart(canvas, {
-    type: "bar",
-    data: {
-      labels: barLabels,
-      datasets: [
-        {
-          label: canvas.dataset.chartLabel || "Birthdays by Month",
-          borderColor: "#3c8dbc",
-          backgroundColor: "#9ec5de",
-          borderWidth: 2,
-          data: barValues,
-        },
-      ],
-    },
-    options: {
-      scales: {
-        y: {
-          max: maxBarValue + 1,
-          beginAtZero: true,
-          ticks: { stepSize: 1 },
+  const barChartOptions = {
+    chart: {
+      type: "bar",
+      height: 300,
+      toolbar: {
+        show: false,
+      },
+      events: {
+        click: function (event, chartContext, opts) {
+          if (opts.dataPointIndex !== undefined) {
+            applyBirthdayFilter(barLabels[opts.dataPointIndex]);
+          }
         },
       },
     },
-  });
+    plotOptions: {
+      bar: {
+        borderRadius: 4,
+        dataLabels: {
+          position: "top",
+        },
+      },
+    },
+    series: [
+      {
+        name: chartElement.dataset.chartLabel || "Birthdays by Month",
+        data: barValues,
+      },
+    ],
+    xaxis: {
+      categories: barLabels,
+    },
+    yaxis: {
+      title: {
+        text: "<?= gettext('Count') ?>",
+      },
+      forceNiceScale: true,
+    },
+    colors: ["#9ec5de"],
+    dataLabels: {
+      enabled: false,
+    },
+    states: {
+      hover: {
+        filter: {
+          type: "darken",
+          value: 0.15,
+        },
+      },
+    },
+  };
 
+  const barChart = new ApexCharts(chartElement, barChartOptions);
+  barChart.render();
   window.barChart = barChart;
 
   // Birthday filter — click bar → filter DataTable by that month
@@ -53,21 +80,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!birthDayFilter || !monthLabel) return;
 
+  function applyBirthdayFilter(month) {
+    dataTable.column(0).search(month).draw();
+    birthDayFilter.classList.remove("d-none");
+    monthLabel.textContent = month;
+  }
+
   function hideBirthdayFilter() {
     dataTable.column(0).search("").draw();
     birthDayFilter.classList.add("d-none");
   }
 
   birthDayFilter.querySelector("i.fa-times")?.addEventListener("click", hideBirthdayFilter);
-
-  canvas.addEventListener("click", (event) => {
-    const points = barChart.getElementsAtEventForMode(event, "nearest", { intersect: true }, false);
-    if (points.length === 0) {
-      hideBirthdayFilter();
-      return;
-    }
-    const month = barLabels[points[0].index];
-    monthLabel.textContent = month;
-    birthDayFilter.classList.remove("d-none");
-  });
 });

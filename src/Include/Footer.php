@@ -90,7 +90,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/pdfmake.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/vfs_fonts.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/chartjs/chart.umd.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/select2/select2.full.min.js') ?>"></script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>

@@ -402,109 +402,134 @@ function initCharts(
 ) {
   // Funds Chart: Dynamic height based on number of funds
   // Minimum 120px for 1 fund, +40px for each additional fund
-  var fundHeight = Math.max(120, fundLabels.length * 40);
+  var fundHeight = Math.max(250, fundLabels.length * 40);
 
-  // Set canvas height
-  document.getElementById("fund-bar").style.height = fundHeight + "px";
+  // Convert rgba colors to hex for ApexCharts
+  function rgbaToHex(rgba) {
+    var match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/) || rgba.match(/^rgb?\((\d+),\s*(\d+),\s*(\d+)/);
+    if (match) {
+      var hex = function(x) {
+        return ("0" + parseInt(x).toString(16)).slice(-2);
+      };
+      return "#" + hex(match[1]) + hex(match[2]) + hex(match[3]);
+    }
+    return rgba;
+  }
 
-  var barOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    indexAxis: "y",
-    plugins: {
-      legend: {
-        display: false,
+  var fundColors = fundBackgroundColor.map(rgbaToHex);
+
+  // Funds Bar Chart using ApexCharts
+  var fundChartOptions = {
+    chart: {
+      type: "bar",
+      height: fundHeight,
+      toolbar: {
+        show: false,
       },
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            return "$" + context.parsed.x.toFixed(2);
-          },
+      events: {
+        click: function (event, chartContext, opts) {
+          if (opts.dataPointIndex !== undefined) {
+            var index = opts.dataPointIndex;
+            var fundName = fundLabels[index];
+
+            // Filter the DataTable by the clicked fund
+            dataT.search(fundName).draw();
+
+            // Show clear filter button
+            $("#clearFundFilter").fadeIn();
+
+            // Scroll to table
+            document.getElementById("paymentsTable").scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+
+            // Highlight the chart bar
+            highlightChartBar(fundChartInstance, index);
+          }
         },
       },
     },
-    scales: {
-      x: {
-        beginAtZero: true,
-        ticks: {
-          callback: function (value) {
-            return "$" + value.toLocaleString();
-          },
-        },
-      },
-      y: {
-        ticks: {
-          font: {
-            size: 11,
-          },
-        },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        barHeight: "70%",
+        borderRadius: 4,
+        distributed: true,
       },
     },
-    onClick: function (event, activeElements) {
-      if (activeElements.length > 0) {
-        var index = activeElements[0].index;
-        var fundName = fundLabels[index];
-
-        // Filter the DataTable by the clicked fund
-        dataT.search(fundName).draw();
-
-        // Show clear filter button
-        $("#clearFundFilter").fadeIn();
-
-        // Scroll to table
-        document.getElementById("paymentsTable").scrollIntoView({
-          behavior: "smooth",
-          block: "start",
+    series: [
+      {
+        name: i18next.t("Amount"),
+        data: fundChartData,
+      },
+    ],
+    colors: fundColors,
+    xaxis: {
+      categories: fundLabels,
+      tickFormatter: function (value) {
+        return "$" + parseFloat(value).toLocaleString("en-US", {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2,
         });
-
-        // Highlight the chart bar
-        highlightChartBar(fundChart, index);
-      }
+      },
     },
-    onHover: function (event, activeElements) {
-      event.native.target.style.cursor = activeElements.length > 0 ? "pointer" : "default";
+    yaxis: {
+      tickFormatter: function (value) {
+        return value;
+      },
+    },
+    tooltip: {
+      y: {
+        formatter: function (value) {
+          return "$" + parseFloat(value).toFixed(2);
+        },
+      },
+    },
+    states: {
+      hover: {
+        filter: {
+          type: "none",
+        },
+      },
     },
   };
 
-  // Funds Bar Chart
-  var ctx = document.getElementById("fund-bar").getContext("2d");
-  var fundChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: fundLabels,
-      datasets: [
-        {
-          label: i18next.t("Amount"),
-          data: fundChartData,
-          backgroundColor: fundBackgroundColor,
-          borderRadius: 4,
-          hoverBackgroundColor: fundBackgroundColor.map(function (color) {
-            // Darken the color on hover
-            return color.replace(")", ", 0.8)").replace("rgb", "rgba");
-          }),
-        },
-      ],
-    },
-    options: barOptions,
-  });
-
-  // Store chart reference and original colors globally
-  window.fundChartInstance = fundChart;
-  window.originalFundColors = fundBackgroundColor.slice(); // Clone array
+  var fundChartElement = document.getElementById("fund-bar");
+  if (fundChartElement) {
+    window.fundChartInstance = new window.ApexCharts(fundChartElement, fundChartOptions);
+    window.fundChartInstance.render();
+    window.originalFundColors = fundColors.slice(); // Clone array
+  }
 }
 
 // Helper function to highlight selected chart bar
 function highlightChartBar(chart, index) {
-  var originalColors = chart.data.datasets[0].backgroundColor;
+  if (!chart || !window.originalFundColors) return;
+
+  var originalColors = window.originalFundColors;
   var newColors = originalColors.map(function (color, i) {
-    return i === index ? color : color.replace(")", ", 0.3)").replace("rgb", "rgba");
+    if (i === index) {
+      return color;
+    }
+    // Convert hex to rgba with 0.3 opacity for dimming
+    var hex = color.replace("#", "");
+    var r = parseInt(hex.substring(0, 2), 16);
+    var g = parseInt(hex.substring(2, 4), 16);
+    var b = parseInt(hex.substring(4, 6), 16);
+    return "rgba(" + r + "," + g + "," + b + ", 0.3)";
   });
-  chart.data.datasets[0].backgroundColor = newColors;
-  chart.update();
+
+  // Update the chart with new colors
+  chart.updateOptions({
+    colors: newColors,
+  });
 
   // Reset colors after 3 seconds
   setTimeout(function () {
-    chart.data.datasets[0].backgroundColor = originalColors;
-    chart.update();
+    chart.updateOptions({
+      colors: originalColors,
+    });
   }, 3000);
 }
+

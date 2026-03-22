@@ -85,9 +85,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="card-body">
                     <div class="disableSelection">
-                        <canvas id="bar-chart"
+                        <div id="bar-chart"
                                 data-chart="<?= htmlspecialchars($birthDayMonthChartJSON, ENT_QUOTES) ?>"
-                                data-chart-label="<?= htmlspecialchars(gettext('Birthdays by Month'), ENT_QUOTES) ?>"></canvas>
+                                data-chart-label="<?= htmlspecialchars(gettext('Birthdays by Month'), ENT_QUOTES) ?>"></div>
                     </div>
                 </div>
             </div>

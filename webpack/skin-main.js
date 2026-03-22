@@ -13,6 +13,10 @@
 import $ from "jquery";
 window.jQuery = window.$ = $;
 
+// Import ApexCharts - Tabler-recommended charting library (replacing Chart.js)
+import ApexCharts from "apexcharts";
+window.ApexCharts = ApexCharts;
+
 // Import Tabler JS (Bootstrap 5 + Popper bundled) — replaces AdminLTE JS
 // Must come after jQuery so legacy jQuery plugins can still work
 import "@tabler/core";

@@ -10,6 +10,7 @@ module.exports = {
     'two-factor-enrollment': './react/two-factor-enrollment.tsx',
     churchcrm: './webpack/skin-main',
     'photo-uploader': './webpack/photo-uploader-entry',
+    'root-dashboard': './webpack/root-dashboard',
     setup: './webpack/setup',
     'family-register': './webpack/family-register',
     'family-verify': './webpack/family-verify',

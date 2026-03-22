@@ -1,9 +1,9 @@
 /**
  * Main Dashboard initialization script
- * Requires: moment.js (loaded globally), i18next, DataTables
+ * Requires: moment.js (loaded globally), i18next, DataTables, ApexCharts
  */
 
-function initializeMainDashboard() {
+export function initializeMainDashboard() {
   let dataTableDashboardDefaults = {
     paging: false,
     ordering: false,
@@ -564,48 +564,65 @@ function initializeMainDashboard() {
         return;
       }
 
-      let lineData = {
-        labels: [],
-        datasets: [
-          {
-            label: "Value",
-            data: [],
-          },
-        ],
-      };
+      let labels = [];
+      let values = [];
       $.each(lineDataRaw, function (i, val) {
-        lineData.labels.push(moment(val.Date).format("MM-DD-YY"));
-        lineData.datasets[0].data.push(val.totalAmount);
+        labels.push(moment(val.Date).format("MM-DD-YY"));
+        values.push(val.totalAmount);
       });
 
-      new Chart($("#deposit-lineGraph").get(0).getContext("2d"), {
-        type: "line",
-        data: lineData,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
+      const depositChartOptions = {
+        chart: {
+          type: "line",
+          height: 250,
+          sparkline: {
+            enabled: false,
+          },
+          toolbar: {
+            show: true,
+            tools: {
+              download: true,
+              selection: true,
+              zoom: true,
+              zoomin: true,
+              zoomout: true,
+              reset: true,
+            },
+          },
         },
-      });
+        series: [
+          {
+            name: i18next.t("Deposit Value"),
+            data: values,
+          },
+        ],
+        xaxis: {
+          categories: labels,
+        },
+        yaxis: {
+          title: {
+            text: i18next.t("Amount"),
+          },
+        },
+        stroke: {
+          curve: "smooth",
+          width: 2,
+        },
+        colors: ["#3366ff"],
+        grid: {
+          show: true,
+          borderColor: "#e0e0e0",
+        },
+      };
+
+      const depositChartElement = document.getElementById("deposit-lineGraph");
+      if (depositChartElement) {
+        const depositChart = new window.ApexCharts(depositChartElement, depositChartOptions);
+        depositChart.render();
+        window.depositChart = depositChart; // Store reference for potential updates
+      }
     });
   }
 
   // CartManager handles all cart button clicks generically via data-cart-id and data-cart-type attributes
 }
-
-// Wait for locales to load before initializing
-$(document).ready(function () {
-  window.CRM.onLocalesReady(initializeMainDashboard);
-
-  // Photo viewer click handlers
-  $(document).on("click", ".view-person-photo", function (e) {
-    var personId = $(e.currentTarget).data("person-id");
-    window.CRM.showPhotoLightbox("person", personId);
-    e.stopPropagation();
-  });
-
-  $(document).on("click", ".view-family-photo", function (e) {
-    var familyId = $(e.currentTarget).data("family-id");
-    window.CRM.showPhotoLightbox("family", familyId);
-    e.stopPropagation();
-  });
-});

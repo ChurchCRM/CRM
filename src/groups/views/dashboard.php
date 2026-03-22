@@ -23,63 +23,55 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="text-truncate">
-                                <h3 class="card-title text-primary">
-                                    <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                        <i class="fa-solid fa-users"></i>
-                                    </div>
-                                </h3>
-                                <div class="h6 text-muted"><?= gettext('Total Groups') ?></div>
-                                <div class="h2 m-0"><?= $totalGroups ?></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card card-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
+                                    <i class="fa-solid fa-users"></i>
+                                </div>
                             </div>
+                            <div class="h6 text-muted mb-2"><?= gettext('Total Groups') ?></div>
+                            <div class="h2 m-0"><?= $totalGroups ?></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="text-truncate">
-                                <h3 class="card-title text-success">
-                                    <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                        <i class="fa-solid fa-check-circle"></i>
-                                    </div>
-                                </h3>
-                                <div class="h6 text-muted"><?= gettext('Active Groups') ?></div>
-                                <div class="h2 m-0"><?= $activeGroups ?></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card card-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
+                                    <i class="fa-solid fa-check-circle"></i>
+                                </div>
                             </div>
+                            <div class="h6 text-muted mb-2"><?= gettext('Active Groups') ?></div>
+                            <div class="h2 m-0"><?= $activeGroups ?></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="text-truncate">
-                                <h3 class="card-title text-danger">
-                                    <div class="stat-icon bg-danger text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                        <i class="fa-solid fa-ban"></i>
-                                    </div>
-                                </h3>
-                                <div class="h6 text-muted"><?= gettext('Inactive Groups') ?></div>
-                                <div class="h2 m-0"><?= $inactiveGroups ?></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card card-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="stat-icon bg-danger text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
+                                    <i class="fa-solid fa-ban"></i>
+                                </div>
                             </div>
+                            <div class="h6 text-muted mb-2"><?= gettext('Inactive Groups') ?></div>
+                            <div class="h2 m-0"><?= $inactiveGroups ?></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-4 col-sm-6">
-                    <div class="card card-sm">
-                        <div class="card-body">
-                            <div class="text-truncate">
-                                <h3 class="card-title text-info">
-                                    <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
-                                        <i class="fa-solid fa-user-tie"></i>
-                                    </div>
-                                </h3>
-                                <div class="h6 text-muted"><?= gettext('Memberships') ?></div>
-                                <div class="h2 m-0"><?= $totalMemberships ?></div>
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                    <div class="card card-sm h-100">
+                        <div class="card-body d-flex flex-column">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
                             </div>
+                            <div class="h6 text-muted mb-2"><?= gettext('Memberships') ?></div>
+                            <div class="h2 m-0"><?= $totalMemberships ?></div>
                         </div>
                     </div>
                 </div>
