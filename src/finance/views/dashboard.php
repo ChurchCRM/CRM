@@ -131,71 +131,39 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                 </div>
             </div>
+            <div class="row mt-3">
+                <div class="col-12">
+                    <div class="btn-group flex-wrap" role="group">
+                        <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-outline-success" title="<?= gettext('Create a new deposit') ?>">
+                            <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Create Deposit') ?>
+                        </a>
+                        <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-outline-warning" title="<?= gettext('Add a new pledge') ?>">
+                            <i class="fa-solid fa-file-signature me-2"></i><?= gettext('Add Pledge') ?>
+                        </a>
+                        <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-outline-primary" title="<?= gettext('Add a payment to current deposit') ?>">
+                            <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Payment') ?>
+                        </a>
+                        <?php else: ?>
+                        <button type="button" class="btn btn-outline-secondary disabled" title="<?= gettext('Create or open a deposit first') ?>">
+                            <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Payment') ?>
+                        </button>
+                        <?php endif; ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/finance/reports" class="btn btn-outline-info" title="<?= gettext('Generate financial reports') ?>">
+                            <i class="fa-solid fa-file-invoice-dollar me-2"></i><?= gettext('Reports') ?>
+                        </a>
+                        <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="btn btn-outline-primary" title="<?= gettext('View pledge dashboard') ?>">
+                            <i class="fa-solid fa-handshake me-2"></i><?= gettext('Pledges') ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="row">
         <!-- Main Content Column -->
         <div class="col-lg-8">
-            <!-- Quick Actions -->
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-bolt"></i> <?= gettext('Quick Actions') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <!-- Create Deposit -->
-                        <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-lg btn-outline-success w-100 py-3">
-                                <i class="fa-solid fa-plus-circle fa-2x mb-2 d-block"></i>
-                                <?= gettext('Create Deposit') ?>
-                            </a>
-                        </div>
-                        
-                        <!-- Add Pledge -->
-                        <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-lg btn-outline-warning w-100 py-3">
-                                <i class="fa-solid fa-file-signature fa-2x mb-2 d-block"></i>
-                                <?= gettext('Add Pledge') ?>
-                            </a>
-                        </div>
-                        
-                        <!-- Add Payment -->
-                        <div class="col-md-3 mb-3">
-                            <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-lg btn-outline-primary w-100 py-3">
-                                <i class="fa-solid fa-hand-holding-dollar fa-2x mb-2 d-block"></i>
-                                <?= gettext('Add Payment') ?>
-                            </a>
-                            <?php else: ?>
-                            <button type="button" class="btn btn-lg btn-outline-secondary w-100 py-3" disabled title="<?= gettext('Create or open a deposit first') ?>">
-                                <i class="fa-solid fa-hand-holding-dollar fa-2x mb-2 d-block"></i>
-                                <?= gettext('Add Payment') ?>
-                            </button>
-                            <?php endif; ?>
-                        </div>
-                        
-                        <!-- Generate Reports -->
-                        <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/finance/reports" class="btn btn-lg btn-outline-info btn-block py-3">
-                                <i class="fa-solid fa-file-invoice-dollar fa-2x mb-2 d-block"></i>
-                                <?= gettext('Generate Reports') ?>
-                            </a>
-                        </div>
-
-                        <!-- Pledge Dashboard -->
-                        <div class="col-md-3 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="btn btn-lg btn-outline-primary btn-block py-3">
-                                <i class="fa-solid fa-handshake fa-2x mb-2 d-block"></i>
-                                <?= gettext('Pledge Dashboard') ?>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- Tax Year Checklist -->
             <div class="card finance-card shadow-sm border-0 mb-4">
                 <div class="card-header bg-warning py-2">
