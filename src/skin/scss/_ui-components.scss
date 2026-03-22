@@ -5,23 +5,6 @@
  * Only includes styles that are not available in the base frameworks.
  */
 
-// Enhanced btn-app buttons for dashboard actions
-.btn-app {
-  // AdminLTE provides base .btn-app styling, we only override what's needed
-  min-width: 100px;
-  min-height: 110px;
-  height: auto;
-  white-space: normal;
-  word-wrap: break-word;
-  padding: 15px 10px;
-
-  // Large icon styling with proper spacing
-  > .fa-3x {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-
 // Fix dropdown icon spacing for split buttons
 .dropdown-toggle.dropdown-icon::after {
   margin-left: 0;

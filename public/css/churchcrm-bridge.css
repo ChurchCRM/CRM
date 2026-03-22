@@ -58,43 +58,6 @@ body {
 .text-yellow,
 .text-warning  { color: var(--tblr-warning) !important; }
 
-/* --- AdminLTE .box → Tabler .card aliases ----------------------------- */
-.box {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: var(--tblr-card-bg, #fff);
-  background-clip: border-box;
-  border: 1px solid var(--tblr-border-color, rgba(98, 105, 118, 0.16));
-  border-radius: var(--tblr-border-radius, 4px);
-  box-shadow: var(--tblr-card-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.06));
-  margin-bottom: 1.5rem;
-}
-.box-header {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  background-color: transparent;
-  border-bottom: 1px solid var(--tblr-border-color, rgba(98, 105, 118, 0.16));
-}
-.box-header .box-title {
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.2;
-  margin: 0;
-}
-.box-body {
-  flex: 1 1 auto;
-  padding: 1rem;
-}
-.box-footer {
-  padding: 0.75rem 1rem;
-  background-color: transparent;
-  border-top: 1px solid var(--tblr-border-color, rgba(98, 105, 118, 0.16));
-}
-
 /* --- Glassmorphism topbar helper -------------------------------------- */
 .navbar-glass {
   backdrop-filter: blur(8px);
