@@ -51,7 +51,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                 (<?= date('M j, Y', strtotime($fyStartDate)) ?> - <?= date('M j, Y', strtotime($fyEndDate)) ?>)
             </p>
             <?php if ($isAdmin): ?>
-            <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#financialSettings" aria-expanded="false" aria-controls="financialSettings">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#financialSettings" aria-expanded="false" aria-controls="financialSettings">
                 <i class="fa-solid fa-cog"></i> <?= gettext('Financial Settings') ?>
             </button>
             <?php endif; ?>

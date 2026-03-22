@@ -124,7 +124,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- File Integrity -->
                     <div class="check-card">
-                        <div class="check-header" data-toggle="collapse" data-target="#integrity-collapse">
+                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#integrity-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-shield-alt check-icon"></i>
                                 <span>File Integrity</span>
@@ -140,7 +140,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Orphaned Files (hidden initially) -->
                     <div class="check-card" id="orphaned-files-section" style="display: none;">
-                        <div class="check-header check-header-warning" data-toggle="collapse" data-target="#orphaned-collapse">
+                        <div class="check-header check-header-warning" data-bs-toggle="collapse" data-bs-target="#orphaned-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-exclamation-triangle check-icon text-warning"></i>
                                 <span>Orphaned Files</span>
@@ -157,7 +157,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Locale Support -->
                     <div class="check-card">
-                        <div class="check-header" data-toggle="collapse" data-target="#locale-support-collapse">
+                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#locale-support-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-globe check-icon"></i>
                                 <span>Locale Support</span>
@@ -248,7 +248,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Advanced Settings (collapsed) -->
                     <div class="form-card mt-3 advanced-settings">
-                        <div class="advanced-header" data-toggle="collapse" data-target="#advanced-settings-collapse">
+                        <div class="advanced-header" data-bs-toggle="collapse" data-bs-target="#advanced-settings-collapse">
                             <i class="fa-solid fa-cog mr-2"></i>
                             <span>Advanced Settings</span>
                             <small class="text-muted ml-2">(auto-detected)</small>

@@ -126,29 +126,32 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
         </div>
         <div class="row mt-3">
             <div class="col-md-4">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="fa-solid fa-layer-group"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Type of Group') ?></span>
-                        <span class="info-box-number"><?= $sGroupType ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <div class="h6 text-muted"><?= gettext('Type of Group') ?></div>
+                            <div class="h3 m-0 text-success"><?= $sGroupType ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="info-box bg-info">
-                    <span class="info-box-icon"><i class="fa-solid fa-user-tag"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Default Role') ?></span>
-                        <span class="info-box-number"><?= $defaultRole !== null ? InputUtils::escapeHTML($defaultRole->getOptionName()) : gettext('None') ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <div class="h6 text-muted"><?= gettext('Default Role') ?></div>
+                            <div class="h3 m-0 text-info"><?= $defaultRole !== null ? InputUtils::escapeHTML($defaultRole->getOptionName()) : gettext('None') ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="info-box bg-primary">
-                    <span class="info-box-icon"><i class="fa-solid fa-users"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Total Members') ?></span>
-                        <span class="info-box-number" id="iTotalMembers"></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <div class="h6 text-muted"><?= gettext('Total Members') ?></div>
+                            <div class="h3 m-0 text-primary"><span id="iTotalMembers"></span></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,37 +160,31 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
             <div class="col-12">
                 <?php
                 if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
-                    <a class="btn btn-app bg-info" href="GroupEditor.php?GroupID=<?= $thisGroup->getId() ?>">
-                        <i class="fa-solid fa-pen fa-3x"></i><br>
-                        <?= gettext('Edit this Group') ?>
+                    <a class="btn btn-outline-info" href="GroupEditor.php?GroupID=<?= $thisGroup->getId() ?>" title="<?= gettext('Edit this Group') ?>">
+                        <i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?>
                     </a>
-                    <button class="btn btn-app bg-danger" id="deleteGroupButton">
-                        <i class="fa-solid fa-trash fa-3x"></i><br>
-                        <?= gettext('Delete this Group') ?>
+                    <button class="btn btn-outline-danger" id="deleteGroupButton" title="<?= gettext('Delete this Group') ?>">
+                        <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                     </button>
                     <?php
                     if ($thisGroup->getHasSpecialProps()) { ?>
-                        <a class="btn btn-app bg-purple" href="GroupPropsFormEditor.php?GroupID=<?= $thisGroup->getId() ?>">
-                            <i class="fa-solid fa-list-alt fa-3x"></i><br>
-                            <?= gettext('Edit Group-Specific Properties Form') ?>
+                        <a class="btn btn-outline-secondary" href="GroupPropsFormEditor.php?GroupID=<?= $thisGroup->getId() ?>" title="<?= gettext('Edit Group-Specific Properties Form') ?>">
+                            <i class="fa-solid fa-list-alt me-2"></i><?= gettext('Properties') ?>
                         </a>
                     <?php }
                 } ?>
-                <a class="btn btn-app bg-success" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>">
-                    <i class="fa-solid fa-users fa-3x"></i><br>
-                    <?= gettext('Add Group Members to Cart') ?>
+                <a class="btn btn-outline-success" id="AddGroupMembersToCart" data-groupid="<?= $thisGroup->getId() ?>" title="<?= gettext('Add Group Members to Cart') ?>">
+                    <i class="fa-solid fa-users me-2"></i><?= gettext('Add to Cart') ?>
                 </a>
-                <a class="btn btn-app bg-primary" href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=<?= $thisGroup->getId() ?>">
-                    <i class="fa-solid fa-map-marker fa-3x"></i><br>
-                    <?= gettext('Map this group') ?>
+                <a class="btn btn-outline-primary" href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=<?= $thisGroup->getId() ?>" title="<?= gettext('Map this group') ?>">
+                    <i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?>
                 </a>
                 <?php
                 // Email buttons
                 if ($sEmailLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
                     <div class="dropdown d-inline-block">
-                        <button class="btn btn-app bg-teal dropdown-toggle" type="button" id="emailGroupDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-solid fa-paper-plane fa-3x"></i><br>
-                            <?= gettext('Email Group') ?>
+                        <button class="btn btn-outline-info dropdown-toggle" type="button" id="emailGroupDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email Group') ?>">
+                            <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="emailGroupDropdown">
                             <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
@@ -195,9 +192,8 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                         </div>
                     </div>
                     <div class="dropdown d-inline-block">
-                        <button class="btn btn-app bg-navy dropdown-toggle" type="button" id="emailGroupBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-solid fa-user-secret fa-3x"></i><br>
-                            <?= gettext('Email (BCC)') ?>
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="emailGroupBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="<?= gettext('Email (BCC)') ?>">
+                            <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="emailGroupBccDropdown">
                             <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
@@ -207,9 +203,8 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                 <?php }
                 // Text button
                 if ($sPhoneLink && AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
-                    <a class="btn btn-app bg-orange" href="javascript:void(0)" onclick="allPhonesCommaD()">
-                        <i class="fa-solid fa-mobile-phone fa-3x"></i><br>
-                        <?= gettext('Text Group') ?>
+                    <a class="btn btn-outline-warning" href="javascript:void(0)" onclick="allPhonesCommaD()" title="<?= gettext('Text Group') ?>">
+                        <i class="fa-solid fa-mobile-phone me-2"></i><?= gettext('Text') ?>
                     </a>
                     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                         function allPhonesCommaD() {
@@ -418,7 +413,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
         <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
             <div class="btn-group">
                 <button type="button" id="addSelectedToCart" class="btn btn-success" disabled> <?= gettext('Add Selected Members to Cart') ?></button>
-                <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false" disabled>
+                <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" disabled>
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>

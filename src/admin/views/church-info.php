@@ -19,21 +19,21 @@ $validationError     = $validationError ?? '';
                 <ul class="nav nav-tabs" id="church-info-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" id="basic-tab"
-                           data-toggle="tab" href="#basic" role="tab"
+                           data-bs-toggle="tab" href="#basic" role="tab"
                            aria-controls="basic" aria-selected="true">
                             <i class="fa-solid fa-church mr-1"></i><?= gettext('Basic Information') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="location-tab"
-                           data-toggle="tab" href="#location" role="tab"
+                           data-bs-toggle="tab" href="#location" role="tab"
                            aria-controls="location" aria-selected="false">
                             <i class="fa-solid fa-map mr-1"></i><?= gettext('Location & Map') ?>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="display-tab"
-                           data-toggle="tab" href="#display" role="tab"
+                           data-bs-toggle="tab" href="#display" role="tab"
                            aria-controls="display" aria-selected="false">
                             <i class="fa-solid fa-desktop mr-1"></i><?= gettext('Display Preview') ?>
                         </a>

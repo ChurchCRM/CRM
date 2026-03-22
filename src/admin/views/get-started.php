@@ -100,7 +100,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
         <?php if ($isMailChimpActive): ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard"
                class="gs-plugin-badge"
-               data-toggle="tooltip"
+               data-bs-toggle="tooltip"
                title="<?= gettext('Import contacts from your MailChimp audiences') ?>">
                 <i class="fa-brands fa-mailchimp text-warning"></i>
                 MailChimp
@@ -109,7 +109,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
         <?php else: ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"
                class="gs-plugin-badge"
-               data-toggle="tooltip"
+               data-bs-toggle="tooltip"
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
                 <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
                 MailChimp
@@ -119,7 +119,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
         <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"
            class="gs-plugin-badge"
-           data-toggle="tooltip"
+           data-bs-toggle="tooltip"
            title="<?= gettext('Browse all available plugins') ?>">
             <i class="fa-solid fa-grid-2 text-muted"></i>
             <?= gettext('Browse all plugins') ?>

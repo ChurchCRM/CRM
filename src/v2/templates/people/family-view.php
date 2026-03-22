@@ -71,7 +71,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                             <i class="fa-solid fa-camera"></i>
                         </a>
                         <?php if ($family->getPhoto()->hasUploadedPhoto()) : ?>
-                        <a href="#" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                        <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                         <?php endif; ?>

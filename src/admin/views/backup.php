@@ -27,35 +27,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <div class="row">
             <div class="col-md-4">
-                <div class="info-box bg-light">
-                    <span class="info-box-icon bg-info"><i class="fa-solid fa-calendar-check"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Regular Backups') ?></span>
-                        <span class="info-box-number text-muted" style="font-size: 0.9rem; font-weight: normal;">
-                            <?= gettext('Make a backup at least once a week unless you have automated backups.') ?>
-                        </span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-info"><i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Regular Backups') ?></h3>
+                        <p class="text-muted"><?= gettext('Make a backup at least once a week unless you have automated backups.') ?></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="info-box bg-light">
-                    <span class="info-box-icon bg-warning"><i class="fa-solid fa-copy"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Multiple Copies') ?></span>
-                        <span class="info-box-number text-muted" style="font-size: 0.9rem; font-weight: normal;">
-                            <?= gettext('Keep one copy in a fire-proof safe on-site and another off-site.') ?>
-                        </span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-warning"><i class="fa-solid fa-copy me-2"></i><?= gettext('Multiple Copies') ?></h3>
+                        <p class="text-muted"><?= gettext('Keep one copy in a fire-proof safe on-site and another off-site.') ?></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="info-box bg-light">
-                    <span class="info-box-icon bg-danger"><i class="fa-solid fa-lock"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Encryption') ?></span>
-                        <span class="info-box-number text-muted" style="font-size: 0.9rem; font-weight: normal;">
-                            <?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?>
-                        </span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <h3 class="card-title text-danger"><i class="fa-solid fa-lock me-2"></i><?= gettext('Encryption') ?></h3>
+                        <p class="text-muted"><?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?></p>
                     </div>
                 </div>
             </div>

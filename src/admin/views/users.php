@@ -76,7 +76,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                 <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
                     <i class="fa-solid fa-cog mr-1"></i><?= gettext('User Settings') ?>
                 </a>
-                <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#userSettingsPanel" aria-expanded="false">
+                <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#userSettingsPanel" aria-expanded="false">
                     <i class="fa-solid fa-sliders mr-1"></i><?= gettext('Quick Settings') ?>
                 </button>
             </div>
@@ -136,7 +136,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                             </td>
                             <td class="text-center">
                                 <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fa-solid fa-ellipsis-v"></i>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-right">

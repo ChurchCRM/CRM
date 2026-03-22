@@ -156,7 +156,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <?php if (count($missingFiles) > 0): ?>
                         <h6 class="mb-2">
-                            <a href="#collapseMissingFilesCard" data-toggle="collapse" class="text-danger text-decoration-none">
+                            <a href="#collapseMissingFilesCard" data-bs-toggle="collapse" class="text-danger text-decoration-none">
                                 <i class="fa fa-times-circle mr-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
                                 <i class="fa fa-chevron-down ml-2"></i>
                             </a>
@@ -320,7 +320,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card mt-3">
                                             <div class="card-header" id="headingModifiedFiles">
                                                 <h6 class="mb-0">
-                                                    <button class="btn btn-link text-warning collapsed" type="button" data-toggle="collapse" 
+                                                    <button class="btn btn-link text-warning collapsed" type="button" data-bs-toggle="collapse" 
                                                             data-target="#collapseModifiedFiles" aria-expanded="false" 
                                                             aria-controls="collapseModifiedFiles">
                                                         <i class="fa fa-edit mr-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
@@ -370,7 +370,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <div class="card mt-3">
                                     <div class="card-header bg-danger text-white" id="headingOrphanedFiles">
                                         <h6 class="mb-0">
-                                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" 
+                                            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" 
                                                     data-target="#collapseOrphanedFiles" aria-expanded="false" 
                                                     aria-controls="collapseOrphanedFiles">
                                                 <i class="fa fa-trash mr-2"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)

@@ -110,7 +110,7 @@ if (isset($_POST['PrintReport'])) {
 
 ?>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
 <button type="submit" class="btn btn-secondary" name="PrintReport"><i class="fa-solid fa-print"></i></button>
 
 <br><br>

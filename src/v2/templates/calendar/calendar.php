@@ -21,10 +21,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header p-0 border-bottom-0">
                 <ul class="nav nav-tabs" id="custom-tabs-four-tab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" id="userCalendars-tab" data-toggle="pill" href="#userCalendars" role="tab" aria-controls="userCalendars" aria-selected="true"><?= _("User") ?></a>
+                        <a class="nav-link active" id="userCalendars-tab" data-bs-toggle="pill" href="#userCalendars" role="tab" aria-controls="userCalendars" aria-selected="true"><?= _("User") ?></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="systemCalendars-tab" data-toggle="pill" href="#systemCalendars" role="tab" aria-controls="systemCalendars" aria-selected="false"><?= _("System") ?></a>
+                        <a class="nav-link" id="systemCalendars-tab" data-bs-toggle="pill" href="#systemCalendars" role="tab" aria-controls="systemCalendars" aria-selected="false"><?= _("System") ?></a>
                     </li>
                 </ul>
             </div>

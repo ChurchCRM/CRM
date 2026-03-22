@@ -15,78 +15,111 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <div class="row">
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-secondary">
-                    <span class="info-box-icon"><i class="fa-solid fa-chalkboard"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Classes') ?></span>
-                        <span class="info-box-number"><?= $classes ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-secondary">
+                                <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-chalkboard"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Classes') ?></div>
+                            <div class="h2 m-0"><?= $classes ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="fa-solid fa-person-chalkboard"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Teachers') ?></span>
-                        <span class="info-box-number"><?= $teachers ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-success">
+                                <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-person-chalkboard"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Teachers') ?></div>
+                            <div class="h2 m-0"><?= $teachers ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-primary">
-                    <span class="info-box-icon"><i class="fa-solid fa-children"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Students') ?></span>
-                        <span class="info-box-number"><?= $kids ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-primary">
+                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-children"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Students') ?></div>
+                            <div class="h2 m-0"><?= $kids ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-info">
-                    <span class="info-box-icon"><i class="fa-solid fa-people-roof"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Families') ?></span>
-                        <span class="info-box-number"><?= $families ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-info">
+                                <div class="stat-icon bg-info text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-people-roof"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Families') ?></div>
+                            <div class="h2 m-0"><?= $families ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-primary">
-                    <span class="info-box-icon"><i class="fa-solid fa-child"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Boys') ?></span>
-                        <span class="info-box-number"><?= $maleKids ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-primary">
+                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-child"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Boys') ?></div>
+                            <div class="h2 m-0"><?= $maleKids ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-danger">
-                    <span class="info-box-icon"><i class="fa-solid fa-child-dress"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Girls') ?></span>
-                        <span class="info-box-number"><?= $femaleKids ?></span>
+                <div class="card card-sm">
+                    <div class="card-body">
+                        <div class="text-truncate">
+                            <h3 class="card-title text-danger">
+                                <div class="stat-icon bg-danger text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                                    <i class="fa-solid fa-child-dress"></i>
+                                </div>
+                            </h3>
+                            <div class="h6 text-muted"><?= gettext('Girls') ?></div>
+                            <div class="h2 m-0"><?= $femaleKids ?></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-12">
-                <?php if ($canManageGroups) { ?>
-                    <button class="btn btn-app bg-success" data-toggle="modal" data-target="#add-class">
-                        <i class="fa-solid fa-plus-square fa-3x"></i><br>
-                        <?= gettext('Add New') . ' ' . gettext('Class') ?>
-                    </button>
-                <?php } ?>
-                <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-app bg-primary"
-                   title="<?= gettext('Generate class lists and attendance sheets') ?>">
-                    <i class="fa-solid fa-file-pdf fa-3x"></i><br>
-                    <?= gettext('Reports') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-app bg-info"
-                   title="<?= gettext('Export All Classes, Kids, and Parent to CSV file') ?>">
-                    <i class="fa-solid fa-file-csv fa-3x"></i><br>
-                    <?= gettext('Export to CSV') ?>
-                </a>
+                <div class="btn-group" role="group">
+                    <?php if ($canManageGroups) { ?>
+                        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#add-class" title="<?= gettext('Add New Class') ?>">
+                            <i class="fa-solid fa-plus me-2"></i><?= gettext('Add New Class') ?>
+                        </button>
+                    <?php } ?>
+                    <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary" title="<?= gettext('Generate class lists and attendance sheets') ?>">
+                        <i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Reports') ?>
+                    </a>
+                    <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info" title="<?= gettext('Export All Classes, Kids, and Parent to CSV file') ?>">
+                        <i class="fa-solid fa-file-csv me-2"></i><?= gettext('Export to CSV') ?>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -203,9 +236,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
-                    <button type="button" id="addNewClassBtn" class="btn btn-primary"
-                            data-dismiss="modal"><?= gettext('Add') ?></button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                        <button type="button" id="addNewClassBtn" class="btn btn-primary"
+                            data-bs-dismiss="modal"><?= gettext('Add') ?></button>
                 </div>
             </div>
         </div>

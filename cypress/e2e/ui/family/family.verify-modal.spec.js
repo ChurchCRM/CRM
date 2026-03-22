@@ -50,7 +50,7 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display email PDF button when SMTP configured and emails present", () => {
-        cy.get('a[data-toggle="modal"][data-target="#confirm-verify"]').click();
+        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
         cy.get("#confirm-verify").should("be.visible");
         
         // Email buttons should be visible for families with emails

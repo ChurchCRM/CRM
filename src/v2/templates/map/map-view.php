@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <i class="fa-solid fa-globe"></i> <?= gettext('Family Geographic') ?>
             </a>
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-            <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="collapse" data-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
+            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#mapAdminSettings" aria-expanded="false" aria-controls="mapAdminSettings">
                 <i class="fa-solid fa-cog"></i> <?= gettext('Map Settings') ?>
             </button>
             <?php endif; ?>
