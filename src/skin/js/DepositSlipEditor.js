@@ -408,7 +408,7 @@ function initCharts(
   function rgbaToHex(rgba) {
     var match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/) || rgba.match(/^rgb?\((\d+),\s*(\d+),\s*(\d+)/);
     if (match) {
-      var hex = function(x) {
+      var hex = function (x) {
         return ("0" + parseInt(x).toString(16)).slice(-2);
       };
       return "#" + hex(match[1]) + hex(match[2]) + hex(match[3]);
@@ -468,10 +468,13 @@ function initCharts(
     xaxis: {
       categories: fundLabels,
       tickFormatter: function (value) {
-        return "$" + parseFloat(value).toLocaleString("en-US", {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        });
+        return (
+          "$" +
+          parseFloat(value).toLocaleString("en-US", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })
+        );
       },
     },
     yaxis: {
@@ -532,4 +535,3 @@ function highlightChartBar(chart, index) {
     });
   }, 3000);
 }
-

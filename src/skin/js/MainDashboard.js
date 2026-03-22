@@ -13,16 +13,16 @@ export function initializeMainDashboard() {
     } else if (parts.length === 1) {
       initials = parts[0].substring(0, 2).toUpperCase();
     }
-    
+
     // Deterministic color based on name
     const colors = ["#667eea", "#764ba2", "#f093fb", "#4facfe", "#00f2fe", "#43e97b", "#fa709a", "#fee140"];
     const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const color = colors[hash % colors.length];
-    
+
     const dataAttr = type === "person" ? `data-person-id="${id}"` : `data-family-id="${id}"`;
     const viewClass = type === "person" ? "view-person-photo" : "view-family-photo";
-    
-    return `<span class="avatar avatar-sm rounded-circle ${viewClass}" ${dataAttr} style="background-color: ${color}; cursor: pointer;" title="${i18next.t('View Photo')}"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
+
+    return `<span class="avatar avatar-sm rounded-circle ${viewClass}" ${dataAttr} style="background-color: ${color}; cursor: pointer;" title="${i18next.t("View Photo")}"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
   }
 
   let dataTableDashboardDefaults = {
@@ -73,12 +73,15 @@ export function initializeMainDashboard() {
         // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = "";
         if (row.HasPhoto) {
-          photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' + row.FamilyId + '" alt="" />';
+          photoIcon =
+            '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' +
+            row.FamilyId +
+            '" alt="" />';
         } else {
           photoIcon = generateTablerAvatar(row.Name, row.FamilyId, "family");
         }
         photoIcon += " ";
-        
+
         // Render status badge only for inactive families
         let statusHtml = "";
         if (row.StatusText && row.IsActive === false) {
@@ -214,7 +217,10 @@ export function initializeMainDashboard() {
           // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = "";
           if (row.HasPhoto) {
-            photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' + row.PersonId + '" alt="" />';
+            photoIcon =
+              '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' +
+              row.PersonId +
+              '" alt="" />';
           } else {
             photoIcon = generateTablerAvatar(row.FormattedName, row.PersonId, "person");
           }
@@ -308,7 +314,10 @@ export function initializeMainDashboard() {
           // Show photo if available, otherwise show Tabler avatar with initials
           var photoIcon = "";
           if (row.HasPhoto) {
-            photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' + row.FamilyId + '" alt="" />';
+            photoIcon =
+              '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' +
+              row.FamilyId +
+              '" alt="" />';
           } else {
             photoIcon = generateTablerAvatar(data, row.FamilyId, "family");
           }
@@ -427,7 +436,10 @@ export function initializeMainDashboard() {
         // Show photo if available, otherwise show Tabler avatar with initials
         var photoIcon = "";
         if (row.HasPhoto) {
-          photoIcon = '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' + row.PersonId + '" alt="" />';
+          photoIcon =
+            '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' +
+            row.PersonId +
+            '" alt="" />';
         } else {
           photoIcon = generateTablerAvatar(row.FirstName + " " + row.LastName, row.PersonId, "person");
         }
