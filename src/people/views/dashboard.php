@@ -34,7 +34,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-user icon"></i>
+                                <i class="fa-solid fa-people-group icon"></i>
                             </span>
                         </div>
                         <div class="col">

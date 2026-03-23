@@ -30,7 +30,7 @@ function initializeApp() {
 
     var groupIcons = {
       Persons: "ti-user",
-      Families: "ti-users",
+      Families: "ti-home",
       Groups: "ti-users-group",
       Addresses: "ti-map-pin",
       "Finance Deposits": "ti-building-bank",

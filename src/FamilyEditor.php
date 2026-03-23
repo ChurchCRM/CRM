@@ -979,7 +979,7 @@ require_once __DIR__ . '/Include/Header.php';
     <a href="#" class="fab-button fab-save-add" aria-label="<?= gettext('Save and Add New Family') ?>" onclick="document.getElementById('FamilySubmitAndAddButton').click(); return false;">
         <span class="fab-label"><?= gettext('Save and Add New Family') ?></span>
         <div class="fab-icon">
-            <i class="fa-solid fa-users-rectangle"></i>
+            <i class="fa-solid fa-people-roof"></i>
         </div>
     </a>
     <?php } ?>

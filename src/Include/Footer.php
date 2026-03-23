@@ -53,13 +53,13 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="fab-button fab-person">
       <span class="fab-label" id="fab-person-label"></span>
       <div class="fab-icon">
-        <i class="fa-duotone fa-solid fa-user"></i>
+        <i class="fa-solid fa-person-half-dress"></i>
       </div>
     </a>
     <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="fab-button fab-family">
       <span class="fab-label" id="fab-family-label"></span>
       <div class="fab-icon">
-        <i class="fa-duotone fa-solid fa-house-user"></i>
+        <i class="fa-solid fa-people-roof"></i>
       </div>
     </a>
   </div>

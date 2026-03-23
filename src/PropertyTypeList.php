@@ -48,10 +48,10 @@ require_once __DIR__ . '/Include/Header.php';
                         <i class="fa-solid fa-list me-1"></i><?= gettext('All') ?>
                     </a>
                     <a href="PropertyTypeList.php?class=p" class="btn btn-outline-secondary <?= $filterClass === 'p' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-user me-1"></i><?= gettext('Person') ?>
+                        <i class="fa-solid fa-person-half-dress me-1"></i><?= gettext('Person') ?>
                     </a>
                     <a href="PropertyTypeList.php?class=f" class="btn btn-outline-secondary <?= $filterClass === 'f' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-users me-1"></i><?= gettext('Family') ?>
+                        <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family') ?>
                     </a>
                     <a href="PropertyTypeList.php?class=g" class="btn btn-outline-secondary <?= $filterClass === 'g' ? 'active' : '' ?>">
                         <i class="fa-solid fa-user-group me-1"></i><?= gettext('Group') ?>
@@ -65,10 +65,10 @@ require_once __DIR__ . '/Include/Header.php';
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="PropertyList.php?Type=p">
-                            <i class="fa-solid fa-user me-2"></i><?= gettext('Person Properties') ?>
+                            <i class="fa-solid fa-person-half-dress me-2"></i><?= gettext('Person Properties') ?>
                         </a>
                         <a class="dropdown-item" href="PropertyList.php?Type=f">
-                            <i class="fa-solid fa-users me-2"></i><?= gettext('Family Properties') ?>
+                            <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Family Properties') ?>
                         </a>
                         <a class="dropdown-item" href="PropertyList.php?Type=g">
                             <i class="fa-solid fa-user-group me-2"></i><?= gettext('Group Properties') ?>
@@ -114,10 +114,10 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php
                         switch ($prt_Class) {
                             case 'p':
-                                echo '<span class="badge bg-info"><i class="fa-solid fa-user me-1"></i>' . gettext('Person') . '</span>';
+                                echo '<span class="badge bg-info"><i class="fa-solid fa-person-half-dress me-1"></i>' . gettext('Person') . '</span>';
                                 break;
                             case 'f':
-                                echo '<span class="badge bg-success"><i class="fa-solid fa-users me-1"></i>' . gettext('Family') . '</span>';
+                                echo '<span class="badge bg-success"><i class="fa-solid fa-people-roof me-1"></i>' . gettext('Family') . '</span>';
                                 break;
                             case 'g':
                                 echo '<span class="badge bg-primary"><i class="fa-solid fa-user-group me-1"></i>' . gettext('Group') . '</span>';

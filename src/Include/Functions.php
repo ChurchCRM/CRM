@@ -536,7 +536,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             echo '<div class="input-group">';
             echo '<div class="input-group-prepend">';
-            echo '<span class="input-group-text"><i class="fa-solid fa-user"></i></span>';
+            echo '<span class="input-group-text"><i class="fa-solid fa-person-half-dress"></i></span>';
             echo '</div>';
             echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
             echo '<option value="0"';

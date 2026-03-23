@@ -460,7 +460,7 @@ $bOkToEdit = (
                         $displayIcon ="fa-solid fa-tag";
                         $displayLink ="";
                         if ($type_ID == 9) {
-                            $displayIcon ="fa-solid fa-user";
+                            $displayIcon ="fa-solid fa-person-half-dress";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
                         } elseif ($type_ID == 11) {
                             $custom_Special = null;

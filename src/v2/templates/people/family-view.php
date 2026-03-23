@@ -83,7 +83,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         <i class="fa-solid fa-circle"></i> <?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                     </span>
                     <span class="badge bg-info me-1">
-                        <i class="fa-solid fa-users"></i> <?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?>
+                        <i class="fa-solid fa-person-half-dress"></i> <?= $memberCount ?> <?= $memberCount == 1 ? gettext('Member') : gettext('Members') ?>
                     </span>
                     <?php if ($family->getEnvelope()) { ?>
                         <span class="badge bg-primary">
