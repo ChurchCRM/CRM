@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-secondary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-people-roof"></i>
+                            <i class="fa-solid fa-people-roof icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-success text-white avatar rounded-circle">
-                            <i class="fa-solid fa-user"></i>
+                            <i class="fa-solid fa-user icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -49,7 +49,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-primary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-users"></i>
+                            <i class="fa-solid fa-users icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-warning text-white avatar rounded-circle">
-                            <i class="fa-solid fa-child"></i>
+                            <i class="fa-solid fa-child icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-info text-white avatar rounded-circle">
-                            <i class="fa-regular fa-calendar-check"></i>
+                            <i class="fa-regular fa-calendar-check icon"></i>
                         </span>
                     </div>
                     <div class="col">
