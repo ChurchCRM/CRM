@@ -60,7 +60,7 @@ export function initializeMainDashboard() {
     className: "no-export",
     render: function (data, type, row) {
       return (
-        '<div class="dropdown" onclick="event.stopPropagation();">' +
+        '<div class="dropdown">' +
         '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
         '<i class="ti ti-dots-vertical"></i>' +
         "</button>" +
@@ -69,7 +69,7 @@ export function initializeMainDashboard() {
         window.CRM.root +
         "/FamilyEditor.php?FamilyID=" +
         row.FamilyId +
-        '" onclick="event.stopPropagation();">' +
+        '">' +
         '<i class="ti ti-pencil me-2"></i>' +
         i18next.t("Edit") +
         "</a>" +
@@ -80,7 +80,7 @@ export function initializeMainDashboard() {
         i18next.t("Add to Cart") +
         '" data-label-remove="' +
         i18next.t("Remove from Cart") +
-        '" onclick="event.stopPropagation();">' +
+        '">' +
         '<i class="ti ti-shopping-cart-plus me-2"></i>' +
         '<span class="cart-label">' +
         i18next.t("Add to Cart") +
@@ -438,7 +438,7 @@ export function initializeMainDashboard() {
     className: "no-export",
     render: function (data, type, row) {
       return (
-        '<div class="dropdown" onclick="event.stopPropagation();">' +
+        '<div class="dropdown">' +
         '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
         '<i class="ti ti-dots-vertical"></i>' +
         "</button>" +
@@ -447,7 +447,7 @@ export function initializeMainDashboard() {
         window.CRM.root +
         "/PersonEditor.php?PersonID=" +
         row.PersonId +
-        '" onclick="event.stopPropagation();">' +
+        '">' +
         '<i class="ti ti-pencil me-2"></i>' +
         i18next.t("Edit") +
         "</a>" +
@@ -458,7 +458,7 @@ export function initializeMainDashboard() {
         i18next.t("Add to Cart") +
         '" data-label-remove="' +
         i18next.t("Remove from Cart") +
-        '" onclick="event.stopPropagation();">' +
+        '">' +
         '<i class="ti ti-shopping-cart-plus me-2"></i>' +
         '<span class="cart-label">' +
         i18next.t("Add to Cart") +
