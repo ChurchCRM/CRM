@@ -28,28 +28,6 @@
 
 .avatar-title { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: 700; }
 
-/* Compatibility aliases for legacy classes used across the repo */
-.user-image,
-.img-circle,
-.rounded-circle,
-.photo-base,
-.profile-user-img,
-.person-thumbnail {
-  border-radius: 50%;
-  object-fit: cover;
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-  background-color: var(--tblr-gray-100, #f8f9fa);
-}
-
-/* Legacy sizing helpers mapped to new avatar sizes */
-.photo-profile { width: 200px; height: 200px; }
-.photo-tiny    { width: 40px;  height: 40px; }
-.photo-small   { width: 85px;  height: 85px; }
-.photo-medium  { width: 100px; height: 100px; }
-.photo-large   { width: 200px; height: 200px; }
-
 .avatar-placeholder {
   display: inline-flex;
   align-items: center;
@@ -62,6 +40,14 @@
 .initials-text { user-select: none; }
 
 @media (max-width: 768px) {
-  .photo-large,
-  .photo-profile { width: 150px; height: 150px; }
+  .avatar-lg,
+  .avatar-xlg { width: 150px; height: 150px; }
+}
+
+/* Responsive typography for avatar titles to match reduced avatar sizes */
+@media (max-width: 768px) {
+  .avatar-lg .avatar-title,
+  .avatar-xlg .avatar-title { font-size: 1rem; }
+  .avatar-md .avatar-title { font-size: 0.9rem; }
+  .avatar-sm .avatar-title { font-size: 0.8rem; }
 }

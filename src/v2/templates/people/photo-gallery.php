@@ -104,8 +104,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                              loading="lazy">
                                     <?php else: ?>
                                         <!-- Avatar placeholder using initials -->
-                                        <div class="avatar-placeholder rounded d-flex align-items-center justify-content-center"
-                                             data-person-id="<?= $person->getId() ?>">
+                                        <div class="avatar avatar-md avatar-placeholder rounded d-flex align-items-center justify-content-center"
+                                            data-person-id="<?= $person->getId() ?>">
                                             <span class="initials-text">
                                                 <?= InputUtils::escapeHTML(
                                                     mb_strtoupper(

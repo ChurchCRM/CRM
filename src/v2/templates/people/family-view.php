@@ -58,7 +58,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <div class="image-container d-inline-block">
                     <img data-image-entity-type="family" 
                          data-image-entity-id="<?= $family->getId() ?>" 
-                         class="<?= $family->getPhoto()->hasUploadedPhoto() ? 'img-fluid rounded' : 'photo-large' ?> mb-2"
+                         class="<?= $family->getPhoto()->hasUploadedPhoto() ? 'img-fluid rounded' : 'avatar avatar-lg photo-large' ?> mb-2"
                          style="<?= $family->getPhoto()->hasUploadedPhoto() ? 'max-width: 100%; max-height: 300px;' : '' ?>"/>
                 </div>
                 <div class="photo-actions">
@@ -475,7 +475,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                             <div class="card-body box-profile">
                                 <div class="text-center">
                                     <a href="<?= $person->getViewURI()?>" ?>
-                                        <img class="photo-medium"
+                                        <img class="avatar avatar-md photo-medium"
                                              data-image-entity-type="person" 
                                              data-image-entity-id="<?= $person->getId() ?>">
                                         <h3 class="profile-username"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>

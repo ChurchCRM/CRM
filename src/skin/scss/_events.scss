@@ -153,7 +153,10 @@
     }
   }
 
-  .photo-medium {
+  /* Use avatar size tokens instead of legacy photo-medium */
+  img.photo-medium,
+  img.avatar-md,
+  .avatar-md {
     max-width: 130px;
     max-height: 130px;
     object-fit: cover;
