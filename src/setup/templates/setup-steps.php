@@ -68,7 +68,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Server Environment (Always visible) -->
                     <div class="check-card">
-                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#server-env-details">
+                        <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#server-env-details">
                             <div class="check-title">
                                 <i class="fa-solid fa-server check-icon"></i>
                                 <span>Server Environment</span>
@@ -92,7 +92,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- PHP Extensions -->
                     <div class="check-card">
-                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#php-extensions-collapse">
+                        <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#php-extensions-collapse">
                             <div class="check-title">
                                 <i class="fa-brands fa-php check-icon"></i>
                                 <span>PHP Extensions</span>
@@ -108,7 +108,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- File Permissions -->
                     <div class="check-card">
-                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#filesystem-collapse">
+                        <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#filesystem-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-folder-open check-icon"></i>
                                 <span>File Permissions</span>
@@ -124,7 +124,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- File Integrity -->
                     <div class="check-card">
-                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#integrity-collapse">
+                        <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#integrity-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-shield-alt check-icon"></i>
                                 <span>File Integrity</span>
@@ -140,7 +140,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Orphaned Files (hidden initially) -->
                     <div class="check-card" id="orphaned-files-section" style="display: none;">
-                        <div class="check-header check-header-warning" data-bs-toggle="collapse" data-bs-target="#orphaned-collapse">
+                        <div class="check-header check-header-warning user-select-none" data-bs-toggle="collapse" data-bs-target="#orphaned-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-exclamation-triangle check-icon text-warning"></i>
                                 <span>Orphaned Files</span>
@@ -157,7 +157,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Locale Support -->
                     <div class="check-card">
-                        <div class="check-header" data-bs-toggle="collapse" data-bs-target="#locale-support-collapse">
+                        <div class="check-header user-select-none" data-bs-toggle="collapse" data-bs-target="#locale-support-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-globe check-icon"></i>
                                 <span>Locale Support</span>

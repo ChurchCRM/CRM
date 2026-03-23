@@ -148,7 +148,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         <!-- Member card template (hidden, cloned for each member) -->
                         <template id="member-card-template">
                             <div class="member-card" data-member-index="">
-                                <div class="card-header member-card-header-clickable">
+                                <div class="card-header member-card-header-clickable user-select-none">
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="d-flex align-items-center flex-grow-1">
                                             <button type="button" class="btn btn-link member-toggle-btn p-0 me-2">

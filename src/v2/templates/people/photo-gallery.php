@@ -106,7 +106,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <!-- Avatar placeholder using initials -->
                                         <div class="avatar avatar-md avatar-placeholder rounded d-flex align-items-center justify-content-center"
                                             data-person-id="<?= $person->getId() ?>">
-                                            <span class="initials-text">
+                                            <span class="initials-text user-select-none">
                                                 <?= InputUtils::escapeHTML(
                                                     mb_strtoupper(
                                                         mb_substr($person->getFirstName() ?? '', 0, 1) . 

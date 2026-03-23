@@ -49,7 +49,7 @@
   font-weight: 700;
 }
 
-.initials-text { user-select: none; }
+/* Use Bootstrap utility `user-select-none` on markup instead of CSS override */
 
 @media (max-width: 768px) {
   .avatar-lg,

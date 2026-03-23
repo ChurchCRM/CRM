@@ -132,7 +132,6 @@
             accent-color: #27ae60;
           }
           .demo-import-options .form-check-label {
-            user-select: none;
             cursor: pointer;
             margin-bottom: 0;
             font-size: 15px;
@@ -206,7 +205,7 @@
   function ensureConfirmOverlay() {
     if ($("#demoImportConfirmOverlay").length === 0) {
       injectStyles();
-      $("body").append(`
+      	$("body").append(`
         <div id="demoImportConfirmOverlay" class="demo-import-overlay confirm" style="display: none;">
           <div class="demo-import-confirm-modal">
             <div class="demo-import-confirm-content">
@@ -258,6 +257,8 @@
           </div>
         </div>
       `);
+      	// Ensure Bootstrap utility class is applied to labels in the injected overlay
+      	$("#demoImportConfirmOverlay .form-check-label").addClass("user-select-none");
     }
   }
 

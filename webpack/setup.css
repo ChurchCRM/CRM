@@ -283,7 +283,6 @@ body {
   align-items: center;
   padding: 14px 20px;
   cursor: pointer;
-  user-select: none;
   transition: background 0.15s ease;
 }
 
