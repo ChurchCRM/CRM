@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 
-$sPageTitle = gettext("Change Password") .":" . $user->getFullName();
+$sPageTitle = gettext("Change Password") . ": " . $user->getFullName();
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
