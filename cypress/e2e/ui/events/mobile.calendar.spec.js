@@ -78,7 +78,9 @@ describe("Mobile Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
 
         // Modal should appear and be properly sized for mobile
-        cy.get(".modal.show .modal-dialog").should("be.visible");
-        cy.get(".modal.show .modal-header input").should("be.visible").type(title);
+        // Some devices/containers cause a fixed ancestor to clip visibility.
+        // Assert the modal exists, then scroll the header input into view and type.
+        cy.get(".modal.show .modal-dialog").should("exist");
+        cy.get(".modal.show .modal-header input").scrollIntoView().should("be.visible").type(title);
     });
 });
