@@ -264,6 +264,42 @@ $('#myTable').DataTable({
 });
 ```
 
+### ⚠️ CRITICAL: Never Add `max-width` Constraints to Card Tables <!-- learned: 2026-03-23 -->
+
+**DO NOT write CSS rules like this:**
+```scss
+/* ❌ WRONG — breaks full-width table layouts */
+.card > .card-body table {
+  max-width: 980px;  /* This constraint squishes modern responsive tables */
+}
+```
+
+**Why this is a problem:**
+- `table-responsive` + `w-100` already handle mobile responsiveness
+- AdminLTE legacy max-width (980px) doesn't fit Tabler's responsive design
+- Constraining table width loses screen real estate on wide displays
+- Users can't read full table rows without horizontal scrolling
+
+**What to do instead:**
+- Tables in cards should be **full-width** by default
+- For **legacy form tables** (FinancialReports, etc.), use a specific class:
+  ```scss
+  .form-table {
+    width: 100%;
+    /* Add form-specific styles here, not generic table rules */
+  }
+  ```
+- For **action column width**, use `.w-1` utility class on the `<th>`:
+  ```html
+  <th class="w-1">Actions</th>
+  ```
+
+**Audit checklist:**
+- Search codebase for `.card > .card-body table` rules
+- Search for `table { max-width:` rules
+- Remove any width constraints that apply to data tables in cards
+- If you find constraints, move them to specific component classes (e.g., `.form-table`, `#reportTable`)
+
 ---
 
 ## 4. Forms
@@ -1053,6 +1089,52 @@ Never use `bg-secondary` (dark) for count badges on white card headers — it cl
 <!-- ❌ dark badge clashes on white background -->
 <span class="badge bg-secondary">5</span>
 ```
+
+### Badge Text Contrast — Always Use `text-white` on Dark Badges <!-- learned: 2026-03-23 -->
+
+**Problem**: Status badges with dark backgrounds (danger, warning, success, primary, info) without explicit `text-white` can have poor readability depending on browser rendering and system fonts.
+
+**Solution**: Always add `text-white` class to badges with colored backgrounds to ensure WCAG AA contrast compliance:
+
+```html
+<!-- ✅ CORRECT — explicit text-white ensures readable contrast -->
+<span class="badge bg-danger text-white">Failed Logins: 3</span>
+<span class="badge bg-success text-white">Enabled</span>
+<span class="badge rounded-pill bg-warning text-white"><i class="fa-solid fa-exclamation me-1"></i>Pending</span>
+
+<!-- ❌ WRONG — relies on implicit browser styling, may fade on some backgrounds -->
+<span class="badge bg-danger">Failed Logins: 3</span>
+<span class="badge bg-success">Enabled</span>
+<span class="badge rounded-pill bg-warning"><i class="fa-solid fa-exclamation me-1"></i>Pending</span>
+```
+
+**For light badge variants** (e.g., `bg-danger-lt`, `bg-success-lt`), use the explicit text color that matches:
+
+```html
+<!-- ✅ light variant with matching text color -->
+<span class="badge bg-danger-lt text-danger">Not enrolled</span>
+<span class="badge bg-success-lt text-success">Active</span>
+
+<!-- Light variants default `text-dark` so are readable, but explicit color improves consistency -->
+```
+
+**Pill badge pattern** (status indicators):
+```html
+<!-- ✅ Pill badge with icon and explicit text-white -->
+<span class="badge rounded-pill bg-success text-white">
+  <i class="fa-solid fa-shield-check me-1"></i>Enabled
+</span>
+
+<!-- State variations -->
+<span class="badge rounded-pill bg-danger text-white">
+  <i class="fa-solid fa-shield-slash me-1"></i>Disabled
+</span>
+<span class="badge rounded-pill bg-warning text-white">
+  <i class="fa-solid fa-hourglass-half me-1"></i>Pending
+</span>
+```
+
+**Apply to all occurrences**: Search codebase for `.badge` without `text-white` or explicit text color class and fix them as you encounter them.
 
 ### "?" keyboard shortcut — use keydown, not keyup
 

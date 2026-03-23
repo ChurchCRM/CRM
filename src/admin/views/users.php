@@ -22,76 +22,76 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
     <div class="row mb-3">
         <div class="col-12">
             <h2 class="mb-1">
-                <i class="fa-solid fa-user-shield text-primary"></i> <?= gettext('User Management') ?>
+                <i class="fa-solid fa-user-shield text-primary"></i> <?= gettext('System Users') ?>
             </h2>
             <p class="text-muted mb-0"><?= gettext('Manage system users, permissions, and two-factor authentication settings') ?></p>
         </div>
     </div>
 
-    <!-- Dashboard Overview -->
-<div class="row">
-    <div class="col-lg-3 col-6">
+    <!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-info text-white avatar rounded-circle">
-                            <i class="fa-solid fa-users"></i>
+                            <i class="fa-solid fa-users icon"></i>
                         </span>
                     </div>
                     <div class="col">
-                        <div class="h3 m-0"><?= $userStats['total'] ?></div>
+                        <div class="fw-medium"><?= $userStats['total'] ?></div>
                         <div class="text-muted"><?= gettext('Total Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
+    <div class="col-sm-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-success text-white avatar rounded-circle">
-                            <i class="fa-solid fa-user-check"></i>
+                            <i class="fa-solid fa-user-check icon"></i>
                         </span>
                     </div>
                     <div class="col">
-                        <div class="h3 m-0"><?= $userStats['active'] ?></div>
+                        <div class="fw-medium"><?= $userStats['active'] ?></div>
                         <div class="text-muted"><?= gettext('Active Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
+    <div class="col-sm-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-warning text-white avatar rounded-circle">
-                            <i class="fa-solid fa-lock"></i>
+                            <i class="fa-solid fa-lock icon"></i>
                         </span>
                     </div>
                     <div class="col">
-                        <div class="h3 m-0"><?= $userStats['locked'] ?></div>
+                        <div class="fw-medium"><?= $userStats['locked'] ?></div>
                         <div class="text-muted"><?= gettext('Locked Users') ?></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-3 col-6">
+    <div class="col-sm-6 col-lg-3">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-primary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-shield-alt"></i>
+                            <i class="fa-solid fa-shield-alt icon"></i>
                         </span>
                     </div>
                     <div class="col">
-                        <div class="h3 m-0"><?= $userStats['twoFactor'] ?></div>
+                        <div class="fw-medium"><?= $userStats['twoFactor'] ?></div>
                         <div class="text-muted"><?= gettext('2FA Enabled') ?></div>
                     </div>
                 </div>
@@ -100,36 +100,38 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
     </div>
 </div>
 
-<!-- Action Buttons -->
-<div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-body text-center">
-                <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success me-2">
-                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add New') . ' ' . gettext('User') ?>
-                </a>
-                <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
-                    <i class="fa-solid fa-cog me-1"></i><?= gettext('User Settings') ?>
-                </a>
-                <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#userSettingsPanel" aria-expanded="false">
-                    <i class="fa-solid fa-sliders me-1"></i><?= gettext('Quick Settings') ?>
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- User Settings Panel -->
-<div class="collapse" id="userSettingsPanel"></div>
-
 <!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
+<!-- Quick Actions -->
+<div class="card mb-3">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="d-flex flex-wrap" style="gap: .5rem;">
+            <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success">
+                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add User') ?>
+            </a>
+            <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
+                <i class="fa-solid fa-cog me-1"></i><?= gettext('User Settings') ?>
+            </a>
+            <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#userSettingsPanel" aria-expanded="false">
+                <i class="fa-solid fa-sliders me-1"></i><?= gettext('Quick Settings') ?>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- User Settings Panel (collapsible) -->
+<div class="collapse mb-3" id="userSettingsPanel"></div>
+
 <div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-list me-2"></i><?= _('User Management') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-list me-2"></i><?= gettext('Users') ?></h3>
         <div class="card-tools ms-auto">
-            <span class="badge bg-info"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
+            <span class="badge bg-info text-white"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
     <div class="card-body">
@@ -142,7 +144,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
-                        <th class="text-center"><?= gettext('Actions') ?></th>
+                        <th class="text-center no-export"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -157,16 +159,16 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                             <td class="text-center"><?= $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?></td>
                             <td class="text-center">
                                 <?php if ($user->getFailedLogins() > 0) { ?>
-                                    <span class="badge <?= $user->isLocked() ? 'bg-danger' : 'bg-warning' ?>"><?= $user->getFailedLogins() ?></span>
+                                    <span class="badge text-white <?= $user->isLocked() ? 'bg-danger' : 'bg-warning' ?>"><?= $user->getFailedLogins() ?></span>
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
-                                    <span class="badge bg-success"><?= gettext('Enabled') ?></span>
+                                    <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-shield-check me-1"></i><?= gettext('Enabled') ?></span>
                                 <?php } else { ?>
-                                    <span class="badge bg-secondary"><?= gettext('Not enrolled') ?></span>
+                                    <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
                             </td>
                             <td class="text-center">
@@ -216,6 +218,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             </table>
         </div>
     </div>
+
 </div>
 <!-- /.box -->
 

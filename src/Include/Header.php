@@ -125,14 +125,32 @@ $MenuFirst = 1;
                   },
                   buttons: [
                       'copy',
-                      'csv',
-                      'excel',
+                      {
+                          extend: 'csv',
+                          exportOptions: {
+                              columns: ':not(.no-export)'
+                          }
+                      },
+                      {
+                          extend: 'excel',
+                          exportOptions: {
+                              columns: ':not(.no-export)'
+                          }
+                      },
                       {
                           extend: 'pdf',
                           orientation: 'landscape',
-                          pageSize: 'LEGAL'
+                          pageSize: 'LEGAL',
+                          exportOptions: {
+                              columns: ':not(.no-export)'
+                          }
                       },
-                      'print'
+                      {
+                          extend: 'print',
+                          exportOptions: {
+                              columns: ':not(.no-export)'
+                          }
+                      }
                   ]
               }
           },

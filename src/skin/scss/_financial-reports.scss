@@ -1,10 +1,13 @@
 /* Styles moved from inline in src/FinancialReports.php
    Purpose: improve spacing and responsive behavior for legacy table-based report forms
+   
+   Note (2026-03-23): Removed max-width: 980px constraint. Modern tables use table-responsive 
+   for mobile responsiveness and should expand to full width. Legacy form tables that need width 
+   constraints should use explicit .form-table class instead.
 */
 
-.card > .card-body table {
+.form-table {
   width: 100%;
-  max-width: 980px;
 }
 
 td.LabelColumn {
