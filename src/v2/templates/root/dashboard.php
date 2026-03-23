@@ -147,46 +147,48 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <div class="card-title"><h4><?= gettext('People') ?></h4></div>
+            <div class="card-header">
+                <div class="card-title">
+                    <i class="ti ti-users me-2 text-muted"></i><?= gettext('People') ?>
+                </div>
+                <div class="card-options ms-auto">
+                    <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
+                                <i class="ti ti-home-plus me-1"></i><?= gettext('Latest Families') ?>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
+                                <i class="ti ti-home-edit me-1"></i><?= gettext('Updated Families') ?>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
+                                <i class="ti ti-user-plus me-1"></i><?= gettext('Latest People') ?>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
+                                <i class="ti ti-user-edit me-1"></i><?= gettext('Updated People') ?>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="card-header p-0 pt-1 border-bottom-0">
-                <ul class="nav nav-tabs" id="people-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Latest Families') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                            <i class="fa-solid fa-pen me-1"></i><?= gettext('Updated Families') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="#latest-ppl-pane" aria-selected="false">
-                            <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Latest People') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                            <i class="fa-solid fa-pen me-1"></i><?= gettext('Updated People') ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body p-0" style="overflow: visible;">
+            <div class="card-body p-0">
                 <div class="tab-content" id="people-tabs-content">
                     <div class="tab-pane fade show active" id="latest-fam-pane" role="tabpanel" aria-labelledby="latest-fam-tab">
-                        <table class="table table-striped table-hover mb-0" width="100%" id="latestFamiliesDashboardItem"></table>
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="latestFamiliesDashboardItem"></table>
                     </div>
                     <div class="tab-pane fade" id="updated-fam-pane" role="tabpanel" aria-labelledby="updated-fam-tab">
-                        <table class="table table-striped table-hover mb-0" width="100%" id="updatedFamiliesDashboardItem"></table>
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="updatedFamiliesDashboardItem"></table>
                     </div>
                     <div class="tab-pane fade" id="latest-ppl-pane" role="tabpanel" aria-labelledby="latest-ppl-tab">
-                        <table class="table table-striped table-hover mb-0" width="100%" id="latestPersonDashboardItem"></table>
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="latestPersonDashboardItem"></table>
                     </div>
                     <div class="tab-pane fade" id="updated-ppl-pane" role="tabpanel" aria-labelledby="updated-ppl-tab">
-                        <table class="table table-striped table-hover mb-0" width="100%" id="updatedPersonDashboardItem"></table>
+                        <table class="table table-vcenter table-hover card-table mb-0" width="100%" id="updatedPersonDashboardItem"></table>
                     </div>
                 </div>
             </div>
