@@ -38,11 +38,10 @@ $hasOrphanedFiles = $orphanedCount > 0;
                         </button>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-sm table-striped table-hover" id="orphanedFilesTable">
-                            <thead class="table-dark">
+                        <table class="table table-sm table-vcenter table-hover card-table" id="orphanedFilesTable">
+                            <thead>
                                 <tr>
-                                    <th style="width: 5%;">#</th>
+                                    <th>#</th>
                                     <th><?= gettext('File Path') ?></th>
                                 </tr>
                             </thead>
@@ -59,7 +58,6 @@ $hasOrphanedFiles = $orphanedCount > 0;
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
 
                     <div class="alert alert-warning mt-3">
                         <strong><i class="fa fa-shield-alt me-2"></i><?= gettext('Security Recommendation') ?></strong>
@@ -136,22 +134,12 @@ $hasOrphanedFiles = $orphanedCount > 0;
     function initOrphanedFilesPage() {
         // Initialize DataTable
         if ($.fn.DataTable && $('#orphanedFilesTable tbody tr').length > 0) {
-            $('#orphanedFilesTable').DataTable({
-                responsive: true,
+            var dataTableConfig = {
                 pageLength: 25,
-                order: [[1, 'asc']],
-                language: {
-                    search: i18next.t('Search') + ':',
-                    lengthMenu: i18next.t('Show _MENU_ entries'),
-                    info: i18next.t('Showing _START_ to _END_ of _TOTAL_ entries'),
-                    paginate: {
-                        first: i18next.t('First'),
-                        last: i18next.t('Last'),
-                        next: i18next.t('Next'),
-                        previous: i18next.t('Previous')
-                    }
-                }
-            });
+                order: [[1, 'asc']]
+            };
+            $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+            $('#orphanedFilesTable').DataTable(dataTableConfig);
         }
 
         // Delete All button click

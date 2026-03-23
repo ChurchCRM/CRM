@@ -28,12 +28,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Self Verify") ?></h3>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                <table id="families-complete" class="table table-striped table-bordered data-table">
+            <div class="card-body p-0">
+                <table id="families-complete" class="table table-vcenter table-hover card-table">
                     <tbody></tbody>
                 </table>
-                </div>
             </div>
         </div>
     </div>
@@ -45,12 +43,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                <table id="families-pending" class="table table-striped table-bordered data-table">
+            <div class="card-body p-0">
+                <table id="families-pending" class="table table-vcenter table-hover card-table">
                     <tbody></tbody>
                 </table>
-                </div>
             </div>
         </div>
     </div>

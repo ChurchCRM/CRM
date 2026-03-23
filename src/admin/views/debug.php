@@ -449,23 +449,6 @@ EOD;
 </style>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    var callback = function() {
-        $("#fileIntegrityCheckResultsTable").DataTable({
-            responsive: true,
-            paging: false,
-            searching: false
-        });
-    };
-
-    if (
-        document.readyState ==="complete" ||
-        (document.readyState !=="loading" && !document.documentElement.doScroll)
-    ) {
-        callback();
-    } else {
-        document.addEventListener("DOMContentLoaded", callback);
-    }
-
     var initializeDebugPage = function() {
         // Populate browser timezone information with guard for older browsers
         var browserTimezone;

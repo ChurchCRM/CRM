@@ -9,7 +9,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><?= gettext('Log Settings') ?></h4>
+                <h3 class="card-title"><?= gettext('Log Settings') ?></h3>
             </div>
             <div class="card-body">
                 <form class="form-inline">
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><?= gettext('System Logs') ?></h4>
+                <h3 class="card-title"><?= gettext('System Logs') ?></h3>
                 <p class="text-muted"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
                 <?php if (!empty($logFiles)): ?>
                 <button class="btn btn-danger float-end" id="deleteAllLogs">
@@ -48,20 +48,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </button>
                 <?php endif; ?>
             </div>
-            <div class="card-body">
+            <div class="card-body p-0">
                 <?php if (empty($logFiles)): ?>
-                    <div class="alert alert-info">
+                    <div class="alert alert-info m-3">
                         <i class="fa-solid fa-info-circle"></i> <?= gettext('No log files found.') ?>
                     </div>
                 <?php else: ?>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-hover" id="logFilesTable">
+                        <table class="table table-vcenter table-hover card-table" id="logFilesTable">
                             <thead>
                                 <tr>
-                                    <th style="width: 50%;"><?= gettext('Log File') ?></th>
-                                    <th style="width: 15%;"><?= gettext('Size') ?></th>
-                                    <th style="width: 25%;"><?= gettext('Last Modified') ?></th>
-                                    <th style="width: 10%;" class="no-export"><?= gettext('Actions') ?></th>
+                                    <th><?= gettext('Log File') ?></th>
+                                    <th><?= gettext('Size') ?></th>
+                                    <th><?= gettext('Last Modified') ?></th>
+                                    <th class="no-export w-1"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,7 +88,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
                 <?php endif; ?>
             </div>
         </div>
@@ -147,16 +145,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         window.CRM.onLocalesReady(function() {
             loadLogLevel();
 
-            var table = $('#logFilesTable').DataTable({
-                responsive: true,
-                order: [[3, 'desc']],
-                paging: false,
-                info: false,
-                searching: false,
-                columnDefs: [
-                    { orderable: false, targets: 0 }
-                ]
-            });
+            var dataTableConfig = {
+                order: [[2, 'desc']]
+            };
+            $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+            // Override global defaults for this specific table (no search, no paging needed)
+            dataTableConfig.paging = false;
+            dataTableConfig.info = false;
+            dataTableConfig.searching = false;
+            dataTableConfig.layout = { topEnd: 'buttons' };
+            dataTableConfig.columnDefs = [
+                { orderable: false, targets: 3 }  // Actions column
+            ];
+            var table = $('#logFilesTable').DataTable(dataTableConfig);
 
             $(document).on('click', '.view-log', function() {
                 var fileName = $(this).data('file');

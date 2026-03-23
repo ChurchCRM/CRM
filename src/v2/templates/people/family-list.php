@@ -58,8 +58,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Families') ?></h3>
     </div>
-    <div class="card-body p-2">
-        <table class="table table-striped table-hover mb-0" id="families">
+    <div class="card-body p-0">
+        <table class="table table-vcenter table-hover card-table" id="families">
             <thead>
                 <tr>
                     <th><?= gettext('Name') ?></th>
@@ -69,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Email') ?></th>
                     <th><?= gettext('Created') ?></th>
                     <th><?= gettext('Edited') ?></th>
-                    <th class="text-end no-export" width="150"><?= gettext('Actions') ?></th>
+                    <th class="text-end no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -173,18 +173,7 @@ $(document).ready(function() {
 "orderable": false,
 "searchable": false
                 }
-            ],
-"language": {
-"search":"<?= gettext('Search') ?>:",
-"paginate": {
-"first":"<?= gettext('First') ?>",
-"last":"<?= gettext('Last') ?>",
-"next":"<?= gettext('Next') ?>",
-"previous":"<?= gettext('Previous') ?>"
-                },
-"lengthMenu":"<?= gettext('Show') ?> _MENU_ <?= gettext('entries') ?>",
-"info":"<?= gettext('Showing') ?> _START_ <?= gettext('to') ?> _END_ <?= gettext('of') ?> _TOTAL_ <?= gettext('entries') ?>"
-            }
+            ]
         };
         
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);

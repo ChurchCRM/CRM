@@ -12,12 +12,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Families Without Emails") ?></h3>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                <table id="noEmails" class="table table-striped table-bordered data-table">
+            <div class="card-body p-0">
+                <table id="noEmails" class="table table-vcenter table-hover card-table">
                     <tbody></tbody>
                 </table>
-                </div>
             </div>
         </div>
     </div>

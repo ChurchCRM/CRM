@@ -40,14 +40,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </span>
                 </div>
             </div>
-            <div class="card-body">
-                <p class="text-muted mb-3">
+            <div class="card-body p-0">
+                <p class="text-muted mb-3 px-3 pt-3">
                     <i class="fa-solid fa-info-circle me-1"></i>
                     <?= gettext('These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp.') ?>
                 </p>
-                <div class="table-responsive">
-                    <table id="missingTable" class="table table-striped table-hover data-table" style="width:100%">
-                        <thead class="table-light">
+                    <table id="missingTable" class="table table-vcenter table-hover card-table">
+                        <thead>
                             <tr>
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Email') ?></th>
@@ -56,7 +55,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
             </div>
             <div class="card-footer">
                 <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard" class="btn btn-secondary">

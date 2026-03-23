@@ -33,8 +33,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
       </div>
-      <div class="card-body">
-        <table id="KioskTable" class="table table-striped table-bordered" style="width:100%">
+      <div class="card-body p-0">
+        <table id="KioskTable" class="table table-vcenter table-hover card-table">
         </table>
       </div>
     </div>

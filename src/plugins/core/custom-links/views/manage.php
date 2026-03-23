@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h4>
+                <h3 class="card-title"><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h3>
             </div>
             <div class="card-body">
                 <form id="link-form" novalidate>
@@ -63,25 +63,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center">
-                <h4><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h4>
+                <h3 class="card-title"><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h3>
             </div>
-            <div class="card-body">
-                <p class="text-muted mb-3">
+            <div class="card-body p-0">
+                <p class="text-muted mb-3 px-3 pt-3">
                     <i class="fa-solid fa-info-circle"></i>
                     <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
                 </p>
-                <div class="table-responsive">
-                    <table id="links-table" class="table table-striped table-bordered data-table">
+                    <table id="links-table" class="table table-vcenter table-hover card-table">
                         <thead>
                             <tr>
-                                <th width="35%"><?= gettext('Name') ?></th>
-                                <th width="50%"><?= gettext('URL') ?></th>
-                                <th width="15%" class="no-export"><?= gettext('Actions') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('URL') ?></th>
+                                <th class="no-export w-1"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
             </div>
         </div>
     </div>
@@ -90,7 +88,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
     // Initialize DataTable
-    var table = $("#links-table").DataTable({
+    var emptyMsg = i18next.t("No custom links configured. Add one above!");
+    var dataTableConfig = {
         ajax: {
             url: window.CRM.root +"/plugins/custom-links/api/links",
             dataSrc:"data"
@@ -119,11 +118,11 @@ $(document).ready(function() {
                 }
             }
         ],
-        order: [[1,"asc"]],
-        language: {
-            emptyTable: i18next.t("No custom links configured. Add one above!")
-        }
-    });
+        order: [[1,"asc"]]
+    };
+    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    dataTableConfig.language.emptyTable = emptyMsg;
+    var table = $("#links-table").DataTable(dataTableConfig);
 
     // Delete handler using event delegation
     $('#links-table').on('click', '.delete-link', function() {
