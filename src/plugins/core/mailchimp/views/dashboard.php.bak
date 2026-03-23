@@ -66,7 +66,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- Stats Overview -->
     <div class="row">
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-info">
+            <div class="small-box bg-info">
                 <div class="inner">
                     <h3><?= count($mailChimpLists) ?></h3>
                     <p><?= gettext('Audiences') ?></p>
@@ -77,7 +77,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-success">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3><?= number_format($totalMembers) ?></h3>
                     <p><?= gettext('Total Subscribers') ?></p>
@@ -88,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-primary">
+            <div class="small-box bg-primary">
                 <div class="inner">
                     <h3><?= number_format($totalCampaigns) ?></h3>
                     <p><?= gettext('Total Campaigns') ?></p>
@@ -99,7 +99,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-success">
+            <div class="small-box bg-success">
                 <div class="inner">
                     <h3><i class="fa-solid fa-check"></i></h3>
                     <p><?= gettext('Connected') ?></p>

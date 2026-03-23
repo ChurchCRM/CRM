@@ -1,18 +1,27 @@
 /* Custom styling for TomSelect dropdowns in people list filters */
 
-/* Highlight dropdown option on hover */
+/* Hover state - subtle gray background with body text */
 .ts-dropdown .ts-option:hover {
-  background-color: var(--bs-secondary-bg);
+  background-color: var(--tblr-secondary-bg);
+  color: var(--tblr-body-color);
 }
 
-/* Active/selected option in dropdown - uses correct TomSelect selector */
+/* Keyboard-active/focused option - Tabler primary with white text for clear distinction */
 .ts-dropdown .ts-option.active {
-  background-color: var(--bs-secondary-bg);
-  color: var(--bs-body-color);
+  background-color: var(--tblr-primary);
+  color: #fff;
+  font-weight: 500;
 }
 
-/* Optional: Additional styling for option groups */
+/* Selected but not-active state */
+.ts-dropdown .ts-option.selected {
+  background-color: transparent;
+  color: var(--tblr-body-color);
+}
+
+/* Optgroup label styling */
 .ts-dropdown .ts-optgroup-label {
   font-weight: 600;
   padding: 0.5rem 0.75rem;
+  color: var(--tblr-secondary-color);
 }

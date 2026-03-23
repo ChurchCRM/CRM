@@ -157,36 +157,48 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     </div>
     <div class="card-body">
         <div class="row g-3">
-            <div class="col-lg-6">
-                <div class="mb-3">
+            <!-- Demographics and Classification Row -->
+            <div class="col-lg-3">
+                <div class="mb-0">
                     <label class="form-label" id="label-family-status"></label>
-                    <select class="form-control w-100 filter-FamilyStatus" multiple="multiple"></select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" id="label-gender"></label>
-                    <select class="form-control w-100 filter-Gender" multiple="multiple"></select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" id="label-classification"></label>
-                    <select class="form-control w-100 filter-Classification" multiple="multiple"></select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label" id="label-role"></label>
-                    <select class="form-control w-100 filter-Role" multiple="multiple"></select>
+                    <select class="form-select filter-FamilyStatus" multiple="multiple"></select>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="mb-3">
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-gender"></label>
+                    <select class="form-select filter-Gender" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-classification"></label>
+                    <select class="form-select filter-Classification" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-role"></label>
+                    <select class="form-select filter-Role" multiple="multiple"></select>
+                </div>
+            </div>
+            <!-- Extended Attributes Row -->
+            <div class="col-lg-4">
+                <div class="mb-0">
                     <label class="form-label" id="label-properties"></label>
-                    <select class="form-control w-100 filter-Properties" multiple="multiple"></select>
+                    <select class="form-select filter-Properties" multiple="multiple"></select>
                 </div>
-                <div class="mb-3">
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-0">
                     <label class="form-label" id="label-custom"></label>
-                    <select class="form-control w-100 filter-Custom" multiple="multiple"></select>
+                    <select class="form-select filter-Custom" multiple="multiple"></select>
                 </div>
-                <div class="mb-3">
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-0">
                     <label class="form-label" id="label-group"></label>
-                    <select class="form-control w-100 filter-Group" multiple="multiple"></select>
+                    <select class="form-select filter-Group" multiple="multiple"></select>
                 </div>
             </div>
         </div>
@@ -532,7 +544,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $(cfg.sel).each(function () {
                     if (!this.tomselect) {
                         var ts = new TomSelect(this, {
-                            plugins: ['remove_button']
+                            plugins: ['remove_button'],
+                            hideSelected: true
                         });
                         tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };
                     }

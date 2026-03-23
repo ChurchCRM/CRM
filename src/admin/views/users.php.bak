@@ -20,7 +20,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 <!-- Dashboard Overview -->
 <div class="row">
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-info">
+        <div class="small-box bg-info">
             <div class="inner">
                 <h3><?= $userStats['total'] ?></h3>
                 <p><?= gettext('Total Users') ?></p>
@@ -31,7 +31,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-success">
+        <div class="small-box bg-success">
             <div class="inner">
                 <h3><?= $userStats['active'] ?></h3>
                 <p><?= gettext('Active Users') ?></p>
@@ -42,7 +42,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-warning">
+        <div class="small-box bg-warning">
             <div class="inner">
                 <h3><?= $userStats['locked'] ?></h3>
                 <p><?= gettext('Locked Users') ?></p>
@@ -53,7 +53,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-primary">
+        <div class="small-box bg-primary">
             <div class="inner">
                 <h3><?= $userStats['twoFactor'] ?></h3>
                 <p><?= gettext('2FA Enabled') ?></p>

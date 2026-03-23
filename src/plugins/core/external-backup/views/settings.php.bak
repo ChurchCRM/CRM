@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Status Overview -->
 <div class="row">
     <div class="col-lg-4 col-md-6">
-        <div class="card card-sm <?= $status['configured'] ? 'bg-success' : 'bg-warning' ?>">
+        <div class="small-box <?= $status['configured'] ? 'bg-success' : 'bg-warning' ?>">
             <div class="inner">
                 <h3><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></h3>
                 <p><?= gettext('WebDAV Connection') ?></p>
@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4 col-md-6">
-        <div class="card card-sm <?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?>">
+        <div class="small-box <?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?>">
             <div class="inner">
                 <h3><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></h3>
                 <p><?= gettext('Auto-Backup Interval') ?></p>
@@ -49,7 +49,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="col-lg-4 col-md-6">
-        <div class="card card-sm bg-primary">
+        <div class="small-box bg-primary">
             <div class="inner">
                 <h3><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></h3>
                 <p><?= gettext('Last Backup') ?></p>

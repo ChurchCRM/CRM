@@ -6,14 +6,8 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
-@media (max-width: 767px) {
-  .skin-blue .main-header .navbar .dropdown-menu li a {
-    color: #000000;
-  }
-}
-
 .ts-wrapper.multi .ts-control .item {
-  background-color: #222d32;
+  background-color: var(--tblr-primary);
   color: #fff;
 }
 
