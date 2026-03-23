@@ -78,19 +78,6 @@
   transition: all 0.3s ease;
 }
 
-// Fix cart badge positioning to not overlap icon
-.navbar-nav .nav-link {
-  position: relative; // Ensure badge positions relative to link
-
-  .fa-shopping-cart + .navbar-badge {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    font-size: 0.6rem;
-    padding: 2px 4px;
-    min-width: 16px;
-    height: 16px;
-    line-height: 12px;
-    border-radius: 8px;
-  }
-}
+// Badge positioning should use Bootstrap utilities (`position-relative` on
+// the containing link and `position-absolute top-0 end-0 small` on the badge)
+// to keep styles framework-aligned. See Header.php for markup changes.

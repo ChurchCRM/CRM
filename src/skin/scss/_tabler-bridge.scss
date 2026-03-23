@@ -151,6 +151,19 @@
   }
 }
 
+/* Sidebar badge contrast — moved from inline header styles. Use utilities
+   where possible, but keep these rules as a compatibility bridge while
+   templates migrate off inline styles. */
+.navbar-vertical .badge {
+  color: #fff;
+  font-weight: 600;
+}
+.navbar-vertical .badge.bg-warning,
+.navbar-vertical .badge.bg-info,
+.navbar-vertical .badge.bg-light {
+  color: #333 !important;
+}
+
 // --- Topbar search — remove double border with adjacent button --------
 .navbar-search-btn {
   border-left: 0;

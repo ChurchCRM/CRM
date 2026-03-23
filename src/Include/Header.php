@@ -35,20 +35,6 @@ $MenuFirst = 1;
 </head>
 
 <body class="antialiased">
-<style>
-  /* Sidebar badge contrast — ensure text is readable */
-  .navbar-vertical .badge {
-    color: #fff;
-    font-weight: 600;
-  }
-  
-  /* Ensure light badges have dark text for contrast */
-  .navbar-vertical .badge.bg-warning,
-  .navbar-vertical .badge.bg-info,
-  .navbar-vertical .badge.bg-light {
-    color: #333 !important;
-  }
-</style>
 <div class="page">
 
   <!-- Issue Report Modal -->
@@ -261,12 +247,12 @@ $MenuFirst = 1;
 
         <!-- Cart -->
         <div class="nav-item dropdown ms-1">
-          <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
+          <a class="nav-link px-0 position-relative" data-bs-toggle="dropdown" href="#">
             <i class="fa-duotone fa-solid fa-cart-shopping"></i>
             <?php if (Cart::countPeople() > 0): ?>
-            <span class="badge bg-info ms-1" id="iconCount"><?= Cart::countPeople() ?></span>
+            <span class="badge bg-info position-absolute top-0 end-0 small" id="iconCount"><?= Cart::countPeople() ?></span>
             <?php else: ?>
-            <span class="badge bg-info ms-1 d-none" id="iconCount">0</span>
+            <span class="badge bg-info position-absolute top-0 end-0 small d-none" id="iconCount">0</span>
             <?php endif; ?>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
