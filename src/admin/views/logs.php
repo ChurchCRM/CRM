@@ -12,10 +12,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title"><?= gettext('Log Settings') ?></h3>
             </div>
             <div class="card-body">
-                <form class="form-inline">
-                    <div class="mb-3 me-3">
-                        <label for="logLevel" class="me-2"><?= gettext('Log Level:') ?></label>
-                        <select class="form-control" id="logLevel">
+                <div class="row align-items-end gap-3">
+                    <div class="col-auto">
+                        <label for="logLevel" class="form-label"><?= gettext('Log Level:') ?></label>
+                        <select class="form-select" id="logLevel" style="width: auto;">
                             <option value="100">DEBUG (100)</option>
                             <option value="200" selected>INFO (200)</option>
                             <option value="250">NOTICE (250)</option>
@@ -26,11 +26,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <option value="600">EMERGENCY (600)</option>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-primary" id="saveLogLevel">
-                        <i class="fa-solid fa-floppy-disk"></i> <?= gettext('Save Log Level') ?>
-                    </button>
-                    <span id="logLevelStatus" class="ms-3"></span>
-                </form>
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary" id="saveLogLevel">
+                            <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save') ?>
+                        </button>
+                    </div>
+                    <div class="col-auto">
+                        <small id="logLevelStatus" class="text-muted"></small>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -41,14 +45,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('System Logs') ?></h3>
-                <p class="text-muted"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
-                <?php if (!empty($logFiles)): ?>
-                <button class="btn btn-danger float-end" id="deleteAllLogs">
-                    <i class="fa-solid fa-trash"></i> <?= gettext('Delete All Logs') ?>
-                </button>
-                <?php endif; ?>
+                <div class="ms-auto">
+                    <?php if (!empty($logFiles)): ?>
+                    <button class="btn btn-danger btn-sm" id="deleteAllLogs">
+                        <i class="fa-solid fa-trash"></i> <?= gettext('Delete All Logs') ?>
+                    </button>
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="card-body p-0">
+                <div class="p-3">
+                    <p class="text-muted mb-0"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
+                </div>
                 <?php if (empty($logFiles)): ?>
                     <div class="alert alert-info m-3">
                         <i class="fa-solid fa-circle-info"></i> <?= gettext('No log files found.') ?>
@@ -60,7 +68,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <th><?= gettext('Log File') ?></th>
                                     <th><?= gettext('Size') ?></th>
                                     <th><?= gettext('Last Modified') ?></th>
-                                    <th class="no-export w-1"><?= gettext('Actions') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,17 +80,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         </td>
                                         <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
                                         <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
-                                        <td>
-                                            <button class="btn btn-sm btn-primary view-log" 
-                                                    data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
-                                                    title="<?= gettext('View') ?>">
-                                                <i class="fa-solid fa-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-danger delete-log" 
-                                                    data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
-                                                    title="<?= gettext('Delete') ?>">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </button>
+                                        <td class="text-center w-1">
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="ti ti-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <button type="button" class="dropdown-item view-log" data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                                    </button>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button type="button" class="dropdown-item text-danger delete-log" data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -123,7 +135,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <option value="all"><?= gettext('All') ?></option>
                     </select>
                 </div>
-                <pre id="logContent" style="max-height: 500px; overflow-y: auto; background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px;"><code></code></pre>
+                <pre id="logContent" style="max-height: 500px; overflow-y: auto; background-color: #f4f4f4; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 12px; color: #212529; font-family: Menlo, Monaco, Consolas, 'Liberation Mono', monospace;"><code style="color: inherit; white-space: pre-wrap;"></code></pre>
                 <div id="logLoading" class="d-none text-center p-3">
                     <i class="fa-solid fa-spinner fa-spin fa-3x"></i>
                     <p><?= gettext('Loading log file...') ?></p>
@@ -143,8 +155,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     $(document).ready(function() {
         window.CRM.onLocalesReady(function() {
+            // Load current log level
             loadLogLevel();
-
             var dataTableConfig = {
                 order: [[2, 'desc']]
             };
@@ -316,15 +328,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             data: JSON.stringify({ value: logLevel })
         })
         .done(function() {
-            $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check"></i> ' + i18next.t('Saved - Log level updated immediately') + '</span>');
+            $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check me-2"></i>' + i18next.t('Saved') + '</span>');
             setTimeout(function() {
                 $('#logLevelStatus').html('');
             }, 3000);
         })
         .fail(function() {
-            $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times"></i> ' + i18next.t('Error') + '</span>');
+            $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times me-2"></i>' + i18next.t('Error') + '</span>');
         });
     }
+
 </script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

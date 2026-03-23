@@ -7,11 +7,12 @@ describe('Admin System Logs - UI Tests', () => {
     cy.visit('admin/system/logs');
     
     // Verify log level configuration card exists
-    cy.get('.card-header h4').should('contain', 'Log Settings');
+    cy.get('.card-header .card-title').should('contain', 'Log Settings');
     
-    // Verify log level selector exists
+    // Verify log level selector and save button exist
     cy.get('#logLevel').should('exist');
-    cy.get('#saveLogLevel').should('contain', 'Save Log Level');
+    cy.get('#saveLogLevel').should('exist');
+    cy.get('#saveLogLevel').should('contain', 'Save');
     
   });
 
@@ -19,7 +20,7 @@ describe('Admin System Logs - UI Tests', () => {
     cy.visit('admin/system/logs');
     
     // Verify system logs card exists
-    cy.get('.card-header h4').should('contain', 'System Logs');
+    cy.get('.card-header .card-title').should('contain', 'System Logs');
     cy.get('.text-muted').should('contain', 'View application logs');
   });
 
@@ -32,7 +33,7 @@ describe('Admin System Logs - UI Tests', () => {
     
     // Wait for success message
     cy.get('#logLevelStatus', { timeout: 5000 }).should('be.visible');
-    cy.get('#logLevelStatus').should('contain', 'Log level updated');
+    cy.get('#logLevelStatus').should('contain', 'Saved');
     
     // Verify the dropdown still shows the selected value
     cy.get('#logLevel').should('have.value', '400');
@@ -40,7 +41,7 @@ describe('Admin System Logs - UI Tests', () => {
     // Change back to INFO (200) for cleanup
     cy.get('#logLevel').select('200');
     cy.get('#saveLogLevel').click();
-    cy.get('#logLevelStatus', { timeout: 5000 }).should('contain', 'Log level updated');
+    cy.get('#logLevelStatus', { timeout: 5000 }).should('contain', 'Saved');
   });
 
   it('Should show appropriate content when no logs exist', () => {
@@ -57,10 +58,10 @@ describe('Admin System Logs - UI Tests', () => {
         // If logs exist, table should be visible with correct structure
         cy.get('#logFilesTable').should('be.visible');
         cy.get('#logFilesTable thead th').should('have.length', 4);
-        cy.get('#logFilesTable thead th').eq(0).should('contain', 'Actions');
-        cy.get('#logFilesTable thead th').eq(1).should('contain', 'Log File');
-        cy.get('#logFilesTable thead th').eq(2).should('contain', 'Size');
-        cy.get('#logFilesTable thead th').eq(3).should('contain', 'Last Modified');
+        cy.get('#logFilesTable thead th').eq(0).should('contain', 'Log File');
+        cy.get('#logFilesTable thead th').eq(1).should('contain', 'Size');
+        cy.get('#logFilesTable thead th').eq(2).should('contain', 'Last Modified');
+        cy.get('#logFilesTable thead th').eq(3).should('contain', 'Actions');
         
         // Verify action buttons exist
         cy.get('.view-log').should('exist');
