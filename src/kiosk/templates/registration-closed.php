@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= gettext('Kiosk Registration Disabled') ?></title>
-    <link rel="stylesheet" href="<?= $sRootPath ?>/skin/external/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="<?= $sRootPath ?>/skin/v2/kiosk-registration-closed.min.css">
 </head>
 <body class="kiosk-registration-closed">
