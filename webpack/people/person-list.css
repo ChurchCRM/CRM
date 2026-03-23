@@ -1,27 +1,9 @@
-/* Custom styling for TomSelect dropdowns in people list filters */
-
-/* Hover state - subtle gray background with body text */
-.ts-dropdown .ts-option:hover {
-  background-color: var(--tblr-secondary-bg);
-  color: var(--tblr-body-color);
+/* People-list filter: collapse the TomSelect search input when empty (input_autogrow companion) */
+.ts-wrapper.has-items .ts-control > input {
+  min-width: 0;
+  width: 0;
 }
-
-/* Keyboard-active/focused option - Tabler primary with white text for clear distinction */
-.ts-dropdown .ts-option.active {
-  background-color: var(--tblr-primary);
-  color: #fff;
-  font-weight: 500;
-}
-
-/* Selected but not-active state */
-.ts-dropdown .ts-option.selected {
-  background-color: transparent;
-  color: var(--tblr-body-color);
-}
-
-/* Optgroup label styling */
-.ts-dropdown .ts-optgroup-label {
-  font-weight: 600;
-  padding: 0.5rem 0.75rem;
-  color: var(--tblr-secondary-color);
+.ts-wrapper.has-items.focus .ts-control > input {
+  min-width: 2rem;
+  width: auto;
 }

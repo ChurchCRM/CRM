@@ -544,7 +544,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $(cfg.sel).each(function () {
                     if (!this.tomselect) {
                         var ts = new TomSelect(this, {
-                            plugins: ['remove_button'],
+                            plugins: ['remove_button', 'input_autogrow'],
                             hideSelected: true
                         });
                         tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };

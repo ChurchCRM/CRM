@@ -9,15 +9,4 @@ select {
   color: var(--tblr-body-color, #555);
 }
 
-/* TomSelect dropdown customization */
-.ts-wrapper .ts-dropdown .ts-option.selected,
-.ts-wrapper .ts-dropdown .ts-option-group.selected > .ts-optgroup-label {
-  background-color: var(--tblr-primary);
-  color: var(--tblr-white, #fff);
-}
 
-.ts-wrapper .ts-dropdown .ts-option:hover,
-.ts-wrapper .ts-dropdown .ts-option.active {
-  background-color: var(--tblr-primary);
-  color: var(--tblr-white, #fff);
-}

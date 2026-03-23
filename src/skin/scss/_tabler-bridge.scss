@@ -55,13 +55,20 @@
   }
 
   .ts-dropdown {
+    background-color: var(--tblr-bg-surface);
     border: 1px solid var(--tblr-border-color);
     border-radius: var(--tblr-border-radius);
     box-shadow: 0 4px 16px rgba(24, 35, 58, 0.12);
+    color: var(--tblr-body-color);
 
-    .active {
-      background-color: var(--tblr-primary);
-      color: #fff;
+    .option {
+      color: var(--tblr-body-color);
+
+      &:hover,
+      &.active {
+        background-color: var(--tblr-primary-lt);
+        color: var(--tblr-primary);
+      }
     }
   }
 }
