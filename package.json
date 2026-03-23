@@ -121,7 +121,7 @@
         "react-datepicker": "^9.1.0",
         "react-dom": "^19.2.4",
         "react-select": "^5.10.2",
-        "select2": "^4.0.13"
+        "tom-select": "^2.5.2"
     },
     "devDependencies": {
         "@biomejs/biome": "^2.4.7",

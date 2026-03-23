@@ -133,7 +133,7 @@ $validationError     = $validationError ?? '';
                             <div class="form-row">
                                 <div class="mb-3 col-md-6">
                                     <label for="sLanguage"><?= gettext('Language') ?></label>
-                                    <select class="form-control select2" id="sLanguage" name="sLanguage" style="width: 100%;">
+                                    <select class="form-control auto-tomselect" id="sLanguage" name="sLanguage" style="width: 100%;">
                                         <?php
                                         $supportedLocales = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json'), true);
                                         foreach ($supportedLocales as $locale => $localeData):
@@ -152,7 +152,7 @@ $validationError     = $validationError ?? '';
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
-                                    <select class="form-control select2" id="sTimeZone" name="sTimeZone" style="width: 100%;">
+                                    <select class="form-control auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
                                         <?php foreach ($timezones as $tz): ?>
                                         <option value="<?= InputUtils::escapeHTML($tz) ?>"
                                             <?= ($churchInfo['sTimeZone'] === $tz) ? 'selected' : '' ?>>
@@ -371,7 +371,7 @@ $validationError     = $validationError ?? '';
                     });
 
                     // Clear is-invalid on input/change so the user gets live feedback
-                    // Both 'input' (text/number) and 'change' (select, Select2) must be covered.
+                    // Both 'input' (text/number) and 'change' (select, TomSelect) must be covered.
                     document.querySelectorAll('#church-info-form input, #church-info-form select').forEach(function (el) {
                         ['input', 'change'].forEach(function (evtName) {
                             el.addEventListener(evtName, function () {

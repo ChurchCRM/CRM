@@ -90,14 +90,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/pdfmake.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/vfs_fonts.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/external/select2/select2.full.min.js') ?>"></script>
-
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/i18next/i18next.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/just-validate/just-validate.production.min.js') ?>"></script>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/IssueReporter.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/Footer.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/locale-loader.min.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">

@@ -430,7 +430,7 @@ Sub-items use `ps-3` (Bootstrap padding class) directly on the inner `<ul>` for 
 </li>
 ```
 
-Required CSS for the chevron (add to your custom SCSS, not the bridge):
+Required CSS for the chevron (add to your custom SCSS):
 ```scss
 .navbar-vertical .nav-link {
   .nav-link-title { flex: 1; }
@@ -443,6 +443,91 @@ Required CSS for the chevron (add to your custom SCSS, not the bridge):
   &[aria-expanded="true"] .nav-link-arrow { transform: rotate(180deg); opacity: 0.7; }
 }
 ```
+
+### Sidebar Badges + Chevron — Flex Wrapper Pattern <!-- learned: 2026-03-22 -->
+
+Tabler's CSS positions `.badge` elements **absolutely** on topbar nav-links (for notification dot style). In the vertical sidebar, this causes badges to overflow off-screen to the right.
+
+**Fix**: Wrap the `<a>` element and any badge `<span>` elements in a `<div class="d-flex align-items-center">`. The collapse div must remain **outside** this flex wrapper (as a block sibling), not inside it.
+
+```html
+<li class="nav-item<?= $isActive ? ' active' : '' ?>">
+  <!-- flex wrapper contains ONLY the link + badges -->
+  <div class="d-flex align-items-center">
+    <a href="..." class="nav-link flex-fill">
+      <span class="nav-link-icon ..."><i class="fa ..."></i></span>
+      <span class="nav-link-title">Menu Label</span>
+    </a>
+    <!-- badges sit INSIDE the flex row, to the right of the link -->
+    <span class="badge bg-danger me-1" id="pendingCount">0</span>
+  </div>
+  <!-- collapse div is a BLOCK sibling, NOT inside the flex wrapper -->
+  <div class="collapse" id="menu-N">
+    <ul class="navbar-nav ps-3">...</ul>
+  </div>
+</li>
+```
+
+For **collapsible parent items** with badges and a chevron, the chevron must also be a sibling of `<a>` (not a child), and the CSS selector must use the `~` sibling combinator (not descendant):
+
+```html
+<div class="d-flex align-items-center">
+  <a class="nav-link flex-fill" href="#menu-N" data-bs-toggle="collapse"
+     aria-expanded="false" aria-controls="menu-N">
+    <span class="nav-link-icon ..."><i class="fa ..."></i></span>
+    <span class="nav-link-title">Label</span>
+  </a>
+  <!-- optional badge -->
+  <span class="badge bg-info me-1">3</span>
+  <!-- chevron is LAST in flex row, SIBLING of <a>, not child -->
+  <span class="nav-link-arrow me-2"><i class="fa fa-chevron-down"></i></span>
+</div>
+```
+
+CSS — note the `~` sibling combinator (child `>` won't work when arrow is outside `<a>`):
+```scss
+// In _tabler-bridge.scss
+.navbar-vertical .nav-link {
+  .nav-link-title { flex: 1; }
+}
+.navbar-vertical .nav-link-arrow {
+  display: inline-flex; align-items: center;
+  flex-shrink: 0; opacity: 0.4; font-size: 0.65rem;
+  transition: transform 0.2s ease;
+}
+// ~ sibling combinator: .nav-link-arrow is NOT a child of [aria-expanded="true"]
+.navbar-vertical .nav-link[aria-expanded="true"] ~ .nav-link-arrow {
+  transform: rotate(180deg); opacity: 0.7;
+}
+```
+
+### Sidebar Active State <!-- learned: 2026-03-22 -->
+
+Tabler's left blue border on active sidebar items is triggered by **`.nav-item.active`** on the `<li>`, not just `.nav-link.active` on the `<a>`. Apply **both**:
+
+```html
+<li class="nav-item active">           <!-- ← triggers the left-border highlight -->
+  <a class="nav-link active" href="..."> <!-- ← triggers the link text color -->
+    ...
+  </a>
+</li>
+```
+
+The border is rendered by `.navbar-vertical .navbar-expand-lg .navbar-collapse .nav-item.active:after { border-left: ...}` in Tabler's CSS.
+
+### Sidebar Font Contrast Override <!-- learned: 2026-03-22 -->
+
+By default, Tabler's `.navbar-vertical` uses a light body color that may be low contrast on darker sidebar backgrounds. Override the CSS variables on the sidebar element directly:
+
+```scss
+// In _tabler-bridge.scss
+.navbar-vertical {
+  --tblr-navbar-color: var(--tblr-body-color);        // normal state
+  --tblr-navbar-hover-color: var(--tblr-emphasis-color); // hover state
+}
+```
+
+This ensures sidebar text uses full body-level contrast and emphasis color on hover, without affecting the topbar navbar.
 
 ### Breadcrumbs
 
@@ -603,6 +688,57 @@ modal.hide();
 $('#confirmModal').modal('show');
 $('#confirmModal').modal('hide');
 ```
+
+### Form/Action Modal — Best Practice Pattern <!-- learned: 2026-03-22 -->
+
+For modals that contain a form or collect user input before triggering an action, use the default size (no size class = 500px), a clear icon in the title, an `alert-info` explanation block (no dismiss button needed), and a Cancel + primary action footer:
+
+```html
+<div class="modal fade" id="actionModal" role="dialog">
+  <div class="modal-dialog">  <!-- default size, not modal-lg -->
+    <div class="modal-content">
+      <form name="actionForm">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?>
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                  aria-label="<?= gettext('Close') ?>"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Explanation alert — no dismiss button, not dismissible -->
+          <div class="alert alert-info mb-3">
+            <i class="ti ti-info-circle me-1"></i>
+            <?= gettext('Brief explanation of what will happen.') ?>
+          </div>
+          <!-- Optional input -->
+          <div class="form-group">
+            <label for="fieldId" class="font-weight-bold">
+              <?= gettext('Field label') ?>
+              <span class="text-muted font-weight-normal">(<?= gettext('optional') ?>)</span>
+            </label>
+            <textarea id="fieldId" class="form-control" rows="4"
+                      placeholder="<?= gettext('Placeholder…') ?>"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+                  data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+          <button type="button" class="btn btn-primary" id="submitBtn">
+            <i class="ti ti-brand-github me-1"></i><?= gettext('Primary Action') ?>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+```
+
+**Key rules:**
+- Use default `modal-dialog` (500px) for simple forms — `modal-lg` is for data-dense content only
+- Alert inside modal body: use `alert-info` without `alert-dismissible` — the modal's own close button is sufficient
+- Footer always has Cancel (`btn-secondary` + `data-bs-dismiss`) before the primary action
+- Icon in modal title uses `me-2` spacing
 
 ---
 

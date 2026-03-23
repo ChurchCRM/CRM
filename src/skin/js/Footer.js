@@ -1,8 +1,24 @@
 // i18next initialization is now handled by locale-loader.js
 
+// Alias jQuery from global scope — churchcrm.min.js sets window.jQuery in <head>
+var $ = window.jQuery;
+
+if (!$) {
+  console.warn("[Footer.js] jQuery not available. DOM functions will be deferred.");
+}
+
 // Wait for both DOM ready AND locales loaded before initializing
 function initializeApp() {
-  // Global search autocomplete (replaces Select2)
+  // Guard against jQuery not being available
+  if (!window.jQuery) {
+    console.error("[Footer.js] Cannot initialize app - jQuery not loaded");
+    // Retry after a short delay
+    setTimeout(initializeApp, 500);
+    return;
+  }
+  
+  // Re-assign $ in case it was loaded after this script
+  const $ = window.jQuery;
   (() => {
     var input = document.getElementById("globalSearch");
     var dropdown = document.getElementById("globalSearchDropdown");
@@ -196,9 +212,22 @@ window.CRM.onLocalesReady = (callback) => {
 };
 
 // Wait for both DOM and locales to be ready
-$(document).ready(() => {
-  window.CRM.onLocalesReady(initializeApp);
-});
+// Guard against jQuery not being available yet
+if (window.jQuery && typeof window.jQuery === "function") {
+  window.jQuery(document).ready(() => {
+    window.CRM.onLocalesReady(initializeApp);
+  });
+} else {
+  // Fallback if jQuery is not available: use DOM ready event
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      window.CRM.onLocalesReady(initializeApp);
+    });
+  } else {
+    // DOM already loaded
+    window.CRM.onLocalesReady(initializeApp);
+  }
+}
 
 function showGlobalMessage(message, callOutClass) {
   window.CRM.notify(message, {

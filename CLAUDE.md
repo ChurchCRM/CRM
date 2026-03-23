@@ -47,7 +47,7 @@ Update the relevant skill file immediately when you:
 
 - A class, utility, or helper you had to search for (others will too)
 - A constraint you violated and had to fix (e.g., wrong Bootstrap class, missing cast)
-- An edge case in Propel ORM, Slim 4, or AdminLTE not in existing docs
+- An edge case in Propel ORM, Slim 4, or Tabler/Bootstrap 5 not in existing docs
 - A build/test step that's easy to forget
 - A new module, route group, or architectural pattern added to the codebase
 

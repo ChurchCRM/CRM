@@ -641,7 +641,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div id="stateOptionDiv" class="mb-3 col-md-3">
                     <label for="State"><?= gettext('State') ?>:</label>
-                    <select id="State" name="State" class="form-control select2" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -658,7 +658,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
-                    <select id="Country" name="Country" class="form-control select2" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>

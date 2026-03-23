@@ -201,7 +201,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div id="upgrade-stepper" class="bs-stepper">
                     <div class="bs-stepper-header" role="tablist">
                         <!-- Step 1: Pre-Upgrade Checks -->
-                        <div class="step<?= $hasWarnings ? ' warning-step' : '' ?>" data-bs-target="#step-warnings">
+                        <div class="step<?= $hasWarnings ? ' warning-step' : '' ?>" data-target="#step-warnings">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-warnings" id="step-warnings-trigger">
                                 <span class="bs-stepper-circle">
                                     <i class="fa fa-exclamation-triangle"></i>
@@ -212,7 +212,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="line"></div>
                         
                         <!-- Step 2: Backup Database -->
-                        <div class="step" data-bs-target="#step-backup">
+                        <div class="step" data-target="#step-backup">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-backup" id="step-backup-trigger">
                                 <span class="bs-stepper-circle">
                                     <i class="fa fa-database"></i>
@@ -223,7 +223,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="line"></div>
                         
                         <!-- Step 3: Download and Apply Update -->
-                        <div class="step" data-bs-target="#step-apply">
+                        <div class="step" data-target="#step-apply">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-apply" id="step-apply-trigger">
                                 <span class="bs-stepper-circle">
                                     <i class="fa fa-cloud-download"></i>
@@ -234,7 +234,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="line"></div>
                         
                         <!-- Step 4: Complete -->
-                        <div class="step" data-bs-target="#step-complete">
+                        <div class="step" data-target="#step-complete">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-complete" id="step-complete-trigger">
                                 <span class="bs-stepper-circle">
                                     <i class="fa fa-check"></i>

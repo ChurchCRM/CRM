@@ -21,7 +21,7 @@ td.TextColumnWithBottomBorder {
 
 select,
 input[type="text"],
-.select2-container {
+.ts-wrapper {
   max-width: 100%;
 }
 
@@ -64,12 +64,12 @@ input.date-picker {
   vertical-align: middle;
 }
 
-/* Select2: improve appearance and wrapping of selected choices (chips) */
-.card.card-body .select2-container--default .select2-selection--multiple {
+/* Tom Select: improve appearance and wrapping of selected choices (chips) */
+.card.card-body .ts-wrapper.multi .ts-control {
   min-height: 40px;
   padding: 6px 8px;
 }
-.card.card-body .select2-container--default .select2-selection--multiple .select2-selection__choice {
+.card.card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
   background: #f0f0f0;
@@ -79,9 +79,6 @@ input.date-picker {
   line-height: 1.8;
   max-width: 100%;
   white-space: normal;
-}
-.card.card-body .select2-container--default .select2-selection--multiple .select2-search--inline {
-  margin-top: 4px;
 }
 
 /* Make native multiple selects readable on narrow widths */

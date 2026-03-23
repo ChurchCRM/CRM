@@ -34,14 +34,14 @@ require_once __DIR__ . '/header.php';
     <!-- Stepper -->
     <div id="setup-stepper" class="bs-stepper">
         <div class="bs-stepper-header" role="tablist">
-            <div class="step active" data-bs-target="#step-prerequisites">
+            <div class="step active" data-target="#step-prerequisites">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-prerequisites" id="step-prerequisites-trigger">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">System Check</span>
                 </button>
             </div>
             <div class="line"></div>
-            <div class="step" data-bs-target="#step-database">
+            <div class="step" data-target="#step-database">
                 <button type="button" class="step-trigger" role="tab" aria-controls="step-database" id="step-database-trigger">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">Configure</span>

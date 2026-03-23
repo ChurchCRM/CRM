@@ -21,7 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $familyCount['familyCount'] ?></div>
+                            <div class="fw-medium"><?= $familyCount['familyCount'] ?></div>
                             <div class="text-muted"><?= gettext('Families') ?></div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $personCount ?></div>
+                            <div class="fw-medium"><?= $personCount ?></div>
                             <div class="text-muted"><?= gettext('People') ?></div>
                         </div>
                     </div>
@@ -56,7 +56,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $groupStats['sundaySchoolkids'] ?></div>
+                            <div class="fw-medium"><?= $groupStats['sundaySchoolkids'] ?></div>
                             <div class="text-muted"><?= gettext('Sunday School Kids') ?></div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $groupStats['groups'] ?></div>
+                            <div class="fw-medium"><?= $groupStats['groups'] ?></div>
                             <div class="text-muted"><?= gettext('Groups') ?></div>
                         </div>
                     </div>
@@ -315,7 +315,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= $sRootPath ?>/members/self-register.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-user-clock fa-fw text-muted me-3"></i>
                         <div>
-                            <div class="font-weight-medium"><?= gettext('Self Registration Report') ?></div>
+                            <div class="fw-medium"><?= gettext('Self Registration Report') ?></div>
                             <div class="text-muted small"><?= gettext('List families created via self registration') ?></div>
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
@@ -323,7 +323,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= $sRootPath ?>/GroupReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-users fa-fw text-muted me-3"></i>
                         <div>
-                            <div class="font-weight-medium"><?= gettext('Group & Role Reports') ?></div>
+                            <div class="fw-medium"><?= gettext('Group & Role Reports') ?></div>
                             <div class="text-muted small"><?= gettext('Report on groups and roles (may be multi-page PDF)') ?></div>
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
@@ -331,7 +331,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-address-book fa-fw text-muted me-3"></i>
                         <div>
-                            <div class="font-weight-medium"><?= gettext('People Directory') ?></div>
+                            <div class="fw-medium"><?= gettext('People Directory') ?></div>
                             <div class="text-muted small"><?= gettext('Printable directory of all people, grouped by family') ?></div>
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
@@ -339,7 +339,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <a href="<?= $sRootPath ?>/LettersAndLabels.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-muted me-3"></i>
                         <div>
-                            <div class="font-weight-medium"><?= gettext('Letters & Mailing Labels') ?></div>
+                            <div class="fw-medium"><?= gettext('Letters & Mailing Labels') ?></div>
                             <div class="text-muted small"><?= gettext('Generate letters and mailing labels') ?></div>
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>

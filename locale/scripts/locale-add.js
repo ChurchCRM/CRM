@@ -226,8 +226,7 @@ Examples:
             dataTables: config.datatables,
             fullCalendar: true,
             fullCalendarLocale: config.code,
-            datePicker: true,
-            select2: true
+            datePicker: true
         };
     }
 

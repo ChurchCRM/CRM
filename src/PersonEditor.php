@@ -788,7 +788,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('State') ?>:
                         <?= $bFamilyState ? '</span>' : '' ?>
                     </label>
-                    <select id="State" name="State" class="form-control select2" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-control" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -814,7 +814,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-control select2" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>
@@ -1173,7 +1173,8 @@ require_once __DIR__ . '/Include/Header.php';
         // Apply inputmask to non-phone fields (fields with data-mask but no"No format" checkbox)
         $("[data-mask]").inputmask();
         
-        $("#familyId").select2();
+        var famEl = document.getElementById("familyId");
+        if (famEl && !famEl.tomselect) new TomSelect(famEl);
     });
 </script>
 

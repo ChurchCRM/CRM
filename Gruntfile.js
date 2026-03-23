@@ -88,13 +88,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["node_modules/select2/dist/js/select2.full.min.js"],
-                        dest: "src/skin/external/select2",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["node_modules/datatables.net/js/dataTables.min.js"],
                         dest: "src/skin/external/datatables/",
                     },
@@ -186,14 +179,6 @@ module.exports = function (grunt) {
                         cwd: "node_modules/bootstrap-datepicker/dist",
                         src: ["locales/*.js", "locales/*.min.js"],
                         dest: "src/locale/vendor/bootstrap-datepicker/",
-                    },
-                    {
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        cwd: "node_modules/select2/dist",
-                        src: ["js/i18n/*.js"],
-                        dest: "src/locale/vendor/select2/",
                     },
                     {
                         expand: true,

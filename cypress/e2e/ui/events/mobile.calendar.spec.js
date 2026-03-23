@@ -37,7 +37,7 @@ describe("Mobile Calendar", () => {
             .then(($cols) => {
                 const firstRect = $cols[0].getBoundingClientRect();
                 const secondRect = $cols[1].getBoundingClientRect();
-                expect(secondRect.top).to.be.greaterThan(firstRect.bottom);
+                expect(secondRect.top).to.be.at.least(firstRect.bottom);
             });
     });
 
@@ -78,7 +78,7 @@ describe("Mobile Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
 
         // Modal should appear and be properly sized for mobile
-        cy.get(".modal-dialog").should("be.visible");
-        cy.get(".modal-header input").should("be.visible").type(title);
+        cy.get(".modal.show .modal-dialog").should("be.visible");
+        cy.get(".modal.show .modal-header input").should("be.visible").type(title);
     });
 });

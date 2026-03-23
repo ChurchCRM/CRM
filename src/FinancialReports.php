@@ -352,40 +352,37 @@ EOD;
 ?>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
-  $("#family").select2();
+  var familyEl = document.getElementById("family");
+  if (familyEl && !familyEl.tomselect) new TomSelect(familyEl, { plugins: ["remove_button"] });
   $("#addAllFamilies").click(function () {
-  var all = [];
-      $("#family > option").each(function () {
-          all.push(this.value);
-      });
-       $("#family").val(all).trigger("change");
+      var all = [];
+      $("#family > option").each(function () { all.push(this.value); });
+      if (familyEl && familyEl.tomselect) { familyEl.tomselect.setValue(all); }
   });
   $("#clearAllFamilies").click(function () {
-        $("#family").val(null).trigger("change");
+      if (familyEl && familyEl.tomselect) { familyEl.tomselect.clear(); }
   });
 
-  $("#classList").select2();
+  var classListEl = document.getElementById("classList");
+  if (classListEl && !classListEl.tomselect) new TomSelect(classListEl, { plugins: ["remove_button"] });
   $("#addAllClasses").click(function () {
-  var all = [];
-      $("#classList > option").each(function () {
-          all.push(this.value);
-      });
-       $("#classList").val(all).trigger("change");
+      var all = [];
+      $("#classList > option").each(function () { all.push(this.value); });
+      if (classListEl && classListEl.tomselect) { classListEl.tomselect.setValue(all); }
   });
   $("#clearAllClasses").click(function () {
-        $("#classList").val(null).trigger("change");
+      if (classListEl && classListEl.tomselect) { classListEl.tomselect.clear(); }
   });
 
-  $("#fundsList").select2();
+  var fundsListEl = document.getElementById("fundsList");
+  if (fundsListEl && !fundsListEl.tomselect) new TomSelect(fundsListEl, { plugins: ["remove_button"] });
   $("#addAllFunds").click(function () {
-  var all = [];
-      $("#fundsList > option").each(function () {
-          all.push(this.value);
-      });
-       $("#fundsList").val(all).trigger("change");
+      var all = [];
+      $("#fundsList > option").each(function () { all.push(this.value); });
+      if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.setValue(all); }
   });
   $("#clearAllFunds").click(function () {
-        $("#fundsList").val(null).trigger("change");
+      if (fundsListEl && fundsListEl.tomselect) { fundsListEl.tomselect.clear(); }
   });
 
   // Handle report download - clear"No Data Found" banner when exporting

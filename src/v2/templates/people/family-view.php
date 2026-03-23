@@ -10,7 +10,7 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
-$sPageTitle =  $family->getName() ." -" . gettext("Family");
+$sPageTitle = $family->getName() . ' - ' . gettext('Family');
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $curYear = DateTimeUtils::getCurrentYear();

@@ -19,7 +19,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
+                        <div class="fw-medium" id="familyCountDashboard"><?= $dashboardCounts["families"] ?></div>
                         <div class="text-muted"><?= gettext('Families') ?></div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
+                        <div class="fw-medium" id="peopleStatsDashboard"><?= $dashboardCounts["People"] ?></div>
                         <div class="text-muted"><?= gettext('People') ?></div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
+                        <div class="fw-medium" id="groupsCountDashboard"><?= $dashboardCounts["Groups"] ?></div>
                         <div class="text-muted"><?= gettext('Groups') ?></div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
+                        <div class="fw-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
                         <div class="text-muted"><?= gettext('Sunday School') ?></div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $dashboardCounts["events"] ?></div>
+                        <div class="fw-medium"><?= $dashboardCounts["events"] ?></div>
                         <div class="text-muted"><?= gettext('Check-ins') ?></div>
                     </div>
                 </div>

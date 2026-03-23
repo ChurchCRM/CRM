@@ -53,24 +53,29 @@ $MenuFirst = 1;
 
   <!-- Issue Report Modal -->
   <div id="IssueReportModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog">
       <div class="modal-content" id="bugForm">
         <form name="issueReport">
           <input type="hidden" name="pageName" value="<?= $_SERVER['REQUEST_URI'] ?>"/>
           <div class="modal-header">
-            <h5 class="modal-title"><?= gettext('Issue Report!') ?></h5>
+            <h5 class="modal-title"><i class="ti ti-bug me-2"></i><?= gettext('Report an Issue') ?></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
           </div>
           <div class="modal-body">
-            <div class="alert alert-info alert-dismissible">
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-hidden="true"></button>
-              <h5><i class="ti ti-info-circle me-1"></i><?= gettext('Alert!') ?></h5>
-              <?= gettext('When you click"Submit to GitHub" you will be directed to GitHub issues page with your system info prefilled.') ?>
-              <?= gettext('No personally identifiable information will be submitted unless you purposefully include it.') ?>
+            <div class="alert alert-info mb-3">
+              <i class="ti ti-info-circle me-1"></i>
+              <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
+            </div>
+            <div class="form-group">
+              <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-muted fw-normal">(<?= gettext('optional') ?>)</span></label>
+              <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary" id="submitIssue"><?= gettext('Submit to GitHub') ?></button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+            <button type="button" class="btn btn-primary" id="submitIssue">
+              <i class="ti ti-brand-github me-1"></i><?= gettext('Open GitHub Issue') ?>
+            </button>
           </div>
         </form>
       </div>

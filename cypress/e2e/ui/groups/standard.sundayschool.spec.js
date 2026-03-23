@@ -34,11 +34,12 @@ describe("Standard Sunday School", () => {
         cy.get(".card-title").should("contain", "Students");
     });
 
-    it("Class Overview section displays correctly", () => {
+    it("Class overview section displays correctly", () => {
         cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
-        // Verify Class Overview card exists
-        cy.contains("Class Overview").should("exist");
+        // Verify overview card exists with class name
+        cy.contains("Sunday School").should("exist");
+        cy.contains("Angels class").should("exist");
 
         // Verify birthday chart is present
         cy.get("#bar-chart").should("exist");

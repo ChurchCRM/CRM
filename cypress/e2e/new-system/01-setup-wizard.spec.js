@@ -183,17 +183,13 @@ describe('01 - Setup Wizard', () => {
             cy.get('#sChurchAddress').clear().type('123 Main Street');
             cy.get('#sChurchCity').clear().type('Springfield');
 
-            // Wait for Select2-initialised country dropdown then pick US
-            cy.get('#sChurchCountry', { timeout: 5000 }).should('have.class', 'select2-hidden-accessible');
-            cy.get('#sChurchCountry').then(($select) => {
-                $select.val('US').trigger('change');
-            });
+            // Wait for TomSelect-initialised country dropdown then pick US
+            cy.get('#sChurchCountry', { timeout: 5000 }).siblings('.ts-wrapper').should('exist');
+            cy.tomSelectByValue('#sChurchCountry', 'US');
 
             // State dropdown appears after country selection
-            cy.get('#sChurchState', { timeout: 10000 }).should('have.class', 'select2-hidden-accessible');
-            cy.get('#sChurchState').then(($select) => {
-                $select.val('IL').trigger('change');
-            });
+            cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+            cy.tomSelectByValue('#sChurchState', 'IL');
 
             cy.get('#sChurchZip').clear().type('62701');
 
@@ -232,8 +228,8 @@ describe('01 - Setup Wizard', () => {
             cy.url().then((url) => {
                 cy.log('Redirected to: ' + url);
                 // Church info is now saved so the middleware no longer redirects;
-                // expect the full AdminLTE layout.
-                cy.get('.main-sidebar, .wrapper, .content-wrapper').should('exist');
+                // expect the Tabler page layout.
+                cy.get('.page, .page-wrapper, .navbar').should('exist');
             });
         });
 

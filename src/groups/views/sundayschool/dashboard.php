@@ -20,7 +20,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $classes ?></div>
+                        <div class="fw-medium"><?= $classes ?></div>
                         <div class="text-muted"><?= gettext('Classes') ?></div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $teachers ?></div>
+                        <div class="fw-medium"><?= $teachers ?></div>
                         <div class="text-muted"><?= gettext('Teachers') ?></div>
                     </div>
                 </div>
@@ -54,7 +54,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $kids ?></div>
+                        <div class="fw-medium"><?= $kids ?></div>
                         <div class="text-muted"><?= gettext('Students') ?></div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $families ?></div>
+                        <div class="fw-medium"><?= $families ?></div>
                         <div class="text-muted"><?= gettext('Families') ?></div>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $maleKids ?></div>
+                        <div class="fw-medium"><?= $maleKids ?></div>
                         <div class="text-muted"><?= gettext('Boys') ?></div>
                     </div>
                 </div>
@@ -105,7 +105,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="font-weight-medium"><?= $femaleKids ?></div>
+                        <div class="fw-medium"><?= $femaleKids ?></div>
                         <div class="text-muted"><?= gettext('Girls') ?></div>
                     </div>
                 </div>

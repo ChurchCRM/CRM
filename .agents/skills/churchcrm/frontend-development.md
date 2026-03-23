@@ -11,59 +11,68 @@ complexity: "intermediate"
 ## Context
 This skill covers frontend patterns, UI components, notifications, internationalization, and asset management in ChurchCRM.
 
-## Stack
+## Stack <!-- updated: 2026-03-22 -->
 
-- **Bootstrap 4.6.2** - AdminLTE v2 pattern for legacy pages (NEVER use Bootstrap 5)
-- **React + TypeScript** - Modern components
-- **Webpack** - Build system
-- **Quill** - Rich text editor
-- **i18next** - Frontend internationalization
+- **Tabler + Bootstrap 5.3.8** — Primary UI framework (migrated from AdminLTE/BS4)
+- **React + TypeScript** — Modern components
+- **Webpack** — Build system
+- **ApexCharts** — Charting (replaced Chart.js)
+- **i18next** — Frontend internationalization
 
 **Verified versions in this repo (package.json):**
-- `bootstrap` 4.6.2
-- `admin-lte` 3.2.0
-- `react` 19.2.4, `react-dom` 19.2.4
-- `react-bootstrap` 2.10.10
-- `typescript` 5.9.3
-- `webpack` 5.105.2
+- `@tabler/core` ^1.4.0
+- `@tabler/icons-webfont` ^3.40.0
+- `bootstrap` ^5.3.8
+- `apexcharts` ^5.10.4
+- `react` ^19.2.4, `react-dom` ^19.2.4
+- `typescript` ^5.9.3
+- `webpack` ^5.105.4
 
-## Bootstrap 4.6.2 (CRITICAL)
+**For detailed component reference**, see `tabler-components.md`.
 
-**ALWAYS use Bootstrap 4.6.2 CSS classes, never Bootstrap 5 classes:**
+## Bootstrap 5 / Tabler (CRITICAL) <!-- updated: 2026-03-22 -->
+
+**Use Bootstrap 5 + Tabler CSS classes for all new and migrated code:**
 
 ```php
-// ✅ CORRECT - Bootstrap 4.6.2 classes
-<div class="text-center align-top">Content</div>
-<button class="btn btn-primary btn-block">Full Width Button</button>
-<div class="btn-group btn-group-sm d-flex" role="group">
-    <a class="btn btn-outline-primary flex-fill">Button 1</a>
-    <a class="btn btn-outline-primary flex-fill">Button 2</a>
-</div>
+// ✅ CORRECT - Bootstrap 5 / Tabler classes
+<div class="ms-3 me-2 ps-2 pe-1">Spacing</div>
+<span class="badge bg-primary">Badge</span>
+<div class="float-end text-end">Aligned</div>
+<span class="fw-bold">Bold text</span>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+<div class="visually-hidden">Screen reader only</div>
+<div class="form-select">Select</div>
+<div class="form-check">Check</div>
 
-// ❌ WRONG - Bootstrap 5 classes (DO NOT USE!)
-<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
-<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
-<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
+// ❌ WRONG - Bootstrap 4 classes (DO NOT USE in new code)
+<div class="ml-3 mr-2 pl-2 pr-1">Spacing</div>    // Use ms-/me-/ps-/pe-
+<span class="badge badge-primary">Badge</span>       // Use bg-primary
+<div class="float-right text-right">Aligned</div>   // Use float-end/text-end
+<span class="font-weight-bold">Bold text</span>     // Use fw-bold
+<button class="close">&times;</button>               // Use btn-close
+<div class="sr-only">Hidden</div>                    // Use visually-hidden
+<div class="custom-select">Select</div>              // Use form-select
+<div class="custom-control">Check</div>              // Use form-check
+<div class="form-group">Group</div>                  // Use <div class="mb-3">
 ```
 
-**Bootstrap 5 Classes to AVOID:**
-- `w-100` on buttons (use `btn-block`)
-- `gap-*` utilities (use margins/padding instead)
-- `d-grid` (use `d-flex` or Bootstrap 4 grid)
-- `text-decoration-*` (use existing classes)
-- `fw-*` and `fs-*` font utilities
-- `rounded-*` beyond Bootstrap 4 values
-- `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
-- `flex-wrap` with `gap-*` (use proper spacing classes instead)
+**Data attributes must use `data-bs-*` prefix:**
+```php
+// ✅ CORRECT
+data-bs-toggle="modal" data-bs-target="#myModal" data-bs-dismiss="modal"
 
-**Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes:**
+// ❌ WRONG
+data-toggle="modal" data-target="#myModal" data-dismiss="modal"
+```
+
+**Always use CSS classes, never deprecated HTML attributes:**
 
 ```php
-// ✅ CORRECT - Bootstrap 4.6.2 classes
+// ✅ CORRECT
 <div class="text-center align-top">Content</div>
-<button style="margin-top: 12px;">Click</button>  // OK for custom values
 
-// ❌ WRONG - Deprecated HTML attributes  
+// ❌ WRONG - Deprecated HTML attributes
 <div align="center" valign="top">Content</div>
 ```
 
@@ -149,31 +158,29 @@ if (confirm('Are you sure?')) {
 }
 ```
 
-## Modals (Bootstrap 4)
+## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
-**For complex forms/modals, use Bootstrap 4 static modals:**
+**For complex forms/modals, use Bootstrap 5 data attributes:**
 
 ```html
 <!-- Button trigger -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     <?= gettext('Open Modal') ?>
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><?= gettext('Modal Title') ?></h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <!-- Form content -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <?= gettext('Close') ?>
                 </button>
                 <button type="button" class="btn btn-primary">
@@ -185,16 +192,19 @@ if (confirm('Are you sure?')) {
 </div>
 ```
 
-**Programmatic modal control:**
+**Programmatic modal control (Bootstrap 5 API):**
 
 ```javascript
-// Show modal
-$('#myModal').modal('show');
+// Bootstrap 5 — use bootstrap.Modal class
+const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+myModal.show();
+myModal.hide();
 
-// Hide modal
+// jQuery still works (BS5 auto-detects jQuery)
+$('#myModal').modal('show');
 $('#myModal').modal('hide');
 
-// Modal events
+// Modal events (same as BS4)
 $('#myModal').on('shown.bs.modal', function() {
     // Modal is now visible
 });

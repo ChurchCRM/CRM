@@ -74,7 +74,7 @@ describe("Standard Person", () => {
         cy.get("#LastName").type(lastName);
         
         // Select "Create a new family (using last name)" option (-1)
-        // Use force:true because Select2 covers the native select element
+        // Use force:true because TomSelect covers the native select element
         cy.get("#familyId").select("-1", { force: true });
         
         // Select Head of Household role

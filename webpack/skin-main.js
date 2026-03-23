@@ -39,8 +39,8 @@ import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
 import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
 import "datatables.net-select-bs5/css/select.bootstrap5.min.css";
 
-// Select2 base CSS (Tom Select migration is Phase 5)
-import "select2/dist/css/select2.min.css";
+// Tom Select CSS — Bootstrap 5 themed
+import "tom-select/dist/css/tom-select.bootstrap5.css";
 
 // Bootstrap DatePicker and DateRangePicker CSS
 import "bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css";
@@ -72,6 +72,9 @@ import { showPhotoLightbox, deletePhoto } from "./photo-utils";
 // Import form utilities (phone mask toggles, etc.)
 import "../src/skin/js/form-utils.js";
 
+// Import issue reporter (GitHub issue modal)
+import "../src/skin/js/IssueReporter.js";
+
 import "../src/skin/churchcrm.scss";
 
 // Make Quill initialization function available globally
@@ -100,18 +103,100 @@ if (typeof window !== "undefined") {
   }
 }
 
-// Set global Select2 defaults for Bootstrap 4 theme and language
-// This needs to run after jQuery and Select2 are loaded
-if (typeof window !== "undefined") {
-  window.addEventListener("DOMContentLoaded", function () {
-    if (window.$ && window.$.fn && window.$.fn.select2) {
-      window.$.fn.select2.defaults.set("theme", "default");
+// Tom Select — expose globally and provide jQuery bridge
+import TomSelect from "tom-select";
 
-      // Set Select2 language based on current locale
-      // The Select2 i18n files are bundled by Grunt into locale-specific JS files
-      if (window.CRM && window.CRM.shortLocale) {
-        window.$.fn.select2.defaults.set("language", window.CRM.shortLocale);
+if (typeof window !== "undefined") {
+  window.TomSelect = TomSelect;
+
+  /**
+   * jQuery bridge for TomSelect — drop-in replacement for $.fn.select2()
+   * Supports the most common Select2 option patterns used in this codebase.
+   *
+   * Usage:  $('#mySelect').tomselect({ placeholder: '...', allowClear: true });
+   *         $('#mySelect').tomselect('destroy');
+   *
+   * The bridge stores TomSelect instances on the DOM element as `element.tomselect`.
+   */
+  if (window.$ && window.$.fn) {
+    window.$.fn.tomselect = function (optionsOrCommand) {
+      // Handle string commands: 'destroy', 'val', etc.
+      if (typeof optionsOrCommand === "string") {
+        return this.each(function () {
+          const ts = this.tomselect;
+          if (!ts) return;
+          if (optionsOrCommand === "destroy") {
+            ts.destroy();
+          } else if (optionsOrCommand === "clear") {
+            ts.clear(true);
+          }
+        });
       }
-    }
-  });
+
+      const opts = optionsOrCommand || {};
+
+      return this.each(function () {
+        // Skip if already initialized
+        if (this.tomselect) return;
+
+        const tsOpts = {};
+
+        // Placeholder
+        if (opts.placeholder) {
+          tsOpts.placeholder = opts.placeholder;
+        } else if (this.dataset && this.dataset.placeholder) {
+          tsOpts.placeholder = this.dataset.placeholder;
+        }
+
+        // Allow clearing
+        if (opts.allowClear) {
+          tsOpts.allowEmptyOption = true;
+        }
+
+        // Multiple selection — auto-detect from <select multiple>
+        if (this.multiple) {
+          tsOpts.plugins = tsOpts.plugins || [];
+          tsOpts.plugins.push("remove_button");
+        }
+
+        // Tags mode (e.g. disallowed passwords)
+        if (opts.tags) {
+          tsOpts.create = true;
+          tsOpts.persist = false;
+          if (opts.tokenSeparators) {
+            tsOpts.delimiter = opts.tokenSeparators[0] || ",";
+            tsOpts.createOnBlur = true;
+            tsOpts.plugins = tsOpts.plugins || [];
+            tsOpts.plugins.push("remove_button");
+          }
+        }
+
+        // Pre-loaded data array (for selects populated via JS data)
+        if (opts.data && Array.isArray(opts.data)) {
+          tsOpts.options = opts.data.map((item) => {
+            if (typeof item === "string") {
+              return { value: item, text: item };
+            }
+            return { value: String(item.id), text: item.text };
+          });
+          tsOpts.items = opts.data.map((item) => (typeof item === "string" ? item : String(item.id)));
+          tsOpts.valueField = "value";
+          tsOpts.labelField = "text";
+          tsOpts.searchField = "text";
+        }
+
+        // Dropdown parent (for modals like bootbox)
+        if (opts.dropdownParent) {
+          tsOpts.dropdownParent = opts.dropdownParent instanceof $ ? opts.dropdownParent[0] : opts.dropdownParent;
+        }
+
+        // Merge any extra TomSelect-native options
+        if (opts.tsOptions) {
+          Object.assign(tsOpts, opts.tsOptions);
+        }
+
+        new TomSelect(this, tsOpts);
+      });
+    };
+  }
 }

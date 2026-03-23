@@ -3,7 +3,6 @@
    in src/v2/templates/people/person-list.php
 */
 import $ from "jquery";
-import "select2";
 
 // Expose a global initializer for server-rendered variables
 window.initializePeopleListFromServer = function (serverVars) {
@@ -76,8 +75,7 @@ window.initializePeopleListFromServer = function (serverVars) {
     }
   }
 
-  // Initialize Select2 for elements using the shared class
-  $(".filter-Select2").select2({ width: "resolve" });
+  // TomSelect initialization for filter dropdowns is handled inline in person-list.php
 };
 
 export default window.initializePeopleListFromServer;

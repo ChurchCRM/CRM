@@ -50,13 +50,13 @@ describe("Standard People", () => {
         
        cy.wait(500);
 
-        // Apply gender filter using Select2
-        cy.get(".filter-Gender").parent().find(".select2-selection").click();
-        cy.get(".select2-results__option").contains("Female").click();
-        
-        // Apply classification filter using Select2
-        cy.get(".filter-Classification").parent().find(".select2-selection").click();
-        cy.get(".select2-results__option").contains("Member").click();
+        // Apply gender filter using TomSelect
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown .option").contains("Female").click();
+
+        // Apply classification filter using TomSelect
+        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown .option").contains("Member").click();
         
         // Table should show filtered results
         cy.get("#members tbody tr").should("have.length.greaterThan", 0);

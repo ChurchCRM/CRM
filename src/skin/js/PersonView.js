@@ -50,12 +50,12 @@ $(document).ready(function () {
     );
   });
 
-  $("#input-person-properties").on("select2:select", function (event) {
-    promptBox = $("#prompt-box");
+  $("#input-person-properties").on("change", function () {
+    var promptBox = $("#prompt-box");
     promptBox.removeClass("form-group").html("");
-    selected = $("#input-person-properties :selected");
-    pro_prompt = selected.data("pro_prompt");
-    pro_value = selected.data("pro_value");
+    var selected = $("#input-person-properties :selected");
+    var pro_prompt = selected.data("pro_prompt");
+    var pro_value = selected.data("pro_value");
     if (pro_prompt) {
       promptBox
         .addClass("form-group")

@@ -59,10 +59,10 @@ describe('04 - System Reset', () => {
                 cy.get('#location-tab').click();
                 cy.get('#sChurchAddress').clear().type('123 Main Street');
                 cy.get('#sChurchCity').clear().type('Springfield');
-                cy.get('#sChurchCountry', { timeout: 5000 }).should('have.class', 'select2-hidden-accessible');
-                cy.get('#sChurchCountry').then(($el) => { $el.val('US').trigger('change'); });
-                cy.get('#sChurchState', { timeout: 10000 }).should('have.class', 'select2-hidden-accessible');
-                cy.get('#sChurchState').then(($el) => { $el.val('IL').trigger('change'); });
+                cy.get('#sChurchCountry', { timeout: 5000 }).siblings('.ts-wrapper').should('exist');
+                cy.tomSelectByValue('#sChurchCountry', 'US');
+                cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
+                cy.tomSelectByValue('#sChurchState', 'IL');
                 cy.get('#sChurchZip').clear().type('62701');
                 cy.wait(500);
                 cy.get('#church-info-form').submit();

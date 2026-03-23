@@ -252,13 +252,13 @@ require_once __DIR__ . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function() {
     $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-      var target = $(e.target).attr("href") // activated tab
-      $(target +" .choiceSelectBox").select2({
-        width: 'resolve'
+      var target = $(e.target).attr("href"); // activated tab
+      $(target + " .choiceSelectBox").each(function () {
+        if (!this.tomselect) new TomSelect(this);
       });
     });
-    $(".choiceSelectBox").select2({
-      width: 'resolve'
+    $(".choiceSelectBox").each(function () {
+      if (!this.tomselect) new TomSelect(this);
     });
 
     <?php

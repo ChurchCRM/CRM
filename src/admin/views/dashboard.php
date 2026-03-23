@@ -188,7 +188,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-grow-1 <?= $step['done'] ? 'text-muted' : '' ?>">
-                                    <span class="font-weight-600 <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
+                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>

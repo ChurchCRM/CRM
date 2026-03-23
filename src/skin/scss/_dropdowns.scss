@@ -1,7 +1,7 @@
 /**
  * ChurchCRM Dropdown Customizations
  *
- * Custom styles for dropdown menus and Select2 selections.
+ * Custom styles for dropdown menus and TomSelect selections.
  * Extends Bootstrap dropdown functionality with ChurchCRM-specific styling.
  * Component-specific - no Bootstrap duplicates.
  */
@@ -12,8 +12,9 @@
   }
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
+.ts-wrapper.multi .ts-control .item {
   background-color: #222d32;
+  color: #fff;
 }
 
 .user-header a.item_link {

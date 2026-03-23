@@ -269,7 +269,7 @@ git add new/path/file.php
   - "Replace deprecated HTML attributes with Bootstrap CSS"
   - "Add missing element ID for test selector"
 - **Wrong**: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
-- **Include issue number**: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
+- **Include issue number**: "Fix issue #7698: Migrate form classes to Bootstrap 5"
 
 ### PR Organization
 
@@ -302,7 +302,7 @@ Before committing code changes, verify:
 - [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
 - [ ] Critical files use `require` not `include` (Header.php, Footer.php)
 - [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
+- [ ] Bootstrap 5 / Tabler CSS classes applied correctly (see `tabler-components.md` for reference)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)

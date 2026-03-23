@@ -48,7 +48,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting, value) {
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -70,7 +70,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting, value) {
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -100,7 +100,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -132,7 +132,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           : "";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
-              <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
                 ${setting.label}
               </label>
               <div class="input-group">

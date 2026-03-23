@@ -5,54 +5,56 @@ function initializeGroupView() {
     dataType: "json",
   }).then(function (data) {
     window.CRM.groupRoles = data ?? [];
-    $("#newRoleSelection").select2({
-      data: window.CRM.groupRoles.map((groupRole) => {
-        return {
-          id: groupRole.OptionId,
+    const roleEl = document.getElementById("newRoleSelection");
+    if (roleEl && !roleEl.tomselect) {
+      new TomSelect(roleEl, {
+        valueField: "id",
+        labelField: "text",
+        searchField: "text",
+        options: window.CRM.groupRoles.map((groupRole) => ({
+          id: String(groupRole.OptionId),
           // i18next-disable-next-line
           text: i18next.t(groupRole.OptionName),
-        };
-      }),
-    });
+        })),
+      });
+    }
     initDataTable();
     //echo '<option value="' . $role['lst_OptionID'] . '">' . $role['lst_OptionName'] . '</option>';
   });
 
-  $(".personSearch").select2({
-    minimumInputLength: 2,
-    language: window.CRM.shortLocale,
-    ajax: {
-      url: function (params) {
-        return window.CRM.root + "/api/persons/search/" + params.term;
+  $(".personSearch").each(function () {
+    if (this.tomselect) return;
+    var el = this;
+    new TomSelect(el, {
+      valueField: "objid",
+      labelField: "text",
+      searchField: "text",
+      load: function (query, callback) {
+        if (query.length < 2) return callback();
+        fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
+          .then(function (res) { return res.json(); })
+          .then(function (data) { callback(data); })
+          .catch(function () { callback(); });
       },
-      dataType: "json",
-      delay: 250,
-      data: function (params) {
-        return {
-          q: params.term, // search term
-          page: params.page,
-        };
+      onChange: function (value) {
+        if (!value) return;
+        var tsInstance = this;
+        var selectedData = tsInstance.options[value];
+        window.CRM.groups.promptSelection(
+          {
+            Type: window.CRM.groups.selectTypes.Role,
+            GroupID: window.CRM.currentGroup,
+          },
+          function (selection) {
+            window.CRM.groups.addPerson(window.CRM.currentGroup, selectedData.objid, selection.RoleID).then(function () {
+              tsInstance.clear(true);
+              tsInstance.clearOptions();
+              window.CRM.DataTableAPI.ajax.reload();
+            });
+          },
+        );
       },
-      processResults: function (rdata, page) {
-        return { results: rdata };
-      },
-      cache: true,
-    },
-  });
-
-  $(".personSearch").on("select2:select", function (e) {
-    window.CRM.groups.promptSelection(
-      {
-        Type: window.CRM.groups.selectTypes.Role,
-        GroupID: window.CRM.currentGroup,
-      },
-      function (selection) {
-        window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid, selection.RoleID).then(function () {
-          $(".personSearch").val(null).trigger("change");
-          window.CRM.DataTableAPI.ajax.reload(); /* we reload the data no need to add the person inside the dataTable */
-        });
-      },
-    );
+    });
   });
 
   $("#deleteSelectedRows").on("click", function () {

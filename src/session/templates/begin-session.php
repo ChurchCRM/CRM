@@ -49,18 +49,13 @@ $hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
 
         <form method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
           <div class="mb-3">
-            <label for="UserBox"><?= gettext('Email address') ?></label>
-            <input type="text" id="UserBox" name="User" placeholder="<?= gettext('name@example.com') ?>" value="<?= htmlspecialchars($prefilledUserName) ?>" required autofocus>
+            <label for="UserBox" class="form-label"><?= gettext('Email address') ?></label>
+            <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext('name@example.com') ?>" value="<?= htmlspecialchars($prefilledUserName) ?>" required autofocus>
           </div>
 
           <div class="mb-3">
-            <label for="PasswordBox"><?= gettext('Password') ?></label>
-            <input type="password" id="PasswordBox" name="Password" placeholder="<?= gettext('Enter your password') ?>" required>
-          </div>
-
-          <div class="form-check">
-            <input type="checkbox" id="rememberMe" name="RememberMe" value="1">
-            <label for="rememberMe"><?= gettext('Remember me on this device') ?></label>
+            <label for="PasswordBox" class="form-label"><?= gettext('Password') ?></label>
+            <input type="password" id="PasswordBox" name="Password" class="form-control" placeholder="<?= gettext('Enter your password') ?>" required>
           </div>
 
           <div class="form-footer">

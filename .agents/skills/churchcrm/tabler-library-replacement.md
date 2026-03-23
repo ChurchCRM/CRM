@@ -56,7 +56,8 @@ SCSS → churchcrm.min.css  (all CSS combined)
 |---------|-------------|----------|
 | **DataTables.net** | `datatables.net@^2.3.7` + extensions | Too feature-rich to replace (export, server-side, row-select). Upgrade BS4→BS5 integration. |
 | **jQuery** | `jquery@^3.7.1` | Deeply embedded. BS5 auto-detects it. Keep. |
-| **Chart.js** | `chart.js@^4.5.1` | Works fine. Tabler recommends ApexCharts but migration is optional. |
+| ~~**Chart.js**~~ | ~~`chart.js@^4.5.1`~~ | **REPLACED** — fully migrated to ApexCharts `^5.10.4` (2026-03-22). Removed from package.json. |
+| **ApexCharts** | `apexcharts@^5.10.4` | Replaced Chart.js. Used in all dashboards + DepositSlipEditor. Keep. |
 | **FullCalendar** | `fullcalendar@^6.1.19` | Tabler also uses FullCalendar. Already correct. |
 | **Leaflet** | `leaflet@^1.9.4` | No Tabler map equivalent for street-level maps. Keep. |
 | **i18next** | `i18next@^25.8.18` | Core infrastructure. No replacement. |
@@ -75,6 +76,8 @@ SCSS → churchcrm.min.css  (all CSS combined)
 | **react-select** | `react-select@^5.10.2` | No imports found. |
 | **react-bootstrap** | `react-bootstrap@^2.10.10` | No imports found. |
 | **select2-bootstrap4-theme** | `@ttskch/select2-bootstrap4-theme@^1.5.2` | Obsolete with Select2 removal. |
+
+> **Status update (2026-03-22):** `@ttskch/select2-bootstrap4-theme` already removed from package.json. Dead deps (`quill`, `react-datepicker`, `react-select`, `react-bootstrap`) are **still in package.json** and need removal. DataTables BS4→BS5 upgrade is **complete**.
 
 ---
 
@@ -598,18 +601,19 @@ npm install @tabler/core @tabler/icons-webfont
 
 ---
 
-## Migration Order (Recommended)
+## Migration Order (Recommended) <!-- updated: 2026-03-22 -->
 
-| Phase | Library Swap | Files | Risk |
-|-------|-------------|-------|------|
-| **0** | Install `@tabler/core` + `@tabler/icons-webfont`, Grunt copy | 3 config files | Low |
-| **1** | Remove dead deps: quill, react-datepicker, react-select, react-bootstrap | package.json only | Zero |
-| **2** | DataTables BS4 → BS5 | Gruntfile + SCSS + Footer.php | Low |
-| **3** | bootstrap-datepicker → flatpickr | 8 PHP files | Low |
-| **4** | daterangepicker → litepicker | 8 PHP files | Low |
-| **5** | inputmask → imask | 4 PHP files | Low |
-| **6** | bootbox → confirm-dialog.ts | 19 PHP/JS files | Medium |
-| **7** | select2 → tom-select | 19 PHP/JS files | Medium |
-| **8** | moment → dayjs | 5 JS files | Low |
-| **9** | Remove AdminLTE CSS (once bridge proves stable) | 1 SCSS file | Medium |
+| Phase | Library Swap | Files | Risk | Status |
+|-------|-------------|-------|------|--------|
+| **0** | Install `@tabler/core` + `@tabler/icons-webfont`, Grunt copy | 3 config files | Low | ✅ Done |
+| **1** | Remove dead deps: quill, react-datepicker, react-select, react-bootstrap | package.json only | Zero | ⬜ Not started |
+| **2** | DataTables BS4 → BS5 | Gruntfile + SCSS + Footer.php | Low | ✅ Done |
+| **2.5** | Chart.js → ApexCharts | 7 JS files | Low | ✅ Done |
+| **3** | bootstrap-datepicker → flatpickr | 8 PHP files | Low | ⬜ Not started |
+| **4** | daterangepicker → litepicker | 8 PHP files | Low | ⬜ Not started |
+| **5** | inputmask → imask | 4 PHP files | Low | ⬜ Not started |
+| **6** | bootbox → confirm-dialog.ts | **28** PHP/JS files | Medium | ⬜ Not started |
+| **7** | select2 → tom-select | 4 JS bundles + templates | Medium | ⬜ tom-select installed, not wired |
+| **8** | moment → dayjs | 5 JS files | Low | ⬜ Not started |
+| **9** | Remove AdminLTE CSS (once bridge proves stable) | 1 SCSS file | Medium | ⬜ Bridge still needed |
 | **10** | Remove Bootstrap 4 dep | package.json | Low (after BS5 verified) |

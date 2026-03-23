@@ -196,7 +196,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                         <div class="mb-3">
                             <label><?= gettext('Donor'); ?>:</label>
-                            <select name="Donor" id="Donor" class="form-control select2">
+                            <select name="Donor" id="Donor" class="form-control">
                                 <option value="0" selected><?= gettext('Unassigned') ?></option>
                                 <?php
                                 $rsPeople = RunQuery($sPeopleSQL);
@@ -214,7 +214,8 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
                             $(document).ready(function() {
-                                $("#Donor").select2();
+                                var donorEl = document.getElementById("Donor");
+                                if (donorEl && !donorEl.tomselect) new TomSelect(donorEl);
                             });
                         </script>
 

@@ -35,7 +35,7 @@ describe("Fund Raiser", () => {
         cy.get('#Item').type('Soap for the Car wash');
         cy.get('#Title').type('Soap');
         cy.get('#EstPrice').type('20');
-        cy.get('.form-group > .btn:nth-child(1)').click();
+        cy.get('input[name="DonatedItemSubmit"]').click();
         cy.url().should('contains', 'FundRaiserEditor.php');
         cy.contains("Soap for the Car wash");
     });

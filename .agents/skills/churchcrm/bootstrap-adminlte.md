@@ -8,8 +8,10 @@ complexity: "beginner"
 
 # Skill: Bootstrap 4.6.2 & AdminLTE v3.2.0
 
+> **⚠️ DEPRECATED (2026-03-22):** AdminLTE has been removed and Bootstrap upgraded to 5.3.8. The UI framework is now **Tabler + Bootstrap 5**. Use `tabler-components.md` and `bootstrap-5-migration.md` for new work. This file is retained as a **legacy reference only** for understanding old patterns during migration.
+
 ## Context
-ChurchCRM uses **AdminLTE v3.2.0** (based on Bootstrap 4.6.2) for admin pages and dashboards. AdminLTE v3 is a modern admin template with comprehensive components and utilities built on Bootstrap 4.
+ChurchCRM formerly used **AdminLTE v3.2.0** (based on Bootstrap 4.6.2) for admin pages and dashboards. This has been replaced by **Tabler** (`@tabler/core` ^1.4.0) + **Bootstrap 5.3.8**.
 
 ---
 

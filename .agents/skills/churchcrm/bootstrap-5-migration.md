@@ -1775,6 +1775,75 @@ data-reference= →  data-bs-reference=
 
 ---
 
+---
+
+## Bulk Sed Migration — Safe Patterns and Dangerous Anti-Patterns <!-- learned: 2026-03-22 -->
+
+### DANGER: Regexes that corrupt PHP string literals
+
+When running `sed` bulk migrations on mixed PHP+HTML template files, several patterns look innocuous but corrupt PHP string literal content, SQL queries, and comments:
+
+```bash
+# ❌ DANGEROUS — removes spaces before quotes inside PHP strings/comments/SQL
+s/ +"/"/g      # "SELECT * WHERE id = '"  →  "SELECT * WHERE id ='"
+s/ +'/'/g      # breaks SQL and string concatenation
+
+# ❌ DANGEROUS — removes spaces before dots in PHP string concatenation
+s/ +\././g     # '$a . "x"'  →  '$a."x"' (breaks readability + can cascade)
+```
+
+These regexes trigger on ANY space-before-quote in the file — including SQL queries, log messages, PHP comments, and JavaScript strings embedded in PHP templates.
+
+### Safe bulk migration approach
+
+**Only run substitutions anchored to HTML class attributes:**
+
+```bash
+# ✅ SAFE — anchored to class=" context (HTML only, not PHP strings)
+s/class="\([^"]*\)form-group\([^"]*\)"/class="\1mb-3\2"/g
+
+# ✅ SAFE — simple exact token replacement that can't appear in PHP code
+s/data-toggle="/data-bs-toggle="/g
+s/data-dismiss="/data-bs-dismiss="/g
+s/data-target="/data-bs-target="/g
+
+# ✅ SAFE — badge class prefix (appears in class attributes, not PHP strings)
+s/badge-primary/bg-primary/g
+s/badge-success/bg-success/g
+s/badge-danger/bg-danger/g
+s/badge-warning/bg-warning/g
+s/badge-info/bg-info/g
+
+# ✅ SAFE — spacing class prefix (ml-N, mr-N cannot appear in PHP code normally)
+s/\bml-\([0-9]\)/ms-\1/g
+s/\bmr-\([0-9]\)/me-\1/g
+```
+
+**Never** run cleanup/beautification regexes like `s/ +"/"/g` on PHP files — these corrupt real code.
+
+### AdminLTE Colored Card → Tabler Border Migration <!-- learned: 2026-03-22 -->
+
+AdminLTE `card-*` color classes do NOT exist in Tabler/BS5. Use Tabler's border utilities instead:
+
+| AdminLTE (BS4) | Tabler/BS5 |
+|----------------|------------|
+| `card card-danger` | `card border-top border-danger border-3` |
+| `card card-warning` | `card border-top border-warning border-3` |
+| `card card-success` | `card border-top border-success border-3` |
+| `card card-primary` | `card border-top border-primary border-3` |
+| `card card-info` | `card border-top border-info border-3` |
+| `card card-outline card-danger` | `card border border-danger` |
+| `card card-outline card-warning` | `card border border-warning` |
+| `card card-outline card-success` | `card border border-success` |
+
+After bulk migration, always scan for `class="card card"` duplicates created when `card-primary` → `card` leaves a double `card card`. Clean up with:
+
+```bash
+s/\bcard card\b/card/g
+```
+
+---
+
 ## Related Skills
 
 - [Bootstrap 4.6.2 & AdminLTE](./bootstrap-adminlte.md) — Current BS4 patterns (pre-migration)

@@ -11,7 +11,7 @@ describe('System Upgrade Page', () => {
         
         // Verify current version is displayed
         cy.contains('Current Version:').should('be.visible');
-        cy.get('.badge.badge-info').should('be.visible').and('not.be.empty');
+        cy.get('.badge.bg-info').should('be.visible').and('not.be.empty');
         
         // Verify available version or up-to-date status
         cy.contains('Latest GitHub Version:').should('be.visible');

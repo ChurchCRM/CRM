@@ -772,35 +772,29 @@ require_once __DIR__ . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
 
-        $("#FamilyName").select2({
-            minimumInputLength: 2,
-            ajax: {
-                url: function(params) {
-                    var a = window.CRM.root + '/api/families/search/' + params.term;
-                    return a;
+        var familyNameEl = document.getElementById("FamilyName");
+        if (familyNameEl && !familyNameEl.tomselect) {
+            new TomSelect(familyNameEl, {
+                valueField: 'id',
+                labelField: 'text',
+                searchField: 'text',
+                load: function(query, callback) {
+                    if (query.length < 2) return callback();
+                    fetch(window.CRM.root + '/api/families/search/' + encodeURIComponent(query))
+                        .then(function(res) { return res.json(); })
+                        .then(function(data) {
+                            var families = data?.Families ?? [];
+                            callback(families.map(function(obj) {
+                                return { id: String(obj.Id), text: obj.displayName };
+                            }));
+                        })
+                        .catch(function() { callback(); });
                 },
-                dataType: 'json',
-                delay: 250,
-                data:"",
-                processResults: function(data, params) {
-                    var results = [];
-                    var families = data?.Families ?? [];
-                    $.each(families, function(key, object) {
-                        results.push({
-                            id: object.Id,
-                            text: object.displayName
-                        });
-                    });
-                    return {
-                        results: results
-                    };
+                onChange: function(value) {
+                    $('[name=FamilyID]').val(value);
                 }
-            }
-        });
-
-        $("#FamilyName").on("select2:select", function(e) {
-            $('[name=FamilyID]').val(e.params.data.id);
-        });
+            });
+        }
 
         $(".FundAmount").change(function() {
             CalculateTotal();

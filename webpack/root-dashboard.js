@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     window.CRM.onLocalesReady(initializeMainDashboard);
   }
 
+  // Use global jQuery which should be set by skin-main.js
+  const $ = window.$;
+  if (!$) {
+    console.error("jQuery not available - skin-main.js may not have loaded");
+    return;
+  }
+
   // Photo viewer click handlers
   $(document).on("click", ".view-person-photo", function (e) {
     var personId = $(e.currentTarget).data("person-id");

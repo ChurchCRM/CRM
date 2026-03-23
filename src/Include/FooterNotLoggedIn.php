@@ -31,8 +31,6 @@ use ChurchCRM\Service\SystemService;
   </div>
 </div>
 
-  <script src="<?= SystemURLs::assetVersioned('/skin/external/select2/select2.full.min.js') ?>"></script>
-
   <!-- InputMask -->
   <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/jquery.inputmask.min.js') ?>"></script>
   <script src="<?= SystemURLs::assetVersioned('/skin/external/inputmask/inputmask.binding.js') ?>"></script>

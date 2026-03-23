@@ -28,7 +28,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $totalGroups ?></div>
+                            <div class="fw-medium"><?= $totalGroups ?></div>
                             <div class="text-muted"><?= gettext('Total Groups') ?></div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $activeGroups ?></div>
+                            <div class="fw-medium"><?= $activeGroups ?></div>
                             <div class="text-muted"><?= gettext('Active Groups') ?></div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $inactiveGroups ?></div>
+                            <div class="fw-medium"><?= $inactiveGroups ?></div>
                             <div class="text-muted"><?= gettext('Inactive Groups') ?></div>
                         </div>
                     </div>
@@ -79,7 +79,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             </span>
                         </div>
                         <div class="col">
-                            <div class="font-weight-medium"><?= $totalMemberships ?></div>
+                            <div class="fw-medium"><?= $totalMemberships ?></div>
                             <div class="text-muted"><?= gettext('Memberships') ?></div>
                         </div>
                     </div>

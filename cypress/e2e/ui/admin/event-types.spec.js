@@ -128,8 +128,8 @@ describe('Event Type Management', () => {
             cy.get('a.btn-outline-secondary').click();
         });
         
-        // Verify modern card design
-        cy.get('.card-primary').should('exist');
+        // Verify card design
+        cy.get('.card').should('exist');
         cy.contains('Edit Event Type').should('exist');
         
         // Verify 3-dropdown time picker in edit page

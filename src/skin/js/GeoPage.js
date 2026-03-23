@@ -4,10 +4,14 @@ $(document).ready(function () {
   window.CRM.onLocalesReady(function () {
     $('a[data-bs-toggle="tab"]').on("shown.bs.tab", function (e) {
       var target = $(e.target).attr("href"); // activated tab
-      $(target + " .choiceSelectBox").select2({ width: "resolve" });
+      $(target + " .choiceSelectBox").each(function () {
+        if (!this.tomselect) new TomSelect(this);
+      });
     });
 
-    $(".choiceSelectBox").select2({ width: "resolve" });
+    $(".choiceSelectBox").each(function () {
+      if (!this.tomselect) new TomSelect(this);
+    });
 
     $("#AddAllToCart").click(function () {
       // Use CartManager with notifications

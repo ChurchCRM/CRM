@@ -596,7 +596,8 @@ require_once __DIR__ . '/Include/Header.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
-        $("#personSelect").select2();
+        var personSelectEl = document.getElementById("personSelect");
+        if (personSelectEl && !personSelectEl.tomselect) new TomSelect(personSelectEl);
     });
 </script>
 <?php

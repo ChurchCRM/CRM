@@ -910,7 +910,7 @@ $bOkToEdit = (
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="input-person-properties"><?= gettext('Select Property') ?></label>
-                                                <select name="PropertyId" id="input-person-properties" class="form-control select2" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                                <select name="PropertyId" id="input-person-properties" class="form-control" data-placeholder="<?= gettext('Choose a property...') ?>">
                                                     <option value=""></option>
                                                             <?php
                                                             $assignedPropertiesArray = [];
@@ -1010,7 +1010,7 @@ $bOkToEdit = (
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>
-                                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control select2" data-placeholder="<?= gettext('Choose opportunities...') ?>">
+                                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control" data-placeholder="<?= gettext('Choose opportunities...') ?>">
                                                     <?php
                                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                                         extract($aRow);
@@ -1093,8 +1093,10 @@ $bOkToEdit = (
             });
 
             $(document).ready(function() {
-                $("#input-volunteer-opportunities").select2();
-                $("#input-person-properties").select2();
+                var volEl = document.getElementById("input-volunteer-opportunities");
+                if (volEl && !volEl.tomselect) new TomSelect(volEl, { plugins: ["remove_button"] });
+                var propEl = document.getElementById("input-person-properties");
+                if (propEl && !propEl.tomselect) new TomSelect(propEl);
 
                 // Attach lightbox click handler to view button
                 // Note: Button visibility is managed by avatar-loader.ts based on hasPhoto status

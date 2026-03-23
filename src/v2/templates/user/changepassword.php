@@ -4,7 +4,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 
-$sPageTitle = gettext("Change Password") .":" . $user->getFullName();
+$sPageTitle = gettext('Change Password') . ': ' . $user->getFullName();
 if ($isForced) {
     require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 } else {

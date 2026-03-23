@@ -514,55 +514,59 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         oTable = $('#members').DataTable(dataTableConfig);
 
-        $('.filter-Gender').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Gender')
-         });
-        $('.filter-Classification').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Classification')
-        });
-        $('.filter-Role').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Role')
-        });
-        $('.filter-Properties').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Properties')
-        });
-        $('.filter-Custom').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Custom')
-        });
-        $('.filter-FamilyStatus').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Family Status')
-        });
-        $('.filter-Group').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') +"" + i18next.t('Group')
+        // Initialize TomSelect multi-select filters
+        var filterConfigs = [
+            { sel: '.filter-Gender', label: i18next.t('Gender') },
+            { sel: '.filter-Classification', label: i18next.t('Classification') },
+            { sel: '.filter-Role', label: i18next.t('Role') },
+            { sel: '.filter-Properties', label: i18next.t('Properties') },
+            { sel: '.filter-Custom', label: i18next.t('Custom') },
+            { sel: '.filter-FamilyStatus', label: i18next.t('Family Status') },
+            { sel: '.filter-Group', label: i18next.t('Group') }
+        ];
+        filterConfigs.forEach(function(cfg) {
+            $(cfg.sel).each(function () {
+                if (!this.tomselect) {
+                    new TomSelect(this, {
+                        plugins: ['remove_button'],
+                        placeholder: i18next.t('Select') + ' ' + cfg.label
+                    });
+                }
+            });
         });
 
+        // Helper to get selected items from TomSelect (returns array of {text, id} objects)
+        function getTomSelectData(selector) {
+            var el = $(selector)[0];
+            if (el && el.tomselect) {
+                var ts = el.tomselect;
+                return ts.getValue().map(function(val) {
+                    return { id: val, text: ts.options[val] ? ts.options[val].text : val };
+                });
+            }
+            return [];
+        }
+
         $('.filter-Gender').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Gender'] ?>, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Gender'] ?>, getTomSelectData('.filter-Gender'), true);
         });
         $('.filter-Classification').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Classification'] ?>, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Classification'] ?>, getTomSelectData('.filter-Classification'), true);
         });
         $('.filter-Role').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Role'] ?>, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Role'] ?>, getTomSelectData('.filter-Role'), true);
         });
         $('.filter-Properties').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Properties'] ?>, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Properties'] ?>, getTomSelectData('.filter-Properties'), false);
         });
         $('.filter-Custom').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Custom'] ?>, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Custom'] ?>, getTomSelectData('.filter-Custom'), false);
         });
         $('.filter-FamilyStatus').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Family Status'] ?>, $(this).select2('data'), true);
+            filterColumn(<?php echo $columnIdMap['Family Status'] ?>, getTomSelectData('.filter-FamilyStatus'), true);
         });
         $('.filter-Group').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Group'] ?>, $(this).select2('data'), false);
+            filterColumn(<?php echo $columnIdMap['Group'] ?>, getTomSelectData('.filter-Group'), false);
         });
 
         function escapeRegExp(string) {
@@ -764,7 +768,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             });
         }
         
-        // Apply initial filters from URL parameters now that Select2 and DataTable are ready
+        // Apply initial filters from URL parameters now that TomSelect and DataTable are ready
         if (filterByGender) {
             var genderIndex = -1;
             // Gender is already set via inline trigger above, just validate

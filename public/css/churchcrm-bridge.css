@@ -101,33 +101,29 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
 }
 
-/* --- Select2 — Tabler skin -------------------------------------------- */
-.select2-container--default .select2-selection--single {
+/* --- TomSelect — Tabler skin ------------------------------------------ */
+.ts-wrapper.single .ts-control {
   border: 1px solid var(--tblr-border-color, rgba(98, 105, 118, 0.16));
   border-radius: var(--tblr-border-radius, 4px);
   height: calc(1.5em + 0.75rem + 2px);
   background-color: var(--tblr-bg-forms, #fff);
+  padding: 0 0.75rem;
+  line-height: calc(1.5em + 0.75rem);
+  color: var(--tblr-body-color, #1d273b);
 }
-.select2-container--default .select2-selection--single:focus,
-.select2-container--default.select2-container--open .select2-selection--single {
+.ts-wrapper.single .ts-control:focus,
+.ts-wrapper.single.focus .ts-control {
   border-color: var(--tblr-primary);
   box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  color: var(--tblr-body-color, #1d273b);
-  line-height: calc(1.5em + 0.75rem);
-  padding-left: 0.75rem;
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-  height: calc(1.5em + 0.75rem + 2px);
-}
-.select2-dropdown {
+.ts-dropdown {
   border: 1px solid var(--tblr-border-color, rgba(98, 105, 118, 0.16));
   border-radius: var(--tblr-border-radius, 4px);
   box-shadow: var(--tblr-dropdown-box-shadow, 0 4px 16px rgba(24, 35, 58, 0.12));
 }
-.select2-container--default .select2-results__option--highlighted[aria-selected] {
+.ts-dropdown .active {
   background-color: var(--tblr-primary);
+  color: #fff;
 }
 
 /* --- Floating Action Buttons — Tabler skin ---------------------------- */
