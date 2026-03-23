@@ -193,7 +193,7 @@ $bOkToEdit = (
             </div>
             <div class="card-body box-profile">
                 <div class="image-container text-center">
-                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="photo-profile mb-2">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-lg mb-2">
                     <?php if ($bOkToEdit) : ?>
                     <div class="photo-actions">
                         <div class="btn-group" role="group">
@@ -585,7 +585,7 @@ $bOkToEdit = (
                                         <tr>
                                             <td>
 
-                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="photo-tiny">
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
 
                                             </td>
