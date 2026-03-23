@@ -85,10 +85,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/responsive.bootstrap5.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/dataTables.select.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/select.bootstrap5.min.js') ?>"></script>
-<!-- PDF and Excel export dependencies -->
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/jszip.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/pdfmake.min.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/external/datatables/vfs_fonts.js') ?>"></script>
 
 <script src="<?= SystemURLs::assetVersioned('/skin/external/fullcalendar/index.global.min.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/external/bootbox/bootbox.min.js') ?>"></script>

@@ -124,29 +124,18 @@ $MenuFirst = 1;
                       bottomEnd: ['info', 'paging']
                   },
                   buttons: [
-                      'copy',
                       {
                           extend: 'csv',
-                          exportOptions: {
-                              columns: ':not(.no-export)'
-                          }
-                      },
-                      {
-                          extend: 'excel',
-                          exportOptions: {
-                              columns: ':not(.no-export)'
-                          }
-                      },
-                      {
-                          extend: 'pdf',
-                          orientation: 'landscape',
-                          pageSize: 'LEGAL',
+                          text: '<i class="ti ti-table-export"></i>',
+                          titleAttr: 'Export CSV',
                           exportOptions: {
                               columns: ':not(.no-export)'
                           }
                       },
                       {
                           extend: 'print',
+                          text: '<i class="ti ti-printer"></i>',
+                          titleAttr: 'Print',
                           exportOptions: {
                               columns: ':not(.no-export)'
                           }
