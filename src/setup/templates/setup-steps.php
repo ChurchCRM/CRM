@@ -142,7 +142,7 @@ require_once __DIR__ . '/header.php';
                     <div class="check-card d-none" id="orphaned-files-section">
                         <div class="check-header check-header-warning user-select-none" data-bs-toggle="collapse" data-bs-target="#orphaned-collapse">
                             <div class="check-title">
-                                <i class="fa-solid fa-exclamation-triangle check-icon text-warning"></i>
+                                <i class="fa-solid fa-triangle-exclamation check-icon text-warning"></i>
                                 <span>Orphaned Files</span>
                             </div>
                             <div class="check-status" id="orphaned-status">
@@ -183,7 +183,7 @@ require_once __DIR__ . '/header.php';
                             Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
                         <button type="button" class="btn btn-outline-warning d-none" id="prerequisites-force-btn">
-                            <i class="fa-solid fa-exclamation-triangle me-2"></i>Continue Anyway
+                            <i class="fa-solid fa-triangle-exclamation me-2"></i>Continue Anyway
                         </button>
                     </div>
                 </div>
@@ -331,7 +331,7 @@ require_once __DIR__ . '/header.php';
                         </div>
                     </div>
                     <div class="alert alert-warning">
-                        <i class="fa-solid fa-exclamation-triangle me-2"></i>
+                        <i class="fa-solid fa-triangle-exclamation me-2"></i>
                         <strong>Important:</strong> Change your password immediately after logging in.
                     </div>
                 </div>
@@ -358,7 +358,7 @@ require_once __DIR__ . '/header.php';
         <div class="modal-content">
             <div class="modal-header bg-warning text-dark">
                 <h5 class="modal-title" id="forceInstallModalLabel">
-                    <i class="fa-solid fa-exclamation-triangle me-2"></i>Proceed Anyway?
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>Proceed Anyway?
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

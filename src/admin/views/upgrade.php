@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card mb-3">
             <div class="card-header bg-primary text-white">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-info-circle me-2"></i><?= gettext('Version Information') ?>
+                    <i class="fa fa-circle-info me-2"></i><?= gettext('Version Information') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -71,13 +71,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 
                 <?php if ($isUpdateAvailable): ?>
                     <div class="alert alert-info mb-0" style="background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460;">
-                        <i class="fa fa-info-circle me-2"></i>
+                        <i class="fa fa-circle-info me-2"></i>
                         <strong><?= gettext('Update Available!') ?></strong>
                         <?= gettext('A new version of ChurchCRM is available for installation.') ?>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-success mb-0" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
-                        <i class="fa fa-check-circle me-2"></i>
+                        <i class="fa fa-circle-check me-2"></i>
                         <strong><?= gettext('System Up to Date') ?></strong>
                         <?= gettext('Your ChurchCRM installation is running the latest version.') ?>
                     </div>
@@ -103,13 +103,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <?php if ($integrityPassed): ?>
                     <div class="text-center py-3">
-                        <i class="fa fa-check-circle text-success" style="font-size: 3rem;"></i>
+                        <i class="fa fa-circle-check text-success" style="font-size: 3rem;"></i>
                         <h5 class="mt-3"><?= gettext('All Files Verified') ?></h5>
                         <p class="text-muted mb-0"><?= gettext('All system files match their expected signatures.') ?></p>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-warning mb-3">
-                        <i class="fa fa-exclamation-triangle me-2"></i>
+                        <i class="fa fa-triangle-exclamation me-2"></i>
                         <strong><?= gettext('File Integrity Issues Detected') ?></strong>
                         <p class="mb-0 mt-2"><?= sprintf(gettext('%d files have been modified or are missing. Use Force Re-install to restore official versions.'), count($failingFiles)) ?></p>
                     </div>
@@ -130,7 +130,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?php if (count($modifiedFiles) > 0): ?>
                         <h6 class="mb-2">
                             <a href="#collapseModifiedFiles" data-bs-toggle="collapse" class="text-warning text-decoration-none">
-                                <i class="fa fa-edit me-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
+                                <i class="fa fa-pen-to-square me-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
                                 <i class="fa fa-chevron-down ms-2"></i>
                             </a>
                         </h6>
@@ -157,7 +157,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <?php if (count($missingFiles) > 0): ?>
                         <h6 class="mb-2">
                             <a href="#collapseMissingFilesCard" data-bs-toggle="collapse" class="text-danger text-decoration-none">
-                                <i class="fa fa-times-circle me-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
+                                <i class="fa fa-circle-xmark me-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
                                 <i class="fa fa-chevron-down ms-2"></i>
                             </a>
                         </h6>
@@ -204,7 +204,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="step<?= $hasWarnings ? ' warning-step' : '' ?>" data-target="#step-warnings">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-warnings" id="step-warnings-trigger">
                                 <span class="bs-stepper-circle">
-                                    <i class="fa fa-exclamation-triangle"></i>
+                                    <i class="fa fa-triangle-exclamation"></i>
                                 </span>
                                 <span class="bs-stepper-label"><?= gettext('Warnings') ?></span>
                             </button>
@@ -248,13 +248,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <!-- Step 1: Pre-Upgrade Checks -->
                         <div id="step-warnings" class="content p-4" role="tabpanel" aria-labelledby="step-warnings-trigger">
                             <h4 class="mb-3 text-danger">
-                                <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
+                                <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
                             </h4>
 
                             <?php if ($integrityCheckFailed): ?>
                                 <div class="alert alert-warning">
                                     <h5 class="alert-heading">
-                                        <i class="fa fa-exclamation-circle me-2"></i><?= gettext('Warning: Signature mismatch') ?>
+                                        <i class="fa fa-circle-exclamation me-2"></i><?= gettext('Warning: Signature mismatch') ?>
                                     </h5>
                                     <hr>
                                     <p><?= gettext("Some ChurchCRM system files may have been modified since the last installation.") ?> 
@@ -286,7 +286,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     <button class="btn btn-link text-danger collapsed" type="button" data-bs-toggle="collapse" 
                                                                                     data-bs-target="#collapseMissingFiles" aria-expanded="false" 
                                                                                     aria-controls="collapseMissingFiles">
-                                                        <i class="fa fa-times-circle me-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
+                                                        <i class="fa fa-circle-xmark me-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
                                                         <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
@@ -323,7 +323,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                     <button class="btn btn-link text-warning collapsed" type="button" data-bs-toggle="collapse" 
                                                             data-bs-target="#collapseModifiedFiles" aria-expanded="false" 
                                                             aria-controls="collapseModifiedFiles">
-                                                        <i class="fa fa-edit me-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
+                                                        <i class="fa fa-pen-to-square me-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
                                                         <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
@@ -360,7 +360,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <?php if ($hasOrphanedFiles && isset($integrityCheckData['orphanedFiles']) && count($integrityCheckData['orphanedFiles']) > 0): ?>
                                 <div class="alert alert-danger mt-3">
                                     <h5 class="alert-heading">
-                                        <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Security Warning: Orphaned Files Detected') ?>
+                                        <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Security Warning: Orphaned Files Detected') ?>
                                     </h5>
                                     <hr>
                                     <p><?= gettext("The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks.") ?></p>
@@ -398,7 +398,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             </div>
                                             <div class="alert alert-warning mt-3 mb-0">
                                                 <small>
-                                                    <i class="fa fa-info-circle me-1"></i>
+                                                    <i class="fa fa-circle-info me-1"></i>
                                                     <?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities.') ?>
                                                 </small>
                                             </div>
@@ -409,7 +409,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
                             <?php if (!$hasWarnings): ?>
                                 <div class="alert alert-success">
-                                    <i class="fa fa-check-circle me-2"></i>
+                                    <i class="fa fa-circle-check me-2"></i>
                                     <strong><?= gettext('Pre-Upgrade Tasks Complete') ?></strong>
                                     <?= gettext('All pre-upgrade checks have passed. You may proceed with the upgrade.') ?>
                                 </div>
@@ -493,11 +493,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <!-- Step 4: Complete -->
                         <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
                             <div class="text-center py-5">
-                                <i class="fa fa-check-circle text-success" style="font-size: 5rem;"></i>
+                                <i class="fa fa-circle-check text-success" style="font-size: 5rem;"></i>
                                 <h2 class="mt-4"><?= gettext('Upgrade Complete!') ?></h2>
                                 <p class="lead text-muted"><?= gettext('Your ChurchCRM installation has been successfully upgraded.') ?></p>
                                 <div class="alert alert-info mt-3 text-start" style="max-width: 600px; margin: 0 auto;">
-                                    <h5><i class="fa fa-info-circle me-2"></i><?= gettext('Upgrade Summary') ?></h5>
+                                    <h5><i class="fa fa-circle-info me-2"></i><?= gettext('Upgrade Summary') ?></h5>
                                     <ul class="mb-0">
                                         <li><?= gettext('Application files updated to latest version') ?></li>
                                         <li><?= gettext('Database schema upgraded automatically') ?></li>

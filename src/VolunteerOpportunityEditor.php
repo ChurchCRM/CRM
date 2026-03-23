@@ -64,7 +64,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                 <div class="card border-danger">
                     <div class="card-header bg-danger text-white">
                         <h5 class="mb-0">
-                            <i class="fa-solid fa-exclamation-triangle"></i>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
                             <?= gettext('Confirm Volunteer Opportunity Deletion') ?>
                         </h5>
                     </div>
@@ -96,7 +96,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                         $rsPeople = RunQuery($sSQL);
                         $numRows = mysqli_num_rows($rsPeople);
                         if ($numRows > 0) {
-                            echo"<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') ."!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') ."</div>";
+                            echo"<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') ."!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') ."</div>";
                             echo"<div class='ms-3 mb-3'>";
                             for ($i = 0; $i < $numRows; $i++) {
                                 $aRow = mysqli_fetch_array($rsPeople);
@@ -381,7 +381,7 @@ if (isset($_POST['SaveChanges'])) {
                 ?>
 
                 <div class="alert alert-warning" role="alert">
-                    <i class="fa-solid fa-exclamation-triangle"></i>
+                    <i class="fa-solid fa-triangle-exclamation"></i>
                     <strong><?= gettext('Warning:') ?></strong>
                     <?= gettext("ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.") ?>
                 </div>
@@ -458,7 +458,7 @@ if (isset($_POST['SaveChanges'])) {
 
                 <div class="d-flex mt-3 justify-content-center">
                     <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
-                        <i class="fa-solid fa-save"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="document.location='v2/dashboard'">

@@ -42,7 +42,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </ul>
 
                         <div class="alert alert-warning mt-3" role="alert">
-                            <i class="fa-solid fa-info-circle fa-fw"></i>
+                            <i class="fa-solid fa-circle-info fa-fw"></i>
                             <?= gettext('Please upgrade ChurchCRM to version') ?> <strong><?= InputUtils::escapeHTML($dbVersion) ?></strong> <?= gettext('or later to continue.') ?>
                         </div>
                     <?php } ?>

@@ -150,14 +150,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div id="statusComplete" class="d-none">
             <div class="text-center py-4">
-                <i class="fa-solid fa-check-circle fa-3x text-success mb-3"></i>
+                <i class="fa-solid fa-circle-check fa-3x text-success mb-3"></i>
                 <p class="mb-2 text-success fw-bold" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
                 <div id="resultFiles" class="mt-3"></div>
             </div>
         </div>
         <div id="statusError" class="d-none">
             <div class="text-center py-4">
-                <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
+                <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
                 <p class="mb-0 text-danger fw-bold"><?= gettext('Backup failed. Please try again.') ?></p>
             </div>
         </div>

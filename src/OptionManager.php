@@ -509,7 +509,7 @@ if ($embedded) {
 
     <div class="d-flex mt-3 justify-content-center">
         <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
-            <i class="fa-solid fa-save"></i>
+            <i class="fa-solid fa-floppy-disk"></i>
             <?= gettext('Save Changes') ?>
         </button>
 

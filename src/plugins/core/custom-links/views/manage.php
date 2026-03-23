@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted mb-3 px-3 pt-3">
-                    <i class="fa-solid fa-info-circle"></i>
+                    <i class="fa-solid fa-circle-info"></i>
                     <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
                 </p>
                     <table id="links-table" class="table table-vcenter table-hover card-table">
@@ -112,7 +112,7 @@ $(document).ready(function() {
                 render: function(data, type, row) {
                     if (type === 'display') {
                         var escaped = $('<div>').text(data).html();
-                        return '<a href="' + escaped + '" target="_blank" rel="noopener">' + escaped + ' <i class="fa-solid fa-external-link-alt fa-xs"></i></a>';
+                        return '<a href="' + escaped + '" target="_blank" rel="noopener">' + escaped + ' <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>';
                     }
                     return data;
                 }

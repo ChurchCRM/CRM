@@ -153,7 +153,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     ?>
   <div class='card mb-4'>
     <div class='card-header'>
-      <h3 class="card-title mb-0"><i class="fas fa-plus me-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?></h3>
+      <h3 class="card-title mb-0"><i class="fa-solid fa-plus me-2"></i><?= gettext('Add New') . ' ' . gettext('Event Type') ?></h3>
     </div>
     <div class='card-body'>
       <form name="UpdateEventNames" action="EventNames.php" method="POST">
@@ -247,10 +247,10 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
         <hr>
         <div class="d-flex justify-content-between">
           <a href="EventNames.php" class="btn btn-outline-secondary">
-            <i class="fas fa-times me-1"></i><?= gettext('Cancel') ?>
+            <i class="fa-solid fa-times me-1"></i><?= gettext('Cancel') ?>
           </a>
           <button type="submit" name="Action" value="CREATE" class="btn btn-primary">
-            <i class="fas fa-save me-1"></i><?= gettext('Save Event Type') ?>
+            <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Event Type') ?>
           </button>
         </div>
       </form>
@@ -268,7 +268,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     <div class="card-tools ms-auto">
       <form name="AddEventNames" action="EventNames.php" method="POST" class="mb-0">
         <button type="submit" name="Action" value="NEW" class="btn btn-primary btn-sm">
-          <i class="fas fa-plus me-1"></i><?= gettext('Add Event Type') ?>
+          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event Type') ?>
         </button>
       </form>
     </div>
@@ -333,7 +333,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
         <?php
     } else { ?>
       <div class="text-center text-muted py-4">
-        <i class="fas fa-calendar-alt fa-3x mb-3"></i>
+        <i class="fa-solid fa-calendar-days fa-3x mb-3"></i>
         <p><?= gettext('No event types defined yet.') ?></p>
         <p><?= gettext('Create an event type to get started.') ?></p>
       </div>

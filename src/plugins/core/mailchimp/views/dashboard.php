@@ -215,7 +215,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <h4 class="text-muted"><?= gettext('No Audiences Found') ?></h4>
                     <p class="text-muted"><?= gettext('Your MailChimp account does not have any audiences (lists) configured.') ?></p>
                     <a href="https://mailchimp.com/help/create-audience/" target="_blank" class="btn btn-primary">
-                        <i class="fa-solid fa-external-link-alt me-1"></i><?= gettext('Create an Audience in MailChimp') ?>
+                        <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('Create an Audience in MailChimp') ?>
                     </a>
                 </div>
             </div>
@@ -226,7 +226,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="row">
         <div class="col-12">
             <div class="callout callout-warning">
-                <h5><i class="fa-solid fa-exclamation-triangle me-2"></i><?= gettext('MailChimp is not configured') ?></h5>
+                <h5><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('MailChimp is not configured') ?></h5>
                 <p><?= gettext('Please configure your MailChimp API key to use this integration.') ?></p>
                 <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/mailchimp" class="btn btn-warning">
                     <i class="fa-solid fa-cog me-1"></i><?= gettext('Configure MailChimp') ?>

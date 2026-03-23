@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted mb-3 px-3 pt-3">
-                    <i class="fa-solid fa-info-circle me-1"></i>
+                    <i class="fa-solid fa-circle-info me-1"></i>
                     <?= gettext('These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe.') ?>
                 </p>
                     <table id="unsubscribedTable" class="table table-vcenter table-hover card-table">

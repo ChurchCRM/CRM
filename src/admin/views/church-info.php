@@ -312,7 +312,7 @@ $validationError     = $validationError ?? '';
                     <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
                         <div>
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa-solid fa-save me-1"></i>
+                                <i class="fa-solid fa-floppy-disk me-1"></i>
                                 <?= gettext('Save Church Information') ?>
                             </button>
                             <a href="<?= $sRootPath ?>/admin/" class="btn btn-secondary ms-2">

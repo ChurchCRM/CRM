@@ -197,7 +197,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
 <!-- Floating Action Buttons -->
 <div class="fab-container">
-    <button type="button" class="fab fab-success" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
+    <button type="button" class="fa-brands fab-success" id="confirmVerifyBtn" data-bs-toggle="modal" data-bs-target="#confirm-Verify" title="<?= gettext('Confirm family information') ?>">
         <i class="fa-solid fa-check"></i>
         <span class="fab-label"><?= gettext('Confirm') ?></span>
     </button>
@@ -238,7 +238,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
             <div class="modal-body d-none" id="confirm-modal-done">
                 <div class="alert alert-success" role="alert">
-                    <i class="fa-solid fa-check-circle me-2"></i>
+                    <i class="fa-solid fa-circle-check me-2"></i>
                     <strong><?= gettext("Thank You!") ?></strong>
                     <p class="mb-0 mt-2"><?= gettext("Your verification request has been received. Thank you for keeping your information up to date.") ?></p>
                 </div>
@@ -246,7 +246,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
 
             <div class="modal-body d-none" id="confirm-modal-error">
                 <div class="alert alert-danger" role="alert">
-                    <i class="fa-solid fa-exclamation-circle me-2"></i>
+                    <i class="fa-solid fa-circle-exclamation me-2"></i>
                     <strong><?= gettext("Error") ?></strong>
                     <p class="mb-0 mt-2"><?= gettext("We encountered an error processing your verification. Please try again or contact us directly.") ?></p>
                 </div>

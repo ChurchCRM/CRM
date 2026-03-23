@@ -198,7 +198,7 @@ $bOkToEdit = (
                     <div class="photo-actions">
                         <div class="btn-group" role="group">
                             <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
-                                <i class="fa-solid fa-search-plus"></i>
+                                <i class="fa-solid fa-magnifying-glass-plus"></i>
                             </a>
                             <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
@@ -290,7 +290,7 @@ $bOkToEdit = (
                         <?php endif; ?>
                         <?php if (!empty($formattedMailingAddress)) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-map-marker-alt me-2 text-muted"></i>
+                            <i class="fa-solid fa-location-dot me-2 text-muted"></i>
                             <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
                                 <?= $formattedMailingAddress ?>
                             </a>
@@ -352,7 +352,7 @@ $bOkToEdit = (
                     <ul class="list-unstyled ms-3">
                         <?php if ($dBirthDate) : ?>
                         <li class="mb-2">
-                            <i class="fa-solid fa-birthday-cake me-2 text-muted"></i>
+                            <i class="fa-solid fa-cake-candles me-2 text-muted"></i>
                             <?= $dBirthDate ?>
                             <?php if (!$person->hideAge()) : ?>
                                 <span class="text-muted">(<?= $person->getAge() ?>)</span>
@@ -483,7 +483,7 @@ $bOkToEdit = (
                 }
                 if ($hasCustomFields) : ?>
                 <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-info-circle me-1"></i><?= gettext('Additional Information') ?></h6>
+                    <h6 class="text-muted mb-2"><i class="fa-solid fa-circle-info me-1"></i><?= gettext('Additional Information') ?></h6>
                     <ul class="list-unstyled ms-3">
                         <?= $customFieldsHtml ?>
                     </ul>
@@ -497,7 +497,7 @@ $bOkToEdit = (
             <a class="btn btn-outline-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-2"></i><?= gettext("Print") ?></a>
             <button class="btn btn-outline-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-2"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                <a class="btn btn-outline-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Why They Came") ?>"><i class="fa-solid fa-question-circle me-2"></i><?= gettext("Why Came") ?></a>
+                <a class="btn btn-outline-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Why They Came") ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
             <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                 <a class="btn btn-outline-info" id="addGroup" title="<?= gettext("Assign New Group") ?>"><i class="fa-solid fa-users me-2"></i><?= gettext("Add Group") ?></a>
@@ -538,7 +538,7 @@ $bOkToEdit = (
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-notes" href="#notes" data-bs-toggle="tab">
-                            <i class="fa-solid fa-sticky-note me-1"></i><?= gettext('Notes') ?>
+                            <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
                         </a>
                     </li>
                     <?php } ?>
@@ -549,7 +549,7 @@ $bOkToEdit = (
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
-                            <i class="fa-solid fa-hands-helping me-1"></i><?= gettext('Volunteer') ?>
+                            <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -707,7 +707,7 @@ $bOkToEdit = (
                                     if (empty($personNotes)) {
                                     ?>
                                         <div class="alert alert-info">
-                                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
                                             <span><?= gettext('No notes have been added for this person.') ?></span>
                                         </div>
                                     <?php
@@ -770,7 +770,7 @@ $bOkToEdit = (
                                 ?>
                                     <br>
                                     <div class="alert alert-warning">
-                                        <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
+                                        <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
                                     </div>
                                     <?php
                                 } else {
@@ -859,7 +859,7 @@ $bOkToEdit = (
                         $sAssignedProperties = ','; ?>
                         <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
                             <div class="alert alert-warning">
-                                <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
+                                <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
                             </div>
                         <?php else : ?>
                             <table class="table table-hover">
@@ -902,7 +902,7 @@ $bOkToEdit = (
                             <div class="card mt-3">
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
-                                        <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Assign a New Property') ?>
+                                        <i class="fa-solid fa-circle-plus me-2"></i><?= gettext('Assign a New Property') ?>
                                     </h5>
                                 </div>
                                 <div class="card-body">
@@ -961,7 +961,7 @@ $bOkToEdit = (
                         if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
                         ?>
                             <div class="alert alert-warning">
-                                <i class="fa-solid fa-question-circle fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
+                                <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
                             </div>
                         <?php
                         } else {
@@ -1002,7 +1002,7 @@ $bOkToEdit = (
                             <div class="card mt-3">
                                 <div class="card-header d-flex align-items-center">
                                     <h5 class="card-title mb-0">
-                                        <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
+                                        <i class="fa-solid fa-circle-plus me-2"></i><?= gettext('Assign a New Volunteer Opportunity') ?>
                                     </h5>
                                 </div>
                                 <div class="card-body">
@@ -1152,7 +1152,7 @@ $bOkToEdit = (
                     <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
         <span class="fab-label"><?= gettext('Add New') . ' ' . gettext('Note') ?></span>
         <div class="fab-icon">
-            <i class="fa-solid fa-sticky-note"></i>
+            <i class="fa-solid fa-note-sticky"></i>
         </div>
     </a>
     <?php } ?>

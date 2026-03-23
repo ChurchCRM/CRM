@@ -31,11 +31,11 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
-                    <i class="fas fa-exclamation-triangle text-danger me-2"></i>
+                    <i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>
                 <?php elseif ($isActive): ?>
-                    <i class="fas fa-check-circle text-success me-2"></i>
+                    <i class="fa-solid fa-circle-check text-success me-2"></i>
                 <?php else: ?>
-                    <i class="fas fa-times-circle text-secondary me-2"></i>
+                    <i class="fa-solid fa-circle-xmark text-secondary me-2"></i>
                 <?php endif; ?>
                 <strong><?= htmlspecialchars($plugin['name']) ?></strong>
                 <span class="badge bg-info ms-2">v<?= htmlspecialchars($plugin['version']) ?></span>
@@ -56,7 +56,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                             data-plugin-id="<?= $pluginId ?>"
                             data-plugin-name="<?= htmlspecialchars($plugin['name']) ?>"
                             title="<?= gettext('Help') ?>">
-                        <i class="fas fa-question-circle"></i>
+                        <i class="fa-solid fa-circle-question"></i>
                     </button>
                 <?php endif; ?>
                 <?php if (!$hasError): ?>
@@ -64,18 +64,18 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-danger" 
                                 data-action="disable" data-plugin-id="<?= $pluginId ?>"
                                 title="<?= gettext('Disable Plugin') ?>">
-                            <i class="fas fa-power-off"></i> <?= gettext('Disable') ?>
+                            <i class="fa-solid fa-power-off"></i> <?= gettext('Disable') ?>
                         </button>
                     <?php else: ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-success" 
                                 data-action="enable" data-plugin-id="<?= $pluginId ?>"
                                 title="<?= gettext('Enable Plugin') ?>">
-                            <i class="fas fa-play"></i> <?= gettext('Enable') ?>
+                            <i class="fa-solid fa-play"></i> <?= gettext('Enable') ?>
                         </button>
                     <?php endif; ?>
                 <?php endif; ?>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-plus"></i>
+                    <i class="fa-solid fa-plus"></i>
                 </button>
             </div>
         </div>
@@ -95,7 +95,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             <?php endif; ?>
             <?php if ($hasError): ?>
                 <div class="alert alert-danger mt-2 mb-2">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i>
                     <?= htmlspecialchars($plugin['errorMessage'] ?? gettext('Plugin failed to load')) ?>
                 </div>
             <?php endif; ?>
@@ -149,7 +149,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                     <?php if ($hasExistingValue): ?>
                                     <div class="input-group-append">
                                         <span class="input-group-text text-success" title="<?= gettext('Value is configured') ?>">
-                                            <i class="fas fa-check"></i>
+                                            <i class="fa-solid fa-check"></i>
                                         </span>
                                     </div>
                                     <?php endif; ?>
@@ -184,16 +184,16 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php endforeach; ?>
                     <div class="btn-group" role="group">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fas fa-save me-1"></i><?= gettext('Save Settings') ?>
+                            <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Settings') ?>
                         </button>
                         <?php if (!empty($plugin['hasTest'])): ?>
                         <button type="button" class="btn btn-outline-info btn-sm btn-test-settings"
                                 data-plugin-id="<?= $pluginId ?>">
-                            <i class="fas fa-plug me-1"></i><?= gettext('Test Connection') ?>
+                            <i class="fa-solid fa-plug me-1"></i><?= gettext('Test Connection') ?>
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
-                            <i class="fas fa-undo me-1"></i><?= gettext('Reset') ?>
+                            <i class="fa-solid fa-undo me-1"></i><?= gettext('Reset') ?>
                         </button>
                     </div>
                     <?php if (!empty($plugin['hasTest'])): ?>
@@ -213,13 +213,13 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fas fa-plug me-2"></i><?= gettext('Core Plugins') ?>
+                    <i class="fa-solid fa-plug me-2"></i><?= gettext('Core Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <?php if (empty($corePlugins)): ?>
                     <div class="text-center py-4 text-muted">
-                        <i class="fas fa-info-circle fa-2x mb-2"></i>
+                        <i class="fa-solid fa-circle-info fa-2x mb-2"></i>
                         <p><?= gettext('No core plugins found') ?></p>
                     </div>
                 <?php else: ?>
@@ -234,13 +234,13 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fas fa-puzzle-piece me-2"></i><?= gettext('Community Plugins') ?>
+                    <i class="fa-solid fa-puzzle-piece me-2"></i><?= gettext('Community Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <?php if (empty($communityPlugins)): ?>
                     <div class="text-center py-4 text-muted">
-                        <i class="fas fa-folder-open fa-2x mb-2"></i>
+                        <i class="fa-solid fa-folder-open fa-2x mb-2"></i>
                         <p><?= gettext('No community plugins installed') ?></p>
                         <p class="small">
                             <?= gettext('Install plugins by placing them in') ?>
@@ -261,7 +261,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card border border-info">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
-                    <i class="fas fa-info-circle me-2"></i><?= gettext('Plugin Development') ?>
+                    <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Plugin Development') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -284,7 +284,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <h5 class="modal-title" id="pluginHelpModalLabel">
-                    <i class="fas fa-question-circle me-2"></i>
+                    <i class="fa-solid fa-circle-question me-2"></i>
                     <span id="pluginHelpTitle"><?= gettext('Plugin Help') ?></span>
                 </h5>
                 <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>">
@@ -341,7 +341,7 @@ $(document).ready(function() {
             contentHtml += '<div class="mt-3"><strong>' + i18next.t('Helpful Links') + ':</strong><ul class="mb-0">';
             helpData.links.forEach(function(link) {
                 contentHtml += '<li><a href="' + escapeHtml(link.url) + '" target="_blank" rel="noopener noreferrer">';
-                contentHtml += escapeHtml(i18next.t(link.label)) + ' <i class="fas fa-external-link-alt fa-xs"></i></a></li>';
+                contentHtml += escapeHtml(i18next.t(link.label)) + ' <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a></li>';
             });
             contentHtml += '</ul></div>';
         }
@@ -426,7 +426,7 @@ $(document).ready(function() {
             }
         });
         
-        submitBtn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Saving...'));
+        submitBtn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Saving...'));
         
         $.ajax({
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/settings',
@@ -447,7 +447,7 @@ $(document).ready(function() {
             window.CRM.notify(error, { type: 'error' });
         })
         .always(function() {
-            submitBtn.prop('disabled', false).html('<i class="fas fa-save me-1"></i>' + i18next.t('Save Settings'));
+            submitBtn.prop('disabled', false).html('<i class="fa-solid fa-floppy-disk me-1"></i>' + i18next.t('Save Settings'));
         });
     });
 
@@ -477,11 +477,11 @@ $(document).ready(function() {
     function showTestResult(pluginId, success, message) {
         const resultDiv = $('#test-result-' + pluginId);
         const alertClass = success ? 'alert-success' : 'alert-danger';
-        const icon = success ? 'fa-check-circle' : 'fa-exclamation-circle';
+        const icon = success ? 'fa-circle-check' : 'fa-circle-exclamation';
         resultDiv
             .removeClass('alert-success alert-danger')
             .addClass('alert ' + alertClass)
-            .html('<i class="fas ' + icon + ' me-1"></i>' + escapeHtml(message))
+            .html('<i class="fa-solid ' + icon + ' me-1"></i>' + escapeHtml(message))
             .show();
     }
 
@@ -493,7 +493,7 @@ $(document).ready(function() {
         const form     = btn.closest('form');
         const settings = collectSettings(form);
 
-        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Testing...'));
+        btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Testing...'));
 
         $.ajax({
             url:         window.CRM.root + '/plugins/api/plugins/' + pluginId + '/test',
@@ -510,7 +510,7 @@ $(document).ready(function() {
             showTestResult(pluginId, false, msg);
         })
         .always(function() {
-            btn.prop('disabled', false).html('<i class="fas fa-plug me-1"></i>' + i18next.t('Test Connection'));
+            btn.prop('disabled', false).html('<i class="fa-solid fa-plug me-1"></i>' + i18next.t('Test Connection'));
         });
     });
 
@@ -526,7 +526,7 @@ $(document).ready(function() {
             return;
         }
         
-        btn.prop('disabled', true).html('<i class="fas fa-spinner fa-spin me-1"></i>' + i18next.t('Resetting...'));
+        btn.prop('disabled', true).html('<i class="fa-solid fa-spinner fa-spin me-1"></i>' + i18next.t('Resetting...'));
         
         $.ajax({
             url: window.CRM.root + '/plugins/api/plugins/' + pluginId + '/reset',
@@ -555,7 +555,7 @@ $(document).ready(function() {
             window.CRM.notify(error, { type: 'error' });
         })
         .always(function() {
-            btn.prop('disabled', false).html('<i class="fas fa-undo me-1"></i>' + i18next.t('Reset'));
+            btn.prop('disabled', false).html('<i class="fa-solid fa-undo me-1"></i>' + i18next.t('Reset'));
         });
     });
     

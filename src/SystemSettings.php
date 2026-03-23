@@ -221,7 +221,7 @@ require_once __DIR__ . '/Include/Header.php';
                   <td>
                     <?php if (!empty($setting->getTooltip())) {
                         ?>
-                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa-solid fa-fw fa-question-circle"></i></a>
+                      <a class="setting-tip" data-tip="<?= $setting->getTooltip() ?>"><i class="fa-solid fa-fw fa-circle-question"></i></a>
                         <?php
                     }
                     if (!empty($setting->getUrl())) {

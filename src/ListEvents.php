@@ -226,14 +226,14 @@ foreach ($allMonths as $mVal) {
                 <?php endif; ?>
                 <?php if (!empty($event['text'])): ?>
                   <br><a href="javascript:popUp('GetText.php?EID=<?= $eventId ?>')" class="text-primary">
-                    <i class="fas fa-file-alt"></i> <?= gettext('Sermon Text') ?>
+                    <i class="fa-solid fa-file-lines"></i> <?= gettext('Sermon Text') ?>
                   </a>
                 <?php endif; ?>
               </td>
               <td><?= InputUtils::escapeHTML($event['type_name']) ?></td>
               <td class="text-center">
                 <a href="Checkin.php?EventID=<?= $eventId ?>" class="btn btn-sm btn-outline-info" title="<?= gettext('Manage Check-ins') ?>">
-                  <i class="fas fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
+                  <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
                   <?php if ($event['attendee_count'] > 0): ?>
                     <span class="badge bg-info ms-1"><?= $event['attendee_count'] ?></span>
                   <?php endif; ?>
@@ -350,7 +350,7 @@ foreach ($allMonths as $mVal) {
 
 <div class="text-center mt-4 mb-3">
   <a href="EventEditor.php" class="btn btn-primary">
-    <i class="fas fa-plus me-1"></i>
+    <i class="fa-solid fa-plus me-1"></i>
     <?= gettext('Add New') . ' ' . gettext('Event') ?>
   </a>
 </div>

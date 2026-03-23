@@ -272,7 +272,7 @@ function initializeFamilyView() {
                                     </button>
                                 </div>
                                 <p class="text-muted small">
-                                    <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
+                                    <i class="fa-solid fa-circle-info me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
                                 </p>
                             </div>
                             <div class="modal-footer">

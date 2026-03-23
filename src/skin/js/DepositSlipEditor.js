@@ -99,7 +99,7 @@ function initPaymentTable() {
         return (
           '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
           data +
-          '"><i class="fa-solid fa-info-circle"></i> Details</a>'
+          '"><i class="fa-solid fa-circle-info"></i> Details</a>'
         );
       },
     });
@@ -293,12 +293,12 @@ function initDepositSlipEditor() {
       // This row is already open - close it
       row.child.hide();
       tr.removeClass("shown");
-      $(this).html('<i class="fa-solid fa-plus-circle"></i>');
+      $(this).html('<i class="fa-solid fa-circle-plus"></i>');
     } else {
       // Open this row
       row.child(format(row.data())).show();
       tr.addClass("shown");
-      $(this).html('<i class="fa-solid fa-minus-circle"></i>');
+      $(this).html('<i class="fa-solid fa-circle-minus"></i>');
     }
   });
 

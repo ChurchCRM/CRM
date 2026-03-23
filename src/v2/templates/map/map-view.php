@@ -98,7 +98,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
             title: i18next.t('Map Settings'),
-            icon: 'fa-solid fa-sliders-h',
+            icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',

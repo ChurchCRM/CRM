@@ -118,7 +118,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
 
 <div class="card border border-info">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-info-circle"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-circle-info"></i> <?= InputUtils::escapeHTML($thisGroup->getName()) ?></h3>
     </div>
     <div class="card-body">
         <div class="mb-3">
@@ -170,7 +170,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     <?php
                     if ($thisGroup->getHasSpecialProps()) { ?>
                         <a class="btn btn-outline-secondary" href="GroupPropsFormEditor.php?GroupID=<?= $thisGroup->getId() ?>" title="<?= gettext('Edit Group-Specific Properties Form') ?>">
-                            <i class="fa-solid fa-list-alt me-2"></i><?= gettext('Properties') ?>
+                            <i class="fa-solid fa-rectangle-list me-2"></i><?= gettext('Properties') ?>
                         </a>
                     <?php }
                 } ?>

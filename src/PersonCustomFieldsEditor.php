@@ -360,14 +360,14 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         if ($numRows == 0) {
         ?>
             <div class="alert alert-info" role="alert">
-                <i class="fa-solid fa-info-circle"></i>
+                <i class="fa-solid fa-circle-info"></i>
                 <?= gettext('No custom person fields have been added yet') ?>
             </div>
         <?php
         } else {
         ?>
             <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-exclamation-triangle"></i>
+                <i class="fa-solid fa-triangle-exclamation"></i>
                 <strong><?= gettext('Warning:') ?></strong>
                 <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
             </div>
@@ -491,7 +491,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             </div>
             <div class="d-flex justify-content-center my-3">
                 <button type="submit" class="btn btn-primary" name="SaveChanges">
-                    <i class="fa-solid fa-save"></i>
+                    <i class="fa-solid fa-floppy-disk"></i>
                     <?= gettext('Save Changes') ?>
                 </button>
             </div>

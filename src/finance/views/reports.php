@@ -204,7 +204,7 @@ if ($iFYMonth === 1) {
                             <div class="d-flex w-100 justify-content-between align-items-center">
                                 <div>
                                     <h6 class="mb-1">
-                                        <i class="fa-solid fa-vote-yea text-dark me-2"></i>
+                                        <i class="fa-solid fa-square-poll-vertical text-dark me-2"></i>
                                         <?= gettext('Voting Members') ?>
                                     </h6>
                                     <small class="text-muted"><?= gettext('List members eligible to vote based on giving history and membership criteria.') ?></small>

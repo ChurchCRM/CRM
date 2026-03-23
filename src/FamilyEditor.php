@@ -797,7 +797,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                                 <?php if ($iFamilyID < 0) { ?>
                                 <div class="alert alert-info mb-3">
-                                    <i class="fa-solid fa-info-circle"></i> <?= gettext('You may create family members now or add them later. All entries will become new person records.') ?>
+                                    <i class="fa-solid fa-circle-info"></i> <?= gettext('You may create family members now or add them later. All entries will become new person records.') ?>
                                 </div>
                                 <?php } ?>
                                 <div class="table-responsive">

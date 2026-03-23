@@ -114,7 +114,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-12">
             <?php if (empty($familyPledges)): ?>
                 <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    <i class="fa-solid fa-info-circle me-2"></i>
+                    <i class="fa-solid fa-circle-info me-2"></i>
                     <?= gettext('No pledges found for the selected fiscal year') ?>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>

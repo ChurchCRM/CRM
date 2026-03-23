@@ -130,7 +130,7 @@ if ($numCounts) {
 ?>
 <div class='card'>
   <div class='card-header'>
-    <h3 class='card-title mb-0'><i class="fas fa-edit me-2"></i><?= gettext('Edit Event Type') ?></h3>
+    <h3 class='card-title mb-0'><i class="fa-solid fa-pen-to-square me-2"></i><?= gettext('Edit Event Type') ?></h3>
   </div>
 
   <div class='card-body'>
@@ -145,7 +145,7 @@ if ($numCounts) {
           </div>
           <div class="col-md-4">
             <button type="submit" name="Action" value="NAME" class="btn btn-primary">
-              <i class="fas fa-save me-1"></i><?= gettext('Save Name') ?>
+              <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Name') ?>
             </button>
           </div>
         </div>
@@ -210,7 +210,7 @@ if ($numCounts) {
                     <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
                             class="btn btn-outline-danger btn-sm" data-cy="remove-attendance-count"
                             onclick="return confirm('<?= gettext('Remove this attendance count?') ?>');">
-                      <i class="fas fa-trash me-1"></i><?= gettext('Remove') ?>
+                      <i class="fa-solid fa-trash me-1"></i><?= gettext('Remove') ?>
                     </button>
                   </td>
                 </tr>
@@ -225,7 +225,7 @@ if ($numCounts) {
                 <td class="text-center">
                   <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
                           data-cy="add-attendance-count">
-                    <i class="fas fa-plus me-1"></i><?= gettext('Add') ?>
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext('Add') ?>
                   </button>
                 </td>
               </tr>
@@ -259,7 +259,7 @@ $(document).ready(function() {
 
 <div class="mb-4">
   <a href="EventNames.php" class='btn btn-outline-secondary'>
-    <i class='fas fa-chevron-left me-1'></i><?= gettext('Return to Event Types') ?>
+    <i class='fa-solid fa-chevron-left me-1'></i><?= gettext('Return to Event Types') ?>
   </a>
 </div>
 <?php

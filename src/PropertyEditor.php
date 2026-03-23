@@ -126,7 +126,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="card">
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-edit"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <?= gettext('Property Editor') ?>
                     </h5>
                 </div>
@@ -166,7 +166,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
                         <div class="d-flex">
                             <button type="submit" class="btn btn-success me-2" name="Submit">
-                                <i class="fa-solid fa-save"></i>
+                                <i class="fa-solid fa-floppy-disk"></i>
                                 <?= gettext('Save') ?>
                             </button>
                             <button type="button" class="btn btn-secondary" name="Cancel" onclick="document.location='PropertyList.php?Type=<?= InputUtils::escapeAttribute($sType) ?>';">

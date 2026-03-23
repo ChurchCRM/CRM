@@ -49,7 +49,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <div class="d-flex align-items-start">
             <div class="me-3 mt-1">
-                <i class="fa-solid fa-exclamation-circle fa-3x"></i>
+                <i class="fa-solid fa-circle-exclamation fa-3x"></i>
             </div>
             <div class="flex-grow-1">
                 <h4 class="alert-heading mb-3">
@@ -90,7 +90,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
                 <div class="card border-success mb-0">
                     <div class="card-header bg-success text-white">
-                        <h6 class="mb-0"><i class="fa-solid fa-check-circle me-2"></i><?= gettext('Valid Examples:') ?></h6>
+                        <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples:') ?></h6>
                     </div>
                     <div class="card-body bg-white">
                         <div class="mb-2">
@@ -116,7 +116,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <div class="d-flex align-items-start">
             <div class="me-3">
-                <i class="fa-solid fa-exclamation-triangle fa-2x"></i>
+                <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
             </div>
             <div class="flex-grow-1">
                 <strong><?= gettext('System Configuration:') ?></strong>
@@ -313,7 +313,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <!-- Reset Database -->
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
-                                <h6 class="text-danger"><i class="fa-solid fa-exclamation-triangle"></i> <?= gettext('Reset Database') ?></h6>
+                                <h6 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Reset Database') ?></h6>
                                 <p class="small text-muted mb-2"><?= gettext('Clear all data and start fresh. Cannot be undone.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-sm btn-outline-danger">
                                     <?= gettext('Reset') ?>
@@ -325,7 +325,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <!-- System Logs -->
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
-                                <h6 class="text-info"><i class="fa-solid fa-file-alt"></i> <?= gettext('System Logs') ?></h6>
+                                <h6 class="text-info"><i class="fa-solid fa-file-lines"></i> <?= gettext('System Logs') ?></h6>
                                 <p class="small text-muted mb-2"><?= gettext('View and manage system log files for debugging.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-sm btn-outline-info">
                                     <?= gettext('View Logs') ?>
@@ -350,7 +350,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <div class="card-body">
                     <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
-                        <i class="fa-solid fa-external-link-alt"></i> <?= gettext('Register Now') ?>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> <?= gettext('Register Now') ?>
                     </a>
                     <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>

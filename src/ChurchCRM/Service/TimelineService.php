@@ -163,7 +163,7 @@ class TimelineService
         $item['type'] = $type;
         switch ($type) {
             case 'create':
-                $item['style'] = 'fa-plus-circle bg-blue';
+                $item['style'] = 'fa-circle-plus bg-blue';
                 break;
             case 'edit':
                 $item['style'] = 'fa-pencil bg-blue';
@@ -187,7 +187,7 @@ class TimelineService
                 break;
             default:
                 $item['slim'] = false;
-                $item['style'] = 'fa-sticky-note bg-green';
+                $item['style'] = 'fa-note-sticky bg-green';
                 $item['editLink'] = $editLink;
                 $item['deleteLink'] = $deleteLink;
         }

@@ -99,7 +99,7 @@ if ($EventID > 0) {
 
 <?php if ($iAddedCount > 0): ?>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <i class="fa-solid fa-check-circle me-2"></i>
+    <i class="fa-solid fa-circle-check me-2"></i>
     <strong><?= $iAddedCount ?></strong> <?= ngettext('person', 'people', $iAddedCount) ?> <?= gettext('added to this event') ?>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
@@ -109,16 +109,16 @@ if ($EventID > 0) {
 <!-- Direct Event Access - Show event info bar with option to change -->
 <div class="alert alert-info d-flex justify-content-between align-items-center mb-3">
     <span>
-        <i class="fas fa-calendar-check me-2"></i>
+        <i class="fa-solid fa-calendar-check me-2"></i>
         <strong><?= gettext('Event') ?>:</strong> <?= InputUtils::escapeHTML($event->getTitle()) ?> 
         <span class="text-muted">(<?= $event->getStart('M j, Y') ?>)</span>
     </span>
     <div>
         <a href="EventEditor.php?EID=<?= $EventID ?>" class="btn btn-sm btn-outline-primary me-2">
-            <i class="fas fa-pen me-1"></i><?= gettext('Edit Event') ?>
+            <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Event') ?>
         </a>
         <a href="Checkin.php" class="btn btn-sm btn-outline-secondary">
-            <i class="fas fa-exchange-alt me-1"></i><?= gettext('Change Event') ?>
+            <i class="fa-solid fa-right-left me-1"></i><?= gettext('Change Event') ?>
         </a>
     </div>
 </div>
@@ -459,7 +459,7 @@ if ($EventID > 0) {
                                     <?php
                                     } else {
                                     ?>
-                                        <i class="fa-solid fa-check-circle"></i>
+                                        <i class="fa-solid fa-circle-check"></i>
                                     <?php
                                     } ?>
                                 </form>

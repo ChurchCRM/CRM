@@ -240,7 +240,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                             <label><?= gettext('Birthday') ?></label>
                                             <div class="input-group">
                                                 <div class="input-group-prepend">
-                                                    <span class="input-group-text"><i class="fa-solid fa-birthday-cake"></i></span>
+                                                    <span class="input-group-text"><i class="fa-solid fa-cake-candles"></i></span>
                                                 </div>
                                                 <input type="text" class="form-control inputDatePicker member-birthday" placeholder="<?= gettext('Select date') ?>">
                                             </div>
@@ -292,7 +292,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                 <div class="row">
                                     <div class="col-md-6">
                                         <p class="mb-2">
-                                            <strong><i class="fa-solid fa-map-marker-alt me-2 text-primary"></i><?= gettext("Address") ?>:</strong><br />
+                                            <strong><i class="fa-solid fa-location-dot me-2 text-primary"></i><?= gettext("Address") ?>:</strong><br />
                                             <span id="displayFamilyAddress" class="ms-4"></span>
                                         </p>
                                     </div>
@@ -360,7 +360,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                                     <div class="ms-4"><span id="displayFamilyPersonCardPhone<?= $x ?>"></span></div>
                                                 </div>
                                                 <div id="displayFamilyPersonCardBDayBlock<?= $x ?>" class="mb-0 d-none">
-                                                    <i class="fa-solid fa-birthday-cake text-muted me-2"></i>
+                                                    <i class="fa-solid fa-cake-candles text-muted me-2"></i>
                                                     <strong><?= gettext('Birthday') ?>:</strong>
                                                     <div class="ms-4"><span id="displayFamilyPersonCardBDay<?= $x ?>"></span></div>
                                                 </div>
@@ -372,7 +372,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="alert alert-info mt-4" role="alert">
-                            <i class="fa-solid fa-info-circle me-2"></i>
+                            <i class="fa-solid fa-circle-info me-2"></i>
                             <?= gettext('Please review all information carefully before submitting. You can go back to make changes if needed.') ?>
                         </div>
 
@@ -381,7 +381,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                 <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
                             <button type="button" class="btn btn-success btn-lg" id="submit-registration">
-                                <i class="fa-solid fa-check-circle me-2"></i><?= gettext('Submit Registration') ?>
+                                <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Submit Registration') ?>
                             </button>
                         </div>
                     </div>

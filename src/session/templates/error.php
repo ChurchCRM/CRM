@@ -23,7 +23,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
       </div>
 
       <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading"><i class="fa-solid fa-exclamation-circle"></i> <?= gettext("Password Reset Error") ?></h4>
+        <h4 class="alert-heading"><i class="fa-solid fa-circle-exclamation"></i> <?= gettext("Password Reset Error") ?></h4>
         <p><?= gettext("We were unable to process your password reset request. Please try requesting a new password reset link.") ?></p>
 
         <div class="alert-buttons">

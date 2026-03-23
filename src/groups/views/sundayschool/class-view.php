@@ -290,7 +290,7 @@ $teacherCount = count($rsTeachers);
                                 <button class="btn btn-xs btn-outline-primary float-end ms-2"
                                         data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"
                                         title="<?= gettext('View Full Details') ?>">
-                                    <i class="fa-solid fa-info-circle"></i>
+                                    <i class="fa-solid fa-circle-info"></i>
                                 </button>
                             </td>
                         </tr>

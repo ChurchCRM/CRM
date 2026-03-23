@@ -46,7 +46,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
     <div class="row mb-3">
         <div class="col-12 d-flex align-items-center">
             <p class="text-muted mb-0 flex-grow-1">
-                <i class="fa-solid fa-calendar-alt me-1"></i>
+                <i class="fa-solid fa-calendar-days me-1"></i>
                 <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong> 
                 (<?= date('M j, Y', strtotime($fyStartDate)) ?> - <?= date('M j, Y', strtotime($fyEndDate)) ?>)
             </p>
@@ -143,7 +143,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                 <div class="col-12">
                     <div class="btn-group flex-wrap" role="group">
                         <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-outline-success" title="<?= gettext('Create a new deposit') ?>">
-                            <i class="fa-solid fa-plus-circle me-2"></i><?= gettext('Create Deposit') ?>
+                            <i class="fa-solid fa-circle-plus me-2"></i><?= gettext('Create Deposit') ?>
                         </a>
                         <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-outline-warning" title="<?= gettext('Add a new pledge') ?>">
                             <i class="fa-solid fa-file-signature me-2"></i><?= gettext('Add Pledge') ?>
@@ -257,7 +257,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <!-- Review Tax Report Text -->
                         <div class="list-group-item d-flex align-items-center px-0">
                             <div class="me-3">
-                                <span class="badge bg-info rounded-circle p-2"><i class="fa-solid fa-file-alt"></i></span>
+                                <span class="badge bg-info rounded-circle p-2"><i class="fa-solid fa-file-lines"></i></span>
                             </div>
                             <div class="flex-grow-1">
                                 <strong><?= gettext('Tax Report Verbiage') ?></strong>
@@ -265,7 +265,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
-                                    <i class="fa-solid fa-edit"></i> <?= gettext('Edit') ?>
+                                    <i class="fa-solid fa-pen-to-square"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
                         </div>
@@ -387,7 +387,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <small class="text-muted"><?= gettext('Total Amount') ?></small>
                     </div>
                     <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
-                        <i class="fa-solid fa-edit"></i> <?= gettext('Edit Deposit') ?>
+                        <i class="fa-solid fa-pen-to-square"></i> <?= gettext('Edit Deposit') ?>
                     </a>
                 </div>
             </div>
@@ -399,7 +399,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </h5>
                 </div>
                 <div class="card-body text-center py-4">
-                    <i class="fa-solid fa-plus-circle fa-3x text-muted mb-3"></i>
+                    <i class="fa-solid fa-circle-plus fa-3x text-muted mb-3"></i>
                     <p class="text-muted"><?= gettext('Create or select a deposit to get started.') ?></p>
                     <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-success">
                         <i class="fa-solid fa-plus"></i> <?= gettext('Create Deposit') ?>

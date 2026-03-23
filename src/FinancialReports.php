@@ -53,7 +53,7 @@ if (array_key_exists('datetype', $_POST)) {
 // No Records Message if previous report returned no records.
 if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRows') {
     echo '<div class="alert alert-warning" role="alert">';
-    echo '<i class="fas fa-exclamation-triangle"></i> ';
+    echo '<i class="fa-solid fa-triangle-exclamation"></i> ';
     echo '<strong>' . gettext('No Data Found') . '</strong><br>';
     echo gettext('No records were returned from the previous report. Please adjust your filters or date range and try again.');
     echo '</div>';

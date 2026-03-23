@@ -143,7 +143,7 @@ class CustomLinksPlugin extends AbstractPlugin
             $items[] = [
                 'label' => $link['Name'],
                 'url' => $link['Uri'],
-                'icon' => 'fa-solid fa-external-link-alt',
+                'icon' => 'fa-solid fa-arrow-up-right-from-square',
                 'external' => true,
             ];
         }

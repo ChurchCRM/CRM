@@ -36,7 +36,7 @@ $isOnboarding = $isOnboarding ?? false;
 <!-- Warning Card -->
 <div class="card border-top border-danger border-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-exclamation-triangle me-2"></i><?= gettext('Important Warning') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Important Warning') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
@@ -118,7 +118,7 @@ $isOnboarding = $isOnboarding ?? false;
         </div>
         <div id="statusError" class="d-none">
             <div class="text-center py-4">
-                <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
+                <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
                 <p class="mb-2 text-danger fw-bold"><?= gettext('Restore failed.') ?></p>
                 <p class="text-muted" id="errorMessage"><?= gettext('Please check the backup file and try again.') ?></p>
             </div>
@@ -131,7 +131,7 @@ $isOnboarding = $isOnboarding ?? false;
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body text-center py-5">
-                <i class="fa-solid fa-check-circle fa-5x text-success mb-4"></i>
+                <i class="fa-solid fa-circle-check fa-5x text-success mb-4"></i>
                 <h3 class="text-success mb-3"><?= gettext('Database Restored Successfully!') ?></h3>
                 <div id="restoreModalMessages" class="text-start mb-3"></div>
                 <?php if ($isOnboarding): ?>

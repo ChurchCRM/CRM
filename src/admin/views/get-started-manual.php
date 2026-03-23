@@ -73,19 +73,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body">
                     <ul class="list-unstyled mb-0">
                         <li class="mb-2">
-                            <i class="fa-solid fa-check-circle text-success me-2"></i>
+                            <i class="fa-solid fa-circle-check text-success me-2"></i>
                             <?= gettext('Families share an address and phone number.') ?>
                         </li>
                         <li class="mb-2">
-                            <i class="fa-solid fa-check-circle text-success me-2"></i>
+                            <i class="fa-solid fa-circle-check text-success me-2"></i>
                             <?= gettext('Each person can have their own email and mobile number.') ?>
                         </li>
                         <li class="mb-2">
-                            <i class="fa-solid fa-check-circle text-success me-2"></i>
+                            <i class="fa-solid fa-circle-check text-success me-2"></i>
                             <?= gettext('Family roles (Head of Household, Spouse, Child, etc.) help organise your records.') ?>
                         </li>
                         <li class="mb-2">
-                            <i class="fa-solid fa-check-circle text-success me-2"></i>
+                            <i class="fa-solid fa-circle-check text-success me-2"></i>
                             <?= gettext('You can always import more data later via CSV.') ?>
                         </li>
                         <li class="mb-0">
@@ -126,7 +126,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-header bg-secondary text-white py-2">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-question-circle"></i> <?= gettext('Family vs Person') ?>
+                        <i class="fa-solid fa-circle-question"></i> <?= gettext('Family vs Person') ?>
                     </h5>
                 </div>
                 <div class="card-body">
@@ -139,7 +139,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?= gettext('An individual church member. Stores name, birthday, personal email, and mobile.') ?>
                     </p>
                     <p class="small text-muted mb-0">
-                        <i class="fa-solid fa-info-circle text-info me-1"></i>
+                        <i class="fa-solid fa-circle-info text-info me-1"></i>
                         <?= gettext('A person does not need to belong to a family, but assigning one makes address management much easier.') ?>
                     </p>
                 </div>

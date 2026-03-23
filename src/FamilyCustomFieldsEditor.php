@@ -374,7 +374,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     } else {
     ?>
         <div class="alert alert-warning" role="alert">
-            <i class="fa-solid fa-exclamation-triangle"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <strong><?= gettext('Warning:') ?></strong>
             <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
         </div>
@@ -500,7 +500,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         </div>
         <div class="d-flex justify-content-center my-3">
             <button type="submit" class="btn btn-primary" name="SaveChanges">
-                <i class="fa-solid fa-save"></i>
+                <i class="fa-solid fa-floppy-disk"></i>
                 <?= gettext('Save Changes') ?>
             </button>
         </div>

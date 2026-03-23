@@ -83,7 +83,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- Photo Grid -->
         <?php if (empty($peopleData)): ?>
             <div class="alert alert-info">
-                <i class="fa-solid fa-info-circle me-2"></i>
+                <i class="fa-solid fa-circle-info me-2"></i>
                 <?= gettext('No people found matching your criteria.') ?>
             </div>
         <?php else: ?>

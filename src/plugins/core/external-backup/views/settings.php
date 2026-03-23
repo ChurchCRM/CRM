@@ -86,7 +86,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-body">
         <div class="callout callout-info">
-            <h5><i class="fa-solid fa-info-circle me-1"></i><?= gettext('About WebDAV Backups') ?></h5>
+            <h5><i class="fa-solid fa-circle-info me-1"></i><?= gettext('About WebDAV Backups') ?></h5>
             <p class="mb-0">
                 <?= gettext('Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS.') ?>
             </p>
@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <i class="fa-solid fa-arrow-right me-1"></i>
             <?= gettext('Configure these settings in the') ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/external-backup">
-                <?= gettext('Plugin Management') ?> <i class="fa-solid fa-external-link-alt fa-xs"></i>
+                <?= gettext('Plugin Management') ?> <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i>
             </a>
         </p>
 
@@ -152,13 +152,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php if ($isConfigured): ?>
             <p><?= gettext('Click the button below to test your WebDAV connection settings.') ?></p>
             <button type="button" class="btn btn-info" id="testConnection">
-                <i class="fa-solid fa-check-circle me-1"></i><?= gettext('Test WebDAV Connection') ?>
+                <i class="fa-solid fa-circle-check me-1"></i><?= gettext('Test WebDAV Connection') ?>
             </button>
             <div id="testResult" class="mt-3"></div>
         <?php else: ?>
             <div class="callout callout-warning mb-0">
                 <p class="mb-0">
-                    <i class="fa-solid fa-exclamation-triangle me-1"></i>
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i>
                     <?= gettext('Please configure the WebDAV settings before testing the connection.') ?>
                 </p>
             </div>
@@ -198,7 +198,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php else: ?>
             <div class="callout callout-warning mb-0">
                 <p class="mb-0">
-                    <i class="fa-solid fa-exclamation-triangle me-1"></i>
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i>
                     <?= gettext('Please configure the WebDAV settings before creating a remote backup.') ?>
                 </p>
             </div>
@@ -233,7 +233,7 @@ $(document).ready(function() {
         .catch(function() {
             $('#testResult').html(
                 '<div class="alert alert-danger">' +
-                '<i class="fa-solid fa-times-circle me-1"></i>' + i18next.t('Connection test failed') +
+                '<i class="fa-solid fa-circle-xmark me-1"></i>' + i18next.t('Connection test failed') +
                 '</div>'
             );
         })
@@ -276,7 +276,7 @@ $(document).ready(function() {
         .catch(function() {
             $('#backupResult').html(
                 '<div class="alert alert-danger">' +
-                '<i class="fa-solid fa-times-circle me-1"></i>' + i18next.t('Backup failed') +
+                '<i class="fa-solid fa-circle-xmark me-1"></i>' + i18next.t('Backup failed') +
                 '</div>'
             );
         })

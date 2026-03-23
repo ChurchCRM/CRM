@@ -14,18 +14,18 @@ $hasOrphanedFiles = $orphanedCount > 0;
         <div class="card">
             <div class="card-header bg-danger text-white">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Orphaned Files Management') ?>
+                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files Management') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <h5><i class="fa fa-info-circle me-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
+                    <h5><i class="fa fa-circle-info me-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
                     <p class="mb-0"><?= gettext('Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities.') ?></p>
                 </div>
 
                 <?php if ($hasOrphanedFiles): ?>
                     <div class="alert alert-danger">
-                        <strong><i class="fa fa-exclamation-triangle me-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
+                        <strong><i class="fa fa-triangle-exclamation me-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Review the files below and delete them to improve security.') ?></p>
                     </div>
 
@@ -65,7 +65,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                     </div>
                 <?php else: ?>
                     <div class="alert alert-success">
-                        <i class="fa fa-check-circle me-2"></i>
+                        <i class="fa fa-circle-check me-2"></i>
                         <strong><?= gettext('No Orphaned Files Found') ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Your ChurchCRM installation is clean. All files on the server match the official release.') ?></p>
                     </div>
@@ -90,7 +90,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="deleteConfirmModalLabel">
-                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Confirm Deletion') ?>
+                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Confirm Deletion') ?>
                 </h5>
                     <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -210,14 +210,14 @@ $hasOrphanedFiles = $orphanedCount > 0;
         // Summary
         if (deletedCount > 0) {
             html += '<div class="alert alert-success">';
-            html += '<i class="fa fa-check-circle me-2"></i>';
+            html += '<i class="fa fa-circle-check me-2"></i>';
             html += '<strong>' + i18next.t('Successfully deleted') + ': ' + deletedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
 
         if (failedCount > 0) {
             html += '<div class="alert alert-danger">';
-            html += '<i class="fa fa-times-circle me-2"></i>';
+            html += '<i class="fa fa-circle-xmark me-2"></i>';
             html += '<strong>' + i18next.t('Failed to delete') + ': ' + failedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
@@ -256,7 +256,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
         if (deletedCount === 0 && failedCount === 0) {
             html += '<div class="alert alert-info">';
-            html += '<i class="fa fa-info-circle me-2"></i>';
+            html += '<i class="fa fa-circle-info me-2"></i>';
             html += i18next.t('No files were deleted.');
             html += '</div>';
         }

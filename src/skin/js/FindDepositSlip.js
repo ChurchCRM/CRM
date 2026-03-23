@@ -127,7 +127,7 @@ function initializeDepositSlip() {
             return (
               "<a href='DepositSlipEditor.php?DepositSlipID=" +
               full.Id +
-              '\'><i class="fa-solid fa-search-plus"></i></a>' +
+              '\'><i class="fa-solid fa-magnifying-glass-plus"></i></a>' +
               full.Id
             );
           } else {

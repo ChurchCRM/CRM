@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-12">
             <?php if (empty($familyPledges)): ?>
                 <div class="alert alert-info">
-                    <i class="fa-solid fa-info-circle"></i>
+                    <i class="fa-solid fa-circle-info"></i>
                     <?= gettext('No pledges found for the selected fiscal year') ?>
                 </div>
             <?php else: ?>

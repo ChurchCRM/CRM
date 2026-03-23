@@ -134,11 +134,11 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="d-flex flex-wrap align-items-center">
                   <!-- Primary Actions -->
                   <button type="submit" class="btn btn-primary me-2" name="DepositSlipSubmit">
-                    <i class="fa-solid fa-save"></i> <?= gettext('Save'); ?>
+                    <i class="fa-solid fa-floppy-disk"></i> <?= gettext('Save'); ?>
                   </button>
                   <?php if (!$thisDeposit->getClosed()): ?>
                   <a href="PledgeEditor.php?CurrentDeposit=<?= $iCurrentDeposit ?>&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php?DepositSlipID=<?= $iDepositSlipID ?>&PledgeOrPayment=Payment&CurrentDeposit=<?= $iDepositSlipID ?>" class="btn btn-success me-2">
-                    <i class="fa-solid fa-plus-circle"></i> <?= gettext('Add Payment'); ?>
+                    <i class="fa-solid fa-circle-plus"></i> <?= gettext('Add Payment'); ?>
                   </a>
                   <?php endif; ?>
                   

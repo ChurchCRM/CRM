@@ -178,7 +178,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="alert alert-warning text-center">
-                    <i class="fa fa-info-circle"></i> <?= gettext('Your cart is empty!') ?>
+                    <i class="fa fa-circle-info"></i> <?= gettext('Your cart is empty!') ?>
                 </div>
             </div>
         </div>

@@ -111,7 +111,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         }
         RedirectUtils::redirect($toStr);
     } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
-        echo"<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\">" . gettext('At least one group must be selected to make class lists or attendance sheets.') ."</span></p>";
+        echo"<p class=\"alert alert-danger\"><span class=\"fa fa-triangle-exclamation\">" . gettext('At least one group must be selected to make class lists or attendance sheets.') ."</span></p>";
     }
 } else {
     $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : FiscalYearUtils::getCurrentFiscalYearId();

@@ -469,19 +469,19 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
 <div class="mb-3 d-flex justify-content-between align-items-center">
     <a href="ListEvents.php" class="btn btn-outline-secondary">
-        <i class="fas fa-chevron-left me-1"></i>
+        <i class="fa-solid fa-chevron-left me-1"></i>
         <?= gettext('Return to Events') ?>
     </a>
     <?php if ($EventExists && $iEventID > 0): ?>
     <div>
         <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info me-2">
-            <i class="fas fa-clipboard-check me-1"></i>
+            <i class="fa-solid fa-clipboard-check me-1"></i>
             <?= gettext('Manage Check-ins') ?>
         </a>
         <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
             <input type="hidden" name="EID" value="<?= $iEventID ?>">
             <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
-                <i class="fas fa-trash me-1"></i>
+                <i class="fa-solid fa-trash me-1"></i>
                 <?= gettext('Delete Event') ?>
             </button>
         </form>
@@ -646,11 +646,11 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                             <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
                                 <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>
-                                <i class="fas fa-check me-1"></i><?= gettext('Active') ?>
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Active') ?>
                             </label>
                             <label class="btn btn-outline-secondary <?= ($iEventStatus == 1) ? 'active' : '' ?>">
                                 <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus == 1) ? 'checked' : '' ?>>
-                                <i class="fas fa-ban me-1"></i><?= gettext('Inactive') ?>
+                                <i class="fa-solid fa-ban me-1"></i><?= gettext('Inactive') ?>
                             </label>
                         </div>
                     </td>
@@ -660,7 +660,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td></td>
                     <td>
                         <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary btn-lg">
-                            <i class="fas fa-save me-1"></i><?= gettext('Save Changes') ?>
+                            <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Changes') ?>
                         </button>
                     </td>
                 </tr>

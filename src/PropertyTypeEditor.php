@@ -71,14 +71,14 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="card">
     <div class="card-header bg-primary text-white">
         <h5 class="mb-0">
-            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-edit' : 'fa-plus' ?>"></i>
+            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-pen-to-square' : 'fa-plus' ?>"></i>
             <?= $sPageTitle ?>
         </h5>
     </div>
     <div class="card-body">
         <?php if ($bError): ?>
         <div class="alert alert-danger" role="alert">
-            <i class="fa-solid fa-exclamation-triangle"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <strong><?= gettext('Error') ?>:</strong> <?= gettext('Please correct the errors below.') ?>
         </div>
         <?php endif; ?>
@@ -153,7 +153,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Cancel') ?>
                     </a>
                     <button type="submit" class="btn btn-primary" name="Submit">
-                        <i class="fa-solid fa-save"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save') ?>
                     </button>
                 </div>

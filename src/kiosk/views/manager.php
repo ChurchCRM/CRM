@@ -126,7 +126,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       // Add edit link if an event is assigned
       if (currentEventId) {
         html += '<a href="' + window.CRM.root + '/EventEditor.php?EID=' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
-        html += '<i class="fas fa-edit"></i>';
+        html += '<i class="fa-solid fa-pen-to-square"></i>';
         html += '</a>';
       }
       html += '</div>';
@@ -173,10 +173,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       message: i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
       buttons: {
         cancel: {
-          label: '<i class="fas fa-times"></i> ' + i18next.t("Cancel")
+          label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel")
         },
         confirm: {
-          label: '<i class="fas fa-trash"></i> ' + i18next.t("Delete"),
+          label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
           className: 'btn-danger'
         }
       },
@@ -297,12 +297,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           orderable: false,
           render: function(data, type, full, meta) {
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
-            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fas fa-sync"></i></button>';
-            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fas fa-eye"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
             if (!full.Accepted) {
-              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fas fa-check"></i></button>';
+              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check"></i></button>';
             }
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fas fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }

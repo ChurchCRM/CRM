@@ -64,7 +64,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <div class="photo-actions">
                     <div class="btn-group" role="group">
                         <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo" title="<?= gettext("View Photo") ?>">
-                            <i class="fa-solid fa-search-plus"></i>
+                            <i class="fa-solid fa-magnifying-glass-plus"></i>
                         </a>
                         <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) : ?>
                         <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
@@ -250,7 +250,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <div class="card-tools ms-auto">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
                     <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
-                        <i class="fa-solid fa-plus-circle text-blue"></i>
+                        <i class="fa-solid fa-circle-plus text-blue"></i>
                     </button>
                     <?php } ?>
                 </div>
@@ -263,7 +263,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 </div>
 
                 <div id="family-property-no-data" class="alert alert-warning" style="display: block;">
-                    <i class="fa-solid fa-question-circle fa-fw fa-lg"></i>
+                    <i class="fa-solid fa-circle-question fa-fw fa-lg"></i>
                     <span><?= gettext("No property assignments.") ?></span>
                 </div>
 
@@ -384,7 +384,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <!-- Notes Card -->
             <div class="card-secondary collapsed-card mb-3">
                 <div class="card-header d-flex align-items-center">
-                    <h3 class="card-title m-0"><i class="fa-solid fa-sticky-note"></i> <?= gettext("Notes") ?></h3>
+                    <h3 class="card-title m-0"><i class="fa-solid fa-note-sticky"></i> <?= gettext("Notes") ?></h3>
                     <div class="card-tools d-flex align-items-center">
                         <a class="btn btn-outline-success btn-sm me-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
                             <i class="fa-solid fa-plus"></i> <?= gettext('Add New') . ' ' . gettext('Note') ?>
@@ -406,7 +406,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     <?php } ?>
                     <?php if (empty($familyNotes)) { ?>
                         <div class="alert alert-info">
-                            <i class="fa-solid fa-info-circle fa-fw fa-lg"></i>
+                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
                             <span><?= gettext('No notes have been added for this family.') ?></span>
                         </div>
                     <?php } else { ?>
@@ -542,7 +542,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                                         <?php }
                                         $formattedBirthday = $person->getFormattedBirthDate();
                                         if ($formattedBirthday) {?>
-                                        <i class="fa-solid fa-birthday-cake"
+                                        <i class="fa-solid fa-cake-candles"
                                            title="<?= gettext("Birthday") ?>"></i>
                                             <?= $formattedBirthday ?>  <?= $person->getAge() ?? sprintf('(%s)', gettext('not found')) ?>
                                         </i>
@@ -687,7 +687,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
     <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" class="fab-button fab-note" aria-label="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
         <span class="fab-label"><?= gettext('Add New') . ' ' . gettext('Note') ?></span>
         <div class="fab-icon">
-            <i class="fa-solid fa-sticky-note"></i>
+            <i class="fa-solid fa-note-sticky"></i>
         </div>
     </a>
     <?php } ?>

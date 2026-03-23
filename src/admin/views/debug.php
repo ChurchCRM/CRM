@@ -92,7 +92,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
             <div class="card-body">
                 <?php if ($integrityPassed): ?>
-                    <p><i class="fa fa-check-circle text-success me-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
+                    <p><i class="fa fa-circle-check text-success me-2"></i><?= gettext('All system files have passed integrity validation.') ?></p>
                     <p class="text-muted small mb-0"><?= gettext('File signatures match the official release.') ?></p>
                 <?php else: ?>
                     <p><?= sprintf(gettext('%d files have failed integrity validation.'), $failingCount) ?></p>
@@ -114,7 +114,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card border-danger">
             <div class="card-header bg-danger text-white">
                 <h4 class="mb-0">
-                    <i class="fa fa-exclamation-triangle me-2"></i><?= gettext('Orphaned Files') ?>
+                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
                     <span class="badge bg-light ms-2"><?= $orphanedCount ?></span>
                 </h4>
             </div>
@@ -132,7 +132,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
         <div class="card">
             <div class="card-header" id="headingPrerequisites">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapsePrerequisites" aria-expanded="false" aria-controls="collapsePrerequisites" style="cursor: pointer;">
-                    <i class="fa fa-check-circle me-2"></i><?= gettext('Application Prerequisites') ?>
+                    <i class="fa fa-circle-check me-2"></i><?= gettext('Application Prerequisites') ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
             </div>
@@ -185,7 +185,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div id="collapseLocaleSupport" class="collapse" aria-labelledby="headingLocaleSupport">
             <div class="card-body">
                 <div class="alert <?= $localeInfo['systemLocaleDetected'] ? 'alert-success' : 'alert-warning' ?> mb-3">
-                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-check-circle' : 'fa-exclamation-triangle' ?> me-2"></i>
+                    <i class="fa <?= $localeInfo['systemLocaleDetected'] ? 'fa-circle-check' : 'fa-triangle-exclamation' ?> me-2"></i>
                     <strong><?= gettext('System Locale Support') ?></strong><br>
                     <small><?= InputUtils::escapeHTML($localeInfo['systemLocaleSupportSummary']) ?></small>
                 </div>
@@ -304,9 +304,9 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseTimezone" aria-expanded="false" aria-controls="collapseTimezone" style="cursor: pointer;">
                     <i class="fa fa-clock me-2"></i><?= gettext('Timezone Information') ?>
                     <?php if ($serverConfigMismatch): ?>
-                        <i class="fa fa-exclamation-triangle text-warning ms-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                        <i class="fa fa-triangle-exclamation text-warning ms-2" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
                     <?php else: ?>
-                        <i class="fa fa-exclamation-triangle text-warning ms-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
+                        <i class="fa fa-triangle-exclamation text-warning ms-2 d-none" id="tz-header-alert" title="<?= gettext('Timezone mismatch detected') ?>"></i>
                     <?php endif; ?>
                     <i class="fa fa-chevron-down float-end"></i>
                 </h4>
@@ -334,7 +334,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                             </div>
                             <?php if ($serverConfigMismatch): ?>
                                 <span class="badge bg-warning" title="<?= gettext('Does not match system config') ?>">
-                                    <i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>
+                                    <i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>
                                 </span>
                             <?php elseif (!empty($configuredTimezone)): ?>
                                 <span class="badge bg-success"><i class="fa fa-check"></i></span>
@@ -491,7 +491,7 @@ EOD;
             $row.removeClass('bg-warning-light');
         } else {
             $badge.removeClass('bg-success bg-secondary').addClass('bg-warning')
-                  .html('<i class="fa fa-exclamation-triangle"></i> <?= gettext('Mismatch') ?>');
+                  .html('<i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>');
             $row.addClass('bg-warning-light');
             // Show alert icon in card header
             $headerAlert.removeClass('d-none');
@@ -510,9 +510,9 @@ EOD;
         
         var summaryHtml = '';
         if (issueCount === 0) {
-            summaryHtml = '<span class="text-success"><i class="fa fa-check-circle me-1"></i><?= gettext('All timezones match') ?></span>';
+            summaryHtml = '<span class="text-success"><i class="fa fa-circle-check me-1"></i><?= gettext('All timezones match') ?></span>';
         } else {
-            summaryHtml = '<span class="text-warning"><i class="fa fa-exclamation-triangle me-1"></i>' + 
+            summaryHtml = '<span class="text-warning"><i class="fa fa-triangle-exclamation me-1"></i>' + 
                           issueCount + ' ' + (issueCount === 1 ? '<?= gettext('mismatch detected') ?>' : '<?= gettext('mismatches detected') ?>') + '</span>';
             if (!browserMatchesBaseline) {
                 summaryHtml += '<br><small class="text-muted"><?= gettext('Browser differs from system config - dates may display incorrectly for this user.') ?></small>';

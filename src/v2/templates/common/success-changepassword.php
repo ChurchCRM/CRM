@@ -21,7 +21,7 @@ if ($isForced) {
         </div>
         <div class="card-body text-center">
             <p class="login-box-msg">
-                <i class="fa fa-check-circle text-success" style="font-size:2rem;"></i><br>
+                <i class="fa fa-circle-check text-success" style="font-size:2rem;"></i><br>
                 <strong><?= gettext('Password Changed') ?></strong><br>
                 <small class="text-muted"><?= gettext('Your password has been updated successfully.') ?></small>
             </p>

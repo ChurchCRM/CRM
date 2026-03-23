@@ -27,7 +27,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </select>
                     </div>
                     <button type="button" class="btn btn-primary" id="saveLogLevel">
-                        <i class="fa-solid fa-save"></i> <?= gettext('Save Log Level') ?>
+                        <i class="fa-solid fa-floppy-disk"></i> <?= gettext('Save Log Level') ?>
                     </button>
                     <span id="logLevelStatus" class="ms-3"></span>
                 </form>
@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body p-0">
                 <?php if (empty($logFiles)): ?>
                     <div class="alert alert-info m-3">
-                        <i class="fa-solid fa-info-circle"></i> <?= gettext('No log files found.') ?>
+                        <i class="fa-solid fa-circle-info"></i> <?= gettext('No log files found.') ?>
                     </div>
                 <?php else: ?>
                         <table class="table table-vcenter table-hover card-table" id="logFilesTable">
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php foreach ($logFiles as $logFile): ?>
                                     <tr>
                                         <td>
-                                            <i class="fa-solid fa-file-alt"></i> 
+                                            <i class="fa-solid fa-file-lines"></i> 
                                             <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
                                         </td>
                                         <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
