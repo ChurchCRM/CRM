@@ -104,7 +104,7 @@ class Menu
     private static function getGroupMenu(bool $isAdmin, bool $isMenuOptions, bool $isManageGroups): MenuItem
     {
         $groupMenu = new MenuItem(gettext('Groups'), '', true, 'fa-users');
-        $groupMenu->addSubMenu(new MenuItem(gettext('List Groups'), 'groups/dashboard', true, 'fa-list'));
+        $groupMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'groups/dashboard', true, 'fa-list'));
         // fetch list options lightweight (only name/id)
         $listOptions = ListOptionQuery::create()
             ->filterById(3)
