@@ -57,22 +57,37 @@ export function initializeMainDashboard() {
     sortable: false,
     title: i18next.t("Action"),
     data: "FamilyId",
+    className: "no-export",
     render: function (data, type, row) {
       return (
-        '<a href="' +
+        '<div class="dropdown" onclick="event.stopPropagation();">' +
+        '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+        '<i class="ti ti-dots-vertical"></i>' +
+        "</button>" +
+        '<div class="dropdown-menu dropdown-menu-end">' +
+        '<a class="dropdown-item" href="' +
         window.CRM.root +
         "/FamilyEditor.php?FamilyID=" +
         row.FamilyId +
-        '" class="btn btn-sm btn-default" title="' +
+        '" onclick="event.stopPropagation();">' +
+        '<i class="ti ti-pencil me-2"></i>' +
         i18next.t("Edit") +
-        '"><i class="fa-solid fa-pen"></i></a> ' +
-        '<span class="AddToCart" data-cart-id="' +
+        "</a>" +
+        '<div class="dropdown-divider"></div>' +
+        '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
         row.FamilyId +
-        '" data-cart-type="family">' +
-        '<button class="btn btn-sm btn-primary" title="' +
+        '" data-cart-type="family" data-label-add="' +
         i18next.t("Add to Cart") +
-        '"><i class="fa-solid fa-cart-plus"></i></button>' +
-        "</span>"
+        '" data-label-remove="' +
+        i18next.t("Remove from Cart") +
+        '" onclick="event.stopPropagation();">' +
+        '<i class="ti ti-shopping-cart-plus me-2"></i>' +
+        '<span class="cart-label">' +
+        i18next.t("Add to Cart") +
+        "</span>" +
+        "</button>" +
+        "</div>" +
+        "</div>"
       );
     },
     searchable: false,
@@ -100,9 +115,9 @@ export function initializeMainDashboard() {
         let statusHtml = "";
         if (row.StatusText && row.IsActive === false) {
           statusHtml =
-            ' <span class="badge badge-secondary" title="' +
+            ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="fa-solid fa-power-off"></i> ' +
+            '"><i class="ti ti-power me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
@@ -264,10 +279,10 @@ export function initializeMainDashboard() {
 
           let badge = "";
           if (diff === 0) {
-            badge = '<span class="badge badge-success">' + i18next.t("Today") + "!</span>";
+            badge = '<span class="badge bg-success-lt text-success">' + i18next.t("Today") + "!</span>";
           } else if (diff > 0) {
             badge =
-              '<span class="badge badge-info">' +
+              '<span class="badge bg-info-lt text-info">' +
               i18next.t("in") +
               " " +
               diff +
@@ -276,7 +291,7 @@ export function initializeMainDashboard() {
               "</span>";
           } else {
             badge =
-              '<span class="badge badge-secondary">' +
+              '<span class="badge bg-secondary-lt text-secondary">' +
               Math.abs(diff) +
               " " +
               (Math.abs(diff) === 1 ? i18next.t("day") : i18next.t("days")) +
@@ -365,7 +380,7 @@ export function initializeMainDashboard() {
           let badge = "";
           if (diff === 0) {
             badge =
-              '<span class="badge badge-success ml-2">' +
+              '<span class="badge bg-success-lt text-success ms-2">' +
               years +
               " " +
               i18next.t("years") +
@@ -374,7 +389,7 @@ export function initializeMainDashboard() {
               "!</span>";
           } else if (diff > 0) {
             badge =
-              '<span class="badge badge-info ml-2">' +
+              '<span class="badge bg-info-lt text-info ms-2">' +
               i18next.t("in") +
               " " +
               diff +
@@ -383,7 +398,7 @@ export function initializeMainDashboard() {
               "</span>";
           } else {
             badge =
-              '<span class="badge badge-secondary ml-2">' +
+              '<span class="badge bg-secondary-lt text-secondary ms-2">' +
               Math.abs(diff) +
               " " +
               (Math.abs(diff) === 1 ? i18next.t("day") : i18next.t("days")) +
@@ -420,22 +435,37 @@ export function initializeMainDashboard() {
     sortable: false,
     title: i18next.t("Action"),
     data: "PersonId",
+    className: "no-export",
     render: function (data, type, row) {
       return (
-        '<a href="' +
+        '<div class="dropdown" onclick="event.stopPropagation();">' +
+        '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+        '<i class="ti ti-dots-vertical"></i>' +
+        "</button>" +
+        '<div class="dropdown-menu dropdown-menu-end">' +
+        '<a class="dropdown-item" href="' +
         window.CRM.root +
         "/PersonEditor.php?PersonID=" +
         row.PersonId +
-        '" class="btn btn-sm btn-default" title="' +
+        '" onclick="event.stopPropagation();">' +
+        '<i class="ti ti-pencil me-2"></i>' +
         i18next.t("Edit") +
-        '"><i class="fa-solid fa-pen"></i></a> ' +
-        '<span class="AddToCart" data-cart-id="' +
+        "</a>" +
+        '<div class="dropdown-divider"></div>' +
+        '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
         row.PersonId +
-        '" data-cart-type="person">' +
-        '<button class="btn btn-sm btn-primary" title="' +
+        '" data-cart-type="person" data-label-add="' +
         i18next.t("Add to Cart") +
-        '"><i class="fa-solid fa-cart-plus"></i></button>' +
-        "</span>"
+        '" data-label-remove="' +
+        i18next.t("Remove from Cart") +
+        '" onclick="event.stopPropagation();">' +
+        '<i class="ti ti-shopping-cart-plus me-2"></i>' +
+        '<span class="cart-label">' +
+        i18next.t("Add to Cart") +
+        "</span>" +
+        "</button>" +
+        "</div>" +
+        "</div>"
       );
     },
     searchable: false,
@@ -486,9 +516,9 @@ export function initializeMainDashboard() {
         // Support both flattened family fields and unprefixed ones
         if ((row.FamilyStatusText && row.FamilyIsActive === false) || (row.StatusText && row.IsActive === false)) {
           statusHtml =
-            ' <span class="badge badge-secondary" title="' +
+            ' <span class="badge bg-secondary-lt text-secondary" title="' +
             i18next.t("Inactive") +
-            '"><i class="fa-solid fa-power-off"></i> ' +
+            '"><i class="ti ti-power me-1"></i>' +
             i18next.t("Inactive") +
             "</span>";
         }
