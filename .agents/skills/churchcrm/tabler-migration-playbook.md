@@ -187,6 +187,33 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 - [x] Remove AdminLTE from SCSS imports (keep `_tabler-bridge.scss`)
 - [x] Run `npm run build` — verify no errors
 
+### Phase 1.5: jQuery Initialization Race Conditions (COMPLETED) <!-- learned: 2026-03-22 -->
+
+**Issue**: Webpack bundles were using jQuery before `window.jQuery` was set globally, causing runtime errors:
+- "Cannot read properties of undefined (reading 'extend')" in MainDashboard.js
+- "Cannot read properties of undefined (reading 'ajax')" in CRMJSOM.js  
+- "$ is not defined" in IssueReporter.js and Footer.js
+- jQuery plugin loading failures (DataTables, DatePicker, InputMask)
+
+**Solution Implemented**:
+- [x] Convert `IssueReporter.js` to ES6 module with proper jQuery import
+- [x] Replace all `$` references with `window.jQuery` in CRMJSOM.js
+- [x] Add jQuery availability guards and deferred initialization in Footer.js, MainDashboard.js, root-dashboard.js
+- [x] Return proper Promise rejections when AJAX functions called before jQuery loads
+- [x] Add retry logic with 500ms timeout for deferred initializations
+
+**Files Modified**:
+- `src/skin/js/IssueReporter.js` — ES6 module with DOM ready guard
+- `src/skin/js/CRMJSOM.js` — Remove module-level `$` assignment, use `window.jQuery.ajax()`
+- `src/skin/js/Footer.js` — Guard `$(document).ready()` with jQuery availability check
+- `src/skin/js/MainDashboard.js` — Defer initialization if `$.extend()` not available
+- `webpack/root-dashboard.js` — Guard DOM event handlers with jQuery check
+
+**Testing**:
+- [x] Webpack builds with no new errors
+- [x] Lint passes
+- [x] All jQuery errors resolved in browser console
+
 ### Phase 2: Global Sweep — data attributes (COMPLETED) <!-- verified: 2026-03-22 -->
 - [x] Bulk find-replace `data-toggle` → `data-bs-toggle` — **0 occurrences remain in PHP**
 - [x] Bulk find-replace `data-dismiss` → `data-bs-dismiss`
