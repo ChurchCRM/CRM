@@ -27,35 +27,53 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Status Overview -->
 <div class="row">
     <div class="col-lg-4 col-md-6">
-        <div class="card card-sm <?= $status['configured'] ? 'bg-success' : 'bg-warning' ?>">
-            <div class="inner">
-                <h3><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></h3>
-                <p><?= gettext('WebDAV Connection') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-<?= $status['configured'] ? 'check-circle' : 'exclamation-triangle' ?>"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="card card-sm <?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?>">
-            <div class="inner">
-                <h3><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></h3>
-                <p><?= gettext('Auto-Backup Interval') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-clock"></i>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="<?= $status['configured'] ? 'bg-success' : 'bg-warning' ?> text-white avatar rounded-circle">
+                            <i class="fa-solid fa-<?= $status['configured'] ? 'check-circle' : 'exclamation-triangle' ?>"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $status['configured'] ? gettext('Configured') : gettext('Not Configured') ?></div>
+                        <div class="text-muted"><?= gettext('WebDAV Connection') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-4 col-md-6">
-        <div class="card card-sm bg-primary">
-            <div class="inner">
-                <h3><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></h3>
-                <p><?= gettext('Last Backup') ?></p>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="<?= $status['autoBackupEnabled'] ? 'bg-info' : 'bg-secondary' ?> text-white avatar rounded-circle">
+                            <i class="fa-solid fa-clock"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $status['autoBackupEnabled'] ? $status['autoInterval'] . 'h' : gettext('Disabled') ?></div>
+                        <div class="text-muted"><?= gettext('Auto-Backup Interval') ?></div>
+                    </div>
+                </div>
             </div>
-            <div class="icon">
-                <i class="fa-solid fa-history"></i>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-6">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-history"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= !empty($status['lastBackup']) ? $status['lastBackup'] : gettext('Never') ?></div>
+                        <div class="text-muted"><?= gettext('Last Backup') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

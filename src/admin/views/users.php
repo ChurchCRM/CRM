@@ -20,46 +20,82 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 <!-- Dashboard Overview -->
 <div class="row">
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-info">
-            <div class="inner">
-                <h3><?= $userStats['total'] ?></h3>
-                <p><?= gettext('Total Users') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-users"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-success">
-            <div class="inner">
-                <h3><?= $userStats['active'] ?></h3>
-                <p><?= gettext('Active Users') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-user-check"></i>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-info text-white avatar rounded-circle">
+                            <i class="fa-solid fa-users"></i>
+                        </span>
+                            <span class="bg-info text-white avatar rounded-circle">
+                                <i class="fa-solid fa-users icon"></i>
+                            </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $userStats['total'] ?></div>
+                        <div class="text-muted"><?= gettext('Total Users') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-warning">
-            <div class="inner">
-                <h3><?= $userStats['locked'] ?></h3>
-                <p><?= gettext('Locked Users') ?></p>
-            </div>
-            <div class="icon">
-                <i class="fa-solid fa-lock"></i>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-user-check"></i>
+                        </span>
+                            <span class="bg-success text-white avatar rounded-circle">
+                                <i class="fa-solid fa-user-check icon"></i>
+                            </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $userStats['active'] ?></div>
+                        <div class="text-muted"><?= gettext('Active Users') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-6">
-        <div class="card card-sm bg-primary">
-            <div class="inner">
-                <h3><?= $userStats['twoFactor'] ?></h3>
-                <p><?= gettext('2FA Enabled') ?></p>
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-warning text-white avatar rounded-circle">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                            <span class="bg-warning text-white avatar rounded-circle">
+                                <i class="fa-solid fa-lock icon"></i>
+                            </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $userStats['locked'] ?></div>
+                        <div class="text-muted"><?= gettext('Locked Users') ?></div>
+                    </div>
+                </div>
             </div>
-            <div class="icon">
-                <i class="fa-solid fa-shield-alt"></i>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-shield-alt"></i>
+                        </span>
+                            <span class="bg-primary text-white avatar rounded-circle">
+                                <i class="fa-solid fa-shield-alt icon"></i>
+                            </span>
+                    </div>
+                    <div class="col">
+                        <div class="h3 m-0"><?= $userStats['twoFactor'] ?></div>
+                        <div class="text-muted"><?= gettext('2FA Enabled') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

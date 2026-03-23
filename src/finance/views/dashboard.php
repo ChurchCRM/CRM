@@ -76,7 +76,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <div class="row align-items-center mb-3">
                                     <div class="col-auto">
                                         <span class="bg-success text-white avatar rounded-circle">
-                                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                                            <i class="fa-solid fa-hand-holding-dollar icon"></i>
                                         </span>
                                     </div>
                                     <div class="col">
@@ -93,7 +93,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <div class="row align-items-center mb-3">
                                 <div class="col-auto">
                                     <span class="bg-primary text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-file-signature"></i>
+                                        <i class="fa-solid fa-file-signature icon"></i>
                                     </span>
                                 </div>
                                 <div class="col">
@@ -110,7 +110,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <div class="row align-items-center mb-3">
                                 <div class="col-auto">
                                     <span class="bg-secondary text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-people-roof"></i>
+                                        <i class="fa-solid fa-people-roof icon"></i>
                                     </span>
                                 </div>
                                 <div class="col">
@@ -127,7 +127,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <div class="row align-items-center mb-3">
                                 <div class="col-auto">
                                     <span class="bg-info text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-receipt"></i>
+                                        <i class="fa-solid fa-receipt icon"></i>
                                     </span>
                                 </div>
                                 <div class="col">

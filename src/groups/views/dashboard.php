@@ -24,7 +24,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-primary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-users"></i>
+                                <i class="fa-solid fa-users icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -41,7 +41,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-check-circle"></i>
+                                <i class="fa-solid fa-check-circle icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -58,7 +58,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-danger text-white avatar rounded-circle">
-                                <i class="fa-solid fa-ban"></i>
+                                <i class="fa-solid fa-ban icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -75,7 +75,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-info text-white avatar rounded-circle">
-                                <i class="fa-solid fa-user-tie"></i>
+                                <i class="fa-solid fa-user-tie icon"></i>
                             </span>
                         </div>
                         <div class="col">

@@ -9,3 +9,16 @@
 .dropdown-toggle.dropdown-icon::after {
   margin-left: 0;
 }
+
+/* Dashboard Stat Card Icons
+   Small circular icon badges used in dashboard stat cards (family count, people count, etc.).
+   These use a span.rounded-circle with centered FontAwesome icon. */
+.rounded-circle .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5rem;
+  line-height: 1;
+}

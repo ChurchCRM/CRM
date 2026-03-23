@@ -41,7 +41,7 @@ $teacherCount = count($rsTeachers);
                         <div class="row align-items-center mb-3">
                             <div class="col-auto">
                                 <span class="bg-primary text-white avatar rounded-circle">
-                                    <i class="fa-solid fa-users"></i>
+                                       <i class="fa-solid fa-users icon"></i>
                                 </span>
                             </div>
                             <div class="col">
@@ -58,7 +58,7 @@ $teacherCount = count($rsTeachers);
                         <div class="row align-items-center mb-3">
                             <div class="col-auto">
                                 <span class="bg-info text-white avatar rounded-circle">
-                                    <i class="fa-solid fa-child"></i>
+                                       <i class="fa-solid fa-child icon"></i>
                                 </span>
                             </div>
                             <div class="col">
@@ -75,7 +75,7 @@ $teacherCount = count($rsTeachers);
                         <div class="row align-items-center mb-3">
                             <div class="col-auto">
                                 <span class="bg-danger text-white avatar rounded-circle">
-                                    <i class="fa-solid fa-child-dress"></i>
+                                       <i class="fa-solid fa-child-dress icon"></i>
                                 </span>
                             </div>
                             <div class="col">
@@ -92,7 +92,7 @@ $teacherCount = count($rsTeachers);
                         <div class="row align-items-center mb-3">
                             <div class="col-auto">
                                 <span class="bg-success text-white avatar rounded-circle">
-                                    <i class="fa-solid fa-person-chalkboard"></i>
+                                       <i class="fa-solid fa-person-chalkboard icon"></i>
                                 </span>
                             </div>
                             <div class="col">

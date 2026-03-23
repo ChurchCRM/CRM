@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Cart;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
@@ -309,7 +310,7 @@ $MenuFirst = 1;
         $colorIndex = crc32($currentUserName) % count($avatarColors);
         $avatarColor = $avatarColors[$colorIndex];
 
-        $photo = new \ChurchCRM\dto\Photo('person', $currentUser->getPersonId());
+        $photo = new Photo('person', $currentUser->getPersonId());
         $hasUploadedPhoto = $photo->hasUploadedPhoto();
         $personId = $currentUser->getPersonId();
         $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';

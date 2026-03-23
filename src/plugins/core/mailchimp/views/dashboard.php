@@ -66,46 +66,70 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <!-- Stats Overview -->
     <div class="row">
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-info">
-                <div class="inner">
-                    <h3><?= count($mailChimpLists) ?></h3>
-                    <p><?= gettext('Audiences') ?></p>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-list"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-success">
-                <div class="inner">
-                    <h3><?= number_format($totalMembers) ?></h3>
-                    <p><?= gettext('Total Subscribers') ?></p>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-users"></i>
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-info text-white avatar rounded-circle">
+                                <i class="fa-solid fa-list"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="h3 m-0"><?= count($mailChimpLists) ?></div>
+                            <div class="text-muted"><?= gettext('Audiences') ?></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-primary">
-                <div class="inner">
-                    <h3><?= number_format($totalCampaigns) ?></h3>
-                    <p><?= gettext('Total Campaigns') ?></p>
-                </div>
-                <div class="icon">
-                    <i class="fa-solid fa-paper-plane"></i>
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-success text-white avatar rounded-circle">
+                                <i class="fa-solid fa-users"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="h3 m-0"><?= number_format($totalMembers) ?></div>
+                            <div class="text-muted"><?= gettext('Total Subscribers') ?></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-6">
-            <div class="card card-sm bg-success">
-                <div class="inner">
-                    <h3><i class="fa-solid fa-check"></i></h3>
-                    <p><?= gettext('Connected') ?></p>
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-primary text-white avatar rounded-circle">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="h3 m-0"><?= number_format($totalCampaigns) ?></div>
+                            <div class="text-muted"><?= gettext('Total Campaigns') ?></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="icon">
-                    <i class="fa-solid fa-plug"></i>
+            </div>
+        </div>
+        <div class="col-lg-3 col-6">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-success text-white avatar rounded-circle">
+                                <i class="fa-solid fa-plug"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="h3 m-0"><i class="fa-solid fa-check"></i></div>
+                            <div class="text-muted"><?= gettext('Connected') ?></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

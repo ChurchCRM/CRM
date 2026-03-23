@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-secondary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-chalkboard"></i>
+                            <i class="fa-solid fa-chalkboard icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -33,7 +33,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-success text-white avatar rounded-circle">
-                            <i class="fa-solid fa-person-chalkboard"></i>
+                            <i class="fa-solid fa-person-chalkboard icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -50,7 +50,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-primary text-white avatar rounded-circle">
-                            <i class="fa-solid fa-children"></i>
+                            <i class="fa-solid fa-children icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-info text-white avatar rounded-circle">
-                            <i class="fa-solid fa-people-roof"></i>
+                            <i class="fa-solid fa-people-roof icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -84,7 +84,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-azure text-white avatar rounded-circle">
-                            <i class="fa-solid fa-child"></i>
+                            <i class="fa-solid fa-child icon"></i>
                         </span>
                     </div>
                     <div class="col">
@@ -101,7 +101,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row align-items-center">
                     <div class="col-auto">
                         <span class="bg-danger text-white avatar rounded-circle">
-                            <i class="fa-solid fa-child-dress"></i>
+                            <i class="fa-solid fa-child-dress icon"></i>
                         </span>
                     </div>
                     <div class="col">
