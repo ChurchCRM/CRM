@@ -124,7 +124,7 @@
         "select2": "^4.0.13"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.4.7",
+        "@biomejs/biome": "^2.4.8",
         "@types/jquery": "^3.5.33",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
@@ -150,6 +150,6 @@
         "ts-loader": "^9.5.4",
         "typescript": "^5.9.3",
         "webpack": "^5.105.4",
-        "webpack-cli": "^7.0.0"
+        "webpack-cli": "^7.0.2"
     }
 }
