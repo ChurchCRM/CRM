@@ -311,7 +311,7 @@ Responsive variants follow the same pattern:
 | Bootstrap 4 | Bootstrap 5 |
 |-------------|-------------|
 | `.float-left` | `.float-start` |
-| `.float-right` | `.float-end` |
+| `.float-end` | `.float-end` |
 | `.float-sm-left` | `.float-sm-start` |
 | `.float-md-right` | `.float-md-end` |
 | *(etc. for all breakpoints)* | *(etc. for all breakpoints)* |
@@ -319,7 +319,7 @@ Responsive variants follow the same pattern:
 ```html
 <!-- BS4 -->
 <div class="float-left">Left</div>
-<div class="float-right">Right</div>
+<div class="float-end">Right</div>
 
 <!-- BS5 -->
 <div class="float-start">Start (left in LTR)</div>
@@ -1616,7 +1616,7 @@ npm install sass  # Dart Sass
 - [ ] Replace `.sr-only` with `.visually-hidden`
 - [ ] Replace `.ml-*`/`.mr-*` with `.ms-*`/`.me-*`
 - [ ] Replace `.pl-*`/`.pr-*` with `.ps-*`/`.pe-*`
-- [ ] Replace `.float-left`/`.float-right` with `.float-start`/`.float-end`
+- [ ] Replace `.float-left`/`.float-end` with `.float-start`/`.float-end`
 - [ ] Replace `.text-left`/`.text-right` with `.text-start`/`.text-end`
 - [ ] Replace `.font-weight-*` with `.fw-*`
 - [ ] Replace `.font-italic` with `.fst-italic`
@@ -1685,7 +1685,7 @@ pr-   →  pe-
 
 # Float
 float-left   →  float-start
-float-right  →  float-end
+float-end  →  float-end
 
 # Text
 text-left    →  text-start

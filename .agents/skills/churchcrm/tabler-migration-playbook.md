@@ -45,7 +45,7 @@ All `ml-*`→`ms-*`, `mr-*`→`me-*`, `pl-*`→`ps-*`, `pr-*`→`pe-*` migrated.
 
 | Pattern | BS5 Equivalent | Remaining | Status |
 |---------|---------------|-----------|--------|
-| `.float-right/left` | `.float-end/start` | **0** | ✅ Done |
+| `.float-end/left` | `.float-end/start` | **0** | ✅ Done |
 | `.badge-*` (color) | `.bg-*` | **0** | ✅ Done |
 | `.text-right/left` | `.text-end/start` | **0** | ✅ Done |
 | `.font-weight-*` | `.fw-*` | **0** | ✅ Done |
@@ -88,7 +88,7 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 
 ```
 1. AUDIT — Count BS4 patterns in the file
-   grep -c 'data-toggle\|data-dismiss\|data-target\|ml-\|mr-\|form-group\|badge-\|float-right\|text-right' src/PageName.php
+   grep -c 'data-toggle\|data-dismiss\|data-target\|ml-\|mr-\|form-group\|badge-\|float-end\|text-right' src/PageName.php
 
 2. STRUCTURE — Wrap content (if not already from Header.php)
    - Content should be inside .page-body > .container-xl (provided by Header.php)
@@ -114,7 +114,7 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
    pl-  → ps-     pr-  → pe-
 
 6. LAYOUT — Replace alignment/float
-   float-right      → float-end
+   float-end      → float-end
    float-left       → float-start
    text-right       → text-end
    text-left        → text-start
@@ -316,7 +316,7 @@ Also: `form-group` reduced to **2 occurrences** (Header.php modal, Functions.php
 | `pl-*` → `ps-*` | ✅ Done | 0 |
 | `pr-*` → `pe-*` | ✅ Done | 0 |
 | `badge-*` → `bg-*` | ✅ Done | 0 |
-| `float-right/left` → `float-end/start` | ✅ Done | 0 |
+| `float-end/left` → `float-end/start` | ✅ Done | 0 |
 | `text-right/left` → `text-end/start` | ✅ Done | 0 |
 | `.close` → `.btn-close` | ✅ Done | 0 (`class="close"` not found) |
 | `.sr-only` → `.visually-hidden` | ✅ Done | 0 |

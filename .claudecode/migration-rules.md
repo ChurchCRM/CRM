@@ -198,7 +198,7 @@ When encountering AdminLTE or Bootstrap 4 classes on legacy pages, replace as fo
 | `data-target="..."` | `data-bs-target="..."` |
 | `.badge-*` | `.bg-*` (e.g. `.bg-primary`) |
 | `.ml-*` / `.mr-*` | `.ms-*` / `.me-*` |
-| `.float-right` | `.float-end` |
+| `.float-end` | `.float-end` |
 | `.font-weight-*` | `.fw-*` |
 | `.text-left` | `.text-start` |
 | `.text-right` | `.text-end` |

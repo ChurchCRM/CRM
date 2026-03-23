@@ -48,7 +48,7 @@ This skill covers frontend patterns, UI components, notifications, international
 // ❌ WRONG - Bootstrap 4 classes (DO NOT USE in new code)
 <div class="ml-3 mr-2 pl-2 pr-1">Spacing</div>    // Use ms-/me-/ps-/pe-
 <span class="badge badge-primary">Badge</span>       // Use bg-primary
-<div class="float-right text-right">Aligned</div>   // Use float-end/text-end
+<div class="float-end text-right">Aligned</div>   // Use float-end/text-end
 <span class="font-weight-bold">Bold text</span>     // Use fw-bold
 <button class="close">&times;</button>               // Use btn-close
 <div class="sr-only">Hidden</div>                    // Use visually-hidden
