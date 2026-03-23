@@ -427,7 +427,7 @@ if ($embedded) {
                                         echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
                                     }
                                     ?>
-                                    <th class="text-center no-export" style="width: 200px;"><?= gettext('Actions') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -474,22 +474,28 @@ if ($embedded) {
                                 echo '</td>';
                             }
                             ?>
-                            <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    if ($numRows > 0) {
-                                        $deleteUrl = 'OptionManagerRowOps.php?mode=' . urlencode($mode) . '&Order=' . urlencode($aSeqs[$row]) . '&ListID=' . urlencode($listID) . '&ID=' . urlencode($aIDs[$row]) . '&Action=delete';
-                                        $itemNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
-                                        $deleteUrlJs = InputUtils::escapeAttribute(json_encode($deleteUrl));
-                                        echo '<button type="button" class="btn btn-danger" onclick="confirmDelete(' . $itemNameJs . ', ' . $deleteUrlJs . ')"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</button>';
-                                    }
-                                    if ($row != 1) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    }
-                                    ?>
+                            <td class="w-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <?php
+                                        if ($row != 1) {
+                                            echo '<a class="dropdown-item" href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                        }
+                                        if ($row < $numRows) {
+                                            echo '<a class="dropdown-item" href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                        }
+                                        if ($numRows > 0) {
+                                            $deleteUrl = 'OptionManagerRowOps.php?mode=' . urlencode($mode) . '&Order=' . urlencode($aSeqs[$row]) . '&ListID=' . urlencode($listID) . '&ID=' . urlencode($aIDs[$row]) . '&Action=delete';
+                                            $itemNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
+                                            $deleteUrlJs = InputUtils::escapeAttribute(json_encode($deleteUrl));
+                                            echo '<div class="dropdown-divider"></div>';
+                                            echo '<button type="button" class="dropdown-item text-danger" onclick="confirmDelete(' . $itemNameJs . ', ' . $deleteUrlJs . ')"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</button>';
+                                        }
+                                        ?>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

@@ -287,7 +287,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <th><?= gettext('Recurrence') ?></th>
             <th><?= gettext('Start Time') ?></th>
             <th><?= gettext('Attendance Counts') ?></th>
-            <th class="text-nowrap no-export"><?= gettext('Actions') ?></th>
+            <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
           </tr>
         </thead>
         <tbody>
@@ -305,22 +305,24 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                   <span class="text-muted">—</span>
                 <?php endif; ?>
               </td>
-              <td class="text-nowrap">
-                <form name="CreateEvent" action="EventEditor.php" method="POST" class="d-inline">
-                  <input type="hidden" name="EN_tyid" value="<?= $aTypeID[$row] ?>">
-                  <button type="submit" name="Action" value="<?= gettext('Create Event') ?>" class="btn btn-success btn-sm" title="<?= gettext('Create Event') ?>">
-                    <i class="fas fa-plus me-1"></i><?= gettext('Create') ?>
-                  </button>
-                </form>
-                <a href="EditEventTypes.php?EN_tyid=<?= $aTypeID[$row] ?>" class="btn btn-outline-secondary btn-sm" title="<?= gettext('Edit') ?>">
-                  <i class="fas fa-pen"></i>
-                </a>
-                <form name="DeleteEventType" action="EventNames.php" method="POST" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event type will NOT delete existing events. Are you sure?') ?>');">
-                  <input type="hidden" name="theID" value="<?= $aTypeID[$row] ?>">
-                  <button type="submit" class="btn btn-outline-danger btn-sm" title="<?= gettext('Delete') ?>" name="Action" value="DELETE">
-                    <i class="fas fa-trash"></i>
-                  </button>
-                </form>
+              <td class="w-1">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ti ti-dots-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <button type="button" class="dropdown-item" onclick="createEvent(<?= (int)$aTypeID[$row] ?>)">
+                            <i class="ti ti-plus me-2"></i><?= gettext('Create Event') ?>
+                        </button>
+                        <a class="dropdown-item" href="EditEventTypes.php?EN_tyid=<?= (int)$aTypeID[$row] ?>">
+                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <button type="button" class="dropdown-item text-danger" onclick="deleteEventType(<?= (int)$aTypeID[$row] ?>)">
+                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        </button>
+                    </div>
+                </div>
               </td>
             </tr>
                 <?php
@@ -347,6 +349,46 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/event/EventUtils.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
+  function createEvent(tyid) {
+    var f = document.createElement('form');
+    f.method = 'POST';
+    f.action = 'EventEditor.php';
+    var i = document.createElement('input');
+    i.type = 'hidden'; i.name = 'EN_tyid'; i.value = tyid;
+    f.appendChild(i);
+    var a = document.createElement('input');
+    a.type = 'hidden'; a.name = 'Action'; a.value = '<?= gettext('Create Event') ?>';
+    f.appendChild(a);
+    document.body.appendChild(f);
+    f.submit();
+  }
+
+  function deleteEventType(tyid) {
+    bootbox.confirm({
+      title: i18next.t('Delete Event Type'),
+      message: i18next.t('Deleting this event type will NOT delete existing events. Are you sure?'),
+      buttons: {
+        confirm: { label: i18next.t('Yes'), className: 'btn-danger' },
+        cancel:  { label: i18next.t('No'),  className: 'btn-default' }
+      },
+      callback: function(result) {
+        if (result) {
+          var f = document.createElement('form');
+          f.method = 'POST';
+          f.action = 'EventNames.php';
+          var id = document.createElement('input');
+          id.type = 'hidden'; id.name = 'theID'; id.value = tyid;
+          f.appendChild(id);
+          var act = document.createElement('input');
+          act.type = 'hidden'; act.name = 'Action'; act.value = 'DELETE';
+          f.appendChild(act);
+          document.body.appendChild(f);
+          f.submit();
+        }
+      }
+    });
+  }
+
   $(document).ready(function () {
     $('#eventNames').DataTable(window.CRM.plugin.dataTable);
 

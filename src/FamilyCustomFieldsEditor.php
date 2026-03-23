@@ -405,7 +405,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Special option') ?></th>
                                 <th><?= gettext('Security Option') ?></th>
-                                <th class="no-export"><?= gettext('Actions') ?></th>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -463,24 +463,29 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                             echo GetSecurityList($aSecurityGrp, $row . 'FieldSec');
                         } ?>
                     </td>
-                    <td class="text-nowrap">
-                        <div class="btn-group btn-group-sm" role="group">
-                            <?php
-                            $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
-                            $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
-                            ?>
-                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
-                                <i class="fa-solid fa-trash"></i>
-                                <?= gettext('Delete') ?>
+                    <td class="w-1">
+                        <?php
+                        $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
+                        $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
+                        ?>
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti ti-dots-vertical"></i>
                             </button>
-                            <?php
-                            if ($row > 1) {
-                                echo '<a href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                            }
-                            if ($row < $numRows) {
-                                echo '<a href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                            }
-                            ?>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <?php
+                                if ($row > 1) {
+                                    echo '<a class="dropdown-item" href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                }
+                                if ($row < $numRows) {
+                                    echo '<a class="dropdown-item" href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                }
+                                ?>
+                                <div class="dropdown-divider"></div>
+                                <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
+                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                </button>
+                            </div>
                         </div>
                     </td>
 

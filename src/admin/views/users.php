@@ -144,7 +144,7 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <th class="text-center"><?= gettext('Last Login') ?></th>
                         <th class="text-center"><?= gettext('Failed Logins') ?></th>
                         <th class="text-center"><?= gettext('2FA') ?></th>
-                        <th class="text-center no-export"><?= gettext('Actions') ?></th>
+                        <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -171,41 +171,41 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                                     <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-shield-slash me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
                             </td>
-                            <td class="text-center">
+                            <td class="w-1">
                                 <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis-v"></i>
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
                                     </button>
-                                    <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-menu dropdown-menu-end">
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $user->getId() ?>">
-                                            <i class="fa-solid fa-pen"></i> <?= gettext('Edit User') ?>
+                                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit User') ?>
                                         </a>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
-                                            <i class="fa-solid fa-eye"></i> <?= gettext('View Details') ?>
+                                            <i class="ti ti-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>/changePassword">
-                                            <i class="fa-solid fa-wrench"></i> <?= gettext('Change Password') ?>
+                                            <i class="ti ti-tool me-2"></i><?= gettext('Change Password') ?>
                                         </a>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId() && !empty($user->getEmail())) { ?>
                                             <a class="dropdown-item" href="#" onclick="resetUserPassword(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                                <i class="fa-solid fa-paper-plane"></i> <?= gettext('Reset Password via Email') ?>
+                                                <i class="ti ti-send me-2"></i><?= gettext('Reset Password via Email') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getFailedLogins() > 0) { ?>
                                             <a class="dropdown-item" onclick="restUserLoginCount(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                                <i class="fa-solid fa-eraser"></i> <?= gettext('Reset Failed Logins') ?>
+                                                <i class="ti ti-eraser me-2"></i><?= gettext('Reset Failed Logins') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->is2FactorAuthEnabled()) { ?>
                                             <a class="dropdown-item" onclick="disableUserTwoFactorAuth(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                                <i class="fa-solid fa-shield-alt"></i> <?= gettext('Disable 2FA') ?>
+                                                <i class="ti ti-shield-off me-2"></i><?= gettext('Disable 2FA') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger" href="#" onclick="deleteUser(<?= $user->getId() ?>, '<?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?>')">
-                                                <i class="fa-solid fa-trash-can"></i> <?= gettext('Delete User') ?>
+                                                <i class="ti ti-trash me-2"></i><?= gettext('Delete User') ?>
                                             </a>
                                         <?php } ?>
                                     </div>

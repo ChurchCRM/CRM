@@ -233,7 +233,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     <th><?= gettext('Name') ?></th>
                                     <th><?= gettext('Description') ?></th>
                                     <th><?= gettext('Active') ?></th>
-                                    <th class="no-export"><?= gettext('Actions') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -265,22 +265,32 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                                 <label class="form-check-label" for="<?= $row ?>active_no"><?= gettext('No') ?></label>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="w-1">
                                             <?php
                                             $fundNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
                                             $fundIdJs = InputUtils::escapeAttribute(json_encode($aIDFields[$row]));
                                             ?>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
-                                                <i class="fa-solid fa-trash"></i>
-                                                <?= gettext('Delete') ?>
-                                            </button>
-                                            <?php
-                                            if ($row !== 0) {
-                                                echo '<a href="DonationFundRowOps.php?FundID=' . $aIDFields[$row] . '&Action=up" class="btn btn-sm btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                            }
-                                            if ($row < $donationFunds->count() - 1) {
-                                                echo '<a href="DonationFundRowOps.php?FundID=' . $aIDFields[$row] . '&Action=down" class="btn btn-sm btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                            } ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="ti ti-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <?php if ($row !== 0): ?>
+                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=up">
+                                                            <i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($row < $donationFunds->count() - 1): ?>
+                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=down">
+                                                            <i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
+                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php

@@ -44,7 +44,7 @@ require_once __DIR__ . '/Include/Header.php';
             <td><?= gettext('Select') ?></td>
             <td><?= gettext('Number') ?></td>
             <td><?= gettext('Buyer') ?></td>
-            <td><?= gettext('Delete') ?></td>
+            <td class="text-center no-export w-1"><?= gettext('Actions') ?></td>
         </tr>
 
         <?php
@@ -70,9 +70,22 @@ require_once __DIR__ . '/Include/Header.php';
             <td>
                 <?= InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName) ?>&nbsp;
             </td>
-            <td>
-                <a href=" PaddleNumDelete.php?PaddleNumID=<?= (int)$pn_ID . '&linkBack=PaddleNumList.php?FundRaiserID=' . (int)$iFundRaiserID ?>">Delete</a>
-                    </td>
+            <td class="w-1">
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="ti ti-dots-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="PaddleNumEditor.php?PaddleNumID=<?= (int)$pn_ID ?>&linkBack=PaddleNumList.php">
+                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger" href="PaddleNumDelete.php?PaddleNumID=<?= (int)$pn_ID ?>&linkBack=PaddleNumList.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
+                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        </a>
+                    </div>
+                </div>
+            </td>
                 </tr>
                 <?php
             } // while
