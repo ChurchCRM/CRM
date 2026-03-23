@@ -33,6 +33,7 @@ $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
 
 require __DIR__ . '/routes/common/mvc-helper.php';
+require __DIR__ . '/routes/search.php';
 require __DIR__ . '/routes/user.php';
 require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/family.php';

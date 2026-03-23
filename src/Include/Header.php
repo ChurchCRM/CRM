@@ -198,7 +198,7 @@ $MenuFirst = 1;
       </button>
 
       <!-- Right-side nav items -->
-      <div class="navbar-nav flex-row order-md-last">
+      <div class="navbar-nav flex-row order-md-last ms-auto">
 
         <!-- System Update Notification -->
         <?php
@@ -210,7 +210,7 @@ $MenuFirst = 1;
              id="upgradeMenu" title="<?= gettext('New Release') ?>">
             <i class="ti ti-download"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item"
                title="<?= gettext('New Release') ?>">
@@ -230,14 +230,14 @@ $MenuFirst = 1;
         </div>
 
         <!-- Locale -->
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
             <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> fi-squared"></i>
             <?php if ($localeInfo->shouldShowTranslationBadge()) { ?>
             <span class="badge bg-warning ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
             <?php } ?>
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <span class="dropdown-item disabled">
               <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> me-2"></i>
               <?= $localeInfo->getName() ?> [<?= $localeInfo->getLocale() ?>]
@@ -255,22 +255,26 @@ $MenuFirst = 1;
         </div>
 
         <!-- Cart -->
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
             <i class="fa-duotone fa-solid fa-cart-shopping"></i>
+            <?php if (Cart::countPeople() > 0): ?>
             <span class="badge bg-info ms-1" id="iconCount"><?= Cart::countPeople() ?></span>
+            <?php else: ?>
+            <span class="badge bg-info ms-1 d-none" id="iconCount">0</span>
+            <?php endif; ?>
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <span id="cart-dropdown-menu"></span>
           </div>
         </div>
 
         <!-- Support -->
-        <div class="nav-item dropdown">
+        <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
             <i class="ti ti-headset"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
                title="<?= gettext('Help & Manual') ?>">
               <i class="ti ti-book me-2"></i><?= gettext('Help & Manual') ?>
@@ -294,20 +298,37 @@ $MenuFirst = 1;
         </div>
 
         <!-- User -->
+        <?php
+        $currentUser     = AuthenticationManager::getCurrentUser();
+        $currentUserName = $currentUser->getName();
+        $nameParts       = explode(' ', trim($currentUserName));
+        $userInitials    = mb_strtoupper(mb_substr($nameParts[0], 0, 1)) .
+                           (count($nameParts) > 1 ? mb_strtoupper(mb_substr(end($nameParts), 0, 1)) : '');
+        $avatarColors    = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
+        $avatarColor     = $avatarColors[array_sum(array_map('ord', str_split($currentUserName))) % count($avatarColors)];
+        $userRole        = $currentUser->isAdmin() ? gettext('Administrator') : gettext('Member');
+        ?>
         <div class="nav-item dropdown">
-          <a class="nav-link d-flex lh-1 text-reset p-0 ms-2" data-bs-toggle="dropdown" href="#">
-            <i class="ti ti-user-circle fs-2 me-1"></i>
-            <span class="d-none d-xl-block ps-1"><?= AuthenticationManager::getCurrentUser()->getName() ?></span>
+          <a href="#" class="nav-link d-flex lh-1 text-reset ps-2"
+             data-bs-toggle="dropdown" aria-label="<?= gettext('Open user menu') ?>">
+            <span class="avatar avatar-sm rounded-circle"
+                  style="background-color: <?= $avatarColor ?>; color: #fff; flex-shrink: 0;">
+              <?= $userInitials ?>
+            </span>
+            <div class="d-none d-xl-block ps-2">
+              <div><?= htmlspecialchars($currentUserName) ?></div>
+              <div class="mt-1 small text-secondary"><?= $userRole ?></div>
+            </div>
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
-            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>"
+          <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $currentUser->getPersonId() ?>"
                class="dropdown-item">
               <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
               <i class="ti ti-key me-2"></i><?= gettext('Change Password') ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= AuthenticationManager::getCurrentUser()->getPersonId() ?>"
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $currentUser->getPersonId() ?>"
                class="dropdown-item">
               <i class="ti ti-settings me-2"></i><?= gettext('Change Settings') ?>
             </a>
@@ -322,27 +343,24 @@ $MenuFirst = 1;
           </div>
         </div>
 
-        <!-- Fullscreen toggle -->
-        <div class="nav-item">
-          <a class="nav-link px-0" href="#" id="fullscreenToggle"
-             title="<?= gettext('Fullscreen') ?>">
-            <i class="ti ti-maximize"></i>
-          </a>
-        </div>
-
       </div><!-- /.navbar-nav.order-md-last -->
 
       <!-- Search -->
       <div class="collapse navbar-collapse" id="navbar-menu">
-        <div class="d-flex flex-fill">
-          <form action="#" method="get" class="navbar-form w-100 d-flex align-items-center">
-            <div class="input-group w-100">
-              <select class="form-control multiSearch"></select>
-              <button class="btn btn-outline-secondary input-group-text" type="button">
-                <i class="ti ti-search"></i>
-              </button>
-            </div>
-          </form>
+        <div style="position: relative; width: min(480px, 100%);">
+          <div class="input-icon">
+            <span class="input-icon-addon">
+              <i class="ti ti-search"></i>
+            </span>
+            <input type="search" id="globalSearch" class="form-control"
+                   placeholder="<?= gettext('Search people, families, groups…') ?>"
+                   autocomplete="off" spellcheck="false">
+            <span class="input-icon-addon">
+              <kbd title="<?= gettext('Press ? to focus search') ?>">?</kbd>
+            </span>
+          </div>
+          <div id="globalSearchDropdown" class="dropdown-menu w-100"
+               style="top: calc(100% + 2px); left: 0; position: absolute;"></div>
         </div>
       </div>
 

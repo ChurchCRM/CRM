@@ -794,4 +794,163 @@ npm install @tabler/icons-webfont
 ```scss
 // In churchcrm.scss
 @import "~@tabler/icons-webfont/dist/tabler-icons.min.css";
+
+---
+
+## 10. Topbar Navbar — Exact Tabler Pattern <!-- learned: 2026-03-22 -->
+
+Match `docs.tabler.io/ui/layout/navbars` exactly for the topbar:
+
+```html
+<header class="navbar navbar-expand-md d-none d-lg-flex d-print-none sticky-top">
+  <div class="container-xl">
+    <button class="navbar-toggler" ...>
+
+    <!-- RIGHT NAV: flex-row + order-md-last + ms-auto -->
+    <div class="navbar-nav flex-row order-md-last ms-auto">
+
+      <!-- Icon dropdowns — all need dropdown-menu-arrow -->
+      <div class="nav-item dropdown ms-1">
+        <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
+          <i class="ti ti-headset"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+          ...
+        </div>
+      </div>
+
+      <!-- User avatar — proper Tabler avatar with initials -->
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link d-flex lh-1 text-reset ps-2" data-bs-toggle="dropdown">
+          <span class="avatar avatar-sm rounded-circle"
+                style="background-color: #667eea; color: #fff; flex-shrink: 0;">CA</span>
+          <div class="d-none d-xl-block ps-2">
+            <div>Church Admin</div>
+            <div class="mt-1 small text-secondary">Administrator</div>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">...</div>
+      </div>
+
+    </div><!-- /.navbar-nav.order-md-last -->
+
+    <!-- SEARCH: Tabler input-icon, constrained width, NOT full-fill -->
+    <div class="collapse navbar-collapse" id="navbar-menu">
+      <div style="position: relative; width: min(480px, 100%);">
+        <div class="input-icon">
+          <span class="input-icon-addon"><i class="ti ti-search"></i></span>
+          <input type="search" id="globalSearch" class="form-control"
+                 placeholder="Search people, families, groups…"
+                 autocomplete="off" spellcheck="false">
+        </div>
+        <div id="globalSearchDropdown" class="dropdown-menu w-100"
+             style="top: calc(100% + 2px); left: 0; position: absolute;"></div>
+      </div>
+    </div>
+
+  </div>
+</header>
+```
+
+**Key rules:**
+- `ms-auto` on right nav pushes it to the right edge (do NOT rely on `order-md-last` alone)
+- Every `dropdown-menu` in the topbar must have `dropdown-menu-arrow` for the arrow pointer
+- Use `dropdown-menu-end` to right-align all dropdown menus
+- Search: use `input-icon` + `input-icon-addon`, constrained width (`min(480px, 100%)`), NOT `w-100 flex-fill`
+- Never use `<select class="multiSearch">` + Select2 for the global search — it generates incompatible markup
+
+### Avatar with Name-Hash Color (site-wide pattern)
+
+Use a deterministic color derived from the user's full name to give each user a consistent, unique avatar colour:
+
+```php
+$nameParts    = explode(' ', trim($fullName));
+$initials     = mb_strtoupper(mb_substr($nameParts[0], 0, 1)) .
+                (count($nameParts) > 1 ? mb_strtoupper(mb_substr(end($nameParts), 0, 1)) : '');
+$colors       = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
+$color        = $colors[array_sum(array_map('ord', str_split($fullName))) % count($colors)];
+```
+
+```html
+<span class="avatar avatar-sm rounded-circle"
+      style="background-color: <?= $color ?>; color: #fff; flex-shrink: 0;">
+  <?= $initials ?>
+</span>
+```
+
+Used in: `Header.php` (topbar user), `CartToEvent.php` (person rows).
+
+---
+
+## 11. Global Search — Custom Autocomplete (no Select2) <!-- learned: 2026-03-22 -->
+
+### Why not Select2 for global search
+
+Select2 generates its own DOM container that is incompatible with Tabler's design tokens — the dropdown, border, and focus states all look foreign in the navbar.
+
+### Search API gotcha: groupName embeds count
+
+`BaseSearchResultProvider::formatSearchGroup()` returns a group name like `"Persons (5)"`, not `"Persons"`. Strip the suffix before icon lookup in both PHP templates and JS:
+
+```php
+// PHP template
+$displayName = (string) preg_replace('/\s*\(\d+\)$/', '', $group->groupName);
+$icon        = $groupIcons[$displayName] ?? 'ti-search';
+```
+
+```js
+// JS autocomplete
+var baseName = group.text.split("(")[0].trim(); // "Persons (5)" → "Persons"
+var icon = groupIcons[baseName] || "ti-search";
+```
+
+If you skip this, every group will render with the fallback `ti-search` icon.
+
+### Badge colour rule
+
+Never use `bg-secondary` (dark) for count badges on white card headers — it clashes. Use Tabler's light variants:
+
+```html
+<!-- ✅ non-clashing -->
+<span class="badge bg-blue-lt text-blue">5</span>
+
+<!-- ❌ dark badge clashes on white background -->
+<span class="badge bg-secondary">5</span>
+```
+
+### "?" keyboard shortcut — use keydown, not keyup
+
+`e.preventDefault()` on `keyup` is too late — the character has already been typed into the focused input. Use `keydown` and guard against any focused input element:
+
+```js
+window.addEventListener("keydown", (e) => {
+  const tag = document.activeElement?.tagName ?? "";
+  const inInput = tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT"
+                  || document.activeElement?.isContentEditable;
+  if (e.shiftKey && e.key === "?" && !inInput) {
+    e.preventDefault();
+    searchInput.focus();
+  }
+});
+```
+
+### Search results page route pattern
+
+Add to `src/v2/routes/search.php` and register in `src/v2/index.php`. Calls search providers server-side — no extra API round-trip from the browser:
+
+```php
+$app->get('/search', function (Request $request, Response $response): Response {
+    $query  = trim($request->getQueryParams()['q'] ?? '');
+    $groups = [];
+    if (mb_strlen($query) >= 2) {
+        foreach ($providers as $provider) {
+            $result = $provider->getSearchResults($query);
+            if (count($result->results) > 0) $groups[] = $result;
+        }
+    }
+    // render template at src/v2/templates/search/search-results.php
+});
+```
+
+Do NOT add `autofocus` to the search results page input — it prevents the `?` shortcut from working (the input is already focused, so `?` types into it).
 ```
