@@ -25,119 +25,117 @@ $teacherCount = count($rsTeachers);
 
 ?>
 
-<!-- Overview Card: stats + actions -->
-<div class="card border border-info mb-3">
+<!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-users icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $totalStudents ?></div>
+                        <div class="text-muted"><?= gettext('Total Enrolled') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-azure text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $maleCount ?></div>
+                        <div class="text-muted"><?= gettext('Boys') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-danger text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child-dress icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $femaleCount ?></div>
+                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-person-chalkboard icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $teacherCount ?></div>
+                        <div class="text-muted"><?= gettext('Teachers') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Class Actions -->
+<div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title">
             <i class="fa-solid fa-chalkboard-user me-2"></i>
             <?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong>
         </h3>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-auto">
-                                <span class="bg-primary text-white avatar rounded-circle">
-                                       <i class="fa-solid fa-users icon"></i>
-                                </span>
-                            </div>
-                            <div class="col">
-                                <div class="fw-medium"><?= $totalStudents ?></div>
-                                <div class="h6 text-muted mb-0"><?= gettext('Total Enrolled') ?></div>
-                            </div>
+        <div class="ms-auto">
+            <div class="btn-group flex-wrap" role="group">
+                <a class="btn btn-outline-success" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Add students to this class') ?>">
+                    <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Add Students') ?>
+                </a>
+                <a class="btn btn-outline-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Edit class details') ?>">
+                    <i class="fa-solid fa-pen me-2"></i><?= gettext('Edit Class') ?>
+                </a>
+                <?php if ($canEmail) { ?>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-outline-info dropdown-toggle" type="button"
+                                id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="<?= gettext('Send email with recipients in To field') ?>">
+                            <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email (To)') ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
+                            <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+                            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-auto">
-                                <span class="bg-info text-white avatar rounded-circle">
-                                       <i class="fa-solid fa-child icon"></i>
-                                </span>
-                            </div>
-                            <div class="col">
-                                <div class="fw-medium"><?= $maleCount ?></div>
-                                <div class="h6 text-muted mb-0"><?= gettext('Boys') ?></div>
-                            </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                id="emailClassBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
+                            <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
+                            <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+                            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-auto">
-                                <span class="bg-danger text-white avatar rounded-circle">
-                                       <i class="fa-solid fa-child-dress icon"></i>
-                                </span>
-                            </div>
-                            <div class="col">
-                                <div class="fw-medium"><?= $femaleCount ?></div>
-                                <div class="h6 text-muted mb-0"><?= gettext('Girls') ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                <div class="card-sm h-100">
-                    <div class="card-body d-flex flex-column">
-                        <div class="row align-items-center mb-3">
-                            <div class="col-auto">
-                                <span class="bg-success text-white avatar rounded-circle">
-                                       <i class="fa-solid fa-person-chalkboard icon"></i>
-                                </span>
-                            </div>
-                            <div class="col">
-                                <div class="fw-medium"><?= $teacherCount ?></div>
-                                <div class="h6 text-muted mb-0"><?= gettext('Teachers') ?></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-3">
-            <div class="col-12">
-                <div class="btn-group flex-wrap" role="group">
-                    <a class="btn btn-outline-success" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Add students to this class') ?>">
-                        <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Add Students') ?>
-                    </a>
-                    <a class="btn btn-outline-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Edit class details') ?>">
-                        <i class="fa-solid fa-pen me-2"></i><?= gettext('Edit Class') ?>
-                    </a>
-                    <?php if ($canEmail) { ?>
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-outline-info dropdown-toggle" type="button"
-                                    id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    title="<?= gettext('Send email with recipients in To field') ?>">
-                                <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email (To)') ?>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
-                                <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-                                <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
-                            </div>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <button class="btn btn-outline-secondary dropdown-toggle" type="button"
-                                    id="emailClassBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
-                                <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
-                                <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-                                <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
+                <?php } ?>
             </div>
         </div>
     </div>
