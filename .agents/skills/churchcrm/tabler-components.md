@@ -1172,3 +1172,58 @@ $app->get('/search', function (Request $request, Response $response): Response {
 
 Do NOT add `autofocus` to the search results page input — it prevents the `?` shortcut from working (the input is already focused, so `?` types into it).
 ```
+
+---
+
+## Standard Table Action Dropdown <!-- learned: 2026-03-23 -->
+
+Use this pattern for per-row action menus in all tables. Deviating from it causes visual inconsistency and broken cart/delegation behaviour.
+
+```html
+<div class="dropdown">
+    <button class="btn btn-sm btn-ghost-secondary" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="ti ti-dots-vertical"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-end">
+        <a class="dropdown-item" href="Editor.php?ID=<?= $id ?>">
+            <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+        </a>
+        <div class="dropdown-divider"></div>
+        <button type="submit" class="dropdown-item text-danger">
+            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+        </button>
+    </div>
+</div>
+```
+
+**Rules — never violate:**
+- Trigger: `btn-ghost-secondary` + `ti ti-dots-vertical` (NOT `btn-outline-secondary`, NOT FA icons)
+- Menu: `dropdown-menu-end` (NOT `dropdown-menu-right`)
+- No `aria-haspopup` attribute
+- No inline styles on trigger, menu, or container
+- No `stopPropagation()` — breaks `$(document).on("click", ".AddToCart")` delegation
+- Divider between primary actions (Edit) and destructive actions (Delete)
+
+**Table overflow (dropdown clipping):**
+- If the table is in a `table-responsive` wrapper, the `overflow-x: auto` clips the dropdown.
+- Fix for tables with few columns (≤5): remove `table-responsive` entirely.
+- Fix for tables that genuinely need horizontal scroll: add `style="overflow: visible;"` to both the `card-body` and `table-responsive` divs.
+- Do NOT use z-index hacks (`z-index: 1040`, `position: relative`) on the `<td>` or `.dropdown` — they don't fix the clipping and add noise.
+
+**Cart buttons in dropdown items:**
+When a dropdown item toggles cart state, use this pattern (works with `cart.js` delegation):
+
+```html
+<button type="button"
+    class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+    data-cart-id="<?= $id ?>"
+    data-cart-type="person"
+    data-label-add="<?= gettext('Add to Cart') ?>"
+    data-label-remove="<?= gettext('Remove from Cart') ?>">
+    <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+    <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+</button>
+```
+
+`cart.js::updateButtonState` detects `isDropdownItem` via `.hasClass("dropdown-item")` and swaps Tabler icons + `.cart-label` text instead of applying `btn-primary`/`btn-danger`.

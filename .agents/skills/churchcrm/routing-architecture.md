@@ -101,7 +101,7 @@ src/admin/
 │       ├── users.php       # User management APIs
 │       └── [feature-api].php
 ├── views/
-│   ├── dashboard.php       # AdminLTE dashboard page
+│   ├── dashboard.php       # Tabler dashboard page
 │   ├── settings.php        # Settings/configuration panel
 │   ├── users.php           # User list/management
 │   ├── backup.php          # Backup & restore
@@ -436,7 +436,7 @@ cy.url().should('include', 'access-denied');
 **Related Skills:**
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Routing foundation
 - [PHP Best Practices](./php-best-practices.md) - Service layer patterns
-- [Bootstrap & AdminLTE](./bootstrap-adminlte.md) - Admin page UI
+- [Tabler Components](./tabler-components.md) - Admin page UI
 
 ---
 

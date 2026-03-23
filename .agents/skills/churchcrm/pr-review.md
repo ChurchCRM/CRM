@@ -437,7 +437,7 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 | ChurchCRM-specific standard (Bootstrap, ORM, etc.) | `code-standards.md` |
 | Git / PR workflow rule | `git-workflow.md` or `github-interaction.md` |
 | Security rule | `security-best-practices.md` or `authorization-security.md` |
-| Frontend pattern | `frontend-development.md` or `bootstrap-adminlte.md` |
+| Frontend pattern | `frontend-development.md` or `tabler-components.md` |
 | i18n pattern | `i18n-localization.md` |
 | Performance pattern | `performance-optimization.md` |
 | Generic PR/GitHub behaviour | `pr-description-guidelines.md` |
@@ -467,18 +467,18 @@ When a PR review reveals a pattern or mistake that isn't yet documented:
 
 Add to `development-workflows.md` (already documented there — no change needed).
 
-> **Scenario:** A PR adds a new `AdminLTE` card component but uses inline `style` attributes instead of utility classes.
+> **Scenario:** A PR adds a Tabler card component but uses inline `style` attributes instead of utility classes.
 
-Add to `bootstrap-adminlte.md` under a "Cards" section:
+Add to `tabler-components.md` under a "Cards" section:
 
 ```markdown
 ### Cards — Use utility classes, not inline styles
 
 // ✅ CORRECT
-<div class="card card-primary card-outline">
+<div class="card card-sm">
 
-// ❌ WRONG — inline styles break dark mode and consistency
-<div class="card" style="border-top: 3px solid #3c8dbc;">
+// ❌ WRONG — inline styles break Tabler theming
+<div class="card" style="border-top: 3px solid #206bc4;">
 ```
 
 ---

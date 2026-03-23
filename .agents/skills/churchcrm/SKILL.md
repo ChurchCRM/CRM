@@ -34,7 +34,6 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | Skill | When to Use |
 |-------|------------|
 | [Frontend Development](./frontend-development.md) | UI changes, Bootstrap 5, i18n |
-| [Bootstrap 4.6.2 & AdminLTE](./bootstrap-adminlte.md) | ~~DEPRECATED~~ — Legacy reference only. Use Tabler skills below for new work. |
 | [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
 | [UI Development](./ui-development.md) | General UI development practices |

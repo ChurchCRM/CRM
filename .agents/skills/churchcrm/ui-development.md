@@ -7,10 +7,10 @@ This skill covers UI development practices, conventions, and tools used in Churc
 
 ## General Guidelines
 
-1. **Bootstrap 4.6.2**:
-   - Use Bootstrap 4.6.2 utilities only.
-   - Follow AdminLTE v2 patterns for legacy pages.
-   - Avoid Bootstrap 5 utilities (e.g., `gap-*`, `d-grid`).
+1. **Tabler + Bootstrap 5.3.x**:
+   - ChurchCRM uses Tabler UI framework (Bootstrap 5.3.x base). AdminLTE and Bootstrap 4 are removed.
+   - Use Tabler-specific classes (`btn-ghost-*`, `card-sm`, `avatar`, etc.) alongside standard BS5 utilities.
+   - Use BS5 utilities freely: `gap-*`, `d-grid`, `ms-*`, `me-*`, `fw-*` all available.
 
 2. **React + TypeScript**:
    - Use React components for modern UI development.
@@ -50,13 +50,14 @@ This skill covers UI development practices, conventions, and tools used in Churc
     ```
 
 - **Forms**:
-  - Use Bootstrap form classes for consistent styling.
+  - Use Bootstrap 5 form classes for consistent styling.
+  - Use `form-select` for `<select>` elements (not `form-control`).
   - Example:
     ```html
     <form>
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1">
       </div>
     </form>
     ```

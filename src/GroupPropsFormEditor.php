@@ -429,22 +429,26 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>>
                             </td>
                             <td>
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <?php
-                                    $fieldNameJs = json_encode($aNameFields[$row]);
-                                    $fieldIdJs = json_encode($aFieldFields[$row]);
-                                    ?>
-                                    <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $row ?>, <?= $fieldIdJs ?>)">
-                                        <i class="fa-solid fa-trash"></i>
-                                        <?= gettext('Delete') ?>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
                                     </button>
-                                    <?php
-                                    if ($row != 1) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                    }
-                                    if ($row < $numRows) {
-                                        echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                    } ?>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <?php
+                                        $fieldNameJs = json_encode($aNameFields[$row]);
+                                        $fieldIdJs = json_encode($aFieldFields[$row]);
+                                        ?>
+                                        <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $row ?>, <?= $fieldIdJs ?>)">
+                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        </button>
+                                        <?php
+                                        if ($row != 1) {
+                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=up" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                        }
+                                        if ($row < $numRows) {
+                                            echo '<a href="GroupPropsFormRowOps.php?GroupID=' . $iGroupID . '&PropID=' . $row . '&Field=' . InputUtils::escapeAttribute($aFieldFields[$row]) . '&Action=down" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                        } ?>
+                                    </div>
                                 </div>
                             </td>
                         </tr>

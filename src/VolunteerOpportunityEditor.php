@@ -430,14 +430,19 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '<input type="text" name="' . $row . 'desc" value="' . InputUtils::escapeAttribute($aDescFields[$row]) . '" class="form-control form-control-sm" maxlength="100">';
                                 echo '</td>';
                                 echo '<td>';
-                                echo '<div class="btn-group btn-group-sm" role="group">';
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="btn btn-danger" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                                echo '<div class="dropdown">';
+                                echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">';
+                                echo '<i class="ti ti-dots-vertical"></i>';
+                                echo '</button>';
+                                echo '<div class="dropdown-menu dropdown-menu-end">';
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 if ($row !== 1) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                 }
                                 if ($row != $numRows) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
+                                echo '</div>';
                                 echo '</div>';
                                 echo '</td>';
                                 echo '</tr>';

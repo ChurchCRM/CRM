@@ -16,7 +16,7 @@ This skill covers setup, build processes, Docker management, testing workflows, 
 - **PHP 8.4+** - Server-side language
 - **Perpl ORM** - Database layer (actively maintained fork of Propel2)
 - **Slim 4** - API routes and modern MVC
-- **Bootstrap 4.6.2** - AdminLTE v2 pattern for legacy pages
+- **Tabler + Bootstrap 5.3.x** - Primary UI framework
 - **React + TypeScript** - Modern frontend components
 - **Webpack** - Build system for frontend assets
 - **Cypress** - End-to-end testing
@@ -302,7 +302,7 @@ git add -A
   - "Fix validation in Checkin form"
   - "Replace deprecated HTML attributes with Bootstrap CSS"
   - "Add missing element ID for test selector"
-  - "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
+  - "Fix issue #7698: Migrate dropdown to Tabler action menu pattern"
 
 ### Pull Request
 

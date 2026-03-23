@@ -50,20 +50,19 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     }
     ?>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-sm">
-            <thead class="table-light">
-                <tr>
-                    <th><?= gettext('Name') ?></th>
-                    <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
-                    <th><?= gettext('Prompt') ?></th>
-                    <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-                        echo '<th class="text-center no-export">' . gettext('Actions') . '</th>';
-                    }
-                    ?>
-                </tr>
-            </thead>
-            <tbody>
+    <table class="table table-hover table-sm">
+        <thead class="table-light">
+            <tr>
+                <th><?= gettext('Name') ?></th>
+                <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
+                <th><?= gettext('Prompt') ?></th>
+                <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
+                    echo '<th class="text-center no-export w-1">' . gettext('Actions') . '</th>';
+                }
+                ?>
+            </tr>
+        </thead>
+        <tbody>
                 <?php
                 // Initialize the row shading
                 $iPreviousPropertyType = -1;
@@ -79,17 +78,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     if ($iPreviousPropertyType != $prt_ID) {
                         //Write the header row
                         if (!$bIsFirstPropertyType) {
-                            echo '</tbody></table></div>';
+                            echo '</tbody></table>';
                         }
                         $bIsFirstPropertyType = false;
                         ?>
                         </tbody>
                     </table>
-                </div>
                 <div class="alert alert-info mt-3 mb-2">
                     <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong>
                 </div>
-                <div class="table-responsive">
                     <table class="table table-hover table-sm">
                         <thead class="table-light">
                             <tr>
@@ -97,7 +94,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
                                 <th><?= gettext('Prompt') ?></th>
                                 <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-                                    echo '<th class="text-center no-export">' . gettext('Actions') . '</th>';
+                                    echo '<th class="text-center no-export w-1">' . gettext('Actions') . '</th>';
                                 }
                                 ?>
                             </tr>
@@ -117,14 +114,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
                         echo '<td class="text-center">';
                         echo '<div class="dropdown">';
-                        echo '<button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
-                        echo '<i class="fa-solid fa-ellipsis-v"></i>';
+                        echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">';
+                        echo '<i class="ti ti-dots-vertical"></i>';
                         echo '</button>';
-                        echo '<div class="dropdown-menu dropdown-menu-right">';
+                        echo '<div class="dropdown-menu dropdown-menu-end">';
                         echo '<a class="dropdown-item" href="PropertyEditor.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '">';
-                        echo '<i class="fa-solid fa-pen"></i> ' . gettext('Edit') . '</a>';
-                        echo '<a class="dropdown-item" href="PropertyDelete.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '">';
-                        echo '<i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                        echo '<i class="ti ti-pencil me-2"></i>' . gettext('Edit') . '</a>';
+                        echo '<div class="dropdown-divider"></div>';
+                        echo '<a class="dropdown-item text-danger" href="PropertyDelete.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '">';
+                        echo '<i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                         echo '</div>';
                         echo '</div>';
                         echo '</td>';
@@ -138,7 +136,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 ?>
             </tbody>
         </table>
-    </div>
 </div>
 
 <?php

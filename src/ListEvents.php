@@ -89,7 +89,7 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
         <div class="col-md-6">
           <div class="mb-3">
             <label for="WhichType"><?= gettext('Event Type') ?></label>
-            <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-control">
+            <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-select">
               <option value="All"><?= gettext('All Types') ?></option>
               <?php foreach ($eventTypes as $type): ?>
                 <option value="<?= InputUtils::escapeAttribute($type['type_id']) ?>" <?= ($type['type_id'] == $eType) ? 'selected' : '' ?>>
@@ -102,7 +102,7 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
         <div class="col-md-6">
           <div class="mb-3">
             <label for="WhichYear"><?= gettext('Year') ?></label>
-            <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-control">
+            <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-select">
               <?php foreach ($availableYears as $year): ?>
                 <option value="<?= InputUtils::escapeAttribute($year) ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
                   <?= InputUtils::escapeHTML($year) ?>
@@ -197,8 +197,8 @@ foreach ($allMonths as $mVal) {
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
   </div>
-  <div class="card-body p-0">
-    <div class="table-responsive">
+  <div class="card-body p-0" style="overflow: visible;">
+    <div class="table-responsive" style="overflow: visible;">
       <table class="table table-striped table-hover mb-0">
         <thead>
           <tr>
@@ -214,32 +214,11 @@ foreach ($allMonths as $mVal) {
               <th style="width: 100px;" class="no-export"><?= gettext('Actions') ?></th>
             <?php endif; ?>
           </tr>
-          </tr>
         </thead>
         <tbody>
           <?php foreach ($events as $event): ?>
             <?php $eventId = InputUtils::escapeAttribute($event['id']); ?>
             <tr>
-              <?php if ($canEditEvents): ?>
-                <td>
-                  <div class="dropdown">
-                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fa-solid fa-ellipsis-v"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                      <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">
-                        <i class="fa-solid fa-pen"></i> <?= gettext('Edit') ?>
-                      </a>
-                      <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
-                        <input type="hidden" name="EID" value="<?= $eventId ?>">
-                        <button type="submit" name="Action" value="Delete" class="dropdown-item text-danger" style="background: none; border: none; padding: 0.5rem 1rem; width: 100%; text-align: left;">
-                          <i class="fa-solid fa-trash"></i> <?= gettext('Delete') ?>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                </td>
-              <?php endif; ?>
               <td>
                 <strong><?= InputUtils::escapeHTML($event['title']) ?></strong>
                 <?php if (!empty($event['desc'])): ?>
@@ -302,6 +281,27 @@ foreach ($allMonths as $mVal) {
                   <span class="badge bg-success"><?= gettext('Yes') ?></span>
                 <?php endif; ?>
               </td>
+              <?php if ($canEditEvents): ?>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="ti ti-dots-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">
+                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
+                        <input type="hidden" name="EID" value="<?= $eventId ?>">
+                        <button type="submit" name="Action" value="Delete" class="dropdown-item text-danger">
+                          <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+              <?php endif; ?>
             </tr>
           <?php endforeach; ?>
 
@@ -323,7 +323,6 @@ foreach ($allMonths as $mVal) {
               if (!empty($averages)):
                   ?>
             <tr class="table-secondary">
-              <?php if ($canEditEvents): ?><td></td><?php endif; ?>
               <td colspan="3"><strong><?= gettext('Monthly Averages') ?></strong></td>
               <td colspan="2"></td>
               <td>
@@ -336,6 +335,7 @@ foreach ($allMonths as $mVal) {
                 ?>
               </td>
               <td colspan="2"></td>
+              <?php if ($canEditEvents): ?><td></td><?php endif; ?>
             </tr>
               <?php endif; ?>
           <?php endif; ?>

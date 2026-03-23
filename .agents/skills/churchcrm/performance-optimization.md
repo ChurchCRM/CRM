@@ -182,7 +182,7 @@ module.exports = {};
 
 ### ✅ Pattern: CSS Tree-Shaking
 
-Bootstrap 4.6.2 CSS is included selectively:
+Bootstrap 5 / Tabler CSS is included selectively:
 
 ```css
 /* Only include used Bootstrap components */

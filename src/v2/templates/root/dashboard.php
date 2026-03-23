@@ -174,7 +174,7 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                     </li>
                 </ul>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0" style="overflow: visible;">
                 <div class="tab-content" id="people-tabs-content">
                     <div class="tab-pane fade show active" id="latest-fam-pane" role="tabpanel" aria-labelledby="latest-fam-tab">
                         <table class="table table-striped table-hover mb-0" width="100%" id="latestFamiliesDashboardItem"></table>

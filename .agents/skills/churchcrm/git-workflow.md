@@ -75,7 +75,7 @@ git checkout -b fix/issue-1234-description
 
 **✅ CORRECT:**
 ```
-Fix issue #7698: Replace Bootstrap 5 classes with BS4 utilities
+Fix issue #7698: Migrate dropdown to Tabler action menu pattern
 Add email validation to contact signup form
 Fix null pointer exception in payment processing
 Refactor user authorization checks for clarity
@@ -96,11 +96,11 @@ Fix/issue/7698/replace bootstrap classes                # Wrong format, not impe
 For complex changes, use multi-line format:
 
 ```
-Fix issue #7698: Replace Bootstrap 5 classes with BS4
+Fix issue #7698: Migrate dropdown to Tabler action menu pattern
 
-Bootstrap 4.6.2 is required by AdminLTE v3.2.0. Removed incompatible
-Bootstrap 5 utilities like w-100, gap-*, d-grid, fw-*, fs-*. Updated
-form classes to use Bootstrap 4 equivalents (e.g., w-100 → w-100).
+Updated dropdown triggers to use btn-ghost-secondary + ti-dots-vertical.
+Replaced dropdown-menu-right with dropdown-menu-end. Removed aria-haspopup
+and inline styles. Fixed overflow clipping in table-responsive containers.
 
 Files changed:
 - src/admin/views/*.php (3 files)
@@ -158,7 +158,7 @@ PR descriptions must follow a structured format in the GitHub UI:
 Brief overview of what this PR accomplishes (2-3 sentences).
 
 ## Changes
-- Replaced deprecated Bootstrap 5 classes with Bootstrap 4.6.2 equivalents
+- Migrated dropdowns to Tabler action menu pattern (btn-ghost-secondary, ti icons)
 - Updated form styling in 3 admin pages
 - Fixed responsive grid breakpoints for mobile devices
 - Added tests for form validation on small screens
@@ -262,9 +262,9 @@ Before marking PR ready for review, ensure:
 
 ### Frontend & UI
 - [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 classes (NOT Bootstrap 5)
-  - ✅ Correct: `col-md-6`, `w-100`, `d-flex`, `mt-3`
-  - ❌ Wrong: `w-full`, `gap-4`, `d-grid`, `fw-bold`, `fs-5`
+- [ ] Tabler + Bootstrap 5 classes used (NOT Bootstrap 4 / AdminLTE)
+  - ✅ Correct: `col-md-6`, `w-100`, `d-flex`, `mt-3`, `fw-bold`, `gap-4`, `btn-ghost-secondary`
+  - ❌ Wrong: `form-group`, `badge-success`, `ml-*`, `mr-*`, `btn-outline-secondary` for action menus
 - [ ] All UI text wrapped with `i18next.t()` (JS) or `gettext()` (PHP)
 - [ ] No `alert()` calls - use `window.CRM.notify()` instead
 
@@ -469,11 +469,11 @@ $users = UserQuery::create()
 ### Example 4: Bootstrap Classes
 
 ```bash
-# ❌ WRONG - Bootstrap 5 classes
-<div class="w-full gap-4 d-grid fw-bold fs-5">
+# ❌ WRONG - Bootstrap 4 / AdminLTE classes
+<div class="w-100 pr-2 d-flex font-weight-bold ml-2">
 
-# ✅ CORRECT - Bootstrap 4.6.2 classes
-<div class="w-100 pr-2 d-flex font-weight-bold" style="font-size: 1.25rem;">
+# ✅ CORRECT - Tabler + Bootstrap 5 classes
+<div class="w-100 ps-2 d-flex fw-bold ms-2">
 ```
 
 ---
