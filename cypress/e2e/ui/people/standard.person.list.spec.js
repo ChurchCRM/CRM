@@ -47,21 +47,24 @@ describe("Standard People", () => {
 
     it("Multiple filter combinations", () => {
         cy.visit("v2/people");
-        
+
        cy.wait(500);
 
         // Apply gender filter using TomSelect
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control").click();
-        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown .option").contains("Female").click();
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown .ts-option").contains("Female").click();
 
         // Apply classification filter using TomSelect
         cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-control").click();
-        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown .option").contains("Member").click();
-        
+        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown .ts-option").contains("Member").click();
+
         // Table should show filtered results
-        cy.get("#members tbody tr").should("have.length.greaterThan", 0);
-        
+        cy.get("#members tbody tr", { timeout: 5000 }).should("have.length.greaterThan", 0);
+
         // Clear all filters
         cy.get("#ClearFilter").click();
+
+        // Verify filters are cleared
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control .item").should("not.exist");
     });
 });

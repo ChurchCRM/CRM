@@ -170,7 +170,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     <label class="form-label" id="label-classification"></label>
                     <select class="form-control w-100 filter-Classification" multiple="multiple"></select>
                 </div>
-                <div class="mb-0">
+                <div class="mb-3">
                     <label class="form-label" id="label-role"></label>
                     <select class="form-control w-100 filter-Role" multiple="multiple"></select>
                 </div>
@@ -184,7 +184,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     <label class="form-label" id="label-custom"></label>
                     <select class="form-control w-100 filter-Custom" multiple="multiple"></select>
                 </div>
-                <div class="mb-0">
+                <div class="mb-3">
                     <label class="form-label" id="label-group"></label>
                     <select class="form-control w-100 filter-Group" multiple="multiple"></select>
                 </div>
@@ -532,8 +532,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 $(cfg.sel).each(function () {
                     if (!this.tomselect) {
                         var ts = new TomSelect(this, {
-                            plugins: ['remove_button'],
-                            placeholder: i18next.t('Select') + ' ' + i18next.t(cfg.colName)
+                            plugins: ['remove_button']
                         });
                         tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };
                     }

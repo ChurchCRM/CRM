@@ -4,6 +4,7 @@
 */
 import $ from "jquery";
 import "tom-select/dist/css/tom-select.bootstrap5.css";
+import "./person-list.css";
 import TomSelect from "tom-select";
 
 // Expose TomSelect to global scope for inline template initialization

@@ -1,0 +1,18 @@
+/* Custom styling for TomSelect dropdowns in people list filters */
+
+/* Highlight dropdown option on hover */
+.ts-dropdown .ts-option:hover {
+  background-color: var(--bs-secondary-bg);
+}
+
+/* Active/selected option in dropdown - uses correct TomSelect selector */
+.ts-dropdown .ts-option.active {
+  background-color: var(--bs-secondary-bg);
+  color: var(--bs-body-color);
+}
+
+/* Optional: Additional styling for option groups */
+.ts-dropdown .ts-optgroup-label {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+}
