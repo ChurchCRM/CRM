@@ -23,10 +23,10 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="col-auto">
-                    <div class="avatar avatar-lg" data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
+                            <div class="avatar avatar-lg" data-image-entity-type="family" data-image-entity-id="<?= $family->getId() ?>">
                         <?php if ($family->getPhoto()->hasUploadedPhoto()) { ?>
                             <img src="data:<?= $family->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($family->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($family->getName()) ?>" class="avatar-img">
-                            <span class="avatar-initials" style="display: none;"><?= substr($family->getName(), 0, 2) ?></span>
+                            <span class="avatar-initials d-none"><?= substr($family->getName(), 0, 2) ?></span>
                         <?php } else { ?>
                             <span class="avatar-title initials"><?= substr($family->getName(), 0, 2) ?></span>
                         <?php } ?>
@@ -96,7 +96,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <div class="avatar avatar-xlg mx-auto" data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>">
                                     <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
                                         <img src="data:<?= $person->getPhoto()->getPhotoContentType() ?>;base64,<?= base64_encode($person->getPhoto()->getPhotoBytes()) ?>" alt="<?= InputUtils::escapeAttribute($person->getFullName()) ?>" class="avatar-img">
-                                        <span class="avatar-initials" style="display: none;"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
+                                        <span class="avatar-initials d-none"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
                                     <?php } else { ?>
                                         <span class="avatar-title initials"><?= substr(trim($person->getFirstName() . ' ' . $person->getLastName()), 0, 2) ?></span>
                                     <?php } ?>

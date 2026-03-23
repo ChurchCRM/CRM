@@ -7,6 +7,9 @@ describe("Standard People", () => {
         cy.visit("PersonView.php?PersonID=9999");
         cy.location("pathname").should("include", "person/not-found");
         cy.contains("Oops! PERSON 9999 Not Found");
+        // New UX: clear button to return to listing
+        cy.get('a.btn').contains('Return to People').should('exist');
+        cy.get('a.btn').should('have.attr', 'href').and('include', '/v2/people');
     });
 
     it("Listing all persons", () => {

@@ -446,7 +446,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </button>
                             </div>
                             
-                            <div id="backupNavButtons" class="mt-3" style="display: none;">
+                            <div id="backupNavButtons" class="mt-3 d-none">
                                 <button class="btn btn-primary" id="backup-next">
                                     <?= gettext('Continue to Download & Apply') ?> <i class="fa fa-arrow-right ms-2"></i>
                                 </button>
@@ -465,7 +465,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div id="downloadStatus"></div>
                             
                             <!-- Update Package Details (shown after download) -->
-                            <div id="updateDetails" style="display: none;" class="card mb-3">
+                            <div id="updateDetails" class="card mb-3 d-none">
                                 <div class="card-header d-flex align-items-center">
                                     <h5><?= gettext('Update Package Details') ?></h5>
                                 </div>
@@ -483,7 +483,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <!-- Apply Status -->
                             <div id="applyStatus"></div>
                             
-                            <div class="mt-3" id="applyButtonContainer" style="display: none;">
+                            <div class="mt-3 d-none" id="applyButtonContainer">
                                 <button class="btn btn-danger btn-lg" id="applyUpdate">
                                     <i class="fa fa-cog me-2"></i><?= gettext('Apply Update Now') ?>
                                 </button>

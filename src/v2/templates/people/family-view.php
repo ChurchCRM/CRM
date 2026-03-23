@@ -312,7 +312,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </button>
                 </div>
             </div>
-            <div class="card-body" style="display: none;">
+            <div class="card-body d-none">
                 <div class="timeline">
                     <!-- timeline time label -->
                     <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
@@ -393,7 +393,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         </button>
                     </div>
                 </div>
-                <div class="card-body" style="display: none;">
+                <div class="card-body d-none">
                     <?php if ($latestNote) { ?>
                         <div class="mb-3 border rounded p-3 bg-light">
                             <div class="d-flex justify-content-between align-items-center mb-1">

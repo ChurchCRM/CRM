@@ -1114,7 +1114,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
     <?php } ?>
     <!-- Hidden submit buttons for form submission -->
-    <div style="display: none;">
+    <div class="d-none">
         <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>"
                name="PersonSubmit">
         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {

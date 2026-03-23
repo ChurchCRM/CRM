@@ -7,12 +7,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
 <!-- Kiosk Status Container - shown when waiting for event or acceptance -->
-<div id="noEvent" class="kiosk-status-container" style="display: none;">
+<div id="noEvent" class="kiosk-status-container d-none">
   <!-- Content populated by JavaScript -->
 </div>
 
 <!-- Event Display Container -->
-<div id="event" style="display: none;">
+<div id="event" class="d-none">
   <div class="kiosk-container">
     <!-- Tablet Warning -->
     <div class="tablet-warning">
@@ -50,7 +50,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     <div class="row" id="classMemberContainer">
       <!-- Birthday Banner (Top, full width when has birthdays) -->
       <div class="col-12 mb-3" id="birthdayBannerContainer">
-        <div class="kiosk-birthday-banner" id="birthdayBanner" style="display: none;">
+        <div class="kiosk-birthday-banner d-none" id="birthdayBanner">
           <div class="birthday-banner-header">
             <i class="fas fa-birthday-cake me-2"></i><?= gettext('Upcoming Birthdays') ?>
             <span class="badge bg-light ms-2" id="birthdayCount">0</span>
@@ -105,10 +105,10 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
   <button type="button" class="kiosk-fab kiosk-fab-refresh" id="refreshBtn" title="Refresh member list">
     <i class="fas fa-sync-alt"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-alert" id="alertAllBtn" style="display: none;" title="Send alert to all families">
+  <button type="button" class="kiosk-fab kiosk-fab-alert d-none" id="alertAllBtn" title="Send alert to all families">
     <i class="fas fa-bullhorn"></i>
   </button>
-  <button type="button" class="kiosk-fab kiosk-fab-checkout" id="checkoutAllBtn" style="display: none;" title="Checkout all students">
+  <button type="button" class="kiosk-fab kiosk-fab-checkout d-none" id="checkoutAllBtn" title="Checkout all students">
     <i class="fas fa-sign-out-alt"></i>
   </button>
 </div>

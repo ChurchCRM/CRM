@@ -139,7 +139,7 @@ require_once __DIR__ . '/header.php';
                     </div>
 
                     <!-- Orphaned Files (hidden initially) -->
-                    <div class="check-card" id="orphaned-files-section" style="display: none;">
+                    <div class="check-card d-none" id="orphaned-files-section">
                         <div class="check-header check-header-warning user-select-none" data-bs-toggle="collapse" data-bs-target="#orphaned-collapse">
                             <div class="check-title">
                                 <i class="fa-solid fa-exclamation-triangle check-icon text-warning"></i>
@@ -182,7 +182,7 @@ require_once __DIR__ . '/header.php';
                         <button type="button" class="btn btn-lg btn-primary" id="prerequisites-next-btn" disabled>
                             Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
-                        <button type="button" class="btn btn-outline-warning" id="prerequisites-force-btn" style="display: none;">
+                        <button type="button" class="btn btn-outline-warning d-none" id="prerequisites-force-btn">
                             <i class="fa-solid fa-exclamation-triangle me-2"></i>Continue Anyway
                         </button>
                     </div>
@@ -312,7 +312,7 @@ require_once __DIR__ . '/header.php';
                     <h4>Installing ChurchCRM</h4>
                     <p class="text-muted">Creating database tables and configuring your system...</p>
                 </div>
-                <div id="setup-success" style="display: none;">
+                <div id="setup-success" class="d-none">
                     <div class="success-checkmark mb-4">
                         <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
                     </div>
@@ -335,7 +335,7 @@ require_once __DIR__ . '/header.php';
                         <strong>Important:</strong> Change your password immediately after logging in.
                     </div>
                 </div>
-                <div id="setup-error" style="display: none;">
+                <div id="setup-error" class="d-none">
                     <i class="fa-solid fa-circle-xmark text-danger mb-4" style="font-size: 4rem;"></i>
                     <h4>Installation Failed</h4>
                     <div class="alert alert-danger mt-3 text-start">
@@ -343,7 +343,7 @@ require_once __DIR__ . '/header.php';
                     </div>
                 </div>
             </div>
-            <div class="modal-footer justify-content-center border-0" id="setup-footer" style="display: none;">
+            <div class="modal-footer justify-content-center border-0 d-none" id="setup-footer">
                 <button type="button" class="btn btn-lg btn-primary px-5" id="continue-to-login">
                     Go to Login <i class="fa-solid fa-arrow-right ms-2"></i>
                 </button>

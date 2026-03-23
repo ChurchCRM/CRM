@@ -79,7 +79,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 </button>
             </div>
         </div>
-        <div class="card-body" style="display: none;">
+        <div class="card-body d-none">
             <p class="text-muted mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
             <?php if (!empty($plugin['author'])): ?>
                 <small class="text-muted">

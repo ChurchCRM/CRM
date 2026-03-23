@@ -5,7 +5,7 @@ describe("Report Issue", () => {
     
     it("Click Menus to Report issue", () => {
         cy.visit("v2/dashboard");
-        cy.get(".fa-headset").click();
+        cy.get("#supportMenu").click();
         cy.get("#reportIssue").click();
         cy.contains("Issue Report!");
     });

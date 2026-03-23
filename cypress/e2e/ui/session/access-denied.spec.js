@@ -115,15 +115,19 @@ describe("Access Denied Page", () => {
     describe("Page Styling", () => {
         it("Should display danger card styling", () => {
             cy.visit("/v2/access-denied?role=Admin");
-            cy.get(".card-danger").should("exist");
-            cy.get(".fa-lock").should("exist");
-            cy.get(".fa-user-lock").should("exist");
+            // Tabler uses bordered cards instead of `card-danger`
+            cy.get(".card.border-danger").should("exist");
+            cy.get(".card.border-danger").contains("Permission Required").should("be.visible");
+            // Icon classes may be FontAwesome or Tabler; check for either
+            cy.get('.card.border-danger i.fa-lock, .card.border-danger i.fa-solid.fa-lock, .card.border-danger i.ti-lock').should("exist");
+            cy.get('.card.border-danger i.fa-user-lock, .card.border-danger i.fa-solid.fa-user-lock, .card.border-danger i.ti-user-lock').should("exist");
         });
 
         it("Should display warning callout for role information", () => {
             cy.visit("/v2/access-denied?role=Finance");
-            cy.get(".callout-warning").should("exist");
-            cy.get(".fa-key").should("exist");
+            // Callout may use legacy `callout-warning` or Bootstrap `alert-warning`
+            cy.get('.callout-warning, .callout.callout-warning, .alert-warning').should("exist");
+            cy.get('.callout-warning i.fa-key, .callout-warning i.ti-key, .alert-warning i.fa-key, .alert-warning i.ti-key').should("exist");
         });
     });
 });

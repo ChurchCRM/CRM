@@ -251,7 +251,7 @@ echo $sError;
                         <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                         </select>
                     </div>
-                    <div id="stateInputDiv" style="display: none;">
+                    <div id="stateInputDiv" class="d-none">
                         <input type="text" name="StateTextbox" id="StateTextbox" value="" size="20" maxlength="30">
                         <BR><?= gettext('(Enter state/province for countries without predefined states)') ?>
                     </div>

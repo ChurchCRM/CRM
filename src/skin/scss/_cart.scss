@@ -77,7 +77,3 @@
 .navbar-badge {
   transition: all 0.3s ease;
 }
-
-// Badge positioning should use Bootstrap utilities (`position-relative` on
-// the containing link and `position-absolute top-0 end-0 small` on the badge)
-// to keep styles framework-aligned. See Header.php for markup changes.

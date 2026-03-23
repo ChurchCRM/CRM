@@ -159,12 +159,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                                 <span class="member-display-name"><?= gettext('Next Member') ?></span>
                                             </h5>
                                         </div>
-                                        <button type="button" class="btn btn-sm btn-outline-danger remove-member-btn" style="display: none;">
+                                            <button type="button" class="btn btn-sm btn-outline-danger remove-member-btn d-none">
                                             <i class="fa-solid fa-trash me-1"></i><?= gettext('Remove') ?>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="card-body member-card-body" style="display: none;">
+                                <div class="card-body member-card-body d-none">
                                     <div class="form-row">
                                         <div class="mb-3 col-md-6">
                                             <label><?= gettext('First Name') ?> <span class="text-danger">*</span></label>
