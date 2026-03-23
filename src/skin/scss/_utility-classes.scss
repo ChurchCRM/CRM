@@ -43,16 +43,7 @@
    CUSTOM COMPONENT STYLES
    ============================================ */
 
-/* Profile-related styles */
-.profile-user-img {
-  display: inline-block;
-}
-
-.person-thumbnail {
-  width: 40px;
-  height: 40px;
-  display: inline-block;
-}
+/* Profile-related styles moved to _avatars.scss */
 
 /* Registration form styles */
 .register-box-margin {

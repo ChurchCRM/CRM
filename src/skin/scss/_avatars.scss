@@ -26,7 +26,9 @@
 .user-image,
 .img-circle,
 .rounded-circle,
-.photo-base {
+.photo-base,
+.profile-user-img,
+.person-thumbnail {
   border-radius: 50%;
   object-fit: cover;
   display: inline-block;
