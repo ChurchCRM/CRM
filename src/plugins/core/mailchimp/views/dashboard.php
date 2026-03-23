@@ -71,7 +71,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-info text-white avatar rounded-circle">
-                                <i class="fa-solid fa-list"></i>
+                                <i class="fa-solid fa-list icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -88,7 +88,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-users"></i>
+                                <i class="fa-solid fa-users icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -105,7 +105,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-primary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-paper-plane"></i>
+                                <i class="fa-solid fa-paper-plane icon"></i>
                             </span>
                         </div>
                         <div class="col">
@@ -122,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row align-items-center">
                         <div class="col-auto">
                             <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-plug"></i>
+                                <i class="fa-solid fa-plug icon"></i>
                             </span>
                         </div>
                         <div class="col">
