@@ -368,7 +368,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     <th><?= gettext('Description') ?></th>
                                     <th><?= gettext('Special option') ?></th>
                                     <th class="text-center"><?= gettext('Show in') ?><br><?= gettext('Person View') ?></th>
-                                    <th><?= gettext('Actions') ?></th>
+                                    <th class="no-export"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -203,7 +203,7 @@ foreach ($allMonths as $mVal) {
         <thead>
           <tr>
             <?php if ($canEditEvents): ?>
-              <th style="width: 100px;"><?= gettext('Actions') ?></th>
+              <th style="width: 100px;" class="no-export"><?= gettext('Actions') ?></th>
             <?php endif; ?>
             <th><?= gettext('Description') ?></th>
             <th><?= gettext('Event Type') ?></th>

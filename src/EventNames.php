@@ -287,7 +287,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <th><?= gettext('Recurrence') ?></th>
             <th><?= gettext('Start Time') ?></th>
             <th><?= gettext('Attendance Counts') ?></th>
-            <th class="text-nowrap"><?= gettext('Actions') ?></th>
+            <th class="text-nowrap no-export"><?= gettext('Actions') ?></th>
           </tr>
         </thead>
         <tbody>

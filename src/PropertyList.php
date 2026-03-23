@@ -58,7 +58,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
                     <th><?= gettext('Prompt') ?></th>
                     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-                        echo '<th class="text-center">' . gettext('Actions') . '</th>';
+                        echo '<th class="text-center no-export">' . gettext('Actions') . '</th>';
                     }
                     ?>
                 </tr>
@@ -97,7 +97,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 <th><?= gettext('A') . ' ' . $sTypeName . ' ' . gettext('with this property...') ?></th>
                                 <th><?= gettext('Prompt') ?></th>
                                 <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-                                    echo '<th class="text-center">' . gettext('Actions') . '</th>';
+                                    echo '<th class="text-center no-export">' . gettext('Actions') . '</th>';
                                 }
                                 ?>
                             </tr>

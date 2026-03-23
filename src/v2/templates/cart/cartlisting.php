@@ -14,7 +14,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <table class="table table-hover w-100" id="cart-listing-table">
       <thead>
         <tr>
-          <th><?= gettext('Actions') ?></th>
+          <th class="no-export"><?= gettext('Actions') ?></th>
           <th><?= gettext('Name') ?></th>
           <th><?= gettext('Address') ?></th>
           <th><?= gettext('Email') ?></th>

@@ -405,7 +405,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                                 <th><?= gettext('Name') ?></th>
                                 <th><?= gettext('Special option') ?></th>
                                 <th><?= gettext('Security Option') ?></th>
-                                <th><?= gettext('Actions') ?></th>
+                                <th class="no-export"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody>

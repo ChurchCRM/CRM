@@ -427,7 +427,7 @@ if ($embedded) {
                                         echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
                                     }
                                     ?>
-                                    <th class="text-center" style="width: 200px;"><?= gettext('Actions') ?></th>
+                                    <th class="text-center no-export" style="width: 200px;"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>

@@ -69,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Email') ?></th>
                     <th><?= gettext('Created') ?></th>
                     <th><?= gettext('Edited') ?></th>
-                    <th class="text-end" width="150"><?= gettext('Actions') ?></th>
+                    <th class="text-end no-export" width="150"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>

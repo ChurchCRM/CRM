@@ -92,7 +92,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <i class="fa-solid fa-circle-info text-muted ms-1" title="<?= gettext('Number of records using this property type') ?>" data-bs-toggle="tooltip"></i>
                             </th>
                             <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
-                            <th class="text-end"><?= gettext('Actions') ?></th>
+                            <th class="text-end no-export"><?= gettext('Actions') ?></th>
                             <?php endif; ?>
                         </tr>
                     </thead>

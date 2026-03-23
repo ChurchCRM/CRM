@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <table class="table table-striped table-hover" id="logFilesTable">
                             <thead>
                                 <tr>
-                                    <th style="width: 10%;"><?= gettext('Actions') ?></th>
+                                    <th style="width: 10%;" class="no-export"><?= gettext('Actions') ?></th>
                                     <th style="width: 50%;"><?= gettext('Log File') ?></th>
                                     <th style="width: 15%;"><?= gettext('Size') ?></th>
                                     <th style="width: 25%;"><?= gettext('Last Modified') ?></th>

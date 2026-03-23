@@ -197,7 +197,7 @@ if ($numCounts) {
             <thead class="table-light">
               <tr>
                 <th><?= gettext('Category Name') ?></th>
-                <th style="width: 120px;"><?= gettext('Actions') ?></th>
+                <th style="width: 120px;" class="no-export"><?= gettext('Actions') ?></th>
               </tr>
             </thead>
             <tbody>

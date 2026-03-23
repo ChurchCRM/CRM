@@ -410,7 +410,7 @@ if (isset($_POST['SaveChanges'])) {
                                         <th><?= gettext('Order') ?></th>
                                         <th><?= gettext('Name') ?></th>
                                         <th><?= gettext('Description') ?></th>
-                                        <th class="text-center"><?= gettext('Actions') ?></th>
+                                        <th class="text-center no-export"><?= gettext('Actions') ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>

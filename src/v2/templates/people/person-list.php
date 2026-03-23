@@ -241,7 +241,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
                         echo '<th>' . $localizedHeader . '</th>';
                     } ?>
-                    <th><?= gettext('Actions') ?></th>
+                    <th class="no-export"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>

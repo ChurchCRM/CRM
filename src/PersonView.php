@@ -869,7 +869,7 @@ $bOkToEdit = (
                                         <th><?= gettext('Property') ?></th>
                                         <th><?= gettext('Value') ?></th>
                                         <?php if ($bOkToEdit) : ?>
-                                            <th class="text-end"><?= gettext('Actions') ?></th>
+                                            <th class="text-end no-export"><?= gettext('Actions') ?></th>
                                         <?php endif; ?>
                                     </tr>
                                 </thead>
@@ -971,7 +971,7 @@ $bOkToEdit = (
                             echo '<th>' . gettext('Name') . '</th>';
                             echo '<th>' . gettext('Description') . '</th>';
                             if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
-                                echo '<th class="text-end">' . gettext('Actions') . '</th>';
+                                echo '<th class="text-end no-export">' . gettext('Actions') . '</th>';
                             }
                             echo '</tr>';
                             echo '</thead>';
