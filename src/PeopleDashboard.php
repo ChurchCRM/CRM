@@ -68,14 +68,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="card-sm">
                     <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-secondary">
-                                <div class="stat-icon bg-secondary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="bg-secondary text-white avatar rounded-circle">
                                     <i class="fa-solid fa-people-roof"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Families') ?></div>
-                            <div class="h2 m-0"><?= $familyCount['familyCount'] ?></div>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $familyCount['familyCount'] ?></div>
+                                <div class="text-muted"><?= gettext('Families') ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -83,14 +85,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="card-sm">
                     <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-success">
-                                <div class="stat-icon bg-success text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="bg-success text-white avatar rounded-circle">
                                     <i class="fa-solid fa-user"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('People') ?></div>
-                            <div class="h2 m-0"><?= $personCount ?></div>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $personCount ?></div>
+                                <div class="text-muted"><?= gettext('People') ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -99,14 +103,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="card-sm">
                     <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-warning">
-                                <div class="stat-icon bg-warning text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="bg-warning text-white avatar rounded-circle">
                                     <i class="fa-solid fa-children"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('SS Kids') ?></div>
-                            <div class="h2 m-0"><?= $groupStats['sundaySchoolkids'] ?></div>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $groupStats['sundaySchoolkids'] ?></div>
+                                <div class="text-muted"><?= gettext('SS Kids') ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,14 +121,16 @@ if (SystemConfig::getBooleanValue("bEnableSelfRegistration")) {
             <div class="col-lg-2 col-md-4 col-sm-6">
                 <div class="card-sm">
                     <div class="card-body">
-                        <div class="text-truncate">
-                            <h3 class="card-title text-primary">
-                                <div class="stat-icon bg-primary text-white rounded-circle me-2" style="display:inline-flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                                <span class="bg-primary text-white avatar rounded-circle">
                                     <i class="fa-solid fa-users"></i>
-                                </div>
-                            </h3>
-                            <div class="h6 text-muted"><?= gettext('Groups') ?></div>
-                            <div class="h2 m-0"><?= $groupStats['groups'] ?></div>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $groupStats['groups'] ?></div>
+                                <div class="text-muted"><?= gettext('Groups') ?></div>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -6,10 +6,18 @@ describe("Standard People", () => {
     it("Person Not Found", () => {
         cy.visit("PersonView.php?PersonID=9999");
         cy.location("pathname").should("include", "person/not-found");
-        cy.contains("Oops! PERSON 9999 Not Found");
+        // New UX: show standard error title and message
+        cy.contains("Person not found");
+        cy.contains("We could not find the person you were looking for.");
         // New UX: clear button to return to listing
         cy.get('a.btn').contains('Return to People').should('exist');
         cy.get('a.btn').should('have.attr', 'href').and('include', '/v2/people');
+        // ID should be shown on page
+        cy.contains('9999').should('exist');
+        // Clicking report should open the issue modal and include the page path in pageName input
+        cy.get('#errorReportBtn').click();
+        cy.get('#IssueReportModal').should('be.visible');
+        cy.get('input[name="pageName"]').should('have.value').and('include', '/v2/person/not-found?id=9999');
     });
 
     it("Listing all persons", () => {

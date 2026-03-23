@@ -292,20 +292,42 @@ $MenuFirst = 1;
         <?php
         $currentUser     = AuthenticationManager::getCurrentUser();
         $currentUserName = $currentUser->getName();
-        $nameParts       = explode(' ', trim($currentUserName));
-        $userInitials    = mb_strtoupper(mb_substr($nameParts[0], 0, 1)) .
-                           (count($nameParts) > 1 ? mb_strtoupper(mb_substr(end($nameParts), 0, 1)) : '');
-        $avatarColors    = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
-        $avatarColor     = $avatarColors[array_sum(array_map('ord', str_split($currentUserName))) % count($avatarColors)];
         $userRole        = $currentUser->isAdmin() ? gettext('Administrator') : gettext('Member');
+
+        // Generate server-side SVG placeholder (data URI) so the avatar shows
+        // immediately on page load while the client-side avatar loader runs.
+        $nameParts = preg_split('/\s+/', trim($currentUserName));
+        if (empty($nameParts) || $nameParts[0] === '') {
+          $userInitials = '';
+        } elseif (count($nameParts) === 1) {
+          $userInitials = mb_strtoupper(mb_substr($nameParts[0], 0, 2));
+        } else {
+          $userInitials = mb_strtoupper(mb_substr($nameParts[0], 0, 1) . mb_substr($nameParts[count($nameParts) - 1], 0, 1));
+        }
+
+        $avatarColors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
+        $colorIndex = crc32($currentUserName) % count($avatarColors);
+        $avatarColor = $avatarColors[$colorIndex];
+
+        // Determine if the current user has an uploaded photo. For parity with
+        // the Birthdays widget we only render an <img> when an uploaded photo
+        // exists; otherwise render server-side initials to avoid a broken image
+        // flash while the client-side avatar loader runs.
+        $photo = new \ChurchCRM\dto\Photo('person', $currentUser->getPersonId());
+        $hasUploadedPhoto = $photo->hasUploadedPhoto();
+        $personId = $currentUser->getPersonId();
+        $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';
         ?>
         <div class="nav-item dropdown">
-          <a href="#" class="nav-link d-flex lh-1 text-reset ps-2"
+            <a href="#" class="nav-link d-flex align-items-center gap-2 lh-1 text-reset ps-2"
              data-bs-toggle="dropdown" aria-label="<?= gettext('Open user menu') ?>">
-            <span class="avatar avatar-sm rounded-circle"
-                  style="background-color: <?= $avatarColor ?>; color: #fff; flex-shrink: 0;">
-              <?= $userInitials ?>
-            </span>
+            <?php if ($hasUploadedPhoto) { ?>
+              <img src="<?= $avatarApiUrl ?>" class="avatar photo-small rounded-circle" alt="<?= htmlspecialchars($currentUserName) ?>">
+            <?php } else { ?>
+              <span class="avatar avatar-sm" style="background-color: <?= $avatarColor ?>; color: #fff; flex-shrink: 0;">
+                <span class="avatar-title"><?= htmlspecialchars($userInitials) ?></span>
+              </span>
+            <?php } ?>
             <div class="d-none d-xl-block ps-2">
               <div><?= htmlspecialchars($currentUserName) ?></div>
               <div class="mt-1 small text-secondary"><?= $userRole ?></div>

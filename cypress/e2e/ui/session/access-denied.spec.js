@@ -13,6 +13,10 @@ describe("Access Denied Page", () => {
             cy.contains("The page you tried to visit requires special permissions").should("be.visible");
             cy.contains("If you need access to this feature, please contact your church administrator.").should("be.visible");
             cy.get("a").contains("Go to Dashboard").should("be.visible");
+            // Report button should exist and open Issue modal with page path
+            cy.get('#errorReportBtn').should('exist').click();
+            cy.get('#IssueReportModal').should('be.visible');
+            cy.get('input[name="pageName"]').should('have.value').and('include', '/v2/access-denied');
         });
 
         it("Should display access denied page without role callout when no role parameter", () => {
@@ -30,6 +34,10 @@ describe("Access Denied Page", () => {
             cy.get(".callout-warning").should("be.visible");
             cy.contains("Required Permission").should("be.visible");
             cy.contains("Administrator privileges").should("be.visible");
+            // Report button should include role in pageName
+            cy.get('#errorReportBtn').click();
+            cy.get('#IssueReportModal').should('be.visible');
+            cy.get('input[name="pageName"]').should('have.value').and('include', 'role=Admin');
         });
 
         it("Should display Finance role description", () => {

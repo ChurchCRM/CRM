@@ -50,6 +50,8 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Migration Playbook](./tabler-migration-playbook.md) | Per-page migration steps, full codebase audit inventory, phased execution plan |
 | [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Data attribute renames, CSS class mapping, JS API changes (shared with Frontend section) |
 
+| [Error Reporting & Issue Filing](./error-reporting.md) | Shared Tabler-styled error pages (4xx/5xx), consistent UX, wiring to Issue Reporter modal, and E2E testing patterns |
+
 **Agent-only skill file**: `.claudecode/migration-rules.md` — strict rules for the Tabler shell, personas, iconography, and legacy bridge.
 
 **Epic Issue**: [#8301 — UI Migration: AdminLTE to Tabler 2026](https://github.com/ChurchCRM/CRM/issues/8301)

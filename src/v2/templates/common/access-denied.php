@@ -1,5 +1,4 @@
 <?php
-
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
@@ -20,54 +19,27 @@ $roleDescriptions = [
     'Authentication' => gettext('User authentication'),
 ];
 
-$roleDescription = isset($roleDescriptions[$missingRole]) 
-    ? $roleDescriptions[$missingRole] 
+$roleDescription = isset($roleDescriptions[$missingRole])
+    ? $roleDescriptions[$missingRole]
     : gettext('Required permission');
-?>
 
-<div class="row justify-content-center">
-    <div class="col-lg-6 col-md-8 col-sm-10">
-        <div class="card border border-danger mt-4">
-            <div class="card-header text-center">
-                <h3 class="card-title mb-0">
-                    <i class="fa-solid fa-lock text-danger"></i>
-                    <?= gettext('Permission Required') ?>
-                </h3>
-            </div>
-            <div class="card-body text-center">
-                <div class="mb-4">
-                    <i class="fa-solid fa-user-lock text-muted" style="font-size: 4rem;"></i>
-                </div>
-                
-                <h4 class="mb-3"><?= gettext("You don't have access to this page") ?></h4>
-                
-                <p class="text-muted mb-4">
-                    <?= gettext('The page you tried to visit requires special permissions that your account does not currently have.') ?>
-                </p>
+// Prepare variables for shared error partial
+$code = 403;
+$title = gettext('Permission Required');
+$message = gettext('The page you tried to visit requires special permissions that your account does not currently have.');
+$returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+$returnText = gettext('Go to Dashboard');
 
-                <?php if (!empty($missingRole)) : ?>
-                <div class="callout callout-warning text-start">
-                    <h5><i class="fa-solid fa-key"></i> <?= gettext('Required Permission') ?></h5>
-                    <p class="mb-0">
-                        <strong><?= InputUtils::escapeHTML($roleDescription) ?></strong>
-                    </p>
-                </div>
-                <?php endif; ?>
+// Add role callout as extra HTML when a role is present
+$extraHtml = '';
+if (!empty($missingRole)) {
+    $escaped = InputUtils::escapeHTML($roleDescription);
+    $extraHtml = "<div class=\"callout callout-warning text-start mt-3\">" .
+                 "<h5><i class=\"ti ti-key me-2\"></i> " . gettext('Required Permission') . "</h5>" .
+                 "<p class=\"mb-0\"><strong>$escaped</strong></p>" .
+                 "</div>";
+}
 
-                <div class="mt-4">
-                    <p class="text-muted small mb-3">
-                        <i class="fa-solid fa-info-circle"></i>
-                        <?= gettext('If you need access to this feature, please contact your church administrator.') ?>
-                    </p>
-                    
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="btn btn-primary btn-lg w-100">
-                        <i class="fa-solid fa-home"></i> <?= gettext('Go to Dashboard') ?>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+require __DIR__ . '/error-page.php';
 
-<?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

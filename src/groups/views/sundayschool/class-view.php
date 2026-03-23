@@ -38,52 +38,68 @@ $teacherCount = count($rsTeachers);
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                 <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-users"></i>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <span class="bg-primary text-white avatar rounded-circle">
+                                    <i class="fa-solid fa-users"></i>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $totalStudents ?></div>
+                                <div class="h6 text-muted mb-0"><?= gettext('Total Enrolled') ?></div>
                             </div>
                         </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Total Enrolled') ?></div>
-                        <div class="h2 m-0"><?= $totalStudents ?></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                 <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-child"></i>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <span class="bg-info text-white avatar rounded-circle">
+                                    <i class="fa-solid fa-child"></i>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $maleCount ?></div>
+                                <div class="h6 text-muted mb-0"><?= gettext('Boys') ?></div>
                             </div>
                         </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Boys') ?></div>
-                        <div class="h2 m-0"><?= $maleCount ?></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                 <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-danger text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-child-dress"></i>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <span class="bg-danger text-white avatar rounded-circle">
+                                    <i class="fa-solid fa-child-dress"></i>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $femaleCount ?></div>
+                                <div class="h6 text-muted mb-0"><?= gettext('Girls') ?></div>
                             </div>
                         </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Girls') ?></div>
-                        <div class="h2 m-0"><?= $femaleCount ?></div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                 <div class="card-sm h-100">
                     <div class="card-body d-flex flex-column">
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                <i class="fa-solid fa-person-chalkboard"></i>
+                        <div class="row align-items-center mb-3">
+                            <div class="col-auto">
+                                <span class="bg-success text-white avatar rounded-circle">
+                                    <i class="fa-solid fa-person-chalkboard"></i>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <div class="fw-medium"><?= $teacherCount ?></div>
+                                <div class="h6 text-muted mb-0"><?= gettext('Teachers') ?></div>
                             </div>
                         </div>
-                        <div class="h6 text-muted mb-2"><?= gettext('Teachers') ?></div>
-                        <div class="h2 m-0"><?= $teacherCount ?></div>
                     </div>
                 </div>
             </div>

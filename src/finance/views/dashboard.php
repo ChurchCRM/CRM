@@ -73,52 +73,68 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="stat-icon bg-success text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                <div class="row align-items-center mb-3">
+                                    <div class="col-auto">
+                                        <span class="bg-success text-white avatar rounded-circle">
+                                            <i class="fa-solid fa-hand-holding-dollar"></i>
+                                        </span>
+                                    </div>
+                                    <div class="col">
+                                        <div class="fw-medium">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
+                                        <div class="h6 text-muted mb-0"><?= gettext('YTD Payments') ?></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="h6 text-muted mb-2"><?= gettext('YTD Payments') ?></div>
-                            <div class="h2 m-0">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="stat-icon bg-primary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                    <i class="fa-solid fa-file-signature"></i>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <span class="bg-primary text-white avatar rounded-circle">
+                                        <i class="fa-solid fa-file-signature"></i>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="fw-medium">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
+                                    <div class="h6 text-muted mb-0"><?= gettext('YTD Pledges') ?></div>
                                 </div>
                             </div>
-                            <div class="h6 text-muted mb-2"><?= gettext('YTD Pledges') ?></div>
-                            <div class="h2 m-0">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="stat-icon bg-secondary text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                    <i class="fa-solid fa-people-roof"></i>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <span class="bg-secondary text-white avatar rounded-circle">
+                                        <i class="fa-solid fa-people-roof"></i>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="fw-medium"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
+                                    <div class="h6 text-muted mb-0"><?= gettext('Donor Families') ?></div>
                                 </div>
                             </div>
-                            <div class="h6 text-muted mb-2"><?= gettext('Donor Families') ?></div>
-                            <div class="h2 m-0"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
                     <div class="card-sm h-100">
                         <div class="card-body d-flex flex-column">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="stat-icon bg-info text-white rounded-circle" style="display:flex;align-items:center;justify-content:center;width:2.5rem;height:2.5rem;flex-shrink:0;">
-                                    <i class="fa-solid fa-receipt"></i>
+                            <div class="row align-items-center mb-3">
+                                <div class="col-auto">
+                                    <span class="bg-info text-white avatar rounded-circle">
+                                        <i class="fa-solid fa-receipt"></i>
+                                    </span>
+                                </div>
+                                <div class="col">
+                                    <div class="fw-medium"><?= number_format($ytdPaymentCount) ?></div>
+                                    <div class="h6 text-muted mb-0"><?= gettext('Total Payments') ?></div>
                                 </div>
                             </div>
-                            <div class="h6 text-muted mb-2"><?= gettext('Total Payments') ?></div>
-                            <div class="h2 m-0"><?= number_format($ytdPaymentCount) ?></div>
                         </div>
                     </div>
                 </div>
