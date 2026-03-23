@@ -76,6 +76,18 @@ data-toggle="modal" data-target="#myModal" data-dismiss="modal"
 <div align="center" valign="top">Content</div>
 ```
 
+## Table Design for User-Facing Lists <!-- learned: 2026-03-14 -->
+
+**Keep visible columns focused on essential info (5-6 columns max for scannable views).**
+
+For tables with many potential columns:
+- Show quick-glance stats in cards above the table (enrollment, gender breakdown, activity metrics)
+- Use modal popups for detailed information rather than expandable rows (better for print-friendly layouts)
+- Include actionable columns: clickable links to profiles, phone/email for quick contact
+- Use Bootstrap responsive grid: `col-12 col-md-6 col-lg-4` for mobile-first stacking
+
+**Example:** Sunday School class view shows (Name, Age, Mobile, Email, Father, Mother) with info icon opening modal for address/parent details.
+
 ## Asset Paths (SystemURLs)
 
 **ALWAYS use SystemURLs::getRootPath() for asset references:**
