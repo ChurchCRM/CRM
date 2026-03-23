@@ -42,7 +42,7 @@
 @include meta.load-css("scss/tables");
 @include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/images");
-@include meta.load-css("scss/shortConfig");
+// Short config moved into the system-settings-panel component stylesheet.
 @include meta.load-css("scss/imageOverlay");
 @include meta.load-css("scss/maps");
 @include meta.load-css("scss/SystemNotifications");

@@ -116,3 +116,10 @@
         }
     }
 }
+
+/* Tab content scrolling for Tabler vertical tabs used by System Settings */
+.tabs-vertical .tab-content .tab-pane {
+    max-height: calc(100vh - 91px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
