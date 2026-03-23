@@ -2,7 +2,7 @@
    Purpose: improve spacing and responsive behavior for legacy table-based report forms
 */
 
-.card.card-body table {
+.card > .card-body table {
   width: 100%;
   max-width: 980px;
 }
@@ -58,18 +58,16 @@ input.date-picker {
   }
 }
 
-/* Improve spacing between radio inputs and their inline text in the filters form */
-.card.card-body input[type="radio"] {
+.card > .card-body input[type="radio"] {
   margin-right: 8px;
   vertical-align: middle;
 }
 
-/* Tom Select: improve appearance and wrapping of selected choices (chips) */
-.card.card-body .ts-wrapper.multi .ts-control {
+.card > .card-body .ts-wrapper.multi .ts-control {
   min-height: 40px;
   padding: 6px 8px;
 }
-.card.card-body .ts-wrapper.multi .ts-control .item {
+.card > .card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
   background: #f0f0f0;
@@ -81,7 +79,6 @@ input.date-picker {
   white-space: normal;
 }
 
-/* Make native multiple selects readable on narrow widths */
-.card.card-body select[multiple] {
+.card > .card-body select[multiple] {
   padding: 6px;
 }

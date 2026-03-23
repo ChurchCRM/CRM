@@ -121,7 +121,7 @@ require_once __DIR__ . '/Include/Header.php';
 
   </div>
   <div class="col-7 col-sm-9">
-    <div class="tab-content" id="vert-tabs-tabContent">
+    <div class="tab-content tabs-vertical">
       <?php foreach (SystemConfig::getCategories() as $category => $settings) {
             $navItemId = str_replace("", '', $category);
             $shouldBeSelected = false;
