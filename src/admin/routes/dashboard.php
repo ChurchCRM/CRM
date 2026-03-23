@@ -43,8 +43,15 @@ $app->get('/', function (Request $request, Response $response) {
     PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
     $hasPlugins = PluginManager::hasAnyActivePlugin();
 
-    $completedSteps = (int)$hasChurchInfo + (int)$hasData + (int)$hasEmail + (int)$hasMultiUser + (int)$hasPlugins;
-    $totalSteps     = 5;
+    // New steps: HTTPS configuration and Admin contact (name/email) for password resets
+    $hasHttps = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+
+    // Check for an admin user with an email address
+    $adminUser = UserQuery::create()->filterByIsAdmin(true)->findOne();
+    $hasAdminContact = $adminUser && !empty($adminUser->getEmail());
+
+    $completedSteps = (int)$hasChurchInfo + (int)$hasData + (int)$hasEmail + (int)$hasMultiUser + (int)$hasPlugins + (int)$hasHttps + (int)$hasAdminContact;
+    $totalSteps     = 7;
 
     $setupChecklist = [
         [
@@ -68,6 +75,20 @@ $app->get('/', function (Request $request, Response $response) {
             'link'  => SystemURLs::getRootPath() . '/SystemSettings.php',
             'icon'  => 'fa-envelope',
         ],
+            [
+                'done'  => $hasHttps,
+                'label' => gettext('Enable HTTPS'),
+                'desc'  => gettext('Install a TLS/SSL certificate for secure connections'),
+                'link'  => SystemURLs::getRootPath() . '/SystemSettings.php',
+                'icon'  => 'fa-lock',
+            ],
+            [
+                'done'  => $hasAdminContact,
+                'label' => gettext('Update Admin Contact'),
+                'desc'  => gettext('Set an admin user email so you can reset passwords and receive notifications'),
+                'link'  => SystemURLs::getRootPath() . '/admin/system/users',
+                'icon'  => 'fa-user-shield',
+            ],
         [
             'done'    => $hasMultiUser,
             'label'   => gettext('Invite Your Team'),
