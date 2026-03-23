@@ -215,7 +215,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
         <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
     </div>
     <div class="card-body p-0">
-        <table id="members" class="table table-vcenter table-hover card-table data-table mb-0 w-100">
+        <table id="members" class="table table-vcenter table-hover card-table data-table mb-0">
             <thead>
                 <tr>
                     <?php 
@@ -241,7 +241,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
                         echo '<th>' . $localizedHeader . '</th>';
                     } ?>
-                    <th class="no-export"><?= gettext('Actions') ?></th>
+                    <th class="no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -401,15 +401,28 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     echo '</td>';
                 }
                 ?>
-                <td class="text-end">
-                    <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="ti ti-pencil"></i></button>
-                    </a>
-                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) { ?>
-                        <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
-                    <?php } else { ?>
-                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-trash"></i></button>
-                    <?php } ?>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="ti ti-dots-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
+                                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false); ?>
+                            <button type="button"
+                                class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                data-cart-id="<?= $person->getId() ?>"
+                                data-cart-type="person"
+                                data-label-add="<?= gettext('Add to Cart') ?>"
+                                data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                            </button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <?php

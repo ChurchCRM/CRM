@@ -484,18 +484,33 @@ export class CartManager {
 
     if (!$button.length) return;
 
+    const isDropdownItem = $button.hasClass("dropdown-item");
+    const $icon = $button.find("i");
+
     if (inCart) {
       $element.removeClass("AddToCart").addClass("RemoveFromCart");
-      $button.removeClass("btn-primary").addClass("btn-danger");
 
-      const $icon = $button.find("i");
-      $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+      if (isDropdownItem) {
+        // Dropdown item: swap Tabler icon and label text
+        $button.addClass("text-danger");
+        $icon.attr("class", "ti ti-trash me-2");
+        $button.find(".cart-label").text($button.data("label-remove") || "");
+      } else {
+        $button.removeClass("btn-primary").addClass("btn-danger");
+        $icon.removeClass("fa-cart-plus").addClass("fa-shopping-cart");
+      }
     } else {
       $element.removeClass("RemoveFromCart").addClass("AddToCart");
-      $button.removeClass("btn-danger").addClass("btn-primary");
 
-      const $icon = $button.find("i");
-      $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+      if (isDropdownItem) {
+        // Dropdown item: swap Tabler icon and label text
+        $button.removeClass("text-danger");
+        $icon.attr("class", "ti ti-shopping-cart-plus me-2");
+        $button.find(".cart-label").text($button.data("label-add") || "");
+      } else {
+        $button.removeClass("btn-danger").addClass("btn-primary");
+        $icon.removeClass("fa-shopping-cart").addClass("fa-cart-plus");
+      }
     }
   }
 
