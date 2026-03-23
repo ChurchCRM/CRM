@@ -4,6 +4,18 @@
  * so existing templates continue to work while moving toward `.avatar`.
  */
 
+/* Avatar size tokens — prefer mapping to Tabler tokens where appropriate.
+   These provide a single source of truth for avatar sizes used across partials.
+*/
+:root {
+  --avatar-sm: 40px;
+  --avatar-md: 100px;
+  --avatar-lg: 200px;
+  --avatar-xlg: 250px;
+  --avatar-lg-mobile: 150px; /* reduced lg/xlg on small screens */
+  --avatar-md-max-photo: 130px; /* used by some photo thumbnails */
+}
+
 .avatar,
 .avatar img,
 .avatar[data-image-entity-type] {
@@ -16,11 +28,11 @@
   color: var(--tblr-body-color, #212529);
 }
 
-.avatar-sm { width: 40px; height: 40px; font-size: 0.875rem; }
-.avatar-md { width: 100px; height: 100px; font-size: 1rem; }
-.avatar-lg { width: 200px; height: 200px; font-size: 1.25rem; }
+.avatar-sm { width: var(--avatar-sm); height: var(--avatar-sm); font-size: 0.875rem; }
+.avatar-md { width: var(--avatar-md); height: var(--avatar-md); font-size: 1rem; }
+.avatar-lg { width: var(--avatar-lg); height: var(--avatar-lg); font-size: 1.25rem; }
 
-.avatar-xlg { width: 250px; height: 250px; }
+.avatar-xlg { width: var(--avatar-xlg); height: var(--avatar-xlg); }
 
 .avatar-img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
@@ -33,7 +45,7 @@
   align-items: center;
   justify-content: center;
   background: var(--tblr-secondary, #6c757d);
-  color: #fff;
+  color: var(--tblr-white, #fff);
   font-weight: 700;
 }
 
@@ -41,7 +53,7 @@
 
 @media (max-width: 768px) {
   .avatar-lg,
-  .avatar-xlg { width: 150px; height: 150px; }
+  .avatar-xlg { width: var(--avatar-lg-mobile); height: var(--avatar-lg-mobile); }
 }
 
 /* Responsive typography for avatar titles to match reduced avatar sizes */

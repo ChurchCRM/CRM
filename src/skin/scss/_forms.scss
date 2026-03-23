@@ -6,27 +6,18 @@
  */
 
 select {
-  color: #555;
+  color: var(--tblr-body-color, #555);
 }
 
 /* TomSelect dropdown customization */
 .ts-wrapper .ts-dropdown .ts-option.selected,
 .ts-wrapper .ts-dropdown .ts-option-group.selected > .ts-optgroup-label {
   background-color: var(--tblr-primary);
-  color: #fff;
+  color: var(--tblr-white, #fff);
 }
 
 .ts-wrapper .ts-dropdown .ts-option:hover,
 .ts-wrapper .ts-dropdown .ts-option.active {
   background-color: var(--tblr-primary);
-  color: #fff;
-}
-
-/* Prevent text selection on interactive elements */
-.disableSelection {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  color: var(--tblr-white, #fff);
 }

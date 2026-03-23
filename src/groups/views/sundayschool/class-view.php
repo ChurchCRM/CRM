@@ -133,7 +133,7 @@ $teacherCount = count($rsTeachers);
         <h3 class="card-title"><i class="fa-solid fa-chart-bar me-2"></i><?= gettext('Birthdays by Month') ?></h3>
     </div>
     <div class="card-body">
-        <div class="disableSelection">
+        <div class="user-select-none">
             <div id="bar-chart"
                     data-chart="<?= htmlspecialchars($birthDayMonthChartJSON, ENT_QUOTES) ?>"
                     data-chart-label="<?= htmlspecialchars(gettext('Birthdays by Month'), ENT_QUOTES) ?>"></div>

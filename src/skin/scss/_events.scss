@@ -157,8 +157,8 @@
   img.photo-medium,
   img.avatar-md,
   .avatar-md {
-    max-width: 130px;
-    max-height: 130px;
+    max-width: var(--avatar-md-max-photo, 130px);
+    max-height: var(--avatar-md-max-photo, 130px);
     object-fit: cover;
   }
 
