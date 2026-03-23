@@ -182,6 +182,22 @@ import "../src/skin/scss/system-settings-panel.scss";
 
   // Pre-defined setting configurations (from SystemConfig)
   const SettingDefinitions = {
+    // System Settings
+    sLogLevel: {
+      type: "choice",
+      label: "Log Level",
+      tooltip: "Event log severity to write, used by ORM and App Logs",
+      choices: [
+        { value: "100", label: "DEBUG (100)" },
+        { value: "200", label: "INFO (200)" },
+        { value: "250", label: "NOTICE (250)" },
+        { value: "300", label: "WARNING (300)" },
+        { value: "400", label: "ERROR (400)" },
+        { value: "500", label: "CRITICAL (500)" },
+        { value: "550", label: "ALERT (550)" },
+        { value: "600", label: "EMERGENCY (600)" },
+      ],
+    },
     // Financial Settings
     iFYMonth: {
       type: "choice",

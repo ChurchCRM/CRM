@@ -354,51 +354,145 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
-## System Settings Panel Component <!-- learned: 2026-03-08 -->
+## System Settings Panel Component — Standard Pattern <!-- learned: 2026-03-23 -->
 
-The `system-settings-panel.js` reusable component displays and edits SystemConfig settings with automatic API integration. Use this instead of building custom forms for settings management.
+**Use the Finance Dashboard pattern (http://localhost/finance/) as the gold standard for all settings pages.**
 
-**Setup (3 steps):**
+The `system-settings-panel.js` component displays and edits SystemConfig settings with automatic API integration. 
+
+**Standard Implementation (Finance Dashboard Pattern):**
 
 ```php
-<!-- 1. Add container (collapsible via Bootstrap) -->
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-<div class="collapse mb-3" id="mySettings"></div>
-<?php endif; ?>
+<div class="container-fluid">
+    <!-- 1. Context Row with Settings Toggle (Admin Only) -->
+    <div class="row mb-3">
+        <div class="col-12 d-flex align-items-center">
+            <p class="text-muted mb-0 flex-grow-1">
+                <i class="fa-solid fa-icon me-1"></i>
+                <?= gettext('Context Info') ?>: <strong><?= $value ?></strong>
+            </p>
+            <?php if ($isAdmin): ?>
+            <button class="btn btn-sm btn-outline-secondary" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#mySettings">
+                <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
+            </button>
+            <?php endif; ?>
+        </div>
+    </div>
 
-<!-- 2. Include CSS + JS (after other scripts) -->
+    <!-- 2. Collapsible Settings Container (Initially Hidden) -->
+    <?php if ($isAdmin): ?>
+    <div class="collapse mb-3" id="mySettings"></div>
+    <?php endif; ?>
+
+    <!-- 3. Main Content Cards -->
+    <div class="card mb-3">
+        <!-- content -->
+    </div>
+</div>
+
+<!-- 4. Settings Panel Assets & Init (after main content) -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
-
-<!-- 3. Initialize with settings array -->
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-window.CRM.settingsPanel.init({
-    container: '#mySettings',
-    title: '<?= gettext('My Settings') ?>',
-    icon: 'fa-solid fa-cog',
-    settings: [
-        'iFYMonth',  // Uses predefined config from SettingDefinitions
-        {
-            name: 'iMapZoom',  // Or inline custom settings
-            label: '<?= gettext('Zoom Level') ?>',
-            type: 'choice',
-            choices: [
-                { value: '5', label: '<?= gettext('Far') ?>' },
-                { value: '15', label: '<?= gettext('Close') ?>' }
-            ]
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#mySettings',
+        title: i18next.t('Quick Settings'),  // Keep consistent title
+        icon: 'fa-solid fa-sliders',  // Or theme icon
+        headerClass: 'bg-info',  // Use semantic color: bg-primary/success/danger/warning/info
+        settings: [ 'iFYMonth', 'sSetting2' ],  // Predefined config keys
+        onSave: function() {
+            // Reload to reflect changes, or custom logic
+            setTimeout(() => window.location.reload(), 1500);
         }
-    ],
-    showAllSettingsLink: false,  // Hide link to full SystemSettings page
-    onSave: function() { window.location.reload(); }
+    });
 });
-<?php endif; ?>
 </script>
 ```
 
-**Setting Types:** `boolean` (toggle), `number` (with min/max), `text`, `choice` (dropdown), `password`
+**Key Principles:**
+- Settings are **hidden by default** (collapsible) to keep page clean
+- **Toggle button in header row** lets admins access settings when needed
+- Settings panel initializes with **consistent title "Quick Settings"** and icon
+- Use **semantic header colors** (`bg-info`, `bg-primary`, etc.) to differentiate sections
+- Include **context information** (fiscal year, status, etc.) in the header row before the toggle
+- **No custom form building** — let the component handle all rendering and API logic
 
-**API:** Automatically saves via POST `/admin/api/system/config/{key}` — no custom endpoint needed.
+**Available Setting Types:** `boolean`, `number`, `text`, `choice`, `password`, `date`, `textarea`, `json`
+
+**Applies To:** Finance dashboard, admin logs, admin users, system settings — all pages that need settings management.
+
+### Display Current Setting as Stat Card <!-- learned: 2026-03-23 -->
+
+For critical settings that users should see at a glance, display the current value as a stat card (not just in the collapsible panel). Update it in real-time when the user saves changes.
+
+**Example: Log Level Display & Update (System Logs page)**
+
+```php
+<!-- PHP: Log Level Stat Card (always visible) -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-sliders icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium" id="currentLogLevelDisplay"><?= $currentLevelLabel ?></div>
+                        <div class="text-muted"><?= gettext('Log Level') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Other stat cards below -->
+</div>
+```
+
+```javascript
+// JavaScript: Update display in real-time when settings change
+var logLevelMap = {
+    '100': 'DEBUG',
+    '200': 'INFO',
+    '250': 'NOTICE',
+    '300': 'WARNING',
+    '400': 'ERROR',
+    '500': 'CRITICAL',
+    '550': 'ALERT',
+    '600': 'EMERGENCY',
+};
+
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#logSettings',
+        settings: [ 'sLogLevel' ],
+        onSave: function() {
+            window.CRM.notify(i18next.t('Settings saved'), { type: 'success' });
+            // Fetch updated value and refresh stat card
+            $.ajax({
+                url: window.CRM.path + 'api/system/config/sLogLevel',
+                type: 'GET',
+                success: function(data) {
+                    var levelValue = data.value || '200';
+                    var levelLabel = logLevelMap[levelValue] || 'INFO';
+                    $('#currentLogLevelDisplay').text(levelLabel);
+                }
+            });
+        }
+    });
+});
+```
+
+**Pattern:**
+1. Create a **stat card with id for display element** (e.g., `#currentLogLevelDisplay`)
+2. Store **setting value → label mapping** in JS object (e.g., `logLevelMap`)
+3. On settings panel save, **fetch fresh value** via GET `/api/system/config/{key}`
+4. **Update stat card text** with the new label
+5. Users immediately see the change without page reload
 
 ## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
 

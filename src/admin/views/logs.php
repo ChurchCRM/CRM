@@ -1,107 +1,183 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+
+// Calculate log statistics
+$totalLogFiles = count($logFiles ?? []);
+$totalLogSize = 0;
+if (!empty($logFiles)) {
+    foreach ($logFiles as $file) {
+        $totalLogSize += $file['size'];
+    }
+}
+$isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
+
+// Get current log level and mapping
+$currentLogLevel = SystemConfig::getValue('sLogLevel') ?? '200';
+$logLevelMap = [
+    '100' => 'DEBUG',
+    '200' => 'INFO',
+    '250' => 'NOTICE',
+    '300' => 'WARNING',
+    '400' => 'ERROR',
+    '500' => 'CRITICAL',
+    '550' => 'ALERT',
+    '600' => 'EMERGENCY',
+];
+$currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
 ?>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Log Settings') ?></h3>
+<div class="container-fluid">
+    <!-- Settings Row with Toggle Button (Admin Only) -->
+    <?php if ($isAdmin): ?>
+    <div class="row mb-3">
+        <div class="col-12 text-end">
+            <button class="btn btn-sm btn-outline-secondary" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#logSettings" aria-expanded="false" aria-controls="logSettings">
+                <i class="fa-solid fa-cog"></i> <?= gettext('Quick Settings') ?>
+            </button>
+        </div>
+    </div>
+
+    <!-- Collapsible Settings Container -->
+    <div class="collapse mb-3" id="logSettings"></div>
+    <?php endif; ?>
+
+    <!-- Stat Cards Row -->
+    <div class="row mb-3">
+        <div class="col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-secondary text-white avatar rounded-circle">
+                                <i class="fa-solid fa-sliders icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium" id="currentLogLevelDisplay"><?= $currentLevelLabel ?></div>
+                            <div class="text-muted"><?= gettext('Log Level') ?></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <div class="row align-items-end gap-3">
-                    <div class="col-auto">
-                        <label for="logLevel" class="form-label"><?= gettext('Log Level:') ?></label>
-                        <select class="form-select" id="logLevel" style="width: auto;">
-                            <option value="100">DEBUG (100)</option>
-                            <option value="200" selected>INFO (200)</option>
-                            <option value="250">NOTICE (250)</option>
-                            <option value="300">WARNING (300)</option>
-                            <option value="400">ERROR (400)</option>
-                            <option value="500">CRITICAL (500)</option>
-                            <option value="550">ALERT (550)</option>
-                            <option value="600">EMERGENCY (600)</option>
-                        </select>
+        </div>
+        <?php if (!empty($logFiles)): ?>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-info text-white avatar rounded-circle">
+                                <i class="fa-solid fa-file-lines icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium"><?= $totalLogFiles ?></div>
+                            <div class="text-muted"><?= gettext('Log Files') ?></div>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <button type="button" class="btn btn-primary" id="saveLogLevel">
-                            <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save') ?>
-                        </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-warning text-white avatar rounded-circle">
+                                <i class="fa-solid fa-database icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium"><?= number_format($totalLogSize / 1024 / 1024, 2) ?> MB</div>
+                            <div class="text-muted"><?= gettext('Total Size') ?></div>
+                        </div>
                     </div>
-                    <div class="col-auto">
-                        <small id="logLevelStatus" class="text-muted"></small>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-danger text-white avatar rounded-circle">
+                                <i class="fa-solid fa-trash icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-sm btn-danger" id="deleteAllLogs" style="width: auto; padding: 0.25rem 0.75rem;">
+                                <?= gettext('Delete All') ?>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <?php endif; ?>
+    </div>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('System Logs') ?></h3>
-                <div class="ms-auto">
-                    <?php if (!empty($logFiles)): ?>
-                    <button class="btn btn-danger btn-sm" id="deleteAllLogs">
-                        <i class="fa-solid fa-trash"></i> <?= gettext('Delete All Logs') ?>
-                    </button>
-                    <?php endif; ?>
+    <!-- Log Files Table -->
+    <div class="row mt-2">
+        <div class="col-12">
+            <?php if (!empty($logFiles)): ?>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><?= gettext('Log Files') ?></h3>
                 </div>
-            </div>
-            <div class="card-body p-0">
-                <div class="p-3">
-                    <p class="text-muted mb-0"><?= gettext('View application logs. Click on a log file to view its contents.') ?></p>
-                </div>
-                <?php if (empty($logFiles)): ?>
-                    <div class="alert alert-info m-3">
-                        <i class="fa-solid fa-circle-info"></i> <?= gettext('No log files found.') ?>
-                    </div>
-                <?php else: ?>
-                        <table class="table table-vcenter table-hover card-table" id="logFilesTable">
-                            <thead>
+                <div class="card-body p-0">
+                    <table class="table table-vcenter table-hover card-table" id="logFilesTable">
+                        <thead>
+                            <tr>
+                                <th><?= gettext('Log File') ?></th>
+                                <th><?= gettext('Size') ?></th>
+                                <th><?= gettext('Last Modified') ?></th>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($logFiles as $logFile): ?>
                                 <tr>
-                                    <th><?= gettext('Log File') ?></th>
-                                    <th><?= gettext('Size') ?></th>
-                                    <th><?= gettext('Last Modified') ?></th>
-                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($logFiles as $logFile): ?>
-                                    <tr>
-                                        <td>
-                                            <i class="fa-solid fa-file-lines"></i> 
-                                            <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
-                                        </td>
-                                        <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
-                                        <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
-                                        <td class="text-center w-1">
+                                    <td>
+                                        <i class="fa-solid fa-file-lines me-2"></i>
+                                        <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
+                                    </td>
+                                    <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
+                                    <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
+                                    <td class="text-center w-1">
+                                        <div class="btn-list flex-nowrap">
                                             <div class="dropdown">
-                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="ti ti-dots-vertical"></i>
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
                                                 </button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <button type="button" class="dropdown-item view-log" data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
-                                                    </button>
-                                                    <div class="dropdown-divider"></div>
-                                                    <button type="button" class="dropdown-item text-danger delete-log" data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
-                                                    </button>
+                                                    <a class="dropdown-item view-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
+                                                    </a>
+                                                    <a class="dropdown-item delete-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                        <i class="fa-solid fa-trash me-2 text-danger"></i><?= gettext('Delete') ?>
+                                                    </a>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
-                <?php endif; ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+            <?php else: ?>
+            <div class="alert alert-info m-0">
+                <i class="fa-solid fa-circle-info me-2"></i><?= gettext('No log files found.') ?>
+            </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
@@ -155,8 +231,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     $(document).ready(function() {
         window.CRM.onLocalesReady(function() {
-            // Load current log level
-            loadLogLevel();
             var dataTableConfig = {
                 order: [[2, 'desc']]
             };
@@ -172,22 +246,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             var table = $('#logFilesTable').DataTable(dataTableConfig);
 
             $(document).on('click', '.view-log', function() {
-                var fileName = $(this).data('file');
+                var fileName = $(this).data('log-name');
                 currentLogFile = fileName;
                 loadLogFile(fileName);
             });
 
             $(document).on('click', '.delete-log', function(e) {
-                var fileName = $(this).data('file');
+                var fileName = $(this).data('log-name');
                 deleteLogFile(fileName);
             });
 
             $('#deleteAllLogs').on('click', function() {
                 deleteAllLogs();
-            });
-
-            $('#saveLogLevel').on('click', function() {
-                saveLogLevel();
             });
 
             $('.log-filter').on('click', function() {
@@ -285,59 +355,44 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
     }
 
-    function loadLogLevel() {
-        var logLevelMap = {
-            'DEBUG': '100',
-            'INFO': '200',
-            'NOTICE': '250',
-            'WARNING': '300',
-            'ERROR': '400',
-            'CRITICAL': '500',
-            'ALERT': '550',
-            'EMERGENCY': '600'
-        };
-        
-        fetch(window.CRM.root + '/admin/api/system/config/sLogLevel')
-            .then(response => response.json())
-            .then(data => {
-                if (data.value) {
-                    var logLevelValue = data.value;
-                    
-                    if (logLevelMap[logLevelValue]) {
-                        logLevelValue = logLevelMap[logLevelValue];
-                    } else {
-                        logLevelValue = String(logLevelValue);
-                    }
-                    
-                    $('#logLevel').val(logLevelValue);
-                } else {
-                    $('#logLevel').val('200');
-                }
-            })
-            .catch(err => {
-                console.error(i18next.t('Error loading log level.'), err);
-                $('#logLevel').val('200');
-            });
-    }
 
-    function saveLogLevel() {
-        var logLevel = $('#logLevel').val();
-        window.CRM.AdminAPIRequest({
-            path: 'system/logs/loglevel',
-            method: 'POST',
-            data: JSON.stringify({ value: logLevel })
-        })
-        .done(function() {
-            $('#logLevelStatus').html('<span class="text-success"><i class="fa-solid fa-check me-2"></i>' + i18next.t('Saved') + '</span>');
-            setTimeout(function() {
-                $('#logLevelStatus').html('');
-            }, 3000);
-        })
-        .fail(function() {
-            $('#logLevelStatus').html('<span class="text-danger"><i class="fa-solid fa-times me-2"></i>' + i18next.t('Error') + '</span>');
-        });
-    }
 
 </script>
 
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+<!-- System Settings Panel Component -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+var logLevelMap = {
+    '100': 'DEBUG',
+    '200': 'INFO',
+    '250': 'NOTICE',
+    '300': 'WARNING',
+    '400': 'ERROR',
+    '500': 'CRITICAL',
+    '550': 'ALERT',
+    '600': 'EMERGENCY',
+};
+
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#logSettings',
+        settings: [ 'sLogLevel' ],
+        onSave: function() {
+            window.CRM.notify(i18next.t('Log settings saved'), { type: 'success' });
+            // Update the current log level display
+            $.ajax({
+                url: window.CRM.path + 'api/system/config/sLogLevel',
+                type: 'GET',
+                success: function(data) {
+                    var levelValue = data.value || '200';
+                    var levelLabel = logLevelMap[levelValue] || 'INFO';
+                    $('#currentLogLevelDisplay').text(levelLabel);
+                }
+            });
+        }
+    });
+});
+</script>

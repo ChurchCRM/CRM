@@ -35,12 +35,13 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 ## Frontend & UI
 
 > **Any time you add or edit a table with row actions — read [`table-action-menu.md`](./table-action-menu.md) first.**
+> **Any time you add settings/config to a page — read [`frontend-development.md`](./frontend-development.md) (System Settings Panel section) for the gold-standard pattern from Finance Dashboard.**
 
 | Skill | When to Use |
 |-------|------------|
 | [Table Action Menu](./table-action-menu.md) | **Required for every table with row-level actions** — dropdown pattern, overflow fix, cart buttons, checklist |
+| [Frontend Development](./frontend-development.md) | **Settings Panel (gold-standard pattern), UI changes, Bootstrap 5, React, i18n, notifications, confirmations, modals, asset management** |
 | [Tabler Components](./tabler-components.md) | Page layout, cards, tables, forms, nav, badges, modals, toasts, icons |
-| [Frontend Development](./frontend-development.md) | UI changes, Bootstrap 5, React, i18n, notifications, confirmations, modals, asset management |
 | [Bootstrap 5 Migration](./bootstrap-5-migration.md) | Complete BS4→BS5 migration reference: data attributes, class renames, JS API, components |
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
