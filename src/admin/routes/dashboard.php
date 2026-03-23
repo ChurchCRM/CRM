@@ -47,7 +47,7 @@ $app->get('/', function (Request $request, Response $response) {
     $hasHttps = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
 
     // Check for an admin user with an email address
-    $adminUser = UserQuery::create()->filterByIsAdmin(true)->findOne();
+    $adminUser = UserQuery::create()->filterByAdmin(true)->findOne();
     $hasAdminContact = $adminUser && !empty($adminUser->getEmail());
 
     $completedSteps = (int)$hasChurchInfo + (int)$hasData + (int)$hasEmail + (int)$hasMultiUser + (int)$hasPlugins + (int)$hasHttps + (int)$hasAdminContact;
@@ -79,7 +79,7 @@ $app->get('/', function (Request $request, Response $response) {
                 'done'  => $hasHttps,
                 'label' => gettext('Enable HTTPS'),
                 'desc'  => gettext('Install a TLS/SSL certificate for secure connections'),
-                'link'  => SystemURLs::getRootPath() . '/SystemSettings.php',
+                'link'  => 'https://docs.churchcrm.io/installation/ssl-https',
                 'icon'  => 'fa-lock',
             ],
             [

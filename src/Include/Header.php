@@ -268,8 +268,8 @@ $MenuFirst = 1;
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
             <a href="<?= SystemURLs::getSupportURL() ?>" target="help" class="dropdown-item"
-               title="<?= gettext('Help & Manual') ?>">
-              <i class="ti ti-book me-2"></i><?= gettext('Help & Manual') ?>
+               title="<?= gettext('Documentation') ?>">
+              <i class="ti ti-book me-2"></i><?= gettext('Documentation') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
@@ -284,7 +284,7 @@ $MenuFirst = 1;
             <div class="dropdown-divider"></div>
             <a href="https://docs.churchcrm.io/contributing" target="_blank" class="dropdown-item"
                title="<?= gettext('Contributing') ?>">
-              <i class="fa-brands fa-github me-2"></i><?= gettext('Contributing') ?>
+              <i class="fa-brands fa-github me-2"></i><?= gettext('Documentation') ?>
             </a>
           </div>
         </div>

@@ -196,7 +196,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                     <?php endif; ?>
                                 </div>
                                 <?php if (!$step['done']): ?>
-                                <a href="<?= $step['link'] ?>" class="btn btn-sm btn-outline-primary ms-3 flex-shrink-0">
+                                <a href="<?= $step['link'] ?>" <?= strpos($step['link'], 'http') === 0 ? 'target="_blank"' : '' ?> class="btn btn-sm btn-outline-primary ms-3 flex-shrink-0">
                                     <?= gettext('Set up') ?> <i class="fa-solid fa-arrow-right fa-xs ms-1"></i>
                                 </a>
                                 <?php endif; ?>
@@ -363,9 +363,6 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
                         </a>
                     </div>
-                    <a href="https://docs.churchcrm.io/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary w-100">
-                        <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
-                    </a>
                 </div>
             </div>
 

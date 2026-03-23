@@ -57,7 +57,7 @@ class SystemURLs
     public static function getSupportURL($topic = ''): string
     {
         $supportURLs = [
-            // User-facing guidance moved to docs.churchcrm.io
+            // User-facing guidance moved to the Documentation site
             'HttpsTask'                     => 'https://docs.churchcrm.io/installation/ssl-https',
             'CheckExecutionTimeTask'        => 'https://docs.churchcrm.io/installation/system-requirements#php-max-execution-time',
             'SecretsConfigurationCheckTask' => 'https://docs.churchcrm.io/administration/secret-keys',

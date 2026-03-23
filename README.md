@@ -17,12 +17,12 @@ Whether you’re a developer, designer, tester, or simply passionate about impro
 
 ## 🚀 Get Started
 
-If you're new to ChurchCRM, start with our **[official manual](https://docs.churchcrm.io/manual/)** on docs.churchcrm.io.
+If you're new to ChurchCRM, start with our **[Documentation](https://docs.churchcrm.io/manual/)**.
 You'll find step-by-step installation instructions, configuration notes, and user guides there.
 
-Quick start: see the "Quick Start" section in the manual for a fast setup.
+Quick start: see the "Quick Start" section in the Documentation for a fast setup.
 
-For detailed technical documentation and developer guides, see our official docs at [docs.churchcrm.io](https://docs.churchcrm.io/).
+For detailed technical Documentation and developer guides, see our [Documentation](https://docs.churchcrm.io/).
 
 To test the demo, visit our official demo page:
 
@@ -51,7 +51,7 @@ We welcome contributions from everyone! Whether it's bug reports, feature reques
 
 ## 📚 Documentation
 
-Our [documentation](https://docs.churchcrm.io) is your go-to resource for understanding ChurchCRM.
+Our [Documentation](https://docs.churchcrm.io) is your go-to resource for understanding ChurchCRM.
 If you notice anything missing or unclear, feel free to open an issue or submit a pull request.
 
 ## 🤝 Community

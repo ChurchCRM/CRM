@@ -239,9 +239,9 @@ For each type of change, determine what docs need updating:
 
 | Change type | Required doc update |
 |-------------|---------------------|
-| New feature / user-visible behaviour | `docs.churchcrm.io/` user docs page |
-| New admin setting or config option | `docs.churchcrm.io/` admin docs |
-| New API endpoint or changed response | OpenAPI annotations + `CRM/openapi/*.yaml` + docs site MDX |
+| New feature / user-visible behaviour | Documentation user docs page |
+| New admin setting or config option | Documentation admin docs |
+| New API endpoint or changed response | OpenAPI annotations + `CRM/openapi/*.yaml` + Documentation site MDX |
 | Breaking change | Release notes + migration guide |
 | New architectural pattern | Relevant skill file in `.agents/skills/churchcrm/` |
 | Complex multi-step admin procedure | GitHub Wiki article |
@@ -258,17 +258,17 @@ git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'react/
 git diff origin/master...origin/<branch> -- 'src/api/routes/' 'src/admin/routes/'
 ```
 
-### Updating docs.churchcrm.io
+### Updating Documentation
 
 ```bash
-# Docs site is in docs.churchcrm.io/ repo
+# Docs site is in the docs repository (Documentation)
 cd ../docs.churchcrm.io
 
 # Regenerate OpenAPI MDX if API annotations changed
 npm run regen
 
 # Push to main — auto-deploys in ~90 seconds
-git add . && git commit -m "Update docs for PR #NUMBER" && git push
+git add . && git commit -m "Update Documentation for PR #NUMBER" && git push
 ```
 
 ### Updating wiki

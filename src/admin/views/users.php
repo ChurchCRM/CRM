@@ -17,7 +17,18 @@ $userStats = $userService->getUserStats();
 $userSettingsConfig = $userService->getUserSettingsConfig();
 
 ?>
-<!-- Dashboard Overview -->
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="row mb-3">
+        <div class="col-12">
+            <h2 class="mb-1">
+                <i class="fa-solid fa-user-shield text-primary"></i> <?= gettext('User Management') ?>
+            </h2>
+            <p class="text-muted mb-0"><?= gettext('Manage system users, permissions, and two-factor authentication settings') ?></p>
+        </div>
+    </div>
+
+    <!-- Dashboard Overview -->
 <div class="row">
     <div class="col-lg-3 col-6">
         <div class="card card-sm">
@@ -27,9 +38,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <span class="bg-info text-white avatar rounded-circle">
                             <i class="fa-solid fa-users"></i>
                         </span>
-                            <span class="bg-info text-white avatar rounded-circle">
-                                <i class="fa-solid fa-users icon"></i>
-                            </span>
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $userStats['total'] ?></div>
@@ -47,9 +55,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <span class="bg-success text-white avatar rounded-circle">
                             <i class="fa-solid fa-user-check"></i>
                         </span>
-                            <span class="bg-success text-white avatar rounded-circle">
-                                <i class="fa-solid fa-user-check icon"></i>
-                            </span>
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $userStats['active'] ?></div>
@@ -67,9 +72,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <span class="bg-warning text-white avatar rounded-circle">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                            <span class="bg-warning text-white avatar rounded-circle">
-                                <i class="fa-solid fa-lock icon"></i>
-                            </span>
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $userStats['locked'] ?></div>
@@ -87,9 +89,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                         <span class="bg-primary text-white avatar rounded-circle">
                             <i class="fa-solid fa-shield-alt"></i>
                         </span>
-                            <span class="bg-primary text-white avatar rounded-circle">
-                                <i class="fa-solid fa-shield-alt icon"></i>
-                            </span>
                     </div>
                     <div class="col">
                         <div class="h3 m-0"><?= $userStats['twoFactor'] ?></div>
@@ -239,5 +238,6 @@ $(document).ready(function() {
     });
 });
 </script>
+</div>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

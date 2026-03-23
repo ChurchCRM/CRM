@@ -75,16 +75,6 @@ class AdminService
             ];
         }
 
-        // HTTPS check
-        if (!isset($_SERVER['HTTPS'])) {
-            $warnings[] = [
-                'title' => gettext('HTTPS Not Configured'),
-                'desc' => gettext('Install TLS/SSL certificate for better security'),
-                'link' => SystemURLs::getSupportURL('HttpsTask'),
-                'severity' => 'warning',
-            ];
-        }
-
         return $warnings;
     }
 

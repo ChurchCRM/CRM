@@ -9,9 +9,11 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\dto\SystemURLs;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
+use Slim\Views\PhpRenderer;
 
 // base path for admin
 $basePath = SlimUtils::getBasePath('/admin');
@@ -54,18 +56,26 @@ $errorMiddleware->setDefaultErrorHandler(function (
     if ($exception instanceof HttpNotFoundException) {
         $logger->info('Admin 404 redirect', ['path' => $request->getUri()->getPath()]);
         $response = $app->getResponseFactory()->createResponse(302);
-        return $response->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/');
+        return $response->withHeader('Location', SystemURLs::getRootPath() . '/');
     }
     
     $logger->error('Admin error', [
         'exception' => $exception::class,
-        'message' => $exception->getMessage()
+        'message' => $exception->getMessage(),
+        'file' => $exception->getFile(),
+        'line' => $exception->getLine(),
+        'trace' => $exception->getTraceAsString()
     ]);
     
+    // Render error page using PHP template
+    $renderer = new PhpRenderer(__DIR__ . '/views/');
     $response = $app->getResponseFactory()->createResponse(500);
-    return SlimUtils::renderJSON($response, [
-        'success' => false,
-        'error' => $exception->getMessage()
+    
+    return $renderer->render($response, 'error.php', [
+        'errorDetails' => [
+            'message' => SlimUtils::sanitizeErrorMessage($exception),
+            'displayErrorDetails' => $displayErrorDetails
+        ]
     ]);
 });
 
