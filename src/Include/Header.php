@@ -309,10 +309,6 @@ $MenuFirst = 1;
         $colorIndex = crc32($currentUserName) % count($avatarColors);
         $avatarColor = $avatarColors[$colorIndex];
 
-        // Determine if the current user has an uploaded photo. For parity with
-        // the Birthdays widget we only render an <img> when an uploaded photo
-        // exists; otherwise render server-side initials to avoid a broken image
-        // flash while the client-side avatar loader runs.
         $photo = new \ChurchCRM\dto\Photo('person', $currentUser->getPersonId());
         $hasUploadedPhoto = $photo->hasUploadedPhoto();
         $personId = $currentUser->getPersonId();
