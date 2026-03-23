@@ -387,11 +387,11 @@ code {
     color: #212529;
     margin-bottom: 0.5rem;
 }
-.form-control, .custom-select {
+.form-control, .form-select {
     border: 1px solid #e0e0e0;
     transition: all 0.2s ease;
 }
-.form-control:focus, .custom-select:focus {
+.form-control:focus, .form-select:focus {
     border-color: #007bff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
 }

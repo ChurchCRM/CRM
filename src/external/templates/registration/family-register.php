@@ -114,9 +114,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                 <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
                                 <div class="input-group-append">
                                     <div class="input-group-text">
-                                        <div class="custom-control custom-checkbox mb-0">
-                                            <input type="checkbox" class="custom-control-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
-                                            <label class="custom-control-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
+                                        <div class="form-check mb-0">
+                                            <input type="checkbox" class="form-check-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
+                                            <label class="form-check-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -217,9 +217,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                                 <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
                                                 <div class="input-group-append">
                                                     <div class="input-group-text">
-                                                        <div class="custom-control custom-checkbox mb-0">
-                                                            <input type="checkbox" class="custom-control-input member-phone-noformat" name="member-phone-noformat" value="1">
-                                                            <label class="custom-control-label member-phone-noformat-label"><?= gettext('No format') ?></label>
+                                                        <div class="form-check mb-0">
+                                                            <input type="checkbox" class="form-check-input member-phone-noformat" name="member-phone-noformat" value="1">
+                                                            <label class="form-check-label member-phone-noformat-label"><?= gettext('No format') ?></label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,9 +247,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                         </div>
                                         <div class="mb-3 col-md-5">
                                             <label class="d-block">&nbsp;</label>
-                                            <div class="custom-control custom-checkbox mt-2">
-                                                <input type="checkbox" class="custom-control-input member-hide-age">
-                                                <label class="custom-control-label">
+                                            <div class="form-check mt-2">
+                                                <input type="checkbox" class="form-check-input member-hide-age">
+                                                <label class="form-check-label">
                                                     <?= gettext('Hide Age') ?>
                                                 </label>
                                             </div>

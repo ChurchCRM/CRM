@@ -245,15 +245,22 @@ AdminLTE npm dep removed. No `adminlte.min.js` or `adminlte.min.css` loaded. Bri
 - [x] `admin/views/dashboard.php` — migrated
 - [~] `admin/views/backup.php` — still has 6 `custom-select/custom-control` occurrences
 
-### Phase 5: Library Swaps (NOT STARTED) <!-- verified: 2026-03-22 -->
+### Phase 5: Library Swaps (PARTIALLY COMPLETE) <!-- verified: 2026-03-23 -->
 
-All libraries still in package.json and actively used:
+**Completed:**
+- [x] Replace select2 → tom-select for **person listing filters** — `tom-select@^2.5.2` now wired into webpack bundle `webpack/people/person-list.js` with proper multi-select support (TomSelect CSS + JS imports)
+  - Fixed TomSelect API usage in filter handlers (was using incorrect `ts.options[val].text`)
+  - Refactored filter initialization order: populate options → initialize TomSelect → set values
+  - Clear filters button now uses TomSelect `.clear()` API
+  - Initial filter values set via TomSelect `.setValue()` API, not jQuery `.val()`
+  - Files changed: `src/v2/templates/people/person-list.php`, `webpack/people/person-list.js`
 
+**Still TODO:**
 - [ ] Replace bootstrap-datepicker → flatpickr (8 files) — `bootstrap-datepicker@^1.10.1` still installed
 - [ ] Replace daterangepicker → litepicker (8 files) — `daterangepicker@^3.1.0` still installed
 - [ ] Replace inputmask → imask (4 files) — `inputmask@^5.0.9` still installed
 - [ ] Replace bootbox → confirm-dialog.ts — **28 files still reference bootbox** (up from original 19 estimate)
-- [ ] Replace select2 → tom-select — `tom-select@^2.5.2` installed but NOT wired up; Select2 still active in 4 JS bundles + `src/skin/external/select2/`; **0 PHP files reference select2 directly** (all via JS)
+- [ ] Replace select2 → tom-select for **other pages** (Select2 still active in 3 remaining JS bundles + `src/skin/external/select2/`)
 - [ ] Replace moment → dayjs (5 files) — `moment@^2.30.1` still installed
 - [ ] Replace notyf → Bootstrap 5 Toast — `notyf@^3.10.0` still installed
 - [ ] Replace bs-stepper → Tabler Steps CSS — `bs-stepper@^1.7.0` still installed

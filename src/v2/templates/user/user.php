@@ -42,16 +42,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body">
                 <div class="mb-3">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
-                        <label class="custom-control-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
+                        <label class="form-check-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Activate the boxed layout") ?></small>
                 </div>
                 <div class="mb-3">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
-                        <label class="custom-control-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
+                        <label class="form-check-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Toggle the left sidebar's state (open or collapse)") ?></small>
                 </div>

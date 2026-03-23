@@ -169,7 +169,7 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     // Get query parameters for filtering
     $queryParams = $request->getQueryParams();
     $showOnlyWithPhotos = isset($queryParams['photosOnly']) && $queryParams['photosOnly'] === '1';
-    $classificationFilter = !empty($queryParams['classification']) ? InputUtils::filterInt($queryParams['classification']) : null;
+    $classificationFilter = !empty($queryParams['Classification']) ? InputUtils::filterInt($queryParams['Classification']) : null;
 
     // Get classification list for filter dropdown
     $classifications = ListOptionQuery::create()

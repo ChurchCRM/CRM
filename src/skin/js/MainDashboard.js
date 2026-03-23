@@ -8,10 +8,12 @@ export function initializeMainDashboard() {
   // Do NOT use `import $ from "jquery"` — that creates a separate instance
   // inside this webpack entry bundle, without the plugins.
   const $ = window.jQuery;
-  
+
   // Guard against jQuery not being loaded yet
   if (!$ || !$.extend) {
-    console.error("jQuery with plugins not available - skin-main.js may not have loaded yet. mainDashboard initialization deferred.");
+    console.error(
+      "jQuery with plugins not available - skin-main.js may not have loaded yet. mainDashboard initialization deferred.",
+    );
     // Retry after a short delay to allow skin-main.js to load
     setTimeout(() => initializeMainDashboard(), 500);
     return;

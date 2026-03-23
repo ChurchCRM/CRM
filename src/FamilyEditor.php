@@ -727,9 +727,9 @@ require_once __DIR__ . '/Include/Header.php';
             <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
             <div class="row">
                 <div class="mb-3 col-md-6">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="SendNewsLetter" name="SendNewsLetter" value="1" <?= $bSendNewsLetter ? 'checked' : '' ?>>
-                        <label class="custom-control-label" for="SendNewsLetter"><?= gettext('Send Newsletter') ?></label>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="SendNewsLetter" name="SendNewsLetter" value="1" <?= $bSendNewsLetter ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="SendNewsLetter"><?= gettext('Send Newsletter') ?></label>
                     </div>
                 </div>
             </div>

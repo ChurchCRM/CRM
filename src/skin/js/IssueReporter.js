@@ -24,9 +24,9 @@ function initializeIssueReporter() {
     var description = $("#issueDescription").val().trim();
 
     // Loading state
-    $btn.prop("disabled", true).html(
-      '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Opening…'
-    );
+    $btn
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span> Opening…');
 
     var postData = {
       pageName: $("input[name=pageName]").val(),
@@ -52,13 +52,9 @@ function initializeIssueReporter() {
       dataType: "json",
     })
       .done(function (data) {
-        var userDescription = description
-          ? description + "\n\n"
-          : "**Describe the issue** \n\n\n\n";
+        var userDescription = description ? description + "\n\n" : "**Describe the issue** \n\n\n\n";
         var systemInfo = encodeURIComponent(userDescription + data["issueBody"]);
-        var gitHubTemplateURL =
-          "https://github.com/ChurchCRM/CRM/issues/new?type=bug&body=" +
-          systemInfo;
+        var gitHubTemplateURL = "https://github.com/ChurchCRM/CRM/issues/new?type=bug&body=" + systemInfo;
         window.open(gitHubTemplateURL, "github");
 
         // Success feedback before closing
@@ -68,17 +64,13 @@ function initializeIssueReporter() {
         }, 800);
       })
       .fail(function () {
-        $btn
-          .prop("disabled", false)
-          .html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
+        $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
         alert("Could not gather system info. Please try again.");
       })
       .always(function () {
         // Reset button and textarea when modal is fully hidden
         $("#IssueReportModal").one("hidden.bs.modal", function () {
-          $btn
-            .prop("disabled", false)
-            .html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
+          $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
           $("#issueDescription").val("");
         });
       });

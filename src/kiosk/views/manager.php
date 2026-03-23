@@ -14,9 +14,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="card-body">
         <div class="mb-3">
           <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="isNewKioskRegistrationActive">
-            <label class="custom-control-label" for="isNewKioskRegistrationActive">
+          <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
+            <label class="form-check-label" for="isNewKioskRegistrationActive">
               <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
             </label>
           </div>

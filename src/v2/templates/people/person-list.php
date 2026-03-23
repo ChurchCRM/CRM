@@ -514,60 +514,68 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         oTable = $('#members').DataTable(dataTableConfig);
 
-        // Initialize TomSelect multi-select filters
+        // Store TomSelect instances and filter configuration for later use
+        var tomSelectInstances = {};
         var filterConfigs = [
-            { sel: '.filter-Gender', label: i18next.t('Gender') },
-            { sel: '.filter-Classification', label: i18next.t('Classification') },
-            { sel: '.filter-Role', label: i18next.t('Role') },
-            { sel: '.filter-Properties', label: i18next.t('Properties') },
-            { sel: '.filter-Custom', label: i18next.t('Custom') },
-            { sel: '.filter-FamilyStatus', label: i18next.t('Family Status') },
-            { sel: '.filter-Group', label: i18next.t('Group') }
+            { sel: '.filter-Gender', colName: 'Gender', regex: true },
+            { sel: '.filter-Classification', colName: 'Classification', regex: true },
+            { sel: '.filter-Role', colName: 'Role', regex: true },
+            { sel: '.filter-Properties', colName: 'Properties', regex: false },
+            { sel: '.filter-Custom', colName: 'Custom', regex: false },
+            { sel: '.filter-FamilyStatus', colName: 'Family Status', regex: true },
+            { sel: '.filter-Group', colName: 'Group', regex: false }
         ];
-        filterConfigs.forEach(function(cfg) {
-            $(cfg.sel).each(function () {
-                if (!this.tomselect) {
-                    new TomSelect(this, {
-                        plugins: ['remove_button'],
-                        placeholder: i18next.t('Select') + ' ' + cfg.label
-                    });
-                }
-            });
-        });
 
-        // Helper to get selected items from TomSelect (returns array of {text, id} objects)
-        function getTomSelectData(selector) {
-            var el = $(selector)[0];
-            if (el && el.tomselect) {
-                var ts = el.tomselect;
-                return ts.getValue().map(function(val) {
-                    return { id: val, text: ts.options[val] ? ts.options[val].text : val };
+        // Function to initialize TomSelect instances (will be called after options are populated)
+        function initializeTomSelectFilters() {
+            filterConfigs.forEach(function(cfg) {
+                $(cfg.sel).each(function () {
+                    if (!this.tomselect) {
+                        var ts = new TomSelect(this, {
+                            plugins: ['remove_button'],
+                            placeholder: i18next.t('Select') + ' ' + i18next.t(cfg.colName)
+                        });
+                        tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };
+                    }
                 });
-            }
-            return [];
+            });
         }
 
-        $('.filter-Gender').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Gender'] ?>, getTomSelectData('.filter-Gender'), true);
-        });
-        $('.filter-Classification').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Classification'] ?>, getTomSelectData('.filter-Classification'), true);
-        });
-        $('.filter-Role').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Role'] ?>, getTomSelectData('.filter-Role'), true);
-        });
-        $('.filter-Properties').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Properties'] ?>, getTomSelectData('.filter-Properties'), false);
-        });
-        $('.filter-Custom').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Custom'] ?>, getTomSelectData('.filter-Custom'), false);
-        });
-        $('.filter-FamilyStatus').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Family Status'] ?>, getTomSelectData('.filter-FamilyStatus'), true);
-        });
-        $('.filter-Group').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Group'] ?>, getTomSelectData('.filter-Group'), false);
-        });
+        // Helper to get selected items from TomSelect (returns array of {text, value} objects)
+        function getTomSelectData(colName) {
+            var instance = tomSelectInstances[colName];
+            if (!instance) return [];
+
+            var ts = instance.ts;
+            var selectedValues = ts.getValue();
+
+            // Handle both string and array values
+            if (!Array.isArray(selectedValues)) {
+                selectedValues = selectedValues ? [selectedValues] : [];
+            }
+
+            return selectedValues.map(function(val) {
+                // Find the option element in the underlying select to get its text
+                var optionEl = Array.from(instance.el.options).find(function(o) {
+                    return o.value === val;
+                });
+                return {
+                    value: val,
+                    text: optionEl ? optionEl.textContent : val
+                };
+            });
+        }
+
+        // Prepare filter map for use after TomSelect initialization
+        var filterMap = {
+            'Gender': <?php echo $columnIdMap['Gender'] ?>,
+            'Classification': <?php echo $columnIdMap['Classification'] ?>,
+            'Role': <?php echo $columnIdMap['Role'] ?>,
+            'Properties': <?php echo $columnIdMap['Properties'] ?>,
+            'Custom': <?php echo $columnIdMap['Custom'] ?>,
+            'Family Status': <?php echo $columnIdMap['Family Status'] ?>,
+            'Group': <?php echo $columnIdMap['Group'] ?>
+        };
 
         function escapeRegExp(string) {
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -575,44 +583,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         // apply filters
         function filterColumn(col, search, regEx) {
-            if (search.length === 0) {
-                tmp = [''];
-            } else {
-                var tmp = [];
-                if (regEx) {
-                    search.forEach(function(item) {
-                        tmp.push('^'+escapeRegExp(item.text)+'$')});
-                } else {
-                    search.forEach(function(item) {
-                    tmp.push('"'+escapeRegExp(item.text)+'"')});
-                }
+            if (!search || search.length === 0) {
+                oTable.column(col).search('', 1, 0, 1).draw();
+                return;
             }
+
+            var searchTerms = [];
+            search.forEach(function(item) {
+                var text = item.text || item.value;
+                if (regEx) {
+                    searchTerms.push('^' + escapeRegExp(text) + '$');
+                } else {
+                    searchTerms.push('"' + escapeRegExp(text) + '"');
+                }
+            });
+
             // join array into string with regex or (|)
-            var val = tmp.join('|');
+            var val = searchTerms.join('|');
             // apply search
             oTable.column(col).search(val, 1, 0, 1).draw();
         }
 
-        // the following is an example of how we can fill the gender list from the table data
-        // client processing can only be done with visible columns in this case because of combined data
-        // oTable.columns(8).data().eq(0).unique().sort().each( function ( d, j ) {
-        //     $('.filter-Gender').append('<option>'+d+'</option>');
-        // });
-
-        // setup external DataTable filters
+        // Populate filter option lists via webpack-included initializer + Gender options
         var Gender = ['Unassigned', 'Male', 'Female'];  // order: 0=Unassigned, 1=Male, 2=Female
-        var shouldTriggerFamilyStatusFilter = false;
-        var shouldTriggerGenderFilter = false;
+
+        // Append Gender options directly to the Gender select before webpack initializer runs
         for (var i = 0; i < Gender.length; i++) {
-            if (filterByGender == Gender[i]) {
-                $('.filter-Gender').val(i18next.t(Gender[i]));
-                $('.filter-Gender').append('<option selected value='+i+'>'+i18next.t(Gender[i])+'</option>');
-                shouldTriggerGenderFilter = true;
-            } else {
-            $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
-            }
+            $('<option>').val(i).text(Gender[i]).appendTo('.filter-Gender');
         }
-        // Populate filter option lists via webpack-included initializer
+
+        // Call webpack initializer to populate other filter lists
         var serverVars = {
             RoleList: <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>,
             PropertyList: <?= json_encode($PropertyList, JSON_THROW_ON_ERROR) ?>,
@@ -629,24 +629,39 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             window.initializePeopleListFromServer(serverVars);
         }
 
-        // Set trigger flags based on incoming URL params
+        // NOW initialize TomSelect after all options have been populated
+        initializeTomSelectFilters();
+
+        // Setup filter change handlers using TomSelect's onChange event (now that instances exist)
+        filterConfigs.forEach(function(cfg) {
+            var instance = tomSelectInstances[cfg.colName];
+            if (instance && instance.ts) {
+                instance.ts.on('change', function(value) {
+                    var searchData = getTomSelectData(cfg.colName);
+                    var colId = filterMap[cfg.colName];
+                    filterColumn(colId, searchData, cfg.regex);
+                });
+            }
+        });
+
+        // Determine which filters need to be triggered based on URL params
         var shouldTriggerClassificationFilter = (serverVars.filterByClsId !== '');
         var shouldTriggerRoleFilter = (serverVars.filterByFmrId !== '');
         var shouldTriggerGenderFilter = (serverVars.filterByGender !== '');
+        var shouldTriggerFamilyStatusFilter = false;
         if (serverVars.familyActiveStatus === 'active' || serverVars.familyActiveStatus === 'inactive') {
             shouldTriggerFamilyStatusFilter = true;
         }
 
         // clear external filters
         document.getElementById("ClearFilter").addEventListener("click", function() {
-
-            $('.filter-Gender').val([]).trigger('change')
-            $('.filter-Classification').val([]).trigger('change')
-            $('.filter-Role').val([]).trigger('change')
-            $('.filter-Properties').val([]).trigger('change')
-            $('.filter-Custom').val([]).trigger('change')
-            $('.filter-FamilyStatus').val([]).trigger('change')
-            $('.filter-Group').val([]).trigger('change')
+            // Clear all TomSelect instances
+            Object.keys(tomSelectInstances).forEach(function(colName) {
+                var instance = tomSelectInstances[colName];
+                if (instance && instance.ts) {
+                    instance.ts.clear(true); // true = trigger onChange event
+                }
+            });
         });
 
         // Helper function to collect all filtered people IDs from the table
@@ -768,37 +783,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             });
         }
         
-        // Apply initial filters from URL parameters now that TomSelect and DataTable are ready
-        if (filterByGender) {
-            var genderIndex = -1;
-            // Gender is already set via inline trigger above, just validate
-            for (var i = 0; i < Gender.length; i++) {
-                if (filterByGender === Gender[i]) {
-                    genderIndex = i;
-                    break;
+        // Apply initial filters from URL parameters via TomSelect API
+        // This ensures filters are set and properly trigger DataTable updates
+        setTimeout(function() {
+            // Set Gender filter if specified
+            if (shouldTriggerGenderFilter && filterByGender) {
+                var genderIndex = Gender.indexOf(filterByGender);
+                if (genderIndex !== -1 && tomSelectInstances['Gender']) {
+                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), true);
                 }
             }
-        }
-        if (filterByClsId) {
-            // Already set via inline trigger above
-        }
-        if (filterByFmrId) {
-            // Already set via inline trigger above
-        }
-        
-        // Trigger URL filters after a delay to ensure DataTable is fully initialized
-        setTimeout(function() {
-            if (shouldTriggerGenderFilter) {
-                $('.filter-Gender').trigger('change');
+
+            // Set Classification filter if specified
+            if (shouldTriggerClassificationFilter && tomSelectInstances['Classification']) {
+                // filterByClsOptionId comes from the route and is an integer
+                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), true);
             }
-            if (shouldTriggerClassificationFilter) {
-                $('.filter-Classification').trigger('change');
+
+            // Set Role filter if specified
+            if (shouldTriggerRoleFilter && tomSelectInstances['Role']) {
+                // filterByFmrOptionId comes from the route and is an integer
+                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), true);
             }
-            if (shouldTriggerRoleFilter) {
-                $('.filter-Role').trigger('change');
-            }
-            if (shouldTriggerFamilyStatusFilter) {
-                $('.filter-FamilyStatus').trigger('change');
+
+            // Set Family Status filter if specified
+            if (shouldTriggerFamilyStatusFilter && tomSelectInstances['Family Status']) {
+                if (serverVars.familyActiveStatus === 'active') {
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], true);
+                } else if (serverVars.familyActiveStatus === 'inactive') {
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], true);
+                }
             }
         }, 100);
     } // end initializePeopleList

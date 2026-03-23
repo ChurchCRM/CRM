@@ -158,16 +158,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <p><?= gettext('Create a backup now and upload it to your WebDAV server.') ?></p>
             <div class="mb-3">
                 <label><?= gettext('Backup Type') ?></label>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="backupType2" name="backupType" value="2" class="custom-control-input" checked>
-                    <label class="custom-control-label" for="backupType2">
+                <div class="form-check">
+                    <input type="radio" id="backupType2" name="backupType" value="2" class="form-check-input" checked>
+                    <label class="form-check-label" for="backupType2">
                         <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
                         <span class="badge bg-secondary">.sql</span>
                     </label>
                 </div>
-                <div class="custom-control custom-radio">
-                    <input type="radio" id="backupType3" name="backupType" value="3" class="custom-control-input">
-                    <label class="custom-control-label" for="backupType3">
+                <div class="form-check">
+                    <input type="radio" id="backupType3" name="backupType" value="3" class="form-check-input">
+                    <label class="form-check-label" for="backupType3">
                         <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
                         <span class="badge bg-secondary">.tar.gz</span>
                     </label>

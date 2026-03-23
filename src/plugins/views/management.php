@@ -120,14 +120,14 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                 <?php endif; ?>
                             </label>
                             <?php if ($settingType === 'boolean'): ?>
-                                <div class="custom-control custom-switch">
+                                <div class="form-check form-switch">
                                     <input type="checkbox" 
-                                           class="custom-control-input plugin-setting" 
+                                           class="form-check-input plugin-setting" 
                                            id="<?= $pluginId ?>-<?= $settingKey ?>"
                                            data-setting-key="<?= $settingKey ?>"
                                            data-config-key="<?= $configKey ?>"
                                            <?= ($settingValue === '1' || $settingValue === 'true') ? 'checked' : '' ?>>
-                                    <label class="custom-control-label" for="<?= $pluginId ?>-<?= $settingKey ?>">
+                                    <label class="form-check-label" for="<?= $pluginId ?>-<?= $settingKey ?>">
                                         <?= gettext('Enabled') ?>
                                     </label>
                                 </div>

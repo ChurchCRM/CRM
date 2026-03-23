@@ -696,9 +696,9 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-1">
                     <label for="HideAge"><?= gettext('Hide Age') ?></label>
-                    <div class="custom-control custom-checkbox mt-2">
-                        <input type="checkbox" class="custom-control-input" id="HideAge" name="HideAge" value="1" <?= $bHideAge ? 'checked' : '' ?>>
-                        <label class="custom-control-label" for="HideAge">&nbsp;</label>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="HideAge" name="HideAge" value="1" <?= $bHideAge ? 'checked' : '' ?>>
+                        <label class="form-check-label" for="HideAge">&nbsp;</label>
                     </div>
                 </div>
                 <div class="mb-3 col-md-4">
@@ -859,9 +859,9 @@ require_once __DIR__ . '/Include/Header.php';
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <div class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                        <label class="custom-control-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                                    <div class="form-check mb-0">
+                                        <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                        <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -887,9 +887,9 @@ require_once __DIR__ . '/Include/Header.php';
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatCell') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <div class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                        <label class="custom-control-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
+                                    <div class="form-check mb-0">
+                                        <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
+                                        <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
                                     </div>
                                 </div>
                             </div>
@@ -915,9 +915,9 @@ require_once __DIR__ . '/Include/Header.php';
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"}'>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <div class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                        <label class="custom-control-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
+                                    <div class="form-check mb-0">
+                                        <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
+                                        <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
                                     </div>
                                 </div>
                             </div>

@@ -32,9 +32,15 @@ function initializeGroupView() {
       load: function (query, callback) {
         if (query.length < 2) return callback();
         fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
-          .then(function (res) { return res.json(); })
-          .then(function (data) { callback(data); })
-          .catch(function () { callback(); });
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            callback(data);
+          })
+          .catch(function () {
+            callback();
+          });
       },
       onChange: function (value) {
         if (!value) return;
@@ -46,11 +52,13 @@ function initializeGroupView() {
             GroupID: window.CRM.currentGroup,
           },
           function (selection) {
-            window.CRM.groups.addPerson(window.CRM.currentGroup, selectedData.objid, selection.RoleID).then(function () {
-              tsInstance.clear(true);
-              tsInstance.clearOptions();
-              window.CRM.DataTableAPI.ajax.reload();
-            });
+            window.CRM.groups
+              .addPerson(window.CRM.currentGroup, selectedData.objid, selection.RoleID)
+              .then(function () {
+                tsInstance.clear(true);
+                tsInstance.clearOptions();
+                window.CRM.DataTableAPI.ajax.reload();
+              });
           },
         );
       },

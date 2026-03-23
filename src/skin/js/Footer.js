@@ -16,7 +16,7 @@ function initializeApp() {
     setTimeout(initializeApp, 500);
     return;
   }
-  
+
   // Re-assign $ in case it was loaded after this script
   const $ = window.jQuery;
   (() => {

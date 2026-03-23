@@ -9,6 +9,19 @@ select {
   color: #555;
 }
 
+/* TomSelect dropdown customization */
+.ts-wrapper .ts-dropdown .ts-option.selected,
+.ts-wrapper .ts-dropdown .ts-option-group.selected > .ts-optgroup-label {
+  background-color: #0d6efd; /* Bootstrap primary - more opaque than default */
+  color: #fff;
+}
+
+.ts-wrapper .ts-dropdown .ts-option:hover,
+.ts-wrapper .ts-dropdown .ts-option.active {
+  background-color: #0d6efd;
+  color: #fff;
+}
+
 /* Prevent text selection on interactive elements */
 .disableSelection {
   -webkit-touch-callout: none;

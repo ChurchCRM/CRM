@@ -59,12 +59,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <!-- Photos Only Toggle -->
                 <div class="col-md-4 col-sm-6 mb-2">
                     <label class="d-block">&nbsp;</label>
-                    <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="photosOnly" 
+                    <div class="form-check form-switch">
+                        <input type="checkbox" class="form-check-input" id="photosOnly" 
                                name="photosOnly" value="1" 
                                <?= $showOnlyWithPhotos ? 'checked' : '' ?>
                                onchange="this.form.submit()">
-                        <label class="custom-control-label" for="photosOnly">
+                        <label class="form-check-label" for="photosOnly">
                             <i class="fa-solid fa-camera me-1"></i><?= gettext('Show only people with photos') ?>
                         </label>
                     </div>

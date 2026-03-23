@@ -66,9 +66,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <label><?= gettext('Backup Type') ?></label>
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="archiveType2" name="archiveType" value="2" class="custom-control-input" checked>
-                            <label class="custom-control-label" for="archiveType2">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="archiveType2" name="archiveType" value="2" class="form-check-input" checked>
+                            <label class="form-check-label" for="archiveType2">
                                 <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
                                 <span class="badge bg-secondary">.sql</span>
                             </label>
@@ -78,9 +78,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </small>
                     </div>
                     <div class="col-md-6">
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="archiveType3" name="archiveType" value="3" class="custom-control-input">
-                            <label class="custom-control-label" for="archiveType3">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-check-input">
+                            <label class="form-check-label" for="archiveType3">
                                 <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
                                 <span class="badge bg-secondary">.tar.gz</span>
                             </label>

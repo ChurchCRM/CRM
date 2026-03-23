@@ -45,9 +45,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="col-md-12">
                         <div class="mb-3">
                             <strong><?= gettext('Allow Pre-release Upgrades') ?>:</strong>
-                            <div class="custom-control custom-switch d-inline-block ms-2">
-                                <input type="checkbox" class="custom-control-input" id="bAllowPrereleaseUpgrade"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
-                                <label class="custom-control-label" for="bAllowPrereleaseUpgrade">
+                            <div class="form-check form-switch d-inline-block ms-2">
+                                <input type="checkbox" class="form-check-input" id="bAllowPrereleaseUpgrade"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
+                                <label class="form-check-label" for="bAllowPrereleaseUpgrade">
                                     <span id="prereleaseUpgradeStatus"><?= $allowPrereleaseUpgrade ? gettext('Enabled') : gettext('Disabled') ?></span>
                                 </label>
                             </div>

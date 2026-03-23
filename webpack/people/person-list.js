@@ -3,6 +3,11 @@
    in src/v2/templates/people/person-list.php
 */
 import $ from "jquery";
+import "tom-select/dist/css/tom-select.bootstrap5.css";
+import TomSelect from "tom-select";
+
+// Expose TomSelect to global scope for inline template initialization
+window.TomSelect = TomSelect;
 
 // Expose a global initializer for server-rendered variables
 window.initializePeopleListFromServer = function (serverVars) {
@@ -52,22 +57,6 @@ window.initializePeopleListFromServer = function (serverVars) {
     $("<option>").val(FamilyStatusList[i]).text(FamilyStatusList[i]).appendTo(".filter-FamilyStatus");
   }
 
-  // Apply initial selections if provided
-  if (typeof filterByGender !== "undefined" && filterByGender !== "") {
-    $(".filter-Gender").val(filterByGender);
-  }
-  if (typeof filterByClsId !== "undefined" && filterByClsId !== "") {
-    $(".filter-Classification").val(filterByClsId);
-  }
-  if (typeof filterByFmrId !== "undefined" && filterByFmrId !== "") {
-    $(".filter-Role").val(filterByFmrId);
-  }
-  if (typeof familyActiveStatus !== "undefined" && familyActiveStatus === "active") {
-    $(".filter-FamilyStatus").val([FamilyStatusList[0]]);
-  } else if (typeof familyActiveStatus !== "undefined" && familyActiveStatus === "inactive") {
-    $(".filter-FamilyStatus").val([FamilyStatusList[1]]);
-  }
-
   // Groups
   if (Array.isArray(GroupList)) {
     for (let i = 0; i < GroupList.length; i++) {
@@ -75,7 +64,8 @@ window.initializePeopleListFromServer = function (serverVars) {
     }
   }
 
-  // TomSelect initialization for filter dropdowns is handled inline in person-list.php
+  // Note: TomSelect initialization and initial filter value setting is handled inline in person-list.php
+  // This webpack bundle only handles populating the select options
 };
 
 export default window.initializePeopleListFromServer;
