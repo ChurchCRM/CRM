@@ -58,15 +58,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <table class="table table-striped table-hover" id="logFilesTable">
                             <thead>
                                 <tr>
-                                    <th style="width: 10%;" class="no-export"><?= gettext('Actions') ?></th>
                                     <th style="width: 50%;"><?= gettext('Log File') ?></th>
                                     <th style="width: 15%;"><?= gettext('Size') ?></th>
                                     <th style="width: 25%;"><?= gettext('Last Modified') ?></th>
+                                    <th style="width: 10%;" class="no-export"><?= gettext('Actions') ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($logFiles as $logFile): ?>
                                     <tr>
+                                        <td>
+                                            <i class="fa-solid fa-file-alt"></i> 
+                                            <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
+                                        </td>
+                                        <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
+                                        <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
                                         <td>
                                             <button class="btn btn-sm btn-primary view-log" 
                                                     data-file="<?= InputUtils::escapeHTML($logFile['name']) ?>"
@@ -79,12 +85,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <i class="fa-solid fa-trash"></i>
                                             </button>
                                         </td>
-                                        <td>
-                                            <i class="fa-solid fa-file-alt"></i> 
-                                            <strong><?= InputUtils::escapeHTML($logFile['name']) ?></strong>
-                                        </td>
-                                        <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
-                                        <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>

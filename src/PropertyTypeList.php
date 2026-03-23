@@ -138,17 +138,19 @@ require_once __DIR__ . '/Include/Header.php';
                             </td>
                             <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>
                             <td class="text-end">
-                                <div class="btn-group btn-group-sm" role="group">
-                                    <a href="PropertyTypeEditor.php?PropertyTypeID=<?= $prt_ID ?>" class="btn btn-info" title="<?= gettext('Edit') ?>">
-                                        <i class="fa-solid fa-edit"></i>
-                                        <?= gettext('Edit') ?>
-                                    </a>
-                                    <a href="PropertyTypeDelete.php?PropertyTypeID=<?= $prt_ID ?><?= $Properties > 0 ? '&Warn' : '' ?>" 
-                                       class="btn btn-danger" 
-                                       title="<?= $Properties > 0 ? gettext('Delete (will delete all associated records)') : gettext('Delete') ?>">
-                                        <i class="fa-solid fa-trash"></i>
-                                        <?= gettext('Delete') ?>
-                                    </a>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa-solid fa-ellipsis-v"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        <a class="dropdown-item" href="PropertyTypeEditor.php?PropertyTypeID=<?= $prt_ID ?>">
+                                            <i class="fa-solid fa-pen"></i> <?= gettext('Edit') ?>
+                                        </a>
+                                        <a class="dropdown-item" href="PropertyTypeDelete.php?PropertyTypeID=<?= $prt_ID ?><?= $Properties > 0 ? '&Warn' : '' ?>" 
+                                           title="<?= $Properties > 0 ? gettext('Delete (will delete all associated records)') : gettext('Delete') ?>">
+                                            <i class="fa-solid fa-trash"></i> <?= gettext('Delete') ?>
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                             <?php endif; ?>

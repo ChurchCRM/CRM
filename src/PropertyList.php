@@ -115,10 +115,19 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     echo '</td>';
                     echo '<td>' . InputUtils::escapeHTML($pro_Prompt) . '</td>';
                     if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()) {
-                        echo '<td class="text-center"><div class="btn-group btn-group-sm" role="group">';
-                        echo '<a class="btn btn-primary" href="PropertyEditor.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '" title="' . gettext('Edit') . '"><i class="fa-solid fa-edit"></i></a>';
-                        echo '<a class="btn btn-danger" href="PropertyDelete.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i></a>';
-                        echo '</div></td>';
+                        echo '<td class="text-center">';
+                        echo '<div class="dropdown">';
+                        echo '<button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                        echo '<i class="fa-solid fa-ellipsis-v"></i>';
+                        echo '</button>';
+                        echo '<div class="dropdown-menu dropdown-menu-right">';
+                        echo '<a class="dropdown-item" href="PropertyEditor.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '">';
+                        echo '<i class="fa-solid fa-pen"></i> ' . gettext('Edit') . '</a>';
+                        echo '<a class="dropdown-item" href="PropertyDelete.php?PropertyID=' . InputUtils::escapeAttribute($pro_ID) . '&Type=' . InputUtils::escapeAttribute($sType) . '">';
+                        echo '<i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo '</td>';
                     }
                     echo '</tr>';
 

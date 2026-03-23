@@ -74,9 +74,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <table id="links-table" class="table table-striped table-bordered data-table">
                         <thead>
                             <tr>
-                                <th width="15%" class="no-export"><?= gettext('Actions') ?></th>
                                 <th width="35%"><?= gettext('Name') ?></th>
                                 <th width="50%"><?= gettext('URL') ?></th>
+                                <th width="15%" class="no-export"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -97,16 +97,6 @@ $(document).ready(function() {
         },
         autoWidth: false,
         columns: [
-            {
-                sortable: false,
-                data: 'Id',
-                render: function(data, type, row) {
-                    var safeId = parseInt(data, 10);
-                    return '<button type="button" class="btn btn-danger btn-sm delete-link" data-id="' + safeId + '" title="' + i18next.t('Delete') + '">' +
-                           '<i class="fa-solid fa-trash"></i></button>';
-                },
-                searchable: false
-            },
             {
                 title: i18next.t('Name'),
                 data: 'Name',

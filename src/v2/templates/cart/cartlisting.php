@@ -14,12 +14,12 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <table class="table table-hover w-100" id="cart-listing-table">
       <thead>
         <tr>
-          <th class="no-export"><?= gettext('Actions') ?></th>
           <th><?= gettext('Name') ?></th>
           <th><?= gettext('Address') ?></th>
           <th><?= gettext('Email') ?></th>
           <th><?= gettext('Classification') ?></th>
           <th><?= gettext('Family Role') ?></th>
+          <th class="no-export"><?= gettext('Actions') ?></th>
         </tr>
       </thead>
       <tbody>
@@ -28,11 +28,6 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
         foreach ($cartPeople as $Person) {
             ?>
           <tr>
-            <td>
-              <button class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $Person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>">
-                <i class="fa-solid fa-shopping-cart"></i>
-              </button>
-            </td>
             <td>
               <div class="d-flex align-items-center gap-2">
                 <?php 
@@ -60,6 +55,11 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
             <td><?= $Person->getEmail() ?></td>
             <td><?= $Person->getClassificationName() ?></td>
             <td><?= $Person->getFamilyRoleName() ?></td>
+            <td>
+              <button class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $Person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>">
+                <i class="fa-solid fa-shopping-cart"></i>
+              </button>
+            </td>
           </tr>
         <?php }
         ?>

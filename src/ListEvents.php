@@ -202,9 +202,6 @@ foreach ($allMonths as $mVal) {
       <table class="table table-striped table-hover mb-0">
         <thead>
           <tr>
-            <?php if ($canEditEvents): ?>
-              <th style="width: 100px;" class="no-export"><?= gettext('Actions') ?></th>
-            <?php endif; ?>
             <th><?= gettext('Description') ?></th>
             <th><?= gettext('Event Type') ?></th>
             <th style="width: 120px;" class="text-center"><?= gettext('Check-in') ?></th>
@@ -213,6 +210,10 @@ foreach ($allMonths as $mVal) {
             <th><?= gettext('Head Count') ?></th>
             <th><?= gettext('Start Date/Time') ?></th>
             <th style="width: 70px;"><?= gettext('Active') ?></th>
+            <?php if ($canEditEvents): ?>
+              <th style="width: 100px;" class="no-export"><?= gettext('Actions') ?></th>
+            <?php endif; ?>
+          </tr>
           </tr>
         </thead>
         <tbody>
@@ -221,15 +222,22 @@ foreach ($allMonths as $mVal) {
             <tr>
               <?php if ($canEditEvents): ?>
                 <td>
-                  <a href="EventEditor.php?EID=<?= $eventId ?>" class="btn btn-link text-secondary p-1" title="<?= gettext('Edit') ?>">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                  <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>');">
-                    <input type="hidden" name="EID" value="<?= $eventId ?>">
-                    <button type="submit" name="Action" value="Delete" class="btn btn-link text-danger p-1" title="<?= gettext('Delete') ?>">
-                      <i class="fas fa-trash"></i>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fa-solid fa-ellipsis-v"></i>
                     </button>
-                  </form>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">
+                        <i class="fa-solid fa-pen"></i> <?= gettext('Edit') ?>
+                      </a>
+                      <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
+                        <input type="hidden" name="EID" value="<?= $eventId ?>">
+                        <button type="submit" name="Action" value="Delete" class="dropdown-item text-danger" style="background: none; border: none; padding: 0.5rem 1rem; width: 100%; text-align: left;">
+                          <i class="fa-solid fa-trash"></i> <?= gettext('Delete') ?>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </td>
               <?php endif; ?>
               <td>
