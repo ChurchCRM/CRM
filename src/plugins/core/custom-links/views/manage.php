@@ -116,12 +116,29 @@ $(document).ready(function() {
                     }
                     return data;
                 }
+            },
+            {
+                title: i18next.t('Actions'),
+                data: 'Id',
+                orderable: false,
+                searchable: false,
+                render: function(data, type, row) {
+                    if (type === 'display') {
+                        return '<button class="btn btn-sm btn-danger delete-link" data-id="' + data + '">' +
+                            '<i class="fa-solid fa-trash-can"></i></button>';
+                    }
+                    return data;
+                }
             }
         ],
-        order: [[1,"asc"]]
+        order: [[1,"asc"]],
+        language: {
+            emptyTable: emptyMsg
+        }
     };
-    $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-    dataTableConfig.language.emptyTable = emptyMsg;
+    if (window.CRM && window.CRM.plugin && window.CRM.plugin.dataTable) {
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    }
     var table = $("#links-table").DataTable(dataTableConfig);
 
     // Delete handler using event delegation
