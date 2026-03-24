@@ -242,9 +242,7 @@
     const updateDisplayName = function () {
       const firstName = firstNameInput.val();
       const lastName = lastNameInput.val() ? ` ${lastNameInput.val()}` : "";
-      displayNameSpan.textContent = firstName
-        ? `${firstName}${lastName}`
-        : `${i18next.t("Member")} ${memberIndex}`;
+      displayNameSpan.textContent = firstName ? `${firstName}${lastName}` : `${i18next.t("Member")} ${memberIndex}`;
     };
 
     firstNameInput.on("change keyup", updateDisplayName);
