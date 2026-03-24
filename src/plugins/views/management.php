@@ -25,10 +25,10 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
     $isActive = $plugin['isActive'] ?? false;
     $helpData = $hasHelp ? htmlspecialchars(json_encode($plugin['help']), ENT_QUOTES, 'UTF-8') : '';
 ?>
-    <div class="card <?= $hasError ? 'border-top border-danger border-3' : ($isActive ? 'border-top border-success border-3' : 'card-secondary') ?> collapsed-card" 
+    <div class="card <?= $hasError ? 'border-top border-danger border-3' : ($isActive ? 'border-top border-success border-3' : 'card-secondary') ?>"
          data-plugin-id="<?= $pluginId ?>"
          <?php if ($hasHelp): ?>data-plugin-help="<?= $helpData ?>"<?php endif; ?>>
-        <div class="card-header d-flex align-items-center">
+        <div class="card-header d-flex align-items-center" style="cursor: pointer;" class="plugin-card-header">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
                     <i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>
@@ -52,34 +52,37 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
             </h3>
             <div class="card-tools ms-auto">
                 <?php if ($hasHelp): ?>
-                    <button type="button" class="btn btn-tool btn-plugin-help text-info" 
+                    <button type="button" class="btn btn-tool btn-plugin-help text-info"
                             data-plugin-id="<?= $pluginId ?>"
                             data-plugin-name="<?= htmlspecialchars($plugin['name']) ?>"
-                            title="<?= gettext('Help') ?>">
+                            title="<?= gettext('Help') ?>"
+                            onclick="event.stopPropagation();">
                         <i class="fa-solid fa-circle-question"></i>
                     </button>
                 <?php endif; ?>
                 <?php if (!$hasError): ?>
                     <?php if ($isActive): ?>
-                        <button type="button" class="btn btn-tool btn-plugin-toggle text-danger" 
+                        <button type="button" class="btn btn-tool btn-plugin-toggle text-danger"
                                 data-action="disable" data-plugin-id="<?= $pluginId ?>"
-                                title="<?= gettext('Disable Plugin') ?>">
+                                title="<?= gettext('Disable Plugin') ?>"
+                                onclick="event.stopPropagation();">
                             <i class="fa-solid fa-power-off"></i> <?= gettext('Disable') ?>
                         </button>
                     <?php else: ?>
-                        <button type="button" class="btn btn-tool btn-plugin-toggle text-success" 
+                        <button type="button" class="btn btn-tool btn-plugin-toggle text-success"
                                 data-action="enable" data-plugin-id="<?= $pluginId ?>"
-                                title="<?= gettext('Enable Plugin') ?>">
+                                title="<?= gettext('Enable Plugin') ?>"
+                                onclick="event.stopPropagation();">
                             <i class="fa-solid fa-play"></i> <?= gettext('Enable') ?>
                         </button>
                     <?php endif; ?>
                 <?php endif; ?>
-                <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fa-solid fa-plus"></i>
+                <button type="button" class="btn btn-tool btn-expand-plugin" title="<?= gettext('Expand') ?>" onclick="event.stopPropagation();">
+                    <i class="fa-solid fa-chevron-down"></i>
                 </button>
             </div>
         </div>
-        <div class="card-body d-none">
+        <div class="card-body" style="display: none;">
             <p class="text-muted mb-2"><?= htmlspecialchars($plugin['description']) ?></p>
             <?php if (!empty($plugin['author'])): ?>
                 <small class="text-muted">
@@ -305,6 +308,34 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
+    // Expand/collapse plugin card
+    function togglePluginCard(card) {
+        const body = card.find('.card-body');
+        const expandBtn = card.find('.btn-expand-plugin i');
+        const isHidden = body.is(':hidden');
+
+        if (isHidden) {
+            body.slideDown(200);
+            expandBtn.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+        } else {
+            body.slideUp(200);
+            expandBtn.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+        }
+    }
+
+    // Click on card header to expand/collapse
+    $('.plugin-card-header').on('click', function() {
+        const card = $(this).closest('.card');
+        togglePluginCard(card);
+    });
+
+    // Click on expand button to expand/collapse
+    $('.btn-expand-plugin').on('click', function(e) {
+        e.stopPropagation();
+        const card = $(this).closest('.card');
+        togglePluginCard(card);
+    });
+
     // Show plugin help modal
     $('.btn-plugin-help').on('click', function(e) {
         e.stopPropagation();
@@ -564,14 +595,19 @@ $(document).ready(function() {
         const pluginId = window.location.hash.replace('#plugin-', '');
         const card = $('[data-plugin-id="' + pluginId + '"]');
         if (card.length) {
-            card.removeClass('collapsed-card');
-            card.find('.card-body').show();
-            card.find('.card-tools .btn-tool[data-card-widget="collapse"] i')
-                .removeClass('fa-plus').addClass('fa-minus');
+            const body = card.find('.card-body');
+            // Expand the card if not already expanded
+            if (body.is(':hidden')) {
+                body.show();
+                card.find('.btn-expand-plugin i')
+                    .removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            }
             // Scroll to the card
-            $('html, body').animate({
-                scrollTop: card.offset().top - 100
-            }, 500);
+            setTimeout(function() {
+                $('html, body').animate({
+                    scrollTop: card.offset().top - 100
+                }, 500);
+            }, 100);
         }
     }
 });
