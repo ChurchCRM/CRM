@@ -93,7 +93,7 @@ $hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
             <li><i class="fa-solid fa-check"></i> <?= gettext('Connect with others') ?></li>
           </ul>
           <a href="<?= SystemURLs::getRootPath() ?>/external/register/" class="btn-register">
-            <i class="fa-solid fa-arrow-right me-2"></i><?= gettext('Register Your Family') ?>
+            <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Register Your Family') ?>
           </a>
         </div>
       </div>
