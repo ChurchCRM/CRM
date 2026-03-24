@@ -153,7 +153,7 @@
         // Set the label's "for" attribute if this is a checkbox/radio
         if (element.type === "checkbox" || element.type === "radio") {
           const label = element.nextElementSibling;
-          if (label && label.classList.contains("custom-control-label")) {
+          if (label && label.tagName === "LABEL") {
             label.setAttribute("for", element.id);
           }
         }
@@ -171,6 +171,8 @@
     }
 
     // All new cards start expanded for immediate editing
+    // Remove d-none class first (template uses it to hide during cloning) so inline style takes effect
+    cardBody.classList.remove("d-none");
     cardBody.style.display = "block";
     toggleBtn.querySelector("i").classList.remove("fa-chevron-down");
     toggleBtn.querySelector("i").classList.add("fa-chevron-up");
