@@ -671,7 +671,19 @@ body.page-auth {
 .alert-buttons {
   margin-top: 15px;
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
+
+  a, button {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
 }
 
 .btn {

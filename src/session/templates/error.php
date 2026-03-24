@@ -4,14 +4,12 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 
-$sPageTitle = gettext("Password Reset");
+$sPageTitle = gettext("Password Reset Error");
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
 
-
 <div class="login-container">
   <div class="login-wrapper">
-    <!-- Error Section -->
     <div class="login-form-section">
       <!-- Header with Logo and Church Name -->
       <div class="login-form-header">
@@ -19,21 +17,28 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
           <img src="<?= SystemURLs::getRootPath() ?>/Images/logo-churchcrm-350.jpg" alt="ChurchCRM" />
         </div>
         <h2 class="login-header-church-name"><?= ChurchMetaData::getChurchName() ?></h2>
-        <p class="login-header-tagline"><?= gettext('Help & Support') ?></p>
+        <p class="login-header-tagline"><?= gettext('Account Recovery') ?></p>
       </div>
 
-      <div class="alert alert-danger" role="alert">
-        <h4 class="alert-heading"><i class="fa-solid fa-circle-exclamation"></i> <?= gettext("Password Reset Error") ?></h4>
-        <p><?= gettext("We were unable to process your password reset request. Please try requesting a new password reset link.") ?></p>
+      <!-- Error Title -->
+      <div class="login-form-title">
+        <h1><i class="fa-solid fa-circle-exclamation"></i><?= gettext('Password Reset Error') ?></h1>
+        <p><?= gettext('We were unable to process your password reset request.') ?></p>
+      </div>
 
-        <div class="alert-buttons">
-          <a href="<?= SystemURLs::getRootPath() ?>/session/forgot-password/reset-request" class="btn btn-primary">
-            <i class="fa-solid fa-refresh"></i> <?= gettext("Request Password Reset") ?>
-          </a>
-          <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn btn-secondary">
-            <i class="fa-solid fa-sign-in"></i> <?= gettext("Back to Login") ?>
-          </a>
-        </div>
+      <!-- Error Alert Message -->
+      <div class="alert alert-danger" role="alert">
+        <p><?= gettext('Please try requesting a new password reset link or contact support if you continue to experience issues.') ?></p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="alert-buttons">
+        <a href="<?= SystemURLs::getRootPath() ?>/session/forgot-password/reset-request" class="btn btn-primary">
+          <i class="fa-solid fa-refresh me-2"></i><?= gettext('Request Password Reset') ?>
+        </a>
+        <a href="<?= SystemURLs::getRootPath() ?>/session/begin" class="btn btn-secondary">
+          <i class="fa-solid fa-sign-in me-2"></i><?= gettext('Back to Login') ?>
+        </a>
       </div>
     </div>
   </div>
