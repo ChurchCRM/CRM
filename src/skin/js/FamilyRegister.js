@@ -217,9 +217,10 @@
     });
 
     // Show remove button only if more than 1 member
+    // Remove d-none class (template hides it with d-none !important, which overrides inline style)
     const removeBtn = clone.querySelector(".remove-member-btn");
     if (memberIndex > 1) {
-      removeBtn.style.display = "block";
+      removeBtn.classList.remove("d-none");
       removeBtn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -235,10 +236,15 @@
     const lastNameInput = $(`#member-last-name-${memberIndex}`);
     const displayNameSpan = memberCard.querySelector(".member-display-name");
 
+    // Set initial display name to "Member N" so header is meaningful before user types
+    displayNameSpan.textContent = `${i18next.t("Member")} ${memberIndex}`;
+
     const updateDisplayName = function () {
-      const firstName = firstNameInput.val() || gettext("Member");
+      const firstName = firstNameInput.val();
       const lastName = lastNameInput.val() ? ` ${lastNameInput.val()}` : "";
-      displayNameSpan.textContent = `${firstName}${lastName}`;
+      displayNameSpan.textContent = firstName
+        ? `${firstName}${lastName}`
+        : `${i18next.t("Member")} ${memberIndex}`;
     };
 
     firstNameInput.on("change keyup", updateDisplayName);
@@ -289,7 +295,7 @@
 
     // Hide remove button if only 1 member left
     if (state.currentMemberCount === 1) {
-      $(".remove-member-btn").hide();
+      $(".remove-member-btn").addClass("d-none");
     }
 
     updateMemberCount();
@@ -558,7 +564,14 @@
     // Display family info
     $("#displayFamilyName").text(family.Name);
 
-    const familyAddress = `${family.Address1}, ${family.City}, ${family.State} ${family.Zip} ${family.Country}`;
+    const addressParts = [
+      family.Address1,
+      family.Address2 || null,
+      family.City,
+      [family.State, family.Zip].filter(Boolean).join(" "),
+      family.Country,
+    ].filter(Boolean);
+    const familyAddress = addressParts.join(", ");
     $("#displayFamilyAddress").text(familyAddress);
     $("#displayFamilyPhone").text(family.HomePhone);
 
@@ -637,8 +650,42 @@
     });
   }
 
+  /**
+   * Show a warning message using notify if available, otherwise fallback to alert
+   */
+  function notifyWarning(message) {
+    if (window.CRM && window.CRM.notify) {
+      window.CRM.notify(message, { type: "warning", delay: 4000 });
+    } else {
+      alert(message);
+    }
+  }
+
+  /**
+   * Expand any member cards that contain validation errors, so the user can see what to fix
+   */
+  function expandCardsWithErrors() {
+    document.querySelectorAll(".member-card").forEach((card) => {
+      const hasError = card.querySelector(".is-invalid") || card.querySelector(".invalid-feedback:not(:empty)");
+      if (hasError) {
+        const body = card.querySelector(".member-card-body");
+        const btn = card.querySelector(".member-toggle-btn");
+        if (body && body.style.display === "none") {
+          body.style.display = "block";
+          btn.querySelector("i").classList.remove("fa-chevron-down");
+          btn.querySelector("i").classList.add("fa-chevron-up");
+        }
+      }
+    });
+  }
+
   function submitRegistration() {
+    const submitBtn = document.getElementById("submit-registration");
     const familyData = buildFamilyObject();
+
+    // Show loading state
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>' + i18next.t("Submitting...");
 
     $.ajax({
       url: `${rootPath}/api/public/register/family`,
@@ -647,21 +694,25 @@
       contentType: "application/json",
       data: JSON.stringify(familyData),
     })
-      .done(function (data) {
+      .done(function () {
+        const churchName = window.CRM.churchName || i18next.t("our church");
         bootbox.dialog({
-          title: i18next.t("Registration Complete"),
-          message: i18next.t("Thank you for registering your family"),
+          title: '<i class="fa-solid fa-church me-2 text-success"></i>' + i18next.t("Welcome to the Family!"),
+          message:
+            `<div class="text-center mb-3"><i class="fa-solid fa-circle-check fa-3x text-success"></i></div>` +
+            `<p class="text-center fs-5">${i18next.t("We're so glad your family has joined us!")}</p>` +
+            `<p class="text-center text-muted">${i18next.t("Your registration has been received. Our team will be in touch soon to personally welcome you.")}</p>`,
           buttons: {
-            new: {
-              label: i18next.t("Register another family!"),
-              className: "btn-default",
+            another: {
+              label: '<i class="fa-solid fa-plus me-1"></i>' + i18next.t("Register another family"),
+              className: "btn-outline-secondary",
               callback: function () {
                 window.location.href = `${rootPath}/external/register/`;
               },
             },
             done: {
-              label: i18next.t("Done, show me the homepage!"),
-              className: "btn-info",
+              label: '<i class="fa-solid fa-house me-1"></i>' + i18next.t("Go to homepage"),
+              className: "btn-success",
               callback: function () {
                 window.location.href = window.CRM.churchWebSite;
               },
@@ -671,6 +722,10 @@
       })
       .fail(function (xhr) {
         console.error("Registration failed:", xhr);
+
+        // Restore submit button
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fa-solid fa-circle-check me-2"></i>' + i18next.t("Submit Registration");
 
         let errorMessage = i18next.t("Sorry, we are unable to process your request at this point in time.");
 
@@ -783,25 +838,20 @@
           if (isValid) {
             state.validatedNavigation = { from: 0, to: 1 };
             registrationStepper.next();
+            window.scrollTo({ top: 0, behavior: "smooth" });
           } else {
-            // Use notify if available, otherwise fallback to alert for external pages
-            if (window.CRM && window.CRM.notify) {
-              window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
-                type: "warning",
-                delay: 4000,
-              });
-            } else {
-              alert(i18next.t("Please fill in all required fields correctly."));
-            }
+            notifyWarning(i18next.t("Please fill in all required fields correctly."));
           }
         });
       } else {
         registrationStepper.next();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
 
     document.getElementById("members-previous").addEventListener("click", function () {
       registrationStepper.previous();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
     document.getElementById("members-next").addEventListener("click", function (e) {
@@ -809,10 +859,7 @@
 
       // Validate at least 1 member exists
       if (state.currentMemberCount === 0) {
-        window.CRM.notify(i18next.t("Please add at least one family member."), {
-          type: "warning",
-          delay: 4000,
-        });
+        notifyWarning(i18next.t("Please add at least one family member."));
         return;
       }
 
@@ -821,24 +868,26 @@
           if (isValid) {
             state.validatedNavigation = { from: 1, to: 2 };
             registrationStepper.next();
+            window.scrollTo({ top: 0, behavior: "smooth" });
           } else {
-            window.CRM.notify(i18next.t("Please fill in all required fields correctly."), {
-              type: "warning",
-              delay: 4000,
-            });
+            // Expand any collapsed cards that have validation errors so the user can find them
+            expandCardsWithErrors();
+            notifyWarning(i18next.t("Please fill in all required fields correctly."));
           }
         });
       } else {
         registrationStepper.next();
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
     });
 
     document.getElementById("review-previous").addEventListener("click", function () {
       registrationStepper.previous();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    // Update member last names when family name changes
-    $("#familyName").on("change", function () {
+    // Update member last names when family name changes (input for real-time fill)
+    $("#familyName").on("input change", function () {
       const familyName = $(this).val();
       // Pre-fill last name for all existing member cards if not set
       $(`.member-card`).each(function () {

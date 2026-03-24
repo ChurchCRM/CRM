@@ -13,6 +13,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
     window.CRM = {
         root:"<?= SystemURLs::getRootPath() ?>",
         churchWebSite:"<?= SystemURLs::getRootPath() ?>/",
+        churchName:"<?= ChurchMetaData::getChurchName() ?>",
         phoneFormats: {
             home:"<?= SystemConfig::getValue('sPhoneFormat') ?>",
             cell:"<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
@@ -23,7 +24,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 <div class="register-box" style="width: 90%; max-width: 900px;">
     <div class="register-logo text-center mb-4">
         <a href="<?= SystemURLs::getRootPath() ?>/" class="h2"><?= ChurchMetaData::getChurchName() ?></a>
-        <p class="text-muted mt-2"><?= gettext("Join our community by registering your family") ?></p>
+        <p class="text-muted mt-2"><?= gettext("We're so glad you're here! Register your family in just 3 easy steps.") ?></p>
     </div>
     <div class="card registration-card">
         <div id="registration-stepper" class="bs-stepper">
@@ -53,7 +54,8 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                 <form id="registration-form" novalidate>
                     <div id="step-family-info" class="content" role="tabpanel" aria-labelledby="step-family-info-trigger">
                         <div class="step-header">
-                            <h4 class="text-center"><?= gettext('Family Information') ?></h4>
+                            <h4 class="text-center"><?= gettext('Tell us about your family') ?></h4>
+                            <p class="text-center mb-0 mt-1" style="opacity:0.85; font-size:0.9rem;"><?= gettext("We'll use this to keep in touch and send church updates.") ?></p>
                         </div>
 
                         <div class="mb-3">
@@ -129,9 +131,10 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                     <div id="step-members" class="content" role="tabpanel" aria-labelledby="step-members-trigger">
                         <div class="step-header">
                             <h4 class="text-center">
-                                <?= gettext('Family Members') ?>
+                                <?= gettext('Who is in your family?') ?>
                                 <span id="member-count-display" class="family-count-badge"></span>
                             </h4>
+                            <p class="text-center mb-0 mt-1" style="opacity:0.85; font-size:0.9rem;"><?= gettext("Add everyone in your household — adults and children alike.") ?></p>
                         </div>
 
                         <!-- Members container where dynamic cards are added -->
@@ -265,7 +268,8 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                     </div>
                     <div id="step-review" class="content" role="tabpanel" aria-labelledby="step-review-trigger">
                         <div class="step-header">
-                            <h4 class="text-center"><?= gettext('Review & Submit') ?></h4>
+                            <h4 class="text-center"><?= gettext('Almost there — review your details') ?></h4>
+                            <p class="text-center mb-0 mt-1" style="opacity:0.85; font-size:0.9rem;"><?= gettext("Please check everything looks right before submitting.") ?></p>
                         </div>
 
                         <div class="card mb-4">
@@ -356,8 +360,13 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="alert alert-info mt-4" role="alert">
-                            <i class="fa-solid fa-circle-info me-2"></i>
-                            <?= gettext('Please review all information carefully before submitting. You can go back to make changes if needed.') ?>
+                            <div class="d-flex align-items-start">
+                                <i class="fa-solid fa-circle-info me-3 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <strong><?= gettext("What happens next?") ?></strong>
+                                    <p class="mb-1 mt-1"><?= gettext("Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes.") ?></p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 mt-4 mb-0">
