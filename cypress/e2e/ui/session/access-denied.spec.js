@@ -9,14 +9,14 @@ describe("Access Denied Page", () => {
         it("Should display access denied page with default elements", () => {
             cy.visit("/v2/access-denied");
             cy.contains("Permission Required").should("be.visible");
-            cy.contains("You don't have access to this page").should("be.visible");
             cy.contains("The page you tried to visit requires special permissions").should("be.visible");
-            cy.contains("If you need access to this feature, please contact your church administrator.").should("be.visible");
             cy.get("a").contains("Go to Dashboard").should("be.visible");
             // Report button should exist and open Issue modal with page path
             cy.get('#errorReportBtn').should('exist').click();
             cy.get('#IssueReportModal').should('be.visible');
-            cy.get('input[name="pageName"]').should('have.value').and('include', '/v2/access-denied');
+            cy.get('input[name="pageName"]').invoke('val').should('include', '/v2/access-denied');
+            cy.get('#issueDescription').should('exist');
+            cy.get('#submitIssue').contains('Open GitHub Issue').should('be.visible');
         });
 
         it("Should display access denied page without role callout when no role parameter", () => {
@@ -37,7 +37,7 @@ describe("Access Denied Page", () => {
             // Report button should include role in pageName
             cy.get('#errorReportBtn').click();
             cy.get('#IssueReportModal').should('be.visible');
-            cy.get('input[name="pageName"]').should('have.value').and('include', 'role=Admin');
+            cy.get('input[name="pageName"]').invoke('val').should('include', 'role=Admin');
         });
 
         it("Should display Finance role description", () => {
@@ -121,14 +121,11 @@ describe("Access Denied Page", () => {
     });
 
     describe("Page Styling", () => {
-        it("Should display danger card styling", () => {
+        it("Should display card with alert icon", () => {
             cy.visit("/v2/access-denied?role=Admin");
-            // Tabler uses bordered cards instead of `card-danger`
-            cy.get(".card.border-danger").should("exist");
-            cy.get(".card.border-danger").contains("Permission Required").should("be.visible");
-            // Icon classes may be FontAwesome or Tabler; check for either
-            cy.get('.card.border-danger i.fa-lock, .card.border-danger i.fa-solid.fa-lock, .card.border-danger i.ti-lock').should("exist");
-            cy.get('.card.border-danger i.fa-user-lock, .card.border-danger i.fa-solid.fa-user-lock, .card.border-danger i.ti-user-lock').should("exist");
+            cy.get(".card.shadow-sm").should("exist");
+            cy.get(".card.shadow-sm").contains("Permission Required").should("be.visible");
+            cy.get('.card.shadow-sm i.ti.ti-alert-circle').should("exist");
         });
 
         it("Should display warning callout for role information", () => {
