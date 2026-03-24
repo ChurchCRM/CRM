@@ -214,8 +214,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
     <div class="card-header">
         <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
     </div>
-    <div class="card-body p-0">
-        <table id="members" class="table table-vcenter table-hover card-table data-table mb-0">
+    <div class="card-body">
+        <table id="members" class="table table-vcenter table-hover data-table mb-0">
             <thead>
                 <tr>
                     <?php 
