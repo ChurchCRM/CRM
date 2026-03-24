@@ -46,7 +46,8 @@ describe("Standard Sunday School", () => {
 
         // Verify class stats are displayed
         cy.contains("Total Enrolled").should("exist");
-        cy.contains("Male / Female").should("exist");
+        cy.contains("Boys").should("exist");
+        cy.contains("Girls").should("exist");
 
         // Verify stats show the correct count
         cy.contains("Total Enrolled").parent().parent().should("contain", "3");
