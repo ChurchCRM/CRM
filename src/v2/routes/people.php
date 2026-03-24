@@ -168,8 +168,12 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
 
     // Get query parameters for filtering
     $queryParams = $request->getQueryParams();
-    $showOnlyWithPhotos = isset($queryParams['photosOnly']) && $queryParams['photosOnly'] === '1';
-    $classificationFilter = !empty($queryParams['Classification']) ? InputUtils::filterInt($queryParams['Classification']) : null;
+    // Default to photos-only; explicitly pass photosOnly=0 to show all
+    $showOnlyWithPhotos = !array_key_exists('photosOnly', $queryParams) || $queryParams['photosOnly'] !== '0';
+    // -1 is a sentinel for "Unassigned" (cls_id IS NULL); null means no filter
+    $classificationRaw    = $queryParams['classification'] ?? '';
+    $filterUnassigned     = ($classificationRaw === '-1');
+    $classificationFilter = (!$filterUnassigned && $classificationRaw !== '') ? InputUtils::filterInt($classificationRaw) : null;
 
     // Get classification list for filter dropdown
     $classifications = ListOptionQuery::create()
@@ -186,11 +190,13 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     }
 
     // Pagination parameters
-    $page = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
-    $limit = 100; // People per page
-    $offset = ($page - 1) * $limit;
+    $page           = isset($queryParams['page']) ? max(1, InputUtils::filterInt($queryParams['page'])) : 1;
+    $allowedLimits  = [20, 50, 100];
+    $requestedLimit = isset($queryParams['perPage']) ? (int)$queryParams['perPage'] : 50;
+    // 0 = show all; otherwise clamp to allowed values
+    $limit          = ($requestedLimit === 0) ? 0 : (in_array($requestedLimit, $allowedLimits, true) ? $requestedLimit : 50);
 
-    // Build query for people - using ORM (no family join needed for this view)
+    // Build base query
     $peopleQuery = PersonQuery::create()
         ->orderByLastName()
         ->orderByFirstName();
@@ -200,36 +206,43 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         $peopleQuery->filterByClsId($aInactiveClasses, \Propel\Runtime\ActiveQuery\Criteria::NOT_IN);
     }
 
-    // Apply classification filter if specified
-    if ($classificationFilter !== null) {
+    // Apply classification filter
+    if ($filterUnassigned) {
+        // Unassigned = cls_id = 0 (default) OR NULL
+        $peopleQuery->where('Person.ClsId IS NULL OR Person.ClsId = 0');
+    } elseif ($classificationFilter !== null) {
         $peopleQuery->filterByClsId($classificationFilter);
     }
 
-    // Get total count before pagination
-    $totalCount = (clone $peopleQuery)->count();
-    $totalPages = (int) ceil($totalCount / $limit);
-
-    // Apply pagination
-    $people = $peopleQuery
-        ->limit($limit)
-        ->offset($offset)
-        ->find();
-
-    // Build array of people with photo info
-    $peopleData = [];
-    foreach ($people as $person) {
-        $photo = new Photo('Person', $person->getId());
-        $hasPhoto = $photo->hasUploadedPhoto();
-
-        // Skip people without photos if filter is enabled
-        if ($showOnlyWithPhotos && !$hasPhoto) {
-            continue;
+    // When filtering by photos, photo availability is filesystem-based (not in DB),
+    // so we must fetch all people, filter, then paginate in PHP.
+    if ($showOnlyWithPhotos) {
+        $allPeople     = $peopleQuery->find();
+        $allPeopleData = [];
+        foreach ($allPeople as $person) {
+            $photo = new Photo('Person', $person->getId());
+            if ($photo->hasUploadedPhoto()) {
+                $allPeopleData[] = ['person' => $person, 'hasPhoto' => true];
+            }
         }
+        $totalMatched = count($allPeopleData);
+        $totalPages   = ($limit === 0) ? 1 : (int) ceil($totalMatched / $limit);
+        $peopleData   = ($limit === 0) ? $allPeopleData : array_slice($allPeopleData, ($page - 1) * $limit, $limit);
+    } else {
+        $totalMatched = (clone $peopleQuery)->count();
+        $totalPages   = ($limit === 0) ? 1 : (int) ceil($totalMatched / $limit);
+        $people       = ($limit === 0) ? $peopleQuery->find() : $peopleQuery->limit($limit)->offset(($page - 1) * $limit)->find();
+        $peopleData   = [];
+        foreach ($people as $person) {
+            $photo = new Photo('Person', $person->getId());
+            $peopleData[] = ['person' => $person, 'hasPhoto' => $photo->hasUploadedPhoto()];
+        }
+    }
 
-        $peopleData[] = [
-            'person'   => $person,
-            'hasPhoto' => $hasPhoto,
-        ];
+    // Build a quick id→name map for use in the template
+    $classificationMap = [];
+    foreach ($classifications as $cls) {
+        $classificationMap[$cls->getOptionId()] = $cls->getOptionName();
     }
 
     $pageArgs = [
@@ -237,12 +250,15 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
         'sPageTitle'           => gettext('Photo Directory'),
         'peopleData'           => $peopleData,
         'classifications'      => $classifications,
+        'classificationMap'    => $classificationMap,
         'showOnlyWithPhotos'   => $showOnlyWithPhotos,
         'classificationFilter' => $classificationFilter,
-        'totalPeople'          => count($peopleData),
+        'filterUnassigned'     => $filterUnassigned,
+        'totalPeople'          => $totalMatched,
         'currentPage'          => $page,
         'totalPages'           => $totalPages,
-        'totalCount'           => $totalCount,
+        'perPage'              => $limit,
+        'allowedLimits'        => $allowedLimits,
     ];
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
