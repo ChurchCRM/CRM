@@ -7,11 +7,10 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
         cy.visit("v2/family/1");
     });
 
-    it("should display verify button in actions", () => {
-        // The Verify button should exist in the Actions section
-        cy.get('.card-title').contains('Actions').should('be.visible');
+    it("should display verify button in toolbar", () => {
+        // The Verify button should exist in the toolbar area
         cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').should('be.visible');
-        cy.contains('button, a', 'Verify').should('be.visible');
+        cy.contains('a', 'Verify').should('be.visible');
     });
 
     it("should open confirmation modal when verify button clicked", () => {

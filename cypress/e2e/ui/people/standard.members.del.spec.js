@@ -15,7 +15,9 @@ describe("Standard Family", () => {
         cy.url().should("contain", "PersonView.php").then((url) => {
             const personId = new URL(url).searchParams.get("PersonID");
 
-            cy.get("#deletePersonBtn").first().click();
+            // Open Actions dropdown, then click Delete
+            cy.get("#person-actions-dropdown").click();
+            cy.get("#deletePersonBtn").click();
             cy.get(".bootbox-accept").should("be.visible").click();
             cy.url().should("contain", "v2/dashboard");
 
@@ -35,6 +37,8 @@ describe("Standard Family", () => {
         cy.location("pathname").should("include", "/v2/family/").then((pathname) => {
             const familyId = pathname.split("/").pop();
 
+            // Open Actions dropdown, then click Delete
+            cy.get("#family-actions-dropdown").click();
             cy.get("#deleteFamilyBtn").click();
             cy.url().should("contain", "SelectDelete.php");
             cy.get("#deleteFamilyAndMembersBtn").click();

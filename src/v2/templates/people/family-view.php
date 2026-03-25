@@ -79,7 +79,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </div>
                 </div>
                 <div class="mt-3">
-                    <span class="badge badge-<?= $family->isActive() ? 'success' : 'secondary' ?> me-1">
+                    <span class="badge bg-<?= $family->isActive() ? 'success' : 'secondary' ?> me-1">
                         <i class="fa-solid fa-circle"></i> <?= $family->isActive() ? gettext('Active') : gettext('Inactive') ?>
                     </span>
                     <span class="badge bg-info me-1">
@@ -94,37 +94,34 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             </div>
         </div>
 
-        <!-- Family Actions -->
+        <!-- Family Actions Toolbar -->
         <div class="card mb-3">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-bolt"></i> <?= gettext("Actions") ?></h3>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-6 mb-2">
-                        <a class="btn btn-secondary w-100" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
-                            <i class="fa-solid fa-clipboard-check"></i><br><?= gettext('Verify') ?>
-                        </a>
+            <div class="card-body py-2">
+                <div class="d-flex align-items-center gap-2 flex-wrap">
+                    <a class="btn btn-ghost-warning" href="#" data-bs-toggle="modal" data-bs-target="#confirm-verify">
+                        <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify') ?>
+                    </a>
+                    <a class="btn btn-ghost-success AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
+                        <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Cart') ?>
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-ghost-secondary dropdown-toggle" id="family-actions-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
+                                <a class="dropdown-item" id="activateDeactivate">
+                                    <i class="fa-solid fa-power-off me-2"></i><?= ($family->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
+                                </a>
+                            <?php } ?>
+                            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?= $family->getId() ?>">
+                                    <i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?>
+                                </a>
+                            <?php } ?>
+                        </div>
                     </div>
-                    <div class="col-6 mb-2">
-                        <a class="btn btn-secondary w-100 AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                            <i class="fa-solid fa-cart-plus"></i><br><?= gettext('Cart') ?>
-                        </a>
-                    </div>
-                    <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <div class="col-6 mb-2">
-                        <a class="btn btn-warning w-100" id="activateDeactivate">
-                            <i class="fa-solid fa-power-off"></i><br><?= ($family->isActive() ? gettext('Set Inactive') : gettext('Set Active')) ?>
-                        </a>
-                    </div>
-                    <?php } ?>
-                    <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
-                    <div class="col-6 mb-2">
-                        <a class="btn btn-danger w-100" id="deleteFamilyBtn" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?=$family->getId()?>">
-                            <i class="fa-solid fa-trash-can"></i><br><?= gettext('Delete') ?>
-                        </a>
-                    </div>
-                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -143,10 +140,6 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </span>
                     <?php endif; ?>
                 </h3>
-                <div class="card-tools ms-auto">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i>
-                    </button>
-                </div>
             </div>
             <div class="card-body">
                 <a href="https://maps.google.com/?q=<?= urlencode($familyAddress) ?>"
@@ -249,8 +242,8 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <h3 class="card-title m-0"><i class="fa-solid fa-hashtag"></i> <?= gettext("Properties") ?></h3>
                 <div class="card-tools ms-auto">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                    <button id="add-family-property" type="button" class="btn btn-box-tool d-block">
-                        <i class="fa-solid fa-circle-plus text-blue"></i>
+                    <button id="add-family-property" type="button" class="btn btn-tool d-block">
+                        <i class="fa-solid fa-circle-plus text-primary"></i>
                     </button>
                     <?php } ?>
                 </div>
@@ -262,9 +255,9 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </i>
                 </div>
 
-                <div id="family-property-no-data" class="alert alert-warning" style="display: block;">
-                    <i class="fa-solid fa-circle-question fa-fw fa-lg"></i>
-                    <span><?= gettext("No property assignments.") ?></span>
+                <div id="family-property-no-data" class="text-center text-muted py-3" style="display: block;">
+                    <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
+                    <p class="mb-0"><?= gettext("No properties assigned.") ?></p>
                 </div>
 
                 <div class="table-responsive">
@@ -304,70 +297,74 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
         </div>
 
         <!-- Timeline Card -->
-        <div class="card border border-info collapsed-card mb-3">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-history"></i> <?= gettext("Timeline") ?></h3>
-                <div class="card-tools ms-auto">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
-                    </button>
-                </div>
+        <div class="card mb-3">
+            <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-timeline-body" aria-expanded="false">
+                <h3 class="card-title m-0"><i class="fa-solid fa-clock-rotate-left me-1"></i> <?= gettext("Timeline") ?></h3>
+                <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
             </div>
-            <div class="card-body d-none">
-                <div class="timeline">
-                    <!-- timeline time label -->
-                    <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
-                    <!-- /.timeline-label -->
-                    <!-- timeline item -->
-                    <?php foreach ($familyTimeline as $item) {
-                        if ($curYear != $item['year']) {
-                            $curYear = $item['year']; ?>
-                            <div class="time-label"><span class="bg-teal"><?= $curYear ?></span></div>
-                            <?php
-                        } ?>
-                        <div class="timeline-item">
-                            <!-- timeline icon -->
-                            <i class="fa <?= $item['style'] ?>"></i>
-                            <div class="timeline-item">
-                                <span class="time">
-                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                        ?>
-                                        <?php if (isset($item["editLink"])) { ?>
-                                            <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-warning"><i class="fa-solid fa-pen fa-sm"></i></button></a>
-                                        <?php }
-                                        if (isset($item["deleteLink"])) { ?>
-                                            <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash fa-sm"></i></button></a>
-                                        <?php } ?>
-                                        &nbsp;
-                                        <?php
-                                    } ?>
-                                <i class="fa-solid fa-clock"></i> <?= $item['datetime'] ?></span>
-                                <?php if ($item['slim']) { ?>
-                                    <h4 class="timeline-header">
-                                        <?= $item['text'] ?> <?= gettext($item['header']) ?>
-                                    </h4>
-                                <?php } else { ?>
-                                    <h3 class="timeline-header">
-                                        <?php if (in_array('headerlink', $item)) {
-                                            ?>
-                                            <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                            <?php
-                                        } else {
-                                            ?>
-                                            <?= gettext($item['header']) ?>
-                                            <?php
-                                        } ?>
-                                    </h3>
-
-                                    <div class="timeline-body">
-                                        <pre><?= $item['text'] ?></pre>
-                                    </div>
-
-                                <?php } ?>
-                            </div>
+            <div class="collapse" id="family-timeline-body">
+                <div class="card-body">
+                    <?php if (empty($familyTimeline)) { ?>
+                        <div class="alert alert-info">
+                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
+                            <span><?= gettext('No timeline events yet.') ?></span>
                         </div>
-                        <?php
-                    } ?>
-                    <!-- END timeline item -->
+                    <?php } else {
+                        $currentYear = ''; ?>
+                        <div class="timeline">
+                            <?php foreach ($familyTimeline as $item) {
+                                if ($currentYear !== $item['year']) {
+                                    $currentYear = $item['year']; ?>
+                                    <div class="timeline-event">
+                                        <div class="timeline-event-icon bg-secondary-lt">
+                                            <i class="fa-solid fa-calendar-days"></i>
+                                        </div>
+                                        <div class="timeline-event-card">
+                                            <span class="fw-bold text-secondary"><?= $currentYear ?></span>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                                <div class="timeline-event">
+                                    <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
+                                        <i class="fa-solid <?= $item['style'] ?>"></i>
+                                    </div>
+                                    <div class="timeline-event-card card">
+                                        <div class="card-body p-3">
+                                            <div class="d-flex justify-content-between align-items-start mb-1">
+                                                <div>
+                                                    <?php if ($item['slim']) { ?>
+                                                        <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
+                                                    <?php } else { ?>
+                                                        <strong>
+                                                            <?php if (in_array('headerlink', $item)) { ?>
+                                                                <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                                            <?php } else { ?>
+                                                                <?= gettext($item['header']) ?>
+                                                            <?php } ?>
+                                                        </strong>
+                                                    <?php } ?>
+                                                </div>
+                                                <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
+                                                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
+                                                        <?php if (isset($item["editLink"])) { ?>
+                                                            <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
+                                                        <?php }
+                                                        if (isset($item["deleteLink"])) { ?>
+                                                            <a href="<?= $item["deleteLink"] ?>" class="btn btn-sm btn-ghost-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></a>
+                                                        <?php } ?>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                            <?php if (!$item['slim'] && !empty($item['text'])) { ?>
+                                                <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
+                                            <?php } ?>
+                                            <small class="text-muted"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -382,74 +379,75 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             $latestNote = !empty($familyNotes) ? $familyNotes[0] : null;
             ?>
             <!-- Notes Card -->
-            <div class="card-secondary collapsed-card mb-3">
-                <div class="card-header d-flex align-items-center">
-                    <h3 class="card-title m-0"><i class="fa-solid fa-note-sticky"></i> <?= gettext("Notes") ?></h3>
-                    <div class="card-tools d-flex align-items-center">
+            <div class="card mb-3">
+                <div class="card-header d-flex align-items-center" role="button" data-bs-toggle="collapse" data-bs-target="#family-notes-body" aria-expanded="false">
+                    <h3 class="card-title m-0"><i class="fa-solid fa-note-sticky me-1"></i> <?= gettext("Notes") ?></h3>
+                    <div class="card-tools d-flex align-items-center ms-auto">
                         <a class="btn btn-outline-success btn-sm me-2" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?FamilyID=<?= $family->getId() ?>" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
                             <i class="fa-solid fa-plus"></i> <?= gettext('Add New') . ' ' . gettext('Note') ?>
                         </a>
-                        <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-plus"></i>
-                        </button>
+                        <i class="fa-solid fa-chevron-down"></i>
                     </div>
                 </div>
-                <div class="card-body d-none">
-                    <?php if ($latestNote) { ?>
-                        <div class="mb-3 border rounded p-3 bg-light">
-                            <div class="d-flex justify-content-between align-items-center mb-1">
-                                <strong><?= gettext('Latest Note') ?></strong>
-                                <small class="text-muted"><?= date('Y-m-d H:i', strtotime($latestNote['datetime'])) ?></small>
+                <div class="collapse" id="family-notes-body">
+                    <div class="card-body">
+                        <?php if ($latestNote) { ?>
+                            <div class="mb-3 border rounded p-3 bg-light">
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <strong><?= gettext('Latest Note') ?></strong>
+                                    <small class="text-muted"><?= date('Y-m-d H:i', strtotime($latestNote['datetime'])) ?></small>
+                                </div>
+                                <p class="mb-1"><?= InputUtils::escapeHTML($latestNote['text']) ?></p>
+                                <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($latestNote['header']) ?></small>
                             </div>
-                            <p class="mb-1"><?= InputUtils::escapeHTML($latestNote['text']) ?></p>
-                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($latestNote['header']) ?></small>
-                        </div>
-                    <?php } ?>
-                    <?php if (empty($familyNotes)) { ?>
-                        <div class="alert alert-info">
-                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
-                            <span><?= gettext('No notes have been added for this family.') ?></span>
-                        </div>
-                    <?php } else { ?>
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th style="width: 1%; white-space: nowrap;"><?= gettext('Date') ?></th>
-                                    <th><?= gettext('Note') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($familyNotes as $note) { ?>
+                        <?php } ?>
+                        <?php if (empty($familyNotes)) { ?>
+                            <div class="alert alert-info">
+                                <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
+                                <span><?= gettext('No notes have been added for this family.') ?></span>
+                            </div>
+                        <?php } else { ?>
+                            <table class="table table-hover table-striped">
+                                <thead>
                                     <tr>
-                                        <td style="width: 1%; white-space: nowrap; vertical-align: top;">
-                                            <div style="text-align: center;">
-                                                <i class="fa-solid fa-calendar"></i><br>
-                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
-                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
-                                                <div style="margin-top: 10px;">
-                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
-                                                            <i class="fa-solid fa-pen fa-sm"></i>
-                                                        </a>
-                                                    <?php }
-                                                    if (isset($note['deleteLink'])) { ?>
-                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
-                                                            <i class="fa-solid fa-trash fa-sm"></i>
-                                                        </a>
-                                                    <?php } ?>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="width: 99%; vertical-align: top;">
-                                            <div style="margin-bottom: 8px;">
-                                                <?= InputUtils::escapeHTML($note['text']) ?>
-                                            </div>
-                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($note['header']) ?></small>
-                                        </td>
+                                        <th class="td-shrink"><?= gettext('Date') ?></th>
+                                        <th><?= gettext('Note') ?></th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    <?php } ?>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($familyNotes as $note) { ?>
+                                        <tr>
+                                            <td class="td-shrink align-top">
+                                                <div class="text-center">
+                                                    <i class="fa-solid fa-calendar"></i><br>
+                                                    <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
+                                                    <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
+                                                    <div class="mt-2">
+                                                        <?php if (isset($note['editLink']) && $note['editLink']) { ?>
+                                                            <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
+                                                                <i class="fa-solid fa-pen"></i>
+                                                            </a>
+                                                        <?php }
+                                                        if (isset($note['deleteLink'])) { ?>
+                                                            <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
+                                                                <i class="fa-solid fa-trash"></i>
+                                                            </a>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="align-top">
+                                                <div class="mb-2">
+                                                    <?= InputUtils::escapeHTML($note['text']) ?>
+                                                </div>
+                                                <small class="text-muted"><i class="fa-solid fa-user"></i> <?= InputUtils::escapeHTML($note['header']) ?></small>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         <?php } ?>
@@ -464,7 +462,6 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                             <i class="fa-solid fa-user-plus"></i> <?= gettext('Add New') . ' ' . gettext('Member') ?>
                         </a>
                     <?php } ?>
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
                 </div>
             </div>
             <div class="card-body">
@@ -472,84 +469,49 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 <?php foreach ($family->getPeople() as $person) { ?>
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="card h-100">
-                            <div class="card-body box-profile">
-                                <div class="text-center">
-                                    <a href="<?= $person->getViewURI()?>" ?>
-                                        <img class="avatar avatar-md photo-medium"
-                                             data-image-entity-type="person" 
-                                             data-image-entity-id="<?= $person->getId() ?>">
-                                        <h3 class="profile-username"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
-                                    </a>
-                                    <p class="text-muted"><i
-                                            class="fa-solid fa-<?= ($person->isMale() ?"person" :"person-dress") ?>"></i> <?= $person->getFamilyRoleName() ?>
-                                    </p>
+                            <div class="card-body text-center position-relative">
+                                <!-- Action dropdown -->
+                                <div class="position-absolute top-0 end-0 m-2">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
+                                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
+                                            <div class="dropdown-divider"></div>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $person->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <p class="text-center">
-                                    <?php 
-                                        $isInCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false);
-                                    ?>
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonView.php?PersonID=<?= $person->getID()?>">
-                                        <button type="button" class="btn btn-sm btn-info" title="<?= gettext('View') ?>"><i class="fa-solid fa-eye fa-sm"></i></button>
-                                    </a>
-
-                                    <a href="<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getID()?>">
-                                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen fa-sm"></i></button>
-                                    </a>
-                                    
-                                    <?php if ($isInCart) { ?>
-                                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-times fa-sm"></i></button>
-                                    <?php } else { ?>
-                                        <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus fa-sm"></i></button>
+                                <!-- Person info -->
+                                <a href="<?= $person->getViewURI() ?>">
+                                    <img class="avatar avatar-md mb-2"
+                                         data-image-entity-type="person"
+                                         data-image-entity-id="<?= $person->getId() ?>">
+                                    <h3 class="mb-0"><?= $person->getTitle() ?> <?= $person->getFullName() ?></h3>
+                                </a>
+                                <p class="text-muted mb-2">
+                                    <i class="fa-solid fa-<?= ($person->isMale() ? "person" : "person-dress") ?> me-1"></i><?= $person->getFamilyRoleName() ?>
+                                    <?php if ($person->getClsId()) { ?>
+                                        <span class="badge bg-secondary-lt text-secondary ms-1"><?= Classification::getName($person->getClsId()) ?></span>
                                     <?php } ?>
-                                    
-                                    <a class="delete-person" data-person_name="<?= $person->getFullName() ?>"
-                                       data-person_id="<?= $person->getId() ?>" data-view="family">
-                                        <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash-can fa-sm"></i></button>
-                                    </a>
                                 </p>
-                                <?php if ($person->getClsId()) { ?>
-                                <li class="list-group">
-                                    <b>Classification:</b> <?= Classification::getName($person->getClsId()) ?>
-                                </li>
-                                <?php } ?>
-                                <ul class="list-group list-group-unbordered">
-                                    <li class="list-group-item">
-                                        <?php if (!empty($person->getHomePhone())) { ?>
-                                            <i class="fa-solid fa-phone"
-                                               title="<?= gettext("Home Phone") ?>"></i>(H) <?= $person->getHomePhone() ?>
-                                            <br/>
-                                        <?php }
-                                        if (!empty($person->getWorkPhone())) { ?>
-                                            <i class="fa-solid fa-briefcase"
-                                               title="<?= gettext("Work Phone") ?>"></i>(W) <?= $person->getWorkPhone() ?>
-                                            <br/>
-                                        <?php }
-                                        if (!empty($person->getCellPhone())) { ?>
-                                            <i class="fa-solid fa-mobile"
-                                               title="<?= gettext("Mobile Phone") ?>"></i>(M) <?= $person->getCellPhone() ?>
-                                            <br/>
-                                        <?php }
-                                        if (!empty($person->getEmail())) { ?>
-                                            <i class="fa-solid fa-envelope"
-                                               title="<?= gettext("Email") ?>"></i>(H) <?= $person->getEmail() ?>
-                                            <br/>
-                                        <?php }
-                                        if (!empty($person->getWorkEmail())) { ?>
-                                            <i class="fa-solid fa-inbox"
-                                               title="<?= gettext("Work Email") ?>"></i>(W) <?= $person->getWorkEmail() ?>
-                                            <br/>
-                                        <?php }
-                                        $formattedBirthday = $person->getFormattedBirthDate();
-                                        if ($formattedBirthday) {?>
-                                        <i class="fa-solid fa-cake-candles"
-                                           title="<?= gettext("Birthday") ?>"></i>
-                                            <?= $formattedBirthday ?>  <?= $person->getAge() ?? sprintf('(%s)', gettext('not found')) ?>
-                                        </i>
-                                        <?php } ?>
-                                    </li>
+                                <!-- Contact details -->
+                                <ul class="list-unstyled text-start mb-0">
+                                    <?php if (!empty($person->getCellPhone())) { ?>
+                                        <li class="mb-1"><i class="fa-solid fa-mobile me-2 text-muted"></i><a href="tel:<?= $person->getCellPhone() ?>"><?= $person->getCellPhone() ?></a></li>
+                                    <?php }
+                                    if (!empty($person->getHomePhone())) { ?>
+                                        <li class="mb-1"><i class="fa-solid fa-phone me-2 text-muted"></i><a href="tel:<?= $person->getHomePhone() ?>"><?= $person->getHomePhone() ?></a></li>
+                                    <?php }
+                                    if (!empty($person->getEmail())) { ?>
+                                        <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted"></i><a href="mailto:<?= $person->getEmail() ?>"><?= $person->getEmail() ?></a></li>
+                                    <?php }
+                                    $formattedBirthday = $person->getFormattedBirthDate();
+                                    if ($formattedBirthday) { ?>
+                                        <li class="mb-1"><i class="fa-solid fa-cake-candles me-2 text-muted"></i><?= $formattedBirthday ?> <?= $person->getAge() ?? '' ?></li>
+                                    <?php } ?>
                                 </ul>
-
                             </div>
                         </div>
                     </div>

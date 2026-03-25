@@ -33,8 +33,9 @@ describe("Person Profile", () => {
 
     it("Edit Why Came", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.contains("Why Came");
 
+        // Open Actions dropdown, then click Why Came
+        cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.url().should("contain", `WhyCameEditor.php?PersonID=${personId}`);
         cy.get('tr:nth-child(1) textarea').clear().type('{backspace}');

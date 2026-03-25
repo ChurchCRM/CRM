@@ -197,7 +197,7 @@ $bOkToEdit = (
                     <span class="badge bg-light text-dark"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
                 </div>
             </div>
-            <div class="card-body box-profile">
+            <div class="card-body text-center">
                 <div class="image-container text-center">
                     <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-lg mb-2">
                     <?php if ($bOkToEdit) : ?>
@@ -266,7 +266,6 @@ $bOkToEdit = (
                 </ul>
             </div>
         </div>
-        <!-- /.box -->
 
         <!-- Contact & Personal Info -->
         <div class="card">
@@ -497,57 +496,196 @@ $bOkToEdit = (
                 <?php endif; ?>
             </div>
         </div>
+
+        <!-- Properties Card (sidebar) -->
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><?= gettext('Properties') ?></h3>
+            </div>
+            <div class="card-body">
+                <?php
+                $sAssignedProperties = ','; ?>
+                <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
+                    <div class="text-center text-muted py-3">
+                        <i class="fa-solid fa-tags fa-2x mb-2 d-block opacity-50"></i>
+                        <p class="mb-0"><?= gettext('No properties assigned.') ?></p>
+                    </div>
+                <?php else : ?>
+                    <div class="list-group list-group-flush">
+                        <?php while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
+                            $pro_Prompt = '';
+                            $r2p_Value = '';
+                            extract($aRow); ?>
+                            <div class="list-group-item px-0 d-flex align-items-center">
+                                <div class="me-auto">
+                                    <span class="badge bg-info-lt text-info me-1"><?= InputUtils::escapeHTML($prt_Name) ?></span>
+                                    <strong><?= InputUtils::escapeHTML($pro_Name) ?></strong>
+                                    <?php if (!empty($r2p_Value)) { ?>
+                                        <small class="text-muted d-block"><?= InputUtils::escapeHTML($r2p_Value) ?></small>
+                                    <?php } ?>
+                                </div>
+                                <?php if ($bOkToEdit) { ?>
+                                    <button class="btn btn-sm btn-ghost-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove') ?>">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                <?php } ?>
+                            </div>
+                        <?php
+                            $sAssignedProperties .= $pro_ID . ',';
+                        } ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
+                    <div class="mt-3">
+                        <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
+                            <div class="mb-2">
+                                <select name="PropertyId" id="input-person-properties" class="form-control" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                    <option value=""></option>
+                                    <?php
+                                    $assignedPropertiesArray = [];
+                                    foreach ($assignedProperties as $assignedProperty) {
+                                        $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
+                                    }
+                                    while ($aRow = mysqli_fetch_array($rsProperties)) {
+                                        extract($aRow);
+                                        $attributes = "value=\"{$pro_ID}\"";
+                                        if (!empty($pro_Prompt)) {
+                                            $pro_Value = '';
+                                            foreach ($assignedProperties as $assignedProperty) {
+                                                if ($assignedProperty->getPropertyId() == $pro_ID) {
+                                                    $pro_Value = $assignedProperty->getPropertyValue();
+                                                }
+                                            }
+                                            $attributes .= " data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) . "\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) . "\"";
+                                        }
+                                        $optionText = InputUtils::escapeHTML($pro_Name);
+                                        if (in_array($pro_ID, $assignedPropertiesArray)) {
+                                            $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
+                                        }
+                                        echo "<option {$attributes}>{$optionText}</option>";
+                                    } ?>
+                                </select>
+                            </div>
+                            <div id="prompt-box" class="mb-2"></div>
+                            <button id="assign-property-btn" type="button" class="btn btn-sm btn-primary w-100">
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Assign') ?>
+                            </button>
+                        </form>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-9">
-        <div class="btn-group" role="group">
-            <a class="btn btn-outline-info" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-2"></i><?= gettext("Print") ?></a>
-            <button class="btn btn-outline-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-2"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
-            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                <a class="btn btn-outline-warning" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Why They Came") ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
-            <?php } ?>
-            <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
-                <a class="btn btn-outline-info" id="addGroup" title="<?= gettext("Assign New Group") ?>"><i class="fa-solid fa-users me-2"></i><?= gettext("Add Group") ?></a>
-            <?php } ?>
-            <a class="btn btn-outline-secondary" role="button" href="<?= SystemURLs::getRootPath() ?>/v2/people" title="<?= gettext("List Members") ?>"><i class="fa-solid fa-list me-2"></i><?= gettext("List") ?></a>
-            <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
-                <a id="deletePersonBtn" class="btn btn-outline-danger delete-person" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>" title="<?= gettext("Delete this Record") ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete") ?></a>
-            <?php } ?>
-        </div>
-        <div class="btn-group ms-2" role="group">
-            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) {
-                if (!$person->isUser()) { ?>
-                    <a class="btn btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>" title="<?= gettext('Make User') ?>"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Make User') ?></a>
-                <?php } else { ?>
-                    <a class="btn btn-outline-secondary" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext('Edit User') ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Edit') ?></a>
-                    <a class="btn btn-outline-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>" title="<?= gettext('View User') ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
-                    <a class="btn btn-outline-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword" title="<?= gettext("Change Password") ?>"><i class="fa-solid fa-key me-2"></i><?= gettext("Password") ?></a>
-                <?php }
-            } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) { ?>
-                <a class="btn btn-outline-info" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>" title="<?= gettext('View User') ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
-                <a class="btn btn-outline-warning" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" title="<?= gettext("Change Password") ?>"><i class="fa-solid fa-key me-2"></i><?= gettext("Password") ?></a>
-            <?php } ?>
+        <!-- Toolbar -->
+        <div class="d-flex align-items-center mb-3 gap-2">
+            <a class="btn btn-ghost-secondary" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></a>
+            <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" id="person-actions-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end">
+                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
+                    <?php } ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
+                        <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
+                    <?php } ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list me-2"></i><?= gettext("List Members") ?></a>
+                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+                        <div class="dropdown-divider"></div>
+                        <?php if (!$person->isUser()) { ?>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Make User') ?></a>
+                        <?php } else { ?>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Edit User') ?></a>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View User') ?></a>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key me-2"></i><?= gettext("Change Password") ?></a>
+                        <?php } ?>
+                    <?php } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) { ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View User') ?></a>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key me-2"></i><?= gettext("Change Password") ?></a>
+                    <?php } ?>
+                    <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete") ?></a>
+                    <?php } ?>
+                </div>
+            </div>
         </div>
 
+        <!-- Family Members Card (standalone, not a tab) -->
+        <?php if ($person->getFamId() != '' && $person->getFamily() != null) { ?>
+        <div class="card mb-3">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family Members') ?></h3>
+                <div class="ms-auto">
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View Family') ?></a>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-vcenter card-table">
+                    <thead>
+                        <tr>
+                            <th><?= gettext('Name') ?></th>
+                            <th class="text-center"><?= gettext('Role') ?></th>
+                            <th><?= gettext('Birthday') ?></th>
+                            <th><?= gettext('Email') ?></th>
+                            <th class="w-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
+                            $tmpPersonId = $familyMember->getId(); ?>
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
+                                        <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <span class="badge bg-secondary-lt text-secondary"><?= $familyMember->getFamilyRoleName() ?></span>
+                                </td>
+                                <td><?= $familyMember->getFormattedBirthDate(); ?></td>
+                                <td>
+                                    <?php $tmpEmail = $familyMember->getEmail();
+                                    if ($tmpEmail != '') { ?>
+                                        <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                        <div class="dropdown-menu dropdown-menu-end">
+                                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
+                                            <?php if ($bOkToEdit) { ?>
+                                            <div class="dropdown-divider"></div>
+                                            <button class="dropdown-item text-danger delete-person" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Delete') ?></button>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <?php } ?>
+
+        <!-- Tabbed Content -->
         <div class="card">
             <div class="card-header d-flex align-items-center">
                 <ul class="nav nav-pills card-header-pills">
                     <li class="nav-item">
-                        <a class="nav-link active" id="nav-item-family" href="#family" data-bs-toggle="tab">
-                            <i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-item-timeline" href="#timeline" data-bs-toggle="tab">
+                        <a class="nav-link active" id="nav-item-timeline" href="#timeline" data-bs-toggle="tab">
                             <i class="fa-solid fa-clock me-1"></i><?= gettext('Timeline') ?>
                         </a>
                     </li>
-                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-item-notes" href="#notes" data-bs-toggle="tab">
-                            <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Notes') ?>
-                        </a>
-                    </li>
-                    <?php } ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-groups" href="#groups" data-bs-toggle="tab">
                             <i class="fa-solid fa-users me-1"></i><?= gettext('Groups') ?>
@@ -556,11 +694,6 @@ $bOkToEdit = (
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
                             <i class="fa-solid fa-handshake-angle me-1"></i><?= gettext('Volunteer') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="nav-item-properties" href="#properties" data-bs-toggle="tab">
-                            <i class="fa-solid fa-tags me-1"></i><?= gettext('Properties') ?>
                         </a>
                     </li>
                     <!-- Plugin tabs will be dynamically added here by JavaScript -->
@@ -573,401 +706,143 @@ $bOkToEdit = (
             </div>
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="active tab-pane" id="family">
-                        <?php if ($person->getFamId() != '' && $person->getFamily() != null) { ?>
-                            <table class="table user-list table-hover">
-                                <thead>
-                                    <tr>
-                                        <th><span><?= gettext('Family Members') ?></span></th>
-                                        <th class="text-center"><span><?= gettext('Role') ?></span></th>
-                                        <th><span><?= gettext('Birthday') ?></span></th>
-                                        <th><span><?= gettext('Email') ?></span></th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
-                                        $tmpPersonId = $familyMember->getId(); ?>
-                                        <tr>
-                                            <td>
-
-                                                <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm">
-                                                <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>" class="user-link"><?= $familyMember->getFullName() ?> </a>
-
-                                            </td>
-                                            <td class="text-center">
-                                                <?= $familyMember->getFamilyRoleName() ?>
-                                            </td>
-                                            <td>
-                                                <?= $familyMember->getFormattedBirthDate(); ?>
-                                            </td>
-                                            <td>
-                                                <?php $tmpEmail = $familyMember->getEmail();
-                                                if ($tmpEmail != '') { ?>
-                                                    <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
-                                                <?php } ?>
-                                            </td>
-                                            <td class="text-end">
-                                                <div class="btn-group" role="group">
-                                                    <button class="AddToCart btn btn-sm btn-success" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>">
-                                                        <i class="fa-solid fa-cart-plus"></i>
-                                                    </button>
-                                                    <?php if ($bOkToEdit) {
-                                                    ?>
-                                                        <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
-                                                            <i class="fa-solid fa-pen"></i>
-                                                        </a>
-                                                        <a class="delete-person btn btn-sm btn-danger" data-person_name="<?= $familyMember->getFullName() ?>" data-person_id="<?= $familyMember->getId() ?>" data-view="family" title="<?= gettext('Delete') ?>">
-                                                            <i class="fa-solid fa-trash-can"></i>
-                                                        </a>
-                                                    <?php
-                                                    } ?>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php
-                                    } ?>
-                                </tbody>
-                            </table>
-                        <?php
-                        } ?>
-                    </div>
 
                     <div class="tab-pane" id="timeline">
-                        <ul class="timeline timeline-inverse">
-                            <!-- timeline time label -->
-                            <div class="time-label">
-                                <span class="bg-green">
-                                    <?php $now = new DateTime('');
-                                    echo $now->format('Y') ?>
-                                </span>
+                        <?php
+                        $personTimeline = $timelineService->getForPerson($iPersonID);
+                        if (empty($personTimeline)) { ?>
+                            <div class="alert alert-info mt-3">
+                                <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
+                                <span><?= gettext('No timeline events yet.') ?></span>
                             </div>
-                            <!-- /.timeline-label -->
-
-                            <!-- timeline item -->
-                            <?php foreach ($timelineService->getForPerson($iPersonID) as $item) {
-                            ?>
-                                <div>
-                                    <!-- timeline icon -->
-                                    <i class="fa <?= $item['style'] ?>"></i>
-
-                                    <div class="timeline-item">
-                                        <span class="time">
-                                            <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) {
-                                            ?>
-                                                <?php if (isset($item["editLink"])) {
-                                                ?>
-                                                    <a href="<?= $item["editLink"] ?>"><button type="button" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen"></i></button></a>
-                                                <?php
-                                                }
-                                                if (isset($item["deleteLink"])) {
-                                                ?>
-                                                    <a href="<?= $item["deleteLink"] ?>"><button type="button" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button></a>
-                                                <?php
-                                                } ?>
-                                                &nbsp;
-                                            <?php
-                                            } ?>
-                                            <i class="fa-solid fa-clock"></i> <?= $item['datetime'] ?></span>
-
-                                        <?php if ($item['slim']) {
-                                        ?>
-                                            <h4 class="timeline-header">
-                                                <?= $item['text'] ?> <?= gettext($item['header']) ?>
-                                            </h4>
-                                        <?php
-                                        } else {
-                                        ?>
-                                            <h3 class="timeline-header">
-                                                <?php if (in_array('headerlink', $item)) {
-                                                ?>
-                                                    <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
-                                                <?php
-                                                } else {
-                                                ?>
-                                                    <?= $item['header'] ?>
-                                                <?php
-                                                } ?>
-                                            </h3>
-
-                                            <div class="timeline-body">
-                                                <pre class="pre-compact"><?= $item['text'] ?></pre>
+                        <?php } else {
+                            $currentYear = ''; ?>
+                            <div class="timeline mt-3">
+                                <?php foreach ($personTimeline as $item) {
+                                    if ($currentYear !== $item['year']) {
+                                        $currentYear = $item['year']; ?>
+                                        <div class="timeline-event">
+                                            <div class="timeline-event-icon bg-secondary-lt">
+                                                <i class="fa-solid fa-calendar-days"></i>
                                             </div>
-
-                                        <?php
-                                        } ?>
-                                    </div>
-                                </div>
-                            <?php
-                            } ?>
-                            <!-- END timeline item -->
-                        </ul>
-                    </div>
-
-                    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                        <div class="tab-pane" id="notes">
-                            <div class="card">
-                                <div class="card-body">
-                                    <?php
-                                    $personNotes = $timelineService->getNotesForPerson($iPersonID);
-                                    if (empty($personNotes)) {
-                                    ?>
-                                        <div class="alert alert-info">
-                                            <i class="fa-solid fa-circle-info fa-fw fa-lg"></i>
-                                            <span><?= gettext('No notes have been added for this person.') ?></span>
+                                            <div class="timeline-event-card">
+                                                <span class="fw-bold text-secondary"><?= $currentYear ?></span>
+                                            </div>
                                         </div>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <table class="table table-hover table-striped" id="notes-table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="td-shrink"><?= gettext('Date') ?></th>
-                                                    <th><?= gettext('Note') ?></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($personNotes as $note) { ?>
-                                                    <tr>
-                                                        <td class="td-shrink align-top">
-                                                            <div class="text-center">
-                                                                <i class="fa-solid fa-calendar"></i><br>
-                                                                <?= date('Y-m-d', strtotime($note['datetime'])) ?><br>
-                                                                <small class="text-muted"><?= date('h:i A', strtotime($note['datetime'])) ?></small>
-                                                                <div class="mt-2">
-                                                                    <?php if (isset($note['editLink']) && $note['editLink']) { ?>
-                                                                        <a href="<?= $note['editLink'] ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit') ?>">
-                                                                            <i class="fa-solid fa-pen"></i>
-                                                                        </a>
-                                                                    <?php }
-                                                                    if (isset($note['deleteLink']) && $note['deleteLink']) { ?>
-                                                                        <a href="<?= $note['deleteLink'] ?>" class="btn btn-sm btn-danger" title="<?= gettext('Delete') ?>">
-                                                                            <i class="fa-solid fa-trash"></i>
-                                                                        </a>
-                                                                    <?php } ?>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        <td class="align-top">
-                                                            <div class="mb-2">
-                                                                <?= $note['text'] ?>
-                                                            </div>
-                                                            <small class="text-muted"><i class="fa-solid fa-user"></i> <?= $note['header'] ?></small>
-                                                        </td>
-                                                    </tr>
-                                                <?php } ?>
-                                            </tbody>
-                                        </table>
-                                    <?php
-                                    } ?>
-                                </div>
-                                <!-- /.main-box-body -->
-                            </div>
-                            <!-- /.main-box -->
-                        </div>
-                    <?php } ?>
-
-                    <div class="tab-pane" id="groups">
-                        <div class="card">
-                            <div class="card-body">
-                                <?php
-                                //Was anything returned?
-                                if (mysqli_num_rows($rsAssignedGroups) === 0) {
-                                ?>
-                                    <br>
-                                    <div class="alert alert-warning">
-                                        <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No group assignments.') ?></span>
-                                    </div>
-                                    <?php
-                                } else {
-                                    echo '<div class="row">';
-                                    // Loop through the rows
-                                    while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
-                                        extract($aRow); ?>
-                                        <div class="col-md-4">
-                                            <p><br /></p>
-                                            <!-- Info box -->
-                                            <div class="card">
-                                                <div class="card-header d-flex align-items-center">
-                                                    <h3 class="card-title"><a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><?= $grp_Name ?></a></h3>
-
-                                                    <div class="card-tools ms-auto">
-                                                        <div class="label bg-gray"><?= InputUtils::escapeHTML(gettext($roleName)) ?></div>
+                                    <?php } ?>
+                                    <div class="timeline-event">
+                                        <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
+                                            <i class="fa-solid <?= $item['style'] ?>"></i>
+                                        </div>
+                                        <div class="timeline-event-card card">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex justify-content-between align-items-start mb-1">
+                                                    <div>
+                                                        <?php if ($item['slim']) { ?>
+                                                            <span class="text-secondary"><?= $item['text'] ?> <?= gettext($item['header']) ?></span>
+                                                        <?php } else { ?>
+                                                            <strong>
+                                                                <?php if (in_array('headerlink', $item)) { ?>
+                                                                    <a href="<?= $item['headerlink'] ?>"><?= $item['header'] ?></a>
+                                                                <?php } else { ?>
+                                                                    <?= $item['header'] ?>
+                                                                <?php } ?>
+                                                            </strong>
+                                                        <?php } ?>
+                                                    </div>
+                                                    <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
+                                                        <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
+                                                            <?php if (isset($item["editLink"])) { ?>
+                                                                <a href="<?= $item["editLink"] ?>" class="btn btn-sm btn-ghost-primary" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></a>
+                                                            <?php }
+                                                            if (isset($item["deleteLink"])) { ?>
+                                                                <a href="<?= $item["deleteLink"] ?>" class="btn btn-sm btn-ghost-danger" title="<?= gettext('Delete') ?>"><i class="fa-solid fa-trash"></i></a>
+                                                            <?php } ?>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
-                                                <?php
-                                                // If this group has associated special properties, display those with values and prop_PersonDisplay flag set.
-                                                if ($grp_hasSpecialProps) {
-                                                    // Get the special properties for this group
-                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID ." AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
-                                                    $rsPropList = RunQuery($sSQL);
+                                                <?php if (!$item['slim'] && !empty($item['text'])) { ?>
+                                                    <div class="text-secondary mt-1" style="white-space: pre-wrap; font-size: 0.875rem;"><?= $item['text'] ?></div>
+                                                <?php } ?>
+                                                <small class="text-muted"><i class="fa-solid fa-clock me-1"></i><?= $item['datetime'] ?></small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+                    </div>
 
+                    <div class="tab-pane" id="groups">
+                        <?php
+                        if (mysqli_num_rows($rsAssignedGroups) === 0) {
+                        ?>
+                            <div class="text-center text-muted py-4">
+                                <i class="fa-solid fa-users fa-2x mb-2 d-block opacity-50"></i>
+                                <p class="mb-1"><?= gettext('No group assignments yet.') ?></p>
+                                <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
+                                    <a href="#" id="addGroupFromEmpty" class="btn btn-sm btn-outline-primary mt-2"><i class="fa-solid fa-plus me-1"></i><?= gettext('Assign to a Group') ?></a>
+                                <?php } ?>
+                            </div>
+                        <?php
+                        } else { ?>
+                            <div class="list-group list-group-flush">
+                                <?php while ($aRow = mysqli_fetch_array($rsAssignedGroups)) {
+                                    extract($aRow); ?>
+                                    <div class="list-group-item">
+                                        <div class="d-flex align-items-center">
+                                            <div class="me-auto">
+                                                <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
+                                                <span class="badge bg-secondary-lt text-secondary ms-2"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
+                                                <?php
+                                                if ($grp_hasSpecialProps) {
+                                                    $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
+                                                    $rsPropList = RunQuery($sSQL);
                                                     $sSQL = 'SELECT * FROM groupprop_' . $grp_ID . ' WHERE per_ID = ' . $iPersonID;
                                                     $rsPersonProps = RunQuery($sSQL);
                                                     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
-
-                                                    echo '<div class="card-body">';
-
                                                     while ($aProps = mysqli_fetch_array($rsPropList)) {
                                                         extract($aProps);
                                                         $currentData = trim($aPersonProps[$prop_Field]);
                                                         if (strlen($currentData) > 0) {
-
                                                             if ($type_ID == 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '<br/>';
+                                                            echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '</small>';
                                                         }
                                                     }
-
-                                                    echo '</div>';
                                                 } ?>
-                                                <div class="card-footer">
-                                                    <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) {
-                                                    ?>
-                                                        <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="btn btn-secondary" role="button"><i class="fa-solid fa-list"></i></a>
-                                                        <div class="btn-group">
-                                                            <button type="button" class="btn btn-secondary"><?= gettext('Action') ?></button>
-                                                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
-                                                                <span class="caret"></span>
-                                                                <span class="visually-hidden">Toggle Dropdown</span>
-                                                            </button>
-                                                            <div class="dropdown-menu">
-                                                                <a class="changeRole dropdown-item" data-groupid="<?= $grp_ID ?>"><?= gettext('Change Role') ?></a>
-                                                                <?php if ($grp_hasSpecialProps) {
-                                                                ?>
-                                                                    <a href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>" class="dropdown-item"><?= gettext('Update Properties') ?></a>
-                                                                <?php
-                                                                } ?>
-                                                            </div>
-                                                        </div>
-                                                        <div class="btn-group">
-                                                            <button data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>" type="button" class="btn btn-danger groupRemove"><i class="fa-solid fa-trash-can"></i></button>
-                                                        </div>
-                                                    <?php
-                                                    } ?>
+                                            </div>
+                                            <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
+                                                    <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
+                                                    <?php if ($grp_hasSpecialProps) { ?>
+                                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
+                                                    <?php } ?>
+                                                    <div class="dropdown-divider"></div>
+                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
                                                 </div>
                                             </div>
-                                            <!-- /.box -->
-                                        </div>
-                                <?php
-                                        // NOTE: this method is crude.  Need to replace this with use of an array.
-                                        $sAssignedGroups .= $grp_ID . ',';
-                                    }
-                                    echo '</div>';
-                                }
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="properties">
-                        <?php
-                        $sAssignedProperties = ','; ?>
-                        <?php if (mysqli_num_rows($rsAssignedProperties) === 0) : ?>
-                            <div class="alert alert-warning">
-                                <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No property assignments.') ?></span>
-                            </div>
-                        <?php else : ?>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th><?= gettext('Type') ?></th>
-                                        <th><?= gettext('Property') ?></th>
-                                        <th><?= gettext('Value') ?></th>
-                                        <?php if ($bOkToEdit) : ?>
-                                            <th class="text-end no-export"><?= gettext('Actions') ?></th>
-                                        <?php endif; ?>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    while ($aRow = mysqli_fetch_array($rsAssignedProperties)) {
-                                        $pro_Prompt = '';
-                                        $r2p_Value = '';
-                                        extract($aRow); ?>
-                                        <tr>
-                                            <td><span class="badge bg-info"><?= InputUtils::escapeHTML($prt_Name) ?></span></td>
-                                            <td><strong><?= InputUtils::escapeHTML($pro_Name) ?></strong></td>
-                                            <td><?= InputUtils::escapeHTML($r2p_Value) ?></td>
-                                            <?php if ($bOkToEdit) { ?>
-                                                <td class="text-end">
-                                                    <button class="btn btn-sm btn-danger remove-property-btn" data-property_id="<?= (int)$pro_ID ?>" title="<?= gettext('Remove Property') ?>">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </td>
                                             <?php } ?>
-                                        </tr>
-                                    <?php
-                                        $sAssignedProperties .= $pro_ID . ',';
-                                    } ?>
-                                </tbody>
-                            </table>
-                        <?php endif; ?>
-
-                        <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
-                            <div class="card mt-3">
-                                <div class="card-header d-flex align-items-center">
-                                    <h5 class="card-title mb-0">
-                                        <i class="fa-solid fa-circle-plus me-2"></i><?= gettext('Assign a New Property') ?>
-                                    </h5>
-                                </div>
-                                <div class="card-body">
-                                    <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label for="input-person-properties"><?= gettext('Select Property') ?></label>
-                                                <select name="PropertyId" id="input-person-properties" class="form-control" data-placeholder="<?= gettext('Choose a property...') ?>">
-                                                    <option value=""></option>
-                                                            <?php
-                                                            $assignedPropertiesArray = [];
-                                                            foreach ($assignedProperties as $assignedProperty) {
-                                                                $assignedPropertiesArray[] = $assignedProperty->getPropertyId();
-                                                            }
-                                                            while ($aRow = mysqli_fetch_array($rsProperties)) {
-                                                                extract($aRow);
-                                                                $attributes ="value=\"{$pro_ID}\"";
-                                                                if (!empty($pro_Prompt)) {
-                                                                    $pro_Value = '';
-                                                                    foreach ($assignedProperties as $assignedProperty) {
-                                                                        if ($assignedProperty->getPropertyId() == $pro_ID) {
-                                                                            $pro_Value = $assignedProperty->getPropertyValue();
-                                                                        }
-                                                                    }
-                                                                    // GHSA-8r36-fvxj-26qv: Escape HTML attributes to prevent XSS
-                                                                    $attributes .="data-pro_Prompt=\"" . InputUtils::escapeAttribute($pro_Prompt) ."\" data-pro_Value=\"" . InputUtils::escapeAttribute($pro_Value) ."\"";
-                                                                }
-
-                                                                // GHSA-8r36-fvxj-26qv: Escape property name for defense in depth
-                                                                $optionText = InputUtils::escapeHTML($pro_Name);
-                                                                if (in_array($pro_ID, $assignedPropertiesArray)) {
-                                                                    $optionText = InputUtils::escapeHTML($pro_Name) . ' (' . gettext('assigned') . ')';
-                                                                }
-                                                                echo"<option {$attributes}>{$optionText}</option>";
-                                                            } ?>
-                                                </select>
-                                            </div>
-                                            <div id="prompt-box" class="col-md-6">
-                                            </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <button id="assign-property-btn" type="button" class="btn btn-primary">
-                                                    <i class="fa-solid fa-check me-1"></i><?= gettext('Assign Property') ?>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                <?php
+                                    $sAssignedGroups .= $grp_ID . ',';
+                                } ?>
                             </div>
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                     <div class="tab-pane" id="volunteer">
                         <?php
                         $sAssignedVolunteerOpps = ',';
                         if (mysqli_num_rows($rsAssignedVolunteerOpps) === 0) {
                         ?>
-                            <div class="alert alert-warning">
-                                <i class="fa-solid fa-circle-question fa-fw fa-lg"></i> <span><?= gettext('No volunteer opportunity assignments.') ?></span>
+                            <div class="text-center text-muted py-4">
+                                <i class="fa-solid fa-handshake-angle fa-2x mb-2 d-block opacity-50"></i>
+                                <p class="mb-1"><?= gettext('No volunteer opportunity assignments yet.') ?></p>
                             </div>
                         <?php
                         } else {
