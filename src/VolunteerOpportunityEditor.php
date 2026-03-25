@@ -423,7 +423,7 @@ if (isset($_POST['SaveChanges'])) {
                         for ($row = 1; $row <= $numRows; $row++) {
                             if (array_key_exists($row, $aNameFields)) {
                                 echo '<tr>';
-                                echo '<td><span class="badge bg-secondary">' . $row . '</span></td>';
+                                echo '<td><span class="badge bg-light text-dark">" . $row . "</span></td>';
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'name" value="' . InputUtils::escapeAttribute($aNameFields[$row]) . '" class="form-control form-control-sm" maxlength="30">';
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {

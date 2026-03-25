@@ -446,7 +446,7 @@ if ($embedded) {
                 ?>
                         <tr>
                             <td>
-                                <span class="badge bg-secondary">
+                                <span class="badge bg-light text-dark">
                                     <?php
                                     if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
                                         echo '<span class="badge bg-info">' . gettext('Default') . '</span> ';
