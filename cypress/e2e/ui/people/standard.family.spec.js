@@ -6,7 +6,7 @@ describe("Standard Family", () => {
     it("View invalid Family", () => {
         cy.visit("v2/family/9999");
         cy.location("pathname").should("include", "family/not-found");
-        cy.contains("Oops! FAMILY 9999 Not Found");
+        cy.contains("Family not found");
     });
     
     it("Entering a new Family", () => {
@@ -72,7 +72,8 @@ describe("Standard Family", () => {
         // Click FAB save button
         cy.get(".fab-save").click();
 
-        cy.should('not.have.text', 'mike@example.com');
-        cy.should('not.have.text', `${weddingMonth}/${weddingDay}/${weddingYear}`);
+        cy.location("pathname").should("include", "/v2/family/");
+        cy.get('body').should('not.contain', 'mike@example.com');
+        cy.get('body').should('not.contain', `${weddingMonth}/${weddingDay}/${weddingYear}`);
     });
 });
