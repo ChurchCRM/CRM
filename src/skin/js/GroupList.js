@@ -103,9 +103,9 @@ function initializeGroupList() {
           const inCart = $.inArray(full.Id, window.CRM.groupsInCart) > -1;
           const hasMembers = full.memberCount > 0;
           const cartBtn = hasMembers
-            ? (inCart
+            ? inCart
               ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-off me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
-              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`)
+              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
             : "";
           const escapedName = window.CRM.escapeHtml(full.Name || "");
           return (

@@ -320,19 +320,49 @@ function initDataTable() {
             '<i class="ti ti-dots-vertical"></i>' +
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
-            '<a class="dropdown-item" href="' + window.CRM.root + '/PersonView.php?PersonID=' + full.PersonId + '">' +
-            '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
-            '<a class="dropdown-item" href="' + window.CRM.root + '/PersonEditor.php?PersonID=' + full.PersonId + '">' +
-            '<i class="ti ti-pencil me-2"></i>' + i18next.t("Edit") + "</a>" +
-            '<button class="dropdown-item changeMembership" data-personid="' + full.PersonId + '">' +
-            '<i class="ti ti-users me-2"></i>' + i18next.t("Change Role") + "</button>" +
+            '<a class="dropdown-item" href="' +
+            window.CRM.root +
+            "/PersonView.php?PersonID=" +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-eye me-2"></i>' +
+            i18next.t("View") +
+            "</a>" +
+            '<a class="dropdown-item" href="' +
+            window.CRM.root +
+            "/PersonEditor.php?PersonID=" +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-pencil me-2"></i>' +
+            i18next.t("Edit") +
+            "</a>" +
+            '<button class="dropdown-item changeMembership" data-personid="' +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-users me-2"></i>' +
+            i18next.t("Change Role") +
+            "</button>" +
             '<div class="dropdown-divider"></div>' +
-            '<button class="dropdown-item AddToCart" type="button" data-cart-id="' + full.PersonId + '" data-cart-type="person" ' +
-            'data-label-add="' + i18next.t("Add to Cart") + '" data-label-remove="' + i18next.t("Remove from Cart") + '">' +
-            '<i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' + i18next.t("Add to Cart") + "</span></button>" +
+            '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
+            full.PersonId +
+            '" data-cart-type="person" ' +
+            'data-label-add="' +
+            i18next.t("Add to Cart") +
+            '" data-label-remove="' +
+            i18next.t("Remove from Cart") +
+            '">' +
+            '<i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' +
+            i18next.t("Add to Cart") +
+            "</span></button>" +
             '<div class="dropdown-divider"></div>' +
-            '<button class="dropdown-item text-danger remove-member-btn" type="button" data-personid="' + full.PersonId + '" data-name="' + $("<div>").text(full.Person.FullName).html() + '">' +
-            '<i class="ti ti-user-minus me-2"></i>' + i18next.t("Remove from Group") + "</button>" +
+            '<button class="dropdown-item text-danger remove-member-btn" type="button" data-personid="' +
+            full.PersonId +
+            '" data-name="' +
+            $("<div>").text(full.Person.FullName).html() +
+            '">' +
+            '<i class="ti ti-user-minus me-2"></i>' +
+            i18next.t("Remove from Group") +
+            "</button>" +
             "</div></div>"
           );
         },
@@ -380,7 +410,8 @@ function initDataTable() {
     var personId = $(this).data("personid");
     var personName = $(this).data("name");
     bootbox.confirm({
-      message: i18next.t("Are you sure you want to remove") + " <b>" + personName + "</b> " + i18next.t("from this group?"),
+      message:
+        i18next.t("Are you sure you want to remove") + " <b>" + personName + "</b> " + i18next.t("from this group?"),
       buttons: {
         confirm: { label: i18next.t("Remove"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel") },
