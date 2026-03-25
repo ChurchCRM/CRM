@@ -297,14 +297,14 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - `cypress/configs/new-system.config.ts` — setup wizard / fresh install tests
 - `cypress/configs/base.config.ts` + `_shared.ts` — shared base configuration
 
-**CRITICAL: `npx cypress run` without `--config-file` will fail** — Cypress won't find baseUrl or test credentials. Always pass the config file.
+**NOTE:** The root `cypress.config.ts` is auto-detected by Cypress, so `--config-file` is only required when using a non-default config (e.g., `cypress/configs/new-system.config.ts`). For standard runs, `npx cypress run --spec "..."` works without `--config-file`.
 
 **CRITICAL: Always install Cypress via `npm install`** <!-- learned: 2026-03-07 -->
 - Never use `npx cypress install` — it can produce a corrupt binary with wrong permissions.
 - If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
 - The config points at a Docker container. Start the stack (`npm run docker:test`) before running tests.
 
-### Running Tests (ALWAYS use --config-file) <!-- learned: 2026-03-07 -->
+### Running Tests <!-- learned: 2026-03-07 -->
 
 ```bash
 # Full suite headless (standard)

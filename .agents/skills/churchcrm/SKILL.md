@@ -84,6 +84,69 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Cypress Testing](./cypress-testing.md) | E2E tests, CI/CD testing, API test patterns |
 | [Testing Migration & E2E](./testing-migration-e2e.md) | Testing strategy for migrations |
 
+### Running Cypress Locally
+
+Follow these steps to run Cypress tests locally and generate machine-readable reports useful for CI parity:
+
+- Install dependencies:
+
+  ```bash
+  npm ci
+  ```
+
+- Run a single spec (headless, Electron):
+
+  ```bash
+  npx cypress run --spec "cypress/e2e/path/to/specfile.spec.js" --browser electron
+  ```
+
+- Run the full test suite with JUnit output (for CI-like reports):
+
+  ```bash
+  npx cypress run --reporter junit --reporter-options "mochaFile=cypress/reports/junit-[name].xml"
+  ```
+
+- Run with a specific base URL (useful for docker/local server):
+
+  ```bash
+  CYPRESS_BASE_URL=http://127.0.0.1:8080/churchcrm/ npx cypress run --config-file cypress/configs/docker.config.ts
+  ```
+
+- Run a spec in headed mode for interactive debugging:
+
+  ```bash
+  npx cypress open --config-file cypress/configs/docker.config.ts
+  ```
+
+- Generate an HTML report (mochawesome) locally (optional):
+
+  1. Install reporters:
+
+     ```bash
+     npm install --save-dev mochawesome mochawesome-merge mochawesome-report-generator
+     ```
+
+  2. Run and write JSON output:
+
+     ```bash
+     npx cypress run --reporter mochawesome --reporter-options "reportDir=cypress/reports,overwrite=false,html=false,json=true"
+     ```
+
+  3. Merge and generate HTML:
+
+     ```bash
+     npx mochawesome-merge cypress/reports/*.json > cypress/reports/merged.json
+     npx mochawesome-report-generator cypress/reports/merged.json -o cypress/reports/html
+     ```
+
+- Tips & diagnostics:
+  - Use `--headed --browser chrome` to visually reproduce failures.
+  - Use `--config video=true,screenshotOnRunFailure=true` to capture artifacts.
+  - When testing admin routes, ensure the local app is running and reachable (see `docker/` compose profiles used in CI).
+  - Use `--reporter json` to produce structured output you can parse for automated triage.
+  - For flaky selectors after UI changes, prefer stable selectors: `id`, `data-cy`, `input[name=]`, link href/text, and avoid visual utility classes.
+
+
 **Before committing ANY test changes:** See `CLAUDE.md` → Test Review & Commit Workflow for mandatory checklist
 
 ## MVC Migration
