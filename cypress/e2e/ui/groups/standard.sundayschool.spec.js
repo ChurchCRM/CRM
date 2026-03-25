@@ -16,6 +16,17 @@ describe("Standard Sunday School", () => {
         cy.contains("Students not in a Sunday School Class");
     });
 
+    it("Sunday School classes table has action menus", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        cy.get("#sundayschoolClasses tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
+        cy.get("#sundayschoolClasses tbody tr:first .btn-ghost-secondary").should("exist").click();
+        cy.get(".dropdown-menu.show").within(() => {
+            cy.contains("View").should("exist");
+            cy.contains("Edit").should("exist");
+            cy.contains("Delete").should("exist");
+        });
+    });
+
     it("Students not in a class table has action menus", () => {
         cy.visit("groups/sundayschool/dashboard");
         cy.get("#sundayschoolMissing thead th").should("contain", "Actions");
@@ -29,6 +40,19 @@ describe("Standard Sunday School", () => {
                     cy.contains("Delete").should("exist");
                 });
             }
+        });
+    });
+
+    it("SundaySchoolClassView students table has action menus", () => {
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
+        cy.get("#sundayschool tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
+        cy.get("#sundayschool tbody tr:first .btn-ghost-secondary").should("exist").click();
+        cy.get(".dropdown-menu.show").within(() => {
+            cy.contains("View").should("exist");
+            cy.contains("Edit").should("exist");
+            cy.get(".AddToCart, .RemoveFromCart").should("exist");
+            cy.contains("Remove from Class").should("exist");
+            cy.contains("Delete").should("exist");
         });
     });
 

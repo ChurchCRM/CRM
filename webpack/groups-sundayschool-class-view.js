@@ -92,4 +92,35 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   birthDayFilter.querySelector("i.fa-times")?.addEventListener("click", hideBirthdayFilter);
+
+  // Remove student from class
+  $(document).on("click", ".remove-from-class", function () {
+    const $btn = $(this);
+    const groupId = $btn.data("group-id");
+    const personId = $btn.data("person-id");
+    const personName = $btn.data("person-name");
+
+    bootbox.confirm({
+      message: i18next.t("Remove") + " <strong>" + personName + "</strong> " + i18next.t("from this class?"),
+      buttons: {
+        confirm: { label: i18next.t("Remove"), className: "btn-warning" },
+        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+      },
+      callback: (result) => {
+        if (!result) return;
+
+        $.ajax({
+          method: "DELETE",
+          url: `${window.CRM.root}/api/groups/${groupId}/removeperson/${personId}`,
+        })
+          .done(() => {
+            window.CRM.notify(i18next.t("Person removed from class."), { type: "success", delay: 3000 });
+            dataTable.row($btn.closest("tr")).remove().draw();
+          })
+          .fail(() => {
+            window.CRM.notify(i18next.t("Failed to remove from class. Please try again."), { type: "danger", delay: 5000 });
+          });
+      },
+    });
+  });
 });

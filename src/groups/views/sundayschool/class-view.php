@@ -220,7 +220,7 @@ $teacherCount = count($rsTeachers);
             <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
             <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
         </div>
-        <div class="table-responsive">
+        <div style="overflow: visible;">
             <table id="sundayschool" class="table table-striped table-hover data-table w-100">
                 <thead>
                     <tr>
@@ -230,6 +230,7 @@ $teacherCount = count($rsTeachers);
                         <th><?= gettext('Email') ?></th>
                         <th><?= gettext('Father') ?></th>
                         <th><?= gettext('Mother') ?></th>
+                        <th class="w-1 no-export text-center"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -285,11 +286,57 @@ $teacherCount = count($rsTeachers);
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
-                                <button class="btn btn-xs btn-outline-primary float-end ms-2"
-                                        data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>"
-                                        title="<?= gettext('View Full Details') ?>">
-                                    <i class="fa-solid fa-circle-info"></i>
-                                </button>
+                            </td>
+                            <?php
+                                $inCart = isset($_SESSION['aPeopleCart']) && in_array($child['kidId'], $_SESSION['aPeopleCart'], false);
+                            ?>
+                            <td class="w-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                            <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>">
+                                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        </a>
+                                        <?php if ($child['fam_id']) { ?>
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $child['fam_id'] ?>">
+                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        </a>
+                                        <?php } ?>
+                                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>">
+                                            <i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                            data-cart-id="<?= $child['kidId'] ?>"
+                                            data-cart-type="person"
+                                            data-label-add="<?= gettext('Add to Cart') ?>"
+                                            data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                            <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                            <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item text-warning remove-from-class"
+                                            data-group-id="<?= $iGroupId ?>"
+                                            data-person-id="<?= $child['kidId'] ?>"
+                                            data-person-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>">
+                                            <i class="ti ti-user-minus me-2"></i><?= gettext('Remove from Class') ?>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item text-danger delete-person"
+                                            data-person_id="<?= $child['kidId'] ?>"
+                                            data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>">
+                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php } ?>

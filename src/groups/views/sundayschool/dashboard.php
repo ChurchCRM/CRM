@@ -144,28 +144,70 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>
     </div>
-    <div class="card-body">
+    <div class="card-body" style="overflow: visible;">
         <table id="sundayschoolClasses" class="table table-striped table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('Class') ?></th>
                     <th><?= gettext('Teachers') ?></th>
                     <th><?= gettext('Students') ?></th>
+                    <th class="w-1 no-export text-center"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($classStats as $class) { ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>" class="me-2" title="<?= gettext('Edit') ?>">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
                             <a href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
                                 <?= htmlspecialchars($class['name']) ?>
                             </a>
                         </td>
                         <td><?= $class['teachers'] ?></td>
                         <td><?= $class['kids'] ?></td>
+                        <td class="w-1">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
+                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    </a>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>">
+                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <?php if ($class['teachers'] > 0) { ?>
+                                    <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Teacher">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Teachers to Cart') ?>
+                                    </button>
+                                    <?php } ?>
+                                    <?php if ($class['kids'] > 0) { ?>
+                                    <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Student">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Students to Cart') ?>
+                                    </button>
+                                    <?php } ?>
+                                    <?php if ($class['teachers'] > 0 || $class['kids'] > 0) { ?>
+                                    <button type="button"
+                                        class="dropdown-item AddToCart"
+                                        data-cart-id="<?= $class['id'] ?>"
+                                        data-cart-type="group"
+                                        data-label-add="<?= gettext('Add all to Cart') ?>"
+                                        data-label-remove="<?= gettext('Remove all from Cart') ?>">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i>
+                                        <span class="cart-label"><?= gettext('Add all to Cart') ?></span>
+                                    </button>
+                                    <?php } ?>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item text-danger delete-ss-class"
+                                        data-group-id="<?= $class['id'] ?>"
+                                        data-group-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($class['name']) ?>">
+                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
