@@ -267,9 +267,8 @@ class Menu
     private static function getFundraisersMenu(): MenuItem
     {
         $fundraiserMenu = new MenuItem(gettext('Fundraiser'), '', SystemConfig::getBooleanValue('bEnabledFundraiser'), 'fa-money-bill-1');
+        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'FindFundRaiser.php', true, 'fa-list'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Create New Fundraiser'), 'FundRaiserEditor.php?FundRaiserID=-1', true, 'fa-circle-plus'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('View All Fundraisers'), 'FindFundRaiser.php', true, 'fa-list'));
-        $fundraiserMenu->addSubMenu(new MenuItem(gettext('Edit Fundraiser'), 'FundRaiserEditor.php', true, 'fa-pen-to-square'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('Add Donors to Buyer List'), 'AddDonors.php', true, 'fa-user-plus'));
         $fundraiserMenu->addSubMenu(new MenuItem(gettext('View Buyers'), 'PaddleNumList.php', true, 'fa-users'));
         $iCurrentFundraiser = 0;
