@@ -33,7 +33,7 @@ describe("Admin User Password", () => {
         cy.get('#UserName').invoke('val').should('not.be.empty');
         
         // Select a style
-        cy.get('.TextColumnWithBottomBorder > select').select('skin-yellow');
+        cy.get('#Style').select('dark');
         
         // Click Save button to submit the form
         cy.get('#SaveButton').click();
