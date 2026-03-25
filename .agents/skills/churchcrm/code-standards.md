@@ -238,6 +238,29 @@ msgstr ""
 
 The `msgid` key must exactly match the string passed to gettext() in PHP code.
 
+## Unified Page Header Standard (MANDATORY) <!-- learned: 2026-03-25 -->
+
+**Every page must use the unified page header** rendered by `Header.php`. Never create duplicate `<h2>`, `.page-header`, or `.page-title` elements inside page content.
+
+### Required for all MVC pages
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `sPageTitle` | **Yes** | Browser tab title + `<h2>` heading |
+| `sPageSubtitle` | **Yes** (MVC) | Muted description below title |
+| `aBreadcrumbs` | **Yes** | Via `PageHeader::breadcrumbs()` — 3-4 levels max |
+| `sPageHeaderButtons` | No | Admin action buttons via `PageHeader::buttons()` |
+| `sSettingsCollapseId` | No | Inline settings panel collapse container |
+
+### Key rules
+
+- Breadcrumb URLs are **relative** — `getRootPath()` is prepended automatically
+- Admin buttons go in page header; **Quick Actions cards** go in page body (for everyday user actions)
+- Settings toggles use Bootstrap collapse: `['collapse' => '#settingsId']`
+- Main dashboard (`/v2/dashboard`) has **no breadcrumbs** — it IS Home
+
+See `tabler-components.md` → "Unified Page Header" for full examples.
+
 ## File Operations (Git)
 
 ### Moving/Renaming Files
