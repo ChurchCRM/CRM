@@ -123,8 +123,8 @@ describe("Session Password Reset", () => {
             cy.visit("/session/forgot-password/set/invalid-token-12345");
 
             cy.get(".alert-buttons").should("be.visible");
-            cy.get(".alert-buttons .btn-primary").should("contain", "Request Password Reset");
-            cy.get(".alert-buttons .btn-secondary").should("contain", "Back to Login");
+            cy.get(".alert-buttons").contains("Request Password Reset");
+            cy.get(".alert-buttons").contains("Back to Login");
         });
 
         it("Should show error page when token does not exist", () => {
@@ -136,14 +136,14 @@ describe("Session Password Reset", () => {
         it("Should navigate to password reset form when clicking Request Password Reset", () => {
             cy.visit("/session/forgot-password/set/invalid-token");
 
-            cy.get(".alert-buttons .btn-primary").click();
+            cy.get(".alert-buttons").contains("Request Password Reset").click();
             cy.url().should("include", "/session/forgot-password/reset-request");
         });
 
         it("Should navigate back to login when clicking Back to Login button", () => {
             cy.visit("/session/forgot-password/set/bad-token-123");
 
-            cy.get(".alert-buttons .btn-secondary").click();
+            cy.get(".alert-buttons").contains("Back to Login").click();
             cy.url().should("include", "/session/begin");
         });
     });
