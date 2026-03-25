@@ -7,7 +7,7 @@ describe('Event Editor', () => {
         // Create event from first event type
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Verify event editor loads
@@ -18,7 +18,7 @@ describe('Event Editor', () => {
     it('should display attendance count fields', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Verify attendance count section
@@ -31,7 +31,7 @@ describe('Event Editor', () => {
     it('should auto-calculate real total from attendance counts', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Enter values in attendance count fields
@@ -48,7 +48,7 @@ describe('Event Editor', () => {
     it('should update real total when attendance counts change', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Get initial total
@@ -69,7 +69,7 @@ describe('Event Editor', () => {
     it('should have Real Total field under Attendance Counts label', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Verify Real Total field exists and is positioned correctly
@@ -81,7 +81,7 @@ describe('Event Editor', () => {
     it('should have Real Total field as readonly', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Verify Real Total is readonly
@@ -91,7 +91,7 @@ describe('Event Editor', () => {
     it('should use Quill editor for event description', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Verify Quill editor is initialized
@@ -102,7 +102,7 @@ describe('Event Editor', () => {
     it('should create event with attendance counts', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Fill in event details
@@ -140,7 +140,7 @@ describe('Event Editor', () => {
         cy.url().should('not.include', 'Action=NEW');
         
         // Create event from any type (verify editor works without errors)
-        cy.get('button.btn-success').first().click();
+        cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').first().click();
         
         // Verify event editor loads without errors
         cy.contains('Create a new Event').should('exist');
@@ -151,7 +151,7 @@ describe('Event Editor', () => {
         // Create an event
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         const eventTitle = 'TestEvent' + Date.now();
@@ -166,7 +166,7 @@ describe('Event Editor', () => {
     it('should validate Propel ORM data retrieval (no duplicates)', () => {
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
         
         // Check that attendance count fields are unique (no duplicates)
@@ -189,7 +189,7 @@ describe('Event Editor', () => {
         // Step 1: Create a new event first
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
 
         const originalTitle = 'OriginalEvent' + Date.now();
@@ -243,7 +243,7 @@ describe('Event Editor', () => {
         // Create an event with specific data
         cy.visit('/EventNames.php');
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button.btn-success').click();
+                cy.get('a[href*="EventEditor.php"], a[href*="EventEditor"]').click();
         });
 
         const testTitle = 'DataLoadTest' + Date.now();

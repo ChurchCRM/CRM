@@ -12,9 +12,10 @@ describe('Admin System Logs - UI Tests', () => {
 
   it('Should display quick settings button', () => {
     cy.visit('admin/system/logs');
-    
-    // Verify settings button is visible
-    cy.get('button').contains('Quick Settings').should('be.visible');
+
+    // Quick Settings were moved to the header settings panel — verify settings assets load
+    cy.get('link[href*="system-settings-panel.min.css"]').should('exist');
+    cy.get('script[src*="system-settings-panel.min.js"]').should('exist');
   });
 
   it('Should display stat cards with Log Level always present', () => {
@@ -50,11 +51,14 @@ describe('Admin System Logs - UI Tests', () => {
         cy.get('#logFilesTable thead th').eq(1).should('contain', 'Size');
         cy.get('#logFilesTable thead th').eq(2).should('contain', 'Last Modified');
         cy.get('#logFilesTable thead th').eq(3).should('contain', 'Actions');
-        
-        // Verify action buttons exist in table rows
-        cy.get('.view-log').should('exist');
-        cy.get('.delete-log').should('exist');
-        
+
+        // Verify action buttons exist in the first table row
+        cy.get('#logFilesTable tbody tr').first().within(() => {
+          cy.get('.view-log').should('exist');
+          cy.get('.download-log').should('exist');
+          cy.get('.delete-log').should('exist');
+        });
+
         // Verify delete all button exists when logs are present
         cy.get('#deleteAllLogs').should('exist');
       }
@@ -63,16 +67,57 @@ describe('Admin System Logs - UI Tests', () => {
 
   it('Should open log viewer modal when viewing a log file', () => {
     cy.visit('admin/system/logs');
-    
-    // Click the dropdown toggle button first to open the menu
-    cy.get('.btn-ghost-secondary').first().click();
-    
-    // Then click the view button for the first log file
-    cy.get('.view-log').first().click();
-    
-    // Verify modal is displayed
-    cy.get('.modal').should('be.visible');
-    cy.get('.modal-title').should('contain', 'Log File Viewer');
+    // Click the dropdown toggle in the first row to open the menu, then View
+    cy.get('#logFilesTable tbody tr').first().within(() => {
+      cy.get('button[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
+      cy.get('.view-log').first().click();
+    });
+
+    // Verify modal is displayed and has the proper title
+    cy.get('#logViewerModal').should('be.visible');
+    cy.get('#logViewerModalLabel').should('contain', 'Log File Viewer');
+  });
+
+  it('Should verify download endpoint for the first log file', () => {
+    cy.visit('admin/system/logs');
+
+    // Ensure download action exists and extract the log file name
+    cy.get('#logFilesTable tbody tr').first().within(() => {
+      cy.get('.download-log').should('exist').invoke('attr', 'data-log-name').as('logName');
+    });
+
+    // Build the expected download URL and request it directly to verify the endpoint
+    cy.get('@logName').then((logName) => {
+      cy.window().then((win) => {
+        // Build a safe absolute URL for the download endpoint. Some test envs may
+        // not have window.CRM.path initialized, so fall back to the current origin
+        // and ensure the '/admin' prefix is preserved when present.
+        const origin = win.location && win.location.origin ? win.location.origin : Cypress.config('baseUrl');
+        const crmPath = (win.CRM && win.CRM.path) ? win.CRM.path : (win.location && win.location.pathname && win.location.pathname.startsWith('/admin') ? '/admin/' : '/');
+        const relative = (crmPath.endsWith('/') ? crmPath : crmPath + '/') + 'api/system/logs/' + encodeURIComponent(logName) + '/download';
+        const url = new URL(relative, origin).toString();
+        cy.log('download url: ' + url);
+        // Allow non-200 so we can assert and fail with a clear message if server redirects
+        cy.request({ url, encoding: 'utf8', failOnStatusCode: false }).then((resp) => {
+          // Attach diagnostics to Cypress log to help debug header issues
+          cy.log('download status: ' + resp.status);
+          cy.log('download headers: ' + JSON.stringify(resp.headers));
+
+          // Expect a successful file download (200). If not, fail test with diagnostic info.
+          expect(resp.status, `download status for ${logName} (${url})`).to.equal(200);
+
+          // Response should include attachment Content-Disposition header with filename
+          const cd = resp.headers && (resp.headers['content-disposition'] || resp.headers['Content-Disposition']);
+          cy.log('cd=' + cd);
+          expect(cd, 'Content-Disposition header present').to.be.a('string');
+          expect(cd.toLowerCase(), 'Content-Disposition mentions attachment').to.include('attachment');
+          expect(cd, 'Content-Disposition mentions filename').to.match(/filename\s*=\s*"?.+"?/);
+
+          // Body should be non-empty (log file contents)
+          expect(resp.body && resp.body.length, 'download body non-empty').to.be.greaterThan(10);
+        });
+      });
+    });
   });
 
 });

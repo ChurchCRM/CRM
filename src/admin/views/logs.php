@@ -241,8 +241,47 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
             $(document).on('click', '.download-log', function(e) {
                 e.preventDefault();
                 var fileName = $(this).data('log-name');
-                var url = window.CRM.path + 'api/system/logs/' + encodeURIComponent(fileName) + '/download';
-                window.location.href = url;
+
+                // Build admin API URL robustly - always include /admin/ prefix for admin routes
+                var rootPath = (window.CRM && window.CRM.root) ? window.CRM.root : '/';
+                var url = rootPath + (rootPath.endsWith('/') ? '' : '/') + 'admin/api/system/logs/' + encodeURIComponent(fileName) + '/download';
+
+                // Use fetch with same-origin credentials to call the download API.
+                // This avoids a top-level navigation and lets us validate headers
+                // (Content-Disposition) and present a proper download to the user.
+                try {
+                    fetch(url, { credentials: 'same-origin' })
+                        .then(function(resp) {
+                            if (!resp.ok) {
+                                window.CRM.notify(i18next.t('Error downloading log file.'), { type: 'error' });
+                                return null;
+                            }
+
+                            var cd = resp.headers.get('Content-Disposition') || resp.headers.get('content-disposition');
+                            if (!cd) {
+                                // If header missing, still attempt download but warn
+                                window.CRM.notify(i18next.t('Download returned without attachment headers.'), { type: 'warning' });
+                            }
+
+                            return resp.blob();
+                        })
+                        .then(function(blob) {
+                            if (!blob) { return; }
+                            var tmpUrl = URL.createObjectURL(blob);
+                            var a = document.createElement('a');
+                            a.href = tmpUrl;
+                            a.download = fileName;
+                            document.body.appendChild(a);
+                            a.click();
+                            a.remove();
+                            setTimeout(function() { URL.revokeObjectURL(tmpUrl); }, 1000);
+                        })
+                        .catch(function() {
+                            window.CRM.notify(i18next.t('Error downloading log file.'), { type: 'error' });
+                        });
+                } catch (e) {
+                    window.CRM.notify(i18next.t('Error initiating download.'), { type: 'error' });
+                }
             });
 
             $(document).on('click', '.delete-log', function(e) {

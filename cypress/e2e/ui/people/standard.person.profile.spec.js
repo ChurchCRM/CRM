@@ -23,7 +23,8 @@ describe("Person Profile", () => {
         const currentDateString = new Date().toISOString();
         const noteText = `This is a test note: ${currentDateString}`;
         cy.typeInQuill("NoteText", noteText);
-        cy.get(".btn-success").click();
+        // Click Save by text instead of style class
+        cy.contains('button', 'Save').click();
         cy.url().should("contain", `PersonView.php?PersonID=${personId}`);
 
         cy.get("#nav-item-timeline").click();
@@ -43,7 +44,8 @@ describe("Person Profile", () => {
         cy.get('tr:nth-child(2) textarea').clear().type('the feeling of being included');
         cy.get('tr:nth-child(3) textarea').clear().type('More Youth Meetings');
         cy.get('tr:nth-child(4) textarea').clear().type('The website ');
-        cy.get('td > .btn-primary').click();
+        // Use text-based save to avoid relying on button style class
+        cy.contains('button', 'Save').click();
 
         cy.url().should('contains', 'WhyCameEditor.php');
         cy.contains('More Youth Meetings');

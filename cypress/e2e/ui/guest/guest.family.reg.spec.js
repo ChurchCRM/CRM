@@ -60,7 +60,8 @@ describe("Family Reg", () => {
 
         // Verify success dialog with updated welcome message
         cy.get(".bootbox-body").should("contain", "We're so glad your family has joined us!");
-        cy.get(".btn-outline-secondary").click();
+            // Close the success dialog by button text instead of style class
+            cy.get('.bootbox').contains('Close').click({ force: true });
         cy.url().should("contain", "external/register/");
     });
 

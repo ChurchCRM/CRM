@@ -139,4 +139,36 @@ describe("API Private Admin System Logs", () => {
             200,
         );
     });
+
+    it("Download actual log file - verify attachment headers and content", () => {
+        // Create a temporary log file to ensure the endpoint has something to return
+        const filename = 'test-download.log';
+        const filePath = `src/logs/${filename}`;
+        cy.exec(`printf 'test-download-line1\nline2\n' > ${filePath}`);
+
+        const url = `/admin/api/system/logs/${encodeURIComponent(filename)}/download`;
+
+        // Use the private admin API helper to perform the GET request
+        cy.makePrivateAdminAPICall(
+            "GET",
+            url,
+            null,
+            200,
+        ).then((resp) => {
+            // Validate headers for a file attachment
+            expect(resp.status).to.equal(200);
+            const cd = resp.headers['content-disposition'] || resp.headers['Content-Disposition'];
+            expect(cd, 'Content-Disposition present').to.be.a('string');
+            expect(cd.toLowerCase()).to.include('attachment');
+            expect(cd).to.match(/filename\s*=\s*"?.+"?/);
+
+            // Content-Length header should be present and body non-empty
+            const cl = resp.headers['content-length'] || resp.headers['Content-Length'];
+            expect(cl, 'Content-Length header present').to.match(/\d+/);
+            expect(resp.body && resp.body.length, 'body non-empty').to.be.greaterThan(10);
+        }).then(() => {
+            // Cleanup the temporary log file
+            return cy.exec(`rm -f ${filePath}`);
+        });
+    });
 });

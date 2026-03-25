@@ -124,10 +124,15 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         }
 
         $content = file_get_contents($realLogPath);
-        $response->getBody()->write($content);
-        return $response
+
+        // Set headers before writing body to avoid middleware or streaming layers
+        $response = $response
             ->withHeader('Content-Type', 'text/plain')
-            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"')
+            ->withHeader('Content-Length', (string)strlen($content));
+
+        $response->getBody()->write($content);
+        return $response;
     });
 
     // Delete log file
