@@ -34,10 +34,12 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 
 $sPageTitle = InputUtils::escapeHTML($person->getFullName());
 $sPageSubtitle = gettext('Person Profile') . ' — ID: ' . $person->getId();
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('People'), '/people/dashboard'],
-    [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())],
-]);
+$breadcrumbItems = [[gettext('People'), '/people/dashboard']];
+if ($person->getFamId() != '' && $person->getFamily() != null) {
+    $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/v2/family/' . $person->getFamId()];
+}
+$breadcrumbItems[] = [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())];
+$aBreadcrumbs = PageHeader::breadcrumbs($breadcrumbItems);
 
 // Admin buttons at breadcrumb/header level
 $headerButtons = [];
@@ -434,8 +436,8 @@ $bOkToEdit = (
                             extract($aRow); ?>
                             <div class="list-group-item px-0 d-flex align-items-center">
                                 <div class="me-auto">
-                                    <span class="badge bg-info-lt text-info me-1"><?= InputUtils::escapeHTML($prt_Name) ?></span>
                                     <strong><?= InputUtils::escapeHTML($pro_Name) ?></strong>
+                                    <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML($prt_Name) ?></span>
                                     <?php if (!empty($r2p_Value)) { ?>
                                         <small class="text-muted d-block"><?= InputUtils::escapeHTML($r2p_Value) ?></small>
                                     <?php } ?>
@@ -497,7 +499,7 @@ $bOkToEdit = (
         <!-- Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2">
             <?php if ($bOkToEdit) { ?>
-            <a class="btn btn-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
+            <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
             <?php } ?>
             <a class="btn btn-ghost-secondary" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></a>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
@@ -754,7 +756,9 @@ $bOkToEdit = (
                                         <div class="d-flex align-items-center">
                                             <div class="me-auto">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
+                                                <?php if ((int)$grp_Type !== 0) { ?>
                                                 <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
+                                                <?php } ?>
                                                 <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
                                                 <?php
                                                 if ($grp_hasSpecialProps) {

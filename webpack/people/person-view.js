@@ -13,6 +13,7 @@
  */
 import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
+import { initGroupManager } from "./person-group-manager";
 
 document.addEventListener("DOMContentLoaded", function () {
   // Map initialisation
@@ -57,4 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Initialize refresh coordinates button (shown when family has no stored coordinates)
   initRefreshCoordinatesBtn();
+
+  // Initialize group interaction handlers (add, change role, remove)
+  initGroupManager();
 });

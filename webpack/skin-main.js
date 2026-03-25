@@ -19,7 +19,8 @@ window.ApexCharts = ApexCharts;
 
 // Import Tabler JS (Bootstrap 5 + Popper bundled) — replaces AdminLTE JS
 // Must come after jQuery so legacy jQuery plugins can still work
-import "@tabler/core";
+import * as tabler from "@tabler/core";
+window.bootstrap = tabler.bootstrap;
 
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import "@fortawesome/fontawesome-free/css/all.min.css";
