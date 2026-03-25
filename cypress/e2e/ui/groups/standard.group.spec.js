@@ -46,7 +46,9 @@ describe("Standard Groups", () => {
         cy.get("#membersTable", { timeout: 10000 }).should("exist");
         cy.get("#membersTable tbody tr", { timeout: 10000 }).then(($rows) => {
             if ($rows.length > 0) {
-                cy.get("#membersTable tbody tr:first .btn-ghost-secondary").should("exist").click();
+                cy.get("#membersTable tbody tr:first").within(() => {
+                    cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
+                });
                 cy.get(".dropdown-menu.show").within(() => {
                     cy.contains("View").should("exist");
                     cy.contains("Edit").should("exist");
@@ -61,7 +63,9 @@ describe("Standard Groups", () => {
     it("Groups dashboard table has action menus", () => {
         cy.visit("groups/dashboard");
         cy.get("#groupsTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
-        cy.get("#groupsTable tbody tr:first .btn-ghost-secondary").should("exist").click();
+        cy.get("#groupsTable tbody tr:first").within(() => {
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
+        });
         cy.get(".dropdown-menu.show").within(() => {
             cy.contains("View").should("exist");
             cy.contains("Edit").should("exist");
