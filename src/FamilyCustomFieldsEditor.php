@@ -414,7 +414,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 ?>
                 <tr>
                     <td>
-                        <span class="badge bg-primary"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
+                        <span class="badge bg-light text-dark"><?= InputUtils::escapeHTML($aPropTypes[$aTypeFields[$row]]) ?></span>
                     </td>
                     <td>
                         <input type="text" class="form-control form-control-sm" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
