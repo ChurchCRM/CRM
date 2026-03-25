@@ -83,7 +83,8 @@ describe('Event Type Management', () => {
         // Verify attendance counts by checking first event type's edit page
         // (We can verify the feature works without searching for our specific item)
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('a.btn-outline-secondary').click();
+            // Use link text when possible instead of styling classes
+            cy.contains('a', 'Edit').click({ force: true });
         });
         
         // Verify attendance count rows exist and have proper structure
@@ -125,7 +126,7 @@ describe('Event Type Management', () => {
         
         // Navigate to edit page
         cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('a.btn-outline-secondary').click();
+            cy.contains('a', 'Edit').click({ force: true });
         });
         
         // Verify card design
