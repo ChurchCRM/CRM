@@ -23,11 +23,12 @@ describe("Standard Family List", () => {
         // Verify there are rows in the table
         cy.get("#families tbody tr").should("have.length.at.least", 1);
 
-        // Verify action dropdown exists (Tabler standard: btn-ghost-secondary trigger)
-        cy.get("#families tbody tr:first .btn-ghost-secondary").should("exist");
-
-        // Open the dropdown and verify View, Edit, Cart, Delete items are present
-        cy.get("#families tbody tr:first .btn-ghost-secondary").first().click();
+        // Verify action dropdown exists (Tabler standard: dropdown toggle)
+        cy.get("#families tbody tr:first").within(() => {
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().should('exist');
+            // Open the dropdown and verify View, Edit, Cart, Delete items are present
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
+        });
         cy.get(".dropdown-menu.show").within(() => {
             cy.contains("View").should("exist");
             cy.contains("Edit").should("exist");
