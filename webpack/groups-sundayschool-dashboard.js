@@ -56,9 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const members = membersData.Person2group2roleP2g2rs || [];
-      const personIds = members
-        .filter((m) => m.RoleId === foundRole.OptionId)
-        .map((m) => m.PersonId);
+      const personIds = members.filter((m) => m.RoleId === foundRole.OptionId).map((m) => m.PersonId);
 
       if (personIds.length === 0) {
         window.CRM.notify(i18next.t("No members found for this role."), { type: "warning", delay: 3000 });
