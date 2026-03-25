@@ -99,34 +99,35 @@ if (isset($_POST['Submit'])) {
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<form method="post">
-  <div class="card">
-    <div class="card-body">
+<div class="card">
+  <div class="card-body">
+    <form method="post">
+      <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
+      <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
+      <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
 
-      <p class="text-center">
-        <input type="hidden" name="PersonID" value="<?= $iPersonID ?>">
-        <input type="hidden" name="FamilyID" value="<?= $iFamilyID ?>">
-        <input type="hidden" name="NoteID" value="<?= $iNoteID ?>">
+      <div class="mb-3">
         <?= getQuillEditorContainer('NoteText', 'NoteTextInput', $sNoteText, 'w-100', '300px') ?>
         <?= $sNoteTextError ?>
-      </p>
+      </div>
 
-      <p class="text-center">
-        <input type="checkbox" value="1" name="Private" <?php if ($bPrivate != 0) {
-            echo 'checked';
-                                                        } ?>>&nbsp;<?= gettext('Private') ?>
-      </p>
-    </div>
+      <div class="mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="1" name="Private" id="Private" <?php if ($bPrivate != 0) {
+              echo 'checked';
+          } ?>>
+          <label class="form-check-label" for="Private"><?= gettext('Private') ?></label>
+        </div>
+      </div>
+
+      <div class="d-flex gap-2">
+        <input type="submit" class="btn btn-success" name="Submit" value="<?= gettext('Save') ?>">
+        <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
+      </div>
+    </form>
   </div>
-  <p class="text-center">
-    <input type="submit" class="btn btn-success" name="Submit" value="<?= gettext('Save') ?>">
-    &nbsp;
-    <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location='<?= $sBackPage ?>';">
-
-  </p>
-</form>
+</div>
 
 <?= getQuillEditorInitScript('NoteText', 'NoteTextInput', gettext("Enter note text here...")) ?>
-
 <?php
 require_once __DIR__ . '/Include/Footer.php';

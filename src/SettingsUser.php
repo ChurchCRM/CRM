@@ -56,97 +56,75 @@ require_once __DIR__ . '/Include/Header.php';
 $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
 $rsConfigs = RunQuery($sSQL);
 ?>
-<!-- Default box -->
 <div class="card">
-    <div class="card-header d-flex align-items-center">
-
-        <form method=post action=SettingsUser.php'>
-            <div class="alert alert-info"> <?= gettext('Set Permission True to give new users the ability to change their current value.<BR>'); ?></div>
+    <div class="card-body">
+        <div class="alert alert-info"><?= gettext('Set Permission True to give new users the ability to change their current value.') ?></div>
+        <form method="post" action="SettingsUser.php">
             <div class="table-responsive">
-                <table class='table table-responsive'>
-                    <tr>
-                        <th> <?= gettext('Permission') ?></th>
-                        <th><?= gettext('Variable name') ?></th>
-                        <th><?= gettext('Current Value') ?></th>
-                        <th><?= gettext('Notes') ?></th>
-                    </tr>
+                <table class="table table-vcenter">
+                    <thead>
+                        <tr>
+                            <th><?= gettext('Permission') ?></th>
+                            <th><?= gettext('Variable name') ?></th>
+                            <th><?= gettext('Current Value') ?></th>
+                            <th><?= gettext('Notes') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     <?php
-                    $r = 1;
-                    // List Individual Settings
                     while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
-                        // Cancel, Save Buttons every 13 rows
-                        if ($r == 13) {
-                            echo '<tr><td>&nbsp;</td>
-            <td><input type=submit class=btn name=save value="'
-                                . gettext('Save Settings') . '">
-            <input type=submit class=btn name=cancel value="'
-                                . gettext('Cancel') . '">
-            </td></tr>';
-                            $r = 1;
-                        }
-
-                        // Default Permissions
+                        $sel1 = $sel2 = '';
                         if ($ucfg_permission == 'TRUE') {
-                            $sel2 = 'SELECTED ';
-                            $sel1 = '';
+                            $sel2 = 'selected';
                         } else {
-                            $sel1 = 'SELECTED ';
-                            $sel2 = '';
+                            $sel1 = 'selected';
                         }
-                        echo"<tr><td class=\"TextColumnWithBottomBorder\"><select name=\"new_permission[$ucfg_id]\">";
-                        echo"<option value=\"FALSE\" $sel1>" . gettext('False');
-                        echo"<option value=\"TRUE\" $sel2>" . gettext('True') . '
-                        </select></td>';
-
-                        // Variable Name & Type
-                        echo"<td class=\"LabelColumn\">$ucfg_name</td>";
-
-                        // Current Value
-                        if ($ucfg_type == 'text') {
-                            echo"<td class=\"TextColumnWithBottomBorder\">
-            <input type=text size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
-            value=\"" . InputUtils::escapeHTML($ucfg_value) ."\"></td>";
-                        } elseif ($ucfg_type == 'textarea') {
-                            echo"<td class=\"TextColumnWithBottomBorder\">
-            <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
-                                . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
-                        } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
-                            echo"<td class=\"TextColumnWithBottomBorder\">
-            <input type=text size=\"15\" maxlength=\"15\" name=\"new_value[$ucfg_id]\"
-            value=\"$ucfg_value\"></td>";
-                        } elseif ($ucfg_type == 'boolean') {
-                            if ($ucfg_value) {
-                                $sel2 = 'SELECTED ';
-                                $sel1 = '';
-                            } else {
-                                $sel1 = 'SELECTED ';
-                                $sel2 = '';
-                            }
-                            echo"<td class=\"TextColumnWithBottomBorder\">
-                <select name=\"new_value[$ucfg_id]\">
-                <option value=\"\" $sel1>" . gettext('False') ."
-                <option value=\"1\" $sel2>" . gettext('True') . '
-                </select></td>';
-                        }
-
-                        // Notes
-                        echo"<td><input type=hidden name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-" . gettext($ucfg_tooltip) . '</td></tr>';
-
-                        $r++;
+                        ?>
+                        <tr>
+                            <td>
+                                <select name="new_permission[<?= $ucfg_id ?>]" class="form-select form-select-sm">
+                                    <option value="FALSE" <?= $sel1 ?>><?= gettext('False') ?></option>
+                                    <option value="TRUE" <?= $sel2 ?>><?= gettext('True') ?></option>
+                                </select>
+                            </td>
+                            <td class="text-secondary"><?= InputUtils::escapeHTML($ucfg_name) ?></td>
+                            <td>
+                                <?php
+                                if ($ucfg_type == 'text') {
+                                    echo '<input type="text" class="form-control form-control-sm" maxlength="255" name="new_value[' . $ucfg_id . ']" value="' . InputUtils::escapeAttribute($ucfg_value) . '">';
+                                } elseif ($ucfg_type == 'textarea') {
+                                    echo '<textarea rows="3" class="form-control form-control-sm" name="new_value[' . $ucfg_id . ']">' . InputUtils::escapeHTML($ucfg_value) . '</textarea>';
+                                } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
+                                    echo '<input type="text" class="form-control form-control-sm" maxlength="15" name="new_value[' . $ucfg_id . ']" value="' . InputUtils::escapeAttribute($ucfg_value) . '">';
+                                } elseif ($ucfg_type == 'boolean') {
+                                    if ($ucfg_value) {
+                                        $bSel2 = 'selected';
+                                        $bSel1 = '';
+                                    } else {
+                                        $bSel1 = 'selected';
+                                        $bSel2 = '';
+                                    }
+                                    echo '<select name="new_value[' . $ucfg_id . ']" class="form-select form-select-sm">';
+                                    echo '<option value="" ' . $bSel1 . '>' . gettext('False') . '</option>';
+                                    echo '<option value="1" ' . $bSel2 . '>' . gettext('True') . '</option>';
+                                    echo '</select>';
+                                }
+                                echo '<input type="hidden" name="type[' . $ucfg_id . ']" value="' . InputUtils::escapeAttribute($ucfg_type) . '">';
+                                ?>
+                            </td>
+                            <td class="text-secondary small"><?= gettext($ucfg_tooltip) ?></td>
+                        </tr>
+                        <?php
                     }
-
                     ?>
-                    <tr>
-                        <td colspan='3' class='text-center'>
-                            <input type=submit class='btn btn-primary' name=save value="<?= gettext('Save Settings') ?>">
-                            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn"><?= gettext('Cancel') ?></a>
-                        </td>
-                    </tr>
+                    </tbody>
                 </table>
             </div>
+            <div class="d-flex gap-2 mt-3">
+                <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users" class="btn btn-secondary"><?= gettext('Cancel') ?></a>
+            </div>
         </form>
-
     </div>
 </div>
 <?php

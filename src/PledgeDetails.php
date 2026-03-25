@@ -39,10 +39,12 @@ if ($resArr) {
 
 ?>
 
-<div class="card-body">
+<div class="card">
+  <div class="card-body">
     <form method="post" action="PledgeDetails.php?<?= 'PledgeID=' . $iPledgeID . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
-        <input type="submit" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="Back">
+      <input type="submit" class="btn btn-secondary" value="<?= gettext('Back') ?>" name="Back">
     </form>
+  </div>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

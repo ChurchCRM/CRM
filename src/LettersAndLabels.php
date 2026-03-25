@@ -44,9 +44,9 @@ FontSelect('labelfont');
 FontSizeSelect('labelfontsize');
 ?>
             <tr>
-              <td class="LabelColumn"><?= gettext("Recipient Naming Method")?>:</td>
-              <td class="TextColumn">
-                <select name="recipientnamingmethod">
+              <td class="text-secondary"><?= gettext("Recipient Naming Method")?>:</td>
+              <td>
+                <select name="recipientnamingmethod" class="form-select">
                   <option value="salutationutility"><?= gettext("Salutation Utility") ?></option>
                   <option value="familyname"><?= gettext("Family Name") ?></option>
                 </select>

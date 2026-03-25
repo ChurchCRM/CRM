@@ -119,44 +119,38 @@ if (isset($_POST['FundRaiserSubmit'])) {
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card-body">
-    <form method="post" action="FundRaiserEditor.php?<?= ($linkBackProvided ? 'linkBack=' . urlencode($linkBack) . '&' : '') . 'FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
+<div class="card mb-3">
+    <div class="card-body">
+        <form method="post" action="FundRaiserEditor.php?<?= ($linkBackProvided ? 'linkBack=' . urlencode($linkBack) . '&' : '') . 'FundRaiserID=' . $iFundRaiserID ?>" name="FundRaiserEditor">
 
-        <table cellpadding="3" width="100%">
-            <tr>
-                <td>
-                    <table cellpadding="3">
-                        <tr>
-                            <td class="LabelColumn"><?= gettext('Date') ?>:</td>
-                            <td class="TextColumn"><input type="text" name="Date" value="<?= $dDate->format("Y-m-d") ?>" maxlength="10" id="Date" size="11" class="date-picker"><span class="text-error"><?= $sDateError ?></span></td>
-                        </tr>
+            <div class="mb-3">
+                <label class="form-label" for="Date"><?= gettext('Date') ?>:</label>
+                <input type="text" name="Date" value="<?= $dDate->format("Y-m-d") ?>" maxlength="10" id="Date" class="form-control date-picker" style="max-width:180px">
+                <?php if ($sDateError): ?><div class="text-danger small"><?= $sDateError ?></div><?php endif; ?>
+            </div>
 
-                        <tr>
-                            <td class="LabelColumn"><?= gettext('Title') ?>:</td>
-                            <td class="TextColumn"><input type="text" size="50" name="Title" id="Title" value="<?= $sTitle ?>"></td>
-                        </tr>
+            <div class="mb-3">
+                <label class="form-label" for="Title"><?= gettext('Title') ?>:</label>
+                <input type="text" class="form-control" name="Title" id="Title" value="<?= InputUtils::escapeAttribute($sTitle) ?>">
+            </div>
 
-                        <tr>
-                            <td class="LabelColumn"><?= gettext('Description') ?>:</td>
-                            <td class="TextColumn"><textarea name="Description" id="Description" cols="50" rows="5"><?= $sDescription ?></textarea></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-                <td align="right">
-                    <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
-                    <input type="button" class="btn btn-danger" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='FindFundRaiser.php';">
-                </td>
-            </tr>
-         
-    </form>
-    </table>
+            <div class="mb-3">
+                <label class="form-label" for="Description"><?= gettext('Description') ?>:</label>
+                <textarea class="form-control" name="Description" id="Description" rows="5"><?= InputUtils::escapeHTML($sDescription) ?></textarea>
+            </div>
 
+            <div class="d-flex gap-2">
+                <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="FundRaiserSubmit">
+                <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="FundRaiserCancel" onclick="javascript:document.location='FindFundRaiser.php';">
+            </div>
+
+        </form>
+    </div>
 </div>
 <?php if ($iFundRaiserID > 0): ?>
-<div class="card-body">
-    <div class="d-flex flex-wrap gap-2">
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
         <a href="DonatedItemEditor.php?CurrentFundraiser=<?= $iFundRaiserID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= $iFundRaiserID ?>&CurrentFundraiser=<?= $iFundRaiserID ?>" class="btn btn-success">
             <i class="ti ti-plus me-1"></i><?= gettext('Add Donated Item') ?>
         </a>
@@ -181,8 +175,11 @@ require_once __DIR__ . '/Include/Header.php';
         </a>
     </div>
 </div>
-<div class="card-body" style="overflow: visible;">
-    <h6 class="fw-bold mb-3"><?= gettext('Donated items for this fundraiser') ?></h6>
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><?= gettext('Donated items for this fundraiser') ?></h3>
+    </div>
+    <div class="card-body" style="overflow: visible;">
     <table class="table table-vcenter table-hover w-100">
         <thead>
         <tr>
@@ -249,6 +246,7 @@ require_once __DIR__ . '/Include/Header.php';
         ?>
         </tbody>
     </table>
+    </div>
 </div>
 <?php endif; ?>
 <?php

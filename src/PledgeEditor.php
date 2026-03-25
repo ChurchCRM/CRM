@@ -669,7 +669,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="col-lg-6">
                         <?php if (SystemConfig::getValue('bUseScannedChecks') && ($dep_Type === 'Bank' || $PledgeOrPayment === 'Pledge')) {
                             ?>
-                            <td class="text-center <?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Scan check') ?>
+                            <td class="text-center"><?= gettext('Scan check') ?>
                                 <textarea name="ScanInput" rows="2" cols="70"><?= $tScanString ?></textarea>
                             </td>
                             <?php
@@ -698,16 +698,16 @@ require_once __DIR__ . '/Include/Header.php';
                     <table class="table">
                         <thead>
                             <tr>
-                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Fund Name') ?></th>
-                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Amount') ?></th>
+                                <th><?= gettext('Fund Name') ?></th>
+                                <th><?= gettext('Amount') ?></th>
 
                                 <?php if ($bEnableNonDeductible) {
                                     ?>
-                                    <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Non-deductible amount') ?></th>
+                                    <th><?= gettext('Non-deductible amount') ?></th>
                                     <?php
                                 } ?>
 
-                                <th class="<?= $PledgeOrPayment === 'Pledge' ? 'LabelColumn' : 'PaymentLabelColumn' ?>"><?= gettext('Comment') ?></th>
+                                <th><?= gettext('Comment') ?></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -715,22 +715,22 @@ require_once __DIR__ . '/Include/Header.php';
                             foreach ($fundId2Name as $fun_id => $fun_name) {
                                 ?>
                                 <tr>
-                                    <td class="TextColumn"><?= $fun_name ?></td>
-                                    <td class="TextColumn">
+                                    <td><?= $fun_name ?></td>
+                                    <td>
                                         <input class="FundAmount" type="number" step="any" name="<?= $fun_id ?>_Amount" id="<?= $fun_id ?>_Amount" value="<?= ($nAmount[$fun_id] ? $nAmount[$fun_id] :"") ?>"><br>
                                         <span class="text-danger"><?= $sAmountError[$fun_id] ?></span>
                                     </td>
                                     <?php
                                     if ($bEnableNonDeductible) {
                                         ?>
-                                        <td class="TextColumn">
+                                        <td>
                                             <input type="number" step="any" name="<?= $fun_id ?>_NonDeductible" id="<?= $fun_id ?>_NonDeductible" value="<?= ($nNonDeductible[$fun_id] ? $nNonDeductible[$fun_id] :"") ?>" />
                                             <br>
                                             <span class="text-danger"><?= $sNonDeductibleError[$fun_id] ?></span>
                                         </td>
                                         <?php
                                     } ?>
-                                    <td class="TextColumn">
+                                    <td>
                                         <input type="text" size=40 name="<?= $fun_id ?>_Comment" id="<?= $fun_id ?>_Comment" value="<?= $sComment[$fun_id] ?>">
                                     </td>
                                 </tr>

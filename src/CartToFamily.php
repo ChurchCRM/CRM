@@ -148,10 +148,11 @@ echo $sError;
                 ->find();
 
             echo"<table class='table table-striped'>";
-            echo '<tr>';
-            echo '<td>&nbsp;</td>';
-            echo '<td><b>' . gettext('Name') . '</b></td>';
-            echo '<td class="text-center"><b>' . gettext('Assign Role') . '</b></td>';
+            echo '<thead><tr>';
+            echo '<th style="width:40px">#</th>';
+            echo '<th>' . gettext('Name') . '</th>';
+            echo '<th class="text-center">' . gettext('Assign Role') . '</th>';
+            echo '</tr></thead><tbody>';
 
             $count = 1;
             foreach ($cartPersons as $cartPerson) {
@@ -175,133 +176,91 @@ echo $sError;
                 echo '</tr>';
             }
 
-            echo '</table>'; ?>
+            echo '</tbody></table>'; ?>
 </div>
 <div class="card">
-    <div class="table-responsive">
-        <table class="mx-auto table table-hover">
-            <tr>
-                <td class="LabelColumn"><?= gettext('Add to Family') ?>:</td>
-                <td class="TextColumn">
-                    <?php
-                    // Create the family select drop-down
-                    echo '<select name="FamilyID">';
-                    echo '<option value="0">' . gettext('Create new family') . '</option>';
-                    foreach ($families as $family) {
-                        echo sprintf('<option value="%s">%s</option>', $family->getId(), $family->getName());
-                    }
-                    echo '</select>'; ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td>
-                    <p class="lead"><?= gettext('If adding a new family, enter data below.') ?></p>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Family Name') ?>:</td>
-                <td class="TextColumnWithBottomBorder"><input type="text" Name="FamilyName" value="<?= $sName ?>" maxlength="48"><span class="text-danger"><?= $sNameError ?></span></td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Wedding Date') ?>:</td>
-                <td class="TextColumnWithBottomBorder"><input type="text" Name="WeddingDate" value="<?= $dWeddingDate ?>" maxlength="10" id="sel1" size="15" class="form-control float-end active date-picker"><span class="text-danger"><?php echo '<BR>' . $sWeddingDateError ?></span></td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Use address/contact data from') ?>:</td>
-                <td class="TextColumn">
-                    <?php
-                    echo '<select name="PersonAddress">';
-                    echo '<option value="0">' . gettext('Only the new data below') . '</option>';
-
-                    mysqli_data_seek($rsCartItems, 0);
-                    while ($aRow = mysqli_fetch_array($rsCartItems)) {
-                        if ($per_fam_ID == 0) {
-                            echo sprintf('<option value="%s">%s %s</option>', $aRow['per_ID'], $aRow['per_FirstName'], $aRow['per_LastName']);
-                        }
-                    }
-
-                    echo '</select>'; ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Address') ?> 1:</td>
-                <td class="TextColumn"><input type="text" Name="Address1" value="<?= $sAddress1 ?>" size="50" maxlength="250"></td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Address') ?> 2:</td>
-                <td class="TextColumn"><input type="text" Name="Address2" value="<?= $sAddress2 ?>" size="50" maxlength="250"></td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('City') ?>:</td>
-                <td class="TextColumn"><input type="text" Name="City" value="<?= $sCity ?>" maxlength="50"></td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('State') ?>:</td>
-                <td class="TextColumn">
-                    <div id="stateOptionDiv">
-                        <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
-                        </select>
-                    </div>
-                    <div id="stateInputDiv" class="d-none">
-                        <input type="text" name="StateTextbox" id="StateTextbox" value="" size="20" maxlength="30">
-                        <BR><?= gettext('(Enter state/province for countries without predefined states)') ?>
-                    </div>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Zip') ?>:</td>
-                <td class="TextColumn">
-                    <input type="text" Name="Zip" value="<?= $sZip ?>" maxlength="10" size="8">
-                </td>
-
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Country') ?>:</td>
-                <td class="TextColumnWithBottomBorder">
-                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
-                    </select>
-                </td>
-            </tr>
-
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Home Phone') ?>:</td>
-                <td class="TextColumn">
-                    <input type="text" Name="HomePhone" value="<?= $sHomePhone ?>" size="30" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
-                    <input type="checkbox" name="NoFormat_HomePhone" value="1" <?php if ($bNoFormat_HomePhone) {
-                                                                                    echo ' checked';
-                                                                                } ?>><?= gettext('Do not auto-format') ?>
-                </td>
-            </tr>
-
-            <tr>
-                <td class="LabelColumn"><?= gettext('Email') ?>:</td>
-                <td class="TextColumnWithBottomBorder"><input type="text" Name="Email" value="<?= $sEmail ?>" size="30" maxlength="50"></td>
-            </tr>
-
-        </table>
-    </div>
-
-
-    <p class="text-center">
-        <BR>
-        <input type="submit" class="btn btn-secondary" name="Submit" value="<?= gettext('Add to Family') ?>">
-        <BR><BR>
-    </p>
+    <div class="card-body">
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Add to Family') ?>:</label>
+            <?php
+            echo '<select name="FamilyID" class="form-select">';
+            echo '<option value="0">' . gettext('Create new family') . '</option>';
+            foreach ($families as $family) {
+                echo sprintf('<option value="%s">%s</option>', $family->getId(), InputUtils::escapeHTML($family->getName()));
+            }
+            echo '</select>'; ?>
+        </div>
+        <p class="text-muted"><?= gettext('If adding a new family, enter data below.') ?></p>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Family Name') ?>:</label>
+            <input type="text" class="form-control" name="FamilyName" value="<?= InputUtils::escapeAttribute($sName ?? '') ?>" maxlength="48">
+            <?php if (!empty($sNameError)): ?><div class="text-danger small"><?= InputUtils::escapeHTML($sNameError) ?></div><?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Wedding Date') ?>:</label>
+            <input type="text" class="form-control date-picker" name="WeddingDate" value="<?= InputUtils::escapeAttribute($dWeddingDate ?? '') ?>" maxlength="10" id="sel1">
+            <?php if (!empty($sWeddingDateError)): ?><div class="text-danger small"><?= InputUtils::escapeHTML($sWeddingDateError) ?></div><?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Use address/contact data from') ?>:</label>
+            <?php
+            echo '<select name="PersonAddress" class="form-select">';
+            echo '<option value="0">' . gettext('Only the new data below') . '</option>';
+            mysqli_data_seek($rsCartItems, 0);
+            while ($aRow = mysqli_fetch_array($rsCartItems)) {
+                if ($per_fam_ID == 0) {
+                    echo sprintf('<option value="%s">%s %s</option>', $aRow['per_ID'], InputUtils::escapeHTML($aRow['per_FirstName']), InputUtils::escapeHTML($aRow['per_LastName']));
+                }
+            }
+            echo '</select>'; ?>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Address') ?> 1:</label>
+            <input type="text" class="form-control" name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1 ?? '') ?>" maxlength="250">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Address') ?> 2:</label>
+            <input type="text" class="form-control" name="Address2" value="<?= InputUtils::escapeAttribute($sAddress2 ?? '') ?>" maxlength="250">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('City') ?>:</label>
+            <input type="text" class="form-control" name="City" value="<?= InputUtils::escapeAttribute($sCity ?? '') ?>" maxlength="50">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('State') ?>:</label>
+            <div id="stateOptionDiv">
+                <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState ?? '') ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
+                </select>
+            </div>
+            <div id="stateInputDiv" class="d-none">
+                <input type="text" class="form-control" name="StateTextbox" id="StateTextbox" value="" maxlength="30">
+                <small class="text-muted"><?= gettext('(Enter state/province for countries without predefined states)') ?></small>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Zip') ?>:</label>
+            <input type="text" class="form-control" name="Zip" value="<?= InputUtils::escapeAttribute($sZip ?? '') ?>" maxlength="10" style="max-width:120px">
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Country') ?>:</label>
+            <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry ?? '') ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Home Phone') ?>:</label>
+            <input type="text" class="form-control" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone ?? '') ?>" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+            <div class="form-check mt-1">
+                <input class="form-check-input" type="checkbox" name="NoFormat_HomePhone" value="1" id="NoFormat_HomePhone" <?= (!empty($bNoFormat_HomePhone)) ? 'checked' : '' ?>>
+                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('Do not auto-format') ?></label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label"><?= gettext('Email') ?>:</label>
+            <input type="text" class="form-control" name="Email" value="<?= InputUtils::escapeAttribute($sEmail ?? '') ?>" maxlength="50">
+        </div>
+        <div class="d-flex gap-2">
+            <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Add to Family') ?>">
+        </div>
     </div>
 <?php
         } else {

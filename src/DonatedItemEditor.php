@@ -181,15 +181,15 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
             <div class="mb-3">
                 <div class="row">
-                    <div class="col-md-4 col-md-offset-2 col-6">
+                    <div class="col-md-4 col-6">
                         <div class="mb-3">
                             <label><?= gettext('Item') ?>:</label>
                             <input type="text" name="Item" id="Item" value="<?= $sItem ?>" class="form-control">
                         </div>
 
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="Multibuy" value="1" <?= $bMultibuy ? 'checked' : ''; ?>>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" name="Multibuy" value="1" id="Multibuy" <?= $bMultibuy ? 'checked' : ''; ?>>
+                            <label class="form-check-label" for="Multibuy">
                                 <?= gettext('Sell to everyone'); ?> (<?= gettext('Multiple items'); ?>)
                             </label>
                         </div>
@@ -272,18 +272,16 @@ require_once __DIR__ . '/Include/Header.php';
                         </div>
 
                         <div class="mb-3">
-                            <label><?= gettext('Replicate item') ?></label>
+                            <label class="form-label"><?= gettext('Replicate item') ?></label>
                             <div class="input-group">
                                 <input type="text" name="NumberCopies" id="NumberCopies" value="0" class="form-control">
-                                <span class="input-group-btn">
-                                    <input type="button" class="btn btn-primary" value="<?= gettext('Go') ?>" name="DonatedItemReplicate" onclick="javascript:document.location = 'DonatedItemReplicate.php?DonatedItemID=<?= $iDonatedItemID ?>&Count=' + NumberCopies.value">
-                                </span>
+                                <input type="button" class="btn btn-primary" value="<?= gettext('Go') ?>" name="DonatedItemReplicate" onclick="javascript:document.location = 'DonatedItemReplicate.php?DonatedItemID=<?= $iDonatedItemID ?>&Count=' + NumberCopies.value">
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="col-md-6 col-md-offset-2 col-12">
+                    <div class="col-md-6 col-12">
                         <div class="mb-3">
                             <label><?= gettext('Description') ?>:</label>
                             <textarea name="Description" rows="5" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sDescription) ?></textarea>

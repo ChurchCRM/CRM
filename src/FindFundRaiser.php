@@ -36,30 +36,28 @@ $fundraisers = $fundraisersQuery->find();
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card-body">
+<div class="card mb-3">
+  <div class="card-body">
     <form method="get" action="FindFundRaiser.php" name="FindFundRaiser">
-        <tr>
-            <td>
-                <table cellpadding="3" width="100%">
-                    <tr>
-                        <td class="LabelColumn"><?= gettext('Date Start') ?>:</td>
-                        <td class="TextColumn"><input type="text" name="DateStart" maxlength="10" id="DateStart" size="11" value="<?= $dDateStart ?>" class="date-picker"></td>
-                        <td class="LabelColumn"><?= gettext('Date End') ?>:</td>
-                        <td class="TextColumn"><input type="text" name="DateEnd" maxlength="10" id="DateEnd" size="11" value="<?= $dDateEnd ?>" class="date-picker"></td>
-                    </tr>
-                    <tr>
-                        <td colspan=4 class="text-center">
-                            <input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
-                            <input type="button" class="btn btn-danger" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='FindFundRaiser.php';">
-                        </td>
-                    </tr>
-                </table>
-            </td>
+      <div class="row g-3 align-items-end">
+        <div class="col-auto">
+          <label class="form-label" for="DateStart"><?= gettext('Date Start') ?>:</label>
+          <input type="text" class="form-control date-picker" name="DateStart" maxlength="10" id="DateStart" value="<?= isset($dDateStart) ? InputUtils::escapeAttribute($dDateStart) : '' ?>">
+        </div>
+        <div class="col-auto">
+          <label class="form-label" for="DateEnd"><?= gettext('Date End') ?>:</label>
+          <input type="text" class="form-control date-picker" name="DateEnd" maxlength="10" id="DateEnd" value="<?= isset($dDateEnd) ? InputUtils::escapeAttribute($dDateEnd) : '' ?>">
+        </div>
+        <div class="col-auto d-flex gap-2">
+          <input type="submit" class="btn btn-primary" value="<?= gettext('Apply Filters') ?>" name="FindFundRaiserSubmit">
+          <input type="button" class="btn btn-secondary" value="<?= gettext('Clear Filters') ?>" onclick="javascript:document.location='FindFundRaiser.php';">
+        </div>
+      </div>
     </form>
-    </table>
+  </div>
 </div>
-<div class="card-body">
-  <div class="card-body" style="overflow: visible;">
+<div class="card">
+  <div class="card-body">
     <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
         <thead>
             <tr>
@@ -96,5 +94,6 @@ require_once __DIR__ . '/Include/Header.php';
     </table>
   </div>
 </div>
+
 <?php
 require_once __DIR__ . '/Include/Footer.php';

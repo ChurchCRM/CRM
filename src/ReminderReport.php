@@ -24,24 +24,21 @@ if (isset($_POST['Submit'])) {
 
 ?>
 
-<div class="card-body">
-    <form class="form-horizontal" method="post" action="Reports/ReminderReport.php">
-        <div class="mb-3">
-            <label class="control-label col-sm-2" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
-            <div class="col-sm-2">
-                <?php PrintFYIDSelect('FYID', $iFYID) ?>
-            </div>
-        </div>
+<div class="card">
+  <div class="card-body">
+    <form method="post" action="Reports/ReminderReport.php">
+      <div class="mb-3">
+        <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
+        <?php PrintFYIDSelect('FYID', $iFYID) ?>
+      </div>
 
-        <div class="mb-3">
-            <div class="col-sm-offset-2 col-sm-8">
-                <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-                <button type="button" class="btn btn-secondary" name="Cancel"
-                        onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
-            </div>
-        </div>
-
+      <div class="d-flex gap-2">
+        <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
+        <button type="button" class="btn btn-secondary" name="Cancel"
+                onclick="javascript:document.location='v2/dashboard';"><?= gettext('Cancel') ?></button>
+      </div>
     </form>
+  </div>
 </div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

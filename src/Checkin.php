@@ -124,7 +124,7 @@ if ($EventID > 0) {
 </div>
 <?php else: ?>
 <!--Select Event Form -->
-<form class="well form-horizontal" name="selectEvent" action="Checkin.php" method="POST">
+<form name="selectEvent" action="Checkin.php" method="POST">
     <input type="hidden" name="EventTypeID" id="EventTypeIDHidden" value="<?= $eventTypeId ?>">
     <div class="row">
         <div class="col-12">

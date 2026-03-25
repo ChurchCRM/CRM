@@ -508,8 +508,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ?>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
+                    <td colspan="3">
                         <select name='EN_tyid' class='form-control w-100' id='event_type_id'>
                             <option><?= gettext('Select your event type'); ?></option>
                             <?php
@@ -535,36 +535,36 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <?php
             } else { ?>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
+                    <td colspan="3">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
                         <span class="badge bg-info fw-normal" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
+                    <td colspan="3">
                         <input type="text" name="EventTitle" value="<?= InputUtils::escapeHTML($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Event Description') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Event Description') ?></td>
+                    <td colspan="3">
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
-                    <td class="TextColumn" colspan="3">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
+                    <td colspan="3">
                         <input type="text" name="EventDateRange" value=""
                                maxlength="10" id="EventDateRange" class="form-control" style="max-width: 400px;" required>
                         <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Linked Group') ?></td>
-                    <td class="TextColumn" colspan="3">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Linked Group') ?></td>
+                    <td colspan="3">
                         <select name="LinkedGroupId" id="LinkedGroupId" class="form-control" style="max-width: 400px;">
                             <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
                             <?php
@@ -581,7 +581,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px">
                         <div><?= gettext('Attendance Counts') ?></div>
                         <?php if ($nCnts > 0) { ?>
                         <div class="mt-2">
@@ -595,7 +595,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         </div>
                         <?php } ?>
                     </td>
-                    <td class="TextColumn" colspan="3">
+                    <td colspan="3">
                         <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
                         <?php
                         if ($nCnts === 0) {
@@ -633,16 +633,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Sermon / Event Text') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Sermon / Event Text') ?></td>
+                    <td colspan="3">
                         <small class="form-text text-muted mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
                         <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
+                    <td colspan="3">
                         <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                             <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
                                 <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>

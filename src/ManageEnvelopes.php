@@ -192,13 +192,13 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
     if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
-        $tdTag ="<td bgcolor='red'>";
+        $tdTag = '<td class="table-danger">';
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = '<td>';
     }
-    echo $tdTag; ?><class="TextColumn">
-    <input type="text" name="EnvelopeID_<?= $fam_ID ?>" value="<?= $envelope ?>" maxlength="10">
+    echo $tdTag;
+    ?><input type="text" class="form-control form-control-sm" name="EnvelopeID_<?= $fam_ID ?>" value="<?= $envelope ?>" maxlength="10">
     </td></tr>
     <?php
 }

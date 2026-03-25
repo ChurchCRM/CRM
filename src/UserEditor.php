@@ -251,12 +251,12 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     }
 }
 
-// Style sheet (CSS) file selection options
+// Style sheet (CSS) file selection options (legacy field — kept for data compatibility)
 function StyleSheetOptions($currentStyle)
 {
-    foreach (['skin-blue', 'skin-blue-light', 'skin-yellow', 'skin-yellow-light', 'skin-green', 'skin-green-light', 'skin-purple', 'skin-purple-light', 'skin-red', 'skin-red-light', 'skin-black', 'skin-black-light'] as $stylename) {
+    foreach (['default', 'dark'] as $stylename) {
         echo '<option value="' . $stylename . '"';
-        if ($stylename == $currentStyle) {
+        if ($stylename == $currentStyle || ($currentStyle === '' && $stylename === 'default')) {
             echo ' selected';
         }
         echo '>' . $stylename . '</option>';
@@ -340,7 +340,6 @@ $sPageTitle = gettext('User Editor');
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<!-- Default box -->
 <div class="card">
     <div class="card-body">
         <div class="alert alert-info">
@@ -461,8 +460,11 @@ require_once __DIR__ . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
-                        <td class="TextColumnWithBottomBorder"><select
-                                name="Style" id="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
+                        <td>
+                            <select class="form-select" name="Style" id="Style">
+                                <?php StyleSheetOptions($usr_Style); ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="text-center">
@@ -475,22 +477,20 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
     </div>
 </div>
-<!-- /.box -->
-<!-- Default box -->
-<div class="card">
-    <div class="card-body box-danger">
-        <div
-            class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hover align-middle">
+                <thead>
                 <tr>
-                    <th><?= gettext('Permission') ?></h3>
-                    </th>
+                    <th><?= gettext('Permission') ?></th>
                     <th><?= gettext('Variable name') ?></th>
-                    <th><?= gettext('Current Value') ?></h3>
-                    </th>
+                    <th><?= gettext('Current Value') ?></th>
                     <th><?= gettext('Notes') ?></th>
                 </tr>
+                </thead>
+                <tbody>
                 <?php
 
                 //First get default settings, then overwrite with settings from this user
@@ -580,19 +580,16 @@ require_once __DIR__ . '/Include/Header.php';
                 // Cancel, Save Buttons
                 ?>
 
-                <tr>
-                    <td colspan="3" class="text-center">
-                        <input type="submit" class="btn btn-primary" name="save"
-                            value="<?= gettext('Save Settings') ?>">
-                        <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
-                    </td>
-                </tr>
+                </tbody>
             </table>
+        </div>
+        <div class="d-flex gap-2 mt-3">
+            <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
+            <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
         </div>
         </form>
     </div>
 </div>
-<!-- /.box -->
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
