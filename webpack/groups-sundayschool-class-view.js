@@ -118,7 +118,10 @@ document.addEventListener("DOMContentLoaded", () => {
             dataTable.row($btn.closest("tr")).remove().draw();
           })
           .fail(() => {
-            window.CRM.notify(i18next.t("Failed to remove from class. Please try again."), { type: "danger", delay: 5000 });
+            window.CRM.notify(i18next.t("Failed to remove from class. Please try again."), {
+              type: "danger",
+              delay: 5000,
+            });
           });
       },
     });
