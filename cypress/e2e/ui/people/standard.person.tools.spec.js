@@ -4,7 +4,7 @@ describe("People Tools", () => {
     beforeEach(() => cy.setupStandardSession());
     
     it("Open the People Dashboard", () => {
-        cy.visit("v2/people/dashboard");
+        cy.visit("people/dashboard");
         cy.contains("People Dashboard");
         cy.contains("People Functions");
         cy.contains("Reports");

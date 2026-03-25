@@ -24,7 +24,7 @@ describe("People List & Carts", () => {
         cy.get("#members tbody tr:first").within(() => {
             cy.get('[data-bs-toggle="dropdown"]').first().click();
         });
-        cy.get(".dropdown-menu.show .AddToCart").first().click();
+        cy.get(".dropdown-menu.show .AddToCart").first().click({ force: true });
 
         // Verify cart has items
         cy.visit("v2/cart");

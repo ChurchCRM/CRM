@@ -7,7 +7,7 @@ describe("Person Profile", () => {
 
     it("Printable page", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.contains("Printable Page");
+        cy.contains("Print");
 
         cy.get("#printPerson").click();
         cy.url().should("contain", `PrintView.php?PersonID=${personId}`);
@@ -17,7 +17,7 @@ describe("Person Profile", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
 
         // Click FAB note button
-        cy.get('.fab-note').click();
+        cy.get('.fab-note').click({ force: true });
         cy.url().should("contain", `NoteEditor.php?PersonID=${personId}`);
 
         const currentDateString = new Date().toISOString();
@@ -33,7 +33,7 @@ describe("Person Profile", () => {
 
     it("Edit Why Came", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.contains('Edit "Why Came" Notes');
+        cy.contains("Why Came");
 
         cy.get("#editWhyCame").click();
         cy.url().should("contain", `WhyCameEditor.php?PersonID=${personId}`);

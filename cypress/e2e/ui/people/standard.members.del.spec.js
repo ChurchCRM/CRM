@@ -15,7 +15,7 @@ describe("Standard Family", () => {
         cy.url().should("contain", "PersonView.php").then((url) => {
             const personId = new URL(url).searchParams.get("PersonID");
 
-            cy.get("#deletePersonBtn").click();
+            cy.get("#deletePersonBtn").first().click();
             cy.get(".bootbox-accept").should("be.visible").click();
             cy.url().should("contain", "v2/dashboard");
 

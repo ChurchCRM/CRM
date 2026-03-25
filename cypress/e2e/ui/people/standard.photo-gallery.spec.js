@@ -8,6 +8,7 @@ describe("Photo Gallery Page", () => {
         cy.contains("Photo Directory");
         cy.get("#photosOnly-toggle").should("be.checked");
         // Docker has 1.jpg seeded — at least 1 person should appear
+        cy.get("#photo-grid", { timeout: 10000 }).should("exist");
         cy.get("#photo-grid .card").should("have.length.at.least", 1);
     });
 
