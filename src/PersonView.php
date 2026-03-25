@@ -32,12 +32,26 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
     RedirectUtils::securityRedirect('PersonView');
 }
 
-$sPageTitle = gettext('Person Profile');
-$sPageSubtitle = gettext('View detailed information about a person');
+$sPageTitle = InputUtils::escapeHTML($person->getFullName());
+$sPageSubtitle = gettext('Person Profile') . ' — ID: ' . $person->getId();
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
     [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())],
 ]);
+
+// Admin buttons at breadcrumb/header level
+$headerButtons = [];
+if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+    if (!$person->isUser()) {
+        $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/UserEditor.php?NewPersonID=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
+    } else {
+        $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/UserEditor.php?PersonID=' . $iPersonID, 'icon' => 'fa-user-secret'];
+        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
+    }
+} elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
+    $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye', 'adminOnly' => false];
+}
+$sPageHeaderButtons = PageHeader::buttons($headerButtons);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
@@ -187,30 +201,23 @@ $bOkToEdit = (
 
 ?>
 <div class="row">
-    <div class="col-lg-3 col-md-3 col-sm-3">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title" style="font-size: 1.5rem; font-weight: 600;">
-                    <?= $person->getFullName() ?>
-                </h3>
-                <div class="card-tools ms-auto">
-                    <span class="badge bg-light text-dark"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
-                </div>
-            </div>
-            <div class="card-body text-center">
-                <div class="image-container text-center">
-                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-lg mb-2">
+    <div class="col-lg-4">
+        <!-- Photo Card -->
+        <div class="card mb-3">
+            <div class="card-body text-center py-3">
+                <div class="image-container">
+                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-xl mb-2">
                     <?php if ($bOkToEdit) : ?>
                     <div class="photo-actions">
                         <div class="btn-group" role="group">
-                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
+                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-ghost-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
                                 <i class="fa-solid fa-magnifying-glass-plus"></i>
                             </a>
-                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-info" title="<?= gettext("Upload Photo") ?>">
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-ghost-info" title="<?= gettext("Upload Photo") ?>">
                                 <i class="fa-solid fa-camera"></i>
                             </a>
                             <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
-                            <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
+                            <a href="#" class="btn btn-sm btn-ghost-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
                                 <i class="fa-solid fa-trash-can"></i>
                             </a>
                             <?php endif; ?>
@@ -218,138 +225,51 @@ $bOkToEdit = (
                     </div>
                     <?php endif; ?>
                 </div>
-                
-                <ul class="list-group list-group-unbordered mb-3 mt-3">
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>
-                                <?php $genderClass ="fa-question";
-                                $genderText = gettext('Unknown');
-                                if ($person->isMale()) {
-                                    $genderClass ="fa-person";
-                                    $genderText = gettext('Male');
-                                } elseif ($person->isFemale()) {
-                                    $genderClass ="fa-person-dress";
-                                    $genderText = gettext('Female');
-                                } ?>
-                                <i class="fa <?= $genderClass ?> me-2"></i>
-                                <strong><?= gettext('Gender') ?>:</strong> <?= $genderText ?>
-                            </span>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>
-                                <i class="fa-solid fa-users me-2"></i>
-                                <strong><?= gettext('Family Role') ?>:</strong> <?= empty($sFamRole) ? gettext('Undefined') : gettext($sFamRole) ?>
-                            </span>
-                            <?php if ($bOkToEdit) : ?>
-                            <button id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>" class="btn btn-sm btn-primary" title="<?= gettext('Edit Role') ?>">
-                                <i class="fa-solid fa-pen"></i>
-                            </button>
-                            <?php endif; ?>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>
-                                <i class="fa-solid fa-id-card me-2"></i>
-                                <strong><?= gettext('Classification') ?>:</strong> <?= gettext($sClassName) ?>
-                            </span>
-                        </div>
-                        <?php if ($per_MembershipDate) : ?>
-                        <small class="text-muted d-block mt-1">
-                            <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Since') ?>: <?= FormatDate($per_MembershipDate, false) ?>
-                        </small>
-                        <?php endif; ?>
-                    </li>
-                </ul>
+                <!-- Person attributes -->
+                <?php
+                $genderClass = "fa-question";
+                $genderText = gettext('Unknown');
+                if ($person->isMale()) {
+                    $genderClass = "fa-person";
+                    $genderText = gettext('Male');
+                } elseif ($person->isFemale()) {
+                    $genderClass = "fa-person-dress";
+                    $genderText = gettext('Female');
+                }
+                ?>
+                <div class="mt-2">
+                    <span class="badge bg-secondary-lt text-secondary me-1"><i class="fa <?= $genderClass ?> me-1"></i><?= $genderText ?></span>
+                    <span class="badge bg-primary-lt text-primary me-1"><i class="fa-solid fa-id-card me-1"></i><?= gettext($sClassName) ?></span>
+                    <?php if (!empty($sFamRole)) : ?>
+                    <span class="badge bg-info-lt text-info"><i class="fa-solid fa-users me-1"></i><?= gettext($sFamRole) ?></span>
+                    <?php endif; ?>
+                </div>
+                <?php if ($per_MembershipDate) : ?>
+                <small class="text-muted d-block mt-1">
+                    <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Member since') ?> <?= FormatDate($per_MembershipDate, false) ?>
+                </small>
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Contact & Personal Info -->
-        <div class="card">
+        <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Contact & Personal Info') ?></h3>
             </div>
             <div class="card-body">
-                <!-- Family Section -->
-                <?php if ($fam_ID != '' || !empty($formattedMailingAddress)) : ?>
-                <div class="mb-3">
-                    <h6 class="text-muted mb-2"><i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family') ?></h6>
-                    <ul class="list-unstyled ms-3">
-                        <?php if ($fam_ID != '') : ?>
-                        <li class="mb-2">
-                            <i class="fa-solid fa-home me-2 text-muted"></i>
-                            <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $fam_ID ?>"><?= $fam_Name ?></a>
-                            <?php if ($bOkToEdit) : ?>
-                            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="ms-1" title="<?= gettext('Edit Family') ?>">
-                                <i class="fa-solid fa-pen fa-xs"></i>
-                            </a>
-                            <?php endif; ?>
-                        </li>
-                        <?php else : ?>
-                        <li class="mb-2 text-muted">
-                            <i class="fa-solid fa-home me-2"></i><?= gettext('No assigned family') ?>
-                        </li>
-                        <?php endif; ?>
-                        <?php if (!empty($formattedMailingAddress)) : ?>
-                        <li class="mb-2">
-                            <i class="fa-solid fa-location-dot me-2 text-muted"></i>
-                            <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer">
-                                <?= $formattedMailingAddress ?>
-                            </a>
-                        </li>
-                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
-                        <?php if (!empty($personDirectionsUrl)) : ?>
-                        <li class="mb-2">
-                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer"
-                               class="btn btn-sm btn-outline-primary">
-                                <i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Get Directions') ?>
-                            </a>
-                        </li>
-                        <?php endif; ?>
-                        <?php endif; ?>
-                    </ul>
-                    <?php
-                    // Build map config:
-                    // 1. Person's family has stored lat/lng → use coordinates directly (no API call).
-                    //    Use extracted SQL values ($fam_Latitude/$fam_Longitude) — more reliable
-                    //    than $person->getFamily() Propel lazy-load on this legacy page.
-                    // 2. Unaffiliated person (bHidePersonAddress=false) with own address → pass
-                    //    address string; person-view.js geocodes via Nominatim client-side.
-                    $personMapConfig = null;
-                    $famLat = (float) ($fam_Latitude ?? 0);
-                    $famLng = (float) ($fam_Longitude ?? 0);
-                    $familyHasCoords = !empty($fam_ID) && $famLat !== 0.0 && $famLng !== 0.0;
-                    if ($familyHasCoords) {
-                        $personMapConfig = ['lat' => $famLat, 'lng' => $famLng];
-                    } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
-                        $personMapConfig = ['address' => $plaintextMailingAddress];
-                    }
-                    ?>
-                    <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
-                    <button type="button" class="btn btn-sm btn-outline-success" id="refresh-coordinates-btn"
-                            data-family-id="<?= $fam_ID ?>"
-                            title="<?= gettext('Automatically detect coordinates using address') ?>">
-                        <i class="fa-solid fa-location-dot me-1"></i><?= gettext('Refresh Coordinates') ?>
-                    </button>
-                    <?php endif; ?>
-                    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
-                    <?php if ($personMapConfig !== null) : ?>
-                    <div class="mt-2">
-                        <div id="person-map" style="height: 180px; border-radius: 4px;"></div>
-                    </div>
-                    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-                        window.CRM = window.CRM || {};
-                        window.CRM.personMapConfig = <?= json_encode($personMapConfig) ?>;
-                    </script>
-                    <?php endif; ?>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
-                    <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
-                </div>
-                <?php endif; ?>
-
+                <?php
+                // Build map config for Family Members card (computed here, rendered in family card)
+                $personMapConfig = null;
+                $famLat = (float) ($fam_Latitude ?? 0);
+                $famLng = (float) ($fam_Longitude ?? 0);
+                $familyHasCoords = !empty($fam_ID) && $famLat !== 0.0 && $famLng !== 0.0;
+                if ($familyHasCoords) {
+                    $personMapConfig = ['lat' => $famLat, 'lng' => $famLng];
+                } elseif ($fam_ID === '' && !empty($per_Address1) && !SystemConfig::getValue('bHidePersonAddress')) {
+                    $personMapConfig = ['address' => $plaintextMailingAddress];
+                }
+                ?>
                 <!-- Personal Information -->
                 <?php if ($dBirthDate || (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '')) : ?>
                 <div class="mb-3">
@@ -577,7 +497,7 @@ $bOkToEdit = (
             </div>
         </div>
     </div>
-    <div class="col-lg-9 col-md-9 col-sm-9">
+    <div class="col-lg-8">
         <!-- Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2">
             <a class="btn btn-ghost-secondary" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></a>
@@ -590,23 +510,12 @@ $bOkToEdit = (
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
+                    <?php if ($bOkToEdit && $fam_ID != '') { ?>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
+                        <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
+                    <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
-                    <?php } ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/people"><i class="fa-solid fa-list me-2"></i><?= gettext("List Members") ?></a>
-                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-                        <div class="dropdown-divider"></div>
-                        <?php if (!$person->isUser()) { ?>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?NewPersonID=<?= $iPersonID ?>"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Make User') ?></a>
-                        <?php } else { ?>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/UserEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('Edit User') ?></a>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View User') ?></a>
-                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>/changePassword"><i class="fa-solid fa-key me-2"></i><?= gettext("Change Password") ?></a>
-                        <?php } ?>
-                    <?php } elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) { ?>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View User') ?></a>
-                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword"><i class="fa-solid fa-key me-2"></i><?= gettext("Change Password") ?></a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
@@ -616,13 +525,16 @@ $bOkToEdit = (
             </div>
         </div>
 
-        <!-- Family Members Card (standalone, not a tab) -->
+        <!-- Family Members Card -->
         <?php if ($person->getFamId() != '' && $person->getFamily() != null) { ?>
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
-                <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i><?= gettext('Family Members') ?></h3>
-                <div class="ms-auto">
-                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View Family') ?></a>
+                <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i><?= InputUtils::escapeHTML($fam_Name) ?> <?= gettext('Family') ?></h3>
+                <div class="ms-auto d-flex gap-1">
+                    <?php if ($bOkToEdit) { ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
+                    <?php } ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
             <div class="table-responsive">
@@ -638,12 +550,19 @@ $bOkToEdit = (
                     </thead>
                     <tbody>
                         <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
-                            $tmpPersonId = $familyMember->getId(); ?>
-                            <tr>
+                            $tmpPersonId = $familyMember->getId();
+                            $isSelf = ($tmpPersonId == $iPersonID);
+                        ?>
+                            <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
                                 <td>
                                     <div class="d-flex align-items-center">
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
-                                        <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
+                                        <?php if ($isSelf) { ?>
+                                            <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
+                                            <span class="badge bg-primary-lt text-primary ms-2"><?= gettext('You') ?></span>
+                                        <?php } else { ?>
+                                            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
+                                        <?php } ?>
                                     </div>
                                 </td>
                                 <td class="text-center">
@@ -657,6 +576,7 @@ $bOkToEdit = (
                                     <?php } ?>
                                 </td>
                                 <td>
+                                    <?php if (!$isSelf) { ?>
                                     <div class="dropdown">
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
@@ -668,12 +588,44 @@ $bOkToEdit = (
                                             <?php } ?>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
             </div>
+            <?php if (!empty($formattedMailingAddress)) : ?>
+            <div class="card-footer">
+                <div class="d-flex align-items-start gap-3">
+                    <div>
+                        <i class="fa-solid fa-location-dot me-1 text-muted"></i>
+                        <a href="https://maps.google.com/?q=<?= urlencode($plaintextMailingAddress) ?>" target="_blank" rel="noopener noreferrer"><?= $formattedMailingAddress ?></a>
+                        <?php $personDirectionsUrl = $person->getDirectionsUrl(); ?>
+                        <?php if (!empty($personDirectionsUrl)) : ?>
+                            <a href="<?= $personDirectionsUrl ?>" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-primary ms-2"><i class="fa-solid fa-diamond-turn-right me-1"></i><?= gettext('Directions') ?></a>
+                        <?php endif; ?>
+                        <?php if (!empty($fam_ID) && !$familyHasCoords) : ?>
+                            <button type="button" class="btn btn-sm btn-ghost-success ms-1" id="refresh-coordinates-btn" data-family-id="<?= $fam_ID ?>" title="<?= gettext('Refresh Coordinates') ?>">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </button>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.css') ?>">
+                <?php if ($personMapConfig !== null) : ?>
+                <div class="mt-2">
+                    <div id="person-map" style="height: 150px; border-radius: 4px;"></div>
+                </div>
+                <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+                    window.CRM = window.CRM || {};
+                    window.CRM.personMapConfig = <?= json_encode($personMapConfig) ?>;
+                </script>
+                <?php endif; ?>
+                <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
+                <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-person-view.min.js') ?>"></script>
+            </div>
+            <?php endif; ?>
         </div>
         <?php } ?>
 
@@ -707,7 +659,7 @@ $bOkToEdit = (
             <div class="card-body">
                 <div class="tab-content">
 
-                    <div class="tab-pane" id="timeline">
+                    <div class="tab-pane active" id="timeline">
                         <?php
                         $personTimeline = $timelineService->getForPerson($iPersonID);
                         if (empty($personTimeline)) { ?>
