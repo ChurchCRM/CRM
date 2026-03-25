@@ -69,8 +69,8 @@ describe("Person Profile", () => {
         const currentDateString = new Date().toISOString();
         const noteText = `This is a test note: ${currentDateString}`;
         cy.typeInQuill("NoteText", noteText);
-        // Click Save by text instead of style class
-        cy.contains('button', 'Save').click();
+        // Click the submit button (it's an <input type="submit">, not a <button>)
+        cy.get('input[type="submit"][name="Submit"]').click();
         cy.url().should("contain", `PersonView.php?PersonID=${personId}`);
 
         cy.get("#nav-item-timeline").click();
@@ -84,13 +84,10 @@ describe("Person Profile", () => {
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
         cy.url().should("contain", `WhyCameEditor.php?PersonID=${personId}`);
-        cy.get('tr:nth-child(1) textarea').clear().type('{backspace}');
-        cy.get('tr:nth-child(1) textarea').clear().type('I love the lord ');
-        cy.get('tr:nth-child(2) textarea').clear().type('{backspace}');
-        cy.get('tr:nth-child(2) textarea').clear().type('{backspace}');
-        cy.get('tr:nth-child(2) textarea').clear().type('the feeling of being included');
-        cy.get('tr:nth-child(3) textarea').clear().type('More Youth Meetings');
-        cy.get('tr:nth-child(4) textarea').clear().type('The website ');
+        cy.get('textarea[name="Join"]').clear().type('I love the lord ');
+        cy.get('textarea[name="Come"]').clear().type('the feeling of being included');
+        cy.get('textarea[name="Suggest"]').clear().type('More Youth Meetings');
+        cy.get('textarea[name="HearOfUs"]').clear().type('The website ');
         // Use text-based save to avoid relying on button style class
         cy.contains('button', 'Save').click();
 

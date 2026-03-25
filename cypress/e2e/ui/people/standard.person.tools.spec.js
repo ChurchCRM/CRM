@@ -6,10 +6,10 @@ describe("People Tools", () => {
     it("Open the People Dashboard", () => {
         cy.visit("people/dashboard");
         cy.contains("People Dashboard");
-        cy.contains("People Functions");
+        cy.contains("Quick Actions");
         cy.contains("Reports");
         cy.contains("Family Roles");
-        cy.contains("People Classification");
+        cy.contains("People by Classification");
         cy.contains("Gender Demographics");
     });
 
