@@ -388,8 +388,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <?= gettext('Existing Custom Person Fields') ?>
                     </h5>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
                             <thead class="table-light">
                                 <tr>
@@ -472,8 +471,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                         if ($row < $numRows) {
                                             echo '<a class="dropdown-item" href="PersonCustomFieldsRowOps.php?OrderID=' . $row . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                         }
+                                        if ($row != 1 || $row < $numRows) {
+                                            echo '<div class="dropdown-divider"></div>';
+                                        }
                                         ?>
-                                        <div class="dropdown-divider"></div>
                                         <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
                                             <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                         </button>
@@ -486,7 +487,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">

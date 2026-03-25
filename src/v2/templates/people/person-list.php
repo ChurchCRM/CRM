@@ -413,6 +413,11 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
+                            <?php if ($person->getFamId()): ?>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>">
+                                <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                            </a>
+                            <?php endif; ?>
                             <div class="dropdown-divider"></div>
                             <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false); ?>
                             <button type="button"

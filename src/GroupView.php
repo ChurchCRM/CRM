@@ -406,7 +406,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
             </div>
         </form>
         <!-- START GROUP MEMBERS LISTING  -->
-        <div class="table-responsive">
+        <div style="overflow: visible;">
             <table class="table table-striped table-hover table-sm" id="membersTable">
             </table>
         </div>

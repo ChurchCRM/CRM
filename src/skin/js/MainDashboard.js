@@ -408,7 +408,7 @@ export function initializeMainDashboard() {
     data: "PersonId",
     className: "no-export",
     render: function (data, type, row) {
-      return window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName);
+      return window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName, { familyId: row.FamilyId || null });
     },
     searchable: false,
   };

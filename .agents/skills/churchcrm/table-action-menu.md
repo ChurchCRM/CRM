@@ -38,29 +38,57 @@ Add `w-1` to the `<th>` / `<td>` so the column shrinks to fit the icon button an
 
 ---
 
-## Standard JS Pattern (DataTables / MainDashboard.js)
+## Shared JS Renderers (use these — do NOT duplicate inline) <!-- learned: 2026-03-24 -->
+
+`CRMJSOM.js` exposes two shared renderers on `window.CRM`. **Always use these** in DataTable `render:` functions instead of writing raw HTML strings.
 
 ```javascript
-function renderActionColumn(id, editUrl) {
-    return `
-        <div class="dropdown">
-            <button class="btn btn-sm btn-ghost-secondary" type="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="ti ti-dots-vertical"></i>
-            </button>
-            <div class="dropdown-menu dropdown-menu-end">
-                <a class="dropdown-item" href="${editUrl}">
-                    <i class="ti ti-pencil me-2"></i>${i18next.t('Edit')}
-                </a>
-                <div class="dropdown-divider"></div>
-                <button type="button" class="dropdown-item text-danger"
-                        data-id="${id}">
-                    <i class="ti ti-trash me-2"></i>${i18next.t('Delete')}
-                </button>
-            </div>
-        </div>`;
+// Standard person action menu: View → Edit → [View Family?] → [divider] → Cart → [divider] → Delete
+window.CRM.renderPersonActionMenu(personId, fullName, { familyId, inCart })
+
+// Standard family action menu: View → Edit → [divider] → Cart → [divider] → Delete
+window.CRM.renderFamilyActionMenu(familyId, familyName, { inCart })
+```
+
+- `familyId` — optional; when provided, adds a "View Family" item after Edit
+- `inCart` — optional; flips cart button to RemoveFromCart state
+- The global `.delete-person` delegated handler is registered in `CRMJSOM.js` — **no per-page copy needed**
+- These functions call `i18next.t()` at render time (safe: DataTables render after locales load)
+
+```javascript
+// DataTables column example
+{
+    title: i18next.t('Actions'),
+    data: null,
+    orderable: false,
+    searchable: false,
+    className: 'text-end w-1 no-export',
+    render: function(data, type, row) {
+        return window.CRM.renderPersonActionMenu(row.PersonId, row.FullName, { familyId: row.FamilyId });
+    }
 }
 ```
+
+For PHP-rendered tables (non-DataTables), write the HTML directly using the standard pattern below.
+
+---
+
+## Standard Person / Family Action Menu Order <!-- learned: 2026-03-24 -->
+
+All person and family action menus must have these 4 items in this exact order:
+
+| # | Item | Condition |
+|---|------|-----------|
+| 1 | **View** (`ti ti-eye`) | Always |
+| 2 | **Edit** (`ti ti-pencil`) | Always |
+| 2b | **View Family** (`ti ti-users`) | Only if `familyId` is available |
+| — | `dropdown-divider` | Always |
+| 3 | **Cart** (Add/Remove, `.AddToCart` / `.RemoveFromCart`) | Always |
+| — | `dropdown-divider` | Always |
+| 4 | **Delete** (`ti ti-trash`, `text-danger`) | Always |
+
+For persons, Delete uses a `.delete-person` button with `data-person_id` + `data-person_name` — handled globally by `CRMJSOM.js`.
+For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
@@ -117,16 +145,13 @@ When a row action toggles cart membership, use this pattern. It works with `cart
 
 ---
 
-## Order / Sort Actions
+## Order / Sort Actions <!-- learned: 2026-03-24 -->
 
-When rows support reordering (move up / move down):
+When rows support reordering (move up / move down), show the divider **only when at least one move action is present**. If there's only one row, no move items appear, and a lonely divider above Delete looks broken.
 
 ```php
 echo '<div class="dropdown-menu dropdown-menu-end">';
-echo '<a class="dropdown-item" href="Editor.php?act=delete&ID=' . $id . '">
-        <i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
 if ($row !== 1) {
-    echo '<div class="dropdown-divider"></div>';
     echo '<a class="dropdown-item" href="Editor.php?act=up&row_num=' . $row . '">
             <i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
 }
@@ -134,6 +159,12 @@ if ($row !== $numRows) {
     echo '<a class="dropdown-item" href="Editor.php?act=down&row_num=' . $row . '">
             <i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
 }
+// Only show divider when at least one move action is present
+if ($row !== 1 || $row !== $numRows) {
+    echo '<div class="dropdown-divider"></div>';
+}
+echo '<a class="dropdown-item text-danger" href="Editor.php?act=delete&ID=' . $id . '">
+        <i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
 echo '</div>';
 ```
 

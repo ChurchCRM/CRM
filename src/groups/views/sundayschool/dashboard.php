@@ -181,7 +181,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>
     </div>
-    <div class="card-body table-responsive">
+    <div class="card-body" style="overflow: visible;">
         <table id="sundayschoolMissing" class="table table-striped table-bordered data-table w-100">
             <thead>
                 <tr>
@@ -190,6 +190,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Birth Date') ?></th>
                     <th><?= gettext('Age') ?></th>
                     <th><?= gettext('Home Address') ?></th>
+                    <th class="w-1 no-export"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -212,17 +213,55 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     if ($personPhoto->hasUploadedPhoto()) {
                         $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
                     }
+                    $inCart = isset($_SESSION['aPeopleCart']) && in_array($kidId, $_SESSION['aPeopleCart'], false);
                     ?>
                     <tr>
                         <td>
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
-                                <?= htmlspecialchars($firstName) ?>
+                                <?= \ChurchCRM\Utils\InputUtils::escapeHTML($firstName) ?>
                             </a><?= $photoIcon ?>
                         </td>
-                        <td><?= htmlspecialchars($LastName) ?></td>
+                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($LastName) ?></td>
                         <td><?= $birthDate ?></td>
                         <td><?= $age ?></td>
-                        <td><?= htmlspecialchars($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td class="w-1">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    </a>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">
+                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    </a>
+                                    <?php if ($famId): ?>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $famId ?>">
+                                        <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                    </a>
+                                    <?php endif; ?>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                        data-cart-id="<?= $kidId ?>"
+                                        data-cart-type="person"
+                                        data-label-add="<?= gettext('Add to Cart') ?>"
+                                        data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                        <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                        <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                    </button>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item text-danger delete-person"
+                                        data-person_id="<?= $kidId ?>"
+                                        data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
+                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

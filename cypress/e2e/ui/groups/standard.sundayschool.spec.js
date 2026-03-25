@@ -16,6 +16,22 @@ describe("Standard Sunday School", () => {
         cy.contains("Students not in a Sunday School Class");
     });
 
+    it("Students not in a class table has action menus", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        cy.get("#sundayschoolMissing thead th").should("contain", "Actions");
+        cy.get("#sundayschoolMissing tbody tr").then(($rows) => {
+            if ($rows.length > 0) {
+                cy.get("#sundayschoolMissing tbody tr:first .btn-ghost-secondary").should("exist").click();
+                cy.get(".dropdown-menu.show").within(() => {
+                    cy.contains("View").should("exist");
+                    cy.contains("Edit").should("exist");
+                    cy.get(".AddToCart, .RemoveFromCart").should("exist");
+                    cy.contains("Delete").should("exist");
+                });
+            }
+        });
+    });
+
     it("SundaySchoolClassView shows students in the table (regression: deactivated-family students must not be excluded)", () => {
         cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
         cy.contains("Angels class");

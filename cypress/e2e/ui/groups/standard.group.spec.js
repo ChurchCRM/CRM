@@ -41,6 +41,33 @@ describe("Standard Groups", () => {
         cy.get("#deleteSelectedRows").should("be.visible");
     });
 
+    it("Group View members table has action menus", () => {
+        cy.visit("GroupView.php?GroupID=9");
+        cy.get("#membersTable", { timeout: 10000 }).should("exist");
+        cy.get("#membersTable tbody tr", { timeout: 10000 }).then(($rows) => {
+            if ($rows.length > 0) {
+                cy.get("#membersTable tbody tr:first .btn-ghost-secondary").should("exist").click();
+                cy.get(".dropdown-menu.show").within(() => {
+                    cy.contains("View").should("exist");
+                    cy.contains("Edit").should("exist");
+                    cy.contains("Change Role").should("exist");
+                    cy.get(".AddToCart, .RemoveFromCart").should("exist");
+                    cy.contains("Remove from Group").should("exist");
+                });
+            }
+        });
+    });
+
+    it("Groups dashboard table has action menus", () => {
+        cy.visit("groups/dashboard");
+        cy.get("#groupsTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
+        cy.get("#groupsTable tbody tr:first .btn-ghost-secondary").should("exist").click();
+        cy.get(".dropdown-menu.show").within(() => {
+            cy.contains("View").should("exist");
+            cy.contains("Edit").should("exist");
+        });
+    });
+
     it("Group Report", () => {
         cy.visit("GroupReports.php");
         cy.contains("Group reports");

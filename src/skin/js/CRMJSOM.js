@@ -471,8 +471,13 @@ window.CRM.dashboard = {
 window.CRM.renderPersonActionMenu = function (personId, personName, options) {
   options = options || {};
   var inCart = options.inCart || false;
+  var familyId = options.familyId || null;
   var root = window.CRM.root;
   var escapedName = window.CRM.escapeHtml(personName || "");
+  var familyItem = familyId
+    ? '<a class="dropdown-item" href="' + root + '/v2/family/' + familyId + '">' +
+      '<i class="ti ti-users me-2"></i>' + i18next.t("View Family") + "</a>"
+    : "";
   return (
     '<div class="dropdown">' +
     '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
@@ -483,6 +488,7 @@ window.CRM.renderPersonActionMenu = function (personId, personName, options) {
     '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
     '<a class="dropdown-item" href="' + root + '/PersonEditor.php?PersonID=' + personId + '">' +
     '<i class="ti ti-pencil me-2"></i>' + i18next.t("Edit") + "</a>" +
+    familyItem +
     '<div class="dropdown-divider"></div>' +
     '<button class="dropdown-item ' + (inCart ? "RemoveFromCart text-danger" : "AddToCart") + '" type="button"' +
     ' data-cart-id="' + personId + '" data-cart-type="person"' +

@@ -440,7 +440,9 @@ if (isset($_POST['SaveChanges'])) {
                                 if ($row != $numRows) {
                                     echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
-                                echo '<div class="dropdown-divider"></div>';
+                                if ($row !== 1 || $row != $numRows) {
+                                    echo '<div class="dropdown-divider"></div>';
+                                }
                                 echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 echo '</div>';
                                 echo '</div>';
