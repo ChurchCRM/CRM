@@ -459,6 +459,117 @@ window.CRM.dashboard = {
   },
 };
 
+/**
+ * Render a standard person action dropdown menu.
+ * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
+ * @param {number} personId
+ * @param {string} personName - Used in delete confirmation
+ * @param {Object} [options]
+ * @param {boolean} [options.inCart=false] - Whether person is already in cart
+ * @returns {string} HTML string
+ */
+window.CRM.renderPersonActionMenu = function (personId, personName, options) {
+  options = options || {};
+  var inCart = options.inCart || false;
+  var root = window.CRM.root;
+  var escapedName = window.CRM.escapeHtml(personName || "");
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' + root + '/PersonView.php?PersonID=' + personId + '">' +
+    '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
+    '<a class="dropdown-item" href="' + root + '/PersonEditor.php?PersonID=' + personId + '">' +
+    '<i class="ti ti-pencil me-2"></i>' + i18next.t("Edit") + "</a>" +
+    '<div class="dropdown-divider"></div>' +
+    '<button class="dropdown-item ' + (inCart ? "RemoveFromCart text-danger" : "AddToCart") + '" type="button"' +
+    ' data-cart-id="' + personId + '" data-cart-type="person"' +
+    ' data-label-add="' + i18next.t("Add to Cart") + '" data-label-remove="' + i18next.t("Remove from Cart") + '">' +
+    '<i class="' + (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") + ' me-2"></i>' +
+    '<span class="cart-label">' + (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) + "</span>" +
+    "</button>" +
+    '<div class="dropdown-divider"></div>' +
+    '<button type="button" class="dropdown-item text-danger delete-person"' +
+    ' data-person_id="' + personId + '" data-person_name="' + escapedName + '">' +
+    '<i class="ti ti-trash me-2"></i>' + i18next.t("Delete") + "</button>" +
+    "</div></div>"
+  );
+};
+
+/**
+ * Render a standard family action dropdown menu.
+ * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
+ * @param {number} familyId
+ * @param {string} familyName - Used in delete confirmation (unused currently but kept for parity)
+ * @param {Object} [options]
+ * @param {boolean} [options.inCart=false] - Whether family is already in cart
+ * @returns {string} HTML string
+ */
+window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
+  options = options || {};
+  var inCart = options.inCart || false;
+  var root = window.CRM.root;
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' + root + '/v2/family/' + familyId + '">' +
+    '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
+    '<a class="dropdown-item" href="' + root + '/FamilyEditor.php?FamilyID=' + familyId + '">' +
+    '<i class="ti ti-pencil me-2"></i>' + i18next.t("Edit") + "</a>" +
+    '<div class="dropdown-divider"></div>' +
+    '<button class="dropdown-item ' + (inCart ? "RemoveFromCart text-danger" : "AddToCart") + '" type="button"' +
+    ' data-cart-id="' + familyId + '" data-cart-type="family"' +
+    ' data-label-add="' + i18next.t("Add to Cart") + '" data-label-remove="' + i18next.t("Remove from Cart") + '">' +
+    '<i class="' + (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") + ' me-2"></i>' +
+    '<span class="cart-label">' + (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) + "</span>" +
+    "</button>" +
+    '<div class="dropdown-divider"></div>' +
+    '<a class="dropdown-item text-danger" href="' + root + '/SelectDelete.php?FamilyID=' + familyId + '">' +
+    '<i class="ti ti-trash me-2"></i>' + i18next.t("Delete") + "</a>" +
+    "</div></div>"
+  );
+};
+
+// Global delegated handler for .delete-person buttons (rendered in DataTables or PHP templates).
+// Set up after locales are ready so i18next.t() is available in the confirmation dialog.
+(function setupPersonDeleteHandler() {
+  function register() {
+    if (!window.jQuery) return;
+    window.jQuery(document).on("click", ".delete-person", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $btn = window.jQuery(this);
+      var personId = $btn.data("person_id");
+      var personName = $btn.data("person_name");
+      bootbox.confirm({
+        title: i18next.t("Delete this person?"),
+        message: i18next.t("Do you want to delete this person?  This cannot be undone.") + " <b>" + window.CRM.escapeHtml(String(personName || "")) + "</b>",
+        buttons: {
+          cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+        },
+        callback: function (result) {
+          if (result) {
+            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(function () {
+              location.reload();
+            });
+          }
+        },
+      });
+    });
+  }
+  if (window.CRM && window.CRM.localesLoaded) {
+    register();
+  } else {
+    window.addEventListener("CRM.localesReady", register, { once: true });
+  }
+})();
+
 function LimitTextSize(theTextArea, size) {
   if (theTextArea.value.length > size) {
     theTextArea.value = theTextArea.value.substr(0, size);

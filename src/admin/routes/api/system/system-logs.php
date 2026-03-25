@@ -102,6 +102,34 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         return $response->withHeader('Content-Type', 'application/json');
     });
 
+    // Download log file
+    $group->get('/{filename}/download', function (Request $request, Response $response, array $args): Response {
+        $filename = $args['filename'] ?? '';
+
+        if (strpos($filename, '..') !== false) {
+            return $response->withStatus(400);
+        }
+        if (!preg_match('/^[a-zA-Z0-9\-_\.]+\.log$/', $filename)) {
+            return $response->withStatus(400);
+        }
+
+        $logPath = __DIR__ . '/../../../../logs/' . $filename;
+        $realLogsDir = realpath(__DIR__ . '/../../../../logs/');
+        if (!$realLogsDir || !file_exists($logPath)) {
+            return $response->withStatus(404);
+        }
+        $realLogPath = realpath($logPath);
+        if (!$realLogPath || strpos($realLogPath, $realLogsDir) !== 0) {
+            return $response->withStatus(400);
+        }
+
+        $content = file_get_contents($realLogPath);
+        $response->getBody()->write($content);
+        return $response
+            ->withHeader('Content-Type', 'text/plain')
+            ->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+    });
+
     // Delete log file
     $group->delete('/{filename}', function (Request $request, Response $response, array $args): Response {
         $filename = $args['filename'] ?? '';

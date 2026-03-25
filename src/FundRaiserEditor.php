@@ -154,100 +154,102 @@ require_once __DIR__ . '/Include/Header.php';
     </table>
 
 </div>
+<?php if ($iFundRaiserID > 0): ?>
 <div class="card-body">
-    <table cellpadding="3" width="100%">
-    <tr>
-        <td>
-        <?php
-            if ($iFundRaiserID > 0) {
-                echo '<input id=addItem type=button class="btn btn-secondary" value="' . gettext('Add Donated Item') ."\" name=AddDonatedItem onclick=\"javascript:document.location='DonatedItemEditor.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Catalog') ."\" name=GenerateCatalog onclick=\"javascript:document.location='Reports/FRCatalog.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Bid Sheets') ."\" name=GenerateBidSheets onclick=\"javascript:document.location='Reports/FRBidSheets.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Generate Certificates') ."\" name=GenerateCertificates onclick=\"javascript:document.location='Reports/FRCertificates.php?CurrentFundraiser=$iFundRaiserID';\">\n";
-                echo '<input type=button class="btn btn-secondary" value="' . gettext('Batch Winner Entry') ."\" name=BatchWinnerEntry onclick=\"javascript:document.location='BatchWinnerEntry.php?CurrentFundraiser=$iFundRaiserID&linkBack=FundRaiserEditor.php?FundRaiserID=$iFundRaiserID&CurrentFundraiser=$iFundRaiserID';\">\n";
-            }
-        ?></td>
-    </tr>
-    </table>            
-</div>
-<div class="card-body">
-    <b><?= gettext('Donated items for this fundraiser') ?>:</b>
-    <br>
-    <div class="table-responsive">
-        <table class="table w-100">
-            <thead>
-            <tr>
-                <th><?= gettext('Item') ?></th>
-                <th><?= gettext('Multiple') ?></th>
-                <th><?= gettext('Donor') ?></th>
-                <th><?= gettext('Buyer') ?></th>
-                <th><?= gettext('Title') ?></th>
-                <th><?= gettext('Sale Price') ?></th>
-                <th><?= gettext('Estimated value') ?></th>
-                <th><?= gettext('Material Value') ?></th>
-                <th><?= gettext('Minimum Price') ?></th>
-                <th><?= gettext('Delete') ?></th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php
-            $tog = 0;
-
-            //Loop through all donated items
-            if ($rsDonatedItems != 0) {
-                while ($aRow = mysqli_fetch_array($rsDonatedItems)) {
-                    extract($aRow);
-
-                    if ($di_Item == '') {
-                        $di_Item = '~';
-                    }
-
-                    ?>
-                    <tr>
-                        <td>
-                            <a href="DonatedItemEditor.php?DonatedItemID=<?= (int)$di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . (int)$iFundRaiserID ?>"><?= InputUtils::escapeHTML($di_Item) ?></a>
-                        </td>
-                        <td>
-                            <?php if ($di_multibuy) {
-                                echo 'X';
-                            } ?>&nbsp;
-                        </td>
-                        <td>
-                            <?= InputUtils::escapeHTML($donorFirstName) . ' ' . InputUtils::escapeHTML($donorLastName) ?>&nbsp;
-                        </td>
-                        <td>
-                            <?php if ($di_multibuy) {
-                                echo gettext('Multiple');
-                            } else {
-                                echo InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
-                            } ?>&nbsp;
-                        </td>
-                        <td>
-                            <?= InputUtils::escapeHTML($di_title) ?>&nbsp;
-                        </td>
-                        <td align=center>
-                            <?= InputUtils::escapeHTML($di_sellprice) ?>&nbsp;
-                        </td>
-                        <td align=center>
-                            <?= InputUtils::escapeHTML($di_estprice) ?>&nbsp;
-                        </td>
-                        <td align=center>
-                            <?= InputUtils::escapeHTML($di_materialvalue) ?>&nbsp;
-                        </td>
-                        <td align=center>
-                            <?= InputUtils::escapeHTML($di_minimum) ?>&nbsp;
-                        </td>
-                        <td>
-                            <a href="DonatedItemDelete.php?DonatedItemID=<?= (int)$di_ID . '&linkBack=FundRaiserEditor.php?FundRaiserID=' . (int)$iFundRaiserID ?>">Delete</a>
-                        </td>
-                    </tr>
-                    <?php
-                } // while
-            } // if
-            ?>
-            </tbody>
-        </table>
+    <div class="d-flex flex-wrap gap-2">
+        <a href="DonatedItemEditor.php?CurrentFundraiser=<?= $iFundRaiserID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= $iFundRaiserID ?>&CurrentFundraiser=<?= $iFundRaiserID ?>" class="btn btn-success">
+            <i class="ti ti-plus me-1"></i><?= gettext('Add Donated Item') ?>
+        </a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ti ti-file-text me-1"></i><?= gettext('Reports') ?>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="Reports/FRCatalog.php?CurrentFundraiser=<?= $iFundRaiserID ?>">
+                    <i class="ti ti-book me-2"></i><?= gettext('Generate Catalog') ?>
+                </a>
+                <a class="dropdown-item" href="Reports/FRBidSheets.php?CurrentFundraiser=<?= $iFundRaiserID ?>">
+                    <i class="ti ti-list me-2"></i><?= gettext('Generate Bid Sheets') ?>
+                </a>
+                <a class="dropdown-item" href="Reports/FRCertificates.php?CurrentFundraiser=<?= $iFundRaiserID ?>">
+                    <i class="ti ti-certificate me-2"></i><?= gettext('Generate Certificates') ?>
+                </a>
+            </div>
+        </div>
+        <a href="BatchWinnerEntry.php?CurrentFundraiser=<?= $iFundRaiserID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= $iFundRaiserID ?>&CurrentFundraiser=<?= $iFundRaiserID ?>" class="btn btn-secondary">
+            <i class="ti ti-trophy me-1"></i><?= gettext('Batch Winner Entry') ?>
+        </a>
     </div>
 </div>
+<div class="card-body" style="overflow: visible;">
+    <h6 class="fw-bold mb-3"><?= gettext('Donated items for this fundraiser') ?></h6>
+    <table class="table table-vcenter table-hover w-100">
+        <thead>
+        <tr>
+            <th><?= gettext('Item') ?></th>
+            <th><?= gettext('Multiple') ?></th>
+            <th><?= gettext('Donor') ?></th>
+            <th><?= gettext('Buyer') ?></th>
+            <th><?= gettext('Title') ?></th>
+            <th><?= gettext('Sale Price') ?></th>
+            <th><?= gettext('Est. Value') ?></th>
+            <th><?= gettext('Material') ?></th>
+            <th><?= gettext('Minimum') ?></th>
+            <th class="w-1 no-export"><?= gettext('Actions') ?></th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        //Loop through all donated items
+        if ($rsDonatedItems != 0) {
+            while ($aRow = mysqli_fetch_array($rsDonatedItems)) {
+                extract($aRow);
+
+                if ($di_Item == '') {
+                    $di_Item = '~';
+                }
+
+                ?>
+                <tr>
+                    <td><?= InputUtils::escapeHTML($di_Item) ?></td>
+                    <td><?= $di_multibuy ? '<span class="badge bg-info">X</span>' : '' ?></td>
+                    <td><?= InputUtils::escapeHTML($donorFirstName) . ' ' . InputUtils::escapeHTML($donorLastName) ?></td>
+                    <td>
+                        <?php if ($di_multibuy) {
+                            echo '<span class="text-muted">' . gettext('Multiple') . '</span>';
+                        } else {
+                            echo InputUtils::escapeHTML($buyerFirstName) . ' ' . InputUtils::escapeHTML($buyerLastName);
+                        } ?>
+                    </td>
+                    <td><?= InputUtils::escapeHTML($di_title) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($di_sellprice) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($di_estprice) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($di_materialvalue) ?></td>
+                    <td class="text-end"><?= InputUtils::escapeHTML($di_minimum) ?></td>
+                    <td class="w-1">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="DonatedItemEditor.php?DonatedItemID=<?= (int)$di_ID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
+                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="DonatedItemDelete.php?DonatedItemID=<?= (int)$di_ID ?>&linkBack=FundRaiserEditor.php?FundRaiserID=<?= (int)$iFundRaiserID ?>">
+                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <?php
+            } // while
+        } // if
+        ?>
+        </tbody>
+    </table>
+</div>
+<?php endif; ?>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

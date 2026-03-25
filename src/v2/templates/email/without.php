@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Families Without Emails") ?></h3>
             </div>
-            <div class="card-body p-0">
+            <div class="card-body p-0" style="overflow: visible;">
                 <table id="noEmails" class="table table-vcenter table-hover card-table">
                     <tbody></tbody>
                 </table>
@@ -33,17 +33,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 {
                     title: i18next.t('Family'),
                     data: 'Name',
-                    width: '40%',
                     render: function ( data, type, row ){
-                        return"<a href='"+ window.CRM.root +"/v2/family/" + row.Id +"' target='family' />"+ data +"</a></li>";
+                        return"<a href='"+ window.CRM.root +"/v2/family/" + row.Id +"'>"+ $('<div>').text(data).html() +"</a>";
                     },
                     searchable: true
                 },
                 {
                     title: i18next.t('Address'),
-                    data: 'Address',
-                    width: '60%'
+                    data: 'Address'
                 },
+                {
+                    title: i18next.t('Actions'),
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    className: 'text-end w-1 no-export',
+                    render: function(data, type, row) {
+                        return window.CRM.renderFamilyActionMenu(row.Id, row.Name);
+                    }
+                }
             ]
         }
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
@@ -54,10 +62,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function () {
         window.CRM.onLocalesReady(initializeEmailWithout);
     });
-
-    function peopleToString(people) {
-        return people.length;
-    }
 </script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

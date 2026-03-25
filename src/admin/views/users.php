@@ -134,9 +134,8 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
             <span class="badge bg-info text-white"><?= $userStats['total'] ?> <?= gettext('total') ?></span>
         </div>
     </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-hover w-100" id="user-listing-table">
+    <div class="card-body" style="overflow: visible;">
+        <table class="table table-hover w-100" id="user-listing-table">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
@@ -216,7 +215,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
                     } ?>
                 </tbody>
             </table>
-        </div>
     </div>
 
 </div>

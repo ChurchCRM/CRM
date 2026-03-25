@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-home"></i> <?= gettext('Families') ?></h3>
     </div>
-    <div class="card-body p-0">
+    <div class="card-body p-0" style="overflow: visible;">
         <table class="table table-vcenter table-hover card-table" id="families">
             <thead>
                 <tr>
@@ -123,23 +123,34 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
                     <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
                     <td><?php if ($family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
-                    <td class="text-end">
-                        <a href='<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>' class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>">
-                            <i class="fa-solid fa-pen"></i>
-                        </a>
-                        <?php if ($isInCart) { ?>
-                            <span class="RemoveFromCart ms-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                                <button type="button" class="btn btn-sm btn-danger" title="<?= gettext('Remove from Cart') ?>">
-                                    <i class="fa-solid fa-shopping-cart fa-sm"></i>
+                    <td class="w-1">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $family->getId() ?>">
+                                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                </a>
+                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">
+                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <button type="button"
+                                    class="dropdown-item <?= $isInCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                    data-cart-id="<?= $family->getId() ?>"
+                                    data-cart-type="family"
+                                    data-label-add="<?= gettext('Add to Cart') ?>"
+                                    data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                    <i class="<?= $isInCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                    <span class="cart-label"><?= $isInCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
                                 </button>
-                            </span>
-                        <?php } else { ?>
-                            <span class="AddToCart ms-1" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
-                                <button type="button" class="btn btn-sm btn-primary" title="<?= gettext('Add to Cart') ?>">
-                                    <i class="fa-solid fa-cart-plus fa-sm"></i>
-                                </button>
-                            </span>
-                        <?php } ?>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="<?= SystemURLs::getRootPath() ?>/SelectDelete.php?FamilyID=<?= $family->getId() ?>">
+                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                </a>
+                            </div>
+                        </div>
                     </td>
                 </tr>
                 <?php } ?>

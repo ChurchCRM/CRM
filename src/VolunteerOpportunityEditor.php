@@ -402,18 +402,17 @@ if (isset($_POST['SaveChanges'])) {
                             <?= gettext('Existing Volunteer Opportunities') ?>
                         </h5>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-sm">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th><?= gettext('Order') ?></th>
-                                        <th><?= gettext('Name') ?></th>
-                                        <th><?= gettext('Description') ?></th>
-                                        <th class="text-center no-export"><?= gettext('Actions') ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div class="card-body" style="overflow: visible;">
+                        <table class="table table-hover table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th><?= gettext('Order') ?></th>
+                                    <th><?= gettext('Name') ?></th>
+                                    <th><?= gettext('Description') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
                         <?php
                         for ($row = 1; $row <= $numRows; $row++) {
@@ -429,19 +428,20 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'desc" value="' . InputUtils::escapeAttribute($aDescFields[$row]) . '" class="form-control form-control-sm" maxlength="100">';
                                 echo '</td>';
-                                echo '<td>';
+                                echo '<td class="w-1">';
                                 echo '<div class="dropdown">';
                                 echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">';
                                 echo '<i class="ti ti-dots-vertical"></i>';
                                 echo '</button>';
                                 echo '<div class="dropdown-menu dropdown-menu-end">';
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 if ($row !== 1) {
                                     echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                 }
                                 if ($row != $numRows) {
                                     echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
+                                echo '<div class="dropdown-divider"></div>';
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
                                 echo '</div>';
                                 echo '</div>';
                                 echo '</td>';
@@ -450,9 +450,8 @@ if (isset($_POST['SaveChanges'])) {
                         }
                         ?>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 

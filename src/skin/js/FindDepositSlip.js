@@ -124,12 +124,7 @@ function initializeDepositSlip() {
         data: "Id",
         render: function (data, type, full, meta) {
           if (type === "display") {
-            return (
-              "<a href='DepositSlipEditor.php?DepositSlipID=" +
-              full.Id +
-              '\'><i class="fa-solid fa-magnifying-glass-plus"></i></a>' +
-              full.Id
-            );
+            return full.Id;
           } else {
             return parseInt(full.Id);
           }
@@ -171,15 +166,71 @@ function initializeDepositSlip() {
         data: "Type",
         searchable: true,
       },
+      {
+        title: i18next.t("Actions"),
+        data: null,
+        orderable: false,
+        searchable: false,
+        className: "text-end w-1 no-export",
+        render: function (data, type, full, meta) {
+          var addPaymentUrl = window.CRM.root +
+            "/PledgeEditor.php?CurrentDeposit=" + full.Id +
+            "&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php%3FDepositSlipID%3D" + full.Id +
+            "&PledgeOrPayment=Payment&CurrentDeposit=" + full.Id;
+          return (
+            '<div class="dropdown">' +
+            '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+            '<i class="ti ti-dots-vertical"></i>' +
+            "</button>" +
+            '<div class="dropdown-menu dropdown-menu-end">' +
+            '<a class="dropdown-item" href="' + window.CRM.root + '/DepositSlipEditor.php?DepositSlipID=' + full.Id + '">' +
+            '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
+            '<a class="dropdown-item" href="' + addPaymentUrl + '">' +
+            '<i class="ti ti-plus me-2"></i>' + i18next.t("Add Payment") + "</a>" +
+            '<div class="dropdown-divider"></div>' +
+            '<button type="button" class="dropdown-item text-danger delete-deposit-row" data-deposit-id="' + full.Id + '">' +
+            '<i class="ti ti-trash me-2"></i>' + i18next.t("Delete") + "</button>" +
+            "</div></div>"
+          );
+        },
+      },
     ],
     order: [0, "desc"],
   };
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
   dataT = $("#depositsTable").DataTable(dataTableConfig);
 
-  $("#depositsTable tbody").on("click", "tr", function () {
+  $("#depositsTable tbody").on("click", "tr", function (e) {
+    // Don't toggle selection when clicking dropdown or its children
+    if ($(e.target).closest(".dropdown").length) return;
     $(this).toggleClass("selected");
     updateSelectedCount();
+  });
+
+  $(document).on("click", ".delete-deposit-row", function (e) {
+    e.stopPropagation();
+    var depositId = $(this).data("deposit-id");
+    bootbox.confirm({
+      title: i18next.t("Confirm Delete"),
+      message: "<p>" + i18next.t("Are you sure you want to delete this deposit?") + "</p>" +
+        "<p>" + i18next.t("This will also delete all payments associated with this deposit") + "</p>" +
+        "<p>" + i18next.t("This action CANNOT be undone, and may have legal implications!") + "</p>",
+      buttons: {
+        cancel: { label: i18next.t("Close") },
+        confirm: { label: i18next.t("Delete") },
+      },
+      callback: function (result) {
+        if (result) {
+          window.CRM.APIRequest({
+            method: "DELETE",
+            path: "deposits/" + depositId,
+          }).done(function () {
+            dataT.ajax.reload();
+            updateSelectedCount();
+          });
+        }
+      },
+    });
   });
 
   $(".exportButton").click(function (sender) {

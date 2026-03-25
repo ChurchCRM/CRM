@@ -3,7 +3,6 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
@@ -60,20 +59,37 @@ require_once __DIR__ . '/Include/Header.php';
     </table>
 </div>
 <div class="card-body">
-  <div class="card-body table-responsive">
+  <div class="card-body" style="overflow: visible;">
     <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
         <thead>
             <tr>
                 <th><?= gettext('Title') ?></th>
                 <th><?= gettext('Date') ?></th>
+                <th class="w-1 no-export"><?= gettext('Actions') ?></th>
             </tr>
         </thead>
         <tbody>
             <?php
             foreach ($fundraisers as $fundraiser) { ?>
                 <tr>
-                    <td><a href="FundRaiserEditor.php?FundRaiserID=<?= $fundraiser->getId() ?>"> <?= $fundraiser->getTitle() ?> </a></td>
+                    <td><?= InputUtils::escapeHTML($fundraiser->getTitle()) ?></td>
                     <td><?= $fundraiser->getDate()->format($sDateFormat) ?></td>
+                    <td class="w-1">
+                        <div class="dropdown">
+                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="ti ti-dots-vertical"></i>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end">
+                                <a class="dropdown-item" href="FundRaiserEditor.php?FundRaiserID=<?= $fundraiser->getId() ?>">
+                                    <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item text-danger" href="FundRaiserDelete.php?FundRaiserID=<?= $fundraiser->getId() ?>&linkBack=FindFundRaiser.php" onclick="return confirm('<?= gettext('Are you sure you want to delete this fundraiser?') ?>')">
+                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                </a>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>

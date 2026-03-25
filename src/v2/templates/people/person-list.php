@@ -407,6 +407,9 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             <i class="ti ti-dots-vertical"></i>
                         </button>
                         <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $person->getId() ?>">
+                                <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                            </a>
                             <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
                                 <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                             </a>
@@ -420,6 +423,13 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                                 data-label-remove="<?= gettext('Remove from Cart') ?>">
                                 <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
                                 <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                            </button>
+                            <div class="dropdown-divider"></div>
+                            <button type="button"
+                                class="dropdown-item text-danger delete-person"
+                                data-person_id="<?= $person->getId() ?>"
+                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
+                                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                             </button>
                         </div>
                     </div>
@@ -853,6 +863,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             var personId = $(this).data('person-id');
             window.CRM.showPhotoLightbox('person', personId);
         });
+
+        // .delete-person clicks are handled globally by CRMJSOM.js
     });
 
 </script>

@@ -396,19 +396,18 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                     <?= gettext('Existing Custom Family Fields') ?>
                 </h5>
             </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-hover table-sm">
-                        <thead class="table-light">
-                            <tr>
-                                <th><?= gettext('Type') ?></th>
-                                <th><?= gettext('Name') ?></th>
-                                <th><?= gettext('Special option') ?></th>
-                                <th><?= gettext('Security Option') ?></th>
-                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div class="card-body" style="overflow: visible;">
+                <table class="table table-hover table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th><?= gettext('Type') ?></th>
+                            <th><?= gettext('Name') ?></th>
+                            <th><?= gettext('Special option') ?></th>
+                            <th><?= gettext('Security Option') ?></th>
+                            <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
             <?php
 
             for ($row = 1; $row <= $numRows; $row++) {
@@ -493,9 +492,8 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                 <?php
     } ?>
 
-                        </tbody>
-                    </table>
-                </div>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="d-flex justify-content-center my-3">

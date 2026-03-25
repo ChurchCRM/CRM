@@ -151,19 +151,21 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                                     <td><?= number_format($logFile['size'] / 1024, 2) ?> KB</td>
                                     <td><?= date('Y-m-d H:i:s', $logFile['modified']) ?></td>
                                     <td class="text-center w-1">
-                                        <div class="btn-list flex-nowrap">
-                                            <div class="dropdown">
-                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item view-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                        <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
-                                                    </a>
-                                                    <a class="dropdown-item delete-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
-                                                        <i class="fa-solid fa-trash me-2 text-danger"></i><?= gettext('Delete') ?>
-                                                    </a>
-                                                </div>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a class="dropdown-item view-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                    <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                                </a>
+                                                <a class="dropdown-item download-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                    <i class="ti ti-download me-2"></i><?= gettext('Download') ?>
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item text-danger delete-log" href="#" data-log-name="<?= InputUtils::escapeHTML($logFile['name']) ?>">
+                                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                </a>
                                             </div>
                                         </div>
                                     </td>
@@ -249,6 +251,13 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                 var fileName = $(this).data('log-name');
                 currentLogFile = fileName;
                 loadLogFile(fileName);
+            });
+
+            $(document).on('click', '.download-log', function(e) {
+                e.preventDefault();
+                var fileName = $(this).data('log-name');
+                var url = window.CRM.path + 'api/system/logs/' + encodeURIComponent(fileName) + '/download';
+                window.location.href = url;
             });
 
             $(document).on('click', '.delete-log', function(e) {

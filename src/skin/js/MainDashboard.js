@@ -59,36 +59,7 @@ export function initializeMainDashboard() {
     data: "FamilyId",
     className: "no-export",
     render: function (data, type, row) {
-      return (
-        '<div class="dropdown">' +
-        '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
-        '<i class="ti ti-dots-vertical"></i>' +
-        "</button>" +
-        '<div class="dropdown-menu dropdown-menu-end">' +
-        '<a class="dropdown-item" href="' +
-        window.CRM.root +
-        "/FamilyEditor.php?FamilyID=" +
-        row.FamilyId +
-        '">' +
-        '<i class="ti ti-pencil me-2"></i>' +
-        i18next.t("Edit") +
-        "</a>" +
-        '<div class="dropdown-divider"></div>' +
-        '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
-        row.FamilyId +
-        '" data-cart-type="family" data-label-add="' +
-        i18next.t("Add to Cart") +
-        '" data-label-remove="' +
-        i18next.t("Remove from Cart") +
-        '">' +
-        '<i class="ti ti-shopping-cart-plus me-2"></i>' +
-        '<span class="cart-label">' +
-        i18next.t("Add to Cart") +
-        "</span>" +
-        "</button>" +
-        "</div>" +
-        "</div>"
-      );
+      return window.CRM.renderFamilyActionMenu(row.FamilyId, row.Name);
     },
     searchable: false,
   };
@@ -437,36 +408,7 @@ export function initializeMainDashboard() {
     data: "PersonId",
     className: "no-export",
     render: function (data, type, row) {
-      return (
-        '<div class="dropdown">' +
-        '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
-        '<i class="ti ti-dots-vertical"></i>' +
-        "</button>" +
-        '<div class="dropdown-menu dropdown-menu-end">' +
-        '<a class="dropdown-item" href="' +
-        window.CRM.root +
-        "/PersonEditor.php?PersonID=" +
-        row.PersonId +
-        '">' +
-        '<i class="ti ti-pencil me-2"></i>' +
-        i18next.t("Edit") +
-        "</a>" +
-        '<div class="dropdown-divider"></div>' +
-        '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
-        row.PersonId +
-        '" data-cart-type="person" data-label-add="' +
-        i18next.t("Add to Cart") +
-        '" data-label-remove="' +
-        i18next.t("Remove from Cart") +
-        '">' +
-        '<i class="ti ti-shopping-cart-plus me-2"></i>' +
-        '<span class="cart-label">' +
-        i18next.t("Add to Cart") +
-        "</span>" +
-        "</button>" +
-        "</div>" +
-        "</div>"
-      );
+      return window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName);
     },
     searchable: false,
   };

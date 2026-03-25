@@ -412,25 +412,24 @@ if ($embedded) {
                         <?= gettext('Existing') . ' ' . $adjplusnameplural ?>
                     </h5>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-sm mb-0">
-                            <thead class="table-light">
-                                <tr>
-                                    <th style="width: 80px;"><?= gettext('Order') ?></th>
-                                    <th><?= gettext('Name') ?></th>
-                                    <?php
-                                    if ($mode == 'grproles') {
-                                        echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
-                                    }
-                                    if ($mode === 'classes') {
-                                        echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
-                                    }
-                                    ?>
-                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="card-body" style="overflow: visible;">
+                    <table class="table table-hover table-sm mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 80px;"><?= gettext('Order') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <?php
+                                if ($mode == 'grproles') {
+                                    echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
+                                }
+                                if ($mode === 'classes') {
+                                    echo '<th style="width: 100px;">' . gettext('Inactive') . '</th>';
+                                }
+                                ?>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
                 <?php
                 $aInactiveClassificationIds = explode(',', SystemConfig::getValue('sInactiveClassification'));
@@ -501,11 +500,11 @@ if ($embedded) {
                         </tr>
                     <?php
                     } ?>
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </div>
 
     <div class="d-flex mt-3 justify-content-center">
         <button type="submit" class="btn btn-primary me-2" name="SaveChanges">

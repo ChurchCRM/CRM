@@ -225,18 +225,17 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <?= gettext('Existing Donation Funds') ?>
                     </h5>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-sm">
-                            <thead class="table-light">
-                                <tr>
-                                    <th><?= gettext('Name') ?></th>
-                                    <th><?= gettext('Description') ?></th>
-                                    <th><?= gettext('Active') ?></th>
-                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="card-body" style="overflow: visible;">
+                    <table class="table table-hover table-sm">
+                        <thead class="table-light">
+                            <tr>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Description') ?></th>
+                                <th><?= gettext('Active') ?></th>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
                                 <?php
                                 for ($row = 0; $row < $donationFunds->count(); $row++) {
                                     ?>
@@ -295,9 +294,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     </tr>
                                     <?php
                                 } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">
