@@ -18,7 +18,7 @@ $sPageTitle = gettext('Custom Family Fields Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card-body">
+<p class="text-muted mb-3"><?= gettext('Define custom fields to collect additional family data') ?></p>
 
 <?php
 
@@ -241,7 +241,7 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 
 function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 {
-    $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
+    $sOptList = '<select name="' . $fld_name . '" class="form-select form-select-sm">';
     $grp_Count = count($aSecGrp);
 
     for ($i = 0; $i < $grp_Count; $i++) {
@@ -327,7 +327,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
             <div class="row">
                 <div class="col-md-3">
                     <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                    <select id="newFieldType" name="newFieldType" class="form-control">
+                    <select id="newFieldType" name="newFieldType" class="form-select">
                         <?php
                         for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
                             echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
@@ -390,11 +390,12 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         }
         ?>
         <div class="card">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header d-flex align-items-center">
                 <h5 class="mb-0">
-                    <i class="fa-solid fa-list"></i>
+                    <i class="fa-solid fa-list me-2"></i>
                     <?= gettext('Existing Custom Family Fields') ?>
                 </h5>
+                <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('fields') ?></span>
             </div>
             <div class="card-body" style="overflow: visible;">
                 <table class="table table-hover table-sm">
@@ -427,8 +428,8 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
                     <?php
                     if ($aTypeFields[$row] == 9) {
-                        echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
-                        echo '<option value="0">Select a group</option>';
+                        echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
+                        echo '<option value="0">' . gettext('Select a group') . '</option>';
 
                         $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
                         $rsGroupList = RunQuery($sSQL);
@@ -479,8 +480,10 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
                                 if ($row < $numRows) {
                                     echo '<a class="dropdown-item" href="FamilyCustomFieldsRowOps.php?OrderID=' . htmlspecialchars($row, ENT_QUOTES, 'UTF-8') . '&Field=' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '&Action=down"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
+                                if ($row != 1 || $row < $numRows) {
+                                    echo '<div class="dropdown-divider"></div>';
+                                }
                                 ?>
-                                <div class="dropdown-divider"></div>
                                 <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $fieldIdJs ?>)">
                                     <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
@@ -505,6 +508,5 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     <?php
     } ?>
     </form>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

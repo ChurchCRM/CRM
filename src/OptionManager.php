@@ -348,9 +348,11 @@ if ($embedded) {
     <?php endif; ?>
 </script>
 
-<div class="card">
-    <div class="card-body">
-        <form method="post" action="OptionManager.php?<?="mode=$mode&ListID=$listID" ?>" name="OptionManager">
+<?php if (!$embedded): ?>
+<p class="text-muted mb-3"><?= sprintf(gettext('Manage %s options'), $adjplusnameplural) ?></p>
+<?php endif; ?>
+
+<form method="post" action="OptionManager.php?<?="mode=$mode&ListID=$listID" ?>" name="OptionManager">
 
             <?php
 
@@ -406,11 +408,12 @@ if ($embedded) {
             </div>
 
             <div class="card mt-4">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing') . ' ' . $adjplusnameplural ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('options') ?></span>
                 </div>
                 <div class="card-body" style="overflow: visible;">
                     <table class="table table-hover table-sm mb-0">
@@ -529,7 +532,6 @@ if ($embedded) {
                 } ?>
             </div>
     </div>
-</div>
 </form>
 <?php
 if ($embedded) {
