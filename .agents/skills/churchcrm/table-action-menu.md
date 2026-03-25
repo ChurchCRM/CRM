@@ -198,6 +198,26 @@ Any table that lists people (attendees, members, visitors, etc.) **must** includ
 
 ---
 
+## Cart Page: "Remove Only" Variant <!-- learned: 2026-03-25 -->
+
+On the cart view (`/v2/cart`), every person is already in the cart, so the cart button is always in `RemoveFromCart` state. Do **not** add a custom click handler — the global `CartManager` in `cart.js` handles `.RemoveFromCart` clicks via event delegation. The standard dropdown still applies (View, Edit, View Family, divider, Remove from Cart).
+
+```php
+<button type="button"
+    class="dropdown-item RemoveFromCart text-danger"
+    data-cart-id="<?= $Person->getId() ?>"
+    data-cart-type="person"
+    data-label-add="<?= gettext('Add to Cart') ?>"
+    data-label-remove="<?= gettext('Remove from Cart') ?>">
+    <i class="ti ti-trash me-2"></i>
+    <span class="cart-label"><?= gettext('Remove from Cart') ?></span>
+</button>
+```
+
+No Delete action is shown on the cart page — users can only remove from cart, not delete the person.
+
+---
+
 ## Checklist Before Committing Any Table Change
 
 - [ ] Trigger uses `btn-ghost-secondary` + `ti ti-dots-vertical`
