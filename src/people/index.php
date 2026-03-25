@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
@@ -42,7 +43,7 @@ $errorMiddleware->setDefaultErrorHandler(function (
     if ($exception instanceof HttpNotFoundException) {
         $logger->info('People 404 redirect', ['path' => $request->getUri()->getPath()]);
         $response = $app->getResponseFactory()->createResponse(302);
-        return $response->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/people/dashboard');
+        return $response->withHeader('Location', SystemURLs::getRootPath() . '/people/dashboard');
     }
 
     $logger->error('People error', [
