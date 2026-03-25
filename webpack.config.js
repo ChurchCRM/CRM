@@ -59,6 +59,13 @@ module.exports = {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
   },
+  // Silence react-datepicker dynamic require warning while keeping other warnings visible
+  ignoreWarnings: [
+    {
+      module: /react-datepicker/,
+      message: /Critical dependency: the request of a dependency is an expression/,
+    },
+  ],
   module: {
     rules: [
       {

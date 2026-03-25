@@ -65,6 +65,7 @@ describe("Standard Groups", () => {
         cy.get(".dropdown-menu.show").within(() => {
             cy.contains("View").should("exist");
             cy.contains("Edit").should("exist");
+            cy.contains("Delete").should("exist");
         });
     });
 

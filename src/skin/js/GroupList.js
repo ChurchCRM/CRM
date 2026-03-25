@@ -104,9 +104,10 @@ function initializeGroupList() {
           const hasMembers = full.memberCount > 0;
           const cartBtn = hasMembers
             ? (inCart
-              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-off me-2"></i><span class="cart-label">${i18next.t("Remove from Cart")}</span></button>`
+              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-off me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
               : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`)
             : "";
+          const escapedName = window.CRM.escapeHtml(full.Name || "");
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
@@ -116,6 +117,8 @@ function initializeGroupList() {
             `<a class="dropdown-item" href="${window.CRM.root}/GroupView.php?GroupID=${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
             `<a class="dropdown-item" href="${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
+            '<div class="dropdown-divider"></div>' +
+            `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="ti ti-trash me-2"></i>${i18next.t("Delete")}</button>` +
             "</div></div>"
           );
         },
@@ -125,7 +128,34 @@ function initializeGroupList() {
 
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-  $("#groupsTable").DataTable(dataTableConfig);
+  const groupsTable = $("#groupsTable").DataTable(dataTableConfig);
+
+  $(document).on("click", ".delete-group", function () {
+    const groupId = $(this).data("group-id");
+    const groupName = $(this).data("group-name");
+    bootbox.confirm({
+      message: i18next.t("Are you sure you want to delete") + " <strong>" + groupName + "</strong>?",
+      buttons: {
+        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
+        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+      },
+      callback: (result) => {
+        if (!result) return;
+        $.ajax({
+          method: "DELETE",
+          url: `${window.CRM.root}/api/groups/${groupId}`,
+        })
+          .done(() => {
+            window.CRM.notify(i18next.t("Group deleted successfully."), { type: "success", delay: 3000 });
+            groupsTable.ajax.reload();
+          })
+          .fail((xhr) => {
+            console.error("Failed to delete group:", xhr);
+            window.CRM.notify(i18next.t("Failed to delete group. Please try again."), { type: "danger", delay: 5000 });
+          });
+      },
+    });
+  });
 }
 
 // Wait for locales to load before initializing
