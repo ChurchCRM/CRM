@@ -24,8 +24,8 @@ describe("Standard Person", () => {
         cy.url().should("contain", personViewPath);
         cy.contains(name);
 
-        // make sure edit works - click FAB edit button
-        cy.get('.fab-edit').click();
+        // make sure edit works - click Edit button in toolbar
+        cy.contains('a.btn', 'Edit').first().click();
 
         cy.url().should("contain", personEditorPath);
 
@@ -51,8 +51,8 @@ describe("Standard Person", () => {
         cy.url().should("contain", personViewPath);
         cy.contains(name);
 
-        // make sure edit works - click FAB edit button
-        cy.get('.fab-edit').click();
+        // make sure edit works - click Edit button in toolbar
+        cy.contains('a.btn', 'Edit').first().click();
 
         cy.url().should("contain", personEditorPath);
 

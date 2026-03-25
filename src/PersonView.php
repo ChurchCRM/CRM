@@ -211,18 +211,11 @@ $bOkToEdit = (
         <div class="card mb-3">
             <div class="card-body p-0">
                 <div class="d-flex">
-                    <!-- Photo (left) -->
+                    <!-- Photo (left) — click to upload -->
                     <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
-                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
-                        <?php if ($bOkToEdit) : ?>
-                        <div class="position-absolute bottom-0 start-0 end-0 d-flex justify-content-center gap-1 pb-1" style="background: linear-gradient(transparent, rgba(0,0,0,0.4));">
-                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-icon text-white hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
-                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-icon text-white" title="<?= gettext("Upload Photo") ?>"><i class="fa-solid fa-camera"></i></a>
-                            <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
-                            <a href="#" class="btn btn-sm btn-icon text-white" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>"><i class="fa-solid fa-trash-can"></i></a>
-                            <?php endif; ?>
-                        </div>
-                        <?php endif; ?>
+                        <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
+                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                        </a>
                     </div>
                     <!-- Attributes (right) -->
                     <div class="p-3 flex-grow-1">
@@ -503,6 +496,9 @@ $bOkToEdit = (
     <div class="col-lg-8">
         <!-- Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2">
+            <?php if ($bOkToEdit) { ?>
+            <a class="btn btn-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
+            <?php } ?>
             <a class="btn btn-ghost-secondary" id="printPerson" href="<?= SystemURLs::getRootPath() ?>/PrintView.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Printable Page") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></a>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
             <div class="dropdown">
@@ -511,6 +507,7 @@ $bOkToEdit = (
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext("Add Note") ?></a>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID != '') { ?>
@@ -520,9 +517,18 @@ $bOkToEdit = (
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
                         <a class="dropdown-item" id="addGroup"><i class="fa-solid fa-users me-2"></i><?= gettext("Assign New Group") ?></a>
                     <?php } ?>
+                    <?php if ($bOkToEdit) { ?>
+                        <div class="dropdown-divider"></div>
+                        <h6 class="dropdown-header"><?= gettext("Photo") ?></h6>
+                        <a class="dropdown-item" id="uploadPhotoAction" href="#"><i class="fa-solid fa-camera me-2"></i><?= gettext("Upload Photo") ?></a>
+                        <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
+                            <a class="dropdown-item" id="view-larger-image-btn" href="#"><i class="fa-solid fa-magnifying-glass-plus me-2"></i><?= gettext("View Photo") ?></a>
+                            <a class="dropdown-item text-danger" href="#" data-bs-toggle="modal" data-bs-target="#confirm-delete-image"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Photo") ?></a>
+                        <?php } ?>
+                    <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete") ?></a>
+                        <a class="dropdown-item text-danger delete-person" id="deletePersonBtn" data-person_name="<?= $person->getFullName() ?>" data-person_id="<?= $iPersonID ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext("Delete Person") ?></a>
                     <?php } ?>
                 </div>
             </div>
@@ -960,7 +966,8 @@ $bOkToEdit = (
                         }
                     });
 
-                    $("#uploadImageButton").click(function(e) {
+                    // Both the photo image click and the dropdown "Upload Photo" trigger the uploader
+                    $("#uploadImageButton, #uploadPhotoAction").click(function(e) {
                         e.preventDefault();
                         if (window.CRM && window.CRM.photoUploader) {
                             window.CRM.photoUploader.show();
@@ -975,25 +982,6 @@ $bOkToEdit = (
             });
         </script>
 
-<!-- Person View Floating Action Buttons -->
-<div class="fab-container fab-person-view" id="fab-person-view">
-    <?php if ($bOkToEdit) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-edit" title="<?= gettext('Edit Person') ?>">
-        <span class="fab-label"><?= gettext('Edit Person') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-pen"></i>
-        </div>
-    </a>
-    <?php } ?>
-    <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-note" title="<?= gettext('Add New') . ' ' . gettext('Note') ?>">
-        <span class="fab-label"><?= gettext('Add New') . ' ' . gettext('Note') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-note-sticky"></i>
-        </div>
-    </a>
-    <?php } ?>
-</div>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';

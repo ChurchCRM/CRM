@@ -16,8 +16,9 @@ describe("Person Profile", () => {
     it("Add a Note", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
 
-        // Click FAB note button
-        cy.get('.fab-note').click({ force: true });
+        // Open Actions dropdown, then click Add Note
+        cy.get("#person-actions-dropdown").click();
+        cy.contains('.dropdown-item', 'Add Note').click();
         cy.url().should("contain", `NoteEditor.php?PersonID=${personId}`);
 
         const currentDateString = new Date().toISOString();
