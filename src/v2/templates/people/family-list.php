@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <td>
                         <?= $family->getLinkHtml(true, true) ?>
                         <?php if (!$family->isActive()) { ?>
-                            <span class="badge bg-secondary ms-2" title="<?= gettext('Inactive') ?>">
+                            <span class="badge bg-light text-dark ms-2" title="<?= gettext('Inactive') ?>">
                                 <i class="fa-solid fa-power-off"></i> <?= gettext('Inactive') ?>
                             </span>
                         <?php } ?>
@@ -110,7 +110,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </td>
                     <td data-order="<?= $family->hasLatitudeAndLongitude() ? 2 : ($family->hasAddress() ? 1 : 0) ?>">
                         <?php if ($family->hasLatitudeAndLongitude()): ?>
-                            <span class="badge bg-success" title="<?= gettext('Geocoded') ?>">
+                            <span class="badge bg-green-lt text-green" title="<?= gettext('Geocoded') ?>">
                                 <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                             </span>
                         <?php elseif ($family->hasAddress()): ?>

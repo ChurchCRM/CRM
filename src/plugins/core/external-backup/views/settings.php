@@ -180,14 +180,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <input type="radio" id="backupType2" name="backupType" value="2" class="form-check-input" checked>
                     <label class="form-check-label" for="backupType2">
                         <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
-                        <span class="badge bg-secondary">.sql</span>
+                        <span class="badge bg-light text-dark">.sql</span>
                     </label>
                 </div>
                 <div class="form-check">
                     <input type="radio" id="backupType3" name="backupType" value="3" class="form-check-input">
                     <label class="form-check-label" for="backupType3">
                         <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
-                        <span class="badge bg-secondary">.tar.gz</span>
+                        <span class="badge bg-light text-dark">.tar.gz</span>
                     </label>
                 </div>
             </div>

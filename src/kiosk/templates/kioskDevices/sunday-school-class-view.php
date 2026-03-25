@@ -85,7 +85,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
           <div class="kiosk-section-header checked-in">
             <h4 class="mb-0">
               <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Checked In') ?>
-              <span class="badge bg-success ms-2" id="checkedInSectionCount">0</span>
+              <span class="badge bg-green-lt text-green ms-2" id="checkedInSectionCount">0</span>
             </h4>
           </div>
           <div class="kiosk-section-body" id="checkedInList">

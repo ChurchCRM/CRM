@@ -159,7 +159,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                             <div class="border-top mt-3 pt-3">
                                 <p class="mb-0">
                                     <strong><?= gettext("Classification") ?>:</strong><br>
-                                    <span class="badge bg-secondary"><?= InputUtils::escapeHTML(Classification::getName($person->getClsId())) ?></span>
+                                    <span class="badge bg-blue-lt text-blue"><?= InputUtils::escapeHTML(Classification::getName($person->getClsId())) ?></span>
                                 </p>
                             </div>
 

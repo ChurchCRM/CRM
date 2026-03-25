@@ -74,9 +74,9 @@ require_once __DIR__ . '/header.php';
                                 <span>Server Environment</span>
                             </div>
                             <div class="check-badges">
-                                <span class="badge bg-info">PHP <?= $phpVersion ?></span>
-                                <span class="badge bg-secondary"><?= $memoryLimit ?> RAM</span>
-                                <span class="badge bg-secondary"><?= $uploadMax ?> Upload</span>
+                                <span class="badge bg-blue-lt text-blue">PHP <?= $phpVersion ?></span>
+                                <span class="badge bg-light text-dark"><?= $memoryLimit ?> RAM</span>
+                                <span class="badge bg-light text-dark"><?= $uploadMax ?> Upload</span>
                             </div>
                         </div>
                         <div id="server-env-details" class="collapse check-details">

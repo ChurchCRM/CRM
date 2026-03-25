@@ -112,7 +112,7 @@ require_once __DIR__ . '/Include/Header.php';
                         echo ' checked';
                                                                               } ?>>
                   <label class="form-check-label" for="Closed">
-                    <?php echo $thisDeposit->getClosed() ? '<span class="badge bg-danger">Closed</span>' : '<span class="badge bg-success">Open</span>'; ?>
+                    <?php echo $thisDeposit->getClosed() ? '<span class="badge bg-light text-dark">Closed</span>' : '<span class="badge bg-azure-lt text-azure">Open</span>'; ?>
                   </label>
                 </div>
               </div>

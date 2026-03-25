@@ -207,9 +207,9 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                     </td>
                                     <td style="text-align: center; vertical-align: middle;">
                                         <?php if ($locale['systemAvailable']): ?>
-                                            <span class="badge bg-success"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
+                                            <span class="badge bg-green-lt text-green"><i class="fa fa-check me-1"></i><?= gettext('Yes') ?></span>
                                         <?php else: ?>
-                                            <span class="badge bg-secondary"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
+                                            <span class="badge bg-light text-dark"><i class="fa fa-times me-1"></i><?= gettext('No') ?></span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -337,9 +337,9 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                     <i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>
                                 </span>
                             <?php elseif (!empty($configuredTimezone)): ?>
-                                <span class="badge bg-success"><i class="fa fa-check"></i></span>
+                                <span class="badge bg-green-lt text-green"><i class="fa fa-check"></i></span>
                             <?php else: ?>
-                                <span class="badge bg-secondary"><?= gettext('Default') ?></span>
+                                <span class="badge bg-light text-dark"><?= gettext('Default') ?></span>
                             <?php endif; ?>
                         </div>
                     </div>

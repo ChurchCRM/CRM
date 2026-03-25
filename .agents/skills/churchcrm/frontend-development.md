@@ -30,6 +30,46 @@ This skill covers frontend patterns, UI components, notifications, international
 
 **For detailed component reference**, see `tabler-components.md`.
 
+## Badge / Pill Contrast (CRITICAL) <!-- learned: 2026-03-25 -->
+
+Tabler overrides Bootstrap's semantic colors. `bg-info` alone **fails WCAG AA** (~2.9:1 with white text). `bg-warning` and `bg-light` also fail without explicit text overrides. Always check contrast before using any badge color.
+
+**Rule: use Tabler `-lt` variants for semantic/label badges; explicit `text-*` for all others.**
+
+```php
+// ✅ CORRECT — Tabler -lt pattern: light tinted bg + colored text = always readable
+<span class="badge bg-blue-lt text-blue">Person</span>
+<span class="badge bg-teal-lt text-teal">Family</span>
+<span class="badge bg-purple-lt text-purple">Group</span>
+<span class="badge bg-green-lt text-green">Active</span>
+
+// ✅ CORRECT — solid dark backgrounds (pass with white text)
+<span class="badge bg-primary text-white">42</span>   // count on dark row
+<span class="badge bg-light text-dark">0</span>        // zero / empty state
+
+// ✅ CORRECT — warning always needs text-dark
+<span class="badge bg-warning text-dark">Pending</span>
+
+// ❌ WRONG — these fail WCAG AA in Tabler
+<span class="badge bg-info">Person</span>             // ~2.9:1 — FAILS
+<span class="badge bg-secondary">0</span>             // ~4.0:1 on gray rows — FAILS
+<span class="badge bg-warning">Alert</span>           // yellow + white — FAILS
+<span class="badge bg-light">Label</span>             // near-white bg + white text — FAILS
+```
+
+**Quick reference:**
+
+| Use case | ✅ Class |
+|---|---|
+| Semantic label (Person/Family/Group/status) | `bg-{color}-lt text-{color}` |
+| Count on light background | `bg-primary text-white` |
+| Count on dark/active row | `bg-primary text-white` |
+| Zero / empty state | `bg-light text-dark` |
+| Warning | `bg-warning text-dark` |
+| Success action | `bg-green-lt text-green` |
+
+Tabler named colors available for `-lt`: `blue`, `azure`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan`.
+
 ## Bootstrap 5 / Tabler (CRITICAL) <!-- updated: 2026-03-22 -->
 
 **Use Bootstrap 5 + Tabler CSS classes for all new and migrated code:**

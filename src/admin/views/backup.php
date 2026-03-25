@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input type="radio" id="archiveType2" name="archiveType" value="2" class="form-check-input" checked>
                             <label class="form-check-label" for="archiveType2">
                                 <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
-                                <span class="badge bg-secondary">.sql</span>
+                                <span class="badge bg-light text-dark">.sql</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">
@@ -82,7 +82,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-check-input">
                             <label class="form-check-label" for="archiveType3">
                                 <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
-                                <span class="badge bg-secondary">.tar.gz</span>
+                                <span class="badge bg-light text-dark">.tar.gz</span>
                             </label>
                         </div>
                         <small class="form-text text-muted d-block mt-1">

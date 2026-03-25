@@ -125,7 +125,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-body">
         <p class="mb-3">
-            <span class="badge bg-success me-2"><i class="fa-solid fa-check me-1"></i><?= gettext('Auto-mapped') ?></span><?= gettext('Column was automatically matched to a ChurchCRM field.') ?>
+            <span class="badge bg-green-lt text-green me-2"><i class="fa-solid fa-check me-1"></i><?= gettext('Auto-mapped') ?></span><?= gettext('Column was automatically matched to a ChurchCRM field.') ?>
             <span class="badge bg-warning text-dark ms-3 me-2"><i class="fa-solid fa-triangle-exclamation me-1"></i><?= gettext('Unmapped') ?></span><?= gettext('No match found — select a field or leave as Ignore.') ?>
         </p>
         <div class="table-responsive">

@@ -51,7 +51,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><?= $family->getName() ?></h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge bg-secondary"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
+                    <span class="badge bg-light text-dark"><?= gettext('ID:') ?> <?= $family->getId() ?></span>
                 </div>
             </div>
             <div class="card-body text-center">
@@ -134,7 +134,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-map"></i> <?= gettext("Address") ?>
                     <?php if ($family->hasLatitudeAndLongitude()): ?>
-                    <span class="badge bg-success ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
+                    <span class="badge bg-green-lt text-green ms-2" title="<?= gettext('Address has been geocoded (coordinates stored)') ?>">
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                     </span>
                     <?php elseif ($family->hasAddress()): ?>

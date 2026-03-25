@@ -188,7 +188,7 @@ $bOkToEdit = (
                     <?= $person->getFullName() ?>
                 </h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge bg-secondary"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
+                    <span class="badge bg-light text-dark"><?= gettext('ID') ?>: <?= $person->getId() ?></span>
                 </div>
             </div>
             <div class="card-body box-profile">

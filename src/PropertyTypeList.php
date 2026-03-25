@@ -114,24 +114,24 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php
                         switch ($prt_Class) {
                             case 'p':
-                                echo '<span class="badge bg-info"><i class="fa-solid fa-person-half-dress me-1"></i>' . gettext('Person') . '</span>';
+                                echo '<span class="badge bg-blue-lt text-blue"><i class="fa-solid fa-person-half-dress me-1"></i>' . gettext('Person') . '</span>';
                                 break;
                             case 'f':
-                                echo '<span class="badge bg-success"><i class="fa-solid fa-people-roof me-1"></i>' . gettext('Family') . '</span>';
+                                echo '<span class="badge bg-teal-lt text-teal"><i class="fa-solid fa-people-roof me-1"></i>' . gettext('Family') . '</span>';
                                 break;
                             case 'g':
-                                echo '<span class="badge bg-primary"><i class="fa-solid fa-user-group me-1"></i>' . gettext('Group') . '</span>';
+                                echo '<span class="badge bg-purple-lt text-purple"><i class="fa-solid fa-user-group me-1"></i>' . gettext('Group') . '</span>';
                                 break;
                         }
                         ?>
                     </td>
                     <td class="text-center">
                         <?php if ($Properties > 0): ?>
-                        <span class="badge bg-success" title="<?= $Properties . ' ' . gettext('records') ?>">
+                        <span class="badge bg-green-lt text-green" title="<?= $Properties . ' ' . gettext('records') ?>">
                             <i class="fa-solid fa-check me-1"></i><?= $Properties ?>
                         </span>
                         <?php else: ?>
-                        <span class="badge bg-secondary">0</span>
+                        <span class="badge bg-light text-dark">0</span>
                         <?php endif; ?>
                     </td>
                     <?php if (AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled()): ?>

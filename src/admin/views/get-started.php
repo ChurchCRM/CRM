@@ -104,7 +104,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                title="<?= gettext('Import contacts from your MailChimp audiences') ?>">
                 <i class="fa-brands fa-mailchimp text-warning"></i>
                 MailChimp
-                <span class="badge bg-success"><?= gettext('Active') ?></span>
+                <span class="badge bg-green-lt text-green"><?= gettext('Active') ?></span>
             </a>
         <?php else: ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"

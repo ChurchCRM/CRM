@@ -283,7 +283,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           data: 'Accepted',
           render: function(data, type, full, meta) {
             if (full.Accepted) {
-              return '<span class="badge bg-success">' + i18next.t('Yes') + '</span>';
+              return '<span class="badge bg-green-lt text-green">' + i18next.t('Yes') + '</span>';
             } else {
               return '<span class="badge bg-warning text-dark">' + i18next.t('No') + '</span>';
             }

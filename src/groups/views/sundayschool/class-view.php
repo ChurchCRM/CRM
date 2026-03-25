@@ -160,7 +160,7 @@ $teacherCount = count($rsTeachers);
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center">
         <h5 class="card-title mb-0"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?></h5>
-        <span class="badge bg-success ms-2"><?= $teacherCount ?></span>
+        <span class="badge bg-green-lt text-green ms-2"><?= $teacherCount ?></span>
     </div>
     <div class="card-body">
         <div class="row">

@@ -241,14 +241,14 @@ foreach ($allMonths as $mVal) {
               </td>
               <td class="text-center">
                 <?php if ($event['checked_in_count'] > 0): ?>
-                  <span class="badge bg-success"><?= $event['checked_in_count'] ?></span>
+                  <span class="badge bg-green-lt text-green"><?= $event['checked_in_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
               </td>
               <td class="text-center">
                 <?php if ($event['checked_out_count'] > 0): ?>
-                  <span class="badge bg-secondary"><?= $event['checked_out_count'] ?></span>
+                  <span class="badge bg-blue-lt text-blue"><?= $event['checked_out_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
@@ -276,9 +276,9 @@ foreach ($allMonths as $mVal) {
               <td><?= FormatDate($event['start'], 1) ?></td>
               <td class="text-center">
                 <?php if ($event['inactive']): ?>
-                  <span class="badge bg-secondary"><?= gettext('No') ?></span>
+                  <span class="badge bg-light text-dark"><?= gettext('No') ?></span>
                 <?php else: ?>
-                  <span class="badge bg-success"><?= gettext('Yes') ?></span>
+                  <span class="badge bg-green-lt text-green"><?= gettext('Yes') ?></span>
                 <?php endif; ?>
               </td>
               <?php if ($canEditEvents): ?>

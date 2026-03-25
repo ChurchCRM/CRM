@@ -57,7 +57,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.') ?></small>
                                 </div>
-                                <span class="badge bg-success badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-green-lt text-green"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                         
@@ -177,7 +177,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Customizable report with filtering by date, fund, family, and payment method.') ?></small>
                                 </div>
-                                <span class="badge bg-secondary badge-pill"><?= gettext('PDF/CSV') ?></span>
+                                <span class="badge bg-light text-dark"><?= gettext('PDF/CSV') ?></span>
                             </div>
                         </a>
                     </div>

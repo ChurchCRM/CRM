@@ -299,7 +299,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
-                                echo $familyLink . ' <span class="badge bg-secondary" title="' . gettext('Inactive') . '">';
+                                echo $familyLink . ' <span class="badge bg-light text-dark" title="' . gettext('Inactive') . '">';
                                 echo '<i class="fa-solid fa-power-off"></i> ' . gettext('Inactive');
                                 echo '</span>';
                             } else {

@@ -28,13 +28,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <strong><?= gettext('Latest GitHub Version:') ?></strong>
                             <?php if ($latestGitHubVersion !== null): ?>
                                 <?php if ($isUpdateAvailable): ?>
-                                    <span class="badge bg-success ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                    <span class="badge bg-green-lt text-green ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                     <small class="text-success ms-1"><?= gettext('Update Available!') ?></small>
                                 <?php else: ?>
-                                    <span class="badge bg-info ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                    <span class="badge bg-blue-lt text-blue ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <span class="badge bg-secondary ms-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
+                                <span class="badge bg-light text-dark ms-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
                                 <small class="text-muted ms-1"><?= gettext('(refresh from GitHub)') ?></small>
                             <?php endif; ?>
                         </div>

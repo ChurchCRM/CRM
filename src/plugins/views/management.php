@@ -42,12 +42,12 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <?php if ($hasError): ?>
                     <span class="badge bg-danger ms-2"><?= gettext('Error') ?></span>
                 <?php elseif ($isActive): ?>
-                    <span class="badge bg-success ms-2"><?= gettext('Enabled') ?></span>
+                    <span class="badge bg-green-lt text-green ms-2"><?= gettext('Enabled') ?></span>
                     <?php if (!$plugin['isConfigured']): ?>
                         <span class="badge bg-warning text-dark ms-2"><?= gettext('Needs Configuration') ?></span>
                     <?php endif; ?>
                 <?php else: ?>
-                    <span class="badge bg-secondary ms-2"><?= gettext('Disabled') ?></span>
+                    <span class="badge bg-light text-dark ms-2"><?= gettext('Disabled') ?></span>
                 <?php endif; ?>
             </h3>
             <div class="card-tools ms-auto">
