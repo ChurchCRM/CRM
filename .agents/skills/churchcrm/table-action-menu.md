@@ -184,6 +184,20 @@ The Actions column header must be:
 
 ---
 
+## Person Rows Always Get Standard Menu <!-- learned: 2026-03-25 -->
+
+Any table that lists people (attendees, members, visitors, etc.) **must** include the standard person action menu items — even if the page has domain-specific actions (e.g. Check Out). Domain actions go between the standard items, separated by dividers:
+
+1. View / Edit / View Family (standard)
+2. `dropdown-divider`
+3. Domain-specific actions (Check Out, Assign Role, etc.)
+4. `dropdown-divider`
+5. Cart (standard)
+6. `dropdown-divider`
+7. Delete (standard, `text-danger`)
+
+---
+
 ## Checklist Before Committing Any Table Change
 
 - [ ] Trigger uses `btn-ghost-secondary` + `ti ti-dots-vertical`

@@ -158,6 +158,29 @@ Buttons are admin-only by default. Set `'adminOnly' => false` for all-user butto
 
 ---
 
+## Full Tabler UX Checklist (MANDATORY for all page redesigns) <!-- learned: 2026-03-25 -->
+
+When redesigning or fixing UX on any page, apply **all** of the following — not just partial fixes:
+
+| Element | ✅ Tabler Standard | ❌ Wrong |
+|---------|-------------------|---------|
+| Card emphasis | `card-status-top bg-{color}` (thin line) | `card-header bg-primary` (solid blue bar) |
+| Icons | `ti ti-*` (Tabler icons) | `fa-solid fa-*` (FontAwesome) |
+| Form labels | `form-label` | `control-label`, `fw-bold` on labels |
+| Select elements | `form-select` | `form-control` on `<select>` |
+| Form wrapper | Plain `<form>` | `class="well form-horizontal"` |
+| Required fields | `class="form-label required"` | Manual `<span class="text-danger">*</span>` |
+| Table classes | `table table-vcenter table-hover` | `table-striped`, `table-light` on thead |
+| Table headers | Plain text only | Icons in `<th>` |
+| Button sizes | Standard (no size class) | `btn-lg` in forms |
+| Form actions | Inside `card-footer` | Inside `card-body` with `row mt-3` |
+| Context info bar | `card card-sm` | `alert alert-info` |
+| Photo button | `btn-ghost-secondary` | `btn-outline-secondary` |
+| Person rows | Standard person action menu (View→Edit→Family→Cart→Delete) | Inline buttons |
+| Muted text | `text-secondary` | `text-muted` |
+
+---
+
 ## 2. Cards
 
 ### Basic Card
