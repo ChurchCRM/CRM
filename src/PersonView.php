@@ -105,17 +105,22 @@ $rsCustomData = RunQuery($sSQL);
 $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 // Get the Groups this Person is assigned to
-$sSQL = 'SELECT grp_ID, grp_Name, grp_hasSpecialProps, role.lst_OptionName AS roleName
+$sSQL = 'SELECT grp_ID, grp_Name, grp_Type, grp_hasSpecialProps, role.lst_OptionName AS roleName,
+    COALESCE(grptype.lst_OptionName, \'' . gettext('Unassigned') . '\') AS groupTypeName
 FROM group_grp
 LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
-LEFT JOIN list_lst role ON lst_OptionID = p2g2r_rle_ID AND lst_ID = grp_RoleListID
+LEFT JOIN list_lst role ON role.lst_OptionID = p2g2r_rle_ID AND role.lst_ID = grp_RoleListID
+LEFT JOIN list_lst grptype ON grptype.lst_OptionID = grp_Type AND grptype.lst_ID = 3
 WHERE person2group2role_p2g2r.p2g2r_per_ID = ' . $iPersonID . '
-ORDER BY grp_Name';
+ORDER BY groupTypeName, grp_Name';
 $rsAssignedGroups = RunQuery($sSQL);
 $sAssignedGroups = ',';
 
-// Get all the Groups
-$sSQL = 'SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name';
+// Get all the Groups (with type for filtering)
+$sSQL = 'SELECT grp_ID, grp_Name, grp_Type, COALESCE(grptype.lst_OptionName, \'' . gettext('Unassigned') . '\') AS groupTypeName
+FROM group_grp
+LEFT JOIN list_lst grptype ON grptype.lst_OptionID = grp_Type AND grptype.lst_ID = 3
+ORDER BY groupTypeName, grp_Name';
 $rsGroups = RunQuery($sSQL);
 
 // Get the volunteer opportunities this Person is assigned to
@@ -202,53 +207,51 @@ $bOkToEdit = (
 ?>
 <div class="row">
     <div class="col-lg-4">
-        <!-- Photo Card -->
+        <!-- Photo & Info Card -->
         <div class="card mb-3">
-            <div class="card-body text-center py-3">
-                <div class="image-container">
-                    <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-xl mb-2">
-                    <?php if ($bOkToEdit) : ?>
-                    <div class="photo-actions">
-                        <div class="btn-group" role="group">
-                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-ghost-primary hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>">
-                                <i class="fa-solid fa-magnifying-glass-plus"></i>
-                            </a>
-                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-ghost-info" title="<?= gettext("Upload Photo") ?>">
-                                <i class="fa-solid fa-camera"></i>
-                            </a>
+            <div class="card-body p-0">
+                <div class="d-flex">
+                    <!-- Photo (left) -->
+                    <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
+                        <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                        <?php if ($bOkToEdit) : ?>
+                        <div class="position-absolute bottom-0 start-0 end-0 d-flex justify-content-center gap-1 pb-1" style="background: linear-gradient(transparent, rgba(0,0,0,0.4));">
+                            <a id="view-larger-image-btn" href="#" class="btn btn-sm btn-icon text-white hide-if-no-photo d-none" title="<?= gettext("View Photo") ?>"><i class="fa-solid fa-magnifying-glass-plus"></i></a>
+                            <a id="uploadImageButton" href="#" class="btn btn-sm btn-icon text-white" title="<?= gettext("Upload Photo") ?>"><i class="fa-solid fa-camera"></i></a>
                             <?php if ($person->getPhoto()->hasUploadedPhoto()) : ?>
-                            <a href="#" class="btn btn-sm btn-ghost-danger" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
+                            <a href="#" class="btn btn-sm btn-icon text-white" data-bs-toggle="modal" data-bs-target="#confirm-delete-image" title="<?= gettext("Delete Photo") ?>"><i class="fa-solid fa-trash-can"></i></a>
                             <?php endif; ?>
                         </div>
+                        <?php endif; ?>
                     </div>
-                    <?php endif; ?>
+                    <!-- Attributes (right) -->
+                    <div class="p-3 flex-grow-1">
+                        <?php
+                        $genderClass = "fa-question";
+                        $genderText = gettext('Unknown');
+                        if ($person->isMale()) {
+                            $genderClass = "fa-person";
+                            $genderText = gettext('Male');
+                        } elseif ($person->isFemale()) {
+                            $genderClass = "fa-person-dress";
+                            $genderText = gettext('Female');
+                        }
+                        ?>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-1"><i class="fa <?= $genderClass ?> me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= $genderText ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-id-card me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext($sClassName) ?></li>
+                            <?php if (!empty($sFamRole)) : ?>
+                            <li class="mb-1"><i class="fa-solid fa-users me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext($sFamRole) ?></li>
+                            <?php endif; ?>
+                            <?php if ($per_MembershipDate) : ?>
+                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= FormatDate($per_MembershipDate, false) ?></li>
+                            <?php endif; ?>
+                            <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
+                            <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
+                            <?php endif; ?>
+                        </ul>
+                    </div>
                 </div>
-                <!-- Person attributes -->
-                <?php
-                $genderClass = "fa-question";
-                $genderText = gettext('Unknown');
-                if ($person->isMale()) {
-                    $genderClass = "fa-person";
-                    $genderText = gettext('Male');
-                } elseif ($person->isFemale()) {
-                    $genderClass = "fa-person-dress";
-                    $genderText = gettext('Female');
-                }
-                ?>
-                <div class="mt-2">
-                    <span class="badge bg-secondary-lt text-secondary me-1"><i class="fa <?= $genderClass ?> me-1"></i><?= $genderText ?></span>
-                    <span class="badge bg-primary-lt text-primary me-1"><i class="fa-solid fa-id-card me-1"></i><?= gettext($sClassName) ?></span>
-                    <?php if (!empty($sFamRole)) : ?>
-                    <span class="badge bg-info-lt text-info"><i class="fa-solid fa-users me-1"></i><?= gettext($sFamRole) ?></span>
-                    <?php endif; ?>
-                </div>
-                <?php if ($per_MembershipDate) : ?>
-                <small class="text-muted d-block mt-1">
-                    <i class="fa-solid fa-calendar-check me-1"></i><?= gettext('Member since') ?> <?= FormatDate($per_MembershipDate, false) ?>
-                </small>
-                <?php endif; ?>
             </div>
         </div>
 
@@ -559,7 +562,7 @@ $bOkToEdit = (
                                         <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
                                         <?php if ($isSelf) { ?>
                                             <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
-                                            <span class="badge bg-primary-lt text-primary ms-2"><?= gettext('You') ?></span>
+                                            <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>
                                         <?php } else { ?>
                                             <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $tmpPersonId ?>"><?= $familyMember->getFullName() ?></a>
                                         <?php } ?>
@@ -745,7 +748,8 @@ $bOkToEdit = (
                                         <div class="d-flex align-items-center">
                                             <div class="me-auto">
                                                 <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
-                                                <span class="badge bg-secondary-lt text-secondary ms-2"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
+                                                <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
+                                                <span class="badge bg-secondary-lt text-secondary ms-1"><?= InputUtils::escapeHTML(gettext($roleName)) ?></span>
                                                 <?php
                                                 if ($grp_hasSpecialProps) {
                                                     $sSQL = 'SELECT groupprop_master.* FROM groupprop_master WHERE grp_ID = ' . $grp_ID . " AND prop_PersonDisplay = 'true' ORDER BY prop_ID";
