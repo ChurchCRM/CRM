@@ -107,7 +107,7 @@ $rsCustomData = RunQuery($sSQL);
 $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
 // Get the Groups this Person is assigned to
-$sSQL = 'SELECT grp_ID, grp_Name, grp_Type, grp_hasSpecialProps, role.lst_OptionName AS roleName,
+$sSQL = 'SELECT grp_ID, grp_Name, grp_Type, grp_hasSpecialProps, p2g2r_rle_ID AS roleId, role.lst_OptionName AS roleName,
     COALESCE(grptype.lst_OptionName, \'' . gettext('Unassigned') . '\') AS groupTypeName
 FROM group_grp
 LEFT JOIN person2group2role_p2g2r ON p2g2r_grp_ID = grp_ID
@@ -684,14 +684,7 @@ $bOkToEdit = (
                                 <?php foreach ($personTimeline as $item) {
                                     if ($currentYear !== $item['year']) {
                                         $currentYear = $item['year']; ?>
-                                        <div class="timeline-event">
-                                            <div class="timeline-event-icon bg-secondary-lt">
-                                                <i class="fa-solid fa-calendar-days"></i>
-                                            </div>
-                                            <div class="timeline-event-card">
-                                                <span class="fw-bold text-secondary"><?= $currentYear ?></span>
-                                            </div>
-                                        </div>
+                                        <div class="hr-text"> <i class="fa-solid fa-calendar-days"></i> <?= $currentYear ?></div>
                                     <?php } ?>
                                     <div class="timeline-event">
                                         <div class="timeline-event-icon bg-<?= $item['color'] ?>-lt text-<?= $item['color'] ?>">
@@ -784,7 +777,7 @@ $bOkToEdit = (
                                                 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                                 <div class="dropdown-menu dropdown-menu-end">
                                                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
-                                                    <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
+                                                    <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>" data-current-role-id="<?= (int)$roleId ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
                                                     <?php if ($grp_hasSpecialProps) { ?>
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>

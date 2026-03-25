@@ -2,8 +2,53 @@
 
 describe("Person Profile", () => {
     const personId = 2;
-    
+
     beforeEach(() => cy.setupStandardSession());
+
+    it("should display breadcrumbs with family link", () => {
+        cy.visit(`PersonView.php?PersonID=${personId}`);
+
+        // Breadcrumb should show Home / People / Family / Person
+        cy.get(".breadcrumb").within(() => {
+            cy.contains("People");
+            // Family name should be a link in breadcrumbs
+            cy.get("a[href*='/v2/family/']").should("exist");
+        });
+    });
+
+    it("should display toolbar with Edit, Print, Cart, Actions", () => {
+        cy.visit(`PersonView.php?PersonID=${personId}`);
+
+        cy.contains("a.btn", "Edit").should("be.visible");
+        cy.get("#printPerson").should("be.visible");
+        cy.get("#AddPersonToCart").should("be.visible");
+        cy.get("#person-actions-dropdown").should("be.visible");
+    });
+
+    it("should show person info card with photo and details", () => {
+        cy.visit(`PersonView.php?PersonID=${personId}`);
+
+        // Photo card should exist
+        cy.get("[data-image-entity-type='person']").should("exist");
+
+        // Contact & Personal Info card
+        cy.contains("Contact & Personal Info");
+    });
+
+    it("should display timeline tab active by default", () => {
+        cy.visit(`PersonView.php?PersonID=${personId}`);
+
+        cy.get("#nav-item-timeline").should("have.class", "active");
+        cy.get("#timeline").should("have.class", "active");
+    });
+
+    it("should display tabs for Timeline, Groups, and Volunteer", () => {
+        cy.visit(`PersonView.php?PersonID=${personId}`);
+
+        cy.get("#nav-item-timeline").should("be.visible");
+        cy.get("#nav-item-groups").should("be.visible");
+        cy.get("#nav-item-volunteer").should("be.visible");
+    });
 
     it("Printable page", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);

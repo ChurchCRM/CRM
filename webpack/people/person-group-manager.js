@@ -9,17 +9,14 @@
  * Uses Bootstrap 5 Modal API (via Tabler) and TomSelect (from churchcrm bundle).
  * Replaces the legacy jQuery handlers in skin/js/PersonView.js.
  */
-// TomSelect is loaded globally by churchcrm.min.js as window.TomSelect.
-// Do NOT import it here — that would bundle a second copy and add ~500KB.
-const TomSelect = window.TomSelect;
 
 const MODAL_ID = "personGroupModal";
 
 /**
- * Create and show a Bootstrap 5 modal with the given title and body HTML.
- * Returns { modal, el, confirm } where confirm is the OK button element.
+ * Create a Bootstrap 5 modal (not yet shown). Returns { modal, el, confirm }.
+ * Caller must attach any `shown.bs.modal` listeners, then call `modal.show()`.
  */
-function showModal(title, bodyHtml) {
+function createModal(title, bodyHtml) {
   let existing = document.getElementById(MODAL_ID);
   if (existing) {
     const bsModal = window.bootstrap.Modal.getInstance(existing);
@@ -29,8 +26,7 @@ function showModal(title, bodyHtml) {
 
   const wrapper = document.createElement("div");
   wrapper.id = MODAL_ID;
-  wrapper.className = "modal modal-blur fade";
-  wrapper.setAttribute("tabindex", "-1");
+  wrapper.className = "modal fade";
   wrapper.innerHTML =
     '<div class="modal-dialog modal-dialog-centered">' +
     '<div class="modal-content">' +
@@ -59,15 +55,6 @@ function showModal(title, bodyHtml) {
   const modal = new window.bootstrap.Modal(wrapper);
   const confirmBtn = wrapper.querySelector("#personGroupConfirmBtn");
 
-  // Remove tabindex after shown so TomSelect dropdowns work
-  wrapper.addEventListener(
-    "shown.bs.modal",
-    function () {
-      wrapper.removeAttribute("tabindex");
-    },
-    { once: true },
-  );
-
   // Cleanup on close
   wrapper.addEventListener(
     "hidden.bs.modal",
@@ -78,7 +65,6 @@ function showModal(title, bodyHtml) {
     { once: true },
   );
 
-  modal.show();
   return { modal, el: wrapper, confirm: confirmBtn };
 }
 
@@ -99,51 +85,47 @@ function populateSelect(selectEl, items) {
  * Add person to a group — shows searchable group picker, then role picker.
  */
 function handleAddToGroup(personId) {
-  const body =
-    '<div class="mb-3">' +
-    '<label class="form-label">' +
-    i18next.t("Group") +
-    "</label>" +
-    '<select id="pgm-group-select"></select>' +
-    "</div>" +
-    '<div class="mb-3 d-none" id="pgm-role-wrapper">' +
-    '<label class="form-label">' +
-    i18next.t("Role") +
-    "</label>" +
-    '<select id="pgm-role-select"></select>' +
-    "</div>";
+  // Fetch groups first so data is ready when the modal opens
+  window.CRM.groups.get().done(function (groups) {
+    const body =
+      '<div class="mb-3">' +
+      '<label class="form-label">' +
+      i18next.t("Group") +
+      "</label>" +
+      '<select id="pgm-group-select"></select>' +
+      "</div>" +
+      '<div class="mb-3 d-none" id="pgm-role-wrapper">' +
+      '<label class="form-label">' +
+      i18next.t("Role") +
+      "</label>" +
+      '<select id="pgm-role-select"></select>' +
+      "</div>";
 
-  const { modal, el, confirm } = showModal(i18next.t("Add to Group"), body);
+    const { modal, el, confirm } = createModal(i18next.t("Add to Group"), body);
 
-  let selectedGroupId = null;
-  let selectedRoleId = null;
+    let selectedGroupId = null;
+    let selectedRoleId = null;
 
-  el.addEventListener(
-    "shown.bs.modal",
-    function () {
-      const groupEl = document.getElementById("pgm-group-select");
-      const roleWrapper = document.getElementById("pgm-role-wrapper");
-      const roleEl = document.getElementById("pgm-role-select");
+    // Populate <option> elements now (while modal is hidden, before TomSelect)
+    const groupEl = document.getElementById("pgm-group-select");
+    groups.forEach(function (g) {
+      const opt = document.createElement("option");
+      opt.value = String(g.Id);
+      opt.textContent = g.Name;
+      groupEl.appendChild(opt);
+    });
 
-      // Fetch all groups, then init TomSelect
-      window.CRM.groups.get().done(function (groups) {
-        populateSelect(
-          groupEl,
-          groups.map(function (g) {
-            return { value: String(g.Id), text: g.Name };
-          }),
-        );
+    // TomSelect must init AFTER modal is visible (needs layout dimensions).
+    // Register listener BEFORE show() to avoid race condition.
+    el.addEventListener(
+      "shown.bs.modal",
+      function () {
+        const roleWrapper = document.getElementById("pgm-role-wrapper");
+        const roleEl = document.getElementById("pgm-role-select");
 
-        // Add empty placeholder option at start
-        const placeholder = document.createElement("option");
-        placeholder.value = "";
-        placeholder.textContent = "";
-        groupEl.insertBefore(placeholder, groupEl.firstChild);
-        groupEl.value = "";
-
-        new TomSelect(groupEl, {
+        new window.TomSelect(groupEl, {
           placeholder: i18next.t("Search groups..."),
-          allowEmptyOption: true,
+          items: [],
           onChange: function (value) {
             selectedGroupId = value || null;
             if (!value) {
@@ -156,17 +138,20 @@ function handleAddToGroup(personId) {
             });
           },
         });
-      });
-    },
-    { once: true },
-  );
+      },
+      { once: true },
+    );
 
-  confirm.addEventListener("click", function () {
-    if (!selectedGroupId) return;
-    confirm.disabled = true;
-    window.CRM.groups.addPerson(selectedGroupId, personId, selectedRoleId).done(function () {
-      modal.hide();
-      location.reload();
+    // NOW show — the listener above will fire after fade animation completes
+    modal.show();
+
+    confirm.addEventListener("click", function () {
+      if (!selectedGroupId) return;
+      confirm.disabled = true;
+      window.CRM.groups.addPerson(selectedGroupId, personId, selectedRoleId).done(function () {
+        modal.hide();
+        location.reload();
+      });
     });
   });
 }
@@ -176,7 +161,6 @@ function handleAddToGroup(personId) {
  * and hide the wrapper. If >1, show TomSelect.
  */
 function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
-  // Destroy previous TomSelect if any
   if (roleEl.tomselect) roleEl.tomselect.destroy();
   roleEl.innerHTML = "";
   roleWrapper.classList.add("d-none");
@@ -189,7 +173,6 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
     }
 
     if (roles.length === 1) {
-      // Auto-select the only role, no need to show picker
       onRoleSelected(String(roles[0].OptionId));
       confirmBtn.disabled = false;
       return;
@@ -206,22 +189,21 @@ function loadRoles(groupId, roleEl, roleWrapper, confirmBtn, onRoleSelected) {
     roleWrapper.classList.remove("d-none");
     confirmBtn.disabled = false;
 
-    new TomSelect(roleEl, {
+    new window.TomSelect(roleEl, {
       onChange: function (value) {
         onRoleSelected(value || null);
       },
     });
 
-    // Default to first role
     onRoleSelected(String(roles[0].OptionId));
   });
 }
 
 /**
  * Change a person's role in a group. Fetches roles first — if only 1 exists,
- * shows a notification instead of a modal.
+ * shows a notification instead of a modal. Pre-selects current role.
  */
-function handleChangeRole(personId, groupId) {
+function handleChangeRole(personId, groupId, currentRoleId) {
   window.CRM.groups.getRoles(groupId).done(function (roles) {
     if (roles.length <= 1) {
       window.CRM.notify(i18next.t("This group only has one role."), { type: "info" });
@@ -236,30 +218,38 @@ function handleChangeRole(personId, groupId) {
       '<select id="pgm-role-select"></select>' +
       "</div>";
 
-    const { modal, el, confirm } = showModal(i18next.t("Change Role"), body);
+    const { modal, el, confirm } = createModal(i18next.t("Change Role"), body);
     confirm.disabled = false;
 
-    let selectedRoleId = String(roles[0].OptionId);
+    let selectedRoleId = currentRoleId ? String(currentRoleId) : String(roles[0].OptionId);
 
+    // Populate options now
+    const roleEl = document.getElementById("pgm-role-select");
+    populateSelect(
+      roleEl,
+      roles.map(function (r) {
+        return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
+      }),
+    );
+
+    // Init TomSelect after modal is visible
     el.addEventListener(
       "shown.bs.modal",
       function () {
-        const roleEl = document.getElementById("pgm-role-select");
-        populateSelect(
-          roleEl,
-          roles.map(function (r) {
-            return { value: String(r.OptionId), text: i18next.t(r.OptionName) };
-          }),
-        );
-
-        new TomSelect(roleEl, {
+        const ts = new window.TomSelect(roleEl, {
           onChange: function (value) {
             selectedRoleId = value || null;
           },
         });
+
+        if (currentRoleId) {
+          ts.setValue(String(currentRoleId), true);
+        }
       },
       { once: true },
     );
+
+    modal.show();
 
     confirm.addEventListener("click", function () {
       if (!selectedRoleId) return;
@@ -302,7 +292,6 @@ export function initGroupManager() {
   if (!personId) return;
 
   document.addEventListener("click", function (e) {
-    // Add to Group (toolbar dropdown item or empty-state button)
     const addBtn = e.target.closest("#addGroup, #addGroupFromEmpty");
     if (addBtn) {
       e.preventDefault();
@@ -310,15 +299,13 @@ export function initGroupManager() {
       return;
     }
 
-    // Change Role (group row dropdown item)
     const roleBtn = e.target.closest(".changeRole");
     if (roleBtn) {
       e.preventDefault();
-      handleChangeRole(personId, roleBtn.dataset.groupid);
+      handleChangeRole(personId, roleBtn.dataset.groupid, roleBtn.dataset.currentRoleId);
       return;
     }
 
-    // Remove from Group (group row dropdown item)
     const removeBtn = e.target.closest(".groupRemove");
     if (removeBtn) {
       e.preventDefault();
