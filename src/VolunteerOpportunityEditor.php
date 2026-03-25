@@ -212,6 +212,11 @@ if ($iRowNum === 0) {
 $sPageTitle = gettext('Volunteer Opportunity Editor');
 
 require_once __DIR__ . '/Include/Header.php';
+?>
+
+<p class="text-muted mb-3"><?= gettext('Manage volunteer opportunities and assign members') ?></p>
+
+<?php
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
@@ -380,10 +385,9 @@ if (isset($_POST['SaveChanges'])) {
                     }
                 ?>
 
-                <div class="alert alert-warning" role="alert">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <strong><?= gettext('Warning:') ?></strong>
-                    <?= gettext("ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.") ?>
+                <div class="alert alert-info" role="alert">
+                    <i class="fa-solid fa-circle-info me-1"></i>
+                    <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
                 </div>
 
                 <?php
@@ -396,11 +400,12 @@ if (isset($_POST['SaveChanges'])) {
                 ?>
 
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header d-flex align-items-center">
                         <h5 class="mb-0">
-                            <i class="fa-solid fa-list"></i>
+                            <i class="fa-solid fa-list me-2"></i>
                             <?= gettext('Existing Volunteer Opportunities') ?>
                         </h5>
+                        <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('opportunities') ?></span>
                     </div>
                     <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">

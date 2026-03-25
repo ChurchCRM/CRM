@@ -40,8 +40,9 @@ $sPageTitle = gettext('Donation Fund Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card-body">
-    <?php
+<p class="text-muted mb-3"><?= gettext('Manage donation funds for financial tracking') ?></p>
+
+<?php
 
     // Get data for the form as it now exists..
     $donationFunds = DonationFundQuery::create()
@@ -195,10 +196,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -219,11 +219,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Donation Funds') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $donationFunds->count() ?> <?= gettext('funds') ?></span>
                 </div>
                 <div class="card-body" style="overflow: visible;">
                     <table class="table table-hover table-sm">
@@ -284,7 +285,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                                             <i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?>
                                                         </a>
                                                     <?php endif; ?>
+                                                    <?php if ($row !== 0 || $row < $donationFunds->count() - 1): ?>
                                                     <div class="dropdown-divider"></div>
+                                                    <?php endif; ?>
                                                     <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
                                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                                     </button>
@@ -307,6 +310,5 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } ?>
     </form>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

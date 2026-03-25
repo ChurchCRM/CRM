@@ -33,8 +33,9 @@ $sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $g
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card-body">
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+<p class="text-muted mb-3"><?= gettext('Define group-specific properties for members') ?></p>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, propId, fieldId) {
             var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
@@ -289,7 +290,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                        <select id="newFieldType" name="newFieldType" class="form-control">
+                        <select id="newFieldType" name="newFieldType" class="form-select">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
                                 echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
@@ -336,10 +337,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -352,14 +352,14 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Group Properties') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('properties') ?></span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
                             <thead class="table-light">
                                 <tr>
@@ -395,7 +395,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 <?php
 
                                 if ($aTypeFields[$row] == 9) {
-                                    echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
+                                    echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                                     echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
                                     $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -457,7 +457,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">
@@ -469,6 +468,5 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } ?>
     </form>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

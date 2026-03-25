@@ -285,7 +285,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             if (full.Accepted) {
               return '<span class="badge bg-success">' + i18next.t('Yes') + '</span>';
             } else {
-              return '<span class="badge bg-warning">' + i18next.t('No') + '</span>';
+              return '<span class="badge bg-warning text-dark">' + i18next.t('No') + '</span>';
             }
           }
         },

@@ -71,7 +71,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Identify members who have not made any donations within a date range.') ?></small>
                                 </div>
-                                <span class="badge bg-warning badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>
@@ -131,7 +131,7 @@ if ($iFYMonth === 1) {
                                     </h6>
                                     <small class="text-muted"><?= gettext('Generate reminder letters for families with outstanding pledges.') ?></small>
                                 </div>
-                                <span class="badge bg-warning badge-pill"><?= gettext('PDF') ?></span>
+                                <span class="badge bg-warning text-dark badge-pill"><?= gettext('PDF') ?></span>
                             </div>
                         </a>
                     </div>

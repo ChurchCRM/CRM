@@ -73,33 +73,40 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <i class="fa-solid fa-comment me-2"></i>
+      <?= gettext('"Why Came" Notes') ?>
+    </h5>
+  </div>
   <div class="card-body">
-
     <form method="post" action="WhyCameEditor.php?<?= 'PersonID=' . $iPerson . '&WhyCameID=' . $iWhyCameID . '&linkBack=' . $linkBack ?>" name="WhyCameEditor">
-      <table class="table table-simple-padding">
-        <tr>
-          <td class="LabelColumn"><?= gettext('Why did you come to the church?') ?></td>
-          <td><textarea name="Join" rows="3" cols="90"><?= $tJoin ?></textarea></td>
-        </tr>
-        <tr>
-          <td class="LabelColumn"><?= gettext('Why do you keep coming?') ?></td>
-          <td><textarea name="Come" rows="3" cols="90"><?= $tCome ?></textarea></td>
-        </tr>
-        <tr>
-          <td class="LabelColumn"><?= gettext('Do you have any suggestions for us?') ?></td>
-          <td><textarea name="Suggest" rows="3" cols="90"><?= $tSuggest ?></textarea></td>
-        </tr>
-        <tr>
-          <td class="LabelColumn"><?= gettext('How did you learn of the church?') ?></td>
-          <td><textarea name="HearOfUs" rows="3" cols="90"><?= $tHearOfUs ?></textarea></td>
-        </tr>
-        <tr>
-          <td colspan="2" class="text-center">
-            <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" name="Submit">
-            <input type="button" class="btn btn-secondary" value="<?= gettext('Cancel') ?>" name="Cancel" onclick="document.location='<?= RedirectUtils::escapeRedirectUrl($linkBack, 'PersonView.php?PersonID=' . $iPerson) ?>';">
-          </td>
-        </tr>
-      </table>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Why did you come to the church?') ?></label>
+        <textarea name="Join" class="form-control" rows="3"><?= InputUtils::escapeHTML($tJoin) ?></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Why do you keep coming?') ?></label>
+        <textarea name="Come" class="form-control" rows="3"><?= InputUtils::escapeHTML($tCome) ?></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('Do you have any suggestions for us?') ?></label>
+        <textarea name="Suggest" class="form-control" rows="3"><?= InputUtils::escapeHTML($tSuggest) ?></textarea>
+      </div>
+      <div class="mb-3">
+        <label class="form-label"><?= gettext('How did you learn of the church?') ?></label>
+        <textarea name="HearOfUs" class="form-control" rows="3"><?= InputUtils::escapeHTML($tHearOfUs) ?></textarea>
+      </div>
+      <div class="d-flex justify-content-between mt-4">
+        <a href="<?= RedirectUtils::escapeRedirectUrl($linkBack, 'PersonView.php?PersonID=' . $iPerson) ?>" class="btn btn-secondary">
+          <i class="fa-solid fa-ban me-1"></i>
+          <?= gettext('Cancel') ?>
+        </a>
+        <button type="submit" class="btn btn-primary" name="Submit">
+          <i class="fa-solid fa-floppy-disk me-1"></i>
+          <?= gettext('Save') ?>
+        </button>
+      </div>
     </form>
   </div>
 </div>

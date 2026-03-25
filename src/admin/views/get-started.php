@@ -113,7 +113,7 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
                 <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
                 MailChimp
-                <span class="badge bg-light border"><?= gettext('Enable') ?></span>
+                <span class="badge bg-light text-dark border"><?= gettext('Enable') ?></span>
             </a>
         <?php endif; ?>
 

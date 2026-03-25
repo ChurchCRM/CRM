@@ -124,7 +124,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <h5 class="mb-0">
                             <i class="fa-solid fa-handshake me-1"></i>
                             <?= gettext('Family Pledges') ?>
-                            <span class="badge bg-light ms-2"><?= count($familyPledges) ?></span>
+                            <span class="badge bg-light text-dark ms-2"><?= count($familyPledges) ?></span>
                         </h5>
                     </div>
                     <div class="card-body p-0">

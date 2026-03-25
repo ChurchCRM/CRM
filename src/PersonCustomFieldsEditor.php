@@ -18,8 +18,9 @@ $sPageTitle = gettext('Custom Person Fields Editor');
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card-body">
-    <?php
+<p class="text-muted mb-3"><?= gettext('Define custom fields to collect additional person data') ?></p>
+
+<?php
 
     $bErrorFlag = false;
     $bNewNameError = false;
@@ -233,7 +234,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
     }
     function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     {
-        $sOptList = '<select name="' . $fld_name . '" class="form-control form-control-sm">';
+        $sOptList = '<select name="' . $fld_name . '" class="form-select form-select-sm">';
         $grp_Count = count($aSecGrp);
 
         for ($i = 0; $i < $grp_Count; $i++) {
@@ -320,7 +321,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="newFieldType" class="form-label"><?= gettext('Type') ?>:</label>
-                        <select id="newFieldType" name="newFieldType" class="form-control">
+                        <select id="newFieldType" name="newFieldType" class="form-select">
                             <?php
                             for ($iOptionID = 1; $iOptionID <= count($aPropTypes); $iOptionID++) {
                                 echo '<option value="' . InputUtils::escapeAttribute($iOptionID) . '">' . InputUtils::escapeHTML($aPropTypes[$iOptionID]) . '</option>';
@@ -366,10 +367,9 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-triangle-exclamation"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -382,11 +382,12 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Custom Person Fields') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('fields') ?></span>
                 </div>
                 <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
@@ -419,7 +420,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                             <td>
                                 <?php
                                 if ($aTypeFields[$row] == 9) {
-                                    echo '<select name="' . $row . 'special" class="form-control form-control-sm">';
+                                    echo '<select name="' . $row . 'special" class="form-select form-select-sm">';
                                     echo '<option value="0" selected>' . gettext('Select a group') . '</option>';
 
                                     $sSQL = 'SELECT grp_ID,grp_Name FROM group_grp ORDER BY grp_Name';
@@ -498,7 +499,5 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } ?>
     </form>
-
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

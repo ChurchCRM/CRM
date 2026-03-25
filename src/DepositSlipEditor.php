@@ -243,7 +243,7 @@ require_once __DIR__ . '/Include/Header.php';
   <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
       <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
-      <span class="badge bg-light text-dark" id="payment-count">0</span>
+      <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>
     </h3>
     <?php if ($iDepositSlipID && $thisDeposit->getType() && !$thisDeposit->getClosed() && ($thisDeposit->getType() == 'BankDraft' || $thisDeposit->getType() == 'CreditCard')): ?>
     <div class="btn-group" role="group">

@@ -44,7 +44,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                 <?php elseif ($isActive): ?>
                     <span class="badge bg-success ms-2"><?= gettext('Enabled') ?></span>
                     <?php if (!$plugin['isConfigured']): ?>
-                        <span class="badge bg-warning ms-2"><?= gettext('Needs Configuration') ?></span>
+                        <span class="badge bg-warning text-dark ms-2"><?= gettext('Needs Configuration') ?></span>
                     <?php endif; ?>
                 <?php else: ?>
                     <span class="badge bg-secondary ms-2"><?= gettext('Disabled') ?></span>

@@ -69,9 +69,9 @@ require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header">
         <h5 class="mb-0">
-            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-pen-to-square' : 'fa-plus' ?>"></i>
+            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-pen-to-square' : 'fa-plus' ?> me-2"></i>
             <?= $sPageTitle ?>
         </h5>
     </div>
@@ -92,7 +92,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <?= gettext('Class') ?>
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control" id="class" name="Class" required>
+                        <select class="form-select" id="class" name="Class" required>
                             <option value="p" <?= ($sClass == 'p' ? 'selected' : '') ?>>
                                 <?= gettext('Person') ?>
                             </option>

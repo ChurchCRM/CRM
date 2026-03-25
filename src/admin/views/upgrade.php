@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <h3 class="card-title mb-0">
                     <i class="fa fa-shield-alt me-2"></i><?= gettext('File Integrity Check') ?>
                     <?php if ($hasIntegrityIssues): ?>
-                        <span class="badge bg-light ms-2"><?= count($failingFiles) ?></span>
+                        <span class="badge bg-light text-dark ms-2"><?= count($failingFiles) ?></span>
                     <?php endif; ?>
                 </h3>
             </div>

@@ -412,7 +412,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span><?= gettext('Configuration:') ?></span>
                         <?php if ($hasWarnings): ?>
-                            <span class="badge bg-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
+                            <span class="badge bg-warning text-dark"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
                         <?php else: ?>
                             <span class="badge bg-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php endif; ?>

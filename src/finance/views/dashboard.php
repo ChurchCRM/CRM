@@ -191,7 +191,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <?php if ($openDeposits === 0): ?>
                                 <span class="badge bg-success rounded-circle p-2"><i class="fa-solid fa-check"></i></span>
                                 <?php else: ?>
-                                <span class="badge bg-warning rounded-circle p-2"><i class="fa-solid fa-exclamation"></i></span>
+                                <span class="badge bg-warning text-dark rounded-circle p-2"><i class="fa-solid fa-exclamation"></i></span>
                                 <?php endif; ?>
                             </div>
                             <div class="flex-grow-1">
@@ -329,7 +329,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                         <?php if ($deposit->getClosed()): ?>
                                         <span class="badge bg-success"><?= gettext('Closed') ?></span>
                                         <?php else: ?>
-                                        <span class="badge bg-warning"><?= gettext('Open') ?></span>
+                                        <span class="badge bg-warning text-dark"><?= gettext('Open') ?></span>
                                         <?php endif; ?>
                                     </td>
                                 </tr>
@@ -422,7 +422,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     </div>
                     <div class="d-flex justify-content-between mb-2">
                         <span><?= gettext('Open Deposits:') ?></span>
-                        <span class="badge bg-warning"><?= $openDeposits ?></span>
+                        <span class="badge bg-warning text-dark"><?= $openDeposits ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
                         <span><?= gettext('Closed Deposits:') ?></span>
@@ -446,7 +446,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <h5 class="mb-0">
                         <i class="fa-solid fa-piggy-bank"></i> <?= gettext('Donation Funds') ?>
                     </h5>
-                    <span class="badge bg-light"><?= $activeFundCount ?></span>
+                    <span class="badge bg-light text-dark"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0): ?>

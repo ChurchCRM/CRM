@@ -35,7 +35,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-user-slash me-2"></i><?= gettext('Subscribers Not in CRM') ?>
                 </h3>
                 <div class="card-tools ms-auto">
-                    <span class="badge bg-warning" id="count-badge">
+                    <span class="badge bg-warning text-dark" id="count-badge">
                         <i class="fa-solid fa-spinner fa-spin"></i>
                     </span>
                 </div>

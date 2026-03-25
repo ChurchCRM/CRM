@@ -86,7 +86,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <h4 class="mb-0">
                     <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
-                        <span class="badge bg-light ms-2"><?= $failingCount ?></span>
+                        <span class="badge bg-light text-dark ms-2"><?= $failingCount ?></span>
                     <?php endif; ?>
                 </h4>
             </div>
@@ -115,7 +115,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div class="card-header bg-danger text-white">
                 <h4 class="mb-0">
                     <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
-                    <span class="badge bg-light ms-2"><?= $orphanedCount ?></span>
+                    <span class="badge bg-light text-dark ms-2"><?= $orphanedCount ?></span>
                 </h4>
             </div>
             <div class="card-body">
@@ -333,7 +333,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                                 <small class="text-muted d-block"><?= InputUtils::escapeHTML($currentServerTime->format('Y-m-d H:i:s T')) ?></small>
                             </div>
                             <?php if ($serverConfigMismatch): ?>
-                                <span class="badge bg-warning" title="<?= gettext('Does not match system config') ?>">
+                                <span class="badge bg-warning text-dark" title="<?= gettext('Does not match system config') ?>">
                                     <i class="fa fa-triangle-exclamation"></i> <?= gettext('Mismatch') ?>
                                 </span>
                             <?php elseif (!empty($configuredTimezone)): ?>

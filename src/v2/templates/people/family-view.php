@@ -138,7 +138,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                         <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                     </span>
                     <?php elseif ($family->hasAddress()): ?>
-                    <span class="badge bg-warning ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
+                    <span class="badge bg-warning text-dark ms-2" title="<?= gettext('Address entered but coordinates not yet set') ?>">
                         <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
                     </span>
                     <?php endif; ?>

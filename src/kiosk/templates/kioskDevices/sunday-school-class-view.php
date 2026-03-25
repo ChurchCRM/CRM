@@ -53,7 +53,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         <div class="kiosk-birthday-banner d-none" id="birthdayBanner">
           <div class="birthday-banner-header">
             <i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Upcoming Birthdays') ?>
-            <span class="badge bg-light ms-2" id="birthdayCount">0</span>
+            <span class="badge bg-light text-dark ms-2" id="birthdayCount">0</span>
           </div>
           <div class="birthday-banner-list" id="birthdayList">
             <!-- Birthday cards rendered here -->
@@ -67,7 +67,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
           <div class="kiosk-section-header not-checked-in">
             <h4>
               <i class="fa-solid fa-clock me-2"></i><?= gettext('Waiting to Check In') ?>
-              <span class="badge bg-warning ms-2" id="notCheckedInSectionCount">0</span>
+              <span class="badge bg-warning text-dark ms-2" id="notCheckedInSectionCount">0</span>
             </h4>
           </div>
           <div class="kiosk-section-body" id="notCheckedInList">

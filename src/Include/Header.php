@@ -233,7 +233,7 @@ $MenuFirst = 1;
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#">
             <i class="fi fi-<?= $localeInfo->getCountryFlagCode() ?> fi-squared"></i>
             <?php if ($localeInfo->shouldShowTranslationBadge()) { ?>
-            <span class="badge bg-warning ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
+            <span class="badge bg-warning text-dark ms-1" title="<?= gettext('Translation incomplete') ?>">!</span>
             <?php } ?>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">

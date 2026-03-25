@@ -373,10 +373,9 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     <?php
     } else {
     ?>
-        <div class="alert alert-warning" role="alert">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <strong><?= gettext('Warning:') ?></strong>
-            <?= gettext("Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!") ?>
+        <div class="alert alert-info" role="alert">
+            <i class="fa-solid fa-circle-info me-1"></i>
+            <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
         </div>
         <?php
         if ($bErrorFlag) {

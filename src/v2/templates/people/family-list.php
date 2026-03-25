@@ -114,7 +114,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <i class="fa-solid fa-check"></i> <?= gettext('Geocoded') ?>
                             </span>
                         <?php elseif ($family->hasAddress()): ?>
-                            <span class="badge bg-warning" title="<?= gettext('Unverified') ?>">
+                            <span class="badge bg-warning text-dark" title="<?= gettext('Unverified') ?>">
                                 <i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Unverified') ?>
                             </span>
                         <?php endif; ?>
