@@ -17,8 +17,10 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Person Editor');
+$sPageSubtitle = gettext('Add or edit individual person records');
 
 // Get the PersonID out of the querystring
 $iPersonID = 0;
@@ -577,6 +579,10 @@ $rsFamilies = RunQuery($sSQL);
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [($iPersonID > 0) ? gettext('Edit Person') : gettext('New Person')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

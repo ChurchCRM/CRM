@@ -149,6 +149,7 @@ if ($sAction === 'edit') {
 }
 
 $sPageTitle = $sTypeName . ' : ' . gettext(' Property Assignment');
+$sPageSubtitle = gettext('Assign a property to a record');
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

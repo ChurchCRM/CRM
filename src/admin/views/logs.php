@@ -32,21 +32,6 @@ $logLevelMap = [
 $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
 ?>
 <div class="container-fluid">
-    <!-- Settings Row with Toggle Button (Admin Only) -->
-    <?php if ($isAdmin): ?>
-    <div class="row mb-3">
-        <div class="col-12 text-end">
-            <button class="btn btn-sm btn-outline-secondary" type="button" 
-                data-bs-toggle="collapse" data-bs-target="#logSettings" aria-expanded="false" aria-controls="logSettings">
-                <i class="fa-solid fa-cog"></i> <?= gettext('Quick Settings') ?>
-            </button>
-        </div>
-    </div>
-
-    <!-- Collapsible Settings Container -->
-    <div class="collapse mb-3" id="logSettings"></div>
-    <?php endif; ?>
-
     <!-- Stat Cards Row -->
     <div class="row mb-3">
         <div class="col-sm-6 col-lg-3">

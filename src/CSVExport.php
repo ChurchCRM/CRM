@@ -3,6 +3,8 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
+use ChurchCRM\view\PageHeader;
+
 // Get Classifications for the drop-down
 $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
 $rsClassifications = RunQuery($sSQL);
@@ -33,6 +35,11 @@ while ($aRow = mysqli_fetch_array($rsSecurityGrp)) {
 }
 
 $sPageTitle = gettext('CSV Export');
+$sPageSubtitle = gettext('Export data to CSV format for external applications');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('CSV Export')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <form method="post" action="CSVCreateFile.php">

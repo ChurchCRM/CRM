@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Confirm Delete');
 
@@ -28,6 +29,10 @@ if (isset($_POST['Delete'])) {
     RedirectUtils::redirect($linkBack);
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Delete Pledge')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

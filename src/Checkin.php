@@ -1,14 +1,15 @@
 <?php
 
 $sPageTitle = gettext('Event Checkin');
+$sPageSubtitle = gettext('Check in attendees for church events and activities');
 
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
-require_once __DIR__ . '/Include/Header.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\EventAttend;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
@@ -17,6 +18,12 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
+
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Check-in')],
+]);
+require_once __DIR__ . '/Include/Header.php';
 
 $EventID = 0;
 $CheckoutOrDelete = false;

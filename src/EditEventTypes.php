@@ -10,10 +10,16 @@ use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Edit Event Types');
+$sPageSubtitle = gettext('Manage event type categories');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Event Types')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 $editing = 'FALSE';

@@ -13,12 +13,6 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 <div class="container-fluid">
 <div class="gs-wrap">
 
-    <!-- ── Hero ──────────────────────────────────────────────── -->
-    <div class="gs-hero mb-4">
-        <h2><i class="fa-solid fa-rocket me-2"></i><?= gettext('Get Your Data Into ChurchCRM') ?></h2>
-        <p><?= gettext('Choose how you\'d like to populate your database. You can always use a different method later.') ?></p>
-    </div>
-
     <!-- ── 2 × 2 option grid ──────────────────────────────────── -->
     <p class="gs-section-label"><?= gettext('Pick a path to get started') ?></p>
 

@@ -18,13 +18,19 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
     RedirectUtils::securityRedirect('AddEvent');
 }
 
 $sPageTitle = gettext('Church Event Editor');
+$sPageSubtitle = gettext('Create and manage church events and activities');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Edit Event')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 $sAction = 'Create Event';

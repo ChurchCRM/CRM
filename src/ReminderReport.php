@@ -6,11 +6,17 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $sPageTitle = gettext('Pledge Reminder Report');
+$sPageSubtitle = gettext('Generate pledge reminder letters');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Pledge Reminders')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must have MenuOptions permission to use this page
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
@@ -62,25 +63,14 @@ while ($aRow = mysqli_fetch_assoc($rsProperties)) {
 $canManage = AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled();
 $colCount = $canManage ? 4 : 3;
 
+$sPageSubtitle = gettext('Define custom properties that can be assigned to') . ' ' . strtolower(InputUtils::escapeHTML($sTypeName)) . ' ' . gettext('records');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [$sTypeName . ' ' . gettext('Properties')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
-
-    <!-- Page Header -->
-    <div class="page-header d-print-none mb-3">
-        <div class="row align-items-center">
-            <div class="col">
-                <h2 class="page-title">
-                    <i class="fa-solid <?= $sTypeIcon ?> text-primary me-2"></i>
-                    <?= InputUtils::escapeHTML($sTypeName) ?> <?= gettext('Properties') ?>
-                </h2>
-                <div class="text-muted mt-1">
-                    <?= gettext('Define custom properties that can be assigned to') ?> <?= strtolower(InputUtils::escapeHTML($sTypeName)) ?> <?= gettext('records') ?>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Main Card -->
     <div class="card">

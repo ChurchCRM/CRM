@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Base\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Get the GroupID out of the querystring
 $iGroupID = (int) InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -45,6 +46,11 @@ $rsPropList = RunQuery($sSQL);
 $numRows = mysqli_num_rows($rsPropList);
 
 $sPageTitle = gettext('Group View') . ' : ' . InputUtils::escapeHTML($thisGroup->getName());
+$sPageSubtitle = gettext('View group members, roles, and properties');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [InputUtils::escapeHTML($thisGroup->getName())],
+]);
 
 require_once __DIR__ . '/Include/Header.php';
 

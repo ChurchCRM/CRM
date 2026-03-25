@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttend;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -42,6 +43,11 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 }
 
 $sPageTitle = gettext('Add Cart to Event');
+$sPageSubtitle = gettext('Assign cart items to an event');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Add Cart to Event')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {

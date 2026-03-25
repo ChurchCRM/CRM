@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
@@ -35,6 +36,7 @@ if ($iCurrentFundraiser) {
 $sMultibuyItemsSQL ="SELECT di_ID, di_title FROM donateditem_di WHERE di_multibuy='1' AND di_FR_ID=" . $iCurrentFundraiser;
 
 $sPageTitle = gettext('Buyer Number Editor');
+$sPageSubtitle = gettext('Assign and manage fundraiser buyer numbers');
 
 // Is this the second pass?
 if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) || isset($_POST['GenerateStatement'])) {
@@ -126,6 +128,10 @@ if (isset($_POST['PaddleNumSubmit']) || isset($_POST['PaddleNumSubmitAndAdd']) |
 //Get People for the drop-down
 $sPeopleSQL = 'SELECT per_ID, per_FirstName, per_LastName, fam_Address1, fam_City, fam_State FROM person_per JOIN family_fam on per_fam_id=fam_id ORDER BY per_LastName, per_FirstName';
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Buyer Number')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

@@ -5,10 +5,13 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Query View');
+$sPageSubtitle = gettext('View query results');
 
 // Get the QueryID from the querystring
 $iQueryID = InputUtils::legacyFilterInput($_GET['QueryID'], 'int');
@@ -19,6 +22,10 @@ if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled() && in_array($iQ
     RedirectUtils::redirect('v2/dashboard');
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('Query View')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Get the query information

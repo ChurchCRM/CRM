@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\NewAccountEmail;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
@@ -337,6 +338,12 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
 }
 
 $sPageTitle = gettext('User Editor');
+$sPageSubtitle = gettext('Manage user account details and permissions');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Users'), '/admin/system/users'],
+    [gettext('Edit User')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -16,7 +17,12 @@ $app->get('/get-started', function (Request $request, Response $response) {
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('Get Started'),
+        'sPageTitle' => gettext('Get Your Data Into ChurchCRM'),
+        'sPageSubtitle' => gettext('Choose how you\'d like to populate your database. You can always use a different method later.'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('Get Started')],
+        ]),
     ];
 
     return $renderer->render($response, 'get-started.php', $pageArgs);
@@ -108,6 +114,15 @@ $app->get('/', function (Request $request, Response $response) {
     $pageArgs = [
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Admin Dashboard'),
+        'sPageSubtitle'    => gettext("Let's get your system set up and ready to use"),
+        'aBreadcrumbs'     => PageHeader::breadcrumbs([
+            [gettext('Admin')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('System Settings'), 'url' => '/SystemSettings.php', 'icon' => 'fa-cog'],
+            ['label' => gettext('Church Info'), 'url' => '/admin/system/church-info', 'icon' => 'fa-church'],
+            ['label' => gettext('Users'), 'url' => '/admin/system/users', 'icon' => 'fa-user-shield'],
+        ]),
         'setupChecklist'   => $setupChecklist,
         'completedSteps'   => $completedSteps,
         'totalSteps'       => $totalSteps,

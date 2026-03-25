@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
 $iCurrentFundraiser = InputUtils::filterInt($_GET['CurrentFundraiser']);
@@ -21,6 +22,7 @@ if ($iCurrentFundraiser >0) {
 
 
 $sPageTitle = gettext('Batch Winner Entry');
+$sPageSubtitle = gettext('Record multiple fundraiser drawing winners at once');
 
 // Is this the second pass?
 if (isset($_POST['EnterWinners'])) {
@@ -54,6 +56,10 @@ $sPaddleSQL = 'SELECT pn_Num, pn_per_ID,
                       WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 $rsPaddles = RunQuery($sPaddleSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Batch Winner Entry')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

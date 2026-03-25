@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Property;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
@@ -44,6 +45,7 @@ switch ($sType) {
 }
 
 $sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
+$sPageSubtitle = gettext('Define custom properties for tracking data');
 
 $bError = false;
 $iType = 0;
@@ -118,6 +120,10 @@ if (isset($_POST['Submit'])) {
 $sSQL ="SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType ."' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Properties')],
+    [gettext('Edit Property')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

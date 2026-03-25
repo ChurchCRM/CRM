@@ -6,16 +6,22 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $iDepositSlipID = $_SESSION['iCurrentDeposit'];
 
 $sPageTitle = gettext('Deposit Listing');
+$sPageSubtitle = gettext('Search and view deposit slip records');
 
 // Security: User must have finance permission to use this form
 if (!AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
     RedirectUtils::redirect('index.php');
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Deposits')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

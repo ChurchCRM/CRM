@@ -4,11 +4,14 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = gettext('Fundraiser Listing');
+$sPageSubtitle = gettext('Browse and search fundraiser campaigns');
 
 $sDateFormat = SystemConfig::getValue('sDatePickerFormat');
 
@@ -33,6 +36,9 @@ if (array_key_exists('DateEnd', $_GET)) {
         
 $fundraisers = $fundraisersQuery->find();
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

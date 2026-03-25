@@ -8,6 +8,7 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Manage Groups & Roles permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
@@ -39,6 +40,11 @@ if ((isset($_GET['groupeCreationID']) || isset($_POST['Submit'])) && count($_SES
 $ormGroups = GroupQuery::create()->orderByName()->find();
 
 $sPageTitle = gettext('Add Cart to Group');
+$sPageSubtitle = gettext('Assign cart items to a group');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [gettext('Add Cart to Group')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {

@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Create New Fund Raiser');
 
@@ -25,6 +26,7 @@ if ($iFundRaiserID > 0) {
     // Set current fundraiser
     $_SESSION['iCurrentFundraiser'] = $iFundRaiserID;
 }
+$sPageSubtitle = gettext('Set up a new fundraiser campaign or event');
 
 $sDateError = '';
 
@@ -116,6 +118,10 @@ if (isset($_POST['FundRaiserSubmit'])) {
     }
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Edit Fundraiser')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

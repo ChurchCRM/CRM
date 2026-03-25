@@ -10,11 +10,13 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Manage Groups permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 $sPageTitle = gettext('Group Editor');
+$sPageSubtitle = gettext('Configure group settings, roles, and properties');
 $groupService = new GroupService();
 
 // Get the GroupID from the querystring.  Redirect to Menu if no groupID is present, since this is an edit-only form.
@@ -27,6 +29,11 @@ if (array_key_exists('GroupID', $_GET)) {
 $thisGroup = GroupQuery::create()->findOneById($iGroupID);   //get this group from the group service.
 $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get Group Types for the drop-down
 $rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min' => 0], $comparison)->find();     //Group Group Role List
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [$thisGroup ? InputUtils::escapeHTML($thisGroup->getName()) : gettext('New Group'), $thisGroup ? '/GroupView.php?GroupID=' . $iGroupID : ''],
+    [gettext('Edit')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <!-- GROUP SPECIFIC PROPERTIES MODAL-->

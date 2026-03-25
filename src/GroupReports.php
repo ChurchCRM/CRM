@@ -4,12 +4,18 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 // Get all the groups
 $sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
 $rsGroups = RunQuery($sSQL);
 
 $sPageTitle = gettext('Group reports');
+$sPageSubtitle = gettext('Generate reports on group membership and activities');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [gettext('Reports')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

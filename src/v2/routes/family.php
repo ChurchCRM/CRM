@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -105,6 +106,12 @@ function listFamilies(Request $request, Response $response, array $args): Respon
     $pageArgs = [
         'sMode' => $sMode,
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Families'),
+        'sPageSubtitle' => gettext('Browse and search all families in your congregation'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Families')],
+        ]),
         'families' => $families,
         'filterCity' => $filterCity,
         'filterState' => $filterState,
@@ -167,6 +174,13 @@ function viewFamily(Request $request, Response $response, array $args): Response
 
     $pageArgs = [
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Family') . ': ' . InputUtils::escapeHTML($family->getName()),
+        'sPageSubtitle' => gettext('View family details, members, and timeline'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Families'), '/v2/family'],
+            [InputUtils::escapeHTML($family->getName())],
+        ]),
         'family' => $family,
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,

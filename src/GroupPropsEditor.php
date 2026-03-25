@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(), 'EditRecords');
@@ -15,6 +16,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 $logger = LoggerUtils::getAppLogger();
 
 $sPageTitle = gettext('Group Member Properties Editor');
+$sPageSubtitle = gettext('Edit custom properties for a group member');
 
 // Get the Group and Person IDs from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -135,6 +137,11 @@ if (isset($_POST['GroupPropSubmit'])) {
     $aPersonProps = mysqli_fetch_array($rsPersonProps, MYSQLI_BOTH);
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [$grp_Name, '/GroupView.php?GroupID=' . $iGroupID],
+    [gettext('Member Properties')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (mysqli_num_rows($rsPropList) === 0) {

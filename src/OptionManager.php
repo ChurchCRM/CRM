@@ -12,6 +12,7 @@ use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $mode = InputUtils::legacyFilterInput($_GET['mode']);
 
@@ -48,6 +49,7 @@ switch ($mode) {
         $adjplusname = gettext('Family Role');
         $adjplusnameplural = gettext('Family Roles');
         $sPageTitle = gettext('Family Roles Editor');
+        $sPageSubtitle = gettext('Manage classification lists, roles, and group types');
         $listID = 2;
         $embedded = false;
         break;
@@ -287,6 +289,10 @@ if ($embedded) {
     require_once __DIR__ . '/Include/Header-Minimal.php';
 } else {    // in portuguese, this doesn't work because adjectives come after nouns
     //$sPageTitle = $adj . ' ' . $noun ."s".gettext("Editor");
+    $aBreadcrumbs = PageHeader::breadcrumbs([
+        [gettext('Admin'), '/admin/'],
+        [gettext('Options')],
+    ]);
     require_once __DIR__ . '/Include/Header.php';
 }
 

@@ -9,8 +9,10 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Envelope Manager');
+$sPageSubtitle = gettext('Assign and manage donation envelope numbers');
 
 // Security: User must have finance permission to use this form
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -79,6 +81,10 @@ while ($aRow = mysqli_fetch_array($rsClassifications)) {
     $classification[$lst_OptionID] = $lst_OptionName;
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Manage Envelopes')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

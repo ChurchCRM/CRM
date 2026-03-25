@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -22,9 +23,14 @@ if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
 }
 
 $sPageTitle = gettext('Financial Reports');
+$sPageSubtitle = gettext('Generate financial statements and giving reports');
 if ($sReportType) {
     $sPageTitle .= ': ' . gettext($sReportType);
 }
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Reports')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 // Preserve submitted dates/datetype for both selection and filters views
 $sDateStart = '';

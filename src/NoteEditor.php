@@ -10,12 +10,14 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Notes permission
 // Otherwise, re-direct them to the main menu.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isNotesEnabled(), 'Notes');
 
 $sPageTitle = gettext('Note Editor');
+$sPageSubtitle = gettext('Add or edit notes for people and families');
 
 if (isset($_GET['PersonID'])) {
     $iPersonID = InputUtils::legacyFilterInput($_GET['PersonID'], 'int');
@@ -96,6 +98,9 @@ if (isset($_POST['Submit'])) {
         $iFamilyID = $dbNote->getFamId();
     }
 }
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Note Editor')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

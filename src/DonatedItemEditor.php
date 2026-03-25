@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\DonatedItem;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $iDonatedItemID = InputUtils::filterInt(InputUtils::legacyFilterInputArr($_GET, 'DonatedItemID', 'int'));
 $linkBack = RedirectUtils::getLinkBackFromRequest('v2/dashboard');
@@ -31,6 +32,7 @@ if ($iCurrentFundraiser) {
 }
 
 $sPageTitle = gettext('Donated Item Editor');
+$sPageSubtitle = gettext('Add or edit items donated for fundraising events');
 
 // Is this the second pass?
 if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'])) {
@@ -173,6 +175,10 @@ $sPaddleSQL = 'SELECT pn_ID, pn_Num, pn_per_ID,
                       LEFT JOIN person_per a on a.per_ID=pn_per_ID
                       WHERE pn_fr_ID=' . $iCurrentFundraiser . ' ORDER BY pn_Num';
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Donated Item')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

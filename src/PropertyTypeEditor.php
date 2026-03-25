@@ -4,9 +4,9 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
@@ -18,6 +18,7 @@ if (array_key_exists('PropertyTypeID', $_GET)) {
 }
 
 $sPageTitle = $iPropertyTypeID > 0 ? gettext('Edit Property Type') : gettext('Add Property Type');
+$sPageSubtitle = gettext('Create or edit property type categories');
 
 $sClass = '';
 $sNameError = '';
@@ -65,6 +66,11 @@ if (isset($_POST['Submit'])) {
     $sClass = '';
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Property Types'), '/PropertyTypeList.php'],
+    [gettext('Edit')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

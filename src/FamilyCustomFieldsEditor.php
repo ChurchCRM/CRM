@@ -10,15 +10,19 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Custom Family Fields Editor');
+$sPageSubtitle = gettext('Define custom fields to collect additional family data');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Custom Family Fields')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
-
-<p class="text-muted mb-3"><?= gettext('Define custom fields to collect additional family data') ?></p>
 
 <?php
 

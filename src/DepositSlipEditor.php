@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -43,6 +44,7 @@ if ($noDeposit) {
 }
 
 $sPageTitle = $thisDeposit->getType() . ' ' . gettext('Deposit Slip Number') . ': ' . $iDepositSlipID;
+$sPageSubtitle = gettext('View and manage deposit slip payments');
 
 // Get previous and next deposits for navigation
 $prevDeposit = Deposit::getPreviousDeposit($iDepositSlipID);
@@ -62,6 +64,11 @@ $currentUser = AuthenticationManager::getCurrentUser();
 $currentUser->setCurrentDeposit($iDepositSlipID);
 $currentUser->save();
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Deposits'), '/FindDepositSlip.php'],
+    [gettext('Edit Deposit')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <!-- Deposit Navigation -->

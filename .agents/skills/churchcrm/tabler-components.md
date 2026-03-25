@@ -94,6 +94,68 @@ Tabler uses `container-xl` (max-width: 1320px) by default, not `container-fluid`
 | `.navbar-brand-autodark` | Logo auto-inverts in dark mode |
 | `.navbar-brand-image` | Logo image sizing (32px height) |
 
+### Unified Page Header (MANDATORY for all pages) <!-- learned: 2026-03-25 -->
+
+Every page **must** have a unified page header rendered by `Header.php`. The header is configured via variables — **never** create a duplicate `<h2>` or `page-header` div inside page content.
+
+**Variables** (set before `require Header.php` or in route `$pageArgs`):
+
+| Variable | Type | Required | Purpose |
+|----------|------|----------|---------|
+| `$sPageTitle` | string | **Yes** | Browser tab + `<h2>` heading |
+| `$sPageSubtitle` | string | No | Muted description below title |
+| `$aBreadcrumbs` | array | **Yes** | Breadcrumb trail (3-4 levels max) |
+| `$sPageHeaderButtons` | string | No | Admin action buttons (right of breadcrumbs) |
+| `$sSettingsCollapseId` | string | No | Inline settings panel collapse container ID |
+
+**Helper class**: `ChurchCRM\view\PageHeader` (`src/ChurchCRM/view/PageHeader.php`)
+
+**Breadcrumbs** — URLs are relative, `getRootPath()` is prepended automatically:
+```php
+use ChurchCRM\view\PageHeader;
+
+// Legacy page (before require Header.php)
+$sPageTitle = gettext('Group View') . ': ' . $groupName;
+$sPageSubtitle = gettext('View group members, roles, and properties');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],   // relative URL
+    [$groupName],                                // last item = active (no URL)
+]);
+require_once __DIR__ . '/Include/Header.php';
+
+// MVC route ($pageArgs)
+$pageArgs = [
+    'sPageTitle'         => gettext('Finance Dashboard'),
+    'sPageSubtitle'      => gettext('Manage donations, pledges, and financial records'),
+    'aBreadcrumbs'       => PageHeader::breadcrumbs([
+        [gettext('Finance')],
+    ]),
+    'sPageHeaderButtons' => PageHeader::buttons([
+        ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#financialSettings'],
+        ['label' => gettext('Donation Funds'), 'url' => '/DonationFundEditor.php', 'icon' => 'fa-hand-holding-dollar'],
+    ]),
+    'sSettingsCollapseId' => 'financialSettings',
+];
+```
+
+**Admin action buttons** — two types:
+
+| Type | Purpose | Example |
+|------|---------|---------|
+| **Settings toggle** | Bootstrap collapse for inline `SettingsPanel` | `['label' => ..., 'icon' => 'fa-cog', 'collapse' => '#sectionSettings']` |
+| **Link button** | Navigate to admin/config pages | `['label' => ..., 'url' => '/PropertyList.php?Type=g', 'icon' => 'fa-list']` |
+
+Buttons are admin-only by default. Set `'adminOnly' => false` for all-user buttons. Button URLs are relative (root path prepended automatically).
+
+**Quick Actions cards** (inside page body) are separate from page header buttons. Quick Actions are for everyday user actions (Add Person, Add Family, etc). Page header buttons are for admin shortcuts (Settings, Properties, Types).
+
+**Rules**:
+- Never create a duplicate `<h2>`, `.page-header`, or `.page-title` inside page content
+- Every page needs `$sPageTitle` + `$aBreadcrumbs` at minimum
+- Every MVC page also needs `$sPageSubtitle`
+- Breadcrumb depth: Home > Section > [Sub-section >] Current Page (3-4 levels max)
+- Main dashboard (`/v2/dashboard`) has no breadcrumbs — it IS Home
+
 ---
 
 ## 2. Cards

@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\DashboardService;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -82,6 +83,15 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => gettext('People Dashboard'),
+        'sPageSubtitle'      => gettext('Manage families, people, and demographic information'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+            [gettext('People')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Person Properties'), 'url' => '/PropertyList.php?Type=p', 'icon' => 'fa-list'],
+            ['label' => gettext('Family Properties'), 'url' => '/PropertyList.php?Type=f', 'icon' => 'fa-house'],
+            ['label' => gettext('Custom Fields'), 'url' => '/PersonCustomFieldsEditor.php', 'icon' => 'fa-pen-field'],
+        ]),
         'familyCount'        => $familyCount,
         'groupStats'         => $groupStats,
         'personCount'        => $personCount,

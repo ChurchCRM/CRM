@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
     RedirectUtils::securityRedirect("Admin");
@@ -25,19 +26,15 @@ if ($filterClass !== '') {
 $sSQL .= ' GROUP BY prt_ID, prt_Class, prt_Name ORDER BY prt_Class, prt_Name';
 $rsPropertyTypes = RunQuery($sSQL);
 
+$sPageSubtitle = gettext('Manage person, family, and group property types');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Property Types')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
-    <!-- Page Header -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <h2 class="mb-1">
-                <i class="fa-solid fa-list-check text-primary"></i> <?= gettext('Property Types') ?>
-            </h2>
-            <p class="text-muted mb-0"><?= gettext('Manage person, family, and group property types') ?></p>
-        </div>
-    </div>
 
     <!-- Table Card -->
     <div class="card">

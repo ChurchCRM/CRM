@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have proper permission
 // For now ... require $bAdmin
@@ -208,7 +209,12 @@ if ($iRowNum === 0) {
 }
 
 $sPageTitle = gettext('Volunteer Opportunity Editor');
+$sPageSubtitle = gettext('Create or edit volunteer positions');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Volunteer Opportunities')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

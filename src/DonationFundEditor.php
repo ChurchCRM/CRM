@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -37,10 +38,13 @@ if ($sAction = 'delete' && strlen($sFund) > 0) {
 }
 
 $sPageTitle = gettext('Donation Fund Editor');
+$sPageSubtitle = gettext('Manage donation funds for financial tracking');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Donation Funds')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
-
-<p class="text-muted mb-3"><?= gettext('Manage donation funds for financial tracking') ?></p>
 
 <?php
 

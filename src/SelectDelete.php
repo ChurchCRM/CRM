@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Delete records permission
 // Otherwise, re-direct them to the main menu.
@@ -102,6 +103,9 @@ $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
 $rsFamily = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsFamily));
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Delete Confirmation')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

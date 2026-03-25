@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $iPersonID = AuthenticationManager::getCurrentUser()->getId();
 
@@ -81,6 +82,10 @@ if (isset($_POST['save'])) {
 }
 
 $sPageTitle = gettext('My User Settings');
+$sPageSubtitle = gettext('Manage your personal preferences and account settings');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('My Settings')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Get settings

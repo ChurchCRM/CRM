@@ -18,16 +18,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 
 ?>
 <div class="container-fluid">
-    <!-- Page Header -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <h2 class="mb-1">
-                <i class="fa-solid fa-user-shield text-primary"></i> <?= gettext('System Users') ?>
-            </h2>
-            <p class="text-muted mb-0"><?= gettext('Manage system users, permissions, and two-factor authentication settings') ?></p>
-        </div>
-    </div>
-
     <!-- Stat Cards Row -->
 <div class="row mb-3">
     <div class="col-sm-6 col-lg-3">
@@ -103,29 +93,6 @@ $userSettingsConfig = $userService->getUserSettingsConfig();
 <!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-
-<!-- Quick Actions -->
-<div class="card mb-3">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
-    </div>
-    <div class="card-body">
-        <div class="d-flex flex-wrap" style="gap: .5rem;">
-            <a href="<?= SystemURLs::getRootPath() ?>/UserEditor.php" class="btn btn-success">
-                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add User') ?>
-            </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/SettingsUser.php" class="btn btn-primary">
-                <i class="fa-solid fa-cog me-1"></i><?= gettext('User Settings') ?>
-            </a>
-            <button type="button" class="btn btn-info" data-bs-toggle="collapse" data-bs-target="#userSettingsPanel" aria-expanded="false">
-                <i class="fa-solid fa-sliders me-1"></i><?= gettext('Quick Settings') ?>
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- User Settings Panel (collapsible) -->
-<div class="collapse mb-3" id="userSettingsPanel"></div>
 
 <div class="card">
     <div class="card-header d-flex align-items-center">

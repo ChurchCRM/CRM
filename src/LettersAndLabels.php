@@ -6,8 +6,14 @@ require_once __DIR__ . '/Include/LabelFunctions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Letters and Mailing Labels');
+$sPageSubtitle = gettext('Generate mailing labels and form letters');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Data & Reports'), '/QueryList.php'],
+    [gettext('Letters and Labels')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?

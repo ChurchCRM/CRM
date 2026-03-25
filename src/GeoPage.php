@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 function CompareDistance($elem1, $elem2)
 {
@@ -68,6 +69,7 @@ function FamilyInfoByDistance($iFamily)
 }
 
 $sPageTitle = gettext('Family Geographic Utilities');
+$sPageSubtitle = gettext('View and manage family location data');
 
 // Create array with Classification Information (lst_ID = 1)
 $classifications = Classification::getAll();
@@ -177,6 +179,10 @@ if (isset($_POST['DataFile'])) {
     exit;
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Geographic Utilities')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 //Get Families for the list

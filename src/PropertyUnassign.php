@@ -74,6 +74,7 @@ $aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow['pro_Name'];
 
 $sPageTitle = $sTypeName . gettext(' Property Unassignment');
+$sPageSubtitle = gettext('Remove a property from a record');
 
 //Include the header
 require_once __DIR__ . '/Include/Header.php';

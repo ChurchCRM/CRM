@@ -33,16 +33,6 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.css') ?>">
 
 <div class="container-fluid">
-    <!-- Page Header -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <h2 class="mb-1">
-                <i class="fa-solid fa-hand-fist text-primary"></i> <?= gettext('Welcome to ChurchCRM') ?>
-            </h2>
-            <p class="text-muted mb-0"><?= gettext("Let's get your system set up and ready to use") ?></p>
-        </div>
-    </div>
-
     <?php if ($hasURLError): ?>
     <!-- Configuration URL Error Alert -->
     <div class="alert alert-danger alert-dismissible fade show" role="alert">

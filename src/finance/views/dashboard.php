@@ -44,24 +44,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <div class="container-fluid">
     <!-- Fiscal Year Info -->
     <div class="row mb-3">
-        <div class="col-12 d-flex align-items-center">
-            <p class="text-muted mb-0 flex-grow-1">
+        <div class="col-12">
+            <p class="text-muted mb-0">
                 <i class="fa-solid fa-calendar-days me-1"></i>
-                <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong> 
+                <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong>
                 (<?= date('M j, Y', strtotime($fyStartDate)) ?> - <?= date('M j, Y', strtotime($fyEndDate)) ?>)
             </p>
-            <?php if ($isAdmin): ?>
-            <button class="btn btn-sm btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#financialSettings" aria-expanded="false" aria-controls="financialSettings">
-                <i class="fa-solid fa-cog"></i> <?= gettext('Financial Settings') ?>
-            </button>
-            <?php endif; ?>
         </div>
     </div>
-
-    <?php if ($isAdmin): ?>
-    <!-- Financial Settings (Admin Only) - Uses reusable settings panel component -->
-    <div class="collapse mb-3" id="financialSettings"></div>
-    <?php endif; ?>
 
     <!-- Overview Card -->
     <div class="card border border-success mb-3">

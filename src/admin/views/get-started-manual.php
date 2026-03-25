@@ -6,16 +6,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
-    <!-- Page Header -->
-    <div class="row mb-4">
-        <div class="col-12">
-            <h2 class="mb-1">
-                <i class="fa-solid fa-pen-to-square text-success"></i> <?= gettext('Start Fresh') ?>
-            </h2>
-            <p class="text-muted mb-0"><?= gettext("Great choice! Here's how to add your church members.") ?></p>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-lg-8">
 

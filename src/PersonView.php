@@ -12,6 +12,7 @@ use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $timelineService = new TimelineService();
 $personService = new PersonService();
@@ -32,6 +33,11 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 }
 
 $sPageTitle = gettext('Person Profile');
+$sPageSubtitle = gettext('View detailed information about a person');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 

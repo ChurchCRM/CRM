@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $linkBack = RedirectUtils::getLinkBackFromRequest('');
 
@@ -23,6 +24,11 @@ if ($iFundRaiserID > 0) {
 }
 
 $sPageTitle = gettext('Buyers for this fundraiser:');
+$sPageSubtitle = gettext('View buyer numbers and paddle assignments');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Fundraiser'), '/FindFundRaiser.php'],
+    [gettext('Buyers')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <div class="card-body">

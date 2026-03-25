@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -17,7 +18,12 @@ if ($_GET['all'] == 'true') {
 }
 
 $sPageTitle = gettext('Convert Individuals to Families');
+$sPageSubtitle = gettext('Convert individual records into family units');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Convert to Family')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 echo '<div class="card-body"><pre class="pre-compact">';

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MICRUtils;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -466,6 +467,7 @@ if ($iCurrentDeposit) {
 
 if ($PledgeOrPayment === 'Pledge') {
     $sPageTitle = gettext('New Pledge');
+    $sPageSubtitle = gettext('Record new pledges and payments');
     $cardHeaderClass = 'bg-warning';
     $cardHeaderTextClass = 'text-dark';
     $formTypeLabel = gettext('Pledge');
@@ -522,6 +524,10 @@ if ($iFamily) {
     }
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Pledge')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>

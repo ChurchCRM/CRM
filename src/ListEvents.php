@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 $eType = 'All';
 
@@ -22,6 +23,7 @@ if ($eType != 'All') {
 } else {
     $sPageTitle = gettext('Listing All Church Events');
 }
+$sPageSubtitle = gettext('Browse all church events and activities');
 
 // Retrieve the year selector
 if (isset($_POST['WhichYear'])) {
@@ -30,6 +32,9 @@ if (isset($_POST['WhichYear'])) {
     $EventYear = DateTimeUtils::getCurrentYear();
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Handle delete action

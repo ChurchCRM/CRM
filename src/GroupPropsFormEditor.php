@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
@@ -30,10 +31,14 @@ if ($grp_hasSpecialProps == false) {
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $grp_Name;
+$sPageSubtitle = gettext('Define group-specific properties for members');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [$grp_Name, '/GroupView.php?GroupID=' . $iGroupID],
+    [gettext('Properties Form')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
-
-<p class="text-muted mb-3"><?= gettext('Define group-specific properties for members') ?></p>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteField(fieldName, propId, fieldId) {

@@ -21,6 +21,7 @@ $per_FirstName = $person->getFirstName();
 $per_LastName = $person->getLastName();
 
 $sPageTitle = gettext('"Why Came" notes for ') . $per_FirstName . ' ' . $per_LastName;
+$sPageSubtitle = gettext('Record why attendees visited your church');
 
 // Is this the second pass?
 if (isset($_POST['Submit'])) {

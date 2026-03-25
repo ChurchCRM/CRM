@@ -16,8 +16,10 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Family Editor');
+$sPageSubtitle = gettext('Create and edit family information and relationships');
 
 $iFamilyID = -1;
 $family = null;
@@ -550,6 +552,11 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Families'), '/v2/family'],
+    [($iFamilyID > 0) ? gettext('Edit Family') : gettext('New Family')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 ?>
 <form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">

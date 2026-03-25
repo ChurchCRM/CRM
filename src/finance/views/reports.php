@@ -23,15 +23,6 @@ if ($iFYMonth === 1) {
 ?>
 
 <div class="container-fluid">
-    <!-- Page Description -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <p class="text-muted mb-0">
-                <?= gettext('Generate reports for tax statements, pledge tracking, and financial analysis.') ?>
-            </p>
-        </div>
-    </div>
-
     <div class="row">
         <!-- Tax & Giving Reports -->
         <div class="col-lg-6 mb-4">

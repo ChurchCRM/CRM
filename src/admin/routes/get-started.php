@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -15,7 +16,13 @@ $app->group('/get-started', function (RouteCollectorProxy $group): void {
 
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
-            'sPageTitle' => gettext('Start Fresh — Manual Data Entry'),
+            'sPageTitle' => gettext('Start Fresh'),
+            'sPageSubtitle' => gettext("Great choice! Here's how to add your church members."),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Get Started'), '/admin/get-started'],
+                [gettext('Start Fresh')],
+            ]),
         ];
 
         return $renderer->render($response, 'get-started-manual.php', $pageArgs);

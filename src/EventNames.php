@@ -7,13 +7,19 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
     RedirectUtils::securityRedirect('AddEvent');
 }
 
 $sPageTitle = gettext('Edit Event Types');
+$sPageSubtitle = gettext('Manage event names and categories');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Event Types')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (isset($_POST['Action'])) {

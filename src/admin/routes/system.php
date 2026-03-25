@@ -12,6 +12,7 @@ use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\VersionUtils;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -26,6 +27,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Backup Database'),
+            'sPageSubtitle' => gettext('Create a backup of your church database'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Backup Database')],
+            ]),
         ];
         
         return $renderer->render($response, 'backup.php', $pageArgs);
@@ -38,6 +44,16 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('System Users'),
+            'sPageSubtitle' => gettext('Manage system users, permissions, and two-factor authentication settings'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('System Users')],
+            ]),
+            'sSettingsCollapseId' => 'userSettingsPanel',
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettingsPanel'],
+                ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+            ]),
         ];
         
         return $renderer->render($response, 'users.php', $pageArgs);
@@ -53,6 +69,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'    => SystemURLs::getRootPath(),
             'sPageTitle'   => gettext('Restore Database'),
+            'sPageSubtitle' => gettext('Restore your church database from a backup file'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Restore Database')],
+            ]),
             'isOnboarding' => $isOnboarding,
         ];
         
@@ -65,6 +86,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Database Reset Functions'),
+            'sPageSubtitle' => gettext('Clear all data and start fresh'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Database Reset')],
+            ]),
         ];
         
         return $renderer->render($response, 'system-reset.php', $pageArgs);
@@ -94,6 +120,15 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('System Logs'),
+            'sPageSubtitle' => gettext('View and manage system log files for debugging'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('System Logs')],
+            ]),
+            'sSettingsCollapseId' => 'logSettings',
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#logSettings'],
+            ]),
             'logFiles'   => $logFiles,
         ];
 
@@ -107,6 +142,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Debug'),
+            'sPageSubtitle' => gettext('System diagnostic information and configuration'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Debug')],
+            ]),
         ];
 
         return $renderer->render($response, 'debug.php', $pageArgs);
@@ -128,6 +168,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'  => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Debug Email Connection'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Debug'), '/admin/system/debug'],
+                [gettext('Email')],
+            ]),
             'mailer'     => $email,
             'message'    => $message,
         ];
@@ -144,6 +189,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'      => SystemURLs::getRootPath(),
             'sPageTitle'     => gettext('Orphaned Files Management'),
+            'sPageSubtitle'  => gettext('Review and clean up files not associated with any record'),
+            'aBreadcrumbs'   => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Orphaned Files')],
+            ]),
             'orphanedFiles'  => $orphanedFiles,
             'orphanedCount'  => count($orphanedFiles),
         ];
@@ -206,6 +256,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'             => SystemURLs::getRootPath(),
             'sPageTitle'            => gettext('System Upgrade'),
+            'sPageSubtitle'         => gettext('Check for updates and upgrade your ChurchCRM installation'),
+            'aBreadcrumbs'          => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('System Upgrade')],
+            ]),
             'hasWarnings'           => $hasWarnings,
             'integrityCheckFailed'  => $integrityCheckFailed,
             'integrityCheckData'    => $integrityCheckData,
@@ -253,6 +308,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath'          => SystemURLs::getRootPath(),
             'sPageTitle'         => gettext('Church Information'),
+            'sPageSubtitle'      => gettext('Set your church name, address, and contact details'),
+            'aBreadcrumbs'       => PageHeader::breadcrumbs([
+                [gettext('Admin'), '/admin/'],
+                [gettext('Church Information')],
+            ]),
             'churchInfo'         => $churchInfo,
             'countries'          => Countries::getNames(),
             'timezones'          => timezone_identifiers_list(),
@@ -319,6 +379,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $pageArgs = [
                 'sRootPath'          => SystemURLs::getRootPath(),
                 'sPageTitle'         => gettext('Church Information'),
+                'sPageSubtitle'      => gettext('Set your church name, address, and contact details'),
+                'aBreadcrumbs'       => PageHeader::breadcrumbs([
+                    [gettext('Admin'), '/admin/'],
+                    [gettext('Church Information')],
+                ]),
                 'churchInfo'         => $churchInfo,
                 'countries'          => Countries::getNames(),
                 'timezones'          => timezone_identifiers_list(),

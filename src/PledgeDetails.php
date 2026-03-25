@@ -6,8 +6,10 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Electronic Transaction Details');
+$sPageSubtitle = gettext('View transaction details for a pledge payment');
 
 // Get the PledgeID out of the querystring
 $iPledgeID = InputUtils::legacyFilterInput($_GET['PledgeID'], 'int');
@@ -29,6 +31,10 @@ extract(mysqli_fetch_array($rsPledgeRec));
 $sSQL = 'SELECT * FROM result_res WHERE res_ID=' . $plg_aut_ResultID;
 $rsResultRec = RunQuery($sSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Transaction Details')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 $resArr = mysqli_fetch_array($rsResultRec);

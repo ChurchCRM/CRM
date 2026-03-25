@@ -384,24 +384,54 @@ $MenuFirst = 1;
     </div><!-- /.container-xl -->
   </header>
 
+<?php
+    // Unified page header defaults (backward-compatible)
+    $sPageSubtitle = $sPageSubtitle ?? '';
+    $aBreadcrumbs = $aBreadcrumbs ?? [];
+    $sPageHeaderButtons = $sPageHeaderButtons ?? '';
+    $sSettingsCollapseId = $sSettingsCollapseId ?? '';
+    ?>
     <div class="page-header d-print-none">
       <div class="container-xl">
-        <div class="row g-2 align-items-center">
-          <div class="col-auto">
-            <h2 class="page-title"><?= $sPageTitle ?></h2>
-          </div>
-          <?php if (!empty($sBreadcrumb)) { ?>
-          <div class="col-12">
-            <ol class="breadcrumb" aria-label="breadcrumbs">
+        <?php if (!empty($aBreadcrumbs) || !empty($sPageHeaderButtons)) : ?>
+        <div class="row g-2 align-items-center mb-1">
+          <div class="col">
+            <?php if (!empty($aBreadcrumbs)) : ?>
+            <ol class="breadcrumb mb-0" aria-label="breadcrumbs">
               <li class="breadcrumb-item">
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard"><?= gettext('Home') ?></a>
               </li>
-              <?= $sBreadcrumb ?>
+              <?php foreach ($aBreadcrumbs as $crumb) : ?>
+                <?php if (!empty($crumb['active'])) : ?>
+              <li class="breadcrumb-item active" aria-current="page"><?= $crumb['label'] ?></li>
+                <?php else : ?>
+              <li class="breadcrumb-item"><a href="<?= $crumb['url'] ?>"><?= $crumb['label'] ?></a></li>
+                <?php endif; ?>
+              <?php endforeach; ?>
             </ol>
+            <?php endif; ?>
           </div>
-          <?php } ?>
+          <?php if (!empty($sPageHeaderButtons)) : ?>
+          <div class="col-auto ms-auto">
+            <?= $sPageHeaderButtons ?>
+          </div>
+          <?php endif; ?>
+        </div>
+        <?php endif; ?>
+        <div class="row g-2 align-items-center">
+          <div class="col">
+            <h2 class="page-title"><?= $sPageTitle ?></h2>
+            <?php if (!empty($sPageSubtitle)) : ?>
+            <div class="text-muted mt-1"><?= $sPageSubtitle ?></div>
+            <?php endif; ?>
+          </div>
         </div>
       </div>
     </div><!-- /.page-header -->
+    <?php if (!empty($sSettingsCollapseId)) : ?>
+    <div class="container-xl">
+      <div class="collapse mb-3" id="<?= $sSettingsCollapseId ?>"></div>
+    </div>
+    <?php endif; ?>
     <div class="page-body">
       <div class="container-xl">

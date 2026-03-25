@@ -10,11 +10,13 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('System Settings');
+$sPageSubtitle = gettext('Configure global system settings and preferences');
 
 // Save Settings
 if (isset($_POST['save'])) {
@@ -79,6 +81,10 @@ if (isset($_SESSION['sGlobalMessage'])) {
     unset($_SESSION['sGlobalMessageClass']);
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('System Settings')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Build a stable, valid CSS ID from a category name

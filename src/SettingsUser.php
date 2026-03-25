@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -50,6 +51,11 @@ if (isset($_POST['save'])) {
 }
 
 $sPageTitle = gettext('Default User Settings');
+$sPageSubtitle = gettext('Set default preferences for new user accounts');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Default User Settings')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Get settings

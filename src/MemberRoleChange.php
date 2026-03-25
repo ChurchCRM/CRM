@@ -6,11 +6,13 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have Manage Groups & Roles permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
 
 $sPageTitle = gettext('Member Role Change');
+$sPageSubtitle = gettext('Modify family roles for group members');
 
 // Get the GroupID from the querystring
 $iGroupID = InputUtils::legacyFilterInput($_GET['GroupID'], 'int');
@@ -55,6 +57,10 @@ extract($rsCurrentRole);
 $sSQL ="SELECT * FROM list_lst WHERE lst_ID = $grp_RoleListID ORDER BY lst_OptionSequence";
 $rsAllRoles = RunQuery($sSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Groups'), '/groups/dashboard'],
+    [gettext('Member Role Change')],
+]);
 require_once __DIR__ . '/Include/Header.php'
 
 ?>

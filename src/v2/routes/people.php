@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -145,6 +146,12 @@ function listPeople(Request $request, Response $response, array $args): Response
     $pageArgs = [
         'sMode'                           => $sMode,
         'sRootPath'                       => SystemURLs::getRootPath(),
+        'sPageTitle'                      => gettext('Person Listing'),
+        'sPageSubtitle'                   => gettext('Browse all people in your congregation with filtering and search'),
+        'aBreadcrumbs'                    => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Person Listing')],
+        ]),
         'members'                         => $members,
         'filterByClsId'                   => $filterByClsId,
         'filterByClsOptionId'             => $filterByClsOptionId,
@@ -248,6 +255,11 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
         'sPageTitle'           => gettext('Photo Directory'),
+        'sPageSubtitle'        => gettext('Browse photos of congregation members'),
+        'aBreadcrumbs'         => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Photo Directory')],
+        ]),
         'peopleData'           => $peopleData,
         'classifications'      => $classifications,
         'classificationMap'    => $classificationMap,

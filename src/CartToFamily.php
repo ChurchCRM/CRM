@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -114,6 +115,11 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
 }
 
 $sPageTitle = gettext('Add Cart to Family');
+$sPageSubtitle = gettext('Assign cart items to a family record');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('People'), '/people/dashboard'],
+    [gettext('Add Cart to Family')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 echo $sError;

@@ -4,14 +4,19 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Query Listing');
+$sPageSubtitle = gettext('View and run saved database queries');
 
 $sSQL = 'SELECT * FROM query_qry ORDER BY qry_Name';
 $rsQueries = RunQuery($sSQL);
 
 $aFinanceQueries = explode(',', $aFinanceQueries);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Data & Reports')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
