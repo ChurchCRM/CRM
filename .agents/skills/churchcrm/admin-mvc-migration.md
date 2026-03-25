@@ -85,15 +85,27 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
+use ChurchCRM\view\PageHeader;
+
 $app->get('/admin/system/users', function (Request $request, Response $response): Response {
     $container = $this->getContainer();
     $userService = $container->get('UserService');
-    
+
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
     return $renderer->render($response, 'users.php', [
-        'sRootPath' => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('User Management'),
-        'stats' => $userService->getUserStats(),
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('System Users'),
+        'sPageSubtitle'      => gettext('Manage system users, permissions, and 2FA'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('System Users')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#userSettings'],
+            ['label' => gettext('Add User'), 'url' => '/UserEditor.php', 'icon' => 'fa-user-plus'],
+        ]),
+        'sSettingsCollapseId' => 'userSettings',
+        'stats'    => $userService->getUserStats(),
         'settings' => $userService->getUserSettingsConfig(),
     ]);
 });
