@@ -173,23 +173,41 @@ function initializeDepositSlip() {
         searchable: false,
         className: "text-end w-1 no-export",
         render: function (data, type, full, meta) {
-          var addPaymentUrl = window.CRM.root +
-            "/PledgeEditor.php?CurrentDeposit=" + full.Id +
-            "&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php%3FDepositSlipID%3D" + full.Id +
-            "&PledgeOrPayment=Payment&CurrentDeposit=" + full.Id;
+          var addPaymentUrl =
+            window.CRM.root +
+            "/PledgeEditor.php?CurrentDeposit=" +
+            full.Id +
+            "&PledgeOrPayment=Payment&linkBack=DepositSlipEditor.php%3FDepositSlipID%3D" +
+            full.Id +
+            "&PledgeOrPayment=Payment&CurrentDeposit=" +
+            full.Id;
           return (
             '<div class="dropdown">' +
             '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
             '<i class="ti ti-dots-vertical"></i>' +
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
-            '<a class="dropdown-item" href="' + window.CRM.root + '/DepositSlipEditor.php?DepositSlipID=' + full.Id + '">' +
-            '<i class="ti ti-eye me-2"></i>' + i18next.t("View") + "</a>" +
-            '<a class="dropdown-item" href="' + addPaymentUrl + '">' +
-            '<i class="ti ti-plus me-2"></i>' + i18next.t("Add Payment") + "</a>" +
+            '<a class="dropdown-item" href="' +
+            window.CRM.root +
+            "/DepositSlipEditor.php?DepositSlipID=" +
+            full.Id +
+            '">' +
+            '<i class="ti ti-eye me-2"></i>' +
+            i18next.t("View") +
+            "</a>" +
+            '<a class="dropdown-item" href="' +
+            addPaymentUrl +
+            '">' +
+            '<i class="ti ti-plus me-2"></i>' +
+            i18next.t("Add Payment") +
+            "</a>" +
             '<div class="dropdown-divider"></div>' +
-            '<button type="button" class="dropdown-item text-danger delete-deposit-row" data-deposit-id="' + full.Id + '">' +
-            '<i class="ti ti-trash me-2"></i>' + i18next.t("Delete") + "</button>" +
+            '<button type="button" class="dropdown-item text-danger delete-deposit-row" data-deposit-id="' +
+            full.Id +
+            '">' +
+            '<i class="ti ti-trash me-2"></i>' +
+            i18next.t("Delete") +
+            "</button>" +
             "</div></div>"
           );
         },
@@ -212,9 +230,16 @@ function initializeDepositSlip() {
     var depositId = $(this).data("deposit-id");
     bootbox.confirm({
       title: i18next.t("Confirm Delete"),
-      message: "<p>" + i18next.t("Are you sure you want to delete this deposit?") + "</p>" +
-        "<p>" + i18next.t("This will also delete all payments associated with this deposit") + "</p>" +
-        "<p>" + i18next.t("This action CANNOT be undone, and may have legal implications!") + "</p>",
+      message:
+        "<p>" +
+        i18next.t("Are you sure you want to delete this deposit?") +
+        "</p>" +
+        "<p>" +
+        i18next.t("This will also delete all payments associated with this deposit") +
+        "</p>" +
+        "<p>" +
+        i18next.t("This action CANNOT be undone, and may have legal implications!") +
+        "</p>",
       buttons: {
         cancel: { label: i18next.t("Close") },
         confirm: { label: i18next.t("Delete") },
