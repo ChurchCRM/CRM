@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     yaxis: {
       title: {
-        text: "<?= gettext('Count') ?>",
+        text: i18next.t("Count"),
       },
       forceNiceScale: true,
     },

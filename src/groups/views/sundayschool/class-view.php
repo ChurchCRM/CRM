@@ -100,10 +100,10 @@ $teacherCount = count($rsTeachers);
 <!-- Class Actions -->
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title">
+        <h5 class="card-title mb-0">
             <i class="fa-solid fa-chalkboard-user me-2"></i>
             <?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong>
-        </h3>
+        </h5>
         <div class="ms-auto">
             <div class="btn-group flex-wrap" role="group">
                 <a class="btn btn-outline-success" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Add students to this class') ?>">
@@ -144,7 +144,7 @@ $teacherCount = count($rsTeachers);
 <!-- Birthday Chart Card -->
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-chart-bar me-2"></i><?= gettext('Birthdays by Month') ?></h3>
+        <h5 class="card-title mb-0"><i class="fa-solid fa-chart-bar me-2"></i><?= gettext('Birthdays by Month') ?></h5>
     </div>
     <div class="card-body">
         <div class="user-select-none">
@@ -159,7 +159,7 @@ $teacherCount = count($rsTeachers);
 <?php if ($teacherCount > 0) { ?>
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?></h3>
+        <h5 class="card-title mb-0"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?></h5>
         <span class="badge bg-success ms-2"><?= $teacherCount ?></span>
     </div>
     <div class="card-body">
@@ -210,9 +210,9 @@ $teacherCount = count($rsTeachers);
 <!-- Students Card -->
 <div class="card mb-3">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title">
+        <h5 class="card-title mb-0">
             <i class="fa-solid fa-users me-2"></i><?= gettext('Students') ?>
-        </h3>
+        </h5>
         <span class="badge bg-primary ms-2"><?= $totalStudents ?></span>
     </div>
     <div class="card-body">

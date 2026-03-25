@@ -2,8 +2,11 @@
  * System Settings Panel - Reusable component for displaying/editing SystemConfig settings
  *
  * Usage:
- * 1. Include the CSS: <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.css">
- * 2. Include the JS: <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.js"></script>
+ * 1. Include the CSS bundle, for example:
+ *    <link rel="stylesheet" href="/skin/v2/system-settings-panel.min.css">
+ * 2. Include the JS bundle, for example:
+ *    <script src="/skin/v2/system-settings-panel.min.js"></script>
+ * (When rendering server-side you may prepend the application's root path.)
  * 3. Add container: <div id="settingsPanel"></div>
  * 4. Initialize:
  *    window.CRM.settingsPanel.init({

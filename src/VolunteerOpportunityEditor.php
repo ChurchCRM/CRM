@@ -73,20 +73,18 @@ if ($sAction === 'delete' && $iOpp > 0) {
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <?= gettext('Please confirm deletion of') ?>:
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <tr>
-                                    <th><?= gettext('Order') ?></th>
-                                    <th><?= gettext('Name') ?></th>
-                                    <th><?= gettext('Description') ?></th>
-                                </tr>
-                                <tr>
-                                    <td><span class="badge bg-secondary"><?= $vol_Order ?></span></td>
-                                    <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
-                                    <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
-                                </tr>
-                            </table>
-                        </div>
+                        <table class="table table-sm">
+                            <tr>
+                                <th><?= gettext('Order') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Description') ?></th>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-light text-dark"><?= $vol_Order ?></span></td>
+                                <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
+                                <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
+                            </tr>
+                        </table>
                         <?php
                         $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
                         $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
@@ -423,7 +421,7 @@ if (isset($_POST['SaveChanges'])) {
                         for ($row = 1; $row <= $numRows; $row++) {
                             if (array_key_exists($row, $aNameFields)) {
                                 echo '<tr>';
-                                echo '<td><span class="badge bg-light text-dark">" . $row . "</span></td>';
+                                echo '<td><span class="badge bg-light text-dark">' . $row . '</span></td>';
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'name" value="' . InputUtils::escapeAttribute($aNameFields[$row]) . '" class="form-control form-control-sm" maxlength="30">';
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
