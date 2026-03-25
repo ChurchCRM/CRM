@@ -33,7 +33,8 @@ describe("Admin People", () => {
     it("Family Property List", () => {
         cy.visit("PropertyList.php?Type=f");
         cy.contains("Family Property List");
-        cy.get('.mb-3 > a.btn-primary[href*="PropertyEditor.php"]').click();
+        // Prefer href-based selector; classes may have changed during UI migration
+        cy.get('a[href*="PropertyEditor.php"]').first().click();
         cy.url().should("contain", "PropertyEditor.php");
         cy.get('select[name="Class"]').select("2");
         cy.get('input[name="Name"]').type("Test");
@@ -46,7 +47,8 @@ describe("Admin People", () => {
     it("Person Property List", () => {
         cy.visit("PropertyList.php?Type=p");
         cy.contains("Person Property List");
-        cy.get('.mb-3 > a.btn-primary[href*="PropertyEditor.php"]').click();
+        // Prefer href-based selector; classes may have changed during UI migration
+        cy.get('a[href*="PropertyEditor.php"]').first().click();
         cy.url().should("contain", "PropertyEditor.php");
         cy.get('select[name="Class"]').select("1");
         cy.get('input[name="Name"]').type("Test");
