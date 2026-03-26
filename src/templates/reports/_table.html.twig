@@ -1,0 +1,110 @@
+{#
+  _table.html.twig
+  ----------------
+  Extends _base.html.twig.  Generic tabular data report with header/footer.
+
+  Variables expected:
+    - title        (string) : report title printed at top
+    - subtitle     (string, optional) : secondary heading / date range string
+    - columns      (array)  : column header labels, e.g. ["Date", "Name", "Amount"]
+    - rows         (array of arrays) : data rows; each row is an array of cell values
+                   in the same order as columns
+    - totals       (array, optional) : summary totals row (same structure as a data row)
+    - generatedOn  (string, optional) : "Generated on …" timestamp
+
+  Blocks:
+    - table_style  : extra CSS
+    - table_header : area above the table (title, subtitle, etc.)
+    - table_footer : area below the table (totals note, generated-on, etc.)
+#}
+{% extends "_base.html.twig" %}
+
+{% block extra_style %}
+    h1.report-title {
+        font-size: 13pt;
+        margin: 0 0 2mm 0;
+    }
+    h2.report-subtitle {
+        font-size: 10pt;
+        font-weight: normal;
+        margin: 0 0 4mm 0;
+    }
+    table.report-data {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9pt;
+        margin-top: 3mm;
+    }
+    table.report-data thead tr {
+        background-color: #e8e8e8;
+    }
+    table.report-data th {
+        font-weight: bold;
+        border-bottom: 0.5pt solid #000;
+        padding: 1.5mm 2mm;
+        text-align: left;
+    }
+    table.report-data td {
+        border-bottom: 0.3pt solid #ccc;
+        padding: 1.5mm 2mm;
+    }
+    table.report-data tr.totals-row td {
+        font-weight: bold;
+        border-top: 0.5pt solid #000;
+        border-bottom: none;
+    }
+    .report-footer {
+        margin-top: 4mm;
+        font-size: 8pt;
+        color: #555;
+    }
+    {% block table_style %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+    {# ── Header ────────────────────────────────────────────────────────── #}
+    {% block table_header %}
+        {% if title %}
+            <h1 class="report-title">{{ title }}</h1>
+        {% endif %}
+        {% if subtitle %}
+            <h2 class="report-subtitle">{{ subtitle }}</h2>
+        {% endif %}
+    {% endblock %}
+
+    {# ── Data table ────────────────────────────────────────────────────── #}
+    <table class="report-data">
+        <thead>
+            <tr>
+                {% for col in columns %}
+                    <th>{{ col }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+                <tr>
+                    {% for cell in row %}
+                        <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+        {% if totals is defined and totals %}
+        <tfoot>
+            <tr class="totals-row">
+                {% for cell in totals %}
+                    <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+        </tfoot>
+        {% endif %}
+    </table>
+
+    {# ── Footer ────────────────────────────────────────────────────────── #}
+    {% block table_footer %}
+        {% if generatedOn %}
+            <div class="report-footer">{{ generatedOn }}</div>
+        {% endif %}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,214 @@
+{#
+  tax-report.html.twig
+  --------------------
+  Giving Report / Tax Statement.  Generates one letter section per family,
+  separated by mPDF page breaks within a single HTML document.
+
+  Extends _base.html.twig.  For each family, embeds _letter.html.twig and
+  overrides the `letter_body` block with the donation payment table — so all
+  letterhead, recipient-address, date, and closing markup is inherited from
+  _letter.html.twig with no duplication.
+
+  Variables expected (supplied by the finance/routes/reports.php handler):
+    -- letterhead config (passed through to _letter.html.twig) --
+    letterhead       (string) : "graphic" | "none" | "" (default: text letterhead)
+    churchName       (string)
+    churchAddress    (string)
+    churchCity       (string)
+    churchState      (string)
+    churchZip        (string)
+    churchPhone      (string)
+    churchEmail      (string)
+    letterheadImage  (string) : absolute filesystem path for graphic letterhead
+    today            (string) : formatted date
+    defaultCountry   (string)
+
+    -- report-level text --
+    taxReport1       (string) : intro sentence prefix  (sTaxReport1)
+    taxReport2       (string) : closing thank-you line (sTaxReport2)
+    taxReport3       (string) : contact/correction line (sTaxReport3)
+    confirmSincerely (string) : "Sincerely" equivalent
+    taxSigner        (string) : signer name/title
+
+    -- per-family entries --
+    families         (array)  : each element has:
+      .salutation         (string)
+      .recipientAddress1  (string)
+      .recipientAddress2  (string)
+      .recipientCity      (string)
+      .recipientState     (string)
+      .recipientZip       (string)
+      .recipientCountry   (string)
+      .envelopeNumber     (string, optional)
+      .dateRange          (string) : e.g. "Jan 1, 2024 – Dec 31, 2024"
+      .useDonationEnvelopes (bool)
+      .payments           (array) : each element:
+          .date          (string)
+          .checkNo       (string)
+          .method        (string)
+          .fundName      (string)
+          .memo          (string)
+          .amount        (string) : formatted, e.g. "100.00"
+      .totalAmount         (float)
+      .totalNonDeductible  (float)
+      .remittance          (bool)
+
+    -- options --
+    remittance       (bool)  : include remittance slip on every page
+#}
+{% extends "_base.html.twig" %}
+
+{% block extra_style %}
+    table.payments {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 9pt;
+        margin-top: 3mm;
+    }
+    table.payments th {
+        font-weight: bold;
+        border-bottom: 0.5pt solid #000;
+        padding: 1mm 2mm;
+        text-align: left;
+    }
+    table.payments td {
+        padding: 1mm 2mm;
+    }
+    table.payments td.amount { text-align: right; font-family: "Courier New", monospace; }
+    .totals-block { margin-top: 3mm; text-align: right; font-size: 9pt; }
+    .totals-block table { width: auto; margin-left: auto; }
+    .totals-block td { padding: 0.5mm 2mm; }
+    .totals-block td.label { text-align: right; padding-right: 4mm; }
+    .totals-block td.amount { text-align: right; font-family: "Courier New", monospace; font-weight: bold; }
+
+    .remittance-line {
+        border-top: 1pt dashed #999;
+        margin-top: 8mm;
+        padding-top: 4mm;
+        font-size: 9pt;
+    }
+    .remittance-columns { width: 100%; }
+    .remittance-col-left { width: 55%; vertical-align: top; }
+    .remittance-col-right { width: 45%; vertical-align: top; }
+{% endblock %}
+
+{% block body %}
+
+{% for family in families %}
+
+{# ── Embed the shared _letter.html.twig partial for this family.
+   Override letter_body to insert the donation payment table.
+   All letterhead, date, recipient-address, and closing markup
+   comes from _letter.html.twig with no duplication. ── #}
+{% embed "_letter.html.twig" with {
+    salutation:         family.salutation,
+    recipientAddress1:  family.recipientAddress1,
+    recipientAddress2:  family.recipientAddress2,
+    recipientCity:      family.recipientCity,
+    recipientState:     family.recipientState,
+    recipientZip:       family.recipientZip,
+    recipientCountry:   family.recipientCountry,
+    confirmSincerely:   confirmSincerely,
+    taxSigner:          taxSigner
+} %}
+
+{% block letter_body %}
+
+    {# ── Envelope number (if applicable) ─────────────────────────────────── #}
+    {% if family.useDonationEnvelopes and family.envelopeNumber %}
+        <div>{{ gettext('Envelope') }}: {{ family.envelopeNumber }}</div>
+    {% endif %}
+
+    {# ── Intro sentence ───────────────────────────────────────────────────── #}
+    <div style="margin: 6mm 0 2mm;">{{ taxReport1 }} {{ family.dateRange }}.</div>
+
+    {# ── Payment table ────────────────────────────────────────────────────── #}
+    <table class="payments">
+        <thead>
+            <tr>
+                <th>{{ gettext('Date') }}</th>
+                <th>{{ gettext('Chk No.') }}</th>
+                <th>{{ gettext('Method') }}</th>
+                <th>{{ gettext('Fund') }}</th>
+                <th>{{ gettext('Memo') }}</th>
+                <th style="text-align:right;">{{ gettext('Amount') }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for payment in family.payments %}
+            <tr>
+                <td>{{ payment.date }}</td>
+                <td>{{ payment.checkNo }}</td>
+                <td>{{ payment.method }}</td>
+                <td>{{ payment.fundName }}</td>
+                <td>{{ payment.memo }}</td>
+                <td class="amount">{{ payment.amount }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {# ── Totals ───────────────────────────────────────────────────────────── #}
+    <div class="totals-block">
+        <table>
+            <tr>
+                <td class="label">{{ gettext('Total Payments') }}:</td>
+                <td class="amount">${{ family.totalAmount|number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td class="label">{{ gettext('Goods and Services Rendered') }}:</td>
+                <td class="amount">${{ family.totalNonDeductible|number_format(2) }}</td>
+            </tr>
+            <tr>
+                <td class="label">{{ gettext('Tax-Deductible Contribution') }}:</td>
+                <td class="amount">${{ (family.totalAmount - family.totalNonDeductible)|number_format(2) }}</td>
+            </tr>
+        </table>
+    </div>
+
+    {# ── Closing blurb ────────────────────────────────────────────────────── #}
+    <div style="margin-top:6mm;">
+        <p>{{ taxReport2 }}</p>
+        <p>{{ taxReport3 }}</p>
+    </div>
+
+    {# ── Remittance slip (optional) ──────────────────────────────────────── #}
+    {% if family.remittance %}
+    <div class="remittance-line">
+        <p style="text-align:center;">{{ gettext('Please detach this slip and mail with your next gift.') }}</p>
+        <table class="remittance-columns">
+            <tr>
+                <td class="remittance-col-left">
+                    <p>{{ gettext('Please mail your next gift to') }} {{ churchName }}, {{ churchAddress }}, {{ churchCity }}, {{ churchState }}  {{ churchZip }}, {{ gettext('Phone') }}: {{ churchPhone }}</p>
+                    <p style="margin-top:4mm;">{{ family.salutation }}</p>
+                    {% if family.recipientAddress1 %}<p>{{ family.recipientAddress1 }}</p>{% endif %}
+                    {% if family.recipientAddress2 %}<p>{{ family.recipientAddress2 }}</p>{% endif %}
+                    <p>{{ family.recipientCity }}, {{ family.recipientState }}  {{ family.recipientZip }}</p>
+                    {% if family.recipientCountry and family.recipientCountry != defaultCountry %}
+                        <p>{{ family.recipientCountry }}</p>
+                    {% endif %}
+                </td>
+                <td class="remittance-col-right">
+                    <p>{{ gettext('Gift Amount') }}: ___________________________</p>
+                    <p style="margin-top:4mm;">{{ gettext('Gift Designation') }}: ___________________________</p>
+                    <p style="margin-top:6mm;">{{ churchName }}</p>
+                    {% if churchAddress %}<p>{{ churchAddress }}</p>{% endif %}
+                    <p>{{ churchCity }}, {{ churchState }}  {{ churchZip }}</p>
+                </td>
+            </tr>
+        </table>
+    </div>
+    {% endif %}
+
+{% endblock %}
+
+{% endembed %}
+
+{# Page break between families (not after the last one) #}
+{% if not loop.last %}
+    <pagebreak />
+{% endif %}
+
+{% endfor %}
+
+{% endblock %}
