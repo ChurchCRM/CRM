@@ -556,7 +556,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive" style="overflow: visible;">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
                 </table>
