@@ -108,11 +108,21 @@ For families, Delete links to `SelectDelete.php?FamilyID={id}`.
 
 ---
 
-## Overflow / Dropdown Clipping
+## Overflow / Dropdown Clipping <!-- learned: 2026-03-26 -->
 
 Bootstrap's `.table-responsive` sets `overflow-x: auto`, which clips dropdown menus.
 
-**Choose the right fix:**
+**Preferred fix: `data-bs-display="static"` on the dropdown trigger button.** This tells Bootstrap to render the dropdown in-place (no Popper positioning) so it isn't clipped by `overflow` containers. Works in both PHP templates and JS-rendered DataTable columns.
+
+```html
+<!-- PHP template -->
+<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">
+
+<!-- JS DataTable render -->
+'<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static">'
+```
+
+**Fallback (only if `data-bs-display="static"` causes positioning issues):**
 
 | Situation | Fix |
 |-----------|-----|

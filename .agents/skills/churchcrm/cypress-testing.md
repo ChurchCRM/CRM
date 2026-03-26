@@ -616,3 +616,64 @@ CYPRESS_BASE_URL=http://localhost:8080/churchcrm/ npm run test
 - `npm run test:new-system` — Setup wizard tests
 
 Migration note: Move static test data from `cypress/data/` → `cypress/fixtures/`; keep `cypress/data/seed.sql` (Docker mounts it).
+
+---
+
+## v2 Profile Page Test Patterns <!-- learned: 2026-03-26 -->
+
+Family and Person profile pages (v2) have specific selectors and interaction patterns that differ from legacy pages.
+
+### Key Selectors
+
+| Element | Selector | Notes |
+|---------|----------|-------|
+| Action toolbar Edit button | `a.btn-ghost-primary` containing "Edit" | NOT `.fab-edit` (FABs removed) |
+| Actions overflow dropdown | `#family-actions-dropdown` / `#person-actions-dropdown` | Click to open, then find `.dropdown-item` |
+| Verify Info (family) | Open Actions dropdown → `cy.contains(".dropdown-item", "Verify Info")` | Was standalone button, now in dropdown |
+| Verify modal | `#confirm-verify` | Same as before |
+| Add to Cart | `#AddFamilyToCart` / `#AddPersonToCart` | Uses `.AddToCart` class + `data-cart-type` |
+| Pledge/Payment pills | `.pledge-type-pill` (type), `.pledge-fy-pill` (fiscal year) | Client-side DataTable filters |
+| Pledge table | `#pledge-payment-v2-table` | DataTable with AJAX loading |
+| Family navigation | `#lastFamily`, `#nextFamily` | In right sidebar column |
+| Family members table | `.card-table` rows with `avatar-sm` | Grouped by role sections |
+| Photo upload trigger | `#uploadImageTrigger` (photo click), `#uploadImageButton` (Actions menu) | Both trigger same uploader |
+
+### Testing Dropdown Menu Items
+
+Actions that moved into the "Actions" overflow dropdown require two clicks:
+
+```javascript
+// ❌ WRONG — element is inside a closed dropdown, not visible
+cy.contains('a', 'Verify').click();
+
+// ✅ CORRECT — open dropdown first, then click item
+cy.get('#family-actions-dropdown').click();
+cy.contains('.dropdown-item', 'Verify Info').click();
+```
+
+### Testing Pill Filters (no page reload)
+
+Pill filters are client-side DataTable column searches. Test that clicking changes the active state and filters the table:
+
+```javascript
+// Click "Pledges" pill filter
+cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
+cy.get('.pledge-type-pill.active').should('contain', 'Pledges');
+
+// Click "All Time" FY filter
+cy.get('.pledge-fy-pill[data-fy=""]').click();
+cy.get('.pledge-fy-pill.active').should('contain', 'All Time');
+```
+
+### Page Title Assertions
+
+v2 profile pages use `$sPageTitle` (family name only) + `$sPageSubtitle` (with ID):
+
+```javascript
+// ❌ WRONG — old format
+cy.contains("Smith - Family");
+
+// ✅ CORRECT — new format
+cy.contains("Smith");           // page title
+cy.contains("Family Profile");  // subtitle
+```

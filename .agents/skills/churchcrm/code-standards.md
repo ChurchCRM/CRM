@@ -329,6 +329,8 @@ Before committing code changes, verify:
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
+- [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
+- [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals
 - [ ] Use RedirectUtils for redirects (not manual header/withHeader)
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
 - [ ] TLS verification enabled by default for HTTPS requests

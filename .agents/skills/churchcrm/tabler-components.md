@@ -1265,3 +1265,115 @@ Do NOT add `autofocus` to the search results page input — it prevents the `?` 
 > **See the dedicated skill: [`table-action-menu.md`](./table-action-menu.md)**
 >
 > That file has the complete pattern (PHP + JS), full rules table, overflow/clipping fixes, cart button pattern, order/sort actions, and a pre-commit checklist. Always read it when adding or editing any table with row-level actions.
+
+---
+
+## Profile Page Pattern (Person / Family) <!-- learned: 2026-03-26 -->
+
+Person and Family profile pages share a consistent two-column layout. Family mirrors Person but with deliberate differences to visually distinguish them.
+
+### Layout Structure
+
+| Element | Person Page | Family Page |
+|---------|------------|-------------|
+| Sidebar column | **Left** (`col-lg-4`) | **Right** (`col-lg-4`) |
+| Content column | **Right** (`col-lg-8`) | **Left** (`col-lg-8`) |
+| Photo style | 120px square, left side of card | Full-width `card-img-top` |
+| Page subtitle | `Person Profile — ID: X` | `Family Profile — ID: X` |
+
+### Action Toolbar (flat `d-flex`, NOT wrapped in a card)
+
+```html
+<div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+    <a class="btn btn-ghost-primary" href="..."><i class="fa-solid fa-pen me-1"></i>Edit</a>
+    <button class="btn btn-ghost-success AddToCart" ...>Cart</button>
+    <!-- More primary actions as ghost buttons -->
+    <div class="dropdown ms-auto">
+        <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown">
+            <i class="fa-solid fa-ellipsis-vertical me-1"></i>Actions
+        </button>
+        <!-- Overflow items: Verify, Photo, Activate/Deactivate, Delete -->
+    </div>
+</div>
+```
+
+**Rules:**
+- Primary actions (Edit, Cart, Add Note, Add Member) as `btn-ghost-*` buttons directly in the bar
+- Secondary/destructive actions in the "Actions" overflow dropdown (`ms-auto` pushes it right)
+- Label is always "Actions" (not "More") — matches Person page
+- Photo management (Upload/View/Delete) goes inside Actions under a "Photo" header
+
+### Sidebar Cards
+
+- **Photo + attributes**: Always visible, not collapsible
+- **Address**: Always visible, not collapsible
+- **Contact Info**: Always visible, not collapsible (essential info)
+- **Custom Fields**: Collapsible, only rendered if fields exist
+- **Properties**: Collapsible, `list-group list-group-flush` style with ghost-danger delete buttons
+
+### Collapsible Card Pattern
+
+```html
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center" role="button"
+         data-bs-toggle="collapse" data-bs-target="#section-id" aria-expanded="true">
+        <h3 class="card-title m-0"><i class="fa-solid fa-icon me-1"></i> Title</h3>
+        <div class="ms-auto"><i class="fa-solid fa-chevron-down"></i></div>
+    </div>
+    <div class="collapse show" id="section-id">
+        <div class="card-body">...</div>
+    </div>
+</div>
+```
+
+### Family Members Table (grouped by role)
+
+Use `renderSectionHeader()` + `renderMemberTable()` helper functions. Three groups:
+- **Key People** (Head/Spouse) — crown icon, warning color, shows Role column
+- **Children** — children icon, info color, NO Role column, adds Sunday School column (if `bEnabledSundaySchool`)
+- **Other Members** — user-group icon, secondary color, shows Role column
+
+Each section has its own `<table class="table table-vcenter card-table">` with `avatar-sm` photos.
+
+---
+
+## Pill Nav Filters for DataTables <!-- learned: 2026-03-26 -->
+
+When a DataTable needs client-side filtering (e.g., type or category), use Tabler pill nav tabs instead of toggle switches or checkboxes. This is instant (no server round-trip) and clearly communicates the active filter state.
+
+### Pattern
+
+```html
+<div class="card-header d-flex align-items-center flex-wrap gap-2">
+    <h3 class="card-title m-0">Title</h3>
+    <div class="ms-auto d-flex align-items-center gap-2">
+        <ul class="nav nav-pills" role="tablist">
+            <li class="nav-item"><a class="nav-link active filter-pill" href="#" data-filter="">All</a></li>
+            <li class="nav-item"><a class="nav-link filter-pill" href="#" data-filter="TypeA">Type A</a></li>
+            <li class="nav-item"><a class="nav-link filter-pill" href="#" data-filter="TypeB">Type B</a></li>
+        </ul>
+    </div>
+</div>
+```
+
+```javascript
+$(".filter-pill").on("click", function (e) {
+    e.preventDefault();
+    $(".filter-pill").removeClass("active");
+    $(this).addClass("active");
+    dataTable.column(targetCol).search($(this).data("filter") || "").draw();
+});
+```
+
+### When to use pill filters vs toggle switches
+
+| Use case | Pattern |
+|----------|---------|
+| Filter table rows by category (Pledge/Payment, Active/Inactive) | **Pill nav** — instant client-side DataTable column search |
+| Enable/disable a feature or setting | **Toggle switch** (`form-check form-switch`) |
+| Boolean preference that persists (show/hide section) | **Toggle switch** with API save |
+| Never | Raw `<input type="checkbox">` without Tabler wrapper |
+
+### Fiscal Year Filter
+
+For finance tables, offer "All Time" / "FY {year}" pills instead of a date picker. Pass `$currentFY` from the route (computed via `FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId())`). Filter client-side on the Fiscal Year column.
