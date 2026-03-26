@@ -16,6 +16,11 @@ $(document).on("click", function () {
 
 $(function () {
   kiosk.startEventLoop();
+
+  // Initialize "Check-in By" toggle from localStorage
+  const savedCheckinBy = localStorage.getItem("kioskCheckinByEnabled") === "true";
+  $("#checkinByToggle").prop("checked", savedCheckinBy);
+  kiosk.setCheckinByEnabled(savedCheckinBy);
 });
 
 $(document).on("click", ".widget-user-header", function (event) {
@@ -51,4 +56,29 @@ $(document).on("click", "#alertAllBtn", function (event) {
 $(document).on("click", "#checkoutAllBtn", function (event) {
   event.preventDefault();
   kiosk.checkOutAll();
+});
+
+// "Check-in By" toggle
+$(document).on("change", "#checkinByToggle", function () {
+  const enabled = ($(this) as JQuery<HTMLInputElement>).is(":checked");
+  localStorage.setItem("kioskCheckinByEnabled", String(enabled));
+  kiosk.setCheckinByEnabled(enabled);
+});
+
+// Family member selected in "Check-in By" modal
+$(document).on("click", ".checkinByMemberBtn", function (event) {
+  const memberId = Number($(event.currentTarget).data("memberid"));
+  ($("#checkinByModal") as any).modal("hide");
+  kiosk.resolveCheckinByModal(Number.isNaN(memberId) || memberId <= 0 ? null : memberId);
+});
+
+// "Skip" button in "Check-in By" modal
+$(document).on("click", "#checkinBySkipBtn", function () {
+  ($("#checkinByModal") as any).modal("hide");
+  kiosk.resolveCheckinByModal(null);
+});
+
+// "Check-in By" modal dismissed without making a selection (X / Escape / backdrop click)
+$(document).on("hidden.bs.modal", "#checkinByModal", function () {
+  kiosk.cancelCheckinByModal();
 });

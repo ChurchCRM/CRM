@@ -46,12 +46,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
-        
+
+        $checkedInById = InputUtils::filterInt($input['CheckedInById'] ?? 0) ?: null;
+
         $kiosk = $getKioskFromCookie();
         if ($kiosk === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
         }
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($personId);
+        $status = $kiosk->getActiveAssignment()->getEvent()->checkInPerson($personId, $checkedInById);
 
         return SlimUtils::renderJSON($response, $status);
     });
@@ -62,12 +64,14 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         if ($personId <= 0) {
             return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
         }
-        
+
+        $checkedOutById = InputUtils::filterInt($input['CheckedOutById'] ?? 0) ?: null;
+
         $kiosk = $getKioskFromCookie();
         if ($kiosk === null) {
             return SlimUtils::renderErrorJSON($response, gettext('Kiosk device not found'), [], 401);
         }
-        $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($personId);
+        $status = $kiosk->getActiveAssignment()->getEvent()->checkOutPerson($personId, $checkedOutById);
 
         return SlimUtils::renderJSON($response, $status);
     });
@@ -253,6 +257,40 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
         $response->getBody()->write($photo->getPhotoBytes());
 
         return $response->withAddedHeader('Content-type', $photo->getPhotoContentType());
+    });
+
+    $group->get('/activeClassMember/{PersonId}/family', function (Request $request, Response $response, array $args): Response {
+        $personId = InputUtils::filterInt($args['PersonId'] ?? 0);
+        if ($personId <= 0) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
+        }
+
+        $person = PersonQuery::create()->findOneById($personId);
+        if ($person === null) {
+            return SlimUtils::renderErrorJSON($response, gettext('Person not found'), [], 404);
+        }
+
+        $family = $person->getFamily();
+        if ($family === null) {
+            return SlimUtils::renderJSON($response, ['members' => []]);
+        }
+
+        $adults = $family->getAdults();
+        $membersData = [];
+        foreach ($adults as $adult) {
+            if ($adult->getId() === $personId) {
+                continue; // Exclude the person themselves
+            }
+            $photo = new Photo('Person', $adult->getId());
+            $membersData[] = [
+                'Id'        => $adult->getId(),
+                'FirstName' => $adult->getFirstName(),
+                'LastName'  => $adult->getLastName(),
+                'hasPhoto'  => $photo->hasUploadedPhoto(),
+            ];
+        }
+
+        return SlimUtils::renderJSON($response, ['members' => $membersData]);
     });
 
     $group->post('/checkoutAll', function (Request $request, Response $response) use ($getKioskFromCookie): Response {
