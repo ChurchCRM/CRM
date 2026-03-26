@@ -132,7 +132,7 @@ describe('01 - Setup Wizard', () => {
 
             // NeedPasswordChange=true on fresh install → forced change page
             cy.url({ timeout: 15000 }).should('include', '/changepassword');
-            cy.get('.login-box').should('be.visible');
+            cy.get('.login-wrapper').should('be.visible');
             cy.contains('Password Change Required').should('be.visible');
         });
 

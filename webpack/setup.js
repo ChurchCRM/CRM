@@ -739,9 +739,9 @@ window.Stepper = Stepper;
         // Check if response contains errors (backend bug workaround)
         if (response && response.errors) {
           // Treat as failure
-          $("#setup-progress").hide();
-          $("#setup-error").show();
-          $("#setup-footer").show();
+          $("#setup-progress").addClass("d-none");
+          $("#setup-error").removeClass("d-none");
+          $("#setup-footer").removeClass("d-none");
 
           let errorMessage = "<ul class='mb-0'>";
           for (const [field, error] of Object.entries(response.errors)) {
@@ -756,19 +756,19 @@ window.Stepper = Stepper;
             .on("click", function () {
               bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
               setTimeout(function () {
-                $("#setup-progress").show();
-                $("#setup-success").hide();
-                $("#setup-error").hide();
-                $("#setup-footer").hide();
+                $("#setup-progress").removeClass("d-none");
+                $("#setup-success").addClass("d-none");
+                $("#setup-error").addClass("d-none");
+                $("#setup-footer").addClass("d-none");
               }, 500);
             });
           return;
         }
 
         // Hide progress, show success
-        $("#setup-progress").hide();
-        $("#setup-success").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-success").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Handle Continue to Login button
         $("#continue-to-login")
@@ -779,9 +779,9 @@ window.Stepper = Stepper;
       })
       .fail(function (xhr) {
         // Hide progress, show error
-        $("#setup-progress").hide();
-        $("#setup-error").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-error").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Parse error message
         let errorMessage = "An unknown error occurred.";
@@ -804,13 +804,13 @@ window.Stepper = Stepper;
           .text("Close")
           .off("click")
           .on("click", function () {
-            $("#setupModal").modal("hide");
+            bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
             // Reset modal state for next attempt
             setTimeout(function () {
-              $("#setup-progress").show();
-              $("#setup-success").hide();
-              $("#setup-error").hide();
-              $("#setup-footer").hide();
+              $("#setup-progress").removeClass("d-none");
+              $("#setup-success").addClass("d-none");
+              $("#setup-error").addClass("d-none");
+              $("#setup-footer").addClass("d-none");
             }, 500);
           });
       });
