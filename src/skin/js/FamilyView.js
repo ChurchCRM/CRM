@@ -174,13 +174,22 @@ function initializeFamilyView() {
           render: function (data, type, row) {
             let linkBack = "v2/family/" + window.CRM.currentFamily;
             let editUrl = window.CRM.root + "/PledgeEditor.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
-            let deleteUrl = window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
+            let deleteUrl =
+              window.CRM.root + "/PledgeDelete.php?GroupKey=" + row.GroupKey + "&amp;linkBack=" + linkBack;
             return (
               '<div class="dropdown">' +
               '<button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>' +
               '<div class="dropdown-menu dropdown-menu-end">' +
-              '<a class="dropdown-item" href="' + editUrl + '"><i class="fa-solid fa-pen me-2"></i>' + i18next.t("Edit") + "</a>" +
-              '<a class="dropdown-item text-danger" href="' + deleteUrl + '"><i class="fa-solid fa-trash-can me-2"></i>' + i18next.t("Delete") + "</a>" +
+              '<a class="dropdown-item" href="' +
+              editUrl +
+              '"><i class="fa-solid fa-pen me-2"></i>' +
+              i18next.t("Edit") +
+              "</a>" +
+              '<a class="dropdown-item text-danger" href="' +
+              deleteUrl +
+              '"><i class="fa-solid fa-trash-can me-2"></i>' +
+              i18next.t("Delete") +
+              "</a>" +
               "</div></div>"
             );
           },
@@ -193,8 +202,18 @@ function initializeFamilyView() {
 
     // Force both types visible in API, then init DataTable
     Promise.all([
-      window.CRM.APIRequest({ method: "POST", path: `user/${window.CRM.userId}/setting/finance.show.pledges`, dataType: "json", data: JSON.stringify({ value: "true" }) }),
-      window.CRM.APIRequest({ method: "POST", path: `user/${window.CRM.userId}/setting/finance.show.payments`, dataType: "json", data: JSON.stringify({ value: "true" }) }),
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/finance.show.pledges`,
+        dataType: "json",
+        data: JSON.stringify({ value: "true" }),
+      }),
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `user/${window.CRM.userId}/setting/finance.show.payments`,
+        dataType: "json",
+        data: JSON.stringify({ value: "true" }),
+      }),
     ])
       .catch(function () {}) // ignore errors
       .then(function () {
@@ -205,7 +224,10 @@ function initializeFamilyView() {
           e.preventDefault();
           $(".pledge-type-pill").removeClass("active");
           $(this).addClass("active");
-          pledgeTable.column(0).search($(this).data("filter") || "").draw();
+          pledgeTable
+            .column(0)
+            .search($(this).data("filter") || "")
+            .draw();
         });
 
         // Fiscal year filter pills: client-side column 4 (Fiscal Year) search
@@ -213,7 +235,10 @@ function initializeFamilyView() {
           e.preventDefault();
           $(".pledge-fy-pill").removeClass("active");
           $(this).addClass("active");
-          pledgeTable.column(4).search($(this).data("fy") || "").draw();
+          pledgeTable
+            .column(4)
+            .search($(this).data("fy") || "")
+            .draw();
         });
 
         // Apply default FY filter (Current FY pill is active by default)
