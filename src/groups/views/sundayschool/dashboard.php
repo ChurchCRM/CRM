@@ -166,7 +166,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= $class['kids'] ?></td>
                         <td class="w-1">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
@@ -269,7 +269,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
                         <td class="w-1">
                             <div class="dropdown">
-                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">

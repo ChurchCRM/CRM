@@ -161,7 +161,7 @@ require_once __DIR__ . '/Include/Header.php';
             <i class="ti ti-plus me-1"></i><?= gettext('Add Donated Item') ?>
         </a>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                 <i class="ti ti-file-text me-1"></i><?= gettext('Reports') ?>
             </button>
             <div class="dropdown-menu">
@@ -231,7 +231,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <td class="text-end"><?= InputUtils::escapeHTML($di_minimum) ?></td>
                     <td class="w-1">
                         <div class="dropdown">
-                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                 <i class="ti ti-dots-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">

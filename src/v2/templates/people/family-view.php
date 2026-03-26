@@ -67,7 +67,7 @@ $otherPeople = $family->getOtherPeople();
             <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-ghost-warning dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-circle-dollar-to-slot me-1"></i><?= gettext("Finance") ?>
                 </button>
                 <div class="dropdown-menu">
@@ -81,7 +81,7 @@ $otherPeople = $family->getOtherPeople();
             </div>
             <?php } ?>
             <div class="dropdown ms-auto">
-                <button class="btn btn-ghost-secondary dropdown-toggle" id="family-actions-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                <button class="btn btn-ghost-secondary dropdown-toggle" id="family-actions-dropdown" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                     <i class="fa-solid fa-ellipsis-vertical me-1"></i><?= gettext("Actions") ?>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
@@ -321,7 +321,7 @@ $otherPeople = $family->getOtherPeople();
                                                 <div class="d-flex align-items-center gap-1 ms-2 flex-shrink-0">
                                                     <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled() && (isset($item["editLink"]) || isset($item["deleteLink"]))) { ?>
                                                         <div class="dropdown">
-                                                            <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                                                            <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                                             <div class="dropdown-menu dropdown-menu-end">
                                                                 <?php if (isset($item["editLink"])) { ?>
                                                                     <a href="<?= $item["editLink"] ?>" class="dropdown-item"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>

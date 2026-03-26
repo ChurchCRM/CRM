@@ -421,7 +421,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
         <button type="button" id="deleteSelectedRows" class="btn btn-danger" disabled> <?= gettext('Remove Selected Members from group') ?> </button>
             <div class="btn-group">
                 <button type="button" id="addSelectedToCart" class="btn btn-success" disabled> <?= gettext('Add Selected Members to Cart') ?></button>
-                <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" disabled>
+                <button type="button" id="buttonDropdown" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false" disabled>
                     <span class="caret"></span>
                     <span class="visually-hidden">Toggle Dropdown</span>
                 </button>

@@ -70,7 +70,7 @@ describe('Admin System Logs - UI Tests', () => {
     // Click the dropdown toggle in the first row to open the menu, then View
     cy.get('#logFilesTable tbody tr').first().within(() => {
       cy.get('button[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
-      cy.get('.view-log').first().click();
+      cy.get('.view-log').first().should('be.visible').click();
     });
 
     // Verify modal is displayed and has the proper title

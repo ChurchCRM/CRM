@@ -441,7 +441,7 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '</td>';
                                 echo '<td class="w-1">';
                                 echo '<div class="dropdown">';
-                                echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">';
+                                echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">';
                                 echo '<i class="ti ti-dots-vertical"></i>';
                                 echo '</button>';
                                 echo '<div class="dropdown-menu dropdown-menu-end">';

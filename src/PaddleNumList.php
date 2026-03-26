@@ -78,7 +78,7 @@ require_once __DIR__ . '/Include/Header.php';
             </td>
             <td class="w-1">
                 <div class="dropdown">
-                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                         <i class="ti ti-dots-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
