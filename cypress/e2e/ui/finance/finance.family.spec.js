@@ -19,7 +19,14 @@ describe("Finance Family", () => {
 
         // Table should load with data
         cy.get("#pledge-payment-v2-table").should("be.visible");
-        cy.contains("Music Ministry");
+
+        // Default FY filter hides older data — "Music Ministry" should NOT be visible
+        cy.contains("Music Ministry").should("not.exist");
+
+        // Click "All Time" to reveal all records
+        cy.get('.pledge-fy-pill[data-fy=""]').click();
+        cy.get(".pledge-fy-pill.active").should("contain", "All Time");
+        cy.contains("Music Ministry").should("be.visible");
 
         // Test type filter pills
         cy.get('.pledge-type-pill[data-filter="Pledge"]').click();
@@ -27,16 +34,23 @@ describe("Finance Family", () => {
 
         cy.get('.pledge-type-pill[data-filter=""]').click();
         cy.get(".pledge-type-pill.active").should("contain", "All");
-
-        // Test FY filter pills
-        cy.get('.pledge-fy-pill[data-fy=""]').click();
-        cy.get(".pledge-fy-pill.active").should("contain", "All Time");
     });
 
     it("View another Family with finance data", () => {
         cy.visit("v2/family/20");
         cy.contains("Black");
         cy.contains("Family Profile");
-        cy.contains("New Building Fund");
+
+        // Wait for finance section and table to be ready
+        cy.contains("Pledges and Payments");
+        cy.get("#pledge-payment-v2-table").should("be.visible");
+
+        // Default FY filter hides older data
+        cy.contains("New Building Fund").should("not.exist");
+
+        // Click "All Time" to reveal all records
+        cy.get('.pledge-fy-pill[data-fy=""]').click();
+        cy.get(".pledge-fy-pill.active").should("contain", "All Time");
+        cy.contains("New Building Fund").should("be.visible");
     });
 });
