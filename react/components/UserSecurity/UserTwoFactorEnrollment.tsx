@@ -569,7 +569,6 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
           <div className="col-lg-8">
             <div className="card card-outline card-primary">
               <div className="card-body p-5 text-center">
-                {/* biome-ignore lint/a11y/useSemanticElements: Bootstrap spinner pattern requires div wrapper */}
                 <div className="spinner-border" role="status">
                   <span className="sr-only">{window.i18next.t("Loading")}...</span>
                 </div>

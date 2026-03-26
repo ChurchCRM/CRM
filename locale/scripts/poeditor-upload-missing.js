@@ -42,6 +42,9 @@ const SAMPLE_SIZE = 5;
 // extra gap gives the API time to breathe before the next upload.
 const BETWEEN_LOCALES_DELAY_MS = 30_000;
 
+// Sanitize untrusted strings before logging to prevent log injection
+const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
+
 const apiToken = process.env.POEDITOR_TOKEN;
 if (!apiToken) {
     console.error('❌ POEDITOR_TOKEN environment variable is required');
@@ -105,7 +108,7 @@ function makeRequest(url, postData) {
                 if (attempt === MAX_RETRIES) throw err;
                 const backoff = Math.min(BASE_DELAY_MS * (BACKOFF_FACTOR ** (attempt - 1)), 30_000);
                 const wait = backoff + Math.floor(Math.random() * Math.floor(backoff / 2));
-                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${err.message}`);
+                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${sanitize(err.message)}`);
                 await sleep(wait);
             }
         }
@@ -292,7 +295,7 @@ function makeMultipartRequest(url, fields, fileContent) {
                 if (attempt === MAX_RETRIES) throw err;
                 const backoff = Math.min(BASE_DELAY_MS * (BACKOFF_FACTOR ** (attempt - 1)), 30_000);
                 const wait = backoff + Math.floor(Math.random() * Math.floor(backoff / 2));
-                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${err.message}`);
+                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${sanitize(err.message)}`);
                 await sleep(wait);
             }
         }
@@ -563,7 +566,7 @@ async function main() {
             console.log(`  ✅ Upload complete — parsed: ${parsed}, added: ${added}, updated: ${updated}`);
             totalUploaded += localizedCount;
         } catch (err) {
-            console.error(`  ❌ Upload failed: ${err.message}`);
+            console.error(`  ❌ Upload failed: ${sanitize(err.message)}`);
             totalSkipped++;
             continue;
         }
