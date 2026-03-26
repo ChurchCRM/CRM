@@ -93,7 +93,7 @@ Every migrated page must use this layout structure:
 ```
 
 - Use `.table-sm` + `.table-hover` + `.card-table` for all admin data grids.
-- DataTables.net: keep as-is, skin via `churchcrm-bridge.css`.
+- DataTables.net: keep as-is, Tabler skin applied via webpack bundling.
 
 ### Leader/Pastor (Dashboard) — Visual Storytelling
 

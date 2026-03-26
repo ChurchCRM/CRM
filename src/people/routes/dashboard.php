@@ -73,10 +73,10 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         }
     }
 
-    $selfRegColor = 'bg-red';
+    $selfRegColor = 'bg-danger';
     $selfRegText  = gettext('Disabled');
     if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
-        $selfRegColor = 'bg-green';
+        $selfRegColor = 'bg-success';
         $selfRegText  = gettext('Enabled');
     }
 
