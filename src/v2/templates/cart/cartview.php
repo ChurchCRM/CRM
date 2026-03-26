@@ -68,22 +68,9 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
               <td>
                 <div class="d-flex align-items-center gap-2">
                   <?php
-                  if ($Person->getPhoto()->hasUploadedPhoto()) {
-                      echo '<img class="avatar avatar-sm rounded-circle view-person-photo" data-person-id="' . $Person->getId() . '" src="' . $Person->getPhoto()->getPhotoURL() . '" alt="" />';
-                  } else {
-                      $fullName = $Person->getFullName();
-                      $parts = explode(' ', trim($fullName));
-                      $initials = '';
-                      if (count($parts) >= 2) {
-                          $initials = strtoupper($parts[0][0] . $parts[count($parts) - 1][0]);
-                      } elseif (count($parts) === 1) {
-                          $initials = strtoupper(substr($parts[0], 0, 2));
-                      }
-                      $colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
-                      $hash = array_sum(array_map('ord', str_split($fullName))) % count($colors);
-                      $color = $colors[$hash];
-                      echo '<span class="avatar avatar-sm rounded-circle view-person-photo" data-person-id="' . $Person->getId() . '" style="background-color: ' . $color . '; cursor: pointer;" title="' . gettext('View Photo') . '"><span class="avatar-title fs-6 fw-bold">' . $initials . '</span></span>';
-                  }
+                    // Render a placeholder image element and let the client-side avatar-loader
+                    // fetch avatar info and set photo/initials as appropriate.
+                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
                   ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
                 </div>

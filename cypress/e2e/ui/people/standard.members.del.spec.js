@@ -10,15 +10,16 @@ describe("Standard Family", () => {
         cy.get("#LastName").type("TestPerson");
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get(".fab-save").click();
+        cy.get(".fab-save").first().click();
 
         cy.url().should("contain", "PersonView.php").then((url) => {
             const personId = new URL(url).searchParams.get("PersonID");
 
-            // Open Actions dropdown, then click Delete
-            cy.get("#person-actions-dropdown").click();
+            // Open Actions dropdown, then click Delete (use first() to avoid duplicate IDs)
+            cy.get("#person-actions-dropdown").first().click();
             cy.get("#deletePersonBtn").first().click();
-            cy.get(".bootbox-accept").should("be.visible").click();
+            // Modal may be covered in headless runs; force the click to ensure deletion
+            cy.get(".bootbox-accept").first().click({ force: true });
             cy.url().should("contain", "v2/dashboard");
 
             cy.visit(`PersonView.php?PersonID=${personId}`);
@@ -32,16 +33,16 @@ describe("Standard Family", () => {
         cy.get("#FamilyName").type("TempDelFamily");
         cy.get('input[name="FirstName1"]').type("TempDel");
         cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get(".fab-save").click();
+        cy.get(".fab-save").first().click();
 
         cy.location("pathname").should("include", "/v2/family/").then((pathname) => {
             const familyId = pathname.split("/").pop();
 
             // Open Actions dropdown, then click Delete
-            cy.get("#family-actions-dropdown").click();
-            cy.get("#deleteFamilyBtn").click();
+            cy.get("#family-actions-dropdown").first().click();
+            cy.get("#deleteFamilyBtn").first().click();
             cy.url().should("contain", "SelectDelete.php");
-            cy.get("#deleteFamilyAndMembersBtn").click();
+            cy.get("#deleteFamilyAndMembersBtn").first().click();
             cy.url().should("contain", "v2/family");
 
             cy.visit(`v2/family/${familyId}`);

@@ -92,23 +92,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center gap-2">
-                                                <?php 
-                                                    if ($person->getPhoto()->hasUploadedPhoto()) {
-                                                        echo '<img class="avatar avatar-sm rounded-circle view-person-photo" data-person-id="' . $person->getId() . '" src="' . $person->getPhoto()->getPhotoURL() . '" alt="" />';
-                                                    } else {
-                                                        $fullName = $person->getFullName();
-                                                        $parts = explode(' ', trim($fullName));
-                                                        $initials = '';
-                                                        if (count($parts) >= 2) {
-                                                            $initials = strtoupper($parts[0][0] . $parts[count($parts)-1][0]);
-                                                        } else if (count($parts) === 1) {
-                                                            $initials = strtoupper(substr($parts[0], 0, 2));
-                                                        }
-                                                        $colors = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a', '#fee140'];
-                                                        $hash = array_sum(array_map('ord', str_split($fullName))) % count($colors);
-                                                        $color = $colors[$hash];
-                                                        echo '<span class="avatar avatar-sm rounded-circle view-person-photo" data-person-id="' . $person->getId() . '" style="background-color: ' . $color . '; cursor: pointer;" title="' . gettext('View Photo') . '"><span class="avatar-title fs-6 fw-bold">' . $initials . '</span></span>';
-                                                    }
+                                                <?php
+                                                    // Use client-side avatar loader: avatar-loader will fetch avatar info and render
+                                                    // uploaded photos, gravatar, or initials as needed. Data attributes are required.
+                                                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
                                                 ?>
                                                 <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                                     <?= $person->getFullName() ?>

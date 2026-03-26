@@ -304,7 +304,7 @@ Config files live in `cypress/configs/` (NOT `docker/`):
 - If Cypress binary is broken or missing, fix with: `npx cypress cache clear && npm install`
 - The config points at a Docker container. Start the stack (`npm run docker:test`) before running tests.
 
-### Running Tests <!-- learned: 2026-03-07 -->
+### Running Tests <!-- learned: 2026-03-26 -->
 
 ```bash
 # Full suite headless (standard)
@@ -319,14 +319,17 @@ npm run test:api
 # UI tests only
 npm run test:ui
 
-# Single spec file — ALWAYS pass --config-file
-npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+# Single UI spec file (PREFERRED — use npm script)
+npm run test:ui -- --spec "cypress/e2e/ui/people/filter-by-dropdown-choice.spec.js"
 
-# Or use npm script with -- to forward the --spec flag
-npm run test:ui -- --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+# Single API spec file (PREFERRED — use npm script)
+npm run test:api -- --spec "cypress/e2e/api/private/admin/private.admin.system.config.spec.js"
 
 # Setup wizard tests
 npm run test:new-system
+
+# ⚠️ DO NOT use direct npx cypress run — always use the npm scripts above
+# The npm scripts handle config and environment setup correctly
 ```
 
 ### Running Tests in Docker (Required Workflow)

@@ -75,7 +75,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('#advanced-settings-collapse').should('not.have.class', 'show');
             
             // Click to expand advanced settings
-            cy.get('[data-target="#advanced-settings-collapse"]').click();
+            cy.get('[data-bs-target="#advanced-settings-collapse"]').click();
             
             // URL and Root Path fields should be visible after expanding
             cy.get('#advanced-settings-collapse').should('have.class', 'show');
