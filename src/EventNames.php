@@ -317,7 +317,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                         <i class="ti ti-dots-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <button type="button" class="dropdown-item" onclick="createEvent(<?= (int)$aTypeID[$row] ?>)">
+                        <button type="button" class="dropdown-item" onclick="submitNewEvent(<?= (int)$aTypeID[$row] ?>)">
                             <i class="ti ti-plus me-2"></i><?= gettext('Create Event') ?>
                         </button>
                         <a class="dropdown-item" href="EditEventTypes.php?EN_tyid=<?= (int)$aTypeID[$row] ?>">
@@ -355,7 +355,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/event/EventUtils.js"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" >
-  function createEvent(tyid) {
+  function submitNewEvent(tyid) {
     var f = document.createElement('form');
     f.method = 'POST';
     f.action = 'EventEditor.php';
