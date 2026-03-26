@@ -97,8 +97,8 @@ describe('Admin System Logs - UI Tests', () => {
       cy.get('@logName').then((logName) => {
         cy.window().then((win) => {
           const origin = win.location && win.location.origin ? win.location.origin : Cypress.config('baseUrl');
-          const crmPath = (win.CRM && win.CRM.path) ? win.CRM.path : (win.location && win.location.pathname && win.location.pathname.startsWith('/admin') ? '/admin/' : '/');
-          const relative = (crmPath.endsWith('/') ? crmPath : crmPath + '/') + 'api/system/logs/' + encodeURIComponent(logName) + '/download';
+          const rootPath = (win.CRM && win.CRM.root) ? win.CRM.root : '/';
+          const relative = rootPath + (rootPath.endsWith('/') ? '' : '/') + 'admin/api/system/logs/' + encodeURIComponent(logName) + '/download';
           const url = new URL(relative, origin).toString();
           cy.log('download url: ' + url);
           cy.request({ url, encoding: 'utf8', failOnStatusCode: false }).then((resp) => {

@@ -185,8 +185,7 @@ jobs:
       with:
         config-file: cypress/configs/docker.config.ts
         browser: electron
-        reporter: junit
-        reporter-options: "mochaFile=cypress/reports/junit-root.xml"
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-root.xml
         record: false
         headed: false
 
@@ -301,8 +300,7 @@ jobs:
       with:
         config-file: cypress/configs/docker.config.ts
         browser: electron
-        reporter: junit
-        reporter-options: "mochaFile=cypress/reports/junit-subdir.xml"
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir.xml
         record: false
         headed: false
       env:
@@ -432,8 +430,7 @@ jobs:
       with:
         config-file: cypress/configs/new-system.config.ts
         browser: electron
-        reporter: junit
-        reporter-options: "mochaFile=cypress/reports/junit-new-system.xml"
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system.xml
         record: false
         headed: false
 
@@ -560,8 +557,7 @@ jobs:
       with:
         config-file: cypress/configs/new-system.config.ts
         browser: electron
-        reporter: junit
-        reporter-options: "mochaFile=cypress/reports/junit-new-system-subdir.xml"
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir.xml
         record: false
         headed: false
       env:
