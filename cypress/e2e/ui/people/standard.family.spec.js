@@ -8,7 +8,7 @@ describe("Standard Family", () => {
         cy.location("pathname").should("include", "family/not-found");
         cy.contains("Family not found");
     });
-    
+
     it("Entering a new Family", () => {
         cy.visit("FamilyEditor.php");
 
@@ -50,26 +50,31 @@ describe("Standard Family", () => {
         cy.get('select[name="Classification5"]').select("1", { force: true });
         cy.get('select[name="Classification6"]').select("2", { force: true });
 
-        // Click FAB save button
+        // Click FAB save button (on FamilyEditor page, not family view)
         cy.get(".fab-save").click();
 
+        // Should redirect to family view page
         cy.location("pathname").should("include", "/v2/family/");
+        // Page subtitle shows Family Profile
+        cy.contains("Family Profile");
+        // Family members table should show all members
         cy.contains("Mike Troy");
         cy.contains("Carol Troy");
         cy.contains("Alice Troy");
         cy.contains("Greg Troy");
         cy.contains("Marcia Troy");
         cy.contains("Peter Troy");
+        // Address and contact info should be visible
         cy.contains("4222 Clinton Way Los Angeles, CA");
         cy.contains("mike@example.com");
         cy.contains(`${weddingMonth}/${weddingDay}/${weddingYear}`);
 
-        // Delete Email and WeddingDate - click FAB edit button on family view
-        cy.get('.fab-edit').click();
+        // Edit the family — use the toolbar Edit button (FABs removed)
+        cy.get('a.btn-ghost-primary').contains('Edit').click();
         cy.get('input[name="Email"]').clear();
         cy.get("#WeddingDate").clear();
 
-        // Click FAB save button
+        // Click FAB save button (on FamilyEditor page)
         cy.get(".fab-save").click();
 
         cy.location("pathname").should("include", "/v2/family/");

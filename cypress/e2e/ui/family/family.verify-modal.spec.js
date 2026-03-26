@@ -7,41 +7,46 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
         cy.visit("v2/family/1");
     });
 
-    it("should display verify button in toolbar", () => {
-        // The Verify button should exist in the toolbar area
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').should('be.visible');
-        cy.contains('a', 'Verify').should('be.visible');
+    it("should display verify option in Actions dropdown", () => {
+        // Open the Actions dropdown
+        cy.get("#family-actions-dropdown").click();
+        // Verify Info should be in the dropdown
+        cy.contains(".dropdown-item", "Verify Info").should("be.visible");
     });
 
-    it("should open confirmation modal when verify button clicked", () => {
-        // Click the Verify button
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
-        
+    it("should open confirmation modal when verify clicked from Actions menu", () => {
+        // Open Actions dropdown and click Verify Info
+        cy.get("#family-actions-dropdown").click();
+        cy.contains(".dropdown-item", "Verify Info").click();
+
         // Modal should be visible
         cy.get("#confirm-verify").should("be.visible");
         cy.get("#confirm-verify-label").contains("Request Family Info Verification").should("be.visible");
     });
 
     it("should display email list in modal body", () => {
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
+        cy.get("#family-actions-dropdown").click();
+        cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
-        
+
         // Should show instruction text about emailing
         cy.get(".modal-body").should("contain", "email");
     });
 
     it("should display URL button for verification", () => {
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
+        cy.get("#family-actions-dropdown").click();
+        cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
-        
+
         // URL button should always be present
         cy.get("#verifyURL").should("be.visible").should("contain", "URL");
     });
 
     it("should display all verification action buttons", () => {
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
+        cy.get("#family-actions-dropdown").click();
+        cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
-        
+
         // Check for verification action buttons
         cy.get("#verifyURL").should("be.visible");
         cy.get("#verifyDownloadPDF").should("be.visible").should("contain", "PDF");
@@ -49,9 +54,10 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
     });
 
     it("should display email PDF button when SMTP configured and emails present", () => {
-        cy.get('a[data-bs-toggle="modal"][data-bs-target="#confirm-verify"]').click();
+        cy.get("#family-actions-dropdown").click();
+        cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
-        
+
         // Email buttons should be visible for families with emails
         cy.get("#onlineVerify").should("be.visible").should("contain", "Online");
         cy.get("#verifyEmailPDF").should("be.visible").should("contain", "Email");

@@ -7,8 +7,10 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -185,6 +187,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'familyTimeline' => $timelineService->getForFamily($family->getId()),
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom,
+        'currentFY' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
     ];
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
