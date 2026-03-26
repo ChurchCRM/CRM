@@ -37,7 +37,7 @@ describe("Report Issue", () => {
         cy.get("@windowOpen").should("have.been.calledOnce");
         cy.get("@windowOpen").should(
             "have.been.calledWithMatch",
-            /github\.com\/ChurchCRM\/CRM\/issues\/new/
+            /^https:\/\/github\.com\/ChurchCRM\/CRM\/issues\/new/
         );
         cy.get("@windowOpen").its("firstCall.args.0").should("include", encodeURIComponent(description));
     });
