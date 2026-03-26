@@ -496,6 +496,17 @@ body.page-auth {
   z-index: 2;
 }
 
+// Backwards-compatible rule for older templates that use `login-box` or
+// render a `.card` directly on authentication pages. Ensure these sit
+// above the background overlay (which uses z-index:1).
+.page-auth .login-box,
+.page-auth .forgot-password-container,
+.page-auth .forgot-password-card,
+.page-auth .card {
+  position: relative;
+  z-index: 2;
+}
+
 .forgot-password-card {
   background: white;
   border-radius: 12px;
