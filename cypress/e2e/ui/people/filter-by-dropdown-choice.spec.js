@@ -15,6 +15,9 @@ describe("template spec", () => {
         cy.get(".filter-Custom").siblings(".ts-wrapper").find(".ts-control input").type("My Custom Drop Down List:My Custom Item 1{enter}");
 
         cy.contains("Showing 1 to 1 of 1 entries");
-        cy.contains("mark.smith@example.com");
+        // Verify the filtered result shows Mark Smith (person 104)
+        cy.get("#members tbody tr").should("have.length", 1);
+        cy.get("#members tbody").should("contain", "Mark");
+        cy.get("#members tbody").should("contain", "Smith");
     });
 });

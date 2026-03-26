@@ -17,7 +17,7 @@ describe("Standard Family", () => {
 
             // Open Actions dropdown, then click Delete
             cy.get("#person-actions-dropdown").click();
-            cy.get("#deletePersonBtn").click();
+            cy.get("#deletePersonBtn").first().click();
             cy.get(".bootbox-accept").should("be.visible").click();
             cy.url().should("contain", "v2/dashboard");
 
