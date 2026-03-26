@@ -179,7 +179,7 @@ require_once __DIR__ . '/header.php';
 
                     <!-- Action Buttons -->
                     <div class="setup-actions">
-                        <button type="button" class="btn btn-lg btn-primary" id="prerequisites-next-btn" disabled>
+                        <button type="button" class="btn btn-primary btn-lg" id="prerequisites-next-btn" disabled>
                             Continue to Configuration <i class="fa-solid fa-arrow-right ms-2"></i>
                         </button>
                         <button type="button" class="btn btn-outline-warning d-none" id="prerequisites-force-btn">
@@ -190,9 +190,9 @@ require_once __DIR__ . '/header.php';
 
                 <!-- STEP 2: Database Setup -->
                 <div id="step-database" class="content" role="tabpanel" aria-labelledby="step-database-trigger">
-                    <div class="step-intro">
-                        <h4>Connect Your Database</h4>
-                        <p class="text-muted">ChurchCRM requires MySQL 5.7+ or MariaDB 10.2+ with full privileges.</p>
+                    <div class="step-intro mb-4">
+                        <h4 class="mb-2">Connect Your Database</h4>
+                        <p class="text-muted mb-0">ChurchCRM requires MySQL 5.7+ or MariaDB 10.2+ with full privileges.</p>
                     </div>
 
                     <div class="form-card">
@@ -286,7 +286,7 @@ require_once __DIR__ . '/header.php';
                     </div>
 
                     <div class="setup-actions">
-                        <button type="button" class="btn btn-lg btn-success" id="submit-setup">
+                        <button type="button" class="btn btn-success btn-lg" id="submit-setup">
                             <i class="fa-solid fa-database me-2"></i>Install ChurchCRM
                         </button>
                         <button type="button" class="btn btn-outline-secondary" id="database-prev-btn">

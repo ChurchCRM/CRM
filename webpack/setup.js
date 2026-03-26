@@ -535,8 +535,8 @@ window.Stepper = Stepper;
       const $tbody = $("<tbody>");
       locales.forEach(function (locale) {
         const statusBadge = locale.systemAvailable
-          ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
-          : `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
+          ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
+          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-times me-1"></i>Not Available</span>`;
 
         const $row = $("<tr>")
           .append(
@@ -828,6 +828,36 @@ window.Stepper = Stepper;
       event.preventDefault();
       return false;
     });
+
+    // Real-time password matching validation
+    const passwordField = document.getElementById("DB_PASSWORD");
+    const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
+    const submitButton = document.getElementById("submit-setup");
+
+    function validatePasswordMatch() {
+      const password = passwordField.value;
+      const confirmPassword = confirmPasswordField.value;
+      const mismatch = password && confirmPassword && password !== confirmPassword;
+
+      // Update visual feedback on confirm password field
+      if (mismatch) {
+        confirmPasswordField.classList.add("is-invalid");
+        confirmPasswordField.classList.remove("is-valid");
+      } else if (confirmPassword) {
+        confirmPasswordField.classList.remove("is-invalid");
+        confirmPasswordField.classList.add("is-valid");
+      } else {
+        confirmPasswordField.classList.remove("is-invalid", "is-valid");
+      }
+
+      return !mismatch;
+    }
+
+    // Add listeners for real-time validation
+    if (passwordField && confirmPasswordField) {
+      passwordField.addEventListener("input", validatePasswordMatch);
+      confirmPasswordField.addEventListener("input", validatePasswordMatch);
+    }
 
     setupStepper = new Stepper(stepperElement, {
       linear: true,
