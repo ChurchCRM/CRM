@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-19 23:43+0000\n"
+"POT-Creation-Date: 2026-03-26 21:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,6 +228,9 @@ msgid "API Key is required."
 msgstr ""
 
 msgid "About WebDAV Backups"
+msgstr ""
+
+msgid "Accepted format: .csv"
 msgstr ""
 
 msgid "Access Denied"
@@ -847,6 +850,9 @@ msgstr ""
 msgid "Auto-calculated from counts above"
 msgstr ""
 
+msgid "Auto-mapped"
+msgstr ""
+
 msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
 msgstr ""
 
@@ -1165,6 +1171,9 @@ msgstr ""
 msgid "CSV"
 msgstr ""
 
+msgid "CSV Column"
+msgstr ""
+
 msgid "CSV Combine Families"
 msgstr ""
 
@@ -1174,10 +1183,10 @@ msgstr ""
 msgid "CSV Export Records"
 msgstr ""
 
-msgid "CSV Import"
+msgid "CSV Individual Records"
 msgstr ""
 
-msgid "CSV Individual Records"
+msgid "CSV template not found"
 msgstr ""
 
 msgid "CURRENT FAMILY WITH DONATIONS"
@@ -1580,6 +1589,9 @@ msgstr ""
 msgid "Colombia"
 msgstr ""
 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr ""
+
 msgid "Coming soon"
 msgstr ""
 
@@ -1607,6 +1619,9 @@ msgid "Compare pledges between two fiscal years"
 msgstr ""
 
 msgid "Comparing timezones..."
+msgstr ""
+
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
 msgstr ""
 
 msgid "Complete"
@@ -2036,9 +2051,6 @@ msgstr ""
 msgid "Data file format"
 msgstr ""
 
-msgid "Data import successful."
-msgstr ""
-
 msgid "Data/Reports"
 msgstr ""
 
@@ -2154,9 +2166,6 @@ msgid "Default Zip"
 msgstr ""
 
 msgid "Default account for receiving a copy of all emails"
-msgstr ""
-
-msgid "Default country if none specified otherwise"
 msgstr ""
 
 msgid "Default role updated."
@@ -2457,9 +2466,6 @@ msgstr ""
 msgid "Donated items for this fundraiser"
 msgstr ""
 
-msgid "Donation Envelope"
-msgstr ""
-
 msgid "Donation Fund Editor"
 msgstr ""
 
@@ -2484,6 +2490,9 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
+msgid "Download CSV Template"
+msgstr ""
+
 msgid "Download and Apply System Update"
 msgstr ""
 
@@ -2496,6 +2505,9 @@ msgstr ""
 msgid "Download the latest release and apply it to your ChurchCRM installation."
 msgstr ""
 
+msgid "Download the template to see the expected column format."
+msgstr ""
+
 msgid "Downloaded"
 msgstr ""
 
@@ -2503,6 +2515,9 @@ msgid "Downloaded release file is empty. This may be due to network issues or Gi
 msgstr ""
 
 msgid "Downloading latest release from GitHub..."
+msgstr ""
+
+msgid "Drag and drop your CSV file here"
 msgstr ""
 
 msgid "Drag and drop your backup file here"
@@ -2530,9 +2545,6 @@ msgstr ""
 msgid "ERROR"
 msgstr ""
 
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr ""
-
 msgid "ESE"
 msgstr ""
 
@@ -2540,6 +2552,9 @@ msgid "Each person can have their own email and mobile number."
 msgstr ""
 
 msgid "Each plugin requires a"
+msgstr ""
+
+msgid "Each row is one person. Members of the same family share a FamilyID."
 msgstr ""
 
 msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
@@ -3357,9 +3372,6 @@ msgstr ""
 msgid "Family Status"
 msgstr ""
 
-msgid "Family Type: used with Make Family records... option above"
-msgstr ""
-
 msgid "Family Verification"
 msgstr ""
 
@@ -3462,6 +3474,9 @@ msgid "File Type"
 msgstr ""
 
 msgid "File signatures match the official release."
+msgstr ""
+
+msgid "File upload error"
 msgstr ""
 
 msgid "Files Missing"
@@ -4188,10 +4203,7 @@ msgstr ""
 msgid "Ignore Incomplete<br>Addresses"
 msgstr ""
 
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr ""
-
-msgid "Ignore this Field"
+msgid "Ignored"
 msgstr ""
 
 msgid "Image shown when no Gravatar exists for the email address"
@@ -4200,7 +4212,13 @@ msgstr ""
 msgid "Images Root"
 msgstr ""
 
+msgid "Import Another File"
+msgstr ""
+
 msgid "Import CSV"
+msgstr ""
+
+msgid "Import Complete"
 msgstr ""
 
 msgid "Import Data"
@@ -4215,7 +4233,16 @@ msgstr ""
 msgid "Import failed"
 msgstr ""
 
+msgid "Import failed. Please try again."
+msgstr ""
+
+msgid "Import failed: "
+msgstr ""
+
 msgid "Import from CSV"
+msgstr ""
+
+msgid "Import from Spreadsheet"
 msgstr ""
 
 msgid "Import from a Spreadsheet"
@@ -4236,7 +4263,7 @@ msgstr ""
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
 msgstr ""
 
-msgid "Imported"
+msgid "Importing..."
 msgstr ""
 
 msgid "In Cart"
@@ -4397,6 +4424,9 @@ msgid "Invalid fields or selections. Changes not saved! Please correct and try a
 msgstr ""
 
 msgid "Invalid format"
+msgstr ""
+
+msgid "Invalid import request"
 msgstr ""
 
 msgid "Invalid login or password"
@@ -4898,9 +4928,6 @@ msgstr ""
 msgid "Make Default"
 msgstr ""
 
-msgid "Make Family records based on last name and address"
-msgstr ""
-
 msgid "Make User"
 msgstr ""
 
@@ -4967,6 +4994,9 @@ msgstr ""
 msgid "Manage Two-Factor Authentication"
 msgstr ""
 
+msgid "Manual"
+msgstr ""
+
 msgid "Manual Backup"
 msgstr ""
 
@@ -4980,6 +5010,9 @@ msgid "Map Settings"
 msgstr ""
 
 msgid "Map this group"
+msgstr ""
+
+msgid "Map to Field"
 msgstr ""
 
 msgid "Mar"
@@ -5007,9 +5040,6 @@ msgid "Match custom field to this value"
 msgstr ""
 
 msgid "Material Value"
-msgstr ""
-
-msgid "Matriarch"
 msgstr ""
 
 #. Context: countries
@@ -5363,9 +5393,6 @@ msgstr ""
 msgid "NNW"
 msgstr ""
 
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr ""
-
 msgid "NOTICE"
 msgstr ""
 
@@ -5575,7 +5602,7 @@ msgstr ""
 msgid "No family name entered!"
 msgstr ""
 
-msgid "No file selected for upload."
+msgid "No file uploaded"
 msgstr ""
 
 msgid "No format"
@@ -5594,6 +5621,9 @@ msgid "No log files found."
 msgstr ""
 
 msgid "No logged in user"
+msgstr ""
+
+msgid "No match found — select a field or leave as Ignore."
 msgstr ""
 
 msgid "No members"
@@ -5827,6 +5857,9 @@ msgstr ""
 msgid "Online Verification"
 msgstr ""
 
+msgid "Only .csv files are accepted"
+msgstr ""
+
 msgid "Only Families with unpaid pledges"
 msgstr ""
 
@@ -6047,9 +6080,6 @@ msgstr ""
 msgid "Passwords must be at least"
 msgstr ""
 
-msgid "Patriarch"
-msgstr ""
-
 msgid "Payment"
 msgstr ""
 
@@ -6112,9 +6142,6 @@ msgid "People with birthdays in a particular month"
 msgstr ""
 
 msgid "Percentage"
-msgstr ""
-
-msgid "Perform Import"
 msgstr ""
 
 msgid "Permission"
@@ -6383,10 +6410,16 @@ msgstr ""
 msgid "Please mail you next gift to "
 msgstr ""
 
+msgid "Please map at least one column before importing"
+msgstr ""
+
 msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
 msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
+msgstr ""
+
+msgid "Please select a CSV file"
 msgstr ""
 
 msgid "Please select a Family."
@@ -7107,6 +7140,9 @@ msgstr ""
 msgid "Samoa"
 msgstr ""
 
+msgid "Sample Data"
+msgstr ""
+
 #. Context: countries
 msgid "San Marino"
 msgstr ""
@@ -7416,6 +7452,9 @@ msgid "Server URL is required."
 msgstr ""
 
 msgid "Server error"
+msgstr ""
+
+msgid "Server returned an unexpected response. Please try again."
 msgstr ""
 
 msgid ""
@@ -7729,6 +7768,9 @@ msgstr ""
 msgid "Start Fresh — Manual Data Entry"
 msgstr ""
 
+msgid "Start Over"
+msgstr ""
+
 msgid "Start Row"
 msgstr ""
 
@@ -7752,6 +7794,12 @@ msgid "Status"
 msgstr ""
 
 msgid "Status:"
+msgstr ""
+
+msgid "Step 1 — Upload CSV File"
+msgstr ""
+
+msgid "Step 2 — Map Columns"
 msgstr ""
 
 msgid "Street Address"
@@ -8356,9 +8404,6 @@ msgstr ""
 msgid "Total Users"
 msgstr ""
 
-msgid "Total number of rows in the CSV file"
-msgstr ""
-
 msgid "Total of all purchases: $"
 msgstr ""
 
@@ -8549,6 +8594,9 @@ msgstr ""
 msgid "Unknown error"
 msgstr ""
 
+msgid "Unmapped"
+msgstr ""
+
 msgid "Unmet Prerequisites"
 msgstr ""
 
@@ -8639,13 +8687,28 @@ msgstr ""
 msgid "Upgrade information refreshed. Reloading page..."
 msgstr ""
 
-msgid "Upload CSV File"
+msgid "Upload CSV"
 msgstr ""
 
 msgid "Upload Photo"
 msgstr ""
 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr ""
+
 msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr ""
+
+msgid "Upload failed."
+msgstr ""
+
+msgid "Upload failed. Please check the file and try again."
+msgstr ""
+
+msgid "Upload session expired. Please upload the file again."
+msgstr ""
+
+msgid "Uploading, please wait..."
 msgstr ""
 
 #. Context: countries
@@ -8893,6 +8956,9 @@ msgid "View Group"
 msgstr ""
 
 msgid "View Logs"
+msgstr ""
+
+msgid "View People"
 msgstr ""
 
 msgid "View Person Page"
@@ -9547,9 +9613,6 @@ msgstr ""
 msgid "people removed from cart"
 msgstr ""
 
-msgid "people were imported"
-msgstr ""
-
 msgid "person"
 msgid_plural "people"
 msgstr[0] ""
@@ -9624,11 +9687,11 @@ msgstr ""
 msgid "years"
 msgstr ""
 
-msgid "yes"
-msgstr ""
-
 #. Context: countries
 msgid "Åland Islands (Åland)"
+msgstr ""
+
+msgid "— Ignore —"
 msgstr ""
 
 msgid "— Select Country —"
