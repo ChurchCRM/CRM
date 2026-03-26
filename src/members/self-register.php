@@ -64,18 +64,29 @@ use ChurchCRM\dto\SystemURLs;
                     }
                 },
                 {
-                    width: '50%',
+                    width: '45%',
                     title: i18next.t('Family'),
                     data: 'FamilyString',
                     searchable: true
                 },
                 {
-                    width: '30%',
+                    width: '25%',
                     title: i18next.t('Date'),
                     data: 'DateEntered',
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return moment(data).format("MM-DD-YY");
+                    }
+                },
+                {
+                    title: i18next.t('Actions'),
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    className: 'text-end w-1 no-export',
+                    width: '15%',
+                    render: function(data, type, row) {
+                        return window.CRM.renderFamilyActionMenu(row.Id, row.FamilyString);
                     }
                 }
             ],
@@ -94,7 +105,7 @@ use ChurchCRM\dto\SystemURLs;
             autoWidth: false,
             columns: [
                 {
-                    width: '15%',
+                    width: '12%',
                     title: i18next.t('Id'),
                     data: 'Id',
                     searchable: false,
@@ -103,24 +114,35 @@ use ChurchCRM\dto\SystemURLs;
                     }
                 },
                 {
-                    width: '30%',
+                    width: '28%',
                     title: i18next.t('First Name'),
                     data: 'FirstName',
                     searchable: true
                 },
                 {
-                    width: '30%',
+                    width: '28%',
                     title: i18next.t('Last Name'),
                     data: 'LastName',
                     searchable: true
                 },
                 {
-                    width: '25%',
+                    width: '20%',
                     title: i18next.t('Date'),
                     data: 'DateEntered',
                     searchable: false,
                     render: function (data, type, full, meta) {
                         return moment(data).format("MM-DD-YY");
+                    }
+                },
+                {
+                    title: i18next.t('Actions'),
+                    data: null,
+                    orderable: false,
+                    searchable: false,
+                    className: 'text-end w-1 no-export',
+                    width: '12%',
+                    render: function(data, type, row) {
+                        return window.CRM.renderPersonActionMenu(row.Id, row.FirstName + ' ' + row.LastName, { familyId: row.FamId });
                     }
                 }
             ],
