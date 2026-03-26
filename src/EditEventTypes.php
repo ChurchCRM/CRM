@@ -169,7 +169,7 @@ if ($numCounts) {
         <div class="row">
           <div class="col-md-8">
             <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-              <select class="form-control" id="EventHour" name="EventHour" style="width: 70px;">
+              <select class="form-select" id="EventHour" name="EventHour" style="width: 70px;">
                 <?php
                 for ($h = 1; $h <= 12; $h++) {
                     echo '<option value="' . $h . '">' . $h . '</option>';
@@ -177,7 +177,7 @@ if ($numCounts) {
                 ?>
               </select>
               <span>:</span>
-              <select class="form-control" id="EventMinute" name="EventMinute" style="width: 70px;">
+              <select class="form-select" id="EventMinute" name="EventMinute" style="width: 70px;">
                 <?php
                 for ($m = 0; $m < 60; $m += 15) {
                     $min = str_pad($m, 2, '0', STR_PAD_LEFT);
@@ -185,7 +185,7 @@ if ($numCounts) {
                 }
                 ?>
               </select>
-              <select class="form-control" id="EventPeriod" name="EventPeriod" style="width: 70px;">
+              <select class="form-select" id="EventPeriod" name="EventPeriod" style="width: 70px;">
                 <option value="AM">AM</option>
                 <option value="PM">PM</option>
               </select>
@@ -200,7 +200,7 @@ if ($numCounts) {
         <label class="fw-bold"><?= gettext('Attendance Count Categories') ?></label>
         <div class="table-responsive">
           <table class="table table-sm table-bordered">
-            <thead class="table-light">
+            <thead>
               <tr>
                 <th><?= gettext('Category Name') ?></th>
                 <th style="width: 120px;" class="no-export"><?= gettext('Actions') ?></th>

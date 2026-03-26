@@ -81,7 +81,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                     </div>
                     <div class="card-body">
                         <table class="table table-sm table-hover">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('Name') ?></th>
                                     <th><?= gettext('Classification') ?></th>
@@ -139,7 +139,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                             <div class="mb-3">
                                 <label for="EventTypeFilter"><?= gettext('Filter by Event Type') ?></label>
                                 <div class="input-group">
-                                    <select id="EventTypeFilter" name="EventTypeFilter" class="form-control" onchange="this.form.submit()">
+                                    <select id="EventTypeFilter" name="EventTypeFilter" class="form-select" onchange="this.form.submit()">
                                         <option value="0" <?= ($selectedEventType == 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
                                         <?php foreach ($aEventTypes as $eventType) { ?>
                                             <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType == $eventType->getId()) ? 'selected' : '' ?>>
@@ -155,7 +155,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         <form name="CartToEvent" action="CartToEvent.php" method="POST">
                             <div class="mb-3">
                                 <label for="EventID"><?= gettext('Select Event') ?></label>
-                                <select id="EventID" name="EventID" class="form-control" required>
+                                <select id="EventID" name="EventID" class="form-select" required>
                                     <option value="" disabled selected><?= gettext('Choose an event...') ?></option>
                                     <?php foreach ($aEvents as $evt) { ?>
                                         <option value="<?= $evt->getId() ?>"><?= $evt->getTitle() ?></option>
@@ -163,7 +163,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 </select>
                             </div>
                             <div class="text-center">
-                                <button type="submit" name="Submit" class="btn btn-primary btn-lg"><?= gettext('Check In to Event') ?></button>
+                                <button type="submit" name="Submit" class="btn btn-primary"><?= gettext('Check In to Event') ?></button>
                             </div>
                         </form>
                     </div>

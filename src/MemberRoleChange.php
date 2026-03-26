@@ -86,7 +86,7 @@ require_once __DIR__ . '/Include/Header.php'
         <div class="mb-3 row">
             <label class="col-sm-3 col-form-label fw-bold text-end" for="NewRole"><?= gettext('New Role') ?>:</label>
             <div class="col-sm-4">
-                <select name="NewRole" id="NewRole" class="form-control">
+                <select name="NewRole" id="NewRole" class="form-select">
                     <?php
                     // Loop through all the possible roles
                     while ($aRow = mysqli_fetch_array($rsAllRoles)) {

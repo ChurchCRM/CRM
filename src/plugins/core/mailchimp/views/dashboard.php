@@ -149,7 +149,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                     </div>
                     <div class="card-body p-0">
-                        <table class="table table-sm table-striped mb-0">
+                        <table class="table table-sm mb-0">
                             <tbody>
                                 <tr>
                                     <td><i class="fa-solid fa-users text-info me-2"></i><?= gettext('Subscribers') ?></td>

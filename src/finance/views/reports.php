@@ -27,7 +27,8 @@ if ($iFYMonth === 1) {
         <!-- Tax & Giving Reports -->
         <div class="col-lg-6 mb-4">
             <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-header bg-success text-white py-3">
+                <div class="card-status-top bg-success"></div>
+                <div class="card-header py-3">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-receipt"></i> <?= gettext('Tax & Giving Reports') ?>
                     </h5>
@@ -73,7 +74,8 @@ if ($iFYMonth === 1) {
         <!-- Pledge Reports -->
         <div class="col-lg-6 mb-4">
             <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-header bg-info text-white py-3">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-3">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-hand-holding-dollar"></i> <?= gettext('Pledge Reports') ?>
                     </h5>
@@ -133,7 +135,8 @@ if ($iFYMonth === 1) {
         <!-- Deposit Reports -->
         <div class="col-lg-6 mb-4">
             <div class="card finance-card shadow-sm border-0 h-100">
-                <div class="card-header bg-primary text-white py-3">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-3">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-cash-register"></i> <?= gettext('Deposit Reports') ?>
                     </h5>

@@ -64,7 +64,7 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 <div class="card">
   <div class="card-body">
-    <table id="fundraisers" class="table table-striped table-bordered data-table w-100">
+    <table id="fundraisers" class="table table-bordered data-table w-100">
         <thead>
             <tr>
                 <th><?= gettext('Title') ?></th>

@@ -209,7 +209,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <label for="child" class="form-label required">
                                 <?= gettext("Person Checking In") ?>
                             </label>
-                            <select class="form-control person-search" id="child"
+                            <select class="form-select person-search" id="child"
                                 data-placeholder="<?= gettext("Search by name or email..."); ?>" required tabindex="1">
                             </select>
                             <div id="childDetails" class="mt-2"></div>
@@ -222,7 +222,7 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
                             <label for="adult" class="form-label">
                                 <?= gettext('Checked In By') ?> <span class="text-secondary small">(<?= gettext('optional'); ?>)</span>
                             </label>
-                            <select class="form-control person-search" id="adult"
+                            <select class="form-select person-search" id="adult"
                                 data-placeholder="<?= gettext("Search for supervisor..."); ?>" tabindex="2">
                             </select>
                             <div id="adultDetails" class="mt-2"></div>
@@ -329,7 +329,7 @@ if (
                             <div class="mb-3">
                                 <label class="form-label"><?= gettext('Adult Checking Out Person') ?></label>
                                 <small class="form-text text-secondary d-block mb-2"><?= gettext('Optional - leave blank if not tracking') ?></small>
-                                <select class="form-control person-search" id="adultout" name="adult"
+                                <select class="form-select person-search" id="adultout" name="adult"
                                     data-placeholder="<?= gettext('Search for adult...') ?>">
                                 </select>
                                 <input type="hidden" id="adultout-id" name="adult-id">

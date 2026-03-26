@@ -100,7 +100,8 @@ require_once __DIR__ . '/Include/Header.php';
     <!-- Deposit Details Column -->
     <div class="col-lg-7 col-md-12 mb-3">
       <div class="card">
-        <div class="card-header bg-primary text-white">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-header">
           <h3 class="card-title mb-0">
             <i class="fa-solid fa-file-invoice-dollar"></i> <?php echo gettext('Deposit Details'); ?>
           </h3>
@@ -247,7 +248,8 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 
 <div class="card mt-3">
-  <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
+  <div class="card-status-top bg-secondary"></div>
+  <div class="card-header d-flex justify-content-between align-items-center">
     <h3 class="card-title mb-0">
       <i class="fa-solid fa-receipt"></i> <?php echo gettext('Payments'); ?> 
       <span class="badge bg-light text-dark text-dark" id="payment-count">0</span>

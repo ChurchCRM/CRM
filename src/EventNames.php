@@ -176,7 +176,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <div class="mb-3">
               <label for="newEvtStartTime" class="fw-bold"><?= gettext('Default Start Time') ?></label>
               <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-                <select class="form-control" id="newEvtHour" name="newEvtHour" style="width: 70px;">
+                <select class="form-select" id="newEvtHour" name="newEvtHour" style="width: 70px;">
                   <?php
                   for ($h = 1; $h <= 12; $h++) {
                       $selected = ($h == 9) ? 'selected' : '';
@@ -185,7 +185,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                   ?>
                 </select>
                 <span>:</span>
-                <select class="form-control" id="newEvtMinute" name="newEvtMinute" style="width: 70px;">
+                <select class="form-select" id="newEvtMinute" name="newEvtMinute" style="width: 70px;">
                   <?php
                   for ($m = 0; $m < 60; $m += 15) {
                       $min = str_pad($m, 2, '0', STR_PAD_LEFT);
@@ -194,7 +194,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                   }
                   ?>
                 </select>
-                <select class="form-control" id="newEvtPeriod" name="newEvtPeriod" style="width: 70px;">
+                <select class="form-select" id="newEvtPeriod" name="newEvtPeriod" style="width: 70px;">
                   <option value="AM" selected>AM</option>
                   <option value="PM">PM</option>
                 </select>
@@ -214,7 +214,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <div class="form-check mb-2 d-flex align-items-center">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurWeekly" value="weekly">
               <label class="form-check-label me-2" for="recurWeekly"><?= gettext('Weekly on') ?></label>
-              <select name="newEvtRecurDOW" class="form-control form-control-sm" style="width: 150px;" disabled>
+              <select name="newEvtRecurDOW" class="form-select form-select-sm" style="width: 150px;" disabled>
                 <option value="1"><?= gettext('Sundays') ?></option>
                 <option value="2"><?= gettext('Mondays') ?></option>
                 <option value="3"><?= gettext('Tuesdays') ?></option>
@@ -227,7 +227,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
             <div class="form-check mb-2 d-flex align-items-center">
               <input class="form-check-input" type="radio" name="newEvtTypeRecur" id="recurMonthly" value="monthly">
               <label class="form-check-label me-2" for="recurMonthly"><?= gettext('Monthly on the') ?></label>
-              <select name="newEvtRecurDOM" class="form-control form-control-sm" style="width: 100px;" disabled>
+              <select name="newEvtRecurDOM" class="form-select form-select-sm" style="width: 100px;" disabled>
                 <?php for ($kk = 1; $kk <= 31; $kk++) {
                     $DOM = date('jS', mktime(0, 0, 0, 1, $kk, 2000)); ?>
                   <option value="<?= $kk ?>"><?= $DOM ?></option>
@@ -286,7 +286,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
     if ($numRows > 0) {
         ?>
       <div class="table-responsive">
-      <table id="eventNames" class="table table-striped table-hover">
+      <table id="eventNames" class="table table-hover">
         <thead>
          <tr>
             <th><?= gettext('Name') ?></th>

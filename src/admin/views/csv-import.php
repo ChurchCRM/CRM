@@ -51,7 +51,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <span class="text-muted ms-2">(<span id="fileSize"></span>)</span>
                 </div>
             </div>
-            <button type="submit" class="btn btn-warning btn-lg w-100">
+            <button type="submit" class="btn btn-warning w-100">
                 <i class="fa-solid fa-upload me-2"></i><?= gettext('Upload CSV') ?>
             </button>
         </form>
@@ -130,7 +130,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </p>
         <div class="table-responsive">
             <table class="table table-sm table-bordered mb-0">
-                <thead class="table-light">
+                <thead>
                     <tr>
                         <th><?= gettext('CSV Column') ?></th>
                         <th><?= gettext('Sample Data') ?></th>
@@ -144,7 +144,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-footer">
         <input type="hidden" id="mapping-token">
-        <button class="btn btn-primary btn-lg" id="execute-import">
+        <button class="btn btn-primary" id="execute-import">
             <i class="fa-solid fa-file-import me-2"></i><?= gettext('Import Data') ?>
         </button>
         <button class="btn btn-outline-secondary ms-2" id="restart-import">

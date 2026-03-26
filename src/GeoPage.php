@@ -196,7 +196,7 @@ $families = FamilyQuery::create()
             <div class="mb-3">
                 <label for="Family" class="form-label"><?= gettext('Select Family') ?>:</label>
                 <div>
-                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-control choiceSelectBox w-100">
+                    <select name='Family' data-placeholder="<?= gettext('Select a family') ?>" class="form-select choiceSelectBox w-100">
                         <option></option>
                         <?php
                         foreach ($families as $family) {
@@ -315,7 +315,7 @@ $families = FamilyQuery::create()
 
             $counter = 0; ?>
             <div class="card-body p-0">
-            <table id="neighbours" class="table table-striped table-bordered data-table w-100">
+            <table id="neighbours" class="table table-bordered data-table w-100">
                 <thead>
                     <tr>
                         <th><?= gettext('Distance') ?></th>

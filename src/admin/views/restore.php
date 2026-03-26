@@ -88,7 +88,7 @@ $isOnboarding = $isOnboarding ?? false;
             <hr>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-warning w-100 btn-lg" id="submitRestore">
+            <button type="submit" class="btn btn-warning w-100" id="submitRestore">
                 <i class="fa-solid fa-upload me-2"></i><?= gettext('Restore Database') ?>
             </button>
         </form>

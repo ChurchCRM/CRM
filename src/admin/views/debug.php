@@ -25,7 +25,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
             <div id="collapseInstallation" class="collapse" aria-labelledby="headingInstallation">
                 <div class="card-body">
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <tr>
                         <td><?= gettext('Software Version') ?></td>
                         <td><?= VersionUtils::getInstalledVersion() ?></td>
@@ -82,7 +82,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     ?>
     <div class="col-md-4">
         <div class="card <?= $integrityPassed ? '' : 'border-warning' ?>">
-            <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
+            <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
+            <div class="card-header">
                 <h4 class="mb-0">
                     <i class="fa fa-shield-alt me-2"></i><?= gettext('Application Integrity') ?>
                     <?php if (!$integrityPassed): ?>
@@ -112,7 +113,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     ?>
     <div class="col-md-4">
         <div class="card border-danger">
-            <div class="card-header bg-danger text-white">
+            <div class="card-status-top bg-danger"></div>
+            <div class="card-header">
                 <h4 class="mb-0">
                     <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files') ?>
                     <span class="badge bg-light text-dark ms-2"><?= $orphanedCount ?></span>
@@ -140,7 +142,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <div class="card-body">
                 <h6 class="text-muted"><?= gettext('PHP & Server Requirements') ?></h6>
                 <?php $appPrereqs = AppIntegrityService::getApplicationPrerequisites(); ?>
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <?php foreach ($appPrereqs as $prerequisite) { 
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
@@ -154,7 +156,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 <hr>
                 <h6 class="text-muted"><?= gettext('Filesystem Permissions') ?></h6>
                 <?php $fsPrereqs = AppIntegrityService::getFilesystemPrerequisites(); ?>
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <?php foreach ($fsPrereqs as $prerequisite) { 
                         $status = $prerequisite->getStatusText();
                         $isOk = $status === gettext('Passed');
@@ -176,7 +178,8 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
     ?>
     <div class="col-md-4">
         <div class="card <?= $localeDetected ? '' : 'border-warning' ?>">
-            <div class="card-header <?= $localeDetected ? 'bg-success' : 'bg-warning' ?> text-white" id="headingLocaleSupport">
+            <div class="card-status-top <?= $localeDetected ? 'bg-success' : 'bg-warning' ?>"></div>
+            <div class="card-header" id="headingLocaleSupport">
                 <h4 data-bs-toggle="collapse" data-bs-target="#collapseLocaleSupport" aria-expanded="false" aria-controls="collapseLocaleSupport" style="cursor: pointer;" class="mb-0">
                     <i class="fa fa-globe me-2"></i><?= gettext('Locale Support') ?>
                     <i class="fa fa-chevron-down float-end"></i>
@@ -237,7 +240,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             <div id="collapseSystemConfig" class="collapse" aria-labelledby="headingSystemConfig">
                 <div class="card-body">
                 <h6 class="text-muted mb-2"><?= gettext('Server Information') ?></h6>
-                <table class="table table-striped table-sm mb-3">
+                <table class="table table-sm mb-3">
                     <tr>
                         <td><?= gettext('Hostname') ?></td>
                         <td><?= gethostname() ?></td>
@@ -257,7 +260,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </table>
                 <hr>
                 <h6 class="text-muted mb-2"><?= gettext('Database Server') ?></h6>
-                <table class="table table-striped table-sm mb-3">
+                <table class="table table-sm mb-3">
                     <tr>
                         <td><?= gettext('Version') ?></td>
                         <td><?= SystemService::getDBServerVersion() ?></td>
@@ -265,7 +268,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
                 </table>
                 <hr>
                 <h6 class="text-muted mb-2"><?= gettext('Email Configuration') ?></h6>
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <tr>
                         <td><?= gettext('SMTP Host') ?></td>
                         <td><?= SystemConfig::getValue("sSMTPHost") ?: gettext('Not configured') ?></td>
@@ -374,7 +377,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
             <div id="collapsePHP" class="collapse" aria-labelledby="headingPHP">
                 <div class="card-body">
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <tr>
                         <td>PHP Version</td>
                         <td><?= PHP_VERSION ?></td>
@@ -414,7 +417,7 @@ $integrityStatus = AppIntegrityService::getIntegrityCheckStatus();
             </div>
             <div id="collapseWebServer" class="collapse" aria-labelledby="headingWebServer">
                 <div class="card-body">
-                <table class="table table-striped table-sm">
+                <table class="table table-sm">
                     <tr>
                         <td colspan="2"><strong><?= $_SERVER["SERVER_SOFTWARE"] ?></strong></td>
                     </tr>

@@ -133,7 +133,7 @@ $validationError     = $validationError ?? '';
                             <div class="form-row">
                                 <div class="mb-3 col-md-6">
                                     <label for="sLanguage"><?= gettext('Language') ?></label>
-                                    <select class="form-control auto-tomselect" id="sLanguage" name="sLanguage" style="width: 100%;">
+                                    <select class="form-select auto-tomselect" id="sLanguage" name="sLanguage" style="width: 100%;">
                                         <?php
                                         $supportedLocales = json_decode(file_get_contents(SystemURLs::getDocumentRoot() . '/locale/locales.json'), true);
                                         foreach ($supportedLocales as $locale => $localeData):
@@ -152,7 +152,7 @@ $validationError     = $validationError ?? '';
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="sTimeZone"><?= gettext('Time Zone') ?></label>
-                                    <select class="form-control auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
+                                    <select class="form-select auto-tomselect" id="sTimeZone" name="sTimeZone" style="width: 100%;">
                                         <?php foreach ($timezones as $tz): ?>
                                         <option value="<?= InputUtils::escapeHTML($tz) ?>"
                                             <?= ($churchInfo['sTimeZone'] === $tz) ? 'selected' : '' ?>>
@@ -214,7 +214,7 @@ $validationError     = $validationError ?? '';
                                 </div>
                                 <div class="mb-3 col-md-3">
                                     <label for="sChurchCountry"><?= gettext('Country') ?> <span class="text-danger">*</span></label>
-                                    <select class="form-control" id="sChurchCountry" name="sChurchCountry" style="width: 100%;"
+                                    <select class="form-select" id="sChurchCountry" name="sChurchCountry" style="width: 100%;"
                                             data-user-selected="<?= InputUtils::escapeHTML($churchInfo['sChurchCountry']) ?>">
                                     </select>
                                 </div>

@@ -644,7 +644,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-1">
                     <label for="Gender"><?= gettext('Gender') ?>:</label>
-                    <select id="Gender" name="Gender" class="form-control">
+                    <select id="Gender" name="Gender" class="form-select">
                         <option value="0">-</option>
                         <option value="1" <?= $iGender === 1 ? 'selected' : '' ?>><?= gettext('M') ?></option>
                         <option value="2" <?= $iGender === 2 ? 'selected' : '' ?>><?= gettext('F') ?></option>
@@ -663,7 +663,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="row">
                 <div class="mb-3 col-md-2">
                     <label for="BirthMonth"><?= gettext('Birth Month') ?>:</label>
-                    <select id="BirthMonth" name="BirthMonth" class="form-control">
+                    <select id="BirthMonth" name="BirthMonth" class="form-select">
                         <option value="0" <?= $iBirthMonth === 0 ? 'selected' : '' ?>>-</option>
                         <option value="01" <?= $iBirthMonth === 1 ? 'selected' : '' ?>><?= gettext('Jan') ?></option>
                         <option value="02" <?= $iBirthMonth === 2 ? 'selected' : '' ?>><?= gettext('Feb') ?></option>
@@ -681,7 +681,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-1">
                     <label for="BirthDay"><?= gettext('Day') ?>:</label>
-                    <select id="BirthDay" name="BirthDay" class="form-control">
+                    <select id="BirthDay" name="BirthDay" class="form-select">
                         <option value="0">-</option>
                         <?php for ($x = 1; $x < 32; $x++) {
                             $sDay = $x < 10 ? '0' . $x : $x; ?>
@@ -709,7 +709,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-4">
                     <label for="familyId"><?= gettext('Family') ?>:</label>
-                    <select name="Family" id="familyId" class="form-control">
+                    <select name="Family" id="familyId" class="form-select">
                         <option value="0" selected><?= gettext('Unassigned') ?></option>
                         <option value="-1"><?= gettext('Create a new family (using last name)') ?></option>
                         <option value="" disabled>-----------------------</option>
@@ -726,7 +726,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-3">
                     <label for="FamilyRole"><?= gettext('Family Role') ?>:</label>
-                    <select name="FamilyRole" id="FamilyRole" class="form-control">
+                    <select name="FamilyRole" id="FamilyRole" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
                         <option value="" disabled>-----------------------</option>
                         <?php while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
@@ -794,7 +794,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('State') ?>:
                         <?= $bFamilyState ? '</span>' : '' ?>
                     </label>
-                    <select id="State" name="State" class="form-control" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -820,7 +820,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>
@@ -1036,7 +1036,7 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="row">
                 <div class="mb-3 col-md-3">
                     <label for="Classification"><?= gettext('Classification') ?>:</label>
-                    <select id="Classification" name="Classification" class="form-control">
+                    <select id="Classification" name="Classification" class="form-select">
                         <option value="0"><?= gettext('Unassigned') ?></option>
                         <option value="" disabled>-----------------------</option>
                         <?php while ($aRow = mysqli_fetch_array($rsClassifications)) {

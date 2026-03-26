@@ -44,7 +44,7 @@ require_once __DIR__ . '/Include/Header.php';
 </div>
 <div class="card-body">
 
-    <table class="table table-striped">
+    <table class="table">
 
         <tr class="TableHeader">
             <td><?= gettext('Select') ?></td>

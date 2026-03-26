@@ -63,7 +63,8 @@ if ($sAction === 'delete' && $iOpp > 0) {
     <div class="row justify-content-center mt-2">
         <div class="col-md-6">
                 <div class="card border-danger">
-                    <div class="card-header bg-danger text-white">
+                    <div class="card-status-top bg-danger"></div>
+                    <div class="card-header">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <?= gettext('Confirm Volunteer Opportunity Deletion') ?>
@@ -305,7 +306,8 @@ if (isset($_POST['SaveChanges'])) {
     <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
                 <div class="card mb-4">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-status-top bg-success"></div>
+                    <div class="card-header">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add New') . ' ' . gettext('Volunteer Opportunity') ?>
@@ -413,7 +415,7 @@ if (isset($_POST['SaveChanges'])) {
                     </div>
                     <div class="card-body" style="overflow: visible;">
                         <table class="table table-hover table-sm">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('Order') ?></th>
                                     <th><?= gettext('Name') ?></th>

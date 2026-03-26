@@ -153,7 +153,7 @@ echo $sError;
                 ->orderByLastName()
                 ->find();
 
-            echo"<table class='table table-striped'>";
+            echo"<table class='table'>";
             echo '<thead><tr>';
             echo '<th style="width:40px">#</th>';
             echo '<th>' . gettext('Name') . '</th>';

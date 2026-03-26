@@ -516,7 +516,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
                     <td colspan="3">
-                        <select name='EN_tyid' class='form-control w-100' id='event_type_id'>
+                        <select name='EN_tyid' class='form-select w-100' id='event_type_id'>
                             <option><?= gettext('Select your event type'); ?></option>
                             <?php
                             $sSQL = 'SELECT * FROM event_types';
@@ -571,7 +571,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Linked Group') ?></td>
                     <td colspan="3">
-                        <select name="LinkedGroupId" id="LinkedGroupId" class="form-control" style="max-width: 400px;">
+                        <select name="LinkedGroupId" id="LinkedGroupId" class="form-select" style="max-width: 400px;">
                             <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
                             <?php
                             $groups = GroupQuery::create()
@@ -665,7 +665,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary btn-lg">
+                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary">
                             <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Changes') ?>
                         </button>
                     </td>

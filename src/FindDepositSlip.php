@@ -39,7 +39,7 @@ require_once __DIR__ . '/Include/Header.php';
           </div>
           <div class="col-lg-3">
             <label for="depositType"><?= gettext('Deposit Type') ?></label>
-            <select class="form-control" id="depositType" name="depositType">
+            <select class="form-select" id="depositType" name="depositType">
               <option value="Bank" selected><?= gettext('Bank') ?></option>
               <option value="CreditCard">Credit Card</option>
               <option value="BankDraft">Bank Draft</option>
@@ -67,7 +67,7 @@ require_once __DIR__ . '/Include/Header.php';
   </div>
   <div class="card-body">
     <div class="container-fluid">
-      <table class="display responsive text-nowrap data-table table table-striped table-hover" id="depositsTable" width="100%"></table>
+      <table class="display responsive text-nowrap data-table table table-hover" id="depositsTable" width="100%"></table>
 
       <button type="button" id="deleteSelectedRows" class="btn btn-danger"
               disabled> <?= gettext('Delete Selected Rows') ?> </button>

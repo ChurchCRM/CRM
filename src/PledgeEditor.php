@@ -563,7 +563,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     <div class="col-lg-12">
                         <label for="FamilyName"><?= gettext('Family') ?></label>
-                        <select class="form-control" id="FamilyName" name="FamilyName">
+                        <select class="form-select" id="FamilyName" name="FamilyName">
                             <option selected><?= $sFamilyName ?></option>
                         </select>
                     </div>
@@ -594,7 +594,7 @@ require_once __DIR__ . '/Include/Header.php';
                             ?>
 
                             <label for="Schedule"><?= gettext('Payment Schedule') ?></label>
-                            <select name="Schedule" class="form-control">
+                            <select name="Schedule" class="form-select">
                                 <option value="0"><?= gettext('Select Schedule') ?></option>
                                 <option value="Weekly" <?php if ($iSchedule === 'Weekly') {
                                                             echo 'selected';
@@ -626,7 +626,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <?php if ($PledgeOrPayment === 'Payment'): ?>
                     <div class="col-lg-6">
                         <label for="Method"><?= gettext('Payment by') ?></label>
-                        <select class="form-control" name="Method" id="Method">
+                        <select class="form-select" name="Method" id="Method">
                             <?php if ($dep_Type === 'Bank' || !$iCurrentDeposit) {
                                 ?>
                                 <option value="CHECK" <?php if ($iMethod === 'CHECK') {

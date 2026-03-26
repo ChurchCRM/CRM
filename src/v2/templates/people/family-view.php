@@ -250,7 +250,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
             </div>
             <div class="card-body">
                 <div id="family-property-loading" class="w-100 text-center">
-                    <i class="btn btn-secondary btn-lg ajax">
+                    <i class="btn btn-secondary ajax">
                         <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; <?= gettext("Loading") ?>
                     </i>
                 </div>
@@ -261,7 +261,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                 </div>
 
                 <div class="table-responsive">
-                    <table id="family-property-table" class="table table-striped table-bordered data-table">
+                    <table id="family-property-table" class="table table-bordered data-table">
                         <thead>
                             <tr>
                                 <th width="50"></th>
@@ -407,7 +407,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                                 <span><?= gettext('No notes have been added for this family.') ?></span>
                             </div>
                         <?php } else { ?>
-                            <table class="table table-hover table-striped">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th class="td-shrink"><?= gettext('Date') ?></th>
@@ -561,7 +561,7 @@ $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '
                     </div>
                 </div>
                 <div class="table-responsive">
-                    <table id="pledge-payment-v2-table" class="table table-striped table-bordered data-table" style="width: 100%;">
+                    <table id="pledge-payment-v2-table" class="table table-bordered data-table" style="width: 100%;">
                         <tbody></tbody>
                     </table>
                 </div>

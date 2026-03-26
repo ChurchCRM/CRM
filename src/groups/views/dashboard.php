@@ -94,7 +94,8 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
             <!-- Add Group -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-circle-plus"></i> <?= gettext('Add New Group') ?>
                     </h5>
@@ -120,7 +121,8 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
             <!-- Groups Table -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-secondary text-white py-2">
+                <div class="card-status-top bg-secondary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-sitemap"></i> <?= gettext('Groups') ?>
                     </h5>

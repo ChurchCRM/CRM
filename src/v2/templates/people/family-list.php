@@ -22,7 +22,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="mb-3">
                         <label for="familyActiveStatus"><?= gettext('Status') ?></label>
-                        <select id="familyActiveStatus" name="familyActiveStatus" class="form-control family-filter-field">
+                        <select id="familyActiveStatus" name="familyActiveStatus" class="form-select family-filter-field">
                             <option value="all" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
                             <option value="active" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'active') ? 'selected' : '' ?>><?= gettext('Active') ?></option>
                             <option value="inactive" <?= (isset($familyActiveStatus) && $familyActiveStatus === 'inactive') ? 'selected' : '' ?>><?= gettext('Inactive') ?></option>
@@ -36,7 +36,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="mb-3">
                         <label for="filterGeocoded"><?= gettext('Address Status') ?></label>
-                        <select id="filterGeocoded" name="geocoded" class="form-control family-filter-field">
+                        <select id="filterGeocoded" name="geocoded" class="form-select family-filter-field">
                             <option value="all" <?= (isset($filterGeocoded) && $filterGeocoded === 'all') ? 'selected' : '' ?>><?= gettext('All') ?></option>
                             <option value="unverified" <?= (isset($filterGeocoded) && $filterGeocoded === 'unverified') ? 'selected' : '' ?>><?= gettext('Unverified Addresses') ?></option>
                         </select>

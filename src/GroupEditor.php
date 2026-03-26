@@ -85,7 +85,7 @@ require_once __DIR__ . '/Include/Header.php';
                 $hide ="";
             }
             ?>
-            <select class="form-control input-small" name="GroupType" <?= $hide ?>>
+            <select class="form-select input-small" name="GroupType" <?= $hide ?>>
               <option value="0"><?= gettext('Unassigned') ?></option>
               <option value="" disabled>-----------------------</option>
               <?php
@@ -127,7 +127,7 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
             <div class="col-sm-3" id="selectGroupIDDiv">
                 <?= gettext('from group') ?>:
-              <select class="form-control input-small" name="seedGroupID" id="seedGroupID" >
+              <select class="form-select input-small" name="seedGroupID" id="seedGroupID" >
                 <option value="0"><?php gettext('Select a group'); ?></option>
 
                 <?php

@@ -321,7 +321,8 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
 
 <form method="post" action="FamilyCustomFieldsEditor.php" name="FamilyCustomFieldsEditor">
     <div class="card mb-4">
-        <div class="card-header bg-success text-white">
+        <div class="card-status-top bg-success"></div>
+        <div class="card-header">
             <h5 class="mb-0">
                 <i class="fa-solid fa-plus"></i>
                 <?= gettext('Add New') . ' ' . gettext('Field') ?>
@@ -402,7 +403,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
             </div>
             <div class="card-body" style="overflow: visible;">
                 <table class="table table-hover table-sm">
-                    <thead class="table-light">
+                    <thead>
                         <tr>
                             <th><?= gettext('Type') ?></th>
                             <th><?= gettext('Name') ?></th>

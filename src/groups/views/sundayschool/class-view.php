@@ -221,7 +221,7 @@ $teacherCount = count($rsTeachers);
             <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
         </div>
         <div style="overflow: visible;">
-            <table id="sundayschool" class="table table-striped table-hover data-table w-100">
+            <table id="sundayschool" class="table table-hover data-table w-100">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>

@@ -458,7 +458,7 @@ $bOkToEdit = (
                     <div class="mt-3">
                         <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
                             <div class="mb-2">
-                                <select name="PropertyId" id="input-person-properties" class="form-control" data-placeholder="<?= gettext('Choose a property...') ?>">
+                                <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
                                     <option value=""></option>
                                     <?php
                                     $assignedPropertiesArray = [];
@@ -850,7 +850,7 @@ $bOkToEdit = (
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>
-                                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-control" data-placeholder="<?= gettext('Choose opportunities...') ?>">
+                                                <select id="input-volunteer-opportunities" name="VolunteerOpportunityIDs[]" multiple class="form-select" data-placeholder="<?= gettext('Choose opportunities...') ?>">
                                                     <?php
                                                     while ($aRow = mysqli_fetch_array($rsVolunteerOpps)) {
                                                         extract($aRow);

@@ -216,7 +216,7 @@ function DoQuery()
         </p>
 
         <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table">
             <thead>
                 <?php
                     // Loop through the fields and write the header row
@@ -354,7 +354,7 @@ function getQueryFormInput($queryParameters)
             $sSQL = 'SELECT * FROM queryparameteroptions_qpo WHERE qpo_qrp_ID = ' . $qrp_ID;
             $rsParameterOptions = RunQuery($sSQL);
 
-            $input = '<select name="' . $qrp_Alias . '" class="form-control">';
+            $input = '<select name="' . $qrp_Alias . '" class="form-select">';
             $input .= '<option disabled selected value> -- ' . gettext("select an option") . ' -- </option>';
 
             // Loop through the parameter options
@@ -371,7 +371,7 @@ function getQueryFormInput($queryParameters)
             // Run the SQL to get the options
             $rsParameterOptions = RunQuery($qrp_OptionSQL);
 
-            $input .= '<select name="' . $qrp_Alias . '" class="form-control">';
+            $input .= '<select name="' . $qrp_Alias . '" class="form-select">';
             $input .= '<option disabled selected value> -- select an option -- </option>';
 
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {
@@ -386,7 +386,7 @@ function getQueryFormInput($queryParameters)
             // Run the SQL to get the options
             $rsParameterOptions = RunQuery($qrp_OptionSQL);
 
-            $input .= '<select name="' . $qrp_Alias . '[]" class="form-control" size="10" multiple="multiple">';
+            $input .= '<select name="' . $qrp_Alias . '[]" class="form-select" size="10" multiple="multiple">';
             $input .= '<option disabled selected value> -- select an option -- </option>';
 
             while ($ThisRow = mysqli_fetch_array($rsParameterOptions)) {

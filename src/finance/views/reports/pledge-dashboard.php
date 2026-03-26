@@ -16,7 +16,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="mb-3 mb-0">
                 <label for="fyid" class="fw-bold"><?= gettext('Fiscal Year') ?></label>
                 <form method="GET" class="d-inline">
-                    <select name="fyid" id="fyid" class="form-control d-inline-block" style="width: auto;" onchange="this.form.submit();">
+                    <select name="fyid" id="fyid" class="form-select d-inline-block" style="width: auto;" onchange="this.form.submit();">
                         <?php foreach ($availableYears as $year): ?>
                             <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($year['label']) ?>
@@ -81,7 +81,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php $fundPercent = $fundTotal['total_pledged'] > 0 ? ($fundTotal['total_paid'] / $fundTotal['total_pledged']) * 100 : 0; ?>
                 <div class="col-xl-3 col-md-6 mb-3">
                     <div class="card finance-card shadow-sm border-0 h-100">
-                        <div class="card-header bg-info text-white py-2">
+                        <div class="card-status-top bg-info"></div>
+                        <div class="card-header py-2">
                             <h5 class="mb-0">
                                 <i class="fa-solid fa-donate me-1"></i>
                                 <?= InputUtils::escapeHTML($fundTotal['fund_name']) ?>
@@ -120,7 +121,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             <?php else: ?>
                 <div class="card finance-card shadow-sm border-0">
-                    <div class="card-header bg-primary text-white py-2">
+                    <div class="card-status-top bg-primary"></div>
+                    <div class="card-header py-2">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-handshake me-1"></i>
                             <?= gettext('Family Pledges') ?>
@@ -130,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="card-body p-0">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
-                                <thead class="table-light">
+                                <thead>
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>

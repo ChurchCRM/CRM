@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
                 <div class="mb-3">
                     <label for="user-locale-setting"><strong><?= _("Locale") ?></strong></label>
-                    <select id="user-locale-setting" class="form-control user-setting-select" data-setting-name="ui.locale" data-reload="true">
+                    <select id="user-locale-setting" class="form-select user-setting-select" data-setting-name="ui.locale" data-reload="true">
                     </select>
                     <small class="form-text text-muted"><?= _("Override system locale") ?>: <?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></small>
                 </div>
@@ -91,7 +91,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-body">
                 <div class="mb-3">
                     <label for="tablePageLength"><strong><?= _("Page length") ?></strong></label>
-                    <select id="tablePageLength" class="form-control user-setting-select" data-setting-name="ui.table.size">
+                    <select id="tablePageLength" class="form-select user-setting-select" data-setting-name="ui.table.size">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>

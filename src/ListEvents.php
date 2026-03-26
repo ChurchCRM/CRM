@@ -204,7 +204,7 @@ foreach ($allMonths as $mVal) {
   </div>
   <div class="card-body p-0" style="overflow: visible;">
     <div class="table-responsive" style="overflow: visible;">
-      <table class="table table-striped table-hover mb-0">
+      <table class="table table-hover mb-0">
         <thead>
           <tr>
             <th><?= gettext('Description') ?></th>

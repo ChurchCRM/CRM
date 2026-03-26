@@ -108,7 +108,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-                <table class="table table-striped table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+                <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
             </div>
         </div>
     </div>
@@ -119,7 +119,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
             <div class="card-body p-0">
                 <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-                <table class="table table-striped table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+                <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
             </div>
         </div>
     </div>

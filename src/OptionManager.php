@@ -380,7 +380,8 @@ if ($embedded) {
             ?>
 
             <div class="card mb-4">
-                <div class="card-header bg-success text-white">
+                <div class="card-status-top bg-success"></div>
+                <div class="card-header">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-plus"></i>
                         <?= gettext('Add New') . ' ' . $adjplusname ?>
@@ -423,7 +424,7 @@ if ($embedded) {
                 </div>
                 <div class="card-body" style="overflow: visible;">
                     <table class="table table-hover table-sm mb-0">
-                        <thead class="table-light">
+                        <thead>
                             <tr>
                                 <th style="width: 80px;"><?= gettext('Order') ?></th>
                                 <th><?= gettext('Name') ?></th>

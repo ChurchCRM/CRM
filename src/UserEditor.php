@@ -366,7 +366,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <tr>
                             <td><?= gettext('Person to Make User') ?>:</td>
                             <td>
-                                <select name="PersonID" size="30" id="personSelect" class="form-control">
+                                <select name="PersonID" size="30" id="personSelect" class="form-select">
                                     <?php
                                     // Loop through all the people
                                     while ($aRow = mysqli_fetch_array($rsPeople)) {

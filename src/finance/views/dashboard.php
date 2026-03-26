@@ -281,7 +281,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
             <!-- Recent Deposits -->
             <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-secondary text-white py-2 d-flex justify-content-between align-items-center">
+                <div class="card-status-top bg-secondary"></div>
+                <div class="card-header py-2 d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-clock-rotate-left"></i> <?= gettext('Recent Deposits') ?>
                     </h5>
@@ -293,7 +294,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <?php if ($recentDeposits->count() > 0): ?>
                     <div class="table-responsive">
                         <table class="table table-hover mb-0">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('ID') ?></th>
                                     <th><?= gettext('Date') ?></th>
@@ -400,7 +401,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
             <!-- Deposit Statistics -->
             <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-info text-white py-2">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-chart-pie"></i> <?= gettext('Deposit Statistics') ?>
                     </h5>

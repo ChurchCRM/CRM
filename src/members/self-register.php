@@ -18,7 +18,7 @@ use ChurchCRM\dto\SystemURLs;
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="families" class="table table-striped table-bordered data-table">
+                <table id="families" class="table table-bordered data-table">
                     <tbody></tbody>
                 </table>
                 </div>
@@ -35,7 +35,7 @@ use ChurchCRM\dto\SystemURLs;
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                <table id="people" class="table table-striped table-bordered data-table">
+                <table id="people" class="table table-bordered data-table">
                     <tbody></tbody>
                 </table>
                 </div>

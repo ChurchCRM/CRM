@@ -12,7 +12,8 @@ $hasOrphanedFiles = $orphanedCount > 0;
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header bg-danger text-white">
+            <div class="card-status-top bg-danger"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
                     <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files Management') ?>
                 </h3>
@@ -30,7 +31,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
                     </div>
 
                     <div class="mb-3">
-                        <button type="button" class="btn btn-danger btn-lg" id="deleteAllOrphanedFiles">
+                        <button type="button" class="btn btn-danger" id="deleteAllOrphanedFiles">
                             <i class="fa fa-trash me-2"></i><?= gettext('Delete All Orphaned Files') ?>
                         </button>
                         <button type="button" class="btn btn-secondary ms-2" id="refreshOrphanedFiles">

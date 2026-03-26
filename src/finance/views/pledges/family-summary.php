@@ -26,7 +26,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body">
                     <form method="GET" class="form-inline">
                         <label for="fyid" class="me-2"><?= gettext('Select Fiscal Year') ?>:</label>
-                        <select name="fyid" id="fyid" class="form-control me-3" onchange="this.form.submit();">
+                        <select name="fyid" id="fyid" class="form-select me-3" onchange="this.form.submit();">
                             <option value="">-- <?= gettext('select an option') ?> --</option>
                             <?php foreach ($availableYears as $year): ?>
                                 <option value="<?= $year['id'] ?>" <?= $year['id'] == $selectedFyid ? 'selected' : '' ?>>
@@ -58,7 +58,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="card-body p-0">
                         <div class="table-responsive">
-                            <table class="table table-striped table-hover mb-0">
+                            <table class="table table-hover mb-0">
                                 <thead class="bg-light">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>

@@ -304,7 +304,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
 ?>
 
     <b><?= gettext('Family Members') ?>:</b>
-    <table class="table table-striped w-100">
+    <table class="table w-100">
         <tr class="TableHeader">
             <td><?= gettext('Name') ?></td>
             <td><?= gettext('Gender') ?></td>
@@ -362,7 +362,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
     if (mysqli_num_rows($rsAssignedGroups) === 0) {
         echo '<p align"center">' . gettext('No group assignments.') . '</p>';
     } else {
-        echo '<table class="table table-striped w-100">';
+        echo '<table class="table w-100">';
         echo '<tr class="TableHeader">';
         echo '<td width="15%"><b>' . gettext('Group Name') . '</b>';
         echo '<td><b>' . gettext('Role') . '</b></td>';
@@ -428,7 +428,7 @@ require_once __DIR__ . '/Include/Header-Short.php';
     if (mysqli_num_rows($rsAssignedProperties) === 0) {
         echo '<p align"center">' . gettext('No property assignments.') . '</p>';
     } else {
-        echo '<table class="table table-striped w-100">';
+        echo '<table class="table w-100">';
         echo '<tr class="TableHeader">';
         echo '<td width="25%" class="align-top"><b>' . gettext('Name') . '</b>';
         echo '<td class="align-top"><b>' . gettext('Value') . '</td>';

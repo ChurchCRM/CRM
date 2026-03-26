@@ -202,7 +202,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                         <div class="mb-3">
                             <label><?= gettext('Donor'); ?>:</label>
-                            <select name="Donor" id="Donor" class="form-control">
+                            <select name="Donor" id="Donor" class="form-select">
                                 <option value="0" selected><?= gettext('Unassigned') ?></option>
                                 <?php
                                 $rsPeople = RunQuery($sPeopleSQL);
@@ -254,7 +254,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 echo gettext('Multiple');
                             } else {
                                 ?>
-                                <select name="Buyer" class="form-control">
+                                <select name="Buyer" class="form-select">
                                     <option value="0" selected><?= gettext('Unassigned') ?></option>
                                 <?php
                                 $rsBuyers = RunQuery($sPaddleSQL);

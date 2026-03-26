@@ -267,7 +267,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                             echo '<p><?= gettext("No member properties have been created")?></p>';
                         } else {
                             ?>
-                            <table class="table table-striped w-100">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th><?= gettext('Type') ?></th>
@@ -303,7 +303,7 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
                     } else {
                         // Display table of properties
                         ?>
-                            <table class="table table-striped w-100">
+                            <table class="table w-100">
                                 <thead>
                                 <tr>
                                     <th width="15%" class="align-top"><b><?= gettext('Type') ?></b></th>
@@ -406,14 +406,14 @@ while (list($per_CellPhone) = mysqli_fetch_row($rsPhoneList)) {
             <div class="mb-3 row align-items-center">
                 <label for="addGroupMember" class="col-auto col-form-label"><?= gettext('Add Group Member') . ': ' ?></label>
                 <div class="col-md-4">
-                    <select id="addGroupMember" class="form-control personSearch" name="addGroupMember">
+                    <select id="addGroupMember" class="form-select personSearch" name="addGroupMember">
                     </select>
                 </div>
             </div>
         </form>
         <!-- START GROUP MEMBERS LISTING  -->
         <div style="overflow: visible;">
-            <table class="table table-striped table-hover table-sm" id="membersTable">
+            <table class="table table-hover table-sm" id="membersTable">
             </table>
         </div>
     </div>

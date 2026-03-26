@@ -158,7 +158,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                     <?php endif; ?>
                                 </div>
                             <?php elseif ($settingType === 'select' && !empty($setting['options'])): ?>
-                                <select class="form-control plugin-setting"
+                                <select class="form-select plugin-setting"
                                         id="<?= $pluginId ?>-<?= $settingKey ?>"
                                         data-setting-key="<?= $settingKey ?>"
                                         data-config-key="<?= $configKey ?>">

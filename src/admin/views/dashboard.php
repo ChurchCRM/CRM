@@ -79,7 +79,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
 
                 <div class="card border-success mb-0">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-status-top bg-success"></div>
+                    <div class="card-header">
                         <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples:') ?></h6>
                     </div>
                     <div class="card-body bg-white">
@@ -151,11 +152,12 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
             <!-- Setup Progress Card -->
             <?php if (!$allDone): ?>
             <div class="card shadow-sm border-0 mb-4 setup-progress-card">
-                <div class="card-header bg-primary text-white py-2 d-flex align-items-center justify-content-between">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2 d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-list-check me-1"></i> <?= gettext('Setup Progress') ?>
                     </h5>
-                    <small class="text-white-50"><?= $completedSteps ?>/<?= $totalSteps ?> <?= gettext('complete') ?></small>
+                    <small class="text-secondary"><?= $completedSteps ?>/<?= $totalSteps ?> <?= gettext('complete') ?></small>
                 </div>
                 <div class="card-body p-0">
                     <!-- Progress bar -->
@@ -200,7 +202,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- Quick Start Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-rocket"></i> <?= gettext('Quick Start') ?>
                     </h5>
@@ -283,7 +286,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- Advanced Operations -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-secondary text-white py-2">
+                <div class="card-status-top bg-secondary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-tools"></i> <?= gettext('Advanced Operations') ?>
                     </h5>
@@ -332,7 +336,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- Register Your Church Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-handshake"></i> <?= gettext('Register Your Church') ?>
                     </h5>
@@ -349,7 +354,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- System Info Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-info text-white py-2">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-circle-info"></i> <?= gettext('System Info') ?>
                     </h5>
@@ -377,7 +383,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header <?= $healthStatus ? 'bg-success' : 'bg-warning' ?> text-white py-2">
+                <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
                     </h5>

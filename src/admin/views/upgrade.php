@@ -10,7 +10,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-12">
         <!-- Version Information Card -->
         <div class="card mb-3">
-            <div class="card-header bg-primary text-white">
+            <div class="card-status-top bg-primary"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
                     <i class="fa fa-circle-info me-2"></i><?= gettext('Version Information') ?>
                 </h3>
@@ -92,7 +93,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $integrityPassed = !$hasIntegrityIssues;
         ?>
         <div class="card mb-3">
-            <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
+            <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
                     <i class="fa fa-shield-alt me-2"></i><?= gettext('File Integrity Check') ?>
                     <?php if ($hasIntegrityIssues): ?>
@@ -136,8 +138,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </h6>
                         <div id="collapseModifiedFiles" class="collapse mb-3">
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped mb-0">
-                                    <thead class="table-light">
+                                <table class="table table-sm mb-0">
+                                    <thead>
                                         <tr>
                                             <th><?= gettext('File Name') ?></th>
                                         </tr>
@@ -163,8 +165,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </h6>
                         <div id="collapseMissingFilesCard" class="collapse mb-3">
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped mb-0">
-                                    <thead class="table-light">
+                                <table class="table table-sm mb-0">
+                                    <thead>
                                         <tr>
                                             <th><?= gettext('File Name') ?></th>
                                         </tr>
@@ -295,7 +297,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-sm table-bordered mb-0">
-                                                            <thead class="table-light">
+                                                            <thead>
                                                                 <tr>
                                                                     <th><?= gettext('File Name') ?></th>
                                                                     <th><?= gettext('Expected Hash') ?></th>
@@ -332,7 +334,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-sm table-bordered mb-0">
-                                                            <thead class="table-light">
+                                                            <thead>
                                                                 <tr>
                                                                     <th><?= gettext('File Name') ?></th>
                                                                     <th><?= gettext('Expected Hash') ?></th>
@@ -368,7 +370,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </div>
                                 
                                 <div class="card mt-3">
-                                    <div class="card-header bg-danger text-white" id="headingOrphanedFiles">
+                                    <div class="card-status-top bg-danger"></div>
+                                    <div class="card-header" id="headingOrphanedFiles">
                                         <h6 class="mb-0">
                                             <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" 
                                                     data-bs-target="#collapseOrphanedFiles" aria-expanded="false" 
@@ -382,7 +385,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-sm table-bordered mb-0">
-                                                    <thead class="table-light">
+                                                    <thead>
                                                         <tr>
                                                             <th><?= gettext('File Path') ?></th>
                                                         </tr>
@@ -416,7 +419,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <?php endif; ?>
                             
                             <div class="mt-3">
-                                <button class="btn btn-primary btn-lg" id="acceptWarnings">
+                                <button class="btn btn-primary" id="acceptWarnings">
                                     <?php if ($hasWarnings): ?>
                                         <?= gettext('I Understand - Continue') ?> <i class="fa fa-arrow-right ms-2"></i>
                                     <?php else: ?>
@@ -484,7 +487,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div id="applyStatus"></div>
                             
                             <div class="mt-3 d-none" id="applyButtonContainer">
-                                <button class="btn btn-danger btn-lg" id="applyUpdate">
+                                <button class="btn btn-danger" id="applyUpdate">
                                     <i class="fa fa-cog me-2"></i><?= gettext('Apply Update Now') ?>
                                 </button>
                             </div>

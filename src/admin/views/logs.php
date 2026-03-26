@@ -190,7 +190,7 @@ $currentLevelLabel = $logLevelMap[$currentLogLevel] ?? 'INFO';
                 </div>
                 <div class="mb-3">
                     <label><?= gettext('Number of lines to display:') ?></label>
-                    <select class="form-control form-control-sm" id="logLinesLimit" style="width: auto; display: inline-block;">
+                    <select class="form-select form-select-sm" id="logLinesLimit" style="width: auto; display: inline-block;">
                         <option value="50">50</option>
                         <option value="100" selected>100</option>
                         <option value="500">500</option>

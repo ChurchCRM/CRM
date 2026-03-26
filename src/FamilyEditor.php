@@ -648,7 +648,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div id="stateOptionDiv" class="mb-3 col-md-3">
                     <label for="State"><?= gettext('State') ?>:</label>
-                    <select id="State" name="State" class="form-control" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-select" data-user-selected="<?= $sState ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -665,7 +665,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
-                    <select id="Country" name="Country" class="form-control" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= $sCountry ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>
@@ -808,8 +808,8 @@ require_once __DIR__ . '/Include/Header.php';
                                 </div>
                                 <?php } ?>
                                 <div class="table-responsive">
-                                    <table class="table table-striped table-hover">
-                                        <thead class="table-light">
+                                    <table class="table table-hover">
+                                        <thead>
                                             <tr class="text-center">
                                                 <th><?= gettext('First') ?></th>
                                                 <th><?= gettext('Middle') ?></th>
@@ -859,14 +859,14 @@ require_once __DIR__ . '/Include/Header.php';
                                                     <input name="Suffix<?= $iCount ?>" type="text" value="<?= $aSuffix[$iCount] ?>" class="form-control form-control-sm" style="width: 60px;">
                                                 </td>
                                                 <td>
-                                                    <select name="Gender<?= $iCount ?>" class="form-control form-control-sm">
+                                                    <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0" <?= $aGenders[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Gender') ?></option>
                                                         <option value="1" <?= $aGenders[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('Male') ?></option>
                                                         <option value="2" <?= $aGenders[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('Female') ?></option>
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="Role<?= $iCount ?>" class="form-control form-control-sm">
+                                                    <select name="Role<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0" <?= $aRoles[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Role') ?></option>
                                                         <?php
                                                         //Build the role select box
@@ -880,7 +880,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="BirthMonth<?= $iCount ?>" class="form-control form-control-sm">
+                                                    <select name="BirthMonth<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0" <?= $aBirthMonths[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unknown') ?></option>
                                                         <option value="01" <?= $aBirthMonths[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('January') ?></option>
                                                         <option value="02" <?= $aBirthMonths[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('February') ?></option>
@@ -897,7 +897,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select name="BirthDay<?= $iCount ?>" class="form-control form-control-sm">
+                                                    <select name="BirthDay<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0"><?= gettext('Unk') ?></option>
                                                         <?php for ($x = 1; $x < 32; $x++) {
                                                             $sDay = $x < 10 ? '0' . $x : $x;
@@ -918,7 +918,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     } ?>
                                                 </td>
                                                 <td>
-                                                    <select name="Classification<?= $iCount ?>" class="form-control form-control-sm">
+                                                    <select name="Classification<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0" <?= $aClassification[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unassigned') ?></option>
                                                         <option value="" disabled>-----------------------</option>
                                                         <?php

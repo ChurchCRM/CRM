@@ -84,7 +84,7 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="card-body">
     <p class="lead"><?= gettext('Please confirm removal of this property from this') . ' ' . $sTypeName ?>:</p>
 
-    <table class="table table-striped mb-4">
+    <table class="table mb-4">
         <tr>
             <td class="fw-bold"><?= $sTypeName ?>:</td>
             <td><?= InputUtils::escapeHTML($sName) ?></td>

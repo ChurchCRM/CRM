@@ -121,7 +121,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       }
       
       var html = '<div class="d-flex align-items-center">';
-      html += '<select class="assignmentMenu form-control form-control-sm me-2" data-kioskid="' + data.Id + '">' + options + '</select>';
+      html += '<select class="assignmentMenu form-select form-select-sm me-2" data-kioskid="' + data.Id + '">' + options + '</select>';
       
       // Add edit link if an event is assigned
       if (currentEventId) {

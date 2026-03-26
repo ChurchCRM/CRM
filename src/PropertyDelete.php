@@ -36,7 +36,8 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row justify-content-center mt-2">
     <div class="col-md-6">
             <div class="card border-danger">
-                <div class="card-header bg-danger text-white">
+                <div class="card-status-top bg-danger"></div>
+                <div class="card-header">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-triangle-exclamation"></i>
                         <?= gettext('Confirm Property Deletion') ?>

@@ -189,7 +189,7 @@ require_once __DIR__ . '/Include/Header.php';
                  LEFT JOIN donationfund_fun b ON plg_fundID = b.fun_ID
                  WHERE plg_famID = ' . $iFamilyID . ' ORDER BY pledge_plg.plg_date';
             $rsPledges = RunQuery($sSQL); ?>
-            <table class="table table-striped w-100">
+            <table class="table w-100">
                 <tr class="TableHeader">
                     <td><?= gettext('Type') ?></td>
                     <td><?= gettext('Fund') ?></td>

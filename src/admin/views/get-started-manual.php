@@ -11,7 +11,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Welcome message -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-success text-white py-2">
+                <div class="card-status-top bg-success"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-circle-info"></i> <?= gettext('Recommended Order') ?>
                     </h5>
@@ -55,7 +56,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Quick Tips -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-info text-white py-2">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-lightbulb"></i> <?= gettext('Quick Tips') ?>
                     </h5>
@@ -114,7 +116,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <!-- Sidebar hint -->
         <div class="col-lg-4">
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-secondary text-white py-2">
+                <div class="card-status-top bg-secondary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-circle-question"></i> <?= gettext('Family vs Person') ?>
                     </h5>

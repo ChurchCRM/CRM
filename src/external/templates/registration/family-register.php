@@ -98,7 +98,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="familyCountry"><?= gettext('Country') ?></label>
-                                <select id="familyCountry" name="familyCountry" class="form-control" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                                <select id="familyCountry" name="familyCountry" class="form-select" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
                                 </select>
                             </div>
                         </div>
@@ -123,7 +123,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="mb-3 mt-4 mb-0">
-                            <button type="button" class="btn btn-primary btn-lg" id="family-info-next">
+                            <button type="button" class="btn btn-primary" id="family-info-next">
                                 <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
                             </button>
                         </div>
@@ -176,7 +176,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                     <div class="row">
                                         <div class="mb-3 col-md-6">
                                             <label><?= gettext('Role in Family') ?></label>
-                                            <select class="form-control member-role">
+                                            <select class="form-select member-role">
                                                 <?php foreach ($familyRoles as $role) { ?>
                                                     <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
                                                 <?php } ?>
@@ -184,7 +184,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                         </div>
                                         <div class="mb-3 col-md-6">
                                             <label><?= gettext('Gender') ?></label>
-                                            <select class="form-control member-gender">
+                                            <select class="form-select member-gender">
                                                 <option value="1"><?= gettext('Male') ?></option>
                                                 <option value="2"><?= gettext('Female') ?></option>
                                             </select>
@@ -217,7 +217,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                         </div>
                                         <div class="mb-3 col-md-6">
                                             <label><?= gettext('Phone Type') ?></label>
-                                            <select class="form-control member-phone-type">
+                                            <select class="form-select member-phone-type">
                                                 <option value="mobile"><?= gettext('Mobile') ?></option>
                                                 <option value="home"><?= gettext('Home') ?></option>
                                             </select>
@@ -248,7 +248,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 
                         <!-- Add member button -->
                         <div class="mb-4">
-                            <button type="button" class="btn btn-success btn-lg" id="add-member-btn">
+                            <button type="button" class="btn btn-success" id="add-member-btn">
                                 <i class="fa-solid fa-plus me-2"></i><?= gettext('Add Family Member') ?>
                             </button>
                         </div>
@@ -258,10 +258,10 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="mb-3 mt-4 mb-0">
-                            <button type="button" class="btn btn-secondary btn-lg me-2" id="members-previous">
+                            <button type="button" class="btn btn-secondary me-2" id="members-previous">
                                 <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
-                            <button type="button" class="btn btn-primary btn-lg" id="members-next">
+                            <button type="button" class="btn btn-primary" id="members-next">
                                 <?= gettext('Next') ?> <i class="fa-solid fa-arrow-right ms-2"></i>
                             </button>
                         </div>
@@ -273,7 +273,8 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header bg-primary text-white">
+                            <div class="card-status-top bg-primary"></div>
+                            <div class="card-header">
                                 <h5 class="mb-0"><i class="fa-solid fa-home me-2"></i><span id="displayFamilyName"></span> <?= gettext("Family") ?></h5>
                             </div>
                             <div class="card-body">
@@ -295,14 +296,15 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="card">
-                            <div class="card-header bg-secondary text-white">
+                            <div class="card-status-top bg-secondary"></div>
+                            <div class="card-header">
                                 <h5 class="mb-0"><i class="fa-solid fa-users me-2"></i><?= gettext("Family Members") ?></h5>
                             </div>
                             <div class="card-body p-0">
                                 <!-- Desktop/table view (md and up) -->
                                 <div class="table-responsive d-none d-md-block">
-                                    <table class="table table-striped table-hover mb-0">
-                                        <thead class="table-light">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
                                             <tr>
                                                 <th><?= gettext("First Name") ?></th>
                                                 <th><?= gettext("Last Name") ?></th>
@@ -370,10 +372,10 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         </div>
 
                         <div class="mb-3 mt-4 mb-0">
-                            <button type="button" class="btn btn-secondary btn-lg me-2" id="review-previous">
+                            <button type="button" class="btn btn-secondary me-2" id="review-previous">
                                 <i class="fa-solid fa-arrow-left me-2"></i><?= gettext('Previous') ?>
                             </button>
-                            <button type="button" class="btn btn-success btn-lg" id="submit-registration">
+                            <button type="button" class="btn btn-success" id="submit-registration">
                                 <i class="fa-solid fa-circle-check me-2"></i><?= gettext('Submit Registration') ?>
                             </button>
                         </div>

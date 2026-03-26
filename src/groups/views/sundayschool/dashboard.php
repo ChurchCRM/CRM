@@ -145,7 +145,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="card-body" style="overflow: visible;">
-        <table id="sundayschoolClasses" class="table table-striped table-bordered data-table w-100">
+        <table id="sundayschoolClasses" class="table table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('Class') ?></th>
@@ -224,7 +224,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
     <div class="card-body" style="overflow: visible;">
-        <table id="sundayschoolMissing" class="table table-striped table-bordered data-table w-100">
+        <table id="sundayschoolMissing" class="table table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('First Name') ?></th>
