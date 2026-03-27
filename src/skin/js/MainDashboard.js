@@ -190,11 +190,23 @@ export function initializeMainDashboard() {
     ajax: {
       url: window.CRM.root + "/api/persons/birthday",
       dataSrc: function (json) {
-        // Hide card if no data
         if (!json.people || json.people.length === 0) {
-          $("#birthdayCard").hide();
+          $("#PersonBirthdayDashboardItem")
+            .closest(".card-body")
+            .html(
+              '<div class="empty py-4">' +
+                '<div class="empty-icon"><i class="fa-solid fa-cake-candles fa-2x text-muted"></i></div>' +
+                '<p class="empty-title">' +
+                i18next.t("No Birthdays") +
+                "</p>" +
+                '<p class="empty-subtitle text-muted">' +
+                i18next.t("No birthdays in the past or next 7 days") +
+                "</p>" +
+                "</div>",
+            );
+          return [];
         }
-        return json.people || [];
+        return json.people;
       },
     },
     columns: [
@@ -298,11 +310,23 @@ export function initializeMainDashboard() {
     ajax: {
       url: window.CRM.root + "/api/families/anniversaries",
       dataSrc: function (json) {
-        // Hide card if no data
         if (!json.families || json.families.length === 0) {
-          $("#anniversaryCard").hide();
+          $("#FamiliesWithAnniversariesDashboardItem")
+            .closest(".card-body")
+            .html(
+              '<div class="empty py-4">' +
+                '<div class="empty-icon"><i class="fa-solid fa-heart fa-2x text-muted"></i></div>' +
+                '<p class="empty-title">' +
+                i18next.t("No Anniversaries") +
+                "</p>" +
+                '<p class="empty-subtitle text-muted">' +
+                i18next.t("No anniversaries in the past or next 7 days") +
+                "</p>" +
+                "</div>",
+            );
+          return [];
         }
-        return json.families || [];
+        return json.families;
       },
     },
     columns: [
@@ -574,9 +598,18 @@ export function initializeMainDashboard() {
     }).done(function (data) {
       let lineDataRaw = data;
 
-      // Hide the card if there's no deposit data
       if (!lineDataRaw || lineDataRaw.length === 0) {
-        $("#depositChartRow").hide();
+        $("#depositChartRow .card-body").html(
+          '<div class="empty py-4">' +
+            '<div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
+            '<p class="empty-title">' +
+            i18next.t("No Deposits") +
+            "</p>" +
+            '<p class="empty-subtitle text-muted">' +
+            i18next.t("No deposit data available yet") +
+            "</p>" +
+            "</div>",
+        );
         return;
       }
 

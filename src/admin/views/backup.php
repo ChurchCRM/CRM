@@ -15,38 +15,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Best Practices Card -->
-<div class="card">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-lightbulb me-2"></i><?= gettext('Backup Best Practices') ?></h3>
-        <div class="card-tools ms-auto">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                <i class="fa-solid fa-minus"></i>
-            </button>
-        </div>
+<div class="card mb-3">
+    <div class="card-header">
+        <h3 class="card-title"><i class="ti ti-bulb me-2"></i><?= gettext('Backup Best Practices') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
             <div class="col-md-4">
-                <div class="card-sm">
+                <div class="card card-sm">
                     <div class="card-body">
-                        <h3 class="card-title text-info"><i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Regular Backups') ?></h3>
-                        <p class="text-muted"><?= gettext('Make a backup at least once a week unless you have automated backups.') ?></p>
+                        <h3 class="card-title text-info"><i class="ti ti-calendar-check me-2"></i><?= gettext('Regular Backups') ?></h3>
+                        <p class="text-secondary"><?= gettext('Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule.') ?></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card-sm">
+                <div class="card card-sm">
                     <div class="card-body">
-                        <h3 class="card-title text-warning"><i class="fa-solid fa-copy me-2"></i><?= gettext('Multiple Copies') ?></h3>
-                        <p class="text-muted"><?= gettext('Keep one copy in a fire-proof safe on-site and another off-site.') ?></p>
+                        <h3 class="card-title text-warning"><i class="ti ti-copy me-2"></i><?= gettext('Multiple Copies') ?></h3>
+                        <p class="text-secondary"><?= gettext('Keep one copy in a fire-proof safe on-site and another off-site.') ?></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card-sm">
+                <div class="card card-sm">
                     <div class="card-body">
-                        <h3 class="card-title text-danger"><i class="fa-solid fa-lock me-2"></i><?= gettext('Encryption') ?></h3>
-                        <p class="text-muted"><?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?></p>
+                        <h3 class="card-title text-danger"><i class="ti ti-lock me-2"></i><?= gettext('Encryption') ?></h3>
+                        <p class="text-secondary"><?= gettext('Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site.') ?></p>
                     </div>
                 </div>
             </div>
@@ -55,110 +50,123 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 </div>
 
 <!-- Backup Form Card -->
-<div class="card">
+<div class="card mb-3">
+    <div class="card-status-top bg-primary"></div>
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><i class="fa-solid fa-database me-2"></i><?= gettext('Create Backup') ?></h3>
+        <h3 class="card-title"><i class="ti ti-database me-2"></i><?= gettext('Create Backup') ?></h3>
     </div>
-    <div class="card-body">
-        <form method="post" action="<?= SystemURLs::getRootPath() ?>/api/database/backup" id="BackupDatabase">
+    <form method="post" action="<?= SystemURLs::getRootPath() ?>/api/database/backup" id="BackupDatabase">
+        <div class="card-body">
             <!-- Backup Type Selection -->
             <div class="mb-3">
-                <label><?= gettext('Backup Type') ?></label>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" id="archiveType2" name="archiveType" value="2" class="form-check-input" checked>
-                            <label class="form-check-label" for="archiveType2">
-                                <i class="fa-solid fa-file-code me-1"></i><?= gettext('Database Only') ?>
-                                <span class="badge bg-light text-dark">.sql</span>
-                            </label>
+                <label class="form-label"><?= gettext('Backup Type') ?></label>
+                <div class="form-selectgroup form-selectgroup-boxes d-flex flex-column flex-md-row gap-3">
+                    <label class="form-selectgroup-item flex-fill">
+                        <input type="radio" id="archiveType2" name="archiveType" value="2" class="form-selectgroup-input" checked>
+                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                            <div class="me-3">
+                                <i class="ti ti-file-code" style="font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <strong><?= gettext('Database Only') ?></strong>
+                                <span class="badge bg-light text-dark ms-1">.sql</span>
+                                <div class="text-secondary small"><?= gettext('Exports database structure and data. Smaller file size.') ?></div>
+                            </div>
                         </div>
-                        <small class="form-text text-muted d-block mt-1">
-                            <?= gettext('Exports database structure and data. Smaller file size.') ?>
-                        </small>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-check-input">
-                            <label class="form-check-label" for="archiveType3">
-                                <i class="fa-solid fa-file-archive me-1"></i><?= gettext('Full Backup') ?>
-                                <span class="badge bg-light text-dark">.tar.gz</span>
-                            </label>
+                    </label>
+                    <label class="form-selectgroup-item flex-fill">
+                        <input type="radio" id="archiveType3" name="archiveType" value="3" class="form-selectgroup-input">
+                        <div class="form-selectgroup-label d-flex align-items-center p-3">
+                            <div class="me-3">
+                                <i class="ti ti-file-zip" style="font-size: 1.5rem;"></i>
+                            </div>
+                            <div>
+                                <strong><?= gettext('Full Backup') ?></strong>
+                                <span class="badge bg-light text-dark ms-1">.tar.gz</span>
+                                <div class="text-secondary small"><?= gettext('Includes database and all uploaded photos. Larger file size.') ?></div>
+                            </div>
                         </div>
-                        <small class="form-text text-muted d-block mt-1">
-                            <?= gettext('Includes database and all uploaded photos. Larger file size.') ?>
-                        </small>
-                    </div>
+                    </label>
                 </div>
             </div>
-
-            <hr>
-
-            <!-- Action Buttons -->
+        </div>
+        <div class="card-footer">
             <div class="row">
                 <div class="col-md-6 mb-2">
                     <button type="button" class="btn btn-primary w-100" id="doBackup">
-                        <i class="fa-solid fa-download me-2"></i><?= gettext('Generate & Download Backup') ?>
+                        <i class="ti ti-download me-2"></i><?= gettext('Generate & Download Backup') ?>
                     </button>
                 </div>
                 <div class="col-md-6 mb-2">
                     <?php if ($externalBackupEnabled && $externalBackupConfigured): ?>
                         <button type="button" class="btn btn-outline-secondary w-100" id="doRemoteBackup">
-                            <i class="fa-solid fa-cloud-upload-alt me-2"></i><?= gettext('Backup to External Storage') ?>
+                            <i class="ti ti-cloud-upload me-2"></i><?= gettext('Backup to External Storage Now') ?>
                         </button>
+                        <small class="form-text text-secondary d-block text-center mt-1">
+                            <?= gettext('Also runs automatically via WebDAV based on your configured interval.') ?>
+                        </small>
                     <?php elseif ($externalBackupEnabled && !$externalBackupConfigured): ?>
                         <a href="<?= SystemURLs::getRootPath() ?>/plugins/external-backup/settings" class="btn btn-outline-warning w-100">
-                            <i class="fa-solid fa-cog me-2"></i><?= gettext('Configure External Backup') ?>
+                            <i class="ti ti-settings me-2"></i><?= gettext('Configure External Backup') ?>
                         </a>
-                        <small class="form-text text-muted text-center">
-                            <?= gettext('External Backup plugin is enabled but not configured.') ?>
+                        <small class="form-text text-secondary d-block text-center mt-1">
+                            <?= gettext('Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval.') ?>
                         </small>
                     <?php else: ?>
                         <a href="<?= SystemURLs::getRootPath() ?>/plugins/management" class="btn btn-outline-info w-100">
-                            <i class="fa-solid fa-plug me-2"></i><?= gettext('Enable External Backup Plugin') ?>
+                            <i class="ti ti-plug me-2"></i><?= gettext('Enable External Backup Plugin') ?>
                         </a>
-                        <small class="form-text text-muted text-center">
-                            <?= gettext('Enable the External Backup plugin for WebDAV cloud storage.') ?>
+                        <small class="form-text text-secondary d-block text-center mt-1">
+                            <?= gettext('Backs up to WebDAV cloud storage automatically on a configurable interval.') ?>
                         </small>
                     <?php endif; ?>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 </div>
 
 <!-- Backup Status Card -->
-<div class="card" id="statusCard">
+<div class="card mb-3" id="statusCard">
     <div class="card-header" id="statusHeader">
-        <h3 class="card-title"><i class="fa-solid fa-tasks me-2"></i><?= gettext('Backup Status') ?></h3>
+        <h3 class="card-title"><i class="ti ti-list-check me-2"></i><?= gettext('Backup Status') ?></h3>
     </div>
     <div class="card-body">
         <div id="statusIdle">
-            <div class="text-center text-muted py-4">
-                <i class="fa-solid fa-cloud-download-alt fa-3x mb-3"></i>
-                <p class="mb-0"><?= gettext('Ready to create a backup. Select your options above and click a backup button.') ?></p>
+            <div class="empty py-4">
+                <div class="empty-icon">
+                    <i class="ti ti-cloud-download" style="font-size: 2.5rem;"></i>
+                </div>
+                <p class="empty-title"><?= gettext('Ready to back up') ?></p>
+                <p class="empty-subtitle text-secondary"><?= gettext('Select your options above and click a backup button.') ?></p>
             </div>
         </div>
         <div id="statusRunning" class="d-none">
-            <div class="text-center py-4">
-                <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
-                    <span class="visually-hidden"><?= gettext('Loading...') ?></span>
+            <div class="empty py-4">
+                <div class="empty-icon">
+                    <div class="spinner-border text-primary" role="status" style="width: 2.5rem; height: 2.5rem;">
+                        <span class="visually-hidden"><?= gettext('Loading...') ?></span>
+                    </div>
                 </div>
-                <p class="mb-0 text-primary fw-bold"><?= gettext('Backup in progress, please wait...') ?></p>
-                <small class="text-muted"><?= gettext('This may take a few minutes for large databases.') ?></small>
+                <p class="empty-title text-primary"><?= gettext('Backup in progress, please wait...') ?></p>
+                <p class="empty-subtitle text-secondary"><?= gettext('This may take a few minutes for large databases.') ?></p>
             </div>
         </div>
         <div id="statusComplete" class="d-none">
-            <div class="text-center py-4">
-                <i class="fa-solid fa-circle-check fa-3x text-success mb-3"></i>
-                <p class="mb-2 text-success fw-bold" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
+            <div class="empty py-4">
+                <div class="empty-icon">
+                    <i class="ti ti-circle-check text-success" style="font-size: 2.5rem;"></i>
+                </div>
+                <p class="empty-title text-success" id="statusCompleteMessage"><?= gettext('Backup completed successfully!') ?></p>
                 <div id="resultFiles" class="mt-3"></div>
             </div>
         </div>
         <div id="statusError" class="d-none">
-            <div class="text-center py-4">
-                <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
-                <p class="mb-0 text-danger fw-bold"><?= gettext('Backup failed. Please try again.') ?></p>
+            <div class="empty py-4">
+                <div class="empty-icon">
+                    <i class="ti ti-circle-x text-danger" style="font-size: 2.5rem;"></i>
+                </div>
+                <p class="empty-title text-danger"><?= gettext('Backup failed. Please try again.') ?></p>
             </div>
         </div>
     </div>
