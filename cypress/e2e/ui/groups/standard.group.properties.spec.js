@@ -12,8 +12,10 @@
 describe("UI: Group Property Assignment (/groups/view/{id})", () => {
     const groupID = 1;
 
+    // Force fresh login every time — API cy.request() calls in some tests
+    // create PHP sessions that invalidate the cached session cookie.
     beforeEach(() => {
-        cy.setupAdminSession();
+        cy.setupAdminSession({ forceLogin: true });
     });
 
     it("loads GroupView and shows the Properties sidebar card", () => {
@@ -24,13 +26,11 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
     describe("Assign a property to a group", () => {
         it("shows the assign select and button when group properties exist", () => {
             cy.visit(`/groups/view/${groupID}`);
-            // Either the select is shown (properties available) or a no-properties message
             cy.get("body").then(($body) => {
                 if ($body.find("#group-property-select").length) {
                     cy.get("#group-property-select").should("be.visible");
                     cy.get("#assign-group-property-btn").should("be.visible");
                 } else {
-                    // All properties already assigned — that's a valid state
                     cy.log("All group properties already assigned — skipping assign test");
                 }
             });
@@ -44,8 +44,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
                 null,
                 200
             ).then((assignedResp) => {
-                // Remove all current assignments
-                const removals = assignedResp.body.map((p) =>
+                assignedResp.body.forEach((p) =>
                     cy.makePrivateAdminAPICall(
                         "DELETE",
                         `/api/groups/${groupID}/properties/${p.id}`,
@@ -69,12 +68,11 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
                     }
                     const propertyId = noprompt.ProId ?? noprompt.pro_ID;
 
-                    // Re-establish browser session after API calls (cy.request sets PHP cookies)
+                    // Re-establish session after API calls polluted cookies
                     cy.setupAdminSession({ forceLogin: true });
                     cy.visit(`/groups/view/${groupID}`);
                     cy.get("#group-property-select").select(String(propertyId));
                     cy.get("#assign-group-property-btn").click();
-                    // Page should reload and show the assigned property name
                     cy.contains(noprompt.ProName ?? noprompt.pro_Name).should("be.visible");
                 });
             });
@@ -82,80 +80,103 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
     });
 
     describe("Remove an assigned property", () => {
-        let testPropertyId = null;
-
-        before(() => {
-            // Establish session first — API cy.request() calls create PHP sessions
-            // that can overwrite browser cookies
-            cy.setupAdminSession();
-            // Ensure at least one property is assigned before the suite runs
-            cy.makePrivateAdminAPICall(
-                "GET",
-                "/api/groups/properties",
-                null,
-                200
-            ).then((resp) => {
-                if (resp.body.length === 0) return;
-                testPropertyId = resp.body[0].ProId ?? resp.body[0].pro_ID;
-                cy.makePrivateAdminAPICall(
-                    "POST",
-                    `/api/groups/${groupID}/properties/${testPropertyId}`,
-                    {},
-                    200
-                );
-            });
-        });
-
-        it("shows a Remove button for assigned properties", function () {
-            if (!testPropertyId) this.skip();
-
-            cy.visit(`/groups/view/${groupID}`);
-            cy.get(".remove-group-property-btn").should("have.length.gte", 1);
-        });
-
-        it("clicking Remove opens a bootbox confirm dialog", function () {
-            if (!testPropertyId) this.skip();
-
-            cy.visit(`/groups/view/${groupID}`);
-            cy.waitForLocales();
-            cy.get(".remove-group-property-btn").first().click();
-            cy.get(".bootbox").should("be.visible");
-            // Cancel — do not actually remove
-            cy.get(".bootbox .btn-secondary").click();
-            cy.get(".bootbox").should("not.exist");
-        });
-
-        it("confirming Remove calls DELETE API and reloads page", function () {
-            if (!testPropertyId) this.skip();
-
-            cy.visit(`/groups/view/${groupID}`);
-            cy.waitForLocales();
-
-            // Get property name before removal
-            cy.get(".remove-group-property-btn")
-                .first()
-                .then(($btn) => {
-                    const name = $btn.data("pro-name");
-
-                    cy.intercept("DELETE", `/api/groups/${groupID}/properties/*`).as(
-                        "removeProperty"
+        it("shows a Remove button for assigned properties", () => {
+            // Ensure at least one property is assigned via API, then visit
+            cy.makePrivateAdminAPICall("GET", "/api/groups/properties", null, 200).then(
+                (resp) => {
+                    if (resp.body.length === 0) {
+                        cy.log("No group property definitions — skipping");
+                        return;
+                    }
+                    const propId = resp.body[0].ProId ?? resp.body[0].pro_ID;
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/groups/${groupID}/properties/${propId}`,
+                        {},
+                        200
                     );
 
-                    $btn.trigger("click");
+                    cy.setupAdminSession({ forceLogin: true });
+                    cy.visit(`/groups/view/${groupID}`);
+                    cy.get(".remove-group-property-btn").should("have.length.gte", 1);
+                }
+            );
+        });
+
+        it("clicking Remove opens a bootbox confirm dialog", () => {
+            // Ensure a property is assigned
+            cy.makePrivateAdminAPICall("GET", "/api/groups/properties", null, 200).then(
+                (resp) => {
+                    if (resp.body.length === 0) {
+                        cy.log("No group property definitions — skipping");
+                        return;
+                    }
+                    const propId = resp.body[0].ProId ?? resp.body[0].pro_ID;
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/groups/${groupID}/properties/${propId}`,
+                        {},
+                        200
+                    );
+
+                    cy.setupAdminSession({ forceLogin: true });
+                    cy.visit(`/groups/view/${groupID}`);
+                    cy.waitForLocales();
+                    cy.get(".remove-group-property-btn").first().click();
                     cy.get(".bootbox").should("be.visible");
-                    cy.get(".bootbox .btn-danger").click();
+                    cy.get(".bootbox .btn-secondary").click();
+                    cy.get(".bootbox").should("not.exist");
+                }
+            );
+        });
 
-                    cy.wait("@removeProperty").its("response.statusCode").should("eq", 200);
-                    // After reload, the property should be gone from the sidebar
-                    cy.get(".remove-group-property-btn[data-pro-name='" + name + "']").should(
-                        "not.exist"
+        it("confirming Remove calls DELETE API and reloads page", () => {
+            // Ensure a property is assigned
+            cy.makePrivateAdminAPICall("GET", "/api/groups/properties", null, 200).then(
+                (resp) => {
+                    if (resp.body.length === 0) {
+                        cy.log("No group property definitions — skipping");
+                        return;
+                    }
+                    const propId = resp.body[0].ProId ?? resp.body[0].pro_ID;
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        `/api/groups/${groupID}/properties/${propId}`,
+                        {},
+                        200
                     );
-                });
+
+                    cy.setupAdminSession({ forceLogin: true });
+                    cy.visit(`/groups/view/${groupID}`);
+                    cy.waitForLocales();
+
+                    cy.get(".remove-group-property-btn")
+                        .first()
+                        .then(($btn) => {
+                            const name = $btn.data("pro-name");
+
+                            cy.intercept("DELETE", `/api/groups/${groupID}/properties/*`).as(
+                                "removeProperty"
+                            );
+
+                            $btn.trigger("click");
+                            cy.get(".bootbox").should("be.visible");
+                            cy.get(".bootbox .btn-danger").click();
+
+                            cy.wait("@removeProperty")
+                                .its("response.statusCode")
+                                .should("eq", 200);
+                            cy.get(
+                                ".remove-group-property-btn[data-pro-name='" + name + "']"
+                            ).should("not.exist");
+                        });
+                }
+            );
         });
     });
 
     describe("Edit a property value (has prompt)", () => {
-        it("Edit Value button opens bootbox prompt", function () {
+        it("Edit Value button opens bootbox prompt", () => {
             cy.visit(`/groups/view/${groupID}`);
             cy.waitForLocales();
 
@@ -201,7 +222,6 @@ describe("UI: Property Definition Delete (PropertyList.php)", () => {
                 return;
             }
 
-            // Open the action dropdown first
             cy.get('[data-bs-toggle="dropdown"]').first().click();
             cy.get(".delete-property-btn").first().click();
 
@@ -211,15 +231,12 @@ describe("UI: Property Definition Delete (PropertyList.php)", () => {
                 "will also remove all its assignments"
             );
 
-            // Cancel — do not actually delete
             cy.get(".bootbox .btn-secondary").click();
             cy.get(".bootbox").should("not.exist");
         });
     });
 
     it("confirming delete calls DELETE API and removes the table row", () => {
-        // Create a throwaway property definition via direct API call is not available,
-        // so we verify the API + row removal indirectly by intercepting the request.
         cy.visit("/PropertyList.php?Type=g");
         cy.waitForLocales();
 
