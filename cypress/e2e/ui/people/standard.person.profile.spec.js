@@ -28,8 +28,8 @@ describe("Person Profile", () => {
     it("should show person info card with photo and details", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
 
-        // Photo card should exist
-        cy.get("[data-image-entity-type='person']").should("exist");
+        // Photo upload button wraps the avatar — stable selector unaffected by avatar-loader cleanup
+        cy.get("#uploadImageButton").should("exist");
 
         // Contact & Personal Info card
         cy.contains("Contact & Personal Info");

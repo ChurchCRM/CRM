@@ -529,7 +529,7 @@ jobs:
         list-suites: all
         list-tests: failed
         max-annotations: 50
-        use-actions-summary: false
+        use-actions-summary: true
 
     - name: Report — Subdirectory
       uses: dorny/test-reporter@v3
@@ -543,7 +543,7 @@ jobs:
         list-suites: all
         list-tests: failed
         max-annotations: 50
-        use-actions-summary: false
+        use-actions-summary: true
 
     - name: Report — New System Setup (Root)
       uses: dorny/test-reporter@v3
@@ -557,7 +557,7 @@ jobs:
         list-suites: all
         list-tests: failed
         max-annotations: 50
-        use-actions-summary: false
+        use-actions-summary: true
 
     - name: Report — New System Setup (Subdirectory)
       uses: dorny/test-reporter@v3
@@ -571,7 +571,7 @@ jobs:
         list-suites: all
         list-tests: failed
         max-annotations: 50
-        use-actions-summary: false
+        use-actions-summary: true
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
