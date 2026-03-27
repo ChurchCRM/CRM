@@ -30,6 +30,7 @@ concurrency:
 
 jobs:
   download:
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}

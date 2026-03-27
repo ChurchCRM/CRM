@@ -27,11 +27,13 @@ concurrency:
 jobs:
   typecheck-and-lint:
     name: Typecheck & Lint
+    timeout-minutes: 15
     permissions:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
       - name: Use Node.js (from .nvmrc)
@@ -51,11 +53,13 @@ jobs:
   format-fix:
     name: Apply format fixes
     if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    timeout-minutes: 15
     permissions:
       contents: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref }}
