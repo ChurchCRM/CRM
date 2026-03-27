@@ -337,6 +337,27 @@ cy.get("[data-bs-toggle='dropdown']").first().click();
 cy.get(".delete-property-btn").first().siblings("[data-bs-toggle='dropdown']").click();
 ```
 
+### Subdirectory-Aware `cy.intercept()` Patterns (CRITICAL) <!-- learned: 2026-03-27 -->
+
+ChurchCRM runs both at root (`/`) and in a subdirectory (`/churchcrm/`). CI tests run **both configurations**. `cy.intercept()` URL patterns **must** use `**` glob prefixes so they match regardless of the installation path.
+
+```javascript
+// ✅ CORRECT — matches both /api/... and /churchcrm/api/...
+cy.intercept("DELETE", `**/api/groups/${groupID}/properties/*`).as("removeProperty");
+cy.intercept("GET", "**/api/people/properties/definition/*").as("getDef");
+cy.intercept("POST", "**/api/groups/*/members").as("addMember");
+
+// ❌ WRONG — only matches root installation, fails on /churchcrm/ subdirectory
+cy.intercept("DELETE", `/api/groups/${groupID}/properties/*`).as("removeProperty");
+cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
+```
+
+**Why this matters:** In subdirectory mode, the browser sends requests to `/churchcrm/api/groups/1/properties/5`, but an intercept pattern of `/api/groups/1/properties/*` won't match — the intercept never fires and `cy.wait("@alias")` times out.
+
+**Rule:** Always prefix `cy.intercept()` URL patterns with `**/` when matching API paths. This applies to ALL HTTP methods (GET, POST, PUT, DELETE, PATCH).
+
+**Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
+
 ## UI Test Best Practices
 
 ### Using Element IDs for Test Selectors
