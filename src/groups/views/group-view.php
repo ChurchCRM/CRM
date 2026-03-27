@@ -249,7 +249,7 @@ if ($bCanManageGroups) {
         </div>
 
         <!-- Assigned Properties Card -->
-        <div class="card mb-3">
+        <div class="card mb-3" id="group-properties-card">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-tags me-1"></i> <?= gettext('Properties') ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= count($rsAssignedRows) ?></span>
