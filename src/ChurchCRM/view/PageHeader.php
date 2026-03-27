@@ -4,6 +4,7 @@ namespace ChurchCRM\view;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 class PageHeader
 {
@@ -66,12 +67,13 @@ class PageHeader
                 continue;
             }
 
-            $label = $btn['label'];
-            $icon = isset($btn['icon']) ? '<i class="fa-solid ' . $btn['icon'] . ' me-1"></i>' : '';
+            $label = InputUtils::escapeHTML($btn['label']);
+            $iconClass = isset($btn['icon']) ? InputUtils::escapeAttribute($btn['icon']) : '';
+            $icon = $iconClass !== '' ? '<i class="fa-solid ' . $iconClass . ' me-1"></i>' : '';
 
             if (isset($btn['collapse'])) {
                 // Settings toggle button (Bootstrap collapse)
-                $target = $btn['collapse'];
+                $target = InputUtils::escapeAttribute($btn['collapse']);
                 $html .= '<button class="btn btn-sm btn-outline-secondary" type="button"'
                     . ' data-bs-toggle="collapse" data-bs-target="' . $target . '"'
                     . ' aria-expanded="false" aria-controls="' . ltrim($target, '#') . '">'
@@ -82,6 +84,7 @@ class PageHeader
                 if ($url !== '#' && !str_starts_with($url, 'http')) {
                     $url = SystemURLs::getRootPath() . $url;
                 }
+                $url = InputUtils::escapeAttribute($url);
                 $html .= '<a href="' . $url . '" class="btn btn-sm btn-outline-secondary">'
                     . $icon . $label . '</a>';
             }

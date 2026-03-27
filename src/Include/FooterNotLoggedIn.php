@@ -13,19 +13,19 @@ use ChurchCRM\Service\SystemService;
     <?= gettext('All rights reserved') ?>.
   </div>
   <div class="auth-footer-social">
-    <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="Facebook">
+    <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">
       <i class="fa-brands fa-facebook"></i>
     </a>
-    <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="Instagram">
+    <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
       <i class="fa-brands fa-instagram"></i>
     </a>
-    <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="X">
+    <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
       <i class="fa-brands fa-x-twitter"></i>
     </a>
-    <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+    <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn">
       <i class="fa-brands fa-linkedin"></i>
     </a>
-    <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer" title="YouTube">
+    <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
       <i class="fa-brands fa-youtube"></i>
     </a>
   </div>

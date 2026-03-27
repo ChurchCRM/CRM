@@ -344,7 +344,7 @@ Cypress.Commands.add('select2Clear', (selector) => {
     cy.tomSelectClear(selector);
 });
 Cypress.Commands.add('select2GetSelected', (selector) => {
-    cy.tomSelectGetSelected(selector);
+    return cy.tomSelectGetSelected(selector);
 });
 Cypress.Commands.add('select2HasTheme', (selector) => {
     cy.tomSelectIsInitialized(selector);

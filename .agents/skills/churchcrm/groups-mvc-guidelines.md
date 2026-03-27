@@ -96,9 +96,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ## Documentation Update Requirement <!-- learned: 2026-03-15 -->
 
 After migrating any page, update the Documentation:
-## Documentation Update Requirement <!-- learned: 2026-03-15 -->
-
-After migrating any page, update the Documentation:
 - Search for any existing page referencing the old URLs (e.g., `sundayschool/SundaySchoolDashboard.php`).
 - Update URL references to the new `/groups/…` paths.
 - If no Documentation exists for the feature, create a Documentation page under the appropriate section.

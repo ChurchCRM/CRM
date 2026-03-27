@@ -202,7 +202,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
                     {window.i18next.t("Code is invalid")} &ndash; {window.i18next.t("Please try again")}
                   </div>
                 )}
-                <span className="sr-only">
+                <span className="visually-hidden">
                   {currentTwoFAPinStatus === "pending" && window.i18next.t("Validation pending")}
                   {currentTwoFAPinStatus === "invalid" && window.i18next.t("Code is invalid")}
                   {currentTwoFAPinStatus === "incomplete" && window.i18next.t("Code incomplete")}
@@ -571,7 +571,7 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
               <div className="card-body p-5 text-center">
                 <span role="status" aria-live="polite" className="d-inline-block">
                   <span className="spinner-border" aria-hidden="true"></span>
-                  <span className="sr-only">{window.i18next.t("Loading")}...</span>
+                  <span className="visually-hidden">{window.i18next.t("Loading")}...</span>
                 </span>
               </div>
             </div>

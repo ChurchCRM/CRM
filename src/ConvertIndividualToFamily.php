@@ -26,7 +26,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 ]);
 require_once __DIR__ . '/Include/Header.php';
 
-echo '<div class="card-body"><pre class="pre-compact">';
+echo '<div class="card"><div class="card-body"><pre class="pre-compact">';
 
 $curUserId = AuthenticationManager::getCurrentUser()->getId();
 
@@ -113,6 +113,7 @@ echo '</pre>';
 echo '<div class="mt-3">';
 echo '<a href="ConvertIndividualToFamily.php" class="btn btn-primary me-2">' . gettext('Convert Next') . '</a>';
 echo '<a href="ConvertIndividualToFamily.php?all=true" class="btn btn-warning">' . gettext('Convert All') . '</a>';
+echo '</div>';
 echo '</div>';
 echo '</div>';
 

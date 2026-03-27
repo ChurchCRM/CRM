@@ -88,9 +88,14 @@ require_once __DIR__ . '/Include/Header.php';
                                     <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item text-danger" href="FundRaiserDelete.php?FundRaiserID=<?= $fundraiser->getId() ?>&linkBack=FindFundRaiser.php" onclick="return confirm('<?= gettext('Are you sure you want to delete this fundraiser?') ?>')">
-                                    <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
-                                </a>
+                                <form method="post" action="FundRaiserDelete.php" onsubmit="return confirm('<?= gettext('Are you sure you want to delete this fundraiser?') ?>')" class="m-0">
+                                    <input type="hidden" name="FundRaiserID" value="<?= $fundraiser->getId() ?>">
+                                    <input type="hidden" name="linkBack" value="FindFundRaiser.php">
+                                    <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField('deleteFundRaiser') ?>
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     </td>
