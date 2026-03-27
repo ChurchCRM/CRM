@@ -64,7 +64,7 @@ jobs:
 
     - name: Get package version
       id: package-version
-      run: echo "current-version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+      run: echo "current-version=$(node -p 'require("./package.json").version')" >> $GITHUB_OUTPUT
 
     - name: Get current date
       id: date

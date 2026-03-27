@@ -312,7 +312,7 @@ function initializeGroupView() {
 
     if (promptText) {
       bootbox.prompt({
-        title: promptText,
+        title: window.CRM.escapeHtml(promptText),
         callback: function (val) {
           if (val !== null) doAssign(val);
         },
@@ -328,7 +328,7 @@ function initializeGroupView() {
   $(document).on("click", ".edit-group-property-btn", function () {
     var btn = $(this);
     bootbox.prompt({
-      title: btn.data("pro-prompt"),
+      title: window.CRM.escapeHtml(btn.data("pro-prompt")),
       value: btn.data("pro-value"),
       callback: function (val) {
         if (val !== null) {
@@ -662,8 +662,9 @@ function buildRolePills() {
         return r.OptionId == roleId;
       });
       if (role) {
+        var escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         window.CRM.DataTableAPI.column(1)
-          .search("^" + i18next.t(role.OptionName) + "$", true, false)
+          .search("^" + escapedName + "$", true, false)
           .draw();
       }
     }

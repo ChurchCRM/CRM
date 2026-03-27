@@ -137,14 +137,14 @@ if ($bCanManageGroups) {
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
+                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
                     <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($encodedEmails, 0, -3)) ?>"><i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($roleName) ?></a>
+                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($roleName) ?></a>
                     <?php endforeach; ?>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
+                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
                     <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($encodedEmails, 0, -3) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>: <?= InputUtils::escapeHTML($roleName) ?></a>
+                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>: <?= InputUtils::escapeHTML($roleName) ?></a>
                     <?php endforeach; ?>
                 </div>
             </div>
