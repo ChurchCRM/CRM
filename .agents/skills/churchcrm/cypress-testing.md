@@ -119,6 +119,46 @@ env: {
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
 
+### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
+
+`cy.request()` (used by `makePrivateAdminAPICall`, `makePrivateUserAPICall`) sends and
+receives cookies automatically. PHP's `session_start()` runs on every API request and
+sends a `Set-Cookie: PHPSESSID=xxx` response that **overwrites the browser's session cookie**.
+
+This means: after ANY `cy.request()` / `makePrivateAdminAPICall()` call, the browser
+session established by `cy.setupAdminSession()` is **invalidated**. A subsequent
+`cy.visit()` will redirect to `/session/begin` (login page).
+
+**Fix: Direct login after API calls**
+
+```javascript
+// Helper — bypasses cy.session() cache, guarantees fresh PHP session
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+}
+
+it("test that needs API setup then browser visit", () => {
+    // API calls (these reset the PHP session)
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, 200);
+
+    // MUST re-login before cy.visit() — session was reset by cy.request()
+    freshAdminLogin();
+    cy.visit("/groups/view/1");
+    cy.get("#some-element").should("exist");
+});
+```
+
+**Rules:**
+- ❌ NEVER `cy.visit()` after `cy.request()` / `makePrivateAdminAPICall()` without re-login
+- ❌ `cy.setupAdminSession({ forceLogin: true })` is NOT sufficient — it still uses `cy.session()` cache
+- ❌ `before()` hooks with API calls will poison cookies for ALL subsequent tests
+- ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
+- ✅ Each test should be self-contained — set up its own data, then re-login, then visit
+
 ## UI Test Best Practices
 
 ### Using Element IDs for Test Selectors
