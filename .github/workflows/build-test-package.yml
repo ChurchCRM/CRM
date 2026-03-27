@@ -122,7 +122,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
@@ -184,11 +183,7 @@ jobs:
     - name: Run Cypress Tests (Root Path)
       uses: cypress-io/github-action@v6
       with:
-        config-file: cypress/configs/docker.config.ts
-        browser: electron
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-root.xml
-        record: false
-        headed: false
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options "mochaFile=cypress/reports/junit-root-[hash].xml"
 
     - name: Collect Docker Logs on Failure
       if: failure()
@@ -213,20 +208,19 @@ jobs:
         name: cypress-artifacts-root-${{ github.run_id }}
         path: |
           cypress/logs
-          cypress/reports
           cypress/screenshots
           cypress/videos
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Publish Test Results (Root)
+    - name: Upload Test Reports (Root)
       if: always()
-      uses: dorny/test-reporter@v1
+      uses: actions/upload-artifact@v7
       with:
-        name: Cypress UI Tests (Root)
-        path: cypress/reports/junit-root.xml
-        reporter: java-junit
-        fail-on-error: false
+        name: test-reports-root
+        path: cypress/reports/junit-root-*.xml
+        retention-days: 3
+        if-no-files-found: ignore
 
     - name: Stop Docker
       if: always()
@@ -238,7 +232,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
@@ -300,11 +293,7 @@ jobs:
     - name: Run Cypress Tests (Subdirectory Path)
       uses: cypress-io/github-action@v6
       with:
-        config-file: cypress/configs/docker.config.ts
-        browser: electron
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir.xml
-        record: false
-        headed: false
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options "mochaFile=cypress/reports/junit-subdir-[hash].xml"
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -331,20 +320,19 @@ jobs:
         name: cypress-artifacts-subdir-${{ github.run_id }}
         path: |
           cypress/logs
-          cypress/reports
           cypress/screenshots
           cypress/videos
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Publish Test Results (Subdir)
+    - name: Upload Test Reports (Subdir)
       if: always()
-      uses: dorny/test-reporter@v1
+      uses: actions/upload-artifact@v7
       with:
-        name: Cypress UI Tests (Subdirectory)
-        path: cypress/reports/junit-subdir.xml
-        reporter: java-junit
-        fail-on-error: false
+        name: test-reports-subdir
+        path: cypress/reports/junit-subdir-*.xml
+        retention-days: 3
+        if-no-files-found: ignore
 
     - name: Stop Docker
       if: always()
@@ -356,7 +344,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
@@ -431,11 +418,7 @@ jobs:
     - name: Run Cypress Tests (Setup Wizard)
       uses: cypress-io/github-action@v6
       with:
-        config-file: cypress/configs/new-system.config.ts
-        browser: electron
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system.xml
-        record: false
-        headed: false
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options "mochaFile=cypress/reports/junit-new-system-[hash].xml"
 
     - name: Collect Docker Logs on Failure
       if: failure()
@@ -460,20 +443,19 @@ jobs:
         name: cypress-artifacts-new-system-${{ github.run_id }}
         path: |
           cypress/logs
-          cypress/reports
           cypress/screenshots
           cypress/videos
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Publish Test Results (New System)
+    - name: Upload Test Reports (New System)
       if: always()
-      uses: dorny/test-reporter@v1
+      uses: actions/upload-artifact@v7
       with:
-        name: Cypress Setup Wizard Tests (New System)
-        path: cypress/reports/junit-new-system.xml
-        reporter: java-junit
-        fail-on-error: false
+        name: test-reports-new-system
+        path: cypress/reports/junit-new-system-*.xml
+        retention-days: 3
+        if-no-files-found: ignore
 
     - name: Stop Docker
       if: always()
@@ -485,7 +467,6 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
-      checks: write
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v6
@@ -559,11 +540,7 @@ jobs:
     - name: Run Cypress Tests (Setup Wizard - Subdir)
       uses: cypress-io/github-action@v6
       with:
-        config-file: cypress/configs/new-system.config.ts
-        browser: electron
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir.xml
-        record: false
-        headed: false
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options "mochaFile=cypress/reports/junit-new-system-subdir-[hash].xml"
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
 
@@ -590,25 +567,48 @@ jobs:
         name: cypress-artifacts-new-system-subdir-${{ github.run_id }}
         path: |
           cypress/logs
-          cypress/reports
           cypress/screenshots
           cypress/videos
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Publish Test Results (New System - Subdir)
+    - name: Upload Test Reports (New System - Subdir)
       if: always()
-      uses: dorny/test-reporter@v1
+      uses: actions/upload-artifact@v7
       with:
-        name: Cypress Setup Wizard Tests (New System - Subdir)
-        path: cypress/reports/junit-new-system-subdir.xml
-        reporter: java-junit
-        fail-on-error: false
+        name: test-reports-new-system-subdir
+        path: cypress/reports/junit-new-system-subdir-*.xml
+        retention-days: 3
+        if-no-files-found: ignore
 
     - name: Stop Docker
       if: always()
       run: |
         npm run docker:ci:new-system:subdir:down
+
+  test-report:
+    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
+    if: always()
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Download All Test Reports
+      uses: actions/download-artifact@v8.0.1
+      with:
+        pattern: test-reports-*
+        merge-multiple: true
+        path: reports
+
+    - name: Publish Unified Test Results
+      uses: dorny/test-reporter@v1
+      with:
+        name: Cypress Test Results
+        path: reports/**/*.xml
+        reporter: java-junit
+        fail-on-error: true
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
