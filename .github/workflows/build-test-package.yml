@@ -116,6 +116,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -186,14 +187,19 @@ jobs:
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Upload test reports
+    - name: Test Report
+      uses: dorny/test-reporter@v3
       if: always()
-      uses: actions/upload-artifact@v7
       with:
-        name: test-reports-root
+        name: 'Cypress: Root Path'
         path: cypress/reports/junit-root-*.xml
-        retention-days: 3
-        if-no-files-found: ignore
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -204,6 +210,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -276,14 +283,19 @@ jobs:
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Upload test reports
+    - name: Test Report
+      uses: dorny/test-reporter@v3
       if: always()
-      uses: actions/upload-artifact@v7
       with:
-        name: test-reports-subdir
+        name: 'Cypress: Subdirectory'
         path: cypress/reports/junit-subdir-*.xml
-        retention-days: 3
-        if-no-files-found: ignore
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -294,6 +306,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -368,14 +381,19 @@ jobs:
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Upload test reports
+    - name: Test Report
+      uses: dorny/test-reporter@v3
       if: always()
-      uses: actions/upload-artifact@v7
       with:
-        name: test-reports-new-system
+        name: 'Cypress: New System Setup (Root)'
         path: cypress/reports/junit-new-system-*.xml
-        retention-days: 3
-        if-no-files-found: ignore
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
 
     - name: Stop Docker
       if: always()
@@ -386,6 +404,7 @@ jobs:
     timeout-minutes: 30
     permissions:
       contents: read
+      checks: write
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
@@ -462,109 +481,12 @@ jobs:
         retention-days: 30
         if-no-files-found: ignore
 
-    - name: Upload test reports
-      if: always()
-      uses: actions/upload-artifact@v7
-      with:
-        name: test-reports-new-system-subdir
-        path: cypress/reports/junit-new-system-subdir-*.xml
-        retention-days: 3
-        if-no-files-found: ignore
-
-    - name: Stop Docker
-      if: always()
-      run: npm run docker:ci:new-system:subdir:down
-
-  test-report:
-    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
-    if: always()
-    timeout-minutes: 5
-    permissions:
-      contents: read
-      checks: write
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v6
-      with:
-        ref: ${{ github.event.pull_request.head.sha || github.sha }}
-
-    - name: Download root path reports
-      uses: actions/download-artifact@v8.0.1
-      with:
-        name: test-reports-root
-        path: reports/root
-      continue-on-error: true
-
-    - name: Download subdirectory reports
-      uses: actions/download-artifact@v8.0.1
-      with:
-        name: test-reports-subdir
-        path: reports/subdir
-      continue-on-error: true
-
-    - name: Download new system reports
-      uses: actions/download-artifact@v8.0.1
-      with:
-        name: test-reports-new-system
-        path: reports/new-system
-      continue-on-error: true
-
-    - name: Download new system subdirectory reports
-      uses: actions/download-artifact@v8.0.1
-      with:
-        name: test-reports-new-system-subdir
-        path: reports/new-system-subdir
-      continue-on-error: true
-
-    - name: Report — Root Path
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'Cypress: Root Path'
-        path: reports/root/*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
-
-    - name: Report — Subdirectory
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'Cypress: Subdirectory'
-        path: reports/subdir/*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
-
-    - name: Report — New System Setup (Root)
-      uses: dorny/test-reporter@v3
-      if: always()
-      with:
-        name: 'Cypress: New System Setup (Root)'
-        path: reports/new-system/*.xml
-        reporter: java-junit
-        fail-on-error: true
-        fail-on-empty: false
-        list-suites: all
-        list-tests: failed
-        max-annotations: 50
-        use-actions-summary: true
-
-    - name: Report — New System Setup (Subdirectory)
+    - name: Test Report
       uses: dorny/test-reporter@v3
       if: always()
       with:
         name: 'Cypress: New System Setup (Subdirectory)'
-        path: reports/new-system-subdir/*.xml
+        path: cypress/reports/junit-new-system-subdir-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -572,6 +494,10 @@ jobs:
         list-tests: failed
         max-annotations: 50
         use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:new-system:subdir:down
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
