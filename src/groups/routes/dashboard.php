@@ -11,7 +11,7 @@ use Slim\Views\PhpRenderer;
 // Redirect /groups root to /groups/dashboard
 $app->get('/', function (Request $request, Response $response) {
     return $response
-        ->withHeader('Location', \ChurchCRM\dto\SystemURLs::getRootPath() . '/groups/dashboard')
+        ->withHeader('Location', SystemURLs::getRootPath() . '/groups/dashboard')
         ->withStatus(302);
 });
 
@@ -38,6 +38,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
             [gettext('Groups')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Group Reports'), 'url' => '/groups/reports', 'icon' => 'fa-file-lines'],
             ['label' => gettext('Group Properties'), 'url' => '/PropertyList.php?Type=g', 'icon' => 'fa-list'],
             ['label' => gettext('Group Types'), 'url' => '/OptionManager.php?mode=grptypes', 'icon' => 'fa-tags'],
         ]),

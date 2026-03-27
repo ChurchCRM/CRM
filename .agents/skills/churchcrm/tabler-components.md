@@ -1372,7 +1372,34 @@ $(".filter-pill").on("click", function (e) {
 | Filter table rows by category (Pledge/Payment, Active/Inactive) | **Pill nav** — instant client-side DataTable column search |
 | Enable/disable a feature or setting | **Toggle switch** (`form-check form-switch`) |
 | Boolean preference that persists (show/hide section) | **Toggle switch** with API save |
+| Multi-select / pick-many from a list | **`form-selectgroup form-selectgroup-pills`** — pill toggle buttons |
 | Never | Raw `<input type="checkbox">` without Tabler wrapper |
+| Never | `form-check` for multi-select field pickers — always use `form-selectgroup-pills` |
+
+### form-selectgroup-pills (Multi-select Field Picker) <!-- learned: 2026-03-27 -->
+
+Use `form-selectgroup form-selectgroup-pills` any time the user picks one or more items from a set (e.g., select which fields to include in a report). Raw checkboxes and even `form-check` look broken and confusing in Tabler — the pill buttons are visually clear, accessible, and consistent.
+
+```html
+<div class="form-selectgroup form-selectgroup-pills">
+  <label class="form-selectgroup-item">
+    <input type="checkbox" class="form-selectgroup-input" name="AddressEnable" value="1">
+    <span class="form-selectgroup-label">
+      <i class="fa-solid fa-location-dot me-1"></i> Address
+    </span>
+  </label>
+  <label class="form-selectgroup-item">
+    <input type="checkbox" class="form-selectgroup-input" name="EmailEnable" value="1">
+    <span class="form-selectgroup-label">
+      <i class="fa-solid fa-envelope me-1"></i> Email
+    </span>
+  </label>
+</div>
+```
+
+- No `id`/`for` needed — the `<label>` wraps the input
+- Works for `type="radio"` too (single-select pills)
+- Add `form-selectgroup-boxes` instead for a boxed card layout
 
 ### Fiscal Year Filter
 
