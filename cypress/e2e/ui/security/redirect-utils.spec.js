@@ -96,7 +96,7 @@ describe('RedirectUtils Security - linkBack Parameter', () => {
             'PersonView.php?PersonID=1',
             'v2/dashboard',
             '/FundRaiserEditor.php?FundRaiserID=1',
-            'GroupView.php?GroupID=5',
+            'groups/view/5',
         ];
 
         validUrls.forEach((validUrl) => {

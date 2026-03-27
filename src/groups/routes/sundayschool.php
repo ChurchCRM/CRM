@@ -2,9 +2,15 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventQuery;
+use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -91,6 +97,68 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             $iGroupName = $thisGroup->getName();
         }
 
+        // ---- Group metadata (properties, status, description) ---- //
+        $currentUser      = AuthenticationManager::getCurrentUser();
+        $bCanManageGroups = $currentUser->isManageGroupsEnabled();
+
+        // Assigned properties (record2property_r2p, class = 'g')
+        $rsAssignedRows        = [];
+        $rsAssignedPropertyIds = [];
+        foreach (RecordPropertyQuery::create()->filterByRecordId($iGroupId)->find() as $rec) {
+            $propDef = $rec->getProperty();
+            if ($propDef === null || $propDef->getProClass() !== 'g') {
+                continue;
+            }
+            $propType = $propDef->getPropertyType();
+            $rsAssignedRows[] = [
+                'pro_ID'     => $rec->getPropertyId(),
+                'pro_Name'   => $propDef->getProName(),
+                'r2p_Value'  => $rec->getPropertyValue(),
+                'pro_Prompt' => (string) $propDef->getProPrompt(),
+                'prt_Name'   => $propType ? $propType->getPrtName() : '',
+                'pro_prt_ID' => $propDef->getProPrtId(),
+            ];
+            $rsAssignedPropertyIds[] = $rec->getPropertyId();
+        }
+        usort($rsAssignedRows, fn ($a, $b) => [$a['prt_Name'], $a['pro_Name']] <=> [$b['prt_Name'], $b['pro_Name']]);
+
+        $allGroupPropertyDefs = PropertyQuery::create()->filterByProClass('g')->orderByProName()->find();
+
+        // Group-specific custom properties (groupprop_master)
+        $groupSpecificProps = [];
+        $aPropTypes = [
+            1 => gettext('True / False'), 2 => gettext('Date'), 3 => gettext('Text Field (50 char)'),
+            4 => gettext('Text Field (100 char)'), 5 => gettext('Text Field (long)'), 6 => gettext('Year'),
+            7 => gettext('Season'), 8 => gettext('Number'), 9 => gettext('Person from Group'),
+            10 => gettext('Money'), 11 => gettext('Phone Number'), 12 => gettext('Custom Drop-Down List'),
+        ];
+        if ($thisGroup !== null && $thisGroup->getHasSpecialProps()) {
+            $groupSpecificProps = GroupPropMasterQuery::create()
+                ->filterByGrpId($iGroupId)
+                ->orderByPropId()
+                ->find();
+        }
+
+        // ---- Events linked to this group (via event_audience) ---- //
+        $groupEvents = EventQuery::create()
+            ->useEventAudienceQuery()
+                ->filterByGroupId($iGroupId)
+            ->endUse()
+            ->orderByStart(Criteria::DESC)
+            ->find();
+
+        // Pre-fetch kiosk assignments for all event IDs in one query
+        $kioskEventSet = [];
+        $eventIds = [];
+        foreach ($groupEvents as $evt) {
+            $eventIds[] = $evt->getId();
+        }
+        if (!empty($eventIds)) {
+            foreach (KioskAssignmentQuery::create()->filterByEventId($eventIds)->find() as $ka) {
+                $kioskEventSet[(int) $ka->getEventId()] = true;
+            }
+        }
+
         $birthDayMonthChartArray = [];
         $rsTeachers              = [];
         $thisClassChildren       = [];
@@ -159,6 +227,15 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             ]),
             'iGroupId'               => $iGroupId,
             'iGroupName'             => $iGroupName,
+            'thisGroup'              => $thisGroup,
+            'bCanManageGroups'       => $bCanManageGroups,
+            'rsAssignedRows'         => $rsAssignedRows,
+            'rsAssignedPropertyIds'  => $rsAssignedPropertyIds,
+            'allGroupPropertyDefs'   => $allGroupPropertyDefs,
+            'groupSpecificProps'     => $groupSpecificProps,
+            'aPropTypes'             => $aPropTypes,
+            'groupEvents'            => $groupEvents,
+            'kioskEventSet'          => $kioskEventSet,
             'birthDayMonthChartJSON' => $birthDayMonthChartJSON,
             'rsTeachers'             => $rsTeachers,
             'thisClassChildren'      => $thisClassChildren,
@@ -168,7 +245,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'sMailtoDelimiter'       => $sMailtoDelimiter,
             'roleEmails'             => $roleEmails,
             'sEmailLink'             => urlencode($sEmailLink),
-            'canEmail'               => AuthenticationManager::getCurrentUser()->isEmailEnabled(),
+            'canEmail'               => $currentUser->isEmailEnabled(),
         ];
 
         return $renderer->render($response, 'sundayschool/class-view.php', $pageArgs);

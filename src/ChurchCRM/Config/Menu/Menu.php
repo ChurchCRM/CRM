@@ -140,7 +140,7 @@ class Menu
         foreach ($listOptions as $listOption) {
             $optionId = (int)$listOption['OptionId'];
             if ($optionId !== 4) {
-                $tmpMenu = self::addGroupSubMenus($listOption['OptionName'], $optionId, 'GroupView.php?GroupID=', $groupsByType);
+                $tmpMenu = self::addGroupSubMenus($listOption['OptionName'], $optionId, 'groups/view/', $groupsByType);
                 if ($tmpMenu instanceof MenuItem) {
                     $groupMenu->addSubMenu($tmpMenu);
                 }
@@ -148,7 +148,7 @@ class Menu
         }
 
         // now add the unclassified groups from the batched map
-        $tmpMenu = self::addGroupSubMenus(gettext('Unassigned'), 0, 'GroupView.php?GroupID=', $groupsByType);
+        $tmpMenu = self::addGroupSubMenus(gettext('Unassigned'), 0, 'groups/view/', $groupsByType);
         if ($tmpMenu instanceof MenuItem) {
             $groupMenu->addSubMenu($tmpMenu);
         }
