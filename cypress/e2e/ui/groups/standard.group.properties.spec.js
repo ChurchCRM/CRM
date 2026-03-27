@@ -214,7 +214,7 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
 
             cy.intercept(
                 "DELETE",
-                `/api/groups/${groupID}/properties/*`
+                `**/api/groups/${groupID}/properties/*`
             ).as("removeProperty");
 
             cy.get(".remove-group-property-btn")
@@ -326,7 +326,7 @@ describe("UI: Property Definition Delete (PropertyList.php)", () => {
                 return;
             }
 
-            cy.intercept("DELETE", "/api/people/properties/definition/*").as(
+            cy.intercept("DELETE", "**/api/people/properties/definition/*").as(
                 "deleteDef"
             );
 
