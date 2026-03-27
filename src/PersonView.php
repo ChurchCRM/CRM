@@ -748,7 +748,7 @@ $bOkToEdit = (
                                     <div class="list-group-item">
                                         <div class="d-flex align-items-center">
                                             <div class="me-auto">
-                                                <a href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
+                                                <a href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>" class="fw-bold"><?= $grp_Name ?></a>
                                                 <?php if ((int)$grp_Type !== 0) { ?>
                                                 <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
                                                 <?php } ?>
@@ -776,7 +776,7 @@ $bOkToEdit = (
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupView.php?GroupID=<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
                                                     <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>" data-current-role-id="<?= (int)$roleId ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
                                                     <?php if ($grp_hasSpecialProps) { ?>
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>

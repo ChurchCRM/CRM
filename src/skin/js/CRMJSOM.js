@@ -275,6 +275,8 @@ window.CRM.groups = {
         throw i18next.t("GroupID required for role selection prompt");
       }
       initFunction = function () {
+        // Remove tabindex from bootbox so TomSelect dropdown can receive focus
+        window.jQuery(".bootbox").removeAttr("tabindex");
         window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
           let roleEl = document.getElementById("targetRoleSelection");
           if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();

@@ -22,7 +22,7 @@ $group = GroupQuery::create()->findOneById($iGroupID);
 
 // Abort if user tries to load with group having no special properties.
 if (!$group->hasSpecialProps()) {
-    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+    RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 
 switch ($sAction) {
@@ -67,7 +67,7 @@ switch ($sAction) {
         }
         break;
     default:
-        RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+        RedirectUtils::redirect('groups/view/' . $iGroupID);
         break;
 }
 

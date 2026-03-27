@@ -20,6 +20,12 @@ if ($lowerType === 'person' || $lowerType === 'people') {
     $title = gettext('Family not found');
     $message = gettext('We could not find the family you were looking for.');
     $code = 404;
+} elseif ($lowerType === 'group' || $lowerType === 'groups') {
+    $returnUrl = SystemURLs::getRootPath() . '/groups/dashboard';
+    $returnText = gettext('Return to Groups');
+    $title = gettext('Group not found');
+    $message = gettext('We could not find the group you were looking for.');
+    $code = 404;
 } else {
     $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
     $returnText = gettext('Return to Dashboard');
