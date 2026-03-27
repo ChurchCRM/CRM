@@ -517,7 +517,11 @@ function initializeGroupView() {
     var personName = $(this).data("name");
     bootbox.confirm({
       message:
-        i18next.t("Are you sure you want to remove") + " <b>" + window.CRM.escapeHtml(personName) + "</b> " + i18next.t("from this group?"),
+        i18next.t("Are you sure you want to remove") +
+        " <b>" +
+        window.CRM.escapeHtml(personName) +
+        "</b> " +
+        i18next.t("from this group?"),
       buttons: {
         confirm: { label: i18next.t("Remove"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel") },

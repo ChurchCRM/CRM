@@ -154,7 +154,8 @@ function initializeGroupList() {
     const groupId = $(this).data("group-id");
     const groupName = $(this).data("group-name");
     bootbox.confirm({
-      message: i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
+      message:
+        i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
       buttons: {
         confirm: { label: i18next.t("Delete"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
