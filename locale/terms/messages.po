@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 17:47+0000\n"
+"POT-Creation-Date: 2026-03-27 20:03+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -650,6 +650,9 @@ msgstr ""
 msgid "Already in a family"
 msgstr ""
 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr ""
+
 #. Context: countries
 msgid "American Samoa"
 msgstr ""
@@ -986,6 +989,9 @@ msgstr ""
 msgid "Background Color"
 msgstr ""
 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr ""
+
 msgid "Backup"
 msgstr ""
 
@@ -1037,7 +1043,7 @@ msgstr ""
 msgid "Backup in progress, please wait..."
 msgstr ""
 
-msgid "Backup to External Storage"
+msgid "Backup to External Storage Now"
 msgstr ""
 
 msgid "Backup to WebDAV Now"
@@ -2033,9 +2039,6 @@ msgstr ""
 msgid "Create Report"
 msgstr ""
 
-msgid "Create a backup first"
-msgstr ""
-
 msgid "Create a backup now and upload it to your WebDAV server."
 msgstr ""
 
@@ -2043,6 +2046,9 @@ msgid "Create a backup of your church database"
 msgstr ""
 
 msgid "Create a backup of your database before applying the update."
+msgstr ""
+
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
 msgstr ""
 
 msgid "Create a new Event"
@@ -2610,6 +2616,9 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
+msgid "Disabled in settings"
+msgstr ""
+
 msgid "Disclaimer"
 msgstr ""
 
@@ -2999,9 +3008,6 @@ msgstr ""
 msgid "Enable non-deductible payments"
 msgstr ""
 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr ""
-
 msgid "Enable the MailChimp plugin to sync contacts"
 msgstr ""
 
@@ -3338,9 +3344,6 @@ msgid "External Backup (WebDAV)"
 msgstr ""
 
 msgid "External Backup Settings"
-msgstr ""
-
-msgid "External Backup plugin is enabled but not configured."
 msgstr ""
 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -5217,9 +5220,6 @@ msgstr ""
 msgid "Make User"
 msgstr ""
 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr ""
-
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
@@ -5790,6 +5790,9 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
+msgid "New"
+msgstr ""
+
 msgid "New Access Token"
 msgstr ""
 
@@ -5858,9 +5861,6 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-msgid "Next 7 days and past 7 days"
-msgstr ""
-
 msgid "Next Member"
 msgstr ""
 
@@ -5886,10 +5886,16 @@ msgstr ""
 msgid "No Active Deposit"
 msgstr ""
 
+msgid "No Anniversaries"
+msgstr ""
+
 msgid "No Attendance counts recorded"
 msgstr ""
 
 msgid "No Audiences Found"
+msgstr ""
+
+msgid "No Birthdays"
 msgstr ""
 
 msgid "No Cash"
@@ -5898,10 +5904,19 @@ msgstr ""
 msgid "No Changes"
 msgstr ""
 
+msgid "No Check-ins"
+msgstr ""
+
 msgid "No Checks"
 msgstr ""
 
 msgid "No Data Found"
+msgstr ""
+
+msgid "No Deposit Tracking"
+msgstr ""
+
+msgid "No Deposits"
 msgstr ""
 
 msgid "No Group (Select for Kiosk Check-in)"
@@ -5925,7 +5940,13 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No anniversaries in the past or next 7 days"
+msgstr ""
+
 msgid "No backups recorded"
+msgstr ""
+
+msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
 msgid "No community plugins installed"
@@ -5938,6 +5959,9 @@ msgid "No custom Family fields have been added yet"
 msgstr ""
 
 msgid "No custom person fields have been added yet"
+msgstr ""
+
+msgid "No deposit data available yet"
 msgstr ""
 
 msgid "No deposits found."
@@ -6464,6 +6488,9 @@ msgstr ""
 msgid "Passwords must be at least"
 msgstr ""
 
+msgid "Past & next 7 days"
+msgstr ""
+
 msgid "Payment"
 msgstr ""
 
@@ -6914,6 +6941,9 @@ msgstr ""
 msgid "Plugin disabled successfully"
 msgstr ""
 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr ""
+
 msgid "Plugin enabled successfully"
 msgstr ""
 
@@ -7105,10 +7135,10 @@ msgstr ""
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr ""
 
-msgid "Ready to create a backup. Select your options above and click a backup button."
+msgid "Ready to back up"
 msgstr ""
 
-msgid "Ready to restore. Select a backup file and click Restore Database."
+msgid "Ready to restore"
 msgstr ""
 
 msgid "Recent Deposits"
@@ -7758,6 +7788,9 @@ msgstr ""
 msgid "Select Season"
 msgstr ""
 
+msgid "Select a backup file and click Restore Database."
+msgstr ""
+
 msgid "Select a family"
 msgstr ""
 
@@ -7813,6 +7846,9 @@ msgid "Select which information you want to include"
 msgstr ""
 
 msgid "Select your event type"
+msgstr ""
+
+msgid "Select your options above and click a backup button."
 msgstr ""
 
 msgid "Selected record successfully removed from the Cart."
@@ -9748,6 +9784,9 @@ msgid "You can now use your authenticator app to sign in. Each code is valid for
 msgstr ""
 
 msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You do not have finance permissions to view deposits."
 msgstr ""
 
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
