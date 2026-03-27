@@ -151,6 +151,7 @@ describe("Standard Sunday School", () => {
         cy.get("a.btn-ghost-primary").contains("Edit Class").should("exist");
     });
 
+
     it("Student details modal exists in page or student links lead to PersonView", () => {
         cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
