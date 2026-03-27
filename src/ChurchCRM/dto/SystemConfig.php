@@ -208,10 +208,8 @@ class   SystemConfig
             'bSearchIncludeAddressesMax'           => new ConfigItem(20233, 'bSearchIncludeAddressesMax', 'text', '15', gettext('Maximum number of Addresses')),
             'iPersonConfessionFatherCustomField'   => new ConfigItem(2040, 'iPersonConfessionFatherCustomField', 'ajax', '', gettext('Field where Father Of Confession is listed, must be a people of group type'), '', '/api/system/custom-fields/person/?typeId=9'),
             'iPersonConfessionDateCustomField'     => new ConfigItem(2041, 'iPersonConfessionDateCustomField', 'ajax', '', gettext('Field where last Confession is stored, must be a date type'), '', '/api/system/custom-fields/person/?typeId=2'),
-            'bHSTSEnable'                          => new ConfigItem(20142, 'bHSTSEnable', 'boolean', '0', gettext('Require that this ChurchCRM Database is accessed over HTTPS')),
             'bEnforceCSP'                          => new ConfigItem(20234, 'bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
             'bPHPMailerAutoTLS'                    => new ConfigItem(2045, 'bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
-            'iDashboardServiceIntervalTime'        => new ConfigItem(2047, 'iDashboardServiceIntervalTime', 'number', '60', gettext('Dashboard Service dynamic asynchronous refresh interval, default 60 second')),
             'sPHPMailerSMTPSecure'                 => new ConfigItem(2046, 'sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', '{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
             'bEnabledSundaySchool'                 => new ConfigItem(2051, 'bEnabledSundaySchool', 'boolean', '1', gettext('Enable Sunday School left menu.')),
             'bEnabledFinance'                      => new ConfigItem(2052, 'bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
@@ -285,7 +283,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Localization')       => ['sDistanceUnit', 'sPhoneFormat', 'sPhoneFormatWithExt', 'sPhoneFormatCell', 'sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
-            gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP', 'bHSTSEnable', 'iDashboardServiceIntervalTime'],
+            gettext('System Settings')    => ['sLogLevel', 'bEnforceCSP'],
         ];
     }
 

@@ -919,3 +919,18 @@ cy.contains("Smith - Family");
 cy.contains("Smith");           // page title
 cy.contains("Family Profile");  // subtitle
 ```
+
+### cy.contains() Can Match Page Title, Not the Target Element <!-- learned: 2026-03-27 -->
+
+`cy.contains("System Settings")` will match the page `<h2>` title **before** looking for a sidebar tab. Tests using bare `cy.contains()` for nav items can pass even when the tab/category is completely missing.
+
+```javascript
+// ❌ WRONG — matches page <h2> title, not the sidebar tab
+cy.contains("System Settings");
+
+// ✅ CORRECT — scoped to the nav element
+cy.get('#settings-nav').contains("System Settings");
+cy.get('.nav-pills').contains("System Settings").should('be.visible');
+```
+
+Always scope `cy.contains()` to the smallest meaningful container when asserting the existence of navigation items or tabs.
