@@ -163,9 +163,11 @@ require_once __DIR__ . '/Include/Header.php';
                                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item text-danger" href="PropertyDelete.php?PropertyID=<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
+                                    <button class="dropdown-item text-danger delete-property-btn"
+                                        data-property-id="<?= InputUtils::escapeAttribute($prop['pro_ID']) ?>"
+                                        data-property-name="<?= InputUtils::escapeAttribute($prop['pro_Name']) ?>">
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -179,5 +181,36 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 </div>
 
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () {
+    window.CRM.onLocalesReady(function () {
+        $(document).on('click', '.delete-property-btn', function () {
+            var btn = $(this);
+            var propertyId = btn.data('property-id');
+            var propertyName = btn.data('property-name');
+            bootbox.confirm({
+                title: '<?= gettext("Confirm Property Deletion") ?>',
+                message: '<p class="text-warning"><strong><?= gettext("Warning:") ?></strong> ' +
+                    '<?= gettext("Deleting this property will also remove all its assignments from any People, Family, or Group records.") ?>' +
+                    '</p><p><?= gettext("Delete") ?>: <strong>' + window.CRM.escapeHtml(propertyName) + '</strong></p>',
+                buttons: {
+                    confirm: { label: '<?= gettext("Yes, delete") ?>', className: 'btn-danger' },
+                    cancel:  { label: '<?= gettext("Cancel") ?>',     className: 'btn-secondary' }
+                },
+                callback: function (result) {
+                    if (result) {
+                        window.CRM.APIRequest({
+                            method: 'DELETE',
+                            path: 'people/properties/definition/' + propertyId,
+                        }).done(function () {
+                            btn.closest('tr').fadeOut(300, function () { $(this).remove(); });
+                        });
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

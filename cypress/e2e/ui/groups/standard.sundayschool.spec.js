@@ -99,7 +99,7 @@ describe("Standard Sunday School", () => {
         // Core overview elements that should be stable across styling changes
         cy.contains('Sunday School').should('exist');
         cy.get('#bar-chart').should('exist');
-        cy.contains('Total Enrolled').should('exist');
+        cy.contains('Enrolled').should('exist');
         cy.contains('Boys').should('exist');
         cy.contains('Girls').should('exist');
     });
@@ -137,6 +137,20 @@ describe("Standard Sunday School", () => {
             }
         });
     });
+
+    it("Class view shows sidebar with About, Properties, and Events cards", () => {
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
+        cy.contains(".card-title", "About").should("exist");
+        cy.contains(".card-title", "Properties").should("exist");
+        cy.contains(".card-title", "Events").should("exist");
+    });
+
+    it("Class view has ghost-button action toolbar", () => {
+        cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
+        cy.get("a.btn-ghost-success").contains("Add Students").should("exist");
+        cy.get("a.btn-ghost-primary").contains("Edit Class").should("exist");
+    });
+
 
     it("Student details modal exists in page or student links lead to PersonView", () => {
         cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);

@@ -70,7 +70,7 @@ function initializeGroupList() {
         data: "Name",
         render: (data, type, full, meta) => {
           const nameLink = document.createElement("a");
-          nameLink.href = `${window.CRM.root}/GroupView.php?GroupID=${full.Id}`;
+          nameLink.href = `${window.CRM.root}/groups/view/${full.Id}`;
           nameLink.textContent = data;
           return nameLink.outerHTML;
         },
@@ -81,8 +81,28 @@ function initializeGroupList() {
         data: "groupType",
         defaultContent: "",
         searchable: true,
-        render: (data, type, full, meta) => {
-          return data || i18next.t("Unassigned");
+        render: (data) => {
+          if (!data) return i18next.t("Unassigned");
+          return $("<div>").text(data).html();
+        },
+      },
+      {
+        width: "auto",
+        title: i18next.t("Roles"),
+        data: "roles",
+        defaultContent: "",
+        orderable: false,
+        searchable: false,
+        render: (data) => {
+          if (!data || !data.length) return '<span class="text-muted">\u2014</span>';
+          return data
+            .map(
+              (role) =>
+                '<span class="badge bg-secondary-lt text-secondary me-1">' +
+                $("<div>").text(i18next.t(role)).html() +
+                "</span>",
+            )
+            .join("");
         },
       },
       {
@@ -110,11 +130,11 @@ function initializeGroupList() {
           const escapedName = window.CRM.escapeHtml(full.Name || "");
           return (
             '<div class="dropdown">' +
-            '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+            '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
             '<i class="ti ti-dots-vertical"></i>' +
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
-            `<a class="dropdown-item" href="${window.CRM.root}/GroupView.php?GroupID=${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
+            `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
             `<a class="dropdown-item" href="${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
             '<div class="dropdown-divider"></div>' +
@@ -134,7 +154,8 @@ function initializeGroupList() {
     const groupId = $(this).data("group-id");
     const groupName = $(this).data("group-name");
     bootbox.confirm({
-      message: i18next.t("Are you sure you want to delete") + " <strong>" + groupName + "</strong>?",
+      message:
+        i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
       buttons: {
         confirm: { label: i18next.t("Delete"), className: "btn-danger" },
         cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },

@@ -18,9 +18,13 @@ on:
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
 
+permissions:
+  contents: read
+
 jobs:
   validate:
     name: Generate and validate OpenAPI specs
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
