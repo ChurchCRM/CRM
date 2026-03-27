@@ -85,6 +85,9 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Admin'), '/admin/'],
     [gettext('System Settings')],
 ]);
+$sPageHeaderButtons = PageHeader::buttons([
+    ['label' => gettext('Plugin Management'), 'url' => '/plugins/management', 'icon' => 'fa-puzzle-piece'],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Build a stable, valid CSS ID from a category name
@@ -276,14 +279,14 @@ function categoryId(string $category): string {
   $(document).ready(function() {
     // Initialise TomSelect for the active tab immediately
     $('.tab-pane.active .choiceSelectBox').each(function () {
-      if (!this.tomselect) new TomSelect(this);
+      if (!this.tomselect) new TomSelect(this, { dropdownParent: 'body' });
     });
 
     // Initialise TomSelect when switching tabs
     $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function(e) {
       var target = $(e.target).attr('href');
       $(target + ' .choiceSelectBox').each(function () {
-        if (!this.tomselect) new TomSelect(this);
+        if (!this.tomselect) new TomSelect(this, { dropdownParent: 'body' });
       });
     });
 

@@ -6,6 +6,16 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
+/* When TomSelect uses dropdownParent:'body', the dropdown is detached from the
+   theme scope and loses its background — restore it explicitly. */
+body > .ts-dropdown {
+  background-color: var(--tblr-bg-surface, #fff);
+  border: 1px solid var(--tblr-border-color, #e6e7e9);
+  border-radius: var(--tblr-border-radius, 4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
 .ts-wrapper.multi .ts-control .item {
   background-color: var(--tblr-primary);
   color: #fff;
