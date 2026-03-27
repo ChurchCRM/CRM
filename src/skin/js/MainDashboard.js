@@ -191,13 +191,19 @@ export function initializeMainDashboard() {
       url: window.CRM.root + "/api/persons/birthday",
       dataSrc: function (json) {
         if (!json.people || json.people.length === 0) {
-          $("#PersonBirthdayDashboardItem").closest(".card-body").html(
-            '<div class="empty py-4">' +
-              '<div class="empty-icon"><i class="fa-solid fa-cake-candles fa-2x text-muted"></i></div>' +
-              '<p class="empty-title">' + i18next.t("No Birthdays") + '</p>' +
-              '<p class="empty-subtitle text-muted">' + i18next.t("No birthdays in the past or next 7 days") + '</p>' +
-            '</div>'
-          );
+          $("#PersonBirthdayDashboardItem")
+            .closest(".card-body")
+            .html(
+              '<div class="empty py-4">' +
+                '<div class="empty-icon"><i class="fa-solid fa-cake-candles fa-2x text-muted"></i></div>' +
+                '<p class="empty-title">' +
+                i18next.t("No Birthdays") +
+                "</p>" +
+                '<p class="empty-subtitle text-muted">' +
+                i18next.t("No birthdays in the past or next 7 days") +
+                "</p>" +
+                "</div>",
+            );
           return [];
         }
         return json.people;
@@ -305,13 +311,19 @@ export function initializeMainDashboard() {
       url: window.CRM.root + "/api/families/anniversaries",
       dataSrc: function (json) {
         if (!json.families || json.families.length === 0) {
-          $("#FamiliesWithAnniversariesDashboardItem").closest(".card-body").html(
-            '<div class="empty py-4">' +
-              '<div class="empty-icon"><i class="fa-solid fa-heart fa-2x text-muted"></i></div>' +
-              '<p class="empty-title">' + i18next.t("No Anniversaries") + '</p>' +
-              '<p class="empty-subtitle text-muted">' + i18next.t("No anniversaries in the past or next 7 days") + '</p>' +
-            '</div>'
-          );
+          $("#FamiliesWithAnniversariesDashboardItem")
+            .closest(".card-body")
+            .html(
+              '<div class="empty py-4">' +
+                '<div class="empty-icon"><i class="fa-solid fa-heart fa-2x text-muted"></i></div>' +
+                '<p class="empty-title">' +
+                i18next.t("No Anniversaries") +
+                "</p>" +
+                '<p class="empty-subtitle text-muted">' +
+                i18next.t("No anniversaries in the past or next 7 days") +
+                "</p>" +
+                "</div>",
+            );
           return [];
         }
         return json.families;
@@ -590,9 +602,13 @@ export function initializeMainDashboard() {
         $("#depositChartRow .card-body").html(
           '<div class="empty py-4">' +
             '<div class="empty-icon"><i class="fa-solid fa-circle-dollar-to-slot fa-2x text-muted"></i></div>' +
-            '<p class="empty-title">' + i18next.t("No Deposits") + '</p>' +
-            '<p class="empty-subtitle text-muted">' + i18next.t("No deposit data available yet") + '</p>' +
-          '</div>'
+            '<p class="empty-title">' +
+            i18next.t("No Deposits") +
+            "</p>" +
+            '<p class="empty-subtitle text-muted">' +
+            i18next.t("No deposit data available yet") +
+            "</p>" +
+            "</div>",
         );
         return;
       }
