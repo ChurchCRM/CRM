@@ -662,7 +662,7 @@ function buildRolePills() {
         return r.OptionId == roleId;
       });
       if (role) {
-        var escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        var escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         window.CRM.DataTableAPI.column(1)
           .search("^" + escapedName + "$", true, false)
           .draw();
