@@ -322,6 +322,12 @@ function initializeFAB() {
   const fabPersonLabel = $("#fab-person-label");
   const fabFamilyLabel = $("#fab-family-label");
 
+  // Scroll to top when menu toggle is clicked so user sees the nav opening
+  // Registered before early return so it works on all pages
+  $("#fab-menu-toggle").on("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
   // Hide global FAB buttons if a page-specific FAB exists
   if (
     $("#fab-person-view").length > 0 ||
@@ -349,10 +355,5 @@ function initializeFAB() {
     if (currentScroll > 50) {
       fabButtons.addClass("fab-hidden");
     }
-  });
-
-  // Scroll to top when menu toggle is clicked so user sees the nav opening
-  $("#fab-menu-toggle").on("click", function () {
-    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }

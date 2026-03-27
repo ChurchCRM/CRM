@@ -27,11 +27,10 @@
   color: #fff;
   box-shadow: 0 4px 12px rgba(32, 107, 196, 0.35);
   text-decoration: none;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, opacity 0.3s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 
   &.fab-hidden {
-    opacity: 0;
-    pointer-events: none;
+    display: none;
   }
 
   // Nested .fab-icon should be transparent — the button itself is the circle
