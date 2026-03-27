@@ -318,17 +318,24 @@ function initializeFormValidation() {
  */
 function initializeFAB() {
   const fabContainer = $("#fab-container");
+  const fabButtons = fabContainer.find(".fab-button");
   const fabPersonLabel = $("#fab-person-label");
   const fabFamilyLabel = $("#fab-family-label");
 
-  // Hide global FAB if a page-specific FAB exists
+  // Scroll to top when menu toggle is clicked so user sees the nav opening
+  // Registered before early return so it works on all pages
+  $("#fab-menu-toggle").on("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  // Hide global FAB buttons if a page-specific FAB exists
   if (
     $("#fab-person-view").length > 0 ||
     $("#fab-person-editor").length > 0 ||
     $("#fab-family-editor").length > 0 ||
     $("#fab-family-view").length > 0
   ) {
-    fabContainer.hide();
+    fabButtons.hide();
     return;
   }
 
@@ -336,18 +343,17 @@ function initializeFAB() {
   fabPersonLabel.text(i18next.t("Add New") + " " + i18next.t("Person"));
   fabFamilyLabel.text(i18next.t("Add New") + " " + i18next.t("Family"));
 
-  // Auto-hide FAB after 5 seconds
+  // Auto-hide FAB action buttons after 5 seconds (menu toggle stays visible)
   setTimeout(() => {
-    fabContainer.addClass("hidden");
+    fabButtons.addClass("fab-hidden");
   }, 5000);
 
-  // Hide FAB on any scroll to prevent blocking content
+  // Hide FAB action buttons on scroll past 50px (menu toggle stays visible)
   $(window).on("scroll", function () {
     const currentScroll = $(this).scrollTop();
 
-    // Hide FAB once user scrolls past 50px
     if (currentScroll > 50) {
-      fabContainer.addClass("hidden");
+      fabButtons.addClass("fab-hidden");
     }
   });
 }

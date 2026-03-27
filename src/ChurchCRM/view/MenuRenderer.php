@@ -34,7 +34,7 @@ class MenuRenderer
                 <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>"
                    <?= $menuItem->isExternal() ?"target='_blank'" : '' ?>
                    class="nav-link<?= $isActive ? ' active' : '' ?> flex-fill">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <span class="nav-link-icon d-inline-block">
                         <i class="fa <?= $menuItem->getIcon() ?>"></i>
                     </span>
                     <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
@@ -59,7 +59,7 @@ class MenuRenderer
                    role="button"
                    aria-expanded="<?= $isOpen ? 'true' : 'false' ?>"
                    aria-controls="<?= $collapseId ?>">
-                    <span class="nav-link-icon d-md-none d-lg-inline-block">
+                    <span class="nav-link-icon d-inline-block">
                         <i class="fa <?= $menuItem->getIcon() ?>"></i>
                     </span>
                     <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
