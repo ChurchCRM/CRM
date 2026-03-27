@@ -164,7 +164,7 @@ jobs:
     - name: Run Cypress tests (root path)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-[hash].xml
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-[filename].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -252,7 +252,7 @@ jobs:
     - name: Run Cypress tests (subdirectory path)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-[hash].xml
+        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-[filename].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -346,7 +346,7 @@ jobs:
     - name: Run Cypress tests (setup wizard)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-[filename].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -438,7 +438,7 @@ jobs:
     - name: Run Cypress tests (setup wizard subdirectory)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir-[filename].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
 
@@ -489,21 +489,85 @@ jobs:
       with:
         ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
-    - name: Download all test reports
+    - name: Download root path reports
       uses: actions/download-artifact@v8.0.1
       with:
-        pattern: test-reports-*
-        merge-multiple: true
-        path: reports
+        name: test-reports-root
+        path: reports/root
+      continue-on-error: true
 
-    - name: Publish unified test results
-      uses: dorny/test-reporter@v3
+    - name: Download subdirectory reports
+      uses: actions/download-artifact@v8.0.1
       with:
-        name: Cypress Test Results
-        path: reports/**/*.xml
+        name: test-reports-subdir
+        path: reports/subdir
+      continue-on-error: true
+
+    - name: Download new system reports
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: test-reports-new-system
+        path: reports/new-system
+      continue-on-error: true
+
+    - name: Download new system subdirectory reports
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: test-reports-new-system-subdir
+        path: reports/new-system-subdir
+      continue-on-error: true
+
+    - name: Report — Root Path
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: Root Path'
+        path: reports/root/*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
+        list-suites: failed
+        list-tests: failed
+        max-annotations: 50
+
+    - name: Report — Subdirectory
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: Subdirectory'
+        path: reports/subdir/*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: failed
+        list-tests: failed
+        max-annotations: 50
+
+    - name: Report — New System Setup (Root)
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: New System Setup (Root)'
+        path: reports/new-system/*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: failed
+        list-tests: failed
+        max-annotations: 50
+
+    - name: Report — New System Setup (Subdirectory)
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: New System Setup (Subdirectory)'
+        path: reports/new-system-subdir/*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: failed
+        list-tests: failed
+        max-annotations: 50
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
