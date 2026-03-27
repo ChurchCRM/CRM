@@ -26,6 +26,7 @@ on:
 
 jobs:
   build:
+    timeout-minutes: 30
     permissions:
       contents: read
     runs-on: ubuntu-latest
@@ -483,6 +484,9 @@ jobs:
       checks: write
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
     - name: Download all test reports
       uses: actions/download-artifact@v8.0.1
       with:
@@ -501,6 +505,7 @@ jobs:
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
+    timeout-minutes: 15
     permissions:
       contents: read
     runs-on: ubuntu-latest
