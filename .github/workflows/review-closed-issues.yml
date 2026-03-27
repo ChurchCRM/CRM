@@ -33,6 +33,7 @@ permissions:
 
 jobs:
   review-closed-issues:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
       - name: Review closed issues without PRs

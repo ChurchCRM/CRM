@@ -10,6 +10,7 @@ on:
 jobs:
   dispatch:
     name: Send repository_dispatch to docs.churchcrm.io
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     permissions:
       contents: read
