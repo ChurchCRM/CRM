@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 00:37+0000\n"
+"POT-Creation-Date: 2026-03-27 17:47+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,12 +31,6 @@ msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
-msgstr ""
-
-msgid " Property Assignment"
-msgstr ""
-
-msgid " Property Unassignment"
 msgstr ""
 
 msgid " by that name already exists."
@@ -233,6 +227,9 @@ msgstr ""
 msgid "API Key is required."
 msgstr ""
 
+msgid "About"
+msgstr ""
+
 msgid "About WebDAV Backups"
 msgstr ""
 
@@ -338,12 +335,6 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
-msgid "Add Group Member"
-msgstr ""
-
-msgid "Add Group Members to Cart"
-msgstr ""
-
 msgid "Add Individuals to Cart"
 msgstr ""
 
@@ -384,12 +375,6 @@ msgid "Add Records"
 msgstr ""
 
 msgid "Add Results to Cart"
-msgstr ""
-
-msgid "Add Selected Members to Cart"
-msgstr ""
-
-msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
@@ -474,9 +459,6 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
-msgstr ""
-
-msgid "Add students to this class"
 msgstr ""
 
 msgid "Add to Cart"
@@ -823,9 +805,6 @@ msgstr ""
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr ""
-
 msgid "Are you sure you want to unassign this property?"
 msgstr ""
 
@@ -866,9 +845,6 @@ msgstr ""
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
-msgid "Assign a property to a record"
-msgstr ""
-
 msgid "Assign and manage donation envelope numbers"
 msgstr ""
 
@@ -894,9 +870,6 @@ msgid "Assigned Groups"
 msgstr ""
 
 msgid "Assigned Properties"
-msgstr ""
-
-msgid "Assigning"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -969,6 +942,9 @@ msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
 msgid "BCC"
+msgstr ""
+
+msgid "BCC All"
 msgstr ""
 
 msgid "Back"
@@ -1975,10 +1951,19 @@ msgstr ""
 msgid "Coordinate database file name"
 msgstr ""
 
+msgid "Copied"
+msgstr ""
+
 msgid "Copied!"
 msgstr ""
 
 msgid "Copy"
+msgstr ""
+
+msgid "Copy Members to Group"
+msgstr ""
+
+msgid "Copy to Group"
 msgstr ""
 
 msgid "Copyright"
@@ -2429,6 +2414,9 @@ msgstr ""
 msgid "Delete Family Record ONLY"
 msgstr ""
 
+msgid "Delete Group"
+msgstr ""
+
 msgid "Delete Person"
 msgstr ""
 
@@ -2453,9 +2441,6 @@ msgstr ""
 msgid "Delete records permission"
 msgstr ""
 
-msgid "Delete this Group"
-msgstr ""
-
 msgid "Delete this person?"
 msgstr ""
 
@@ -2472,10 +2457,10 @@ msgstr ""
 msgid "Deleting an event will also delete all attendance counts. Delete this event?"
 msgstr ""
 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
 msgstr ""
 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr ""
 
 msgid "Deletion Results"
@@ -2623,9 +2608,6 @@ msgid "Disable Two-Factor Authentication"
 msgstr ""
 
 msgid "Disabled"
-msgstr ""
-
-msgid "Disabled for this group."
 msgstr ""
 
 msgid "Disclaimer"
@@ -2828,7 +2810,13 @@ msgstr ""
 msgid "Edit Family"
 msgstr ""
 
+msgid "Edit Form"
+msgstr ""
+
 msgid "Edit Fundraiser"
+msgstr ""
+
+msgid "Edit Group"
 msgstr ""
 
 msgid "Edit Group-Specific Properties Form"
@@ -2838,6 +2826,9 @@ msgid "Edit JSON Settings"
 msgstr ""
 
 msgid "Edit List Options"
+msgstr ""
+
+msgid "Edit Member Properties Form"
 msgstr ""
 
 msgid "Edit Payment"
@@ -2867,16 +2858,10 @@ msgstr ""
 msgid "Edit Value"
 msgstr ""
 
-msgid "Edit class details"
-msgstr ""
-
 msgid "Edit custom properties for a group member"
 msgstr ""
 
 msgid "Edit records permission"
-msgstr ""
-
-msgid "Edit this Group"
 msgstr ""
 
 msgid "Edited"
@@ -2903,12 +2888,6 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-msgid "Email (BCC)"
-msgstr ""
-
-msgid "Email (To)"
-msgstr ""
-
 msgid "Email Address"
 msgstr ""
 
@@ -2927,10 +2906,10 @@ msgstr ""
 msgid "Email Debug Info"
 msgstr ""
 
-msgid "Email Families"
+msgid "Email Export"
 msgstr ""
 
-msgid "Email Group"
+msgid "Email Families"
 msgstr ""
 
 msgid "Email PDF"
@@ -2949,9 +2928,6 @@ msgid "Email address is required."
 msgstr ""
 
 msgid "Email cart items"
-msgstr ""
-
-msgid "Email export"
 msgstr ""
 
 msgid "Email is Not Valid"
@@ -3082,6 +3058,9 @@ msgstr ""
 
 #. Context: locales
 msgid "English - United States"
+msgstr ""
+
+msgid "Enrolled"
 msgstr ""
 
 msgid "Ensure all deposits for the tax year are closed before generating statements."
@@ -3274,10 +3253,13 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
-msgid "Exclude"
+msgid "Exclude Inactive Families"
 msgstr ""
 
-msgid "Exclude Inactive Families"
+msgid "Exclude from Email Export"
+msgstr ""
+
+msgid "Excluded"
 msgstr ""
 
 msgid "Execute Query"
@@ -3991,6 +3973,9 @@ msgstr ""
 msgid "Full Backup"
 msgstr ""
 
+msgid "Full Group View"
+msgstr ""
+
 msgid "Full Path:"
 msgstr ""
 
@@ -4243,9 +4228,6 @@ msgstr ""
 msgid "Group Member Roles Editor"
 msgstr ""
 
-msgid "Group Members"
-msgstr ""
-
 msgid "Group Membership"
 msgstr ""
 
@@ -4256,9 +4238,6 @@ msgid "Group Name"
 msgstr ""
 
 msgid "Group Properties"
-msgstr ""
-
-msgid "Group Role"
 msgstr ""
 
 msgid "Group Roles"
@@ -4307,9 +4286,6 @@ msgid "Group successfully added to the Cart."
 msgstr ""
 
 msgid "Group successfully removed from the Cart."
-msgstr ""
-
-msgid "Group-Specific Properties"
 msgstr ""
 
 msgid "Group-Specific Properties Form Editor"
@@ -4603,7 +4579,13 @@ msgstr ""
 msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
+msgid "Include in Email Export"
+msgstr ""
+
 msgid "Include only these classifications in the directory, comma separated"
+msgstr ""
+
+msgid "Included"
 msgstr ""
 
 msgid "Includes database and all uploaded photos. Larger file size."
@@ -4841,6 +4823,12 @@ msgid "Kenya"
 msgstr ""
 
 msgid "Key People"
+msgstr ""
+
+msgid "Kiosk"
+msgstr ""
+
+msgid "Kiosk Enabled"
 msgstr ""
 
 msgid "Kiosk Manager"
@@ -5323,6 +5311,9 @@ msgstr ""
 msgid "Manage person, family, and group property types"
 msgstr ""
 
+msgid "Manage properties from the"
+msgstr ""
+
 msgid "Manage system users, permissions, and two-factor authentication settings"
 msgstr ""
 
@@ -5351,9 +5342,6 @@ msgid "Map Settings"
 msgstr ""
 
 msgid "Map cart items"
-msgstr ""
-
-msgid "Map this group"
 msgstr ""
 
 msgid "Map to Field"
@@ -5478,15 +5466,6 @@ msgid "Members"
 msgstr ""
 
 msgid "Members added to cart."
-msgstr ""
-
-msgid "Members from group"
-msgstr ""
-
-msgid "Members to another group"
-msgstr ""
-
-msgid "Members to cart"
 msgstr ""
 
 #. Context: query_qry
@@ -5681,10 +5660,16 @@ msgstr ""
 msgid "Move Event"
 msgstr ""
 
-msgid "Move Selected Members to Group"
+msgid "Move Members"
+msgstr ""
+
+msgid "Move Members to Group"
 msgstr ""
 
 msgid "Move down"
+msgstr ""
+
+msgid "Move to Group"
 msgstr ""
 
 msgid "Move up"
@@ -5958,6 +5943,9 @@ msgstr ""
 msgid "No deposits found."
 msgstr ""
 
+msgid "No description set."
+msgstr ""
+
 msgid "No email address on file"
 msgstr ""
 
@@ -5965,6 +5953,9 @@ msgid "No email passed in"
 msgstr ""
 
 msgid "No event types defined yet."
+msgstr ""
+
+msgid "No events linked to this class."
 msgstr ""
 
 msgid "No family name entered!"
@@ -5999,6 +5990,9 @@ msgstr ""
 
 #, php-format
 msgid "No matches for \"%s\". Try a different search term."
+msgstr ""
+
+msgid "No member properties defined."
 msgstr ""
 
 msgid "No members found for this role."
@@ -6059,9 +6053,6 @@ msgid "No volunteer opportunity assignments yet."
 msgstr ""
 
 msgid "No, cancel this deletion"
-msgstr ""
-
-msgid "No, retain this assignment"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -6748,9 +6739,6 @@ msgstr ""
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
-msgid "Please confirm removal of this property from this"
-msgstr ""
-
 msgid "Please confirm removal of user status from"
 msgstr ""
 
@@ -7052,13 +7040,16 @@ msgstr ""
 msgid "Property Types"
 msgstr ""
 
+msgid "Property assignment not found."
+msgstr ""
+
+msgid "Property deleted successfully."
+msgstr ""
+
 msgid "Property not found"
 msgstr ""
 
-msgid "Property successfully assigned."
-msgstr ""
-
-msgid "Property to Delete"
+msgid "Property not found."
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
@@ -7230,13 +7221,10 @@ msgstr ""
 msgid "Remove All from Cart"
 msgstr ""
 
+msgid "Remove Property"
+msgstr ""
+
 msgid "Remove Results from Cart"
-msgstr ""
-
-msgid "Remove Selected Members from group"
-msgstr ""
-
-msgid "Remove a property from a record"
 msgstr ""
 
 msgid "Remove all from Cart"
@@ -7246,9 +7234,6 @@ msgid "Remove from Cart"
 msgstr ""
 
 msgid "Remove from Class"
-msgstr ""
-
-msgid "Remove from Group"
 msgstr ""
 
 msgid "Remove this attendance count?"
@@ -7413,6 +7398,9 @@ msgstr ""
 msgid "Return to Family View"
 msgstr ""
 
+msgid "Return to Groups"
+msgstr ""
+
 msgid "Return to People"
 msgstr ""
 
@@ -7457,6 +7445,9 @@ msgid "Role name updated."
 msgstr ""
 
 msgid "Role not found."
+msgstr ""
+
+msgid "Roles"
 msgstr ""
 
 #. Context: countries
@@ -7674,6 +7665,9 @@ msgstr ""
 msgid "Search for supervisor..."
 msgstr ""
 
+msgid "Search groups..."
+msgstr ""
+
 msgid "Search or select..."
 msgstr ""
 
@@ -7855,12 +7849,6 @@ msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
 msgid "Send email to families"
-msgstr ""
-
-msgid "Send email with recipients in BCC field (hidden from each other)"
-msgstr ""
-
-msgid "Send email with recipients in To field"
 msgstr ""
 
 #. Context: countries
@@ -8491,9 +8479,6 @@ msgstr ""
 msgid "Text Field (long)"
 msgstr ""
 
-msgid "Text Group"
-msgstr ""
-
 msgid "Text before name in emails/reports"
 msgstr ""
 
@@ -8560,6 +8545,9 @@ msgstr ""
 msgid "The property could not be assigned."
 msgstr ""
 
+msgid "The property could not be removed."
+msgstr ""
+
 msgid "The property could not be unassigned."
 msgstr ""
 
@@ -8571,6 +8559,9 @@ msgid "The property is already assigned."
 msgstr ""
 
 msgid "The property is successfully assigned."
+msgstr ""
+
+msgid "The property is successfully removed."
 msgstr ""
 
 msgid "The property is successfully unassigned."
@@ -8836,13 +8827,7 @@ msgstr ""
 msgid "Total Deposits:"
 msgstr ""
 
-msgid "Total Enrolled"
-msgstr ""
-
 msgid "Total Groups"
-msgstr ""
-
-msgid "Total Members"
 msgstr ""
 
 msgid "Total Payments"
@@ -9012,9 +8997,6 @@ msgid "Unable to re-encode JSON for configuration"
 msgstr ""
 
 msgid "Unassigned"
-msgstr ""
-
-msgid "Unassigning"
 msgstr ""
 
 msgid "Unclassified"
@@ -9567,6 +9549,9 @@ msgstr ""
 msgid "We could not find the family you were looking for."
 msgstr ""
 
+msgid "We could not find the group you were looking for."
+msgstr ""
+
 msgid "We could not find the person you were looking for."
 msgstr ""
 
@@ -9732,13 +9717,13 @@ msgstr ""
 msgid "Yes, Remove"
 msgstr ""
 
+msgid "Yes, delete"
+msgstr ""
+
 msgid "Yes, delete this Opportunity"
 msgstr ""
 
 msgid "Yes, delete this record"
-msgstr ""
-
-msgid "Yes, unassign this Property"
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
@@ -9948,6 +9933,9 @@ msgstr ""
 msgid "ago"
 msgstr ""
 
+msgid "all members"
+msgstr ""
+
 msgid "already in cart"
 msgstr ""
 
@@ -10033,6 +10021,9 @@ msgstr ""
 msgid "from this group?"
 msgstr ""
 
+msgid "full group view"
+msgstr ""
+
 msgid "funds"
 msgstr ""
 
@@ -10076,6 +10067,9 @@ msgid "loading"
 msgstr ""
 
 msgid "manifest."
+msgstr ""
+
+msgid "members"
 msgstr ""
 
 msgid "members. Already had"
@@ -10219,6 +10213,9 @@ msgid "their classroom"
 msgstr ""
 
 msgid "to"
+msgstr ""
+
+msgid "to another group?"
 msgstr ""
 
 msgid "total"
