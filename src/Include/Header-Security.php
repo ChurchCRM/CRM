@@ -10,6 +10,9 @@
  *   System Settings > bEnforceCSP configuration option.
  *   CSP violations are reported to /api/public/csp-report (public endpoint).
  *
+ * - Strict-Transport-Security (HSTS): Enforces HTTPS connections
+ *   Enable via System Settings > bHSTSEnable configuration option.
+ *
  * - X-Frame-Options: Prevents clickjacking attacks
  */
 
@@ -32,6 +35,9 @@ $csp = [
     'report-uri ' . SystemURLs::getRootPath() . '/api/public/csp-report',
 ];
 
+if (SystemConfig::getBooleanValue('bHSTSEnable')) {
+    header('Strict-Transport-Security: max-age=31536000; includeSubDomains');
+}
 header('X-Frame-Options: SAMEORIGIN');
 // CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
 // The mode is controlled by the bEnforceCSP system configuration option

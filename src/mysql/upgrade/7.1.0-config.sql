@@ -1,5 +1,4 @@
--- Remove bHSTSEnable (cfg_id 20142) — HSTS is a web server concern, configure at nginx/Apache level.
-DELETE FROM config_cfg WHERE cfg_name = 'bHSTSEnable';
-
--- Remove iDashboardServiceIntervalTime (cfg_id 2047) — no longer read anywhere in the application.
-DELETE FROM config_cfg WHERE cfg_name = 'iDashboardServiceIntervalTime';
+-- Migrate demo Google Analytics tracking ID to plugin config key.
+-- The sGoogleTrackingID legacy key was removed in 7.0.0; this ensures any
+-- installs that skipped that migration are cleaned up.
+DELETE FROM config_cfg WHERE cfg_name = 'sGoogleTrackingID';
