@@ -69,6 +69,8 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
                     }
                     const propertyId = noprompt.ProId ?? noprompt.pro_ID;
 
+                    // Re-establish browser session after API calls (cy.request sets PHP cookies)
+                    cy.setupAdminSession({ forceLogin: true });
                     cy.visit(`/groups/view/${groupID}`);
                     cy.get("#group-property-select").select(String(propertyId));
                     cy.get("#assign-group-property-btn").click();
@@ -83,6 +85,9 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
         let testPropertyId = null;
 
         before(() => {
+            // Establish session first — API cy.request() calls create PHP sessions
+            // that can overwrite browser cookies
+            cy.setupAdminSession();
             // Ensure at least one property is assigned before the suite runs
             cy.makePrivateAdminAPICall(
                 "GET",
