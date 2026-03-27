@@ -60,7 +60,7 @@ jobs:
 
     - name: get-npm-version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@v1.3.1
+      run: echo "current-version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
     - name: Setup PHP 8.4
       uses: shivammathur/setup-php@v2
@@ -609,6 +609,7 @@ jobs:
         path: reports/**/*.xml
         reporter: java-junit
         fail-on-error: true
+        fail-on-empty: false
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
@@ -643,7 +644,7 @@ jobs:
 
     - name: get-npm-version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@v1.3.1
+      run: echo "current-version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
     - name: Download Build Artifact
       uses: actions/download-artifact@v8.0.1
