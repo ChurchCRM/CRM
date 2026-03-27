@@ -260,7 +260,7 @@
   },
   "current": {
     "versions": ["7.0.5"],
-    "scripts": ["7.1.0-config.sql"],
+    "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
     "dbVersion": "7.1.0"
   }
 }
