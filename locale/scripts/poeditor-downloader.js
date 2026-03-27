@@ -39,6 +39,9 @@ const MISSING_OUTPUT_DIR = localeConfig.terms.missingNew;
 const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
 const MIN_MISSING_TERMS = 0; // never skip missing terms
 
+// Sanitize untrusted strings before logging to prevent log injection
+const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
+
 // File formats to download
 const FILE_FORMATS = [
     { type: 'key_value_json', dir: JSON_OUTPUT_DIR, ext: 'json', filename: (locale) => `${locale}.json` },
@@ -262,7 +265,7 @@ function makeRequest(url, postData) {
                 const backoff = Math.min(BASE_DELAY_MS * (BACKOFF_FACTOR ** (attempt - 1)), 30000);
                 const jitter = Math.floor(Math.random() * Math.floor(backoff / 2));
                 const wait = backoff + jitter;
-                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${err.message}`);
+                console.warn(`  ⚠️  Network error, retrying in ${wait}ms (attempt ${attempt}/${MAX_RETRIES}): ${sanitize(err.message)}`);
                 await sleep(wait);
             }
         }
@@ -398,7 +401,7 @@ async function downloadEnglishMasterList() {
             throw new Error(result.response.message || 'Unknown POEditor error');
         }
     } catch (error) {
-        console.error(`  ❌ Failed to download English master list: ${error.message}`);
+        console.error(`  ❌ Failed to download English master list: ${sanitize(error.message)}`);
         throw error;
     }
 }
@@ -415,7 +418,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             // Delay between format downloads (700ms to reduce rate pressure)
             await sleep(700);
         } catch (error) {
-            console.error(`    ❌ ${format.ext.toUpperCase()}: ${error.message}`);
+            console.error(`    ❌ ${format.ext.toUpperCase()}: ${sanitize(error.message)}`);
             throw error;
         }
     }
@@ -443,7 +446,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
             }
         }
     } catch (err) {
-        console.warn(`  ⚠️  Failed to fetch missing terms for ${locale}: ${err.message}`);
+        console.warn(`  ⚠️  Failed to fetch missing terms for ${sanitize(locale)}: ${sanitize(err.message)}`);
     }
 }
 
@@ -562,7 +565,7 @@ async function main() {
                 await sleep(1500); // 1.5 seconds between languages to reduce API pressure
             }
         } catch (error) {
-            console.error(`  ❌ ${locale}: ${error.message}`);
+            console.error(`  ❌ ${sanitize(locale)}: ${sanitize(error.message)}`);
             failedLanguages.push(locale);
         }
     }
