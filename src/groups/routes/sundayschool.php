@@ -7,6 +7,7 @@ use ChurchCRM\Service\DashboardService;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -56,6 +57,14 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         $pageArgs = [
             'sRootPath'          => SystemURLs::getRootPath(),
             'sPageTitle'         => gettext('Sunday School Dashboard'),
+            'sPageSubtitle'      => gettext('Manage Sunday school classes, teachers, and student attendance'),
+            'aBreadcrumbs'       => PageHeader::breadcrumbs([
+                [gettext('Groups'), '/groups/dashboard'],
+                [gettext('Sunday School')],
+            ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Kiosk Manager'), 'url' => '/kiosk/admin', 'icon' => 'fa-tablet-screen-button'],
+            ]),
             'classStats'         => $classStats,
             'kidsWithoutClasses' => $kidsWithoutClasses,
             'classes'            => $classes,
@@ -142,6 +151,12 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         $pageArgs = [
             'sRootPath'              => SystemURLs::getRootPath(),
             'sPageTitle'             => gettext('Sunday School') . ': ' . $iGroupName,
+            'sPageSubtitle'          => gettext('View class roster, teacher assignments, and contact information'),
+            'aBreadcrumbs'           => PageHeader::breadcrumbs([
+                [gettext('Groups'), '/groups/dashboard'],
+                [gettext('Sunday School'), '/groups/sundayschool/dashboard'],
+                [$iGroupName],
+            ]),
             'iGroupId'               => $iGroupId,
             'iGroupName'             => $iGroupName,
             'birthDayMonthChartJSON' => $birthDayMonthChartJSON,

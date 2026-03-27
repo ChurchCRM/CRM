@@ -171,7 +171,7 @@ class VonagePlugin extends AbstractPlugin
             return [
                 'success' => false,
                 'message' => sprintf(
-                    gettext('Invalid "From Number": "%s". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK).'),
+                    gettext('Invalid"From Number":"%s". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK).'),
                     $fromNumber
                 ),
             ];
@@ -241,11 +241,11 @@ class VonagePlugin extends AbstractPlugin
      * a structurally valid E.164 number (7–15 digits, non-zero first digit).
      *
      * Examples:
-     * - "+14155551234"    -> "+14155551234"  (US, already E.164)
-     * - "14155551234"     -> "+14155551234"  (US, digits with country code)
-     * - "+44 7911 123456" -> "+447911123456" (UK, formatted)
-     * - "447911 123 456"  -> "+447911123456" (UK, partial formatting)
-     * - "555-1234"        -> null            (too short / no country code)
+     * -"+14155551234"    ->"+14155551234"  (US, already E.164)
+     * -"14155551234"     ->"+14155551234"  (US, digits with country code)
+     * -"+44 7911 123456" ->"+447911123456" (UK, formatted)
+     * -"447911 123 456"  ->"+447911123456" (UK, partial formatting)
+     * -"555-1234"        -> null            (too short / no country code)
      *
      * @param string $phone Raw phone number in any format
      *

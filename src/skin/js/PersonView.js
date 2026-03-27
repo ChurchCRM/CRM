@@ -1,61 +1,14 @@
 $(document).ready(function () {
-  $(".changeRole").click(function (event) {
-    var GroupID = $(this).data("groupid");
-    window.CRM.groups.promptSelection(
-      { Type: window.CRM.groups.selectTypes.Role, GroupID: GroupID },
-      function (selection) {
-        window.CRM.groups.addPerson(GroupID, window.CRM.currentPersonID, selection.RoleID).done(function () {
-          location.reload();
-        });
-      },
-    );
-  });
+  // Group interactions (add, change role, remove) are handled by
+  // webpack/people/person-group-manager.js — loaded via the
+  // people-person-view webpack entry point.
 
-  $(".groupRemove").click(function (event) {
-    var targetGroupID = event.currentTarget.dataset.groupid;
-    var targetGroupName = event.currentTarget.dataset.groupname;
-
-    bootbox.confirm({
-      message: i18next.t("Are you sure you want to remove this person's membership from") + " " + targetGroupName + "?",
-      buttons: {
-        confirm: {
-          label: i18next.t("Yes"),
-          className: "btn-success",
-        },
-        cancel: {
-          label: i18next.t("No"),
-          className: "btn-danger",
-        },
-      },
-      callback: function (result) {
-        if (result) {
-          window.CRM.groups.removePerson(targetGroupID, window.CRM.currentPersonID).done(function () {
-            location.reload();
-          });
-        }
-      },
-    });
-  });
-
-  $("#addGroup").click(function () {
-    var target = window.CRM.groups.promptSelection(
-      {
-        Type: window.CRM.groups.selectTypes.Group | window.CRM.groups.selectTypes.Role,
-      },
-      function (data) {
-        window.CRM.groups.addPerson(data.GroupID, window.CRM.currentPersonID, data.RoleID).done(function () {
-          location.reload();
-        });
-      },
-    );
-  });
-
-  $("#input-person-properties").on("select2:select", function (event) {
-    promptBox = $("#prompt-box");
+  $("#input-person-properties").on("change", function () {
+    var promptBox = $("#prompt-box");
     promptBox.removeClass("form-group").html("");
-    selected = $("#input-person-properties :selected");
-    pro_prompt = selected.data("pro_prompt");
-    pro_value = selected.data("pro_value");
+    var selected = $("#input-person-properties :selected");
+    var pro_prompt = selected.data("pro_prompt");
+    var pro_value = selected.data("pro_value");
     if (pro_prompt) {
       promptBox
         .addClass("form-group")

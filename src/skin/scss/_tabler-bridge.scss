@@ -1,0 +1,190 @@
+// ================================================================
+// ChurchCRM Tabler Custom Styles
+// Tabler CSS variable overrides and component skins.
+// Bundled via webpack. No AdminLTE bridge code — migration complete.
+// ================================================================
+
+// --- ChurchCRM brand color overrides for Tabler CSS variables ----
+:root {
+  --tblr-primary:         #206bc4;
+  --tblr-primary-lt:      #d7e8f7;
+  --tblr-success:         #2fb344;
+  --tblr-success-lt:      #d3f2d8;
+  --tblr-danger:          #d63939;
+  --tblr-danger-lt:       #fce8e8;
+  --tblr-warning:         #f76707;
+  --tblr-warning-lt:      #fde9d5;
+  --tblr-info:            #4dabf7;
+  --tblr-info-lt:         #dff0ff;
+  --tblr-secondary:       #667382;
+  --tblr-font-sans-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+// --- DataTables — Tabler skin ----------------------------------------
+.dataTables_wrapper {
+  .dataTables_filter input,
+  .dataTables_length select {
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    color: var(--tblr-body-color);
+    background-color: var(--tblr-bg-forms);
+
+    &:focus {
+      border-color: var(--tblr-primary);
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
+    }
+  }
+}
+
+// --- Tom Select — Tabler skin overrides --------------------------------
+.ts-wrapper {
+  &.single .ts-control {
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+    background-color: var(--tblr-bg-forms);
+    color: var(--tblr-body-color);
+    padding: 0.375rem 0.75rem;
+  }
+
+  &.focus .ts-control {
+    border-color: var(--tblr-primary);
+    box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
+  }
+
+  .ts-dropdown {
+    background-color: var(--tblr-bg-surface);
+    border: 1px solid var(--tblr-border-color);
+    border-radius: var(--tblr-border-radius);
+    box-shadow: 0 4px 16px rgba(24, 35, 58, 0.12);
+    color: var(--tblr-body-color);
+
+    .option {
+      color: var(--tblr-body-color);
+
+      &:hover,
+      &.active {
+        background-color: var(--tblr-primary-lt);
+        color: var(--tblr-primary);
+      }
+    }
+  }
+}
+
+// --- Floating Action Buttons -----------------------------------------
+.fab-container {
+  position: fixed;
+  bottom: 4.5rem; // Clear the Tabler footer
+  right: 1.5rem;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+}
+
+.fab-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--tblr-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(32, 107, 196, 0.35);
+  text-decoration: none;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+
+  // Nested .fab-icon should be transparent — the button itself is the circle
+  .fab-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: none;
+    color: inherit;
+    font-size: 1.125rem;
+  }
+
+  // Hide the label tooltip — labels are set via JS but not needed in Tabler layout
+  .fab-label {
+    display: none;
+  }
+
+  &:hover {
+    background-color: #1a5ca8;
+    box-shadow: 0 6px 20px rgba(32, 107, 196, 0.45);
+    transform: translateY(-2px);
+    color: #fff;
+  }
+
+  // Family button uses success/green color
+  &.fab-family {
+    background-color: var(--tblr-success);
+    box-shadow: 0 4px 12px rgba(47, 179, 68, 0.35);
+
+    &:hover {
+      background-color: #1f8c3b;
+      box-shadow: 0 6px 20px rgba(47, 179, 68, 0.45);
+    }
+  }
+}
+
+// --- Sidebar: chevron folder indicator -----------------------------------
+// Tabler 1.4.0 dropped nav-link-arrow — define it here until Tabler adds it back.
+// The chevron icon (fa-chevron-down) rotates 180° when the section is open.
+.navbar-vertical .nav-link {
+  .nav-link-title { flex: 1; }
+
+  .nav-link-arrow {
+    display: inline-flex;
+    align-items: center;
+    padding-left: 0.25rem;
+    flex-shrink: 0;
+    opacity: 0.4;
+    font-size: 0.65rem;
+    transition: transform 0.2s ease;
+  }
+
+  &[aria-expanded="true"] .nav-link-arrow {
+    transform: rotate(180deg);
+    opacity: 0.7;
+  }
+}
+
+/* Sidebar badge contrast — moved from inline header styles. Use utilities
+   where possible, but keep these rules as a compatibility bridge while
+   templates migrate off inline styles. */
+.navbar-vertical .badge {
+  color: #fff;
+  font-weight: 600;
+}
+.navbar-vertical .badge.bg-warning,
+.navbar-vertical .badge.bg-info,
+.navbar-vertical .badge.bg-light {
+  color: #333 !important;
+}
+
+// --- Topbar search — remove double border with adjacent button --------
+.navbar-search-btn {
+  border-left: 0;
+}
+
+// --- Volunteer persona: large touch targets on mobile ----------------
+@media (max-width: 767.98px) {
+  .btn:not(.btn-sm) {
+    min-height: 2.75rem;
+    padding: 0.625rem 1rem;
+  }
+
+  .fab-button {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}

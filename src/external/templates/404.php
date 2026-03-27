@@ -3,7 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext("Page not fond");
-require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 ?>
   <div class="register-logo" style=" margin: 72px auto 0;">
     <a href="<?= SystemURLs::getRootPath() ?>/"><b>Church</b>CRM</a>
@@ -21,4 +21,4 @@ require(SystemURLs::getDocumentRoot() . "/Include/HeaderNotLoggedIn.php");
   <!-- /.error-page -->
 
 <?php
-require(SystemURLs::getDocumentRoot() . "/Include/FooterNotLoggedIn.php");
+require(SystemURLs::getDocumentRoot() ."/Include/FooterNotLoggedIn.php");

@@ -21,8 +21,23 @@ require_once __DIR__ . '/Header-Security.php';
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
 
+    <style>
+      html, body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      body > *:not(.auth-footer) {
+        flex: 1;
+      }
+    </style>
+
 </head>
-<body class="hold-transition login-page">
+<body class="antialiased page-auth">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles
@@ -32,7 +47,7 @@ require_once __DIR__ . '/Header-Security.php';
     
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
-      root: "<?= SystemURLs::getRootPath() ?>",
+      root:"<?= SystemURLs::getRootPath() ?>",
       churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
     });
   </script>

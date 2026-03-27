@@ -283,7 +283,7 @@ const data = await fetchAPIJSON<AvatarInfo>('person/123/avatar');
 
 ## OpenAPI Documentation (REQUIRED for all API changes)
 
-ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference at `docs.churchcrm.io`.
+ChurchCRM uses `zircote/swagger-php` 4.x to generate OpenAPI 3.0 specs from DocBlock annotations. The generated specs power the public API reference in the Documentation.
 
 **When adding or updating any API endpoint, you MUST add/update the `@OA\*` annotation.**
 
@@ -411,4 +411,4 @@ $params = [
 **Middleware:** `src/ChurchCRM/Slim/Middleware/`
 **OpenAPI info:** `src/api/openapi/openapi-public-info.php`, `src/api/openapi/openapi-private-info.php`
 **Generated specs:** `CRM/openapi/public-api.yaml`, `CRM/openapi/private-api.yaml`
-**Docs site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`
+**Documentation site:** `docs.churchcrm.io/openapi/`, `docs.churchcrm.io/docs/public-api/`, `docs.churchcrm.io/docs/private-api/`

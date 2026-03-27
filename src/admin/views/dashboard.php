@@ -33,29 +33,17 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/admin-dashboard.min.css') ?>">
 
 <div class="container-fluid">
-    <!-- Page Header -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <h2 class="mb-1">
-                <i class="fa-solid fa-hand-fist text-primary"></i> <?= gettext('Welcome to ChurchCRM') ?>
-            </h2>
-            <p class="text-muted mb-0"><?= gettext("Let's get your system set up and ready to use") ?></p>
-        </div>
-    </div>
-
     <?php if ($hasURLError): ?>
     <!-- Configuration URL Error Alert -->
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         <div class="d-flex align-items-start">
-            <div class="mr-3 mt-1">
-                <i class="fa-solid fa-exclamation-circle fa-3x"></i>
+            <div class="me-3 mt-1">
+                <i class="fa-solid fa-circle-exclamation fa-3x"></i>
             </div>
             <div class="flex-grow-1">
                 <h4 class="alert-heading mb-3">
-                    <i class="fa-solid fa-triangle-exclamation mr-2"></i><?= gettext('Critical Configuration Error') ?>
+                    <i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Critical Configuration Error') ?>
                 </h4>
                 
                 <div class="card border-0 mb-3">
@@ -75,10 +63,9 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <div class="card border-0 mb-3">
                     <div class="card-body bg-white">
                         <h6 class="text-dark mb-3"><strong><?= gettext('How to Fix:') ?></strong></h6>
-                        <ol class="mb-2 pl-3 text-dark">
+                        <ol class="mb-2 ps-3 text-dark">
                             <li class="mb-2"><?= gettext('Connect to your server via SSH, FTP, or your hosting control panel') ?></li>
-                            <li class="mb-2"><?= gettext('Navigate to your ChurchCRM installation directory') ?></li>
-                            <li class="mb-2"><?= gettext('Open this file in a text editor:') ?> <code class="text-primary">src/Include/Config.php</code></li>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <li class="mb-2"><?= gettext('Find the line:') ?> <code>$URL[0] = '...';</code></li>
                             <li class="mb-2"><?= gettext('Update it to a valid URL that:') ?>
                                 <ul class="mt-1">
@@ -92,16 +79,16 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 </div>
 
                 <div class="card border-success mb-0">
-                    <div class="card-header bg-success text-white">
-                        <h6 class="mb-0"><i class="fa-solid fa-check-circle mr-2"></i><?= gettext('Valid Examples:') ?></h6>
+                    <div class="card-status-top bg-success"></div>
+                    <div class="card-header">
+                        <h6 class="mb-0"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Valid Examples:') ?></h6>
                     </div>
                     <div class="card-body bg-white">
                         <div class="mb-2">
                             <small class="text-muted"><?= gettext('Local development:') ?></small><br>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'http://localhost/';</code>
                         </div>
-                        <div class="mb-2">
-                            <small class="text-muted"><?= gettext('Subdirectory installation:') ?></small><br>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             <code class="text-success" style="font-size: 1em;">$URL[0] = 'https://www.yourdomain.com/churchcrm/';</code>
                         </div>
                         <div>
@@ -119,8 +106,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     <!-- System Warnings Alert -->
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
         <div class="d-flex align-items-start">
-            <div class="mr-3">
-                <i class="fa-solid fa-exclamation-triangle fa-2x"></i>
+            <div class="me-3">
+                <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
             </div>
             <div class="flex-grow-1">
                 <strong><?= gettext('System Configuration:') ?></strong>
@@ -132,10 +119,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 echo implode(' · ', $warningLinks);
                 ?>
             </div>
-        </div>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
 
@@ -143,7 +128,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     <!-- Setup Tasks Alert -->
     <div class="alert alert-info alert-dismissible fade show" role="alert">
         <div class="d-flex align-items-start">
-            <div class="mr-3">
+            <div class="me-3">
                 <i class="fa-solid fa-clipboard-list fa-2x"></i>
             </div>
             <div class="flex-grow-1">
@@ -156,10 +141,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 echo implode(' · ', $taskLinks);
                 ?>
             </div>
-        </div>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     <?php endif; ?>
 
@@ -169,11 +152,12 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
             <!-- Setup Progress Card -->
             <?php if (!$allDone): ?>
             <div class="card shadow-sm border-0 mb-4 setup-progress-card">
-                <div class="card-header bg-primary text-white py-2 d-flex align-items-center justify-content-between">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2 d-flex align-items-center justify-content-between">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list-check mr-1"></i> <?= gettext('Setup Progress') ?>
+                        <i class="fa-solid fa-list-check me-1"></i> <?= gettext('Setup Progress') ?>
                     </h5>
-                    <small class="text-white-50"><?= $completedSteps ?>/<?= $totalSteps ?> <?= gettext('complete') ?></small>
+                    <small class="text-secondary"><?= $completedSteps ?>/<?= $totalSteps ?> <?= gettext('complete') ?></small>
                 </div>
                 <div class="card-body p-0">
                     <!-- Progress bar -->
@@ -188,7 +172,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <?php foreach ($setupChecklist as $step): ?>
                         <li class="list-group-item px-3 py-2">
                             <div class="d-flex align-items-center">
-                                <div class="mr-3" style="width: 1.5rem; text-align: center; flex-shrink: 0;">
+                                <div class="me-3" style="width: 1.5rem; text-align: center; flex-shrink: 0;">
                                     <?php if ($step['done']): ?>
                                         <i class="fa-solid fa-circle-check text-success"></i>
                                     <?php else: ?>
@@ -196,7 +180,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                     <?php endif; ?>
                                 </div>
                                 <div class="flex-grow-1 <?= $step['done'] ? 'text-muted' : '' ?>">
-                                    <span class="font-weight-600 <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
+                                    <span class="fw-semibold <?= $step['done'] ? '' : 'text-dark' ?>" style="font-size: 0.875rem;">
                                         <?= $step['label'] ?>
                                     </span>
                                     <?php if (!$step['done']): ?>
@@ -204,8 +188,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                                     <?php endif; ?>
                                 </div>
                                 <?php if (!$step['done']): ?>
-                                <a href="<?= $step['link'] ?>" class="btn btn-sm btn-outline-primary ml-3 flex-shrink-0">
-                                    <?= gettext('Set up') ?> <i class="fa-solid fa-arrow-right fa-xs ml-1"></i>
+                                <a href="<?= $step['link'] ?>" <?= strpos($step['link'], 'http') === 0 ? 'target="_blank"' : '' ?> class="btn btn-sm btn-outline-primary ms-3 flex-shrink-0">
+                                    <?= gettext('Set up') ?> <i class="fa-solid fa-arrow-right fa-xs ms-1"></i>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -218,7 +202,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- Quick Start Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-rocket"></i> <?= gettext('Quick Start') ?>
                     </h5>
@@ -301,7 +286,8 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
             <!-- Advanced Operations -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-secondary text-white py-2">
+                <div class="card-status-top bg-secondary"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-tools"></i> <?= gettext('Advanced Operations') ?>
                     </h5>
@@ -321,7 +307,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <!-- Reset Database -->
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
-                                <h6 class="text-danger"><i class="fa-solid fa-exclamation-triangle"></i> <?= gettext('Reset Database') ?></h6>
+                                <h6 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> <?= gettext('Reset Database') ?></h6>
                                 <p class="small text-muted mb-2"><?= gettext('Clear all data and start fresh. Cannot be undone.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/reset" class="btn btn-sm btn-outline-danger">
                                     <?= gettext('Reset') ?>
@@ -333,7 +319,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                         <!-- System Logs -->
                         <div class="col-md-6">
                             <div class="border rounded p-3 h-100">
-                                <h6 class="text-info"><i class="fa-solid fa-file-alt"></i> <?= gettext('System Logs') ?></h6>
+                                <h6 class="text-info"><i class="fa-solid fa-file-lines"></i> <?= gettext('System Logs') ?></h6>
                                 <p class="small text-muted mb-2"><?= gettext('View and manage system log files for debugging.') ?></p>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/logs" class="btn btn-sm btn-outline-info">
                                     <?= gettext('View Logs') ?>
@@ -347,9 +333,29 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
         <!-- Sidebar -->
         <div class="col-lg-4">
+
+            <!-- Register Your Church Card -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header py-2">
+                    <h5 class="mb-0">
+                        <i class="fa-solid fa-handshake"></i> <?= gettext('Register Your Church') ?>
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
+                    <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> <?= gettext('Register Now') ?>
+                    </a>
+                    <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
+                </div>
+            </div>
+
+
             <!-- System Info Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-info text-white py-2">
+                <div class="card-status-top bg-info"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-circle-info"></i> <?= gettext('System Info') ?>
                     </h5>
@@ -371,31 +377,14 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                             <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
                         </a>
                     </div>
-                    <a href="https://docs.churchcrm.io/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-outline-secondary btn-block">
-                        <i class="fa-solid fa-book"></i> <?= gettext('Documentation') ?>
-                    </a>
                 </div>
             </div>
 
-            <!-- Register Your Church Card -->
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header bg-primary text-white py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-handshake"></i> <?= gettext('Register Your Church') ?>
-                    </h5>
-                </div>
-                <div class="card-body">
-                    <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
-                    <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
-                        <i class="fa-solid fa-external-link-alt"></i> <?= gettext('Register Now') ?>
-                    </a>
-                    <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
-                </div>
-            </div>
 
             <!-- System Health Card -->
             <div class="card shadow-sm border-0 mb-4">
-                <div class="card-header <?= $healthStatus ? 'bg-success' : 'bg-warning' ?> text-white py-2">
+                <div class="card-status-top <?= $healthStatus ? 'bg-success' : 'bg-warning' ?>"></div>
+                <div class="card-header py-2">
                     <h5 class="mb-0">
                         <i class="fa-solid fa-heartbeat"></i> <?= gettext('System Health') ?>
                     </h5>
@@ -404,25 +393,25 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('File Integrity:') ?></span>
                         <?php if ($integrityPassed): ?>
-                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge badge-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge bg-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('Orphaned Files:') ?></span>
                         <?php if ($hasOrphanedFiles): ?>
-                            <span class="badge badge-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
+                            <span class="badge bg-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
                         <?php else: ?>
-                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
+                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span><?= gettext('Configuration:') ?></span>
                         <?php if ($hasWarnings): ?>
-                            <span class="badge badge-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
+                            <span class="badge bg-warning text-dark"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
                         <?php else: ?>
-                            <span class="badge badge-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php endif; ?>
                     </div>
                     <?php if ($hasOrphanedFiles): ?>

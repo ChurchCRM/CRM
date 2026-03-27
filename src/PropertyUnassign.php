@@ -74,29 +74,30 @@ $aRow = mysqli_fetch_array($rsProperty);
 $sPropertyName = $aRow['pro_Name'];
 
 $sPageTitle = $sTypeName . gettext(' Property Unassignment');
+$sPageSubtitle = gettext('Remove a property from a record');
 
 //Include the header
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
     <p class="lead"><?= gettext('Please confirm removal of this property from this') . ' ' . $sTypeName ?>:</p>
 
-    <table class="table table-striped mb-4">
+    <table class="table mb-4">
         <tr>
-            <td class="font-weight-bold"><?= $sTypeName ?>:</td>
+            <td class="fw-bold"><?= $sTypeName ?>:</td>
             <td><?= InputUtils::escapeHTML($sName) ?></td>
         </tr>
         <tr>
-            <td class="font-weight-bold"><?= gettext('Unassigning') ?>:</td>
+            <td class="fw-bold"><?= gettext('Unassigning') ?>:</td>
             <td><?= InputUtils::escapeHTML($sPropertyName) ?></td>
         </tr>
     </table>
 
     <div>
         <a class="btn btn-secondary" href="<?= $sBackPage ?>"><?= gettext('No, retain this assignment') ?></a>
-        <a class="btn btn-danger ml-2" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
+        <a class="btn btn-danger ms-2" href="PropertyUnassign.php<?= $sQuerystring . '&PropertyID=' . $iPropertyID . '&Confirmed=Yes' ?>"><?= gettext('Yes, unassign this Property') ?></a>
     </div>
 </div>
 <?php

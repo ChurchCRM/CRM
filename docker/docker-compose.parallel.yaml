@@ -55,6 +55,7 @@ services:
     volumes:
       - ../src:/var/www/html
       - ..:/home/ChurchCRM
+      - ../cypress/data/images/people:/var/www/html/Images/Person
     hostname: crm-webserver-root
     env_file:
       - .env
@@ -85,6 +86,7 @@ services:
     volumes:
       - ../src:/var/www/html/churchcrm
       - ..:/home/ChurchCRM
+      - ../cypress/data/images/people:/var/www/html/churchcrm/Images/Person
     hostname: crm-webserver-subdir
     env_file:
       - .env

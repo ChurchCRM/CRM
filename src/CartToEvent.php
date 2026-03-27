@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttend;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -42,6 +43,11 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0 && isset($_PO
 }
 
 $sPageTitle = gettext('Add Cart to Event');
+$sPageSubtitle = gettext('Assign cart items to an event');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Add Cart to Event')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 if (count($_SESSION['aPeopleCart']) > 0) {
@@ -75,7 +81,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                     </div>
                     <div class="card-body">
                         <table class="table table-sm table-hover">
-                            <thead class="table-light">
+                            <thead>
                                 <tr>
                                     <th><?= gettext('Name') ?></th>
                                     <th><?= gettext('Classification') ?></th>
@@ -85,14 +91,16 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 <?php foreach ($aPeopleInCart as $person) { ?>
                                     <tr>
                                         <td>
-                                            <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
-                                                <?= $person->getFullName() ?>
-                                            </a>
-                                            <?php if ($person->getPhoto()->hasUploadedPhoto()) { ?>
-                                                <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="<?= $person->getId() ?>" title="<?= gettext('View Photo') ?>">
-                                                    <i class="fa-solid fa-camera"></i>
-                                                </button>
-                                            <?php } ?>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <?php
+                                                    // Use client-side avatar loader: avatar-loader will fetch avatar info and render
+                                                    // uploaded photos, gravatar, or initials as needed. Data attributes are required.
+                                                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2" alt="" />';
+                                                ?>
+                                                <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
+                                                    <?= $person->getFullName() ?>
+                                                </a>
+                                            </div>
                                         </td>
                                         <td><?= $person->getClsid() ? $person->getClassification()->getOptionName() : '<em class="text-muted">' . gettext('Unclassified') . '</em>' ?></td>
                                     </tr>
@@ -115,10 +123,10 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         
                         <!-- Event Type Filter -->
                         <form method="POST" action="CartToEvent.php" class="mb-4">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventTypeFilter"><?= gettext('Filter by Event Type') ?></label>
                                 <div class="input-group">
-                                    <select id="EventTypeFilter" name="EventTypeFilter" class="form-control" onchange="this.form.submit()">
+                                    <select id="EventTypeFilter" name="EventTypeFilter" class="form-select" onchange="this.form.submit()">
                                         <option value="0" <?= ($selectedEventType == 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
                                         <?php foreach ($aEventTypes as $eventType) { ?>
                                             <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType == $eventType->getId()) ? 'selected' : '' ?>>
@@ -132,9 +140,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                         
                         <!-- Event Selection Form -->
                         <form name="CartToEvent" action="CartToEvent.php" method="POST">
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="EventID"><?= gettext('Select Event') ?></label>
-                                <select id="EventID" name="EventID" class="form-control" required>
+                                <select id="EventID" name="EventID" class="form-select" required>
                                     <option value="" disabled selected><?= gettext('Choose an event...') ?></option>
                                     <?php foreach ($aEvents as $evt) { ?>
                                         <option value="<?= $evt->getId() ?>"><?= $evt->getTitle() ?></option>
@@ -142,7 +150,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 </select>
                             </div>
                             <div class="text-center">
-                                <button type="submit" name="Submit" class="btn btn-primary btn-lg"><?= gettext('Check In to Event') ?></button>
+                                <button type="submit" name="Submit" class="btn btn-primary"><?= gettext('Check In to Event') ?></button>
                             </div>
                         </form>
                     </div>
@@ -163,7 +171,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
         <div class="row">
             <div class="col-md-8 offset-md-2">
                 <div class="alert alert-warning text-center">
-                    <i class="fa fa-info-circle"></i> <?= gettext('Your cart is empty!') ?>
+                    <i class="fa fa-circle-info"></i> <?= gettext('Your cart is empty!') ?>
                 </div>
             </div>
         </div>

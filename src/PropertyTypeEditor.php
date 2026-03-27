@@ -4,9 +4,9 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
@@ -18,6 +18,7 @@ if (array_key_exists('PropertyTypeID', $_GET)) {
 }
 
 $sPageTitle = $iPropertyTypeID > 0 ? gettext('Edit Property Type') : gettext('Add Property Type');
+$sPageSubtitle = gettext('Create or edit property type categories');
 
 $sClass = '';
 $sNameError = '';
@@ -38,9 +39,9 @@ if (isset($_POST['Submit'])) {
     if (!$bError) {
         // Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID == 0) {
-            $sSQL = "INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass . "','" . $sName . "','" . $sDescription . "')";
+            $sSQL ="INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass ."','" . $sName ."','" . $sDescription ."')";
         } else {
-            $sSQL = "UPDATE propertytype_prt SET prt_Class = '" . $sClass . "', prt_Name = '" . $sName . "', prt_Description = '" . $sDescription . "' WHERE prt_ID = " . $iPropertyTypeID;
+            $sSQL ="UPDATE propertytype_prt SET prt_Class = '" . $sClass ."', prt_Name = '" . $sName ."', prt_Description = '" . $sDescription ."' WHERE prt_ID =" . $iPropertyTypeID;
         }
 
         // Execute the SQL
@@ -65,20 +66,25 @@ if (isset($_POST['Submit'])) {
     $sClass = '';
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Property Types'), '/PropertyTypeList.php'],
+    [gettext('Edit')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="card">
-    <div class="card-header bg-primary text-white">
+    <div class="card-header">
         <h5 class="mb-0">
-            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-edit' : 'fa-plus' ?>"></i>
+            <i class="fa-solid <?= $iPropertyTypeID > 0 ? 'fa-pen-to-square' : 'fa-plus' ?> me-2"></i>
             <?= $sPageTitle ?>
         </h5>
     </div>
     <div class="card-body">
         <?php if ($bError): ?>
         <div class="alert alert-danger" role="alert">
-            <i class="fa-solid fa-exclamation-triangle"></i>
+            <i class="fa-solid fa-triangle-exclamation"></i>
             <strong><?= gettext('Error') ?>:</strong> <?= gettext('Please correct the errors below.') ?>
         </div>
         <?php endif; ?>
@@ -87,12 +93,12 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="row">
                 <div class="col-md-6">
                     <!-- Class Selection -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="class">
                             <?= gettext('Class') ?>
                             <span class="text-danger">*</span>
                         </label>
-                        <select class="form-control" id="class" name="Class" required>
+                        <select class="form-select" id="class" name="Class" required>
                             <option value="p" <?= ($sClass == 'p' ? 'selected' : '') ?>>
                                 <?= gettext('Person') ?>
                             </option>
@@ -109,7 +115,7 @@ require_once __DIR__ . '/Include/Header.php';
                     </div>
 
                     <!-- Name Field -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="name">
                             <?= gettext('Name') ?>
                             <span class="text-danger">*</span>
@@ -131,7 +137,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                 <div class="col-md-6">
                     <!-- Description Field -->
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="description"><?= gettext('Description') ?></label>
                         <textarea class="form-control" 
                                   id="description" 
@@ -153,7 +159,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Cancel') ?>
                     </a>
                     <button type="submit" class="btn btn-primary" name="Submit">
-                        <i class="fa-solid fa-save"></i>
+                        <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save') ?>
                     </button>
                 </div>

@@ -37,14 +37,14 @@ echo '<script src="' . SystemURLs::getRootPath() . '/skin/v2/people-list.min.js"
 // Classification list
 $ListItem =  ListOptionQuery::create()->select('OptionName')->filterById(1)->find()->toArray();
 $ClassificationList = [];
-$ClassificationList[] = "Unassigned";
+$ClassificationList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $ClassificationList[] = $element;
 }
 // Role list
 $ListItem = ListOptionQuery::create()->select('OptionName')->filterById(2)->find()->toArray();
 $RoleList = [];
-$RoleList[] = "Unassigned";
+$RoleList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $RoleList[] = $element;
 }
@@ -63,7 +63,7 @@ $allPersonCustomFields = PersonCustomMasterQuery::create()->find();
 $ListItem = PersonCustomMasterQuery::create()->select(['Name', 'FieldSecurity', 'Id', 'TypeId', 'Special'])->find();
 
 // CREATE A MAPPING FOR CUSTOMS LIKE THIS
-// CustomMapping = {"c1":{"Name":"Father of confession", "Elements":{23:"option1", 24:"option2"}}, c2.... }
+// CustomMapping = {"c1":{"Name":"Father of confession","Elements":{23:"option1", 24:"option2"}}, c2.... }
 // allowing not only for search if has a custom set but also if is set to a given value.
 $CustomMapping = [];
 
@@ -72,7 +72,7 @@ $CustomList = [];
 foreach ($ListItem as $element) {
     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($element["FieldSecurity"])) {
         $CustomList[$element["Name"]] = 0;
-        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"], "Elements" => []];
+        $CustomMapping[$element["Id"]] = ["Name" => $element["Name"],"Elements" => []];
         if (in_array($element["TypeId"], [12])) {
             $ListElements = ListOptionQuery::create()->select(['OptionName', 'OptionId'])->filterById($element["Special"])->find()->toArray();
             foreach ($ListElements as $element2) {
@@ -86,7 +86,7 @@ foreach ($ListItem as $element) {
 // Get person group list
 $ListItem = GroupQuery::create()->find();
 $GroupList = [];
-$GroupList[] = "Unassigned";
+$GroupList[] ="Unassigned";
 foreach ($ListItem as $element) {
     $GroupList[] = $element->getName();
 }
@@ -122,95 +122,100 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
 <?php if ($hasDataQualityIssues): ?>
 <!-- Data Quality Alert -->
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
+<div class="alert alert-warning alert-dismissible fade show mb-3" role="alert">
     <div class="d-flex align-items-center">
-        <div class="mr-3">
+        <div class="me-3">
             <i class="fa-solid fa-clipboard-check fa-2x"></i>
         </div>
-        <div class="flex-grow-1">
+        <div>
             <strong><?= gettext('Data Quality:') ?></strong>
-            <?php 
+            <?php
             $issues = [];
             if ($genderDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Gender=0" class="alert-link">' .
                             sprintf(gettext('%d missing gender'), $genderDataCheckCount) . '</a>';
             }
             if ($roleDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?FamilyRole=0" class="alert-link">' .
                             sprintf(gettext('%d missing role'), $roleDataCheckCount) . '</a>';
             }
             if ($classificationDataCheckCount > 0) {
-                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' . 
+                $issues[] = '<a href="' . SystemURLs::getRootPath() . '/v2/people?Classification=0" class="alert-link">' .
                             sprintf(gettext('%d missing classification'), $classificationDataCheckCount) . '</a>';
             }
-
             echo implode(' · ', $issues);
             ?>
         </div>
     </div>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 <?php endif; ?>
 
-<div class="card card-primary mb-3">
+<div class="card mb-3">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-filter"></i> <span id="filters-title"></span></h3>
+        <h3 class="card-title"><i class="ti ti-filter me-1"></i> <span id="filters-title"></span></h3>
     </div>
-
     <div class="card-body">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label id="label-family-status"></label>
-                    <select style="width: 100%;" class="form-control filter-FamilyStatus" multiple="multiple"></select>
-                </div>
-                <div class="form-group">
-                    <label id="label-gender"></label>
-                    <select style="width: 100%;" class="form-control filter-Gender" multiple="multiple"></select>
-                </div>
-                <div class="form-group">
-                    <label id="label-classification"></label>
-                    <select style="width: 100%;" class="form-control filter-Classification" multiple="multiple"></select>
-                </div>
-                <div class="form-group">
-                    <label id="label-role"></label>
-                    <select style="width: 100%;" class="form-control filter-Role" multiple="multiple"></select>
+        <div class="row g-3">
+            <!-- Demographics and Classification Row -->
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-family-status"></label>
+                    <select class="form-select filter-FamilyStatus" multiple="multiple"></select>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="form-group">
-                    <label id="label-properties"></label>
-                    <select style="width: 100%;" class="form-control filter-Properties" multiple="multiple"></select>
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-gender"></label>
+                    <select class="form-select filter-Gender" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-custom"></label>
-                    <select style="width: 100%;" class="form-control filter-Custom" multiple="multiple"></select>
+            </div>
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-classification"></label>
+                    <select class="form-select filter-Classification" multiple="multiple"></select>
                 </div>
-                <div class="form-group">
-                    <label id="label-group"></label>
-                    <select style="width: 100%;" class="form-control filter-Group" multiple="multiple"></select>
+            </div>
+            <div class="col-lg-3">
+                <div class="mb-0">
+                    <label class="form-label" id="label-role"></label>
+                    <select class="form-select filter-Role" multiple="multiple"></select>
+                </div>
+            </div>
+            <!-- Extended Attributes Row -->
+            <div class="col-lg-4">
+                <div class="mb-0">
+                    <label class="form-label" id="label-properties"></label>
+                    <select class="form-select filter-Properties" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-0">
+                    <label class="form-label" id="label-custom"></label>
+                    <select class="form-select filter-Custom" multiple="multiple"></select>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="mb-0">
+                    <label class="form-label" id="label-group"></label>
+                    <select class="form-select filter-Group" multiple="multiple"></select>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="ClearFilter" type="button" class="btn btn-secondary btn-block">
-                    <i class="fa-solid fa-times"></i> <span id="clear-filter-text"></span>
-                </button>
-            </div>
+        <div class="mt-3">
+            <button id="ClearFilter" type="button" class="btn btn-secondary w-100">
+                <i class="ti ti-x me-1"></i> <span id="clear-filter-text"></span>
+            </button>
         </div>
     </div>
 </div>
 
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-users"></i> <span id="people-title"></span></h3>
+        <h3 class="card-title"><i class="ti ti-users me-1"></i> <span id="people-title"></span></h3>
     </div>
-    <div class="card-body p-2">
-        <table id="members" class="table table-striped table-hover data-table mb-0 w-100">
+    <div class="card-body">
+        <table id="members" class="table table-vcenter table-hover data-table mb-0">
             <thead>
                 <tr>
                     <?php 
@@ -236,7 +241,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $localizedHeader = $htmlColumnTitleMap[$column->name] ?? $column->name;
                         echo '<th>' . $localizedHeader . '</th>';
                     } ?>
-                    <th><?= gettext('Actions') ?></th>
+                    <th class="no-export w-1"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -259,12 +264,12 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         $cellPhone = $person->getCellPhone();
                         $hasPhone = false;
                         if (!empty($homePhone)) {
-                            echo '<i class="fa-solid fa-house text-muted mr-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
+                            echo '<i class="fa-solid fa-house text-muted me-1" title="' . gettext('Home') . '"></i>' . InputUtils::escapeHTML($homePhone);
                             $hasPhone = true;
                         }
                         if (!empty($cellPhone)) {
                             if ($hasPhone) echo '<br>';
-                            echo '<i class="fa-solid fa-mobile-screen text-muted mr-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
+                            echo '<i class="fa-solid fa-mobile-screen text-muted me-1" title="' . gettext('Cell') . '"></i>' . InputUtils::escapeHTML($cellPhone);
                             $hasPhone = true;
                         }
                         if (!$hasPhone) {
@@ -294,7 +299,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             // Check if family is inactive using Family::isActive()
                             $family = $person->getFamily();
                             if ($family && !$family->isActive()) {
-                                echo $familyLink . ' <span class="badge badge-secondary" title="' . gettext('Inactive') . '">';
+                                echo $familyLink . ' <span class="badge bg-light text-dark" title="' . gettext('Inactive') . '">';
                                 echo '<i class="fa-solid fa-power-off"></i> ' . gettext('Inactive');
                                 echo '</span>';
                             } else {
@@ -311,7 +316,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         }
                         // Make person name clickable and add gender icon, role, and photo icon
                         elseif (in_array($column->displayFunction, ['getFullName', 'getFirstName', 'getLastName'], true)) {
-                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="font-weight-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
+                            echo '<a href="' . SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId() . '" class="fw-bold">' . InputUtils::escapeHTML($columnData) . '</a>';
                             // Add role in parentheses
                             $role = $person->getFamilyRoleName();
                             if (!empty($role) && $role !== 'Unassigned') {
@@ -326,7 +331,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             }
                             // Add photo icon if person has photo
                             if ($column->displayFunction === 'getFullName' && $person->getPhoto()->hasUploadedPhoto()) {
-                                echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ml-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
+                                echo ' <button class="btn btn-sm btn-outline-secondary view-person-photo ms-1" data-person-id="' . $person->getId() . '" title="' . gettext('View Photo') . '">';
                                 echo '<i class="fa-solid fa-camera"></i>';
                                 echo '</button>';
                             }
@@ -336,7 +341,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             if (is_array($columnData) && !empty($columnData)) {
                                 // Always render badges for display
                                 foreach ($columnData as $group) {
-                                    echo '<span class="badge badge-info mr-1">' . InputUtils::escapeHTML($group) . '</span>';
+                                    echo '<span class="badge bg-info me-1">' . InputUtils::escapeHTML($group) . '</span>';
                                 }
                                 // Add hidden span with JSON for DataTables filtering
                                 echo '<span style="display:none;">' . InputUtils::escapeHTML(json_encode($columnData, JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR)) . '</span>';
@@ -396,15 +401,43 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                     echo '</td>';
                 }
                 ?>
-                <td class="text-right">
-                    <a href='<?= SystemURLs::getRootPath()?>/PersonEditor.php?PersonID=<?= $person->getId() ?>'>
-                        <button type="button" class="btn btn-sm btn-warning" title="<?= gettext('Edit') ?>"><i class="fa-solid fa-pen"></i></button>
-                    </a>
-                    <?php if (!isset($_SESSION['aPeopleCart']) || !in_array($person->getId(), $_SESSION['aPeopleCart'], false)) { ?>
-                        <button type="button" class="AddToCart btn btn-sm btn-primary" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Add to Cart') ?>"><i class="fa-solid fa-cart-plus"></i></button>
-                    <?php } else { ?>
-                        <button type="button" class="RemoveFromCart btn btn-sm btn-danger" data-cart-id="<?= $person->getId() ?>" data-cart-type="person" title="<?= gettext('Remove from Cart') ?>"><i class="fa-solid fa-trash"></i></button>
-                    <?php } ?>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                            <i class="ti ti-dots-vertical"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $person->getId() ?>">
+                                <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                            </a>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getId() ?>">
+                                <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                            </a>
+                            <?php if ($person->getFamId()): ?>
+                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>">
+                                <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                            </a>
+                            <?php endif; ?>
+                            <div class="dropdown-divider"></div>
+                            <?php $inCart = isset($_SESSION['aPeopleCart']) && in_array($person->getId(), $_SESSION['aPeopleCart'], false); ?>
+                            <button type="button"
+                                class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                data-cart-id="<?= $person->getId() ?>"
+                                data-cart-type="person"
+                                data-label-add="<?= gettext('Add to Cart') ?>"
+                                data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                <i class="<?= $inCart ? 'ti ti-trash' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                            </button>
+                            <div class="dropdown-divider"></div>
+                            <button type="button"
+                                class="dropdown-item text-danger delete-person"
+                                data-person_id="<?= $person->getId() ?>"
+                                data-person_name="<?= InputUtils::escapeAttribute($person->getFullName()) ?>">
+                                <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                            </button>
+                        </div>
+                    </div>
                 </td>
             </tr>
             <?php
@@ -464,7 +497,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 foreach ($columns as $column) {
                     $columnId++;
                     if ($column->visible === 'false') {
-                        echo "{ targets: " . $columnId . ", visible: false },\n";
+                        echo"{ targets:" . $columnId .", visible: false },\n";
                     }
                 }
                 ?>
@@ -504,7 +537,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                             $firstVisibleColumnId = $columnId;
                         }
                     }
-                    echo json_encode($columnTitle) . ",\n";
+                    echo json_encode($columnTitle) .",\n";
                 }
                 ?>
                 {
@@ -514,63 +547,75 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                 }
             ],
             // sort by first visible column
-            order: [[ <?php echo $firstVisibleColumnId ?> , "asc" ]]
+            order: [[ <?php echo $firstVisibleColumnId ?> ,"asc" ]]
         }
 
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
         oTable = $('#members').DataTable(dataTableConfig);
 
-        $('.filter-Gender').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Gender')
-         });
-        $('.filter-Classification').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Classification')
-        });
-        $('.filter-Role').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Role')
-        });
-        $('.filter-Properties').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Properties')
-        });
-        $('.filter-Custom').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Custom')
-        });
-        $('.filter-FamilyStatus').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Family Status')
-        });
-        $('.filter-Group').select2({
-            multiple: true,
-            placeholder: i18next.t('Select') + " " + i18next.t('Group')
-        });
+        // Store TomSelect instances and filter configuration for later use
+        var tomSelectInstances = {};
+        var filterConfigs = [
+            { sel: '.filter-Gender', colName: 'Gender', regex: true },
+            { sel: '.filter-Classification', colName: 'Classification', regex: true },
+            { sel: '.filter-Role', colName: 'Role', regex: true },
+            { sel: '.filter-Properties', colName: 'Properties', regex: false },
+            { sel: '.filter-Custom', colName: 'Custom', regex: false },
+            { sel: '.filter-FamilyStatus', colName: 'Family Status', regex: true },
+            { sel: '.filter-Group', colName: 'Group', regex: false }
+        ];
 
-        $('.filter-Gender').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Gender'] ?>, $(this).select2('data'), true);
-        });
-        $('.filter-Classification').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Classification'] ?>, $(this).select2('data'), true);
-        });
-        $('.filter-Role').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Role'] ?>, $(this).select2('data'), true);
-        });
-        $('.filter-Properties').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Properties'] ?>, $(this).select2('data'), false);
-        });
-        $('.filter-Custom').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Custom'] ?>, $(this).select2('data'), false);
-        });
-        $('.filter-FamilyStatus').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Family Status'] ?>, $(this).select2('data'), true);
-        });
-        $('.filter-Group').on("change", function() {
-            filterColumn(<?php echo $columnIdMap['Group'] ?>, $(this).select2('data'), false);
-        });
+        // Function to initialize TomSelect instances (will be called after options are populated)
+        function initializeTomSelectFilters() {
+            filterConfigs.forEach(function(cfg) {
+                $(cfg.sel).each(function () {
+                    if (!this.tomselect) {
+                        var ts = new TomSelect(this, {
+                            plugins: ['remove_button', 'input_autogrow'],
+                            hideSelected: true
+                        });
+                        tomSelectInstances[cfg.colName] = { ts: ts, el: this, regex: cfg.regex };
+                    }
+                });
+            });
+        }
+
+        // Helper to get selected items from TomSelect (returns array of {text, value} objects)
+        function getTomSelectData(colName) {
+            var instance = tomSelectInstances[colName];
+            if (!instance) return [];
+
+            var ts = instance.ts;
+            var selectedValues = ts.getValue();
+
+            // Handle both string and array values
+            if (!Array.isArray(selectedValues)) {
+                selectedValues = selectedValues ? [selectedValues] : [];
+            }
+
+            return selectedValues.map(function(val) {
+                // Find the option element in the underlying select to get its text
+                var optionEl = Array.from(instance.el.options).find(function(o) {
+                    return o.value === val;
+                });
+                return {
+                    value: val,
+                    text: optionEl ? optionEl.textContent : val
+                };
+            });
+        }
+
+        // Prepare filter map for use after TomSelect initialization
+        var filterMap = {
+            'Gender': <?php echo $columnIdMap['Gender'] ?>,
+            'Classification': <?php echo $columnIdMap['Classification'] ?>,
+            'Role': <?php echo $columnIdMap['Role'] ?>,
+            'Properties': <?php echo $columnIdMap['Properties'] ?>,
+            'Custom': <?php echo $columnIdMap['Custom'] ?>,
+            'Family Status': <?php echo $columnIdMap['Family Status'] ?>,
+            'Group': <?php echo $columnIdMap['Group'] ?>
+        };
 
         function escapeRegExp(string) {
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
@@ -578,44 +623,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
 
         // apply filters
         function filterColumn(col, search, regEx) {
-            if (search.length === 0) {
-                tmp = [''];
-            } else {
-                var tmp = [];
-                if (regEx) {
-                    search.forEach(function(item) {
-                        tmp.push('^'+escapeRegExp(item.text)+'$')});
-                } else {
-                    search.forEach(function(item) {
-                    tmp.push('"'+escapeRegExp(item.text)+'"')});
-                }
+            if (!search || search.length === 0) {
+                oTable.column(col).search('', 1, 0, 1).draw();
+                return;
             }
+
+            var searchTerms = [];
+            search.forEach(function(item) {
+                var text = item.text || item.value;
+                if (regEx) {
+                    searchTerms.push('^' + escapeRegExp(text) + '$');
+                } else {
+                    searchTerms.push('"' + escapeRegExp(text) + '"');
+                }
+            });
+
             // join array into string with regex or (|)
-            var val = tmp.join('|');
+            var val = searchTerms.join('|');
             // apply search
             oTable.column(col).search(val, 1, 0, 1).draw();
         }
 
-        // the following is an example of how we can fill the gender list from the table data
-        // client processing can only be done with visible columns in this case because of combined data
-        // oTable.columns(8).data().eq(0).unique().sort().each( function ( d, j ) {
-        //     $('.filter-Gender').append('<option>'+d+'</option>');
-        // });
-
-        // setup external DataTable filters
+        // Populate filter option lists via webpack-included initializer + Gender options
         var Gender = ['Unassigned', 'Male', 'Female'];  // order: 0=Unassigned, 1=Male, 2=Female
-        var shouldTriggerFamilyStatusFilter = false;
-        var shouldTriggerGenderFilter = false;
+
+        // Append Gender options directly to the Gender select before webpack initializer runs
         for (var i = 0; i < Gender.length; i++) {
-            if (filterByGender == Gender[i]) {
-                $('.filter-Gender').val(i18next.t(Gender[i]));
-                $('.filter-Gender').append('<option selected value='+i+'>'+i18next.t(Gender[i])+'</option>');
-                shouldTriggerGenderFilter = true;
-            } else {
-            $('.filter-Gender').append('<option value='+i+'>'+i18next.t(Gender[i])+'</option>');
-            }
+            $('<option>').val(i).text(Gender[i]).appendTo('.filter-Gender');
         }
-        // Populate filter option lists via webpack-included initializer
+
+        // Call webpack initializer to populate other filter lists
         var serverVars = {
             RoleList: <?= json_encode($RoleList, JSON_THROW_ON_ERROR) ?>,
             PropertyList: <?= json_encode($PropertyList, JSON_THROW_ON_ERROR) ?>,
@@ -632,24 +669,39 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             window.initializePeopleListFromServer(serverVars);
         }
 
-        // Set trigger flags based on incoming URL params
+        // NOW initialize TomSelect after all options have been populated
+        initializeTomSelectFilters();
+
+        // Setup filter change handlers using TomSelect's onChange event (now that instances exist)
+        filterConfigs.forEach(function(cfg) {
+            var instance = tomSelectInstances[cfg.colName];
+            if (instance && instance.ts) {
+                instance.ts.on('change', function(value) {
+                    var searchData = getTomSelectData(cfg.colName);
+                    var colId = filterMap[cfg.colName];
+                    filterColumn(colId, searchData, cfg.regex);
+                });
+            }
+        });
+
+        // Determine which filters need to be triggered based on URL params
         var shouldTriggerClassificationFilter = (serverVars.filterByClsId !== '');
         var shouldTriggerRoleFilter = (serverVars.filterByFmrId !== '');
         var shouldTriggerGenderFilter = (serverVars.filterByGender !== '');
+        var shouldTriggerFamilyStatusFilter = false;
         if (serverVars.familyActiveStatus === 'active' || serverVars.familyActiveStatus === 'inactive') {
             shouldTriggerFamilyStatusFilter = true;
         }
 
         // clear external filters
         document.getElementById("ClearFilter").addEventListener("click", function() {
-
-            $('.filter-Gender').val([]).trigger('change')
-            $('.filter-Classification').val([]).trigger('change')
-            $('.filter-Role').val([]).trigger('change')
-            $('.filter-Properties').val([]).trigger('change')
-            $('.filter-Custom').val([]).trigger('change')
-            $('.filter-FamilyStatus').val([]).trigger('change')
-            $('.filter-Group').val([]).trigger('change')
+            // Clear all TomSelect instances
+            Object.keys(tomSelectInstances).forEach(function(colName) {
+                var instance = tomSelectInstances[colName];
+                if (instance && instance.ts) {
+                    instance.ts.clear(true); // true = trigger onChange event
+                }
+            });
         });
 
         // Helper function to collect all filtered people IDs from the table
@@ -714,14 +766,14 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             
             bootbox.confirm({
                 title: i18next.t("Remove from Cart"),
-                message: i18next.t("Remove") + " " + filteredCount + " " + i18next.t("people from cart?"),
+                message: i18next.t("Remove") +"" + filteredCount +"" + i18next.t("people from cart?"),
                 buttons: {
                     cancel: {
                         label: i18next.t("Cancel")
                     },
                     confirm: {
                         label: i18next.t("Yes, Remove"),
-                        className: "btn-danger"
+                        className:"btn-danger"
                     }
                 },
                 callback: function (result) {
@@ -756,8 +808,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             
             // Fetch current cart state from server
             window.CRM.APIRequest({
-                method: "GET",
-                path: "cart/",
+                method:"GET",
+                path:"cart/",
                 suppressErrorDialog: true,
             }).done(function(data) {
                 // Use CartManager's syncButtonStates to update all buttons
@@ -771,37 +823,36 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             });
         }
         
-        // Apply initial filters from URL parameters now that Select2 and DataTable are ready
-        if (filterByGender) {
-            var genderIndex = -1;
-            // Gender is already set via inline trigger above, just validate
-            for (var i = 0; i < Gender.length; i++) {
-                if (filterByGender === Gender[i]) {
-                    genderIndex = i;
-                    break;
+        // Apply initial filters from URL parameters via TomSelect API
+        // This ensures filters are set and properly trigger DataTable updates
+        setTimeout(function() {
+            // Set Gender filter if specified
+            if (shouldTriggerGenderFilter && filterByGender) {
+                var genderIndex = Gender.indexOf(filterByGender);
+                if (genderIndex !== -1 && tomSelectInstances['Gender']) {
+                    tomSelectInstances['Gender'].ts.setValue(String(genderIndex), true);
                 }
             }
-        }
-        if (filterByClsId) {
-            // Already set via inline trigger above
-        }
-        if (filterByFmrId) {
-            // Already set via inline trigger above
-        }
-        
-        // Trigger URL filters after a delay to ensure DataTable is fully initialized
-        setTimeout(function() {
-            if (shouldTriggerGenderFilter) {
-                $('.filter-Gender').trigger('change');
+
+            // Set Classification filter if specified
+            if (shouldTriggerClassificationFilter && tomSelectInstances['Classification']) {
+                // filterByClsOptionId comes from the route and is an integer
+                tomSelectInstances['Classification'].ts.setValue(String(serverVars.filterByClsId), true);
             }
-            if (shouldTriggerClassificationFilter) {
-                $('.filter-Classification').trigger('change');
+
+            // Set Role filter if specified
+            if (shouldTriggerRoleFilter && tomSelectInstances['Role']) {
+                // filterByFmrOptionId comes from the route and is an integer
+                tomSelectInstances['Role'].ts.setValue(String(serverVars.filterByFmrId), true);
             }
-            if (shouldTriggerRoleFilter) {
-                $('.filter-Role').trigger('change');
-            }
-            if (shouldTriggerFamilyStatusFilter) {
-                $('.filter-FamilyStatus').trigger('change');
+
+            // Set Family Status filter if specified
+            if (shouldTriggerFamilyStatusFilter && tomSelectInstances['Family Status']) {
+                if (serverVars.familyActiveStatus === 'active') {
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[0], true);
+                } else if (serverVars.familyActiveStatus === 'inactive') {
+                    tomSelectInstances['Family Status'].ts.setValue(serverVars.FamilyStatusList[1], true);
+                }
             }
         }, 100);
     } // end initializePeopleList
@@ -817,6 +868,8 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             var personId = $(this).data('person-id');
             window.CRM.showPhotoLightbox('person', personId);
         });
+
+        // .delete-person clicks are handled globally by CRMJSOM.js
     });
 
 </script>

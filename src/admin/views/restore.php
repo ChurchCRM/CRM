@@ -12,9 +12,9 @@ $isOnboarding = $isOnboarding ?? false;
 
 <?php if ($isOnboarding): ?>
 <!-- Onboarding Welcome Card -->
-<div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-circle-check mr-2"></i><?= gettext('Welcome Back!') ?></h3>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-circle-check me-2"></i><?= gettext('Welcome Back!') ?></h3>
     </div>
     <div class="card-body">
         <div class="row align-items-center">
@@ -34,9 +34,9 @@ $isOnboarding = $isOnboarding ?? false;
 </div>
 <?php else: ?>
 <!-- Warning Card -->
-<div class="card card-danger">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-exclamation-triangle mr-2"></i><?= gettext('Important Warning') ?></h3>
+<div class="card border-top border-danger border-3">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-triangle-exclamation me-2"></i><?= gettext('Important Warning') ?></h3>
     </div>
     <div class="card-body">
         <div class="row">
@@ -48,7 +48,7 @@ $isOnboarding = $isOnboarding ?? false;
                 </ul>
                 <div class="mt-3">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-outline-primary">
-                        <i class="fa-solid fa-download mr-2"></i><?= gettext('Create a backup first') ?>
+                        <i class="fa-solid fa-download me-2"></i><?= gettext('Create a backup first') ?>
                     </a>
                 </div>
             </div>
@@ -58,15 +58,15 @@ $isOnboarding = $isOnboarding ?? false;
 <?php endif; ?>
 
 <!-- Restore Form Card -->
-<div class="card card-warning">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-upload mr-2"></i><?= gettext('Restore Database') ?></h3>
+<div class="card border-top border-warning border-3">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-upload me-2"></i><?= gettext('Restore Database') ?></h3>
     </div>
     <div class="card-body">
         <form id="restoredatabase" action="<?= SystemURLs::getRootPath() ?>/api/database/restore" method="POST" enctype="multipart/form-data">
             
             <!-- File Upload Area -->
-            <div class="form-group">
+            <div class="mb-3">
                 <label><?= gettext('Select Backup File') ?></label>
                 <div id="dropzone" class="dropzone-area text-center p-4 border border-dashed rounded" style="border-style: dashed !important; cursor: pointer;">
                     <input type="file" name="restoreFile" id="restoreFile" class="d-none" accept=".sql,.gz">
@@ -76,9 +76,9 @@ $isOnboarding = $isOnboarding ?? false;
                     <small class="text-muted"><?= gettext('Supported formats:') ?> .sql, .sql.gz, .tar.gz</small>
                 </div>
                 <div id="fileInfo" class="alert alert-info mt-2 d-none">
-                    <i class="fa-solid fa-file mr-2"></i>
+                    <i class="fa-solid fa-file me-2"></i>
                     <strong id="fileName"></strong>
-                    <span class="text-muted ml-2">(<span id="fileSize"></span>)</span>
+                    <span class="text-muted ms-2">(<span id="fileSize"></span>)</span>
                 </div>
                 <small class="form-text text-muted">
                     <?= gettext('Maximum upload size') ?>: <strong><?= $maxUploadSize ?></strong>
@@ -88,8 +88,8 @@ $isOnboarding = $isOnboarding ?? false;
             <hr>
 
             <!-- Submit Button -->
-            <button type="submit" class="btn btn-warning btn-block btn-lg" id="submitRestore">
-                <i class="fa-solid fa-upload mr-2"></i><?= gettext('Restore Database') ?>
+            <button type="submit" class="btn btn-warning w-100" id="submitRestore">
+                <i class="fa-solid fa-upload me-2"></i><?= gettext('Restore Database') ?>
             </button>
         </form>
     </div>
@@ -97,8 +97,8 @@ $isOnboarding = $isOnboarding ?? false;
 
 <!-- Restore Status Card -->
 <div class="card" id="statusCard">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-tasks mr-2"></i><?= gettext('Restore Status') ?></h3>
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><i class="fa-solid fa-tasks me-2"></i><?= gettext('Restore Status') ?></h3>
     </div>
     <div class="card-body">
         <div id="statusIdle">
@@ -110,16 +110,16 @@ $isOnboarding = $isOnboarding ?? false;
         <div id="statusRunning" class="d-none">
             <div class="text-center py-4">
                 <div class="spinner-border text-warning mb-3" role="status" style="width: 3rem; height: 3rem;">
-                    <span class="sr-only"><?= gettext('Loading...') ?></span>
+                    <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                 </div>
-                <p class="mb-0 text-warning font-weight-bold"><?= gettext('Restore in progress, please wait...') ?></p>
+                <p class="mb-0 text-warning fw-bold"><?= gettext('Restore in progress, please wait...') ?></p>
                 <small class="text-muted"><?= gettext('This may take several minutes for large databases. Do not close this page.') ?></small>
             </div>
         </div>
         <div id="statusError" class="d-none">
             <div class="text-center py-4">
-                <i class="fa-solid fa-times-circle fa-3x text-danger mb-3"></i>
-                <p class="mb-2 text-danger font-weight-bold"><?= gettext('Restore failed.') ?></p>
+                <i class="fa-solid fa-circle-xmark fa-3x text-danger mb-3"></i>
+                <p class="mb-2 text-danger fw-bold"><?= gettext('Restore failed.') ?></p>
                 <p class="text-muted" id="errorMessage"><?= gettext('Please check the backup file and try again.') ?></p>
             </div>
         </div>
@@ -131,17 +131,17 @@ $isOnboarding = $isOnboarding ?? false;
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body text-center py-5">
-                <i class="fa-solid fa-check-circle fa-5x text-success mb-4"></i>
+                <i class="fa-solid fa-circle-check fa-5x text-success mb-4"></i>
                 <h3 class="text-success mb-3"><?= gettext('Database Restored Successfully!') ?></h3>
-                <div id="restoreModalMessages" class="text-left mb-3"></div>
+                <div id="restoreModalMessages" class="text-start mb-3"></div>
                 <?php if ($isOnboarding): ?>
                 <p class="text-muted mb-2"><?= gettext('Your backup data has been loaded. You will be redirected to log in with your previous credentials.') ?></p>
                 <?php else: ?>
                 <p class="text-muted mb-2"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
                 <?php endif; ?>
                 <div class="mt-4">
-                    <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
-                        <span class="sr-only"><?= gettext('Loading...') ?></span>
+                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                        <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                     </div>
                     <span id="redirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
                 </div>

@@ -212,136 +212,142 @@ Cypress.Commands.add('createPeopleViaCSV', (peopleData) => {
 });
 
 // ============================================================
-// Select2 Testing Commands
+// Tom Select Testing Commands
 // ============================================================
 
 /**
- * Select an option in a Select2 dropdown by visible text
+ * Wait for TomSelect to initialize on an element
+ * TomSelect wraps the original select in a .ts-wrapper sibling
+ * @param {string} selector - CSS selector for the original select element
+ * @example cy.tomSelectReady('#Country')
+ */
+Cypress.Commands.add('tomSelectReady', (selector) => {
+    cy.get(selector, { timeout: 10000 }).should($el => {
+        const el = $el[0];
+        expect(el.tomselect, 'TomSelect should be initialized').to.exist;
+    });
+});
+
+/**
+ * Select an option in a TomSelect dropdown by visible text
  * @param {string} selector - CSS selector for the original select element
  * @param {string} text - The text of the option to select
- * @example cy.select2ByText('#Country', 'United States')
+ * @example cy.tomSelectByText('#Country', 'United States')
  */
-Cypress.Commands.add('select2ByText', (selector, text) => {
-    // Find the Select2 container for this select element
-    cy.get(selector).then($select => {
-        const selectId = $select.attr('id');
-        const containerId = selectId ? `select2-${selectId}-container` : null;
-        
-        // Click the Select2 container to open the dropdown
-        if (containerId) {
-            cy.get(`#${containerId}`).parent('.select2-selection').click();
-        } else {
-            cy.get(selector).siblings('.select2-container').find('.select2-selection').click();
-        }
-    });
-    
-    // Wait for dropdown to appear and search for the text
-    cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
-        .should('be.visible')
+Cypress.Commands.add('tomSelectByText', (selector, text) => {
+    // Click the TomSelect control to open the dropdown
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-control').click();
+
+    // Type in the search input
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-control input')
         .type(text);
-    
+
     // Wait for results and click the matching option
-    cy.get('.select2-results__option', { timeout: 5000 })
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-dropdown .ts-dropdown-content .option', { timeout: 5000 })
         .should('be.visible')
         .contains(text)
         .click({ force: true });
 });
 
 /**
- * Select an option in a Select2 dropdown by value
+ * Select an option in a TomSelect dropdown by value (programmatically)
  * @param {string} selector - CSS selector for the original select element
  * @param {string} value - The value of the option to select
- * @example cy.select2ByValue('#Country', 'us')
+ * @example cy.tomSelectByValue('#Country', 'us')
  */
-Cypress.Commands.add('select2ByValue', (selector, value) => {
-    // Use jQuery to trigger Select2 change programmatically
+Cypress.Commands.add('tomSelectByValue', (selector, value) => {
     cy.get(selector).then($select => {
-        cy.wrap($select).invoke('val', value).trigger('change');
+        const el = $select[0];
+        if (el.tomselect) {
+            el.tomselect.setValue(value);
+        }
     });
 });
 
 /**
- * Type and search in a Select2 with AJAX
+ * Type and search in a TomSelect with remote/AJAX data
  * @param {string} selector - CSS selector for the original select element
  * @param {string} searchText - Text to search for
  * @param {string} resultText - Text of the result to click (optional, clicks first if not provided)
- * @example cy.select2Search('.multiSearch', 'John', 'John Doe')
+ * @example cy.tomSelectSearch('.personSearch', 'John', 'John Doe')
  */
-Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) => {
-    // Click the Select2 container to open the dropdown
-    cy.get(selector).then($select => {
-        const selectId = $select.attr('id');
-        const containerId = selectId ? `select2-${selectId}-container` : null;
-        
-        if (containerId) {
-            cy.get(`#${containerId}`).parent('.select2-selection').click();
-        } else {
-            cy.get(selector).siblings('.select2-container').find('.select2-selection').click();
-        }
-    });
-    
-    // Type in the search field
-    cy.get('.select2-container--open .select2-search__field', { timeout: 5000 })
-        .should('be.visible')
+Cypress.Commands.add('tomSelectSearch', (selector, searchText, resultText = null) => {
+    // Click the TomSelect control to focus
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-control').click();
+
+    // Type in the search input
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-control input')
         .type(searchText);
-    
-    // Wait for AJAX results (look for non-loading options)
-    cy.get('.select2-results__option', { timeout: 10000 })
-        .not('.select2-results__option--loading')
+
+    // Wait for results
+    cy.get(selector).siblings('.ts-wrapper').find('.ts-dropdown .ts-dropdown-content .option', { timeout: 10000 })
         .should('be.visible');
-    
+
     // Click the specific result or the first one
     if (resultText) {
-        cy.get('.select2-results__option')
+        cy.get(selector).siblings('.ts-wrapper').find('.ts-dropdown .ts-dropdown-content .option')
             .contains(resultText)
             .click({ force: true });
     } else {
-        cy.get('.select2-results__option')
-            .not('.select2-results__option--loading')
+        cy.get(selector).siblings('.ts-wrapper').find('.ts-dropdown .ts-dropdown-content .option')
             .first()
             .click({ force: true });
     }
 });
 
 /**
- * Verify Select2 has the Bootstrap 4 theme applied
+ * Verify TomSelect is initialized on an element
  * @param {string} selector - CSS selector for the original select element
- * @param {string} theme - Theme name (default: 'bootstrap4')
- * @example cy.select2HasTheme('#Country', 'bootstrap4')
+ * @example cy.tomSelectIsInitialized('#Country')
  */
-Cypress.Commands.add('select2HasTheme', (selector, theme = 'bootstrap4') => {
+Cypress.Commands.add('tomSelectIsInitialized', (selector) => {
+    cy.get(selector).should($select => {
+        expect($select[0].tomselect, 'TomSelect instance').to.exist;
+    });
+    cy.get(selector).siblings('.ts-wrapper').should('exist');
+});
+
+/**
+ * Clear a TomSelect selection
+ * @param {string} selector - CSS selector for the original select element
+ * @example cy.tomSelectClear('#Country')
+ */
+Cypress.Commands.add('tomSelectClear', (selector) => {
     cy.get(selector).then($select => {
-        // Check if Select2 is initialized
-        cy.wrap($select).should('have.class', 'select2-hidden-accessible');
-        
-        // Check the theme class on the container
-        cy.get(selector)
-            .siblings('.select2-container')
-            .should('have.class', `select2-container--${theme}`);
+        const el = $select[0];
+        if (el.tomselect) {
+            el.tomselect.clear();
+        }
     });
 });
 
 /**
- * Clear a Select2 selection (if allowClear is enabled)
+ * Get the currently selected text from a TomSelect
  * @param {string} selector - CSS selector for the original select element
- * @example cy.select2Clear('#Country')
+ * @example cy.tomSelectGetSelected('#Country').should('contain', 'United States')
  */
-Cypress.Commands.add('select2Clear', (selector) => {
-    cy.get(selector)
-        .siblings('.select2-container')
-        .find('.select2-selection__clear')
-        .click({ force: true });
+Cypress.Commands.add('tomSelectGetSelected', (selector) => {
+    return cy.get(selector).siblings('.ts-wrapper').find('.ts-control .item');
 });
 
-/**
- * Get the currently selected text from a Select2
- * @param {string} selector - CSS selector for the original select element
- * @example cy.select2GetSelected('#Country').should('contain', 'United States')
- */
+// Legacy aliases — keep old command names working for gradual test migration
+Cypress.Commands.add('select2ByText', (selector, text) => {
+    cy.tomSelectByText(selector, text);
+});
+Cypress.Commands.add('select2ByValue', (selector, value) => {
+    cy.tomSelectByValue(selector, value);
+});
+Cypress.Commands.add('select2Search', (selector, searchText, resultText = null) => {
+    cy.tomSelectSearch(selector, searchText, resultText);
+});
+Cypress.Commands.add('select2Clear', (selector) => {
+    cy.tomSelectClear(selector);
+});
 Cypress.Commands.add('select2GetSelected', (selector) => {
-    return cy.get(selector)
-        .siblings('.select2-container')
-        .find('.select2-selection__rendered');
+    cy.tomSelectGetSelected(selector);
+});
+Cypress.Commands.add('select2HasTheme', (selector) => {
+    cy.tomSelectIsInitialized(selector);
 });
 
 /**

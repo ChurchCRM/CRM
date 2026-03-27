@@ -39,8 +39,8 @@ if (isset($_GET['Confirmed'])) {
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<div class="card card-warning">
-  <div class="card-header">
+<div class="card border-top border-warning border-3">
+  <div class="card-header d-flex align-items-center">
     <?= gettext('Please confirm deletion of this note') ?>:
   </div>
   <div class="card-body">

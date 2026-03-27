@@ -9,8 +9,10 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Envelope Manager');
+$sPageSubtitle = gettext('Assign and manage donation envelope numbers');
 
 // Security: User must have finance permission to use this form
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
@@ -79,11 +81,15 @@ while ($aRow = mysqli_fetch_array($rsClassifications)) {
     $classification[$lst_OptionID] = $lst_OptionName;
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Manage Envelopes')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
 <form method="post" action="ManageEnvelopes.php" name="ManageEnvelopes">
 <?php
 
@@ -110,7 +116,7 @@ if (isset($_POST['PrintReport'])) {
 
 ?>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
 <button type="submit" class="btn btn-secondary" name="PrintReport"><i class="fa-solid fa-print"></i></button>
 
 <br><br>
@@ -120,7 +126,7 @@ if (isset($_POST['PrintReport'])) {
     <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title" id="upload-Image-label"><?= gettext('Update Envelopes') ?></h4>
                 </div>
                 <div class="modal-body">
@@ -128,7 +134,7 @@ if (isset($_POST['PrintReport'])) {
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="btn btn-primary" value="<?= gettext('Confirm') ?>" name="Confirm">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
                 </div>
             </div>
     </div>
@@ -192,13 +198,13 @@ foreach ($arrayToLoop as $fam_ID => $value) {
     echo '<tr>';
     echo '<td>' . $fam_Data . '&nbsp;</td>';
     if ($envelope && $duplicateEnvelopeHash && array_key_exists($envelope, $duplicateEnvelopeHash)) {
-        $tdTag = "<td bgcolor='red'>";
+        $tdTag = '<td class="table-danger">';
     } else {
         $duplicateEnvelopeHash[$envelope] = $fam_ID;
         $tdTag = '<td>';
     }
-    echo $tdTag; ?><class="TextColumn">
-    <input type="text" name="EnvelopeID_<?= $fam_ID ?>" value="<?= $envelope ?>" maxlength="10">
+    echo $tdTag;
+    ?><input type="text" class="form-control form-control-sm" name="EnvelopeID_<?= $fam_ID ?>" value="<?= $envelope ?>" maxlength="10">
     </td></tr>
     <?php
 }
@@ -221,7 +227,7 @@ foreach ($arrayToLoop as $fam_ID => $value) {
 function getEnvelopes(?int $classification = null): array
 {
     if ($classification) {
-        $sSQL = "SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification . "'";
+        $sSQL ="SELECT fam_ID, fam_Envelope FROM family_fam LEFT JOIN person_per ON fam_ID = per_fam_ID WHERE per_cls_ID='" . $classification ."'";
     } else {
         $sSQL = 'SELECT fam_ID, fam_Envelope FROM family_fam';
     }

@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\Property;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have property and classification editing permission
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isMenuOptionsEnabled(), 'MenuOptions');
@@ -44,6 +45,7 @@ switch ($sType) {
 }
 
 $sPageTitle = $sTypeName . ' ' . gettext('Property Editor');
+$sPageSubtitle = gettext('Define custom properties for tracking data');
 
 $bError = false;
 $iType = 0;
@@ -115,18 +117,23 @@ if (isset($_POST['Submit'])) {
 }
 
 // Get the Property Types
-$sSQL = "SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType . "' ORDER BY prt_Name";
+$sSQL ="SELECT * FROM propertytype_prt WHERE prt_Class = '" . $sType ."' ORDER BY prt_Name";
 $rsPropertyTypes = RunQuery($sSQL);
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Properties')],
+    [gettext('Edit Property')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 <div class="row justify-content-center mt-2">
     <div class="col-md-8">
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-status-top bg-primary"></div>
+                <div class="card-header">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-edit"></i>
+                        <i class="fa-solid fa-pen-to-square"></i>
                         <?= gettext('Property Editor') ?>
                     </h5>
                 </div>
@@ -134,7 +141,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <form method="post" action="PropertyEditor.php?PropertyID=<?= InputUtils::escapeAttribute($iPropertyID) ?>&Type=<?= InputUtils::escapeAttribute($sType) ?>">
                         <div class="mb-3">
                             <label for="Class" class="form-label"><?= gettext('Type') ?>:</label>
-                            <select class="form-control" name="Class">
+                            <select class="form-select" name="Class">
                                 <option value=""><?= gettext('Select Property Type') ?></option>
                                 <?php
                                 while ($aRow = mysqli_fetch_array($rsPropertyTypes)) {
@@ -165,8 +172,8 @@ require_once __DIR__ . '/Include/Header.php';
                             <small class="form-text text-muted d-block mt-1"><?= gettext('Entering a Prompt value will allow the association of a free-form value.') ?></small>
                         </div>
                         <div class="d-flex">
-                            <button type="submit" class="btn btn-success mr-2" name="Submit">
-                                <i class="fa-solid fa-save"></i>
+                            <button type="submit" class="btn btn-success me-2" name="Submit">
+                                <i class="fa-solid fa-floppy-disk"></i>
                                 <?= gettext('Save') ?>
                             </button>
                             <button type="button" class="btn btn-secondary" name="Cancel" onclick="document.location='PropertyList.php?Type=<?= InputUtils::escapeAttribute($sType) ?>';">

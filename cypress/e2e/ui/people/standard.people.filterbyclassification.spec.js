@@ -9,16 +9,13 @@ describe("People classification filters", () => {
 
         cy.url().should("include", "/v2/people?Classification=1");
 
-        // The hidden select should be initialized from the URL value (as array since it's multiple select)
-        cy.get(".filter-Classification", { timeout: 10000 }).invoke('val').should('deep.equal', ['1']);
-
-        // And the Select2 label should show the selected classification
+        // TomSelect should show the selected classification in the control
         cy.get(".filter-Classification")
-            .parent()
-            .find(".select2-selection__rendered")
+            .siblings(".ts-wrapper")
+            .find(".ts-control .item")
             .should("contain", "Member");
 
-        // Grid remains loaded after initial filter application
+        // Grid remains loaded after initial filter application and shows filtered results
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);
     });
 
@@ -27,8 +24,8 @@ describe("People classification filters", () => {
 
         cy.url().should("include", "Classification=1");
         cy.get(".filter-Classification")
-            .siblings(".select2-container")
-            .find(".select2-selection__rendered")
+            .siblings(".ts-wrapper")
+            .find(".ts-control .item")
             .should("contain", "Member");
 
         cy.get("#members tbody tr", { timeout: 10000 }).should("have.length.greaterThan", 0);

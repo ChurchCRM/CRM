@@ -69,30 +69,10 @@ function initializeGroupList() {
         title: i18next.t("Group Name"),
         data: "Name",
         render: (data, type, full, meta) => {
-          const container = document.createElement("div");
-
-          // Clickable icon for editing
-          const editLink = document.createElement("a");
-          editLink.href = `${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}`;
-          editLink.title = i18next.t("Edit Group");
-
-          const editIcon = document.createElement("i");
-          editIcon.className = "fa fa-pen";
-
-          editLink.appendChild(editIcon);
-
-          // Clickable group name for viewing
           const nameLink = document.createElement("a");
           nameLink.href = `${window.CRM.root}/GroupView.php?GroupID=${full.Id}`;
-          nameLink.title = i18next.t("View Group");
           nameLink.textContent = data;
-
-          // Add elements to container
-          container.appendChild(editLink);
-          container.appendChild(document.createTextNode(" "));
-          container.appendChild(nameLink);
-
-          return container.outerHTML;
+          return nameLink.outerHTML;
         },
       },
       {
@@ -113,12 +93,34 @@ function initializeGroupList() {
         defaultContent: "0",
       },
       {
-        width: "auto",
-        title: i18next.t("Group Cart Status"),
+        width: "1",
+        title: i18next.t("Actions"),
         data: null,
+        orderable: false,
         searchable: false,
+        className: "text-end w-1 no-export",
         render: (data, type, full, meta) => {
-          return `<span class="cartStatusButton" data-groupid="${full.Id}" data-membercount="${full.memberCount}">${i18next.t("Checking Cart Status")}</span>`;
+          const inCart = $.inArray(full.Id, window.CRM.groupsInCart) > -1;
+          const hasMembers = full.memberCount > 0;
+          const cartBtn = hasMembers
+            ? inCart
+              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-off me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
+              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
+            : "";
+          const escapedName = window.CRM.escapeHtml(full.Name || "");
+          return (
+            '<div class="dropdown">' +
+            '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+            '<i class="ti ti-dots-vertical"></i>' +
+            "</button>" +
+            '<div class="dropdown-menu dropdown-menu-end">' +
+            `<a class="dropdown-item" href="${window.CRM.root}/GroupView.php?GroupID=${full.Id}"><i class="ti ti-eye me-2"></i>${i18next.t("View")}</a>` +
+            `<a class="dropdown-item" href="${window.CRM.root}/GroupEditor.php?GroupID=${full.Id}"><i class="ti ti-pencil me-2"></i>${i18next.t("Edit")}</a>` +
+            (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
+            '<div class="dropdown-divider"></div>' +
+            `<button type="button" class="dropdown-item text-danger delete-group" data-group-id="${full.Id}" data-group-name="${escapedName}"><i class="ti ti-trash me-2"></i>${i18next.t("Delete")}</button>` +
+            "</div></div>"
+          );
         },
       },
     ],
@@ -126,30 +128,34 @@ function initializeGroupList() {
 
   $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
-  $("#groupsTable")
-    .DataTable(dataTableConfig)
-    .on("draw.dt", () => {
-      $(".cartStatusButton").each((index, element) => {
-        const $element = $(element);
-        const objectID = $element.data("groupid");
-        const numberOfMembers = $element.data("membercount");
+  const groupsTable = $("#groupsTable").DataTable(dataTableConfig);
 
-        if (numberOfMembers === 0) {
-          $element.html(`<span class="badge badge-light text-muted">${i18next.t("No members")}</span>`);
-        } else if ($.inArray(objectID, window.CRM.groupsInCart) > -1) {
-          $element.html(
-            `<span class="badge badge-success mr-2"><i class="fa-solid fa-check"></i> ${i18next.t("In Cart")}</span>` +
-              `<button class="RemoveFromCart btn btn-sm btn-outline-danger" data-cart-id="${objectID}" data-cart-type="group">` +
-              `<i class="fa-solid fa-times"></i> ${i18next.t("Remove all")}</button>`,
-          );
-        } else {
-          $element.html(
-            `<button class="AddToCart btn btn-sm btn-primary" data-cart-id="${objectID}" data-cart-type="group">` +
-              `<i class="fa-solid fa-cart-plus"></i> ${i18next.t("Add all to cart")}</button>`,
-          );
-        }
-      });
+  $(document).on("click", ".delete-group", function () {
+    const groupId = $(this).data("group-id");
+    const groupName = $(this).data("group-name");
+    bootbox.confirm({
+      message: i18next.t("Are you sure you want to delete") + " <strong>" + groupName + "</strong>?",
+      buttons: {
+        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
+        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+      },
+      callback: (result) => {
+        if (!result) return;
+        $.ajax({
+          method: "DELETE",
+          url: `${window.CRM.root}/api/groups/${groupId}`,
+        })
+          .done(() => {
+            window.CRM.notify(i18next.t("Group deleted successfully."), { type: "success", delay: 3000 });
+            groupsTable.ajax.reload();
+          })
+          .fail((xhr) => {
+            console.error("Failed to delete group:", xhr);
+            window.CRM.notify(i18next.t("Failed to delete group. Please try again."), { type: "danger", delay: 5000 });
+          });
+      },
     });
+  });
 }
 
 // Wait for locales to load before initializing

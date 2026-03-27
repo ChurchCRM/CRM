@@ -33,13 +33,11 @@ describe("Finance Dashboard", () => {
         cy.contains("Total Payments");
     });
 
-    it("should display Quick Actions section", () => {
+    it("should display action buttons", () => {
         cy.visit("/finance/");
 
-        cy.contains("Quick Actions");
         cy.contains("Create Deposit");
-        cy.contains("Add Payment");
-        cy.contains("Generate Reports");
+        cy.contains("Reports");
     });
 
     it("should navigate to deposits page from Create Deposit button", () => {
@@ -51,11 +49,11 @@ describe("Finance Dashboard", () => {
         cy.contains("Deposit Listing");
     });
 
-    it("should navigate to reports page from Generate Reports button", () => {
+    it("should navigate to reports page from Reports button", () => {
         cy.visit("/finance/");
 
-        // Find and click the Generate Reports button
-        cy.contains("a", "Generate Reports").click();
+        // Find and click the Reports button
+        cy.contains("a", "Reports").click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
@@ -145,12 +143,12 @@ describe("Finance Dashboard - Standard User Access", () => {
     it("should allow standard users with finance permission to access the dashboard", () => {
         // The standard test user (tony.wade) has finance permissions enabled in demo database
         cy.visit("/finance/");
-        
-        // Should be able to see the dashboard
-        cy.get("h1").should("contain", "Finance Dashboard");
-        
-        // Metrics should be visible
-        cy.get(".finance-metric-card").should("have.length.at.least", 3);
+
+        // Should be able to see the dashboard (page title is in h2.page-title from Tabler layout)
+        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+
+        // Metrics should be visible (overview card with stat cards)
+        cy.contains("YTD Payments").should("exist");
     });
 
     it("should not show the Church Information settings link to non-admin users", () => {

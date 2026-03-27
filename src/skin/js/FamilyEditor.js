@@ -4,7 +4,7 @@ $(document).ready(function () {
     userSelected: $("#Country").data("user-selected"),
     systemDefault: $("#Country").data("system-default"),
     cascadeState: true,
-    initSelect2: true,
+    initTomSelect: true,
     onCountryChange: function (countryCode) {
       // Update state type field based on whether states exist
       const stateSelect = $("#State");
@@ -58,8 +58,10 @@ $(document).ready(function () {
   // Apply inputmask to non-phone fields (fields without a "No format" checkbox)
   $("[data-mask]").inputmask();
 
-  $("#Country").select2();
-  $("#State").select2();
+  var countryEl = document.getElementById("Country");
+  if (countryEl && !countryEl.tomselect) new TomSelect(countryEl);
+  var stateEl = document.getElementById("State");
+  if (stateEl && !stateEl.tomselect) new TomSelect(stateEl);
 
   // Add Family Member Row functionality
   if (window.CRM.initialFamilyMemberCount !== undefined) {

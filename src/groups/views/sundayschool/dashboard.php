@@ -8,120 +8,206 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="card card-info card-outline">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-church"></i> <?= gettext('Sunday School Overview') ?></h3>
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-secondary">
-                    <span class="info-box-icon"><i class="fa-solid fa-chalkboard"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Classes') ?></span>
-                        <span class="info-box-number"><?= $classes ?></span>
+<!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-chalkboard icon"></i>
+                        </span>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="fa-solid fa-person-chalkboard"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Teachers') ?></span>
-                        <span class="info-box-number"><?= $teachers ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-primary">
-                    <span class="info-box-icon"><i class="fa-solid fa-children"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Students') ?></span>
-                        <span class="info-box-number"><?= $kids ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-info">
-                    <span class="info-box-icon"><i class="fa-solid fa-people-roof"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Families') ?></span>
-                        <span class="info-box-number"><?= $families ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-primary">
-                    <span class="info-box-icon"><i class="fa-solid fa-child"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Boys') ?></span>
-                        <span class="info-box-number"><?= $maleKids ?></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-sm-6">
-                <div class="info-box bg-danger">
-                    <span class="info-box-icon"><i class="fa-solid fa-child-dress"></i></span>
-                    <div class="info-box-content">
-                        <span class="info-box-text"><?= gettext('Girls') ?></span>
-                        <span class="info-box-number"><?= $femaleKids ?></span>
+                    <div class="col">
+                        <div class="fw-medium"><?= $classes ?></div>
+                        <div class="text-muted"><?= gettext('Classes') ?></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row mt-3">
-            <div class="col-12">
-                <?php if ($canManageGroups) { ?>
-                    <button class="btn btn-app bg-success" data-toggle="modal" data-target="#add-class">
-                        <i class="fa-solid fa-plus-square fa-3x"></i><br>
-                        <?= gettext('Add New') . ' ' . gettext('Class') ?>
-                    </button>
-                <?php } ?>
-                <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-app bg-primary"
-                   title="<?= gettext('Generate class lists and attendance sheets') ?>">
-                    <i class="fa-solid fa-file-pdf fa-3x"></i><br>
-                    <?= gettext('Reports') ?>
-                </a>
-                <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-app bg-info"
-                   title="<?= gettext('Export All Classes, Kids, and Parent to CSV file') ?>">
-                    <i class="fa-solid fa-file-csv fa-3x"></i><br>
-                    <?= gettext('Export to CSV') ?>
-                </a>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-person-chalkboard icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $teachers ?></div>
+                        <div class="text-muted"><?= gettext('Teachers') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-children icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $kids ?></div>
+                        <div class="text-muted"><?= gettext('Students') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-info text-white avatar rounded-circle">
+                            <i class="fa-solid fa-people-roof icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $families ?></div>
+                        <div class="text-muted"><?= gettext('Families') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-azure text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $maleKids ?></div>
+                        <div class="text-muted"><?= gettext('Boys') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-2">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-danger text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child-dress icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $femaleKids ?></div>
+                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<div class="card card-primary card-outline">
+<!-- Quick Actions -->
+<div class="card mb-3">
     <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="d-flex flex-wrap" style="gap:.5rem;">
+            <?php if ($canManageGroups) { ?>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add-class">
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New Class') ?>
+                </button>
+            <?php } ?>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
+                <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Reports') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info">
+                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Export to CSV') ?>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card border border-primary mb-3">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-chalkboard-user"></i> <?= gettext('Sunday School Classes') ?></h3>
-        <div class="card-tools float-right">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>
     </div>
-    <div class="card-body">
-        <table id="sundayschoolClasses" class="table table-striped table-bordered data-table w-100">
+    <div class="card-body" style="overflow: visible;">
+        <table id="sundayschoolClasses" class="table table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('Class') ?></th>
                     <th><?= gettext('Teachers') ?></th>
                     <th><?= gettext('Students') ?></th>
+                    <th class="w-1 no-export text-center"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($classStats as $class) { ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>" class="mr-2" title="<?= gettext('Edit') ?>">
-                                <i class="fa-solid fa-pen"></i>
-                            </a>
                             <a href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
                                 <?= htmlspecialchars($class['name']) ?>
                             </a>
                         </td>
                         <td><?= $class['teachers'] ?></td>
                         <td><?= $class['kids'] ?></td>
+                        <td class="w-1">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/groups/sundayschool/class/<?= $class['id'] ?>">
+                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    </a>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $class['id'] ?>">
+                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <?php if ($class['teachers'] > 0) { ?>
+                                    <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Teacher">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Teachers to Cart') ?>
+                                    </button>
+                                    <?php } ?>
+                                    <?php if ($class['kids'] > 0) { ?>
+                                    <button type="button" class="dropdown-item add-ss-role-to-cart" data-group-id="<?= $class['id'] ?>" data-role-name="Student">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i><?= gettext('Add Students to Cart') ?>
+                                    </button>
+                                    <?php } ?>
+                                    <?php if ($class['teachers'] > 0 || $class['kids'] > 0) { ?>
+                                    <button type="button"
+                                        class="dropdown-item AddToCart"
+                                        data-cart-id="<?= $class['id'] ?>"
+                                        data-cart-type="group"
+                                        data-label-add="<?= gettext('Add all to Cart') ?>"
+                                        data-label-remove="<?= gettext('Remove all from Cart') ?>">
+                                        <i class="ti ti-shopping-cart-plus me-2"></i>
+                                        <span class="cart-label"><?= gettext('Add all to Cart') ?></span>
+                                    </button>
+                                    <?php } ?>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item text-danger delete-ss-class"
+                                        data-group-id="<?= $class['id'] ?>"
+                                        data-group-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($class['name']) ?>">
+                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -129,16 +215,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-warning card-outline">
-    <div class="card-header">
+<div class="card border border-warning mb-3">
+    <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><i class="fa-solid fa-user-xmark"></i> <?= gettext('Students not in a Sunday School Class') ?></h3>
-        <div class="card-tools float-right">
+        <div class="card-tools ms-auto">
             <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fa-solid fa-minus"></i></button>
             <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fa-solid fa-times"></i></button>
         </div>
     </div>
-    <div class="card-body table-responsive">
-        <table id="sundayschoolMissing" class="table table-striped table-bordered data-table w-100">
+    <div class="card-body" style="overflow: visible;">
+        <table id="sundayschoolMissing" class="table table-bordered data-table w-100">
             <thead>
                 <tr>
                     <th><?= gettext('First Name') ?></th>
@@ -146,6 +232,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <th><?= gettext('Birth Date') ?></th>
                     <th><?= gettext('Age') ?></th>
                     <th><?= gettext('Home Address') ?></th>
+                    <th class="w-1 no-export"><?= gettext('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -168,17 +255,55 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     if ($personPhoto->hasUploadedPhoto()) {
                         $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $kidId . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
                     }
+                    $inCart = isset($_SESSION['aPeopleCart']) && in_array($kidId, $_SESSION['aPeopleCart'], false);
                     ?>
                     <tr>
                         <td>
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
-                                <?= htmlspecialchars($firstName) ?>
+                                <?= \ChurchCRM\Utils\InputUtils::escapeHTML($firstName) ?>
                             </a><?= $photoIcon ?>
                         </td>
-                        <td><?= htmlspecialchars($LastName) ?></td>
+                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($LastName) ?></td>
                         <td><?= $birthDate ?></td>
                         <td><?= $age ?></td>
-                        <td><?= htmlspecialchars($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td class="w-1">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <i class="ti ti-dots-vertical"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                        <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                    </a>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">
+                                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                    </a>
+                                    <?php if ($famId): ?>
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $famId ?>">
+                                        <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                    </a>
+                                    <?php endif; ?>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                        data-cart-id="<?= $kidId ?>"
+                                        data-cart-type="person"
+                                        data-label-add="<?= gettext('Add to Cart') ?>"
+                                        data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                        <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                        <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                    </button>
+                                    <div class="dropdown-divider"></div>
+                                    <button type="button"
+                                        class="dropdown-item text-danger delete-person"
+                                        data-person_id="<?= $kidId ?>"
+                                        data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
+                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>
@@ -191,21 +316,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <h4 class="modal-title" id="add-class-label">
                         <?= gettext('Add') . ' ' . gettext('Sunday School') . ' ' . gettext('Class') ?>
                     </h4>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
+                    <div class="mb-3">
                         <input type="text" id="new-class-name" class="form-control"
                                placeholder="<?= gettext('Enter Name') ?>" maxlength="20" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
-                    <button type="button" id="addNewClassBtn" class="btn btn-primary"
-                            data-dismiss="modal"><?= gettext('Add') ?></button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                        <button type="button" id="addNewClassBtn" class="btn btn-primary"
+                            data-bs-dismiss="modal"><?= gettext('Add') ?></button>
                 </div>
             </div>
         </div>

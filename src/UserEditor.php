@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\users\NewAccountEmail;
+use ChurchCRM\view\PageHeader;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserConfig;
@@ -251,12 +252,12 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     }
 }
 
-// Style sheet (CSS) file selection options
+// Style sheet (CSS) file selection options (legacy field — kept for data compatibility)
 function StyleSheetOptions($currentStyle)
 {
-    foreach (['skin-blue', 'skin-blue-light', 'skin-yellow', 'skin-yellow-light', 'skin-green', 'skin-green-light', 'skin-purple', 'skin-purple-light', 'skin-red', 'skin-red-light', 'skin-black', 'skin-black-light'] as $stylename) {
+    foreach (['default', 'dark'] as $stylename) {
         echo '<option value="' . $stylename . '"';
-        if ($stylename == $currentStyle) {
+        if ($stylename == $currentStyle || ($currentStyle === '' && $stylename === 'default')) {
             echo ' selected';
         }
         echo '>' . $stylename . '</option>';
@@ -337,10 +338,15 @@ if (isset($_POST['save']) && ($iPersonID > 0)) {
 }
 
 $sPageTitle = gettext('User Editor');
+$sPageSubtitle = gettext('Manage user account details and permissions');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Users'), '/admin/system/users'],
+    [gettext('Edit User')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<!-- Default box -->
 <div class="card">
     <div class="card-body">
         <div class="alert alert-info">
@@ -360,7 +366,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <tr>
                             <td><?= gettext('Person to Make User') ?>:</td>
                             <td>
-                                <select name="PersonID" size="30" id="personSelect" class="form-control">
+                                <select name="PersonID" size="30" id="personSelect" class="form-select">
                                     <?php
                                     // Loop through all the people
                                     while ($aRow = mysqli_fetch_array($rsPeople)) {
@@ -461,8 +467,11 @@ require_once __DIR__ . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>
-                        <td class="TextColumnWithBottomBorder"><select
-                                name="Style" id="Style"><?php StyleSheetOptions($usr_Style); ?></select></td>
+                        <td>
+                            <select class="form-select" name="Style" id="Style">
+                                <?php StyleSheetOptions($usr_Style); ?>
+                            </select>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="text-center">
@@ -475,28 +484,26 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
     </div>
 </div>
-<!-- /.box -->
-<!-- Default box -->
-<div class="card">
-    <div class="card-body box-danger">
-        <div
-            class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
+<div class="card mt-3">
+    <div class="card-body">
+        <div class="alert alert-info"><?= gettext('Set Permission True to give this user the ability to change their current value.') ?></div>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table table-hover align-middle">
+                <thead>
                 <tr>
-                    <th><?= gettext('Permission') ?></h3>
-                    </th>
+                    <th><?= gettext('Permission') ?></th>
                     <th><?= gettext('Variable name') ?></th>
-                    <th><?= gettext('Current Value') ?></h3>
-                    </th>
+                    <th><?= gettext('Current Value') ?></th>
                     <th><?= gettext('Notes') ?></th>
                 </tr>
+                </thead>
+                <tbody>
                 <?php
 
                 //First get default settings, then overwrite with settings from this user
 
                 // Get default settings
-                $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
+                $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
                 $rsDefault = RunQuery($sSQL);
                 $r = 1;
                 // List Default Settings
@@ -512,8 +519,8 @@ require_once __DIR__ . '/Include/Header.php';
                     ) = $aDefaultRow;
 
                     // Overwrite with user settings if they already exist
-                    $sSQL = "SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID' "
-                        . "AND ucfg_id='$ucfg_id' ";
+                    $sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='$usr_per_ID'"
+                        ."AND ucfg_id='$ucfg_id'";
                     $rsUser = RunQuery($sSQL);
                     while ($aUserRow = mysqli_fetch_row($rsUser)) {
                         list(
@@ -535,27 +542,27 @@ require_once __DIR__ . '/Include/Header.php';
                         $sel1 = 'SELECTED';
                         $sel2 = '';
                     }
-                    echo "\n<tr>";
-                    echo "<td><select name=\"new_permission[$ucfg_id]\">";
-                    echo "<option value=\"FALSE\" $sel1>" . gettext('False');
-                    echo "<option value=\"TRUE\" $sel2>" . gettext('True');
+                    echo"\n<tr>";
+                    echo"<td><select name=\"new_permission[$ucfg_id]\">";
+                    echo"<option value=\"FALSE\" $sel1>" . gettext('False');
+                    echo"<option value=\"TRUE\" $sel2>" . gettext('True');
                     echo '</select></td>';
 
                     // Variable Name & Type
-                    echo "<td>$ucfg_name</td>";
+                    echo"<td>$ucfg_name</td>";
 
                     // Current Value
                     if ($ucfg_type == 'text') {
-                        echo "<td>
+                        echo"<td>
             <input type=\"text\" size=\"30\" maxlength=\"255\" name=\"new_value[$ucfg_id]\"
             value=\"" . InputUtils::escapeAttribute($ucfg_value) . '\"></td>';
                     } elseif ($ucfg_type == 'textarea') {
-                        echo "<td>
+                        echo"<td>
             <textarea rows=\"4\" cols=\"30\" name=\"new_value[$ucfg_id]\">"
                             . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
                     } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
                         echo '<td><input type="text" size="15"'
-                            . " maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
+                            ." maxlength=\"15\" name=\"new_value[$ucfg_id]\" value=\"$ucfg_value\"></td>";
                     } elseif ($ucfg_type == 'boolean') {
                         if ($ucfg_value) {
                             $sel2 = 'SELECTED';
@@ -564,15 +571,15 @@ require_once __DIR__ . '/Include/Header.php';
                             $sel1 = 'SELECTED';
                             $sel2 = '';
                         }
-                        echo "<td><select name=\"new_value[$ucfg_id]\">";
-                        echo "<option value=\"\" $sel1>" . gettext('False');
-                        echo "<option value=\"1\" $sel2>" . gettext('True');
+                        echo"<td><select name=\"new_value[$ucfg_id]\">";
+                        echo"<option value=\"\" $sel1>" . gettext('False');
+                        echo"<option value=\"1\" $sel2>" . gettext('True');
                         echo '</select></td>';
                     }
 
                     // Notes
-                    echo "<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
-            " . gettext($ucfg_tooltip) . '</td></tr>';
+                    echo"<td><input type=\"hidden\" name=\"type[$ucfg_id]\" value=\"$ucfg_type\">
+" . gettext($ucfg_tooltip) . '</td></tr>';
 
                     $r++;
                 }
@@ -580,23 +587,21 @@ require_once __DIR__ . '/Include/Header.php';
                 // Cancel, Save Buttons
                 ?>
 
-                <tr>
-                    <td colspan="3" class="text-center">
-                        <input type="submit" class="btn btn-primary" name="save"
-                            value="<?= gettext('Save Settings') ?>">
-                        <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
-                    </td>
-                </tr>
+                </tbody>
             </table>
+        </div>
+        <div class="d-flex gap-2 mt-3">
+            <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
+            <input type="submit" class="btn btn-secondary" name="cancel" value="<?= gettext('Cancel') ?>">
         </div>
         </form>
     </div>
 </div>
-<!-- /.box -->
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(document).ready(function() {
-        $("#personSelect").select2();
+        var personSelectEl = document.getElementById("personSelect");
+        if (personSelectEl && !personSelectEl.tomselect) new TomSelect(personSelectEl);
     });
 </script>
 <?php

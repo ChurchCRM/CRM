@@ -8,15 +8,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
   <div class="col-lg-4 col-md-6 col-sm-12">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Kiosk Manager') ?></h3>
       </div>
       <div class="card-body">
-        <div class="form-group">
+        <div class="mb-3">
           <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="isNewKioskRegistrationActive">
-            <label class="custom-control-label" for="isNewKioskRegistrationActive">
+          <div class="form-check form-switch">
+            <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
+            <label class="form-check-label" for="isNewKioskRegistrationActive">
               <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
             </label>
           </div>
@@ -30,11 +30,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header">
+      <div class="card-header d-flex align-items-center">
         <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
       </div>
-      <div class="card-body">
-        <table id="KioskTable" class="table table-striped table-bordered" style="width:100%">
+      <div class="card-body p-0">
+        <table id="KioskTable" class="table table-vcenter table-hover card-table">
         </table>
       </div>
     </div>
@@ -121,12 +121,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       }
       
       var html = '<div class="d-flex align-items-center">';
-      html += '<select class="assignmentMenu form-control form-control-sm mr-2" data-kioskid="' + data.Id + '">' + options + '</select>';
+      html += '<select class="assignmentMenu form-select form-select-sm me-2" data-kioskid="' + data.Id + '">' + options + '</select>';
       
       // Add edit link if an event is assigned
       if (currentEventId) {
         html += '<a href="' + window.CRM.root + '/EventEditor.php?EID=' + currentEventId + '" class="btn btn-sm btn-outline-primary" title="' + i18next.t('Edit Event') + '">';
-        html += '<i class="fas fa-edit"></i>';
+        html += '<i class="fa-solid fa-pen-to-square"></i>';
         html += '</a>';
       }
       html += '</div>';
@@ -158,7 +158,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
   });
 
-  $(document).on("change", ".assignmentMenu", function(event) {
+  $(document).on("change",".assignmentMenu", function(event) {
     var kioskId = $(event.currentTarget).data("kioskid");
     var selected = $(event.currentTarget).val();
     var assignmentSplit = selected.split("-");
@@ -173,10 +173,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       message: i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
       buttons: {
         cancel: {
-          label: '<i class="fas fa-times"></i> ' + i18next.t("Cancel")
+          label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel")
         },
         confirm: {
-          label: '<i class="fas fa-trash"></i> ' + i18next.t("Delete"),
+          label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
           className: 'btn-danger'
         }
       },
@@ -200,8 +200,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   // Load future events from API
   function loadFutureEvents() {
     return window.CRM.APIRequest({
-      path: "events/",
-      method: "GET"
+      path:"events/",
+      method:"GET"
     }).done(function(data) {
       // Filter to events that:
       // 1. Haven't ended yet (end date >= now)
@@ -231,8 +231,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   function initKioskTable() {
     var dataTableConfig = {
       ajax: {
-        url: window.CRM.root + "/kiosk/api/devices",
-        dataSrc: "KioskDevices",
+        url: window.CRM.root +"/kiosk/api/devices",
+        dataSrc:"KioskDevices",
         statusCode: {
           401: function(xhr, error, thrown) {
             window.location = window.location.origin + '/session/begin?location=' + window.location.pathname;
@@ -259,7 +259,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             if (row && row.KioskAssignments && row.KioskAssignments.length > 0) {
               return row.KioskAssignments[0];
             } else {
-              return "None";
+              return"None";
             }
           },
           render: function(data, type, full, meta) {
@@ -283,9 +283,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           data: 'Accepted',
           render: function(data, type, full, meta) {
             if (full.Accepted) {
-              return '<span class="badge badge-success">' + i18next.t('Yes') + '</span>';
+              return '<span class="badge bg-green-lt text-green">' + i18next.t('Yes') + '</span>';
             } else {
-              return '<span class="badge badge-warning">' + i18next.t('No') + '</span>';
+              return '<span class="badge bg-warning text-dark">' + i18next.t('No') + '</span>';
             }
           }
         },
@@ -297,12 +297,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           orderable: false,
           render: function(data, type, full, meta) {
             var buttons = '<div class="btn-group btn-group-sm" role="group">';
-            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fas fa-sync"></i></button>';
-            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fas fa-eye"></i></button>';
+            buttons += '<button class="btn btn-outline-primary" onclick="window.CRM.kioskAPI.reload(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Reload command sent\'), {type: \'success\'}); })" title="' + i18next.t('Reload') + '"><i class="fa-solid fa-sync"></i></button>';
+            buttons += '<button class="btn btn-outline-info" onclick="window.CRM.kioskAPI.identify(' + full.Id + ').then(function() { window.CRM.notify(i18next.t(\'Identify command sent\'), {type: \'success\'}); })" title="' + i18next.t('Identify') + '"><i class="fa-solid fa-eye"></i></button>';
             if (!full.Accepted) {
-              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fas fa-check"></i></button>';
+              buttons += '<button class="btn btn-outline-success" onclick="window.CRM.kioskAPI.accept(' + full.Id + ').then(function() { window.CRM.kioskDataTable.ajax.reload(); window.CRM.notify(i18next.t(\'Kiosk accepted\'), {type: \'success\'}); })" title="' + i18next.t('Accept') + '"><i class="fa-solid fa-check"></i></button>';
             }
-            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g, "\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fas fa-trash"></i></button>';
+            buttons += '<button class="btn btn-outline-danger" onclick="confirmDeleteKiosk(' + full.Id + ', \'' + window.CRM.escapeHtml(full.Name).replace(/'/g,"\\'") + '\')" title="' + i18next.t('Delete') + '"><i class="fa-solid fa-trash"></i></button>';
             buttons += '</div>';
             return buttons;
           }

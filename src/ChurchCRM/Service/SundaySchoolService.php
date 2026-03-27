@@ -345,6 +345,7 @@ class SundaySchoolService
             $fam = $kid->getFamily();
             $kids[] = [
                 'kidId'       => $kid->getId(),
+                'famId'       => $kid->getFamId(),
                 'firstName'   => $kid->getFirstName(),
                 'LastName'    => $kid->getLastName(),
                 'birthDay'    => $kid->getBirthDay(),

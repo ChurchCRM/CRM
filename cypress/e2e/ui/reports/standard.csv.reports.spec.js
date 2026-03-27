@@ -67,33 +67,28 @@ describe("csv export", () => {
             cy.get("#FinancialReports").submit();
             cy.contains("Advanced Deposit Report");
             cy.get("input[name='output'][value='csv']").check({ force: true });
-            
-            cy.get("tbody tr:nth-of-type(2) input").then(($input) => {
-                if ($input.length > 0) {
-                    cy.get("tbody tr:nth-of-type(2) input").first().click({ force: true });
-                }
-            });
-            
-            cy.get("tbody tr:nth-of-type(4) input").then(($input) => {
-                if ($input.length > 0) {
-                    cy.get("tbody tr:nth-of-type(4) input").first().click({ force: true });
-                }
-            });
-            
-            cy.get("input[name='DateStart']").clear({ force: true }).type("10/28/2015", { force: true });
-            cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
-            
-            cy.get("tbody tr:nth-of-type(9) select").then(($select) => {
-                if ($select.length > 0) {
-                    cy.get("tbody tr:nth-of-type(9) select").then(($select2) => {
-                        const options = $select2.find("option");
-                        if (options.length > 1) {
-                            cy.get("tbody tr:nth-of-type(9) select").select(options.eq(1).val(), { force: true });
-                        }
+
+            // Select first classification option if available
+            cy.get("#classList").then(($select) => {
+                if ($select.find("option").length > 0) {
+                    cy.get("#classList option").first().then(($opt) => {
+                        cy.get("#classList").select($opt.val(), { force: true });
                     });
                 }
             });
-            
+
+            // Set date range
+            cy.get("input[name='DateStart']").clear({ force: true }).type("10/28/2015", { force: true });
+            cy.get("input[name='DateEnd']").clear({ force: true }).type(getTodayDate(), { force: true });
+
+            // Select a deposit if available
+            cy.get("#deposit").then(($select) => {
+                const options = $select.find("option");
+                if (options.length > 1) {
+                    cy.get("#deposit").select(options.eq(1).val(), { force: true });
+                }
+            });
+
             cy.get("#createReport").click({ force: true });
             cy.url().should("include", "/FinancialReports.php");
         });

@@ -11,61 +11,122 @@ complexity: "intermediate"
 ## Context
 This skill covers frontend patterns, UI components, notifications, internationalization, and asset management in ChurchCRM.
 
-## Stack
+## Stack <!-- updated: 2026-03-22 -->
 
-- **Bootstrap 4.6.2** - AdminLTE v2 pattern for legacy pages (NEVER use Bootstrap 5)
-- **React + TypeScript** - Modern components
-- **Webpack** - Build system
-- **Quill** - Rich text editor
-- **i18next** - Frontend internationalization
+- **Tabler + Bootstrap 5.3.8** — Primary UI framework (migrated from AdminLTE/BS4)
+- **React + TypeScript** — Modern components
+- **Webpack** — Build system
+- **ApexCharts** — Charting (replaced Chart.js)
+- **i18next** — Frontend internationalization
 
 **Verified versions in this repo (package.json):**
-- `bootstrap` 4.6.2
-- `admin-lte` 3.2.0
-- `react` 19.2.4, `react-dom` 19.2.4
-- `react-bootstrap` 2.10.10
-- `typescript` 5.9.3
-- `webpack` 5.105.2
+- `@tabler/core` ^1.4.0
+- `@tabler/icons-webfont` ^3.40.0
+- `bootstrap` ^5.3.8
+- `apexcharts` ^5.10.4
+- `react` ^19.2.4, `react-dom` ^19.2.4
+- `typescript` ^5.9.3
+- `webpack` ^5.105.4
 
-## Bootstrap 4.6.2 (CRITICAL)
+**For detailed component reference**, see `tabler-components.md`.
 
-**ALWAYS use Bootstrap 4.6.2 CSS classes, never Bootstrap 5 classes:**
+## Badge / Pill Contrast (CRITICAL) <!-- learned: 2026-03-25 -->
+
+Tabler overrides Bootstrap's semantic colors. `bg-info` alone **fails WCAG AA** (~2.9:1 with white text). `bg-warning` and `bg-light` also fail without explicit text overrides. Always check contrast before using any badge color.
+
+**Rule: use Tabler `-lt` variants for semantic/label badges; explicit `text-*` for all others.**
 
 ```php
-// ✅ CORRECT - Bootstrap 4.6.2 classes
-<div class="text-center align-top">Content</div>
-<button class="btn btn-primary btn-block">Full Width Button</button>
-<div class="btn-group btn-group-sm d-flex" role="group">
-    <a class="btn btn-outline-primary flex-fill">Button 1</a>
-    <a class="btn btn-outline-primary flex-fill">Button 2</a>
-</div>
+// ✅ CORRECT — Tabler -lt pattern: light tinted bg + colored text = always readable
+<span class="badge bg-blue-lt text-blue">Person</span>
+<span class="badge bg-teal-lt text-teal">Family</span>
+<span class="badge bg-purple-lt text-purple">Group</span>
+<span class="badge bg-green-lt text-green">Active</span>
 
-// ❌ WRONG - Bootstrap 5 classes (DO NOT USE!)
-<button class="btn btn-primary w-100">Button</button>  // Use btn-block instead
-<div class="d-flex flex-wrap gap-2">Content</div>      // gap- is Bootstrap 5 only
-<div class="d-grid gap-3">Content</div>               // d-grid is Bootstrap 5 only
+// ✅ CORRECT — solid dark backgrounds (pass with white text)
+<span class="badge bg-primary text-white">42</span>   // count on dark row
+<span class="badge bg-light text-dark">0</span>        // zero / empty state
+
+// ✅ CORRECT — warning always needs text-dark
+<span class="badge bg-warning text-dark">Pending</span>
+
+// ❌ WRONG — these fail WCAG AA in Tabler
+<span class="badge bg-info">Person</span>             // ~2.9:1 — FAILS
+<span class="badge bg-secondary">0</span>             // ~4.0:1 on gray rows — FAILS
+<span class="badge bg-warning">Alert</span>           // yellow + white — FAILS
+<span class="badge bg-light">Label</span>             // near-white bg + white text — FAILS
 ```
 
-**Bootstrap 5 Classes to AVOID:**
-- `w-100` on buttons (use `btn-block`)
-- `gap-*` utilities (use margins/padding instead)
-- `d-grid` (use `d-flex` or Bootstrap 4 grid)
-- `text-decoration-*` (use existing classes)
-- `fw-*` and `fs-*` font utilities
-- `rounded-*` beyond Bootstrap 4 values
-- `justify-content-*` with `gap-*` (gap is Bootstrap 5 only)
-- `flex-wrap` with `gap-*` (use proper spacing classes instead)
+**Quick reference:**
 
-**Always use Bootstrap 4.6.2 CSS classes, never deprecated HTML attributes:**
+| Use case | ✅ Class |
+|---|---|
+| Semantic label (Person/Family/Group/status) | `bg-{color}-lt text-{color}` |
+| Count on light background | `bg-primary text-white` |
+| Count on dark/active row | `bg-primary text-white` |
+| Zero / empty state | `bg-light text-dark` |
+| Warning | `bg-warning text-dark` |
+| Success action | `bg-green-lt text-green` |
+
+Tabler named colors available for `-lt`: `blue`, `azure`, `indigo`, `purple`, `pink`, `red`, `orange`, `yellow`, `lime`, `green`, `teal`, `cyan`.
+
+## Bootstrap 5 / Tabler (CRITICAL) <!-- updated: 2026-03-22 -->
+
+**Use Bootstrap 5 + Tabler CSS classes for all new and migrated code:**
 
 ```php
-// ✅ CORRECT - Bootstrap 4.6.2 classes
-<div class="text-center align-top">Content</div>
-<button style="margin-top: 12px;">Click</button>  // OK for custom values
+// ✅ CORRECT - Bootstrap 5 / Tabler classes
+<div class="ms-3 me-2 ps-2 pe-1">Spacing</div>
+<span class="badge bg-primary">Badge</span>
+<div class="float-end text-end">Aligned</div>
+<span class="fw-bold">Bold text</span>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+<div class="visually-hidden">Screen reader only</div>
+<div class="form-select">Select</div>
+<div class="form-check">Check</div>
 
-// ❌ WRONG - Deprecated HTML attributes  
+// ❌ WRONG - Bootstrap 4 classes (DO NOT USE in new code)
+<div class="ml-3 mr-2 pl-2 pr-1">Spacing</div>    // Use ms-/me-/ps-/pe-
+<span class="badge badge-primary">Badge</span>       // Use bg-primary
+<div class="float-end text-right">Aligned</div>   // Use float-end/text-end
+<span class="font-weight-bold">Bold text</span>     // Use fw-bold
+<button class="close">&times;</button>               // Use btn-close
+<div class="sr-only">Hidden</div>                    // Use visually-hidden
+<div class="custom-select">Select</div>              // Use form-select
+<div class="custom-control">Check</div>              // Use form-check
+<div class="form-group">Group</div>                  // Use <div class="mb-3">
+```
+
+**Data attributes must use `data-bs-*` prefix:**
+```php
+// ✅ CORRECT
+data-bs-toggle="modal" data-bs-target="#myModal" data-bs-dismiss="modal"
+
+// ❌ WRONG
+data-toggle="modal" data-target="#myModal" data-dismiss="modal"
+```
+
+**Always use CSS classes, never deprecated HTML attributes:**
+
+```php
+// ✅ CORRECT
+<div class="text-center align-top">Content</div>
+
+// ❌ WRONG - Deprecated HTML attributes
 <div align="center" valign="top">Content</div>
 ```
+
+## Table Design for User-Facing Lists <!-- learned: 2026-03-14 -->
+
+**Keep visible columns focused on essential info (5-6 columns max for scannable views).**
+
+For tables with many potential columns:
+- Show quick-glance stats in cards above the table (enrollment, gender breakdown, activity metrics)
+- Use modal popups for detailed information rather than expandable rows (better for print-friendly layouts)
+- Include actionable columns: clickable links to profiles, phone/email for quick contact
+- Use Bootstrap responsive grid: `col-12 col-md-6 col-lg-4` for mobile-first stacking
+
+**Example:** Sunday School class view shows (Name, Age, Mobile, Email, Father, Mother) with info icon opening modal for address/parent details.
 
 ## Asset Paths (SystemURLs)
 
@@ -149,31 +210,29 @@ if (confirm('Are you sure?')) {
 }
 ```
 
-## Modals (Bootstrap 4)
+## Modals (Bootstrap 5 / Tabler) <!-- updated: 2026-03-22 -->
 
-**For complex forms/modals, use Bootstrap 4 static modals:**
+**For complex forms/modals, use Bootstrap 5 data attributes:**
 
 ```html
 <!-- Button trigger -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
     <?= gettext('Open Modal') ?>
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="myModal" tabindex="-1">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title"><?= gettext('Modal Title') ?></h5>
-                <button type="button" class="close" data-dismiss="modal">
-                    <span>&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <!-- Form content -->
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     <?= gettext('Close') ?>
                 </button>
                 <button type="button" class="btn btn-primary">
@@ -185,16 +244,19 @@ if (confirm('Are you sure?')) {
 </div>
 ```
 
-**Programmatic modal control:**
+**Programmatic modal control (Bootstrap 5 API):**
 
 ```javascript
-// Show modal
-$('#myModal').modal('show');
+// Bootstrap 5 — use bootstrap.Modal class
+const myModal = new bootstrap.Modal(document.getElementById('myModal'));
+myModal.show();
+myModal.hide();
 
-// Hide modal
+// jQuery still works (BS5 auto-detects jQuery)
+$('#myModal').modal('show');
 $('#myModal').modal('hide');
 
-// Modal events
+// Modal events (same as BS4)
 $('#myModal').on('shown.bs.modal', function() {
     // Modal is now visible
 });
@@ -332,51 +394,145 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
-## System Settings Panel Component <!-- learned: 2026-03-08 -->
+## System Settings Panel Component — Standard Pattern <!-- learned: 2026-03-23 -->
 
-The `system-settings-panel.js` reusable component displays and edits SystemConfig settings with automatic API integration. Use this instead of building custom forms for settings management.
+**Use the Finance Dashboard pattern (http://localhost/finance/) as the gold standard for all settings pages.**
 
-**Setup (3 steps):**
+The `system-settings-panel.js` component displays and edits SystemConfig settings with automatic API integration. 
+
+**Standard Implementation (Finance Dashboard Pattern):**
 
 ```php
-<!-- 1. Add container (collapsible via Bootstrap) -->
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-<div class="collapse mb-3" id="mySettings"></div>
-<?php endif; ?>
+<div class="container-fluid">
+    <!-- 1. Context Row with Settings Toggle (Admin Only) -->
+    <div class="row mb-3">
+        <div class="col-12 d-flex align-items-center">
+            <p class="text-muted mb-0 flex-grow-1">
+                <i class="fa-solid fa-icon me-1"></i>
+                <?= gettext('Context Info') ?>: <strong><?= $value ?></strong>
+            </p>
+            <?php if ($isAdmin): ?>
+            <button class="btn btn-sm btn-outline-secondary" type="button" 
+                data-bs-toggle="collapse" data-bs-target="#mySettings">
+                <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
+            </button>
+            <?php endif; ?>
+        </div>
+    </div>
 
-<!-- 2. Include CSS + JS (after other scripts) -->
+    <!-- 2. Collapsible Settings Container (Initially Hidden) -->
+    <?php if ($isAdmin): ?>
+    <div class="collapse mb-3" id="mySettings"></div>
+    <?php endif; ?>
+
+    <!-- 3. Main Content Cards -->
+    <div class="card mb-3">
+        <!-- content -->
+    </div>
+</div>
+
+<!-- 4. Settings Panel Assets & Init (after main content) -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
-
-<!-- 3. Initialize with settings array -->
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-<?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-window.CRM.settingsPanel.init({
-    container: '#mySettings',
-    title: '<?= gettext('My Settings') ?>',
-    icon: 'fa-solid fa-cog',
-    settings: [
-        'iFYMonth',  // Uses predefined config from SettingDefinitions
-        {
-            name: 'iMapZoom',  // Or inline custom settings
-            label: '<?= gettext('Zoom Level') ?>',
-            type: 'choice',
-            choices: [
-                { value: '5', label: '<?= gettext('Far') ?>' },
-                { value: '15', label: '<?= gettext('Close') ?>' }
-            ]
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#mySettings',
+        title: i18next.t('Quick Settings'),  // Keep consistent title
+        icon: 'fa-solid fa-sliders',  // Or theme icon
+        headerClass: 'bg-info',  // Use semantic color: bg-primary/success/danger/warning/info
+        settings: [ 'iFYMonth', 'sSetting2' ],  // Predefined config keys
+        onSave: function() {
+            // Reload to reflect changes, or custom logic
+            setTimeout(() => window.location.reload(), 1500);
         }
-    ],
-    showAllSettingsLink: false,  // Hide link to full SystemSettings page
-    onSave: function() { window.location.reload(); }
+    });
 });
-<?php endif; ?>
 </script>
 ```
 
-**Setting Types:** `boolean` (toggle), `number` (with min/max), `text`, `choice` (dropdown), `password`
+**Key Principles:**
+- Settings are **hidden by default** (collapsible) to keep page clean
+- **Toggle button in header row** lets admins access settings when needed
+- Settings panel initializes with **consistent title "Quick Settings"** and icon
+- Use **semantic header colors** (`bg-info`, `bg-primary`, etc.) to differentiate sections
+- Include **context information** (fiscal year, status, etc.) in the header row before the toggle
+- **No custom form building** — let the component handle all rendering and API logic
 
-**API:** Automatically saves via POST `/admin/api/system/config/{key}` — no custom endpoint needed.
+**Available Setting Types:** `boolean`, `number`, `text`, `choice`, `password`, `date`, `textarea`, `json`
+
+**Applies To:** Finance dashboard, admin logs, admin users, system settings — all pages that need settings management.
+
+### Display Current Setting as Stat Card <!-- learned: 2026-03-23 -->
+
+For critical settings that users should see at a glance, display the current value as a stat card (not just in the collapsible panel). Update it in real-time when the user saves changes.
+
+**Example: Log Level Display & Update (System Logs page)**
+
+```php
+<!-- PHP: Log Level Stat Card (always visible) -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-secondary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-sliders icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium" id="currentLogLevelDisplay"><?= $currentLevelLabel ?></div>
+                        <div class="text-muted"><?= gettext('Log Level') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Other stat cards below -->
+</div>
+```
+
+```javascript
+// JavaScript: Update display in real-time when settings change
+var logLevelMap = {
+    '100': 'DEBUG',
+    '200': 'INFO',
+    '250': 'NOTICE',
+    '300': 'WARNING',
+    '400': 'ERROR',
+    '500': 'CRITICAL',
+    '550': 'ALERT',
+    '600': 'EMERGENCY',
+};
+
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#logSettings',
+        settings: [ 'sLogLevel' ],
+        onSave: function() {
+            window.CRM.notify(i18next.t('Settings saved'), { type: 'success' });
+            // Fetch updated value and refresh stat card
+            $.ajax({
+                url: window.CRM.path + 'api/system/config/sLogLevel',
+                type: 'GET',
+                success: function(data) {
+                    var levelValue = data.value || '200';
+                    var levelLabel = logLevelMap[levelValue] || 'INFO';
+                    $('#currentLogLevelDisplay').text(levelLabel);
+                }
+            });
+        }
+    });
+});
+```
+
+**Pattern:**
+1. Create a **stat card with id for display element** (e.g., `#currentLogLevelDisplay`)
+2. Store **setting value → label mapping** in JS object (e.g., `logLevelMap`)
+3. On settings panel save, **fetch fresh value** via GET `/api/system/config/{key}`
+4. **Update stat card text** with the new label
+5. Users immediately see the change without page reload
 
 ## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
 

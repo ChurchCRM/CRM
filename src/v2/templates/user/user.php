@@ -3,15 +3,15 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle = gettext("User") . " - " . $user->getFullName();
+$sPageTitle = gettext("User") ." -" . $user->getFullName();
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="row">
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Login Info") ?></h3>
-                <div class="card-tools">
+                <div class="card-tools ms-auto">
                     <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-pen"></i> <?= _("Edit") ?></a>
                 </div>
             </div>
@@ -25,11 +25,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Api Key") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
                 </div>
                 <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i> <?= _("Regen API Key") ?></a>
@@ -37,27 +37,27 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("User Interface") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
-                        <label class="custom-control-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
+                        <label class="form-check-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Activate the boxed layout") ?></small>
                 </div>
-                <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
-                        <label class="custom-control-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
+                        <label class="form-check-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
                     </div>
                     <small class="form-text text-muted"><?= _("Toggle the left sidebar's state (open or collapse)") ?></small>
                 </div>
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="user-locale-setting"><strong><?= _("Locale") ?></strong></label>
-                    <select id="user-locale-setting" class="form-control user-setting-select" data-setting-name="ui.locale" data-reload="true">
+                    <select id="user-locale-setting" class="form-select user-setting-select" data-setting-name="ui.locale" data-reload="true">
                     </select>
                     <small class="form-text text-muted"><?= _("Override system locale") ?>: <?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></small>
                 </div>
@@ -67,7 +67,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Permissions") ?></h3>
             </div>
             <div class="card-body">
@@ -85,13 +85,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Tables Settings") ?></h3>
             </div>
             <div class="card-body">
-                <div class="form-group">
+                <div class="mb-3">
                     <label for="tablePageLength"><strong><?= _("Page length") ?></strong></label>
-                    <select id="tablePageLength" class="form-control user-setting-select" data-setting-name="ui.table.size">
+                    <select id="tablePageLength" class="form-select user-setting-select" data-setting-name="ui.table.size">
                         <option value="10">10</option>
                         <option value="25">25</option>
                         <option value="50">50</option>

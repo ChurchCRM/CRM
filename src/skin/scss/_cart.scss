@@ -77,20 +77,3 @@
 .navbar-badge {
   transition: all 0.3s ease;
 }
-
-// Fix cart badge positioning to not overlap icon
-.navbar-nav .nav-link {
-  position: relative; // Ensure badge positions relative to link
-
-  .fa-shopping-cart + .navbar-badge {
-    position: absolute;
-    top: 3px;
-    right: 3px;
-    font-size: 0.6rem;
-    padding: 2px 4px;
-    min-width: 16px;
-    height: 16px;
-    line-height: 12px;
-    border-radius: 8px;
-  }
-}

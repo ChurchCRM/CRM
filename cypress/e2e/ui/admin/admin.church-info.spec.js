@@ -77,16 +77,14 @@ describe("Admin - Church Information Page", () => {
         // Switch to Location tab
         cy.get("#location-tab").click();
 
-        // Wait for country select to be fully initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for TomSelect to initialize on country dropdown
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
 
-        // Set country to US and trigger change event
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("US").trigger("change");
-        });
+        // Set country to US
+        cy.tomSelectByValue("#sChurchCountry", "US");
 
-        // Wait for state select to be created and Select2 to initialize
-        cy.get("#sChurchState", { timeout: 10000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for state select to be created and TomSelect to initialize
+        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
 
         // Verify state dropdown is populated with US states
         cy.get("#sChurchState option").should("have.length.greaterThan", 50);
@@ -100,16 +98,14 @@ describe("Admin - Church Information Page", () => {
         // Switch to Location tab
         cy.get("#location-tab").click();
 
-        // Wait for country select to be fully initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for TomSelect to initialize on country dropdown
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
 
-        // Set country to Canada and trigger change event
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("CA").trigger("change");
-        });
+        // Set country to Canada
+        cy.tomSelectByValue("#sChurchCountry", "CA");
 
-        // Wait for state select to be created and Select2 to initialize
-        cy.get("#sChurchState", { timeout: 10000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for state select to be created and TomSelect to initialize
+        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
 
         // Verify state dropdown exists and has options
         cy.get("#sChurchState option").should("have.length.greaterThan", 1);
@@ -125,16 +121,14 @@ describe("Admin - Church Information Page", () => {
         // Switch to Location tab
         cy.get("#location-tab").click();
 
-        // Wait for country select to be fully initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for TomSelect to initialize on country dropdown
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
 
-        // Set country to UK and trigger change event
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("GB").trigger("change");
-        });
+        // Set country to UK
+        cy.tomSelectByValue("#sChurchCountry", "GB");
 
-        // Wait for state select to be created and Select2 to initialize
-        cy.get("#sChurchState", { timeout: 10000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for state select to be created and TomSelect to initialize
+        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
 
         // Verify UK constituent countries are shown
         cy.get("#sChurchState option").contains("England").should("exist");
@@ -149,21 +143,17 @@ describe("Admin - Church Information Page", () => {
         // Switch to Location tab
         cy.get("#location-tab").click();
 
-        // Wait for country select to be fully initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        // Wait for TomSelect to initialize on country dropdown
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
 
         // Select a country that has states first (e.g., US)
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("US").trigger("change");
-        });
+        cy.tomSelectByValue("#sChurchCountry", "US");
 
         // Wait for state select to be created
-        cy.get("#sChurchState", { timeout: 10000 }).should("have.class", "select2-hidden-accessible");
+        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
 
         // Clear the country selection
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("").trigger("change");
-        });
+        cy.tomSelectByValue("#sChurchCountry", "");
 
         // Should fall back to text input
         cy.get("#sChurchStateContainer").find("input[type='text']", { timeout: 5000 }).should("exist");
@@ -180,16 +170,16 @@ describe("Admin - Church Information Page", () => {
         cy.contains("This is how your church information will appear on reports and directories").should("be.visible");
     });
 
-    it("should have select2 initialized for all dropdowns on Location tab", () => {
+    it("should have TomSelect initialized for all dropdowns on Location tab", () => {
         cy.visit("admin/system/church-info");
 
         // Switch to Location tab
         cy.get("#location-tab").click();
 
-        // Verify select2 is initialized for country, language, and timezone
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
-        cy.get("#sLanguage", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
-        cy.get("#sTimeZone", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        // Verify TomSelect is initialized for country, language, and timezone
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
+        cy.get("#sLanguage", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
+        cy.get("#sTimeZone", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
     });
 
     it("should allow saving church information when all required fields are filled", () => {
@@ -205,23 +195,19 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sChurchCity").clear().type("Springfield");
 
         // Wait for country dropdown to be initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).should("have.class", "select2-hidden-accessible");
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
 
         // Select country
-        cy.get("#sChurchCountry").then(($select) => {
-            $select.val("US").trigger("change");
-        });
+        cy.tomSelectByValue("#sChurchCountry", "US");
 
         // Wait for state dropdown to populate via API
-        cy.get("#sChurchState", { timeout: 10000 }).should("have.class", "select2-hidden-accessible");
+        cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
 
         // Verify state dropdown has options before selecting
         cy.get("#sChurchState option").should("have.length.greaterThan", 1);
 
         // Select state
-        cy.get("#sChurchState").then(($select) => {
-            $select.val("IL").trigger("change");
-        });
+        cy.tomSelectByValue("#sChurchState", "IL");
 
         // Fill ZIP code
         cy.get("#sChurchZip").clear().type("62701");
@@ -280,7 +266,7 @@ describe("Admin - Church Information Page", () => {
         cy.get("#basic").contains("Language").should("be.visible");
         cy.get("#basic").contains("Time Zone").should("be.visible");
 
-        // Both should be select2 dropdowns
+        // Both should be TomSelect dropdowns
         cy.get("#sLanguage").should("exist");
         cy.get("#sTimeZone").should("exist");
     });

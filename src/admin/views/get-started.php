@@ -13,12 +13,6 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 <div class="container-fluid">
 <div class="gs-wrap">
 
-    <!-- ── Hero ──────────────────────────────────────────────── -->
-    <div class="gs-hero mb-4">
-        <h2><i class="fa-solid fa-rocket mr-2"></i><?= gettext('Get Your Data Into ChurchCRM') ?></h2>
-        <p><?= gettext('Choose how you\'d like to populate your database. You can always use a different method later.') ?></p>
-    </div>
-
     <!-- ── 2 × 2 option grid ──────────────────────────────────── -->
     <p class="gs-section-label"><?= gettext('Pick a path to get started') ?></p>
 
@@ -94,32 +88,32 @@ $isMailChimpActive = PluginManager::isPluginActive('mailchimp');
 
     <div class="gs-plugin-strip mb-4">
         <span class="gs-plugin-strip-label">
-            <i class="fa-solid fa-plug mr-1"></i><?= gettext('Plugins') ?>
+            <i class="fa-solid fa-plug me-1"></i><?= gettext('Plugins') ?>
         </span>
 
         <?php if ($isMailChimpActive): ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/mailchimp/dashboard"
                class="gs-plugin-badge"
-               data-toggle="tooltip"
+               data-bs-toggle="tooltip"
                title="<?= gettext('Import contacts from your MailChimp audiences') ?>">
                 <i class="fa-brands fa-mailchimp text-warning"></i>
                 MailChimp
-                <span class="badge badge-success"><?= gettext('Active') ?></span>
+                <span class="badge bg-green-lt text-green"><?= gettext('Active') ?></span>
             </a>
         <?php else: ?>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"
                class="gs-plugin-badge"
-               data-toggle="tooltip"
+               data-bs-toggle="tooltip"
                title="<?= gettext('Enable the MailChimp plugin to sync contacts') ?>">
                 <i class="fa-brands fa-mailchimp" style="color: #ffe01b;"></i>
                 MailChimp
-                <span class="badge badge-light border"><?= gettext('Enable') ?></span>
+                <span class="badge bg-light text-dark border"><?= gettext('Enable') ?></span>
             </a>
         <?php endif; ?>
 
         <a href="<?= SystemURLs::getRootPath() ?>/plugins/management"
            class="gs-plugin-badge"
-           data-toggle="tooltip"
+           data-bs-toggle="tooltip"
            title="<?= gettext('Browse all available plugins') ?>">
             <i class="fa-solid fa-grid-2 text-muted"></i>
             <?= gettext('Browse all plugins') ?>

@@ -1,6 +1,6 @@
 /**
  * Dynamic Locale Loader
- * Loads locale files on-demand for moment, FullCalendar, Bootstrap DatePicker, and Select2
+ * Loads locale files on-demand for moment, FullCalendar, and Bootstrap DatePicker
  */
 
 window.CRM = window.CRM || {};
@@ -65,9 +65,7 @@ function checkBrowserLocale() {
     const userSettingsUrl = window.CRM.root + "/v2/user/" + window.CRM.userId;
 
     alert.innerHTML = `
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       <strong>${i18next.t("Browser language preference detected")}</strong>
       <div>${i18next.t("Your browser language preference differs from your ChurchCRM locale")}.</div>
       <div class="mt-2">
@@ -161,16 +159,6 @@ async function loadLocaleFiles(localeConfig) {
         loadScript(dpPath)
           .then(() => console.log(`Loaded DatePicker locale: ${localeConfig.languageCode}`))
           .catch((e) => console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e)),
-      );
-    }
-
-    // Load Select2 i18n if configured
-    if (localeConfig.select2) {
-      const s2Path = `${rootPath}/locale/vendor/select2/${localeConfig.languageCode}.js`;
-      promises.push(
-        loadScript(s2Path)
-          .then(() => console.log(`Loaded Select2 locale: ${localeConfig.languageCode}`))
-          .catch((e) => console.warn(`Failed to load Select2 locale ${localeConfig.languageCode}:`, e)),
       );
     }
 

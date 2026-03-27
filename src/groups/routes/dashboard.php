@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -19,6 +20,14 @@ $app->get('/dashboard', function (Request $request, Response $response) {
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Group Listing'),
+        'sPageSubtitle' => gettext('View and manage all groups in your congregation'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Groups')],
+        ]),
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Group Properties'), 'url' => '/PropertyList.php?Type=g', 'icon' => 'fa-list'],
+            ['label' => gettext('Group Types'), 'url' => '/OptionManager.php?mode=grptypes', 'icon' => 'fa-tags'],
+        ]),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

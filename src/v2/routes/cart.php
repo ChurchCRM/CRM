@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -17,9 +18,13 @@ function getCartView(Request $request, Response $response, array $args): Respons
     $renderer = new PhpRenderer('templates/cart/');
 
     $pageArgs = [
-        'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('View Your Cart'),
-        'PageJSVars' => [],
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => gettext('Cart'),
+        'sPageSubtitle' => gettext('Manage people in your cart'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Cart')],
+        ]),
     ];
 
     if (!Cart::hasPeople()) {
@@ -27,7 +32,6 @@ function getCartView(Request $request, Response $response, array $args): Respons
     } else {
         $pageArgs = array_merge($pageArgs, [
             'sEmailLink'   => Cart::getEmailLink(),
-            'sPhoneLink'   => Cart::getSMSLink(),
             'iNumFamilies' => Cart::countFamilies(),
             'cartPeople'   => Cart::getCartPeople(),
         ]);

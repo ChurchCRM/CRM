@@ -2,6 +2,8 @@
 
 .register-box {
   margin: 30px auto;
+  position: relative;
+  z-index: 2;
 }
 
 .registration-card {
@@ -80,7 +82,6 @@
 
 .member-card-header-clickable {
   cursor: pointer;
-  user-select: none;
   transition: background-color 0.2s ease;
 }
 
@@ -105,7 +106,7 @@
 }
 
 /* Ensure form-row inside member cards behaves as a proper grid */
-.member-card .form-row {
+.member-card .row {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
@@ -116,27 +117,27 @@
   margin-bottom: 1rem;
 }
 
-.member-card .form-row > [class*="col-"] {
+.member-card .row > [class*="col-"] {
   padding-right: 15px;
   padding-left: 15px;
 }
 
-.member-card .form-row .col-md-6 {
+.member-card .row .col-md-6 {
   flex: 0 0 50%;
   max-width: 50%;
 }
 
-.member-card .form-row .col-md-7 {
+.member-card .row .col-md-7 {
   flex: 0 0 58.333333%;
   max-width: 58.333333%;
 }
 
-.member-card .form-row .col-md-5 {
+.member-card .row .col-md-5 {
   flex: 0 0 41.666667%;
   max-width: 41.666667%;
 }
 
-.member-card .form-row .col-md-12 {
+.member-card .row .col-md-12 {
   flex: 0 0 100%;
   max-width: 100%;
 }
@@ -169,7 +170,7 @@
 }
 
 /* Ensure form-row spacing is proper */
-.member-card .form-row {
+.member-card .row {
   margin-bottom: 0;
 }
 

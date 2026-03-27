@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FamilyPledgeSummaryService;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -27,6 +28,11 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Pledge Dashboard'),
+            'sPageSubtitle' => gettext('Track family pledges and fund contributions by fiscal year'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Finance'), '/finance/'],
+                [gettext('Pledge Dashboard')],
+            ]),
             'familyPledges' => $pledgeData['families'],
             'fundTotals' => $pledgeData['fund_totals'],
             'totalPledges' => $pledgeData['total_pledges'],
@@ -35,7 +41,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'selectedFyid' => $fyid,
             'currentFyid' => $currentFyid,
         ];
-        
+
         return $renderer->render($response, 'reports/pledge-dashboard.php', $pageArgs);
     });
 
@@ -57,6 +63,11 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Pledge Dashboard'),
+            'sPageSubtitle' => gettext('View family pledge summaries and fund allocations'),
+            'aBreadcrumbs' => PageHeader::breadcrumbs([
+                [gettext('Finance'), '/finance/'],
+                [gettext('Family Pledge Summary')],
+            ]),
             'familyPledges' => $pledgeData['families'],
             'fundTotals' => $pledgeData['fund_totals'],
             'totalPledges' => $pledgeData['total_pledges'],
@@ -64,7 +75,7 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
             'selectedFyid' => $fyid,
             'currentFyid' => $currentFyid,
         ];
-        
+
         return $renderer->render($response, 'pledges/family-summary.php', $pageArgs);
     });
 

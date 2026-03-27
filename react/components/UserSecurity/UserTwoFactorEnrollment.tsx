@@ -569,9 +569,10 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
           <div className="col-lg-8">
             <div className="card card-outline card-primary">
               <div className="card-body p-5 text-center">
-                <div className="spinner-border" role="status">
+                <span role="status" aria-live="polite" className="d-inline-block">
+                  <span className="spinner-border" aria-hidden="true"></span>
                   <span className="sr-only">{window.i18next.t("Loading")}...</span>
-                </div>
+                </span>
               </div>
             </div>
           </div>

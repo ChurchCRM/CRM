@@ -10,6 +10,7 @@ module.exports = {
     'two-factor-enrollment': './react/two-factor-enrollment.tsx',
     churchcrm: './webpack/skin-main',
     'photo-uploader': './webpack/photo-uploader-entry',
+    'root-dashboard': './webpack/root-dashboard',
     setup: './webpack/setup',
     'family-register': './webpack/family-register',
     'family-verify': './webpack/family-verify',
@@ -58,6 +59,13 @@ module.exports = {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
   },
+  // Silence react-datepicker dynamic require warning while keeping other warnings visible
+  ignoreWarnings: [
+    {
+      module: /react-datepicker/,
+      message: /Critical dependency: the request of a dependency is an expression/,
+    },
+  ],
   module: {
     rules: [
       {

@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
 
 $eType = 'All';
 
@@ -22,6 +23,7 @@ if ($eType != 'All') {
 } else {
     $sPageTitle = gettext('Listing All Church Events');
 }
+$sPageSubtitle = gettext('Browse all church events and activities');
 
 // Retrieve the year selector
 if (isset($_POST['WhichYear'])) {
@@ -30,6 +32,9 @@ if (isset($_POST['WhichYear'])) {
     $EventYear = DateTimeUtils::getCurrentYear();
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Handle delete action
@@ -67,9 +72,9 @@ if ($eType === 'All') {
            FROM events_event
            ORDER BY year DESC';
 } else {
-    $sSQL = "SELECT DISTINCT YEAR(events_event.event_start) as year
+    $sSQL ="SELECT DISTINCT YEAR(events_event.event_start) as year
            FROM events_event
-           WHERE events_event.event_type = '" . (int) $eType . "'
+           WHERE events_event.event_type = '" . (int) $eType ."'
            ORDER BY year DESC";
 }
 $rsOpps = RunQuery($sSQL);
@@ -80,16 +85,16 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
 
 ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Filter Events') ?></h3>
   </div>
   <div class="card-body">
     <form name="EventFilterForm" method="POST" action="ListEvents.php">
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="WhichType"><?= gettext('Event Type') ?></label>
-            <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-control">
+            <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-select">
               <option value="All"><?= gettext('All Types') ?></option>
               <?php foreach ($eventTypes as $type): ?>
                 <option value="<?= InputUtils::escapeAttribute($type['type_id']) ?>" <?= ($type['type_id'] == $eType) ? 'selected' : '' ?>>
@@ -100,9 +105,9 @@ while ($row = mysqli_fetch_assoc($rsOpps)) {
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
+          <div class="mb-3">
             <label for="WhichYear"><?= gettext('Year') ?></label>
-            <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-control">
+            <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-select">
               <?php foreach ($availableYears as $year): ?>
                 <option value="<?= InputUtils::escapeAttribute($year) ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
                   <?= InputUtils::escapeHTML($year) ?>
@@ -192,19 +197,16 @@ foreach ($allMonths as $mVal) {
     $monthName = date('F', mktime(0, 0, 0, (int) $mVal, 1, (int) $EventYear));
     ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title">
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
   </div>
-  <div class="card-body p-0">
-    <div class="table-responsive">
-      <table class="table table-striped table-hover mb-0">
+  <div class="card-body p-0" style="overflow: visible;">
+    <div class="table-responsive" style="overflow: visible;">
+      <table class="table table-hover mb-0">
         <thead>
           <tr>
-            <?php if ($canEditEvents): ?>
-              <th style="width: 100px;"><?= gettext('Actions') ?></th>
-            <?php endif; ?>
             <th><?= gettext('Description') ?></th>
             <th><?= gettext('Event Type') ?></th>
             <th style="width: 120px;" class="text-center"><?= gettext('Check-in') ?></th>
@@ -213,25 +215,15 @@ foreach ($allMonths as $mVal) {
             <th><?= gettext('Head Count') ?></th>
             <th><?= gettext('Start Date/Time') ?></th>
             <th style="width: 70px;"><?= gettext('Active') ?></th>
+            <?php if ($canEditEvents): ?>
+              <th style="width: 100px;" class="no-export"><?= gettext('Actions') ?></th>
+            <?php endif; ?>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($events as $event): ?>
             <?php $eventId = InputUtils::escapeAttribute($event['id']); ?>
             <tr>
-              <?php if ($canEditEvents): ?>
-                <td>
-                  <a href="EventEditor.php?EID=<?= $eventId ?>" class="btn btn-link text-secondary p-1" title="<?= gettext('Edit') ?>">
-                    <i class="fas fa-pen"></i>
-                  </a>
-                  <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>');">
-                    <input type="hidden" name="EID" value="<?= $eventId ?>">
-                    <button type="submit" name="Action" value="Delete" class="btn btn-link text-danger p-1" title="<?= gettext('Delete') ?>">
-                      <i class="fas fa-trash"></i>
-                    </button>
-                  </form>
-                </td>
-              <?php endif; ?>
               <td>
                 <strong><?= InputUtils::escapeHTML($event['title']) ?></strong>
                 <?php if (!empty($event['desc'])): ?>
@@ -239,29 +231,29 @@ foreach ($allMonths as $mVal) {
                 <?php endif; ?>
                 <?php if (!empty($event['text'])): ?>
                   <br><a href="javascript:popUp('GetText.php?EID=<?= $eventId ?>')" class="text-primary">
-                    <i class="fas fa-file-alt"></i> <?= gettext('Sermon Text') ?>
+                    <i class="fa-solid fa-file-lines"></i> <?= gettext('Sermon Text') ?>
                   </a>
                 <?php endif; ?>
               </td>
               <td><?= InputUtils::escapeHTML($event['type_name']) ?></td>
               <td class="text-center">
                 <a href="Checkin.php?EventID=<?= $eventId ?>" class="btn btn-sm btn-outline-info" title="<?= gettext('Manage Check-ins') ?>">
-                  <i class="fas fa-clipboard-check mr-1"></i><?= gettext('Check-in') ?>
+                  <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
                   <?php if ($event['attendee_count'] > 0): ?>
-                    <span class="badge badge-info ml-1"><?= $event['attendee_count'] ?></span>
+                    <span class="badge bg-info ms-1"><?= $event['attendee_count'] ?></span>
                   <?php endif; ?>
                 </a>
               </td>
               <td class="text-center">
                 <?php if ($event['checked_in_count'] > 0): ?>
-                  <span class="badge badge-success"><?= $event['checked_in_count'] ?></span>
+                  <span class="badge bg-green-lt text-green"><?= $event['checked_in_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
               </td>
               <td class="text-center">
                 <?php if ($event['checked_out_count'] > 0): ?>
-                  <span class="badge badge-secondary"><?= $event['checked_out_count'] ?></span>
+                  <span class="badge bg-blue-lt text-blue"><?= $event['checked_out_count'] ?></span>
                 <?php else: ?>
                   <span class="text-muted">—</span>
                 <?php endif; ?>
@@ -289,23 +281,44 @@ foreach ($allMonths as $mVal) {
               <td><?= FormatDate($event['start'], 1) ?></td>
               <td class="text-center">
                 <?php if ($event['inactive']): ?>
-                  <span class="badge badge-secondary"><?= gettext('No') ?></span>
+                  <span class="badge bg-light text-dark"><?= gettext('No') ?></span>
                 <?php else: ?>
-                  <span class="badge badge-success"><?= gettext('Yes') ?></span>
+                  <span class="badge bg-green-lt text-green"><?= gettext('Yes') ?></span>
                 <?php endif; ?>
               </td>
+              <?php if ($canEditEvents): ?>
+                <td>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                      <i class="ti ti-dots-vertical"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                      <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">
+                        <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                      </a>
+                      <div class="dropdown-divider"></div>
+                      <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
+                        <input type="hidden" name="EID" value="<?= $eventId ?>">
+                        <button type="submit" name="Action" value="Delete" class="dropdown-item text-danger">
+                          <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </td>
+              <?php endif; ?>
             </tr>
           <?php endforeach; ?>
 
           <?php
           // Calculate and display monthly averages if filtering by type
           if ($eType !== 'All' && !empty($events[0]['counts'])):
-              $avgSQL = "SELECT evtcnt_countname, AVG(evtcnt_countcount) as avg_count
+              $avgSQL ="SELECT evtcnt_countname, AVG(evtcnt_countcount) as avg_count
                         FROM eventcounts_evtcnt, events_event
                         WHERE eventcounts_evtcnt.evtcnt_eventid = events_event.event_id
-                        AND events_event.event_type = " . (int) $eType . "
-                        AND MONTH(events_event.event_start) = " . (int) $mVal . "
-                        AND YEAR(events_event.event_start) = " . (int) $EventYear . "
+                        AND events_event.event_type =" . (int) $eType ."
+                        AND MONTH(events_event.event_start) =" . (int) $mVal ."
+                        AND YEAR(events_event.event_start) =" . (int) $EventYear ."
                         GROUP BY evtcnt_countid ORDER BY evtcnt_countid ASC";
               $avgResult = RunQuery($avgSQL);
               $averages = [];
@@ -315,7 +328,6 @@ foreach ($allMonths as $mVal) {
               if (!empty($averages)):
                   ?>
             <tr class="table-secondary">
-              <?php if ($canEditEvents): ?><td></td><?php endif; ?>
               <td colspan="3"><strong><?= gettext('Monthly Averages') ?></strong></td>
               <td colspan="2"></td>
               <td>
@@ -328,6 +340,7 @@ foreach ($allMonths as $mVal) {
                 ?>
               </td>
               <td colspan="2"></td>
+              <?php if ($canEditEvents): ?><td></td><?php endif; ?>
             </tr>
               <?php endif; ?>
           <?php endif; ?>
@@ -342,7 +355,7 @@ foreach ($allMonths as $mVal) {
 
 <div class="text-center mt-4 mb-3">
   <a href="EventEditor.php" class="btn btn-primary">
-    <i class="fas fa-plus mr-1"></i>
+    <i class="fa-solid fa-plus me-1"></i>
     <?= gettext('Add New') . ' ' . gettext('Event') ?>
   </a>
 </div>

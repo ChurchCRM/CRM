@@ -113,9 +113,9 @@ function setupBackupStep() {
       }),
     })
       .done(function (data) {
-        const downloadButton = `<button class="btn btn-success btn-lg btn-block" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')" style="max-width: 500px;">
-                <i class="fa-solid fa-download mr-2"></i>${data.BackupDownloadFileName}
-            </button>`;
+        const downloadButton = `<button class="btn btn-success btn-lg w-100" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')" style="max-width: 500px;">
+          <i class="fa-solid fa-download me-2"></i>${data.BackupDownloadFileName}
+      </button>`;
 
         $backupStatus.html(`<div class="alert alert-success" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
                 <i class="fa-solid fa-check-circle mr-2"></i><strong>${i18next.t("Backup Complete, Ready for Download.")}</strong>

@@ -7,6 +7,11 @@ window.jQuery = $;
 const bootstrap = require("bootstrap");
 window.bootstrap = bootstrap;
 
+// Helper: get or create a Bootstrap 5 Modal instance
+function getModal(id) {
+  return bootstrap.Modal.getOrCreateInstance(document.getElementById(id));
+}
+
 const i18next = require("i18next");
 window.i18next = i18next;
 
@@ -530,8 +535,8 @@ window.Stepper = Stepper;
       const $tbody = $("<tbody>");
       locales.forEach(function (locale) {
         const statusBadge = locale.systemAvailable
-          ? `<span class="badge badge-success"><i class="fa-solid fa-check mr-1"></i>Available</span>`
-          : `<span class="badge badge-secondary"><i class="fa-solid fa-times mr-1"></i>Not Available</span>`;
+          ? `<span class="badge bg-success text-white"><i class="fa-solid fa-check me-1"></i>Available</span>`
+          : `<span class="badge bg-secondary text-white"><i class="fa-solid fa-times me-1"></i>Not Available</span>`;
 
         const $row = $("<tr>")
           .append(
@@ -722,7 +727,7 @@ window.Stepper = Stepper;
     }
 
     // Show the setup modal
-    $("#setupModal").modal("show");
+    getModal("setupModal").show();
 
     $.ajax({
       url: rootPath + "/setup/",
@@ -734,9 +739,9 @@ window.Stepper = Stepper;
         // Check if response contains errors (backend bug workaround)
         if (response && response.errors) {
           // Treat as failure
-          $("#setup-progress").hide();
-          $("#setup-error").show();
-          $("#setup-footer").show();
+          $("#setup-progress").addClass("d-none");
+          $("#setup-error").removeClass("d-none");
+          $("#setup-footer").removeClass("d-none");
 
           let errorMessage = "<ul class='mb-0'>";
           for (const [field, error] of Object.entries(response.errors)) {
@@ -749,21 +754,21 @@ window.Stepper = Stepper;
             .text("Close")
             .off("click")
             .on("click", function () {
-              $("#setupModal").modal("hide");
+              bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
               setTimeout(function () {
-                $("#setup-progress").show();
-                $("#setup-success").hide();
-                $("#setup-error").hide();
-                $("#setup-footer").hide();
+                $("#setup-progress").removeClass("d-none");
+                $("#setup-success").addClass("d-none");
+                $("#setup-error").addClass("d-none");
+                $("#setup-footer").addClass("d-none");
               }, 500);
             });
           return;
         }
 
         // Hide progress, show success
-        $("#setup-progress").hide();
-        $("#setup-success").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-success").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Handle Continue to Login button
         $("#continue-to-login")
@@ -774,9 +779,9 @@ window.Stepper = Stepper;
       })
       .fail(function (xhr) {
         // Hide progress, show error
-        $("#setup-progress").hide();
-        $("#setup-error").show();
-        $("#setup-footer").show();
+        $("#setup-progress").addClass("d-none");
+        $("#setup-error").removeClass("d-none");
+        $("#setup-footer").removeClass("d-none");
 
         // Parse error message
         let errorMessage = "An unknown error occurred.";
@@ -799,13 +804,13 @@ window.Stepper = Stepper;
           .text("Close")
           .off("click")
           .on("click", function () {
-            $("#setupModal").modal("hide");
+            bootstrap.Modal.getInstance(document.getElementById("setupModal"))?.hide();
             // Reset modal state for next attempt
             setTimeout(function () {
-              $("#setup-progress").show();
-              $("#setup-success").hide();
-              $("#setup-error").hide();
-              $("#setup-footer").hide();
+              $("#setup-progress").removeClass("d-none");
+              $("#setup-success").addClass("d-none");
+              $("#setup-error").addClass("d-none");
+              $("#setup-footer").addClass("d-none");
             }, 500);
           });
       });
@@ -823,6 +828,36 @@ window.Stepper = Stepper;
       event.preventDefault();
       return false;
     });
+
+    // Real-time password matching validation
+    const passwordField = document.getElementById("DB_PASSWORD");
+    const confirmPasswordField = document.getElementById("DB_PASSWORD_CONFIRM");
+    const submitButton = document.getElementById("submit-setup");
+
+    function validatePasswordMatch() {
+      const password = passwordField.value;
+      const confirmPassword = confirmPasswordField.value;
+      const mismatch = password && confirmPassword && password !== confirmPassword;
+
+      // Update visual feedback on confirm password field
+      if (mismatch) {
+        confirmPasswordField.classList.add("is-invalid");
+        confirmPasswordField.classList.remove("is-valid");
+      } else if (confirmPassword) {
+        confirmPasswordField.classList.remove("is-invalid");
+        confirmPasswordField.classList.add("is-valid");
+      } else {
+        confirmPasswordField.classList.remove("is-invalid", "is-valid");
+      }
+
+      return !mismatch;
+    }
+
+    // Add listeners for real-time validation
+    if (passwordField && confirmPasswordField) {
+      passwordField.addEventListener("input", validatePasswordMatch);
+      confirmPasswordField.addEventListener("input", validatePasswordMatch);
+    }
 
     setupStepper = new Stepper(stepperElement, {
       linear: true,
@@ -913,7 +948,7 @@ window.Stepper = Stepper;
       forceBtn.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
-        $("#forceInstallModal").modal("show");
+        getModal("forceInstallModal").show();
       });
     }
 
@@ -922,7 +957,7 @@ window.Stepper = Stepper;
     if (confirmBtn) {
       confirmBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        $("#forceInstallModal").modal("hide");
+        bootstrap.Modal.getInstance(document.getElementById("forceInstallModal"))?.hide();
         // Wait for modal to hide before proceeding
         setTimeout(function () {
           skipCheck();

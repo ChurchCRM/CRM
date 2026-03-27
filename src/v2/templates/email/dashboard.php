@@ -6,17 +6,27 @@ use ChurchCRM\dto\SystemURLs;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
+
+<!-- Email Tools Card -->
 <div class="card">
     <div class="card-header">
-        <h3 class="card-title"><?= gettext('Email Functions') ?></h3>
+        <h3 class="card-title"><i class="fa-solid fa-envelope me-2"></i><?= gettext('Email Tools') ?></h3>
     </div>
     <div class="card-body">
-        <div class="text-center">
-            <a href="<?= SystemURLs::getRootPath()?>/email/MemberEmailExport.php" class="btn btn-app bg-info"><i class="fa-solid fa-table fa-3x"></i><br><?= gettext('Email Export') ?></a>
-            <a href="<?= SystemURLs::getRootPath()?>/v2/email/duplicate" class="btn btn-app bg-warning"><i class="fa-solid fa-exclamation-triangle fa-3x"></i><br><?= gettext('Find Duplicate Emails') ?></a>
-            <a href="<?= SystemURLs::getRootPath()?>/v2/email/missing" class="btn btn-app bg-danger"><i class="fa-solid fa-bell-slash fa-3x"></i><br><?= gettext('Families Without Emails') ?></a>
+        <div class="d-flex flex-wrap" style="gap:.5rem;">
+            <a href="<?= SystemURLs::getRootPath() ?>/email/MemberEmailExport.php" class="btn btn-outline-info">
+                <i class="fa-solid fa-table me-1"></i><?= gettext('Export') ?>
+            </a>
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/email/duplicate" class="btn btn-outline-warning">
+                <i class="fa-solid fa-triangle-exclamation me-1"></i><?= gettext('Duplicates') ?>
+            </a>
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/email/missing" class="btn btn-outline-danger">
+                <i class="fa-solid fa-bell-slash me-1"></i><?= gettext('Missing') ?>
+            </a>
             <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
-            <a href="<?= SystemURLs::getRootPath()?>/admin/system/debug/email" class="btn btn-app bg-secondary"><i class="fa-solid fa-stethoscope fa-3x"></i><br><?= gettext('Debug') ?></a>
+            <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug/email" class="btn btn-outline-secondary">
+                <i class="fa-solid fa-stethoscope me-1"></i><?= gettext('Debug') ?>
+            </a>
             <?php } ?>
         </div>
     </div>

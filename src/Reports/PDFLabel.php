@@ -15,12 +15,12 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     // family members on the same label.
     // Make it put the name if there is only one adult in the family.
     // Make it put two first names and the last name when there are exactly
-    // two adults in the family (e.g. "Nathaniel & Jeanette Brooks")
+    // two adults in the family (e.g."Nathaniel & Jeanette Brooks")
     // Make it put two whole names where there are exactly two adults with
-    // different names (e.g. "Doug Philbrook & Karen Andrews")
+    // different names (e.g."Doug Philbrook & Karen Andrews")
     // When there are zero adults or more than two adults in the family just
     // use the family name.  This is helpful for sending newsletters to places
-    // such as "All Souls Church"
+    // such as"All Souls Church"
     // Similar logic is applied if mailing to Sunday School children.
 
     $sSQL = 'SELECT * FROM family_fam WHERE fam_ID=' . $famID;
@@ -40,7 +40,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);
 
-    // Initialize to "Nothing to return"  If this value is returned
+    // Initialize to"Nothing to return"  If this value is returned
     // the calling program knows to skip this mode and try the next
 
     $sNameAdult = 'Nothing to return';
@@ -201,20 +201,20 @@ function MakeADCArray(string $sADClist): array
             // Find the current adc (hint, last item listed)
             $currentRow = trim($currentRow);
             $adc = mb_substr($currentRow, strrpos($currentRow, ' '));
-            $adc = trim($adc, " ,\t\n\r\0\x0B");
+            $adc = trim($adc," ,\t\n\r\0\x0B");
 
             // Now get a list of the three digit codes associated
-            // with this adc.  They are all before the "_" character
+            // with this adc.  They are all before the"_" character
 
             $currentRow = mb_substr($currentRow, 0, strpos($currentRow, '_'));
-            $currentRow = trim($currentRow, " ,\t\n\r\0\x0B");
+            $currentRow = trim($currentRow," ,\t\n\r\0\x0B");
             while (strlen($currentRow)) {
                 if (strpos($currentRow, ',')) {
                     $nugget = trim(mb_substr($currentRow, 0, strpos($currentRow, ',')));
                     $currentRow = trim(mb_substr($currentRow, strpos($currentRow, ',') + 1));
                 } else {
                     // Parsing last element
-                    $nugget = trim($currentRow, " ,\t\n\r\0\x0B");
+                    $nugget = trim($currentRow," ,\t\n\r\0\x0B");
                     $currentRow = '';
                 }
 
@@ -246,26 +246,26 @@ function ZipBundleSort(array $inLabels)
     //
     // Inputs:
     // $inLabels() is a 2-d associative array which must have:
-    //  "Zip" as the location of the zipcode,
+    //"Zip" as the location of the zipcode,
     //  the array is generally of the form
     //      $Labels[$i] = array('Name'=>$name, 'Address'=>$address,...'Zip'=>$zip)
     //
     //  Bundles will be returned in the following order:
     //  Bundles where full 5 digit zip count >= $iZip5MinBundleSize
     //  Bundles where 3 digit zip count >= $iZip3MinBundleSize
-    //  Bundles where "ADC" count >= $iAdcMinBundleSize
+    //  Bundles where"ADC" count >= $iAdcMinBundleSize
     //      Mixed ADC bundle
     //
     // Return Values:
     // (1) The function returns an associative array which matches the input array containing any
-    // legal bundles of "type" sorted by zip
-    // (2) if no legal bundles are found for the requested "type" then the function returns "FALSE"
-    // (3) the output array will also contain an associative value of "Notes" which will contain a
+    // legal bundles of"type" sorted by zip
+    // (2) if no legal bundles are found for the requested"type" then the function returns"FALSE"
+    // (3) the output array will also contain an associative value of"Notes" which will contain a
     //     text string to be printed on the labels indicating the bundle the label is a member of
     //
     // Notes:
     // (1) The ADC data is hard coded in the variable $adc was composed march 2006
-    // (2) the definition of a "legal" bundle is one that contains at least $iMinBundleSize units
+    // (2) the definition of a"legal" bundle is one that contains at least $iMinBundleSize units
     // (3) this function is not PAVE certified
     //
     // Stephen Shaffer 2006, stephen@shaffers4christ.com
@@ -555,15 +555,15 @@ function ZipBundleSort(array $inLabels)
 
 function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComplete): string
 {
-    // $mode is "indiv" or "fam"
+    // $mode is"indiv" or"fam"
 
     $sAdultRole = SystemConfig::getValue('sDirRoleHead') . ',' . SystemConfig::getValue('sDirRoleSpouse');
-    $sAdultRole = trim($sAdultRole, " ,\t\n\r\0\x0B");
+    $sAdultRole = trim($sAdultRole," ,\t\n\r\0\x0B");
     $aAdultRole = explode(',', $sAdultRole);
     $aAdultRole = array_unique($aAdultRole);
     sort($aAdultRole);
 
-    $sChildRole = trim(SystemConfig::getValue('sDirRoleChild'), " ,\t\n\r\0\x0B");
+    $sChildRole = trim(SystemConfig::getValue('sDirRoleChild')," ,\t\n\r\0\x0B");
     $aChildRole = explode(',', $sChildRole);
     $aChildRole = array_unique($aChildRole);
     sort($aChildRole);
@@ -632,7 +632,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             }
 
             if ($bToParents && ($key === 'child')) {
-                $sName = "To the parents of:\n" . $sName;
+                $sName ="To the parents of:\n" . $sName;
             }
 
             // Use person data only - each person must enter their own information
@@ -644,7 +644,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
             $sAddress = $sAddress1;
             if ($sAddress2 != '') {
-                $sAddress .= "\n" . $sAddress2;
+                $sAddress .="\n" . $sAddress2;
             }
 
             if (!$bOnlyComplete || (strlen($sAddress) && strlen($sCity) && strlen($sState) && strlen($sZip))) {
@@ -659,7 +659,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         if ($iBulkMailPresort == 2) {
             foreach ($zipLabels as $sLT) {
                 $pdf->addPdfLabel(sprintf(
-                    "%s\n%s\n%s\n%s, %s %s",
+"%s\n%s\n%s\n%s, %s %s",
                     $sLT['Note'],
                     $sLT['Name'],
                     $sLT['Address'],
@@ -671,7 +671,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         } else {
             foreach ($zipLabels as $sLT) {
                 $pdf->addPdfLabel(sprintf(
-                    "%s\n%s\n%s, %s %s",
+"%s\n%s\n%s, %s %s",
                     $sLT['Name'],
                     $sLT['Address'],
                     $sLT['City'],
@@ -683,7 +683,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
     } else {
         foreach ($sLabelList as $sLT) {
             $pdf->addPdfLabel(sprintf(
-                "%s\n%s\n%s, %s %s",
+"%s\n%s\n%s, %s %s",
                 $sLT['Name'],
                 $sLT['Address'],
                 $sLT['City'],

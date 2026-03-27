@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Confirm Delete');
 
@@ -18,7 +19,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Is this the second pass?
 if (isset($_POST['Delete'])) {
-    $sSQL = "DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey . "';";
+    $sSQL ="DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey ."';";
     RunQuery($sSQL);
 
     if ($linkBack != '') {
@@ -28,15 +29,19 @@ if (isset($_POST['Delete'])) {
     RedirectUtils::redirect($linkBack);
 }
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Delete Pledge')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
 
-<div class="card card-body text-center">
+<div class="card-body text-center">
     <p class="lead mb-4"><?= gettext('Are you sure you want to permanently delete this pledge record?') ?></p>
     <form method="post" action="PledgeDelete.php?<?= 'GroupKey=' . $sGroupKey . '&linkBack=' . $linkBack ?>" name="PledgeDelete">
         <input type="submit" class="btn btn-danger" value="<?= gettext('Delete') ?>" name="Delete">
-        <input type="submit" class="btn btn-secondary ml-2" value="<?= gettext('Cancel') ?>" name="Cancel">
+        <input type="submit" class="btn btn-secondary ms-2" value="<?= gettext('Cancel') ?>" name="Cancel">
     </form>
 </div>
 <?php

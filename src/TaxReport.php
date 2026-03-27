@@ -6,11 +6,17 @@ require_once __DIR__ . '/Include/Functions.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 $sPageTitle = gettext('Tax Report');
+$sPageSubtitle = gettext('Generate tax statement documents for donors');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Tax Report')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 // Is this the second pass?
@@ -23,18 +29,18 @@ if (isset($_POST['Submit'])) {
 
 ?>
 
-<div class="card card-body">
+<div class="card-body">
     <form method="post" action="TaxReport.php">
-        <div class="form-group row">
+        <div class="mb-3 row">
             <label class="col-form-label col-sm-3" for="Year"><?= gettext('Calendar Year') ?>:</label>
             <div class="col-sm-3">
                 <input type="text" name="Year" id="Year" class="form-control" value="<?= $iYear ?>">
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="mb-3">
             <button type="submit" class="btn btn-primary" name="Submit"><?= gettext('Create Report') ?></button>
-            <a href="v2/dashboard" class="btn btn-secondary ml-2"><?= gettext('Cancel') ?></a>
+            <a href="v2/dashboard" class="btn btn-secondary ms-2"><?= gettext('Cancel') ?></a>
         </div>
 
     </form>

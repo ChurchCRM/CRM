@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: User must have proper permission
 // For now ... require $bAdmin
@@ -51,7 +52,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
     // Otherwise, redirect to the main menu
     AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled(), 'DeleteRecords');
 
-    $sSQL = "SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
+    $sSQL ="SELECT * FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
     $rsOpps = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOpps);
     extract($aRow);
@@ -62,9 +63,10 @@ if ($sAction === 'delete' && $iOpp > 0) {
     <div class="row justify-content-center mt-2">
         <div class="col-md-6">
                 <div class="card border-danger">
-                    <div class="card-header bg-danger text-white">
+                    <div class="card-status-top bg-danger"></div>
+                    <div class="card-header">
                         <h5 class="mb-0">
-                            <i class="fa-solid fa-exclamation-triangle"></i>
+                            <i class="fa-solid fa-triangle-exclamation"></i>
                             <?= gettext('Confirm Volunteer Opportunity Deletion') ?>
                         </h5>
                     </div>
@@ -73,41 +75,39 @@ if ($sAction === 'delete' && $iOpp > 0) {
                             <i class="fa-solid fa-triangle-exclamation"></i>
                             <?= gettext('Please confirm deletion of') ?>:
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <tr>
-                                    <th><?= gettext('Order') ?></th>
-                                    <th><?= gettext('Name') ?></th>
-                                    <th><?= gettext('Description') ?></th>
-                                </tr>
-                                <tr>
-                                    <td><span class="badge badge-secondary"><?= $vol_Order ?></span></td>
-                                    <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
-                                    <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
-                                </tr>
-                            </table>
-                        </div>
+                        <table class="table table-sm">
+                            <tr>
+                                <th><?= gettext('Order') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Description') ?></th>
+                            </tr>
+                            <tr>
+                                <td><span class="badge bg-light text-dark"><?= $vol_Order ?></span></td>
+                                <td><?= InputUtils::escapeHTML($vol_Name) ?></td>
+                                <td><?= InputUtils::escapeHTML($vol_Description) ?></td>
+                            </tr>
+                        </table>
                         <?php
                         $sSQL = 'SELECT `per_FirstName`, `per_LastName` FROM `person_per` ';
                         $sSQL .= 'LEFT JOIN `person2volunteeropp_p2vo` ';
                         $sSQL .= 'ON `p2vo_per_ID`=`per_ID` ';
-                        $sSQL .= "WHERE `p2vo_vol_ID` = '" . $iOpp . "' ";
+                        $sSQL .="WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
                         $sSQL .= 'ORDER BY `per_LastName`, `per_FirstName` ';
                         $rsPeople = RunQuery($sSQL);
                         $numRows = mysqli_num_rows($rsPeople);
                         if ($numRows > 0) {
-                            echo "<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-exclamation-circle'></i> <strong>" . gettext('Warning') . "!</strong> " . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') . "</div>";
-                            echo "<div class='ml-3 mb-3'>";
+                            echo"<div class='alert alert-warning mt-3' role='alert'><i class='fa-solid fa-circle-exclamation'></i> <strong>" . gettext('Warning') ."!</strong>" . gettext('There are people assigned to this Volunteer Opportunity. Deletion will unassign:') ."</div>";
+                            echo"<div class='ms-3 mb-3'>";
                             for ($i = 0; $i < $numRows; $i++) {
                                 $aRow = mysqli_fetch_array($rsPeople);
                                 extract($aRow);
-                                echo "<div><i class='fa-solid fa-person'></i> " . InputUtils::escapeHTML($per_FirstName) . " " . InputUtils::escapeHTML($per_LastName) . "</div>";
+                                echo"<div><i class='fa-solid fa-person'></i>" . InputUtils::escapeHTML($per_FirstName) ."" . InputUtils::escapeHTML($per_LastName) ."</div>";
                             }
-                            echo "</div>";
+                            echo"</div>";
                         }
                         ?>
                         <div class="d-flex justify-content-center mt-4">
-                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline mr-2">
+                            <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline me-2">
                                 <input type="hidden" name="act" value="ConfDelete">
                                 <input type="hidden" name="Opp" value="<?= $iOpp ?>">
                                 <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
@@ -144,16 +144,16 @@ if ($sAction === 'ConfDelete' && $iOpp > 0) {
     }
 
     // get the order value for the record being deleted
-    $sSQL = "SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
+    $sSQL ="SELECT vol_Order from volunteeropportunity_vol WHERE vol_ID='$iOpp'";
     $rsOrder = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsOrder);
     $orderVal = $aRow[0];
-    $sSQL = "DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp . "'";
+    $sSQL ="DELETE FROM `volunteeropportunity_vol` WHERE `vol_ID` = '" . $iOpp ."'";
     RunQuery($sSQL);
-    $sSQL = "DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp . "'";
+    $sSQL ="DELETE FROM `person2volunteeropp_p2vo` WHERE `p2vo_vol_ID` = '" . $iOpp ."'";
     RunQuery($sSQL);
     // pull back all the vol_Order fields that are higher than the one just deleted
-    $sSQL = "UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
+    $sSQL ="UPDATE volunteeropportunity_vol SET vol_Order=vol_Order-1 WHERE vol_Order>=$orderVal";
     RunQuery($sSQL);
 }
 
@@ -171,7 +171,7 @@ if ($iRowNum === 0) {
     // If we find a '0' add it to the end of the list by changing it to
     // MAX(vol_Order)+1.
 
-    $sSQL = "SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0' ";
+    $sSQL ="SELECT `vol_ID` FROM `volunteeropportunity_vol` WHERE vol_Order = '0'";
     $sSQL .= 'ORDER BY `vol_ID`';
     $rsOrder = RunQuery($sSQL);
     $numRows = mysqli_num_rows($rsOrder);
@@ -210,8 +210,18 @@ if ($iRowNum === 0) {
 }
 
 $sPageTitle = gettext('Volunteer Opportunity Editor');
+$sPageSubtitle = gettext('Create or edit volunteer positions');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Admin'), '/admin/'],
+    [gettext('Volunteer Opportunities')],
+]);
 require_once __DIR__ . '/Include/Header.php';
+?>
+
+<p class="text-muted mb-3"><?= gettext('Manage volunteer opportunities and assign members') ?></p>
+
+<?php
 
 // Does the user want to save changes to text fields?
 if (isset($_POST['SaveChanges'])) {
@@ -296,7 +306,8 @@ if (isset($_POST['SaveChanges'])) {
     <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
 
                 <div class="card mb-4">
-                    <div class="card-header bg-success text-white">
+                    <div class="card-status-top bg-success"></div>
+                    <div class="card-header">
                         <h5 class="mb-0">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add New') . ' ' . gettext('Volunteer Opportunity') ?>
@@ -380,10 +391,9 @@ if (isset($_POST['SaveChanges'])) {
                     }
                 ?>
 
-                <div class="alert alert-warning" role="alert">
-                    <i class="fa-solid fa-exclamation-triangle"></i>
-                    <strong><?= gettext('Warning:') ?></strong>
-                    <?= gettext("ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'.") ?>
+                <div class="alert alert-info" role="alert">
+                    <i class="fa-solid fa-circle-info me-1"></i>
+                    <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
                 </div>
 
                 <?php
@@ -396,30 +406,30 @@ if (isset($_POST['SaveChanges'])) {
                 ?>
 
                 <div class="card">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header d-flex align-items-center">
                         <h5 class="mb-0">
-                            <i class="fa-solid fa-list"></i>
+                            <i class="fa-solid fa-list me-2"></i>
                             <?= gettext('Existing Volunteer Opportunities') ?>
                         </h5>
+                        <span class="badge bg-info text-white ms-auto"><?= $numRows ?> <?= gettext('opportunities') ?></span>
                     </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover table-sm">
-                                <thead class="table-light">
-                                    <tr>
-                                        <th><?= gettext('Order') ?></th>
-                                        <th><?= gettext('Name') ?></th>
-                                        <th><?= gettext('Description') ?></th>
-                                        <th class="text-center"><?= gettext('Actions') ?></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                    <div class="card-body" style="overflow: visible;">
+                        <table class="table table-hover table-sm">
+                            <thead>
+                                <tr>
+                                    <th><?= gettext('Order') ?></th>
+                                    <th><?= gettext('Name') ?></th>
+                                    <th><?= gettext('Description') ?></th>
+                                    <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
                         <?php
                         for ($row = 1; $row <= $numRows; $row++) {
                             if (array_key_exists($row, $aNameFields)) {
                                 echo '<tr>';
-                                echo '<td><span class="badge badge-secondary">' . $row . '</span></td>';
+                                echo '<td><span class="badge bg-light text-dark">' . $row . '</span></td>';
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'name" value="' . InputUtils::escapeAttribute($aNameFields[$row]) . '" class="form-control form-control-sm" maxlength="30">';
                                 if (array_key_exists($row, $aNameErrors) && $aNameErrors[$row]) {
@@ -429,15 +439,23 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '<td>';
                                 echo '<input type="text" name="' . $row . 'desc" value="' . InputUtils::escapeAttribute($aDescFields[$row]) . '" class="form-control form-control-sm" maxlength="100">';
                                 echo '</td>';
-                                echo '<td>';
-                                echo '<div class="btn-group btn-group-sm" role="group">';
-                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="btn btn-danger" title="' . gettext('Delete') . '"><i class="fa-solid fa-trash"></i> ' . gettext('Delete') . '</a>';
+                                echo '<td class="w-1">';
+                                echo '<div class="dropdown">';
+                                echo '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">';
+                                echo '<i class="ti ti-dots-vertical"></i>';
+                                echo '</button>';
+                                echo '<div class="dropdown-menu dropdown-menu-end">';
                                 if ($row !== 1) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                 }
                                 if ($row != $numRows) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="btn btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
+                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
+                                if ($row !== 1 || $row != $numRows) {
+                                    echo '<div class="dropdown-divider"></div>';
+                                }
+                                echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';
+                                echo '</div>';
                                 echo '</div>';
                                 echo '</td>';
                                 echo '</tr>';
@@ -445,15 +463,14 @@ if (isset($_POST['SaveChanges'])) {
                         }
                         ?>
 
-                                </tbody>
-                            </table>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 
                 <div class="d-flex mt-3 justify-content-center">
-                    <button type="submit" class="btn btn-primary mr-2" name="SaveChanges">
-                        <i class="fa-solid fa-save"></i>
+                    <button type="submit" class="btn btn-primary me-2" name="SaveChanges">
+                        <i class="fa-solid fa-floppy-disk"></i>
                         <?= gettext('Save Changes') ?>
                     </button>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="document.location='v2/dashboard'">

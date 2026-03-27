@@ -10,9 +10,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-12">
         <!-- Version Information Card -->
         <div class="card mb-3">
-            <div class="card-header bg-primary text-white">
+            <div class="card-status-top bg-primary"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-info-circle mr-2"></i><?= gettext('Version Information') ?>
+                    <i class="fa fa-circle-info me-2"></i><?= gettext('Version Information') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -20,7 +21,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="col-md-6">
                         <div class="mb-3">
                             <strong><?= gettext('Current Version:') ?></strong>
-                            <span class="badge badge-info ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($currentVersion) ?></span>
+                            <span class="badge bg-info ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($currentVersion) ?></span>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -28,14 +29,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <strong><?= gettext('Latest GitHub Version:') ?></strong>
                             <?php if ($latestGitHubVersion !== null): ?>
                                 <?php if ($isUpdateAvailable): ?>
-                                    <span class="badge badge-success ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
-                                    <small class="text-success ml-1"><?= gettext('Update Available!') ?></small>
+                                    <span class="badge bg-green-lt text-green ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                    <small class="text-success ms-1"><?= gettext('Update Available!') ?></small>
                                 <?php else: ?>
-                                    <span class="badge badge-info ml-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                    <span class="badge bg-blue-lt text-blue ms-2" style="font-size: 1em;"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
                                 <?php endif; ?>
                             <?php else: ?>
-                                <span class="badge badge-secondary ml-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
-                                <small class="text-muted ml-1"><?= gettext('(refresh from GitHub)') ?></small>
+                                <span class="badge bg-light text-dark ms-2" style="font-size: 1em;"><?= gettext('Unknown') ?></span>
+                                <small class="text-muted ms-1"><?= gettext('(refresh from GitHub)') ?></small>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -45,13 +46,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="col-md-12">
                         <div class="mb-3">
                             <strong><?= gettext('Allow Pre-release Upgrades') ?>:</strong>
-                            <div class="custom-control custom-switch d-inline-block ml-2">
-                                <input type="checkbox" class="custom-control-input" id="bAllowPrereleaseUpgrade"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
-                                <label class="custom-control-label" for="bAllowPrereleaseUpgrade">
+                            <div class="form-check form-switch d-inline-block ms-2">
+                                <input type="checkbox" class="form-check-input" id="bAllowPrereleaseUpgrade"<?= $allowPrereleaseUpgrade ? ' checked' : '' ?>>
+                                <label class="form-check-label" for="bAllowPrereleaseUpgrade">
                                     <span id="prereleaseUpgradeStatus"><?= $allowPrereleaseUpgrade ? gettext('Enabled') : gettext('Disabled') ?></span>
                                 </label>
                             </div>
-                            <small class="form-text text-muted d-inline-block ml-2">
+                            <small class="form-text text-muted d-inline-block ms-2">
                                 <?= InputUtils::escapeHTML($prereleaseConfig->getTooltip()) ?>
                             </small>
                         </div>
@@ -61,9 +62,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="row mb-3">
                     <div class="col-md-12">
                         <button type="button" class="btn btn-info btn-sm" id="refreshFromGitHub">
-                            <i class="fa fa-sync mr-2"></i><?= gettext('Refresh from GitHub') ?>
+                            <i class="fa fa-sync me-2"></i><?= gettext('Refresh from GitHub') ?>
                         </button>
-                        <small class="form-text text-muted d-inline-block ml-2">
+                        <small class="form-text text-muted d-inline-block ms-2">
                             <?= gettext('Check GitHub for the latest release information') ?>
                         </small>
                     </div>
@@ -71,13 +72,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 
                 <?php if ($isUpdateAvailable): ?>
                     <div class="alert alert-info mb-0" style="background-color: #d1ecf1; border-color: #bee5eb; color: #0c5460;">
-                        <i class="fa fa-info-circle mr-2"></i>
+                        <i class="fa fa-circle-info me-2"></i>
                         <strong><?= gettext('Update Available!') ?></strong>
                         <?= gettext('A new version of ChurchCRM is available for installation.') ?>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-success mb-0" style="background-color: #d4edda; border-color: #c3e6cb; color: #155724;">
-                        <i class="fa fa-check-circle mr-2"></i>
+                        <i class="fa fa-circle-check me-2"></i>
                         <strong><?= gettext('System Up to Date') ?></strong>
                         <?= gettext('Your ChurchCRM installation is running the latest version.') ?>
                     </div>
@@ -92,24 +93,25 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         $integrityPassed = !$hasIntegrityIssues;
         ?>
         <div class="card mb-3">
-            <div class="card-header <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?> text-white">
+            <div class="card-status-top <?= $integrityPassed ? 'bg-success' : 'bg-warning' ?>"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-shield-alt mr-2"></i><?= gettext('File Integrity Check') ?>
+                    <i class="fa fa-shield-alt me-2"></i><?= gettext('File Integrity Check') ?>
                     <?php if ($hasIntegrityIssues): ?>
-                        <span class="badge badge-light ml-2"><?= count($failingFiles) ?></span>
+                        <span class="badge bg-light text-dark ms-2"><?= count($failingFiles) ?></span>
                     <?php endif; ?>
                 </h3>
             </div>
             <div class="card-body">
                 <?php if ($integrityPassed): ?>
                     <div class="text-center py-3">
-                        <i class="fa fa-check-circle text-success" style="font-size: 3rem;"></i>
+                        <i class="fa fa-circle-check text-success" style="font-size: 3rem;"></i>
                         <h5 class="mt-3"><?= gettext('All Files Verified') ?></h5>
                         <p class="text-muted mb-0"><?= gettext('All system files match their expected signatures.') ?></p>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-warning mb-3">
-                        <i class="fa fa-exclamation-triangle mr-2"></i>
+                        <i class="fa fa-triangle-exclamation me-2"></i>
                         <strong><?= gettext('File Integrity Issues Detected') ?></strong>
                         <p class="mb-0 mt-2"><?= sprintf(gettext('%d files have been modified or are missing. Use Force Re-install to restore official versions.'), count($failingFiles)) ?></p>
                     </div>
@@ -129,15 +131,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <?php if (count($modifiedFiles) > 0): ?>
                         <h6 class="mb-2">
-                            <a href="#collapseModifiedFiles" data-toggle="collapse" class="text-warning text-decoration-none">
-                                <i class="fa fa-edit mr-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
-                                <i class="fa fa-chevron-down ml-2"></i>
+                            <a href="#collapseModifiedFiles" data-bs-toggle="collapse" class="text-warning text-decoration-none">
+                                <i class="fa fa-pen-to-square me-2"></i><?= gettext('Modified Files') ?> (<?= count($modifiedFiles) ?>)
+                                <i class="fa fa-chevron-down ms-2"></i>
                             </a>
                         </h6>
                         <div id="collapseModifiedFiles" class="collapse mb-3">
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped mb-0">
-                                    <thead class="thead-light">
+                                <table class="table table-sm mb-0">
+                                    <thead>
                                         <tr>
                                             <th><?= gettext('File Name') ?></th>
                                         </tr>
@@ -156,15 +158,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <?php if (count($missingFiles) > 0): ?>
                         <h6 class="mb-2">
-                            <a href="#collapseMissingFilesCard" data-toggle="collapse" class="text-danger text-decoration-none">
-                                <i class="fa fa-times-circle mr-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
-                                <i class="fa fa-chevron-down ml-2"></i>
+                            <a href="#collapseMissingFilesCard" data-bs-toggle="collapse" class="text-danger text-decoration-none">
+                                <i class="fa fa-circle-xmark me-2"></i><?= gettext('Missing Files') ?> (<?= count($missingFiles) ?>)
+                                <i class="fa fa-chevron-down ms-2"></i>
                             </a>
                         </h6>
                         <div id="collapseMissingFilesCard" class="collapse mb-3">
                             <div class="table-responsive">
-                                <table class="table table-sm table-striped mb-0">
-                                    <thead class="thead-light">
+                                <table class="table table-sm mb-0">
+                                    <thead>
                                         <tr>
                                             <th><?= gettext('File Name') ?></th>
                                         </tr>
@@ -183,9 +185,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     
                     <hr>
                     <button type="button" class="btn btn-warning" id="forceReinstall">
-                        <i class="fa fa-redo mr-2"></i><?= gettext('Force Re-install') ?>
+                        <i class="fa fa-redo me-2"></i><?= gettext('Force Re-install') ?>
                     </button>
-                    <small class="form-text text-muted d-inline-block ml-2">
+                    <small class="form-text text-muted d-inline-block ms-2">
                         <?= gettext('Re-download and re-apply the current version to restore all files to their official state') ?>
                     </small>
                 <?php endif; ?>
@@ -194,7 +196,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
         <!-- Upgrade Wizard Stepper -->
         <div class="card<?= $isUpdateAvailable ? ' show' : '' ?>" id="upgrade-wizard-card">
-            <div class="card-header">
+            <div class="card-header d-flex align-items-center">
                 <h3 class="card-title mb-0"><?= gettext('System Upgrade Wizard') ?></h3>
             </div>
             <div class="card-body p-0">
@@ -204,7 +206,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <div class="step<?= $hasWarnings ? ' warning-step' : '' ?>" data-target="#step-warnings">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-warnings" id="step-warnings-trigger">
                                 <span class="bs-stepper-circle">
-                                    <i class="fa fa-exclamation-triangle"></i>
+                                    <i class="fa fa-triangle-exclamation"></i>
                                 </span>
                                 <span class="bs-stepper-label"><?= gettext('Warnings') ?></span>
                             </button>
@@ -248,13 +250,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <!-- Step 1: Pre-Upgrade Checks -->
                         <div id="step-warnings" class="content p-4" role="tabpanel" aria-labelledby="step-warnings-trigger">
                             <h4 class="mb-3 text-danger">
-                                <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
+                                <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Pre-Upgrade Warnings') ?>
                             </h4>
 
                             <?php if ($integrityCheckFailed): ?>
                                 <div class="alert alert-warning">
                                     <h5 class="alert-heading">
-                                        <i class="fa fa-exclamation-circle mr-2"></i><?= gettext('Warning: Signature mismatch') ?>
+                                        <i class="fa fa-circle-exclamation me-2"></i><?= gettext('Warning: Signature mismatch') ?>
                                     </h5>
                                     <hr>
                                     <p><?= gettext("Some ChurchCRM system files may have been modified since the last installation.") ?> 
@@ -283,11 +285,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card mt-3">
                                             <div class="card-header" id="headingMissingFiles">
                                                 <h6 class="mb-0">
-                                                    <button class="btn btn-link text-danger collapsed" type="button" data-toggle="collapse" 
-                                                            data-target="#collapseMissingFiles" aria-expanded="false" 
-                                                            aria-controls="collapseMissingFiles">
-                                                        <i class="fa fa-times-circle mr-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
-                                                        <i class="fa fa-chevron-down float-right"></i>
+                                                    <button class="btn btn-link text-danger collapsed" type="button" data-bs-toggle="collapse" 
+                                                                                    data-bs-target="#collapseMissingFiles" aria-expanded="false" 
+                                                                                    aria-controls="collapseMissingFiles">
+                                                        <i class="fa fa-circle-xmark me-2"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
+                                                        <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
                                             </div>
@@ -295,7 +297,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-sm table-bordered mb-0">
-                                                            <thead class="thead-light">
+                                                            <thead>
                                                                 <tr>
                                                                     <th><?= gettext('File Name') ?></th>
                                                                     <th><?= gettext('Expected Hash') ?></th>
@@ -320,11 +322,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card mt-3">
                                             <div class="card-header" id="headingModifiedFiles">
                                                 <h6 class="mb-0">
-                                                    <button class="btn btn-link text-warning collapsed" type="button" data-toggle="collapse" 
-                                                            data-target="#collapseModifiedFiles" aria-expanded="false" 
+                                                    <button class="btn btn-link text-warning collapsed" type="button" data-bs-toggle="collapse" 
+                                                            data-bs-target="#collapseModifiedFiles" aria-expanded="false" 
                                                             aria-controls="collapseModifiedFiles">
-                                                        <i class="fa fa-edit mr-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
-                                                        <i class="fa fa-chevron-down float-right"></i>
+                                                        <i class="fa fa-pen-to-square me-2"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
+                                                        <i class="fa fa-chevron-down float-end"></i>
                                                     </button>
                                                 </h6>
                                             </div>
@@ -332,7 +334,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                                 <div class="card-body">
                                                     <div class="table-responsive">
                                                         <table class="table table-sm table-bordered mb-0">
-                                                            <thead class="thead-light">
+                                                            <thead>
                                                                 <tr>
                                                                     <th><?= gettext('File Name') ?></th>
                                                                     <th><?= gettext('Expected Hash') ?></th>
@@ -360,7 +362,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <?php if ($hasOrphanedFiles && isset($integrityCheckData['orphanedFiles']) && count($integrityCheckData['orphanedFiles']) > 0): ?>
                                 <div class="alert alert-danger mt-3">
                                     <h5 class="alert-heading">
-                                        <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Security Warning: Orphaned Files Detected') ?>
+                                        <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Security Warning: Orphaned Files Detected') ?>
                                     </h5>
                                     <hr>
                                     <p><?= gettext("The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks.") ?></p>
@@ -368,13 +370,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </div>
                                 
                                 <div class="card mt-3">
-                                    <div class="card-header bg-danger text-white" id="headingOrphanedFiles">
+                                    <div class="card-status-top bg-danger"></div>
+                                    <div class="card-header" id="headingOrphanedFiles">
                                         <h6 class="mb-0">
-                                            <button class="btn btn-link text-white" type="button" data-toggle="collapse" 
-                                                    data-target="#collapseOrphanedFiles" aria-expanded="false" 
+                                            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" 
+                                                    data-bs-target="#collapseOrphanedFiles" aria-expanded="false" 
                                                     aria-controls="collapseOrphanedFiles">
-                                                <i class="fa fa-trash mr-2"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)
-                                                <i class="fa fa-chevron-down float-right ml-2"></i>
+                                                <i class="fa fa-trash me-2"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)
+                                                <i class="fa fa-chevron-down float-end ms-2"></i>
                                             </button>
                                         </h6>
                                     </div>
@@ -382,7 +385,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <div class="card-body">
                                             <div class="table-responsive">
                                                 <table class="table table-sm table-bordered mb-0">
-                                                    <thead class="thead-light">
+                                                    <thead>
                                                         <tr>
                                                             <th><?= gettext('File Path') ?></th>
                                                         </tr>
@@ -398,7 +401,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             </div>
                                             <div class="alert alert-warning mt-3 mb-0">
                                                 <small>
-                                                    <i class="fa fa-info-circle mr-1"></i>
+                                                    <i class="fa fa-circle-info me-1"></i>
                                                     <?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities.') ?>
                                                 </small>
                                             </div>
@@ -409,18 +412,18 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
                             <?php if (!$hasWarnings): ?>
                                 <div class="alert alert-success">
-                                    <i class="fa fa-check-circle mr-2"></i>
+                                    <i class="fa fa-circle-check me-2"></i>
                                     <strong><?= gettext('Pre-Upgrade Tasks Complete') ?></strong>
                                     <?= gettext('All pre-upgrade checks have passed. You may proceed with the upgrade.') ?>
                                 </div>
                             <?php endif; ?>
                             
                             <div class="mt-3">
-                                <button class="btn btn-primary btn-lg" id="acceptWarnings">
+                                <button class="btn btn-primary" id="acceptWarnings">
                                     <?php if ($hasWarnings): ?>
-                                        <?= gettext('I Understand - Continue') ?> <i class="fa fa-arrow-right ml-2"></i>
+                                        <?= gettext('I Understand - Continue') ?> <i class="fa fa-arrow-right ms-2"></i>
                                     <?php else: ?>
-                                        <?= gettext('Continue to Backup') ?> <i class="fa fa-arrow-right ml-2"></i>
+                                        <?= gettext('Continue to Backup') ?> <i class="fa fa-arrow-right ms-2"></i>
                                     <?php endif; ?>
                                 </button>
                             </div>
@@ -439,16 +442,16 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             
                             <div class="mt-3">
                                 <button class="btn btn-success" id="doBackup">
-                                    <i class="fa fa-database mr-2"></i><?= gettext('Create Backup') ?>
+                                    <i class="fa fa-database me-2"></i><?= gettext('Create Backup') ?>
                                 </button>
-                                <button class="btn btn-outline-secondary ml-2" id="skipBackup">
-                                    <i class="fa fa-forward mr-2"></i><?= gettext('Skip Backup') ?>
+                                <button class="btn btn-outline-secondary ms-2" id="skipBackup">
+                                    <i class="fa fa-forward me-2"></i><?= gettext('Skip Backup') ?>
                                 </button>
                             </div>
                             
-                            <div id="backupNavButtons" class="mt-3" style="display: none;">
+                            <div id="backupNavButtons" class="mt-3 d-none">
                                 <button class="btn btn-primary" id="backup-next">
-                                    <?= gettext('Continue to Download & Apply') ?> <i class="fa fa-arrow-right ml-2"></i>
+                                    <?= gettext('Continue to Download & Apply') ?> <i class="fa fa-arrow-right ms-2"></i>
                                 </button>
                             </div>
                         </div>
@@ -465,8 +468,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div id="downloadStatus"></div>
                             
                             <!-- Update Package Details (shown after download) -->
-                            <div id="updateDetails" style="display: none;" class="card mb-3">
-                                <div class="card-header">
+                            <div id="updateDetails" class="card mb-3 d-none">
+                                <div class="card-header d-flex align-items-center">
                                     <h5><?= gettext('Update Package Details') ?></h5>
                                 </div>
                                 <div class="card-body">
@@ -483,9 +486,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <!-- Apply Status -->
                             <div id="applyStatus"></div>
                             
-                            <div class="mt-3" id="applyButtonContainer" style="display: none;">
-                                <button class="btn btn-danger btn-lg" id="applyUpdate">
-                                    <i class="fa fa-cog mr-2"></i><?= gettext('Apply Update Now') ?>
+                            <div class="mt-3 d-none" id="applyButtonContainer">
+                                <button class="btn btn-danger" id="applyUpdate">
+                                    <i class="fa fa-cog me-2"></i><?= gettext('Apply Update Now') ?>
                                 </button>
                             </div>
                         </div>
@@ -493,11 +496,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <!-- Step 4: Complete -->
                         <div id="step-complete" class="content p-4" role="tabpanel" aria-labelledby="step-complete-trigger">
                             <div class="text-center py-5">
-                                <i class="fa fa-check-circle text-success" style="font-size: 5rem;"></i>
+                                <i class="fa fa-circle-check text-success" style="font-size: 5rem;"></i>
                                 <h2 class="mt-4"><?= gettext('Upgrade Complete!') ?></h2>
                                 <p class="lead text-muted"><?= gettext('Your ChurchCRM installation has been successfully upgraded.') ?></p>
-                                <div class="alert alert-info mt-3 text-left" style="max-width: 600px; margin: 0 auto;">
-                                    <h5><i class="fa fa-info-circle mr-2"></i><?= gettext('Upgrade Summary') ?></h5>
+                                <div class="alert alert-info mt-3 text-start" style="max-width: 600px; margin: 0 auto;">
+                                    <h5><i class="fa fa-circle-info me-2"></i><?= gettext('Upgrade Summary') ?></h5>
                                     <ul class="mb-0">
                                         <li><?= gettext('Application files updated to latest version') ?></li>
                                         <li><?= gettext('Database schema upgraded automatically') ?></li>
@@ -506,8 +509,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </div>
                                 <p class="text-muted mb-2 mt-3"><?= gettext('You will be logged out and redirected to the login page.') ?></p>
                                 <div class="mt-4">
-                                    <div class="spinner-border spinner-border-sm text-primary mr-2" role="status">
-                                        <span class="sr-only"><?= gettext('Loading...') ?></span>
+                                    <div class="spinner-border spinner-border-sm text-primary me-2" role="status">
+                                        <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                                     </div>
                                     <span id="upgradeRedirectCountdown"><?= gettext('Redirecting in') ?> <strong>5</strong> <?= gettext('seconds...') ?></span>
                                 </div>

@@ -10,9 +10,9 @@ describe("Financial Reports", () => {
     it("Navigate to Financial Reports from Dashboard", () => {
         cy.visit("/finance/");
         cy.contains("Finance Dashboard");
-        
-        // Click Generate Reports from Quick Actions
-        cy.contains("a", "Generate Reports").click();
+
+        // Click Reports from action buttons
+        cy.contains("a", "Reports").click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });

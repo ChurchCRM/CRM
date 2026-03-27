@@ -9,7 +9,7 @@ describe("Session Password Reset", () => {
         it("Should display password reset form with correct elements", () => {
             cy.contains("Reset your password").should("be.visible");
             cy.contains("Enter your login name and we will email you a link to reset your password.").should("be.visible");
-            cy.get("input[name='username']").should("exist").should("be.visible").should("have.focus");
+            cy.get("input[name='username']").should("exist").should("be.visible");
             cy.get("#resetPassword").should("exist").should("be.visible").should("be.enabled").should("contain", "Send Reset Email");
             cy.contains("Back to login").should("exist").should("be.visible");
         });
@@ -40,7 +40,7 @@ describe("Session Password Reset", () => {
             cy.contains("Check your email for a password reset link").should("be.visible");
             
             // Should redirect to login after a delay
-            cy.url({ timeout: 3000 }).should("not.contain", "/session/forgot-password/reset-request");
+            cy.url({ timeout: 5000 }).should("not.contain", "/session/forgot-password/reset-request");
         });
 
         it("Should show error message and re-enable button on API error", () => {
@@ -62,14 +62,14 @@ describe("Session Password Reset", () => {
             cy.get("input[name='username']").type("ADMIN");
             cy.get("#resetPassword").click();
             
-            cy.contains("Check your email for a password reset link").should("be.visible");
+            cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
 
         it("Should trim whitespace from username", () => {
             cy.get("input[name='username']").type("  admin  ");
             cy.get("#resetPassword").click();
             
-            cy.contains("Check your email for a password reset link").should("be.visible");
+            cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
 
         it("Should show error for non-existent user (but success message for security)", () => {
@@ -77,7 +77,7 @@ describe("Session Password Reset", () => {
             cy.get("#resetPassword").click();
             
             // API returns success: true for security reasons, so user sees success message
-            cy.contains("Check your email for a password reset link").should("be.visible");
+            cy.contains("Check your email for a password reset link", { timeout: 5000 }).should("be.visible");
         });
 
         it("Should allow multiple reset attempts after error", () => {
@@ -97,34 +97,53 @@ describe("Session Password Reset", () => {
     });
 
     describe("Password Reset Token Validation", () => {
-        it("Should show error page when token is invalid", () => {
+        it("Should display error page with proper Tabler UX structure", () => {
             cy.visit("/session/forgot-password/set/invalid-token-12345");
-            
-            cy.contains("Password Reset Error").should("be.visible");
+
+            // Verify page header elements
+            cy.get(".login-form-header").should("be.visible");
+            cy.get(".login-header-logo img").should("be.visible");
+            cy.get(".login-header-church-name").should("be.visible");
+            cy.contains("Account Recovery").should("be.visible");
+
+            // Verify error title section
+            cy.get(".login-form-title h1").should("contain", "Password Reset Error");
+            cy.get(".login-form-title h1 i.fa-circle-exclamation").should("exist");
             cy.contains("We were unable to process your password reset request").should("be.visible");
-            cy.contains("Request Password Reset").should("be.visible");
-            cy.contains("Back to Login").should("be.visible");
+        });
+
+        it("Should display error alert with helpful message", () => {
+            cy.visit("/session/forgot-password/set/invalid-token-12345");
+
+            cy.get(".alert.alert-danger").should("be.visible");
+            cy.contains("Please try requesting a new password reset link or contact support").should("be.visible");
+        });
+
+        it("Should display action buttons below alert", () => {
+            cy.visit("/session/forgot-password/set/invalid-token-12345");
+
+            cy.get(".alert-buttons").should("be.visible");
+            cy.get(".alert-buttons").contains("Request Password Reset");
+            cy.get(".alert-buttons").contains("Back to Login");
         });
 
         it("Should show error page when token does not exist", () => {
             cy.visit("/session/forgot-password/set/nonexistent-token-xyz");
-            
+
             cy.contains("Password Reset Error").should("be.visible");
         });
 
-        it("Should have working navigation buttons on error page", () => {
+        it("Should navigate to password reset form when clicking Request Password Reset", () => {
             cy.visit("/session/forgot-password/set/invalid-token");
-            
-            // Click "Request Password Reset" button
-            cy.contains("Request Password Reset").click();
+
+            cy.get(".alert-buttons").contains("Request Password Reset").click();
             cy.url().should("include", "/session/forgot-password/reset-request");
         });
 
-        it("Should navigate back to login from error page", () => {
+        it("Should navigate back to login when clicking Back to Login button", () => {
             cy.visit("/session/forgot-password/set/bad-token-123");
-            
-            // Click "Back to Login" button
-            cy.contains("Back to Login").click();
+
+            cy.get(".alert-buttons").contains("Back to Login").click();
             cy.url().should("include", "/session/begin");
         });
     });

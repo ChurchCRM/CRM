@@ -5,54 +5,64 @@ function initializeGroupView() {
     dataType: "json",
   }).then(function (data) {
     window.CRM.groupRoles = data ?? [];
-    $("#newRoleSelection").select2({
-      data: window.CRM.groupRoles.map((groupRole) => {
-        return {
-          id: groupRole.OptionId,
+    const roleEl = document.getElementById("newRoleSelection");
+    if (roleEl && !roleEl.tomselect) {
+      new TomSelect(roleEl, {
+        valueField: "id",
+        labelField: "text",
+        searchField: "text",
+        options: window.CRM.groupRoles.map((groupRole) => ({
+          id: String(groupRole.OptionId),
           // i18next-disable-next-line
           text: i18next.t(groupRole.OptionName),
-        };
-      }),
-    });
+        })),
+      });
+    }
     initDataTable();
     //echo '<option value="' . $role['lst_OptionID'] . '">' . $role['lst_OptionName'] . '</option>';
   });
 
-  $(".personSearch").select2({
-    minimumInputLength: 2,
-    language: window.CRM.shortLocale,
-    ajax: {
-      url: function (params) {
-        return window.CRM.root + "/api/persons/search/" + params.term;
+  $(".personSearch").each(function () {
+    if (this.tomselect) return;
+    var el = this;
+    new TomSelect(el, {
+      valueField: "objid",
+      labelField: "text",
+      searchField: "text",
+      load: function (query, callback) {
+        if (query.length < 2) return callback();
+        fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
+          .then(function (res) {
+            return res.json();
+          })
+          .then(function (data) {
+            callback(data);
+          })
+          .catch(function () {
+            callback();
+          });
       },
-      dataType: "json",
-      delay: 250,
-      data: function (params) {
-        return {
-          q: params.term, // search term
-          page: params.page,
-        };
+      onChange: function (value) {
+        if (!value) return;
+        var tsInstance = this;
+        var selectedData = tsInstance.options[value];
+        window.CRM.groups.promptSelection(
+          {
+            Type: window.CRM.groups.selectTypes.Role,
+            GroupID: window.CRM.currentGroup,
+          },
+          function (selection) {
+            window.CRM.groups
+              .addPerson(window.CRM.currentGroup, selectedData.objid, selection.RoleID)
+              .then(function () {
+                tsInstance.clear(true);
+                tsInstance.clearOptions();
+                window.CRM.DataTableAPI.ajax.reload();
+              });
+          },
+        );
       },
-      processResults: function (rdata, page) {
-        return { results: rdata };
-      },
-      cache: true,
-    },
-  });
-
-  $(".personSearch").on("select2:select", function (e) {
-    window.CRM.groups.promptSelection(
-      {
-        Type: window.CRM.groups.selectTypes.Role,
-        GroupID: window.CRM.currentGroup,
-      },
-      function (selection) {
-        window.CRM.groups.addPerson(window.CRM.currentGroup, e.params.data.objid, selection.RoleID).then(function () {
-          $(".personSearch").val(null).trigger("change");
-          window.CRM.DataTableAPI.ajax.reload(); /* we reload the data no need to add the person inside the dataTable */
-        });
-      },
-    );
+    });
   });
 
   $("#deleteSelectedRows").on("click", function () {
@@ -233,10 +243,7 @@ function initDataTable() {
             escapedRoleName +
             '">' +
             escapedRoleName +
-            "</span> " +
-            '<button class="btn btn-xs changeMembership" data-personid=' +
-            full.PersonId +
-            '><i class="fa-solid fa-pen"></i></button>'
+            "</span>"
           );
         },
       },
@@ -299,6 +306,67 @@ function initDataTable() {
           return "";
         },
       },
+      {
+        width: "1",
+        title: i18next.t("Actions"),
+        data: null,
+        orderable: false,
+        searchable: false,
+        className: "text-end w-1 no-export",
+        render: function (data, type, full, meta) {
+          return (
+            '<div class="dropdown">' +
+            '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" aria-expanded="false">' +
+            '<i class="ti ti-dots-vertical"></i>' +
+            "</button>" +
+            '<div class="dropdown-menu dropdown-menu-end">' +
+            '<a class="dropdown-item" href="' +
+            window.CRM.root +
+            "/PersonView.php?PersonID=" +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-eye me-2"></i>' +
+            i18next.t("View") +
+            "</a>" +
+            '<a class="dropdown-item" href="' +
+            window.CRM.root +
+            "/PersonEditor.php?PersonID=" +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-pencil me-2"></i>' +
+            i18next.t("Edit") +
+            "</a>" +
+            '<button class="dropdown-item changeMembership" data-personid="' +
+            full.PersonId +
+            '">' +
+            '<i class="ti ti-users me-2"></i>' +
+            i18next.t("Change Role") +
+            "</button>" +
+            '<div class="dropdown-divider"></div>' +
+            '<button class="dropdown-item AddToCart" type="button" data-cart-id="' +
+            full.PersonId +
+            '" data-cart-type="person" ' +
+            'data-label-add="' +
+            i18next.t("Add to Cart") +
+            '" data-label-remove="' +
+            i18next.t("Remove from Cart") +
+            '">' +
+            '<i class="ti ti-shopping-cart-plus me-2"></i><span class="cart-label">' +
+            i18next.t("Add to Cart") +
+            "</span></button>" +
+            '<div class="dropdown-divider"></div>' +
+            '<button class="dropdown-item text-danger remove-member-btn" type="button" data-personid="' +
+            full.PersonId +
+            '" data-name="' +
+            $("<div>").text(full.Person.FullName).html() +
+            '">' +
+            '<i class="ti ti-user-minus me-2"></i>' +
+            i18next.t("Remove from Group") +
+            "</button>" +
+            "</div></div>"
+          );
+        },
+      },
     ],
     responsive: true,
     autoWidth: false,
@@ -334,6 +402,30 @@ function initDataTable() {
         $(this).prop("checked"),
       dataType: "json", // what type of data do we expect back from the server
       encode: true,
+    });
+  });
+
+  $(document).on("click", ".remove-member-btn", function (e) {
+    e.stopPropagation();
+    var personId = $(this).data("personid");
+    var personName = $(this).data("name");
+    bootbox.confirm({
+      message:
+        i18next.t("Are you sure you want to remove") + " <b>" + personName + "</b> " + i18next.t("from this group?"),
+      buttons: {
+        confirm: { label: i18next.t("Remove"), className: "btn-danger" },
+        cancel: { label: i18next.t("Cancel") },
+      },
+      callback: function (result) {
+        if (result) {
+          window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(function () {
+            window.CRM.DataTableAPI.row(function (idx, data) {
+              return data.PersonId == personId;
+            }).remove();
+            window.CRM.DataTableAPI.rows().invalidate().draw(true);
+          });
+        }
+      },
     });
   });
 

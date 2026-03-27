@@ -67,7 +67,7 @@ export function notify(messageOrObject, options = {}) {
       duration: duration,
       background: "#ffc107", // Bootstrap 4 $warning
       icon: {
-        className: "fa fa-exclamation-triangle",
+        className: "fa fa-triangle-exclamation",
         tagName: "i",
         color: "#212529", // Dark text for better contrast on yellow
       },
@@ -80,7 +80,7 @@ export function notify(messageOrObject, options = {}) {
       duration: duration,
       background: "#17a2b8", // Bootstrap 4 $info
       icon: {
-        className: "fa fa-info-circle",
+        className: "fa fa-circle-info",
         tagName: "i",
         color: "white",
       },

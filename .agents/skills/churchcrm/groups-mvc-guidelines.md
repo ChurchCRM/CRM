@@ -68,7 +68,7 @@ When migrating a legacy `src/<module>/LegacyPage.php` to `/groups/<submodule>/<a
 3. Register the new route file in `src/groups/index.php`.
 4. Update `src/ChurchCRM/Config/Menu/Menu.php` — change URLs from legacy paths to new `/groups/…` routes.
 5. **Delete** the legacy PHP files with `git rm` — do NOT leave redirects or stubs behind.
-6. Update `docs.churchcrm.io` — update any existing docs pages that reference old URLs, or create new manual pages if none exist.
+6. Update the Documentation — update any existing Documentation pages that reference old URLs, or create new Documentation pages if none exist.
 
 ## Security & Permissions
 
@@ -93,11 +93,13 @@ require_once SystemURLs::getDocumentRoot() . '/Include/Functions.php';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ```
 
-## Docs Site Update Requirement <!-- learned: 2026-03-15 -->
+## Documentation Update Requirement <!-- learned: 2026-03-15 -->
 
-After migrating any page, update `docs.churchcrm.io`:
+After migrating any page, update the Documentation:
+## Documentation Update Requirement <!-- learned: 2026-03-15 -->
+
+After migrating any page, update the Documentation:
 - Search for any existing page referencing the old URLs (e.g., `sundayschool/SundaySchoolDashboard.php`).
-- Update URL references to the new `/groups/sundayschool/…` paths.
-- If no docs exist for the feature, create a manual page under the appropriate docs section.
-
+- Update URL references to the new `/groups/…` paths.
+- If no Documentation exists for the feature, create a Documentation page under the appropriate section.
 References: `routing-architecture.md`, `service-layer.md`, `api-development.md`.

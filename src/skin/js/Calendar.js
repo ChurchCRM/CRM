@@ -467,7 +467,7 @@ function getCalendarFilterElement(calendar, type, parent) {
     calendar.BackgroundColor +
     '">' +
     '<h4 class="card-title">' +
-    '<a data-toggle="collapse" data-parent="#' +
+    '<a data-bs-toggle="collapse" data-bs-parent="#' +
     parent +
     '" href="#' +
     boxId +
@@ -642,7 +642,7 @@ function initializeFilterSettings() {
 function initializeNewCalendarButton() {
   if (window.CRM.calendarJSArgs.isModifiable) {
     var newCalendarButton =
-      '<div class="strike">' + '<span id="newCalendarButton"><i class="fa-solid fa-plus-circle"></i></span>' + "</div>";
+      '<div class="strike">' + '<span id="newCalendarButton"><i class="fa-solid fa-circle-plus"></i></span>' + "</div>";
 
     $("#userCalendars").after(newCalendarButton);
   }

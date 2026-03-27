@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
@@ -37,11 +38,15 @@ if ($sAction = 'delete' && strlen($sFund) > 0) {
 }
 
 $sPageTitle = gettext('Donation Fund Editor');
+$sPageSubtitle = gettext('Manage donation funds for financial tracking');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Finance'), '/finance/'],
+    [gettext('Donation Funds')],
+]);
 
 require_once __DIR__ . '/Include/Header.php'; ?>
 
-<div class="card card-body">
-    <?php
+<?php
 
     // Get data for the form as it now exists..
     $donationFunds = DonationFundQuery::create()
@@ -120,7 +125,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         function confirmDeleteFund(fundName, fundId) {
-            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + ' "' + fundName + '"?';
+            var msg = <?= json_encode(gettext('Are you sure you want to delete')) ?> + '"' + fundName + '"?';
             msg += '<br><br><strong>' + <?= json_encode(gettext('Warning:')) ?> + '</strong> ';
             msg += <?= json_encode(gettext('By deleting this fund, you may affect historical donation records!')) ?>;
             bootbox.confirm({
@@ -132,7 +137,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location = "DonationFundEditor.php?Fund=" + fundId + "&Action=delete";
+                        window.location ="DonationFundEditor.php?Fund=" + fundId +"&Action=delete";
                     }
                 }
             });
@@ -151,7 +156,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     <form method="post" action="DonationFundEditor.php" name="FundsEditor">
         <div class="card mb-4">
-            <div class="card-header bg-success text-white">
+            <div class="card-status-top bg-success"></div>
+            <div class="card-header">
                 <h5 class="mb-0">
                     <i class="fa-solid fa-plus"></i>
                     <?= gettext('Add New') . ' ' . gettext('Fund') ?>
@@ -176,7 +182,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                         <input type="text" id="newFieldDesc" class="form-control" name="newFieldDesc" maxlength="100">
                     </div>
                     <div class="col-md-3 d-flex align-items-end">
-                        <button type="submit" class="btn btn-success btn-block" name="AddField">
+                        <button type="submit" class="btn btn-success w-100" name="AddField">
                             <i class="fa-solid fa-plus"></i>
                             <?= gettext('Add New') . ' ' . gettext('Fund') ?>
                         </button>
@@ -189,16 +195,15 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         if ($donationFunds->count() == 0) {
         ?>
             <div class="alert alert-info" role="alert">
-                <i class="fa-solid fa-info-circle"></i>
+                <i class="fa-solid fa-circle-info"></i>
                 <?= gettext('No funds have been added yet') ?>
             </div>
         <?php
         } else {
         ?>
-            <div class="alert alert-warning" role="alert">
-                <i class="fa-solid fa-exclamation-triangle"></i>
-                <strong><?= gettext('Warning:') ?></strong>
-                <?= gettext("Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!") ?>
+            <div class="alert alert-info" role="alert">
+                <i class="fa-solid fa-circle-info me-1"></i>
+                <?= gettext('Name changes require saving. Reorder and delete actions in the action menu take effect immediately.') ?>
             </div>
             <?php
             if ($bErrorFlag) {
@@ -219,24 +224,24 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             <?php
             } ?>
             <div class="card">
-                <div class="card-header bg-primary text-white">
+                <div class="card-header d-flex align-items-center">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-list"></i>
+                        <i class="fa-solid fa-list me-2"></i>
                         <?= gettext('Existing Donation Funds') ?>
                     </h5>
+                    <span class="badge bg-info text-white ms-auto"><?= $donationFunds->count() ?> <?= gettext('funds') ?></span>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-sm">
-                            <thead class="table-light">
-                                <tr>
-                                    <th><?= gettext('Name') ?></th>
-                                    <th><?= gettext('Description') ?></th>
-                                    <th><?= gettext('Active') ?></th>
-                                    <th><?= gettext('Actions') ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="card-body" style="overflow: visible;">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('Description') ?></th>
+                                <th><?= gettext('Active') ?></th>
+                                <th class="text-center no-export w-1"><?= gettext('Actions') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
                                 <?php
                                 for ($row = 0; $row < $donationFunds->count(); $row++) {
                                     ?>
@@ -265,40 +270,50 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                                 <label class="form-check-label" for="<?= $row ?>active_no"><?= gettext('No') ?></label>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="w-1">
                                             <?php
                                             $fundNameJs = InputUtils::escapeAttribute(json_encode($aNameFields[$row]));
                                             $fundIdJs = InputUtils::escapeAttribute(json_encode($aIDFields[$row]));
                                             ?>
-                                            <button type="button" class="btn btn-sm btn-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
-                                                <i class="fa-solid fa-trash"></i>
-                                                <?= gettext('Delete') ?>
-                                            </button>
-                                            <?php
-                                            if ($row !== 0) {
-                                                echo '<a href="DonationFundRowOps.php?FundID=' . $aIDFields[$row] . '&Action=up" class="btn btn-sm btn-outline-secondary" title="' . gettext('Move up') . '"><i class="fa-solid fa-arrow-up"></i></a>';
-                                            }
-                                            if ($row < $donationFunds->count() - 1) {
-                                                echo '<a href="DonationFundRowOps.php?FundID=' . $aIDFields[$row] . '&Action=down" class="btn btn-sm btn-outline-secondary" title="' . gettext('Move down') . '"><i class="fa-solid fa-arrow-down"></i></a>';
-                                            } ?>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                                    <i class="ti ti-dots-vertical"></i>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-end">
+                                                    <?php if ($row !== 0): ?>
+                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=up">
+                                                            <i class="ti ti-arrow-up me-2"></i><?= gettext('Move up') ?>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($row < $donationFunds->count() - 1): ?>
+                                                        <a class="dropdown-item" href="DonationFundRowOps.php?FundID=<?= $aIDFields[$row] ?>&Action=down">
+                                                            <i class="ti ti-arrow-down me-2"></i><?= gettext('Move down') ?>
+                                                        </a>
+                                                    <?php endif; ?>
+                                                    <?php if ($row !== 0 || $row < $donationFunds->count() - 1): ?>
+                                                    <div class="dropdown-divider"></div>
+                                                    <?php endif; ?>
+                                                    <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteFund(<?= $fundNameJs ?>, <?= $fundIdJs ?>)">
+                                                        <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                     <?php
                                 } ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="d-flex justify-content-center my-3">
                 <button type="submit" class="btn btn-primary" name="SaveChanges">
-                    <i class="fa-solid fa-save"></i>
+                    <i class="fa-solid fa-floppy-disk"></i>
                     <?= gettext('Save Changes') ?>
                 </button>
             </div>
         <?php
         } ?>
     </form>
-</div>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

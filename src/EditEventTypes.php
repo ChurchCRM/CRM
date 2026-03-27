@@ -10,10 +10,16 @@ use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
 use ChurchCRM\model\ChurchCRM\EventCountName;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Edit Event Types');
+$sPageSubtitle = gettext('Manage event type categories');
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Event Types')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 $editing = 'FALSE';
@@ -128,42 +134,42 @@ if ($numCounts) {
 
 // Construct the form
 ?>
-<div class='card card-primary'>
+<div class='card'>
   <div class='card-header'>
-    <h3 class='card-title mb-0'><i class="fas fa-edit mr-2"></i><?= gettext('Edit Event Type') ?></h3>
+    <h3 class='card-title mb-0'><i class="fa-solid fa-pen-to-square me-2"></i><?= gettext('Edit Event Type') ?></h3>
   </div>
 
   <div class='card-body'>
     <form method="POST" action="EditEventTypes.php" name="EventTypeEditForm">
       <input type="hidden" name="EN_tyid" value="<?= $aTypeID ?>">
 
-      <div class="form-group">
-        <label for="newEvtName" class="font-weight-bold"><?= gettext('Event Type Name') ?></label>
+      <div class="mb-3">
+        <label for="newEvtName" class="fw-bold"><?= gettext('Event Type Name') ?></label>
         <div class="row">
           <div class="col-md-8">
             <input type="text" class="form-control" name="newEvtName" id="newEvtName" value="<?= InputUtils::escapeAttribute($aTypeName) ?>" maxlength="35" autofocus />
           </div>
           <div class="col-md-4">
             <button type="submit" name="Action" value="NAME" class="btn btn-primary">
-              <i class="fas fa-save mr-1"></i><?= gettext('Save Name') ?>
+              <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Name') ?>
             </button>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Recurrence Pattern') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Recurrence Pattern') ?></label>
         <div class="border rounded p-3 bg-light">
           <?= $recur ?>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Default Start Time') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Default Start Time') ?></label>
         <div class="row">
           <div class="col-md-8">
             <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-              <select class="form-control" id="EventHour" name="EventHour" style="width: 70px;">
+              <select class="form-select" id="EventHour" name="EventHour" style="width: 70px;">
                 <?php
                 for ($h = 1; $h <= 12; $h++) {
                     echo '<option value="' . $h . '">' . $h . '</option>';
@@ -171,7 +177,7 @@ if ($numCounts) {
                 ?>
               </select>
               <span>:</span>
-              <select class="form-control" id="EventMinute" name="EventMinute" style="width: 70px;">
+              <select class="form-select" id="EventMinute" name="EventMinute" style="width: 70px;">
                 <?php
                 for ($m = 0; $m < 60; $m += 15) {
                     $min = str_pad($m, 2, '0', STR_PAD_LEFT);
@@ -179,7 +185,7 @@ if ($numCounts) {
                 }
                 ?>
               </select>
-              <select class="form-control" id="EventPeriod" name="EventPeriod" style="width: 70px;">
+              <select class="form-select" id="EventPeriod" name="EventPeriod" style="width: 70px;">
                 <option value="AM">AM</option>
                 <option value="PM">PM</option>
               </select>
@@ -190,14 +196,14 @@ if ($numCounts) {
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="font-weight-bold"><?= gettext('Attendance Count Categories') ?></label>
+      <div class="mb-3">
+        <label class="fw-bold"><?= gettext('Attendance Count Categories') ?></label>
         <div class="table-responsive">
           <table class="table table-sm table-bordered">
-            <thead class="thead-light">
+            <thead>
               <tr>
                 <th><?= gettext('Category Name') ?></th>
-                <th style="width: 120px;"><?= gettext('Actions') ?></th>
+                <th style="width: 120px;" class="no-export"><?= gettext('Actions') ?></th>
               </tr>
             </thead>
             <tbody>
@@ -210,7 +216,7 @@ if ($numCounts) {
                     <button type="submit" name="Action" value="DELETE_<?= $cCountID[$c] ?>"
                             class="btn btn-outline-danger btn-sm" data-cy="remove-attendance-count"
                             onclick="return confirm('<?= gettext('Remove this attendance count?') ?>');">
-                      <i class="fas fa-trash mr-1"></i><?= gettext('Remove') ?>
+                      <i class="fa-solid fa-trash me-1"></i><?= gettext('Remove') ?>
                     </button>
                   </td>
                 </tr>
@@ -225,7 +231,7 @@ if ($numCounts) {
                 <td class="text-center">
                   <button type="submit" name="Action" value="ADD" class="btn btn-primary btn-sm"
                           data-cy="add-attendance-count">
-                    <i class="fas fa-plus mr-1"></i><?= gettext('Add') ?>
+                    <i class="fa-solid fa-plus me-1"></i><?= gettext('Add') ?>
                   </button>
                 </td>
               </tr>
@@ -259,7 +265,7 @@ $(document).ready(function() {
 
 <div class="mb-4">
   <a href="EventNames.php" class='btn btn-outline-secondary'>
-    <i class='fas fa-chevron-left mr-1'></i><?= gettext('Return to Event Types') ?>
+    <i class='fa-solid fa-chevron-left me-1'></i><?= gettext('Return to Event Types') ?>
   </a>
 </div>
 <?php

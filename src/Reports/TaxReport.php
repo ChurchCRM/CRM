@@ -104,11 +104,11 @@ foreach ($pledgeObjects as $pledge) {
 
 // Store criteria string for PDF report
 $aSQLCriteria = [];
-$criteriaStr = "plg_PledgeOrPayment='Payment'";
+$criteriaStr ="plg_PledgeOrPayment='Payment'";
 if ($iDepID > 0) {
-    $criteriaStr .= " AND plg_depID='$iDepID'";
+    $criteriaStr .=" AND plg_depID='$iDepID'";
 } else {
-    $criteriaStr .= " AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd'";
+    $criteriaStr .=" AND plg_date BETWEEN '$sDateStart' AND '$sDateEnd'";
 }
 $aSQLCriteria[1] = $criteriaStr;
 
@@ -152,7 +152,7 @@ if ($output === 'pdf') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             if ($iDepID) {
                 // Get Deposit Date
-                $sSQL = "SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
+                $sSQL ="SELECT dep_Date, dep_Date FROM deposit_dep WHERE dep_ID='$iDepID'";
                 $rsDep = RunQuery($sSQL);
                 [$sDateStart, $sDateEnd] = mysqli_fetch_row($rsDep);
             }

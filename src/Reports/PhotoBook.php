@@ -117,7 +117,7 @@ class PdfPhotoBook extends ChurchInfoReport
         
         // Skip if role not found for this group
         if ($groupRole === null) {
-            LoggerUtils::getAppLogger()->warning("PhotoBook: Role '$roleName' not found for group " . $this->group->getName());
+            LoggerUtils::getAppLogger()->warning("PhotoBook: Role '$roleName' not found for group" . $this->group->getName());
             return;
         }
         

@@ -29,7 +29,7 @@ describe('Plugin Management UI', () => {
                 // Card body should initially be hidden
                 cy.get('.card-body').should('not.be.visible');
                 // Click to expand
-                cy.get('[data-card-widget="collapse"]').click();
+                cy.get('.btn-expand-plugin').click();
                 // Card body should now be visible
                 cy.get('.card-body').should('be.visible');
             });
@@ -126,7 +126,7 @@ describe('Plugin Management UI', () => {
             
             // Expand mailchimp plugin card
             cy.get('.card[data-plugin-id="mailchimp"]').within(() => {
-                cy.get('[data-card-widget="collapse"]').click();
+                cy.get('.btn-expand-plugin').click();
                 cy.get('.card-body').should('be.visible');
                 
                 // Should have a settings form
@@ -138,7 +138,7 @@ describe('Plugin Management UI', () => {
             cy.visit('/plugins/management');
             
             cy.get('.card[data-plugin-id="mailchimp"]').within(() => {
-                cy.get('[data-card-widget="collapse"]').click();
+                cy.get('.btn-expand-plugin').click();
                 
                 // Should have Save Settings button
                 cy.get('button[type="submit"]').should('contain', 'Save Settings');
@@ -152,7 +152,7 @@ describe('Plugin Management UI', () => {
             cy.visit('/plugins/management');
             
             cy.get('.card[data-plugin-id="mailchimp"]').within(() => {
-                cy.get('[data-card-widget="collapse"]').click();
+                cy.get('.btn-expand-plugin').click();
                 
                 // Submit the form (even with empty values, it should succeed)
                 cy.get('button[type="submit"]').click();
@@ -165,7 +165,7 @@ describe('Plugin Management UI', () => {
             cy.visit('/plugins/management');
             
             cy.get('.card[data-plugin-id="mailchimp"]').within(() => {
-                cy.get('[data-card-widget="collapse"]').click();
+                cy.get('.btn-expand-plugin').click();
                 cy.get('.btn-reset-settings').click();
             });
 

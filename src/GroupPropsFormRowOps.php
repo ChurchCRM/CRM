@@ -27,31 +27,31 @@ if (!$group->hasSpecialProps()) {
 
 switch ($sAction) {
     case 'up':
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID - 1) . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . $iPropID ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . ($iPropID - 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($iPropID - 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
     case 'down':
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . $iPropID . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . ($iPropID + 1) . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . $iPropID ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . ($iPropID + 1) ."'";
         RunQuery($sSQL);
-        $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($iPropID + 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         RunQuery($sSQL);
         break;
     case 'delete':
         // Check if this field is a custom list type.  If so, the list needs to be deleted from list_lst.
-        $sSQL = "SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_Field = '" . $sField . "'";
+        $sSQL ="SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         $rsTemp = RunQuery($sSQL);
         $aTemp = mysqli_fetch_array($rsTemp);
         if ($aTemp[0] == 12) {
-            $sSQL = "DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
+            $sSQL ="DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
             RunQuery($sSQL);
         }
 
         $sSQL = 'ALTER TABLE `groupprop_' . $iGroupID . '` DROP `' . $sField . '` ;';
         RunQuery($sSQL);
 
-        $sSQL = "DELETE FROM groupprop_master WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . $iPropID . "'";
+        $sSQL ="DELETE FROM groupprop_master WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . $iPropID ."'";
         RunQuery($sSQL);
 
         $sSQL = 'SELECT *    FROM groupprop_master WHERE grp_ID = ' . $iGroupID;
@@ -61,7 +61,7 @@ switch ($sAction) {
         // Shift the remaining rows up by one, unless we've just deleted the only row
         if ($numRows != 0) {
             for ($reorderRow = $iPropID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
-                $sSQL = "UPDATE groupprop_master SET prop_ID = '" . ($reorderRow - 1) . "' WHERE grp_ID = '" . $iGroupID . "' AND prop_ID = '" . $reorderRow . "'";
+                $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($reorderRow - 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . $reorderRow ."'";
                 RunQuery($sSQL);
             }
         }

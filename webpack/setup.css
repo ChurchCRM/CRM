@@ -1,4 +1,4 @@
-/* Import Bootstrap and Font Awesome styles */
+/* Import Bootstrap 5, Font Awesome and bs-stepper styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~bs-stepper/dist/css/bs-stepper.min.css";
@@ -24,65 +24,52 @@
 }
 
 /* ==========================================================================
-   ChurchCRM Setup Wizard - Modern Installation UI
+   ChurchCRM Setup Wizard - Tabler/Bootstrap 5 Integration
    ========================================================================== */
-
-:root {
-  --setup-primary: #007bff;
-  --setup-success: #28a745;
-  --setup-warning: #ffc107;
-  --setup-danger: #dc3545;
-  --setup-gray-100: #f8f9fa;
-  --setup-gray-200: #e9ecef;
-  --setup-gray-600: #6c757d;
-  --setup-border-radius: 12px;
-  --setup-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  --setup-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.12);
-}
 
 /* Base Styles */
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+  background: var(--bs-gray-100);
   min-height: 100vh;
-  padding-bottom: 40px;
+  padding-bottom: 2rem;
 }
 
-/* Setup Container - Centered, max-width */
+/* Setup Container - Centered, max-width (Tabler container-xl pattern) */
 .setup-container {
   max-width: 680px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section (Tabler page header style)
    ========================================================================== */
 
 .setup-hero {
   text-align: center;
-  padding: 30px 20px 20px;
+  padding: 1.875rem 1.25rem 1.25rem;
 }
 
 .setup-logo {
   max-width: 320px;
   width: 100%;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 }
 
 .setup-version {
   font-size: 1.1rem;
-  color: var(--setup-gray-600);
-  margin-bottom: 8px;
+  color: var(--bs-gray-600);
+  margin-bottom: 0.5rem;
 }
 
 .setup-tagline {
-  color: var(--setup-gray-600);
+  color: var(--bs-gray-600);
   font-size: 1rem;
   margin: 0;
 }
 
 /* ==========================================================================
-   BS Stepper - Clean Progress Indicator
+   BS Stepper - Clean Progress Indicator (Tabler themed)
    ========================================================================== */
 
 #setup-stepper.bs-stepper {
@@ -91,11 +78,11 @@ body {
 }
 
 #setup-stepper .bs-stepper-header {
-  background: white;
-  padding: 24px 32px;
-  border-radius: var(--setup-border-radius);
-  box-shadow: var(--setup-shadow);
-  margin-bottom: 24px;
+  background: var(--bs-white);
+  padding: 1.5rem 2rem;
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--bs-box-shadow-sm);
+  margin-bottom: 1.5rem;
   justify-content: center;
   gap: 0;
 }
@@ -106,18 +93,18 @@ body {
 }
 
 #setup-stepper .bs-stepper-header .step-trigger {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   font-weight: 500;
-  border-radius: 8px;
+  border-radius: var(--bs-border-radius);
   transition: background 0.2s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 #setup-stepper .bs-stepper-header .step-trigger:hover {
-  background: var(--setup-gray-100);
+  background: var(--bs-gray-100);
 }
 
 #setup-stepper .bs-stepper-circle {
@@ -128,57 +115,57 @@ body {
   justify-content: center;
   font-size: 1rem;
   font-weight: 600;
-  background: var(--setup-gray-100);
-  color: var(--setup-gray-500);
-  border: 2px solid var(--setup-gray-300);
+  background: var(--bs-gray-100);
+  color: var(--bs-gray-600);
+  border: 2px solid var(--bs-gray-300);
   border-radius: 50%;
   transition: all 0.3s ease;
 }
 
 #setup-stepper .step.active .bs-stepper-circle {
-  background: var(--setup-primary);
-  color: white;
-  border-color: var(--setup-primary);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.35);
+  background: var(--bs-primary);
+  color: var(--bs-white);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0.25rem 0.75rem rgba(var(--bs-primary-rgb), 0.35);
 }
 
 /* Completed step styling */
 #setup-stepper .step.completed .bs-stepper-circle {
-  background: var(--setup-success);
-  color: white;
-  border-color: var(--setup-success);
+  background: var(--bs-success);
+  color: var(--bs-white);
+  border-color: var(--bs-success);
 }
 
 #setup-stepper .bs-stepper-label {
   font-size: 0.875rem;
-  color: var(--setup-gray-500);
+  color: var(--bs-gray-600);
   margin-left: 0;
   transition: color 0.2s ease;
 }
 
 #setup-stepper .step.active .bs-stepper-label {
-  color: var(--setup-primary);
+  color: var(--bs-primary);
   font-weight: 600;
 }
 
 #setup-stepper .step.completed .bs-stepper-label {
-  color: var(--setup-success);
+  color: var(--bs-success);
   font-weight: 500;
 }
 
 #setup-stepper .line {
   flex: 0 0 80px;
   height: 2px;
-  background: var(--setup-gray-200);
-  margin: 0 8px;
-  margin-bottom: 28px; /* Align with circle center */
+  background: var(--bs-gray-200);
+  margin: 0 0.5rem;
+  margin-bottom: 1.75rem;
   border-radius: 1px;
   transition: background 0.3s ease;
 }
 
 /* Line after completed step */
 #setup-stepper .step.completed + .line {
-  background: var(--setup-success);
+  background: var(--bs-success);
 }
 
 #setup-stepper .bs-stepper-content {
@@ -194,105 +181,107 @@ body {
 }
 
 /* ==========================================================================
-   Status Banner - Overall Check Status
+   Status Banner - Overall Check Status (Tabler alert pattern)
    ========================================================================== */
 
 .status-banner {
   display: flex;
   align-items: center;
-  padding: 16px 20px;
-  border-radius: var(--setup-border-radius);
-  margin-bottom: 20px;
-  background: white;
-  box-shadow: var(--setup-shadow);
+  padding: 1rem 1.25rem;
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 1.25rem;
+  background: var(--bs-white);
+  border-left: 4px solid var(--bs-primary);
+  box-shadow: var(--bs-box-shadow-sm);
 }
 
 .status-banner.status-checking {
-  border-left: 4px solid var(--setup-primary);
+  border-left-color: var(--bs-primary);
+  background: linear-gradient(90deg, rgba(var(--bs-primary-rgb), 0.08) 0%, var(--bs-white) 100%);
 }
 
 .status-banner.status-success {
-  border-left: 4px solid var(--setup-success);
-  background: linear-gradient(90deg, rgba(40, 167, 69, 0.05) 0%, white 100%);
+  border-left-color: var(--bs-success);
+  background: linear-gradient(90deg, rgba(var(--bs-success-rgb), 0.1) 0%, var(--bs-white) 100%);
 }
 
 .status-banner.status-warning {
-  border-left: 4px solid var(--setup-warning);
-  background: linear-gradient(90deg, rgba(255, 193, 7, 0.08) 0%, white 100%);
+  border-left-color: var(--bs-warning);
+  background: linear-gradient(90deg, rgba(var(--bs-warning-rgb), 0.12) 0%, var(--bs-white) 100%);
 }
 
 .status-banner.status-error {
-  border-left: 4px solid var(--setup-danger);
-  background: linear-gradient(90deg, rgba(220, 53, 69, 0.05) 0%, white 100%);
+  border-left-color: var(--bs-danger);
+  background: linear-gradient(90deg, rgba(var(--bs-danger-rgb), 0.08) 0%, var(--bs-white) 100%);
 }
 
 .status-icon {
   font-size: 1.5rem;
-  margin-right: 16px;
+  margin-right: 1rem;
   width: 40px;
   text-align: center;
 }
 
 .status-checking .status-icon {
-  color: var(--setup-primary);
+  color: var(--bs-primary);
 }
 
 .status-success .status-icon {
-  color: var(--setup-success);
+  color: var(--bs-success);
 }
 
 .status-warning .status-icon {
-  color: var(--setup-warning);
+  color: var(--bs-warning);
 }
 
 .status-error .status-icon {
-  color: var(--setup-danger);
+  color: var(--bs-danger);
 }
 
 .status-text strong {
   display: block;
   font-size: 1rem;
-  margin-bottom: 2px;
+  margin-bottom: 0.125rem;
 }
 
 .status-detail {
   font-size: 0.875rem;
-  color: var(--setup-gray-600);
+  color: var(--bs-gray-600);
 }
 
 /* ==========================================================================
-   Check Cards - Collapsible Sections
+   Check Cards - Collapsible Sections (Tabler card pattern)
    ========================================================================== */
 
 .check-card {
-  background: white;
-  border-radius: var(--setup-border-radius);
-  box-shadow: var(--setup-shadow);
-  margin-bottom: 12px;
+  background: var(--bs-white);
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--bs-box-shadow-sm);
+  margin-bottom: 0.75rem;
   overflow: hidden;
   transition: box-shadow 0.2s ease;
 }
 
 .check-card:hover {
-  box-shadow: var(--setup-shadow-hover);
+  box-shadow: var(--bs-box-shadow);
 }
 
 .check-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 20px;
+  padding: 0.875rem 1.25rem;
   cursor: pointer;
-  user-select: none;
   transition: background 0.15s ease;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
 }
 
 .check-header:hover {
-  background: var(--setup-gray-100);
+  background: var(--bs-gray-100);
 }
 
 .check-header-warning {
-  background: rgba(255, 193, 7, 0.1);
+  background: rgba(var(--bs-warning-rgb), 0.1);
 }
 
 .check-title {
@@ -303,9 +292,9 @@ body {
 }
 
 .check-icon {
-  margin-right: 12px;
+  margin-right: 0.75rem;
   font-size: 1.1rem;
-  color: var(--setup-gray-600);
+  color: var(--bs-gray-600);
   width: 20px;
   text-align: center;
 }
@@ -313,8 +302,8 @@ body {
 .check-badges .badge {
   font-weight: 500;
   font-size: 0.75rem;
-  padding: 4px 8px;
-  margin-left: 6px;
+  padding: 0.25rem 0.5rem;
+  margin-left: 0.375rem;
 }
 
 .check-status {
@@ -322,8 +311,9 @@ body {
 }
 
 .check-details {
-  border-top: 1px solid var(--setup-gray-200);
-  background: var(--setup-gray-50);
+  border-top: 1px solid var(--bs-border-color-translucent);
+  background: var(--bs-gray-50);
+  padding: 0;
 }
 
 .check-details .table {
@@ -333,15 +323,15 @@ body {
 }
 
 .check-details .table td {
-  padding: 12px 20px;
+  padding: 0.75rem 1.25rem;
   vertical-align: middle;
   border-top: none;
-  border-bottom: 1px solid var(--setup-gray-100);
+  border-bottom: 1px solid var(--bs-gray-100);
 }
 
 .check-details .table td:first-child {
   font-weight: 500;
-  color: var(--setup-gray-700);
+  color: var(--bs-gray-800);
 }
 
 .check-details .table td:last-child {
@@ -397,33 +387,34 @@ body {
 
 .step-intro {
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .step-intro h4 {
   font-weight: 600;
-  margin-bottom: 8px;
-  color: #212529;
+  margin-bottom: 0.5rem;
+  color: var(--bs-gray-900);
 }
 
 .step-intro p {
   margin: 0;
+  color: var(--bs-gray-600);
 }
 
 /* ==========================================================================
-   Form Cards - Configuration Panels
+   Form Cards - Configuration Panels (Tabler card pattern)
    ========================================================================== */
 
 .form-card {
-  background: white;
-  border-radius: var(--setup-border-radius);
-  box-shadow: var(--setup-shadow);
-  padding: 24px;
-  margin-bottom: 24px;
+  background: var(--bs-white);
+  border-radius: var(--bs-border-radius);
+  box-shadow: var(--bs-box-shadow-sm);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .form-card .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .form-card .form-group:last-child {
@@ -432,14 +423,14 @@ body {
 
 .form-card label {
   font-weight: 500;
-  margin-bottom: 6px;
+  margin-bottom: 0.375rem;
   font-size: 0.9rem;
 }
 
 .form-card .form-control {
-  border-radius: 8px;
-  border: 1px solid var(--setup-gray-200);
-  padding: 10px 14px;
+  border-radius: var(--bs-border-radius);
+  border: 1px solid var(--bs-border-color);
+  padding: 0.625rem 0.875rem;
   font-size: 0.95rem;
   transition:
     border-color 0.15s ease,
@@ -447,18 +438,37 @@ body {
 }
 
 .form-card .form-control:focus {
-  border-color: var(--setup-primary);
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.15);
+}
+
+/* Form validation feedback - Bootstrap 5 style */
+.form-card .form-control.is-invalid {
+  border-color: var(--bs-danger);
+}
+
+.form-card .form-control.is-invalid:focus {
+  border-color: var(--bs-danger);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-danger-rgb), 0.15);
+}
+
+.form-card .form-control.is-valid {
+  border-color: var(--bs-success);
+}
+
+.form-card .form-control.is-valid:focus {
+  border-color: var(--bs-success);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-success-rgb), 0.15);
 }
 
 .form-card .form-control.form-control-lg {
-  padding: 12px 16px;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
 }
 
 .form-card .form-text {
   font-size: 0.8rem;
-  margin-top: 6px;
+  margin-top: 0.375rem;
 }
 
 /* ==========================================================================
@@ -473,15 +483,16 @@ body {
 .advanced-header {
   display: flex;
   align-items: center;
-  padding: 14px 20px;
+  padding: 0.875rem 1.25rem;
   cursor: pointer;
   font-weight: 500;
-  color: var(--setup-gray-600);
+  color: var(--bs-gray-600);
   transition: background 0.2s ease;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
 }
 
 .advanced-header:hover {
-  background: var(--setup-gray-100);
+  background: var(--bs-gray-100);
 }
 
 .advanced-header .toggle-icon {
@@ -493,13 +504,13 @@ body {
 }
 
 .advanced-body {
-  padding: 16px 20px 20px;
-  border-top: 1px solid var(--setup-gray-200);
-  background: var(--setup-gray-50);
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--bs-border-color-translucent);
+  background: var(--bs-gray-50);
 }
 
 .advanced-body .form-group {
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 }
 
 .advanced-body .form-control {
@@ -507,70 +518,70 @@ body {
 }
 
 /* ==========================================================================
-   Action Buttons
+   Action Buttons (Tabler button patterns)
    ========================================================================== */
 
 .setup-actions {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 32px 0 16px;
-  margin-top: 24px;
-  border-top: 1px solid var(--setup-gray-200);
+  gap: 0.75rem;
+  padding: 2rem 0 1rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--bs-border-color-translucent);
 }
 
 .setup-actions .btn-row {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
   width: 100%;
 }
 
 .setup-actions .btn {
   min-width: 200px;
-  border-radius: 8px;
+  border-radius: var(--bs-border-radius);
   font-weight: 500;
-  padding: 12px 32px;
+  padding: 0.75rem 2rem;
 }
 
 .setup-actions .btn-primary {
-  background: var(--setup-primary);
-  border-color: var(--setup-primary);
-  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  background: var(--bs-primary);
+  border-color: var(--bs-primary);
+  box-shadow: 0 0.25rem 0.75rem rgba(var(--bs-primary-rgb), 0.3);
 }
 
 .setup-actions .btn-primary:hover {
-  background: #0069d9;
-  border-color: #0062cc;
-  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+  background: #0d6efd;
+  border-color: #0d6efd;
+  box-shadow: 0 0.375rem 1rem rgba(var(--bs-primary-rgb), 0.4);
 }
 
 .setup-actions .btn-success {
-  background: var(--setup-success);
-  border-color: var(--setup-success);
-  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+  background: var(--bs-success);
+  border-color: var(--bs-success);
+  box-shadow: 0 0.25rem 0.75rem rgba(var(--bs-success-rgb), 0.3);
 }
 
 .setup-actions .btn-success:hover {
-  background: #218838;
-  border-color: #1e7e34;
-  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+  background: #198754;
+  border-color: #198754;
+  box-shadow: 0 0.375rem 1rem rgba(var(--bs-success-rgb), 0.4);
 }
 
 .setup-actions .btn-outline-secondary {
-  color: var(--setup-gray-500);
+  color: var(--bs-gray-600);
   border: none;
   background: transparent;
   font-size: 0.95rem;
-  padding: 8px 16px;
+  padding: 0.5rem 1rem;
   min-width: auto;
 }
 
 .setup-actions .btn-outline-secondary:hover {
-  background: var(--setup-gray-100);
-  color: var(--setup-gray-700);
+  background: var(--bs-gray-100);
+  color: var(--bs-gray-800);
 }
 
 .setup-actions .btn-outline-secondary i {
@@ -578,36 +589,36 @@ body {
 }
 
 .setup-actions .btn-outline-warning {
-  color: #856404;
-  border-color: var(--setup-warning);
-  background: rgba(255, 193, 7, 0.1);
+  color: var(--bs-warning);
+  border: 1px solid var(--bs-warning);
+  background: rgba(var(--bs-warning-rgb), 0.1);
   font-size: 0.9rem;
-  padding: 10px 24px;
+  padding: 0.625rem 1.5rem;
   min-width: 180px;
 }
 
 .setup-actions .btn-outline-warning:hover {
-  background: var(--setup-warning);
-  color: #212529;
+  background: var(--bs-warning);
+  color: var(--bs-gray-900);
 }
 
 /* ==========================================================================
-   Modals
+   Modals (Tabler modal styling)
    ========================================================================== */
 
 .modal-content {
-  border-radius: var(--setup-border-radius);
+  border-radius: var(--bs-border-radius);
   border: none;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--bs-box-shadow);
 }
 
 .modal-header {
-  border-bottom: 1px solid var(--setup-gray-200);
-  border-radius: var(--setup-border-radius) var(--setup-border-radius) 0 0;
+  border-bottom: 1px solid var(--bs-border-color-translucent);
+  border-radius: var(--bs-border-radius) var(--bs-border-radius) 0 0;
 }
 
 .modal-footer {
-  border-top: 1px solid var(--setup-gray-200);
+  border-top: 1px solid var(--bs-border-color-translucent);
 }
 
 /* Success checkmark animation */
@@ -627,6 +638,74 @@ body {
 }
 
 /* ==========================================================================
+   Alert Styling (Tabler alert variants)
+   ========================================================================== */
+
+.alert {
+  border-left: 4px solid;
+  border-radius: var(--bs-border-radius);
+}
+
+.alert-info {
+  border-left-color: var(--bs-info);
+  background: linear-gradient(90deg, rgba(var(--bs-info-rgb), 0.1) 0%, var(--bs-white) 100%);
+}
+
+.alert-success {
+  border-left-color: var(--bs-success);
+  background: linear-gradient(90deg, rgba(var(--bs-success-rgb), 0.1) 0%, var(--bs-white) 100%);
+}
+
+.alert-warning {
+  border-left-color: var(--bs-warning);
+  background: linear-gradient(90deg, rgba(var(--bs-warning-rgb), 0.1) 0%, var(--bs-white) 100%);
+}
+
+.alert-danger {
+  border-left-color: var(--bs-danger);
+  background: linear-gradient(90deg, rgba(var(--bs-danger-rgb), 0.08) 0%, var(--bs-white) 100%);
+}
+
+/* Integrity check details */
+.integrity-details-row {
+  background: rgba(var(--bs-danger-rgb), 0.05);
+}
+
+.integrity-details-row td {
+  padding: 1rem 1.25rem !important;
+}
+
+.integrity-details-header {
+  font-weight: 600;
+  color: var(--bs-danger);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.625rem;
+}
+
+.integrity-files-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.integrity-files-list li {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.8rem;
+  color: var(--bs-gray-800);
+  padding: 0.375rem 0.75rem;
+  background: var(--bs-white);
+  border-radius: var(--bs-border-radius);
+  margin-bottom: 0.375rem;
+  border-left: 3px solid var(--bs-danger);
+}
+
+.integrity-files-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
    Responsive Adjustments
    ========================================================================== */
 
@@ -638,11 +717,11 @@ body {
 
 @media (max-width: 576px) {
   .setup-container {
-    padding: 12px;
+    padding: 0.75rem;
   }
 
   .setup-hero {
-    padding: 20px 12px 16px;
+    padding: 1.25rem 0.75rem 1rem;
   }
 
   .setup-logo {
@@ -650,13 +729,13 @@ body {
   }
 
   #setup-stepper .bs-stepper-header {
-    padding: 16px 12px;
+    padding: 1rem 0.75rem;
     flex-wrap: nowrap;
     overflow-x: auto;
   }
 
   #setup-stepper .bs-stepper-header .step-trigger {
-    padding: 8px 12px;
+    padding: 0.5rem 0.75rem;
   }
 
   #setup-stepper .bs-stepper-circle {
@@ -671,16 +750,16 @@ body {
 
   #setup-stepper .line {
     flex: 0 0 30px;
-    margin: 0 4px;
-    margin-bottom: 24px;
+    margin: 0 0.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .status-banner {
-    padding: 14px 16px;
+    padding: 0.875rem 1rem;
   }
 
   .check-header {
-    padding: 12px 16px;
+    padding: 0.75rem 1rem;
   }
 
   .check-badges {
@@ -688,13 +767,13 @@ body {
   }
 
   .form-card {
-    padding: 20px 16px;
+    padding: 1.25rem 1rem;
   }
 
   .setup-actions {
     flex-direction: column;
-    gap: 12px;
-    padding-top: 24px;
+    gap: 0.75rem;
+    padding-top: 1.5rem;
   }
 
   .setup-actions .btn {
@@ -710,21 +789,4 @@ body {
   .setup-actions .btn-outline-warning {
     font-size: 0.875rem;
   }
-}
-
-/* ==========================================================================
-   Utility Classes
-   ========================================================================== */
-
-.text-success {
-  color: var(--setup-success) !important;
-}
-.text-warning {
-  color: #d39e00 !important;
-}
-.text-danger {
-  color: var(--setup-danger) !important;
-}
-.text-muted {
-  color: var(--setup-gray-600) !important;
 }

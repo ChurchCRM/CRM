@@ -72,7 +72,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         RedirectUtils::redirect('Reports/ClassList.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
     } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
         $toStr = 'Reports/ClassAttendance.php?';
-        //        $toStr .= "GroupID=" . $iGroupID;
+        //        $toStr .="GroupID=" . $iGroupID;
         $toStr .= 'GroupID=' . $aGrpID;
         $toStr .= '&FYID=' . $iFYID;
         $toStr .= '&FirstSunday=' . $dFirstSunday;
@@ -111,7 +111,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
         }
         RedirectUtils::redirect($toStr);
     } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
-        echo "<p class=\"alert alert-danger\"><span class=\"fa fa-exclamation-triangle\"> " . gettext('At least one group must be selected to make class lists or attendance sheets.') . "</span></p>";
+        echo"<p class=\"alert alert-danger\"><span class=\"fa fa-triangle-exclamation\">" . gettext('At least one group must be selected to make class lists or attendance sheets.') ."</span></p>";
     }
 } else {
     $iFYID = isset($_SESSION['idefaultFY']) ? (int)$_SESSION['idefaultFY'] : FiscalYearUtils::getCurrentFiscalYearId();
@@ -166,7 +166,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
 
 ?>
 <div class="card">
-  <div class="card-header">
+  <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Report Details')?></h3>
   </div>
   <div class="card-body">
@@ -185,7 +185,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
             echo '</select><br>';
             echo gettext('Multiple groups will have a Page Break between Groups<br>');
             echo '<input type="checkbox" Name="allroles" value="1" checked>';
-            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)') . "<br>";
+            echo gettext('List all Roles (unchecked will list Teacher/Student roles only)') ."<br>";
             echo '<input type="checkbox" Name="withPictures" value="1" checked>';
             echo gettext('With Photos');
             ?>
@@ -273,7 +273,7 @@ $dNoSchool8 = change_date_for_place_holder($dNoSchool6);
               </div>
           </td>
           <td width="35%">
-            <div class="col-rd-12 float-right">
+            <div class="col-rd-12 float-end">
                 <input type="button" class="btn btn-secondary" name="Cancel" value="<?= gettext('Cancel') ?>" onclick="javascript:document.location = 'v2/dashboard';">
             </div>
           </td>

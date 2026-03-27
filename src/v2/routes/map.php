@@ -4,6 +4,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -55,6 +56,11 @@ function getMapView(Request $request, Response $response, array $args): Response
     $pageArgs = [
         'sRootPath'        => SystemURLs::getRootPath(),
         'sPageTitle'       => gettext('Congregation Map'),
+        'sPageSubtitle'    => gettext('View all families on an interactive map'),
+        'aBreadcrumbs'     => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('Map')],
+        ]),
         'mapSettingTooltips' => $mapSettingTooltips,
         'mapConfig'        => [
             'churchLat'    => (float) ChurchMetaData::getChurchLatitude(),

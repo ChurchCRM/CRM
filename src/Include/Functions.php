@@ -128,7 +128,7 @@ if (isset($_POST['BulkAddToCart'])) {
 // PrintFYIDSelect: make a fiscal year selection menu.
 function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
 {
-    echo sprintf('<select class="form-control" name="%s">', $selectName);
+    echo sprintf('<select class="form-select" name="%s">', $selectName);
 
     $hasSelected = false;
     $selectableOptions = [];
@@ -424,10 +424,10 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     switch ($type) {
     // Handler for boolean fields
         case 1:
-            echo '<div class="form-group">' .
-            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_yes" name="' . $fieldname . '" value="true"' . ($data == 'true' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_yes">' . gettext('Yes') . '</label></div>' .
-            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_no" name="' . $fieldname . '" value="false"' . ($data == 'false' ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_no">' . gettext('No') . '</label></div>' .
-            '<div class="custom-control custom-radio"><input type="radio" class="custom-control-input" id="' . $fieldname . '_unknown" name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="custom-control-label" for="' . $fieldname . '_unknown">' . gettext('Unknown') . '</label></div>' .
+            echo '<div class="mb-3">' .
+            '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_yes" name="' . $fieldname . '" value="true"' . ($data == 'true' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_yes">' . gettext('Yes') . '</label></div>' .
+            '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_no" name="' . $fieldname . '" value="false"' . ($data == 'false' ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_no">' . gettext('No') . '</label></div>' .
+            '<div class="form-check"><input type="radio" class="form-check-input" id="' . $fieldname . '_unknown" name="' . $fieldname . '" value=""' . (strlen($data) === 0 ? ' checked' : '') . '><label class="form-check-label" for="' . $fieldname . '_unknown">' . gettext('Unknown') . '</label></div>' .
             '</div>';
             break;
     // Handler for date fields
@@ -486,7 +486,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-leaf"></i></span>' .
             '</div>' .
-            '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
+            '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
             echo '  <option value="none">' . gettext('Select Season') . '</option>';
             echo '  <option value="winter"';
             if ($data == 'winter') {
@@ -536,9 +536,9 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
 
             echo '<div class="input-group">';
             echo '<div class="input-group-prepend">';
-            echo '<span class="input-group-text"><i class="fa-solid fa-user"></i></span>';
+            echo '<span class="input-group-text"><i class="fa-solid fa-person-half-dress"></i></span>';
             echo '</div>';
-            echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-control">';
+            echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
             echo '<option value="0"';
             if ($data <= 0) {
                 echo ' selected';
@@ -596,11 +596,11 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
             echo '<div class="input-group-append">';
             echo '<div class="input-group-text">';
-            echo '<div class="custom-control custom-checkbox mb-0">';
-            echo '<input type="checkbox" class="custom-control-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
+            echo '<div class="form-check mb-0">';
+            echo '<input type="checkbox" class="form-check-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
             echo $checked;
             echo '>';
-            echo '<label class="custom-control-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
+            echo '<label class="form-check-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
             echo '</div></div></div></div>';
             break;
 
@@ -613,7 +613,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
             echo '</div>';
-            echo '<select class="form-control" id="' . $fieldname . '" name="' . $fieldname . '">';
+            echo '<select class="form-select" id="' . $fieldname . '" name="' . $fieldname . '">';
             echo '<option value="0">' . gettext('Unassigned') . '</option>';
             echo '<option value="" disabled>-----------------------</option>';
 

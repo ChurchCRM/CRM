@@ -163,31 +163,39 @@ class TimelineService
         $item['type'] = $type;
         switch ($type) {
             case 'create':
-                $item['style'] = 'fa-plus-circle bg-blue';
+                $item['style'] = 'fa-circle-plus';
+                $item['color'] = 'primary';
                 break;
             case 'edit':
-                $item['style'] = 'fa-pencil bg-blue';
+                $item['style'] = 'fa-pencil';
+                $item['color'] = 'primary';
                 break;
             case 'photo':
-                $item['style'] = 'fa-camera bg-green';
+                $item['style'] = 'fa-camera';
+                $item['color'] = 'success';
                 break;
             case 'group':
-                $item['style'] = 'fa-users bg-gray';
+                $item['style'] = 'fa-users';
+                $item['color'] = 'secondary';
                 break;
             case 'cal':
-                $item['style'] = 'fa-calendar bg-green';
+                $item['style'] = 'fa-calendar';
+                $item['color'] = 'success';
                 break;
             case 'verify':
             case 'verify-link':
             case 'verify-URL':
-                $item['style'] = 'fa-circle-check bg-teal';
+                $item['style'] = 'fa-circle-check';
+                $item['color'] = 'info';
                 break;
             case 'user':
-                $item['style'] = 'fa-user-secret bg-gray';
+                $item['style'] = 'fa-user-secret';
+                $item['color'] = 'secondary';
                 break;
             default:
                 $item['slim'] = false;
-                $item['style'] = 'fa-sticky-note bg-green';
+                $item['style'] = 'fa-note-sticky';
+                $item['color'] = 'warning';
                 $item['editLink'] = $editLink;
                 $item['deleteLink'] = $deleteLink;
         }

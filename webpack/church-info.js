@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
 
-  if (!countrySelect || !stateContainer || !window.$ || !$.fn.select2) {
+  if (!countrySelect || !stateContainer || !window.TomSelect) {
     return;
   }
 
@@ -20,16 +20,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
-  function select2Placeholder() {
-    return window.i18next ? i18next.t("Search or select...") : "Search or select...";
-  }
-
-  function initSelect2(el) {
-    const $el = $(el);
-    if ($el.hasClass("select2-hidden-accessible")) {
-      $el.select2("destroy");
+  function initTomSelect(el) {
+    if (el.tomselect) {
+      el.tomselect.destroy();
     }
-    $el.select2({ width: "resolve", allowClear: true, placeholder: select2Placeholder() });
+    new TomSelect(el, {
+      allowEmptyOption: true,
+      placeholder: window.i18next ? i18next.t("Search or select...") : "Search or select...",
+    });
   }
 
   // ── State field ───────────────────────────────────────────────────────────
@@ -72,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data && Object.keys(data).length > 0) {
           const $select = buildStateSelect(data);
           stateContainer.appendChild($select[0]);
-          initSelect2($select[0]);
+          initTomSelect($select[0]);
         } else {
           stateContainer.appendChild(buildStateInput()[0]);
         }
@@ -97,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
       $countrySelect.append(new Option(country.name, country.code, selected, selected));
     });
 
-    initSelect2(countrySelect);
+    initTomSelect(countrySelect);
 
     // Trigger initial state load for the pre-selected country
     const preselected = $countrySelect.val();
@@ -110,15 +108,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Update state field whenever country changes
-  $countrySelect.on("select2:select select2:clear change", function () {
+  $countrySelect.on("change", function () {
     updateStateField(this.value);
   });
 
-  // ── Other Select2 dropdowns (language, timezone) ──────────────────────────
+  // ── Other TomSelect dropdowns (language, timezone) ──────────────────────────
 
-  $(".select2").each(function () {
+  $(".auto-tomselect").each(function () {
     if (this.id !== "sChurchCountry") {
-      initSelect2(this);
+      if (!this.tomselect) {
+        initTomSelect(this);
+      }
     }
   });
 

@@ -72,16 +72,16 @@ $app->group('/api/database', function (RouteCollectorProxy $group): void {
 
                 try {
                     if ($objectType === 'VIEW') {
-                        $dropSQL = "DROP VIEW `$objectName`;";
+                        $dropSQL ="DROP VIEW `$objectName`;";
                     } else {
-                        $dropSQL = "DROP TABLE `$objectName`;";
+                        $dropSQL ="DROP TABLE `$objectName`;";
                     }
 
                     $connection->exec($dropSQL);
                     $droppedCount++;
                     $logger->debug("Dropped $objectType: $objectName");
                 } catch (\PDOException $e) {
-                    $logger->warning("Failed to drop $objectType $objectName: " . $e->getMessage());
+                    $logger->warning("Failed to drop $objectType $objectName:" . $e->getMessage());
                 }
             }
 

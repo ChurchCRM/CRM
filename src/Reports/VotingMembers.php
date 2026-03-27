@@ -66,7 +66,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
 
         // Get payments only
         $sSQL = 'SELECT COUNT(plg_plgID) AS count FROM pledge_plg
-            WHERE plg_FamID = ' . $fam_ID . " AND plg_PledgeOrPayment = 'Payment' AND
+            WHERE plg_FamID = ' . $fam_ID ." AND plg_PledgeOrPayment = 'Payment' AND
                  plg_date >= '$startdate' AND plg_date < '$enddate'";
         $rsPledges = RunQuery($sSQL);
         [$count] = mysqli_fetch_row($rsPledges);
@@ -82,7 +82,7 @@ while ($aFam = mysqli_fetch_array($rsFamilies)) {
         $sSQL = 'SELECT per_FirstName, per_LastName, cls.lst_OptionName AS sClassName
                 FROM person_per
                 INNER JOIN list_lst cls ON per_cls_ID = cls.lst_OptionID AND cls.lst_ID = 1
-                WHERE per_fam_ID = ' . $fam_ID . " AND cls.lst_OptionName='" . gettext('Member') . "'";
+                WHERE per_fam_ID = ' . $fam_ID ." AND cls.lst_OptionName='" . gettext('Member') ."'";
 
         $rsFamilyMembers = RunQuery($sSQL);
 

@@ -108,8 +108,8 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
             $newRow['PledgeOrPayment'] = $row->getPledgeOrPayment();
             $newRow['Date'] = $row->getDate('Y-m-d');
             $newRow['DateLastEdited'] = $row->getDateLastEdited('Y-m-d');
-            $newRow['EditedBy'] = $row->getPerson()->getFullName();
-            $newRow['Fund'] = $row->getDonationFund()->getName();
+            $newRow['EditedBy'] = $row->getPerson() ? $row->getPerson()->getFullName() : '';
+            $newRow['Fund'] = $row->getDonationFund() ? $row->getDonationFund()->getName() : '';
             $rows[] = $newRow;
         }
 

@@ -18,13 +18,19 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
+use ChurchCRM\view\PageHeader;
 
 if (AuthenticationManager::getCurrentUser()->isAddEvent() === false) {
     RedirectUtils::securityRedirect('AddEvent');
 }
 
 $sPageTitle = gettext('Church Event Editor');
+$sPageSubtitle = gettext('Create and manage church events and activities');
 
+$aBreadcrumbs = PageHeader::breadcrumbs([
+    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Edit Event')],
+]);
 require_once __DIR__ . '/Include/Header.php';
 
 $sAction = 'Create Event';
@@ -128,7 +134,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         case 'weekly':
             // Check for the last occurrence of this type_id in the events table and
             // create a new event based on this date reference
-            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $sSQL ="SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
@@ -161,7 +167,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         case 'monthly':
             // Check for the last occurrence of this type_id in the events table and
             // create a new event based on this date reference
-            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $sSQL ="SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
@@ -200,7 +206,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             break;
 
         case 'yearly':
-            $sSQL = "SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
+            $sSQL ="SELECT * FROM events_event WHERE event_type = '$iTypeID' ORDER BY event_start DESC LIMIT 1";
             $ecOpps = RunQuery($sSQL);
             $numRows = mysqli_num_rows($ecOpps);
             if ($numRows > 0) {
@@ -337,7 +343,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
         $bEventTypeError = true;
         $iErrors++;
     } else {
-        $sSQL = "SELECT type_name FROM event_types WHERE type_id = '" . $iTypeID . "' LIMIT 1";
+        $sSQL ="SELECT type_name FROM event_types WHERE type_id = '" . $iTypeID ."' LIMIT 1";
         $rsOpps = RunQuery($sSQL);
         $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
         extract($aRow);
@@ -410,14 +416,14 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
                 $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
-                $sSQL = "INSERT eventcounts_evtcnt
+                $sSQL ="INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('" . InputUtils::legacyFilterInput($iEventID) . "',
-                        '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . $filteredCount . "',
-                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
+                       ('" . InputUtils::legacyFilterInput($iEventID) ."',
+                        '" . InputUtils::legacyFilterInput($aCountID[$c]) ."',
+                        '" . InputUtils::legacyFilterInput($aCountName[$c]) ."',
+                        '" . $filteredCount ."',
+                        '" . $filteredCountNotes ."') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount ."', evtcnt_notes='" . $filteredCountNotes ."'";
                 RunQuery($sSQL);
             }
         } else {
@@ -450,14 +456,14 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 $cCnt = ltrim(rtrim($aCountName[$c]));
                 $filteredCount = InputUtils::legacyFilterInput($aCount[$c]);
                 $filteredCountNotes = InputUtils::legacyFilterInput($sCountNotes);
-                $sSQL = "INSERT eventcounts_evtcnt
+                $sSQL ="INSERT eventcounts_evtcnt
                        (evtcnt_eventid, evtcnt_countid, evtcnt_countname, evtcnt_countcount, evtcnt_notes)
                        VALUES
-                       ('" . InputUtils::legacyFilterInput($iEventID) . "',
-                        '" . InputUtils::legacyFilterInput($aCountID[$c]) . "',
-                        '" . InputUtils::legacyFilterInput($aCountName[$c]) . "',
-                        '" . $filteredCount . "',
-                        '" . $filteredCountNotes . "') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount . "', evtcnt_notes='" . $filteredCountNotes . "'";
+                       ('" . InputUtils::legacyFilterInput($iEventID) ."',
+                        '" . InputUtils::legacyFilterInput($aCountID[$c]) ."',
+                        '" . InputUtils::legacyFilterInput($aCountName[$c]) ."',
+                        '" . $filteredCount ."',
+                        '" . $filteredCountNotes ."') ON DUPLICATE KEY UPDATE evtcnt_countcount='" . $filteredCount ."', evtcnt_notes='" . $filteredCountNotes ."'";
                 RunQuery($sSQL);
             }
         }
@@ -469,19 +475,19 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
 
 <div class="mb-3 d-flex justify-content-between align-items-center">
     <a href="ListEvents.php" class="btn btn-outline-secondary">
-        <i class="fas fa-chevron-left mr-1"></i>
+        <i class="fa-solid fa-chevron-left me-1"></i>
         <?= gettext('Return to Events') ?>
     </a>
     <?php if ($EventExists && $iEventID > 0): ?>
     <div>
-        <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info mr-2">
-            <i class="fas fa-clipboard-check mr-1"></i>
+        <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info me-2">
+            <i class="fa-solid fa-clipboard-check me-1"></i>
             <?= gettext('Manage Check-ins') ?>
         </a>
         <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
             <input type="hidden" name="EID" value="<?= $iEventID ?>">
             <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
-                <i class="fas fa-trash mr-1"></i>
+                <i class="fa-solid fa-trash me-1"></i>
                 <?= gettext('Delete Event') ?>
             </button>
         </form>
@@ -508,16 +514,16 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 ?>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
-                    <td colspan="3" class="TextColumn">
-                        <select name='EN_tyid' class='form-control w-100' id='event_type_id'>
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Type') ?>:</td>
+                    <td colspan="3">
+                        <select name='EN_tyid' class='form-select w-100' id='event_type_id'>
                             <option><?= gettext('Select your event type'); ?></option>
                             <?php
                             $sSQL = 'SELECT * FROM event_types';
                             $rsEventTypes = RunQuery($sSQL);
                             while ($aRow = mysqli_fetch_array($rsEventTypes)) {
                                 extract($aRow);
-                                echo "<option value='" . $type_id . "' >" . $type_name . '</option>';
+                                echo"<option value='" . $type_id ."' >" . $type_name . '</option>';
                             } ?>
                         </select>
                         <?php if ($bEventTypeError) {
@@ -535,37 +541,37 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <?php
             } else { ?>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Type') ?></td>
+                    <td colspan="3">
                         <input type="hidden" name="EventTypeName" value="<?= ($sTypeName) ?>">
                         <input type="hidden" name="EventTypeID" value="<?= ($iTypeID) ?>">
-                        <span class="badge badge-info font-weight-normal" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
+                        <span class="badge bg-info fw-normal" style="font-size: 1rem;"><?= InputUtils::escapeHTML($sTypeName) ?></span>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Title') ?></td>
+                    <td colspan="3">
                         <input type="text" name="EventTitle" value="<?= InputUtils::escapeHTML($sEventTitle) ?>" maxlength="100" class="form-control" placeholder="<?= gettext('Enter event title...') ?>" required>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Event Description') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Event Description') ?></td>
+                    <td colspan="3">
                         <?= getQuillEditorContainer('EventDesc', 'EventDescInput', $sEventDesc, 'form-control', '100px') ?>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
-                    <td class="TextColumn" colspan="3">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Date & Time') ?></td>
+                    <td colspan="3">
                         <input type="text" name="EventDateRange" value=""
                                maxlength="10" id="EventDateRange" class="form-control" style="max-width: 400px;" required>
                         <small class="form-text text-muted"><?= gettext('Select start and end date/time') ?></small>
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Linked Group') ?></td>
-                    <td class="TextColumn" colspan="3">
-                        <select name="LinkedGroupId" id="LinkedGroupId" class="form-control" style="max-width: 400px;">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Linked Group') ?></td>
+                    <td colspan="3">
+                        <select name="LinkedGroupId" id="LinkedGroupId" class="form-select" style="max-width: 400px;">
                             <option value="0"><?= gettext('No Group (Select for Kiosk Check-in)') ?></option>
                             <?php
                             $groups = GroupQuery::create()
@@ -581,7 +587,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     </td>
                 </tr>
                 <tr>
-                    <td class="LabelColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px">
                         <div><?= gettext('Attendance Counts') ?></div>
                         <?php if ($nCnts > 0) { ?>
                         <div class="mt-2">
@@ -595,7 +601,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                         </div>
                         <?php } ?>
                     </td>
-                    <td class="TextColumn" colspan="3">
+                    <td colspan="3">
                         <input type="hidden" name="NumAttendCounts" value="<?= $nCnts ?>">
                         <?php
                         if ($nCnts === 0) {
@@ -609,7 +615,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                     $inputId = 'EventCount_' . $c;
                                     ?>
                                     <div class="col-md-4 col-sm-6 mb-2">
-                                        <label for="<?= $inputId ?>" class="font-weight-bold"><?= gettext($countName) ?></label>
+                                        <label for="<?= $inputId ?>" class="fw-bold"><?= gettext($countName) ?></label>
                                         <input type="number" 
                                                id="<?= $inputId ?>" 
                                                name="EventCount[]" 
@@ -623,8 +629,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                                     <?php
                                 } ?>
                             </div>
-                            <div class="form-group mt-3">
-                                <label for="EventCountNotes" class="font-weight-bold"><?= gettext('Attendance Notes') ?></label>
+                            <div class="mb-3 mt-3">
+                                <label for="EventCountNotes" class="fw-bold"><?= gettext('Attendance Notes') ?></label>
                                 <input type="text" id="EventCountNotes" name="EventCountNotes" value="<?= InputUtils::escapeHTML($sCountNotes) ?>" class="form-control" placeholder="<?= gettext('Optional notes about attendance...') ?>">
                             </div>
                             <?php
@@ -633,24 +639,24 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><?= gettext('Sermon / Event Text') ?></td>
-                    <td colspan="3" class="TextColumn">
+                    <td class="text-secondary fw-semibold" style="width:180px"><?= gettext('Sermon / Event Text') ?></td>
+                    <td colspan="3">
                         <small class="form-text text-muted mb-2"><?= gettext('Optional - Add sermon notes or additional event details') ?></small>
                         <?= getQuillEditorContainer('EventText', 'EventTextInput', $sEventText, 'form-control', '200px') ?>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="LabelColumn"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
-                    <td colspan="3" class="TextColumn">
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                    <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
+                    <td colspan="3">
+                        <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
                             <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
                                 <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>
-                                <i class="fas fa-check mr-1"></i><?= gettext('Active') ?>
+                                <i class="fa-solid fa-check me-1"></i><?= gettext('Active') ?>
                             </label>
                             <label class="btn btn-outline-secondary <?= ($iEventStatus == 1) ? 'active' : '' ?>">
                                 <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus == 1) ? 'checked' : '' ?>>
-                                <i class="fas fa-ban mr-1"></i><?= gettext('Inactive') ?>
+                                <i class="fa-solid fa-ban me-1"></i><?= gettext('Inactive') ?>
                             </label>
                         </div>
                     </td>
@@ -659,8 +665,8 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                 <tr>
                     <td></td>
                     <td>
-                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary btn-lg">
-                            <i class="fas fa-save mr-1"></i><?= gettext('Save Changes') ?>
+                        <button type="submit" name="SaveChanges" value="<?= gettext('Save Changes') ?>" class="btn btn-primary">
+                            <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Changes') ?>
                         </button>
                     </td>
                 </tr>
@@ -677,9 +683,9 @@ $eventEnd = $sEventEndDate . ' ' . $iEventEndHour . ':' . $iEventEndMins;
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $( document ).ready(function() {
-        var startDate = moment("<?= $eventStart?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
-        var endDate = moment("<?= $eventEnd?>", "YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
-        $('#EventDateRange').val(startDate + " - " + endDate);
+        var startDate = moment("<?= $eventStart?>","YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+        var endDate = moment("<?= $eventEnd?>","YYYY-MM-DD h:mm").format("YYYY-MM-DD h:mm A");
+        $('#EventDateRange').val(startDate +" -" + endDate);
         $('#EventDateRange').daterangepicker({
             timePicker: true,
             timePickerIncrement: 30,

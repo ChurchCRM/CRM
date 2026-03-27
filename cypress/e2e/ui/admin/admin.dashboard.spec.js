@@ -7,7 +7,7 @@ describe("Admin Dashboard", () => {
 
     it("should display the admin dashboard", () => {
         cy.visit("admin/");
-        cy.contains("Welcome to ChurchCRM");
+        cy.contains("Admin Dashboard");
         cy.contains("Quick Start");
     });
 

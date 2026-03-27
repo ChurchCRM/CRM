@@ -203,7 +203,7 @@ class SlimUtils
             $logger->error('Uncaught exception: ' . $exception->getMessage(), $requestContext);
             
             $response = new Psr7Response();
-            
+
             // Determine appropriate HTTP status code based on exception type
             $statusCode = 500;
             if ($exception instanceof HttpNotFoundException) {
@@ -211,24 +211,60 @@ class SlimUtils
             } elseif ($exception instanceof HttpMethodNotAllowedException) {
                 $statusCode = 405;
             }
-            
+
             // Sanitize error message to prevent credential disclosure
             $sanitizedMessage = self::sanitizeErrorMessage($exception);
-            
-            // Include HTTP method and path in error response for debugging
-            $errorResponse = [
-                'error' => $sanitizedMessage,
-                'code' => $exception->getCode(),
-                'request' => [
-                    'method' => $request->getMethod(),
-                    'path' => $request->getUri()->getPath()
-                ]
-            ];
-            
-            // Do NOT include file/line/trace in responses to avoid leaking internals
-            
-            $response->getBody()->write(json_encode($errorResponse));
-            return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+
+            // Decide whether to return JSON (API) or HTML (MVC pages)
+            $acceptHeader = $request->getHeaderLine('Accept');
+            $path = $request->getUri()->getPath();
+            $isApiRequest = false;
+            // Treat as API when Accept prefers JSON or when path includes /api
+            if (stripos($acceptHeader, 'application/json') !== false || preg_match('#(^|/)api(/|$)#i', $path)) {
+                $isApiRequest = true;
+            }
+
+            if ($isApiRequest) {
+                // Include HTTP method and path in error response for debugging
+                $errorResponse = [
+                    'error' => $sanitizedMessage,
+                    'code' => $exception->getCode(),
+                    'request' => [
+                        'method' => $request->getMethod(),
+                        'path' => $path
+                    ]
+                ];
+
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+
+            // For non-API (MVC) requests render a skinned HTML error page using shared partial
+            try {
+                // Prepare variables expected by the partial
+                $code = $statusCode;
+                $title = ($statusCode >= 500) ? gettext('Server Error') : gettext('Not Found');
+                $message = $sanitizedMessage;
+                $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
+                $returnText = gettext('Return to Dashboard');
+                $extraHtml = '';
+
+                ob_start();
+                // Include the shared error partial (path relative to src/ChurchCRM/Slim)
+                require __DIR__ . '/../../v2/templates/common/error-page.php';
+                $html = ob_get_clean();
+
+                $response->getBody()->write($html);
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
+            } catch (Throwable $e) {
+                // If rendering the HTML page fails, fallback to JSON to ensure client receives an error
+                $errorResponse = [
+                    'error' => 'An error occurred while rendering the error page.',
+                    'code' => $exception->getCode(),
+                ];
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
+            }
         });
     }
 

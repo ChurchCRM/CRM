@@ -27,12 +27,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
-                <h4><i class="fa-solid fa-plus mr-2"></i><?= gettext('Add Link') ?></h4>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-plus me-2"></i><?= gettext('Add Link') ?></h3>
             </div>
             <div class="card-body">
                 <form id="link-form" novalidate>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="LINK_NAME"><?= gettext('Link Name') ?></label>
                         <input type="text" name="LINK_NAME" id="LINK_NAME" class="form-control"
                                aria-describedby="LINK_NAME_HELP" required minlength="2" maxlength="50"
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <small id="LINK_NAME_HELP" class="form-text text-muted"><?= gettext('2-50 characters') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a link name (2-50 characters)') ?></div>
                     </div>
-                    <div class="form-group">
+                    <div class="mb-3">
                         <label for="LINK_URL"><?= gettext('URL') ?></label>
                         <input type="url" name="LINK_URL" id="LINK_URL" class="form-control"
                                aria-describedby="LINK_URL_HELP" required 
@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <small id="LINK_URL_HELP" class="form-text text-muted"><?= gettext('Must start with http:// or https://') ?></small>
                         <div class="invalid-feedback"><?= gettext('Please enter a valid URL starting with http:// or https://') ?></div>
                     </div>
-                    <div class="text-right">
+                    <div class="text-end">
                         <button type="submit" class="btn btn-success" id="add-link">
                             <i class="fa-solid fa-plus"></i> <?= gettext('Add Link') ?>
                         </button>
@@ -62,26 +62,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
     <div class="col-lg-12">
         <div class="card">
-            <div class="card-header">
-                <h4><i class="fa-solid fa-link mr-2"></i><?= gettext('Menu Links') ?></h4>
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-link me-2"></i><?= gettext('Menu Links') ?></h3>
             </div>
-            <div class="card-body">
-                <p class="text-muted mb-3">
-                    <i class="fa-solid fa-info-circle"></i>
-                    <?= gettext('These links appear in the "Links" menu in the navigation sidebar when this plugin is enabled.') ?>
+            <div class="card-body p-0">
+                <p class="text-muted mb-3 px-3 pt-3">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
                 </p>
-                <div class="table-responsive">
-                    <table id="links-table" class="table table-striped table-bordered data-table">
+                    <table id="links-table" class="table table-vcenter table-hover card-table">
                         <thead>
                             <tr>
-                                <th width="15%"><?= gettext('Actions') ?></th>
-                                <th width="35%"><?= gettext('Name') ?></th>
-                                <th width="50%"><?= gettext('URL') ?></th>
+                                <th><?= gettext('Name') ?></th>
+                                <th><?= gettext('URL') ?></th>
+                                <th class="no-export w-1"><?= gettext('Actions') ?></th>
                             </tr>
                         </thead>
                         <tbody></tbody>
                     </table>
-                </div>
             </div>
         </div>
     </div>
@@ -90,23 +88,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
     // Initialize DataTable
-    var table = $("#links-table").DataTable({
+    var emptyMsg = i18next.t("No custom links configured. Add one above!");
+    var dataTableConfig = {
         ajax: {
-            url: window.CRM.root + "/plugins/custom-links/api/links",
-            dataSrc: "data"
+            url: window.CRM.root +"/plugins/custom-links/api/links",
+            dataSrc:"data"
         },
         autoWidth: false,
         columns: [
-            {
-                sortable: false,
-                data: 'Id',
-                render: function(data, type, row) {
-                    var safeId = parseInt(data, 10);
-                    return '<button type="button" class="btn btn-danger btn-sm delete-link" data-id="' + safeId + '" title="' + i18next.t('Delete') + '">' +
-                           '<i class="fa-solid fa-trash"></i></button>';
-                },
-                searchable: false
-            },
             {
                 title: i18next.t('Name'),
                 data: 'Name',
@@ -123,17 +112,34 @@ $(document).ready(function() {
                 render: function(data, type, row) {
                     if (type === 'display') {
                         var escaped = $('<div>').text(data).html();
-                        return '<a href="' + escaped + '" target="_blank" rel="noopener">' + escaped + ' <i class="fa-solid fa-external-link-alt fa-xs"></i></a>';
+                        return '<a href="' + escaped + '" target="_blank" rel="noopener">' + escaped + ' <i class="fa-solid fa-arrow-up-right-from-square fa-xs"></i></a>';
+                    }
+                    return data;
+                }
+            },
+            {
+                title: i18next.t('Actions'),
+                data: 'Id',
+                orderable: false,
+                searchable: false,
+                render: function(data, type, row) {
+                    if (type === 'display') {
+                        return '<button class="btn btn-sm btn-danger delete-link" data-id="' + data + '">' +
+                            '<i class="fa-solid fa-trash-can"></i></button>';
                     }
                     return data;
                 }
             }
         ],
-        order: [[1, "asc"]],
+        order: [[1,"asc"]],
         language: {
-            emptyTable: i18next.t("No custom links configured. Add one above!")
+            emptyTable: emptyMsg
         }
-    });
+    };
+    if (window.CRM && window.CRM.plugin && window.CRM.plugin.dataTable) {
+        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+    }
+    var table = $("#links-table").DataTable(dataTableConfig);
 
     // Delete handler using event delegation
     $('#links-table').on('click', '.delete-link', function() {

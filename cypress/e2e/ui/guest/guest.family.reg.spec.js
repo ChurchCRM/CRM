@@ -58,9 +58,10 @@ describe("Family Reg", () => {
         // Step 3: Review and Submit
         cy.get("#submit-registration").click();
 
-        // Verify success and redirect
-        cy.get(".bootbox-body").should("contain", "Thank you for registering your family");
-        cy.get(".btn-default").click();
+        // Verify success dialog with updated welcome message
+        cy.get(".bootbox-body").should("contain", "We're so glad your family has joined us!");
+        // Close the success dialog by clicking "Register another family" to stay on register page
+        cy.get('.bootbox').contains('Register another family').click({ force: true });
         cy.url().should("contain", "external/register/");
     });
 
@@ -100,9 +101,6 @@ describe("Family Reg", () => {
         
         // Wait for stepper transition and ensure members step content is visible
         cy.get("#step-members").should("be.visible");
-        
-        // Wait a moment for stepper transition, then click the add member button
-        cy.wait(500);
         cy.get("#add-member-btn").click();
 
         // Ensure the member phone field is visible
@@ -148,5 +146,55 @@ describe("Family Reg", () => {
         cy.get("#member-phone-2").invoke('val').should('match', /^\(555\) 123-4567/);
 
         // Done - masks validated on visible fields above
+    });
+
+    it("Remove Member", () => {
+        cy.visit("external/register/");
+
+        // Step 1: fill minimum required fields to advance
+        cy.get("#familyName").type("RemoveTest");
+        cy.get("#familyAddress1").clear().type("1 Test Lane");
+        cy.get("#familyCity").clear().type("Testtown");
+        cy.get("#familyZip").type("11111");
+        cy.get("#familyHomePhone").type("(555) 000-0001");
+        cy.get("#family-info-next").click();
+
+        // Step 2: member 1 is auto-created and visible
+        cy.get("#step-members").should("be.visible");
+        cy.get("#member-first-name-1").should("be.visible");
+
+        // Remove button should NOT be visible when only 1 member exists
+        cy.get('[data-member-index="1"] .remove-member-btn').should("not.be.visible");
+
+        // Add a second member
+        cy.get("#add-member-btn").click();
+        cy.get("#member-first-name-2").should("be.visible");
+
+        // Remove button should now be visible on member 2
+        cy.get('[data-member-index="2"] .remove-member-btn').should("be.visible");
+
+        // Add a third member
+        cy.get("#add-member-btn").click();
+        cy.get("#member-first-name-3").should("be.visible");
+
+        // All added members should have a remove button
+        cy.get('[data-member-index="2"] .remove-member-btn').should("be.visible");
+        cy.get('[data-member-index="3"] .remove-member-btn').should("be.visible");
+
+        // Remove member 2
+        cy.get('[data-member-index="2"] .remove-member-btn').click({ force: true });
+
+        // Member 2 card should be gone
+        cy.get('[data-member-index="2"]').should("not.exist");
+
+        // Member 3 still exists
+        cy.get('[data-member-index="3"]').should("exist");
+
+        // Remove member 3 — now only 1 member remains
+        cy.get('[data-member-index="3"] .remove-member-btn').click({ force: true });
+        cy.get('[data-member-index="3"]').should("not.exist");
+
+        // Only member 1 remains — its remove button should be hidden again
+        cy.get('[data-member-index="1"] .remove-member-btn').should("not.be.visible");
     });
 });

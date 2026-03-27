@@ -2,8 +2,7 @@
  * ChurchCRM Event Checkin JavaScript
  * Person check-in with dual search: person (child) + supervisor (adult)
  *
- * Uses Select2 AJAX following official documentation patterns:
- * https://select2.org/data-sources/ajax
+ * Uses TomSelect AJAX for person search.
  */
 
 $(function () {
@@ -12,81 +11,65 @@ $(function () {
     $("#checkedinTable").DataTable(window.CRM.plugin.dataTable);
   }
 
-  // Initialize all person search Select2 elements
+  // Initialize all person search TomSelect elements
   initializePersonSearchFields();
 });
 
 /**
- * Initialize Select2 on all person search fields
+ * Initialize TomSelect on all person search fields
  * Called on document ready and can be called again if new fields are added dynamically
  */
 function initializePersonSearchFields() {
-  // Select2 AJAX configuration for person search
-  // Following Select2 official documentation for AJAX data sources
-  var personSearchConfig = {
-    minimumInputLength: 2,
-    language: window.CRM.shortLocale,
-    allowClear: true,
-    placeholder: "", // Will be overridden by data-placeholder attribute
-    width: "100%",
-    ajax: {
-      // Use a URL function that returns the dynamic search URL
-      // The API expects the search term in the URL path: /api/persons/search/{query}
-      url: function (params) {
-        return window.CRM.root + "/api/persons/search/" + encodeURIComponent(params.term);
-      },
-      dataType: "json",
-      delay: 250,
-      // The API returns results directly, no need to send additional query params
-      data: function (_params) {
-        return {}; // Empty object - search term is in URL
-      },
-      // Process the API response to match Select2's expected format
-      // API returns: [{id: 1, objid: 123, text: "John Doe", uri: "..."}, ...]
-      processResults: function (data) {
-        return {
-          results: data.map(function (person) {
-            return {
-              id: person.objid, // Select2 uses 'id' for the value
-              text: person.text, // Select2 uses 'text' for display
-              objid: person.objid, // Keep original for hidden field
-              uri: person.uri, // Keep for linking
-            };
-          }),
-        };
-      },
-      cache: true,
-    },
-    // Custom template for displaying results with better formatting
-    templateResult: function (person) {
-      if (person.loading) {
-        return person.text;
-      }
-      return $("<span>").text(person.text);
-    },
-    // Template for selected item
-    templateSelection: function (person) {
-      return person.text || person.placeholder;
-    },
-  };
-
-  // Initialize Select2 on all person search fields that haven't been initialized yet
+  // Initialize TomSelect on all person search fields that haven't been initialized yet
   $(".person-search").each(function () {
-    var $element = $(this);
+    var el = this;
 
     // Skip if already initialized
-    if ($element.hasClass("select2-hidden-accessible")) {
+    if (el.tomselect) {
       return;
     }
 
-    var config = $.extend({}, personSearchConfig);
+    var placeholder = $(el).data("placeholder") || "";
 
-    // Use data-placeholder attribute if available
-    if ($element.data("placeholder")) {
-      config.placeholder = $element.data("placeholder");
-    }
-
-    $element.select2(config);
+    new TomSelect(el, {
+      valueField: "objid",
+      labelField: "text",
+      searchField: "text",
+      placeholder: placeholder,
+      load: function (query, callback) {
+        if (query.length < 2) return callback();
+        fetch(window.CRM.root + "/api/persons/search/" + encodeURIComponent(query))
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            callback(
+              data.map(function (person) {
+                return {
+                  objid: person.objid,
+                  text: person.text,
+                  uri: person.uri,
+                };
+              }),
+            );
+          })
+          .catch(function () {
+            callback();
+          });
+      },
+      render: {
+        option: function (data, escape) {
+          return "<div>" + escape(data.text) + "</div>";
+        },
+        item: function (data, escape) {
+          return "<div>" + escape(data.text) + "</div>";
+        },
+      },
+      onChange: function (value) {
+        // Dispatch a custom event so bindPersonSearchEvents can react
+        $(el).trigger("tomselect:change", [value, this]);
+      },
+    });
   });
 
   // Bind event handlers (use .off first to prevent duplicate bindings)
@@ -99,49 +82,42 @@ function initializePersonSearchFields() {
 function bindPersonSearchEvents() {
   // Handle person selection for child field - update hidden field and show details
   $("#child")
-    .off("select2:select")
-    .on("select2:select", function (e) {
-      var selectedData = e.params.data;
-      $("#child-id").val(selectedData.objid);
-      displayPersonDetails($("#childDetails"), selectedData);
-    });
-
-  $("#child")
-    .off("select2:clear")
-    .on("select2:clear", function () {
-      $("#child-id").val("");
-      displayPersonDetails($("#childDetails"), null);
+    .off("tomselect:change")
+    .on("tomselect:change", function (e, value, tsInstance) {
+      if (value) {
+        var selectedData = tsInstance.options[value];
+        $("#child-id").val(selectedData.objid);
+        displayPersonDetails($("#childDetails"), selectedData);
+      } else {
+        $("#child-id").val("");
+        displayPersonDetails($("#childDetails"), null);
+      }
     });
 
   // Handle person selection for adult field
   $("#adult")
-    .off("select2:select")
-    .on("select2:select", function (e) {
-      var selectedData = e.params.data;
-      $("#adult-id").val(selectedData.objid);
-      displayPersonDetails($("#adultDetails"), selectedData);
-    });
-
-  $("#adult")
-    .off("select2:clear")
-    .on("select2:clear", function () {
-      $("#adult-id").val("");
-      displayPersonDetails($("#adultDetails"), null);
+    .off("tomselect:change")
+    .on("tomselect:change", function (e, value, tsInstance) {
+      if (value) {
+        var selectedData = tsInstance.options[value];
+        $("#adult-id").val(selectedData.objid);
+        displayPersonDetails($("#adultDetails"), selectedData);
+      } else {
+        $("#adult-id").val("");
+        displayPersonDetails($("#adultDetails"), null);
+      }
     });
 
   // Handle person selection for adultout field (checkout form)
-  // Only update hidden field, no details display needed for checkout
   $("#adultout")
-    .off("select2:select")
-    .on("select2:select", function (e) {
-      var selectedData = e.params.data;
-      $("#adultout-id").val(selectedData.objid);
-    });
-
-  $("#adultout")
-    .off("select2:clear")
-    .on("select2:clear", function () {
-      $("#adultout-id").val("");
+    .off("tomselect:change")
+    .on("tomselect:change", function (e, value, tsInstance) {
+      if (value) {
+        var selectedData = tsInstance.options[value];
+        $("#adultout-id").val(selectedData.objid);
+      } else {
+        $("#adultout-id").val("");
+      }
     });
 
   // When form is reset, clear all selections and details
@@ -150,8 +126,13 @@ function bindPersonSearchEvents() {
     .on("reset", function () {
       // Use setTimeout to allow the form reset to complete first
       setTimeout(function () {
-        $("#child").val(null).trigger("change");
-        $("#adult").val(null).trigger("change");
+        ["#child", "#adult"].forEach(function (sel) {
+          var el = document.querySelector(sel);
+          if (el && el.tomselect) {
+            el.tomselect.clear(true);
+            el.tomselect.clearOptions();
+          }
+        });
         $("#child-id").val("");
         $("#adult-id").val("");
         displayPersonDetails($("#childDetails"), null);
@@ -177,10 +158,10 @@ function displayPersonDetails(element, person) {
     // Compact inline display with name and check icon
     var html =
       '<div class="d-inline-flex align-items-center p-2 border border-success rounded" style="background-color: #d4edda;">' +
-      '<i class="fa-solid fa-check-circle text-success mr-2"></i>' +
+      '<i class="fa-solid fa-circle-check text-success mr-2"></i>' +
       '<a href="' +
       personViewUrl +
-      '" class="text-dark font-weight-bold" target="_blank">' +
+      '" class="text-dark fw-bold" target="_blank">' +
       escapeHtml(person.text) +
       "</a>" +
       "</div>";

@@ -1,0 +1,65 @@
+/*
+ * Avatar and profile image utilities
+ * Central, Tabler-aligned avatar styles. Keep compatibility selectors
+ * so existing templates continue to work while moving toward `.avatar`.
+ */
+
+/* Avatar size tokens — prefer mapping to Tabler tokens where appropriate.
+   These provide a single source of truth for avatar sizes used across partials.
+*/
+:root {
+  --avatar-sm: 40px;
+  --avatar-md: 100px;
+  --avatar-lg: 200px;
+  --avatar-xlg: 250px;
+  --avatar-lg-mobile: 150px; /* reduced lg/xlg on small screens */
+  --avatar-md-max-photo: 130px; /* used by some photo thumbnails */
+}
+
+.avatar,
+.avatar img,
+.avatar[data-image-entity-type] {
+  display: inline-block;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  overflow: hidden;
+  background-color: var(--tblr-gray-100, #f8f9fa);
+  color: var(--tblr-body-color, #212529);
+}
+
+.avatar-sm { width: var(--avatar-sm); height: var(--avatar-sm); font-size: 0.875rem; }
+.avatar-md { width: var(--avatar-md); height: var(--avatar-md); font-size: 1rem; }
+.avatar-lg { width: var(--avatar-lg); height: var(--avatar-lg); font-size: 1.25rem; }
+
+.avatar-xlg { width: var(--avatar-xlg); height: var(--avatar-xlg); }
+
+.avatar-img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.avatar-initials { display: none; }
+
+.avatar-title { display: inline-flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-weight: 700; }
+
+.avatar-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tblr-secondary, #6c757d);
+  color: var(--tblr-white, #fff);
+  font-weight: 700;
+}
+
+/* Use Bootstrap utility `user-select-none` on markup instead of CSS override */
+
+@media (max-width: 768px) {
+  .avatar-lg,
+  .avatar-xlg { width: var(--avatar-lg-mobile); height: var(--avatar-lg-mobile); }
+}
+
+/* Responsive typography for avatar titles to match reduced avatar sizes */
+@media (max-width: 768px) {
+  .avatar-lg .avatar-title,
+  .avatar-xlg .avatar-title { font-size: 1rem; }
+  .avatar-md .avatar-title { font-size: 0.9rem; }
+  .avatar-sm .avatar-title { font-size: 0.8rem; }
+}

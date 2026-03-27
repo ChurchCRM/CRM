@@ -1,10 +1,13 @@
 /* Styles moved from inline in src/FinancialReports.php
    Purpose: improve spacing and responsive behavior for legacy table-based report forms
+   
+   Note (2026-03-23): Removed max-width: 980px constraint. Modern tables use table-responsive 
+   for mobile responsiveness and should expand to full width. Legacy form tables that need width 
+   constraints should use explicit .form-table class instead.
 */
 
-.card.card-body table {
+.form-table {
   width: 100%;
-  max-width: 980px;
 }
 
 td.LabelColumn {
@@ -21,7 +24,7 @@ td.TextColumnWithBottomBorder {
 
 select,
 input[type="text"],
-.select2-container {
+.ts-wrapper {
   max-width: 100%;
 }
 
@@ -58,18 +61,16 @@ input.date-picker {
   }
 }
 
-/* Improve spacing between radio inputs and their inline text in the filters form */
-.card.card-body input[type="radio"] {
+.card > .card-body input[type="radio"] {
   margin-right: 8px;
   vertical-align: middle;
 }
 
-/* Select2: improve appearance and wrapping of selected choices (chips) */
-.card.card-body .select2-container--default .select2-selection--multiple {
+.card > .card-body .ts-wrapper.multi .ts-control {
   min-height: 40px;
   padding: 6px 8px;
 }
-.card.card-body .select2-container--default .select2-selection--multiple .select2-selection__choice {
+.card > .card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
   background: #f0f0f0;
@@ -80,11 +81,7 @@ input.date-picker {
   max-width: 100%;
   white-space: normal;
 }
-.card.card-body .select2-container--default .select2-selection--multiple .select2-search--inline {
-  margin-top: 4px;
-}
 
-/* Make native multiple selects readable on narrow widths */
-.card.card-body select[multiple] {
+.card > .card-body select[multiple] {
   padding: 6px;
 }

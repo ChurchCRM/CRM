@@ -38,8 +38,8 @@
     margin-top: 0.25rem;
   }
 
-  /* Ensure Select2 search inputs take full width in our layout */
-  .select2-container {
+  /* Ensure Tom Select inputs take full width in our layout */
+  .ts-wrapper {
     width: 100% !important;
   }
 
@@ -153,9 +153,12 @@
     }
   }
 
-  .photo-medium {
-    max-width: 130px;
-    max-height: 130px;
+  /* Use avatar size tokens instead of legacy photo-medium */
+  img.photo-medium,
+  img.avatar-md,
+  .avatar-md {
+    max-width: var(--avatar-md-max-photo, 130px);
+    max-height: var(--avatar-md-max-photo, 130px);
     object-fit: cover;
   }
 

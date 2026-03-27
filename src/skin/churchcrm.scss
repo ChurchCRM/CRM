@@ -7,18 +7,8 @@
 
 */
 
-// Import Libraries
-
-// The only library we do not embed is Bootstrap, because it's very big
-@import "external/bootstrap-datepicker/bootstrap-datepicker.standalone.min.css";
-@import "external/bootstrap-daterangepicker/daterangepicker.css";
-@import "external/datatables/dataTables.bootstrap4.min.css";
-@import "external/datatables/buttons.bootstrap4.min.css";
-@import "external/datatables/responsive.bootstrap4.min.css";
-@import "external/datatables/select.bootstrap4.min.css";
-@import "external/select2/select2.min.css";
-@import "external/adminlte/adminlte.min.css";
-@import "external/bs-stepper/bs-stepper.min.css";
+// All vendor CSS is imported via webpack/skin-main.js (node_modules imports).
+// This file contains only ChurchCRM custom SCSS.
 
 // Font Awesome 7 compatibility: keep v6 default icon width unless explicitly fixed.
 .fa,
@@ -52,8 +42,8 @@
 @include meta.load-css("scss/tables");
 @include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/images");
-@include meta.load-css("scss/shortConfig");
-@include meta.load-css("scss/leftNav");
+@include meta.load-css("scss/avatars");
+// Short config moved into the system-settings-panel component stylesheet.
 @include meta.load-css("scss/imageOverlay");
 @include meta.load-css("scss/maps");
 @include meta.load-css("scss/SystemNotifications");
@@ -61,10 +51,13 @@
 @include meta.load-css("scss/calendars");
 @include meta.load-css("scss/react-datepicker");
 @include meta.load-css("scss/_two-factor-enrollment");
-@include meta.load-css("scss/systemSettings");
+@include meta.load-css("scss/_authentication-pages");
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/finance");
+
+// Tabler custom styles — color overrides, DataTables/TomSelect skins, FAB buttons
+@include meta.load-css("scss/_tabler-bridge");
 
 html,
 body {

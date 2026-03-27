@@ -36,9 +36,10 @@ require_once __DIR__ . '/Include/Header.php';
 <div class="row justify-content-center mt-2">
     <div class="col-md-6">
             <div class="card border-danger">
-                <div class="card-header bg-danger text-white">
+                <div class="card-status-top bg-danger"></div>
+                <div class="card-header">
                     <h5 class="mb-0">
-                        <i class="fa-solid fa-exclamation-triangle"></i>
+                        <i class="fa-solid fa-triangle-exclamation"></i>
                         <?= gettext('Confirm Property Deletion') ?>
                     </h5>
                 </div>
@@ -50,7 +51,7 @@ require_once __DIR__ . '/Include/Header.php';
 
                     <div class="mb-3">
                         <label class="form-label"><?= gettext('Property to Delete') ?>:</label>
-                        <div class="form-control-plaintext font-weight-bold text-danger">
+                        <div class="form-control-plaintext fw-bold text-danger">
                             <?= InputUtils::escapeHTML($property->getProName()) ?>
                         </div>
                     </div>

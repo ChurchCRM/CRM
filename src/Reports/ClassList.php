@@ -105,7 +105,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         
         // Skip if role not found
         if ($groupRole === null) {
-            LoggerUtils::getAppLogger()->warning("ClassList: Role not found for group " . $group->getName() . " and role ID " . $groupRoleMembership->getRoleId());
+            LoggerUtils::getAppLogger()->warning("ClassList: Role not found for group" . $group->getName() ." and role ID" . $groupRoleMembership->getRoleId());
             continue;
         }
         

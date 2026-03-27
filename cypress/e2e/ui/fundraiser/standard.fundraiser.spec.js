@@ -26,16 +26,18 @@ describe("Fund Raiser", () => {
 
         cy.get('#Title').type('Summer Car Wash');
         cy.get('#Description').type('This is the youth carwash ');
-        cy.get('td > .btn-primary').click();
+        // Click the form submit input (Save)
+        cy.get('input[name="FundRaiserSubmit"]').click();
 
-        cy.url().should('contains', 'FundRaiserEditor.php');
-        cy.get('#addItem').click();
+        cy.url().should('include', 'FundRaiserEditor.php');
+        // Click the Add Donated Item link (avoid relying on an id)
+        cy.contains('a', 'Add Donated Item').click();
 
         cy.url().should('contains', 'DonatedItemEditor.php');
         cy.get('#Item').type('Soap for the Car wash');
         cy.get('#Title').type('Soap');
         cy.get('#EstPrice').type('20');
-        cy.get('.form-group > .btn:nth-child(1)').click();
+        cy.get('input[name="DonatedItemSubmit"]').click();
         cy.url().should('contains', 'FundRaiserEditor.php');
         cy.contains("Soap for the Car wash");
     });

@@ -101,7 +101,7 @@ src/admin/
 │       ├── users.php       # User management APIs
 │       └── [feature-api].php
 ├── views/
-│   ├── dashboard.php       # AdminLTE dashboard page
+│   ├── dashboard.php       # Tabler dashboard page
 │   ├── settings.php        # Settings/configuration panel
 │   ├── users.php           # User list/management
 │   ├── backup.php          # Backup & restore
@@ -198,6 +198,34 @@ $app->group('/admin/api/users', require __DIR__ . '/routes/api/users.php')
 - Use kebab-case: `/admin/api/orphaned-files/delete-all`
 - Group logical operations: `/admin/api/users/*`, `/admin/api/database/*`
 - Clear action verbs: `delete-all`, `reset`, `export`
+
+---
+
+## V2 Template Conventions <!-- learned: 2026-03-25 -->
+
+V2 pages live in `src/v2/templates/` and are rendered by `Slim\Views\PhpRenderer`. Inside a template, `$this` is the PhpRenderer instance.
+
+### Do NOT use `$this->fetch()` for sub-templates
+
+`PhpRenderer::fetch()` can render sub-templates, but **do not use this pattern**. Inline all content directly in the main template file. Sub-template splitting adds indirection without benefit — every other v2 template inlines its content, and the cart page was the last holdout (fixed 2026-03-25).
+
+### Required page variables
+
+Every v2 route **must** pass these to the renderer:
+
+```php
+$pageArgs = [
+    'sRootPath'     => SystemURLs::getRootPath(),
+    'sPageTitle'    => gettext('Page Title'),
+    'sPageSubtitle' => gettext('Short description'),
+    'aBreadcrumbs'  => PageHeader::breadcrumbs([
+        [gettext('Parent'), '/parent/path'],
+        [gettext('Current Page')],
+    ]),
+];
+```
+
+Omitting `aBreadcrumbs` or `sPageSubtitle` results in a page with no navigation context. See `tabler-components.md` → "Unified Page Header" for full reference.
 
 ---
 
@@ -436,7 +464,7 @@ cy.url().should('include', 'access-denied');
 **Related Skills:**
 - [Slim 4 Best Practices](./slim-4-best-practices.md) - Routing foundation
 - [PHP Best Practices](./php-best-practices.md) - Service layer patterns
-- [Bootstrap & AdminLTE](./bootstrap-adminlte.md) - Admin page UI
+- [Tabler Components](./tabler-components.md) - Admin page UI
 
 ---
 

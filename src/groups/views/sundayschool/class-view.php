@@ -9,121 +9,87 @@ require_once SystemURLs::getDocumentRoot() . '/Include/Functions.php';
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
+// Pre-calculate stats for use in the Overview card
+$totalStudents = count($thisClassChildren);
+$maleCount     = 0;
+$femaleCount   = 0;
+
+foreach ($thisClassChildren as $child) {
+    switch ($child['kidGender']) {
+        case 1: $maleCount++;   break;
+        case 2: $femaleCount++; break;
+    }
+}
+
+$teacherCount = count($rsTeachers);
+
 ?>
 
-<h1 class="page-header"><?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong></h1>
-
-<div class="card card-info card-outline">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-bars"></i> <?= gettext('Sunday School Class Functions') ?></h3>
-    </div>
-    <div class="card-body row">
-        <div class="col-12 col-md-3">
-            <a class="btn btn-app bg-success btn-block" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>">
-                <i class="fa-solid fa-user-plus fa-3x"></i><br>
-                <?= gettext('Add Students') ?>
-            </a>
-        </div>
-
-        <div class="col-12 col-md-3">
-            <a class="btn btn-app bg-primary btn-block" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
-                <i class="fa-solid fa-pen fa-3x"></i><br>
-                <?= gettext('Edit this Class') ?>
-            </a>
-        </div>
-
-        <?php if ($canEmail) { ?>
-            <div class="col-12 col-md-3">
-                <div class="dropdown">
-                    <button class="btn btn-app bg-teal btn-block dropdown-toggle" type="button"
-                            id="emailClassDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            title="<?= gettext('Send email with recipients in To field') ?>">
-                        <i class="fa-solid fa-paper-plane fa-3x"></i><br>
-                        <?= gettext('Email (To)') ?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
-                        <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-                        <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
+<!-- Stat Cards Row -->
+<div class="row mb-3">
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-primary text-white avatar rounded-circle">
+                            <i class="fa-solid fa-users icon"></i>
+                        </span>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-3">
-                <div class="dropdown">
-                    <button class="btn btn-app bg-navy btn-block dropdown-toggle" type="button"
-                            id="emailClassBccDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                            title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
-                        <i class="fa-solid fa-user-secret fa-3x"></i><br>
-                        <?= gettext('Email (BCC)') ?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
-                        <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
-                        <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
-                    </div>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-</div>
-
-<div class="card card-info card-outline">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-chart-line"></i> <?= gettext('Class Overview') ?></h3>
-        <div class="card-tools float-right">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="<?= gettext('Toggle overview') ?>">
-                <i class="fa-solid fa-chevron-up"></i>
-            </button>
-        </div>
-    </div>
-    <div class="card-body row">
-        <?php
-        $totalStudents = count($thisClassChildren);
-        $maleCount     = 0;
-        $femaleCount   = 0;
-
-        foreach ($thisClassChildren as $child) {
-            switch ($child['kidGender']) {
-                case 1: $maleCount++;   break;
-                case 2: $femaleCount++; break;
-            }
-        }
-        ?>
-
-        <!-- Birthday Chart -->
-        <div class="col-12 col-lg-6">
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                    <h3 class="card-title"><i class="fa-solid fa-chart-bar"></i> <?= gettext('Birthdays by Month') ?></h3>
-                </div>
-                <div class="card-body">
-                    <div class="disableSelection">
-                        <canvas id="bar-chart"
-                                data-chart="<?= htmlspecialchars($birthDayMonthChartJSON, ENT_QUOTES) ?>"
-                                data-chart-label="<?= htmlspecialchars(gettext('Birthdays by Month'), ENT_QUOTES) ?>"></canvas>
+                    <div class="col">
+                        <div class="fw-medium"><?= $totalStudents ?></div>
+                        <div class="text-muted"><?= gettext('Total Enrolled') ?></div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Class Stats -->
-        <div class="col-12 col-lg-6">
-            <div class="row">
-                <div class="col-12 col-sm-6">
-                    <div class="small-box bg-info">
-                        <div class="inner">
-                            <h3><?= $totalStudents ?></h3>
-                            <p><?= gettext('Total Enrolled') ?></p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-users"></i></div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-azure text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $maleCount ?></div>
+                        <div class="text-muted"><?= gettext('Boys') ?></div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-6">
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3><?= $maleCount ?> / <?= $femaleCount ?></h3>
-                            <p><?= gettext('Male / Female') ?></p>
-                        </div>
-                        <div class="icon"><i class="fa-solid fa-person-half-dress"></i></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-danger text-white avatar rounded-circle">
+                            <i class="fa-solid fa-child-dress icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $femaleCount ?></div>
+                        <div class="text-muted"><?= gettext('Girls') ?></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+        <div class="card card-sm">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-auto">
+                        <span class="bg-success text-white avatar rounded-circle">
+                            <i class="fa-solid fa-person-chalkboard icon"></i>
+                        </span>
+                    </div>
+                    <div class="col">
+                        <div class="fw-medium"><?= $teacherCount ?></div>
+                        <div class="text-muted"><?= gettext('Teachers') ?></div>
                     </div>
                 </div>
             </div>
@@ -131,50 +97,131 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="card card-success card-outline">
-    <div class="card-header">
-        <h3 class="card-title"><i class="fa-solid fa-person-chalkboard"></i> <?= gettext('Teachers') ?></h3>
-    </div>
-    <div class="card-body row">
-        <?php foreach ($rsTeachers as $teacher) { ?>
-            <div class="col-12 col-sm-6 col-lg-3 mb-3">
-                <div class="card card-primary text-center user-profile-2 h-100">
-                    <div class="user-profile-inner">
-                        <h4 class="white mb-3"><?= htmlspecialchars($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?></h4>
-                        <img data-image-entity-type="person"
-                             data-image-entity-id="<?= $teacher->getId() ?>"
-                             class="photo-small" />
-                        <div class="btn-group btn-group d-flex flex-column gap-2 mt-3" role="group">
-                            <a href="mailto:<?= $teacher->getEmail() ?>" type="button" class="btn btn-success btn-sm py-2"
-                               title="<?= gettext('Email') . ' ' . htmlspecialchars($teacher->getFirstName()) ?>">
-                                <i class="fa-solid fa-envelope"></i> <?= gettext('Email') ?>
-                            </a>
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>" type="button"
-                               class="btn btn-primary btn-sm py-2" title="<?= gettext('View Profile') ?>">
-                                <i class="fa-solid fa-user"></i> <?= gettext('Profile') ?>
-                            </a>
+<!-- Class Actions -->
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="card-title mb-0">
+            <i class="fa-solid fa-chalkboard-user me-2"></i>
+            <?= gettext('Sunday School') ?>: <strong><?= htmlspecialchars($iGroupName) ?></strong>
+        </h5>
+        <div class="ms-auto">
+            <div class="btn-group flex-wrap" role="group">
+                <a class="btn btn-outline-success" href="<?= $sRootPath ?>/GroupView.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Add students to this class') ?>">
+                    <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Add Students') ?>
+                </a>
+                <a class="btn btn-outline-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>" title="<?= gettext('Edit class details') ?>">
+                    <i class="fa-solid fa-pen me-2"></i><?= gettext('Edit Class') ?>
+                </a>
+                <?php if ($canEmail) { ?>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-outline-info dropdown-toggle" type="button"
+                                id="emailClassDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="<?= gettext('Send email with recipients in To field') ?>">
+                            <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email (To)') ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="emailClassDropdown">
+                            <a class="dropdown-item" href="mailto:<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+                            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:') ?>
                         </div>
                     </div>
-                </div>
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                                id="emailClassBccDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                title="<?= gettext('Send email with recipients in BCC field (hidden from each other)') ?>">
+                            <i class="fa-solid fa-user-secret me-2"></i><?= gettext('Email (BCC)') ?>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="emailClassBccDropdown">
+                            <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($sEmailLink, 0, -3) ?>"><?= gettext('All Members') ?></a>
+                            <?php generateGroupRoleEmailDropdown($roleEmails, 'mailto:?bcc=') ?>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
-        <?php } ?>
+        </div>
     </div>
 </div>
 
-<div class="card card-primary card-outline">
-    <div class="card-header">
-        <h3 class="card-title">
-            <i class="fa-solid fa-users"></i> <?= gettext('Students') ?>
-            <span class="badge badge-primary"><?= count($thisClassChildren) ?></span>
-        </h3>
+<!-- Birthday Chart Card -->
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="card-title mb-0"><i class="fa-solid fa-chart-bar me-2"></i><?= gettext('Birthdays by Month') ?></h5>
     </div>
     <div class="card-body">
-        <h4 class="birthday-filter d-none alert alert-info mb-3">
-            <?= gettext('Showing students with birthdays in') ?> <span class="month font-weight-bold"></span>
-            <i class="icon fa-solid fa-times float-right birthday-filter-clear" title="<?= gettext('Clear filter') ?>"></i>
-        </h4>
-        <div class="table-responsive">
-            <table id="sundayschool" class="table table-striped table-hover data-table w-100">
+        <div class="user-select-none">
+            <div id="bar-chart"
+                    data-chart="<?= htmlspecialchars($birthDayMonthChartJSON, ENT_QUOTES) ?>"
+                    data-chart-label="<?= htmlspecialchars(gettext('Birthdays by Month'), ENT_QUOTES) ?>"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Teachers Card -->
+<?php if ($teacherCount > 0) { ?>
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="card-title mb-0"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?></h5>
+        <span class="badge bg-green-lt text-green ms-2"><?= $teacherCount ?></span>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <?php foreach ($rsTeachers as $teacher) {
+                $phone = $teacher->getCellPhone() ?: $teacher->getHomePhone();
+            ?>
+                <div class="col-md-6 col-lg-3 mb-3">
+                    <div class="card">
+                        <div class="card-body p-4 text-center">
+                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>"
+                               title="<?= gettext('View Profile') ?>">
+                                <span class="avatar avatar-xl mb-3">
+                                    <img data-image-entity-type="person"
+                                         data-image-entity-id="<?= $teacher->getId() ?>"
+                                         alt="<?= htmlspecialchars($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
+                                </span>
+                            </a>
+                            <h3 class="m-0 mb-1">
+                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                                    <?= htmlspecialchars($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>
+                                </a>
+                            </h3>
+                            <div class="text-secondary"><?= gettext('Teacher') ?></div>
+                        </div>
+                        <div class="d-flex">
+                            <?php if ($teacher->getEmail()) { ?>
+                                <a href="mailto:<?= $teacher->getEmail() ?>" class="card-btn"
+                                   title="<?= gettext('Email') . ' ' . htmlspecialchars($teacher->getFirstName()) ?>">
+                                    <i class="fa-solid fa-envelope me-2 text-muted"></i><?= gettext('Email') ?>
+                                </a>
+                            <?php } ?>
+                            <?php if ($phone) { ?>
+                                <a href="tel:<?= urlencode($phone) ?>" class="card-btn"
+                                   title="<?= gettext('Call') . ' ' . htmlspecialchars($teacher->getFirstName()) ?>">
+                                    <i class="fa-solid fa-phone me-2 text-muted"></i><?= gettext('Call') ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+    </div>
+</div>
+<?php } ?>
+
+<!-- Students Card -->
+<div class="card mb-3">
+    <div class="card-header d-flex align-items-center">
+        <h5 class="card-title mb-0">
+            <i class="fa-solid fa-users me-2"></i><?= gettext('Students') ?>
+        </h5>
+        <span class="badge bg-primary ms-2"><?= $totalStudents ?></span>
+    </div>
+    <div class="card-body">
+        <div class="birthday-filter d-none alert alert-info mb-3">
+            <?= gettext('Showing students with birthdays in') ?> <span class="month"></span>
+            <i class="fa-solid fa-times float-end birthday-filter-clear" style="cursor:pointer;" title="<?= gettext('Clear filter') ?>"></i>
+        </div>
+        <div style="overflow: visible;">
+            <table id="sundayschool" class="table table-hover data-table w-100">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
@@ -183,6 +230,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <th><?= gettext('Email') ?></th>
                         <th><?= gettext('Father') ?></th>
                         <th><?= gettext('Mother') ?></th>
+                        <th class="w-1 no-export text-center"><?= gettext('Actions') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -238,11 +286,57 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?php } else { ?>
                                     <span class="text-muted">—</span>
                                 <?php } ?>
-                                <button class="btn btn-xs btn-outline-primary float-right ml-2"
-                                        data-toggle="modal" data-target="#studentModal-<?= $child['kidId'] ?>"
-                                        title="<?= gettext('View Full Details') ?>">
-                                    <i class="fa-solid fa-info-circle"></i>
-                                </button>
+                            </td>
+                            <?php
+                                $inCart = isset($_SESSION['aPeopleCart']) && in_array($child['kidId'], $_SESSION['aPeopleCart'], false);
+                            ?>
+                            <td class="w-1">
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                        <i class="ti ti-dots-vertical"></i>
+                                    </button>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                            <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
+                                        </a>
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>">
+                                            <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
+                                        </a>
+                                        <?php if ($child['fam_id']) { ?>
+                                        <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= $child['fam_id'] ?>">
+                                            <i class="ti ti-users me-2"></i><?= gettext('View Family') ?>
+                                        </a>
+                                        <?php } ?>
+                                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#studentModal-<?= $child['kidId'] ?>">
+                                            <i class="ti ti-info-circle me-2"></i><?= gettext('Details') ?>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item <?= $inCart ? 'RemoveFromCart text-danger' : 'AddToCart' ?>"
+                                            data-cart-id="<?= $child['kidId'] ?>"
+                                            data-cart-type="person"
+                                            data-label-add="<?= gettext('Add to Cart') ?>"
+                                            data-label-remove="<?= gettext('Remove from Cart') ?>">
+                                            <i class="<?= $inCart ? 'ti ti-shopping-cart-off' : 'ti ti-shopping-cart-plus' ?> me-2"></i>
+                                            <span class="cart-label"><?= $inCart ? gettext('Remove from Cart') : gettext('Add to Cart') ?></span>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item text-warning remove-from-class"
+                                            data-group-id="<?= $iGroupId ?>"
+                                            data-person-id="<?= $child['kidId'] ?>"
+                                            data-person-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>">
+                                            <i class="ti ti-user-minus me-2"></i><?= gettext('Remove from Class') ?>
+                                        </button>
+                                        <div class="dropdown-divider"></div>
+                                        <button type="button"
+                                            class="dropdown-item text-danger delete-person"
+                                            data-person_id="<?= $child['kidId'] ?>"
+                                            data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>">
+                                            <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
+                                        </button>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     <?php } ?>
@@ -261,19 +355,19 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">
-                                <i class="fa-solid fa-user"></i>
+                                <i class="fa-solid fa-user me-2"></i>
                                 <?= htmlspecialchars($child['firstName'] . ' ' . $child['LastName']) ?>
                             </h4>
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <h6 class="font-weight-bold mb-3"><i class="fa-solid fa-circle-info"></i> <?= gettext('Student Information') ?></h6>
+                                    <h6 class="mb-3"><i class="fa-solid fa-circle-info me-1"></i> <?= gettext('Student Information') ?></h6>
                                     <dl class="row">
                                         <dt class="col-sm-5"><?= gettext('Birth Date') . ':' ?></dt>
                                         <dd class="col-sm-7"><?= $birthDate ?></dd>
-                                        <dt class="col-sm-5"><?= gettext('Kids Email') . ':' ?></dt>
+                                        <dt class="col-sm-5"><?= gettext('Email') . ':' ?></dt>
                                         <dd class="col-sm-7">
                                             <?php if ($child['kidEmail']) { ?>
                                                 <a href="mailto:<?= $child['kidEmail'] ?>"><?= htmlspecialchars($child['kidEmail']) ?></a>
@@ -300,7 +394,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </dl>
                                 </div>
                                 <div class="col-md-6">
-                                    <h6 class="font-weight-bold mb-3"><i class="fa-solid fa-home"></i> <?= gettext('Address') ?></h6>
+                                    <h6 class="mb-3"><i class="fa-solid fa-home me-1"></i> <?= gettext('Address') ?></h6>
                                     <address>
                                         <?php if ($address) { ?>
                                             <?= htmlspecialchars($address) ?>
@@ -309,7 +403,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?php } ?>
                                     </address>
 
-                                    <h6 class="font-weight-bold mb-3 mt-4"><i class="fa-solid fa-users"></i> <?= gettext('Parents/Guardians') ?></h6>
+                                    <h6 class="mb-3 mt-4"><i class="fa-solid fa-users me-1"></i> <?= gettext('Parents/Guardians') ?></h6>
                                     <?php if ($child['dadFirstName'] || $child['momFirstName']) { ?>
                                         <dl class="row">
                                             <?php if ($child['dadFirstName']) { ?>
@@ -349,9 +443,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <div class="modal-footer">
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>" class="btn btn-primary">
-                                <i class="fa-solid fa-user"></i> <?= gettext('View Profile') ?>
+                                <i class="fa-solid fa-user me-1"></i><?= gettext('View Profile') ?>
                             </a>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Close') ?></button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,11 @@
  * ChurchCRM JavaScript Object Model Initialization Script
  */
 
+// Ensure jQuery is available — churchcrm.min.js sets window.jQuery globally
+if (!window.jQuery) {
+  console.warn("[CRMJSOM] jQuery not available at script load time");
+}
+
 /**
  * Escape HTML special characters to prevent XSS when inserting user data into DOM
  * GHSA-8r36-fvxj-26qv: Used to sanitize property values before rendering
@@ -18,6 +23,12 @@ window.CRM.escapeHtml = function (text) {
 };
 
 window.CRM.APIRequest = function (options) {
+  // Guard against jQuery not being available
+  if (!window.jQuery || typeof window.jQuery.ajax !== "function") {
+    console.error("[CRMJSOM.APIRequest] jQuery.ajax not available");
+    return Promise.reject(new Error("jQuery not available - cannot make API request"));
+  }
+
   if (!options.method) {
     options.method = "GET";
   }
@@ -30,7 +41,7 @@ window.CRM.APIRequest = function (options) {
   options.error = function (jqXHR, textStatus, errorThrown) {
     window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
   };
-  return $.ajax(options);
+  return window.jQuery.ajax(options);
 };
 
 /**
@@ -39,6 +50,12 @@ window.CRM.APIRequest = function (options) {
  * Endpoint paths should be like "upgrade/download-latest-release" which becomes "/admin/api/upgrade/download-latest-release"
  */
 window.CRM.AdminAPIRequest = function (options) {
+  // Guard against jQuery not being available
+  if (!window.jQuery || typeof window.jQuery.ajax !== "function") {
+    console.error("[CRMJSOM.AdminAPIRequest] jQuery.ajax not available");
+    return Promise.reject(new Error("jQuery not available - cannot make API request"));
+  }
+
   if (!options.method) {
     options.method = "GET";
   }
@@ -51,7 +68,7 @@ window.CRM.AdminAPIRequest = function (options) {
   options.error = function (jqXHR, textStatus, errorThrown) {
     window.CRM.system.handlejQAJAXError(jqXHR, textStatus, errorThrown, options.suppressErrorDialog);
   };
-  return $.ajax(options);
+  return window.jQuery.ajax(options);
 };
 
 window.CRM.DisplayErrorMessage = function (endpoint, error) {
@@ -86,7 +103,11 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
   // Helper function to fetch error message from JSON response
   function fetchErrorMessage(targetUrl, fallbackError, callback) {
     try {
-      $.ajax({
+      if (!window.jQuery) {
+        callback(fallbackError);
+        return;
+      }
+      window.jQuery.ajax({
         method: "GET",
         url: targetUrl,
         async: false,
@@ -104,7 +125,12 @@ window.CRM.VerifyThenLoadAPIContent = function (url) {
     }
   }
 
-  $.ajax({
+  if (!window.jQuery) {
+    window.CRM.DisplayErrorMessage(url, { message: error });
+    return;
+  }
+
+  window.jQuery.ajax({
     method: "HEAD",
     url: url,
     async: false,
@@ -226,7 +252,7 @@ window.CRM.groups = {
                   <select name="targetGroupSelection" id="targetGroupSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
         selectionCallback({
-          GroupID: $("#targetGroupSelection option:selected").val(),
+          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
         });
       };
     }
@@ -239,7 +265,7 @@ window.CRM.groups = {
                   <select name="targetRoleSelection" id="targetRoleSelection" class="form-control"></select>';
       options.buttons.confirm.callback = function () {
         selectionCallback({
-          RoleID: $("#targetRoleSelection option:selected").val(),
+          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
         });
       };
     }
@@ -250,16 +276,20 @@ window.CRM.groups = {
       }
       initFunction = function () {
         window.CRM.groups.getRoles(selectOptions.GroupID).done(function (rdata) {
-          let rolesList = rdata.map(function (item) {
-            return {
-              // i18next-disable-next-line
-              text: i18next.t(item.OptionName), // to translate the Teacher and Student in localize text
-              id: item.OptionId,
-            };
-          });
-          $("#targetRoleSelection").select2({
-            data: rolesList,
-            dropdownParent: $(".bootbox"),
+          let roleEl = document.getElementById("targetRoleSelection");
+          if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();
+          new TomSelect(roleEl, {
+            valueField: "id",
+            labelField: "text",
+            searchField: "text",
+            options: rdata.map(function (item) {
+              return {
+                // i18next-disable-next-line
+                text: i18next.t(item.OptionName),
+                id: String(item.OptionId),
+              };
+            }),
+            dropdownParent: document.querySelector(".bootbox"),
           });
         });
       };
@@ -268,8 +298,8 @@ window.CRM.groups = {
       options.title = i18next.t("Select Group and Role");
       options.buttons.confirm.callback = function () {
         selection = {
-          RoleID: $("#targetRoleSelection option:selected").val(),
-          GroupID: $("#targetGroupSelection option:selected").val(),
+          RoleID: window.jQuery("#targetRoleSelection option:selected").val(),
+          GroupID: window.jQuery("#targetGroupSelection option:selected").val(),
         };
         selectionCallback(selection);
       };
@@ -278,35 +308,44 @@ window.CRM.groups = {
     bootbox.dialog(options).init(initFunction).show();
 
     window.CRM.groups.get().done(function (rdata) {
-      groupsList = rdata.map(function (item) {
+      var groupsList = rdata.map(function (item) {
         return {
           text: item.Name,
-          id: item.Id,
+          id: String(item.Id),
         };
       });
-      $("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
-      $groupSelect2 = $("#targetGroupSelection").select2({
-        data: groupsList,
-        dropdownParent: $(".bootbox"),
-      });
-
-      $groupSelect2.on("select2:select", function (e) {
-        var targetGroupId = $("#targetGroupSelection option:selected").val();
-        $parent = $("#targetRoleSelection").parent();
-        $("#targetRoleSelection").empty();
-        window.CRM.groups.getRoles(targetGroupId).done(function (rdata) {
-          rolesList = rdata.map(function (item) {
-            return {
-              // i18next-disable-next-line
-              text: i18next.t(item.OptionName), // this is for the Teacher and Student role
-              id: item.OptionId,
-            };
+      window.jQuery("#targetGroupSelection").parents(".bootbox").removeAttr("tabindex");
+      var groupEl = document.getElementById("targetGroupSelection");
+      if (groupEl && groupEl.tomselect) groupEl.tomselect.destroy();
+      var groupTS = new TomSelect(groupEl, {
+        valueField: "id",
+        labelField: "text",
+        searchField: "text",
+        options: groupsList,
+        dropdownParent: document.querySelector(".bootbox"),
+        onChange: function (value) {
+          if (!value) return;
+          var roleEl = document.getElementById("targetRoleSelection");
+          if (roleEl && roleEl.tomselect) roleEl.tomselect.destroy();
+          // Clear existing options
+          while (roleEl && roleEl.options.length) roleEl.remove(0);
+          window.CRM.groups.getRoles(value).done(function (rdata) {
+            var rolesList = rdata.map(function (item) {
+              return {
+                // i18next-disable-next-line
+                text: i18next.t(item.OptionName),
+                id: String(item.OptionId),
+              };
+            });
+            new TomSelect(roleEl, {
+              valueField: "id",
+              labelField: "text",
+              searchField: "text",
+              options: rolesList,
+              dropdownParent: document.querySelector(".bootbox"),
+            });
           });
-          $("#targetRoleSelection").select2({
-            data: rolesList,
-            dropdownParent: $(".bootbox"),
-          });
-        });
+        },
       });
     });
   },
@@ -348,19 +387,25 @@ window.CRM.groups = {
         if (result) {
           var newGroup = { groupName: result };
 
-          $.ajax({
-            method: "POST",
-            url: window.CRM.root + "/api/groups/", //call the groups api handler located at window.CRM.root
-            data: JSON.stringify(newGroup), // stringify the object we created earlier, and add it to the data payload
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-          }).done(function (data) {
-            //yippie, we got something good back from the server
-            window.CRM.cartManager.refreshCartCount();
-            if (callbackM) {
-              callbackM(data);
-            }
-          });
+          if (!window.jQuery) {
+            return;
+          }
+
+          window.jQuery
+            .ajax({
+              method: "POST",
+              url: window.CRM.root + "/api/groups/", //call the groups api handler located at window.CRM.root
+              data: JSON.stringify(newGroup), // stringify the object we created earlier, and add it to the data payload
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+            })
+            .done(function (data) {
+              //yippie, we got something good back from the server
+              window.CRM.cartManager.refreshCartCount();
+              if (callbackM) {
+                callbackM(data);
+              }
+            });
         }
       },
     });
@@ -413,6 +458,193 @@ window.CRM.dashboard = {
     });
   },
 };
+
+/**
+ * Render a standard person action dropdown menu.
+ * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
+ * @param {number} personId
+ * @param {string} personName - Used in delete confirmation
+ * @param {Object} [options]
+ * @param {boolean} [options.inCart=false] - Whether person is already in cart
+ * @returns {string} HTML string
+ */
+window.CRM.renderPersonActionMenu = function (personId, personName, options) {
+  options = options || {};
+  var inCart = options.inCart || false;
+  var familyId = options.familyId || null;
+  var root = window.CRM.root;
+  var escapedName = window.CRM.escapeHtml(personName || "");
+  var familyItem = familyId
+    ? '<a class="dropdown-item" href="' +
+      root +
+      "/v2/family/" +
+      familyId +
+      '">' +
+      '<i class="ti ti-users me-2"></i>' +
+      i18next.t("View Family") +
+      "</a>"
+    : "";
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/PersonView.php?PersonID=" +
+    personId +
+    '">' +
+    '<i class="ti ti-eye me-2"></i>' +
+    i18next.t("View") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/PersonEditor.php?PersonID=" +
+    personId +
+    '">' +
+    '<i class="ti ti-pencil me-2"></i>' +
+    i18next.t("Edit") +
+    "</a>" +
+    familyItem +
+    '<div class="dropdown-divider"></div>' +
+    '<button class="dropdown-item ' +
+    (inCart ? "RemoveFromCart text-danger" : "AddToCart") +
+    '" type="button"' +
+    ' data-cart-id="' +
+    personId +
+    '" data-cart-type="person"' +
+    ' data-label-add="' +
+    i18next.t("Add to Cart") +
+    '" data-label-remove="' +
+    i18next.t("Remove from Cart") +
+    '">' +
+    '<i class="' +
+    (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") +
+    ' me-2"></i>' +
+    '<span class="cart-label">' +
+    (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
+    "</span>" +
+    "</button>" +
+    '<div class="dropdown-divider"></div>' +
+    '<button type="button" class="dropdown-item text-danger delete-person"' +
+    ' data-person_id="' +
+    personId +
+    '" data-person_name="' +
+    escapedName +
+    '">' +
+    '<i class="ti ti-trash me-2"></i>' +
+    i18next.t("Delete") +
+    "</button>" +
+    "</div></div>"
+  );
+};
+
+/**
+ * Render a standard family action dropdown menu.
+ * Standard order: View → Edit → [divider] → Cart → [divider] → Delete
+ * @param {number} familyId
+ * @param {string} familyName - Used in delete confirmation (unused currently but kept for parity)
+ * @param {Object} [options]
+ * @param {boolean} [options.inCart=false] - Whether family is already in cart
+ * @returns {string} HTML string
+ */
+window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
+  options = options || {};
+  var inCart = options.inCart || false;
+  var root = window.CRM.root;
+  return (
+    '<div class="dropdown">' +
+    '<button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">' +
+    '<i class="ti ti-dots-vertical"></i>' +
+    "</button>" +
+    '<div class="dropdown-menu dropdown-menu-end">' +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/v2/family/" +
+    familyId +
+    '">' +
+    '<i class="ti ti-eye me-2"></i>' +
+    i18next.t("View") +
+    "</a>" +
+    '<a class="dropdown-item" href="' +
+    root +
+    "/FamilyEditor.php?FamilyID=" +
+    familyId +
+    '">' +
+    '<i class="ti ti-pencil me-2"></i>' +
+    i18next.t("Edit") +
+    "</a>" +
+    '<div class="dropdown-divider"></div>' +
+    '<button class="dropdown-item ' +
+    (inCart ? "RemoveFromCart text-danger" : "AddToCart") +
+    '" type="button"' +
+    ' data-cart-id="' +
+    familyId +
+    '" data-cart-type="family"' +
+    ' data-label-add="' +
+    i18next.t("Add to Cart") +
+    '" data-label-remove="' +
+    i18next.t("Remove from Cart") +
+    '">' +
+    '<i class="' +
+    (inCart ? "ti ti-shopping-cart-off" : "ti ti-shopping-cart-plus") +
+    ' me-2"></i>' +
+    '<span class="cart-label">' +
+    (inCart ? i18next.t("Remove from Cart") : i18next.t("Add to Cart")) +
+    "</span>" +
+    "</button>" +
+    '<div class="dropdown-divider"></div>' +
+    '<a class="dropdown-item text-danger" href="' +
+    root +
+    "/SelectDelete.php?FamilyID=" +
+    familyId +
+    '">' +
+    '<i class="ti ti-trash me-2"></i>' +
+    i18next.t("Delete") +
+    "</a>" +
+    "</div></div>"
+  );
+};
+
+// Global delegated handler for .delete-person buttons (rendered in DataTables or PHP templates).
+// Set up after locales are ready so i18next.t() is available in the confirmation dialog.
+(function setupPersonDeleteHandler() {
+  function register() {
+    if (!window.jQuery) return;
+    window.jQuery(document).on("click", ".delete-person", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var $btn = window.jQuery(this);
+      var personId = $btn.data("person_id");
+      var personName = $btn.data("person_name");
+      bootbox.confirm({
+        title: i18next.t("Delete this person?"),
+        message:
+          i18next.t("Do you want to delete this person?  This cannot be undone.") +
+          " <b>" +
+          window.CRM.escapeHtml(String(personName || "")) +
+          "</b>",
+        buttons: {
+          cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+        },
+        callback: function (result) {
+          if (result) {
+            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(function () {
+              location.reload();
+            });
+          }
+        },
+      });
+    });
+  }
+  if (window.CRM && window.CRM.localesLoaded) {
+    register();
+  } else {
+    window.addEventListener("CRM.localesReady", register, { once: true });
+  }
+})();
 
 function LimitTextSize(theTextArea, size) {
   if (theTextArea.value.length > size) {

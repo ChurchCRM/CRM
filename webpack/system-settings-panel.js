@@ -2,8 +2,11 @@
  * System Settings Panel - Reusable component for displaying/editing SystemConfig settings
  *
  * Usage:
- * 1. Include the CSS: <link rel="stylesheet" href="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.css">
- * 2. Include the JS: <script src="<?= SystemURLs::getRootPath() ?>/skin/v2/system-settings-panel.min.js"></script>
+ * 1. Include the CSS bundle, for example:
+ *    <link rel="stylesheet" href="/skin/v2/system-settings-panel.min.css">
+ * 2. Include the JS bundle, for example:
+ *    <script src="/skin/v2/system-settings-panel.min.js"></script>
+ * (When rendering server-side you may prepend the application's root path.)
  * 3. Add container: <div id="settingsPanel"></div>
  * 4. Initialize:
  *    window.CRM.settingsPanel.init({
@@ -34,7 +37,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                    ${checked ? "checked" : ""}>
                             <label class="custom-control-label" for="${setting.name}">
                                 ${setting.label}
-                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ml-1" data-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
+                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
                             </label>
                         </div>
                     </div>
@@ -48,7 +51,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting, value) {
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -70,7 +73,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting, value) {
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -100,7 +103,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+                        <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
@@ -132,7 +135,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           : "";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
-              <label for="${setting.name}" class="form-label small font-weight-bold mb-1">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
                 ${setting.label}
               </label>
               <div class="input-group">
@@ -182,6 +185,22 @@ import "../src/skin/scss/system-settings-panel.scss";
 
   // Pre-defined setting configurations (from SystemConfig)
   const SettingDefinitions = {
+    // System Settings
+    sLogLevel: {
+      type: "choice",
+      label: "Log Level",
+      tooltip: "Event log severity to write, used by ORM and App Logs",
+      choices: [
+        { value: "100", label: "DEBUG (100)" },
+        { value: "200", label: "INFO (200)" },
+        { value: "250", label: "NOTICE (250)" },
+        { value: "300", label: "WARNING (300)" },
+        { value: "400", label: "ERROR (400)" },
+        { value: "500", label: "CRITICAL (500)" },
+        { value: "550", label: "ALERT (550)" },
+        { value: "600", label: "EMERGENCY (600)" },
+      ],
+    },
     // Financial Settings
     iFYMonth: {
       type: "choice",
@@ -407,7 +426,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Initialize Bootstrap tooltips on help icons
       if (window.$ && $.fn.tooltip) {
-        $(this.container).find('[data-toggle="tooltip"]').tooltip();
+        $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
       }
 
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");

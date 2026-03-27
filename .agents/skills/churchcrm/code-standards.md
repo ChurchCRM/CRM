@@ -238,6 +238,29 @@ msgstr ""
 
 The `msgid` key must exactly match the string passed to gettext() in PHP code.
 
+## Unified Page Header Standard (MANDATORY) <!-- learned: 2026-03-25 -->
+
+**Every page must use the unified page header** rendered by `Header.php`. Never create duplicate `<h2>`, `.page-header`, or `.page-title` elements inside page content.
+
+### Required for all MVC pages
+
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `sPageTitle` | **Yes** | Browser tab title + `<h2>` heading |
+| `sPageSubtitle` | **Yes** (MVC) | Muted description below title |
+| `aBreadcrumbs` | **Yes** | Via `PageHeader::breadcrumbs()` — 3-4 levels max |
+| `sPageHeaderButtons` | No | Admin action buttons via `PageHeader::buttons()` |
+| `sSettingsCollapseId` | No | Inline settings panel collapse container |
+
+### Key rules
+
+- Breadcrumb URLs are **relative** — `getRootPath()` is prepended automatically
+- Admin buttons go in page header; **Quick Actions cards** go in page body (for everyday user actions)
+- Settings toggles use Bootstrap collapse: `['collapse' => '#settingsId']`
+- Main dashboard (`/v2/dashboard`) has **no breadcrumbs** — it IS Home
+
+See `tabler-components.md` → "Unified Page Header" for full examples.
+
 ## File Operations (Git)
 
 ### Moving/Renaming Files
@@ -269,7 +292,7 @@ git add new/path/file.php
   - "Replace deprecated HTML attributes with Bootstrap CSS"
   - "Add missing element ID for test selector"
 - **Wrong**: "Fixed the bug in src/EventEditor.php" (not imperative, includes file paths)
-- **Include issue number**: "Fix issue #7698: Replace Bootstrap 5 classes with BS4"
+- **Include issue number**: "Fix issue #7698: Migrate form classes to Bootstrap 5"
 
 ### PR Organization
 
@@ -302,10 +325,12 @@ Before committing code changes, verify:
 - [ ] Type casting applied to dynamic values (`(int)`, `(string)`, etc.)
 - [ ] Critical files use `require` not `include` (Header.php, Footer.php)
 - [ ] Deprecated HTML attributes replaced with CSS
-- [ ] Bootstrap 4.6.2 CSS classes applied correctly (not Bootstrap 5)
+- [ ] Bootstrap 5 / Tabler CSS classes applied correctly (see `tabler-components.md` for reference)
 - [ ] All UI text wrapped with i18next.t() (JavaScript) or gettext() (PHP)
 - [ ] No alert() calls - use window.CRM.notify() instead
 - [ ] Use InputUtils for HTML escaping (not htmlspecialchars directly)
+- [ ] Use `json_encode()` when outputting PHP values into `<script>` blocks (not string interpolation)
+- [ ] Use `window.CRM.escapeHtml()` in JS when inserting API data into DOM via `.html()` or template literals
 - [ ] Use RedirectUtils for redirects (not manual header/withHeader)
 - [ ] Use SlimUtils::renderErrorJSON for API errors (not throw exceptions)
 - [ ] TLS verification enabled by default for HTTPS requests

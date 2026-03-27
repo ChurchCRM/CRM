@@ -39,10 +39,10 @@ class PdfFRCatalogReport extends ChurchInfoReport
         parent::addPage($orientation, $size, $rotation);
 
         $this->SetFont('Times', 'B', 16);
-        $this->Write(8, $this->fundraiser->getTitle() . "\n");
+        $this->Write(8, $this->fundraiser->getTitle() ."\n");
         $this->curY += 8;
 
-        $this->Write(8, $this->fundraiser->getDescription() . "\n\n");
+        $this->Write(8, $this->fundraiser->getDescription() ."\n\n");
         $this->curY += 8;
 
         $this->SetFont('Times', '', 12);
@@ -81,7 +81,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
 
     $pdf->SetFont('Times', 'B', 12);
     $pdf->Write(6, $di_item . ': ');
-    $pdf->Write(6, stripslashes($di_title) . "\n");
+    $pdf->Write(6, stripslashes($di_title) ."\n");
 
     if ($di_picture != '') {
         $s = getimagesize($di_picture);
@@ -91,7 +91,7 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
     }
 
     $pdf->SetFont('Times', '', 12);
-    $pdf->Write(6, stripslashes($di_description) . "\n");
+    $pdf->Write(6, stripslashes($di_description) ."\n");
     if ($di_minimum > 0) {
         $pdf->Write(6, gettext('Minimum bid ') . '$' . $di_minimum . '.  ');
     }
@@ -99,9 +99,9 @@ while ($oneItem = mysqli_fetch_array($rsItems)) {
         $pdf->Write(6, gettext('Estimated value ') . '$' . $di_estprice . '.  ');
     }
     if ($per_LastName != '') {
-        $pdf->Write(6, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName . ".\n");
+        $pdf->Write(6, gettext('Donated by ') . $per_FirstName . ' ' . $per_LastName .".\n");
     }
-    $pdf->Write(6, "\n");
+    $pdf->Write(6,"\n");
 }
 
 if (SystemConfig::getIntValue('iPDFOutputType') === 1) {

@@ -12,37 +12,37 @@ $hasOrphanedFiles = $orphanedCount > 0;
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header bg-danger text-white">
+            <div class="card-status-top bg-danger"></div>
+            <div class="card-header">
                 <h3 class="card-title mb-0">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Orphaned Files Management') ?>
+                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Orphaned Files Management') ?>
                 </h3>
             </div>
             <div class="card-body">
                 <div class="alert alert-info">
-                    <h5><i class="fa fa-info-circle mr-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
+                    <h5><i class="fa fa-circle-info me-2"></i><?= gettext('What are Orphaned Files?') ?></h5>
                     <p class="mb-0"><?= gettext('Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities.') ?></p>
                 </div>
 
                 <?php if ($hasOrphanedFiles): ?>
                     <div class="alert alert-danger">
-                        <strong><i class="fa fa-exclamation-triangle mr-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
+                        <strong><i class="fa fa-triangle-exclamation me-2"></i><?= sprintf(gettext('%d Orphaned Files Detected'), $orphanedCount) ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Review the files below and delete them to improve security.') ?></p>
                     </div>
 
                     <div class="mb-3">
-                        <button type="button" class="btn btn-danger btn-lg" id="deleteAllOrphanedFiles">
-                            <i class="fa fa-trash mr-2"></i><?= gettext('Delete All Orphaned Files') ?>
+                        <button type="button" class="btn btn-danger" id="deleteAllOrphanedFiles">
+                            <i class="fa fa-trash me-2"></i><?= gettext('Delete All Orphaned Files') ?>
                         </button>
-                        <button type="button" class="btn btn-secondary ml-2" id="refreshOrphanedFiles">
-                            <i class="fa fa-sync mr-2"></i><?= gettext('Refresh List') ?>
+                        <button type="button" class="btn btn-secondary ms-2" id="refreshOrphanedFiles">
+                            <i class="fa fa-sync me-2"></i><?= gettext('Refresh List') ?>
                         </button>
                     </div>
 
-                    <div class="table-responsive">
-                        <table class="table table-sm table-striped table-hover" id="orphanedFilesTable">
-                            <thead class="thead-dark">
+                        <table class="table table-sm table-vcenter table-hover card-table" id="orphanedFilesTable">
+                            <thead>
                                 <tr>
-                                    <th style="width: 5%;">#</th>
+                                    <th>#</th>
                                     <th><?= gettext('File Path') ?></th>
                                 </tr>
                             </thead>
@@ -59,15 +59,14 @@ $hasOrphanedFiles = $orphanedCount > 0;
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
 
                     <div class="alert alert-warning mt-3">
-                        <strong><i class="fa fa-shield-alt mr-2"></i><?= gettext('Security Recommendation') ?></strong>
+                        <strong><i class="fa fa-shield-alt me-2"></i><?= gettext('Security Recommendation') ?></strong>
                         <p class="mb-0"><?= gettext('These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security.') ?></p>
                     </div>
                 <?php else: ?>
                     <div class="alert alert-success">
-                        <i class="fa fa-check-circle mr-2"></i>
+                        <i class="fa fa-circle-check me-2"></i>
                         <strong><?= gettext('No Orphaned Files Found') ?></strong>
                         <p class="mb-0 mt-2"><?= gettext('Your ChurchCRM installation is clean. All files on the server match the official release.') ?></p>
                     </div>
@@ -75,10 +74,10 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
                 <div class="mt-3">
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-outline-secondary">
-                        <i class="fa fa-arrow-left mr-2"></i><?= gettext('Back to Debug Info') ?>
+                        <i class="fa fa-arrow-left me-2"></i><?= gettext('Back to Debug Info') ?>
                     </a>
-                    <a href="<?= SystemURLs::getRootPath() ?>/admin/" class="btn btn-outline-primary ml-2">
-                        <i class="fa fa-tools mr-2"></i><?= gettext('Admin Dashboard') ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/" class="btn btn-outline-primary ms-2">
+                        <i class="fa fa-tools me-2"></i><?= gettext('Admin Dashboard') ?>
                     </a>
                 </div>
             </div>
@@ -92,21 +91,19 @@ $hasOrphanedFiles = $orphanedCount > 0;
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="deleteConfirmModalLabel">
-                    <i class="fa fa-exclamation-triangle mr-2"></i><?= gettext('Confirm Deletion') ?>
+                    <i class="fa fa-triangle-exclamation me-2"></i><?= gettext('Confirm Deletion') ?>
                 </h5>
-                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                    <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p><?= gettext('Are you sure you want to delete all orphaned files?') ?></p>
                 <p class="text-danger"><strong><?= gettext('This action cannot be undone.') ?></strong></p>
                 <p class="text-muted"><?= sprintf(gettext('%d files will be permanently deleted.'), $orphanedCount) ?></p>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
                 <button type="button" class="btn btn-danger" id="confirmDeleteAll">
-                    <i class="fa fa-trash mr-2"></i><?= gettext('Delete All Files') ?>
+                    <i class="fa fa-trash me-2"></i><?= gettext('Delete All Files') ?>
                 </button>
             </div>
         </div>
@@ -117,11 +114,9 @@ $hasOrphanedFiles = $orphanedCount > 0;
 <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header" id="resultsModalHeader">
+                <div class="modal-header" id="resultsModalHeader">
                 <h5 class="modal-title" id="resultsModalLabel"><?= gettext('Deletion Results') ?></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body" id="resultsModalBody">
                 <!-- Results will be populated by JavaScript -->
@@ -140,22 +135,12 @@ $hasOrphanedFiles = $orphanedCount > 0;
     function initOrphanedFilesPage() {
         // Initialize DataTable
         if ($.fn.DataTable && $('#orphanedFilesTable tbody tr').length > 0) {
-            $('#orphanedFilesTable').DataTable({
-                responsive: true,
+            var dataTableConfig = {
                 pageLength: 25,
-                order: [[1, 'asc']],
-                language: {
-                    search: i18next.t('Search') + ':',
-                    lengthMenu: i18next.t('Show _MENU_ entries'),
-                    info: i18next.t('Showing _START_ to _END_ of _TOTAL_ entries'),
-                    paginate: {
-                        first: i18next.t('First'),
-                        last: i18next.t('Last'),
-                        next: i18next.t('Next'),
-                        previous: i18next.t('Previous')
-                    }
-                }
-            });
+                order: [[1, 'asc']]
+            };
+            $.extend(dataTableConfig, window.CRM.plugin.dataTable);
+            $('#orphanedFilesTable').DataTable(dataTableConfig);
         }
 
         // Delete All button click
@@ -183,8 +168,8 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
     function deleteOrphanedFiles() {
         // Show loading state
-        $('#deleteAllOrphanedFiles').prop('disabled', true).html(
-            '<i class="fa fa-spinner fa-spin mr-2"></i>' + i18next.t('Deleting...')
+            $('#deleteAllOrphanedFiles').prop('disabled', true).html(
+            '<i class="fa fa-spinner fa-spin me-2"></i>' + i18next.t('Deleting...')
         );
 
         window.CRM.AdminAPIRequest({
@@ -207,7 +192,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
         })
         .always(function() {
             $('#deleteAllOrphanedFiles').prop('disabled', false).html(
-                '<i class="fa fa-trash mr-2"></i>' + i18next.t('Delete All Orphaned Files')
+                '<i class="fa fa-trash me-2"></i>' + i18next.t('Delete All Orphaned Files')
             );
         });
     }
@@ -226,14 +211,14 @@ $hasOrphanedFiles = $orphanedCount > 0;
         // Summary
         if (deletedCount > 0) {
             html += '<div class="alert alert-success">';
-            html += '<i class="fa fa-check-circle mr-2"></i>';
+            html += '<i class="fa fa-circle-check me-2"></i>';
             html += '<strong>' + i18next.t('Successfully deleted') + ': ' + deletedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
 
         if (failedCount > 0) {
             html += '<div class="alert alert-danger">';
-            html += '<i class="fa fa-times-circle mr-2"></i>';
+            html += '<i class="fa fa-circle-xmark me-2"></i>';
             html += '<strong>' + i18next.t('Failed to delete') + ': ' + failedCount + ' ' + i18next.t('files') + '</strong>';
             html += '</div>';
         }
@@ -272,7 +257,7 @@ $hasOrphanedFiles = $orphanedCount > 0;
 
         if (deletedCount === 0 && failedCount === 0) {
             html += '<div class="alert alert-info">';
-            html += '<i class="fa fa-info-circle mr-2"></i>';
+            html += '<i class="fa fa-circle-info me-2"></i>';
             html += i18next.t('No files were deleted.');
             html += '</div>';
         }

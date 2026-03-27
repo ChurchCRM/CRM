@@ -84,9 +84,6 @@
 }
 
 /* Setup progress checklist */
-.font-weight-600 {
-  font-weight: 600;
-}
 
 .setup-progress-card .list-group-item:last-child {
   border-bottom: 0;

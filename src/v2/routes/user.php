@@ -78,7 +78,7 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
 
     if ($user->equals($curUser)) {
         // Don't allow the current user (if admin) to set their new password
-        // make the user go through the "self-service" password change procedure
+        // make the user go through the"self-service" password change procedure
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/current/changepassword');
     }
 
