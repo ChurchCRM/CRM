@@ -273,7 +273,7 @@ it("Cancel leaves property intact", () => {
 
 // ✅ CORRECT — confirm: assert the dialog was visible, click accept, then assert the side effect
 it("Confirm removes property", () => {
-    cy.intercept("DELETE", "/api/groups/1/properties/*").as("removeProperty");
+    cy.intercept("DELETE", "**/api/groups/1/properties/*").as("removeProperty");
     cy.get(".remove-group-property-btn").first().then(($btn) => {
         const name = $btn.data("pro-name");
         cy.wrap($btn).click();
