@@ -29,6 +29,10 @@ $sDeleteError = '';
 if (isset($_GET['DeleteError'])) {
     $sDeleteError = InputUtils::sanitizeText($_GET['DeleteError']);
 }
+$sReorderError = '';
+if (isset($_GET['ReorderError'])) {
+    $sReorderError = InputUtils::sanitizeText($_GET['ReorderError']);
+}
 $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
@@ -223,6 +227,14 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 <div class="alert alert-danger" role="alert">
                     <i class="fa-solid fa-circle-exclamation"></i>
                     <?= $sDeleteError ?>
+                </div>
+            <?php
+            }
+            if (strlen($sReorderError) > 0) {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <?= $sReorderError ?>
                 </div>
             <?php
             } ?>

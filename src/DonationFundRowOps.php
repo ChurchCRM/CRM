@@ -26,8 +26,8 @@ if ($action === 'delete') {
 } elseif ($action === 'up' || $action === 'down') {
     try {
         $service->reorderFund((int) $fundId, $action);
+        RedirectUtils::redirect('DonationFundEditor.php');
     } catch (\Exception $e) {
-        // Silently ignore reorder errors (fund not found, already at boundary)
+        RedirectUtils::redirect('DonationFundEditor.php?ReorderError=' . urlencode($e->getMessage()));
     }
-    RedirectUtils::redirect('DonationFundEditor.php');
 }
