@@ -495,4 +495,39 @@ Add to `tabler-components.md` under a "Cards" section:
 
 ---
 
-Last updated: 2026-03-03
+## Phase 7 — Post-PR Skill Updates (MANDATORY) <!-- learned: 2026-03-28 -->
+
+**After every PR is merged or ready for merge, update skill files with learnings from the session.**
+
+This is not optional — every PR teaches something. Capture it immediately while context is fresh.
+
+### What to Capture
+
+- **New patterns** discovered during implementation (e.g., print support, CSP-safe event binding)
+- **Gotchas** caught by PR reviewers (e.g., inline `onclick` blocked by CSP)
+- **Architecture decisions** made (e.g., global `@media print` vs per-page rules)
+- **Narrowed selectors** or corrections from review feedback
+- **New files/conventions** introduced (e.g., print button IDs, JS file mappings)
+
+### How to Update
+
+1. Identify which skill files are relevant to the PR's learnings
+2. Add a subsection with `<!-- learned: YYYY-MM-DD -->` on the heading
+3. Include a short explanation + code example (prefer examples over prose)
+4. Update the SKILL.md index if a new category was added
+5. Check if `MEMORY.md` needs a one-liner under Critical Patterns
+
+### Example Learnings by PR Type
+
+| PR Type | Skills to Update |
+|---------|-----------------|
+| UI/UX change | `frontend-development.md`, `tabler-components.md` |
+| Security fix | `security-best-practices.md`, `authorization-security.md` |
+| API change | `api-development.md`, `service-layer.md` |
+| CSP/inline JS fix | `security-best-practices.md`, `frontend-development.md` |
+| Test fix | `cypress-testing.md`, `testing.md` |
+| Print/PDF | `frontend-development.md` (Print Support section) |
+
+---
+
+Last updated: 2026-03-28
