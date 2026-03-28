@@ -132,7 +132,7 @@
         "cypress": "^15.12.0",
         "cypress-terminal-report": "^7.3.3",
         "datatables.net-plugins": "^2.3.2",
-        "dotenv": "^16.6.1",
+        "dotenv": "^17.3.1",
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
