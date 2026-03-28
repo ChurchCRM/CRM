@@ -5,13 +5,13 @@ $(document).ready(function () {
 
   $("#input-person-properties").on("change", function () {
     var promptBox = $("#prompt-box");
-    promptBox.removeClass("form-group").html("");
+    promptBox.removeClass("mb-3").html("");
     var selected = $("#input-person-properties :selected");
     var pro_prompt = selected.data("pro_prompt");
     var pro_value = selected.data("pro_value");
     if (pro_prompt) {
       promptBox
-        .addClass("form-group")
+        .addClass("mb-3")
         .append($("<label></label>").text(pro_prompt))
         .append($('<textarea rows="3" class="form-control" name="PropertyValue"></textarea>').val(pro_value));
     }

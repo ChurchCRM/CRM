@@ -267,7 +267,7 @@ function initializeGroupEditor() {
         data: null,
         render: (data, type, full, meta) => {
           if (full.lst_OptionID == defaultRoleID) {
-            return `<strong><i class="fa-solid fa-check"></i>${i18next.t("Default")}</strong>`;
+            return `<strong><i class="fa-solid fa-check me-1"></i>${i18next.t("Default")}</strong>`;
           } else {
             return `<button type="button" id="defaultRole-${full.lst_OptionID}" class="btn btn-success defaultRole">${i18next.t("Default")}</button>`;
           }

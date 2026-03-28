@@ -70,7 +70,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="number" class="form-control setting-input" 
                                id="${setting.name}" name="${setting.name}"
@@ -92,7 +92,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="text" class="form-control setting-input" 
                                id="${setting.name}" name="${setting.name}"
@@ -144,11 +144,9 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting) {
         const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const generateBtn = setting.generate
-          ? `<div class="input-group-append">
-               <button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
-                 <i class="fa-solid fa-key me-1"></i>${t("Generate")}
-               </button>
-             </div>`
+          ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
+               <i class="fa-solid fa-key me-1"></i>${t("Generate")}
+             </button>`
           : "";
         return `
             <div class="col-md-6 col-lg-4 mb-3">

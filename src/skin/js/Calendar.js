@@ -114,12 +114,12 @@ window.calendarPropertiesModal = {
       calendar.AccessToken +
       '"/>' +
       (window.CRM.calendarJSArgs.isModifiable
-        ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa-solid fa-repeat"></i>' +
+        ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa-solid fa-repeat me-1"></i>' +
           i18next.t("New Access Token") +
           "</a>"
         : "") +
       (window.CRM.calendarJSArgs.isModifiable && calendar.AccessToken != null
-        ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa-solid fa-trash-can"></i>' +
+        ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa-solid fa-trash-can me-1"></i>' +
           i18next.t("Delete Access Token") +
           "</a>"
         : "") +

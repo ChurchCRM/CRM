@@ -53,7 +53,7 @@ $MenuFirst = 1;
               <i class="ti ti-info-circle me-1"></i>
               <?= gettext('Clicking "Open GitHub Issue" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it.') ?>
             </div>
-            <div class="form-group">
+            <div class="mb-3">
               <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-muted fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
@@ -155,7 +155,7 @@ $MenuFirst = 1;
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-xl" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"

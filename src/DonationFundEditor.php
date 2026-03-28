@@ -38,7 +38,7 @@ $aNameErrors = [];
 $bNewNameError = false;
 $bDuplicateNameError = false;
 
-if ($sAction = 'delete' && strlen($sFund) > 0) {
+if ($sAction == 'delete' && strlen($sFund) > 0) {
     DonationFundQuery::create()
     ->findById($sFund)
     ->delete();
@@ -66,7 +66,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             $donation = $donationFunds[$iFieldID];
             $donation->setName(InputUtils::sanitizeText($_POST[$iFieldID . 'name']));
             $donation->setDescription(InputUtils::legacyFilterInput($_POST[$iFieldID . 'desc']));
-            $donation->setActive($_POST[$iFieldID . 'active'] == 1);
+            $isActive = isset($_POST[$iFieldID . 'active']) && $_POST[$iFieldID . 'active'] == 1;
+            $donation->setActive($isActive ? 'true' : 'false');
             if (strlen($donation->getName()) === 0) {
                 $aNameErrors[$iFieldID] = true;
                 $bErrorFlag = true;
@@ -124,7 +125,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         $aIDFields[$row] = $donation->getId();
         $aNameFields[$row] = $donation->getName();
         $aDescFields[$row] = $donation->getDescription();
-        $aActiveFields[$row] = boolval($donation->getActive());
+        $aActiveFields[$row] = $donation->getActive() === 'true';
     }
 
     // Construct the form

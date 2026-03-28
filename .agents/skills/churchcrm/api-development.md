@@ -13,11 +13,30 @@ This skill covers creating and managing REST API endpoints in ChurchCRM using Sl
 
 ## API Structure
 
-- **Public/Private APIs**: `src/api/routes/` - General API endpoints
-- **Admin APIs**: `src/admin/routes/api/` - Admin-only endpoints (NEW - preferred location)
+- **Public/Private APIs**: `src/api/routes/` - General API endpoints (FinanceRoleAuth, etc.)
+- **Admin APIs**: `src/admin/routes/api/` - Admin-only endpoints (AdminRoleAuth)
+- **Finance APIs**: `src/api/routes/finance/` - Finance endpoints (FinanceRoleAuth)
 - **Entry Point**: `src/api/index.php` - Main API router
 - **Naming**: Prefer kebab-case endpoints (e.g., `/download-latest-release`)
 - **Methods**: GET for reads, POST for actions that change state
+
+### API Placement Rule <!-- learned: 2026-03-28 -->
+
+Non-admin APIs must live under `/api/` (`src/api/routes/`), not under module-specific `/{module}/api/` paths.
+Admin-only APIs go under `/admin/api/` or `/{module}/api/` (e.g., `/finance/api/funds` for admin fund CRUD).
+
+| API type | Location | Middleware |
+|----------|----------|-----------|
+| Public/role-based read | `src/api/routes/` | Role-specific (e.g., `FinanceRoleAuthMiddleware`) |
+| Admin CRUD | `src/admin/routes/api/` or `src/{module}/routes/api/` | `AdminRoleAuthMiddleware` |
+
+### OpenAPI Documentation <!-- learned: 2026-03-28 -->
+
+All new API endpoints must include OpenAPI 3.0 annotations:
+- Path definitions with request/response schemas
+- Parameter descriptions and types
+- Error response codes (400, 401, 403, 404)
+- Example payloads
 
 ## Slim 4 Routes
 
