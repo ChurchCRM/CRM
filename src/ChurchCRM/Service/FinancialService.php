@@ -412,15 +412,6 @@ class FinancialService
     }
 
     /**
-     * @return \stdClass[]
-     * @deprecated Use DonationFundService::getActiveFunds() instead.
-     */
-    public function getActiveFunds(): array
-    {
-        return (new DonationFundService())->getActiveFunds();
-    }
-
-    /**
      * Format a fiscal year ID into a human-readable string.
      *
      * @param int $fyId Fiscal year ID
@@ -699,28 +690,6 @@ class FinancialService
     }
 
     /**
-     * Get active donation funds.
-     *
-     * @return ObjectCollection Collection of DonationFund objects
-     * @deprecated Use DonationFundService::getAll() instead.
-     */
-    public function getActiveDonationFunds(): ObjectCollection
-    {
-        return (new DonationFundService())->getAll();
-    }
-
-    /**
-     * Get total count of donation funds.
-     *
-     * @return int
-     * @deprecated Use DonationFundService::getCount() instead.
-     */
-    public function getTotalFundCount(): int
-    {
-        return (new DonationFundService())->getCount();
-    }
-
-    /**
      * Get Year-to-Date payment total for a fiscal year.
      *
      * @param string $fyStartDate Fiscal year start date
@@ -823,14 +792,16 @@ class FinancialService
         $fiscalYear = $this->getFiscalYearDates();
         $depositStats = $this->getDepositStatistics();
         $currentDeposit = $this->getCurrentDeposit();
+        $donationFundService = new DonationFundService();
+        $activeFunds = $donationFundService->getAll();
 
         return [
             'fiscalYear' => $fiscalYear,
             'depositStats' => $depositStats,
             'recentDeposits' => $this->getRecentDeposits(5, $fiscalYear['startDate']),
-            'activeFunds' => $this->getActiveDonationFunds(),
-            'activeFundCount' => $this->getActiveDonationFunds()->count(),
-            'totalFundCount' => $this->getTotalFundCount(),
+            'activeFunds' => $activeFunds,
+            'activeFundCount' => $activeFunds->count(),
+            'totalFundCount' => $donationFundService->getCount(),
             'ytdPaymentTotal' => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPledgeTotal' => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPaymentCount' => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
