@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 20:03+0000\n"
+"POT-Creation-Date: 2026-03-28 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -159,6 +159,9 @@ msgid "(Grants all privileges.)"
 msgstr ""
 
 msgid "(No assigned family)"
+msgstr ""
+
+msgid "(optional — leave blank to include all roles)"
 msgstr ""
 
 msgid "(refresh from GitHub)"
@@ -586,6 +589,9 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
+msgid "All Roles"
+msgstr ""
+
 msgid "All System Settings"
 msgstr ""
 
@@ -614,6 +620,9 @@ msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
 msgstr ""
 
 msgid "All rights reserved"
+msgstr ""
+
+msgid "All roles"
 msgstr ""
 
 msgid "All system file signatures match the expected values."
@@ -1589,9 +1598,6 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
-msgid "Church Services"
-msgstr ""
-
 msgid "Church information saved successfully."
 msgstr ""
 
@@ -1665,6 +1671,9 @@ msgid "Clear Filter"
 msgstr ""
 
 msgid "Clear Filters"
+msgstr ""
+
+msgid "Clear all"
 msgstr ""
 
 msgid "Clear all data and start fresh"
@@ -1777,6 +1786,9 @@ msgstr ""
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr ""
 
+msgid "Confession"
+msgstr ""
+
 msgid "Configuration item not found"
 msgstr ""
 
@@ -1864,9 +1876,6 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Congregation Map"
-msgstr ""
-
-msgid "Congregation Map — Setup Required"
 msgstr ""
 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
@@ -2229,9 +2238,6 @@ msgid "DSN"
 msgstr ""
 
 msgid "Dashboard"
-msgstr ""
-
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr ""
 
 msgid "Data & Reports"
@@ -3719,6 +3725,9 @@ msgstr ""
 msgid "Field where last Confession is stored, must be a date type"
 msgstr ""
 
+msgid "Fields to Include"
+msgstr ""
+
 #. Context: countries
 msgid "Fiji"
 msgstr ""
@@ -4207,9 +4216,6 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-msgid "Group & Role Reports"
-msgstr ""
-
 msgid "Group Directory"
 msgstr ""
 
@@ -4217,6 +4223,9 @@ msgid "Group Editor"
 msgstr ""
 
 msgid "Group Listing"
+msgstr ""
+
+msgid "Group Map"
 msgstr ""
 
 msgid "Group Member Properties Editor"
@@ -4241,6 +4250,12 @@ msgid "Group Name"
 msgstr ""
 
 msgid "Group Properties"
+msgstr ""
+
+msgid "Group Reports"
+msgstr ""
+
+msgid "Group Role"
 msgstr ""
 
 msgid "Group Roles"
@@ -4279,9 +4294,6 @@ msgstr ""
 msgid "Group removed from cart"
 msgstr ""
 
-msgid "Group reports"
-msgstr ""
-
 msgid "Group role name changes are saved as soon as the box loses focus"
 msgstr ""
 
@@ -4291,19 +4303,16 @@ msgstr ""
 msgid "Group successfully removed from the Cart."
 msgstr ""
 
-msgid "Group-Specific Properties Form Editor"
+msgid "Group-Specific Properties"
 msgstr ""
 
-msgid "Group-Specific Property Fields"
+msgid "Group-Specific Properties Form Editor"
 msgstr ""
 
 msgid "GroupID for Cart must be numeric"
 msgstr ""
 
 msgid "GroupID required for role selection prompt"
-msgstr ""
-
-msgid "GroupRole"
 msgstr ""
 
 msgid "Grouped by Family"
@@ -5452,6 +5461,9 @@ msgstr ""
 msgid "Member Role Change"
 msgstr ""
 
+msgid "Member Roles"
+msgstr ""
+
 msgid "Member's Name"
 msgstr ""
 
@@ -5931,9 +5943,6 @@ msgstr ""
 msgid "No Payments on this Deposit"
 msgstr ""
 
-msgid "No Role Selected"
-msgstr ""
-
 msgid "No Sunday School"
 msgstr ""
 
@@ -6260,9 +6269,6 @@ msgid "Only Families with unpaid pledges"
 msgstr ""
 
 msgid "Only Payments with Pledges"
-msgstr ""
-
-msgid "Only cart people?"
 msgstr ""
 
 msgid "Only the new data below"
@@ -7293,9 +7299,6 @@ msgstr ""
 msgid "Report Heading:"
 msgstr ""
 
-msgid "Report Model"
-msgstr ""
-
 msgid "Report Settings"
 msgstr ""
 
@@ -7314,15 +7317,6 @@ msgstr ""
 msgid "Report an issue"
 msgstr ""
 
-msgid "Report for any role in group selected"
-msgstr ""
-
-msgid "Report for group and role selected"
-msgstr ""
-
-msgid "Report on groups and roles (may be multi-page PDF)"
-msgstr ""
-
 msgid "Reports"
 msgstr ""
 
@@ -7336,9 +7330,6 @@ msgid "Request Password Reset"
 msgstr ""
 
 msgid "Require all users to enroll in two-factor authentication"
-msgstr ""
-
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
 msgid "Required"
@@ -7758,6 +7749,12 @@ msgstr ""
 msgid "Select Family"
 msgstr ""
 
+msgid "Select Fields"
+msgstr ""
+
+msgid "Select Fields to Include"
+msgstr ""
+
 msgid "Select Fiscal Year"
 msgstr ""
 
@@ -7836,13 +7833,7 @@ msgstr ""
 msgid "Select the group to which you would like to add your cart"
 msgstr ""
 
-msgid "Select the group you would like to report"
-msgstr ""
-
 msgid "Select the type of record this property applies to"
-msgstr ""
-
-msgid "Select which information you want to include"
 msgstr ""
 
 msgid "Select your event type"
@@ -8020,6 +8011,9 @@ msgstr ""
 msgid "Setup Progress"
 msgstr ""
 
+msgid "Setup Required"
+msgstr ""
+
 msgid "Setup Tasks:"
 msgstr ""
 
@@ -8049,6 +8043,10 @@ msgid "Show neighbors with these classifications"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+#, php-format
+msgid "Showing members of: %s"
 msgstr ""
 
 msgid "Showing students with birthdays in"
@@ -8219,9 +8217,6 @@ msgstr ""
 
 #. Context: countries
 msgid "St. Vincent & Grenadines"
-msgstr ""
-
-msgid "Standard Info"
 msgstr ""
 
 msgid "Start Column"
@@ -10280,4 +10275,10 @@ msgid "— Select Country —"
 msgstr ""
 
 msgid "— Select State —"
+msgstr ""
+
+msgid "— Select a group —"
+msgstr ""
+
+msgid "— Select type (optional) —"
 msgstr ""
