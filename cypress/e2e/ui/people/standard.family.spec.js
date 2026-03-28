@@ -9,6 +9,16 @@ describe("Standard Family", () => {
         cy.contains("Family not found");
     });
 
+    it("Print button triggers window.print", () => {
+        cy.visit("v2/family/1");
+
+        cy.window().then((win) => {
+            cy.stub(win, "print").as("printStub");
+        });
+        cy.get("#printFamily").should("be.visible").click();
+        cy.get("@printStub").should("have.been.calledOnce");
+    });
+
     it("Entering a new Family", () => {
         cy.visit("FamilyEditor.php");
 

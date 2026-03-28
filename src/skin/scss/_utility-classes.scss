@@ -107,6 +107,42 @@
   color: red;
 }
 
+/* ============================================
+   PRINT UTILITIES
+   ============================================ */
+
+/* Hide all interactive elements when printing */
+@media print {
+  button.btn,
+  a.btn,
+  input.btn,
+  .dropdown,
+  .modal,
+  .fab-container,
+  input,
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .dataTables_filter,
+  .dataTables_length,
+  .ts-wrapper {
+    display: none !important;
+  }
+
+  /* Hide tab navigation pills — content is shown inline below */
+  .nav-pills,
+  .nav-tabs {
+    display: none !important;
+  }
+
+  /* Show all tab panes when printing so no content is hidden */
+  .tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
 /* Hide view photo button when there is no uploaded photo or gravatar */
 /* NOTE: toggled by JS in FamilyView.js - do not remove or rename */
 .hide-if-no-photo {

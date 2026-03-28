@@ -50,12 +50,14 @@ describe("Person Profile", () => {
         cy.get("#nav-item-volunteer").should("be.visible");
     });
 
-    it("Printable page", () => {
+    it("Print button triggers window.print", () => {
         cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.contains("Print");
 
-        cy.get("#printPerson").click();
-        cy.url().should("contain", `PrintView.php?PersonID=${personId}`);
+        cy.window().then((win) => {
+            cy.stub(win, "print").as("printStub");
+        });
+        cy.get("#printPerson").should("be.visible").click();
+        cy.get("@printStub").should("have.been.calledOnce");
     });
 
     it("Add a Note", () => {
