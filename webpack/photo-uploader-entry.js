@@ -11,10 +11,10 @@
  */
 
 // Import Uppy CSS
-// @uppy/core v5+ requires ./css/ export path instead of ./dist/
+// @uppy/core v5+ and @uppy/webcam v5+ require ./css/ export path instead of ./dist/
 import "@uppy/core/css/style.min.css";
 import "@uppy/dashboard/dist/style.min.css";
-import "@uppy/webcam/dist/style.min.css";
+import "@uppy/webcam/css/style.min.css";
 
 import { createPhotoUploader } from "./photo-uploader.js";
 
