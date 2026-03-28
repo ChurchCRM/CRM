@@ -107,6 +107,20 @@
   color: red;
 }
 
+/* ============================================
+   PRINT UTILITIES
+   ============================================ */
+
+/* Hide all interactive elements (buttons, dropdowns, modals, FABs) when printing */
+@media print {
+  .btn,
+  .dropdown,
+  .modal,
+  .fab-container {
+    display: none !important;
+  }
+}
+
 /* Hide view photo button when there is no uploaded photo or gravatar */
 /* NOTE: toggled by JS in FamilyView.js - do not remove or rename */
 .hide-if-no-photo {
