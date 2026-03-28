@@ -144,11 +144,9 @@ import "../src/skin/scss/system-settings-panel.scss";
       render: function (setting) {
         const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const generateBtn = setting.generate
-          ? `<div class="input-group-append">
-               <button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
-                 <i class="fa-solid fa-key me-1"></i>${t("Generate")}
-               </button>
-             </div>`
+          ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
+               <i class="fa-solid fa-key me-1"></i>${t("Generate")}
+             </button>`
           : "";
         return `
             <div class="col-md-6 col-lg-4 mb-3">

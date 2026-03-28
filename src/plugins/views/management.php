@@ -150,11 +150,9 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                            value=""
                                            placeholder="<?= $placeholder ?>">
                                     <?php if ($hasExistingValue): ?>
-                                    <div class="input-group-append">
                                         <span class="input-group-text text-success" title="<?= gettext('Value is configured') ?>">
                                             <i class="fa-solid fa-check"></i>
                                         </span>
-                                    </div>
                                     <?php endif; ?>
                                 </div>
                             <?php elseif ($settingType === 'select' && !empty($setting['options'])): ?>

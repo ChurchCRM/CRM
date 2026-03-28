@@ -9,7 +9,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
           <h4 className="mb-0">
-            <i className="fa fa-shield mr-2"></i>
+            <i className="fa-solid fa-shield me-2"></i>
             {window.i18next.t("Enable Two-Factor Authentication")}
           </h4>
         </div>
@@ -21,7 +21,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
           {/* How it works - compact list */}
           <div className="mb-4">
             <div className="d-flex align-items-start mb-3">
-              <span className="badge badge-primary mr-3" style={{ minWidth: "28px", padding: "6px 0" }}>
+              <span className="badge bg-primary me-3" style={{ minWidth: "28px", padding: "6px 0" }}>
                 1
               </span>
               <div>
@@ -30,7 +30,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
               </div>
             </div>
             <div className="d-flex align-items-start mb-3">
-              <span className="badge badge-primary mr-3" style={{ minWidth: "28px", padding: "6px 0" }}>
+              <span className="badge bg-primary me-3" style={{ minWidth: "28px", padding: "6px 0" }}>
                 2
               </span>
               <div>
@@ -41,7 +41,7 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
               </div>
             </div>
             <div className="d-flex align-items-start">
-              <span className="badge badge-primary mr-3" style={{ minWidth: "28px", padding: "6px 0" }}>
+              <span className="badge bg-primary me-3" style={{ minWidth: "28px", padding: "6px 0" }}>
                 3
               </span>
               <div>
@@ -55,8 +55,8 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
 
           {/* Requirements */}
           <div className="callout callout-warning">
-            <h6 className="font-weight-bold">{window.i18next.t("Before You Start")}</h6>
-            <ul className="mb-0 pl-3 small">
+            <h6 className="fw-bold">{window.i18next.t("Before You Start")}</h6>
+            <ul className="mb-0 ps-3 small">
               <li>
                 {window.i18next.t(
                   "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)",
@@ -72,12 +72,12 @@ const TwoFAEnrollmentWelcome: React.FunctionComponent<{
             <button
               type="button"
               id="begin2faEnrollment"
-              className="btn btn-primary btn-lg btn-block"
+              className="btn btn-primary btn-lg w-100"
               onClick={() => {
                 nextButtonEventHandler();
               }}
             >
-              <i className="fa fa-arrow-right mr-2"></i>
+              <i className="fa-solid fa-arrow-right me-2"></i>
               {window.i18next.t("Get Started")}
             </button>
           </div>
@@ -107,15 +107,15 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
       <div className="card card-outline card-primary">
         <div className="card-header text-center">
           <h4 className="mb-0">
-            <i className="fa fa-qrcode mr-2"></i>
+            <i className="fa-solid fa-qrcode me-2"></i>
             {window.i18next.t("Set Up Authenticator")}
           </h4>
         </div>
         <div className="card-body">
           {/* Step 1: Scan QR Code */}
           <div className="mb-4">
-            <h6 className="font-weight-bold d-flex align-items-center mb-3">
-              <span className="badge badge-primary mr-2" style={{ minWidth: "24px", padding: "4px 0" }}>
+            <h6 className="fw-bold d-flex align-items-center mb-3">
+              <span className="badge bg-primary me-2" style={{ minWidth: "24px", padding: "4px 0" }}>
                 1
               </span>
               {window.i18next.t("Scan QR Code")}
@@ -154,8 +154,8 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
 
           {/* Step 2: Verify Code */}
           <div className="mb-3">
-            <h6 className="font-weight-bold d-flex align-items-center mb-3">
-              <span className="badge badge-primary mr-2" style={{ minWidth: "24px", padding: "4px 0" }}>
+            <h6 className="fw-bold d-flex align-items-center mb-3">
+              <span className="badge bg-primary me-2" style={{ minWidth: "24px", padding: "4px 0" }}>
                 2
               </span>
               {window.i18next.t("Verify Code")}
@@ -192,17 +192,17 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
               <div className="col-sm-8">
                 {currentTwoFAPinStatus === "pending" && (
                   <div className="text-center text-info small">
-                    <span className="fa fa-spinner fa-spin mr-1" aria-hidden="true"></span>
+                    <span className="fa-solid fa-spinner fa-spin me-1" aria-hidden="true"></span>
                     {window.i18next.t("Verifying")}&hellip;
                   </div>
                 )}
                 {currentTwoFAPinStatus === "invalid" && (
                   <div className="text-center text-danger small">
-                    <i className="fa fa-times-circle mr-1"></i>
+                    <i className="fa-solid fa-circle-xmark me-1"></i>
                     {window.i18next.t("Code is invalid")} &ndash; {window.i18next.t("Please try again")}
                   </div>
                 )}
-                <span className="sr-only">
+                <span className="visually-hidden">
                   {currentTwoFAPinStatus === "pending" && window.i18next.t("Validation pending")}
                   {currentTwoFAPinStatus === "invalid" && window.i18next.t("Code is invalid")}
                   {currentTwoFAPinStatus === "incomplete" && window.i18next.t("Code incomplete")}
@@ -216,7 +216,7 @@ const TwoFAEnrollmentGetQR: React.FunctionComponent<{
           {/* Action Buttons */}
           <div className="text-center">
             <button type="button" className="btn btn-outline-secondary" onClick={() => remove2FA()}>
-              <i className="fa fa-times mr-1"></i>
+              <i className="fa-solid fa-xmark me-1"></i>
               {window.i18next.t("Cancel")}
             </button>
           </div>
@@ -234,7 +234,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
       <div className="card card-outline card-success">
         <div className="card-header text-center">
           <h4 className="mb-0">
-            <i className="fa fa-check-circle mr-2 text-success"></i>
+            <i className="fa-solid fa-circle-check me-2 text-success"></i>
             {window.i18next.t("Setup Complete")}
           </h4>
         </div>
@@ -247,8 +247,8 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
 
           {/* Recovery Codes Section */}
           <div>
-            <h6 className="font-weight-bold mb-3">
-              <i className="fa fa-key mr-2 text-warning"></i>
+            <h6 className="fw-bold mb-3">
+              <i className="fa-solid fa-key me-2 text-warning"></i>
               {window.i18next.t("Recovery Codes")}
             </h6>
 
@@ -277,7 +277,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
                   {TwoFARecoveryCodes.map((code: string, index: number) => (
                     // biome-ignore lint/suspicious/noArrayIndexKey: Recovery codes are static list that won't be reordered
                     <div key={index}>
-                      <span className="text-muted mr-2">{String(index + 1).padStart(2, "0")}.</span>
+                      <span className="text-muted me-2">{String(index + 1).padStart(2, "0")}.</span>
                       <code>{code}</code>
                     </div>
                   ))}
@@ -296,11 +296,11 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
                   window.print();
                 }}
               >
-                <i className="fa fa-print mr-1"></i>
+                <i className="fa-solid fa-print me-1"></i>
                 {window.i18next.t("Print")}
               </button>
               <a href={`${CRMRoot}/v2/user/current/manage2fa`} className="btn btn-primary">
-                <i className="fa fa-check mr-1"></i>
+                <i className="fa-solid fa-check me-1"></i>
                 {window.i18next.t("Done")}
               </a>
             </div>
@@ -308,7 +308,7 @@ const TwoFAEnrollmentSuccess: React.FunctionComponent<{
 
           {/* Info Box */}
           <div className="callout callout-info mt-4 mb-0 small">
-            <i className="fa fa-info-circle mr-1"></i>
+            <i className="fa-solid fa-circle-info me-1"></i>
             {window.i18next.t("You can now use your authenticator app to sign in. Each code is valid for 30 seconds.")}
           </div>
         </div>
@@ -325,23 +325,23 @@ const TwoFAStatusEnabled: React.FunctionComponent<{
       <div className="card card-outline card-success">
         <div className="card-header text-center">
           <h4 className="mb-0">
-            <i className="fa fa-shield mr-2"></i>
+            <i className="fa-solid fa-shield me-2"></i>
             {window.i18next.t("Two-Factor Authentication")}
           </h4>
         </div>
         <div className="card-body">
           {/* Status Badge */}
           <div className="text-center mb-4">
-            <span className="badge badge-success" style={{ fontSize: "1em", padding: "0.4rem 1rem" }}>
-              <i className="fa fa-check-circle mr-1"></i>
+            <span className="badge bg-success" style={{ fontSize: "1em", padding: "0.4rem 1rem" }}>
+              <i className="fa-solid fa-circle-check me-1"></i>
               {window.i18next.t("Enabled")}
             </span>
           </div>
 
           {/* Info Section */}
           <div className="callout callout-info">
-            <h6 className="font-weight-bold mb-2">{window.i18next.t("Your account is protected")}</h6>
-            <ul className="mb-0 pl-3 small">
+            <h6 className="fw-bold mb-2">{window.i18next.t("Your account is protected")}</h6>
+            <ul className="mb-0 ps-3 small">
               <li>
                 {window.i18next.t(
                   "Each time you sign in, you'll need to confirm with a code from your authenticator app",
@@ -370,14 +370,14 @@ const TwoFAStatusEnabled: React.FunctionComponent<{
                 }
               }}
             >
-              <i className="fa fa-times mr-1"></i>
+              <i className="fa-solid fa-xmark me-1"></i>
               {window.i18next.t("Disable Two-Factor Authentication")}
             </button>
           </div>
 
           {/* Info Box */}
           <div className="callout callout-warning mt-4 mb-0 small">
-            <i className="fa fa-lock mr-1"></i>
+            <i className="fa-solid fa-lock me-1"></i>
             {window.i18next.t(
               "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled.",
             )}
@@ -571,7 +571,7 @@ class UserTwoFactorEnrollment extends React.Component<Record<string, unknown>, T
               <div className="card-body p-5 text-center">
                 <span role="status" aria-live="polite" className="d-inline-block">
                   <span className="spinner-border" aria-hidden="true"></span>
-                  <span className="sr-only">{window.i18next.t("Loading")}...</span>
+                  <span className="visually-hidden">{window.i18next.t("Loading")}...</span>
                 </span>
               </div>
             </div>

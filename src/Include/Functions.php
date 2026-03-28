@@ -433,9 +433,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for date fields
         case 2:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
-            '</div>' .
             '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . change_date_for_place_holder($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
             '</div>';
             break;
@@ -443,9 +441,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for 50 character max. text fields
         case 3:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-font"></i></span>' .
-            '</div>' .
             '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="50" value="' . InputUtils::escapeAttribute($data) . '">' .
             '</div>';
             break;
@@ -453,9 +449,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for 100 character max. text fields
         case 4:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-align-left"></i></span>' .
-            '</div>' .
             '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="2" maxlength="100">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
@@ -463,9 +457,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for extended text fields (MySQL type TEXT, Max length: 2^16-1)
         case 5:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-paragraph"></i></span>' .
-            '</div>' .
             '<textarea class="form-control" id="' . $fieldname . '" name="' . $fieldname . '" rows="4" maxlength="65535">' . InputUtils::escapeHTML($data) . '</textarea>' .
             '</div>';
             break;
@@ -473,9 +465,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for 4-digit year
         case 6:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-calendar-days"></i></span>' .
-            '</div>' .
             '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="4" value="' . InputUtils::escapeAttribute($data) . '" placeholder="YYYY">' .
             '</div>';
             break;
@@ -483,9 +473,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for season (drop-down selection)
         case 7:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-leaf"></i></span>' .
-            '</div>' .
             '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
             echo '  <option value="none">' . gettext('Select Season') . '</option>';
             echo '  <option value="winter"';
@@ -514,9 +502,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for integer numbers
         case 8:
             echo '<div class="input-group">' .
-            '<div class="input-group-prepend">' .
             '<span class="input-group-text"><i class="fa-solid fa-hashtag"></i></span>' .
-            '</div>' .
             '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="11" value="' . InputUtils::escapeAttribute($data) . '">' .
             '</div>';
             break;
@@ -535,9 +521,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             $rsGroupPeople = RunQuery($sSQL);
 
             echo '<div class="input-group">';
-            echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-person-half-dress"></i></span>';
-            echo '</div>';
             echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
             echo '<option value="0"';
             if ($data <= 0) {
@@ -562,9 +546,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
     // Handler for money amounts
         case 10:
             echo '<div class="input-group">';
-            echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>';
-            echo '</div>';
             echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="13" value="' . InputUtils::escapeAttribute($data) . '">';
             echo '</div>';
             break;
@@ -589,19 +571,16 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             // If field is empty, leave unchecked so mask can be applied
 
             echo '<div class="input-group">';
-            echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
-            echo '</div>';
             // Note: using data-phone-mask instead of data-inputmask to prevent auto-initialization
             echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>'; 
-            echo '<div class="input-group-append">';
             echo '<div class="input-group-text">';
             echo '<div class="form-check mb-0">';
             echo '<input type="checkbox" class="form-check-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';
             echo $checked;
             echo '>';
             echo '<label class="form-check-label" for="' . $fieldname . 'noformat">' . gettext('No format') . '</label>';
-            echo '</div></div></div></div>';
+            echo '</div></div></div>';
             break;
 
     // Handler for custom lists
@@ -610,9 +589,7 @@ function formCustomField($type, string $fieldname, $data, ?string $special, bool
             $rsListOptions = RunQuery($sSQL);
 
             echo '<div class="input-group">';
-            echo '<div class="input-group-prepend">';
             echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
-            echo '</div>';
             echo '<select class="form-select" id="' . $fieldname . '" name="' . $fieldname . '">';
             echo '<option value="0">' . gettext('Unassigned') . '</option>';
             echo '<option value="" disabled>-----------------------</option>';
