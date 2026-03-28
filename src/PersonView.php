@@ -8,8 +8,10 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -494,6 +496,41 @@ $bOkToEdit = (
                 <?php endif; ?>
             </div>
         </div>
+
+        <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled() && !empty($per_fam_ID)) { ?>
+        <!-- Giving History Card (Finance role only) -->
+        <div class="card mb-3" id="giving-history-card">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
+                <span id="person-ytd-total-badge" class="badge bg-green-lt text-green ms-2 d-none"></span>
+            </div>
+            <div class="card-body p-0">
+                <div id="giving-history-loading" class="px-3 py-2 text-muted">
+                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading…") ?>
+                </div>
+                <div id="giving-history-content" class="d-none">
+                    <ul class="list-unstyled mb-0 px-3 py-2">
+                        <li class="mb-2">
+                            <i class="fa-solid fa-calendar-check me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <strong><?= gettext("YTD Paid") ?>:</strong> <span id="person-giving-ytd" class="text-success fw-bold">$0.00</span>
+                        </li>
+                        <li class="mb-2" id="person-last-gift-row">
+                            <i class="fa-solid fa-hand-holding-dollar me-2 text-muted" style="width:1rem;text-align:center;"></i>
+                            <strong><?= gettext("Last Gift") ?>:</strong> <span id="person-last-gift">—</span>
+                        </li>
+                    </ul>
+                    <div class="px-3 pb-2">
+                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= (int)$per_fam_ID ?>#giving-history" class="btn btn-sm btn-outline-primary w-100">
+                            <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("View Full Family Giving") ?>
+                        </a>
+                    </div>
+                </div>
+                <div id="giving-history-empty" class="d-none px-3 py-2 text-muted">
+                    <i class="fa-solid fa-circle-info me-1"></i> <?= gettext("No giving history found.") ?>
+                </div>
+            </div>
+        </div>
+        <?php } ?>
     </div>
     <div class="col-lg-8">
         <!-- Toolbar -->
@@ -927,6 +964,8 @@ $bOkToEdit = (
         <script src="<?= SystemURLs::assetVersioned('/skin/js/PersonView.js') ?>"></script>
         <script nonce="<?= SystemURLs::getCSPNonce() ?>">
             window.CRM.currentPersonID = <?= $iPersonID ?>;
+            window.CRM.personFamId = <?= (int)$per_fam_ID ?>;
+            window.CRM.currentFY = <?= json_encode(FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId() ?? 1)) ?>;
 
             $("#deletePhoto").click(function() {
                 window.CRM.deletePhoto("person", window.CRM.currentPersonID);
