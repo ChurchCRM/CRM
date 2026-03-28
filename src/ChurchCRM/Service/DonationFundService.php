@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\AuthService;
-use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 
@@ -23,17 +22,17 @@ class DonationFundService
     {
         AuthService::requireUserGroupMembership('bFinance');
         $funds = [];
-        $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
-        $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-        $rsFunds = FunctionsUtils::runQuery($sSQL);
-        mysqli_data_seek($rsFunds, 0);
-        while ($aRow = mysqli_fetch_array($rsFunds)) {
+        $activeFunds = DonationFundQuery::create()
+            ->filterByActive('true')
+            ->orderByOrder()
+            ->find();
+        foreach ($activeFunds as $donationFund) {
             $fund = new \stdClass();
-            $fund->ID = $aRow['fun_ID'];
-            $fund->Name = $aRow['fun_Name'];
-            $fund->Description = $aRow['fun_Description'];
+            $fund->ID = $donationFund->getId();
+            $fund->Name = $donationFund->getName();
+            $fund->Description = $donationFund->getDescription();
             $funds[] = $fund;
-        } // end while
+        }
 
         return $funds;
     }
