@@ -88,11 +88,15 @@ describe("Standard Groups", () => {
     });
 
     it("Group Report", () => {
-        cy.visit("GroupReports.php");
-        cy.contains("Group reports");
-        cy.contains("Select the group you would like to report");
+        cy.visit("groups/reports");
+        cy.contains("Group Reports");
+        cy.contains("Select Group");
+        // Select the first real group so the form passes validation (GroupID=0 redirects back)
+        cy.get("#GroupID").find("option").not("[value='0']").first().then(($opt) => {
+            cy.get("#GroupID").select($opt.val());
+        });
         cy.get(".card-body > form").submit();
-        cy.url().should("contain", "GroupReports.php");
-        cy.contains("Select which information you want to include");
+        cy.url().should("contain", "groups/reports");
+        cy.contains("Select Fields to Include");
     });
 });

@@ -24,13 +24,17 @@ $aRow = mysqli_fetch_array($rsGroupName);
 $sGroupName = $aRow[0];
 $iRoleListID = $aRow[1];
 
-// Get the selected role name
+// Get the selected role name for the PDF header
 if ($iRoleID > 0) {
     $sSQL = 'SELECT lst_OptionName FROM list_lst WHERE lst_ID = ' . $iRoleListID . ' AND lst_OptionID = ' . $iRoleID;
     $rsTemp = RunQuery($sSQL);
     $aRow = mysqli_fetch_array($rsTemp);
     $sRoleName = $aRow[0];
-} elseif (isset($_POST['GroupRoleEnable'])) {
+}
+
+// Always fetch all role names when Group Role field is enabled — needed for per-person display
+// regardless of whether a specific role filter is active
+if (isset($_POST['GroupRoleEnable'])) {
     $sSQL = 'SELECT lst_OptionName,lst_OptionID FROM list_lst WHERE lst_ID = ' . $iRoleListID;
     $rsTemp = RunQuery($sSQL);
 
@@ -121,6 +125,28 @@ while ($aRow = mysqli_fetch_array($rsRecords)) {
 
     if (isset($_POST['OtherEmailEnable']) && strlen($aRow['per_WorkEmail'])) {
         $OutStr .= '  ' . gettext('Other Email') . ': ' . $aRow['per_WorkEmail'] .="\n";
+    }
+
+    if (isset($_POST['BirthdayEnable'])) {
+        $month = (int) ($aRow['per_BirthMonth'] ?? 0);
+        $day   = (int) ($aRow['per_BirthDay']   ?? 0);
+        $year  = (int) ($aRow['per_BirthYear']  ?? 0);
+        if ($month > 0 && $day > 0) {
+            $bday = date('F j', mktime(0, 0, 0, $month, $day));
+            if ($year > 0) {
+                $bday .= ', ' . $year;
+            }
+            $OutStr .= '  ' . gettext('Birthday') . ': ' . $bday . "\n";
+        }
+    }
+
+    if (isset($_POST['GenderEnable'])) {
+        $gender = (int) ($aRow['per_Gender'] ?? 0);
+        if ($gender === 1) {
+            $OutStr .= '  ' . gettext('Gender') . ': ' . gettext('Male') . "\n";
+        } elseif ($gender === 2) {
+            $OutStr .= '  ' . gettext('Gender') . ': ' . gettext('Female') . "\n";
+        }
     }
 
     if ($bHasProps) {
