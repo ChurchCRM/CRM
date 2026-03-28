@@ -657,6 +657,59 @@ Include the script after your page content:
 <script src="<?= SystemURLs::assetVersioned('/skin/js/importDemoData.js') ?>"></script>
 ```
 
+## Print Support (Native Browser Print) <!-- learned: 2026-03-28 -->
+
+ChurchCRM uses native `window.print()` instead of separate print pages. Tabler/Bootstrap 5 handles the heavy lifting via `d-print-none` classes already on the navbar, sidebar, page-header breadcrumbs, and footer.
+
+### Global Print CSS (`_utility-classes.scss`)
+
+The `@media print` block in `src/skin/scss/_utility-classes.scss` hides interactive elements globally:
+
+```scss
+@media print {
+  button.btn, a.btn, input.btn,  // narrowed — not bare .btn (preserves non-interactive styled spans)
+  .dropdown, .modal, .fab-container,
+  input, select, textarea, .form-control, .form-select,
+  .dataTables_filter, .dataTables_length, .ts-wrapper,
+  .nav-pills, .nav-tabs { display: none !important; }
+
+  .tab-pane { display: block !important; opacity: 1 !important; }  // show ALL tab content
+}
+```
+
+### Adding a Print Button to a Page
+
+1. Add a `<button>` with a unique `id` (no `onclick` — CSP blocks inline handlers):
+   ```php
+   <button class="btn btn-ghost-secondary" id="printMyPage" title="<?= gettext('Print') ?>">
+       <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+   </button>
+   ```
+2. Bind `window.print()` in the page's JS file:
+   ```js
+   $("#printMyPage").on("click", function () { window.print(); });
+   ```
+3. Mark the toolbar `d-print-none` so it hides when printing.
+4. Any extra elements to hide: add `d-print-none` class (e.g., property assignment forms).
+
+### Key Rules
+
+- **Never use `onclick="window.print()"`** — CSP enforcement blocks inline scripts.
+- **Never create separate print pages** — use `window.print()` from the existing page.
+- Use `d-print-none` for page-specific elements not covered by the global rules.
+- The page title (`<h2 class="page-title">`) is visible on print — breadcrumbs/buttons row is hidden.
+
+### Pages with Print Buttons
+
+| Page | Button ID | JS File |
+|------|-----------|---------|
+| PersonView | `#printPerson` | `skin/js/PersonView.js` |
+| FamilyView | `#printFamily` | `skin/js/FamilyView.js` |
+| GroupView | `#printGroup` | `skin/js/GroupView.js` |
+| SS ClassView | `#printClass` | `skin/js/sundayschool-actions.js` |
+
+---
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`

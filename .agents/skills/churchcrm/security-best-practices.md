@@ -512,4 +512,22 @@ Before committing security fixes:
 
 ---
 
-Last updated: February 16, 2026
+### No Inline Event Handlers (CSP Compliance) <!-- learned: 2026-03-28 -->
+
+Never use inline `onclick`, `onchange`, or other `on*` attributes in HTML/PHP templates. ChurchCRM enforces CSP with `script-src` that does not include `unsafe-inline`, so inline handlers are silently blocked.
+
+```php
+// ❌ WRONG — blocked by CSP
+<button onclick="window.print()">Print</button>
+
+// ✅ CORRECT — bind in the page's JS file
+<button id="printPerson">Print</button>
+```
+```js
+// In skin/js/PersonView.js (or relevant JS file)
+$("#printPerson").on("click", function () { window.print(); });
+```
+
+---
+
+Last updated: March 28, 2026
