@@ -782,6 +782,46 @@ Refer to existing translations in `locale/locales/[LANGUAGE].json` for consisten
 
 ---
 
+## RTL (Right-to-Left) Locale Support <!-- learned: 2026-03-28 -->
+
+Arabic (`ar`) and Hebrew (`he`) locales have `"isRTL": true` in `locales.json`. The rendering pipeline honours this flag automatically.
+
+### How it works
+
+| Layer | What happens |
+|-------|-------------|
+| `LocaleInfo::isRTL()` | Reads `localeConfig['isRTL']` from the loaded locale |
+| `Header.php` | Emits `<html dir="rtl">` and sets `window.CRM.isRTL = true` |
+| `Header-Minimal.php` | Same — call `Bootstrapper::getCurrentLocale()` then use `$localeInfo->isRTL()` |
+| `Header-Short.php` | Same — needed for PrintView RTL support |
+| `HeaderNotLoggedIn.php` | Same — login page is also RTL-aware |
+| `Header-HTML-Scripts.php` | Loads `churchcrm-rtl.min.css` instead of `churchcrm.min.css` |
+
+### Adding a new RTL locale
+
+When `locale-add.js` creates a new locale, it now defaults `isRTL: false`. For Arabic/Hebrew, manually set `"isRTL": true` in `locales.json` after creation.
+
+### Using RTL in JavaScript
+
+```javascript
+// Check direction in JS
+if (window.CRM.isRTL) {
+    // flip any LTR-specific logic (e.g. swipe direction, chart axis)
+}
+```
+
+### Critical: all headers must initialize `$localeInfo`
+
+Every PHP header file that includes `Header-HTML-Scripts.php` **must** initialise `$localeInfo` before the include. If it doesn't, the RTL CSS will not load and the `<html dir>` attribute will be missing.
+
+```php
+// ✅ Required in any header that includes Header-HTML-Scripts.php
+use ChurchCRM\Bootstrapper;
+$localeInfo = Bootstrapper::getCurrentLocale();
+```
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist

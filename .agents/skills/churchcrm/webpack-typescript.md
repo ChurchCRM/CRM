@@ -87,6 +87,25 @@ const response = await fetchAPI('person/123/photo', {
 | `fetchAdminAPI(path, options)` | Admin API fetch variant | `Promise<Response>` |
 | `fetchAdminAPIJSON<T>(path, options)` | Admin API JSON variant | `Promise<T>` |
 
+## Skin Bundle Architecture (LTR + RTL) <!-- learned: 2026-03-28 -->
+
+The main CSS/JS bundles are split into three files:
+
+| File | Purpose |
+|------|---------|
+| `webpack/skin-core-css.js` | **CSS only** — all shared component CSS (icons, DataTables, TomSelect, etc.) except Tabler core |
+| `webpack/skin-core.js` | **JS only** — jQuery, ApexCharts, Tabler JS, TomSelect bridge, Quill, etc. Imports `skin-core-css` |
+| `webpack/skin-main.js` | LTR entry — imports `tabler.min.css` then `skin-core` |
+| `webpack/skin-rtl.js` | RTL entry — imports `tabler.rtl.min.css` then `skin-core-css` (**no JS**) |
+
+This structure ensures `churchcrm-rtl.min.js` is webpack-runtime-only (~2 KB) and not a full duplicate of `churchcrm.min.js`. RTL pages load `churchcrm.min.js` for JS and `churchcrm-rtl.min.css` for styles.
+
+**When adding a shared CSS dependency** → add to `skin-core-css.js`.
+**When adding a shared JS dependency** → add to `skin-core.js`.
+**Never add JS imports to `skin-rtl.js`** — it is intentionally CSS-only.
+
+---
+
 ## Entry Point Patterns
 
 ### Basic JavaScript Entry Point

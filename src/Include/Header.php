@@ -27,7 +27,7 @@ PluginManager::init($pluginsPath);
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -91,6 +91,7 @@ $MenuFirst = 1;
           root:"<?= SystemURLs::getRootPath() ?>",
           fullURL:"<?= SystemURLs::getURL() ?>",
           lang:"<?= $localeInfo->getLanguageCode() ?>",
+          isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
           userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
           version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",

@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 
 require_once __DIR__ . '/Header-Security.php';
@@ -7,9 +8,10 @@ require_once __DIR__ . '/Header-Security.php';
 // Turn ON output buffering
 ob_start();
 
+$localeInfo = Bootstrapper::getCurrentLocale();
 ?>
 <!DOCTYPE html>
-<html>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 
 <head>
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
