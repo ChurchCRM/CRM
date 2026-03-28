@@ -119,6 +119,18 @@
   .fab-container {
     display: none !important;
   }
+
+  /* Hide tab navigation pills — content is shown inline below */
+  .nav-pills,
+  .nav-tabs {
+    display: none !important;
+  }
+
+  /* Show all tab panes when printing so no content is hidden */
+  .tab-pane {
+    display: block !important;
+    opacity: 1 !important;
+  }
 }
 
 /* Hide view photo button when there is no uploaded photo or gravatar */

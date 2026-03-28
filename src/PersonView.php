@@ -455,7 +455,7 @@ $bOkToEdit = (
                 <?php endif; ?>
 
                 <?php if ($bOkToEdit && mysqli_num_rows($rsProperties) !== 0) : ?>
-                    <div class="mt-3">
+                    <div class="mt-3 d-print-none">
                         <form method="post" action="<?= SystemURLs::getRootPath() . '/api/properties/persons/assign' ?>" id="assign-property-form">
                             <div class="mb-2">
                                 <select name="PropertyId" id="input-person-properties" class="form-select" data-placeholder="<?= gettext('Choose a property...') ?>">
