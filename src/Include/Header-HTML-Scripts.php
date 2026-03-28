@@ -9,8 +9,9 @@ use ChurchCRM\dto\SystemURLs;
 
 <!-- Custom ChurchCRM styles (includes Tabler, DataTables BS5, icons, and bridge overrides) -->
 <?php
-// $localeInfo is set by the including context (Header.php or Header-Minimal.php via Bootstrapper).
-// Use isset() here because Header-Short.php and OptionManager do not initialise $localeInfo.
+// $localeInfo is always initialised by every including header
+// (Header.php, Header-Minimal.php, Header-Short.php, HeaderNotLoggedIn.php).
+// The isset() guard is a safety net for any direct or future unknown includer.
 ?>
 <?php if (isset($localeInfo) && $localeInfo->isRTL()): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm-rtl.min.css') ?>">

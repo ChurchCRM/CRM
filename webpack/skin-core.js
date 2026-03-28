@@ -1,14 +1,13 @@
 /**
- * Shared core module for ChurchCRM skin bundles.
+ * Shared JS module for ChurchCRM skin bundles.
  *
- * This module is imported by both skin-main.js (LTR) and skin-rtl.js (RTL).
- * It contains every shared CSS import and all JavaScript — the only thing
- * that differs between the two entry points is which Tabler core CSS is used
- * (tabler.min.css vs tabler.rtl.min.css), which is imported in each entry
- * file BEFORE this module.
+ * This module is imported by skin-main.js (LTR entry point) only.
+ * It contains all shared JavaScript and delegates all shared CSS to
+ * skin-core-css.js so the RTL entry (skin-rtl.js) can import only
+ * the CSS without duplicating the JavaScript bundle.
  *
- * When adding a new CSS or JS dependency that is needed by both themes,
- * add it here and it will automatically appear in both output bundles.
+ * When adding a new shared JS dependency, add it here.
+ * When adding a new shared CSS dependency, add it to skin-core-css.js.
  */
 
 // Import jQuery and expose it globally for legacy code compatibility
@@ -24,36 +23,8 @@ window.ApexCharts = ApexCharts;
 import * as tabler from "@tabler/core";
 window.bootstrap = tabler.bootstrap;
 
-// Import FontAwesome CSS - webfonts are automatically bundled by webpack
-import "@fortawesome/fontawesome-free/css/all.min.css";
-
-// Import flag-icons CSS - flags are automatically bundled by webpack
-import "flag-icons/css/flag-icons.min.css";
-
-// Import Tabler Icons webfont - font files bundled automatically by webpack
-import "@tabler/icons-webfont/dist/tabler-icons.min.css";
-
-// DataTables Bootstrap 5 integration CSS
-import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
-import "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css";
-import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
-import "datatables.net-select-bs5/css/select.bootstrap5.min.css";
-
-// Tom Select CSS — Bootstrap 5 themed
-import "tom-select/dist/css/tom-select.bootstrap5.css";
-
-// Bootstrap DatePicker and DateRangePicker CSS
-import "bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css";
-import "daterangepicker/daterangepicker.css";
-
-// bs-stepper CSS
-import "bs-stepper/dist/css/bs-stepper.min.css";
-
-// Import React DatePicker CSS - required for calendar styling
-import "react-datepicker/dist/react-datepicker.min.css";
-
-// Import Quill editor CSS and make it available globally
-import "quill/dist/quill.snow.css";
+// Import all shared CSS (icons, DataTables, TomSelect, DatePicker, etc.)
+import "./skin-core-css";
 
 import { initializeQuillEditor } from "./quill-editor.js";
 
@@ -74,8 +45,6 @@ import "../src/skin/js/form-utils.js";
 
 // Import issue reporter (GitHub issue modal)
 import "../src/skin/js/IssueReporter.js";
-
-import "../src/skin/churchcrm.scss";
 
 // Make Quill initialization function available globally
 if (typeof window !== "undefined") {

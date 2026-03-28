@@ -221,6 +221,8 @@ class LocaleInfo
     /**
      * Check if the current locale uses right-to-left text direction
      * (e.g., Arabic, Hebrew)
+     *
+     * @return bool
      */
     public function isRTL(): bool
     {
