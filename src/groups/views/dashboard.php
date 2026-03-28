@@ -155,3 +155,29 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () {
+    window.CRM.settingsPanel.init({
+        container: '#groupSettings',
+        title: i18next.t('Group Settings'),
+        icon: 'fa-solid fa-sliders',
+        settings: [
+            {
+                name: 'bEnabledSundaySchool',
+                label: i18next.t('Sunday School Module'),
+                type: 'boolean',
+                tooltip: i18next.t('Enable or disable the Sunday School module and sidebar menu.')
+            }
+        ],
+        onSave: function () {
+            window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
+            setTimeout(function () { window.location.reload(); }, 1500);
+        }
+    });
+});
+</script>
+<?php endif; ?>

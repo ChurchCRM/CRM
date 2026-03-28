@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -30,19 +31,25 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         $groupTypes[] = ['id' => (int) $opt->getOptionId(), 'name' => $opt->getOptionName()];
     }
 
+    $currentUser = AuthenticationManager::getCurrentUser();
+    $isAdmin     = $currentUser->isAdmin();
+
     $pageArgs = [
-        'sRootPath'    => SystemURLs::getRootPath(),
-        'sPageTitle'   => gettext('Group Listing'),
-        'sPageSubtitle' => gettext('View and manage all groups in your congregation'),
-        'aBreadcrumbs' => PageHeader::breadcrumbs([
+        'sRootPath'          => SystemURLs::getRootPath(),
+        'sPageTitle'         => gettext('Group Listing'),
+        'sPageSubtitle'      => gettext('View and manage all groups in your congregation'),
+        'aBreadcrumbs'       => PageHeader::breadcrumbs([
             [gettext('Groups')],
         ]),
-        'sPageHeaderButtons' => PageHeader::buttons([
+        'sPageHeaderButtons' => PageHeader::buttons(array_filter([
             ['label' => gettext('Group Reports'), 'url' => '/groups/reports', 'icon' => 'fa-file-lines'],
             ['label' => gettext('Group Properties'), 'url' => '/PropertyList.php?Type=g', 'icon' => 'fa-list'],
             ['label' => gettext('Group Types'), 'url' => '/OptionManager.php?mode=grptypes', 'icon' => 'fa-tags'],
-        ]),
-        'groupTypes' => $groupTypes,
+            $isAdmin ? ['label' => gettext('Group Settings'), 'collapse' => '#groupSettings', 'icon' => 'fa-sliders', 'adminOnly' => true] : null,
+        ])),
+        'sSettingsCollapseId' => $isAdmin ? 'groupSettings' : null,
+        'groupTypes'          => $groupTypes,
+        'isAdmin'             => $isAdmin,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
