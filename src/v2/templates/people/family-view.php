@@ -38,9 +38,40 @@ $otherPeople = $family->getOtherPeople();
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
 </script>
 
+<?php
+// Tax document email result notifications
+$taxEmailSent  = filter_input(INPUT_GET, 'TaxEmailSent', FILTER_VALIDATE_INT);
+$taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
+?>
 <div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Inactive") ?> </strong>
 </div>
+
+<?php if ($taxEmailSent) { ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-check-circle me-2"></i>
+    <?= sprintf(gettext('%d tax document emailed to the family successfully.'), (int)$taxEmailSent) ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoEmail') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: this family has no email address on file.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoData') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: no payment data found for that year.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'SendFailed') { ?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-circle-xmark me-2"></i>
+    <?= gettext('Tax document email failed to send. Please check your email server settings.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } ?>
 
 <div class="row">
     <!-- LEFT COLUMN: Actions, Members, Timeline -->
@@ -77,6 +108,18 @@ $otherPeople = $family->getOtherPeople();
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                         <i class="fa-solid fa-money-bill-wave me-2"></i><?= gettext('Add Payment') ?>
                     </a>
+                    <?php if (!empty($taxYears)) { ?>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
+                    <?php foreach ($taxYears as $taxYear) { ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/TaxReport.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
+                    </a>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/FamilyTaxReportEmail.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>">
+                        <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %d Tax Doc'), (int)$taxYear) ?>
+                    </a>
+                    <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>

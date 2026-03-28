@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\PeopleCustomField;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\FamilyCustomQuery;
@@ -188,7 +189,15 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'allFamilyProperties' => $allFamilyProperties,
         'familyCustom' => $familyCustom,
         'currentFY' => FinancialService::formatFiscalYear(FiscalYearUtils::getCurrentFiscalYearId()),
+        'taxYears' => [],
     ];
+
+    // Pre-compute available tax years for Finance users (used by Tax Doc action menu items)
+    if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
+        $finService = new FinancialService();
+        $maxTaxYears = SystemConfig::getIntValue('iMaxTaxYears');
+        $pageArgs['taxYears'] = $finService->getFamilyPaymentYears($familyId, $maxTaxYears > 0 ? $maxTaxYears : 0);
+    }
 
     return $renderer->render($response, 'family-view.php', $pageArgs);
 }

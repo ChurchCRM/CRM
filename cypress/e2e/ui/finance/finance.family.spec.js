@@ -5,7 +5,7 @@ describe("Finance Family", () => {
         cy.setupAdminSession();
     });
 
-    it("View a Family with Pledges and Payments section", () => {
+    it("View a Family with Giving History section", () => {
         cy.visit("v2/family/1");
         // Page title is family name, subtitle has "Family Profile"
         cy.contains("Campbell");
@@ -13,7 +13,7 @@ describe("Finance Family", () => {
         cy.contains("Darren Campbell");
 
         // Finance section should be visible with pill filters
-        cy.contains("Pledges and Payments");
+        cy.contains("Giving History");
         cy.get(".pledge-type-pill").should("have.length", 3);
         cy.get(".pledge-fy-pill").should("have.length", 2);
 
@@ -42,7 +42,7 @@ describe("Finance Family", () => {
         cy.contains("Family Profile");
 
         // Wait for finance section and table to be ready
-        cy.contains("Pledges and Payments");
+        cy.contains("Giving History");
         cy.get("#pledge-payment-v2-table").should("be.visible");
 
         // Default FY filter hides older data
