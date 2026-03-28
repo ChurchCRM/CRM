@@ -173,8 +173,8 @@ if ($bCanManageGroups) {
                     <?php foreach ($rsTeachers as $teacher):
                         $phone = $teacher->getCellPhone() ?: $teacher->getHomePhone();
                     ?>
-                    <div class="col-md-6 col-lg-3 mb-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
-                        <div class="card">
+                    <div class="col-sm-6 col-lg-4 col-xl-3 mb-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
+                        <div class="card h-100">
                             <div class="card-body p-4 text-center">
                                 <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
                                     <span class="avatar avatar-xl mb-3">
@@ -189,7 +189,7 @@ if ($bCanManageGroups) {
                                 </h3>
                                 <div class="text-secondary"><?= gettext('Teacher') ?></div>
                             </div>
-                            <div class="d-flex">
+                            <div class="card-footer p-0 d-flex">
                                 <?php if ($teacher->getEmail()): ?>
                                 <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="card-btn">
                                     <i class="fa-solid fa-envelope me-2 text-muted"></i><?= gettext('Email') ?>

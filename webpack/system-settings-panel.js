@@ -30,12 +30,13 @@ import "../src/skin/scss/system-settings-panel.scss";
         const checked = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="custom-control custom-switch mt-2">
-                            <input type="checkbox" class="custom-control-input setting-input"
+                        <div class="form-check form-switch mt-2">
+                            <input type="checkbox" class="form-check-input setting-input"
                                    id="${setting.name}" name="${setting.name}"
+                                   role="switch"
                                    data-type="boolean"
                                    ${checked ? "checked" : ""}>
-                            <label class="custom-control-label" for="${setting.name}">
+                            <label class="form-check-label" for="${setting.name}">
                                 ${setting.label}
                                 ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
                             </label>
@@ -105,9 +106,9 @@ import "../src/skin/scss/system-settings-panel.scss";
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${setting.label}
-                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ml-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
+                            ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <select class="form-control setting-input" 
+                        <select class="form-select setting-input"
                                 id="${setting.name}" name="${setting.name}"
                                 data-type="choice">
                             ${optionsHtml}
@@ -129,7 +130,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         const generateBtn = setting.generate
           ? `<div class="input-group-append">
                <button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
-                 <i class="fa-solid fa-key mr-1"></i>${t("Generate")}
+                 <i class="fa-solid fa-key me-1"></i>${t("Generate")}
                </button>
              </div>`
           : "";
@@ -311,7 +312,7 @@ import "../src/skin/scss/system-settings-panel.scss";
           settings: [],
           onSave: null,
           showAllSettingsLink: true,
-          headerClass: "bg-info",
+          headerClass: "bg-primary-lt",
         },
         options,
       );
@@ -322,47 +323,55 @@ import "../src/skin/scss/system-settings-panel.scss";
         return;
       }
 
-      this.loadSettings();
+      // Render structure immediately so the collapse container is never empty
+      // when the user opens the panel. Values are fetched and applied afterwards
+      // without replacing innerHTML (no animation interruption).
+      this.render();
+      this.bindEvents();
+      this.initialized = true;
+      this.fetchAndApplyValues();
     }
 
-    // Load current setting values from API
-    loadSettings() {
+    // Fetch current values from API and update each input individually
+    fetchAndApplyValues() {
       const self = this;
-      // Password fields never fetch their current value — always rendered blank
+      // Password fields never show their current value
       const settingsToFetch = this.options.settings.filter((s) => {
         const cfg = this.getSettingConfig(s);
         return cfg.type !== "password";
       });
-      const settingNames = settingsToFetch.map((s) => (typeof s === "string" ? s : s.name));
 
-      // Fetch all setting values
-      const promises = settingNames.map((name) => {
-        return fetch(window.CRM.root + "/admin/api/system/config/" + name)
+      settingsToFetch.forEach((s) => {
+        const name = typeof s === "string" ? s : s.name;
+        fetch(window.CRM.root + "/admin/api/system/config/" + name)
           .then((response) => response.json())
           .then((data) => {
-            self.settingValues[name] = data.value;
+            self.applyValue(name, data.value);
           })
-          .catch((err) => {
+          .catch(() => {
             console.warn("Could not load setting:", name);
-            self.settingValues[name] = "";
           });
-      });
-
-      Promise.all(promises).then(() => {
-        self.render();
-        self.bindEvents();
-        self.initialized = true;
       });
     }
 
-    // Render the panel HTML
+    // Update a single input without re-rendering the whole panel
+    applyValue(name, value) {
+      const input = this.container.querySelector('[name="' + name + '"]');
+      if (!input) return;
+      if (input.dataset.type === "boolean") {
+        input.checked = value === "1" || value === "true" || value === true;
+      } else {
+        input.value = value != null ? value : "";
+      }
+    }
+
+    // Render the panel HTML (inputs start with empty/unchecked values;
+    // fetchAndApplyValues() fills them in after the API responds)
     render() {
       let settingsHtml = "";
 
       this.options.settings.forEach((setting) => {
-        const settingName = typeof setting === "string" ? setting : setting.name;
         const settingConfig = this.getSettingConfig(setting);
-        const value = this.settingValues[settingName];
 
         const renderer = SettingTypes[settingConfig.type];
         if (renderer) {
@@ -370,17 +379,17 @@ import "../src/skin/scss/system-settings-panel.scss";
           if (typeof settingConfig.choices === "function") {
             settingConfig.choices = settingConfig.choices();
           }
-          settingsHtml += renderer.render(settingConfig, value);
+          settingsHtml += renderer.render(settingConfig, "");
         }
       });
 
       const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
       const html = `
-                <div class="card settings-panel-card border-info">
-                    <div class="card-header ${this.options.headerClass} text-white py-2">
+                <div class="card settings-panel-card">
+                    <div class="card-header ${this.options.headerClass} py-2">
                         <h6 class="mb-0">
-                            <i class="${this.options.icon}"></i> ${this.options.title}
+                            <i class="${this.options.icon} me-1"></i>${this.options.title}
                         </h6>
                     </div>
                     <div class="card-body">
@@ -394,13 +403,13 @@ import "../src/skin/scss/system-settings-panel.scss";
                                   this.options.showAllSettingsLink
                                     ? `
                                 <a href="${window.CRM.root}/SystemSettings.php" class="btn btn-outline-secondary btn-sm">
-                                    <i class="fa-solid fa-external-link-alt mr-1"></i> ${t("All System Settings")}
+                                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${t("All System Settings")}
                                 </a>
                                 `
                                     : "<div></div>"
                                 }
                                 <button type="button" id="settingsPanelSaveBtn" class="btn btn-primary">
-                                    <i class="fa-solid fa-save mr-1"></i> ${t("Save Settings")}
+                                    <i class="fa-solid fa-save me-1"></i> ${t("Save Settings")}
                                 </button>
                             </div>
                         </form>
@@ -476,7 +485,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Disable button and show loading
       saveBtn.disabled = true;
-      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> ' + t("Saving...");
+      saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> ' + t("Saving...");
 
       // Collect all setting values (empty passwords return null from getValue and are skipped)
       const settings = {};

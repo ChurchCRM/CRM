@@ -6,7 +6,7 @@ function UpdateRoles() {
     dataType: "json",
   }).done(function (data) {
     var html = "";
-    $.each(data.ListOptions, function (index, value) {
+    $.each(data, function (index, value) {
       html += '<option value="' + value.OptionId + '"';
       // i18next-disable-next-line
       html += ">" + i18next.t(value.OptionName) + "</option>";

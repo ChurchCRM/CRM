@@ -230,7 +230,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
     $group->get('/{groupID:[0-9]+}/roles', function (Request $request, Response $response, array $args): Response {
         $group = $request->getAttribute('group');
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
-        return SlimUtils::renderJSON($response, ['ListOptions' => $roles->toArray()]);
+        return SlimUtils::renderJSON($response, $roles->toArray());
     })->add(GroupMiddleware::class);
 });
 
