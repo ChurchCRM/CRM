@@ -50,24 +50,24 @@ describe("Congregation Map (/v2/map)", () => {
 
         it("Legend contains at least one classification row", () => {
             cy.visit("v2/map");
-            cy.get(".legend-row").should("have.length.at.least", 1);
+            cy.get(".legend-item").should("have.length.at.least", 1);
         });
 
-        it("Each legend row has a checkbox", () => {
+        it("Each legend row has a data-legend-id attribute", () => {
             cy.visit("v2/map");
-            cy.get(".legend-row").each(($row) => {
-                cy.wrap($row).find(".legend-cb").should("exist");
+            cy.get(".legend-item").each(($item) => {
+                cy.wrap($item).should("have.attr", "data-legend-id");
             });
         });
 
-        it("Unchecking a legend row hides its markers", () => {
+        it("Clicking a legend item toggles its markers", () => {
             cy.visit("v2/map");
             // Wait for markers to render
             cy.get(".leaflet-overlay-pane path", { timeout: 10000 }).then(
                 ($before) => {
                     const countBefore = $before.length;
-                    // Uncheck first legend row
-                    cy.get(".legend-cb").first().uncheck({ force: true });
+                    // Click first legend item to hide its markers
+                    cy.get(".legend-item").first().click();
                     // Marker count should decrease (or stay same if none of that class)
                     cy.get(".leaflet-overlay-pane path").should(
                         "have.length.at.most",

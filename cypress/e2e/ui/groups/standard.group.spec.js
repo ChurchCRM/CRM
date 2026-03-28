@@ -88,11 +88,11 @@ describe("Standard Groups", () => {
     });
 
     it("Group Report", () => {
-        cy.visit("GroupReports.php");
-        cy.contains("Group reports");
-        cy.contains("Select the group you would like to report");
+        cy.visit("groups/reports");
+        cy.contains("Group Reports");
+        cy.contains("Select Group");
         cy.get(".card-body > form").submit();
-        cy.url().should("contain", "GroupReports.php");
-        cy.contains("Select which information you want to include");
+        cy.url().should("contain", "groups/reports");
+        cy.contains("Select Fields to Include");
     });
 });

@@ -37,6 +37,7 @@ $app->post('/reports', function (Request $request, Response $response) {
     $body      = $request->getParsedBody();
     $iGroupID  = (int) InputUtils::legacyFilterInput($body['GroupID'] ?? '0', 'int');
     $groupRole = InputUtils::legacyFilterInput($body['GroupRole'] ?? '', 'string');
+    $onlyCart  = (bool) ($body['OnlyCart'] ?? false);
     // ReportModel: 1 = filter by selected role, 2 = all roles in group
     $reportModel = ($groupRole !== '' && $groupRole !== '0') ? 1 : 2;
 
