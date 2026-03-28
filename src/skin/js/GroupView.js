@@ -543,7 +543,9 @@ function initializeGroupView() {
 // Wait for locales to load before initializing
 $(document).ready(function () {
   // Print button
-  $("#printGroup").on("click", function () { window.print(); });
+  $("#printGroup").on("click", function () {
+    window.print();
+  });
 
   window.CRM.onLocalesReady(initializeGroupView);
 });

@@ -163,7 +163,9 @@
 
   $(document).ready(function () {
     // Print button
-    $("#printClass").on("click", function () { window.print(); });
+    $("#printClass").on("click", function () {
+      window.print();
+    });
 
     window.CRM.onLocalesReady(function () {
       // Copy to Group
