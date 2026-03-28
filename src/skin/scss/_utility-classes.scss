@@ -111,12 +111,20 @@
    PRINT UTILITIES
    ============================================ */
 
-/* Hide all interactive elements (buttons, dropdowns, modals, FABs) when printing */
+/* Hide all interactive elements when printing */
 @media print {
   .btn,
   .dropdown,
   .modal,
-  .fab-container {
+  .fab-container,
+  input,
+  select,
+  textarea,
+  .form-control,
+  .form-select,
+  .dataTables_filter,
+  .dataTables_length,
+  .ts-wrapper {
     display: none !important;
   }
 
