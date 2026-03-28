@@ -192,6 +192,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
 - **Address PR comments**: `pr-review.md` → `github-interaction.md` → `git-workflow.md`
+- **Add print support to a page**: `frontend-development.md` (Print Support section) → `security-best-practices.md` (CSP) → `git-workflow.md`
 - **Migrate a page to Tabler**: `tabler-migration-playbook.md` → `tabler-components.md` → `table-action-menu.md` → `bootstrap-5-migration.md` → `git-workflow.md`
 - **Add or edit a table with row actions**: `table-action-menu.md` → `tabler-components.md` → `git-workflow.md`
 - **Swap a 3rd-party library**: `tabler-library-replacement.md` → `webpack-typescript.md` → `git-workflow.md`
