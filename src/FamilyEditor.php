@@ -695,8 +695,8 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
                         <div class="input-group-text">
-                            <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                            <label class="mb-0 ms-1 small"><?= gettext('No format') ?></label>
+                            <input type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                            <label class="mb-0 ms-1 small" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                         </div>
                     </div>
                 </div>
