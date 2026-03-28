@@ -52,7 +52,7 @@ $otherPeople = $family->getOtherPeople();
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php } ?>
-            <button class="btn btn-ghost-secondary" id="printFamily" onclick="window.print()" title="<?= gettext('Print') ?>">
+            <button class="btn btn-ghost-secondary" id="printFamily" title="<?= gettext('Print') ?>">
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
             </button>
             <button class="btn btn-ghost-success AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">

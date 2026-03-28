@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  // Print button
+  $("#printPerson").on("click", function () { window.print(); });
+
   // Group interactions (add, change role, remove) are handled by
   // webpack/people/person-group-manager.js — loaded via the
   // people-person-view webpack entry point.

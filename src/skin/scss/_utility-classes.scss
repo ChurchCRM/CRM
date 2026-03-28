@@ -113,7 +113,9 @@
 
 /* Hide all interactive elements when printing */
 @media print {
-  .btn,
+  button.btn,
+  a.btn,
+  input.btn,
   .dropdown,
   .modal,
   .fab-container,

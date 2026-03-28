@@ -162,6 +162,9 @@
   }
 
   $(document).ready(function () {
+    // Print button
+    $("#printClass").on("click", function () { window.print(); });
+
     window.CRM.onLocalesReady(function () {
       // Copy to Group
       $(document).on("click", ".ss-copy-role", function (e) {

@@ -109,7 +109,7 @@ if ($bCanManageGroups) {
             <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
             </a>
-            <button class="btn btn-ghost-secondary" onclick="window.print()" title="<?= gettext('Print') ?>">
+            <button class="btn btn-ghost-secondary" id="printClass" title="<?= gettext('Print') ?>">
                 <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
             </button>
             <?php if ($bCanManageGroups): ?>

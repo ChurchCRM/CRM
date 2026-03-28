@@ -1,4 +1,7 @@
 function initializeFamilyView() {
+  // Print button
+  $("#printFamily").on("click", function () { window.print(); });
+
   if (!window.CRM.currentActive) {
     $("#family-deactivated").removeClass("d-none");
   }
