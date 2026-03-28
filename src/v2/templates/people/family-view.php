@@ -38,9 +38,40 @@ $otherPeople = $family->getOtherPeople();
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
 </script>
 
+<?php
+// Tax document email result notifications
+$taxEmailSent  = filter_input(INPUT_GET, 'TaxEmailSent', FILTER_VALIDATE_INT);
+$taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
+?>
 <div id="family-deactivated" class="alert alert-warning d-none">
     <strong><?= gettext("This Family is Inactive") ?> </strong>
 </div>
+
+<?php if ($taxEmailSent) { ?>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-check-circle me-2"></i>
+    <?= sprintf(gettext('%d tax document emailed to the family successfully.'), (int)$taxEmailSent) ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoEmail') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: this family has no email address on file.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'NoData') { ?>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-triangle-exclamation me-2"></i>
+    <?= gettext('Unable to email tax document: no payment data found for that year.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } elseif ($taxEmailError === 'SendFailed') { ?>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fa-solid fa-circle-xmark me-2"></i>
+    <?= gettext('Tax document email failed to send. Please check your email server settings.') ?>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
+</div>
+<?php } ?>
 
 <div class="row">
     <!-- LEFT COLUMN: Actions, Members, Timeline -->
@@ -77,6 +108,18 @@ $otherPeople = $family->getOtherPeople();
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath()?>/PledgeEditor.php?FamilyID=<?= $family->getId() ?>&amp;linkBack=v2/family/<?= $family->getId() ?>&PledgeOrPayment=Payment">
                         <i class="fa-solid fa-money-bill-wave me-2"></i><?= gettext('Add Payment') ?>
                     </a>
+                    <?php if (!empty($taxYears)) { ?>
+                    <div class="dropdown-divider"></div>
+                    <h6 class="dropdown-header"><i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Tax Documents') ?></h6>
+                    <?php foreach ($taxYears as $taxYear) { ?>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/TaxReport.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>" target="_blank">
+                        <i class="fa-solid fa-print me-2"></i><?= sprintf(gettext('Print %d Tax Doc'), (int)$taxYear) ?>
+                    </a>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/Reports/FamilyTaxReportEmail.php?familyId=<?= $family->getId() ?>&amp;year=<?= (int)$taxYear ?>">
+                        <i class="fa-solid fa-envelope me-2"></i><?= sprintf(gettext('Email %d Tax Doc'), (int)$taxYear) ?>
+                    </a>
+                    <?php } ?>
+                    <?php } ?>
                 </div>
             </div>
             <?php } ?>
@@ -537,12 +580,13 @@ $otherPeople = $family->getOtherPeople();
 
 <?php
 if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
-<!-- Pledges and Payments — full width row -->
-<div class="row">
+<!-- Giving History — full width row -->
+<div class="row" id="giving-history">
     <div class="col-12">
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center flex-wrap gap-2">
-                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Pledges and Payments") ?></h3>
+                <h3 class="card-title m-0"><i class="fa-solid fa-circle-dollar-to-slot me-1"></i> <?= gettext("Giving History") ?></h3>
+                <span id="ytd-total-badge" class="badge bg-green-lt text-green ms-1 d-none"></span>
                 <div class="ms-auto d-flex align-items-center gap-2">
                     <ul class="nav nav-pills" role="tablist">
                         <li class="nav-item"><a class="nav-link active pledge-type-pill" href="#" data-filter=""><?= gettext("All") ?></a></li>
@@ -559,6 +603,16 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="table-responsive" style="overflow: visible;">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
+                    <tfoot>
+                        <tr id="giving-summary-row" class="d-none">
+                            <td colspan="7" class="border-top">
+                                <div class="d-flex gap-4 justify-content-end py-1 pe-2">
+                                    <span><strong><?= gettext("Pledged") ?>:</strong> <span id="giving-total-pledged" class="text-primary fw-bold">$0.00</span></span>
+                                    <span><strong><?= gettext("Paid") ?>:</strong> <span id="giving-total-paid" class="text-success fw-bold">$0.00</span></span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </div>

@@ -3,6 +3,61 @@ $(document).ready(function () {
   // webpack/people/person-group-manager.js — loaded via the
   // people-person-view webpack entry point.
 
+  // Giving History card: load family giving data (Finance role only)
+  if ($("#giving-history-card").length && window.CRM.personFamId > 0) {
+    window.CRM.APIRequest({
+      path: "payments/family/" + window.CRM.personFamId + "/list",
+    })
+      .then(function (resp) {
+        var data = resp && resp.data ? resp.data : [];
+        if (!data.length) {
+          $("#giving-history-loading").addClass("d-none");
+          $("#giving-history-empty").removeClass("d-none");
+          return;
+        }
+
+        var currentFY = window.CRM.currentFY || "";
+        var ytdTotal = 0;
+        var lastPayment = null;
+
+        data.forEach(function (row) {
+          if (row.PledgeOrPayment === "Payment") {
+            if (currentFY && row.FormattedFY === currentFY) {
+              ytdTotal += parseFloat(row.Amount) || 0;
+            }
+            if (!lastPayment || row.Date > lastPayment.Date) {
+              lastPayment = row;
+            }
+          }
+        });
+
+        $("#person-giving-ytd").text("$" + ytdTotal.toFixed(2));
+
+        if (ytdTotal > 0) {
+          $("#person-ytd-total-badge")
+            .text(i18next.t("YTD") + " $" + ytdTotal.toFixed(2))
+            .removeClass("d-none");
+        }
+
+        if (lastPayment) {
+          var safeAmt = window.CRM.escapeHtml("$" + parseFloat(lastPayment.Amount).toFixed(2));
+          var safeDate = window.CRM.escapeHtml(lastPayment.Date || "");
+          var safeFund = window.CRM.escapeHtml(lastPayment.Fund || "");
+          var detail = safeFund ? safeAmt + " (" + safeFund + ") — " + safeDate : safeAmt + " — " + safeDate;
+          $("#person-last-gift").html(detail);
+        } else {
+          $("#person-last-gift-row").addClass("d-none");
+        }
+
+        $("#giving-history-loading").addClass("d-none");
+        $("#giving-history-content").removeClass("d-none");
+      })
+      .catch(function () {
+        $("#giving-history-loading").addClass("d-none");
+        $("#giving-history-empty").removeClass("d-none");
+      });
+  }
+
   $("#input-person-properties").on("change", function () {
     var promptBox = $("#prompt-box");
     promptBox.removeClass("form-group").html("");
