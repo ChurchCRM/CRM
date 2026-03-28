@@ -8,7 +8,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFund;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
@@ -31,18 +30,12 @@ if (isset($_GET['DeleteError'])) {
 }
 $sReorderError = '';
 if (isset($_GET['ReorderError'])) {
-    $sReorderError = InputUtils::sanitizeText($_GET['ReorderError']);
+    $sReorderError = InputUtils::sanitizeAndEscapeText($_GET['ReorderError']);
 }
 $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
 $bDuplicateNameError = false;
-
-if ($sAction == 'delete' && strlen($sFund) > 0) {
-    DonationFundQuery::create()
-    ->findById($sFund)
-    ->delete();
-}
 
 $sPageTitle = gettext('Donation Fund Editor');
 $sPageSubtitle = gettext('Manage donation funds for financial tracking');
@@ -145,7 +138,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                 },
                 callback: function(result) {
                     if (result) {
-                        window.location ="DonationFundEditor.php?Fund=" + fundId +"&Action=delete";
+                        window.location ="DonationFundRowOps.php?FundID=" + fundId +"&Action=delete";
                     }
                 }
             });

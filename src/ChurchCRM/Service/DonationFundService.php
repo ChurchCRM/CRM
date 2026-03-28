@@ -136,7 +136,7 @@ class DonationFundService
         }
 
         if (array_key_exists('active', $data)) {
-            $fund->setActive((bool) $data['active']);
+            $fund->setActive($data['active'] ? 'true' : 'false');
         }
 
         $fund->save();
