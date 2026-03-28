@@ -5,7 +5,8 @@ function UpdateRoles() {
     url: window.CRM.root + "/api/groups/" + group_ID + "/roles",
     dataType: "json",
   }).done(function (data) {
-    var html = "";
+    // i18next-disable-next-line
+    var html = '<option value="">' + i18next.t("All Roles") + "</option>";
     $.each(data, function (index, value) {
       html += '<option value="' + value.OptionId + '"';
       // i18next-disable-next-line

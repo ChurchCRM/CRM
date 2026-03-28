@@ -71,10 +71,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-body">
                     <form method="POST" action="<?= $sRootPath ?>/Reports/GroupReport.php">
 
-                        <input type="hidden" name="GroupID"     value="<?= $iGroupID ?>">
+                        <input type="hidden" name="GroupID"     value="<?= InputUtils::escapeAttribute((int) $iGroupID) ?>">
                         <input type="hidden" name="GroupRole"   value="<?= InputUtils::escapeAttribute($groupRole) ?>">
                         <input type="hidden" name="OnlyCart"    value="0">
-                        <input type="hidden" name="ReportModel" value="<?= $reportModel ?>">
+                        <input type="hidden" name="ReportModel" value="<?= InputUtils::escapeAttribute((int) $reportModel) ?>">
 
                         <div class="mb-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
@@ -149,7 +149,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.getElementById('selectAllFields')?.addEventListener('click', function (e) {
     e.preventDefault();
     document.querySelectorAll('#fieldPills .form-selectgroup-input, #propPills .form-selectgroup-input').forEach(function (input) {

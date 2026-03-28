@@ -114,27 +114,37 @@
       console.error("Map: failed to load family data", err);
     });
 
-  // -- Legend item click interaction ------------------------------------------
+  // -- Legend item click/keyboard interaction ---------------------------------
   // .legend-item elements replace raw checkboxes; toggle .inactive class.
   // Desktop and mobile share the same legendId so both stay in sync.
+  // aria-pressed is kept in sync so screen readers report the toggled state.
+  function toggleLegendItem(item) {
+    var legendId = parseInt(item.dataset.legendId, 10);
+    var isActive = !item.classList.contains("inactive");
+
+    // Toggle all items with the same legendId (desktop + mobile)
+    document.querySelectorAll('.legend-item[data-legend-id="' + legendId + '"]').forEach(function (sibling) {
+      sibling.classList.toggle("inactive", isActive);
+      sibling.setAttribute("aria-pressed", isActive ? "false" : "true");
+    });
+
+    // Show / hide matching map markers
+    (classMarkers[legendId] || []).forEach(function (m) {
+      if (isActive) {
+        map.removeLayer(m);
+      } else {
+        m.addTo(map);
+      }
+    });
+  }
+
   document.querySelectorAll(".legend-item").forEach(function (item) {
-    item.addEventListener("click", function () {
-      var legendId = parseInt(item.dataset.legendId, 10);
-      var isActive = !item.classList.contains("inactive");
-
-      // Toggle all items with the same legendId (desktop + mobile)
-      document.querySelectorAll('.legend-item[data-legend-id="' + legendId + '"]').forEach(function (sibling) {
-        sibling.classList.toggle("inactive", isActive);
-      });
-
-      // Show / hide matching map markers
-      (classMarkers[legendId] || []).forEach(function (m) {
-        if (isActive) {
-          map.removeLayer(m);
-        } else {
-          m.addTo(map);
-        }
-      });
+    item.addEventListener("click", function () { toggleLegendItem(item); });
+    item.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleLegendItem(item);
+      }
     });
   });
 })();

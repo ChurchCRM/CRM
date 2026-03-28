@@ -34,7 +34,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div id="map-legend" class="d-none d-sm-block">
                 <div class="legend-title"><?= htmlspecialchars($mapConfig['legendTitle']) ?></div>
                 <?php foreach ($mapConfig['legendItems'] as $item): ?>
-                    <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>">
+                    <div class="legend-item active" data-legend-id="<?= (int) $item['id'] ?>"
+                         role="button" tabindex="0" aria-pressed="true">
                         <span class="legend-dot" style="background:<?= htmlspecialchars($item['color']) ?>"></span>
                         <span class="legend-label"><?= htmlspecialchars($item['label']) ?></span>
                     </div>

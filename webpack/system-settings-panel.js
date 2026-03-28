@@ -316,7 +316,7 @@ import "../src/skin/scss/system-settings-panel.scss";
      * @param {Array} options.settings - Array of setting names or setting config objects
      * @param {Function} options.onSave - Callback after successful save
      * @param {boolean} options.showAllSettingsLink - Show link to System Settings page
-     * @param {string} options.headerClass - CSS class for header (default: bg-info)
+     * @param {string} options.headerClass - CSS class for header (default: bg-primary-lt)
      */
     init(options) {
       this.options = Object.assign(
