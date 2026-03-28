@@ -168,43 +168,41 @@ if ($bCanManageGroups) {
                 <h5 class="card-title mb-0"><i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Teachers') ?></h5>
                 <span class="badge bg-success-lt text-success ms-2"><?= $teacherCount ?></span>
             </div>
-            <div class="card-body">
-                <div class="row">
-                    <?php foreach ($rsTeachers as $teacher):
-                        $phone = $teacher->getCellPhone() ?: $teacher->getHomePhone();
-                    ?>
-                    <div class="col-sm-6 col-lg-4 col-xl-3 mb-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
-                        <div class="card h-100">
-                            <div class="card-body p-4 text-center">
-                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
-                                    <span class="avatar avatar-xl mb-3">
-                                        <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>"
-                                             alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
-                                    </span>
-                                </a>
-                                <h3 class="m-0 mb-1">
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
-                                        <?= InputUtils::escapeHTML($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>
-                                    </a>
-                                </h3>
-                                <div class="text-secondary"><?= gettext('Teacher') ?></div>
-                            </div>
-                            <div class="d-flex">
-                                <?php if ($teacher->getEmail()): ?>
-                                <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="card-btn">
-                                    <i class="fa-solid fa-envelope me-2 text-muted"></i><?= gettext('Email') ?>
-                                </a>
-                                <?php endif; ?>
-                                <?php if ($phone): ?>
-                                <a href="tel:<?= urlencode($phone) ?>" class="card-btn">
-                                    <i class="fa-solid fa-phone me-2 text-muted"></i><?= gettext('Call') ?>
-                                </a>
-                                <?php endif; ?>
-                            </div>
+            <div class="list-group list-group-flush">
+                <?php foreach ($rsTeachers as $teacher):
+                    $phone = $teacher->getCellPhone() ?: $teacher->getHomePhone();
+                ?>
+                <div class="list-group-item p-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                                <span class="avatar avatar-md">
+                                    <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>"
+                                         alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
+                                </span>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                                <strong><?= InputUtils::escapeHTML($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?></strong>
+                            </a>
+                            <div class="text-muted small"><?= gettext('Teacher') ?></div>
+                        </div>
+                        <div class="col-auto d-flex gap-2">
+                            <?php if ($teacher->getEmail()): ?>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                            <?php endif; ?>
+                            <?php if ($phone): ?>
+                            <a href="tel:<?= urlencode($phone) ?>" class="btn btn-sm btn-ghost-success" title="<?= InputUtils::escapeAttribute($phone) ?>">
+                                <i class="fa-solid fa-phone"></i>
+                            </a>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    <?php endforeach; ?>
                 </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <?php endif; ?>
@@ -241,9 +239,17 @@ if ($bCanManageGroups) {
                             ?>
                             <tr class="ss-member" data-person-id="<?= (int) $child['kidId'] ?>" data-role="Student">
                                 <td>
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
-                                        <strong><?= InputUtils::escapeHTML($child['LastName'] . ', ' . $child['firstName']) ?></strong>
-                                    </a>
+                                    <div class="d-flex align-items-center gap-2">
+                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                            <span class="avatar avatar-sm">
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>"
+                                                     alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
+                                            </span>
+                                        </a>
+                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                            <strong><?= InputUtils::escapeHTML($child['LastName'] . ', ' . $child['firstName']) ?></strong>
+                                        </a>
+                                    </div>
                                 </td>
                                 <td><?= $hideAge ? '—' : InputUtils::escapeHTML($age) ?></td>
                                 <td>
@@ -328,7 +334,11 @@ if ($bCanManageGroups) {
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title"><i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($child['firstName'] . ' ' . $child['LastName']) ?></h4>
+                                <span class="avatar avatar-md me-2">
+                                    <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>"
+                                         alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
+                                </span>
+                                <h4 class="modal-title"><?= InputUtils::escapeHTML($child['firstName'] . ' ' . $child['LastName']) ?></h4>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                             </div>
                             <div class="modal-body">
