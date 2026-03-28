@@ -30,17 +30,17 @@ import "../src/skin/scss/system-settings-panel.scss";
         const checked = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <div class="form-check form-switch mt-2">
+                        <label class="form-check form-switch mt-2 mb-0">
                             <input type="checkbox" class="form-check-input setting-input"
                                    id="${setting.name}" name="${setting.name}"
                                    role="switch"
                                    data-type="boolean"
                                    ${checked ? "checked" : ""}>
-                            <label class="form-check-label" for="${setting.name}">
+                            <span class="form-check-label">
                                 ${setting.label}
                                 ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
-                            </label>
-                        </div>
+                            </span>
+                        </label>
                     </div>
                 `;
       },

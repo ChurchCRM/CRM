@@ -34,12 +34,13 @@
         line-height: 1.3;
     }
 
-    // Toggle switch — Tabler/BS5 form-switch
-    .form-switch {
+    // Toggle switch — Tabler pattern: parent <label> + child <span.form-check-label>
+    .form-check.form-switch {
+        cursor: pointer;
+
         .form-check-label {
             font-size: 0.875rem;
             font-weight: 500;
-            cursor: pointer;
         }
     }
 

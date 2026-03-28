@@ -189,7 +189,7 @@ if ($bCanManageGroups) {
                                 </h3>
                                 <div class="text-secondary"><?= gettext('Teacher') ?></div>
                             </div>
-                            <div class="card-footer p-0 d-flex">
+                            <div class="d-flex">
                                 <?php if ($teacher->getEmail()): ?>
                                 <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="card-btn">
                                     <i class="fa-solid fa-envelope me-2 text-muted"></i><?= gettext('Email') ?>
