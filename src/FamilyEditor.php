@@ -574,9 +574,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-6">
                     <label for="FamilyName"><?= gettext('Family Name') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-people-roof"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-people-roof"></i></span>
                         <input type="text" name="Name" id="FamilyName" value="<?= InputUtils::escapeAttribute($sName) ?>" maxlength="48" class="form-control">
                     </div>
                     <?php if ($sNameError) { ?>
@@ -590,9 +588,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-4">
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
                         <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
@@ -620,18 +616,14 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-6">
                     <label for="Address1"><?= gettext('Address') ?> 1:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
                         <input type="text" id="Address1" name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1) ?>" maxlength="250" class="form-control">
                     </div>
                 </div>
                 <div class="mb-3 col-md-6">
                     <label for="Address2"><?= gettext('Address') ?> 2:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
                         <input type="text" id="Address2" name="Address2" value="<?= InputUtils::escapeAttribute($sAddress2) ?>" maxlength="250" class="form-control">
                     </div>
                 </div>
@@ -640,9 +632,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-4">
                     <label for="City"><?= gettext('City') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
                         <input type="text" id="City" name="City" value="<?= InputUtils::escapeAttribute($sCity) ?>" maxlength="50" class="form-control">
                     </div>
                 </div>
@@ -676,18 +666,14 @@ require_once __DIR__ . '/Include/Header.php';
                         <div class="mb-3 col-md-3">
                             <label for="Latitude"><?= gettext('Latitude') ?>:</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
-                                </div>
+                                <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                                 <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude != 0 ? $nLatitude : '' ?>" maxlength="50">
                             </div>
                         </div>
                         <div class="mb-3 col-md-3">
                             <label for="Longitude"><?= gettext('Longitude') ?>:</label>
                             <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
-                                </div>
+                                <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                                 <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude && $nLongitude != 0 ? $nLongitude : '' ?>" maxlength="50">
                             </div>
                         </div>
@@ -706,14 +692,12 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-6">
                     <label for="HomePhone"><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <input type="checkbox" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                <label class="mb-0 ms-1 small"><?= gettext('No format') ?></label>
+                        <div class="input-group-text">
+                            <div class="form-check mb-0">
+                                <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                             </div>
                         </div>
                     </div>
@@ -721,9 +705,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-6">
                     <label for="Email"><?= gettext('Email') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                         <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
                     </div>
                     <?php if ($sEmailError) { ?>
@@ -752,9 +734,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="mb-3 col-md-4">
                         <label for="Envelope"><?= gettext('Envelope Number') ?>:</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-envelope-open-text"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-envelope-open-text"></i></span>
                             <input type="text" id="Envelope" name="Envelope" class="form-control" value="<?= $fam_Envelope ?? '' ?>" maxlength="50">
                         </div>
                     </div>

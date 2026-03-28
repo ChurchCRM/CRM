@@ -208,8 +208,8 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                                 <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
                                                 <span class="input-group-text">
                                                     <div class="form-check mb-0">
-                                                        <input type="checkbox" class="form-check-input member-phone-noformat" name="member-phone-noformat" value="1">
-                                                        <label class="form-check-label member-phone-noformat-label"><?= gettext('No format') ?></label>
+                                                        <input type="checkbox" class="form-check-input member-phone-noformat" id="member-phone-noformat" name="member-phone-noformat" value="1">
+                                                        <label class="form-check-label member-phone-noformat-label" for="member-phone-noformat"><?= gettext('No format') ?></label>
                                                     </div>
                                                 </span>
                                             </div>

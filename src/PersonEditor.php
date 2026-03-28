@@ -758,9 +758,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= $bFamilyAddress1 ? '</span>' : '' ?>
                     </label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
                         <input type="text" name="Address1" id="Address1"
                                value="<?= InputUtils::escapeAttribute(stripslashes($sAddress1)) ?>"
                                maxlength="250" class="form-control">
@@ -856,19 +854,15 @@ require_once __DIR__ . '/Include/Header.php';
                             ?>
                         </label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                             <input type="tel" name="HomePhone" id="HomePhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <div class="form-check mb-0">
-                                        <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                        <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                                    </div>
+                            <div class="input-group-text">
+                                <div class="form-check mb-0">
+                                    <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                                 </div>
                             </div>
                         </div>
@@ -884,19 +878,15 @@ require_once __DIR__ . '/Include/Header.php';
                             ?>
                         </label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
                             <input type="tel" name="CellPhone" id="CellPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatCell') ?>"}'>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <div class="form-check mb-0">
-                                        <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                        <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
-                                    </div>
+                            <div class="input-group-text">
+                                <div class="form-check mb-0">
+                                    <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
                                 </div>
                             </div>
                         </div>
@@ -912,19 +902,15 @@ require_once __DIR__ . '/Include/Header.php';
                             ?>
                         </label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
                             <input type="tel" name="WorkPhone" id="WorkPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"}'>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <div class="form-check mb-0">
-                                        <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                        <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
-                                    </div>
+                            <div class="input-group-text">
+                                <div class="form-check mb-0">
+                                    <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
+                                    <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
                                 </div>
                             </div>
                         </div>
@@ -944,9 +930,7 @@ require_once __DIR__ . '/Include/Header.php';
                             ?>
                         </label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
                                    maxlength="100" class="form-control">
@@ -958,9 +942,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="mb-3">
                         <label for="WorkEmail"><?= gettext('Work / Other Email') ?>:</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
-                            </div>
+                            <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
                             <input type="email" name="WorkEmail" id="WorkEmail"
                                    value="<?= InputUtils::escapeAttribute($sWorkEmail) ?>"
                                    maxlength="100" class="form-control">
@@ -984,9 +966,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-4">
                     <label for="Facebook">Facebook:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-brands fa-facebook"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-brands fa-facebook"></i></span>
                         <input type="text" name="Facebook" id="Facebook"
                                value="<?= InputUtils::escapeAttribute($sFacebook) ?>"
                                maxlength="50" class="form-control">
@@ -998,9 +978,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-4">
                     <label for="Twitter">X:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-brands fa-x-twitter"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-brands fa-x-twitter"></i></span>
                         <input type="text" name="Twitter" id="Twitter"
                                value="<?= InputUtils::escapeAttribute($sTwitter) ?>"
                                maxlength="50" class="form-control">
@@ -1012,9 +990,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-4">
                     <label for="LinkedIn">LinkedIn:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-brands fa-linkedin"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-brands fa-linkedin"></i></span>
                         <input type="text" name="LinkedIn" id="LinkedIn"
                                value="<?= InputUtils::escapeAttribute($sLinkedIn) ?>"
                                maxlength="50" class="form-control">
@@ -1053,9 +1029,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-3">
                     <label for="MembershipDate"><?= gettext('Membership Date') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
@@ -1068,9 +1042,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <div class="mb-3 col-md-3">
                     <label for="FriendDate"><?= gettext('Friend Date') ?>:</label>
                     <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
-                        </div>
+                        <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
