@@ -490,3 +490,24 @@ SystemConfig::setValue('bEnableUpdate', true);
 ---
 
 Last updated: February 16, 2026
+
+### Removing a ConfigItem — Safe Even With Remaining Code References <!-- learned: 2026-03-27 -->
+
+`SystemConfig::getValue()` returns the item's default value (or `''`) if the key is not registered in `buildConfigs()`. It does **not** throw. So it is safe to remove a `ConfigItem` from `buildConfigs()` while legacy references remain in PHP/JS — they will silently get the default/empty value.
+
+```php
+// After removing ConfigItem for 'bHSTSEnable':
+// Header-Security.php still calls getBooleanValue('bHSTSEnable')
+// → returns false (empty default) → HSTS header is simply not sent. Safe.
+```
+
+Always pair a ConfigItem removal with a `DELETE FROM config_cfg WHERE cfg_name = '...'` in the upgrade migration.
+
+### Verify buildCategories() After Editing SystemConfig <!-- learned: 2026-03-27 -->
+
+When adding or removing entries near `buildCategories()`, verify every key listed in every category still has a matching entry in `buildConfigs()`. Missing entries will silently produce PHP errors at runtime when the settings page iterates categories.
+
+```bash
+# Quick grep to cross-check
+grep -o "'[a-zA-Z_]*'" src/ChurchCRM/dto/SystemConfig.php | sort | uniq -d
+```

@@ -139,7 +139,7 @@ if (isset($_POST['GroupPropSubmit'])) {
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Groups'), '/groups/dashboard'],
-    [$grp_Name, '/GroupView.php?GroupID=' . $iGroupID],
+    [$grp_Name, '/groups/view/' . $iGroupID],
     [gettext('Member Properties')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

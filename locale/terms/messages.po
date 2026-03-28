@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-27 00:37+0000\n"
+"POT-Creation-Date: 2026-03-28 16:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,12 +31,6 @@ msgid " Deposit #"
 msgstr ""
 
 msgid " Italic"
-msgstr ""
-
-msgid " Property Assignment"
-msgstr ""
-
-msgid " Property Unassignment"
 msgstr ""
 
 msgid " by that name already exists."
@@ -167,6 +161,9 @@ msgstr ""
 msgid "(No assigned family)"
 msgstr ""
 
+msgid "(optional — leave blank to include all roles)"
+msgstr ""
+
 msgid "(refresh from GitHub)"
 msgstr ""
 
@@ -231,6 +228,9 @@ msgid "ALERT"
 msgstr ""
 
 msgid "API Key is required."
+msgstr ""
+
+msgid "About"
 msgstr ""
 
 msgid "About WebDAV Backups"
@@ -338,12 +338,6 @@ msgstr ""
 msgid "Add Group"
 msgstr ""
 
-msgid "Add Group Member"
-msgstr ""
-
-msgid "Add Group Members to Cart"
-msgstr ""
-
 msgid "Add Individuals to Cart"
 msgstr ""
 
@@ -384,12 +378,6 @@ msgid "Add Records"
 msgstr ""
 
 msgid "Add Results to Cart"
-msgstr ""
-
-msgid "Add Selected Members to Cart"
-msgstr ""
-
-msgid "Add Selected Members to Group"
 msgstr ""
 
 msgid "Add Students"
@@ -474,9 +462,6 @@ msgid "Add staff and volunteers"
 msgstr ""
 
 msgid "Add staff or volunteers as system users"
-msgstr ""
-
-msgid "Add students to this class"
 msgstr ""
 
 msgid "Add to Cart"
@@ -604,6 +589,9 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
+msgid "All Roles"
+msgstr ""
+
 msgid "All System Settings"
 msgstr ""
 
@@ -632,6 +620,9 @@ msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
 msgstr ""
 
 msgid "All rights reserved"
+msgstr ""
+
+msgid "All roles"
 msgstr ""
 
 msgid "All system file signatures match the expected values."
@@ -666,6 +657,9 @@ msgid "Almost there — review your details"
 msgstr ""
 
 msgid "Already in a family"
+msgstr ""
+
+msgid "Also runs automatically via WebDAV based on your configured interval."
 msgstr ""
 
 #. Context: countries
@@ -823,9 +817,6 @@ msgstr ""
 msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
 msgstr ""
 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr ""
-
 msgid "Are you sure you want to unassign this property?"
 msgstr ""
 
@@ -866,9 +857,6 @@ msgstr ""
 msgid "Assign a New Volunteer Opportunity"
 msgstr ""
 
-msgid "Assign a property to a record"
-msgstr ""
-
 msgid "Assign and manage donation envelope numbers"
 msgstr ""
 
@@ -894,9 +882,6 @@ msgid "Assigned Groups"
 msgstr ""
 
 msgid "Assigned Properties"
-msgstr ""
-
-msgid "Assigning"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -971,6 +956,9 @@ msgstr ""
 msgid "BCC"
 msgstr ""
 
+msgid "BCC All"
+msgstr ""
+
 msgid "Back"
 msgstr ""
 
@@ -1008,6 +996,9 @@ msgid "Back to login"
 msgstr ""
 
 msgid "Background Color"
+msgstr ""
+
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
 msgstr ""
 
 msgid "Backup"
@@ -1061,7 +1052,7 @@ msgstr ""
 msgid "Backup in progress, please wait..."
 msgstr ""
 
-msgid "Backup to External Storage"
+msgid "Backup to External Storage Now"
 msgstr ""
 
 msgid "Backup to WebDAV Now"
@@ -1607,9 +1598,6 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
-msgid "Church Services"
-msgstr ""
-
 msgid "Church information saved successfully."
 msgstr ""
 
@@ -1683,6 +1671,9 @@ msgid "Clear Filter"
 msgstr ""
 
 msgid "Clear Filters"
+msgstr ""
+
+msgid "Clear all"
 msgstr ""
 
 msgid "Clear all data and start fresh"
@@ -1795,6 +1786,9 @@ msgstr ""
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
 msgstr ""
 
+msgid "Confession"
+msgstr ""
+
 msgid "Configuration item not found"
 msgstr ""
 
@@ -1882,9 +1876,6 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Congregation Map"
-msgstr ""
-
-msgid "Congregation Map — Setup Required"
 msgstr ""
 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
@@ -1975,10 +1966,19 @@ msgstr ""
 msgid "Coordinate database file name"
 msgstr ""
 
+msgid "Copied"
+msgstr ""
+
 msgid "Copied!"
 msgstr ""
 
 msgid "Copy"
+msgstr ""
+
+msgid "Copy Members to Group"
+msgstr ""
+
+msgid "Copy to Group"
 msgstr ""
 
 msgid "Copyright"
@@ -2048,9 +2048,6 @@ msgstr ""
 msgid "Create Report"
 msgstr ""
 
-msgid "Create a backup first"
-msgstr ""
-
 msgid "Create a backup now and upload it to your WebDAV server."
 msgstr ""
 
@@ -2058,6 +2055,9 @@ msgid "Create a backup of your church database"
 msgstr ""
 
 msgid "Create a backup of your database before applying the update."
+msgstr ""
+
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
 msgstr ""
 
 msgid "Create a new Event"
@@ -2238,9 +2238,6 @@ msgid "DSN"
 msgstr ""
 
 msgid "Dashboard"
-msgstr ""
-
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
 msgstr ""
 
 msgid "Data & Reports"
@@ -2429,6 +2426,9 @@ msgstr ""
 msgid "Delete Family Record ONLY"
 msgstr ""
 
+msgid "Delete Group"
+msgstr ""
+
 msgid "Delete Person"
 msgstr ""
 
@@ -2453,9 +2453,6 @@ msgstr ""
 msgid "Delete records permission"
 msgstr ""
 
-msgid "Delete this Group"
-msgstr ""
-
 msgid "Delete this person?"
 msgstr ""
 
@@ -2472,10 +2469,10 @@ msgstr ""
 msgid "Deleting an event will also delete all attendance counts. Delete this event?"
 msgstr ""
 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
 msgstr ""
 
-msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
 msgstr ""
 
 msgid "Deletion Results"
@@ -2625,7 +2622,7 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-msgid "Disabled for this group."
+msgid "Disabled in settings"
 msgstr ""
 
 msgid "Disclaimer"
@@ -2828,7 +2825,13 @@ msgstr ""
 msgid "Edit Family"
 msgstr ""
 
+msgid "Edit Form"
+msgstr ""
+
 msgid "Edit Fundraiser"
+msgstr ""
+
+msgid "Edit Group"
 msgstr ""
 
 msgid "Edit Group-Specific Properties Form"
@@ -2838,6 +2841,9 @@ msgid "Edit JSON Settings"
 msgstr ""
 
 msgid "Edit List Options"
+msgstr ""
+
+msgid "Edit Member Properties Form"
 msgstr ""
 
 msgid "Edit Payment"
@@ -2867,16 +2873,10 @@ msgstr ""
 msgid "Edit Value"
 msgstr ""
 
-msgid "Edit class details"
-msgstr ""
-
 msgid "Edit custom properties for a group member"
 msgstr ""
 
 msgid "Edit records permission"
-msgstr ""
-
-msgid "Edit this Group"
 msgstr ""
 
 msgid "Edited"
@@ -2903,12 +2903,6 @@ msgstr ""
 msgid "Email"
 msgstr ""
 
-msgid "Email (BCC)"
-msgstr ""
-
-msgid "Email (To)"
-msgstr ""
-
 msgid "Email Address"
 msgstr ""
 
@@ -2927,10 +2921,10 @@ msgstr ""
 msgid "Email Debug Info"
 msgstr ""
 
-msgid "Email Families"
+msgid "Email Export"
 msgstr ""
 
-msgid "Email Group"
+msgid "Email Families"
 msgstr ""
 
 msgid "Email PDF"
@@ -2949,9 +2943,6 @@ msgid "Email address is required."
 msgstr ""
 
 msgid "Email cart items"
-msgstr ""
-
-msgid "Email export"
 msgstr ""
 
 msgid "Email is Not Valid"
@@ -3023,9 +3014,6 @@ msgstr ""
 msgid "Enable non-deductible payments"
 msgstr ""
 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr ""
-
 msgid "Enable the MailChimp plugin to sync contacts"
 msgstr ""
 
@@ -3082,6 +3070,9 @@ msgstr ""
 
 #. Context: locales
 msgid "English - United States"
+msgstr ""
+
+msgid "Enrolled"
 msgstr ""
 
 msgid "Ensure all deposits for the tax year are closed before generating statements."
@@ -3274,10 +3265,13 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
-msgid "Exclude"
+msgid "Exclude Inactive Families"
 msgstr ""
 
-msgid "Exclude Inactive Families"
+msgid "Exclude from Email Export"
+msgstr ""
+
+msgid "Excluded"
 msgstr ""
 
 msgid "Execute Query"
@@ -3356,9 +3350,6 @@ msgid "External Backup (WebDAV)"
 msgstr ""
 
 msgid "External Backup Settings"
-msgstr ""
-
-msgid "External Backup plugin is enabled but not configured."
 msgstr ""
 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -3734,6 +3725,9 @@ msgstr ""
 msgid "Field where last Confession is stored, must be a date type"
 msgstr ""
 
+msgid "Fields to Include"
+msgstr ""
+
 #. Context: countries
 msgid "Fiji"
 msgstr ""
@@ -3991,6 +3985,9 @@ msgstr ""
 msgid "Full Backup"
 msgstr ""
 
+msgid "Full Group View"
+msgstr ""
+
 msgid "Full Path:"
 msgstr ""
 
@@ -4219,9 +4216,6 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
-msgid "Group & Role Reports"
-msgstr ""
-
 msgid "Group Directory"
 msgstr ""
 
@@ -4229,6 +4223,9 @@ msgid "Group Editor"
 msgstr ""
 
 msgid "Group Listing"
+msgstr ""
+
+msgid "Group Map"
 msgstr ""
 
 msgid "Group Member Properties Editor"
@@ -4243,9 +4240,6 @@ msgstr ""
 msgid "Group Member Roles Editor"
 msgstr ""
 
-msgid "Group Members"
-msgstr ""
-
 msgid "Group Membership"
 msgstr ""
 
@@ -4256,6 +4250,9 @@ msgid "Group Name"
 msgstr ""
 
 msgid "Group Properties"
+msgstr ""
+
+msgid "Group Reports"
 msgstr ""
 
 msgid "Group Role"
@@ -4297,9 +4294,6 @@ msgstr ""
 msgid "Group removed from cart"
 msgstr ""
 
-msgid "Group reports"
-msgstr ""
-
 msgid "Group role name changes are saved as soon as the box loses focus"
 msgstr ""
 
@@ -4315,16 +4309,10 @@ msgstr ""
 msgid "Group-Specific Properties Form Editor"
 msgstr ""
 
-msgid "Group-Specific Property Fields"
-msgstr ""
-
 msgid "GroupID for Cart must be numeric"
 msgstr ""
 
 msgid "GroupID required for role selection prompt"
-msgstr ""
-
-msgid "GroupRole"
 msgstr ""
 
 msgid "Grouped by Family"
@@ -4603,7 +4591,13 @@ msgstr ""
 msgid "Include financial data (donation funds, pledges)"
 msgstr ""
 
+msgid "Include in Email Export"
+msgstr ""
+
 msgid "Include only these classifications in the directory, comma separated"
+msgstr ""
+
+msgid "Included"
 msgstr ""
 
 msgid "Includes database and all uploaded photos. Larger file size."
@@ -4841,6 +4835,12 @@ msgid "Kenya"
 msgstr ""
 
 msgid "Key People"
+msgstr ""
+
+msgid "Kiosk"
+msgstr ""
+
+msgid "Kiosk Enabled"
 msgstr ""
 
 msgid "Kiosk Manager"
@@ -5229,9 +5229,6 @@ msgstr ""
 msgid "Make User"
 msgstr ""
 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr ""
-
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr ""
 
@@ -5323,6 +5320,9 @@ msgstr ""
 msgid "Manage person, family, and group property types"
 msgstr ""
 
+msgid "Manage properties from the"
+msgstr ""
+
 msgid "Manage system users, permissions, and two-factor authentication settings"
 msgstr ""
 
@@ -5351,9 +5351,6 @@ msgid "Map Settings"
 msgstr ""
 
 msgid "Map cart items"
-msgstr ""
-
-msgid "Map this group"
 msgstr ""
 
 msgid "Map to Field"
@@ -5464,6 +5461,9 @@ msgstr ""
 msgid "Member Role Change"
 msgstr ""
 
+msgid "Member Roles"
+msgstr ""
+
 msgid "Member's Name"
 msgstr ""
 
@@ -5478,15 +5478,6 @@ msgid "Members"
 msgstr ""
 
 msgid "Members added to cart."
-msgstr ""
-
-msgid "Members from group"
-msgstr ""
-
-msgid "Members to another group"
-msgstr ""
-
-msgid "Members to cart"
 msgstr ""
 
 #. Context: query_qry
@@ -5681,10 +5672,16 @@ msgstr ""
 msgid "Move Event"
 msgstr ""
 
-msgid "Move Selected Members to Group"
+msgid "Move Members"
+msgstr ""
+
+msgid "Move Members to Group"
 msgstr ""
 
 msgid "Move down"
+msgstr ""
+
+msgid "Move to Group"
 msgstr ""
 
 msgid "Move up"
@@ -5805,6 +5802,9 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
+msgid "New"
+msgstr ""
+
 msgid "New Access Token"
 msgstr ""
 
@@ -5873,9 +5873,6 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-msgid "Next 7 days and past 7 days"
-msgstr ""
-
 msgid "Next Member"
 msgstr ""
 
@@ -5901,10 +5898,16 @@ msgstr ""
 msgid "No Active Deposit"
 msgstr ""
 
+msgid "No Anniversaries"
+msgstr ""
+
 msgid "No Attendance counts recorded"
 msgstr ""
 
 msgid "No Audiences Found"
+msgstr ""
+
+msgid "No Birthdays"
 msgstr ""
 
 msgid "No Cash"
@@ -5913,10 +5916,19 @@ msgstr ""
 msgid "No Changes"
 msgstr ""
 
+msgid "No Check-ins"
+msgstr ""
+
 msgid "No Checks"
 msgstr ""
 
 msgid "No Data Found"
+msgstr ""
+
+msgid "No Deposit Tracking"
+msgstr ""
+
+msgid "No Deposits"
 msgstr ""
 
 msgid "No Group (Select for Kiosk Check-in)"
@@ -5931,16 +5943,19 @@ msgstr ""
 msgid "No Payments on this Deposit"
 msgstr ""
 
-msgid "No Role Selected"
-msgstr ""
-
 msgid "No Sunday School"
 msgstr ""
 
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No anniversaries in the past or next 7 days"
+msgstr ""
+
 msgid "No backups recorded"
+msgstr ""
+
+msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
 msgid "No community plugins installed"
@@ -5955,7 +5970,13 @@ msgstr ""
 msgid "No custom person fields have been added yet"
 msgstr ""
 
+msgid "No deposit data available yet"
+msgstr ""
+
 msgid "No deposits found."
+msgstr ""
+
+msgid "No description set."
 msgstr ""
 
 msgid "No email address on file"
@@ -5965,6 +5986,9 @@ msgid "No email passed in"
 msgstr ""
 
 msgid "No event types defined yet."
+msgstr ""
+
+msgid "No events linked to this class."
 msgstr ""
 
 msgid "No family name entered!"
@@ -5999,6 +6023,9 @@ msgstr ""
 
 #, php-format
 msgid "No matches for \"%s\". Try a different search term."
+msgstr ""
+
+msgid "No member properties defined."
 msgstr ""
 
 msgid "No members found for this role."
@@ -6059,9 +6086,6 @@ msgid "No volunteer opportunity assignments yet."
 msgstr ""
 
 msgid "No, cancel this deletion"
-msgstr ""
-
-msgid "No, retain this assignment"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -6245,9 +6269,6 @@ msgid "Only Families with unpaid pledges"
 msgstr ""
 
 msgid "Only Payments with Pledges"
-msgstr ""
-
-msgid "Only cart people?"
 msgstr ""
 
 msgid "Only the new data below"
@@ -6471,6 +6492,9 @@ msgid "Passwords do not match"
 msgstr ""
 
 msgid "Passwords must be at least"
+msgstr ""
+
+msgid "Past & next 7 days"
 msgstr ""
 
 msgid "Payment"
@@ -6748,9 +6772,6 @@ msgstr ""
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr ""
 
-msgid "Please confirm removal of this property from this"
-msgstr ""
-
 msgid "Please confirm removal of user status from"
 msgstr ""
 
@@ -6926,6 +6947,9 @@ msgstr ""
 msgid "Plugin disabled successfully"
 msgstr ""
 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr ""
+
 msgid "Plugin enabled successfully"
 msgstr ""
 
@@ -7052,13 +7076,16 @@ msgstr ""
 msgid "Property Types"
 msgstr ""
 
+msgid "Property assignment not found."
+msgstr ""
+
+msgid "Property deleted successfully."
+msgstr ""
+
 msgid "Property not found"
 msgstr ""
 
-msgid "Property successfully assigned."
-msgstr ""
-
-msgid "Property to Delete"
+msgid "Property not found."
 msgstr ""
 
 msgid "Provide any corrections or additional information here..."
@@ -7114,10 +7141,10 @@ msgstr ""
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr ""
 
-msgid "Ready to create a backup. Select your options above and click a backup button."
+msgid "Ready to back up"
 msgstr ""
 
-msgid "Ready to restore. Select a backup file and click Restore Database."
+msgid "Ready to restore"
 msgstr ""
 
 msgid "Recent Deposits"
@@ -7230,13 +7257,10 @@ msgstr ""
 msgid "Remove All from Cart"
 msgstr ""
 
+msgid "Remove Property"
+msgstr ""
+
 msgid "Remove Results from Cart"
-msgstr ""
-
-msgid "Remove Selected Members from group"
-msgstr ""
-
-msgid "Remove a property from a record"
 msgstr ""
 
 msgid "Remove all from Cart"
@@ -7246,9 +7270,6 @@ msgid "Remove from Cart"
 msgstr ""
 
 msgid "Remove from Class"
-msgstr ""
-
-msgid "Remove from Group"
 msgstr ""
 
 msgid "Remove this attendance count?"
@@ -7278,9 +7299,6 @@ msgstr ""
 msgid "Report Heading:"
 msgstr ""
 
-msgid "Report Model"
-msgstr ""
-
 msgid "Report Settings"
 msgstr ""
 
@@ -7299,15 +7317,6 @@ msgstr ""
 msgid "Report an issue"
 msgstr ""
 
-msgid "Report for any role in group selected"
-msgstr ""
-
-msgid "Report for group and role selected"
-msgstr ""
-
-msgid "Report on groups and roles (may be multi-page PDF)"
-msgstr ""
-
 msgid "Reports"
 msgstr ""
 
@@ -7321,9 +7330,6 @@ msgid "Request Password Reset"
 msgstr ""
 
 msgid "Require all users to enroll in two-factor authentication"
-msgstr ""
-
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
 msgstr ""
 
 msgid "Required"
@@ -7413,6 +7419,9 @@ msgstr ""
 msgid "Return to Family View"
 msgstr ""
 
+msgid "Return to Groups"
+msgstr ""
+
 msgid "Return to People"
 msgstr ""
 
@@ -7457,6 +7466,9 @@ msgid "Role name updated."
 msgstr ""
 
 msgid "Role not found."
+msgstr ""
+
+msgid "Roles"
 msgstr ""
 
 #. Context: countries
@@ -7674,6 +7686,9 @@ msgstr ""
 msgid "Search for supervisor..."
 msgstr ""
 
+msgid "Search groups..."
+msgstr ""
+
 msgid "Search or select..."
 msgstr ""
 
@@ -7734,6 +7749,12 @@ msgstr ""
 msgid "Select Family"
 msgstr ""
 
+msgid "Select Fields"
+msgstr ""
+
+msgid "Select Fields to Include"
+msgstr ""
+
 msgid "Select Fiscal Year"
 msgstr ""
 
@@ -7762,6 +7783,9 @@ msgid "Select Schedule"
 msgstr ""
 
 msgid "Select Season"
+msgstr ""
+
+msgid "Select a backup file and click Restore Database."
 msgstr ""
 
 msgid "Select a family"
@@ -7809,16 +7833,13 @@ msgstr ""
 msgid "Select the group to which you would like to add your cart"
 msgstr ""
 
-msgid "Select the group you would like to report"
-msgstr ""
-
 msgid "Select the type of record this property applies to"
 msgstr ""
 
-msgid "Select which information you want to include"
+msgid "Select your event type"
 msgstr ""
 
-msgid "Select your event type"
+msgid "Select your options above and click a backup button."
 msgstr ""
 
 msgid "Selected record successfully removed from the Cart."
@@ -7855,12 +7876,6 @@ msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
 msgid "Send email to families"
-msgstr ""
-
-msgid "Send email with recipients in BCC field (hidden from each other)"
-msgstr ""
-
-msgid "Send email with recipients in To field"
 msgstr ""
 
 #. Context: countries
@@ -7996,6 +8011,9 @@ msgstr ""
 msgid "Setup Progress"
 msgstr ""
 
+msgid "Setup Required"
+msgstr ""
+
 msgid "Setup Tasks:"
 msgstr ""
 
@@ -8025,6 +8043,10 @@ msgid "Show neighbors with these classifications"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+#, php-format
+msgid "Showing members of: %s"
 msgstr ""
 
 msgid "Showing students with birthdays in"
@@ -8195,9 +8217,6 @@ msgstr ""
 
 #. Context: countries
 msgid "St. Vincent & Grenadines"
-msgstr ""
-
-msgid "Standard Info"
 msgstr ""
 
 msgid "Start Column"
@@ -8491,9 +8510,6 @@ msgstr ""
 msgid "Text Field (long)"
 msgstr ""
 
-msgid "Text Group"
-msgstr ""
-
 msgid "Text before name in emails/reports"
 msgstr ""
 
@@ -8560,6 +8576,9 @@ msgstr ""
 msgid "The property could not be assigned."
 msgstr ""
 
+msgid "The property could not be removed."
+msgstr ""
+
 msgid "The property could not be unassigned."
 msgstr ""
 
@@ -8571,6 +8590,9 @@ msgid "The property is already assigned."
 msgstr ""
 
 msgid "The property is successfully assigned."
+msgstr ""
+
+msgid "The property is successfully removed."
 msgstr ""
 
 msgid "The property is successfully unassigned."
@@ -8836,13 +8858,7 @@ msgstr ""
 msgid "Total Deposits:"
 msgstr ""
 
-msgid "Total Enrolled"
-msgstr ""
-
 msgid "Total Groups"
-msgstr ""
-
-msgid "Total Members"
 msgstr ""
 
 msgid "Total Payments"
@@ -9012,9 +9028,6 @@ msgid "Unable to re-encode JSON for configuration"
 msgstr ""
 
 msgid "Unassigned"
-msgstr ""
-
-msgid "Unassigning"
 msgstr ""
 
 msgid "Unclassified"
@@ -9567,6 +9580,9 @@ msgstr ""
 msgid "We could not find the family you were looking for."
 msgstr ""
 
+msgid "We could not find the group you were looking for."
+msgstr ""
+
 msgid "We could not find the person you were looking for."
 msgstr ""
 
@@ -9732,13 +9748,13 @@ msgstr ""
 msgid "Yes, Remove"
 msgstr ""
 
+msgid "Yes, delete"
+msgstr ""
+
 msgid "Yes, delete this Opportunity"
 msgstr ""
 
 msgid "Yes, delete this record"
-msgstr ""
-
-msgid "Yes, unassign this Property"
 msgstr ""
 
 msgid "You are about to add a new deposit without a comment"
@@ -9763,6 +9779,9 @@ msgid "You can now use your authenticator app to sign in. Each code is valid for
 msgstr ""
 
 msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You do not have finance permissions to view deposits."
 msgstr ""
 
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
@@ -9948,6 +9967,9 @@ msgstr ""
 msgid "ago"
 msgstr ""
 
+msgid "all members"
+msgstr ""
+
 msgid "already in cart"
 msgstr ""
 
@@ -10033,6 +10055,9 @@ msgstr ""
 msgid "from this group?"
 msgstr ""
 
+msgid "full group view"
+msgstr ""
+
 msgid "funds"
 msgstr ""
 
@@ -10076,6 +10101,9 @@ msgid "loading"
 msgstr ""
 
 msgid "manifest."
+msgstr ""
+
+msgid "members"
 msgstr ""
 
 msgid "members. Already had"
@@ -10221,6 +10249,9 @@ msgstr ""
 msgid "to"
 msgstr ""
 
+msgid "to another group?"
+msgstr ""
+
 msgid "total"
 msgstr ""
 
@@ -10244,4 +10275,10 @@ msgid "— Select Country —"
 msgstr ""
 
 msgid "— Select State —"
+msgstr ""
+
+msgid "— Select a group —"
+msgstr ""
+
+msgid "— Select type (optional) —"
 msgstr ""

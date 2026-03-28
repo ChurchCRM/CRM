@@ -31,7 +31,7 @@ $rsGroupTypes = ListOptionQuery::create()->filterById('3')->find();     // Get G
 $rsGroupRoleSeed = GroupQuery::create()->filterByRoleListId(['min' => 0], $comparison)->find();     //Group Group Role List
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Groups'), '/groups/dashboard'],
-    [$thisGroup ? InputUtils::escapeHTML($thisGroup->getName()) : gettext('New Group'), $thisGroup ? '/GroupView.php?GroupID=' . $iGroupID : ''],
+    [$thisGroup ? InputUtils::escapeHTML($thisGroup->getName()) : gettext('New Group'), $thisGroup ? '/groups/view/' . $iGroupID : ''],
     [gettext('Edit')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

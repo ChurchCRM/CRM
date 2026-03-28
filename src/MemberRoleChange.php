@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -34,7 +35,7 @@ if (isset($_POST['Submit'])) {
 
     //Reroute back to the proper location
     if ($iReturn) {
-        RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+        RedirectUtils::redirect('groups/view/' . $iGroupID);
     } else {
         RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
     }
@@ -105,7 +106,7 @@ require_once __DIR__ . '/Include/Header.php'
             <input type="submit" class="btn btn-primary" name="Submit" value="<?= gettext('Update') ?>">
             <?php
             if ($iReturn) {
-                echo ' <a href="GroupView.php?GroupID=' . $iGroupID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
+                echo ' <a href="' . SystemURLs::getRootPath() . '/groups/view/' . $iGroupID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             } else {
                 echo ' <a href="PersonView.php?PersonID=' . $iPersonID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             }

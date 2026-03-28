@@ -15,7 +15,7 @@ describe("Admin Settings", () => {
         cy.contains("Financial Settings");
         cy.contains("Quick Search");
         cy.contains("Localization");
-        cy.contains("Church Services");
+        cy.contains("Confession");
         cy.contains("Two-Factor Authentication");
         cy.contains("System Settings");
     });
