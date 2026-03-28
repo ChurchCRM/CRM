@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   update-locale:
+    timeout-minutes: 20
     runs-on: ubuntu-latest
     
     steps:
@@ -52,11 +53,7 @@ jobs:
         run: npm run docker:ci:start
 
       - name: Wait for Docker to be ready
-        run: |
-          echo "Waiting for services to be ready..."
-          sleep 10
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci ps -a
-          docker compose -f docker/docker-compose.yaml -f docker/docker-compose.gh-actions.yaml --profile ci logs
+        run: sleep 10
       
       - name: Run locale build
         run: npm run locale:build

@@ -56,7 +56,10 @@
 @include meta.load-css("scss/groups");
 @include meta.load-css("scss/finance");
 
-// Tabler custom styles — color overrides, DataTables/TomSelect skins, FAB buttons
+// Floating Action Buttons — menu toggle, add person, add family
+@include meta.load-css("scss/fab");
+
+// Tabler custom styles — color overrides, DataTables/TomSelect skins
 @include meta.load-css("scss/_tabler-bridge");
 
 html,

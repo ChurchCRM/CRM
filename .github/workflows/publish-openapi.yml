@@ -11,9 +11,13 @@ on:
       - 'src/kiosk/routes/api/**'
       - 'src/plugins/routes/api/**'
 
+permissions:
+  contents: write
+
 jobs:
   generate-and-publish:
     name: Generate specs and trigger docs rebuild
+    timeout-minutes: 15
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +47,7 @@ jobs:
         run: cd src && composer run openapi-private
 
       - name: Commit updated specs
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: 'chore: update OpenAPI specs [skip ci]'
           file_pattern: 'openapi/*.yaml'

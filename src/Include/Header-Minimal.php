@@ -1,12 +1,14 @@
 <?php
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 
 require_once __DIR__ . '/Header-Security.php';
 
+$localeInfo = Bootstrapper::getCurrentLocale();
 ?>
 <!DOCTYPE html>
-<html>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 
 <head>
   <meta http-equiv="pragma" content="no-cache">

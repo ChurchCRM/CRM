@@ -1786,6 +1786,120 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /groups/properties:
+    get:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Get all available group property definitions'
+      operationId: 3c929e5b03c7eeff4e161d487d664c24
+      responses:
+        '200':
+          description: 'Array of group property definitions'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/properties':
+    get:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Get properties assigned to a specific group'
+      operationId: 98445c6c10ef936f9b28026145a762b2
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Array of assigned properties with edit/delete flags'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, name: { type: string }, value: { type: string }, prompt: { type: string }, allowEdit: { type: boolean }, allowDelete: { type: boolean } }
+                  type: object
+        '403':
+          description: 'MenuOptions role required'
+        '404':
+          description: 'Group not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/properties/{propertyId}':
+    post:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Assign or update a property on a group (ManageGroup role required)'
+      operationId: 907bec7d37630113ddbfe8274d656022
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: 'Property value (required only when the property has a prompt)'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Property assigned successfully'
+        '403':
+          description: 'ManageGroup role required'
+        '404':
+          description: 'Group or property not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Groups
+        - Properties
+      summary: 'Remove a property from a group (ManageGroup role required)'
+      operationId: 4eceed4f2f09294d1af498593770964d
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property removed successfully'
+        '404':
+          description: 'Assignment not found'
+        '403':
+          description: 'ManageGroup role required'
+      security:
+        -
+          ApiKeyAuth: []
   /families/familiesInCart:
     get:
       tags:
@@ -3451,6 +3565,29 @@ paths:
           description: 'Property removed successfully'
         '404':
           description: 'Record not found'
+        '403':
+          description: 'MenuOptions role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/people/properties/definition/{propertyId}':
+    delete:
+      tags:
+        - Properties
+      summary: 'Delete a property definition and all its assignments (MenuOptions role required)'
+      operationId: 82d0e907ad5297dd38e7c28e5dfe1bfe
+      parameters:
+        -
+          name: propertyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Property definition deleted'
+        '404':
+          description: 'Property not found'
         '403':
           description: 'MenuOptions role required'
       security:

@@ -123,6 +123,6 @@ class Group extends BaseGroup
 
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/GroupView.php?GroupID=' . $this->getId();
+        return SystemURLs::getRootPath() . '/groups/view/' . $this->getId();
     }
 }

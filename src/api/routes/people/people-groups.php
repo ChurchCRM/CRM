@@ -26,13 +26,48 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=200, description="Array of all groups")
      * )
      */
-    $group->get(
-        '/',
-        fn (Request $request, Response $response): Response => SlimUtils::renderJSON(
-            $response,
-            GroupQuery::create()->find()->toArray()
-        )
-    );
+    $group->get('/', function (Request $request, Response $response): Response {
+        $groups = GroupQuery::create()->orderByName()->find();
+
+        // Pre-fetch group type names (list option ID = 3)
+        $typeNames = [];
+        foreach (ListOptionQuery::create()->filterById(3)->find() as $opt) {
+            $typeNames[(int) $opt->getOptionId()] = $opt->getOptionName();
+        }
+
+        // Pre-fetch role names per role-list ID
+        $allRoleListIds = [];
+        foreach ($groups as $g) {
+            $allRoleListIds[] = $g->getRoleListId();
+        }
+        $rolesByListId = [];
+        if (!empty($allRoleListIds)) {
+            foreach (ListOptionQuery::create()->filterById($allRoleListIds)->orderByOptionSequence()->find() as $opt) {
+                $rolesByListId[(int) $opt->getId()][] = $opt->getOptionName();
+            }
+        }
+
+        // Pre-fetch member counts per group
+        $memberCounts = [];
+        foreach (Person2group2roleP2g2rQuery::create()
+            ->withColumn('COUNT(*)', 'cnt')
+            ->select(['GroupId', 'cnt'])
+            ->groupByGroupId()
+            ->find() as $row) {
+            $memberCounts[(int) $row['GroupId']] = (int) $row['cnt'];
+        }
+
+        $result = [];
+        foreach ($groups as $g) {
+            $data = $g->toArray();
+            $data['groupType'] = $typeNames[(int) $g->getType()] ?? '';
+            $data['memberCount'] = $memberCounts[(int) $g->getId()] ?? 0;
+            $data['roles'] = $rolesByListId[(int) $g->getRoleListId()] ?? [];
+            $result[] = $data;
+        }
+
+        return SlimUtils::renderJSON($response, $result);
+    });
 
     /**
      * @OA\Get(

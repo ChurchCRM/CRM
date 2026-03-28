@@ -9,6 +9,7 @@ module.exports = {
     'calendar-event-editor': './react/calendar-event-editor.tsx',
     'two-factor-enrollment': './react/two-factor-enrollment.tsx',
     churchcrm: './webpack/skin-main',
+    'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',
     setup: './webpack/setup',
