@@ -6,7 +6,7 @@ use ChurchCRM\dto\SystemURLs;
 
 require_once __DIR__ . '/Header-Security.php';
 
-$localeInfo = Bootstrapper::getCurrentLocale();
+$localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>

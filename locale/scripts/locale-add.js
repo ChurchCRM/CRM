@@ -227,7 +227,7 @@ Examples:
             fullCalendar: true,
             fullCalendarLocale: config.code,
             datePicker: true,
-            isRTL: false
+            isRTL: false // Right-to-left text direction (e.g., Arabic, Hebrew)
         };
     }
 

@@ -8,6 +8,10 @@ use ChurchCRM\dto\SystemURLs;
 <link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
 
 <!-- Custom ChurchCRM styles (includes Tabler, DataTables BS5, icons, and bridge overrides) -->
+<?php
+// $localeInfo is set by the including context (Header.php or Header-Minimal.php via Bootstrapper).
+// Use isset() here because Header-Short.php and OptionManager do not initialise $localeInfo.
+?>
 <?php if (isset($localeInfo) && $localeInfo->isRTL()): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm-rtl.min.css') ?>">
 <?php else: ?>
