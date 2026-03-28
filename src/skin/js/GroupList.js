@@ -27,7 +27,11 @@ function initializeGroupList() {
     }
     $("#groupName").removeClass("is-invalid");
 
-    const newGroup = { groupName };
+    const groupTypeVal = parseInt($("#groupType").val(), 10);
+    const newGroup = {
+      groupName,
+      ...(groupTypeVal > 0 ? { groupType: groupTypeVal } : {}),
+    };
 
     $.ajax({
       method: "POST",

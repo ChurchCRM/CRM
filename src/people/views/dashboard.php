@@ -320,14 +320,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
                     </a>
-                    <a href="<?= $sRootPath ?>/GroupReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
-                        <i class="fa-solid fa-users fa-fw text-muted me-3"></i>
-                        <div>
-                            <div class="fw-medium"><?= gettext('Group & Role Reports') ?></div>
-                            <div class="text-muted small"><?= gettext('Report on groups and roles (may be multi-page PDF)') ?></div>
-                        </div>
-                        <i class="fa-solid fa-chevron-right ms-auto text-muted"></i>
-                    </a>
+
                     <a href="<?= $sRootPath ?>/DirectoryReports.php" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-address-book fa-fw text-muted me-3"></i>
                         <div>

@@ -223,7 +223,11 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'aBreadcrumbs'           => PageHeader::breadcrumbs([
                 [gettext('Groups'), '/groups/dashboard'],
                 [gettext('Sunday School'), '/groups/sundayschool/dashboard'],
-                [$iGroupName],
+                [$iGroupName, '/groups/view/' . $iGroupId],
+            ]),
+            'sPageHeaderButtons'     => PageHeader::buttons([
+                ['label' => gettext('Group View'), 'url' => '/groups/view/' . $iGroupId, 'icon' => 'fa-users', 'adminOnly' => false],
+                ['label' => gettext('Sunday School'), 'url' => '/groups/sundayschool/dashboard', 'icon' => 'fa-chalkboard-teacher', 'adminOnly' => false],
             ]),
             'iGroupId'               => $iGroupId,
             'iGroupName'             => $iGroupName,

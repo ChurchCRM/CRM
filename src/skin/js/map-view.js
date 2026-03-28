@@ -38,16 +38,28 @@
   };
   legendControl.addTo(map);
 
-  // -- Colour helper ----------------------------------------------------------
-  function colorFor(clsId) {
-    return cfg.markerColors[clsId % cfg.markerColors.length] || "#6c757d";
+  // -- Colour lookup (keyed by legend item id) --------------------------------
+  // Build from cfg.legendItems so marker colors always match the legend exactly,
+  // regardless of whether ids are sequential or sparse database OptionIds.
+  var legendColorMap = {};
+  (cfg.legendItems || []).forEach(function (item) {
+    legendColorMap[item.id] = item.color;
+  });
+
+  function colorFor(id) {
+    return legendColorMap[id] || cfg.markerColors[id % cfg.markerColors.length] || "#6c757d";
   }
 
-  // -- Marker tracking (keyed by classificationId) ----------------------------
+  // -- Legend key: roleId in group mode, classificationId otherwise -----------
+  function legendIdFor(item) {
+    return cfg.legendType === "roles" ? item.roleId || 0 : item.classificationId || 0;
+  }
+
+  // -- Marker tracking (keyed by legend ID) -----------------------------------
   var classMarkers = {};
 
   function addMarker(item) {
-    var color = colorFor(item.classificationId);
+    var color = colorFor(legendIdFor(item));
     var marker = L.circleMarker([item.latitude, item.longitude], {
       radius: 8,
       color: color,
@@ -75,7 +87,7 @@
     });
     marker.addTo(map);
 
-    var cid = item.classificationId;
+    var cid = legendIdFor(item);
     if (!classMarkers[cid]) {
       classMarkers[cid] = [];
     }
@@ -102,38 +114,27 @@
       console.error("Map: failed to load family data", err);
     });
 
-  // -- Legend checkbox interaction ---------------------------------------------
-  document.querySelectorAll(".legend-cb").forEach(function (cb) {
-    cb.addEventListener("change", function () {
-      var row = cb.closest(".legend-row");
-      var clsId = parseInt(row.dataset.classification, 10);
-      var show = cb.checked;
+  // -- Legend item click interaction ------------------------------------------
+  // .legend-item elements replace raw checkboxes; toggle .inactive class.
+  // Desktop and mobile share the same legendId so both stay in sync.
+  document.querySelectorAll(".legend-item").forEach(function (item) {
+    item.addEventListener("click", function () {
+      var legendId = parseInt(item.dataset.legendId, 10);
+      var isActive = !item.classList.contains("inactive");
 
-      // Sync the paired checkbox (desktop ↔ mobile legends share same clsId)
-      document
-        .querySelectorAll('.legend-row[data-classification="' + clsId + '"] .legend-cb')
-        .forEach(function (sibling) {
-          sibling.checked = show;
-        });
+      // Toggle all items with the same legendId (desktop + mobile)
+      document.querySelectorAll('.legend-item[data-legend-id="' + legendId + '"]').forEach(function (sibling) {
+        sibling.classList.toggle("inactive", isActive);
+      });
 
-      (classMarkers[clsId] || []).forEach(function (m) {
-        if (show) {
-          m.addTo(map);
-        } else {
+      // Show / hide matching map markers
+      (classMarkers[legendId] || []).forEach(function (m) {
+        if (isActive) {
           map.removeLayer(m);
+        } else {
+          m.addTo(map);
         }
       });
-    });
-  });
-
-  // Toggle on legend row click (not just the checkbox)
-  document.querySelectorAll(".legend-row").forEach(function (row) {
-    row.addEventListener("click", function (e) {
-      if (e.target.tagName !== "INPUT") {
-        var cb = row.querySelector(".legend-cb");
-        cb.checked = !cb.checked;
-        cb.dispatchEvent(new Event("change"));
-      }
     });
   });
 })();
