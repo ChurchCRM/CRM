@@ -158,6 +158,91 @@ describe("Kiosk API - Admin Operations", () => {
     });
 });
 
+/**
+ * Regression test for: KioskDeviceQuery missing `use` import caused
+ * GET /kiosk/api/devices to silently return an empty array even when
+ * kiosk devices existed in the database.
+ *
+ * This test registers a real kiosk device via the device registration flow
+ * and then verifies it appears in the admin device list, which would have
+ * been empty before the fix.
+ */
+describe("Kiosk Device Registration and Visibility (Regression)", () => {
+    let createdKioskId = null;
+
+    before(() => {
+        // Snapshot existing device IDs so we can identify the newly created one
+        cy.setupAdminSession();
+        cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((before) => {
+            const existingIds = new Set((before.body.KioskDevices || []).map((k) => k.Id));
+
+            // Open the registration window
+            cy.request({ method: "POST", url: "/kiosk/api/allowRegistration" }).then((r) => {
+                expect(r.status).to.equal(200);
+            });
+
+            // Simulate a new kiosk device connecting: clear admin session cookies
+            // so the kiosk app treats this as an unauthenticated device request.
+            // With the registration window open and no kioskCookie, index.php
+            // creates a new KioskDevice record and sets the cookie.
+            cy.clearCookies();
+            cy.request({ method: "GET", url: "/kiosk/device/heartbeat", failOnStatusCode: false });
+
+            // Re-establish admin session and identify the newly created device
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({ method: "GET", url: "/kiosk/api/devices" }).then((after) => {
+                const newDevice = (after.body.KioskDevices || []).find((k) => !existingIds.has(k.Id));
+                expect(newDevice, "A new kiosk device should have been created during the registration window").to.not.be.undefined;
+                createdKioskId = newDevice.Id;
+            });
+        });
+    });
+
+    after(() => {
+        if (createdKioskId) {
+            cy.setupAdminSession({ forceLogin: true });
+            cy.request({
+                method: "DELETE",
+                url: `/kiosk/api/devices/${createdKioskId}`,
+                failOnStatusCode: false,
+            });
+        }
+    });
+
+    it("GET /kiosk/api/devices returns the registered kiosk device (not an empty list)", () => {
+        expect(createdKioskId, "createdKioskId must be set by before() hook").to.not.be.null;
+        cy.setupAdminSession();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/api/devices",
+        }).then((response) => {
+            expect(response.status).to.equal(200);
+            expect(response.body).to.have.property("KioskDevices");
+            expect(response.body.KioskDevices).to.be.an("array");
+
+            // The specific device created in before() must be present
+            const ids = (response.body.KioskDevices || []).map((k) => k.Id);
+            expect(ids).to.include(createdKioskId);
+        });
+    });
+
+    it("registered kiosk has the expected properties in the device list", () => {
+        expect(createdKioskId, "createdKioskId must be set by before() hook").to.not.be.null;
+        cy.setupAdminSession();
+        cy.request({
+            method: "GET",
+            url: "/kiosk/api/devices",
+        }).then((response) => {
+            const kiosk = (response.body.KioskDevices || []).find((k) => k.Id === createdKioskId);
+            expect(kiosk).to.not.be.undefined;
+            expect(kiosk).to.have.property("Id", createdKioskId);
+            expect(kiosk).to.have.property("Name").and.to.be.a("string");
+            expect(kiosk).to.have.property("Accepted");
+            expect(kiosk).to.have.property("LastHeartbeat");
+        });
+    });
+});
+
 describe("Kiosk API - Access Control", () => {
     describe("Standard User Access", () => {
         beforeEach(() => {

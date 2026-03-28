@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\KioskAssignmentQuery;
+use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Slim\Middleware\Api\KioskDeviceMiddleware;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
