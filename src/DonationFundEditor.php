@@ -27,7 +27,7 @@ if (isset($_GET['Fund'])) {
 
 $sDeleteError = '';
 if (isset($_GET['DeleteError'])) {
-    $sDeleteError = InputUtils::sanitizeText($_GET['DeleteError']);
+    $sDeleteError = InputUtils::sanitizeAndEscapeText($_GET['DeleteError']);
 }
 $sReorderError = '';
 if (isset($_GET['ReorderError'])) {
