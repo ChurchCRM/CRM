@@ -217,4 +217,13 @@ class LocaleInfo
     {
         return $this->shouldShowTranslationPercentage() && $this->getTranslationPercentage() < 90;
     }
+
+    /**
+     * Check if the current locale uses right-to-left text direction
+     * (e.g., Arabic, Hebrew)
+     */
+    public function isRTL(): bool
+    {
+        return isset($this->localeConfig['isRTL']) && $this->localeConfig['isRTL'] === true;
+    }
 }
