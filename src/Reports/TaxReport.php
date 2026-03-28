@@ -15,8 +15,24 @@ use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
+require_once __DIR__ . '/PdfTaxReport.php';
+
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+
+// Support direct GET links from family profile: ?familyId=X&year=YYYY
+if (isset($_GET['familyId']) && isset($_GET['year'])) {
+    $gFamId = (int) InputUtils::legacyFilterInput($_GET['familyId'], 'int');
+    $gYear  = (int) InputUtils::legacyFilterInput($_GET['year'], 'int');
+    if ($gFamId > 0 && $gYear > 1990 && $gYear <= (int) date('Y')) {
+        $_POST['family']     = [$gFamId];
+        $_POST['DateStart']  = $gYear . '-01-01';
+        $_POST['DateEnd']    = $gYear . '-12-31';
+        $_POST['output']     = 'pdf';
+        $_POST['letterhead'] = 'address';
+        $_POST['remittance'] = 'no';
+    }
+}
 
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
