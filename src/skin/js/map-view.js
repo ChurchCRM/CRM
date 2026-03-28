@@ -139,7 +139,9 @@
   }
 
   document.querySelectorAll(".legend-item").forEach(function (item) {
-    item.addEventListener("click", function () { toggleLegendItem(item); });
+    item.addEventListener("click", function () {
+      toggleLegendItem(item);
+    });
     item.addEventListener("keydown", function (e) {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
