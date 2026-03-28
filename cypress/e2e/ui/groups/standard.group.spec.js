@@ -91,6 +91,10 @@ describe("Standard Groups", () => {
         cy.visit("groups/reports");
         cy.contains("Group Reports");
         cy.contains("Select Group");
+        // Select the first real group so the form passes validation (GroupID=0 redirects back)
+        cy.get("#GroupID").find("option").not("[value='0']").first().then(($opt) => {
+            cy.get("#GroupID").select($opt.val());
+        });
         cy.get(".card-body > form").submit();
         cy.url().should("contain", "groups/reports");
         cy.contains("Select Fields to Include");
