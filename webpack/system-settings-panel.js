@@ -27,24 +27,40 @@ import "../src/skin/scss/system-settings-panel.scss";
   const SettingTypes = {
     boolean: {
       render: function (setting, value) {
-        const checked = value === "1" || value === "true" || value === true;
+        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
+        const isOn = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
-                        <label class="form-check form-switch mt-2 mb-0">
-                            <input type="checkbox" class="form-check-input setting-input"
-                                   id="${setting.name}" name="${setting.name}"
-                                   role="switch"
-                                   data-type="boolean"
-                                   ${checked ? "checked" : ""}>
-                            <span class="form-check-label">
-                                ${setting.label}
-                                ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
-                            </span>
-                        </label>
+                        <div class="form-label small fw-bold mb-1">
+                            ${setting.label}
+                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
+                        </div>
+                        <div class="form-selectgroup form-selectgroup-pills">
+                            <label class="form-selectgroup-item">
+                                <input type="radio" class="form-selectgroup-input setting-input"
+                                       name="${setting.name}" value="1"
+                                       data-type="boolean"
+                                       ${isOn ? "checked" : ""}>
+                                <span class="form-selectgroup-label">
+                                    <i class="fa-solid fa-check me-1"></i>${t("Yes")}
+                                </span>
+                            </label>
+                            <label class="form-selectgroup-item">
+                                <input type="radio" class="form-selectgroup-input setting-input"
+                                       name="${setting.name}" value="0"
+                                       data-type="boolean"
+                                       ${!isOn ? "checked" : ""}>
+                                <span class="form-selectgroup-label">
+                                    <i class="fa-solid fa-xmark me-1"></i>${t("No")}
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 `;
       },
       getValue: function (el) {
+        // Radio inputs: only the checked one returns a value; unchecked returns null (skipped in save)
+        if (el.type === "radio") return el.checked ? el.value : null;
         return el.checked ? "1" : "0";
       },
     },
@@ -354,10 +370,21 @@ import "../src/skin/scss/system-settings-panel.scss";
       });
     }
 
-    // Update a single input without re-rendering the whole panel
+    // Update a single input (or radio group) without re-rendering the whole panel
     applyValue(name, value) {
-      const input = this.container.querySelector('[name="' + name + '"]');
-      if (!input) return;
+      const inputs = this.container.querySelectorAll('[name="' + name + '"]');
+      if (inputs.length === 0) return;
+
+      if (inputs.length > 1) {
+        // Radio group (boolean pills): check the radio whose value matches
+        const normalized = value === "1" || value === true || value === "true" ? "1" : "0";
+        inputs.forEach(function (input) {
+          input.checked = input.value === normalized;
+        });
+        return;
+      }
+
+      const input = inputs[0];
       if (input.dataset.type === "boolean") {
         input.checked = value === "1" || value === "true" || value === true;
       } else {

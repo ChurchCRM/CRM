@@ -34,13 +34,10 @@
         line-height: 1.3;
     }
 
-    // Toggle switch — Tabler pattern: parent <label> + child <span.form-check-label>
-    .form-check.form-switch {
-        cursor: pointer;
-
-        .form-check-label {
+    // Boolean pill pair (form-selectgroup-pills with Yes/No radios)
+    .form-selectgroup-pills {
+        .form-selectgroup-label {
             font-size: 0.875rem;
-            font-weight: 500;
         }
     }
 
