@@ -4,7 +4,6 @@ namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
-require_once __DIR__ . '/PdfTaxReport.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
@@ -38,31 +37,29 @@ if (empty($emailList)) {
 }
 
 // Build date range for the calendar year
-$sDateStart = $year . '-01-01';
-$sDateEnd   = $year . '-12-31';
-
-// Globals used by PdfTaxReport methods
-$letterhead = 'address';
-$remittance = 'no';
-$iDepID     = 0;
+$sDateStart  = $year . '-01-01';
+$sDateEnd    = $year . '-12-31';
+$letterhead  = 'address';
+$remittance  = 'no';
+$iDepID      = 0;
 
 // Get pledge data for this family + year
 $financialService = new FinancialService();
 $pledgeObjects = $financialService->getTaxReportData(
     $sDateStart,
     $sDateEnd,
-    null,   // no deposit filter
-    null,   // no minimum
-    [],     // all funds
+    null,
+    null,
+    [],
     [$familyId],
-    []      // all classifications
+    []
 );
 
 if (empty($pledgeObjects)) {
     RedirectUtils::redirect('v2/family/' . $familyId . '?TaxEmailError=NoData');
 }
 
-// Convert to flat array (same format as TaxReport.php)
+// Convert to flat array
 $rsReport = [];
 foreach ($pledgeObjects as $pledge) {
     $rsReport[] = [
@@ -86,40 +83,82 @@ foreach ($pledgeObjects as $pledge) {
     ];
 }
 
-// ----- Build the PDF (same rendering logic as TaxReport.php) -----
-$bottom_border1 = 200;
-$bottom_border2 = 250;
+// PDF class – mirrors the inline class in TaxReport.php, adapted for email (no remittance slip needed)
+class PdfFamilyTaxEmail extends ChurchInfoReport
+{
+    public function __construct()
+    {
+        parent::__construct('P', 'mm', $this->paperFormat);
+        $this->SetFont('Times', '', 10);
+        $this->SetMargins(20, 20);
+        $this->SetAutoPageBreak(false);
+    }
+
+    public function startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country, string $fam_envelope): float
+    {
+        global $sDateStart, $sDateEnd;
+        $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, 'address');
+        if (SystemConfig::getValue('bUseDonationEnvelopes')) {
+            $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
+            $curY += SystemConfig::getValue('incrementY');
+        }
+        $curY += 2 * SystemConfig::getValue('incrementY');
+        if ($sDateStart == $sDateEnd) {
+            $DateString = date('F j, Y', strtotime($sDateStart));
+        } else {
+            $DateString = date('M j, Y', strtotime($sDateStart)) . ' - ' . date('M j, Y', strtotime($sDateEnd));
+        }
+        $blurb = SystemConfig::getValue('sTaxReport1') . ' ' . $DateString . '.';
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
+
+        return $curY + 2 * SystemConfig::getValue('incrementY');
+    }
+
+    public function finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, string $fam_City, string $fam_State, string $fam_Zip, $fam_Country): void
+    {
+        $curY += 2 * SystemConfig::getValue('incrementY');
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxReport2'));
+        $curY += 3 * SystemConfig::getValue('incrementY');
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxReport3'));
+        $curY += 3 * SystemConfig::getValue('incrementY');
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirmSincerely') . ',');
+        $curY += 4 * SystemConfig::getValue('incrementY');
+        $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sTaxSigner'));
+    }
+}
+
+// Build the PDF
+$bottom_border1   = 200;
+$bottom_border2   = 250;
 $summaryIntervalY = 4;
+$pdf = new PdfFamilyTaxEmail();
 
-$pdf = new PdfTaxReport();
-
-$currentFamilyID = -1;
-$totalAmount       = 0;
+$currentFamilyID    = -1;
+$totalAmount        = 0;
 $totalNonDeductible = 0;
-$cnt = 0;
+$cnt                = 0;
 $fam_ID = $fam_Name = $fam_Address1 = $fam_Address2 = $fam_City = $fam_State = $fam_Zip = $fam_Country = $fam_envelope = '';
 $prev_fam_ID = $prev_fam_Name = $prev_fam_Address1 = $prev_fam_Address2 = $prev_fam_City = $prev_fam_State = $prev_fam_Zip = $prev_fam_Country = '';
 
 foreach ($rsReport as $row) {
-    $fam_ID        = $row['fam_ID'];
-    $fam_Name      = $row['fam_Name'];
-    $fam_Address1  = $row['fam_Address1'];
-    $fam_Address2  = $row['fam_Address2'];
-    $fam_City      = $row['fam_City'];
-    $fam_State     = $row['fam_State'];
-    $fam_Zip       = $row['fam_Zip'];
-    $fam_Country   = $row['fam_Country'];
-    $fam_envelope  = $row['fam_envelope'];
-    $plg_date      = $row['plg_date'];
-    $plg_amount    = $row['plg_amount'];
-    $plg_method    = $row['plg_method'];
-    $plg_comment   = $row['plg_comment'];
-    $plg_CheckNo   = $row['plg_CheckNo'];
-    $fun_Name      = $row['fun_Name'];
+    $fam_ID            = $row['fam_ID'];
+    $fam_Name          = $row['fam_Name'];
+    $fam_Address1      = $row['fam_Address1'];
+    $fam_Address2      = $row['fam_Address2'];
+    $fam_City          = $row['fam_City'];
+    $fam_State         = $row['fam_State'];
+    $fam_Zip           = $row['fam_Zip'];
+    $fam_Country       = $row['fam_Country'];
+    $fam_envelope      = $row['fam_envelope'];
+    $plg_date          = $row['plg_date'];
+    $plg_amount        = $row['plg_amount'];
+    $plg_method        = $row['plg_method'];
+    $plg_comment       = $row['plg_comment'];
+    $plg_CheckNo       = $row['plg_CheckNo'];
+    $fun_Name          = $row['fun_Name'];
     $plg_NonDeductible = $row['plg_NonDeductible'];
 
     if ($fam_ID != $currentFamilyID && $currentFamilyID != -1) {
-        // Finish previous family
         $pdf->SetFont('Times', 'B', 10);
         $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
         $pdf->Cell(95, $summaryIntervalY, ' ');
@@ -148,7 +187,7 @@ foreach ($rsReport as $row) {
 
     if ($fam_ID != $currentFamilyID) {
         $curY = $pdf->startNewPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $fam_envelope);
-        $summaryDateX   = SystemConfig::getValue('leftX');
+        $summaryDateX     = SystemConfig::getValue('leftX');
         $summaryIntervalY = 4;
         $curY += 2 * $summaryIntervalY;
         $pdf->SetFont('Times', 'B', 10);
@@ -161,11 +200,10 @@ foreach ($rsReport as $row) {
         $pdf->Cell(25, $summaryIntervalY, 'Amount', 0, 1, 'R');
         $totalAmount        = 0;
         $totalNonDeductible = 0;
-        $cnt = 0;
-        $currentFamilyID = $fam_ID;
+        $cnt                = 0;
+        $currentFamilyID    = $fam_ID;
     }
 
-    // Truncate long fields
     if (strlen((string) $plg_CheckNo) > 8) {
         $plg_CheckNo = '...' . mb_substr((string) $plg_CheckNo, -8, 8);
     } else {
@@ -207,7 +245,7 @@ foreach ($rsReport as $row) {
     $prev_fam_Country  = $fam_Country;
 }
 
-// Finish last family
+// Finish last family page
 $pdf->SetFont('Times', 'B', 10);
 $pdf->addPage();
 $pdf->Cell(20, $summaryIntervalY / 2, ' ', 0, 1);
@@ -237,11 +275,10 @@ if ($cnt > 0) {
     $pdf->finishPage($curY, $fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
 }
 
-// Capture PDF as string and email
-$filename = 'TaxStatement-' . $family->getName() . '-' . $year . '.pdf';
+// Capture PDF as string and email it
+$filename  = 'TaxStatement-' . $family->getName() . '-' . $year . '.pdf';
 $pdfString = $pdf->Output($filename, 'S');
 
-// Simple email delivery using PHPMailer via BaseEmail pattern
 $mail = new class($emailList) extends BaseEmail {
     public function __construct(array $emails)
     {
