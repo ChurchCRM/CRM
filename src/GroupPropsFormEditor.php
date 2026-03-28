@@ -27,14 +27,14 @@ extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
 if ($grp_hasSpecialProps == false) {
-    RedirectUtils::redirect('GroupView.php?GroupID=' . $iGroupID);
+    RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 
 $sPageTitle = gettext('Group-Specific Properties Form Editor') . ':' . '  ' . $grp_Name;
 $sPageSubtitle = gettext('Define group-specific properties for members');
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Groups'), '/groups/dashboard'],
-    [$grp_Name, '/GroupView.php?GroupID=' . $iGroupID],
+    [$grp_Name, '/groups/view/' . $iGroupID],
     [gettext('Properties Form')],
 ]);
 

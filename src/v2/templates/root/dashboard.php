@@ -60,9 +60,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <?php if ($sundaySchoolEnabled) { ?>
     <div class="col-sm-6 col-lg">
-        <div class="card card-sm">
+        <div class="card card-sm<?= $sundaySchoolEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
@@ -71,17 +70,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
-                        <div class="text-muted"><?= gettext('Sunday School') ?></div>
+                        <?php if ($sundaySchoolEnabled) { ?>
+                            <div class="fw-medium" id="groupStatsSundaySchool"><?= $dashboardCounts["SundaySchool"] ?></div>
+                            <div class="text-muted"><?= gettext('Sunday School') ?></div>
+                        <?php } else { ?>
+                            <div class="fw-medium text-muted"><?= gettext('No Sunday School') ?></div>
+                            <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php } ?>
-    <?php if ($eventsEnabled) { ?>
     <div class="col-sm-6 col-lg">
-        <div class="card card-sm">
+        <div class="card card-sm<?= $eventsEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-auto">
@@ -90,63 +92,24 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </span>
                     </div>
                     <div class="col">
-                        <div class="fw-medium"><?= $dashboardCounts["events"] ?></div>
-                        <div class="text-muted"><?= gettext('Check-ins') ?></div>
+                        <?php if ($eventsEnabled) { ?>
+                            <div class="fw-medium"><?= $dashboardCounts["events"] ?></div>
+                            <div class="text-muted"><?= gettext('Check-ins') ?></div>
+                        <?php } else { ?>
+                            <div class="fw-medium text-muted"><?= gettext('No Check-ins') ?></div>
+                            <div class="text-muted small"><?= gettext('Disabled in settings') ?></div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php } ?>
 </div>
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="card mb-3" id="birthdayCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="card mb-3" id="anniversaryCard">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Next 7 days and past 7 days') ?></p>
-                <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<?php
-if ($depositEnabled) { // If the user has Finance permissions, then let's display the deposit line chart
-    ?>
-<div class="row">
-    <div class="col-12">
-        <div class="card mb-3" id="depositChartRow">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
-            </div>
-            <div class="card-body">
-                <div id="deposit-lineGraph" style="min-height: 300px;"></div>
-            </div>
-        </div>
-    </div>
-</div>
-    <?php
-}  //END IF block for Finance permissions to include HTML for Deposit Chart
-?>
-
-<div class="row">
-    <div class="col-12">
-        <div class="card">
+    <!-- People card — primary content (2/3 width) -->
+    <div class="col-lg-8">
+        <div class="card mb-3">
             <div class="card-header">
                 <div class="card-title">
                     <i class="ti ti-users me-2 text-muted"></i><?= gettext('People') ?>
@@ -155,22 +118,22 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                     <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">
-                                <i class="ti ti-home-plus me-1"></i><?= gettext('Latest Families') ?>
+                                <i class="ti ti-home-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest Families') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-fam-tab" data-bs-toggle="tab" href="#updated-fam-pane" role="tab" aria-controls="updated-fam-pane" aria-selected="false">
-                                <i class="ti ti-home-edit me-1"></i><?= gettext('Updated Families') ?>
+                                <i class="ti ti-home-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated Families') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="latest-ppl-tab" data-bs-toggle="tab" href="#latest-ppl-pane" role="tab" aria-controls="latest-ppl-pane" aria-selected="false">
-                                <i class="ti ti-user-plus me-1"></i><?= gettext('Latest People') ?>
+                                <i class="ti ti-user-plus me-1"></i><span class="d-none d-xl-inline"><?= gettext('Latest People') ?></span><span class="d-xl-none"><?= gettext('New') ?></span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="updated-ppl-tab" data-bs-toggle="tab" href="#updated-ppl-pane" role="tab" aria-controls="updated-ppl-pane" aria-selected="false">
-                                <i class="ti ti-user-edit me-1"></i><?= gettext('Updated People') ?>
+                                <i class="ti ti-user-edit me-1"></i><span class="d-none d-xl-inline"><?= gettext('Updated People') ?></span><span class="d-xl-none"><?= gettext('Updated') ?></span>
                             </a>
                         </li>
                     </ul>
@@ -192,6 +155,53 @@ if ($depositEnabled) { // If the user has Finance permissions, then let's displa
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Birthdays & Anniversaries — sidebar (1/3 width) -->
+    <div class="col-lg-4">
+        <div class="card mb-3" id="birthdayCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthdays') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <table class="table table-hover mb-0" width="100%" id="PersonBirthdayDashboardItem"></table>
+            </div>
+        </div>
+        <div class="card mb-3" id="anniversaryCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-heart me-2"></i><?= gettext('Anniversaries') ?></h3>
+            </div>
+            <div class="card-body p-0">
+                <p class="text-muted small px-3 pt-3 mb-2"><?= gettext('Past & next 7 days') ?></p>
+                <table class="table table-hover mb-0" width="100%" id="FamiliesWithAnniversariesDashboardItem"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-3" id="depositChartRow">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot me-2"></i> <?= gettext('Deposit Tracking') ?></h3>
+            </div>
+            <?php if ($depositEnabled) { ?>
+                <div class="card-body">
+                    <div id="deposit-lineGraph" style="min-height: 300px;"></div>
+                </div>
+            <?php } else { ?>
+                <div class="card-body">
+                    <div class="empty">
+                        <div class="empty-icon">
+                            <i class="fa-solid fa-circle-dollar-to-slot fa-3x text-muted"></i>
+                        </div>
+                        <p class="empty-title"><?= gettext('No Deposit Tracking') ?></p>
+                        <p class="empty-subtitle text-muted"><?= gettext('You do not have finance permissions to view deposits.') ?></p>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>

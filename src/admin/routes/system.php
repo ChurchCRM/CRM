@@ -32,6 +32,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Admin'), '/admin/'],
                 [gettext('Backup Database')],
             ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Restore Database'), 'url' => '/admin/system/restore', 'icon' => 'fa-upload'],
+            ]),
         ];
         
         return $renderer->render($response, 'backup.php', $pageArgs);
@@ -73,6 +76,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'aBreadcrumbs' => PageHeader::breadcrumbs([
                 [gettext('Admin'), '/admin/'],
                 [gettext('Restore Database')],
+            ]),
+            'sPageHeaderButtons' => PageHeader::buttons([
+                ['label' => gettext('Create Backup'), 'url' => '/admin/system/backup', 'icon' => 'fa-download'],
             ]),
             'isOnboarding' => $isOnboarding,
         ];

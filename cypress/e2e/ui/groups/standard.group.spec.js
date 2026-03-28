@@ -36,25 +36,26 @@ describe("Standard Groups", () => {
     });
 
     it("View Group ", () => {
-        cy.visit("GroupView.php?GroupID=9");
+        cy.visit("groups/view/9");
         cy.contains("Group View : Church Board");
-        cy.get("#deleteSelectedRows").should("be.visible");
+        // Two-column layout with members card and properties sidebar
+        cy.get("#membersTable").should("exist");
+        cy.get("#role-pills").should("exist");
     });
 
     it("Group View members table has action menus", () => {
-        cy.visit("GroupView.php?GroupID=9");
+        cy.visit("groups/view/9");
         cy.get("#membersTable", { timeout: 10000 }).should("exist");
         cy.get("#membersTable tbody tr", { timeout: 10000 }).then(($rows) => {
             if ($rows.length > 0) {
                 cy.get("#membersTable tbody tr:first").within(() => {
-                    cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
+                    cy.get('[data-bs-toggle="dropdown"]').first().click();
                 });
                 cy.get(".dropdown-menu.show").within(() => {
                     cy.contains("View").should("exist");
-                    cy.contains("Edit").should("exist");
                     cy.contains("Change Role").should("exist");
                     cy.get(".AddToCart, .RemoveFromCart").should("exist");
-                    cy.contains("Remove from Group").should("exist");
+                    cy.contains("Remove").should("exist");
                 });
             }
         });
@@ -73,12 +74,29 @@ describe("Standard Groups", () => {
         });
     });
 
+    it("Groups dashboard table has action menus", () => {
+        cy.visit("groups/dashboard");
+        cy.get("#groupsTable tbody tr", { timeout: 10000 }).should("have.length.at.least", 1);
+        cy.get("#groupsTable tbody tr:first").within(() => {
+            cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
+        });
+        cy.get(".dropdown-menu.show").within(() => {
+            cy.contains("View").should("exist");
+            cy.contains("Edit").should("exist");
+            cy.contains("Delete").should("exist");
+        });
+    });
+
     it("Group Report", () => {
-        cy.visit("GroupReports.php");
-        cy.contains("Group reports");
-        cy.contains("Select the group you would like to report");
+        cy.visit("groups/reports");
+        cy.contains("Group Reports");
+        cy.contains("Select Group");
+        // Select the first real group so the form passes validation (GroupID=0 redirects back)
+        cy.get("#GroupID").find("option").not("[value='0']").first().then(($opt) => {
+            cy.get("#GroupID").select($opt.val());
+        });
         cy.get(".card-body > form").submit();
-        cy.url().should("contain", "GroupReports.php");
-        cy.contains("Select which information you want to include");
+        cy.url().should("contain", "groups/reports");
+        cy.contains("Select Fields to Include");
     });
 });

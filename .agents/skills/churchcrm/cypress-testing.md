@@ -119,6 +119,245 @@ env: {
 - ❌ DO NOT add commented-out tests or TODO comments
 - ✅ Configuration-driven approach prevents secrets leaking into git
 
+### cy.request() API Calls Reset PHP Sessions (CRITICAL) <!-- learned: 2026-03-27 -->
+
+`cy.request()` (used by `makePrivateAdminAPICall`, `makePrivateUserAPICall`) sends and
+receives cookies automatically. PHP's `session_start()` runs on every API request and
+sends a `Set-Cookie: PHPSESSID=xxx` response that **overwrites the browser's session cookie**.
+
+This means: after ANY `cy.request()` / `makePrivateAdminAPICall()` call, the browser
+session established by `cy.setupAdminSession()` is **invalidated**. A subsequent
+`cy.visit()` will redirect to `/session/begin` (login page).
+
+**Fix: Direct login after API calls**
+
+```javascript
+// Helper — bypasses cy.session() cache, guarantees fresh PHP session
+function freshAdminLogin() {
+    cy.clearCookies();
+    cy.visit("/session/begin");
+    cy.get("input[name=User]").type(Cypress.env("admin.username"));
+    cy.get("input[name=Password]").type(Cypress.env("admin.password") + "{enter}");
+    cy.url().should("not.include", "/session/begin");
+}
+
+it("test that needs API setup then browser visit", () => {
+    // API calls (these reset the PHP session)
+    cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, 200);
+
+    // MUST re-login before cy.visit() — session was reset by cy.request()
+    freshAdminLogin();
+    cy.visit("/groups/view/1");
+    cy.get("#some-element").should("exist");
+});
+```
+
+**Rules:**
+- ❌ NEVER `cy.visit()` after `cy.request()` / `makePrivateAdminAPICall()` without re-login
+- ❌ `cy.setupAdminSession({ forceLogin: true })` is NOT sufficient — it still uses `cy.session()` cache
+- ❌ `before()` hooks with API calls will poison cookies for ALL subsequent tests
+- ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
+- ✅ Each test should be self-contained — set up its own data, then re-login, then visit
+
+### UI Tests Must Not Call APIs After Login <!-- learned: 2026-03-27 -->
+
+UI tests have a strict boundary: **no `cy.request()` / `makePrivateAdminAPICall()` after the user is logged in.** The three allowed phases are:
+
+| Phase | What's allowed |
+|-------|----------------|
+| **Before login** | API calls to set up data state |
+| **Browser session** | `freshAdminLogin()` then pure UI interactions only |
+| **After assertions** | API calls for teardown/cleanup (end of test or `afterEach`) |
+
+```javascript
+// ✅ CORRECT structure for a UI test that needs data setup
+it("assigns a property and it appears in the list", () => {
+    // Phase 1: API setup (before login — PHP session resets don't matter)
+    cy.wrap(null).as("prop");
+    cy.makePrivateAdminAPICall("GET", "/api/groups/properties", null, 200)
+        .then(resp => {
+            const p = resp.body[0];
+            cy.wrap({ id: p.ProId, name: p.ProName }).as("prop");
+        });
+
+    // Phase 2: Login — clears cy.request() PHP session, establishes browser session
+    freshAdminLogin();
+
+    // Phase 3: UI only — no more cy.request() calls
+    cy.get("@prop").then(prop => {
+        cy.visit(`/groups/view/1`);
+        cy.get("#group-property-select").select(String(prop.id));
+        cy.get("#assign-group-property-btn").click();
+        cy.contains(prop.name).should("be.visible");
+    });
+
+    // Phase 4: Cleanup at end (after all UI assertions)
+    cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+});
+
+// ✅ CORRECT: beforeEach with API setup + freshAdminLogin()
+describe("Remove property tests", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+        freshAdminLogin(); // login AFTER all API calls
+    });
+
+    afterEach(() => {
+        // cleanup is safe here — runs after UI phase
+        cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+    });
+
+    it("shows Remove button", () => {
+        cy.visit("/groups/view/1"); // pure UI from here
+        cy.get(".remove-group-property-btn").should("exist");
+    });
+});
+
+// ❌ WRONG: API call after setupAdminSession
+describe("Bad pattern", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    it("broken test", () => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, 200); // ❌ resets PHP session
+        cy.visit("/groups/view/1"); // ❌ will redirect to login page
+    });
+});
+```
+
+**Conditional skipping with aliases:** When API setup is conditional, set a default alias before the `.then()` chain so downstream `cy.get("@alias")` never throws:
+
+```javascript
+cy.wrap(null).as("prop");  // default — tests check for null and skip
+cy.makePrivateAdminAPICall("GET", "/api/groups/properties", null, 200)
+    .then(resp => {
+        if (!resp.body.length) return;
+        cy.wrap(resp.body[0]).as("prop"); // overwrites default if data exists
+    });
+freshAdminLogin();
+cy.get("@prop").then(prop => {
+    if (!prop) { cy.log("skipping"); return; }
+    // UI interactions
+});
+```
+
+**Bootbox button clicks:** Use `cy.wrap($btn).click()` not `$btn.trigger("click")` — jQuery's `.trigger()` may not dispatch real DOM events that delegated handlers (`$(document).on(...)`) will catch in Cypress. Use bootbox's own semantic classes (always present, locale-independent) rather than text matching or Bootstrap classes:
+
+```javascript
+// ✅ CORRECT — bootbox always adds these classes regardless of label text or locale
+cy.get(".bootbox-accept").should("be.visible").click();  // confirm / destructive action button
+cy.get(".bootbox .btn-secondary").click({ force: true }); // cancel button (use force: true)
+
+// ❌ WRONG — text match breaks with i18n; .btn-secondary is not always unique
+cy.get(".bootbox").contains("button", "Cancel").click();
+$btn.trigger("click");
+```
+
+**Bootbox Cancel: Assert Side Effects, Not Dialog Visibility <!-- learned: 2026-03-27 -->**
+
+After clicking Cancel on a bootbox dialog, **do NOT assert that the dialog is gone** (`should("not.be.visible")` or `should("not.exist")`). Bootstrap 5 modal hide is asynchronous — the CSS fade-out keeps `.show` on the backdrop during the transition, causing these assertions to fail intermittently or permanently.
+
+Instead, assert the **side effect** (the action was not taken):
+
+```javascript
+// ✅ CORRECT — assert the meaningful outcome: property was NOT removed
+it("Cancel leaves property intact", () => {
+    cy.get(".remove-group-property-btn").first().then(($btn) => {
+        const name = $btn.data("pro-name");
+        cy.wrap($btn).click();
+        cy.get(".bootbox").should("be.visible");
+        cy.get(".bootbox .btn-secondary").click({ force: true });
+        // Assert the side effect: button still exists (property not removed)
+        cy.get(`.remove-group-property-btn[data-pro-name="${name}"]`).should("exist");
+    });
+});
+
+// ✅ CORRECT — confirm: assert the dialog was visible, click accept, then assert the side effect
+it("Confirm removes property", () => {
+    cy.intercept("DELETE", "**/api/groups/1/properties/*").as("removeProperty");
+    cy.get(".remove-group-property-btn").first().then(($btn) => {
+        const name = $btn.data("pro-name");
+        cy.wrap($btn).click();
+        cy.get(".bootbox-accept").should("be.visible").click();
+        cy.wait("@removeProperty").its("response.statusCode").should("eq", 200);
+        cy.get(`.remove-group-property-btn[data-pro-name="${name}"]`).should("not.exist");
+    });
+});
+
+// ❌ WRONG — Bootstrap 5 async fade-out means .bootbox may still have .show class
+cy.get(".bootbox").should("not.be.visible");  // times out during CSS transition
+cy.get(".bootbox").should("not.exist");        // fails while modal is fading
+```
+
+**Card title selectors:** Use `h3.card-title` not `.card-title` alone. Tabler's sidebar nav uses `card-title` in its hierarchy; `cy.contains(".card-title", text)` may resolve to a hidden sidebar nav link instead of the page card heading:
+
+```javascript
+// ✅ CORRECT — h3 elements only exist in page card headers, not sidebar nav
+cy.contains("h3.card-title", "Properties").should("be.visible");
+
+// ❌ WRONG — .card-title also matches sidebar nav structure; may find collapsed nav items
+cy.contains(".card-title", "Properties").should("be.visible");
+```
+
+**`cy.contains()` Must Be Scoped to a Container <!-- learned: 2026-03-27 -->**
+
+`cy.contains(text)` without a container scope searches the **entire DOM** — including collapsed Tabler sidebar nav links (`<a.nav-link.flex-fill>` inside `div.collapse`). Even a specific selector like `cy.contains("h3.card-title", text)` can still resolve to a hidden sidebar element.
+
+The safe pattern is to scope to a stable container ID:
+
+```javascript
+// ✅ CORRECT — scoped to the specific card
+cy.get("#group-properties-card").contains(prop.name).should("be.visible");
+
+// ❌ WRONG — may match a sidebar nav link with the same text (even if selector is specific)
+cy.contains(prop.name).should("be.visible");
+cy.contains("h3.card-title", "Properties").should("be.visible"); // may still match nav
+```
+
+**Adding IDs to PHP templates for testability:** When an element lacks a stable selector, add an `id` attribute to the PHP template rather than using fragile CSS paths:
+
+```php
+<!-- src/groups/views/group-view.php -->
+<!-- ✅ Add id to the specific card so tests can scope to it -->
+<div class="card mb-3" id="group-properties-card">
+```
+
+**Dropdown Toggle Must Be Scoped to Its Container <!-- learned: 2026-03-27 -->**
+
+`[data-bs-toggle="dropdown"]` is too generic — it matches ALL dropdown triggers on the page, including navbar items (e.g., `#upgradeMenu`). Always scope it to the relevant dropdown container:
+
+```javascript
+// ✅ CORRECT — scoped to the table row's dropdown
+cy.get(".delete-property-btn").first()
+    .closest(".dropdown")
+    .find("[data-bs-toggle='dropdown']")
+    .click();
+
+// ❌ WRONG — matches the first dropdown on page (often a navbar item, not the table row)
+cy.get("[data-bs-toggle='dropdown']").first().click();
+cy.get(".delete-property-btn").first().siblings("[data-bs-toggle='dropdown']").click();
+```
+
+### Subdirectory-Aware `cy.intercept()` Patterns (CRITICAL) <!-- learned: 2026-03-27 -->
+
+ChurchCRM runs both at root (`/`) and in a subdirectory (`/churchcrm/`). CI tests run **both configurations**. `cy.intercept()` URL patterns **must** use `**` glob prefixes so they match regardless of the installation path.
+
+```javascript
+// ✅ CORRECT — matches both /api/... and /churchcrm/api/...
+cy.intercept("DELETE", `**/api/groups/${groupID}/properties/*`).as("removeProperty");
+cy.intercept("GET", "**/api/people/properties/definition/*").as("getDef");
+cy.intercept("POST", "**/api/groups/*/members").as("addMember");
+
+// ❌ WRONG — only matches root installation, fails on /churchcrm/ subdirectory
+cy.intercept("DELETE", `/api/groups/${groupID}/properties/*`).as("removeProperty");
+cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
+```
+
+**Why this matters:** In subdirectory mode, the browser sends requests to `/churchcrm/api/groups/1/properties/5`, but an intercept pattern of `/api/groups/1/properties/*` won't match — the intercept never fires and `cy.wait("@alias")` times out.
+
+**Rule:** Always prefix `cy.intercept()` URL patterns with `**/` when matching API paths. This applies to ALL HTTP methods (GET, POST, PUT, DELETE, PATCH).
+
+**Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
+
 ## UI Test Best Practices
 
 ### Using Element IDs for Test Selectors
@@ -680,3 +919,18 @@ cy.contains("Smith - Family");
 cy.contains("Smith");           // page title
 cy.contains("Family Profile");  // subtitle
 ```
+
+### cy.contains() Can Match Page Title, Not the Target Element <!-- learned: 2026-03-27 -->
+
+`cy.contains("System Settings")` will match the page `<h2>` title **before** looking for a sidebar tab. Tests using bare `cy.contains()` for nav items can pass even when the tab/category is completely missing.
+
+```javascript
+// ❌ WRONG — matches page <h2> title, not the sidebar tab
+cy.contains("System Settings");
+
+// ✅ CORRECT — scoped to the nav element
+cy.get('#settings-nav').contains("System Settings");
+cy.get('.nav-pills').contains("System Settings").should('be.visible');
+```
+
+Always scope `cy.contains()` to the smallest meaningful container when asserting the existence of navigation items or tabs.

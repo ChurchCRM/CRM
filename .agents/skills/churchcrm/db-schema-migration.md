@@ -23,3 +23,18 @@ Backward compatibility:
 
 Rollback strategy:
 - Have explicit down-migration scripts; snapshot DB; monitor replication lag.
+
+### upgrade.json Must List New SQL Files <!-- learned: 2026-03-27 -->
+
+New `.sql` migration files must be listed in `src/mysql/upgrade.json` under `current.scripts` or they will **never run** on upgrade.
+
+```json
+// src/mysql/upgrade.json
+"current": {
+  "versions": ["7.0.5"],
+  "scripts": ["7.1.0-config.sql"],   // ← add your file here
+  "dbVersion": "7.1.0"
+}
+```
+
+Name files after the target version: `7.1.0-<description>.sql`. If multiple scripts exist for the same version, list them all in execution order.

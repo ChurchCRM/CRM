@@ -30,6 +30,7 @@ concurrency:
 
 jobs:
   download:
+    timeout-minutes: 30
     runs-on: ubuntu-latest
     env:
       POEDITOR_TOKEN: ${{ secrets.POEDITOR_TOKEN }}
@@ -63,7 +64,7 @@ jobs:
 
     - name: Get package version
       id: package-version
-      uses: martinbeentjes/npm-get-version-action@v1.3.1
+      run: echo "current-version=$(node -p 'require("./package.json").version')" >> $GITHUB_OUTPUT
 
     - name: Get current date
       id: date

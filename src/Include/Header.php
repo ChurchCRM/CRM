@@ -27,7 +27,7 @@ PluginManager::init($pluginsPath);
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -91,6 +91,7 @@ $MenuFirst = 1;
           root:"<?= SystemURLs::getRootPath() ?>",
           fullURL:"<?= SystemURLs::getURL() ?>",
           lang:"<?= $localeInfo->getLanguageCode() ?>",
+          isRTL:<?= $localeInfo->isRTL() ? 'true' : 'false' ?>,
           userId:"<?= AuthenticationManager::getCurrentUser()->getId() ?>",
           version:"<?= $_SESSION['sSoftwareInstalledVersion'] ?? 'unknown' ?>",
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
@@ -104,7 +105,6 @@ $MenuFirst = 1;
           systemConfigs: {
             sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
           },
-          iDashboardServiceIntervalTime:"<?= SystemConfig::getValue('iDashboardServiceIntervalTime') ?>",
           // Plugin configs from active plugins (via getClientConfig())
           plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
           // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
@@ -155,7 +155,7 @@ $MenuFirst = 1;
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-lg" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -173,7 +173,7 @@ $MenuFirst = 1;
         </span>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">
-        <ul class="navbar-nav pt-lg-3">
+        <ul class="navbar-nav pt-xl-3">
           <?php MenuRenderer::renderMenu(); ?>
         </ul>
       </div>
@@ -188,7 +188,7 @@ $MenuFirst = 1;
   <!-- ============================================================ -->
   <!-- Topbar                                                        -->
   <!-- ============================================================ -->
-  <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none sticky-top">
+  <header class="navbar navbar-expand-md d-print-none sticky-top">
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"

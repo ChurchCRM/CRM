@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -105,6 +106,12 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $pageArgs = [
         'sRootPath'                       => SystemURLs::getRootPath(),
         'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
+        'aBreadcrumbs'                    => PageHeader::breadcrumbs([
+            [gettext('Dashboard')],
+        ]),
+        'sPageHeaderButtons'              => PageHeader::buttons([
+            ['label' => gettext('Admin Dashboard'), 'url' => '/admin/', 'icon' => 'fa-screwdriver-wrench'],
+        ]),
         'dashboardCounts'                 => $dashboardCounts,
         'sundaySchoolEnabled'             => SystemConfig::getBooleanValue('bEnabledSundaySchool'),
         'depositEnabled'                  => AuthenticationManager::getCurrentUser()->isFinanceEnabled(),

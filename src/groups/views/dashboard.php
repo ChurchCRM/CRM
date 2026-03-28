@@ -101,21 +101,35 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                     </h5>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3 mb-2">
-                        <label for="groupName">
-                            <?= gettext('Group Name') ?> <span class="text-danger">*</span>
-                        </label>
-                        <input type="text" class="form-control" name="groupName" id="groupName"
-                               placeholder="<?= gettext('Enter group name') ?>"
-                               aria-describedby="groupNameFeedback">
-                        <div id="groupNameFeedback" class="invalid-feedback" role="alert">
-                            <?= gettext('Please enter a group name.') ?>
+                    <div class="row g-3 align-items-end">
+                        <div class="col-12 col-md-5">
+                            <label for="groupName" class="form-label">
+                                <?= gettext('Group Name') ?> <span class="text-danger">*</span>
+                            </label>
+                            <input type="text" class="form-control" name="groupName" id="groupName"
+                                   placeholder="<?= gettext('Enter group name') ?>"
+                                   aria-describedby="groupNameFeedback">
+                            <div id="groupNameFeedback" class="invalid-feedback" role="alert">
+                                <?= gettext('Please enter a group name.') ?>
+                            </div>
                         </div>
-                        <small class="form-text text-muted"><?= gettext('Required') ?></small>
+                        <div class="col-12 col-md-4">
+                            <label for="groupType" class="form-label">
+                                <?= gettext('Group Type') ?>
+                            </label>
+                            <select class="form-select" id="groupType" name="groupType">
+                                <option value=""><?= gettext('— Select type (optional) —') ?></option>
+                                <?php foreach ($groupTypes as $type): ?>
+                                    <option value="<?= (int) $type['id'] ?>"><?= \ChurchCRM\Utils\InputUtils::escapeHTML($type['name']) ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <button type="button" class="btn btn-primary w-100" id="addNewGroup">
+                                <i class="fa fa-plus"></i> <?= gettext('Add Group') ?>
+                            </button>
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-primary" id="addNewGroup">
-                        <i class="fa fa-plus"></i> <?= gettext('Add Group') ?>
-                    </button>
                 </div>
             </div>
 
@@ -141,3 +155,29 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () {
+    window.CRM.settingsPanel.init({
+        container: '#groupSettings',
+        title: i18next.t('Group Settings'),
+        icon: 'fa-solid fa-sliders',
+        settings: [
+            {
+                name: 'bEnabledSundaySchool',
+                label: i18next.t('Sunday School Module'),
+                type: 'boolean',
+                tooltip: i18next.t('Enable or disable the Sunday School module and sidebar menu.')
+            }
+        ],
+        onSave: function () {
+            window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
+            setTimeout(function () { window.location.reload(); }, 1500);
+        }
+    });
+});
+</script>
+<?php endif; ?>
