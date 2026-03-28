@@ -26,6 +26,9 @@ if (isset($_GET['Fund'])) {
 }
 
 $sDeleteError = '';
+if (isset($_GET['DeleteError'])) {
+    $sDeleteError = InputUtils::sanitizeText($_GET['DeleteError']);
+}
 $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;

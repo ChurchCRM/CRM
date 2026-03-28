@@ -18,6 +18,7 @@ use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\AuthService;
+use ChurchCRM\Service\DonationFundService;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Collection\ObjectCollection;
 
@@ -412,24 +413,11 @@ class FinancialService
 
     /**
      * @return \stdClass[]
+     * @deprecated Use DonationFundService::getActiveFunds() instead.
      */
     public function getActiveFunds(): array
     {
-        AuthService::requireUserGroupMembership('bFinance');
-        $funds = [];
-        $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
-        $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-        $rsFunds = FunctionsUtils::runQuery($sSQL);
-        mysqli_data_seek($rsFunds, 0);
-        while ($aRow = mysqli_fetch_array($rsFunds)) {
-            $fund = new \stdClass();
-            $fund->ID = $aRow['fun_ID'];
-            $fund->Name = $aRow['fun_Name'];
-            $fund->Description = $aRow['fun_Description'];
-            $funds[] = $fund;
-        } // end while
-
-        return $funds;
+        return (new DonationFundService())->getActiveFunds();
     }
 
     /**
@@ -714,23 +702,22 @@ class FinancialService
      * Get active donation funds.
      *
      * @return ObjectCollection Collection of DonationFund objects
+     * @deprecated Use DonationFundService::getAll() instead.
      */
     public function getActiveDonationFunds(): ObjectCollection
     {
-        return DonationFundQuery::create()
-            ->filterByActive('true')
-            ->orderByOrder()
-            ->find();
+        return (new DonationFundService())->getAll();
     }
 
     /**
      * Get total count of donation funds.
      *
      * @return int
+     * @deprecated Use DonationFundService::getCount() instead.
      */
     public function getTotalFundCount(): int
     {
-        return DonationFundQuery::create()->count();
+        return (new DonationFundService())->getCount();
     }
 
     /**
