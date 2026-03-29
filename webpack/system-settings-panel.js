@@ -410,6 +410,25 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
+      // Presets bar
+      let presetsHtml = "";
+      if (this.options.presets && this.options.presets.length > 0) {
+        const presetButtons = this.options.presets
+          .map(
+            (p, i) =>
+              `<button type="button" class="btn btn-sm btn-outline-primary preset-btn" data-preset-index="${i}">
+                ${p.icon ? `<i class="${p.icon} me-1"></i>` : ""}${escapeHtml(p.label)}
+              </button>`,
+          )
+          .join("");
+        presetsHtml = `
+          <div class="mb-3">
+            <small class="text-muted fw-bold d-block mb-1">${t("Quick Setup")}:</small>
+            <div class="btn-list">${presetButtons}</div>
+          </div>
+          <hr class="my-3">`;
+      }
+
       const html = `
                 <div class="card settings-panel-card">
                     <div class="card-header ${this.options.headerClass} py-2">
@@ -419,6 +438,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                     </div>
                     <div class="card-body">
                         <form id="settingsPanelForm">
+                            ${presetsHtml}
                             <div class="row">
                                 ${settingsHtml}
                             </div>
@@ -477,6 +497,25 @@ import "../src/skin/scss/system-settings-panel.scss";
           const input = document.getElementById(btn.dataset.target);
           if (input) {
             input.value = SettingsPanel.generateSecretHex();
+          }
+        });
+      });
+
+      // Preset buttons — fill form fields with predefined values
+      this.container.querySelectorAll(".preset-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          const idx = parseInt(btn.dataset.presetIndex, 10);
+          const preset = self.options.presets && self.options.presets[idx];
+          if (!preset || !preset.values) return;
+          Object.keys(preset.values).forEach(function (key) {
+            self.applyValue(key, preset.values[key]);
+          });
+          const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
+          if (window.CRM && window.CRM.notify) {
+            window.CRM.notify(
+              t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."),
+              { type: "info", delay: 3000 },
+            );
           }
         });
       });
