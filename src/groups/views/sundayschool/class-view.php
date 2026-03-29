@@ -11,8 +11,8 @@ $totalStudents = count($thisClassChildren);
 $maleCount     = 0;
 $femaleCount   = 0;
 foreach ($thisClassChildren as $child) {
-    if ($child['kidGender'] == 1) { $maleCount++; }
-    elseif ($child['kidGender'] == 2) { $femaleCount++; }
+    if ($child['kidGender'] === 1) { $maleCount++; }
+    elseif ($child['kidGender'] === 2) { $femaleCount++; }
 }
 $teacherCount = count($rsTeachers);
 

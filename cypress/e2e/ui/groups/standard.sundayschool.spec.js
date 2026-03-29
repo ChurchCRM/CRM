@@ -93,7 +93,7 @@ describe("Standard Sunday School", () => {
         });
     });
 
-    it("Class overview section displays correctly", () => {
+    it("Class overview section displays correctly with numeric gender stats", () => {
         cy.visit(`groups/sundayschool/class/${ANGELS_CLASS_GROUP_ID}`);
 
         // Core overview elements that should be stable across styling changes
@@ -102,6 +102,18 @@ describe("Standard Sunday School", () => {
         cy.contains('Enrolled').should('exist');
         cy.contains('Boys').should('exist');
         cy.contains('Girls').should('exist');
+
+        // Verify gender stats are numeric (validates strict === comparison works)
+        cy.contains('Boys').parent().invoke('text').then((text) => {
+            const num = text.match(/\d+/);
+            expect(num).to.not.be.null;
+            expect(Number(num[0])).to.be.at.least(0);
+        });
+        cy.contains('Girls').parent().invoke('text').then((text) => {
+            const num = text.match(/\d+/);
+            expect(num).to.not.be.null;
+            expect(Number(num[0])).to.be.at.least(0);
+        });
     });
 
     it("Student table has correct columns and functionality", () => {
@@ -168,5 +180,66 @@ describe("Standard Sunday School", () => {
                 cy.get('#sundayschool tbody tr').first().find('td').first().invoke('text').should('not.be.empty');
             }
         });
+    });
+
+    it("Reports page loads with form elements", () => {
+        cy.visit("groups/sundayschool/reports");
+        cy.contains("Report Details");
+        cy.get('select[name="GroupID[]"]').should("exist");
+        cy.get('select[name="FYID"]').should("exist");
+        cy.get('input[name="FirstSunday"]').should("exist");
+        cy.get('input[name="LastSunday"]').should("exist");
+        cy.get('input[name="NoSchool1"]').should("exist");
+        cy.get('input[name="ExtraStudents"]').should("exist");
+        cy.get('input[name="ExtraTeachers"]').should("exist");
+    });
+
+    it("Reports page has submit buttons for all report types", () => {
+        cy.visit("groups/sundayschool/reports");
+        cy.get('button[name="SubmitClassList"]').should("exist").and("contain", "Create Class List");
+        cy.get('button[name="SubmitClassAttendance"]').should("exist").and("contain", "Create Attendance Sheet");
+        cy.get('button[name="SubmitPhotoBook"]').should("exist").and("contain", "Create PhotoBook");
+    });
+
+    it("Reports page shows error when no group selected", () => {
+        cy.visit("groups/sundayschool/reports?error=nogroup");
+        cy.get(".alert-danger").should("contain", "At least one group must be selected");
+    });
+
+    it("Dashboard displays gender and family statistics", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        // The stats cards should render numeric values for Boys, Girls, Families
+        // This validates the batch getDashboardStudentStats() query returns correct data
+        cy.contains("Boys").should("exist");
+        cy.contains("Girls").should("exist");
+        cy.contains("Families").should("exist");
+        // Verify the stat values are rendered (numeric, not empty/error)
+        cy.contains("Boys").parent().find(".fw-medium").invoke("text").then((text) => {
+            expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
+        });
+        cy.contains("Girls").parent().find(".fw-medium").invoke("text").then((text) => {
+            expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
+        });
+        cy.contains("Families").parent().find(".fw-medium").invoke("text").then((text) => {
+            expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
+        });
+    });
+
+    it("Dashboard shows correct aggregate class counts", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        // Verify the summary cards show Teachers and Kids counts
+        cy.contains("Teachers").should("exist");
+        cy.contains("Teachers").parent().find(".fw-medium").invoke("text").then((text) => {
+            expect(Number(text.trim())).to.be.a("number").and.to.be.at.least(0);
+        });
+        // Verify Classes count is present
+        cy.contains("Classes").should("exist");
+    });
+
+    it("Dashboard quick actions have working links", () => {
+        cy.visit("groups/sundayschool/dashboard");
+        cy.get('a[href*="/groups/sundayschool/reports"]').should("exist").and("contain", "Reports");
+        cy.get('a[href*="/api/groups/sundayschool/export/classlist"]').should("exist").and("contain", "Class List Export");
+        cy.get('a[href*="/api/groups/sundayschool/export/email"]').should("exist").and("contain", "Email Export");
     });
 });

@@ -26,51 +26,177 @@ class SundaySchoolService
             ->orderByName(Criteria::ASC)
             ->find();
 
-        $classInfo = [];
+        // Collect all role list IDs, then batch-fetch their role options in one query
+        $roleListIds = [];
         foreach ($groups as $group) {
-            $groupId = $group->getId();
-            $roleListId = $group->getRoleListId();
+            if ($group->getRoleListId() !== null) {
+                $roleListIds[] = $group->getRoleListId();
+            }
+        }
+        $roleListIds = array_unique($roleListIds);
 
-            // Count teachers and students for this group by looking up role
-            // names in list_lst.
-            $teachers = 0;
-            $kids = 0;
+        // Build a lookup: [listId][optionId] => roleName
+        $roleNameLookup = [];
+        if (!empty($roleListIds)) {
+            $allRoleOptions = ListOptionQuery::create()
+                ->filterById($roleListIds, Criteria::IN)
+                ->find();
+            foreach ($allRoleOptions as $option) {
+                $roleNameLookup[$option->getId()][$option->getOptionId()] = $option->getOptionName();
+            }
+        }
 
-            if ($roleListId !== null) {
-                // Get all role assignments for this group
-                $roleAssignments = Person2group2roleP2g2rQuery::create()
-                    ->filterByGroupId($groupId)
-                    ->find();
+        // Batch-fetch all role assignments for all SS groups in one query
+        $groupIds = [];
+        foreach ($groups as $group) {
+            $groupIds[] = $group->getId();
+        }
 
-                foreach ($roleAssignments as $assignment) {
-                    $roleId = $assignment->getRoleId();
+        // [groupId] => ['teachers' => int, 'kids' => int]
+        $groupCounts = [];
+        if (!empty($groupIds)) {
+            $allAssignments = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupIds, Criteria::IN)
+                ->find();
 
-                    // Look up role name from list_lst
-                    $roleOption = ListOptionQuery::create()
-                        ->filterById($roleListId)
-                        ->filterByOptionId($roleId)
-                        ->findOne();
+            foreach ($allAssignments as $assignment) {
+                $gid = $assignment->getGroupId();
+                $roleId = $assignment->getRoleId();
 
-                    if ($roleOption !== null) {
-                        $roleName = $roleOption->getOptionName();
-                        if ($roleName === 'Teacher') {
-                            $teachers++;
-                        } elseif ($roleName === 'Student') {
-                            $kids++;
-                        }
+                // Find the role list for this group
+                $group = null;
+                foreach ($groups as $g) {
+                    if ($g->getId() === $gid) {
+                        $group = $g;
+                        break;
                     }
                 }
-            }
+                if ($group === null || $group->getRoleListId() === null) {
+                    continue;
+                }
 
+                $listId = $group->getRoleListId();
+                $roleName = $roleNameLookup[$listId][$roleId] ?? null;
+
+                if ($roleName === 'Teacher') {
+                    $groupCounts[$gid]['teachers'] = ($groupCounts[$gid]['teachers'] ?? 0) + 1;
+                } elseif ($roleName === 'Student') {
+                    $groupCounts[$gid]['kids'] = ($groupCounts[$gid]['kids'] ?? 0) + 1;
+                }
+            }
+        }
+
+        $classInfo = [];
+        foreach ($groups as $group) {
+            $gid = $group->getId();
             $classInfo[] = [
-                'id'       => $groupId,
+                'id'       => $gid,
                 'name'     => $group->getName(),
-                'teachers' => $teachers,
-                'kids'     => $kids,
+                'teachers' => $groupCounts[$gid]['teachers'] ?? 0,
+                'kids'     => $groupCounts[$gid]['kids'] ?? 0,
             ];
         }
 
         return $classInfo;
+    }
+
+    /**
+     * Get aggregate gender/family stats across all Sunday School classes in a
+     * single batch — avoids the N+1 pattern of calling getKidsFullDetails()
+     * per class.
+     *
+     * @return array{maleKids: int, femaleKids: int, familyCount: int}
+     */
+    public function getDashboardStudentStats(): array
+    {
+        $groups = GroupQuery::create()
+            ->filterByType(4)
+            ->find();
+
+        // Resolve all "Student" role option IDs across SS groups
+        $roleListIds = [];
+        foreach ($groups as $group) {
+            if ($group->getRoleListId() !== null) {
+                $roleListIds[] = $group->getRoleListId();
+            }
+        }
+        $roleListIds = array_unique($roleListIds);
+
+        $studentOptionIds = [];
+        $roleListToStudentOption = [];
+        if (!empty($roleListIds)) {
+            $options = ListOptionQuery::create()
+                ->filterById($roleListIds, Criteria::IN)
+                ->filterByOptionName('Student')
+                ->find();
+            foreach ($options as $opt) {
+                $studentOptionIds[] = $opt->getOptionId();
+                $roleListToStudentOption[$opt->getId()] = $opt->getOptionId();
+            }
+        }
+
+        if (empty($studentOptionIds)) {
+            return ['maleKids' => 0, 'femaleKids' => 0, 'familyCount' => 0];
+        }
+
+        // Build group-to-studentRoleId map
+        $groupStudentRole = [];
+        foreach ($groups as $group) {
+            $listId = $group->getRoleListId();
+            if ($listId !== null && isset($roleListToStudentOption[$listId])) {
+                $groupStudentRole[$group->getId()] = $roleListToStudentOption[$listId];
+            }
+        }
+
+        // Single query: all student memberships across all SS groups, joined with Person
+        $groupIds = array_keys($groupStudentRole);
+        if (empty($groupIds)) {
+            return ['maleKids' => 0, 'femaleKids' => 0, 'familyCount' => 0];
+        }
+
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->joinWithPerson()
+            ->filterByGroupId($groupIds, Criteria::IN)
+            ->filterByRoleId(array_unique(array_values($groupStudentRole)), Criteria::IN)
+            ->find();
+
+        $maleKids = 0;
+        $femaleKids = 0;
+        $familyIds = [];
+        $seenPersonIds = [];
+
+        foreach ($memberships as $membership) {
+            // Verify role matches expected student role for this group
+            $gid = $membership->getGroupId();
+            if (!isset($groupStudentRole[$gid]) || $membership->getRoleId() !== $groupStudentRole[$gid]) {
+                continue;
+            }
+
+            $person = $membership->getPerson();
+            $pid = $person->getId();
+
+            // Deduplicate students enrolled in multiple classes
+            if (isset($seenPersonIds[$pid])) {
+                continue;
+            }
+            $seenPersonIds[$pid] = true;
+
+            if ($person->getGender() === 1) {
+                $maleKids++;
+            } elseif ($person->getGender() === 2) {
+                $femaleKids++;
+            }
+
+            if ($person->getFamId() !== null) {
+                $familyIds[] = $person->getFamId();
+            }
+        }
+
+        return [
+            'maleKids'    => $maleKids,
+            'femaleKids'  => $femaleKids,
+            'familyCount' => count(array_unique($familyIds)),
+        ];
     }
 
     /**
