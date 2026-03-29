@@ -66,7 +66,7 @@ switch ($mode) {
         // Validate that this list ID is really for a group roles list. (for security)
         $sSQL ="SELECT '' FROM group_grp WHERE grp_RoleListID =" . $listID;
         $rsTemp = RunQuery($sSQL);
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -137,7 +137,7 @@ switch ($sAction) {
                 RunQuery($sSQL);
             } else {
                 // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
-                if ($deleteCleanupTable != 0) {
+                if ($deleteCleanupTable !== 0) {
                     $sSQL ="UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn =" . $iID;
                     RunQuery($sSQL);
                 }

@@ -34,15 +34,15 @@ foreach ($families as $family) {
     } else {
         $labelText = $pdf->makeSalutation($family->getID());
     }
-    if ($family->getAddress1() != '') {
+    if ($family->getAddress1() !== '') {
         $labelText .="\n" . $family->getAddress1();
     }
-    if ($family->getAddress2() != '') {
+    if ($family->getAddress2() !== '') {
         $labelText .="\n" . $family->getAddress2();
     }
     $labelText .= sprintf("\n%s, %s  %s", $family->getCity(), $family->getState(), $family->getZip());
 
-    if ($family->getCountry() != '' && $family->getCountry() != 'USA' && $family->getCountry() != 'United States') {
+    if ($family->getCountry() !== '' && $family->getCountry() !== 'USA' && $family->getCountry() !== 'United States') {
         $labelText .="\n" . $family->getCountry();
     }
 

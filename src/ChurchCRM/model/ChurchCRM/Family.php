@@ -180,11 +180,11 @@ class Family extends BaseFamily implements PhotoInterface
         }
         foreach ($this->getPeopleSorted() as $person) {
             $email = $person->getEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
             $email = $person->getWorkEmail();
-            if ($email != null) {
+            if ($email !== null) {
                 $emails[] = $email;
             }
         }

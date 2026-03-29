@@ -26,7 +26,7 @@ $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
-if ($grp_hasSpecialProps == false) {
+if ($grp_hasSpecialProps === false) {
     RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 
@@ -104,7 +104,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             if (isset($_POST[$iPropID . 'special'])) {
                 $aSpecialFields[$iPropID] = InputUtils::legacyFilterInput($_POST[$iPropID . 'special'], 'int');
 
-                if ($aSpecialFields[$iPropID] == 0) {
+                if ($aSpecialFields[$iPropID] === 0) {
                     $aSpecialErrors[$iPropID] = true;
                     $bErrorFlag = true;
                 } else {
@@ -334,7 +334,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($numRows == 0) {
+        if ($numRows === 0) {
         ?>
             <div class="alert alert-info" role="alert">
                 <i class="fa-solid fa-circle-info"></i>

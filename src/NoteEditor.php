@@ -118,7 +118,7 @@ require_once __DIR__ . '/Include/Header.php';
 
       <div class="mb-3">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="1" name="Private" id="Private" <?php if ($bPrivate != 0) {
+          <input class="form-check-input" type="checkbox" value="1" name="Private" id="Private" <?php if ($bPrivate !== 0) {
               echo 'checked';
           } ?>>
           <label class="form-check-label" for="Private"><?= gettext('Private') ?></label>

@@ -167,7 +167,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         if ($aBirthMonths[$iCount] > 0 xor $aBirthDays[$iCount] > 0) {
             $aBirthDateError[$iCount] = gettext('Invalid Birth Date: Missing birth month or day.');
             $bErrorFlag = true;
-        } elseif (strlen($aBirthYears[$iCount]) > 0 && $aBirthMonths[$iCount] == 0 && $aBirthDays[$iCount] == 0) {
+        } elseif (strlen($aBirthYears[$iCount]) > 0 && $aBirthMonths[$iCount] === 0 && $aBirthDays[$iCount] === 0) {
             $aBirthDateError[$iCount] = gettext('Invalid Birth Date: Missing birth month and day.');
             $bErrorFlag = true;
         } elseif ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) {
@@ -201,7 +201,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (checkEmail($sEmail) == false) {
+        if (checkEmail($sEmail) === false) {
             $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
@@ -667,14 +667,14 @@ require_once __DIR__ . '/Include/Header.php';
                             <label for="Latitude"><?= gettext('Latitude') ?>:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
-                                <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude != 0 ? $nLatitude : '' ?>" maxlength="50">
+                                <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude !== 0 ? $nLatitude : '' ?>" maxlength="50">
                             </div>
                         </div>
                         <div class="mb-3 col-md-3">
                             <label for="Longitude"><?= gettext('Longitude') ?>:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
-                                <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude && $nLongitude != 0 ? $nLongitude : '' ?>" maxlength="50">
+                                <input type="text" class="form-control" id="Longitude" name="Longitude" value="<?= $nLongitude && $nLongitude !== 0 ? $nLongitude : '' ?>" maxlength="50">
                             </div>
                         </div>
                     </div>
@@ -840,19 +840,19 @@ require_once __DIR__ . '/Include/Header.php';
                                                 </td>
                                                 <td>
                                                     <select name="Gender<?= $iCount ?>" class="form-select form-select-sm">
-                                                        <option value="0" <?= $aGenders[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Gender') ?></option>
-                                                        <option value="1" <?= $aGenders[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('Male') ?></option>
-                                                        <option value="2" <?= $aGenders[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('Female') ?></option>
+                                                        <option value="0" <?= $aGenders[$iCount] === 0 ? 'selected' : '' ?>><?= gettext('Select Gender') ?></option>
+                                                        <option value="1" <?= $aGenders[$iCount] === 1 ? 'selected' : '' ?>><?= gettext('Male') ?></option>
+                                                        <option value="2" <?= $aGenders[$iCount] === 2 ? 'selected' : '' ?>><?= gettext('Female') ?></option>
                                                     </select>
                                                 </td>
                                                 <td>
                                                     <select name="Role<?= $iCount ?>" class="form-select form-select-sm">
-                                                        <option value="0" <?= $aRoles[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Select Role') ?></option>
+                                                        <option value="0" <?= $aRoles[$iCount] === 0 ? 'selected' : '' ?>><?= gettext('Select Role') ?></option>
                                                         <?php
                                                         //Build the role select box
                                                         for ($c = 1; $c <= $numFamilyRoles; $c++) {
                                                             echo '<option value="' . $aFamilyRoleIDs[$c] . '"';
-                                                            if ($aRoles[$iCount] == $aFamilyRoleIDs[$c]) {
+                                                            if ($aRoles[$iCount] === $aFamilyRoleIDs[$c]) {
                                                                 echo ' selected';
                                                             }
                                                             echo '>' . $aFamilyRoleNames[$c] . '</option>';
@@ -861,19 +861,19 @@ require_once __DIR__ . '/Include/Header.php';
                                                 </td>
                                                 <td>
                                                     <select name="BirthMonth<?= $iCount ?>" class="form-select form-select-sm">
-                                                        <option value="0" <?= $aBirthMonths[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unknown') ?></option>
-                                                        <option value="01" <?= $aBirthMonths[$iCount] == 1 ? 'selected' : '' ?>><?= gettext('January') ?></option>
-                                                        <option value="02" <?= $aBirthMonths[$iCount] == 2 ? 'selected' : '' ?>><?= gettext('February') ?></option>
-                                                        <option value="03" <?= $aBirthMonths[$iCount] == 3 ? 'selected' : '' ?>><?= gettext('March') ?></option>
-                                                        <option value="04" <?= $aBirthMonths[$iCount] == 4 ? 'selected' : '' ?>><?= gettext('April') ?></option>
-                                                        <option value="05" <?= $aBirthMonths[$iCount] == 5 ? 'selected' : '' ?>><?= gettext('May') ?></option>
-                                                        <option value="06" <?= $aBirthMonths[$iCount] == 6 ? 'selected' : '' ?>><?= gettext('June') ?></option>
-                                                        <option value="07" <?= $aBirthMonths[$iCount] == 7 ? 'selected' : '' ?>><?= gettext('July') ?></option>
-                                                        <option value="08" <?= $aBirthMonths[$iCount] == 8 ? 'selected' : '' ?>><?= gettext('August') ?></option>
-                                                        <option value="09" <?= $aBirthMonths[$iCount] == 9 ? 'selected' : '' ?>><?= gettext('September') ?></option>
-                                                        <option value="10" <?= $aBirthMonths[$iCount] == 10 ? 'selected' : '' ?>><?= gettext('October') ?></option>
-                                                        <option value="11" <?= $aBirthMonths[$iCount] == 11 ? 'selected' : '' ?>><?= gettext('November') ?></option>
-                                                        <option value="12" <?= $aBirthMonths[$iCount] == 12 ? 'selected' : '' ?>><?= gettext('December') ?></option>
+                                                        <option value="0" <?= $aBirthMonths[$iCount] === 0 ? 'selected' : '' ?>><?= gettext('Unknown') ?></option>
+                                                        <option value="01" <?= $aBirthMonths[$iCount] === 1 ? 'selected' : '' ?>><?= gettext('January') ?></option>
+                                                        <option value="02" <?= $aBirthMonths[$iCount] === 2 ? 'selected' : '' ?>><?= gettext('February') ?></option>
+                                                        <option value="03" <?= $aBirthMonths[$iCount] === 3 ? 'selected' : '' ?>><?= gettext('March') ?></option>
+                                                        <option value="04" <?= $aBirthMonths[$iCount] === 4 ? 'selected' : '' ?>><?= gettext('April') ?></option>
+                                                        <option value="05" <?= $aBirthMonths[$iCount] === 5 ? 'selected' : '' ?>><?= gettext('May') ?></option>
+                                                        <option value="06" <?= $aBirthMonths[$iCount] === 6 ? 'selected' : '' ?>><?= gettext('June') ?></option>
+                                                        <option value="07" <?= $aBirthMonths[$iCount] === 7 ? 'selected' : '' ?>><?= gettext('July') ?></option>
+                                                        <option value="08" <?= $aBirthMonths[$iCount] === 8 ? 'selected' : '' ?>><?= gettext('August') ?></option>
+                                                        <option value="09" <?= $aBirthMonths[$iCount] === 9 ? 'selected' : '' ?>><?= gettext('September') ?></option>
+                                                        <option value="10" <?= $aBirthMonths[$iCount] === 10 ? 'selected' : '' ?>><?= gettext('October') ?></option>
+                                                        <option value="11" <?= $aBirthMonths[$iCount] === 11 ? 'selected' : '' ?>><?= gettext('November') ?></option>
+                                                        <option value="12" <?= $aBirthMonths[$iCount] === 12 ? 'selected' : '' ?>><?= gettext('December') ?></option>
                                                     </select>
                                                 </td>
                                                 <td>
@@ -882,7 +882,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                         <?php for ($x = 1; $x < 32; $x++) {
                                                             $sDay = $x < 10 ? '0' . $x : $x;
                                                             ?>
-                                                            <option value="<?= $sDay ?>" <?= $aBirthDays[$iCount] == $x ? 'selected' : '' ?>><?= $x ?></option>
+                                                            <option value="<?= $sDay ?>" <?= $aBirthDays[$iCount] === $x ? 'selected' : '' ?>><?= $x ?></option>
                                                         <?php } ?>
                                                     </select>
                                                 </td>
@@ -899,7 +899,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                 </td>
                                                 <td>
                                                     <select name="Classification<?= $iCount ?>" class="form-select form-select-sm">
-                                                        <option value="0" <?= $aClassification[$iCount] == 0 ? 'selected' : '' ?>><?= gettext('Unassigned') ?></option>
+                                                        <option value="0" <?= $aClassification[$iCount] === 0 ? 'selected' : '' ?>><?= gettext('Unassigned') ?></option>
                                                         <option value="" disabled>-----------------------</option>
                                                         <?php
                                                         //Get Classifications for the drop-down

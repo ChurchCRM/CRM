@@ -107,7 +107,7 @@ if (isset($_POST['DonatedItemSubmit']) || isset($_POST['DonatedItemSubmitAndAdd'
 
     if (isset($_POST['DonatedItemSubmit'])) {
         // Check for redirection to another page after saving information: (ie. DonatedItemEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if ($linkBack != '') {
+        if ($linkBack !== '') {
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this DonatedItem
@@ -298,7 +298,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <textarea name="PictureURL" rows="1" cols="90" class="form-control"><?= InputUtils::escapeAttribute($sPictureURL) ?></textarea>
                         </div>
 
-                        <?php if ($sPictureURL != '') : ?>
+                        <?php if ($sPictureURL !== '') : ?>
                             <div class="mb-3"><img src="<?= InputUtils::escapeAttribute($sPictureURL) ?>" /></div>
                         <?php endif; ?>
 

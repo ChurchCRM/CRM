@@ -22,7 +22,7 @@ if (isset($_POST['Delete'])) {
     $sSQL ="DELETE FROM `pledge_plg` WHERE `plg_GroupKey` = '" . $sGroupKey ."';";
     RunQuery($sSQL);
 
-    if ($linkBack != '') {
+    if ($linkBack !== '') {
         RedirectUtils::redirect($linkBack);
     }
 } elseif (isset($_POST['Cancel'])) {

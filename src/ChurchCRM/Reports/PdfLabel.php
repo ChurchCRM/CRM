@@ -162,7 +162,7 @@ class PdfLabel extends ChurchInfoReport
     public function addPdfLabel($texte): void
     {
         // We are in a new page, then we must add a page
-        if ($this->_COUNTX == 0 && $this->_COUNTY == 0) {
+        if ($this->_COUNTX === 0 && $this->_COUNTY === 0) {
             $this->addPage();
         }
 
