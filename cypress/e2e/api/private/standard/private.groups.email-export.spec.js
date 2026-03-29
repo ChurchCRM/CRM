@@ -36,17 +36,38 @@ describe("API Private Groups Email Export", () => {
                 null,
                 200
             ).then((resp) => {
-                const lines = resp.body.trim().split("\n");
+                // Parse CSV properly — handle quoted fields that may contain commas/newlines
+                const parseCsvRow = (row) => {
+                    const cols = [];
+                    let current = "";
+                    let inQuotes = false;
+                    for (let i = 0; i < row.length; i++) {
+                        const ch = row[i];
+                        if (inQuotes) {
+                            if (ch === '"' && row[i + 1] === '"') { current += '"'; i++; }
+                            else if (ch === '"') { inQuotes = false; }
+                            else { current += ch; }
+                        } else {
+                            if (ch === '"') { inQuotes = true; }
+                            else if (ch === ",") { cols.push(current); current = ""; }
+                            else { current += ch; }
+                        }
+                    }
+                    cols.push(current);
+                    return cols;
+                };
+
+                const lines = resp.body.trim().replace(/\r\n/g, "\n").split("\n");
                 // At least a header row
                 expect(lines.length).to.be.at.least(1);
 
                 // Header row should have at least 4 columns (CRM ID, FirstName, LastName, Email)
-                const headerCols = lines[0].split(",");
+                const headerCols = parseCsvRow(lines[0]);
                 expect(headerCols.length).to.be.at.least(4);
 
                 // If there are data rows, verify they have the same column count
                 if (lines.length > 1) {
-                    const dataCols = lines[1].split(",");
+                    const dataCols = parseCsvRow(lines[1]);
                     expect(dataCols.length).to.equal(headerCols.length);
                 }
             });
@@ -104,11 +125,32 @@ describe("API Private Groups Sunday School Export", () => {
                 null,
                 200
             ).then((resp) => {
-                const lines = resp.body.trim().split("\n");
+                // Parse CSV properly — handle quoted fields that may contain commas
+                const parseCsvRow = (row) => {
+                    const cols = [];
+                    let current = "";
+                    let inQuotes = false;
+                    for (let i = 0; i < row.length; i++) {
+                        const ch = row[i];
+                        if (inQuotes) {
+                            if (ch === '"' && row[i + 1] === '"') { current += '"'; i++; }
+                            else if (ch === '"') { inQuotes = false; }
+                            else { current += ch; }
+                        } else {
+                            if (ch === '"') { inQuotes = true; }
+                            else if (ch === ",") { cols.push(current); current = ""; }
+                            else { current += ch; }
+                        }
+                    }
+                    cols.push(current);
+                    return cols;
+                };
+
+                const lines = resp.body.trim().replace(/\r\n/g, "\n").split("\n");
                 expect(lines.length).to.be.at.least(1);
 
                 // Header row should have exactly 15 columns
-                const headerCols = lines[0].split(",");
+                const headerCols = parseCsvRow(lines[0]);
                 expect(headerCols.length).to.equal(15);
             });
         });

@@ -273,11 +273,11 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 $kids = $sundaySchoolService->getKidsFullDetails($g->getId());
                 $parentIds = [];
                 foreach ($kids as $kid) {
-                    if ($kid['dadId'] != '') {
-                        $parentIds[] = $kid['dadId'];
+                    if ($kid['dadId'] !== null) {
+                        $parentIds[] = (int) $kid['dadId'];
                     }
-                    if ($kid['momId'] != '') {
-                        $parentIds[] = $kid['momId'];
+                    if ($kid['momId'] !== null) {
+                        $parentIds[] = (int) $kid['momId'];
                     }
                 }
                 $sundaySchoolsParents[$g->getId()] = $parentIds;
@@ -297,7 +297,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             foreach ($groups as $g) {
                 $groupRole = $person[$g->getName()] ?? '';
                 if ($groupRole === '' && $g->isSundaySchool()) {
-                    if (in_array($person['id'], $sundaySchoolsParents[$g->getId()])) {
+                    if (in_array((int) $person['id'], $sundaySchoolsParents[$g->getId()], true)) {
                         $groupRole = 'Parent';
                     }
                 }
