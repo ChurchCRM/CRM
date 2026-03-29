@@ -38,29 +38,32 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         $dashboardService    = new DashboardService();
         $sundaySchoolService = new SundaySchoolService();
 
-        $groupStats         = $dashboardService->getGroupStats();
-        $kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
-        $classStats         = $sundaySchoolService->getClassStats();
+        try {
+            $groupStats         = $dashboardService->getGroupStats();
+            $kidsWithoutClasses = $sundaySchoolService->getKidsWithoutClasses();
+            $classStats         = $sundaySchoolService->getClassStats();
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error('SundaySchool Dashboard: Error loading data', ['exception' => $e->getMessage()]);
+            $groupStats         = ['sundaySchoolClasses' => 0];
+            $kidsWithoutClasses = [];
+            $classStats         = [];
+        }
 
-        $classes    = $groupStats['sundaySchoolClasses'];
-        $teachers   = 0;
-        $kids       = 0;
-        $maleKids   = 0;
-        $femaleKids = 0;
-        $familyIds  = [];
+        $classes  = $groupStats['sundaySchoolClasses'];
+        $teachers = 0;
+        $kids     = 0;
 
         foreach ($classStats as $class) {
             $kids     += $class['kids'];
             $teachers += $class['teachers'];
-            $classKids = $sundaySchoolService->getKidsFullDetails($class['id']);
-            foreach ($classKids as $kid) {
-                $familyIds[] = $kid['fam_id'];
-                if ($kid['kidGender'] == '1') {
-                    $maleKids++;
-                } elseif ($kid['kidGender'] == '2') {
-                    $femaleKids++;
-                }
-            }
+        }
+
+        // Batch-fetch gender/family stats in a single query instead of N+1
+        try {
+            $studentStats = $sundaySchoolService->getDashboardStudentStats();
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->error('SundaySchool Dashboard: Error loading student stats', ['exception' => $e->getMessage()]);
+            $studentStats = ['maleKids' => 0, 'femaleKids' => 0, 'familyCount' => 0];
         }
 
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -81,9 +84,9 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'classes'            => $classes,
             'teachers'           => $teachers,
             'kids'               => $kids,
-            'families'           => count(array_unique($familyIds)),
-            'maleKids'           => $maleKids,
-            'femaleKids'         => $femaleKids,
+            'families'           => $studentStats['familyCount'],
+            'maleKids'           => $studentStats['maleKids'],
+            'femaleKids'         => $studentStats['femaleKids'],
             'canManageGroups'    => AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(),
         ];
 
