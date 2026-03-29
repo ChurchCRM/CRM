@@ -1,17 +1,21 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -232,6 +236,84 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
     })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/email-export",
+     *     summary="Export people emails with group memberships as CSV",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="CSV file with people emails and group role memberships")
+     * )
+     */
+    $group->get('/email-export', function (Request $request, Response $response): Response {
+        $personService = new PersonService();
+        $sundaySchoolService = new SundaySchoolService();
+
+        $groups = GroupQuery::create()
+            ->filterByActive(true)
+            ->filterByIncludeInEmailExport(true)
+            ->find();
+
+        // Build header columns
+        $headers = ['CRM ID', 'FirstName', 'LastName', 'Email'];
+        foreach ($groups as $g) {
+            $headers[] = $g->getName();
+        }
+
+        // Collect Sunday School parent IDs per group
+        $sundaySchoolsParents = [];
+        foreach ($groups as $g) {
+            if ($g->isSundaySchool()) {
+                $kids = $sundaySchoolService->getKidsFullDetails($g->getId());
+                $parentIds = [];
+                foreach ($kids as $kid) {
+                    if ($kid['dadId'] != '') {
+                        $parentIds[] = $kid['dadId'];
+                    }
+                    if ($kid['momId'] != '') {
+                        $parentIds[] = $kid['momId'];
+                    }
+                }
+                $sundaySchoolsParents[$g->getId()] = $parentIds;
+            }
+        }
+
+        // Build data rows
+        $rows = [];
+        foreach ($personService->getPeopleEmailsAndGroups() as $person) {
+            $row = [
+                $person['id'],
+                $person['firstName'],
+                $person['lastName'],
+                $person['email'],
+            ];
+
+            foreach ($groups as $g) {
+                $groupRole = $person[$g->getName()] ?? '';
+                if ($groupRole === '' && $g->isSundaySchool()) {
+                    if (in_array($person['id'], $sundaySchoolsParents[$g->getId()])) {
+                        $groupRole = 'Parent';
+                    }
+                }
+                $row[] = $groupRole;
+            }
+            $rows[] = $row;
+        }
+
+        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
+        $filename = 'EmailExport-' . date($dateFormat) . '.csv';
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+        $exporter->insertRows($rows);
+
+        $response = $response->withHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
+
+        return $response;
+    });
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {

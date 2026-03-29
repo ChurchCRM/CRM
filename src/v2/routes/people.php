@@ -3,12 +3,9 @@
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
-use ChurchCRM\Service\SundaySchoolService;
-use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
@@ -21,7 +18,6 @@ use Slim\Views\PhpRenderer;
 $app->group('/people', function (RouteCollectorProxy $group): void {
     $group->get('/verify', 'viewPeopleVerify');
     $group->get('/photos', 'viewPeoplePhotoGallery');
-    $group->get('/email-export', 'exportPeopleEmails');
     $group->get('/', 'listPeople');
     $group->get('', 'listPeople');
 });
@@ -278,70 +274,4 @@ function viewPeoplePhotoGallery(Request $request, Response $response, array $arg
     ];
 
     return $renderer->render($response, 'photo-gallery.php', $pageArgs);
-}
-
-/**
- * Export people emails with group memberships as CSV.
- * Migrated from legacy /email/MemberEmailExport.php.
- */
-function exportPeopleEmails(Request $request, Response $response, array $args): Response
-{
-    $personService = new PersonService();
-    $sundaySchoolService = new SundaySchoolService();
-
-    $groups = GroupQuery::create()
-        ->filterByActive(true)
-        ->filterByIncludeInEmailExport(true)
-        ->find();
-
-    // Build header columns
-    $headers = ['CRM ID', 'FirstName', 'LastName', 'Email'];
-    foreach ($groups as $group) {
-        $headers[] = $group->getName();
-    }
-
-    // Collect Sunday School parent IDs per group
-    $sundaySchoolsParents = [];
-    foreach ($groups as $group) {
-        if ($group->isSundaySchool()) {
-            $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
-            $parentIds = [];
-            foreach ($kids as $kid) {
-                if ($kid['dadId'] != '') {
-                    $parentIds[] = $kid['dadId'];
-                }
-                if ($kid['momId'] != '') {
-                    $parentIds[] = $kid['momId'];
-                }
-            }
-            $sundaySchoolsParents[$group->getId()] = $parentIds;
-        }
-    }
-
-    // Build data rows
-    $rows = [];
-    foreach ($personService->getPeopleEmailsAndGroups() as $person) {
-        $row = [
-            $person['id'],
-            $person['firstName'],
-            $person['lastName'],
-            $person['email'],
-        ];
-
-        foreach ($groups as $group) {
-            $groupRole = $person[$group->getName()] ?? '';
-            if ($groupRole === '' && $group->isSundaySchool()) {
-                if (in_array($person['id'], $sundaySchoolsParents[$group->getId()])) {
-                    $groupRole = 'Parent';
-                }
-            }
-            $row[] = $groupRole;
-        }
-        $rows[] = $row;
-    }
-
-    CsvExporter::create($headers, $rows, 'EmailExport', 'UTF-8', true);
-
-    // CsvExporter::create() calls exit(), but Slim expects a response
-    return $response;
 }
