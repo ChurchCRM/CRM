@@ -14,6 +14,7 @@ use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -243,7 +244,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     summary="Export people emails with group memberships as CSV",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="CSV file with people emails and group role memberships")
+     *     @OA\Response(response=200, description="CSV file with people emails and group role memberships"),
+     *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
      * )
      */
     $group->get('/email-export', function (Request $request, Response $response): Response {
@@ -313,7 +315,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $response->getBody()->write($exporter->getContent());
 
         return $response;
-    });
+    })->add(new SundaySchoolEnabledMiddleware())->add(ManageGroupRoleAuthMiddleware::class);
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {
