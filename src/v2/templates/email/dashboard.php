@@ -14,7 +14,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
     <div class="card-body">
         <div class="d-flex flex-wrap" style="gap:.5rem;">
-            <a href="<?= SystemURLs::getRootPath() ?>/email/MemberEmailExport.php" class="btn btn-outline-info">
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/people/email-export" class="btn btn-outline-info">
                 <i class="fa-solid fa-table me-1"></i><?= gettext('Export') ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/email/duplicate" class="btn btn-outline-warning">
