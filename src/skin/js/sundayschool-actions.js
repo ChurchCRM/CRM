@@ -167,6 +167,42 @@
       window.print();
     });
 
+    // Text dropdown actions — fetch phones from API
+    function _copyTextToClipboard(text) {
+      if (navigator.clipboard) {
+        return navigator.clipboard.writeText(text).then(function () {
+          window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+            type: "success",
+            delay: 3000,
+          });
+        }).catch(function () {
+          prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+        });
+      }
+      prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+      return Promise.resolve();
+    }
+
+    $(document).on("click", "[data-action='copy-phones'], [data-action='sms-all'], [data-action='sms-teachers'], [data-action='sms-parents']", function () {
+      var action = $(this).data("action");
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/sundayschool/phones",
+      }).done(function (data) {
+        var segmentMap = { "sms-teachers": data.teachers, "sms-parents": data.parents };
+        var segment = segmentMap[action] || data.all;
+        if (!segment || !segment.displayList) {
+          window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
+          return;
+        }
+        if (action === "copy-phones") {
+          _copyTextToClipboard(segment.displayList);
+        } else if (segment.smsLink) {
+          window.location.href = segment.smsLink;
+        }
+      });
+    });
+
     window.CRM.onLocalesReady(function () {
       // Copy to Group
       $(document).on("click", ".ss-copy-role", function (e) {

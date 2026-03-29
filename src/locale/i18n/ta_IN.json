@@ -3033,5 +3033,6 @@
     "Unverified Addresses": "சரிபார்க்கப்படாத முகவரிகள்",
     "Version Mismatch": "பதிப்பு பொருந்தாமை",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "உங்கள் தரவுத்தள பதிப்பு நிறுவப்பட்ட மென்பொருளை விட புதியது. இது பொதுவாக மென்பொருள் பழைய பதிப்பிற்கு திரும்பியது என்பதை குறிக்கிறது. உங்கள் தரவுத்தளத்துடன் பொருந்துமாறு ChurchCRM ஐ மேம்படுத்தவும்.",
-    "or later to continue.": "அல்லது தொடர பிறகு."
+    "or later to continue.": "அல்லது தொடர பிறகு.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

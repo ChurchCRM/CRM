@@ -134,6 +134,26 @@ if ($bCanManageGroups) {
                     <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
                 </div>
             </div>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                    <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
+                </button>
+                <div class="dropdown-menu">
+                    <button class="dropdown-item" data-action="copy-phones">
+                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy All Numbers') ?>
+                    </button>
+                    <button class="dropdown-item" data-action="sms-all">
+                        <i class="fa-solid fa-comment-sms me-2"></i><?= gettext('Text All') ?>
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item" data-action="sms-teachers">
+                        <i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Text Teachers') ?>
+                    </button>
+                    <button class="dropdown-item" data-action="sms-parents">
+                        <i class="fa-solid fa-users me-2"></i><?= gettext('Text Parents') ?>
+                    </button>
+                </div>
+            </div>
             <?php endif; ?>
             <?php if ($bCanManageGroups): ?>
             <div class="dropdown ms-auto">

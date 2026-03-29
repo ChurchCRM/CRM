@@ -130,9 +130,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php else: ?>
             <div class="row row-cards" id="photo-grid">
                 <?php foreach ($peopleData as $data):
-                    $person   = $data['person'];
-                    $hasPhoto = $data['hasPhoto'];
-                    $phone    = $person->getCellPhone() ?: $person->getHomePhone();
+                    $person    = $data['person'];
+                    $hasPhoto  = $data['hasPhoto'];
+                    $cellPhone = $person->getCellPhone();
+                    $phone     = $cellPhone ?: $person->getHomePhone();
                     $email    = $person->getEmail();
                     $initials = mb_strtoupper(
                         mb_substr($person->getFirstName() ?? '', 0, 1) .
@@ -184,6 +185,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                               title="<?= gettext('No phone number on file') ?>">
                                             <i class="ti ti-phone me-1"></i><?= gettext('Call') ?>
                                         </span>
+                                    <?php endif; ?>
+                                    <?php if ($cellPhone): ?>
+                                        <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $cellPhone)) ?>"
+                                           class="btn btn-sm btn-outline-secondary"
+                                           title="<?= gettext('Send text message') ?>">
+                                            <i class="ti ti-message"></i>
+                                        </a>
                                     <?php endif; ?>
                                     <?php if ($email): ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($email) ?>"

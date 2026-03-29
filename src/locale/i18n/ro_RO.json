@@ -3042,5 +3042,6 @@
     "Unverified Addresses": "Adrese neverificate",
     "Version Mismatch": "Nepotrivire de versiune",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Versiunea bazei dvs. de date este mai nouă decât software-ul instalat. Aceasta înseamnă de obicei că software-ul a fost retrogradat la o versiune mai veche. Vă rugăm actualizați ChurchCRM pentru a corespunde bazei dvs. de date.",
-    "or later to continue.": "sau o versiune mai nouă pentru a continua."
+    "or later to continue.": "sau o versiune mai nouă pentru a continua.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

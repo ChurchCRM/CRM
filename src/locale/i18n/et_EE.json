@@ -3033,5 +3033,6 @@
     "Unverified Addresses": "Kontrollimata aadressid",
     "Version Mismatch": "Versiooni erinevus",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Teie andmebaasi versioon on uuem kui installitud tarkvara. See tähendab tavaliselt, et tarkvara pöörati tagasi vanemale versioonile. Palun uuendage ChurchCRM oma andmebaasiga kooskõlastamiseks.",
-    "or later to continue.": "või hilisem jätkamiseks."
+    "or later to continue.": "või hilisem jätkamiseks.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

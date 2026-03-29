@@ -3033,5 +3033,6 @@
     "Unverified Addresses": "असत्यापित पते",
     "Version Mismatch": "संस्करण बेमेल",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "आपका डेटाबेस संस्करण स्थापित सॉफ़्टवेयर से अधिक नया है। इसका आमतौर पर मतलब है कि सॉफ़्टवेयर को पुराने संस्करण में वापस रोल किया गया था। अपने डेटाबेस से मेल खाने के लिए ChurchCRM को अपग्रेड करें।",
-    "or later to continue.": "या बाद में जारी रखने के लिए।"
+    "or later to continue.": "या बाद में जारी रखने के लिए।",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

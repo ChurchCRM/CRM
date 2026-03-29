@@ -3033,5 +3033,6 @@
     "Unverified Addresses": "ధృవీకరించబడని చిరునామాలు",
     "Version Mismatch": "వెర్షన్ అసమతుల్యత",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "మీ డేటాబేస్ వెర్షన్ ఇన్‌స్టాల్ చేసిన సాఫ్ట్‌వేర్ కంటే కొత్తది. ఇది సాధారణంగా సాఫ్ట్‌వేర్ పాత వెర్షన్‌కు వెనక్కి వెళ్ళిందని అర్థం. మీ డేటాబేస్‌తో సరిపోలడానికి ChurchCRM ని అప్‌గ్రేడ్ చేయండి.",
-    "or later to continue.": "లేదా కొనసాగించడానికి తర్వాత."
+    "or later to continue.": "లేదా కొనసాగించడానికి తర్వాత.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

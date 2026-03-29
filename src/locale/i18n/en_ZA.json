@@ -60,5 +60,6 @@
     "invalid event type id": "invalid event type ID",
     "Unexpected Person Id": "Unexpected Person ID",
     "Invalid List id": "Invalid List ID",
-    "Default Zip": "Default Postcode"
+    "Default Zip": "Default Postcode",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

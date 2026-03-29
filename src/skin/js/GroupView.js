@@ -284,11 +284,39 @@ function initializeGroupView() {
   });
 
   // ------------------------------------------------------------------ //
-  // Text group: show phone numbers prompt
+  // Text group: fetch phone numbers from API, then copy or open sms:
   // ------------------------------------------------------------------ //
-  $("#textGroupBtn").on("click", function () {
-    var phones = $(this).data("phones") || window.CRM.groupPhoneNumbers || "";
-    prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+  function _copyTextToClipboard(text) {
+    if (navigator.clipboard) {
+      return navigator.clipboard.writeText(text).then(function () {
+        window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+          type: "success",
+          delay: 3000,
+        });
+      }).catch(function () {
+        prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+      });
+    }
+    prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+    return Promise.resolve();
+  }
+
+  $(document).on("click", "[data-action='copy-phones'], [data-action='sms-all']", function () {
+    var action = $(this).data("action");
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "groups/" + window.CRM.currentGroup + "/phones",
+    }).done(function (data) {
+      if (!data.displayList) {
+        window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
+        return;
+      }
+      if (action === "copy-phones") {
+        _copyTextToClipboard(data.displayList);
+      } else if (action === "sms-all" && data.smsLink) {
+        window.location.href = data.smsLink;
+      }
+    });
   });
 
   // ------------------------------------------------------------------ //
