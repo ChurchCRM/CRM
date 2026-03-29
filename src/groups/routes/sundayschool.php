@@ -214,6 +214,36 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
         ];
         $sEmailLink = implode($sMailtoDelimiter, $allEmails) . ',';
 
+        // ---- Phone contact lists for SMS / copy-to-clipboard actions ---- //
+        $teacherPhonesRaw = [];
+        $parentPhonesRaw  = [];
+        $phoneSeen        = [];
+        foreach ($rsTeachers as $teacher) {
+            $phone = (string) $teacher->getCellPhone();
+            if (!empty($phone) && !isset($phoneSeen[$phone])) {
+                $phoneSeen[$phone]  = true;
+                $teacherPhonesRaw[] = $phone;
+            }
+        }
+        foreach ($thisClassChildren as $child) {
+            foreach (['dadCellPhone', 'momCellPhone'] as $field) {
+                $phone = (string) ($child[$field] ?? '');
+                if (!empty($phone) && !isset($phoneSeen[$phone])) {
+                    $phoneSeen[$phone] = true;
+                    $parentPhonesRaw[] = $phone;
+                }
+            }
+        }
+        $allPhonesRaw    = array_merge($teacherPhonesRaw, $parentPhonesRaw);
+        $makeSmsLink     = static function (array $phones): string {
+            $cleaned = array_filter(array_map(static fn($p) => preg_replace('/[^\d+]/', '', $p), $phones));
+            return empty($cleaned) ? '' : 'sms:' . implode(',', $cleaned);
+        };
+        $sPhoneLink      = implode(', ', $allPhonesRaw);
+        $sSmsLink        = $makeSmsLink($allPhonesRaw);
+        $sTeacherSmsLink = $makeSmsLink($teacherPhonesRaw);
+        $sParentSmsLink  = $makeSmsLink($parentPhonesRaw);
+
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $pageArgs = [
@@ -250,6 +280,10 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'roleEmails'             => $roleEmails,
             'sEmailLink'             => urlencode($sEmailLink),
             'canEmail'               => $currentUser->isEmailEnabled(),
+            'sPhoneLink'             => $sPhoneLink,
+            'sSmsLink'               => $sSmsLink,
+            'sTeacherSmsLink'        => $sTeacherSmsLink,
+            'sParentSmsLink'         => $sParentSmsLink,
         ];
 
         return $renderer->render($response, 'sundayschool/class-view.php', $pageArgs);

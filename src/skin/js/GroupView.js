@@ -284,11 +284,26 @@ function initializeGroupView() {
   });
 
   // ------------------------------------------------------------------ //
-  // Text group: show phone numbers prompt
+  // Text group: copy phone numbers to clipboard
   // ------------------------------------------------------------------ //
-  $("#textGroupBtn").on("click", function () {
-    var phones = $(this).data("phones") || window.CRM.groupPhoneNumbers || "";
-    prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+  $(document).on("click", ".copy-phones-btn", function () {
+    var phones = $(this).data("phones") || "";
+    if (!phones) return;
+    if (navigator.clipboard) {
+      navigator.clipboard
+        .writeText(phones)
+        .then(function () {
+          window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+            type: "success",
+            delay: 3000,
+          });
+        })
+        .catch(function () {
+          prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+        });
+    } else {
+      prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+    }
   });
 
   // ------------------------------------------------------------------ //

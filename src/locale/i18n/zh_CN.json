@@ -3024,5 +3024,6 @@
     "Unverified Addresses": "未验证地址",
     "Version Mismatch": "版本不匹配",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "您的数据库版本比已安装的软件更新。这通常意味着软件被回滚到了旧版本。请升级ChurchCRM以匹配您的数据库。",
-    "or later to continue.": "或更高版本以继续。"
+    "or later to continue.": "或更高版本以继续。",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

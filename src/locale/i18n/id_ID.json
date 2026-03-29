@@ -3024,5 +3024,6 @@
     "Unverified Addresses": "Alamat yang Belum Diverifikasi",
     "Version Mismatch": "Ketidakcocokan Versi",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini biasanya berarti perangkat lunak dikembalikan ke versi yang lebih lama. Silakan upgrade ChurchCRM untuk sesuai dengan database Anda.",
-    "or later to continue.": "atau lebih baru untuk melanjutkan."
+    "or later to continue.": "atau lebih baru untuk melanjutkan.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

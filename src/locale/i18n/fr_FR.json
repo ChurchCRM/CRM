@@ -3033,5 +3033,6 @@
     "Unverified Addresses": "Adresses non vérifiées",
     "Version Mismatch": "Incompatibilité de version",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "La version de votre base de données est plus récente que le logiciel installé. Cela signifie généralement que le logiciel a été rétrogradé vers une version antérieure. Veuillez mettre à niveau ChurchCRM pour correspondre à votre base de données.",
-    "or later to continue.": "ou ultérieur pour continuer."
+    "or later to continue.": "ou ultérieur pour continuer.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

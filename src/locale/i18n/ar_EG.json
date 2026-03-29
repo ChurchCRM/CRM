@@ -3069,5 +3069,6 @@
     "Unverified Addresses": "عناوين غير موثقة",
     "Version Mismatch": "تعارض الإصدارات",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "إصدار قاعدة بياناتك أحدث من البرنامج المثبت. يعني هذا عادةً أن البرنامج تم التراجع إلى إصدار أقدم. يرجى ترقية ChurchCRM ليتوافق مع قاعدة بياناتك.",
-    "or later to continue.": "أو أحدث للمتابعة."
+    "or later to continue.": "أو أحدث للمتابعة.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }

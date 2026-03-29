@@ -197,7 +197,10 @@ function viewGroup(Request $request, Response $response, array $args): Response
         $roleEmails[$roleName] = urlencode(implode($mailtoDelimiter, $parts));
     }
 
-    $sPhoneLink = implode(', ', $phonesRaw);
+    $sPhoneLink  = implode(', ', $phonesRaw);
+    // Build sms: link with cleaned phone numbers (digits and + only, comma-separated)
+    $sSmsNumbers = array_filter(array_map(fn($p) => preg_replace('/[^\d+]/', '', $p), $phonesRaw));
+    $sSmsLink    = !empty($sSmsNumbers) ? 'sms:' . implode(',', $sSmsNumbers) : '';
 
     // ------------------------------------------------------------------ //
     // Permissions
@@ -247,6 +250,7 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'sEmailLink'         => $sEmailLink,
         'roleEmails'         => $roleEmails,
         'sPhoneLink'         => $sPhoneLink,
+        'sSmsLink'           => $sSmsLink,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

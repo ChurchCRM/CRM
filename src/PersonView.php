@@ -301,6 +301,10 @@ $bOkToEdit = (
                         <li class="mb-2">
                             <i class="fa-solid fa-mobile-screen me-2 text-muted"></i>
                             <a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a>
+                            <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $sCellPhoneUnformatted)) ?>"
+                               class="ms-1 text-muted" title="<?= gettext('Send text message') ?>">
+                                <i class="fa-solid fa-comment-sms"></i>
+                            </a>
                             <small class="text-muted">(<?= gettext('Mobile') ?>)</small>
                         </li>
                         <?php endif; ?>

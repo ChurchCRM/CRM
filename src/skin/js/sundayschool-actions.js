@@ -167,6 +167,27 @@
       window.print();
     });
 
+    // Copy phone numbers to clipboard
+    $(document).on("click", ".copy-phones-btn", function () {
+      var phones = $(this).data("phones") || "";
+      if (!phones) return;
+      if (navigator.clipboard) {
+        navigator.clipboard
+          .writeText(phones)
+          .then(function () {
+            window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+              type: "success",
+              delay: 3000,
+            });
+          })
+          .catch(function () {
+            prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+          });
+      } else {
+        prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+      }
+    });
+
     window.CRM.onLocalesReady(function () {
       // Copy to Group
       $(document).on("click", ".ss-copy-role", function (e) {

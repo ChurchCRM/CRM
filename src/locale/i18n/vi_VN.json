@@ -3024,5 +3024,6 @@
     "Unverified Addresses": "Địa chỉ chưa được xác minh",
     "Version Mismatch": "Phiên bản không khớp",
     "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.": "Phiên bản cơ sở dữ liệu của bạn mới hơn phần mềm đã cài đặt. Điều này thường có nghĩa là phần mềm đã được khôi phục về phiên bản cũ hơn. Vui lòng nâng cấp ChurchCRM để phù hợp với cơ sở dữ liệu của bạn.",
-    "or later to continue.": "hoặc mới hơn để tiếp tục."
+    "or later to continue.": "hoặc mới hơn để tiếp tục.",
+    "Phone numbers copied to clipboard": "Phone numbers copied to clipboard"
 }
