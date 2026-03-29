@@ -10,6 +10,7 @@ use ChurchCRM\Slim\Middleware\Api\CalendarMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\Collection\ObjectCollection;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -280,7 +281,7 @@ function EventsObjectCollectionToFullCalendar(ObjectCollection $events, Calendar
 function NewAccessToken(Request $request, Response $response, array $args): Response
 {
     $Calendar = $request->getAttribute('calendar');
-    $Calendar->setAccessToken(ChurchCRM\Utils\MiscUtils::randomToken());
+    $Calendar->setAccessToken(MiscUtils::randomToken());
     $Calendar->save();
 
     return SlimUtils::renderJSON($response, $Calendar->toArray());

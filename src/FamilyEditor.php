@@ -8,8 +8,10 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
+use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -227,7 +229,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Write the base SQL depending on the Action
         $bSendNewsLetterString = $bSendNewsLetter ? 'TRUE' : 'FALSE';
 
-        $family = new \ChurchCRM\model\ChurchCRM\Family();
+        $family = new Family();
         if ($iFamilyID >= 1) {
             $family = FamilyQuery::create()->findPk($iFamilyID);
             $family
@@ -277,7 +279,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         // Auto-geocode family if address was modified (use pre-save flag — isColumnModified is cleared after save)
         if ($addressChanged && empty($family->getLatitude())) {
-            $familyService = new \ChurchCRM\Service\FamilyService();
+            $familyService = new FamilyService();
             $familyService->autoGeocodeFamily($family);
         }
 

@@ -10,7 +10,6 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
 

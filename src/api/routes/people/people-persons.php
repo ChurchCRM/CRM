@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\MenuEventsCount;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;

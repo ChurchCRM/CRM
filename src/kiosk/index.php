@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\KioskDevice;
@@ -10,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\KioskDeviceQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;

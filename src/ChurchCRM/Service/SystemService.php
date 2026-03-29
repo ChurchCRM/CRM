@@ -7,7 +7,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
-use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use PDO;

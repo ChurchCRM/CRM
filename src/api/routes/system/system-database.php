@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Backup\BackupDownloader;
 use ChurchCRM\Backup\BackupJob;
 use ChurchCRM\Backup\BackupType;
@@ -11,7 +10,6 @@ use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;

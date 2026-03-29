@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Bootstrapper;
-use ChurchCRM\dto\SystemConfig;
 
 require_once __DIR__ . '/Header-Security.php';
 

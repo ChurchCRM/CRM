@@ -5,7 +5,6 @@ require_once __DIR__ . '/Include/Functions.php';
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\InputUtils;

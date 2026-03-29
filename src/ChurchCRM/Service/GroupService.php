@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2r;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -291,7 +292,7 @@ class GroupService
         $listID = $group->getRoleListId();
 
         // Check for duplicate option name using Propel
-        $existingOption = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+        $existingOption = ListOptionQuery::create()
             ->filterById($listID)
             ->filterByOptionName($groupRoleName)
             ->findOne();
@@ -301,7 +302,7 @@ class GroupService
         }
 
         // Get count of options and max option ID
-        $options = \ChurchCRM\model\ChurchCRM\ListOptionQuery::create()
+        $options = ListOptionQuery::create()
             ->filterById($listID)
             ->find();
 

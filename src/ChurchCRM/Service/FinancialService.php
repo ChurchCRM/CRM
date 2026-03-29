@@ -17,9 +17,9 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
-use ChurchCRM\Service\AuthService;
-use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Collection\ObjectCollection;
+use Propel\Runtime\Map\TableMap;
+use ChurchCRM\Service\AuthService;
 
 class FinancialService
 {
@@ -548,7 +548,7 @@ class FinancialService
         $results = [];
         foreach ($collection as $pledge) {
             // Get basic pledge data without foreign objects
-            $pledgeData = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], false);
+            $pledgeData = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
             
             // Manually add only the Family fields we need for Tax Reports
             $family = $pledge->getFamily();
