@@ -284,26 +284,39 @@ function initializeGroupView() {
   });
 
   // ------------------------------------------------------------------ //
-  // Text group: copy phone numbers to clipboard
+  // Text group: fetch phone numbers from API, then copy or open sms:
   // ------------------------------------------------------------------ //
-  $(document).on("click", ".copy-phones-btn", function () {
-    var phones = $(this).data("phones") || "";
-    if (!phones) return;
+  function _copyTextToClipboard(text) {
     if (navigator.clipboard) {
-      navigator.clipboard
-        .writeText(phones)
-        .then(function () {
-          window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
-            type: "success",
-            delay: 3000,
-          });
-        })
-        .catch(function () {
-          prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+      return navigator.clipboard.writeText(text).then(function () {
+        window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+          type: "success",
+          delay: 3000,
         });
-    } else {
-      prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), phones);
+      }).catch(function () {
+        prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+      });
     }
+    prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
+    return Promise.resolve();
+  }
+
+  $(document).on("click", "[data-action='copy-phones'], [data-action='sms-all']", function () {
+    var action = $(this).data("action");
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "groups/" + window.CRM.currentGroup + "/phones",
+    }).done(function (data) {
+      if (!data.displayList) {
+        window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
+        return;
+      }
+      if (action === "copy-phones") {
+        _copyTextToClipboard(data.displayList);
+      } else if (action === "sms-all" && data.smsLink) {
+        window.location.href = data.smsLink;
+      }
+    });
   });
 
   // ------------------------------------------------------------------ //

@@ -152,20 +152,18 @@ if ($bCanManageGroups) {
                 </div>
             </div>
             <?php endif; ?>
-            <?php if (!empty($sPhoneLink) && $bEmailEnabled): ?>
+            <?php if ($bEmailEnabled): ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
                 </button>
                 <div class="dropdown-menu">
-                    <button class="dropdown-item copy-phones-btn" data-phones="<?= InputUtils::escapeAttribute($sPhoneLink) ?>">
+                    <button class="dropdown-item" data-action="copy-phones">
                         <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy Numbers') ?>
                     </button>
-                    <?php if (!empty($sSmsLink)): ?>
-                    <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($sSmsLink) ?>">
+                    <button class="dropdown-item" data-action="sms-all">
                         <i class="fa-solid fa-comment-sms me-2"></i><?= gettext('Send Text') ?>
-                    </a>
-                    <?php endif; ?>
+                    </button>
                 </div>
             </div>
             <?php endif; ?>

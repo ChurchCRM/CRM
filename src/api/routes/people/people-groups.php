@@ -6,7 +6,10 @@ use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\PropertyQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -232,6 +235,144 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
     })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/phones",
+     *     summary="Get cell phone numbers for group members (respects Do Not SMS)",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Phone contact info for the group",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phones", type="array", @OA\Items(type="string"), description="Raw phone numbers"),
+     *             @OA\Property(property="displayList", type="string", description="Comma-separated display string"),
+     *             @OA\Property(property="smsLink", type="string", description="sms: URI for opening native SMS app")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/phones', function (Request $request, Response $response, array $args): Response {
+        $groupID = (int) $args['groupID'];
+
+        // Resolve "Do Not SMS" excluded person IDs via property lookup
+        $doNotSmsProp = PropertyQuery::create()->filterByProName('Do Not SMS')->filterByProClass('p')->findOne();
+        $doNotSmsSet  = [];
+        if ($doNotSmsProp !== null) {
+            foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotSmsProp->getProId())->find() as $r) {
+                $doNotSmsSet[(int) $r->getRecordId()] = true;
+            }
+        }
+
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupID)
+            ->innerJoinWithPerson()
+            ->find();
+
+        $phonesSeen = [];
+        $phones     = [];
+        foreach ($memberships as $membership) {
+            $person = $membership->getPerson();
+            if ($person === null) {
+                continue;
+            }
+            $personId = (int) $person->getId();
+            if (isset($doNotSmsSet[$personId])) {
+                continue;
+            }
+            $phone = (string) $person->getCellPhone();
+            if (empty($phone) || isset($phonesSeen[$phone])) {
+                continue;
+            }
+            $phonesSeen[$phone] = true;
+            $phones[]           = $phone;
+        }
+
+        $cleaned = array_values(array_filter(array_map(static fn($p) => preg_replace('/[^\d+]/', '', $p), $phones)));
+
+        return SlimUtils::renderJSON($response, [
+            'phones'      => $phones,
+            'displayList' => implode(', ', $phones),
+            'smsLink'     => !empty($cleaned) ? 'sms:' . implode(',', $cleaned) : '',
+        ]);
+    });
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/sundayschool/phones",
+     *     summary="Get cell phone numbers for a Sunday School class, segmented by role",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Phone contact info segmented by role (all/teachers/parents)",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="all",      type="object"),
+     *             @OA\Property(property="teachers", type="object"),
+     *             @OA\Property(property="parents",  type="object")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/sundayschool/phones', function (Request $request, Response $response, array $args): Response {
+        $groupID             = (int) $args['groupID'];
+        $sundaySchoolService = new SundaySchoolService();
+
+        $rsTeachers        = $sundaySchoolService->getClassByRole($groupID, 'Teacher');
+        $thisClassChildren = $sundaySchoolService->getKidsFullDetails($groupID);
+
+        // Resolve "Do Not SMS" excluded person IDs
+        $doNotSmsProp = PropertyQuery::create()->filterByProName('Do Not SMS')->filterByProClass('p')->findOne();
+        $doNotSmsSet  = [];
+        if ($doNotSmsProp !== null) {
+            foreach (RecordPropertyQuery::create()->filterByPropertyId($doNotSmsProp->getProId())->find() as $r) {
+                $doNotSmsSet[(int) $r->getRecordId()] = true;
+            }
+        }
+
+        $teacherPhones = [];
+        $parentPhones  = [];
+        $phoneSeen     = [];
+
+        foreach ($rsTeachers as $teacher) {
+            if (isset($doNotSmsSet[(int) $teacher->getId()])) {
+                continue;
+            }
+            $phone = (string) $teacher->getCellPhone();
+            if (!empty($phone) && !isset($phoneSeen[$phone])) {
+                $phoneSeen[$phone] = true;
+                $teacherPhones[]   = $phone;
+            }
+        }
+        foreach ($thisClassChildren as $child) {
+            foreach (['dadId' => 'dadCellPhone', 'momId' => 'momCellPhone'] as $idField => $phoneField) {
+                $parentId = (int) ($child[$idField] ?? 0);
+                if ($parentId > 0 && isset($doNotSmsSet[$parentId])) {
+                    continue;
+                }
+                $phone = (string) ($child[$phoneField] ?? '');
+                if (!empty($phone) && !isset($phoneSeen[$phone])) {
+                    $phoneSeen[$phone] = true;
+                    $parentPhones[]    = $phone;
+                }
+            }
+        }
+
+        $allPhones  = array_merge($teacherPhones, $parentPhones);
+        $buildEntry = static function (array $phoneList): array {
+            $cleaned = array_values(array_filter(array_map(static fn($p) => preg_replace('/[^\d+]/', '', $p), $phoneList)));
+            return [
+                'phones'      => $phoneList,
+                'displayList' => implode(', ', $phoneList),
+                'smsLink'     => !empty($cleaned) ? 'sms:' . implode(',', $cleaned) : '',
+            ];
+        };
+
+        return SlimUtils::renderJSON($response, [
+            'all'      => $buildEntry($allPhones),
+            'teachers' => $buildEntry($teacherPhones),
+            'parents'  => $buildEntry($parentPhones),
+        ]);
+    });
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {

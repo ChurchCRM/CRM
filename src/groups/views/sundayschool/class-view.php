@@ -134,32 +134,24 @@ if ($bCanManageGroups) {
                     <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
                 </div>
             </div>
-            <?php endif; ?>
-            <?php if (!empty($sPhoneLink)): ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
                 </button>
                 <div class="dropdown-menu">
-                    <button class="dropdown-item copy-phones-btn" data-phones="<?= InputUtils::escapeAttribute($sPhoneLink) ?>">
+                    <button class="dropdown-item" data-action="copy-phones">
                         <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy All Numbers') ?>
                     </button>
-                    <?php if (!empty($sSmsLink)): ?>
-                    <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($sSmsLink) ?>">
+                    <button class="dropdown-item" data-action="sms-all">
                         <i class="fa-solid fa-comment-sms me-2"></i><?= gettext('Text All') ?>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($sTeacherSmsLink)): ?>
+                    </button>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($sTeacherSmsLink) ?>">
+                    <button class="dropdown-item" data-action="sms-teachers">
                         <i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Text Teachers') ?>
-                    </a>
-                    <?php endif; ?>
-                    <?php if (!empty($sParentSmsLink)): ?>
-                    <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($sParentSmsLink) ?>">
+                    </button>
+                    <button class="dropdown-item" data-action="sms-parents">
                         <i class="fa-solid fa-users me-2"></i><?= gettext('Text Parents') ?>
-                    </a>
-                    <?php endif; ?>
+                    </button>
                 </div>
             </div>
             <?php endif; ?>

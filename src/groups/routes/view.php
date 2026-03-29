@@ -127,10 +127,9 @@ function viewGroup(Request $request, Response $response, array $args): Response
     ];
 
     // ------------------------------------------------------------------ //
-    // Email / phone list (ORM, honouring Do-Not-Email / Do-Not-SMS props)
+    // Email / phone list (ORM, honouring Do-Not-Email)
     // ------------------------------------------------------------------ //
     $doNotEmailSet = array_flip(_getExcludedPersonIds('Do Not Email'));
-    $doNotSmsSet   = array_flip(_getExcludedPersonIds('Do Not SMS'));
 
     // Role name map for this group's role list
     $roleNameMap = [];
@@ -147,8 +146,6 @@ function viewGroup(Request $request, Response $response, array $args): Response
     $systemEmail      = (string) SystemConfig::getValue('sToEmailAddress');
     $allEmailsSeen    = [];  // email => true (hash set)
     $roleEmailsRaw    = [];  // role name => [email, ...]
-    $phonesSeen       = [];  // phone => true (hash set)
-    $phonesRaw        = [];
 
     foreach ($memberships as $membership) {
         $person = $membership->getPerson();
@@ -165,15 +162,6 @@ function viewGroup(Request $request, Response $response, array $args): Response
             if (!empty($email) && !isset($allEmailsSeen[$email])) {
                 $allEmailsSeen[$email]        = true;
                 $roleEmailsRaw[$roleName][]   = $email;
-            }
-        }
-
-        // Phone
-        if (!isset($doNotSmsSet[$personId])) {
-            $phone = (string) $person->getCellPhone();
-            if (!empty($phone) && !isset($phonesSeen[$phone])) {
-                $phonesSeen[$phone] = true;
-                $phonesRaw[]       = $phone;
             }
         }
     }
@@ -196,11 +184,6 @@ function viewGroup(Request $request, Response $response, array $args): Response
         }
         $roleEmails[$roleName] = urlencode(implode($mailtoDelimiter, $parts));
     }
-
-    $sPhoneLink  = implode(', ', $phonesRaw);
-    // Build sms: link with cleaned phone numbers (digits and + only, comma-separated)
-    $sSmsNumbers = array_filter(array_map(fn($p) => preg_replace('/[^\d+]/', '', $p), $phonesRaw));
-    $sSmsLink    = !empty($sSmsNumbers) ? 'sms:' . implode(',', $sSmsNumbers) : '';
 
     // ------------------------------------------------------------------ //
     // Permissions
@@ -249,8 +232,6 @@ function viewGroup(Request $request, Response $response, array $args): Response
         'aPropTypes'         => $aPropTypes,
         'sEmailLink'         => $sEmailLink,
         'roleEmails'         => $roleEmails,
-        'sPhoneLink'         => $sPhoneLink,
-        'sSmsLink'           => $sSmsLink,
     ];
 
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
