@@ -3,10 +3,13 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SundaySchoolService;
@@ -305,6 +308,128 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
         $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
         $filename = 'EmailExport-' . date($dateFormat) . '.csv';
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+        $exporter->insertRows($rows);
+
+        $response = $response->withHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
+
+        return $response;
+    })->add(new SundaySchoolEnabledMiddleware())->add(ManageGroupRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/sundayschool-export",
+     *     summary="Export Sunday School class roster as CSV",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="CSV file with class members, parents, and contact info"),
+     *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
+     * )
+     */
+    $group->get('/sundayschool-export', function (Request $request, Response $response): Response {
+        $headers = [
+            'Class', 'Role', 'First Name', 'Last Name', 'Birth Date',
+            'Mobile', 'Home Phone', 'Home Address',
+            'Dad Name', 'Dad Mobile', 'Dad Email',
+            'Mom Name', 'Mom Mobile', 'Mom Email',
+            'Properties',
+        ];
+
+        $rows = [];
+        $groups = GroupQuery::create()
+            ->orderByName(Criteria::ASC)
+            ->filterByType(4)
+            ->find();
+
+        foreach ($groups as $g) {
+            $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
+                ->joinWithPerson()
+                ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+                ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
+                ->findByGroupId($g->getId());
+
+            foreach ($groupRoleMemberships as $membership) {
+                $groupRole = ListOptionQuery::create()
+                    ->filterById($g->getRoleListId())
+                    ->filterByOptionId($membership->getRoleId())
+                    ->findOne();
+
+                $roleName = $groupRole ? $groupRole->getOptionName() : '';
+                $member = $membership->getPerson();
+                $family = $member->getFamily();
+
+                $address = '';
+                $dadName = $dadCell = $dadEmail = '';
+                $momName = $momCell = $momEmail = '';
+
+                if ($family !== null) {
+                    $address = trim($family->getAddress1() . ' ' . $family->getAddress2()
+                        . ' ' . $family->getCity() . ' ' . $family->getState() . ' ' . $family->getZip());
+
+                    if ($roleName === 'Student') {
+                        foreach ($family->getAdults() as $adult) {
+                            if ($adult->getGender() === 1) {
+                                $dadName = $adult->getFirstName() . ' ' . $adult->getLastName();
+                                $dadCell = $adult->getCellPhone();
+                                $dadEmail = $adult->getEmail();
+                            } elseif ($adult->getGender() === 2) {
+                                $momName = $adult->getFirstName() . ' ' . $adult->getLastName();
+                                $momCell = $adult->getCellPhone();
+                                $momEmail = $adult->getEmail();
+                            }
+                        }
+                    }
+                }
+
+                $props = '';
+                if ($roleName === 'Student') {
+                    $assignedProperties = $member->getProperties();
+                    if (!empty($assignedProperties)) {
+                        $propNames = [];
+                        foreach ($assignedProperties as $property) {
+                            $propNames[] = $property->getProperty()->getProName();
+                        }
+                        $props = implode(', ', $propNames);
+                    }
+                }
+
+                $birthDate = '';
+                $birthYear = $member->getBirthYear();
+                $birthMonth = $member->getBirthMonth();
+                $birthDay = $member->getBirthDay();
+                if ($birthYear !== null && $birthYear !== '' && (!$member->hideAge() || $roleName === 'Student')) {
+                    $date = \DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
+                    if ($date !== false) {
+                        $birthDate = $date->format(SystemConfig::getValue('sDateFormatLong'));
+                    }
+                }
+
+                $rows[] = [
+                    $g->getName(),
+                    $roleName,
+                    $member->getFirstName(),
+                    $member->getLastName(),
+                    $birthDate,
+                    $member->getCellPhone(),
+                    $member->getHomePhone(),
+                    $address,
+                    $dadName,
+                    $dadCell,
+                    $dadEmail,
+                    $momName,
+                    $momCell,
+                    $momEmail,
+                    $props,
+                ];
+            }
+        }
+
+        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
+        $filename = 'SundaySchool-' . date($dateFormat) . '.csv';
 
         $exporter = new CsvExporter();
         $exporter->insertHeaders($headers);

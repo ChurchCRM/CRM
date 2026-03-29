@@ -64,3 +64,64 @@ describe("API Private Groups Email Export", () => {
         });
     });
 });
+
+describe("API Private Groups Sunday School Export", () => {
+    describe("Admin Access", () => {
+        it("GET /api/groups/sundayschool-export returns CSV attachment", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/groups/sundayschool-export",
+                null,
+                200
+            ).then((resp) => {
+                // Verify CSV content-type header
+                expect(resp.headers["content-type"]).to.match(/text\/?csv/);
+
+                // Verify content-disposition attachment with dated filename
+                expect(resp.headers["content-disposition"]).to.match(
+                    /attachment;\s*filename="?SundaySchool-.*\.csv"?/
+                );
+
+                // Body should be a string (CSV text)
+                const body = resp.body;
+                expect(body).to.be.a("string");
+
+                // Verify CSV header row contains expected columns
+                expect(body).to.include("Class");
+                expect(body).to.include("Role");
+                expect(body).to.include("First Name");
+                expect(body).to.include("Last Name");
+                expect(body).to.include("Birth Date");
+                expect(body).to.include("Dad Name");
+                expect(body).to.include("Mom Name");
+            });
+        });
+
+        it("CSV body contains rows with 15 columns", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                "/api/groups/sundayschool-export",
+                null,
+                200
+            ).then((resp) => {
+                const lines = resp.body.trim().split("\n");
+                expect(lines.length).to.be.at.least(1);
+
+                // Header row should have exactly 15 columns
+                const headerCols = lines[0].split(",");
+                expect(headerCols.length).to.equal(15);
+            });
+        });
+    });
+
+    describe("Authorization - Non-Admin Users", () => {
+        it("Non-admin user without ManageGroups permission is denied", () => {
+            cy.makePrivateUserAPICall(
+                "GET",
+                "/api/groups/sundayschool-export",
+                null,
+                [401, 403, 500]
+            );
+        });
+    });
+});
