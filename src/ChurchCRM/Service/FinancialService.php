@@ -16,10 +16,10 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Service\AuthService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Map\TableMap;
-use ChurchCRM\Service\AuthService;
 
 class FinancialService
 {
