@@ -163,9 +163,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress API tests (root path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-api-[hash].xml
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-api-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -257,9 +255,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress UI tests (root path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-ui-[hash].xml
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-ui-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -351,9 +347,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress API tests (subdirectory path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-api-[hash].xml
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-api-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -447,9 +441,7 @@ jobs:
         echo "Server ready."
 
     - name: Run Cypress UI tests (subdirectory path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-ui-[hash].xml
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-ui-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
