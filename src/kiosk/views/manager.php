@@ -6,22 +6,45 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12">
+  <div class="col-lg-6 col-md-6 col-sm-12">
     <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Kiosk Manager') ?></h3>
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fa-solid fa-desktop me-2"></i><?= gettext('Kiosk Registration') ?>
+        </h3>
       </div>
       <div class="card-body">
-        <div class="mb-3">
-          <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
+        <p class="text-secondary mb-3"><?= gettext('Toggle the switch below to open a 30-second window for new kiosk devices to register.') ?></p>
+        <div class="d-flex align-items-center">
           <div class="form-check form-switch">
             <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
             <label class="form-check-label" for="isNewKioskRegistrationActive">
-              <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
+              <span id="kioskRegistrationStatus" class="badge bg-secondary"><?= gettext('Inactive') ?></span>
             </label>
           </div>
-          <small class="form-text text-muted"><?= gettext('When enabled, new kiosk devices can register for 30 seconds.') ?></small>
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-6 col-sm-12">
+    <div class="card border-primary">
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fa-solid fa-circle-info me-2 text-primary"></i><?= gettext('Setup Instructions') ?>
+        </h3>
+      </div>
+      <div class="card-body">
+        <p class="text-secondary mb-2"><?= gettext('To set up a kiosk device, follow these steps:') ?></p>
+        <ol class="mb-0">
+          <li class="mb-1"><?= gettext('Click the registration toggle above to open a 30-second registration window.') ?></li>
+          <li class="mb-1"><?= gettext('On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:') ?>
+            <div class="mt-1 mb-1">
+              <code class="p-2 d-inline-block bg-light rounded"><?= gettext('http://&lt;your-server-address&gt;') ?>/kiosk</code>
+            </div>
+          </li>
+          <li class="mb-1"><?= gettext('The device will register itself and appear in the table below as "Pending".') ?></li>
+          <li><?= gettext('Accept the device, then assign it to an event to begin check-in.') ?></li>
+        </ol>
       </div>
     </div>
   </div>
@@ -30,8 +53,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <div class="row">
   <div class="col-12">
     <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
+      <div class="card-header">
+        <h3 class="card-title">
+          <i class="fa-solid fa-list me-2"></i><?= gettext('Active Kiosks') ?>
+        </h3>
       </div>
       <div class="card-body p-0">
         <table id="KioskTable" class="table table-vcenter table-hover card-table">
@@ -139,22 +164,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')) {
-      $("#kioskRegistrationStatus").text(i18next.t('Active'));
+      $("#kioskRegistrationStatus").text(i18next.t('Active')).removeClass('bg-secondary').addClass('bg-success');
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
         window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + ' ' + i18next.t('seconds'));
+            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + 's').removeClass('bg-secondary').addClass('bg-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);
-            $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+            $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success').addClass('bg-secondary');
           }
         }, 1000);
       });
     } else {
-      $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+      $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success').addClass('bg-secondary');
     }
   });
 
