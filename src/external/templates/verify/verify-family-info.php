@@ -169,7 +169,7 @@ $doShowMap = !(empty($family->getLatitude()) && empty($family->getLongitude()));
                                 <p class="mb-2"><strong><?= gettext("Groups") ?></strong></p>
                                 <div class="text-start">
                                     <?php foreach ($person->getPerson2group2roleP2g2rs() as $groupMembership) {
-                                        if ($groupMembership->getGroup() != null) {
+                                        if ($groupMembership->getGroup() !== null) {
                                             $listOption = ListOptionQuery::create()
                                                 ->filterById($groupMembership->getGroup()->getRoleListId())
                                                 ->filterByOptionId($groupMembership->getRoleId())

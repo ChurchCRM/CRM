@@ -43,7 +43,7 @@ if (isset($_POST['Submit']) || mysqli_num_rows($rsParameters) === 0) {
     ValidateInput();
 
     // Any errors?
-    if (count($aErrorText) == 0) {
+    if (count($aErrorText) === 0) {
         // No errors; process the SQL, run the query, and display the results
         DisplayQueryInfo();
         ProcessSQL();
@@ -187,7 +187,7 @@ function DisplayRecordCount()
     global $rsQueryResults;
 
     // Are we supposed to display a count for this query?
-    if ($qry_Count == 1) {
+    if ($qry_Count === 1) {
         //Display the count of the recordset
         echo '<p class="text-center">';
         echo mysqli_num_rows($rsQueryResults) . gettext(' record(s) returned');
@@ -223,7 +223,7 @@ function DoQuery()
                 for ($iCount = 0; $iCount < mysqli_num_fields($rsQueryResults); $iCount++) {
                     // If this field is called"AddToCart", provision a headerless column to hold the cart action buttons
                     $fieldInfo = mysqli_fetch_field_direct($rsQueryResults, $iCount);
-                    if ($fieldInfo->name != 'AddToCart') {
+                    if ($fieldInfo->name !== 'AddToCart') {
                         echo '<th>' . $fieldInfo->name . '</th>';
                     } else {
                         echo '<th></th>';

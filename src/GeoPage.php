@@ -154,7 +154,7 @@ if (isset($_POST['DataFile'])) {
 
     foreach ($resultsByDistance as $oneResult) {
         if ($sCoordFileFamilies === 'NeighborFamilies') {
-            if ($counter++ == $iNumNeighbors) {
+            if ($counter++ === $iNumNeighbors) {
                 break;
             }
             if ($oneResult['Distance'] > $nMaxDistance) {
@@ -163,7 +163,7 @@ if (isset($_POST['DataFile'])) {
         }
 
         // Skip over the ones with no data
-        if ($oneResult['fam_Latitude'] == 0) {
+        if ($oneResult['fam_Latitude'] === 0) {
             continue;
         }
 
@@ -201,7 +201,7 @@ $families = FamilyQuery::create()
                         <?php
                         foreach ($families as $family) {
                             echo"\n<option value=\"" . $family->getId() . '"';
-                            if ($iFamily == $family->getId()) {
+                            if ($iFamily === $family->getId()) {
                                 echo ' selected';
                             }
                             echo '>' . $family->getName() . '&nbsp;-&nbsp;' . $family->getAddress();
@@ -307,7 +307,7 @@ $families = FamilyQuery::create()
         $aPersonIDs = [];
 
         if (
-            $iFamily != 0 &&
+            $iFamily !== 0 &&
             (isset($_POST['FindNeighbors']) ||
                 isset($_POST['PersonIDList']))
         ) {

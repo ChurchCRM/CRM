@@ -66,11 +66,11 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $currentUser->setCalNoSchool7($dNoSchool8);
     $currentUser->save();
 
-    if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID != 0) {
+    if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID !== 0) {
         RedirectUtils::redirect('Reports/PhotoBook.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
-    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID != 0) {
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID !== 0) {
         RedirectUtils::redirect('Reports/ClassList.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
-    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID != 0) {
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID !== 0) {
         $toStr = 'Reports/ClassAttendance.php?';
         //        $toStr .="GroupID=" . $iGroupID;
         $toStr .= 'GroupID=' . $aGrpID;
@@ -110,7 +110,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
             $toStr .= '&ExtraTeachers=' . $iExtraTeachers;
         }
         RedirectUtils::redirect($toStr);
-    } elseif (!$bAtLeastOneGroup || $aGrpID == 0) {
+    } elseif (!$bAtLeastOneGroup || $aGrpID === 0) {
         echo"<p class=\"alert alert-danger\"><span class=\"fa fa-triangle-exclamation\">" . gettext('At least one group must be selected to make class lists or attendance sheets.') ."</span></p>";
     }
 } else {
@@ -118,34 +118,34 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $iGroupID = 0;
     $currentUser = UserQuery::create()->findPk(AuthenticationManager::getCurrentUser()->getId());
 
-    if ($currentUser->getCalStart() != null) {
+    if ($currentUser->getCalStart() !== null) {
         $dFirstSunday = $currentUser->getCalStart()->format('Y-m-d');
     }
-    if ($currentUser->getCalEnd() != null) {
+    if ($currentUser->getCalEnd() !== null) {
         $dLastSunday = $currentUser->getCalEnd()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool1() != null) {
+    if ($currentUser->getCalNoSchool1() !== null) {
         $dNoSchool1 = $currentUser->getCalNoSchool1()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool2() != null) {
+    if ($currentUser->getCalNoSchool2() !== null) {
         $dNoSchool2 = $currentUser->getCalNoSchool2()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool3() != null) {
+    if ($currentUser->getCalNoSchool3() !== null) {
         $dNoSchool3 = $currentUser->getCalNoSchool3()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool4() != null) {
+    if ($currentUser->getCalNoSchool4() !== null) {
         $dNoSchool4 = $currentUser->getCalNoSchool4()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool5() != null) {
+    if ($currentUser->getCalNoSchool5() !== null) {
         $dNoSchool5 = $currentUser->getCalNoSchool5()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool6() != null) {
+    if ($currentUser->getCalNoSchool6() !== null) {
         $dNoSchool6 = $currentUser->getCalNoSchool6()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool7() != null) {
+    if ($currentUser->getCalNoSchool7() !== null) {
         $dNoSchool7 = $currentUser->getCalNoSchool7()->format('Y-m-d');
     }
-    if ($currentUser->getCalNoSchool8() != null) {
+    if ($currentUser->getCalNoSchool8() !== null) {
         $dNoSchool8 = $currentUser->getCalNoSchool8()->format('Y-m-d');
     }
 
