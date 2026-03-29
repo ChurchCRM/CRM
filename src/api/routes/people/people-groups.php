@@ -243,7 +243,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
-     *     path="/groups/email-export",
+     *     path="/groups/sundayschool/export/email",
      *     summary="Export people emails with group memberships as CSV",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
@@ -251,7 +251,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
      * )
      */
-    $group->get('/email-export', function (Request $request, Response $response): Response {
+    $group->get('/sundayschool/export/email', function (Request $request, Response $response): Response {
         $personService = new PersonService();
         $sundaySchoolService = new SundaySchoolService();
 
@@ -322,7 +322,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
-     *     path="/groups/sundayschool-export",
+     *     path="/groups/sundayschool/export/classlist",
      *     summary="Export Sunday School class roster as CSV",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
@@ -330,7 +330,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
      * )
      */
-    $group->get('/sundayschool-export', function (Request $request, Response $response): Response {
+    $group->get('/sundayschool/export/classlist', function (Request $request, Response $response): Response {
         $headers = [
             'Class', 'Role', 'First Name', 'Last Name', 'Birth Date',
             'Mobile', 'Home Phone', 'Home Address',

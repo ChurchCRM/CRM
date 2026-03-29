@@ -2,10 +2,10 @@
 
 describe("API Private Groups Email Export", () => {
     describe("Admin Access", () => {
-        it("GET /api/groups/email-export returns CSV attachment", () => {
+        it("GET /api/groups/sundayschool/export/email returns CSV attachment", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/groups/email-export",
+                "/api/groups/sundayschool/export/email",
                 null,
                 200
             ).then((resp) => {
@@ -32,7 +32,7 @@ describe("API Private Groups Email Export", () => {
         it("CSV body contains data rows with valid structure", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/groups/email-export",
+                "/api/groups/sundayschool/export/email",
                 null,
                 200
             ).then((resp) => {
@@ -57,7 +57,7 @@ describe("API Private Groups Email Export", () => {
         it("Non-admin user without ManageGroups permission is denied", () => {
             cy.makePrivateUserAPICall(
                 "GET",
-                "/api/groups/email-export",
+                "/api/groups/sundayschool/export/email",
                 null,
                 [401, 403, 500]
             );
@@ -67,10 +67,10 @@ describe("API Private Groups Email Export", () => {
 
 describe("API Private Groups Sunday School Export", () => {
     describe("Admin Access", () => {
-        it("GET /api/groups/sundayschool-export returns CSV attachment", () => {
+        it("GET /api/groups/sundayschool/export/classlist returns CSV attachment", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/groups/sundayschool-export",
+                "/api/groups/sundayschool/export/classlist",
                 null,
                 200
             ).then((resp) => {
@@ -100,7 +100,7 @@ describe("API Private Groups Sunday School Export", () => {
         it("CSV body contains rows with 15 columns", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
-                "/api/groups/sundayschool-export",
+                "/api/groups/sundayschool/export/classlist",
                 null,
                 200
             ).then((resp) => {
@@ -118,7 +118,7 @@ describe("API Private Groups Sunday School Export", () => {
         it("Non-admin user without ManageGroups permission is denied", () => {
             cy.makePrivateUserAPICall(
                 "GET",
-                "/api/groups/sundayschool-export",
+                "/api/groups/sundayschool/export/classlist",
                 null,
                 [401, 403, 500]
             );
