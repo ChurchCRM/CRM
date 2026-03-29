@@ -26,7 +26,7 @@ $rsGroupInfo = RunQuery($sSQL);
 extract(mysqli_fetch_array($rsGroupInfo));
 
 // Abort if user tries to load with group having no special properties.
-if ($grp_hasSpecialProps === false) {
+if ((int)$grp_hasSpecialProps === 0) {
     RedirectUtils::redirect('groups/view/' . $iGroupID);
 }
 

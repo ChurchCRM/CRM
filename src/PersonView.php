@@ -382,10 +382,10 @@ $bOkToEdit = (
                         $hasCustomFields = true;
                         $displayIcon ="fa-solid fa-tag";
                         $displayLink ="";
-                        if ($type_ID === 9) {
+                        if ((int)$type_ID === 9) {
                             $displayIcon ="fa-solid fa-person-half-dress";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
-                        } elseif ($type_ID === 11) {
+                        } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon ="fa-solid fa-phone";
                             // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
@@ -471,7 +471,7 @@ $bOkToEdit = (
                                         if (!empty($pro_Prompt)) {
                                             $pro_Value = '';
                                             foreach ($assignedProperties as $assignedProperty) {
-                                                if ($assignedProperty->getPropertyId() === $pro_ID) {
+                                                if ($assignedProperty->getPropertyId() === (int)$pro_ID) {
                                                     $pro_Value = $assignedProperty->getPropertyValue();
                                                 }
                                             }
@@ -764,7 +764,7 @@ $bOkToEdit = (
                                                         extract($aProps);
                                                         $currentData = trim($aPersonProps[$prop_Field]);
                                                         if (strlen($currentData) > 0) {
-                                                            if ($type_ID === 11) {
+                                                            if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
                                                             echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '</small>';

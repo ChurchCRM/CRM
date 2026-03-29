@@ -113,7 +113,7 @@ $sCoordFileName = '';
 if (isset($_POST['FindNeighbors']) || isset($_POST['DataFile']) || isset($_POST['PersonIDList'])) {
     //Get all the variables from the request object and assign them locally
     $iFamily = InputUtils::legacyFilterInput($_POST['Family']);
-    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors']);
+    $iNumNeighbors = InputUtils::legacyFilterInput($_POST['NumNeighbors'], 'int');
     $nMaxDistance = InputUtils::legacyFilterInput($_POST['MaxDistance']);
     $sCoordFileName = InputUtils::legacyFilterInput($_POST['CoordFileName']);
     if (array_key_exists('CoordFileFormat', $_POST)) {
@@ -163,7 +163,7 @@ if (isset($_POST['DataFile'])) {
         }
 
         // Skip over the ones with no data
-        if ($oneResult['fam_Latitude'] === 0) {
+        if ((float)$oneResult['fam_Latitude'] === 0.0) {
             continue;
         }
 

@@ -538,7 +538,7 @@ if ($sFormat === 'addtocart') {
                             extract($aCustomField);
                             if ($aSecurityType[$custom_FieldSec] === 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) {
                                 if (isset($_POST["$custom_Field"])) {
-                                    if ($type_ID === 11) {
+                                    if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;
                                     }
                                     $row[] = displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
@@ -561,7 +561,7 @@ if ($sFormat === 'addtocart') {
 
                             extract($aFamCustomField);
                             if (isset($_POST["$fam_custom_Field"])) {
-                                if ($type_ID === 11) {
+                                if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
                                 $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
@@ -585,7 +585,7 @@ if ($sFormat === 'addtocart') {
 
                             extract($aFamCustomField);
                             if (isset($_POST["$fam_custom_Field"])) {
-                                if ($type_ID === 11) {
+                                if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
                                 $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);

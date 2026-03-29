@@ -200,7 +200,7 @@ if ($iRowNum === 0) {
     for ($row = 1; $row <= $numRows; $row++) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
-        if ($orderCounter !== $vol_Order) {
+        if ($orderCounter !== (int)$vol_Order) {
             $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
             $volunteerOpp->setOrder($orderCounter);
             $volunteerOpp->save();

@@ -41,6 +41,7 @@ switch ($mode) {
 }
 
 // Set appropriate table and field names for the editor mode
+$deleteCleanupTable = null;
 switch ($mode) {
     case 'famroles':
         $deleteCleanupTable = 'person_per';
@@ -137,7 +138,7 @@ switch ($sAction) {
                 RunQuery($sSQL);
             } else {
                 // Otherwise, for other types of assignees having a deleted option, reset them to default of 0 (undefined).
-                if ($deleteCleanupTable !== 0) {
+                if ($deleteCleanupTable !== null) {
                     $sSQL ="UPDATE $deleteCleanupTable SET $deleteCleanupColumn = $deleteCleanupResetTo WHERE $deleteCleanupColumn =" . $iID;
                     RunQuery($sSQL);
                 }

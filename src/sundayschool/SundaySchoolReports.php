@@ -40,6 +40,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $_SESSION['idefaultFY'] = $iFYID;
 
     $bAtLeastOneGroup = false;
+    $aGrpID = '';
 
     if (!empty($_POST['GroupID'])) {
         $count = 0;
@@ -66,11 +67,11 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
     $currentUser->setCalNoSchool7($dNoSchool8);
     $currentUser->save();
 
-    if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID !== 0) {
+    if ($bAtLeastOneGroup && isset($_POST['SubmitPhotoBook']) && $aGrpID !== '') {
         RedirectUtils::redirect('Reports/PhotoBook.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
-    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID !== 0) {
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassList']) && $aGrpID !== '') {
         RedirectUtils::redirect('Reports/ClassList.php?GroupID=' . $aGrpID . '&FYID=' . $iFYID . '&FirstSunday=' . $dFirstSunday . '&LastSunday=' . $dLastSunday . '&AllRoles=' . $allroles . '&pictures=' . $withPictures);
-    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID !== 0) {
+    } elseif ($bAtLeastOneGroup && isset($_POST['SubmitClassAttendance']) && $aGrpID !== '') {
         $toStr = 'Reports/ClassAttendance.php?';
         //        $toStr .="GroupID=" . $iGroupID;
         $toStr .= 'GroupID=' . $aGrpID;
@@ -110,7 +111,7 @@ if (isset($_POST['SubmitPhotoBook']) || isset($_POST['SubmitClassList']) || isse
             $toStr .= '&ExtraTeachers=' . $iExtraTeachers;
         }
         RedirectUtils::redirect($toStr);
-    } elseif (!$bAtLeastOneGroup || $aGrpID === 0) {
+    } elseif (!$bAtLeastOneGroup || $aGrpID === '') {
         echo"<p class=\"alert alert-danger\"><span class=\"fa fa-triangle-exclamation\">" . gettext('At least one group must be selected to make class lists or attendance sheets.') ."</span></p>";
     }
 } else {
