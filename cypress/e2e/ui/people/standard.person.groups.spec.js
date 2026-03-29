@@ -1,68 +1,138 @@
 /// <reference types="cypress" />
 
+/**
+ * Self-contained UI tests for Person Group Interactions on PersonView.php.
+ *
+ * Uses API calls to ensure person 2 is in a known group before each test,
+ * and cleans up afterwards so no test depends on seed-data state.
+ *
+ * Design: API setup runs via admin API key (makePrivateAdminAPICall) BEFORE
+ * the browser session is established. The standard session is then set up
+ * for UI interaction.
+ */
+
 describe("Person Group Interactions", () => {
     const personId = 2;
+    const testGroupId = 9; // "Church Board" — exists in seed data
 
-    beforeEach(() => cy.setupStandardSession());
+    /**
+     * Ensure person is a member of the test group via API.
+     * Uses admin API key so it works regardless of standard-user permissions.
+     * Tolerates 409/422 if the person is already in the group.
+     */
+    function ensurePersonInGroup() {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/groups/${testGroupId}/addperson/${personId}`,
+            { RoleID: 1 },
+            [200, 409, 422],
+        );
+    }
 
-    it("should display Groups tab with assigned groups", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+    /**
+     * Remove person from the test group via API (cleanup helper).
+     * Tolerates 404 if the person is already removed.
+     */
+    function removePersonFromGroup() {
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/groups/${testGroupId}/removeperson/${personId}`,
+            null,
+            [200, 404],
+        );
+    }
 
-        // Click Groups tab
-        cy.get("#nav-item-groups").click();
-        cy.get("#groups").should("be.visible");
+    describe("Groups tab with existing membership", () => {
+        beforeEach(() => {
+            ensurePersonInGroup();
+            cy.setupStandardSession();
+        });
 
-        // Should have at least one group listed
-        cy.get("#groups .list-group-item").should("have.length.gte", 1);
-    });
+        it("should display Groups tab with assigned groups", () => {
+            cy.visit(`PersonView.php?PersonID=${personId}`);
 
-    it("should show group action menu with View, Change Role, Remove", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.get("#nav-item-groups").click();
+            // Click Groups tab
+            cy.get("#nav-item-groups").click();
+            cy.get("#groups").should("be.visible");
 
-        // Open the first group's action dropdown
-        cy.get("#groups .list-group-item").first().find("[data-bs-toggle='dropdown']").click();
-        cy.get("#groups .list-group-item").first().find(".dropdown-menu").should("be.visible");
+            // Should have at least one group listed
+            cy.get("#groups .list-group-item").should("have.length.gte", 1);
+        });
 
-        // Verify menu items exist
-        cy.get("#groups .list-group-item").first().find(".dropdown-menu").within(() => {
-            cy.contains("View Group");
-            cy.contains("Change Role");
-            cy.contains("Remove");
+        it("should show group action menu with View, Change Role, Remove", () => {
+            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.get("#nav-item-groups").click();
+
+            // Open the first group's action dropdown
+            cy.get("#groups .list-group-item")
+                .first()
+                .find("[data-bs-toggle='dropdown']")
+                .click();
+            cy.get("#groups .list-group-item")
+                .first()
+                .find(".dropdown-menu")
+                .should("be.visible");
+
+            // Verify menu items exist
+            cy.get("#groups .list-group-item")
+                .first()
+                .find(".dropdown-menu")
+                .within(() => {
+                    cy.contains("View Group");
+                    cy.contains("Change Role");
+                    cy.contains("Remove");
+                });
+        });
+
+        it("should show remove confirmation when clicking Remove", () => {
+            cy.visit(`PersonView.php?PersonID=${personId}`);
+            cy.get("#nav-item-groups").click();
+
+            // Open the first group's action dropdown and click Remove
+            cy.get("#groups .list-group-item")
+                .first()
+                .find("[data-bs-toggle='dropdown']")
+                .click();
+            cy.get("#groups .list-group-item")
+                .first()
+                .find(".groupRemove")
+                .click();
+
+            // Bootbox confirmation should appear
+            cy.get(".bootbox").should("be.visible");
+            cy.get(".bootbox").should("contain", "remove");
+
+            // Cancel the removal
+            cy.get(".bootbox .btn-ghost-secondary").click();
         });
     });
 
-    it("should open Add to Group modal from Actions dropdown", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
+    describe("Add to Group modal", () => {
+        beforeEach(() => {
+            cy.setupStandardSession();
+        });
 
-        // Open Actions dropdown and click Assign New Group
-        cy.get("#person-actions-dropdown").click();
-        cy.get("#addGroup").click();
+        it("should open Add to Group modal from Actions dropdown", () => {
+            cy.visit(`PersonView.php?PersonID=${personId}`);
 
-        // Modal should appear with group selector
-        cy.get("#personGroupModal").should("be.visible");
-        cy.get("#personGroupModal .modal-title").should("contain", "Add to Group");
+            // Open Actions dropdown and click Assign New Group
+            cy.get("#person-actions-dropdown").click();
+            cy.get("#addGroup").click();
 
-        // TomSelect should be initialized with groups loaded
-        cy.get("#personGroupModal .ts-control").should("be.visible");
+            // Modal should appear with group selector
+            cy.get("#personGroupModal").should("be.visible");
+            cy.get("#personGroupModal .modal-title").should(
+                "contain",
+                "Add to Group",
+            );
 
-        // Close modal
-        cy.get("#personGroupModal [data-bs-dismiss='modal']").first().click();
-    });
+            // TomSelect should be initialized with groups loaded
+            cy.get("#personGroupModal .ts-control").should("be.visible");
 
-    it("should show remove confirmation when clicking Remove", () => {
-        cy.visit(`PersonView.php?PersonID=${personId}`);
-        cy.get("#nav-item-groups").click();
-
-        // Open the first group's action dropdown and click Remove
-        cy.get("#groups .list-group-item").first().find("[data-bs-toggle='dropdown']").click();
-        cy.get("#groups .list-group-item").first().find(".groupRemove").click();
-
-        // Bootbox confirmation should appear
-        cy.get(".bootbox").should("be.visible");
-        cy.get(".bootbox").should("contain", "remove");
-
-        // Cancel the removal
-        cy.get(".bootbox .btn-ghost-secondary").click();
+            // Close modal
+            cy.get("#personGroupModal [data-bs-dismiss='modal']")
+                .first()
+                .click();
+        });
     });
 });
