@@ -231,7 +231,7 @@ function performDownload() {
   const $downloadStatus = $("#downloadStatus");
 
   window.CRM.AdminAPIRequest({
-    type: "GET",
+    method: "GET",
     path: "upgrade/download-latest-release",
   })
     .done(function (data) {
