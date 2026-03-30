@@ -208,7 +208,8 @@ describe("PersonView: Update Properties for group with special props", () => {
         cy.contains("sdfsaf").should("be.visible");
 
         // Cancel button should navigate back to PersonView
-        cy.contains("Cancel").click();
+        // Scope to the form to avoid matching the hidden IssueReportModal Cancel button
+        cy.get("form[name='GroupPropEditor'] input[name='Cancel']").click();
         cy.url().should("include", `PersonView.php`);
         cy.url().should("include", `PersonID=${personId}`);
     });
