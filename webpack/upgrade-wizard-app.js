@@ -60,7 +60,7 @@ $(document).ready(function () {
   // Initialize bs-stepper
   upgradeStepper = new Stepper(document.querySelector("#upgrade-stepper"), {
     linear: true,
-    animation: true,
+    animation: false,
   });
 
   // Set up event handlers
@@ -186,7 +186,7 @@ function setupBackupStep() {
       });
   });
 
-  // Skip Backup — show warning and immediately advance
+  // Skip Backup — show warning and advance to next step
   $("#skipBackup").click(function () {
     $("#backupStatus").html(`<div class="alert alert-warning">
             <div class="d-flex align-items-center">
@@ -197,10 +197,12 @@ function setupBackupStep() {
                 </div>
             </div>
         </div>`);
-    // Hide skip, demote Create Backup to outline, show Continue
     $(this).addClass("d-none");
-    $("#doBackup").removeClass("btn-primary").addClass("btn-outline-primary");
-    $("#backup-next").removeClass("d-none");
+    $("#doBackup").addClass("d-none");
+    // Advance to next step after a brief pause for the alert to render
+    setTimeout(function () {
+      upgradeStepper.next();
+    }, 300);
   });
 }
 

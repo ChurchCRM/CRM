@@ -6,11 +6,8 @@ describe('System Upgrade Page', () => {
     it('should load and display compact version info', () => {
         cy.visit('/admin/system/upgrade');
 
-        // Version badges visible on one line
         cy.contains('Installed').should('be.visible');
         cy.get('.badge.bg-primary-lt').should('be.visible').and('not.be.empty');
-
-        // Refresh button
         cy.get('#refreshFromGitHub').should('be.visible');
     });
 
@@ -26,14 +23,11 @@ describe('System Upgrade Page', () => {
             cy.contains('Complete').should('exist');
         });
 
-        // Step 1 should be active initially
         cy.get('#step-warnings').should('be.visible');
     });
 
     it('should show pre-flight step with Continue button', () => {
         cy.visit('/admin/system/upgrade');
-
-        // Continue button should always be present
         cy.get('#acceptWarnings').should('be.visible').and('contain', 'Continue');
     });
 
@@ -42,7 +36,7 @@ describe('System Upgrade Page', () => {
             cy.visit('/admin/system/upgrade');
 
             cy.get('#step-warnings').should('be.visible');
-            cy.get('#acceptWarnings').should('be.visible').click();
+            cy.get('#acceptWarnings').click();
             cy.get('#step-backup').should('be.visible');
         });
 
@@ -52,7 +46,6 @@ describe('System Upgrade Page', () => {
             cy.get('#acceptWarnings').click();
             cy.get('#step-backup').should('be.visible');
 
-            // First step should be marked completed
             cy.get('.bs-stepper-header .step').first()
                 .should('have.class', 'completed');
         });
@@ -65,21 +58,30 @@ describe('System Upgrade Page', () => {
 
             cy.get('#doBackup').should('be.visible').and('contain', 'Create Backup');
             cy.get('#skipBackup').should('be.visible');
-            cy.get('#backup-next').should('have.class', 'd-none');
         });
 
-        it('should allow skipping backup and show continue button', () => {
+        it('should skip backup and auto-advance to download step', () => {
+            cy.intercept('GET', '**/admin/api/upgrade/download-latest-release', {
+                statusCode: 200,
+                body: {
+                    fileName: 'ChurchCRM-test-5.0.0.zip',
+                    fullPath: '/tmp/ChurchCRM-test-5.0.0.zip',
+                    releaseNotes: '## What\'s New\n\n- **Feature 1**: Dashboard\n',
+                    sha1: 'abc123def456'
+                }
+            }).as('downloadRelease');
+
             cy.visit('/admin/system/upgrade');
 
             cy.get('#acceptWarnings').click();
-            cy.get('#skipBackup').should('be.visible').click();
+            cy.get('#step-backup').should('be.visible');
 
-            cy.get('#backupStatus .alert-warning').should('be.visible');
-            cy.contains('Backup Skipped').should('be.visible');
+            // Skip auto-advances to download step
+            cy.get('#skipBackup').click();
 
-            // Skip button hidden, Continue visible
-            cy.get('#skipBackup').should('have.class', 'd-none');
-            cy.get('#backup-next').should('not.have.class', 'd-none');
+            // Should reach download step and trigger the API call
+            cy.wait('@downloadRelease', { timeout: 15000 });
+            cy.get('#downloadStatus .alert-success').should('be.visible');
         });
 
         it('should navigate full workflow with intercepted download', () => {
@@ -99,18 +101,13 @@ describe('System Upgrade Page', () => {
             cy.get('#acceptWarnings').click();
             cy.get('#step-backup').should('be.visible');
 
-            // Step 2: Skip backup
-            cy.get('#skipBackup').should('be.visible').click();
+            // Step 2: Skip backup (auto-advances)
+            cy.get('#skipBackup').click();
 
-            // Step 3: Jump directly to apply step via stepper API
-            cy.window().then((win) => {
-                // Trigger auto-download by advancing stepper programmatically
-                win.document.querySelector('#backup-next').click();
-            });
-
+            // Step 3: Wait for download
             cy.wait('@downloadRelease', { timeout: 15000 });
 
-            cy.get('#downloadStatus .alert-success', { timeout: 10000 }).should('be.visible');
+            cy.get('#downloadStatus .alert-success').should('be.visible');
             cy.get('#updateDetails').should('not.have.class', 'd-none');
             cy.get('#updateFileName').should('contain', 'ChurchCRM-test-5.0.0.zip');
             cy.get('#updateSHA1').should('contain', 'abc123def456');
@@ -136,14 +133,10 @@ describe('System Upgrade Page', () => {
 
             cy.get('#acceptWarnings').click();
             cy.get('#step-backup').should('be.visible');
-            cy.get('#skipBackup').should('be.visible').click();
-
-            cy.window().then((win) => {
-                win.document.querySelector('#backup-next').click();
-            });
+            cy.get('#skipBackup').click();
 
             cy.wait('@downloadFail', { timeout: 15000 });
-            cy.get('#downloadStatus .alert-danger', { timeout: 10000 }).should('be.visible');
+            cy.get('#downloadStatus .alert-danger').should('be.visible');
             cy.get('#retryDownload').should('be.visible');
         });
 
