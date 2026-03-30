@@ -6,31 +6,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-2">
-                <div class="card-title d-flex align-items-center gap-2 mb-0">
-                    <span id="personCount" class="badge bg-primary text-white d-none"></span>
-                </div>
-                <ul class="nav nav-pills ms-auto" id="ageFilter">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active" data-filter="all"><?= _("Everyone") ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-filter="adults"><?= _("Adults") ?></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-filter="children"><?= _("Children") ?></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body p-0" style="overflow: visible;">
-                <table id="noEmails" class="table table-vcenter table-hover card-table">
-                    <tbody></tbody>
-                </table>
-            </div>
+<div class="card">
+    <div class="card-header d-flex align-items-center flex-wrap gap-2">
+        <h3 class="card-title mb-0">
+            <?= _("People Without Emails") ?>
+            <span id="personCount" class="badge bg-primary text-white ms-2 d-none"></span>
+        </h3>
+        <div class="ms-auto">
+            <ul class="nav nav-pills" id="ageFilter">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active" data-filter="all"><?= _("Everyone") ?></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-filter="adults"><?= _("Adults") ?></a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-filter="children"><?= _("Children") ?></a>
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="table-responsive">
+        <table id="noEmails" class="table table-vcenter table-hover card-table">
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 
