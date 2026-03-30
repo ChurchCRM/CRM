@@ -98,6 +98,24 @@ $q = FundRaiserQuery::create();
 
 **Always do a case-sensitive grep for the short class name before removing its import.**
 
+### Missing Propel Query Imports in Legacy Files <!-- learned: 2026-03-30 -->
+
+Legacy `src/*.php` files sometimes use a Propel query class with **no `use` import at all**, causing a fatal `Class "FundRaiserQuery" not found` 500. This happens when a file was migrated piecemeal and the import was never added.
+
+When a legacy page 500s on first load with "Class not found", check whether the missing class is a Propel model — and add the `use` statement to the top of the file.
+
+```php
+// ❌ MISSING — causes Class "FundRaiserQuery" not found → 500
+$fundraisers = FundRaiserQuery::Create()->find();
+
+// ✅ ADD the import
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+// ...
+$fundraisers = FundRaiserQuery::create()->find();
+```
+
+Propel model classes live at `src/ChurchCRM/model/ChurchCRM/{ClassName}.php`. The autoloader maps them — they just need a `use` statement.
+
 ## Database Access Standards
 
 ```php

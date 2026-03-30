@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -120,7 +121,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             <select class="form-select" id="groupType" name="groupType">
                                 <option value=""><?= gettext('— Select type (optional) —') ?></option>
                                 <?php foreach ($groupTypes as $type): ?>
-                                    <option value="<?= (int) $type['id'] ?>"><?= \ChurchCRM\Utils\InputUtils::escapeHTML($type['name']) ?></option>
+                                    <option value="<?= (int) $type['id'] ?>"><?= InputUtils::escapeHTML($type['name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

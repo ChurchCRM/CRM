@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -205,7 +206,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <button type="button"
                                         class="dropdown-item text-danger delete-ss-class"
                                         data-group-id="<?= $class['id'] ?>"
-                                        data-group-name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($class['name']) ?>">
+                                        data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>">
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
@@ -263,13 +264,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <tr>
                         <td>
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
-                                <?= \ChurchCRM\Utils\InputUtils::escapeHTML($firstName) ?>
+                                <?= InputUtils::escapeHTML($firstName) ?>
                             </a><?= $photoIcon ?>
                         </td>
-                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($LastName) ?></td>
+                        <td><?= InputUtils::escapeHTML($LastName) ?></td>
                         <td><?= $birthDate ?></td>
                         <td><?= $age ?></td>
-                        <td><?= \ChurchCRM\Utils\InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
+                        <td><?= InputUtils::escapeHTML($Address1 . ' ' . $Address2 . ' ' . $city . ' ' . $state . ' ' . $zip) ?></td>
                         <td class="w-1">
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
@@ -301,7 +302,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <button type="button"
                                         class="dropdown-item text-danger delete-person"
                                         data-person_id="<?= $kidId ?>"
-                                        data-person_name="<?= \ChurchCRM\Utils\InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
+                                        data-person_name="<?= InputUtils::escapeAttribute($firstName . ' ' . $LastName) ?>">
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>

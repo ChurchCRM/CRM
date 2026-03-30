@@ -18,7 +18,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <i class="fa-solid fa-triangle-exclamation me-1"></i><?= gettext('Duplicates') ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/email/missing" class="btn btn-outline-danger">
-                <i class="fa-solid fa-bell-slash me-1"></i><?= gettext('Missing') ?>
+                <i class="fa-solid fa-bell-slash me-1"></i><?= gettext('People Without Emails') ?>
             </a>
         </div>
     </div>

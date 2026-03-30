@@ -8,7 +8,6 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Utils\InputUtils;
 use Exception;
 use Monolog\Level;
-use Monolog\Logger;
 
 class   SystemConfig
 {

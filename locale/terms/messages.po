@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 02:32+0000\n"
+"POT-Creation-Date: 2026-03-30 05:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -236,6 +236,9 @@ msgstr ""
 msgid "About WebDAV Backups"
 msgstr ""
 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr ""
+
 msgid "Accepted format: .csv"
 msgstr ""
 
@@ -263,10 +266,16 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+msgid "Activate"
+msgstr ""
+
 msgid "Activate the boxed layout"
 msgstr ""
 
 msgid "Active"
+msgstr ""
+
+msgid "Active Events"
 msgstr ""
 
 msgid "Active Groups"
@@ -321,6 +330,9 @@ msgid "Add Donated Item"
 msgstr ""
 
 msgid "Add Donors to Buyer List"
+msgstr ""
+
+msgid "Add Event"
 msgstr ""
 
 msgid "Add Event Type"
@@ -516,6 +528,9 @@ msgid "Adult Checking Out Person"
 msgstr ""
 
 msgid "Adult/Child"
+msgstr ""
+
+msgid "Adults"
 msgstr ""
 
 msgid "Advanced Deposit Report"
@@ -877,10 +892,16 @@ msgstr ""
 msgid "Assign to a Group"
 msgstr ""
 
+msgid "Assigned Kiosk"
+msgstr ""
+
 msgid "At least one fund must have a non-zero amount."
 msgstr ""
 
 msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr ""
+
+msgid "Attendance"
 msgstr ""
 
 msgid "Attendance Count Categories"
@@ -1186,9 +1207,6 @@ msgid "British Virgin Islands"
 msgstr ""
 
 msgid "Browse all available plugins"
-msgstr ""
-
-msgid "Browse all church events and activities"
 msgstr ""
 
 msgid "Browse all people in your congregation with filtering and search"
@@ -1617,6 +1635,9 @@ msgstr ""
 msgid "Class"
 msgstr ""
 
+msgid "Class / Group"
+msgstr ""
+
 msgid "Classes"
 msgstr ""
 
@@ -1669,6 +1690,9 @@ msgid "Click a bar to filter payments"
 msgstr ""
 
 msgid "Click the button below to test your WebDAV connection settings."
+msgstr ""
+
+msgid "Click the registration toggle above to open a 30-second registration window."
 msgstr ""
 
 msgid "Click to upload photo"
@@ -2001,6 +2025,9 @@ msgid "Create File"
 msgstr ""
 
 msgid "Create First Deposit"
+msgstr ""
+
+msgid "Create First Event"
 msgstr ""
 
 msgid "Create Group + ADD Cart"
@@ -2956,9 +2983,6 @@ msgstr ""
 msgid "Enable HTTPS"
 msgstr ""
 
-msgid "Enable New Kiosk Registration"
-msgstr ""
-
 msgid "Enable Plugin"
 msgstr ""
 
@@ -2969,6 +2993,9 @@ msgid "Enable Sunday School left menu."
 msgstr ""
 
 msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+msgid "Enable new kiosk registration"
 msgstr ""
 
 msgid "Enable non-deductible payments"
@@ -3210,7 +3237,16 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
+msgid "Events Dashboard"
+msgstr ""
+
+msgid "Events This Year"
+msgstr ""
+
 msgid "Events Today"
+msgstr ""
+
+msgid "Everyone"
 msgstr ""
 
 msgid "Exclude Inactive Families"
@@ -3385,6 +3421,9 @@ msgstr ""
 msgid "Failed to delete link"
 msgstr ""
 
+msgid "Failed to delete note"
+msgstr ""
+
 msgid "Failed to delete orphaned files"
 msgstr ""
 
@@ -3498,9 +3537,6 @@ msgid "False"
 msgstr ""
 
 msgid "Families"
-msgstr ""
-
-msgid "Families Without Emails"
 msgstr ""
 
 msgid "Families share an address and phone number."
@@ -3710,9 +3746,6 @@ msgid "Files may be modified or missing. Consider re-deploying from an official 
 msgstr ""
 
 msgid "Filesystem Permissions"
-msgstr ""
-
-msgid "Filter Events"
 msgstr ""
 
 msgid "Filter by Class"
@@ -4745,6 +4778,9 @@ msgstr ""
 msgid "Kiosk Manager"
 msgstr ""
 
+msgid "Kiosk Registration"
+msgstr ""
+
 msgid "Kiosk Registration Disabled"
 msgstr ""
 
@@ -4949,9 +4985,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "List Church Events"
-msgstr ""
-
 msgid "List Event Types"
 msgstr ""
 
@@ -4968,12 +5001,6 @@ msgid "List not found"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
-
-msgid "Listing All Church Events"
-msgstr ""
-
-msgid "Listing Events of Type"
 msgstr ""
 
 msgid "Lists"
@@ -5165,6 +5192,9 @@ msgid "Manage Donations and Finance"
 msgstr ""
 
 msgid "Manage Envelopes"
+msgstr ""
+
+msgid "Manage Event Types"
 msgstr ""
 
 msgid "Manage Funds"
@@ -5787,6 +5817,9 @@ msgstr ""
 msgid "No Deposits"
 msgstr ""
 
+msgid "No Events Found"
+msgstr ""
+
 msgid "No Group (Select for Kiosk Check-in)"
 msgstr ""
 
@@ -5842,6 +5875,10 @@ msgid "No email passed in"
 msgstr ""
 
 msgid "No event types defined yet."
+msgstr ""
+
+#, php-format
+msgid "No events found for %s."
 msgstr ""
 
 msgid "No events linked to this class."
@@ -6015,6 +6052,12 @@ msgstr ""
 msgid "Note Editor"
 msgstr ""
 
+msgid "Note not found"
+msgstr ""
+
+msgid "Note text is required"
+msgstr ""
+
 msgid "Note: Changes will not take effect until next logon."
 msgstr ""
 
@@ -6076,6 +6119,9 @@ msgstr ""
 msgid "Oman (‫عُمان‬‎)"
 msgstr ""
 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr ""
+
 msgid "Once"
 msgstr ""
 
@@ -6110,6 +6156,12 @@ msgid "Only Payments with Pledges"
 msgstr ""
 
 msgid "Only the new data below"
+msgstr ""
+
+msgid "Only the note author or an admin may delete this note"
+msgstr ""
+
+msgid "Only the note author or an admin may edit this note"
 msgstr ""
 
 msgid "Oops! Page not found."
@@ -6206,6 +6258,9 @@ msgid "Override system locale"
 msgstr ""
 
 msgid "Overview"
+msgstr ""
+
+msgid "Overview of church events, attendance, and activity"
 msgstr ""
 
 msgid "Owe"
@@ -6380,6 +6435,9 @@ msgstr ""
 msgid "People Verify Dashboard"
 msgstr ""
 
+msgid "People Without Emails"
+msgstr ""
+
 msgid "People by Classification"
 msgstr ""
 
@@ -6390,6 +6448,9 @@ msgid "People in Cart (filters ignored)"
 msgstr ""
 
 msgid "People not in"
+msgstr ""
+
+msgid "People with no personal or work email on record"
 msgstr ""
 
 msgid "Percentage"
@@ -7021,6 +7082,9 @@ msgid "Register Your Church"
 msgstr ""
 
 msgid "Register Your Family"
+msgstr ""
+
+msgid "Register and manage kiosk devices for event check-in"
 msgstr ""
 
 msgid "Register another family"
@@ -7772,6 +7836,9 @@ msgstr ""
 msgid "Setup Complete"
 msgstr ""
 
+msgid "Setup Instructions"
+msgstr ""
+
 msgid "Setup Progress"
 msgstr ""
 
@@ -7984,9 +8051,6 @@ msgid "Start Column"
 msgstr ""
 
 msgid "Start Date"
-msgstr ""
-
-msgid "Start Date/Time"
 msgstr ""
 
 msgid "Start Fresh"
@@ -8296,6 +8360,9 @@ msgstr ""
 msgid "The database has been cleared."
 msgstr ""
 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr ""
+
 msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
 msgstr ""
 
@@ -8378,7 +8445,7 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr ""
 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -8529,6 +8596,9 @@ msgstr ""
 msgid "To select multiple hold CTL"
 msgstr ""
 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr ""
+
 msgid "To stop receiving these emails, you can email"
 msgstr ""
 
@@ -8551,6 +8621,9 @@ msgid "Toggle navigation"
 msgstr ""
 
 msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr ""
+
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
 msgstr ""
 
 #. Context: countries
@@ -8578,6 +8651,9 @@ msgid "Total Amount"
 msgstr ""
 
 msgid "Total Campaigns"
+msgstr ""
+
+msgid "Total Check-ins"
 msgstr ""
 
 msgid "Total Deposit"
@@ -8643,6 +8719,9 @@ msgid "True / False"
 msgstr ""
 
 msgid "Try Again"
+msgstr ""
+
+msgid "Try selecting a different event type or year."
 msgstr ""
 
 msgid "Tuesdays"
@@ -8818,6 +8897,9 @@ msgstr ""
 msgid "Upcoming Birthdays"
 msgstr ""
 
+msgid "Upcoming Sunday School Events"
+msgstr ""
+
 msgid "Update"
 msgstr ""
 
@@ -8976,6 +9058,9 @@ msgid "User must have Manage Groups permission"
 msgstr ""
 
 msgid "User must have Menu Options permission"
+msgstr ""
+
+msgid "User must have Notes permission"
 msgstr ""
 
 msgid "User not found"
@@ -9378,9 +9463,6 @@ msgid "What happens next?"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
-msgstr ""
-
-msgid "When enabled, new kiosk devices can register for 30 seconds."
 msgstr ""
 
 msgid "Which role is a child?"
