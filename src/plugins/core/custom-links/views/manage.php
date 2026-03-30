@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="card-body">
         <p class="text-muted mb-0">
             <i class="fa-solid fa-circle-info"></i>
-            <?= gettext('These links appear in the"Links" menu in the navigation sidebar when this plugin is enabled.') ?>
+            <?= gettext('These links appear in the "Links" menu in the navigation sidebar when this plugin is enabled.') ?>
         </p>
     </div>
     <div class="table-responsive">
