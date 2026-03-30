@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
@@ -19,6 +20,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <div class="form-check form-switch">
             <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
             <label class="form-check-label" for="isNewKioskRegistrationActive">
+              <span class="visually-hidden"><?= gettext('Enable new kiosk registration') ?></span>
               <span id="kioskRegistrationStatus" class="badge bg-secondary"><?= gettext('Inactive') ?></span>
             </label>
           </div>
@@ -39,7 +41,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <li class="mb-1"><?= gettext('Click the registration toggle above to open a 30-second registration window.') ?></li>
           <li class="mb-1"><?= gettext('On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:') ?>
             <div class="mt-1 mb-1">
-              <code class="p-2 d-inline-block bg-light rounded"><?= gettext('http://&lt;your-server-address&gt;') ?>/kiosk</code>
+              <code class="p-2 d-inline-block bg-light rounded"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
             </div>
           </li>
           <li class="mb-1"><?= gettext('The device will register itself and appear in the table below as "Pending".') ?></li>
@@ -161,20 +163,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')) {
       $("#kioskRegistrationStatus").text(i18next.t('Active')).removeClass('bg-secondary').addClass('bg-success');
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
         window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + 's').removeClass('bg-secondary').addClass('bg-success');
+            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} seconds', { count: window.CRM.secondsLeft })).removeClass('bg-secondary').addClass('bg-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);
             $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success').addClass('bg-secondary');
           }
         }, 1000);
+      }).catch(function() {
+        if (window.CRM.discoverInterval) {
+          clearInterval(window.CRM.discoverInterval);
+        }
+        $('#isNewKioskRegistrationActive').prop('checked', false);
+        $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success').addClass('bg-secondary');
+        window.CRM.notify(i18next.t('Failed to enable kiosk registration'), { type: 'error' });
       });
     } else {
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
       $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success').addClass('bg-secondary');
     }
   });
