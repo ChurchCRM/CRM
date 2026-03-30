@@ -71,6 +71,8 @@ describe('Admin System Logs - UI Tests', () => {
     // Skip when no log files exist (table is conditionally rendered in PHP)
     cy.get('body').then(($body) => {
       if ($body.find('#logFilesTable tbody tr').length === 0) {
+        // Assert that there are indeed no log rows before skipping modal check
+        expect($body.find('#logFilesTable tbody tr').length).to.eq(0);
         cy.log('No log files found — skipping log viewer modal test');
         return;
       }
