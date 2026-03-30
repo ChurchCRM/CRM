@@ -70,7 +70,8 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                   <?php
                     // Render a placeholder image element and let the client-side avatar-loader
                     // fetch avatar info and set photo/initials as appropriate.
-                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2 view-person-photo" data-person-id="' . $Person->getId() . '" alt="" />';
+                    $clickClass = $Person->getPhoto()->hasUploadedPhoto() ? 'view-person-photo' : '';
+                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $Person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2 ' . $clickClass . '" data-person-id="' . $Person->getId() . '" alt="" />';
                   ?>
                   <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $Person->getId() ?>"><?= $Person->getFullName() ?></a>
                 </div>

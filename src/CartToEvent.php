@@ -95,7 +95,8 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                                 <?php
                                                     // Use client-side avatar loader: avatar-loader will fetch avatar info and render
                                                     // uploaded photos, gravatar, or initials as needed. Data attributes are required.
-                                                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2 view-person-photo" data-person-id="' . $person->getId() . '" alt="" />';
+                                                    $clickClass = $person->getPhoto()->hasUploadedPhoto() ? 'view-person-photo' : '';
+                                                    echo '<img data-image-entity-type="person" data-image-entity-id="' . $person->getId() . '" class="avatar avatar-sm rounded-circle photo-small me-2 ' . $clickClass . '" data-person-id="' . $person->getId() . '" alt="" />';
                                                 ?>
                                                 <a href="PersonView.php?PersonID=<?= $person->getId() ?>">
                                                     <?= $person->getFullName() ?>

@@ -180,7 +180,7 @@ if ($bCanManageGroups) {
                         <div class="col-auto">
                             <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
                                 <span class="avatar avatar-md">
-                                    <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>" class="view-person-photo" data-person-id="<?= $teacher->getId() ?>"
+                                    <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>" data-person-id="<?= $teacher->getId() ?>"
                                          alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
                                 </span>
                             </a>
@@ -245,7 +245,7 @@ if ($bCanManageGroups) {
                                     <div class="d-flex align-items-center gap-2">
                                         <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
                                             <span class="avatar avatar-sm">
-                                                <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>" class="view-person-photo" data-person-id="<?= (int) $child['kidId'] ?>"
+                                                <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>" data-person-id="<?= (int) $child['kidId'] ?>"
                                                      alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
                                             </span>
                                         </a>
@@ -338,7 +338,7 @@ if ($bCanManageGroups) {
                         <div class="modal-content">
                             <div class="modal-header">
                                 <span class="avatar avatar-md me-2">
-                                    <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>" class="view-person-photo" data-person-id="<?= (int) $child['kidId'] ?>"
+                                    <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>" data-person-id="<?= (int) $child['kidId'] ?>"
                                          alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
                                 </span>
                                 <h4 class="modal-title"><?= InputUtils::escapeHTML($child['firstName'] . ' ' . $child['LastName']) ?></h4>
