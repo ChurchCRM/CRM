@@ -129,10 +129,13 @@ This means: after ANY `cy.request()` / `makePrivateAdminAPICall()` call, the bro
 session established by `cy.setupAdminSession()` is **invalidated**. A subsequent
 `cy.visit()` will redirect to `/session/begin` (login page).
 
-**Fix: Direct login after API calls**
+**Fix: Direct login after API calls (only needed before `cy.visit()`)**
+
+`freshAdminLogin` is a **local helper function** — it is NOT a registered `cy.*` command
+and does NOT exist in `cypress/support/`. Copy it inline into the spec that needs it:
 
 ```javascript
-// Helper — bypasses cy.session() cache, guarantees fresh PHP session
+// Local helper — NOT a cy.* command. Copy into your spec file. Only needed for UI tests.
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
@@ -152,12 +155,63 @@ it("test that needs API setup then browser visit", () => {
 });
 ```
 
+**Pure API tests need NO login setup** — `makePrivateAdminAPICall` authenticates via
+API key header (`x-api-key`), not browser cookies. If your spec has no `cy.visit()`,
+omit `freshAdminLogin()` entirely.
+
+### `allowedStatuses` must match what the API actually returns <!-- learned: 2026-03-29 -->
+
+Only pass status codes the endpoint genuinely returns. Adding extra codes defensively masks real setup failures.
+
+```javascript
+// ✅ group addperson is idempotent — always returns 200 (member or not)
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200]);
+
+// ✅ add-if-not-exists endpoint returns 409 when already present
+cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+// ✅ cleanup teardown: allow 404 in case item was already deleted
+cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+// ❌ defensive extra codes when API never returns them — hides real 422/500
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200, 409, 422]);
+```
+
+Check the actual route implementation before choosing `allowedStatuses`.
+
 **Rules:**
 - ❌ NEVER `cy.visit()` after `cy.request()` / `makePrivateAdminAPICall()` without re-login
 - ❌ `cy.setupAdminSession({ forceLogin: true })` is NOT sufficient — it still uses `cy.session()` cache
 - ❌ `before()` hooks with API calls will poison cookies for ALL subsequent tests
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
+
+### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
+
+`freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.
+
+- ❌ `cy.freshAdminLogin()` — throws `TypeError: cy.freshAdminLogin is not a function`, fails the entire describe block
+- ✅ `freshAdminLogin()` — call as a plain JS function, only inside the spec file that defines it
+
+**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall` authenticate via `x-api-key` header — no session or cookies needed. Never add `freshAdminLogin()` or `setupAdminSession()` to `beforeEach` in a pure API spec.
+
+```javascript
+// ✅ CORRECT — API test, no login setup needed
+describe("People Without Email API", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
+        // no login needed — API key auth only
+    });
+});
+
+// ❌ WRONG — cy.freshAdminLogin() is not a command, crashes beforeEach for every test
+describe("People Without Email API", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
+        cy.freshAdminLogin(); // TypeError: cy.freshAdminLogin is not a function
+    });
+});
+```
 
 ### UI Tests Must Not Call APIs After Login <!-- learned: 2026-03-27 -->
 

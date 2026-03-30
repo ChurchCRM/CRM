@@ -3,7 +3,6 @@
 describe("People Without Email API", () => {
     beforeEach(() => {
         cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
-        cy.freshAdminLogin();
     });
 
     it("returns count and persons array", () => {
