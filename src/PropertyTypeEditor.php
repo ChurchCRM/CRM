@@ -38,7 +38,7 @@ if (isset($_POST['Submit'])) {
     // If no errors, let's update
     if (!$bError) {
         // Vary the SQL depending on if we're adding or editing
-        if ($iPropertyTypeID == 0) {
+        if ($iPropertyTypeID === 0) {
             $sSQL ="INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass ."','" . $sName ."','" . $sDescription ."')";
         } else {
             $sSQL ="UPDATE propertytype_prt SET prt_Class = '" . $sClass ."', prt_Name = '" . $sName ."', prt_Description = '" . $sDescription ."' WHERE prt_ID =" . $iPropertyTypeID;

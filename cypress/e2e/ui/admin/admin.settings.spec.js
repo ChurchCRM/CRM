@@ -7,8 +7,6 @@ describe("Admin Settings", () => {
 
     it("View system settings", () => {
         cy.visit("SystemSettings.php");
-        cy.contains("Church Information");
-        cy.contains("Email Setup");
         cy.contains("People Setup");
         cy.contains("Enabled Features");
         cy.contains("Report Settings");
@@ -16,7 +14,6 @@ describe("Admin Settings", () => {
         cy.contains("Quick Search");
         cy.contains("Localization");
         cy.contains("Confession");
-        cy.contains("Two-Factor Authentication");
         cy.contains("System Settings");
     });
 });

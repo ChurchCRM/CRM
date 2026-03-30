@@ -89,7 +89,7 @@ switch ($mode) {
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this list ID is really for a group roles list. (for security)
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -110,7 +110,7 @@ switch ($mode) {
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid person-custom field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -128,7 +128,7 @@ switch ($mode) {
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid group-specific-property field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -146,7 +146,7 @@ switch ($mode) {
         $rsTemp = RunQuery($sSQL);
 
         // Validate that this is a valid family_custom field custom list
-        if (mysqli_num_rows($rsTemp) == 0) {
+        if (mysqli_num_rows($rsTemp) === 0) {
             RedirectUtils::redirect('v2/dashboard');
             break;
         }
@@ -231,7 +231,7 @@ if (isset($_POST['SaveChanges'])) {
         } elseif ($row < $numRows) {
             $aNameErrors[$row] = 0;
             for ($rowcmp = $row + 1; $rowcmp <= $numRows; $rowcmp++) {
-                if ($aNameFields[$row] == $aNameFields[$rowcmp]) {
+                if ($aNameFields[$row] === $aNameFields[$rowcmp]) {
                     $bErrorFlag = true;
                     $bDuplicateFound = true;
                     $aNameErrors[$row] = 2;
@@ -247,7 +247,7 @@ if (isset($_POST['SaveChanges'])) {
     if (!$bErrorFlag) {
         for ($row = 1; $row <= $numRows; $row++) {
             // Update the type's name if it has changed from what was previously stored
-            if ($aOldNameFields[$row] != $aNameFields[$row]) {
+            if ($aOldNameFields[$row] !== $aNameFields[$row]) {
                 // Sanitize input to prevent XSS stored in role names
                 $sanitizedName = InputUtils::sanitizeText($aNameFields[$row]);
                 // Use Propel ORM to update the option name
@@ -395,7 +395,7 @@ if ($embedded) {
                             <?php
                             if ($iNewNameError > 0) {
                                 echo '<small class="text-danger d-block mt-1"><i class="fa-solid fa-circle-exclamation"></i> ';
-                                if ($iNewNameError == 1) {
+                                if ($iNewNameError === 1) {
                                     echo gettext('You must enter a name');
                                 } else {
                                     echo gettext('A ') . $noun . gettext(' by that name already exists.');
@@ -429,7 +429,7 @@ if ($embedded) {
                                 <th style="width: 80px;"><?= gettext('Order') ?></th>
                                 <th><?= gettext('Name') ?></th>
                                 <?php
-                                if ($mode == 'grproles') {
+                                if ($mode === 'grproles') {
                                     echo '<th style="width: 120px;">' . gettext('Default') . '</th>';
                                 }
                                 if ($mode === 'classes') {
@@ -455,7 +455,7 @@ if ($embedded) {
                             <td>
                                 <span class="badge bg-light text-dark">
                                     <?php
-                                    if ($mode == 'grproles' && $aIDs[$row] == $iDefaultRole) {
+                                    if ($mode === 'grproles' && $aIDs[$row] === $iDefaultRole) {
                                         echo '<span class="badge bg-info">' . gettext('Default') . '</span> ';
                                     }
                                     echo $row;
@@ -466,14 +466,14 @@ if ($embedded) {
                                 <input class="form-control form-control-sm" type="text" name="<?= $row . 'name' ?>" value="<?= InputUtils::escapeAttribute($aNameFields[$row]) ?>" maxlength="40">
                                 <?php
 
-                                if ($aNameErrors[$row] == 1) {
+                                if ($aNameErrors[$row] === 1) {
                                     echo '<small class="text-danger d-block mt-1">' . gettext('You must enter a name') . '</small>';
-                                } elseif ($aNameErrors[$row] == 2) {
+                                } elseif ($aNameErrors[$row] === 2) {
                                     echo '<small class="text-danger d-block mt-1">' . gettext('Duplicate name found.') . '</small>';
                                 } ?>
                             </td>
                             <?php
-                            if ($mode == 'grproles') {
+                            if ($mode === 'grproles') {
                                 echo '<td><button type="button" class="btn btn-sm btn-outline-primary" onclick="document.location=\'OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=makedefault\';">' . gettext('Make Default') . '</button></td>';
                             }
                             if ($mode === 'classes') {
@@ -490,7 +490,7 @@ if ($embedded) {
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <?php
-                                        if ($row != 1) {
+                                        if ($row !== 1) {
                                             echo '<a class="dropdown-item" href="OptionManagerRowOps.php?mode=' . InputUtils::escapeAttribute($mode) . '&Order=' . InputUtils::escapeAttribute($aSeqs[$row]) . '&ListID=' . InputUtils::escapeAttribute($listID) . '&ID=' . InputUtils::escapeAttribute($aIDs[$row]) . '&Action=up"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                         }
                                         if ($row < $numRows) {
@@ -522,14 +522,14 @@ if ($embedded) {
             <?= gettext('Save Changes') ?>
         </button>
 
-                <?php if ($mode == 'groupcustom' || $mode == 'custom' || $mode == 'famcustom') {
+                <?php if ($mode === 'groupcustom' || $mode === 'custom' || $mode === 'famcustom') {
                 ?>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:window.close();">
                         <i class="fa-solid fa-ban"></i>
                         <?= gettext('Exit') ?>
                     </button>
                 <?php
-                } elseif ($mode != 'grproles') {
+                } elseif ($mode !== 'grproles') {
                 ?>
                     <button type="button" class="btn btn-secondary" name="Exit" onclick="javascript:document.location='v2/dashboard';">
                         <i class="fa-solid fa-ban"></i>

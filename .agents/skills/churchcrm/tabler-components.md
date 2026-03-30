@@ -338,6 +338,43 @@ Colors: `bg-primary`, `bg-success`, `bg-danger`, `bg-warning`, `bg-info`.
 | `.card-table` | Remove card-body padding for full-width table |
 | `.w-1` | Shrink column to content width (for action buttons) |
 
+### DataTable Card Structure — Use `table-responsive`, Not `card-body p-0` <!-- learned: 2026-03-29 -->
+
+The correct Tabler pattern for a card containing a full-width DataTable is `table-responsive` directly on the card. The legacy `card-body p-0` + `overflow:visible` hack is an **anti-pattern** — remove it whenever found.
+
+```html
+<!-- ✅ CORRECT -->
+<div class="card">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">Title</h3>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-vcenter table-hover card-table">
+      ...
+    </table>
+  </div>
+</div>
+
+<!-- ❌ WRONG — legacy anti-pattern -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="card-body p-0" style="overflow: visible;">
+        <table ...>
+```
+
+**Rules:**
+- `table-responsive` replaces `card-body p-0` for DataTable wrappers — no padding hacks needed
+- Remove the `row > col-*` wrapper around single full-width cards — they add nothing
+- If the card has a descriptive paragraph before the table, put it in a proper `card-body`, then follow with `table-responsive`
+- Maps, calendars, and full-bleed content that legitimately need `p-0` are exempt
+
+**Finding violations:**
+```bash
+grep -r "card-body p-0" src/ --include="*.php" -l
+grep -r "overflow: visible" src/ --include="*.php" -l
+```
+
 ### DataTables Integration
 
 DataTables.net works with Tabler. Use Bootstrap 5 DataTables integration (`dataTables.bootstrap5`), not Bootstrap 4.
