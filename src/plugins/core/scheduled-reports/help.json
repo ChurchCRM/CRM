@@ -1,0 +1,31 @@
+{
+  "summary": "Sends periodic membership and financial summary reports to administrators by email. Activate this plugin and configure the interval and recipient to enable automatic scheduled reporting.",
+  "sections": [
+    {
+      "title": "Getting Started",
+      "content": "1. Activate this plugin from the Plugin Management page.\n2. Set the Report Interval (in hours) — e.g. 24 for daily, 168 for weekly.\n3. Optionally enter a Recipient Email. Leave blank to use the configured church email.\n4. Optionally list the Report Types to include (membership, financial).\n5. Reports are sent automatically the next time the background timer job runs after the interval elapses."
+    },
+    {
+      "title": "How It Works",
+      "content": "This plugin registers a handler for the cron.run hook, which is fired every time the ChurchCRM background timer job runs (triggered by page load via Footer.js). When the configured interval has elapsed since the last report, a summary email is assembled and sent via the system SMTP settings."
+    },
+    {
+      "title": "Requirements",
+      "content": "SMTP must be configured under Admin → System Settings → Email for report emails to be delivered. If SMTP is not configured, the plugin will log a warning and skip sending until SMTP is available."
+    },
+    {
+      "title": "Extending This Plugin",
+      "content": "This plugin is provided as a reference implementation showing how to use the CRON_RUN hook for scheduled work. Third-party plugins can hook into cron.run in the same way to register their own periodic background tasks."
+    }
+  ],
+  "links": [
+    {
+      "label": "Plugin Management",
+      "url": "/plugins/management"
+    },
+    {
+      "label": "System Settings (SMTP)",
+      "url": "/admin/system-settings"
+    }
+  ]
+}

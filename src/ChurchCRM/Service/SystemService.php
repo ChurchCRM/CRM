@@ -5,8 +5,8 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -75,19 +75,11 @@ class SystemService
     public static function runTimerJobs(): void
     {
         LoggerUtils::getAppLogger()->debug('Starting background job processing');
-        
-        // Run external backup timer job if plugin is active
-        try {
-            if (PluginManager::isPluginActive('external-backup')) {
-                $plugin = PluginManager::getPlugin('external-backup');
-                if ($plugin instanceof ExternalBackupPlugin) {
-                    $plugin->executeAutomaticBackup();
-                }
-            }
-        } catch (\Exception $exc) {
-            // An error in the auto-backup shouldn't prevent the page from loading
-            LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
-        }
+
+        // Fire the CRON_RUN hook so that plugins can register scheduled tasks.
+        // Each active plugin with cron work registers an action on Hooks::CRON_RUN
+        // in its boot() method. HookManager catches and logs any per-plugin errors.
+        HookManager::doAction(Hooks::CRON_RUN);
 
         LoggerUtils::getAppLogger()->debug('Finished background job processing');
     }

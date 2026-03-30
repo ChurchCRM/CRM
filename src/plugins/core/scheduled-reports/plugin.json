@@ -1,0 +1,41 @@
+{
+  "id": "scheduled-reports",
+  "name": "Scheduled Reports",
+  "description": "Send scheduled membership and financial summary reports to administrators by email. Activate to enable automatic periodic reports.",
+  "version": "1.0.0",
+  "author": "ChurchCRM Team",
+  "authorUrl": "https://churchcrm.io",
+  "type": "core",
+  "minimumCRMVersion": "7.0.0",
+  "mainClass": "ChurchCRM\\Plugins\\ScheduledReports\\ScheduledReportsPlugin",
+  "dependencies": [],
+  "settingsUrl": null,
+  "routesFile": null,
+  "settings": [
+    {
+      "key": "intervalHours",
+      "label": "Report Interval (hours)",
+      "type": "number",
+      "required": true,
+      "default": "168",
+      "help": "How often (in hours) to send the report. Use 24 for daily, 168 for weekly, 720 for monthly."
+    },
+    {
+      "key": "recipientEmail",
+      "label": "Recipient Email Address",
+      "type": "text",
+      "required": false,
+      "help": "Email address that will receive the scheduled reports. Leave blank to send to the configured church admin email."
+    },
+    {
+      "key": "reportTypes",
+      "label": "Report Types",
+      "type": "text",
+      "required": false,
+      "default": "membership,financial",
+      "help": "Comma-separated list of report types to include. Supported values: membership, financial."
+    }
+  ],
+  "menuItems": [],
+  "hooks": ["cron.run"]
+}
