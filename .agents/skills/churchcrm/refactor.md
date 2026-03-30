@@ -59,6 +59,9 @@ summary: |
   existing ones into Perpl ORM queries or Service methods.
 - **i18n:** Add `gettext()` strings and after changes run `npm run locale:build`
   and `npm run build` before opening a PR.
+- **Strict comparisons:** When converting `==`/`!=` to `===`/`!==`, always cast
+  `mysqli_fetch_array()` / `extract()` / `$_GET` / `$_POST` values to the expected
+  type first (e.g., `(int)$type_ID === 11`). See `code-standards.md` → "Strict vs Loose Comparisons".
 
 **Per-Feature Checklist (apply to each feature)**
 

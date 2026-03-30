@@ -43,7 +43,7 @@ switch ($sAction) {
         $sSQL ="SELECT type_ID,prop_Special FROM groupprop_master WHERE grp_ID = '" . $iGroupID ."' AND prop_Field = '" . $sField ."'";
         $rsTemp = RunQuery($sSQL);
         $aTemp = mysqli_fetch_array($rsTemp);
-        if ($aTemp[0] == 12) {
+        if ((int)$aTemp[0] === 12) {
             $sSQL ="DELETE FROM list_lst WHERE lst_ID = $aTemp[1]";
             RunQuery($sSQL);
         }
@@ -59,7 +59,7 @@ switch ($sAction) {
         $numRows = mysqli_num_rows($rsPropList);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
-        if ($numRows != 0) {
+        if ($numRows !== 0) {
             for ($reorderRow = $iPropID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
                 $sSQL ="UPDATE groupprop_master SET prop_ID = '" . ($reorderRow - 1) ."' WHERE grp_ID = '" . $iGroupID ."' AND prop_ID = '" . $reorderRow ."'";
                 RunQuery($sSQL);

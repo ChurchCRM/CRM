@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-28 18:17+0000\n"
+"POT-Creation-Date: 2026-03-30 02:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -755,6 +755,9 @@ msgstr ""
 msgid "Application files updated to latest version"
 msgstr ""
 
+msgid "Applied preset"
+msgstr ""
+
 msgid "Apply Filters"
 msgstr ""
 
@@ -872,12 +875,6 @@ msgid "Assign starting at #"
 msgstr ""
 
 msgid "Assign to a Group"
-msgstr ""
-
-msgid "Assigned Groups"
-msgstr ""
-
-msgid "Assigned Properties"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -1590,9 +1587,6 @@ msgstr ""
 msgid "Church name is required. Please complete the Basic Information tab."
 msgstr ""
 
-msgid "Church name is set to default value"
-msgstr ""
-
 msgid "ChurchCRM"
 msgstr ""
 
@@ -1666,6 +1660,9 @@ msgid "Clear all items from cart"
 msgstr ""
 
 msgid "Clear filter"
+msgstr ""
+
+msgid "Click Save to apply."
 msgstr ""
 
 msgid "Click a bar to filter payments"
@@ -2893,7 +2890,7 @@ msgstr ""
 msgid "Email PDF"
 msgstr ""
 
-msgid "Email Setup"
+msgid "Email Settings"
 msgstr ""
 
 msgid "Email Tools"
@@ -3098,9 +3095,6 @@ msgid "Enter your password"
 msgstr ""
 
 msgid "Enter your username and password as usual"
-msgstr ""
-
-msgid "Entered"
 msgstr ""
 
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -4811,9 +4805,6 @@ msgstr ""
 msgid "Last Campaign"
 msgstr ""
 
-msgid "Last Edited"
-msgstr ""
-
 msgid "Last Login"
 msgstr ""
 
@@ -5207,6 +5198,9 @@ msgid "Manage donation funds for financial tracking"
 msgstr ""
 
 msgid "Manage donations, pledges, and financial records"
+msgstr ""
+
+msgid "Manage email tools and SMTP configuration"
 msgstr ""
 
 msgid "Manage event names and categories"
@@ -5868,9 +5862,6 @@ msgstr ""
 msgid "No group assignments yet."
 msgstr ""
 
-msgid "No group assignments."
-msgstr ""
-
 msgid "No locales configured"
 msgstr ""
 
@@ -5921,9 +5912,6 @@ msgid "No properties defined yet"
 msgstr ""
 
 msgid "No properties have been added yet"
-msgstr ""
-
-msgid "No property assignments."
 msgstr ""
 
 msgid "No property types found"
@@ -6841,12 +6829,6 @@ msgstr ""
 msgid "Print or email annual giving statements to all donors."
 msgstr ""
 
-msgid "Printable Page"
-msgstr ""
-
-msgid "Printable View"
-msgstr ""
-
 msgid "Printable directory of all people, grouped by family"
 msgstr ""
 
@@ -6946,6 +6928,9 @@ msgid "Quick Actions"
 msgstr ""
 
 msgid "Quick Search"
+msgstr ""
+
+msgid "Quick Setup"
 msgstr ""
 
 msgid "Quick Start"
@@ -7345,9 +7330,6 @@ msgid "SMTP Username"
 msgstr ""
 
 msgid "SMTP server for sending emails"
-msgstr ""
-
-msgid "SMTP server settings are not configured"
 msgstr ""
 
 msgid "SSE"
@@ -7794,9 +7776,6 @@ msgid "Setup Progress"
 msgstr ""
 
 msgid "Setup Required"
-msgstr ""
-
-msgid "Setup Tasks:"
 msgstr ""
 
 #. Context: countries
@@ -8846,9 +8825,6 @@ msgid "Update Admin Contact"
 msgstr ""
 
 msgid "Update Available!"
-msgstr ""
-
-msgid "Update Church Name"
 msgstr ""
 
 msgid "Update Envelopes"

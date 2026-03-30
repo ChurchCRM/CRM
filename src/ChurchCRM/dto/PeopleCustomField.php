@@ -41,7 +41,7 @@ class PeopleCustomField
             $this->link = 'tel:' . $this->value;
         } elseif ($masterField->getTypeId() == 12) {
             $customOption = ListOptionQuery::create()->filterById($masterField->getCustomSpecial())->filterByOptionId($this->value)->findOne();
-            if ($customOption != null) {
+            if ($customOption !== null) {
                 $this->formattedValue = $customOption->getOptionName();
             } else {
                 $this->formattedValue = $this->value . ' ( ' . gettext('Deleted') . ' )';
