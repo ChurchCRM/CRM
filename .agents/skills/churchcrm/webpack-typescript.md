@@ -172,6 +172,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 ```
 
+### avatar-loader.ts Click Class Injection <!-- learned: 2026-03-30 -->
+
+`avatar-loader.ts` is the single source of truth for making avatars clickable.
+In `loadUploadedPhoto.onload`, it adds `.view-person-photo` / `.view-family-photo`
+plus `data-person-id` / `data-family-id` — but only after confirming the photo
+loaded successfully. It skips images inside `#uploadImageButton` / `#uploadImageTrigger`
+(profile upload buttons). **Do not add these classes in PHP templates** — avatar-loader
+handles it. See `frontend-development.md` → "Avatar Click-to-View Lightbox" for full rules.
+
 ### React Component with TypeScript
 
 ```typescript
