@@ -9,6 +9,7 @@ This skill covers all database access patterns using Perpl ORM (actively maintai
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+- **Legacy `mysqli_fetch_array()` / `extract()` values are always strings** — cast to `(int)` before strict comparison to int literals (see code-standards.md → "Strict vs Loose Comparisons")
 
 ## Perpl ORM Critical Differences from Propel
 

@@ -35,7 +35,7 @@ if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
 $sPageTitle = InputUtils::escapeHTML($person->getFullName());
 $sPageSubtitle = gettext('Person Profile') . ' — ID: ' . $person->getId();
 $breadcrumbItems = [[gettext('People'), '/people/dashboard']];
-if ($person->getFamId() != '' && $person->getFamily() != null) {
+if ($person->getFamId() !== '' && $person->getFamily() !== null) {
     $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFamily()->getName()), '/v2/family/' . $person->getFamId()];
 }
 $breadcrumbItems[] = [InputUtils::escapeHTML($person->getFirstName() . ' ' . $person->getLastName())];
@@ -50,7 +50,7 @@ if (AuthenticationManager::getCurrentUser()->isAdmin()) {
         $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/UserEditor.php?PersonID=' . $iPersonID, 'icon' => 'fa-user-secret'];
         $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
     }
-} elseif ($person->isUser() && $person->getId() == AuthenticationManager::getCurrentUser()->getId()) {
+} elseif ($person->isUser() && $person->getId() === AuthenticationManager::getCurrentUser()->getId()) {
     $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye', 'adminOnly' => false];
 }
 $sPageHeaderButtons = PageHeader::buttons($headerButtons);
@@ -202,8 +202,8 @@ $iTableSpacerWidth = 10;
 
 $bOkToEdit = (
     AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
-    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_ID == AuthenticationManager::getCurrentUser()->getId()) ||
-    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
+    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_ID === AuthenticationManager::getCurrentUser()->getId()) ||
+    (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID === AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
 );
 
 ?>
@@ -269,7 +269,7 @@ $bOkToEdit = (
                 }
                 ?>
                 <!-- Personal Information -->
-                <?php if ($dBirthDate || (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '')) : ?>
+                <?php if ($dBirthDate || (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate !== '')) : ?>
                 <div class="mb-3">
                     <h6 class="text-muted mb-2"><i class="fa-solid fa-user me-1"></i><?= gettext('Personal') ?></h6>
                     <ul class="list-unstyled ms-3">
@@ -282,7 +282,7 @@ $bOkToEdit = (
                             <?php endif; ?>
                         </li>
                         <?php endif; ?>
-                        <?php if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate != '') : ?>
+                        <?php if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-handshake me-2 text-muted"></i>
                             <?= gettext('Friend Date') ?>: <?= FormatDate($per_FriendDate, false) ?>
@@ -323,17 +323,17 @@ $bOkToEdit = (
                 <?php endif; ?>
 
                 <!-- Email -->
-                <?php if ($sEmail != '' || $per_WorkEmail != '') : ?>
+                <?php if ($sEmail !== '' || $per_WorkEmail !== '') : ?>
                 <div class="mb-3">
                     <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
                     <ul class="list-unstyled ms-3">
-                        <?php if ($sEmail != '') : ?>
+                        <?php if ($sEmail !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-muted"></i>
                             <a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a>
                         </li>
                         <?php endif; ?>
-                        <?php if ($per_WorkEmail != '') : ?>
+                        <?php if ($per_WorkEmail !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a>
@@ -378,14 +378,14 @@ $bOkToEdit = (
                 while ($Row = mysqli_fetch_array($rsCustomFields)) {
                     extract($Row);
                     $currentData = trim($aCustomData[$custom_Field]);
-                    if ($currentData != '') {
+                    if ($currentData !== '') {
                         $hasCustomFields = true;
                         $displayIcon ="fa-solid fa-tag";
                         $displayLink ="";
-                        if ($type_ID == 9) {
+                        if ((int)$type_ID === 9) {
                             $displayIcon ="fa-solid fa-person-half-dress";
                             $displayLink = SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $currentData;
-                        } elseif ($type_ID == 11) {
+                        } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon ="fa-solid fa-phone";
                             // Sanitize phone number for tel: URI - allow only digits, +, -, (, ), and 'e' for extension
@@ -471,7 +471,7 @@ $bOkToEdit = (
                                         if (!empty($pro_Prompt)) {
                                             $pro_Value = '';
                                             foreach ($assignedProperties as $assignedProperty) {
-                                                if ($assignedProperty->getPropertyId() == $pro_ID) {
+                                                if ($assignedProperty->getPropertyId() === (int)$pro_ID) {
                                                     $pro_Value = $assignedProperty->getPropertyValue();
                                                 }
                                             }
@@ -512,7 +512,7 @@ $bOkToEdit = (
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/NoteEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext("Add Note") ?></a>
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
-                    <?php if ($bOkToEdit && $fam_ID != '') { ?>
+                    <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
                         <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= $person->getFamilyRoleName() ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
                     <?php } ?>
@@ -537,7 +537,7 @@ $bOkToEdit = (
         </div>
 
         <!-- Family Members Card -->
-        <?php if ($person->getFamId() != '' && $person->getFamily() != null) { ?>
+        <?php if ($person->getFamId() !== '' && $person->getFamily() !== null) { ?>
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i><?= InputUtils::escapeHTML($fam_Name) ?> <?= gettext('Family') ?></h3>
@@ -562,7 +562,7 @@ $bOkToEdit = (
                     <tbody>
                         <?php foreach ($person->getFamily()->getPeopleSorted() as $familyMember) {
                             $tmpPersonId = $familyMember->getId();
-                            $isSelf = ($tmpPersonId == $iPersonID);
+                            $isSelf = ($tmpPersonId === $iPersonID);
                         ?>
                             <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
                                 <td>
@@ -582,7 +582,7 @@ $bOkToEdit = (
                                 <td><?= $familyMember->getFormattedBirthDate(); ?></td>
                                 <td>
                                     <?php $tmpEmail = $familyMember->getEmail();
-                                    if ($tmpEmail != '') { ?>
+                                    if ($tmpEmail !== '') { ?>
                                         <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
                                     <?php } ?>
                                 </td>
@@ -764,7 +764,7 @@ $bOkToEdit = (
                                                         extract($aProps);
                                                         $currentData = trim($aPersonProps[$prop_Field]);
                                                         if (strlen($currentData) > 0) {
-                                                            if ($type_ID == 11) {
+                                                            if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
                                                             echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '</small>';

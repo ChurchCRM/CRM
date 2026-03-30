@@ -585,13 +585,13 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
 
 
-        if (($aRow['per_fam_ID'] == 0) && ($mode == 'fam')) {
+        if (($aRow['per_fam_ID'] === 0) && ($mode === 'fam')) {
             // Skip people with no family ID
             continue;
         }
 
         // Skip if mode is fam and we have already printed labels
-        if (array_key_exists($aRow['per_fam_ID'], $didFam) && $didFam[$aRow['per_fam_ID']] && ($mode == 'fam')) {
+        if (array_key_exists($aRow['per_fam_ID'], $didFam) && $didFam[$aRow['per_fam_ID']] && ($mode === 'fam')) {
             continue;
         }
 
@@ -643,7 +643,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
             $sZip = $aRow['per_Zip'] ?? '';
 
             $sAddress = $sAddress1;
-            if ($sAddress2 != '') {
+            if ($sAddress2 !== '') {
                 $sAddress .="\n" . $sAddress2;
             }
 

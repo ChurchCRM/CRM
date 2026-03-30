@@ -650,12 +650,12 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
                     <td class="text-secondary fw-semibold" style="width:180px"><span class="text-danger">*</span><?= gettext('Event Status') ?></td>
                     <td colspan="3">
                         <div class="btn-group btn-group-toggle" data-bs-toggle="buttons">
-                            <label class="btn btn-outline-success <?= ($iEventStatus == 0) ? 'active' : '' ?>">
-                                <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus == 0) ? 'checked' : '' ?>>
+                            <label class="btn btn-outline-success <?= ($iEventStatus === 0) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="0" <?= ($iEventStatus === 0) ? 'checked' : '' ?>>
                                 <i class="fa-solid fa-check me-1"></i><?= gettext('Active') ?>
                             </label>
-                            <label class="btn btn-outline-secondary <?= ($iEventStatus == 1) ? 'active' : '' ?>">
-                                <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus == 1) ? 'checked' : '' ?>>
+                            <label class="btn btn-outline-secondary <?= ($iEventStatus === 1) ? 'active' : '' ?>">
+                                <input type="radio" name="EventStatus" value="1" <?= ($iEventStatus === 1) ? 'checked' : '' ?>>
                                 <i class="fa-solid fa-ban me-1"></i><?= gettext('Inactive') ?>
                             </label>
                         </div>

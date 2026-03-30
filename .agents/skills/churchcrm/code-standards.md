@@ -101,6 +101,38 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
 
+## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
+
+When replacing `==`/`!=` with `===`/`!==`, you MUST cast the operands to matching types first. Legacy code uses `mysqli_fetch_array()` / `extract()` which return **strings**, not integers. Blindly switching to strict comparison breaks logic silently.
+
+```php
+// ❌ WRONG — $type_ID is "11" (string from DB), never matches int 11
+if ($type_ID === 11) { ... }
+
+// ✅ CORRECT — cast before strict comparison
+if ((int)$type_ID === 11) { ... }
+
+// ❌ WRONG — $bPrivate is undefined (null) for new forms, null !== 0 is TRUE
+if ($bPrivate !== 0) { echo 'checked'; }
+
+// ✅ CORRECT — use null coalescing to handle uninitialized variables
+if (($bPrivate ?? 0) !== 0) { echo 'checked'; }
+
+// ❌ WRONG — BOOLEAN column returns '0'/'1' string, not 'true'
+if ($grp_hasSpecialProps === 'true') { ... }
+
+// ✅ CORRECT — compare against expected DB return type
+if ((int)$grp_hasSpecialProps === 1) { ... }
+```
+
+**Rules for `==` → `===` migration:**
+- `mysqli_fetch_array()` / `extract()` values are always **strings** — cast to `(int)` before comparing to int literals
+- `$_GET` / `$_POST` values are always **strings** — use `(int)` cast or compare to string literals
+- Uninitialized variables are `null` — use `($var ?? default)` before strict comparison
+- Propel ORM getters return proper types — safe for direct strict comparison
+- `implode()` returns a **string** — don't compare to int 0
+- `mysqli_result` can be `false` on error — use `instanceof` check, not `!== 0`
+
 ## Global Functions from Namespaced Code
 
 ```php

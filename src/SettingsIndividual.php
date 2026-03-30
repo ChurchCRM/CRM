@@ -20,14 +20,14 @@ if (isset($_POST['save'])) {
     while ($current_type = current($type)) {
         $id = key($type);
         // Filter Input
-        if ($current_type == 'text' || $current_type == 'textarea') {
+        if ($current_type === 'text' || $current_type === 'textarea') {
             $value = InputUtils::legacyFilterInput($new_value[$id]);
-        } elseif ($current_type == 'number') {
+        } elseif ($current_type === 'number') {
             $value = InputUtils::legacyFilterInput($new_value[$id], 'float');
-        } elseif ($current_type == 'date') {
+        } elseif ($current_type === 'date') {
             $value = InputUtils::legacyFilterInput($new_value[$id], 'date');
-        } elseif ($current_type == 'boolean') {
-            if ($new_value[$id] != '1') {
+        } elseif ($current_type === 'boolean') {
+            if ($new_value[$id] !== '1') {
                 $value = '';
             } else {
                 $value = '1';
@@ -38,7 +38,7 @@ if (isset($_POST['save'])) {
             ."WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID";
         $bRowExists = true;
         $iNumRows = mysqli_num_rows(RunQuery($sSQL));
-        if ($iNumRows == 0) {
+        if ($iNumRows === 0) {
             $bRowExists = false;
         }
 
@@ -109,7 +109,7 @@ $rsConfigs = RunQuery($sSQL);
           <?php
           $r = 1;
           while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
-              if (!($ucfg_permission == 'TRUE' || AuthenticationManager::getCurrentUser()->isAdmin())) {
+              if (!($ucfg_permission === 'TRUE' || AuthenticationManager::getCurrentUser()->isAdmin())) {
                   continue;
               }
 
@@ -119,13 +119,13 @@ $rsConfigs = RunQuery($sSQL);
               echo '<input type="hidden" name="type[' . (int)$ucfg_id . ']" value="' . InputUtils::escapeAttribute($ucfg_type) . '"></td>';
 
               // Current Value
-              if ($ucfg_type == 'text') {
+              if ($ucfg_type === 'text') {
                   echo '<td><input type="text" class="form-control" maxlength="255" name="new_value[' . (int)$ucfg_id . ']" value="' . InputUtils::escapeHTML($ucfg_value) . '"></td>';
-              } elseif ($ucfg_type == 'textarea') {
+              } elseif ($ucfg_type === 'textarea') {
                   echo '<td><textarea class="form-control" rows="4" name="new_value[' . (int)$ucfg_id . ']">' . InputUtils::escapeHTML($ucfg_value) . '</textarea></td>';
-              } elseif ($ucfg_type == 'number' || $ucfg_type == 'date') {
+              } elseif ($ucfg_type === 'number' || $ucfg_type === 'date') {
                   echo '<td><input type="text" class="form-control" maxlength="15" name="new_value[' . (int)$ucfg_id . ']" value="' . InputUtils::escapeAttribute($ucfg_value) . '"></td>';
-              } elseif ($ucfg_type == 'boolean') {
+              } elseif ($ucfg_type === 'boolean') {
                   $sel1 = $ucfg_value ? '' : 'selected';
                   $sel2 = $ucfg_value ? 'selected' : '';
                   echo '<td><select class="form-select" name="new_value[' . (int)$ucfg_id . ']">';
