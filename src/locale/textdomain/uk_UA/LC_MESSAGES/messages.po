@@ -11242,3 +11242,607 @@ msgstr "Версія вашої бази даних новіша за встан
 msgid "or later to continue."
 msgstr "або пізнішу версію для продовження."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Нотатки «Чому прийшов»"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d результат для \"%s\""
+msgstr[1] "%d результати для \"%s\""
+msgstr[2] "%d результатів для \"%s\""
+msgstr[3] "%d результату для \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(необов'язково — залиште порожнім для всіх ролей)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Сім'я представляє домогосподарство. Зберігає спільну адресу та домашній телефон для всіх членів сім'ї, що проживають разом."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Домогосподарство. Зберігає спільну поштову адресу та домашній телефон."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Особа не зобов'язана належати до сім'ї, але її призначення значно спрощує управління адресами."
+
+#: 
+msgid "About"
+msgstr "Про систему"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Допустимий формат: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Відновлення акаунту"
+
+#: 
+msgid "Add Family"
+msgstr "Додати сім'ю"
+
+#: 
+msgid "Add First Family"
+msgstr "Додати першу сім'ю"
+
+#: 
+msgid "Add Member"
+msgstr "Додати учасника"
+
+#: 
+msgid "Add New Class"
+msgstr "Додати новий клас"
+
+#: 
+msgid "Add Note"
+msgstr "Додати нотатку"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Додати людей до сім'ї"
+
+#: 
+msgid "Add Person"
+msgstr "Додати людину"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Додати учнів до кошика"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Додати вчителів до кошика"
+
+#: 
+msgid "Add User"
+msgstr "Додати користувача"
+
+#: 
+msgid "Add Your Data"
+msgstr "Додайте свої дані"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Додайте першу сім'ю"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Додайте першу властивість"
+
+#: 
+msgid "Add a Person"
+msgstr "Додати людину"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Додати нове зобов'язання щодо пожертвування"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Додати платіж до поточного депозиту"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Додати всі елементи кошика до групи"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Додати все до кошика"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Додати елементи кошика до сім'ї"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Додайте всіх членів домогосподарства — і дорослих, і дітей."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Додавайте сім'ї та людей по одному прямо в ChurchCRM. Чудово підходить для невеликих парафій або доповнення імпортованих даних."
+
+#: 
+msgid "Add first family"
+msgstr "Додати першу сім'ю"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Додати або змінити записи окремих людей"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Додати або змінити пожертвувані предмети для благодійних заходів"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Додати або змінити нотатки для людей і сімей"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Додати співробітників і волонтерів"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Додати співробітників або волонтерів як користувачів системи"
+
+#: 
+msgid "Administrator"
+msgstr "Адміністратор"
+
+#: 
+msgid "Age Distribution"
+msgstr "Розподіл за віком"
+
+#: 
+msgid "All Roles"
+msgstr "Всі ролі"
+
+#: 
+msgid "All Time"
+msgstr "За весь час"
+
+#: 
+msgid "All roles"
+msgstr "Всі ролі"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Майже готово — перевірте свої дані"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Також запускається автоматично через WebDAV згідно з налаштованим інтервалом."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Сталася помилка"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Окремий парафіянин. Зберігає ім'я, дату народження, особистий email і мобільний телефон."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Під час обробки запиту сталася непередбачена помилка. Зверніться до адміністратора."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Сталася непередбачена помилка."
+
+#: 
+msgid "Applied preset"
+msgstr "Застосовано пресет"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Ви впевнені, що хочете видалити цей депозит?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Ви впевнені, що хочете видалити цей збір коштів?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Ви впевнені, що хочете видалити"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Призначити номери конвертів для пожертвувань і керувати ними"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Призначити номери покупців для збору коштів і керувати ними"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Призначити елементи кошика запису сім'ї"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Призначити елементи кошика групі"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Призначити елементи кошика заходу"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Призначити до групи"
+
+#: 
+msgid "Authentication Code"
+msgstr "Код автентифікації"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Автоматично зіставлено"
+
+#: 
+msgid "BCC"
+msgstr "Прихована копія"
+
+#: 
+msgid "BCC All"
+msgstr "Прихована копія всім"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Назад до панелі адміністратора"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Назад до початку"
+
+#: 
+msgid "Back to Home"
+msgstr "На головну"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Автоматично створює резервні копії у хмарному сховищі WebDAV з налаштованим інтервалом."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Створити резервну копію у зовнішньому сховищі зараз"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Переглянути всі доступні плагіни"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Переглянути всі церковні заходи"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Переглянути всіх парафіян з фільтрацією та пошуком"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Переглянути всі плагіни"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Переглянути та знайти всі сім'ї в парафії"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Переглянути та знайти благодійні кампанії"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Переглянути фотографії парафіян"
+
+#: 
+msgid "Buyer Number"
+msgstr "Номер покупця"
+
+#: 
+msgid "Buyers"
+msgstr "Покупці"
+
+#: 
+msgid "CSV Column"
+msgstr "Стовпець CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "Шаблон CSV не знайдено"
+
+#: 
+msgid "Call"
+msgstr "Зателефонувати"
+
+#: 
+msgid "Cart Functions"
+msgstr "Функції кошика"
+
+#: 
+msgid "Change Family Role"
+msgstr "Змінити роль у сім'ї"
+
+#: 
+msgid "Check Out"
+msgstr "Оформити вихід"
+
+#: 
+msgid "Check Out Person"
+msgstr "Оформити вихід для людини"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Перевірити оновлення та оновити встановлення ChurchCRM"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Зареєструвати присутніх на церковних заходах"
+
+#: 
+msgid "Check in to an event"
+msgstr "Зареєструватися на захід"
+
+#: 
+msgid "Check-ins"
+msgstr "Реєстрації присутності"
+
+#: 
+msgid "Children"
+msgstr "Діти"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Виберіть, як заповнити базу даних. Пізніше можна використати інший метод."
+
+#: 
+msgid "Church Info"
+msgstr "Інформація про церкву"
+
+#: 
+msgid "Clear all"
+msgstr "Очистити все"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Очистити всі дані й почати заново"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Очистити всі елементи з кошика"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Натисніть «Зберегти» для застосування."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Натисніть для завантаження фото"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Натискання «Відкрити питання на GitHub» відкриє нову вкладку з попередньо заповненою системною інформацією. Особисті дані не будуть включені, якщо ви їх не додасте."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Стовпець було автоматично зіставлено з полем ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Платформа управління громадою"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Сумісно з Excel, Google Sheets або будь-яким експортом CSV."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Виконайте їх у будь-якому порядку, щоб підготувати ChurchCRM для вашої парафії."
+
+#: 
+msgid "Confession"
+msgstr "Сповідь"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Налаштувати глобальні параметри системи"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Налаштувати параметри групи, ролі та властивості"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Підтвердіть новий пароль"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Підключіть SMTP-сервер для надсилання листів з ChurchCRM"
+
+#: 
+msgid "Connect with others"
+msgstr "Спілкуйтеся з іншими"
+
+#: 
+msgid "Contact us"
+msgstr "Зв'яжіться з нами"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Перетворити окремі записи на сімейні одиниці"
+
+#: 
+msgid "Convert to Family"
+msgstr "Перетворити на сім'ю"
+
+#: 
+msgid "Copied"
+msgstr "Скопійовано"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Скопіювати учасників до групи"
+
+#: 
+msgid "Copy to Group"
+msgstr "Скопіювати до групи"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Створити резервну копію бази даних церкви"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Створюйте резервну копію вручну не рідше разу на тиждень або увімкніть плагін зовнішнього резервного копіювання для автоматичних резервних копій WebDAV за розкладом."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Створити новий депозит"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Створювати та редагувати сімейну інформацію та зв'язки"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Створювати та керувати церковними заходами"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Створити або змінити категорії типів властивостей"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Створити або змінити посади волонтерів"
+
+#: 
+msgid "Current person"
+msgstr "Поточна людина"
+
+#: 
+msgid "Data & Reports"
+msgstr "Дані та звіти"
+
+#: 
+msgid "Database Reset"
+msgstr "Скидання бази даних"
+
+#: 
+msgid "Default / Notes"
+msgstr "За замовчуванням / Нотатки"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Визначити настроювані поля для збору додаткових сімейних даних"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Визначити настроювані поля для збору додаткових даних про людину"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Визначити настроювані властивості для відстеження даних"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Визначити настроювані властивості, які можна призначити"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Визначити специфічні для групи властивості учасників"
+
+#: 
+msgid "Delete All"
+msgstr "Видалити все"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Видалити запис реєстрації присутності"
+
+#: 
+msgid "Delete Family"
+msgstr "Видалити сім'ю"
+
+#: 
+msgid "Delete Group"
+msgstr "Видалити групу"
+
+#: 
+msgid "Delete Person"
+msgstr "Видалити людину"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Видалити зобов'язання щодо пожертвування"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Видалення цієї властивості також видалить усі її призначення з записів людей, сімей і груп."
+
+#: 
+msgid "Deposit Value"
+msgstr "Сума депозиту"
+
+#: 
+msgid "Describe the issue"
+msgstr "Опишіть проблему"
+
+#: 
+msgid "Directions"
+msgstr "Маршрут"
+
+#: 
+msgid "Directory Reports"
+msgstr "Звіти довідника"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Вимкнено в налаштуваннях"
+
+#: 
+msgid "Donated Item"
+msgstr "Пожертвуваний предмет"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Записи про пожертвування ведуться на рівні сім'ї. Якщо ви плануєте записувати пожертвування для самотньої людини, створіть для неї сім'ю з однієї людини."
+
+#: 
+msgid "Download"
+msgstr "Завантажити"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Завантажити шаблон CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Завантажте шаблон, щоб побачити очікуваний формат стовпців."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Перетягніть файл CSV сюди"
+
+#: 
+msgid "Duplicates"
+msgstr "Дублікати"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Кожна людина може мати власний email і номер мобільного."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Кожен рядок — одна людина. Члени однієї сім'ї мають однаковий FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Проста реєстрація"
+
+#: 
+msgid "Edit Class"
+msgstr "Редагувати клас"
+

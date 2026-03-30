@@ -11220,3 +11220,1969 @@ msgstr "Uw databaseversie is nieuwer dan de geïnstalleerde software. Dit beteke
 msgid "or later to continue."
 msgstr "of later om door te gaan."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Notities \"Reden van komst\""
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d resultaat voor \"%s\""
+msgstr[1] "%d resultaten voor \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(optioneel — leeg laten om alle rollen op te nemen)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Een gezin vertegenwoordigt een huishouden. Het bevat het gedeelde adres en vaste telefoonnummer van alle gezinsleden die samenwonen."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Een huishouden. Slaat het gedeelde postadres en vaste telefoonnummer op."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Een persoon hoeft niet tot een gezin te behoren, maar het toewijzen ervan maakt adresbeheer veel eenvoudiger."
+
+#: 
+msgid "About"
+msgstr "Over"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Geaccepteerd formaat: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Accountherstel"
+
+#: 
+msgid "Add Family"
+msgstr "Gezin toevoegen"
+
+#: 
+msgid "Add First Family"
+msgstr "Eerste gezin toevoegen"
+
+#: 
+msgid "Add Member"
+msgstr "Lid toevoegen"
+
+#: 
+msgid "Add New Class"
+msgstr "Nieuwe klas toevoegen"
+
+#: 
+msgid "Add Note"
+msgstr "Notitie toevoegen"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Personen toevoegen aan het gezin"
+
+#: 
+msgid "Add Person"
+msgstr "Persoon toevoegen"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Leerlingen aan winkelwagen toevoegen"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Leraren aan winkelwagen toevoegen"
+
+#: 
+msgid "Add User"
+msgstr "Gebruiker toevoegen"
+
+#: 
+msgid "Add Your Data"
+msgstr "Uw gegevens toevoegen"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Uw eerste gezin toevoegen"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Uw eerste eigenschap toevoegen"
+
+#: 
+msgid "Add a Person"
+msgstr "Een persoon toevoegen"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Een nieuwe toezegging toevoegen"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Een betaling toevoegen aan de huidige storting"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Alle winkelwagenartikelen aan een groep toevoegen"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Alles aan winkelwagen toevoegen"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Winkelwagenartikelen aan een gezin toevoegen"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Voeg alle leden van uw huishouden toe — zowel volwassenen als kinderen."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Voeg gezinnen en individuen één voor één toe in ChurchCRM. Ideaal voor kleinere gemeenten of als aanvulling op geïmporteerde gegevens."
+
+#: 
+msgid "Add first family"
+msgstr "Eerste gezin toevoegen"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Individuele persoonsdossiers toevoegen of bewerken"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Gedoneerde artikelen voor inzamelingsacties toevoegen of bewerken"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Notities voor personen en gezinnen toevoegen of bewerken"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Medewerkers en vrijwilligers toevoegen"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Medewerkers of vrijwilligers als systeemgebruikers toevoegen"
+
+#: 
+msgid "Administrator"
+msgstr "Beheerder"
+
+#: 
+msgid "Age Distribution"
+msgstr "Leeftijdsverdeling"
+
+#: 
+msgid "All Roles"
+msgstr "Alle rollen"
+
+#: 
+msgid "All Time"
+msgstr "Alle tijden"
+
+#: 
+msgid "All roles"
+msgstr "Alle rollen"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Bijna klaar — controleer uw gegevens"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Wordt ook automatisch uitgevoerd via WebDAV op basis van uw geconfigureerd interval."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Er is een fout opgetreden"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Een individueel gemeentelid. Slaat naam, verjaardag, persoonlijk e-mailadres en mobiel nummer op."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Er is een onverwachte fout opgetreden bij het verwerken van uw verzoek. Neem contact op met uw beheerder voor hulp."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Er is een onverwachte fout opgetreden."
+
+#: 
+msgid "Applied preset"
+msgstr "Voorinstelling toegepast"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Weet u zeker dat u deze storting wilt verwijderen?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Weet u zeker dat u deze inzamelingsactie wilt verwijderen?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Weet u zeker dat u wilt verwijderen"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Collecte-envelopnummers toewijzen en beheren"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Kopersnummers voor inzamelingsacties toewijzen en beheren"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Winkelwagenartikelen toewijzen aan een gezinsdossier"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Winkelwagenartikelen toewijzen aan een groep"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Winkelwagenartikelen toewijzen aan een evenement"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Toewijzen aan een groep"
+
+#: 
+msgid "Authentication Code"
+msgstr "Authenticatiecode"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Automatisch toegewezen"
+
+#: 
+msgid "BCC All"
+msgstr "BCC aan allen"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Terug naar beheerdashboard"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Terug naar aan de slag"
+
+#: 
+msgid "Back to Home"
+msgstr "Terug naar startpagina"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Maakt automatisch een back-up naar WebDAV-cloudopslag op een configureerbaar interval."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Nu back-up maken naar externe opslag"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Alle beschikbare plug-ins bekijken"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Alle kerkelijke evenementen en activiteiten bekijken"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Alle personen in uw gemeente bekijken met filters en zoekfunctie"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Alle plug-ins bekijken"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Alle gezinnen in uw gemeente bekijken en doorzoeken"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Inzamelingsacties bekijken en doorzoeken"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Foto's van gemeenteleden bekijken"
+
+#: 
+msgid "Buyer Number"
+msgstr "Kopersnummer"
+
+#: 
+msgid "Buyers"
+msgstr "Kopers"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV-kolom"
+
+#: 
+msgid "CSV template not found"
+msgstr "CSV-sjabloon niet gevonden"
+
+#: 
+msgid "Call"
+msgstr "Bellen"
+
+#: 
+msgid "Cart Functions"
+msgstr "Winkelwagenfuncties"
+
+#: 
+msgid "Change Family Role"
+msgstr "Gezinsrol wijzigen"
+
+#: 
+msgid "Check Out"
+msgstr "Uitchecken"
+
+#: 
+msgid "Check Out Person"
+msgstr "Persoon uitchecken"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Controleer op updates en upgrade uw ChurchCRM-installatie"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Deelnemers inchecken voor kerkelijke evenementen en activiteiten"
+
+#: 
+msgid "Check in to an event"
+msgstr "Inchecken voor een evenement"
+
+#: 
+msgid "Check-ins"
+msgstr "Incheckregistraties"
+
+#: 
+msgid "Children"
+msgstr "Kinderen"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Kies hoe u uw database wilt vullen. U kunt later altijd een andere methode gebruiken."
+
+#: 
+msgid "Church Info"
+msgstr "Gemeente-info"
+
+#: 
+msgid "Clear all"
+msgstr "Alles wissen"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Alle gegevens wissen en opnieuw beginnen"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Alle artikelen uit de winkelwagen verwijderen"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Klik op Opslaan om toe te passen."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Klik om foto te uploaden"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Door op \"GitHub-issue openen\" te klikken, wordt een nieuw tabblad geopend met uw systeeminformatie. Er worden geen persoonlijk identificeerbare gegevens opgenomen tenzij u ze zelf toevoegt."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Kolom werd automatisch gekoppeld aan een ChurchCRM-veld."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Gemeentebeheerplatform"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Compatibel met Excel, Google Spreadsheets of een willekeurige CSV-export."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Voer deze stappen in willekeurige volgorde uit om ChurchCRM klaar te maken voor uw gemeente."
+
+#: 
+msgid "Confession"
+msgstr "Confessie"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Globale systeeminstellingen en voorkeuren configureren"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Groepsinstellingen, rollen en eigenschappen configureren"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Bevestig uw nieuwe wachtwoord"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Een SMTP-server koppelen zodat ChurchCRM e-mails kan versturen"
+
+#: 
+msgid "Connect with others"
+msgstr "Verbinding maken met anderen"
+
+#: 
+msgid "Contact us"
+msgstr "Neem contact op"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Individuele dossiers omzetten naar gezinseenheden"
+
+#: 
+msgid "Convert to Family"
+msgstr "Omzetten naar gezin"
+
+#: 
+msgid "Copied"
+msgstr "Gekopieerd"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Leden kopiëren naar groep"
+
+#: 
+msgid "Copy to Group"
+msgstr "Kopiëren naar groep"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Een back-up maken van uw gemeentedatabase"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Maak minimaal eens per week een handmatige back-up of schakel de plug-in Externe back-up in voor automatische WebDAV-back-ups op een schema."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Nieuwe storting aanmaken"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Gezinsinformatie en relaties aanmaken en bewerken"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Kerkelijke evenementen en activiteiten aanmaken en beheren"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Categorieën voor eigenschapstypen aanmaken of bewerken"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Vrijwilligersposities aanmaken of bewerken"
+
+#: 
+msgid "Current person"
+msgstr "Huidige persoon"
+
+#: 
+msgid "Data & Reports"
+msgstr "Gegevens & rapporten"
+
+#: 
+msgid "Database Reset"
+msgstr "Database resetten"
+
+#: 
+msgid "Default / Notes"
+msgstr "Standaard / Notities"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Aangepaste velden definiëren voor extra gezinsgegevens"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Aangepaste velden definiëren voor extra persoonsgegevens"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Aangepaste eigenschappen definiëren voor het bijhouden van gegevens"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Aangepaste eigenschappen definiëren die kunnen worden toegewezen aan"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Groepsspecifieke eigenschappen voor leden definiëren"
+
+#: 
+msgid "Delete All"
+msgstr "Alles verwijderen"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Incheckregistratie verwijderen"
+
+#: 
+msgid "Delete Family"
+msgstr "Gezin verwijderen"
+
+#: 
+msgid "Delete Group"
+msgstr "Groep verwijderen"
+
+#: 
+msgid "Delete Person"
+msgstr "Persoon verwijderen"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Toezegging verwijderen"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Het verwijderen van deze eigenschap verwijdert ook alle toewijzingen ervan uit persoons-, gezins- of groepsdossiers."
+
+#: 
+msgid "Deposit Value"
+msgstr "Stortingsbedrag"
+
+#: 
+msgid "Describe the issue"
+msgstr "Beschrijf het probleem"
+
+#: 
+msgid "Directions"
+msgstr "Routebeschrijving"
+
+#: 
+msgid "Directory Reports"
+msgstr "Ledenlijstrapporten"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Uitgeschakeld in instellingen"
+
+#: 
+msgid "Donated Item"
+msgstr "Gedoneerd artikel"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Giften en donaties worden bijgehouden op gezinsniveau. Als u giften wilt registreren voor een persoon die alleen woont, maak dan een gezin aan voor één persoon."
+
+#: 
+msgid "Download"
+msgstr "Downloaden"
+
+#: 
+msgid "Download CSV Template"
+msgstr "CSV-sjabloon downloaden"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Download het sjabloon om het verwachte kolomformaat te zien."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Sleep uw CSV-bestand hier naartoe"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplicaten"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Elke persoon kan een eigen e-mailadres en mobiel nummer hebben."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Elke rij is één persoon. Leden van hetzelfde gezin delen een FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Eenvoudige registratie"
+
+#: 
+msgid "Edit Class"
+msgstr "Klas bewerken"
+
+#: 
+msgid "Edit Form"
+msgstr "Formulier bewerken"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Formulier voor ledeneigenschappen bewerken"
+
+#: 
+msgid "Edit Property"
+msgstr "Eigenschap bewerken"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Aangepaste eigenschappen voor een groepslid bewerken"
+
+#: 
+msgid "Email BCC"
+msgstr "E-mail BCC"
+
+#: 
+msgid "Email Families"
+msgstr "Gezinnen e-mailen"
+
+#: 
+msgid "Email Settings"
+msgstr "E-mailinstellingen"
+
+#: 
+msgid "Email Tools"
+msgstr "E-mailhulpmiddelen"
+
+#: 
+msgid "Email cart items"
+msgstr "Winkelwagenartikelen e-mailen"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "E-mail met verborgen ontvangers"
+
+#: 
+msgid "Empty"
+msgstr "Leeg"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "HTTPS inschakelen"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Plug-ins inschakelen"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Schakel de MailChimp-plug-in in om contacten te synchroniseren"
+
+#: 
+msgid "Enrolled"
+msgstr "Ingeschreven"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Gegevens handmatig invoeren"
+
+#: 
+msgid "Enter a search term"
+msgstr "Voer een zoekterm in"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Voer de 6-cijferige code in van uw authenticator-app om het aanmelden te voltooien"
+
+#: 
+msgid "Enter your current password"
+msgstr "Voer uw huidige wachtwoord in"
+
+#: 
+msgid "Enter your login name"
+msgstr "Voer uw gebruikersnaam in"
+
+#: 
+msgid "Enter your new password"
+msgstr "Voer uw nieuwe wachtwoord in"
+
+#: 
+msgid "Enter your password"
+msgstr "Voer uw wachtwoord in"
+
+#: 
+msgid "Est. Value"
+msgstr "Gesch. waarde"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Uitsluiten van e-mailexport"
+
+#: 
+msgid "Excluded"
+msgstr "Uitgesloten"
+
+#: 
+msgid "Expand"
+msgstr "Uitvouwen"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Verkennen met demogegevens"
+
+#: 
+msgid "Export"
+msgstr "Exporteren"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Gegevens exporteren naar CSV-formaat voor externe toepassingen"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "ChurchCRM uitbreiden met MailChimp, back-ups en meer"
+
+#: 
+msgid "FY %s"
+msgstr "BJ %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Leden konden niet aan de winkelwagen worden toegevoegd. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Klas kon niet worden verwijderd. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Groep kon niet worden verwijderd. Probeer het opnieuw."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Kon niet worden verwijderd uit de klas. Probeer het opnieuw."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Gezinnen delen een adres en telefoonnummer."
+
+#: 
+msgid "Family List"
+msgstr "Gezinslijst"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Overzicht gezinstoezeggingen"
+
+#: 
+msgid "Family Profile"
+msgstr "Gezinsprofiel"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Gezinsrollen (hoofd van het huishouden, echtgeno(o)t, kind, enz.) helpen uw dossiers te organiseren."
+
+#: 
+msgid "Family vs Person"
+msgstr "Gezin vs. persoon"
+
+#: 
+msgid "Fields to Include"
+msgstr "Op te nemen velden"
+
+#: 
+msgid "File upload error"
+msgstr "Fout bij uploaden van bestand"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Volg deze twee stappen om uw gemeenteleden snel en correct toe te voegen."
+
+#: 
+msgid "Forgot password?"
+msgstr "Wachtwoord vergeten?"
+
+#: 
+msgid "Format"
+msgstr "Formaat"
+
+#: 
+msgid "Full Group View"
+msgstr "Volledige groepsweergave"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Bevestigingsbrieven genereren en downloaden"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Jaarlijkse giftenverklaringen genereren voor belastingdoeleinden"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Ledenlijsten en drukwerk genereren"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Financiële rapporten genereren"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Financiële overzichten en giftenrapporten genereren"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Brieven en adresetiketten genereren"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Adresetiketten en standaardbrieven genereren"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Telefoonlijst genereren"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Herinneringsbrieven voor toezeggingen genereren"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Rapporten genereren over groepslidmaatschap en activiteiten"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Belastingverklaringen genereren voor donateurs"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Geografische hulpprogramma's"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Uw gegevens importeren in ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Naar startpagina"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Uitstekende keuze! Zo voegt u uw gemeenteleden toe."
+
+#: 
+msgid "Group Map"
+msgstr "Groepskaart"
+
+#: 
+msgid "Group Reports"
+msgstr "Groepsrapporten"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Groep succesvol verwijderd."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Heeft u al bestaande gegevens?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Als u veel records in een spreadsheet heeft, kan de CSV-import sneller zijn dan het handmatig invoeren van gegevens."
+
+#: 
+msgid "Ignored"
+msgstr "Genegeerd"
+
+#: 
+msgid "Import Another File"
+msgstr "Een ander bestand importeren"
+
+#: 
+msgid "Import CSV"
+msgstr "CSV importeren"
+
+#: 
+msgid "Import Complete"
+msgstr "Import voltooid"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Contacten importeren uit uw MailChimp-doelgroepen"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Import mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Import failed: "
+msgstr "Import mislukt: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Importeren vanuit CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Importeren vanuit spreadsheet"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Importeren vanuit een spreadsheet"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Importeren, herstellen of handmatig invoeren"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Uw gemeente importeren, herstellen of handmatig invoeren"
+
+#: 
+msgid "Importing..."
+msgstr "Bezig met importeren..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Opnemen in e-mailexport"
+
+#: 
+msgid "Included"
+msgstr "Opgenomen"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Een TLS/SSL-certificaat installeren voor beveiligde verbindingen"
+
+#: 
+msgid "Invalid import request"
+msgstr "Ongeldig importverzoek"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Ongeldige \"Van nummer\": \"%s\". Voeg de landcode toe, bijv. +14155551234 (VS) of +447911123456 (VK)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Uw team uitnodigen"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Word lid van onze gemeenschap en blijf verbonden met"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Spring naar een installatiestap:"
+
+#: 
+msgid "Key People"
+msgstr "Sleutelpersonen"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kiosk ingeschakeld"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Laten we uw eerdere ChurchCRM-gegevens herstellen."
+
+#: 
+msgid "Letters"
+msgstr "Brieven"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Brieven & adresetiketten"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Brieven en etiketten"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Gezinnen weergeven die via zelfregistratie zijn aangemaakt"
+
+#: 
+msgid "Load demo data"
+msgstr "Demogegevens laden"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Voorbeeldgezinnen, personen, groepen en giftenregistraties laden. De veiligste manier om ChurchCRM te leren kennen voordat u uw echte gegevens invoert."
+
+#: 
+msgid "Log Files"
+msgstr "Logbestanden"
+
+#: 
+msgid "Log Level"
+msgstr "Logniveau"
+
+#: 
+msgid "Login to your account"
+msgstr "Aanmelden bij uw account"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, back-ups en meer"
+
+#: 
+msgid "Manage %s options"
+msgstr "Opties voor %s beheren"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Enveloppen beheren"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Zondagsschoolklassen, leraren en leerlingenopkomst beheren"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Classificatielijsten, rollen en groepstypen beheren"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Donatiefondsen beheren voor financieel toezicht"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Giften, toezeggingen en financiële dossiers beheren"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "E-mailhulpmiddelen en SMTP-configuratie beheren"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Evenementnamen en categorieën beheren"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Evenementtypecategorieën beheren"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Gezinnen, personen en demografische informatie beheren"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Personen in uw winkelwagen beheren"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Eigenschapstypen voor personen, gezinnen en groepen beheren"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Eigenschappen beheren vanuit het"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Systeemgebruikers, machtigingen en tweefactorauthenticatie-instellingen beheren"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Gebruikersaccountgegevens en machtigingen beheren"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Vrijwilligersmogelijkheden beheren en leden toewijzen"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Persoonlijke voorkeuren en accountinstellingen beheren"
+
+#: 
+msgid "Manual"
+msgstr "Handmatig"
+
+#: 
+msgid "Map cart items"
+msgstr "Winkelwagenartikelen koppelen"
+
+#: 
+msgid "Map to Field"
+msgstr "Koppelen aan veld"
+
+#: 
+msgid "Material"
+msgstr "Materiaal"
+
+#: 
+msgid "Member Properties"
+msgstr "Ledeneigenschappen"
+
+#: 
+msgid "Member Roles"
+msgstr "Ledenrollen"
+
+#: 
+msgid "Members added to cart."
+msgstr "Leden toegevoegd aan winkelwagen."
+
+#: 
+msgid "Memberships"
+msgstr "Lidmaatschappen"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Gezinsrollen voor groepsleden wijzigen"
+
+#: 
+msgid "Move Members"
+msgstr "Leden verplaatsen"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Leden naar groep verplaatsen"
+
+#: 
+msgid "Move to Group"
+msgstr "Naar groep verplaatsen"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Komt u van een bestaande ChurchCRM- of ChurchInfo-installatie? Upload uw back-upbestand en we herstellen uw gegevens automatisch."
+
+#: 
+msgid "My Settings"
+msgstr "Mijn instellingen"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Naamswijzigingen moeten worden opgeslagen. Acties voor herordenen en verwijderen in het actiemenu worden direct van kracht."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Naam, adres, contactgegevens"
+
+#: 
+msgid "Need help?"
+msgstr "Heeft u hulp nodig?"
+
+#: 
+msgid "New"
+msgstr "Nieuw"
+
+#: 
+msgid "New Family"
+msgstr "Nieuw gezin"
+
+#: 
+msgid "New Group"
+msgstr "Nieuwe groep"
+
+#: 
+msgid "New Person"
+msgstr "Nieuwe persoon"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Geen jubilea"
+
+#: 
+msgid "No Birthdays"
+msgstr "Geen verjaardagen"
+
+#: 
+msgid "No Check-ins"
+msgstr "Geen incheckregistraties"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Geen stortingsopvolging"
+
+#: 
+msgid "No Deposits"
+msgstr "Geen stortingen"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Geen jubilea in de afgelopen of komende 7 dagen"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Geen verjaardagen in de afgelopen of komende 7 dagen"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Nog geen stortingsgegevens beschikbaar"
+
+#: 
+msgid "No description set."
+msgstr "Geen beschrijving ingesteld."
+
+#: 
+msgid "No email address on file"
+msgstr "Geen e-mailadres geregistreerd"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Geen evenementen gekoppeld aan deze klas."
+
+#: 
+msgid "No file uploaded"
+msgstr "Geen bestand geüpload"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Nog geen groepstoewijzingen."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Geen overeenkomst gevonden — selecteer een veld of laat staan als Negeren."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Geen resultaten voor \"%s\". Probeer een andere zoekterm."
+
+#: 
+msgid "No member properties defined."
+msgstr "Geen ledeneigenschappen gedefinieerd."
+
+#: 
+msgid "No members found for this role."
+msgstr "Geen leden gevonden voor deze rol."
+
+#: 
+msgid "No people found"
+msgstr "Geen personen gevonden"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Geen personen voldoen aan uw huidige filters."
+
+#: 
+msgid "No phone number on file"
+msgstr "Geen telefoonnummer geregistreerd"
+
+#: 
+msgid "No properties assigned."
+msgstr "Geen eigenschappen toegewezen."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Nog geen eigenschappen gedefinieerd"
+
+#: 
+msgid "No results found"
+msgstr "Geen resultaten gevonden"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Nog geen tijdlijngebeurtenissen."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Nog geen toewijzingen voor vrijwilligersmogelijkheden."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Nog niet klaar?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Zodra u een gezin heeft, voegt u elk huishoudlid toe als persoon. Wijs hen een gezinsrol toe (bijv. hoofd van het huishouden, echtgeno(o)t, kind)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Zodra u verzendt, ontvangt ons team uw registratie en neemt contact op om uw gezin persoonlijk te verwelkomen. Als iets niet klopt, gebruik dan de knop Vorige."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Alleen .csv-bestanden worden geaccepteerd"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "GitHub-issue openen"
+
+#: 
+msgid "Open user menu"
+msgstr "Gebruikersmenu openen"
+
+#: 
+msgid "Options"
+msgstr "Opties"
+
+#: 
+msgid "Other Members"
+msgstr "Andere leden"
+
+#: 
+msgid "Overview"
+msgstr "Overzicht"
+
+#: 
+msgid "Password Recovery"
+msgstr "Wachtwoordherstel"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Afgelopen & komende 7 dagen"
+
+#: 
+msgid "People List"
+msgstr "Personenlijst"
+
+#: 
+msgid "People by Classification"
+msgstr "Personen per classificatie"
+
+#: 
+msgid "Person removed from class."
+msgstr "Persoon verwijderd uit de klas."
+
+#: 
+msgid "Photo"
+msgstr "Foto"
+
+#: 
+msgid "Photos only"
+msgstr "Alleen foto's"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Kies een manier om te beginnen"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Controleer alles voordat u verzendt."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Koppel minimaal één kolom voordat u importeert"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Selecteer een CSV-bestand"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Vraag een nieuwe wachtwoordherstelkoppeling aan of neem contact op met de ondersteuning als het probleem aanhoudt."
+
+#: 
+msgid "Pledges"
+msgstr "Toezeggingen"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Plug-in ingeschakeld maar niet geconfigureerd. Na de installatie worden back-ups automatisch uitgevoerd via WebDAV op uw geconfigureerd interval."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Druk op ? om de zoekfunctie te activeren"
+
+#: 
+msgid "Prev"
+msgstr "Vorige"
+
+#: 
+msgid "Print name tags"
+msgstr "Naamkaartjes afdrukken"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Afdrukbare ledenlijst van alle personen, gegroepeerd per gezin"
+
+#: 
+msgid "Properties Form"
+msgstr "Eigenschappenformulier"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Eigenschapstoewijzing niet gevonden."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Eigenschap succesvol verwijderd."
+
+#: 
+msgid "Property not found."
+msgstr "Eigenschap niet gevonden."
+
+#: 
+msgid "Quick Setup"
+msgstr "Snelle installatie"
+
+#: 
+msgid "Quick Tips"
+msgstr "Snelle tips"
+
+#: 
+msgid "Ready to back up"
+msgstr "Klaar voor back-up"
+
+#: 
+msgid "Ready to restore"
+msgstr "Klaar voor herstel"
+
+#: 
+msgid "Recommended Order"
+msgstr "Aanbevolen volgorde"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Meerdere winnaars van een inzameling in één keer registreren"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Nieuwe toezeggingen en betalingen registreren"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Registreer waarom bezoekers uw kerk bezochten"
+
+#: 
+msgid "Register Your Family"
+msgstr "Uw gezin registreren"
+
+#: 
+msgid "Register another family"
+msgstr "Een ander gezin registreren"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Alles uit winkelwagen verwijderen"
+
+#: 
+msgid "Remove from Class"
+msgstr "Uit klas verwijderen"
+
+#: 
+msgid "Report an Issue"
+msgstr "Een probleem melden"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Een back-up herstellen"
+
+#: 
+msgid "Restore backup"
+msgstr "Back-up herstellen"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Uw gemeentedatabase herstellen vanuit een back-upbestand"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Terug naar dashboard"
+
+#: 
+msgid "Return to Families"
+msgstr "Terug naar gezinnen"
+
+#: 
+msgid "Return to Groups"
+msgstr "Terug naar groepen"
+
+#: 
+msgid "Return to People"
+msgstr "Terug naar personen"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Bestanden zonder dossierverband bekijken en opschonen"
+
+#: 
+msgid "Role not found."
+msgstr "Rol niet gevonden."
+
+#: 
+msgid "Roles"
+msgstr "Rollen"
+
+#: 
+msgid "Run"
+msgstr "Uitvoeren"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "SMTP-server voor het verzenden van e-mails"
+
+#: 
+msgid "Sample Data"
+msgstr "Voorbeeldgegevens"
+
+#: 
+msgid "Search Results"
+msgstr "Zoekresultaten"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Zoeken in personen, gezinnen, groepen, adressen en meer."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Stortingsbondossiers zoeken en bekijken"
+
+#: 
+msgid "Search groups..."
+msgstr "Groepen zoeken..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Personen, gezinnen, groepen zoeken…"
+
+#: 
+msgid "Security First"
+msgstr "Veiligheid voorop"
+
+#: 
+msgid "Select Fields"
+msgstr "Velden selecteren"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Op te nemen velden selecteren"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Selecteer een back-upbestand en klik op Database herstellen."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Selecteer uw opties hierboven en klik op een back-upknop."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Zelfregistratierapport"
+
+#: 
+msgid "Send email to families"
+msgstr "E-mail sturen naar gezinnen"
+
+#: 
+msgid "Server Error"
+msgstr "Serverfout"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "De server gaf een onverwacht antwoord. Probeer het opnieuw."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Stel machtiging in op Waar om nieuwe gebruikers de mogelijkheid te geven hun huidige waarde te wijzigen."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Stel een beheerders-e-mailadres in zodat u wachtwoorden kunt resetten en meldingen kunt ontvangen"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Standaardvoorkeuren instellen voor nieuwe gebruikersaccounts"
+
+#: 
+msgid "Set up"
+msgstr "Instellen"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Een nieuwe inzamelingsactie of evenement instellen"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Stel de naam, het adres en de contactgegevens van uw gemeente in"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Stel de naam, het adres en het contactadres van uw gemeente in"
+
+#: 
+msgid "Setup Progress"
+msgstr "Installatieproces"
+
+#: 
+msgid "Setup Required"
+msgstr "Installatie vereist"
+
+#: 
+msgid "Share"
+msgstr "Delen"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Leden weergeven van: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Aanmelden"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Aangezien dit een nieuwe installatie is, worden uw back-upgegevens eenvoudig geladen."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Overslaan — naar beheerdashboard gaan"
+
+#: 
+msgid "Start Fresh"
+msgstr "Opnieuw beginnen"
+
+#: 
+msgid "Start Over"
+msgstr "Opnieuw starten"
+
+#: 
+msgid "Stay informed"
+msgstr "Blijf geïnformeerd"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Stap 1 — CSV-bestand uploaden"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Stap 2 — Kolommen koppelen"
+
+#: 
+msgid "Submitting..."
+msgstr "Wordt verzonden..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Ondersteunt back-ups van ChurchCRM en ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Systeemdiagnostische informatie en configuratie"
+
+#: 
+msgid "Tax Statements"
+msgstr "Belastingverklaringen"
+
+#: 
+msgid "Teacher"
+msgstr "Leraar"
+
+#: 
+msgid "Technical Details"
+msgstr "Technische details"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Vertel ons over uw gezin"
+
+#: 
+msgid "The property could not be removed."
+msgstr "De eigenschap kon niet worden verwijderd."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "De eigenschap is succesvol verwijderd."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Deze links verschijnen in het menu \"Koppelingen\" in de navigatiebalk wanneer deze plug-in is ingeschakeld."
+
+#: 
+msgid "To Family"
+msgstr "Naar gezin"
+
+#: 
+msgid "To Group"
+msgstr "Naar groep"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Navigatie in-/uitschakelen"
+
+#: 
+msgid "Total Size"
+msgstr "Totale grootte"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Gezinstoezeggingen en fondsbijdragen bijhouden per boekjaar"
+
+#: 
+msgid "Transaction Details"
+msgstr "Transactiedetails"
+
+#: 
+msgid "Unmapped"
+msgstr "Niet gekoppeld"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Beheerderscontact bijwerken"
+
+#: 
+msgid "Upload CSV"
+msgstr "CSV uploaden"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Upload een CSV-bestand om gezinnen en personen te importeren in ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Upload een CSV-bestand vanuit Excel, Google Spreadsheets of uw vorige kerkbeheersysteem en koppel kolommen aan ChurchCRM-velden."
+
+#: 
+msgid "Upload failed."
+msgstr "Upload mislukt."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Upload mislukt. Controleer het bestand en probeer het opnieuw."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Uploadsessie verlopen. Upload het bestand opnieuw."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Bezig met uploaden, even geduld..."
+
+#: 
+msgid "Users"
+msgstr "Gebruikers"
+
+#: 
+msgid "Verify Info"
+msgstr "Informatie verifiëren"
+
+#: 
+msgid "Verify your identity"
+msgstr "Uw identiteit verifiëren"
+
+#: 
+msgid "View Family"
+msgstr "Gezin bekijken"
+
+#: 
+msgid "View People"
+msgstr "Personen bekijken"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Alle gezinnen bekijken op een interactieve kaart"
+
+#: 
+msgid "View all results"
+msgstr "Alle resultaten bekijken"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Alle groepen in uw gemeente bekijken en beheren"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Stortingsbonbetalingen bekijken en beheren"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Gezinslocatiegegevens bekijken en beheren"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Systeemlogbestanden bekijken en beheren voor foutopsporing"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Opgeslagen databasequery's bekijken en uitvoeren"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Kopersnummers en peddeltoewijzingen bekijken"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Klasrooster, lerkaartstoewijzingen en contactgegevens bekijken"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Gezinsdetails, leden en tijdlijn bekijken"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Overzichten van gezinstoezeggingen en fondstoewijzingen bekijken"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Groepsleden, rollen en eigenschappen bekijken"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Toezeggingsdashboard bekijken"
+
+#: 
+msgid "View query results"
+msgstr "Queryresultaten bekijken"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Transactiedetails bekijken voor een toegezegde betaling"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Stemgerechtigde leden moeten een gift hebben gedaan binnen dit aantal jaar (0 om geen gift te vereisen)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Het gezin dat u zocht kon niet worden gevonden."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "De groep die u zocht kon niet worden gevonden."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "De persoon die u zocht kon niet worden gevonden."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Het dossier dat u zocht kon niet worden gevonden."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Uw verzoek om wachtwoordherstel kon niet worden verwerkt."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "We gebruiken dit om contact te houden en nieuws van de gemeente te sturen."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "We zijn zo blij dat u hier bent! Registreer uw gezin in slechts 3 eenvoudige stappen."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "We zijn zo blij dat uw gezin zich bij ons heeft aangesloten!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Welkom terug!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Welkom terug! Vul uw gegevens in om verder te gaan"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Welkom in de familie!"
+
+#: 
+msgid "What happens next?"
+msgstr "Wat gebeurt er daarna?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Wat ging er mis? Wat had u verwacht dat er zou gebeuren?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Wie zitten er in uw gezin?"
+
+#: 
+msgid "Why Came"
+msgstr "Reden van komst"
+
+#: 
+msgid "Yes, delete"
+msgstr "Ja, verwijderen"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "U kunt later altijd meer gegevens importeren via CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "U kunt zondagsschoolgroepen aanmaken/verwijderen."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "U heeft geen financiële machtigingen om stortingen te bekijken."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Uw back-upgegevens zijn geladen. U wordt doorgestuurd om in te loggen met uw eerdere inloggegevens."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Uw back-up wordt indien nodig automatisch bijgewerkt naar het nieuwste databaseschema."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Uw vorige sessie is verlopen. Meld u opnieuw aan."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Uw registratie is ontvangen. Ons team neemt binnenkort persoonlijk contact met u op."
+
+#: 
+msgid "all members"
+msgstr "alle leden"
+
+#: 
+msgid "complete"
+msgstr "volledig"
+
+#: 
+msgid "fields"
+msgstr "velden"
+
+#: 
+msgid "from this class?"
+msgstr "uit deze klas?"
+
+#: 
+msgid "from this group?"
+msgstr "uit deze groep?"
+
+#: 
+msgid "full group view"
+msgstr "volledige groepsweergave"
+
+#: 
+msgid "funds"
+msgstr "fondsen"
+
+#: 
+msgid "members"
+msgstr "leden"
+
+#: 
+msgid "name@example.com"
+msgstr "naam@voorbeeld.nl"
+
+#: 
+msgid "opportunities"
+msgstr "mogelijkheden"
+
+#: 
+msgid "options"
+msgstr "opties"
+
+#: 
+msgid "or connect an external service"
+msgstr "of een externe dienst koppelen"
+
+#: 
+msgid "our church"
+msgstr "onze gemeente"
+
+#: 
+msgid "page"
+msgstr "pagina"
+
+#: 
+msgid "properties"
+msgstr "eigenschappen"
+
+#: 
+msgid "to another group?"
+msgstr "naar een andere groep?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Negeren —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Selecteer een groep —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Selecteer type (optioneel) —"
+

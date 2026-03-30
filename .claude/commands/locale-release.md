@@ -55,6 +55,18 @@ Recommended group boundaries and commit messages:
 
 **Why commit often?** Each commit is a save point. If a later group fails or the session is interrupted, all previous work is preserved and the next session can pick up exactly where it left off.
 
+### Preferred: Commit after EVERY single locale <!-- learned: 2026-03-30 -->
+
+The recommended granularity is **one commit per locale** (not one per group):
+
+```
+locale: translate fr (French - France, 495 terms)
+locale: translate it (Italian - Italy, 495 terms)
+locale: translate es (Spanish - Spain, 495 terms)
+```
+
+This maximises resume safety — if the session is interrupted mid-way through a group, only the in-progress locale is lost, not the entire group.
+
 ### Step 4 — Verify
 
 ```bash
