@@ -13,7 +13,7 @@ $sPageSubtitle = gettext('Browse and search fundraiser campaigns');
 
 $sDateFormat = SystemConfig::getValue('sDatePickerFormat');
 
-$fundraisersQuery = FundraiserQuery::Create()    
+$fundraisersQuery = FundRaiserQuery::Create()
     ->orderByDate('desc');
 
 if (array_key_exists('DateStart', $_GET)) {
