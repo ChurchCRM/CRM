@@ -33,5 +33,5 @@ function getDuplicateEmailsMVC(Request $request, Response $response, array $args
 
 function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args): Response
 {
-    return renderPage($response, 'templates/email/', 'without.php', _('Families Without Emails'));
+    return renderPage($response, 'templates/email/', 'without.php', _('People Without Emails'));
 }
