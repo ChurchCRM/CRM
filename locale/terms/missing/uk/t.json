@@ -1,11 +1,6 @@
 {
   "\"Why Came\" Notes": "Нотатки «Чому прийшов»",
-  "%d result for \"%s\"": {
-    "one": "%d результат для \"%s\"",
-    "few": "%d результати для \"%s\"",
-    "many": "%d результатів для \"%s\"",
-    "other": "%d результату для \"%s\""
-  },
+  "%d result for \"%s\"": {"one": "%d результат для \"%s\"","few": "%d результати для \"%s\"","many": "%d результатів для \"%s\"","other": "%d результату для \"%s\""},
   "(optional — leave blank to include all roles)": "(необов'язково — залиште порожнім для всіх ролей)",
   "A family represents a household. It holds the shared address and home phone number for all family members living together.": "Сім'я представляє домогосподарство. Зберігає спільну адресу та домашній телефон для всіх членів сім'ї, що проживають разом.",
   "A household. Stores the shared mailing address and home phone.": "Домогосподарство. Зберігає спільну поштову адресу та домашній телефон.",
