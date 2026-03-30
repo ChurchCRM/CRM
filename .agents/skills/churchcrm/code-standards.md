@@ -61,9 +61,9 @@ class MyClass {
 2. All `use` statements (grouped by namespace, alphabetically within each group)
 3. Class declaration and code
 
-**PSR-12 Import Grouping:** <!-- learned: 2026-03-29 -->
+**ChurchCRM Import Grouping Convention (based on PSR-12):** <!-- learned: 2026-03-29 -->
 
-Group `ChurchCRM\*` imports first, then third-party imports (`Propel\*`, `Psr\*`, `Slim\*`, `League\*`, etc.), alphabetically within each group. No blank line between groups is required, but ordering must be consistent.
+Group `ChurchCRM\*` imports first, then third-party imports (`Propel\*`, `Psr\*`, `Slim\*`, `League\*`, etc.), alphabetically within each group. No blank line between groups is required, but ordering must be consistent. (Note: PSR-12 itself requires blank lines between groups — this convention deliberately omits them for brevity.)
 
 ```php
 // ✅ CORRECT — ChurchCRM before third-party

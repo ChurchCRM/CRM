@@ -127,7 +127,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? 1 : 0;
+        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
 
         $note = new Note();
         $note->setPerId($person->getId());
@@ -140,7 +140,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['note' => noteToArray($note)], 201);
     });
-})->add(PersonMiddleware::class)->add(NotesRoleAuthMiddleware::class);
+})->add(new PersonMiddleware())->add(NotesRoleAuthMiddleware::class);
 
 // ---------------------------------------------------------------------------
 // Family notes  GET /family/{familyId}/notes  POST /family/{familyId}/note
@@ -232,7 +232,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? 1 : 0;
+        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
 
         $note = new Note();
         $note->setPerId(0);
@@ -264,8 +264,8 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *         @OA\JsonContent(@OA\Property(property="note", type="object"))
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required or note is private"),
-     *     @OA\Response(response=404, description="Note not found")
+     *     @OA\Response(response=403, description="Notes permission required"),
+     *     @OA\Response(response=404, description="Note not found or not visible to current user")
      * )
      */
     $group->get('', function (Request $request, Response $response, array $args): Response {
@@ -320,7 +320,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? 1 : 0;
+        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
 
         $note->setText($text);
         $note->setPrivate($private);
