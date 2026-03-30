@@ -248,7 +248,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Response(response=200, description="CSV file with people emails and group role memberships"),
-     *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
+     *     @OA\Response(response=403, description="ManageGroups role required")
      * )
      */
     $group->get('/sundayschool/export/email', function (Request $request, Response $response): Response {
@@ -318,7 +318,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $response->getBody()->write($exporter->getContent());
 
         return $response;
-    })->add(new SundaySchoolEnabledMiddleware())->add(ManageGroupRoleAuthMiddleware::class);
+    })->add(ManageGroupRoleAuthMiddleware::class);
 
     /**
      * @OA\Get(
