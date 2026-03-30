@@ -233,3 +233,23 @@ return SlimUtils::renderJSON($response, $events->toArray());
 ```
 
 This applies to any `->find()` result or relation collection returned by Perpl ORM.
+
+### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
+
+Not every `Person` has a family (`per_fam_ID = 0` is valid). Using `joinWithFamily()` (inner join) silently excludes these people from results. **Always use `leftJoinWithFamily()`** when querying persons and family data together.
+
+When filtering out deactivated families, do it at the SQL level — `Family.DateDeactivated IS NULL` correctly handles all three cases with a LEFT JOIN:
+- Person with no family → `Family.DateDeactivated` is `NULL` (LEFT JOIN null row) → included ✓
+- Person in active family → `DateDeactivated` is `NULL` → included ✓
+- Person in deactivated family → `DateDeactivated` is set → excluded ✓
+
+```php
+// ❌ WRONG — excludes people with no family (per_fam_ID = 0)
+PersonQuery::create()->joinWithFamily()->find();
+
+// ✅ CORRECT — includes everyone; filters deactivated families at SQL level
+PersonQuery::create()
+    ->leftJoinWithFamily()
+    ->where('Family.DateDeactivated IS NULL')  // NULL family rows pass through correctly
+    ->find();
+```

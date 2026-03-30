@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -19,9 +20,25 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/email/');
 
+    $emailSettingTooltips = [];
+    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress'] as $key) {
+        $item = SystemConfig::getConfigItem($key);
+        $emailSettingTooltips[$key] = $item?->getTooltip() ?? '';
+    }
+
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('eMail Dashboard'),
+        'sPageSubtitle' => gettext('Manage email tools and SMTP configuration'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Email')],
+        ]),
+        'sSettingsCollapseId' => 'emailSettings',
+        'sPageHeaderButtons' => PageHeader::buttons([
+            ['label' => gettext('Debug'), 'url' => '/admin/system/debug/email', 'icon' => 'fa-stethoscope', 'adminOnly' => true],
+            ['label' => gettext('Email Settings'), 'collapse' => '#emailSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
+        ]),
+        'emailSettingTooltips' => $emailSettingTooltips,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

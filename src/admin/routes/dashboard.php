@@ -78,7 +78,7 @@ $app->get('/', function (Request $request, Response $response) {
             'done'  => $hasEmail,
             'label' => gettext('Configure Email'),
             'desc'  => gettext('Connect an SMTP server so ChurchCRM can send emails'),
-            'link'  => SystemURLs::getRootPath() . '/SystemSettings.php',
+            'link'  => SystemURLs::getRootPath() . '/v2/email/dashboard?settings=open',
             'icon'  => 'fa-envelope',
         ],
             [
