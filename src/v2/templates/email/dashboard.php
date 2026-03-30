@@ -62,6 +62,12 @@ $(document).ready(function() {
         ],
         settings: [
             {
+                name: 'bEnabledEmail',
+                label: i18next.t('Enable Email'),
+                type: 'boolean',
+                tooltip: <?= json_encode($emailSettingTooltips['bEnabledEmail'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+            },
+            {
                 name: 'sSMTPHost',
                 label: i18next.t('SMTP Host'),
                 type: 'text',
@@ -117,6 +123,12 @@ $(document).ready(function() {
         ],
         showAllSettingsLink: true
     });
+<?php if (isset($_GET['settings']) && $_GET['settings'] === 'open'): ?>
+    var emailSettingsEl = document.getElementById('emailSettings');
+    if (emailSettingsEl) {
+        new bootstrap.Collapse(emailSettingsEl, { toggle: false }).show();
+    }
+<?php endif; ?>
 });
 </script>
 <?php endif; ?>

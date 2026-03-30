@@ -21,7 +21,7 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/email/');
 
     $emailSettingTooltips = [];
-    foreach (['sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress'] as $key) {
+    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress'] as $key) {
         $item = SystemConfig::getConfigItem($key);
         $emailSettingTooltips[$key] = $item?->getTooltip() ?? '';
     }
