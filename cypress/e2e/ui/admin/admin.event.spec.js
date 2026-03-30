@@ -12,12 +12,11 @@ describe("Admin Event", () => {
         cy.contains("Add Event Type");
     });
 
-    it("Event List", () => {
+    it("Events Dashboard", () => {
         cy.visit("ListEvents.php");
-        cy.contains("Listing All Church Events");
-        cy.contains("Filter Events");
+        cy.contains("Events Dashboard");
         cy.contains("Event Type");
-        cy.contains("Add New Event");
+        cy.contains("Add Event");
     });
 
     it("Create New Event", () => {
