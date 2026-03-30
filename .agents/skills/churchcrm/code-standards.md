@@ -194,6 +194,24 @@ echo $notification?->title ?? 'No Title';
 echo $notification->title;  // TypeError if null
 ```
 
+## HTML Output Escaping — Never Double-Escape <!-- learned: 2026-03-29 -->
+
+Store raw (sanitized) text in data arrays; call `escapeHTML()` only at the point of output. `sanitizeAndEscapeText()` already calls `htmlspecialchars()` internally — applying `escapeHTML()` on top of it double-encodes `&` → `&amp;amp;`, `<` → `&amp;lt;`, etc.
+
+```php
+// ❌ WRONG — sanitizeAndEscapeText() already HTML-encodes; escapeHTML() double-encodes
+$events[] = ['title' => InputUtils::sanitizeAndEscapeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;amp;" rendered literally
+
+// ✅ CORRECT — sanitize (strip tags) when storing; escape at output
+$events[] = ['title' => InputUtils::sanitizeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;" rendered as "&"
+```
+
+**Rule:** `sanitizeText()` → strips tags/trims (safe to store). `escapeHTML()` → HTML-encodes for output. Never chain both on the same value.
+
 ## Email Handling in APIs
 
 ```php
