@@ -110,7 +110,9 @@ function setupBackupStep() {
     const $resultFiles = $("#resultFiles");
 
     // Show loading state
-    $button.prop("disabled", true).html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
+    $button
+      .prop("disabled", true)
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
 
     window.CRM.APIRequest({
       method: "POST",
@@ -134,7 +136,9 @@ function setupBackupStep() {
         $("#skipBackup").addClass("d-none");
 
         $("#downloadbutton").click(function () {
-          $(this).prop("disabled", true).html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
+          $(this)
+            .prop("disabled", true)
+            .html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
           // Auto-advance to next step after download starts
           setTimeout(function () {
             upgradeStepper.next();
@@ -285,7 +289,9 @@ function setupApplyStep() {
     const $spinner = $("#upgradeSpinner");
 
     $spinner.addClass("active");
-    $button.prop("disabled", true).html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Applying...")}`);
+    $button
+      .prop("disabled", true)
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Applying...")}`);
 
     window.CRM.AdminAPIRequest({
       method: "POST",

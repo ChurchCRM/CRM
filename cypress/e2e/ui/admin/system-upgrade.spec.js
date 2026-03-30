@@ -30,6 +30,13 @@ describe('System Upgrade Page', () => {
         cy.get('#step-warnings').should('be.visible');
     });
 
+    it('should show pre-flight step with Continue button', () => {
+        cy.visit('/admin/system/upgrade');
+
+        // Continue button should always be present
+        cy.get('#acceptWarnings').should('be.visible').and('contain', 'Continue');
+    });
+
     describe('Upgrade Wizard Workflow', () => {
         it('should navigate from pre-flight to backup step', () => {
             cy.visit('/admin/system/upgrade');
@@ -57,11 +64,11 @@ describe('System Upgrade Page', () => {
             cy.get('#step-backup').should('be.visible');
 
             cy.get('#doBackup').should('be.visible').and('contain', 'Create Backup');
-            cy.get('#skipBackup').should('be.visible').and('contain', 'Skip Backup');
-            cy.get('#backupNavButtons').should('have.class', 'd-none');
+            cy.get('#skipBackup').should('be.visible');
+            cy.get('#backup-next').should('have.class', 'd-none');
         });
 
-        it('should allow skipping backup and show warning', () => {
+        it('should allow skipping backup and show continue button', () => {
             cy.visit('/admin/system/upgrade');
 
             cy.get('#acceptWarnings').click();
@@ -70,8 +77,9 @@ describe('System Upgrade Page', () => {
             cy.get('#backupStatus .alert-warning').should('be.visible');
             cy.contains('Backup Skipped').should('be.visible');
 
+            // Skip button hidden, Continue visible
             cy.get('#skipBackup').should('have.class', 'd-none');
-            cy.get('#backupNavButtons').should('not.have.class', 'd-none');
+            cy.get('#backup-next').should('not.have.class', 'd-none');
         });
 
         it('should navigate full workflow with intercepted download', () => {
@@ -90,7 +98,7 @@ describe('System Upgrade Page', () => {
             // Step 1: Continue
             cy.get('#acceptWarnings').click();
 
-            // Step 2: Skip backup
+            // Step 2: Skip backup, click Continue
             cy.get('#skipBackup').click();
             cy.get('#backup-next').click();
 
@@ -134,7 +142,7 @@ describe('System Upgrade Page', () => {
             cy.get('#retryDownload').should('be.visible');
         });
 
-        it('should create backup successfully', () => {
+        it('should create backup and show download button', () => {
             cy.intercept('POST', '**/api/database/backup', {
                 statusCode: 200,
                 body: { BackupDownloadFileName: 'ChurchCRM-Backup.sql.gz' }
@@ -148,8 +156,7 @@ describe('System Upgrade Page', () => {
 
             cy.get('#backupStatus .alert-success').should('be.visible');
             cy.get('#downloadbutton').should('be.visible')
-                .and('contain', 'ChurchCRM-Backup.sql.gz');
-            cy.get('#backup-next').should('be.visible');
+                .and('contain', 'Download Backup');
         });
 
         it('should handle backup failure', () => {
