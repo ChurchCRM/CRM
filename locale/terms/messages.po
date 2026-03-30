@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 05:07+0000\n"
+"POT-Creation-Date: 2026-03-30 05:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,10 +266,16 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
+msgid "Activate"
+msgstr ""
+
 msgid "Activate the boxed layout"
 msgstr ""
 
 msgid "Active"
+msgstr ""
+
+msgid "Active Events"
 msgstr ""
 
 msgid "Active Groups"
@@ -324,6 +330,9 @@ msgid "Add Donated Item"
 msgstr ""
 
 msgid "Add Donors to Buyer List"
+msgstr ""
+
+msgid "Add Event"
 msgstr ""
 
 msgid "Add Event Type"
@@ -892,6 +901,9 @@ msgstr ""
 msgid "At least one group must be selected to make class lists or attendance sheets."
 msgstr ""
 
+msgid "Attendance"
+msgstr ""
+
 msgid "Attendance Count Categories"
 msgstr ""
 
@@ -1195,9 +1207,6 @@ msgid "British Virgin Islands"
 msgstr ""
 
 msgid "Browse all available plugins"
-msgstr ""
-
-msgid "Browse all church events and activities"
 msgstr ""
 
 msgid "Browse all people in your congregation with filtering and search"
@@ -2016,6 +2025,9 @@ msgid "Create File"
 msgstr ""
 
 msgid "Create First Deposit"
+msgstr ""
+
+msgid "Create First Event"
 msgstr ""
 
 msgid "Create Group + ADD Cart"
@@ -3225,6 +3237,12 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
+msgid "Events Dashboard"
+msgstr ""
+
+msgid "Events This Year"
+msgstr ""
+
 msgid "Events Today"
 msgstr ""
 
@@ -3728,9 +3746,6 @@ msgid "Files may be modified or missing. Consider re-deploying from an official 
 msgstr ""
 
 msgid "Filesystem Permissions"
-msgstr ""
-
-msgid "Filter Events"
 msgstr ""
 
 msgid "Filter by Class"
@@ -4970,9 +4985,6 @@ msgstr ""
 msgid "Links"
 msgstr ""
 
-msgid "List Church Events"
-msgstr ""
-
 msgid "List Event Types"
 msgstr ""
 
@@ -4989,12 +5001,6 @@ msgid "List not found"
 msgstr ""
 
 msgid "Listing"
-msgstr ""
-
-msgid "Listing All Church Events"
-msgstr ""
-
-msgid "Listing Events of Type"
 msgstr ""
 
 msgid "Lists"
@@ -5186,6 +5192,9 @@ msgid "Manage Donations and Finance"
 msgstr ""
 
 msgid "Manage Envelopes"
+msgstr ""
+
+msgid "Manage Event Types"
 msgstr ""
 
 msgid "Manage Funds"
@@ -5808,6 +5817,9 @@ msgstr ""
 msgid "No Deposits"
 msgstr ""
 
+msgid "No Events Found"
+msgstr ""
+
 msgid "No Group (Select for Kiosk Check-in)"
 msgstr ""
 
@@ -5863,6 +5875,10 @@ msgid "No email passed in"
 msgstr ""
 
 msgid "No event types defined yet."
+msgstr ""
+
+#, php-format
+msgid "No events found for %s."
 msgstr ""
 
 msgid "No events linked to this class."
@@ -6242,6 +6258,9 @@ msgid "Override system locale"
 msgstr ""
 
 msgid "Overview"
+msgstr ""
+
+msgid "Overview of church events, attendance, and activity"
 msgstr ""
 
 msgid "Owe"
@@ -8034,9 +8053,6 @@ msgstr ""
 msgid "Start Date"
 msgstr ""
 
-msgid "Start Date/Time"
-msgstr ""
-
 msgid "Start Fresh"
 msgstr ""
 
@@ -8637,6 +8653,9 @@ msgstr ""
 msgid "Total Campaigns"
 msgstr ""
 
+msgid "Total Check-ins"
+msgstr ""
+
 msgid "Total Deposit"
 msgstr ""
 
@@ -8700,6 +8719,9 @@ msgid "True / False"
 msgstr ""
 
 msgid "Try Again"
+msgstr ""
+
+msgid "Try selecting a different event type or year."
 msgstr ""
 
 msgid "Tuesdays"
