@@ -9,7 +9,7 @@ use Slim\Views\PhpRenderer;
 $app->group('/email', function (RouteCollectorProxy $group): void {
     $group->get('/dashboard', 'getEmailDashboardMVC');
     $group->get('/duplicate', 'getDuplicateEmailsMVC');
-    $group->get('/missing', 'getFamiliesWithoutEmailsMVC');
+    $group->get('/missing', 'getPeopleWithoutEmailsMVC');
     $group->get('', 'getEmailDashboardMVC');
     $group->get('/', 'getEmailDashboardMVC');
 });
@@ -31,7 +31,7 @@ function getDuplicateEmailsMVC(Request $request, Response $response, array $args
     return renderPage($response, 'templates/email/', 'duplicate.php', _('Duplicate Emails'));
 }
 
-function getFamiliesWithoutEmailsMVC(Request $request, Response $response, array $args): Response
+function getPeopleWithoutEmailsMVC(Request $request, Response $response, array $args): Response
 {
     return renderPage($response, 'templates/email/', 'without.php', _('People Without Emails'));
 }

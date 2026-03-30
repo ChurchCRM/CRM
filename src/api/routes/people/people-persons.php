@@ -40,20 +40,16 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
         $classificationOptions = ListOptionQuery::create()->filterById(1)->find()->toKeyValue('OptionId', 'OptionName');
 
         $persons = PersonQuery::create()
-            ->joinWithFamily()
+            ->leftJoinWithFamily()
             ->where('(per_Email IS NULL OR per_Email = "") AND (per_WorkEmail IS NULL OR per_WorkEmail = "")')
+            ->where('Family.DateDeactivated IS NULL')
             ->find();
 
         $result = [];
         foreach ($persons as $person) {
             $family = $person->getFamily();
-            // Skip people in deactivated families
-            if ($family !== null && $family->getDateDeactivated() !== null) {
-                continue;
-            }
-
-            $birthYear = $person->getBirthYear();
-            $age = ($birthYear && $birthYear > 1900) ? (int) (date('Y') - $birthYear) : null;
+            $numericAge = $person->getNumericAge();
+            $age = ($numericAge !== false) ? $numericAge : null;
             $fmrId = $person->getFmrId();
             $clsId = $person->getClsId();
             $roleName = $roleOptions[$fmrId] ?? 'Unassigned';
