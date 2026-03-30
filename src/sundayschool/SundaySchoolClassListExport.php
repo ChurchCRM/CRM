@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Propel\Runtime\ActiveQuery\Criteria;
 

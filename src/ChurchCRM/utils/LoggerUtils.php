@@ -8,6 +8,7 @@ use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\RotatingFileHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use Monolog\Processor\IntrospectionProcessor;
 use Monolog\Processor\PsrLogMessageProcessor;
 
@@ -167,7 +168,7 @@ class LoggerUtils
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$appLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
             
-            self::$appLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+            self::$appLogger->pushProcessor(function (LogRecord $record): LogRecord {
                 return $record->with(extra: array_merge($record->extra, [
                     'url'            => $_SERVER['REQUEST_URI'] ?? '',
                     'remote_ip'      => $_SERVER['REMOTE_ADDR'] ?? '',
@@ -219,7 +220,7 @@ class LoggerUtils
             // Add IntrospectionProcessor for automatic call context - use Emergency level to capture all levels
             self::$authLogger->pushProcessor(new IntrospectionProcessor(Level::Emergency->value, ['ChurchCRM\\']));
             
-            self::$authLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+            self::$authLogger->pushProcessor(function (LogRecord $record): LogRecord {
                 return $record->with(extra: array_merge($record->extra, [
                     'url'            => $_SERVER['REQUEST_URI'] ?? '',
                     'remote_ip'      => $_SERVER['REMOTE_ADDR'] ?? '',

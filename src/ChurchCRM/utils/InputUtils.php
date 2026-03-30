@@ -2,8 +2,6 @@
 
 namespace ChurchCRM\Utils;
 
-use ChurchCRM\dto\SystemConfig;
-
 class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
