@@ -423,6 +423,26 @@ All threads resolved."
 
 **Rule:** Never leave addressed threads unresolved. Always resolve them after pushing fixes.
 
+### Review comments may reference older commits <!-- learned: 2026-03-29 -->
+
+A PR with multiple commits will have review comments pinned to the commit SHA they were posted on. **Comments posted on an earlier commit may already be fixed by a later commit.** Before making any code changes, always verify the issue still exists in the current branch state:
+
+```bash
+# Read the current branch file state
+git show origin/<branch>:<path/to/file>
+
+# If the issue is already fixed: resolve the thread without touching the code
+```
+
+**Workflow when review comments exist:**
+1. Fetch open threads (GraphQL above)
+2. `git show origin/<branch>:<file>` to read the current branch state
+3. For each thread: is it **already fixed**, **needs a code change**, or **should be accepted as-is**?
+4. Make any needed code changes, push, then resolve ALL addressed threads
+5. Post a single follow-up comment summarising each thread's resolution
+
+Resolving a thread without pushing code is valid when the issue was already fixed in a later commit — explain this in the follow-up comment.
+
 ---
 
 ## Phase 8 — Capture Learnings Back to Skills
