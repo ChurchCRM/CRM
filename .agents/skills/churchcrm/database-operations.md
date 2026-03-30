@@ -9,6 +9,7 @@ This skill covers all database access patterns using Perpl ORM (actively maintai
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+- **Legacy `mysqli_fetch_array()` / `extract()` values are always strings** — cast to `(int)` before strict comparison to int literals (see code-standards.md → "Strict vs Loose Comparisons")
 
 ## Perpl ORM Critical Differences from Propel
 
@@ -218,6 +219,22 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 
 **Why this matters:** Empty string literals are invalid for DATE type in strict mode. Use `ISNOTNULL` criteria when filtering for non-empty dates; use `null` value with `ISNOTNULL` criterion (not an empty string).
 
+### Datetime Year-Range Filters — Use Full Timestamps <!-- learned: 2026-03-29 -->
+
+When filtering by a year range on a DATETIME column, using `YYYY-12-31` as the `max` boundary silently excludes events after midnight on Dec 31 (e.g., `2025-12-31 14:00:00` fails `<= '2025-12-31 00:00:00'`). Use explicit end-of-day timestamps.
+
+```php
+// ❌ WRONG — excludes Dec 31 events after midnight
+->filterByStart(['min' => $year . '-01-01', 'max' => $year . '-12-31'])
+
+// ✅ CORRECT — full year inclusive
+$yearMin = $year . '-01-01 00:00:00';
+$yearMax = $year . '-12-31 23:59:59';
+->filterByStart(['min' => $yearMin, 'max' => $yearMax])
+```
+
+This applies to any DATETIME column used as an annual boundary filter.
+
 ### ObjectCollection Must Be Converted to Array for API Responses <!-- learned: 2026-03-03 -->
 
 `SlimUtils::renderJSON(array $obj)` requires a plain PHP array. Passing a Propel `ObjectCollection` directly causes a `TypeError` (HTTP 500) in PHP 8.4. Always call `->toArray()` before returning ORM results to the API.
@@ -233,3 +250,23 @@ return SlimUtils::renderJSON($response, $events->toArray());
 ```
 
 This applies to any `->find()` result or relation collection returned by Perpl ORM.
+
+### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
+
+Not every `Person` has a family (`per_fam_ID = 0` is valid). Using `joinWithFamily()` (inner join) silently excludes these people from results. **Always use `leftJoinWithFamily()`** when querying persons and family data together.
+
+When filtering out deactivated families, do it at the SQL level — `Family.DateDeactivated IS NULL` correctly handles all three cases with a LEFT JOIN:
+- Person with no family → `Family.DateDeactivated` is `NULL` (LEFT JOIN null row) → included ✓
+- Person in active family → `DateDeactivated` is `NULL` → included ✓
+- Person in deactivated family → `DateDeactivated` is set → excluded ✓
+
+```php
+// ❌ WRONG — excludes people with no family (per_fam_ID = 0)
+PersonQuery::create()->joinWithFamily()->find();
+
+// ✅ CORRECT — includes everyone; filters deactivated families at SQL level
+PersonQuery::create()
+    ->leftJoinWithFamily()
+    ->where('Family.DateDeactivated IS NULL')  // NULL family rows pass through correctly
+    ->find();
+```

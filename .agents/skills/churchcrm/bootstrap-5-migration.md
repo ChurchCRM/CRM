@@ -2,7 +2,7 @@
 title: "Bootstrap 4 to Bootstrap 5 Migration Reference"
 intent: "Complete migration guide for converting Bootstrap 4.6.2 to Bootstrap 5.3 in a large PHP application"
 tags: ["frontend", "bootstrap", "migration", "css", "javascript"]
-prereqs: ["bootstrap-adminlte.md", "frontend-development.md"]
+prereqs: ["frontend-development.md"]
 complexity: "advanced"
 ---
 
@@ -1844,8 +1844,33 @@ s/\bcard card\b/card/g
 
 ---
 
+### card-body p-0 + overflow:visible → table-responsive <!-- learned: 2026-03-29 -->
+
+A common pre-migration anti-pattern wraps DataTable `<table>` elements in a `card-body` with `p-0` and an inline `overflow: visible` to defeat Bootstrap's card clipping. The Tabler standard replaces this entirely with `table-responsive` placed directly on the card (no `card-body` wrapper needed for table-only cards).
+
+**Find instances to fix:**
+```bash
+grep -rn 'card-body p-0' src/ --include="*.php"
+grep -rn 'overflow: visible' src/ --include="*.php"
+```
+
+```html
+<!-- ❌ Pre-migration anti-pattern -->
+<div class="card-body p-0" style="overflow: visible;">
+    <table class="table table-vcenter table-hover card-table">...</table>
+</div>
+
+<!-- ✅ Tabler standard -->
+<div class="table-responsive">
+    <table class="table table-vcenter table-hover card-table">...</table>
+</div>
+```
+
+Also remove the redundant `<div class="row"><div class="col-lg-12">` outer wrapper when a page has a single full-width card — the `container-xl` from Header.php already provides the correct layout context.
+
+---
+
 ## Related Skills
 
-- [Bootstrap 4.6.2 & AdminLTE](./bootstrap-adminlte.md) — Current BS4 patterns (pre-migration)
 - [Frontend Development](./frontend-development.md) — General frontend patterns
 - [Webpack & TypeScript](./webpack-typescript.md) — Build system for JS bundles

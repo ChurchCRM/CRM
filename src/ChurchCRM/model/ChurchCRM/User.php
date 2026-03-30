@@ -383,12 +383,12 @@ class User extends BaseUser
 
     public function isShowPledges(): bool
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) == 'true';
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PLEDGES) === 'true';
     }
 
     public function isShowPayments(): bool
     {
-        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) == 'true';
+        return $this->getSettingValue(UserSetting::FINANCE_SHOW_PAYMENTS) === 'true';
     }
 
     public function getShowSince()

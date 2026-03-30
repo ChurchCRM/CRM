@@ -710,6 +710,30 @@ The `@media print` block in `src/skin/scss/_utility-classes.scss` hides interact
 
 ---
 
+## Forms — No Nested `<form>` Elements <!-- learned: 2026-03-29 -->
+
+HTML does not allow nesting `<form>` inside another `<form>`. Nested forms cause unpredictable submission behaviour in browsers. A common mistake is wrapping a GET link in a POST form wrapper.
+
+```html
+<!-- ❌ WRONG — nested form inside outer form, has no effect and is invalid HTML -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <form method="POST" action="ListEvents.php" class="d-inline">
+    <a href="ListEvents.php">Clear Filter</a>
+  </form>
+</form>
+
+<!-- ✅ CORRECT — link is its own element, no form wrapper needed -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">Clear Filter</a>
+</form>
+```
+
+**Rule:** If an action is a plain link (GET navigation), use `<a>` directly — no `<form>` wrapper needed.
+
+---
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`
