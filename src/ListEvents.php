@@ -86,7 +86,7 @@ $totalEventTypes = EventTypeQuery::create()->count();
 
 // Get event types that have events (using ORM)
 $eventTypesWithEvents = EventTypeQuery::create()
-    ->useEventQuery()
+    ->useEventTypeQuery()
     ->endUse()
     ->distinct()
     ->orderById()

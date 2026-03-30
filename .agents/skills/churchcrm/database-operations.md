@@ -251,6 +251,44 @@ return SlimUtils::renderJSON($response, $events->toArray());
 
 This applies to any `->find()` result or relation collection returned by Perpl ORM.
 
+### Looking Up ListOption Role Names for Group Memberships <!-- learned: 2026-03-30 -->
+
+`Group` has no `getListOptionById()` method. To resolve a role name from a group membership, query `ListOptionQuery` with both the group's role list ID and the membership's option ID.
+
+```php
+// ❌ WRONG — method does not exist, throws BadMethodCallException
+$roleList = $group->getListOptionById($membership->getRoleId());
+
+// ✅ CORRECT
+$roleList = ListOptionQuery::create()
+    ->filterById($group->getRoleListId())       // which list (the group's role list)
+    ->filterByOptionId($membership->getRoleId()) // which option within that list
+    ->findOne();
+if ($roleList !== null) {
+    $roleName = $roleList->getOptionName();
+}
+```
+
+### Propel Reverse Relation Query Methods — Named After Relation, Not Model <!-- learned: 2026-03-30 -->
+
+When Propel generates query methods for a **reverse** (one-to-many) relation, the method is named after the *relation alias in the schema*, not the foreign model class. For example, `Event` has a FK to `EventType` with the relation alias `"EventType"`. From `EventTypeQuery` (the "one" side), the generated reverse join method is `useEventTypeQuery()` — NOT `useEventQuery()`.
+
+```php
+// ❌ WRONG — throws "Undefined method Criteria::useEventQuery()"
+EventTypeQuery::create()
+    ->useEventQuery()
+    ->endUse()
+
+// ✅ CORRECT — use the relation alias name; method returns EventQuery internally
+EventTypeQuery::create()
+    ->useEventTypeQuery()
+    ->endUse()
+    ->distinct()
+    ->find();
+```
+
+When unsure of the method name, grep `public function use.*Query` in `Base/XxxQuery.php` to see all generated relation methods and their return types.
+
 ### People Without Families — Always Use leftJoinWithFamily() <!-- learned: 2026-03-29 -->
 
 Not every `Person` has a family (`per_fam_ID = 0` is valid). Using `joinWithFamily()` (inner join) silently excludes these people from results. **Always use `leftJoinWithFamily()`** when querying persons and family data together.
