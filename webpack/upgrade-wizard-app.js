@@ -126,16 +126,19 @@ function setupBackupStep() {
                     <div><strong>${i18next.t("Backup Complete")}</strong></div>
                 </div>
             </div>`);
-        $resultFiles.html(`<button class="btn btn-outline-success btn-sm" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
-                <i class="fa-solid fa-download me-1"></i>${data.BackupDownloadFileName}
+        $resultFiles.html(`<button class="btn btn-primary" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
+                <i class="fa-solid fa-download me-1"></i>${i18next.t("Download Backup & Continue")}
             </button>`);
-        // Hide backup buttons, show Continue
+        // Hide backup/skip buttons
         $button.addClass("d-none");
         $("#skipBackup").addClass("d-none");
-        $("#backup-next").removeClass("d-none");
 
         $("#downloadbutton").click(function () {
           $(this).prop("disabled", true).html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
+          // Auto-advance to next step after download starts
+          setTimeout(function () {
+            upgradeStepper.next();
+          }, 1000);
         });
       })
       .fail(function (xhr, status, error) {
