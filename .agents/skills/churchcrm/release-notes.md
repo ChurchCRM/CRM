@@ -58,7 +58,7 @@ Sort raw commits into these user-facing buckets before writing:
 |--------|----------------|-----------------|
 | **New Features** | Visible new functionality | `feat:`, `Feature:` |
 | **Security** | CVEs, XSS, injection, auth fixes | `fix.*XSS`, `Fix.*vuln`, `Fix.*redirect`, `fix.*inject` |
-| **UI/UX** | Layout, styling, accessibility | Bootstrap, AdminLTE, DataTables, modal, form changes |
+| **UI/UX** | Layout, styling, accessibility | Bootstrap, Tabler, DataTables, modal, form changes |
 | **Localization** | Languages, translations, browser detection | `locale`, `i18n`, `🌍`, `translation` |
 | **Platform** | PHP version, Node version, ORM, framework | `PHP`, `Node`, `Propel`, `Slim`, `Monolog` |
 | **Dependency** | Major library upgrades with user impact | Major semver bumps (v1→v2, etc.) |
