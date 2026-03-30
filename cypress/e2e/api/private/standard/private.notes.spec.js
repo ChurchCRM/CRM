@@ -263,4 +263,92 @@ describe("API Private Notes", () => {
             });
         });
     });
+
+    // -----------------------------------------------------------------------
+    // Access control: non-admin user (has Notes permission, is not admin)
+    // -----------------------------------------------------------------------
+    describe("Access control - non-admin user with Notes permission", () => {
+        it("Non-admin user can list person notes (returns 200)", () => {
+            cy.makePrivateUserAPICall("GET", "/api/person/1/notes", null, 200).then(
+                (response) => {
+                    expect(response.body).to.have.property("notes");
+                    expect(response.body.notes).to.be.an("array");
+                },
+            );
+        });
+
+        it("Private note created by admin is hidden from non-admin user", () => {
+            // Admin creates a private note
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/person/1/note",
+                { text: "<p>Admin private note</p>", private: true },
+                201,
+            ).then((createResp) => {
+                const noteId = createResp.body.note.id;
+
+                // Non-admin cannot fetch the private note directly
+                cy.makePrivateUserAPICall("GET", `/api/note/${noteId}`, null, 404);
+
+                // Non-admin list should not include this private note
+                cy.makePrivateUserAPICall("GET", "/api/person/1/notes", null, 200).then(
+                    (listResp) => {
+                        const ids = listResp.body.notes.map((n) => n.id);
+                        expect(ids).to.not.include(noteId);
+                    },
+                );
+
+                // Clean up
+                cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
+            });
+        });
+
+        it("Non-owner gets 403 when trying to PUT admin's note", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/person/1/note",
+                { text: "<p>Admin note for PUT test</p>", private: false },
+                201,
+            ).then((createResp) => {
+                const noteId = createResp.body.note.id;
+
+                cy.makePrivateUserAPICall(
+                    "PUT",
+                    `/api/note/${noteId}`,
+                    { text: "<p>Attempted edit</p>", private: false },
+                    403,
+                );
+
+                // Clean up
+                cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
+            });
+        });
+
+        it("Non-owner gets 403 when trying to DELETE admin's note", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/person/1/note",
+                { text: "<p>Admin note for DELETE test</p>", private: false },
+                201,
+            ).then((createResp) => {
+                const noteId = createResp.body.note.id;
+
+                cy.makePrivateUserAPICall("DELETE", `/api/note/${noteId}`, null, 403);
+
+                // Clean up
+                cy.makePrivateAdminAPICall("DELETE", `/api/note/${noteId}`, null, 200);
+            });
+        });
+
+        it("Returns 401 when no API key is provided", () => {
+            cy.request({
+                method: "GET",
+                url: "/api/person/1/notes",
+                failOnStatusCode: false,
+                headers: { "content-type": "application/json" },
+            }).then((response) => {
+                expect(response.status).to.equal(401);
+            });
+        });
+    });
 });

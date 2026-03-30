@@ -8,7 +8,6 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\NoteMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
-use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\NotesRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -320,7 +319,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
             return SlimUtils::renderErrorJSON($response, gettext('Note text is required'), [], 400);
         }
 
-        $private = !empty($input['private']) ? $currentUser->getPersonId() : 0;
+        $private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
 
         $note->setText($text);
         $note->setPrivate($private);
@@ -336,7 +335,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *     path="/note/{noteId}",
      *     operationId="deleteNote",
      *     summary="Delete a note",
-     *     description="Deletes the note. Requires Notes permission and Delete Records permission. Only the note's author or an admin may delete it.",
+     *     description="Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="noteId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -344,7 +343,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
      *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
      *     ),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes + Delete Records permission required, or not note author"),
+     *     @OA\Response(response=403, description="Notes permission required or not note author/admin"),
      *     @OA\Response(response=404, description="Note not found")
      * )
      */
@@ -364,5 +363,5 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to delete note'), [], 500, $e, $request);
         }
-    })->add(DeleteRecordRoleAuthMiddleware::class);
+    });
 })->add(NoteMiddleware::class)->add(NotesRoleAuthMiddleware::class);

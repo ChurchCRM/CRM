@@ -423,6 +423,21 @@ $params = [
 - Include required Nominatim headers: `User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)`
 - Log API calls and responses for debugging geocoding issues
 
+### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
+
+`nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
+
+```php
+// ✅ CORRECT — store the author's personId for private notes
+$private = !empty($input['private']) ? (int) $currentUser->getPersonId() : 0;
+
+// For PUT, preserve the original author's visibility (not the editor's):
+$private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
+
+// ❌ WRONG — stores 1, which only makes it visible to person with id=1
+$private = !empty($input['private']) ? 1 : 0;
+```
+
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
