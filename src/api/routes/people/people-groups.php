@@ -284,8 +284,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             }
         }
 
-        // Build data rows
-        $rows = [];
+        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
+        $filename = 'EmailExport-' . date($dateFormat) . '.csv';
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+
         foreach ($personService->getPeopleEmailsAndGroups() as $person) {
             $row = [
                 $person['id'],
@@ -303,15 +307,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 }
                 $row[] = $groupRole;
             }
-            $rows[] = $row;
+            $exporter->insertRow($row);
         }
-
-        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
-        $filename = 'EmailExport-' . date($dateFormat) . '.csv';
-
-        $exporter = new CsvExporter();
-        $exporter->insertHeaders($headers);
-        $exporter->insertRows($rows);
 
         $response = $response->withHeader('Content-Type', 'text/csv; charset=UTF-8');
         $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
