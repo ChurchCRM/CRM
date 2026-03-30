@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 05:46+0000\n"
+"POT-Creation-Date: 2026-03-30 18:27+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,10 +92,6 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr ""
-
-#, php-format
 msgid "%d files have failed integrity validation."
 msgstr ""
 
@@ -164,9 +160,6 @@ msgstr ""
 msgid "(optional — leave blank to include all roles)"
 msgstr ""
 
-msgid "(refresh from GitHub)"
-msgstr ""
-
 msgid "(this action cannot be undone)"
 msgstr ""
 
@@ -210,9 +203,6 @@ msgid "A map will appear here once a street address is saved. Coordinates are de
 msgstr ""
 
 msgid "A new password has been generated and sent to your email address."
-msgstr ""
-
-msgid "A new version of ChurchCRM is available for installation."
 msgstr ""
 
 msgid "A payment is an actual donation received. It will be added to the current deposit."
@@ -285,9 +275,6 @@ msgid "Active Kiosks"
 msgstr ""
 
 msgid "Active Users"
-msgstr ""
-
-msgid "Actual Hash"
 msgstr ""
 
 msgid "Add"
@@ -539,6 +526,9 @@ msgstr ""
 msgid "Advanced Operations"
 msgstr ""
 
+msgid "Affected Files"
+msgstr ""
+
 #. Context: countries
 msgid "Afghanistan (‫افغانستان‬‎)"
 msgstr ""
@@ -571,6 +561,9 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+msgid "All Checks Passed"
+msgstr ""
+
 msgid "All Classifications"
 msgstr ""
 
@@ -581,9 +574,6 @@ msgid "All Event Types"
 msgstr ""
 
 msgid "All Families"
-msgstr ""
-
-msgid "All Files Verified"
 msgstr ""
 
 msgid "All Funds"
@@ -631,9 +621,6 @@ msgstr ""
 msgid "All members already in cart"
 msgstr ""
 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr ""
-
 msgid "All rights reserved"
 msgstr ""
 
@@ -646,13 +633,7 @@ msgstr ""
 msgid "All system files have passed integrity validation."
 msgstr ""
 
-msgid "All system files match their expected signatures."
-msgstr ""
-
 msgid "All timezones match"
-msgstr ""
-
-msgid "Allow Pre-release Upgrades"
 msgstr ""
 
 msgid "Allow Self-Signed Certificates"
@@ -783,6 +764,9 @@ msgid "Apply Update Now"
 msgstr ""
 
 msgid "Applying System Update..."
+msgstr ""
+
+msgid "Applying..."
 msgstr ""
 
 msgid "Apr"
@@ -1009,6 +993,9 @@ msgstr ""
 msgid "Back to login"
 msgstr ""
 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr ""
+
 msgid "Background Color"
 msgstr ""
 
@@ -1021,7 +1008,7 @@ msgstr ""
 msgid "Backup Best Practices"
 msgstr ""
 
-msgid "Backup Complete, Ready for Download."
+msgid "Backup Complete"
 msgstr ""
 
 msgid "Backup Database"
@@ -1468,9 +1455,6 @@ msgstr ""
 msgid "Check"
 msgstr ""
 
-msgid "Check GitHub for the latest release information"
-msgstr ""
-
 msgid "Check In"
 msgstr ""
 
@@ -1636,6 +1620,9 @@ msgid "Class"
 msgstr ""
 
 msgid "Class / Group"
+msgstr ""
+
+msgid "Class List Export"
 msgstr ""
 
 msgid "Classes"
@@ -1929,13 +1916,10 @@ msgstr ""
 msgid "Contact us"
 msgstr ""
 
-msgid "Continue to Backup"
+msgid "Continue"
 msgstr ""
 
 msgid "Continue to Dashboard"
-msgstr ""
-
-msgid "Continue to Download & Apply"
 msgstr ""
 
 msgid "Contributing"
@@ -2054,7 +2038,7 @@ msgstr ""
 msgid "Create a backup of your church database"
 msgstr ""
 
-msgid "Create a backup of your database before applying the update."
+msgid "Create a database backup before applying the update. This is strongly recommended."
 msgstr ""
 
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
@@ -2105,6 +2089,9 @@ msgstr ""
 msgid "Created via Family"
 msgstr ""
 
+msgid "Creating Backup..."
+msgstr ""
+
 msgid "Credit Card"
 msgstr ""
 
@@ -2145,9 +2132,6 @@ msgid "Current Software Version"
 msgstr ""
 
 msgid "Current Value"
-msgstr ""
-
-msgid "Current Version:"
 msgstr ""
 
 msgid "Current fiscal year"
@@ -2242,9 +2226,6 @@ msgid "Data file format"
 msgstr ""
 
 msgid "Data/Reports"
-msgstr ""
-
-msgid "Database Backup"
 msgstr ""
 
 msgid "Database Only"
@@ -2712,16 +2693,16 @@ msgstr ""
 msgid "Download & Apply"
 msgstr ""
 
-msgid "Download CSV Template"
+msgid "Download Backup & Continue"
 msgstr ""
 
-msgid "Download and Apply System Update"
+msgid "Download CSV Template"
 msgstr ""
 
 msgid "Download failed"
 msgstr ""
 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
+msgid "Download the latest release and apply it to your installation."
 msgstr ""
 
 msgid "Download the template to see the expected column format."
@@ -3288,13 +3269,7 @@ msgstr ""
 msgid "Expected"
 msgstr ""
 
-msgid "Expected Hash"
-msgstr ""
-
 msgid "Explore with Demo Data"
-msgstr ""
-
-msgid "Export"
 msgstr ""
 
 msgid "Export Options"
@@ -3310,9 +3285,6 @@ msgid "Export all people data in ChMeetings format for import into external syst
 msgstr ""
 
 msgid "Export data to CSV format for external applications"
-msgstr ""
-
-msgid "Export to CSV"
 msgstr ""
 
 msgid "Export to ChMeetings CSV"
@@ -3478,9 +3450,6 @@ msgstr ""
 msgid "Failed to refresh upgrade information from GitHub."
 msgstr ""
 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr ""
-
 msgid "Failed to remove family from cart"
 msgstr ""
 
@@ -3494,9 +3463,6 @@ msgid "Failed to remove group"
 msgstr ""
 
 msgid "Failed to reset settings"
-msgstr ""
-
-msgid "Failed to save setting. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
@@ -3709,19 +3675,10 @@ msgstr ""
 msgid "Fiji"
 msgstr ""
 
-msgid "File Integrity Check"
-msgstr ""
-
-msgid "File Integrity Issues Detected"
-msgstr ""
-
 msgid "File Integrity:"
 msgstr ""
 
 msgid "File Name"
-msgstr ""
-
-msgid "File Name:"
 msgstr ""
 
 msgid "File Path"
@@ -3736,13 +3693,10 @@ msgstr ""
 msgid "File upload error"
 msgstr ""
 
-msgid "Files Missing"
-msgstr ""
-
-msgid "Files Modified"
-msgstr ""
-
 msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr ""
+
+msgid "Files not part of the official release were found on your server."
 msgstr ""
 
 msgid "Filesystem Permissions"
@@ -3873,6 +3827,9 @@ msgstr ""
 msgid "Force Re-install"
 msgstr ""
 
+msgid "Force Re-install?"
+msgstr ""
+
 msgid "Force re-install initiated. Please backup your database before applying."
 msgstr ""
 
@@ -3926,7 +3883,7 @@ msgstr ""
 msgid "Full Group View"
 msgstr ""
 
-msgid "Full Path:"
+msgid "Full Path"
 msgstr ""
 
 msgid "Functions"
@@ -4016,6 +3973,9 @@ msgid "Generate annual giving statements for tax purposes"
 msgstr ""
 
 msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr ""
+
+msgid "Generate class lists, attendance sheets, and photo books"
 msgstr ""
 
 msgid "Generate detailed reports for individual deposits or date ranges."
@@ -4378,9 +4338,6 @@ msgstr ""
 msgid "Hungary (Magyarország)"
 msgstr ""
 
-msgid "I Understand - Continue"
-msgstr ""
-
 msgid "ICS URL"
 msgstr ""
 
@@ -4419,9 +4376,6 @@ msgid "If you have many records in a spreadsheet, the CSV import may be faster t
 msgstr ""
 
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
-msgstr ""
-
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
 msgstr ""
 
 msgid "Ignore Incomplete<br>Addresses"
@@ -4565,10 +4519,10 @@ msgstr ""
 msgid "Install plugins by placing them in"
 msgstr ""
 
-msgid "Installed Software Version"
+msgid "Installed"
 msgstr ""
 
-msgid "Integrity Check Details:"
+msgid "Installed Software Version"
 msgstr ""
 
 msgid "Internationalization (I18n) support"
@@ -4689,6 +4643,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+msgid "It is strongly recommended to have a backup before proceeding."
 msgstr ""
 
 #. Context: locales
@@ -4886,13 +4843,16 @@ msgstr ""
 msgid "LastName, Title FirstName MiddleName"
 msgstr ""
 
+msgid "Latest"
+msgstr ""
+
 msgid "Latest Families"
 msgstr ""
 
-msgid "Latest GitHub Version:"
+msgid "Latest People"
 msgstr ""
 
-msgid "Latest People"
+msgid "Latest version unknown"
 msgstr ""
 
 msgid "Latitude"
@@ -5471,9 +5431,6 @@ msgstr ""
 msgid "Missing"
 msgstr ""
 
-msgid "Missing Files"
-msgstr ""
-
 msgid "Missing PHP ZipArchive"
 msgstr ""
 
@@ -5493,7 +5450,7 @@ msgstr ""
 msgid "Moderate Detail"
 msgstr ""
 
-msgid "Modified Files"
+msgid "Modified files will be reverted to the official version."
 msgstr ""
 
 msgid "Modify family roles for group members"
@@ -5590,7 +5547,7 @@ msgstr ""
 msgid "Multiple Copies"
 msgstr ""
 
-msgid "Multiple groups will have a Page Break between Groups<br>"
+msgid "Multiple groups will have a Page Break between Groups"
 msgstr ""
 
 msgid "Multiple items"
@@ -5714,6 +5671,9 @@ msgid "New Family Notification Email Error"
 msgstr ""
 
 msgid "New Group"
+msgstr ""
+
+msgid "New Members & Greeting"
 msgstr ""
 
 msgid "New Password"
@@ -5897,6 +5857,9 @@ msgid "No funds have been added yet"
 msgstr ""
 
 msgid "No group assignments yet."
+msgstr ""
+
+msgid "No issues found. You may proceed with the upgrade."
 msgstr ""
 
 msgid "No locales configured"
@@ -6429,9 +6392,6 @@ msgstr ""
 msgid "People Reports"
 msgstr ""
 
-msgid "People Setup"
-msgstr ""
-
 msgid "People Verify Dashboard"
 msgstr ""
 
@@ -6860,10 +6820,7 @@ msgstr ""
 msgid "Portuguese - Portugal"
 msgstr ""
 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr ""
-
-msgid "Pre-Upgrade Warnings"
+msgid "Pre-flight"
 msgstr ""
 
 msgid "Press ? to focus search"
@@ -7006,7 +6963,7 @@ msgstr ""
 msgid "Quiet Presort"
 msgstr ""
 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
+msgid "Re-install"
 msgstr ""
 
 msgid "Ready to back up"
@@ -7019,9 +6976,6 @@ msgid "Recent Deposits"
 msgstr ""
 
 msgid "Recipient Naming Method"
-msgstr ""
-
-msgid "Recommendation: Review and delete these files before or after the upgrade."
 msgstr ""
 
 msgid "Recommended Order"
@@ -7063,13 +7017,13 @@ msgstr ""
 msgid "Redirecting in"
 msgstr ""
 
+msgid "Refresh"
+msgstr ""
+
 msgid "Refresh Coordinates"
 msgstr ""
 
 msgid "Refresh List"
-msgstr ""
-
-msgid "Refresh from GitHub"
 msgstr ""
 
 msgid "Regen API Key"
@@ -7097,9 +7051,6 @@ msgid "Regular Backups"
 msgstr ""
 
 msgid "Release Notes"
-msgstr ""
-
-msgid "Release Notes:"
 msgstr ""
 
 msgid "Remaining"
@@ -7294,6 +7245,9 @@ msgstr ""
 msgid "Review"
 msgstr ""
 
+msgid "Review & Delete"
+msgstr ""
+
 msgid "Review Donation Funds"
 msgstr ""
 
@@ -7372,7 +7326,7 @@ msgstr ""
 msgid "SE"
 msgstr ""
 
-msgid "SHA1 Hash:"
+msgid "SHA1 Hash"
 msgstr ""
 
 msgid "SMTP Host"
@@ -7569,9 +7523,6 @@ msgid "Security Option"
 msgstr ""
 
 msgid "Security Recommendation"
-msgstr ""
-
-msgid "Security Warning: Orphaned Files Detected"
 msgstr ""
 
 msgid "Select"
@@ -7818,9 +7769,6 @@ msgstr ""
 msgid "Setting saved"
 msgstr ""
 
-msgid "Setting saved. Reloading page..."
-msgstr ""
-
 msgid "Setting updated successfully"
 msgstr ""
 
@@ -7893,6 +7841,9 @@ msgstr ""
 msgid "Sign out"
 msgstr ""
 
+msgid "Signature Mismatch"
+msgstr ""
+
 msgid "Signature definition file exists but is not readable. Check file permissions."
 msgstr ""
 
@@ -7920,13 +7871,13 @@ msgstr ""
 msgid "Size"
 msgstr ""
 
-msgid "Skip Backup"
-msgstr ""
-
 msgid "Skip records with incomplete mail address"
 msgstr ""
 
 msgid "Skip — go to Admin Dashboard"
+msgstr ""
+
+msgid "Skip, Continue Without Backup"
 msgstr ""
 
 msgid "Skipped"
@@ -7958,9 +7909,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Somalia (Soomaaliya)"
-msgstr ""
-
-msgid "Some ChurchCRM system files may have been modified since the last installation."
 msgstr ""
 
 msgid "Some application prerequisites are not met"
@@ -8232,9 +8180,6 @@ msgstr ""
 msgid "System Settings"
 msgstr ""
 
-msgid "System Up to Date"
-msgstr ""
-
 msgid "System Upgrade"
 msgstr ""
 
@@ -8363,9 +8308,6 @@ msgstr ""
 msgid "The device will register itself and appear in the table below as \"Pending\"."
 msgstr ""
 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr ""
-
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
 msgstr ""
 
@@ -8442,9 +8384,6 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
 msgstr ""
 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr ""
-
 msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr ""
 
@@ -8499,9 +8438,6 @@ msgstr ""
 msgid "This property type is still being used by at least one property."
 msgstr ""
 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr ""
-
 msgid "This value cannot be less than "
 msgstr ""
 
@@ -8529,7 +8465,7 @@ msgstr ""
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
 msgstr ""
 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
 msgstr ""
 
 msgid "This will remove it from all people currently assigned to it."
@@ -8591,9 +8527,6 @@ msgid "To Family"
 msgstr ""
 
 msgid "To Group"
-msgstr ""
-
-msgid "To select multiple hold CTL"
 msgstr ""
 
 msgid "To set up a kiosk device, follow these steps:"
@@ -8894,6 +8827,9 @@ msgstr ""
 msgid "Unverified Addresses"
 msgstr ""
 
+msgid "Up to Date"
+msgstr ""
+
 msgid "Upcoming Birthdays"
 msgstr ""
 
@@ -8906,16 +8842,13 @@ msgstr ""
 msgid "Update Admin Contact"
 msgstr ""
 
-msgid "Update Available!"
+msgid "Update Available"
 msgstr ""
 
 msgid "Update Envelopes"
 msgstr ""
 
 msgid "Update Family Records"
-msgstr ""
-
-msgid "Update Package Details"
 msgstr ""
 
 msgid "Update Properties"
@@ -8952,9 +8885,6 @@ msgid "Upgrade"
 msgstr ""
 
 msgid "Upgrade Complete!"
-msgstr ""
-
-msgid "Upgrade Summary"
 msgstr ""
 
 msgid "Upgrade failed."
@@ -9191,9 +9121,6 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
-msgid "Version Information"
-msgstr ""
-
 msgid "Version Mismatch"
 msgstr ""
 
@@ -9363,9 +9290,6 @@ msgid "Warning"
 msgstr ""
 
 msgid "Warning:"
-msgstr ""
-
-msgid "Warning: Signature mismatch"
 msgstr ""
 
 msgid "Warnings"
@@ -9571,9 +9495,6 @@ msgstr ""
 msgid "You do not have finance permissions to view deposits."
 msgstr ""
 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr ""
-
 msgid "You have no items in your cart."
 msgstr ""
 
@@ -9629,9 +9550,6 @@ msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr ""
 
 msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
-msgstr ""
-
-msgid "Your ChurchCRM installation is running the latest version."
 msgstr ""
 
 msgid "Your ChurchCRM password has been changed"
