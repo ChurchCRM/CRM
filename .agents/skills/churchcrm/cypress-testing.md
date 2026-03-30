@@ -1008,3 +1008,70 @@ cy.get('.nav-pills').contains("System Settings").should('be.visible');
 ```
 
 Always scope `cy.contains()` to the smallest meaningful container when asserting the existence of navigation items or tabs.
+
+### Uppy Dashboard Modal: Use `not.be.visible` for Close Assertions <!-- learned: 2026-03-30 -->
+
+Uppy v5 keeps the Dashboard modal DOM element after closing (with animation class `uppy-Dashboard--animateOpenClose`). Using `should("not.exist")` will time out because the element stays in the DOM.
+
+```javascript
+// ❌ WRONG — element persists in DOM after close animation
+cy.get(".uppy-Dashboard-close").click();
+cy.get(".uppy-Dashboard--modal").should("not.exist");
+
+// ✅ CORRECT — element stays but becomes hidden
+cy.get(".uppy-Dashboard-close").click();
+cy.get(".uppy-Dashboard--modal").should("not.be.visible");
+```
+
+### Wait for avatar-loader Before Asserting Click Classes <!-- learned: 2026-03-30 -->
+
+`avatar-loader.ts` adds `.view-person-photo` / `.view-family-photo` **asynchronously** after the photo loads. Tests must wait for the `loaded` class before asserting on click classes.
+
+```javascript
+// ❌ WRONG — click class may not be added yet
+cy.get("img[data-image-entity-type]").should("have.class", "view-person-photo");
+
+// ✅ CORRECT — wait for avatar-loader to finish processing
+cy.get("img.loaded[data-person-id]", { timeout: 10000 }).should("exist");
+cy.get("img.loaded").filter(".view-person-photo").should("have.length.at.least", 1);
+```
+
+For profile photos inside `#uploadImageButton` / `#uploadImageTrigger`, avatar-loader **skips** adding click classes. Assert they are absent:
+
+```javascript
+cy.get("#uploadImageButton img.loaded", { timeout: 10000 }).should("exist");
+cy.get("#uploadImageButton img").should("not.have.class", "view-person-photo");
+```
+
+### Wait for Uppy Uploader Initialization <!-- learned: 2026-03-30 -->
+
+The photo uploader initializes on `window.addEventListener('load', ...)`. Before clicking the upload trigger, wait for `window.CRM.photoUploader` to exist:
+
+```javascript
+cy.get("#uploadImageButton", { timeout: 10000 }).should("exist");
+cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
+cy.get("#uploadImageButton").click();
+cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+```
+
+### Dashboard DataTable Tabs Lazy-Load Content <!-- learned: 2026-03-30 -->
+
+Dashboard DataTable tabs (Latest Families, Latest People, etc.) lazy-load when activated. After clicking a tab, wait for both the tab pane transition **and** the table rows:
+
+```javascript
+cy.get("#latest-ppl-tab").click();
+cy.get("#latest-ppl-pane").should("have.class", "show");
+cy.get("#latestPersonDashboardItem tbody tr", { timeout: 15000 })
+  .should("have.length.at.least", 1);
+```
+
+Guard for tables where no rows may have photos (depends on seeded data):
+
+```javascript
+cy.get("#latestPersonDashboardItem").then(($table) => {
+  if ($table.find(".view-person-photo").length > 0) {
+    cy.get(".view-person-photo").first().click();
+    cy.get("#photo-lightbox").should("be.visible");
+  }
+});
+```
