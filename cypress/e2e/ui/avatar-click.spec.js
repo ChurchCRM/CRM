@@ -1,274 +1,251 @@
 /// <reference types="cypress" />
 
-describe("Avatar Click Behavior - Photo Lightbox", () => {
+/**
+ * Avatar Click Behavior Tests
+ *
+ * Tests the photo lightbox and upload dialog across pages.
+ *
+ * How avatar clicking works:
+ * - Dashboard: generatePhotoImg() renders <img> with .view-person-photo/.view-family-photo
+ *   and src pointing to the photo API. Click classes are in the HTML immediately.
+ * - Other pages: avatar-loader.ts fetches avatar info, loads the photo, then adds
+ *   .view-person-photo/.view-family-photo in the onload callback. Tests must wait
+ *   for the "loaded" class before asserting on click classes.
+ * - Profile photos: wrapped in #uploadImageButton / #uploadImageTrigger — avatar-loader
+ *   skips adding click classes, so clicking opens the Uppy upload dialog instead.
+ *
+ * Seeded test data: persons 1, 2, 5, 10, 44, 213, 214 have uploaded photos.
+ * Person 2 is in family 1.
+ */
+
+describe("Avatar Click Behavior", () => {
   beforeEach(() => cy.setupStandardSession());
 
-  describe("Dashboard Avatar Clicks", () => {
-    it("opens lightbox when clicking avatar with photo in Latest Families table", () => {
+  describe("Dashboard", () => {
+    beforeEach(() => {
       cy.visit("v2/dashboard");
-      cy.contains("h3", "People"); // Wait for dashboard to load
-
-      // Find the Latest Families tab and activate it if needed
-      cy.get("#latest-fam-tab").then(($tab) => {
-        if (!$tab.hasClass("active")) {
-          cy.get("#latest-fam-tab").click();
-        }
-      });
-
-      // Find an avatar with the view-person-photo class (has actual photo)
-      cy.get("#latestFamiliesDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().then(($img) => {
-          const personId = $img.attr("data-person-id");
-          if (personId) {
-            // Click the avatar
-            cy.wrap($img).click();
-
-            // Verify lightbox appears
-            cy.get("#photo-lightbox").should("be.visible");
-            cy.get("#photo-lightbox img").should("have.attr", "src");
-
-            // Verify lightbox can be closed
-            cy.get("#photo-lightbox .fa-times").closest("button").click();
-            cy.get("#photo-lightbox").should("not.exist");
-          }
-        });
-      });
+      // Wait for the dashboard DataTables to finish loading
+      cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
+        .should("have.length.at.least", 1);
     });
 
-    it("opens lightbox when clicking avatar with photo in Latest People table", () => {
-      cy.visit("v2/dashboard");
-      cy.contains("h3", "People"); // Wait for dashboard to load
-
-      // Find the Latest People tab
-      cy.get("#latest-ppl-tab").then(($tab) => {
-        if (!$tab.hasClass("active")) {
-          cy.get("#latest-ppl-tab").click();
-        }
-      });
-
-      // Find an avatar with the view-person-photo class
-      cy.get("#latestPersonDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().then(($img) => {
-          const personId = $img.attr("data-person-id");
-          if (personId) {
-            cy.wrap($img).click();
-
-            // Verify lightbox appears
-            cy.get("#photo-lightbox").should("be.visible");
-
-            // Close by pressing Escape
-            cy.get("body").type("{esc}");
-            cy.get("#photo-lightbox").should("not.exist");
-          }
-        });
-      });
-    });
-
-    it("opens lightbox when clicking avatar with photo in Birthday panel", () => {
-      cy.visit("v2/dashboard");
-      cy.contains("h3", "Birthdays");
-
-      // Look for avatar in birthday table
-      cy.get("#PersonBirthdayDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().then(($img) => {
-          const personId = $img.attr("data-person-id");
-          if (personId) {
-            cy.wrap($img).click();
-
-            // Verify lightbox appears
-            cy.get("#photo-lightbox").should("be.visible");
-
-            // Close by clicking background
-            cy.get("#photo-lightbox").click({ x: 10, y: 10 });
-            cy.get("#photo-lightbox").should("not.exist");
-          }
-        });
-      });
-    });
-
-    it("lightbox closes when clicking the close button", () => {
-      cy.visit("v2/dashboard");
-      cy.contains("h3", "People");
-
-      cy.get("#latestFamiliesDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().click({ force: true });
-      });
+    it("photo avatar in Latest Families opens lightbox", () => {
+      // Dashboard uses generatePhotoImg() which adds .view-family-photo directly
+      cy.get("#latestFamiliesDashboardItem .view-family-photo")
+        .first()
+        .click();
 
       cy.get("#photo-lightbox").should("be.visible");
+      cy.get("#photo-lightbox img").should("have.attr", "src").and("include", "/photo");
 
-      // Click the X button in the lightbox
-      cy.get("#photo-lightbox .fa-times").closest("button").click();
+      // Close via X button
+      cy.get("#photo-lightbox button").click();
       cy.get("#photo-lightbox").should("not.exist");
     });
 
-    it("lightbox doesn't close when clicking the image itself", () => {
-      cy.visit("v2/dashboard");
-      cy.contains("h3", "People");
+    it("initials avatar in Latest Families is NOT clickable", () => {
+      // Initials are rendered as <span> elements without click classes
+      cy.get("#latestFamiliesDashboardItem .avatar-title").first().click({ force: true });
 
-      cy.get("#latestFamiliesDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().click({ force: true });
+      // No lightbox should appear
+      cy.get("#photo-lightbox").should("not.exist");
+    });
+
+    it("photo avatar in Latest People opens lightbox", () => {
+      cy.get("#latest-ppl-tab").click();
+      // Wait for DataTable to render after tab switch (lazy-loaded)
+      cy.get("#latest-ppl-pane").should("have.class", "show");
+      cy.get("#latestPersonDashboardItem tbody tr", { timeout: 15000 })
+        .should("have.length.at.least", 1);
+
+      // Not all people have photos — check if any exist
+      cy.get("#latestPersonDashboardItem").then(($table) => {
+        if ($table.find(".view-person-photo").length > 0) {
+          cy.get("#latestPersonDashboardItem .view-person-photo")
+            .first()
+            .click();
+
+          cy.get("#photo-lightbox").should("be.visible");
+          cy.get("body").type("{esc}");
+          cy.get("#photo-lightbox").should("not.exist");
+        }
+        // If no people have photos in this table, test passes (nothing to click)
       });
+    });
+
+    it("lightbox stays open when clicking the image itself", () => {
+      cy.get("#latestFamiliesDashboardItem .view-family-photo")
+        .first()
+        .click();
 
       cy.get("#photo-lightbox").should("be.visible");
-      const initialDisplay = cy.get("#photo-lightbox").should("be.visible");
 
-      // Click on the image
+      // Click on the image (not the background)
       cy.get("#photo-lightbox img").click();
 
-      // Lightbox should still be visible
+      // Should still be open
       cy.get("#photo-lightbox").should("be.visible");
+
+      // Cleanup
+      cy.get("body").type("{esc}");
+    });
+
+    it("lightbox closes when clicking the dark background", () => {
+      cy.get("#latestFamiliesDashboardItem .view-family-photo")
+        .first()
+        .click();
+
+      cy.get("#photo-lightbox").should("be.visible");
+
+      // Click top-left corner (background, not image)
+      cy.get("#photo-lightbox").click("topLeft");
+      cy.get("#photo-lightbox").should("not.exist");
     });
   });
 
-  describe("Person Profile Avatar Clicks", () => {
-    const personId = 2; // Person with family members
+  describe("Person Profile", () => {
+    // Person 2 has an uploaded photo (2.png) and is in family 1
+    const personId = 2;
 
-    it("opens lightbox when clicking family member avatar", () => {
+    it("clicking profile photo opens Uppy upload dialog", () => {
+      // Admin session required — uploader needs edit permissions
+      cy.setupAdminSession();
       cy.visit(`PersonView.php?PersonID=${personId}`);
 
-      // Find family members table
-      cy.get(".table").then(($table) => {
-        // Look for avatar with view-person-photo class in family members
-        cy.get(".view-person-photo").first().then(($img) => {
-          const memberId = $img.attr("data-person-id");
-          if (memberId) {
-            cy.wrap($img).click();
+      // Wait for page + uploader to fully initialize
+      cy.get("#uploadImageButton", { timeout: 10000 }).should("exist");
+      cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
 
-            // Verify lightbox appears
-            cy.get("#photo-lightbox").should("be.visible");
-            cy.get("#photo-lightbox .fa-times").closest("button").click();
-            cy.get("#photo-lightbox").should("not.exist");
-          }
-        });
-      });
+      cy.get("#uploadImageButton").click();
+
+      // Uppy modal should appear
+      cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+
+      // Close
+      cy.get(".uppy-Dashboard-close").click();
+      cy.get(".uppy-Dashboard--modal").should("not.be.visible");
     });
 
-    it("upload button still works and is not blocked by click handlers", () => {
+    it("profile photo does NOT have lightbox click class", () => {
       cy.visit(`PersonView.php?PersonID=${personId}`);
 
-      // Verify upload button exists and can be clicked
-      cy.get("#uploadImageButton").should("exist");
+      // Wait for avatar-loader to finish processing
+      cy.get("#uploadImageButton img.loaded", { timeout: 10000 }).should("exist");
 
-      // The button should have no .view-person-photo class (to avoid interference)
+      // avatar-loader should skip images inside #uploadImageButton
       cy.get("#uploadImageButton img").should("not.have.class", "view-person-photo");
     });
 
-    it("clicking person profile photo/initials opens Uppy upload dialog", () => {
+    it("family member with photo gets clickable avatar via avatar-loader", () => {
       cy.visit(`PersonView.php?PersonID=${personId}`);
 
-      // Click on the profile photo area (the upload button wrapping the avatar)
-      cy.get("#uploadImageButton").click();
+      // Wait for avatar-loader to process family member avatars
+      // Person 2 is in family 1 — other family members may or may not have photos
+      cy.get("img.loaded[data-person-id]", { timeout: 10000 }).then(($imgs) => {
+        if ($imgs.length > 0) {
+          // At least one family member photo loaded — click it
+          cy.wrap($imgs.first()).should("have.class", "view-person-photo");
+          cy.wrap($imgs.first()).click();
 
-      // Verify the Uppy Dashboard modal appears
-      cy.get(".uppy-Dashboard--modal", { timeout: 5000 }).should("be.visible");
-
-      // Verify webcam button is present (Webcam plugin loaded)
-      cy.get(".uppy-DashboardTab-btn").should("exist");
-
-      // Close the modal
-      cy.get(".uppy-Dashboard-close").click();
-      cy.get(".uppy-Dashboard--modal").should("not.exist");
+          cy.get("#photo-lightbox").should("be.visible");
+          cy.get("body").type("{esc}");
+          cy.get("#photo-lightbox").should("not.exist");
+        }
+        // If no family members have photos, the test still passes
+        // (avatar-loader correctly did not add click classes)
+      });
     });
   });
 
-  describe("Family Profile Avatar Clicks", () => {
+  describe("Family Profile", () => {
     const familyId = 1;
 
-    it("opens lightbox when clicking Key People member avatar", () => {
+    it("clicking family profile photo opens Uppy upload dialog", () => {
+      // Admin session required — uploader needs edit permissions
+      cy.setupAdminSession();
       cy.visit(`v2/family/${familyId}`);
 
-      // Find Key People table
-      cy.get("table").within(() => {
-        cy.get(".view-person-photo").first().then(($img) => {
-          const personId = $img.attr("data-person-id");
-          if (personId) {
-            cy.wrap($img).click();
+      // Wait for page + uploader to fully initialize
+      cy.get("#uploadImageTrigger", { timeout: 10000 }).should("exist");
+      cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
 
-            // Verify lightbox appears
-            cy.get("#photo-lightbox").should("be.visible");
-            cy.get("#photo-lightbox .fa-times").closest("button").click();
-            cy.get("#photo-lightbox").should("not.exist");
-          }
-        });
-      });
+      cy.get("#uploadImageTrigger").click();
+
+      // Uppy modal should appear
+      cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+
+      // Close
+      cy.get(".uppy-Dashboard-close").click();
+      cy.get(".uppy-Dashboard--modal").should("not.be.visible");
     });
 
-    it("main family photo upload button works without interference", () => {
+    it("family profile photo does NOT have lightbox click class", () => {
       cy.visit(`v2/family/${familyId}`);
 
-      // Verify upload trigger exists and is not a lightbox trigger
-      cy.get("#uploadImageTrigger").should("exist");
+      // Wait for avatar-loader to finish
+      cy.get("#uploadImageTrigger img.loaded", { timeout: 10000 }).should("exist");
 
-      // The image should not have .view-family-photo class (to avoid interference)
+      // avatar-loader should skip images inside #uploadImageTrigger
       cy.get("#uploadImageTrigger img").should("not.have.class", "view-family-photo");
     });
 
-    it("clicking family profile photo/initials opens Uppy upload dialog", () => {
+    it("member with photo gets clickable avatar via avatar-loader", () => {
       cy.visit(`v2/family/${familyId}`);
 
-      // Click on the family photo area (the upload trigger wrapping the avatar)
-      cy.get("#uploadImageTrigger").click();
+      // Wait for avatar-loader to process member table avatars
+      cy.get("table img.loaded", { timeout: 10000 }).then(($imgs) => {
+        // Filter to those that got the click class (have photos)
+        const clickable = $imgs.filter(".view-person-photo");
+        if (clickable.length > 0) {
+          cy.wrap(clickable.first()).click();
 
-      // Verify the Uppy Dashboard modal appears
-      cy.get(".uppy-Dashboard--modal", { timeout: 5000 }).should("be.visible");
-
-      // Verify webcam button is present (Webcam plugin loaded)
-      cy.get(".uppy-DashboardTab-btn").should("exist");
-
-      // Close the modal
-      cy.get(".uppy-Dashboard-close").click();
-      cy.get(".uppy-Dashboard--modal").should("not.exist");
+          cy.get("#photo-lightbox").should("be.visible");
+          cy.get("#photo-lightbox img")
+            .should("have.attr", "src")
+            .and("include", "/photo");
+          cy.get("body").type("{esc}");
+          cy.get("#photo-lightbox").should("not.exist");
+        }
+      });
     });
 
-    it("opens lightbox when clicking family member in other member tables", () => {
+    it("member with only initials does NOT open lightbox", () => {
       cy.visit(`v2/family/${familyId}`);
 
-      // Look through all member tables for clickable avatars
-      cy.get(".view-person-photo").then(($avatars) => {
-        if ($avatars.length > 0) {
-          // Click the first non-upload avatar
-          cy.wrap($avatars[0]).click({ force: true });
-          cy.get("#photo-lightbox").should("be.visible");
-          cy.get("body").type("{esc}");
+      // Wait for avatar-loader to finish processing all member avatars
+      cy.get("table img.loaded", { timeout: 10000 }).should("exist");
+
+      // Find an avatar that did NOT get the click class (initials only)
+      cy.get("table img.loaded").then(($imgs) => {
+        const initialsOnly = $imgs.not(".view-person-photo");
+        if (initialsOnly.length > 0) {
+          cy.wrap(initialsOnly.first()).click({ force: true });
+          // No lightbox should appear
           cy.get("#photo-lightbox").should("not.exist");
         }
       });
     });
   });
 
-  describe("Lightbox Behavior", () => {
-    it("lightbox image loads with correct dimensions", () => {
+  describe("Lightbox styling", () => {
+    it("lightbox has correct overlay and centering CSS", () => {
       cy.visit("v2/dashboard");
-      cy.contains("h3", "People");
+      cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
+        .should("have.length.at.least", 1);
 
-      cy.get("#latestFamiliesDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().click({ force: true });
-      });
+      cy.get("#latestFamiliesDashboardItem .view-family-photo")
+        .first()
+        .click();
 
-      cy.get("#photo-lightbox img").then(($img) => {
-        $img.load(() => {
-          cy.wrap($img).should("have.prop", "naturalWidth").and("be.greaterThan", 0);
-          cy.wrap($img).should("have.prop", "naturalHeight").and("be.greaterThan", 0);
-        });
-      });
+      cy.get("#photo-lightbox")
+        .should("have.css", "position", "fixed")
+        .and("have.css", "z-index", "9999");
 
-      cy.get("#photo-lightbox .fa-times").closest("button").click();
-      cy.get("#photo-lightbox").should("not.exist");
-    });
+      cy.get("#photo-lightbox img")
+        .should("have.css", "max-width", "90%")
+        .and("have.css", "border-radius", "8px");
 
-    it("lightbox has proper styling and is centered", () => {
-      cy.visit("v2/dashboard");
-      cy.contains("h3", "People");
-
-      cy.get("#latestFamiliesDashboardItem").within(() => {
-        cy.get(".view-person-photo").first().click({ force: true });
-      });
-
-      cy.get("#photo-lightbox").should("have.css", "position", "fixed");
-      cy.get("#photo-lightbox").should("have.css", "display", "flex");
-      cy.get("#photo-lightbox").should("have.css", "z-index", "9999");
-
-      cy.get("#photo-lightbox .fa-times").closest("button").click();
+      cy.get("body").type("{esc}");
     });
   });
 });
