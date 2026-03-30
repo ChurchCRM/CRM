@@ -19,6 +19,56 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
     $group->get('/roles/', 'getAllRolesAPI');
     $group->get('/duplicate/emails', 'getEmailDupesAPI');
 
+    /**
+     * @OA\Get(
+     *     path="/persons/email/without",
+     *     summary="Get people with no personal or work email on record",
+     *     tags={"People"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="People without any email address",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="count", type="integer"),
+     *             @OA\Property(property="persons", type="array", @OA\Items(type="object"))
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/email/without', function (Request $request, Response $response, array $args): Response {
+        // Pre-load list options to avoid N+1 queries
+        $roleOptions = ListOptionQuery::create()->filterById(2)->find()->toKeyValue('OptionId', 'OptionName');
+        $classificationOptions = ListOptionQuery::create()->filterById(1)->find()->toKeyValue('OptionId', 'OptionName');
+
+        $persons = PersonQuery::create()
+            ->leftJoinWithFamily()
+            ->where('(per_Email IS NULL OR per_Email = "") AND (per_WorkEmail IS NULL OR per_WorkEmail = "")')
+            ->where('Family.DateDeactivated IS NULL')
+            ->find();
+
+        $result = [];
+        foreach ($persons as $person) {
+            $family = $person->getFamily();
+            $numericAge = $person->getNumericAge();
+            $age = ($numericAge !== false) ? $numericAge : null;
+            $fmrId = $person->getFmrId();
+            $clsId = $person->getClsId();
+            $roleName = $roleOptions[$fmrId] ?? 'Unassigned';
+            $isChild = (stripos($roleName, 'child') !== false) || ($age !== null && $age < 18);
+
+            $result[] = [
+                'Id'             => $person->getId(),
+                'FullName'       => $person->getFullName(),
+                'FamilyId'       => $family ? $family->getId() : null,
+                'FamilyName'     => $family ? $family->getName() : '',
+                'FamilyRole'     => $roleName,
+                'Classification' => $classificationOptions[$clsId] ?? 'Unassigned',
+                'Age'            => $age,
+                'IsChild'        => $isChild,
+            ];
+        }
+
+        return SlimUtils::renderJSON($response, ['count' => count($result), 'persons' => $result]);
+    });
+
     $group->get('/latest', 'getLatestPersons');
     $group->get('/updated', 'getUpdatedPersons');
     $group->get('/birthday', 'getPersonsWithBirthdays');
