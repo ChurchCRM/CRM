@@ -29,4 +29,26 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   });
+
+  // Photo viewer click handlers
+  document.addEventListener("click", function (e) {
+    const photoElement = e.target.closest(".view-person-photo");
+    if (photoElement) {
+      const personId = photoElement.getAttribute("data-person-id");
+      if (window.CRM && window.CRM.showPhotoLightbox) {
+        window.CRM.showPhotoLightbox("person", personId);
+      }
+      e.stopPropagation();
+      return;
+    }
+
+    const familyPhotoElement = e.target.closest(".view-family-photo");
+    if (familyPhotoElement) {
+      const familyId = familyPhotoElement.getAttribute("data-family-id");
+      if (window.CRM && window.CRM.showPhotoLightbox) {
+        window.CRM.showPhotoLightbox("family", familyId);
+      }
+      e.stopPropagation();
+    }
+  });
 });

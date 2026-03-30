@@ -374,8 +374,8 @@ $otherPeople = $family->getOtherPeople();
             <!-- Full-width family photo (click to upload) -->
             <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
                 <img data-image-entity-type="family"
-                     data-image-entity-id="<?= $family->getId() ?>" class="view-family-photo" data-family-id="<?= $family->getId() ?>"
-                     class="card-img-top object-fit-cover" style="max-height: 220px;">
+                     data-image-entity-id="<?= $family->getId() ?>" class="card-img-top object-fit-cover" data-family-id="<?= $family->getId() ?>"
+                     style="max-height: 220px;">
             </a>
             <div class="card-body p-3">
                 <ul class="list-unstyled mb-0">
