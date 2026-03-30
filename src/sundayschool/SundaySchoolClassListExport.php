@@ -125,7 +125,7 @@ foreach ($groups as $group) {
         }
 
         $birthDate = '';
-        if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
+        if ($birthYear !== '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
             $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }

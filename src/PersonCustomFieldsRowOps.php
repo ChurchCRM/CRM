@@ -59,7 +59,7 @@ switch ($sAction) {
         $iOrderID = (int)$customField->getOrder();
 
         // Check if this field is a custom list type (type_ID = 12).  If so, delete the list from list_lst
-        if ($customField->getTypeId() == 12) {
+        if ($customField->getTypeId() === 12) {
             $listOption = ListOptionQuery::create()
                 ->findOneById((int)$customField->getSpecial());
             if ($listOption !== null) {
@@ -80,7 +80,7 @@ switch ($sAction) {
         $numRows = count($remainingFields);
 
         // Shift the remaining rows up by one, unless we've just deleted the only row
-        if ($numRows != 0) {
+        if ($numRows !== 0) {
             for ($reorderRow = $iOrderID + 1; $reorderRow <= $numRows + 1; $reorderRow++) {
                 $fieldToReorder = PersonCustomMasterQuery::create()
                     ->filterByOrder($reorderRow)

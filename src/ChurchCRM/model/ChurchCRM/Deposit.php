@@ -35,7 +35,7 @@ class Deposit extends BaseDeposit
     public function getOFX(): \stdClass
     {
         $OFXReturn = new \stdClass();
-        if ($this->getPledges()->count() == 0) {
+        if ($this->getPledges()->count() === 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
 

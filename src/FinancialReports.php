@@ -17,7 +17,7 @@ if (array_key_exists('ReportType', $_POST)) {
     $sReportType = InputUtils::legacyFilterInput($_POST['ReportType']);
 }
 
-if ($sReportType == '' && array_key_exists('ReportType', $_GET)) {
+if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
 }
 
@@ -65,7 +65,7 @@ if (array_key_exists('ReturnMessage', $_GET) && $_GET['ReturnMessage'] === 'NoRo
     echo '</div>';
 }
 
-if ($sReportType == '') {
+if ($sReportType === '') {
     // First Pass - Choose report type
     ?>
     <form method="post" id="FinancialReports" action="FinancialReports.php">
@@ -240,7 +240,7 @@ if ($sReportType == '') {
           <?php while ($aRow = mysqli_fetch_array($rsFunds)) {
               extract($aRow);
               echo '<option value="' . (int)$fun_ID . '">' . InputUtils::escapeHTML($fun_Name);
-              if ($fun_Active == 'false') {
+              if ($fun_Active === 'false') {
                   echo ' — INACTIVE';
               }
               echo '</option>';

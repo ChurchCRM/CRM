@@ -49,7 +49,7 @@ class GroupService
         $rowTemp = mysqli_fetch_row($rsTemp);
         $bHasProp = $rowTemp[0];
 
-        if ($bHasProp == 'true') {
+        if ($bHasProp === '1') {
             $sSQL = 'DELETE FROM groupprop_' . $groupID . " WHERE per_ID = '" . $personID . "'";
             FunctionsUtils::runQuery($sSQL);
         }

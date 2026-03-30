@@ -516,7 +516,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $iBirthMonth = is_numeric($per_BirthMonth) ? (int) $per_BirthMonth : null;
         $iBirthDay = is_numeric($per_BirthDay) ? (int) $per_BirthDay : null;
         $iBirthYear = is_numeric($per_BirthYear) ? (int) $per_BirthYear : null;
-        $bHideAge = ($per_Flags & 1) != 0;
+        $bHideAge = ($per_Flags & 1) !== 0;
         $iOriginalFamily = $per_fam_ID;
         $iFamily = (int) $per_fam_ID;
         $iFamilyRole = (int) $per_fmr_ID;

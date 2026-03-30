@@ -689,7 +689,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date == null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
+        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('Y-m-d', $date);
         $age = date_diff($now, $birthDate);
 
         if ($age->y < 1) {
@@ -734,9 +734,9 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getEmail(): ?string
     {
-        if (parent::getEmail() == null) {
+        if (parent::getEmail() === null) {
             $family = $this->getFamily();
-            if ($family != null) {
+            if ($family !== null) {
                 return $family->getEmail();
             }
         }

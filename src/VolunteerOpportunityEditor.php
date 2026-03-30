@@ -199,7 +199,7 @@ if ($iRowNum === 0) {
     for ($row = 1; $row <= $numRows; $row++) {
         $aRow = mysqli_fetch_array($rsOpps);
         extract($aRow);
-        if ($orderCounter != $vol_Order) {
+        if ($orderCounter !== (int)$vol_Order) {
             $volunteerOpp = VolunteerOpportunityQuery::create()->findOneById($vol_ID);
             $volunteerOpp->setOrder($orderCounter);
             $volunteerOpp->save();
@@ -340,7 +340,7 @@ if (isset($_POST['SaveChanges'])) {
                 </div>
 
                 <?php
-                if ($numRows == 0) {
+                if ($numRows === 0) {
                 ?>
                     <div class="alert alert-info" role="alert">
                         <i class="fa-solid fa-circle-info"></i>
@@ -349,7 +349,7 @@ if (isset($_POST['SaveChanges'])) {
                 <?php
                 } else {
                     // if an 'action' (up/down arrow clicked, or order was input)
-                    if ($iRowNum && $sAction != '') {
+                    if ($iRowNum && $sAction !== '') {
                         // cast as int and couple with switch for sql injection prevention for $row_num
                         $swapRow = $iRowNum;
                         if ($sAction === 'up') {
@@ -447,10 +447,10 @@ if (isset($_POST['SaveChanges'])) {
                                 if ($row !== 1) {
                                     echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
                                 }
-                                if ($row != $numRows) {
+                                if ($row !== $numRows) {
                                     echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="ti ti-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
                                 }
-                                if ($row !== 1 || $row != $numRows) {
+                                if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';
                                 }
                                 echo '<a href="VolunteerOpportunityEditor.php?act=delete&amp;Opp=' . $aIDFields[$row] . '" class="dropdown-item text-danger"><i class="ti ti-trash me-2"></i>' . gettext('Delete') . '</a>';

@@ -52,7 +52,7 @@ class PdfDirectory extends ChurchInfoReport
     {
         global $bDirUseTitlePage;
 
-        if (($this->PageNo() > 1) || ($bDirUseTitlePage == false)) {
+        if (($this->PageNo() > 1) || ($bDirUseTitlePage === false)) {
             //Select Arial bold 15
             $this->SetFont($this->_Font, 'B', 15);
             //Line break
@@ -76,7 +76,7 @@ class PdfDirectory extends ChurchInfoReport
     {
         global $bDirUseTitlePage;
 
-        if (($this->PageNo() > 1) || ($bDirUseTitlePage == false)) {
+        if (($this->PageNo() > 1) || ($bDirUseTitlePage === false)) {
             //Go to 1.7 cm from bottom
             $this->SetY(-17);
             //Select Arial italic 8
@@ -148,7 +148,7 @@ class PdfDirectory extends ChurchInfoReport
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
-        if ($w == 0) {
+        if ($w === 0) {
             $w = $this->w - $this->rMargin - $this->x;
         }
         $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
@@ -274,7 +274,7 @@ class PdfDirectory extends ChurchInfoReport
                     $currentFieldData = displayCustomField($type_ID, $aCustomData[$custom_Field], $custom_Special);
 
 //                    $currentFieldData = trim($aCustomData[$custom_Field]);
-                    if ($currentFieldData != '') {
+                    if ($currentFieldData !== '') {
                         $OutStr .= '   ' . $custom_Name . ': ' . $currentFieldData .= "\n";
                     }
                 }
@@ -495,7 +495,7 @@ class PdfDirectory extends ChurchInfoReport
 
         $this->SetXY($_PosX, $_PosY);
 
-        if ($dirimg != '') {
+        if ($dirimg !== '') {
             $h = 20;
             $_PosY += 2;
             $this->Image($dirimg, $_PosX, $_PosY, $h);
