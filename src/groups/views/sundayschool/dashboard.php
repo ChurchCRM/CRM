@@ -130,8 +130,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <a href="<?= $sRootPath ?>/groups/sundayschool/reports" class="btn btn-outline-primary">
                 <i class="fa-solid fa-file-pdf me-1"></i><?= gettext('Reports') ?>
             </a>
-            <a href="<?= $sRootPath ?>/groups/sundayschool/export" class="btn btn-outline-info">
-                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Export to CSV') ?>
+            <a href="<?= $sRootPath ?>/api/groups/sundayschool/export/classlist" class="btn btn-outline-info">
+                <i class="fa-solid fa-file-csv me-1"></i><?= gettext('Class List Export') ?>
+            </a>
+            <a href="<?= $sRootPath ?>/api/groups/sundayschool/export/email" class="btn btn-outline-info">
+                <i class="fa-solid fa-table me-1"></i><?= gettext('Email Export') ?>
             </a>
         </div>
     </div>

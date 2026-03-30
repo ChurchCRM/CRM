@@ -1,17 +1,25 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Api\GroupMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageGroupRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -232,6 +240,204 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
     })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/sundayschool/export/email",
+     *     summary="Export people emails with group memberships as CSV",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="CSV file with people emails and group role memberships"),
+     *     @OA\Response(response=403, description="ManageGroups role required")
+     * )
+     */
+    $group->get('/sundayschool/export/email', function (Request $request, Response $response): Response {
+        $personService = new PersonService();
+        $sundaySchoolService = new SundaySchoolService();
+
+        $groups = GroupQuery::create()
+            ->filterByActive(true)
+            ->filterByIncludeInEmailExport(true)
+            ->find();
+
+        // Build header columns
+        $headers = ['CRM ID', 'FirstName', 'LastName', 'Email'];
+        foreach ($groups as $g) {
+            $headers[] = $g->getName();
+        }
+
+        // Collect Sunday School parent IDs per group
+        $sundaySchoolsParents = [];
+        foreach ($groups as $g) {
+            if ($g->isSundaySchool()) {
+                $kids = $sundaySchoolService->getKidsFullDetails($g->getId());
+                $parentIds = [];
+                foreach ($kids as $kid) {
+                    if ($kid['dadId'] !== null) {
+                        $parentIds[] = (int) $kid['dadId'];
+                    }
+                    if ($kid['momId'] !== null) {
+                        $parentIds[] = (int) $kid['momId'];
+                    }
+                }
+                $sundaySchoolsParents[$g->getId()] = $parentIds;
+            }
+        }
+
+        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
+        $filename = 'EmailExport-' . date($dateFormat) . '.csv';
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+
+        foreach ($personService->getPeopleEmailsAndGroups() as $person) {
+            $row = [
+                $person['id'],
+                $person['firstName'],
+                $person['lastName'],
+                $person['email'],
+            ];
+
+            foreach ($groups as $g) {
+                $groupRole = $person[$g->getName()] ?? '';
+                if ($groupRole === '' && $g->isSundaySchool()) {
+                    if (in_array((int) $person['id'], $sundaySchoolsParents[$g->getId()], true)) {
+                        $groupRole = 'Parent';
+                    }
+                }
+                $row[] = $groupRole;
+            }
+            $exporter->insertRow($row);
+        }
+
+        $response = $response->withHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
+
+        return $response;
+    })->add(ManageGroupRoleAuthMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/sundayschool/export/classlist",
+     *     summary="Export Sunday School class roster as CSV",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="CSV file with class members, parents, and contact info"),
+     *     @OA\Response(response=403, description="ManageGroups role required or Sunday School disabled")
+     * )
+     */
+    $group->get('/sundayschool/export/classlist', function (Request $request, Response $response): Response {
+        $headers = [
+            'Class', 'Role', 'First Name', 'Last Name', 'Birth Date',
+            'Mobile', 'Home Phone', 'Home Address',
+            'Dad Name', 'Dad Mobile', 'Dad Email',
+            'Mom Name', 'Mom Mobile', 'Mom Email',
+            'Properties',
+        ];
+
+        $rows = [];
+        $groups = GroupQuery::create()
+            ->orderByName(Criteria::ASC)
+            ->filterByType(4)
+            ->find();
+
+        foreach ($groups as $g) {
+            $groupRoleMemberships = Person2group2roleP2g2rQuery::create()
+                ->joinWithPerson()
+                ->orderBy(PersonTableMap::COL_PER_LASTNAME)
+                ->_and()->orderBy(PersonTableMap::COL_PER_FIRSTNAME)
+                ->findByGroupId($g->getId());
+
+            foreach ($groupRoleMemberships as $membership) {
+                $groupRole = ListOptionQuery::create()
+                    ->filterById($g->getRoleListId())
+                    ->filterByOptionId($membership->getRoleId())
+                    ->findOne();
+
+                $roleName = $groupRole ? $groupRole->getOptionName() : '';
+                $member = $membership->getPerson();
+                $family = $member->getFamily();
+
+                $address = '';
+                $dadName = $dadCell = $dadEmail = '';
+                $momName = $momCell = $momEmail = '';
+
+                if ($family !== null) {
+                    $address = trim($family->getAddress1() . ' ' . $family->getAddress2()
+                        . ' ' . $family->getCity() . ' ' . $family->getState() . ' ' . $family->getZip());
+
+                    if ($roleName === 'Student') {
+                        foreach ($family->getAdults() as $adult) {
+                            if ($adult->getGender() === 1) {
+                                $dadName = $adult->getFirstName() . ' ' . $adult->getLastName();
+                                $dadCell = $adult->getCellPhone();
+                                $dadEmail = $adult->getEmail();
+                            } elseif ($adult->getGender() === 2) {
+                                $momName = $adult->getFirstName() . ' ' . $adult->getLastName();
+                                $momCell = $adult->getCellPhone();
+                                $momEmail = $adult->getEmail();
+                            }
+                        }
+                    }
+                }
+
+                $props = '';
+                if ($roleName === 'Student') {
+                    $assignedProperties = $member->getProperties();
+                    if (!empty($assignedProperties)) {
+                        $propNames = [];
+                        foreach ($assignedProperties as $property) {
+                            $propNames[] = $property->getProperty()->getProName();
+                        }
+                        $props = implode(', ', $propNames);
+                    }
+                }
+
+                $birthDate = '';
+                $birthYear = $member->getBirthYear();
+                $birthMonth = $member->getBirthMonth();
+                $birthDay = $member->getBirthDay();
+                if ($birthYear !== null && $birthYear !== '' && (!$member->hideAge() || $roleName === 'Student')) {
+                    $date = \DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
+                    if ($date !== false) {
+                        $birthDate = $date->format(SystemConfig::getValue('sDateFormatLong'));
+                    }
+                }
+
+                $rows[] = [
+                    $g->getName(),
+                    $roleName,
+                    $member->getFirstName(),
+                    $member->getLastName(),
+                    $birthDate,
+                    $member->getCellPhone(),
+                    $member->getHomePhone(),
+                    $address,
+                    $dadName,
+                    $dadCell,
+                    $dadEmail,
+                    $momName,
+                    $momCell,
+                    $momEmail,
+                    $props,
+                ];
+            }
+        }
+
+        $dateFormat = SystemConfig::getValue('sDateFilenameFormat');
+        $filename = 'SundaySchool-' . date($dateFormat) . '.csv';
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders($headers);
+        $exporter->insertRows($rows);
+
+        $response = $response->withHeader('Content-Type', 'text/csv; charset=UTF-8');
+        $response = $response->withHeader('Content-Disposition', 'attachment; filename="' . $filename . '"');
+        $response->getBody()->write($exporter->getContent());
+
+        return $response;
+    })->add(new SundaySchoolEnabledMiddleware())->add(ManageGroupRoleAuthMiddleware::class);
 });
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {
