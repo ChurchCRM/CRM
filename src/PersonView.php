@@ -216,7 +216,7 @@ $bOkToEdit = (
                     <!-- Photo (left) — click to upload -->
                     <div class="flex-shrink-0 position-relative" style="width: 120px; min-height: 120px;">
                         <a href="#" id="uploadImageButton" class="d-block w-100 h-100" title="<?= $bOkToEdit ? gettext("Click to upload photo") : gettext("View Photo") ?>">
-                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
+                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="w-100 h-100 object-fit-cover view-person-photo" data-person-id="<?= $person->getId() ?>" style="border-radius: var(--tblr-border-radius) 0 0 var(--tblr-border-radius);">
                         </a>
                     </div>
                     <!-- Attributes (right) -->
@@ -567,7 +567,7 @@ $bOkToEdit = (
                             <tr<?= $isSelf ? ' class="bg-light"' : '' ?>>
                                 <td>
                                     <div class="d-flex align-items-center">
-                                        <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2">
+                                        <img data-image-entity-type="person" data-image-entity-id="<?= $familyMember->getId() ?>" class="avatar avatar-sm me-2 view-person-photo" data-person-id="<?= $familyMember->getId() ?>">
                                         <?php if ($isSelf) { ?>
                                             <span class="fw-bold"><?= $familyMember->getFullName() ?></span>
                                             <i class="fa-solid fa-circle-user text-primary ms-2" title="<?= gettext('Current person') ?>"></i>

@@ -160,7 +160,7 @@ $otherPeople = $family->getOtherPeople();
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2">
+                                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2 view-person-photo" data-person-id="<?= $person->getId() ?>">
                                             <a href="<?= $person->getViewURI() ?>"><?= $person->getTitle() ?> <?= $person->getFullName() ?></a>
                                         </div>
                                     </td>
@@ -236,7 +236,7 @@ $otherPeople = $family->getOtherPeople();
                                 <tr>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2">
+                                            <img data-image-entity-type="person" data-image-entity-id="<?= $person->getId() ?>" class="avatar avatar-sm me-2 view-person-photo" data-person-id="<?= $person->getId() ?>">
                                             <a href="<?= $person->getViewURI() ?>"><?= $person->getTitle() ?> <?= $person->getFullName() ?></a>
                                         </div>
                                     </td>
@@ -374,7 +374,7 @@ $otherPeople = $family->getOtherPeople();
             <!-- Full-width family photo (click to upload) -->
             <a href="#" id="uploadImageTrigger" class="d-block" title="<?= AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ? gettext("Click to upload photo") : gettext("View Photo") ?>">
                 <img data-image-entity-type="family"
-                     data-image-entity-id="<?= $family->getId() ?>"
+                     data-image-entity-id="<?= $family->getId() ?>" class="view-family-photo" data-family-id="<?= $family->getId() ?>"
                      class="card-img-top object-fit-cover" style="max-height: 220px;">
             </a>
             <div class="card-body p-3">
