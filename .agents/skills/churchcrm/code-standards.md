@@ -137,6 +137,12 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
 
+## AppIntegrityService Returns Plain Strings <!-- learned: 2026-03-30 -->
+
+`AppIntegrityService::getFilesFailingIntegrityCheck()` returns an array of **plain filename strings** (e.g., `['Include/Config.php', 'skin/v2/app.min.js']`), NOT objects with `->filename`/`->expectedhash`/`->actualhash` properties. When displaying these files in a template, render `$file` directly — not `$file->filename`.
+
+The integrity check has **no session cache** — it runs fresh on every page load (only called on ~4 admin pages, no perf concern). There is no `clearIntegrityCache()` method.
+
 ## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
 
 When replacing `==`/`!=` with `===`/`!==`, you MUST cast the operands to matching types first. Legacy code uses `mysqli_fetch_array()` / `extract()` which return **strings**, not integers. Blindly switching to strict comparison breaks logic silently.

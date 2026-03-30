@@ -534,6 +534,49 @@ $(document).ready(function() {
 4. **Update stat card text** with the new label
 5. Users immediately see the change without page reload
 
+### Settings Panel: Scripts Before Footer <!-- learned: 2026-03-30 -->
+
+Settings panel CSS/JS **must** be loaded before `Include/Footer.php` — Footer closes `</body></html>`, so assets loaded after it produce invalid markup. Place the `<link>`, `<script>`, and init block between your page content and the Footer include.
+
+### Settings Panel: Pass Full Config for Custom Settings <!-- learned: 2026-03-30 -->
+
+For settings not in the built-in `SettingDefinitions` dictionary, pass full config objects instead of just setting names:
+
+```javascript
+settings: [{
+    name: 'bAllowPrereleaseUpgrade',
+    type: 'boolean',
+    label: i18next.t('Allow Pre-release Upgrades'),
+    tooltip: i18next.t("Description here")
+}]
+```
+
+This avoids coupling page-specific settings into the generic `system-settings-panel.js`.
+
+### TomSelect Boolean Dropdown: value="" Bug <!-- learned: 2026-03-30 -->
+
+TomSelect hides options with `value=""` (treats them as placeholder/clear state). For boolean `<select>` elements, use `value="0"` for False, not `value=""`. The save logic already handles this — any non-`"1"` value is treated as false.
+
+### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
+
+When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
+
+When rendering user-supplied markdown (e.g., GitHub release notes) with `marked`, strip raw HTML to prevent XSS:
+
+```javascript
+marked.use({
+  renderer: {
+    html() { return ""; },
+    link({ href, text }) {
+      const safeHref = href && /^https?:\/\//i.test(href) ? href : "#";
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    },
+  },
+});
+```
+
 ## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
 
 For action buttons that call APIs (refresh, save, delete), implement handlers in webpack entry points with proper localization.
