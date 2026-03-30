@@ -1590,14 +1590,6 @@ msgid "Confirm data labels"
 msgstr "Bestätige Datenaufkleber"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Alle Veranstaltungen auflisten"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Beginn Datum/Uhrzeit"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ungültiges Passwort"
 
@@ -2822,15 +2814,6 @@ msgid "Report Details"
 msgstr "Reportdetails"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "Zur Mehrfachauswahl CTRL gedrückt halten"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Mehrere Gruppen haben einen Seitenumbruch dazwischen.<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Rollenliste (Deaktivierung wird nur Lehrer/Schülerrollen zeigen)"
 
@@ -2976,24 +2959,12 @@ msgid "Edit Settings"
 msgstr "Einstellungen bearbeiten"
 
 #: 
-msgid "Full Path:"
-msgstr "Voller Pfad:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Backup vollständig. Fertig zum Download."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup wurde heruntergeladen. Die Kopie auf dem Server wurde entfernt."
 
 #: 
 msgid "Functions"
 msgstr "Funktionen"
-
-#: 
-msgid "Export to CSV"
-msgstr "Als CSV exportieren"
 
 #: 
 msgid "Add"
@@ -3078,10 +3049,6 @@ msgstr "Notizen"
 #: 
 msgid "Reports"
 msgstr "Berichte"
-
-#: 
-msgid "File Name:"
-msgstr "Dateiname:"
 
 #: 
 msgid "family"
@@ -3301,10 +3268,6 @@ msgstr "Pfad und Datei für den Briefkopf der Kirche"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Einzahlungsschein-Einstellungen"
-
-#: 
-msgid "List Church Events"
-msgstr "Veranstaltungen anzeigen"
 
 #: 
 msgid "Add Church Event"
@@ -5345,10 +5308,6 @@ msgid "Report an issue"
 msgstr "Ein Problem melden"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Neue Kiosk-Registrierung aktivieren"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktive Kioske"
 
@@ -5722,10 +5681,6 @@ msgstr "Feld, in dem der Konfessionsvater aufgeführt ist, muss eine Person vom 
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Feld, in dem die letzte Konfession gespeichert ist, muss ein Datumstyp sein"
-
-#: 
-msgid "People Setup"
-msgstr "Personen einrichten"
 
 #: 
 msgid "People Reports"
@@ -6102,10 +6057,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Sie sind dabei, eine neue Einzahlung ohne Kommentar hinzuzufügen"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familien ohne E-Mails"
-
-#: 
 msgid "Record"
 msgstr "Datensatz"
 
@@ -6129,26 +6080,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Fokus abwählen"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Warnung: Signatur stimmt nicht überein"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Einige ChurchCRM-Systemdateien können seit der letzten Installation geändert worden sein."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Dieses Upgrade vernichtet alle Anpassungen, die an den folgenden Dateien vorgenommen wurden, vollständig, indem die Dateien auf die offizielle Version zurückgesetzt werden."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Wenn Sie Ihre Änderungen an diesen Dateien beibehalten möchten, machen Sie bitte eine manuelle Sicherung dieser Dateien, bevor Sie mit diesem Upgrade fortfahren, und stellen Sie die Dateien nach Abschluss des Upgrades manuell wieder her."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Integritäts-Check-Details:"
 
 #. Context: locales
 #: 
@@ -7171,18 +7102,6 @@ msgstr "Postleitzahl erforderlich"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Ein neues Passwort wurde generiert und an Ihre E-Mail-Adresse gesendet."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Eine neue Version von ChurchCRM ist zur Installation verfügbar."
-
-#: 
-msgid "Actual Hash"
-msgstr "Tatsächlicher Hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Alle Vor-Upgrade-Prüfungen sind bestanden. Sie können mit dem Upgrade fortfahren."
 
 #: 
 msgid "Allow Pre-release Upgrades"

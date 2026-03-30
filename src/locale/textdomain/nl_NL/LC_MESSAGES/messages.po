@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr "Bevestig data Etiketten"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Activiteiten overzicht"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Aanvangs Datum/Tijd"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Onjuist login of wachtwoord"
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "Rapport gegevens"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Houd de <CNTL> toets vast, om meerderen te selecteren"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Meerdere groepen hebben een pagina-einde tussen groepen"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Weergave van alle rollen."
 
@@ -2877,24 +2861,12 @@ msgid "Edit Settings"
 msgstr "Wijzig parameters"
 
 #: 
-msgid "Full Path:"
-msgstr "Volledig pad:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Backup kompleet, gereed voor download."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Back-up gedownload. Kopiëren op de server verwijderd"
 
 #: 
 msgid "Functions"
 msgstr "Functies"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exporteer naar CSV"
 
 #: 
 msgid "Add"
@@ -2979,10 +2951,6 @@ msgstr "Notities"
 #: 
 msgid "Reports"
 msgstr "Rapporten"
-
-#: 
-msgid "File Name:"
-msgstr "Bestandsnaam:"
 
 #: 
 msgid "family"
@@ -3203,10 +3171,6 @@ msgstr "Brievenhoofd"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Instellingen voor QuickBooks-stortingsticket"
-
-#: 
-msgid "List Church Events"
-msgstr "Activiteiten overzicht"
 
 #: 
 msgid "Add Church Event"
@@ -5244,10 +5208,6 @@ msgid "Report an issue"
 msgstr "Een probleem melden"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Nieuwe kioskregistratie inschakelen"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Actieve kiosken"
 
@@ -5623,10 +5583,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Veld waar de laatste bekentenis is opgeslagen, moet een datumtype zijn"
 
 #: 
-msgid "People Setup"
-msgstr "Instellingen personen"
-
-#: 
 msgid "People Reports"
 msgstr "Mensen Rapporten"
 
@@ -6000,10 +5956,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Je staat op het punt een nieuwe storting toe te voegen zonder commentaar"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Gezinnen zonder e-mail adres"
-
-#: 
 msgid "Record"
 msgstr "Gegevensrij"
 
@@ -6026,26 +5978,6 @@ msgstr "Richt"
 #: 
 msgid "Unfocus"
 msgstr "Ongericht"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Waarschuwing: de handtekening klopt niet"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Sommige bestanden kunnen aangepast zijn sinds de installatie."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Deze upgrade zal elke aanpassing aan de bestanden compleet verwijderen en zal alles terugzetten naar de officiële versie."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Als u de wijzigingen van deze bestanden wilt bijhouden, maak dan aub een handmatige backup van deze bestanden voordat u doorgaat met deze upgrade en herstel deze bestanden handmatig nadat de upgrade is afgerond."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Details van de integriteit controle"
 
 #. Context: locales
 #: 
@@ -7068,18 +7000,6 @@ msgstr "Postcode is verplicht"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Er is een nieuw wachtwoord gegenereerd en naar uw e-mailadres verzonden."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Er is een nieuwe versie van ChurchCRM beschikbaar voor installatie."
-
-#: 
-msgid "Actual Hash"
-msgstr "Werkelijke hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Alle pre-upgrade controles zijn geslaagd. U kunt doorgaan met de upgrade."
 
 #: 
 msgid "Allow Pre-release Upgrades"

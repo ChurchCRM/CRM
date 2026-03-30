@@ -1574,14 +1574,6 @@ msgid "Confirm data labels"
 msgstr "Még adatfeliratokat"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Felsorolja az összes Church Events"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Kezdő dátum / idő"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Érvénytelen login vagy jelszó"
 
@@ -2798,15 +2790,6 @@ msgid "Report Details"
 msgstr "Jelentés részletei"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "Válassza Csoport: Ha több hold CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Több csoport esetén oldaltörés lesz a csoportok között<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Minden szerepkör listázása (ha nincs bejelölve, csak a Tanár/Diák szerepköröket listázza)"
 
@@ -2952,24 +2935,12 @@ msgid "Edit Settings"
 msgstr "Beállítások szerkesztése"
 
 #: 
-msgid "Full Path:"
-msgstr "Teljes útvonal:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Biztonsági mentés kész, letölthető."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Biztonsági mentés letöltve, a szerveren lévő másolat törölve"
 
 #: 
 msgid "Functions"
 msgstr "Funkciók"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportálás CSV-be"
 
 #: 
 msgid "Add"
@@ -3054,10 +3025,6 @@ msgstr "Jegyzetek"
 #: 
 msgid "Reports"
 msgstr "Jelentések"
-
-#: 
-msgid "File Name:"
-msgstr "Fájlnév:"
 
 #: 
 msgid "family"
@@ -3274,10 +3241,6 @@ msgstr "Templomi levélpapír útvonala és fájlja"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks befizetési jegy beállítások"
-
-#: 
-msgid "List Church Events"
-msgstr "Egyházi események listázása"
 
 #: 
 msgid "Add Church Event"
@@ -5310,10 +5273,6 @@ msgid "Report an issue"
 msgstr "Hiba bejelentése"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Új kioszk regisztráció engedélyezése"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktív kioszkok"
 
@@ -5689,10 +5648,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Az a mező, ahol az utolsó vallomás tárolódik, dátum típusúnak kell lennie"
 
 #: 
-msgid "People Setup"
-msgstr "Emberek beállítása"
-
-#: 
 msgid "People Reports"
 msgstr "Emberek jelentései"
 
@@ -6062,10 +6017,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Egy új betét hozzáadásához készül megjegyzés nélkül"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Családok e-mail nélkül"
-
-#: 
 msgid "Record"
 msgstr "Rekord"
 
@@ -6088,26 +6039,6 @@ msgstr "Fókusz"
 #: 
 msgid "Unfocus"
 msgstr "Nem fókusz"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Figyelmeztetés: aláírás eltérése"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Néhány ChurchCRM rendszerfájl módosulhatott az utolsó telepítés óta."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Ez a frissítés teljesen megsemmisít minden olyan fájlmódosítást a következő fájlokhoz a fájlok az egyéb verzióra való visszaállításával."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Ha meg szeretné tartani a módosításokat ezekben a fájlokban, kérjük, készítsen kézi biztonsági másolatot ezekről a fájlokról az upgrade-szal kapcsolatosan, majd manuálisan állítsa vissza a fájlokat a frissítés után."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Integritásellenőrzés részletei:"
 
 #. Context: locales
 #: 
@@ -7128,18 +7059,6 @@ msgstr "Az irányítószám szükséges"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Az új jelszó generálva és az e-mail címére elküldve."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "A ChurchCRM új verziója elérhető telepítésre."
-
-#: 
-msgid "Actual Hash"
-msgstr "Tényleges Hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Az összes frissítés előtti ellenőrzés megállt. Folytathatja a frissítéssel."
 
 #: 
 msgid "Allow Pre-release Upgrades"

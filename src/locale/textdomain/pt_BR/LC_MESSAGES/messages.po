@@ -1517,14 +1517,6 @@ msgid "Confirm data labels"
 msgstr "Corfirma conteúdo das etiquetas"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Listar todos os eventos da igreja"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Início Data/Horário"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Login ou senha inválidos"
 
@@ -2703,14 +2695,6 @@ msgid "Report Details"
 msgstr "Detalhes do Relatório"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Use a tecla CTRL para selecionar vários"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Múltiplos Grupos terão uma quebra de página entre eles<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Listar todos os papéis (desmarcado listará somente os papéis de Professor / Aluno)"
 
@@ -2851,24 +2835,12 @@ msgid "Edit Settings"
 msgstr "Editar Configurações"
 
 #: 
-msgid "Full Path:"
-msgstr "Caminho Completo:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Backup completo, Pronto para Download."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Backup baixado, copiado ou removido do sistema"
 
 #: 
 msgid "Functions"
 msgstr "Funções"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportar para CSV"
 
 #: 
 msgid "Add"
@@ -2953,10 +2925,6 @@ msgstr "Notas"
 #: 
 msgid "Reports"
 msgstr "Relatórios"
-
-#: 
-msgid "File Name:"
-msgstr "Nome do Arquivo:"
 
 #: 
 msgid "family"
@@ -3173,10 +3141,6 @@ msgstr "Caminho do Arquivo de Cabeçalho de Carta da Igreja"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Configurações de registros de depósito do QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Listar Eventos da Igreja"
 
 #: 
 msgid "Add Church Event"
@@ -5209,10 +5173,6 @@ msgid "Report an issue"
 msgstr "Reportar um problema"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Habilitar o registro de um novo quiosque"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Quiosques ativos"
 
@@ -5588,10 +5548,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Campo onde o último Aconselhamento é armazenada, deve ser do tipo data"
 
 #: 
-msgid "People Setup"
-msgstr "Pessoas"
-
-#: 
 msgid "People Reports"
 msgstr "Relatórios de Pessoas"
 
@@ -5961,10 +5917,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Você está prestes a adicionar um novo depósito sem um comentário"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Famílias sem E-mails"
-
-#: 
 msgid "Record"
 msgstr "Registro"
 
@@ -5987,26 +5939,6 @@ msgstr "Foco"
 #: 
 msgid "Unfocus"
 msgstr "Desfocado"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Aviso: Incompatibilidade de Assinatura"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Alguns arquivos do sistema ChurchCRM podem ter sido modificados desde a última instalação."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Esta atualização irá destruir completamente quaisquer personalizações feitas nos seguintes arquivos, revertendo os arquivos para a versão oficial."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Se você deseja manter suas alterações nesses arquivos, faça um backup manual desses arquivos antes de continuar com essa atualização e, em seguida, restaure manualmente os arquivos após a conclusão da atualização."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detalhes da verificação de integridade:"
 
 #. Context: locales
 #: 
@@ -7028,18 +6960,6 @@ msgstr "CEP é obrigatório"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Uma nova senha foi gerada e enviada para seu endereço de e-mail."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Uma nova versão do ChurchCRM está disponível para instalação."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hash real"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Todas as verificações pré-atualização foram aprovadas. Você pode prosseguir com a atualização."
 
 #: 
 msgid "Allow Pre-release Upgrades"

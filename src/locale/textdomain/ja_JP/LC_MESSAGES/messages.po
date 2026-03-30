@@ -1517,14 +1517,6 @@ msgid "Confirm data labels"
 msgstr "データラベルの確認"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "すべての教会イベント一覧"
-
-#: 
-msgid "Start Date/Time"
-msgstr "開始日時"
-
-#: 
 msgid "Invalid login or password"
 msgstr "ログイン名またはパスワードが無効です"
 
@@ -2702,14 +2694,6 @@ msgid "Report Details"
 msgstr "レポート詳細"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "複数選択するには CTL を長押ししてください"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "複数のグループがある場合、グループ間で改ページされます<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "すべての役割を表示 (チェックなしは教師/生徒のみ)"
 
@@ -2850,24 +2834,12 @@ msgid "Edit Settings"
 msgstr "設定を編集"
 
 #: 
-msgid "Full Path:"
-msgstr "フルパス:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "バックアップが完了しました。ダウンロード可能です。"
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "バックアップがダウンロードされました。サーバー上のコピーは削除されました"
 
 #: 
 msgid "Functions"
 msgstr "機能"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSV にエクスポート"
 
 #: 
 msgid "Add"
@@ -2952,10 +2924,6 @@ msgstr "メモ"
 #: 
 msgid "Reports"
 msgstr "レポート"
-
-#: 
-msgid "File Name:"
-msgstr "ファイル名:"
 
 #: 
 msgid "family"
@@ -3172,10 +3140,6 @@ msgstr "教会レターヘッドパスとファイル"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks預金チケット設定"
-
-#: 
-msgid "List Church Events"
-msgstr "教会イベントを一覧表示"
 
 #: 
 msgid "Add Church Event"
@@ -5208,10 +5172,6 @@ msgid "Report an issue"
 msgstr "問題を報告"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "新しいキオスク登録を有効にします"
-
-#: 
 msgid "Active Kiosks"
 msgstr "アクティブなキオスク"
 
@@ -5587,10 +5547,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "最後の告解が保存されているフィールド、日付タイプである必要があります"
 
 #: 
-msgid "People Setup"
-msgstr "人物設定"
-
-#: 
 msgid "People Reports"
 msgstr "人物レポート"
 
@@ -5960,10 +5916,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "コメントなしで新しい入金を追加しようとしています"
 
 #: 
-msgid "Families Without Emails"
-msgstr "メールのない家族"
-
-#: 
 msgid "Record"
 msgstr "レコード"
 
@@ -5986,26 +5938,6 @@ msgstr "フォーカス"
 #: 
 msgid "Unfocus"
 msgstr "フォーカス解除"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "警告：署名の不一致"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "一部のChurchCRMシステムファイルが最後のインストール以降に変更された可能性があります。"
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "このアップグレードは、ファイルを公式バージョンに戻すことで、以下のファイルに加えられたカスタマイズを完全に破棄します。"
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "これらのファイルへの変更を維持したい場合は、このアップグレードを進める前にこれらのファイルの手動バックアップを取り、アップグレード完了後にファイルを手動で復元してください。"
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "整合性チェックの詳細："
 
 #. Context: locales
 #: 
@@ -7024,18 +6956,6 @@ msgstr "郵便番号は必須です"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "新しいパスワードが生成され、メールアドレスに送信されました。"
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "ChurchCRMの新しいバージョンがインストール可能です。"
-
-#: 
-msgid "Actual Hash"
-msgstr "実際のハッシュ"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "すべてのアップグレード前チェックに合格しました。アップグレードを続行できます。"
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1524,14 +1524,6 @@ msgid "Confirm data labels"
 msgstr "Vahvista tietotarrat"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Luettelo kirkon kaikista tapahtumista"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Alkamisaika"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Virheellinen käyttäjätunnus tai salasana"
 
@@ -2709,14 +2701,6 @@ msgid "Report Details"
 msgstr "Raportin tiedot"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Valitse useita pitämällä CTRL-näppäintä pohjassa"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Useiden ryhmien välillä on sivunvaihto<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Listaa kaikki roolit (jos valitsematta, listataan vain opettajat/oppilaat)"
 
@@ -2857,24 +2841,12 @@ msgid "Edit Settings"
 msgstr "Muokkaa asetuksia"
 
 #: 
-msgid "Full Path:"
-msgstr "Koko polku:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Varmuuskopio valmis, ladattavissa."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Varmuuskopio ladattu, kopio poistettu palvelimelta"
 
 #: 
 msgid "Functions"
 msgstr "Toiminnot"
-
-#: 
-msgid "Export to CSV"
-msgstr "Vie CSV-muotoon"
 
 #: 
 msgid "Add"
@@ -2959,10 +2931,6 @@ msgstr "Muistiinpanot"
 #: 
 msgid "Reports"
 msgstr "Raportit"
-
-#: 
-msgid "File Name:"
-msgstr "Tiedoston nimi:"
 
 #: 
 msgid "family"
@@ -3179,10 +3147,6 @@ msgstr "Kirkon kirjelomakkeen polku ja tiedosto"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks-talletusasetukset"
-
-#: 
-msgid "List Church Events"
-msgstr "Listaa kirkon tapahtumat"
 
 #: 
 msgid "Add Church Event"
@@ -5215,10 +5179,6 @@ msgid "Report an issue"
 msgstr "Ilmoita ongelmasta"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Salli uuden kioskin rekisteröinti"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktiiviset kioskit"
 
@@ -5594,10 +5554,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Kentän, johon viimeisin ripittäytyminen tallennetaan, on oltava päivämäärätyyppiä"
 
 #: 
-msgid "People Setup"
-msgstr "Henkilöasetukset"
-
-#: 
 msgid "People Reports"
 msgstr "Henkilöraportit"
 
@@ -5967,10 +5923,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Olet lisäämässä uutta talletusta ilman kommenttia"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Perheet ilman sähköpostia"
-
-#: 
 msgid "Record"
 msgstr "Tietue"
 
@@ -5993,26 +5945,6 @@ msgstr "Kohdista"
 #: 
 msgid "Unfocus"
 msgstr "Poista kohdistus"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Varoitus: Allekirjoitus ei täsmää"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Joitakin ChurchCRM-järjestelmätiedostoja on saattanut muuttua viimeisimmän asennuksen jälkeen."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Tämä päivitys kumoaa kaikki muutokset seuraaviin tiedostoihin palauttamalla ne virallisiin versioihin."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Jos haluat säilyttää muutokset, ota näistä tiedostoista varmuuskopio ennen päivitystä ja palauta ne manuaalisesti päivityksen jälkeen."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Eheystarkistuksen tiedot:"
 
 #. Context: locales
 #: 
@@ -7028,18 +6960,6 @@ msgstr "Postinumero on pakollinen"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Uusi salasana on luotu ja lähetetty sähköpostiisi."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Uusi ChurchCRM-versio on saatavilla asennettavaksi."
-
-#: 
-msgid "Actual Hash"
-msgstr "Todellinen tiiviste"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Kaikki päivitystä edeltävät tarkistukset on läpäisty. Voit jatkaa päivitystä."
 
 #: 
 msgid "Allow Pre-release Upgrades"

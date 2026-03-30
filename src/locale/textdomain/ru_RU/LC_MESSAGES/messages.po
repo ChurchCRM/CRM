@@ -1579,14 +1579,6 @@ msgid "Confirm data labels"
 msgstr "Подтвердите метки данных"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Листинг всех церковных событий"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Дата начала / Время"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Неверный Логин или пароль"
 
@@ -2804,14 +2796,6 @@ msgid "Report Details"
 msgstr "Детали отчета"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Чтобы выбрать несколько удерживайте CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "У нескольких групп будет разрыв страницы между группами <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Список всех категорий (при отключенном флажке будут отображаться только категории учителя / ученика)"
 
@@ -2957,24 +2941,12 @@ msgid "Edit Settings"
 msgstr "Изменить настройки"
 
 #: 
-msgid "Full Path:"
-msgstr "Полный путь:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Резервное копирование завершено, готово к загрузке."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Резервная копия загружена, копия на сервере удалена"
 
 #: 
 msgid "Functions"
 msgstr "Функции"
-
-#: 
-msgid "Export to CSV"
-msgstr "Экспорт в CSV"
 
 #: 
 msgid "Add"
@@ -3059,10 +3031,6 @@ msgstr "Заметки"
 #: 
 msgid "Reports"
 msgstr "Отчеты"
-
-#: 
-msgid "File Name:"
-msgstr "Имя файла"
 
 #: 
 msgid "family"
@@ -3282,10 +3250,6 @@ msgstr "Путь и файл бланка церкви"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Настройки депозитного билета QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Список церковных мероприятий"
 
 #: 
 msgid "Add Church Event"
@@ -5319,10 +5283,6 @@ msgid "Report an issue"
 msgstr "Сообщить о проблеме"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Включить регистрацию нового киоска"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Активные киоски"
 
@@ -5698,10 +5658,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Поле последней исповеди должно быть типа 'дата'"
 
 #: 
-msgid "People Setup"
-msgstr "Настройка людей"
-
-#: 
 msgid "People Reports"
 msgstr "Отчеты по людям"
 
@@ -6071,10 +6027,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Вы собираетесь добавить новый депозит без комментария"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Семьи без электронной почты"
-
-#: 
 msgid "Record"
 msgstr "Запись"
 
@@ -6097,27 +6049,6 @@ msgstr "В фокусе"
 #: 
 msgid "Unfocus"
 msgstr "Вне фокуса"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Предупреждение: несоответствие подписи"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Некоторые системные файлы ChurchCRM были изменены после последней установки."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Это обновление удалит любые изменения в следующих файлах, вернув их к официальной версии."
-
-#: 
-#, fuzzy
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Если вы хотите сохранить свои изменения в этих файлах, пожалуйста, сделайте ручную резервную копию этих файлов перед выполнением этого обновления, а затем вручную восстановите файлы после завершения обновления."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Детальная информация проверки целостности данных:"
 
 #. Context: locales
 #: 
@@ -7144,18 +7075,6 @@ msgstr "Почтовый индекс обязателен"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Новый пароль создан и отправлен на вашу почту."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Доступна новая версия ChurchCRM."
-
-#: 
-msgid "Actual Hash"
-msgstr "Фактический хеш"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Все предварительные проверки пройдены. Вы можете начать обновление."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1529,14 +1529,6 @@ msgid "Confirm data labels"
 msgstr "ยืนยันป้ายข้อมูล"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "รายการกิจกรรมคริสตจักรทั้งหมด"
-
-#: 
-msgid "Start Date/Time"
-msgstr "วันที่/เวลาเริ่มต้น"
-
-#: 
 msgid "Invalid login or password"
 msgstr "ชื่อเข้าสู่ระบบหรือรหัสผ่านไม่ถูกต้อง"
 
@@ -2714,14 +2706,6 @@ msgid "Report Details"
 msgstr "รายละเอียดรายงาน"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "เพื่อเลือกหลายรายการกด CTL ค้างไว้"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "กลุ่มหลายกลุ่มจะมีการขึ้นหน้าใหม่ระหว่างกลุ่ม<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "แสดงบทบาททั้งหมด (ไม่เลือกจะแสดงเฉพาะบทบาทครู/นักเรียน)"
 
@@ -2862,24 +2846,12 @@ msgid "Edit Settings"
 msgstr "แก้ไขการตั้งค่า"
 
 #: 
-msgid "Full Path:"
-msgstr "เส้นทางเต็ม:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "สำรองข้อมูลเสร็จสมบูรณ์ พร้อมดาวน์โหลด"
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "ดาวน์โหลดการสำรองข้อมูลแล้ว สำเนาบนเซิร์ฟเวอร์ถูกลบ"
 
 #: 
 msgid "Functions"
 msgstr "ฟังก์ชัน"
-
-#: 
-msgid "Export to CSV"
-msgstr "ส่งออกเป็น CSV"
 
 #: 
 msgid "Add"
@@ -2964,10 +2936,6 @@ msgstr "บันทึก"
 #: 
 msgid "Reports"
 msgstr "รายงาน"
-
-#: 
-msgid "File Name:"
-msgstr "ชื่อไฟล์:"
 
 #: 
 msgid "family"
@@ -3184,10 +3152,6 @@ msgstr "เส้นทางและไฟล์หัวจดหมายค
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "การตั้งค่าใบเสร็จการฝาก QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "รายการกิจกรรมคริสตจักร"
 
 #: 
 msgid "Add Church Event"
@@ -5220,10 +5184,6 @@ msgid "Report an issue"
 msgstr "รายงานปัญหา"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "เปิดใช้งานการลงทะเบียนคีออสก์ใหม่"
-
-#: 
 msgid "Active Kiosks"
 msgstr "คีออสก์ที่ใช้งาน"
 
@@ -5599,10 +5559,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "ฟิลด์ที่เก็บการสารภาพครั้งล่าสุด ต้องเป็นประเภทวันที่"
 
 #: 
-msgid "People Setup"
-msgstr "การตั้งค่าคน"
-
-#: 
 msgid "People Reports"
 msgstr "รายงานคน"
 
@@ -5972,10 +5928,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "คุณกำลังจะเพิ่มการฝากใหม่โดยไม่มีความคิดเห็น"
 
 #: 
-msgid "Families Without Emails"
-msgstr "ครอบครัวที่ไม่มีอีเมล"
-
-#: 
 msgid "Record"
 msgstr "ระเบียน"
 
@@ -5998,26 +5950,6 @@ msgstr "โฟกัส"
 #: 
 msgid "Unfocus"
 msgstr "ยกเลิกโฟกัส"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "คำเตือน: ลายเซ็นไม่ตรงกัน"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "ไฟล์ระบบ ChurchCRM บางไฟล์อาจถูกแก้ไขตั้งแต่การติดตั้งครั้งล่าสุด"
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "การอัปเกรดนี้จะทำลายการปรับแต่งใดๆ ที่ทำกับไฟล์ต่อไปนี้โดยสมบูรณ์โดยการย้อนกลับไฟล์เป็นเวอร์ชันอย่างเป็นทางการ"
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "หากคุณต้องการรักษาการเปลี่ยนแปลงของคุณในไฟล์เหล่านี้ กรุณาสำรองข้อมูลไฟล์เหล่านี้ด้วยตนเองก่อนดำเนินการอัปเกรดนี้ จากนั้นกู้คืนไฟล์ด้วยตนเองหลังจากอัปเกรดเสร็จสมบูรณ์"
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "รายละเอียดการตรวจสอบความสมบูรณ์:"
 
 #. Context: locales
 #: 
@@ -7036,18 +6968,6 @@ msgstr "ต้องมีรหัสไปรษณีย์"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "รหัสผ่านใหม่ถูกสร้างและส่งไปยังที่อยู่อีเมลของคุณ"
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "เวอร์ชันใหม่ของ ChurchCRM พร้อมสำหรับการติดตั้ง"
-
-#: 
-msgid "Actual Hash"
-msgstr "แฮชจริง"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "การตรวจสอบก่อนอัปเกรดทั้งหมดผ่าน คุณสามารถดำเนินการอัปเกรดต่อได้"
 
 #: 
 msgid "Allow Pre-release Upgrades"

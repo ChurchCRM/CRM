@@ -1539,14 +1539,6 @@ msgid "Confirm data labels"
 msgstr "تسميات البيانات تأكيد"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "قائمة أحداث الكنيسة"
-
-#: 
-msgid "Start Date/Time"
-msgstr "تاريخ/وقت البدء"
-
-#: 
 msgid "Invalid login or password"
 msgstr "معلومات الدخول خاطئة او كلمة المرور خاطئة"
 
@@ -2729,14 +2721,6 @@ msgid "Report Details"
 msgstr "تفاصيل التقارير"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "لتحديد عدة CTL عقد"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "سوف مجموعات متعددة لها فاصل صفحات بين المجموعات <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "قائمة بجميع الأدوار (دون رادع قائمة الإرادة أدوار المعلم / الطالب فقط)"
 
@@ -2877,24 +2861,12 @@ msgid "Edit Settings"
 msgstr "تعديل الإعدادات"
 
 #: 
-msgid "Full Path:"
-msgstr "مسار كامل:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "كامل النسخ الاحتياطي، جاهزة للتحميل."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "النسخ الاحتياطي تحميلا، نسخ الخادم إزالتها"
 
 #: 
 msgid "Functions"
 msgstr "المهام"
-
-#: 
-msgid "Export to CSV"
-msgstr "تصدير إلى CSV"
 
 #: 
 msgid "Add"
@@ -2979,10 +2951,6 @@ msgstr "ملاحظات"
 #: 
 msgid "Reports"
 msgstr "تقارير"
-
-#: 
-msgid "File Name:"
-msgstr "اسم الملف:"
 
 #: 
 msgid "family"
@@ -3203,10 +3171,6 @@ msgstr "مسار الكنيسة رأسية وملف"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "قراء إعدادات تذكرة الإيداع"
-
-#: 
-msgid "List Church Events"
-msgstr "قائمة الكنيسة الأحداث"
 
 #: 
 msgid "Add Church Event"
@@ -5245,10 +5209,6 @@ msgid "Report an issue"
 msgstr "بلغ عن خطأ"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "تمكين الجديد كشك التسجيل"
-
-#: 
 msgid "Active Kiosks"
 msgstr "أكشاك النشطة"
 
@@ -5622,10 +5582,6 @@ msgstr "الحقل حيث يتم سرد أب الإعتراف، يجب أن تك
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "الحقل حيث يتم تخزين اعتراف الماضي، يجب أن يكون نوع التاريخ"
-
-#: 
-msgid "People Setup"
-msgstr "إعداد الناس"
 
 #: 
 msgid "People Reports"
@@ -6002,10 +5958,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "أنت على وشك إضافة إيداع جديد بدون تعليق"
 
 #: 
-msgid "Families Without Emails"
-msgstr "عائلات بدون ايميل"
-
-#: 
 msgid "Record"
 msgstr "سجل"
 
@@ -6029,26 +5981,6 @@ msgstr "التركيز"
 #: 
 msgid "Unfocus"
 msgstr "لا تركز"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "تحذير: عدم تطابق التوقيع"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "قد تم تعديل بعض ملفات النظام ChurchCRM منذ التثبيت الأخير."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "وهذه الترقية تدمر تماما أي التخصيصات التي أجريت على الملفات التالية بالعودة الملفات إلى الرواية الرسمية."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "إذا كنت ترغب في الحفاظ على التغييرات على هذه الملفات، يرجى أخذ نسخة احتياطية اليدوي لهذه الملفات قبل الشروع في هذه الترقية، ومن ثم استعادة الملفات يدويا بعد اكتمال عملية الترقية."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "النزاهة تحقق الصفات:"
 
 #. Context: locales
 #: 
@@ -7072,18 +7004,6 @@ msgstr "الرمز البريدي مطلوب"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "تم إنشاء كلمة مرور جديدة وإرسالها إلى عنوان بريدك الإلكتروني."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "إصدار جديد من ChurchCRM متاح للتثبيت."
-
-#: 
-msgid "Actual Hash"
-msgstr "بصمة فعلية"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "اجتازت جميع فحوصات قبل الترقية. يمكنك المتابعة مع الترقية."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -144,10 +144,6 @@ msgid "Mobile"
 msgstr "Cell"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "To select multiple press Ctrl key"
-
-#: 
 msgid "Total $"
 msgstr "Total R"
 

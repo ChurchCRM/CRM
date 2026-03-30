@@ -1590,14 +1590,6 @@ msgid "Confirm data labels"
 msgstr "Bekräfta informations etikett"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Lista över alla evenamang"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Start datum/tid"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
 
@@ -2838,15 +2830,6 @@ msgid "Report Details"
 msgstr "Rapportera detaljer"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "För att välj många håll ner CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Flera grupper har en sidbrytning mellan grupper <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Lista alla roller (ej markerad kommer bara att lista lärare / studentroller)"
 
@@ -2992,24 +2975,12 @@ msgid "Edit Settings"
 msgstr "Ändra inställningar"
 
 #: 
-msgid "Full Path:"
-msgstr "Fullständig sökväg:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Säkerhetskopiering är klar, redo för nedladdning."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Säkerhetskopia nedladdat, kopiera på servern bort"
 
 #: 
 msgid "Functions"
 msgstr "Funktioner"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportera till CSV"
 
 #: 
 msgid "Add"
@@ -3094,10 +3065,6 @@ msgstr "Anteckningar"
 #: 
 msgid "Reports"
 msgstr "Rapporter"
-
-#: 
-msgid "File Name:"
-msgstr "Filnamn:"
 
 #: 
 msgid "family"
@@ -3318,10 +3285,6 @@ msgstr "Kyrkans brevpappersväg och fil"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Sätt in biljettinställningar"
-
-#: 
-msgid "List Church Events"
-msgstr "Lista kyrkans evenemang"
 
 #: 
 msgid "Add Church Event"
@@ -5360,10 +5323,6 @@ msgid "Report an issue"
 msgstr "Rapportera ett problem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Aktivera ny kioskregistrering"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktiva kiosker"
 
@@ -5737,10 +5696,6 @@ msgstr "Fält där Confession Father är listat, måste vara en person av gruppt
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Fältet där den senaste konfessionen lagras, måste vara en datumtyp"
-
-#: 
-msgid "People Setup"
-msgstr "Personinställningar"
 
 #: 
 msgid "People Reports"
@@ -6117,10 +6072,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Du håller på att lägga till en ny insättning utan kommentar"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familjer utan e-post"
-
-#: 
 msgid "Record"
 msgstr "Spela in"
 
@@ -6144,26 +6095,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Unfocus"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Varning: Missanpassning av signatur"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Vissa ChurchCRM-systemfiler kan ha ändrats sedan den senaste installationen."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Denna uppgradering förstör alla anpassningar som görs till följande filer genom att återställa filerna till den officiella versionen."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Om du vill behålla dina ändringar av dessa filer, ta en manuell säkerhetskopia av dessa filer innan du fortsätter med den här uppgraderingen och återställ sedan filerna manuellt när uppgraderingen är klar."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detaljer för integritetskontroll:"
 
 #. Context: locales
 #: 
@@ -7186,18 +7117,6 @@ msgstr "Postnummer krävs"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Ett nytt lösenord har genererats och skickats till din e-postadress."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "En ny version av ChurchCRM är tillgänglig för installation."
-
-#: 
-msgid "Actual Hash"
-msgstr "Faktisk hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Alla kontroller före uppgradering har godkänts. Du kan fortsätta med uppgraderingen."
 
 #: 
 msgid "Allow Pre-release Upgrades"
