@@ -111,7 +111,7 @@ jobs:
           !src/logs
         retention-days: 1
 
-  test-root:
+  test-root-api:
     needs: build
     timeout-minutes: 30
     permissions:
@@ -162,24 +162,22 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (root path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-[hash].xml
+    - name: Run Cypress API tests (root path)
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-api-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-root.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-root.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-root-api.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-root-api.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-root-${{ github.run_id }}
+        name: cypress-artifacts-root-api-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -191,8 +189,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: Root Path'
-        path: cypress/reports/junit-root-*.xml
+        name: 'Cypress: Root Path (API)'
+        path: cypress/reports/junit-root-api-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -205,7 +203,99 @@ jobs:
       if: always()
       run: npm run docker:ci:root:down
 
-  test-subdir:
+  test-root-ui:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: docker load < temp/docker-image.tar.gz
+
+    - name: Start Docker (root path)
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+    - name: Wait for server (root path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress UI tests (root path)
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-ui-[hash].xml
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-root-ui.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-root-ui.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-root-ui-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: Root Path (UI)'
+        path: cypress/reports/junit-root-ui-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:root:down
+
+  test-subdir-api:
     needs: build
     timeout-minutes: 30
     permissions:
@@ -256,10 +346,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (subdirectory path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-[hash].xml
+    - name: Run Cypress API tests (subdirectory path)
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/api/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-api-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -267,15 +355,15 @@ jobs:
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-subdir-api.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-subdir-api.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-subdir-${{ github.run_id }}
+        name: cypress-artifacts-subdir-api-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -287,8 +375,102 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: Subdirectory'
-        path: cypress/reports/junit-subdir-*.xml
+        name: 'Cypress: Subdirectory (API)'
+        path: cypress/reports/junit-subdir-api-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:subdir:down
+
+  test-subdir-ui:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: docker load < temp/docker-image.tar.gz
+
+    - name: Start Docker (subdirectory path)
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
+
+    - name: Wait for server (subdirectory path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress UI tests (subdirectory path)
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-ui-[hash].xml
+      env:
+        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-subdir-ui.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-subdir-ui.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-subdir-ui-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'Cypress: Subdirectory (UI)'
+        path: cypress/reports/junit-subdir-ui-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -359,7 +541,7 @@ jobs:
     - name: Run Cypress tests (setup wizard)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
@@ -457,7 +639,7 @@ jobs:
     - name: Run Cypress tests (setup wizard subdirectory)
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
 
@@ -500,7 +682,7 @@ jobs:
       run: npm run docker:ci:new-system:subdir:down
 
   package:
-    needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
+    needs: [test-root-api, test-root-ui, test-subdir-api, test-subdir-ui, test-new-system, test-new-system-subdir]
     timeout-minutes: 15
     permissions:
       contents: read
@@ -562,8 +744,10 @@ jobs:
         echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Tests:**" >> $GITHUB_STEP_SUMMARY
-        echo "- Root path installation" >> $GITHUB_STEP_SUMMARY
-        echo "- Subdirectory installation" >> $GITHUB_STEP_SUMMARY
+        echo "- Root path API tests" >> $GITHUB_STEP_SUMMARY
+        echo "- Root path UI tests" >> $GITHUB_STEP_SUMMARY
+        echo "- Subdirectory API tests" >> $GITHUB_STEP_SUMMARY
+        echo "- Subdirectory UI tests" >> $GITHUB_STEP_SUMMARY
         echo "- New system setup wizard (root)" >> $GITHUB_STEP_SUMMARY
         echo "- New system setup wizard (subdirectory)" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
