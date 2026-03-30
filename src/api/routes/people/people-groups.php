@@ -354,10 +354,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Parameter(name="userID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\RequestBody(required=true,
+     *     @OA\RequestBody(required=false,
      *         @OA\JsonContent(
-     *             required={"PersonID"},
-     *             @OA\Property(property="PersonID", type="integer"),
      *             @OA\Property(property="RoleID", type="integer", description="Defaults to group default role if omitted")
      *         )
      *     ),
@@ -369,7 +367,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $groupID = $args['groupID'];
         $userID = $args['userID'];
         $person = $request->getAttribute('person');
-        $input = $request->getParsedBody();
+        $input = $request->getParsedBody() ?? [];
         $group = $request->getAttribute('group');
 
         $roleID = $input['RoleID'] ?? $group->getDefaultRole();
@@ -385,7 +383,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $note->save();
         $members = Person2group2roleP2g2rQuery::create()
             ->joinWithPerson()
-            ->filterByPersonId($input['PersonID'])
+            ->filterByPersonId((int) $userID)
             ->findByGroupId($groupID);
         return SlimUtils::renderJSON($response, $members->toArray());
     })->add(new PersonMiddleware('userID'))->add(GroupMiddleware::class);
