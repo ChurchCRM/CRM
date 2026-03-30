@@ -43,11 +43,6 @@ if (isset($_SESSION['sGlobalMessage'])) {
     unset($_SESSION['sGlobalMessage']);
     unset($_SESSION['sGlobalMessageClass']);
 }
-// Handle query parameter messages (for same-page operations, legacy pattern)
-elseif (isset($_GET['Registered'])) {
-    $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
-    $sGlobalMessageClass = 'success';
-}
 
 if (isset($_GET['PDFEmailed'])) {
     if ($_GET['PDFEmailed'] == 1) {
@@ -77,20 +72,7 @@ if (isset($_GET['RemoveGroupFromPeopleCart'])) {
     $sGlobalMessageClass = 'success';
 }
 
-if (isset($_GET['ProfileImageDeleted'])) {
-    $sGlobalMessage = gettext('Profile Image successfully removed.');
-    $sGlobalMessageClass = 'success';
-}
 
-if (isset($_GET['ProfileImageUploaded'])) {
-    $sGlobalMessage = gettext('Profile Image successfully updated.');
-    $sGlobalMessageClass = 'success';
-}
-
-if (isset($_GET['ProfileImageUploadedError'])) {
-    $sGlobalMessage = gettext('Profile Image upload Error.');
-    $sGlobalMessageClass = 'danger';
-}
 
 // Are they removing a person from the Cart?
 // Note: RemoveFromPeopleCart is legacy - cart now managed through API routes
