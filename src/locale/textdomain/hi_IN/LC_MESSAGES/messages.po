@@ -1520,14 +1520,6 @@ msgid "Confirm data labels"
 msgstr "डेटा लेबल की पुष्टि करें"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "सभी चर्च इवेंट्स की सूची"
-
-#: 
-msgid "Start Date/Time"
-msgstr "प्रारंभ तिथि/समय"
-
-#: 
 msgid "Invalid login or password"
 msgstr "अमान्य लॉगिन या पासवर्ड"
 
@@ -2705,14 +2697,6 @@ msgid "Report Details"
 msgstr "रिपोर्ट विवरण"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "एकाधिक चयन करने के लिए CTL दबाकर रखें"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "एकाधिक समूहों के बीच पेज ब्रेक होगा<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "सभी भूमिकाओं को सूचीबद्ध करें (अनचेक करने पर केवल शिक्षक/छात्र भूमिकाएं सूचीबद्ध होंगी)"
 
@@ -2853,24 +2837,12 @@ msgid "Edit Settings"
 msgstr "सेटिंग्स संपादित करें"
 
 #: 
-msgid "Full Path:"
-msgstr "पूर्ण पथ:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "बैकअप पूरा हुआ, डाउनलोड के लिए तैयार है।"
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "बैकअप डाउनलोड किया गया, सर्वर पर मौजूद प्रतिलिपि हटा दी गई"
 
 #: 
 msgid "Functions"
 msgstr "फ़ंक्शन"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSV में निर्यात करें"
 
 #: 
 msgid "Add"
@@ -2955,10 +2927,6 @@ msgstr "नोट्स"
 #: 
 msgid "Reports"
 msgstr "रिपोर्ट"
-
-#: 
-msgid "File Name:"
-msgstr "फ़ाइल का नाम:"
 
 #: 
 msgid "family"
@@ -3175,10 +3143,6 @@ msgstr "चर्च लेटरहेड पथ और फ़ाइल"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks जमा टिकट सेटिंग"
-
-#: 
-msgid "List Church Events"
-msgstr "चर्च कार्यक्रमों की सूची"
 
 #: 
 msgid "Add Church Event"
@@ -5211,10 +5175,6 @@ msgid "Report an issue"
 msgstr "समस्या की रिपोर्ट करें"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "नया कियोस्क पंजीकरण सक्षम करें"
-
-#: 
 msgid "Active Kiosks"
 msgstr "सक्रिय कियोस्क"
 
@@ -5590,10 +5550,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "वह क्षेत्र जहाँ अंतिम स्वीकारोक्ति संग्रहीत है, तिथि प्रकार का होना चाहिए"
 
 #: 
-msgid "People Setup"
-msgstr "लोग सेटअप"
-
-#: 
 msgid "People Reports"
 msgstr "लोग रिपोर्ट"
 
@@ -5963,10 +5919,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "आप बिना किसी टिप्पणी के नई जमा राशि जोड़ने वाले हैं"
 
 #: 
-msgid "Families Without Emails"
-msgstr "बिना ईमेल वाले परिवार"
-
-#: 
 msgid "Record"
 msgstr "रिकॉर्ड"
 
@@ -5989,26 +5941,6 @@ msgstr "फोकस"
 #: 
 msgid "Unfocus"
 msgstr "अनफोकस"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "चेतावनी: हस्ताक्षर बेमेल"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "पिछली स्थापना के बाद से कुछ ChurchCRM सिस्टम फ़ाइलें संशोधित की गई हो सकती हैं।"
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "यह अपग्रेड आधिकारिक संस्करण पर वापस जाकर सभी कस्टम सुधारों को हटा देगा।"
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "यदि आप बदलाव बनाए रखना चाहते हैं, तो कृपया बैकअप लें।"
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "अखंडता जांच विवरण:"
 
 #. Context: locales
 #: 
@@ -7025,18 +6957,6 @@ msgstr "ज़िप कोड आवश्यक है"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "एक नया पासवर्ड तैयार किया गया है और आपके ईमेल पते पर भेज दिया गया है।"
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "ChurchCRM का एक नया संस्करण स्थापना के लिए उपलब्ध है।"
-
-#: 
-msgid "Actual Hash"
-msgstr "वास्तविक हैश"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "सभी प्री-अपग्रेड जांचें सफल रहीं। आप अपग्रेड के साथ आगे बढ़ सकते हैं।"
 
 #: 
 msgid "Allow Pre-release Upgrades"

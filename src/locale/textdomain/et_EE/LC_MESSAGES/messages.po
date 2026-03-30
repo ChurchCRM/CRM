@@ -1539,14 +1539,6 @@ msgid "Confirm data labels"
 msgstr "Kinnitage andmesildid"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Kõik koguduse sündmuste nimekiri"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Alguskuupäev / kellaaeg"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Vale nimi või parool"
 
@@ -2729,14 +2721,6 @@ msgid "Report Details"
 msgstr "Aruande üksikasjad"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Mitme ootel CTL valimiseks"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Mitmel rühmal on rühmadevaheline leheküljepaus <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Loetle kõik rollid (märkimata loend sisaldab ainult õpetaja / õpilase rolle)"
 
@@ -2877,24 +2861,12 @@ msgid "Edit Settings"
 msgstr "Redigeeri seadeid"
 
 #: 
-msgid "Full Path:"
-msgstr "Täielik tee:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Varundatud, allalaadimiseks valmis."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Varundus alla laaditud, koopia serverist eemaldatud"
 
 #: 
 msgid "Functions"
 msgstr "Funktsioonid"
-
-#: 
-msgid "Export to CSV"
-msgstr "Ekspordi CSV-sse"
 
 #: 
 msgid "Add"
@@ -2979,10 +2951,6 @@ msgstr "Märkused"
 #: 
 msgid "Reports"
 msgstr "Aruanded"
-
-#: 
-msgid "File Name:"
-msgstr "File Name:"
 
 #: 
 msgid "family"
@@ -3202,10 +3170,6 @@ msgstr "Koguduse peagablanketti asukoha rada ja fail"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooksi sissemakse kviitungi seaded"
-
-#: 
-msgid "List Church Events"
-msgstr "Koguduse sündmuste nimekiri"
 
 #: 
 msgid "Add Church Event"
@@ -5244,10 +5208,6 @@ msgid "Report an issue"
 msgstr "Teatage probleemist"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Lubage uue tööharu registreerimine"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktiivsed tööharud"
 
@@ -5621,10 +5581,6 @@ msgstr "Väli, kus on loetletud pastorid, peab olema rühma tüüpi inimesed"
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Viimane tunnistus salvestatud väli peab olema kuupäeva tüüp"
-
-#: 
-msgid "People Setup"
-msgstr "Inimeste seadistamine"
 
 #: 
 msgid "People Reports"
@@ -6001,10 +5957,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Kavatsete lisada uue sissemakse ilma kommentaarita"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Ilma e-kirjadeta pered"
-
-#: 
 msgid "Record"
 msgstr "Kirje"
 
@@ -6028,26 +5980,6 @@ msgstr "Fookus"
 #: 
 msgid "Unfocus"
 msgstr "Keskendumata"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Hoiatus: allkirjade sobimatus"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Mõnda ChurchCRM-i süsteemi faili võidi pärast viimast installimist muuta."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "See versiooniuuendus hävitab täielikult kõigi järgmiste failide kohandamised, taastades need ametlikule versioonile."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Kui soovite säilitada nende failide muudatused, võtke enne nende versiooniuuendustega jätkamist nendest failidest käsitsi varukoopia ja taastage failid käsitsi pärast täiendamise lõppu käsitsi."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Terviklikkuse kontrollimise üksikasjad:"
 
 #. Context: locales
 #: 
@@ -7070,18 +7002,6 @@ msgstr "Postiindeks on nõutav"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Uus parool on loodud ja saadetud teie e-posti aadressile."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "ChurchCRM-i uus versioon on paigaldamiseks saadaval."
-
-#: 
-msgid "Actual Hash"
-msgstr "Tegelik räsi"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Kõik enne täiendamist kontrollid on sooritatud. Te võite jätkata täiendamisega."
 
 #: 
 msgid "Allow Pre-release Upgrades"

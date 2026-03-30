@@ -1551,14 +1551,6 @@ msgid "Confirm data labels"
 msgstr "Xác nhận nhãn dữ liệu"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Danh sách tất cả các sự kiện Hội Thánh"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Thời gian/ngày bắt đầu"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Đăng nhập hoặc mật khẩu không hợp lệ"
 
@@ -2741,14 +2733,6 @@ msgid "Report Details"
 msgstr "Báo cáo chi tiết"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Để chọn nhiều CTL giữ"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Nhiều nhóm sẽ có Ngắt trang giữa các Nhóm <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Liệt kê tất cả các vai trò (bỏ chọn sẽ chỉ liệt kê các vai trò của Giáo viên / Học sinh)"
 
@@ -2889,24 +2873,12 @@ msgid "Edit Settings"
 msgstr "Chỉnh sửa cài đặt"
 
 #: 
-msgid "Full Path:"
-msgstr "Đường dẫn đầy đủ:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Tập tin sao lưu đã thành công, nhấn vào để tải ngay."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Tập tin sao lưu đã được tải, bản sao lưu trên máy chủ đã được xóa đi"
 
 #: 
 msgid "Functions"
 msgstr "Các tính năng"
-
-#: 
-msgid "Export to CSV"
-msgstr "Xuất ra CSV"
 
 #: 
 msgid "Add"
@@ -2991,10 +2963,6 @@ msgstr "Ghi chú"
 #: 
 msgid "Reports"
 msgstr "Báo cáo"
-
-#: 
-msgid "File Name:"
-msgstr "Tên tệp:"
 
 #: 
 msgid "family"
@@ -3215,10 +3183,6 @@ msgstr "Đường dẫn và tệp của Giấy tiêu đề Nhà thờ"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Cài đặt vé gửi tiền QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Danh sách sự kiện"
 
 #: 
 msgid "Add Church Event"
@@ -5257,10 +5221,6 @@ msgid "Report an issue"
 msgstr "Báo cáo một vấn đề"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Bật đăng ký kiosk mới"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Kiosk đang hoạt động"
 
@@ -5634,10 +5594,6 @@ msgstr "Lĩnh vực nơi Father Of Confession được liệt kê, phải là nh
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Trường nơi lưu trữ Lời thú tội cuối cùng, phải là một loại ngày tháng"
-
-#: 
-msgid "People Setup"
-msgstr "Nhân khẩu"
 
 #: 
 msgid "People Reports"
@@ -6014,10 +5970,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Bạn sắp thêm khoản tiền gửi mới mà không có bình luận"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Gia đình không có email"
-
-#: 
 msgid "Record"
 msgstr "Ghi lại"
 
@@ -6041,26 +5993,6 @@ msgstr "Tiêu điểm"
 #: 
 msgid "Unfocus"
 msgstr "Không tập trung"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Cảnh báo: Chữ ký không khớp"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Một số tệp hệ thống ChurchCRM có thể đã được sửa đổi kể từ lần cài đặt cuối cùng."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Nâng cấp này sẽ phá hủy hoàn toàn bất kỳ tùy chỉnh nào được thực hiện đối với các tệp sau đây bằng cách hoàn nguyên các tệp về phiên bản chính thức."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Nếu bạn muốn duy trì các thay đổi của mình đối với các tệp này, vui lòng sao lưu thủ công các tệp này trước khi tiếp tục nâng cấp này và sau đó khôi phục tệp theo cách thủ công sau khi nâng cấp xong."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Chi tiết Kiểm tra Tính toàn vẹn:"
 
 #. Context: locales
 #: 
@@ -7074,18 +7006,6 @@ msgstr "Yêu cầu mã bưu điện"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Mật khẩu mới đã được tạo và gửi vào email của bạn."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Một phiên bản ChurchCRM mới đã sẵn sàng để cài đặt."
-
-#: 
-msgid "Actual Hash"
-msgstr "Mã Hash thực tế"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Tất cả các kiểm tra trước nâng cấp đã hoàn tất. Bạn có thể tiến hành nâng cấp."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr "אשר תוויות נתונים"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "הצגת כל אירועי המוסד"
-
-#: 
-msgid "Start Date/Time"
-msgstr "תאריך/שעת התחלה"
-
-#: 
 msgid "Invalid login or password"
 msgstr "שם משתמש או סיסמה לא תקינים"
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "פרטי הדוח"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "להחזיק CTL כדי לבחור מספר פריטים"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "קבוצות מרובות יהיו עם מעבר עמוד בין הקבוצות<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "הצג את כל התפקידים (לא מסומן יציג רק תפקידי מורה/תלמיד)"
 
@@ -2875,24 +2859,12 @@ msgid "Edit Settings"
 msgstr "ערוך הגדרות"
 
 #: 
-msgid "Full Path:"
-msgstr "נתיב מלא:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "הגיבוי הושלם, ומוכן להורדה."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "הגיבוי הורד, העותק בשרת הוסר"
 
 #: 
 msgid "Functions"
 msgstr "פונקציות"
-
-#: 
-msgid "Export to CSV"
-msgstr "ייצא ל-CSV"
 
 #: 
 msgid "Add"
@@ -2977,10 +2949,6 @@ msgstr "הערות"
 #: 
 msgid "Reports"
 msgstr "דוחות"
-
-#: 
-msgid "File Name:"
-msgstr "שם הקובץ:"
 
 #: 
 msgid "family"
@@ -3199,10 +3167,6 @@ msgstr "נתיב וקובץ נייר מכתבים של המוסד"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "הגדרות שובר הפקדה של QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "רשימת אירועי המוסד"
 
 #: 
 msgid "Add Church Event"
@@ -5243,10 +5207,6 @@ msgid "Report an issue"
 msgstr "דווח על בעיה"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "הפעל רישום קיוסק חדש"
-
-#: 
 msgid "Active Kiosks"
 msgstr "קיוסקים פעילים"
 
@@ -5622,10 +5582,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "שדה בו נשמר הווידוי האחרון, חייב להיות מסוג תאריך"
 
 #: 
-msgid "People Setup"
-msgstr "הגדרת אנשים"
-
-#: 
 msgid "People Reports"
 msgstr "דוחות של אנשים"
 
@@ -5999,10 +5955,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "אתה עומד להוסיף הפקדה חדשה ללא הערה"
 
 #: 
-msgid "Families Without Emails"
-msgstr "משפחות ללא אימיילים"
-
-#: 
 msgid "Record"
 msgstr "רשומה"
 
@@ -6025,26 +5977,6 @@ msgstr "מיקוד"
 #: 
 msgid "Unfocus"
 msgstr "בטל מיקוד"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "אזהרה: החתימה אינה תואמת "
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "ייתכן שחלק מקבצי המערכת של ChurchCRM שונו מאז ההתקנה האחרונה."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "שדרוג זה ימחק לחלוטין כל התאמה אישית שנעשתה לקבצים הבאים על ידי החזרתם לגרסה הרשמית."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "אם ברצונך לשמור על השינויים שביצעת בקבצים אלה, אנא בצע גיבוי ידני של קבצים אלה לפני שתמשיך בשדרוג, ולאחר מכן שחזר את הקבצים באופן ידני לאחר השלמת השדרוג."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "פרטי בדיקת תקינות:"
 
 #. Context: locales
 #: 
@@ -7066,18 +6998,6 @@ msgstr "מיקוד הוא שדה חובה"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "סיסמה חדשה נוצרה ונשלחה לכתובת האימייל שלך."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "גרסה חדשה של ChurchCRM זמינה להתקנה."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hash בפועל"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "כל הבדיקות המקדימות עברו. ניתן להמשיך בשדרוג."
 
 #: 
 msgid "Allow Pre-release Upgrades"

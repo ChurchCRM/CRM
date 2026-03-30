@@ -1539,14 +1539,6 @@ msgid "Confirm data labels"
 msgstr "Konfirmo etiketat të dhënave"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Listing të gjitha ngjarjet e Kishës"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Filloni Data / Koha"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Login pavlefshme ose regjistrohu"
 
@@ -2732,14 +2724,6 @@ msgid "Report Details"
 msgstr "Detajet e raportit"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Për të zgjedhur disa, mbani shtypur tastin CTRL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Grupe të shumta do të kenë një ndërprerje faqeje midis grupeve<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Listoni të gjitha rolet (nëse nuk zgjidhet, do të listohen vetëm rolet Mësues/Nxënës)"
 
@@ -2880,24 +2864,12 @@ msgid "Edit Settings"
 msgstr "Ndrysho cilësimet"
 
 #: 
-msgid "Full Path:"
-msgstr "Rruga e plotë:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Rezervimi përfundoi, gati për shkarkim."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Rezervimi u shkarkua, kopja në server u hoq"
 
 #: 
 msgid "Functions"
 msgstr "Funksionet"
-
-#: 
-msgid "Export to CSV"
-msgstr "Eksporto në CSV"
 
 #: 
 msgid "Add"
@@ -2982,10 +2954,6 @@ msgstr "Shënime"
 #: 
 msgid "Reports"
 msgstr "Raportet"
-
-#: 
-msgid "File Name:"
-msgstr "Emri i skedarit:"
 
 #: 
 msgid "family"
@@ -3202,10 +3170,6 @@ msgstr "Rruga dhe skedari i kokës së letrës së kishës"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Cilësimet e biletës së depozitës QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Listo ngjarjet e kishës"
 
 #: 
 msgid "Add Church Event"
@@ -5238,10 +5202,6 @@ msgid "Report an issue"
 msgstr "Raportoni një problem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Aktivizo regjistrimin e kioskut të ri"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Kiosqe aktive"
 
@@ -5617,10 +5577,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Fusha ku ruhet rrëfimi i fundit, duhet të jetë lloj date"
 
 #: 
-msgid "People Setup"
-msgstr "Konfigurimi i personave"
-
-#: 
 msgid "People Reports"
 msgstr "Raportet e personave"
 
@@ -5990,10 +5946,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Po shtoni një depozitë të re pa koment"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familjet pa email"
-
-#: 
 msgid "Record"
 msgstr "Regjistrim"
 
@@ -6016,26 +5968,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Hiq fokusin"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Paralajmërim: Mospërputhje e nënshkrimit"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Disa skedarë të sistemit ChurchCRM mund të jenë modifikuar që nga instalimi i fundit."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Ky përditësim do të shkatërrojë plotësisht çdo personalizim të bërë në skedarët e mëposhtëm duke i kthyer ato në versionin zyrtar."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Nëse dëshironi të ruani ndryshimet tuaja, ju lutemi bëni një kopje rezervë manuale të këtyre skedarëve përpara se të vazhdoni, dhe më pas rivendosini ato manualisht pasi të përfundojë përditësimi."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detajet e Kontrollit të Integritetit:"
 
 #. Context: locales
 #: 
@@ -7056,18 +6988,6 @@ msgstr "Kërkohet kodi postar"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Një fjalëkalim i ri është gjeneruar dhe dërguar në adresën tuaj të email-it."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Një version i ri i ChurchCRM është i disponueshëm për instalim."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hash-i aktual"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Të gjitha kontrollet para-përmirësimit kanë kaluar. Mund të vazhdoni me përmirësimin."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1539,14 +1539,6 @@ msgid "Confirm data labels"
 msgstr "Bevestig data-etikette"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Lys alle kerkgebeurtenisse"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Begin datum / tyd"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ongeldige aanmelding of wagwoord"
 
@@ -2729,14 +2721,6 @@ msgid "Report Details"
 msgstr "Verslagbesonderhede"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Om CTL vir veelvuldige hou te kies"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Veelvuldige groepe sal 'n bladsybreek hê tussen groepe <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Lys alle rolle (nie gemerk nie, sal slegs onderwyser- / studentrolle bevat)"
 
@@ -2877,24 +2861,12 @@ msgid "Edit Settings"
 msgstr "Wysig instellings"
 
 #: 
-msgid "Full Path:"
-msgstr "Volle pad:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Rugsteun voltooi, gereed vir aflaai."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Rugsteun afgelaai, kopie op bediener verwyder"
 
 #: 
 msgid "Functions"
 msgstr "Funksies"
-
-#: 
-msgid "Export to CSV"
-msgstr "Voer uit na CSV"
 
 #: 
 msgid "Add"
@@ -2979,10 +2951,6 @@ msgstr "Aantekeninge"
 #: 
 msgid "Reports"
 msgstr "Verslae"
-
-#: 
-msgid "File Name:"
-msgstr "Lêernaam:"
 
 #: 
 msgid "family"
@@ -3203,10 +3171,6 @@ msgstr "Kerklike briefhoof pad en lêer"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks-deposito-kaartjie-instellings"
-
-#: 
-msgid "List Church Events"
-msgstr "Lys kerkgebeurtenisse"
 
 #: 
 msgid "Add Church Event"
@@ -5245,10 +5209,6 @@ msgid "Report an issue"
 msgstr "Rapporteer 'n probleem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Skakel nuwe kioskregistrasie in"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktiewe kiosks"
 
@@ -5622,10 +5582,6 @@ msgstr "Gebied waar Vader van Belydenis gelys word, moet 'n volk van groepsgroep
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Veld waarop die laaste belydenis gestoor is, moet 'n datumsoort wees"
-
-#: 
-msgid "People Setup"
-msgstr "Mense opstel"
 
 #: 
 msgid "People Reports"
@@ -6002,10 +5958,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "U is op die punt om 'n nuwe deposito by te voeg sonder om kommentaar te lewer"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Gesinne sonder e-pos"
-
-#: 
 msgid "Record"
 msgstr "Neem op"
 
@@ -6029,26 +5981,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Onfokus"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Waarskuwing: Handtekening kom nie ooreen nie"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Sommige ChurchCRM-stelsellêers is moontlik sedert die laaste installasie gewysig."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Hierdie opgradering sal alle aanpassings wat in die volgende lêers gemaak is, vernietig deur die lêers na die amptelike weergawe terug te sit."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "As u u wysigings aan hierdie lêers wil handhaaf, moet u hierdie lêers handmatig rugsteun voordat u verder gaan met die opgradering en die lêers dan handmatig herstel nadat die opgradering voltooi is."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Inligting oor integriteitstoets:"
 
 #. Context: locales
 #: 
@@ -7072,18 +7004,6 @@ msgstr "Poskode is nodig"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "'n Nuwe wagwoord is gegenereer en na u e-posadres gestuur."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "'n Nuwe weergawe van ChurchCRM is beskikbaar vir installasie."
-
-#: 
-msgid "Actual Hash"
-msgstr "Werklike Hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Al die voorafgaande kontroles is geslaag. U mag voortgaan met die opgradering."
 
 #: 
 msgid "Allow Pre-release Upgrades"

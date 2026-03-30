@@ -1539,14 +1539,6 @@ msgid "Confirm data labels"
 msgstr "Veri etiketlerini onaylayın"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Tüm kilise etkinliklerini listeleme"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Başlangıç ​​tarihi/saati"
-
-#: 
 msgid "Invalid login or password"
 msgstr "geçersiz giriş yada şifre"
 
@@ -2729,14 +2721,6 @@ msgid "Report Details"
 msgstr "Rapor Ayrıntıları"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Çoklu Bekleme CTL seçmek için"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Birden fazla grubun gruplar arasında bir sayfa kırılması olacak <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Tüm rolleri listeleyin (kontrolsüz sadece öğretmen/öğrenci rollerini listeleyecektir)"
 
@@ -2877,24 +2861,12 @@ msgid "Edit Settings"
 msgstr "Ayarları Düzenle"
 
 #: 
-msgid "Full Path:"
-msgstr "Tam yol:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Yedekleme tamamlandı, indirmeye hazır."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Yedekleme indirildi, sunucuda kopyalama kaldırıldı"
 
 #: 
 msgid "Functions"
 msgstr "İşlevler"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSV'ye dışa aktarma"
 
 #: 
 msgid "Add"
@@ -2979,10 +2951,6 @@ msgstr "Notalar"
 #: 
 msgid "Reports"
 msgstr "Raporlar"
-
-#: 
-msgid "File Name:"
-msgstr "Dosya adı:"
 
 #: 
 msgid "family"
@@ -3203,10 +3171,6 @@ msgstr "Kilise antetli yolu ve dosya"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Depozitet Bilet Ayarları"
-
-#: 
-msgid "List Church Events"
-msgstr "Kilise etkinliklerini listeleyin"
 
 #: 
 msgid "Add Church Event"
@@ -5245,10 +5209,6 @@ msgid "Report an issue"
 msgstr "Bir Sorun Bildirin"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Yeni kiosk kaydını etkinleştirin"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktif kiosklar"
 
@@ -5622,10 +5582,6 @@ msgstr "İtiraf babasının listelendiği alan, grup tipi bir insan olmalı"
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Son itirafın depolandığı alan, tarih türü olmalıdır"
-
-#: 
-msgid "People Setup"
-msgstr "İnsan Kurulumu"
 
 #: 
 msgid "People Reports"
@@ -6002,10 +5958,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Yorum yapmadan yeni bir depozito eklemek üzeresiniz"
 
 #: 
-msgid "Families Without Emails"
-msgstr "E -posta olmadan aileler"
-
-#: 
 msgid "Record"
 msgstr "Kayıt"
 
@@ -6029,26 +5981,6 @@ msgstr "Odak"
 #: 
 msgid "Unfocus"
 msgstr "Üslup"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Uyarı: İmza Uyumsuzluğu"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Bazı ChurchCRM sistem dosyaları son kurulumdan bu yana değiştirilmiş olabilir."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Bu yükseltme, dosyaları resmi sürüme döndürerek aşağıdaki dosyalara yapılan özelleştirmeleri tamamen yok edecektir."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Bu dosyalardaki değişikliklerinizi korumak istiyorsanız, lütfen bu yükseltmeye devam etmeden önce bu dosyaların manuel yedeğini alın ve yükseltme tamamlandıktan sonra dosyaları manuel olarak geri yükleyin."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Dürüstlük Kontrol Detayları:"
 
 #. Context: locales
 #: 
@@ -7071,18 +7003,6 @@ msgstr "Posta kodu gereklidir"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Yeni bir şifre oluşturuldu ve e-posta adresinize gönderildi."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Yükleme için ChurchCRM'in yeni bir sürümü mevcut."
-
-#: 
-msgid "Actual Hash"
-msgstr "Gerçek Karma (Hash)"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Tüm yükseltme öncesi kontroller başarıyla tamamlandı. Yükseltme işlemine devam edebilirsiniz."
 
 #: 
 msgid "Allow Pre-release Upgrades"

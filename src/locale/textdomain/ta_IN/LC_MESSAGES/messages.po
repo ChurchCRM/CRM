@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr " தகவல்/தரவு விவரத்துணுக்குகளை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "அனைத்து சபை/தேவாலய நிகழ்வுகளையும் பட்டியலிடுதல்"
-
-#: 
-msgid "Start Date/Time"
-msgstr "தொடக்க தேதி/நேரம்"
-
-#: 
 msgid "Invalid login or password"
 msgstr "தவறான உள்நுழைவு அல்லது கடவுச்சொல்"
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "அறிக்கை விவரங்கள்"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "மல்டிபிள் ஹோல்ட் /பல பிடி CTLஐத் தேர்ந்தெடுக்க"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "பல குழுக்களுக்கு<br> இடையில் ஒரு பக்க இடைவெளி இருக்கும்"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "அனைத்து வேலைகளையும்/பாத்திரங்களையும் பட்டியலிடுங்கள் (தேர்வு செய்யப்படாதது ஆசிரியர்/மாணவர் வேலைகளையும்/பாத்திரங்களை மட்டும் பட்டியலிடும்)"
 
@@ -2875,24 +2859,12 @@ msgid "Edit Settings"
 msgstr "அமைப்புகளைத் திருத்து"
 
 #: 
-msgid "Full Path:"
-msgstr "முழு பாதை:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "காப்புப்பிரதி முடிந்தது, பதிவிறக்கம் தயாராக உள்ளது."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "காப்புப் பிரதி பதிவிறக்கம் செய்யப்பட்டது, சர்வரில் உள்ள நகல் அகற்றப்பட்டது"
 
 #: 
 msgid "Functions"
 msgstr "செயல்பாடுகள்"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSVக்கு ஏற்றுமதி செய்"
 
 #: 
 msgid "Add"
@@ -2977,10 +2949,6 @@ msgstr "குறிப்புகள்"
 #: 
 msgid "Reports"
 msgstr "அறிக்கைகள்"
-
-#: 
-msgid "File Name:"
-msgstr "கோப்பு பெயர்:"
 
 #: 
 msgid "family"
@@ -3199,10 +3167,6 @@ msgstr "சர்ச் லெட்டர்ஹெட் பாதை மற்
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "குவிக்புக்ஸ் வைப்பு/டெபாசிட் டிக்கெட் அமைப்புகள்"
-
-#: 
-msgid "List Church Events"
-msgstr "சர்ச் நிகழ்வுகளை பட்டியலிடுங்கள்"
 
 #: 
 msgid "Add Church Event"
@@ -5240,10 +5204,6 @@ msgid "Report an issue"
 msgstr "சிக்கலைப் புகாரளிக்கவும்"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "புதிய கியோஸ்க் பதிவை இயக்கு"
-
-#: 
 msgid "Active Kiosks"
 msgstr "செயலில் உள்ள கியோஸ்க்கள்"
 
@@ -5619,10 +5579,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "கடைசியாக ஒப்புதல் வாக்குமூலம் சேமிக்கப்பட்டுள்ள களம், தேதி வகையாக இருக்க வேண்டும்"
 
 #: 
-msgid "People Setup"
-msgstr "மக்கள் அமைப்பு"
-
-#: 
 msgid "People Reports"
 msgstr "மக்கள் அறிக்கைகள்"
 
@@ -5996,10 +5952,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "கருத்து இல்லாமல் புதிய வைப்புத்தொகையைச் சேர்க்க உள்ளீர்கள்"
 
 #: 
-msgid "Families Without Emails"
-msgstr "மின்னஞ்சல்கள் இல்லாத குடும்பங்கள்"
-
-#: 
 msgid "Record"
 msgstr "பதிவு"
 
@@ -6022,26 +5974,6 @@ msgstr "கவனம்"
 #: 
 msgid "Unfocus"
 msgstr "கவனம் செலுத்து"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "எச்சரிக்கை: கையொப்பம் பொருந்தவில்லை"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "சில சர்ச்சிஆர்எம் (ChurchCRM) கணினி கோப்புகள் கடைசியாக நிறுவப்பட்டதிலிருந்து மாற்றியமைக்கப்பட்டிருக்கலாம்."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "இந்த மேம்படுத்தல், கோப்புகளை அதிகாரப்பூர்வ பதிப்பிற்கு மாற்றியமைப்பதன் மூலம் பின்வரும் கோப்புகளுக்கு செய்யப்பட்ட எந்த தனிப்பயனாக்கத்தையும் முற்றிலும் அழித்துவிடும்."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "இந்தக் கோப்புகளில் நீங்கள் செய்த மாற்றங்களைப் பராமரிக்க விரும்பினால், இந்த மேம்படுத்தலைத் தொடர்வதற்கு முன், இந்தக் கோப்புகளை கைமுறையாகக் காப்புப் பிரதி எடுக்கவும், பின்னர் மேம்படுத்தல் முடிந்ததும் கோப்புகளை கைமுறையாக மீட்டெடுக்கவும்."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "நேர்மை சரிபார்ப்பு விவரங்கள்:"
 
 #. Context: locales
 #: 
@@ -7067,18 +6999,6 @@ msgstr "அஞ்சல் குறியீடு (பின் கோட்) 
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "ஒரு புதிய கடவுச்சொல் உருவாக்கப்பட்டு உங்கள் மின்னஞ்சல் முகவரிக்கு அனுப்பப்பட்டுள்ளது."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "ChurchCRM இன் புதிய பதிப்பு நிறுவலுக்குக் கிடைக்கிறது."
-
-#: 
-msgid "Actual Hash"
-msgstr "உண்மையான ஹாஷ்"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "அனைத்து முன்-மேம்படுத்தல் சோதனைகளும் கடந்துவிட்டன. நீங்கள் மேம்படுத்தலைத் தொடரலாம்."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr "Thibitisha lebo za data"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Kuorodhesha Matukio Yote ya Kanisa"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Tarehe/Saa ya Kuanza"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Kuingia au nenosiri batili"
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "Ripoti Maelezo"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Ili kuchagua CTL ya kushikilia nyingi"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Vikundi vingi vitakuwa na Mapumziko ya Ukurasa kati ya Vikundi<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Orodhesha Majukumu yote (isiyochaguliwa itaorodhesha majukumu ya Mwalimu/Mwanafunzi pekee)"
 
@@ -2875,24 +2859,12 @@ msgid "Edit Settings"
 msgstr "Badilisha Mipangilio"
 
 #: 
-msgid "Full Path:"
-msgstr "Njia Kamili:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Hifadhi rudufu Imekamilika, Tayari kwa Kupakuliwa."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Hifadhi Nakala Imepakuliwa, Nakili kwenye seva imeondolewa"
 
 #: 
 msgid "Functions"
 msgstr "Kazi"
-
-#: 
-msgid "Export to CSV"
-msgstr "Hamisha kwa CSV"
 
 #: 
 msgid "Add"
@@ -2977,10 +2949,6 @@ msgstr "Vidokezo"
 #: 
 msgid "Reports"
 msgstr "Ripoti"
-
-#: 
-msgid "File Name:"
-msgstr "Jina la faili:"
 
 #: 
 msgid "family"
@@ -3199,10 +3167,6 @@ msgstr "Kanisa Letterhead njia na faili"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Mipangilio ya Tikiti ya Amana ya QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Orodhesha Matukio ya Kanisa"
 
 #: 
 msgid "Add Church Event"
@@ -5241,10 +5205,6 @@ msgid "Report an issue"
 msgstr "Ripoti suala"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Washa Usajili Mpya wa Kiosk"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Vibanda Amilifu"
 
@@ -5620,10 +5580,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Sehemu ambayo Kuungama mara ya mwisho imehifadhiwa, lazima iwe aina ya tarehe"
 
 #: 
-msgid "People Setup"
-msgstr "Mipangilio ya Watu"
-
-#: 
 msgid "People Reports"
 msgstr "Ripoti za Watu"
 
@@ -5997,10 +5953,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Unakaribia kuongeza amana mpya bila maoni"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familia Bila Barua pepe"
-
-#: 
 msgid "Record"
 msgstr "Rekodi"
 
@@ -6023,26 +5975,6 @@ msgstr "Kuzingatia"
 #: 
 msgid "Unfocus"
 msgstr "Acha kuzingatia"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Onyo: Sahihi hailingani"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Baadhi ya faili za mfumo wa ChurchCRM zinaweza kuwa zimerekebishwa tangu usakinishaji wa mwisho."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Uboreshaji huu utaharibu kabisa ubinafsishaji wowote unaofanywa kwa faili zifuatazo kwa kurejesha faili kwenye toleo rasmi."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Iwapo ungependa kudumisha mabadiliko yako kwenye faili hizi, tafadhali chukua nakala ya awali ya faili hizi kabla ya kuendelea na uboreshaji huu, na kisha urejeshe faili mwenyewe baada ya uboreshaji kukamilika."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Maelezo ya Kukagua Uadilifu:"
 
 #. Context: locales
 #: 
@@ -7064,18 +6996,6 @@ msgstr "Nambari ya utambulisho wa posta (Zip) inahitajika"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Nenosiri jipya limetengenezwa na kutumwa kwa barua pepe yako."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Toleo jipya la ChurchCRM linapatikana kwa ajili ya kusakinishwa."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hashi Halisi"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Ukaguzi wote wa kabla ya sasisho umefaulu. Unaweza kuendelea na kusasisha."
 
 #: 
 msgid "Allow Pre-release Upgrades"

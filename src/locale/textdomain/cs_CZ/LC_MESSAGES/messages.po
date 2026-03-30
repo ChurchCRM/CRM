@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr "Popisky potvrzovacích dat"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Vypisuji všechny sborové události"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Datum a čas začátku"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Nesprávné přihlašovací jméno nebo heslo"
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "Detaily sestavy"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Držte CTL pro vícenásobný výběr"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "U více skupin se mezi nimi zobrazí přerušení stránky<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Vypsat všechny role (nezaškrtnuté vypíše pouze role učitel/žák)"
 
@@ -2875,24 +2859,12 @@ msgid "Edit Settings"
 msgstr "Upravit nastavení"
 
 #: 
-msgid "Full Path:"
-msgstr "Celá cesta:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Záloha kompletní, připraveno ke stažení."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Záloha stažena, kopie na serveru odstraněna"
 
 #: 
 msgid "Functions"
 msgstr "Funkce"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportovat do CSV"
 
 #: 
 msgid "Add"
@@ -2977,10 +2949,6 @@ msgstr "Poznámky"
 #: 
 msgid "Reports"
 msgstr "Sestavy"
-
-#: 
-msgid "File Name:"
-msgstr "Název souboru:"
 
 #: 
 msgid "family"
@@ -3198,10 +3166,6 @@ msgstr "Cesta a soubor hlavičkového papíru sboru"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Nastavení vkladového lístku QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Vypsat sborové události"
 
 #: 
 msgid "Add Church Event"
@@ -5236,10 +5200,6 @@ msgid "Report an issue"
 msgstr "Nahlásit problém"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Povolení registrace nového kiosku"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktivní kiosky"
 
@@ -5615,10 +5575,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Pole, do kterého se ukládá poslední zpověď, musí být typu datum"
 
 #: 
-msgid "People Setup"
-msgstr "Nastavení osob"
-
-#: 
 msgid "People Reports"
 msgstr "Sestavy o osobách"
 
@@ -5988,10 +5944,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Chystáte se přidat nový vklad bez komentáře"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Rodiny bez e-mailu"
-
-#: 
 msgid "Record"
 msgstr "Záznam"
 
@@ -6014,26 +5966,6 @@ msgstr "Zaměřit"
 #: 
 msgid "Unfocus"
 msgstr "Nezaměřovat"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Varování: Neshoda podpisu"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Některé systémové soubory ChurchCRM mohly být od poslední instalace změněny."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Tato aktualizace zcela odstraní všechny úpravy provedené v následujících souborech tím, že je vrátí do oficiální verze."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Pokud si přejete zachovat změny v těchto souborech, proveďte před provedením aktualizace ruční zálohu těchto souborů a po dokončení aktualizace je ručně obnovte."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Podrobnosti o kontrole integrity:"
 
 #. Context: locales
 #: 
@@ -7056,18 +6988,6 @@ msgstr "Je vyžadováno PSČ"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Bylo vygenerováno nové heslo a zasláno na vaši e-mailovou adresu."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Nová verze ChurchCRM je k dispozici pro instalaci."
-
-#: 
-msgid "Actual Hash"
-msgstr "Skutečný hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Všechny kontroly před aktualizací byly úspěšné. Můžete pokračovat v aktualizaci."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1588,14 +1588,6 @@ msgid "Confirm data labels"
 msgstr "Bekreft dataetiketter"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Notering Alle kirkelige handlinger"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Startdato / tid"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ugyldig brukernavn eller passord"
 
@@ -2835,15 +2827,6 @@ msgid "Report Details"
 msgstr "Raportdetaljer"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "Slik velger du flere hold CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Flere grupper vil ha sideskift mellom gruppene<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "List alle roller (hvis ikke krysset av, vises kun lærer/elev-roller)"
 
@@ -2989,24 +2972,12 @@ msgid "Edit Settings"
 msgstr "Rediger innstillinger"
 
 #: 
-msgid "Full Path:"
-msgstr "Full sti:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Sikkerhetskopiering fullført, klar for nedlasting."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Sikkerhetskopi lastet ned, kopi på server er slettet"
 
 #: 
 msgid "Functions"
 msgstr "Funksjoner"
-
-#: 
-msgid "Export to CSV"
-msgstr "Eksporter til CSV"
 
 #: 
 msgid "Add"
@@ -3091,10 +3062,6 @@ msgstr "Notater"
 #: 
 msgid "Reports"
 msgstr "Rapporter"
-
-#: 
-msgid "File Name:"
-msgstr "Filnavn:"
 
 #: 
 msgid "family"
@@ -3311,10 +3278,6 @@ msgstr "Sti og fil for kirkens brevhodepapir"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Innstillinger for QuickBooks innskuddsseddel"
-
-#: 
-msgid "List Church Events"
-msgstr "List kirkehendelser"
 
 #: 
 msgid "Add Church Event"
@@ -5347,10 +5310,6 @@ msgid "Report an issue"
 msgstr "Rapporter et problem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Aktiver ny kioskregistrering"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktive kiosker"
 
@@ -5726,10 +5685,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Feltet hvor forrige skriftemål lagres må være en datotype"
 
 #: 
-msgid "People Setup"
-msgstr "Oppsett av personer"
-
-#: 
 msgid "People Reports"
 msgstr "Personrapporter"
 
@@ -6099,10 +6054,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Du er i ferd med å legge til et nytt innskudd uten kommentar"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familier uten e-post"
-
-#: 
 msgid "Record"
 msgstr "Oppføring"
 
@@ -6125,26 +6076,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Fjern fokus"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Advarsel: Signatur samsvarer ikke"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Noen ChurchCRM-systemfiler kan ha blitt endret siden forrige installasjon."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Denne oppgraderingen vil fullstendig fjerne alle tilpasninger gjort i følgende filer ved å tilbakestille dem til den offisielle versjonen."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Hvis du vil beholde endringene i disse filene, vennligst ta en manuell sikkerhetskopi før du fortsetter, og gjenopprett dem manuelt etter at oppgraderingen er fullført."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detaljer om integritetssjekk:"
 
 #. Context: locales
 #: 
@@ -7160,18 +7091,6 @@ msgstr "Postnummer er obligatorisk"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Et nytt passord er generert og sendt til din e-postadresse."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "En ny versjon av ChurchCRM er tilgjengelig for installasjon."
-
-#: 
-msgid "Actual Hash"
-msgstr "Faktisk hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Alle sjekker før oppgradering er bestått. Du kan fortsette med oppgraderingen."
 
 #: 
 msgid "Allow Pre-release Upgrades"

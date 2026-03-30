@@ -1580,14 +1580,6 @@ msgid "Confirm data labels"
 msgstr "Potwierdź data labels"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Lista Wszystkich Wydarzeń Kościelnych"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Data/Czas Rozpoczęcia"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Nieprawidłowa Nazwa Użytkownika lub Hasło"
 
@@ -2806,15 +2798,6 @@ msgid "Report Details"
 msgstr "Szczegóły raportu"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "Aby wybrać kilka przytrzymaj CTRL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Wiele grup będzie miało podział strony między grupami<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Wymień wszystkie role (odznaczenie wyświetli tylko role Nauczyciel/Uczeń)"
 
@@ -2960,24 +2943,12 @@ msgid "Edit Settings"
 msgstr "Edytuj ustawienia"
 
 #: 
-msgid "Full Path:"
-msgstr "Pełna ścieżka:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Kopia zapasowa gotowa, można pobrać."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Kopia zapasowa pobrana, kopia na serwerze usunięta"
 
 #: 
 msgid "Functions"
 msgstr "Funkcje"
-
-#: 
-msgid "Export to CSV"
-msgstr "Eksportuj do CSV"
 
 #: 
 msgid "Add"
@@ -3062,10 +3033,6 @@ msgstr "Notatki"
 #: 
 msgid "Reports"
 msgstr "Raporty"
-
-#: 
-msgid "File Name:"
-msgstr "Nazwa pliku:"
 
 #: 
 msgid "family"
@@ -3283,10 +3250,6 @@ msgstr "Ścieżka i plik nagłówka papieru firmowego kościoła"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Ustawienia dowodu wpłaty QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Lista wydarzeń w kościele"
 
 #: 
 msgid "Add Church Event"
@@ -5320,10 +5283,6 @@ msgid "Report an issue"
 msgstr "Zgłoś problem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Zezwól na Rejestrację Nowego Kiosku"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktywne kioski"
 
@@ -5699,10 +5658,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Pole ostatniej spowiedzi musi być typu data"
 
 #: 
-msgid "People Setup"
-msgstr "Konfiguracja osób"
-
-#: 
 msgid "People Reports"
 msgstr "Raporty osób"
 
@@ -6075,10 +6030,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Zamierzasz dodać nowy depozyt bez komentarza"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Rodziny Bez Adresu Email"
-
-#: 
 msgid "Record"
 msgstr "Wpis"
 
@@ -6102,26 +6053,6 @@ msgstr "Zaznacz"
 #: 
 msgid "Unfocus"
 msgstr "Odznacz"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Uwaga: Błąd podpisu"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Niektóre pliki ChurchCRM mogły ulec zmianie od ostatniej instalacji."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Aktualizacja usunie wszelkie modyfikacje nastepujących plików przywracając je do oficjalnej wersji."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Jeżeli chcesz zachować wprowadzone zmiany, zrób ręczną kopię bezpieczeństwa plików przed kontynuacją. Przywróć je ręcznie po zakończonej aktualizacji."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Informacje Spójności Systemu:"
 
 #. Context: locales
 #: 
@@ -7147,18 +7078,6 @@ msgstr "Kod pocztowy jest wymagany"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Nowe hasło wysłano na e-mail."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Dostępna nowa wersja ChurchCRM."
-
-#: 
-msgid "Actual Hash"
-msgstr "Aktualny skrót (Hash)"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Testy przed aktualizacją pomyślne. Możesz kontynuować."
 
 #: 
 msgid "Allow Pre-release Upgrades"

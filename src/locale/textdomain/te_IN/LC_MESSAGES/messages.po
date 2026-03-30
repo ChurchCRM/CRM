@@ -1531,14 +1531,6 @@ msgid "Confirm data labels"
 msgstr "డేటా లేబుళ్లను ధృవీకరించు"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "అన్ని చర్చి ఈవెంట్‌ల జాబితా"
-
-#: 
-msgid "Start Date/Time"
-msgstr "ప్రారంభ తేదీ/సమయం"
-
-#: 
 msgid "Invalid login or password"
 msgstr "చెల్లని లాగిన్ లేదా పాస్‌వర్డ్"
 
@@ -2716,14 +2708,6 @@ msgid "Report Details"
 msgstr "నివేదిక వివరాలు"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "బహుళ ఎంచుకోవడానికి CTL నొక్కి ఉంచండి"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "బహుళ గ్రూప్‌లు గ్రూప్‌ల మధ్య పేజీ బ్రేక్ కలిగి ఉంటాయి<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "అన్ని పాత్రలను జాబితా చేయండి (అన్‌చెక్ చేస్తే ఉపాధ్యాయ/విద్యార్థి పాత్రలను మాత్రమే జాబితా చేస్తుంది)"
 
@@ -2864,24 +2848,12 @@ msgid "Edit Settings"
 msgstr "సెట్టింగులను సవరించు"
 
 #: 
-msgid "Full Path:"
-msgstr "పూర్తి పాత్:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "బ్యాకప్ పూర్తయింది, డౌన్‌లోడ్ కోసం సిద్ధంగా ఉంది."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "బ్యాకప్ డౌన్‌లోడ్ చేయబడింది, సర్వర్‌లో కాపీ తొలగించబడింది"
 
 #: 
 msgid "Functions"
 msgstr "విధులు"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSVకి ఎగుమతి చేయి"
 
 #: 
 msgid "Add"
@@ -2966,10 +2938,6 @@ msgstr "గమనికలు"
 #: 
 msgid "Reports"
 msgstr "నివేదికలు"
-
-#: 
-msgid "File Name:"
-msgstr "ఫైల్ పేరు:"
 
 #: 
 msgid "family"
@@ -3186,10 +3154,6 @@ msgstr "చర్చి లెటర్‌హెడ్ పాత్ మరియ
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks డిపాజిట్ టికెట్ సెట్టింగ్‌లు"
-
-#: 
-msgid "List Church Events"
-msgstr "చర్చి ఈవెంట్‌ల జాబితా"
 
 #: 
 msgid "Add Church Event"
@@ -5222,10 +5186,6 @@ msgid "Report an issue"
 msgstr "సమస్యను నివేదించండి"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "కొత్త కియోస్క్ నమోదును ప్రారంభించండి"
-
-#: 
 msgid "Active Kiosks"
 msgstr "క్రియాశీల కియోస్కులు"
 
@@ -5601,10 +5561,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "చివరి కన్ఫెషన్ నిల్వ చేయబడిన ఫీల్డ్, తేదీ రకంగా ఉండాలి"
 
 #: 
-msgid "People Setup"
-msgstr "వ్యక్తుల సెటప్"
-
-#: 
 msgid "People Reports"
 msgstr "వ్యక్తుల నివేదికలు"
 
@@ -5974,10 +5930,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "మీరు వ్యాఖ్య లేకుండా కొత్త డిపాజిట్ జోడించబోతున్నారు"
 
 #: 
-msgid "Families Without Emails"
-msgstr "ఇమెయిల్‌లు లేని కుటుంబాలు"
-
-#: 
 msgid "Record"
 msgstr "రికార్డ్"
 
@@ -6000,26 +5952,6 @@ msgstr "ఫోకస్ చేయి"
 #: 
 msgid "Unfocus"
 msgstr "ఫోకస్ తీసివేయి"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "హెచ్చరిక: సంతకం అసమానత"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "చివరి ఇన్‌స్టాలేషన్ తర్వాత కొన్ని ChurchCRM సిస్టమ్ ఫైల్‌లు మార్చబడి ఉండవచ్చు."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "ఈ అప్‌గ్రేడ్ ఫైల్‌లను అధికారిక వెర్షన్‌కు తిరిగి మార్చడం ద్వారా కింది ఫైల్‌లకు చేసిన ఏవైనా కస్టమైజేషన్‌లను పూర్తిగా నాశనం చేస్తుంది."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "మీరు ఈ ఫైల్‌లకు మీ మార్పులను నిర్వహించాలనుకుంటే, దయచేసి ఈ అప్‌గ్రేడ్‌తో కొనసాగడానికి ముందు ఈ ఫైల్‌ల మాన్యువల్ బ్యాకప్ తీసుకోండి, ఆపై అప్‌గ్రేడ్ పూర్తయిన తర్వాత ఫైల్‌లను మాన్యువల్‌గా పునరుద్ధరించండి."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "ఇంటెగ్రిటీ చెక్ వివరాలు:"
 
 #. Context: locales
 #: 
@@ -7040,18 +6972,6 @@ msgstr "జిప్ కోడ్ అవసరం"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "కొత్త పాస్‌వర్డ్ జనరేట్ చేయబడింది మరియు మీ ఇమెయిల్ చిరునామాకు పంపబడింది."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "ChurchCRM యొక్క కొత్త వెర్షన్ ఇన్‌స్టాల్ చేయడానికి అందుబాటులో ఉంది."
-
-#: 
-msgid "Actual Hash"
-msgstr "వాస్తవ హాష్"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "అన్ని ముందస్తు-అప్‌గ్రేడ్ తనిఖీలు ఉత్తీర్ణమయ్యాయి. మీరు అప్‌గ్రేడ్‌తో కొనసాగవచ్చు."
 
 #: 
 msgid "Allow Pre-release Upgrades"

@@ -1584,14 +1584,6 @@ msgid "Confirm data labels"
 msgstr "確認數據標籤"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "列出所有教會活動"
-
-#: 
-msgid "Start Date/Time"
-msgstr "開始日期/時間"
-
-#: 
 msgid "Invalid login or password"
 msgstr "無效的登錄名或密碼"
 
@@ -2815,15 +2807,6 @@ msgstr "報告詳情"
 
 #: 
 #, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "要選擇多個保持CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "多組情況下，組之間有分頁符"
-
-#: 
-#, fuzzy
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "列出所有角色（未選中將僅列出教師/學生角色）"
 
@@ -2970,24 +2953,12 @@ msgid "Edit Settings"
 msgstr "編輯設置"
 
 #: 
-msgid "Full Path:"
-msgstr "完整路徑："
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "備份完成，準備下載。"
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "備份已下載，已刪除服務器上的副本"
 
 #: 
 msgid "Functions"
 msgstr "功能"
-
-#: 
-msgid "Export to CSV"
-msgstr "導出到CSV"
 
 #: 
 msgid "Add"
@@ -3072,10 +3043,6 @@ msgstr "注釋"
 #: 
 msgid "Reports"
 msgstr "報告"
-
-#: 
-msgid "File Name:"
-msgstr "文件名："
 
 #: 
 msgid "family"
@@ -3304,10 +3271,6 @@ msgstr "教會信頭路徑和文件"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks存款票設置"
-
-#: 
-msgid "List Church Events"
-msgstr "列出教會活動"
 
 #: 
 msgid "Add Church Event"
@@ -5354,11 +5317,6 @@ msgid "Report an issue"
 msgstr "報告問題"
 
 #: 
-#, fuzzy
-msgid "Enable New Kiosk Registration"
-msgstr "啟用新的Kiosk註冊"
-
-#: 
 msgid "Active Kiosks"
 msgstr "激活Kiosk"
 
@@ -5737,11 +5695,6 @@ msgstr "Father Of Confession出現的字段，必須是群體類型中的人"
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Confession最後字段的存儲，必須是一個數據類型"
-
-#: 
-#, fuzzy
-msgid "People Setup"
-msgstr "人員設定"
 
 #: 
 msgid "People Reports"
@@ -6127,10 +6080,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "您即將添加沒有註解的新存款"
 
 #: 
-msgid "Families Without Emails"
-msgstr "無Email家庭"
-
-#: 
 msgid "Record"
 msgstr "記錄"
 
@@ -6157,31 +6106,6 @@ msgstr "加入焦點"
 #, fuzzy
 msgid "Unfocus"
 msgstr "移除焦點"
-
-#: 
-#, fuzzy
-msgid "Warning: Signature mismatch"
-msgstr "警告：簽名不匹配"
-
-#: 
-#, fuzzy
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "自上次安裝以來，某些ChurchCRM系統文件可能已被修改。"
-
-#: 
-#, fuzzy
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "此升級將還原自訂修改的文件為官方版本。"
-
-#: 
-#, fuzzy
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "如果您希望保留對這些文件的更改，請在繼續此升級之前手動備份這些文件，然後在升級完成後手動還原這些文件。"
-
-#: 
-#, fuzzy
-msgid "Integrity Check Details:"
-msgstr "完整性檢查詳細信息："
 
 #. Context: locales
 #: 
@@ -7288,18 +7212,6 @@ msgstr "郵遞區號是必填項"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "新密碼已生成並發送至您的電子郵件地址。"
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "有新版本的 ChurchCRM 可供安裝。"
-
-#: 
-msgid "Actual Hash"
-msgstr "實際雜湊"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "所有升級前檢查均已通過。您可以繼續升級。"
 
 #: 
 msgid "Allow Pre-release Upgrades"

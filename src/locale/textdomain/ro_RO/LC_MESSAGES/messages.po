@@ -1581,14 +1581,6 @@ msgid "Confirm data labels"
 msgstr "Confirmați etichetele datelor"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Listarea Tuturor Evenimentelor Bisericii"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Data/Ora de Început"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Parola sau autentificare invalida"
 
@@ -2803,15 +2795,6 @@ msgid "Report Details"
 msgstr "Detalii raport"
 
 #: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "Pentru a selecta mai multe CTL așteptare"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Mai multe grupuri vor avea o pauză de pagină între grupuri <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Listează toate rolurile (neselectate vor afișa doar rolurile pentru Profesor/Stundet"
 
@@ -2957,24 +2940,12 @@ msgid "Edit Settings"
 msgstr "Editeaza setarile"
 
 #: 
-msgid "Full Path:"
-msgstr "Calea completă:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Back-up finalizat, gata de descărcare."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Back-up descărcar, copia de pe server eliminată"
 
 #: 
 msgid "Functions"
 msgstr "Funcții"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportă către CSV"
 
 #: 
 msgid "Add"
@@ -3059,10 +3030,6 @@ msgstr "Note"
 #: 
 msgid "Reports"
 msgstr "Rapoarte"
-
-#: 
-msgid "File Name:"
-msgstr "Nume fișier:"
 
 #: 
 msgid "family"
@@ -3283,10 +3250,6 @@ msgstr "Calea și fișierul cu antetul Bisericii"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Setări pentru bilete de depozit QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Listează evenimentele Bisericii"
 
 #: 
 msgid "Add Church Event"
@@ -5326,10 +5289,6 @@ msgid "Report an issue"
 msgstr "Rapoartează o eroare"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Activați înregistrarea chioșcului (Kiosk) nou"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Chioșcuri (Kiosks) active"
 
@@ -5703,10 +5662,6 @@ msgstr "Câmpul în care este listat Părintele pentru Spovedanie trebuie să fi
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Câmpul în care este stocată ultima Spovedanie trebuie să fie de tip dată"
-
-#: 
-msgid "People Setup"
-msgstr "Setări persoane"
 
 #: 
 msgid "People Reports"
@@ -6083,10 +6038,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Sunteți pe cale să adăugați o nouă depunere fără un comentariu"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familii fără email-uri"
-
-#: 
 msgid "Record"
 msgstr "Înregistrare"
 
@@ -6110,26 +6061,6 @@ msgstr "Focalizare"
 #: 
 msgid "Unfocus"
 msgstr "Defocalizare"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Avertisment: Incompatibilitate de semnătură"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Este posibil ca unele fișiere de sistem ChurchCRM să fi fost modificate de la ultima instalare"
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Această actualizare va distruge complet orice personalizări făcute pentru următoarele fișiere prin revenirea fișierelor la versiunea oficială"
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Dacă doriți să păstrați modificările aduse acestor fișiere, faceți o copie de rezervă manuală a acestor fișiere înainte de a continua cu această actualizare și apoi restaurați manual fișierele după finalizarea upgrade-ului"
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detalii de verificare a integrității"
 
 #. Context: locales
 #: 
@@ -7150,18 +7081,6 @@ msgstr "Codul poștal este obligatoriu"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "O nouă parolă a fost generată și trimisă la adresa dumneavoastră de e-mail."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "O nouă versiune de ChurchCRM este disponibilă pentru instalare."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hash actual"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Toate verificările pre-actualizare au reușit. Puteți continua cu actualizarea."
 
 #: 
 msgid "Allow Pre-release Upgrades"

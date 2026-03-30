@@ -1538,14 +1538,6 @@ msgid "Confirm data labels"
 msgstr "데이터 라벨 확인"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "전체 교회 행사 목록"
-
-#: 
-msgid "Start Date/Time"
-msgstr "시작 일시"
-
-#: 
 msgid "Invalid login or password"
 msgstr "로그인 또는 비밀번호가 올바르지 않습니다."
 
@@ -2727,14 +2719,6 @@ msgid "Report Details"
 msgstr "보고서 상세"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "여러 개를 선택하려면 Ctrl 키를 누르고 선택하세요."
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "여러 그룹을 선택하면 그룹마다 페이지가 구분됩니다.<br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "전체 역할 표시(선택 해제 시 교사/학생만 표시)"
 
@@ -2875,24 +2859,12 @@ msgid "Edit Settings"
 msgstr "설정 편집"
 
 #: 
-msgid "Full Path:"
-msgstr "전체 경로:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "백업 완료, 다운로드 가능합니다."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "백업을 내려받았으며 서버의 사본은 삭제되었습니다."
 
 #: 
 msgid "Functions"
 msgstr "기능"
-
-#: 
-msgid "Export to CSV"
-msgstr "CSV로 내보내기"
 
 #: 
 msgid "Add"
@@ -2977,10 +2949,6 @@ msgstr "메모"
 #: 
 msgid "Reports"
 msgstr "보고서"
-
-#: 
-msgid "File Name:"
-msgstr "파일명:"
 
 #: 
 msgid "family"
@@ -3199,10 +3167,6 @@ msgstr "교회 레터헤드 경로/파일"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks 입금 내역서 설정"
-
-#: 
-msgid "List Church Events"
-msgstr "교회 행사 목록"
 
 #: 
 msgid "Add Church Event"
@@ -5240,10 +5204,6 @@ msgid "Report an issue"
 msgstr "문제 보고"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "새 키오스크 등록 허용"
-
-#: 
 msgid "Active Kiosks"
 msgstr "활성 키오스크"
 
@@ -5619,10 +5579,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "마지막 고백 날짜가 저장되는 필드입니다. 날짜 형식이어야 합니다."
 
 #: 
-msgid "People Setup"
-msgstr "개인 설정"
-
-#: 
 msgid "People Reports"
 msgstr "개인 보고서"
 
@@ -5995,10 +5951,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "비고 없이 새 입금 내역서를 추가하려고 합니다"
 
 #: 
-msgid "Families Without Emails"
-msgstr "이메일이 없는 가족"
-
-#: 
 msgid "Record"
 msgstr "기록"
 
@@ -6021,26 +5973,6 @@ msgstr "포커스"
 #: 
 msgid "Unfocus"
 msgstr "포커스 해제"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "경고: 서명이 일치하지 않습니다"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "최근 설치 이후 ChurchCRM 시스템 파일이 수정된 것으로 보입니다."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "이 업그레이드는 아래 파일을 공식 버전으로 되돌려 해당 파일의 사용자 수정 사항을 모두 제거합니다."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "수정 사항을 유지하려면 업그레이드 전에 해당 파일을 직접 백업하고, 업그레이드 후 수동으로 복원하세요."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "무결성 검사 상세 정보:"
 
 #. Context: locales
 #: 
@@ -7060,18 +6992,6 @@ msgstr "우편번호는 필수입니다"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "새 비밀번호가 생성되어 이메일 주소로 전송되었습니다."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "새로운 버전의 ChurchCRM을 설치할 수 있습니다."
-
-#: 
-msgid "Actual Hash"
-msgstr "실제 해시"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "모든 업그레이드 전 검사를 통과했습니다. 업그레이드를 진행하실 수 있습니다."
 
 #: 
 msgid "Allow Pre-release Upgrades"

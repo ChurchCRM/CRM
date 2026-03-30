@@ -1540,14 +1540,6 @@ msgid "Confirm data labels"
 msgstr "Konfirmasikan label data"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Daftar Semua Acara Gereja"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Tanggal Mulai / Waktu"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Login atau kata sandi salah"
 
@@ -2730,14 +2722,6 @@ msgid "Report Details"
 msgstr "Detail Laporan"
 
 #: 
-msgid "To select multiple hold CTL"
-msgstr "Untuk memilih beberapa tahan CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Beberapa grup akan memiliki Istirahat Halaman antara Grup <br>"
-
-#: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
 msgstr "Daftar semua Peran (tidak dicentang akan mencantumkan peran Guru / Siswa saja)"
 
@@ -2878,24 +2862,12 @@ msgid "Edit Settings"
 msgstr "Edit Pengaturan"
 
 #: 
-msgid "Full Path:"
-msgstr "Jalur penuh:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Cadangan Selesai, Siap untuk Diunduh."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Cadangan Diunduh, Salin di server dihapus"
 
 #: 
 msgid "Functions"
 msgstr "Fungsi"
-
-#: 
-msgid "Export to CSV"
-msgstr "Ekspor ke CSV"
 
 #: 
 msgid "Add"
@@ -2980,10 +2952,6 @@ msgstr "Catatan"
 #: 
 msgid "Reports"
 msgstr "Laporan"
-
-#: 
-msgid "File Name:"
-msgstr "Nama file:"
 
 #: 
 msgid "family"
@@ -3204,10 +3172,6 @@ msgstr "Jalur dan file Kop Surat Gereja"
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Pengaturan Tiket Setoran QuickBooks"
-
-#: 
-msgid "List Church Events"
-msgstr "Daftar Acara Gereja"
 
 #: 
 msgid "Add Church Event"
@@ -5246,10 +5210,6 @@ msgid "Report an issue"
 msgstr "Laporkan masalah"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Aktifkan Pendaftaran Kios Baru"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Kios aktif"
 
@@ -5623,10 +5583,6 @@ msgstr "Bidang tempat Father Of Confession terdaftar, haruslah orang-orang denga
 #: 
 msgid "Field where last Confession is stored, must be a date type"
 msgstr "Bidang tempat Pengakuan terakhir disimpan, harus berupa tipe tanggal"
-
-#: 
-msgid "People Setup"
-msgstr "Pengaturan Orang"
 
 #: 
 msgid "People Reports"
@@ -6003,10 +5959,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Anda akan menambah deposit baru tanpa komentar"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Keluarga Tanpa Email"
-
-#: 
 msgid "Record"
 msgstr "Merekam"
 
@@ -6030,26 +5982,6 @@ msgstr "Fokus"
 #: 
 msgid "Unfocus"
 msgstr "Batalkan fokus"
-
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Peringatan: Ketidakcocokan tanda tangan"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Beberapa file sistem ChurchCRM mungkin telah dimodifikasi sejak instalasi terakhir."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Pemutakhiran ini akan sepenuhnya memusnahkan setiap penyesuaian yang dibuat untuk file berikut dengan mengembalikan file ke versi resmi."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Jika Anda ingin mempertahankan perubahan pada file-file ini, silakan ambil cadangan manual dari file-file ini sebelum melanjutkan dengan upgrade ini, dan kemudian secara manual mengembalikan file setelah upgrade selesai."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detail Pemeriksaan Integritas:"
 
 #. Context: locales
 #: 
@@ -7063,18 +6995,6 @@ msgstr "Kode pos wajib diisi"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Kata sandi baru telah dibuat dan dikirim ke email Anda."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Versi terbaru ChurchCRM tersedia untuk diinstal."
-
-#: 
-msgid "Actual Hash"
-msgstr "Hash Aktual"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Semua pengecekan pra-pembaruan berhasil. Anda dapat melanjutkan pembaruan."
 
 #: 
 msgid "Allow Pre-release Upgrades"
