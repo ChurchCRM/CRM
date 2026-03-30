@@ -14,6 +14,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: publish-openapi-specs
+  cancel-in-progress: false
+
 jobs:
   generate-and-publish:
     name: Generate specs and trigger docs rebuild
@@ -45,6 +49,9 @@ jobs:
 
       - name: Generate Private API spec
         run: cd src && composer run openapi-private
+
+      - name: Pull latest before committing
+        run: git pull --rebase origin master
 
       - name: Commit updated specs
         uses: stefanzweifel/git-auto-commit-action@v7

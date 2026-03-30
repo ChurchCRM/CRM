@@ -73,7 +73,7 @@ if (isset($_POST['GroupPropSubmit'])) {
 
         while ($rowPropList = mysqli_fetch_array($rsPropList, MYSQLI_BOTH)) {
             extract($rowPropList);
-            $currentFieldData = trim($aPersonProps[$prop_Field]);
+            $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
 
             sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
         }
@@ -173,7 +173,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                             <td><?= InputUtils::escapeHTML($prop_Name) ?>: </td>
                             <td>
                                 <?php
-                                $currentFieldData = trim($aPersonProps[$prop_Field]);
+                                $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
 
                                 if ($type_ID == 11) {
                                     $prop_Special = null;

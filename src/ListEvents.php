@@ -67,22 +67,31 @@ if (isset($_POST['Action']) && isset($_POST['EID']) && $canEditEvents) {
 }
 
 // --- Dashboard Stats ---
+$yearMin = $EventYear . '-01-01 00:00:00';
+$yearMax = $EventYear . '-12-31 23:59:59';
+
 $totalEventsThisYear = EventQuery::create()
-    ->filterByStart(['min' => $EventYear . '-01-01', 'max' => $EventYear . '-12-31'])
+    ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
     ->count();
 
 $totalCheckInsThisYear = EventAttendQuery::create()
     ->useEventQuery()
-        ->filterByStart(['min' => $EventYear . '-01-01', 'max' => $EventYear . '-12-31'])
+        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
     ->endUse()
+    ->filterByCheckinDate(null, Criteria::ISNOTNULL)
     ->count();
 
 $activeEventsThisYear = EventQuery::create()
-    ->filterByStart(['min' => $EventYear . '-01-01', 'max' => $EventYear . '-12-31'])
+    ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
     ->filterByInActive(0)
     ->count();
 
-$totalEventTypes = EventTypeQuery::create()->count();
+$totalEventTypes = EventTypeQuery::create()
+    ->useEventTypeQuery()
+        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
+    ->endUse()
+    ->distinct()
+    ->count();
 
 // Get event types that have events (using ORM)
 $eventTypesWithEvents = EventTypeQuery::create()
@@ -229,11 +238,9 @@ $availableYears = $yearQuery
         </div>
         <div class="col-md-2 text-end">
           <?php if ($eType !== 'All'): ?>
-            <form method="POST" action="ListEvents.php" class="d-inline">
-              <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">
-                <i class="ti ti-x me-1"></i><?= gettext('Clear Filter') ?>
-              </a>
-            </form>
+            <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">
+              <i class="ti ti-x me-1"></i><?= gettext('Clear Filter') ?>
+            </a>
           <?php endif; ?>
         </div>
       </div>
@@ -304,8 +311,8 @@ foreach ($allMonths as $mVal) {
         $events[] = [
             'id' => $eventId,
             'type_name' => $row['type_name'],
-            'title' => InputUtils::sanitizeAndEscapeText($row['event_title']),
-            'desc' => InputUtils::sanitizeAndEscapeText($row['event_desc']),
+            'title' => InputUtils::sanitizeText($row['event_title']),
+            'desc' => InputUtils::sanitizeText($row['event_desc']),
             'text' => $row['event_text'],
             'start' => $row['event_start'],
             'end' => $row['event_end'],
