@@ -207,7 +207,7 @@ function categoryId(string $category): string {
 
                   <?php elseif ($setting->getType() === 'boolean') : ?>
                     <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox">
-                      <option value="" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
+                      <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
                       <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('True') ?></option>
                     </select>
 
@@ -276,14 +276,14 @@ function categoryId(string $category): string {
   $(document).ready(function() {
     // Initialise TomSelect for the active tab immediately
     $('.tab-pane.active .choiceSelectBox').each(function () {
-      if (!this.tomselect) new TomSelect(this);
+      if (!this.tomselect) new TomSelect(this, { dropdownParent: 'body' });
     });
 
     // Initialise TomSelect when switching tabs
     $('a[data-bs-toggle="pill"]').on('shown.bs.tab', function(e) {
       var target = $(e.target).attr('href');
       $(target + ' .choiceSelectBox').each(function () {
-        if (!this.tomselect) new TomSelect(this);
+        if (!this.tomselect) new TomSelect(this, { dropdownParent: 'body' });
       });
     });
 

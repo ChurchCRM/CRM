@@ -209,7 +209,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/upgrade', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         
-        // Ensure we have fresh release information
         ChurchCRMReleaseManager::checkForUpdates();
         
         // Recompute update availability with fresh data
@@ -253,10 +252,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             $latestGitHubVersion = $_SESSION['systemLatestVersion']->__toString();
         }
         
-        // Get pre-release upgrade setting info
-        $prereleaseConfig = SystemConfig::getConfigItem('bAllowPrereleaseUpgrade');
-        $allowPrereleaseUpgrade = SystemConfig::getBooleanValue('bAllowPrereleaseUpgrade');
-        
         $pageArgs = [
             'sRootPath'             => SystemURLs::getRootPath(),
             'sPageTitle'            => gettext('System Upgrade'),
@@ -264,6 +259,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'aBreadcrumbs'          => PageHeader::breadcrumbs([
                 [gettext('Admin'), '/admin/'],
                 [gettext('System Upgrade')],
+            ]),
+            'sSettingsCollapseId'   => 'upgradeSettingsPanel',
+            'sPageHeaderButtons'    => PageHeader::buttons([
+                ['label' => gettext('Settings'), 'icon' => 'fa-cog', 'collapse' => '#upgradeSettingsPanel'],
             ]),
             'hasWarnings'           => $hasWarnings,
             'integrityCheckFailed'  => $integrityCheckFailed,
@@ -273,8 +272,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'availableVersion'      => $availableVersion,
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
-            'prereleaseConfig'      => $prereleaseConfig,
-            'allowPrereleaseUpgrade' => $allowPrereleaseUpgrade,
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);
