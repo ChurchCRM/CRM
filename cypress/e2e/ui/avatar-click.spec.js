@@ -152,6 +152,23 @@ describe("Avatar Click Behavior - Photo Lightbox", () => {
       // The button should have no .view-person-photo class (to avoid interference)
       cy.get("#uploadImageButton img").should("not.have.class", "view-person-photo");
     });
+
+    it("clicking person profile photo/initials opens Uppy upload dialog", () => {
+      cy.visit(`PersonView.php?PersonID=${personId}`);
+
+      // Click on the profile photo area (the upload button wrapping the avatar)
+      cy.get("#uploadImageButton").click();
+
+      // Verify the Uppy Dashboard modal appears
+      cy.get(".uppy-Dashboard--modal", { timeout: 5000 }).should("be.visible");
+
+      // Verify webcam button is present (Webcam plugin loaded)
+      cy.get(".uppy-DashboardTab-btn").should("exist");
+
+      // Close the modal
+      cy.get(".uppy-Dashboard-close").click();
+      cy.get(".uppy-Dashboard--modal").should("not.exist");
+    });
   });
 
   describe("Family Profile Avatar Clicks", () => {
@@ -184,6 +201,23 @@ describe("Avatar Click Behavior - Photo Lightbox", () => {
 
       // The image should not have .view-family-photo class (to avoid interference)
       cy.get("#uploadImageTrigger img").should("not.have.class", "view-family-photo");
+    });
+
+    it("clicking family profile photo/initials opens Uppy upload dialog", () => {
+      cy.visit(`v2/family/${familyId}`);
+
+      // Click on the family photo area (the upload trigger wrapping the avatar)
+      cy.get("#uploadImageTrigger").click();
+
+      // Verify the Uppy Dashboard modal appears
+      cy.get(".uppy-Dashboard--modal", { timeout: 5000 }).should("be.visible");
+
+      // Verify webcam button is present (Webcam plugin loaded)
+      cy.get(".uppy-DashboardTab-btn").should("exist");
+
+      // Close the modal
+      cy.get(".uppy-Dashboard-close").click();
+      cy.get(".uppy-Dashboard--modal").should("not.exist");
     });
 
     it("opens lightbox when clicking family member in other member tables", () => {
