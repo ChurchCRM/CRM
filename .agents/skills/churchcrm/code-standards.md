@@ -80,6 +80,24 @@ use ChurchCRM\Service\AuthService;
 
 **Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
 
+### Import Cleanup Gotcha: Casing Typos <!-- learned: 2026-03-29 -->
+
+When removing "unused" imports, verify the class is not referenced with **wrong casing** in the file body. PHP class resolution is case-insensitive on some filesystems, but `use` statement matching is exact — so a misspelled call like `FundraiserQuery::Create()` will make `use ChurchCRM\model\ChurchCRM\FundRaiserQuery` appear unused even though the code is broken.
+
+```php
+// ❌ TRAP — import looks unused but code is broken (wrong casing in call)
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery; // static analysis marks as unused
+// ...
+$q = FundraiserQuery::Create(); // lowercase 'r' — class not found at runtime → 500
+
+// ✅ CORRECT — casing matches import
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+// ...
+$q = FundRaiserQuery::create();
+```
+
+**Always do a case-sensitive grep for the short class name before removing its import.**
+
 ## Database Access Standards
 
 ```php

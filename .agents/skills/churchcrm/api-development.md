@@ -423,6 +423,33 @@ $params = [
 - Include required Nominatim headers: `User-Agent: ChurchCRM/7.0 (+https://churchcrm.io)`
 - Log API calls and responses for debugging geocoding issues
 
+## CSV Exports from API Endpoints <!-- learned: 2026-03-29 -->
+
+Use `CsvExporter` (`src/ChurchCRM/utils/CsvExporter.php`) for all CSV downloads from Slim routes. Return via PSR-7 response — never `header()` + `exit`.
+
+```php
+$exporter = new CsvExporter();
+$exporter->insertHeaders(['Col1', 'Col2']);
+
+// ✅ CORRECT — insert rows incrementally inside the loop (avoids buffering full result in memory)
+foreach ($source as $item) {
+    $exporter->insertRow([$item['a'], $item['b']]);
+}
+
+// ❌ WRONG — building $rows[] array then calling insertRows() buffers everything in RAM
+$rows = [];
+foreach ($source as $item) { $rows[] = [...]; }
+$exporter->insertRows($rows);
+
+$response = $response
+    ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
+    ->withHeader('Content-Disposition', 'attachment; filename="export.csv"');
+$response->getBody()->write($exporter->getContent());
+return $response;
+```
+
+**Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
+
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
