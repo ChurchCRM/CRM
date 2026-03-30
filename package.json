@@ -18,7 +18,7 @@
     },
     "homepage": "https://churchcrm.io",
     "engines": {
-        "node": ">=24.0.0 <25.0.0"
+        "node": ">=24.0.0"
     },
     "scripts": {
         "audit": "npm audit fix --only=prod --audit-level=high",
@@ -137,8 +137,8 @@
         "grunt": "^1.6.1",
         "grunt-cli": "^1.5.0",
         "grunt-contrib-copy": "^1.0.0",
+        "i18next-cli": "^1.51.0",
         "i18next-conv": "^16.0.0",
-        "i18next-parser": "^9.4.0",
         "mini-css-extract-plugin": "^2.10.2",
         "mysql2": "^3.20.0",
         "node-sha1": "^1.0.1",
