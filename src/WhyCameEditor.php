@@ -47,7 +47,7 @@ if (isset($_POST['Submit'])) {
 
     if (isset($_POST['Submit'])) {
         // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-        if ($linkBack != '') {
+        if ($linkBack !== '') {
             RedirectUtils::redirect($linkBack);
         } else {
             //Send to the view of this pledge

@@ -239,7 +239,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         $addrStr = '';
         if (!empty($family)) {
             $addrStr = $family->getAddress1();
-            if ($fam_Address2 != '') {
+            if ($fam_Address2 !== '') {
                 $addrStr .= ' ' . $family->getAddress2();
             }
             $addrStr .= ', ' . $family->getCity() . ', ' . $family->getState() . '  ' . $family->getZip();

@@ -63,10 +63,6 @@ msgid "Unk"
 msgstr "-"
 
 #: 
-msgid "NonDeductible"
-msgstr "Non-deductible"
-
-#: 
 msgid "You are about to email copy of the family information to the following emails"
 msgstr "You are about to email a copy of the family information to the following emails"
 
@@ -90,10 +86,6 @@ msgstr "Neighbour Families"
 #: 
 msgid "Show Neighbors"
 msgstr "Show Neighbours"
-
-#: 
-msgid "GroupRole"
-msgstr "Group Role"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -184,21 +176,6 @@ msgstr "Set true to enable use of scanned cheques"
 #: 
 msgid "Zip Code"
 msgstr "Postcode"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Work Email"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Enter any part of the following: Name, City, Province, Postcode, Home Phone, Email, or Work Email."
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Custom Search"
 
 #: 
 msgid "Page not fond"

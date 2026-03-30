@@ -57,7 +57,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
     $sUserName = InputUtils::legacyFilterInput($_POST['UserName']);
 
     if (strlen($sUserName) < 3) {
-        if ($NewUser == false) {
+        if ($NewUser === false) {
             //Report error for current user creation
             RedirectUtils::redirect('UserEditor.php?PersonID=' . $iPersonID . '&ErrorText=Login must be a least 3 characters!');
         } else {
@@ -121,8 +121,8 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $undupCount = UserQuery::create()->filterByUserName($sUserName)->_and()->filterByPersonId($iPersonID, Criteria::NOT_EQUAL)->count();
 
             // Write the SQL depending on whether we're adding or editing
-            if ($sAction == 'add') {
-                if ($undupCount == 0) {
+            if ($sAction === 'add') {
+                if ($undupCount === 0) {
                     $rawPassword = User::randomPassword();
 
                     // Use ORM to create new user
@@ -156,7 +156,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                     RedirectUtils::redirect('UserEditor.php?NewPersonID=' . $iPersonID . '&ErrorText=Login already in use, please select a different login!');
                 }
             } else {
-                if ($undupCount == 0) {
+                if ($undupCount === 0) {
                     $user = UserQuery::create()->findOneByPersonId($iPersonID);
                     $user
                         ->setAddRecords($AddRecords)
@@ -208,7 +208,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $dbPerson = PersonQuery::create()->findPk($iPersonID);
             $sUser = $dbPerson->getFullName();
-            if ($dbPerson->getEmail() != '') {
+            if ($dbPerson->getEmail() !== '') {
                 $sUserName = $dbPerson->getEmail();
             } else {
                 $sUserName = $dbPerson->getFirstName() . $dbPerson->getLastName();

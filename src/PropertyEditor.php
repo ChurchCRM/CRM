@@ -74,7 +74,7 @@ if (isset($_POST['Submit'])) {
     // If no errors, let's update
     if (!$bError) {
         // Vary the SQL depending on if we're adding or editing
-        if ($iPropertyID == 0) {
+        if ($iPropertyID === 0) {
             $property = new Property();
             $property
                 ->setProClass($sType)
@@ -97,7 +97,7 @@ if (isset($_POST['Submit'])) {
         RedirectUtils::redirect('PropertyList.php?Type=' . $sType);
     }
 } else {
-    if ($iPropertyID != 0) {
+    if ($iPropertyID !== 0) {
         // Get the data on this property
         $sSQL = 'SELECT * FROM property_pro WHERE pro_ID = ' . $iPropertyID;
         $rsProperty = mysqli_fetch_array(RunQuery($sSQL));

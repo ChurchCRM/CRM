@@ -68,7 +68,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Helper to escape HTML and prevent XSS
     function escapeHtml(text) {
-        if (text == null) return '';
+        if (text === null || text === undefined) return '';
         var div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;

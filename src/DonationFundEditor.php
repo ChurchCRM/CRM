@@ -193,7 +193,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($donationFunds->count() == 0) {
+        if ($donationFunds->count() === 0) {
         ?>
             <div class="alert alert-info" role="alert">
                 <i class="fa-solid fa-circle-info"></i>

@@ -155,7 +155,7 @@ for ($row = 1; $row <= $numRows; $row++) {
     }
 }
 
-if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
+if (InputUtils::legacyFilterInput($_POST['Action']) === 'NEW') {
     ?>
   <div class='card mb-4'>
     <div class='card-header'>
@@ -179,7 +179,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                 <select class="form-select" id="newEvtHour" name="newEvtHour" style="width: 70px;">
                   <?php
                   for ($h = 1; $h <= 12; $h++) {
-                      $selected = ($h == 9) ? 'selected' : '';
+                      $selected = ($h === 9) ? 'selected' : '';
                       echo '<option value="' . $h . '" ' . $selected . '>' . $h . '</option>';
                   }
                   ?>
@@ -189,7 +189,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
                   <?php
                   for ($m = 0; $m < 60; $m += 15) {
                       $min = str_pad($m, 2, '0', STR_PAD_LEFT);
-                      $selected = ($m == 0) ? 'selected' : '';
+                      $selected = ($m === 0) ? 'selected' : '';
                       echo '<option value="' . $min . '" ' . $selected . '>' . $min . '</option>';
                   }
                   ?>
@@ -270,7 +270,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
 <div class="card">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title"><?= gettext('Event Types') ?></h3>
-    <?php if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW'): ?>
+    <?php if (InputUtils::legacyFilterInput($_POST['Action']) !== 'NEW'): ?>
     <div class="card-tools ms-auto">
       <form name="AddEventNames" action="EventNames.php" method="POST" class="mb-0">
         <button type="submit" name="Action" value="NEW" class="btn btn-primary btn-sm">
@@ -348,7 +348,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) == 'NEW') {
 </div>
 
 <?php
-if (InputUtils::legacyFilterInput($_POST['Action']) != 'NEW') {
+if (InputUtils::legacyFilterInput($_POST['Action']) !== 'NEW') {
     // Add button is now in card header
 }
 ?>

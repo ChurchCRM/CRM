@@ -21,7 +21,7 @@ if ($iPaddleNumID > 0) {
     $iCurrentFundraiser = $_SESSION['iCurrentFundraiser'];
 }
 
-if ($iCurrentFundraiser == '') {
+if ($iCurrentFundraiser === '') {
     Bootstrapper::systemFailure('No active Fundraiser', 'System Error');
 }
 
@@ -164,7 +164,7 @@ require_once __DIR__ . '/Include/Header.php';
               while ($aRow = mysqli_fetch_array($rsPeople)) {
                   extract($aRow);
                   echo '<option value="' . (int)$per_ID . '"';
-                  if ($iPerID == $per_ID) {
+                  if ($iPerID === $per_ID) {
                       echo ' selected';
                   }
                   echo '>' . InputUtils::escapeHTML($per_LastName) . ', ' . InputUtils::escapeHTML($per_FirstName);
