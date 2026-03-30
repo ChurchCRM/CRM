@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 /**
- * Self-contained UI tests for Person Group Interactions on PersonView.php.
+ * UI tests for Person Group Interactions on PersonView.php.
  *
- * Uses API calls to ensure person 2 is in a known group before each test,
- * and cleans up afterwards so no test depends on seed-data state.
+ * Uses API calls to ensure person 2 is in a known group before each test.
+ * Depends on seed-data group "Church Board" (ID 9) existing.
  *
  * Design: API setup runs via admin API key (makePrivateAdminAPICall) BEFORE
  * the browser session is established. The standard session is then set up
@@ -17,28 +17,14 @@ describe("Person Group Interactions", () => {
 
     /**
      * Ensure person is a member of the test group via API.
-     * Uses admin API key so it works regardless of standard-user permissions.
-     * Tolerates 409/422 if the person is already in the group.
+     * The addperson endpoint silently succeeds if already a member (returns 200 either way).
      */
     function ensurePersonInGroup() {
         cy.makePrivateAdminAPICall(
             "POST",
             `/api/groups/${testGroupId}/addperson/${personId}`,
             { RoleID: 1 },
-            [200, 409, 422],
-        );
-    }
-
-    /**
-     * Remove person from the test group via API (cleanup helper).
-     * Tolerates 404 if the person is already removed.
-     */
-    function removePersonFromGroup() {
-        cy.makePrivateAdminAPICall(
-            "DELETE",
-            `/api/groups/${testGroupId}/removeperson/${personId}`,
-            null,
-            [200, 404],
+            [200],
         );
     }
 
@@ -55,27 +41,32 @@ describe("Person Group Interactions", () => {
             cy.get("#nav-item-groups").click();
             cy.get("#groups").should("be.visible");
 
-            // Should have at least one group listed
-            cy.get("#groups .list-group-item").should("have.length.gte", 1);
+            // The specific group we ensured membership in should be listed
+            cy.get("#groups .list-group-item")
+                .contains("Church Board")
+                .should("exist");
         });
 
         it("should show group action menu with View, Change Role, Remove", () => {
             cy.visit(`PersonView.php?PersonID=${personId}`);
             cy.get("#nav-item-groups").click();
 
-            // Open the first group's action dropdown
+            // Target the specific "Church Board" group row
             cy.get("#groups .list-group-item")
-                .first()
+                .contains("Church Board")
+                .closest(".list-group-item")
+                .as("groupRow");
+
+            // Open the group's action dropdown
+            cy.get("@groupRow")
                 .find("[data-bs-toggle='dropdown']")
                 .click();
-            cy.get("#groups .list-group-item")
-                .first()
+            cy.get("@groupRow")
                 .find(".dropdown-menu")
                 .should("be.visible");
 
             // Verify menu items exist
-            cy.get("#groups .list-group-item")
-                .first()
+            cy.get("@groupRow")
                 .find(".dropdown-menu")
                 .within(() => {
                     cy.contains("View Group");
@@ -88,15 +79,17 @@ describe("Person Group Interactions", () => {
             cy.visit(`PersonView.php?PersonID=${personId}`);
             cy.get("#nav-item-groups").click();
 
-            // Open the first group's action dropdown and click Remove
+            // Target the specific "Church Board" group row
             cy.get("#groups .list-group-item")
-                .first()
+                .contains("Church Board")
+                .closest(".list-group-item")
+                .as("groupRow");
+
+            // Open the group's action dropdown and click Remove
+            cy.get("@groupRow")
                 .find("[data-bs-toggle='dropdown']")
                 .click();
-            cy.get("#groups .list-group-item")
-                .first()
-                .find(".groupRemove")
-                .click();
+            cy.get("@groupRow").find(".groupRemove").click();
 
             // Bootbox confirmation should appear
             cy.get(".bootbox").should("be.visible");
