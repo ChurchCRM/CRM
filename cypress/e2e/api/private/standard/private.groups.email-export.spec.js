@@ -76,7 +76,7 @@ describe("API Private Groups Email Export", () => {
 
     describe("Authorization - Non-Admin Users", () => {
         it("Non-admin user without ManageGroups permission is denied", () => {
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "GET",
                 "/api/groups/sundayschool/export/email",
                 null,
@@ -158,7 +158,7 @@ describe("API Private Groups Sunday School Export", () => {
 
     describe("Authorization - Non-Admin Users", () => {
         it("Non-admin user without ManageGroups permission is denied", () => {
-            cy.makePrivateUserAPICall(
+            cy.makePrivateNoFinanceAPICall(
                 "GET",
                 "/api/groups/sundayschool/export/classlist",
                 null,
