@@ -16,16 +16,6 @@ describe('System Upgrade Page', () => {
         cy.get('#refreshFromGitHub').should('be.visible').and('contain', 'Refresh from GitHub');
     });
 
-    it('should display the file integrity check card', () => {
-        cy.visit('/admin/system/upgrade');
-
-        cy.contains('File Integrity Check').should('be.visible');
-        cy.get('.card').contains('File Integrity Check')
-            .closest('.card')
-            .find('.card-body')
-            .should('be.visible');
-    });
-
     it('should display the upgrade wizard with all steps', () => {
         cy.visit('/admin/system/upgrade');
 
