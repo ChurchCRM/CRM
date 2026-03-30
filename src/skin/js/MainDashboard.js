@@ -18,7 +18,7 @@ export function initializeMainDashboard() {
     setTimeout(() => initializeMainDashboard(), 500);
     return;
   }
-  // Helper to generate Tabler simple avatar with initials
+  // Helper to generate Tabler simple avatar with initials (not clickable)
   function generateTablerAvatar(name, id, type = "person") {
     const parts = name.trim().split(/\s+/);
     let initials = "";
@@ -33,10 +33,15 @@ export function initializeMainDashboard() {
     const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const color = colors[hash % colors.length];
 
-    const dataAttr = type === "person" ? `data-person-id="${id}"` : `data-family-id="${id}"`;
-    const viewClass = type === "person" ? "view-person-photo" : "view-family-photo";
+    return `<span class="avatar avatar-sm rounded-circle" style="background-color: ${color};"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
+  }
 
-    return `<span class="avatar avatar-sm rounded-circle ${viewClass}" ${dataAttr} style="background-color: ${color}; cursor: pointer;" title="${i18next.t("View Photo")}"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
+  // Helper to generate clickable photo img when row.HasPhoto === true
+  function generatePhotoImg(id, type) {
+    const viewClass = type === "person" ? "view-person-photo" : "view-family-photo";
+    const dataIdAttr = type === "person" ? `data-person-id="${id}"` : `data-family-id="${id}"`;
+    const photoUrl = window.CRM.root + `/api/${type}/${id}/photo`;
+    return `<img class="avatar avatar-sm rounded-circle ${viewClass}" src="${photoUrl}" ${dataIdAttr} alt="" style="cursor: pointer; object-fit: cover;" title="${i18next.t("View Photo")}" />`;
   }
 
   let dataTableDashboardDefaults = {
@@ -71,15 +76,9 @@ export function initializeMainDashboard() {
       data: "Name",
       render: function (data, type, row) {
         // Show photo if available, otherwise show Tabler avatar with initials
-        var photoIcon = "";
-        if (row.HasPhoto) {
-          photoIcon =
-            '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' +
-            row.FamilyId +
-            '" alt="" />';
-        } else {
-          photoIcon = generateTablerAvatar(row.Name, row.FamilyId, "family");
-        }
+        var photoIcon = row.HasPhoto
+          ? generatePhotoImg(row.FamilyId, "family")
+          : generateTablerAvatar(row.Name, row.FamilyId, "family");
         photoIcon += " ";
 
         // Render status badge only for inactive families
@@ -227,15 +226,9 @@ export function initializeMainDashboard() {
         render: function (data, type, row) {
           var ageText = row.Age ? ' <small class="text-muted">(' + row.Age + ")</small>" : "";
           // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = "";
-          if (row.HasPhoto) {
-            photoIcon =
-              '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' +
-              row.PersonId +
-              '" alt="" />';
-          } else {
-            photoIcon = generateTablerAvatar(row.FormattedName, row.PersonId, "person");
-          }
+          var photoIcon = row.HasPhoto
+            ? generatePhotoImg(row.PersonId, "person")
+            : generateTablerAvatar(row.FormattedName, row.PersonId, "person");
           photoIcon += " ";
           return (
             '<div class="d-flex align-items-center gap-3">' +
@@ -336,15 +329,9 @@ export function initializeMainDashboard() {
         data: "Name",
         render: function (data, type, row) {
           // Show photo if available, otherwise show Tabler avatar with initials
-          var photoIcon = "";
-          if (row.HasPhoto) {
-            photoIcon =
-              '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="family" data-image-entity-id="' +
-              row.FamilyId +
-              '" alt="" />';
-          } else {
-            photoIcon = generateTablerAvatar(data, row.FamilyId, "family");
-          }
+          var photoIcon = row.HasPhoto
+            ? generatePhotoImg(row.FamilyId, "family")
+            : generateTablerAvatar(data, row.FamilyId, "family");
           photoIcon += " ";
           return (
             '<div class="d-flex align-items-center gap-3">' +
@@ -446,15 +433,9 @@ export function initializeMainDashboard() {
       data: "FirstName",
       render: function (data, type, row) {
         // Show photo if available, otherwise show Tabler avatar with initials
-        var photoIcon = "";
-        if (row.HasPhoto) {
-          photoIcon =
-            '<img class="avatar avatar-sm rounded-circle" data-image-entity-type="person" data-image-entity-id="' +
-            row.PersonId +
-            '" alt="" />';
-        } else {
-          photoIcon = generateTablerAvatar(row.FirstName + " " + row.LastName, row.PersonId, "person");
-        }
+        var photoIcon = row.HasPhoto
+          ? generatePhotoImg(row.PersonId, "person")
+          : generateTablerAvatar(row.FirstName + " " + row.LastName, row.PersonId, "person");
         photoIcon += " ";
         return (
           '<div class="d-flex align-items-center gap-2">' +

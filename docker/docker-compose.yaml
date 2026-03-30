@@ -35,6 +35,7 @@ services:
       - ../src:/var/www/html
       - ..:/home/ChurchCRM
       - ../cypress/data/images/people:/var/www/html/Images/Person
+      - ../cypress/data/images/family:/var/www/html/Images/Family
     hostname: crm-webserver
     env_file:
       - .env
@@ -57,6 +58,7 @@ services:
       - ../src:/var/www/html
       - ..:/home/ChurchCRM
       - ../cypress/data/images/people:/var/www/html/Images/Person
+      - ../cypress/data/images/family:/var/www/html/Images/Family
     hostname: crm-webserver
     env_file:
       - .env
