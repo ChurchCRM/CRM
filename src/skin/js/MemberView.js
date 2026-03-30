@@ -54,6 +54,7 @@ $(document).on("click", ".view-person-photo", function (e) {
   if (window.CRM && window.CRM.showPhotoLightbox) {
     window.CRM.showPhotoLightbox("person", personId);
   }
+  e.preventDefault();
   e.stopPropagation();
 });
 
@@ -63,5 +64,6 @@ $(document).on("click", ".view-family-photo", function (e) {
   if (window.CRM && window.CRM.showPhotoLightbox) {
     window.CRM.showPhotoLightbox("family", familyId);
   }
+  e.preventDefault();
   e.stopPropagation();
 });

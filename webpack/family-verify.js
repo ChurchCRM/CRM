@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.CRM && window.CRM.showPhotoLightbox) {
         window.CRM.showPhotoLightbox("person", personId);
       }
+      e.preventDefault();
       e.stopPropagation();
       return;
     }
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (window.CRM && window.CRM.showPhotoLightbox) {
         window.CRM.showPhotoLightbox("family", familyId);
       }
+      e.preventDefault();
       e.stopPropagation();
     }
   });
