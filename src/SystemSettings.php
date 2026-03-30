@@ -160,7 +160,7 @@ function categoryId(string $category): string {
           <div class="card-header">
             <h3 class="card-title"><?= gettext($category) ?></h3>
           </div>
-          <div class="table-responsive">
+          <div style="overflow: visible;">
             <table class="table table-vcenter card-table">
               <thead>
                 <tr>
