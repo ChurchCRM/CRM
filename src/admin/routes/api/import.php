@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use League\Csv\Reader;
 use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -175,7 +176,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         $csv = Reader::createFromPath($tmpPath, 'r');
         $csv->setHeaderOffset(0);
 
-        $con = Propel::getWriteConnection(\ChurchCRM\model\ChurchCRM\Map\PersonTableMap::DATABASE_NAME);
+        $con = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
         $con->beginTransaction();
 
         $imported = 0;

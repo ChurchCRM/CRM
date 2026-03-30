@@ -4,7 +4,6 @@ namespace ChurchCRM\Reports;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
-use ChurchCRM\model\ChurchCRM\PersonCustomQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\MiscUtils;
 

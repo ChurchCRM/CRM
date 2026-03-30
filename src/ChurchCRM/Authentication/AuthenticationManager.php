@@ -9,7 +9,6 @@ use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\Authentication\Requests\AuthenticationRequest;
 use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\NotificationService;

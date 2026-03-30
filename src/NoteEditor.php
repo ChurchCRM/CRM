@@ -5,7 +5,6 @@ require_once __DIR__ . '/Include/Functions.php';
 require_once __DIR__ . '/Include/QuillEditorHelper.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\Utils\InputUtils;

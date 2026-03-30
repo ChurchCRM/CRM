@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\LoggerUtils;
