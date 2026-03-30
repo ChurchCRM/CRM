@@ -7,6 +7,20 @@ import Stepper from "bs-stepper";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import { marked } from "marked";
 
+// Configure marked: strip raw HTML to prevent XSS from release notes
+marked.use({
+  breaks: true,
+  renderer: {
+    html() {
+      return "";
+    },
+    link({ href, text }) {
+      const safeHref = href && /^https?:\/\//i.test(href) ? href : "#";
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    },
+  },
+});
+
 let upgradeStepper;
 
 // Ensure AdminAPIRequest is available - fallback to regular APIRequest if not defined

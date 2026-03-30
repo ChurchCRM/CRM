@@ -287,10 +287,6 @@ $orphanedCount = count($orphanedFiles);
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.js') ?>"></script>
 
-<?php
-require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
-?>
-
 <!-- System Settings Panel Component -->
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
@@ -313,3 +309,7 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<?php
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+?>
