@@ -7,7 +7,7 @@ describe("Admin Settings", () => {
 
     it("View system settings", () => {
         cy.visit("SystemSettings.php");
-        cy.contains("People Setup");
+        cy.contains("People");
         cy.contains("Enabled Features");
         cy.contains("Report Settings");
         cy.contains("Financial Settings");
