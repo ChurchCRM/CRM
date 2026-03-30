@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 04:13+0000\n"
+"POT-Creation-Date: 2026-03-30 05:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,6 +234,9 @@ msgid "About"
 msgstr ""
 
 msgid "About WebDAV Backups"
+msgstr ""
+
+msgid "Accept the device, then assign it to an event to begin check-in."
 msgstr ""
 
 msgid "Accepted format: .csv"
@@ -878,6 +881,9 @@ msgid "Assign starting at #"
 msgstr ""
 
 msgid "Assign to a Group"
+msgstr ""
+
+msgid "Assigned Kiosk"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -1620,6 +1626,9 @@ msgstr ""
 msgid "Class"
 msgstr ""
 
+msgid "Class / Group"
+msgstr ""
+
 msgid "Classes"
 msgstr ""
 
@@ -1672,6 +1681,9 @@ msgid "Click a bar to filter payments"
 msgstr ""
 
 msgid "Click the button below to test your WebDAV connection settings."
+msgstr ""
+
+msgid "Click the registration toggle above to open a 30-second registration window."
 msgstr ""
 
 msgid "Click to upload photo"
@@ -2959,9 +2971,6 @@ msgstr ""
 msgid "Enable HTTPS"
 msgstr ""
 
-msgid "Enable New Kiosk Registration"
-msgstr ""
-
 msgid "Enable Plugin"
 msgstr ""
 
@@ -2972,6 +2981,9 @@ msgid "Enable Sunday School left menu."
 msgstr ""
 
 msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+msgid "Enable new kiosk registration"
 msgstr ""
 
 msgid "Enable non-deductible payments"
@@ -4751,6 +4763,9 @@ msgstr ""
 msgid "Kiosk Manager"
 msgstr ""
 
+msgid "Kiosk Registration"
+msgstr ""
+
 msgid "Kiosk Registration Disabled"
 msgstr ""
 
@@ -6088,6 +6103,9 @@ msgstr ""
 msgid "Oman (‫عُمان‬‎)"
 msgstr ""
 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr ""
+
 msgid "Once"
 msgstr ""
 
@@ -7047,6 +7065,9 @@ msgstr ""
 msgid "Register Your Family"
 msgstr ""
 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr ""
+
 msgid "Register another family"
 msgstr ""
 
@@ -7796,6 +7817,9 @@ msgstr ""
 msgid "Setup Complete"
 msgstr ""
 
+msgid "Setup Instructions"
+msgstr ""
+
 msgid "Setup Progress"
 msgstr ""
 
@@ -8320,6 +8344,9 @@ msgstr ""
 msgid "The database has been cleared."
 msgstr ""
 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr ""
+
 msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
 msgstr ""
 
@@ -8553,6 +8580,9 @@ msgstr ""
 msgid "To select multiple hold CTL"
 msgstr ""
 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr ""
+
 msgid "To stop receiving these emails, you can email"
 msgstr ""
 
@@ -8575,6 +8605,9 @@ msgid "Toggle navigation"
 msgstr ""
 
 msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr ""
+
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
 msgstr ""
 
 #. Context: countries
@@ -8840,6 +8873,9 @@ msgid "Unverified Addresses"
 msgstr ""
 
 msgid "Upcoming Birthdays"
+msgstr ""
+
+msgid "Upcoming Sunday School Events"
 msgstr ""
 
 msgid "Update"
@@ -9405,9 +9441,6 @@ msgid "What happens next?"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
-msgstr ""
-
-msgid "When enabled, new kiosk devices can register for 30 seconds."
 msgstr ""
 
 msgid "Which role is a child?"
