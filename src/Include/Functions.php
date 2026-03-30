@@ -139,7 +139,7 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
             $selectedTag = ' selected';
         }
 
-        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . MakeFYString((int) $fy) . '</option>';
+        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . FinancialService::formatFiscalYear((int) $fy) . '</option>';
     }
 
     $selectableOptions = [
@@ -150,17 +150,6 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
     echo implode('', $selectableOptions);
 
     echo '</select>';
-}
-
-// Formats a fiscal year string
-function MakeFYString(int|string|null $iFYID): string
-{
-    if ($iFYID === null || $iFYID === '') {
-        return '';
-    }
-
-    // Delegate to FinancialService to centralize fiscal year formatting logic.
-    return FinancialService::formatFiscalYear((int) $iFYID);
 }
 
 // Runs an SQL query.  Returns the result resource.

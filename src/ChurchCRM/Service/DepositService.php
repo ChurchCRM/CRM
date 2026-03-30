@@ -36,7 +36,7 @@ class DepositService {
             $values->plg_FamID = $pledge->getFamId();
             $values->familyString = $family ? $family->getFamilyString() : '';
             $values->plg_FYID = $pledge->getFyId();
-            $values->FiscalYear = \MakeFYString($pledge->getFyId() ? (int) $pledge->getFyId() : null);
+            $values->FiscalYear = $pledge->getFyId() ? FinancialService::formatFiscalYear((int) $pledge->getFyId()) : '';
             $values->plg_date = $pledge->getDate();
             $values->plg_amount = $pledge->getAmount();
             $values->plg_schedule = $pledge->getSchedule();
