@@ -13,7 +13,7 @@
  *   skips adding click classes, so clicking opens the Uppy upload dialog instead.
  *
  * Seeded test data: persons 1, 2, 5, 10, 44, 213, 214 have uploaded photos.
- * NO families have uploaded photos. Person 2 is in family 1.
+ * Family 42 has an uploaded photo. Person 2 is in family 1.
  */
 
 describe("Avatar Click Behavior", () => {
@@ -21,8 +21,7 @@ describe("Avatar Click Behavior", () => {
 
   describe("Dashboard", () => {
     /**
-     * Helper: navigate to Latest People tab, wait for rows, return.
-     * Latest People is used because persons have seeded photos; families do not.
+     * Helper: navigate to Latest People tab, wait for rows with photos.
      */
     function openLatestPeopleTab() {
       cy.visit("v2/dashboard");
@@ -34,6 +33,23 @@ describe("Avatar Click Behavior", () => {
       cy.get("#latestPersonDashboardItem .view-person-photo", { timeout: 10000 })
         .should("have.length.at.least", 1);
     }
+
+    it("photo avatar in Latest Families opens lightbox", () => {
+      cy.visit("v2/dashboard");
+      cy.get("#latestFamiliesDashboardItem tbody tr", { timeout: 10000 })
+        .should("have.length.at.least", 1);
+
+      // Family 42 has an uploaded photo and appears in Latest Families
+      cy.get("#latestFamiliesDashboardItem .view-family-photo", { timeout: 10000 })
+        .first()
+        .click();
+
+      cy.get("#photo-lightbox").should("be.visible");
+      cy.get("#photo-lightbox img").should("have.attr", "src").and("include", "/photo");
+
+      cy.get("#photo-lightbox button").click();
+      cy.get("#photo-lightbox").should("not.exist");
+    });
 
     it("photo avatar in Latest People opens lightbox", () => {
       openLatestPeopleTab();
