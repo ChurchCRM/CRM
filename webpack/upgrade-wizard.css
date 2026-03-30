@@ -1,15 +1,15 @@
-/* Upgrade Wizard Styles */
+/* Upgrade Wizard Styles — Tabler-native */
 
-/* Stepper container */
+/* ── Stepper container ── */
 .bs-stepper {
   background: transparent;
 }
 
-/* Stepper header styling */
+/* ── Stepper header ── */
 .bs-stepper .bs-stepper-header {
-  padding: 2rem 1rem;
-  background: #f8f9fa;
-  border-bottom: 2px solid #dee2e6;
+  padding: 1.5rem 1rem;
+  background: var(--tblr-bg-surface-secondary, #f8fafc);
+  border-bottom: 1px solid var(--tblr-border-color, #e6e7e9);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -27,10 +27,10 @@
   outline: none;
   cursor: default;
   width: 100%;
-  transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: opacity 0.2s;
 }
 
 .bs-stepper .step-trigger:focus {
@@ -38,78 +38,74 @@
   outline: none;
 }
 
+/* ── Step circles ── */
 .bs-stepper .bs-stepper-circle {
-  width: 3.5rem;
-  height: 3.5rem;
-  line-height: 3.5rem;
-  font-size: 1.5rem;
-  font-weight: 400;
-  background: #fff;
-  border: 3px solid #dee2e6;
-  color: #6c757d;
+  width: 3rem;
+  height: 3rem;
+  font-size: 1.25rem;
+  background: var(--tblr-bg-surface, #fff);
+  border: 2px solid var(--tblr-border-color, #e6e7e9);
+  color: var(--tblr-secondary, #626976);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 0.5rem;
-  transition: all 0.3s ease;
+  margin-bottom: 0.375rem;
+  transition: all 0.2s;
 }
 
 .bs-stepper .step.active .bs-stepper-circle {
-  background: #007bff;
-  border-color: #007bff;
+  background: var(--tblr-primary);
+  border-color: var(--tblr-primary);
   color: #fff;
-  box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(var(--tblr-primary-rgb), 0.15);
 }
 
+/* ── Step labels ── */
 .bs-stepper .step .bs-stepper-label {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: #6c757d;
+  color: var(--tblr-secondary, #626976);
   display: block;
-  transition: all 0.3s ease;
+  transition: color 0.2s;
 }
 
 .bs-stepper .step.active .bs-stepper-label {
-  color: #007bff;
+  color: var(--tblr-primary);
   font-weight: 600;
 }
 
-/* Line between steps */
+/* ── Lines between steps ── */
 .bs-stepper .line {
   flex: 1;
-  background-color: #dee2e6;
+  background-color: var(--tblr-border-color, #e6e7e9);
   height: 2px;
   min-height: 2px;
-  margin: 0 1rem;
+  margin: 0 0.75rem;
   align-self: flex-start;
-  margin-top: 1.75rem;
-  position: relative;
+  margin-top: 1.5rem;
 }
 
-/* Warning step special styling */
+/* ── Warning step (orange) ── */
 .bs-stepper .warning-step .bs-stepper-circle {
-  background: #ffc107;
-  border-color: #ffc107;
+  background: var(--tblr-warning);
+  border-color: var(--tblr-warning);
   color: #fff;
 }
 
 .bs-stepper .warning-step.active .bs-stepper-circle {
-  background: #ff9800;
-  border-color: #ff9800;
-  box-shadow: 0 0 0 4px rgba(255, 152, 0, 0.2);
+  background: var(--tblr-warning);
+  border-color: var(--tblr-warning);
+  box-shadow: 0 0 0 3px rgba(var(--tblr-warning-rgb), 0.2);
 }
 
-.bs-stepper .warning-step .bs-stepper-label {
-  color: #856404;
-}
-
+.bs-stepper .warning-step .bs-stepper-label,
 .bs-stepper .warning-step.active .bs-stepper-label {
-  color: #ff9800;
+  color: var(--tblr-warning);
   font-weight: 600;
 }
 
-/* Content area styling */
+/* ── Content area ── */
 .bs-stepper-content {
   padding: 0;
 }
@@ -122,80 +118,98 @@
   display: block;
 }
 
-/* Button styling improvements */
-.btn-block {
-  display: block;
-  width: 100%;
-}
-
-/* Alert improvements for steps */
-.content .alert {
-  border-radius: 4px;
-}
-
-/* Update details card */
-#updateDetails {
-  background: #f8f9fa;
-}
-
-#updateDetails .card-header {
-  background: #fff;
-  border-bottom: 1px solid #dee2e6;
-}
-
-#releaseNotes {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+/* ── Release notes markdown ── */
+.release-notes {
+  background-color: var(--tblr-bg-surface-secondary, #f8fafc);
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
-/* List group improvements */
-.list-group-item {
-  border-left: 3px solid transparent;
+.release-notes h1,
+.release-notes h2,
+.release-notes h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.list-group-item:hover {
-  border-left-color: #007bff;
+.release-notes h1 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--tblr-border-color, #e6e7e9);
+  padding-bottom: 0.5rem;
 }
 
-/* Status icons in step headers */
-.content h4 .fa-circle {
-  font-size: 0.75rem;
-  vertical-align: middle;
-  margin-right: 0.5rem;
+.release-notes h2 {
+  font-size: 1.1rem;
+  border-bottom: 1px solid var(--tblr-border-color, #e6e7e9);
+  padding-bottom: 0.35rem;
 }
 
-/* Collapsible file integrity sections */
-.card-header .btn-link {
-  color: inherit;
-  text-decoration: none;
-  display: block;
-  width: 100%;
-  text-align: left;
+.release-notes h3 {
+  font-size: 1rem;
+}
+
+.release-notes ul,
+.release-notes ol {
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.release-notes li {
+  margin-bottom: 0.25rem;
+}
+
+.release-notes code {
+  padding: 0.125rem 0.25rem;
+  background: var(--tblr-bg-surface, #e9ecef);
+  border-radius: 3px;
+  font-size: 0.8125rem;
+}
+
+.release-notes pre {
+  padding: 0.75rem;
+  background: var(--tblr-bg-surface, #e9ecef);
+  border-radius: var(--tblr-border-radius, 4px);
+  overflow-x: auto;
+}
+
+.release-notes pre code {
   padding: 0;
+  background: transparent;
 }
 
-.card-header .btn-link:hover {
-  text-decoration: none;
+.release-notes p {
+  margin-bottom: 0.5rem;
 }
 
-.card-header .btn-link .fa-chevron-down {
-  transition: transform 0.3s ease;
+.release-notes a {
+  color: var(--tblr-primary);
 }
 
-.card-header .btn-link:not(.collapsed) .fa-chevron-down {
+.release-notes blockquote {
+  border-left: 3px solid var(--tblr-border-color, #e6e7e9);
+  padding-left: 1rem;
+  color: var(--tblr-secondary);
+  margin-bottom: 0.75rem;
+}
+
+/* ── Collapsible sections ── */
+.collapse-toggle .fa-chevron-down {
+  transition: transform 0.2s;
+}
+
+.collapse-toggle:not(.collapsed) .fa-chevron-down {
   transform: rotate(180deg);
 }
-/* Upgrade wizard card visibility */
-#upgrade-wizard-card {
-  display: none;
+
+/* ── Upgrade wizard card visibility ── */
+#upgrade-wizard-card.d-none {
+  display: none !important;
 }
 
-#upgrade-wizard-card.show {
-  display: block;
-}
-
-/* Full-page spinner overlay */
+/* ── Full-page spinner overlay ── */
 #upgradeSpinner {
   display: none;
   position: fixed;
@@ -219,6 +233,6 @@
 }
 
 #upgradeSpinner .spinner-icon {
-  font-size: 5rem;
-  margin-bottom: 20px;
+  font-size: 4rem;
+  margin-bottom: 1rem;
 }
