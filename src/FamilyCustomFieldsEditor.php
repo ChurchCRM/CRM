@@ -66,7 +66,7 @@ if (isset($_POST['SaveChanges'])) {
         if (isset($_POST[$iFieldID . 'special'])) {
             $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
-            if ($aSpecialFields[$iFieldID] == 0) {
+            if ($aSpecialFields[$iFieldID] === 0) {
                 $aSpecialErrors[$iFieldID] = true;
                 $bErrorFlag = true;
             } else {
@@ -369,7 +369,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     </div>
 
     <?php
-    if ($numRows == 0) {
+    if ($numRows === 0) {
     ?>
         <div class="alert alert-info">
             <i class="fa-solid fa-circle-info"></i>

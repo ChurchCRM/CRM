@@ -186,6 +186,26 @@ Check the actual route implementation before choosing `allowedStatuses`.
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
 
+### `allowedStatuses` must match what the API actually returns <!-- learned: 2026-03-29 -->
+
+Only pass status codes the endpoint genuinely returns. Adding extra codes defensively masks real setup failures.
+
+```javascript
+// ✅ group addperson is idempotent — always returns 200 (member or not)
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200]);
+
+// ✅ add-if-not-exists endpoint returns 409 when already present
+cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+// ✅ cleanup teardown: allow 404 in case item was already deleted
+cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+// ❌ defensive extra codes when API never returns them — hides real 422/500
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200, 409, 422]);
+```
+
+Check the actual route implementation before choosing `allowedStatuses`.
+
 ### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
 
 `freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.

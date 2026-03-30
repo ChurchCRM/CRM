@@ -61,9 +61,9 @@ class MyClass {
 2. All `use` statements (grouped by namespace, alphabetically within each group)
 3. Class declaration and code
 
-**PSR-12 Import Grouping:** <!-- learned: 2026-03-29 -->
+**ChurchCRM Import Grouping Convention (based on PSR-12):** <!-- learned: 2026-03-29 -->
 
-Group `ChurchCRM\*` imports first, then third-party imports (`Propel\*`, `Psr\*`, `Slim\*`, `League\*`, etc.), alphabetically within each group. No blank line between groups is required, but ordering must be consistent.
+Group `ChurchCRM\*` imports first, then third-party imports (`Propel\*`, `Psr\*`, `Slim\*`, `League\*`, etc.), alphabetically within each group. ChurchCRM's convention does **not** require a blank line between these groups (diverging from PSR-12 which does), but ordering must be consistent.
 
 ```php
 // ✅ CORRECT — ChurchCRM before third-party
@@ -79,6 +79,24 @@ use ChurchCRM\Service\AuthService;
 ```
 
 **Exception:** Only use `\` prefix for global functions in namespaced code (e.g., `\MakeFYString()`)
+
+### Import Cleanup Gotcha: Casing Typos <!-- learned: 2026-03-29 -->
+
+When removing "unused" imports, verify the class is not referenced with **wrong casing** in the file body. PHP class resolution is case-insensitive on some filesystems, but `use` statement matching is exact — so a misspelled call like `FundraiserQuery::Create()` will make `use ChurchCRM\model\ChurchCRM\FundRaiserQuery` appear unused even though the code is broken.
+
+```php
+// ❌ TRAP — import looks unused but code is broken (wrong casing in call)
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery; // static analysis marks as unused
+// ...
+$q = FundraiserQuery::Create(); // lowercase 'r' — class not found at runtime → 500
+
+// ✅ CORRECT — casing matches import
+use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
+// ...
+$q = FundRaiserQuery::create();
+```
+
+**Always do a case-sensitive grep for the short class name before removing its import.**
 
 ## Database Access Standards
 
@@ -100,6 +118,38 @@ $event['eventName'];  // TypeError: Cannot access offset on object
 - Cast dynamic IDs to (int)
 - Check `=== null` not `empty()` for objects
 - Access properties as objects: `$obj->prop`, never `$obj['prop']`
+
+## Strict vs Loose Comparisons — Type Safety Rules <!-- learned: 2026-03-29 -->
+
+When replacing `==`/`!=` with `===`/`!==`, you MUST cast the operands to matching types first. Legacy code uses `mysqli_fetch_array()` / `extract()` which return **strings**, not integers. Blindly switching to strict comparison breaks logic silently.
+
+```php
+// ❌ WRONG — $type_ID is "11" (string from DB), never matches int 11
+if ($type_ID === 11) { ... }
+
+// ✅ CORRECT — cast before strict comparison
+if ((int)$type_ID === 11) { ... }
+
+// ❌ WRONG — $bPrivate is undefined (null) for new forms, null !== 0 is TRUE
+if ($bPrivate !== 0) { echo 'checked'; }
+
+// ✅ CORRECT — use null coalescing to handle uninitialized variables
+if (($bPrivate ?? 0) !== 0) { echo 'checked'; }
+
+// ❌ WRONG — BOOLEAN column returns '0'/'1' string, not 'true'
+if ($grp_hasSpecialProps === 'true') { ... }
+
+// ✅ CORRECT — compare against expected DB return type
+if ((int)$grp_hasSpecialProps === 1) { ... }
+```
+
+**Rules for `==` → `===` migration:**
+- `mysqli_fetch_array()` / `extract()` values are always **strings** — cast to `(int)` before comparing to int literals
+- `$_GET` / `$_POST` values are always **strings** — use `(int)` cast or compare to string literals
+- Uninitialized variables are `null` — use `($var ?? default)` before strict comparison
+- Propel ORM getters return proper types — safe for direct strict comparison
+- `implode()` returns a **string** — don't compare to int 0
+- `mysqli_result` can be `false` on error — use `instanceof` check, not `!== 0`
 
 ## Global Functions from Namespaced Code
 
@@ -143,6 +193,24 @@ echo $notification?->title ?? 'No Title';
 // ❌ WRONG
 echo $notification->title;  // TypeError if null
 ```
+
+## HTML Output Escaping — Never Double-Escape <!-- learned: 2026-03-29 -->
+
+Store raw (sanitized) text in data arrays; call `escapeHTML()` only at the point of output. `sanitizeAndEscapeText()` already calls `htmlspecialchars()` internally — applying `escapeHTML()` on top of it double-encodes `&` → `&amp;amp;`, `<` → `&amp;lt;`, etc.
+
+```php
+// ❌ WRONG — sanitizeAndEscapeText() already HTML-encodes; escapeHTML() double-encodes
+$events[] = ['title' => InputUtils::sanitizeAndEscapeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;amp;" rendered literally
+
+// ✅ CORRECT — sanitize (strip tags) when storing; escape at output
+$events[] = ['title' => InputUtils::sanitizeText($row['event_title'])];
+// ...
+echo InputUtils::escapeHTML($event['title']); // "&amp;" rendered as "&"
+```
+
+**Rule:** `sanitizeText()` → strips tags/trims (safe to store). `escapeHTML()` → HTML-encodes for output. Never chain both on the same value.
 
 ## Email Handling in APIs
 

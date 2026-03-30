@@ -48,12 +48,12 @@ class EmailPdfConfirmReport extends ChurchInfoReport
         $curY += 2 * SystemConfig::getValue('incrementY');
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm4'));
 
-        if (SystemConfig::getValue('sConfirm5') != '') {
+        if (SystemConfig::getValue('sConfirm5') !== '') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm5'));
             $curY += 2 * SystemConfig::getValue('incrementY');
         }
-        if (SystemConfig::getValue('sConfirm6') != '') {
+        if (SystemConfig::getValue('sConfirm6') !== '') {
             $curY += 2 * SystemConfig::getValue('incrementY');
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, SystemConfig::getValue('sConfirm6'));
         }
@@ -296,7 +296,7 @@ foreach ($families as $family) {
                 }
                 $numWide += 1; // increment the number of columns done
                 $xInc += (2 * $xSize); // Increment the X position by about 1/2 page width
-                if (($numWide % 2) == 0) { // 2 columns
+                if (($numWide % 2) === 0) { // 2 columns
                     $xInc = $XName; // Reset margin
                     $curY += SystemConfig::getValue('incrementY');
                 }

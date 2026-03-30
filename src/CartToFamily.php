@@ -91,7 +91,7 @@ if (isset($_POST['Submit']) && count($_SESSION['aPeopleCart']) > 0) {
             $per_fam_ID = $person->getFamId();
 
             // Make sure they are not already in a family
-            if ($per_fam_ID != 0) {
+            if ($per_fam_ID !== 0) {
                 throw new \Exception(sprintf('person (%d) is already assigned to family (%s)', $iPersonID, $per_fam_ID));
             }
             $iFamilyRoleID = InputUtils::legacyFilterInput($_POST['role' . $iPersonID], 'int');
@@ -173,7 +173,7 @@ echo $sError;
                 echo '<td><a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . FormatFullName($cartPerson->getTitle(), $cartPerson->getFirstName(), $cartPerson->getMiddleName(), $cartPerson->getLastName(), $cartPerson->getSuffix(), 1) . '</a>' . $photoIcon . '</td>';
 
                 echo '<td class="text-center">';
-                if ($cartPerson->getFamId() == 0) {
+                if ($cartPerson->getFamId() === 0) {
                     echo '<select name="role' . $cartPerson->getId() . '">' . $sRoleOptionsHTML . '</select>';
                 } else {
                     echo gettext('Already in a family');
@@ -214,7 +214,7 @@ echo $sError;
             echo '<option value="0">' . gettext('Only the new data below') . '</option>';
             mysqli_data_seek($rsCartItems, 0);
             while ($aRow = mysqli_fetch_array($rsCartItems)) {
-                if ($per_fam_ID == 0) {
+                if ($per_fam_ID === 0) {
                     echo sprintf('<option value="%s">%s %s</option>', $aRow['per_ID'], InputUtils::escapeHTML($aRow['per_FirstName']), InputUtils::escapeHTML($aRow['per_LastName']));
                 }
             }
