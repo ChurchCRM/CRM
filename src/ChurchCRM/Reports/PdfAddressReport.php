@@ -15,7 +15,7 @@ class PdfAddressReport extends ChurchInfoReport
     {
         //Computes the number of lines a MultiCell of width w will take
         $cw = &$this->CurrentFont['cw'];
-        if ($w == 0) {
+        if ($w === 0) {
             $w = $this->w - $this->rMargin - $this->x;
         }
         $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;

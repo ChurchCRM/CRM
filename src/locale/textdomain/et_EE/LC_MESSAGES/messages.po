@@ -221,19 +221,6 @@ msgid "Create File"
 msgstr "Koosta fail"
 
 #: 
-msgid "No file selected for upload."
-msgstr "Ühtegi faili pole üleslaadimiseks valitud."
-
-#: 
-#, fuzzy
-msgid "Total number of rows in the CSV file"
-msgstr "CSV on kokku ridu"
-
-#: 
-msgid "Ignore this Field"
-msgstr "Jäta see vahele"
-
-#: 
 msgid "Title"
 msgstr "Pealkiri"
 
@@ -245,10 +232,6 @@ msgstr "Eesliide"
 #: 
 msgid "Gender"
 msgstr "Sugu"
-
-#: 
-msgid "Donation Envelope"
-msgstr "Annetuse ümbrik"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -275,59 +258,10 @@ msgstr "Sünni kuupäev"
 msgid "Wedding Date"
 msgstr "Pulma - laulatuse kuupäev"
 
-#: 
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr "Jäta CSV esimene rida vahele"
-
-#: 
-msgid "Make Family records based on last name and address"
-msgstr "Koosta uus perekond perekonnanime ja aadressi järgi"
-
-#: 
-msgid "Patriarch"
-msgstr "Perekonnapea (Isa)"
-
-#: 
-msgid "Matriarch"
-msgstr "Perekonnapea (ema)"
-
-#: 
-msgid "Family Type: used with Make Family records... option above"
-msgstr "Perekonna liik: kasutatakse perekonna faili loomisel ... valikuline"
-
-#: 
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "MÄRKUS: Eraldajad (komad, jne.) ei oma tähtsust"
-
-#: 
-msgid "Default country if none specified otherwise"
-msgstr "Pemine riik kui ei ole määratud teisiti"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Klassifikaator"
-
-#: 
-msgid "Perform Import"
-msgstr "Valmista import"
-
-#: 
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "VIGA: üleslaetud CSV faili ei ole enam!"
-
-#: 
-msgid "Upload CSV File"
-msgstr "Lae CSV fail üles"
-
-#: 
-msgid "Data import successful."
-msgstr "Andmete import õnnestus."
-
-#: 
-#, fuzzy
-msgid "people were imported"
-msgstr "inimest imporditi"
 
 #: 
 msgid "Add Cart to Event"
@@ -407,10 +341,6 @@ msgid "Add to Group"
 msgstr "Lisa grupp"
 
 #: 
-msgid "View Your Cart"
-msgstr "Vaata oma korvi"
-
-#: 
 msgid "You have no items in your cart."
 msgstr "Sul ei ole korvis midagi."
 
@@ -433,22 +363,6 @@ msgstr "Tühjenda pere korv"
 #: 
 msgid "Map Cart"
 msgstr "Kaardikogu"
-
-#: 
-msgid "Name Tags"
-msgstr "Nime Tag"
-
-#: 
-msgid "Email Cart"
-msgstr "E-posti korv"
-
-#: 
-msgid "Email (BCC)"
-msgstr "E-post (BCC)"
-
-#: 
-msgid "Create Directory From Cart"
-msgstr "Loo kataloog korvist"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -486,10 +400,6 @@ msgstr "Ürituste registreerimine"
 #: 
 msgid "Select Event"
 msgstr "Vali sündmus"
-
-#: 
-msgid "CheckOut"
-msgstr "Kirjuta välja"
 
 #: 
 msgid "Checked In Time"
@@ -793,11 +703,6 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Pank"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Month"
-msgstr "Kuu"
-
 #: 
 msgid "Year"
 msgstr "Aasta"
@@ -1059,10 +964,6 @@ msgid "Pledges and Payments"
 msgstr "Annetused ja maksed"
 
 #: 
-msgid "No property assignments."
-msgstr "Omadus puudub."
-
-#: 
 msgid "Value"
 msgstr "Väärtus"
 
@@ -1087,14 +988,6 @@ msgid "Updated By"
 msgstr "Uuendas"
 
 #: 
-msgid "Show Pledges"
-msgstr "Näita Annetusi"
-
-#: 
-msgid "Show Payments"
-msgstr "Kuva maksed"
-
-#: 
 msgid "Since"
 msgstr "Alates"
 
@@ -1103,16 +996,8 @@ msgid "Update"
 msgstr "Uuenda"
 
 #: 
-msgid "Pledge or Payment"
-msgstr "Annetuse tasumine"
-
-#: 
 msgid "Date"
 msgstr "Kuupäev"
-
-#: 
-msgid "NonDeductible"
-msgstr "Lahutamatu"
 
 #: 
 msgid "Schedule"
@@ -1324,11 +1209,6 @@ msgstr "Mõõdukas detailsus"
 #: 
 msgid "Summary Data"
 msgstr "Kokkuvõtlikud andmed"
-
-#: 
-#, fuzzy
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
-msgstr "Hääleõiguslikud liikmed peavad olema annetuse teinud selle paljude aastate jooksul <br> (0, et annetust mitte nõuda)"
 
 #: 
 msgid "CSV"
@@ -1611,69 +1491,12 @@ msgid "Person View"
 msgstr "Isiku vaade"
 
 #: 
-msgid "Group reports"
-msgstr "Grupi aruanded"
-
-#: 
-msgid "Select the group you would like to report"
-msgstr "Valige rühm, millest soovite teatada"
-
-#: 
-msgid "No Role Selected"
-msgstr "Ühtegi rolli pole valitud"
-
-#: 
-#, fuzzy
-msgid "Only cart people?"
-msgstr "Ainult korvi isikud?"
-
-#: 
-msgid "Report Model"
-msgstr "Aruandemudel"
-
-#: 
-msgid "Report for group and role selected"
-msgstr "Aruanne valitud rühma ja rolli kohta"
-
-#: 
-msgid "Report for any role in group selected"
-msgstr "Teatage valitud rühma mis tahes rollist"
-
-#: 
-msgid "Select which information you want to include"
-msgstr "Valige, millist teavet soovite lisada"
-
-#: 
-msgid "Standard Info"
-msgstr "Tavaline teave"
-
-#: 
 msgid "Other Email"
 msgstr "Muu e-post"
 
 #: 
-msgid "GroupRole"
-msgstr "GrupiRoll"
-
-#: 
-msgid "Group-Specific Property Fields"
-msgstr "Grupi spetsiifilised väljad"
-
-#: 
-msgid "Undefined"
-msgstr "Määratlemata"
-
-#: 
 msgid "Group View"
 msgstr "Grupi vaade"
-
-#: 
-msgid "Edit this Group"
-msgstr "Muuda seda rühma"
-
-#: 
-msgid "Delete this Group"
-msgstr "Kustuta see rühm"
 
 #: 
 msgid "Confirm Delete Group"
@@ -1696,62 +1519,12 @@ msgid "Please select target group for members"
 msgstr "Valige liikmete jaoks sihtgrupp"
 
 #: 
-msgid "Add Group Members to Cart"
-msgstr "Lisage rühma liikmed korvi"
-
-#: 
-msgid "Map this group"
-msgstr "Kaardista see grupp"
-
-#: 
-msgid "Email Group"
-msgstr "Rühma E-kiri"
-
-#: 
-msgid "Total Members"
-msgstr "Liikmeid kokku"
-
-#: 
 msgid "Default Role"
 msgstr "Vaike roll"
 
 #: 
 msgid "Group-Specific Properties"
 msgstr "Grupi spetsiifilised omadused"
-
-#: 
-msgid "Disabled for this group."
-msgstr "Selle rühma jaoks keelatud."
-
-#: 
-msgid "Assigned Properties"
-msgstr "Määratud omadused"
-
-#: 
-#, fuzzy
-msgid "Group Members"
-msgstr "Grupi liikmed"
-
-#: 
-msgid "Remove Selected Members from group"
-msgstr "Eemalda valitud liikmed grupist"
-
-#: 
-msgid "Add Selected Members to Cart"
-msgstr "Lisage valitud liikmed korvi"
-
-#: 
-msgid "Add Selected Members to Group"
-msgstr "Lisage valitud liikmed rühma"
-
-#: 
-msgid "Move Selected Members to Group"
-msgstr "Teisalda valitud liikmed gruppi"
-
-#: 
-#, fuzzy
-msgid "Add Group Member"
-msgstr "Lisa rühma liige"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -1780,10 +1553,6 @@ msgstr "Vale nimi või parool"
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Liiga palju ebaõnnestunud sisselogimisi: teie konto on lukustatud. Palun pöörduge administraatori poole."
-
-#: 
-msgid "Please Login"
-msgstr "Palun logige sisse"
 
 #: 
 msgid "Email/Username"
@@ -1846,10 +1615,6 @@ msgid "Email All"
 msgstr "Saada e-kiri kõigile"
 
 #: 
-msgid "Email All (BCC)"
-msgstr "Saada kõik e-postiga (BCC)"
-
-#: 
 msgid "Family Roles"
 msgstr "Perekonna rollid"
 
@@ -1866,36 +1631,12 @@ msgid "Families"
 msgstr "Perekonnad"
 
 #: 
-msgid "See all Families"
-msgstr "Vaadake kõiki peresid"
-
-#: 
 msgid "People"
 msgstr "Inimesed"
 
 #: 
-msgid "See All People"
-msgstr "Vaata kõiki inimesi"
-
-#: 
 msgid "Sunday School Kids"
 msgstr "Pühapäevakooli lapsed"
-
-#: 
-msgid "More info"
-msgstr "Rohkem infot"
-
-#: 
-msgid "Reports on groups and roles"
-msgstr "Aruanded rühmade ja rollide kohta"
-
-#: 
-msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "Aruanne valitud rühma ja rollide kohta (see võib olla mitmeleheküljeline PDF)."
-
-#: 
-msgid "Generate letters and mailing labels."
-msgstr "Genereerige kirjad ja ümbriku kleebised."
 
 #: 
 msgid "Role / Gender"
@@ -1904,10 +1645,6 @@ msgstr "Roll / sugu"
 #: 
 msgid "Count"
 msgstr "Loenda"
-
-#: 
-msgid "People Classification"
-msgstr "Inimeste klassifikaator"
 
 #: 
 msgid "Gender Demographics"
@@ -2094,32 +1831,12 @@ msgid "Not assigned"
 msgstr "Pole määratud"
 
 #: 
-msgid "Printable Page"
-msgstr "Prinditav leht"
-
-#: 
-msgid "Edit \"Why Came\" Notes"
-msgstr "Redigeerige märkmeid \"Miks tuli\""
-
-#: 
-msgid "Delete this Record"
-msgstr "Kustuta see kirje"
-
-#: 
 msgid "Make User"
 msgstr "Tee kasutajaks"
 
 #: 
 msgid "Edit User"
 msgstr "Redigeeri kasutajat"
-
-#: 
-msgid "List Members"
-msgstr "Loetlege liikmed"
-
-#: 
-msgid "No group assignments."
-msgstr "Rühmaülesandeid pole."
 
 #: 
 msgid "Change Role"
@@ -2132,10 +1849,6 @@ msgstr "Värskenda atribuute"
 #: 
 msgid "Assign New Group"
 msgstr "Määra uus rühm"
-
-#: 
-msgid "No volunteer opportunity assignments."
-msgstr "Vabatahtlike tööülesandeid pole."
 
 #: 
 msgid "Assign a New Volunteer Opportunity"
@@ -2226,45 +1939,16 @@ msgid "Non-deductible amount"
 msgstr "Mahaarvatav summa"
 
 #: 
-msgid "Printable View"
-msgstr "Prindi vaade"
-
-#: 
 msgid "Age"
 msgstr "Vanus"
-
-#: 
-msgid "Assigned Groups"
-msgstr "Määratud rühmad"
 
 #: 
 msgid "Group Name"
 msgstr "Grupi nimi"
 
 #: 
-#, fuzzy
-msgid "Entered"
-msgstr "Sisestatud"
-
-#: 
 msgid "by"
 msgstr "kelle poolt"
-
-#: 
-msgid "Property successfully assigned."
-msgstr "Omaduson edukalt määratud."
-
-#: 
-msgid " Property Assignment"
-msgstr "Välja jaotamine"
-
-#: 
-msgid "Assigning"
-msgstr "Jaotamine"
-
-#: 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Selle välja kustutamisel kustutatakse ka kõik selle omandiõigused mis tahes inimeste, perekonna või grupi kirjetele."
 
 #: 
 msgid "No, cancel this deletion"
@@ -2293,11 +1977,6 @@ msgstr "Väärtuse valiku sisestamine võimaldab vabas vormis väärtuse seostad
 #: 
 msgid "Property List"
 msgstr "Välja nimekiri"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Property"
-msgstr "Väli"
 
 #: 
 msgid "Prompt"
@@ -2329,65 +2008,12 @@ msgid "Properties"
 msgstr "Omadused"
 
 #: 
-msgid " Property Unassignment"
-msgstr "Omaduste loovutamine"
-
-#: 
-msgid "Please confirm removal of this property from this"
-msgstr "Kinnitage selle omaduse eemaldamine sellest"
-
-#: 
-msgid "Unassigning"
-msgstr "Tühistamine"
-
-#: 
-msgid "Yes, unassign this Property"
-msgstr "Jah, tühistage selle omaduse määramine"
-
-#: 
-msgid "No, retain this assignment"
-msgstr "Ei, säilitage see ülesanne"
-
-#: 
 msgid "Query Listing"
 msgstr "Päringute loetelu"
 
 #: 
-msgid "Free-Text Query"
-msgstr "Vaba teksti päring"
-
-#: 
-msgid "Export Results to CSV file"
-msgstr "Ekspordi tulemused CSV-faili"
-
-#: 
-msgid "Execute SQL"
-msgstr "Käivitage SQL"
-
-#: 
-#, fuzzy
-msgid "An error occurred"
-msgstr "Ilmnes viga"
-
-#: 
 msgid " record(s) returned"
 msgstr " kirjet (id) tagastatud"
-
-#: 
-msgid "Add Results To Cart"
-msgstr "Lisage tulemused korvi"
-
-#: 
-msgid "Intersect Results With Cart"
-msgstr "Ristlõikega tulemused korvi"
-
-#: 
-msgid "Remove Results From Cart"
-msgstr "Eemalda tulemused korvist"
-
-#: 
-msgid "Return to Query Menu"
-msgstr "Naaske päringumenüüsse"
 
 #: 
 msgid "Query View"
@@ -2506,10 +2132,6 @@ msgid "Default User Settings"
 msgstr "Kasutaja vaikeseaded"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "Määrake luba True, et anda uutele kasutajatele võimalus muuta oma praegust väärtust. <BR>"
-
-#: 
 msgid "Permission"
 msgstr "Luba"
 
@@ -2605,10 +2227,6 @@ msgstr "Stiil"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Määrake luba True, et anda sellele kasutajale võimalus muuta oma praegust väärtust."
-
-#: 
-msgid "User Settings"
-msgstr "Kasutaja seaded"
 
 #: 
 msgid "Last Login"
@@ -2851,14 +2469,6 @@ msgid "Error text"
 msgstr "Vea tekst"
 
 #: 
-msgid "Issue Report!"
-msgstr "Väljaannete aruanne!"
-
-#: 
-msgid "No personally identifiable information will be submitted unless you purposefully include it."
-msgstr "Isiku tuvastamist võimaldavat teavet ei esitata, kui te pole selle sihipäraselt lisanud."
-
-#: 
 msgid "Dashboard"
 msgstr "Töölaud"
 
@@ -3075,10 +2685,6 @@ msgid "Sunday School"
 msgstr "Pühapäevakool"
 
 #: 
-msgid "Sunday School Class Functions"
-msgstr "Pühapäevakooli klassi funktsioonid"
-
-#: 
 msgid "Teachers"
 msgstr "Õpetajad"
 
@@ -3109,14 +2715,6 @@ msgstr "Klassid"
 #: 
 msgid "Sunday School Reports"
 msgstr "Pühapäevakooli auanded"
-
-#: 
-msgid "Generate class lists and attendance sheets"
-msgstr "Genereerige klasside nimekirjad ja osalemislehed"
-
-#: 
-msgid "Export All Classes, Kids, and Parent to CSV file"
-msgstr "Ekspordi CSV-faili kõik klassid, lapsed ja lapsevanemad"
 
 #: 
 msgid "Students not in a Sunday School Class"
@@ -3247,10 +2845,6 @@ msgid "Church Information"
 msgstr "Koguduse teave"
 
 #: 
-msgid "Email Setup"
-msgstr "E-posti seadistamine"
-
-#: 
 msgid "Map Settings"
 msgstr "Kaardiseaded"
 
@@ -3269,10 +2863,6 @@ msgstr "Seade on salvestatud"
 #: 
 msgid "Edit JSON Settings"
 msgstr "Redigeeri JSON-i sätteid"
-
-#: 
-msgid "Default Value"
-msgstr "Vaikeväärtus"
 
 #: 
 msgid "False"
@@ -3327,10 +2917,6 @@ msgid "Anonymous"
 msgstr "Anonüümne"
 
 #: 
-msgid "Registration Complete"
-msgstr "Registreerimine on lõpule viidud"
-
-#: 
 msgid "Add All Classes"
 msgstr "Lisage kõik klassid"
 
@@ -3357,15 +2943,6 @@ msgstr "Kustuta kõik fondid"
 #: 
 msgid "Deposit Comment"
 msgstr "Sissemakse kommentaar"
-
-#: 
-msgid "Your previous session timed out.  Please login again."
-msgstr "Teie eelmine seanss aegus. Palun logi uuesti sisse."
-
-#: 
-#, fuzzy
-msgid "Register a New Family"
-msgstr "Registreeri uus pere"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -3417,10 +2994,6 @@ msgid "Date Entered"
 msgstr "Sisestamise kuupäev"
 
 #: 
-msgid "CSV Import"
-msgstr "CSV Import"
-
-#: 
 msgid "There were "
 msgstr "Seal olid"
 
@@ -3437,16 +3010,8 @@ msgid "Filter by Fund"
 msgstr "Filtreeri fondi järgi"
 
 #: 
-msgid "Estimated value"
-msgstr "Eeldatav väärtus"
-
-#: 
 msgid "Disable Group Specific Properties"
 msgstr "Keela rühmaspetsiifilised atribuudid"
-
-#: 
-msgid "Text Group"
-msgstr "Tekstigrupp"
 
 #: 
 msgid "Group Properties"
@@ -3639,10 +3204,6 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooksi sissemakse kviitungi seaded"
 
 #: 
-msgid "List Groups"
-msgstr "Gruppide nimekiri"
-
-#: 
 msgid "List Church Events"
 msgstr "Koguduse sündmuste nimekiri"
 
@@ -3669,10 +3230,6 @@ msgstr "Sissemakse aruanded"
 #: 
 msgid "Edit Deposit Slip"
 msgstr "Redigeerige sissemakse sedeleid"
-
-#: 
-msgid "View All Fundraisers"
-msgstr "Vaadake kõiki korjandusi"
 
 #: 
 msgid "Create New Fundraiser"
@@ -3715,320 +3272,15 @@ msgstr "Omaduse tüübid"
 msgid "Zip Code"
 msgstr "Postiindeks"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "TööEmail"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Regular Attender"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Külaline"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Mitteosaleja"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Mitteosaleja (personal)"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Minimaalne vanus"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Maximum Age"
-msgstr "Maksimaalne vanus"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Alguskuupäev"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Lõppkuupäev"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Search"
-msgstr "Otsing"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Field"
 msgstr "Väli"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Vabatahtlike võimalused"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Months"
-msgstr "Kuud"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Esimene majandusaasta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Teine majandusaasta"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Kohandatud väli"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Välja väärtus"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The minimum age for which you want records returned."
-msgstr "Minimaalne vanus, mille kohta soovite kirjed tagasi saata."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Maksimaalne vanus, mille kohta soovite kirjed tagasi saata."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The desired gender to search the database for."
-msgstr "Soovitud sugu andmebaasist otsimiseks."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Valige soovitud pereroll."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Sugu, mille kohta soovite tagasi saada kirjed."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Omadus, mille kohta soovite isikuandmeid näidata."
-
-#. Context: queryparameters_qrp
-#: 
-#, fuzzy
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Iga liikme kogupanuse arvutamiseks vali alguskuupäev (s.o. AAAA-KK-PP). MÄRKUS. Saate valida ainult annetusi sisaldavaid kuupäevi."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Sisestage iga liikme kogupanuse arvutamiseks viimane kuupäev (st. AAAA-KK-PP)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Sisestage mõni järgmistest osadest: nimi, linn, osariik, postiindeks, kodutelefon, e-post või tööaadress."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Valige otsitav väli."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Sünnipäevakuu, mille kohta soovite kirjed tagasi saata."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Pühapäevakooli klass, mille kohta soovite teavet saada."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Liikmelisuse aastapäev, mille kohta soovite teavet saada."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Valige vabatahtliku võimalus"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Number of months since becoming a friend"
-msgstr "Kuude arv alates sõbraks saamisest"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Esimene majandusaasta võrdluseks"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Teine majandusaasta võrdluseks"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Sel aastal lubatud"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "kuid mitte sel aastal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Liige, tavaline osaleja jne."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Esimene vabatahtliku võimaluse valik"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Teine vabatahtliku võimaluse valik"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Valige kliendi isiku väli"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Match custom field to this value"
-msgstr "Sobitage kohandatud väli selle väärtusega"
-
-#. Context: query_qry
-#: 
-msgid "Person by Property"
-msgstr "Isik omaduse järgi"
-
 #. Context: query_qry
 #: 
 msgid "Birthdays"
 msgstr "Sünnipäevad"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Liikmelisuse tähtpäevad"
-
-#. Context: query_qry
-#: 
-msgid "Volunteers"
-msgstr "Vabatahtlikud"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Hiljutised sõbrad"
-
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Lubaduste võrdlus"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Puuduvad lubadused"
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "Kohandatud otsing"
-
-#. Context: query_qry
-#: 
-msgid "Returns person records which are assigned the given property."
-msgstr "Näitab isikukirjed, millele on määratud antud omadust."
-
-#. Context: query_qry
-#: 
-msgid "People with birthdays in a particular month"
-msgstr "Inimesed, kellel on konkreetsel kuul sünnipäev"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Liikmed, kes liitusid konkreetsel kuul"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Otsige konkreetse võimaluse jaoks vabatahtlikke"
-
-#. Context: query_qry
-#: 
-msgid "Friends who signed up in previous months"
-msgstr "Sõbrad, kes registreerusid eelmistel kuudel"
-
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Võrrelge kahe eelarveaasta lubadusi"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Leidke inimesi, kes lubasid ühe aasta, kuid mitte teise aasta"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Otsige vabatahtlikke, kes vastavad kahele konkreetsele võimalusekoodile"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Otsige kohandatud välja väärtusega inimesi"
-
-#: 
-msgid "Last Edited"
-msgstr "Viimati muudetud"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to send email via mailto: links"
-msgstr "Kasutaja luba saata emeili mailto: linkide kaudu"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Eraldage e-kirjad mailto: linkides"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Kasutaja luba kataloogide loomiseks"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Allow user to add new event"
-msgstr "Luba kasutajal lisada uus sündmus"
 
 #: 
 msgid "Weekly on"
@@ -4137,10 +3389,6 @@ msgstr "ei ole lubatud."
 #: 
 msgid "Name for New"
 msgstr "Uus nimi"
-
-#: 
-msgid "Imported"
-msgstr "Imporditud"
 
 #: 
 msgid "Created via Family"
@@ -5474,10 +4722,6 @@ msgid "Family Verification"
 msgstr "Perekonna kinnitamine"
 
 #: 
-msgid "Work Email"
-msgstr "Töö e-kiri"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Taotlege perekonnateabe kinnitamist"
 
@@ -5735,14 +4979,6 @@ msgid "Person has been already checked in for this event"
 msgstr "Isik on selle sündmuse jaoks juba registreerunud"
 
 #: 
-msgid "CheckOut Person"
-msgstr "Tühista isiku registreering"
-
-#: 
-msgid "Delete Checkin in Entry"
-msgstr "Kustuta sisseregistreerimine"
-
-#: 
 msgid "Adult Checking Out Person"
 msgstr "Täiskasvanud väljaregistreeriv isik"
 
@@ -5791,16 +5027,8 @@ msgid "Status"
 msgstr "Olek"
 
 #: 
-msgid "Email export"
-msgstr "Ekirjade eksportimine"
-
-#: 
 msgid "Include"
 msgstr "Kaasa"
-
-#: 
-msgid "Exclude"
-msgstr "Välista"
 
 #: 
 msgid "View Cart"
@@ -6024,18 +5252,6 @@ msgid "Active Kiosks"
 msgstr "Aktiivsed tööharud"
 
 #: 
-msgid "I forgot my password"
-msgstr "Unustasin oma parooli"
-
-#: 
-msgid "Attendees Checked In"
-msgstr "Osalejad registreerusid"
-
-#: 
-msgid "Text Cart"
-msgstr "Tekstikorv"
-
-#: 
 msgid "Self Verification"
 msgstr "Automaatne kinitus"
 
@@ -6076,18 +5292,6 @@ msgid "Sequence"
 msgstr "Järjestus"
 
 #: 
-msgid "Checking Cart Status"
-msgstr "Valikukorvi oleku kontrollimine"
-
-#: 
-msgid "Remove all"
-msgstr "Eemalda kõik"
-
-#: 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr "Kas olete kindel, et soovite valitud grupi liikmed eemaldada?"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Kas soovite selle inimese kustutada? Seda ei saa tagasi võtta."
 
@@ -6120,10 +5324,6 @@ msgstr "tai keel"
 #: 
 msgid "Self Register"
 msgstr "Automaatne Registreerumine"
-
-#: 
-msgid "List families that were created via self registration."
-msgstr "Loetlege perekonnad, mis loodi aumaatse registreerimise teel."
 
 #: 
 msgid "Pending Self Verify"
@@ -6181,10 +5381,6 @@ msgstr "Grupi eriseaded: pühapäevakooli tüüp"
 #: 
 msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr "Pühapäevakooli rühma ei saa muuta, ainult kahel juhul:"
-
-#: 
-msgid "You can create/delete sunday school group. "
-msgstr "Saate luua/kustutada pühapäevakooli rühma."
 
 #: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
@@ -6307,10 +5503,6 @@ msgid "Add Students"
 msgstr "Lisage õpilased"
 
 #: 
-msgid "Edit this Class"
-msgstr "Muutke seda klassi"
-
-#: 
 msgid "OK"
 msgstr "OK"
 
@@ -6325,10 +5517,6 @@ msgstr "Rollivaliku küsimiseks on vajalik GroupID"
 #: 
 msgid "Select Group and Role"
 msgstr "Valige Rühm ja roll"
-
-#: 
-msgid "Are you sure you want to remove this person's membership from"
-msgstr "Kas soovite kindlasti selle inimese liikmelisuse eemaldada"
 
 #: 
 msgid "All Members"
@@ -6369,18 +5557,6 @@ msgstr "Grupi Vaikenimi"
 #: 
 msgid "Group Role"
 msgstr "Grupi roll"
-
-#: 
-msgid "Members from group"
-msgstr "Grupuliikmed"
-
-#: 
-msgid "Members to another group"
-msgstr "Teise grupi liikmed"
-
-#: 
-msgid "Members to cart"
-msgstr "Liikmed korvis"
 
 #: 
 msgid "OR Create a Group and add the CART in ONE ACTION"
@@ -6447,16 +5623,8 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Viimane tunnistus salvestatud väli peab olema kuupäeva tüüp"
 
 #: 
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
-msgstr "Nõuab, et sellele ChurchCRM-i andmebaasile avataks juurdepääs HTTPS-i kaudu"
-
-#: 
 msgid "People Setup"
 msgstr "Inimeste seadistamine"
-
-#: 
-msgid "Church Services"
-msgstr "Jumalateenistused"
 
 #: 
 msgid "People Reports"
@@ -6467,28 +5635,12 @@ msgid "People Dashboard"
 msgstr "Inimeste juhtpaneel"
 
 #: 
-msgid "People Functions"
-msgstr "Inimeste funktsioonid"
-
-#: 
 msgid "People Directory"
 msgstr "Inimeste kataloog"
 
 #: 
-msgid "Printable directory of all people, grouped by family where assigned"
-msgstr "Kõigi inimeste prinditav kataloog, rühmitatud perede kaupa"
-
-#: 
-msgid "of People"
-msgstr "inimestest"
-
-#: 
 msgid "System Upgrade"
 msgstr "Süsteemi uuendamine"
-
-#: 
-msgid "Help & Manual"
-msgstr "Abi ja juhend"
 
 #: 
 msgid "Contributing"
@@ -6501,10 +5653,6 @@ msgstr "Luba SMTP krüptimine automaatselt, kui ülekandeserver seda pakub."
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Seadistage krüptimissüsteem kasutamiseks - ssl (aegunud) või tls"
-
-#: 
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr "Juhtpaneeli teenuse dünaamiline asünkroonne värskendusintervall, vaikimisi 60 sekundit"
 
 #: 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
@@ -6527,14 +5675,6 @@ msgid "Not Found"
 msgstr "Ei leitud"
 
 #: 
-msgid "Oops!"
-msgstr "Vabandust!"
-
-#: 
-msgid "Meanwhile, you may"
-msgstr "Vahepeal võite"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Kasutaja peab olema administraator"
 
@@ -6553,14 +5693,6 @@ msgstr "Kustutatud grupist"
 #: 
 msgid "Added to group"
 msgstr "Lisati gruppi"
-
-#: 
-msgid "We could not find the person(s) you were looking for."
-msgstr "Me ei leidnud inimest / inimesi, keda otsisite."
-
-#: 
-msgid "return to People Dashboard"
-msgstr "naasege inimeste juhtpaneelile"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -6718,10 +5850,6 @@ msgid "Validation Error"
 msgstr "Valideerimisviga"
 
 #: 
-msgid "Email Functions"
-msgstr "E-posti funktsioonid"
-
-#: 
 msgid "Debug"
 msgstr "Silumine"
 
@@ -6776,10 +5904,6 @@ msgstr "vigane ekspordiväärtus"
 #: 
 msgid "Invalid User/Password"
 msgstr "Vale kasutaja / parool"
-
-#: 
-msgid "Find Duplicate Emails"
-msgstr "Duplikaatide leidmine"
 
 #: 
 msgid "Duplicate Emails"
@@ -6935,10 +6059,6 @@ msgid "Error decoding signature definition file"
 msgstr "Viga allkirja määratlusfaili dekodeerimisel"
 
 #: 
-msgid "Age Histogram"
-msgstr "Vanuse histogramm"
-
-#: 
 msgid "Event not found"
 msgstr "Sündmust ei leitud"
 
@@ -6984,14 +6104,6 @@ msgstr "Kinnitage inimesi"
 #: 
 msgid "People Verify Dashboard"
 msgstr "Inimesed kontrollivad juhtpaneeli"
-
-#: 
-msgid "Download family letters"
-msgstr "Laadige alla perekonna tähed"
-
-#: 
-msgid "Send family email"
-msgstr "Saada perekonna e-kiri"
 
 #: 
 msgid "Verification recorded"
@@ -7093,18 +6205,6 @@ msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
 #: 
 msgid "Review"
 msgstr "Ülevaade"
-
-#: 
-msgid "Thank you for registering your family"
-msgstr "Täname et lisasite oma pere"
-
-#: 
-msgid "Register another family!"
-msgstr "Lisa teine pere!"
-
-#: 
-msgid "Done, show me the homepage!"
-msgstr "Valmis, näita mulle kodulehte!"
 
 #: 
 msgid "User authenticated via API Key: "
@@ -7404,14 +6504,6 @@ msgid "Ukrainian"
 msgstr "ukraina keel"
 
 #: 
-msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
-msgstr "Kui klõpsate käsul „Esita GitHubile”, suunatakse teid GitHubi probleemide lehele, kus on eeltäidetud teie süsteemiteave."
-
-#: 
-msgid "Submit to GitHub"
-msgstr "Esitage GitHubile"
-
-#: 
 msgid "Change role"
 msgstr "Muuda rolli"
 
@@ -7430,10 +6522,6 @@ msgstr "Sissemakse ID"
 #: 
 msgid "Deposit Total"
 msgstr "Sissemakse kokku"
-
-#: 
-msgid "Group Cart Status"
-msgstr "Grupi valikukorvi olek"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -7548,32 +6636,8 @@ msgid "Enter note text here..."
 msgstr "Sisestage märkuse tekst siia..."
 
 #: 
-msgid "No notes have been added for this person."
-msgstr "Selle isiku jaoks pole lisatud märkusi."
-
-#: 
 msgid "Note"
 msgstr "Märkus"
-
-#: 
-msgid "Log Settings"
-msgstr "Logide sätted"
-
-#: 
-msgid "Log Level:"
-msgstr "Logi tase:"
-
-#: 
-msgid "Save Log Level"
-msgstr "Salvesta logi tase"
-
-#: 
-msgid "View application logs. Click on a log file to view its contents."
-msgstr "Vaadake rakenduse logisid. Klõpsake logifailil selle sisu vaatamiseks."
-
-#: 
-msgid "Delete All Logs"
-msgstr "Kustuta kõik logid"
 
 #: 
 msgid "No log files found."
@@ -7618,10 +6682,6 @@ msgstr "Kuvatavate ridade arv:"
 #: 
 msgid "Loading log file..."
 msgstr "Logifaili laadimine..."
-
-#: 
-msgid "No notes have been added for this family."
-msgstr "Selle perekonna jaoks pole märkusi lisatud."
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -7848,10 +6908,6 @@ msgid "Events Today"
 msgstr "Täna sündmused"
 
 #: 
-msgid "Sunday School Overview"
-msgstr "Pühapäevakooli ülevaade"
-
-#: 
 msgid "Add Family Member"
 msgstr "Lisa perekonnaliige"
 
@@ -7874,10 +6930,6 @@ msgstr "E-posti aadress"
 #: 
 msgid "Enter family name"
 msgstr "Sisestage perekonna nimi"
-
-#: 
-msgid "Family Information"
-msgstr "Perekonna teave"
 
 #: 
 msgid "Family name is required"
@@ -7910,10 +6962,6 @@ msgstr "Kodune telefoninumber"
 #: 
 msgid "Invalid format"
 msgstr "Sobimatu vorming"
-
-#: 
-msgid "Join our community by registering your family"
-msgstr "Liituge meie kogukonnaga registreerides oma perekonna"
 
 #: 
 msgid "Last name"
@@ -7992,20 +7040,12 @@ msgid "Please fill in all required fields correctly."
 msgstr "Palun täitke kõik nõutavad väljad õigesti."
 
 #: 
-msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
-msgstr "Palun vaadake kõik teased hoolikalt enne edastamist. Vajadusel saate muudatuste tegemiseks tagasi minna."
-
-#: 
 msgid "Previous"
 msgstr "Eelmine"
 
 #: 
 msgid "Registration Error"
 msgstr "Registreerimise viga"
-
-#: 
-msgid "Review & Submit"
-msgstr "Vaata ja edasta"
 
 #: 
 msgid "Role in Family"
@@ -8294,10 +7334,6 @@ msgstr "Versiooni teave"
 #: 
 msgid "Warnings"
 msgstr "Hoiatused"
-
-#: 
-msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
-msgstr "Me ei saanud teie parooli lähtestamise taotlust töödelda. Proovige taotleda uut parooli lähtestamise linki."
 
 #: 
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
@@ -8654,10 +7690,6 @@ msgid "Clear"
 msgstr "Puhasta"
 
 #: 
-msgid "Create"
-msgstr "Loo"
-
-#: 
 msgid "Create New Event"
 msgstr "Loo uus sündmus"
 
@@ -8688,10 +7720,6 @@ msgstr "Kustuta sündmus"
 #: 
 msgid "Deleting an event will also delete all attendance counts. Delete this event?"
 msgstr "Sündmuse kustutamine kustutab ka kõik kohaloleku loendused. Kustuta see sündmus?"
-
-#: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Selle sündmuse tüübi kustutamine EI kustuta olemasolevaid sündmusi. Kas olete kindel?"
 
 #: 
 msgid "Deleting this event will also delete all attendance records. Are you sure?"
@@ -8853,10 +7881,6 @@ msgstr[0] "inimene"
 msgstr[1] "inimesi"
 
 #: 
-msgid "✓ CheckOut"
-msgstr "✓ Kontrolli välja"
-
-#: 
 msgid "%d Orphaned Files Detected"
 msgstr "%d vervatest failid leitud"
 
@@ -8957,10 +7981,6 @@ msgid "Backup in progress, please wait..."
 msgstr "Varundamine käib, palun oodake..."
 
 #: 
-msgid "Backup to External Storage"
-msgstr "Varundamine välisele ladustamisele"
-
-#: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "HOIATUS: Varukoopia taastamine kustutab täielikult olemasoleva andmebaasi ja asendab selle varukoopiaandmetega."
 
@@ -8971,10 +7991,6 @@ msgstr "Sulge ja värskenda"
 #: 
 msgid "Confirm Deletion"
 msgstr "Kinnita kustutamine"
-
-#: 
-msgid "Create a backup first"
-msgstr "Looge esmalt varukoopia"
 
 #: 
 msgid "Create directory permission"
@@ -9077,10 +8093,6 @@ msgid "Group management access"
 msgstr "Rühma juhtimise juurdepääs"
 
 #: 
-msgid "If you need access to this feature, please contact your church administrator."
-msgstr "Kui vajate juurdepääsu sellele funktsioonile, võtke ühendust oma kiriku administraatoriga."
-
-#: 
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
 msgstr "Kui üles laadite varukoopia ChurchInfo-st või ChurchCRM-i eelmisest versioonist, täiendatakse see automaatselt praegusele andmebaasi skeemile."
 
@@ -9103,10 +8115,6 @@ msgstr "Uusim GitHub versioon:"
 #: 
 msgid "Loading..."
 msgstr "Laadimine..."
-
-#: 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr "Tehke varukoopiа vähemalt kord nädalas, kui teil pole automatiseeritud varundamist."
 
 #: 
 msgid "Manage Orphaned Files"
@@ -9167,14 +8175,6 @@ msgstr "Palun valige taastamiseks varukoopia fail"
 #: 
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr "Praeguse versiooni uuesti allalaadimine ja rakendamine kõigi failide ametlikule seisundile taastamiseks"
-
-#: 
-msgid "Ready to create a backup. Select your options above and click a backup button."
-msgstr "Valmis varukoopia loomiseks. Valige oma valikud ülal ja klõpsake varukoopia nuppu."
-
-#: 
-msgid "Ready to restore. Select a backup file and click Restore Database."
-msgstr "Valmis taastamiseks. Valige varukoopia fail ja klõpsake andmebaasi taastamisele."
 
 #: 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
@@ -9297,10 +8297,6 @@ msgid "What are Orphaned Files?"
 msgstr "Mis on vervatest failid?"
 
 #: 
-msgid "You don't have access to this page"
-msgstr "Teil pole juurdepääsu sellele lehele"
-
-#: 
 msgid "You will be logged out and redirected to the login page."
 msgstr "Teid logitakse välja ja suunatakse sisselogimise lehele."
 
@@ -9397,14 +8393,6 @@ msgid "Church Membership"
 msgstr "Kiriku liikmelisus"
 
 #: 
-msgid "Church name is set to default value"
-msgstr "Kiriku nimi on seatud vaikeväärtusele"
-
-#: 
-msgid "Classes and enrollments"
-msgstr "Klassid ja registreerimised"
-
-#: 
 msgid "Clean Up Files"
 msgstr "Puhasta failid"
 
@@ -9427,14 +8415,6 @@ msgstr "Suletud vs kokku"
 #: 
 msgid "Coming soon"
 msgstr "Varsti tulemas"
-
-#: 
-msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
-msgstr "Täitke need olulised seadistamise ülesanded ChurchCRM sujuvaks käitamiseks:"
-
-#: 
-msgid "Complete these in any order. Use Demo Data to explore with sample records."
-msgstr "Täitke need mis tahes järjekorras. Kasutage demo andmeid näidiskirjete uurimiseks."
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -9499,10 +8479,6 @@ msgstr "Päev"
 #: 
 msgid "Dec"
 msgstr "Det"
-
-#: 
-msgid "Demo Data"
-msgstr "Demo andmed"
 
 #: 
 msgid "Deposit Navigation"
@@ -9601,10 +8577,6 @@ msgid "Generate"
 msgstr "Loo"
 
 #: 
-msgid "Generate Reports"
-msgstr "Loo aruanded"
-
-#: 
 msgid "Generate Tax Statements"
 msgstr "Loo maksuaruanded"
 
@@ -9629,14 +8601,6 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "Looge aruanded maksumäärusest, lubaduste jälgimisest ja finantsianalüüsist."
 
 #: 
-msgid "Giving funds and categories"
-msgstr "Andmise rahastamine ja kategooriad"
-
-#: 
-msgid "HTTPS Not Configured"
-msgstr "HTTPS pole konfigureeritud"
-
-#: 
 msgid "ID"
 msgstr "ID"
 
@@ -9647,18 +8611,6 @@ msgstr "Tuvastage liikmed, kes pole kuupäevavahemikus annetusi teinud."
 #: 
 msgid "Import failed"
 msgstr "Import ebaõnnestus"
-
-#: 
-msgid "Import from CSV files"
-msgstr "Import CSV failidest"
-
-#: 
-msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
-msgstr "Impordi näidis perekonnasid, inimesi ja rühmi, et uurida ChurchCRM-i realistlike andmetega."
-
-#: 
-msgid "Install TLS/SSL certificate for better security"
-msgstr "Paigaldage TLS/SSL sertifikaat parema turbe jaoks"
 
 #: 
 msgid "Jan"
@@ -9675,10 +8627,6 @@ msgstr "Jul"
 #: 
 msgid "Jun"
 msgstr "Jun"
-
-#: 
-msgid "Latest Note"
-msgstr "Viimane märkus"
 
 #: 
 msgid "Let's get your system set up and ready to use"
@@ -9699,10 +8647,6 @@ msgstr "M"
 #: 
 msgid "Manage Funds"
 msgstr "Halda vahendeid"
-
-#: 
-msgid "Manage Users"
-msgstr "Halda kasutajaid"
 
 #: 
 msgid "Mar"
@@ -9737,10 +8681,6 @@ msgid "New Pledge"
 msgstr "Uus lubadus"
 
 #: 
-msgid "Next 7 days and past 7 days"
-msgstr "Järgmised 7 päeva ja eelmised 7 päeva"
-
-#: 
 msgid "No Active Deposit"
 msgstr "Aktiivset deposiiti pole"
 
@@ -9771,14 +8711,6 @@ msgstr "Ava"
 #: 
 msgid "Open Deposits:"
 msgstr "Avatud deposiidid:"
-
-#: 
-msgid "Organization, timezone, email"
-msgstr "Organisatsioon, ajavöönd, e-post"
-
-#: 
-msgid "Organizational structure"
-msgstr "Organisatsiooni struktuur"
 
 #: 
 msgid "Orphaned Files:"
@@ -9845,10 +8777,6 @@ msgid "Review Donation Funds"
 msgstr "Vaadake annetamise vahendeid üle"
 
 #: 
-msgid "SMTP server settings are not configured"
-msgstr "SMTP serveri sätted pole konfigureeritud"
-
-#: 
 msgid "Save and Add New Family"
 msgstr "Salvesta ja lisa uus perekond"
 
@@ -9867,10 +8795,6 @@ msgstr "Sätted"
 #: 
 msgid "Settings saved successfully"
 msgstr "Sätted on edukalt salvestatud"
-
-#: 
-msgid "Setup Tasks:"
-msgstr "Seadistamise ülesanded:"
 
 #: 
 msgid "Social Media"
@@ -9949,20 +8873,12 @@ msgid "Unmet Prerequisites"
 msgstr "Täitmatute eeltingimuste"
 
 #: 
-msgid "Update Church Name"
-msgstr "Värskenda kiriku nime"
-
-#: 
 msgid "Upgrade"
 msgstr "Täienda"
 
 #: 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
 msgstr "Kasutage klassifikatsiooni ja perekonna filtreid aruannete loomiseks konkreetsete annetajate rühmade jaoks."
-
-#: 
-msgid "User accounts and roles"
-msgstr "Kasutajakontod ja rollid"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -9979,10 +8895,6 @@ msgstr "Veenduge, et rahastuse nimed ja kirjeldused on aruannete jaoks õiged."
 #: 
 msgid "Version:"
 msgstr "Versioon:"
-
-#: 
-msgid "Welcome to ChurchCRM"
-msgstr "Tere tulemast ChurchCRM-i"
 
 #: 
 msgid "YTD Payments"
@@ -10039,10 +8951,6 @@ msgstr "ava"
 #: 
 msgid "years"
 msgstr "aastad"
-
-#: 
-msgid "yes"
-msgstr "jah"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -10121,20 +9029,12 @@ msgid "Location & Contact Information"
 msgstr "Asukoht ja kontaktteave"
 
 #: 
-msgid "Navigate to your ChurchCRM installation directory"
-msgstr "Navigeerige oma ChurchCRM paigalduse kausta"
-
-#: 
 msgid "New to"
 msgstr "Uus"
 
 #: 
 msgid "No locales configured"
 msgstr "Lokaalse määranguid pole konfigureeritud"
-
-#: 
-msgid "Open this file in a text editor:"
-msgstr "Avage see fail tekstiredaktoris:"
 
 #: 
 msgid "Register Now"
@@ -10155,10 +9055,6 @@ msgstr "Määrake true, et keelata isiklike aadresside sisestamine sidumata inim
 #: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Algab <strong>http://</strong> või <strong>https://</strong> -ga"
-
-#: 
-msgid "Subdirectory installation:"
-msgstr "Alamkataloogi paigaldus:"
 
 #: 
 msgid "System Locale Support"
@@ -10225,10 +9121,6 @@ msgid "Assign Opportunities"
 msgstr "Omista võimalused"
 
 #: 
-msgid "Assign Property"
-msgstr "Omista vara"
-
-#: 
 msgid "Choose a property..."
 msgstr "Valige vara..."
 
@@ -10253,10 +9145,6 @@ msgid "Copied!"
 msgstr "Kopeeritud!"
 
 #: 
-msgid "Edit Role"
-msgstr "Muuda rolli"
-
-#: 
 msgid "Edited"
 msgstr "Muudetud"
 
@@ -10269,16 +9157,8 @@ msgid "Failed to copy URL"
 msgstr "URL-i kopeeramine ebaõnnestus"
 
 #: 
-msgid "ID:"
-msgstr "ID:"
-
-#: 
 msgid "Newsletter"
 msgstr "Uudiskiri"
-
-#: 
-msgid "No assigned family"
-msgstr "Määratud perekonnad pole"
 
 #: 
 msgid "Open in New Tab"
@@ -10307,10 +9187,6 @@ msgstr "Eemalda vara"
 #: 
 msgid "Select Opportunities"
 msgstr "Valige võimalused"
-
-#: 
-msgid "Select Property"
-msgstr "Valige vara"
 
 #: 
 msgid "Share this URL with family members to verify their information"
@@ -10457,10 +9333,6 @@ msgid "Person(s) removed from cart"
 msgstr "Inimene(ed) eemaldati ostukorvist"
 
 #: 
-msgid "Quick Settings"
-msgstr "Kiired sätted"
-
-#: 
 msgid "Reset Failed Logins"
 msgstr "Lähtesta ebaõnnestunud sisselogimised"
 
@@ -10477,28 +9349,12 @@ msgid "Set Inactive"
 msgstr "Määra mitteaktiivne"
 
 #: 
-msgid "Show"
-msgstr "Näita"
-
-#: 
-msgid "Showing"
-msgstr "Näitab"
-
-#: 
 msgid "Total Users"
 msgstr "Kokku kasutajad"
 
 #: 
-msgid "User Management"
-msgstr "Kasutaja haldus"
-
-#: 
 msgid "View Details"
 msgstr "Vaata üksikasju"
-
-#: 
-msgid "entries"
-msgstr "kirjed"
 
 #: 
 msgid "of"
@@ -10551,16 +9407,8 @@ msgid "A "
 msgstr "A "
 
 #: 
-msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
-msgstr "LISA-, kustutamis- ja järjestusmuudatused on kohesed. Nime ja kirjelduse muudatused tuleb salvestada, klõpsates \"Salvesta muudatused\"."
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Kas olete kindel, et soovite kustutada"
-
-#: 
-msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Nool- ja kustutamisnupud jõustuvad kohe. Välja nime muudatused lähevad kaotsi, kui te ei \"Salvesta muudatusi\" enne üles-, alla-, kustutamis- või \"lisa uus\" nupu kasutamist!"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -10649,10 +9497,6 @@ msgstr "Inimese omadused"
 #: 
 msgid "Property Type"
 msgstr "Vara tüüp"
-
-#: 
-msgid "Property to Delete"
-msgstr "Kustutamiseks vara"
 
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
@@ -10775,10 +9619,6 @@ msgid "Family Pledges"
 msgstr "Perekonna Lubadused"
 
 #: 
-msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
-msgstr "Välja muudatused lähevad kaotsi, kui te ei klõpsa 'Salvesta Muudatused' enne kustutamise või 'Lisa Uus' nupu kasutamist!"
-
-#: 
 msgid "Filter by Class"
 msgstr "Filtreeri Klassi järgi"
 
@@ -10877,20 +9717,12 @@ msgid "All Classifications"
 msgstr "Kõik Klassifikatsioonid"
 
 #: 
-msgid "No people found matching your criteria."
-msgstr "Teie kriteeriumidele vastavaid inimesi ei leitud."
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotode Kataloog"
 
 #: 
 msgid "Reset Filters"
 msgstr "Lähtesta Filtrid"
-
-#: 
-msgid "Show only people with photos"
-msgstr "Näita ainult fotodega inimesi"
 
 #: 
 msgid "Expected"
@@ -11311,10 +10143,6 @@ msgid "Done"
 msgstr "Valmis"
 
 #: 
-msgid "E.164 format, e.g., +14155551234"
-msgstr "E.164 formaat, nt +14155551234"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Iga pistikprogramm vajab"
 
@@ -11343,10 +10171,6 @@ msgid "Enable Two-Factor Authentication"
 msgstr "Luba Kahefaktoriline Autentimine"
 
 #: 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr "Lubage WebDAV pilvsalvestuse jaoks Välise Varundamise pistikprogramm."
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Lubage ainult kohaliku võrgu serverite jaoks ise allkirjastatud SSL-sertifikaatidega. Keelab sertifikaadi kontrollimise."
 
@@ -11373,10 +10197,6 @@ msgstr "Väline Varukoopia (WebDAV)"
 #: 
 msgid "External Backup Settings"
 msgstr "Välise Varundamise Sätted"
-
-#: 
-msgid "External Backup plugin is enabled but not configured."
-msgstr "Välise Varundamise pistikprogramm on lubatud, kuid pole konfigureeritud."
 
 #: 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -11413,10 +10233,6 @@ msgstr "Pistikprogrammide loetlemine ebaõnnestus"
 #: 
 msgid "Failed to reset settings"
 msgstr "Sätete lähtestamine ebaõnnestus"
-
-#: 
-msgid "Failed to send SMS"
-msgstr "SMS saatmine ebaõnnestus"
 
 #: 
 msgid "Family Status"
@@ -11643,10 +10459,6 @@ msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr "Valikuline - vajalik ainult siis, kui OpenLP autentimine on lubatud"
 
 #: 
-msgid "Phone number and message required"
-msgstr "Telefoni number ja sõnum on kohustuslikud"
-
-#: 
 msgid "Please configure endpoint, username, and password first."
 msgstr "Palun seadistage esmalt lõpp-punkt, kasutajanimi ja parool."
 
@@ -11719,20 +10531,12 @@ msgid "Print"
 msgstr "Prindi"
 
 #: 
-msgid "Recipients and message required"
-msgstr "Saajad ja sõnum on kohustuslikud"
-
-#: 
 msgid "Recovery Codes"
 msgstr "Taastekoodid"
 
 #: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Kaugvarundamine ebaõnnestus. Üksikasjade saamiseks kontrollige serveri logisid."
-
-#: 
-msgid "SMS sent"
-msgstr "SMS saadetud"
 
 #: 
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
@@ -11789,10 +10593,6 @@ msgstr "Testi Ühendust"
 #: 
 msgid "Test WebDAV Connection"
 msgstr "Testi WebDAV Ühendust"
-
-#: 
-msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Need lingid ilmuvad navigatsiooniriba \"Lingid\" menüüs, kui see pistikprogramm on lubatud."
 
 #: 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -11963,10 +10763,6 @@ msgid "Congregation Map"
 msgstr "Koguduse Kaart"
 
 #: 
-msgid "Congregation Map — Setup Required"
-msgstr "Koguduse Kaart — Seadistamine Nõutud"
-
-#: 
 msgid "Connected to MailChimp! Account: %s (%d subscribers)"
 msgstr "Ühendatud MailChimpiga! Konto: %s (%d tellijat)"
 
@@ -11999,10 +10795,6 @@ msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
 msgstr "Lisage riigikood, nt +14155551234 (USA) või +447911123456 (UK)"
 
 #: 
-msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
-msgstr "Vale \"Saatja Number\": \"%s\". Lisage riigikood, nt +14155551234 (USA) või +447911123456 (UK)."
-
-#: 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
 msgstr "Valed API mandaadid. Palun kontrollige oma API võtit ja API saladust."
 
@@ -12021,14 +10813,6 @@ msgstr "Vale serveri URL formaat."
 #: 
 msgid "MailChimp connection failed."
 msgstr "MailChimpi ühendus ebaõnnestus."
-
-#: 
-msgid "Map Zoom Level"
-msgstr "Kaardi Suumitase"
-
-#: 
-msgid "Missing families? Update coordinates to include them on the map."
-msgstr "Puuduvad pered? Uuendage koordinaadid, et neid kaardil näidata."
 
 #: 
 msgid "Missing required settings: %s"
@@ -12166,32 +10950,13 @@ msgstr "valitud perekonnal pole koordinaate"
 msgid "2FA"
 msgstr "2FA"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Leia inimesed, kes ei osalenud üritusel"
-
 #: 
 msgid "Leave blank to keep existing"
 msgstr "Jäta tühjaks olemasoleva väärtuse säilitamiseks"
 
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Puuduvad isikud"
-
-#: 
-msgid "Not enrolled"
-msgstr "Registreerimata"
-
 #: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Nõua kõigilt kasutajatelt kahefaktorilise autentimise kasutusele võtmist"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Vali soovitud üritus"
 
 #: 
 msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
@@ -12204,10 +10969,6 @@ msgstr "Aktiivsed rühmad"
 #: 
 msgid "Add New Group"
 msgstr "Lisa uus rühm"
-
-#: 
-msgid "Add all to cart"
-msgstr "Lisa kõik valikusse"
 
 #: 
 msgid "Automatically detect coordinates using address"
@@ -12234,10 +10995,6 @@ msgid "City is required."
 msgstr "Linn on kohustuslik."
 
 #: 
-msgid "Class Overview"
-msgstr "Klassi ülevaade"
-
-#: 
 msgid "Clear filter"
 msgstr "Tühjenda filter"
 
@@ -12256,10 +11013,6 @@ msgstr "Discord vestlus"
 #: 
 msgid "Display Preview"
 msgstr "Kuva eelvaade"
-
-#: 
-msgid "Email (To)"
-msgstr "E-post (Kellele)"
 
 #: 
 msgid "Email address is required."
@@ -12286,16 +11039,8 @@ msgid "Geocoding successful"
 msgstr "Geokodeerimine õnnestus"
 
 #: 
-msgid "In Cart"
-msgstr "Valikus"
-
-#: 
 msgid "Inactive Groups"
 msgstr "Passiivsed rühmad"
-
-#: 
-msgid "Kids Email"
-msgstr "Laste e-post"
 
 #: 
 msgid "Language & Localization"
@@ -12318,20 +11063,12 @@ msgid "Main contact phone number for the church."
 msgstr "Koguduse peamine telefoninumber."
 
 #: 
-msgid "Male / Female"
-msgstr "Mees / Naine"
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
 #: 
 msgid "Mother"
 msgstr "Ema"
-
-#: 
-msgid "No members"
-msgstr "Liikmeid pole"
 
 #: 
 msgid "Optional. URL for your church website."
@@ -12362,14 +11099,6 @@ msgid "Search or select..."
 msgstr "Otsi või vali..."
 
 #: 
-msgid "Send email with recipients in BCC field (hidden from each other)"
-msgstr "Saada e-post BCC-väljal olevate adressaatidega (üksteisele varjatuna)"
-
-#: 
-msgid "Send email with recipients in To field"
-msgstr "Saada e-post Kellele-väljal olevate adressaatidega"
-
-#: 
 msgid "State is required."
 msgstr "Maakond on kohustuslik."
 
@@ -12398,20 +11127,8 @@ msgid "Time Zone"
 msgstr "Ajavöönd"
 
 #: 
-msgid "Toggle overview"
-msgstr "Lülita ülevaade"
-
-#: 
-msgid "Total Enrolled"
-msgstr "Kokku registreerunuid"
-
-#: 
 msgid "Total Groups"
 msgstr "Rühmi kokku"
-
-#: 
-msgid "Total Memberships"
-msgstr "Liikmeid kokku"
 
 #: 
 msgid "Updated automatically on every save."
@@ -12420,10 +11137,6 @@ msgstr "Uuendatakse automaatselt igal salvestamisel."
 #: 
 msgid "Used for scheduling events and reporting times."
 msgstr "Kasutatakse ürituste planeerimiseks ja aruandlusaegade määramiseks."
-
-#: 
-msgid "View Full Details"
-msgstr "Vaata täielikke üksikasju"
 
 #: 
 msgid "View Profile"

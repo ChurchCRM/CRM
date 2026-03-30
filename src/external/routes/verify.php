@@ -15,9 +15,9 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer('templates/verify/');
         $token = TokenQuery::create()->findPk($args['token']);
         $haveFamily = false;
-        if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
+        if ($token !== null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
-            $haveFamily = ($family != null);
+            $haveFamily = ($family !== null);
             $token->consume();
         }
 
@@ -30,9 +30,9 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
 
     $group->post('/{token}', function (Request $request, Response $response, array $args): Response {
         $token = TokenQuery::create()->findPk($args['token']);
-        if ($token != null && $token->isVerifyFamilyToken() && $token->isValid()) {
+        if ($token !== null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
-            if ($family != null) {
+            if ($family !== null) {
                 $body = $request->getParsedBody();
                 $note = new Note();
                 $note->setFamily($family);

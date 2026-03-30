@@ -25,7 +25,7 @@ class FullCalendarEvent
         $fce = new self();
 
         $fce->title = $CRMEvent->getTitle();
-        $fce->allDay = ($CRMEvent->getEnd() == null ? true : false);
+        $fce->allDay = ($CRMEvent->getEnd() === null ? true : false);
         
         // For all-day events, use date-only format (Y-m-d) to avoid timezone issues
         // For timed events, use ISO 8601 format (c) which includes time and timezone
