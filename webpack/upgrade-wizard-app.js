@@ -425,36 +425,23 @@ function setupRefreshButton() {
  * Setup force reinstall button - allows re-downloading and applying the current version
  */
 function setupForceReinstallButton() {
+  // Open modal on button click
   $("#forceReinstall").click(function () {
-    // Confirm the action
-    if (
-      !confirm(
-        i18next.t(
-          "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?",
-        ),
-      )
-    ) {
-      return;
-    }
+    const modal = new bootstrap.Modal(document.getElementById("forceReinstallModal"));
+    modal.show();
+  });
 
-    // Show the upgrade wizard card if hidden
-    $("#upgrade-wizard-card").removeClass("d-none");
+  // Confirm action inside modal
+  $("#confirmForceReinstall").click(function () {
+    bootstrap.Modal.getInstance(document.getElementById("forceReinstallModal")).hide();
 
-    // Reset the stepper to the beginning and then navigate to the backup step
+    // Navigate to backup step
     upgradeStepper.to(0);
-
-    // Small delay to ensure stepper is ready, then advance to backup step
     setTimeout(function () {
-      upgradeStepper.to(1); // Go to backup step
+      upgradeStepper.to(1);
     }, 100);
 
-    // Scroll to the wizard
-    $("html, body").animate(
-      {
-        scrollTop: $("#upgrade-wizard-card").offset().top - 20,
-      },
-      500,
-    );
+    $("html, body").animate({ scrollTop: $("#upgrade-wizard-card").offset().top - 20 }, 500);
 
     window.CRM.notify(i18next.t("Force re-install initiated. Please backup your database before applying."), {
       type: "info",

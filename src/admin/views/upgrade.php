@@ -248,6 +248,32 @@ $orphanedCount = count($orphanedFiles);
     </div>
 </div>
 
+<!-- Force Re-install Confirmation Modal -->
+<div class="modal fade" id="forceReinstallModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-status bg-warning"></div>
+            <div class="modal-body text-center py-4">
+                <i class="fa fa-triangle-exclamation fa-3x text-warning mb-3"></i>
+                <h3><?= gettext('Force Re-install?') ?></h3>
+                <p class="text-secondary"><?= gettext('This will re-download and re-apply the current version. It can fix corrupted or modified files.') ?></p>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col">
+                            <button type="button" class="btn w-100" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-warning w-100" id="confirmForceReinstall"><?= gettext('Re-install') ?></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Full Page Spinner Overlay -->
 <div id="upgradeSpinner">
     <div class="spinner-content">
