@@ -8,7 +8,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
-use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -139,7 +138,6 @@ class Bootstrapper
                     try {
                         self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
                         UpgradeService::upgradeDatabaseVersion();
-                        AppIntegrityService::clearIntegrityCache();
                         self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
                     } catch (\Exception $e) {
                         // Issue 2 fix: log the full exception detail but store only a generic

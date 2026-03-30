@@ -77,11 +77,12 @@ describe('Admin System Logs - UI Tests', () => {
         return;
       }
 
-      // Click the dropdown toggle in the first row to open the menu
-      cy.get('#logFilesTable tbody tr').first().find('button[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
-
-      // Click the View action from the now-visible dropdown
-      cy.get('#logFilesTable tbody tr').first().find('.view-log').first().should('be.visible').click();
+      // Open the dropdown and click View — within() holds the row element in memory
+      // across the click→visibility check, preventing re-query races in suite runs
+      cy.get('#logFilesTable tbody tr').first().within(() => {
+        cy.get('button[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
+        cy.get('.view-log').first().should('be.visible').click();
+      });
 
       // Verify modal is displayed and has the proper title
       cy.get('#logViewerModal').should('be.visible');
