@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
@@ -66,7 +65,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
             if (isset($_POST[$iFieldID . 'special'])) {
                 $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
-                if ($aSpecialFields[$iFieldID] == 0) {
+                if ($aSpecialFields[$iFieldID] === 0) {
                     $aSpecialErrors[$iFieldID] = true;
                     $bErrorFlag = true;
                 } else {
@@ -363,7 +362,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         </div>
 
         <?php
-        if ($numRows == 0) {
+        if ($numRows === 0) {
         ?>
             <div class="alert alert-info" role="alert">
                 <i class="fa-solid fa-circle-info"></i>

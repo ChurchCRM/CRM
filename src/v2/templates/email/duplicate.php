@@ -6,18 +6,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Duplicate Emails") ?></h3>
-            </div>
-            <div class="card-body p-0">
-                <table id="dupEmails" class="table table-vcenter table-hover card-table">
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
+<div class="card">
+    <div class="card-header d-flex align-items-center">
+        <h3 class="card-title"><?= _("Duplicate Emails") ?></h3>
+    </div>
+    <div class="table-responsive">
+        <table id="dupEmails" class="table table-vcenter table-hover card-table">
+            <tbody></tbody>
+        </table>
     </div>
 </div>
 

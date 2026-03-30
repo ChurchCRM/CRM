@@ -2,7 +2,11 @@
 
 use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use Psr\Http\Message\ServerRequestInterface;
+use Slim\Exception\HttpMethodNotAllowedException;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
+use Slim\Psr7\Response as SlimResponse;
 
 if (file_exists('../Include/Config.php')) {
     header('Location: ../');
@@ -61,19 +65,19 @@ $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 // Simple error handler for setup (no database/logging dependencies)
 $errorMiddleware->setDefaultErrorHandler(function (
-    \Psr\Http\Message\ServerRequestInterface $request,
+    ServerRequestInterface $request,
     \Throwable $exception,
     bool $displayErrorDetails,
     bool $logErrors,
     bool $logErrorDetails
 ) {
-    $response = new \Slim\Psr7\Response();
+    $response = new SlimResponse();
     
     // Determine HTTP status code
     $statusCode = 500;
-    if ($exception instanceof \Slim\Exception\HttpNotFoundException) {
+    if ($exception instanceof HttpNotFoundException) {
         $statusCode = 404;
-    } elseif ($exception instanceof \Slim\Exception\HttpMethodNotAllowedException) {
+    } elseif ($exception instanceof HttpMethodNotAllowedException) {
         $statusCode = 405;
     }
     

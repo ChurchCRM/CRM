@@ -196,17 +196,17 @@ if ($output === 'pdf') {
                 $curY = 215;
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Address1 != '') {
+                if ($fam_Address1 !== '') {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address1);
                     $curY += SystemConfig::getValue('incrementY');
                 }
-                if ($fam_Address2 != '') {
+                if ($fam_Address2 !== '') {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Address2);
                     $curY += SystemConfig::getValue('incrementY');
                 }
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
+                if ($fam_Country !== '' && $fam_Country !== 'USA' && $fam_Country !== 'United States') {
                     $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }
@@ -214,13 +214,13 @@ if ($output === 'pdf') {
                 $curY = 246;
                 $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchName'));
                 $curY += SystemConfig::getValue('incrementY');
-                if (SystemConfig::getValue('sChurchAddress') != '') {
+                if (SystemConfig::getValue('sChurchAddress') !== '') {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchAddress'));
                     $curY += SystemConfig::getValue('incrementY');
                 }
                 $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  ' . SystemConfig::getValue('sChurchZip'));
                 $curY += SystemConfig::getValue('incrementY');
-                if ($fam_Country != '' && $fam_Country != 'USA' && $fam_Country != 'United States') {
+                if ($fam_Country !== '' && $fam_Country !== 'USA' && $fam_Country !== 'United States') {
                     $this->writeAt(SystemConfig::getValue('leftX') + 5, $curY, $fam_Country);
                     $curY += SystemConfig::getValue('incrementY');
                 }

@@ -1900,6 +1900,287 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/person/{personId}/notes':
+    get:
+      tags:
+        - People
+      summary: 'List user-type notes for a person'
+      description: "Returns all notes of type 'note' for the person, filtered by visibility for the current user. Private notes are only visible to admins or the user who entered them."
+      operationId: getPersonNotes
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  notes: { type: array, items: { properties: { id: { type: integer }, perId: { type: integer }, famId: { type: integer }, text: { type: string }, private: { type: boolean }, type: { type: string }, dateEntered: { type: string, format: date-time }, dateLastEdited: { type: string, format: date-time, nullable: true }, enteredBy: { type: integer }, editedBy: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/note':
+    post:
+      tags:
+        - People
+      summary: 'Create a note for a person'
+      operationId: createPersonNote
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'HTML note content (Quill output)'
+                  type: string
+                private:
+                  description: 'Mark note as private (visible to admins only)'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '201':
+          description: 'Note created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/notes':
+    get:
+      tags:
+        - Families
+      summary: 'List user-type notes for a family'
+      description: "Returns all notes of type 'note' for the family, filtered by visibility for the current user."
+      operationId: getFamilyNotes
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note list'
+          content:
+            application/json:
+              schema:
+                properties:
+                  notes: { type: array, items: { properties: { id: { type: integer }, famId: { type: integer }, text: { type: string }, private: { type: boolean }, dateEntered: { type: string, format: date-time }, dateLastEdited: { type: string, format: date-time, nullable: true }, enteredBy: { type: integer }, editedBy: { type: integer } }, type: object } }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/family/{familyId}/note':
+    post:
+      tags:
+        - Families
+      summary: 'Create a note for a family'
+      operationId: createFamilyNote
+      parameters:
+        -
+          name: familyId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'HTML note content (Quill output)'
+                  type: string
+                private:
+                  description: 'Mark note as private (visible to admins only)'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '201':
+          description: 'Note created'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Family not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/note/{noteId}':
+    get:
+      tags:
+        - People
+      summary: 'Get a single note by ID'
+      description: 'Returns the note if it is visible to the current user. Private notes are only visible to admins or the user who entered them.'
+      operationId: getNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note object'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required'
+        '404':
+          description: 'Note not found or not visible to current user'
+      security:
+        -
+          ApiKeyAuth: []
+    put:
+      tags:
+        - People
+      summary: "Update a note's text and/or privacy"
+      description: "Only the note's author or an admin may update a note."
+      operationId: updateNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - text
+              properties:
+                text:
+                  description: 'Updated HTML note content'
+                  type: string
+                private:
+                  description: 'Update privacy flag'
+                  type: boolean
+                  example: false
+              type: object
+      responses:
+        '200':
+          description: 'Updated note'
+          content:
+            application/json:
+              schema:
+                properties:
+                  note: { type: object }
+                type: object
+        '400':
+          description: 'Note text is required'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Only the note author or an admin may edit this note'
+        '404':
+          description: 'Note not found'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - People
+      summary: 'Delete a note'
+      description: "Deletes the note. Requires Notes permission. Only the note's author or an admin may delete it."
+      operationId: deleteNote
+      parameters:
+        -
+          name: noteId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 1
+      responses:
+        '200':
+          description: 'Note deleted'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Notes permission required or not note author/admin'
+        '404':
+          description: 'Note not found'
+      security:
+        -
+          ApiKeyAuth: []
   /families/familiesInCart:
     get:
       tags:
@@ -3202,6 +3483,24 @@ paths:
           description: 'Person or role not found'
         '500':
           description: 'Failed to save role'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/email/without:
+    get:
+      tags:
+        - People
+      summary: 'Get people with no personal or work email on record'
+      responses:
+        '200':
+          description: 'People without any email address'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  persons: { type: array, items: { type: object } }
+                type: object
       security:
         -
           ApiKeyAuth: []

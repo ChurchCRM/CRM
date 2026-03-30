@@ -16,10 +16,11 @@ use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
-use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\AuthService;
-use Propel\Runtime\Map\TableMap;
+use ChurchCRM\Service\DonationFundService;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Collection\ObjectCollection;
+use Propel\Runtime\Map\TableMap;
 
 class FinancialService
 {
@@ -411,28 +412,6 @@ class FinancialService
     }
 
     /**
-     * @return \stdClass[]
-     */
-    public function getActiveFunds(): array
-    {
-        AuthService::requireUserGroupMembership('bFinance');
-        $funds = [];
-        $sSQL = 'SELECT fun_ID,fun_Name,fun_Description,fun_Active FROM donationfund_fun';
-        $sSQL .= " WHERE fun_Active = 'true'"; // New donations should show only active funds.
-        $rsFunds = FunctionsUtils::runQuery($sSQL);
-        mysqli_data_seek($rsFunds, 0);
-        while ($aRow = mysqli_fetch_array($rsFunds)) {
-            $fund = new \stdClass();
-            $fund->ID = $aRow['fun_ID'];
-            $fund->Name = $aRow['fun_Name'];
-            $fund->Description = $aRow['fun_Description'];
-            $funds[] = $fund;
-        } // end while
-
-        return $funds;
-    }
-
-    /**
      * Format a fiscal year ID into a human-readable string.
      *
      * @param int $fyId Fiscal year ID
@@ -548,7 +527,7 @@ class FinancialService
         $results = [];
         foreach ($collection as $pledge) {
             // Get basic pledge data without foreign objects
-            $pledgeData = $pledge->toArray(\Propel\Runtime\Map\TableMap::TYPE_PHPNAME, true, [], false);
+            $pledgeData = $pledge->toArray(TableMap::TYPE_PHPNAME, true, [], false);
             
             // Manually add only the Family fields we need for Tax Reports
             $family = $pledge->getFamily();
@@ -711,29 +690,6 @@ class FinancialService
     }
 
     /**
-     * Get active donation funds.
-     *
-     * @return ObjectCollection Collection of DonationFund objects
-     */
-    public function getActiveDonationFunds(): ObjectCollection
-    {
-        return DonationFundQuery::create()
-            ->filterByActive('true')
-            ->orderByOrder()
-            ->find();
-    }
-
-    /**
-     * Get total count of donation funds.
-     *
-     * @return int
-     */
-    public function getTotalFundCount(): int
-    {
-        return DonationFundQuery::create()->count();
-    }
-
-    /**
      * Get Year-to-Date payment total for a fiscal year.
      *
      * @param string $fyStartDate Fiscal year start date
@@ -836,14 +792,16 @@ class FinancialService
         $fiscalYear = $this->getFiscalYearDates();
         $depositStats = $this->getDepositStatistics();
         $currentDeposit = $this->getCurrentDeposit();
+        $donationFundService = new DonationFundService();
+        $activeFunds = $donationFundService->getAll();
 
         return [
             'fiscalYear' => $fiscalYear,
             'depositStats' => $depositStats,
             'recentDeposits' => $this->getRecentDeposits(5, $fiscalYear['startDate']),
-            'activeFunds' => $this->getActiveDonationFunds(),
-            'activeFundCount' => $this->getActiveDonationFunds()->count(),
-            'totalFundCount' => $this->getTotalFundCount(),
+            'activeFunds' => $activeFunds,
+            'activeFundCount' => $activeFunds->count(),
+            'totalFundCount' => $donationFundService->getCount(),
             'ytdPaymentTotal' => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPledgeTotal' => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPaymentCount' => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),

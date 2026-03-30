@@ -15,7 +15,7 @@ AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser
 
 // Get and filter the classifications selected
 $aClasses = [];
-if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] != '') {
+if (array_key_exists('sDirClassifications', $_POST) && $_POST['sDirClassifications'] !== '') {
     foreach ($_POST['sDirClassifications'] as $Cls) {
         $aClasses[] = InputUtils::legacyFilterInput($Cls, 'int');
     }

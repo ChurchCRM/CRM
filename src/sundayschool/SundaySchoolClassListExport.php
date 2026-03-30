@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\CsvExporter;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -126,7 +125,7 @@ foreach ($groups as $group) {
         }
 
         $birthDate = '';
-        if ($birthYear != '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
+        if ($birthYear !== '' && !$birthDate && (!$member->getFlags() || $lst_OptionName === 'Student')) {
             $publishDate = DateTime::createFromFormat('Y-m-d', $birthYear . '-' . $birthMonth . '-' . $birthDay);
             $birthDate = $publishDate->format(SystemConfig::getValue('sDateFormatLong'));
         }

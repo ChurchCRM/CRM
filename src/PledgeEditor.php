@@ -13,7 +13,6 @@ use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
-use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -402,7 +401,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         } // end foreach of $fundId2Name
         if (isset($_POST['PledgeSubmit'])) {
             // Check for redirection to another page after saving information: (ie. PledgeEditor.php?previousPage=prev.php?a=1;b=2;c=3)
-            if ($linkBack != '') {
+            if ($linkBack !== '') {
                 RedirectUtils::redirect($linkBack);
             } else {
                 //Send to the view of this pledge
@@ -452,7 +451,7 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
         $tScanString = InputUtils::legacyFilterInput($_POST['ScanInput']);
         $routeAndAccount = $micrObj->findRouteAndAccount($tScanString); // use routing and account number for matching
         $iFamily = InputUtils::legacyFilterInput($_POST['FamilyID'], 'int');
-        $family = \ChurchCRM\model\ChurchCRM\FamilyQuery::create()->findOneById($iFamily);
+        $family = FamilyQuery::create()->findOneById($iFamily);
         $family->setScanCheck($routeAndAccount);
         $family->save();
     }

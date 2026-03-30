@@ -46,12 +46,15 @@ $otherPeople = $family->getOtherPeople();
     <!-- LEFT COLUMN: Actions, Members, Timeline -->
     <div class="col-lg-8">
         <!-- Family Action Toolbar -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
             <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php } ?>
+            <button class="btn btn-ghost-secondary" id="printFamily" title="<?= gettext('Print') ?>">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+            </button>
             <button class="btn btn-ghost-success AddToCart" id="AddFamilyToCart" data-cart-id="<?= $family->getId() ?>" data-cart-type="family">
                 <i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext('Cart') ?></span>
             </button>
@@ -124,7 +127,7 @@ $otherPeople = $family->getOtherPeople();
 
         // Helper: action dropdown for a member row
         function renderMemberActions($person): void { ?>
-            <div class="dropdown">
+            <div class="dropdown d-print-none">
                 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>

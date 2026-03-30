@@ -105,10 +105,13 @@ if ($bCanManageGroups) {
     <div class="col-lg-8">
 
         <!-- Action Toolbar (ghost buttons — matches group view) -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
             </a>
+            <button class="btn btn-ghost-secondary" id="printClass" title="<?= gettext('Print') ?>">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+            </button>
             <?php if ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupId ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit Class') ?>

@@ -191,6 +191,32 @@ Fixes #7698
 - **Testing** - How to verify, test commands
 - **Related Issues** - Links to related issues/PRs
 
+### Keeping PR Descriptions Up to Date <!-- learned: 2026-03-29 -->
+
+After the initial PR is created, **update the PR description whenever the scope of changes evolves** — e.g., after addressing review comments that add/remove files or features, or after merging master resolves conflicts that affect the stated changes.
+
+Use `gh pr edit` to update in place:
+
+```bash
+gh pr edit 1234 --body "$(cat <<'EOF'
+## Summary
+...updated summary...
+
+## Changes
+- Original change
+- New change added during review
+
+## Why
+...
+
+## Testing
+...
+EOF
+)"
+```
+
+**Rule:** The description must always accurately reflect *what the PR actually contains* at the time of review — not just what it contained when first opened. A reviewer reading the description should not be surprised by the diff.
+
 ### Keeping Branches Up to Date
 
 **Always merge master into a PR branch before reviewing or testing it.** A branch that has diverged from master may have hidden conflicts or stale code that makes the review misleading.

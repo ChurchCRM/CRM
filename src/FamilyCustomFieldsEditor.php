@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
@@ -66,7 +65,7 @@ if (isset($_POST['SaveChanges'])) {
         if (isset($_POST[$iFieldID . 'special'])) {
             $aSpecialFields[$iFieldID] = InputUtils::legacyFilterInput($_POST[$iFieldID . 'special'], 'int');
 
-            if ($aSpecialFields[$iFieldID] == 0) {
+            if ($aSpecialFields[$iFieldID] === 0) {
                 $aSpecialErrors[$iFieldID] = true;
                 $bErrorFlag = true;
             } else {
@@ -369,7 +368,7 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
     </div>
 
     <?php
-    if ($numRows == 0) {
+    if ($numRows === 0) {
     ?>
         <div class="alert alert-info">
             <i class="fa-solid fa-circle-info"></i>

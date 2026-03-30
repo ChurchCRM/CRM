@@ -587,7 +587,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      */
     $group->post('/{groupID:[0-9]+}/settings/active/{value}', function (Request $request, Response $response, array $args): Response {
         $flag = $args['value'];
-        if ($flag == 'true' || $flag == 'false') {
+        if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
             $group->setActive($flag);
             $group->save();
@@ -611,7 +611,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      */
     $group->post('/{groupID:[0-9]+}/settings/email/export/{value}', function (Request $request, Response $response, array $args): Response {
         $flag = $args['value'];
-        if ($flag == 'true' || $flag == 'false') {
+        if ($flag === 'true' || $flag === 'false') {
             $group = $request->getAttribute('group');
             $group->setIncludeInEmailExport($flag);
             $group->save();

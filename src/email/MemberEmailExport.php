@@ -26,10 +26,10 @@ foreach ($groups as $group) {
         $kids = $sundaySchoolService->getKidsFullDetails($group->getId());
         $parentIds = [];
         foreach ($kids as $kid) {
-            if ($kid['dadId'] != '') {
+            if ($kid['dadId'] !== '') {
                 $parentIds[] = $kid['dadId'];
             }
-            if ($kid['momId'] != '') {
+            if ($kid['momId'] !== '') {
                 $parentIds[] = $kid['momId'];
             }
         }
@@ -54,7 +54,7 @@ foreach ($personService->getPeopleEmailsAndGroups() as $person) {
 
     foreach ($groups as $group) {
         $groupRole = $person[$group->getName()];
-        if ($groupRole == '' && $group->isSundaySchool()) {
+        if ($groupRole === '' && $group->isSundaySchool()) {
             if (in_array($person['id'], $sundaySchoolsParents[$group->getId()])) {
                 $groupRole = 'Parent';
             }

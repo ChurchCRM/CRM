@@ -391,10 +391,10 @@ $MenuFirst = 1;
     $sPageHeaderButtons = $sPageHeaderButtons ?? '';
     $sSettingsCollapseId = $sSettingsCollapseId ?? '';
     ?>
-    <div class="page-header d-print-none">
+    <div class="page-header">
       <div class="container-xl">
         <?php if (!empty($aBreadcrumbs) || !empty($sPageHeaderButtons)) : ?>
-        <div class="row g-2 align-items-center mb-1">
+        <div class="row g-2 align-items-center mb-1 d-print-none">
           <div class="col">
             <?php if (!empty($aBreadcrumbs)) : ?>
             <ol class="breadcrumb mb-0" aria-label="breadcrumbs">

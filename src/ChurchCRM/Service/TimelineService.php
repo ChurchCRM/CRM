@@ -52,7 +52,7 @@ class TimelineService
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();
-            if ($event != null) {
+            if ($event !== null) {
                 $item = $this->createTimeLineItem(
                     $event->getId(),
                     'cal',
@@ -137,7 +137,7 @@ class TimelineService
                 $displayEditedBy = gettext('Self Verification');
             } else {
                 $editor = PersonQuery::create()->findPk($dbNote->getDisplayEditedBy());
-                if ($editor != null) {
+                if ($editor !== null) {
                     $displayEditedBy = $editor->getFullName();
                 }
             }
