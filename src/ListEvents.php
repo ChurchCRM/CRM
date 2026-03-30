@@ -87,7 +87,7 @@ $activeEventsThisYear = EventQuery::create()
     ->count();
 
 $totalEventTypes = EventTypeQuery::create()
-    ->useEventQuery()
+    ->useEventTypeQuery()
         ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
     ->endUse()
     ->distinct()
@@ -95,7 +95,7 @@ $totalEventTypes = EventTypeQuery::create()
 
 // Get event types that have events (using ORM)
 $eventTypesWithEvents = EventTypeQuery::create()
-    ->useEventQuery()
+    ->useEventTypeQuery()
     ->endUse()
     ->distinct()
     ->orderById()
