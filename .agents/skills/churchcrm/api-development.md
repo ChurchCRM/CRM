@@ -450,6 +450,21 @@ return $response;
 
 **Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
 
+### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
+
+`nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
+
+```php
+// ✅ CORRECT — store the author's personId for private notes
+$private = !empty($input['private']) ? (int) $currentUser->getPersonId() : 0;
+
+// For PUT, preserve the original author's visibility (not the editor's):
+$private = !empty($input['private']) ? (int) $note->getEnteredBy() : 0;
+
+// ❌ WRONG — stores 1, which only makes it visible to person with id=1
+$private = !empty($input['private']) ? 1 : 0;
+```
+
 ## Files
 
 **API Routes:** `src/api/routes/`, `src/admin/routes/api/`
