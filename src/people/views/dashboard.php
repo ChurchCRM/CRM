@@ -355,7 +355,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 series: [{ name: "<?= gettext('People') ?>", data: ageGroupValues }],
                 xaxis: { categories: ageGroupLabels, labels: { rotate: -45 } },
                 yaxis: { title: { text: "<?= gettext('Count') ?>" }, forceNiceScale: true },
-                colors: ['#3366ff'],
                 dataLabels: { enabled: false },
                 grid: { borderColor: '#f0f0f0' }
             }).render();
