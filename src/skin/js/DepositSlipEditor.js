@@ -392,31 +392,10 @@ function initDepositSlipEditor() {
   });
 }
 
-function initCharts(
-  pledgeLabels,
-  pledgeChartData,
-  pledgeBackgroundColor,
-  fundLabels,
-  fundChartData,
-  fundBackgroundColor,
-) {
+function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
   // Funds Chart: Dynamic height based on number of funds
   // Minimum 120px for 1 fund, +40px for each additional fund
   var fundHeight = Math.max(250, fundLabels.length * 40);
-
-  // Convert rgba colors to hex for ApexCharts
-  function rgbaToHex(rgba) {
-    var match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/) || rgba.match(/^rgb?\((\d+),\s*(\d+),\s*(\d+)/);
-    if (match) {
-      var hex = function (x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
-      };
-      return "#" + hex(match[1]) + hex(match[2]) + hex(match[3]);
-    }
-    return rgba;
-  }
-
-  var fundColors = fundBackgroundColor.map(rgbaToHex);
 
   // Funds Bar Chart using ApexCharts
   var fundChartOptions = {
@@ -464,7 +443,7 @@ function initCharts(
         data: fundChartData,
       },
     ],
-    colors: fundColors,
+    // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
       tickFormatter: function (value) {

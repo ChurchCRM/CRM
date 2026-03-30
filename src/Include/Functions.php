@@ -1128,23 +1128,4 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
     }
 }
 
-function random_color(): string
-{
-    return bin2hex(random_bytes(3));
-}
-
-function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void
-{
-    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
-    foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') !== '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $Email .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
-        }
-        $Email = urlencode($Email);  // Mailto should comply with RFC 2368
-        ?>
-      <a class="dropdown-item" href="<?= $href . mb_substr($Email, 0, -3) ?>"><?=$role?></a>
-        <?php
-    }
-}
-
 ?>
