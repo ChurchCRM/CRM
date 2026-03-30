@@ -3205,6 +3205,24 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /persons/email/without:
+    get:
+      tags:
+        - People
+      summary: 'Get people with no personal or work email on record'
+      responses:
+        '200':
+          description: 'People without any email address'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  persons: { type: array, items: { type: object } }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
   '/persons/search/{query}':
     get:
       tags:
