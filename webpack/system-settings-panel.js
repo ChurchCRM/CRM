@@ -512,10 +512,10 @@ import "../src/skin/scss/system-settings-panel.scss";
           });
           const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
           if (window.CRM && window.CRM.notify) {
-            window.CRM.notify(
-              t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."),
-              { type: "info", delay: 3000 },
-            );
+            window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
+              type: "info",
+              delay: 3000,
+            });
           }
         });
       });
