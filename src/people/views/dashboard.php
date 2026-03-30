@@ -105,10 +105,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <a href="<?= $sRootPath ?>/v2/people/verify" class="btn btn-outline-info">
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
-                <div class="btn btn-outline-secondary disabled" style="pointer-events:none;">
-                    <span class="badge <?= $selfRegColor ?> me-1"><?= $selfRegText ?></span>
-                    <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Self Register') ?>
-                </div>
                 <?php if ($sEmailLink && $canEmail):
                     $emailHref    = 'mailto:' . mb_substr($sEmailLink, 0, -3);
                     $emailBccHref = 'mailto:?bcc=' . mb_substr($sEmailLink, 0, -3);
@@ -366,5 +362,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }
     });
 </script>
+
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () {
+    window.CRM.settingsPanel.init({
+        container: '#peopleSettings',
+        title: i18next.t('People Settings'),
+        icon: 'fa-solid fa-sliders',
+        settings: [
+            {
+                name: 'bEnableSelfRegistration',
+                label: i18next.t('Self Registration'),
+                type: 'boolean',
+                tooltip: i18next.t('Allow visitors to self-register as new families.')
+            }
+        ],
+        onSave: function () {
+            setTimeout(function () { window.location.reload(); }, 1500);
+        }
+    });
+});
+</script>
+<?php endif; ?>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

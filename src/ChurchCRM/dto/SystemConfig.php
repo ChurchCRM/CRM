@@ -274,7 +274,7 @@ class   SystemConfig
     private static function buildCategories(): array
     {
         return [
-            gettext('Enabled Features')   => ['bEnabledSundaySchool', 'bEnabledEvents', 'bEnableExternalCalendarAPI', 'bEnforceCSP'],
+            gettext('Enabled Features')   => ['bEnabledEvents', 'bEnableExternalCalendarAPI'],
             gettext('People')              => ['sDirClassifications', 'iPersonNameStyle', 'iPersonInitialStyle', 'bHidePersonAddress', 'bHideFriendDate', 'bHideWeddingDate', 'bForceUppercaseZip', 'sInactiveClassification'],
             gettext('Families')            => ['sDirRoleHead', 'sDirRoleSpouse', 'sDirRoleChild', 'sDefaultCity', 'sDefaultState', 'sDefaultZip', 'sDefaultCountry', 'bHideFamilyNewsletter'],
             gettext('New Members & Greeting') => ['bEnableSelfRegistration', 'sNewPersonNotificationRecipientIDs', 'IncludeDataInNewPersonNotifications', 'sGreeterCustomMsg1', 'sGreeterCustomMsg2'],
