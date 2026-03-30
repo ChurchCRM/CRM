@@ -55,11 +55,21 @@ $(document).ready(function () {
   setupRefreshButton();
   setupForceReinstallButton();
 
-  // Listen for step changes to auto-download when reaching apply step
+  // Listen for step changes — mark completed steps and auto-download on apply step
+  const stepElements = document.querySelectorAll("#upgrade-stepper .step");
   document.querySelector("#upgrade-stepper").addEventListener("show.bs-stepper", function (event) {
-    // Auto-download when entering the apply step
+    // Mark all previous steps as completed
+    for (let i = 0; i < event.detail.to; i++) {
+      stepElements[i].classList.add("completed");
+      // Replace icon with checkmark for completed steps
+      const circle = stepElements[i].querySelector(".bs-stepper-circle");
+      if (circle) {
+        circle.innerHTML = '<i class="fa fa-check"></i>';
+      }
+    }
+
+    // Auto-download when entering the apply step (index 2)
     if (event.detail.to === 2) {
-      // Index 2 is now the apply step (0: warnings, 1: backup, 2: apply)
       setTimeout(function () {
         autoDownloadUpdate();
       }, 300);
@@ -98,7 +108,6 @@ function setupBackupStep() {
     const $button = $(this);
     const $backupStatus = $("#backupStatus");
     const $resultFiles = $("#resultFiles");
-    const $navButtons = $("#backupNavButtons");
 
     // Show loading state
     $button.prop("disabled", true).html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
@@ -117,11 +126,13 @@ function setupBackupStep() {
                     <div><strong>${i18next.t("Backup Complete")}</strong></div>
                 </div>
             </div>`);
-        $resultFiles.html(`<button class="btn btn-outline-success" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
+        $resultFiles.html(`<button class="btn btn-outline-success btn-sm" id="downloadbutton" role="button" onclick="window.UpgradeWizard.downloadBackup('${data.BackupDownloadFileName}')">
                 <i class="fa-solid fa-download me-1"></i>${data.BackupDownloadFileName}
             </button>`);
-        $button.html(`<i class="fa fa-check me-1"></i>${i18next.t("Backup Created")}`);
-        $navButtons.removeClass("d-none");
+        // Hide backup buttons, show Continue
+        $button.addClass("d-none");
+        $("#skipBackup").addClass("d-none");
+        $("#backup-next").removeClass("d-none");
 
         $("#downloadbutton").click(function () {
           $(this).prop("disabled", true).html(`<i class="fa-solid fa-check me-1"></i>${i18next.t("Downloaded")}`);
@@ -154,12 +165,9 @@ function setupBackupStep() {
       });
   });
 
-  // Skip Backup button handler
+  // Skip Backup — show warning and immediately advance
   $("#skipBackup").click(function () {
-    const $backupStatus = $("#backupStatus");
-    const $navButtons = $("#backupNavButtons");
-
-    $backupStatus.html(`<div class="alert alert-warning">
+    $("#backupStatus").html(`<div class="alert alert-warning">
             <div class="d-flex align-items-center">
                 <i class="fa-solid fa-forward fa-lg me-2"></i>
                 <div>
@@ -168,8 +176,10 @@ function setupBackupStep() {
                 </div>
             </div>
         </div>`);
+    // Hide skip, demote Create Backup to outline, show Continue
     $(this).addClass("d-none");
-    $navButtons.removeClass("d-none");
+    $("#doBackup").removeClass("btn-primary").addClass("btn-outline-primary");
+    $("#backup-next").removeClass("d-none");
   });
 }
 

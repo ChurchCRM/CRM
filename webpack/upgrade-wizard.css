@@ -105,6 +105,36 @@
   font-weight: 600;
 }
 
+/* ── OK step (green — no warnings) ── */
+.bs-stepper .ok-step .bs-stepper-circle {
+  background: var(--tblr-success);
+  border-color: var(--tblr-success);
+  color: #fff;
+}
+
+.bs-stepper .ok-step.active .bs-stepper-circle {
+  background: var(--tblr-success);
+  border-color: var(--tblr-success);
+  box-shadow: 0 0 0 3px rgba(var(--tblr-success-rgb), 0.2);
+}
+
+.bs-stepper .ok-step .bs-stepper-label,
+.bs-stepper .ok-step.active .bs-stepper-label {
+  color: var(--tblr-success);
+  font-weight: 600;
+}
+
+/* ── Completed step (green checkmark) ── */
+.bs-stepper .step.completed .bs-stepper-circle {
+  background: var(--tblr-success);
+  border-color: var(--tblr-success);
+  color: #fff;
+}
+
+.bs-stepper .step.completed .bs-stepper-label {
+  color: var(--tblr-success);
+}
+
 /* ── Content area ── */
 .bs-stepper-content {
   padding: 0;

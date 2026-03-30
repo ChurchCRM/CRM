@@ -5,83 +5,44 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Pre-compute file integrity data for the wizard warning step
+// Integrity data — files are plain strings (filenames), not objects
 $failingFiles = $integrityCheckData['files'] ?? [];
 $hasIntegrityIssues = count($failingFiles) > 0;
-$missingFiles = [];
-$modifiedFiles = [];
-foreach ($failingFiles as $file) {
-    if (is_object($file) && isset($file->status) && $file->status === 'File Missing') {
-        $missingFiles[] = $file;
-    } else {
-        $modifiedFiles[] = $file;
-    }
-}
+$orphanedFiles = $integrityCheckData['orphanedFiles'] ?? [];
+$orphanedCount = count($orphanedFiles);
 ?>
 
 <div class="row">
     <div class="col-12">
-        <!-- Version Information Card -->
+        <!-- Version Information -->
         <div class="card mb-3">
-            <div class="card-status-top bg-primary"></div>
-            <div class="card-header">
-                <h3 class="card-title mb-0">
-                    <i class="fa fa-circle-info me-2"></i><?= gettext('Version Information') ?>
-                </h3>
-            </div>
-            <div class="card-body">
-                <div class="row g-3 align-items-center mb-3">
-                    <div class="col-md-6">
-                        <span class="text-secondary"><?= gettext('Current Version') ?></span>
-                        <div class="mt-1">
-                            <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($currentVersion) ?></span>
-                        </div>
+            <div class="card-body py-3">
+                <div class="d-flex flex-wrap align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="text-secondary"><?= gettext('Installed') ?></span>
+                        <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($currentVersion) ?></span>
                     </div>
-                    <div class="col-md-6">
-                        <span class="text-secondary"><?= gettext('Latest GitHub Version') ?></span>
-                        <div class="mt-1">
-                            <?php if ($latestGitHubVersion !== null): ?>
-                                <?php if ($isUpdateAvailable): ?>
-                                    <span class="badge bg-success-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
-                                    <span class="badge bg-success ms-1"><?= gettext('Update Available') ?></span>
-                                <?php else: ?>
-                                    <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
-                                <?php endif; ?>
+                    <?php if ($latestGitHubVersion !== null): ?>
+                        <i class="fa fa-arrow-right text-secondary"></i>
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="text-secondary"><?= gettext('Latest') ?></span>
+                            <?php if ($isUpdateAvailable): ?>
+                                <span class="badge bg-success-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                <span class="badge bg-success"><?= gettext('Update Available') ?></span>
                             <?php else: ?>
-                                <span class="badge bg-secondary-lt fs-5"><?= gettext('Unknown') ?></span>
-                                <small class="text-muted ms-1"><?= gettext('(refresh from GitHub)') ?></small>
+                                <span class="badge bg-primary-lt fs-5"><?= InputUtils::escapeHTML($latestGitHubVersion) ?></span>
+                                <span class="badge bg-success-lt text-success"><?= gettext('Up to Date') ?></span>
                             <?php endif; ?>
                         </div>
+                    <?php else: ?>
+                        <span class="badge bg-secondary-lt"><?= gettext('Latest version unknown') ?></span>
+                    <?php endif; ?>
+                    <div class="ms-auto">
+                        <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
+                            <i class="fa fa-sync me-1"></i><?= gettext('Refresh') ?>
+                        </button>
                     </div>
                 </div>
-
-                <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
-                    <button type="button" class="btn btn-ghost-primary btn-sm" id="refreshFromGitHub">
-                        <i class="fa fa-sync me-1"></i><?= gettext('Refresh from GitHub') ?>
-                    </button>
-                </div>
-
-                <?php if ($isUpdateAvailable): ?>
-                    <div class="alert alert-info mb-0">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-circle-info fa-lg me-2"></i>
-                            <div>
-                                <strong><?= gettext('Update Available!') ?></strong>
-                                <?= gettext('A new version of ChurchCRM is available for installation.') ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php else: ?>
-                    <div class="alert alert-success mb-0">
-                        <div class="d-flex align-items-center">
-                            <i class="fa fa-circle-check fa-lg me-2"></i>
-                            <div>
-                                <strong><?= gettext('System Up to Date') ?></strong>
-                                <?= gettext('Your ChurchCRM installation is running the latest version.') ?>
-                            </div>
-                        </div>
-                    </div>
-                <?php endif; ?>
             </div>
         </div>
 
@@ -95,17 +56,23 @@ foreach ($failingFiles as $file) {
             <div class="card-body p-0">
                 <div id="upgrade-stepper" class="bs-stepper">
                     <div class="bs-stepper-header" role="tablist">
-                        <div class="step<?= $hasWarnings ? ' warning-step' : '' ?>" data-target="#step-warnings">
+                        <div class="step<?= $hasWarnings ? ' warning-step' : ' ok-step' ?>" data-target="#step-warnings">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-warnings" id="step-warnings-trigger">
-                                <span class="bs-stepper-circle"><i class="fa fa-triangle-exclamation"></i></span>
-                                <span class="bs-stepper-label"><?= gettext('Warnings') ?></span>
+                                <span class="bs-stepper-circle">
+                                    <?php if ($hasWarnings): ?>
+                                        <i class="fa fa-triangle-exclamation"></i>
+                                    <?php else: ?>
+                                        <i class="fa fa-circle-check"></i>
+                                    <?php endif; ?>
+                                </span>
+                                <span class="bs-stepper-label"><?= gettext('Pre-flight') ?></span>
                             </button>
                         </div>
                         <div class="line"></div>
                         <div class="step" data-target="#step-backup">
                             <button type="button" class="step-trigger" role="tab" aria-controls="step-backup" id="step-backup-trigger">
                                 <span class="bs-stepper-circle"><i class="fa fa-database"></i></span>
-                                <span class="bs-stepper-label"><?= gettext('Database Backup') ?></span>
+                                <span class="bs-stepper-label"><?= gettext('Backup') ?></span>
                             </button>
                         </div>
                         <div class="line"></div>
@@ -125,76 +92,39 @@ foreach ($failingFiles as $file) {
                     </div>
 
                     <div class="bs-stepper-content">
-                        <!-- Step 1: Pre-Upgrade Checks -->
+                        <!-- Step 1: Pre-flight Checks -->
                         <div id="step-warnings" class="content p-4" role="tabpanel" aria-labelledby="step-warnings-trigger">
                             <?php if ($integrityCheckFailed): ?>
                                 <div class="alert alert-warning mb-3">
-                                    <h4 class="alert-title">
-                                        <i class="fa fa-circle-exclamation me-1"></i><?= gettext('Signature Mismatch') ?>
-                                        <span class="badge bg-warning-lt text-warning ms-2"><?= count($failingFiles) ?></span>
-                                    </h4>
-                                    <p class="mt-2 mb-2">
-                                        <?= gettext("Some system files have been modified since the last installation.") ?>
-                                        <strong><?= gettext("This upgrade will revert them to the official version.") ?></strong>
-                                    </p>
-                                    <p class="mb-0 text-secondary">
-                                        <i class="fa fa-lightbulb me-1"></i><?= gettext("To keep your changes, back up the modified files before upgrading and restore them afterward.") ?>
-                                    </p>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fa fa-circle-exclamation fa-lg me-2"></i>
+                                        <div class="flex-fill">
+                                            <strong><?= gettext('Signature Mismatch') ?></strong>
+                                            <span class="badge bg-warning-lt text-warning ms-1"><?= count($failingFiles) ?></span>
+                                            — <?= gettext("Modified files will be reverted to the official version.") ?>
+                                            <div class="text-secondary mt-1 small">
+                                                <i class="fa fa-lightbulb me-1"></i><?= gettext("Back up modified files before upgrading if you want to keep your changes.") ?>
+                                            </div>
+                                        </div>
+                                        <button type="button" class="btn btn-outline-warning btn-sm ms-3 text-nowrap" id="forceReinstall">
+                                            <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
+                                        </button>
+                                    </div>
                                 </div>
 
-                                <?php if (count($missingFiles) > 0): ?>
-                                    <div class="mb-2">
-                                        <a href="#collapseMissingFiles" data-bs-toggle="collapse" class="text-danger text-decoration-none fw-medium">
-                                            <i class="fa fa-circle-xmark me-1"></i><?= gettext('Files Missing') ?> (<?= count($missingFiles) ?>)
-                                            <i class="fa fa-chevron-down ms-1 small"></i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseMissingFiles" class="collapse mb-3">
-                                        <div class="table-responsive">
-                                            <table class="table table-sm table-vcenter mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th><?= gettext('File Name') ?></th>
-                                                        <th><?= gettext('Expected Hash') ?></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php foreach ($missingFiles as $file): ?>
-                                                        <tr>
-                                                            <td><code class="small"><?= InputUtils::escapeHTML($file->filename) ?></code></td>
-                                                            <td><small class="text-secondary"><?= InputUtils::escapeHTML($file->expectedhash) ?></small></td>
-                                                        </tr>
-                                                    <?php endforeach; ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (count($modifiedFiles) > 0): ?>
-                                    <div class="mb-2">
+                                <?php if (count($failingFiles) > 0): ?>
+                                    <div class="mb-3">
                                         <a href="#collapseModifiedFiles" data-bs-toggle="collapse" class="text-warning text-decoration-none fw-medium">
-                                            <i class="fa fa-pen-to-square me-1"></i><?= gettext('Files Modified') ?> (<?= count($modifiedFiles) ?>)
+                                            <i class="fa fa-pen-to-square me-1"></i><?= gettext('Affected Files') ?> (<?= count($failingFiles) ?>)
                                             <i class="fa fa-chevron-down ms-1 small"></i>
                                         </a>
                                     </div>
                                     <div id="collapseModifiedFiles" class="collapse mb-3">
-                                        <div class="table-responsive">
+                                        <div class="table-responsive" style="max-height: 300px; overflow-y: auto;">
                                             <table class="table table-sm table-vcenter mb-0">
-                                                <thead>
-                                                    <tr>
-                                                        <th><?= gettext('File Name') ?></th>
-                                                        <th><?= gettext('Expected Hash') ?></th>
-                                                        <th><?= gettext('Actual Hash') ?></th>
-                                                    </tr>
-                                                </thead>
                                                 <tbody>
-                                                    <?php foreach ($modifiedFiles as $file): ?>
-                                                        <tr>
-                                                            <td><code class="small"><?= InputUtils::escapeHTML($file->filename) ?></code></td>
-                                                            <td><small class="text-secondary"><?= InputUtils::escapeHTML($file->expectedhash) ?></small></td>
-                                                            <td><small class="text-secondary"><?= InputUtils::escapeHTML($file->actualhash) ?></small></td>
-                                                        </tr>
+                                                    <?php foreach ($failingFiles as $file): ?>
+                                                        <tr><td><code class="small"><?= InputUtils::escapeHTML($file) ?></code></td></tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
                                             </table>
@@ -203,36 +133,18 @@ foreach ($failingFiles as $file) {
                                 <?php endif; ?>
                             <?php endif; ?>
 
-                            <?php if ($hasOrphanedFiles && isset($integrityCheckData['orphanedFiles']) && count($integrityCheckData['orphanedFiles']) > 0): ?>
+                            <?php if ($orphanedCount > 0): ?>
                                 <div class="alert alert-danger mb-3">
-                                    <h4 class="alert-title">
-                                        <i class="fa fa-triangle-exclamation me-1"></i><?= gettext('Orphaned Files Detected') ?>
-                                        <span class="badge bg-danger-lt text-danger ms-2"><?= count($integrityCheckData['orphanedFiles']) ?></span>
-                                    </h4>
-                                    <p class="mt-2 mb-0">
-                                        <?= gettext("Files exist on your server that are not part of the official release. They may be leftover from previous versions.") ?>
-                                        <strong><?= gettext("Review and delete these files before or after the upgrade.") ?></strong>
-                                    </p>
-                                </div>
-
-                                <div class="mb-2">
-                                    <a href="#collapseOrphanedFiles" data-bs-toggle="collapse" class="text-danger text-decoration-none fw-medium">
-                                        <i class="fa fa-trash me-1"></i><?= gettext('Orphaned Files') ?> (<?= count($integrityCheckData['orphanedFiles']) ?>)
-                                        <i class="fa fa-chevron-down ms-1 small"></i>
-                                    </a>
-                                </div>
-                                <div id="collapseOrphanedFiles" class="collapse mb-3">
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-vcenter mb-0">
-                                            <thead>
-                                                <tr><th><?= gettext('File Path') ?></th></tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php foreach ($integrityCheckData['orphanedFiles'] as $orphanedFile): ?>
-                                                    <tr><td><code class="small"><?= InputUtils::escapeHTML($orphanedFile) ?></code></td></tr>
-                                                <?php endforeach; ?>
-                                            </tbody>
-                                        </table>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div>
+                                            <i class="fa fa-triangle-exclamation me-1"></i>
+                                            <strong><?= gettext('Orphaned Files') ?></strong>
+                                            <span class="badge bg-danger-lt text-danger ms-1"><?= $orphanedCount ?></span>
+                                            — <?= gettext("Files not part of the official release were found on your server.") ?>
+                                        </div>
+                                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-outline-danger btn-sm ms-3 text-nowrap">
+                                            <i class="fa fa-external-link me-1"></i><?= gettext('Review & Delete') ?>
+                                        </a>
                                     </div>
                                 </div>
                             <?php endif; ?>
@@ -243,47 +155,33 @@ foreach ($failingFiles as $file) {
                                         <i class="fa fa-circle-check fa-lg me-2"></i>
                                         <div>
                                             <strong><?= gettext('All Checks Passed') ?></strong>
-                                            <?= gettext('No warnings found. You may proceed with the upgrade.') ?>
+                                            — <?= gettext('No issues found. You may proceed with the upgrade.') ?>
                                         </div>
                                     </div>
                                 </div>
                             <?php endif; ?>
 
-                            <div class="d-flex flex-wrap gap-2">
-                                <button class="btn btn-primary" id="acceptWarnings">
-                                    <?php if ($hasWarnings): ?>
-                                        <?= gettext('I Understand, Continue') ?> <i class="fa fa-arrow-right ms-1"></i>
-                                    <?php else: ?>
-                                        <?= gettext('Continue to Backup') ?> <i class="fa fa-arrow-right ms-1"></i>
-                                    <?php endif; ?>
-                                </button>
-                                <?php if ($hasIntegrityIssues): ?>
-                                    <button type="button" class="btn btn-outline-warning" id="forceReinstall">
-                                        <i class="fa fa-redo me-1"></i><?= gettext('Force Re-install') ?>
-                                    </button>
-                                <?php endif; ?>
-                            </div>
+                            <button class="btn btn-primary" id="acceptWarnings">
+                                <?= gettext('Continue') ?> <i class="fa fa-arrow-right ms-1"></i>
+                            </button>
                         </div>
 
-                        <!-- Step 2: Backup Database -->
+                        <!-- Step 2: Database Backup -->
                         <div id="step-backup" class="content p-4" role="tabpanel" aria-labelledby="step-backup-trigger">
                             <p class="text-secondary mb-3"><?= gettext('Create a database backup before applying the update. This is strongly recommended.') ?></p>
 
                             <div id="backupStatus"></div>
-                            <div id="resultFiles"></div>
+                            <div id="resultFiles" class="mb-3"></div>
 
-                            <div class="d-flex flex-wrap gap-2 mt-3" id="backupActions">
+                            <div class="d-flex flex-wrap gap-2" id="backupActions">
                                 <button class="btn btn-primary" id="doBackup">
                                     <i class="fa fa-database me-1"></i><?= gettext('Create Backup') ?>
                                 </button>
                                 <button class="btn btn-ghost-secondary" id="skipBackup">
-                                    <i class="fa fa-forward me-1"></i><?= gettext('Skip Backup') ?>
+                                    <?= gettext('Skip, Continue Without Backup') ?> <i class="fa fa-arrow-right ms-1"></i>
                                 </button>
-                            </div>
-
-                            <div id="backupNavButtons" class="mt-3 d-none">
-                                <button class="btn btn-primary" id="backup-next">
-                                    <?= gettext('Continue to Download & Apply') ?> <i class="fa fa-arrow-right ms-1"></i>
+                                <button class="btn btn-primary d-none" id="backup-next">
+                                    <?= gettext('Continue') ?> <i class="fa fa-arrow-right ms-1"></i>
                                 </button>
                             </div>
                         </div>
@@ -379,7 +277,6 @@ $(document).ready(function() {
         settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: i18next.t('Allow Pre-release Upgrades'), tooltip: i18next.t("Allow system upgrades to releases marked as 'pre release' on GitHub") }],
         onSave: function() {
             window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
-            // Refresh upgrade info and reload to reflect pre-release change
             window.CRM.AdminAPIRequest({
                 method: 'POST',
                 path: 'upgrade/refresh-upgrade-info'
