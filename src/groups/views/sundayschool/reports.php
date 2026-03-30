@@ -1,8 +1,9 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -59,7 +60,7 @@ $error = $_GET['error'] ?? '';
                     <select class="form-select" name="FYID">
                         <option disabled value="0"<?= $iFYID === 0 ? ' selected' : '' ?>><?= gettext('Select Fiscal Year') ?></option>
                         <?php for ($fy = 1; $fy < $currentFY + 2; $fy++) { ?>
-                            <option value="<?= $fy ?>"<?= $iFYID === $fy ? ' selected' : '' ?>><?= MakeFYString($fy) ?></option>
+                            <option value="<?= $fy ?>"<?= $iFYID === $fy ? ' selected' : '' ?>><?= FinancialService::formatFiscalYear($fy) ?></option>
                         <?php } ?>
                     </select>
                 </div>
