@@ -10,11 +10,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header d-flex align-items-center justify-content-between flex-wrap gap-2">
-                <div class="d-flex align-items-center gap-2">
-                    <h3 class="card-title mb-0"><?= _("People Without Emails") ?></h3>
+                <div class="card-title d-flex align-items-center gap-2 mb-0">
                     <span id="personCount" class="badge bg-primary text-white d-none"></span>
                 </div>
-                <ul class="nav nav-pills" id="ageFilter">
+                <ul class="nav nav-pills ms-auto" id="ageFilter">
                     <li class="nav-item">
                         <a href="#" class="nav-link active" data-filter="all"><?= _("Everyone") ?></a>
                     </li>
