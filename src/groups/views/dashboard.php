@@ -155,8 +155,6 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
-
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
@@ -175,10 +173,11 @@ $(document).ready(function () {
             }
         ],
         onSave: function () {
-            window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
             setTimeout(function () { window.location.reload(); }, 1500);
         }
     });
 });
 </script>
 <?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

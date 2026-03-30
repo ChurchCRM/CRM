@@ -536,7 +536,44 @@ $(document).ready(function() {
 
 ### Settings Panel: Scripts Before Footer <!-- learned: 2026-03-30 -->
 
-Settings panel CSS/JS **must** be loaded before `Include/Footer.php` — Footer closes `</body></html>`, so assets loaded after it produce invalid markup. Place the `<link>`, `<script>`, and init block between your page content and the Footer include.
+Settings panel CSS/JS **must** be loaded before `Include/Footer.php` — Footer closes `</body></html>`, so assets loaded after it produce invalid markup. Place the `<link>`, `<script>`, and init block between your page content and the Footer include. **Footer must be the last line of the file.**
+
+```php
+// ✅ CORRECT — settings panel before Footer; Footer is last line
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () { window.CRM.settingsPanel.init({ ... }); });
+</script>
+<?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+// ❌ WRONG — scripts after Footer produce invalid markup (outside </html>)
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<link rel="stylesheet" ...>
+<script ...></script>
+```
+
+### Settings Panel: Do Not Duplicate the Success Notification in onSave <!-- learned: 2026-03-30 -->
+
+The component already fires `window.CRM.notify("Settings saved successfully")` internally after a successful save. Do **not** call `window.CRM.notify` again inside `onSave` — it will show two toasts.
+
+```javascript
+// ✅ CORRECT — component handles the notification; onSave just reloads
+onSave: function () {
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+
+// ❌ WRONG — double notification
+onSave: function () {
+    window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+```
+
+Exception: if your `onSave` does something extra (e.g., "Refreshing upgrade info...") a custom message with distinct text is fine — users understand it's a follow-on action, not a duplicate.
 
 ### Settings Panel: Pass Full Config for Custom Settings <!-- learned: 2026-03-30 -->
 
