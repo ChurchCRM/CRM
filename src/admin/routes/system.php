@@ -209,7 +209,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/upgrade', function (Request $request, Response $response): Response {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         
-        // Ensure we have fresh release information
+        // Always run fresh checks on the upgrade page (no stale session cache)
+        AppIntegrityService::clearIntegrityCache();
         ChurchCRMReleaseManager::checkForUpdates();
         
         // Recompute update availability with fresh data
