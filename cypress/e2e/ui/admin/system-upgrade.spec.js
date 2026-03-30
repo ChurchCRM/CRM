@@ -98,12 +98,12 @@ describe('System Upgrade Page', () => {
             // Step 1: Continue
             cy.get('#acceptWarnings').click();
 
-            // Step 2: Skip backup, click Continue
+            // Step 2: Skip backup, wait for Continue to appear, then click
             cy.get('#skipBackup').click();
-            cy.get('#backup-next').click();
+            cy.get('#backup-next').should('be.visible').click();
 
-            // Step 3: Download step
-            cy.get('#step-apply').should('be.visible');
+            // Step 3: Download step (stepper animation may take a moment)
+            cy.get('#step-apply', { timeout: 10000 }).should('be.visible');
             cy.wait('@downloadRelease');
 
             cy.get('#downloadStatus .alert-success').should('be.visible');
@@ -135,8 +135,9 @@ describe('System Upgrade Page', () => {
 
             cy.get('#acceptWarnings').click();
             cy.get('#skipBackup').click();
-            cy.get('#backup-next').click();
+            cy.get('#backup-next').should('be.visible').click();
 
+            cy.get('#step-apply', { timeout: 10000 }).should('be.visible');
             cy.wait('@downloadFail');
             cy.get('#downloadStatus .alert-danger').should('be.visible');
             cy.get('#retryDownload').should('be.visible');
