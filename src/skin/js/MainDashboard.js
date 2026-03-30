@@ -33,7 +33,7 @@ export function initializeMainDashboard() {
     const hash = name.split("").reduce((acc, char) => acc + char.charCodeAt(0), 0);
     const color = colors[hash % colors.length];
 
-    return `<span class="avatar avatar-sm rounded-circle" style="background-color: ${color};" title="${i18next.t("View Photo")}"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
+    return `<span class="avatar avatar-sm rounded-circle" style="background-color: ${color};"><span class="avatar-title fs-6 fw-bold">${initials}</span></span>`;
   }
 
   // Helper to generate clickable photo img when row.HasPhoto === true
