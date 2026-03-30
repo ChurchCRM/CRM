@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 02:32+0000\n"
+"POT-Creation-Date: 2026-03-30 04:13+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -516,6 +516,9 @@ msgid "Adult Checking Out Person"
 msgstr ""
 
 msgid "Adult/Child"
+msgstr ""
+
+msgid "Adults"
 msgstr ""
 
 msgid "Advanced Deposit Report"
@@ -3213,6 +3216,9 @@ msgstr ""
 msgid "Events Today"
 msgstr ""
 
+msgid "Everyone"
+msgstr ""
+
 msgid "Exclude Inactive Families"
 msgstr ""
 
@@ -3385,6 +3391,9 @@ msgstr ""
 msgid "Failed to delete link"
 msgstr ""
 
+msgid "Failed to delete note"
+msgstr ""
+
 msgid "Failed to delete orphaned files"
 msgstr ""
 
@@ -3498,9 +3507,6 @@ msgid "False"
 msgstr ""
 
 msgid "Families"
-msgstr ""
-
-msgid "Families Without Emails"
 msgstr ""
 
 msgid "Families share an address and phone number."
@@ -6015,6 +6021,12 @@ msgstr ""
 msgid "Note Editor"
 msgstr ""
 
+msgid "Note not found"
+msgstr ""
+
+msgid "Note text is required"
+msgstr ""
+
 msgid "Note: Changes will not take effect until next logon."
 msgstr ""
 
@@ -6110,6 +6122,12 @@ msgid "Only Payments with Pledges"
 msgstr ""
 
 msgid "Only the new data below"
+msgstr ""
+
+msgid "Only the note author or an admin may delete this note"
+msgstr ""
+
+msgid "Only the note author or an admin may edit this note"
 msgstr ""
 
 msgid "Oops! Page not found."
@@ -6380,6 +6398,9 @@ msgstr ""
 msgid "People Verify Dashboard"
 msgstr ""
 
+msgid "People Without Emails"
+msgstr ""
+
 msgid "People by Classification"
 msgstr ""
 
@@ -6390,6 +6411,9 @@ msgid "People in Cart (filters ignored)"
 msgstr ""
 
 msgid "People not in"
+msgstr ""
+
+msgid "People with no personal or work email on record"
 msgstr ""
 
 msgid "Percentage"
@@ -8378,7 +8402,7 @@ msgstr ""
 msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
 msgstr ""
 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
 msgstr ""
 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -8976,6 +9000,9 @@ msgid "User must have Manage Groups permission"
 msgstr ""
 
 msgid "User must have Menu Options permission"
+msgstr ""
+
+msgid "User must have Notes permission"
 msgstr ""
 
 msgid "User not found"
