@@ -11,19 +11,8 @@ import { buildAPIUrl } from "./api-utils";
  * @param entityId - The ID of the person or family
  */
 export function showPhotoLightbox(entityType: string, entityId: number | string): void {
-  // Get the actual image source from the rendered photo
-  const photoImg = document.querySelector(
-    `[data-image-entity-type="${entityType}"][data-image-entity-id="${entityId}"]`,
-  ) as HTMLImageElement;
-
-  let imageSrc = "";
-  if (photoImg && photoImg.src) {
-    // Use the src from the photo element (already rendered by avatar-loader)
-    imageSrc = photoImg.src;
-  } else {
-    // Fallback to the photo endpoint
-    imageSrc = buildAPIUrl(`${entityType}/${entityId}/photo`);
-  }
+  // Always use the photo API endpoint for consistent loading
+  const imageSrc = buildAPIUrl(`${entityType}/${entityId}/photo`);
 
   // Create lightbox overlay
   const lightbox = document.createElement("div");

@@ -43,11 +43,6 @@ if (isset($_SESSION['sGlobalMessage'])) {
     unset($_SESSION['sGlobalMessage']);
     unset($_SESSION['sGlobalMessageClass']);
 }
-// Handle query parameter messages (for same-page operations, legacy pattern)
-elseif (isset($_GET['Registered'])) {
-    $sGlobalMessage = gettext('Thank you for registering your ChurchCRM installation.');
-    $sGlobalMessageClass = 'success';
-}
 
 if (isset($_GET['PDFEmailed'])) {
     if ($_GET['PDFEmailed'] == 1) {
@@ -77,20 +72,7 @@ if (isset($_GET['RemoveGroupFromPeopleCart'])) {
     $sGlobalMessageClass = 'success';
 }
 
-if (isset($_GET['ProfileImageDeleted'])) {
-    $sGlobalMessage = gettext('Profile Image successfully removed.');
-    $sGlobalMessageClass = 'success';
-}
 
-if (isset($_GET['ProfileImageUploaded'])) {
-    $sGlobalMessage = gettext('Profile Image successfully updated.');
-    $sGlobalMessageClass = 'success';
-}
-
-if (isset($_GET['ProfileImageUploadedError'])) {
-    $sGlobalMessage = gettext('Profile Image upload Error.');
-    $sGlobalMessageClass = 'danger';
-}
 
 // Are they removing a person from the Cart?
 // Note: RemoveFromPeopleCart is legacy - cart now managed through API routes
@@ -139,7 +121,7 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
             $selectedTag = ' selected';
         }
 
-        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . MakeFYString((int) $fy) . '</option>';
+        $selectableOptions[] = sprintf('<option value="%s"', $fy) . $selectedTag . '>' . FinancialService::formatFiscalYear((int) $fy) . '</option>';
     }
 
     $selectableOptions = [
@@ -150,17 +132,6 @@ function PrintFYIDSelect(string $selectName, ?int $iFYID = null): void
     echo implode('', $selectableOptions);
 
     echo '</select>';
-}
-
-// Formats a fiscal year string
-function MakeFYString(int|string|null $iFYID): string
-{
-    if ($iFYID === null || $iFYID === '') {
-        return '';
-    }
-
-    // Delegate to FinancialService to centralize fiscal year formatting logic.
-    return FinancialService::formatFiscalYear((int) $iFYID);
 }
 
 // Runs an SQL query.  Returns the result resource.
@@ -984,24 +955,6 @@ function FontFromName(string $fontname)
     }
 }
 
-// Figure out the class ID for "Member", should be one (1) unless they have been playing with the
-// classification manager.
-function FindMemberClassID()
-{
-    //Get Classifications
-    $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-    $rsClassifications = RunQuery($sSQL);
-
-    while ($aRow = mysqli_fetch_array($rsClassifications)) {
-        extract($aRow);
-        if ($lst_OptionName == gettext('Member')) {
-            return $lst_OptionID;
-        }
-    }
-
-    return 1; // Should not get here, but if we do get here use the default value.
-}
-
 //Function to check email
 //Functions checkndsrr and getmxrr are not enabled on windows platforms & therefore are disabled
 //Future use may be to enable a Admin option to enable these options
@@ -1136,25 +1089,6 @@ function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, s
         } else {
             return $GroupKey;
         }
-    }
-}
-
-function random_color(): string
-{
-    return bin2hex(random_bytes(3));
-}
-
-function generateGroupRoleEmailDropdown(array $roleEmails, string $href): void
-{
-    $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString("sMailtoDelimiter");
-    foreach ($roleEmails as $role => $Email) {
-        if (SystemConfig::getValue('sToEmailAddress') !== '' && !stristr($Email, (string) SystemConfig::getValue('sToEmailAddress'))) {
-            $Email .= $sMailtoDelimiter . SystemConfig::getValue('sToEmailAddress');
-        }
-        $Email = urlencode($Email);  // Mailto should comply with RFC 2368
-        ?>
-      <a class="dropdown-item" href="<?= $href . mb_substr($Email, 0, -3) ?>"><?=$role?></a>
-        <?php
     }
 }
 

@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -222,7 +223,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <tr>
                         <td><?= InputUtils::escapeHTML($plg_PledgeOrPayment) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($fundName) ?>&nbsp;</td>
-                        <td><?= MakeFYString($plg_FYID ? (int) $plg_FYID : null) ?>&nbsp;</td>
+                        <td><?= $plg_FYID ? FinancialService::formatFiscalYear((int) $plg_FYID) : '' ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_date) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_amount) ?>&nbsp;</td>
                         <td><?= InputUtils::escapeHTML($plg_schedule) ?>&nbsp;</td>

@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
@@ -37,7 +38,7 @@ class PdfPhotoBook extends ChurchInfoReport
     public function __construct($iFYID)
     {
         parent::__construct('P', 'mm', $this->paperFormat);
-        $this->FYIDString = MakeFYString($iFYID);
+        $this->FYIDString = FinancialService::formatFiscalYear($iFYID);
     }
 
     public function drawGroup($iGroupID): void

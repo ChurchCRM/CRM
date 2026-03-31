@@ -9,13 +9,13 @@ complexity: "intermediate"
 # Skill: PHP Best Practices
 
 ## Context
-ChurchCRM uses PHP 8.3+ with modern development patterns. This skill covers essential PHP practices, namespacing, ORM usage, security standards, and code organization patterns used throughout the project.
+ChurchCRM uses PHP 8.4+ with modern development patterns. This skill covers essential PHP practices, namespacing, ORM usage, security standards, and code organization patterns used throughout the project.
 
 ---
 
-## PHP 8.3+ Requirements & Standards
+## PHP 8.4+ Requirements & Standards
 
-**MANDATORY:** All code must be compatible with PHP 8.3+ and avoid deprecated patterns.
+**MANDATORY:** All code must be compatible with PHP 8.4+ and avoid deprecated patterns.
 
 ### Key Standards
 
@@ -199,7 +199,7 @@ class PersonService {
 
 ## Perpl ORM (Database Access)
 
-ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.3+ support.
+ChurchCRM uses **Perpl ORM** (`perplorm/perpl`), an actively maintained fork of Propel2 with PHP 8.4+ support.
 
 ### CRITICAL Rule: NEVER Use Raw SQL
 

@@ -374,6 +374,16 @@ function initializeFamilyView() {
     window.CRM.showPhotoLightbox("family", window.CRM.currentFamily);
   });
 
+  // Photo viewer click handler for family avatars (person handler is in MemberView.js)
+  $(document).on("click", ".view-family-photo", function (e) {
+    var familyId = $(e.currentTarget).data("family-id");
+    if (window.CRM && window.CRM.showPhotoLightbox) {
+      window.CRM.showPhotoLightbox("family", familyId);
+    }
+    e.preventDefault();
+    e.stopPropagation();
+  });
+
   $("#activateDeactivate").on("click", function () {
     let popupTitle = window.CRM.currentActive ? i18next.t("Confirm Deactivation") : i18next.t("Confirm Activation");
     let popupMessage = window.CRM.currentActive

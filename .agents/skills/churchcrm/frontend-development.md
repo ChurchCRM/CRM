@@ -814,6 +814,27 @@ HTML does not allow nesting `<form>` inside another `<form>`. Nested forms cause
 
 ---
 
+### Avatar Click-to-View Lightbox <!-- learned: 2026-03-30 -->
+
+Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loader.ts is the single source of truth** for adding click classes — PHP templates should NOT add `.view-person-photo` / `.view-family-photo` manually.
+
+**How it works:**
+1. `avatar-loader.ts` fetches `/api/{type}/{id}/avatar` → gets `hasPhoto`
+2. If `hasPhoto === true`, `loadUploadedPhoto.onload` adds `.view-person-photo` (or `.view-family-photo`) + `data-person-id` (or `data-family-id`) + `cursor: pointer`
+3. Images inside `#uploadImageButton` or `#uploadImageTrigger` are skipped (profile upload buttons)
+4. Initials and failed photo loads never get click classes
+5. Delegated click handlers (`$(document).on("click", ".view-person-photo", ...)`) call `window.CRM.showPhotoLightbox()`
+
+**Rules:**
+- Never add `.view-person-photo` / `.view-family-photo` in PHP templates that use avatar-loader
+- Always use `e.preventDefault()` + `e.stopPropagation()` in click handlers (avatars may be inside `<a>` links)
+- Don't register the same delegated handler in two JS files loaded on the same page (causes double lightbox)
+- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it)
+
+**Exception:** Pages that render photos inline (not via avatar-loader) — like `verify-family-info.php` — must check `hasUploadedPhoto()` in PHP before adding click classes.
+
+---
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`

@@ -11221,3 +11221,604 @@ msgstr "您的数据库版本比已安装的软件更新。这通常意味着软
 msgid "or later to continue."
 msgstr "或更高版本以继续。"
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "\"为什么来\" 笔记"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d 个 \"%s\" 的结果"
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "（可选 — 留空以包括所有角色）"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "一个家族代表一个家庭。它保存了所有住在一起的家庭成员的共享地址和住宅电话号码。"
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "一个家庭。存储共享邮寄地址和家庭电话。"
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "一个人不需要属于一个家族，但是分配一个可以使地址管理更加容易。"
+
+#: 
+msgid "About"
+msgstr "关于"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "接受的格式：.csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "账户恢复"
+
+#: 
+msgid "Add Family"
+msgstr "添加家族"
+
+#: 
+msgid "Add First Family"
+msgstr "添加第一个家族"
+
+#: 
+msgid "Add Member"
+msgstr "添加成员"
+
+#: 
+msgid "Add New Class"
+msgstr "添加新课程"
+
+#: 
+msgid "Add Note"
+msgstr "添加笔记"
+
+#: 
+msgid "Add People to the Family"
+msgstr "将人员添加到家族"
+
+#: 
+msgid "Add Person"
+msgstr "添加人员"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "将学生添加到列表"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "将教师添加到列表"
+
+#: 
+msgid "Add User"
+msgstr "添加用户"
+
+#: 
+msgid "Add Your Data"
+msgstr "添加您的数据"
+
+#: 
+msgid "Add Your First Family"
+msgstr "添加您的第一个家族"
+
+#: 
+msgid "Add Your First Property"
+msgstr "添加您的第一个属性"
+
+#: 
+msgid "Add a Person"
+msgstr "添加人员"
+
+#: 
+msgid "Add a new pledge"
+msgstr "添加新的承诺"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "向当前存款添加付款"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "将所有列表项目添加到组"
+
+#: 
+msgid "Add all to Cart"
+msgstr "全部添加到列表"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "将列表项目添加到家族"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "添加您家中的每个人 — 成人和儿童。"
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "直接在 ChurchCRM 中逐个添加家族和个人。非常适合较小的会众或补充导入的数据。"
+
+#: 
+msgid "Add first family"
+msgstr "添加第一个家族"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "添加或编辑个人记录"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "添加或编辑为筹款活动捐赠的物品"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "为人员和家族添加或编辑笔记"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "添加员工和志愿者"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "将员工或志愿者添加为系统用户"
+
+#: 
+msgid "Administrator"
+msgstr "管理员"
+
+#: 
+msgid "Age Distribution"
+msgstr "年龄分布"
+
+#: 
+msgid "All Roles"
+msgstr "所有角色"
+
+#: 
+msgid "All Time"
+msgstr "始终"
+
+#: 
+msgid "All roles"
+msgstr "所有角色"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "几乎完成 — 检查您的详细信息"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "也会根据您配置的时间间隔通过 WebDAV 自动运行。"
+
+#: 
+msgid "An Error Occurred"
+msgstr "发生错误"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "教会的个人成员。存储名称、生日、个人电子邮件和手机。"
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "处理您的请求时发生意外错误。请联系您的管理员寻求帮助。"
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "发生意外错误。"
+
+#: 
+msgid "Applied preset"
+msgstr "应用的预设"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "您确定要删除此存款吗？"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "您确定要删除此筹款活动吗？"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "您确定要删除"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "分配和管理捐赠信封号码"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "分配和管理筹款活动买家号码"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "将列表项目分配给家族记录"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "将列表项目分配给组"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "将列表项目分配给事件"
+
+#: 
+msgid "Assign to a Group"
+msgstr "分配给组"
+
+#: 
+msgid "Authentication Code"
+msgstr "身份验证代码"
+
+#: 
+msgid "Auto-mapped"
+msgstr "自动映射"
+
+#: 
+msgid "BCC"
+msgstr "密送"
+
+#: 
+msgid "BCC All"
+msgstr "全部密送"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "返回管理仪表板"
+
+#: 
+msgid "Back to Get Started"
+msgstr "返回入门"
+
+#: 
+msgid "Back to Home"
+msgstr "返回主页"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "根据可配置的时间间隔自动备份到 WebDAV 云存储。"
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "立即备份到外部存储"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "浏览所有可用的插件"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "浏览所有教会事件和活动"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "浏览您会众中的所有人员，支持过滤和搜索"
+
+#: 
+msgid "Browse all plugins"
+msgstr "浏览所有插件"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "浏览并搜索您会众中的所有家族"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "浏览并搜索筹款活动"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "浏览会众成员的照片"
+
+#: 
+msgid "Buyer Number"
+msgstr "买家号码"
+
+#: 
+msgid "Buyers"
+msgstr "买家"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV 列"
+
+#: 
+msgid "CSV template not found"
+msgstr "未找到 CSV 模板"
+
+#: 
+msgid "Call"
+msgstr "致电"
+
+#: 
+msgid "Cart Functions"
+msgstr "列表函数"
+
+#: 
+msgid "Change Family Role"
+msgstr "更改家族角色"
+
+#: 
+msgid "Check Out"
+msgstr "签出"
+
+#: 
+msgid "Check Out Person"
+msgstr "签出人员"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "检查更新并升级您的 ChurchCRM 安装"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "为教会事件和活动签入参与者"
+
+#: 
+msgid "Check in to an event"
+msgstr "签入活动"
+
+#: 
+msgid "Check-ins"
+msgstr "签入"
+
+#: 
+msgid "Children"
+msgstr "儿童"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "选择您想要如何填充数据库。您始终可以稍后使用不同的方法。"
+
+#: 
+msgid "Church Info"
+msgstr "教会信息"
+
+#: 
+msgid "Clear all"
+msgstr "清除所有"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "清除所有数据并重新开始"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "清除列表中的所有项目"
+
+#: 
+msgid "Click Save to apply."
+msgstr "单击保存进行应用。"
+
+#: 
+msgid "Click to upload photo"
+msgstr "单击上传照片"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "单击\"开启 GitHub 问题\"将打开一个新选项卡，其中预先填充了您的系统信息。除非您添加，否则不会包含个人身份信息。"
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "列自动匹配到 ChurchCRM 字段。"
+
+#: 
+msgid "Community Management Platform"
+msgstr "社区管理平台"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "与 Excel、Google Sheets 或任何 CSV 导出兼容。"
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "以任何顺序完成这些操作，为您的会众准备好 ChurchCRM。"
+
+#: 
+msgid "Confession"
+msgstr "忏悔"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "配置全局系统设置和偏好设置"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "配置组设置、角色和属性"
+
+#: 
+msgid "Confirm your new password"
+msgstr "确认您的新密码"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "连接 SMTP 服务器以便 ChurchCRM 可以发送电子邮件"
+
+#: 
+msgid "Connect with others"
+msgstr "与他人联系"
+
+#: 
+msgid "Contact us"
+msgstr "联系我们"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "将个人记录转换为家族单位"
+
+#: 
+msgid "Convert to Family"
+msgstr "转换为家族"
+
+#: 
+msgid "Copied"
+msgstr "已复制"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "将成员复制到组"
+
+#: 
+msgid "Copy to Group"
+msgstr "复制到组"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "创建教会数据库的备份"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "至少每周创建一次手动备份，或启用外部备份插件以按计划自动备份到 WebDAV。"
+
+#: 
+msgid "Create a new deposit"
+msgstr "创建新存款"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "创建和编辑家族信息和关系"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "创建和管理教会事件和活动"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "创建或编辑属性类型类别"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "创建或编辑志愿者职位"
+
+#: 
+msgid "Current person"
+msgstr "当前人员"
+
+#: 
+msgid "Data & Reports"
+msgstr "数据和报告"
+
+#: 
+msgid "Database Reset"
+msgstr "数据库重置"
+
+#: 
+msgid "Default / Notes"
+msgstr "默认/笔记"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "定义自定义字段以收集其他家族数据"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "定义自定义字段以收集其他人员数据"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "定义用于跟踪数据的自定义属性"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "定义可以分配给的自定义属性"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "为成员定义组特定的属性"
+
+#: 
+msgid "Delete All"
+msgstr "删除全部"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "删除签入条目"
+
+#: 
+msgid "Delete Family"
+msgstr "删除家族"
+
+#: 
+msgid "Delete Group"
+msgstr "删除组"
+
+#: 
+msgid "Delete Person"
+msgstr "删除人员"
+
+#: 
+msgid "Delete Pledge"
+msgstr "删除承诺"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "删除此属性也将从任何人员、家族或组记录中删除其所有分配。"
+
+#: 
+msgid "Deposit Value"
+msgstr "存款价值"
+
+#: 
+msgid "Describe the issue"
+msgstr "描述问题"
+
+#: 
+msgid "Directions"
+msgstr "方向"
+
+#: 
+msgid "Directory Reports"
+msgstr "目录报告"
+
+#: 
+msgid "Disabled in settings"
+msgstr "在设置中禁用"
+
+#: 
+msgid "Donated Item"
+msgstr "捐赠物品"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "捐赠和奉献记录在家族级别进行跟踪。如果您计划为独自生活的个人记录奉献，请为他们创建单人家族。"
+
+#: 
+msgid "Download"
+msgstr "下载"
+
+#: 
+msgid "Download CSV Template"
+msgstr "下载 CSV 模板"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "下载模板以查看预期的列格式。"
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "在此拖放您的 CSV 文件"
+
+#: 
+msgid "Duplicates"
+msgstr "重复项"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "每个人可以拥有自己的电子邮件和手机号码。"
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "每一行是一个人。同一家族的成员共享一个 FamilyID。"
+
+#: 
+msgid "Easy registration"
+msgstr "简单注册"
+
+#: 
+msgid "Edit Class"
+msgstr "编辑课程"
+
