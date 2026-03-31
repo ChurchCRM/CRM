@@ -205,7 +205,6 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP Sodium', fn (): bool => function_exists('sodium_crypto_secretbox')),
             new Prerequisite('PHP ZipArchive', fn (): bool => class_exists('ZipArchive')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];

@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile for ChurchCRM
 # Build with: docker build --target dev|test -t churchcrm/crm:php8-debian-[dev|test] .
 
-FROM php:8-apache AS base
+FROM php:8.4-apache AS base
 LABEL maintainer="george@dawouds.com"
 
 EXPOSE 80
