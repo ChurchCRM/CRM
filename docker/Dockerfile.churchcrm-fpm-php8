@@ -8,7 +8,7 @@
 #
 # Required PHP extensions for ChurchCRM:
 #   bcmath, curl, exif, gd, gettext, iconv, intl, mbstring, mysqli,
-#   opcache, pdo_mysql, sodium, xml, zip
+#   opcache, pdo_mysql, xml, zip
 
 FROM php:8.4-fpm AS base
 LABEL maintainer="ChurchCRM"
@@ -48,9 +48,6 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg && \
         pdo_mysql \
         xml \
         zip
-
-# Sodium is bundled with PHP 8.4 but needs to be enabled
-RUN docker-php-ext-enable sodium
 
 # Configure PHP settings
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" && \
