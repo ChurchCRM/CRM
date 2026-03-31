@@ -168,25 +168,7 @@
     });
 
     // Text dropdown actions — fetch phones from API
-    function _copyTextToClipboard(text) {
-      if (navigator.clipboard) {
-        return navigator.clipboard
-          .writeText(text)
-          .then(function () {
-            window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
-              type: "success",
-              delay: 3000,
-            });
-          })
-          .catch(function () {
-            prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
-          });
-      }
-      prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
-      return Promise.resolve();
-    }
-
-    $(document).on(
+    $("#ss-action-toolbar").on(
       "click",
       "[data-action='copy-phones'], [data-action='sms-all'], [data-action='sms-teachers'], [data-action='sms-parents']",
       function () {
@@ -202,13 +184,36 @@
             return;
           }
           if (action === "copy-phones") {
-            _copyTextToClipboard(segment.displayList);
+            window.CRM.copyToClipboard(segment.displayList);
           } else if (segment.smsLink) {
             window.location.href = segment.smsLink;
           }
         });
       },
     );
+
+    // Email dropdown actions — fetch emails from API
+    $("#ss-action-toolbar").on("click", "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='mailto-teachers'], [data-action='mailto-parents'], [data-action='bcc-all']", function () {
+      var action = $(this).data("action");
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/sundayschool/emails",
+      }).done(function (data) {
+        var segmentMap = { "mailto-teachers": data.teachers, "mailto-parents": data.parents };
+        var emails = segmentMap[action] || data.all;
+        if (!emails) {
+          window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
+          return;
+        }
+        if (action === "copy-emails") {
+          window.CRM.copyToClipboard(emails, i18next.t("Email addresses copied to clipboard"));
+        } else if (action === "bcc-all") {
+          window.location.href = "mailto:?bcc=" + encodeURIComponent(emails);
+        } else {
+          window.location.href = "mailto:" + encodeURIComponent(emails);
+        }
+      });
+    });
 
     window.CRM.onLocalesReady(function () {
       // Copy to Group

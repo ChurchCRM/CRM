@@ -39,7 +39,7 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Email'        => self::getEmailMenu(),
+            'Communication' => self::getCommunicationMenu(),
             'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
@@ -180,13 +180,13 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getEmailMenu(): MenuItem
+    private static function getCommunicationMenu(): MenuItem
     {
-        $emailMenu = new MenuItem(gettext('Email'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope');
-        $emailMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'v2/email/dashboard', true, 'fa-gauge'));
-        // Plugin-provided menu items will be added by addPluginMenuItems()
+        $commMenu = new MenuItem(gettext('Communication'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-comments');
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
 
-        return $emailMenu;
+        return $commMenu;
     }
 
     /**

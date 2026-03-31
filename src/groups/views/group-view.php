@@ -105,7 +105,7 @@ if ($bCanManageGroups) {
     <!-- LEFT COLUMN: Actions, Members -->
     <div class="col-lg-8">
         <!-- Action Toolbar (ghost buttons, family-view pattern) -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
+        <div id="group-view-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if ($bCanManageGroups): ?>
             <a class="btn btn-ghost-primary" href="<?= $sRootPath ?>/GroupEditor.php?GroupID=<?= $iGroupID ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
@@ -134,25 +134,24 @@ if ($bCanManageGroups) {
                 <i class="fa-solid fa-chalkboard-user me-1"></i><?= gettext('Sunday School') ?>
             </a>
             <?php endif; ?>
-            <?php if (!empty($sEmailLink) && $bEmailEnabled): ?>
+            <?php if ($bEmailEnabled): ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $encodedEmails): ?>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute($encodedEmails) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>: <?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
+                <div class="dropdown-menu" id="emailDropdownMenu">
+                    <button class="dropdown-item" data-action="copy-emails">
+                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy Emails') ?>
+                    </button>
+                    <button class="dropdown-item" data-action="mailto-all">
+                        <i class="fa-solid fa-users me-2"></i><?= gettext('Email All') ?>
+                    </button>
+                    <button class="dropdown-item" data-action="bcc-all">
+                        <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?>
+                    </button>
                 </div>
             </div>
             <?php endif; ?>
-            <?php if ($bEmailEnabled): ?>
             <div class="dropdown">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
                     <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
@@ -166,7 +165,6 @@ if ($bCanManageGroups) {
                     </button>
                 </div>
             </div>
-            <?php endif; ?>
             <?php if ($bCanManageGroups): ?>
             <div class="dropdown ms-auto">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">

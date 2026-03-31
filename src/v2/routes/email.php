@@ -21,7 +21,7 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/email/');
 
     $emailSettingTooltips = [];
-    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress'] as $key) {
+    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress', 'iDoNotEmailPropertyId'] as $key) {
         $item = SystemConfig::getConfigItem($key);
         $emailSettingTooltips[$key] = $item?->getTooltip() ?? '';
     }
@@ -31,6 +31,7 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
         'sPageTitle' => gettext('eMail Dashboard'),
         'sPageSubtitle' => gettext('Manage email tools and SMTP configuration'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
             [gettext('Email')],
         ]),
         'sSettingsCollapseId' => 'emailSettings',
@@ -58,6 +59,7 @@ function getPeopleWithoutEmailsMVC(Request $request, Response $response, array $
         'sPageTitle'   => gettext('People Without Emails'),
         'sPageSubtitle' => gettext('People with no personal or work email on record'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
             [gettext('Email'), '/v2/email/dashboard'],
             [gettext('People Without Emails')],
         ]),

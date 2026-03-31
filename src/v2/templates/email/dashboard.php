@@ -116,6 +116,13 @@ $(document).ready(function() {
                 label: i18next.t('BCC All Mail To'),
                 type: 'text',
                 tooltip: <?= json_encode($emailSettingTooltips['sToEmailAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+            },
+            {
+                name: 'iDoNotEmailPropertyId',
+                label: i18next.t('Do Not Email Property'),
+                type: 'ajax',
+                ajaxUrl: '/api/system/properties/person',
+                tooltip: <?= json_encode($emailSettingTooltips['iDoNotEmailPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],
         showAllSettingsLink: true

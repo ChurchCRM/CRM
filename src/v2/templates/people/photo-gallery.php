@@ -188,9 +188,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <?php endif; ?>
                                     <?php if ($cellPhone): ?>
                                         <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $cellPhone)) ?>"
-                                           class="btn btn-sm btn-outline-secondary"
+                                           class="btn btn-sm btn-outline-secondary w-100"
                                            title="<?= gettext('Send text message') ?>">
-                                            <i class="ti ti-message"></i>
+                                            <i class="ti ti-message me-1"></i><?= gettext('Text') ?>
                                         </a>
                                     <?php endif; ?>
                                     <?php if ($email): ?>

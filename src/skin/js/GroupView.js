@@ -286,25 +286,7 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Text group: fetch phone numbers from API, then copy or open sms:
   // ------------------------------------------------------------------ //
-  function _copyTextToClipboard(text) {
-    if (navigator.clipboard) {
-      return navigator.clipboard
-        .writeText(text)
-        .then(function () {
-          window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
-            type: "success",
-            delay: 3000,
-          });
-        })
-        .catch(function () {
-          prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
-        });
-    }
-    prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
-    return Promise.resolve();
-  }
-
-  $(document).on("click", "[data-action='copy-phones'], [data-action='sms-all']", function () {
+  $("#group-view-toolbar").on("click", "[data-action='copy-phones'], [data-action='sms-all']", function () {
     var action = $(this).data("action");
     window.CRM.APIRequest({
       method: "GET",
@@ -315,9 +297,32 @@ function initializeGroupView() {
         return;
       }
       if (action === "copy-phones") {
-        _copyTextToClipboard(data.displayList);
+        window.CRM.copyToClipboard(data.displayList);
       } else if (action === "sms-all" && data.smsLink) {
         window.location.href = data.smsLink;
+      }
+    });
+  });
+
+  // ------------------------------------------------------------------ //
+  // Email group: fetch emails from API, then copy or open mailto:
+  // ------------------------------------------------------------------ //
+  $("#group-view-toolbar").on("click", "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='bcc-all']", function () {
+    var action = $(this).data("action");
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "groups/" + window.CRM.currentGroup + "/emails",
+    }).done(function (data) {
+      if (!data.all) {
+        window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
+        return;
+      }
+      if (action === "copy-emails") {
+        window.CRM.copyToClipboard(data.all, i18next.t("Email addresses copied to clipboard"));
+      } else if (action === "mailto-all") {
+        window.location.href = "mailto:" + encodeURIComponent(data.all);
+      } else if (action === "bcc-all") {
+        window.location.href = "mailto:?bcc=" + encodeURIComponent(data.all);
       }
     });
   });
