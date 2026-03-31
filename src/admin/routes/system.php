@@ -304,6 +304,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sTimeZone'        => SystemConfig::getValue('sTimeZone'),
             'sChurchWebSite'   => SystemConfig::getValue('sChurchWebSite'),
             'sLanguage'        => SystemConfig::getValue('sLanguage'),
+            'sDistanceUnit'    => SystemConfig::getValue('sDistanceUnit'),
+            'sDefaultCity'     => SystemConfig::getValue('sDefaultCity'),
+            'sDefaultState'    => SystemConfig::getValue('sDefaultState'),
+            'sDefaultZip'      => SystemConfig::getValue('sDefaultZip'),
+            'sDefaultCountry'  => SystemConfig::getValue('sDefaultCountry'),
         ];
 
         $pageArgs = [
@@ -375,6 +380,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 'sTimeZone'        => $body['sTimeZone'] ?? '',
                 'sChurchWebSite'   => $body['sChurchWebSite'] ?? '',
                 'sLanguage'        => $body['sLanguage'] ?? '',
+                'sDistanceUnit'    => $body['sDistanceUnit'] ?? 'miles',
+                'sDefaultCity'     => $body['sDefaultCity'] ?? '',
+                'sDefaultState'    => $body['sDefaultState'] ?? '',
+                'sDefaultZip'      => $body['sDefaultZip'] ?? '',
+                'sDefaultCountry'  => $body['sDefaultCountry'] ?? '',
             ];
 
             $pageArgs = [
@@ -428,6 +438,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
         SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
         SystemConfig::setValue('sLanguage', $body['sLanguage'] ?? 'en_US');
+        SystemConfig::setValue('sDistanceUnit', $body['sDistanceUnit'] ?? 'miles');
+        SystemConfig::setValue('sDefaultCity', $body['sDefaultCity'] ?? '');
+        SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
+        SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');
+        SystemConfig::setValue('sDefaultCountry', $body['sDefaultCountry'] ?? '');
 
         // Flash success via the system-wide notify
         $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully.');
@@ -445,9 +460,14 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sChurchCountry' => 'text',
         'sChurchPhone'   => 'text',
         'sChurchEmail'   => 'text',
-        'sTimeZone'      => 'text',
-        'sChurchWebSite' => 'text',
-        'sLanguage'      => 'text',
+        'sTimeZone'       => 'text',
+        'sChurchWebSite'  => 'text',
+        'sLanguage'       => 'text',
+        'sDistanceUnit'   => 'text',
+        'sDefaultCity'    => 'text',
+        'sDefaultState'   => 'text',
+        'sDefaultZip'     => 'text',
+        'sDefaultCountry' => 'text',
     ]));
 
 });

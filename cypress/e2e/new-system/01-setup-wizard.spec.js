@@ -173,13 +173,10 @@ describe('01 - Setup Wizard', () => {
 
             cy.url({ timeout: 15000 }).should('include', '/admin/system/church-info');
 
-            // Basic Information tab (active by default)
+            // Fill required fields (single-page layout, no tabs)
             cy.get('#sChurchName').clear().type('Test Community Church');
             cy.get('#sChurchPhone').clear().type('(555) 123-4567');
             cy.get('#sChurchEmail').clear().type('info@testchurch.org');
-
-            // Switch to Location tab and fill required address fields
-            cy.get('#location-tab').click();
             cy.get('#sChurchAddress').clear().type('123 Main Street');
             cy.get('#sChurchCity').clear().type('Springfield');
 

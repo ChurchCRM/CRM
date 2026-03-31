@@ -1,5 +1,5 @@
 /**
- * Church Information Page - Country/State dropdown and map initialization.
+ * Church Information Page - Country/State dropdown, map, and copy-defaults handler.
  *
  * Follows the same API-driven pattern as DropdownManager.js:
  * - Countries: GET /api/public/data/countries
@@ -9,6 +9,8 @@
 document.addEventListener("DOMContentLoaded", function () {
   const countrySelect = document.getElementById("sChurchCountry");
   const stateContainer = document.getElementById("sChurchStateContainer");
+  const defaultCountrySelect = document.getElementById("sDefaultCountry");
+  const defaultStateContainer = document.getElementById("sDefaultStateContainer");
 
   if (!countrySelect || !stateContainer || !window.TomSelect) {
     return;
@@ -17,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const $countrySelect = $(countrySelect);
   const userSelectedCountry = $countrySelect.data("user-selected") || "";
   const userSelectedState = stateContainer.dataset.userSelectedState || "";
+
+  const userSelectedDefaultState = defaultStateContainer
+    ? defaultStateContainer.dataset.userSelectedState || ""
+    : "";
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -30,34 +36,34 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // ── State field ───────────────────────────────────────────────────────────
+  // ── Generic state field builder ─────────────────────────────────────────
+  // Reused for both church state and default state containers.
 
-  function buildStateSelect(states) {
+  function buildStateSelect(fieldId, fieldName, states, selectedValue) {
     const $select = $(
-      `<select id="sChurchState" name="sChurchState" class="form-control" style="width:100%"></select>`,
+      `<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`,
     );
     const blankLabel = window.i18next ? i18next.t("— Select State —") : "— Select State —";
     $select.append(new Option(blankLabel, ""));
 
     $.each(states, function (code, name) {
-      const selected = userSelectedState === code || userSelectedState === name;
+      const selected = selectedValue === code || selectedValue === name;
       $select.append(new Option(name, code, selected, selected));
     });
 
     return $select;
   }
 
-  function buildStateInput() {
+  function buildStateInput(fieldId, fieldName, currentValue) {
     return $(
-      `<input type="text" id="sChurchState" name="sChurchState" class="form-control" style="width:100%" maxlength="100" value="${userSelectedState}">`,
+      `<input type="text" id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%" maxlength="100" value="${currentValue}">`,
     );
   }
 
-  function updateStateField(countryCode) {
+  function updateStateField(container, fieldId, fieldName, countryCode, selectedValue) {
     if (!countryCode) {
-      stateContainer.innerHTML = "";
-      const $input = buildStateInput();
-      stateContainer.appendChild($input[0]);
+      container.innerHTML = "";
+      container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
       return;
     }
 
@@ -66,86 +72,153 @@ document.addEventListener("DOMContentLoaded", function () {
       url: window.CRM.root + "/api/public/data/countries/" + countryCode.toLowerCase() + "/states",
     })
       .done(function (data) {
-        stateContainer.innerHTML = "";
+        container.innerHTML = "";
         if (data && Object.keys(data).length > 0) {
-          const $select = buildStateSelect(data);
-          stateContainer.appendChild($select[0]);
+          const $select = buildStateSelect(fieldId, fieldName, data, selectedValue);
+          container.appendChild($select[0]);
           initTomSelect($select[0]);
         } else {
-          stateContainer.appendChild(buildStateInput()[0]);
+          container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
         }
       })
       .fail(function () {
-        stateContainer.innerHTML = "";
-        stateContainer.appendChild(buildStateInput()[0]);
+        container.innerHTML = "";
+        container.appendChild(buildStateInput(fieldId, fieldName, selectedValue)[0]);
       });
   }
 
   // ── Country dropdown ──────────────────────────────────────────────────────
 
-  $.ajax({
-    type: "GET",
-    url: window.CRM.root + "/api/public/data/countries",
-  }).done(function (data) {
-    $countrySelect.empty();
-    $countrySelect.append(new Option(window.i18next ? i18next.t("— Select Country —") : "— Select Country —", ""));
+  function populateCountrySelect($selectEl, selectedValue, callback) {
+    $.ajax({
+      type: "GET",
+      url: window.CRM.root + "/api/public/data/countries",
+    }).done(function (data) {
+      $selectEl.empty();
+      const blankLabel = window.i18next ? i18next.t("— Select Country —") : "— Select Country —";
+      $selectEl.append(new Option(blankLabel, ""));
 
-    $.each(data, function (idx, country) {
-      const selected = userSelectedCountry === country.code || userSelectedCountry === country.name;
-      $countrySelect.append(new Option(country.name, country.code, selected, selected));
+      $.each(data, function (idx, country) {
+        const selected = selectedValue === country.code || selectedValue === country.name;
+        $selectEl.append(new Option(country.name, country.code, selected, selected));
+      });
+
+      initTomSelect($selectEl[0]);
+
+      if (callback) {
+        callback($selectEl.val());
+      }
     });
+  }
 
-    initTomSelect(countrySelect);
+  // ── Church country → church state ───────────────────────────────────────
 
-    // Trigger initial state load for the pre-selected country
-    const preselected = $countrySelect.val();
+  populateCountrySelect($countrySelect, userSelectedCountry, function (preselected) {
     if (preselected) {
-      updateStateField(preselected);
+      updateStateField(stateContainer, "sChurchState", "sChurchState", preselected, userSelectedState);
     } else {
       stateContainer.innerHTML = "";
-      stateContainer.appendChild(buildStateInput()[0]);
+      stateContainer.appendChild(buildStateInput("sChurchState", "sChurchState", userSelectedState)[0]);
     }
   });
 
-  // Update state field whenever country changes
   $countrySelect.on("change", function () {
-    updateStateField(this.value);
+    updateStateField(stateContainer, "sChurchState", "sChurchState", this.value, "");
   });
+
+  // ── Default country → default state ─────────────────────────────────────
+
+  if (defaultCountrySelect && defaultStateContainer) {
+    const $defaultCountrySelect = $(defaultCountrySelect);
+    const userSelectedDefaultCountry = $defaultCountrySelect.data("user-selected") || "";
+
+    populateCountrySelect($defaultCountrySelect, userSelectedDefaultCountry, function (preselected) {
+      if (preselected) {
+        updateStateField(
+          defaultStateContainer,
+          "sDefaultState",
+          "sDefaultState",
+          preselected,
+          userSelectedDefaultState,
+        );
+      } else {
+        defaultStateContainer.innerHTML = "";
+        defaultStateContainer.appendChild(
+          buildStateInput("sDefaultState", "sDefaultState", userSelectedDefaultState)[0],
+        );
+      }
+    });
+
+    $defaultCountrySelect.on("change", function () {
+      updateStateField(defaultStateContainer, "sDefaultState", "sDefaultState", this.value, "");
+    });
+  }
 
   // ── Other TomSelect dropdowns (language, timezone) ──────────────────────────
 
   $(".auto-tomselect").each(function () {
-    if (this.id !== "sChurchCountry") {
+    if (this.id !== "sChurchCountry" && this.id !== "sDefaultCountry") {
       if (!this.tomselect) {
         initTomSelect(this);
       }
     }
   });
 
-  // ── Tab persistence ────────────────────────────────────────────────────────
+  // ── Copy from church address ────────────────────────────────────────────────
 
-  const TAB_KEY = "churchInfoActiveTab";
+  const copyBtn = document.getElementById("copy-church-address");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      // Copy city
+      const cityVal = document.getElementById("sChurchCity");
+      const defaultCity = document.getElementById("sDefaultCity");
+      if (cityVal && defaultCity) {
+        defaultCity.value = cityVal.value;
+      }
 
-  // Restore last active tab from localStorage
-  const savedTab = localStorage.getItem(TAB_KEY);
-  const targetTab = savedTab ? document.getElementById(savedTab) : null;
-  if (targetTab) {
-    $(targetTab).tab("show");
-  } else {
-    // Default to first tab
-    $("#basic-tab").tab("show");
+      // Copy zip
+      const zipVal = document.getElementById("sChurchZip");
+      const defaultZip = document.getElementById("sDefaultZip");
+      if (zipVal && defaultZip) {
+        defaultZip.value = zipVal.value;
+      }
+
+      // Copy country — set via TomSelect API, then update default state
+      const churchCountryEl = document.getElementById("sChurchCountry");
+      const defaultCountryEl = document.getElementById("sDefaultCountry");
+      if (churchCountryEl && defaultCountryEl && defaultCountryEl.tomselect) {
+        const countryCode = churchCountryEl.value;
+        defaultCountryEl.tomselect.setValue(countryCode);
+
+        // Copy state after the default state field rebuilds for the new country
+        const churchStateEl = document.getElementById("sChurchState");
+        const stateValue = churchStateEl ? churchStateEl.value : "";
+
+        if (defaultStateContainer && countryCode) {
+          // Fetch states for the copied country, then set the copied state value
+          $.ajax({
+            type: "GET",
+            url: window.CRM.root + "/api/public/data/countries/" + countryCode.toLowerCase() + "/states",
+          }).done(function (data) {
+            defaultStateContainer.innerHTML = "";
+            if (data && Object.keys(data).length > 0) {
+              const $select = buildStateSelect("sDefaultState", "sDefaultState", data, stateValue);
+              defaultStateContainer.appendChild($select[0]);
+              initTomSelect($select[0]);
+            } else {
+              const $input = buildStateInput("sDefaultState", "sDefaultState", stateValue);
+              defaultStateContainer.appendChild($input[0]);
+            }
+          });
+        }
+      }
+    });
   }
-
-  // Save active tab whenever it changes
-  $("#church-info-tabs a[data-toggle='tab']").on("shown.bs.tab", function () {
-    localStorage.setItem(TAB_KEY, this.id);
-  });
 
   // ── Map initialization ────────────────────────────────────────────────────
 
   if (window.L && window.CRM && window.CRM.churchMapConfig) {
     const cfg = window.CRM.churchMapConfig;
-    let churchMap = null;
 
     function initChurchMap() {
       const mapContainer = document.getElementById("church-location-map");
@@ -154,14 +227,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       if (mapContainer._leaflet_id !== undefined) {
-        if (churchMap) {
-          churchMap.invalidateSize();
-        }
         return;
       }
 
       try {
-        churchMap = window.L.map("church-location-map", {
+        const churchMap = window.L.map("church-location-map", {
           scrollWheelZoom: false,
           zoomControl: true,
         }).setView([cfg.lat, cfg.lng], 15);
@@ -177,30 +247,14 @@ document.addEventListener("DOMContentLoaded", function () {
           .addTo(churchMap);
 
         setTimeout(() => {
-          if (churchMap) {
-            churchMap.invalidateSize();
-          }
+          churchMap.invalidateSize();
         }, 100);
       } catch (e) {
         console.error("Error initializing map:", e);
       }
     }
 
-    const locationTab = document.getElementById("location-tab");
-    if (locationTab) {
-      locationTab.addEventListener("click", function () {
-        setTimeout(initChurchMap, 300);
-      });
-
-      if (window.$) {
-        $(locationTab).on("shown.bs.tab", function () {
-          setTimeout(initChurchMap, 100);
-        });
-      }
-
-      if (locationTab.classList.contains("active")) {
-        setTimeout(initChurchMap, 500);
-      }
-    }
+    // Map is always visible (no tabs), init after a short delay for layout
+    setTimeout(initChurchMap, 300);
   }
 });
