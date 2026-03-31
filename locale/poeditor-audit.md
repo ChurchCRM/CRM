@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥90%):** 12
-**Good Locales (75-89%):** 27
+**Complete Locales (≥90%):** 14
+**Good Locales (75-89%):** 25
 **Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 7
 
@@ -10,6 +10,8 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `af` | Afrikaans | 3197 | 98.37% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 3196 | 98.34% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 3180 | 97.85% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 3179 | 97.82% | 🟢 Complete | ✅ Yes |
 | `pt` | Portuguese | 3177 | 97.75% | 🟢 Complete | ✅ Yes |
@@ -22,12 +24,10 @@
 | `es-co` | Spanish (CO) | 3176 | 97.72% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 3173 | 97.63% | 🟢 Complete | ✅ Yes |
 | `de` | German | 3172 | 97.6% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 2835 | 87.23% | 🟡 Good | ✅ Yes |
+| `zh-cn` | Chinese | 2835 | 87.23% | 🟡 Good | ✅ Yes |
 | `uk` | Ukrainian | 2835 | 87.23% | 🟡 Good | ✅ Yes |
-| `af` | Afrikaans | 2685 | 82.62% | 🟡 Good | ✅ Yes |
-| `sq` | Albanian | 2685 | 82.62% | 🟡 Good | ✅ Yes |
-| `am` | Amharic | 2685 | 82.62% | 🟡 Good | ✅ Yes |
-| `ar` | Arabic | 2685 | 82.62% | 🟡 Good | ✅ Yes |
-| `zh-cn` | Chinese | 2685 | 82.62% | 🟡 Good | ✅ Yes |
+| `ar` | Arabic | 2834 | 87.2% | 🟡 Good | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 2685 | 82.62% | 🟡 Good | ✅ Yes |
 | `cs` | Czech | 2685 | 82.62% | 🟡 Good | ✅ Yes |
 | `et` | Estonian | 2685 | 82.62% | 🟡 Good | ✅ Yes |
@@ -65,8 +65,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 12 locales ready for production
-- **🟡 Good (75-89%):** 27 locales with solid translation coverage
+- **🟢 Complete (≥90%):** 14 locales ready for production
+- **🟡 Good (75-89%):** 25 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)
