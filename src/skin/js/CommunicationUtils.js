@@ -132,10 +132,7 @@
    * @param {string} emailCsv — comma-separated email addresses
    */
   comm.copyEmails = function (emailCsv) {
-    return window.CRM.copyToClipboard(
-      emailCsv,
-      i18next.t("Email addresses copied to clipboard"),
-    );
+    return window.CRM.copyToClipboard(emailCsv, i18next.t("Email addresses copied to clipboard"));
   };
 
   /**
@@ -143,10 +140,7 @@
    * @param {string} phoneDisplayList — comma-separated formatted phone numbers
    */
   comm.copyPhones = function (phoneDisplayList) {
-    return window.CRM.copyToClipboard(
-      phoneDisplayList,
-      i18next.t("Phone numbers copied to clipboard"),
-    );
+    return window.CRM.copyToClipboard(phoneDisplayList, i18next.t("Phone numbers copied to clipboard"));
   };
 
   window.CRM.comm = comm;
