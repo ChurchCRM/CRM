@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -42,7 +43,7 @@ $curY = $topY;
 $pdf->writeAt(
     SystemConfig::getValue('leftX'),
     $curY,
-    gettext('Voting Members') . ' ' . MakeFYString($iFYID)
+    gettext('Voting Members') . ' ' . FinancialService::formatFiscalYear($iFYID)
 );
 $curY += 10;
 

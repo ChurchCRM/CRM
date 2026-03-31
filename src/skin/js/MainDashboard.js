@@ -638,7 +638,6 @@ export function initializeMainDashboard() {
           curve: "smooth",
           width: 2,
         },
-        colors: ["#3366ff"],
         grid: {
           show: true,
           borderColor: "#e0e0e0",

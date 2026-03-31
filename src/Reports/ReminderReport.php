@@ -7,6 +7,7 @@ require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
@@ -180,7 +181,7 @@ class PdfReminderReport extends ChurchInfoReport
     {
         $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country);
         $curY += 2 * SystemConfig::getValue('incrementY');
-        $blurb = SystemConfig::getValue('sReminder1') . MakeFYString($iFYID) . $fundOnlyString . '.';
+        $blurb = SystemConfig::getValue('sReminder1') . FinancialService::formatFiscalYear($iFYID) . $fundOnlyString . '.';
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $blurb);
 
         return $curY + 2 * SystemConfig::getValue('incrementY');
