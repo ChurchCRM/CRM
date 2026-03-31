@@ -453,7 +453,7 @@ $otherPeople = $family->getOtherPeople();
                                 </button>
                             </li>
                         <?php }
-                        if ($family->getEmail() !=="") { ?>
+                        if (!empty($family->getEmail())) { ?>
                             <li class="mb-1">
                                 <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= $family->getEmail() ?>"><?= $family->getEmail() ?></a>
                                 <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"

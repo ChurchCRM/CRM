@@ -342,11 +342,11 @@ $bOkToEdit = (
                 <?php endif; ?>
 
                 <!-- Email -->
-                <?php if ($sEmail !== '' || $per_WorkEmail !== '') : ?>
+                <?php if (!empty($sEmail) || !empty($per_WorkEmail)) : ?>
                 <div class="mb-3">
                     <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
                     <ul class="list-unstyled ms-3">
-                        <?php if ($sEmail !== '') : ?>
+                        <?php if (!empty($sEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-muted"></i>
                             <a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a>
@@ -357,7 +357,7 @@ $bOkToEdit = (
                             </button>
                         </li>
                         <?php endif; ?>
-                        <?php if ($per_WorkEmail !== '') : ?>
+                        <?php if (!empty($per_WorkEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a>
