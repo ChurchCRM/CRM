@@ -136,33 +136,20 @@ if ($bCanManageGroups) {
             <?php endif; ?>
             <?php if ($bEmailEnabled): ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="emailDropdownBtn">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
                 <div class="dropdown-menu" id="emailDropdownMenu">
-                    <button class="dropdown-item" data-action="copy-emails">
-                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy Emails') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="mailto-all">
-                        <i class="fa-solid fa-users me-2"></i><?= gettext('Email All') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="bcc-all">
-                        <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?>
-                    </button>
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php endif; ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="textDropdownBtn">
                     <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-action="copy-phones">
-                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy Numbers') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="sms-all">
-                        <i class="fa-solid fa-comment-sms me-2"></i><?= gettext('Send Text') ?>
-                    </button>
+                <div class="dropdown-menu" id="textDropdownMenu">
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php if ($bCanManageGroups): ?>

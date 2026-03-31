@@ -301,8 +301,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 ->innerJoinWithPerson()
                 ->find();
 
+            $group = $request->getAttribute('group');
+            $roleNameMap = [];
+            foreach (ListOptionQuery::create()->filterById($group->getRoleListId())->find() as $opt) {
+                $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+            }
+
             $phonesSeen = [];
             $phones     = [];
+            $rolePhones = [];
             foreach ($memberships as $membership) {
                 $person = $membership->getPerson();
                 if ($person === null) {
@@ -318,9 +325,19 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 }
                 $phonesSeen[$phone] = true;
                 $phones[]           = $phone;
+                $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
+                $rolePhones[$roleName][] = $phone;
             }
 
-            return SlimUtils::renderJSON($response, _buildPhoneResponse($phones));
+            $roles = [];
+            foreach ($rolePhones as $name => $rPhones) {
+                $roles[$name] = _buildPhoneResponse($rPhones);
+            }
+
+            return SlimUtils::renderJSON($response, array_merge(
+                _buildPhoneResponse($phones),
+                ['roles' => $roles],
+            ));
         } catch (\Exception $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve phone numbers'), [], 500, $e, $request);
         }
@@ -354,6 +371,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
 
             $teacherPhones = [];
             $parentPhones  = [];
+            $studentPhones = [];
             $phoneSeen     = [];
 
             foreach ($rsTeachers as $teacher) {
@@ -367,6 +385,16 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 }
             }
             foreach ($thisClassChildren as $child) {
+                // Student's own cell phone
+                $kidId = (int) ($child['kidId'] ?? 0);
+                if ($kidId > 0 && !isset($doNotSmsSet[$kidId])) {
+                    $studentPhone = (string) ($child['mobilePhone'] ?? '');
+                    if (!empty($studentPhone) && !isset($phoneSeen[$studentPhone])) {
+                        $phoneSeen[$studentPhone] = true;
+                        $studentPhones[]          = $studentPhone;
+                    }
+                }
+                // Parent phones
                 foreach (['dadId' => 'dadCellPhone', 'momId' => 'momCellPhone'] as $idField => $phoneField) {
                     $parentId = (int) ($child[$idField] ?? 0);
                     if ($parentId > 0 && isset($doNotSmsSet[$parentId])) {
@@ -380,11 +408,12 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 }
             }
 
-            $allPhones = array_merge($teacherPhones, $parentPhones);
+            $allPhones = array_merge($teacherPhones, $studentPhones, $parentPhones);
 
             return SlimUtils::renderJSON($response, [
                 'all'      => _buildPhoneResponse($allPhones),
                 'teachers' => _buildPhoneResponse($teacherPhones),
+                'students' => _buildPhoneResponse($studentPhones),
                 'parents'  => _buildPhoneResponse($parentPhones),
             ]);
         } catch (\Exception $e) {

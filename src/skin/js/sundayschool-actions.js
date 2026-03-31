@@ -167,57 +167,157 @@
       window.print();
     });
 
-    // Text dropdown actions — fetch phones from API
-    $("#ss-action-toolbar").on(
-      "click",
-      "[data-action='copy-phones'], [data-action='sms-all'], [data-action='sms-teachers'], [data-action='sms-parents']",
-      function () {
-        var action = $(this).data("action");
-        window.CRM.APIRequest({
-          method: "GET",
-          path: "groups/" + window.CRM.currentGroup + "/sundayschool/phones",
-        }).done(function (data) {
-          var segmentMap = { "sms-teachers": data.teachers, "sms-parents": data.parents };
-          var segment = segmentMap[action] || data.all;
-          if (!segment || !segment.phones || !segment.phones.length) {
-            window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
-            return;
-          }
-          if (action === "copy-phones") {
-            window.CRM.comm.copyPhones(segment.displayList);
-          } else {
-            window.CRM.comm.openSms(segment.phones);
-          }
+    // ------------------------------------------------------------------ //
+    // Email dropdown: populate on first open
+    // ------------------------------------------------------------------ //
+    var ssEmailLoaded = false;
+    $("#ssEmailDropdownBtn").on("show.bs.dropdown", function () {
+      if (ssEmailLoaded) return;
+      ssEmailLoaded = true;
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/sundayschool/emails",
+      }).done(function (data) {
+        var menu = $("#ssEmailDropdownMenu");
+        menu.empty();
+        if (!data.all) {
+          menu.html(
+            '<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>",
+          );
+          return;
+        }
+        // All section
+        menu.append(
+          '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-copy me-2"></i>' +
+            i18next.t("Copy All Emails") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="mailto" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-envelope me-2"></i>' +
+            i18next.t("Email All") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="bcc" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-user-secret me-2"></i>' +
+            i18next.t("BCC All") +
+            "</button>",
+        );
+        // Per-role sections (teachers, students, parents)
+        var roleMap = {
+          teachers: { label: i18next.t("Teachers"), icon: "fa-person-chalkboard" },
+          parents: { label: i18next.t("Parents"), icon: "fa-users" },
+          kids: { label: i18next.t("Students"), icon: "fa-child" },
+        };
+        $.each(roleMap, function (key, meta) {
+          if (!data[key]) return;
+          menu.append('<div class="dropdown-divider"></div>');
+          menu.append('<h6 class="dropdown-header">' + meta.label + "</h6>");
+          menu.append(
+            '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+              window.CRM.escapeHtml(data[key]) +
+              '"><i class="fa-solid fa-copy me-2"></i>' +
+              i18next.t("Copy") +
+              "</button>",
+          );
+          menu.append(
+            '<button class="dropdown-item" data-action="mailto" data-emails="' +
+              window.CRM.escapeHtml(data[key]) +
+              '"><i class="fa-solid fa-envelope me-2"></i>' +
+              i18next.t("Email") +
+              "</button>",
+          );
         });
-      },
-    );
+      });
+    });
 
-    // Email dropdown actions — fetch emails from API
-    $("#ss-action-toolbar").on(
-      "click",
-      "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='mailto-teachers'], [data-action='mailto-parents'], [data-action='bcc-all']",
-      function () {
-        var action = $(this).data("action");
-        window.CRM.APIRequest({
-          method: "GET",
-          path: "groups/" + window.CRM.currentGroup + "/sundayschool/emails",
-        }).done(function (data) {
-          var segmentMap = { "mailto-teachers": data.teachers, "mailto-parents": data.parents };
-          var emails = segmentMap[action] || data.all;
-          if (!emails) {
-            window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
-            return;
-          }
-          if (action === "copy-emails") {
-            window.CRM.comm.copyEmails(emails);
-          } else if (action === "bcc-all") {
-            window.CRM.comm.openBcc(emails);
-          } else {
-            window.CRM.comm.openMailto(emails);
-          }
+    // Handle email actions (delegated)
+    $("#ss-action-toolbar").on("click", "[data-action='copy-emails']", function () {
+      window.CRM.comm.copyEmails($(this).data("emails"));
+    });
+    $("#ss-action-toolbar").on("click", "[data-action='mailto']", function () {
+      window.CRM.comm.openMailto($(this).data("emails"));
+    });
+    $("#ss-action-toolbar").on("click", "[data-action='bcc']", function () {
+      window.CRM.comm.openBcc($(this).data("emails"));
+    });
+
+    // ------------------------------------------------------------------ //
+    // Text dropdown: populate on first open
+    // ------------------------------------------------------------------ //
+    var ssTextLoaded = false;
+    $("#ssTextDropdownBtn").on("show.bs.dropdown", function () {
+      if (ssTextLoaded) return;
+      ssTextLoaded = true;
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/sundayschool/phones",
+      }).done(function (data) {
+        var menu = $("#ssTextDropdownMenu");
+        menu.empty();
+        if (!data.all || !data.all.phones || !data.all.phones.length) {
+          menu.html(
+            '<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>",
+          );
+          return;
+        }
+        // All section
+        menu.append(
+          '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+            window.CRM.escapeHtml(data.all.displayList) +
+            '"><i class="fa-solid fa-copy me-2"></i>' +
+            i18next.t("Copy All Numbers") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="sms" data-phones="' +
+            window.CRM.escapeHtml(JSON.stringify(data.all.phones)) +
+            '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+            i18next.t("Text All") +
+            "</button>",
+        );
+        // Per-role sections
+        var roleMap = {
+          teachers: { label: i18next.t("Teachers"), icon: "fa-person-chalkboard" },
+          students: { label: i18next.t("Students"), icon: "fa-child" },
+          parents: { label: i18next.t("Parents"), icon: "fa-users" },
+        };
+        $.each(roleMap, function (key, meta) {
+          if (!data[key] || !data[key].phones || !data[key].phones.length) return;
+          menu.append('<div class="dropdown-divider"></div>');
+          menu.append('<h6 class="dropdown-header">' + meta.label + "</h6>");
+          menu.append(
+            '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+              window.CRM.escapeHtml(data[key].displayList) +
+              '"><i class="fa-solid fa-copy me-2"></i>' +
+              i18next.t("Copy") +
+              "</button>",
+          );
+          menu.append(
+            '<button class="dropdown-item" data-action="sms" data-phones="' +
+              window.CRM.escapeHtml(JSON.stringify(data[key].phones)) +
+              '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+              i18next.t("Text") +
+              "</button>",
+          );
         });
-      },
-    );
+      });
+    });
+
+    // Handle text actions (delegated)
+    $("#ss-action-toolbar").on("click", "[data-action='copy-phones']", function () {
+      window.CRM.comm.copyPhones($(this).data("phones"));
+    });
+    $("#ss-action-toolbar").on("click", "[data-action='sms']", function () {
+      var phones = $(this).data("phones");
+      if (typeof phones === "string") phones = JSON.parse(phones);
+      window.CRM.comm.openSms(phones);
+    });
 
     window.CRM.onLocalesReady(function () {
       // Copy to Group

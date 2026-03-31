@@ -122,47 +122,20 @@ if ($bCanManageGroups) {
             </a>
             <?php if ($canEmail): ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssEmailDropdownBtn">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-action="copy-emails">
-                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy All Emails') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="mailto-all">
-                        <i class="fa-solid fa-users me-2"></i><?= gettext('Email All') ?>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" data-action="mailto-teachers">
-                        <i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Email Teachers') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="mailto-parents">
-                        <i class="fa-solid fa-users me-2"></i><?= gettext('Email Parents') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="bcc-all">
-                        <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?>
-                    </button>
+                <div class="dropdown-menu" id="ssEmailDropdownMenu">
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php endif; ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
                     <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" data-action="copy-phones">
-                        <i class="fa-solid fa-copy me-2"></i><?= gettext('Copy All Numbers') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="sms-all">
-                        <i class="fa-solid fa-comment-sms me-2"></i><?= gettext('Text All') ?>
-                    </button>
-                    <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" data-action="sms-teachers">
-                        <i class="fa-solid fa-person-chalkboard me-2"></i><?= gettext('Text Teachers') ?>
-                    </button>
-                    <button class="dropdown-item" data-action="sms-parents">
-                        <i class="fa-solid fa-users me-2"></i><?= gettext('Text Parents') ?>
-                    </button>
+                <div class="dropdown-menu" id="ssTextDropdownMenu">
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php if ($bCanManageGroups): ?>

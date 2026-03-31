@@ -284,52 +284,149 @@ function initializeGroupView() {
   });
 
   // ------------------------------------------------------------------ //
-  // Text group: fetch phone numbers from API, then copy or open sms:
+  // Email dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
-  $("#group-view-toolbar").on("click", "[data-action='copy-phones'], [data-action='sms-all']", function () {
-    var action = $(this).data("action");
+  var emailLoaded = false;
+  $("#emailDropdownBtn").on("show.bs.dropdown", function () {
+    if (emailLoaded) return;
+    emailLoaded = true;
     window.CRM.APIRequest({
       method: "GET",
-      path: "groups/" + window.CRM.currentGroup + "/phones",
+      path: "groups/" + window.CRM.currentGroup + "/emails",
     }).done(function (data) {
-      if (!data.phones || !data.phones.length) {
-        window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
+      var menu = $("#emailDropdownMenu");
+      menu.empty();
+      if (!data.all) {
+        menu.html(
+          '<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>",
+        );
         return;
       }
-      if (action === "copy-phones") {
-        window.CRM.comm.copyPhones(data.displayList);
-      } else if (action === "sms-all") {
-        window.CRM.comm.openSms(data.phones);
+      // All section
+      menu.append(
+        '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+          window.CRM.escapeHtml(data.all) +
+          '"><i class="fa-solid fa-copy me-2"></i>' +
+          i18next.t("Copy All Emails") +
+          "</button>",
+      );
+      menu.append(
+        '<button class="dropdown-item" data-action="mailto" data-emails="' +
+          window.CRM.escapeHtml(data.all) +
+          '"><i class="fa-solid fa-envelope me-2"></i>' +
+          i18next.t("Email All") +
+          "</button>",
+      );
+      menu.append(
+        '<button class="dropdown-item" data-action="bcc" data-emails="' +
+          window.CRM.escapeHtml(data.all) +
+          '"><i class="fa-solid fa-user-secret me-2"></i>' +
+          i18next.t("BCC All") +
+          "</button>",
+      );
+      // Per-role sections
+      if (data.roles && Object.keys(data.roles).length > 0) {
+        $.each(data.roles, function (roleName, emails) {
+          menu.append('<div class="dropdown-divider"></div>');
+          menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
+          menu.append(
+            '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+              window.CRM.escapeHtml(emails) +
+              '"><i class="fa-solid fa-copy me-2"></i>' +
+              i18next.t("Copy") +
+              "</button>",
+          );
+          menu.append(
+            '<button class="dropdown-item" data-action="mailto" data-emails="' +
+              window.CRM.escapeHtml(emails) +
+              '"><i class="fa-solid fa-envelope me-2"></i>' +
+              i18next.t("Email") +
+              "</button>",
+          );
+        });
       }
     });
   });
 
+  // Handle email actions (delegated from dynamic items)
+  $("#group-view-toolbar").on("click", "[data-action='copy-emails']", function () {
+    window.CRM.comm.copyEmails($(this).data("emails"));
+  });
+  $("#group-view-toolbar").on("click", "[data-action='mailto']", function () {
+    window.CRM.comm.openMailto($(this).data("emails"));
+  });
+  $("#group-view-toolbar").on("click", "[data-action='bcc']", function () {
+    window.CRM.comm.openBcc($(this).data("emails"));
+  });
+
   // ------------------------------------------------------------------ //
-  // Email group: fetch emails from API, then copy or open mailto:
+  // Text dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
-  $("#group-view-toolbar").on(
-    "click",
-    "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='bcc-all']",
-    function () {
-      var action = $(this).data("action");
-      window.CRM.APIRequest({
-        method: "GET",
-        path: "groups/" + window.CRM.currentGroup + "/emails",
-      }).done(function (data) {
-        if (!data.all) {
-          window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
-          return;
-        }
-        if (action === "copy-emails") {
-          window.CRM.comm.copyEmails(data.all);
-        } else if (action === "mailto-all") {
-          window.CRM.comm.openMailto(data.all);
-        } else if (action === "bcc-all") {
-          window.CRM.comm.openBcc(data.all);
-        }
-      });
-    },
-  );
+  var textLoaded = false;
+  $("#textDropdownBtn").on("show.bs.dropdown", function () {
+    if (textLoaded) return;
+    textLoaded = true;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "groups/" + window.CRM.currentGroup + "/phones",
+    }).done(function (data) {
+      var menu = $("#textDropdownMenu");
+      menu.empty();
+      if (!data.phones || !data.phones.length) {
+        menu.html(
+          '<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>",
+        );
+        return;
+      }
+      // All section
+      menu.append(
+        '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+          window.CRM.escapeHtml(data.displayList) +
+          '"><i class="fa-solid fa-copy me-2"></i>' +
+          i18next.t("Copy All Numbers") +
+          "</button>",
+      );
+      menu.append(
+        '<button class="dropdown-item" data-action="sms" data-phones="' +
+          window.CRM.escapeHtml(JSON.stringify(data.phones)) +
+          '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+          i18next.t("Text All") +
+          "</button>",
+      );
+      // Per-role sections
+      if (data.roles && Object.keys(data.roles).length > 0) {
+        $.each(data.roles, function (roleName, roleData) {
+          if (!roleData.phones || !roleData.phones.length) return;
+          menu.append('<div class="dropdown-divider"></div>');
+          menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
+          menu.append(
+            '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+              window.CRM.escapeHtml(roleData.displayList) +
+              '"><i class="fa-solid fa-copy me-2"></i>' +
+              i18next.t("Copy") +
+              "</button>",
+          );
+          menu.append(
+            '<button class="dropdown-item" data-action="sms" data-phones="' +
+              window.CRM.escapeHtml(JSON.stringify(roleData.phones)) +
+              '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+              i18next.t("Text") +
+              "</button>",
+          );
+        });
+      }
+    });
+  });
+
+  // Handle text actions (delegated from dynamic items)
+  $("#group-view-toolbar").on("click", "[data-action='copy-phones']", function () {
+    window.CRM.comm.copyPhones($(this).data("phones"));
+  });
+  $("#group-view-toolbar").on("click", "[data-action='sms']", function () {
+    var phones = $(this).data("phones");
+    if (typeof phones === "string") phones = JSON.parse(phones);
+    window.CRM.comm.openSms(phones);
+  });
 
   // ------------------------------------------------------------------ //
   // Assign new group property
