@@ -187,10 +187,9 @@ function initDepositSlipEditor() {
     // Hide the clear button
     $(this).hide();
 
-    // Reset chart colors if available
+    // Reset chart highlight by clearing the dimmed colors
     if (window.fundChartInstance) {
-      window.fundChartInstance.data.datasets[0].backgroundColor = window.originalFundColors;
-      window.fundChartInstance.update();
+      window.fundChartInstance.updateOptions({ colors: undefined });
     }
   });
 
@@ -392,31 +391,10 @@ function initDepositSlipEditor() {
   });
 }
 
-function initCharts(
-  pledgeLabels,
-  pledgeChartData,
-  pledgeBackgroundColor,
-  fundLabels,
-  fundChartData,
-  fundBackgroundColor,
-) {
+function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
   // Funds Chart: Dynamic height based on number of funds
   // Minimum 120px for 1 fund, +40px for each additional fund
   var fundHeight = Math.max(250, fundLabels.length * 40);
-
-  // Convert rgba colors to hex for ApexCharts
-  function rgbaToHex(rgba) {
-    var match = rgba.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)/) || rgba.match(/^rgb?\((\d+),\s*(\d+),\s*(\d+)/);
-    if (match) {
-      var hex = function (x) {
-        return ("0" + parseInt(x).toString(16)).slice(-2);
-      };
-      return "#" + hex(match[1]) + hex(match[2]) + hex(match[3]);
-    }
-    return rgba;
-  }
-
-  var fundColors = fundBackgroundColor.map(rgbaToHex);
 
   // Funds Bar Chart using ApexCharts
   var fundChartOptions = {
@@ -464,7 +442,7 @@ function initCharts(
         data: fundChartData,
       },
     ],
-    colors: fundColors,
+    // Use ApexCharts default color palette (distributed: true assigns one per bar)
     xaxis: {
       categories: fundLabels,
       tickFormatter: function (value) {
@@ -502,15 +480,15 @@ function initCharts(
   if (fundChartElement) {
     window.fundChartInstance = new window.ApexCharts(fundChartElement, fundChartOptions);
     window.fundChartInstance.render();
-    window.originalFundColors = fundColors.slice(); // Clone array
   }
 }
 
 // Helper function to highlight selected chart bar
 function highlightChartBar(chart, index) {
-  if (!chart || !window.originalFundColors) return;
+  if (!chart) return;
 
-  var originalColors = window.originalFundColors;
+  var originalColors = chart.w.globals.colors.slice();
+
   var newColors = originalColors.map(function (color, i) {
     if (i === index) {
       return color;

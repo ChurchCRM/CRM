@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       forceNiceScale: true,
     },
-    colors: ["#9ec5de"],
     dataLabels: {
       enabled: false,
     },

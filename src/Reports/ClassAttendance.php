@@ -5,6 +5,7 @@ require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -87,7 +88,7 @@ for ($i = 0; $i < $nGrps; $i++) {
         continue;
     }
 
-    $FYString = MakeFYString($iFYID);
+    $FYString = FinancialService::formatFiscalYear($iFYID);
 
     $reportHeader = str_pad($group->getName(), 95) . $FYString;
 
