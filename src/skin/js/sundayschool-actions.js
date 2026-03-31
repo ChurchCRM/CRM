@@ -179,19 +179,14 @@
         }).done(function (data) {
           var segmentMap = { "sms-teachers": data.teachers, "sms-parents": data.parents };
           var segment = segmentMap[action] || data.all;
-          if (!segment || !segment.displayList) {
+          if (!segment || !segment.phones || !segment.phones.length) {
             window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
             return;
           }
           if (action === "copy-phones") {
-            window.CRM.copyToClipboard(segment.displayList);
-          } else if (segment.phones && segment.phones.length) {
-            var cleaned = segment.phones
-              .map(function (p) {
-                return p.replace(/[^\d+]/g, "");
-              })
-              .filter(Boolean);
-            window.location.href = window.CRM.buildSmsLink(cleaned);
+            window.CRM.comm.copyPhones(segment.displayList);
+          } else {
+            window.CRM.comm.openSms(segment.phones);
           }
         });
       },
@@ -214,11 +209,11 @@
             return;
           }
           if (action === "copy-emails") {
-            window.CRM.copyToClipboard(emails, i18next.t("Email addresses copied to clipboard"));
+            window.CRM.comm.copyEmails(emails);
           } else if (action === "bcc-all") {
-            window.location.href = "mailto:?bcc=" + encodeURIComponent(emails);
+            window.CRM.comm.openBcc(emails);
           } else {
-            window.location.href = "mailto:" + encodeURIComponent(emails);
+            window.CRM.comm.openMailto(emails);
           }
         });
       },

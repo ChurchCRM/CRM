@@ -292,19 +292,14 @@ function initializeGroupView() {
       method: "GET",
       path: "groups/" + window.CRM.currentGroup + "/phones",
     }).done(function (data) {
-      if (!data.displayList) {
+      if (!data.phones || !data.phones.length) {
         window.CRM.notify(i18next.t("No phone numbers available"), { type: "warning", delay: 3000 });
         return;
       }
       if (action === "copy-phones") {
-        window.CRM.copyToClipboard(data.displayList);
-      } else if (action === "sms-all" && data.phones && data.phones.length) {
-        var cleaned = data.phones
-          .map(function (p) {
-            return p.replace(/[^\d+]/g, "");
-          })
-          .filter(Boolean);
-        window.location.href = window.CRM.buildSmsLink(cleaned);
+        window.CRM.comm.copyPhones(data.displayList);
+      } else if (action === "sms-all") {
+        window.CRM.comm.openSms(data.phones);
       }
     });
   });
@@ -326,11 +321,11 @@ function initializeGroupView() {
           return;
         }
         if (action === "copy-emails") {
-          window.CRM.copyToClipboard(data.all, i18next.t("Email addresses copied to clipboard"));
+          window.CRM.comm.copyEmails(data.all);
         } else if (action === "mailto-all") {
-          window.location.href = "mailto:" + encodeURIComponent(data.all);
+          window.CRM.comm.openMailto(data.all);
         } else if (action === "bcc-all") {
-          window.location.href = "mailto:?bcc=" + encodeURIComponent(data.all);
+          window.CRM.comm.openBcc(data.all);
         }
       });
     },

@@ -155,6 +155,7 @@ $MenuFirst = 1;
       }
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
 
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->

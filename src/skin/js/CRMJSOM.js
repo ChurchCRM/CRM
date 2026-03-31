@@ -669,23 +669,6 @@ window.CRM.copyToClipboard = function (text, successMsg) {
   return Promise.resolve();
 };
 
-/**
- * Build an sms: URI that works across platforms.
- * iOS requires sms:/open?addresses=n1,n2 for multi-recipient;
- * Android uses sms:n1,n2 (comma-separated).
- * @param {string[]} phones - Array of cleaned phone numbers
- * @returns {string} Platform-appropriate sms: URI
- */
-window.CRM.buildSmsLink = function (phones) {
-  if (!phones || phones.length === 0) return "";
-  var isIOS = /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent) && "ontouchend" in document;
-  var isMac = /Macintosh/.test(navigator.userAgent);
-  if (isIOS || isMac) {
-    return "sms:/open?addresses=" + phones.join(",") + "&body=";
-  }
-  return "sms:" + phones.join(",");
-};
-
 function LimitTextSize(theTextArea, size) {
   if (theTextArea.value.length > size) {
     theTextArea.value = theTextArea.value.substr(0, size);
