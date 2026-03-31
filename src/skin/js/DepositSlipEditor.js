@@ -187,10 +187,9 @@ function initDepositSlipEditor() {
     // Hide the clear button
     $(this).hide();
 
-    // Reset chart colors if available
+    // Reset chart highlight by clearing the dimmed colors
     if (window.fundChartInstance) {
-      window.fundChartInstance.data.datasets[0].backgroundColor = window.originalFundColors;
-      window.fundChartInstance.update();
+      window.fundChartInstance.updateOptions({ colors: undefined });
     }
   });
 
@@ -481,15 +480,15 @@ function initCharts(pledgeLabels, pledgeChartData, fundLabels, fundChartData) {
   if (fundChartElement) {
     window.fundChartInstance = new window.ApexCharts(fundChartElement, fundChartOptions);
     window.fundChartInstance.render();
-    window.originalFundColors = fundColors.slice(); // Clone array
   }
 }
 
 // Helper function to highlight selected chart bar
 function highlightChartBar(chart, index) {
-  if (!chart || !window.originalFundColors) return;
+  if (!chart) return;
 
-  var originalColors = window.originalFundColors;
+  var originalColors = chart.w.globals.colors.slice();
+
   var newColors = originalColors.map(function (color, i) {
     if (i === index) {
       return color;
