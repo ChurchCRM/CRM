@@ -144,4 +144,27 @@
   };
 
   window.CRM.comm = comm;
+
+  // ------------------------------------------------------------------ //
+  // Global delegated handlers for copy buttons
+  // ------------------------------------------------------------------ //
+  if (window.jQuery) {
+    window.jQuery(document).on("click", ".copy-email-btn", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var email = window.jQuery(this).data("email");
+      if (email) {
+        comm.copyEmails(String(email));
+      }
+    });
+
+    window.jQuery(document).on("click", ".copy-phone-btn", function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var phone = window.jQuery(this).data("phone");
+      if (phone) {
+        comm.copyPhones(String(phone));
+      }
+    });
+  }
 })();

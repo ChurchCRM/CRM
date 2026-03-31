@@ -305,6 +305,11 @@ $bOkToEdit = (
                                class="ms-1 text-muted" title="<?= gettext('Send text message') ?>">
                                 <i class="fa-solid fa-comment-sms"></i>
                             </a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sCellPhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Mobile') ?>)</small>
                         </li>
                         <?php endif; ?>
@@ -312,6 +317,11 @@ $bOkToEdit = (
                         <li class="mb-2">
                             <i class="fa-solid fa-house me-2 text-muted"></i>
                             <a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sHomePhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Home') ?>)</small>
                         </li>
                         <?php endif; ?>
@@ -319,6 +329,11 @@ $bOkToEdit = (
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sWorkPhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>
@@ -335,12 +350,22 @@ $bOkToEdit = (
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-muted"></i>
                             <a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                    data-email="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                         </li>
                         <?php endif; ?>
                         <?php if ($per_WorkEmail !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
                             <a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                    data-email="<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>
