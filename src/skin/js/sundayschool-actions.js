@@ -181,9 +181,7 @@
         var menu = $("#ssEmailDropdownMenu");
         menu.empty();
         if (!data.all) {
-          menu.html(
-            '<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>",
-          );
+          menu.html('<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>");
           return;
         }
         // All section
@@ -261,9 +259,7 @@
         var menu = $("#ssTextDropdownMenu");
         menu.empty();
         if (!data.all || !data.all.phones || !data.all.phones.length) {
-          menu.html(
-            '<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>",
-          );
+          menu.html('<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>");
           return;
         }
         // All section

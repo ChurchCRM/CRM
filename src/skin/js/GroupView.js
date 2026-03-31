@@ -297,9 +297,7 @@ function initializeGroupView() {
       var menu = $("#emailDropdownMenu");
       menu.empty();
       if (!data.all) {
-        menu.html(
-          '<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>",
-        );
+        menu.html('<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>");
         return;
       }
       // All section
@@ -373,9 +371,7 @@ function initializeGroupView() {
       var menu = $("#textDropdownMenu");
       menu.empty();
       if (!data.phones || !data.phones.length) {
-        menu.html(
-          '<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>",
-        );
+        menu.html('<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>");
         return;
       }
       // All section
