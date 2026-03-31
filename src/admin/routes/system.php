@@ -438,7 +438,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sTimeZone', $body['sTimeZone'] ?? '');
         SystemConfig::setValue('sChurchWebSite', $body['sChurchWebSite'] ?? '');
         SystemConfig::setValue('sLanguage', $body['sLanguage'] ?? 'en_US');
-        SystemConfig::setValue('sDistanceUnit', $body['sDistanceUnit'] ?? 'miles');
+        $distanceUnit = $body['sDistanceUnit'] ?? 'miles';
+        SystemConfig::setValue('sDistanceUnit', in_array($distanceUnit, ['miles', 'kilometers'], true) ? $distanceUnit : 'miles');
         SystemConfig::setValue('sDefaultCity', $body['sDefaultCity'] ?? '');
         SystemConfig::setValue('sDefaultState', $body['sDefaultState'] ?? '');
         SystemConfig::setValue('sDefaultZip', $body['sDefaultZip'] ?? '');

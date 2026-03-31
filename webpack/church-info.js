@@ -51,9 +51,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function buildStateInput(fieldId, fieldName, currentValue) {
-    return $(
-      `<input type="text" id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%" maxlength="100" value="${currentValue}">`,
+    const $input = $(
+      `<input type="text" id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%" maxlength="100">`,
     );
+    $input.val(currentValue);
+    return $input;
   }
 
   function updateStateField(container, fieldId, fieldName, countryCode, selectedValue) {
@@ -85,11 +87,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ── Country dropdown ──────────────────────────────────────────────────────
 
+  // Cache the countries API response so both church + default dropdowns share one request.
+  let countriesPromise = null;
+
+  function fetchCountries() {
+    if (!countriesPromise) {
+      countriesPromise = $.ajax({
+        type: "GET",
+        url: window.CRM.root + "/api/public/data/countries",
+      });
+    }
+    return countriesPromise;
+  }
+
   function populateCountrySelect($selectEl, selectedValue, callback) {
-    $.ajax({
-      type: "GET",
-      url: window.CRM.root + "/api/public/data/countries",
-    }).done(function (data) {
+    fetchCountries().done(function (data) {
       $selectEl.empty();
       const blankLabel = window.i18next ? i18next.t("— Select Country —") : "— Select Country —";
       $selectEl.append(new Option(blankLabel, ""));
@@ -186,26 +198,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const countryCode = churchCountryEl.value;
         defaultCountryEl.tomselect.setValue(countryCode);
 
-        // Copy state after the default state field rebuilds for the new country
+        // Reuse shared helper so fetching, UI rebuild, and error handling stay consistent
         const churchStateEl = document.getElementById("sChurchState");
         const stateValue = churchStateEl ? churchStateEl.value : "";
-
-        if (defaultStateContainer && countryCode) {
-          // Fetch states for the copied country, then set the copied state value
-          $.ajax({
-            type: "GET",
-            url: window.CRM.root + "/api/public/data/countries/" + countryCode.toLowerCase() + "/states",
-          }).done(function (data) {
-            defaultStateContainer.innerHTML = "";
-            if (data && Object.keys(data).length > 0) {
-              const $select = buildStateSelect("sDefaultState", "sDefaultState", data, stateValue);
-              defaultStateContainer.appendChild($select[0]);
-              initTomSelect($select[0]);
-            } else {
-              const $input = buildStateInput("sDefaultState", "sDefaultState", stateValue);
-              defaultStateContainer.appendChild($input[0]);
-            }
-          });
+        if (defaultStateContainer) {
+          updateStateField(defaultStateContainer, "sDefaultState", "sDefaultState", countryCode, stateValue);
         }
       }
     });

@@ -412,18 +412,32 @@ $validationError     = $validationError ?? '';
 
             if (!el.value.trim()) {
                 el.classList.add('is-invalid');
+                // For TomSelect-enhanced selects, also mark the wrapper
+                if (el.tomselect) {
+                    var tsWrapper = el.parentNode.querySelector('.ts-wrapper');
+                    if (tsWrapper) { tsWrapper.classList.add('is-invalid'); }
+                }
                 hasErrors = true;
                 if (!firstInvalidField) {
                     firstInvalidField = el;
                 }
             } else {
                 el.classList.remove('is-invalid');
+                if (el.tomselect) {
+                    var tsWrapper = el.parentNode.querySelector('.ts-wrapper');
+                    if (tsWrapper) { tsWrapper.classList.remove('is-invalid'); }
+                }
             }
         }
 
         if (hasErrors) {
             firstInvalidField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            firstInvalidField.focus();
+            // Focus via TomSelect API when available, otherwise native focus
+            if (firstInvalidField.tomselect) {
+                firstInvalidField.tomselect.focus();
+            } else {
+                firstInvalidField.focus();
+            }
             return;
         }
 
