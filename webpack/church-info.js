@@ -20,9 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const userSelectedCountry = $countrySelect.data("user-selected") || "";
   const userSelectedState = stateContainer.dataset.userSelectedState || "";
 
-  const userSelectedDefaultState = defaultStateContainer
-    ? defaultStateContainer.dataset.userSelectedState || ""
-    : "";
+  const userSelectedDefaultState = defaultStateContainer ? defaultStateContainer.dataset.userSelectedState || "" : "";
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
@@ -40,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Reused for both church state and default state containers.
 
   function buildStateSelect(fieldId, fieldName, states, selectedValue) {
-    const $select = $(
-      `<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`,
-    );
+    const $select = $(`<select id="${fieldId}" name="${fieldName}" class="form-control" style="width:100%"></select>`);
     const blankLabel = window.i18next ? i18next.t("— Select State —") : "— Select State —";
     $select.append(new Option(blankLabel, ""));
 
