@@ -1,9 +1,14 @@
 <?php
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Deposit;
+use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
+use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Service\AuthService;
 use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -15,7 +20,7 @@ class DepositService {
     public function getPayments($depID = null): array
     {
         AuthService::requireUserGroupMembership('bFinance');
-        $query = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+        $query = PledgeQuery::create()
             ->joinWithDonationFund()
             ->joinWithFamily();
         if ($depID) {
@@ -31,7 +36,7 @@ class DepositService {
             $values->plg_FamID = $pledge->getFamId();
             $values->familyString = $family ? $family->getFamilyString() : '';
             $values->plg_FYID = $pledge->getFyId();
-            $values->FiscalYear = \MakeFYString($pledge->getFyId() ? (int) $pledge->getFyId() : null);
+            $values->FiscalYear = $pledge->getFyId() ? FinancialService::formatFiscalYear((int) $pledge->getFyId()) : '';
             $values->plg_date = $pledge->getDate();
             $values->plg_amount = $pledge->getAmount();
             $values->plg_schedule = $pledge->getSchedule();
@@ -58,11 +63,11 @@ class DepositService {
     public function setDeposit(string $depositType, string $depositComment, string $depositDate, $iDepositSlipID = null, $depositClosed = false): void
     {
         if ($iDepositSlipID) {
-            $deposit = \ChurchCRM\model\ChurchCRM\DepositQuery::create()->findOneById($iDepositSlipID);
+            $deposit = DepositQuery::create()->findOneById($iDepositSlipID);
             $deposit
                 ->setDate($depositDate)
                 ->setComment($depositComment)
-                ->setEnteredby(\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->getId())
+                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setClosed(intval($depositClosed));
             $deposit->save();
             if ($depositClosed && ($depositType === 'CreditCard' || $depositType === 'BankDraft')) {
@@ -71,11 +76,11 @@ class DepositService {
                 FunctionsUtils::runQuery($q);
             }
         } else {
-            $deposit = new \ChurchCRM\model\ChurchCRM\Deposit();
+            $deposit = new Deposit();
             $deposit
                 ->setDate($depositDate)
                 ->setComment($depositComment)
-                ->setEnteredby(\ChurchCRM\Authentication\AuthenticationManager::getCurrentUser()->getId())
+                ->setEnteredby(AuthenticationManager::getCurrentUser()->getId())
                 ->setType($depositType);
             $deposit->save();
             $deposit->reload();
@@ -88,7 +93,7 @@ class DepositService {
     public function getDepositTotal($id, $type = null)
     {
         AuthService::requireUserGroupMembership('bFinance');
-        $query = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+        $query = PledgeQuery::create()
             ->filterByDepId($id)
             ->filterByPledgeOrPayment('Payment');
         if ($type) {
@@ -129,14 +134,14 @@ class DepositService {
         $CSVReturn = new \stdClass();
         $CSVReturn->content = $retstring;
         // Export file
-        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(\ChurchCRM\dto\SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
+        $CSVReturn->header = 'Content-Disposition: attachment; filename=ChurchCRM-DepositCSV-' . $depID . '-' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.csv';
 
         return $CSVReturn;
     }
 
     public function getViewURI(string $Id): string
     {
-        return \ChurchCRM\dto\SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
+        return SystemURLs::getRootPath() . '/DepositSlipEditor.php?DepositSlipID=' . $Id;
     }
 
     /**
@@ -152,7 +157,7 @@ class DepositService {
             throw new \InvalidArgumentException("Type must be 'Pledge' or 'Payment'");
         }
         
-        $items = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+        $items = PledgeQuery::create()
             ->filterByDepId($depositId)
             ->filterByPledgeOrPayment($type)
             ->groupByGroupKey()

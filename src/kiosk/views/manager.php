@@ -1,43 +1,84 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<div class="row">
-  <div class="col-lg-4 col-md-6 col-sm-12">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Kiosk Manager') ?></h3>
-      </div>
-      <div class="card-body">
-        <div class="mb-3">
-          <label><?= gettext('Enable New Kiosk Registration') ?>:</label>
-          <div class="form-check form-switch">
-            <input type="checkbox" class="form-check-input" id="isNewKioskRegistrationActive">
-            <label class="form-check-label" for="isNewKioskRegistrationActive">
-              <span id="kioskRegistrationStatus"><?= gettext('Inactive') ?></span>
-            </label>
-          </div>
-          <small class="form-text text-muted"><?= gettext('When enabled, new kiosk devices can register for 30 seconds.') ?></small>
+<div class="card">
+  <div class="card-body">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-5 col-md-6">
+        <h4 class="mb-1">
+          <i class="fa-solid fa-desktop me-2 text-secondary"></i><?= gettext('Kiosk Registration') ?>
+        </h4>
+        <p class="text-secondary mb-3"><?= gettext('Toggle the switch below to open a 30-second window for new kiosk devices to register.') ?></p>
+        <div class="d-flex align-items-center gap-3">
+          <label class="form-check form-switch mb-0">
+            <input class="form-check-input" type="checkbox" id="isNewKioskRegistrationActive">
+            <span class="form-check-label visually-hidden"><?= gettext('Enable new kiosk registration') ?></span>
+          </label>
+          <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
         </div>
+      </div>
+      <div class="col-lg-1 d-none d-lg-flex justify-content-center">
+        <div class="vr"></div>
+      </div>
+      <div class="col-lg-6 col-md-6">
+        <h4 class="mb-1">
+          <i class="fa-solid fa-circle-info me-2 text-primary"></i><?= gettext('Setup Instructions') ?>
+        </h4>
+        <p class="text-secondary mb-2"><?= gettext('To set up a kiosk device, follow these steps:') ?></p>
+        <ol class="mb-0">
+          <li class="mb-1"><?= gettext('Click the registration toggle above to open a 30-second registration window.') ?></li>
+          <li class="mb-1"><?= gettext('On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:') ?>
+            <div class="mt-1 mb-1">
+              <code class="p-2 d-inline-block bg-light rounded"><?= InputUtils::escapeHTML(SystemURLs::getURL()) ?>/kiosk</code>
+            </div>
+          </li>
+          <li class="mb-1"><?= gettext('The device will register itself and appear in the table below as "Pending".') ?></li>
+          <li><?= gettext('Accept the device, then assign it to an event to begin check-in.') ?></li>
+        </ol>
       </div>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-12">
-    <div class="card">
-      <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= gettext('Active Kiosks') ?></h3>
-      </div>
-      <div class="card-body p-0">
-        <table id="KioskTable" class="table table-vcenter table-hover card-table">
-        </table>
-      </div>
+<div class="card mt-3" id="eventsOverviewCard" style="display:none;">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">
+      <i class="fa-solid fa-calendar-check me-2"></i><?= gettext('Upcoming Sunday School Events') ?>
+    </h3>
+    <div class="card-options">
+      <span class="badge bg-secondary-lt text-secondary" id="eventsOverviewCount"></span>
     </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-vcenter card-table">
+      <thead>
+        <tr>
+          <th><?= gettext('Event') ?></th>
+          <th><?= gettext('Class / Group') ?></th>
+          <th><?= gettext('Date & Time') ?></th>
+          <th><?= gettext('Assigned Kiosk') ?></th>
+          <th><?= gettext('Status') ?></th>
+        </tr>
+      </thead>
+      <tbody id="eventsOverviewBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <div class="card-header d-flex align-items-center">
+    <h3 class="card-title">
+      <i class="fa-solid fa-list me-2"></i><?= gettext('Active Kiosks') ?>
+    </h3>
+  </div>
+  <div class="table-responsive">
+    <table id="KioskTable" class="table table-vcenter table-hover card-table">
+    </table>
   </div>
 </div>
 
@@ -139,22 +180,35 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
   $('#isNewKioskRegistrationActive').change(function() {
     if ($("#isNewKioskRegistrationActive").prop('checked')) {
-      $("#kioskRegistrationStatus").text(i18next.t('Active'));
+      $("#kioskRegistrationStatus").text(i18next.t('Active')).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
       window.CRM.kioskAPI.enableRegistration().then(function(data) {
         window.CRM.secondsLeft = moment(data.visibleUntil.date).unix() - moment().unix();
         window.CRM.discoverInterval = setInterval(function() {
           window.CRM.secondsLeft -= 1;
           if (window.CRM.secondsLeft > 0) {
-            $("#kioskRegistrationStatus").text(i18next.t('Active for') + ' ' + window.CRM.secondsLeft + ' ' + i18next.t('seconds'));
+            $("#kioskRegistrationStatus").text(i18next.t('Active for {{count}} seconds', { count: window.CRM.secondsLeft })).removeClass('bg-secondary-lt text-secondary').addClass('bg-success-lt text-success');
           } else {
             clearInterval(window.CRM.discoverInterval);
             $('#isNewKioskRegistrationActive').prop('checked', false);
-            $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+            $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
           }
         }, 1000);
+      }).catch(function() {
+        if (window.CRM.discoverInterval) {
+          clearInterval(window.CRM.discoverInterval);
+        }
+        $('#isNewKioskRegistrationActive').prop('checked', false);
+        $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
+        window.CRM.notify(i18next.t('Failed to enable kiosk registration'), { type: 'error' });
       });
     } else {
-      $("#kioskRegistrationStatus").text(i18next.t('Inactive'));
+      if (window.CRM.discoverInterval) {
+        clearInterval(window.CRM.discoverInterval);
+      }
+      $("#kioskRegistrationStatus").text(i18next.t('Inactive')).removeClass('bg-success-lt text-success').addClass('bg-secondary-lt text-secondary');
     }
   });
 
@@ -164,7 +218,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     var assignmentSplit = selected.split("-");
     var assignmentType = assignmentSplit[0];
     var eventId = assignmentSplit.length > 1 ? assignmentSplit[1] : null;
-    window.CRM.kioskAPI.setAssignment(kioskId, assignmentType, eventId);
+    window.CRM.kioskAPI.setAssignment(kioskId, assignmentType, eventId).then(function() {
+      window.CRM.kioskDataTable.ajax.reload(null, false);
+    });
   });
 
   function confirmDeleteKiosk(id, name) {
@@ -221,9 +277,69 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     });
   }
 
+  function renderEventsOverview(events, kiosks) {
+    if (!events || events.length === 0) {
+      $('#eventsOverviewCard').hide();
+      return;
+    }
+
+    var now = new Date();
+    var tbody = $('#eventsOverviewBody');
+    tbody.empty();
+
+    events.forEach(function(event) {
+      // Find accepted kiosk assigned to this event
+      var assignedKiosk = null;
+      kiosks.forEach(function(kiosk) {
+        if (kiosk.Accepted && kiosk.KioskAssignments && kiosk.KioskAssignments.length > 0) {
+          if (parseInt(kiosk.KioskAssignments[0].EventId, 10) === event.Id) {
+            assignedKiosk = kiosk;
+          }
+        }
+      });
+
+      var start = new Date(event.Start);
+      var end = new Date(event.End);
+      var isActive = now >= start && now < end;
+
+      var statusBadge = isActive
+        ? '<span class="badge bg-success-lt text-success"><i class="fa-solid fa-circle-dot me-1"></i>' + i18next.t('Active Now') + '</span>'
+        : '<span class="badge bg-blue-lt text-blue">' + i18next.t('Upcoming') + '</span>';
+
+      var kioskCell = assignedKiosk
+        ? '<span class="d-flex align-items-center"><i class="fa-solid fa-desktop text-secondary me-2"></i>' + window.CRM.escapeHtml(assignedKiosk.Name) + '</span>'
+        : '<span class="badge bg-warning text-dark">' + i18next.t('Not assigned') + '</span>';
+
+      var groupNames = event.Groups.map(function(g) { return window.CRM.escapeHtml(g.Name); }).join(', ');
+      var dateStr = moment(event.Start).format('ddd MMM D, h:mm A') + '–' + moment(event.End).format('h:mm A');
+
+      tbody.append(
+        '<tr>' +
+        '<td class="fw-medium">' + window.CRM.escapeHtml(event.Title) + '</td>' +
+        '<td class="text-secondary">' + groupNames + '</td>' +
+        '<td class="text-secondary text-nowrap">' + dateStr + '</td>' +
+        '<td>' + kioskCell + '</td>' +
+        '<td>' + statusBadge + '</td>' +
+        '</tr>'
+      );
+    });
+
+    var label = events.length === 1 ? i18next.t('event') : i18next.t('events');
+    $('#eventsOverviewCount').text(events.length + ' ' + label);
+    $('#eventsOverviewCard').show();
+  }
+
   $(document).ready(function() {
-    // Load future events first, then initialize the DataTable
-    loadFutureEvents().always(function() {
+    var eventsLoaded = new Promise(function(resolve) {
+      loadFutureEvents().always(resolve);
+    });
+
+    var kiosksLoaded = window.CRM.kioskAPI.getDevices()
+      .then(function(data) { return (data && data.KioskDevices) ? data.KioskDevices : []; })
+      .catch(function() { return []; });
+
+    Promise.all([eventsLoaded, kiosksLoaded]).then(function(results) {
+      renderEventsOverview(window.CRM.events.futureEvents, results[1]);
       initKioskTable();
     });
   });
@@ -308,6 +424,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           }
         }
       ]
+    };
+
+    dataTableConfig.drawCallback = function() {
+      var kiosks = window.CRM.kioskDataTable
+        ? window.CRM.kioskDataTable.rows().data().toArray()
+        : [];
+      renderEventsOverview(window.CRM.events.futureEvents, kiosks);
     };
 
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);

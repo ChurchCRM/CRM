@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\Map\DonationFundTableMap;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Map\PledgeTableMap;
 use ChurchCRM\model\ChurchCRM\PledgeQuery as ChildPledgeQuery;
+use ChurchCRM\Reports\PdfDepositReport;
 use ChurchCRM\Service\AuthService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
@@ -34,7 +35,7 @@ class Deposit extends BaseDeposit
     public function getOFX(): \stdClass
     {
         $OFXReturn = new \stdClass();
-        if ($this->getPledges()->count() == 0) {
+        if ($this->getPledges()->count() === 0) {
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
@@ -398,7 +399,7 @@ class Deposit extends BaseDeposit
             throw new \Exception('No Payments on this Deposit', 404);
         }
 
-        $Report->pdf = new \ChurchCRM\Reports\PdfDepositReport();
+        $Report->pdf = new PdfDepositReport();
         $Report->funds = DonationFundQuery::create()->find();
 
         //in 2.2.0, this setting will be part of the database, but to avoid 2.1.7 schema changes, I'm defining it in code.

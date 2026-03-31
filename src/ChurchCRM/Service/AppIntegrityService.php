@@ -29,43 +29,18 @@ class AppIntegrityService
 
     private static function getIntegrityCheckData()
     {
-        $logger = LoggerUtils::getAppLogger();
-        
-        // Check in-memory cache first (within same request)
+        // In-memory cache only — avoids re-scanning within the same request
+        // when multiple callers (status + message + files) all need the data.
+        // No session cache: the check only runs on a few admin pages and
+        // must always reflect the current state of files on disk.
         if (AppIntegrityService::$IntegrityCheckDetails !== null) {
-            $logger->debug('Integrity check results already cached in memory; not recalculating');
             return AppIntegrityService::$IntegrityCheckDetails;
         }
 
-        // Check session cache (persists across admin requests)
-        if (isset($_SESSION['integrity_check_data']) && is_object($_SESSION['integrity_check_data'])) {
-            $logger->debug('Integrity check results found in session cache; not recalculating');
-            AppIntegrityService::$IntegrityCheckDetails = $_SESSION['integrity_check_data'];
-            return AppIntegrityService::$IntegrityCheckDetails;
-        }
-
-        // No cache found - run full integrity verification
-        $logger->info('Running full integrity check (not cached in session)');
         $verificationResult = AppIntegrityService::verifyApplicationIntegrity();
         AppIntegrityService::$IntegrityCheckDetails = (object) $verificationResult;
-        
-        // Cache results in session for subsequent admin page loads
-        $_SESSION['integrity_check_data'] = AppIntegrityService::$IntegrityCheckDetails;
 
         return AppIntegrityService::$IntegrityCheckDetails;
-    }
-    
-    /**
-     * Clear the integrity check cache to force re-verification on next check
-     * Should be called when files are modified (e.g., after upgrade)
-     */
-    public static function clearIntegrityCache(): void
-    {
-        AppIntegrityService::$IntegrityCheckDetails = null;
-        if (isset($_SESSION['integrity_check_data'])) {
-            unset($_SESSION['integrity_check_data']);
-        }
-        LoggerUtils::getAppLogger()->info('Integrity check cache cleared');
     }
 
     public static function getIntegrityCheckStatus(): string
@@ -230,7 +205,6 @@ class AppIntegrityService
             new Prerequisite('FileInfo Extension for image manipulation', fn (): bool => function_exists('finfo_open') || function_exists('mime_content_type')),
             new Prerequisite('cURL', fn (): bool => function_exists('curl_init')),
             new Prerequisite('locale gettext', fn (): bool => function_exists('bindtextdomain') && function_exists('gettext')),
-            new Prerequisite('PHP Sodium', fn (): bool => function_exists('sodium_crypto_secretbox')),
             new Prerequisite('PHP ZipArchive', fn (): bool => class_exists('ZipArchive')),
             new Prerequisite('Mysqli Functions', fn (): bool => function_exists('mysqli_connect')),
         ];

@@ -13,7 +13,6 @@ use ChurchCRM\Emails\users\LockedEmail;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
-use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
 use PragmaRX\Google2FA\Google2FA;

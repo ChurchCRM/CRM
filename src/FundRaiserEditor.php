@@ -204,11 +204,11 @@ require_once __DIR__ . '/Include/Header.php';
         <tbody>
         <?php
         //Loop through all donated items
-        if ($rsDonatedItems != 0) {
+        if ($rsDonatedItems instanceof \mysqli_result) {
             while ($aRow = mysqli_fetch_array($rsDonatedItems)) {
                 extract($aRow);
 
-                if ($di_Item == '') {
+                if ($di_Item === '') {
                     $di_Item = '~';
                 }
 

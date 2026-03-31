@@ -8,7 +8,7 @@ ChurchCRM requires PHP >=8.4 (defined in composer.json) with the following frame
 
 This skill consolidates verified best practices from PHP.net, OWASP, Slim 4 docs, and Perpl ORM documentation.
 
-## PHP 8.3+ Security Hardening
+## PHP 8.4+ Security Hardening
 
 ### Password Security (CRITICAL)
 

@@ -127,9 +127,9 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                 <label for="EventTypeFilter"><?= gettext('Filter by Event Type') ?></label>
                                 <div class="input-group">
                                     <select id="EventTypeFilter" name="EventTypeFilter" class="form-select" onchange="this.form.submit()">
-                                        <option value="0" <?= ($selectedEventType == 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
+                                        <option value="0" <?= ($selectedEventType === 0) ? 'selected' : '' ?>><?= gettext('All Event Types') ?></option>
                                         <?php foreach ($aEventTypes as $eventType) { ?>
-                                            <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType == $eventType->getId()) ? 'selected' : '' ?>>
+                                            <option value="<?= $eventType->getId() ?>" <?= ($selectedEventType === $eventType->getId()) ? 'selected' : '' ?>>
                                                 <?= $eventType->getName() ?>
                                             </option>
                                         <?php } ?>

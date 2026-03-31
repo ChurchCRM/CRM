@@ -10,7 +10,6 @@ use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\ExecutionTime;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\VersionUtils;
 use Github\Client;
 
@@ -579,9 +578,6 @@ class ChurchCRMReleaseManager
                 $logger->info('Attempting automatic database upgrade post code-deploy');
                 UpgradeService::upgradeDatabaseVersion();
                 $logger->info('Automatic database upgrade completed successfully');
-                
-                // Clear integrity check cache after upgrade
-                AppIntegrityService::clearIntegrityCache();
                 
                 // After successful database upgrade, clean up orphaned files
                 $logger->info('Beginning automatic orphaned file cleanup');

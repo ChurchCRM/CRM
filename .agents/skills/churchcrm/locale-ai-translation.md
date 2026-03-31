@@ -138,6 +138,35 @@ The skill provides grammatically correct singular and plural forms per the targe
 
 ---
 
+## Commit After Every Locale <!-- learned: 2026-03-30 -->
+
+**Always commit immediately after each locale is fully translated.** Do not batch multiple locales into one commit.
+
+- Each locale = one `git commit` (via `report_progress`)
+- Commit message format: `locale: translate <code> (<language name>, <N> terms)`
+- This creates a safe save point so interrupted sessions can resume without losing work
+- Never accumulate more than one locale without committing
+
+```
+locale: translate fr (French - France, 495 terms)
+locale: translate it (Italian - Italy, 495 terms)
+```
+
+## Use Temp Files to Avoid Shell Escaping Issues <!-- learned: 2026-03-30 -->
+
+When applying large translation JSON, always write to a temp file and pass via `$(cat ...)`:
+
+```bash
+cat > /tmp/<locale>-<n>-trans.json << 'ENDJSON'
+{ "key": "translation" }
+ENDJSON
+node locale/scripts/locale-translate.js --apply \
+  --file locale/terms/missing/<locale>/<locale>-<n>.json \
+  --translations "$(cat /tmp/<locale>-<n>-trans.json)"
+```
+
+This avoids shell escaping issues with single quotes inside translation values.
+
 ## When to Run
 
 **At every release that includes new UI strings:**

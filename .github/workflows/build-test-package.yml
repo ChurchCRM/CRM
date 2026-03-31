@@ -25,7 +25,24 @@ on:
       - '.ddev/**'
 
 jobs:
+  # Determine which PHP versions to test based on trigger
+  # PRs: 8.4 only (fast feedback)
+  # Push to master/develop: 8.4 + 8.5 (full coverage before release)
+  configure:
+    runs-on: ubuntu-latest
+    outputs:
+      php-versions: ${{ steps.set-matrix.outputs.php-versions }}
+    steps:
+    - id: set-matrix
+      run: |
+        if [ "${{ github.event_name }}" = "push" ]; then
+          echo 'php-versions=["8.4","8.5"]' >> $GITHUB_OUTPUT
+        else
+          echo 'php-versions=["8.4"]' >> $GITHUB_OUTPUT
+        fi
+
   build:
+    needs: configure
     timeout-minutes: 30
     permissions:
       contents: read
@@ -65,7 +82,7 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.4'
-        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath, sodium
+        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
         coverage: none
 
     - name: Get Composer cache directory
@@ -94,12 +111,18 @@ jobs:
     - name: Validate PHP syntax
       run: npm run build:php:validate
 
-    - name: Build Docker image
+    - name: Build Docker images
       run: |
-        docker build --target test -t churchcrm/crm:php8-debian \
-          -f docker/Dockerfile.churchcrm-apache-php8 docker/
-        docker save churchcrm/crm:php8-debian | gzip > temp/docker-image.tar.gz
-        echo "Docker image saved: $(du -h temp/docker-image.tar.gz | cut -f1)"
+        PHP_VERSIONS='${{ needs.configure.outputs.php-versions }}'
+        for version in $(echo "$PHP_VERSIONS" | jq -r '.[]'); do
+          echo "Building Docker image for PHP $version..."
+          docker build --target test \
+            --build-arg PHP_VERSION=$version \
+            -t churchcrm/crm:php${version}-test \
+            -f docker/Dockerfile.churchcrm-apache-php8 docker/
+          docker save churchcrm/crm:php${version}-test | gzip > temp/docker-image-${version}.tar.gz
+          echo "Saved: $(du -h temp/docker-image-${version}.tar.gz | cut -f1)"
+        done
 
     - name: Upload build artifact
       uses: actions/upload-artifact@v7
@@ -112,12 +135,21 @@ jobs:
         retention-days: 1
 
   test-root:
-    needs: build
+    needs: [configure, build]
     timeout-minutes: 30
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+        test-type:
+          - name: api
+            spec: "cypress/e2e/api/**/*.spec.js"
+          - name: ui
+            spec: "cypress/e2e/ui/**/*.spec.js"
     steps:
     - name: Checkout
       uses: actions/checkout@v6
@@ -138,7 +170,9 @@ jobs:
         path: .
 
     - name: Load Docker image
-      run: docker load < temp/docker-image.tar.gz
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
     - name: Start Docker (root path)
       run: |
@@ -162,24 +196,22 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (root path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-root-[hash].xml
+    - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-root.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-root.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-root-${{ github.run_id }}
+        name: cypress-artifacts-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -191,8 +223,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: Root Path'
-        path: cypress/reports/junit-root-*.xml
+        name: 'PHP ${{ matrix.php-version }}: Root (${{ matrix.test-type.name }})'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -206,12 +238,21 @@ jobs:
       run: npm run docker:ci:root:down
 
   test-subdir:
-    needs: build
+    needs: [configure, build]
     timeout-minutes: 30
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+        test-type:
+          - name: api
+            spec: "cypress/e2e/api/**/*.spec.js"
+          - name: ui
+            spec: "cypress/e2e/ui/**/*.spec.js"
     steps:
     - name: Checkout
       uses: actions/checkout@v6
@@ -232,7 +273,9 @@ jobs:
         path: .
 
     - name: Load Docker image
-      run: docker load < temp/docker-image.tar.gz
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
     - name: Start Docker (subdirectory path)
       run: |
@@ -256,10 +299,8 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (subdirectory path)
-      uses: cypress-io/github-action@v7
-      with:
-        command: npx cypress run --config-file cypress/configs/docker.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-subdir-[hash].xml
+    - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
 
@@ -267,15 +308,15 @@ jobs:
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-subdir.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-subdir-${{ github.run_id }}
+        name: cypress-artifacts-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -287,8 +328,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: Subdirectory'
-        path: cypress/reports/junit-subdir-*.xml
+        name: 'PHP ${{ matrix.php-version }}: Subdirectory (${{ matrix.test-type.name }})'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-subdir-${{ matrix.test-type.name }}-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -302,12 +343,16 @@ jobs:
       run: npm run docker:ci:subdir:down
 
   test-new-system:
-    needs: build
+    needs: [configure, build]
     timeout-minutes: 30
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v6
@@ -328,7 +373,9 @@ jobs:
         path: .
 
     - name: Load Docker image
-      run: docker load < temp/docker-image.tar.gz
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -356,24 +403,24 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (setup wizard)
+    - name: Run Cypress tests (setup wizard, PHP ${{ matrix.php-version }})
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-[hash].xml
 
     - name: Collect Docker logs on failure
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-new-system.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-new-system.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-new-system-${{ github.run_id }}
+        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -385,8 +432,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: New System Setup (Root)'
-        path: cypress/reports/junit-new-system-*.xml
+        name: 'PHP ${{ matrix.php-version }}: New System Setup (Root)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -400,12 +447,16 @@ jobs:
       run: npm run docker:ci:new-system:down
 
   test-new-system-subdir:
-    needs: build
+    needs: [configure, build]
     timeout-minutes: 30
     permissions:
       contents: read
       checks: write
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
     steps:
     - name: Checkout
       uses: actions/checkout@v6
@@ -426,7 +477,9 @@ jobs:
         path: .
 
     - name: Load Docker image
-      run: docker load < temp/docker-image.tar.gz
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
       run: node scripts/generate-signatures-node.js
@@ -454,10 +507,10 @@ jobs:
         done
         echo "Server ready."
 
-    - name: Run Cypress tests (setup wizard subdirectory)
+    - name: Run Cypress tests (setup wizard subdir, PHP ${{ matrix.php-version }})
       uses: cypress-io/github-action@v7
       with:
-        command: npx cypress run --config-file cypress/configs/new-system.config.ts --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-new-system-subdir-[hash].xml
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-[hash].xml
       env:
         CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
 
@@ -465,15 +518,15 @@ jobs:
       if: failure()
       run: |
         mkdir -p cypress/logs/docker cypress/logs/php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-new-system-subdir.log 2>&1 || true
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-new-system-subdir.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
         [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
 
     - name: Upload debug artifacts
       if: always()
       uses: actions/upload-artifact@v7
       with:
-        name: cypress-artifacts-new-system-subdir-${{ github.run_id }}
+        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-subdir-${{ github.run_id }}
         path: |
           cypress/logs
           cypress/screenshots
@@ -485,8 +538,8 @@ jobs:
       uses: dorny/test-reporter@v3
       if: always()
       with:
-        name: 'Cypress: New System Setup (Subdirectory)'
-        path: cypress/reports/junit-new-system-subdir-*.xml
+        name: 'PHP ${{ matrix.php-version }}: New System Setup (Subdirectory)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-*.xml
         reporter: java-junit
         fail-on-error: true
         fail-on-empty: false
@@ -498,6 +551,126 @@ jobs:
     - name: Stop Docker
       if: always()
       run: npm run docker:ci:new-system:subdir:down
+
+  # Upgrade tests — only run on push to master/develop (not PRs)
+  # Downloads a previous release, installs it, then upgrades to the current build
+  test-upgrade-from-6:
+    needs: [configure, build]
+    if: github.event_name == 'push'
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    # TODO: Implement upgrade test
+    # 1. Download ChurchCRM 6.0.0 release zip from GitHub releases
+    # 2. Deploy 6.0.0 on Docker with a seeded database
+    # 3. Apply current build over 6.0.0 files
+    # 4. Hit the upgrade endpoint to run migrations
+    # 5. Run Cypress smoke tests against the upgraded system
+    - name: Upgrade from 6.0.0 (placeholder)
+      run: echo "TODO — upgrade from ChurchCRM 6.0.0 to current build on PHP ${{ matrix.php-version }}"
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Upgrade from 6.0.0'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-upgrade-6-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+  test-upgrade-from-churchinfo:
+    needs: [configure, build]
+    if: github.event_name == 'push'
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    # TODO: Implement ChurchInfo migration test
+    # 1. Download last ChurchInfo release
+    # 2. Deploy ChurchInfo on Docker with a seeded database
+    # 3. Apply current ChurchCRM build over ChurchInfo files
+    # 4. Hit the upgrade/migration endpoint
+    # 5. Run Cypress smoke tests against the migrated system
+    - name: Upgrade from ChurchInfo (placeholder)
+      run: echo "TODO — migrate from ChurchInfo to ChurchCRM on PHP ${{ matrix.php-version }}"
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Upgrade from ChurchInfo'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-upgrade-churchinfo-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
 
   package:
     needs: [test-root, test-subdir, test-new-system, test-new-system-subdir]
@@ -562,10 +735,9 @@ jobs:
         echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         echo "**Tests:**" >> $GITHUB_STEP_SUMMARY
-        echo "- Root path installation" >> $GITHUB_STEP_SUMMARY
-        echo "- Subdirectory installation" >> $GITHUB_STEP_SUMMARY
-        echo "- New system setup wizard (root)" >> $GITHUB_STEP_SUMMARY
-        echo "- New system setup wizard (subdirectory)" >> $GITHUB_STEP_SUMMARY
+        echo "- Root path (API + UI)" >> $GITHUB_STEP_SUMMARY
+        echo "- Subdirectory (API + UI)" >> $GITHUB_STEP_SUMMARY
+        echo "- New system setup wizard (root + subdirectory)" >> $GITHUB_STEP_SUMMARY
         echo "" >> $GITHUB_STEP_SUMMARY
         if [ -d "temp" ]; then
           echo "**Artifacts:**" >> $GITHUB_STEP_SUMMARY

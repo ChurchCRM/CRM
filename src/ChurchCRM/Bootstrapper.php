@@ -8,8 +8,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
-use ChurchCRM\Service\AppIntegrityService;
-use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -19,6 +17,7 @@ use ChurchCRM\Utils\VersionUtils;
 use Monolog\Handler\StreamHandler;
 use Monolog\Level;
 use Monolog\Logger;
+use Monolog\LogRecord;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Connection\ConnectionWrapper;
 use Propel\Runtime\Connection\DebugPDO;
@@ -139,7 +138,6 @@ class Bootstrapper
                     try {
                         self::$bootStrapLogger->info("Auto-upgrading database from $dbVersion to $softwareVersion");
                         UpgradeService::upgradeDatabaseVersion();
-                        AppIntegrityService::clearIntegrityCache();
                         self::$bootStrapLogger->info('Database auto-upgrade completed successfully');
                     } catch (\Exception $e) {
                         // Issue 2 fix: log the full exception detail but store only a generic
@@ -476,9 +474,9 @@ class Bootstrapper
 
             // Remap INFO → DEBUG: Propel hardcodes ->info() for all SQL queries.
             // Without this, every SQL entry appears as INFO regardless of log level config.
-            $ormLogger->pushProcessor(function (\Monolog\LogRecord $record): \Monolog\LogRecord {
+            $ormLogger->pushProcessor(function (LogRecord $record): LogRecord {
                 if ($record->level === Level::Info) {
-                    return new \Monolog\LogRecord(
+                    return new LogRecord(
                         datetime: $record->datetime,
                         channel: $record->channel,
                         level: Level::Debug,

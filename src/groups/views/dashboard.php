@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -120,7 +121,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                             <select class="form-select" id="groupType" name="groupType">
                                 <option value=""><?= gettext('— Select type (optional) —') ?></option>
                                 <?php foreach ($groupTypes as $type): ?>
-                                    <option value="<?= (int) $type['id'] ?>"><?= \ChurchCRM\Utils\InputUtils::escapeHTML($type['name']) ?></option>
+                                    <option value="<?= (int) $type['id'] ?>"><?= InputUtils::escapeHTML($type['name']) ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -154,8 +155,6 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
 
 <script src="<?= SystemURLs::getRootPath() ?>/skin/js/GroupList.js"></script>
 
-<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
-
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
@@ -174,10 +173,11 @@ $(document).ready(function () {
             }
         ],
         onSave: function () {
-            window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
             setTimeout(function () { window.location.reload(); }, 1500);
         }
     });
 });
 </script>
 <?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

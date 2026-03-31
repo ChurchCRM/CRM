@@ -10,6 +10,11 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.0.5](./changelog/7.0.5.md) | March 2026 | Effortless upgrades, mapping precision, 100% translations |
+| [7.0.4](./changelog/7.0.4.md) | March 2026 | Smoother upgrades, standardized logging, geocoding refinements |
+| [7.0.3](./changelog/7.0.3.md) | March 2026 | Maps improvements, Church Info page, FrankenPHP support |
+| [7.0.2](./changelog/7.0.2.md) | March 2026 | Bug fixes, form validation, timezone handling |
+| [7.0.1](./changelog/7.0.1.md) | March 2026 | API docs, bug fixes, developer workflow improvements |
 | [7.0.0](./changelog/7.0.0.md) | February 2026 | Plugin system, Leaflet maps, PHP 8.4, 10th anniversary |
 | [6.8.1](./changelog/6.8.1.md) | February 2026 | XSS fix, timezone precision, safer upgrades |
 | [6.8.0](./changelog/6.8.0.md) | January 2026 | Redesigned Check-in Kiosk, CSV export open to all users |

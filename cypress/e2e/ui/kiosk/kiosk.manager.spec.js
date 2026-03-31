@@ -9,7 +9,7 @@ describe("Kiosk Manager", () => {
         it("should display the Kiosk Manager page", () => {
             cy.visit("kiosk/admin");
             cy.contains("Kiosk Manager");
-            cy.contains("Enable New Kiosk Registration");
+            cy.contains("Enable new kiosk registration");
             cy.contains("Active Kiosks");
         });
 

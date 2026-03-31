@@ -69,14 +69,19 @@ class TermExtractor {
 
     /**
      * Get temporary directory path from a script
+     * (filters out dotenv warnings that may be mixed with stdout)
      */
     getTempDir(scriptPath) {
         try {
             const result = execSync(`node ${scriptPath} --temp-dir`, {
                 cwd: this.projectRoot,
-                encoding: 'utf8'
+                encoding: 'utf8',
+                stdio: ['pipe', 'pipe', 'pipe']
             });
-            return result.trim();
+            // Extract the last non-empty line (the actual path)
+            // dotenv warnings may be printed to stdout along with the path
+            const lines = result.trim().split('\n').filter(line => line.trim());
+            return lines.length > 0 ? lines[lines.length - 1] : null;
         } catch (error) {
             console.error(`Failed to get temp dir from ${scriptPath}:`, error.message);
             return null;
@@ -247,34 +252,53 @@ class TermExtractor {
      */
     extractJavaScriptTerms() {
         this.log('⚛️', 'Extracting JavaScript/React terms...');
-        
+
         try {
-            // Check if i18next-parser is available
+            // Check if npx is available
             execSync('which npx', { stdio: 'pipe' });
-            
-            // Run i18next parser
-            this.exec('npx i18next-parser --config locale/scripts/i18next-parser.config.js');
-            
+
+            // Verify i18next-cli is installed
+            try {
+                execSync('npx i18next-cli --version', { stdio: 'pipe' });
+            } catch (e) {
+                this.log('⚠️', 'i18next-cli not found - skipping JavaScript term extraction');
+                return;
+            }
+
+            // Run i18next-cli extract (successor to i18next-parser)
+            try {
+                this.exec('npx i18next-cli extract --config locale/scripts/i18next.config.ts');
+            } catch (error) {
+                console.error('i18next-cli extraction failed:', error.message);
+                throw error;
+            }
+
             // Convert JSON to PO if translation files were created
             const translationJson = path.join(this.localeDir, 'locales/en/translation.json');
             const translationPo = path.join(this.localeDir, 'locales/en/translation.po');
-            
+
             if (this.fileExists(translationJson)) {
-                this.exec('npx i18next-conv -l en -s locale/locales/en/translation.json -t locale/locales/en/translation.po');
+                try {
+                    this.exec('npx i18next-conv -l en -s locale/locales/en/translation.json -t locale/locales/en/translation.po');
+                } catch (error) {
+                    console.error('i18next-conv conversion failed:', error.message);
+                    throw error;
+                }
             }
-            
+
             // Merge with main messages.po if PO file was created
             if (this.fileExists(translationPo)) {
                 this.log('🔗', 'Merging JavaScript terms...');
                 this.mergePOFiles(this.messagesFile, translationPo, this.messagesFile);
             }
-            
+
             // Cleanup temporary files
             this.log('🧹', 'Cleaning up temporary files...');
             this.exec('rm -f locale/locales/en/translation.*');
-            
+
         } catch (error) {
-            this.log('⚠️', 'i18next not found - skipping JavaScript term extraction');
+            console.error('❌ JavaScript term extraction failed:', error.message);
+            throw new Error('Locale build failed: JavaScript term extraction encountered an error. See above for details.');
         }
     }
 

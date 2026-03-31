@@ -420,16 +420,10 @@ code {
 <?php
   $fundLabels = [];
   $fundData = [];
-  $fundBackgroundColor = [];
-  
-  foreach ($thisDeposit->getFundTotals() as $tmpfund) {
-    $label = $tmpfund['Name'];
-    $data = (float)$tmpfund['Total'];
-    $backgroundColor = '#' . random_color();
 
-    $fundLabels[] = $label;
-    $fundData[] = $data;
-    $fundBackgroundColor[] = $backgroundColor;
+  foreach ($thisDeposit->getFundTotals() as $tmpfund) {
+    $fundLabels[] = $tmpfund['Name'];
+    $fundData[] = (float)$tmpfund['Total'];
   }
 
 ?>
@@ -440,16 +434,10 @@ code {
   var isDepositClosed = Boolean(<?=  $thisDeposit->getClosed(); ?>);
   var fundLabels = <?= json_encode(array_values($fundLabels)) ?>;
   var fundData = <?= json_encode(array_values($fundData)) ?>;
-  var fundBackgroundColor = <?= json_encode(array_values($fundBackgroundColor)) ?>;
   $(document).ready(function() {
     window.CRM.onLocalesReady(function() {
       initPaymentTable();
-      initCharts(null,
-                 null,
-                 null,
-                 fundLabels,
-                 fundData,
-                 fundBackgroundColor);
+      initCharts(null, null, fundLabels, fundData);
       initDepositSlipEditor();
 
       $('#deleteSelectedRows').click(function() {

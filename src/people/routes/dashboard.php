@@ -35,6 +35,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
 
     // Build email list grouped by role (active families, excluding "Do Not Email" property)
     $currentUser        = AuthenticationManager::getCurrentUser();
+    $isAdmin            = $currentUser->isAdmin();
     $sMailtoDelimiter   = $currentUser->getUserConfigString('sMailtoDelimiter');
     $sEmailLink         = '';
     $roleEmails         = [];
@@ -73,13 +74,6 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         }
     }
 
-    $selfRegColor = 'bg-danger';
-    $selfRegText  = gettext('Disabled');
-    if (SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
-        $selfRegColor = 'bg-success';
-        $selfRegText  = gettext('Enabled');
-    }
-
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => gettext('People Dashboard'),
@@ -87,11 +81,13 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'aBreadcrumbs'       => PageHeader::breadcrumbs([
             [gettext('People')],
         ]),
-        'sPageHeaderButtons' => PageHeader::buttons([
+        'sPageHeaderButtons' => PageHeader::buttons(array_filter([
             ['label' => gettext('Person Properties'), 'url' => '/PropertyList.php?Type=p', 'icon' => 'fa-list'],
             ['label' => gettext('Family Properties'), 'url' => '/PropertyList.php?Type=f', 'icon' => 'fa-house'],
             ['label' => gettext('Custom Fields'), 'url' => '/PersonCustomFieldsEditor.php', 'icon' => 'fa-pen-field'],
-        ]),
+            $isAdmin ? ['label' => gettext('People Settings'), 'collapse' => '#peopleSettings', 'icon' => 'fa-sliders', 'adminOnly' => true] : null,
+        ])),
+        'sSettingsCollapseId' => $isAdmin ? 'peopleSettings' : null,
         'familyCount'        => $familyCount,
         'groupStats'         => $groupStats,
         'personCount'        => $personCount,
@@ -102,8 +98,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'sEmailLink'         => urlencode($sEmailLink),
         'roleEmails'         => $roleEmails,
         'sMailtoDelimiter'   => $sMailtoDelimiter,
-        'selfRegColor'       => $selfRegColor,
-        'selfRegText'        => $selfRegText,
+        'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
     ];
 

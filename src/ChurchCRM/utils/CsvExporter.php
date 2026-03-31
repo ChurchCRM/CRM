@@ -165,6 +165,20 @@ class CsvExporter
     }
 
     /**
+     * Get the CSV content as a string
+     *
+     * Use this when you need to write the CSV data into a PSR-7 response body
+     * instead of sending it directly via headers + echo.
+     *
+     * @return string CSV content
+     * @throws Exception
+     */
+    public function getContent(): string
+    {
+        return $this->writer->toString();
+    }
+
+    /**
      * Send CSV export with appropriate HTTP headers and output
      *
      * @param string $filename Output filename

@@ -10,9 +10,7 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 // Initialize admin service for dashboard checks
 $adminService = new AdminService();
-$setupTasks = $adminService->getSetupTasks();
 $systemWarnings = $adminService->getSystemWarnings();
-$hasSetupTasks = count($setupTasks) > 0;
 $hasWarnings = count($systemWarnings) > 0;
 
 // Check for configuration URL errors
@@ -124,28 +122,6 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
     </div>
     <?php endif; ?>
 
-    <?php if ($hasSetupTasks): ?>
-    <!-- Setup Tasks Alert -->
-    <div class="alert alert-info alert-dismissible fade show" role="alert">
-        <div class="d-flex align-items-start">
-            <div class="me-3">
-                <i class="fa-solid fa-clipboard-list fa-2x"></i>
-            </div>
-            <div class="flex-grow-1">
-                <strong><?= gettext('Setup Tasks:') ?></strong>
-                <?php 
-                $taskLinks = [];
-                foreach ($setupTasks as $task) {
-                    $taskLinks[] = '<a href="' . $task['link'] . '" class="alert-link">' . $task['title'] . '</a>';
-                }
-                echo implode(' · ', $taskLinks);
-                ?>
-            </div>
-            </div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <?php endif; ?>
-
     <div class="row">
         <!-- Main Content -->
         <div class="col-lg-8">
@@ -240,7 +216,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
 
                         <!-- 3. Configure Email -->
                         <div class="col-md-6 col-lg-4 mb-3">
-                            <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="quick-start-card">
+                            <a href="<?= SystemURLs::getRootPath() ?>/v2/email/dashboard?settings=open" class="quick-start-card">
                                 <div class="quick-start-icon bg-info">
                                     <i class="fa-solid fa-envelope"></i>
                                 </div>
@@ -393,25 +369,25 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('File Integrity:') ?></span>
                         <?php if ($integrityPassed): ?>
-                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
+                            <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-times"></i> <?= gettext('Failed') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <span><?= gettext('Orphaned Files:') ?></span>
                         <?php if ($hasOrphanedFiles): ?>
-                            <span class="badge bg-danger"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
+                            <span class="badge bg-warning-lt text-warning"><?= count($orphanedFiles) ?> <?= gettext('found') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
+                            <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('None') ?></span>
                         <?php endif; ?>
                     </div>
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <span><?= gettext('Configuration:') ?></span>
                         <?php if ($hasWarnings): ?>
-                            <span class="badge bg-warning text-dark"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
+                            <span class="badge bg-warning-lt text-warning"><?= count($systemWarnings) ?> <?= gettext('issues') ?></span>
                         <?php else: ?>
-                            <span class="badge bg-green-lt text-green"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
+                            <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check"></i> <?= gettext('OK') ?></span>
                         <?php endif; ?>
                     </div>
                     <?php if ($hasOrphanedFiles): ?>

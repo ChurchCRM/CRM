@@ -221,18 +221,6 @@ msgid "Create File"
 msgstr "Crear archivo"
 
 #: 
-msgid "No file selected for upload."
-msgstr "No se ha seleccionado archivo para subir."
-
-#: 
-msgid "Total number of rows in the CSV file"
-msgstr "Número total de filas en el archivo CSV"
-
-#: 
-msgid "Ignore this Field"
-msgstr "Ignore este campo"
-
-#: 
 msgid "Title"
 msgstr "Titulo"
 
@@ -244,10 +232,6 @@ msgstr "Sufijo"
 #: 
 msgid "Gender"
 msgstr "Genero"
-
-#: 
-msgid "Donation Envelope"
-msgstr "Sobre de donativo"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -274,58 +258,10 @@ msgstr "Fecha de nacimiento"
 msgid "Wedding Date"
 msgstr "Aniversario de bodas"
 
-#: 
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr "Ignorar la primera fila CSV (para excluir un encabezado)"
-
-#: 
-msgid "Make Family records based on last name and address"
-msgstr "Crear registros de familia basados en apellido y dirección"
-
-#: 
-msgid "Patriarch"
-msgstr "Patriarcado"
-
-#: 
-msgid "Matriarch"
-msgstr "Matriarcado"
-
-#: 
-msgid "Family Type: used with Make Family records... option above"
-msgstr "Tipo de familia: se utiliza con los registros para crear familia ... opción anterior"
-
-#: 
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "NOTA: Separadores (guiones, etc) o falta de ella, no importa"
-
-#: 
-msgid "Default country if none specified otherwise"
-msgstr "País por defecto si no se especifica lo contrario"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Clasificación"
-
-#: 
-msgid "Perform Import"
-msgstr "Realizar la importación"
-
-#: 
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "ERROR: el archivo CSV subido ya no existe!"
-
-#: 
-msgid "Upload CSV File"
-msgstr "Subir CSV"
-
-#: 
-msgid "Data import successful."
-msgstr "Datos importados con exito"
-
-#: 
-msgid "people were imported"
-msgstr "personas fueron importadas"
 
 #: 
 msgid "Add Cart to Event"
@@ -405,10 +341,6 @@ msgid "Add to Group"
 msgstr "Añadir al grupo"
 
 #: 
-msgid "View Your Cart"
-msgstr "Ver el carrito"
-
-#: 
 msgid "You have no items in your cart."
 msgstr "No tiene artículos en su carrito."
 
@@ -431,22 +363,6 @@ msgstr "Vaciar carrito a la familia"
 #: 
 msgid "Map Cart"
 msgstr "Generar mapa del carrito"
-
-#: 
-msgid "Name Tags"
-msgstr "Nombre de etiquetas"
-
-#: 
-msgid "Email Cart"
-msgstr "Enviar correo electrónico al carrito"
-
-#: 
-msgid "Email (BCC)"
-msgstr "Email (BCC)"
-
-#: 
-msgid "Create Directory From Cart"
-msgstr "Crear directorio desde carrito"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -483,10 +399,6 @@ msgstr "Registro de evento"
 #: 
 msgid "Select Event"
 msgstr "Seleccionar evento"
-
-#: 
-msgid "CheckOut"
-msgstr "Registro de salida"
 
 #: 
 msgid "Checked In Time"
@@ -786,11 +698,6 @@ msgstr "Fondo"
 msgid "Bank"
 msgstr "Banco"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Month"
-msgstr "Mes"
-
 #: 
 msgid "Year"
 msgstr "Año"
@@ -1052,10 +959,6 @@ msgid "Pledges and Payments"
 msgstr "Promesas y pagos"
 
 #: 
-msgid "No property assignments."
-msgstr "No hay propiedades asignadas"
-
-#: 
 msgid "Value"
 msgstr "Valor"
 
@@ -1080,14 +983,6 @@ msgid "Updated By"
 msgstr "Actualizado por"
 
 #: 
-msgid "Show Pledges"
-msgstr "Mostrar promesas"
-
-#: 
-msgid "Show Payments"
-msgstr "mostrar pagos"
-
-#: 
 msgid "Since"
 msgstr "Desde"
 
@@ -1096,16 +991,8 @@ msgid "Update"
 msgstr "Actualizar"
 
 #: 
-msgid "Pledge or Payment"
-msgstr "Promesa o Pago"
-
-#: 
 msgid "Date"
 msgstr "Fecha"
-
-#: 
-msgid "NonDeductible"
-msgstr "no deducible"
 
 #: 
 msgid "Schedule"
@@ -1310,10 +1197,6 @@ msgstr "Detalle Moderado"
 #: 
 msgid "Summary Data"
 msgstr "Resumen de datos"
-
-#: 
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
-msgstr "Los miembros que han votado deben haber donado<br> dentro de esta cantidad de años<br> (0 para no requerir una donación)"
 
 #: 
 msgid "CSV"
@@ -1588,68 +1471,12 @@ msgid "Person View"
 msgstr "Mostrar persona"
 
 #: 
-msgid "Group reports"
-msgstr "Reporte de grupo"
-
-#: 
-msgid "Select the group you would like to report"
-msgstr "Seleccione el grupo que desea reportar"
-
-#: 
-msgid "No Role Selected"
-msgstr "No hay un rol seleccionado"
-
-#: 
-msgid "Only cart people?"
-msgstr "¿Sólo personas del carrito?"
-
-#: 
-msgid "Report Model"
-msgstr "Modelo de reporte"
-
-#: 
-msgid "Report for group and role selected"
-msgstr "Reporte por grupo o rol seleccionado"
-
-#: 
-msgid "Report for any role in group selected"
-msgstr "Reporte para cualquier rol dentro de un grupo"
-
-#: 
-msgid "Select which information you want to include"
-msgstr "Seleccione el tipo de información que desea incluir"
-
-#: 
-msgid "Standard Info"
-msgstr "Información Estándar"
-
-#: 
 msgid "Other Email"
 msgstr "Otro correo electrónico"
 
 #: 
-msgid "GroupRole"
-msgstr "Rol de grupo"
-
-#: 
-msgid "Group-Specific Property Fields"
-msgstr "Campos de Propiedad de grupos específicos"
-
-#: 
-msgid "Undefined"
-msgstr "Indefinido"
-
-#: 
 msgid "Group View"
 msgstr "Vista de grupo"
-
-#: 
-msgid "Edit this Group"
-msgstr "Editar este grupo"
-
-#: 
-msgid "Delete this Group"
-msgstr "Borrar este grupo"
 
 #: 
 msgid "Confirm Delete Group"
@@ -1672,60 +1499,12 @@ msgid "Please select target group for members"
 msgstr "Por favor seleccione el grupo objetivo para miembros"
 
 #: 
-msgid "Add Group Members to Cart"
-msgstr "Añadir miembros de grupo al carrito"
-
-#: 
-msgid "Map this group"
-msgstr "Ubicación del grupo"
-
-#: 
-msgid "Email Group"
-msgstr "Email del grupo"
-
-#: 
-msgid "Total Members"
-msgstr "Total de usuarios"
-
-#: 
 msgid "Default Role"
 msgstr "Rol por Defecto"
 
 #: 
 msgid "Group-Specific Properties"
 msgstr "Propiedades específicas de grupo"
-
-#: 
-msgid "Disabled for this group."
-msgstr "Desactivado para este grupo."
-
-#: 
-msgid "Assigned Properties"
-msgstr "Propiedades asignadas"
-
-#: 
-msgid "Group Members"
-msgstr "Miembros del grupo"
-
-#: 
-msgid "Remove Selected Members from group"
-msgstr "Borrar miembros seleccionados del grupo"
-
-#: 
-msgid "Add Selected Members to Cart"
-msgstr "Agregar miembros seleccionados al carrito"
-
-#: 
-msgid "Add Selected Members to Group"
-msgstr "Agregar miembros seleccionados al grupo"
-
-#: 
-msgid "Move Selected Members to Group"
-msgstr "Mover miembros seleccionados al grupo"
-
-#: 
-msgid "Add Group Member"
-msgstr "Agregar miembro de grupo"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -1740,24 +1519,12 @@ msgid "Confirm data labels"
 msgstr "Compruebe las etiquetas de datos"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Enumerando todos los eventos de la iglesia"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Fecha y Hora de Inicio"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Usuario o contraseña no válidos"
 
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "Demasiado accesos inválidos: su cuenta ha sido bloqueada. Póngase en contacto con el administrador."
-
-#: 
-msgid "Please Login"
-msgstr "Ingrese"
 
 #: 
 msgid "Email/Username"
@@ -1820,10 +1587,6 @@ msgid "Email All"
 msgstr "Email a todos"
 
 #: 
-msgid "Email All (BCC)"
-msgstr "Email a todos (BCC)"
-
-#: 
 msgid "Family Roles"
 msgstr "Roles de familia"
 
@@ -1840,36 +1603,12 @@ msgid "Families"
 msgstr "Familias"
 
 #: 
-msgid "See all Families"
-msgstr "Ver Todas las Familias"
-
-#: 
 msgid "People"
 msgstr "Personas"
 
 #: 
-msgid "See All People"
-msgstr "Ver Todas las Personas"
-
-#: 
 msgid "Sunday School Kids"
 msgstr "Niños de la Escuela Dominical"
-
-#: 
-msgid "More info"
-msgstr "Más Información"
-
-#: 
-msgid "Reports on groups and roles"
-msgstr "Reportes de grupos"
-
-#: 
-msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "Reportar por grupos y roles seleccionados (puede ser un PDF multi-página)"
-
-#: 
-msgid "Generate letters and mailing labels."
-msgstr "Generar etiquetas y cartas"
 
 #: 
 msgid "Role / Gender"
@@ -1878,10 +1617,6 @@ msgstr "Rol / género"
 #: 
 msgid "Count"
 msgstr "Cuenta"
-
-#: 
-msgid "People Classification"
-msgstr "Clasificación de personas"
 
 #: 
 msgid "Gender Demographics"
@@ -2068,32 +1803,12 @@ msgid "Not assigned"
 msgstr "no asignado"
 
 #: 
-msgid "Printable Page"
-msgstr "Hoja Imprimible"
-
-#: 
-msgid "Edit \"Why Came\" Notes"
-msgstr "Editar Notas \"Cómo se contactó\""
-
-#: 
-msgid "Delete this Record"
-msgstr "Borrar este registro"
-
-#: 
 msgid "Make User"
 msgstr "Crear usuario"
 
 #: 
 msgid "Edit User"
 msgstr "Editar usuario"
-
-#: 
-msgid "List Members"
-msgstr "Listar miembros"
-
-#: 
-msgid "No group assignments."
-msgstr "No hay grupos asignados"
 
 #: 
 msgid "Change Role"
@@ -2106,10 +1821,6 @@ msgstr "Actualizar propiedades"
 #: 
 msgid "Assign New Group"
 msgstr "Asignar nuevo grupo"
-
-#: 
-msgid "No volunteer opportunity assignments."
-msgstr "No hay asignaciones de voluntariados"
 
 #: 
 msgid "Assign a New Volunteer Opportunity"
@@ -2200,44 +1911,16 @@ msgid "Non-deductible amount"
 msgstr "Cantidad no Deducible"
 
 #: 
-msgid "Printable View"
-msgstr "Vista imprimible"
-
-#: 
 msgid "Age"
 msgstr "Edad"
-
-#: 
-msgid "Assigned Groups"
-msgstr "Grupos asignados"
 
 #: 
 msgid "Group Name"
 msgstr "Nombre de grupo"
 
 #: 
-msgid "Entered"
-msgstr "Ingresado"
-
-#: 
 msgid "by"
 msgstr "por"
-
-#: 
-msgid "Property successfully assigned."
-msgstr "Propiedad exitosamente asignada."
-
-#: 
-msgid " Property Assignment"
-msgstr "Asignación de propiedad"
-
-#: 
-msgid "Assigning"
-msgstr "Asignando"
-
-#: 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Borrar esta propiedad también eliminará las asignaciones de esta propiedad a cualquier persona, familia o registros de grupo."
 
 #: 
 msgid "No, cancel this deletion"
@@ -2266,11 +1949,6 @@ msgstr "Introducción de un valor del sistema permitirá a la asociación de un 
 #: 
 msgid "Property List"
 msgstr "Lista de propiedades"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Property"
-msgstr "Propiedad"
 
 #: 
 msgid "Prompt"
@@ -2302,64 +1980,12 @@ msgid "Properties"
 msgstr "Propiedades"
 
 #: 
-msgid " Property Unassignment"
-msgstr " Desasignacion de propiedad"
-
-#: 
-msgid "Please confirm removal of this property from this"
-msgstr "Confirme que desea quitar esta propiedad"
-
-#: 
-msgid "Unassigning"
-msgstr "Desasignando"
-
-#: 
-msgid "Yes, unassign this Property"
-msgstr "Si, desasigne esta propiedad"
-
-#: 
-msgid "No, retain this assignment"
-msgstr "No, retener esta asignación"
-
-#: 
 msgid "Query Listing"
 msgstr "Listado de búsqueda"
 
 #: 
-msgid "Free-Text Query"
-msgstr "Búsqueda de texto libre"
-
-#: 
-msgid "Export Results to CSV file"
-msgstr "Exportar resultados a archivo CSV"
-
-#: 
-msgid "Execute SQL"
-msgstr "Ejecutar SQL"
-
-#: 
-msgid "An error occurred"
-msgstr "A Ocurrido un Error"
-
-#: 
 msgid " record(s) returned"
 msgstr " registro(s) encontrado(s)"
-
-#: 
-msgid "Add Results To Cart"
-msgstr "Añadir resultados al carrito"
-
-#: 
-msgid "Intersect Results With Cart"
-msgstr "Intersecar resultados con el carrito"
-
-#: 
-msgid "Remove Results From Cart"
-msgstr "Eliminar resultados del carrito"
-
-#: 
-msgid "Return to Query Menu"
-msgstr "Regresar al menu de búsqueda"
 
 #: 
 msgid "Query View"
@@ -2478,10 +2104,6 @@ msgid "Default User Settings"
 msgstr "Ajustes del usuario por Defecto"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "Fijar Permiso a Verdadero para dar a nuevos usuarios la capacidad de cambiar su valor actual. <BR>"
-
-#: 
 msgid "Permission"
 msgstr "Permiso"
 
@@ -2576,10 +2198,6 @@ msgstr "Estilo"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Fijar Permiso a Verdadero para dar a nuevos usuarios la capacidad de cambiar su valor actual. <BR>"
-
-#: 
-msgid "User Settings"
-msgstr "Ajustes de usuario"
 
 #: 
 msgid "Last Login"
@@ -2822,14 +2440,6 @@ msgid "Error text"
 msgstr "Texto de Error"
 
 #: 
-msgid "Issue Report!"
-msgstr "Reporte de Problemas!"
-
-#: 
-msgid "No personally identifiable information will be submitted unless you purposefully include it."
-msgstr "Ninguna información que pueda identificarlo será enviada a menos que la incluya a propósito."
-
-#: 
 msgid "Dashboard"
 msgstr "Escritorio"
 
@@ -3042,10 +2652,6 @@ msgid "Sunday School"
 msgstr "Escuela Dominical"
 
 #: 
-msgid "Sunday School Class Functions"
-msgstr "Funciones de clase de escuela dominical"
-
-#: 
 msgid "Teachers"
 msgstr "Profesores"
 
@@ -3078,14 +2684,6 @@ msgid "Sunday School Reports"
 msgstr "Reportes de Escuelas Dominicales"
 
 #: 
-msgid "Generate class lists and attendance sheets"
-msgstr "Lista de asistentes"
-
-#: 
-msgid "Export All Classes, Kids, and Parent to CSV file"
-msgstr "Exportar todas las clases, Niños y Padres a un archivo CSV"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Estudiantes en ninguna escuela dominical"
 
@@ -3096,14 +2694,6 @@ msgstr "Al menos un grupo debe ser seleccionado para crear listas de clase u hoj
 #: 
 msgid "Report Details"
 msgstr "Detalles de Reporte"
-
-#: 
-msgid "To select multiple hold CTL"
-msgstr "Para seleccionar varios mantenga presionada la tecla Ctrl"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Múltiples grupos tendrán un salto de página entre cada uno<br>"
 
 #: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
@@ -3214,10 +2804,6 @@ msgid "Church Information"
 msgstr "Información de iglesia"
 
 #: 
-msgid "Email Setup"
-msgstr "Ajustes de correo electrónico"
-
-#: 
 msgid "Map Settings"
 msgstr "Ajustes de Mapa"
 
@@ -3238,10 +2824,6 @@ msgid "Edit JSON Settings"
 msgstr "Editar ajustes de JSON"
 
 #: 
-msgid "Default Value"
-msgstr "Valor por Defecto"
-
-#: 
 msgid "False"
 msgstr "Falso"
 
@@ -3254,24 +2836,12 @@ msgid "Edit Settings"
 msgstr "Editar ajustes"
 
 #: 
-msgid "Full Path:"
-msgstr "Ruta Completa:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Respaldo Completo, Listo para Descargar."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Respaldo Descargado, copia en servidor removida"
 
 #: 
 msgid "Functions"
 msgstr "Funciones"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportar a CSV"
 
 #: 
 msgid "Add"
@@ -3292,10 +2862,6 @@ msgstr "Auto registro"
 #: 
 msgid "Anonymous"
 msgstr "Anónimo"
-
-#: 
-msgid "Registration Complete"
-msgstr "Registro completado"
 
 #: 
 msgid "Add All Classes"
@@ -3324,14 +2890,6 @@ msgstr "Limpiar todos los fondos"
 #: 
 msgid "Deposit Comment"
 msgstr "Comentario de depósito"
-
-#: 
-msgid "Your previous session timed out.  Please login again."
-msgstr "Su sesión previa ha expirado. por favor ingrese nuevamente."
-
-#: 
-msgid "Register a New Family"
-msgstr "Registrar una nueva familia"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -3370,20 +2928,12 @@ msgid "Reports"
 msgstr "Reportes"
 
 #: 
-msgid "File Name:"
-msgstr "Nombre de Archivo:"
-
-#: 
 msgid "family"
 msgstr "familia"
 
 #: 
 msgid "Date Entered"
 msgstr "Fecha de entrada"
-
-#: 
-msgid "CSV Import"
-msgstr "Importar CSV"
 
 #: 
 msgid "There were "
@@ -3402,16 +2952,8 @@ msgid "Filter by Fund"
 msgstr "Filtrar por fondo"
 
 #: 
-msgid "Estimated value"
-msgstr "Valor estimado"
-
-#: 
 msgid "Disable Group Specific Properties"
 msgstr "Deshabilitar propiedades específicas de grupo"
-
-#: 
-msgid "Text Group"
-msgstr "Grupo de Texto"
 
 #: 
 msgid "Group Properties"
@@ -3602,14 +3144,6 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr "Ajustes de Ticket de depósito de QuickBooks"
 
 #: 
-msgid "List Groups"
-msgstr "Listar grupos"
-
-#: 
-msgid "List Church Events"
-msgstr "Listar eventos de iglesia"
-
-#: 
 msgid "Add Church Event"
 msgstr "Añadir Evento de la iglesia"
 
@@ -3632,10 +3166,6 @@ msgstr "Reportes de depósitos"
 #: 
 msgid "Edit Deposit Slip"
 msgstr "Editar número de la hoja de depósito:"
-
-#: 
-msgid "View All Fundraisers"
-msgstr "Ver todas las recaudaciones de fondos"
 
 #: 
 msgid "Create New Fundraiser"
@@ -3678,319 +3208,15 @@ msgstr "Tipos de propiedad"
 msgid "Zip Code"
 msgstr "Código Postal"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "Email de Trabajo"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Asistente Regular"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Invitado"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "No asistente"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "No asistente (equipo)"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Edad Mínima"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Maximum Age"
-msgstr "Edad Máxima"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Fecha de Inicio"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Fecha de Término"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Search"
-msgstr "Buscar"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Field"
 msgstr "Campo"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Oportunidades de voluntariado"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Months"
-msgstr "Meses"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Primer Año Fiscal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Segundo Año Fiscal"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Campo personalizado"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Valor de campo"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The minimum age for which you want records returned."
-msgstr "La edad mínima por la que quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "La edad máxima por la que quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The desired gender to search the database for."
-msgstr "El género deseado para buscar en la base de datos."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Seleccione el rol familiar deseado."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "El género por el que quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "La propiedad por la cual quisiera retornar registros de personas."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Por favor seleccione la fecha de inicio para calcular el total de contribuciones para cada miembro (i.e. YYYY-MM-DD). NOTA: Sólo puede seleccionar fechas que contienen donaciones."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Por favor ingrese la última fecha para calcular para calcular el total de contribuciones para cada miembro (i.e. YYYY-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Ingrese cualquier parte de lo siguiente: nombre, ciudad, estado, zip, teléfono hogar, correo electrónico o correo electrónico de trabajo."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Seleccione el campo para buscar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "El mes de cumpleaños por el cual quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "La clase de escuela dominical por la cual quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "El mes de aniversario de membresía por el cual quisiera retornar registros."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Elija una oportunidad de voluntariado"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Number of months since becoming a friend"
-msgstr "Número de meses de amistad"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Primer año fiscal para comparación"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Segundo año fiscal para comparación"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Promesas este año"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "pero no para este año"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Miembros, asistentes Regulares, etc."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Primera elección de oportunidad de voluntariado"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Segunda elección de oportunidad de voluntariado"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Elija campo personalizado para persona"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Match custom field to this value"
-msgstr "Hacer coincidir el campo personalizado con este valor"
-
-#. Context: query_qry
-#: 
-msgid "Person by Property"
-msgstr "Persona por propiedad"
-
 #. Context: query_qry
 #: 
 msgid "Birthdays"
 msgstr "Cumpleaños"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Aniversarios de Membresía"
-
-#. Context: query_qry
-#: 
-msgid "Volunteers"
-msgstr "Voluntarios"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Amigos recientes"
-
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Comparación de promesas"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Faltan promesas"
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "BúsquedaPersonalizada"
-
-#. Context: query_qry
-#: 
-msgid "Returns person records which are assigned the given property."
-msgstr "Retorna los registros de persona que están asignados a la propiedad dada."
-
-#. Context: query_qry
-#: 
-msgid "People with birthdays in a particular month"
-msgstr "ersonas con cumpleaños en un mes en particular"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Miembros que se unieron en un mes en particular"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Encontrar voluntarios para una oportunidad en particular"
-
-#. Context: query_qry
-#: 
-msgid "Friends who signed up in previous months"
-msgstr "Amigos que se inscribieron en meses anteriores"
-
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Comparación de las promesas entre dos años fiscales"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Encontrar personas que donaron un año pero no otro"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Encontrar voluntarios que coincidan con dos códigos de oportunidad específicos"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Buscar personas con un valor de campo personalizado"
-
-#: 
-msgid "Last Edited"
-msgstr "Última Edición"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to send email via mailto: links"
-msgstr "Permiso de usuario para enviar correo electrónico vía links mailto:"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Delimitador para separar correo electrónicos en links mailto:"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Permiso de usuario para crear directorios"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Allow user to add new event"
-msgstr "Permitir a usuario agregar nuevo evento"
 
 #: 
 msgid "Weekly on"
@@ -4099,10 +3325,6 @@ msgstr "no son permitidos."
 #: 
 msgid "Name for New"
 msgstr "Nombre para nuevo"
-
-#: 
-msgid "Imported"
-msgstr "Importado"
 
 #: 
 msgid "Created via Family"
@@ -5436,10 +4658,6 @@ msgid "Family Verification"
 msgstr "Verificación de familia"
 
 #: 
-msgid "Work Email"
-msgstr "Correo electrónico del trabajo"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Petición de Verificación de Información familiar"
 
@@ -5692,14 +4910,6 @@ msgid "Person has been already checked in for this event"
 msgstr "La persona ya ingresó a este evento"
 
 #: 
-msgid "CheckOut Person"
-msgstr "Registrar Salida de persona"
-
-#: 
-msgid "Delete Checkin in Entry"
-msgstr "Borrar registro en Entrada"
-
-#: 
 msgid "Adult Checking Out Person"
 msgstr "Adulto Registrando Salida de persona"
 
@@ -5748,16 +4958,8 @@ msgid "Status"
 msgstr "Estado"
 
 #: 
-msgid "Email export"
-msgstr "Exportar correo electrónico"
-
-#: 
 msgid "Include"
 msgstr "Incluir"
-
-#: 
-msgid "Exclude"
-msgstr "Excluir"
 
 #: 
 msgid "View Cart"
@@ -5972,24 +5174,8 @@ msgid "Report an issue"
 msgstr "Reportar un problema"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Activar nuevo registro de Quiosco"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Activar Quioscos"
-
-#: 
-msgid "I forgot my password"
-msgstr "Olvidé mi contraseña"
-
-#: 
-msgid "Attendees Checked In"
-msgstr "Asistentes registrados en"
-
-#: 
-msgid "Text Cart"
-msgstr "Separador de Texto"
 
 #: 
 msgid "Self Verification"
@@ -6032,18 +5218,6 @@ msgid "Sequence"
 msgstr "Secuencia"
 
 #: 
-msgid "Checking Cart Status"
-msgstr "Comprobando estado de carrito"
-
-#: 
-msgid "Remove all"
-msgstr "Eliminar todo"
-
-#: 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr "¿Está seguro de que desea remover los miembros seleccionados del grupo?"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "¿Desea eliminar esta persona? Esto no puede deshacerse."
 
@@ -6076,10 +5250,6 @@ msgstr "Tailandés"
 #: 
 msgid "Self Register"
 msgstr "Auto-registrar"
-
-#: 
-msgid "List families that were created via self registration."
-msgstr "Listar familias que fueron creadas mediante auto-registros"
 
 #: 
 msgid "Pending Self Verify"
@@ -6137,10 +5307,6 @@ msgstr "Ajustes de grupo Especial: Tipo de escuela dominical"
 #: 
 msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr "Grupo de escuela dominical no puede ser modificado, solo en estos dos casos:"
-
-#: 
-msgid "You can create/delete sunday school group. "
-msgstr "Puede crear/eliminar grupo de escuela dominical. "
 
 #: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
@@ -6263,10 +5429,6 @@ msgid "Add Students"
 msgstr "Añadir estudiante"
 
 #: 
-msgid "Edit this Class"
-msgstr "Editar esta clase"
-
-#: 
 msgid "OK"
 msgstr "OK"
 
@@ -6281,10 +5443,6 @@ msgstr "ID de grupo requerido para seleccionar rol"
 #: 
 msgid "Select Group and Role"
 msgstr "Seleccione grupo y rol"
-
-#: 
-msgid "Are you sure you want to remove this person's membership from"
-msgstr "¿Está seguro de que desea remover la membresía de esta persona de"
 
 #: 
 msgid "All Members"
@@ -6325,18 +5483,6 @@ msgstr "Nombre de grupo por Defecto"
 #: 
 msgid "Group Role"
 msgstr "Rol de grupo"
-
-#: 
-msgid "Members from group"
-msgstr "Miembros del grupo"
-
-#: 
-msgid "Members to another group"
-msgstr "Miembros de otro grupo"
-
-#: 
-msgid "Members to cart"
-msgstr "Miembros a agregar al carrito"
 
 #: 
 msgid "OR Create a Group and add the CART in ONE ACTION"
@@ -6403,18 +5549,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Campo donde la última Confesión es almacenada, debe ser de tipo fecha"
 
 #: 
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
-msgstr "Requiere que esta base de datos de ChurchCRM sea accedida mediante HTTPS"
-
-#: 
-msgid "People Setup"
-msgstr "Ajustes de personas"
-
-#: 
-msgid "Church Services"
-msgstr "Servicios Religiosos"
-
-#: 
 msgid "People Reports"
 msgstr "Reportes de personas"
 
@@ -6423,28 +5557,12 @@ msgid "People Dashboard"
 msgstr "Dashboard de personas"
 
 #: 
-msgid "People Functions"
-msgstr "Funciones de personas"
-
-#: 
 msgid "People Directory"
 msgstr "Directorio de personas"
 
 #: 
-msgid "Printable directory of all people, grouped by family where assigned"
-msgstr "Directorio imprimible de todas las personas, agrupadas por familia asignada"
-
-#: 
-msgid "of People"
-msgstr "de personas"
-
-#: 
 msgid "System Upgrade"
 msgstr "Actualización de sistema"
-
-#: 
-msgid "Help & Manual"
-msgstr "Ayuda y Guía"
 
 #: 
 msgid "Contributing"
@@ -6457,10 +5575,6 @@ msgstr "Habilitar automáticamente cifrado SMTP si es ofrecido por el servidor."
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Establecer el sistema de cifrado a usar - ssl (deprecado) o tls"
-
-#: 
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr "Intervalo de actualización del Servicio de Dashboard, 60 segundos por defecto"
 
 #: 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
@@ -6483,14 +5597,6 @@ msgid "Not Found"
 msgstr "No encontrado"
 
 #: 
-msgid "Oops!"
-msgstr "Oops!"
-
-#: 
-msgid "Meanwhile, you may"
-msgstr "Mientras tanto, podría"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Usuario debe ser un Admin"
 
@@ -6509,14 +5615,6 @@ msgstr "Borrado del grupo"
 #: 
 msgid "Added to group"
 msgstr "Añadido al grupo"
-
-#: 
-msgid "We could not find the person(s) you were looking for."
-msgstr "No pudimos encontrar a las personas que usted estaba buscando."
-
-#: 
-msgid "return to People Dashboard"
-msgstr "volver al Dashboard de personas"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -6671,10 +5769,6 @@ msgid "Validation Error"
 msgstr "Error de Validación"
 
 #: 
-msgid "Email Functions"
-msgstr "Funciones de correo electrónico"
-
-#: 
 msgid "Debug"
 msgstr "Depurar"
 
@@ -6729,10 +5823,6 @@ msgstr "valor de exportación inválido"
 #: 
 msgid "Invalid User/Password"
 msgstr "Usuario/Contraseña inválidos"
-
-#: 
-msgid "Find Duplicate Emails"
-msgstr "Buscar correo electrónicos duplicados"
 
 #: 
 msgid "Duplicate Emails"
@@ -6828,10 +5918,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Está a punto de agregar un nuevo depósito sin comentarios"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familias sin correo electrónicos"
-
-#: 
 msgid "Record"
 msgstr "Registro"
 
@@ -6855,26 +5941,6 @@ msgstr "Enfocar"
 msgid "Unfocus"
 msgstr "Desenfocar"
 
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Advertencia: Firmas no coinciden"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Algunos archivos de sistema de ChurchCRM pueden haber sido modificados desde la última instalación."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Esta actualización destruirá cualquier personalización hecha a los siguientes archivos al revertirlos a la versión oficial."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Si desea mantener sus cambios a estos archivos, por favor haga un respaldo manual de estos antes de proceder con esta actualización, y luego restaure los archivos manualmente después de haberla completado."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detalles de Comprobación de Integridad:"
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -6883,10 +5949,6 @@ msgstr "Estonio"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Error al decodificar el archivo de definición de firma"
-
-#: 
-msgid "Age Histogram"
-msgstr "Histograma de Edades"
 
 #: 
 msgid "Event not found"
@@ -6933,14 +5995,6 @@ msgstr "Verificación de personas"
 #: 
 msgid "People Verify Dashboard"
 msgstr "Dashboard de Verificación de personas"
-
-#: 
-msgid "Download family letters"
-msgstr "Descargar cartas de familia"
-
-#: 
-msgid "Send family email"
-msgstr "Enviar correo electrónico de familia"
 
 #: 
 msgid "Verification recorded"
@@ -7044,18 +6098,6 @@ msgstr "Especifique el nombre de aplicación que será mostrado en la app de aut
 #: 
 msgid "Review"
 msgstr "Revisar"
-
-#: 
-msgid "Thank you for registering your family"
-msgstr "Gracias por registrar a su familia"
-
-#: 
-msgid "Register another family!"
-msgstr "¡Registre otra familia!"
-
-#: 
-msgid "Done, show me the homepage!"
-msgstr "Listo, ¡Muéstrame la página de inicio!"
 
 #: 
 msgid "User authenticated via API Key: "
@@ -7354,14 +6396,6 @@ msgid "Ukrainian"
 msgstr "Ucraniano"
 
 #: 
-msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
-msgstr "Cuando haga clic en \"Enviar a GitHub\", será redirigido a la página de problemas de GitHub con la información de su sistema precargada."
-
-#: 
-msgid "Submit to GitHub"
-msgstr "Enviar a GitHub"
-
-#: 
 msgid "Change role"
 msgstr "Cambiar rol"
 
@@ -7380,10 +6414,6 @@ msgstr "ID de Depósito"
 #: 
 msgid "Deposit Total"
 msgstr "Depósito Total"
-
-#: 
-msgid "Group Cart Status"
-msgstr "Estado del Carrito de Grupo"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -7498,32 +6528,8 @@ msgid "Enter note text here..."
 msgstr "Ingrese nota de texto aquí..."
 
 #: 
-msgid "No notes have been added for this person."
-msgstr "No se han agregado notas para esta persona."
-
-#: 
 msgid "Note"
 msgstr "Nota"
-
-#: 
-msgid "Log Settings"
-msgstr "Configuración de registro"
-
-#: 
-msgid "Log Level:"
-msgstr "Nivel de registro:"
-
-#: 
-msgid "Save Log Level"
-msgstr "Guardar nivel de registro"
-
-#: 
-msgid "View application logs. Click on a log file to view its contents."
-msgstr "Ver registros de aplicación. Clic en un archivo de registro para ver su contenido."
-
-#: 
-msgid "Delete All Logs"
-msgstr "Eliminar todos los registros"
 
 #: 
 msgid "No log files found."
@@ -7568,10 +6574,6 @@ msgstr "Número de lineas a mostrar:"
 #: 
 msgid "Loading log file..."
 msgstr "Cargando archivo de registro..."
-
-#: 
-msgid "No notes have been added for this family."
-msgstr "No se han agregado notas a esta familia"
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -7798,10 +6800,6 @@ msgid "Events Today"
 msgstr "Eventos de hoy"
 
 #: 
-msgid "Sunday School Overview"
-msgstr "Descripción general de la escuela dominical"
-
-#: 
 msgid "Add Family Member"
 msgstr "Agregar miembro de la familia"
 
@@ -7824,10 +6822,6 @@ msgstr "Dirección de correo electrónico"
 #: 
 msgid "Enter family name"
 msgstr "Introduzca el apellido"
-
-#: 
-msgid "Family Information"
-msgstr "Información familiar"
 
 #: 
 msgid "Family name is required"
@@ -7860,10 +6854,6 @@ msgstr "Número de teléfono de casa"
 #: 
 msgid "Invalid format"
 msgstr "Formato inválido"
-
-#: 
-msgid "Join our community by registering your family"
-msgstr "Únete a nuestra comunidad registrando a tu familia"
 
 #: 
 msgid "Last name"
@@ -7942,20 +6932,12 @@ msgid "Please fill in all required fields correctly."
 msgstr "Por favor, rellene correctamente todos los campos obligatorios."
 
 #: 
-msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
-msgstr "Por favor, revise toda la información cuidadosamente antes de enviarla. Puede volver atrás para hacer cambios si es necesario."
-
-#: 
 msgid "Previous"
 msgstr "Anterior"
 
 #: 
 msgid "Registration Error"
 msgstr "Error de registro"
-
-#: 
-msgid "Review & Submit"
-msgstr "Revisar y enviar"
 
 #: 
 msgid "Role in Family"
@@ -7980,18 +6962,6 @@ msgstr "Se requiere el código postal"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Se ha generado una nueva contraseña y se ha enviado a su dirección de correo electrónico."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "Una nueva versión de ChurchCRM está disponible para su instalación."
-
-#: 
-msgid "Actual Hash"
-msgstr "Actual Hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Se han superado todas las comprobaciones previas a la actualización. Puedes continuar con la actualización."
 
 #: 
 msgid "Allow Pre-release Upgrades"
@@ -8244,10 +7214,6 @@ msgstr "Información de la versión"
 #: 
 msgid "Warnings"
 msgstr "Advertencias"
-
-#: 
-msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
-msgstr "No pudimos procesar su solicitud de restablecimiento de contraseña. Intente solicitar un nuevo enlace de restablecimiento de contraseña."
 
 #: 
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
@@ -8606,10 +7572,6 @@ msgid "Clear"
 msgstr "Claro"
 
 #: 
-msgid "Create"
-msgstr "Crear"
-
-#: 
 msgid "Create New Event"
 msgstr "Crear nuevo evento"
 
@@ -8640,10 +7602,6 @@ msgstr "Eliminar evento"
 #: 
 msgid "Deleting an event will also delete all attendance counts. Delete this event?"
 msgstr "Al eliminar un evento, también se eliminarán todos los registros de asistencia. ¿Eliminar este evento?"
-
-#: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Eliminar este tipo de evento NO eliminará los eventos existentes. ¿Estás seguro?"
 
 #: 
 msgid "Deleting this event will also delete all attendance records. Are you sure?"
@@ -8806,10 +7764,6 @@ msgstr[1] "Personas"
 msgstr[2] "Personas"
 
 #: 
-msgid "✓ CheckOut"
-msgstr "✓ Pagar"
-
-#: 
 msgid "%d Orphaned Files Detected"
 msgstr "%d archivos huérfanos detectados"
 
@@ -8910,10 +7864,6 @@ msgid "Backup in progress, please wait..."
 msgstr "Copia de seguridad en progreso, por favor espere..."
 
 #: 
-msgid "Backup to External Storage"
-msgstr "Copia de seguridad en almacenamiento externo"
-
-#: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "PRECAUCIÓN: Restaurar una copia de seguridad borrará completamente la base de datos existente y la reemplazará con los datos de la copia de seguridad."
 
@@ -8924,10 +7874,6 @@ msgstr "Cerrar y actualizar"
 #: 
 msgid "Confirm Deletion"
 msgstr "Confirmar eliminación"
-
-#: 
-msgid "Create a backup first"
-msgstr "Primero crea una copia de seguridad"
 
 #: 
 msgid "Create directory permission"
@@ -9030,10 +7976,6 @@ msgid "Group management access"
 msgstr "Acceso a la gestión de grupos"
 
 #: 
-msgid "If you need access to this feature, please contact your church administrator."
-msgstr "Si necesita acceder a esta función, comuníquese con el administrador de su iglesia."
-
-#: 
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
 msgstr "Si carga una copia de seguridad de ChurchInfo o una versión anterior de ChurchCRM, se actualizará automáticamente al esquema de base de datos actual."
 
@@ -9056,10 +7998,6 @@ msgstr "Última versión de GitHub:"
 #: 
 msgid "Loading..."
 msgstr "Cargando..."
-
-#: 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr "Realice una copia de seguridad al menos una vez por semana, a menos que tenga copias de seguridad automáticas."
 
 #: 
 msgid "Manage Orphaned Files"
@@ -9120,14 +8058,6 @@ msgstr "Seleccione un archivo de respaldo para restaurar"
 #: 
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr "Vuelva a descargar y aplicar la versión actual para restaurar todos los archivos a su estado oficial"
-
-#: 
-msgid "Ready to create a backup. Select your options above and click a backup button."
-msgstr "Listo para crear una copia de seguridad. Seleccione sus opciones arriba y haga clic en el botón de copia de seguridad."
-
-#: 
-msgid "Ready to restore. Select a backup file and click Restore Database."
-msgstr "Listo para restaurar. Seleccione un archivo de copia de seguridad y haga clic en \"Restaurar base de datos\"."
 
 #: 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
@@ -9250,10 +8180,6 @@ msgid "What are Orphaned Files?"
 msgstr "¿Qué son los archivos huérfanos?"
 
 #: 
-msgid "You don't have access to this page"
-msgstr "No tienes acceso a esta página"
-
-#: 
 msgid "You will be logged out and redirected to the login page."
 msgstr "Se cerrará su sesión y será redirigido a la página de inicio de sesión."
 
@@ -9350,14 +8276,6 @@ msgid "Church Membership"
 msgstr "Membresía de la iglesia"
 
 #: 
-msgid "Church name is set to default value"
-msgstr "El nombre de la iglesia está configurado en el valor predeterminado"
-
-#: 
-msgid "Classes and enrollments"
-msgstr "Clases e inscripciones"
-
-#: 
 msgid "Clean Up Files"
 msgstr "Limpiar archivos"
 
@@ -9380,14 +8298,6 @@ msgstr "Cerrado vs Total"
 #: 
 msgid "Coming soon"
 msgstr "Próximamente"
-
-#: 
-msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
-msgstr "Complete estas tareas de configuración esenciales para que ChurchCRM funcione sin problemas:"
-
-#: 
-msgid "Complete these in any order. Use Demo Data to explore with sample records."
-msgstr "Complete estos en cualquier orden. Use datos de demostración para explorar con registros de ejemplo."
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -9452,10 +8362,6 @@ msgstr "Día"
 #: 
 msgid "Dec"
 msgstr "Dic"
-
-#: 
-msgid "Demo Data"
-msgstr "Datos de demostración"
 
 #: 
 msgid "Deposit Navigation"
@@ -9554,10 +8460,6 @@ msgid "Generate"
 msgstr "Generar"
 
 #: 
-msgid "Generate Reports"
-msgstr "Generar reportes"
-
-#: 
 msgid "Generate Tax Statements"
 msgstr "Generar declaraciones fiscales"
 
@@ -9582,14 +8484,6 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "Genere reportes para estados fiscales, seguimiento de promesas y análisis financiero."
 
 #: 
-msgid "Giving funds and categories"
-msgstr "Fondos y categorías de donación"
-
-#: 
-msgid "HTTPS Not Configured"
-msgstr "HTTPS no configurado"
-
-#: 
 msgid "ID"
 msgstr "Identificación"
 
@@ -9600,18 +8494,6 @@ msgstr "Identifique miembros que no hayan hecho donaciones dentro de un rango de
 #: 
 msgid "Import failed"
 msgstr "Importación fallida"
-
-#: 
-msgid "Import from CSV files"
-msgstr "Importar desde archivos CSV"
-
-#: 
-msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
-msgstr "Importe familias, personas y grupos de ejemplo para explorar ChurchCRM con datos realistas."
-
-#: 
-msgid "Install TLS/SSL certificate for better security"
-msgstr "Instale un certificado TLS/SSL para mejor seguridad"
 
 #: 
 msgid "Jan"
@@ -9628,10 +8510,6 @@ msgstr "Jul"
 #: 
 msgid "Jun"
 msgstr "Jun"
-
-#: 
-msgid "Latest Note"
-msgstr "Última nota"
 
 #: 
 msgid "Let's get your system set up and ready to use"
@@ -9652,10 +8530,6 @@ msgstr "M"
 #: 
 msgid "Manage Funds"
 msgstr "Administrar fondos"
-
-#: 
-msgid "Manage Users"
-msgstr "Administrar usuarios"
 
 #: 
 msgid "Mar"
@@ -9690,10 +8564,6 @@ msgid "New Pledge"
 msgstr "Nueva promesa"
 
 #: 
-msgid "Next 7 days and past 7 days"
-msgstr "Próximos 7 días y últimos 7 días"
-
-#: 
 msgid "No Active Deposit"
 msgstr "Sin versión activa"
 
@@ -9724,14 +8594,6 @@ msgstr "Abierto"
 #: 
 msgid "Open Deposits:"
 msgstr "Versiones abiertas:"
-
-#: 
-msgid "Organization, timezone, email"
-msgstr "Organización, zona horaria, correo electrónico"
-
-#: 
-msgid "Organizational structure"
-msgstr "Estructura organizativa"
 
 #: 
 msgid "Orphaned Files:"
@@ -9798,10 +8660,6 @@ msgid "Review Donation Funds"
 msgstr "Revisar fondos de donación"
 
 #: 
-msgid "SMTP server settings are not configured"
-msgstr "La configuración del servidor SMTP no está configurada"
-
-#: 
 msgid "Save and Add New Family"
 msgstr "Guardar y agregar nueva familia"
 
@@ -9820,10 +8678,6 @@ msgstr "Configuración"
 #: 
 msgid "Settings saved successfully"
 msgstr "La configuración se guardó exitosamente"
-
-#: 
-msgid "Setup Tasks:"
-msgstr "Tareas de configuración:"
 
 #: 
 msgid "Social Media"
@@ -9902,20 +8756,12 @@ msgid "Unmet Prerequisites"
 msgstr "Requisitos previos no cumplidos"
 
 #: 
-msgid "Update Church Name"
-msgstr "Actualizar nombre de la iglesia"
-
-#: 
 msgid "Upgrade"
 msgstr "Actualizar"
 
 #: 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
 msgstr "Utilice filtros de clasificación y familia para generar reportes para grupos específicos de donantes."
-
-#: 
-msgid "User accounts and roles"
-msgstr "Cuentas de usuario y roles"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -9932,10 +8778,6 @@ msgstr "Verifique que los nombres y descripciones de los fondos sean precisos pa
 #: 
 msgid "Version:"
 msgstr "Versión:"
-
-#: 
-msgid "Welcome to ChurchCRM"
-msgstr "Bienvenido a ChurchCRM"
 
 #: 
 msgid "YTD Payments"
@@ -9992,10 +8834,6 @@ msgstr "abierto"
 #: 
 msgid "years"
 msgstr "años"
-
-#: 
-msgid "yes"
-msgstr "sí"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -10074,20 +8912,12 @@ msgid "Location & Contact Information"
 msgstr "Información de ubicación y contacto"
 
 #: 
-msgid "Navigate to your ChurchCRM installation directory"
-msgstr "Navegue hasta su directorio de instalación de ChurchCRM"
-
-#: 
 msgid "New to"
 msgstr "Nuevo en"
 
 #: 
 msgid "No locales configured"
 msgstr "Sin configuraciones regionales configuradas"
-
-#: 
-msgid "Open this file in a text editor:"
-msgstr "Abra este archivo en un editor de texto:"
 
 #: 
 msgid "Register Now"
@@ -10108,10 +8938,6 @@ msgstr "Establecer verdadero para deshabilitar la entrada de direcciones persona
 #: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Comienza con <strong>http://</strong> o <strong>https://</strong>"
-
-#: 
-msgid "Subdirectory installation:"
-msgstr "Instalación de subdirectorio:"
 
 #: 
 msgid "System Locale Support"
@@ -10178,10 +9004,6 @@ msgid "Assign Opportunities"
 msgstr "Asignar oportunidades"
 
 #: 
-msgid "Assign Property"
-msgstr "Asignar propiedad"
-
-#: 
 msgid "Choose a property..."
 msgstr "Elija una propiedad..."
 
@@ -10206,10 +9028,6 @@ msgid "Copied!"
 msgstr "¡Copiado!"
 
 #: 
-msgid "Edit Role"
-msgstr "Editar rol"
-
-#: 
 msgid "Edited"
 msgstr "Editado"
 
@@ -10222,16 +9040,8 @@ msgid "Failed to copy URL"
 msgstr "Error al copiar URL"
 
 #: 
-msgid "ID:"
-msgstr "Identificación:"
-
-#: 
 msgid "Newsletter"
 msgstr "Boletín informativo"
-
-#: 
-msgid "No assigned family"
-msgstr "Sin familia asignada"
 
 #: 
 msgid "Open in New Tab"
@@ -10260,10 +9070,6 @@ msgstr "Eliminar propiedad"
 #: 
 msgid "Select Opportunities"
 msgstr "Seleccionar oportunidades"
-
-#: 
-msgid "Select Property"
-msgstr "Seleccionar propiedad"
 
 #: 
 msgid "Share this URL with family members to verify their information"
@@ -10410,10 +9216,6 @@ msgid "Person(s) removed from cart"
 msgstr "Persona(s) eliminadas del carrito"
 
 #: 
-msgid "Quick Settings"
-msgstr "Configuración rápida"
-
-#: 
 msgid "Reset Failed Logins"
 msgstr "Reiniciar inicios de sesión fallidos"
 
@@ -10430,28 +9232,12 @@ msgid "Set Inactive"
 msgstr "Establecer inactivo"
 
 #: 
-msgid "Show"
-msgstr "Mostrar"
-
-#: 
-msgid "Showing"
-msgstr "Mostrando"
-
-#: 
 msgid "Total Users"
 msgstr "Usuarios totales"
 
 #: 
-msgid "User Management"
-msgstr "Administración de usuarios"
-
-#: 
 msgid "View Details"
 msgstr "Ver detalles"
-
-#: 
-msgid "entries"
-msgstr "entradas"
 
 #: 
 msgid "of"
@@ -10507,16 +9293,8 @@ msgid "A "
 msgstr "Un "
 
 #: 
-msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
-msgstr "Los cambios de AGREGAR, Eliminar y ordenamiento son inmediatos. Los cambios de nombre y descripción deben guardarse haciendo clic en 'Guardar cambios'."
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "¿Está seguro de que desea eliminar?"
-
-#: 
-msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Los botones de flecha y eliminación surten efecto de inmediato. Los cambios en el nombre del campo se perderán si no hace clic en 'Guardar cambios' antes de usar un botón arriba, abajo, eliminar o 'agregar nuevo'."
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -10605,10 +9383,6 @@ msgstr "Propiedades de persona"
 #: 
 msgid "Property Type"
 msgstr "Tipo de propiedad"
-
-#: 
-msgid "Property to Delete"
-msgstr "Propiedad para eliminar"
 
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
@@ -10731,10 +9505,6 @@ msgid "Family Pledges"
 msgstr "Promesas Familiares"
 
 #: 
-msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
-msgstr "¡Los cambios de campo se perderán si no hace clic en 'Guardar Cambios' antes de usar un botón de eliminar o 'Agregar Nuevo'!"
-
-#: 
 msgid "Filter by Class"
 msgstr "Filtrar por Clase"
 
@@ -10834,20 +9604,12 @@ msgid "All Classifications"
 msgstr "Todas las Clasificaciones"
 
 #: 
-msgid "No people found matching your criteria."
-msgstr "No se encontraron personas que coincidan con sus criterios."
-
-#: 
 msgid "Photo Directory"
 msgstr "Directorio de Fotos"
 
 #: 
 msgid "Reset Filters"
 msgstr "Restablecer Filtros"
-
-#: 
-msgid "Show only people with photos"
-msgstr "Mostrar solo personas con fotos"
 
 #: 
 msgid "Expected"
@@ -11269,10 +10031,6 @@ msgid "Done"
 msgstr "Listo"
 
 #: 
-msgid "E.164 format, e.g., +14155551234"
-msgstr "Formato E.164, p. ej., +14155551234"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Cada complemento requiere un"
 
@@ -11301,10 +10059,6 @@ msgid "Enable Two-Factor Authentication"
 msgstr "Habilitar autenticación de dos factores"
 
 #: 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr "Habilite el complemento de Copia de Seguridad Externa para almacenamiento en la nube WebDAV."
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Habilite esto solo para servidores de red local con certificados SSL autofirmados. Deshabilita la verificación de certificados."
 
@@ -11331,10 +10085,6 @@ msgstr "Copia de seguridad externa (WebDAV)"
 #: 
 msgid "External Backup Settings"
 msgstr "Configuración de copia de seguridad externa"
-
-#: 
-msgid "External Backup plugin is enabled but not configured."
-msgstr "El complemento de Copia de Seguridad Externa está habilitado pero no configurado."
 
 #: 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -11371,10 +10121,6 @@ msgstr "No se pudo listar los complementos"
 #: 
 msgid "Failed to reset settings"
 msgstr "No se pudo restablecer la configuración"
-
-#: 
-msgid "Failed to send SMS"
-msgstr "No se pudo enviar el SMS"
 
 #: 
 msgid "Family Status"
@@ -11601,10 +10347,6 @@ msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr "Opcional: solo requerido si la autenticación de OpenLP está habilitada"
 
 #: 
-msgid "Phone number and message required"
-msgstr "Se requieren número de teléfono y mensaje"
-
-#: 
 msgid "Please configure endpoint, username, and password first."
 msgstr "Por favor configure primero el endpoint, el usuario y la contraseña."
 
@@ -11677,20 +10419,12 @@ msgid "Print"
 msgstr "Imprimir"
 
 #: 
-msgid "Recipients and message required"
-msgstr "Se requieren destinatarios y mensaje"
-
-#: 
 msgid "Recovery Codes"
 msgstr "Códigos de recuperación"
 
 #: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "La copia de seguridad remota falló. Revise los registros del servidor para más detalles."
-
-#: 
-msgid "SMS sent"
-msgstr "SMS enviado"
 
 #: 
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
@@ -11747,10 +10481,6 @@ msgstr "Probar conexión"
 #: 
 msgid "Test WebDAV Connection"
 msgstr "Probar conexión WebDAV"
-
-#: 
-msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Estos enlaces aparecen en el menú \"Enlaces\" de la barra lateral de navegación cuando este complemento está habilitado."
 
 #: 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -11921,10 +10651,6 @@ msgid "Congregation Map"
 msgstr "Mapa de la congregación"
 
 #: 
-msgid "Congregation Map — Setup Required"
-msgstr "Mapa de la congregación — Se requiere configuración"
-
-#: 
 msgid "Connected to MailChimp! Account: %s (%d subscribers)"
 msgstr "¡Conectado a MailChimp! Cuenta: %s (%d suscriptores)"
 
@@ -11957,10 +10683,6 @@ msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
 msgstr "Incluya el código de país, p. ej. +14155551234 (EE. UU.) o +447911123456 (RU)"
 
 #: 
-msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
-msgstr "\"Número de origen\" inválido: \"%s\". Incluya el código de país, p. ej. +14155551234 (EE. UU.) o +447911123456 (RU)."
-
-#: 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
 msgstr "Credenciales de API inválidas. Por favor verifique su Clave API y el Secreto API."
 
@@ -11979,14 +10701,6 @@ msgstr "Formato de URL de servidor inválido."
 #: 
 msgid "MailChimp connection failed."
 msgstr "La conexión a MailChimp falló."
-
-#: 
-msgid "Map Zoom Level"
-msgstr "Nivel de zoom del mapa"
-
-#: 
-msgid "Missing families? Update coordinates to include them on the map."
-msgstr "¿Faltan familias? Actualice las coordenadas para incluirlas en el mapa."
 
 #: 
 msgid "Missing required settings: %s"
@@ -12124,32 +10838,13 @@ msgstr "la familia seleccionada no tiene coordenadas"
 msgid "2FA"
 msgstr "2FA"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Buscar personas que no asistieron a un evento"
-
 #: 
 msgid "Leave blank to keep existing"
 msgstr "Dejar en blanco para mantener el valor existente"
 
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Personas ausentes"
-
-#: 
-msgid "Not enrolled"
-msgstr "No inscrito"
-
 #: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Requerir que todos los usuarios se inscriban en la autenticación de dos factores"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Seleccionar el evento deseado"
 
 #: 
 msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
@@ -12162,10 +10857,6 @@ msgstr "Grupos activos"
 #: 
 msgid "Add New Group"
 msgstr "Agregar nuevo grupo"
-
-#: 
-msgid "Add all to cart"
-msgstr "Agregar todo a la selección"
 
 #: 
 msgid "Automatically detect coordinates using address"
@@ -12192,10 +10883,6 @@ msgid "City is required."
 msgstr "La ciudad es obligatoria."
 
 #: 
-msgid "Class Overview"
-msgstr "Resumen de la clase"
-
-#: 
 msgid "Clear filter"
 msgstr "Limpiar filtro"
 
@@ -12214,10 +10901,6 @@ msgstr "Chat de Discord"
 #: 
 msgid "Display Preview"
 msgstr "Mostrar vista previa"
-
-#: 
-msgid "Email (To)"
-msgstr "Correo electrónico (Para)"
 
 #: 
 msgid "Email address is required."
@@ -12244,16 +10927,8 @@ msgid "Geocoding successful"
 msgstr "Geocodificación exitosa"
 
 #: 
-msgid "In Cart"
-msgstr "En la selección"
-
-#: 
 msgid "Inactive Groups"
 msgstr "Grupos inactivos"
-
-#: 
-msgid "Kids Email"
-msgstr "Correo electrónico de los niños"
 
 #: 
 msgid "Language & Localization"
@@ -12276,20 +10951,12 @@ msgid "Main contact phone number for the church."
 msgstr "Número de teléfono principal de la parroquia."
 
 #: 
-msgid "Male / Female"
-msgstr "Masculino / Femenino"
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
 #: 
 msgid "Mother"
 msgstr "Madre"
-
-#: 
-msgid "No members"
-msgstr "Sin miembros"
 
 #: 
 msgid "Optional. URL for your church website."
@@ -12320,14 +10987,6 @@ msgid "Search or select..."
 msgstr "Buscar o seleccionar..."
 
 #: 
-msgid "Send email with recipients in BCC field (hidden from each other)"
-msgstr "Enviar correo con destinatarios en CCO (ocultos entre sí)"
-
-#: 
-msgid "Send email with recipients in To field"
-msgstr "Enviar correo con destinatarios en el campo Para"
-
-#: 
 msgid "State is required."
 msgstr "El departamento es obligatorio."
 
@@ -12356,20 +11015,8 @@ msgid "Time Zone"
 msgstr "Zona horaria"
 
 #: 
-msgid "Toggle overview"
-msgstr "Alternar resumen"
-
-#: 
-msgid "Total Enrolled"
-msgstr "Total inscritos"
-
-#: 
 msgid "Total Groups"
 msgstr "Total de grupos"
-
-#: 
-msgid "Total Memberships"
-msgstr "Total de membresías"
 
 #: 
 msgid "Updated automatically on every save."
@@ -12378,10 +11025,6 @@ msgstr "Actualizado automáticamente en cada guardado."
 #: 
 msgid "Used for scheduling events and reporting times."
 msgstr "Usado para programar eventos y tiempos de informe."
-
-#: 
-msgid "View Full Details"
-msgstr "Ver detalles completos"
 
 #: 
 msgid "View Profile"
@@ -12466,4 +11109,1968 @@ msgstr "La versión de su base de datos es más reciente que el software instala
 #: 
 msgid "or later to continue."
 msgstr "o posterior para continuar."
+
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Notas de \"Por qué vino\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(opcional — dejar en blanco para incluir todos los roles)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Una familia representa un hogar. Contiene la dirección compartida y el número de teléfono fijo de todos los fieles de la familia que viven juntos."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Un hogar. Almacena la dirección postal compartida y el teléfono fijo."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Una persona no necesita pertenecer a una familia, pero asignarla facilita mucho la gestión de direcciones."
+
+#: 
+msgid "About"
+msgstr "Acerca de"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Formato aceptado: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Recuperación de cuenta"
+
+#: 
+msgid "Add Family"
+msgstr "Añadir familia"
+
+#: 
+msgid "Add First Family"
+msgstr "Añadir primera familia"
+
+#: 
+msgid "Add Member"
+msgstr "Añadir fiel"
+
+#: 
+msgid "Add New Class"
+msgstr "Añadir nueva clase"
+
+#: 
+msgid "Add Note"
+msgstr "Añadir nota"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Añadir personas a la familia"
+
+#: 
+msgid "Add Person"
+msgstr "Añadir persona"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Añadir alumnos al carrito"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Añadir profesores al carrito"
+
+#: 
+msgid "Add User"
+msgstr "Añadir usuario"
+
+#: 
+msgid "Add Your Data"
+msgstr "Añadir sus datos"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Añadir su primera familia"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Añadir su primera propiedad"
+
+#: 
+msgid "Add a Person"
+msgstr "Añadir una persona"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Añadir un nuevo compromiso de donación"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Añadir un pago al depósito actual"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Añadir todos los elementos del carrito a un grupo"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Añadir todo al carrito"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Añadir elementos del carrito a una familia"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Añada a todos los miembros de su hogar, adultos y niños."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Añada familias y personas una a una directamente en ChurchCRM. Ideal para feligresías pequeñas o para completar datos importados."
+
+#: 
+msgid "Add first family"
+msgstr "Añadir primera familia"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Añadir o editar registros individuales de personas"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Añadir o editar artículos donados para eventos de recaudación de fondos"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Añadir o editar notas de personas y familias"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Añadir personal y voluntarios"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Añadir personal o voluntarios como usuarios del sistema"
+
+#: 
+msgid "Administrator"
+msgstr "Administrador"
+
+#: 
+msgid "Age Distribution"
+msgstr "Distribución por edades"
+
+#: 
+msgid "All Roles"
+msgstr "Todos los roles"
+
+#: 
+msgid "All Time"
+msgstr "Todo el tiempo"
+
+#: 
+msgid "All roles"
+msgstr "Todos los roles"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "¡Ya casi! Revise sus datos"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "También se ejecuta automáticamente a través de WebDAV según el intervalo configurado."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Se ha producido un error"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Un fiel de la parroquia. Almacena nombre, fecha de nacimiento, correo personal y móvil."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Se ha producido un error inesperado al procesar su solicitud. Póngase en contacto con su administrador."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Se ha producido un error inesperado."
+
+#: 
+msgid "Applied preset"
+msgstr "Preajuste aplicado"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "¿Está seguro de que desea eliminar este depósito?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "¿Está seguro de que desea eliminar esta recaudación de fondos?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "¿Está seguro de que desea eliminar"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Asignar y gestionar los números de sobre de donación"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Asignar y gestionar los números de compradores de la recaudación"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Asignar elementos del carrito a un registro de familia"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Asignar elementos del carrito a un grupo"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Asignar elementos del carrito a un evento"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Asignar a un grupo"
+
+#: 
+msgid "Authentication Code"
+msgstr "Código de autenticación"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Asignado automáticamente"
+
+#: 
+msgid "BCC"
+msgstr "CCO"
+
+#: 
+msgid "BCC All"
+msgstr "CCO a todos"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Volver al panel de administración"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Volver a Primeros pasos"
+
+#: 
+msgid "Back to Home"
+msgstr "Volver al inicio"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Realiza copias de seguridad en el almacenamiento en la nube WebDAV automáticamente en un intervalo configurable."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Realizar copia de seguridad en almacenamiento externo ahora"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Ver todos los complementos disponibles"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Ver todos los eventos y actividades parroquiales"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Ver todos los fieles de su feligresía con filtros y búsqueda"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Ver todos los complementos"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Ver y buscar todas las familias de su feligresía"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Ver y buscar campañas de recaudación de fondos"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Ver fotos de los fieles de la feligresía"
+
+#: 
+msgid "Buyer Number"
+msgstr "Número de comprador"
+
+#: 
+msgid "Buyers"
+msgstr "Compradores"
+
+#: 
+msgid "CSV Column"
+msgstr "Columna CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "Plantilla CSV no encontrada"
+
+#: 
+msgid "Call"
+msgstr "Llamar"
+
+#: 
+msgid "Cart Functions"
+msgstr "Funciones del carrito"
+
+#: 
+msgid "Change Family Role"
+msgstr "Cambiar rol en la familia"
+
+#: 
+msgid "Check Out"
+msgstr "Finalizar"
+
+#: 
+msgid "Check Out Person"
+msgstr "Registrar salida de persona"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Buscar actualizaciones y actualizar su instalación de ChurchCRM"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Registrar la asistencia a eventos y actividades parroquiales"
+
+#: 
+msgid "Check in to an event"
+msgstr "Registrar entrada a un evento"
+
+#: 
+msgid "Check-ins"
+msgstr "Registros de entrada"
+
+#: 
+msgid "Children"
+msgstr "Hijos"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Elija cómo desea poblar su base de datos. Siempre puede utilizar otro método más adelante."
+
+#: 
+msgid "Church Info"
+msgstr "Información parroquial"
+
+#: 
+msgid "Clear all"
+msgstr "Borrar todo"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Borrar todos los datos y empezar de cero"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Vaciar el carrito"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Haga clic en Guardar para aplicar."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Haga clic para subir una foto"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Al hacer clic en \"Abrir incidencia en GitHub\" se abrirá una nueva pestaña con la información de su sistema rellenada previamente. No se incluirá ningún dato personal a menos que usted lo añada."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "La columna se ha asignado automáticamente a un campo de ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Plataforma de gestión parroquial"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Compatible con Excel, Google Sheets o cualquier exportación CSV."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Complete estos pasos en cualquier orden para preparar ChurchCRM para su feligresía."
+
+#: 
+msgid "Confession"
+msgstr "Confesión"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Configurar los ajustes y preferencias globales del sistema"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Configurar ajustes, roles y propiedades de grupos"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Confirme su nueva contraseña"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Conectar un servidor SMTP para que ChurchCRM pueda enviar correos electrónicos"
+
+#: 
+msgid "Connect with others"
+msgstr "Conecte con otros"
+
+#: 
+msgid "Contact us"
+msgstr "Contáctenos"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Convertir registros individuales en unidades familiares"
+
+#: 
+msgid "Convert to Family"
+msgstr "Convertir en familia"
+
+#: 
+msgid "Copied"
+msgstr "Copiado"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Copiar fieles al grupo"
+
+#: 
+msgid "Copy to Group"
+msgstr "Copiar al grupo"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Crear una copia de seguridad de su base de datos parroquial"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Cree una copia de seguridad manual al menos una vez a la semana, o active el complemento de copia de seguridad externa para copias automáticas en WebDAV según un calendario."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Crear un nuevo depósito"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Crear y editar información de familias y sus relaciones"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Crear y gestionar eventos y actividades parroquiales"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Crear o editar categorías de tipos de propiedades"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Crear o editar puestos de voluntariado"
+
+#: 
+msgid "Current person"
+msgstr "Persona actual"
+
+#: 
+msgid "Data & Reports"
+msgstr "Datos e informes"
+
+#: 
+msgid "Database Reset"
+msgstr "Restablecer base de datos"
+
+#: 
+msgid "Default / Notes"
+msgstr "Predeterminado / Notas"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Definir campos personalizados para recopilar datos adicionales de familias"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Definir campos personalizados para recopilar datos adicionales de personas"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Definir propiedades personalizadas para el seguimiento de datos"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Definir propiedades personalizadas que se pueden asignar a"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Definir propiedades específicas del grupo para los fieles"
+
+#: 
+msgid "Delete All"
+msgstr "Eliminar todo"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Eliminar registro de entrada"
+
+#: 
+msgid "Delete Family"
+msgstr "Eliminar familia"
+
+#: 
+msgid "Delete Group"
+msgstr "Eliminar grupo"
+
+#: 
+msgid "Delete Person"
+msgstr "Eliminar persona"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Eliminar compromiso de donación"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Eliminar esta propiedad también eliminará todas sus asignaciones de los registros de personas, familias o grupos."
+
+#: 
+msgid "Deposit Value"
+msgstr "Valor del depósito"
+
+#: 
+msgid "Describe the issue"
+msgstr "Describa el problema"
+
+#: 
+msgid "Directions"
+msgstr "Indicaciones"
+
+#: 
+msgid "Directory Reports"
+msgstr "Informes de directorio"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Desactivado en los ajustes"
+
+#: 
+msgid "Donated Item"
+msgstr "Artículo donado"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Los registros de donaciones y ofrendas se rastrean a nivel familiar. Si desea registrar ofrendas de una persona que vive sola, cree una familia de una sola persona para ella."
+
+#: 
+msgid "Download"
+msgstr "Descargar"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Descargar plantilla CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Descargue la plantilla para ver el formato de columna esperado."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Arrastre y suelte su archivo CSV aquí"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplicados"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Cada persona puede tener su propio correo electrónico y número de móvil."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Cada fila es una persona. Los miembros de la misma familia comparten un FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Registro sencillo"
+
+#: 
+msgid "Edit Class"
+msgstr "Editar clase"
+
+#: 
+msgid "Edit Form"
+msgstr "Editar formulario"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Editar formulario de propiedades del fiel"
+
+#: 
+msgid "Edit Property"
+msgstr "Editar propiedad"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Editar propiedades personalizadas de un miembro del grupo"
+
+#: 
+msgid "Email BCC"
+msgstr "CCO de correo electrónico"
+
+#: 
+msgid "Email Families"
+msgstr "Enviar correo a familias"
+
+#: 
+msgid "Email Settings"
+msgstr "Configuración de correo electrónico"
+
+#: 
+msgid "Email Tools"
+msgstr "Herramientas de correo electrónico"
+
+#: 
+msgid "Email cart items"
+msgstr "Enviar por correo los elementos del carrito"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "Correo con destinatarios ocultos"
+
+#: 
+msgid "Empty"
+msgstr "Vacío"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Activar HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Activar complementos"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Activar el complemento MailChimp para sincronizar contactos"
+
+#: 
+msgid "Enrolled"
+msgstr "Inscrito"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Introducir datos manualmente"
+
+#: 
+msgid "Enter a search term"
+msgstr "Introduzca un término de búsqueda"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Introduzca el código de 6 dígitos de su aplicación de autenticación para completar el inicio de sesión"
+
+#: 
+msgid "Enter your current password"
+msgstr "Introduzca su contraseña actual"
+
+#: 
+msgid "Enter your login name"
+msgstr "Introduzca su nombre de usuario"
+
+#: 
+msgid "Enter your new password"
+msgstr "Introduzca su nueva contraseña"
+
+#: 
+msgid "Enter your password"
+msgstr "Introduzca su contraseña"
+
+#: 
+msgid "Est. Value"
+msgstr "Valor estimado"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Excluir de la exportación de correos electrónicos"
+
+#: 
+msgid "Excluded"
+msgstr "Excluido"
+
+#: 
+msgid "Expand"
+msgstr "Expandir"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Explorar con datos de demostración"
+
+#: 
+msgid "Export"
+msgstr "Exportar"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Exportar datos en formato CSV para aplicaciones externas"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Amplíe ChurchCRM con MailChimp, copias de seguridad y más"
+
+#: 
+msgid "FY %s"
+msgstr "AE %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Error al añadir fieles al carrito. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Error al eliminar la clase. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Error al eliminar el grupo. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Error al eliminar de la clase. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Las familias comparten una dirección y un número de teléfono."
+
+#: 
+msgid "Family List"
+msgstr "Lista de familias"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Resumen de compromisos de donación de la familia"
+
+#: 
+msgid "Family Profile"
+msgstr "Perfil de familia"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Los roles familiares (Cabeza de familia, Cónyuge, Hijo, etc.) ayudan a organizar sus registros."
+
+#: 
+msgid "Family vs Person"
+msgstr "Familia frente a persona"
+
+#: 
+msgid "Fields to Include"
+msgstr "Campos a incluir"
+
+#: 
+msgid "File upload error"
+msgstr "Error al subir el archivo"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Siga estos dos pasos para añadir a los fieles de su parroquia de forma rápida y correcta."
+
+#: 
+msgid "Forgot password?"
+msgstr "¿Olvidó su contraseña?"
+
+#: 
+msgid "Format"
+msgstr "Formato"
+
+#: 
+msgid "Full Group View"
+msgstr "Vista completa del grupo"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Generar y descargar cartas de confirmación"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Generar declaraciones anuales de ofrendas para fines fiscales"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Generar listados de directorio y material impreso"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Generar informes financieros"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Generar estados financieros e informes de ofrendas"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Generar cartas y etiquetas de correo"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Generar etiquetas de correo y cartas tipo"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Generar directorio telefónico"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Generar cartas de recordatorio de compromisos de donación"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Generar informes sobre los miembros de grupos y actividades"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Generar documentos de declaración fiscal para donantes"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Utilidades geográficas"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Importar sus datos a ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Ir a la página de inicio"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "¡Excelente elección! Así es como añadir a los fieles de su parroquia."
+
+#: 
+msgid "Group Map"
+msgstr "Mapa de grupos"
+
+#: 
+msgid "Group Reports"
+msgstr "Informes de grupos"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Grupo eliminado correctamente."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "¿Tiene datos existentes?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Si tiene muchos registros en una hoja de cálculo, la importación CSV puede ser más rápida que la introducción manual de datos."
+
+#: 
+msgid "Ignored"
+msgstr "Ignorado"
+
+#: 
+msgid "Import Another File"
+msgstr "Importar otro archivo"
+
+#: 
+msgid "Import CSV"
+msgstr "Importar CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Importación completada"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Importar contactos de sus audiencias de MailChimp"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Error en la importación. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Import failed: "
+msgstr "Error en la importación: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Importar desde CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Importar desde hoja de cálculo"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Importar desde una hoja de cálculo"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Importar, restaurar o introducir manualmente"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Importe, restaure o introduzca manualmente su feligresía"
+
+#: 
+msgid "Importing..."
+msgstr "Importando..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Incluir en la exportación de correos electrónicos"
+
+#: 
+msgid "Included"
+msgstr "Incluido"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Instalar un certificado TLS/SSL para conexiones seguras"
+
+#: 
+msgid "Invalid import request"
+msgstr "Solicitud de importación no válida"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Número de origen\" no válido: \"%s\". Incluya el código de país, p. ej. +14155551234 (EE. UU.) o +447911123456 (UK)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Invitar a su equipo"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Únase a nuestra comunidad y manténgase conectado con"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Ir a cualquier paso de configuración:"
+
+#: 
+msgid "Key People"
+msgstr "Personas clave"
+
+#: 
+msgid "Kiosk"
+msgstr "Quiosco"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Quiosco activado"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Restauremos sus datos anteriores de ChurchCRM."
+
+#: 
+msgid "Letters"
+msgstr "Cartas"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Cartas y etiquetas de correo"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Cartas y etiquetas"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Listar familias creadas mediante autorregistro"
+
+#: 
+msgid "Load demo data"
+msgstr "Cargar datos de demostración"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Cargue familias, personas, grupos y registros de ofrendas de muestra. La forma más segura de aprender ChurchCRM antes de introducir sus datos reales."
+
+#: 
+msgid "Log Files"
+msgstr "Archivos de registro"
+
+#: 
+msgid "Log Level"
+msgstr "Nivel de registro"
+
+#: 
+msgid "Login to your account"
+msgstr "Iniciar sesión en su cuenta"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, copias de seguridad y más"
+
+#: 
+msgid "Manage %s options"
+msgstr "Gestionar opciones de %s"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Gestionar sobres"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Gestionar clases de catequesis, profesores y asistencia de alumnos"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Gestionar listas de clasificación, roles y tipos de grupos"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Gestionar fondos de donaciones para el seguimiento financiero"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Gestionar donaciones, compromisos de donación y registros financieros"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Gestionar herramientas de correo electrónico y configuración SMTP"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Gestionar nombres y categorías de eventos"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Gestionar categorías de tipos de eventos"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Gestionar familias, personas e información demográfica"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Gestionar personas en su carrito"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Gestionar tipos de propiedades de personas, familias y grupos"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Gestionar propiedades desde el"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Gestionar usuarios del sistema, permisos y configuración de autenticación de dos factores"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Gestionar los detalles de la cuenta de usuario y los permisos"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Gestionar oportunidades de voluntariado y asignar fieles"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Gestionar sus preferencias personales y los ajustes de cuenta"
+
+#: 
+msgid "Map cart items"
+msgstr "Asignar elementos del carrito"
+
+#: 
+msgid "Map to Field"
+msgstr "Asignar a campo"
+
+#: 
+msgid "Member Properties"
+msgstr "Propiedades del fiel"
+
+#: 
+msgid "Member Roles"
+msgstr "Roles del fiel"
+
+#: 
+msgid "Members added to cart."
+msgstr "Fieles añadidos al carrito."
+
+#: 
+msgid "Memberships"
+msgstr "Inscripciones"
+
+#: 
+msgid "Minimum"
+msgstr "Mínimo"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Modificar los roles familiares de los miembros del grupo"
+
+#: 
+msgid "Move Members"
+msgstr "Mover fieles"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Mover fieles al grupo"
+
+#: 
+msgid "Move to Group"
+msgstr "Mover al grupo"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "¿Migra desde una instalación existente de ChurchCRM o ChurchInfo? Suba su archivo de copia de seguridad y restauraremos sus datos automáticamente."
+
+#: 
+msgid "My Settings"
+msgstr "Mis ajustes"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Los cambios de nombre requieren guardar. Las acciones de reordenación y eliminación del menú de acciones surten efecto de inmediato."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Nombre, dirección, datos de contacto"
+
+#: 
+msgid "Need help?"
+msgstr "¿Necesita ayuda?"
+
+#: 
+msgid "New"
+msgstr "Nuevo"
+
+#: 
+msgid "New Family"
+msgstr "Nueva familia"
+
+#: 
+msgid "New Group"
+msgstr "Nuevo grupo"
+
+#: 
+msgid "New Person"
+msgstr "Nueva persona"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Sin aniversarios"
+
+#: 
+msgid "No Birthdays"
+msgstr "Sin cumpleaños"
+
+#: 
+msgid "No Check-ins"
+msgstr "Sin registros de entrada"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Sin seguimiento de depósitos"
+
+#: 
+msgid "No Deposits"
+msgstr "Sin depósitos"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "No hay aniversarios en los últimos ni próximos 7 días"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "No hay cumpleaños en los últimos ni próximos 7 días"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Aún no hay datos de depósitos disponibles"
+
+#: 
+msgid "No description set."
+msgstr "Sin descripción establecida."
+
+#: 
+msgid "No email address on file"
+msgstr "Sin dirección de correo electrónico registrada"
+
+#: 
+msgid "No events linked to this class."
+msgstr "No hay eventos vinculados a esta clase."
+
+#: 
+msgid "No file uploaded"
+msgstr "No se ha subido ningún archivo"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Aún no hay asignaciones de grupo."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "No se ha encontrado coincidencia — seleccione un campo o déjelo como Ignorar."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "No hay resultados para \"%s\". Pruebe con otro término de búsqueda."
+
+#: 
+msgid "No member properties defined."
+msgstr "No hay propiedades de fiel definidas."
+
+#: 
+msgid "No members found for this role."
+msgstr "No se han encontrado fieles para este rol."
+
+#: 
+msgid "No people found"
+msgstr "No se han encontrado personas"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Ninguna persona coincide con sus filtros actuales."
+
+#: 
+msgid "No phone number on file"
+msgstr "Sin número de teléfono registrado"
+
+#: 
+msgid "No properties assigned."
+msgstr "No hay propiedades asignadas."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Aún no hay propiedades definidas"
+
+#: 
+msgid "No results found"
+msgstr "No se han encontrado resultados"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Aún no hay eventos en la cronología."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Aún no hay asignaciones de oportunidades de voluntariado."
+
+#: 
+msgid "Not ready yet?"
+msgstr "¿Aún no está listo?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Una vez que tenga una familia, añada a cada miembro del hogar como persona. Asígnele un rol familiar (p. ej. Cabeza de familia, Cónyuge, Hijo)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Una vez que envíe el formulario, nuestro equipo recibirá su registro y se pondrá en contacto para dar la bienvenida a su familia. Si algo no es correcto, use el botón Anterior para volver y realizar cambios."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Solo se aceptan archivos .csv"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Abrir incidencia en GitHub"
+
+#: 
+msgid "Open user menu"
+msgstr "Abrir menú de usuario"
+
+#: 
+msgid "Options"
+msgstr "Opciones"
+
+#: 
+msgid "Other Members"
+msgstr "Otros fieles"
+
+#: 
+msgid "Overview"
+msgstr "Resumen"
+
+#: 
+msgid "Password Recovery"
+msgstr "Recuperación de contraseña"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Últimos y próximos 7 días"
+
+#: 
+msgid "People List"
+msgstr "Lista de personas"
+
+#: 
+msgid "People by Classification"
+msgstr "Personas por clasificación"
+
+#: 
+msgid "Person removed from class."
+msgstr "Persona eliminada de la clase."
+
+#: 
+msgid "Photo"
+msgstr "Foto"
+
+#: 
+msgid "Photos only"
+msgstr "Solo fotos"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Elija una opción para empezar"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Por favor, compruebe que todo es correcto antes de enviar."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Asigne al menos una columna antes de importar"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Por favor, seleccione un archivo CSV"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Por favor, solicite un nuevo enlace para restablecer la contraseña o contacte con el soporte si el problema persiste."
+
+#: 
+msgid "Pledges"
+msgstr "Compromisos de donación"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Complemento activado pero no configurado. Una vez configurado, las copias de seguridad se ejecutarán automáticamente en WebDAV según el intervalo configurado."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Pulse ? para enfocar la búsqueda"
+
+#: 
+msgid "Prev"
+msgstr "Anterior"
+
+#: 
+msgid "Print name tags"
+msgstr "Imprimir etiquetas de nombre"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Directorio imprimible de todas las personas, agrupadas por familia"
+
+#: 
+msgid "Properties Form"
+msgstr "Formulario de propiedades"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Asignación de propiedad no encontrada."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Propiedad eliminada correctamente."
+
+#: 
+msgid "Property not found."
+msgstr "Propiedad no encontrada."
+
+#: 
+msgid "Quick Setup"
+msgstr "Configuración rápida"
+
+#: 
+msgid "Quick Tips"
+msgstr "Consejos rápidos"
+
+#: 
+msgid "Ready to back up"
+msgstr "Listo para la copia de seguridad"
+
+#: 
+msgid "Ready to restore"
+msgstr "Listo para restaurar"
+
+#: 
+msgid "Recommended Order"
+msgstr "Orden recomendado"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Registrar varios ganadores del sorteo benéfico a la vez"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Registrar nuevos compromisos de donación y pagos"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Registrar por qué los asistentes visitaron su parroquia"
+
+#: 
+msgid "Register Your Family"
+msgstr "Registrar su familia"
+
+#: 
+msgid "Register another family"
+msgstr "Registrar otra familia"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Eliminar todo del carrito"
+
+#: 
+msgid "Remove from Class"
+msgstr "Eliminar de la clase"
+
+#: 
+msgid "Report an Issue"
+msgstr "Informar de un problema"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Restaurar una copia de seguridad"
+
+#: 
+msgid "Restore backup"
+msgstr "Restaurar copia de seguridad"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Restaurar la base de datos parroquial desde un archivo de copia de seguridad"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Volver al panel de control"
+
+#: 
+msgid "Return to Families"
+msgstr "Volver a familias"
+
+#: 
+msgid "Return to Groups"
+msgstr "Volver a grupos"
+
+#: 
+msgid "Return to People"
+msgstr "Volver a personas"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Revisar y eliminar archivos no asociados a ningún registro"
+
+#: 
+msgid "Role not found."
+msgstr "Rol no encontrado."
+
+#: 
+msgid "Run"
+msgstr "Ejecutar"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "Servidor SMTP para el envío de correos electrónicos"
+
+#: 
+msgid "Sample Data"
+msgstr "Datos de muestra"
+
+#: 
+msgid "Search Results"
+msgstr "Resultados de búsqueda"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Buscar entre personas, familias, grupos, direcciones y más."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Buscar y ver registros de recibos de depósito"
+
+#: 
+msgid "Search groups..."
+msgstr "Buscar grupos..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Buscar personas, familias, grupos…"
+
+#: 
+msgid "Security First"
+msgstr "La seguridad, primero"
+
+#: 
+msgid "Select Fields"
+msgstr "Seleccionar campos"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Seleccionar campos a incluir"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Seleccione un archivo de copia de seguridad y haga clic en Restaurar base de datos."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Seleccione sus opciones arriba y haga clic en un botón de copia de seguridad."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Informe de autorregistro"
+
+#: 
+msgid "Send email to families"
+msgstr "Enviar correo electrónico a familias"
+
+#: 
+msgid "Server Error"
+msgstr "Error del servidor"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "El servidor devolvió una respuesta inesperada. Por favor, inténtelo de nuevo."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Establezca el permiso en Verdadero para que los nuevos usuarios puedan cambiar su valor actual."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Establezca un correo de administrador para poder restablecer contraseñas y recibir notificaciones"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Establecer preferencias predeterminadas para nuevas cuentas de usuario"
+
+#: 
+msgid "Set up"
+msgstr "Configurar"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Configurar una nueva campaña o evento de recaudación de fondos"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Establezca el nombre, la dirección y los datos de contacto de su parroquia"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Establezca el nombre, la dirección y el correo de contacto de su parroquia"
+
+#: 
+msgid "Setup Progress"
+msgstr "Progreso de la configuración"
+
+#: 
+msgid "Setup Required"
+msgstr "Configuración requerida"
+
+#: 
+msgid "Share"
+msgstr "Compartir"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Mostrando fieles de: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Iniciar sesión"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Como se trata de una instalación nueva, la restauración simplemente cargará sus datos de copia de seguridad."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Omitir — ir al panel de administración"
+
+#: 
+msgid "Start Fresh"
+msgstr "Empezar de cero"
+
+#: 
+msgid "Start Over"
+msgstr "Volver a empezar"
+
+#: 
+msgid "Stay informed"
+msgstr "Manténgase informado"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Paso 1 — Subir archivo CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Paso 2 — Asignar columnas"
+
+#: 
+msgid "Submitting..."
+msgstr "Enviando..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Compatible con copias de seguridad de ChurchCRM y ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Información de diagnóstico del sistema y configuración"
+
+#: 
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: 
+msgid "Tax Statements"
+msgstr "Declaraciones fiscales"
+
+#: 
+msgid "Teacher"
+msgstr "Profesor"
+
+#: 
+msgid "Technical Details"
+msgstr "Detalles técnicos"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Cuéntenos sobre su familia"
+
+#: 
+msgid "The property could not be removed."
+msgstr "La propiedad no se pudo eliminar."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "La propiedad se ha eliminado correctamente."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Estos enlaces aparecen en el menú \"Enlaces\" de la barra lateral de navegación cuando este complemento está activado."
+
+#: 
+msgid "To Family"
+msgstr "A familia"
+
+#: 
+msgid "To Group"
+msgstr "A grupo"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Alternar navegación"
+
+#: 
+msgid "Total Size"
+msgstr "Tamaño total"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Seguimiento de los compromisos de donación familiares y las aportaciones a fondos por año fiscal"
+
+#: 
+msgid "Transaction Details"
+msgstr "Detalles de la transacción"
+
+#: 
+msgid "Unmapped"
+msgstr "Sin asignar"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Actualizar contacto de administrador"
+
+#: 
+msgid "Upload CSV"
+msgstr "Subir CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Suba un archivo CSV para importar familias y personas a ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Suba un CSV de Excel, Google Sheets o su anterior sistema de gestión parroquial y asigne las columnas a los campos de ChurchCRM."
+
+#: 
+msgid "Upload failed."
+msgstr "Error al subir."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Error al subir. Compruebe el archivo e inténtelo de nuevo."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "La sesión de carga ha caducado. Por favor, suba el archivo de nuevo."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Subiendo, por favor espere..."
+
+#: 
+msgid "Users"
+msgstr "Usuarios"
+
+#: 
+msgid "Verify Info"
+msgstr "Verificar información"
+
+#: 
+msgid "Verify your identity"
+msgstr "Verificar su identidad"
+
+#: 
+msgid "View Family"
+msgstr "Ver familia"
+
+#: 
+msgid "View People"
+msgstr "Ver personas"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Ver todas las familias en un mapa interactivo"
+
+#: 
+msgid "View all results"
+msgstr "Ver todos los resultados"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Ver y gestionar todos los grupos de su feligresía"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Ver y gestionar los pagos de recibos de depósito"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Ver y gestionar los datos de ubicación de las familias"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Ver y gestionar los archivos de registro del sistema para depuración"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Ver y ejecutar consultas de base de datos guardadas"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Ver números de compradores y asignaciones de paletas"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Ver la lista de clase, las asignaciones de profesores y los datos de contacto"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Ver los detalles de la familia, los fieles y la cronología"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Ver resúmenes de compromisos de donación familiares y asignaciones de fondos"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Ver los miembros del grupo, los roles y las propiedades"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Ver panel de compromisos de donación"
+
+#: 
+msgid "View query results"
+msgstr "Ver resultados de la consulta"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Ver los detalles de la transacción de un pago de compromiso de donación"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Los fieles con derecho a voto deben haber realizado una donación en los últimos n años (0 para no requerir una donación)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "No hemos podido encontrar la familia que buscaba."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "No hemos podido encontrar el grupo que buscaba."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "No hemos podido encontrar a la persona que buscaba."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "No hemos podido encontrar el registro que buscaba."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "No hemos podido procesar su solicitud de restablecimiento de contraseña."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Lo usaremos para mantenernos en contacto y enviarle novedades parroquiales."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "¡Nos alegramos mucho de que esté aquí! Registre su familia en solo 3 sencillos pasos."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "¡Nos alegramos mucho de que su familia se haya unido a nosotros!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "¡Bienvenido de nuevo!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "¡Bienvenido de nuevo! Introduzca sus datos para continuar"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "¡Bienvenido a la familia!"
+
+#: 
+msgid "What happens next?"
+msgstr "¿Qué ocurre ahora?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "¿Qué ha ido mal? ¿Qué esperaba que ocurriera?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "¿Quién forma parte de su familia?"
+
+#: 
+msgid "Why Came"
+msgstr "Motivo de la visita"
+
+#: 
+msgid "Yes, delete"
+msgstr "Sí, eliminar"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Siempre puede importar más datos posteriormente mediante CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Puede crear o eliminar grupos de catequesis."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "No tiene permisos de finanzas para ver los depósitos."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Se han cargado los datos de su copia de seguridad. Será redirigido para iniciar sesión con sus credenciales anteriores."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Su copia de seguridad se actualizará automáticamente al esquema de base de datos más reciente si es necesario."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Su sesión anterior ha caducado. Por favor, inicie sesión de nuevo."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Hemos recibido su registro. Nuestro equipo se pondrá en contacto pronto para darle la bienvenida personalmente."
+
+#: 
+msgid "all members"
+msgstr "todos los fieles"
+
+#: 
+msgid "complete"
+msgstr "completar"
+
+#: 
+msgid "fields"
+msgstr "campos"
+
+#: 
+msgid "from this class?"
+msgstr "¿de esta clase?"
+
+#: 
+msgid "from this group?"
+msgstr "¿de este grupo?"
+
+#: 
+msgid "full group view"
+msgstr "vista completa del grupo"
+
+#: 
+msgid "funds"
+msgstr "fondos"
+
+#: 
+msgid "members"
+msgstr "fieles"
+
+#: 
+msgid "name@example.com"
+msgstr "nombre@ejemplo.com"
+
+#: 
+msgid "opportunities"
+msgstr "oportunidades"
+
+#: 
+msgid "options"
+msgstr "opciones"
+
+#: 
+msgid "or connect an external service"
+msgstr "o conectar un servicio externo"
+
+#: 
+msgid "our church"
+msgstr "nuestra parroquia"
+
+#: 
+msgid "page"
+msgstr "página"
+
+#: 
+msgid "properties"
+msgstr "propiedades"
+
+#: 
+msgid "to another group?"
+msgstr "¿a otro grupo?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Ignorar —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Seleccionar un grupo —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Seleccionar tipo (opcional) —"
 

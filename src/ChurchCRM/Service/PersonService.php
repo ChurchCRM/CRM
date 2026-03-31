@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -81,7 +82,10 @@ class PersonService
                 $group = $membership->getGroup();
                 if ($group !== null) {
                     $roleName = '';
-                    $roleList = $group->getListOptionById($membership->getRoleId());
+                    $roleList = ListOptionQuery::create()
+                        ->filterById($group->getRoleListId())
+                        ->filterByOptionId($membership->getRoleId())
+                        ->findOne();
                     if ($roleList !== null) {
                         $roleName = $roleList->getOptionName();
                     }

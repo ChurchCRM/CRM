@@ -163,9 +163,9 @@ if ($EventID > 0) {
                     <div class="mb-3">
                         <label for="EventID" class="form-label"><?= gettext('Select Event'); ?></label>
                         <select id="EventID" name="EventID" class="form-select" onchange="this.form.submit()">
-                            <option value="" disabled <?= ($EventID == 0) ?"selected" :"" ?>><?= gettext('Select event') ?></option>
+                            <option value="" disabled <?= ($EventID === 0) ?"selected" :"" ?>><?= gettext('Select event') ?></option>
                             <?php foreach ($activeEvents as $evt) { ?>
-                                <option value="<?= $evt->getId() ?>" <?= ($EventID == $evt->getId()) ?"selected" :"" ?>>
+                                <option value="<?= $evt->getId() ?>" <?= ($EventID === $evt->getId()) ?"selected" :"" ?>>
                                     <?= InputUtils::escapeHTML($evt->getTitle()) ?> (<?= $evt->getStart('M j, Y') ?>)
                                 </option>
                             <?php } ?>
@@ -524,7 +524,7 @@ function filterByType(typeId) {
 
 function loadPerson($iPersonID)
 {
-    if ($iPersonID == 0) {
+    if ($iPersonID === 0) {
         echo"";
     }
     $person = PersonQuery::create()

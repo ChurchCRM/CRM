@@ -236,19 +236,6 @@ msgid "Create File"
 msgstr "Skapa fil"
 
 #: 
-msgid "No file selected for upload."
-msgstr "Inga fil valde för uppladdning."
-
-#: 
-#, fuzzy
-msgid "Total number of rows in the CSV file"
-msgstr "Antal rader i CSV fil"
-
-#: 
-msgid "Ignore this Field"
-msgstr "Förbigå denna fält"
-
-#: 
 msgid "Title"
 msgstr "Titel"
 
@@ -260,10 +247,6 @@ msgstr "Ändelse"
 #: 
 msgid "Gender"
 msgstr "Kön"
-
-#: 
-msgid "Donation Envelope"
-msgstr "Insamlingskuvert"
 
 #. Context: queryparameteroptions_qpo
 #: 
@@ -290,59 +273,10 @@ msgstr "Födelsedatum"
 msgid "Wedding Date"
 msgstr "Bröllopsdatum"
 
-#: 
-msgid "Ignore first CSV row (to exclude a header)"
-msgstr "Förbigå den första CSV rad (för att skippa headern)"
-
-#: 
-msgid "Make Family records based on last name and address"
-msgstr "Gör familj poster baserat på efternamn och adress"
-
-#: 
-msgid "Patriarch"
-msgstr "Patriark"
-
-#: 
-msgid "Matriarch"
-msgstr "Matriark"
-
-#: 
-msgid "Family Type: used with Make Family records... option above"
-msgstr "Familjtyp: använd med Gör famlij poster... val ovan"
-
-#: 
-msgid "NOTE: Separators (dashes, etc.) or lack thereof do not matter"
-msgstr "OBS: Avskiljare (strek, osv.) eller saknaden därav är betydelselös"
-
-#: 
-msgid "Default country if none specified otherwise"
-msgstr "Förinställd land om ingen annan angiven"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Classification"
 msgstr "Klassificering "
-
-#: 
-msgid "Perform Import"
-msgstr "Gör importeringen"
-
-#: 
-msgid "ERROR: the uploaded CSV file no longer exists!"
-msgstr "FEL: uppladdade CSV filen finns inte!"
-
-#: 
-msgid "Upload CSV File"
-msgstr "Ladda upp CSV Fil"
-
-#: 
-msgid "Data import successful."
-msgstr "Importering lyckades."
-
-#: 
-#, fuzzy
-msgid "people were imported"
-msgstr "personer importerade"
 
 #: 
 msgid "Add Cart to Event"
@@ -425,10 +359,6 @@ msgid "Add to Group"
 msgstr "Lägg till grupp"
 
 #: 
-msgid "View Your Cart"
-msgstr "Visa korgen"
-
-#: 
 msgid "You have no items in your cart."
 msgstr "Korgen är tom."
 
@@ -451,23 +381,6 @@ msgstr "Tom korgen till familj"
 #: 
 msgid "Map Cart"
 msgstr "Kartlägga korgen"
-
-#: 
-#, fuzzy
-msgid "Name Tags"
-msgstr "Namn"
-
-#: 
-msgid "Email Cart"
-msgstr "Epost korg"
-
-#: 
-msgid "Email (BCC)"
-msgstr "Epost (BCC)"
-
-#: 
-msgid "Create Directory From Cart"
-msgstr "Skapa katalog från korgen"
 
 #: 
 msgid "Bulk Mail Presort"
@@ -505,10 +418,6 @@ msgstr "Evenemang inchekning"
 #: 
 msgid "Select Event"
 msgstr "Välj evenemang"
-
-#: 
-msgid "CheckOut"
-msgstr "Checkar ut"
 
 #: 
 msgid "Checked In Time"
@@ -823,11 +732,6 @@ msgstr "Fond"
 msgid "Bank"
 msgstr "Bank"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Month"
-msgstr "Månad"
-
 #: 
 msgid "Year"
 msgstr "År"
@@ -1090,10 +994,6 @@ msgid "Pledges and Payments"
 msgstr "Bidrag löfte och betalningar"
 
 #: 
-msgid "No property assignments."
-msgstr "Inga egenskaper angiven."
-
-#: 
 msgid "Value"
 msgstr "Värd"
 
@@ -1119,14 +1019,6 @@ msgid "Updated By"
 msgstr "Ändrades av"
 
 #: 
-msgid "Show Pledges"
-msgstr "Visa löften om betalningar"
-
-#: 
-msgid "Show Payments"
-msgstr "Visa betalningar"
-
-#: 
 msgid "Since"
 msgstr "Eftersom"
 
@@ -1135,16 +1027,8 @@ msgid "Update"
 msgstr "Uppdatera"
 
 #: 
-msgid "Pledge or Payment"
-msgstr "Betalningar eller löften om betalningar"
-
-#: 
 msgid "Date"
 msgstr "Datum"
-
-#: 
-msgid "NonDeductible"
-msgstr "Ej avdragsgiltig"
 
 #: 
 msgid "Schedule"
@@ -1358,11 +1242,6 @@ msgstr "Måtlig detalj"
 #: 
 msgid "Summary Data"
 msgstr "Sammanfattning information"
-
-#: 
-#, fuzzy
-msgid "Voting members must have made<br> a donation within this many years<br> (0 to not require a donation)"
-msgstr "Rösta medlemmarna måste ha gjort <br> en donation inom många år <br> (0 för att inte kräva en donation)"
 
 #: 
 msgid "CSV"
@@ -1660,73 +1539,12 @@ msgid "Person View"
 msgstr "Person vy"
 
 #: 
-msgid "Group reports"
-msgstr "Grupp rapporter"
-
-#: 
-#, fuzzy
-msgid "Select the group you would like to report"
-msgstr "Välj gruppen att rapportera"
-
-#: 
-msgid "No Role Selected"
-msgstr "Ingen roll vald"
-
-#: 
-#, fuzzy
-msgid "Only cart people?"
-msgstr "Endast korg personer?"
-
-#: 
-#, fuzzy
-msgid "Report Model"
-msgstr "Rapport model"
-
-#: 
-msgid "Report for group and role selected"
-msgstr "Rapport för grupp och roll vald"
-
-#: 
-msgid "Report for any role in group selected"
-msgstr "Rapport för alla roll i gruppen vald"
-
-#: 
-msgid "Select which information you want to include"
-msgstr "Välj vilken information du vill inkludera"
-
-#: 
-#, fuzzy
-msgid "Standard Info"
-msgstr "Standard Information"
-
-#: 
 msgid "Other Email"
 msgstr "Övriga epost"
 
 #: 
-msgid "GroupRole"
-msgstr "GruppRoll"
-
-#: 
-#, fuzzy
-msgid "Group-Specific Property Fields"
-msgstr "Grupp specifik egenskapar fält"
-
-#: 
-msgid "Undefined"
-msgstr "Odefinerat"
-
-#: 
 msgid "Group View"
 msgstr "Grupp vy"
-
-#: 
-msgid "Edit this Group"
-msgstr "Redigera denna grupp"
-
-#: 
-msgid "Delete this Group"
-msgstr "Radera denna grupp"
 
 #: 
 msgid "Confirm Delete Group"
@@ -1750,23 +1568,6 @@ msgid "Please select target group for members"
 msgstr "Välj målgrupp för medlemmar"
 
 #: 
-msgid "Add Group Members to Cart"
-msgstr "Lägg grupp medlemmar till korgen"
-
-#: 
-msgid "Map this group"
-msgstr "Kartlägga denna grupp"
-
-#: 
-msgid "Email Group"
-msgstr "Epost grupp"
-
-#: 
-#, fuzzy
-msgid "Total Members"
-msgstr "Antal medlemmar"
-
-#: 
 #, fuzzy
 msgid "Default Role"
 msgstr "Standard roll"
@@ -1775,41 +1576,6 @@ msgstr "Standard roll"
 #, fuzzy
 msgid "Group-Specific Properties"
 msgstr "Grupp specifik egenskapar"
-
-#: 
-msgid "Disabled for this group."
-msgstr "oaktiverad för denna grupp"
-
-#: 
-#, fuzzy
-msgid "Assigned Properties"
-msgstr "Angiven egenskaper"
-
-#: 
-#, fuzzy
-msgid "Group Members"
-msgstr "Grupp medlemmar"
-
-#: 
-msgid "Remove Selected Members from group"
-msgstr "Ta bort utvalda medlemmar från gruppen"
-
-#: 
-msgid "Add Selected Members to Cart"
-msgstr "Lägg till utvalda medlemmar i kundvagnen"
-
-#: 
-msgid "Add Selected Members to Group"
-msgstr "Lägg till utvalda medlemmar i gruppen"
-
-#: 
-msgid "Move Selected Members to Group"
-msgstr "Flytta utvalda medlemmar till grupp"
-
-#: 
-#, fuzzy
-msgid "Add Group Member"
-msgstr "Lägg till gruppmedlem"
 
 #: 
 msgid "Letters and Mailing Labels"
@@ -1824,24 +1590,12 @@ msgid "Confirm data labels"
 msgstr "Bekräfta informations etikett"
 
 #: 
-msgid "Listing All Church Events"
-msgstr "Lista över alla evenamang"
-
-#: 
-msgid "Start Date/Time"
-msgstr "Start datum/tid"
-
-#: 
 msgid "Invalid login or password"
 msgstr "Ogiltig användernamn eller lösenord"
 
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
 msgstr "För många felaktiga inloggningar:  ditt konto är låst.  Kontaka administratören."
-
-#: 
-msgid "Please Login"
-msgstr "Var snäll och logga in"
 
 #: 
 msgid "Email/Username"
@@ -1911,10 +1665,6 @@ msgid "Email All"
 msgstr "Skicka e-post till alla"
 
 #: 
-msgid "Email All (BCC)"
-msgstr "E-posta alla (BCC)"
-
-#: 
 msgid "Family Roles"
 msgstr "Familjeroller"
 
@@ -1931,36 +1681,12 @@ msgid "Families"
 msgstr "Familjer"
 
 #: 
-msgid "See all Families"
-msgstr "Se alla familjer"
-
-#: 
 msgid "People"
 msgstr "Personer"
 
 #: 
-msgid "See All People"
-msgstr "Se alla personer"
-
-#: 
 msgid "Sunday School Kids"
 msgstr "Söndagsskolungarn"
-
-#: 
-msgid "More info"
-msgstr "Mer information"
-
-#: 
-msgid "Reports on groups and roles"
-msgstr "Rapporter om grupper och roller"
-
-#: 
-msgid "Report on group and roles selected (it may be a multi-page PDF)."
-msgstr "Rapport om grupp och roller vald (kanske blir det en mångsidig PDF dokument)"
-
-#: 
-msgid "Generate letters and mailing labels."
-msgstr "Skapa brev och post etikett."
 
 #: 
 msgid "Role / Gender"
@@ -1969,10 +1695,6 @@ msgstr "Roll / kön"
 #: 
 msgid "Count"
 msgstr "Räkna"
-
-#: 
-msgid "People Classification"
-msgstr "Personklassificering"
 
 #: 
 msgid "Gender Demographics"
@@ -2168,32 +1890,12 @@ msgid "Not assigned"
 msgstr "Inte tilldelad"
 
 #: 
-msgid "Printable Page"
-msgstr "Utskriftbar sida"
-
-#: 
-msgid "Edit \"Why Came\" Notes"
-msgstr "Redigera \"Varför kom\" anteckningar"
-
-#: 
-msgid "Delete this Record"
-msgstr "Radera denna post"
-
-#: 
 msgid "Make User"
 msgstr "Skapa användare"
 
 #: 
 msgid "Edit User"
 msgstr "Redigera användare"
-
-#: 
-msgid "List Members"
-msgstr "Listmedlemmar"
-
-#: 
-msgid "No group assignments."
-msgstr "Inga grupp tilldelningar"
 
 #: 
 msgid "Change Role"
@@ -2206,10 +1908,6 @@ msgstr "Uppdatera egenskaper"
 #: 
 msgid "Assign New Group"
 msgstr "Tilldela ny grupp"
-
-#: 
-msgid "No volunteer opportunity assignments."
-msgstr "Inga frivilliga tilldelningar"
 
 #: 
 #, fuzzy
@@ -2308,47 +2006,16 @@ msgid "Non-deductible amount"
 msgstr "Ej avdragsgiltig"
 
 #: 
-msgid "Printable View"
-msgstr "Utskriftsbar vy"
-
-#: 
 msgid "Age"
 msgstr "Ålder"
-
-#: 
-#, fuzzy
-msgid "Assigned Groups"
-msgstr "Tilldelad grupper"
 
 #: 
 msgid "Group Name"
 msgstr "Grupp namn"
 
 #: 
-#, fuzzy
-msgid "Entered"
-msgstr "Angiven"
-
-#: 
 msgid "by"
 msgstr "av"
-
-#: 
-msgid "Property successfully assigned."
-msgstr "Egenskap tilldelning lyckades."
-
-#: 
-msgid " Property Assignment"
-msgstr " Egenskap tilldelning"
-
-#: 
-#, fuzzy
-msgid "Assigning"
-msgstr "Tilldelning"
-
-#: 
-msgid "Deleting this Property will also delete all assignments of this Property to any People, Family, or Group records."
-msgstr "Varning: Att radera denna egenskap raderar alla tilldelningar till denna egenskap av personer, familjer och grupper"
 
 #: 
 msgid "No, cancel this deletion"
@@ -2378,11 +2045,6 @@ msgstr "Att mata in en framkallning värd tillåter tilldelning av en fritt anpa
 #: 
 msgid "Property List"
 msgstr "Egenskap lista"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Property"
-msgstr "Egenskap"
 
 #: 
 msgid "Prompt"
@@ -2415,66 +2077,12 @@ msgid "Properties"
 msgstr "Egenskapar"
 
 #: 
-msgid " Property Unassignment"
-msgstr " Egenskap tilldelning bortagning"
-
-#: 
-msgid "Please confirm removal of this property from this"
-msgstr "Var snäll och bekräfta att du vill ta bort denna egenskap från denna"
-
-#: 
-#, fuzzy
-msgid "Unassigning"
-msgstr "Tilldelning bortagning"
-
-#: 
-msgid "Yes, unassign this Property"
-msgstr "Ja, ta bort tilldelning av denna egenskap"
-
-#: 
-msgid "No, retain this assignment"
-msgstr "Nej, behålla denna tilldelning"
-
-#: 
 msgid "Query Listing"
 msgstr "Förfrågan lista"
 
 #: 
-msgid "Free-Text Query"
-msgstr "Fritext förfrågan"
-
-#: 
-msgid "Export Results to CSV file"
-msgstr "Exportera resultatet till en CSV fil"
-
-#: 
-msgid "Execute SQL"
-msgstr "Gör SQL förfrågan"
-
-#: 
-#, fuzzy
-msgid "An error occurred"
-msgstr "Ett fel inträffade"
-
-#: 
 msgid " record(s) returned"
 msgstr " post(er) hittade"
-
-#: 
-msgid "Add Results To Cart"
-msgstr "Lägg till resultat till korgen"
-
-#: 
-msgid "Intersect Results With Cart"
-msgstr "Koppla resultat till korgen"
-
-#: 
-msgid "Remove Results From Cart"
-msgstr "Ta bort resultat från korgen"
-
-#: 
-msgid "Return to Query Menu"
-msgstr "Återgå till förfrågan meny"
 
 #: 
 msgid "Query View"
@@ -2595,10 +2203,6 @@ msgid "Default User Settings"
 msgstr "Standard användare inställningar"
 
 #: 
-msgid "Set Permission True to give new users the ability to change their current value.<BR>"
-msgstr "Ställ Tillstånd Trogen ge nya användare möjlighet att ändra sin nuvarande värde. <BR>"
-
-#: 
 #, fuzzy
 msgid "Permission"
 msgstr "Tillstånd"
@@ -2708,10 +2312,6 @@ msgstr "Styl"
 #: 
 msgid "Set Permission True to give this user the ability to change their current value."
 msgstr "Ställ tillåtelse sant för att ge den här användaren möjlighet att ändra sitt nuvarande värde."
-
-#: 
-msgid "User Settings"
-msgstr "Användarinställningar"
 
 #: 
 msgid "Last Login"
@@ -2959,14 +2559,6 @@ msgid "Error text"
 msgstr "Feltext"
 
 #: 
-msgid "Issue Report!"
-msgstr "Utgivningsrapport!"
-
-#: 
-msgid "No personally identifiable information will be submitted unless you purposefully include it."
-msgstr "Ingen personlig identifierbar information kommer att lämnas om du inte medvetet inkluderar den."
-
-#: 
 msgid "Dashboard"
 msgstr "Instrumentbräda"
 
@@ -3193,10 +2785,6 @@ msgid "Sunday School"
 msgstr "Söndagsskola"
 
 #: 
-msgid "Sunday School Class Functions"
-msgstr "Söndagsskolas klassfunktioner"
-
-#: 
 msgid "Teachers"
 msgstr "lärare"
 
@@ -3229,14 +2817,6 @@ msgid "Sunday School Reports"
 msgstr "Söndagskola rapporter"
 
 #: 
-msgid "Generate class lists and attendance sheets"
-msgstr "Skapa klasslista och deltagande formulär"
-
-#: 
-msgid "Export All Classes, Kids, and Parent to CSV file"
-msgstr "Exportera alla klasser, barn och förälder till CSV-fil"
-
-#: 
 msgid "Students not in a Sunday School Class"
 msgstr "Elever som inte är i en söndagsskoleklass"
 
@@ -3248,15 +2828,6 @@ msgstr "Åtminstone en grupp måste väljas för att skapa grupplister eller nä
 #: 
 msgid "Report Details"
 msgstr "Rapportera detaljer"
-
-#: 
-#, fuzzy
-msgid "To select multiple hold CTL"
-msgstr "För att välj många håll ner CTL"
-
-#: 
-msgid "Multiple groups will have a Page Break between Groups<br>"
-msgstr "Flera grupper har en sidbrytning mellan grupper <br>"
 
 #: 
 msgid "List all Roles (unchecked will list Teacher/Student roles only)"
@@ -3372,10 +2943,6 @@ msgid "Church Information"
 msgstr "Kyrklig information"
 
 #: 
-msgid "Email Setup"
-msgstr "E-postinställning"
-
-#: 
 msgid "Map Settings"
 msgstr "Kartinställningar"
 
@@ -3396,10 +2963,6 @@ msgid "Edit JSON Settings"
 msgstr "Redigera JSON-inställningar"
 
 #: 
-msgid "Default Value"
-msgstr "Standardvärde"
-
-#: 
 msgid "False"
 msgstr "Falsk"
 
@@ -3412,24 +2975,12 @@ msgid "Edit Settings"
 msgstr "Ändra inställningar"
 
 #: 
-msgid "Full Path:"
-msgstr "Fullständig sökväg:"
-
-#: 
-msgid "Backup Complete, Ready for Download."
-msgstr "Säkerhetskopiering är klar, redo för nedladdning."
-
-#: 
 msgid "Backup Downloaded, Copy on server removed"
 msgstr "Säkerhetskopia nedladdat, kopiera på servern bort"
 
 #: 
 msgid "Functions"
 msgstr "Funktioner"
-
-#: 
-msgid "Export to CSV"
-msgstr "Exportera till CSV"
 
 #: 
 msgid "Add"
@@ -3450,10 +3001,6 @@ msgstr "Självregistrering"
 #: 
 msgid "Anonymous"
 msgstr "Anonym"
-
-#: 
-msgid "Registration Complete"
-msgstr "Registrering klar"
 
 #: 
 msgid "Add All Classes"
@@ -3482,15 +3029,6 @@ msgstr "Rensa alla fonder"
 #: 
 msgid "Deposit Comment"
 msgstr "Sätt in kommentar"
-
-#: 
-msgid "Your previous session timed out.  Please login again."
-msgstr "Din tidigare session avslutades. Logga in igen."
-
-#: 
-#, fuzzy
-msgid "Register a New Family"
-msgstr "Registrera en ny familj"
 
 #: 
 msgid "Signature definition file signature failed validation"
@@ -3529,10 +3067,6 @@ msgid "Reports"
 msgstr "Rapporter"
 
 #: 
-msgid "File Name:"
-msgstr "Filnamn:"
-
-#: 
 msgid "family"
 msgstr "familj"
 
@@ -3540,10 +3074,6 @@ msgstr "familj"
 #, fuzzy
 msgid "Date Entered"
 msgstr "Datum in"
-
-#: 
-msgid "CSV Import"
-msgstr "CSV-import"
 
 #: 
 msgid "There were "
@@ -3562,16 +3092,8 @@ msgid "Filter by Fund"
 msgstr "Filtrera efter fond"
 
 #: 
-msgid "Estimated value"
-msgstr "Uppskattat värde"
-
-#: 
 msgid "Disable Group Specific Properties"
 msgstr "Inaktivera gruppspecifika egenskaper"
-
-#: 
-msgid "Text Group"
-msgstr "Textgrupp"
 
 #: 
 msgid "Group Properties"
@@ -3765,14 +3287,6 @@ msgid "QuickBooks Deposit Ticket Settings"
 msgstr "QuickBooks Sätt in biljettinställningar"
 
 #: 
-msgid "List Groups"
-msgstr "Lista grupper"
-
-#: 
-msgid "List Church Events"
-msgstr "Lista kyrkans evenemang"
-
-#: 
 msgid "Add Church Event"
 msgstr "Lägg till kyrkans evenemang"
 
@@ -3795,10 +3309,6 @@ msgstr "Insättningsrapporter"
 #: 
 msgid "Edit Deposit Slip"
 msgstr "Redigera insättningsslip"
-
-#: 
-msgid "View All Fundraisers"
-msgstr "Visa alla insamlingar"
 
 #: 
 msgid "Create New Fundraiser"
@@ -3841,320 +3351,15 @@ msgstr "Egenskapstyper"
 msgid "Zip Code"
 msgstr "Postnummer"
 
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "WorkEmail"
-msgstr "WorkEmail"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Regular Attender"
-msgstr "Vanlig skötare"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Guest"
-msgstr "Gäst"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender"
-msgstr "Icke-övervakare"
-
-#. Context: queryparameteroptions_qpo
-#: 
-msgid "Non-Attender (staff)"
-msgstr "Icke-deltagare (personal)"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Minimum Age"
-msgstr "Lägsta ålder"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Maximum Age"
-msgstr "Maximal ålder"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Beginning Date"
-msgstr "Startdatum"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Ending Date"
-msgstr "Slutdatum"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Search"
-msgstr "Sök"
-
 #. Context: queryparameters_qrp
 #: 
 msgid "Field"
 msgstr "Fält"
 
-#. Context: queryparameters_qrp
-#: 
-msgid "Volunteer opportunities"
-msgstr "Volontärmöjligheter"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Months"
-msgstr "månader"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First Fiscal Year"
-msgstr "Första budgetåret"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second Fiscal Year"
-msgstr "Andra budgetåret"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Custom field"
-msgstr "Anpassat fält"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Field value"
-msgstr "Fältvärde"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The minimum age for which you want records returned."
-msgstr "Den lägsta ålder som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The maximum age for which you want records returned."
-msgstr "Den maximala ålder som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The desired gender to search the database for."
-msgstr "Det önskade könet att söka i databasen för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired family role."
-msgstr "Välj önskad familjeroll."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The gender for which you would like records returned."
-msgstr "Könet som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The property for which you would like person records returned."
-msgstr "Den egendom som du vill att personposter returneras för."
-
-#. Context: queryparameters_qrp
-#: 
-#, fuzzy
-msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
-msgstr "Välj startdatum för att beräkna totala bidrag för varje medlem (dvs. ÅÅÅÅ-MM-DD). OBS: Du kan bara välja datum som kopplar in donationer."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
-msgstr "Ange det sista datumet för att beräkna totala bidrag för varje medlem (dvs. ÅÅÅÅ-MM-DD)."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
-msgstr "Ange någon del av följande: Namn, stad, stat, zip, hemtelefon, e-post eller arbetsmail."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select field to search for."
-msgstr "Välj fält du vill söka efter."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The birthday month for which you would like records returned."
-msgstr "Födelsedagsmånaden som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The sunday school class for which you would like records returned."
-msgstr "Söndagsskoleklassen som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "The membership anniversary month for which you would like records returned."
-msgstr "Medlemskapsjubileumsmånaden som du vill ha poster tillbaka för."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose a volunteer opportunity"
-msgstr "Välj en volontärmöjlighet"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Number of months since becoming a friend"
-msgstr "Antal månader sedan han blev vän"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First fiscal year for comparison"
-msgstr "Första räkenskapsåret för jämförelse"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second fiscal year for comparison"
-msgstr "Andra räkenskapsåret för jämförelse"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Pledged this year"
-msgstr "Löfte i år"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "but not this year"
-msgstr "men inte i år"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Member, Regular Attender, etc."
-msgstr "Ledamot, ordinarie skötare etc."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "First volunteer opportunity choice"
-msgstr "Första valet för volontärmöjligheter"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Second volunteer opportunity choice"
-msgstr "Andra valmöjlighetsmöjlighet"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Choose customer person field"
-msgstr "Välj kundpersonfält"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Match custom field to this value"
-msgstr "Matcha anpassat fält till detta värde"
-
-#. Context: query_qry
-#: 
-msgid "Person by Property"
-msgstr "Person efter fastighet"
-
 #. Context: query_qry
 #: 
 msgid "Birthdays"
 msgstr "Födelsedagar"
-
-#. Context: query_qry
-#: 
-msgid "Membership anniversaries"
-msgstr "Medlemskapsjubileum"
-
-#. Context: query_qry
-#: 
-msgid "Volunteers"
-msgstr "frivilliga"
-
-#. Context: query_qry
-#: 
-msgid "Recent friends"
-msgstr "Senaste vänner"
-
-#. Context: query_qry
-#: 
-msgid "Pledge comparison"
-msgstr "Pantsjämförelse"
-
-#. Context: query_qry
-#: 
-msgid "Missing pledges"
-msgstr "Saknade löften"
-
-#. Context: query_qry
-#: 
-msgid "CustomSearch"
-msgstr "CustomSearch"
-
-#. Context: query_qry
-#: 
-msgid "Returns person records which are assigned the given property."
-msgstr "Returnerar personposter som tilldelas den givna egenskapen."
-
-#. Context: query_qry
-#: 
-msgid "People with birthdays in a particular month"
-msgstr "Personer med födelsedagar i en viss månad"
-
-#. Context: query_qry
-#: 
-msgid "Members who joined in a particular month"
-msgstr "Medlemmar som gick med i en viss månad"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for a particular opportunity"
-msgstr "Hitta volontärer för en viss möjlighet"
-
-#. Context: query_qry
-#: 
-msgid "Friends who signed up in previous months"
-msgstr "Vänner som registrerade sig under tidigare månader"
-
-#. Context: query_qry
-#: 
-msgid "Compare pledges between two fiscal years"
-msgstr "Jämför pantsättningar mellan två räkenskapsår"
-
-#. Context: query_qry
-#: 
-msgid "Find people who pledged one year but not another"
-msgstr "Hitta personer som lovade ett år men inte ett annat"
-
-#. Context: query_qry
-#: 
-msgid "Find volunteers for who match two specific opportunity codes"
-msgstr "Hitta volontärer som matchar två specifika möjlighetskoder"
-
-#. Context: query_qry
-#: 
-msgid "Find people with a custom field value"
-msgstr "Hitta personer med ett anpassat fältvärde"
-
-#: 
-msgid "Last Edited"
-msgstr "Senast redigerad"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to send email via mailto: links"
-msgstr "Användarens behörighet att skicka e-post via mailto: länkar"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Delimiter to separate emails in mailto: links"
-msgstr "Avgränsa för att separera e-postmeddelanden i mailto: länkar"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to create directories"
-msgstr "Användartillstånd att skapa kataloger"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "Allow user to add new event"
-msgstr "Låt användaren lägga till en ny händelse"
 
 #: 
 msgid "Weekly on"
@@ -4263,10 +3468,6 @@ msgstr "är inte tillåten."
 #: 
 msgid "Name for New"
 msgstr "Namn för nytt"
-
-#: 
-msgid "Imported"
-msgstr "importerad"
 
 #: 
 msgid "Created via Family"
@@ -5600,10 +4801,6 @@ msgid "Family Verification"
 msgstr "Familjekontroll"
 
 #: 
-msgid "Work Email"
-msgstr "Arbete e-post"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Begär familjeinfo-verifiering"
 
@@ -5861,14 +5058,6 @@ msgid "Person has been already checked in for this event"
 msgstr "Personen har redan checkats in för det här evenemanget"
 
 #: 
-msgid "CheckOut Person"
-msgstr "CheckOut Person"
-
-#: 
-msgid "Delete Checkin in Entry"
-msgstr "Radera incheckning i posten"
-
-#: 
 msgid "Adult Checking Out Person"
 msgstr "Vuxen checka ut person"
 
@@ -5917,16 +5106,8 @@ msgid "Status"
 msgstr "Status"
 
 #: 
-msgid "Email export"
-msgstr "E-postexport"
-
-#: 
 msgid "Include"
 msgstr "Inkludera"
-
-#: 
-msgid "Exclude"
-msgstr "Utesluta"
 
 #: 
 msgid "View Cart"
@@ -6142,24 +5323,8 @@ msgid "Report an issue"
 msgstr "Rapportera ett problem"
 
 #: 
-msgid "Enable New Kiosk Registration"
-msgstr "Aktivera ny kioskregistrering"
-
-#: 
 msgid "Active Kiosks"
 msgstr "Aktiva kiosker"
-
-#: 
-msgid "I forgot my password"
-msgstr "Jag har glömt mitt lösenord"
-
-#: 
-msgid "Attendees Checked In"
-msgstr "Deltagare checka in"
-
-#: 
-msgid "Text Cart"
-msgstr "Textvagn"
 
 #: 
 msgid "Self Verification"
@@ -6202,18 +5367,6 @@ msgid "Sequence"
 msgstr "Sekvens"
 
 #: 
-msgid "Checking Cart Status"
-msgstr "Kontrollera kundvagnens status"
-
-#: 
-msgid "Remove all"
-msgstr "Ta bort alla"
-
-#: 
-msgid "Are you sure you want to remove the selected group members?"
-msgstr "Är du säker på att du vill ta bort de valda gruppmedlemmarna?"
-
-#: 
 msgid "Do you want to delete this person?  This cannot be undone."
 msgstr "Vill du ta bort den här personen? Detta kan inte göras ogjort."
 
@@ -6246,10 +5399,6 @@ msgstr "Thai"
 #: 
 msgid "Self Register"
 msgstr "Självregister"
-
-#: 
-msgid "List families that were created via self registration."
-msgstr "Lista familjer som skapades genom självregistrering."
 
 #: 
 msgid "Pending Self Verify"
@@ -6307,10 +5456,6 @@ msgstr "Särskilda gruppinställningar: söndagsskolatyp"
 #: 
 msgid "Sunday School group can't be modified, only in this two cases :"
 msgstr "Söndagsskolegruppen kan inte ändras, bara i dessa två fall:"
-
-#: 
-msgid "You can create/delete sunday school group. "
-msgstr "Du kan skapa / ta bort söndagsskolegruppen."
 
 #: 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
@@ -6433,10 +5578,6 @@ msgid "Add Students"
 msgstr "Lägg till studenter"
 
 #: 
-msgid "Edit this Class"
-msgstr "Redigera denna klass"
-
-#: 
 msgid "OK"
 msgstr "OK"
 
@@ -6451,10 +5592,6 @@ msgstr "GroupID krävs för snabbval av roll"
 #: 
 msgid "Select Group and Role"
 msgstr "Välj grupp och roll"
-
-#: 
-msgid "Are you sure you want to remove this person's membership from"
-msgstr "Är du säker på att du vill ta bort denna persons medlemskap från"
 
 #: 
 msgid "All Members"
@@ -6495,18 +5632,6 @@ msgstr "Standardnamngrupp"
 #: 
 msgid "Group Role"
 msgstr "Grupproll"
-
-#: 
-msgid "Members from group"
-msgstr "Medlemmar från gruppen"
-
-#: 
-msgid "Members to another group"
-msgstr "Medlemmar i en annan grupp"
-
-#: 
-msgid "Members to cart"
-msgstr "Medlemmar i kundvagnen"
 
 #: 
 msgid "OR Create a Group and add the CART in ONE ACTION"
@@ -6573,18 +5698,6 @@ msgid "Field where last Confession is stored, must be a date type"
 msgstr "Fältet där den senaste konfessionen lagras, måste vara en datumtyp"
 
 #: 
-msgid "Require that this ChurchCRM Database is accessed over HTTPS"
-msgstr "Kräv att denna ChurchCRM-databas nås via HTTPS"
-
-#: 
-msgid "People Setup"
-msgstr "Personinställningar"
-
-#: 
-msgid "Church Services"
-msgstr "Kyrkotjänster"
-
-#: 
 msgid "People Reports"
 msgstr "Personrapporter"
 
@@ -6593,28 +5706,12 @@ msgid "People Dashboard"
 msgstr "Person instrumentbräda"
 
 #: 
-msgid "People Functions"
-msgstr "Personfunktioner"
-
-#: 
 msgid "People Directory"
 msgstr "Person katalog"
 
 #: 
-msgid "Printable directory of all people, grouped by family where assigned"
-msgstr "Utskrivbar katalog över alla personer, grupperade efter familj där de tilldelats"
-
-#: 
-msgid "of People"
-msgstr "Av personer"
-
-#: 
 msgid "System Upgrade"
 msgstr "Systemuppgradering"
-
-#: 
-msgid "Help & Manual"
-msgstr "Hjälp och manual"
 
 #: 
 msgid "Contributing"
@@ -6627,10 +5724,6 @@ msgstr "Aktivera automatiskt SMTP-kryptering om det erbjuds av den vidarebefordr
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Ställ in krypteringssystemet att använda - ssl (deprecated) eller tls"
-
-#: 
-msgid "Dashboard Service dynamic asynchronous refresh interval, default 60 second"
-msgstr "Instrumentbräda Service dynamiskt asynkron uppdateringsintervall, standard 60 sekunder"
 
 #: 
 msgid "Generate Deposit Slip for Selected Rows (PDF)"
@@ -6653,14 +5746,6 @@ msgid "Not Found"
 msgstr "Hittades inte"
 
 #: 
-msgid "Oops!"
-msgstr "hoppsan!"
-
-#: 
-msgid "Meanwhile, you may"
-msgstr "Under tiden kan du"
-
-#: 
 msgid "User must be an Admin"
 msgstr "Användaren måste vara en administratör"
 
@@ -6679,14 +5764,6 @@ msgstr "Raderas från gruppen"
 #: 
 msgid "Added to group"
 msgstr "Tillagd i gruppen"
-
-#: 
-msgid "We could not find the person(s) you were looking for."
-msgstr "Vi kunde inte hitta den eller de personer du letade efter."
-
-#: 
-msgid "return to People Dashboard"
-msgstr "tillbaka till person instrumentbräda"
 
 #: 
 msgid "SMTP Host is not setup, please visit the settings page"
@@ -6844,10 +5921,6 @@ msgid "Validation Error"
 msgstr "Valideringsfel"
 
 #: 
-msgid "Email Functions"
-msgstr "E-postfunktioner"
-
-#: 
 msgid "Debug"
 msgstr "Debugginfo"
 
@@ -6902,10 +5975,6 @@ msgstr "ogiltigt exportvärde"
 #: 
 msgid "Invalid User/Password"
 msgstr "Ogiltigt användare / lösenord"
-
-#: 
-msgid "Find Duplicate Emails"
-msgstr "Hitta duplicerade e-postmeddelanden"
 
 #: 
 msgid "Duplicate Emails"
@@ -7003,10 +6072,6 @@ msgid "You are about to add a new deposit without a comment"
 msgstr "Du håller på att lägga till en ny insättning utan kommentar"
 
 #: 
-msgid "Families Without Emails"
-msgstr "Familjer utan e-post"
-
-#: 
 msgid "Record"
 msgstr "Spela in"
 
@@ -7031,26 +6096,6 @@ msgstr "Fokus"
 msgid "Unfocus"
 msgstr "Unfocus"
 
-#: 
-msgid "Warning: Signature mismatch"
-msgstr "Varning: Missanpassning av signatur"
-
-#: 
-msgid "Some ChurchCRM system files may have been modified since the last installation."
-msgstr "Vissa ChurchCRM-systemfiler kan ha ändrats sedan den senaste installationen."
-
-#: 
-msgid "This upgrade will completely destroy any customizations made to the following files by reverting the files to the official version."
-msgstr "Denna uppgradering förstör alla anpassningar som görs till följande filer genom att återställa filerna till den officiella versionen."
-
-#: 
-msgid "If you wish to maintain your changes to these files, please take a manual backup of these files before proceeding with this upgrade, and then manually restore the files after the upgrade is complete."
-msgstr "Om du vill behålla dina ändringar av dessa filer, ta en manuell säkerhetskopia av dessa filer innan du fortsätter med den här uppgraderingen och återställ sedan filerna manuellt när uppgraderingen är klar."
-
-#: 
-msgid "Integrity Check Details:"
-msgstr "Detaljer för integritetskontroll:"
-
 #. Context: locales
 #: 
 msgid "Estonian"
@@ -7059,10 +6104,6 @@ msgstr "estniska"
 #: 
 msgid "Error decoding signature definition file"
 msgstr "Fel vid avkodning av definitionsfil för signatur"
-
-#: 
-msgid "Age Histogram"
-msgstr "Åldershistogram"
 
 #: 
 msgid "Event not found"
@@ -7110,14 +6151,6 @@ msgstr "Verifiera personer"
 #: 
 msgid "People Verify Dashboard"
 msgstr "Person verifikation instrumentpanelen"
-
-#: 
-msgid "Download family letters"
-msgstr "Ladda ner familjebrev"
-
-#: 
-msgid "Send family email"
-msgstr "Skicka e-post till familjen"
 
 #: 
 msgid "Verification recorded"
@@ -7219,18 +6252,6 @@ msgstr "Ange applikationsnamnet som ska visas i autentiseringsapp"
 #: 
 msgid "Review"
 msgstr "Recension"
-
-#: 
-msgid "Thank you for registering your family"
-msgstr "Tack för att du registrerade din familj"
-
-#: 
-msgid "Register another family!"
-msgstr "Registrera en annan familj!"
-
-#: 
-msgid "Done, show me the homepage!"
-msgstr "Klart, visa mig hemsidan!"
 
 #: 
 msgid "User authenticated via API Key: "
@@ -7530,14 +6551,6 @@ msgid "Ukrainian"
 msgstr "Ukrainska"
 
 #: 
-msgid "When you click \"Submit to GitHub\" you will be directed to GitHub issues page with your system info prefilled."
-msgstr "När du klickar på \"Skicka till GitHub\" kommer du att skickas till GitHubs ärendesida med din systeminformation förifylld."
-
-#: 
-msgid "Submit to GitHub"
-msgstr "Skicka till GitHub"
-
-#: 
 msgid "Change role"
 msgstr "Ändra roll"
 
@@ -7556,10 +6569,6 @@ msgstr "Insättnings-ID"
 #: 
 msgid "Deposit Total"
 msgstr "Insättning totalt"
-
-#: 
-msgid "Group Cart Status"
-msgstr "Status för gruppvagn"
 
 #: 
 msgid "If that doesn't work, copy and paste the following link in your browser"
@@ -7674,32 +6683,8 @@ msgid "Enter note text here..."
 msgstr "Ange anteckningstext här..."
 
 #: 
-msgid "No notes have been added for this person."
-msgstr "Inga anteckningar har lagts till för denna person."
-
-#: 
 msgid "Note"
 msgstr "Anteckning"
-
-#: 
-msgid "Log Settings"
-msgstr "Logginställningar"
-
-#: 
-msgid "Log Level:"
-msgstr "Loggnivå:"
-
-#: 
-msgid "Save Log Level"
-msgstr "Spara loggnivå"
-
-#: 
-msgid "View application logs. Click on a log file to view its contents."
-msgstr "Visa applikationsloggar. Klicka på en loggfil för att se dess innehåll."
-
-#: 
-msgid "Delete All Logs"
-msgstr "Radera alla loggar"
 
 #: 
 msgid "No log files found."
@@ -7744,10 +6729,6 @@ msgstr "Antal rader att visa:"
 #: 
 msgid "Loading log file..."
 msgstr "Laddar loggfil..."
-
-#: 
-msgid "No notes have been added for this family."
-msgstr "Inga anteckningar har lagts till för denna familj."
 
 #: 
 msgid "A Calendar access token has been generated and saved."
@@ -7974,10 +6955,6 @@ msgid "Events Today"
 msgstr "Händelser idag"
 
 #: 
-msgid "Sunday School Overview"
-msgstr "Översikt söndagsskola"
-
-#: 
 msgid "Add Family Member"
 msgstr "Lägg till familjemedlem"
 
@@ -8000,10 +6977,6 @@ msgstr "E-postadress"
 #: 
 msgid "Enter family name"
 msgstr "Ange familjenamn"
-
-#: 
-msgid "Family Information"
-msgstr "Familjeinformation"
 
 #: 
 msgid "Family name is required"
@@ -8036,10 +7009,6 @@ msgstr "Hemtelefonnummer"
 #: 
 msgid "Invalid format"
 msgstr "Ogiltigt format"
-
-#: 
-msgid "Join our community by registering your family"
-msgstr "Gå med i vår gemenskap genom att registrera din familj"
 
 #: 
 msgid "Last name"
@@ -8118,20 +7087,12 @@ msgid "Please fill in all required fields correctly."
 msgstr "Fyll i alla obligatoriska fält korrekt."
 
 #: 
-msgid "Please review all information carefully before submitting. You can go back to make changes if needed."
-msgstr "Granska all information noggrant innan du skickar in. Du kan gå tillbaka för att göra ändringar om det behövs."
-
-#: 
 msgid "Previous"
 msgstr "Föregående"
 
 #: 
 msgid "Registration Error"
 msgstr "Registreringsfel"
-
-#: 
-msgid "Review & Submit"
-msgstr "Granska och skicka"
 
 #: 
 msgid "Role in Family"
@@ -8156,18 +7117,6 @@ msgstr "Postnummer krävs"
 #: 
 msgid "A new password has been generated and sent to your email address."
 msgstr "Ett nytt lösenord har genererats och skickats till din e-postadress."
-
-#: 
-msgid "A new version of ChurchCRM is available for installation."
-msgstr "En ny version av ChurchCRM är tillgänglig för installation."
-
-#: 
-msgid "Actual Hash"
-msgstr "Faktisk hash"
-
-#: 
-msgid "All pre-upgrade checks have passed. You may proceed with the upgrade."
-msgstr "Alla kontroller före uppgradering har godkänts. Du kan fortsätta med uppgraderingen."
 
 #: 
 msgid "Allow Pre-release Upgrades"
@@ -8420,10 +7369,6 @@ msgstr "Versionsinformation"
 #: 
 msgid "Warnings"
 msgstr "Varningar"
-
-#: 
-msgid "We were unable to process your password reset request. Please try requesting a new password reset link."
-msgstr "Vi kunde inte behandla din begäran om återställning av lösenord. Försök att begära en ny länk för återställning av lösenord."
 
 #: 
 msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
@@ -8780,10 +7725,6 @@ msgid "Clear"
 msgstr "Rensa"
 
 #: 
-msgid "Create"
-msgstr "Skapa"
-
-#: 
 msgid "Create New Event"
 msgstr "Skapa ny händelse"
 
@@ -8814,10 +7755,6 @@ msgstr "Radera händelse"
 #: 
 msgid "Deleting an event will also delete all attendance counts. Delete this event?"
 msgstr "Att radera en händelse kommer också att radera alla närvaroräkningar. Radera händelsen?"
-
-#: 
-msgid "Deleting this event type will NOT delete existing events. Are you sure?"
-msgstr "Att radera denna händelsetyp kommer INTE att radera befintliga händelser. Är du säker?"
 
 #: 
 msgid "Deleting this event will also delete all attendance records. Are you sure?"
@@ -8979,10 +7916,6 @@ msgstr[0] "person"
 msgstr[1] "personer"
 
 #: 
-msgid "✓ CheckOut"
-msgstr "✓ Utcheckning"
-
-#: 
 msgid "%d Orphaned Files Detected"
 msgstr "%d föräldralösa filer upptäckta"
 
@@ -9083,10 +8016,6 @@ msgid "Backup in progress, please wait..."
 msgstr "Säkerhetskopiering pågår, vänta..."
 
 #: 
-msgid "Backup to External Storage"
-msgstr "Säkerhetskopiera till extern lagring"
-
-#: 
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr "VARNING: Återställning av en säkerhetskopia kommer att radera den befintliga databasen helt och ersätta den med data från säkerhetskopian."
 
@@ -9097,10 +8026,6 @@ msgstr "Stäng & Uppdatera"
 #: 
 msgid "Confirm Deletion"
 msgstr "Bekräfta radering"
-
-#: 
-msgid "Create a backup first"
-msgstr "Skapa en säkerhetskopia först"
 
 #: 
 msgid "Create directory permission"
@@ -9203,10 +8128,6 @@ msgid "Group management access"
 msgstr "Åtkomst till grupphantering"
 
 #: 
-msgid "If you need access to this feature, please contact your church administrator."
-msgstr "Om du behöver åtkomst till denna funktion, kontakta din kyrkoadministratör."
-
-#: 
 msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
 msgstr "Om du laddar upp en säkerhetskopia från ChurchInfo eller en tidigare version av ChurchCRM, kommer den automatiskt att uppgraderas till det aktuella databasschemat."
 
@@ -9229,10 +8150,6 @@ msgstr "Senaste GitHub-versionen:"
 #: 
 msgid "Loading..."
 msgstr "Laddar..."
-
-#: 
-msgid "Make a backup at least once a week unless you have automated backups."
-msgstr "Gör en säkerhetskopia minst en gång i veckan om du inte har automatiska säkerhetskopieringar."
 
 #: 
 msgid "Manage Orphaned Files"
@@ -9293,14 +8210,6 @@ msgstr "Välj en säkerhetskopia att återställa"
 #: 
 msgid "Re-download and re-apply the current version to restore all files to their official state"
 msgstr "Ladda ner och tillämpa den nuvarande versionen igen för att återställa alla filer till deras officiella tillstånd"
-
-#: 
-msgid "Ready to create a backup. Select your options above and click a backup button."
-msgstr "Redo att skapa en säkerhetskopia. Välj dina alternativ ovan och klicka på en säkerhetskopieringsknapp."
-
-#: 
-msgid "Ready to restore. Select a backup file and click Restore Database."
-msgstr "Redo att återställa. Välj en säkerhetskopia och klicka på Återställ databas."
 
 #: 
 msgid "Recommendation: Review and delete these files before or after the upgrade."
@@ -9423,10 +8332,6 @@ msgid "What are Orphaned Files?"
 msgstr "Vad är föräldralösa filer?"
 
 #: 
-msgid "You don't have access to this page"
-msgstr "Du har inte åtkomst till denna sida"
-
-#: 
 msgid "You will be logged out and redirected to the login page."
 msgstr "Du kommer att loggas ut och omdirigeras till inloggningssidan."
 
@@ -9523,14 +8428,6 @@ msgid "Church Membership"
 msgstr "Kyrkans medlemskap"
 
 #: 
-msgid "Church name is set to default value"
-msgstr "Kyrkans namn är inställt på standardvärdet"
-
-#: 
-msgid "Classes and enrollments"
-msgstr "Klasser och inskrivningar"
-
-#: 
 msgid "Clean Up Files"
 msgstr "Rensa filer"
 
@@ -9553,14 +8450,6 @@ msgstr "Stängda mot totalt"
 #: 
 msgid "Coming soon"
 msgstr "Kommer snart"
-
-#: 
-msgid "Complete these essential setup tasks to get ChurchCRM running smoothly:"
-msgstr "Slutför dessa viktiga inställningsuppgifter för att ChurchCRM ska fungera smidigt:"
-
-#: 
-msgid "Complete these in any order. Use Demo Data to explore with sample records."
-msgstr "Slutför dessa i valfri ordning. Använd demodata för att utforska med exempelposter."
 
 #: 
 msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
@@ -9625,10 +8514,6 @@ msgstr "Dag"
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Demo Data"
-msgstr "Demodata"
 
 #: 
 msgid "Deposit Navigation"
@@ -9727,10 +8612,6 @@ msgid "Generate"
 msgstr "Generera"
 
 #: 
-msgid "Generate Reports"
-msgstr "Generera rapporter"
-
-#: 
 msgid "Generate Tax Statements"
 msgstr "Generera skattebesked"
 
@@ -9755,14 +8636,6 @@ msgid "Generate reports for tax statements, pledge tracking, and financial analy
 msgstr "Generera rapporter för skattebesked, spårning av löften och finansiell analys."
 
 #: 
-msgid "Giving funds and categories"
-msgstr "Gåvofonder och kategorier"
-
-#: 
-msgid "HTTPS Not Configured"
-msgstr "HTTPS inte konfigurerat"
-
-#: 
 msgid "ID"
 msgstr "ID"
 
@@ -9773,18 +8646,6 @@ msgstr "Identifiera medlemmar som inte har gjort några donationer inom ett datu
 #: 
 msgid "Import failed"
 msgstr "Import misslyckades"
-
-#: 
-msgid "Import from CSV files"
-msgstr "Importera från CSV-filer"
-
-#: 
-msgid "Import sample families, people, and groups to explore ChurchCRM with realistic data."
-msgstr "Importera exempelfamiljer, personer och grupper för att utforska ChurchCRM med realistiska data."
-
-#: 
-msgid "Install TLS/SSL certificate for better security"
-msgstr "Installera TLS/SSL-certifikat för bättre säkerhet"
 
 #: 
 msgid "Jan"
@@ -9801,10 +8662,6 @@ msgstr "Jul"
 #: 
 msgid "Jun"
 msgstr "Jun"
-
-#: 
-msgid "Latest Note"
-msgstr "Senaste anteckning"
 
 #: 
 msgid "Let's get your system set up and ready to use"
@@ -9825,10 +8682,6 @@ msgstr "M"
 #: 
 msgid "Manage Funds"
 msgstr "Hantera fonder"
-
-#: 
-msgid "Manage Users"
-msgstr "Hantera användare"
 
 #: 
 msgid "Mar"
@@ -9863,10 +8716,6 @@ msgid "New Pledge"
 msgstr "Nytt löfte"
 
 #: 
-msgid "Next 7 days and past 7 days"
-msgstr "Kommande 7 dagar och senaste 7 dagarna"
-
-#: 
 msgid "No Active Deposit"
 msgstr "Ingen aktiv insättning"
 
@@ -9897,14 +8746,6 @@ msgstr "Öppen"
 #: 
 msgid "Open Deposits:"
 msgstr "Öppna insättningar:"
-
-#: 
-msgid "Organization, timezone, email"
-msgstr "Organisation, tidszon, e-post"
-
-#: 
-msgid "Organizational structure"
-msgstr "Organisationsstruktur"
 
 #: 
 msgid "Orphaned Files:"
@@ -9971,10 +8812,6 @@ msgid "Review Donation Funds"
 msgstr "Granska donationsfonder"
 
 #: 
-msgid "SMTP server settings are not configured"
-msgstr "Inställningar för SMTP-server är inte konfigurerade"
-
-#: 
 msgid "Save and Add New Family"
 msgstr "Spara och lägg till ny familj"
 
@@ -9993,10 +8830,6 @@ msgstr "Inställningar"
 #: 
 msgid "Settings saved successfully"
 msgstr "Inställningarna har sparats"
-
-#: 
-msgid "Setup Tasks:"
-msgstr "Inställningsuppgifter:"
 
 #: 
 msgid "Social Media"
@@ -10075,20 +8908,12 @@ msgid "Unmet Prerequisites"
 msgstr "Ej uppfyllda förutsättningar"
 
 #: 
-msgid "Update Church Name"
-msgstr "Uppdatera kyrkans namn"
-
-#: 
 msgid "Upgrade"
 msgstr "Uppgradera"
 
 #: 
 msgid "Use classification and family filters to generate reports for specific groups of donors."
 msgstr "Använd klassificerings- och familjefilter för att generera rapporter för specifika grupper av donatorer."
-
-#: 
-msgid "User accounts and roles"
-msgstr "Användarkonton och roller"
 
 #: 
 msgid "User must be an Admin or have Finance permission"
@@ -10105,10 +8930,6 @@ msgstr "Verifiera att fondnamn och beskrivningar är korrekta för besked."
 #: 
 msgid "Version:"
 msgstr "Version:"
-
-#: 
-msgid "Welcome to ChurchCRM"
-msgstr "Välkommen till ChurchCRM"
 
 #: 
 msgid "YTD Payments"
@@ -10165,10 +8986,6 @@ msgstr "öppen"
 #: 
 msgid "years"
 msgstr "år"
-
-#: 
-msgid "yes"
-msgstr "ja"
 
 #: 
 msgid "(Enter state/province for countries without predefined states)"
@@ -10247,20 +9064,12 @@ msgid "Location & Contact Information"
 msgstr "Plats & Kontaktinformation"
 
 #: 
-msgid "Navigate to your ChurchCRM installation directory"
-msgstr "Navigera till din ChurchCRM-installationskatalog"
-
-#: 
 msgid "New to"
 msgstr "Ny i"
 
 #: 
 msgid "No locales configured"
 msgstr "Inga språk konfigurerade"
-
-#: 
-msgid "Open this file in a text editor:"
-msgstr "Öppna denna fil i en textredigerare:"
 
 #: 
 msgid "Register Now"
@@ -10281,10 +9090,6 @@ msgstr "Ställ in på sant för att inaktivera inmatning av personliga adresser 
 #: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Börjar med <strong>http://</strong> eller <strong>https://</strong>"
-
-#: 
-msgid "Subdirectory installation:"
-msgstr "Installation i underkatalog:"
 
 #: 
 msgid "System Locale Support"
@@ -10351,10 +9156,6 @@ msgid "Assign Opportunities"
 msgstr "Tilldela möjligheter"
 
 #: 
-msgid "Assign Property"
-msgstr "Tilldela egenskap"
-
-#: 
 msgid "Choose a property..."
 msgstr "Välj en egenskap..."
 
@@ -10379,10 +9180,6 @@ msgid "Copied!"
 msgstr "Kopierat!"
 
 #: 
-msgid "Edit Role"
-msgstr "Redigera roll"
-
-#: 
 msgid "Edited"
 msgstr "Redigerad"
 
@@ -10395,16 +9192,8 @@ msgid "Failed to copy URL"
 msgstr "Misslyckades med att kopiera URL"
 
 #: 
-msgid "ID:"
-msgstr "ID:"
-
-#: 
 msgid "Newsletter"
 msgstr "Nyhetsbrev"
-
-#: 
-msgid "No assigned family"
-msgstr "Ingen tilldelad familj"
 
 #: 
 msgid "Open in New Tab"
@@ -10433,10 +9222,6 @@ msgstr "Ta bort egenskap"
 #: 
 msgid "Select Opportunities"
 msgstr "Välj möjligheter"
-
-#: 
-msgid "Select Property"
-msgstr "Välj egenskap"
 
 #: 
 msgid "Share this URL with family members to verify their information"
@@ -10583,10 +9368,6 @@ msgid "Person(s) removed from cart"
 msgstr "Person(er) borttagna från kundvagnen"
 
 #: 
-msgid "Quick Settings"
-msgstr "Snabbinställningar"
-
-#: 
 msgid "Reset Failed Logins"
 msgstr "Återställ misslyckade inloggningar"
 
@@ -10603,28 +9384,12 @@ msgid "Set Inactive"
 msgstr "Sätt som inaktiv"
 
 #: 
-msgid "Show"
-msgstr "Visa"
-
-#: 
-msgid "Showing"
-msgstr "Visar"
-
-#: 
 msgid "Total Users"
 msgstr "Totalt antal användare"
 
 #: 
-msgid "User Management"
-msgstr "Användarhantering"
-
-#: 
 msgid "View Details"
 msgstr "Visa detaljer"
-
-#: 
-msgid "entries"
-msgstr "poster"
 
 #: 
 msgid "of"
@@ -10677,16 +9442,8 @@ msgid "A "
 msgstr "En/Ett "
 
 #: 
-msgid "ADD, Delete, and ordering changes are immediate. Name and Description changes must be saved by clicking 'Save Changes'."
-msgstr "Tillägg, radering och ändringar i ordningsföljd sker omedelbart. Ändringar av namn och beskrivning måste sparas genom att klicka på 'Spara ändringar'."
-
-#: 
 msgid "Are you sure you want to delete"
 msgstr "Är du säker på att du vill radera"
-
-#: 
-msgid "Arrow and delete buttons take effect immediately. Field name changes will be lost if you do not 'Save Changes' before using an up, down, delete or 'add new' button!"
-msgstr "Pil- och raderingsknappar får effekt omedelbart. Ändringar av fältnamn kommer att gå förlorade om du inte klickar på 'Spara ändringar' innan du använder en upp-, ner-, raderings- eller 'lägg till ny'-knapp!"
 
 #: 
 msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
@@ -10775,10 +9532,6 @@ msgstr "Personegenskaper"
 #: 
 msgid "Property Type"
 msgstr "Egenskapstyp"
-
-#: 
-msgid "Property to Delete"
-msgstr "Egenskap att radera"
 
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
@@ -10901,10 +9654,6 @@ msgid "Family Pledges"
 msgstr "Familjelöften"
 
 #: 
-msgid "Field changes will be lost if you do not 'Save Changes' before using a delete or 'Add New' button!"
-msgstr "Fältändringar kommer att förloras om du inte klickar på 'Spara Ändringar' innan du använder en ta bort- eller 'Lägg till Ny'-knapp!"
-
-#: 
 msgid "Filter by Class"
 msgstr "Filtrera efter Klass"
 
@@ -11003,20 +9752,12 @@ msgid "All Classifications"
 msgstr "Alla Klassificeringar"
 
 #: 
-msgid "No people found matching your criteria."
-msgstr "Inga personer hittades som matchar dina kriterier."
-
-#: 
 msgid "Photo Directory"
 msgstr "Fotokatalog"
 
 #: 
 msgid "Reset Filters"
 msgstr "Återställ Filter"
-
-#: 
-msgid "Show only people with photos"
-msgstr "Visa endast personer med foton"
 
 #: 
 msgid "Expected"
@@ -11437,10 +10178,6 @@ msgid "Done"
 msgstr "Klar"
 
 #: 
-msgid "E.164 format, e.g., +14155551234"
-msgstr "E.164-format, t.ex. +14155551234"
-
-#: 
 msgid "Each plugin requires a"
 msgstr "Varje plugin-program kräver en"
 
@@ -11469,10 +10206,6 @@ msgid "Enable Two-Factor Authentication"
 msgstr "Aktivera tvåfaktorsautentisering"
 
 #: 
-msgid "Enable the External Backup plugin for WebDAV cloud storage."
-msgstr "Aktivera plugin-programmet för extern säkerhetskopiering för WebDAV-molnlagring."
-
-#: 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
 msgstr "Aktivera detta endast för lokala nätverksservrar med självsignerade SSL-certifikat. Inaktiverar certifikatverifiering."
 
@@ -11499,10 +10232,6 @@ msgstr "Extern säkerhetskopiering (WebDAV)"
 #: 
 msgid "External Backup Settings"
 msgstr "Inställningar för extern säkerhetskopiering"
-
-#: 
-msgid "External Backup plugin is enabled but not configured."
-msgstr "Plugin-programmet för extern säkerhetskopiering är aktiverat men inte konfigurerat."
 
 #: 
 msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
@@ -11539,10 +10268,6 @@ msgstr "Det gick inte att lista plugin-program"
 #: 
 msgid "Failed to reset settings"
 msgstr "Det gick inte att återställa inställningarna"
-
-#: 
-msgid "Failed to send SMS"
-msgstr "Det gick inte att skicka SMS"
 
 #: 
 msgid "Family Status"
@@ -11769,10 +10494,6 @@ msgid "Optional - only required if OpenLP authentication is enabled"
 msgstr "Valfritt – krävs bara om OpenLP-autentisering är aktiverad"
 
 #: 
-msgid "Phone number and message required"
-msgstr "Telefonnummer och meddelande krävs"
-
-#: 
 msgid "Please configure endpoint, username, and password first."
 msgstr "Konfigurera slutpunkt, användarnamn och lösenord först."
 
@@ -11845,20 +10566,12 @@ msgid "Print"
 msgstr "Skriv ut"
 
 #: 
-msgid "Recipients and message required"
-msgstr "Mottagare och meddelande krävs"
-
-#: 
 msgid "Recovery Codes"
 msgstr "Återställningskoder"
 
 #: 
 msgid "Remote backup failed. Check server logs for details."
 msgstr "Fjärrsäkerhetskopiering misslyckades. Kontrollera serverloggarna för detaljer."
-
-#: 
-msgid "SMS sent"
-msgstr "SMS skickat"
 
 #: 
 msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
@@ -11915,10 +10628,6 @@ msgstr "Testa anslutning"
 #: 
 msgid "Test WebDAV Connection"
 msgstr "Testa WebDAV-anslutning"
-
-#: 
-msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Dessa länkar visas i menyn \"Länkar\" i navigeringsfältet när detta plugin-program är aktiverat."
 
 #: 
 msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
@@ -12089,10 +10798,6 @@ msgid "Congregation Map"
 msgstr "Församlingskarta"
 
 #: 
-msgid "Congregation Map — Setup Required"
-msgstr "Församlingskarta – konfiguration krävs"
-
-#: 
 msgid "Connected to MailChimp! Account: %s (%d subscribers)"
 msgstr "Ansluten till MailChimp! Konto: %s (%d prenumeranter)"
 
@@ -12125,10 +10830,6 @@ msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
 msgstr "Inkludera landskod, t.ex. +14155551234 (USA) eller +447911123456 (UK)"
 
 #: 
-msgid "Invalid \"From Number\": \"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
-msgstr "Ogiltigt \"Från-nummer\": \"%s\". Inkludera landskod, t.ex. +14155551234 (USA) eller +447911123456 (UK)."
-
-#: 
 msgid "Invalid API credentials. Please verify your API Key and API Secret."
 msgstr "Ogiltiga API-uppgifter. Verifiera din API-nyckel och API-hemlighet."
 
@@ -12147,14 +10848,6 @@ msgstr "Ogiltigt server-URL-format."
 #: 
 msgid "MailChimp connection failed."
 msgstr "MailChimp-anslutning misslyckades."
-
-#: 
-msgid "Map Zoom Level"
-msgstr "Kartzoomnivå"
-
-#: 
-msgid "Missing families? Update coordinates to include them on the map."
-msgstr "Saknas familjer? Uppdatera koordinater för att inkludera dem på kartan."
 
 #: 
 msgid "Missing required settings: %s"
@@ -12292,32 +10985,13 @@ msgstr "vald familj har inga koordinater"
 msgid "2FA"
 msgstr "2FA"
 
-#. Context: query_qry
-#: 
-msgid "Find people who didn't attend an event"
-msgstr "Hitta personer som inte deltog i ett evenemang"
-
 #: 
 msgid "Leave blank to keep existing"
 msgstr "Lämna tomt för att behålla befintligt värde"
 
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Saknade personer"
-
-#: 
-msgid "Not enrolled"
-msgstr "Inte registrerad"
-
 #: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Kräv att alla användare registrerar sig för tvåfaktorsautentisering"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Välj önskat evenemang"
 
 #: 
 msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
@@ -12330,10 +11004,6 @@ msgstr "Aktiva grupper"
 #: 
 msgid "Add New Group"
 msgstr "Lägg till ny grupp"
-
-#: 
-msgid "Add all to cart"
-msgstr "Lägg till alla i urvalet"
 
 #: 
 msgid "Automatically detect coordinates using address"
@@ -12360,10 +11030,6 @@ msgid "City is required."
 msgstr "Stad är obligatoriskt."
 
 #: 
-msgid "Class Overview"
-msgstr "Klassöversikt"
-
-#: 
 msgid "Clear filter"
 msgstr "Rensa filter"
 
@@ -12382,10 +11048,6 @@ msgstr "Discord-chatt"
 #: 
 msgid "Display Preview"
 msgstr "Visa förhandsgranskning"
-
-#: 
-msgid "Email (To)"
-msgstr "E-post (Till)"
 
 #: 
 msgid "Email address is required."
@@ -12412,16 +11074,8 @@ msgid "Geocoding successful"
 msgstr "Geokodning lyckades"
 
 #: 
-msgid "In Cart"
-msgstr "I urvalet"
-
-#: 
 msgid "Inactive Groups"
 msgstr "Inaktiva grupper"
-
-#: 
-msgid "Kids Email"
-msgstr "Barns e-post"
 
 #: 
 msgid "Language & Localization"
@@ -12444,20 +11098,12 @@ msgid "Main contact phone number for the church."
 msgstr "Primärt telefonnummer för församlingen."
 
 #: 
-msgid "Male / Female"
-msgstr "Man / Kvinna"
-
-#: 
 msgid "Map"
 msgstr "Karta"
 
 #: 
 msgid "Mother"
 msgstr "Mor"
-
-#: 
-msgid "No members"
-msgstr "Inga medlemmar"
 
 #: 
 msgid "Optional. URL for your church website."
@@ -12488,14 +11134,6 @@ msgid "Search or select..."
 msgstr "Sök eller välj..."
 
 #: 
-msgid "Send email with recipients in BCC field (hidden from each other)"
-msgstr "Skicka e-post med mottagare i BCC-fältet (dolda för varandra)"
-
-#: 
-msgid "Send email with recipients in To field"
-msgstr "Skicka e-post med mottagare i Till-fältet"
-
-#: 
 msgid "State is required."
 msgstr "Län är obligatoriskt."
 
@@ -12524,20 +11162,8 @@ msgid "Time Zone"
 msgstr "Tidszon"
 
 #: 
-msgid "Toggle overview"
-msgstr "Växla översikt"
-
-#: 
-msgid "Total Enrolled"
-msgstr "Totalt inskrivna"
-
-#: 
 msgid "Total Groups"
 msgstr "Totalt grupper"
-
-#: 
-msgid "Total Memberships"
-msgstr "Totalt medlemskap"
 
 #: 
 msgid "Updated automatically on every save."
@@ -12546,10 +11172,6 @@ msgstr "Uppdateras automatiskt vid varje sparning."
 #: 
 msgid "Used for scheduling events and reporting times."
 msgstr "Används för schemaläggning av händelser och rapporteringstider."
-
-#: 
-msgid "View Full Details"
-msgstr "Visa fullständiga detaljer"
 
 #: 
 msgid "View Profile"

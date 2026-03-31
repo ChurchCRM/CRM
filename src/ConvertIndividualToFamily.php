@@ -7,13 +7,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-if ($_GET['all'] == 'true') {
+if (($_GET['all'] ?? '') === 'true') {
     $bDoAll = true;
 }
 

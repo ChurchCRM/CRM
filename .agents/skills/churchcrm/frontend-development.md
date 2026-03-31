@@ -534,6 +534,86 @@ $(document).ready(function() {
 4. **Update stat card text** with the new label
 5. Users immediately see the change without page reload
 
+### Settings Panel: Scripts Before Footer <!-- learned: 2026-03-30 -->
+
+Settings panel CSS/JS **must** be loaded before `Include/Footer.php` — Footer closes `</body></html>`, so assets loaded after it produce invalid markup. Place the `<link>`, `<script>`, and init block between your page content and the Footer include. **Footer must be the last line of the file.**
+
+```php
+// ✅ CORRECT — settings panel before Footer; Footer is last line
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function () { window.CRM.settingsPanel.init({ ... }); });
+</script>
+<?php endif; ?>
+
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+
+// ❌ WRONG — scripts after Footer produce invalid markup (outside </html>)
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
+<link rel="stylesheet" ...>
+<script ...></script>
+```
+
+### Settings Panel: Do Not Duplicate the Success Notification in onSave <!-- learned: 2026-03-30 -->
+
+The component already fires `window.CRM.notify("Settings saved successfully")` internally after a successful save. Do **not** call `window.CRM.notify` again inside `onSave` — it will show two toasts.
+
+```javascript
+// ✅ CORRECT — component handles the notification; onSave just reloads
+onSave: function () {
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+
+// ❌ WRONG — double notification
+onSave: function () {
+    window.CRM.notify(i18next.t('Settings saved successfully'), { type: 'success' });
+    setTimeout(function () { window.location.reload(); }, 1500);
+}
+```
+
+Exception: if your `onSave` does something extra (e.g., "Refreshing upgrade info...") a custom message with distinct text is fine — users understand it's a follow-on action, not a duplicate.
+
+### Settings Panel: Pass Full Config for Custom Settings <!-- learned: 2026-03-30 -->
+
+For settings not in the built-in `SettingDefinitions` dictionary, pass full config objects instead of just setting names:
+
+```javascript
+settings: [{
+    name: 'bAllowPrereleaseUpgrade',
+    type: 'boolean',
+    label: i18next.t('Allow Pre-release Upgrades'),
+    tooltip: i18next.t("Description here")
+}]
+```
+
+This avoids coupling page-specific settings into the generic `system-settings-panel.js`.
+
+### TomSelect Boolean Dropdown: value="" Bug <!-- learned: 2026-03-30 -->
+
+TomSelect hides options with `value=""` (treats them as placeholder/clear state). For boolean `<select>` elements, use `value="0"` for False, not `value=""`. The save logic already handles this — any non-`"1"` value is treated as false.
+
+### TomSelect dropdownParent for Cards <!-- learned: 2026-03-30 -->
+
+When TomSelect is inside a card with `table-responsive` or constrained overflow, dropdowns get clipped. Fix: pass `dropdownParent: 'body'` to TomSelect init and add a `body > .ts-dropdown` SCSS rule in `_tabler-bridge.scss` to preserve Tabler styling.
+
+### marked.parse() XSS Prevention <!-- learned: 2026-03-30 -->
+
+When rendering user-supplied markdown (e.g., GitHub release notes) with `marked`, strip raw HTML to prevent XSS:
+
+```javascript
+marked.use({
+  renderer: {
+    html() { return ""; },
+    link({ href, text }) {
+      const safeHref = href && /^https?:\/\//i.test(href) ? href : "#";
+      return `<a href="${safeHref}" target="_blank" rel="noopener noreferrer">${text}</a>`;
+    },
+  },
+});
+```
+
 ## Async Button Handlers with i18next <!-- learned: 2026-03-08 -->
 
 For action buttons that call APIs (refresh, save, delete), implement handlers in webpack entry points with proper localization.
@@ -707,6 +787,51 @@ The `@media print` block in `src/skin/scss/_utility-classes.scss` hides interact
 | FamilyView | `#printFamily` | `skin/js/FamilyView.js` |
 | GroupView | `#printGroup` | `skin/js/GroupView.js` |
 | SS ClassView | `#printClass` | `skin/js/sundayschool-actions.js` |
+
+---
+
+## Forms — No Nested `<form>` Elements <!-- learned: 2026-03-29 -->
+
+HTML does not allow nesting `<form>` inside another `<form>`. Nested forms cause unpredictable submission behaviour in browsers. A common mistake is wrapping a GET link in a POST form wrapper.
+
+```html
+<!-- ❌ WRONG — nested form inside outer form, has no effect and is invalid HTML -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <form method="POST" action="ListEvents.php" class="d-inline">
+    <a href="ListEvents.php">Clear Filter</a>
+  </form>
+</form>
+
+<!-- ✅ CORRECT — link is its own element, no form wrapper needed -->
+<form name="FilterForm" method="POST" action="ListEvents.php">
+  ...
+  <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">Clear Filter</a>
+</form>
+```
+
+**Rule:** If an action is a plain link (GET navigation), use `<a>` directly — no `<form>` wrapper needed.
+
+---
+
+### Avatar Click-to-View Lightbox <!-- learned: 2026-03-30 -->
+
+Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loader.ts is the single source of truth** for adding click classes — PHP templates should NOT add `.view-person-photo` / `.view-family-photo` manually.
+
+**How it works:**
+1. `avatar-loader.ts` fetches `/api/{type}/{id}/avatar` → gets `hasPhoto`
+2. If `hasPhoto === true`, `loadUploadedPhoto.onload` adds `.view-person-photo` (or `.view-family-photo`) + `data-person-id` (or `data-family-id`) + `cursor: pointer`
+3. Images inside `#uploadImageButton` or `#uploadImageTrigger` are skipped (profile upload buttons)
+4. Initials and failed photo loads never get click classes
+5. Delegated click handlers (`$(document).on("click", ".view-person-photo", ...)`) call `window.CRM.showPhotoLightbox()`
+
+**Rules:**
+- Never add `.view-person-photo` / `.view-family-photo` in PHP templates that use avatar-loader
+- Always use `e.preventDefault()` + `e.stopPropagation()` in click handlers (avatars may be inside `<a>` links)
+- Don't register the same delegated handler in two JS files loaded on the same page (causes double lightbox)
+- Dashboard handles its own click classes via `generatePhotoImg()` (sets `src` directly, avatar-loader skips it)
+
+**Exception:** Pages that render photos inline (not via avatar-loader) — like `verify-family-info.php` — must check `hasUploadedPhoto()` in PHP before adding click classes.
 
 ---
 

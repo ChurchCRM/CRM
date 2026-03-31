@@ -129,10 +129,13 @@ This means: after ANY `cy.request()` / `makePrivateAdminAPICall()` call, the bro
 session established by `cy.setupAdminSession()` is **invalidated**. A subsequent
 `cy.visit()` will redirect to `/session/begin` (login page).
 
-**Fix: Direct login after API calls**
+**Fix: Direct login after API calls (only needed before `cy.visit()`)**
+
+`freshAdminLogin` is a **local helper function** — it is NOT a registered `cy.*` command
+and does NOT exist in `cypress/support/`. Copy it inline into the spec that needs it:
 
 ```javascript
-// Helper — bypasses cy.session() cache, guarantees fresh PHP session
+// Local helper — NOT a cy.* command. Copy into your spec file. Only needed for UI tests.
 function freshAdminLogin() {
     cy.clearCookies();
     cy.visit("/session/begin");
@@ -152,12 +155,83 @@ it("test that needs API setup then browser visit", () => {
 });
 ```
 
+**Pure API tests need NO login setup** — `makePrivateAdminAPICall` authenticates via
+API key header (`x-api-key`), not browser cookies. If your spec has no `cy.visit()`,
+omit `freshAdminLogin()` entirely.
+
+### `allowedStatuses` must match what the API actually returns <!-- learned: 2026-03-29 -->
+
+Only pass status codes the endpoint genuinely returns. Adding extra codes defensively masks real setup failures.
+
+```javascript
+// ✅ group addperson is idempotent — always returns 200 (member or not)
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200]);
+
+// ✅ add-if-not-exists endpoint returns 409 when already present
+cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+// ✅ cleanup teardown: allow 404 in case item was already deleted
+cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+// ❌ defensive extra codes when API never returns them — hides real 422/500
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200, 409, 422]);
+```
+
+Check the actual route implementation before choosing `allowedStatuses`.
+
 **Rules:**
 - ❌ NEVER `cy.visit()` after `cy.request()` / `makePrivateAdminAPICall()` without re-login
 - ❌ `cy.setupAdminSession({ forceLogin: true })` is NOT sufficient — it still uses `cy.session()` cache
 - ❌ `before()` hooks with API calls will poison cookies for ALL subsequent tests
 - ✅ Use `freshAdminLogin()` (clear cookies + direct form login) before `cy.visit()`
 - ✅ Each test should be self-contained — set up its own data, then re-login, then visit
+
+### `allowedStatuses` must match what the API actually returns <!-- learned: 2026-03-29 -->
+
+Only pass status codes the endpoint genuinely returns. Adding extra codes defensively masks real setup failures.
+
+```javascript
+// ✅ group addperson is idempotent — always returns 200 (member or not)
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200]);
+
+// ✅ add-if-not-exists endpoint returns 409 when already present
+cy.makePrivateAdminAPICall("POST", "/api/groups/1/properties/5", {}, [200, 409]);
+
+// ✅ cleanup teardown: allow 404 in case item was already deleted
+cy.makePrivateAdminAPICall("DELETE", "/api/groups/1/properties/5", null, [200, 404]);
+
+// ❌ defensive extra codes when API never returns them — hides real 422/500
+cy.makePrivateAdminAPICall("POST", `/api/groups/${groupId}/addperson/${personId}`, { RoleID: 1 }, [200, 409, 422]);
+```
+
+Check the actual route implementation before choosing `allowedStatuses`.
+
+### `freshAdminLogin` Is a Local Function, NOT a Cypress Command <!-- learned: 2026-03-29 -->
+
+`freshAdminLogin()` is a **plain JS function** defined locally in individual spec files (e.g. `standard.group.properties.spec.js`). It is **not** registered via `Cypress.Commands.add`.
+
+- ❌ `cy.freshAdminLogin()` — throws `TypeError: cy.freshAdminLogin is not a function`, fails the entire describe block
+- ✅ `freshAdminLogin()` — call as a plain JS function, only inside the spec file that defines it
+
+**API-only tests need no login at all.** `makePrivateAdminAPICall` / `makePrivateUserAPICall` authenticate via `x-api-key` header — no session or cookies needed. Never add `freshAdminLogin()` or `setupAdminSession()` to `beforeEach` in a pure API spec.
+
+```javascript
+// ✅ CORRECT — API test, no login setup needed
+describe("People Without Email API", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
+        // no login needed — API key auth only
+    });
+});
+
+// ❌ WRONG — cy.freshAdminLogin() is not a command, crashes beforeEach for every test
+describe("People Without Email API", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("GET", "/api/persons/email/without", "", 200).as("withoutEmail");
+        cy.freshAdminLogin(); // TypeError: cy.freshAdminLogin is not a function
+    });
+});
+```
 
 ### UI Tests Must Not Call APIs After Login <!-- learned: 2026-03-27 -->
 
@@ -934,3 +1008,70 @@ cy.get('.nav-pills').contains("System Settings").should('be.visible');
 ```
 
 Always scope `cy.contains()` to the smallest meaningful container when asserting the existence of navigation items or tabs.
+
+### Uppy Dashboard Modal: Use `not.be.visible` for Close Assertions <!-- learned: 2026-03-30 -->
+
+Uppy v5 keeps the Dashboard modal DOM element after closing (with animation class `uppy-Dashboard--animateOpenClose`). Using `should("not.exist")` will time out because the element stays in the DOM.
+
+```javascript
+// ❌ WRONG — element persists in DOM after close animation
+cy.get(".uppy-Dashboard-close").click();
+cy.get(".uppy-Dashboard--modal").should("not.exist");
+
+// ✅ CORRECT — element stays but becomes hidden
+cy.get(".uppy-Dashboard-close").click();
+cy.get(".uppy-Dashboard--modal").should("not.be.visible");
+```
+
+### Wait for avatar-loader Before Asserting Click Classes <!-- learned: 2026-03-30 -->
+
+`avatar-loader.ts` adds `.view-person-photo` / `.view-family-photo` **asynchronously** after the photo loads. Tests must wait for the `loaded` class before asserting on click classes.
+
+```javascript
+// ❌ WRONG — click class may not be added yet
+cy.get("img[data-image-entity-type]").should("have.class", "view-person-photo");
+
+// ✅ CORRECT — wait for avatar-loader to finish processing
+cy.get("img.loaded[data-person-id]", { timeout: 10000 }).should("exist");
+cy.get("img.loaded").filter(".view-person-photo").should("have.length.at.least", 1);
+```
+
+For profile photos inside `#uploadImageButton` / `#uploadImageTrigger`, avatar-loader **skips** adding click classes. Assert they are absent:
+
+```javascript
+cy.get("#uploadImageButton img.loaded", { timeout: 10000 }).should("exist");
+cy.get("#uploadImageButton img").should("not.have.class", "view-person-photo");
+```
+
+### Wait for Uppy Uploader Initialization <!-- learned: 2026-03-30 -->
+
+The photo uploader initializes on `window.addEventListener('load', ...)`. Before clicking the upload trigger, wait for `window.CRM.photoUploader` to exist:
+
+```javascript
+cy.get("#uploadImageButton", { timeout: 10000 }).should("exist");
+cy.window().its("CRM.photoUploader", { timeout: 10000 }).should("exist");
+cy.get("#uploadImageButton").click();
+cy.get(".uppy-Dashboard--modal", { timeout: 10000 }).should("be.visible");
+```
+
+### Dashboard DataTable Tabs Lazy-Load Content <!-- learned: 2026-03-30 -->
+
+Dashboard DataTable tabs (Latest Families, Latest People, etc.) lazy-load when activated. After clicking a tab, wait for both the tab pane transition **and** the table rows:
+
+```javascript
+cy.get("#latest-ppl-tab").click();
+cy.get("#latest-ppl-pane").should("have.class", "show");
+cy.get("#latestPersonDashboardItem tbody tr", { timeout: 15000 })
+  .should("have.length.at.least", 1);
+```
+
+Guard for tables where no rows may have photos (depends on seeded data):
+
+```javascript
+cy.get("#latestPersonDashboardItem").then(($table) => {
+  if ($table.find(".view-person-photo").length > 0) {
+    cy.get(".view-person-photo").first().click();
+    cy.get("#photo-lightbox").should("be.visible");
+  }
+});
+```
