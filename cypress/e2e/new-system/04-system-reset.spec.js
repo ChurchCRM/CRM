@@ -56,7 +56,6 @@ describe('04 - System Reset', () => {
                 cy.get('#sChurchName').clear().type('Test Community Church');
                 cy.get('#sChurchPhone').clear().type('(555) 123-4567');
                 cy.get('#sChurchEmail').clear().type('info@testchurch.org');
-                cy.get('#location-tab').click();
                 cy.get('#sChurchAddress').clear().type('123 Main Street');
                 cy.get('#sChurchCity').clear().type('Springfield');
                 cy.get('#sChurchCountry', { timeout: 5000 }).siblings('.ts-wrapper').should('exist');
