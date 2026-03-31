@@ -307,25 +307,29 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   // Email group: fetch emails from API, then copy or open mailto:
   // ------------------------------------------------------------------ //
-  $("#group-view-toolbar").on("click", "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='bcc-all']", function () {
-    var action = $(this).data("action");
-    window.CRM.APIRequest({
-      method: "GET",
-      path: "groups/" + window.CRM.currentGroup + "/emails",
-    }).done(function (data) {
-      if (!data.all) {
-        window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
-        return;
-      }
-      if (action === "copy-emails") {
-        window.CRM.copyToClipboard(data.all, i18next.t("Email addresses copied to clipboard"));
-      } else if (action === "mailto-all") {
-        window.location.href = "mailto:" + encodeURIComponent(data.all);
-      } else if (action === "bcc-all") {
-        window.location.href = "mailto:?bcc=" + encodeURIComponent(data.all);
-      }
-    });
-  });
+  $("#group-view-toolbar").on(
+    "click",
+    "[data-action='copy-emails'], [data-action='mailto-all'], [data-action='bcc-all']",
+    function () {
+      var action = $(this).data("action");
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/emails",
+      }).done(function (data) {
+        if (!data.all) {
+          window.CRM.notify(i18next.t("No email addresses available"), { type: "warning", delay: 3000 });
+          return;
+        }
+        if (action === "copy-emails") {
+          window.CRM.copyToClipboard(data.all, i18next.t("Email addresses copied to clipboard"));
+        } else if (action === "mailto-all") {
+          window.location.href = "mailto:" + encodeURIComponent(data.all);
+        } else if (action === "bcc-all") {
+          window.location.href = "mailto:?bcc=" + encodeURIComponent(data.all);
+        }
+      });
+    },
+  );
 
   // ------------------------------------------------------------------ //
   // Assign new group property
