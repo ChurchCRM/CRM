@@ -48,19 +48,13 @@ function _getExcludedPersonIdSet(string $configKey): array
  * Build a standard phone-response array from a list of phone strings.
  *
  * @param string[] $phoneList
- * @return array{phones: string[], displayList: string, smsLink: string}
+ * @return array{phones: string[], displayList: string}
  */
 function _buildPhoneResponse(array $phoneList): array
 {
-    $cleaned = array_values(array_filter(array_map(
-        static fn (string $p): string => preg_replace('/[^\d+]/', '', $p),
-        $phoneList,
-    )));
-
     return [
         'phones'      => $phoneList,
         'displayList' => implode(', ', $phoneList),
-        'smsLink'     => !empty($cleaned) ? 'sms:' . implode(',', $cleaned) : '',
     ];
 }
 
@@ -291,8 +285,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=200, description="Phone contact info for the group",
      *         @OA\JsonContent(
      *             @OA\Property(property="phones", type="array", @OA\Items(type="string"), description="Raw phone numbers"),
-     *             @OA\Property(property="displayList", type="string", description="Comma-separated display string"),
-     *             @OA\Property(property="smsLink", type="string", description="sms: URI for opening native SMS app")
+     *             @OA\Property(property="displayList", type="string", description="Comma-separated display string")
      *         )
      *     )
      * )

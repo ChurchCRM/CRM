@@ -29,7 +29,7 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('eMail Dashboard'),
+        'sPageTitle' => gettext('Email Dashboard'),
         'sPageSubtitle' => gettext('Manage email tools and SMTP configuration'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
             [gettext('Communication')],

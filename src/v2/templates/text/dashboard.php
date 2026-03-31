@@ -73,7 +73,7 @@ $(document).ready(function() {
                 name: 'iDoNotSmsPropertyId',
                 label: i18next.t('Do Not SMS Property'),
                 type: 'ajax',
-                ajaxUrl: '/api/system/properties/person',
+                ajaxUrl: window.CRM.root + '/api/system/properties/person',
                 tooltip: <?= json_encode($textSettingTooltips['iDoNotSmsPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],

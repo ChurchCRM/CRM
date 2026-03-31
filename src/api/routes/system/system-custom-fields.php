@@ -38,18 +38,22 @@ $app->group('/system/properties', function (RouteCollectorProxy $group): void {
  */
 function getPersonFieldsByType(Request $request, Response $response, array $args): Response
 {
-    $params = $request->getQueryParams();
-    $typeId = $params['typeId'];
+    try {
+        $params = $request->getQueryParams();
+        $typeId = (int) ($params['typeId'] ?? 0);
 
-    $fields = PersonCustomMasterQuery::create()->filterByTypeId($typeId)->find();
+        $fields = PersonCustomMasterQuery::create()->filterByTypeId($typeId)->find();
 
-    $keyValue = [];
+        $keyValue = [];
 
-    foreach ($fields as $field) {
-        $keyValue[] = ['id' => $field->getId(), 'value' => $field->getName()];
+        foreach ($fields as $field) {
+            $keyValue[] = ['id' => $field->getId(), 'value' => $field->getName()];
+        }
+
+        return SlimUtils::renderJSON($response, $keyValue);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve data'), [], 500, $e, $request);
     }
-
-    return SlimUtils::renderJSON($response, $keyValue);
 }
 
 /**
@@ -69,15 +73,19 @@ function getPersonFieldsByType(Request $request, Response $response, array $args
  */
 function getPersonPropertyOptions(Request $request, Response $response, array $args): Response
 {
-    $properties = PropertyQuery::create()
-        ->filterByProClass('p')
-        ->orderByProName()
-        ->find();
+    try {
+        $properties = PropertyQuery::create()
+            ->filterByProClass('p')
+            ->orderByProName()
+            ->find();
 
-    $keyValue = [];
-    foreach ($properties as $prop) {
-        $keyValue[] = ['id' => $prop->getProId(), 'value' => $prop->getProName()];
+        $keyValue = [];
+        foreach ($properties as $prop) {
+            $keyValue[] = ['id' => $prop->getProId(), 'value' => $prop->getProName()];
+        }
+
+        return SlimUtils::renderJSON($response, $keyValue);
+    } catch (\Throwable $e) {
+        return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve data'), [], 500, $e, $request);
     }
-
-    return SlimUtils::renderJSON($response, $keyValue);
 }

@@ -182,7 +182,7 @@ $(document).ready(function() {
                 name: 'iDoNotEmailPropertyId',
                 label: i18next.t('Do Not Email Property'),
                 type: 'ajax',
-                ajaxUrl: '/api/system/properties/person',
+                ajaxUrl: window.CRM.root + '/api/system/properties/person',
                 tooltip: <?= json_encode($emailSettingTooltips['iDoNotEmailPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],

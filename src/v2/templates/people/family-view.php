@@ -445,7 +445,7 @@ $otherPeople = $family->getOtherPeople();
                     <ul class="list-unstyled mb-0">
                         <?php if (!empty($family->getHomePhone())) { ?>
                             <li class="mb-1">
-                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= $family->getHomePhone() ?>"><?= $family->getHomePhone() ?></a>
+                                <i class="fa-solid fa-phone me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="tel:<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"><?= $family->getHomePhone() ?></a>
                                 <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
                                         data-phone="<?= InputUtils::escapeAttribute($family->getHomePhone()) ?>"
                                         title="<?= gettext('Copy to clipboard') ?>">
@@ -455,7 +455,7 @@ $otherPeople = $family->getOtherPeople();
                         <?php }
                         if (!empty($family->getEmail())) { ?>
                             <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= $family->getEmail() ?>"><?= $family->getEmail() ?></a>
+                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= $family->getEmail() ?></a>
                                 <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                         data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
                                         title="<?= gettext('Copy to clipboard') ?>">

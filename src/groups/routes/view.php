@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupPropMasterQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -176,17 +175,3 @@ function viewGroup(Request $request, Response $response, array $args): Response
     return $renderer->render($response, 'group-view.php', $pageArgs);
 }
 
-function _getExcludedPersonIdsByConfig(string $configKey): array
-{
-    $propertyId = (int) SystemConfig::getValue($configKey);
-    if ($propertyId <= 0) {
-        return [];
-    }
-
-    $ids = [];
-    foreach (RecordPropertyQuery::create()->filterByPropertyId($propertyId)->find() as $r) {
-        $ids[] = (int) $r->getRecordId();
-    }
-
-    return $ids;
-}

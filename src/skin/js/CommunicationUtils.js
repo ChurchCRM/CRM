@@ -76,7 +76,7 @@
   // Public API
   // ------------------------------------------------------------------ //
 
-  // Extend the existing window.CRM.comm object (Header.php sets smtpConfigured / vonageEnabled)
+  // Extend the existing window.CRM.comm object
   var comm = window.CRM.comm || {};
 
   comm.platform = platform;
