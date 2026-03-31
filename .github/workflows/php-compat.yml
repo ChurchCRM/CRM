@@ -1,0 +1,517 @@
+name: "PHP Compatibility"
+
+on:
+  pull_request:
+    branches:
+      - master
+      - develop
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      - '.ddev/**'
+  push:
+    branches:
+      - master
+      - develop
+    paths-ignore:
+      - '**/*.md'
+      - 'docs/**'
+      - 'LICENSE'
+      - '.gitignore'
+      - '.ddev/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+      with:
+        fetch-depth: 0
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Set up PHP 8.4
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.4'
+        extensions: pdo_mysql, mysqli, gd, zip, gettext, iconv, mbstring, xml, curl, fileinfo, bcmath
+        coverage: none
+
+    - name: Get Composer cache directory
+      id: composer-cache
+      run: |
+        cd src
+        echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+    - name: Cache Composer packages
+      uses: actions/cache@v5
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
+
+    - name: Install Composer dependencies
+      env:
+        COMPOSER_MEMORY_LIMIT: -1
+      run: |
+        cd src
+        composer install --no-dev --no-interaction --prefer-dist
+
+    - name: Build app
+      run: npm run package
+
+    - name: Validate PHP syntax
+      run: npm run build:php:validate
+
+    - name: Build Docker images (PHP 8.4 + 8.5)
+      run: |
+        docker build --target test \
+          --build-arg PHP_VERSION=8.4 \
+          -t churchcrm/crm:php8.4-test \
+          -f docker/Dockerfile.churchcrm-apache-php8 docker/
+        docker build --target test \
+          --build-arg PHP_VERSION=8.5 \
+          -t churchcrm/crm:php8.5-test \
+          -f docker/Dockerfile.churchcrm-apache-php8 docker/
+        docker save churchcrm/crm:php8.4-test | gzip > temp/docker-image-8.4.tar.gz
+        docker save churchcrm/crm:php8.5-test | gzip > temp/docker-image-8.5.tar.gz
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v7
+      with:
+        name: build-${{ github.run_id }}
+        path: |
+          src/
+          temp/
+          !src/logs
+        retention-days: 1
+
+  test-root:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.4', '8.5']
+        test-type:
+          - name: api
+            spec: "cypress/e2e/api/**/*.spec.js"
+          - name: ui
+            spec: "cypress/e2e/ui/**/*.spec.js"
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (root path)
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+    - name: Wait for server (root path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "${{ matrix.test-type.spec }}" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-[hash].xml
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Root (${{ matrix.test-type.name }})'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-root-${{ matrix.test-type.name }}-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:root:down
+
+  test-subdir-ui:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.4', '8.5']
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Start Docker (subdirectory path)
+      run: |
+        cp docker/Config.parallel.subdir.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
+
+    - name: Wait for server (subdirectory path)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress UI tests (subdir, PHP ${{ matrix.php-version }})
+      run: npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/**/*.spec.js" --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-subdir-ui-[hash].xml
+      env:
+        CYPRESS_BASE_URL: http://127.0.0.1:8080/churchcrm/
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-ui.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-subdir-ui.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-subdir-ui-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: Subdirectory (UI)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-subdir-ui-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:subdir:down
+
+  test-new-system:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.4', '8.5']
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Generate file signatures
+      run: node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for fresh install test
+      run: rm -f src/Include/Config.php
+
+    - name: Start Docker (new system)
+      run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
+
+    - name: Wait for server (new system)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress tests (setup wizard, PHP ${{ matrix.php-version }})
+      uses: cypress-io/github-action@v7
+      with:
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-[hash].xml
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: New System Setup (Root)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:new-system:down
+
+  test-new-system-subdir:
+    needs: build
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      checks: write
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ['8.4', '8.5']
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v6
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install npm dependencies
+      run: npm ci
+
+    - name: Download build artifact
+      uses: actions/download-artifact@v8.0.1
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      run: |
+        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
+        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
+
+    - name: Generate file signatures
+      run: node scripts/generate-signatures-node.js
+
+    - name: Remove Config.php for fresh install test
+      run: rm -f src/Include/Config.php
+
+    - name: Start Docker (new system subdirectory)
+      run: npm run docker:ci:new-system:subdir:start
+
+    - name: Wait for server (new system subdirectory)
+      run: |
+        max_attempts=12
+        attempt=1
+        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/churchcrm/ | grep -q "302\|200"; do
+          if [ $attempt -eq $max_attempts ]; then
+            echo "Server failed to respond after $max_attempts attempts"
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a
+            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs
+            exit 1
+          fi
+          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
+          sleep 5
+          attempt=$((attempt + 1))
+        done
+        echo "Server ready."
+
+    - name: Run Cypress tests (setup wizard subdir, PHP ${{ matrix.php-version }})
+      uses: cypress-io/github-action@v7
+      with:
+        command: npx cypress run --config-file cypress/configs/new-system.config.ts --headless --browser electron --reporter junit --reporter-options mochaFile=cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-[hash].xml
+      env:
+        CYPRESS_BASE_URL: http://127.0.0.1:8081/churchcrm/
+
+    - name: Collect Docker logs on failure
+      if: failure()
+      run: |
+        mkdir -p cypress/logs/docker cypress/logs/php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs > cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a >> cypress/logs/docker/docker-compose-php${{ matrix.php-version }}-new-system-subdir.log 2>&1 || true
+        [ -d src/logs ] && cp -r src/logs cypress/logs/php/ || true
+
+    - name: Upload debug artifacts
+      if: always()
+      uses: actions/upload-artifact@v7
+      with:
+        name: cypress-artifacts-php${{ matrix.php-version }}-new-system-subdir-${{ github.run_id }}
+        path: |
+          cypress/logs
+          cypress/screenshots
+          cypress/videos
+        retention-days: 30
+        if-no-files-found: ignore
+
+    - name: Test Report
+      uses: dorny/test-reporter@v3
+      if: always()
+      with:
+        name: 'PHP ${{ matrix.php-version }}: New System Setup (Subdirectory)'
+        path: cypress/reports/junit-php${{ matrix.php-version }}-new-system-subdir-*.xml
+        reporter: java-junit
+        fail-on-error: true
+        fail-on-empty: false
+        list-suites: all
+        list-tests: failed
+        max-annotations: 50
+        use-actions-summary: true
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:new-system:subdir:down
