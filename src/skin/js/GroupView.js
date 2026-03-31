@@ -288,14 +288,17 @@ function initializeGroupView() {
   // ------------------------------------------------------------------ //
   function _copyTextToClipboard(text) {
     if (navigator.clipboard) {
-      return navigator.clipboard.writeText(text).then(function () {
-        window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
-          type: "success",
-          delay: 3000,
+      return navigator.clipboard
+        .writeText(text)
+        .then(function () {
+          window.CRM.notify(i18next.t("Phone numbers copied to clipboard"), {
+            type: "success",
+            delay: 3000,
+          });
+        })
+        .catch(function () {
+          prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
         });
-      }).catch(function () {
-        prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
-      });
     }
     prompt(i18next.t("Press CTRL + C to copy all group members' phone numbers"), text);
     return Promise.resolve();
