@@ -186,7 +186,11 @@
           if (action === "copy-phones") {
             window.CRM.copyToClipboard(segment.displayList);
           } else if (segment.phones && segment.phones.length) {
-            var cleaned = segment.phones.map(function (p) { return p.replace(/[^\d+]/g, ""); }).filter(Boolean);
+            var cleaned = segment.phones
+              .map(function (p) {
+                return p.replace(/[^\d+]/g, "");
+              })
+              .filter(Boolean);
             window.location.href = window.CRM.buildSmsLink(cleaned);
           }
         });

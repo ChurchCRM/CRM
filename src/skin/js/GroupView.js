@@ -299,7 +299,11 @@ function initializeGroupView() {
       if (action === "copy-phones") {
         window.CRM.copyToClipboard(data.displayList);
       } else if (action === "sms-all" && data.phones && data.phones.length) {
-        var cleaned = data.phones.map(function (p) { return p.replace(/[^\d+]/g, ""); }).filter(Boolean);
+        var cleaned = data.phones
+          .map(function (p) {
+            return p.replace(/[^\d+]/g, "");
+          })
+          .filter(Boolean);
         window.location.href = window.CRM.buildSmsLink(cleaned);
       }
     });
