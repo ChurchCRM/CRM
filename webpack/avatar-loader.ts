@@ -298,6 +298,17 @@ class AvatarLoader {
         img.style.objectFit = "cover";
       }
 
+      // Add click-to-view class so lightbox handlers can detect this photo.
+      // Only uploaded photos get this — initials and failed loads do not.
+      // Skip images inside upload buttons (profile pages handle their own click).
+      if (!img.closest("#uploadImageButton, #uploadImageTrigger")) {
+        const viewClass = config.entityType === "person" ? "view-person-photo" : "view-family-photo";
+        const dataAttr = config.entityType === "person" ? "data-person-id" : "data-family-id";
+        img.classList.add(viewClass);
+        img.setAttribute(dataAttr, String(config.entityId));
+        img.style.cursor = "pointer";
+      }
+
       this.cleanupDataAttributes(img);
     };
 

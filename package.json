@@ -85,7 +85,7 @@
         "@tabler/core": "^1.4.0",
         "@tabler/icons-webfont": "^3.41.1",
         "@uppy/core": "^5.2.0",
-        "@uppy/dashboard": "^4.4.3",
+        "@uppy/dashboard": "^5.1.1",
         "@uppy/webcam": "^5.1.0",
         "@uppy/xhr-upload": "^5.2.0",
         "apexcharts": "^5.10.4",

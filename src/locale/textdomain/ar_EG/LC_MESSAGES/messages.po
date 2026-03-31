@@ -11172,3 +11172,599 @@ msgstr "إصدار قاعدة بياناتك أحدث من البرنامج ال
 msgid "or later to continue."
 msgstr "أو أحدث للمتابعة."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "ملاحظات \"لماذا جئت\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(اختياري — اترك خالياً لتضمين جميع الأدوار)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "تمثل العائلة أسرة. تحمل العنوان المشترك ورقم الهاتف المنزلي لجميع أفراد العائلة الذين يعيشون معاً."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "أسرة. تخزن عنوان البريد المشترك والهاتف المنزلي."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "لا يحتاج الشخص إلى الانتماء إلى عائلة، لكن تعيين واحد يجعل إدارة العناوين أسهل بكثير."
+
+#: 
+msgid "About"
+msgstr "حول"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "التنسيق المقبول: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "استعادة الحساب"
+
+#: 
+msgid "Add Family"
+msgstr "إضافة عائلة"
+
+#: 
+msgid "Add First Family"
+msgstr "إضافة العائلة الأولى"
+
+#: 
+msgid "Add Member"
+msgstr "إضافة أحد المؤمنين"
+
+#: 
+msgid "Add New Class"
+msgstr "إضافة فئة جديدة"
+
+#: 
+msgid "Add Note"
+msgstr "إضافة ملاحظة"
+
+#: 
+msgid "Add People to the Family"
+msgstr "إضافة أشخاص إلى العائلة"
+
+#: 
+msgid "Add Person"
+msgstr "إضافة شخص"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "إضافة الطلاب إلى القائمة"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "إضافة المعلمين إلى القائمة"
+
+#: 
+msgid "Add User"
+msgstr "إضافة مستخدم"
+
+#: 
+msgid "Add Your Data"
+msgstr "أضف بياناتك"
+
+#: 
+msgid "Add Your First Family"
+msgstr "أضف عائلتك الأولى"
+
+#: 
+msgid "Add Your First Property"
+msgstr "أضف ملكيتك الأولى"
+
+#: 
+msgid "Add a Person"
+msgstr "إضافة شخص"
+
+#: 
+msgid "Add a new pledge"
+msgstr "إضافة التزام جديد"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "إضافة دفعة إلى الإيداع الحالي"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "أضف جميع عناصر القائمة إلى مجموعة"
+
+#: 
+msgid "Add all to Cart"
+msgstr "أضف الكل إلى القائمة"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "إضافة عناصر القائمة إلى عائلة"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "أضف الجميع في منزلك — البالغين والأطفال على حد سواء."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "أضف العائلات والأفراد واحداً تلو الآخر مباشرة في ChurchCRM. رائع للجماعات الأصغر أو إضافة البيانات المستوردة."
+
+#: 
+msgid "Add first family"
+msgstr "أضف العائلة الأولى"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "إضافة أو تحرير سجلات الأشخاص الفرديين"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "إضافة أو تحرير العناصر المتبرع بها لأحداث جمع التبرعات"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "إضافة أو تحرير ملاحظات للأشخاص والعائلات"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "إضافة الموظفين والمتطوعين"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "إضافة الموظفين أو المتطوعين كمستخدمي النظام"
+
+#: 
+msgid "Administrator"
+msgstr "المسؤول"
+
+#: 
+msgid "Age Distribution"
+msgstr "توزيع العمر"
+
+#: 
+msgid "All Roles"
+msgstr "جميع الأدوار"
+
+#: 
+msgid "All Time"
+msgstr "كل الوقت"
+
+#: 
+msgid "All roles"
+msgstr "جميع الأدوار"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "يكاد يكون هناك — راجع تفاصيلك"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "يعمل أيضاً تلقائياً عبر WebDAV بناءً على الفترة المكونة لديك."
+
+#: 
+msgid "An Error Occurred"
+msgstr "حدث خطأ"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "عضو كنيسة فردي. يخزن الاسم وتاريخ الميلاد والبريد الإلكتروني الشخصي والهاتف المحمول."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "حدث خطأ غير متوقع أثناء معالجة طلبك. يرجى الاتصال بمسؤولك للحصول على المساعدة."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "حدث خطأ غير متوقع."
+
+#: 
+msgid "Applied preset"
+msgstr "تم تطبيق الإعداد المسبق"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "هل أنت متأكد من رغبتك في حذف هذا الإيداع؟"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "هل أنت متأكد من رغبتك في حذف حدث جمع التبرعات هذا؟"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "هل أنت متأكد من أنك تريد إزالة"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "تعيين وإدارة أرقام مظاريف التبرعات"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "تعيين وإدارة أرقام مشترين جمع التبرعات"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "تعيين عناصر القائمة إلى سجل عائلة"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "تعيين عناصر القائمة إلى مجموعة"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "تعيين عناصر القائمة إلى حدث"
+
+#: 
+msgid "Assign to a Group"
+msgstr "تعيين إلى مجموعة"
+
+#: 
+msgid "Authentication Code"
+msgstr "رمز المصادقة"
+
+#: 
+msgid "Auto-mapped"
+msgstr "تم الترسيم التلقائي"
+
+#: 
+msgid "BCC"
+msgstr "نسخة محجوبة"
+
+#: 
+msgid "BCC All"
+msgstr "نسخة محجوبة للكل"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "العودة إلى لوحة تحكم المسؤول"
+
+#: 
+msgid "Back to Get Started"
+msgstr "العودة إلى البدء"
+
+#: 
+msgid "Back to Home"
+msgstr "العودة إلى الرئيسية"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "يتم النسخ الاحتياطي إلى مخزن WebDAV السحابي تلقائياً على فترة قابلة للتكوين."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "نسخ احتياطي إلى التخزين الخارجي الآن"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "استعرض جميع المكونات الإضافية المتاحة"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "استعرض جميع أحداث الكنيسة والأنشطة"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "استعرض جميع الأشخاص في جماعتك مع التصفية والبحث"
+
+#: 
+msgid "Browse all plugins"
+msgstr "استعرض جميع المكونات الإضافية"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "استعرض وابحث عن جميع العائلات في جماعتك"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "استعرض وابحث عن حملات جمع التبرعات"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "استعرض صور أعضاء الجماعة"
+
+#: 
+msgid "Buyer Number"
+msgstr "رقم المشتري"
+
+#: 
+msgid "Buyers"
+msgstr "المشترون"
+
+#: 
+msgid "CSV Column"
+msgstr "عمود CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "لم يتم العثور على نموذج CSV"
+
+#: 
+msgid "Call"
+msgstr "اتصال"
+
+#: 
+msgid "Cart Functions"
+msgstr "وظائف القائمة"
+
+#: 
+msgid "Change Family Role"
+msgstr "تغيير دور الأسرة"
+
+#: 
+msgid "Check Out"
+msgstr "الخروج"
+
+#: 
+msgid "Check Out Person"
+msgstr "شخص الخروج"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "التحقق من التحديثات وتحديث تثبيت ChurchCRM الخاص بك"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "تسجيل الحضور للأحداث والأنشطة الكنسية"
+
+#: 
+msgid "Check in to an event"
+msgstr "تسجيل الدخول إلى حدث"
+
+#: 
+msgid "Check-ins"
+msgstr "الفحوصات"
+
+#: 
+msgid "Children"
+msgstr "الأطفال"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "اختر الطريقة التي تريد بها ملء قاعدة البيانات الخاصة بك. يمكنك دائماً استخدام طريقة مختلفة لاحقاً."
+
+#: 
+msgid "Church Info"
+msgstr "معلومات الكنيسة"
+
+#: 
+msgid "Clear all"
+msgstr "مسح الكل"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "امسح جميع البيانات وابدأ من جديد"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "امسح جميع العناصر من القائمة"
+
+#: 
+msgid "Click Save to apply."
+msgstr "انقر حفظ للتطبيق."
+
+#: 
+msgid "Click to upload photo"
+msgstr "انقر لتحميل صورة"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "سيؤدي النقر على \"فتح مشكلة GitHub\" إلى فتح علامة تبويب جديدة مع ملء معلومات نظامك مسبقاً. لن يتم تضمين أي معلومات قابلة للتعريف شخصياً إلا إذا أضفتها."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "تمت مطابقة العمود تلقائياً مع حقل ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "منصة إدارة المجتمع"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "متوافق مع Excel أو Google Sheets أو أي تصدير CSV."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "أكمل هذه بأي ترتيب لتحضير ChurchCRM لجماعتك."
+
+#: 
+msgid "Confession"
+msgstr "الاعتراف"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "تكوين إعدادات النظام العام والتفضيلات"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "تكوين إعدادات المجموعة والأدوار والخصائص"
+
+#: 
+msgid "Confirm your new password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "قم بتوصيل خادم SMTP بحيث يمكن لـ ChurchCRM إرسال رسائل البريد الإلكتروني"
+
+#: 
+msgid "Connect with others"
+msgstr "تواصل مع الآخرين"
+
+#: 
+msgid "Contact us"
+msgstr "اتصل بنا"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "تحويل السجلات الفردية إلى وحدات عائلية"
+
+#: 
+msgid "Convert to Family"
+msgstr "تحويل إلى عائلة"
+
+#: 
+msgid "Copied"
+msgstr "تم النسخ"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "نسخ الأعضاء إلى مجموعة"
+
+#: 
+msgid "Copy to Group"
+msgstr "نسخ إلى مجموعة"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "إنشاء نسخة احتياطية من قاعدة بيانات الكنيسة الخاصة بك"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "قم بإنشاء نسخة احتياطية يدوية مرة واحدة على الأقل في الأسبوع، أو قم بتمكين مكون النسخ الاحتياطي الخارجي للنسخ الاحتياطية الآلية لـ WebDAV وفقاً لجدول زمني."
+
+#: 
+msgid "Create a new deposit"
+msgstr "إنشاء إيداع جديد"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "إنشاء وتحرير معلومات الأسرة والعلاقات"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "إنشاء وإدارة أحداث الكنيسة والأنشطة"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "إنشاء أو تحرير فئات نوع الملكية"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "إنشاء أو تحرير مواضع المتطوعين"
+
+#: 
+msgid "Current person"
+msgstr "الشخص الحالي"
+
+#: 
+msgid "Data & Reports"
+msgstr "البيانات والتقارير"
+
+#: 
+msgid "Database Reset"
+msgstr "إعادة تعيين قاعدة البيانات"
+
+#: 
+msgid "Default / Notes"
+msgstr "الافتراضي / الملاحظات"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "تحديد حقول مخصصة لجمع بيانات الأسرة الإضافية"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "تحديد حقول مخصصة لجمع بيانات الشخص الإضافية"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "تحديد خصائص مخصصة لتتبع البيانات"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "تحديد خصائص مخصصة يمكن تعيينها إلى"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "تحديد خصائص محددة للمجموعة لأعضائها"
+
+#: 
+msgid "Delete All"
+msgstr "حذف الكل"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "حذف إدخال الفحص"
+
+#: 
+msgid "Delete Family"
+msgstr "حذف عائلة"
+
+#: 
+msgid "Delete Group"
+msgstr "حذف مجموعة"
+
+#: 
+msgid "Delete Person"
+msgstr "حذف شخص"
+
+#: 
+msgid "Delete Pledge"
+msgstr "حذف التزام"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "سيؤدي حذف هذه الخاصية أيضاً إلى إزالة جميع تعييناتها من أي سجلات للأشخاص أو الأسرة أو المجموعة."
+
+#: 
+msgid "Deposit Value"
+msgstr "قيمة الإيداع"
+
+#: 
+msgid "Describe the issue"
+msgstr "وصف المشكلة"
+
+#: 
+msgid "Directions"
+msgstr "الاتجاهات"
+
+#: 
+msgid "Directory Reports"
+msgstr "تقارير الدليل"
+
+#: 
+msgid "Disabled in settings"
+msgstr "معطل في الإعدادات"
+
+#: 
+msgid "Donated Item"
+msgstr "عنصر متبرع به"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "يتم تتبع سجلات التبرعات والعطاء على مستوى الأسرة. إذا كنت تخطط لتسجيل العطاء لفرد يعيش وحده، فأنشئ أسرة لشخص واحد لهم."
+
+#: 
+msgid "Download"
+msgstr "تحميل"
+
+#: 
+msgid "Download CSV Template"
+msgstr "تحميل نموذج CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "قم بتحميل النموذج لمعرفة تنسيق العمود المتوقع."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "اسحب وأفلت ملف CSV هنا"
+
+#: 
+msgid "Duplicates"
+msgstr "النسخ المكررة"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "يمكن لكل شخص أن يكون لديه بريده الإلكتروني ورقم هاتفه المحمول."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "كل صف هو شخص واحد. يشارك أعضاء نفس العائلة معرف FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "تسجيل سهل"
+
+#: 
+msgid "Edit Class"
+msgstr "تحرير فئة"
+
