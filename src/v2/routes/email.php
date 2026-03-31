@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -40,6 +41,9 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
             ['label' => gettext('Email Settings'), 'collapse' => '#emailSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
         'emailSettingTooltips' => $emailSettingTooltips,
+        'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
+        'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
+        'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

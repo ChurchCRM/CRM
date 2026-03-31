@@ -185,8 +185,9 @@
           }
           if (action === "copy-phones") {
             window.CRM.copyToClipboard(segment.displayList);
-          } else if (segment.smsLink) {
-            window.location.href = segment.smsLink;
+          } else if (segment.phones && segment.phones.length) {
+            var cleaned = segment.phones.map(function (p) { return p.replace(/[^\d+]/g, ""); }).filter(Boolean);
+            window.location.href = window.CRM.buildSmsLink(cleaned);
           }
         });
       },

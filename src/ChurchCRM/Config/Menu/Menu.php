@@ -182,7 +182,7 @@ class Menu
 
     private static function getCommunicationMenu(): MenuItem
     {
-        $commMenu = new MenuItem(gettext('Communication'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-comments');
+        $commMenu = new MenuItem(gettext('Communication'), '', true, 'fa-comments');
         $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
         $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
 
