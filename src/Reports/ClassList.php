@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Service\FinancialService;
 use ChurchCRM\model\ChurchCRM\Base\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
@@ -70,7 +71,7 @@ for ($i = 0; $i < $nGrps; $i++) {
 
     $pdf->writeAt($nameX, $yTitle, $group->getName() . ' - ');
 
-    $FYString = MakeFYString($iFYID);
+    $FYString = FinancialService::formatFiscalYear($iFYID);
     $pdf->writeAt($phoneX, $yTitle, $FYString);
 
     $pdf->SetLineWidth(0.5);
