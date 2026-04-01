@@ -170,10 +170,15 @@ window.calendarPropertiesModal = {
       "<td class='LabelColumn'>" +
       i18next.t("Foreground Color") +
       ":</td>" +
-      "<td >" +
-      "<p>" +
+      "<td>" +
+      '<span class="d-inline-flex align-items-center gap-2">' +
+      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
       calendar.ForegroundColor +
-      "</p>" +
+      '"></span>' +
+      "<code>#" +
+      calendar.ForegroundColor +
+      "</code>" +
+      "</span>" +
       "</td>" +
       "</tr>" +
       "<tr>" +
@@ -181,10 +186,15 @@ window.calendarPropertiesModal = {
       i18next.t("Background Color") +
       ":" +
       "</td>" +
-      "<td  >" +
-      "<p>" +
+      "<td>" +
+      '<span class="d-inline-flex align-items-center gap-2">' +
+      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
       calendar.BackgroundColor +
-      "</p>" +
+      '"></span>' +
+      "<code>#" +
+      calendar.BackgroundColor +
+      "</code>" +
+      "</span>" +
       "</td>" +
       "</tr>" +
       "</table>" +
@@ -304,7 +314,9 @@ window.newCalendarModal = {
       i18next.t("Foreground Color") +
       ":</td>" +
       '<td colspan="3">' +
-      '<input id="ForegroundColor" class="form-control" type="text" placeholder="FFFFFF"  />' +
+      '<input id="ForegroundColor" class="form-control form-control-color w-100" type="color" value="#ffffff" title="' +
+      i18next.t("Foreground Color") +
+      '" />' +
       "</td>" +
       "</tr>" +
       "<tr>" +
@@ -312,9 +324,11 @@ window.newCalendarModal = {
       i18next.t("Background Color") +
       ":</td>" +
       '<td colspan="3">' +
-      '<input id="BackgroundColor" class="form-control" type="text" placeholder="000000" />' +
+      '<input id="BackgroundColor" class="form-control form-control-color w-100" type="color" value="#000000" title="' +
+      i18next.t("Background Color") +
+      '" />' +
       "</td>" +
-      "</tr>" +
+      "</tr" +
       "</table>" +
       "</form>";
     var object = $("<div/>").html(frm_str).contents();
@@ -341,14 +355,6 @@ window.newCalendarModal = {
       fieldError($("#calendarName"));
       status = false;
     }
-    if (!$("#ForegroundColor").val()) {
-      fieldError($("#ForegroundColor"));
-      status = false;
-    }
-    if (!$("#BackgroundColor").val()) {
-      fieldError($("#BackgroundColor"));
-      status = false;
-    }
     return status;
   },
   saveButtonCallback: function () {
@@ -358,8 +364,8 @@ window.newCalendarModal = {
     }
     var newCalendar = {
       Name: $("#calendarName").val(),
-      ForegroundColor: $("#ForegroundColor").val(),
-      BackgroundColor: $("#BackgroundColor").val(),
+      ForegroundColor: $("#ForegroundColor").val().replace(/^#/, ""),
+      BackgroundColor: $("#BackgroundColor").val().replace(/^#/, ""),
     };
     window.CRM.APIRequest({
       method: "POST",
