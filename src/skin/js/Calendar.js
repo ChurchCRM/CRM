@@ -26,8 +26,10 @@ window.moveEventModal = {
   handleEventDrop: function (info) {
     var event = info.event;
     var revertFunc = info.revert;
-    var originalStart = info.oldEvent.start.toLocaleString();
-    var newStart = event.start.toLocaleString();
+    var originalStart = info.oldEvent.start
+      ? info.oldEvent.start.toLocaleString()
+      : info.oldEvent.start.toISOString().split("T")[0];
+    var newStart = event.start ? event.start.toLocaleString() : event.start.toISOString().split("T")[0];
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -51,8 +53,10 @@ window.moveEventModal = {
   handleEventResize: function (info) {
     var event = info.event;
     var revertFunc = info.revert;
-    var originalEnd = info.oldEvent.end.toLocaleString();
-    var newEnd = event.end.toLocaleString();
+    var originalEnd = info.oldEvent.end
+      ? info.oldEvent.end.toLocaleString()
+      : info.oldEvent.end.toISOString().split("T")[0];
+    var newEnd = event.end ? event.end.toLocaleString() : event.end.toISOString().split("T")[0];
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -194,7 +198,7 @@ window.calendarPropertiesModal = {
     var buttons = [];
     buttons.push({
       label: i18next.t("Cancel"),
-      className: "btn btn-default float-end",
+      className: "btn btn-secondary float-end",
     });
     if (window.CRM.calendarJSArgs.isModifiable) {
       buttons.push({
@@ -225,9 +229,7 @@ window.calendarPropertiesModal = {
       method: "POST",
       path: "calendars/" + window.calendarPropertiesModal.calendar.Id + "/NewAccessToken",
     }).done(function (newcalendar) {
-      var closeBtn = $(
-        '<button class="btn btn-primary" style="margin-top:15px;float:right;">' + i18next.t("Close") + "</button>",
-      );
+      var closeBtn = $('<button class="btn btn-primary float-end mt-3">' + i18next.t("Close") + "</button>");
       var $body = $(window.calendarPropertiesModal.modal).find(".bootbox-body");
       $body.html(window.calendarPropertiesModal.getBootboxContent(newcalendar));
       $body.append(closeBtn);
@@ -329,7 +331,7 @@ window.newCalendarModal = {
     });
     buttons.push({
       label: i18next.t("Cancel"),
-      className: "btn btn-default float-start",
+      className: "btn btn-secondary float-start",
     });
 
     return buttons;
@@ -424,8 +426,6 @@ function initializeCalendar() {
       var jsEvent = info.jsEvent;
       jsEvent.preventDefault();
 
-      var eventSourceParams = eventData.source.url.split("/");
-      var eventSourceType = eventSourceParams[eventSourceParams.length - 3];
       if (eventData.url !== "null") {
         window.open(eventData.url);
       } else if (eventData.editable || eventData.startEditable || eventData.durationEditable) {
@@ -490,7 +490,9 @@ function getCalendarFilterElement(calendar, type) {
     type +
     '" data-calendarid="' +
     calendar.Id +
-    '"/>' +
+    '" aria-label="Toggle ' +
+    calendar.Name +
+    ' calendar visibility"/>' +
     "</div>" +
     "</div>" +
     (type === "user"
@@ -643,7 +645,7 @@ function initializeFilterSettings() {
 function initializeNewCalendarButton() {
   if (window.CRM.calendarJSArgs.isModifiable) {
     $("#addCalendarBtn")
-      .show()
+      .removeClass("d-none")
       .on("click", function () {
         window.newCalendarModal.show();
       });

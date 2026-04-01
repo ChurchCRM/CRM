@@ -16,51 +16,80 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div class="row">
-    <div class="col-lg-9 col-md-8 col-sm-12">
-        <div class="card">
-            <div class="card-body p-0">
-                <!-- THE CALENDAR -->
-                <div id="calendar"></div>
-            </div>
-        </div>
+<!-- Full-width calendar -->
+<div class="card">
+    <div class="card-body p-0">
+        <div id="calendar"></div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                <ul class="nav nav-tabs card-header-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="userCalendars-tab" data-bs-toggle="tab" href="#userCalendars" role="tab" aria-controls="userCalendars" aria-selected="true">
-                            <i class="fa-solid fa-user me-1"></i><?= _('User') ?>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="systemCalendars-tab" data-bs-toggle="tab" href="#systemCalendars" role="tab" aria-controls="systemCalendars" aria-selected="false">
-                            <i class="fa-solid fa-gear me-1"></i><?= _('System') ?>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="card-body p-0">
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="userCalendars" role="tabpanel" aria-labelledby="userCalendars-tab">
-                        <div class="list-group list-group-flush" id="calendarUserList"></div>
-                        <div class="p-2 text-center d-none" id="addCalendarBtn">
-                            <button class="btn btn-sm btn-ghost-primary w-100">
-                                <i class="fa-solid fa-circle-plus me-1"></i><?= _('New Calendar') ?>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="systemCalendars" role="tabpanel" aria-labelledby="systemCalendars-tab">
-                        <div class="list-group list-group-flush" id="calendarSystemList"></div>
-                    </div>
-                </div>
+</div>
+
+<!-- Calendar Sidebar Offcanvas -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="calendarSidebar" aria-labelledby="calendarSidebarLabel" style="width: 320px;">
+    <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="calendarSidebarLabel">
+            <i class="fa-solid fa-layer-group me-2 text-muted"></i><?= _('Calendars') ?>
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="<?= _('Close') ?>"></button>
+    </div>
+    <div class="offcanvas-body p-0">
+        <!-- User Calendars -->
+        <div class="px-3 pt-3 pb-1">
+            <div class="d-flex align-items-center justify-content-between">
+                <span class="text-uppercase text-muted small fw-bold" style="letter-spacing:.05em;">
+                    <i class="fa-solid fa-user me-1"></i><?= _('My Calendars') ?>
+                </span>
             </div>
         </div>
+        <div class="list-group list-group-flush" id="calendarUserList"></div>
+        <div class="px-3 py-2 d-none" id="addCalendarBtn">
+            <button class="btn btn-sm btn-ghost-primary w-100">
+                <i class="fa-solid fa-circle-plus me-1"></i><?= _('New Calendar') ?>
+            </button>
+        </div>
+
+        <hr class="my-0">
+
+        <!-- System Calendars -->
+        <div class="px-3 pt-3 pb-1">
+            <span class="text-uppercase text-muted small fw-bold" style="letter-spacing:.05em;">
+                <i class="fa-solid fa-gear me-1"></i><?= _('System Calendars') ?>
+            </span>
+        </div>
+        <div class="list-group list-group-flush" id="calendarSystemList"></div>
     </div>
 </div>
 
 <div id="calendar-event-react-app"></div>
+
+<!-- System Settings Panel Component -->
+<?php if ($isAdmin): ?>
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+$(document).ready(function() {
+    window.CRM.settingsPanel.init({
+        container: '#calendarSettings',
+        title: i18next.t('Calendar Settings'),
+        icon: 'fa-solid fa-sliders',
+        headerClass: 'bg-info-lt',
+        settings: [
+            {
+                name: 'bEnabledEvents',
+                label: i18next.t('Enable Events Menu'),
+                type: 'boolean',
+                tooltip: i18next.t('Show or hide the Events menu in the main navigation.')
+            }
+        ],
+        showAllSettingsLink: false,
+        onSave: function() {
+            setTimeout(function() {
+                window.location.reload();
+            }, 1500);
+        }
+    });
+});
+</script>
+<?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.calendarJSArgs = <?= json_encode($calendarJSArgs, JSON_THROW_ON_ERROR) ?>;

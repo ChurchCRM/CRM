@@ -19,15 +19,26 @@ $app->group('/calendar', function (RouteCollectorProxy $group): void {
 function getCalendar(Request $request, Response $response, array $args): Response
 {
     $renderer = new PhpRenderer('templates/calendar/');
+    $isAdmin  = AuthenticationManager::getCurrentUser()->isAdmin();
+
+    $headerButtons = [
+        ['label' => gettext('Calendars'), 'icon' => 'fa-layer-group', 'offcanvas' => '#calendarSidebar', 'adminOnly' => false],
+    ];
+    if ($isAdmin) {
+        $headerButtons[] = ['label' => gettext('Calendar Settings'), 'icon' => 'fa-sliders', 'collapse' => '#calendarSettings', 'adminOnly' => true];
+    }
 
     $pageArgs = [
-        'sRootPath'      => SystemURLs::getRootPath(),
-        'sPageTitle'     => gettext('Calendar'),
-        'sPageSubtitle'  => gettext('Manage events, birthdays, and anniversaries'),
-        'aBreadcrumbs'   => PageHeader::breadcrumbs([
+        'sRootPath'            => SystemURLs::getRootPath(),
+        'sPageTitle'           => gettext('Calendar'),
+        'sPageSubtitle'        => gettext('Manage events, birthdays, and anniversaries'),
+        'aBreadcrumbs'         => PageHeader::breadcrumbs([
             [gettext('Calendar')],
         ]),
-        'calendarJSArgs' => getCalendarJSArgs(),
+        'sPageHeaderButtons'   => PageHeader::buttons($headerButtons),
+        'sSettingsCollapseId'  => $isAdmin ? 'calendarSettings' : '',
+        'isAdmin'              => $isAdmin,
+        'calendarJSArgs'       => getCalendarJSArgs(),
     ];
 
     return $renderer->render($response, 'calendar.php', $pageArgs);
