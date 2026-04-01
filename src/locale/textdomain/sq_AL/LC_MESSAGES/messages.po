@@ -2298,10 +2298,6 @@ msgid "How did you learn of the church?"
 msgstr "Si keni mësuar për kishën?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Paneli i emaileve"
-
-#: 
 msgid "Version"
 msgstr "Versioni"
 
@@ -2350,10 +2346,6 @@ msgid "Custom Drop-Down List"
 msgstr "Custom Drop-Down Lista"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Faleminderit që regjistruat instalimin tuaj të ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF u dërgua me sukses me email te anëtarët e familjes."
 
@@ -2368,18 +2360,6 @@ msgstr "Grupi shtua me sukses në qerre."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupi larguar me sukses nga Cart."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Imazhi i profilit u hoq me sukses."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Imazhi i profilit u përditësua me sukses."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Gabim gjatë ngarkimit të imazhit të profilit."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5276,10 +5256,6 @@ msgid "Thai"
 msgstr "Tajlandisht"
 
 #: 
-msgid "Self Register"
-msgstr "Vetë-regjistrohu"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Vetë-verifikimi në pritje"
 
@@ -5521,14 +5497,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Krijo grup + SHTO shportën"
 
 #: 
-msgid "Move Event"
-msgstr "Lëviz ngjarjen"
-
-#: 
-msgid "Resize Event"
-msgstr "Ridimensiono ngjarjen"
-
-#: 
 msgid "Profile"
 msgstr "Profili"
 
@@ -5705,28 +5673,12 @@ msgid "Are you sure you want to move"
 msgstr "Jeni të sigurt që dëshironi të lëvizni"
 
 #: 
-msgid "from"
-msgstr "nga"
-
-#: 
-msgid "to"
-msgstr "në"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Jeni të sigurt që dëshironi të ndryshoni orën e përfundimit për "
-
-#: 
 msgid "Access Token"
 msgstr "Tokeni i aksesit"
 
 #: 
 msgid "New Access Token"
 msgstr "Token i ri aksesi"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Fshi tokenin e aksesit"
 
 #: 
 msgid "ICS URL"
@@ -5757,14 +5709,6 @@ msgid "New Calendar"
 msgstr "Kalendar i ri"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI e çaktivizuar, por disa kalendarë kanë tokena aksesi"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Që kalendarët të ndahen, cilësimi bEnableExternalCalendarAPI duhet të aktivizohet përveç faktit që kalendari duhet të ketë një kod aksesi specifik"
-
-#: 
 msgid "Links"
 msgstr "Lidhje"
 
@@ -5787,10 +5731,6 @@ msgstr "Aktivizo menunë e Mbledhjes së Fondeve."
 #: 
 msgid "Enable Email menu."
 msgstr "Aktivizo menunë e Email-it."
-
-#: 
-msgid "Enabled Features"
-msgstr "Veçoritë e aktivizuara"
 
 #: 
 msgid "Validation Error"
@@ -6011,10 +5951,6 @@ msgid "PDF handling mode.\n"
 msgstr "Mënyra e trajtimit të PDF.\n"
 "1 = Dialogu i ruajtjes së skedarit\n"
 "2 = Hap në dritaren aktuale të shfletuesit"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Shtypni CTRL + C për të kopjuar numrat e telefonit të të gjithë anëtarëve të grupit"
 
 #: 
 msgid "Verify People"
@@ -6990,10 +6926,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Një fjalëkalim i ri është gjeneruar dhe dërguar në adresën tuaj të email-it."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Lejo përmirësimet para-versionit"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Apliko përditësimin tani"
 
@@ -7014,20 +6946,8 @@ msgid "Backup Skipped"
 msgstr "Kopja rezervë u anashkalua"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Kontrolloni GitHub për informacionin e versionit të fundit"
-
-#: 
 msgid "Complete"
 msgstr "Përfundo"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Vazhdo në kopjen rezervë"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Vazhdo në shkarkim dhe aplikim"
 
 #: 
 msgid "Create Backup"

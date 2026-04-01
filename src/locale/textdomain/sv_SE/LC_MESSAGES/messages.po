@@ -2394,10 +2394,6 @@ msgid "How did you learn of the church?"
 msgstr "Hur fick du reda på kyrkan?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "E-post instrumentbräda"
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -2446,10 +2442,6 @@ msgid "Custom Drop-Down List"
 msgstr "Fritt anpassade 'drop down' lista"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Tack för att du registrerade din ChurchCRM-installation."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF mailades framgångsrikt till familjemedlemmar."
 
@@ -2464,18 +2456,6 @@ msgstr "Grupp lades till korgen."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupp bortagen från korgen."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profilbilden har tagits bort."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profilbilden har uppdaterats."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Profilbild uppladdningsfel."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5397,10 +5377,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Självregister"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Väntar på självverifiering"
 
@@ -5642,14 +5618,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Skapa Group + ADD Cart"
 
 #: 
-msgid "Move Event"
-msgstr "Flytta händelse"
-
-#: 
-msgid "Resize Event"
-msgstr "Ändra storlek på händelse"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5828,28 +5796,12 @@ msgid "Are you sure you want to move"
 msgstr "Är du säker på att du vill flytta"
 
 #: 
-msgid "from"
-msgstr "från"
-
-#: 
-msgid "to"
-msgstr "till"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Är du säker på att du vill ändra sluttid för"
-
-#: 
 msgid "Access Token"
 msgstr "Åtkomsttoken"
 
 #: 
 msgid "New Access Token"
 msgstr "Ny åtkomsttoken"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Radera åtkomsttoken"
 
 #: 
 msgid "ICS URL"
@@ -5880,15 +5832,6 @@ msgid "New Calendar"
 msgstr "Ny kalender"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI är inaktiverat, men vissa kalendrar har åtkomsttecken"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "För att kalendrar ska delas måste inställningen bEnableExternalCalendarAPI vara aktiverad förutom att kalendern har ett specifikt åtkomsttoken"
-
-#: 
 msgid "Links"
 msgstr "Länkar"
 
@@ -5911,10 +5854,6 @@ msgstr "Aktivera Insamlingsmeny."
 #: 
 msgid "Enable Email menu."
 msgstr "Aktivera e-postmenyn."
-
-#: 
-msgid "Enabled Features"
-msgstr "Aktiverade funktioner"
 
 #: 
 msgid "Validation Error"
@@ -6138,11 +6077,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-hanteringsläge.\n"
 "1 = Spara fil-dialog\n"
 "2 = Öppna i det aktuella webbläsarfönstret "
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Tryck CTRL + C för att kopiera alla gruppmedlemmars telefonnummer"
 
 #: 
 msgid "Verify People"
@@ -7119,10 +7053,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Ett nytt lösenord har genererats och skickats till din e-postadress."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Tillåt förhandsversioner av uppgraderingar"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Tillämpa uppdatering nu"
 
@@ -7143,20 +7073,8 @@ msgid "Backup Skipped"
 msgstr "Säkerhetskopiering hoppades över"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Kontrollera GitHub för senaste versionsinformation"
-
-#: 
 msgid "Complete"
 msgstr "Slutför"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Fortsätt till säkerhetskopiering"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Fortsätt till ladda ner och tillämpa"
 
 #: 
 msgid "Create Backup"

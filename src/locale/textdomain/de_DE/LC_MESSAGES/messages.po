@@ -2376,10 +2376,6 @@ msgid "How did you learn of the church?"
 msgstr "Wie haben sie die Gemeinde kennengelernt?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "eMail-Dashboard"
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -2428,10 +2424,6 @@ msgid "Custom Drop-Down List"
 msgstr "Benutzersdefiniert Drop-Down Liste"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Danke für die Registrierungen Ihrer ChurchCRM Installation"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "Das PDF wurde der Familie erfolgreich gemailt."
 
@@ -2446,18 +2438,6 @@ msgstr "Gruppe wurde erfolgreich dem Korb hinzugefügt."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Gruppe wurde erfolgreich aus dem Korb entfernt."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profilbild erfolgreich gelöscht."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profilbild erfolgreich aktualisiert."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Profilbild konnte nicht hochgeladen werden."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5382,10 +5362,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Selbst-Registrierung"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Ausstehende Selbstüberprüfung"
 
@@ -5627,14 +5603,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Gruppe erstellen + Einkaufswagen HINZUFÜGEN"
 
 #: 
-msgid "Move Event"
-msgstr "Veranstaltung verschieben"
-
-#: 
-msgid "Resize Event"
-msgstr "Ereignis Größenänderung "
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5813,28 +5781,12 @@ msgid "Are you sure you want to move"
 msgstr "Sind Sie sicher, dass Sie umziehen wollen?"
 
 #: 
-msgid "from"
-msgstr "von"
-
-#: 
-msgid "to"
-msgstr "an"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Sind Sie sicher, dass Sie die Endzeit ändern wollen "
-
-#: 
 msgid "Access Token"
 msgstr "Zugangstoken"
 
 #: 
 msgid "New Access Token"
 msgstr "Neuer Zugangstoken"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Zugangstoken löschen"
 
 #: 
 msgid "ICS URL"
@@ -5865,15 +5817,6 @@ msgid "New Calendar"
 msgstr "Neuer Kalender"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI deaktiviert, aber einige Kalender haben Zugriffstoken"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Damit Kalender freigegeben werden können, muss die Einstellung bEnableExternalCalendarAPI zusätzlich zum Kalender mit einem bestimmten Zugriffstoken aktiviert werden"
-
-#: 
 msgid "Links"
 msgstr "Links"
 
@@ -5896,10 +5839,6 @@ msgstr "Aktivieren Sie das Spendensammel-Menü."
 #: 
 msgid "Enable Email menu."
 msgstr "Aktivieren Sie das Menü E-Mail."
-
-#: 
-msgid "Enabled Features"
-msgstr "Aktivierte Leistungsmerkmale"
 
 #: 
 msgid "Validation Error"
@@ -6123,11 +6062,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-Verarbeitungsmodus.\n"
 "1 = Datei speichern Dialog\n"
 "2 = Im aktuellen Browser-Fenster öffnen"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Drücken Sie CTRL + C, um die Telefonnummern aller Gruppenmitglieder zu kopieren."
 
 #: 
 msgid "Verify People"
@@ -7104,10 +7038,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Ein neues Passwort wurde generiert und an Ihre E-Mail-Adresse gesendet."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Pre-Release-Upgrades zulassen"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Update jetzt anwenden"
 
@@ -7128,20 +7058,8 @@ msgid "Backup Skipped"
 msgstr "Sicherung übersprungen"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Überprüfen Sie GitHub auf die neuesten Release-Informationen"
-
-#: 
 msgid "Complete"
 msgstr "Abschließen"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Zur Sicherung fortfahren"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Zum Download & Anwenden fortfahren"
 
 #: 
 msgid "Create Backup"

@@ -2297,10 +2297,6 @@ msgid "How did you learn of the church?"
 msgstr "Πώς έμαθες για την εκκλησία;"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Πίνακας ελέγχου ηλεκτρονικού ταχυδρομείου"
-
-#: 
 msgid "Version"
 msgstr "Εκδοχή"
 
@@ -2349,10 +2345,6 @@ msgid "Custom Drop-Down List"
 msgstr "Προσαρμοσμένη αναπτυσσόμενη λίστα"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Σας ευχαριστούμε που καταχωρίσατε την εγκατάσταση του ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "Το PDF εστάλη επιτυχώς με email στα μέλη της οικογένειας."
 
@@ -2367,18 +2359,6 @@ msgstr "Η ομάδα προστέθηκε με επιτυχία στο καλά
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Η ομάδα αφαιρέθηκε με επιτυχία από το καλάθι."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Η εικόνα προφίλ καταργήθηκε με επιτυχία."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Η εικόνα προφίλ ενημερώθηκε με επιτυχία."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Σφάλμα μεταφόρτωσης εικόνας προφίλ."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5283,10 +5263,6 @@ msgid "Thai"
 msgstr "Ταϊλανδός"
 
 #: 
-msgid "Self Register"
-msgstr "Αυτοεγγραφή"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Εκκρεμεί η αυτοεπαλήθευση"
 
@@ -5528,14 +5504,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Δημιουργία ομάδας + ΠΡΟΣΘΗΚΗ Καλαθιού"
 
 #: 
-msgid "Move Event"
-msgstr "Μετακίνηση συμβάντος"
-
-#: 
-msgid "Resize Event"
-msgstr "Αλλαγή μεγέθους συμβάντος"
-
-#: 
 msgid "Profile"
 msgstr "Προφίλ"
 
@@ -5714,28 +5682,12 @@ msgid "Are you sure you want to move"
 msgstr "Είστε σίγουροι ότι θέλετε να μετακινηθείτε"
 
 #: 
-msgid "from"
-msgstr "από"
-
-#: 
-msgid "to"
-msgstr "προς την"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Είστε βέβαιοι ότι θέλετε να αλλάξετε την ώρα λήξης για "
-
-#: 
 msgid "Access Token"
 msgstr "Διακριτικό πρόσβασης"
 
 #: 
 msgid "New Access Token"
 msgstr "Νέο διακριτικό πρόσβασης"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Διαγραφή Access Token"
 
 #: 
 msgid "ICS URL"
@@ -5766,15 +5718,6 @@ msgid "New Calendar"
 msgstr "Νέο Ημερολόγιο"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI είναι απενεργοποιημένο, αλλά ορισμένα ημερολόγια έχουν διακριτικά πρόσβασης"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Για κοινή χρήση ημερολογίων, η ρύθμιση bEnableExternalCalendarAPI πρέπει να είναι ενεργοποιημένη εκτός από το ημερολόγιο που έχει συγκεκριμένο διακριτικό πρόσβασης"
-
-#: 
 msgid "Links"
 msgstr "Συνδέσεις"
 
@@ -5797,10 +5740,6 @@ msgstr "Ενεργοποίηση μενού Εράνου."
 #: 
 msgid "Enable Email menu."
 msgstr "Ενεργοποίηση μενού Email."
-
-#: 
-msgid "Enabled Features"
-msgstr "Ενεργοποιημένες λειτουργίες"
 
 #: 
 msgid "Validation Error"
@@ -6024,11 +5963,6 @@ msgid "PDF handling mode.\n"
 msgstr "Λειτουργία χειρισμού PDF.\n"
 "1 = Διάλογος Αποθήκευση αρχείου\n"
 "2 = Άνοιγμα στο τρέχον παράθυρο του προγράμματος περιήγησης"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Πατήστε CTRL + C για να αντιγράψετε τους αριθμούς τηλεφώνου όλων των μελών της ομάδας"
 
 #: 
 msgid "Verify People"
@@ -7005,10 +6939,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Ένας νέος κωδικός πρόσβασης έχει δημιουργηθεί και αποστολεί στη διεύθυνση email σας."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Επιτρέψτε Προ-κυκλοφορίες"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Εφαρμόστε Ενημέρωση Τώρα"
 
@@ -7029,20 +6959,8 @@ msgid "Backup Skipped"
 msgstr "Αντίγραφο Παραλείφθηκε"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Ελέγξτε το GitHub για τις τελευταίες πληροφορίες έκδοσης"
-
-#: 
 msgid "Complete"
 msgstr "Ολοκληρωμένο"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Συνέχεια σε Αντίγραφο"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Συνέχεια σε Λήψη & Εφαρμογή"
 
 #: 
 msgid "Create Backup"

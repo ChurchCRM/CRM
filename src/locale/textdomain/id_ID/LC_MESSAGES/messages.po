@@ -2298,10 +2298,6 @@ msgid "How did you learn of the church?"
 msgstr "Bagaimana Anda belajar tentang gereja?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Dasbor Surel"
-
-#: 
 msgid "Version"
 msgstr "Versi: kapan"
 
@@ -2350,10 +2346,6 @@ msgid "Custom Drop-Down List"
 msgstr "Daftar Drop-Down Kustom"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Terima kasih telah mendaftarkan instalasi ChurchCRM Anda."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF berhasil diemail ke anggota keluarga."
 
@@ -2368,18 +2360,6 @@ msgstr "Grup berhasil ditambahkan ke Troli."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grup berhasil dihapus dari Keranjang."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Gambar Profil berhasil dihapus."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Gambar Profil berhasil diperbarui."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Kesalahan pengunggahan Gambar Profil."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5284,10 +5264,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Daftar Mandiri"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Verifikasi Diri Tertunda"
 
@@ -5529,14 +5505,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Buat Grup + ADD Cart"
 
 #: 
-msgid "Move Event"
-msgstr "Pindahkan Acara"
-
-#: 
-msgid "Resize Event"
-msgstr "Ubah Ukuran Acara"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5715,28 +5683,12 @@ msgid "Are you sure you want to move"
 msgstr "Anda yakin ingin pindah"
 
 #: 
-msgid "from"
-msgstr "dari"
-
-#: 
-msgid "to"
-msgstr "untuk"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Anda yakin ingin mengubah waktu berakhirnya "
-
-#: 
 msgid "Access Token"
 msgstr "Token Akses"
 
 #: 
 msgid "New Access Token"
 msgstr "Token Akses Baru"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Hapus Token Akses"
 
 #: 
 msgid "ICS URL"
@@ -5767,15 +5719,6 @@ msgid "New Calendar"
 msgstr "Kalender Baru"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI dinonaktifkan, tetapi beberapa kalender memiliki token akses"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Agar kalender dapat dibagikan, pengaturan bEnableExternalCalendarAPI harus diaktifkan selain kalender yang memiliki token akses khusus"
-
-#: 
 msgid "Links"
 msgstr "Tautan"
 
@@ -5798,10 +5741,6 @@ msgstr "Aktifkan menu Penggalangan Dana."
 #: 
 msgid "Enable Email menu."
 msgstr "Aktifkan menu Email."
-
-#: 
-msgid "Enabled Features"
-msgstr "Fitur yang Diaktifkan"
 
 #: 
 msgid "Validation Error"
@@ -6018,11 +5957,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "Mode penanganan PDF. 1 = Simpan dialog File 2 = Buka di jendela browser saat ini"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Tekan CTRL + C untuk menyalin semua nomor telepon anggota grup"
 
 #: 
 msgid "Verify People"
@@ -6997,10 +6931,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Kata sandi baru telah dibuat dan dikirim ke email Anda."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Izinkan Pembaruan Pre-release"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Terapkan Pembaruan Sekarang"
 
@@ -7021,20 +6951,8 @@ msgid "Backup Skipped"
 msgstr "Pencadangan Dilewati"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Cek GitHub untuk info rilis terbaru"
-
-#: 
 msgid "Complete"
 msgstr "Selesai"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Lanjutkan ke Pencadangan"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Lanjutkan Unduh & Terapkan"
 
 #: 
 msgid "Create Backup"

@@ -2357,10 +2357,6 @@ msgid "How did you learn of the church?"
 msgstr "Hogyan tanultál az egyház?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "E-mail műszerfal"
-
-#: 
 msgid "Version"
 msgstr "Verzió"
 
@@ -2409,10 +2405,6 @@ msgid "Custom Drop-Down List"
 msgstr "Egyedi Legördülő lista"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Köszönjük, hogy regisztrálta ChurchCRM telepítését."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "A PDF sikeresen elküldve a családtagoknak."
 
@@ -2427,18 +2419,6 @@ msgstr "Csoport sikeresen hozzáadva a kosárba."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Csoport sikeresen eltávolították a kosárba."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "A profilkép sikeresen eltávolítva."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "A profilkép sikeresen frissítve."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Hiba a profilkép feltöltésekor."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5347,10 +5327,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Önregisztráció"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Várakozó önigazolás"
 
@@ -5592,14 +5568,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Csoport létrehozása + Kosár hozzáadása"
 
 #: 
-msgid "Move Event"
-msgstr "Esemény áthelyezése"
-
-#: 
-msgid "Resize Event"
-msgstr "Esemény átméretezése"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5776,28 +5744,12 @@ msgid "Are you sure you want to move"
 msgstr "Biztos, hogy áthelyezni akarja"
 
 #: 
-msgid "from"
-msgstr "tól"
-
-#: 
-msgid "to"
-msgstr "nak"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Biztos, hogy módosítani akarja a végzési időt"
-
-#: 
 msgid "Access Token"
 msgstr "Hozzáférési token"
 
 #: 
 msgid "New Access Token"
 msgstr "Új hozzáférési token"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Hozzáférési token törlése"
 
 #: 
 msgid "ICS URL"
@@ -5828,14 +5780,6 @@ msgid "New Calendar"
 msgstr "Új naptár"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI letiltva, de egyes naptáraknak van hozzáférési tokenje"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Ahhoz, hogy a naptárakat megosztani lehessen, a bEnableExternalCalendarAPI beállítást engedélyezni kell, a naptárnak mellett egy speciális hozzáférési token szükséges"
-
-#: 
 msgid "Links"
 msgstr "Linkek"
 
@@ -5858,10 +5802,6 @@ msgstr "Adománygyűjtési menü engedélyezése."
 #: 
 msgid "Enable Email menu."
 msgstr "E-mail menü engedélyezése."
-
-#: 
-msgid "Enabled Features"
-msgstr "Engedélyezett funkciók"
 
 #: 
 msgid "Validation Error"
@@ -6082,10 +6022,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF kezelési mód.\n"
 "1 = Fájl mentése párbeszédpanel\n"
 "2 = Megnyitás az aktuális böngészőablakban"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Nyomja meg a CTRL + C billentyűt az összes csoporttag telefonszámának másolásához"
 
 #: 
 msgid "Verify People"
@@ -7061,10 +6997,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Az új jelszó generálva és az e-mail címére elküldve."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Az előzetes frissítések engedélyezése"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Frissítés alkalmazása most"
 
@@ -7085,20 +7017,8 @@ msgid "Backup Skipped"
 msgstr "Biztonsági mentés kihagyva"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Tekintse meg a GitHubot a legújabb kiadási információkért"
-
-#: 
 msgid "Complete"
 msgstr "Teljes"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Folytassa a biztonsági mentést"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Folytassa a letöltést és alkalmazást"
 
 #: 
 msgid "Create Backup"

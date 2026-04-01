@@ -2309,10 +2309,6 @@ msgid "How did you learn of the church?"
 msgstr "Làm thế nào mà bạn học hỏi được tại Hội Thánh ?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Trang tổng quan eMail"
-
-#: 
 msgid "Version"
 msgstr "Phiên bản"
 
@@ -2361,10 +2357,6 @@ msgid "Custom Drop-Down List"
 msgstr "Danh sách thả xuống tùy chỉnh"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Cảm ơn bạn đã đăng ký cài đặt ChurchCRM của mình."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF đã được gửi thành công qua email cho các thành viên trong gia đình."
 
@@ -2379,18 +2371,6 @@ msgstr "Đã thêm thành công nhóm vào Giỏ hàng."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Đã xóa thành công nhóm khỏi Giỏ hàng."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Hình ảnh hồ sơ đã được xóa thành công."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Đã cập nhật thành công hình ảnh đại diện"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Lỗi tải lên ảnh hồ sơ."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5295,10 +5275,6 @@ msgid "Thai"
 msgstr "Thái"
 
 #: 
-msgid "Self Register"
-msgstr "Tự đăng ký"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Chờ tự xác nhận"
 
@@ -5540,14 +5516,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Tạo nhóm + THÊM giỏ hàng"
 
 #: 
-msgid "Move Event"
-msgstr "Di chuyển sự kiện"
-
-#: 
-msgid "Resize Event"
-msgstr "Thay đổi kích thước sự kiện"
-
-#: 
 msgid "Profile"
 msgstr "Hồ sơ của tôi"
 
@@ -5726,28 +5694,12 @@ msgid "Are you sure you want to move"
 msgstr "Bạn có chắc chắn muốn chuyển đi không"
 
 #: 
-msgid "from"
-msgstr "từ"
-
-#: 
-msgid "to"
-msgstr "đến"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Bạn có chắc chắn muốn thay đổi thời gian kết thúc cho"
-
-#: 
 msgid "Access Token"
 msgstr "Truy cập thẻ"
 
 #: 
 msgid "New Access Token"
 msgstr "Mã truy cập mới"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Xóa mã thông báo truy cập"
 
 #: 
 msgid "ICS URL"
@@ -5778,15 +5730,6 @@ msgid "New Calendar"
 msgstr "Tạo lịch mới"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI bị vô hiệu hóa, nhưng một số lịch có mã thông báo truy cập"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Để lịch được chia sẻ, cài đặt bEnableExternalCalendarAPI phải được bật ngoài việc lịch có mã thông báo truy cập cụ thể"
-
-#: 
 msgid "Links"
 msgstr "Liên kết"
 
@@ -5809,10 +5752,6 @@ msgstr "Bật menu Gây quỹ."
 #: 
 msgid "Enable Email menu."
 msgstr "Bật menu Email."
-
-#: 
-msgid "Enabled Features"
-msgstr "Tính năng"
 
 #: 
 msgid "Validation Error"
@@ -6029,11 +5968,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "Thông tin người không có sẵn được kế thừa từ gia đình được chỉ định để hiển thị?"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Nhấn CTRL + C để sao chép tất cả số điện thoại của các thành viên trong nhóm"
 
 #: 
 msgid "Verify People"
@@ -7008,10 +6942,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Mật khẩu mới đã được tạo và gửi vào email của bạn."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Cho phép nâng cấp phiên bản thử nghiệm (Pre-release)"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Cập nhật ngay"
 
@@ -7032,20 +6962,8 @@ msgid "Backup Skipped"
 msgstr "Đã bỏ qua sao lưu"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Kiểm tra GitHub để biết thông tin phiên bản mới nhất"
-
-#: 
 msgid "Complete"
 msgstr "Hoàn tất"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Tiếp tục đến phần Sao lưu"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Tiếp tục Tải xuống & Áp dụng"
 
 #: 
 msgid "Create Backup"

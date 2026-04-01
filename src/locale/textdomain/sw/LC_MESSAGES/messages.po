@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "Ulijifunzaje kuhusu kanisa?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Dashibodi ya barua pepe"
-
-#: 
 msgid "Version"
 msgstr "Toleo"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "Orodha Maalum ya Kunjuzi"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Asante kwa kusajili usakinishaji wako wa ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF imetumwa kwa barua pepe kwa wanafamilia."
 
@@ -2365,18 +2357,6 @@ msgstr "Kikundi kimeongezwa kwenye Rukwama."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Kikundi kimeondolewa kwenye Rukwama."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Picha ya Wasifu imeondolewa."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Picha ya Wasifu imesasishwa."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Hitilafu ya Upakiaji wa Picha ya Wasifu."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5279,10 +5259,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Kujiandikisha"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Inasubiri Kujithibitisha"
 
@@ -5524,14 +5500,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Unda Kikundi + ADD Cart"
 
 #: 
-msgid "Move Event"
-msgstr "Sogeza Tukio"
-
-#: 
-msgid "Resize Event"
-msgstr "Badilisha ukubwa wa Tukio"
-
-#: 
 msgid "Profile"
 msgstr "Wasifu"
 
@@ -5710,28 +5678,12 @@ msgid "Are you sure you want to move"
 msgstr "Je, una uhakika unataka kuhama"
 
 #: 
-msgid "from"
-msgstr "kutoka"
-
-#: 
-msgid "to"
-msgstr "kwa"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Je, una uhakika unataka kubadilisha wakati wa mwisho kwa "
-
-#: 
 msgid "Access Token"
 msgstr "Tokeni ya Ufikiaji"
 
 #: 
 msgid "New Access Token"
 msgstr "Tokeni Mpya ya Ufikiaji"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Futa Tokeni ya Ufikiaji"
 
 #: 
 msgid "ICS URL"
@@ -5762,14 +5714,6 @@ msgid "New Calendar"
 msgstr "Kalenda Mpya"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI imezimwa, lakini baadhi ya kalenda zina tokeni za ufikiaji"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Ili kalenda zishirikiwe, ni lazima mipangilio ya bEnableExternalCalendarAPI iwezeshwe pamoja na kalenda kuwa na tokeni maalum ya ufikiaji."
-
-#: 
 msgid "Links"
 msgstr "Viungo"
 
@@ -5792,10 +5736,6 @@ msgstr "Washa menyu ya Kuchangisha pesa."
 #: 
 msgid "Enable Email menu."
 msgstr "Washa menyu ya Barua pepe."
-
-#: 
-msgid "Enabled Features"
-msgstr "Vipengele Vilivyowezeshwa"
 
 #: 
 msgid "Validation Error"
@@ -6018,11 +5958,6 @@ msgid "PDF handling mode.\n"
 msgstr "Hali ya kushughulikia PDF.\n"
 "1 = Hifadhi kidirisha cha faili\n"
 "2 = Fungua katika dirisha la kivinjari la sasa"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Bonyeza CTRL + C ili kunakili nambari za simu za washiriki wote wa kikundi"
 
 #: 
 msgid "Verify People"
@@ -6998,10 +6933,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Nenosiri jipya limetengenezwa na kutumwa kwa barua pepe yako."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Ruhusu Masasisho ya Majaribio"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Tumia Sasisho Sasa"
 
@@ -7022,20 +6953,8 @@ msgid "Backup Skipped"
 msgstr "Nakala Imerukwa"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Angalia GitHub kwa taarifa za toleo la hivi karibuni"
-
-#: 
 msgid "Complete"
 msgstr "Imekamilika"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Endelea kwenye Nakala"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Endelea Kupakua na Kutumia"
 
 #: 
 msgid "Create Backup"
