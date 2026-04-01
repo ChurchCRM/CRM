@@ -1,6 +1,6 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "「%s」的搜尋結果 %d 筆"
   },
-  "name@example.com": ""
+  "name@example.com": "name@example.com"
 }
