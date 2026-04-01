@@ -16,8 +16,9 @@ describe("Admin Calendar", () => {
         cy.get("#addCalendarBtn").click();
 
         cy.get("#calendarName").click().type(title);
-        cy.get("#ForegroundColor").type("FA8072");
-        cy.get("#BackgroundColor").type("212F3D");
+        // type="color" inputs require invoke/trigger — .type() does not work
+        cy.get("#ForegroundColor").invoke("val", "#FA8072").trigger("change");
+        cy.get("#BackgroundColor").invoke("val", "#212F3D").trigger("change");
 
         // Save button rendered by bootbox with float-end (Bootstrap 5)
         cy.get(".modal-footer .btn-primary.float-end").click();
