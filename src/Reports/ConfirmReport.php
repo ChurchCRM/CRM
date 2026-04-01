@@ -14,7 +14,7 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Exception;
 
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isCreateDirectoryEnabled(), 'CreateDirectory');
 
 class PdfConfirmReport extends ChurchInfoReport
 {
