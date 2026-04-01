@@ -287,64 +287,66 @@ function initializeGroupView() {
   // Email dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
   var emailLoaded = false;
-  $("#emailDropdownBtn").parent().on("show.bs.dropdown", function () {
-    if (emailLoaded) return;
-    emailLoaded = true;
-    window.CRM.APIRequest({
-      method: "GET",
-      path: "groups/" + window.CRM.currentGroup + "/emails",
-    }).done(function (data) {
-      var menu = $("#emailDropdownMenu");
-      menu.empty();
-      if (!data.all) {
-        menu.html('<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>");
-        return;
-      }
-      // All section
-      menu.append(
-        '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
-          window.CRM.escapeHtml(data.all) +
-          '"><i class="fa-solid fa-copy me-2"></i>' +
-          i18next.t("Copy All Emails") +
-          "</button>",
-      );
-      menu.append(
-        '<button class="dropdown-item" data-action="mailto" data-emails="' +
-          window.CRM.escapeHtml(data.all) +
-          '"><i class="fa-solid fa-envelope me-2"></i>' +
-          i18next.t("Email All") +
-          "</button>",
-      );
-      menu.append(
-        '<button class="dropdown-item" data-action="bcc" data-emails="' +
-          window.CRM.escapeHtml(data.all) +
-          '"><i class="fa-solid fa-user-secret me-2"></i>' +
-          i18next.t("BCC All") +
-          "</button>",
-      );
-      // Per-role sections
-      if (data.roles && Object.keys(data.roles).length > 0) {
-        $.each(data.roles, function (roleName, emails) {
-          menu.append('<div class="dropdown-divider"></div>');
-          menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
-          menu.append(
-            '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
-              window.CRM.escapeHtml(emails) +
-              '"><i class="fa-solid fa-copy me-2"></i>' +
-              i18next.t("Copy") +
-              "</button>",
-          );
-          menu.append(
-            '<button class="dropdown-item" data-action="mailto" data-emails="' +
-              window.CRM.escapeHtml(emails) +
-              '"><i class="fa-solid fa-envelope me-2"></i>' +
-              i18next.t("Email") +
-              "</button>",
-          );
-        });
-      }
+  $("#emailDropdownBtn")
+    .parent()
+    .on("show.bs.dropdown", function () {
+      if (emailLoaded) return;
+      emailLoaded = true;
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/emails",
+      }).done(function (data) {
+        var menu = $("#emailDropdownMenu");
+        menu.empty();
+        if (!data.all) {
+          menu.html('<span class="dropdown-item text-muted">' + i18next.t("No email addresses available") + "</span>");
+          return;
+        }
+        // All section
+        menu.append(
+          '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-copy me-2"></i>' +
+            i18next.t("Copy All Emails") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="mailto" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-envelope me-2"></i>' +
+            i18next.t("Email All") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="bcc" data-emails="' +
+            window.CRM.escapeHtml(data.all) +
+            '"><i class="fa-solid fa-user-secret me-2"></i>' +
+            i18next.t("BCC All") +
+            "</button>",
+        );
+        // Per-role sections
+        if (data.roles && Object.keys(data.roles).length > 0) {
+          $.each(data.roles, function (roleName, emails) {
+            menu.append('<div class="dropdown-divider"></div>');
+            menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
+            menu.append(
+              '<button class="dropdown-item" data-action="copy-emails" data-emails="' +
+                window.CRM.escapeHtml(emails) +
+                '"><i class="fa-solid fa-copy me-2"></i>' +
+                i18next.t("Copy") +
+                "</button>",
+            );
+            menu.append(
+              '<button class="dropdown-item" data-action="mailto" data-emails="' +
+                window.CRM.escapeHtml(emails) +
+                '"><i class="fa-solid fa-envelope me-2"></i>' +
+                i18next.t("Email") +
+                "</button>",
+            );
+          });
+        }
+      });
     });
-  });
 
   // Handle email actions (delegated from dynamic items)
   $("#group-view-toolbar").on("click", "[data-action='copy-emails']", function () {
@@ -361,58 +363,60 @@ function initializeGroupView() {
   // Text dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
   var textLoaded = false;
-  $("#textDropdownBtn").parent().on("show.bs.dropdown", function () {
-    if (textLoaded) return;
-    textLoaded = true;
-    window.CRM.APIRequest({
-      method: "GET",
-      path: "groups/" + window.CRM.currentGroup + "/phones",
-    }).done(function (data) {
-      var menu = $("#textDropdownMenu");
-      menu.empty();
-      if (!data.phones || !data.phones.length) {
-        menu.html('<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>");
-        return;
-      }
-      // All section
-      menu.append(
-        '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-          window.CRM.escapeHtml(data.displayList) +
-          '"><i class="fa-solid fa-copy me-2"></i>' +
-          i18next.t("Copy All Numbers") +
-          "</button>",
-      );
-      menu.append(
-        '<button class="dropdown-item" data-action="sms" data-phones="' +
-          window.CRM.escapeHtml(JSON.stringify(data.phones)) +
-          '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-          i18next.t("Text All") +
-          "</button>",
-      );
-      // Per-role sections
-      if (data.roles && Object.keys(data.roles).length > 0) {
-        $.each(data.roles, function (roleName, roleData) {
-          if (!roleData.phones || !roleData.phones.length) return;
-          menu.append('<div class="dropdown-divider"></div>');
-          menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
-          menu.append(
-            '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-              window.CRM.escapeHtml(roleData.displayList) +
-              '"><i class="fa-solid fa-copy me-2"></i>' +
-              i18next.t("Copy") +
-              "</button>",
-          );
-          menu.append(
-            '<button class="dropdown-item" data-action="sms" data-phones="' +
-              window.CRM.escapeHtml(JSON.stringify(roleData.phones)) +
-              '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-              i18next.t("Text") +
-              "</button>",
-          );
-        });
-      }
+  $("#textDropdownBtn")
+    .parent()
+    .on("show.bs.dropdown", function () {
+      if (textLoaded) return;
+      textLoaded = true;
+      window.CRM.APIRequest({
+        method: "GET",
+        path: "groups/" + window.CRM.currentGroup + "/phones",
+      }).done(function (data) {
+        var menu = $("#textDropdownMenu");
+        menu.empty();
+        if (!data.phones || !data.phones.length) {
+          menu.html('<span class="dropdown-item text-muted">' + i18next.t("No phone numbers available") + "</span>");
+          return;
+        }
+        // All section
+        menu.append(
+          '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+            window.CRM.escapeHtml(data.displayList) +
+            '"><i class="fa-solid fa-copy me-2"></i>' +
+            i18next.t("Copy All Numbers") +
+            "</button>",
+        );
+        menu.append(
+          '<button class="dropdown-item" data-action="sms" data-phones="' +
+            window.CRM.escapeHtml(JSON.stringify(data.phones)) +
+            '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+            i18next.t("Text All") +
+            "</button>",
+        );
+        // Per-role sections
+        if (data.roles && Object.keys(data.roles).length > 0) {
+          $.each(data.roles, function (roleName, roleData) {
+            if (!roleData.phones || !roleData.phones.length) return;
+            menu.append('<div class="dropdown-divider"></div>');
+            menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
+            menu.append(
+              '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
+                window.CRM.escapeHtml(roleData.displayList) +
+                '"><i class="fa-solid fa-copy me-2"></i>' +
+                i18next.t("Copy") +
+                "</button>",
+            );
+            menu.append(
+              '<button class="dropdown-item" data-action="sms" data-phones="' +
+                window.CRM.escapeHtml(JSON.stringify(roleData.phones)) +
+                '"><i class="fa-solid fa-comment-sms me-2"></i>' +
+                i18next.t("Text") +
+                "</button>",
+            );
+          });
+        }
+      });
     });
-  });
 
   // Handle text actions (delegated from dynamic items)
   $("#group-view-toolbar").on("click", "[data-action='copy-phones']", function () {
