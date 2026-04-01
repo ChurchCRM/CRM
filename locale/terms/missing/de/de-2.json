@@ -229,5 +229,8 @@
   "This task is already completed": "Diese Aufgabe ist bereits abgeschlossen",
   "This task will be marked as uncompleted": "Diese Aufgabe wird als unvollständig markiert",
   "This user is not assigned to any role": "Diesem Benutzer ist keine Rolle zugewiesen",
-  "This user is not assigned to any group": "Dieser Benutzer ist keiner Gruppe zugewiesen"
+  "This user is not assigned to any group": "Dieser Benutzer ist keiner Gruppe zugewiesen",
+  "Find people who didn't attend an event": "Personen finden, die an einem Ereignis nicht teilgenommen haben",
+  "Find people who pledged one year but not another": "Personen finden, die ein Jahr verpflichtet haben, aber nicht das andere",
+  "Find people with a custom field value": "Personen mit einem benutzerdefinierten Feldwert finden"
 }
