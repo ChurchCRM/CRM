@@ -11,7 +11,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <i class="fa-solid fa-triangle-exclamation me-2"></i>
         <div>
             <h4 class="alert-title mb-1"><?= _('External Calendar API Disabled') ?></h4>
-            <p class="mb-0"><?= _('bEnableExternalCalendarAPI is disabled, but some calendars have access tokens. For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled.') ?></p>
+            <p class="mb-0"><?= _('Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars.') ?></p>
         </div>
     </div>
 </div>
@@ -78,6 +78,12 @@ $(document).ready(function() {
                 label: i18next.t('Enable Events Menu'),
                 type: 'boolean',
                 tooltip: i18next.t('Show or hide the Events menu in the main navigation.')
+            },
+            {
+                name: 'bEnableExternalCalendarAPI',
+                label: i18next.t('Enable External Calendar API'),
+                type: 'boolean',
+                tooltip: i18next.t('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.')
             }
         ],
         showAllSettingsLink: false,
