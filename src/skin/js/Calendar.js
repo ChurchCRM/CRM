@@ -99,6 +99,11 @@ function deleteCalendar() {
 }
 
 window.calendarPropertiesModal = {
+  _copyToClipboard: function (text) {
+    navigator.clipboard.writeText(text).then(function () {
+      // brief visual feedback handled by btn animation
+    });
+  },
   getBootboxContent: function (calendar) {
     var HTMLURL = "";
     var icsURL = "";
@@ -108,100 +113,104 @@ window.calendarPropertiesModal = {
       icsURL = window.CRM.fullURL + "/api/public/calendar/" + calendar.AccessToken + "/ics";
       jsonURL = window.CRM.fullURL + "/api/public/calendar/" + calendar.AccessToken + "/events";
     }
-    var frm_str =
-      '<form id="some-form"><table class="table modal-table">' +
-      "<tr>" +
-      "<td>" +
-      i18next.t("Access Token") +
-      ":</td>" +
-      '<td colspan="3">' +
-      '<input id="AccessToken" class="form-control" type="text" readonly value="' +
-      calendar.AccessToken +
-      '"/>' +
-      (window.CRM.calendarJSArgs.isModifiable
-        ? '<a id="NewAccessToken" class="btn btn-warning"><i class="fa-solid fa-repeat me-1"></i>' +
-          i18next.t("New Access Token") +
-          "</a>"
-        : "") +
-      (window.CRM.calendarJSArgs.isModifiable && calendar.AccessToken != null
-        ? '<a id="DeleteAccessToken" class="btn btn-danger"><i class="fa-solid fa-trash-can me-1"></i>' +
-          i18next.t("Delete Access Token") +
-          "</a>"
-        : "") +
-      "</td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td class='LabelColumn'>" +
-      i18next.t("HTML URL") +
-      ":</td>" +
-      '<td colspan="3">' +
-      '<span ><a href="' +
-      HTMLURL +
-      '">' +
-      HTMLURL +
-      "</a></span>" +
-      "</td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td class='LabelColumn'>" +
-      i18next.t("ICS URL") +
-      ":</td>" +
-      '<td colspan="3">' +
-      '<span ><a href="' +
-      icsURL +
-      '">' +
-      icsURL +
-      "</a></span>" +
-      "</td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td class='LabelColumn'>" +
-      "JSON URL" +
-      ":</td>" +
-      '<td colspan="3">' +
-      '<span ><a href="' +
-      jsonURL +
-      '">' +
-      jsonURL +
-      "</a></span>" +
-      "</td>" +
-      "</tr>" +
-      "<tr>" +
-      "<td class='LabelColumn'>" +
-      i18next.t("Foreground Color") +
-      ":</td>" +
-      "<td>" +
-      '<span class="d-inline-flex align-items-center gap-2">' +
-      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
-      calendar.ForegroundColor +
-      '"></span>' +
-      "<code>#" +
-      calendar.ForegroundColor +
-      "</code>" +
-      "</span>" +
-      "</td>" +
-      "</tr>" +
-      "<tr>" +
-      '<td class="LabelColumn">' +
-      i18next.t("Background Color") +
-      ":" +
-      "</td>" +
-      "<td>" +
-      '<span class="d-inline-flex align-items-center gap-2">' +
-      '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
-      calendar.BackgroundColor +
-      '"></span>' +
-      "<code>#" +
-      calendar.BackgroundColor +
-      "</code>" +
-      "</span>" +
-      "</td>" +
-      "</tr>" +
-      "</table>" +
-      "</form>";
-    var object = $("<div/>").html(frm_str).contents();
 
-    return object;
+    var copyBtn = function (url) {
+      return (
+        '<button type="button" class="btn btn-icon btn-ghost-secondary copy-url-btn" data-url="' +
+        url +
+        '" title="' +
+        i18next.t("Copy to clipboard") +
+        '">' +
+        '<i class="fa-regular fa-copy"></i>' +
+        "</button>"
+      );
+    };
+
+    var urlRow = function (label, url) {
+      if (!url) return "";
+      return (
+        '<div class="mb-3">' +
+        '<label class="form-label text-muted small mb-1">' + label + "</label>" +
+        '<div class="input-group">' +
+        '<input type="text" class="form-control form-control-sm font-monospace" readonly value="' + url + '">' +
+        '<a href="' + url + '" target="_blank" class="btn btn-sm btn-ghost-secondary" title="' + i18next.t("Open") + '">' +
+        '<i class="fa-solid fa-arrow-up-right-from-square"></i>' +
+        "</a>" +
+        copyBtn(url) +
+        "</div>" +
+        "</div>"
+      );
+    };
+
+    var colorSwatch = function (hex) {
+      return (
+        '<span class="d-inline-flex align-items-center gap-2">' +
+        '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' + hex + '"></span>' +
+        "<code>#" + hex + "</code>" +
+        "</span>"
+      );
+    };
+
+    // Access token section
+    var tokenSection =
+      '<div class="mb-3">' +
+      '<label class="form-label text-muted small mb-1">' + i18next.t("Access Token") + "</label>" +
+      '<div class="input-group">' +
+      '<input id="AccessToken" class="form-control form-control-sm font-monospace" type="text" readonly value="' + (calendar.AccessToken || "") + '">' +
+      copyBtn(calendar.AccessToken || "") +
+      "</div>";
+
+    if (window.CRM.calendarJSArgs.isModifiable) {
+      tokenSection +=
+        '<div class="d-flex gap-2 mt-2">' +
+        '<a id="NewAccessToken" class="btn btn-sm btn-outline-warning flex-fill">' +
+        '<i class="fa-solid fa-repeat me-1"></i>' + i18next.t("New Access Token") +
+        "</a>";
+      if (calendar.AccessToken != null) {
+        tokenSection +=
+          '<a id="DeleteAccessToken" class="btn btn-sm btn-outline-danger">' +
+          '<i class="fa-solid fa-trash-can me-1"></i>' + i18next.t("Delete") +
+          "</a>";
+      }
+      tokenSection += "</div>";
+    }
+    tokenSection += "</div>";
+
+    var frm_str =
+      '<form id="some-form" class="px-1">' +
+      tokenSection +
+      urlRow(i18next.t("HTML URL"), HTMLURL) +
+      urlRow(i18next.t("ICS URL"), icsURL) +
+      urlRow("JSON URL", jsonURL) +
+      '<div class="row g-3">' +
+      '<div class="col-6">' +
+      '<label class="form-label text-muted small mb-1">' + i18next.t("Foreground Color") + "</label>" +
+      '<div>' + colorSwatch(calendar.ForegroundColor) + "</div>" +
+      "</div>" +
+      '<div class="col-6">' +
+      '<label class="form-label text-muted small mb-1">' + i18next.t("Background Color") + "</label>" +
+      '<div>' + colorSwatch(calendar.BackgroundColor) + "</div>" +
+      "</div>" +
+      "</div>" +
+      "</form>";
+
+    var $object = $("<div/>").html(frm_str).contents();
+
+    // Wire up copy buttons after DOM insertion (bootbox calls this after render)
+    setTimeout(function () {
+      $(".copy-url-btn").on("click", function () {
+        var url = $(this).data("url");
+        window.calendarPropertiesModal._copyToClipboard(url);
+        var $icon = $(this).find("i");
+        $icon.removeClass("fa-regular fa-copy").addClass("fa-solid fa-check text-success");
+        var self = this;
+        setTimeout(function () {
+          $(self).find("i").removeClass("fa-solid fa-check text-success").addClass("fa-regular fa-copy");
+        }, 1500);
+      });
+    }, 50);
+
+    return $object;
   },
   getButtons: function () {
     var buttons = [];

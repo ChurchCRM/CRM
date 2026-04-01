@@ -28,34 +28,26 @@ const EventPropertiesViewer: React.FunctionComponent<{
       {/* Dates row */}
       <div className="row g-3 mb-4">
         <div className="col-md-6">
-          <div className="card card-sm">
-            <div className="card-body">
-              <div className="row align-items-center">
-                <div className="col-auto">
-                  <span className="avatar bg-blue-lt text-blue">
-                    <i className="fa-regular fa-calendar-check" />
-                  </span>
-                </div>
-                <div className="col">
-                  <div className="text-muted small">{window.i18next.t("Start Date")}</div>
-                  <div className="fw-medium">{formatDate(event.Start, isAllDay)}</div>
+          <div className="card card-sm border-0 bg-blue-lt">
+            <div className="card-body py-3">
+              <div className="d-flex align-items-center gap-3">
+                <i className="fa-regular fa-calendar-check fa-xl text-blue flex-shrink-0" />
+                <div>
+                  <div className="text-blue small fw-medium">{window.i18next.t("Start Date")}</div>
+                  <div className="fw-bold">{formatDate(event.Start, isAllDay)}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div className="col-md-6">
-          <div className="card card-sm">
-            <div className="card-body">
-              <div className="row align-items-center">
-                <div className="col-auto">
-                  <span className="avatar bg-red-lt text-red">
-                    <i className="fa-regular fa-calendar-xmark" />
-                  </span>
-                </div>
-                <div className="col">
-                  <div className="text-muted small">{window.i18next.t("End Date")}</div>
-                  <div className="fw-medium">{formatDate(event.End, isAllDay)}</div>
+          <div className="card card-sm border-0 bg-red-lt">
+            <div className="card-body py-3">
+              <div className="d-flex align-items-center gap-3">
+                <i className="fa-regular fa-calendar-xmark fa-xl text-red flex-shrink-0" />
+                <div>
+                  <div className="text-red small fw-medium">{window.i18next.t("End Date")}</div>
+                  <div className="fw-bold">{formatDate(event.End, isAllDay)}</div>
                 </div>
               </div>
             </div>

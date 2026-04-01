@@ -52,8 +52,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
     })
     .find((option) => option !== undefined);
 
-  const handleAllDayToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const checked = e.target.checked;
+  const handleAllDayToggle = (checked: boolean) => {
     setAllDay(checked);
     if (checked) {
       // Strip time — set both to midnight
@@ -119,25 +118,47 @@ const EventPropertiesEditor: React.FunctionComponent<{
         </div>
       </div>
 
-      {/* Row 2: dates + all-day */}
+      {/* Row 2: All Day toggle */}
+      <div className="mb-2">
+        <div className="form-selectgroup form-selectgroup-pills">
+          <label className="form-selectgroup-item">
+            <input
+              type="radio"
+              name="eventDayType"
+              value="timed"
+              className="form-selectgroup-input"
+              checked={!allDay}
+              onChange={() => handleAllDayToggle(false)}
+            />
+            <span className="form-selectgroup-label">
+              <i className="fa-regular fa-clock me-1" />
+              {window.i18next.t("Timed")}
+            </span>
+          </label>
+          <label className="form-selectgroup-item">
+            <input
+              type="radio"
+              name="eventDayType"
+              value="allday"
+              className="form-selectgroup-input"
+              checked={allDay}
+              onChange={() => handleAllDayToggle(true)}
+            />
+            <span className="form-selectgroup-label">
+              <i className="fa-regular fa-sun me-1" />
+              {window.i18next.t("All Day")}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      {/* Row 3: dates */}
       <div className="row g-3 mb-3">
         <div className="col-md-6">
-          <div className="d-flex align-items-center justify-content-between mb-1">
-            <label className="form-label mb-0" htmlFor="StartDate">
-              {window.i18next.t("Start Date")}
-              <span className="text-danger ms-1">*</span>
-            </label>
-            <label className="form-check mb-0 ms-3" htmlFor="allDayToggle">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="allDayToggle"
-                checked={allDay}
-                onChange={handleAllDayToggle}
-              />
-              <span className="form-check-label text-muted small">{window.i18next.t("All Day")}</span>
-            </label>
-          </div>
+          <label className="form-label" htmlFor="StartDate">
+            {window.i18next.t("Start Date")}
+            <span className="text-danger ms-1">*</span>
+          </label>
           <DatePicker
             selected={event.Start ?? null}
             onChange={handleStartDateChange}
