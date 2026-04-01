@@ -27,18 +27,21 @@ describe("Mobile Calendar", () => {
         cy.get(".fc-dayGridMonth-button").should("be.visible");
     });
 
-    it("Should stack sidebar below calendar on mobile", () => {
+    it("Should show Calendars offcanvas button on mobile", () => {
         cy.viewport(375, 812);
         cy.visit("v2/calendar");
 
-        // Both columns should be full-width and the sidebar should stack below the calendar
-        cy.get(".col-sm-12")
-            .should("have.length.at.least", 2)
-            .then(($cols) => {
-                const firstRect = $cols[0].getBoundingClientRect();
-                const secondRect = $cols[1].getBoundingClientRect();
-                expect(secondRect.top).to.be.at.least(firstRect.bottom);
-            });
+        // Calendar is now full-width with an offcanvas panel for the sidebar
+        cy.get(".card #calendar").should("be.visible");
+
+        // The Calendars offcanvas trigger must be present and functional
+        cy.get('[data-bs-target="#calendarSidebar"]').should("be.visible").click();
+        cy.get("#calendarSidebar").should("be.visible");
+        cy.get(".offcanvas-title").should("contain.text", "Calendars");
+
+        // Close the offcanvas
+        cy.get("#calendarSidebar .btn-close").click();
+        cy.get("#calendarSidebar").should("not.be.visible");
     });
 
     it("Should display calendar on tablet viewport", () => {
@@ -46,11 +49,11 @@ describe("Mobile Calendar", () => {
         cy.visit("v2/calendar");
         cy.url().should("include", "v2/calendar");
 
-        cy.get("#calendar").should("be.visible");
+        // Calendar is full-width with offcanvas sidebar — no split columns
+        cy.get(".card #calendar").should("be.visible");
 
-        // Tablet uses col-md-8 / col-md-4 split
-        cy.get(".col-md-8").should("exist");
-        cy.get(".col-md-4").should("exist");
+        // Calendars toggle must be visible at tablet breakpoint
+        cy.get('[data-bs-target="#calendarSidebar"]').should("be.visible");
 
         // Desktop toolbar should be active (view-switcher in header, no footer toolbar)
         cy.get(".fc-dayGridMonth-button").should("be.visible");
