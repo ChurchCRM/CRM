@@ -18,7 +18,7 @@ Structured development skills live in `.agents/skills/`. **Always consult the re
 | New API endpoint | `api-development.md` → `service-layer.md` → `slim-4-best-practices.md` → `security-best-practices.md` |
 | Migrate legacy page | `routing-architecture.md` → `admin-mvc-migration.md` → `frontend-development.md` |
 | Database / ORM work | `database-operations.md` → `db-schema-migration.md` |
-| UI / frontend changes | `bootstrap-adminlte.md` → `frontend-development.md` → `webpack-typescript.md` |
+| UI / frontend changes | `bootstrap-5-migration.md` → `frontend-development.md` → `webpack-typescript.md` |
 | i18n / translations | `i18n-localization.md` → `frontend-development.md` |
 | Security issue | `security-best-practices.md` → `authorization-security.md` |
 | Plugin work | `plugin-system.md` → `plugin-development.md` |
