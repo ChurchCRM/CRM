@@ -353,7 +353,7 @@ $validationError     = $validationError ?? '';
                             <i class="fa-solid fa-phone me-1"></i><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?><br>
                             <?php endif; ?>
                             <?php if (!empty($churchInfo['sChurchEmail'])): ?>
-                            <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
+                            <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
                             <?php endif; ?>
                             <?php if (!empty($churchInfo['sChurchWebSite'])): ?>
                             <i class="fa-solid fa-globe me-1"></i><a href="<?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>

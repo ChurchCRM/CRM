@@ -203,7 +203,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <?php if ($email): ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($email) ?>"
                                            class="btn btn-sm btn-icon btn-outline-primary"
-                                           title="<?= gettext('Email') ?>: <?= InputUtils::escapeAttribute($email) ?>">
+                                           title="<?= gettext('Email') ?>: <?= InputUtils::escapeAttribute($email) ?>"
+                                           target="_blank" rel="noopener noreferrer">
                                             <i class="ti ti-mail"></i>
                                         </a>
                                     <?php else: ?>

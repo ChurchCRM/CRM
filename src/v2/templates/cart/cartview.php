@@ -28,10 +28,10 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     </div>
     <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()) { ?>
       <div class="btn-group" role="group">
-        <a href="mailto:<?= $sEmailLink ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>">
+        <a href="mailto:<?= $sEmailLink ?>" class="btn btn-outline-info" title="<?= gettext('Email cart items') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
-        <a href="mailto:?bcc=<?= $sEmailLink ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>">
+        <a href="mailto:?bcc=<?= $sEmailLink ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>
         </a>
       </div>

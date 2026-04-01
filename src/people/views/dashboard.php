@@ -114,7 +114,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-envelope me-1"></i><?= gettext('Email All') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $emailHref ?>"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= $emailHref ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
@@ -123,7 +123,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
-                                <a class="dropdown-item" href="mailto:<?= mb_substr($encoded, 0, -3) ?>"><?= $role ?></a>
+                                <a class="dropdown-item" href="mailto:<?= mb_substr($encoded, 0, -3) ?>" target="_blank" rel="noopener noreferrer"><?= $role ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -132,7 +132,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <i class="fa-solid fa-user-secret me-1"></i><?= gettext('Email BCC') ?>
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?= $emailBccHref ?>"><?= gettext('All People') ?></a>
+                            <a class="dropdown-item" href="<?= $emailBccHref ?>" target="_blank" rel="noopener noreferrer"><?= gettext('All People') ?></a>
                             <div class="dropdown-divider"></div>
                             <?php foreach ($roleEmails as $role => $roleEmail):
                                 $defaultTo = SystemConfig::getValue('sToEmailAddress');
@@ -141,7 +141,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 }
                                 $encoded = urlencode($roleEmail);
                                 ?>
-                                <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($encoded, 0, -3) ?>"><?= $role ?></a>
+                                <a class="dropdown-item" href="mailto:?bcc=<?= mb_substr($encoded, 0, -3) ?>" target="_blank" rel="noopener noreferrer"><?= $role ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>

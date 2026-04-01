@@ -171,7 +171,7 @@ $otherPeople = $family->getOtherPeople();
                                     <td>
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
-                                            <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
+                                            <a href="mailto:<?= $tmpEmail ?>" target="_blank" rel="noopener noreferrer"><?= $tmpEmail ?></a>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
@@ -256,7 +256,7 @@ $otherPeople = $family->getOtherPeople();
                                     <td>
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
-                                            <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
+                                            <a href="mailto:<?= $tmpEmail ?>" target="_blank" rel="noopener noreferrer"><?= $tmpEmail ?></a>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
@@ -455,7 +455,7 @@ $otherPeople = $family->getOtherPeople();
                         <?php }
                         if (!empty($family->getEmail())) { ?>
                             <li class="mb-1">
-                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
+                                <i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a>
                                 <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                         data-email="<?= InputUtils::escapeAttribute($family->getEmail()) ?>"
                                         title="<?= gettext('Copy to clipboard') ?>">

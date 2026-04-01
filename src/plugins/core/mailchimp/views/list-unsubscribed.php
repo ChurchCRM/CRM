@@ -103,7 +103,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         if (!data || data.length === 0) return '<span class="text-muted">' + i18next.t('No email') + '</span>';
                         return data.map(function(email) {
                             var escaped = escapeHtml(email);
-                            return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge bg-light text-dark me-1">' +
+                            return '<a href="mailto:' + encodeURIComponent(email) + '" class="badge bg-light text-dark me-1" target="_blank" rel="noopener noreferrer">' +
                                 '<i class="fa-solid fa-envelope me-1"></i>' + escaped + '</a>';
                         }).join(' ');
                     }
