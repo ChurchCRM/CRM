@@ -40,23 +40,37 @@
   /**
    * Build a platform-appropriate sms: URI for the given phone numbers.
    *
-   * iOS / macOS Messages: sms://open?addresses=+1234,+5678&body=
-   *   — the trailing &body= is required on iOS to trigger the compose sheet
-   *   — comma-separated addresses are interpreted as multiple recipients
+   * iOS (Safari/WebKit): sms://open?addresses=+1234,+5678&body=
+   * Android: sms:+1234,+5678 (comma-separated, RFC 5724)
+   * macOS desktop / Windows: sms:+1234 (single only — multi-recipient
+   *   not reliably supported on desktop browsers)
    *
-   * Android / Windows / other: sms:+1234,+5678
-   *   — standard RFC 5724 format, commas = multiple recipients
+   * Returns null when multi-recipient is requested on a desktop platform
+   * that doesn't support it — caller should fall back to clipboard copy.
    *
    * @param {string[]} phones — cleaned E.164 or digit-only numbers
-   * @returns {string}
+   * @returns {string|null} URI or null if not supported for this count/platform
    */
   function buildSmsLink(phones) {
-    if (!phones || phones.length === 0) return "";
-    var joined = phones.join(",");
-    if (platform.isIOS || platform.isMac) {
-      return "sms://open?addresses=" + joined + "&body=";
+    if (!phones || phones.length === 0) return null;
+
+    // iOS (including iPadOS) — Apple's multi-recipient format
+    if (platform.isIOS) {
+      return "sms://open?addresses=" + phones.join(",") + "&body=";
     }
-    return "sms:" + joined;
+
+    // Android — RFC 5724 comma-separated
+    if (platform.isAndroid) {
+      return "sms:" + phones.join(",");
+    }
+
+    // Desktop (macOS, Windows, Linux) — only single recipient is reliable
+    if (phones.length === 1) {
+      return "sms:" + phones[0];
+    }
+
+    // Multi-recipient on desktop — not supported, return null
+    return null;
   }
 
   /**
@@ -94,7 +108,17 @@
       });
       return;
     }
-    window.location.href = buildSmsLink(cleaned);
+    var link = buildSmsLink(cleaned);
+    if (link) {
+      window.location.href = link;
+    } else {
+      // Desktop multi-recipient fallback — copy numbers and notify
+      comm.copyPhones(phones.join(", "));
+      window.CRM.notify(i18next.t("Multiple recipients not supported on desktop — numbers copied to clipboard"), {
+        type: "info",
+        delay: 5000,
+      });
+    }
   };
 
   /**

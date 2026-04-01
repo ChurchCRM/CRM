@@ -172,36 +172,42 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     </div>
                                 <?php endif; ?>
 
-                                <!-- Action Buttons — always shown, grayed out when no data -->
+                                <!-- Action Icons — always show all 3, disabled when no data -->
                                 <div class="mt-3 d-flex gap-2 justify-content-center">
                                     <?php if ($phone): ?>
                                         <a href="tel:<?= InputUtils::escapeAttribute(preg_replace('/\D/', '', $phone)) ?>"
-                                           class="btn btn-sm btn-outline-success w-100"
-                                           title="<?= InputUtils::escapeAttribute($phone) ?>">
-                                            <i class="ti ti-phone me-1"></i><?= gettext('Call') ?>
+                                           class="btn btn-sm btn-icon btn-outline-success"
+                                           title="<?= gettext('Call') ?>: <?= InputUtils::escapeAttribute($phone) ?>">
+                                            <i class="ti ti-phone"></i>
                                         </a>
                                     <?php else: ?>
-                                        <span class="btn btn-sm btn-outline-secondary w-100 disabled"
+                                        <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
                                               title="<?= gettext('No phone number on file') ?>">
-                                            <i class="ti ti-phone me-1"></i><?= gettext('Call') ?>
+                                            <i class="ti ti-phone"></i>
                                         </span>
                                     <?php endif; ?>
                                     <?php if ($cellPhone): ?>
                                         <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $cellPhone)) ?>"
-                                           class="btn btn-sm btn-outline-secondary w-100"
+                                           class="btn btn-sm btn-icon btn-outline-secondary"
                                            title="<?= gettext('Send text message') ?>">
-                                            <i class="ti ti-message me-1"></i><?= gettext('Text') ?>
+                                            <i class="ti ti-message"></i>
                                         </a>
+                                    <?php else: ?>
+                                        <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
+                                              title="<?= gettext('No cell phone on file') ?>">
+                                            <i class="ti ti-message"></i>
+                                        </span>
                                     <?php endif; ?>
                                     <?php if ($email): ?>
                                         <a href="mailto:<?= InputUtils::escapeAttribute($email) ?>"
-                                           class="btn btn-sm btn-outline-primary w-100">
-                                            <i class="ti ti-mail me-1"></i><?= gettext('Email') ?>
+                                           class="btn btn-sm btn-icon btn-outline-primary"
+                                           title="<?= gettext('Email') ?>: <?= InputUtils::escapeAttribute($email) ?>">
+                                            <i class="ti ti-mail"></i>
                                         </a>
                                     <?php else: ?>
-                                        <span class="btn btn-sm btn-outline-secondary w-100 disabled"
+                                        <span class="btn btn-sm btn-icon btn-outline-secondary disabled"
                                               title="<?= gettext('No email address on file') ?>">
-                                            <i class="ti ti-mail me-1"></i><?= gettext('Email') ?>
+                                            <i class="ti ti-mail"></i>
                                         </span>
                                     <?php endif; ?>
                                 </div>

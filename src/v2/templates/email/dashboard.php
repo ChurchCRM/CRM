@@ -57,7 +57,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             <div class="text-secondary"><?= $bMailchimpConfigured ? gettext('Email lists are synced with Mailchimp.') : gettext('Connect Mailchimp to sync email lists for newsletters and campaigns.') ?></div>
                         </div>
                         <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins" class="btn btn-outline-<?= $bMailchimpConfigured ? 'success' : 'secondary' ?> ms-auto btn-sm">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins#plugin-mailchimp" class="btn btn-outline-<?= $bMailchimpConfigured ? 'success' : 'secondary' ?> ms-auto btn-sm">
                             <i class="fa-solid fa-gear me-1"></i><?= gettext('Plugin Settings') ?>
                         </a>
                         <?php endif; ?>

@@ -170,6 +170,27 @@ import "../src/skin/scss/system-settings-panel.scss";
         return el.value || null;
       },
     },
+    ajax: {
+      render: function (setting) {
+        return `
+            <div class="col-md-6 col-lg-4 mb-3">
+              <label for="${setting.name}" class="form-label small fw-bold mb-1">
+                ${setting.label}
+              </label>
+              <select class="form-select setting-input"
+                      id="${setting.name}" name="${setting.name}"
+                      data-type="ajax"
+                      data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
+                <option value="">${window.i18next ? i18next.t("Unassigned") : "Unassigned"}</option>
+              </select>
+              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+            </div>
+          `;
+      },
+      getValue: function (el) {
+        return el.value;
+      },
+    },
   };
 
   // Escape HTML for safe use in both text content and attribute values (title="...", value="...")
@@ -357,15 +378,45 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       settingsToFetch.forEach((s) => {
         const name = typeof s === "string" ? s : s.name;
+        const cfg = this.getSettingConfig(s);
+
         fetch(window.CRM.root + "/admin/api/system/config/" + name)
           .then((response) => response.json())
           .then((data) => {
-            self.applyValue(name, data.value);
+            // For ajax selects, load options from the remote URL first
+            if (cfg.type === "ajax" && cfg.ajaxUrl) {
+              self.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
+            } else {
+              self.applyValue(name, data.value);
+            }
           })
           .catch(() => {
             console.warn("Could not load setting:", name);
           });
       });
+    }
+
+    // Load options for an ajax-type select from a remote URL, then set the value
+    loadAjaxOptions(name, url, currentValue) {
+      const select = this.container.querySelector('select[name="' + name + '"]');
+      if (!select) return;
+
+      fetch(window.CRM.root + url)
+        .then((response) => response.json())
+        .then((options) => {
+          options.forEach((opt) => {
+            const option = document.createElement("option");
+            option.value = opt.id;
+            option.textContent = opt.value;
+            if (String(opt.id) === String(currentValue)) {
+              option.selected = true;
+            }
+            select.appendChild(option);
+          });
+        })
+        .catch(() => {
+          console.warn("Could not load ajax options for:", name);
+        });
     }
 
     // Update a single input (or radio group) without re-rendering the whole panel

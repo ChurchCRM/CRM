@@ -22,7 +22,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary"><?= gettext('SMS messages can be sent directly from ChurchCRM via the Vonage API.') ?></div>
                 </div>
                 <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins" class="btn btn-outline-success ms-auto">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins#plugin-vonage" class="btn btn-outline-success ms-auto">
                     <i class="fa-solid fa-gear me-1"></i><?= gettext('Plugin Settings') ?>
                 </a>
                 <?php endif; ?>
@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="text-secondary"><?= gettext('Without Vonage, text actions will open your device\'s native SMS app or copy phone numbers to clipboard.') ?></div>
                 </div>
                 <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins" class="btn btn-outline-warning ms-auto">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/plugins#plugin-vonage" class="btn btn-outline-warning ms-auto">
                     <i class="fa-solid fa-gear me-1"></i><?= gettext('Configure Vonage') ?>
                 </a>
                 <?php endif; ?>
