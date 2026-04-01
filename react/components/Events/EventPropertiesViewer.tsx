@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import type * as React from "react";
 import type Calendar from "../../interfaces/Calendar";
 import type CRMEvent from "../../interfaces/CRMEvent";
@@ -116,8 +117,8 @@ const EventPropertiesViewer: React.FunctionComponent<{
       {event.Desc?.replace(/<[^>]*>/g, "").trim() && (
         <div className="mb-4">
           <h4 className="subheader">{window.i18next.t("Description")}</h4>
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event description is sanitized HTML from database (InputUtils::sanitizeHTML) */}
-          <div className="prose" dangerouslySetInnerHTML={{ __html: event.Desc }} />
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event description is sanitized by both backend (InputUtils::sanitizeHTML) and client-side (DOMPurify) */}
+          <div className="prose" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.Desc || "") }} />
         </div>
       )}
 
@@ -125,8 +126,8 @@ const EventPropertiesViewer: React.FunctionComponent<{
       {event.Text?.replace(/<[^>]*>/g, "").trim() && (
         <div className="mb-2">
           <h4 className="subheader">{window.i18next.t("Additional Information")}</h4>
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event text is sanitized HTML from database (InputUtils::sanitizeHTML) */}
-          <div className="prose" dangerouslySetInnerHTML={{ __html: event.Text }} />
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event text is sanitized by both backend (InputUtils::sanitizeHTML) and client-side (DOMPurify) */}
+          <div className="prose" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.Text || "") }} />
         </div>
       )}
     </div>

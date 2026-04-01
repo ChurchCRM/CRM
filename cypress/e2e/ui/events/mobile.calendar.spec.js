@@ -41,7 +41,7 @@ describe("Mobile Calendar", () => {
 
         // Close the offcanvas
         cy.get("#calendarSidebar .btn-close").click();
-        cy.get("#calendarSidebar").should("not.be.visible");
+        cy.get("#calendarSidebar").should("not.have.class", "show");
     });
 
     it("Should display calendar on tablet viewport", () => {

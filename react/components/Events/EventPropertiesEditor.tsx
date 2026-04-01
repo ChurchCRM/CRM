@@ -34,8 +34,7 @@ const EventPropertiesEditor: React.FunctionComponent<{
     !event.Start ||
       (event.Start.getHours() === 0 &&
         event.Start.getMinutes() === 0 &&
-        event.End?.getHours() === 0 &&
-        event.End?.getMinutes() === 0),
+        (!event.End || (event.End.getHours() === 0 && event.End.getMinutes() === 0))),
   );
 
   const calendarOptions: Option[] = calendars.map((Pcal: Calendar) => ({

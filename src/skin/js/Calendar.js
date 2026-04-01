@@ -110,9 +110,37 @@ function deleteCalendar() {
 
 window.calendarPropertiesModal = {
   _copyToClipboard: function (text) {
-    navigator.clipboard.writeText(text).then(function () {
-      // brief visual feedback handled by btn animation
-    });
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+      navigator.clipboard
+        .writeText(text)
+        .then(function () {
+          // brief visual feedback handled by btn animation
+        })
+        .catch(function () {
+          // Fallback to old method if clipboard API fails
+          var fallbackTextarea = document.createElement("textarea");
+          fallbackTextarea.value = text;
+          fallbackTextarea.setAttribute("readonly", "");
+          fallbackTextarea.style.position = "absolute";
+          fallbackTextarea.style.left = "-9999px";
+          document.body.appendChild(fallbackTextarea);
+          try {
+            fallbackTextarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(fallbackTextarea);
+          } catch (e) {
+            document.body.removeChild(fallbackTextarea);
+            if (typeof bootbox !== "undefined") {
+              bootbox.alert(i18next.t("Unable to copy to clipboard. Please copy the URL manually."));
+            }
+          }
+        });
+    } else {
+      // Fallback for non-secure contexts
+      if (typeof bootbox !== "undefined") {
+        bootbox.alert(i18next.t("Clipboard API not available. Please copy the URL manually."));
+      }
+    }
   },
   getBootboxContent: function (calendar) {
     var HTMLURL = "";
@@ -149,7 +177,7 @@ window.calendarPropertiesModal = {
         '">' +
         '<a href="' +
         url +
-        '" target="_blank" class="btn btn-sm btn-ghost-secondary" title="' +
+        '" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost-secondary" title="' +
         i18next.t("Open") +
         '">' +
         '<i class="fa-solid fa-arrow-up-right-from-square"></i>' +
@@ -233,17 +261,20 @@ window.calendarPropertiesModal = {
     var $object = $("<div/>").html(frm_str).contents();
 
     // Wire up copy buttons after DOM insertion (bootbox calls this after render)
+    // Use .off() first to prevent handler accumulation across modal re-opens
     setTimeout(function () {
-      $(".copy-url-btn").on("click", function () {
-        var url = $(this).data("url");
-        window.calendarPropertiesModal._copyToClipboard(url);
-        var $icon = $(this).find("i");
-        $icon.removeClass("fa-regular fa-copy").addClass("fa-solid fa-check text-success");
-        var self = this;
-        setTimeout(function () {
-          $(self).find("i").removeClass("fa-solid fa-check text-success").addClass("fa-regular fa-copy");
-        }, 1500);
-      });
+      $(".copy-url-btn")
+        .off("click")
+        .on("click", function () {
+          var url = $(this).data("url");
+          window.calendarPropertiesModal._copyToClipboard(url);
+          var $icon = $(this).find("i");
+          $icon.removeClass("fa-regular fa-copy").addClass("fa-solid fa-check text-success");
+          var self = this;
+          setTimeout(function () {
+            $(self).find("i").removeClass("fa-solid fa-check text-success").addClass("fa-regular fa-copy");
+          }, 1500);
+        });
     }, 50);
 
     return $object;
@@ -373,7 +404,7 @@ window.newCalendarModal = {
       i18next.t("Background Color") +
       '" />' +
       "</td>" +
-      "</tr" +
+      "</tr>" +
       "</table>" +
       "</form>";
     var object = $("<div/>").html(frm_str).contents();
