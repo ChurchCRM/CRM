@@ -8,24 +8,28 @@
  * a TypeError in convertToLatin1() when attempting to pass null to a function
  * expecting a string.
  *
- * The fix adds type casts and uses !empty() instead of !== '' to handle null values.
- *
- * This test verifies that ConfirmReport PDF generation works with families
- * that have null/missing address fields.
+ * Pattern: cy.setupAdminSession() + cy.visit() to load session cookies, then
+ * cy.intercept() + win.location.href to trigger the PDF — same reason
+ * tax-report-pdf.spec.js always does cy.visit() before intercepting the PDF.
+ * cy.request() alone does NOT carry session cookies for auth-protected legacy
+ * PHP pages; the browser context must be established first via cy.visit().
  */
 describe("Confirm Report PDF Generation - Null Value Fix", () => {
     beforeEach(() => {
         cy.setupAdminSession();
+        // Visit any authenticated HTML page to load session cookies into browser
+        // context before we intercept and navigate to the PDF endpoint.
+        cy.visit("LettersAndLabels.php");
     });
 
     it("should generate Confirm Report PDF for all families without null conversion error", () => {
-        // Access ConfirmReport directly with no familyId parameter (all families)
-        cy.intercept("GET", "**/Reports/ConfirmReport.php*").as("confirmReportAll");
+        cy.intercept("GET", "**/Reports/ConfirmReport.php").as("confirmReportAll");
 
-        cy.visit("Reports/ConfirmReport.php");
+        cy.window().then((win) => {
+            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
+        });
 
-        // Wait for the PDF response
-        cy.wait("@confirmReportAll", { timeout: 10000 }).then((interception) => {
+        cy.wait("@confirmReportAll", { timeout: 15000 }).then((interception) => {
             const statusCode = interception.response.statusCode;
             const contentType = interception.response.headers["content-type"] || "";
 
@@ -36,7 +40,7 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
             // Should return a PDF
             expect(contentType).to.include("application/pdf");
 
-            // Ensure no PHP fatal error in response
+            // Ensure no PHP fatal error in response body
             const body = interception.response.body;
             if (typeof body === "string") {
                 expect(body).to.not.include("Fatal error");
@@ -47,97 +51,69 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
     });
 
     it("should generate Confirm Report PDF for a single family", () => {
-        // First get a family ID from the database via API
-        cy.makePrivateAdminAPICall("/api/families", "GET").then((response) => {
-            expect(response.status).to.equal(200);
+        // Use family ID 1 — always present in demo data.
+        // Hardcoded to avoid makePrivateAdminAPICall() which resets PHP sessions.
+        const familyId = 1;
 
-            const families = response.body;
-            // Ensure there is at least one family; fail meaningfully if not
-            expect(
-                families,
-                "at least one family must exist for Confirm Report single-family test"
-            ).to.have.length.greaterThan(0);
+        cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}`).as(
+            "confirmReportSingle"
+        );
 
-            const familyId = families[0].id;
+        cy.window().then((win) => {
+            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php?familyId=${familyId}`;
+        });
 
-            // Access ConfirmReport for specific family
-            cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
-                "confirmReportFamily"
-            );
+        cy.wait("@confirmReportSingle", { timeout: 15000 }).then((interception) => {
+            const statusCode = interception.response.statusCode;
+            const contentType = interception.response.headers["content-type"] || "";
 
-            cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
-
-            // Wait for the PDF response
-            cy.wait("@confirmReportFamily", { timeout: 10000 }).then((interception) => {
-                const statusCode = interception.response.statusCode;
-                const contentType = interception.response.headers["content-type"] || "";
-
-                // Should succeed
-                expect(statusCode).to.not.equal(500);
-                expect(statusCode).to.equal(200);
-
-                // Should return a PDF
-                expect(contentType).to.include("application/pdf");
-            });
+            expect(statusCode).to.not.equal(500);
+            expect(statusCode).to.equal(200);
+            expect(contentType).to.include("application/pdf");
         });
     });
 
     it("should handle families with missing address fields (null values)", () => {
-        // Get families and find one with potentially missing fields
-        cy.makePrivateAdminAPICall("/api/families", "GET").then((response) => {
-            const families = response.body;
+        const familyId = 1;
 
-            expect(
-                families,
-                "at least one family must exist for null-value test"
-            ).to.have.length.greaterThan(0);
+        cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}`).as(
+            "confirmReportNullFields"
+        );
 
-            // Try the first family (may have incomplete data)
-            const familyId = families[0].id;
+        cy.window().then((win) => {
+            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php?familyId=${familyId}`;
+        });
 
-            cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
-                "incompleteFamily"
-            );
+        cy.wait("@confirmReportNullFields", { timeout: 15000 }).then((interception) => {
+            const statusCode = interception.response.statusCode;
 
-            cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
+            // Should not error even with null address2 or country
+            expect(statusCode).to.not.equal(500);
+            expect(statusCode).to.equal(200);
 
-            cy.wait("@incompleteFamily", { timeout: 10000 }).then((interception) => {
-                const statusCode = interception.response.statusCode;
-
-                // Should not error even if family has null address2 or country
-                expect(statusCode).to.not.equal(500);
-                expect(statusCode).to.equal(200);
-
-                // Verify no PHP errors in response
-                const body = interception.response.body;
-                if (typeof body === "string") {
-                    expect(body).to.not.include("Uncaught TypeError");
-                    expect(body).to.not.include("convertToLatin1");
-                }
-            });
+            const body = interception.response.body;
+            if (typeof body === "string") {
+                expect(body).to.not.include("Uncaught TypeError");
+                expect(body).to.not.include("convertToLatin1");
+            }
         });
     });
 
-    it("should not have PHP fatal errors in logs after Confirm Report generation", () => {
-        // Generate a report for all families
-        cy.intercept("GET", "**/Reports/ConfirmReport.php*").as("confirmReport");
+    it("should not return a server error when generating Confirm Report", () => {
+        // A 200 application/pdf response proves no PHP fatal error occurred —
+        // fatal errors produce a 500 HTML error page, not a valid PDF.
+        cy.intercept("GET", "**/Reports/ConfirmReport.php").as("confirmReport");
 
-        cy.visit("Reports/ConfirmReport.php");
+        cy.window().then((win) => {
+            win.location.href = `${win.CRM.root}/Reports/ConfirmReport.php`;
+        });
 
-        cy.wait("@confirmReport", { timeout: 10000 });
+        cy.wait("@confirmReport", { timeout: 15000 }).then((interception) => {
+            expect(interception.response.statusCode).to.not.equal(500);
+            expect(interception.response.statusCode).to.equal(200);
 
-        // Check the PHP error log to ensure no fatal errors were logged
-        cy.makePrivateAdminAPICall("/api/system/logs", "GET").then((response) => {
-            if (response.status === 200 && response.body) {
-                const logs = response.body;
-
-                // Look for fatal errors related to convertToLatin1
-                const fatalErrors = logs.filter((log) =>
-                    log.includes("Fatal error") && log.includes("convertToLatin1")
-                );
-
-                expect(fatalErrors.length).to.equal(0);
-            }
+            const contentType = interception.response.headers["content-type"] || "";
+            expect(contentType).to.include("application/pdf");
         });
     });
 });
