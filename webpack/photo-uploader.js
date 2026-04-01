@@ -34,10 +34,18 @@ import Webcam from "@uppy/webcam";
  * @returns {PhotoUploaderInstance} - Photo uploader wrapper with show/hide methods
  */
 export function createPhotoUploader(config) {
-  // Ensure maxFileSize is a number (may come as string from config)
+  // Ensure numeric config values are numbers (may come as strings from PHP)
   const maxFileSizeBytes = typeof config.maxFileSize === "string"
     ? parseInt(config.maxFileSize, 10)
     : (config.maxFileSize || 5000000);
+
+  const photoWidth = typeof config.photoWidth === "string"
+    ? parseInt(config.photoWidth, 10)
+    : (config.photoWidth || 800);
+
+  const photoHeight = typeof config.photoHeight === "string"
+    ? parseInt(config.photoHeight, 10)
+    : (config.photoHeight || 800);
 
   const uppy = new Uppy({
     id: "photo-uploader",
@@ -67,8 +75,8 @@ export function createPhotoUploader(config) {
       mirror: true,
       videoConstraints: {
         facingMode: "user",
-        width: { ideal: config.photoWidth || 800 },
-        height: { ideal: config.photoHeight || 800 },
+        width: { ideal: photoWidth },
+        height: { ideal: photoHeight },
       },
       preferredImageMimeType: "image/jpeg",
     });
