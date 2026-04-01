@@ -118,9 +118,22 @@ class Photo
         if (!$this->hasUploadedPhoto || !$this->photoURI) {
             return null;
         }
-        
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $this->photoContentType = $finfo->file($this->photoURI);
+
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $this->photoContentType = $finfo->file($this->photoURI);
+        } else {
+            // Fallback: derive from file extension (all new uploads are saved as .png)
+            $ext = strtolower(pathinfo($this->photoURI, PATHINFO_EXTENSION));
+            $mimeMap = [
+                'jpg'  => 'image/jpeg',
+                'jpeg' => 'image/jpeg',
+                'png'  => 'image/png',
+                'gif'  => 'image/gif',
+                'webp' => 'image/webp',
+            ];
+            $this->photoContentType = $mimeMap[$ext] ?? 'image/jpeg';
+        }
 
         return $this->photoContentType;
     }
@@ -145,9 +158,18 @@ class Photo
             throw new \Exception('Invalid base64 data');
         }
         
-        // Validate file is actually an image using finfo
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $finfo->buffer($fileData);
+        // Validate file is actually an image — use finfo if available, otherwise
+        // extract from the data URI prefix (imagecreatefromstring() enforces the actual format)
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($fileData);
+        } elseif (preg_match('/^data:(image\/[\w+.-]+);base64,/', $base64, $matches)) {
+            $mimeType = $matches[1];
+        } else {
+            throw new \Exception(
+                gettext('Photo upload requires the PHP fileinfo extension. Please ask your server administrator to install it.')
+            );
+        }
         
         // Allowed image types
         $allowedMimeTypes = [
