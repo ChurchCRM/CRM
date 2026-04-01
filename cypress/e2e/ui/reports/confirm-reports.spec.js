@@ -110,15 +110,10 @@ describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
         });
 
         it("should handle confirmation report email with custom fields", () => {
-            cy.makePrivateAdminAPICall("GET", "/api/system/custom-person-fields").then((response) => {
-                if (response.status === 200 && response.body && response.body.length > 0) {
-                    cy.log(`Found ${response.body.length} custom fields`);
-                } else {
-                    cy.log("No custom fields configured");
-                }
-                // Page is already loaded from beforeEach — just verify no errors
-                cy.get("body").should("not.contain", "Fatal error");
-            });
+            // Verify page loaded without errors — no API call here to avoid PHP session pollution
+            // (makePrivateAdminAPICall resets the session cookie, breaking subsequent PDF navigations)
+            cy.get("body").should("not.contain", "Fatal error");
+            cy.get("body").should("not.contain", "500");
         });
     });
 
