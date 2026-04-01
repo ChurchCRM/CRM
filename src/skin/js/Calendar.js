@@ -581,10 +581,7 @@ function registerCalendarSelectionEvents() {
     var calendarTypeToKeep = $(this).data("calendartype");
     var calendarIDToKeep = $(this).data("calendarid");
     $(".calendarSelectionBox").each(function () {
-      if (
-        $(this).data("calendartype") === calendarTypeToKeep &&
-        $(this).data("calendarid") === calendarIDToKeep
-      ) {
+      if ($(this).data("calendartype") === calendarTypeToKeep && $(this).data("calendarid") === calendarIDToKeep) {
         if (!$(this).is(":checked")) {
           $(this).prop("checked", true).trigger("change");
         }
@@ -645,9 +642,11 @@ function initializeFilterSettings() {
 
 function initializeNewCalendarButton() {
   if (window.CRM.calendarJSArgs.isModifiable) {
-    $("#addCalendarBtn").show().on("click", function () {
-      window.newCalendarModal.show();
-    });
+    $("#addCalendarBtn")
+      .show()
+      .on("click", function () {
+        window.newCalendarModal.show();
+      });
   }
 }
 
