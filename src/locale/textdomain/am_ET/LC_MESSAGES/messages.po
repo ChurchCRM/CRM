@@ -2296,10 +2296,6 @@ msgid "How did you learn of the church?"
 msgstr "ስለ ቤተ ክርስቲያን እንዴት ተማራችሁ? "
 
 #: 
-msgid "eMail Dashboard"
-msgstr "የኢሜል"
-
-#: 
 msgid "Version"
 msgstr "ሥሪት"
 
@@ -2348,10 +2344,6 @@ msgid "Custom Drop-Down List"
 msgstr "ብጁ ተቆልቋይ ዝርዝር"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "የChurchCRM ጭነትዎን ስላስመዘገቡ እናመሰግናለን"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "ፒዲኤፍ በተሳካ ሁኔታ ለቤተሰብ አባላት ኢሜይል ተልኳል"
 
@@ -2366,18 +2358,6 @@ msgstr "ቡድን በተሳካ ሁኔታ ወደ መዝገብዎ ታክሏል"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "ቡድን በተሳካ ሁኔታ ከመዝገብዎ ተወግዷል"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "የመገለጫ ምስል በተሳካ ሁኔታ ተወግዷል"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "የመገለጫ ምስል በተሳካ ሁኔታ ዘምኗል"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "የመገለጫ ምስል የመጫን ስህተት"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5283,10 +5263,6 @@ msgid "Thai"
 msgstr "ታይ"
 
 #: 
-msgid "Self Register"
-msgstr "ራስን መመዝገብ"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "በመጠባበቅ ላይ ራስን ማረጋገጥ"
 
@@ -5528,14 +5504,6 @@ msgid "Create Group + ADD Cart"
 msgstr "ቡድን + ADD ጋሪ ፍጠር "
 
 #: 
-msgid "Move Event"
-msgstr "ክስተት አንቀሳቅስ"
-
-#: 
-msgid "Resize Event"
-msgstr "የክስተቱን መጠን ቀይር"
-
-#: 
 msgid "Profile"
 msgstr "መገለጫ"
 
@@ -5714,28 +5682,12 @@ msgid "Are you sure you want to move"
 msgstr "እርግጠኛ ነዎት ማንቀሳቀስ ይፈልጋሉ"
 
 #: 
-msgid "from"
-msgstr "ከ"
-
-#: 
-msgid "to"
-msgstr "ለ"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "እርግጠኛ ነዎት የመጨረሻ ጊዜውን መቀየር እንደሚፈልጉ "
-
-#: 
 msgid "Access Token"
 msgstr "ማግኛ ምልክት"
 
 #: 
 msgid "New Access Token"
 msgstr "አዲስ ማግኛ ምልክት"
-
-#: 
-msgid "Delete Access Token"
-msgstr "ማግኛ ምልክቱን ሰርዝ"
 
 #: 
 msgid "ICS URL"
@@ -5767,15 +5719,6 @@ msgid "New Calendar"
 msgstr "አዲስ ቀን መቁጠሪያ"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI ተሰናክሏል፣ነገር ግን አንዳንድ የቀን መቁጠሪያዎች የመድረሻ መተኪያዎች አሏቸው"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "የቀን መቁጠሪያዎች ለመጋራት፣ የbEnableExternalCalendarAPI ቅንብር የቀን መቁጠሪያው የተወሰነ የመዳረሻ ማስመሰያ ካለው በተጨማሪ መንቃት አለበት"
-
-#: 
 msgid "Links"
 msgstr "ማስፈንጠሪያ"
 
@@ -5798,10 +5741,6 @@ msgstr "የገንዘብ አሰባሰብ ማናሌን አንቃ"
 #: 
 msgid "Enable Email menu."
 msgstr "የኢሜል ማናሌን አንቃ"
-
-#: 
-msgid "Enabled Features"
-msgstr "ዝርዝሮችን አንቃ"
 
 #: 
 msgid "Validation Error"
@@ -6026,11 +5965,6 @@ msgid "PDF handling mode.\n"
 msgstr " የ PDF አያያዝ ሁነታ፡\n"
 "1 = የፋይል ንግግር አስቀምጥ\n"
 "2 = አሁን ባለው የመፈለጊያ መስኮት ክፈት"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "ሁሉንም የቡድን አባላት ስልክ ቁጥር ለመቅዳት Ctrl +C ን ይጫኑ "
 
 #: 
 msgid "Verify People"
@@ -7015,10 +6949,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "አዲስ የይለፍ ቃል ተዘጋጅቶ ወደ ኢሜይል አድራሻዎ ተልኳል።"
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "ከኦፊሴላዊ ልቀት በፊት ያሉ ማሻሻያዎችን ፍቀድ"
-
-#: 
 msgid "Apply Update Now"
 msgstr "አሁኑኑ ማሻሻያውን ተግብር"
 
@@ -7039,20 +6969,8 @@ msgid "Backup Skipped"
 msgstr "መጠባበቂያ ተዘልሏል"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "ለአዳዲስ መረጃዎች GitHubን ይመልከቱ"
-
-#: 
 msgid "Complete"
 msgstr "ተጠናቋል"
-
-#: 
-msgid "Continue to Backup"
-msgstr "ወደ መጠባበቂያ ቀጥል"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "ለማውረድ እና ለመተግበር ቀጥል"
 
 #: 
 msgid "Create Backup"

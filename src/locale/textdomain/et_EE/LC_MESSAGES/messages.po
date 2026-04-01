@@ -2297,10 +2297,6 @@ msgid "How did you learn of the church?"
 msgstr "Kuidas sa kuulsid kogudusest?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "e-posti töölaud"
-
-#: 
 msgid "Version"
 msgstr "Versioon"
 
@@ -2349,10 +2345,6 @@ msgid "Custom Drop-Down List"
 msgstr "Kohandatud ripploend"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Täname, et registreerisite oma ChurchCRM-i installi."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "Perekonna liikmetele saadeti PDF-fail edukalt."
 
@@ -2367,18 +2359,6 @@ msgstr "Grupp on edukalt korvi lisatud."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupp on korvist edukalt eemaldatud."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profiilipilt eemaldati edukalt."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profiilipildi värskendamine õnnestus."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Profiilipildi üleslaadimise viga."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5282,10 +5262,6 @@ msgid "Thai"
 msgstr "tai keel"
 
 #: 
-msgid "Self Register"
-msgstr "Automaatne Registreerumine"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Automaatse kinnituse ootel"
 
@@ -5527,14 +5503,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Loo grupp + LISA KORVI"
 
 #: 
-msgid "Move Event"
-msgstr "Teisalda sündmus"
-
-#: 
-msgid "Resize Event"
-msgstr "Muutke sündmuse suurust"
-
-#: 
 msgid "Profile"
 msgstr "Profiiil"
 
@@ -5713,28 +5681,12 @@ msgid "Are you sure you want to move"
 msgstr "Kas soovite kindlasti kolida"
 
 #: 
-msgid "from"
-msgstr "alates"
-
-#: 
-msgid "to"
-msgstr "kuni"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Kas olete kindel, et soovite muuta lõpuaega "
-
-#: 
 msgid "Access Token"
 msgstr "Juurdepääsuluba"
 
 #: 
 msgid "New Access Token"
 msgstr "Uus juurdepääsuluba"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Kustutage juurdepääsuluba"
 
 #: 
 msgid "ICS URL"
@@ -5765,15 +5717,6 @@ msgid "New Calendar"
 msgstr "Uus kalender"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI on keelatud, kuid mõnel kalendril on juurdepääsumärgid"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Kalendrite jagamiseks peab lisaks konkreetsele juurdepääsuõigusele vastava kalendriga olema lubatud ka säte bEnableExternalCalendarAPI. "
-
-#: 
 msgid "Links"
 msgstr "Lingid"
 
@@ -5796,10 +5739,6 @@ msgstr "Luba raha kogumise menüü."
 #: 
 msgid "Enable Email menu."
 msgstr "Luba menüü E-post."
-
-#: 
-msgid "Enabled Features"
-msgstr "Lubatud funktsioonid"
 
 #: 
 msgid "Validation Error"
@@ -6023,11 +5962,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-i käitlemisrežiim.\n"
 "1 = dialoogiboks Salvesta fail\n"
 "2 = Ava praeguses brauseriaknas"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Kõigi grupiliikmete telefoninumbrite kopeerimiseks vajutage CTRL + C"
 
 #: 
 msgid "Verify People"
@@ -7004,10 +6938,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Uus parool on loodud ja saadetud teie e-posti aadressile."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Luba enne väljaande täiendamist"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Rakenda värskendus kohe"
 
@@ -7028,20 +6958,8 @@ msgid "Backup Skipped"
 msgstr "Varundamine vahele jäetud"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Kontrollige GitHub-ist uusimate väljalasketeabe"
-
-#: 
 msgid "Complete"
 msgstr "Lõpetatud"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Jätka varundamisele"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Jätka allalaadimisele ja rakendamisele"
 
 #: 
 msgid "Create Backup"

@@ -2274,10 +2274,6 @@ msgid "How did you learn of the church?"
 msgstr "Como você ficou sabendo da igreja?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Painel de E-mail"
-
-#: 
 msgid "Version"
 msgstr "Versão"
 
@@ -2326,10 +2322,6 @@ msgid "Custom Drop-Down List"
 msgstr "Lista Suspensa Personalizado"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Obrigado por registrar a sua instalação do ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF enviado com sucesso por e-mail aos membros da família."
 
@@ -2344,18 +2336,6 @@ msgstr "Grupo adicionado com sucesso ao carrinho."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupo removido com sucesso do carrinho."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Imagem do Perfil removida com sucesso"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Imagem do Perfil atualizada com sucesso"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Erro ao enviar a Imagem do Perfil."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5247,10 +5227,6 @@ msgid "Thai"
 msgstr "Tailandês"
 
 #: 
-msgid "Self Register"
-msgstr "Auto registro"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Verificação automática pendente"
 
@@ -5492,14 +5468,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Crie um grupo e adicione ao carrinho"
 
 #: 
-msgid "Move Event"
-msgstr "Mais eventos"
-
-#: 
-msgid "Resize Event"
-msgstr "Redimensionar o Evento"
-
-#: 
 msgid "Profile"
 msgstr "Perfil"
 
@@ -5676,28 +5644,12 @@ msgid "Are you sure you want to move"
 msgstr "Tem certeza de que quer mudar"
 
 #: 
-msgid "from"
-msgstr "para"
-
-#: 
-msgid "to"
-msgstr "de"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Tem certeza de que deseja alterar a hora final para "
-
-#: 
 msgid "Access Token"
 msgstr "Token de Acesso"
 
 #: 
 msgid "New Access Token"
 msgstr "Novo Token de Acesso"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Excluir Token de Acesso"
 
 #: 
 msgid "ICS URL"
@@ -5728,14 +5680,6 @@ msgid "New Calendar"
 msgstr "Novo Calendário"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI desativado, mas alguns calendários têm tokens de acesso"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Para que os calendários sejam compartilhados, a configuração bEnableExternalCalendarAPI deve ser ativada, além do calendário com um token de acesso específico."
-
-#: 
 msgid "Links"
 msgstr "Links"
 
@@ -5758,10 +5702,6 @@ msgstr "Ativar menu de Campanhas."
 #: 
 msgid "Enable Email menu."
 msgstr "Ativar menu de E-mail"
-
-#: 
-msgid "Enabled Features"
-msgstr "Recursos Ativados"
 
 #: 
 msgid "Validation Error"
@@ -5983,10 +5923,6 @@ msgid "PDF handling mode.\n"
 msgstr "Modo de manipulação de PDF.\n"
 "1 = Salvar Arquivo\n"
 "2 = Abrir na janela atual do navegador"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Pressione CTRL + C para copiar os números de telefone de todos os membros do grupo"
 
 #: 
 msgid "Verify People"
@@ -6962,10 +6898,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Uma nova senha foi gerada e enviada para seu endereço de e-mail."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Permitir atualizações pré-lançamento"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplicar atualização agora"
 
@@ -6986,20 +6918,8 @@ msgid "Backup Skipped"
 msgstr "Backup ignorado"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Verifique o GitHub para obter as informações mais recentes de lançamento"
-
-#: 
 msgid "Complete"
 msgstr "Completo"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Continuar para backup"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Continuar para download e aplicação"
 
 #: 
 msgid "Create Backup"

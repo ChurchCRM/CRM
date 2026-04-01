@@ -2286,10 +2286,6 @@ msgid "How did you learn of the church?"
 msgstr "คุณรู้จักคริสตจักรได้อย่างไร?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "แดชบอร์ดอีเมล"
-
-#: 
 msgid "Version"
 msgstr "เวอร์ชัน"
 
@@ -2338,10 +2334,6 @@ msgid "Custom Drop-Down List"
 msgstr "รายการดรอปดาวน์กำหนดเอง"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "ขอบคุณที่ลงทะเบียนการติดตั้ง ChurchCRM ของคุณ"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "ส่งอีเมล PDF ไปยังสมาชิกครอบครัวสำเร็จ"
 
@@ -2356,18 +2348,6 @@ msgstr "เพิ่มกลุ่มลงในตะกร้าสำเร
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "ลบกลุ่มออกจากตะกร้าสำเร็จ"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "ลบรูปโปรไฟล์สำเร็จ"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "อัปเดตรูปโปรไฟล์สำเร็จ"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "ข้อผิดพลาดในการอัปโหลดรูปโปรไฟล์"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5258,10 +5238,6 @@ msgid "Thai"
 msgstr "ไทย"
 
 #: 
-msgid "Self Register"
-msgstr "ลงทะเบียนด้วยตนเอง"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "รอการยืนยันตนเอง"
 
@@ -5503,14 +5479,6 @@ msgid "Create Group + ADD Cart"
 msgstr "สร้างกลุ่ม + เพิ่มตะกร้า"
 
 #: 
-msgid "Move Event"
-msgstr "ย้ายกิจกรรม"
-
-#: 
-msgid "Resize Event"
-msgstr "ปรับขนาดกิจกรรม"
-
-#: 
 msgid "Profile"
 msgstr "โปรไฟล์"
 
@@ -5687,28 +5655,12 @@ msgid "Are you sure you want to move"
 msgstr "คุณแน่ใจหรือไม่ว่าต้องการย้าย"
 
 #: 
-msgid "from"
-msgstr "จาก"
-
-#: 
-msgid "to"
-msgstr "ถึง"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "คุณแน่ใจหรือไม่ว่าต้องการเปลี่ยนเวลาสิ้นสุดสำหรับ "
-
-#: 
 msgid "Access Token"
 msgstr "โทเค็นการเข้าถึง"
 
 #: 
 msgid "New Access Token"
 msgstr "โทเค็นการเข้าถึงใหม่"
-
-#: 
-msgid "Delete Access Token"
-msgstr "ลบโทเค็นการเข้าถึง"
 
 #: 
 msgid "ICS URL"
@@ -5739,14 +5691,6 @@ msgid "New Calendar"
 msgstr "ปฏิทินใหม่"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI ถูกปิดใช้งาน แต่ปฏิทินบางตัวมีโทเค็นการเข้าถึง"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "เพื่อให้แชร์ปฏิทินได้ การตั้งค่า bEnableExternalCalendarAPI ต้องเปิดใช้งานนอกเหนือจากปฏิทินที่มีโทเค็นการเข้าถึงเฉพาะ"
-
-#: 
 msgid "Links"
 msgstr "ลิงก์"
 
@@ -5769,10 +5713,6 @@ msgstr "เปิดใช้งานเมนูการระดมทุน
 #: 
 msgid "Enable Email menu."
 msgstr "เปิดใช้งานเมนูอีเมล"
-
-#: 
-msgid "Enabled Features"
-msgstr "คุณสมบัติที่เปิดใช้งาน"
 
 #: 
 msgid "Validation Error"
@@ -5993,10 +5933,6 @@ msgid "PDF handling mode.\n"
 msgstr "โหมดการจัดการ PDF\n"
 "1 = กล่องโต้ตอบบันทึกไฟล์\n"
 "2 = เปิดในหน้าต่างเบราว์เซอร์ปัจจุบัน"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "กด CTRL + C เพื่อคัดลอกหมายเลขโทรศัพท์ของสมาชิกกลุ่มทั้งหมด"
 
 #: 
 msgid "Verify People"
@@ -6970,10 +6906,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "รหัสผ่านใหม่ถูกสร้างและส่งไปยังที่อยู่อีเมลของคุณ"
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "อนุญาตการอัปเกรดเวอร์ชันก่อนเผยแพร่"
-
-#: 
 msgid "Apply Update Now"
 msgstr "ใช้การอัปเดตตอนนี้"
 
@@ -6994,20 +6926,8 @@ msgid "Backup Skipped"
 msgstr "ข้ามการสำรองข้อมูล"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "ตรวจสอบ GitHub สำหรับข้อมูลเวอร์ชันล่าสุด"
-
-#: 
 msgid "Complete"
 msgstr "เสร็จสมบูรณ์"
-
-#: 
-msgid "Continue to Backup"
-msgstr "ดำเนินการสำรองข้อมูลต่อ"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "ดำเนินการดาวน์โหลดและใช้ต่อ"
 
 #: 
 msgid "Create Backup"

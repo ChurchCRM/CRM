@@ -2365,10 +2365,6 @@ msgid "How did you learn of the church?"
 msgstr "W jaki sposób dowiedziałeś się o Parafii?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Strona Główna eMail"
-
-#: 
 msgid "Version"
 msgstr "Wersja"
 
@@ -2417,10 +2413,6 @@ msgid "Custom Drop-Down List"
 msgstr "Dodatkowa Lista Wyboru"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Dziękujemy za zarejestrowanie tej instalacji ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF pomyślnie przesłany do członków rodziny."
 
@@ -2435,18 +2427,6 @@ msgstr "Grupa pomyślnie dodana do Koszyka"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupa pomyślnie usunięta z Koszyka"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Obrazek pomyślnie usunięty."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Obrazek pomyślnie zaktualizowany."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Błąd podczas wgrywania obrazka."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5357,10 +5337,6 @@ msgid "Thai"
 msgstr "Tajski"
 
 #: 
-msgid "Self Register"
-msgstr "Samodzielnie zarejestrowani"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Oczekuje na samoweryfikację"
 
@@ -5602,14 +5578,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Utwórz grupę + dodaj KOSZYK"
 
 #: 
-msgid "Move Event"
-msgstr "Przesuń wydarzenie"
-
-#: 
-msgid "Resize Event"
-msgstr "Zmień rozmiar wydarzenia"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5786,28 +5754,12 @@ msgid "Are you sure you want to move"
 msgstr "Czy napewno chcesz przenieść"
 
 #: 
-msgid "from"
-msgstr "z"
-
-#: 
-msgid "to"
-msgstr "do"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Czy napewo chcesz zmienić czas zakończenia dla "
-
-#: 
 msgid "Access Token"
 msgstr "Token Dostępu"
 
 #: 
 msgid "New Access Token"
 msgstr "Nowy Token Dostępu"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Usuń Token Dostępu"
 
 #: 
 msgid "ICS URL"
@@ -5838,15 +5790,6 @@ msgid "New Calendar"
 msgstr "Nowy Kalendarz"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI wyłączony, lecz niektóre kalendarze posiadają token dostepu"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Aby współdzielić kalendarz bEnableExternalCalendarAPI musi być włączony oraz kalendarz musi mieć osobny token dostępu"
-
-#: 
 msgid "Links"
 msgstr "Linki"
 
@@ -5869,10 +5812,6 @@ msgstr "Pokaż menu Zbiórka Pieniędzy"
 #: 
 msgid "Enable Email menu."
 msgstr "Pokaż menu Emial"
-
-#: 
-msgid "Enabled Features"
-msgstr "Włączone Funkcje"
 
 #: 
 msgid "Validation Error"
@@ -6097,11 +6036,6 @@ msgid "PDF handling mode.\n"
 msgstr "Sposób obsługi PDF.\n"
 "1 = 'Zapisz jako'\n"
 "2 = Otwórz w przeglądarce w bierzącym oknie"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "CTRL + C kopuje numery numery telefonów wszystkich członków grupy"
 
 #: 
 msgid "Verify People"
@@ -7080,10 +7014,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Nowe hasło wysłano na e-mail."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Zezwalaj na wersje pre-release"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Zastosuj aktualizację"
 
@@ -7104,20 +7034,8 @@ msgid "Backup Skipped"
 msgstr "Pominięto kopię zapasową"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Sprawdź GitHub dla najnowszych wydań"
-
-#: 
 msgid "Complete"
 msgstr "Zakończono"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Przejdź do kopii zapasowej"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Pobierz i zastosuj"
 
 #: 
 msgid "Create Backup"

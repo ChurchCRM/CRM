@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "Jak ses o sboru dozvěděl?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Nástěnka e-Mailů"
-
-#: 
 msgid "Version"
 msgstr "Verze"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "Vlastní rozbalovací seznam"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Děkujeme vám za registraci vaší instalace systému ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "Soubor PDF úspěšně odeslán členům rodiny."
 
@@ -2365,18 +2357,6 @@ msgstr "Skupina úspěšně přidána do košíku."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Skupina úspěšně odstraněna z košíku."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profilový obrázek úspěšně odstraněn."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profilový obrázek úspěšně aktualizován."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Chyba při nahrávání profilového obrázku."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5274,10 +5254,6 @@ msgid "Thai"
 msgstr "Thajština"
 
 #: 
-msgid "Self Register"
-msgstr "Vlastní registrace"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Čeká na vlastní ověření"
 
@@ -5519,14 +5495,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Vytvořit skupinu + PŘIDAT košík"
 
 #: 
-msgid "Move Event"
-msgstr "Přesunout událost"
-
-#: 
-msgid "Resize Event"
-msgstr "Změnit velikost události"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5703,28 +5671,12 @@ msgid "Are you sure you want to move"
 msgstr "Opravdu chcete přesunout"
 
 #: 
-msgid "from"
-msgstr "z"
-
-#: 
-msgid "to"
-msgstr "do"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Jste si jisti, že chcete změnit čas ukončení pro "
-
-#: 
 msgid "Access Token"
 msgstr "Přístupový token"
 
 #: 
 msgid "New Access Token"
 msgstr "Nový přístupový token"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Smazat přístupový token"
 
 #: 
 msgid "ICS URL"
@@ -5755,14 +5707,6 @@ msgid "New Calendar"
 msgstr "Nový kalendář"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI je zakázáno, ale některé kalendáře mají přístupové tokeny"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Aby bylo možné kalendáře sdílet, musí být kromě kalendáře s konkrétním přístupovým tokenem povoleno nastavení bEnableExternalCalendarAPI"
-
-#: 
 msgid "Links"
 msgstr "Odkazy"
 
@@ -5785,10 +5729,6 @@ msgstr "Povolit nabídku Fundraiser."
 #: 
 msgid "Enable Email menu."
 msgstr "Povolit nabídku E-mail."
-
-#: 
-msgid "Enabled Features"
-msgstr "Povolené funkce"
 
 #: 
 msgid "Validation Error"
@@ -6009,10 +5949,6 @@ msgid "PDF handling mode.\n"
 msgstr "Režim práce s PDF.\n"
 "1 = dialogové okno Uložit soubor\n"
 "2 = Otevřít v aktuálním okně prohlížeče"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Stisknutím kláves CTRL + C zkopírujete telefonní čísla všech členů skupiny"
 
 #: 
 msgid "Verify People"
@@ -6990,10 +6926,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Bylo vygenerováno nové heslo a zasláno na vaši e-mailovou adresu."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Povolit předběžné aktualizace"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Použít aktualizaci nyní"
 
@@ -7014,20 +6946,8 @@ msgid "Backup Skipped"
 msgstr "Záloha přeskočena"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Nejnovější informace o vydání najdete na GitHubu"
-
-#: 
 msgid "Complete"
 msgstr "Hotovo"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Pokračovat na Zálohu"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Pokračovat na stažení a aktualizaci"
 
 #: 
 msgid "Create Backup"

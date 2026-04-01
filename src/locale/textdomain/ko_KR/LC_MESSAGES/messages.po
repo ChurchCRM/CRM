@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "우리 교회를 어떻게 알게 되었나요?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "이메일 대시보드"
-
-#: 
 msgid "Version"
 msgstr "버전"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "사용자 정의 드롭다운"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "ChurchCRM을 등록해 주셔서 감사합니다."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "가족 구성원에게 PDF가 정상 발송되었습니다."
 
@@ -2365,18 +2357,6 @@ msgstr "그룹이 카트에 추가되었습니다."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "그룹이 카트에서 제거되었습니다."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "프로필 사진이 삭제되었습니다."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "프로필 사진이 업데이트되었습니다."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "프로필 사진 업로드 오류."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5278,10 +5258,6 @@ msgid "Thai"
 msgstr "태국어"
 
 #: 
-msgid "Self Register"
-msgstr "자가 등록"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "자가 확인 대기"
 
@@ -5523,14 +5499,6 @@ msgid "Create Group + ADD Cart"
 msgstr "그룹 생성 + 카트 추가"
 
 #: 
-msgid "Move Event"
-msgstr "행사 이동"
-
-#: 
-msgid "Resize Event"
-msgstr "행사 크기 조정"
-
-#: 
 msgid "Profile"
 msgstr "프로필"
 
@@ -5708,28 +5676,12 @@ msgid "Are you sure you want to move"
 msgstr "다음을 이동하시겠습니까"
 
 #: 
-msgid "from"
-msgstr "에서"
-
-#: 
-msgid "to"
-msgstr "으로"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "이 일정의 종료 시간을 변경하시겠습니까: "
-
-#: 
 msgid "Access Token"
 msgstr "액세스 토큰"
 
 #: 
 msgid "New Access Token"
 msgstr "새 액세스 토큰"
-
-#: 
-msgid "Delete Access Token"
-msgstr "액세스 토큰 삭제"
 
 #: 
 msgid "ICS URL"
@@ -5760,14 +5712,6 @@ msgid "New Calendar"
 msgstr "새 캘린더"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "외부 캘린더 API가 비활성화되어 있지만 일부 캘린더에 액세스 토큰이 있습니다"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "캘린더를 공유하려면 액세스 토큰과 함께 bEnableExternalCalendarAPI 설정을 활성화해야 합니다"
-
-#: 
 msgid "Links"
 msgstr "링크"
 
@@ -5790,10 +5734,6 @@ msgstr "모금 메뉴 표시"
 #: 
 msgid "Enable Email menu."
 msgstr "이메일 메뉴 표시"
-
-#: 
-msgid "Enabled Features"
-msgstr "활성화된 기능"
 
 #: 
 msgid "Validation Error"
@@ -6016,11 +5956,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF 처리 방식\n"
 "1 = 파일 저장 대화상자\n"
 "2 = 현재 브라우저에서 열기"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Ctrl+C를 눌러 그룹 구성원의 전화번호를 모두 복사하세요"
 
 #: 
 msgid "Verify People"
@@ -6994,10 +6929,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "새 비밀번호가 생성되어 이메일 주소로 전송되었습니다."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "사전 릴리스 업그레이드 허용"
-
-#: 
 msgid "Apply Update Now"
 msgstr "지금 업데이트 적용"
 
@@ -7018,20 +6949,8 @@ msgid "Backup Skipped"
 msgstr "백업 건너뜀"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "GitHub에서 최신 릴리스 정보 확인"
-
-#: 
 msgid "Complete"
 msgstr "완료"
-
-#: 
-msgid "Continue to Backup"
-msgstr "백업 계속"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "다운로드 및 적용 계속"
 
 #: 
 msgid "Create Backup"

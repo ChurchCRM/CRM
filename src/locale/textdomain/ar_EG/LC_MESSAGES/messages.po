@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "كيف تتعلم من الكنيسة؟"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "أرسل لوحة"
-
-#: 
 msgid "Version"
 msgstr "اصدار"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "العرف القائمة المنسدلة"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "شكرا لتسجيلك تركيب ChurchCRM الخاص بك."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF بالبريد الالكتروني بنجاح لأفراد الأسرة."
 
@@ -2365,18 +2357,6 @@ msgstr "وأضاف الفريق بنجاح إلى العربة."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "إزالة المجموعة بنجاح من العربة."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "الصورة الشخصية للإزالة بنجاح."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "الصورة الشخصية تحديثها بنجاح."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "الملف الشخصي خطأ تحميل الصورة."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5281,10 +5261,6 @@ msgid "Thai"
 msgstr "التايلاندية"
 
 #: 
-msgid "Self Register"
-msgstr "التسجيل الذاتي"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "في انتظار التحقق الذاتي"
 
@@ -5526,14 +5502,6 @@ msgid "Create Group + ADD Cart"
 msgstr "إنشاء مجموعة + أضف العربة"
 
 #: 
-msgid "Move Event"
-msgstr "حدث تحرك"
-
-#: 
-msgid "Resize Event"
-msgstr "تغيير حجم الحدث"
-
-#: 
 msgid "Profile"
 msgstr "الملف الشخصي"
 
@@ -5712,28 +5680,12 @@ msgid "Are you sure you want to move"
 msgstr "هل أنت متأكد أنك تريد نقل"
 
 #: 
-msgid "from"
-msgstr "من"
-
-#: 
-msgid "to"
-msgstr "الى"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "هل أنت متأكد أنك تريد تغيير وقت النهاية ل"
-
-#: 
 msgid "Access Token"
 msgstr "رمز وصول"
 
 #: 
 msgid "New Access Token"
 msgstr "رمز وصول جديدة"
-
-#: 
-msgid "Delete Access Token"
-msgstr "حذف الوصول رمز"
 
 #: 
 msgid "ICS URL"
@@ -5764,15 +5716,6 @@ msgid "New Calendar"
 msgstr "التقويم الجديد"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI تعطيل، ولكن بعض التقاويم على رموز الوصول المميزة"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "للتقويمات أن تكون مشتركة، لا بد من تمكين الإعداد bEnableExternalCalendarAPI بالإضافة إلى التقويم وجود رمز وصول محددة"
-
-#: 
 msgid "Links"
 msgstr "الروابط"
 
@@ -5795,10 +5738,6 @@ msgstr "تمكين القائمة لجمع التبرعات."
 #: 
 msgid "Enable Email menu."
 msgstr "تمكين القائمة البريد الإلكتروني."
-
-#: 
-msgid "Enabled Features"
-msgstr "الميزات تمكين"
 
 #: 
 msgid "Validation Error"
@@ -6015,11 +5954,6 @@ msgid "PDF handling mode.\n"
 "1 = Save File dialog\n"
 "2 = Open in current browser window"
 msgstr "PDF وضع معالجة. 1 = حفظ ملف الحوار 2 = فتح في نافذة المتصفح الحالي"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "اضغط CTRL + C لنسخ جميع أعضاء المجموعة \\ \"أرقام الهواتف"
 
 #: 
 msgid "Verify People"
@@ -7004,10 +6938,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "تم إنشاء كلمة مرور جديدة وإرسالها إلى عنوان بريدك الإلكتروني."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "السماح بترقيات الإصدار التجريبي"
-
-#: 
 msgid "Apply Update Now"
 msgstr "طبّق التحديث الآن"
 
@@ -7028,20 +6958,8 @@ msgid "Backup Skipped"
 msgstr "تم تخطي النسخة الاحتياطية"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "تحقق من GitHub للحصول على أحدث معلومات الإصدار"
-
-#: 
 msgid "Complete"
 msgstr "اكتمل"
-
-#: 
-msgid "Continue to Backup"
-msgstr "متابعة إلى النسخة الاحتياطية"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "متابعة التنزيل والتطبيق"
 
 #: 
 msgid "Create Backup"

@@ -2297,10 +2297,6 @@ msgid "How did you learn of the church?"
 msgstr "Як ти дізнався про церкву?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Інформаційна панель електронної пошти"
-
-#: 
 msgid "Version"
 msgstr "Версія"
 
@@ -2349,10 +2345,6 @@ msgid "Custom Drop-Down List"
 msgstr "Спеціальний випадаючий список"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Дякуємо, що зареєстрували свою установку ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF успішно надіслано членам сім'ї електронною поштою."
 
@@ -2367,18 +2359,6 @@ msgstr "Групу успішно додано в кошик."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Група успішно вилучена з кошика."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Зображення профілю успішно видалено."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Зображення профілю успішно оновлено."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Помилка завантаження зображення профілю."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5283,10 +5263,6 @@ msgid "Thai"
 msgstr "Тайська"
 
 #: 
-msgid "Self Register"
-msgstr "Самореєстрація"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Очікує на самостійну перевірку"
 
@@ -5528,14 +5504,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Створити групу + ДОДАТИ кошик"
 
 #: 
-msgid "Move Event"
-msgstr "Перемістити подію"
-
-#: 
-msgid "Resize Event"
-msgstr "Змінити розмір події"
-
-#: 
 msgid "Profile"
 msgstr "Профіль"
 
@@ -5714,28 +5682,12 @@ msgid "Are you sure you want to move"
 msgstr "Ви впевнені, що хочете переїхати"
 
 #: 
-msgid "from"
-msgstr "від"
-
-#: 
-msgid "to"
-msgstr "до"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Ви впевнені, що хочете змінити час завершення для "
-
-#: 
 msgid "Access Token"
 msgstr "Маркер доступу"
 
 #: 
 msgid "New Access Token"
 msgstr "Новий маркер доступу"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Видалити маркер доступу"
 
 #: 
 msgid "ICS URL"
@@ -5766,15 +5718,6 @@ msgid "New Calendar"
 msgstr "Новий календар"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI вимкнено, але деякі календарі мають маркери доступу"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Для спільного використання календарів потрібно ввімкнути параметр bEnableExternalCalendarAPI на додаток до календаря, що має певний маркер доступу"
-
-#: 
 msgid "Links"
 msgstr "Посилання"
 
@@ -5797,10 +5740,6 @@ msgstr "Увімкнути меню Збору коштів."
 #: 
 msgid "Enable Email menu."
 msgstr "Увімкнути меню Електронна пошта."
-
-#: 
-msgid "Enabled Features"
-msgstr "Увімкнені функції"
 
 #: 
 msgid "Validation Error"
@@ -6024,11 +5963,6 @@ msgid "PDF handling mode.\n"
 msgstr "Режим обробки PDF.\n"
 "1 = Діалогове вікно Зберегти файл\n"
 "2 = Відкрити у поточному вікні браузера"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Натисніть CTRL + C, щоб скопіювати всі телефонні номери членів групи"
 
 #: 
 msgid "Verify People"
@@ -7009,10 +6943,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Новий пароль створено та надіслано на вашу адресу електронної пошти."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Дозволити попередні версії оновлень (Pre-release)"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Застосувати оновлення зараз"
 
@@ -7033,20 +6963,8 @@ msgid "Backup Skipped"
 msgstr "Резервне копіювання пропущено"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Перевірте GitHub для отримання останньої інформації про реліз"
-
-#: 
 msgid "Complete"
 msgstr "Завершено"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Продовжити до резервного копіювання"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Продовжити до завантаження та застосування"
 
 #: 
 msgid "Create Backup"

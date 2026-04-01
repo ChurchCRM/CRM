@@ -2281,10 +2281,6 @@ msgid "How did you learn of the church?"
 msgstr "Miten kuulit kirkosta?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Sähköpostin hallintapaneeli"
-
-#: 
 msgid "Version"
 msgstr "Versio"
 
@@ -2333,10 +2329,6 @@ msgid "Custom Drop-Down List"
 msgstr "Mukautettu pudotusvalikko"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Kiitos ChurchCRM-asennuksesi rekisteröinnistä."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF lähetetty sähköpostitse perheenjäsenille."
 
@@ -2351,18 +2343,6 @@ msgstr "Ryhmä lisätty ostoskoriin."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Ryhmä poistettu ostoskorista."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profiilikuva poistettu."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profiilikuva päivitetty."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Virhe profiilikuvan latauksessa."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5253,10 +5233,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Rekisteröidy itse"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Odottaa itsevahvistusta"
 
@@ -5498,14 +5474,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Luo ryhmä + lisää kori"
 
 #: 
-msgid "Move Event"
-msgstr "Siirrä tapahtuma"
-
-#: 
-msgid "Resize Event"
-msgstr "Muuta tapahtuman kokoa"
-
-#: 
 msgid "Profile"
 msgstr "Profiili"
 
@@ -5682,28 +5650,12 @@ msgid "Are you sure you want to move"
 msgstr "Oletko varma, että haluat siirtää"
 
 #: 
-msgid "from"
-msgstr "paikasta"
-
-#: 
-msgid "to"
-msgstr "paikkaan"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Oletko varma, että haluat muuttaa päättymisaikaa kohteelle "
-
-#: 
 msgid "Access Token"
 msgstr "Pääsyavain"
 
 #: 
 msgid "New Access Token"
 msgstr "Uusi pääsyavain"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Poista pääsyavain"
 
 #: 
 msgid "ICS URL"
@@ -5734,14 +5686,6 @@ msgid "New Calendar"
 msgstr "Uusi kalenteri"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI on pois käytöstä, mutta joillakin kalentereilla on pääsyavaimia"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Kalenterien jakamiseksi bEnableExternalCalendarAPI-asetuksen on oltava päällä pääsyavaimen lisäksi"
-
-#: 
 msgid "Links"
 msgstr "Linkit"
 
@@ -5764,10 +5708,6 @@ msgstr "Ota käyttöön varainkeruuvalikko."
 #: 
 msgid "Enable Email menu."
 msgstr "Ota käyttöön sähköpostivalikko."
-
-#: 
-msgid "Enabled Features"
-msgstr "Käytössä olevat ominaisuudet"
 
 #: 
 msgid "Validation Error"
@@ -5983,10 +5923,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-käsittelytila.\n"
 "1 = Tallenna tiedosto -ikkuna\n"
 "2 = Avaa nykyisessä selainikkunassa"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Paina CTRL + C kopioidaksesi kaikkien ryhmän jäsenten puhelinnumerot"
 
 #: 
 msgid "Verify People"
@@ -6962,10 +6898,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Uusi salasana on luotu ja lähetetty sähköpostiisi."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Salli esijulkaisupäivitykset"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Päivitä nyt"
 
@@ -6986,20 +6918,8 @@ msgid "Backup Skipped"
 msgstr "Varmuuskopiointi ohitettu"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Tarkista viimeisimmät julkaisutiedot GitHubista"
-
-#: 
 msgid "Complete"
 msgstr "Valmis"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Jatka varmuuskopiointiin"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Jatka lataukseen ja päivitykseen"
 
 #: 
 msgid "Create Backup"

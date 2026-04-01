@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "Hoe ben je bij deze kerk terecht gekomen?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "E-mail menu"
-
-#: 
 msgid "Version"
 msgstr "Versie"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "Aangepaste Selectie Lijst"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Bedankt voor het registreren van uw installatie"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF succesvol verstuurd naar familieleden."
 
@@ -2365,18 +2357,6 @@ msgstr "Groep met success aan werkbestand toegevoegd."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "De Groep is met success verwijderd uit het werkbestand."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profielfoto succesvol verwijderd."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profielfoto succesvol bijgewerkt."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Profielfoto upload mislukt."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5282,10 +5262,6 @@ msgid "Thai"
 msgstr "Thais"
 
 #: 
-msgid "Self Register"
-msgstr "Zelf registratie"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "In afwachting van zelfverificatie"
 
@@ -5527,14 +5503,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Groep maken en aan het werkbestand toevoegen"
 
 #: 
-msgid "Move Event"
-msgstr "Verplaats activiteit"
-
-#: 
-msgid "Resize Event"
-msgstr "Activiteit resize"
-
-#: 
 msgid "Profile"
 msgstr "Mijn profiel"
 
@@ -5713,28 +5681,12 @@ msgid "Are you sure you want to move"
 msgstr "Weet je zeker dat je dit wilt verplaatsen?"
 
 #: 
-msgid "from"
-msgstr "Van"
-
-#: 
-msgid "to"
-msgstr "Aan"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Weet je zeker dat je de eindtijd wilt veranderen van"
-
-#: 
 msgid "Access Token"
 msgstr "Toegangscode"
 
 #: 
 msgid "New Access Token"
 msgstr "Nieuwe toegangscode"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Verwijder de toegangscode"
 
 #: 
 msgid "ICS URL"
@@ -5765,14 +5717,6 @@ msgid "New Calendar"
 msgstr "Nieuwe kalender"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnable External Calendar API uitgeschakeld, maar sommige agenda's hebben toegangstokens"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Om agenda's te kunnen delen, moet de instelling bEnableExternalCalendarAPI zijn ingeschakeld naast de agenda met een specifiek toegangstoken"
-
-#: 
 msgid "Links"
 msgstr "Eigen schermen"
 
@@ -5795,10 +5739,6 @@ msgstr "Aanzetten: giften menu"
 #: 
 msgid "Enable Email menu."
 msgstr "Aanzetten: e-mail menu"
-
-#: 
-msgid "Enabled Features"
-msgstr "Aanzetten: kenmerken"
 
 #: 
 msgid "Validation Error"
@@ -6021,11 +5961,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-verwerkingsmodus.\n"
 "1 = dialoogvenster Bestand opslaan\n"
 "2 = Openen in huidig browservenster"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Druk op CTRL + C om de telefoonnummers van alle groepsleden te kopiëren"
 
 #: 
 msgid "Verify People"
@@ -7002,10 +6937,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Er is een nieuw wachtwoord gegenereerd en naar uw e-mailadres verzonden."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Pre-release upgrades toestaan"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Update nu toepassen"
 
@@ -7026,20 +6957,8 @@ msgid "Backup Skipped"
 msgstr "Back-up overgeslagen"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Controleer GitHub voor de nieuwste release-informatie"
-
-#: 
 msgid "Complete"
 msgstr "Voltooid"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Doorgaan naar back-up"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Doorgaan met downloaden en toepassen"
 
 #: 
 msgid "Create Backup"

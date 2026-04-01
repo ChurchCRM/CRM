@@ -2367,10 +2367,6 @@ msgid "How did you learn of the church?"
 msgstr "你是怎么学习的教会吗？"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "电子邮件仪表板"
-
-#: 
 msgid "Version"
 msgstr "Version"
 
@@ -2419,10 +2415,6 @@ msgid "Custom Drop-Down List"
 msgstr "自定义下拉列表"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "谢谢您登记安装ChurchRam"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF已成功通过邮件发送给家庭成员。"
 
@@ -2437,18 +2429,6 @@ msgstr "集团已成功添加到购物车。"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "集团成功地从车中取出。"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "图片资料已成功移除。"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "图片资料已成功更新。"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "图片资料上传失败"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5367,10 +5347,6 @@ msgid "Thai"
 msgstr "泰语"
 
 #: 
-msgid "Self Register"
-msgstr "自助登记"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "待自助验证"
 
@@ -5614,14 +5590,6 @@ msgstr "建立群组＋新增购物车\n"
 ""
 
 #: 
-msgid "Move Event"
-msgstr "移动事件"
-
-#: 
-msgid "Resize Event"
-msgstr "调整事件大小"
-
-#: 
 msgid "Profile"
 msgstr "轮廓"
 
@@ -5801,28 +5769,12 @@ msgid "Are you sure you want to move"
 msgstr "您是否肯定想移走"
 
 #: 
-msgid "from"
-msgstr "由"
-
-#: 
-msgid "to"
-msgstr "至"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "您是否想更变结束时间于␣"
-
-#: 
 msgid "Access Token"
 msgstr "访问令牌"
 
 #: 
 msgid "New Access Token"
 msgstr "新的访问令牌"
-
-#: 
-msgid "Delete Access Token"
-msgstr "删除访问令牌"
 
 #: 
 msgid "ICS URL"
@@ -5853,15 +5805,6 @@ msgid "New Calendar"
 msgstr "新日历"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "已禁用bEnableExternalCalendarAPI，但某些日历具有访问令牌"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "对于要共享的日历，除了具有特定访问令牌的日历之外，还必须启用bEnableExternalCalendarAPI设置"
-
-#: 
 msgid "Links"
 msgstr "连接"
 
@@ -5884,10 +5827,6 @@ msgstr "启用筹款人菜单"
 #: 
 msgid "Enable Email menu."
 msgstr "启用邮件菜单"
-
-#: 
-msgid "Enabled Features"
-msgstr "启用功能"
 
 #: 
 msgid "Validation Error"
@@ -6111,11 +6050,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF处理模式。\n"
 "1 =保存文件对话框\n"
 "2 =在当前浏览器窗口中打开"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "按CTRL + C复制所有组成员的电话号码"
 
 #: 
 msgid "Verify People"
@@ -7090,10 +7024,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "新密码已生成并发送至您的电子邮件地址。"
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "允许预发布版本升级"
-
-#: 
 msgid "Apply Update Now"
 msgstr "立即应用更新"
 
@@ -7114,20 +7044,8 @@ msgid "Backup Skipped"
 msgstr "备份已跳过"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "在 GitHub 上查看最新的发布信息"
-
-#: 
 msgid "Complete"
 msgstr "完成"
-
-#: 
-msgid "Continue to Backup"
-msgstr "继续备份"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "继续下载并应用"
 
 #: 
 msgid "Create Backup"

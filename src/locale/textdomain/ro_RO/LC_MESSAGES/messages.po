@@ -2363,10 +2363,6 @@ msgid "How did you learn of the church?"
 msgstr "Cum ați aflat de biserica?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Panou eMail"
-
-#: 
 msgid "Version"
 msgstr "Versiune"
 
@@ -2415,10 +2411,6 @@ msgid "Custom Drop-Down List"
 msgstr "Personalizat din lista drop-down"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Mulțumim că ați înregistrat instalarea ce ChurchCRM"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF-ul a fost trimis cu succes către membrii familiei"
 
@@ -2433,18 +2425,6 @@ msgstr "Grupa adăugat cu succes în coș."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupa eliminat cu succes din Cart."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Imagine profil îndepărtată cu succes"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Imagine profil actualizată cu success"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Eroare încărcare poză profil"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5363,10 +5343,6 @@ msgid "Thai"
 msgstr "Tailandez"
 
 #: 
-msgid "Self Register"
-msgstr "Autoînregistrare"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "În așteptarea auto-verificării"
 
@@ -5608,14 +5584,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Creați grup + ADD coș"
 
 #: 
-msgid "Move Event"
-msgstr "Mută evenimentul"
-
-#: 
-msgid "Resize Event"
-msgstr "Redimensionează evenimentul"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5794,28 +5762,12 @@ msgid "Are you sure you want to move"
 msgstr "Ești sigur/ă că vrei să muți"
 
 #: 
-msgid "from"
-msgstr "de la"
-
-#: 
-msgid "to"
-msgstr "pentru"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Sunteți sigur că doriți să schimbați ora de încheiere pentru"
-
-#: 
 msgid "Access Token"
 msgstr "Token de acces"
 
 #: 
 msgid "New Access Token"
 msgstr "Token de acces nou"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Șterge tokenul de accces"
 
 #: 
 msgid "ICS URL"
@@ -5846,15 +5798,6 @@ msgid "New Calendar"
 msgstr "Calendar nou"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI dezactivat, dar unele calendare au tokenuri de acces"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Pentru ca calendarele să poată fi partajate, setarea bEnableExternalCalendarAPI trebuie să fie activată, pe lângă faptul că calendarul trebuie să aibă un token de acces specific"
-
-#: 
 msgid "Links"
 msgstr "Link-uri"
 
@@ -5877,10 +5820,6 @@ msgstr "Activați meniu Strângere de Fonduri"
 #: 
 msgid "Enable Email menu."
 msgstr "Activați meniu Email"
-
-#: 
-msgid "Enabled Features"
-msgstr "Funcții activate"
 
 #: 
 msgid "Validation Error"
@@ -6101,11 +6040,6 @@ msgid "PDF handling mode.\n"
 msgstr "Mod de gestionare a fișierelor PDF.\n"
 "1 = Dialog pentru Salvare Fișier\n"
 "2 = Deschide în fereastra curentă a browserului"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Apăsați CTRL + C pentru a copia toate numerele de telefon ale membrilor grupului"
 
 #: 
 msgid "Verify People"
@@ -7083,10 +7017,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "O nouă parolă a fost generată și trimisă la adresa dumneavoastră de e-mail."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Permite actualizări pre-lansare"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Aplică actualizarea acum"
 
@@ -7107,20 +7037,8 @@ msgid "Backup Skipped"
 msgstr "Copie de rezervă omisă"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Verificați GitHub pentru cele mai recente informații despre lansare"
-
-#: 
 msgid "Complete"
 msgstr "Finalizat"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Continuă la copia de rezervă"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Continuă la descărcare și aplicare"
 
 #: 
 msgid "Create Backup"

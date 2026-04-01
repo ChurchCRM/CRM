@@ -2274,10 +2274,6 @@ msgid "How did you learn of the church?"
 msgstr "どのようにして当教会を知りましたか？"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "メール・ダッシュボード"
-
-#: 
 msgid "Version"
 msgstr "バージョン"
 
@@ -2326,10 +2322,6 @@ msgid "Custom Drop-Down List"
 msgstr "カスタム・ドロップダウンリスト"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "ChurchCRM のインストールを登録していただき、ありがとうございます。"
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF が世帯メンバーに正常に送信されました。"
 
@@ -2344,18 +2336,6 @@ msgstr "グループがカートに正常に追加されました。"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "グループがカートから正常に削除されました。"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "プロフィール画像が正常に削除されました。"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "プロフィール画像が正常に更新されました。"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "プロフィール画像のアップロードエラー。"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5246,10 +5226,6 @@ msgid "Thai"
 msgstr "タイ語"
 
 #: 
-msgid "Self Register"
-msgstr "自己登録"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "自己確認保留中"
 
@@ -5491,14 +5467,6 @@ msgid "Create Group + ADD Cart"
 msgstr "グループ作成 + カート追加"
 
 #: 
-msgid "Move Event"
-msgstr "イベントを移動"
-
-#: 
-msgid "Resize Event"
-msgstr "イベントのサイズを変更"
-
-#: 
 msgid "Profile"
 msgstr "プロフィール"
 
@@ -5675,28 +5643,12 @@ msgid "Are you sure you want to move"
 msgstr "移動してもよろしいですか"
 
 #: 
-msgid "from"
-msgstr "から"
-
-#: 
-msgid "to"
-msgstr "へ"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "終了時間を変更してもよろしいですか "
-
-#: 
 msgid "Access Token"
 msgstr "アクセストークン"
 
 #: 
 msgid "New Access Token"
 msgstr "新しいアクセストークン"
-
-#: 
-msgid "Delete Access Token"
-msgstr "アクセストークンを削除"
 
 #: 
 msgid "ICS URL"
@@ -5727,14 +5679,6 @@ msgid "New Calendar"
 msgstr "新規カレンダー"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPIが無効ですが、一部のカレンダーにはアクセストークンがあります"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "カレンダーを共有するには、カレンダーに特定のアクセストークンがあることに加えて、bEnableExternalCalendarAPI設定を有効にする必要があります"
-
-#: 
 msgid "Links"
 msgstr "リンク"
 
@@ -5757,10 +5701,6 @@ msgstr "募金活動メニューを有効化。"
 #: 
 msgid "Enable Email menu."
 msgstr "メールメニューを有効化。"
-
-#: 
-msgid "Enabled Features"
-msgstr "有効な機能"
 
 #: 
 msgid "Validation Error"
@@ -5981,10 +5921,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF処理モード。\n"
 "1 = ファイル保存ダイアログ\n"
 "2 = 現在のブラウザウィンドウで開く"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "CTRL + Cを押してすべてのグループメンバーの電話番号をコピー"
 
 #: 
 msgid "Verify People"
@@ -6958,10 +6894,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "新しいパスワードが生成され、メールアドレスに送信されました。"
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "プレリリースアップグレードを許可"
-
-#: 
 msgid "Apply Update Now"
 msgstr "今すぐ更新を適用"
 
@@ -6982,20 +6914,8 @@ msgid "Backup Skipped"
 msgstr "バックアップはスキップされました"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "GitHubで最新リリース情報を確認"
-
-#: 
 msgid "Complete"
 msgstr "完了"
-
-#: 
-msgid "Continue to Backup"
-msgstr "バックアップに進む"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "ダウンロードと適用に進む"
 
 #: 
 msgid "Create Backup"

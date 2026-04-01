@@ -2297,10 +2297,6 @@ msgid "How did you learn of the church?"
 msgstr "Kiliseyi nasıl öğrendin?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "E -posta Gösterge Tablosu"
-
-#: 
 msgid "Version"
 msgstr "Versiyon"
 
@@ -2349,10 +2345,6 @@ msgid "Custom Drop-Down List"
 msgstr "Özel açılır liste"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "ChurchCRM kurulumunuzu kaydettiğiniz için teşekkür ederiz."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF, aile üyelerine başarıyla e -posta gönderdi."
 
@@ -2367,18 +2359,6 @@ msgstr "Grup sepete başarıyla eklendi."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grup, arabadan başarıyla kaldırıldı."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Profil görüntüsü başarıyla kaldırıldı."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Profil resmi başarıyla güncellendi."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Profil Resim Yükle Hatası."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5283,10 +5263,6 @@ msgid "Thai"
 msgstr "Tayland"
 
 #: 
-msgid "Self Register"
-msgstr "Kendi Kayıt Kayıt"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Beklediğin Kendini Doğrula"
 
@@ -5528,14 +5504,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Grup Oluştur + Sepet Ekle"
 
 #: 
-msgid "Move Event"
-msgstr "Hareket Etkinliği"
-
-#: 
-msgid "Resize Event"
-msgstr "Yeniden boyutlandırma etkinliği"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5714,28 +5682,12 @@ msgid "Are you sure you want to move"
 msgstr "Hareket etmek istediğinden emin misin"
 
 #: 
-msgid "from"
-msgstr "itibaren"
-
-#: 
-msgid "to"
-msgstr "ile"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Bitiş saatini değiştirmek istediğinden emin misiniz?"
-
-#: 
 msgid "Access Token"
 msgstr "Erişim belirteci"
 
 #: 
 msgid "New Access Token"
 msgstr "Yeni Erişim Jetonu"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Erişim belirtecini sil"
 
 #: 
 msgid "ICS URL"
@@ -5766,15 +5718,6 @@ msgid "New Calendar"
 msgstr "Yeni Takvim"
 
 #: 
-#, fuzzy
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "BenableExternalCalendarapi devre dışı bırakıldı, ancak bazı takvimlerin erişim belirteçleri var"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Takvimlerin paylaşılması için, özel bir erişim belirtecine sahip takvime ek olarak BenableExternalCalendarapi ayarı etkinleştirilmelidir."
-
-#: 
 msgid "Links"
 msgstr "Bağlar"
 
@@ -5797,10 +5740,6 @@ msgstr "Bağış toplama menüsünü etkinleştirin."
 #: 
 msgid "Enable Email menu."
 msgstr "E -posta menüsünü etkinleştirin."
-
-#: 
-msgid "Enabled Features"
-msgstr "Etkin özellikler"
 
 #: 
 msgid "Validation Error"
@@ -6024,11 +5963,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF kullanım modu.\n"
 "1 = Dosya Dosyayı Kaydet\n"
 "2 = Geçerli tarayıcı penceresinde açın"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Tüm Grup Üyelerini Kopyalamak İçin Ctrl + C tuşlarına basın \\ 'Telefon Numaraları"
 
 #: 
 msgid "Verify People"
@@ -7005,10 +6939,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Yeni bir şifre oluşturuldu ve e-posta adresinize gönderildi."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Sürüm Öncesi (Beta) Yükseltmelere İzin Ver"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Güncellemeyi Şimdi Uygula"
 
@@ -7029,20 +6959,8 @@ msgid "Backup Skipped"
 msgstr "Yedekleme Atlandı"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "En son sürüm bilgileri için GitHub'ı kontrol edin"
-
-#: 
 msgid "Complete"
 msgstr "Tamamlandı"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Yedeklemeye Devam Et"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "İndirmeye ve Uygulamaya Devam Et"
 
 #: 
 msgid "Create Backup"

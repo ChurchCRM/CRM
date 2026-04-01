@@ -2295,10 +2295,6 @@ msgid "How did you learn of the church?"
 msgstr "כיצד למדת על המוסד?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "לוח בקרת דואר אלקטרוני"
-
-#: 
 msgid "Version"
 msgstr "גרסה"
 
@@ -2347,10 +2343,6 @@ msgid "Custom Drop-Down List"
 msgstr "רשימה נפתחת מותאמת אישית"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "תודה שנרשמת להתקנת ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "קובץ PDF נשלח בהצלחה בדואר אלקטרוני לבני המשפחה"
 
@@ -2365,18 +2357,6 @@ msgstr "הקבוצה נוספה בהצלחה לעגלה."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "הקבוצה הוסרה בהצלחה מהעגלה."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "תמונת הפרופיל הוסרה בהצלחה."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "תמונת הפרופיל עודכנה בהצלחה."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "שגיאה בהעלאת תמונת הפרופיל."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5281,10 +5261,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "הרשמה עצמית"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "אימות עצמי בהמתנה"
 
@@ -5526,14 +5502,6 @@ msgid "Create Group + ADD Cart"
 msgstr "צור קבוצה + הוסף עגלה"
 
 #: 
-msgid "Move Event"
-msgstr "הזז אירוע"
-
-#: 
-msgid "Resize Event"
-msgstr "שנה גודל אירוע"
-
-#: 
 msgid "Profile"
 msgstr "פרופיל"
 
@@ -5712,28 +5680,12 @@ msgid "Are you sure you want to move"
 msgstr "האם אתה בטוח שברצונך להזיז"
 
 #: 
-msgid "from"
-msgstr "מ-"
-
-#: 
-msgid "to"
-msgstr "ל-"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "האם אתה בטוח שברצונך לשנות את זמן הסיום עבור "
-
-#: 
 msgid "Access Token"
 msgstr "אסימון גישה"
 
 #: 
 msgid "New Access Token"
 msgstr "אסימון גישה חדש"
-
-#: 
-msgid "Delete Access Token"
-msgstr "מחק אסימון גישה"
 
 #: 
 msgid "ICS URL"
@@ -5764,14 +5716,6 @@ msgid "New Calendar"
 msgstr "לוח שנה חדש"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI מושבת, אבל לחלק מהלוחות יש אסימוני גישה"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "כדי לשתף לוחות שנה, יש להפעיל את ההגדרה bEnableExternalCalendarAPI בנוסף לכך שללוח השנה יהיה אסימון גישה ספציפי"
-
-#: 
 msgid "Links"
 msgstr "קישורים"
 
@@ -5794,10 +5738,6 @@ msgstr "הפעל תפריט גיוס כספים."
 #: 
 msgid "Enable Email menu."
 msgstr "הפעל את תפריט הדוא\"ל."
-
-#: 
-msgid "Enabled Features"
-msgstr "תכונות מופעלות"
 
 #: 
 msgid "Validation Error"
@@ -6020,11 +5960,6 @@ msgid "PDF handling mode.\n"
 msgstr "טיפול בקבצי PDF.\n"
 "1 = שמירת קובץ\n"
 "2 + פתח בחלון הנוכחי"
-
-#: 
-#, fuzzy
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "לחץ CTRL + C כדי להעתיק את כל שמות\\מספרי הטלפון שבקבוצה"
 
 #: 
 msgid "Verify People"
@@ -7000,10 +6935,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "סיסמה חדשה נוצרה ונשלחה לכתובת האימייל שלך."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "אפשר שדרוגי טרום-הפצה"
-
-#: 
 msgid "Apply Update Now"
 msgstr "החל עדכון כעת"
 
@@ -7024,20 +6955,8 @@ msgid "Backup Skipped"
 msgstr "דילוג על גיבוי"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "בדוק ב-GitHub לקבלת מידע על הגרסה האחרונה"
-
-#: 
 msgid "Complete"
 msgstr "הושלם"
-
-#: 
-msgid "Continue to Backup"
-msgstr "המשך לגיבוי"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "המשך להורדה והחלה"
 
 #: 
 msgid "Create Backup"

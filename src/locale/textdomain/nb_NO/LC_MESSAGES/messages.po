@@ -2391,10 +2391,6 @@ msgid "How did you learn of the church?"
 msgstr "Hvordan fikk du vite av kirken?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "E-post dashbord"
-
-#: 
 msgid "Version"
 msgstr "Versjon"
 
@@ -2443,10 +2439,6 @@ msgid "Custom Drop-Down List"
 msgstr "Custom Rullegardinliste"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Takk for at du registrerte ChurchCRM "
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF sending til familie vellykket"
 
@@ -2461,18 +2453,6 @@ msgstr "Gruppen er lagt til handlevognen."
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Gruppe fjernet fra handlekurven."
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Fjerning av profilbilde velykket"
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Oppdatering av profilbilde velykket"
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Feil med opplasting av profilbilde"
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5384,10 +5364,6 @@ msgid "Thai"
 msgstr "Thai"
 
 #: 
-msgid "Self Register"
-msgstr "Selvregistrering"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Venter på selvverifisering"
 
@@ -5629,14 +5605,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Opprett gruppe + LEGG TIL kurv"
 
 #: 
-msgid "Move Event"
-msgstr "Flytt hendelse"
-
-#: 
-msgid "Resize Event"
-msgstr "Endre størrelse på hendelse"
-
-#: 
 msgid "Profile"
 msgstr "Profil"
 
@@ -5813,28 +5781,12 @@ msgid "Are you sure you want to move"
 msgstr "Er du sikker på at du vil flytte"
 
 #: 
-msgid "from"
-msgstr "fra"
-
-#: 
-msgid "to"
-msgstr "til"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Er du sikker på at du vil endre sluttiden for "
-
-#: 
 msgid "Access Token"
 msgstr "Tilgangstoken"
 
 #: 
 msgid "New Access Token"
 msgstr "Nytt tilgangstoken"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Slett tilgangstoken"
 
 #: 
 msgid "ICS URL"
@@ -5865,14 +5817,6 @@ msgid "New Calendar"
 msgstr "Ny kalender"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI er deaktivert, men noen kalendere har tilgangstokens"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "For at kalendere skal kunne deles, må innstillingen bEnableExternalCalendarAPI være aktivert, i tillegg til at kalenderen har et spesifikt tilgangstoken"
-
-#: 
 msgid "Links"
 msgstr "Lenker"
 
@@ -5895,10 +5839,6 @@ msgstr "Aktiver meny for innsamlinger."
 #: 
 msgid "Enable Email menu."
 msgstr "Aktiver meny for e-post."
-
-#: 
-msgid "Enabled Features"
-msgstr "Aktiverte funksjoner"
 
 #: 
 msgid "Validation Error"
@@ -6114,10 +6054,6 @@ msgid "PDF handling mode.\n"
 msgstr "PDF-håndtering.\n"
 "1 = Lagre fil-dialog\n"
 "2 = Åpne i gjeldende nettleservindu"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Trykk CTRL + C for å kopiere telefonnumrene til alle gruppemedlemmer"
 
 #: 
 msgid "Verify People"
@@ -7093,10 +7029,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Et nytt passord er generert og sendt til din e-postadresse."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Tillat pre-release-oppgraderinger"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Utfør oppdatering nå"
 
@@ -7117,20 +7049,8 @@ msgid "Backup Skipped"
 msgstr "Sikkerhetskopiering hoppet over"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Sjekk GitHub for siste informasjon om utgivelser"
-
-#: 
 msgid "Complete"
 msgstr "Fullført"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Fortsett til sikkerhetskopiering"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Fortsett til nedlasting og installering"
 
 #: 
 msgid "Create Backup"

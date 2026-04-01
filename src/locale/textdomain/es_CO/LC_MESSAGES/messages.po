@@ -2276,10 +2276,6 @@ msgid "How did you learn of the church?"
 msgstr "¿Cómo se enteró de la iglesia?"
 
 #: 
-msgid "eMail Dashboard"
-msgstr "Dashboard de correo electrónico"
-
-#: 
 msgid "Version"
 msgstr "Versión"
 
@@ -2328,10 +2324,6 @@ msgid "Custom Drop-Down List"
 msgstr "Lista Desplegable personalizada"
 
 #: 
-msgid "Thank you for registering your ChurchCRM installation."
-msgstr "Gracias por registrar su instalación de ChurchCRM."
-
-#: 
 msgid "PDF successfully emailed to family members."
 msgstr "PDF enviado exitosamente a todos los miembros de la familia."
 
@@ -2346,18 +2338,6 @@ msgstr "Grupo exitosamente añadido al carrito"
 #: 
 msgid "Group successfully removed from the Cart."
 msgstr "Grupo exitosamente removido del carrito"
-
-#: 
-msgid "Profile Image successfully removed."
-msgstr "Imagen de perfil removida exitosamente."
-
-#: 
-msgid "Profile Image successfully updated."
-msgstr "Imagen de perfil actializada exitosamente."
-
-#: 
-msgid "Profile Image upload Error."
-msgstr "Error al subir la Imagen de perfil."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
@@ -5248,10 +5228,6 @@ msgid "Thai"
 msgstr "Tailandés"
 
 #: 
-msgid "Self Register"
-msgstr "Auto-registrar"
-
-#: 
 msgid "Pending Self Verify"
 msgstr "Auto Verificaciones Pendientes"
 
@@ -5493,14 +5469,6 @@ msgid "Create Group + ADD Cart"
 msgstr "Crear grupo + agregar al carrito"
 
 #: 
-msgid "Move Event"
-msgstr "Mover evento"
-
-#: 
-msgid "Resize Event"
-msgstr "Redimensionar evento"
-
-#: 
 msgid "Profile"
 msgstr "Perfil"
 
@@ -5677,28 +5645,12 @@ msgid "Are you sure you want to move"
 msgstr "Está seguro de que desea moverse"
 
 #: 
-msgid "from"
-msgstr "desde"
-
-#: 
-msgid "to"
-msgstr "hasta"
-
-#: 
-msgid "Are you sure you want to change the end time for "
-msgstr "Está seguro de que desea cambiar la hora final por "
-
-#: 
 msgid "Access Token"
 msgstr "Token de Acceso"
 
 #: 
 msgid "New Access Token"
 msgstr "Nuevo Token de Acceso"
-
-#: 
-msgid "Delete Access Token"
-msgstr "Borrar Token de Acceso"
 
 #: 
 msgid "ICS URL"
@@ -5729,14 +5681,6 @@ msgid "New Calendar"
 msgstr "Nuevo calendario"
 
 #: 
-msgid "bEnableExternalCalendarAPI disabled, but some calendars have access tokens"
-msgstr "bEnableExternalCalendarAPI deshabilitado, pero algunos calendarios tienen tokens de acceso"
-
-#: 
-msgid "For calendars to be shared, the bEnableExternalCalendarAPI setting must be enabled in addition to the calendar having a specific access token"
-msgstr "Para que los calendarios puedan ser compartidos, el ajuste bEnableExternalCalendarAPI debe estar habilitado, además el calendario debe tener un token de acceso específico"
-
-#: 
 msgid "Links"
 msgstr "Enlaces"
 
@@ -5759,10 +5703,6 @@ msgstr "Activar menú de recaudaciones."
 #: 
 msgid "Enable Email menu."
 msgstr "Activar menú de correo electrónico"
-
-#: 
-msgid "Enabled Features"
-msgstr "Funcionalidades activadas"
 
 #: 
 msgid "Validation Error"
@@ -5983,10 +5923,6 @@ msgid "PDF handling mode.\n"
 msgstr "Modo de manejo de PDF.\n"
 "1 = Diálogo para guardar Archivo\n"
 "2 = Abrir en ventana del navegador actual"
-
-#: 
-msgid "Press CTRL + C to copy all group members' phone numbers"
-msgstr "Presionar CTRL + C para copiar todos los números de teléfono de los miembros del grupo"
 
 #: 
 msgid "Verify People"
@@ -6964,10 +6900,6 @@ msgid "A new password has been generated and sent to your email address."
 msgstr "Se ha generado una nueva contraseña y se ha enviado a su dirección de correo electrónico."
 
 #: 
-msgid "Allow Pre-release Upgrades"
-msgstr "Permitir actualizaciones previas al lanzamiento"
-
-#: 
 msgid "Apply Update Now"
 msgstr "Solicitar actualización ahora"
 
@@ -6988,20 +6920,8 @@ msgid "Backup Skipped"
 msgstr "Copia de seguridad omitida"
 
 #: 
-msgid "Check GitHub for the latest release information"
-msgstr "Consulte GitHub para obtener la información de lanzamiento más reciente"
-
-#: 
 msgid "Complete"
 msgstr "Completo"
-
-#: 
-msgid "Continue to Backup"
-msgstr "Continuar con la copia de seguridad"
-
-#: 
-msgid "Continue to Download & Apply"
-msgstr "Continúe descargando y aplicando"
 
 #: 
 msgid "Create Backup"
