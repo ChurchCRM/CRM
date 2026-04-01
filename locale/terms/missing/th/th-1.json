@@ -1,7 +1,7 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "ผลการค้นหา \"%s\" %d รายการ"
   },
-  "BCC": "",
-  "name@example.com": ""
+  "BCC": "BCC",
+  "name@example.com": "name@example.com"
 }
