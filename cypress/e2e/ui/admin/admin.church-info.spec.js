@@ -188,6 +188,7 @@ describe("Admin - Church Information Page", () => {
         cy.visit("admin/system/church-info");
 
         // Fill required fields
+        cy.get("#sChurchName").clear().type("Test Church");
         cy.get("#sChurchPhone").clear().type("(555) 123-4567");
         cy.get("#sChurchEmail").clear().type("test@example.com");
         cy.get("#sChurchAddress").clear().type("123 Main St");
