@@ -105,6 +105,10 @@ $MenuFirst = 1;
           systemConfigs: {
             sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
           },
+          comm: {
+            smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,
+            vonageEnabled: <?= json_encode(PluginManager::getPlugin('vonage')?->isConfigured() ?? false) ?>,
+          },
           // Plugin configs from active plugins (via getClientConfig())
           plugins: <?= json_encode(PluginManager::getPluginsClientConfig(), JSON_FORCE_OBJECT) ?>,
           // Legacy: keep bEnableGravatarPhotos for backward compatibility with existing JS
@@ -151,6 +155,7 @@ $MenuFirst = 1;
       }
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
 
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->

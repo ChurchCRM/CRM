@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -21,16 +22,17 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
     $renderer = new PhpRenderer('templates/email/');
 
     $emailSettingTooltips = [];
-    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress'] as $key) {
+    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress', 'iDoNotEmailPropertyId'] as $key) {
         $item = SystemConfig::getConfigItem($key);
         $emailSettingTooltips[$key] = $item?->getTooltip() ?? '';
     }
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
-        'sPageTitle' => gettext('eMail Dashboard'),
+        'sPageTitle' => gettext('Email Dashboard'),
         'sPageSubtitle' => gettext('Manage email tools and SMTP configuration'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
             [gettext('Email')],
         ]),
         'sSettingsCollapseId' => 'emailSettings',
@@ -39,6 +41,9 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
             ['label' => gettext('Email Settings'), 'collapse' => '#emailSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
         'emailSettingTooltips' => $emailSettingTooltips,
+        'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
+        'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
+        'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
@@ -58,6 +63,7 @@ function getPeopleWithoutEmailsMVC(Request $request, Response $response, array $
         'sPageTitle'   => gettext('People Without Emails'),
         'sPageSubtitle' => gettext('People with no personal or work email on record'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Communication')],
             [gettext('Email'), '/v2/email/dashboard'],
             [gettext('People Without Emails')],
         ]),
