@@ -5,11 +5,16 @@ namespace ChurchCRM\Reports;
 require_once __DIR__ . '/../Include/Config.php';
 require_once __DIR__ . '/../Include/Functions.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
+use Exception;
+
+AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
 class PdfConfirmReport extends ChurchInfoReport
 {
@@ -30,9 +35,9 @@ class PdfConfirmReport extends ChurchInfoReport
             $family->getName(),
             $family->getAddress1(),
             $family->getAddress2(),
-            $family->getCity(),
-            $family->getState(),
-            $family->getZip(),
+            (string) ($family->getCity() ?? ''),
+            (string) ($family->getState() ?? ''),
+            (string) ($family->getZip() ?? ''),
             $family->getCountry(),
             'graphic'
         );
@@ -74,14 +79,18 @@ class PdfConfirmReport extends ChurchInfoReport
     }
 }
 
-// Instantiate the directory class and build the report.
-$pdf = new PdfConfirmReport();
-$filename = 'ConfirmReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+// Set proper PDF content type and ensure no output buffering issues
+@header('Content-Type: application/pdf; charset=utf-8');
 
-// Get the list of custom person fields
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
+try {
+    // Instantiate the directory class and build the report.
+    $pdf = new PdfConfirmReport();
+    $filename = 'ConfirmReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
+
+    // Get the list of custom person fields
+    $sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
+    $rsCustomFields = RunQuery($sSQL);
+    $numCustomFields = mysqli_num_rows($rsCustomFields) ?: 0;
 
 if ($numCustomFields > 0) {
     $iFieldNum = 0;
@@ -95,9 +104,10 @@ if ($numCustomFields > 0) {
 $iFamilyID = null;
 $familyQuery = FamilyQuery::create()->orderByName();
 
-if ($_GET['familyId']) {
+if (isset($_GET['familyId']) && !empty($_GET['familyId'])) {
     $iFamilyID = (int) InputUtils::legacyFilterInput($_GET['familyId'], 'int');
-    $families = $familyQuery->findById($iFamilyID);
+    $family = $familyQuery->findPk($iFamilyID);
+    $families = $family ? [$family] : [];
 } else {
     $families = $familyQuery->find();
 }
@@ -121,12 +131,12 @@ if ($_GET['familyId']) {
             $pdf->SetFont('Times', 'B', 10);
             $pdf->SetXY($x, $y);
             $pdf->Cell($width, 4, $label . ':', 0, 1, 'L');
-            
+
             // Data value with wrapping
             $pdf->SetFont('Times', '', 10);
             $pdf->SetXY($x + 2, $pdf->GetY());
-            $pdf->MultiCell($width - 4, 4, $value, 0, 'L');
-            
+            $pdf->MultiCell($width - 4, 4, (string) $value, 0, 'L');
+
             return $pdf->GetY();
         };
 
@@ -140,13 +150,13 @@ if ($_GET['familyId']) {
 
         // Column 1
         $col1Y = $addField(gettext('Family Name'), $family->getName(), $col1X, $col1Y, 85) + 1;
-        
-        // Combined address field
-        $address = $family->getAddress1();
+
+        // Combined address field - ensure all values are strings to avoid null issues
+        $address = (string) $family->getAddress1();
         if (!empty($family->getAddress2())) {
-            $address .= ', ' . $family->getAddress2();
+            $address .= ', ' . (string) $family->getAddress2();
         }
-        $address .= ', ' . $family->getCity() . ', ' . $family->getState() . '  ' . $family->getZip();
+        $address .= ', ' . ((string) $family->getCity()) . ', ' . ((string) $family->getState()) . '  ' . ((string) $family->getZip());
         $col1Y = $addField(gettext('Address'), $address, $col1X, $col1Y, 85) + 1;
 
         // Column 2
@@ -204,7 +214,7 @@ if ($_GET['familyId']) {
                 
                 // Check if we need a new page
                 if ($curY > 255) {
-                    $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+                    $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), (string) ($family->getCity() ?? ''), (string) ($family->getState() ?? ''), (string) ($family->getZip() ?? ''), $family->getCountry());
                     $curY += 3;
                     
                     // Redraw table header on new page
@@ -233,7 +243,7 @@ if ($_GET['familyId']) {
                 $email = mb_substr($per_Email, 0, 20);
                 $cellPhone = mb_substr($per_WorkPhone, 0, 18);
                 $role = mb_substr($sFamRole, 0, 10);
-                if (strlen($sFamRole) > 10) {
+                if (\strlen($sFamRole) > 10) {
                     $role = mb_substr($role, 0, 7) . '...';
                 }
 
@@ -261,8 +271,8 @@ if ($_GET['familyId']) {
 
         $curY += 2;
 
-        if (($curY + 10) >= 260) {
-            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+        if ($curY + 10 >= 260) {
+            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), (string) ($family->getCity() ?? ''), (string) ($family->getState() ?? ''), (string) ($family->getZip() ?? ''), $family->getCountry());
             $curY += 3;
         }
         
@@ -317,14 +327,23 @@ if ($_GET['familyId']) {
 
         $curY += 1;
         if ($curY > 183) {
-            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), $family->getCity(), $family->getState(), $family->getZip(), $family->getCountry());
+            $curY = $pdf->startLetterPage($family->getId(), $family->getName(), $family->getAddress1(), $family->getAddress2(), (string) ($family->getCity() ?? ''), (string) ($family->getState() ?? ''), (string) ($family->getZip() ?? ''), $family->getCountry());
             $curY += 3;
         }
         $pdf->finishPage($curY);
     }
 
-if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
-    $pdf->Output($filename, 'D');
-} else {
-    $pdf->Output();
+    // Output the PDF - ensure it's always application/pdf content-type
+    if (SystemConfig::getIntValue('iPDFOutputType') === 1) {
+        $pdf->Output($filename, 'D'); // Download
+    } else {
+        $pdf->Output($filename, 'I'); // Inline display
+    }
+} catch (Exception $e) {
+    // Log the error for debugging
+    LoggerUtils::getAppLogger()->error('ConfirmReport.php error: ' . $e->getMessage(), ['exception' => $e]);
+    // Output error as PDF text
+    header('Content-Type: application/pdf; charset=utf-8');
+    echo 'Error generating report: ' . $e->getMessage();
+    exit;
 }

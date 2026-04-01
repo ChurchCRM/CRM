@@ -171,7 +171,7 @@ function change_date_for_place_holder(?string $string = null): string
 }
 
 // Reinstated by Todd Pillars for Event Listing
-// Takes MYSQL DateTime
+// Takes MYSQL DateTime or DateTime object
 // bWithtime 1 to be displayed
 function FormatDate($dDate, bool $bWithTime = false): string
 {
@@ -181,8 +181,13 @@ function FormatDate($dDate, bool $bWithTime = false): string
     }
 
     try {
-        // Parse the date string into a DateTime object
-        $dateObj = new DateTime($dDate);
+        // If it's already a DateTime object, use it directly
+        if ($dDate instanceof DateTime || $dDate instanceof DateTimeInterface) {
+            $dateObj = $dDate;
+        } else {
+            // Parse the date string into a DateTime object
+            $dateObj = new DateTime($dDate);
+        }
     } catch (Exception $e) {
         // Return empty string for invalid dates
         return '';
