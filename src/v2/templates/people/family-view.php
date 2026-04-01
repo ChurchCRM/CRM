@@ -144,7 +144,7 @@ $otherPeople = $family->getOtherPeople();
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div class="table-responsive">
+                <div style="overflow: visible;">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -218,7 +218,7 @@ $otherPeople = $family->getOtherPeople();
         ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div class="table-responsive">
+                <div style="overflow: visible;">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
