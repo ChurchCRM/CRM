@@ -1,4 +1,4 @@
-import * as React from "react";
+import type * as React from "react";
 import type Calendar from "../../interfaces/Calendar";
 import type CRMEvent from "../../interfaces/CRMEvent";
 import type EventType from "../../interfaces/EventType";
@@ -6,7 +6,13 @@ import type EventType from "../../interfaces/EventType";
 const formatDate = (date: Date | undefined, allDay: boolean): string => {
   if (!date) return window.i18next.t("N/A");
   if (allDay) return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
-  return date.toLocaleString(undefined, { year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  return date.toLocaleString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 };
 
 const EventPropertiesViewer: React.FunctionComponent<{
@@ -107,7 +113,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
       </dl>
 
       {/* Description */}
-      {event.Desc && event.Desc.replace(/<[^>]*>/g, "").trim() && (
+      {event.Desc?.replace(/<[^>]*>/g, "").trim() && (
         <div className="mb-4">
           <h4 className="subheader">{window.i18next.t("Description")}</h4>
           {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event description is sanitized HTML from database (InputUtils::sanitizeHTML) */}
@@ -116,7 +122,7 @@ const EventPropertiesViewer: React.FunctionComponent<{
       )}
 
       {/* Additional Information */}
-      {event.Text && event.Text.replace(/<[^>]*>/g, "").trim() && (
+      {event.Text?.replace(/<[^>]*>/g, "").trim() && (
         <div className="mb-2">
           <h4 className="subheader">{window.i18next.t("Additional Information")}</h4>
           {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event text is sanitized HTML from database (InputUtils::sanitizeHTML) */}

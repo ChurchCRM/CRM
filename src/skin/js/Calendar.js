@@ -1,13 +1,43 @@
 window.moveEventModal = {
-  getButtons: function () {
+  getButtons: function (confirmLabel, confirmClass) {
     return {
       cancel: {
-        label: '<i class="fa-solid fa-times"></i> ' + i18next.t("Cancel"),
+        label: '<i class="fa-solid fa-times me-1"></i>' + i18next.t("Cancel"),
+        className: "btn-secondary",
       },
       confirm: {
-        label: '<i class="fa-solid fa-check"></i> ' + i18next.t("Confirm"),
+        label: '<i class="fa-solid fa-check me-1"></i>' + i18next.t(confirmLabel || "Confirm"),
+        className: confirmClass || "btn-primary",
       },
     };
+  },
+  buildMessage: function (eventTitle, fromLabel, fromDate, toLabel, toDate) {
+    return (
+      '<p class="text-muted mb-3">' +
+      i18next.t("Are you sure you want to continue?") +
+      "</p>" +
+      '<div class="d-flex align-items-stretch gap-2">' +
+      '<div class="card flex-fill border-danger-subtle mb-0">' +
+      '<div class="card-body py-2 px-3">' +
+      '<div class="text-danger small fw-medium mb-1"><i class="fa-solid fa-calendar-xmark me-1"></i>' +
+      i18next.t(fromLabel) +
+      "</div>" +
+      '<div class="fw-semibold">' +
+      fromDate +
+      "</div>" +
+      "</div></div>" +
+      '<div class="d-flex align-items-center text-muted px-1"><i class="fa-solid fa-arrow-right"></i></div>' +
+      '<div class="card flex-fill border-success-subtle mb-0">' +
+      '<div class="card-body py-2 px-3">' +
+      '<div class="text-success small fw-medium mb-1"><i class="fa-solid fa-calendar-check me-1"></i>' +
+      i18next.t(toLabel) +
+      "</div>" +
+      '<div class="fw-semibold">' +
+      toDate +
+      "</div>" +
+      "</div></div>" +
+      "</div>"
+    );
   },
   modalCallBack: function (result) {
     if (result === true) {
@@ -32,21 +62,11 @@ window.moveEventModal = {
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
-      title: i18next.t("Move Event") + "?",
-      message:
-        i18next.t("Are you sure you want to move") +
-        " " +
-        event.title +
-        " " +
-        i18next.t("from") +
-        "<br/>" +
-        originalStart +
-        "<br/>" +
-        i18next.t("to") +
-        "<br/>" +
-        newStart,
-      buttons: window.moveEventModal.getButtons(),
+      title: '<i class="fa-solid fa-calendar-arrow-up me-2 text-primary"></i>' + event.title,
+      message: window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
+      buttons: window.moveEventModal.getButtons("Move"),
       callback: window.moveEventModal.modalCallBack,
+      className: "modal-sm",
     });
   },
   handleEventResize: function (info) {
@@ -59,21 +79,11 @@ window.moveEventModal = {
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
-      title: i18next.t("Resize Event") + "?",
-      message:
-        i18next.t("Are you sure you want to change the end time for ") +
-        " " +
-        event.title +
-        " " +
-        i18next.t("from") +
-        "<br/>" +
-        originalEnd +
-        "<br/>" +
-        i18next.t("to") +
-        "<br/>" +
-        newEnd,
-      buttons: window.moveEventModal.getButtons(),
+      title: '<i class="fa-solid fa-clock me-2 text-primary"></i>' + event.title,
+      message: window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
+      buttons: window.moveEventModal.getButtons("Resize"),
       callback: window.moveEventModal.modalCallBack,
+      className: "modal-sm",
     });
   },
 };

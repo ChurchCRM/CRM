@@ -30,7 +30,13 @@ const EventPropertiesEditor: React.FunctionComponent<{
   pinnedCalendarChanged,
   eventTypeChanged,
 }) => {
-  const [allDay, setAllDay] = React.useState<boolean>(!event.Start || (event.Start.getHours() === 0 && event.Start.getMinutes() === 0 && event.End?.getHours() === 0 && event.End?.getMinutes() === 0));
+  const [allDay, setAllDay] = React.useState<boolean>(
+    !event.Start ||
+      (event.Start.getHours() === 0 &&
+        event.Start.getMinutes() === 0 &&
+        event.End?.getHours() === 0 &&
+        event.End?.getMinutes() === 0),
+  );
 
   const calendarOptions: Option[] = calendars.map((Pcal: Calendar) => ({
     value: Pcal.Id,
@@ -197,9 +203,12 @@ const EventPropertiesEditor: React.FunctionComponent<{
 
       {/* Description */}
       <div className="mb-3">
-        <label className="form-label">{window.i18next.t("Description")}</label>
+        <label className="form-label" htmlFor="quill-Desc">
+          {window.i18next.t("Description")}
+        </label>
         <QuillEditor
           name="Desc"
+          id="quill-Desc"
           value={event.Desc || ""}
           onChange={(name: string, html: string) => {
             const changeEvent = {
@@ -213,9 +222,12 @@ const EventPropertiesEditor: React.FunctionComponent<{
 
       {/* Additional Text */}
       <div className="mb-3">
-        <label className="form-label">{window.i18next.t("Additional Information")}</label>
+        <label className="form-label" htmlFor="quill-Text">
+          {window.i18next.t("Additional Information")}
+        </label>
         <QuillEditor
           name="Text"
+          id="quill-Text"
           value={event.Text || ""}
           onChange={(name: string, html: string) => {
             const changeEvent = {

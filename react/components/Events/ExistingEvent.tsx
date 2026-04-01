@@ -222,8 +222,11 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
         <Modal show={true} onHide={this.exit} size="xl">
           <Modal.Header closeButton className="pb-0 border-bottom-0">
             <div className="w-100 me-3 pt-1">
-              <label className="form-label text-muted small mb-1">{window.i18next.t("Event Title")}</label>
+              <label className="form-label text-muted small mb-1" htmlFor="event-title-input">
+                {window.i18next.t("Event Title")}
+              </label>
               <input
+                id="event-title-input"
                 name="Title"
                 value={this.state.event?.Title || ""}
                 onChange={this.handleInputChange}
@@ -268,12 +271,7 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               <button type="button" className="btn btn-secondary" onClick={this.exit}>
                 {window.i18next.t("Cancel")}
               </button>
-              <button
-                type="button"
-                disabled={!this.isFormComplete()}
-                className="btn btn-primary"
-                onClick={this.save}
-              >
+              <button type="button" disabled={!this.isFormComplete()} className="btn btn-primary" onClick={this.save}>
                 <i className="fas fa-save me-1" />
                 {window.i18next.t("Save")}
               </button>
