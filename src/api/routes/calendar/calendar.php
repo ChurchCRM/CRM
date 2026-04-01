@@ -386,5 +386,10 @@ function deleteUserCalendar(Request $request, Response $response, array $args): 
  */
 function getEventsCounters(Request $request, Response $response, array $args): Response
 {
-    return SlimUtils::renderJSON($response, EventsMenuItems::getDashboardItemValue());
+    $dateParam = $request->getQueryParams()['date'] ?? null;
+    $date = null;
+    if ($dateParam !== null && preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateParam)) {
+        $date = new \DateTime($dateParam);
+    }
+    return SlimUtils::renderJSON($response, EventsMenuItems::getDashboardItemValue($date));
 }
