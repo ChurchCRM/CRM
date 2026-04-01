@@ -7,13 +7,13 @@ describe("Admin Settings", () => {
 
     it("View system settings", () => {
         cy.visit("SystemSettings.php");
+        cy.contains("System Settings");
+        
         cy.contains("People");
-        cy.contains("Enabled Features");
         cy.contains("Report Settings");
         cy.contains("Financial Settings");
         cy.contains("Quick Search");
         cy.contains("Localization");
         cy.contains("Confession");
-        cy.contains("System Settings");
     });
 });

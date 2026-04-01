@@ -835,6 +835,77 @@ Clicking an avatar with an uploaded photo opens a lightbox overlay. **avatar-loa
 
 ---
 
+### Never Use `form-switch` for Functional Toggles in React <!-- learned: 2026-03-31 -->
+
+`form-check form-switch` (Bootstrap 5 toggle/pill) must **not** be used when the checkbox functionally changes other form fields (like hiding/showing time pickers). Use a plain `form-check` checkbox instead.
+
+**Why:** The switch style is confusing — it looks like a power toggle, not a data choice. When it drives side-effects (e.g. "All Day" stripping time from DatePicker), users expect a checkbox, not a toggle.
+
+```tsx
+// ❌ WRONG — switch style, confusing for functional side-effect toggles
+<div className="form-check form-switch">
+  <input className="form-check-input" type="checkbox" id="allDayToggle" ... />
+  <label className="form-check-label" htmlFor="allDayToggle">All Day</label>
+</div>
+
+// ✅ CORRECT — plain checkbox, inline with the related label
+<label className="form-check mb-0 ms-3" htmlFor="allDayToggle">
+  <input className="form-check-input" type="checkbox" id="allDayToggle" ... />
+  <span className="form-check-label text-muted small">All Day</span>
+</label>
+```
+
+**Rule:** Reserve `form-switch` for pure settings toggles (enable/disable a feature). Use plain `form-check` for any checkbox that conditionally shows/hides or modifies other fields.
+
+---
+
+### React Modal Edit Header Pattern <!-- learned: 2026-03-31 -->
+
+When a modal's title is an editable input (create/edit forms), use a borderless underline input with a helper label above — not a plain `form-control` boxed input.
+
+```tsx
+// ✅ CORRECT — breathing room, visual hierarchy, no box border noise
+<Modal.Header closeButton className="pb-0 border-bottom-0">
+  <div className="w-100 me-3 pt-1">
+    <label className="form-label text-muted small mb-1">Event Title</label>
+    <input
+      name="Title"
+      className="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0"
+      style={{ boxShadow: "none" }}
+      placeholder="e.g. Sunday Service"
+    />
+  </div>
+</Modal.Header>
+<Modal.Body className="pt-3" style={{ overflow: "visible" }}>
+```
+
+**Key classes:** `border-bottom-0` on header removes the divider line; `border-0 border-bottom rounded-0 px-0` on input gives an underline-only field; `pb-0` removes header bottom padding; `pt-3` on body adds breathing room.
+
+---
+
+### Calendar Badge Contrast Pattern <!-- learned: 2026-03-31 -->
+
+When displaying coloured calendar name badges with user-defined `BackgroundColor`/`ForegroundColor`, always add a coloured dot + `border` class for contrast on light backgrounds.
+
+```tsx
+<span
+  className="badge border"
+  style={{
+    backgroundColor: `#${calendar.BackgroundColor}`,
+    color: `#${calendar.ForegroundColor}`,
+    borderColor: `#${calendar.BackgroundColor}`,
+  }}
+>
+  <span
+    className="d-inline-block rounded-circle me-1"
+    style={{ width: "8px", height: "8px", backgroundColor: `#${calendar.ForegroundColor}`, opacity: 0.7 }}
+  />
+  {calendar.Name}
+</span>
+```
+
+---
+
 ## Files
 
 **Compiled Assets:** `src/skin/v2/churchcrm.min.js`, `src/skin/v2/churchcrm.min.css`

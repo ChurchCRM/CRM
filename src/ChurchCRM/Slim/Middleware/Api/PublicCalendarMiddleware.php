@@ -53,17 +53,29 @@ class PublicCalendarMiddleware implements MiddlewareInterface
     private function getEvents(ServerRequestInterface $request, Calendar $calendar): mixed
     {
         $params = $request->getQueryParams();
+
+        // Parse start param — accepts both Y-m-d (plain JSON endpoint) and ISO 8601 (FullCalendar)
+        $start_date = null;
         if (isset($params['start'])) {
-            $start_date = DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
-            if ($start_date === false) {
-                // Invalid date format - return null to indicate error
+            $start_date = DateTime::createFromFormat(DateTime::ATOM, $params['start'], DateTimeUtils::getConfiguredTimezone())
+                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['start'], DateTimeUtils::getConfiguredTimezone())
+                ?? DateTime::createFromFormat('Y-m-d', $params['start'], DateTimeUtils::getConfiguredTimezone());
+            if ($start_date === false || $start_date === null) {
                 return null;
             }
-        } else {
-            // Use configured timezone for default start date
-            $start_date = DateTimeUtils::getStartOfToday();
+            $start_date->setTime(0, 0, 0);
         }
-        $start_date->setTime(0, 0, 0);
+
+        // Parse end param — accepts both Y-m-d and ISO 8601 (FullCalendar sends ISO)
+        $end_date = null;
+        if (isset($params['end'])) {
+            $end_date = DateTime::createFromFormat(DateTime::ATOM, $params['end'], DateTimeUtils::getConfiguredTimezone())
+                ?? DateTime::createFromFormat('Y-m-d\TH:i:s', $params['end'], DateTimeUtils::getConfiguredTimezone())
+                ?? DateTime::createFromFormat('Y-m-d', $params['end'], DateTimeUtils::getConfiguredTimezone());
+            if ($end_date === false || $end_date === null) {
+                return null;
+            }
+        }
 
         $events = EventQuery::create()
             ->joinCalendarEvent()
@@ -72,8 +84,12 @@ class PublicCalendarMiddleware implements MiddlewareInterface
             ->endUse()
             ->orderBy(EventTableMap::COL_EVENT_START);
 
-        if ($start_date) {
+        if ($start_date !== null) {
             $events->filterByStart($start_date, Criteria::GREATER_EQUAL);
+        }
+
+        if ($end_date !== null) {
+            $events->filterByEnd($end_date, Criteria::LESS_EQUAL);
         }
 
         if (array_key_exists('max', $params)) {

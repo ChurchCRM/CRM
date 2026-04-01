@@ -28,7 +28,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.addEventListener('DOMContentLoaded', function() {
   window.CRM.fullcalendar =  new FullCalendar.Calendar(document.getElementById('calendar'), {
-      header: {
+      headerToolbar: {
         start: 'prev,next today',
         center: 'title',
         end: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
       ]
   });
 
-  calendar.render();
+  window.CRM.fullcalendar.render();
 });
 </script>
 
