@@ -118,9 +118,22 @@ class Photo
         if (!$this->hasUploadedPhoto || !$this->photoURI) {
             return null;
         }
-        
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $this->photoContentType = $finfo->file($this->photoURI);
+
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $this->photoContentType = $finfo->file($this->photoURI);
+        } else {
+            // Fallback: derive from file extension (all new uploads are saved as .png)
+            $ext = strtolower(pathinfo($this->photoURI, PATHINFO_EXTENSION));
+            $mimeMap = [
+                'jpg'  => 'image/jpeg',
+                'jpeg' => 'image/jpeg',
+                'png'  => 'image/png',
+                'gif'  => 'image/gif',
+                'webp' => 'image/webp',
+            ];
+            $this->photoContentType = $mimeMap[$ext] ?? null;
+        }
 
         return $this->photoContentType;
     }
@@ -136,18 +149,29 @@ class Photo
     public function setImageFromBase64(string $base64): void
     {
         $this->ensurePhotoDirsExist();
-        
-        // Decode base64 data
-        $base64Data = preg_replace('/^data:image\/\w+;base64,/', '', $base64);
-        $fileData = base64_decode($base64Data);
-        
+
+        // Parse data URI with a single consistent pattern — handles all valid MIME subtypes
+        // (including those with +, -, . such as image/svg+xml or image/vnd.ms-photo)
+        if (!preg_match('/^data:([\w+.\/-]+);base64,(.+)$/s', $base64, $uriParts)) {
+            throw new \Exception('Invalid image data: expected a base64-encoded data URI');
+        }
+
+        $uriMimeType = $uriParts[1];
+        $fileData = base64_decode($uriParts[2], true);
+
         if ($fileData === false) {
             throw new \Exception('Invalid base64 data');
         }
-        
-        // Validate file is actually an image using finfo
-        $finfo = new \finfo(FILEINFO_MIME_TYPE);
-        $mimeType = $finfo->buffer($fileData);
+
+        // Validate MIME type from binary content when fileinfo is available (preferred);
+        // otherwise trust the data URI prefix — imagecreatefromstring() still enforces
+        // the actual binary format, so non-images are rejected regardless.
+        if (function_exists('finfo_open')) {
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->buffer($fileData);
+        } else {
+            $mimeType = $uriMimeType;
+        }
         
         // Allowed image types
         $allowedMimeTypes = [

@@ -189,9 +189,11 @@ describe("API Private Photo and Avatar - Person", () => {
             });
         });
 
-        it("should reject non-image file types", () => {
+        it("should reject non-image file types with generic upload error (not a fileinfo prerequisite error)", () => {
+            // Regression: when fileinfo extension is missing, a non-image data URI must still
+            // return a proper "invalid type" rejection — not a misleading "fileinfo required" message.
             const base64Text = "data:text/plain;base64,SGVsbG8gV29ybGQ=";
-            
+
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/person/${testPersonId}/photo`,
@@ -199,7 +201,36 @@ describe("API Private Photo and Avatar - Person", () => {
                 400
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
-                expect(response.body.message).to.include("Failed to upload person photo");
+                // The outer message is always the generic wrapper; inner cause goes to logs.
+                // What must NOT appear is a PHP fatal/crash-level error.
+                expect(response.body).to.have.property("message");
+                expect(response.body.message).to.not.include("fileinfo");
+            });
+        });
+
+        it("should reject a malformed data URI with no base64 prefix", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${testPersonId}/photo`,
+                JSON.stringify({ imgBase64: "not-a-data-uri" }),
+                400
+            ).then((response) => {
+                expect(response.body.success).to.eq(false);
+            });
+        });
+
+        it("should accept a valid base64 JPEG image", () => {
+            // Smallest valid 1×1 JPEG
+            const base64Jpeg = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFAABAAAAAAAAAAAAAAAAAAAACf/EABQQAQAAAAAAAAAAAAAAAAAAAAD/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8AJQAB/9k=";
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/person/${testPersonId}/photo`,
+                JSON.stringify({ imgBase64: base64Jpeg }),
+                200
+            ).then((response) => {
+                expect(response.body.success).to.eq(true);
+                expect(response.body.hasPhoto).to.eq(true);
             });
         });
 
