@@ -398,7 +398,7 @@ $validationError     = $validationError ?? '';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {
-    var requiredFields = ['sChurchName', 'sChurchPhone', 'sChurchEmail', 'sChurchAddress', 'sChurchCity', 'sChurchZip', 'sChurchCountry'];
+    var requiredFields = ['sChurchName', 'sChurchPhone', 'sChurchEmail', 'sChurchAddress', 'sChurchCity', 'sChurchState', 'sChurchZip', 'sChurchCountry'];
 
     document.getElementById('church-info-form').addEventListener('submit', function (e) {
         e.preventDefault();

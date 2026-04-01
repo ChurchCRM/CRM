@@ -153,17 +153,18 @@ describe("Admin - Church Information Page", () => {
     it("should copy church address to default fields", () => {
         cy.visit("admin/system/church-info");
 
+        // Wait for page to load
+        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
+
         // Fill church address fields
         cy.get("#sChurchCity").clear().type("Springfield");
         cy.get("#sChurchZip").clear().type("62701");
 
-        // Wait for country TomSelect to initialize
-        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-        cy.tomSelectByValue("#sChurchCountry", "US");
-
-        // Wait for state dropdown to populate
+        // Select church state (country defaults to US on page load)
         cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
         cy.tomSelectByValue("#sChurchState", "IL");
+        // Verify state value is actually set before proceeding
+        cy.get("#sChurchState").should("have.value", "IL");
 
         // Click copy button
         cy.get("#copy-church-address").click();
@@ -187,6 +188,9 @@ describe("Admin - Church Information Page", () => {
     it("should allow saving church information when all required fields are filled", () => {
         cy.visit("admin/system/church-info");
 
+        // Wait for page to fully load — ensure country dropdown is initialized (which populates state)
+        cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+
         // Fill required fields
         cy.get("#sChurchName").clear().type("Test Church");
         cy.get("#sChurchPhone").clear().type("(555) 123-4567");
@@ -194,15 +198,10 @@ describe("Admin - Church Information Page", () => {
         cy.get("#sChurchAddress").clear().type("123 Main St");
         cy.get("#sChurchCity").clear().type("Springfield");
 
-        // Wait for country dropdown to be initialized
-        cy.get("#sChurchCountry", { timeout: 5000 }).siblings(".ts-wrapper").should("exist");
-
-        // Select country
-        cy.tomSelectByValue("#sChurchCountry", "US");
-
-        // Wait for state dropdown to populate via API
+        // Country defaults to US on page load — wait for state dropdown to populate
         cy.get("#sChurchState", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sChurchState option").should("have.length.greaterThan", 1);
+
+        // Select state from default US country
         cy.tomSelectByValue("#sChurchState", "IL");
 
         // Fill ZIP code

@@ -296,7 +296,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sChurchCity'      => SystemConfig::getValue('sChurchCity'),
             'sChurchState'     => SystemConfig::getValue('sChurchState'),
             'sChurchZip'       => SystemConfig::getValue('sChurchZip'),
-            'sChurchCountry'   => SystemConfig::getValue('sChurchCountry'),
+            'sChurchCountry'   => SystemConfig::getValue('sChurchCountry') ?: 'US',
             'sChurchPhone'     => SystemConfig::getValue('sChurchPhone'),
             'sChurchEmail'     => SystemConfig::getValue('sChurchEmail'),
             'iChurchLatitude'  => SystemConfig::getValue('iChurchLatitude'),
