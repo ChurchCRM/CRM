@@ -12735,8 +12735,208 @@ msgid "Sign in"
 msgstr "Teken In"
 
 #: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Aangesien dit 'n vars installasie is, sal herstel eenvoudig u rugsteundata laai."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Slaan oor — gaan na Admin-kontroleskerm"
+
+#: 
+msgid "Start Fresh"
+msgstr "Begin Vars"
+
+#: 
+msgid "Start Over"
+msgstr "Begin Oor"
+
+#: 
+msgid "Stay informed"
+msgstr "Bly op hoogte"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Stap 1 — Laai CSV-lêer op"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Stap 2 — Kartering van Kolomme"
+
+#: 
+msgid "Submitting..."
+msgstr "Besig om in te dien..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Ondersteun rugsteun van ChurchCRM en ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Stelseldiagnostiese inligting en konfigurasie"
+
+#: 
+msgid "Tags"
+msgstr "Etikette"
+
+#: 
+msgid "Tax Statements"
+msgstr "Belastingstate"
+
+#: 
+msgid "Teacher"
+msgstr "Onderwyser"
+
+#: 
+msgid "Technical Details"
+msgstr "Tegniese Besonderhede"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Vertel ons van u gesin"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Die eienskap kon nie verwyder word nie."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Die eienskap is suksesvol verwyder."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Hierdie skakels verskyn in die \"Skakels\"-kieslys in die navigasie-sybalk wanneer hierdie inprop geaktiveer is."
+
+#: 
+msgid "To Family"
+msgstr "Na Gesin"
+
+#: 
+msgid "To Group"
+msgstr "Na Groep"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Wissel navigasie"
+
+#: 
+msgid "Total Size"
+msgstr "Totale Grootte"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Volg gesinne se toeseggings en fondsbydraes per fiskale jaar"
+
+#: 
+msgid "Transaction Details"
+msgstr "Transaksiebesonderhede"
+
+#: 
+msgid "Unmapped"
+msgstr "Nie gekarteer"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Werk Admin-kontak by"
+
+#: 
+msgid "Upload CSV"
+msgstr "Laai CSV op"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Laai 'n CSV-lêer op om gesinne en mense in ChurchCRM in te voer."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Laai 'n CSV van Excel, Google Sheets, of u vorige kerkbestuurstelsel op en karteer kolomme na ChurchCRM-velde."
+
+#: 
+msgid "Upload failed."
+msgstr "Oplaai het misluk."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Oplaai het misluk. Kontroleer asseblief die lêer en probeer weer."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Oplaaisessie het verval. Laai asseblief die lêer weer op."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Besig om op te laai, wag asseblief..."
+
+#: 
 msgid "Users"
 msgstr "Gebruikers"
+
+#: 
+msgid "Verify Info"
+msgstr "Verifieer Inligting"
+
+#: 
+msgid "Verify your identity"
+msgstr "Verifieer u identiteit"
+
+#: 
+msgid "View Family"
+msgstr "Bekyk Gesin"
+
+#: 
+msgid "View People"
+msgstr "Bekyk Gemeentelede"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Bekyk alle gesinne op 'n interaktiewe kaart"
+
+#: 
+msgid "View all results"
+msgstr "Bekyk alle resultate"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Bekyk en bestuur alle groepe in u gemeente"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Bekyk en bestuur offergawes-depositostrokies"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Bekyk en bestuur gesin-liggingdata"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Bekyk en bestuur stelsel-loglêers vir foutopsporing"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Bekyk en voer gestoorde databasisnavrae uit"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Bekyk kopernommers en bordjie-toekennings"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Bekyk klaslys, onderwyser-toekennings, en kontakinligting"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Bekyk gesinbesonderhede, lede, en tydlyn"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Bekyk gesin-toeseggingsopsommings en fondstoekennings"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Bekyk groeplede, rolle, en eienskappe"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Bekyk toeseggings-kontroleskerm"
 
 #: 
 msgid "View query results"
@@ -13137,6 +13337,10 @@ msgstr "Registreer en bestuur kiosk-toestelle vir gebegeurtenis-kontrole"
 #: 
 msgid "Review & Delete"
 msgstr "Hersiening & Verwyder"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1-hashwaarde"
 
 #: 
 msgid "Setup Instructions"

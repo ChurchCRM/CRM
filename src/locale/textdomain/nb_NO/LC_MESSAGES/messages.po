@@ -11231,3 +11231,2245 @@ msgstr "Databaseversjonen din er nyere enn den installerte programvaren. Dette b
 msgid "or later to continue."
 msgstr "eller nyere for å fortsette."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Notater om \"Hvorfor kom de\""
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d resultat for \"%s\""
+msgstr[1] "%d resultater for \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(valgfritt — la stå tomt for å inkludere alle roller)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "En familie representerer en husstand. Den inneholder felles adresse og hjemmetelefon for alle familiemedlemmer som bor sammen."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "En husstand. Lagrer felles postadresse og hjemmetelefon."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "En person trenger ikke tilhøre en familie, men å knytte dem til en gjør adressehåndtering mye enklere."
+
+#: 
+msgid "About"
+msgstr "Om"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Godkjent format: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Kontogjenoppretting"
+
+#: 
+msgid "Add Family"
+msgstr "Legg til familie"
+
+#: 
+msgid "Add First Family"
+msgstr "Legg til første familie"
+
+#: 
+msgid "Add Member"
+msgstr "Legg til medlem"
+
+#: 
+msgid "Add New Class"
+msgstr "Legg til ny klasse"
+
+#: 
+msgid "Add Note"
+msgstr "Legg til notat"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Legg til personer i familien"
+
+#: 
+msgid "Add Person"
+msgstr "Legg til person"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Legg til elever i utvalget"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Legg til lærere i utvalget"
+
+#: 
+msgid "Add User"
+msgstr "Legg til bruker"
+
+#: 
+msgid "Add Your Data"
+msgstr "Legg til dine data"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Legg til din første familie"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Legg til din første egenskap"
+
+#: 
+msgid "Add a Person"
+msgstr "Legg til en person"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Legg til et nytt giverløfte"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Legg til en innbetaling til gjeldende kollektinnskudd"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Legg til alle i utvalget til en gruppe"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Legg alle til i utvalget"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Legg til utvalget i en familie"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Legg til alle i husstanden — både voksne og barn."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Legg til familier og enkeltpersoner direkte i ChurchCRM. Ideelt for mindre menigheter eller for å supplere importerte data."
+
+#: 
+msgid "Add first family"
+msgstr "Legg til første familie"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Legg til eller rediger personopplysninger"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Legg til eller rediger gjenstander donert til innsamlingsarrangementer"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Legg til eller rediger notater for personer og familier"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Legg til ansatte og frivillige"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Legg til ansatte eller frivillige som systembrukere"
+
+#: 
+msgid "Age Distribution"
+msgstr "Aldersfordeling"
+
+#: 
+msgid "All Roles"
+msgstr "Alle roller"
+
+#: 
+msgid "All Time"
+msgstr "Alle tider"
+
+#: 
+msgid "All roles"
+msgstr "Alle roller"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Nesten ferdig — se over opplysningene dine"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Kjøres også automatisk via WebDAV basert på ditt konfigurerte intervall."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Det oppstod en feil"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Et enkelt menighetsmedlem. Lagrer navn, fødselsdato, personlig e-post og mobilnummer."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Det oppstod en uventet feil under behandlingen av forespørselen din. Kontakt administratoren for hjelp."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Det oppstod en uventet feil."
+
+#: 
+msgid "Applied preset"
+msgstr "Brukt forhåndsinnstilling"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Er du sikker på at du vil slette dette kollektinnskuddet?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Er du sikker på at du vil slette denne innsamlingsaksjonen?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Er du sikker på at du vil fjerne"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Tildel og administrer gavekonvoluttnumre"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Tildel og administrer kjøpernumre for innsamlingsaksjon"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Knytt utvalget til en familiepost"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Knytt utvalget til en gruppe"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Knytt utvalget til et arrangement"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Tildel til en gruppe"
+
+#: 
+msgid "Authentication Code"
+msgstr "Autentiseringskode"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Automatisk tilordnet"
+
+#: 
+msgid "BCC All"
+msgstr "BCC alle"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Tilbake til administrasjonspanelet"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Tilbake til Kom i gang"
+
+#: 
+msgid "Back to Home"
+msgstr "Tilbake til startsiden"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Sikkerhetskopierer automatisk til WebDAV skylagring med konfigurerbart intervall."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Sikkerhetskopier til ekstern lagring nå"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Bla gjennom alle tilgjengelige tillegg"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Bla gjennom alle kirkens arrangementer og aktiviteter"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Bla gjennom alle personer i menigheten med filtrering og søk"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Bla gjennom alle tillegg"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Bla gjennom og søk blant alle familier i menigheten"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Bla gjennom og søk blant innsamlingsaksjoner"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Bla gjennom bilder av menighetsmedlemmer"
+
+#: 
+msgid "Buyer Number"
+msgstr "Kjøpernummer"
+
+#: 
+msgid "Buyers"
+msgstr "Kjøpere"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV-kolonne"
+
+#: 
+msgid "CSV template not found"
+msgstr "CSV-mal ikke funnet"
+
+#: 
+msgid "Call"
+msgstr "Ring"
+
+#: 
+msgid "Cart Functions"
+msgstr "Utvalgsfunksjoner"
+
+#: 
+msgid "Change Family Role"
+msgstr "Endre familierolle"
+
+#: 
+msgid "Check Out"
+msgstr "Sjekk ut"
+
+#: 
+msgid "Check Out Person"
+msgstr "Sjekk ut person"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Se etter oppdateringer og oppgrader ChurchCRM-installasjonen din"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Registrer oppmøte for kirkens arrangementer og aktiviteter"
+
+#: 
+msgid "Check in to an event"
+msgstr "Registrer oppmøte på et arrangement"
+
+#: 
+msgid "Check-ins"
+msgstr "Oppmøteregistreringer"
+
+#: 
+msgid "Children"
+msgstr "Barn"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Velg hvordan du vil fylle databasen din. Du kan alltid bruke en annen metode senere."
+
+#: 
+msgid "Church Info"
+msgstr "Menighetsinformasjon"
+
+#: 
+msgid "Clear all"
+msgstr "Fjern alle"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Slett alle data og start på nytt"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Fjern alle fra utvalget"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Klikk Lagre for å bruke endringene."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Klikk for å laste opp bilde"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Ved å klikke \"Open GitHub Issue\" åpnes en ny fane med systeminformasjonen din forhåndsutfylt. Ingen personlig identifiserbar informasjon inkluderes med mindre du legger den til selv."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Kolonnen ble automatisk tilordnet et ChurchCRM-felt."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Plattform for menighetsadministrasjon"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Kompatibel med Excel, Google Sheets eller annen CSV-eksport."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Fullfør disse i valgfri rekkefølge for å klargjøre ChurchCRM for menigheten din."
+
+#: 
+msgid "Confession"
+msgstr "Skriftemål"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Konfigurer globale systeminnstillinger og preferanser"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Konfigurer gruppeinnstillinger, roller og egenskaper"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Bekreft ditt nye passord"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Koble til en SMTP-server slik at ChurchCRM kan sende e-post"
+
+#: 
+msgid "Connect with others"
+msgstr "Kom i kontakt med andre"
+
+#: 
+msgid "Contact us"
+msgstr "Kontakt oss"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Konverter enkeltposter til familieenheter"
+
+#: 
+msgid "Convert to Family"
+msgstr "Konverter til familie"
+
+#: 
+msgid "Copied"
+msgstr "Kopiert"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Kopier medlemmer til gruppe"
+
+#: 
+msgid "Copy to Group"
+msgstr "Kopier til gruppe"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Opprett en sikkerhetskopi av menighetsdatabasen"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Opprett en manuell sikkerhetskopi minst en gang i uken, eller aktiver tillegget for ekstern sikkerhetskopiering for automatiske WebDAV-sikkerhetskopier etter en tidsplan."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Opprett et nytt kollektinnskudd"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Opprett og rediger familieinformasjon og relasjoner"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Opprett og administrer kirkens arrangementer og aktiviteter"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Opprett eller rediger egenskapstypekategorier"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Opprett eller rediger frivilligstillinger"
+
+#: 
+msgid "Current person"
+msgstr "Gjeldende person"
+
+#: 
+msgid "Data & Reports"
+msgstr "Data og rapporter"
+
+#: 
+msgid "Database Reset"
+msgstr "Tilbakestilling av database"
+
+#: 
+msgid "Default / Notes"
+msgstr "Standard / Notater"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Definer egendefinerte felt for å samle inn ytterligere familiedata"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Definer egendefinerte felt for å samle inn ytterligere persondata"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Definer egendefinerte egenskaper for datasporing"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Definer egendefinerte egenskaper som kan tildeles"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Definer gruppespesifikke egenskaper for medlemmer"
+
+#: 
+msgid "Delete All"
+msgstr "Slett alle"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Slett oppmøteregistrering"
+
+#: 
+msgid "Delete Family"
+msgstr "Slett familie"
+
+#: 
+msgid "Delete Group"
+msgstr "Slett gruppe"
+
+#: 
+msgid "Delete Person"
+msgstr "Slett person"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Slett giverløfte"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Sletting av denne egenskapen vil også fjerne alle tildelinger fra person-, familie- eller gruppeposter."
+
+#: 
+msgid "Deposit Value"
+msgstr "Kollektinnskuddsverdi"
+
+#: 
+msgid "Describe the issue"
+msgstr "Beskriv problemet"
+
+#: 
+msgid "Directions"
+msgstr "Veibeskrivelse"
+
+#: 
+msgid "Directory Reports"
+msgstr "Katalograpporter"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Deaktivert i innstillinger"
+
+#: 
+msgid "Donated Item"
+msgstr "Donert gjenstand"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Gaver og kollektregistreringer spores på familienivå. Hvis du vil registrere gaver for en person som bor alene, opprett en enmannsfamilie for vedkommende."
+
+#: 
+msgid "Download"
+msgstr "Last ned"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Last ned CSV-mal"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Last ned malen for å se forventet kolonneformat."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Dra og slipp CSV-filen din her"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplikater"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Hver person kan ha sin egen e-post og mobilnummer."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Hver rad er én person. Medlemmer av samme familie deler en FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Enkel registrering"
+
+#: 
+msgid "Edit Class"
+msgstr "Rediger klasse"
+
+#: 
+msgid "Edit Form"
+msgstr "Rediger skjema"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Rediger skjema for medlemsegenskaper"
+
+#: 
+msgid "Edit Property"
+msgstr "Rediger egenskap"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Rediger egendefinerte egenskaper for et gruppemedlem"
+
+#: 
+msgid "Email BCC"
+msgstr "E-post BCC"
+
+#: 
+msgid "Email Families"
+msgstr "Send e-post til familier"
+
+#: 
+msgid "Email Settings"
+msgstr "E-postinnstillinger"
+
+#: 
+msgid "Email Tools"
+msgstr "E-postverktøy"
+
+#: 
+msgid "Email cart items"
+msgstr "Send e-post til utvalget"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "E-post med skjulte mottakere"
+
+#: 
+msgid "Empty"
+msgstr "Tom"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Aktiver HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Aktiver tillegg"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Aktiver MailChimp-tillegget for å synkronisere kontakter"
+
+#: 
+msgid "Enrolled"
+msgstr "Innmeldt"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Legg inn data manuelt"
+
+#: 
+msgid "Enter a search term"
+msgstr "Skriv inn et søkeord"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Skriv inn den 6-sifrede koden fra autentiseringsappen din for å fullføre innloggingen"
+
+#: 
+msgid "Enter your current password"
+msgstr "Skriv inn ditt nåværende passord"
+
+#: 
+msgid "Enter your login name"
+msgstr "Skriv inn brukernavnet ditt"
+
+#: 
+msgid "Enter your new password"
+msgstr "Skriv inn ditt nye passord"
+
+#: 
+msgid "Enter your password"
+msgstr "Skriv inn passordet ditt"
+
+#: 
+msgid "Est. Value"
+msgstr "Anslått verdi"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Ekskluder fra e-posteksport"
+
+#: 
+msgid "Excluded"
+msgstr "Ekskludert"
+
+#: 
+msgid "Expand"
+msgstr "Utvid"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Utforsk med demodata"
+
+#: 
+msgid "Export"
+msgstr "Eksporter"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Eksporter data til CSV-format for eksterne applikasjoner"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Utvid ChurchCRM med MailChimp, sikkerhetskopier og mer"
+
+#: 
+msgid "FY %s"
+msgstr "Regnskapsår %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Kunne ikke legge til medlemmer i utvalget. Prøv igjen."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Kunne ikke slette klassen. Prøv igjen."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Kunne ikke slette gruppen. Prøv igjen."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Kunne ikke fjerne fra klassen. Prøv igjen."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Familier deler adresse og telefonnummer."
+
+#: 
+msgid "Family List"
+msgstr "Familieliste"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Sammendrag av familiens giverløfter"
+
+#: 
+msgid "Family Profile"
+msgstr "Familieprofil"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Familieroller (familieoverhode, ektefelle, barn osv.) hjelper med å organisere postene dine."
+
+#: 
+msgid "Family vs Person"
+msgstr "Familie vs. person"
+
+#: 
+msgid "Fields to Include"
+msgstr "Felt som skal inkluderes"
+
+#: 
+msgid "File upload error"
+msgstr "Feil ved filopplasting"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Følg disse to trinnene for å legge til menighetsmedlemmene dine raskt og riktig."
+
+#: 
+msgid "Forgot password?"
+msgstr "Glemt passord?"
+
+#: 
+msgid "Full Group View"
+msgstr "Fullstendig gruppevisning"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Generer og last ned bekreftelssbrev"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Generer årlige gaveoversikter for skatteformål"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Generer katalogoppføringer og trykt materiale"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Generer økonomiske rapporter"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Generer økonomiske oversikter og gaverapporter"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Generer brev og adresseetiketter"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Generer adresseetiketter og standardbrev"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Generer telefonkatalog"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Generer påminnelsesbrev for giverløfter"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Generer rapporter om gruppemedlemskap og aktiviteter"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Generer skatteoppgaver for givere"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Geografiske verktøy"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Få dataene dine inn i ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Gå til startsiden"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Godt valg! Slik legger du til menighetsmedlemmene dine."
+
+#: 
+msgid "Group Map"
+msgstr "Gruppekart"
+
+#: 
+msgid "Group Reports"
+msgstr "Grupperapporter"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Gruppen ble slettet."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Har du eksisterende data?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Hvis du har mange poster i et regneark, kan CSV-import være raskere enn å legge inn data manuelt."
+
+#: 
+msgid "Ignored"
+msgstr "Ignorert"
+
+#: 
+msgid "Import Another File"
+msgstr "Importer en ny fil"
+
+#: 
+msgid "Import CSV"
+msgstr "Importer CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Import fullført"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Importer kontakter fra MailChimp-publikummet ditt"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Importen mislyktes. Prøv igjen."
+
+#: 
+msgid "Import failed: "
+msgstr "Import mislyktes: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Importer fra CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Importer fra regneark"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Importer fra et regneark"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Importer, gjenopprett eller legg inn manuelt"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Importer, gjenopprett eller legg inn menigheten manuelt"
+
+#: 
+msgid "Importing..."
+msgstr "Importerer..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Inkluder i e-posteksport"
+
+#: 
+msgid "Included"
+msgstr "Inkludert"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Installer et TLS/SSL-sertifikat for sikre tilkoblinger"
+
+#: 
+msgid "Invalid import request"
+msgstr "Ugyldig importforespørsel"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Ugyldig \"Fra-nummer\": \"%s\". Inkluder landskoden, f.eks. +4791234567 (NO) eller +14155551234 (US)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Inviter teamet ditt"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Bli med i fellesskapet vårt og hold kontakten med"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Hopp til et oppsettstrinn:"
+
+#: 
+msgid "Key People"
+msgstr "Nøkkelpersoner"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kiosk aktivert"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "La oss gjenopprette dine tidligere ChurchCRM-data."
+
+#: 
+msgid "Letters"
+msgstr "Brev"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Brev og adresseetiketter"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Brev og etiketter"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Vis familier opprettet via selvregistrering"
+
+#: 
+msgid "Load demo data"
+msgstr "Last inn demodata"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Last inn eksempelfamilier, personer, grupper og gaveregistreringer. Den tryggeste måten å lære ChurchCRM på før du legger inn ekte data."
+
+#: 
+msgid "Log Files"
+msgstr "Loggfiler"
+
+#: 
+msgid "Log Level"
+msgstr "Loggnivå"
+
+#: 
+msgid "Login to your account"
+msgstr "Logg inn på kontoen din"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, sikkerhetskopier og mer"
+
+#: 
+msgid "Manage %s options"
+msgstr "Administrer %s-alternativer"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Administrer konvolutter"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Administrer søndagsskoleklasser, lærere og elevoppmøte"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Administrer klassifiseringslister, roller og gruppetyper"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Administrer gavefond for økonomisk sporing"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Administrer gaver, giverløfter og økonomiske poster"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Administrer e-postverktøy og SMTP-konfigurasjon"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Administrer arrangementsnavn og kategorier"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Administrer arrangementstype-kategorier"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Administrer familier, personer og demografisk informasjon"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Administrer personer i utvalget ditt"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Administrer egenskapstyper for person, familie og gruppe"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Administrer egenskaper fra"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Administrer systembrukere, tillatelser og tofaktorautentisering"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Administrer brukerkontoopplysninger og tillatelser"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Administrer frivilligmuligheter og tildel medlemmer"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Administrer dine personlige preferanser og kontoinnstillinger"
+
+#: 
+msgid "Manual"
+msgstr "Manuell"
+
+#: 
+msgid "Map cart items"
+msgstr "Vis utvalget på kart"
+
+#: 
+msgid "Map to Field"
+msgstr "Tilordne til felt"
+
+#: 
+msgid "Material"
+msgstr "Materiale"
+
+#: 
+msgid "Member Properties"
+msgstr "Medlemsegenskaper"
+
+#: 
+msgid "Member Roles"
+msgstr "Medlemsroller"
+
+#: 
+msgid "Members added to cart."
+msgstr "Medlemmer lagt til i utvalget."
+
+#: 
+msgid "Memberships"
+msgstr "Medlemskap"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Endre familieroller for gruppemedlemmer"
+
+#: 
+msgid "Move Members"
+msgstr "Flytt medlemmer"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Flytt medlemmer til gruppe"
+
+#: 
+msgid "Move to Group"
+msgstr "Flytt til gruppe"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Flytter du fra en eksisterende ChurchCRM- eller ChurchInfo-installasjon? Last opp sikkerhetskopien din, så gjenoppretter vi dataene automatisk."
+
+#: 
+msgid "My Settings"
+msgstr "Mine innstillinger"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Navneendringer krever lagring. Omorganisering og sletting i handlingsmenyen trer i kraft umiddelbart."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Navn, adresse, kontaktopplysninger"
+
+#: 
+msgid "Need help?"
+msgstr "Trenger du hjelp?"
+
+#: 
+msgid "New"
+msgstr "Ny"
+
+#: 
+msgid "New Family"
+msgstr "Ny familie"
+
+#: 
+msgid "New Group"
+msgstr "Ny gruppe"
+
+#: 
+msgid "New Person"
+msgstr "Ny person"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Ingen jubileer"
+
+#: 
+msgid "No Birthdays"
+msgstr "Ingen fødselsdager"
+
+#: 
+msgid "No Check-ins"
+msgstr "Ingen oppmøteregistreringer"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Ingen kollektsporing"
+
+#: 
+msgid "No Deposits"
+msgstr "Ingen kollektinnskudd"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Ingen jubileer de siste eller neste 7 dagene"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Ingen fødselsdager de siste eller neste 7 dagene"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Ingen kollektdata tilgjengelig ennå"
+
+#: 
+msgid "No description set."
+msgstr "Ingen beskrivelse angitt."
+
+#: 
+msgid "No email address on file"
+msgstr "Ingen e-postadresse registrert"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Ingen arrangementer knyttet til denne klassen."
+
+#: 
+msgid "No file uploaded"
+msgstr "Ingen fil lastet opp"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Ingen gruppetilordninger ennå."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Ingen treff funnet — velg et felt eller la stå som Ignorer."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Ingen treff for \"%s\". Prøv et annet søkeord."
+
+#: 
+msgid "No member properties defined."
+msgstr "Ingen medlemsegenskaper definert."
+
+#: 
+msgid "No members found for this role."
+msgstr "Ingen medlemmer funnet for denne rollen."
+
+#: 
+msgid "No people found"
+msgstr "Ingen personer funnet"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Ingen personer samsvarer med gjeldende filtre."
+
+#: 
+msgid "No phone number on file"
+msgstr "Ingen telefonnummer registrert"
+
+#: 
+msgid "No properties assigned."
+msgstr "Ingen egenskaper tildelt."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Ingen egenskaper definert ennå"
+
+#: 
+msgid "No results found"
+msgstr "Ingen resultater funnet"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Ingen tidslinjehendelser ennå."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Ingen frivilligoppdrag tildelt ennå."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Ikke klar ennå?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Når du har en familie, legg til hvert husstandsmedlem som en person. Tildel dem en familierolle (f.eks. familieoverhode, ektefelle, barn)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Når du sender inn, mottar vårt team registreringen din og tar kontakt for å ønske familien din personlig velkommen. Hvis noe ser feil ut, bruk Forrige-knappen for å gå tilbake og gjøre endringer."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Kun .csv-filer godtas"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Åpne GitHub-sak"
+
+#: 
+msgid "Open user menu"
+msgstr "Åpne brukermeny"
+
+#: 
+msgid "Options"
+msgstr "Alternativer"
+
+#: 
+msgid "Other Members"
+msgstr "Andre medlemmer"
+
+#: 
+msgid "Overview"
+msgstr "Oversikt"
+
+#: 
+msgid "Password Recovery"
+msgstr "Passordgjenoppretting"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Siste og neste 7 dager"
+
+#: 
+msgid "People List"
+msgstr "Personliste"
+
+#: 
+msgid "People by Classification"
+msgstr "Personer etter klassifisering"
+
+#: 
+msgid "Person removed from class."
+msgstr "Person fjernet fra klassen."
+
+#: 
+msgid "Photo"
+msgstr "Bilde"
+
+#: 
+msgid "Photos only"
+msgstr "Kun bilder"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Velg en vei for å komme i gang"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Kontroller at alt ser riktig ut før du sender inn."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Tilordne minst én kolonne før import"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Velg en CSV-fil"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Prøv å be om en ny lenke for tilbakestilling av passord, eller kontakt brukerstøtte hvis problemet vedvarer."
+
+#: 
+msgid "Pledges"
+msgstr "Giverløfter"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Tillegg aktivert, men ikke konfigurert. Når det er satt opp, kjøres sikkerhetskopier automatisk til WebDAV med det konfigurerte intervallet."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Trykk ? for å fokusere søk"
+
+#: 
+msgid "Prev"
+msgstr "Forrige"
+
+#: 
+msgid "Print name tags"
+msgstr "Skriv ut navneskilt"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Utskrivbar katalog over alle personer, gruppert etter familie"
+
+#: 
+msgid "Properties Form"
+msgstr "Egenskapsskjema"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Egenskapstildeling ikke funnet."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Egenskapen ble slettet."
+
+#: 
+msgid "Property not found."
+msgstr "Egenskap ikke funnet."
+
+#: 
+msgid "Quick Setup"
+msgstr "Hurtigoppsett"
+
+#: 
+msgid "Quick Tips"
+msgstr "Hurtigtips"
+
+#: 
+msgid "Ready to back up"
+msgstr "Klar til sikkerhetskopiering"
+
+#: 
+msgid "Ready to restore"
+msgstr "Klar til gjenoppretting"
+
+#: 
+msgid "Recommended Order"
+msgstr "Anbefalt rekkefølge"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Registrer flere vinnere av innsamlingslotteri samtidig"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Registrer nye giverløfter og innbetalinger"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Registrer hvorfor besøkende kom til kirken"
+
+#: 
+msgid "Register Your Family"
+msgstr "Registrer familien din"
+
+#: 
+msgid "Register another family"
+msgstr "Registrer en ny familie"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Fjern alle fra utvalget"
+
+#: 
+msgid "Remove from Class"
+msgstr "Fjern fra klasse"
+
+#: 
+msgid "Report an Issue"
+msgstr "Rapporter et problem"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Gjenopprett en sikkerhetskopi"
+
+#: 
+msgid "Restore backup"
+msgstr "Gjenopprett sikkerhetskopi"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Gjenopprett menighetsdatabasen fra en sikkerhetskopi"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Tilbake til kontrollpanelet"
+
+#: 
+msgid "Return to Families"
+msgstr "Tilbake til familier"
+
+#: 
+msgid "Return to Groups"
+msgstr "Tilbake til grupper"
+
+#: 
+msgid "Return to People"
+msgstr "Tilbake til personer"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Gjennomgå og rydd opp i filer som ikke er knyttet til noen post"
+
+#: 
+msgid "Role not found."
+msgstr "Rolle ikke funnet."
+
+#: 
+msgid "Roles"
+msgstr "Roller"
+
+#: 
+msgid "Run"
+msgstr "Kjør"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "SMTP-server for sending av e-post"
+
+#: 
+msgid "Sample Data"
+msgstr "Eksempeldata"
+
+#: 
+msgid "Search Results"
+msgstr "Søkeresultater"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Søk blant personer, familier, grupper, adresser og mer."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Søk og vis kollektinnskuddsposter"
+
+#: 
+msgid "Search groups..."
+msgstr "Søk i grupper..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Søk blant personer, familier, grupper..."
+
+#: 
+msgid "Security First"
+msgstr "Sikkerhet først"
+
+#: 
+msgid "Select Fields"
+msgstr "Velg felt"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Velg felt som skal inkluderes"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Velg en sikkerhetskopifil og klikk Gjenopprett database."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Velg alternativene ovenfor og klikk på en sikkerhetskopiknapp."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Rapport for selvregistrering"
+
+#: 
+msgid "Send email to families"
+msgstr "Send e-post til familier"
+
+#: 
+msgid "Server Error"
+msgstr "Serverfeil"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "Serveren returnerte et uventet svar. Prøv igjen."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Sett tillatelse til Sann for å gi nye brukere mulighet til å endre gjeldende verdi."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Angi en e-postadresse for administrator slik at du kan tilbakestille passord og motta varsler"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Angi standardpreferanser for nye brukerkontoer"
+
+#: 
+msgid "Set up"
+msgstr "Sett opp"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Opprett en ny innsamlingsaksjon eller et arrangement"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Angi menighetens navn, adresse og kontaktopplysninger"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Angi menighetens navn, adresse og kontakt-e-post"
+
+#: 
+msgid "Setup Progress"
+msgstr "Oppsettfremdrift"
+
+#: 
+msgid "Setup Required"
+msgstr "Oppsett påkrevd"
+
+#: 
+msgid "Share"
+msgstr "Del"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Viser medlemmer av: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Logg inn"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Siden dette er en ny installasjon, vil gjenoppretting bare laste inn sikkerhetskopidataene dine."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Hopp over — gå til administrasjonspanelet"
+
+#: 
+msgid "Start Fresh"
+msgstr "Start på nytt"
+
+#: 
+msgid "Start Over"
+msgstr "Begynn på nytt"
+
+#: 
+msgid "Stay informed"
+msgstr "Hold deg oppdatert"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Trinn 1 — Last opp CSV-fil"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Trinn 2 — Tilordne kolonner"
+
+#: 
+msgid "Submitting..."
+msgstr "Sender inn..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Støtter sikkerhetskopier fra ChurchCRM og ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Systemdiagnostisk informasjon og konfigurasjon"
+
+#: 
+msgid "Tags"
+msgstr "Merkelapper"
+
+#: 
+msgid "Tax Statements"
+msgstr "Skatteoppgaver"
+
+#: 
+msgid "Teacher"
+msgstr "Lærer"
+
+#: 
+msgid "Technical Details"
+msgstr "Tekniske detaljer"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Fortell oss om familien din"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Egenskapen kunne ikke fjernes."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Egenskapen er fjernet."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Disse lenkene vises i \"Lenker\"-menyen i navigasjonssidefeltet når dette tillegget er aktivert."
+
+#: 
+msgid "To Family"
+msgstr "Til familie"
+
+#: 
+msgid "To Group"
+msgstr "Til gruppe"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Vis/skjul navigasjon"
+
+#: 
+msgid "Total Size"
+msgstr "Total størrelse"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Spor familiens giverløfter og fondsbidrag etter regnskapsår"
+
+#: 
+msgid "Transaction Details"
+msgstr "Transaksjonsdetaljer"
+
+#: 
+msgid "Unmapped"
+msgstr "Ikke tilordnet"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Oppdater administratorkontakt"
+
+#: 
+msgid "Upload CSV"
+msgstr "Last opp CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Last opp en CSV-fil for å importere familier og personer til ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Last opp en CSV fra Excel, Google Sheets eller ditt tidligere menighetsadministrasjonssystem og tilordne kolonner til ChurchCRM-felt."
+
+#: 
+msgid "Upload failed."
+msgstr "Opplasting mislyktes."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Opplasting mislyktes. Kontroller filen og prøv igjen."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Opplastingsøkten utløp. Last opp filen på nytt."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Laster opp, vennligst vent..."
+
+#: 
+msgid "Users"
+msgstr "Brukere"
+
+#: 
+msgid "Verify Info"
+msgstr "Bekreft informasjon"
+
+#: 
+msgid "Verify your identity"
+msgstr "Bekreft identiteten din"
+
+#: 
+msgid "View Family"
+msgstr "Vis familie"
+
+#: 
+msgid "View People"
+msgstr "Vis personer"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Vis alle familier på et interaktivt kart"
+
+#: 
+msgid "View all results"
+msgstr "Vis alle resultater"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Vis og administrer alle grupper i menigheten"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Vis og administrer kollektinnskuddsbetalinger"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Vis og administrer familiens stedsdata"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Vis og administrer systemloggfiler for feilsøking"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Vis og kjør lagrede databasespørringer"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Vis kjøpernumre og nummertildelinger"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Vis klasseliste, lærertilordninger og kontaktinformasjon"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Vis familiedetaljer, medlemmer og tidslinje"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Vis sammendrag av familiens giverløfter og fondstildelinger"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Vis gruppemedlemmer, roller og egenskaper"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Vis giverløfteoversikt"
+
+#: 
+msgid "View query results"
+msgstr "Vis spørringsresultater"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Vis transaksjonsdetaljer for en giverløfteinnbetaling"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Stemmeberettigede medlemmer må ha gitt en gave innen dette antall år (0 for å ikke kreve en gave)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Vi fant ikke familien du lette etter."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "Vi fant ikke gruppen du lette etter."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "Vi fant ikke personen du lette etter."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Vi fant ikke posten du lette etter."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Vi kunne ikke behandle forespørselen om tilbakestilling av passord."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Vi bruker dette for å holde kontakten og sende oppdateringer fra menigheten."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Vi er så glade for at du er her! Registrer familien din i bare 3 enkle trinn."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Vi er så glade for at familien din har blitt med oss!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Velkommen tilbake!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Velkommen tilbake! Vennligst oppgi opplysningene dine for å fortsette"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Velkommen til menigheten!"
+
+#: 
+msgid "What happens next?"
+msgstr "Hva skjer videre?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Hva gikk galt? Hva forventet du skulle skje?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Hvem er i familien din?"
+
+#: 
+msgid "Why Came"
+msgstr "Hvorfor kom de"
+
+#: 
+msgid "Yes, delete"
+msgstr "Ja, slett"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Du kan alltid importere mer data senere via CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Du kan opprette/slette søndagsskolegrupper."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Du har ikke økonomitillatelser til å se kollektinnskudd."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Sikkerhetskopidataene dine er lastet inn. Du blir omdirigert for å logge inn med dine tidligere påloggingsopplysninger."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Sikkerhetskopien din oppgraderes automatisk til det nyeste databaseskjemaet ved behov."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Forrige økt utløp. Vennligst logg inn igjen."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Registreringen din er mottatt. Vårt team tar snart kontakt for å ønske deg personlig velkommen."
+
+#: 
+msgid "all members"
+msgstr "alle medlemmer"
+
+#: 
+msgid "complete"
+msgstr "fullført"
+
+#: 
+msgid "fields"
+msgstr "felt"
+
+#: 
+msgid "from this class?"
+msgstr "fra denne klassen?"
+
+#: 
+msgid "from this group?"
+msgstr "fra denne gruppen?"
+
+#: 
+msgid "full group view"
+msgstr "fullstendig gruppevisning"
+
+#: 
+msgid "funds"
+msgstr "fond"
+
+#: 
+msgid "members"
+msgstr "medlemmer"
+
+#: 
+msgid "name@example.com"
+msgstr "navn@eksempel.no"
+
+#: 
+msgid "opportunities"
+msgstr "muligheter"
+
+#: 
+msgid "options"
+msgstr "alternativer"
+
+#: 
+msgid "or connect an external service"
+msgstr "eller koble til en ekstern tjeneste"
+
+#: 
+msgid "our church"
+msgstr "vår menighet"
+
+#: 
+msgid "page"
+msgstr "side"
+
+#: 
+msgid "properties"
+msgstr "egenskaper"
+
+#: 
+msgid "to another group?"
+msgstr "til en annen gruppe?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Ignorer —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Velg en gruppe —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Velg type (valgfritt) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Godta enheten, og tildel den deretter til et arrangement for å starte oppmøteregistrering."
+
+#: 
+msgid "Activate"
+msgstr "Aktiver"
+
+#: 
+msgid "Active Events"
+msgstr "Aktive arrangementer"
+
+#: 
+msgid "Add Event"
+msgstr "Legg til arrangement"
+
+#: 
+msgid "Adults"
+msgstr "Voksne"
+
+#: 
+msgid "Affected Files"
+msgstr "Berørte filer"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Alle kontroller bestått"
+
+#: 
+msgid "Applying..."
+msgstr "Bruker endringer..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Tildelt kiosk"
+
+#: 
+msgid "Attendance"
+msgstr "Oppmøte"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Sikkerhetskopier endrede filer før oppgradering hvis du vil beholde endringene dine."
+
+#: 
+msgid "Backup Complete"
+msgstr "Sikkerhetskopiering fullført"
+
+#: 
+msgid "Class / Group"
+msgstr "Klasse / Gruppe"
+
+#: 
+msgid "Class List Export"
+msgstr "Eksport av klasseliste"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Klikk på registreringsbryteren ovenfor for å åpne et 30-sekunders registreringsvindu."
+
+#: 
+msgid "Continue"
+msgstr "Fortsett"
+
+#: 
+msgid "Create First Event"
+msgstr "Opprett første arrangement"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Opprett en databasesikkerhetskopi før du bruker oppdateringen. Dette anbefales sterkt."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Oppretter sikkerhetskopi..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Last ned sikkerhetskopi og fortsett"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Last ned den nyeste versjonen og bruk den på installasjonen din."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Aktiver ny kioskregistrering"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Arrangementsoversikt"
+
+#: 
+msgid "Events This Year"
+msgstr "Arrangementer i år"
+
+#: 
+msgid "Everyone"
+msgstr "Alle"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Kunne ikke slette notat"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Filer som ikke er del av den offisielle utgivelsen ble funnet på serveren din."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Tving reinstallering?"
+
+#: 
+msgid "Full Path"
+msgstr "Full bane"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Generer klasselister, oppmøtelister og fotobøker"
+
+#: 
+msgid "Installed"
+msgstr "Installert"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Det anbefales sterkt å ha en sikkerhetskopi før du fortsetter."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Kioskregistrering"
+
+#: 
+msgid "Latest"
+msgstr "Nyeste"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Nyeste versjon ukjent"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Administrer arrangementstyper"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Endrede filer vil bli tilbakestilt til den offisielle versjonen."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Flere grupper vil ha sideskift mellom gruppene"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Nye medlemmer og velkomst"
+
+#: 
+msgid "No Events Found"
+msgstr "Ingen arrangementer funnet"
+
+#: 
+msgid "No events found for %s."
+msgstr "Ingen arrangementer funnet for %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Ingen problemer funnet. Du kan fortsette med oppgraderingen."
+
+#: 
+msgid "Note not found"
+msgstr "Notat ikke funnet"
+
+#: 
+msgid "Note text is required"
+msgstr "Notattekst er påkrevd"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Åpne en nettleser på kioskenheten (nettbrett, bærbar PC osv.) og gå til:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Bare notatforfatteren eller en administrator kan slette dette notatet"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Bare notatforfatteren eller en administrator kan redigere dette notatet"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Oversikt over kirkens arrangementer, oppmøte og aktivitet"
+
+#: 
+msgid "People Without Emails"
+msgstr "Personer uten e-post"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Personer uten personlig eller jobb-e-post registrert"
+
+#: 
+msgid "Pre-flight"
+msgstr "Forhåndskontroll"
+
+#: 
+msgid "Re-install"
+msgstr "Reinstaller"
+
+#: 
+msgid "Refresh"
+msgstr "Oppdater"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Registrer og administrer kioskenheter for oppmøteregistrering"
+
+#: 
+msgid "Review & Delete"
+msgstr "Gjennomgå og slett"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1-hash"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Oppsettsinstruksjoner"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Signaturavvik"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Hopp over, fortsett uten sikkerhetskopi"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Enheten registrerer seg selv og vises i tabellen nedenfor som \"Ventende\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Disse lenkene vises i \"Lenker\"-menyen i navigasjonssidefeltet når dette tillegget er aktivert."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Dette vil laste ned og bruke gjeldende versjon på nytt. Det kan reparere ødelagte eller endrede filer."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "For å sette opp en kioskenhet, følg disse trinnene:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Slå på bryteren nedenfor for å åpne et 30-sekunders vindu for registrering av nye kioskenheter."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Totalt antall oppmøteregistreringer"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Prøv å velge en annen arrangementstype eller et annet år."
+
+#: 
+msgid "Up to Date"
+msgstr "Oppdatert"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Kommende søndagsskolearrangementer"
+
+#: 
+msgid "Update Available"
+msgstr "Oppdatering tilgjengelig"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Brukeren må ha notat-tillatelse"
+

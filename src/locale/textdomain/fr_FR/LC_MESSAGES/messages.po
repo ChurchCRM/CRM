@@ -13097,3 +13097,283 @@ msgstr "— Sélectionner un groupe —"
 msgid "— Select type (optional) —"
 msgstr "— Sélectionner un type (facultatif) —"
 
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Acceptez l'appareil, puis assignez-le à un événement pour commencer l'enregistrement."
+
+#: 
+msgid "Activate"
+msgstr "Activer"
+
+#: 
+msgid "Active Events"
+msgstr "Événements Actifs"
+
+#: 
+msgid "Add Event"
+msgstr "Ajouter un Événement"
+
+#: 
+msgid "Adults"
+msgstr "Adultes"
+
+#: 
+msgid "Affected Files"
+msgstr "Fichiers Concernés"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Toutes les Vérifications Réussies"
+
+#: 
+msgid "Applying..."
+msgstr "Application en cours..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Kiosque Assigné"
+
+#: 
+msgid "Attendance"
+msgstr "Présence"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Sauvegardez les fichiers modifiés avant la mise à niveau si vous souhaitez conserver vos modifications."
+
+#: 
+msgid "Backup Complete"
+msgstr "Sauvegarde Terminée"
+
+#: 
+msgid "Class / Group"
+msgstr "Classe / Groupe"
+
+#: 
+msgid "Class List Export"
+msgstr "Export de la Liste de Classe"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Cliquez sur le bouton d'inscription ci-dessus pour ouvrir une fenêtre d'inscription de 30 secondes."
+
+#: 
+msgid "Continue"
+msgstr "Continuer"
+
+#: 
+msgid "Create First Event"
+msgstr "Créer le Premier Événement"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Créez une sauvegarde de la base de données avant d'appliquer la mise à jour. Ceci est fortement recommandé."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Création de la sauvegarde..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Télécharger la Sauvegarde & Continuer"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Téléchargez la dernière version et appliquez-la à votre installation."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Activer l'inscription d'un nouveau kiosque"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Tableau de Bord des Événements"
+
+#: 
+msgid "Events This Year"
+msgstr "Événements Cette Année"
+
+#: 
+msgid "Everyone"
+msgstr "Tout le monde"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Impossible de supprimer la note"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Des fichiers ne faisant pas partie de la version officielle ont été trouvés sur votre serveur."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Forcer la Réinstallation ?"
+
+#: 
+msgid "Full Path"
+msgstr "Chemin Complet"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Générer des listes de classe, des feuilles de présence et des albums photos"
+
+#: 
+msgid "Installed"
+msgstr "Installé"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Il est fortement recommandé d'avoir une sauvegarde avant de continuer."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Inscription du Kiosque"
+
+#: 
+msgid "Latest"
+msgstr "Dernière"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Dernière version inconnue"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Gérer les Types d'Événements"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Les fichiers modifiés seront restaurés à la version officielle."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Les groupes multiples auront un saut de page entre les groupes"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Nouveaux Paroissiens & Accueil"
+
+#: 
+msgid "No Events Found"
+msgstr "Aucun Événement Trouvé"
+
+#: 
+msgid "No events found for %s."
+msgstr "Aucun événement trouvé pour %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Aucun problème trouvé. Vous pouvez procéder à la mise à niveau."
+
+#: 
+msgid "Note not found"
+msgstr "Note non trouvée"
+
+#: 
+msgid "Note text is required"
+msgstr "Le texte de la note est requis"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Sur l'appareil kiosque (tablette, ordinateur portable, etc.), ouvrez un navigateur et accédez à :"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Seul l'auteur de la note ou un administrateur peut supprimer cette note"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Seul l'auteur de la note ou un administrateur peut modifier cette note"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Aperçu des événements paroissiaux, de la présence et des activités"
+
+#: 
+msgid "People Without Emails"
+msgstr "Paroissiens Sans E-mail"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Paroissiens sans adresse e-mail personnelle ou professionnelle enregistrée"
+
+#: 
+msgid "Pre-flight"
+msgstr "Vérification Préalable"
+
+#: 
+msgid "Re-install"
+msgstr "Réinstaller"
+
+#: 
+msgid "Refresh"
+msgstr "Actualiser"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Enregistrer et gérer les appareils kiosques pour l'enregistrement aux événements"
+
+#: 
+msgid "Review & Delete"
+msgstr "Vérifier & Supprimer"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Empreinte SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Instructions d'Installation"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Signature Non Concordante"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Ignorer, Continuer Sans Sauvegarde"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "L'appareil s'enregistrera automatiquement et apparaîtra dans le tableau ci-dessous comme « En attente »."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Ces liens apparaissent dans le menu « Liens » de la barre de navigation latérale lorsque cette extension est activée."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Ceci retéléchargera et réappliquera la version actuelle. Cela peut corriger les fichiers corrompus ou modifiés."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Pour configurer un appareil kiosque, suivez ces étapes :"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Activez le commutateur ci-dessous pour ouvrir une fenêtre de 30 secondes permettant l'inscription de nouveaux appareils kiosques."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Total des Enregistrements"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Essayez de sélectionner un type d'événement ou une année différente."
+
+#: 
+msgid "Up to Date"
+msgstr "À Jour"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Prochains Événements du Catéchisme"
+
+#: 
+msgid "Update Available"
+msgstr "Mise à Jour Disponible"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "L'utilisateur doit avoir la permission Notes"
+

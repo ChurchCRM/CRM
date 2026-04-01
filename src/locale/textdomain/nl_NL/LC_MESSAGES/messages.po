@@ -12767,6 +12767,10 @@ msgid "System diagnostic information and configuration"
 msgstr "Systeemdiagnostische informatie en configuratie"
 
 #: 
+msgid "Tags"
+msgstr "Labels"
+
+#: 
 msgid "Tax Statements"
 msgstr "Belastingverklaringen"
 
@@ -13105,4 +13109,284 @@ msgstr "— Selecteer een groep —"
 #: 
 msgid "— Select type (optional) —"
 msgstr "— Selecteer type (optioneel) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Accepteer het apparaat en wijs het vervolgens toe aan een evenement om het inchecken te starten."
+
+#: 
+msgid "Activate"
+msgstr "Activeren"
+
+#: 
+msgid "Active Events"
+msgstr "Actieve Evenementen"
+
+#: 
+msgid "Add Event"
+msgstr "Evenement toevoegen"
+
+#: 
+msgid "Adults"
+msgstr "Volwassenen"
+
+#: 
+msgid "Affected Files"
+msgstr "Betrokken Bestanden"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Alle Controles Geslaagd"
+
+#: 
+msgid "Applying..."
+msgstr "Toepassen..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Toegewezen Kiosk"
+
+#: 
+msgid "Attendance"
+msgstr "Aanwezigheid"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Maak een back-up van gewijzigde bestanden voordat u de upgrade uitvoert als u uw wijzigingen wilt behouden."
+
+#: 
+msgid "Backup Complete"
+msgstr "Back-up Voltooid"
+
+#: 
+msgid "Class / Group"
+msgstr "Klas / Groep"
+
+#: 
+msgid "Class List Export"
+msgstr "Klassenlijst Exporteren"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Klik hierboven op de registratieschakelaar om een registratievenster van 30 seconden te openen."
+
+#: 
+msgid "Continue"
+msgstr "Doorgaan"
+
+#: 
+msgid "Create First Event"
+msgstr "Eerste Evenement Aanmaken"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Maak een databaseback-up voordat u de update toepast. Dit wordt sterk aanbevolen."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Back-up wordt aangemaakt..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Back-up Downloaden & Doorgaan"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Download de nieuwste versie en pas deze toe op uw installatie."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Nieuwe kioskregistratie inschakelen"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Evenementen Dashboard"
+
+#: 
+msgid "Events This Year"
+msgstr "Evenementen Dit Jaar"
+
+#: 
+msgid "Everyone"
+msgstr "Iedereen"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Notitie kon niet worden verwijderd"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Er zijn bestanden gevonden op uw server die geen deel uitmaken van de officiële versie."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Herinstallatie forceren?"
+
+#: 
+msgid "Full Path"
+msgstr "Volledig Pad"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Genereer klassenlijsten, aanwezigheidslijsten en fotoboeken"
+
+#: 
+msgid "Installed"
+msgstr "Geïnstalleerd"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Het wordt sterk aanbevolen om een back-up te maken voordat u verdergaat."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Kioskregistratie"
+
+#: 
+msgid "Latest"
+msgstr "Nieuwste"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Nieuwste versie onbekend"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Evenementtypen Beheren"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Gewijzigde bestanden worden teruggezet naar de officiële versie."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Meerdere groepen krijgen een pagina-einde tussen de groepen"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Nieuwe Gemeenteleden & Begroeting"
+
+#: 
+msgid "No Events Found"
+msgstr "Geen Evenementen Gevonden"
+
+#: 
+msgid "No events found for %s."
+msgstr "Geen evenementen gevonden voor %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Geen problemen gevonden. U kunt doorgaan met de upgrade."
+
+#: 
+msgid "Note not found"
+msgstr "Notitie niet gevonden"
+
+#: 
+msgid "Note text is required"
+msgstr "Notitietekst is vereist"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Open op het kioskapparaat (tablet, laptop, enz.) een browser en ga naar:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie verwijderen"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Alleen de auteur van de notitie of een beheerder mag deze notitie bewerken"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Overzicht van kerkelijke evenementen, aanwezigheid en activiteiten"
+
+#: 
+msgid "People Without Emails"
+msgstr "Gemeenteleden Zonder E-mail"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Gemeenteleden zonder geregistreerd persoonlijk of werk-e-mailadres"
+
+#: 
+msgid "Pre-flight"
+msgstr "Voorcontrole"
+
+#: 
+msgid "Re-install"
+msgstr "Opnieuw installeren"
+
+#: 
+msgid "Refresh"
+msgstr "Vernieuwen"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Kioskapparaten registreren en beheren voor het inchecken bij evenementen"
+
+#: 
+msgid "Review & Delete"
+msgstr "Bekijken & Verwijderen"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1-hashwaarde"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Installatie-instructies"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Handtekening Komt Niet Overeen"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Overslaan, Doorgaan Zonder Back-up"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Het apparaat registreert zichzelf en verschijnt in de tabel hieronder als \"In afwachting\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Deze links verschijnen in het menu \"Links\" in de navigatiebalk wanneer deze plugin is ingeschakeld."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Hiermee wordt de huidige versie opnieuw gedownload en toegepast. Dit kan beschadigde of gewijzigde bestanden herstellen."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Volg deze stappen om een kioskapparaat in te stellen:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Schakel de schakelaar hieronder om een venster van 30 seconden te openen voor de registratie van nieuwe kioskapparaten."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Totaal Aantal Check-ins"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Probeer een ander evenementtype of jaar te selecteren."
+
+#: 
+msgid "Up to Date"
+msgstr "Up-to-date"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Aankomende Zondagsschool Evenementen"
+
+#: 
+msgid "Update Available"
+msgstr "Update Beschikbaar"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Gebruiker moet toestemming voor Notities hebben"
 
