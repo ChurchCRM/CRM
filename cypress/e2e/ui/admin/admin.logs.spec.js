@@ -77,10 +77,13 @@ describe('Admin System Logs - UI Tests', () => {
         return;
       }
 
-      // Open the dropdown and click View — within() holds the row element in memory
-      // across the click→visibility check, preventing re-query races in suite runs
+      // Open the dropdown and click View — wait for Bootstrap dropdown to render with .show class
       cy.get('#logFilesTable tbody tr').first().within(() => {
         cy.get('button[data-bs-toggle="dropdown"], .dropdown-toggle').first().click();
+      });
+      
+      // Wait for Bootstrap to show the dropdown menu before interacting with its items
+      cy.get('.dropdown-menu.show').within(() => {
         cy.get('.view-log').first().should('be.visible').click();
       });
 
