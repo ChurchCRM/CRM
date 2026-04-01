@@ -59,7 +59,6 @@
     "vonage/client": "^4.3.0"
   },
   "require-dev": {
-    "doctrine/annotations": "^2.0",
     "phpstan/phpstan": "^2.1.6",
     "rector/rector": "^2.0.9",
     "squizlabs/php_codesniffer": "^3.11.3",
