@@ -11851,6 +11851,10 @@ msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Zgjero ChurchCRM me MailChimp, rezerve dhe më shumë"
 
 #: 
+msgid "FY %s"
+msgstr "VF %s"
+
+#: 
 msgid "Failed to add members to cart. Please try again."
 msgstr "Dështoi të shtonte besimtarët në listën përzgjedhese. Ju lutemi provoni përsëri."
 
@@ -12229,6 +12233,10 @@ msgstr "Besimtarët u shtuan në listën përzgjedhese."
 #: 
 msgid "Memberships"
 msgstr "Anëtarësit"
+
+#: 
+msgid "Minimum"
+msgstr "Minimumi"
 
 #: 
 msgid "Modify family roles for group members"
@@ -12715,8 +12723,208 @@ msgid "Sign in"
 msgstr "Hyni"
 
 #: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Meqenëse kjo është një instalim i ri, rikthimi thjesht do të ngarkojë të dhënat tuaja rezervë."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Kalo — shko te Paneli i Administratorit"
+
+#: 
+msgid "Start Fresh"
+msgstr "Fillo nga e Para"
+
+#: 
+msgid "Start Over"
+msgstr "Fillo Përsëri"
+
+#: 
+msgid "Stay informed"
+msgstr "Qëndroni të informuar"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Hapi 1 — Ngarko Skedarin CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Hapi 2 — Harto Kolonat"
+
+#: 
+msgid "Submitting..."
+msgstr "Duke dërguar..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Mbështet kopje rezervë nga ChurchCRM dhe ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Informacion diagnostikues i sistemit dhe konfigurimi"
+
+#: 
+msgid "Tags"
+msgstr "Etiketat"
+
+#: 
+msgid "Tax Statements"
+msgstr "Pasqyrat Tatimore"
+
+#: 
+msgid "Teacher"
+msgstr "Mësuesi"
+
+#: 
+msgid "Technical Details"
+msgstr "Detaje Teknike"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Na tregoni për familjen tuaj"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Vetia nuk mund të hiqej."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Vetia u hoq me sukses."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Këto lidhje shfaqen në menynë \"Lidhje\" në shiritin anësor të navigimit kur ky shtojcë është aktivizuar."
+
+#: 
+msgid "To Family"
+msgstr "Te Familja"
+
+#: 
+msgid "To Group"
+msgstr "Te Grupi"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Ndrysho navigimin"
+
+#: 
+msgid "Total Size"
+msgstr "Madhësia Totale"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Ndiqni premtimet e familjeve dhe kontributet e fondeve sipas vitit fiskal"
+
+#: 
+msgid "Transaction Details"
+msgstr "Detajet e Transaksionit"
+
+#: 
+msgid "Unmapped"
+msgstr "E pahartuar"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Përditëso Kontaktin e Administratorit"
+
+#: 
+msgid "Upload CSV"
+msgstr "Ngarko CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Ngarko një skedar CSV për të importuar familje dhe njerëz në ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Ngarko një CSV nga Excel, Google Sheets, ose sistemin tuaj të mëparshëm të menaxhimit të kishës dhe harto kolonat me fushat e ChurchCRM."
+
+#: 
+msgid "Upload failed."
+msgstr "Ngarkimi dështoi."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Ngarkimi dështoi. Ju lutemi kontrolloni skedarin dhe provoni përsëri."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Sesioni i ngarkimit ka skaduar. Ju lutemi ngarkoni skedarin përsëri."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Duke ngarkuar, ju lutemi prisni..."
+
+#: 
 msgid "Users"
 msgstr "Përdoruesit"
+
+#: 
+msgid "Verify Info"
+msgstr "Verifiko Informacionin"
+
+#: 
+msgid "Verify your identity"
+msgstr "Verifiko identitetin tuaj"
+
+#: 
+msgid "View Family"
+msgstr "Shiko Familjen"
+
+#: 
+msgid "View People"
+msgstr "Shiko Besimtarët"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Shiko të gjitha familjet në një hartë ndërvepruese"
+
+#: 
+msgid "View all results"
+msgstr "Shiko të gjitha rezultatet"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Shiko dhe menaxho të gjitha grupet në bashkësinë tuaj"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Shiko dhe menaxho pagesat e fletë-depozitave të ofertave"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Shiko dhe menaxho të dhënat e vendndodhjes së familjes"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Shiko dhe menaxho skedarët e regjistrave të sistemit për korrigjim gabimesh"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Shiko dhe ekzekuto pyetjet e ruajtura të bazës së të dhënave"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Shiko numrat e blerësve dhe caktimet e raketave"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Shiko listën e klasës, caktimet e mësuesve, dhe informacionin e kontaktit"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Shiko detajet e familjes, anëtarët, dhe kronologjinë"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Shiko përmbledhjet e premtimeve të familjeve dhe shpërndarjet e fondeve"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Shiko anëtarët e grupit, rolet, dhe vetitë"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Shiko panelin e premtimeve"
 
 #: 
 msgid "View query results"
@@ -13117,6 +13325,10 @@ msgstr "Regjistro dhe administro pajisjet e kiosk për regjistrim në ngjarje"
 #: 
 msgid "Review & Delete"
 msgstr "Shqyrtim & Fshim"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Hash SHA1"
 
 #: 
 msgid "Setup Instructions"

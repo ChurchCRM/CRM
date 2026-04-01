@@ -11139,3 +11139,2243 @@ msgstr "Phiên bản cơ sở dữ liệu của bạn mới hơn phần mềm đ
 msgid "or later to continue."
 msgstr "hoặc mới hơn để tiếp tục."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Ghi chu \"Ly do den\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(tuy chon — de trong de bao gom tat ca cac vai tro)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Mot gia dinh dai dien cho mot ho. No luu tru dia chi chung va so dien thoai nha cho tat ca thanh vien gia dinh song cung nhau."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Mot ho gia dinh. Luu tru dia chi gui thu va so dien thoai nha chung."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Mot nguoi khong can phai thuoc ve mot gia dinh, nhung viec gan gia dinh se giup quan ly dia chi de dang hon nhieu."
+
+#: 
+msgid "About"
+msgstr "Gioi thieu"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Dinh dang chap nhan: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Khoi phuc tai khoan"
+
+#: 
+msgid "Add Family"
+msgstr "Them gia dinh"
+
+#: 
+msgid "Add First Family"
+msgstr "Them gia dinh dau tien"
+
+#: 
+msgid "Add Member"
+msgstr "Them thanh vien"
+
+#: 
+msgid "Add New Class"
+msgstr "Them lop hoc moi"
+
+#: 
+msgid "Add Note"
+msgstr "Them ghi chu"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Them nguoi vao gia dinh"
+
+#: 
+msgid "Add Person"
+msgstr "Them nguoi"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Them hoc vien vao danh sach"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Them giao vien vao danh sach"
+
+#: 
+msgid "Add User"
+msgstr "Them nguoi dung"
+
+#: 
+msgid "Add Your Data"
+msgstr "Them du lieu cua ban"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Them gia dinh dau tien cua ban"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Them thuoc tinh dau tien cua ban"
+
+#: 
+msgid "Add a Person"
+msgstr "Them mot nguoi"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Them cam ket dang hien moi"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Them khoan dang hien vao dot thu hien tai"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Them tat ca muc trong danh sach vao mot nhom"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Them tat ca vao danh sach"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Them cac muc trong danh sach vao mot gia dinh"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Them tat ca moi nguoi trong ho gia dinh — ca nguoi lon va tre em."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Them tung gia dinh va ca nhan truc tiep trong ChurchCRM. Phu hop cho cac giao xu nho hoac bo sung du lieu da nhap."
+
+#: 
+msgid "Add first family"
+msgstr "Them gia dinh dau tien"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Them hoac chinh sua ho so ca nhan"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Them hoac chinh sua cac mon qua tang cho su kien gay quy"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Them hoac chinh sua ghi chu cho ca nhan va gia dinh"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Them nhan vien va tinh nguyen vien"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Them nhan vien hoac tinh nguyen vien lam nguoi dung he thong"
+
+#: 
+msgid "Administrator"
+msgstr "Quan tri vien"
+
+#: 
+msgid "Age Distribution"
+msgstr "Phan bo do tuoi"
+
+#: 
+msgid "All Roles"
+msgstr "Tat ca vai tro"
+
+#: 
+msgid "All Time"
+msgstr "Toan bo thoi gian"
+
+#: 
+msgid "All roles"
+msgstr "Tat ca vai tro"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Sap xong — hay xem lai thong tin cua ban"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Cung chay tu dong qua WebDAV theo khoang thoi gian ban da cau hinh."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Da xay ra loi"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Mot thanh vien giao hoi. Luu tru ten, ngay sinh, email ca nhan va so di dong."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Da xay ra loi khong mong doi khi xu ly yeu cau cua ban. Vui long lien he quan tri vien de duoc ho tro."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Da xay ra loi khong mong doi."
+
+#: 
+msgid "Applied preset"
+msgstr "Da ap dung cai dat san"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Ban co chac chan muon xoa dot thu hien nay khong?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Ban co chac chan muon xoa su kien gay quy nay khong?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Ban co chac chan muon xoa"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Gan va quan ly so phong bi dang hien"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Gan va quan ly so nguoi mua trong su kien gay quy"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Gan cac muc trong danh sach vao ho so gia dinh"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Gan cac muc trong danh sach vao mot nhom"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Gan cac muc trong danh sach vao mot su kien"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Gan vao nhom"
+
+#: 
+msgid "Authentication Code"
+msgstr "Ma xac thuc"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Tu dong ghep noi"
+
+#: 
+msgid "BCC All"
+msgstr "BCC tat ca"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Quay lai bang dieu khien quan tri"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Quay lai bat dau"
+
+#: 
+msgid "Back to Home"
+msgstr "Quay lai trang chu"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Tu dong sao luu len bo nho dam may WebDAV theo khoang thoi gian co the cau hinh."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Sao luu ra bo nho ngoai ngay bay gio"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Duyet tat ca cac plugin co san"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Duyet tat ca cac su kien va hoat dong giao hoi"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Duyet tat ca moi nguoi trong giao xu voi bo loc va tim kiem"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Duyet tat ca plugin"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Duyet va tim kiem tat ca gia dinh trong giao xu"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Duyet va tim kiem cac chien dich gay quy"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Duyet anh cua cac thanh vien giao xu"
+
+#: 
+msgid "Buyer Number"
+msgstr "So nguoi mua"
+
+#: 
+msgid "Buyers"
+msgstr "Nguoi mua"
+
+#: 
+msgid "CSV Column"
+msgstr "Cot CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "Khong tim thay mau CSV"
+
+#: 
+msgid "Call"
+msgstr "Goi"
+
+#: 
+msgid "Cart Functions"
+msgstr "Chuc nang danh sach"
+
+#: 
+msgid "Change Family Role"
+msgstr "Doi vai tro gia dinh"
+
+#: 
+msgid "Check Out"
+msgstr "Dang ky ra"
+
+#: 
+msgid "Check Out Person"
+msgstr "Dang ky ra cho nguoi"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Kiem tra cap nhat va nang cap cai dat ChurchCRM cua ban"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Dang ky vao cho nguoi tham du cac su kien va hoat dong giao hoi"
+
+#: 
+msgid "Check in to an event"
+msgstr "Dang ky vao su kien"
+
+#: 
+msgid "Check-ins"
+msgstr "Dang ky vao"
+
+#: 
+msgid "Children"
+msgstr "Tre em"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Chon cach ban muon nhap du lieu vao co so du lieu. Ban luon co the su dung phuong phap khac sau."
+
+#: 
+msgid "Church Info"
+msgstr "Thong tin giao hoi"
+
+#: 
+msgid "Clear all"
+msgstr "Xoa tat ca"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Xoa tat ca du lieu va bat dau lai"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Xoa tat ca cac muc khoi danh sach"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Nhan Luu de ap dung."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Nhan de tai anh len"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Nhan \"Mo GitHub Issue\" se mo tab moi voi thong tin he thong cua ban da dien san. Khong co thong tin ca nhan nao duoc bao gom tru khi ban tu them."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Cot da duoc tu dong ghep noi voi truong ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Nen tang quan ly cong dong"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Tuong thich voi Excel, Google Sheets hoac bat ky xuat CSV nao."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Hoan thanh cac buoc nay theo bat ky thu tu nao de chuan bi ChurchCRM cho giao xu cua ban."
+
+#: 
+msgid "Confession"
+msgstr "Xung toi"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Cau hinh cai dat va tuy chon he thong toan cuc"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Cau hinh cai dat nhom, vai tro va thuoc tinh"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Xac nhan mat khau moi cua ban"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Ket noi may chu SMTP de ChurchCRM co the gui email"
+
+#: 
+msgid "Connect with others"
+msgstr "Ket noi voi nguoi khac"
+
+#: 
+msgid "Contact us"
+msgstr "Lien he chung toi"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Chuyen doi ho so ca nhan thanh don vi gia dinh"
+
+#: 
+msgid "Convert to Family"
+msgstr "Chuyen thanh gia dinh"
+
+#: 
+msgid "Copied"
+msgstr "Da sao chep"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Sao chep thanh vien sang nhom"
+
+#: 
+msgid "Copy to Group"
+msgstr "Sao chep sang nhom"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Tao ban sao luu co so du lieu giao hoi"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Tao ban sao luu thu cong it nhat moi tuan mot lan, hoac bat plugin Sao luu Ngoai de tu dong sao luu WebDAV theo lich."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Tao dot thu hien moi"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Tao va chinh sua thong tin gia dinh va cac moi quan he"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Tao va quan ly cac su kien va hoat dong giao hoi"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Tao hoac chinh sua danh muc loai thuoc tinh"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Tao hoac chinh sua vi tri tinh nguyen vien"
+
+#: 
+msgid "Current person"
+msgstr "Nguoi hien tai"
+
+#: 
+msgid "Data & Reports"
+msgstr "Du lieu va bao cao"
+
+#: 
+msgid "Database Reset"
+msgstr "Dat lai co so du lieu"
+
+#: 
+msgid "Default / Notes"
+msgstr "Mac dinh / Ghi chu"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Dinh nghia truong tuy chinh de thu thap du lieu gia dinh bo sung"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Dinh nghia truong tuy chinh de thu thap du lieu ca nhan bo sung"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Dinh nghia thuoc tinh tuy chinh de theo doi du lieu"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Dinh nghia thuoc tinh tuy chinh co the gan cho"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Dinh nghia thuoc tinh rieng cua nhom cho thanh vien"
+
+#: 
+msgid "Delete All"
+msgstr "Xoa tat ca"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Xoa muc dang ky vao"
+
+#: 
+msgid "Delete Family"
+msgstr "Xoa gia dinh"
+
+#: 
+msgid "Delete Group"
+msgstr "Xoa nhom"
+
+#: 
+msgid "Delete Person"
+msgstr "Xoa nguoi"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Xoa cam ket dang hien"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Xoa thuoc tinh nay cung se go bo tat ca cac gan cua no khoi bat ky ho so Ca nhan, Gia dinh hoac Nhom nao."
+
+#: 
+msgid "Deposit Value"
+msgstr "Gia tri dot thu hien"
+
+#: 
+msgid "Describe the issue"
+msgstr "Mo ta van de"
+
+#: 
+msgid "Directions"
+msgstr "Chi duong"
+
+#: 
+msgid "Directory Reports"
+msgstr "Bao cao danh ba"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Da tat trong cai dat"
+
+#: 
+msgid "Donated Item"
+msgstr "Mon qua tang"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Cac khoan dang hien va ghi nhan duoc theo doi o cap gia dinh. Neu ban muon ghi nhan dang hien cho mot ca nhan song mot minh, hay tao mot gia dinh mot nguoi cho ho."
+
+#: 
+msgid "Download"
+msgstr "Tai xuong"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Tai mau CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Tai mau de xem dinh dang cot mong doi."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Keo va tha tep CSV cua ban vao day"
+
+#: 
+msgid "Duplicates"
+msgstr "Ban sao trung"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Moi nguoi co the co email va so di dong rieng."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Moi dong la mot nguoi. Cac thanh vien cung gia dinh dung chung mot FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Dang ky de dang"
+
+#: 
+msgid "Edit Class"
+msgstr "Chinh sua lop hoc"
+
+#: 
+msgid "Edit Form"
+msgstr "Chinh sua bieu mau"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Chinh sua bieu mau thuoc tinh thanh vien"
+
+#: 
+msgid "Edit Property"
+msgstr "Chinh sua thuoc tinh"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Chinh sua thuoc tinh tuy chinh cho thanh vien nhom"
+
+#: 
+msgid "Email Families"
+msgstr "Gui email cho gia dinh"
+
+#: 
+msgid "Email Settings"
+msgstr "Cai dat email"
+
+#: 
+msgid "Email Tools"
+msgstr "Cong cu email"
+
+#: 
+msgid "Email cart items"
+msgstr "Gui email danh sach"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "Email an nguoi nhan"
+
+#: 
+msgid "Empty"
+msgstr "Trong"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Bat HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Bat plugin"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Bat plugin MailChimp de dong bo danh ba"
+
+#: 
+msgid "Enrolled"
+msgstr "Da dang ky"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Nhap du lieu thu cong"
+
+#: 
+msgid "Enter a search term"
+msgstr "Nhap tu khoa tim kiem"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Nhap ma 6 chu so tu ung dung xac thuc de hoan tat dang nhap"
+
+#: 
+msgid "Enter your current password"
+msgstr "Nhap mat khau hien tai cua ban"
+
+#: 
+msgid "Enter your login name"
+msgstr "Nhap ten dang nhap cua ban"
+
+#: 
+msgid "Enter your new password"
+msgstr "Nhap mat khau moi cua ban"
+
+#: 
+msgid "Enter your password"
+msgstr "Nhap mat khau cua ban"
+
+#: 
+msgid "Est. Value"
+msgstr "Gia tri uoc tinh"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Loai khoi xuat email"
+
+#: 
+msgid "Excluded"
+msgstr "Da loai tru"
+
+#: 
+msgid "Expand"
+msgstr "Mo rong"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Kham pha voi du lieu mau"
+
+#: 
+msgid "Export"
+msgstr "Xuat"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Xuat du lieu sang dinh dang CSV cho ung dung ben ngoai"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Mo rong ChurchCRM voi MailChimp, sao luu va nhieu hon nua"
+
+#: 
+msgid "FY %s"
+msgstr "Nam tai chinh %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Khong the them thanh vien vao danh sach. Vui long thu lai."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Khong the xoa lop hoc. Vui long thu lai."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Khong the xoa nhom. Vui long thu lai."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Khong the xoa khoi lop hoc. Vui long thu lai."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
+
+#: 
+msgid "Family List"
+msgstr "Danh sach gia dinh"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Tom tat cam ket dang hien gia dinh"
+
+#: 
+msgid "Family Profile"
+msgstr "Ho so gia dinh"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Cac vai tro gia dinh (Chu ho, Vo/Chong, Con cai, v.v.) giup sap xep ho so cua ban."
+
+#: 
+msgid "Family vs Person"
+msgstr "Gia dinh va Ca nhan"
+
+#: 
+msgid "Fields to Include"
+msgstr "Cac truong can bao gom"
+
+#: 
+msgid "File upload error"
+msgstr "Loi tai tep len"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Lam theo hai buoc nay de them thanh vien giao hoi nhanh chong va chinh xac."
+
+#: 
+msgid "Forgot password?"
+msgstr "Quen mat khau?"
+
+#: 
+msgid "Format"
+msgstr "Dinh dang"
+
+#: 
+msgid "Full Group View"
+msgstr "Xem toan bo nhom"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Tao va tai thu xac nhan"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Tao bao cao dang hien hang nam cho muc dich thue"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Tao danh ba va tai lieu in"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Tao bao cao tai chinh"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Tao bao cao tai chinh va bao cao dang hien"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Tao thu va nhan gui thu"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Tao nhan gui thu va thu mau"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Tao danh ba dien thoai"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Tao thu nhac nho cam ket dang hien"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Tao bao cao ve thanh vien nhom va hoat dong"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Tao tai lieu bao cao thue cho nguoi dang hien"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Tien ich dia ly"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Dua du lieu cua ban vao ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Di den trang chu"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Lua chon tuyet voi! Day la cach them thanh vien giao hoi cua ban."
+
+#: 
+msgid "Group Map"
+msgstr "Ban do nhom"
+
+#: 
+msgid "Group Reports"
+msgstr "Bao cao nhom"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Da xoa nhom thanh cong."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Ban co du lieu san?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Neu ban co nhieu ban ghi trong bang tinh, nhap CSV co the nhanh hon nhap du lieu thu cong."
+
+#: 
+msgid "Ignored"
+msgstr "Da bo qua"
+
+#: 
+msgid "Import Another File"
+msgstr "Nhap tep khac"
+
+#: 
+msgid "Import CSV"
+msgstr "Nhap CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Nhap hoan tat"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Nhap danh ba tu doi tuong MailChimp cua ban"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Nhap that bai. Vui long thu lai."
+
+#: 
+msgid "Import failed: "
+msgstr "Nhap that bai: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Nhap tu CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Nhap tu bang tinh"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Nhap tu mot bang tinh"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Nhap, khoi phuc hoac nhap thu cong"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Nhap, khoi phuc hoac nhap thu cong giao xu cua ban"
+
+#: 
+msgid "Importing..."
+msgstr "Dang nhap..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Bao gom trong xuat email"
+
+#: 
+msgid "Included"
+msgstr "Da bao gom"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Cai dat chung chi TLS/SSL de ket noi an toan"
+
+#: 
+msgid "Invalid import request"
+msgstr "Yeu cau nhap khong hop le"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"So gui\" khong hop le: \"%s\". Bao gom ma quoc gia, vi du +14155551234 (US) hoac +447911123456 (UK)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Moi doi cua ban"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Tham gia cong dong cua chung toi va ket noi voi"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Chuyen den bat ky buoc cai dat nao:"
+
+#: 
+msgid "Key People"
+msgstr "Nguoi quan trong"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Da bat Kiosk"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Hay khoi phuc du lieu ChurchCRM truoc do cua ban."
+
+#: 
+msgid "Letters"
+msgstr "Thu"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Thu va nhan gui thu"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Thu va nhan"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Liet ke cac gia dinh da tao qua tu dang ky"
+
+#: 
+msgid "Load demo data"
+msgstr "Tai du lieu mau"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Tai cac gia dinh, nguoi, nhom va ban ghi dang hien mau. Cach an toan nhat de hoc ChurchCRM truoc khi nhap du lieu thuc."
+
+#: 
+msgid "Log Files"
+msgstr "Tep nhat ky"
+
+#: 
+msgid "Log Level"
+msgstr "Muc nhat ky"
+
+#: 
+msgid "Login to your account"
+msgstr "Dang nhap vao tai khoan cua ban"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, sao luu va nhieu hon nua"
+
+#: 
+msgid "Manage %s options"
+msgstr "Quan ly tuy chon %s"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Quan ly phong bi dang hien"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Quan ly lop giao ly, giao vien va diem danh hoc vien"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Quan ly danh sach phan loai, vai tro va loai nhom"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Quan ly quy dang hien de theo doi tai chinh"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Quan ly dang hien, cam ket va ho so tai chinh"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Quan ly cong cu email va cau hinh SMTP"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Quan ly ten su kien va danh muc"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Quan ly danh muc loai su kien"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Quan ly gia dinh, ca nhan va thong tin nhan khau hoc"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Quan ly nguoi trong danh sach cua ban"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Quan ly loai thuoc tinh ca nhan, gia dinh va nhom"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Quan ly thuoc tinh tu"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Quan ly nguoi dung he thong, quyen han va cai dat xac thuc hai yeu to"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Quan ly chi tiet tai khoan nguoi dung va quyen han"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Quan ly co hoi tinh nguyen va gan thanh vien"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Quan ly tuy chon ca nhan va cai dat tai khoan cua ban"
+
+#: 
+msgid "Manual"
+msgstr "Thu cong"
+
+#: 
+msgid "Map cart items"
+msgstr "Hien thi danh sach tren ban do"
+
+#: 
+msgid "Map to Field"
+msgstr "Ghep noi voi truong"
+
+#: 
+msgid "Material"
+msgstr "Vat lieu"
+
+#: 
+msgid "Member Properties"
+msgstr "Thuoc tinh thanh vien"
+
+#: 
+msgid "Member Roles"
+msgstr "Vai tro thanh vien"
+
+#: 
+msgid "Members added to cart."
+msgstr "Da them thanh vien vao danh sach."
+
+#: 
+msgid "Memberships"
+msgstr "Tu cach thanh vien"
+
+#: 
+msgid "Minimum"
+msgstr "Toi thieu"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Thay doi vai tro gia dinh cho thanh vien nhom"
+
+#: 
+msgid "Move Members"
+msgstr "Di chuyen thanh vien"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Di chuyen thanh vien den nhom"
+
+#: 
+msgid "Move to Group"
+msgstr "Di chuyen den nhom"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Chuyen tu ban cai dat ChurchCRM hoac ChurchInfo hien co? Tai len tep sao luu va chung toi se khoi phuc du lieu cua ban tu dong."
+
+#: 
+msgid "My Settings"
+msgstr "Cai dat cua toi"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Thay doi ten can luu lai. Cac thao tac sap xep lai va xoa trong menu hanh dong co hieu luc ngay lap tuc."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Ten, dia chi, thong tin lien he"
+
+#: 
+msgid "Need help?"
+msgstr "Can giup do?"
+
+#: 
+msgid "New"
+msgstr "Moi"
+
+#: 
+msgid "New Family"
+msgstr "Gia dinh moi"
+
+#: 
+msgid "New Group"
+msgstr "Nhom moi"
+
+#: 
+msgid "New Person"
+msgstr "Nguoi moi"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Khong co ngay ky niem"
+
+#: 
+msgid "No Birthdays"
+msgstr "Khong co ngay sinh nhat"
+
+#: 
+msgid "No Check-ins"
+msgstr "Khong co dang ky vao"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Khong co theo doi dot thu hien"
+
+#: 
+msgid "No Deposits"
+msgstr "Khong co dot thu hien"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Khong co ngay ky niem trong 7 ngay qua hoac toi"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Khong co ngay sinh nhat trong 7 ngay qua hoac toi"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Chua co du lieu dot thu hien"
+
+#: 
+msgid "No description set."
+msgstr "Chua dat mo ta."
+
+#: 
+msgid "No email address on file"
+msgstr "Khong co dia chi email trong ho so"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Khong co su kien nao lien ket voi lop hoc nay."
+
+#: 
+msgid "No file uploaded"
+msgstr "Khong co tep nao duoc tai len"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Chua co gan nhom nao."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Khong tim thay ket qua phu hop — chon mot truong hoac de la Bo qua."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Khong co ket qua cho \"%s\". Thu tu khoa tim kiem khac."
+
+#: 
+msgid "No member properties defined."
+msgstr "Chua dinh nghia thuoc tinh thanh vien."
+
+#: 
+msgid "No members found for this role."
+msgstr "Khong tim thay thanh vien cho vai tro nay."
+
+#: 
+msgid "No people found"
+msgstr "Khong tim thay nguoi"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Khong co nguoi nao phu hop voi bo loc hien tai cua ban."
+
+#: 
+msgid "No phone number on file"
+msgstr "Khong co so dien thoai trong ho so"
+
+#: 
+msgid "No properties assigned."
+msgstr "Chua gan thuoc tinh nao."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Chua dinh nghia thuoc tinh nao"
+
+#: 
+msgid "No results found"
+msgstr "Khong tim thay ket qua"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Chua co su kien nao trong dong thoi gian."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Chua co gan co hoi tinh nguyen nao."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Chua san sang?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Khi ban co mot gia dinh, hay them tung thanh vien ho gia dinh lam mot nguoi. Gan cho ho mot vai tro gia dinh (vi du: Chu ho, Vo/Chong, Con cai)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Khi ban gui, doi ngu cua chung toi se nhan dang ky va lien he de don tiep gia dinh ban. Neu co gi sai, hay dung nut Quay lai de chinh sua."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Chi chap nhan tep .csv"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Mo GitHub Issue"
+
+#: 
+msgid "Open user menu"
+msgstr "Mo menu nguoi dung"
+
+#: 
+msgid "Options"
+msgstr "Tuy chon"
+
+#: 
+msgid "Other Members"
+msgstr "Thanh vien khac"
+
+#: 
+msgid "Overview"
+msgstr "Tong quan"
+
+#: 
+msgid "Password Recovery"
+msgstr "Khoi phuc mat khau"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "7 ngay qua va toi"
+
+#: 
+msgid "People List"
+msgstr "Danh sach nguoi"
+
+#: 
+msgid "People by Classification"
+msgstr "Nguoi theo phan loai"
+
+#: 
+msgid "Person removed from class."
+msgstr "Da xoa nguoi khoi lop hoc."
+
+#: 
+msgid "Photo"
+msgstr "Anh"
+
+#: 
+msgid "Photos only"
+msgstr "Chi anh"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Chon mot cach de bat dau"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Vui long kiem tra moi thu dung truoc khi gui."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Vui long ghep noi it nhat mot cot truoc khi nhap"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Vui long chon mot tep CSV"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Vui long thu yeu cau lien ket dat lai mat khau moi hoac lien he ho tro neu ban tiep tuc gap van de."
+
+#: 
+msgid "Pledges"
+msgstr "Cam ket dang hien"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Plugin da bat nhung chua duoc cau hinh. Sau khi cai dat, sao luu se tu dong chay den WebDAV theo khoang thoi gian ban cau hinh."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Nhan ? de di den o tim kiem"
+
+#: 
+msgid "Prev"
+msgstr "Truoc"
+
+#: 
+msgid "Print name tags"
+msgstr "In the ten"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Danh ba co the in cua tat ca moi nguoi, nhom theo gia dinh"
+
+#: 
+msgid "Properties Form"
+msgstr "Bieu mau thuoc tinh"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Khong tim thay gan thuoc tinh."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Da xoa thuoc tinh thanh cong."
+
+#: 
+msgid "Property not found."
+msgstr "Khong tim thay thuoc tinh."
+
+#: 
+msgid "Quick Setup"
+msgstr "Cai dat nhanh"
+
+#: 
+msgid "Quick Tips"
+msgstr "Meo nhanh"
+
+#: 
+msgid "Ready to back up"
+msgstr "San sang sao luu"
+
+#: 
+msgid "Ready to restore"
+msgstr "San sang khoi phuc"
+
+#: 
+msgid "Recommended Order"
+msgstr "Thu tu khuyen nghi"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Ghi nhan nhieu nguoi trung thuong gay quy cung luc"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Ghi nhan cam ket dang hien va cac khoan dang hien moi"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
+
+#: 
+msgid "Register Your Family"
+msgstr "Dang ky gia dinh cua ban"
+
+#: 
+msgid "Register another family"
+msgstr "Dang ky gia dinh khac"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Xoa tat ca khoi danh sach"
+
+#: 
+msgid "Remove from Class"
+msgstr "Xoa khoi lop hoc"
+
+#: 
+msgid "Report an Issue"
+msgstr "Bao cao van de"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Khoi phuc ban sao luu"
+
+#: 
+msgid "Restore backup"
+msgstr "Khoi phuc sao luu"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Khoi phuc co so du lieu giao hoi tu tep sao luu"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Quay lai bang dieu khien"
+
+#: 
+msgid "Return to Families"
+msgstr "Quay lai gia dinh"
+
+#: 
+msgid "Return to Groups"
+msgstr "Quay lai nhom"
+
+#: 
+msgid "Return to People"
+msgstr "Quay lai nguoi"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Xem lai va don dep cac tep khong lien ket voi bat ky ho so nao"
+
+#: 
+msgid "Role not found."
+msgstr "Khong tim thay vai tro."
+
+#: 
+msgid "Roles"
+msgstr "Vai tro"
+
+#: 
+msgid "Run"
+msgstr "Chay"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "May chu SMTP de gui email"
+
+#: 
+msgid "Sample Data"
+msgstr "Du lieu mau"
+
+#: 
+msgid "Search Results"
+msgstr "Ket qua tim kiem"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Tim kiem qua nguoi, gia dinh, nhom, dia chi va nhieu hon nua."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Tim kiem va xem cac ban ghi phieu thu hien"
+
+#: 
+msgid "Search groups..."
+msgstr "Tim kiem nhom..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Tim kiem nguoi, gia dinh, nhom…"
+
+#: 
+msgid "Security First"
+msgstr "Bao mat la uu tien"
+
+#: 
+msgid "Select Fields"
+msgstr "Chon truong"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Chon truong de bao gom"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Chon mot tep sao luu va nhan Khoi phuc co so du lieu."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Chon cac tuy chon o tren va nhan nut sao luu."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Bao cao tu dang ky"
+
+#: 
+msgid "Send email to families"
+msgstr "Gui email cho cac gia dinh"
+
+#: 
+msgid "Server Error"
+msgstr "Loi may chu"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "May chu tra ve phan hoi khong mong doi. Vui long thu lai."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Dat Quyen la Dung de cho nguoi dung moi co kha nang thay doi gia tri hien tai cua ho."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Dat email quan tri vien de ban co the dat lai mat khau va nhan thong bao"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Dat tuy chon mac dinh cho tai khoan nguoi dung moi"
+
+#: 
+msgid "Set up"
+msgstr "Cai dat"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Thiet lap chien dich hoac su kien gay quy moi"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Dat ten giao hoi, dia chi va thong tin lien he"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Dat ten giao hoi, dia chi va email lien he"
+
+#: 
+msgid "Setup Progress"
+msgstr "Tien do cai dat"
+
+#: 
+msgid "Setup Required"
+msgstr "Can cai dat"
+
+#: 
+msgid "Share"
+msgstr "Chia se"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Hien thi thanh vien cua: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Dang nhap"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Vi day la ban cai dat moi, khoi phuc se chi tai du lieu sao luu cua ban."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Bo qua — di den bang dieu khien quan tri"
+
+#: 
+msgid "Start Fresh"
+msgstr "Bat dau tu dau"
+
+#: 
+msgid "Start Over"
+msgstr "Bat dau lai"
+
+#: 
+msgid "Stay informed"
+msgstr "Cap nhat thong tin"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Buoc 1 — Tai len tep CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Buoc 2 — Ghep noi cot"
+
+#: 
+msgid "Submitting..."
+msgstr "Dang gui..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Ho tro sao luu tu ChurchCRM va ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Thong tin chan doan he thong va cau hinh"
+
+#: 
+msgid "Tags"
+msgstr "The"
+
+#: 
+msgid "Tax Statements"
+msgstr "Bao cao thue"
+
+#: 
+msgid "Teacher"
+msgstr "Giao vien"
+
+#: 
+msgid "Technical Details"
+msgstr "Chi tiet ky thuat"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Hay cho chung toi biet ve gia dinh ban"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Khong the go bo thuoc tinh."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Da go bo thuoc tinh thanh cong."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Cac lien ket nay xuat hien trong menu \"Lien ket\" o thanh dieu huong ben khi plugin nay duoc bat."
+
+#: 
+msgid "To Family"
+msgstr "Den gia dinh"
+
+#: 
+msgid "To Group"
+msgstr "Den nhom"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Chuyen doi dieu huong"
+
+#: 
+msgid "Total Size"
+msgstr "Tong dung luong"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Theo doi cam ket dang hien gia dinh va dong gop quy theo nam tai chinh"
+
+#: 
+msgid "Transaction Details"
+msgstr "Chi tiet giao dich"
+
+#: 
+msgid "Unmapped"
+msgstr "Chua ghep noi"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Cap nhat thong tin lien he quan tri vien"
+
+#: 
+msgid "Upload CSV"
+msgstr "Tai len CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Tai len tep CSV de nhap gia dinh va nguoi vao ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Tai len CSV tu Excel, Google Sheets hoac he thong quan ly giao hoi truoc do va ghep noi cot voi truong ChurchCRM."
+
+#: 
+msgid "Upload failed."
+msgstr "Tai len that bai."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Tai len that bai. Vui long kiem tra tep va thu lai."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Phien tai len da het han. Vui long tai len tep lai."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Dang tai len, vui long cho..."
+
+#: 
+msgid "Users"
+msgstr "Nguoi dung"
+
+#: 
+msgid "Verify Info"
+msgstr "Xac minh thong tin"
+
+#: 
+msgid "Verify your identity"
+msgstr "Xac minh danh tinh cua ban"
+
+#: 
+msgid "View Family"
+msgstr "Xem gia dinh"
+
+#: 
+msgid "View People"
+msgstr "Xem nguoi"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Xem tat ca gia dinh tren ban do tuong tac"
+
+#: 
+msgid "View all results"
+msgstr "Xem tat ca ket qua"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Xem va quan ly tat ca cac nhom trong giao xu"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Xem va quan ly cac khoan thanh toan phieu thu hien"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Xem va quan ly du lieu vi tri gia dinh"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Xem va quan ly tep nhat ky he thong de go loi"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Xem va chay cac truy van co so du lieu da luu"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Xem so nguoi mua va gan so bien"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Xem danh sach lop, gan giao vien va thong tin lien he"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Xem chi tiet gia dinh, thanh vien va dong thoi gian"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Xem tom tat cam ket dang hien gia dinh va phan bo quy"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Xem bang dieu khien cam ket dang hien"
+
+#: 
+msgid "View query results"
+msgstr "Xem ket qua truy van"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Xem chi tiet giao dich cho khoan thanh toan cam ket dang hien"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Thanh vien co quyen bo phieu phai da dang hien trong so nam nay (0 de khong yeu cau dang hien)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Chung toi khong tim thay gia dinh ban dang tim."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "Chung toi khong tim thay nhom ban dang tim."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "Chung toi khong tim thay nguoi ban dang tim."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Chung toi khong tim thay ho so ban dang tim."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Chung toi khong the xu ly yeu cau dat lai mat khau cua ban."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Chung toi se su dung thong tin nay de giu lien lac va gui cap nhat giao hoi."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Chung toi rat vui ban o day! Dang ky gia dinh cua ban chi trong 3 buoc don gian."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Chung toi rat vui gia dinh ban da tham gia!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Chao mung tro lai!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Chao mung tro lai! Vui long nhap thong tin de tiep tuc"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Chao mung gia nhap gia dinh!"
+
+#: 
+msgid "What happens next?"
+msgstr "Dieu gi xay ra tiep theo?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Dieu gi da sai? Ban mong doi dieu gi xay ra?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Ai trong gia dinh ban?"
+
+#: 
+msgid "Why Came"
+msgstr "Ly do den"
+
+#: 
+msgid "Yes, delete"
+msgstr "Co, xoa"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Ban luon co the nhap them du lieu sau qua CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Ban co the tao/xoa nhom giao ly."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Ban khong co quyen tai chinh de xem cac dot thu hien."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Du lieu sao luu cua ban da duoc tai. Ban se duoc chuyen huong de dang nhap voi thong tin truoc do."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Ban sao luu cua ban se duoc tu dong nang cap len luoc do co so du lieu moi nhat neu can."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Phien truoc do cua ban da het han. Vui long dang nhap lai."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Dang ky cua ban da duoc nhan. Doi ngu chung toi se som lien he de don tiep ban."
+
+#: 
+msgid "all members"
+msgstr "tat ca thanh vien"
+
+#: 
+msgid "complete"
+msgstr "hoan tat"
+
+#: 
+msgid "fields"
+msgstr "truong"
+
+#: 
+msgid "from this class?"
+msgstr "khoi lop hoc nay?"
+
+#: 
+msgid "from this group?"
+msgstr "khoi nhom nay?"
+
+#: 
+msgid "full group view"
+msgstr "xem toan bo nhom"
+
+#: 
+msgid "funds"
+msgstr "quy"
+
+#: 
+msgid "members"
+msgstr "thanh vien"
+
+#: 
+msgid "opportunities"
+msgstr "co hoi"
+
+#: 
+msgid "options"
+msgstr "tuy chon"
+
+#: 
+msgid "or connect an external service"
+msgstr "hoac ket noi dich vu ben ngoai"
+
+#: 
+msgid "our church"
+msgstr "giao hoi cua chung toi"
+
+#: 
+msgid "page"
+msgstr "trang"
+
+#: 
+msgid "properties"
+msgstr "thuoc tinh"
+
+#: 
+msgid "to another group?"
+msgstr "sang nhom khac?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Bo qua —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Chon mot nhom —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Chon loai (tuy chon) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Chap nhan thiet bi, sau do gan no vao mot su kien de bat dau dang ky vao."
+
+#: 
+msgid "Activate"
+msgstr "Kich hoat"
+
+#: 
+msgid "Active Events"
+msgstr "Su kien dang hoat dong"
+
+#: 
+msgid "Add Event"
+msgstr "Them su kien"
+
+#: 
+msgid "Adults"
+msgstr "Nguoi lon"
+
+#: 
+msgid "Affected Files"
+msgstr "Cac tep bi anh huong"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Tat ca kiem tra deu dat"
+
+#: 
+msgid "Applying..."
+msgstr "Dang ap dung..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Kiosk da gan"
+
+#: 
+msgid "Attendance"
+msgstr "Diem danh"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Sao luu cac tep da sua doi truoc khi nang cap neu ban muon giu lai thay doi."
+
+#: 
+msgid "Backup Complete"
+msgstr "Sao luu hoan tat"
+
+#: 
+msgid "Class / Group"
+msgstr "Lop / Nhom"
+
+#: 
+msgid "Class List Export"
+msgstr "Xuat danh sach lop"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Nhan nut chuyen doi dang ky o tren de mo cua so dang ky 30 giay."
+
+#: 
+msgid "Continue"
+msgstr "Tiep tuc"
+
+#: 
+msgid "Create First Event"
+msgstr "Tao su kien dau tien"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Tao ban sao luu co so du lieu truoc khi ap dung cap nhat. Dieu nay duoc khuyen nghi manh me."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Dang tao sao luu..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Tai sao luu va tiep tuc"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Tai phien ban moi nhat va ap dung vao ban cai dat cua ban."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Bat dang ky kiosk moi"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Bang dieu khien su kien"
+
+#: 
+msgid "Events This Year"
+msgstr "Su kien nam nay"
+
+#: 
+msgid "Everyone"
+msgstr "Moi nguoi"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Khong the xoa ghi chu"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Da tim thay cac tep khong thuoc phien ban chinh thuc tren may chu cua ban."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Buoc cai dat lai?"
+
+#: 
+msgid "Full Path"
+msgstr "Duong dan day du"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Tao danh sach lop, bang diem danh va so anh"
+
+#: 
+msgid "Installed"
+msgstr "Da cai dat"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Khuyen nghi manh me nen co ban sao luu truoc khi tiep tuc."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Dang ky Kiosk"
+
+#: 
+msgid "Latest"
+msgstr "Moi nhat"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Phien ban moi nhat khong ro"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Quan ly loai su kien"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Cac tep da sua doi se duoc khoi phuc ve phien ban chinh thuc."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Nhieu nhom se co Ngat trang giua cac nhom"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Thanh vien moi va chao don"
+
+#: 
+msgid "No Events Found"
+msgstr "Khong tim thay su kien"
+
+#: 
+msgid "No events found for %s."
+msgstr "Khong tim thay su kien cho %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Khong tim thay van de. Ban co the tiep tuc nang cap."
+
+#: 
+msgid "Note not found"
+msgstr "Khong tim thay ghi chu"
+
+#: 
+msgid "Note text is required"
+msgstr "Noi dung ghi chu la bat buoc"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Tren thiet bi kiosk (may tinh bang, laptop, v.v.), mo trinh duyet va truy cap:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the xoa ghi chu nay"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Chi tac gia ghi chu hoac quan tri vien moi co the chinh sua ghi chu nay"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Tong quan su kien giao hoi, diem danh va hoat dong"
+
+#: 
+msgid "People Without Emails"
+msgstr "Nguoi khong co email"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Nguoi khong co email ca nhan hoac cong viec trong ho so"
+
+#: 
+msgid "Pre-flight"
+msgstr "Kiem tra truoc"
+
+#: 
+msgid "Re-install"
+msgstr "Cai dat lai"
+
+#: 
+msgid "Refresh"
+msgstr "Lam moi"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Dang ky va quan ly thiet bi kiosk de dang ky vao su kien"
+
+#: 
+msgid "Review & Delete"
+msgstr "Xem lai va xoa"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Ma bam SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Huong dan cai dat"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Chu ky khong khop"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Bo qua, tiep tuc khong sao luu"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Thiet bi se tu dang ky va xuat hien trong bang ben duoi voi trang thai \"Dang cho\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Cac lien ket nay xuat hien trong menu \"Lien ket\" o thanh dieu huong ben khi plugin nay duoc bat."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Thao tac nay se tai lai va ap dung lai phien ban hien tai. No co the sua cac tep bi hong hoac da sua doi."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "De cai dat thiet bi kiosk, hay lam theo cac buoc sau:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Chuyen doi cong tac ben duoi de mo cua so 30 giay cho thiet bi kiosk moi dang ky."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Tong so dang ky vao"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Thu chon loai su kien hoac nam khac."
+
+#: 
+msgid "Up to Date"
+msgstr "Da cap nhat"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Su kien giao ly sap toi"
+
+#: 
+msgid "Update Available"
+msgstr "Co ban cap nhat"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Nguoi dung phai co quyen Ghi chu"
+
