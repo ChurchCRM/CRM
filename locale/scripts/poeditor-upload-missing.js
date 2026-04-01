@@ -12,6 +12,7 @@
  *   node locale/scripts/poeditor-upload-missing.js           # all locales
  *   node locale/scripts/poeditor-upload-missing.js --locale es-co,uk,hi
  *   node locale/scripts/poeditor-upload-missing.js --dry-run
+ *   node locale/scripts/poeditor-upload-missing.js --yes     # skip confirmation prompts
  *   npm run locale:upload:missing
  *   npm run locale:upload:missing -- --locale uk
  *
@@ -40,7 +41,7 @@ const SAMPLE_SIZE = 5;
 // Pause between processing locales to stay well under POEditor rate limits.
 // The downloader itself already adds ~1.5 s of inter-format delay, so this
 // extra gap gives the API time to breathe before the next upload.
-const BETWEEN_LOCALES_DELAY_MS = 30_000;
+const BETWEEN_LOCALES_DELAY_MS = 20_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
 const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
@@ -426,6 +427,7 @@ function displaySuspects(suspectTerms) {
 async function main() {
     const args = process.argv.slice(2);
     const dryRun = args.includes('--dry-run');
+    const autoYes = args.includes('--yes') || args.includes('-y');
     const localeFilter = (() => {
         const idx = args.indexOf('--locale');
         if (idx === -1) return null;
@@ -437,6 +439,7 @@ async function main() {
 
     console.log('🔍 POEditor Missing Terms Uploader\n');
     if (dryRun) console.log('  🔸 DRY RUN — no changes will be sent to POEditor\n');
+    if (autoYes) console.log('  🔸 AUTO-CONFIRM — skipping confirmation prompts\n');
 
     const localeMap = buildLocaleMap();
 
@@ -530,23 +533,25 @@ async function main() {
         displaySample(allLocalized, SAMPLE_SIZE);
         displaySuspects(allSuspect);
 
-        // Prompt the user — Enter alone defaults to yes
-        const answer = await prompt(
-            rl,
-            `  Upload ${localizedCount} term(s) to POEditor for "${poEditorCode}"? [Y/n/skip-all] `
-        );
-        const choice = answer.trim().toLowerCase();
+        // Prompt the user — Enter alone defaults to yes; --yes skips the prompt
+        if (!autoYes) {
+            const answer = await prompt(
+                rl,
+                `  Upload ${localizedCount} term(s) to POEditor for "${poEditorCode}"? [Y/n/skip-all] `
+            );
+            const choice = answer.trim().toLowerCase();
 
-        if (choice === 'skip-all' || choice === 'q') {
-            console.log('\n  ⏭️  Stopping — no further locales will be processed.');
-            abortAll = true;
-            break;
-        }
+            if (choice === 'skip-all' || choice === 'q') {
+                console.log('\n  ⏭️  Stopping — no further locales will be processed.');
+                abortAll = true;
+                break;
+            }
 
-        if (choice !== '' && choice !== 'y' && choice !== 'yes') {
-            console.log('  ⏭️  Skipped.');
-            totalSkipped++;
-            continue;
+            if (choice !== '' && choice !== 'y' && choice !== 'yes') {
+                console.log('  ⏭️  Skipped.');
+                totalSkipped++;
+                continue;
+            }
         }
 
         if (dryRun) {

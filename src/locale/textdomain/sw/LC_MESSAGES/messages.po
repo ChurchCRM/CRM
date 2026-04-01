@@ -11136,3 +11136,2257 @@ msgstr "Toleo la hifadhidata yako ni jipya zaidi kuliko programu iliyosakinishwa
 msgid "or later to continue."
 msgstr "au zaidi ili kuendelea."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Maelezo ya \"Sababu ya Kuja\""
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "Matokeo %d kwa \"%s\""
+msgstr[1] "Matokeo %d kwa \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(si lazima — acha wazi ili kujumuisha majukumu yote)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Familia inawakilisha kaya. Inahifadhi anwani ya pamoja na nambari ya simu ya nyumbani kwa wanafamilia wote wanaoishi pamoja."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Kaya. Inahifadhi anwani ya pamoja ya barua na simu ya nyumbani."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Mtu hahitajiki kuwa katika familia, lakini kumweka katika familia kunarahisisha usimamizi wa anwani."
+
+#: 
+msgid "About"
+msgstr "Kuhusu"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Muundo unaokubalika: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Kurejesha Akaunti"
+
+#: 
+msgid "Add Family"
+msgstr "Ongeza Familia"
+
+#: 
+msgid "Add First Family"
+msgstr "Ongeza Familia ya Kwanza"
+
+#: 
+msgid "Add Member"
+msgstr "Ongeza Mshiriki"
+
+#: 
+msgid "Add New Class"
+msgstr "Ongeza Darasa Jipya"
+
+#: 
+msgid "Add Note"
+msgstr "Ongeza Dokezo"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Ongeza Watu katika Familia"
+
+#: 
+msgid "Add Person"
+msgstr "Ongeza Mtu"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Ongeza Wanafunzi kwenye Orodha"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Ongeza Walimu kwenye Orodha"
+
+#: 
+msgid "Add User"
+msgstr "Ongeza Mtumiaji"
+
+#: 
+msgid "Add Your Data"
+msgstr "Ongeza Data Yako"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Ongeza Familia Yako ya Kwanza"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Ongeza Sifa Yako ya Kwanza"
+
+#: 
+msgid "Add a Person"
+msgstr "Ongeza Mtu"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Ongeza ahadi mpya ya sadaka"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Ongeza malipo kwenye amana ya sasa"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Ongeza vitu vyote vya orodha kwenye kikundi"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Ongeza Wote kwenye Orodha"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Ongeza vitu vya orodha kwenye familia"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Ongeza kila mtu katika kaya yako — watu wazima na watoto pia."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Ongeza familia na watu mmoja mmoja moja kwa moja katika ChurchCRM. Inafaa kwa ushirika mdogo au kuongezea data iliyoingizwa."
+
+#: 
+msgid "Add first family"
+msgstr "Ongeza familia ya kwanza"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Ongeza au hariri rekodi za mtu binafsi"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Ongeza au hariri vitu vilivyotolewa kwa matukio ya kuchangisha fedha"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Ongeza au hariri maelezo ya watu na familia"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Ongeza wafanyakazi na wajitoleaji"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Ongeza wafanyakazi au wajitoleaji kama watumiaji wa mfumo"
+
+#: 
+msgid "Administrator"
+msgstr "Msimamizi"
+
+#: 
+msgid "Age Distribution"
+msgstr "Mgawanyo wa Umri"
+
+#: 
+msgid "All Roles"
+msgstr "Majukumu Yote"
+
+#: 
+msgid "All Time"
+msgstr "Wakati Wote"
+
+#: 
+msgid "All roles"
+msgstr "Majukumu yote"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Karibu kumaliza — kagua maelezo yako"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Pia inaendeshwa kiotomatiki kupitia WebDAV kulingana na muda wako uliowekwa."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Hitilafu Imetokea"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Mshiriki binafsi wa kanisa. Huhifadhi jina, tarehe ya kuzaliwa, barua pepe binafsi, na simu ya mkononi."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Hitilafu isiyotarajiwa imetokea wakati wa kushughulikia ombi lako. Tafadhali wasiliana na msimamizi wako kwa msaada."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Hitilafu isiyotarajiwa imetokea."
+
+#: 
+msgid "Applied preset"
+msgstr "Mipangilio iliyotumika"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Una uhakika unataka kufuta amana hii ya sadaka?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Una uhakika unataka kufuta tukio hili la kuchangisha fedha?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Una uhakika unataka kuondoa"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Tenga na simamia nambari za bahasha za sadaka"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Tenga na simamia nambari za wanunuzi wa kuchangisha fedha"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Tenga vitu vya orodha kwenye rekodi ya familia"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Tenga vitu vya orodha kwenye kikundi"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Tenga vitu vya orodha kwenye tukio"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Tenga kwa Kikundi"
+
+#: 
+msgid "Authentication Code"
+msgstr "Nambari ya Uthibitishaji"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Imeoanishwa kiotomatiki"
+
+#: 
+msgid "BCC All"
+msgstr "BCC Wote"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Msimamizi"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Rudi kwenye Kuanza"
+
+#: 
+msgid "Back to Home"
+msgstr "Rudi Nyumbani"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Inahifadhi nakala kwenye hifadhi ya wingu ya WebDAV kiotomatiki kwa muda unaoweza kuwekwa."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Hifadhi Nakala kwenye Hifadhi ya Nje Sasa"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Vinjari programu-jalizi zote zinazopatikana"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Vinjari matukio na shughuli zote za kanisa"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Vinjari washiriki wote katika ushirika wako kwa kuchuja na kutafuta"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Vinjari programu-jalizi zote"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Vinjari na tafuta familia zote katika ushirika wako"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Vinjari na tafuta kampeni za kuchangisha fedha"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Vinjari picha za washiriki wa ushirika"
+
+#: 
+msgid "Buyer Number"
+msgstr "Nambari ya Mnunuzi"
+
+#: 
+msgid "Buyers"
+msgstr "Wanunuzi"
+
+#: 
+msgid "CSV Column"
+msgstr "Safu ya CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "Kiolezo cha CSV hakijapatikana"
+
+#: 
+msgid "Call"
+msgstr "Piga Simu"
+
+#: 
+msgid "Cart Functions"
+msgstr "Vitendaji vya Orodha"
+
+#: 
+msgid "Change Family Role"
+msgstr "Badilisha Jukumu la Familia"
+
+#: 
+msgid "Check Out"
+msgstr "Ondoka"
+
+#: 
+msgid "Check Out Person"
+msgstr "Ondoa Mtu"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Angalia masasisho na sasisha usakinishaji wako wa ChurchCRM"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Sajili washiriki kwa matukio na shughuli za kanisa"
+
+#: 
+msgid "Check in to an event"
+msgstr "Sajili kwa tukio"
+
+#: 
+msgid "Check-ins"
+msgstr "Usajili"
+
+#: 
+msgid "Children"
+msgstr "Watoto"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Chagua jinsi unavyotaka kujaza hifadhidata yako. Unaweza kutumia njia nyingine baadaye."
+
+#: 
+msgid "Church Info"
+msgstr "Maelezo ya Kanisa"
+
+#: 
+msgid "Clear all"
+msgstr "Futa yote"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Futa data yote na anza upya"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Futa vitu vyote kutoka kwenye orodha"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Bofya Hifadhi kutumia."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Bofya kupakia picha"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Kubofya \"Fungua Suala la GitHub\" kutafungua kichupo kipya na maelezo ya mfumo wako yakiwa yamejazwa tayari. Hakuna taarifa za utambulisho wa kibinafsi zitakazojumuishwa isipokuwa uziongeze mwenyewe."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Safu ilioanishwa kiotomatiki na sehemu ya ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Jukwaa la Usimamizi wa Jumuiya"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Inaoana na Excel, Google Sheets, au usafirishaji wowote wa CSV."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Kamilisha hizi kwa mpangilio wowote ili kuandaa ChurchCRM kwa ushirika wako."
+
+#: 
+msgid "Confession"
+msgstr "Ungamo"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Sanidi mipangilio na mapendeleo ya mfumo kwa ujumla"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Sanidi mipangilio, majukumu, na sifa za kikundi"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Thibitisha nenosiri lako jipya"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Unganisha seva ya SMTP ili ChurchCRM iweze kutuma barua pepe"
+
+#: 
+msgid "Connect with others"
+msgstr "Ungana na wengine"
+
+#: 
+msgid "Contact us"
+msgstr "Wasiliana nasi"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Badilisha rekodi za mtu binafsi kuwa vitengo vya familia"
+
+#: 
+msgid "Convert to Family"
+msgstr "Badilisha kuwa Familia"
+
+#: 
+msgid "Copied"
+msgstr "Imenakiliwa"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Nakili Washiriki kwenye Kikundi"
+
+#: 
+msgid "Copy to Group"
+msgstr "Nakili kwenye Kikundi"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Tengeneza nakala ya hifadhidata ya kanisa lako"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Tengeneza nakala ya mikono angalau mara moja kwa wiki, au wezesha programu-jalizi ya Hifadhi ya Nje kwa nakala za kiotomatiki za WebDAV kwa ratiba."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Tengeneza amana mpya ya sadaka"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Tengeneza na hariri maelezo ya familia na uhusiano"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Tengeneza na simamia matukio na shughuli za kanisa"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Tengeneza au hariri makundi ya aina za sifa"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Tengeneza au hariri nafasi za wajitoleaji"
+
+#: 
+msgid "Current person"
+msgstr "Mtu wa sasa"
+
+#: 
+msgid "Data & Reports"
+msgstr "Data na Ripoti"
+
+#: 
+msgid "Database Reset"
+msgstr "Kuweka upya Hifadhidata"
+
+#: 
+msgid "Default / Notes"
+msgstr "Chaguo-msingi / Maelezo"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Fafanua sehemu maalum za kukusanya data ya ziada ya familia"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Fafanua sehemu maalum za kukusanya data ya ziada ya mtu"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Fafanua sifa maalum za kufuatilia data"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Fafanua sifa maalum zinazoweza kutengwa kwa"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Fafanua sifa maalum za kikundi kwa washiriki"
+
+#: 
+msgid "Delete All"
+msgstr "Futa Yote"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Futa Ingizo la Usajili"
+
+#: 
+msgid "Delete Family"
+msgstr "Futa Familia"
+
+#: 
+msgid "Delete Group"
+msgstr "Futa Kikundi"
+
+#: 
+msgid "Delete Person"
+msgstr "Futa Mtu"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Futa Ahadi ya Sadaka"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Kufuta sifa hii pia kutaondoa mgawanyo wake wote kutoka rekodi yoyote ya Watu, Familia, au Kikundi."
+
+#: 
+msgid "Deposit Value"
+msgstr "Thamani ya Amana"
+
+#: 
+msgid "Describe the issue"
+msgstr "Eleza tatizo"
+
+#: 
+msgid "Directions"
+msgstr "Maelekezo"
+
+#: 
+msgid "Directory Reports"
+msgstr "Ripoti za Saraka"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Imezimwa katika mipangilio"
+
+#: 
+msgid "Donated Item"
+msgstr "Kitu Kilichotolewa"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Rekodi za sadaka na michango zinafuatiliwa kwa kiwango cha familia. Ikiwa unapanga kurekodi michango ya mtu anayeishi peke yake, tengeneza familia ya mtu mmoja kwake."
+
+#: 
+msgid "Download"
+msgstr "Pakua"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Pakua Kiolezo cha CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Pakua kiolezo kuona muundo wa safu unaotarajiwa."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Buruta na uache faili yako ya CSV hapa"
+
+#: 
+msgid "Duplicates"
+msgstr "Nakala Rudufu"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Kila mtu anaweza kuwa na barua pepe yake na nambari ya simu ya mkononi."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Kila mstari ni mtu mmoja. Wanafamilia wa familia moja wanashiriki FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Usajili rahisi"
+
+#: 
+msgid "Edit Class"
+msgstr "Hariri Darasa"
+
+#: 
+msgid "Edit Form"
+msgstr "Hariri Fomu"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Hariri Fomu ya Sifa za Mshiriki"
+
+#: 
+msgid "Edit Property"
+msgstr "Hariri Sifa"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Hariri sifa maalum za mshiriki wa kikundi"
+
+#: 
+msgid "Email BCC"
+msgstr "Barua pepe BCC"
+
+#: 
+msgid "Email Families"
+msgstr "Tuma Barua pepe kwa Familia"
+
+#: 
+msgid "Email Settings"
+msgstr "Mipangilio ya Barua pepe"
+
+#: 
+msgid "Email Tools"
+msgstr "Zana za Barua pepe"
+
+#: 
+msgid "Email cart items"
+msgstr "Tuma barua pepe kwa vitu vya orodha"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "Barua pepe yenye wapokeaji waliofichwa"
+
+#: 
+msgid "Empty"
+msgstr "Tupu"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Wezesha HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Wezesha Programu-jalizi"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Wezesha programu-jalizi ya MailChimp kusawazisha anwani"
+
+#: 
+msgid "Enrolled"
+msgstr "Amesajiliwa"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Ingiza Data kwa Mikono"
+
+#: 
+msgid "Enter a search term"
+msgstr "Ingiza neno la kutafuta"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Ingiza nambari ya tarakimu 6 kutoka programu yako ya uthibitishaji kukamilisha kuingia"
+
+#: 
+msgid "Enter your current password"
+msgstr "Ingiza nenosiri lako la sasa"
+
+#: 
+msgid "Enter your login name"
+msgstr "Ingiza jina lako la kuingia"
+
+#: 
+msgid "Enter your new password"
+msgstr "Ingiza nenosiri lako jipya"
+
+#: 
+msgid "Enter your password"
+msgstr "Ingiza nenosiri lako"
+
+#: 
+msgid "Est. Value"
+msgstr "Thamani Inayokadiriwa"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Tenga kutoka Usafirishaji wa Barua pepe"
+
+#: 
+msgid "Excluded"
+msgstr "Imetengwa"
+
+#: 
+msgid "Expand"
+msgstr "Panua"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Chunguza kwa Data ya Maonyesho"
+
+#: 
+msgid "Export"
+msgstr "Hamisha"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Hamisha data kwa muundo wa CSV kwa programu za nje"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Panua ChurchCRM na MailChimp, nakala rudufu, na zaidi"
+
+#: 
+msgid "FY %s"
+msgstr "MF %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Imeshindwa kuongeza washiriki kwenye orodha. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Imeshindwa kufuta darasa. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Imeshindwa kufuta kikundi. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Imeshindwa kuondoa kutoka darasa. Tafadhali jaribu tena."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Familia zinashiriki anwani na nambari ya simu."
+
+#: 
+msgid "Family List"
+msgstr "Orodha ya Familia"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Muhtasari wa Ahadi za Sadaka za Familia"
+
+#: 
+msgid "Family Profile"
+msgstr "Wasifu wa Familia"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Majukumu ya familia (Mkuu wa Kaya, Mwenzi, Mtoto, n.k.) husaidia kupanga rekodi zako."
+
+#: 
+msgid "Family vs Person"
+msgstr "Familia dhidi ya Mtu"
+
+#: 
+msgid "Fields to Include"
+msgstr "Sehemu za Kujumuisha"
+
+#: 
+msgid "File upload error"
+msgstr "Hitilafu ya kupakia faili"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Fuata hatua hizi mbili kuongeza washiriki wa kanisa lako haraka na kwa usahihi."
+
+#: 
+msgid "Forgot password?"
+msgstr "Umesahau nenosiri?"
+
+#: 
+msgid "Format"
+msgstr "Muundo"
+
+#: 
+msgid "Full Group View"
+msgstr "Mwonekano Kamili wa Kikundi"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Tengeneza na pakua barua za uthibitisho"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Tengeneza taarifa za michango ya mwaka kwa madhumuni ya kodi"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Tengeneza orodha za saraka na nyaraka za kuchapishwa"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Tengeneza ripoti za fedha"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Tengeneza taarifa za fedha na ripoti za michango"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Tengeneza barua na lebo za barua"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Tengeneza lebo za barua na barua za fomu"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Tengeneza saraka ya simu"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Tengeneza barua za kukumbusha ahadi za sadaka"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Tengeneza ripoti za uanachama wa kikundi na shughuli"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Tengeneza nyaraka za taarifa ya kodi kwa wafadhili"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Zana za Kijiografia"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Ingiza Data Yako katika ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Nenda kwenye ukurasa wa nyumbani"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Chaguo zuri! Hivi ndivyo unavyoongeza washiriki wa kanisa lako."
+
+#: 
+msgid "Group Map"
+msgstr "Ramani ya Kikundi"
+
+#: 
+msgid "Group Reports"
+msgstr "Ripoti za Kikundi"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Kikundi kimefutwa kwa mafanikio."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Una Data Iliyopo?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Ikiwa una rekodi nyingi katika lahajedwali, kuingiza CSV kunaweza kuwa haraka zaidi kuliko kuingiza data kwa mikono."
+
+#: 
+msgid "Ignored"
+msgstr "Imepuuzwa"
+
+#: 
+msgid "Import Another File"
+msgstr "Ingiza Faili Nyingine"
+
+#: 
+msgid "Import CSV"
+msgstr "Ingiza CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Uingizaji Umekamilika"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Ingiza anwani kutoka hadhira zako za MailChimp"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Uingizaji umeshindwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Import failed: "
+msgstr "Uingizaji umeshindwa: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Ingiza kutoka CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Ingiza kutoka Lahajedwali"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Ingiza kutoka Lahajedwali"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Ingiza, rejesha, au ingiza kwa mikono"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Ingiza, rejesha, au ingiza ushirika wako kwa mikono"
+
+#: 
+msgid "Importing..."
+msgstr "Inaingiza..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Jumuisha katika Usafirishaji wa Barua pepe"
+
+#: 
+msgid "Included"
+msgstr "Imejumuishwa"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Sakinisha cheti cha TLS/SSL kwa muunganisho salama"
+
+#: 
+msgid "Invalid import request"
+msgstr "Ombi batili la uingizaji"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Nambari batili ya \"Kutoka\":\"%s\". Jumuisha msimbo wa nchi, k.m. +14155551234 (US) au +447911123456 (UK)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Alika Timu Yako"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Jiunge na jumuiya yetu na ubaki umeunganishwa na"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Ruka hadi hatua yoyote ya usanidi:"
+
+#: 
+msgid "Key People"
+msgstr "Watu Muhimu"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kiosk Imewezeshwa"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Turejeshe data yako ya awali ya ChurchCRM."
+
+#: 
+msgid "Letters"
+msgstr "Barua"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Barua na Lebo za Barua"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Barua na Lebo"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Orodhesha familia zilizoundwa kupitia usajili wa kibinafsi"
+
+#: 
+msgid "Load demo data"
+msgstr "Pakia data ya maonyesho"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Pakia familia, watu, vikundi, na rekodi za michango za mfano. Njia salama zaidi ya kujifunza ChurchCRM kabla ya kuingiza data yako halisi."
+
+#: 
+msgid "Log Files"
+msgstr "Faili za Kumbukumbu"
+
+#: 
+msgid "Log Level"
+msgstr "Kiwango cha Kumbukumbu"
+
+#: 
+msgid "Login to your account"
+msgstr "Ingia kwenye akaunti yako"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, nakala rudufu, na zaidi"
+
+#: 
+msgid "Manage %s options"
+msgstr "Simamia chaguo za %s"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Simamia Bahasha"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Simamia madarasa ya Shule ya Jumapili, walimu, na mahudhurio ya wanafunzi"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Simamia orodha za uainishaji, majukumu, na aina za vikundi"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Simamia mifuko ya sadaka kwa ufuatiliaji wa fedha"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Simamia sadaka, ahadi, na rekodi za fedha"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Simamia zana za barua pepe na usanidi wa SMTP"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Simamia majina na makundi ya matukio"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Simamia makundi ya aina za matukio"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Simamia familia, watu, na taarifa za idadi ya watu"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Simamia watu katika orodha yako"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Simamia aina za sifa za mtu, familia, na kikundi"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Simamia sifa kutoka"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Simamia watumiaji wa mfumo, ruhusa, na mipangilio ya uthibitishaji wa hatua mbili"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Simamia maelezo ya akaunti ya mtumiaji na ruhusa"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Simamia fursa za kujitolea na tenga washiriki"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Simamia mapendeleo yako binafsi na mipangilio ya akaunti"
+
+#: 
+msgid "Manual"
+msgstr "Mwongozo"
+
+#: 
+msgid "Map cart items"
+msgstr "Onyesha vitu vya orodha kwenye ramani"
+
+#: 
+msgid "Map to Field"
+msgstr "Oanisha na Sehemu"
+
+#: 
+msgid "Material"
+msgstr "Nyenzo"
+
+#: 
+msgid "Member Properties"
+msgstr "Sifa za Mshiriki"
+
+#: 
+msgid "Member Roles"
+msgstr "Majukumu ya Mshiriki"
+
+#: 
+msgid "Members added to cart."
+msgstr "Washiriki wameongezwa kwenye orodha."
+
+#: 
+msgid "Memberships"
+msgstr "Uanachama"
+
+#: 
+msgid "Minimum"
+msgstr "Kiwango cha Chini"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Badilisha majukumu ya familia kwa washiriki wa kikundi"
+
+#: 
+msgid "Move Members"
+msgstr "Hamisha Washiriki"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Hamisha Washiriki kwenye Kikundi"
+
+#: 
+msgid "Move to Group"
+msgstr "Hamisha kwenye Kikundi"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Unahamia kutoka usakinishaji uliopo wa ChurchCRM au ChurchInfo? Pakia faili yako ya nakala na tutarejesha data yako kiotomatiki."
+
+#: 
+msgid "My Settings"
+msgstr "Mipangilio Yangu"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Mabadiliko ya jina yanahitaji kuhifadhiwa. Vitendo vya kupanga upya na kufuta katika menyu ya vitendo vinatumika mara moja."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Jina, anwani, maelezo ya mawasiliano"
+
+#: 
+msgid "Need help?"
+msgstr "Unahitaji msaada?"
+
+#: 
+msgid "New"
+msgstr "Mpya"
+
+#: 
+msgid "New Family"
+msgstr "Familia Mpya"
+
+#: 
+msgid "New Group"
+msgstr "Kikundi Kipya"
+
+#: 
+msgid "New Person"
+msgstr "Mtu Mpya"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Hakuna Sikukuu za Kumbukumbu"
+
+#: 
+msgid "No Birthdays"
+msgstr "Hakuna Siku za Kuzaliwa"
+
+#: 
+msgid "No Check-ins"
+msgstr "Hakuna Usajili"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Hakuna Ufuatiliaji wa Amana"
+
+#: 
+msgid "No Deposits"
+msgstr "Hakuna Amana"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Hakuna sikukuu za kumbukumbu katika siku 7 zilizopita au zijazo"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Hakuna siku za kuzaliwa katika siku 7 zilizopita au zijazo"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Hakuna data ya amana inayopatikana bado"
+
+#: 
+msgid "No description set."
+msgstr "Hakuna maelezo yaliyowekwa."
+
+#: 
+msgid "No email address on file"
+msgstr "Hakuna anwani ya barua pepe iliyorekodiwa"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Hakuna matukio yaliyounganishwa na darasa hili."
+
+#: 
+msgid "No file uploaded"
+msgstr "Hakuna faili iliyopakiwa"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Hakuna ugawaji wa kikundi bado."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Hakuna inayolingana — chagua sehemu au acha kama Puuza."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Hakuna matokeo kwa \"%s\". Jaribu neno tofauti la kutafuta."
+
+#: 
+msgid "No member properties defined."
+msgstr "Hakuna sifa za mshiriki zilizofafanuliwa."
+
+#: 
+msgid "No members found for this role."
+msgstr "Hakuna washiriki waliopatikana kwa jukumu hili."
+
+#: 
+msgid "No people found"
+msgstr "Hakuna watu waliopatikana"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Hakuna watu wanaolingana na vichujio vyako vya sasa."
+
+#: 
+msgid "No phone number on file"
+msgstr "Hakuna nambari ya simu iliyorekodiwa"
+
+#: 
+msgid "No properties assigned."
+msgstr "Hakuna sifa zilizotengwa."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Hakuna sifa zilizofafanuliwa bado"
+
+#: 
+msgid "No results found"
+msgstr "Hakuna matokeo yaliyopatikana"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Hakuna matukio ya ratiba bado."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Hakuna ugawaji wa fursa za kujitolea bado."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Bado hujajiandaa?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Baada ya kuwa na familia, ongeza kila mwanakaya kama mtu. Mpe jukumu la familia (k.m. Mkuu wa Kaya, Mwenzi, Mtoto)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Baada ya kutuma, timu yetu itapokea usajili wako na kuwasiliana nawe kukukaribisha familia yako binafsi. Ikiwa kitu chochote kinaonekana vibaya, tumia kitufe cha Nyuma kurudi na kufanya mabadiliko."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Faili za .csv pekee zinakubalika"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Fungua Suala la GitHub"
+
+#: 
+msgid "Open user menu"
+msgstr "Fungua menyu ya mtumiaji"
+
+#: 
+msgid "Options"
+msgstr "Chaguo"
+
+#: 
+msgid "Other Members"
+msgstr "Washiriki Wengine"
+
+#: 
+msgid "Overview"
+msgstr "Muhtasari"
+
+#: 
+msgid "Password Recovery"
+msgstr "Kurejesha Nenosiri"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Siku 7 zilizopita na zijazo"
+
+#: 
+msgid "People List"
+msgstr "Orodha ya Watu"
+
+#: 
+msgid "People by Classification"
+msgstr "Watu kwa Uainishaji"
+
+#: 
+msgid "Person removed from class."
+msgstr "Mtu ameondolewa kutoka darasa."
+
+#: 
+msgid "Photo"
+msgstr "Picha"
+
+#: 
+msgid "Photos only"
+msgstr "Picha pekee"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Chagua njia ya kuanza"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Tafadhali hakikisha kila kitu kinaonekana sawa kabla ya kutuma."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Tafadhali oanisha angalau safu moja kabla ya kuingiza"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Tafadhali chagua faili ya CSV"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Tafadhali jaribu kuomba kiungo kipya cha kuweka upya nenosiri au wasiliana na msaada ikiwa unaendelea kupata matatizo."
+
+#: 
+msgid "Pledges"
+msgstr "Ahadi za Sadaka"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Programu-jalizi imewezeshwa lakini haijasanidiwa. Baada ya kusanidiwa, nakala rudufu zinaendeshwa kiotomatiki kwa WebDAV kwa muda wako uliowekwa."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Bonyeza ? kuelekeza utafutaji"
+
+#: 
+msgid "Prev"
+msgstr "Iliyotangulia"
+
+#: 
+msgid "Print name tags"
+msgstr "Chapisha lebo za majina"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Saraka inayochapishwa ya watu wote, iliyopangwa kwa familia"
+
+#: 
+msgid "Properties Form"
+msgstr "Fomu ya Sifa"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Ugawaji wa sifa haujapatikana."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Sifa imefutwa kwa mafanikio."
+
+#: 
+msgid "Property not found."
+msgstr "Sifa haijapatikana."
+
+#: 
+msgid "Quick Setup"
+msgstr "Usanidi wa Haraka"
+
+#: 
+msgid "Quick Tips"
+msgstr "Vidokezo vya Haraka"
+
+#: 
+msgid "Ready to back up"
+msgstr "Tayari kuhifadhi nakala"
+
+#: 
+msgid "Ready to restore"
+msgstr "Tayari kurejesha"
+
+#: 
+msgid "Recommended Order"
+msgstr "Mpangilio Unaopendekezwa"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Rekodi washindi wengi wa kura ya kuchangisha fedha kwa wakati mmoja"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Rekodi ahadi mpya za sadaka na malipo"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Rekodi sababu za wageni kutembelea kanisa lako"
+
+#: 
+msgid "Register Your Family"
+msgstr "Sajili Familia Yako"
+
+#: 
+msgid "Register another family"
+msgstr "Sajili familia nyingine"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Ondoa wote kutoka Orodha"
+
+#: 
+msgid "Remove from Class"
+msgstr "Ondoa kutoka Darasa"
+
+#: 
+msgid "Report an Issue"
+msgstr "Ripoti Tatizo"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Rejesha Nakala"
+
+#: 
+msgid "Restore backup"
+msgstr "Rejesha nakala"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Rejesha hifadhidata ya kanisa lako kutoka faili ya nakala"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Rudi kwenye Dashibodi"
+
+#: 
+msgid "Return to Families"
+msgstr "Rudi kwa Familia"
+
+#: 
+msgid "Return to Groups"
+msgstr "Rudi kwa Vikundi"
+
+#: 
+msgid "Return to People"
+msgstr "Rudi kwa Watu"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Kagua na safisha faili ambazo hazihusiani na rekodi yoyote"
+
+#: 
+msgid "Role not found."
+msgstr "Jukumu halijapatikana."
+
+#: 
+msgid "Roles"
+msgstr "Majukumu"
+
+#: 
+msgid "Run"
+msgstr "Endesha"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "Seva ya SMTP ya kutuma barua pepe"
+
+#: 
+msgid "Sample Data"
+msgstr "Data ya Mfano"
+
+#: 
+msgid "Search Results"
+msgstr "Matokeo ya Utafutaji"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Tafuta katika watu, familia, vikundi, anwani, na zaidi."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Tafuta na uone rekodi za risiti za amana"
+
+#: 
+msgid "Search groups..."
+msgstr "Tafuta vikundi..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Tafuta watu, familia, vikundi…"
+
+#: 
+msgid "Security First"
+msgstr "Usalama Kwanza"
+
+#: 
+msgid "Select Fields"
+msgstr "Chagua Sehemu"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Chagua Sehemu za Kujumuisha"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Chagua faili ya nakala na ubofye Rejesha Hifadhidata."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Chagua chaguo zako hapo juu na ubofye kitufe cha nakala."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Ripoti ya Usajili wa Kibinafsi"
+
+#: 
+msgid "Send email to families"
+msgstr "Tuma barua pepe kwa familia"
+
+#: 
+msgid "Server Error"
+msgstr "Hitilafu ya Seva"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "Seva imerudisha jibu lisilotarajiwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Weka Ruhusa kuwa Kweli ili kutoa watumiaji wapya uwezo wa kubadilisha thamani yao ya sasa."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Weka barua pepe ya msimamizi ili uweze kuweka upya nenosiri na kupokea arifa"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Weka mapendeleo ya chaguo-msingi kwa akaunti mpya za watumiaji"
+
+#: 
+msgid "Set up"
+msgstr "Sanidi"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Sanidi kampeni au tukio jipya la kuchangisha fedha"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Weka jina la kanisa lako, anwani, na maelezo ya mawasiliano"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Weka jina la kanisa lako, anwani, na barua pepe ya mawasiliano"
+
+#: 
+msgid "Setup Progress"
+msgstr "Maendeleo ya Usanidi"
+
+#: 
+msgid "Setup Required"
+msgstr "Usanidi Unahitajika"
+
+#: 
+msgid "Share"
+msgstr "Shiriki"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Inaonyesha washiriki wa: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Ingia"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Kwa kuwa hii ni usakinishaji mpya, kurejesha kutapakia tu data yako ya nakala."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Ruka — nenda kwenye Dashibodi ya Msimamizi"
+
+#: 
+msgid "Start Fresh"
+msgstr "Anza Upya"
+
+#: 
+msgid "Start Over"
+msgstr "Anza Tena"
+
+#: 
+msgid "Stay informed"
+msgstr "Endelea kupata taarifa"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Hatua ya 1 — Pakia Faili ya CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Hatua ya 2 — Oanisha Safu"
+
+#: 
+msgid "Submitting..."
+msgstr "Inatuma..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Inasaidia nakala kutoka ChurchCRM na ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Taarifa za uchunguzi wa mfumo na usanidi"
+
+#: 
+msgid "Tags"
+msgstr "Lebo"
+
+#: 
+msgid "Tax Statements"
+msgstr "Taarifa za Kodi"
+
+#: 
+msgid "Teacher"
+msgstr "Mwalimu"
+
+#: 
+msgid "Technical Details"
+msgstr "Maelezo ya Kiufundi"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Tuambie kuhusu familia yako"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Sifa haikuweza kuondolewa."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Sifa imeondolewa kwa mafanikio."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" katika upau wa urambazaji programu-jalizi hii inapowezeshwa."
+
+#: 
+msgid "To Family"
+msgstr "Kwa Familia"
+
+#: 
+msgid "To Group"
+msgstr "Kwa Kikundi"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Geuza urambazaji"
+
+#: 
+msgid "Total Size"
+msgstr "Ukubwa wa Jumla"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Fuatilia ahadi za sadaka za familia na michango ya mifuko kwa mwaka wa fedha"
+
+#: 
+msgid "Transaction Details"
+msgstr "Maelezo ya Muamala"
+
+#: 
+msgid "Unmapped"
+msgstr "Haijaunganishwa"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Sasisha Mawasiliano ya Msimamizi"
+
+#: 
+msgid "Upload CSV"
+msgstr "Pakia CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Pakia faili ya CSV kuingiza familia na watu katika ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Pakia CSV kutoka Excel, Google Sheets, au mfumo wako wa awali wa usimamizi wa kanisa na uoanishe safu na sehemu za ChurchCRM."
+
+#: 
+msgid "Upload failed."
+msgstr "Upakiaji umeshindwa."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Upakiaji umeshindwa. Tafadhali angalia faili na ujaribu tena."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Kipindi cha upakiaji kimemalizika. Tafadhali pakia faili tena."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Inapakia, tafadhali subiri..."
+
+#: 
+msgid "Users"
+msgstr "Watumiaji"
+
+#: 
+msgid "Verify Info"
+msgstr "Thibitisha Maelezo"
+
+#: 
+msgid "Verify your identity"
+msgstr "Thibitisha utambulisho wako"
+
+#: 
+msgid "View Family"
+msgstr "Tazama Familia"
+
+#: 
+msgid "View People"
+msgstr "Tazama Watu"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Tazama familia zote kwenye ramani shirikishi"
+
+#: 
+msgid "View all results"
+msgstr "Tazama matokeo yote"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Tazama na simamia vikundi vyote katika ushirika wako"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Tazama na simamia malipo ya risiti za amana"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Tazama na simamia data ya mahali pa familia"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Tazama na simamia faili za kumbukumbu za mfumo kwa utatuzi"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Tazama na endesha hoja zilizohifadhiwa za hifadhidata"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Tazama nambari za wanunuzi na ugawaji wa vibao"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Tazama orodha ya darasa, ugawaji wa walimu, na maelezo ya mawasiliano"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Tazama maelezo ya familia, washiriki, na ratiba"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Tazama muhtasari wa ahadi za sadaka za familia na mgawanyo wa mifuko"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Tazama washiriki wa kikundi, majukumu, na sifa"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Tazama dashibodi ya ahadi za sadaka"
+
+#: 
+msgid "View query results"
+msgstr "Tazama matokeo ya hoja"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Tazama maelezo ya muamala kwa malipo ya ahadi ya sadaka"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Washiriki wenye haki ya kupiga kura lazima wawe wametoa sadaka ndani ya miaka hii mingi (0 kwa kutohitaji sadaka)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Hatukuweza kupata familia uliyokuwa unaichatafuta."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "Hatukuweza kupata kikundi ulichokuwa unakitafuta."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "Hatukuweza kupata mtu uliyekuwa unamtafuta."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Hatukuweza kupata rekodi uliyokuwa unaitafuta."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Hatukuweza kushughulikia ombi lako la kuweka upya nenosiri."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Tutatumia hii kuwasiliana na kutuma taarifa za kanisa."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Tunafuraha sana uko hapa! Sajili familia yako kwa hatua 3 rahisi tu."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Tunafuraha sana familia yako imejiungana nasi!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Karibu Tena!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Karibu tena! Tafadhali ingiza maelezo yako kuendelea"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Karibu katika Familia!"
+
+#: 
+msgid "What happens next?"
+msgstr "Nini kinatokea baadaye?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Nini kilikwenda vibaya? Ulitarajia nini kitokee?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Nani yuko katika familia yako?"
+
+#: 
+msgid "Why Came"
+msgstr "Sababu ya Kuja"
+
+#: 
+msgid "Yes, delete"
+msgstr "Ndiyo, futa"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Unaweza kuingiza data zaidi baadaye kupitia CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Unaweza kuunda/kufuta kikundi cha Shule ya Jumapili."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Huna ruhusa za fedha kuona amana."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Data yako ya nakala imepakiwa. Utaelekezwa kuingia kwa vitambulisho vyako vya awali."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Nakala yako itasasishwa kiotomatiki hadi muundo wa hivi karibuni wa hifadhidata ikihitajika."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Kipindi chako cha awali kimeisha muda. Tafadhali ingia tena."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Usajili wako umepokewa. Timu yetu itawasiliana nawe hivi karibuni kukukaribisha binafsi."
+
+#: 
+msgid "all members"
+msgstr "washiriki wote"
+
+#: 
+msgid "complete"
+msgstr "kamili"
+
+#: 
+msgid "fields"
+msgstr "sehemu"
+
+#: 
+msgid "from this class?"
+msgstr "kutoka darasa hili?"
+
+#: 
+msgid "from this group?"
+msgstr "kutoka kikundi hiki?"
+
+#: 
+msgid "full group view"
+msgstr "mwonekano kamili wa kikundi"
+
+#: 
+msgid "funds"
+msgstr "mifuko"
+
+#: 
+msgid "members"
+msgstr "washiriki"
+
+#: 
+msgid "name@example.com"
+msgstr "jina@mfano.com"
+
+#: 
+msgid "opportunities"
+msgstr "fursa"
+
+#: 
+msgid "options"
+msgstr "chaguo"
+
+#: 
+msgid "or connect an external service"
+msgstr "au unganisha huduma ya nje"
+
+#: 
+msgid "our church"
+msgstr "kanisa letu"
+
+#: 
+msgid "page"
+msgstr "ukurasa"
+
+#: 
+msgid "properties"
+msgstr "sifa"
+
+#: 
+msgid "to another group?"
+msgstr "kwenye kikundi kingine?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Puuza —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Chagua kikundi —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Chagua aina (si lazima) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Kubali kifaa, kisha kitenga kwa tukio kuanza usajili."
+
+#: 
+msgid "Activate"
+msgstr "Amilisha"
+
+#: 
+msgid "Active Events"
+msgstr "Matukio Yanayoendelea"
+
+#: 
+msgid "Add Event"
+msgstr "Ongeza Tukio"
+
+#: 
+msgid "Adults"
+msgstr "Watu Wazima"
+
+#: 
+msgid "Affected Files"
+msgstr "Faili Zilizoathirika"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Ukaguzi Wote Umefaulu"
+
+#: 
+msgid "Applying..."
+msgstr "Inatumia..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Kiosk Iliyotengwa"
+
+#: 
+msgid "Attendance"
+msgstr "Mahudhurio"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Hifadhi nakala ya faili zilizobadilishwa kabla ya kusasisha ikiwa unataka kuweka mabadiliko yako."
+
+#: 
+msgid "Backup Complete"
+msgstr "Nakala Imekamilika"
+
+#: 
+msgid "Class / Group"
+msgstr "Darasa / Kikundi"
+
+#: 
+msgid "Class List Export"
+msgstr "Usafirishaji wa Orodha ya Darasa"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Bofya kitufe cha usajili hapo juu kufungua dirisha la usajili la sekunde 30."
+
+#: 
+msgid "Continue"
+msgstr "Endelea"
+
+#: 
+msgid "Create First Event"
+msgstr "Unda Tukio la Kwanza"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Tengeneza nakala ya hifadhidata kabla ya kutumia sasisho. Hii inapendekezwa sana."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Inatengeneza Nakala..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Pakua Nakala na Endelea"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Pakua toleo la hivi karibuni na ulitumie kwenye usakinishaji wako."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Wezesha usajili mpya wa kiosk"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Dashibodi ya Matukio"
+
+#: 
+msgid "Events This Year"
+msgstr "Matukio ya Mwaka Huu"
+
+#: 
+msgid "Everyone"
+msgstr "Kila Mtu"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Imeshindwa kufuta dokezo"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Faili ambazo si sehemu ya toleo rasmi zimepatikana kwenye seva yako."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Lazimisha Usakinishaji Upya?"
+
+#: 
+msgid "Full Path"
+msgstr "Njia Kamili"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Tengeneza orodha za madarasa, karatasi za mahudhurio, na albamu za picha"
+
+#: 
+msgid "Installed"
+msgstr "Imesakinishwa"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Inapendekezwa sana kuwa na nakala kabla ya kuendelea."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Usajili wa Kiosk"
+
+#: 
+msgid "Latest"
+msgstr "Ya Hivi Karibuni"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Toleo la hivi karibuni halijulikani"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Simamia Aina za Matukio"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Faili zilizobadilishwa zitarejeshwa kwenye toleo rasmi."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Vikundi vingi vitakuwa na Mapumziko ya Ukurasa kati ya Vikundi"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Washiriki Wapya na Salamu"
+
+#: 
+msgid "No Events Found"
+msgstr "Hakuna Matukio Yaliyopatikana"
+
+#: 
+msgid "No events found for %s."
+msgstr "Hakuna matukio yaliyopatikana kwa %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Hakuna matatizo yaliyopatikana. Unaweza kuendelea na usasishaji."
+
+#: 
+msgid "Note not found"
+msgstr "Dokezo halijapatikana"
+
+#: 
+msgid "Note text is required"
+msgstr "Maandishi ya dokezo yanahitajika"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Kwenye kifaa cha kiosk (kompyuta kibao, kompyuta ndogo, n.k.), fungua kivinjari na uende kwenye:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Mwandishi wa dokezo au msimamizi pekee anaweza kufuta dokezo hili"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Mwandishi wa dokezo au msimamizi pekee anaweza kuhariri dokezo hili"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Muhtasari wa matukio ya kanisa, mahudhurio, na shughuli"
+
+#: 
+msgid "People Without Emails"
+msgstr "Watu Wasio na Barua pepe"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Watu wasio na barua pepe binafsi au ya kazi iliyorekodiwa"
+
+#: 
+msgid "Pre-flight"
+msgstr "Ukaguzi wa awali"
+
+#: 
+msgid "Re-install"
+msgstr "Sakinisha Tena"
+
+#: 
+msgid "Refresh"
+msgstr "Onyesha upya"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Sajili na simamia vifaa vya kiosk kwa usajili wa matukio"
+
+#: 
+msgid "Review & Delete"
+msgstr "Kagua na Futa"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Alama ya SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Maelekezo ya Usanidi"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Saini Hazilingani"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Ruka, Endelea Bila Nakala"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Kifaa kitajisajili na kuonekana kwenye jedwali hapa chini kama \"Inasubiri\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" katika upau wa urambazaji programu-jalizi hii inapowezeshwa."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Hii itapakia upya na kutumia tena toleo la sasa. Inaweza kurekebisha faili zilizoharibiwa au zilizobadilishwa."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Ili kusanidi kifaa cha kiosk, fuata hatua hizi:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Geuza swichi hapa chini kufungua dirisha la sekunde 30 kwa vifaa vipya vya kiosk kusajili."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Jumla ya Usajili"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Jaribu kuchagua aina tofauti ya tukio au mwaka."
+
+#: 
+msgid "Up to Date"
+msgstr "Imesasishwa"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Matukio Yanayokuja ya Shule ya Jumapili"
+
+#: 
+msgid "Update Available"
+msgstr "Sasisho Linapatikana"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Mtumiaji lazima awe na ruhusa ya Maelezo"
+
