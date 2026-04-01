@@ -337,7 +337,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 ->setZip($sZip)
                 ->setCountry($sCountry)
                 ->setHomePhone($sHomePhone)
-                ->setEmail($sEmail)
                 ->setDateEntered(new DateTimeImmutable())
                 ->setEnteredBy(AuthenticationManager::getCurrentUser()->getId());
             $family->save();
