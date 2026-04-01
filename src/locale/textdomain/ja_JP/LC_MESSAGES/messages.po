@@ -11089,3 +11089,2251 @@ msgstr "データベースのバージョンがインストール済みソフト
 msgid "or later to continue."
 msgstr "以降のバージョンが継続には必要です。"
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "「来会理由」メモ"
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "（任意 — すべての役割を含める場合は空欄のままにしてください）"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "家族は世帯を表します。同居するすべての家族の共通住所と自宅電話番号を保持します。"
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "世帯。共通の郵送先住所と自宅電話番号を保存します。"
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "個人は家族に属する必要はありませんが、家族に割り当てると住所管理がはるかに簡単になります。"
+
+#: 
+msgid "About"
+msgstr "概要"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "対応形式: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "アカウント復旧"
+
+#: 
+msgid "Add Family"
+msgstr "家族を追加"
+
+#: 
+msgid "Add First Family"
+msgstr "最初の家族を追加"
+
+#: 
+msgid "Add Member"
+msgstr "メンバーを追加"
+
+#: 
+msgid "Add New Class"
+msgstr "新しいクラスを追加"
+
+#: 
+msgid "Add Note"
+msgstr "メモを追加"
+
+#: 
+msgid "Add People to the Family"
+msgstr "家族にメンバーを追加"
+
+#: 
+msgid "Add Person"
+msgstr "個人を追加"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "生徒をリストに追加"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "教師をリストに追加"
+
+#: 
+msgid "Add User"
+msgstr "ユーザーを追加"
+
+#: 
+msgid "Add Your Data"
+msgstr "データを追加"
+
+#: 
+msgid "Add Your First Family"
+msgstr "最初の家族を追加"
+
+#: 
+msgid "Add Your First Property"
+msgstr "最初のプロパティを追加"
+
+#: 
+msgid "Add a Person"
+msgstr "個人を追加"
+
+#: 
+msgid "Add a new pledge"
+msgstr "新しい献金誓約を追加"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "現在の献金預かりに入金を追加"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "リストのすべての項目をグループに追加"
+
+#: 
+msgid "Add all to Cart"
+msgstr "すべてをリストに追加"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "リストの項目を家族に追加"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "世帯のすべての方を追加してください — 大人も子どもも。"
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "ChurchCRMで家族や個人を一つずつ直接追加します。小規模な教会やインポートデータの補完に最適です。"
+
+#: 
+msgid "Add first family"
+msgstr "最初の家族を追加"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "個人記録の追加または編集"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "募金イベント用の寄贈品の追加または編集"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "個人と家族のメモの追加または編集"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "スタッフとボランティアを追加"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "スタッフまたはボランティアをシステムユーザーとして追加"
+
+#: 
+msgid "Administrator"
+msgstr "管理者"
+
+#: 
+msgid "Age Distribution"
+msgstr "年齢分布"
+
+#: 
+msgid "All Roles"
+msgstr "すべての役割"
+
+#: 
+msgid "All Time"
+msgstr "全期間"
+
+#: 
+msgid "All roles"
+msgstr "すべての役割"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "あと少しです — 入力内容をご確認ください"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "設定した間隔でWebDAV経由で自動的に実行されます。"
+
+#: 
+msgid "An Error Occurred"
+msgstr "エラーが発生しました"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "教会の個々の会員。氏名、誕生日、個人メール、携帯番号を保存します。"
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "リクエストの処理中に予期しないエラーが発生しました。管理者にお問い合わせください。"
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "予期しないエラーが発生しました。"
+
+#: 
+msgid "Applied preset"
+msgstr "プリセットを適用しました"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "この献金預かりを削除してもよろしいですか？"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "この募金活動を削除してもよろしいですか？"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "削除してもよろしいですか"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "献金封筒番号の割り当てと管理"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "募金活動の購入者番号の割り当てと管理"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "リストの項目を家族レコードに割り当て"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "リストの項目をグループに割り当て"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "リストの項目をイベントに割り当て"
+
+#: 
+msgid "Assign to a Group"
+msgstr "グループに割り当て"
+
+#: 
+msgid "Authentication Code"
+msgstr "認証コード"
+
+#: 
+msgid "Auto-mapped"
+msgstr "自動マッピング済み"
+
+#: 
+msgid "BCC All"
+msgstr "全員にBCC"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "管理ダッシュボードに戻る"
+
+#: 
+msgid "Back to Get Started"
+msgstr "はじめにに戻る"
+
+#: 
+msgid "Back to Home"
+msgstr "ホームに戻る"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "設定可能な間隔でWebDAVクラウドストレージに自動バックアップします。"
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "今すぐ外部ストレージにバックアップ"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "利用可能なすべてのプラグインを閲覧"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "すべての教会イベントと活動を閲覧"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "フィルターと検索で教会のすべてのメンバーを閲覧"
+
+#: 
+msgid "Browse all plugins"
+msgstr "すべてのプラグインを閲覧"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "教会のすべての家族を閲覧・検索"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "募金キャンペーンを閲覧・検索"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "教会員の写真を閲覧"
+
+#: 
+msgid "Buyer Number"
+msgstr "購入者番号"
+
+#: 
+msgid "Buyers"
+msgstr "購入者"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV列"
+
+#: 
+msgid "CSV template not found"
+msgstr "CSVテンプレートが見つかりません"
+
+#: 
+msgid "Call"
+msgstr "電話"
+
+#: 
+msgid "Cart Functions"
+msgstr "リスト機能"
+
+#: 
+msgid "Change Family Role"
+msgstr "家族の役割を変更"
+
+#: 
+msgid "Check Out"
+msgstr "チェックアウト"
+
+#: 
+msgid "Check Out Person"
+msgstr "個人をチェックアウト"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "更新を確認してChurchCRMをアップグレード"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "教会のイベントと活動への出席者をチェックイン"
+
+#: 
+msgid "Check in to an event"
+msgstr "イベントにチェックイン"
+
+#: 
+msgid "Check-ins"
+msgstr "チェックイン"
+
+#: 
+msgid "Children"
+msgstr "子ども"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "データベースの入力方法を選択してください。後から別の方法も使えます。"
+
+#: 
+msgid "Church Info"
+msgstr "教会情報"
+
+#: 
+msgid "Clear all"
+msgstr "すべてクリア"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "すべてのデータを消去して最初からやり直す"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "リストからすべての項目を削除"
+
+#: 
+msgid "Click Save to apply."
+msgstr "保存をクリックして適用します。"
+
+#: 
+msgid "Click to upload photo"
+msgstr "クリックして写真をアップロード"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "「GitHub Issueを開く」をクリックすると、システム情報が事前入力された新しいタブが開きます。個人を特定できる情報は、ご自身で追加しない限り含まれません。"
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "列はChurchCRMフィールドに自動的にマッピングされました。"
+
+#: 
+msgid "Community Management Platform"
+msgstr "コミュニティ管理プラットフォーム"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Excel、Googleスプレッドシート、または任意のCSVエクスポートに対応。"
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "任意の順序でこれらを完了して、教会用にChurchCRMを準備しましょう。"
+
+#: 
+msgid "Confession"
+msgstr "告解"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "グローバルシステム設定とプリファレンスを構成"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "グループ設定、役割、プロパティを構成"
+
+#: 
+msgid "Confirm your new password"
+msgstr "新しいパスワードを確認"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "ChurchCRMがメールを送信できるようにSMTPサーバーを接続"
+
+#: 
+msgid "Connect with others"
+msgstr "他の方とつながる"
+
+#: 
+msgid "Contact us"
+msgstr "お問い合わせ"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "個人レコードを家族単位に変換"
+
+#: 
+msgid "Convert to Family"
+msgstr "家族に変換"
+
+#: 
+msgid "Copied"
+msgstr "コピーしました"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "メンバーをグループにコピー"
+
+#: 
+msgid "Copy to Group"
+msgstr "グループにコピー"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "教会データベースのバックアップを作成"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "週に一度以上手動バックアップを作成するか、外部バックアッププラグインを有効にしてスケジュールに基づくWebDAV自動バックアップを行ってください。"
+
+#: 
+msgid "Create a new deposit"
+msgstr "新しい献金預かりを作成"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "家族情報と関係の作成・編集"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "教会イベントと活動の作成・管理"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "プロパティタイプカテゴリの作成または編集"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "ボランティアポジションの作成または編集"
+
+#: 
+msgid "Current person"
+msgstr "現在の人"
+
+#: 
+msgid "Data & Reports"
+msgstr "データとレポート"
+
+#: 
+msgid "Database Reset"
+msgstr "データベースリセット"
+
+#: 
+msgid "Default / Notes"
+msgstr "デフォルト / メモ"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "追加の家族データを収集するカスタムフィールドを定義"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "追加の個人データを収集するカスタムフィールドを定義"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "データ追跡用のカスタムプロパティを定義"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "割り当て可能なカスタムプロパティを定義"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "メンバー用のグループ固有プロパティを定義"
+
+#: 
+msgid "Delete All"
+msgstr "すべて削除"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "チェックインエントリを削除"
+
+#: 
+msgid "Delete Family"
+msgstr "家族を削除"
+
+#: 
+msgid "Delete Group"
+msgstr "グループを削除"
+
+#: 
+msgid "Delete Person"
+msgstr "個人を削除"
+
+#: 
+msgid "Delete Pledge"
+msgstr "献金誓約を削除"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "このプロパティを削除すると、すべての個人、家族、グループレコードからの割り当ても削除されます。"
+
+#: 
+msgid "Deposit Value"
+msgstr "献金預かり額"
+
+#: 
+msgid "Describe the issue"
+msgstr "問題を説明してください"
+
+#: 
+msgid "Directions"
+msgstr "道順"
+
+#: 
+msgid "Directory Reports"
+msgstr "ディレクトリレポート"
+
+#: 
+msgid "Disabled in settings"
+msgstr "設定で無効"
+
+#: 
+msgid "Donated Item"
+msgstr "寄贈品"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "献金記録は家族単位で管理されます。一人暮らしの方の献金を記録する場合は、その方用に一人家族を作成してください。"
+
+#: 
+msgid "Download"
+msgstr "ダウンロード"
+
+#: 
+msgid "Download CSV Template"
+msgstr "CSVテンプレートをダウンロード"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "テンプレートをダウンロードして期待される列形式を確認してください。"
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "CSVファイルをここにドラッグ＆ドロップ"
+
+#: 
+msgid "Duplicates"
+msgstr "重複"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "各個人は独自のメールアドレスと携帯番号を持つことができます。"
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "各行は一人分です。同じ家族のメンバーは同じFamilyIDを共有します。"
+
+#: 
+msgid "Easy registration"
+msgstr "簡単な登録"
+
+#: 
+msgid "Edit Class"
+msgstr "クラスを編集"
+
+#: 
+msgid "Edit Form"
+msgstr "フォームを編集"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "メンバープロパティフォームを編集"
+
+#: 
+msgid "Edit Property"
+msgstr "プロパティを編集"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "グループメンバーのカスタムプロパティを編集"
+
+#: 
+msgid "Email BCC"
+msgstr "メールBCC"
+
+#: 
+msgid "Email Families"
+msgstr "家族にメール送信"
+
+#: 
+msgid "Email Settings"
+msgstr "メール設定"
+
+#: 
+msgid "Email Tools"
+msgstr "メールツール"
+
+#: 
+msgid "Email cart items"
+msgstr "リストの項目をメール送信"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "非公開受信者へのメール"
+
+#: 
+msgid "Empty"
+msgstr "空"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "HTTPSを有効にする"
+
+#: 
+msgid "Enable Plugins"
+msgstr "プラグインを有効にする"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "MailChimpプラグインを有効にして連絡先を同期"
+
+#: 
+msgid "Enrolled"
+msgstr "登録済み"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "手動でデータを入力"
+
+#: 
+msgid "Enter a search term"
+msgstr "検索語を入力"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "認証アプリの6桁のコードを入力してログインを完了してください"
+
+#: 
+msgid "Enter your current password"
+msgstr "現在のパスワードを入力"
+
+#: 
+msgid "Enter your login name"
+msgstr "ログイン名を入力"
+
+#: 
+msgid "Enter your new password"
+msgstr "新しいパスワードを入力"
+
+#: 
+msgid "Enter your password"
+msgstr "パスワードを入力"
+
+#: 
+msgid "Est. Value"
+msgstr "推定価値"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "メールエクスポートから除外"
+
+#: 
+msgid "Excluded"
+msgstr "除外済み"
+
+#: 
+msgid "Expand"
+msgstr "展開"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "デモデータで試す"
+
+#: 
+msgid "Export"
+msgstr "エクスポート"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "外部アプリケーション用にデータをCSV形式でエクスポート"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "MailChimp、バックアップなどでChurchCRMを拡張"
+
+#: 
+msgid "FY %s"
+msgstr "会計年度 %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "メンバーをリストに追加できませんでした。もう一度お試しください。"
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "クラスの削除に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "グループの削除に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "クラスからの削除に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "家族は住所と電話番号を共有します。"
+
+#: 
+msgid "Family List"
+msgstr "家族一覧"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "家族献金誓約概要"
+
+#: 
+msgid "Family Profile"
+msgstr "家族プロフィール"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "家族の役割（世帯主、配偶者、子どもなど）は記録の整理に役立ちます。"
+
+#: 
+msgid "Family vs Person"
+msgstr "家族と個人"
+
+#: 
+msgid "Fields to Include"
+msgstr "含めるフィールド"
+
+#: 
+msgid "File upload error"
+msgstr "ファイルアップロードエラー"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "この2つのステップに従って、教会員を素早く正確に追加してください。"
+
+#: 
+msgid "Forgot password?"
+msgstr "パスワードをお忘れですか？"
+
+#: 
+msgid "Format"
+msgstr "形式"
+
+#: 
+msgid "Full Group View"
+msgstr "グループ全体表示"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "確認書の生成とダウンロード"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "税務用の年間献金明細書を生成"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "ディレクトリ一覧と印刷物を生成"
+
+#: 
+msgid "Generate financial reports"
+msgstr "財務レポートを生成"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "財務諸表と献金レポートを生成"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "手紙と宛名ラベルを生成"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "宛名ラベルとフォームレターを生成"
+
+#: 
+msgid "Generate phone directory"
+msgstr "電話帳を生成"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "献金誓約リマインダーレターを生成"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "グループメンバーシップと活動に関するレポートを生成"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "献金者向け税務証明書を生成"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "地理ユーティリティ"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "データをChurchCRMに取り込む"
+
+#: 
+msgid "Go to homepage"
+msgstr "ホームページへ"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "素晴らしい選択です！教会員の追加方法はこちらです。"
+
+#: 
+msgid "Group Map"
+msgstr "グループマップ"
+
+#: 
+msgid "Group Reports"
+msgstr "グループレポート"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "グループが正常に削除されました。"
+
+#: 
+msgid "Have Existing Data?"
+msgstr "既存のデータがありますか？"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "スプレッドシートに多くのレコードがある場合、CSVインポートの方が手動入力より速い場合があります。"
+
+#: 
+msgid "Ignored"
+msgstr "無視"
+
+#: 
+msgid "Import Another File"
+msgstr "別のファイルをインポート"
+
+#: 
+msgid "Import CSV"
+msgstr "CSVインポート"
+
+#: 
+msgid "Import Complete"
+msgstr "インポート完了"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "MailChimpオーディエンスから連絡先をインポート"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "インポートに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Import failed: "
+msgstr "インポート失敗: "
+
+#: 
+msgid "Import from CSV"
+msgstr "CSVからインポート"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "スプレッドシートからインポート"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "スプレッドシートからインポート"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "インポート、復元、または手動入力"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "教会データのインポート、復元、または手動入力"
+
+#: 
+msgid "Importing..."
+msgstr "インポート中..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "メールエクスポートに含める"
+
+#: 
+msgid "Included"
+msgstr "含まれています"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "安全な接続のためにTLS/SSL証明書をインストール"
+
+#: 
+msgid "Invalid import request"
+msgstr "無効なインポートリクエスト"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "無効な「発信番号」: \"%s\"。国番号を含めてください（例: +819012345678（日本））。"
+
+#: 
+msgid "Invite Your Team"
+msgstr "チームを招待"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "コミュニティに参加してつながりを保ちましょう"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "任意のセットアップステップに移動:"
+
+#: 
+msgid "Key People"
+msgstr "主要メンバー"
+
+#: 
+msgid "Kiosk"
+msgstr "キオスク"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "キオスク有効"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "以前のChurchCRMデータを復元しましょう。"
+
+#: 
+msgid "Letters"
+msgstr "手紙"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "手紙と宛名ラベル"
+
+#: 
+msgid "Letters and Labels"
+msgstr "手紙とラベル"
+
+#: 
+msgid "List families created via self registration"
+msgstr "自己登録で作成された家族一覧"
+
+#: 
+msgid "Load demo data"
+msgstr "デモデータを読み込む"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "サンプルの家族、個人、グループ、献金記録を読み込みます。実際のデータを入力する前にChurchCRMを学ぶ最も安全な方法です。"
+
+#: 
+msgid "Log Files"
+msgstr "ログファイル"
+
+#: 
+msgid "Log Level"
+msgstr "ログレベル"
+
+#: 
+msgid "Login to your account"
+msgstr "アカウントにログイン"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp、バックアップなど"
+
+#: 
+msgid "Manage %s options"
+msgstr "%s オプションを管理"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "封筒を管理"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "日曜学校のクラス、教師、生徒の出席を管理"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "分類リスト、役割、グループタイプを管理"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "財務管理用の献金基金を管理"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "献金、誓約、財務記録を管理"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "メールツールとSMTP設定を管理"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "イベント名とカテゴリを管理"
+
+#: 
+msgid "Manage event type categories"
+msgstr "イベントタイプカテゴリを管理"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "家族、個人、人口統計情報を管理"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "リスト内のメンバーを管理"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "個人、家族、グループのプロパティタイプを管理"
+
+#: 
+msgid "Manage properties from the"
+msgstr "次からプロパティを管理:"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "システムユーザー、権限、二要素認証設定を管理"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "ユーザーアカウントの詳細と権限を管理"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "ボランティア機会の管理とメンバーの割り当て"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "個人設定とアカウント設定を管理"
+
+#: 
+msgid "Manual"
+msgstr "手動"
+
+#: 
+msgid "Map cart items"
+msgstr "リストの項目を地図に表示"
+
+#: 
+msgid "Map to Field"
+msgstr "フィールドにマッピング"
+
+#: 
+msgid "Material"
+msgstr "素材"
+
+#: 
+msgid "Member Properties"
+msgstr "メンバープロパティ"
+
+#: 
+msgid "Member Roles"
+msgstr "メンバーの役割"
+
+#: 
+msgid "Members added to cart."
+msgstr "メンバーがリストに追加されました。"
+
+#: 
+msgid "Memberships"
+msgstr "メンバーシップ"
+
+#: 
+msgid "Minimum"
+msgstr "最小"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "グループメンバーの家族の役割を変更"
+
+#: 
+msgid "Move Members"
+msgstr "メンバーを移動"
+
+#: 
+msgid "Move Members to Group"
+msgstr "メンバーをグループに移動"
+
+#: 
+msgid "Move to Group"
+msgstr "グループに移動"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "既存のChurchCRMまたはChurchInfoからの移行ですか？バックアップファイルをアップロードすると、データを自動的に復元します。"
+
+#: 
+msgid "My Settings"
+msgstr "マイ設定"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "名前の変更は保存が必要です。アクションメニューでの並び替えと削除は即座に反映されます。"
+
+#: 
+msgid "Name, address, contact details"
+msgstr "名前、住所、連絡先"
+
+#: 
+msgid "Need help?"
+msgstr "お困りですか？"
+
+#: 
+msgid "New"
+msgstr "新規"
+
+#: 
+msgid "New Family"
+msgstr "新しい家族"
+
+#: 
+msgid "New Group"
+msgstr "新しいグループ"
+
+#: 
+msgid "New Person"
+msgstr "新しい個人"
+
+#: 
+msgid "No Anniversaries"
+msgstr "記念日なし"
+
+#: 
+msgid "No Birthdays"
+msgstr "誕生日なし"
+
+#: 
+msgid "No Check-ins"
+msgstr "チェックインなし"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "献金預かり追跡なし"
+
+#: 
+msgid "No Deposits"
+msgstr "献金預かりなし"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "過去および今後7日間に記念日はありません"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "過去および今後7日間に誕生日はありません"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "献金預かりデータはまだありません"
+
+#: 
+msgid "No description set."
+msgstr "説明が設定されていません。"
+
+#: 
+msgid "No email address on file"
+msgstr "メールアドレスが登録されていません"
+
+#: 
+msgid "No events linked to this class."
+msgstr "このクラスにリンクされたイベントはありません。"
+
+#: 
+msgid "No file uploaded"
+msgstr "ファイルがアップロードされていません"
+
+#: 
+msgid "No group assignments yet."
+msgstr "グループの割り当てはまだありません。"
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "一致するものが見つかりません — フィールドを選択するか、無視のままにしてください。"
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "\"%s\" に一致するものがありません。別の検索語をお試しください。"
+
+#: 
+msgid "No member properties defined."
+msgstr "メンバープロパティが定義されていません。"
+
+#: 
+msgid "No members found for this role."
+msgstr "この役割のメンバーが見つかりません。"
+
+#: 
+msgid "No people found"
+msgstr "該当する人が見つかりません"
+
+#: 
+msgid "No people match your current filters."
+msgstr "現在のフィルターに一致する人がいません。"
+
+#: 
+msgid "No phone number on file"
+msgstr "電話番号が登録されていません"
+
+#: 
+msgid "No properties assigned."
+msgstr "プロパティが割り当てられていません。"
+
+#: 
+msgid "No properties defined yet"
+msgstr "プロパティがまだ定義されていません"
+
+#: 
+msgid "No results found"
+msgstr "結果が見つかりません"
+
+#: 
+msgid "No timeline events yet."
+msgstr "タイムラインイベントはまだありません。"
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "ボランティア担当の割り当てはまだありません。"
+
+#: 
+msgid "Not ready yet?"
+msgstr "まだ準備ができていませんか？"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "家族を作成したら、世帯の各メンバーを個人として追加します。家族の役割（世帯主、配偶者、子どもなど）を割り当ててください。"
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "送信すると、チームが登録を受け取り、ご家族を個別にお迎えするためにご連絡いたします。間違いがある場合は、前へボタンで戻って修正してください。"
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr ".csvファイルのみ対応しています"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "GitHub Issueを開く"
+
+#: 
+msgid "Open user menu"
+msgstr "ユーザーメニューを開く"
+
+#: 
+msgid "Options"
+msgstr "オプション"
+
+#: 
+msgid "Other Members"
+msgstr "その他のメンバー"
+
+#: 
+msgid "Overview"
+msgstr "概要"
+
+#: 
+msgid "Password Recovery"
+msgstr "パスワード復旧"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "過去および今後7日間"
+
+#: 
+msgid "People List"
+msgstr "人物一覧"
+
+#: 
+msgid "People by Classification"
+msgstr "分類別の人物"
+
+#: 
+msgid "Person removed from class."
+msgstr "クラスから削除されました。"
+
+#: 
+msgid "Photo"
+msgstr "写真"
+
+#: 
+msgid "Photos only"
+msgstr "写真のみ"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "開始する方法を選択"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "送信前にすべてが正しいことを確認してください。"
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "インポート前に少なくとも1つの列をマッピングしてください"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "CSVファイルを選択してください"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "問題が続く場合は、新しいパスワードリセットリンクをリクエストするか、サポートにお問い合わせください。"
+
+#: 
+msgid "Pledges"
+msgstr "献金誓約"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "プラグインは有効ですが設定されていません。設定後、バックアップは設定された間隔でWebDAVに自動実行されます。"
+
+#: 
+msgid "Press ? to focus search"
+msgstr "? キーで検索にフォーカス"
+
+#: 
+msgid "Prev"
+msgstr "前へ"
+
+#: 
+msgid "Print name tags"
+msgstr "名札を印刷"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "家族別にグループ化された全員の印刷可能ディレクトリ"
+
+#: 
+msgid "Properties Form"
+msgstr "プロパティフォーム"
+
+#: 
+msgid "Property assignment not found."
+msgstr "プロパティの割り当てが見つかりません。"
+
+#: 
+msgid "Property deleted successfully."
+msgstr "プロパティが正常に削除されました。"
+
+#: 
+msgid "Property not found."
+msgstr "プロパティが見つかりません。"
+
+#: 
+msgid "Quick Setup"
+msgstr "クイックセットアップ"
+
+#: 
+msgid "Quick Tips"
+msgstr "クイックヒント"
+
+#: 
+msgid "Ready to back up"
+msgstr "バックアップ準備完了"
+
+#: 
+msgid "Ready to restore"
+msgstr "復元準備完了"
+
+#: 
+msgid "Recommended Order"
+msgstr "推奨順序"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "複数の募金抽選当選者を一度に記録"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "新しい献金誓約と入金を記録"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "来会者が教会を訪問した理由を記録"
+
+#: 
+msgid "Register Your Family"
+msgstr "家族を登録"
+
+#: 
+msgid "Register another family"
+msgstr "別の家族を登録"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "リストからすべて削除"
+
+#: 
+msgid "Remove from Class"
+msgstr "クラスから削除"
+
+#: 
+msgid "Report an Issue"
+msgstr "問題を報告"
+
+#: 
+msgid "Restore a Backup"
+msgstr "バックアップを復元"
+
+#: 
+msgid "Restore backup"
+msgstr "バックアップを復元"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "バックアップファイルから教会データベースを復元"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "ダッシュボードに戻る"
+
+#: 
+msgid "Return to Families"
+msgstr "家族一覧に戻る"
+
+#: 
+msgid "Return to Groups"
+msgstr "グループ一覧に戻る"
+
+#: 
+msgid "Return to People"
+msgstr "人物一覧に戻る"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "レコードに関連付けられていないファイルの確認とクリーンアップ"
+
+#: 
+msgid "Role not found."
+msgstr "役割が見つかりません。"
+
+#: 
+msgid "Roles"
+msgstr "役割"
+
+#: 
+msgid "Run"
+msgstr "実行"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "メール送信用SMTPサーバー"
+
+#: 
+msgid "Sample Data"
+msgstr "サンプルデータ"
+
+#: 
+msgid "Search Results"
+msgstr "検索結果"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "人物、家族、グループ、住所などを横断検索します。"
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "献金預かり伝票レコードを検索・表示"
+
+#: 
+msgid "Search groups..."
+msgstr "グループを検索..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "人物、家族、グループを検索…"
+
+#: 
+msgid "Security First"
+msgstr "セキュリティ最優先"
+
+#: 
+msgid "Select Fields"
+msgstr "フィールドを選択"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "含めるフィールドを選択"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "バックアップファイルを選択し、データベースを復元をクリックしてください。"
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "上記のオプションを選択し、バックアップボタンをクリックしてください。"
+
+#: 
+msgid "Self Registration Report"
+msgstr "自己登録レポート"
+
+#: 
+msgid "Send email to families"
+msgstr "家族にメールを送信"
+
+#: 
+msgid "Server Error"
+msgstr "サーバーエラー"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "サーバーが予期しない応答を返しました。もう一度お試しください。"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "新しいユーザーが現在の値を変更できるようにするには、権限をTrueに設定してください。"
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "パスワードのリセットと通知の受信のために管理者メールアドレスを設定"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "新しいユーザーアカウントのデフォルト設定を行う"
+
+#: 
+msgid "Set up"
+msgstr "セットアップ"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "新しい募金キャンペーンまたはイベントをセットアップ"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "教会名、住所、連絡先を設定"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "教会名、住所、連絡先メールアドレスを設定"
+
+#: 
+msgid "Setup Progress"
+msgstr "セットアップの進捗"
+
+#: 
+msgid "Setup Required"
+msgstr "セットアップが必要"
+
+#: 
+msgid "Share"
+msgstr "共有"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "%s のメンバーを表示中"
+
+#: 
+msgid "Sign in"
+msgstr "サインイン"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "これは新規インストールのため、復元はバックアップデータを単純に読み込みます。"
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "スキップ — 管理ダッシュボードへ"
+
+#: 
+msgid "Start Fresh"
+msgstr "最初から始める"
+
+#: 
+msgid "Start Over"
+msgstr "やり直す"
+
+#: 
+msgid "Stay informed"
+msgstr "最新情報を受け取る"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "ステップ1 — CSVファイルをアップロード"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "ステップ2 — 列をマッピング"
+
+#: 
+msgid "Submitting..."
+msgstr "送信中..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "ChurchCRMおよびChurchInfoのバックアップに対応。"
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "システム診断情報と設定"
+
+#: 
+msgid "Tags"
+msgstr "タグ"
+
+#: 
+msgid "Tax Statements"
+msgstr "税務証明書"
+
+#: 
+msgid "Teacher"
+msgstr "教師"
+
+#: 
+msgid "Technical Details"
+msgstr "技術的な詳細"
+
+#: 
+msgid "Tell us about your family"
+msgstr "ご家族についてお聞かせください"
+
+#: 
+msgid "The property could not be removed."
+msgstr "プロパティを削除できませんでした。"
+
+#: 
+msgid "The property is successfully removed."
+msgstr "プロパティが正常に削除されました。"
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "これらのリンクは、このプラグインが有効な場合、ナビゲーションサイドバーの「リンク」メニューに表示されます。"
+
+#: 
+msgid "To Family"
+msgstr "家族へ"
+
+#: 
+msgid "To Group"
+msgstr "グループへ"
+
+#: 
+msgid "Toggle navigation"
+msgstr "ナビゲーション切り替え"
+
+#: 
+msgid "Total Size"
+msgstr "合計サイズ"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "会計年度別に家族の献金誓約と基金への拠出を追跡"
+
+#: 
+msgid "Transaction Details"
+msgstr "取引詳細"
+
+#: 
+msgid "Unmapped"
+msgstr "未マッピング"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "管理者連絡先を更新"
+
+#: 
+msgid "Upload CSV"
+msgstr "CSVをアップロード"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "CSVファイルをアップロードして家族と個人をChurchCRMにインポートします。"
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Excel、Googleスプレッドシート、または以前の教会管理システムからCSVをアップロードし、列をChurchCRMフィールドにマッピングします。"
+
+#: 
+msgid "Upload failed."
+msgstr "アップロードに失敗しました。"
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "アップロードに失敗しました。ファイルを確認してもう一度お試しください。"
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "アップロードセッションが期限切れです。ファイルを再度アップロードしてください。"
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "アップロード中、お待ちください..."
+
+#: 
+msgid "Users"
+msgstr "ユーザー"
+
+#: 
+msgid "Verify Info"
+msgstr "情報を確認"
+
+#: 
+msgid "Verify your identity"
+msgstr "本人確認"
+
+#: 
+msgid "View Family"
+msgstr "家族を表示"
+
+#: 
+msgid "View People"
+msgstr "人物を表示"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "インタラクティブマップですべての家族を表示"
+
+#: 
+msgid "View all results"
+msgstr "すべての結果を表示"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "教会のすべてのグループを表示・管理"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "献金預かり伝票の入金を表示・管理"
+
+#: 
+msgid "View and manage family location data"
+msgstr "家族の位置データを表示・管理"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "デバッグ用のシステムログファイルを表示・管理"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "保存されたデータベースクエリを表示・実行"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "購入者番号とパドルの割り当てを表示"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "クラス名簿、教師の割り当て、連絡先情報を表示"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "家族の詳細、メンバー、タイムラインを表示"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "家族の献金誓約概要と基金配分を表示"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "グループメンバー、役割、プロパティを表示"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "献金誓約ダッシュボードを表示"
+
+#: 
+msgid "View query results"
+msgstr "クエリ結果を表示"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "献金誓約の入金の取引詳細を表示"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "投票権を持つ会員はこの年数以内に献金している必要があります（0は献金不要）"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "お探しの家族が見つかりませんでした。"
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "お探しのグループが見つかりませんでした。"
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "お探しの方が見つかりませんでした。"
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "お探しのレコードが見つかりませんでした。"
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "パスワードリセットのリクエストを処理できませんでした。"
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "この情報を使って連絡を取り合い、教会のお知らせをお送りします。"
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "ようこそ！簡単3ステップでご家族を登録できます。"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "ご家族が加わってくださり、とてもうれしいです！"
+
+#: 
+msgid "Welcome Back!"
+msgstr "おかえりなさい！"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "おかえりなさい！続行するには詳細を入力してください"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "ようこそ、家族の一員として！"
+
+#: 
+msgid "What happens next?"
+msgstr "次に何が起こりますか？"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "何がうまくいきませんでしたか？どうなることを期待していましたか？"
+
+#: 
+msgid "Who is in your family?"
+msgstr "ご家族はどなたですか？"
+
+#: 
+msgid "Why Came"
+msgstr "来会理由"
+
+#: 
+msgid "Yes, delete"
+msgstr "はい、削除します"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "後からいつでもCSVで追加データをインポートできます。"
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "日曜学校グループの作成/削除ができます。"
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "献金預かりを表示する財務権限がありません。"
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "バックアップデータが読み込まれました。以前の認証情報でログインするようリダイレクトされます。"
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "必要に応じて、バックアップは最新のデータベーススキーマに自動的にアップグレードされます。"
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "前回のセッションがタイムアウトしました。再度ログインしてください。"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "ご登録を受け付けました。チームがまもなくご連絡して個別にお迎えいたします。"
+
+#: 
+msgid "all members"
+msgstr "全メンバー"
+
+#: 
+msgid "complete"
+msgstr "完了"
+
+#: 
+msgid "fields"
+msgstr "フィールド"
+
+#: 
+msgid "from this class?"
+msgstr "このクラスから？"
+
+#: 
+msgid "from this group?"
+msgstr "このグループから？"
+
+#: 
+msgid "full group view"
+msgstr "グループ全体表示"
+
+#: 
+msgid "funds"
+msgstr "基金"
+
+#: 
+msgid "members"
+msgstr "メンバー"
+
+#: 
+msgid "opportunities"
+msgstr "機会"
+
+#: 
+msgid "options"
+msgstr "オプション"
+
+#: 
+msgid "or connect an external service"
+msgstr "または外部サービスを接続"
+
+#: 
+msgid "our church"
+msgstr "私たちの教会"
+
+#: 
+msgid "page"
+msgstr "ページ"
+
+#: 
+msgid "properties"
+msgstr "プロパティ"
+
+#: 
+msgid "to another group?"
+msgstr "別のグループへ？"
+
+#: 
+msgid "— Ignore —"
+msgstr "— 無視 —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— グループを選択 —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— タイプを選択（任意） —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "デバイスを承認し、イベントに割り当ててチェックインを開始してください。"
+
+#: 
+msgid "Activate"
+msgstr "有効化"
+
+#: 
+msgid "Active Events"
+msgstr "アクティブなイベント"
+
+#: 
+msgid "Add Event"
+msgstr "イベントを追加"
+
+#: 
+msgid "Adults"
+msgstr "大人"
+
+#: 
+msgid "Affected Files"
+msgstr "影響を受けるファイル"
+
+#: 
+msgid "All Checks Passed"
+msgstr "すべてのチェックに合格"
+
+#: 
+msgid "Applying..."
+msgstr "適用中..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "割り当てられたキオスク"
+
+#: 
+msgid "Attendance"
+msgstr "出席"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "変更を保持したい場合は、アップグレード前に変更されたファイルをバックアップしてください。"
+
+#: 
+msgid "Backup Complete"
+msgstr "バックアップ完了"
+
+#: 
+msgid "Class / Group"
+msgstr "クラス / グループ"
+
+#: 
+msgid "Class List Export"
+msgstr "クラスリストのエクスポート"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "上の登録トグルをクリックして、30秒の登録ウィンドウを開きます。"
+
+#: 
+msgid "Continue"
+msgstr "続行"
+
+#: 
+msgid "Create First Event"
+msgstr "最初のイベントを作成"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "更新を適用する前にデータベースのバックアップを作成してください。これを強くお勧めします。"
+
+#: 
+msgid "Creating Backup..."
+msgstr "バックアップ作成中..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "バックアップをダウンロードして続行"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "最新リリースをダウンロードしてインストールに適用します。"
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "新しいキオスク登録を有効にする"
+
+#: 
+msgid "Events Dashboard"
+msgstr "イベントダッシュボード"
+
+#: 
+msgid "Events This Year"
+msgstr "今年のイベント"
+
+#: 
+msgid "Everyone"
+msgstr "全員"
+
+#: 
+msgid "Failed to delete note"
+msgstr "メモの削除に失敗しました"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "公式リリースに含まれないファイルがサーバーで見つかりました。"
+
+#: 
+msgid "Force Re-install?"
+msgstr "強制再インストールしますか？"
+
+#: 
+msgid "Full Path"
+msgstr "フルパス"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "クラスリスト、出席簿、フォトブックを生成"
+
+#: 
+msgid "Installed"
+msgstr "インストール済み"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "続行する前にバックアップを取ることを強くお勧めします。"
+
+#: 
+msgid "Kiosk Registration"
+msgstr "キオスク登録"
+
+#: 
+msgid "Latest"
+msgstr "最新"
+
+#: 
+msgid "Latest version unknown"
+msgstr "最新バージョン不明"
+
+#: 
+msgid "Manage Event Types"
+msgstr "イベントタイプを管理"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "変更されたファイルは公式バージョンに戻されます。"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "複数のグループはグループ間に改ページが入ります"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "新メンバーとご挨拶"
+
+#: 
+msgid "No Events Found"
+msgstr "イベントが見つかりません"
+
+#: 
+msgid "No events found for %s."
+msgstr "%s のイベントが見つかりません。"
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "問題は見つかりませんでした。アップグレードを進めることができます。"
+
+#: 
+msgid "Note not found"
+msgstr "メモが見つかりません"
+
+#: 
+msgid "Note text is required"
+msgstr "メモのテキストは必須です"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "キオスクデバイス（タブレット、ノートパソコンなど）でブラウザを開き、次のURLに移動してください:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "メモの作成者または管理者のみがこのメモを削除できます"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "メモの作成者または管理者のみがこのメモを編集できます"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "教会のイベント、出席、活動の概要"
+
+#: 
+msgid "People Without Emails"
+msgstr "メールアドレスのない人"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "個人または職場のメールアドレスが登録されていない人"
+
+#: 
+msgid "Pre-flight"
+msgstr "事前チェック"
+
+#: 
+msgid "Re-install"
+msgstr "再インストール"
+
+#: 
+msgid "Refresh"
+msgstr "更新"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "イベントチェックイン用のキオスクデバイスの登録と管理"
+
+#: 
+msgid "Review & Delete"
+msgstr "確認して削除"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1ハッシュ"
+
+#: 
+msgid "Setup Instructions"
+msgstr "セットアップ手順"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "署名の不一致"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "スキップ、バックアップなしで続行"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "デバイスは自身を登録し、下のテーブルに「保留中」として表示されます。"
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "これらのリンクは、このプラグインが有効な場合、ナビゲーションサイドバーの「リンク」メニューに表示されます。"
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "これは現在のバージョンを再ダウンロードして再適用します。破損または変更されたファイルを修正できます。"
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "キオスクデバイスをセットアップするには、次の手順に従ってください:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "下のスイッチを切り替えて、新しいキオスクデバイスが登録するための30秒のウィンドウを開きます。"
+
+#: 
+msgid "Total Check-ins"
+msgstr "チェックイン合計"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "別のイベントタイプまたは年を選択してみてください。"
+
+#: 
+msgid "Up to Date"
+msgstr "最新の状態"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "今後の日曜学校イベント"
+
+#: 
+msgid "Update Available"
+msgstr "アップデートあり"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "ユーザーにはメモの権限が必要です"
+

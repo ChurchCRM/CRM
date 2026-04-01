@@ -11128,3 +11128,2231 @@ msgstr "Versi database Anda lebih baru dari perangkat lunak yang diinstal. Ini b
 msgid "or later to continue."
 msgstr "atau lebih baru untuk melanjutkan."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "Catatan \"Alasan Datang\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(opsional — biarkan kosong untuk menyertakan semua peran)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Sebuah keluarga mewakili satu rumah tangga. Menyimpan alamat bersama dan nomor telepon rumah untuk semua anggota keluarga yang tinggal bersama."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Sebuah rumah tangga. Menyimpan alamat surat dan telepon rumah bersama."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Seseorang tidak harus tergabung dalam keluarga, tetapi menetapkan keluarga akan mempermudah pengelolaan alamat."
+
+#: 
+msgid "About"
+msgstr "Tentang"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Format yang diterima: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Pemulihan Akun"
+
+#: 
+msgid "Add Family"
+msgstr "Tambah Keluarga"
+
+#: 
+msgid "Add First Family"
+msgstr "Tambah Keluarga Pertama"
+
+#: 
+msgid "Add Member"
+msgstr "Tambah Anggota"
+
+#: 
+msgid "Add New Class"
+msgstr "Tambah Kelas Baru"
+
+#: 
+msgid "Add Note"
+msgstr "Tambah Catatan"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Tambah Orang ke Keluarga"
+
+#: 
+msgid "Add Person"
+msgstr "Tambah Orang"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Tambah Murid ke Daftar"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Tambah Guru ke Daftar"
+
+#: 
+msgid "Add User"
+msgstr "Tambah Pengguna"
+
+#: 
+msgid "Add Your Data"
+msgstr "Tambahkan Data Anda"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Tambah Keluarga Pertama Anda"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Tambah Properti Pertama Anda"
+
+#: 
+msgid "Add a Person"
+msgstr "Tambah Orang"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Tambah janji persembahan baru"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Tambah pembayaran ke setoran saat ini"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Tambah semua item daftar ke grup"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Tambah semua ke Daftar"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Tambah item daftar ke keluarga"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Tambahkan semua orang dalam rumah tangga Anda — dewasa maupun anak-anak."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Tambahkan keluarga dan individu satu per satu langsung di ChurchCRM. Cocok untuk jemaat kecil atau melengkapi data yang sudah diimpor."
+
+#: 
+msgid "Add first family"
+msgstr "Tambah keluarga pertama"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Tambah atau edit catatan individu"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Tambah atau edit barang yang disumbangkan untuk acara penggalangan dana"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Tambah atau edit catatan untuk orang dan keluarga"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Tambah staf dan sukarelawan"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Tambah staf atau sukarelawan sebagai pengguna sistem"
+
+#: 
+msgid "Age Distribution"
+msgstr "Distribusi Usia"
+
+#: 
+msgid "All Roles"
+msgstr "Semua Peran"
+
+#: 
+msgid "All Time"
+msgstr "Sepanjang Waktu"
+
+#: 
+msgid "All roles"
+msgstr "Semua peran"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Hampir selesai — periksa detail Anda"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Juga berjalan otomatis melalui WebDAV berdasarkan interval yang dikonfigurasi."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Terjadi Kesalahan"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Seorang anggota jemaat. Menyimpan nama, tanggal lahir, email pribadi, dan nomor ponsel."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Terjadi kesalahan tak terduga saat memproses permintaan Anda. Silakan hubungi administrator untuk bantuan."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Terjadi kesalahan tak terduga."
+
+#: 
+msgid "Applied preset"
+msgstr "Preset diterapkan"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Apakah Anda yakin ingin menghapus setoran ini?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Apakah Anda yakin ingin menghapus penggalangan dana ini?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Apakah Anda yakin ingin menghapus"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Tetapkan dan kelola nomor amplop persembahan"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Tetapkan dan kelola nomor pembeli penggalangan dana"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Tetapkan item daftar ke catatan keluarga"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Tetapkan item daftar ke grup"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Tetapkan item daftar ke acara"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Tetapkan ke Grup"
+
+#: 
+msgid "Authentication Code"
+msgstr "Kode Autentikasi"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Dipetakan otomatis"
+
+#: 
+msgid "BCC All"
+msgstr "BCC Semua"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Kembali ke Dasbor Admin"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Kembali ke Mulai"
+
+#: 
+msgid "Back to Home"
+msgstr "Kembali ke Beranda"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Mencadangkan ke penyimpanan cloud WebDAV secara otomatis pada interval yang dapat dikonfigurasi."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Cadangkan ke Penyimpanan Eksternal Sekarang"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Jelajahi semua plugin yang tersedia"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Jelajahi semua acara dan kegiatan gereja"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Jelajahi semua orang di jemaat Anda dengan filter dan pencarian"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Jelajahi semua plugin"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Jelajahi dan cari semua keluarga di jemaat Anda"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Jelajahi dan cari kampanye penggalangan dana"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Jelajahi foto anggota jemaat"
+
+#: 
+msgid "Buyer Number"
+msgstr "Nomor Pembeli"
+
+#: 
+msgid "Buyers"
+msgstr "Pembeli"
+
+#: 
+msgid "CSV Column"
+msgstr "Kolom CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "Template CSV tidak ditemukan"
+
+#: 
+msgid "Call"
+msgstr "Telepon"
+
+#: 
+msgid "Cart Functions"
+msgstr "Fungsi Daftar"
+
+#: 
+msgid "Change Family Role"
+msgstr "Ubah Peran Keluarga"
+
+#: 
+msgid "Check Out Person"
+msgstr "Check Out Orang"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Periksa pembaruan dan tingkatkan instalasi ChurchCRM Anda"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Check in peserta untuk acara dan kegiatan gereja"
+
+#: 
+msgid "Check in to an event"
+msgstr "Check in ke acara"
+
+#: 
+msgid "Check-ins"
+msgstr "Check-in"
+
+#: 
+msgid "Children"
+msgstr "Anak-anak"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Pilih cara Anda ingin mengisi database. Anda selalu bisa menggunakan metode lain nanti."
+
+#: 
+msgid "Church Info"
+msgstr "Info Gereja"
+
+#: 
+msgid "Clear all"
+msgstr "Hapus semua"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Hapus semua data dan mulai dari awal"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Hapus semua item dari daftar"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Klik Simpan untuk menerapkan."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Klik untuk mengunggah foto"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "Mengklik \"Buka GitHub Issue\" akan membuka tab baru dengan info sistem Anda yang sudah terisi. Tidak ada informasi identitas pribadi yang disertakan kecuali Anda menambahkannya."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Kolom secara otomatis dicocokkan dengan field ChurchCRM."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Platform Manajemen Komunitas"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Kompatibel dengan Excel, Google Sheets, atau ekspor CSV apa pun."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Selesaikan ini dalam urutan apa pun untuk menyiapkan ChurchCRM bagi jemaat Anda."
+
+#: 
+msgid "Confession"
+msgstr "Pengakuan Dosa"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Konfigurasi pengaturan dan preferensi sistem global"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Konfigurasi pengaturan grup, peran, dan properti"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Konfirmasi kata sandi baru Anda"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Hubungkan server SMTP agar ChurchCRM dapat mengirim email"
+
+#: 
+msgid "Connect with others"
+msgstr "Terhubung dengan yang lain"
+
+#: 
+msgid "Contact us"
+msgstr "Hubungi kami"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Ubah catatan individu menjadi unit keluarga"
+
+#: 
+msgid "Convert to Family"
+msgstr "Ubah ke Keluarga"
+
+#: 
+msgid "Copied"
+msgstr "Disalin"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Salin Anggota ke Grup"
+
+#: 
+msgid "Copy to Group"
+msgstr "Salin ke Grup"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Buat cadangan database gereja Anda"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Buat cadangan manual setidaknya seminggu sekali, atau aktifkan plugin Cadangan Eksternal untuk cadangan WebDAV otomatis sesuai jadwal."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Buat setoran baru"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Buat dan edit informasi keluarga dan hubungan"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Buat dan kelola acara dan kegiatan gereja"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Buat atau edit kategori tipe properti"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Buat atau edit posisi sukarelawan"
+
+#: 
+msgid "Current person"
+msgstr "Orang saat ini"
+
+#: 
+msgid "Data & Reports"
+msgstr "Data & Laporan"
+
+#: 
+msgid "Database Reset"
+msgstr "Reset Database"
+
+#: 
+msgid "Default / Notes"
+msgstr "Default / Catatan"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Tentukan field kustom untuk mengumpulkan data keluarga tambahan"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Tentukan field kustom untuk mengumpulkan data individu tambahan"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Tentukan properti kustom untuk pelacakan data"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Tentukan properti kustom yang dapat ditetapkan ke"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Tentukan properti khusus grup untuk anggota"
+
+#: 
+msgid "Delete All"
+msgstr "Hapus Semua"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Hapus Entri Check-in"
+
+#: 
+msgid "Delete Family"
+msgstr "Hapus Keluarga"
+
+#: 
+msgid "Delete Group"
+msgstr "Hapus Grup"
+
+#: 
+msgid "Delete Person"
+msgstr "Hapus Orang"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Hapus Janji Persembahan"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Menghapus properti ini juga akan menghapus semua penetapannya dari catatan Orang, Keluarga, atau Grup mana pun."
+
+#: 
+msgid "Deposit Value"
+msgstr "Nilai Setoran"
+
+#: 
+msgid "Describe the issue"
+msgstr "Jelaskan masalahnya"
+
+#: 
+msgid "Directions"
+msgstr "Petunjuk Arah"
+
+#: 
+msgid "Directory Reports"
+msgstr "Laporan Direktori"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Dinonaktifkan di pengaturan"
+
+#: 
+msgid "Donated Item"
+msgstr "Barang Sumbangan"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Catatan persembahan dan pemberian dilacak pada tingkat keluarga. Jika Anda ingin mencatat pemberian untuk individu yang tinggal sendiri, buatlah keluarga satu orang untuk mereka."
+
+#: 
+msgid "Download"
+msgstr "Unduh"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Unduh Template CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Unduh template untuk melihat format kolom yang diharapkan."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Seret dan lepas file CSV Anda di sini"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplikat"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Setiap orang dapat memiliki email dan nomor ponsel sendiri."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Setiap baris adalah satu orang. Anggota keluarga yang sama berbagi FamilyID."
+
+#: 
+msgid "Easy registration"
+msgstr "Pendaftaran mudah"
+
+#: 
+msgid "Edit Class"
+msgstr "Edit Kelas"
+
+#: 
+msgid "Edit Form"
+msgstr "Edit Formulir"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Edit Formulir Properti Anggota"
+
+#: 
+msgid "Edit Property"
+msgstr "Edit Properti"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Edit properti kustom untuk anggota grup"
+
+#: 
+msgid "Email Families"
+msgstr "Email Keluarga"
+
+#: 
+msgid "Email Settings"
+msgstr "Pengaturan Email"
+
+#: 
+msgid "Email Tools"
+msgstr "Alat Email"
+
+#: 
+msgid "Email cart items"
+msgstr "Email item daftar"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "Email dengan penerima tersembunyi"
+
+#: 
+msgid "Empty"
+msgstr "Kosong"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Aktifkan HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Aktifkan Plugin"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Aktifkan plugin MailChimp untuk sinkronisasi kontak"
+
+#: 
+msgid "Enrolled"
+msgstr "Terdaftar"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Masukkan Data Secara Manual"
+
+#: 
+msgid "Enter a search term"
+msgstr "Masukkan kata pencarian"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Masukkan kode 6 digit dari aplikasi autentikator Anda untuk menyelesaikan login"
+
+#: 
+msgid "Enter your current password"
+msgstr "Masukkan kata sandi Anda saat ini"
+
+#: 
+msgid "Enter your login name"
+msgstr "Masukkan nama login Anda"
+
+#: 
+msgid "Enter your new password"
+msgstr "Masukkan kata sandi baru Anda"
+
+#: 
+msgid "Enter your password"
+msgstr "Masukkan kata sandi Anda"
+
+#: 
+msgid "Est. Value"
+msgstr "Estimasi Nilai"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Kecualikan dari Ekspor Email"
+
+#: 
+msgid "Excluded"
+msgstr "Dikecualikan"
+
+#: 
+msgid "Expand"
+msgstr "Perluas"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Jelajahi dengan Data Demo"
+
+#: 
+msgid "Export"
+msgstr "Ekspor"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Ekspor data ke format CSV untuk aplikasi eksternal"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Perluas ChurchCRM dengan MailChimp, cadangan, dan lainnya"
+
+#: 
+msgid "FY %s"
+msgstr "TA %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Gagal menambahkan anggota ke daftar. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Gagal menghapus kelas. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Gagal menghapus grup. Silakan coba lagi."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Gagal menghapus dari kelas. Silakan coba lagi."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Keluarga berbagi alamat dan nomor telepon."
+
+#: 
+msgid "Family List"
+msgstr "Daftar Keluarga"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Ringkasan Janji Persembahan Keluarga"
+
+#: 
+msgid "Family Profile"
+msgstr "Profil Keluarga"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Peran keluarga (Kepala Keluarga, Pasangan, Anak, dll.) membantu mengatur catatan Anda."
+
+#: 
+msgid "Family vs Person"
+msgstr "Keluarga vs Individu"
+
+#: 
+msgid "Fields to Include"
+msgstr "Field yang Disertakan"
+
+#: 
+msgid "File upload error"
+msgstr "Kesalahan unggah file"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Ikuti dua langkah ini untuk menambahkan anggota jemaat Anda dengan cepat dan benar."
+
+#: 
+msgid "Forgot password?"
+msgstr "Lupa kata sandi?"
+
+#: 
+msgid "Full Group View"
+msgstr "Tampilan Grup Lengkap"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Buat dan unduh surat konfirmasi"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Buat laporan persembahan tahunan untuk keperluan pajak"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Buat daftar direktori dan materi cetak"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Buat laporan keuangan"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Buat laporan keuangan dan laporan persembahan"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Buat surat dan label pengiriman"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Buat label pengiriman dan surat formulir"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Buat direktori telepon"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Buat surat pengingat janji persembahan"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Buat laporan tentang keanggotaan dan kegiatan grup"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Buat dokumen laporan pajak untuk donatur"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Utilitas Geografis"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Masukkan Data Anda ke ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "Ke beranda"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Pilihan tepat! Berikut cara menambahkan anggota jemaat Anda."
+
+#: 
+msgid "Group Map"
+msgstr "Peta Grup"
+
+#: 
+msgid "Group Reports"
+msgstr "Laporan Grup"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Grup berhasil dihapus."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Punya Data yang Sudah Ada?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Jika Anda memiliki banyak catatan dalam spreadsheet, impor CSV mungkin lebih cepat daripada memasukkan data secara manual."
+
+#: 
+msgid "Ignored"
+msgstr "Diabaikan"
+
+#: 
+msgid "Import Another File"
+msgstr "Impor File Lain"
+
+#: 
+msgid "Import CSV"
+msgstr "Impor CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Impor Selesai"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Impor kontak dari audiens MailChimp Anda"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Impor gagal. Silakan coba lagi."
+
+#: 
+msgid "Import failed: "
+msgstr "Impor gagal: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Impor dari CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Impor dari Spreadsheet"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Impor dari Spreadsheet"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Impor, pulihkan, atau masukkan secara manual"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Impor, pulihkan, atau masukkan jemaat Anda secara manual"
+
+#: 
+msgid "Importing..."
+msgstr "Mengimpor..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Sertakan dalam Ekspor Email"
+
+#: 
+msgid "Included"
+msgstr "Disertakan"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Instal sertifikat TLS/SSL untuk koneksi yang aman"
+
+#: 
+msgid "Invalid import request"
+msgstr "Permintaan impor tidak valid"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"Nomor Pengirim\" tidak valid: \"%s\". Sertakan kode negara, misalnya +6281234567890 (ID)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Undang Tim Anda"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Bergabunglah dengan komunitas kami dan tetap terhubung dengan"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Langsung ke langkah pengaturan mana pun:"
+
+#: 
+msgid "Key People"
+msgstr "Orang Kunci"
+
+#: 
+msgid "Kiosk"
+msgstr "Kios"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kios Diaktifkan"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Mari pulihkan data ChurchCRM Anda sebelumnya."
+
+#: 
+msgid "Letters"
+msgstr "Surat"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Surat & Label Pengiriman"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Surat dan Label"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Daftar keluarga yang dibuat melalui pendaftaran mandiri"
+
+#: 
+msgid "Load demo data"
+msgstr "Muat data demo"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Muat contoh keluarga, orang, grup, dan catatan persembahan. Cara paling aman untuk mempelajari ChurchCRM sebelum memasukkan data nyata Anda."
+
+#: 
+msgid "Log Files"
+msgstr "File Log"
+
+#: 
+msgid "Log Level"
+msgstr "Level Log"
+
+#: 
+msgid "Login to your account"
+msgstr "Masuk ke akun Anda"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, cadangan, dan lainnya"
+
+#: 
+msgid "Manage %s options"
+msgstr "Kelola opsi %s"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Kelola Amplop"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Kelola kelas sekolah Minggu, guru, dan kehadiran murid"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Kelola daftar klasifikasi, peran, dan tipe grup"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Kelola dana persembahan untuk pelacakan keuangan"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Kelola persembahan, janji persembahan, dan catatan keuangan"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Kelola alat email dan konfigurasi SMTP"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Kelola nama acara dan kategori"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Kelola kategori tipe acara"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Kelola keluarga, orang, dan informasi demografi"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Kelola orang dalam daftar Anda"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Kelola tipe properti orang, keluarga, dan grup"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Kelola properti dari"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Kelola pengguna sistem, izin, dan pengaturan autentikasi dua faktor"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Kelola detail akun pengguna dan izin"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Kelola peluang sukarelawan dan tetapkan anggota"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Kelola preferensi pribadi dan pengaturan akun Anda"
+
+#: 
+msgid "Map cart items"
+msgstr "Petakan item daftar"
+
+#: 
+msgid "Map to Field"
+msgstr "Petakan ke Field"
+
+#: 
+msgid "Material"
+msgstr "Materi"
+
+#: 
+msgid "Member Properties"
+msgstr "Properti Anggota"
+
+#: 
+msgid "Member Roles"
+msgstr "Peran Anggota"
+
+#: 
+msgid "Members added to cart."
+msgstr "Anggota ditambahkan ke daftar."
+
+#: 
+msgid "Memberships"
+msgstr "Keanggotaan"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Ubah peran keluarga untuk anggota grup"
+
+#: 
+msgid "Move Members"
+msgstr "Pindahkan Anggota"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Pindahkan Anggota ke Grup"
+
+#: 
+msgid "Move to Group"
+msgstr "Pindahkan ke Grup"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Pindah dari instalasi ChurchCRM atau ChurchInfo yang sudah ada? Unggah file cadangan Anda dan kami akan memulihkan data Anda secara otomatis."
+
+#: 
+msgid "My Settings"
+msgstr "Pengaturan Saya"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Perubahan nama memerlukan penyimpanan. Tindakan pengurutan ulang dan penghapusan di menu aksi berlaku segera."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Nama, alamat, detail kontak"
+
+#: 
+msgid "Need help?"
+msgstr "Butuh bantuan?"
+
+#: 
+msgid "New"
+msgstr "Baru"
+
+#: 
+msgid "New Family"
+msgstr "Keluarga Baru"
+
+#: 
+msgid "New Group"
+msgstr "Grup Baru"
+
+#: 
+msgid "New Person"
+msgstr "Orang Baru"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Tidak Ada Hari Peringatan"
+
+#: 
+msgid "No Birthdays"
+msgstr "Tidak Ada Ulang Tahun"
+
+#: 
+msgid "No Check-ins"
+msgstr "Tidak Ada Check-in"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Tidak Ada Pelacakan Setoran"
+
+#: 
+msgid "No Deposits"
+msgstr "Tidak Ada Setoran"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Tidak ada hari peringatan dalam 7 hari terakhir atau mendatang"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Tidak ada ulang tahun dalam 7 hari terakhir atau mendatang"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Belum ada data setoran yang tersedia"
+
+#: 
+msgid "No description set."
+msgstr "Belum ada deskripsi."
+
+#: 
+msgid "No email address on file"
+msgstr "Tidak ada alamat email tercatat"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Tidak ada acara yang terhubung ke kelas ini."
+
+#: 
+msgid "No file uploaded"
+msgstr "Tidak ada file yang diunggah"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Belum ada penetapan grup."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Tidak ditemukan kecocokan — pilih field atau biarkan sebagai Abaikan."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Tidak ada hasil untuk \"%s\". Coba kata pencarian yang berbeda."
+
+#: 
+msgid "No member properties defined."
+msgstr "Belum ada properti anggota yang ditentukan."
+
+#: 
+msgid "No members found for this role."
+msgstr "Tidak ada anggota ditemukan untuk peran ini."
+
+#: 
+msgid "No people found"
+msgstr "Tidak ada orang ditemukan"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Tidak ada orang yang sesuai dengan filter Anda saat ini."
+
+#: 
+msgid "No phone number on file"
+msgstr "Tidak ada nomor telepon tercatat"
+
+#: 
+msgid "No properties assigned."
+msgstr "Tidak ada properti yang ditetapkan."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Belum ada properti yang ditentukan"
+
+#: 
+msgid "No results found"
+msgstr "Tidak ada hasil ditemukan"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Belum ada peristiwa linimasa."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Belum ada penetapan peluang sukarelawan."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Belum siap?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Setelah memiliki keluarga, tambahkan setiap anggota rumah tangga sebagai orang. Tetapkan peran keluarga untuk mereka (misalnya Kepala Keluarga, Pasangan, Anak)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Setelah Anda mengirim, tim kami akan menerima pendaftaran Anda dan menghubungi untuk menyambut keluarga Anda secara personal. Jika ada yang tidak benar, gunakan tombol Sebelumnya untuk kembali dan melakukan perubahan."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Hanya file .csv yang diterima"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Buka GitHub Issue"
+
+#: 
+msgid "Open user menu"
+msgstr "Buka menu pengguna"
+
+#: 
+msgid "Options"
+msgstr "Opsi"
+
+#: 
+msgid "Other Members"
+msgstr "Anggota Lain"
+
+#: 
+msgid "Overview"
+msgstr "Ringkasan"
+
+#: 
+msgid "Password Recovery"
+msgstr "Pemulihan Kata Sandi"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "7 hari terakhir & mendatang"
+
+#: 
+msgid "People List"
+msgstr "Daftar Orang"
+
+#: 
+msgid "People by Classification"
+msgstr "Orang berdasarkan Klasifikasi"
+
+#: 
+msgid "Person removed from class."
+msgstr "Orang dihapus dari kelas."
+
+#: 
+msgid "Photo"
+msgstr "Foto"
+
+#: 
+msgid "Photos only"
+msgstr "Hanya foto"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Pilih cara untuk memulai"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Silakan periksa semuanya sudah benar sebelum mengirim."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Silakan petakan setidaknya satu kolom sebelum mengimpor"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Silakan pilih file CSV"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Silakan coba minta tautan reset kata sandi baru atau hubungi dukungan jika Anda terus mengalami masalah."
+
+#: 
+msgid "Pledges"
+msgstr "Janji Persembahan"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Plugin diaktifkan tetapi belum dikonfigurasi. Setelah diatur, cadangan berjalan otomatis ke WebDAV pada interval yang dikonfigurasi."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Tekan ? untuk fokus pencarian"
+
+#: 
+msgid "Prev"
+msgstr "Sebelumnya"
+
+#: 
+msgid "Print name tags"
+msgstr "Cetak kartu nama"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Direktori yang dapat dicetak dari semua orang, dikelompokkan berdasarkan keluarga"
+
+#: 
+msgid "Properties Form"
+msgstr "Formulir Properti"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Penetapan properti tidak ditemukan."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Properti berhasil dihapus."
+
+#: 
+msgid "Property not found."
+msgstr "Properti tidak ditemukan."
+
+#: 
+msgid "Quick Setup"
+msgstr "Pengaturan Cepat"
+
+#: 
+msgid "Quick Tips"
+msgstr "Tips Cepat"
+
+#: 
+msgid "Ready to back up"
+msgstr "Siap dicadangkan"
+
+#: 
+msgid "Ready to restore"
+msgstr "Siap dipulihkan"
+
+#: 
+msgid "Recommended Order"
+msgstr "Urutan yang Disarankan"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Catat beberapa pemenang undian penggalangan dana sekaligus"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Catat janji persembahan dan pembayaran baru"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Catat mengapa peserta mengunjungi gereja Anda"
+
+#: 
+msgid "Register Your Family"
+msgstr "Daftarkan Keluarga Anda"
+
+#: 
+msgid "Register another family"
+msgstr "Daftarkan keluarga lain"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Hapus semua dari Daftar"
+
+#: 
+msgid "Remove from Class"
+msgstr "Hapus dari Kelas"
+
+#: 
+msgid "Report an Issue"
+msgstr "Laporkan Masalah"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Pulihkan Cadangan"
+
+#: 
+msgid "Restore backup"
+msgstr "Pulihkan cadangan"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Pulihkan database gereja Anda dari file cadangan"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Kembali ke Dasbor"
+
+#: 
+msgid "Return to Families"
+msgstr "Kembali ke Keluarga"
+
+#: 
+msgid "Return to Groups"
+msgstr "Kembali ke Grup"
+
+#: 
+msgid "Return to People"
+msgstr "Kembali ke Orang"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Tinjau dan bersihkan file yang tidak terkait dengan catatan apa pun"
+
+#: 
+msgid "Role not found."
+msgstr "Peran tidak ditemukan."
+
+#: 
+msgid "Roles"
+msgstr "Peran"
+
+#: 
+msgid "Run"
+msgstr "Jalankan"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "Server SMTP untuk mengirim email"
+
+#: 
+msgid "Sample Data"
+msgstr "Data Contoh"
+
+#: 
+msgid "Search Results"
+msgstr "Hasil Pencarian"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Cari di seluruh orang, keluarga, grup, alamat, dan lainnya."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Cari dan lihat catatan slip setoran"
+
+#: 
+msgid "Search groups..."
+msgstr "Cari grup..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Cari orang, keluarga, grup…"
+
+#: 
+msgid "Security First"
+msgstr "Keamanan Utama"
+
+#: 
+msgid "Select Fields"
+msgstr "Pilih Field"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Pilih Field yang Disertakan"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Pilih file cadangan dan klik Pulihkan Database."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Pilih opsi Anda di atas dan klik tombol cadangan."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Laporan Pendaftaran Mandiri"
+
+#: 
+msgid "Send email to families"
+msgstr "Kirim email ke keluarga"
+
+#: 
+msgid "Server Error"
+msgstr "Kesalahan Server"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "Server memberikan respons yang tidak terduga. Silakan coba lagi."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Atur Izin ke True untuk memberikan kemampuan kepada pengguna baru untuk mengubah nilai mereka saat ini."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Atur email pengguna admin agar Anda dapat mereset kata sandi dan menerima notifikasi"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Atur preferensi default untuk akun pengguna baru"
+
+#: 
+msgid "Set up"
+msgstr "Atur"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Atur kampanye atau acara penggalangan dana baru"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Atur nama gereja, alamat, dan detail kontak Anda"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Atur nama gereja, alamat, dan email kontak Anda"
+
+#: 
+msgid "Setup Progress"
+msgstr "Progres Pengaturan"
+
+#: 
+msgid "Setup Required"
+msgstr "Pengaturan Diperlukan"
+
+#: 
+msgid "Share"
+msgstr "Bagikan"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Menampilkan anggota dari: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Masuk"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Karena ini adalah instalasi baru, pemulihan hanya akan memuat data cadangan Anda."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Lewati — ke Dasbor Admin"
+
+#: 
+msgid "Start Fresh"
+msgstr "Mulai dari Awal"
+
+#: 
+msgid "Start Over"
+msgstr "Mulai Ulang"
+
+#: 
+msgid "Stay informed"
+msgstr "Tetap terinformasi"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Langkah 1 — Unggah File CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Langkah 2 — Petakan Kolom"
+
+#: 
+msgid "Submitting..."
+msgstr "Mengirim..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Mendukung cadangan dari ChurchCRM dan ChurchInfo."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Informasi diagnostik sistem dan konfigurasi"
+
+#: 
+msgid "Tags"
+msgstr "Tag"
+
+#: 
+msgid "Tax Statements"
+msgstr "Laporan Pajak"
+
+#: 
+msgid "Teacher"
+msgstr "Guru"
+
+#: 
+msgid "Technical Details"
+msgstr "Detail Teknis"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Ceritakan tentang keluarga Anda"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Properti tidak dapat dihapus."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Properti berhasil dihapus."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
+
+#: 
+msgid "To Family"
+msgstr "Ke Keluarga"
+
+#: 
+msgid "To Group"
+msgstr "Ke Grup"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Beralih navigasi"
+
+#: 
+msgid "Total Size"
+msgstr "Ukuran Total"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Lacak janji persembahan keluarga dan kontribusi dana berdasarkan tahun fiskal"
+
+#: 
+msgid "Transaction Details"
+msgstr "Detail Transaksi"
+
+#: 
+msgid "Unmapped"
+msgstr "Belum dipetakan"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Perbarui Kontak Admin"
+
+#: 
+msgid "Upload CSV"
+msgstr "Unggah CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Unggah file CSV untuk mengimpor keluarga dan orang ke ChurchCRM."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Unggah CSV dari Excel, Google Sheets, atau sistem manajemen gereja sebelumnya dan petakan kolom ke field ChurchCRM."
+
+#: 
+msgid "Upload failed."
+msgstr "Unggah gagal."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Unggah gagal. Silakan periksa file dan coba lagi."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Sesi unggah kedaluwarsa. Silakan unggah file lagi."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Mengunggah, harap tunggu..."
+
+#: 
+msgid "Users"
+msgstr "Pengguna"
+
+#: 
+msgid "Verify Info"
+msgstr "Verifikasi Info"
+
+#: 
+msgid "Verify your identity"
+msgstr "Verifikasi identitas Anda"
+
+#: 
+msgid "View Family"
+msgstr "Lihat Keluarga"
+
+#: 
+msgid "View People"
+msgstr "Lihat Orang"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Lihat semua keluarga di peta interaktif"
+
+#: 
+msgid "View all results"
+msgstr "Lihat semua hasil"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Lihat dan kelola semua grup di jemaat Anda"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Lihat dan kelola pembayaran slip setoran"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Lihat dan kelola data lokasi keluarga"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Lihat dan kelola file log sistem untuk debugging"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Lihat dan jalankan kueri database yang tersimpan"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Lihat nomor pembeli dan penetapan paddle"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Lihat daftar kelas, penetapan guru, dan informasi kontak"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Lihat detail keluarga, anggota, dan linimasa"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Lihat ringkasan janji persembahan keluarga dan alokasi dana"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Lihat anggota grup, peran, dan properti"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Lihat dasbor janji persembahan"
+
+#: 
+msgid "View query results"
+msgstr "Lihat hasil kueri"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Anggota dengan hak suara harus telah memberikan persembahan dalam beberapa tahun terakhir ini (0 untuk tidak mensyaratkan persembahan)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Kami tidak dapat menemukan keluarga yang Anda cari."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "Kami tidak dapat menemukan grup yang Anda cari."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "Kami tidak dapat menemukan orang yang Anda cari."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Kami tidak dapat menemukan catatan yang Anda cari."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Kami tidak dapat memproses permintaan reset kata sandi Anda."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Kami akan menggunakan ini untuk tetap berkomunikasi dan mengirim kabar gereja."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Kami sangat senang Anda di sini! Daftarkan keluarga Anda hanya dalam 3 langkah mudah."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Kami sangat senang keluarga Anda bergabung dengan kami!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Selamat Datang Kembali!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Selamat datang kembali! Silakan masukkan detail Anda untuk melanjutkan"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Selamat Bergabung dalam Keluarga!"
+
+#: 
+msgid "What happens next?"
+msgstr "Apa yang terjadi selanjutnya?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Apa yang salah? Apa yang Anda harapkan terjadi?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Siapa saja yang ada dalam keluarga Anda?"
+
+#: 
+msgid "Why Came"
+msgstr "Alasan Datang"
+
+#: 
+msgid "Yes, delete"
+msgstr "Ya, hapus"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Anda selalu bisa mengimpor lebih banyak data nanti melalui CSV."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Anda dapat membuat/menghapus grup sekolah Minggu."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Anda tidak memiliki izin keuangan untuk melihat setoran."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Data cadangan Anda telah dimuat. Anda akan diarahkan untuk masuk dengan kredensial sebelumnya."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Cadangan Anda akan secara otomatis ditingkatkan ke skema database terbaru jika diperlukan."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Sesi sebelumnya telah habis. Silakan masuk lagi."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Pendaftaran Anda telah diterima. Tim kami akan segera menghubungi untuk menyambut Anda secara personal."
+
+#: 
+msgid "all members"
+msgstr "semua anggota"
+
+#: 
+msgid "complete"
+msgstr "selesai"
+
+#: 
+msgid "fields"
+msgstr "field"
+
+#: 
+msgid "from this class?"
+msgstr "dari kelas ini?"
+
+#: 
+msgid "from this group?"
+msgstr "dari grup ini?"
+
+#: 
+msgid "full group view"
+msgstr "tampilan grup lengkap"
+
+#: 
+msgid "funds"
+msgstr "dana"
+
+#: 
+msgid "members"
+msgstr "anggota"
+
+#: 
+msgid "name@example.com"
+msgstr "nama@contoh.com"
+
+#: 
+msgid "opportunities"
+msgstr "peluang"
+
+#: 
+msgid "options"
+msgstr "opsi"
+
+#: 
+msgid "or connect an external service"
+msgstr "atau hubungkan layanan eksternal"
+
+#: 
+msgid "our church"
+msgstr "gereja kami"
+
+#: 
+msgid "page"
+msgstr "halaman"
+
+#: 
+msgid "properties"
+msgstr "properti"
+
+#: 
+msgid "to another group?"
+msgstr "ke grup lain?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Abaikan —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Pilih grup —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Pilih tipe (opsional) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Terima perangkat, lalu tetapkan ke acara untuk memulai check-in."
+
+#: 
+msgid "Activate"
+msgstr "Aktifkan"
+
+#: 
+msgid "Active Events"
+msgstr "Acara Aktif"
+
+#: 
+msgid "Add Event"
+msgstr "Tambah Acara"
+
+#: 
+msgid "Adults"
+msgstr "Dewasa"
+
+#: 
+msgid "Affected Files"
+msgstr "File yang Terpengaruh"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Semua Pemeriksaan Berhasil"
+
+#: 
+msgid "Applying..."
+msgstr "Menerapkan..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Kios yang Ditetapkan"
+
+#: 
+msgid "Attendance"
+msgstr "Kehadiran"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Cadangkan file yang dimodifikasi sebelum memperbarui jika Anda ingin menyimpan perubahan Anda."
+
+#: 
+msgid "Backup Complete"
+msgstr "Cadangan Selesai"
+
+#: 
+msgid "Class / Group"
+msgstr "Kelas / Grup"
+
+#: 
+msgid "Class List Export"
+msgstr "Ekspor Daftar Kelas"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Klik tombol pendaftaran di atas untuk membuka jendela pendaftaran 30 detik."
+
+#: 
+msgid "Continue"
+msgstr "Lanjutkan"
+
+#: 
+msgid "Create First Event"
+msgstr "Buat Acara Pertama"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Buat cadangan database sebelum menerapkan pembaruan. Ini sangat disarankan."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Membuat Cadangan..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Unduh Cadangan & Lanjutkan"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Unduh rilis terbaru dan terapkan ke instalasi Anda."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Aktifkan pendaftaran kios baru"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Dasbor Acara"
+
+#: 
+msgid "Events This Year"
+msgstr "Acara Tahun Ini"
+
+#: 
+msgid "Everyone"
+msgstr "Semua Orang"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Gagal menghapus catatan"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "File yang bukan bagian dari rilis resmi ditemukan di server Anda."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Paksa Instal Ulang?"
+
+#: 
+msgid "Full Path"
+msgstr "Path Lengkap"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Buat daftar kelas, lembar kehadiran, dan buku foto"
+
+#: 
+msgid "Installed"
+msgstr "Terinstal"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Sangat disarankan untuk memiliki cadangan sebelum melanjutkan."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Pendaftaran Kios"
+
+#: 
+msgid "Latest"
+msgstr "Terbaru"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Versi terbaru tidak diketahui"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Kelola Tipe Acara"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "File yang dimodifikasi akan dikembalikan ke versi resmi."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Beberapa grup akan memiliki Page Break antar Grup"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Anggota Baru & Penyambutan"
+
+#: 
+msgid "No Events Found"
+msgstr "Tidak Ada Acara Ditemukan"
+
+#: 
+msgid "No events found for %s."
+msgstr "Tidak ada acara ditemukan untuk %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Tidak ada masalah ditemukan. Anda dapat melanjutkan pembaruan."
+
+#: 
+msgid "Note not found"
+msgstr "Catatan tidak ditemukan"
+
+#: 
+msgid "Note text is required"
+msgstr "Teks catatan diperlukan"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Di perangkat kios (tablet, laptop, dll.), buka browser dan navigasi ke:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Hanya penulis catatan atau admin yang boleh menghapus catatan ini"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Hanya penulis catatan atau admin yang boleh mengedit catatan ini"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Ringkasan acara gereja, kehadiran, dan aktivitas"
+
+#: 
+msgid "People Without Emails"
+msgstr "Orang Tanpa Email"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Orang tanpa email pribadi atau kerja tercatat"
+
+#: 
+msgid "Pre-flight"
+msgstr "Pra-penerbangan"
+
+#: 
+msgid "Re-install"
+msgstr "Instal Ulang"
+
+#: 
+msgid "Refresh"
+msgstr "Segarkan"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Daftarkan dan kelola perangkat kios untuk check-in acara"
+
+#: 
+msgid "Review & Delete"
+msgstr "Tinjau & Hapus"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Hash SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Petunjuk Pengaturan"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Ketidakcocokan Tanda Tangan"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Lewati, Lanjutkan Tanpa Cadangan"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Perangkat akan mendaftarkan diri sendiri dan muncul di tabel di bawah sebagai \"Tertunda\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Ini akan mengunduh ulang dan menerapkan ulang versi saat ini. Dapat memperbaiki file yang rusak atau dimodifikasi."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Untuk mengatur perangkat kios, ikuti langkah-langkah berikut:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Aktifkan tombol di bawah untuk membuka jendela 30 detik bagi perangkat kios baru untuk mendaftar."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Total Check-in"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Coba pilih tipe acara atau tahun yang berbeda."
+
+#: 
+msgid "Up to Date"
+msgstr "Terkini"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Acara Sekolah Minggu Mendatang"
+
+#: 
+msgid "Update Available"
+msgstr "Pembaruan Tersedia"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Pengguna harus memiliki izin Catatan"
+

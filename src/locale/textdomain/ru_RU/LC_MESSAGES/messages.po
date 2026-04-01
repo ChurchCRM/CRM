@@ -13209,3 +13209,283 @@ msgstr "— Выберите группу —"
 msgid "— Select type (optional) —"
 msgstr "— Выберите тип (необязательно) —"
 
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Примите устройство, затем назначьте его на мероприятие для начала регистрации."
+
+#: 
+msgid "Activate"
+msgstr "Активировать"
+
+#: 
+msgid "Active Events"
+msgstr "Активные мероприятия"
+
+#: 
+msgid "Add Event"
+msgstr "Добавить мероприятие"
+
+#: 
+msgid "Adults"
+msgstr "Взрослые"
+
+#: 
+msgid "Affected Files"
+msgstr "Затронутые файлы"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Все проверки пройдены"
+
+#: 
+msgid "Applying..."
+msgstr "Применение..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Назначенный киоск"
+
+#: 
+msgid "Attendance"
+msgstr "Посещаемость"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Создайте резервную копию изменённых файлов перед обновлением, если хотите сохранить свои изменения."
+
+#: 
+msgid "Backup Complete"
+msgstr "Резервное копирование завершено"
+
+#: 
+msgid "Class / Group"
+msgstr "Класс / Группа"
+
+#: 
+msgid "Class List Export"
+msgstr "Экспорт списка класса"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Нажмите переключатель регистрации выше, чтобы открыть 30-секундное окно регистрации."
+
+#: 
+msgid "Continue"
+msgstr "Продолжить"
+
+#: 
+msgid "Create First Event"
+msgstr "Создать первое мероприятие"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Создайте резервную копию базы данных перед применением обновления. Это настоятельно рекомендуется."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Создание резервной копии..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Скачать резервную копию и продолжить"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Скачайте последний выпуск и примените его к вашей установке."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Включить регистрацию нового киоска"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Панель мероприятий"
+
+#: 
+msgid "Events This Year"
+msgstr "Мероприятия за этот год"
+
+#: 
+msgid "Everyone"
+msgstr "Все"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Не удалось удалить заметку"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "На вашем сервере обнаружены файлы, не входящие в официальный выпуск."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Принудительная переустановка?"
+
+#: 
+msgid "Full Path"
+msgstr "Полный путь"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Формирование списков классов, листов посещаемости и фотоальбомов"
+
+#: 
+msgid "Installed"
+msgstr "Установлено"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Настоятельно рекомендуется создать резервную копию перед продолжением."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Регистрация киоска"
+
+#: 
+msgid "Latest"
+msgstr "Последняя"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Последняя версия неизвестна"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Управление типами мероприятий"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Изменённые файлы будут возвращены к официальной версии."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Между несколькими группами будет вставлен разрыв страницы"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Новые прихожане и приветствие"
+
+#: 
+msgid "No Events Found"
+msgstr "Мероприятия не найдены"
+
+#: 
+msgid "No events found for %s."
+msgstr "Мероприятия для %s не найдены."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Проблем не обнаружено. Можете продолжить обновление."
+
+#: 
+msgid "Note not found"
+msgstr "Заметка не найдена"
+
+#: 
+msgid "Note text is required"
+msgstr "Текст заметки обязателен"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "На устройстве-киоске (планшет, ноутбук и т.д.) откройте браузер и перейдите по адресу:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Удалить эту заметку может только её автор или администратор"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Редактировать эту заметку может только её автор или администратор"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Обзор приходских мероприятий, посещаемости и деятельности"
+
+#: 
+msgid "People Without Emails"
+msgstr "Прихожане без электронной почты"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Прихожане без зарегистрированного личного или рабочего адреса электронной почты"
+
+#: 
+msgid "Pre-flight"
+msgstr "Предварительная проверка"
+
+#: 
+msgid "Re-install"
+msgstr "Переустановить"
+
+#: 
+msgid "Refresh"
+msgstr "Обновить"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Регистрация и управление устройствами-киосками для регистрации на мероприятиях"
+
+#: 
+msgid "Review & Delete"
+msgstr "Просмотреть и удалить"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "Хеш SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Инструкции по настройке"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Несоответствие подписи"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Пропустить, продолжить без резервной копии"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Устройство зарегистрируется автоматически и появится в таблице ниже как «Ожидание»."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Эти ссылки отображаются в меню «Ссылки» на боковой панели навигации, когда этот плагин включён."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Текущая версия будет повторно загружена и применена. Это может исправить повреждённые или изменённые файлы."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Чтобы настроить устройство-киоск, выполните следующие шаги:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Переключите выключатель ниже, чтобы открыть 30-секундное окно для регистрации новых устройств-киосков."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Всего регистраций"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Попробуйте выбрать другой тип мероприятия или год."
+
+#: 
+msgid "Up to Date"
+msgstr "Актуальная версия"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Предстоящие мероприятия воскресной школы"
+
+#: 
+msgid "Update Available"
+msgstr "Доступно обновление"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Пользователь должен иметь разрешение на заметки"
+

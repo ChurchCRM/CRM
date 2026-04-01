@@ -11101,3 +11101,2251 @@ msgstr "เวอร์ชันฐานข้อมูลของคุณใ
 msgid "or later to continue."
 msgstr "หรือใหม่กว่าเพื่อดำเนินการต่อ"
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "บันทึก \"เหตุผลที่มา\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(ไม่บังคับ — เว้นว่างเพื่อรวมทุกบทบาท)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "ครอบครัวแทนครัวเรือนหนึ่ง เก็บที่อยู่และหมายเลขโทรศัพท์บ้านที่ใช้ร่วมกันของสมาชิกทุกคนที่อาศัยอยู่ด้วยกัน"
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "ครัวเรือน เก็บที่อยู่สำหรับจัดส่งและหมายเลขโทรศัพท์บ้านที่ใช้ร่วมกัน"
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "บุคคลไม่จำเป็นต้องสังกัดครอบครัว แต่การกำหนดครอบครัวจะทำให้การจัดการที่อยู่ง่ายขึ้นมาก"
+
+#: 
+msgid "About"
+msgstr "เกี่ยวกับ"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "รูปแบบที่รองรับ: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "กู้คืนบัญชี"
+
+#: 
+msgid "Add Family"
+msgstr "เพิ่มครอบครัว"
+
+#: 
+msgid "Add First Family"
+msgstr "เพิ่มครอบครัวแรก"
+
+#: 
+msgid "Add Member"
+msgstr "เพิ่มสมาชิก"
+
+#: 
+msgid "Add New Class"
+msgstr "เพิ่มชั้นเรียนใหม่"
+
+#: 
+msgid "Add Note"
+msgstr "เพิ่มบันทึก"
+
+#: 
+msgid "Add People to the Family"
+msgstr "เพิ่มบุคคลเข้าสู่ครอบครัว"
+
+#: 
+msgid "Add Person"
+msgstr "เพิ่มบุคคล"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "เพิ่มนักเรียนไปยังรายการ"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "เพิ่มครูผู้สอนไปยังรายการ"
+
+#: 
+msgid "Add User"
+msgstr "เพิ่มผู้ใช้"
+
+#: 
+msgid "Add Your Data"
+msgstr "เพิ่มข้อมูลของคุณ"
+
+#: 
+msgid "Add Your First Family"
+msgstr "เพิ่มครอบครัวแรกของคุณ"
+
+#: 
+msgid "Add Your First Property"
+msgstr "เพิ่มคุณสมบัติแรกของคุณ"
+
+#: 
+msgid "Add a Person"
+msgstr "เพิ่มบุคคล"
+
+#: 
+msgid "Add a new pledge"
+msgstr "เพิ่มคำปฏิญาณถวายใหม่"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "เพิ่มการถวายไปยังรายการรับถวายปัจจุบัน"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "เพิ่มรายการทั้งหมดไปยังกลุ่ม"
+
+#: 
+msgid "Add all to Cart"
+msgstr "เพิ่มทั้งหมดไปยังรายการ"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "เพิ่มรายการไปยังครอบครัว"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "เพิ่มทุกคนในครัวเรือนของคุณ — ทั้งผู้ใหญ่และเด็ก"
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "เพิ่มครอบครัวและบุคคลทีละรายการใน ChurchCRM เหมาะสำหรับคริสตจักรขนาดเล็กหรือเพิ่มเติมข้อมูลที่นำเข้าแล้ว"
+
+#: 
+msgid "Add first family"
+msgstr "เพิ่มครอบครัวแรก"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "เพิ่มหรือแก้ไขข้อมูลบุคคล"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "เพิ่มหรือแก้ไขสิ่งของบริจาคสำหรับกิจกรรมระดมทุน"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "เพิ่มหรือแก้ไขบันทึกสำหรับบุคคลและครอบครัว"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "เพิ่มเจ้าหน้าที่และอาสาสมัคร"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "เพิ่มเจ้าหน้าที่หรืออาสาสมัครเป็นผู้ใช้ระบบ"
+
+#: 
+msgid "Administrator"
+msgstr "ผู้ดูแลระบบ"
+
+#: 
+msgid "Age Distribution"
+msgstr "การกระจายตามอายุ"
+
+#: 
+msgid "All Roles"
+msgstr "ทุกบทบาท"
+
+#: 
+msgid "All Time"
+msgstr "ตลอดเวลา"
+
+#: 
+msgid "All roles"
+msgstr "ทุกบทบาท"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "เกือบเสร็จแล้ว — ตรวจสอบรายละเอียดของคุณ"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "ยังทำงานอัตโนมัติผ่าน WebDAV ตามช่วงเวลาที่คุณกำหนด"
+
+#: 
+msgid "An Error Occurred"
+msgstr "เกิดข้อผิดพลาด"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "สมาชิกคริสตจักรรายบุคคล เก็บชื่อ วันเกิด อีเมลส่วนตัว และเบอร์มือถือ"
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิดขณะประมวลผลคำขอของคุณ กรุณาติดต่อผู้ดูแลระบบเพื่อขอความช่วยเหลือ"
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "เกิดข้อผิดพลาดที่ไม่คาดคิด"
+
+#: 
+msgid "Applied preset"
+msgstr "ใช้ค่าที่ตั้งไว้แล้ว"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบรายการรับถวายนี้?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบกิจกรรมระดมทุนนี้?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "คุณแน่ใจหรือไม่ว่าต้องการลบ"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "กำหนดและจัดการหมายเลขซองถวาย"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "กำหนดและจัดการหมายเลขผู้ซื้อในกิจกรรมระดมทุน"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "กำหนดรายการไปยังข้อมูลครอบครัว"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "กำหนดรายการไปยังกลุ่ม"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "กำหนดรายการไปยังกิจกรรม"
+
+#: 
+msgid "Assign to a Group"
+msgstr "กำหนดไปยังกลุ่ม"
+
+#: 
+msgid "Authentication Code"
+msgstr "รหัสยืนยันตัวตน"
+
+#: 
+msgid "Auto-mapped"
+msgstr "จับคู่อัตโนมัติ"
+
+#: 
+msgid "BCC All"
+msgstr "BCC ทั้งหมด"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "กลับไปยังแผงควบคุมผู้ดูแล"
+
+#: 
+msgid "Back to Get Started"
+msgstr "กลับไปยังเริ่มต้นใช้งาน"
+
+#: 
+msgid "Back to Home"
+msgstr "กลับไปหน้าหลัก"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "สำรองข้อมูลไปยัง WebDAV คลาวด์อัตโนมัติตามช่วงเวลาที่กำหนดได้"
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "สำรองข้อมูลไปยังที่จัดเก็บภายนอกตอนนี้"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "เรียกดูปลั๊กอินที่มีทั้งหมด"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "เรียกดูกิจกรรมและกิจธุระของคริสตจักรทั้งหมด"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "เรียกดูสมาชิกทุกคนในคริสตจักรพร้อมตัวกรองและการค้นหา"
+
+#: 
+msgid "Browse all plugins"
+msgstr "เรียกดูปลั๊กอินทั้งหมด"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "เรียกดูและค้นหาครอบครัวทั้งหมดในคริสตจักร"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "เรียกดูและค้นหากิจกรรมระดมทุน"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "เรียกดูรูปถ่ายของสมาชิกคริสตจักร"
+
+#: 
+msgid "Buyer Number"
+msgstr "หมายเลขผู้ซื้อ"
+
+#: 
+msgid "Buyers"
+msgstr "ผู้ซื้อ"
+
+#: 
+msgid "CSV Column"
+msgstr "คอลัมน์ CSV"
+
+#: 
+msgid "CSV template not found"
+msgstr "ไม่พบเทมเพลต CSV"
+
+#: 
+msgid "Call"
+msgstr "โทร"
+
+#: 
+msgid "Cart Functions"
+msgstr "ฟังก์ชันรายการ"
+
+#: 
+msgid "Change Family Role"
+msgstr "เปลี่ยนบทบาทในครอบครัว"
+
+#: 
+msgid "Check Out"
+msgstr "ลงเวลาออก"
+
+#: 
+msgid "Check Out Person"
+msgstr "ลงเวลาออกบุคคล"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "ตรวจสอบการอัปเดตและอัปเกรด ChurchCRM ของคุณ"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "ลงเวลาเข้าผู้เข้าร่วมกิจกรรมของคริสตจักร"
+
+#: 
+msgid "Check in to an event"
+msgstr "ลงเวลาเข้ากิจกรรม"
+
+#: 
+msgid "Check-ins"
+msgstr "การลงเวลาเข้า"
+
+#: 
+msgid "Children"
+msgstr "เด็ก"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "เลือกวิธีที่คุณต้องการเพิ่มข้อมูลลงฐานข้อมูล คุณสามารถใช้วิธีอื่นได้ในภายหลัง"
+
+#: 
+msgid "Church Info"
+msgstr "ข้อมูลคริสตจักร"
+
+#: 
+msgid "Clear all"
+msgstr "ล้างทั้งหมด"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "ล้างข้อมูลทั้งหมดและเริ่มใหม่"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "ล้างรายการทั้งหมดออกจากรายการ"
+
+#: 
+msgid "Click Save to apply."
+msgstr "คลิกบันทึกเพื่อใช้งาน"
+
+#: 
+msgid "Click to upload photo"
+msgstr "คลิกเพื่ออัปโหลดรูปถ่าย"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "การคลิก \"เปิด GitHub Issue\" จะเปิดแท็บใหม่พร้อมข้อมูลระบบที่กรอกไว้ล่วงหน้า จะไม่มีข้อมูลส่วนบุคคลรวมอยู่เว้นแต่คุณจะเพิ่มเอง"
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "คอลัมน์ถูกจับคู่อัตโนมัติกับฟิลด์ของ ChurchCRM"
+
+#: 
+msgid "Community Management Platform"
+msgstr "แพลตฟอร์มบริหารจัดการชุมชน"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "ใช้งานร่วมกับ Excel, Google Sheets หรือไฟล์ CSV ใดก็ได้"
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "ทำขั้นตอนเหล่านี้ตามลำดับใดก็ได้เพื่อเตรียม ChurchCRM สำหรับคริสตจักรของคุณ"
+
+#: 
+msgid "Confession"
+msgstr "การสารภาพบาป"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "กำหนดค่าการตั้งค่าและค่ากำหนดระบบทั่วไป"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "กำหนดค่าการตั้งค่ากลุ่ม บทบาท และคุณสมบัติ"
+
+#: 
+msgid "Confirm your new password"
+msgstr "ยืนยันรหัสผ่านใหม่ของคุณ"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "เชื่อมต่อเซิร์ฟเวอร์ SMTP เพื่อให้ ChurchCRM สามารถส่งอีเมลได้"
+
+#: 
+msgid "Connect with others"
+msgstr "เชื่อมต่อกับผู้อื่น"
+
+#: 
+msgid "Contact us"
+msgstr "ติดต่อเรา"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "แปลงข้อมูลบุคคลเป็นหน่วยครอบครัว"
+
+#: 
+msgid "Convert to Family"
+msgstr "แปลงเป็นครอบครัว"
+
+#: 
+msgid "Copied"
+msgstr "คัดลอกแล้ว"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "คัดลอกสมาชิกไปยังกลุ่ม"
+
+#: 
+msgid "Copy to Group"
+msgstr "คัดลอกไปยังกลุ่ม"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "สร้างข้อมูลสำรองของฐานข้อมูลคริสตจักร"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "สร้างข้อมูลสำรองด้วยตนเองอย่างน้อยสัปดาห์ละครั้ง หรือเปิดใช้ปลั๊กอินสำรองข้อมูลภายนอกสำหรับการสำรอง WebDAV อัตโนมัติตามกำหนดเวลา"
+
+#: 
+msgid "Create a new deposit"
+msgstr "สร้างรายการรับถวายใหม่"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "สร้างและแก้ไขข้อมูลครอบครัวและความสัมพันธ์"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "สร้างและจัดการกิจกรรมของคริสตจักร"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "สร้างหรือแก้ไขหมวดหมู่ประเภทคุณสมบัติ"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "สร้างหรือแก้ไขตำแหน่งอาสาสมัคร"
+
+#: 
+msgid "Current person"
+msgstr "บุคคลปัจจุบัน"
+
+#: 
+msgid "Data & Reports"
+msgstr "ข้อมูลและรายงาน"
+
+#: 
+msgid "Database Reset"
+msgstr "รีเซ็ตฐานข้อมูล"
+
+#: 
+msgid "Default / Notes"
+msgstr "ค่าเริ่มต้น / บันทึก"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "กำหนดฟิลด์กำหนดเองเพื่อเก็บข้อมูลครอบครัวเพิ่มเติม"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "กำหนดฟิลด์กำหนดเองเพื่อเก็บข้อมูลบุคคลเพิ่มเติม"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "กำหนดคุณสมบัติกำหนดเองสำหรับติดตามข้อมูล"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "กำหนดคุณสมบัติกำหนดเองที่สามารถกำหนดให้กับ"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "กำหนดคุณสมบัติเฉพาะกลุ่มสำหรับสมาชิก"
+
+#: 
+msgid "Delete All"
+msgstr "ลบทั้งหมด"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "ลบรายการลงเวลาเข้า"
+
+#: 
+msgid "Delete Family"
+msgstr "ลบครอบครัว"
+
+#: 
+msgid "Delete Group"
+msgstr "ลบกลุ่ม"
+
+#: 
+msgid "Delete Person"
+msgstr "ลบบุคคล"
+
+#: 
+msgid "Delete Pledge"
+msgstr "ลบคำปฏิญาณถวาย"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "การลบคุณสมบัตินี้จะลบการกำหนดทั้งหมดออกจากข้อมูลบุคคล ครอบครัว หรือกลุ่มด้วย"
+
+#: 
+msgid "Deposit Value"
+msgstr "มูลค่ารับถวาย"
+
+#: 
+msgid "Describe the issue"
+msgstr "อธิบายปัญหา"
+
+#: 
+msgid "Directions"
+msgstr "เส้นทาง"
+
+#: 
+msgid "Directory Reports"
+msgstr "รายงานสมุดรายชื่อ"
+
+#: 
+msgid "Disabled in settings"
+msgstr "ปิดใช้งานในการตั้งค่า"
+
+#: 
+msgid "Donated Item"
+msgstr "สิ่งของบริจาค"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "บันทึกการถวายและการบริจาคจะติดตามในระดับครอบครัว หากคุณต้องการบันทึกการถวายสำหรับบุคคลที่อาศัยอยู่คนเดียว ให้สร้างครอบครัวที่มีบุคคลเดียวให้เขา"
+
+#: 
+msgid "Download"
+msgstr "ดาวน์โหลด"
+
+#: 
+msgid "Download CSV Template"
+msgstr "ดาวน์โหลดเทมเพลต CSV"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "ดาวน์โหลดเทมเพลตเพื่อดูรูปแบบคอลัมน์ที่ต้องการ"
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "ลากและวางไฟล์ CSV ของคุณที่นี่"
+
+#: 
+msgid "Duplicates"
+msgstr "รายการซ้ำ"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "แต่ละคนสามารถมีอีเมลและหมายเลขมือถือของตัวเอง"
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "แต่ละแถวคือหนึ่งบุคคล สมาชิกในครอบครัวเดียวกันใช้ FamilyID ร่วมกัน"
+
+#: 
+msgid "Easy registration"
+msgstr "ลงทะเบียนง่าย"
+
+#: 
+msgid "Edit Class"
+msgstr "แก้ไขชั้นเรียน"
+
+#: 
+msgid "Edit Form"
+msgstr "แก้ไขแบบฟอร์ม"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "แก้ไขแบบฟอร์มคุณสมบัติสมาชิก"
+
+#: 
+msgid "Edit Property"
+msgstr "แก้ไขคุณสมบัติ"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "แก้ไขคุณสมบัติกำหนดเองสำหรับสมาชิกกลุ่ม"
+
+#: 
+msgid "Email BCC"
+msgstr "อีเมล BCC"
+
+#: 
+msgid "Email Families"
+msgstr "ส่งอีเมลถึงครอบครัว"
+
+#: 
+msgid "Email Settings"
+msgstr "ตั้งค่าอีเมล"
+
+#: 
+msgid "Email Tools"
+msgstr "เครื่องมืออีเมล"
+
+#: 
+msgid "Email cart items"
+msgstr "ส่งอีเมลรายการ"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "อีเมลที่ซ่อนผู้รับ"
+
+#: 
+msgid "Empty"
+msgstr "ว่าง"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "เปิดใช้งาน HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "เปิดใช้งานปลั๊กอิน"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "เปิดใช้ปลั๊กอิน MailChimp เพื่อซิงค์รายชื่อ"
+
+#: 
+msgid "Enrolled"
+msgstr "ลงทะเบียนแล้ว"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "กรอกข้อมูลด้วยตนเอง"
+
+#: 
+msgid "Enter a search term"
+msgstr "ป้อนคำค้นหา"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "ป้อนรหัส 6 หลักจากแอปยืนยันตัวตนเพื่อเข้าสู่ระบบ"
+
+#: 
+msgid "Enter your current password"
+msgstr "ป้อนรหัสผ่านปัจจุบันของคุณ"
+
+#: 
+msgid "Enter your login name"
+msgstr "ป้อนชื่อเข้าสู่ระบบของคุณ"
+
+#: 
+msgid "Enter your new password"
+msgstr "ป้อนรหัสผ่านใหม่ของคุณ"
+
+#: 
+msgid "Enter your password"
+msgstr "ป้อนรหัสผ่านของคุณ"
+
+#: 
+msgid "Est. Value"
+msgstr "มูลค่าประมาณ"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "ไม่รวมในการส่งออกอีเมล"
+
+#: 
+msgid "Excluded"
+msgstr "ไม่รวม"
+
+#: 
+msgid "Expand"
+msgstr "ขยาย"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "สำรวจด้วยข้อมูลตัวอย่าง"
+
+#: 
+msgid "Export"
+msgstr "ส่งออก"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "ส่งออกข้อมูลเป็นรูปแบบ CSV สำหรับแอปพลิเคชันภายนอก"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "ขยายความสามารถ ChurchCRM ด้วย MailChimp การสำรองข้อมูล และอื่นๆ"
+
+#: 
+msgid "FY %s"
+msgstr "ปีงบประมาณ %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "ไม่สามารถเพิ่มสมาชิกไปยังรายการได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "ไม่สามารถลบชั้นเรียนได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "ไม่สามารถลบกลุ่มได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "ไม่สามารถลบออกจากชั้นเรียนได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "ครอบครัวใช้ที่อยู่และหมายเลขโทรศัพท์ร่วมกัน"
+
+#: 
+msgid "Family List"
+msgstr "รายชื่อครอบครัว"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "สรุปคำปฏิญาณถวายของครอบครัว"
+
+#: 
+msgid "Family Profile"
+msgstr "ข้อมูลครอบครัว"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "บทบาทในครอบครัว (หัวหน้าครัวเรือน คู่สมรส บุตร ฯลฯ) ช่วยจัดระเบียบข้อมูลของคุณ"
+
+#: 
+msgid "Family vs Person"
+msgstr "ครอบครัว กับ บุคคล"
+
+#: 
+msgid "Fields to Include"
+msgstr "ฟิลด์ที่จะรวม"
+
+#: 
+msgid "File upload error"
+msgstr "ข้อผิดพลาดในการอัปโหลดไฟล์"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "ทำตามสองขั้นตอนนี้เพื่อเพิ่มสมาชิกคริสตจักรอย่างรวดเร็วและถูกต้อง"
+
+#: 
+msgid "Forgot password?"
+msgstr "ลืมรหัสผ่าน?"
+
+#: 
+msgid "Format"
+msgstr "รูปแบบ"
+
+#: 
+msgid "Full Group View"
+msgstr "มุมมองกลุ่มแบบเต็ม"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "สร้างและดาวน์โหลดจดหมายยืนยัน"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "สร้างใบแจ้งยอดการถวายประจำปีเพื่อวัตถุประสงค์ทางภาษี"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "สร้างสมุดรายชื่อและสิ่งพิมพ์"
+
+#: 
+msgid "Generate financial reports"
+msgstr "สร้างรายงานทางการเงิน"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "สร้างงบการเงินและรายงานการถวาย"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "สร้างจดหมายและป้ายจ่าหน้า"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "สร้างป้ายจ่าหน้าและจดหมายแบบฟอร์ม"
+
+#: 
+msgid "Generate phone directory"
+msgstr "สร้างสมุดโทรศัพท์"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "สร้างจดหมายเตือนคำปฏิญาณถวาย"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "สร้างรายงานสมาชิกกลุ่มและกิจกรรม"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "สร้างเอกสารใบแจ้งภาษีสำหรับผู้ถวาย"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "เครื่องมือทางภูมิศาสตร์"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "นำข้อมูลของคุณเข้าสู่ ChurchCRM"
+
+#: 
+msgid "Go to homepage"
+msgstr "ไปยังหน้าหลัก"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "เลือกได้ดี! นี่คือวิธีเพิ่มสมาชิกคริสตจักรของคุณ"
+
+#: 
+msgid "Group Map"
+msgstr "แผนที่กลุ่ม"
+
+#: 
+msgid "Group Reports"
+msgstr "รายงานกลุ่ม"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "ลบกลุ่มเรียบร้อยแล้ว"
+
+#: 
+msgid "Have Existing Data?"
+msgstr "มีข้อมูลอยู่แล้ว?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "หากคุณมีข้อมูลจำนวนมากในสเปรดชีต การนำเข้า CSV อาจเร็วกว่าการกรอกข้อมูลด้วยตนเอง"
+
+#: 
+msgid "Ignored"
+msgstr "ข้ามแล้ว"
+
+#: 
+msgid "Import Another File"
+msgstr "นำเข้าไฟล์อื่น"
+
+#: 
+msgid "Import CSV"
+msgstr "นำเข้า CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "นำเข้าเสร็จสมบูรณ์"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "นำเข้ารายชื่อจากกลุ่มเป้าหมาย MailChimp ของคุณ"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "การนำเข้าล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Import failed: "
+msgstr "การนำเข้าล้มเหลว: "
+
+#: 
+msgid "Import from CSV"
+msgstr "นำเข้าจาก CSV"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "นำเข้าจากสเปรดชีต"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "นำเข้าจากสเปรดชีต"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "นำเข้า กู้คืน หรือกรอกด้วยตนเอง"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "นำเข้า กู้คืน หรือกรอกข้อมูลสมาชิกคริสตจักรด้วยตนเอง"
+
+#: 
+msgid "Importing..."
+msgstr "กำลังนำเข้า..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "รวมในการส่งออกอีเมล"
+
+#: 
+msgid "Included"
+msgstr "รวมแล้ว"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "ติดตั้งใบรับรอง TLS/SSL สำหรับการเชื่อมต่อที่ปลอดภัย"
+
+#: 
+msgid "Invalid import request"
+msgstr "คำขอนำเข้าไม่ถูกต้อง"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "\"หมายเลขผู้ส่ง\" ไม่ถูกต้อง: \"%s\" กรุณาระบุรหัสประเทศ เช่น +14155551234 (US) หรือ +447911123456 (UK)"
+
+#: 
+msgid "Invite Your Team"
+msgstr "เชิญทีมของคุณ"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "เข้าร่วมชุมชนของเราและเชื่อมต่อกับ"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "ข้ามไปยังขั้นตอนการตั้งค่า:"
+
+#: 
+msgid "Key People"
+msgstr "บุคคลสำคัญ"
+
+#: 
+msgid "Kiosk"
+msgstr "คีออสก์"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "เปิดใช้งานคีออสก์"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "มากู้คืนข้อมูล ChurchCRM ก่อนหน้าของคุณ"
+
+#: 
+msgid "Letters"
+msgstr "จดหมาย"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "จดหมายและป้ายจ่าหน้า"
+
+#: 
+msgid "Letters and Labels"
+msgstr "จดหมายและป้าย"
+
+#: 
+msgid "List families created via self registration"
+msgstr "แสดงรายชื่อครอบครัวที่สร้างจากการลงทะเบียนด้วยตนเอง"
+
+#: 
+msgid "Load demo data"
+msgstr "โหลดข้อมูลตัวอย่าง"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "โหลดข้อมูลตัวอย่างครอบครัว บุคคล กลุ่ม และบันทึกการถวาย วิธีที่ปลอดภัยที่สุดในการเรียนรู้ ChurchCRM ก่อนใส่ข้อมูลจริง"
+
+#: 
+msgid "Log Files"
+msgstr "ไฟล์บันทึก"
+
+#: 
+msgid "Log Level"
+msgstr "ระดับบันทึก"
+
+#: 
+msgid "Login to your account"
+msgstr "เข้าสู่ระบบบัญชีของคุณ"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp การสำรองข้อมูล และอื่นๆ"
+
+#: 
+msgid "Manage %s options"
+msgstr "จัดการตัวเลือก %s"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "จัดการซองถวาย"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "จัดการชั้นเรียนวันอาทิตย์ ครูผู้สอน และการเข้าเรียนของนักเรียน"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "จัดการรายการจำแนกประเภท บทบาท และประเภทกลุ่ม"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "จัดการกองทุนถวายสำหรับการติดตามทางการเงิน"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "จัดการการถวาย คำปฏิญาณถวาย และบันทึกทางการเงิน"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "จัดการเครื่องมืออีเมลและการกำหนดค่า SMTP"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "จัดการชื่อกิจกรรมและหมวดหมู่"
+
+#: 
+msgid "Manage event type categories"
+msgstr "จัดการหมวดหมู่ประเภทกิจกรรม"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "จัดการข้อมูลครอบครัว บุคคล และข้อมูลประชากร"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "จัดการบุคคลในรายการของคุณ"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "จัดการประเภทคุณสมบัติของบุคคล ครอบครัว และกลุ่ม"
+
+#: 
+msgid "Manage properties from the"
+msgstr "จัดการคุณสมบัติจาก"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "จัดการผู้ใช้ระบบ สิทธิ์ และการตั้งค่ายืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "จัดการรายละเอียดบัญชีผู้ใช้และสิทธิ์"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "จัดการโอกาสอาสาสมัครและกำหนดสมาชิก"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "จัดการค่ากำหนดส่วนตัวและการตั้งค่าบัญชี"
+
+#: 
+msgid "Manual"
+msgstr "คู่มือ"
+
+#: 
+msgid "Map cart items"
+msgstr "แสดงรายการบนแผนที่"
+
+#: 
+msgid "Map to Field"
+msgstr "จับคู่กับฟิลด์"
+
+#: 
+msgid "Material"
+msgstr "วัสดุ"
+
+#: 
+msgid "Member Properties"
+msgstr "คุณสมบัติสมาชิก"
+
+#: 
+msgid "Member Roles"
+msgstr "บทบาทสมาชิก"
+
+#: 
+msgid "Members added to cart."
+msgstr "เพิ่มสมาชิกไปยังรายการแล้ว"
+
+#: 
+msgid "Memberships"
+msgstr "การเป็นสมาชิก"
+
+#: 
+msgid "Minimum"
+msgstr "ขั้นต่ำ"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "แก้ไขบทบาทครอบครัวสำหรับสมาชิกกลุ่ม"
+
+#: 
+msgid "Move Members"
+msgstr "ย้ายสมาชิก"
+
+#: 
+msgid "Move Members to Group"
+msgstr "ย้ายสมาชิกไปยังกลุ่ม"
+
+#: 
+msgid "Move to Group"
+msgstr "ย้ายไปยังกลุ่ม"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "ย้ายจาก ChurchCRM หรือ ChurchInfo ที่มีอยู่? อัปโหลดไฟล์สำรองของคุณแล้วเราจะกู้คืนข้อมูลให้โดยอัตโนมัติ"
+
+#: 
+msgid "My Settings"
+msgstr "การตั้งค่าของฉัน"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "การเปลี่ยนชื่อต้องบันทึก การจัดลำดับใหม่และการลบในเมนูจะมีผลทันที"
+
+#: 
+msgid "Name, address, contact details"
+msgstr "ชื่อ ที่อยู่ ข้อมูลการติดต่อ"
+
+#: 
+msgid "Need help?"
+msgstr "ต้องการความช่วยเหลือ?"
+
+#: 
+msgid "New"
+msgstr "ใหม่"
+
+#: 
+msgid "New Family"
+msgstr "ครอบครัวใหม่"
+
+#: 
+msgid "New Group"
+msgstr "กลุ่มใหม่"
+
+#: 
+msgid "New Person"
+msgstr "บุคคลใหม่"
+
+#: 
+msgid "No Anniversaries"
+msgstr "ไม่มีวันครบรอบ"
+
+#: 
+msgid "No Birthdays"
+msgstr "ไม่มีวันเกิด"
+
+#: 
+msgid "No Check-ins"
+msgstr "ไม่มีการลงเวลาเข้า"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "ไม่มีการติดตามรายการรับถวาย"
+
+#: 
+msgid "No Deposits"
+msgstr "ไม่มีรายการรับถวาย"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "ไม่มีวันครบรอบในช่วง 7 วันที่ผ่านมาหรือถัดไป"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "ไม่มีวันเกิดในช่วง 7 วันที่ผ่านมาหรือถัดไป"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "ยังไม่มีข้อมูลรายการรับถวาย"
+
+#: 
+msgid "No description set."
+msgstr "ยังไม่ได้ตั้งคำอธิบาย"
+
+#: 
+msgid "No email address on file"
+msgstr "ไม่มีที่อยู่อีเมลในระบบ"
+
+#: 
+msgid "No events linked to this class."
+msgstr "ไม่มีกิจกรรมที่เชื่อมโยงกับชั้นเรียนนี้"
+
+#: 
+msgid "No file uploaded"
+msgstr "ไม่มีไฟล์ที่อัปโหลด"
+
+#: 
+msgid "No group assignments yet."
+msgstr "ยังไม่มีการกำหนดกลุ่ม"
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "ไม่พบรายการที่ตรงกัน — เลือกฟิลด์หรือปล่อยเป็นข้าม"
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "ไม่พบผลลัพธ์สำหรับ \"%s\" ลองใช้คำค้นหาอื่น"
+
+#: 
+msgid "No member properties defined."
+msgstr "ยังไม่ได้กำหนดคุณสมบัติสมาชิก"
+
+#: 
+msgid "No members found for this role."
+msgstr "ไม่พบสมาชิกสำหรับบทบาทนี้"
+
+#: 
+msgid "No people found"
+msgstr "ไม่พบบุคคล"
+
+#: 
+msgid "No people match your current filters."
+msgstr "ไม่มีบุคคลที่ตรงกับตัวกรองปัจจุบันของคุณ"
+
+#: 
+msgid "No phone number on file"
+msgstr "ไม่มีหมายเลขโทรศัพท์ในระบบ"
+
+#: 
+msgid "No properties assigned."
+msgstr "ยังไม่ได้กำหนดคุณสมบัติ"
+
+#: 
+msgid "No properties defined yet"
+msgstr "ยังไม่ได้กำหนดคุณสมบัติ"
+
+#: 
+msgid "No results found"
+msgstr "ไม่พบผลลัพธ์"
+
+#: 
+msgid "No timeline events yet."
+msgstr "ยังไม่มีเหตุการณ์ในไทม์ไลน์"
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "ยังไม่มีการกำหนดตำแหน่งอาสาสมัคร"
+
+#: 
+msgid "Not ready yet?"
+msgstr "ยังไม่พร้อม?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "เมื่อคุณมีครอบครัวแล้ว ให้เพิ่มสมาชิกแต่ละคนในครัวเรือนเป็นบุคคล กำหนดบทบาทในครอบครัว (เช่น หัวหน้าครัวเรือน คู่สมรส บุตร)"
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "เมื่อคุณส่งแล้ว ทีมของเราจะได้รับการลงทะเบียนและติดต่อเพื่อต้อนรับครอบครัวของคุณเป็นการส่วนตัว หากมีสิ่งผิดปกติ ให้ใช้ปุ่มก่อนหน้าเพื่อกลับไปแก้ไข"
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "รับเฉพาะไฟล์ .csv เท่านั้น"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "เปิด GitHub Issue"
+
+#: 
+msgid "Open user menu"
+msgstr "เปิดเมนูผู้ใช้"
+
+#: 
+msgid "Options"
+msgstr "ตัวเลือก"
+
+#: 
+msgid "Other Members"
+msgstr "สมาชิกอื่นๆ"
+
+#: 
+msgid "Overview"
+msgstr "ภาพรวม"
+
+#: 
+msgid "Password Recovery"
+msgstr "กู้คืนรหัสผ่าน"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "7 วันที่ผ่านมาและถัดไป"
+
+#: 
+msgid "People List"
+msgstr "รายชื่อบุคคล"
+
+#: 
+msgid "People by Classification"
+msgstr "บุคคลตามการจำแนกประเภท"
+
+#: 
+msgid "Person removed from class."
+msgstr "ลบบุคคลออกจากชั้นเรียนแล้ว"
+
+#: 
+msgid "Photo"
+msgstr "รูปถ่าย"
+
+#: 
+msgid "Photos only"
+msgstr "เฉพาะรูปถ่าย"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "เลือกวิธีเพื่อเริ่มต้น"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "กรุณาตรวจสอบว่าทุกอย่างถูกต้องก่อนส่ง"
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "กรุณาจับคู่อย่างน้อยหนึ่งคอลัมน์ก่อนนำเข้า"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "กรุณาเลือกไฟล์ CSV"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "กรุณาลองขอลิงก์รีเซ็ตรหัสผ่านใหม่หรือติดต่อฝ่ายสนับสนุนหากยังพบปัญหา"
+
+#: 
+msgid "Pledges"
+msgstr "คำปฏิญาณถวาย"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "เปิดใช้ปลั๊กอินแล้วแต่ยังไม่ได้กำหนดค่า เมื่อตั้งค่าแล้ว การสำรองข้อมูลจะทำงานอัตโนมัติผ่าน WebDAV ตามช่วงเวลาที่กำหนด"
+
+#: 
+msgid "Press ? to focus search"
+msgstr "กด ? เพื่อไปที่ช่องค้นหา"
+
+#: 
+msgid "Prev"
+msgstr "ก่อนหน้า"
+
+#: 
+msgid "Print name tags"
+msgstr "พิมพ์ป้ายชื่อ"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "สมุดรายชื่อแบบพิมพ์ได้ของทุกคน จัดกลุ่มตามครอบครัว"
+
+#: 
+msgid "Properties Form"
+msgstr "แบบฟอร์มคุณสมบัติ"
+
+#: 
+msgid "Property assignment not found."
+msgstr "ไม่พบการกำหนดคุณสมบัติ"
+
+#: 
+msgid "Property deleted successfully."
+msgstr "ลบคุณสมบัติเรียบร้อยแล้ว"
+
+#: 
+msgid "Property not found."
+msgstr "ไม่พบคุณสมบัติ"
+
+#: 
+msgid "Quick Setup"
+msgstr "ตั้งค่าด่วน"
+
+#: 
+msgid "Quick Tips"
+msgstr "เคล็ดลับด่วน"
+
+#: 
+msgid "Ready to back up"
+msgstr "พร้อมสำรองข้อมูล"
+
+#: 
+msgid "Ready to restore"
+msgstr "พร้อมกู้คืน"
+
+#: 
+msgid "Recommended Order"
+msgstr "ลำดับที่แนะนำ"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "บันทึกผู้ชนะการจับรางวัลระดมทุนหลายคนพร้อมกัน"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "บันทึกคำปฏิญาณถวายและการถวายใหม่"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
+
+#: 
+msgid "Register Your Family"
+msgstr "ลงทะเบียนครอบครัวของคุณ"
+
+#: 
+msgid "Register another family"
+msgstr "ลงทะเบียนครอบครัวอื่น"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "ลบทั้งหมดออกจากรายการ"
+
+#: 
+msgid "Remove from Class"
+msgstr "ลบออกจากชั้นเรียน"
+
+#: 
+msgid "Report an Issue"
+msgstr "รายงานปัญหา"
+
+#: 
+msgid "Restore a Backup"
+msgstr "กู้คืนข้อมูลสำรอง"
+
+#: 
+msgid "Restore backup"
+msgstr "กู้คืนข้อมูลสำรอง"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "กู้คืนฐานข้อมูลคริสตจักรจากไฟล์สำรอง"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "กลับไปยังแผงควบคุม"
+
+#: 
+msgid "Return to Families"
+msgstr "กลับไปยังครอบครัว"
+
+#: 
+msgid "Return to Groups"
+msgstr "กลับไปยังกลุ่ม"
+
+#: 
+msgid "Return to People"
+msgstr "กลับไปยังบุคคล"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "ตรวจสอบและทำความสะอาดไฟล์ที่ไม่เกี่ยวข้องกับข้อมูลใดๆ"
+
+#: 
+msgid "Role not found."
+msgstr "ไม่พบบทบาท"
+
+#: 
+msgid "Roles"
+msgstr "บทบาท"
+
+#: 
+msgid "Run"
+msgstr "เรียกใช้"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "เซิร์ฟเวอร์ SMTP สำหรับส่งอีเมล"
+
+#: 
+msgid "Sample Data"
+msgstr "ข้อมูลตัวอย่าง"
+
+#: 
+msgid "Search Results"
+msgstr "ผลลัพธ์การค้นหา"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม ที่อยู่ และอื่นๆ"
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "ค้นหาและดูบันทึกใบรับถวาย"
+
+#: 
+msgid "Search groups..."
+msgstr "ค้นหากลุ่ม..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "ค้นหาบุคคล ครอบครัว กลุ่ม…"
+
+#: 
+msgid "Security First"
+msgstr "ความปลอดภัยเป็นอันดับแรก"
+
+#: 
+msgid "Select Fields"
+msgstr "เลือกฟิลด์"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "เลือกฟิลด์ที่จะรวม"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "เลือกไฟล์สำรองและคลิกกู้คืนฐานข้อมูล"
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "เลือกตัวเลือกด้านบนและคลิกปุ่มสำรองข้อมูล"
+
+#: 
+msgid "Self Registration Report"
+msgstr "รายงานการลงทะเบียนด้วยตนเอง"
+
+#: 
+msgid "Send email to families"
+msgstr "ส่งอีเมลถึงครอบครัว"
+
+#: 
+msgid "Server Error"
+msgstr "ข้อผิดพลาดเซิร์ฟเวอร์"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "เซิร์ฟเวอร์ตอบกลับผิดปกติ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "ตั้งค่าสิทธิ์เป็นจริงเพื่อให้ผู้ใช้ใหม่สามารถเปลี่ยนค่าปัจจุบันได้"
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "ตั้งอีเมลผู้ดูแลระบบเพื่อรีเซ็ตรหัสผ่านและรับการแจ้งเตือน"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "ตั้งค่ากำหนดเริ่มต้นสำหรับบัญชีผู้ใช้ใหม่"
+
+#: 
+msgid "Set up"
+msgstr "ตั้งค่า"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "ตั้งค่ากิจกรรมหรือแคมเปญระดมทุนใหม่"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "ตั้งชื่อคริสตจักร ที่อยู่ และข้อมูลการติดต่อ"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "ตั้งชื่อคริสตจักร ที่อยู่ และอีเมลติดต่อ"
+
+#: 
+msgid "Setup Progress"
+msgstr "ความคืบหน้าการตั้งค่า"
+
+#: 
+msgid "Setup Required"
+msgstr "ต้องตั้งค่า"
+
+#: 
+msgid "Share"
+msgstr "แชร์"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "แสดงสมาชิกของ: %s"
+
+#: 
+msgid "Sign in"
+msgstr "เข้าสู่ระบบ"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "เนื่องจากนี่คือการติดตั้งใหม่ การกู้คืนจะโหลดข้อมูลสำรองของคุณเท่านั้น"
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "ข้าม — ไปยังแผงควบคุมผู้ดูแล"
+
+#: 
+msgid "Start Fresh"
+msgstr "เริ่มต้นใหม่"
+
+#: 
+msgid "Start Over"
+msgstr "เริ่มใหม่"
+
+#: 
+msgid "Stay informed"
+msgstr "ติดตามข่าวสาร"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "ขั้นตอนที่ 1 — อัปโหลดไฟล์ CSV"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "ขั้นตอนที่ 2 — จับคู่คอลัมน์"
+
+#: 
+msgid "Submitting..."
+msgstr "กำลังส่ง..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "รองรับข้อมูลสำรองจาก ChurchCRM และ ChurchInfo"
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "ข้อมูลวินิจฉัยระบบและการกำหนดค่า"
+
+#: 
+msgid "Tags"
+msgstr "แท็ก"
+
+#: 
+msgid "Tax Statements"
+msgstr "ใบแจ้งยอดภาษี"
+
+#: 
+msgid "Teacher"
+msgstr "ครูผู้สอน"
+
+#: 
+msgid "Technical Details"
+msgstr "รายละเอียดทางเทคนิค"
+
+#: 
+msgid "Tell us about your family"
+msgstr "บอกเราเกี่ยวกับครอบครัวของคุณ"
+
+#: 
+msgid "The property could not be removed."
+msgstr "ไม่สามารถลบคุณสมบัตินี้ได้"
+
+#: 
+msgid "The property is successfully removed."
+msgstr "ลบคุณสมบัติเรียบร้อยแล้ว"
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "ลิงก์เหล่านี้จะปรากฏในเมนู \"ลิงก์\" ในแถบนำทางด้านข้างเมื่อเปิดใช้ปลั๊กอินนี้"
+
+#: 
+msgid "To Family"
+msgstr "ไปยังครอบครัว"
+
+#: 
+msgid "To Group"
+msgstr "ไปยังกลุ่ม"
+
+#: 
+msgid "Toggle navigation"
+msgstr "สลับการนำทาง"
+
+#: 
+msgid "Total Size"
+msgstr "ขนาดรวม"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "ติดตามคำปฏิญาณถวายของครอบครัวและการบริจาคกองทุนตามปีงบประมาณ"
+
+#: 
+msgid "Transaction Details"
+msgstr "รายละเอียดธุรกรรม"
+
+#: 
+msgid "Unmapped"
+msgstr "ยังไม่จับคู่"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "อัปเดตข้อมูลติดต่อผู้ดูแล"
+
+#: 
+msgid "Upload CSV"
+msgstr "อัปโหลด CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "อัปโหลดไฟล์ CSV เพื่อนำเข้าครอบครัวและบุคคลเข้าสู่ ChurchCRM"
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "อัปโหลด CSV จาก Excel, Google Sheets หรือระบบจัดการคริสตจักรก่อนหน้าและจับคู่คอลัมน์กับฟิลด์ ChurchCRM"
+
+#: 
+msgid "Upload failed."
+msgstr "อัปโหลดล้มเหลว"
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "อัปโหลดล้มเหลว กรุณาตรวจสอบไฟล์และลองอีกครั้ง"
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "เซสชันการอัปโหลดหมดอายุ กรุณาอัปโหลดไฟล์อีกครั้ง"
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "กำลังอัปโหลด กรุณารอ..."
+
+#: 
+msgid "Users"
+msgstr "ผู้ใช้"
+
+#: 
+msgid "Verify Info"
+msgstr "ตรวจสอบข้อมูล"
+
+#: 
+msgid "Verify your identity"
+msgstr "ยืนยันตัวตนของคุณ"
+
+#: 
+msgid "View Family"
+msgstr "ดูครอบครัว"
+
+#: 
+msgid "View People"
+msgstr "ดูบุคคล"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "ดูครอบครัวทั้งหมดบนแผนที่แบบโต้ตอบ"
+
+#: 
+msgid "View all results"
+msgstr "ดูผลลัพธ์ทั้งหมด"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "ดูและจัดการกลุ่มทั้งหมดในคริสตจักร"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "ดูและจัดการการถวายในใบรับถวาย"
+
+#: 
+msgid "View and manage family location data"
+msgstr "ดูและจัดการข้อมูลตำแหน่งครอบครัว"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "ดูและจัดการไฟล์บันทึกระบบสำหรับการแก้ไขปัญหา"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "ดูและเรียกใช้คิวรีฐานข้อมูลที่บันทึกไว้"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "ดูหมายเลขผู้ซื้อและการกำหนดป้ายหมายเลข"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "ดูรายชื่อนักเรียน การกำหนดครูผู้สอน และข้อมูลการติดต่อ"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "ดูรายละเอียดครอบครัว สมาชิก และไทม์ไลน์"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "ดูสรุปคำปฏิญาณถวายของครอบครัวและการจัดสรรกองทุน"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "ดูแผงควบคุมคำปฏิญาณถวาย"
+
+#: 
+msgid "View query results"
+msgstr "ดูผลลัพธ์คิวรี"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "สมาชิกผู้มีสิทธิ์ลงคะแนนต้องมีการถวายภายในจำนวนปีนี้ (0 หมายถึงไม่ต้องมีการถวาย)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "ไม่พบครอบครัวที่คุณค้นหา"
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "ไม่พบกลุ่มที่คุณค้นหา"
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "ไม่พบบุคคลที่คุณค้นหา"
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "ไม่พบข้อมูลที่คุณค้นหา"
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "ไม่สามารถดำเนินการคำขอรีเซ็ตรหัสผ่านของคุณได้"
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "เราจะใช้ข้อมูลนี้เพื่อติดต่อและส่งข่าวสารคริสตจักร"
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "ยินดีที่คุณมาที่นี่! ลงทะเบียนครอบครัวของคุณใน 3 ขั้นตอนง่ายๆ"
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "ยินดีที่ครอบครัวของคุณเข้าร่วมกับเรา!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "ยินดีต้อนรับกลับ!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "ยินดีต้อนรับกลับ! กรุณากรอกข้อมูลเพื่อดำเนินการต่อ"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "ยินดีต้อนรับสู่ครอบครัว!"
+
+#: 
+msgid "What happens next?"
+msgstr "ขั้นตอนถัดไปคืออะไร?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "เกิดอะไรผิดพลาด? คุณคาดหวังว่าจะเกิดอะไรขึ้น?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "ใครอยู่ในครอบครัวของคุณ?"
+
+#: 
+msgid "Why Came"
+msgstr "เหตุผลที่มา"
+
+#: 
+msgid "Yes, delete"
+msgstr "ใช่ ลบ"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "คุณสามารถนำเข้าข้อมูลเพิ่มเติมได้ภายหลังผ่าน CSV"
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "คุณสามารถสร้าง/ลบกลุ่มโรงเรียนวันอาทิตย์ได้"
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "คุณไม่มีสิทธิ์ทางการเงินในการดูรายการรับถวาย"
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "โหลดข้อมูลสำรองของคุณแล้ว คุณจะถูกนำไปเข้าสู่ระบบด้วยข้อมูลรับรองเดิม"
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "ข้อมูลสำรองของคุณจะถูกอัปเกรดเป็นโครงสร้างฐานข้อมูลล่าสุดโดยอัตโนมัติหากจำเป็น"
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "เซสชันก่อนหน้าของคุณหมดเวลา กรุณาเข้าสู่ระบบอีกครั้ง"
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "ได้รับการลงทะเบียนของคุณแล้ว ทีมของเราจะติดต่อเพื่อต้อนรับคุณเป็นการส่วนตัวในเร็วๆ นี้"
+
+#: 
+msgid "all members"
+msgstr "สมาชิกทั้งหมด"
+
+#: 
+msgid "complete"
+msgstr "เสร็จสมบูรณ์"
+
+#: 
+msgid "fields"
+msgstr "ฟิลด์"
+
+#: 
+msgid "from this class?"
+msgstr "จากชั้นเรียนนี้?"
+
+#: 
+msgid "from this group?"
+msgstr "จากกลุ่มนี้?"
+
+#: 
+msgid "full group view"
+msgstr "มุมมองกลุ่มแบบเต็ม"
+
+#: 
+msgid "funds"
+msgstr "กองทุน"
+
+#: 
+msgid "members"
+msgstr "สมาชิก"
+
+#: 
+msgid "opportunities"
+msgstr "โอกาส"
+
+#: 
+msgid "options"
+msgstr "ตัวเลือก"
+
+#: 
+msgid "or connect an external service"
+msgstr "หรือเชื่อมต่อบริการภายนอก"
+
+#: 
+msgid "our church"
+msgstr "คริสตจักรของเรา"
+
+#: 
+msgid "page"
+msgstr "หน้า"
+
+#: 
+msgid "properties"
+msgstr "คุณสมบัติ"
+
+#: 
+msgid "to another group?"
+msgstr "ไปยังกลุ่มอื่น?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— ข้าม —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— เลือกกลุ่ม —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— เลือกประเภท (ไม่บังคับ) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "ยอมรับอุปกรณ์ จากนั้นกำหนดให้กิจกรรมเพื่อเริ่มลงเวลาเข้า"
+
+#: 
+msgid "Activate"
+msgstr "เปิดใช้งาน"
+
+#: 
+msgid "Active Events"
+msgstr "กิจกรรมที่ใช้งานอยู่"
+
+#: 
+msgid "Add Event"
+msgstr "เพิ่มกิจกรรม"
+
+#: 
+msgid "Adults"
+msgstr "ผู้ใหญ่"
+
+#: 
+msgid "Affected Files"
+msgstr "ไฟล์ที่ได้รับผลกระทบ"
+
+#: 
+msgid "All Checks Passed"
+msgstr "ผ่านการตรวจสอบทั้งหมด"
+
+#: 
+msgid "Applying..."
+msgstr "กำลังใช้งาน..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "คีออสก์ที่กำหนด"
+
+#: 
+msgid "Attendance"
+msgstr "การเข้าร่วม"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "สำรองไฟล์ที่แก้ไขก่อนอัปเกรดหากคุณต้องการเก็บการเปลี่ยนแปลง"
+
+#: 
+msgid "Backup Complete"
+msgstr "สำรองข้อมูลเสร็จสมบูรณ์"
+
+#: 
+msgid "Class / Group"
+msgstr "ชั้นเรียน / กลุ่ม"
+
+#: 
+msgid "Class List Export"
+msgstr "ส่งออกรายชื่อชั้นเรียน"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "คลิกปุ่มสลับการลงทะเบียนด้านบนเพื่อเปิดหน้าต่างลงทะเบียน 30 วินาที"
+
+#: 
+msgid "Continue"
+msgstr "ดำเนินการต่อ"
+
+#: 
+msgid "Create First Event"
+msgstr "สร้างกิจกรรมแรก"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "สร้างข้อมูลสำรองฐานข้อมูลก่อนใช้การอัปเดต แนะนำอย่างยิ่ง"
+
+#: 
+msgid "Creating Backup..."
+msgstr "กำลังสร้างข้อมูลสำรอง..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "ดาวน์โหลดข้อมูลสำรองและดำเนินการต่อ"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "ดาวน์โหลดรุ่นล่าสุดและใช้กับการติดตั้งของคุณ"
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "เปิดใช้การลงทะเบียนคีออสก์ใหม่"
+
+#: 
+msgid "Events Dashboard"
+msgstr "แผงควบคุมกิจกรรม"
+
+#: 
+msgid "Events This Year"
+msgstr "กิจกรรมปีนี้"
+
+#: 
+msgid "Everyone"
+msgstr "ทุกคน"
+
+#: 
+msgid "Failed to delete note"
+msgstr "ไม่สามารถลบบันทึกได้"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "พบไฟล์ที่ไม่ได้เป็นส่วนหนึ่งของรุ่นทางการบนเซิร์ฟเวอร์ของคุณ"
+
+#: 
+msgid "Force Re-install?"
+msgstr "บังคับติดตั้งใหม่?"
+
+#: 
+msgid "Full Path"
+msgstr "เส้นทางเต็ม"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "สร้างรายชื่อชั้นเรียน แผ่นลงชื่อเข้าร่วม และสมุดรูปถ่าย"
+
+#: 
+msgid "Installed"
+msgstr "ติดตั้งแล้ว"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "แนะนำอย่างยิ่งให้มีข้อมูลสำรองก่อนดำเนินการ"
+
+#: 
+msgid "Kiosk Registration"
+msgstr "ลงทะเบียนคีออสก์"
+
+#: 
+msgid "Latest"
+msgstr "ล่าสุด"
+
+#: 
+msgid "Latest version unknown"
+msgstr "ไม่ทราบเวอร์ชันล่าสุด"
+
+#: 
+msgid "Manage Event Types"
+msgstr "จัดการประเภทกิจกรรม"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "ไฟล์ที่แก้ไขจะถูกเปลี่ยนกลับเป็นเวอร์ชันทางการ"
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "กลุ่มหลายกลุ่มจะมีการแบ่งหน้าระหว่างกลุ่ม"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "สมาชิกใหม่และการต้อนรับ"
+
+#: 
+msgid "No Events Found"
+msgstr "ไม่พบกิจกรรม"
+
+#: 
+msgid "No events found for %s."
+msgstr "ไม่พบกิจกรรมสำหรับ %s"
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "ไม่พบปัญหา คุณสามารถดำเนินการอัปเกรดได้"
+
+#: 
+msgid "Note not found"
+msgstr "ไม่พบบันทึก"
+
+#: 
+msgid "Note text is required"
+msgstr "ต้องระบุข้อความบันทึก"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "บนอุปกรณ์คีออสก์ (แท็บเล็ต แล็ปท็อป ฯลฯ) เปิดเบราว์เซอร์และไปที่:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "เฉพาะผู้เขียนบันทึกหรือผู้ดูแลระบบเท่านั้นที่สามารถลบบันทึกนี้"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "เฉพาะผู้เขียนบันทึกหรือผู้ดูแลระบบเท่านั้นที่สามารถแก้ไขบันทึกนี้"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "ภาพรวมกิจกรรมคริสตจักร การเข้าร่วม และกิจธุระ"
+
+#: 
+msgid "People Without Emails"
+msgstr "บุคคลที่ไม่มีอีเมล"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "บุคคลที่ไม่มีอีเมลส่วนตัวหรืออีเมลที่ทำงานในระบบ"
+
+#: 
+msgid "Pre-flight"
+msgstr "ตรวจสอบก่อนดำเนินการ"
+
+#: 
+msgid "Re-install"
+msgstr "ติดตั้งใหม่"
+
+#: 
+msgid "Refresh"
+msgstr "รีเฟรช"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "ลงทะเบียนและจัดการอุปกรณ์คีออสก์สำหรับลงเวลาเข้ากิจกรรม"
+
+#: 
+msgid "Review & Delete"
+msgstr "ตรวจสอบและลบ"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "แฮช SHA1"
+
+#: 
+msgid "Setup Instructions"
+msgstr "คำแนะนำการตั้งค่า"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "ลายเซ็นไม่ตรงกัน"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "ข้าม ดำเนินการต่อโดยไม่สำรองข้อมูล"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "อุปกรณ์จะลงทะเบียนตัวเองและปรากฏในตารางด้านล่างเป็น \"รอดำเนินการ\""
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "ลิงก์เหล่านี้จะปรากฏในเมนู \"ลิงก์\" ในแถบนำทางด้านข้างเมื่อเปิดใช้ปลั๊กอินนี้"
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "จะดาวน์โหลดและใช้เวอร์ชันปัจจุบันใหม่ สามารถแก้ไขไฟล์ที่เสียหายหรือถูกแก้ไขได้"
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "เพื่อตั้งค่าอุปกรณ์คีออสก์ ให้ทำตามขั้นตอนเหล่านี้:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "สลับสวิตช์ด้านล่างเพื่อเปิดหน้าต่าง 30 วินาทีสำหรับอุปกรณ์คีออสก์ใหม่ลงทะเบียน"
+
+#: 
+msgid "Total Check-ins"
+msgstr "จำนวนการลงเวลาเข้าทั้งหมด"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "ลองเลือกประเภทกิจกรรมหรือปีอื่น"
+
+#: 
+msgid "Up to Date"
+msgstr "เป็นเวอร์ชันล่าสุด"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "กิจกรรมโรงเรียนวันอาทิตย์ที่จะมาถึง"
+
+#: 
+msgid "Update Available"
+msgstr "มีการอัปเดต"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "ผู้ใช้ต้องมีสิทธิ์บันทึก"
+
