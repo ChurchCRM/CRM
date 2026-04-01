@@ -1,12 +1,12 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "Hasil pencarian untuk \"%s\": %d"
   },
-  "Administrator": "",
-  "BCC": "",
-  "Check Out": "",
-  "Email BCC": "",
-  "Format": "",
-  "Manual": "",
-  "Minimum": ""
+  "Administrator": "Administrator",
+  "BCC": "BCC",
+  "Check Out": "Checkout",
+  "Email BCC": "Email BCC",
+  "Format": "Format",
+  "Manual": "Manual",
+  "Minimum": "Minimum"
 }
