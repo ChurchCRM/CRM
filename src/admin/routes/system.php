@@ -446,7 +446,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sDefaultCountry', $body['sDefaultCountry'] ?? '');
 
         // Flash success via the system-wide notify
-        $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully.');
+        $_SESSION['sGlobalMessage']     = gettext('Church information saved successfully');
         $_SESSION['sGlobalMessageClass'] = 'success';
 
         return $response
