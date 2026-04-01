@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08c0fa2271c88b50add9acee5e949de9",
+    "content-hash": "b28d6a7eab7139f0ea648b40e48f0420",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -5351,7 +5351,6 @@
         "ext-mbstring": "*",
         "ext-mysqli": "*",
         "ext-session": "*",
-        "ext-sodium": "*",
         "ext-zip": "*",
         "ext-zlib": "*"
     },

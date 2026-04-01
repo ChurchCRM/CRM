@@ -32,7 +32,6 @@
     "ext-mbstring": "*",
     "ext-mysqli": "*",
     "ext-session": "*",
-    "ext-sodium": "*",
     "ext-zip": "*",
     "ext-zlib": "*",
     "azuyalabs/yasumi": "^2.7.0",
