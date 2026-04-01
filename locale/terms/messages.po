@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-03-30 20:32+0000\n"
+"POT-Creation-Date: 2026-04-01 04:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1621,6 +1621,9 @@ msgstr ""
 msgid "ChurchCRM Supported Locales"
 msgstr ""
 
+msgid "ChurchCRM can send emails directly."
+msgstr ""
+
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
@@ -1765,6 +1768,9 @@ msgstr ""
 msgid "Comment"
 msgstr ""
 
+msgid "Communication"
+msgstr ""
+
 msgid "Community Management Platform"
 msgstr ""
 
@@ -1813,6 +1819,12 @@ msgid "Configure External Backup"
 msgstr ""
 
 msgid "Configure MailChimp"
+msgstr ""
+
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr ""
+
+msgid "Configure Vonage"
 msgstr ""
 
 msgid "Configure global system settings and preferences"
@@ -1887,6 +1899,9 @@ msgid "Congo (Republic) (Congo-Brazzaville)"
 msgstr ""
 
 msgid "Congregation Map"
+msgstr ""
+
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
 msgstr ""
 
 msgid "Connect an SMTP server so ChurchCRM can send emails"
@@ -1977,16 +1992,28 @@ msgstr ""
 msgid "Copied"
 msgstr ""
 
+msgid "Copied to clipboard"
+msgstr ""
+
 msgid "Copied!"
 msgstr ""
 
 msgid "Copy"
 msgstr ""
 
+msgid "Copy All Emails"
+msgstr ""
+
+msgid "Copy All Numbers"
+msgstr ""
+
 msgid "Copy Members to Group"
 msgstr ""
 
 msgid "Copy to Group"
+msgstr ""
+
+msgid "Copy to clipboard"
 msgstr ""
 
 msgid "Copyright"
@@ -2926,6 +2953,9 @@ msgstr ""
 msgid "Email Configuration"
 msgstr ""
 
+msgid "Email Dashboard"
+msgstr ""
+
 msgid "Email Debug Info"
 msgstr ""
 
@@ -2933,6 +2963,9 @@ msgid "Email Export"
 msgstr ""
 
 msgid "Email Families"
+msgstr ""
+
+msgid "Email Integrations"
 msgstr ""
 
 msgid "Email PDF"
@@ -2950,10 +2983,25 @@ msgstr ""
 msgid "Email address is required."
 msgstr ""
 
+msgid "Email addresses copied to clipboard"
+msgstr ""
+
 msgid "Email cart items"
 msgstr ""
 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr ""
+
+msgid "Email is Disabled"
+msgstr ""
+
 msgid "Email is Not Valid"
+msgstr ""
+
+msgid "Email links in group and people views"
+msgstr ""
+
+msgid "Email lists are synced with Mailchimp."
 msgstr ""
 
 msgid "Email with hidden recipients"
@@ -3014,6 +3062,9 @@ msgid "Enable Sunday School left menu."
 msgstr ""
 
 msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+msgid "Enable email in the settings panel below, then configure your SMTP server."
 msgstr ""
 
 msgid "Enable new kiosk registration"
@@ -3512,6 +3563,15 @@ msgid "Failed to remove group"
 msgstr ""
 
 msgid "Failed to reset settings"
+msgstr ""
+
+msgid "Failed to retrieve data"
+msgstr ""
+
+msgid "Failed to retrieve email addresses"
+msgstr ""
+
+msgid "Failed to retrieve phone numbers"
 msgstr ""
 
 msgid "Failed to save settings"
@@ -4839,6 +4899,9 @@ msgstr ""
 msgid "Kiosk Registration Disabled"
 msgstr ""
 
+msgid "Kiosk check-in email notifications"
+msgstr ""
+
 msgid "Kiosk device not found"
 msgstr ""
 
@@ -5192,6 +5255,12 @@ msgstr ""
 msgid "Mailchimp"
 msgstr ""
 
+msgid "Mailchimp Connected"
+msgstr ""
+
+msgid "Mailchimp Not Configured"
+msgstr ""
+
 msgid "Mailchimp is not active"
 msgstr ""
 
@@ -5272,6 +5341,9 @@ msgid "Manage Orphaned Files"
 msgstr ""
 
 msgid "Manage Properties and Classifications"
+msgstr ""
+
+msgid "Manage SMS/text messaging tools and settings"
 msgstr ""
 
 msgid "Manage Sunday school classes, teachers, and student attendance"
@@ -5848,6 +5920,9 @@ msgstr ""
 msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
 msgstr ""
 
+msgid "New member notification emails"
+msgstr ""
+
 msgid "New to"
 msgstr ""
 
@@ -5948,6 +6023,9 @@ msgstr ""
 msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
+msgid "No cell phone on file"
+msgstr ""
+
 msgid "No community plugins installed"
 msgstr ""
 
@@ -5970,6 +6048,9 @@ msgid "No description set."
 msgstr ""
 
 msgid "No email address on file"
+msgstr ""
+
+msgid "No email addresses available"
 msgstr ""
 
 msgid "No email passed in"
@@ -6041,6 +6122,9 @@ msgid "No people match your current filters."
 msgstr ""
 
 msgid "No phone number on file"
+msgstr ""
+
+msgid "No phone numbers available"
 msgstr ""
 
 msgid "No pledges found for the selected fiscal year"
@@ -6120,6 +6204,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Norwegian"
+msgstr ""
+
+msgid "Not Classified"
 msgstr ""
 
 msgid "Not Configured"
@@ -6455,6 +6542,9 @@ msgstr ""
 msgid "Paraguay"
 msgstr ""
 
+msgid "Parents"
+msgstr ""
+
 msgid "Parents/Guardians"
 msgstr ""
 
@@ -6489,6 +6579,9 @@ msgid "Password Reset Link"
 msgstr ""
 
 msgid "Password Reset Successful"
+msgstr ""
+
+msgid "Password reset emails — users cannot recover their accounts"
 msgstr ""
 
 msgid "Password reset for"
@@ -6649,6 +6742,12 @@ msgstr ""
 msgid "Person not found"
 msgstr ""
 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr ""
+
+msgid "Person property used to exclude members from email lists"
+msgstr ""
+
 msgid "Person removed from class."
 msgstr ""
 
@@ -6700,6 +6799,12 @@ msgid "Phone number"
 msgstr ""
 
 msgid "Phone number is required."
+msgstr ""
+
+msgid "Phone numbers copied to clipboard"
+msgstr ""
+
+msgid "Phone numbers copied — paste into your messaging app"
 msgstr ""
 
 msgid "Photo"
@@ -7006,7 +7111,7 @@ msgstr ""
 msgid "Press ? to focus search"
 msgstr ""
 
-msgid "Press CTRL + C to copy all group members' phone numbers"
+msgid "Press CTRL + C to copy"
 msgstr ""
 
 msgid "Prev"
@@ -7040,15 +7145,6 @@ msgid "Profile"
 msgstr ""
 
 msgid "Profile Image Deleted"
-msgstr ""
-
-msgid "Profile Image successfully removed."
-msgstr ""
-
-msgid "Profile Image successfully updated."
-msgstr ""
-
-msgid "Profile Image upload Error."
 msgstr ""
 
 msgid "Profile Image uploaded"
@@ -7525,10 +7621,22 @@ msgstr ""
 msgid "SHA1 Hash"
 msgstr ""
 
+msgid "SMS Integration"
+msgstr ""
+
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr ""
+
+msgid "SMTP Configured"
+msgstr ""
+
 msgid "SMTP Host"
 msgstr ""
 
 msgid "SMTP Host is not setup, please visit the settings page"
+msgstr ""
+
+msgid "SMTP Not Configured"
 msgstr ""
 
 msgid "SMTP Password"
@@ -7876,6 +7984,9 @@ msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
 msgid "Send email to families"
+msgstr ""
+
+msgid "Send text message"
 msgstr ""
 
 #. Context: countries
@@ -8492,6 +8603,12 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+msgid "Text All"
+msgstr ""
+
+msgid "Text Dashboard"
+msgstr ""
+
 msgid "Text Field (100 char)"
 msgstr ""
 
@@ -8501,7 +8618,16 @@ msgstr ""
 msgid "Text Field (long)"
 msgstr ""
 
+msgid "Text Settings"
+msgstr ""
+
+msgid "Text Tools"
+msgstr ""
+
 msgid "Text before name in emails/reports"
+msgstr ""
+
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
 msgstr ""
 
 #. Context: locales
@@ -8513,9 +8639,6 @@ msgid "Thailand (ไทย)"
 msgstr ""
 
 msgid "Thank You!"
-msgstr ""
-
-msgid "Thank you for registering your ChurchCRM installation."
 msgstr ""
 
 msgid "That field name already exists."
@@ -9522,6 +9645,12 @@ msgstr ""
 msgid "Vonage API Secret"
 msgstr ""
 
+msgid "Vonage SMS Connected"
+msgstr ""
+
+msgid "Vonage SMS Not Configured"
+msgstr ""
+
 msgid "Vonage server error. Please try again later."
 msgstr ""
 
@@ -9687,6 +9816,9 @@ msgid "Winter"
 msgstr ""
 
 msgid "With Photos"
+msgstr ""
+
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
 msgstr ""
 
 msgid "Work"
@@ -9999,9 +10131,6 @@ msgid "e.g., Sunday School, Bible Study..."
 msgstr ""
 
 msgid "e.g., Visitors, Children"
-msgstr ""
-
-msgid "eMail Dashboard"
 msgstr ""
 
 msgid "families"

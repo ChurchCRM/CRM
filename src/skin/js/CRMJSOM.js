@@ -648,6 +648,27 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
   }
 })();
 
+/**
+ * Copy text to the clipboard with a success toast, falling back to a prompt dialog.
+ * @param {string} text - The text to copy
+ * @param {string} [successMsg] - Optional toast message on success
+ */
+window.CRM.copyToClipboard = function (text, successMsg) {
+  var msg = successMsg || i18next.t("Copied to clipboard");
+  if (navigator.clipboard) {
+    return navigator.clipboard
+      .writeText(text)
+      .then(function () {
+        window.CRM.notify(msg, { type: "success", delay: 3000 });
+      })
+      .catch(function () {
+        prompt(i18next.t("Press CTRL + C to copy"), text);
+      });
+  }
+  prompt(i18next.t("Press CTRL + C to copy"), text);
+  return Promise.resolve();
+};
+
 function LimitTextSize(theTextArea, size) {
   if (theTextArea.value.length > size) {
     theTextArea.value = theTextArea.value.substr(0, size);

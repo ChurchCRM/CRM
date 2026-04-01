@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
@@ -23,6 +24,39 @@ use ChurchCRM\Utils\CsvExporter;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
+
+/**
+ * Return the set of person IDs that have a given property assigned (e.g. "Do Not SMS").
+ * The property is identified by a SystemConfig key that stores the property ID.
+ *
+ * @return array<int, true> personId => true
+ */
+function _getExcludedPersonIdSet(string $configKey): array
+{
+    $propertyId = (int) SystemConfig::getValue($configKey);
+    if ($propertyId <= 0) {
+        return [];
+    }
+    $set = [];
+    foreach (RecordPropertyQuery::create()->filterByPropertyId($propertyId)->find() as $r) {
+        $set[(int) $r->getRecordId()] = true;
+    }
+    return $set;
+}
+
+/**
+ * Build a standard phone-response array from a list of phone strings.
+ *
+ * @param string[] $phoneList
+ * @return array{phones: string[], displayList: string}
+ */
+function _buildPhoneResponse(array $phoneList): array
+{
+    return [
+        'phones'      => $phoneList,
+        'displayList' => implode(', ', $phoneList),
+    ];
+}
 
 $app->group('/groups', function (RouteCollectorProxy $group): void {
     /**
@@ -239,6 +273,295 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = $request->getAttribute('group');
         $roles = ListOptionQuery::create()->filterById($group->getRoleListId())->find();
         return SlimUtils::renderJSON($response, $roles->toArray());
+    })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/phones",
+     *     summary="Get cell phone numbers for group members (respects Do Not SMS)",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Phone contact info for the group",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phones", type="array", @OA\Items(type="string"), description="Raw phone numbers"),
+     *             @OA\Property(property="displayList", type="string", description="Comma-separated display string")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/phones', function (Request $request, Response $response, array $args): Response {
+        try {
+            $groupID = (int) $args['groupID'];
+
+            $doNotSmsSet = _getExcludedPersonIdSet('iDoNotSmsPropertyId');
+
+            $memberships = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupID)
+                ->innerJoinWithPerson()
+                ->find();
+
+            $group = $request->getAttribute('group');
+            $roleNameMap = [];
+            foreach (ListOptionQuery::create()->filterById($group->getRoleListId())->find() as $opt) {
+                $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+            }
+
+            $phonesSeen = [];
+            $phones     = [];
+            $rolePhones = [];
+            foreach ($memberships as $membership) {
+                $person = $membership->getPerson();
+                if ($person === null) {
+                    continue;
+                }
+                $personId = (int) $person->getId();
+                if (isset($doNotSmsSet[$personId])) {
+                    continue;
+                }
+                $phone = (string) $person->getCellPhone();
+                if (empty($phone) || isset($phonesSeen[$phone])) {
+                    continue;
+                }
+                $phonesSeen[$phone] = true;
+                $phones[]           = $phone;
+                $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
+                $rolePhones[$roleName][] = $phone;
+            }
+
+            $roles = [];
+            foreach ($rolePhones as $name => $rPhones) {
+                $roles[$name] = _buildPhoneResponse($rPhones);
+            }
+
+            return SlimUtils::renderJSON($response, array_merge(
+                _buildPhoneResponse($phones),
+                ['roles' => $roles],
+            ));
+        } catch (\Exception $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve phone numbers'), [], 500, $e, $request);
+        }
+    })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/sundayschool/phones",
+     *     summary="Get cell phone numbers for a Sunday School class, segmented by role",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Phone contact info segmented by role (all/teachers/parents)",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="all",      type="object"),
+     *             @OA\Property(property="teachers", type="object"),
+     *             @OA\Property(property="students", type="object"),
+     *             @OA\Property(property="parents",  type="object")
+     *         )
+     *     )
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/sundayschool/phones', function (Request $request, Response $response, array $args): Response {
+        try {
+            $groupID             = (int) $args['groupID'];
+            $sundaySchoolService = new SundaySchoolService();
+
+            $rsTeachers        = $sundaySchoolService->getClassByRole($groupID, 'Teacher');
+            $thisClassChildren = $sundaySchoolService->getKidsFullDetails($groupID);
+
+            $doNotSmsSet = _getExcludedPersonIdSet('iDoNotSmsPropertyId');
+
+            $teacherPhones = [];
+            $parentPhones  = [];
+            $studentPhones = [];
+            $teacherPhonesSeen = [];
+            $studentPhonesSeen = [];
+            $parentPhonesSeen  = [];
+
+            foreach ($rsTeachers as $teacher) {
+                if (isset($doNotSmsSet[(int) $teacher->getId()])) {
+                    continue;
+                }
+                $phone = (string) $teacher->getCellPhone();
+                if (!empty($phone) && !isset($teacherPhonesSeen[$phone])) {
+                    $teacherPhonesSeen[$phone] = true;
+                    $teacherPhones[]           = $phone;
+                }
+            }
+            foreach ($thisClassChildren as $child) {
+                // Student's own cell phone
+                $kidId = (int) ($child['kidId'] ?? 0);
+                if ($kidId > 0 && !isset($doNotSmsSet[$kidId])) {
+                    $studentPhone = (string) ($child['mobilePhone'] ?? '');
+                    if (!empty($studentPhone) && !isset($studentPhonesSeen[$studentPhone])) {
+                        $studentPhonesSeen[$studentPhone] = true;
+                        $studentPhones[]                  = $studentPhone;
+                    }
+                }
+                // Parent phones
+                foreach (['dadId' => 'dadCellPhone', 'momId' => 'momCellPhone'] as $idField => $phoneField) {
+                    $parentId = (int) ($child[$idField] ?? 0);
+                    if ($parentId > 0 && isset($doNotSmsSet[$parentId])) {
+                        continue;
+                    }
+                    $phone = (string) ($child[$phoneField] ?? '');
+                    if (!empty($phone) && !isset($parentPhonesSeen[$phone])) {
+                        $parentPhonesSeen[$phone] = true;
+                        $parentPhones[]           = $phone;
+                    }
+                }
+            }
+
+            // Merge and dedup across segments for 'all'
+            $allPhones = array_values(array_unique(array_merge($teacherPhones, $studentPhones, $parentPhones)));
+
+            return SlimUtils::renderJSON($response, [
+                'all'      => _buildPhoneResponse($allPhones),
+                'teachers' => _buildPhoneResponse($teacherPhones),
+                'students' => _buildPhoneResponse($studentPhones),
+                'parents'  => _buildPhoneResponse($parentPhones),
+            ]);
+        } catch (\Exception $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve phone numbers'), [], 500, $e, $request);
+        }
+    })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/emails",
+     *     summary="Get email addresses for group members (respects Do Not Email)",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Email contact info for the group")
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/emails', function (Request $request, Response $response, array $args): Response {
+        try {
+            $groupID = (int) $args['groupID'];
+            $doNotEmailSet = _getExcludedPersonIdSet('iDoNotEmailPropertyId');
+
+            $memberships = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupID)
+                ->innerJoinWithPerson()
+                ->find();
+
+            $group = $request->getAttribute('group');
+            $roleNameMap = [];
+            foreach (ListOptionQuery::create()->filterById($group->getRoleListId())->find() as $opt) {
+                $roleNameMap[(int) $opt->getOptionId()] = $opt->getOptionName();
+            }
+
+            $allEmails = [];
+            $roleEmails = [];
+            foreach ($memberships as $membership) {
+                $person = $membership->getPerson();
+                if ($person === null) {
+                    continue;
+                }
+                if (isset($doNotEmailSet[(int) $person->getId()])) {
+                    continue;
+                }
+                $email = (string) $person->getEmail();
+                if (empty($email) || isset($allEmails[$email])) {
+                    continue;
+                }
+                $allEmails[$email] = true;
+                $roleName = $roleNameMap[(int) $membership->getRoleId()] ?? gettext('Member');
+                $roleEmails[$roleName][] = $email;
+            }
+
+            $systemEmail = (string) SystemConfig::getValue('sToEmailAddress');
+            $allList = array_keys($allEmails);
+            if (!empty($systemEmail) && !isset($allEmails[$systemEmail])) {
+                $allList[] = $systemEmail;
+            }
+
+            $roles = [];
+            foreach ($roleEmails as $name => $emails) {
+                $roles[$name] = implode(',', $emails);
+            }
+
+            return SlimUtils::renderJSON($response, [
+                'all'       => implode(',', $allList),
+                'roles'     => $roles,
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
+        }
+    })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Get(
+     *     path="/groups/{groupID}/sundayschool/emails",
+     *     summary="Get email addresses for a Sunday School class, segmented by role",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Email contact info segmented by role (teachers/parents/kids)")
+     * )
+     */
+    $group->get('/{groupID:[0-9]+}/sundayschool/emails', function (Request $request, Response $response, array $args): Response {
+        try {
+            $groupID = (int) $args['groupID'];
+            $doNotEmailSet = _getExcludedPersonIdSet('iDoNotEmailPropertyId');
+            $sundaySchoolService = new SundaySchoolService();
+
+            $rsTeachers = $sundaySchoolService->getClassByRole($groupID, 'Teacher');
+            $thisClassChildren = $sundaySchoolService->getKidsFullDetails($groupID);
+
+            $teacherEmails = [];
+            $parentEmails = [];
+            $kidEmails = [];
+            $teacherEmailsSeen = [];
+            $kidEmailsSeen     = [];
+            $parentEmailsSeen  = [];
+
+            foreach ($rsTeachers as $teacher) {
+                if (isset($doNotEmailSet[(int) $teacher->getId()])) {
+                    continue;
+                }
+                $email = (string) $teacher->getEmail();
+                if (!empty($email) && !isset($teacherEmailsSeen[$email])) {
+                    $teacherEmailsSeen[$email] = true;
+                    $teacherEmails[] = $email;
+                }
+            }
+
+            foreach ($thisClassChildren as $child) {
+                $kidId = (int) ($child['kidId'] ?? 0);
+                if ($kidId > 0 && !isset($doNotEmailSet[$kidId])) {
+                    $kidEmail = (string) ($child['kidEmail'] ?? '');
+                    if (!empty($kidEmail) && !isset($kidEmailsSeen[$kidEmail])) {
+                        $kidEmailsSeen[$kidEmail] = true;
+                        $kidEmails[] = $kidEmail;
+                    }
+                }
+
+                foreach (['dadId' => 'dadEmail', 'momId' => 'momEmail'] as $idField => $emailField) {
+                    $parentId = (int) ($child[$idField] ?? 0);
+                    if ($parentId > 0 && isset($doNotEmailSet[$parentId])) {
+                        continue;
+                    }
+                    $email = (string) ($child[$emailField] ?? '');
+                    if (!empty($email) && !isset($parentEmailsSeen[$email])) {
+                        $parentEmailsSeen[$email] = true;
+                        $parentEmails[] = $email;
+                    }
+                }
+            }
+
+            // Merge and dedup across segments for 'all'
+            $allEmails = array_values(array_unique(array_merge($teacherEmails, $parentEmails, $kidEmails)));
+
+            return SlimUtils::renderJSON($response, [
+                'all'      => implode(',', $allEmails),
+                'teachers' => implode(',', $teacherEmails),
+                'parents'  => implode(',', $parentEmails),
+                'kids'     => implode(',', $kidEmails),
+            ]);
+        } catch (\Throwable $e) {
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to retrieve email addresses'), [], 500, $e, $request);
+        }
     })->add(GroupMiddleware::class);
 
     /**

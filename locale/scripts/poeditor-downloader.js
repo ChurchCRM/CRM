@@ -410,7 +410,7 @@ async function downloadEnglishMasterList() {
  * Download translation file from POEditor for all formats
  */
 async function downloadLanguage(locale, poEditorLocale, current, total, localeCfg) {
-    console.log(`  ⏳ Downloading ${locale} (${current} of ${total})...`);
+    console.log(`  [${current}/${total}] ⏳ Downloading ${locale}...`);
     
     for (const format of FILE_FORMATS) {
         try {
@@ -541,22 +541,26 @@ async function main() {
         totalToDownload = 1;
     }
     
-    console.log(`📋 Total locales: ${totalLocales} (${totalToDownload} to download, ${skippedCount} skipped)\n`);
+    const localeEntries = Object.entries(localestoProcess);
+    const localeTotal = localeEntries.length;
+    console.log(`📋 Total locales: ${localeTotal} (${totalToDownload} to download)\n`);
 
-    for (const [key, localeConfig] of Object.entries(localestoProcess)) {
+    for (let i = 0; i < localeEntries.length; i++) {
+        const [key, localeConfig] = localeEntries[i];
+        const localeNum = i + 1;
         const locale = localeConfig.locale;
         const poEditorLocale = localeConfig.poEditor;
 
         // Skip super_base locales - they are the source language, not translation targets
         if (localeConfig.super_base === true) {
-            console.log(`  ⏭️  Skipping ${locale} (super base language - source)`);
+            console.log(`  [${localeNum}/${localeTotal}] ⏭️  Skipping ${locale} (super base language - source)`);
             skippedCount++;
             continue;
         }
 
         totalAttempts++;
         try {
-            await downloadLanguage(locale, poEditorLocale, totalAttempts, totalToDownload, localeConfig);
+            await downloadLanguage(locale, poEditorLocale, localeNum, localeTotal, localeConfig);
             successCount++;
             
             // Throttle requests to avoid rate limiting (1 second between languages)

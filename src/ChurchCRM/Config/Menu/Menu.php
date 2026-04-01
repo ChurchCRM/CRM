@@ -39,15 +39,23 @@ class Menu
             'People'       => self::getPeopleMenu($isAdmin, $isMenuOptions, $currentUser->isAddRecordsEnabled()),
             'Groups'       => self::getGroupMenu($isAdmin, $isMenuOptions, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin),
-            'Email'        => self::getEmailMenu(),
+            'Communication' => self::getCommunicationMenu(),
             'Events'       => self::getEventsMenu(isAddEventEnabled: $currentUser->isAddEventEnabled()),
             'Deposits'     => self::getDepositsMenu($isAdmin, $currentUser->isFinanceEnabled()),
             'Fundraiser'   => self::getFundraisersMenu(),
             'Reports'      => self::getReportsMenu(),
         ];
         
+        // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
+        if (isset($menus['Communication'])) {
+            $menus['Email'] = $menus['Communication'];
+        }
+
         // Add plugin menu items to their parent menus
         self::addPluginMenuItems($menus);
+
+        // Remove the backward-compat alias so it doesn't appear as a duplicate menu
+        unset($menus['Email']);
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
@@ -180,13 +188,13 @@ class Menu
         return $sundaySchoolMenu;
     }
 
-    private static function getEmailMenu(): MenuItem
+    private static function getCommunicationMenu(): MenuItem
     {
-        $emailMenu = new MenuItem(gettext('Email'), '', SystemConfig::getBooleanValue('bEnabledEmail'), 'fa-envelope');
-        $emailMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'v2/email/dashboard', true, 'fa-gauge'));
-        // Plugin-provided menu items will be added by addPluginMenuItems()
+        $commMenu = new MenuItem(gettext('Communication'), '', true, 'fa-comments');
+        $commMenu->addSubMenu(new MenuItem(gettext('Email'), 'v2/email/dashboard', true, 'fa-envelope'));
+        $commMenu->addSubMenu(new MenuItem(gettext('Text'), 'v2/text/dashboard', true, 'fa-comment-sms'));
 
-        return $emailMenu;
+        return $commMenu;
     }
 
     /**

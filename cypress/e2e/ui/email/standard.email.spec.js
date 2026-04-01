@@ -5,7 +5,7 @@ describe("Email Pages", () => {
 
     it("Email Dashboard", () => {
         cy.visit("v2/email/dashboard");
-        cy.contains("eMail Dashboard");
+        cy.contains("Email Dashboard");
         cy.contains("People Without Emails");
     });
 
