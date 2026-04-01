@@ -138,7 +138,7 @@ async function loadLocaleFiles(localeConfig) {
           .then(() => {
             if (typeof moment !== "undefined" && typeof moment.locale === "function") {
               moment.locale(localeConfig.momentLocale);
-              }
+            }
           })
           .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
       );
