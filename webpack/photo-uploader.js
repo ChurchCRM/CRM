@@ -35,17 +35,13 @@ import Webcam from "@uppy/webcam";
  */
 export function createPhotoUploader(config) {
   // Ensure numeric config values are numbers (may come as strings from PHP)
-  const maxFileSizeBytes = typeof config.maxFileSize === "string"
-    ? parseInt(config.maxFileSize, 10)
-    : (config.maxFileSize || 5000000);
+  const maxFileSizeBytes =
+    typeof config.maxFileSize === "string" ? parseInt(config.maxFileSize, 10) : config.maxFileSize || 5000000;
 
-  const photoWidth = typeof config.photoWidth === "string"
-    ? parseInt(config.photoWidth, 10)
-    : (config.photoWidth || 800);
+  const photoWidth = typeof config.photoWidth === "string" ? parseInt(config.photoWidth, 10) : config.photoWidth || 800;
 
-  const photoHeight = typeof config.photoHeight === "string"
-    ? parseInt(config.photoHeight, 10)
-    : (config.photoHeight || 800);
+  const photoHeight =
+    typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
 
   const uppy = new Uppy({
     id: "photo-uploader",
