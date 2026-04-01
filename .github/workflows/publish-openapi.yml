@@ -44,14 +44,14 @@ jobs:
       - name: Install Composer dependencies
         run: cd src && composer install --no-interaction --prefer-dist
 
+      - name: Pull latest before generating
+        run: git pull --rebase origin master
+
       - name: Generate Public API spec
         run: cd src && composer run openapi-public
 
       - name: Generate Private API spec
         run: cd src && composer run openapi-private
-
-      - name: Pull latest before committing
-        run: git pull --rebase origin master
 
       - name: Commit updated specs
         uses: stefanzweifel/git-auto-commit-action@v7
