@@ -1,8 +1,8 @@
 # ChurchCRM Locale Audit Report
 
 **Total Supported Locales:** 45
-**Complete Locales (≥90%):** 35
-**Good Locales (75-89%):** 4
+**Complete Locales (≥90%):** 38
+**Good Locales (75-89%):** 1
 **Needs Work (<75%):** 6
 **WIP Candidates (>5%, not yet added):** 7
 
@@ -19,11 +19,13 @@
 | `hu` | Hungarian | 3249 | 99.97% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 3249 | 99.97% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
 | `sw` | Swahili | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3248 | 99.94% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `ja` | Japanese | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
@@ -36,6 +38,7 @@
 | `es-sv` | Spanish (SV) | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3247 | 99.91% | 🟢 Complete | ✅ Yes |
 | `el` | Greek | 3246 | 99.88% | 🟢 Complete | ✅ Yes |
 | `pl` | Polish | 3246 | 99.88% | 🟢 Complete | ✅ Yes |
 | `sv` | Swedish | 3246 | 99.88% | 🟢 Complete | ✅ Yes |
@@ -44,11 +47,8 @@
 | `vi` | Vietnamese | 3245 | 99.85% | 🟢 Complete | ✅ Yes |
 | `de` | German | 3244 | 99.82% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 3243 | 99.78% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3242 | 99.75% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 2835 | 87.23% | 🟡 Good | ✅ Yes |
-| `uk` | Ukrainian | 2835 | 87.23% | 🟡 Good | ✅ Yes |
-| `ar` | Arabic | 2834 | 87.2% | 🟡 Good | ✅ Yes |
-| `te` | Telugu | 2685 | 82.62% | 🟡 Good | ✅ Yes |
+| `id` | Indonesian | 3243 | 99.78% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 2786 | 85.72% | 🟡 Good | ✅ Yes |
 | `my` | Burmese | 67 | 2.06% | 🟠 Needs Work | ❌ No |
 | `sl` | Slovenian | 65 | 2% | 🟠 Needs Work | ❌ No |
 | `sr-cyrl` | Serbian (Cyrillic) | 58 | 1.78% | 🟠 Needs Work | ❌ No |
@@ -65,8 +65,8 @@
 
 ## Status Summary
 
-- **🟢 Complete (≥90%):** 35 locales ready for production
-- **🟡 Good (75-89%):** 4 locales with solid translation coverage
+- **🟢 Complete (≥90%):** 38 locales ready for production
+- **🟡 Good (75-89%):** 1 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
 - **N/A:** 6 locales (English variants - English is the default language)

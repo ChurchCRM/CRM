@@ -11437,6 +11437,10 @@ msgid "Change Family Role"
 msgstr "Ubah Peran Keluarga"
 
 #: 
+msgid "Check Out"
+msgstr "Checkout"
+
+#: 
 msgid "Check Out Person"
 msgstr "Check Out Orang"
 
