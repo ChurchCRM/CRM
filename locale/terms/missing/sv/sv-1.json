@@ -1,6 +1,6 @@
 {
-  "Format": "",
-  "Kiosk": "",
-  "Material": "",
-  "Minimum": ""
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Material": "Material",
+  "Minimum": "Minimum"
 }
