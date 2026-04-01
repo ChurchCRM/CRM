@@ -273,21 +273,27 @@ foreach ($families as $family) {
       // Calculations (without groups) show 84 mm is needed.
       // For the Letter size of 279 mm, this says that curY can be no bigger than 195 mm.
       // Leaving 12 mm for a bottom margin yields 183 mm.
+            // Fetch all custom data for this person once to avoid N+1 queries
+            $aAllCustomData = [];
+            try {
+                $sSQL = 'SELECT * FROM person_custom WHERE per_ID = ' . (int) $iPersonID;
+                $rsAllCustomData = RunQuery($sSQL);
+                if ($rsAllCustomData && mysqli_num_rows($rsAllCustomData) > 0) {
+                    $aAllCustomData = mysqli_fetch_array($rsAllCustomData, MYSQLI_ASSOC);
+                }
+            } catch (Exception $e) {
+                // Custom data not available
+                $aAllCustomData = [];
+            }
+
             $numWide = 0; // starting value for columns
             foreach ($customFields as $field) {
                 $currentFieldData = '';
-                // Query custom field data using raw SQL since custom columns aren't in Propel schema
-                try {
-                    $fieldColumnName = $field->getId();
-                    $sSQL = 'SELECT `' . $fieldColumnName . '` FROM person_custom WHERE per_ID = ' . (int) $iPersonID;
-                    $rsCustomData = RunQuery($sSQL);
-                    if ($rsCustomData && mysqli_num_rows($rsCustomData) > 0) {
-                        $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_ASSOC);
-                        $currentFieldData = trim((string) ($aCustomData[$fieldColumnName] ?? ''));
-                    }
-                } catch (Exception $e) {
-                    // Custom field does not exist or threw an exception
-                    $currentFieldData = '';
+                // Access pre-fetched custom field data
+                $fieldColumnName = $field->getId();
+                // Validate column name to prevent SQL injection via identifiers
+                if (preg_match('/^c\d+$/', (string) $fieldColumnName)) {
+                    $currentFieldData = trim((string) ($aAllCustomData[$fieldColumnName] ?? ''));
                 }
 
                 $OutStr = $field->getName() . ' : ' . $currentFieldData . '    ';

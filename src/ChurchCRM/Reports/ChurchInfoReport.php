@@ -102,17 +102,17 @@ class ChurchInfoReport extends FPDF
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $this->makeSalutation($fam_ID));
         $curY += SystemConfig::getValue('incrementY');
-        if (!empty($fam_Address1)) {
+        if ($fam_Address1 !== null && $fam_Address1 !== '') {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address1);
             $curY += SystemConfig::getValue('incrementY');
         }
-        if (!empty($fam_Address2)) {
+        if ($fam_Address2 !== null && $fam_Address2 !== '') {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Address2);
             $curY += SystemConfig::getValue('incrementY');
         }
         $this->writeAt(SystemConfig::getValue('leftX'), $curY, $fam_City . ', ' . $fam_State . '  ' . $fam_Zip);
         $curY += SystemConfig::getValue('incrementY');
-        if (!empty($fam_Country) && $fam_Country !== SystemConfig::getValue('sDefaultCountry')) {
+        if ($fam_Country !== null && $fam_Country !== '' && $fam_Country !== SystemConfig::getValue('sDefaultCountry')) {
             $this->writeAt(SystemConfig::getValue('leftX'), $curY, (string) $fam_Country);
             $curY += SystemConfig::getValue('incrementY');
         } // mm to get away from the second window

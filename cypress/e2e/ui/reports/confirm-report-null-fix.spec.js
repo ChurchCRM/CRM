@@ -52,29 +52,33 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
             expect(response.status).to.equal(200);
 
             const families = response.body;
-            if (families.length > 0) {
-                const familyId = families[0].id;
+            // Ensure there is at least one family; fail meaningfully if not
+            expect(
+                families,
+                "at least one family must exist for Confirm Report single-family test"
+            ).to.have.length.greaterThan(0);
 
-                // Access ConfirmReport for specific family
-                cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
-                    "confirmReportFamily"
-                );
+            const familyId = families[0].id;
 
-                cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
+            // Access ConfirmReport for specific family
+            cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
+                "confirmReportFamily"
+            );
 
-                // Wait for the PDF response
-                cy.wait("@confirmReportFamily", { timeout: 10000 }).then((interception) => {
-                    const statusCode = interception.response.statusCode;
-                    const contentType = interception.response.headers["content-type"] || "";
+            cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
 
-                    // Should succeed
-                    expect(statusCode).to.not.equal(500);
-                    expect(statusCode).to.equal(200);
+            // Wait for the PDF response
+            cy.wait("@confirmReportFamily", { timeout: 10000 }).then((interception) => {
+                const statusCode = interception.response.statusCode;
+                const contentType = interception.response.headers["content-type"] || "";
 
-                    // Should return a PDF
-                    expect(contentType).to.include("application/pdf");
-                });
-            }
+                // Should succeed
+                expect(statusCode).to.not.equal(500);
+                expect(statusCode).to.equal(200);
+
+                // Should return a PDF
+                expect(contentType).to.include("application/pdf");
+            });
         });
     });
 
@@ -83,31 +87,34 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
         cy.makePrivateAdminAPICall("/api/families", "GET").then((response) => {
             const families = response.body;
 
-            if (families.length > 0) {
-                // Try the first family (may have incomplete data)
-                const familyId = families[0].id;
+            expect(
+                families,
+                "at least one family must exist for null-value test"
+            ).to.have.length.greaterThan(0);
 
-                cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
-                    "incompleteFamily"
-                );
+            // Try the first family (may have incomplete data)
+            const familyId = families[0].id;
 
-                cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
+            cy.intercept("GET", `**/Reports/ConfirmReport.php?familyId=${familyId}*`).as(
+                "incompleteFamily"
+            );
 
-                cy.wait("@incompleteFamily", { timeout: 10000 }).then((interception) => {
-                    const statusCode = interception.response.statusCode;
+            cy.visit(`Reports/ConfirmReport.php?familyId=${familyId}`);
 
-                    // Should not error even if family has null address2 or country
-                    expect(statusCode).to.not.equal(500);
-                    expect(statusCode).to.equal(200);
+            cy.wait("@incompleteFamily", { timeout: 10000 }).then((interception) => {
+                const statusCode = interception.response.statusCode;
 
-                    // Verify no PHP errors in response
-                    const body = interception.response.body;
-                    if (typeof body === "string") {
-                        expect(body).to.not.include("Uncaught TypeError");
-                        expect(body).to.not.include("convertToLatin1");
-                    }
-                });
-            }
+                // Should not error even if family has null address2 or country
+                expect(statusCode).to.not.equal(500);
+                expect(statusCode).to.equal(200);
+
+                // Verify no PHP errors in response
+                const body = interception.response.body;
+                if (typeof body === "string") {
+                    expect(body).to.not.include("Uncaught TypeError");
+                    expect(body).to.not.include("convertToLatin1");
+                }
+            });
         });
     });
 
