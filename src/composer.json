@@ -32,7 +32,6 @@
     "ext-mbstring": "*",
     "ext-mysqli": "*",
     "ext-session": "*",
-    "ext-sodium": "*",
     "ext-zip": "*",
     "ext-zlib": "*",
     "azuyalabs/yasumi": "^2.7.0",
@@ -62,7 +61,6 @@
     "doctrine/annotations": "^2.0",
     "phpstan/phpstan": "^2.1.6",
     "rector/rector": "^2.0.9",
-    "squizlabs/php_codesniffer": "^3.11.3",
     "zircote/swagger-php": "^4.10"
   },
   "replace": {
