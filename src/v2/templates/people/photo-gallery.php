@@ -166,11 +166,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?= InputUtils::escapeHTML($person->getLastName()) ?>
                                     </a>
                                 </div>
-                                <?php if ($person->getClsId() && isset($classificationMap[$person->getClsId()])): ?>
-                                    <div class="text-muted small mt-1">
+                                <div class="text-muted small mt-1">
+                                    <?php if ($person->getClsId() && isset($classificationMap[$person->getClsId()])): ?>
                                         <?= InputUtils::escapeHTML($classificationMap[$person->getClsId()]) ?>
-                                    </div>
-                                <?php endif; ?>
+                                    <?php else: ?>
+                                        <em><?= gettext('Not Classified') ?></em>
+                                    <?php endif; ?>
+                                </div>
 
                                 <!-- Action Icons — always show all 3, disabled when no data -->
                                 <div class="mt-3 d-flex gap-2 justify-content-center">

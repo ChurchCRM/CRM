@@ -64,12 +64,8 @@
       return "sms:" + phones.join(",");
     }
 
-    // Desktop (macOS, Windows, Linux) — only single recipient is reliable
-    if (phones.length === 1) {
-      return "sms:" + phones[0];
-    }
-
-    // Multi-recipient on desktop — not supported, return null
+    // Desktop (macOS, Windows, Linux) — sms: URIs are unreliable
+    // (only Safari on macOS handles them; Chrome/Firefox do not)
     return null;
   }
 
@@ -112,9 +108,9 @@
     if (link) {
       window.location.href = link;
     } else {
-      // Desktop multi-recipient fallback — copy numbers and notify
+      // Desktop fallback — sms: URIs not reliable on desktop browsers
       comm.copyPhones(phones.join(", "));
-      window.CRM.notify(i18next.t("Multiple recipients not supported on desktop — numbers copied to clipboard"), {
+      window.CRM.notify(i18next.t("Phone numbers copied — paste into your messaging app"), {
         type: "info",
         delay: 5000,
       });

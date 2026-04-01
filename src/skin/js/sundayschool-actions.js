@@ -171,7 +171,7 @@
     // Email dropdown: populate on first open
     // ------------------------------------------------------------------ //
     var ssEmailLoaded = false;
-    $("#ssEmailDropdownBtn").on("show.bs.dropdown", function () {
+    $("#ssEmailDropdownBtn").parent().on("show.bs.dropdown", function () {
       if (ssEmailLoaded) return;
       ssEmailLoaded = true;
       window.CRM.APIRequest({
@@ -249,7 +249,7 @@
     // Text dropdown: populate on first open
     // ------------------------------------------------------------------ //
     var ssTextLoaded = false;
-    $("#ssTextDropdownBtn").on("show.bs.dropdown", function () {
+    $("#ssTextDropdownBtn").parent().on("show.bs.dropdown", function () {
       if (ssTextLoaded) return;
       ssTextLoaded = true;
       window.CRM.APIRequest({

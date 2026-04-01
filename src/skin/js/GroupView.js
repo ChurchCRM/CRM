@@ -287,7 +287,7 @@ function initializeGroupView() {
   // Email dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
   var emailLoaded = false;
-  $("#emailDropdownBtn").on("show.bs.dropdown", function () {
+  $("#emailDropdownBtn").parent().on("show.bs.dropdown", function () {
     if (emailLoaded) return;
     emailLoaded = true;
     window.CRM.APIRequest({
@@ -361,7 +361,7 @@ function initializeGroupView() {
   // Text dropdown: populate on first open, then handle clicks
   // ------------------------------------------------------------------ //
   var textLoaded = false;
-  $("#textDropdownBtn").on("show.bs.dropdown", function () {
+  $("#textDropdownBtn").parent().on("show.bs.dropdown", function () {
     if (textLoaded) return;
     textLoaded = true;
     window.CRM.APIRequest({
