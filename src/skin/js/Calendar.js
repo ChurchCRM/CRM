@@ -492,6 +492,13 @@ function getCalendarFilterElement(calendar, type) {
   var sourceId = GetCalendarSourceId(type, calendar.Id);
   var switchId = "display-" + sourceId;
 
+  var publicBadge =
+    calendar.AccessToken
+      ? '<span class="badge bg-azure-lt ms-1" title="' +
+        i18next.t("Public calendar") +
+        '"><i class="fa-solid fa-globe fa-xs"></i></span>'
+      : "";
+
   var html =
     '<div class="list-group-item px-2 py-2" data-source-id="' +
     sourceId +
@@ -501,8 +508,9 @@ function getCalendarFilterElement(calendar, type) {
     calendar.BackgroundColor +
     '"></span>' +
     '<div class="flex-fill">' +
-    '<div class="fw-medium small">' +
+    '<div class="fw-medium small d-flex align-items-center">' +
     calendar.Name +
+    publicBadge +
     "</div>" +
     "</div>" +
     '<div class="form-check form-switch ms-2 mb-0">' +
