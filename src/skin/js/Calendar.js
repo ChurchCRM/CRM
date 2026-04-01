@@ -518,12 +518,11 @@ function getCalendarFilterElement(calendar, type) {
   var sourceId = GetCalendarSourceId(type, calendar.Id);
   var switchId = "display-" + sourceId;
 
-  var publicBadge =
-    calendar.AccessToken
-      ? '<span class="badge bg-azure-lt ms-1" title="' +
-        i18next.t("Public calendar") +
-        '"><i class="fa-solid fa-globe fa-xs"></i></span>'
-      : "";
+  var publicBadge = calendar.AccessToken
+    ? '<span class="badge bg-azure-lt ms-1" title="' +
+      i18next.t("Public calendar") +
+      '"><i class="fa-solid fa-globe fa-xs"></i></span>'
+    : "";
 
   var html =
     '<div class="list-group-item px-2 py-2" data-source-id="' +
