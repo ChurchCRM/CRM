@@ -133,8 +133,6 @@ describe("Confirmation Reports - ConfirmReport & ConfirmReportEmail", () => {
                 const familyWithEmail = families.find((fam) => fam.email && fam.email.length > 0);
 
                 if (familyWithEmail) {
-                    const familyId = familyWithEmail.id;
-
                     // The actual email generation is done via POST to ConfirmReportEmail.php
                     cy.intercept("GET", "**/v2/people/verify*").as("verifyPage");
 
