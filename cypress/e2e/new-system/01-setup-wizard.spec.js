@@ -176,6 +176,7 @@ describe('01 - Setup Wizard', () => {
             // Wait for page to fully load — country defaults to US and populates state dropdown
             cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
 
+
             // Fill required fields (single-page layout, no tabs)
             cy.get('#sChurchName').clear().type('Test Community Church');
             cy.get('#sChurchPhone').clear().type('(555) 123-4567');

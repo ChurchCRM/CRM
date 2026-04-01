@@ -349,7 +349,7 @@ $bOkToEdit = (
                         <?php if (!empty($sEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-muted"></i>
-                            <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"><?= $sEmail ?></a>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>" target="_blank" rel="noopener noreferrer"><?= $sEmail ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                     data-email="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
@@ -360,7 +360,7 @@ $bOkToEdit = (
                         <?php if (!empty($per_WorkEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
-                            <a href="mailto:<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"><?= $per_WorkEmail ?></a>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($per_WorkEmail) ?>" target="_blank" rel="noopener noreferrer"><?= $per_WorkEmail ?></a>
                             <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
                                     data-email="<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"
                                     title="<?= gettext('Copy to clipboard') ?>">
@@ -612,7 +612,7 @@ $bOkToEdit = (
                                 <td>
                                     <?php $tmpEmail = $familyMember->getEmail();
                                     if ($tmpEmail !== '') { ?>
-                                        <a href="mailto:<?= $tmpEmail ?>"><?= $tmpEmail ?></a>
+                                        <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
                                     <?php } ?>
                                 </td>
                                 <td>

@@ -353,10 +353,10 @@ $validationError     = $validationError ?? '';
                             <i class="fa-solid fa-phone me-1"></i><?= InputUtils::escapeHTML($churchInfo['sChurchPhone']) ?><br>
                             <?php endif; ?>
                             <?php if (!empty($churchInfo['sChurchEmail'])): ?>
-                            <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?>"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
+                            <i class="fa-solid fa-envelope me-1"></i><a href="mailto:<?= InputUtils::escapeAttribute($churchInfo['sChurchEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchEmail']) ?></a><br>
                             <?php endif; ?>
                             <?php if (!empty($churchInfo['sChurchWebSite'])): ?>
-                            <i class="fa-solid fa-globe me-1"></i><a href="<?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
+                            <i class="fa-solid fa-globe me-1"></i><a href="<?= InputUtils::escapeAttribute($churchInfo['sChurchWebSite']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($churchInfo['sChurchWebSite']) ?></a>
                             <?php endif; ?>
                         </address>
                     </div>
@@ -448,7 +448,13 @@ $validationError     = $validationError ?? '';
     document.querySelectorAll('#church-info-form input, #church-info-form select').forEach(function (el) {
         ['input', 'change'].forEach(function (evtName) {
             el.addEventListener(evtName, function () {
-                if (this.value && this.value.trim()) { this.classList.remove('is-invalid'); }
+                if (this.value && this.value.trim()) {
+                    this.classList.remove('is-invalid');
+                    const wrapper = this.nextElementSibling;
+                    if (wrapper && wrapper.classList.contains('ts-wrapper')) {
+                        wrapper.classList.remove('is-invalid');
+                    }
+                }
             });
         });
     });

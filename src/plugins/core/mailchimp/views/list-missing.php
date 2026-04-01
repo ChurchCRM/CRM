@@ -100,7 +100,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     data: 'email',
                     render: function(data) {
                         var escaped = escapeHtml(data);
-                        return '<a href="mailto:' + encodeURIComponent(data) + '">' + escaped + '</a>';
+                        return '<a href="mailto:' + encodeURIComponent(data) + '" target="_blank" rel="noopener noreferrer">' + escaped + '</a>';
                     }
                 },
                 {

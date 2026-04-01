@@ -196,7 +196,7 @@ if ($bCanManageGroups) {
                         </div>
                         <div class="col-auto d-flex gap-2">
                             <?php if ($teacher->getEmail()): ?>
-                            <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>">
+                            <a href="mailto:<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" class="btn btn-sm btn-ghost-primary" title="<?= InputUtils::escapeAttribute($teacher->getEmail()) ?>" target="_blank" rel="noopener noreferrer">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                             <?php endif; ?>
@@ -267,7 +267,7 @@ if ($bCanManageGroups) {
                                 </td>
                                 <td>
                                     <?php if ($child['kidEmail']): ?>
-                                    <a href="mailto:<?= InputUtils::escapeAttribute($child['kidEmail']) ?>"><i class="fa-solid fa-envelope text-primary"></i></a>
+                                    <a href="mailto:<?= InputUtils::escapeAttribute($child['kidEmail']) ?>" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-envelope text-primary"></i></a>
                                     <?php else: ?>
                                     <span class="text-muted">—</span>
                                     <?php endif; ?>
@@ -355,7 +355,7 @@ if ($bCanManageGroups) {
                                             <dt class="col-sm-5"><?= gettext('Birth Date') ?>:</dt>
                                             <dd class="col-sm-7"><?= InputUtils::escapeHTML($birthDate) ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Email') ?>:</dt>
-                                            <dd class="col-sm-7"><?= $child['kidEmail'] ? '<a href="mailto:' . InputUtils::escapeAttribute($child['kidEmail']) . '">' . InputUtils::escapeHTML($child['kidEmail']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
+                                            <dd class="col-sm-7"><?= $child['kidEmail'] ? '<a href="mailto:' . InputUtils::escapeAttribute($child['kidEmail']) . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML($child['kidEmail']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Mobile') ?>:</dt>
                                             <dd class="col-sm-7"><?= $child['mobilePhone'] ? '<a href="tel:' . urlencode($child['mobilePhone']) . '">' . InputUtils::escapeHTML($child['mobilePhone']) . '</a>' : '<span class="text-muted">—</span>' ?></dd>
                                             <dt class="col-sm-5"><?= gettext('Home Phone') ?>:</dt>
@@ -373,7 +373,7 @@ if ($bCanManageGroups) {
                                             <dd class="col-sm-7">
                                                 <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['dadId'] ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
                                                 <?php if ($child['dadCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= InputUtils::escapeHTML($child['dadCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                             <?php if ($child['momFirstName']): ?>
@@ -381,7 +381,7 @@ if ($bCanManageGroups) {
                                             <dd class="col-sm-7">
                                                 <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['momId'] ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
                                                 <?php if ($child['momCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= InputUtils::escapeHTML($child['momCellPhone']) ?></a></small><?php endif; ?>
-                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
+                                                <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
                                             </dd>
                                             <?php endif; ?>
                                         </dl>

@@ -870,7 +870,7 @@ function initDataTable() {
         render: function (data) {
           if (!data) return '<span class="text-muted">\u2014</span>';
           var escaped = $("<div>").text(data).html();
-          return '<a href="mailto:' + escaped + '">' + escaped + "</a>";
+          return '<a href="mailto:' + escaped + '" target="_blank" rel="noopener noreferrer">' + escaped + "</a>";
         },
       },
       {

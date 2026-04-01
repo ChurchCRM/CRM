@@ -120,7 +120,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?php endif; ?>
                     </td>
                     <td><?= InputUtils::escapeHTML($family->getHomePhone()) ?></td>
-                    <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
+                    <td><?php if ($family->getEmail()): ?><a href="mailto:<?= InputUtils::escapeAttribute($family->getEmail()) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($family->getEmail()) ?></a><?php endif; ?></td>
                     <td><?php if ($family->getDateEntered() !== null) { echo $family->getDateEntered()->format('Y-m-d'); } ?></td>
                     <td><?php if ($family->getDateLastEdited() !== null) { echo $family->getDateLastEdited()->format('Y-m-d'); } ?></td>
                     <td class="w-1">

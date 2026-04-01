@@ -96,6 +96,9 @@ document.addEventListener("DOMContentLoaded", function () {
         type: "GET",
         url: window.CRM.root + "/api/public/data/countries",
       });
+      countriesPromise.fail(function () {
+        countriesPromise = null;
+      });
     }
     return countriesPromise;
   }
@@ -236,7 +239,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }).addTo(churchMap);
 
         window.L.marker([cfg.lat, cfg.lng])
-          .bindPopup("<strong>" + cfg.name + "</strong>")
+          .bindPopup("<strong>" + window.CRM.escapeHtml(cfg.name) + "</strong>")
           .addTo(churchMap);
 
         setTimeout(() => {

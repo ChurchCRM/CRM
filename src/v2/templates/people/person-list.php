@@ -309,7 +309,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
                         // Make email clickable with mailto link
                         elseif ($column->displayFunction === 'getEmail') {
                             if (!empty($columnData)) {
-                                echo '<a href="mailto:' . InputUtils::escapeAttribute($columnData) . '">' . InputUtils::escapeHTML($columnData) . '</a>';
+                                echo '<a href="mailto:' . InputUtils::escapeAttribute($columnData) . '" target="_blank" rel="noopener noreferrer">' . InputUtils::escapeHTML($columnData) . '</a>';
                             } else {
                                 echo '<span class="text-muted">—</span>';
                             }
