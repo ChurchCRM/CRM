@@ -270,18 +270,14 @@
           }
           // All section
           menu.append(
-            '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-              window.CRM.escapeHtml(data.all.displayList) +
-              '"><i class="fa-solid fa-copy me-2"></i>' +
-              i18next.t("Copy All Numbers") +
-              "</button>",
+            $("<button>", { class: "dropdown-item", "data-action": "copy-phones" })
+              .data("phones", data.all.displayList)
+              .html('<i class="fa-solid fa-copy me-2"></i>' + i18next.t("Copy All Numbers")),
           );
           menu.append(
-            '<button class="dropdown-item" data-action="sms" data-phones="' +
-              window.CRM.escapeHtml(JSON.stringify(data.all.phones)) +
-              '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-              i18next.t("Text All") +
-              "</button>",
+            $("<button>", { class: "dropdown-item", "data-action": "sms" })
+              .data("phones", data.all.phones)
+              .html('<i class="fa-solid fa-comment-sms me-2"></i>' + i18next.t("Text All")),
           );
           // Per-role sections
           var roleMap = {
@@ -294,18 +290,14 @@
             menu.append('<div class="dropdown-divider"></div>');
             menu.append('<h6 class="dropdown-header">' + meta.label + "</h6>");
             menu.append(
-              '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-                window.CRM.escapeHtml(data[key].displayList) +
-                '"><i class="fa-solid fa-copy me-2"></i>' +
-                i18next.t("Copy") +
-                "</button>",
+              $("<button>", { class: "dropdown-item", "data-action": "copy-phones" })
+                .data("phones", data[key].displayList)
+                .html('<i class="fa-solid fa-copy me-2"></i>' + i18next.t("Copy")),
             );
             menu.append(
-              '<button class="dropdown-item" data-action="sms" data-phones="' +
-                window.CRM.escapeHtml(JSON.stringify(data[key].phones)) +
-                '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-                i18next.t("Text") +
-                "</button>",
+              $("<button>", { class: "dropdown-item", "data-action": "sms" })
+                .data("phones", data[key].phones)
+                .html('<i class="fa-solid fa-comment-sms me-2"></i>' + i18next.t("Text")),
             );
           });
         });
@@ -317,7 +309,13 @@
     });
     $("#ss-action-toolbar").on("click", "[data-action='sms']", function () {
       var phones = $(this).data("phones");
-      if (typeof phones === "string") phones = JSON.parse(phones);
+      if (typeof phones === "string") {
+        try {
+          phones = JSON.parse(phones);
+        } catch (e) {
+          phones = [phones];
+        }
+      }
       window.CRM.comm.openSms(phones);
     });
 

@@ -354,6 +354,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(
      *             @OA\Property(property="all",      type="object"),
      *             @OA\Property(property="teachers", type="object"),
+     *             @OA\Property(property="students", type="object"),
      *             @OA\Property(property="parents",  type="object")
      *         )
      *     )
@@ -372,16 +373,18 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $teacherPhones = [];
             $parentPhones  = [];
             $studentPhones = [];
-            $phoneSeen     = [];
+            $teacherPhonesSeen = [];
+            $studentPhonesSeen = [];
+            $parentPhonesSeen  = [];
 
             foreach ($rsTeachers as $teacher) {
                 if (isset($doNotSmsSet[(int) $teacher->getId()])) {
                     continue;
                 }
                 $phone = (string) $teacher->getCellPhone();
-                if (!empty($phone) && !isset($phoneSeen[$phone])) {
-                    $phoneSeen[$phone] = true;
-                    $teacherPhones[]   = $phone;
+                if (!empty($phone) && !isset($teacherPhonesSeen[$phone])) {
+                    $teacherPhonesSeen[$phone] = true;
+                    $teacherPhones[]           = $phone;
                 }
             }
             foreach ($thisClassChildren as $child) {
@@ -389,9 +392,9 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 $kidId = (int) ($child['kidId'] ?? 0);
                 if ($kidId > 0 && !isset($doNotSmsSet[$kidId])) {
                     $studentPhone = (string) ($child['mobilePhone'] ?? '');
-                    if (!empty($studentPhone) && !isset($phoneSeen[$studentPhone])) {
-                        $phoneSeen[$studentPhone] = true;
-                        $studentPhones[]          = $studentPhone;
+                    if (!empty($studentPhone) && !isset($studentPhonesSeen[$studentPhone])) {
+                        $studentPhonesSeen[$studentPhone] = true;
+                        $studentPhones[]                  = $studentPhone;
                     }
                 }
                 // Parent phones
@@ -401,14 +404,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                         continue;
                     }
                     $phone = (string) ($child[$phoneField] ?? '');
-                    if (!empty($phone) && !isset($phoneSeen[$phone])) {
-                        $phoneSeen[$phone] = true;
-                        $parentPhones[]    = $phone;
+                    if (!empty($phone) && !isset($parentPhonesSeen[$phone])) {
+                        $parentPhonesSeen[$phone] = true;
+                        $parentPhones[]           = $phone;
                     }
                 }
             }
 
-            $allPhones = array_merge($teacherPhones, $studentPhones, $parentPhones);
+            // Merge and dedup across segments for 'all'
+            $allPhones = array_values(array_unique(array_merge($teacherPhones, $studentPhones, $parentPhones)));
 
             return SlimUtils::renderJSON($response, [
                 'all'      => _buildPhoneResponse($allPhones),
@@ -508,15 +512,17 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $teacherEmails = [];
             $parentEmails = [];
             $kidEmails = [];
-            $emailSeen = [];
+            $teacherEmailsSeen = [];
+            $kidEmailsSeen     = [];
+            $parentEmailsSeen  = [];
 
             foreach ($rsTeachers as $teacher) {
                 if (isset($doNotEmailSet[(int) $teacher->getId()])) {
                     continue;
                 }
                 $email = (string) $teacher->getEmail();
-                if (!empty($email) && !isset($emailSeen[$email])) {
-                    $emailSeen[$email] = true;
+                if (!empty($email) && !isset($teacherEmailsSeen[$email])) {
+                    $teacherEmailsSeen[$email] = true;
                     $teacherEmails[] = $email;
                 }
             }
@@ -525,8 +531,8 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 $kidId = (int) ($child['kidId'] ?? 0);
                 if ($kidId > 0 && !isset($doNotEmailSet[$kidId])) {
                     $kidEmail = (string) ($child['kidEmail'] ?? '');
-                    if (!empty($kidEmail) && !isset($emailSeen[$kidEmail])) {
-                        $emailSeen[$kidEmail] = true;
+                    if (!empty($kidEmail) && !isset($kidEmailsSeen[$kidEmail])) {
+                        $kidEmailsSeen[$kidEmail] = true;
                         $kidEmails[] = $kidEmail;
                     }
                 }
@@ -537,14 +543,15 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                         continue;
                     }
                     $email = (string) ($child[$emailField] ?? '');
-                    if (!empty($email) && !isset($emailSeen[$email])) {
-                        $emailSeen[$email] = true;
+                    if (!empty($email) && !isset($parentEmailsSeen[$email])) {
+                        $parentEmailsSeen[$email] = true;
                         $parentEmails[] = $email;
                     }
                 }
             }
 
-            $allEmails = array_merge($teacherEmails, $parentEmails, $kidEmails);
+            // Merge and dedup across segments for 'all'
+            $allEmails = array_values(array_unique(array_merge($teacherEmails, $parentEmails, $kidEmails)));
 
             return SlimUtils::renderJSON($response, [
                 'all'      => implode(',', $allEmails),

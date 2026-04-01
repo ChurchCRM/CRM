@@ -38,7 +38,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     // Build email list grouped by role (active families, excluding "Do Not Email" property)
     $currentUser        = AuthenticationManager::getCurrentUser();
     $isAdmin            = $currentUser->isAdmin();
-    $sMailtoDelimiter   = $currentUser->getUserConfigString('sMailtoDelimiter');
+    // Email addresses joined with commas (RFC 5321 standard)
     $sEmailLink         = '';
     $roleEmails         = [];
 
@@ -58,7 +58,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
     }
 
     $persons = PersonQuery::create()
-        ->joinWithFamily()
+        ->leftJoinWithFamily()
         ->useQuery('Family')
             ->filterByDateDeactivated(null)
         ->endUse()
@@ -75,20 +75,20 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
             continue;
         }
         $emailsSeen[$email] = true;
-        $sEmailLink .= $email . $sMailtoDelimiter;
+        $sEmailLink .= $email . ',';
 
         $roleName = $roleNameMap[(int) $person->getClsId()] ?? gettext('Member');
         if (!array_key_exists($roleName, $roleEmails)) {
             $roleEmails[$roleName] = '';
         }
-        $roleEmails[$roleName] .= $email;
+        $roleEmails[$roleName] .= $email . ',';
     }
 
     // Append default "to" address if configured and not already included
     if ($sEmailLink && SystemConfig::getValue('sToEmailAddress') !== '') {
         $defaultEmail = SystemConfig::getValue('sToEmailAddress');
         if (!stristr($sEmailLink, $defaultEmail)) {
-            $sEmailLink .= $sMailtoDelimiter . $defaultEmail;
+            $sEmailLink .= ',' . $defaultEmail;
         }
     }
 
@@ -115,7 +115,7 @@ $app->get('/dashboard', function (Request $request, Response $response): Respons
         'familyRoleStats'    => $familyRoleStats,
         'sEmailLink'         => urlencode($sEmailLink),
         'roleEmails'         => $roleEmails,
-        'sMailtoDelimiter'   => $sMailtoDelimiter,
+        'sMailtoDelimiter'   => ',', // Legacy — will be removed in future cleanup
         'isAdmin'            => $isAdmin,
         'canEmail'           => $currentUser->isEmailEnabled(),
     ];

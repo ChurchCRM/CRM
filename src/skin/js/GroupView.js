@@ -380,18 +380,14 @@ function initializeGroupView() {
         }
         // All section
         menu.append(
-          '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-            window.CRM.escapeHtml(data.displayList) +
-            '"><i class="fa-solid fa-copy me-2"></i>' +
-            i18next.t("Copy All Numbers") +
-            "</button>",
+          $("<button>", { class: "dropdown-item", "data-action": "copy-phones" })
+            .data("phones", data.displayList)
+            .html('<i class="fa-solid fa-copy me-2"></i>' + i18next.t("Copy All Numbers")),
         );
         menu.append(
-          '<button class="dropdown-item" data-action="sms" data-phones="' +
-            window.CRM.escapeHtml(JSON.stringify(data.phones)) +
-            '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-            i18next.t("Text All") +
-            "</button>",
+          $("<button>", { class: "dropdown-item", "data-action": "sms" })
+            .data("phones", data.phones)
+            .html('<i class="fa-solid fa-comment-sms me-2"></i>' + i18next.t("Text All")),
         );
         // Per-role sections
         if (data.roles && Object.keys(data.roles).length > 0) {
@@ -400,18 +396,14 @@ function initializeGroupView() {
             menu.append('<div class="dropdown-divider"></div>');
             menu.append('<h6 class="dropdown-header">' + window.CRM.escapeHtml(roleName) + "</h6>");
             menu.append(
-              '<button class="dropdown-item" data-action="copy-phones" data-phones="' +
-                window.CRM.escapeHtml(roleData.displayList) +
-                '"><i class="fa-solid fa-copy me-2"></i>' +
-                i18next.t("Copy") +
-                "</button>",
+              $("<button>", { class: "dropdown-item", "data-action": "copy-phones" })
+                .data("phones", roleData.displayList)
+                .html('<i class="fa-solid fa-copy me-2"></i>' + i18next.t("Copy")),
             );
             menu.append(
-              '<button class="dropdown-item" data-action="sms" data-phones="' +
-                window.CRM.escapeHtml(JSON.stringify(roleData.phones)) +
-                '"><i class="fa-solid fa-comment-sms me-2"></i>' +
-                i18next.t("Text") +
-                "</button>",
+              $("<button>", { class: "dropdown-item", "data-action": "sms" })
+                .data("phones", roleData.phones)
+                .html('<i class="fa-solid fa-comment-sms me-2"></i>' + i18next.t("Text")),
             );
           });
         }
@@ -424,7 +416,13 @@ function initializeGroupView() {
   });
   $("#group-view-toolbar").on("click", "[data-action='sms']", function () {
     var phones = $(this).data("phones");
-    if (typeof phones === "string") phones = JSON.parse(phones);
+    if (typeof phones === "string") {
+      try {
+        phones = JSON.parse(phones);
+      } catch (e) {
+        phones = [phones];
+      }
+    }
     window.CRM.comm.openSms(phones);
   });
 

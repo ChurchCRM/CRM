@@ -46,8 +46,16 @@ class Menu
             'Reports'      => self::getReportsMenu(),
         ];
         
+        // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
+        if (isset($menus['Communication'])) {
+            $menus['Email'] = $menus['Communication'];
+        }
+
         // Add plugin menu items to their parent menus
         self::addPluginMenuItems($menus);
+
+        // Remove the backward-compat alias so it doesn't appear as a duplicate menu
+        unset($menus['Email']);
         
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
