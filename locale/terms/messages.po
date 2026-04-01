@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-01 13:46+0000\n"
+"POT-Creation-Date: 2026-04-01 18:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -485,6 +485,9 @@ msgid "Additional Information"
 msgstr ""
 
 msgid "Address"
+msgstr ""
+
+msgid "Address Defaults"
 msgstr ""
 
 msgid "Address Status"
@@ -1106,9 +1109,6 @@ msgstr ""
 msgid "Baseline"
 msgstr ""
 
-msgid "Basic Information"
-msgstr ""
-
 msgid "Batch Winner Entry"
 msgstr ""
 
@@ -1594,6 +1594,9 @@ msgstr ""
 msgid "Church Greeter"
 msgstr ""
 
+msgid "Church Identity"
+msgstr ""
+
 msgid "Church Info"
 msgstr ""
 
@@ -1609,13 +1612,13 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
-msgid "Church information saved successfully."
+msgid "Church information saved successfully"
 msgstr ""
 
 msgid "Church name is required."
 msgstr ""
 
-msgid "Church name is required. Please complete the Basic Information tab."
+msgid "Church name is required. Please fill in the Church Identity section above."
 msgstr ""
 
 msgid "ChurchCRM"
@@ -2022,6 +2025,9 @@ msgstr ""
 msgid "Copy Members to Group"
 msgstr ""
 
+msgid "Copy from church address"
+msgstr ""
+
 msgid "Copy to Group"
 msgstr ""
 
@@ -2386,6 +2392,9 @@ msgstr ""
 msgid "Default City"
 msgstr ""
 
+msgid "Default Country"
+msgstr ""
+
 msgid "Default Image Style"
 msgstr ""
 
@@ -2402,6 +2411,9 @@ msgid "Default Role"
 msgstr ""
 
 msgid "Default Start Time"
+msgstr ""
+
+msgid "Default State"
 msgstr ""
 
 msgid "Default State - Must be 2-letter abbreviation!"
@@ -2685,6 +2697,9 @@ msgid "Display bill counts on deposit slip"
 msgstr ""
 
 msgid "Distance"
+msgstr ""
+
+msgid "Distance Unit"
 msgstr ""
 
 #. Context: countries
@@ -5179,12 +5194,6 @@ msgstr ""
 msgid "Location & Contact Information"
 msgstr ""
 
-msgid "Location & Map"
-msgstr ""
-
-msgid "Location Information"
-msgstr ""
-
 msgid "Locked Users"
 msgstr ""
 
@@ -5271,12 +5280,6 @@ msgid "Mailchimp Not Configured"
 msgstr ""
 
 msgid "Mailchimp is not active"
-msgstr ""
-
-msgid "Main contact email for church communications."
-msgstr ""
-
-msgid "Main contact phone number for the church."
 msgstr ""
 
 msgid "Make Data File"
@@ -8552,7 +8555,7 @@ msgstr ""
 msgid "System diagnostic information and configuration"
 msgstr ""
 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
+msgid "System language for the church."
 msgstr ""
 
 msgid "System upgrade completed successfully!"
@@ -8795,6 +8798,9 @@ msgid "These people are subscribed to your MailChimp audience but do not exist i
 msgstr ""
 
 msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr ""
+
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
 msgstr ""
 
 msgid "Third-party extensions."
@@ -9193,6 +9199,9 @@ msgid "Unfocus"
 msgstr ""
 
 msgid "Unit used to measure distance, miles or km."
+msgstr ""
+
+msgid "Unit used to measure distance."
 msgstr ""
 
 #. Context: countries
