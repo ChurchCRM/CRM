@@ -21,6 +21,12 @@ const EventPropertiesViewer: React.FunctionComponent<{
   calendars: Array<Calendar>;
   eventTypes: Array<EventType>;
 }> = ({ event, calendars, eventTypes }) => {
+  // Sanitize once upfront — used for both the non-empty check and rendering.
+  // This avoids the taint-flow path that CodeQL flags when a regex (incomplete
+  // sanitization) is used as a guard before dangerouslySetInnerHTML.
+  const sanitizedDesc = DOMPurify.sanitize(event.Desc || "");
+  const sanitizedText = DOMPurify.sanitize(event.Text || "");
+
   const isAllDay =
     event.Start instanceof Date &&
     event.Start.getHours() === 0 &&
@@ -114,20 +120,20 @@ const EventPropertiesViewer: React.FunctionComponent<{
       </dl>
 
       {/* Description */}
-      {event.Desc?.replace(/<[^>]*>/g, "").trim() && (
+      {sanitizedDesc.trim() && (
         <div className="mb-4">
           <h4 className="subheader">{window.i18next.t("Description")}</h4>
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event description is sanitized by both backend (InputUtils::sanitizeHTML) and client-side (DOMPurify) */}
-          <div className="prose" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.Desc || "") }} />
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: sanitized by DOMPurify (and InputUtils::sanitizeHTML on backend) */}
+          <div className="prose" dangerouslySetInnerHTML={{ __html: sanitizedDesc }} />
         </div>
       )}
 
       {/* Additional Information */}
-      {event.Text?.replace(/<[^>]*>/g, "").trim() && (
+      {sanitizedText.trim() && (
         <div className="mb-2">
           <h4 className="subheader">{window.i18next.t("Additional Information")}</h4>
-          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: Event text is sanitized by both backend (InputUtils::sanitizeHTML) and client-side (DOMPurify) */}
-          <div className="prose" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(event.Text || "") }} />
+          {/* biome-ignore lint/security/noDangerouslySetInnerHtml: sanitized by DOMPurify (and InputUtils::sanitizeHTML on backend) */}
+          <div className="prose" dangerouslySetInnerHTML={{ __html: sanitizedText }} />
         </div>
       )}
     </div>
