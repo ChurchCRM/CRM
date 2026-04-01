@@ -171,7 +171,7 @@ $otherPeople = $family->getOtherPeople();
                                     <td>
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
-                                            <a href="mailto:<?= $tmpEmail ?>" target="_blank" rel="noopener noreferrer"><?= $tmpEmail ?></a>
+                                            <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>
@@ -256,7 +256,7 @@ $otherPeople = $family->getOtherPeople();
                                     <td>
                                         <?php $tmpEmail = $person->getEmail();
                                         if (!empty($tmpEmail)) { ?>
-                                            <a href="mailto:<?= $tmpEmail ?>" target="_blank" rel="noopener noreferrer"><?= $tmpEmail ?></a>
+                                            <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
                                         <?php } ?>
                                     </td>
                                     <td><?php renderMemberActions($person); ?></td>

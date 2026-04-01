@@ -612,7 +612,7 @@ $bOkToEdit = (
                                 <td>
                                     <?php $tmpEmail = $familyMember->getEmail();
                                     if ($tmpEmail !== '') { ?>
-                                        <a href="mailto:<?= $tmpEmail ?>" target="_blank" rel="noopener noreferrer"><?= $tmpEmail ?></a>
+                                        <a href="mailto:<?= InputUtils::escapeAttribute($tmpEmail) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($tmpEmail) ?></a>
                                     <?php } ?>
                                 </td>
                                 <td>

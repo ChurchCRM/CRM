@@ -129,7 +129,7 @@
       });
       return;
     }
-    window.open("mailto:" + encodeURIComponent(emailCsv), "_blank");
+    window.open("mailto:" + encodeURIComponent(emailCsv), "_blank", "noopener,noreferrer");
   };
 
   /**
@@ -144,7 +144,7 @@
       });
       return;
     }
-    window.open("mailto:?bcc=" + encodeURIComponent(emailCsv), "_blank");
+    window.open("mailto:?bcc=" + encodeURIComponent(emailCsv), "_blank", "noopener,noreferrer");
   };
 
   /**
