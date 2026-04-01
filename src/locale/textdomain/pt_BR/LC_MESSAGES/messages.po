@@ -12179,12 +12179,20 @@ msgid "Manage your personal preferences and account settings"
 msgstr "Gerir as suas preferências pessoais e definições de conta"
 
 #: 
+msgid "Manual"
+msgstr "Manual"
+
+#: 
 msgid "Map cart items"
 msgstr "Mapear itens do carrinho"
 
 #: 
 msgid "Map to Field"
 msgstr "Mapear para Campo"
+
+#: 
+msgid "Material"
+msgstr "Material"
 
 #: 
 msgid "Member Properties"
