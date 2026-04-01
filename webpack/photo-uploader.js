@@ -34,12 +34,17 @@ import Webcam from "@uppy/webcam";
  * @returns {PhotoUploaderInstance} - Photo uploader wrapper with show/hide methods
  */
 export function createPhotoUploader(config) {
+  // Ensure maxFileSize is a number (may come as string from config)
+  const maxFileSizeBytes = typeof config.maxFileSize === "string"
+    ? parseInt(config.maxFileSize, 10)
+    : (config.maxFileSize || 5000000);
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
     restrictions: {
       maxNumberOfFiles: 1,
-      maxFileSize: config.maxFileSize || 5000000, // Default 5MB
+      maxFileSize: maxFileSizeBytes, // Default 5MB
       allowedFileTypes: ["image/*"],
     },
   })
@@ -47,7 +52,7 @@ export function createPhotoUploader(config) {
       inline: false, // Use modal mode
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
-      note: `Max file size: ${Math.round((config.maxFileSize || 5000000) / 1000000)}MB`,
+      note: `Max file size: ${Math.round(maxFileSizeBytes / 1000000)}MB`,
       closeModalOnClickOutside: true,
       locale: {
         strings: {
