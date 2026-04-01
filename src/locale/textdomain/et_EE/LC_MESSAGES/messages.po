@@ -11142,3 +11142,2265 @@ msgstr "Teie andmebaasi versioon on uuem kui installitud tarkvara. See tähendab
 msgid "or later to continue."
 msgstr "või hilisem jätkamiseks."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "\"Tulemise põhjus\" märkmed"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d tulemus otsingule \"%s\""
+msgstr[1] "%d tulemust otsingule \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(valikuline — jätke tühjaks, et kaasata kõik rollid)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Perekond esindab leibkonda. See sisaldab ühist aadressi ja kodutelefoni numbrit kõigile koos elavatele pereliikmetele."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Leibkond. Salvestab ühise postiaadress ja kodutelefoni."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Isik ei pea kuuluma perekonda, kuid perekonna määramine muudab aadresside haldamise palju lihtsamaks."
+
+#: 
+msgid "About"
+msgstr "Teave"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Lubatud vorming: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Konto taastamine"
+
+#: 
+msgid "Add Family"
+msgstr "Lisa perekond"
+
+#: 
+msgid "Add First Family"
+msgstr "Lisa esimene perekond"
+
+#: 
+msgid "Add Member"
+msgstr "Lisa liige"
+
+#: 
+msgid "Add New Class"
+msgstr "Lisa uus klass"
+
+#: 
+msgid "Add Note"
+msgstr "Lisa märge"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Lisa inimesi perekonda"
+
+#: 
+msgid "Add Person"
+msgstr "Lisa isik"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Lisa õpilased valikusse"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Lisa õpetajad valikusse"
+
+#: 
+msgid "Add User"
+msgstr "Lisa kasutaja"
+
+#: 
+msgid "Add Your Data"
+msgstr "Lisage oma andmed"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Lisage oma esimene perekond"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Lisage oma esimene omadus"
+
+#: 
+msgid "Add a Person"
+msgstr "Lisa isik"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Lisa uus annetus lubadus"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Lisa makse praegusele korjandusele"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "Lisa kõik valiku üksused gruppi"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Lisa kõik valikusse"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Lisa valiku üksused perekonnale"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Lisage kõik oma leibkonna liikmed — nii täiskasvanud kui lapsed."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Lisage perekondi ja üksikisikuid ükshaaval otse ChurchCRM-is. Sobib väiksematele kogudustele või imporditud andmete täiendamiseks."
+
+#: 
+msgid "Add first family"
+msgstr "Lisa esimene perekond"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Lisage või muutke üksikisiku kirjeid"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Lisage või muutke korjandusüritustele annetatud esemeid"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Lisage või muutke inimeste ja perekondade märkmeid"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Lisage töötajaid ja vabatahtlikke"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Lisage töötajaid või vabatahtlikke süsteemi kasutajateks"
+
+#: 
+msgid "Administrator"
+msgstr "Administraator"
+
+#: 
+msgid "Age Distribution"
+msgstr "Vanuseline jaotus"
+
+#: 
+msgid "All Roles"
+msgstr "Kõik rollid"
+
+#: 
+msgid "All Time"
+msgstr "Kogu aeg"
+
+#: 
+msgid "All roles"
+msgstr "Kõik rollid"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Peaaegu valmis — vaadake oma andmed üle"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Käivitub automaatselt ka WebDAV kaudu teie seadistatud intervalliga."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Ilmnes viga"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Üksik koguduse liige. Salvestab nime, sünnipäeva, isikliku e-posti ja mobiiltelefoni."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Teie päringu töötlemisel ilmnes ootamatu viga. Palun pöörduge abi saamiseks administraatori poole."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Ilmnes ootamatu viga."
+
+#: 
+msgid "Applied preset"
+msgstr "Rakendatud eelseadistus"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Kas olete kindel, et soovite selle korjanduse kustutada?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Kas olete kindel, et soovite selle korjandusürituse kustutada?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Kas olete kindel, et soovite eemaldada"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Määrake ja hallake annetuste ümbriku numbreid"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Määrake ja hallake korjandusürituse ostjate numbreid"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Määrake valiku üksused perekonna kirjele"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Määrake valiku üksused grupile"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Määrake valiku üksused sündmusele"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Määra gruppi"
+
+#: 
+msgid "Authentication Code"
+msgstr "Autentimiskood"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Automaatselt seostatud"
+
+#: 
+msgid "BCC"
+msgstr "Pimekoopia"
+
+#: 
+msgid "BCC All"
+msgstr "Pimekoopia kõigile"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Tagasi halduspaneelile"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Tagasi algusesse"
+
+#: 
+msgid "Back to Home"
+msgstr "Tagasi avalehele"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Varundab automaatselt WebDAV pilvemällu seadistatava intervalliga."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Varunda välisele salvestusseadmele kohe"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Sirvige kõiki saadaolevaid pluginaid"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Sirvige kõiki kiriku sündmusi ja tegevusi"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "Sirvige kõiki koguduse inimesi filtreerimise ja otsingu abil"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Sirvi kõiki pluginaid"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "Sirvige ja otsige kõiki koguduse perekondi"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Sirvige ja otsige korjanduskampaaniaid"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Sirvige koguduse liikmete fotosid"
+
+#: 
+msgid "Buyer Number"
+msgstr "Ostja number"
+
+#: 
+msgid "Buyers"
+msgstr "Ostjad"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV veerg"
+
+#: 
+msgid "CSV template not found"
+msgstr "CSV malli ei leitud"
+
+#: 
+msgid "Call"
+msgstr "Helista"
+
+#: 
+msgid "Cart Functions"
+msgstr "Valiku funktsioonid"
+
+#: 
+msgid "Change Family Role"
+msgstr "Muuda perekonna rolli"
+
+#: 
+msgid "Check Out"
+msgstr "Registreeri lahkumine"
+
+#: 
+msgid "Check Out Person"
+msgstr "Registreeri isiku lahkumine"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Kontrollige värskendusi ja uuendage oma ChurchCRM installi"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Registreerige osalejaid kiriku sündmustele ja tegevustele"
+
+#: 
+msgid "Check in to an event"
+msgstr "Registreeru sündmusele"
+
+#: 
+msgid "Check-ins"
+msgstr "Registreerimised"
+
+#: 
+msgid "Children"
+msgstr "Lapsed"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Valige, kuidas soovite oma andmebaasi täita. Saate hiljem alati kasutada teist meetodit."
+
+#: 
+msgid "Church Info"
+msgstr "Kiriku teave"
+
+#: 
+msgid "Clear all"
+msgstr "Tühjenda kõik"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Kustuta kõik andmed ja alusta uuesti"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Eemalda kõik üksused valikust"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Klõpsake Salvesta, et rakendada."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Klõpsake foto üleslaadimiseks"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "„Ava GitHubi probleem\" klõpsamine avab uue vahelehe teie süsteemiteabega eeltäidetult. Isikuandmeid ei kaasata, kui te neid ise ei lisa."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Veerg seostati automaatselt ChurchCRM väljaga."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Kogukonna haldamise platvorm"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Ühildub Exceli, Google Sheetsi või mis tahes CSV ekspordiga."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Täitke need mis tahes järjekorras, et valmistada ChurchCRM teie koguduse jaoks ette."
+
+#: 
+msgid "Confession"
+msgstr "Piht"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Seadistage globaalsed süsteemi sätted ja eelistused"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Seadistage grupi sätted, rollid ja omadused"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Kinnitage oma uus parool"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "Ühendage SMTP server, et ChurchCRM saaks e-kirju saata"
+
+#: 
+msgid "Connect with others"
+msgstr "Suhelge teistega"
+
+#: 
+msgid "Contact us"
+msgstr "Võtke meiega ühendust"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Teisendage üksikisiku kirjed perekondadeks"
+
+#: 
+msgid "Convert to Family"
+msgstr "Teisenda perekonnaks"
+
+#: 
+msgid "Copied"
+msgstr "Kopeeritud"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Kopeeri liikmed gruppi"
+
+#: 
+msgid "Copy to Group"
+msgstr "Kopeeri gruppi"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Looge kiriku andmebaasist varukoopia"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Looge käsitsi varukoopia vähemalt kord nädalas või lubage väline varundusplugin automaatsete WebDAV varunduste jaoks ajakava alusel."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Loo uus korjandus"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Looge ja muutke perekonna teavet ja suhteid"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Looge ja hallake kiriku sündmusi ja tegevusi"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Looge või muutke omaduste tüüpide kategooriaid"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Looge või muutke vabatahtlike positsioone"
+
+#: 
+msgid "Current person"
+msgstr "Praegune isik"
+
+#: 
+msgid "Data & Reports"
+msgstr "Andmed ja aruanded"
+
+#: 
+msgid "Database Reset"
+msgstr "Andmebaasi lähtestamine"
+
+#: 
+msgid "Default / Notes"
+msgstr "Vaikeväärtus / Märkmed"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Määratlege kohandatud väljad täiendavate perekonnaandmete kogumiseks"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Määratlege kohandatud väljad täiendavate isikuandmete kogumiseks"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Määratlege kohandatud omadused andmete jälgimiseks"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Määratlege kohandatud omadused, mida saab määrata"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Määratlege grupispetsiifilised omadused liikmete jaoks"
+
+#: 
+msgid "Delete All"
+msgstr "Kustuta kõik"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Kustuta registreerimiskirje"
+
+#: 
+msgid "Delete Family"
+msgstr "Kustuta perekond"
+
+#: 
+msgid "Delete Group"
+msgstr "Kustuta grupp"
+
+#: 
+msgid "Delete Person"
+msgstr "Kustuta isik"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Kustuta lubadus"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "Selle omaduse kustutamine eemaldab ka kõik selle määrangud isikute, perekondade ja gruppide kirjetest."
+
+#: 
+msgid "Deposit Value"
+msgstr "Korjanduse väärtus"
+
+#: 
+msgid "Describe the issue"
+msgstr "Kirjeldage probleemi"
+
+#: 
+msgid "Directions"
+msgstr "Juhised"
+
+#: 
+msgid "Directory Reports"
+msgstr "Kataloogi aruanded"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Seadetes keelatud"
+
+#: 
+msgid "Donated Item"
+msgstr "Annetatud ese"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Annetusi ja ohvriande jälgitakse perekonna tasemel. Kui soovite salvestada üksinda elava isiku annetusi, looge tema jaoks üheliikmelise perekonna kirje."
+
+#: 
+msgid "Download"
+msgstr "Laadi alla"
+
+#: 
+msgid "Download CSV Template"
+msgstr "Laadi alla CSV mall"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Laadige mall alla, et näha oodatavat veeruvormingut."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Lohistage oma CSV fail siia"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplikaadid"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Igal isikul võib olla oma e-posti aadress ja mobiilinumber."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Iga rida on üks isik. Sama perekonna liikmed jagavad FamilyID-d."
+
+#: 
+msgid "Easy registration"
+msgstr "Lihtne registreerimine"
+
+#: 
+msgid "Edit Class"
+msgstr "Muuda klassi"
+
+#: 
+msgid "Edit Form"
+msgstr "Muuda vormi"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Muuda liikme omaduste vormi"
+
+#: 
+msgid "Edit Property"
+msgstr "Muuda omadust"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Muutke grupi liikme kohandatud omadusi"
+
+#: 
+msgid "Email BCC"
+msgstr "E-posti pimekoopia"
+
+#: 
+msgid "Email Families"
+msgstr "Saada e-kiri perekondadele"
+
+#: 
+msgid "Email Settings"
+msgstr "E-posti sätted"
+
+#: 
+msgid "Email Tools"
+msgstr "E-posti tööriistad"
+
+#: 
+msgid "Email cart items"
+msgstr "Saada e-kiri valiku üksustele"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "E-kiri peidetud adressaatidega"
+
+#: 
+msgid "Empty"
+msgstr "Tühi"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "Luba HTTPS"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Luba pluginad"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Lubaga MailChimp plugin kontaktide sünkroonimiseks"
+
+#: 
+msgid "Enrolled"
+msgstr "Registreeritud"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Sisestage andmed käsitsi"
+
+#: 
+msgid "Enter a search term"
+msgstr "Sisestage otsingutermin"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Sisestage 6-kohaline kood autentimisrakendusest sisselogimise lõpuleviimiseks"
+
+#: 
+msgid "Enter your current password"
+msgstr "Sisestage oma praegune parool"
+
+#: 
+msgid "Enter your login name"
+msgstr "Sisestage oma kasutajanimi"
+
+#: 
+msgid "Enter your new password"
+msgstr "Sisestage oma uus parool"
+
+#: 
+msgid "Enter your password"
+msgstr "Sisestage oma parool"
+
+#: 
+msgid "Est. Value"
+msgstr "Hinn. väärtus"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Välista e-posti ekspordist"
+
+#: 
+msgid "Excluded"
+msgstr "Välistatud"
+
+#: 
+msgid "Expand"
+msgstr "Laienda"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Avastage demo andmetega"
+
+#: 
+msgid "Export"
+msgstr "Ekspordi"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Eksportige andmed CSV vormingusse väliste rakenduste jaoks"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "Laiendage ChurchCRM-i MailChimpi, varunduste ja muuga"
+
+#: 
+msgid "FY %s"
+msgstr "MA %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Liikmete lisamine valikusse ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Klassi kustutamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Grupi kustutamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Klassist eemaldamine ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "Perekonnad jagavad aadressi ja telefoninumbrit."
+
+#: 
+msgid "Family List"
+msgstr "Perekondade nimekiri"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Perekonna annetuste lubaduste kokkuvõte"
+
+#: 
+msgid "Family Profile"
+msgstr "Perekonna profiil"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "Perekonna rollid (perekonnapea, abikaasa, laps jne) aitavad teie kirjeid korrastada."
+
+#: 
+msgid "Family vs Person"
+msgstr "Perekond vs isik"
+
+#: 
+msgid "Fields to Include"
+msgstr "Kaasatavad väljad"
+
+#: 
+msgid "File upload error"
+msgstr "Faili üleslaadimise viga"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Järgige neid kahte sammu, et lisada koguduse liikmeid kiiresti ja õigesti."
+
+#: 
+msgid "Forgot password?"
+msgstr "Unustasid parooli?"
+
+#: 
+msgid "Format"
+msgstr "Vorming"
+
+#: 
+msgid "Full Group View"
+msgstr "Grupi täisvaade"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Looge ja laadige alla kinnituskirjad"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Looge aastased annetuste aruanded maksuameti jaoks"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Looge kataloogi nimekirjad ja trükitud materjalid"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Looge finantsaruandeid"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Looge finantsaruandeid ja annetuste aruandeid"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Looge kirju ja postietikette"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Looge postietikette ja vormikirju"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Looge telefonikataloog"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Looge annetuste lubaduste meeldetuletuskirju"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Looge aruandeid grupi liikmeskonna ja tegevuste kohta"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Looge annetajatele maksudeklaratsiooni dokumente"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Geograafilised tööriistad"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Importige oma andmed ChurchCRM-i"
+
+#: 
+msgid "Go to homepage"
+msgstr "Mine avalehele"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Suurepärane valik! Siin on, kuidas lisada koguduse liikmeid."
+
+#: 
+msgid "Group Map"
+msgstr "Grupi kaart"
+
+#: 
+msgid "Group Reports"
+msgstr "Grupi aruanded"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "Grupp on edukalt kustutatud."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Kas teil on olemasolevad andmed?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Kui teil on palju kirjeid tabelis, võib CSV import olla kiirem kui andmete käsitsi sisestamine."
+
+#: 
+msgid "Ignored"
+msgstr "Ignoreeritud"
+
+#: 
+msgid "Import Another File"
+msgstr "Impordi teine fail"
+
+#: 
+msgid "Import CSV"
+msgstr "Impordi CSV"
+
+#: 
+msgid "Import Complete"
+msgstr "Import lõpetatud"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Importige kontakte oma MailChimp sihtrühmadest"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Import ebaõnnestus. Palun proovige uuesti."
+
+#: 
+msgid "Import failed: "
+msgstr "Import ebaõnnestus: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Impordi CSV-st"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Impordi tabelist"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Impordi tabelist"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Importige, taastage või sisestage käsitsi"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Importige, taastage või sisestage oma kogudus käsitsi"
+
+#: 
+msgid "Importing..."
+msgstr "Importimine..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Kaasa e-posti eksporti"
+
+#: 
+msgid "Included"
+msgstr "Kaasatud"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "Paigaldage TLS/SSL sertifikaat turvaliste ühenduste jaoks"
+
+#: 
+msgid "Invalid import request"
+msgstr "Kehtetu impordipäring"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Kehtetu \"Saatja number\": \"%s\". Lisage riigikood, nt +3725xxxxxxx (EE)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Kutsuge oma meeskond"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Liituge meie kogukonnaga ja hoidke ühendust"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Hüpake mis tahes seadistuse sammu juurde:"
+
+#: 
+msgid "Key People"
+msgstr "Võtmeisikud"
+
+#: 
+msgid "Kiosk"
+msgstr "Kioskiaken"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kioskiaken lubatud"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Taastame teie eelmised ChurchCRM andmed."
+
+#: 
+msgid "Letters"
+msgstr "Kirjad"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Kirjad ja postietiketid"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Kirjad ja etiketid"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Loetlege iseregistreerimise teel loodud perekonnad"
+
+#: 
+msgid "Load demo data"
+msgstr "Laadi demo andmed"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Laadige näidisperekonnad, isikud, grupid ja annetuste kirjed. Kõige turvalisem viis ChurchCRM-i õppida enne oma tegelike andmete sisestamist."
+
+#: 
+msgid "Log Files"
+msgstr "Logifailid"
+
+#: 
+msgid "Log Level"
+msgstr "Logitase"
+
+#: 
+msgid "Login to your account"
+msgstr "Logige oma kontole sisse"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, varukoopiad ja muud"
+
+#: 
+msgid "Manage %s options"
+msgstr "Halda %s valikuid"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Halda ümbrikke"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Hallake pühapäevakooli klasse, õpetajaid ja õpilaste kohalolekut"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Hallake klassifitseerimisnimekirju, rolle ja grupitüüpe"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Hallake annetuste fonde finantsarvestuse jaoks"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Hallake annetusi, lubadusi ja finantskirjeid"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "Hallake e-posti tööriistu ja SMTP seadistust"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Hallake sündmuste nimesid ja kategooriaid"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Hallake sündmuse tüüpide kategooriaid"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Hallake perekondi, isikuid ja demograafilist teavet"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "Hallake inimesi oma valikus"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Hallake isiku, perekonna ja grupi omaduste tüüpe"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Hallake omadusi"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Hallake süsteemi kasutajaid, õigusi ja kaheastmelise autentimise seadeid"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Hallake kasutajakonto üksikasju ja õigusi"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Hallake vabatahtlike võimalusi ja määrake liikmeid"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Hallake oma isiklikke eelistusi ja konto seadeid"
+
+#: 
+msgid "Manual"
+msgstr "Käsitsi"
+
+#: 
+msgid "Map cart items"
+msgstr "Kuva valiku üksused kaardil"
+
+#: 
+msgid "Map to Field"
+msgstr "Seosta väljaga"
+
+#: 
+msgid "Material"
+msgstr "Materjal"
+
+#: 
+msgid "Member Properties"
+msgstr "Liikme omadused"
+
+#: 
+msgid "Member Roles"
+msgstr "Liikmete rollid"
+
+#: 
+msgid "Members added to cart."
+msgstr "Liikmed lisatud valikusse."
+
+#: 
+msgid "Memberships"
+msgstr "Liikmelisused"
+
+#: 
+msgid "Minimum"
+msgstr "Miinimum"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Muutke grupi liikmete perekonna rolle"
+
+#: 
+msgid "Move Members"
+msgstr "Liiguta liikmeid"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Liiguta liikmed gruppi"
+
+#: 
+msgid "Move to Group"
+msgstr "Liiguta gruppi"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Liigute olemasolevalt ChurchCRM või ChurchInfo installilt? Laadige üles varukoopia fail ja taastame teie andmed automaatselt."
+
+#: 
+msgid "My Settings"
+msgstr "Minu sätted"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "Nimemuudatused nõuavad salvestamist. Järjestuse muutmine ja kustutamine toimingute menüüs jõustuvad kohe."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Nimi, aadress, kontaktandmed"
+
+#: 
+msgid "Need help?"
+msgstr "Vajate abi?"
+
+#: 
+msgid "New"
+msgstr "Uus"
+
+#: 
+msgid "New Family"
+msgstr "Uus perekond"
+
+#: 
+msgid "New Group"
+msgstr "Uus grupp"
+
+#: 
+msgid "New Person"
+msgstr "Uus isik"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Aastapäevi ei ole"
+
+#: 
+msgid "No Birthdays"
+msgstr "Sünnipäevi ei ole"
+
+#: 
+msgid "No Check-ins"
+msgstr "Registreerimisi ei ole"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Korjanduste jälgimine puudub"
+
+#: 
+msgid "No Deposits"
+msgstr "Korjandusi ei ole"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Viimase ega järgmise 7 päeva jooksul aastapäevi ei ole"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Viimase ega järgmise 7 päeva jooksul sünnipäevi ei ole"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Korjanduste andmed ei ole veel saadaval"
+
+#: 
+msgid "No description set."
+msgstr "Kirjeldust pole määratud."
+
+#: 
+msgid "No email address on file"
+msgstr "E-posti aadressi pole kirjes"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Selle klassiga pole seotud ühtegi sündmust."
+
+#: 
+msgid "No file uploaded"
+msgstr "Faili ei laaditud üles"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Grupimääranguid pole veel."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Vastet ei leitud — valige väli või jätke olekusse Ignoreeri."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Vasteid otsingule \"%s\" ei leitud. Proovige teist otsinguterminit."
+
+#: 
+msgid "No member properties defined."
+msgstr "Liikme omadusi pole defineeritud."
+
+#: 
+msgid "No members found for this role."
+msgstr "Selle rolli jaoks liikmeid ei leitud."
+
+#: 
+msgid "No people found"
+msgstr "Inimesi ei leitud"
+
+#: 
+msgid "No people match your current filters."
+msgstr "Ükski inimene ei vasta teie praegustele filtritele."
+
+#: 
+msgid "No phone number on file"
+msgstr "Telefoninumbrit pole kirjes"
+
+#: 
+msgid "No properties assigned."
+msgstr "Omadusi pole määratud."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Omadusi pole veel defineeritud"
+
+#: 
+msgid "No results found"
+msgstr "Tulemusi ei leitud"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Ajajoonel pole veel sündmusi."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Vabatahtlike võimaluste määranguid pole veel."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Pole veel valmis?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Kui teil on perekond, lisage iga leibkonna liige isikuna. Määrake neile perekonna roll (nt perekonnapea, abikaasa, laps)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "Pärast esitamist saab meie meeskond teie registreerumise ja võtab isiklikult ühendust teie perekonna tervitamiseks. Kui midagi tundub vale, kasutage nuppu Eelmine, et minna tagasi ja teha muudatusi."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Ainult .csv failid on lubatud"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "Ava GitHubi probleem"
+
+#: 
+msgid "Open user menu"
+msgstr "Ava kasutajamenüü"
+
+#: 
+msgid "Options"
+msgstr "Valikud"
+
+#: 
+msgid "Other Members"
+msgstr "Teised liikmed"
+
+#: 
+msgid "Overview"
+msgstr "Ülevaade"
+
+#: 
+msgid "Password Recovery"
+msgstr "Parooli taastamine"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Eelmised ja järgmised 7 päeva"
+
+#: 
+msgid "People List"
+msgstr "Isikute nimekiri"
+
+#: 
+msgid "People by Classification"
+msgstr "Isikud klassifikatsiooni järgi"
+
+#: 
+msgid "Person removed from class."
+msgstr "Isik eemaldati klassist."
+
+#: 
+msgid "Photo"
+msgstr "Foto"
+
+#: 
+msgid "Photos only"
+msgstr "Ainult fotod"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Valige tee alustamiseks"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Palun kontrollige, et kõik on õige, enne esitamist."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Palun seostage enne importimist vähemalt üks veerg"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Palun valige CSV fail"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Proovige taotleda uut parooli lähtestamise linki või pöörduge toe poole, kui probleemid jätkuvad."
+
+#: 
+msgid "Pledges"
+msgstr "Annetuste lubadused"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "Plugin on lubatud, kuid seadistamata. Pärast seadistamist käivituvad varundused automaatselt WebDAV-i teie seadistatud intervalliga."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Vajutage ? otsingu aktiveerimiseks"
+
+#: 
+msgid "Prev"
+msgstr "Eelmine"
+
+#: 
+msgid "Print name tags"
+msgstr "Prindi nimesildid"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Prinditav kataloog kõigist isikutest, grupeeritud perekondade kaupa"
+
+#: 
+msgid "Properties Form"
+msgstr "Omaduste vorm"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Omaduse määrangut ei leitud."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "Omadus on edukalt kustutatud."
+
+#: 
+msgid "Property not found."
+msgstr "Omadust ei leitud."
+
+#: 
+msgid "Quick Setup"
+msgstr "Kiirseadistus"
+
+#: 
+msgid "Quick Tips"
+msgstr "Kiirnõuanded"
+
+#: 
+msgid "Ready to back up"
+msgstr "Valmis varundamiseks"
+
+#: 
+msgid "Ready to restore"
+msgstr "Valmis taastamiseks"
+
+#: 
+msgid "Recommended Order"
+msgstr "Soovituslik järjekord"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Registreerige korraga mitu korjanduse loosimise võitjat"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Registreerige uued lubadused ja maksed"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Registreerige, miks külastajad teie kirikut külastasid"
+
+#: 
+msgid "Register Your Family"
+msgstr "Registreerige oma perekond"
+
+#: 
+msgid "Register another family"
+msgstr "Registreeri teine perekond"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Eemalda kõik valikust"
+
+#: 
+msgid "Remove from Class"
+msgstr "Eemalda klassist"
+
+#: 
+msgid "Report an Issue"
+msgstr "Teata probleemist"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Taasta varukoopia"
+
+#: 
+msgid "Restore backup"
+msgstr "Taasta varukoopia"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "Taastage kiriku andmebaas varukoopiafailist"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Tagasi juhtpaneelile"
+
+#: 
+msgid "Return to Families"
+msgstr "Tagasi perekondade juurde"
+
+#: 
+msgid "Return to Groups"
+msgstr "Tagasi gruppide juurde"
+
+#: 
+msgid "Return to People"
+msgstr "Tagasi isikute juurde"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Vaadake üle ja puhastage failid, mis pole seotud ühegi kirjega"
+
+#: 
+msgid "Role not found."
+msgstr "Rolli ei leitud."
+
+#: 
+msgid "Roles"
+msgstr "Rollid"
+
+#: 
+msgid "Run"
+msgstr "Käivita"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "SMTP server e-kirjade saatmiseks"
+
+#: 
+msgid "Sample Data"
+msgstr "Näidisandmed"
+
+#: 
+msgid "Search Results"
+msgstr "Otsingutulemused"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Otsige isikute, perekondade, gruppide, aadresside ja muu hulgast."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Otsige ja vaadake korjanduste kirjeid"
+
+#: 
+msgid "Search groups..."
+msgstr "Otsi gruppe..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Otsi isikuid, perekondi, gruppe…"
+
+#: 
+msgid "Security First"
+msgstr "Turvalisus ennekõike"
+
+#: 
+msgid "Select Fields"
+msgstr "Vali väljad"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Valige kaasatavad väljad"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Valige varukoopiafail ja klõpsake Taasta andmebaas."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Valige ülaltoodud valikud ja klõpsake varundamise nuppu."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Iseregistreerimise aruanne"
+
+#: 
+msgid "Send email to families"
+msgstr "Saada e-kiri perekondadele"
+
+#: 
+msgid "Server Error"
+msgstr "Serveri viga"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "Server tagastas ootamatu vastuse. Palun proovige uuesti."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Seadke õigus väärtusele Tõene, et anda uutele kasutajatele võimalus muuta oma praegust väärtust."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Seadke administraatori kasutaja e-post, et saaksite paroole lähtestada ja teateid saada"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Seadke uute kasutajakontode vaikimisi eelistused"
+
+#: 
+msgid "Set up"
+msgstr "Seadista"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Seadistage uus korjanduskampaania või üritus"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Seadke oma kiriku nimi, aadress ja kontaktandmed"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Seadke oma kiriku nimi, aadress ja kontakti e-post"
+
+#: 
+msgid "Setup Progress"
+msgstr "Seadistuse edenemine"
+
+#: 
+msgid "Setup Required"
+msgstr "Seadistamine nõutud"
+
+#: 
+msgid "Share"
+msgstr "Jaga"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "Kuvatakse liikmeid: %s"
+
+#: 
+msgid "Sign in"
+msgstr "Logi sisse"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Kuna tegemist on uue installiga, laadib taastamine lihtsalt teie varukoopia andmed."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Jäta vahele — mine halduspaneelile"
+
+#: 
+msgid "Start Fresh"
+msgstr "Alusta puhtalt"
+
+#: 
+msgid "Start Over"
+msgstr "Alusta otsast"
+
+#: 
+msgid "Stay informed"
+msgstr "Olge kursis"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "Samm 1 — Laadige üles CSV fail"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "Samm 2 — Seostage veerud"
+
+#: 
+msgid "Submitting..."
+msgstr "Esitamine..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Toetab varukoopiaid ChurchCRM-ist ja ChurchInfo-st."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Süsteemi diagnostiline teave ja konfiguratsioon"
+
+#: 
+msgid "Tags"
+msgstr "Sildid"
+
+#: 
+msgid "Tax Statements"
+msgstr "Maksudeklaratsioonid"
+
+#: 
+msgid "Teacher"
+msgstr "Õpetaja"
+
+#: 
+msgid "Technical Details"
+msgstr "Tehnilised üksikasjad"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Rääkige meile oma perekonnast"
+
+#: 
+msgid "The property could not be removed."
+msgstr "Omadust ei saanud eemaldada."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "Omadus on edukalt eemaldatud."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Need lingid ilmuvad navigeerimisriba menüüsse „Lingid\", kui see plugin on lubatud."
+
+#: 
+msgid "To Family"
+msgstr "Perekonnale"
+
+#: 
+msgid "To Group"
+msgstr "Gruppi"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Lülita navigatsioon"
+
+#: 
+msgid "Total Size"
+msgstr "Kogumaht"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Jälgige perekonna lubadusi ja fondi panuseid majandusaasta kaupa"
+
+#: 
+msgid "Transaction Details"
+msgstr "Tehingu üksikasjad"
+
+#: 
+msgid "Unmapped"
+msgstr "Seostamata"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Uuenda administraatori kontakti"
+
+#: 
+msgid "Upload CSV"
+msgstr "Laadi üles CSV"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Laadige üles CSV fail perekondade ja isikute importimiseks ChurchCRM-i."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Laadige üles CSV Excelist, Google Sheetsist või oma eelmisest kiriku haldussüsteemist ja seostage veerud ChurchCRM väljadega."
+
+#: 
+msgid "Upload failed."
+msgstr "Üleslaadimine ebaõnnestus."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "Üleslaadimine ebaõnnestus. Palun kontrollige faili ja proovige uuesti."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "Üleslaadimisseanss on aegunud. Palun laadige fail uuesti üles."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Üleslaadimine, palun oodake..."
+
+#: 
+msgid "Users"
+msgstr "Kasutajad"
+
+#: 
+msgid "Verify Info"
+msgstr "Kinnita teave"
+
+#: 
+msgid "Verify your identity"
+msgstr "Kinnitage oma isik"
+
+#: 
+msgid "View Family"
+msgstr "Vaata perekonda"
+
+#: 
+msgid "View People"
+msgstr "Vaata isikuid"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Vaadake kõiki perekondi interaktiivsel kaardil"
+
+#: 
+msgid "View all results"
+msgstr "Vaata kõiki tulemusi"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "Vaadake ja hallake kõiki koguduse gruppe"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Vaadake ja hallake korjanduste makseid"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Vaadake ja hallake perekondade asukohaandmeid"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Vaadake ja hallake süsteemi logifaile silumiseks"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Vaadake ja käivitage salvestatud andmebaasipäringuid"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Vaadake ostjate numbreid ja numbrite määranguid"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Vaadake klassi nimekirja, õpetajate määranguid ja kontaktteavet"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Vaadake perekonna üksikasju, liikmeid ja ajajoonet"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Vaadake perekonna lubaduste kokkuvõtteid ja fondide jaotusi"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Vaadake grupi liikmeid, rolle ja omadusi"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Vaata lubaduste juhtpaneeli"
+
+#: 
+msgid "View query results"
+msgstr "Vaata päringu tulemusi"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Vaadake lubaduse makse tehingu üksikasju"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "Hääletavad liikmed peavad olema annetanud selle arvu aastate jooksul (0, et annetust mitte nõuda)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "Me ei leidnud perekonda, mida otsisite."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "Me ei leidnud gruppi, mida otsisite."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "Me ei leidnud isikut, keda otsisite."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "Me ei leidnud kirjet, mida otsisite."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Meil ei õnnestunud teie parooli lähtestamise taotlust töödelda."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Kasutame seda teiega ühenduse hoidmiseks ja kiriku uudiste saatmiseks."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Meil on nii hea meel, et olete siin! Registreerige oma perekond vaid 3 lihtsa sammuga."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Meil on väga hea meel, et teie perekond on meiega liitunud!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Tere tulemast tagasi!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Tere tulemast tagasi! Palun sisestage oma andmed jätkamiseks"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Tere tulemast perekonda!"
+
+#: 
+msgid "What happens next?"
+msgstr "Mis juhtub edasi?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Mis läks valesti? Mida te ootasite?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Kes on teie perekonnas?"
+
+#: 
+msgid "Why Came"
+msgstr "Tulemise põhjus"
+
+#: 
+msgid "Yes, delete"
+msgstr "Jah, kustuta"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Saate alati hiljem CSV kaudu rohkem andmeid importida."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Saate luua/kustutada pühapäevakooli gruppi."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Teil puuduvad finantsõigused korjanduste vaatamiseks."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "Teie varukoopia andmed on laaditud. Teid suunatakse sisselogimisele eelmiste mandaatidega."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "Teie varukoopia uuendatakse vajaduse korral automaatselt uusimale andmebaasiskeemile."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Teie eelmine seanss aegus. Palun logige uuesti sisse."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Teie registreerumine on vastu võetud. Meie meeskond võtab peagi ühendust, et teid isiklikult tervitada."
+
+#: 
+msgid "all members"
+msgstr "kõik liikmed"
+
+#: 
+msgid "complete"
+msgstr "lõpetatud"
+
+#: 
+msgid "fields"
+msgstr "väljad"
+
+#: 
+msgid "from this class?"
+msgstr "sellest klassist?"
+
+#: 
+msgid "from this group?"
+msgstr "sellest grupist?"
+
+#: 
+msgid "full group view"
+msgstr "grupi täisvaade"
+
+#: 
+msgid "funds"
+msgstr "fondid"
+
+#: 
+msgid "members"
+msgstr "liikmed"
+
+#: 
+msgid "name@example.com"
+msgstr "nimi@näide.ee"
+
+#: 
+msgid "opportunities"
+msgstr "võimalused"
+
+#: 
+msgid "options"
+msgstr "valikud"
+
+#: 
+msgid "or connect an external service"
+msgstr "või ühendage väline teenus"
+
+#: 
+msgid "our church"
+msgstr "meie kirik"
+
+#: 
+msgid "page"
+msgstr "lehekülg"
+
+#: 
+msgid "properties"
+msgstr "omadused"
+
+#: 
+msgid "to another group?"
+msgstr "teise gruppi?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Ignoreeri —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Valige grupp —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Valige tüüp (valikuline) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Kinnitage seade, seejärel määrake see sündmusele registreerimise alustamiseks."
+
+#: 
+msgid "Activate"
+msgstr "Aktiveeri"
+
+#: 
+msgid "Active Events"
+msgstr "Aktiivsed sündmused"
+
+#: 
+msgid "Add Event"
+msgstr "Lisa sündmus"
+
+#: 
+msgid "Adults"
+msgstr "Täiskasvanud"
+
+#: 
+msgid "Affected Files"
+msgstr "Mõjutatud failid"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Kõik kontrollid läbitud"
+
+#: 
+msgid "Applying..."
+msgstr "Rakendamine..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Määratud kioskiaken"
+
+#: 
+msgid "Attendance"
+msgstr "Kohalolek"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Varundage muudetud failid enne uuendamist, kui soovite oma muudatusi säilitada."
+
+#: 
+msgid "Backup Complete"
+msgstr "Varundamine lõpetatud"
+
+#: 
+msgid "Class / Group"
+msgstr "Klass / Grupp"
+
+#: 
+msgid "Class List Export"
+msgstr "Klassi nimekirja eksport"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Klõpsake ülalolevat registreerimise lülitit, et avada 30-sekundiline registreerimisaken."
+
+#: 
+msgid "Continue"
+msgstr "Jätka"
+
+#: 
+msgid "Create First Event"
+msgstr "Loo esimene sündmus"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Looge andmebaasi varukoopia enne uuenduse rakendamist. See on tungivalt soovituslik."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Varukoopia loomine..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Laadi varukoopia alla ja jätka"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Laadige alla uusim väljalase ja rakendage see oma installile."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Luba uue kioskiakna registreerimine"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Sündmuste juhtpaneel"
+
+#: 
+msgid "Events This Year"
+msgstr "Selle aasta sündmused"
+
+#: 
+msgid "Everyone"
+msgstr "Kõik"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Märkme kustutamine ebaõnnestus"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "Teie serverist leiti faile, mis ei kuulu ametliku väljalase hulka."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Sundida uuesti installima?"
+
+#: 
+msgid "Full Path"
+msgstr "Täistee"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Looge klassinimekirju, kohaloleku lehti ja fotoalbumeid"
+
+#: 
+msgid "Installed"
+msgstr "Installitud"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Enne jätkamist on tungivalt soovituslik omada varukoopiat."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Kioskiakna registreerimine"
+
+#: 
+msgid "Latest"
+msgstr "Uusim"
+
+#: 
+msgid "Latest version unknown"
+msgstr "Uusim versioon teadmata"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Halda sündmuste tüüpe"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "Muudetud failid taastatakse ametlikule versioonile."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Mitme grupi puhul lisatakse gruppide vahele leheküljepiir"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Uued liikmed ja tervitus"
+
+#: 
+msgid "No Events Found"
+msgstr "Sündmusi ei leitud"
+
+#: 
+msgid "No events found for %s."
+msgstr "Sündmusi ei leitud %s jaoks."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Probleeme ei leitud. Võite uuendusega jätkata."
+
+#: 
+msgid "Note not found"
+msgstr "Märget ei leitud"
+
+#: 
+msgid "Note text is required"
+msgstr "Märkme tekst on kohustuslik"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "Kioskiseadmel (tahvelarvuti, sülearvuti jne) avage brauser ja navigeerige aadressile:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Ainult märkme autor või administraator saab selle märkme kustutada"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Ainult märkme autor või administraator saab seda märget muuta"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Ülevaade kiriku sündmustest, kohalolekust ja tegevusest"
+
+#: 
+msgid "People Without Emails"
+msgstr "Isikud ilma e-postita"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Isikud, kellel pole kirjes isiklikku ega töö-e-posti"
+
+#: 
+msgid "Pre-flight"
+msgstr "Eelkontroll"
+
+#: 
+msgid "Re-install"
+msgstr "Installi uuesti"
+
+#: 
+msgid "Refresh"
+msgstr "Värskenda"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Registreerige ja hallake kioskiseadmeid sündmuste registreerimiseks"
+
+#: 
+msgid "Review & Delete"
+msgstr "Vaata üle ja kustuta"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 räsi"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Seadistamise juhised"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Allkirja mittevastavus"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Jäta vahele, jätka ilma varukoopiata"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Seade registreerib end ja ilmub allolevasse tabelisse olekuga „Ootel\"."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Need lingid ilmuvad navigeerimisriba menüüsse „Lingid\", kui see plugin on lubatud."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "See laadib uuesti alla ja rakendab praeguse versiooni. See võib parandada rikutud või muudetud faile."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Kioskiseadme seadistamiseks järgige neid samme:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Lülitage allolev lüliti, et avada 30-sekundiline aken uute kioskiseadmete registreerimiseks."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Registreerimisi kokku"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Proovige valida teist sündmuse tüüpi või aastat."
+
+#: 
+msgid "Up to Date"
+msgstr "Ajakohane"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Tulevased pühapäevakooli sündmused"
+
+#: 
+msgid "Update Available"
+msgstr "Uuendus saadaval"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "Kasutajal peavad olema märkmete õigused"
+

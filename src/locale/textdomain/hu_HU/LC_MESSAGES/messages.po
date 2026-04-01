@@ -11199,3 +11199,2261 @@ msgstr "Az adatbázis verziója újabb, mint a telepített szoftver. Ez általá
 msgid "or later to continue."
 msgstr "vagy újabb a folytatáshoz."
 
+#: 
+msgid "\"Why Came\" Notes"
+msgstr "\"Miért jött\" megjegyzések"
+
+#: 
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] "%d találat erre: \"%s\""
+msgstr[1] "%d találat erre: \"%s\""
+
+#: 
+msgid "(optional — leave blank to include all roles)"
+msgstr "(nem kötelező — hagyja üresen az összes szerep megjelenítéséhez)"
+
+#: 
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr "Egy család egy háztartást jelöl. Tárolja az összes együtt élő családtag közös címét és otthoni telefonszámát."
+
+#: 
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr "Egy háztartás. Tárolja a közös levelezési címet és otthoni telefonszámot."
+
+#: 
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr "Egy személy nem feltétlenül tartozik családhoz, de a családhoz rendelés megkönnyíti a címkezelést."
+
+#: 
+msgid "About"
+msgstr "Névjegy"
+
+#: 
+msgid "Accepted format: .csv"
+msgstr "Elfogadott formátum: .csv"
+
+#: 
+msgid "Account Recovery"
+msgstr "Fiók helyreállítása"
+
+#: 
+msgid "Add Family"
+msgstr "Család hozzáadása"
+
+#: 
+msgid "Add First Family"
+msgstr "Első család hozzáadása"
+
+#: 
+msgid "Add Member"
+msgstr "Tag hozzáadása"
+
+#: 
+msgid "Add New Class"
+msgstr "Új osztály hozzáadása"
+
+#: 
+msgid "Add Note"
+msgstr "Megjegyzés hozzáadása"
+
+#: 
+msgid "Add People to the Family"
+msgstr "Személyek hozzáadása a családhoz"
+
+#: 
+msgid "Add Person"
+msgstr "Személy hozzáadása"
+
+#: 
+msgid "Add Students to Cart"
+msgstr "Tanulók hozzáadása a listához"
+
+#: 
+msgid "Add Teachers to Cart"
+msgstr "Tanítók hozzáadása a listához"
+
+#: 
+msgid "Add User"
+msgstr "Felhasználó hozzáadása"
+
+#: 
+msgid "Add Your Data"
+msgstr "Adatok hozzáadása"
+
+#: 
+msgid "Add Your First Family"
+msgstr "Első család hozzáadása"
+
+#: 
+msgid "Add Your First Property"
+msgstr "Első tulajdonság hozzáadása"
+
+#: 
+msgid "Add a Person"
+msgstr "Személy hozzáadása"
+
+#: 
+msgid "Add a new pledge"
+msgstr "Új felajánlás hozzáadása"
+
+#: 
+msgid "Add a payment to current deposit"
+msgstr "Befizetés hozzáadása az aktuális letéthez"
+
+#: 
+msgid "Add all cart items to a group"
+msgstr "A lista összes elemének hozzáadása egy csoporthoz"
+
+#: 
+msgid "Add all to Cart"
+msgstr "Összes hozzáadása a listához"
+
+#: 
+msgid "Add cart items to a family"
+msgstr "Lista elemeinek hozzáadása egy családhoz"
+
+#: 
+msgid "Add everyone in your household — adults and children alike."
+msgstr "Adja hozzá háztartása minden tagját — felnőtteket és gyermekeket egyaránt."
+
+#: 
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr "Családok és személyek egyesével történő hozzáadása közvetlenül a ChurchCRM-ben. Ideális kisebb gyülekezetek számára vagy importált adatok kiegészítéséhez."
+
+#: 
+msgid "Add first family"
+msgstr "Első család hozzáadása"
+
+#: 
+msgid "Add or edit individual person records"
+msgstr "Személyi adatlapok hozzáadása vagy szerkesztése"
+
+#: 
+msgid "Add or edit items donated for fundraising events"
+msgstr "Adománygyűjtő rendezvényekhez felajánlott tárgyak hozzáadása vagy szerkesztése"
+
+#: 
+msgid "Add or edit notes for people and families"
+msgstr "Megjegyzések hozzáadása vagy szerkesztése személyekhez és családokhoz"
+
+#: 
+msgid "Add staff and volunteers"
+msgstr "Munkatársak és önkéntesek hozzáadása"
+
+#: 
+msgid "Add staff or volunteers as system users"
+msgstr "Munkatársak vagy önkéntesek hozzáadása rendszerfelhasználóként"
+
+#: 
+msgid "Administrator"
+msgstr "Adminisztrátor"
+
+#: 
+msgid "Age Distribution"
+msgstr "Koreloszlás"
+
+#: 
+msgid "All Roles"
+msgstr "Összes szerep"
+
+#: 
+msgid "All Time"
+msgstr "Összesen"
+
+#: 
+msgid "All roles"
+msgstr "Összes szerep"
+
+#: 
+msgid "Almost there — review your details"
+msgstr "Már majdnem kész — ellenőrizze az adatait"
+
+#: 
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr "Automatikusan is fut WebDAV-on keresztül a beállított időközönként."
+
+#: 
+msgid "An Error Occurred"
+msgstr "Hiba történt"
+
+#: 
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr "Egy gyülekezeti tag. Tárolja a nevet, születésnapot, személyes e-mail címet és mobilszámot."
+
+#: 
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr "Váratlan hiba történt a kérés feldolgozása során. Kérjük, forduljon az adminisztrátorhoz segítségért."
+
+#: 
+msgid "An unexpected error occurred."
+msgstr "Váratlan hiba történt."
+
+#: 
+msgid "Applied preset"
+msgstr "Alkalmazott sablon"
+
+#: 
+msgid "Are you sure you want to delete this deposit?"
+msgstr "Biztosan törölni szeretné ezt a letétet?"
+
+#: 
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr "Biztosan törölni szeretné ezt az adománygyűjtést?"
+
+#: 
+msgid "Are you sure you want to remove"
+msgstr "Biztosan el szeretné távolítani"
+
+#: 
+msgid "Assign and manage donation envelope numbers"
+msgstr "Adományboriték-számok kiosztása és kezelése"
+
+#: 
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr "Adománygyűjtési vásárlószámok kiosztása és kezelése"
+
+#: 
+msgid "Assign cart items to a family record"
+msgstr "Lista elemeinek hozzárendelése egy családi rekordhoz"
+
+#: 
+msgid "Assign cart items to a group"
+msgstr "Lista elemeinek hozzárendelése egy csoporthoz"
+
+#: 
+msgid "Assign cart items to an event"
+msgstr "Lista elemeinek hozzárendelése egy eseményhez"
+
+#: 
+msgid "Assign to a Group"
+msgstr "Hozzárendelés csoporthoz"
+
+#: 
+msgid "Authentication Code"
+msgstr "Hitelesítési kód"
+
+#: 
+msgid "Auto-mapped"
+msgstr "Automatikusan hozzárendelve"
+
+#: 
+msgid "BCC"
+msgstr "Titkos másolat"
+
+#: 
+msgid "BCC All"
+msgstr "Titkos másolat mindenkinek"
+
+#: 
+msgid "Back to Admin Dashboard"
+msgstr "Vissza az adminisztrációs vezérlőpultra"
+
+#: 
+msgid "Back to Get Started"
+msgstr "Vissza a Kezdő lépésekhez"
+
+#: 
+msgid "Back to Home"
+msgstr "Vissza a Kezdőlapra"
+
+#: 
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr "Automatikusan biztonsági mentést készít WebDAV felhőtárhelyre beállítható időközönként."
+
+#: 
+msgid "Backup to External Storage Now"
+msgstr "Biztonsági mentés külső tárhelyre most"
+
+#: 
+msgid "Browse all available plugins"
+msgstr "Összes elérhető bővítmény böngészése"
+
+#: 
+msgid "Browse all church events and activities"
+msgstr "Összes gyülekezeti esemény és tevékenység böngészése"
+
+#: 
+msgid "Browse all people in your congregation with filtering and search"
+msgstr "A gyülekezet összes tagjának böngészése szűréssel és kereséssel"
+
+#: 
+msgid "Browse all plugins"
+msgstr "Összes bővítmény böngészése"
+
+#: 
+msgid "Browse and search all families in your congregation"
+msgstr "A gyülekezet összes családjának böngészése és keresése"
+
+#: 
+msgid "Browse and search fundraiser campaigns"
+msgstr "Adománygyűjtő kampányok böngészése és keresése"
+
+#: 
+msgid "Browse photos of congregation members"
+msgstr "Gyülekezeti tagok fényképeinek böngészése"
+
+#: 
+msgid "Buyer Number"
+msgstr "Vásárlószám"
+
+#: 
+msgid "Buyers"
+msgstr "Vásárlók"
+
+#: 
+msgid "CSV Column"
+msgstr "CSV oszlop"
+
+#: 
+msgid "CSV template not found"
+msgstr "CSV sablon nem található"
+
+#: 
+msgid "Call"
+msgstr "Hívás"
+
+#: 
+msgid "Cart Functions"
+msgstr "Lista funkciók"
+
+#: 
+msgid "Change Family Role"
+msgstr "Családi szerep módosítása"
+
+#: 
+msgid "Check Out"
+msgstr "Kijelentkeztetés"
+
+#: 
+msgid "Check Out Person"
+msgstr "Személy kijelentkeztetése"
+
+#: 
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr "Frissítések keresése és a ChurchCRM telepítés frissítése"
+
+#: 
+msgid "Check in attendees for church events and activities"
+msgstr "Résztvevők bejelentkeztetése gyülekezeti eseményekre és tevékenységekre"
+
+#: 
+msgid "Check in to an event"
+msgstr "Bejelentkezés egy eseményre"
+
+#: 
+msgid "Check-ins"
+msgstr "Bejelentkezések"
+
+#: 
+msgid "Children"
+msgstr "Gyermekek"
+
+#: 
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr "Válassza ki, hogyan szeretné feltölteni az adatbázist. Később bármikor használhat más módszert."
+
+#: 
+msgid "Church Info"
+msgstr "Gyülekezeti adatok"
+
+#: 
+msgid "Clear all"
+msgstr "Összes törlése"
+
+#: 
+msgid "Clear all data and start fresh"
+msgstr "Minden adat törlése és újrakezdés"
+
+#: 
+msgid "Clear all items from cart"
+msgstr "Összes elem eltávolítása a listából"
+
+#: 
+msgid "Click Save to apply."
+msgstr "Kattintson a Mentés gombra az alkalmazáshoz."
+
+#: 
+msgid "Click to upload photo"
+msgstr "Kattintson a fénykép feltöltéséhez"
+
+#: 
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr "A \"GitHub hiba megnyitása\" gombra kattintva egy új lapon nyílik meg az előre kitöltött rendszerinformációkkal. Személyes adatok csak akkor szerepelnek, ha Ön adja hozzá."
+
+#: 
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr "Az oszlop automatikusan hozzá lett rendelve egy ChurchCRM mezőhöz."
+
+#: 
+msgid "Community Management Platform"
+msgstr "Közösségkezelő platform"
+
+#: 
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr "Kompatibilis az Excellel, Google Táblázatokkal vagy bármely CSV exporttal."
+
+#: 
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr "Végezze el ezeket tetszőleges sorrendben a ChurchCRM előkészítéséhez a gyülekezet számára."
+
+#: 
+msgid "Confession"
+msgstr "Gyónás"
+
+#: 
+msgid "Configure global system settings and preferences"
+msgstr "Globális rendszerbeállítások és preferenciák konfigurálása"
+
+#: 
+msgid "Configure group settings, roles, and properties"
+msgstr "Csoportbeállítások, szerepek és tulajdonságok konfigurálása"
+
+#: 
+msgid "Confirm your new password"
+msgstr "Új jelszó megerősítése"
+
+#: 
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr "SMTP szerver csatlakoztatása, hogy a ChurchCRM küldhessen e-maileket"
+
+#: 
+msgid "Connect with others"
+msgstr "Kapcsolódjon másokhoz"
+
+#: 
+msgid "Contact us"
+msgstr "Kapcsolat"
+
+#: 
+msgid "Convert individual records into family units"
+msgstr "Egyéni rekordok átalakítása családi egységekké"
+
+#: 
+msgid "Convert to Family"
+msgstr "Átalakítás családdá"
+
+#: 
+msgid "Copied"
+msgstr "Másolva"
+
+#: 
+msgid "Copy Members to Group"
+msgstr "Tagok másolása csoportba"
+
+#: 
+msgid "Copy to Group"
+msgstr "Másolás csoportba"
+
+#: 
+msgid "Create a backup of your church database"
+msgstr "Biztonsági mentés készítése a gyülekezeti adatbázisról"
+
+#: 
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr "Készítsen kézi biztonsági mentést legalább hetente egyszer, vagy engedélyezze a Külső biztonsági mentés bővítményt az automatikus WebDAV mentésekhez ütemezetten."
+
+#: 
+msgid "Create a new deposit"
+msgstr "Új letét létrehozása"
+
+#: 
+msgid "Create and edit family information and relationships"
+msgstr "Családi adatok és kapcsolatok létrehozása és szerkesztése"
+
+#: 
+msgid "Create and manage church events and activities"
+msgstr "Gyülekezeti események és tevékenységek létrehozása és kezelése"
+
+#: 
+msgid "Create or edit property type categories"
+msgstr "Tulajdonságtípus-kategóriák létrehozása vagy szerkesztése"
+
+#: 
+msgid "Create or edit volunteer positions"
+msgstr "Önkéntes pozíciók létrehozása vagy szerkesztése"
+
+#: 
+msgid "Current person"
+msgstr "Aktuális személy"
+
+#: 
+msgid "Data & Reports"
+msgstr "Adatok és jelentések"
+
+#: 
+msgid "Database Reset"
+msgstr "Adatbázis visszaállítása"
+
+#: 
+msgid "Default / Notes"
+msgstr "Alapértelmezett / Megjegyzések"
+
+#: 
+msgid "Define custom fields to collect additional family data"
+msgstr "Egyéni mezők meghatározása további családi adatok gyűjtéséhez"
+
+#: 
+msgid "Define custom fields to collect additional person data"
+msgstr "Egyéni mezők meghatározása további személyi adatok gyűjtéséhez"
+
+#: 
+msgid "Define custom properties for tracking data"
+msgstr "Egyéni tulajdonságok meghatározása adatkövetéshez"
+
+#: 
+msgid "Define custom properties that can be assigned to"
+msgstr "Egyéni tulajdonságok meghatározása, amelyek hozzárendelhetők"
+
+#: 
+msgid "Define group-specific properties for members"
+msgstr "Csoportspecifikus tulajdonságok meghatározása tagok számára"
+
+#: 
+msgid "Delete All"
+msgstr "Összes törlése"
+
+#: 
+msgid "Delete Check-in Entry"
+msgstr "Bejelentkezési bejegyzés törlése"
+
+#: 
+msgid "Delete Family"
+msgstr "Család törlése"
+
+#: 
+msgid "Delete Group"
+msgstr "Csoport törlése"
+
+#: 
+msgid "Delete Person"
+msgstr "Személy törlése"
+
+#: 
+msgid "Delete Pledge"
+msgstr "Felajánlás törlése"
+
+#: 
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr "A tulajdonság törlése eltávolítja annak összes hozzárendelését a személyi, családi és csoport rekordokból."
+
+#: 
+msgid "Deposit Value"
+msgstr "Letét értéke"
+
+#: 
+msgid "Describe the issue"
+msgstr "Írja le a problémát"
+
+#: 
+msgid "Directions"
+msgstr "Útvonaltervezés"
+
+#: 
+msgid "Directory Reports"
+msgstr "Címtárjelentések"
+
+#: 
+msgid "Disabled in settings"
+msgstr "Letiltva a beállításokban"
+
+#: 
+msgid "Donated Item"
+msgstr "Adományozott tárgy"
+
+#: 
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr "Az adományok és felajánlások családi szinten kerülnek nyilvántartásba. Ha egyedül élő személy adományait szeretné rögzíteni, hozzon létre számára egy egyszemélyes családot."
+
+#: 
+msgid "Download"
+msgstr "Letöltés"
+
+#: 
+msgid "Download CSV Template"
+msgstr "CSV sablon letöltése"
+
+#: 
+msgid "Download the template to see the expected column format."
+msgstr "Töltse le a sablont az elvárt oszlopformátum megtekintéséhez."
+
+#: 
+msgid "Drag and drop your CSV file here"
+msgstr "Húzza ide a CSV fájlt"
+
+#: 
+msgid "Duplicates"
+msgstr "Duplikátumok"
+
+#: 
+msgid "Each person can have their own email and mobile number."
+msgstr "Minden személy rendelkezhet saját e-mail címmel és mobilszámmal."
+
+#: 
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr "Minden sor egy személy. Ugyanazon család tagjai azonos FamilyID-vel rendelkeznek."
+
+#: 
+msgid "Easy registration"
+msgstr "Egyszerű regisztráció"
+
+#: 
+msgid "Edit Class"
+msgstr "Osztály szerkesztése"
+
+#: 
+msgid "Edit Form"
+msgstr "Űrlap szerkesztése"
+
+#: 
+msgid "Edit Member Properties Form"
+msgstr "Tagtulajdonságok űrlap szerkesztése"
+
+#: 
+msgid "Edit Property"
+msgstr "Tulajdonság szerkesztése"
+
+#: 
+msgid "Edit custom properties for a group member"
+msgstr "Csoporttag egyéni tulajdonságainak szerkesztése"
+
+#: 
+msgid "Email BCC"
+msgstr "E-mail titkos másolat"
+
+#: 
+msgid "Email Families"
+msgstr "E-mail küldése családoknak"
+
+#: 
+msgid "Email Settings"
+msgstr "E-mail beállítások"
+
+#: 
+msgid "Email Tools"
+msgstr "E-mail eszközök"
+
+#: 
+msgid "Email cart items"
+msgstr "Lista elemeinek küldése e-mailben"
+
+#: 
+msgid "Email with hidden recipients"
+msgstr "E-mail rejtett címzettekkel"
+
+#: 
+msgid "Empty"
+msgstr "Üres"
+
+#: 
+msgid "Enable HTTPS"
+msgstr "HTTPS engedélyezése"
+
+#: 
+msgid "Enable Plugins"
+msgstr "Bővítmények engedélyezése"
+
+#: 
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr "Engedélyezze a MailChimp bővítményt a kapcsolatok szinkronizálásához"
+
+#: 
+msgid "Enrolled"
+msgstr "Beiratkozott"
+
+#: 
+msgid "Enter Data Manually"
+msgstr "Adatok kézi bevitele"
+
+#: 
+msgid "Enter a search term"
+msgstr "Adjon meg egy keresési kifejezést"
+
+#: 
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr "Adja meg a hitelesítő alkalmazás 6 jegyű kódját a bejelentkezés befejezéséhez"
+
+#: 
+msgid "Enter your current password"
+msgstr "Adja meg a jelenlegi jelszavát"
+
+#: 
+msgid "Enter your login name"
+msgstr "Adja meg a bejelentkezési nevét"
+
+#: 
+msgid "Enter your new password"
+msgstr "Adja meg az új jelszavát"
+
+#: 
+msgid "Enter your password"
+msgstr "Adja meg a jelszavát"
+
+#: 
+msgid "Est. Value"
+msgstr "Becsült érték"
+
+#: 
+msgid "Exclude from Email Export"
+msgstr "Kizárás az e-mail exportból"
+
+#: 
+msgid "Excluded"
+msgstr "Kizárva"
+
+#: 
+msgid "Expand"
+msgstr "Kibontás"
+
+#: 
+msgid "Explore with Demo Data"
+msgstr "Felfedezés demó adatokkal"
+
+#: 
+msgid "Export"
+msgstr "Exportálás"
+
+#: 
+msgid "Export data to CSV format for external applications"
+msgstr "Adatok exportálása CSV formátumba külső alkalmazásokhoz"
+
+#: 
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr "A ChurchCRM bővítése MailChimp-pel, biztonsági mentésekkel és egyebekkel"
+
+#: 
+msgid "FY %s"
+msgstr "Pénzügyi év %s"
+
+#: 
+msgid "Failed to add members to cart. Please try again."
+msgstr "Nem sikerült a tagokat hozzáadni a listához. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to delete class. Please try again."
+msgstr "Nem sikerült az osztály törlése. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to delete group. Please try again."
+msgstr "Nem sikerült a csoport törlése. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to remove from class. Please try again."
+msgstr "Nem sikerült az eltávolítás az osztályból. Kérjük, próbálja újra."
+
+#: 
+msgid "Families share an address and phone number."
+msgstr "A családok közös címmel és telefonszámmal rendelkeznek."
+
+#: 
+msgid "Family List"
+msgstr "Családlista"
+
+#: 
+msgid "Family Pledge Summary"
+msgstr "Családi felajánlások összefoglalása"
+
+#: 
+msgid "Family Profile"
+msgstr "Családi profil"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr "A családi szerepek (családfő, házastárs, gyermek stb.) segítik a nyilvántartás rendszerezését."
+
+#: 
+msgid "Family vs Person"
+msgstr "Család és személy"
+
+#: 
+msgid "Fields to Include"
+msgstr "Belefoglalandó mezők"
+
+#: 
+msgid "File upload error"
+msgstr "Fájlfeltöltési hiba"
+
+#: 
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr "Kövesse ezt a két lépést a gyülekezeti tagok gyors és helyes hozzáadásához."
+
+#: 
+msgid "Forgot password?"
+msgstr "Elfelejtette a jelszavát?"
+
+#: 
+msgid "Format"
+msgstr "Formátum"
+
+#: 
+msgid "Full Group View"
+msgstr "Teljes csoport nézet"
+
+#: 
+msgid "Generate and download confirmation letters"
+msgstr "Megerősítő levelek létrehozása és letöltése"
+
+#: 
+msgid "Generate annual giving statements for tax purposes"
+msgstr "Éves adományigazolások készítése adóbevalláshoz"
+
+#: 
+msgid "Generate directory listings and printed materials"
+msgstr "Címtárlisták és nyomtatott anyagok készítése"
+
+#: 
+msgid "Generate financial reports"
+msgstr "Pénzügyi jelentések készítése"
+
+#: 
+msgid "Generate financial statements and giving reports"
+msgstr "Pénzügyi kimutatások és adománykimutatások készítése"
+
+#: 
+msgid "Generate letters and mailing labels"
+msgstr "Levelek és postai címkék készítése"
+
+#: 
+msgid "Generate mailing labels and form letters"
+msgstr "Postai címkék és formálevelek készítése"
+
+#: 
+msgid "Generate phone directory"
+msgstr "Telefonkönyv készítése"
+
+#: 
+msgid "Generate pledge reminder letters"
+msgstr "Felajánlás-emlékeztető levelek készítése"
+
+#: 
+msgid "Generate reports on group membership and activities"
+msgstr "Csoporttagsági és tevékenységi jelentések készítése"
+
+#: 
+msgid "Generate tax statement documents for donors"
+msgstr "Adóigazolások készítése adományozók számára"
+
+#: 
+msgid "Geographic Utilities"
+msgstr "Földrajzi segédeszközök"
+
+#: 
+msgid "Get Your Data Into ChurchCRM"
+msgstr "Adatok importálása a ChurchCRM-be"
+
+#: 
+msgid "Go to homepage"
+msgstr "Ugrás a kezdőlapra"
+
+#: 
+msgid "Great choice! Here's how to add your church members."
+msgstr "Nagyszerű választás! Így adhatja hozzá a gyülekezeti tagokat."
+
+#: 
+msgid "Group Map"
+msgstr "Csoport térkép"
+
+#: 
+msgid "Group Reports"
+msgstr "Csoportjelentések"
+
+#: 
+msgid "Group deleted successfully."
+msgstr "A csoport sikeresen törölve."
+
+#: 
+msgid "Have Existing Data?"
+msgstr "Vannak meglévő adatai?"
+
+#: 
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr "Ha sok rekordja van egy táblázatkezelőben, a CSV import gyorsabb lehet a kézi adatbevitelnél."
+
+#: 
+msgid "Ignored"
+msgstr "Figyelmen kívül hagyva"
+
+#: 
+msgid "Import Another File"
+msgstr "Másik fájl importálása"
+
+#: 
+msgid "Import CSV"
+msgstr "CSV importálása"
+
+#: 
+msgid "Import Complete"
+msgstr "Importálás befejezve"
+
+#: 
+msgid "Import contacts from your MailChimp audiences"
+msgstr "Kapcsolatok importálása a MailChimp közönségeiből"
+
+#: 
+msgid "Import failed. Please try again."
+msgstr "Az importálás sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Import failed: "
+msgstr "Importálás sikertelen: "
+
+#: 
+msgid "Import from CSV"
+msgstr "Importálás CSV-ből"
+
+#: 
+msgid "Import from Spreadsheet"
+msgstr "Importálás táblázatkezelőből"
+
+#: 
+msgid "Import from a Spreadsheet"
+msgstr "Importálás táblázatkezelőből"
+
+#: 
+msgid "Import, restore, or enter manually"
+msgstr "Importálás, visszaállítás vagy kézi bevitel"
+
+#: 
+msgid "Import, restore, or manually enter your congregation"
+msgstr "Gyülekezet importálása, visszaállítása vagy kézi bevitele"
+
+#: 
+msgid "Importing..."
+msgstr "Importálás..."
+
+#: 
+msgid "Include in Email Export"
+msgstr "Belefoglalás az e-mail exportba"
+
+#: 
+msgid "Included"
+msgstr "Belefoglalva"
+
+#: 
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr "TLS/SSL tanúsítvány telepítése biztonságos kapcsolatokhoz"
+
+#: 
+msgid "Invalid import request"
+msgstr "Érvénytelen importálási kérés"
+
+#: 
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr "Érvénytelen \"Feladó szám\": \"%s\". Adja meg az országkódot, pl. +36301234567 (HU)."
+
+#: 
+msgid "Invite Your Team"
+msgstr "Csapat meghívása"
+
+#: 
+msgid "Join our community and stay connected with"
+msgstr "Csatlakozzon közösségünkhöz és maradjon kapcsolatban"
+
+#: 
+msgid "Jump to any setup step:"
+msgstr "Ugorjon bármelyik beállítási lépésre:"
+
+#: 
+msgid "Key People"
+msgstr "Kulcsszemélyek"
+
+#: 
+msgid "Kiosk"
+msgstr "Kioszk"
+
+#: 
+msgid "Kiosk Enabled"
+msgstr "Kioszk engedélyezve"
+
+#: 
+msgid "Let's restore your previous ChurchCRM data."
+msgstr "Állítsuk vissza az előző ChurchCRM adatait."
+
+#: 
+msgid "Letters"
+msgstr "Levelek"
+
+#: 
+msgid "Letters & Mailing Labels"
+msgstr "Levelek és postai címkék"
+
+#: 
+msgid "Letters and Labels"
+msgstr "Levelek és címkék"
+
+#: 
+msgid "List families created via self registration"
+msgstr "Önregisztrációval létrehozott családok listája"
+
+#: 
+msgid "Load demo data"
+msgstr "Demó adatok betöltése"
+
+#: 
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr "Minta családok, személyek, csoportok és adományi adatok betöltése. A legbiztonságosabb módja a ChurchCRM megismerésének a valódi adatok megadása előtt."
+
+#: 
+msgid "Log Files"
+msgstr "Naplófájlok"
+
+#: 
+msgid "Log Level"
+msgstr "Naplózási szint"
+
+#: 
+msgid "Login to your account"
+msgstr "Bejelentkezés a fiókjába"
+
+#: 
+msgid "MailChimp, backups, and more"
+msgstr "MailChimp, biztonsági mentések és egyebek"
+
+#: 
+msgid "Manage %s options"
+msgstr "%s beállítások kezelése"
+
+#: 
+msgid "Manage Envelopes"
+msgstr "Borítékok kezelése"
+
+#: 
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr "Vasárnapi iskola osztályok, tanítók és tanulói jelenlét kezelése"
+
+#: 
+msgid "Manage classification lists, roles, and group types"
+msgstr "Besorolási listák, szerepek és csoporttípusok kezelése"
+
+#: 
+msgid "Manage donation funds for financial tracking"
+msgstr "Adományalapok kezelése pénzügyi nyilvántartáshoz"
+
+#: 
+msgid "Manage donations, pledges, and financial records"
+msgstr "Adományok, felajánlások és pénzügyi nyilvántartások kezelése"
+
+#: 
+msgid "Manage email tools and SMTP configuration"
+msgstr "E-mail eszközök és SMTP konfiguráció kezelése"
+
+#: 
+msgid "Manage event names and categories"
+msgstr "Eseménynevek és kategóriák kezelése"
+
+#: 
+msgid "Manage event type categories"
+msgstr "Eseménytípus-kategóriák kezelése"
+
+#: 
+msgid "Manage families, people, and demographic information"
+msgstr "Családok, személyek és demográfiai adatok kezelése"
+
+#: 
+msgid "Manage people in your cart"
+msgstr "A listán lévő személyek kezelése"
+
+#: 
+msgid "Manage person, family, and group property types"
+msgstr "Személyi, családi és csoporttulajdonság-típusok kezelése"
+
+#: 
+msgid "Manage properties from the"
+msgstr "Tulajdonságok kezelése innen:"
+
+#: 
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr "Rendszerfelhasználók, jogosultságok és kétfaktoros hitelesítés beállításainak kezelése"
+
+#: 
+msgid "Manage user account details and permissions"
+msgstr "Felhasználói fiók adatainak és jogosultságainak kezelése"
+
+#: 
+msgid "Manage volunteer opportunities and assign members"
+msgstr "Önkéntes lehetőségek kezelése és tagok beosztása"
+
+#: 
+msgid "Manage your personal preferences and account settings"
+msgstr "Személyes beállítások és fiókbeállítások kezelése"
+
+#: 
+msgid "Manual"
+msgstr "Kézi"
+
+#: 
+msgid "Map cart items"
+msgstr "Lista elemeinek megjelenítése térképen"
+
+#: 
+msgid "Map to Field"
+msgstr "Hozzárendelés mezőhöz"
+
+#: 
+msgid "Material"
+msgstr "Anyag"
+
+#: 
+msgid "Member Properties"
+msgstr "Tagtulajdonságok"
+
+#: 
+msgid "Member Roles"
+msgstr "Tagszerepek"
+
+#: 
+msgid "Members added to cart."
+msgstr "Tagok hozzáadva a listához."
+
+#: 
+msgid "Memberships"
+msgstr "Tagságok"
+
+#: 
+msgid "Modify family roles for group members"
+msgstr "Családi szerepek módosítása csoporttagok számára"
+
+#: 
+msgid "Move Members"
+msgstr "Tagok áthelyezése"
+
+#: 
+msgid "Move Members to Group"
+msgstr "Tagok áthelyezése csoportba"
+
+#: 
+msgid "Move to Group"
+msgstr "Áthelyezés csoportba"
+
+#: 
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr "Meglévő ChurchCRM vagy ChurchInfo telepítésről költözik? Töltse fel a biztonsági mentését és automatikusan visszaállítjuk az adatait."
+
+#: 
+msgid "My Settings"
+msgstr "Saját beállítások"
+
+#: 
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr "A névváltoztatások mentést igényelnek. Az átrendezés és törlés műveletek az akció menüben azonnal érvénybe lépnek."
+
+#: 
+msgid "Name, address, contact details"
+msgstr "Név, cím, elérhetőségek"
+
+#: 
+msgid "Need help?"
+msgstr "Segítségre van szüksége?"
+
+#: 
+msgid "New"
+msgstr "Új"
+
+#: 
+msgid "New Family"
+msgstr "Új család"
+
+#: 
+msgid "New Group"
+msgstr "Új csoport"
+
+#: 
+msgid "New Person"
+msgstr "Új személy"
+
+#: 
+msgid "No Anniversaries"
+msgstr "Nincsenek évfordulók"
+
+#: 
+msgid "No Birthdays"
+msgstr "Nincsenek születésnapok"
+
+#: 
+msgid "No Check-ins"
+msgstr "Nincsenek bejelentkezések"
+
+#: 
+msgid "No Deposit Tracking"
+msgstr "Nincs letétkövetés"
+
+#: 
+msgid "No Deposits"
+msgstr "Nincsenek letétek"
+
+#: 
+msgid "No anniversaries in the past or next 7 days"
+msgstr "Nincsenek évfordulók az elmúlt vagy következő 7 napban"
+
+#: 
+msgid "No birthdays in the past or next 7 days"
+msgstr "Nincsenek születésnapok az elmúlt vagy következő 7 napban"
+
+#: 
+msgid "No deposit data available yet"
+msgstr "Még nincsenek elérhető letéti adatok"
+
+#: 
+msgid "No description set."
+msgstr "Nincs leírás megadva."
+
+#: 
+msgid "No email address on file"
+msgstr "Nincs e-mail cím a nyilvántartásban"
+
+#: 
+msgid "No events linked to this class."
+msgstr "Nincsenek ehhez az osztályhoz kapcsolt események."
+
+#: 
+msgid "No file uploaded"
+msgstr "Nincs feltöltött fájl"
+
+#: 
+msgid "No group assignments yet."
+msgstr "Még nincsenek csoport-hozzárendelések."
+
+#: 
+msgid "No match found — select a field or leave as Ignore."
+msgstr "Nem található egyezés — válasszon mezőt, vagy hagyja figyelmen kívül."
+
+#: 
+msgid "No matches for \"%s\". Try a different search term."
+msgstr "Nincs találat erre: \"%s\". Próbáljon más keresési kifejezést."
+
+#: 
+msgid "No member properties defined."
+msgstr "Nincsenek tagtulajdonságok meghatározva."
+
+#: 
+msgid "No members found for this role."
+msgstr "Nem találhatók tagok ehhez a szerephez."
+
+#: 
+msgid "No people found"
+msgstr "Nem találhatók személyek"
+
+#: 
+msgid "No people match your current filters."
+msgstr "A jelenlegi szűrők alapján nem találhatók személyek."
+
+#: 
+msgid "No phone number on file"
+msgstr "Nincs telefonszám a nyilvántartásban"
+
+#: 
+msgid "No properties assigned."
+msgstr "Nincsenek hozzárendelt tulajdonságok."
+
+#: 
+msgid "No properties defined yet"
+msgstr "Még nincsenek tulajdonságok meghatározva"
+
+#: 
+msgid "No results found"
+msgstr "Nincs találat"
+
+#: 
+msgid "No timeline events yet."
+msgstr "Még nincsenek idővonal-események."
+
+#: 
+msgid "No volunteer opportunity assignments yet."
+msgstr "Még nincsenek önkéntes-beosztások."
+
+#: 
+msgid "Not ready yet?"
+msgstr "Még nem áll készen?"
+
+#: 
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr "Ha van egy család, adja hozzá a háztartás minden tagját személyként. Rendeljen hozzájuk családi szerepet (pl. családfő, házastárs, gyermek)."
+
+#: 
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr "A beküldés után csapatunk megkapja a regisztrációját, és személyesen üdvözli családját. Ha bármi hibásnak tűnik, az Előző gombbal lépjen vissza és javítsa ki."
+
+#: 
+msgid "Only .csv files are accepted"
+msgstr "Csak .csv fájlok fogadhatók el"
+
+#: 
+msgid "Open GitHub Issue"
+msgstr "GitHub hiba megnyitása"
+
+#: 
+msgid "Open user menu"
+msgstr "Felhasználói menü megnyitása"
+
+#: 
+msgid "Options"
+msgstr "Beállítások"
+
+#: 
+msgid "Other Members"
+msgstr "Egyéb tagok"
+
+#: 
+msgid "Overview"
+msgstr "Áttekintés"
+
+#: 
+msgid "Password Recovery"
+msgstr "Jelszó helyreállítás"
+
+#: 
+msgid "Past & next 7 days"
+msgstr "Elmúlt és következő 7 nap"
+
+#: 
+msgid "People List"
+msgstr "Személylista"
+
+#: 
+msgid "People by Classification"
+msgstr "Személyek besorolás szerint"
+
+#: 
+msgid "Person removed from class."
+msgstr "Személy eltávolítva az osztályból."
+
+#: 
+msgid "Photo"
+msgstr "Fénykép"
+
+#: 
+msgid "Photos only"
+msgstr "Csak fényképek"
+
+#: 
+msgid "Pick a path to get started"
+msgstr "Válasszon útvonalat a kezdéshez"
+
+#: 
+msgid "Please check everything looks right before submitting."
+msgstr "Kérjük, ellenőrizze, hogy minden helyes-e a beküldés előtt."
+
+#: 
+msgid "Please map at least one column before importing"
+msgstr "Kérjük, rendeljen hozzá legalább egy oszlopot az importálás előtt"
+
+#: 
+msgid "Please select a CSV file"
+msgstr "Kérjük, válasszon egy CSV fájlt"
+
+#: 
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr "Kérjük, igényeljen új jelszó-visszaállítási linket, vagy lépjen kapcsolatba az ügyfélszolgálattal, ha továbbra is problémákat tapasztal."
+
+#: 
+msgid "Pledges"
+msgstr "Felajánlások"
+
+#: 
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr "A bővítmény engedélyezve, de nincs konfigurálva. A beállítás után a biztonsági mentések automatikusan futnak a WebDAV-ra a beállított időközönként."
+
+#: 
+msgid "Press ? to focus search"
+msgstr "Nyomja meg a ? gombot a kereséshez"
+
+#: 
+msgid "Prev"
+msgstr "Előző"
+
+#: 
+msgid "Print name tags"
+msgstr "Névkártyák nyomtatása"
+
+#: 
+msgid "Printable directory of all people, grouped by family"
+msgstr "Nyomtatható címtár az összes személyről, családonként csoportosítva"
+
+#: 
+msgid "Properties Form"
+msgstr "Tulajdonságok űrlap"
+
+#: 
+msgid "Property assignment not found."
+msgstr "Tulajdonság-hozzárendelés nem található."
+
+#: 
+msgid "Property deleted successfully."
+msgstr "A tulajdonság sikeresen törölve."
+
+#: 
+msgid "Property not found."
+msgstr "Tulajdonság nem található."
+
+#: 
+msgid "Quick Setup"
+msgstr "Gyors beállítás"
+
+#: 
+msgid "Quick Tips"
+msgstr "Gyors tippek"
+
+#: 
+msgid "Ready to back up"
+msgstr "Készen áll a mentésre"
+
+#: 
+msgid "Ready to restore"
+msgstr "Készen áll a visszaállításra"
+
+#: 
+msgid "Recommended Order"
+msgstr "Ajánlott sorrend"
+
+#: 
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr "Több adománygyűjtési sorsolási nyertes rögzítése egyszerre"
+
+#: 
+msgid "Record new pledges and payments"
+msgstr "Új felajánlások és befizetések rögzítése"
+
+#: 
+msgid "Record why attendees visited your church"
+msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
+
+#: 
+msgid "Register Your Family"
+msgstr "Regisztrálja családját"
+
+#: 
+msgid "Register another family"
+msgstr "Másik család regisztrálása"
+
+#: 
+msgid "Remove all from Cart"
+msgstr "Összes eltávolítása a listából"
+
+#: 
+msgid "Remove from Class"
+msgstr "Eltávolítás az osztályból"
+
+#: 
+msgid "Report an Issue"
+msgstr "Hiba bejelentése"
+
+#: 
+msgid "Restore a Backup"
+msgstr "Biztonsági mentés visszaállítása"
+
+#: 
+msgid "Restore backup"
+msgstr "Mentés visszaállítása"
+
+#: 
+msgid "Restore your church database from a backup file"
+msgstr "A gyülekezeti adatbázis visszaállítása biztonsági mentésből"
+
+#: 
+msgid "Return to Dashboard"
+msgstr "Vissza a vezérlőpultra"
+
+#: 
+msgid "Return to Families"
+msgstr "Vissza a családokhoz"
+
+#: 
+msgid "Return to Groups"
+msgstr "Vissza a csoportokhoz"
+
+#: 
+msgid "Return to People"
+msgstr "Vissza a személyekhez"
+
+#: 
+msgid "Review and clean up files not associated with any record"
+msgstr "Rekordhoz nem kapcsolódó fájlok áttekintése és törlése"
+
+#: 
+msgid "Role not found."
+msgstr "Szerep nem található."
+
+#: 
+msgid "Roles"
+msgstr "Szerepek"
+
+#: 
+msgid "Run"
+msgstr "Futtatás"
+
+#: 
+msgid "SMTP server for sending emails"
+msgstr "SMTP szerver e-mailek küldéséhez"
+
+#: 
+msgid "Sample Data"
+msgstr "Minta adatok"
+
+#: 
+msgid "Search Results"
+msgstr "Keresési eredmények"
+
+#: 
+msgid "Search across people, families, groups, addresses, and more."
+msgstr "Keresés személyek, családok, csoportok, címek és egyebek között."
+
+#: 
+msgid "Search and view deposit slip records"
+msgstr "Letéti bizonylatok keresése és megtekintése"
+
+#: 
+msgid "Search groups..."
+msgstr "Csoportok keresése..."
+
+#: 
+msgid "Search people, families, groups…"
+msgstr "Személyek, családok, csoportok keresése…"
+
+#: 
+msgid "Security First"
+msgstr "Biztonság mindenekelőtt"
+
+#: 
+msgid "Select Fields"
+msgstr "Mezők kiválasztása"
+
+#: 
+msgid "Select Fields to Include"
+msgstr "Belefoglalandó mezők kiválasztása"
+
+#: 
+msgid "Select a backup file and click Restore Database."
+msgstr "Válasszon egy biztonsági mentés fájlt, és kattintson az Adatbázis visszaállítása gombra."
+
+#: 
+msgid "Select your options above and click a backup button."
+msgstr "Válassza ki a beállításokat fent, és kattintson egy biztonsági mentés gombra."
+
+#: 
+msgid "Self Registration Report"
+msgstr "Önregisztrációs jelentés"
+
+#: 
+msgid "Send email to families"
+msgstr "E-mail küldése családoknak"
+
+#: 
+msgid "Server Error"
+msgstr "Szerverhiba"
+
+#: 
+msgid "Server returned an unexpected response. Please try again."
+msgstr "A szerver váratlan választ adott. Kérjük, próbálja újra."
+
+#: 
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr "Állítsa az engedélyt Igazra, hogy az új felhasználók módosíthassák az aktuális értéket."
+
+#: 
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr "Állítson be egy adminisztrátori e-mail címet a jelszó-visszaállításhoz és értesítésekhez"
+
+#: 
+msgid "Set default preferences for new user accounts"
+msgstr "Alapértelmezett beállítások megadása új felhasználói fiókokhoz"
+
+#: 
+msgid "Set up"
+msgstr "Beállítás"
+
+#: 
+msgid "Set up a new fundraiser campaign or event"
+msgstr "Új adománygyűjtő kampány vagy esemény beállítása"
+
+#: 
+msgid "Set your church name, address, and contact details"
+msgstr "Állítsa be a gyülekezet nevét, címét és elérhetőségeit"
+
+#: 
+msgid "Set your church name, address, and contact email"
+msgstr "Állítsa be a gyülekezet nevét, címét és kapcsolattartási e-mail címét"
+
+#: 
+msgid "Setup Progress"
+msgstr "Beállítási folyamat"
+
+#: 
+msgid "Setup Required"
+msgstr "Beállítás szükséges"
+
+#: 
+msgid "Share"
+msgstr "Megosztás"
+
+#: 
+msgid "Showing members of: %s"
+msgstr "A(z) %s tagjai"
+
+#: 
+msgid "Sign in"
+msgstr "Bejelentkezés"
+
+#: 
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr "Mivel ez egy friss telepítés, a visszaállítás egyszerűen betölti a biztonsági mentés adatait."
+
+#: 
+msgid "Skip — go to Admin Dashboard"
+msgstr "Kihagyás — ugrás az adminisztrációs vezérlőpultra"
+
+#: 
+msgid "Start Fresh"
+msgstr "Újrakezdés"
+
+#: 
+msgid "Start Over"
+msgstr "Kezdje elölről"
+
+#: 
+msgid "Stay informed"
+msgstr "Maradjon tájékozott"
+
+#: 
+msgid "Step 1 — Upload CSV File"
+msgstr "1. lépés — CSV fájl feltöltése"
+
+#: 
+msgid "Step 2 — Map Columns"
+msgstr "2. lépés — Oszlopok hozzárendelése"
+
+#: 
+msgid "Submitting..."
+msgstr "Beküldés..."
+
+#: 
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr "Támogatja a ChurchCRM és ChurchInfo biztonsági mentéseit."
+
+#: 
+msgid "System diagnostic information and configuration"
+msgstr "Rendszerdiagnosztikai információk és konfiguráció"
+
+#: 
+msgid "Tags"
+msgstr "Címkék"
+
+#: 
+msgid "Tax Statements"
+msgstr "Adóigazolások"
+
+#: 
+msgid "Teacher"
+msgstr "Tanító"
+
+#: 
+msgid "Technical Details"
+msgstr "Technikai részletek"
+
+#: 
+msgid "Tell us about your family"
+msgstr "Meséljen a családjáról"
+
+#: 
+msgid "The property could not be removed."
+msgstr "A tulajdonság nem távolítható el."
+
+#: 
+msgid "The property is successfully removed."
+msgstr "A tulajdonság sikeresen eltávolítva."
+
+#: 
+msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Ezek a hivatkozások a navigációs oldalsáv \"Hivatkozások\" menüjében jelennek meg, ha ez a bővítmény engedélyezve van."
+
+#: 
+msgid "To Family"
+msgstr "Családhoz"
+
+#: 
+msgid "To Group"
+msgstr "Csoporthoz"
+
+#: 
+msgid "Toggle navigation"
+msgstr "Navigáció ki-/bekapcsolása"
+
+#: 
+msgid "Total Size"
+msgstr "Teljes méret"
+
+#: 
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr "Családi felajánlások és alap-hozzájárulások követése pénzügyi évenként"
+
+#: 
+msgid "Transaction Details"
+msgstr "Tranzakció részletei"
+
+#: 
+msgid "Unmapped"
+msgstr "Nincs hozzárendelve"
+
+#: 
+msgid "Update Admin Contact"
+msgstr "Adminisztrátori elérhetőség frissítése"
+
+#: 
+msgid "Upload CSV"
+msgstr "CSV feltöltése"
+
+#: 
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr "Töltsön fel egy CSV fájlt a családok és személyek importálásához a ChurchCRM-be."
+
+#: 
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr "Töltsön fel egy CSV fájlt Excelből, Google Táblázatokból vagy korábbi gyülekezetkezelő rendszeréből, és rendelje hozzá az oszlopokat a ChurchCRM mezőihez."
+
+#: 
+msgid "Upload failed."
+msgstr "A feltöltés sikertelen."
+
+#: 
+msgid "Upload failed. Please check the file and try again."
+msgstr "A feltöltés sikertelen. Kérjük, ellenőrizze a fájlt és próbálja újra."
+
+#: 
+msgid "Upload session expired. Please upload the file again."
+msgstr "A feltöltési munkamenet lejárt. Kérjük, töltse fel újra a fájlt."
+
+#: 
+msgid "Uploading, please wait..."
+msgstr "Feltöltés, kérjük várjon..."
+
+#: 
+msgid "Users"
+msgstr "Felhasználók"
+
+#: 
+msgid "Verify Info"
+msgstr "Adatok ellenőrzése"
+
+#: 
+msgid "Verify your identity"
+msgstr "Személyazonosság igazolása"
+
+#: 
+msgid "View Family"
+msgstr "Család megtekintése"
+
+#: 
+msgid "View People"
+msgstr "Személyek megtekintése"
+
+#: 
+msgid "View all families on an interactive map"
+msgstr "Összes család megtekintése interaktív térképen"
+
+#: 
+msgid "View all results"
+msgstr "Összes találat megtekintése"
+
+#: 
+msgid "View and manage all groups in your congregation"
+msgstr "A gyülekezet összes csoportjának megtekintése és kezelése"
+
+#: 
+msgid "View and manage deposit slip payments"
+msgstr "Letéti bizonylatok befizetéseinek megtekintése és kezelése"
+
+#: 
+msgid "View and manage family location data"
+msgstr "Családi helyadatok megtekintése és kezelése"
+
+#: 
+msgid "View and manage system log files for debugging"
+msgstr "Rendszernaplófájlok megtekintése és kezelése hibakereséshez"
+
+#: 
+msgid "View and run saved database queries"
+msgstr "Mentett adatbázis-lekérdezések megtekintése és futtatása"
+
+#: 
+msgid "View buyer numbers and paddle assignments"
+msgstr "Vásárlószámok és tábla-hozzárendelések megtekintése"
+
+#: 
+msgid "View class roster, teacher assignments, and contact information"
+msgstr "Osztálynévsor, tanító-beosztások és elérhetőségek megtekintése"
+
+#: 
+msgid "View family details, members, and timeline"
+msgstr "Családi adatok, tagok és idővonal megtekintése"
+
+#: 
+msgid "View family pledge summaries and fund allocations"
+msgstr "Családi felajánlás-összefoglalók és alap-felosztások megtekintése"
+
+#: 
+msgid "View group members, roles, and properties"
+msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
+
+#: 
+msgid "View pledge dashboard"
+msgstr "Felajánlás vezérlőpult megtekintése"
+
+#: 
+msgid "View query results"
+msgstr "Lekérdezési eredmények megtekintése"
+
+#: 
+msgid "View transaction details for a pledge payment"
+msgstr "Felajánlási befizetés tranzakciós részleteinek megtekintése"
+
+#: 
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr "A szavazati joggal rendelkező tagoknak ennyi éven belül kellett adományt tenniük (0 = nem szükséges adomány)"
+
+#: 
+msgid "We could not find the family you were looking for."
+msgstr "A keresett család nem található."
+
+#: 
+msgid "We could not find the group you were looking for."
+msgstr "A keresett csoport nem található."
+
+#: 
+msgid "We could not find the person you were looking for."
+msgstr "A keresett személy nem található."
+
+#: 
+msgid "We could not find the record you were looking for."
+msgstr "A keresett rekord nem található."
+
+#: 
+msgid "We were unable to process your password reset request."
+msgstr "Nem sikerült feldolgozni a jelszó-visszaállítási kérését."
+
+#: 
+msgid "We'll use this to keep in touch and send church updates."
+msgstr "Ezt fogjuk használni a kapcsolattartáshoz és a gyülekezeti hírek küldéséhez."
+
+#: 
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr "Nagyon örülünk, hogy itt van! Regisztrálja családját mindössze 3 egyszerű lépésben."
+
+#: 
+msgid "We're so glad your family has joined us!"
+msgstr "Nagyon örülünk, hogy családja csatlakozott hozzánk!"
+
+#: 
+msgid "Welcome Back!"
+msgstr "Üdvözöljük újra!"
+
+#: 
+msgid "Welcome back! Please enter your details to continue"
+msgstr "Üdvözöljük újra! Kérjük, adja meg adatait a folytatáshoz"
+
+#: 
+msgid "Welcome to the Family!"
+msgstr "Isten hozta a családban!"
+
+#: 
+msgid "What happens next?"
+msgstr "Mi következik ezután?"
+
+#: 
+msgid "What went wrong? What did you expect to happen?"
+msgstr "Mi ment rosszul? Mi volt az elvárt eredmény?"
+
+#: 
+msgid "Who is in your family?"
+msgstr "Kik vannak a családjában?"
+
+#: 
+msgid "Why Came"
+msgstr "Miért jött"
+
+#: 
+msgid "Yes, delete"
+msgstr "Igen, törlés"
+
+#: 
+msgid "You can always import more data later via CSV."
+msgstr "Később bármikor importálhat további adatokat CSV-n keresztül."
+
+#: 
+msgid "You can create/delete sunday school group."
+msgstr "Létrehozhat/törölhet vasárnapi iskolai csoportot."
+
+#: 
+msgid "You do not have finance permissions to view deposits."
+msgstr "Nincs pénzügyi jogosultsága a letétek megtekintéséhez."
+
+#: 
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr "A biztonsági mentés adatai betöltődtek. Átirányítjuk, hogy bejelentkezzen korábbi hitelesítő adataival."
+
+#: 
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr "A biztonsági mentés szükség esetén automatikusan frissül a legújabb adatbázis-sémára."
+
+#: 
+msgid "Your previous session timed out. Please login again."
+msgstr "Az előző munkamenet lejárt. Kérjük, jelentkezzen be újra."
+
+#: 
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Regisztrációját megkaptuk. Csapatunk hamarosan felveszi Önnel a kapcsolatot, hogy személyesen üdvözölje."
+
+#: 
+msgid "all members"
+msgstr "összes tag"
+
+#: 
+msgid "complete"
+msgstr "befejezve"
+
+#: 
+msgid "fields"
+msgstr "mezők"
+
+#: 
+msgid "from this class?"
+msgstr "ebből az osztályból?"
+
+#: 
+msgid "from this group?"
+msgstr "ebből a csoportból?"
+
+#: 
+msgid "full group view"
+msgstr "teljes csoport nézet"
+
+#: 
+msgid "funds"
+msgstr "alapok"
+
+#: 
+msgid "members"
+msgstr "tagok"
+
+#: 
+msgid "name@example.com"
+msgstr "nev@pelda.hu"
+
+#: 
+msgid "opportunities"
+msgstr "lehetőségek"
+
+#: 
+msgid "options"
+msgstr "beállítások"
+
+#: 
+msgid "or connect an external service"
+msgstr "vagy csatlakozzon egy külső szolgáltatáshoz"
+
+#: 
+msgid "our church"
+msgstr "gyülekezetünk"
+
+#: 
+msgid "page"
+msgstr "oldal"
+
+#: 
+msgid "properties"
+msgstr "tulajdonságok"
+
+#: 
+msgid "to another group?"
+msgstr "egy másik csoportba?"
+
+#: 
+msgid "— Ignore —"
+msgstr "— Figyelmen kívül hagyás —"
+
+#: 
+msgid "— Select a group —"
+msgstr "— Válasszon csoportot —"
+
+#: 
+msgid "— Select type (optional) —"
+msgstr "— Válasszon típust (nem kötelező) —"
+
+#: 
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr "Fogadja el az eszközt, majd rendelje hozzá egy eseményhez a bejelentkezés megkezdéséhez."
+
+#: 
+msgid "Activate"
+msgstr "Aktiválás"
+
+#: 
+msgid "Active Events"
+msgstr "Aktív események"
+
+#: 
+msgid "Add Event"
+msgstr "Esemény hozzáadása"
+
+#: 
+msgid "Adults"
+msgstr "Felnőttek"
+
+#: 
+msgid "Affected Files"
+msgstr "Érintett fájlok"
+
+#: 
+msgid "All Checks Passed"
+msgstr "Minden ellenőrzés sikeres"
+
+#: 
+msgid "Applying..."
+msgstr "Alkalmazás..."
+
+#: 
+msgid "Assigned Kiosk"
+msgstr "Hozzárendelt kioszk"
+
+#: 
+msgid "Attendance"
+msgstr "Jelenlét"
+
+#: 
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr "Készítsen biztonsági mentést a módosított fájlokról a frissítés előtt, ha meg szeretné tartani a változtatásokat."
+
+#: 
+msgid "Backup Complete"
+msgstr "Biztonsági mentés kész"
+
+#: 
+msgid "Class / Group"
+msgstr "Osztály / Csoport"
+
+#: 
+msgid "Class List Export"
+msgstr "Osztálylista exportálása"
+
+#: 
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr "Kattintson a fenti regisztrációs kapcsolóra egy 30 másodperces regisztrációs ablak megnyitásához."
+
+#: 
+msgid "Continue"
+msgstr "Tovább"
+
+#: 
+msgid "Create First Event"
+msgstr "Első esemény létrehozása"
+
+#: 
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr "Készítsen adatbázis biztonsági mentést a frissítés alkalmazása előtt. Ez erősen ajánlott."
+
+#: 
+msgid "Creating Backup..."
+msgstr "Biztonsági mentés készítése..."
+
+#: 
+msgid "Download Backup & Continue"
+msgstr "Mentés letöltése és folytatás"
+
+#: 
+msgid "Download the latest release and apply it to your installation."
+msgstr "Töltse le a legújabb kiadást és alkalmazza a telepítésre."
+
+#: 
+msgid "Enable new kiosk registration"
+msgstr "Új kioszk regisztráció engedélyezése"
+
+#: 
+msgid "Events Dashboard"
+msgstr "Események vezérlőpult"
+
+#: 
+msgid "Events This Year"
+msgstr "Idei események"
+
+#: 
+msgid "Everyone"
+msgstr "Mindenki"
+
+#: 
+msgid "Failed to delete note"
+msgstr "Nem sikerült a megjegyzés törlése"
+
+#: 
+msgid "Files not part of the official release were found on your server."
+msgstr "A szerveren a hivatalos kiadáshoz nem tartozó fájlok találhatók."
+
+#: 
+msgid "Force Re-install?"
+msgstr "Kényszerített újratelepítés?"
+
+#: 
+msgid "Full Path"
+msgstr "Teljes elérési út"
+
+#: 
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr "Osztálylisták, jelenléti ívek és fotóalbumok készítése"
+
+#: 
+msgid "Installed"
+msgstr "Telepítve"
+
+#: 
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr "Erősen ajánlott biztonsági mentést készíteni a folytatás előtt."
+
+#: 
+msgid "Kiosk Registration"
+msgstr "Kioszk regisztráció"
+
+#: 
+msgid "Latest"
+msgstr "Legújabb"
+
+#: 
+msgid "Latest version unknown"
+msgstr "A legújabb verzió ismeretlen"
+
+#: 
+msgid "Manage Event Types"
+msgstr "Eseménytípusok kezelése"
+
+#: 
+msgid "Modified files will be reverted to the official version."
+msgstr "A módosított fájlok visszaállnak a hivatalos verzióra."
+
+#: 
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr "Több csoport esetén oldaltörés lesz a csoportok között"
+
+#: 
+msgid "New Members & Greeting"
+msgstr "Új tagok és üdvözlés"
+
+#: 
+msgid "No Events Found"
+msgstr "Nem találhatók események"
+
+#: 
+msgid "No events found for %s."
+msgstr "Nem találhatók események: %s."
+
+#: 
+msgid "No issues found. You may proceed with the upgrade."
+msgstr "Nem találhatók problémák. Folytathatja a frissítést."
+
+#: 
+msgid "Note not found"
+msgstr "Megjegyzés nem található"
+
+#: 
+msgid "Note text is required"
+msgstr "A megjegyzés szövege kötelező"
+
+#: 
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr "A kioszk eszközön (táblagép, laptop stb.) nyisson meg egy böngészőt és navigáljon ide:"
+
+#: 
+msgid "Only the note author or an admin may delete this note"
+msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor törölheti ezt a megjegyzést"
+
+#: 
+msgid "Only the note author or an admin may edit this note"
+msgstr "Csak a megjegyzés szerzője vagy egy adminisztrátor szerkesztheti ezt a megjegyzést"
+
+#: 
+msgid "Overview of church events, attendance, and activity"
+msgstr "Gyülekezeti események, jelenlét és tevékenységek áttekintése"
+
+#: 
+msgid "People Without Emails"
+msgstr "E-mail nélküli személyek"
+
+#: 
+msgid "People with no personal or work email on record"
+msgstr "Személyek, akiknek nincs személyes vagy munkahelyi e-mail címük a nyilvántartásban"
+
+#: 
+msgid "Pre-flight"
+msgstr "Előzetes ellenőrzés"
+
+#: 
+msgid "Re-install"
+msgstr "Újratelepítés"
+
+#: 
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: 
+msgid "Register and manage kiosk devices for event check-in"
+msgstr "Kioszk eszközök regisztrálása és kezelése eseménybejelentkezéshez"
+
+#: 
+msgid "Review & Delete"
+msgstr "Áttekintés és törlés"
+
+#: 
+msgid "SHA1 Hash"
+msgstr "SHA1 hash"
+
+#: 
+msgid "Setup Instructions"
+msgstr "Beállítási útmutató"
+
+#: 
+msgid "Signature Mismatch"
+msgstr "Aláírás eltérés"
+
+#: 
+msgid "Skip, Continue Without Backup"
+msgstr "Kihagyás, folytatás mentés nélkül"
+
+#: 
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr "Az eszköz regisztrálja magát és \"Függőben\" állapottal jelenik meg az alábbi táblázatban."
+
+#: 
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr "Ezek a hivatkozások a navigációs oldalsáv \"Hivatkozások\" menüjében jelennek meg, ha ez a bővítmény engedélyezve van."
+
+#: 
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr "Ez újra letölti és alkalmazza a jelenlegi verziót. Javíthatja a sérült vagy módosított fájlokat."
+
+#: 
+msgid "To set up a kiosk device, follow these steps:"
+msgstr "Egy kioszk eszköz beállításához kövesse az alábbi lépéseket:"
+
+#: 
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr "Kapcsolja át az alábbi kapcsolót, hogy 30 másodperces ablakot nyisson új kioszk eszközök regisztrációjához."
+
+#: 
+msgid "Total Check-ins"
+msgstr "Összes bejelentkezés"
+
+#: 
+msgid "Try selecting a different event type or year."
+msgstr "Próbáljon másik eseménytípust vagy évet választani."
+
+#: 
+msgid "Up to Date"
+msgstr "Naprakész"
+
+#: 
+msgid "Upcoming Sunday School Events"
+msgstr "Közelgő vasárnapi iskolai események"
+
+#: 
+msgid "Update Available"
+msgstr "Frissítés elérhető"
+
+#: 
+msgid "User must have Notes permission"
+msgstr "A felhasználónak megjegyzés-jogosultsággal kell rendelkeznie"
+
