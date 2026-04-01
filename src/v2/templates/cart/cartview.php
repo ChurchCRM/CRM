@@ -49,7 +49,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
     <h3 class="card-title"><?= $ListTitleText ?></h3>
   </div>
   <div class="card-body">
-    <div class="table-responsive">
+    <div style="overflow: visible;">
       <table class="table table-hover w-100" id="cart-listing-table">
         <thead>
           <tr>
