@@ -285,7 +285,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) === 'NEW') {
     <?php
     if ($numRows > 0) {
         ?>
-      <div class="table-responsive">
+      <div style="overflow: visible;">
       <table id="eventNames" class="table table-hover">
         <thead>
          <tr>
