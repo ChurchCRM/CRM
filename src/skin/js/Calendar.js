@@ -27,9 +27,7 @@ window.moveEventModal = {
   handleEventDrop: function (info) {
     var event = info.event;
     var revertFunc = info.revert;
-    var originalStart = info.oldEvent.start
-      ? info.oldEvent.start.toLocaleString()
-      : info.oldEvent.startStr;
+    var originalStart = info.oldEvent.start ? info.oldEvent.start.toLocaleString() : info.oldEvent.startStr;
     var newStart = event.start ? event.start.toLocaleString() : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
