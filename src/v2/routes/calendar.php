@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
+use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -22,6 +23,10 @@ function getCalendar(Request $request, Response $response, array $args): Respons
     $pageArgs = [
         'sRootPath'      => SystemURLs::getRootPath(),
         'sPageTitle'     => gettext('Calendar'),
+        'sPageSubtitle'  => gettext('Manage events, birthdays, and anniversaries'),
+        'aBreadcrumbs'   => PageHeader::breadcrumbs([
+            [gettext('Calendar')],
+        ]),
         'calendarJSArgs' => getCalendarJSArgs(),
     ];
 

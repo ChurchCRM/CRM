@@ -256,10 +256,10 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               <button type="button" disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>
                 Save
               </button>
-              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
+              <button type="button" className="btn btn-danger float-start" onClick={this.delete}>
                 Delete
               </button>
-              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
+              <button type="button" className="btn btn-secondary float-end" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>
@@ -284,10 +284,10 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
               <button type="button" className="btn btn-success" onClick={this.setEditMode}>
                 Edit
               </button>
-              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
+              <button type="button" className="btn btn-danger float-start" onClick={this.delete}>
                 Delete
               </button>
-              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
+              <button type="button" className="btn btn-secondary float-end" onClick={this.exit}>
                 Cancel
               </button>
             </Modal.Footer>
