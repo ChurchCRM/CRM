@@ -300,21 +300,40 @@ $bOkToEdit = (
                         <?php if ($sCellPhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-mobile-screen me-2 text-muted"></i>
-                            <a href="tel:<?= $sCellPhoneUnformatted ?>"><?= $sCellPhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sCellPhoneUnformatted) ?>"><?= $sCellPhone ?></a>
+                            <a href="sms:<?= InputUtils::escapeAttribute(preg_replace('/[^\d+]/', '', $sCellPhoneUnformatted)) ?>"
+                               class="ms-1 text-muted" title="<?= gettext('Send text message') ?>">
+                                <i class="fa-solid fa-comment-sms"></i>
+                            </a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sCellPhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Mobile') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sHomePhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-house me-2 text-muted"></i>
-                            <a href="tel:<?= $sHomePhoneUnformatted ?>"><?= $sHomePhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sHomePhoneUnformatted) ?>"><?= $sHomePhone ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sHomePhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Home') ?>)</small>
                         </li>
                         <?php endif; ?>
                         <?php if ($sWorkPhone) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
-                            <a href="tel:<?= $sWorkPhoneUnformatted ?>"><?= $sWorkPhone ?></a>
+                            <a href="tel:<?= InputUtils::escapeAttribute($sWorkPhoneUnformatted) ?>"><?= $sWorkPhone ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-phone-btn" type="button"
+                                    data-phone="<?= InputUtils::escapeAttribute($sWorkPhone) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>
@@ -323,20 +342,30 @@ $bOkToEdit = (
                 <?php endif; ?>
 
                 <!-- Email -->
-                <?php if ($sEmail !== '' || $per_WorkEmail !== '') : ?>
+                <?php if (!empty($sEmail) || !empty($per_WorkEmail)) : ?>
                 <div class="mb-3">
                     <h6 class="text-muted mb-2"><i class="fa-solid fa-envelope me-1"></i><?= gettext('Email') ?></h6>
                     <ul class="list-unstyled ms-3">
-                        <?php if ($sEmail !== '') : ?>
+                        <?php if (!empty($sEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-at me-2 text-muted"></i>
-                            <a href="mailto:<?= $sUnformattedEmail ?>"><?= $sEmail ?></a>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"><?= $sEmail ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                    data-email="<?= InputUtils::escapeAttribute($sUnformattedEmail) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                         </li>
                         <?php endif; ?>
-                        <?php if ($per_WorkEmail !== '') : ?>
+                        <?php if (!empty($per_WorkEmail)) : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-briefcase me-2 text-muted"></i>
-                            <a href="mailto:<?= $per_WorkEmail ?>"><?= $per_WorkEmail ?></a>
+                            <a href="mailto:<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"><?= $per_WorkEmail ?></a>
+                            <button class="btn btn-sm btn-ghost-secondary ms-1 copy-email-btn" type="button"
+                                    data-email="<?= InputUtils::escapeAttribute($per_WorkEmail) ?>"
+                                    title="<?= gettext('Copy to clipboard') ?>">
+                                <i class="fa-solid fa-copy"></i>
+                            </button>
                             <small class="text-muted">(<?= gettext('Work') ?>)</small>
                         </li>
                         <?php endif; ?>

@@ -140,10 +140,18 @@ window.calendarPropertiesModal = {
       if (!url) return "";
       return (
         '<div class="mb-3">' +
-        '<label class="form-label text-muted small mb-1">' + label + "</label>" +
+        '<label class="form-label text-muted small mb-1">' +
+        label +
+        "</label>" +
         '<div class="input-group">' +
-        '<input type="text" class="form-control form-control-sm font-monospace" readonly value="' + url + '">' +
-        '<a href="' + url + '" target="_blank" class="btn btn-sm btn-ghost-secondary" title="' + i18next.t("Open") + '">' +
+        '<input type="text" class="form-control form-control-sm font-monospace" readonly value="' +
+        url +
+        '">' +
+        '<a href="' +
+        url +
+        '" target="_blank" class="btn btn-sm btn-ghost-secondary" title="' +
+        i18next.t("Open") +
+        '">' +
         '<i class="fa-solid fa-arrow-up-right-from-square"></i>' +
         "</a>" +
         copyBtn(url) +
@@ -155,8 +163,12 @@ window.calendarPropertiesModal = {
     var colorSwatch = function (hex) {
       return (
         '<span class="d-inline-flex align-items-center gap-2">' +
-        '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' + hex + '"></span>' +
-        "<code>#" + hex + "</code>" +
+        '<span style="display:inline-block;width:1.25rem;height:1.25rem;border-radius:4px;border:1px solid var(--tblr-border-color);background:#' +
+        hex +
+        '"></span>' +
+        "<code>#" +
+        hex +
+        "</code>" +
         "</span>"
       );
     };
@@ -164,9 +176,13 @@ window.calendarPropertiesModal = {
     // Access token section
     var tokenSection =
       '<div class="mb-3">' +
-      '<label class="form-label text-muted small mb-1">' + i18next.t("Access Token") + "</label>" +
+      '<label class="form-label text-muted small mb-1">' +
+      i18next.t("Access Token") +
+      "</label>" +
       '<div class="input-group">' +
-      '<input id="AccessToken" class="form-control form-control-sm font-monospace" type="text" readonly value="' + (calendar.AccessToken || "") + '">' +
+      '<input id="AccessToken" class="form-control form-control-sm font-monospace" type="text" readonly value="' +
+      (calendar.AccessToken || "") +
+      '">' +
       copyBtn(calendar.AccessToken || "") +
       "</div>";
 
@@ -174,12 +190,14 @@ window.calendarPropertiesModal = {
       tokenSection +=
         '<div class="d-flex gap-2 mt-2">' +
         '<a id="NewAccessToken" class="btn btn-sm btn-outline-warning flex-fill">' +
-        '<i class="fa-solid fa-repeat me-1"></i>' + i18next.t("New Access Token") +
+        '<i class="fa-solid fa-repeat me-1"></i>' +
+        i18next.t("New Access Token") +
         "</a>";
       if (calendar.AccessToken != null) {
         tokenSection +=
           '<a id="DeleteAccessToken" class="btn btn-sm btn-outline-danger">' +
-          '<i class="fa-solid fa-trash-can me-1"></i>' + i18next.t("Delete") +
+          '<i class="fa-solid fa-trash-can me-1"></i>' +
+          i18next.t("Delete") +
           "</a>";
       }
       tokenSection += "</div>";
@@ -194,12 +212,20 @@ window.calendarPropertiesModal = {
       urlRow("JSON URL", jsonURL) +
       '<div class="row g-3">' +
       '<div class="col-6">' +
-      '<label class="form-label text-muted small mb-1">' + i18next.t("Foreground Color") + "</label>" +
-      '<div>' + colorSwatch(calendar.ForegroundColor) + "</div>" +
+      '<label class="form-label text-muted small mb-1">' +
+      i18next.t("Foreground Color") +
+      "</label>" +
+      "<div>" +
+      colorSwatch(calendar.ForegroundColor) +
+      "</div>" +
       "</div>" +
       '<div class="col-6">' +
-      '<label class="form-label text-muted small mb-1">' + i18next.t("Background Color") + "</label>" +
-      '<div>' + colorSwatch(calendar.BackgroundColor) + "</div>" +
+      '<label class="form-label text-muted small mb-1">' +
+      i18next.t("Background Color") +
+      "</label>" +
+      "<div>" +
+      colorSwatch(calendar.BackgroundColor) +
+      "</div>" +
       "</div>" +
       "</div>" +
       "</form>";

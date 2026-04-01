@@ -193,35 +193,6 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             LoggerUtils::getAppLogger()->error('SundaySchool ClassView: Error getting kids full details', ['exception' => $e->getMessage()]);
         }
 
-        $TeachersEmails = [];
-        $KidsEmails     = [];
-        $ParentsEmails  = [];
-
-        foreach ($thisClassChildren as $child) {
-            if (!empty($child['dadEmail'])) {
-                $ParentsEmails[] = $child['dadEmail'];
-            }
-            if (!empty($child['momEmail'])) {
-                $ParentsEmails[] = $child['momEmail'];
-            }
-            if (!empty($child['kidEmail'])) {
-                $KidsEmails[] = $child['kidEmail'];
-            }
-        }
-
-        foreach ($rsTeachers as $teacher) {
-            $TeachersEmails[] = $teacher->getEmail();
-        }
-
-        $sMailtoDelimiter = AuthenticationManager::getCurrentUser()->getUserConfigString('sMailtoDelimiter');
-        $allEmails        = array_unique([...$ParentsEmails, ...$KidsEmails, ...$TeachersEmails]);
-        $roleEmails       = [
-            'Parents'  => implode($sMailtoDelimiter, $ParentsEmails) . ',',
-            'Teachers' => implode($sMailtoDelimiter, $TeachersEmails) . ',',
-            'Kids'     => implode($sMailtoDelimiter, $KidsEmails) . ',',
-        ];
-        $sEmailLink = implode($sMailtoDelimiter, $allEmails) . ',';
-
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         $pageArgs = [
@@ -251,12 +222,6 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'birthDayMonthChartJSON' => $birthDayMonthChartJSON,
             'rsTeachers'             => $rsTeachers,
             'thisClassChildren'      => $thisClassChildren,
-            'TeachersEmails'         => $TeachersEmails,
-            'KidsEmails'             => $KidsEmails,
-            'ParentsEmails'          => $ParentsEmails,
-            'sMailtoDelimiter'       => $sMailtoDelimiter,
-            'roleEmails'             => $roleEmails,
-            'sEmailLink'             => urlencode($sEmailLink),
             'canEmail'               => $currentUser->isEmailEnabled(),
         ];
 
