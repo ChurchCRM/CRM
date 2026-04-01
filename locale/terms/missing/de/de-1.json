@@ -1,8 +1,8 @@
 {
-  "Administrator": "",
-  "BCC": "",
-  "Format": "",
-  "Kiosk": "",
-  "Material": "",
-  "Minimum": ""
+  "Administrator": "Administrator",
+  "BCC": "BCC",
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Material": "Material",
+  "Minimum": "Minimum"
 }
