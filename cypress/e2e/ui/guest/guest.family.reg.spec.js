@@ -1,6 +1,18 @@
 /// <reference types="cypress" />
 
 describe("Family Reg", () => {
+    before(() => {
+        // Ensure church name is "Main St. Cathedral" regardless of what other tests may have set.
+        // admin.church-info.spec.js saves "Test Church" and does not restore it.
+        cy.setupAdminSession();
+        cy.visit("admin/system/church-info");
+        cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
+        cy.get("#sChurchName").clear().type("Main St. Cathedral");
+        cy.wait(500);
+        cy.get("#church-info-form").submit();
+        cy.url({ timeout: 10000 }).should("include", "church-info");
+    });
+
     it("Adam Family Registration", () => {
         cy.visit("external/register/");
         cy.contains("Main St. Cathedral");

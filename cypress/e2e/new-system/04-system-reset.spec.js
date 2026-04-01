@@ -53,16 +53,17 @@ describe('04 - System Reset', () => {
         // middleware stops redirecting and subsequent test navigation works normally.
         cy.url().then((url) => {
             if (url.includes('/admin/system/church-info')) {
+                // Wait for page to fully load — country defaults to US and populates state dropdown
+                cy.get('#sChurchCountry', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
                 cy.get('#sChurchName').clear().type('Test Community Church');
                 cy.get('#sChurchPhone').clear().type('(555) 123-4567');
                 cy.get('#sChurchEmail').clear().type('info@testchurch.org');
-                cy.get('#location-tab').click();
                 cy.get('#sChurchAddress').clear().type('123 Main Street');
                 cy.get('#sChurchCity').clear().type('Springfield');
-                cy.get('#sChurchCountry', { timeout: 5000 }).siblings('.ts-wrapper').should('exist');
-                cy.tomSelectByValue('#sChurchCountry', 'US');
+                // Country defaults to US — wait for state dropdown then verify value is set
                 cy.get('#sChurchState', { timeout: 10000 }).siblings('.ts-wrapper').should('exist');
                 cy.tomSelectByValue('#sChurchState', 'IL');
+                cy.get('#sChurchState').should('have.value', 'IL');
                 cy.get('#sChurchZip').clear().type('62701');
                 cy.wait(500);
                 cy.get('#church-info-form').submit();

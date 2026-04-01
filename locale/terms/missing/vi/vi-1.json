@@ -1,9 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "Kết quả tìm kiếm cho \"%s\": %d"
   },
-  "BCC": "",
-  "Email BCC": "",
-  "Kiosk": "",
-  "name@example.com": ""
+  "BCC": "BCC",
+  "Email BCC": "Email BCC",
+  "Kiosk": "Kiosk",
+  "name@example.com": "name@example.com"
 }

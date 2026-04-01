@@ -1,7 +1,7 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "\"%s\"의 검색 결과 %d개"
   },
-  "BCC": "",
-  "name@example.com": ""
+  "BCC": "BCC",
+  "name@example.com": "name@example.com"
 }

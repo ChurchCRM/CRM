@@ -236,6 +236,9 @@ function showGlobalMessage(message, callOutClass) {
   });
 }
 
+// Expose to global scope so inline <script> tags in Footer.php can call it
+window.showGlobalMessage = showGlobalMessage;
+
 /**
  * Initialize form validation for all forms with data-validate attribute
  * Uses just-validate library with Bootstrap 4 styling
