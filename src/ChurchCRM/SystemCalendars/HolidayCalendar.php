@@ -15,9 +15,18 @@ class HolidayCalendar implements SystemCalendar
 {
     public static function isAvailable(): bool
     {
-        $systemCountry = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
-        if ($systemCountry instanceof Country) {
-            return $systemCountry->getCountryNameYasumi() !== null;
+        try {
+            $countryName = SystemConfig::getValue('sChurchCountry');
+            if (empty($countryName)) {
+                return false;
+            }
+            $systemCountry = Countries::getCountryByName($countryName);
+            if ($systemCountry instanceof Country) {
+                return $systemCountry->getCountryNameYasumi() !== null;
+            }
+        } catch (\Exception $e) {
+            // If the country is invalid or unavailable, return false
+            return false;
         }
 
         return false;
@@ -50,15 +59,27 @@ class HolidayCalendar implements SystemCalendar
 
     public function getEvents(string $start, string $end): ObjectCollection
     {
-        $Country = Countries::getCountryByName(SystemConfig::getValue('sChurchCountry'));
-        $year = DateTimeUtils::getCurrentYear();
-        $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
         $events = new ObjectCollection();
         $events->setModel(Event::class);
 
-        foreach ($holidays->getHolidays() as $holiday) {
-            $event = $this->yasumiHolidayToEvent($holiday);
-            $events->push($event);
+        try {
+            $countryName = SystemConfig::getValue('sChurchCountry');
+            if (empty($countryName)) {
+                return $events;
+            }
+            $Country = Countries::getCountryByName($countryName);
+            if (!($Country instanceof Country)) {
+                return $events;
+            }
+            $year = DateTimeUtils::getCurrentYear();
+            $holidays = Yasumi::create($Country->getCountryNameYasumi(), $year);
+
+            foreach ($holidays->getHolidays() as $holiday) {
+                $event = $this->yasumiHolidayToEvent($holiday);
+                $events->push($event);
+            }
+        } catch (\Exception $e) {
+            // If holiday calendar fails, return empty set
         }
 
         return $events;

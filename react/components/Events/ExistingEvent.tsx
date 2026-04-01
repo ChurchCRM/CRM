@@ -207,94 +207,116 @@ class ExistingEvent extends React.Component<EventFormProps, EventFormState> {
   render() {
     if (this.state.event === null || this.state.event === undefined) {
       return (
-        <div>
-          <Modal show={true} onHide={() => {}} size="xl">
-            <Modal.Header>
-              <h2>Loading...</h2>
-            </Modal.Header>
-          </Modal>
-        </div>
+        <Modal show={true} onHide={this.exit} size="xl">
+          <Modal.Header closeButton>
+            <Modal.Title>
+              <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true" />
+              {window.i18next.t("Loading...")}
+            </Modal.Title>
+          </Modal.Header>
+        </Modal>
       );
     }
     if (this.state.isEditMode) {
       return (
-        <div>
-          <Modal show={true} onHide={() => {}} size="xl">
-            <Modal.Header>
-              <div style={{ width: "100%" }}>
-                <input
-                  name="Title"
-                  value={this.state.event?.Title || ""}
-                  onChange={this.handleInputChange}
-                  placeholder={window.i18next.t("Event Title")}
-                  className="form-control form-control-lg"
-                  style={{ fontSize: "1.5rem", fontWeight: "bold" }}
-                />
-                {this.state.event?.Title && this.state.event.Title.length === 0 && (
-                  <div className="text-danger small mt-2">
-                    <i className="fas fa-exclamation-circle me-1"></i>
-                    {window.i18next.t("This field is required")}
-                  </div>
-                )}
-              </div>
-            </Modal.Header>
-            <Modal.Body style={{ overflow: "visible", maxHeight: "none" }}>
-              <div style={{ overflow: "visible" }}>
-                <EventPropertiesEditor
-                  event={this.state.event}
-                  calendars={this.state.calendars}
-                  eventTypes={this.state.eventTypes}
-                  changeHandler={this.handleInputChange}
-                  handleStartDateChange={this.handleStartDateChange}
-                  handleEndDateChange={this.handleEndDateChange}
-                  pinnedCalendarChanged={this.updatePinnedCalendar}
-                  eventTypeChanged={this.updateEventType}
-                />
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-              <button type="button" disabled={!this.isFormComplete()} className="btn btn-success" onClick={this.save}>
-                Save
-              </button>
-              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
-                Delete
-              </button>
-              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
-                Cancel
-              </button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <Modal show={true} onHide={() => {}} size="xl">
-            <Modal.Header>
-              <h2>{this.state.event.Title}</h2>
-            </Modal.Header>
-            <Modal.Body>
-              <EventPropertiesViewer
-                event={this.state.event}
-                calendars={this.state.calendars}
-                eventTypes={this.state.eventTypes}
+        <Modal show={true} onHide={this.exit} size="xl">
+          <Modal.Header closeButton className="pb-0 border-bottom-0">
+            <div className="w-100 me-3 pt-1">
+              <label className="form-label text-muted small mb-1" htmlFor="event-title-input">
+                {window.i18next.t("Event Title")}
+              </label>
+              <input
+                id="event-title-input"
+                name="Title"
+                value={this.state.event?.Title || ""}
+                onChange={this.handleInputChange}
+                placeholder={window.i18next.t("e.g. Sunday Service")}
+                className="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0"
+                style={{ boxShadow: "none" }}
               />
-            </Modal.Body>
-            <Modal.Footer>
-              <button type="button" className="btn btn-success" onClick={this.setEditMode}>
-                Edit
+              {this.state.event?.Title !== undefined && this.state.event.Title.length === 0 && (
+                <div className="invalid-feedback d-block mt-1">
+                  <i className="fas fa-exclamation-circle me-1" />
+                  {window.i18next.t("This field is required")}
+                </div>
+              )}
+            </div>
+          </Modal.Header>
+          <Modal.Body className="pt-3" style={{ overflow: "visible" }}>
+            <EventPropertiesEditor
+              event={this.state.event}
+              calendars={this.state.calendars}
+              eventTypes={this.state.eventTypes}
+              changeHandler={this.handleInputChange}
+              handleStartDateChange={this.handleStartDateChange}
+              handleEndDateChange={this.handleEndDateChange}
+              pinnedCalendarChanged={this.updatePinnedCalendar}
+              eventTypeChanged={this.updateEventType}
+            />
+          </Modal.Body>
+          <Modal.Footer className="d-flex justify-content-between">
+            <button
+              type="button"
+              className="btn btn-ghost-danger"
+              onClick={() => {
+                if (window.confirm(window.i18next.t("Are you sure you want to delete this event?"))) {
+                  this.delete();
+                }
+              }}
+            >
+              <i className="fas fa-trash me-1" />
+              {window.i18next.t("Delete")}
+            </button>
+            <div className="d-flex gap-2">
+              <button type="button" className="btn btn-secondary" onClick={this.exit}>
+                {window.i18next.t("Cancel")}
               </button>
-              <button type="button" className="btn btn-danger pull-left" onClick={this.delete}>
-                Delete
+              <button type="button" disabled={!this.isFormComplete()} className="btn btn-primary" onClick={this.save}>
+                <i className="fas fa-save me-1" />
+                {window.i18next.t("Save")}
               </button>
-              <button type="button" className="btn btn-default pull-right" onClick={this.exit}>
-                Cancel
-              </button>
-            </Modal.Footer>
-          </Modal>
-        </div>
+            </div>
+          </Modal.Footer>
+        </Modal>
       );
     }
+    return (
+      <Modal show={true} onHide={this.exit} size="xl">
+        <Modal.Header closeButton>
+          <Modal.Title>{this.state.event.Title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EventPropertiesViewer
+            event={this.state.event}
+            calendars={this.state.calendars}
+            eventTypes={this.state.eventTypes}
+          />
+        </Modal.Body>
+        <Modal.Footer className="d-flex justify-content-between">
+          <button
+            type="button"
+            className="btn btn-ghost-danger"
+            onClick={() => {
+              if (window.confirm(window.i18next.t("Are you sure you want to delete this event?"))) {
+                this.delete();
+              }
+            }}
+          >
+            <i className="fas fa-trash me-1" />
+            {window.i18next.t("Delete")}
+          </button>
+          <div className="d-flex gap-2">
+            <button type="button" className="btn btn-secondary" onClick={this.exit}>
+              {window.i18next.t("Close")}
+            </button>
+            <button type="button" className="btn btn-primary" onClick={this.setEditMode}>
+              <i className="fas fa-pencil me-1" />
+              {window.i18next.t("Edit")}
+            </button>
+          </div>
+        </Modal.Footer>
+      </Modal>
+    );
   }
 }
 

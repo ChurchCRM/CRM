@@ -449,9 +449,12 @@ window.CRM.dashboard = {
    * Load event counters once on page load (birthdays, anniversaries, events today)
    */
   loadEventCounters: function () {
+    // Pass the browser's local date so the counter matches the calendar's "today" cell.
+    // FullCalendar highlights today using the browser local date, not the server timezone.
+    var today = new Date().toLocaleDateString("en-CA"); // yields YYYY-MM-DD
     window.CRM.APIRequest({
       method: "GET",
-      path: "calendar/events-counters",
+      path: "calendar/events-counters?date=" + today,
       suppressErrorDialog: true,
     }).done(function (data) {
       document.getElementById("BirthdateNumber").innerText = data.Birthdays;

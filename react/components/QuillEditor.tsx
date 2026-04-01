@@ -15,7 +15,8 @@ const QuillEditor: React.FunctionComponent<{
   onChange: (name: string, html: string) => void;
   placeholder?: string;
   minHeight?: string;
-}> = ({ name, value, onChange, placeholder = "Enter text here...", minHeight = "200px" }) => {
+  id?: string;
+}> = ({ name, value, onChange, placeholder = "Enter text here...", minHeight = "200px", id }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const quillRef = useRef<Quill | null>(null);
   // Keep a ref to the latest onChange so the text-change handler never goes stale
@@ -94,6 +95,7 @@ const QuillEditor: React.FunctionComponent<{
 
   return (
     <div
+      id={id}
       ref={editorRef}
       style={{
         minHeight: minHeight,
