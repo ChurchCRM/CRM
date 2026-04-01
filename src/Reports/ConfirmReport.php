@@ -14,8 +14,10 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Exception;
 
-// Security: require admin or finance access
-AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
+// Security: require admin or finance access (confirmation reports contain sensitive family data)
+$currentUser = AuthenticationManager::getCurrentUser();
+$hasAccess = $currentUser->isAdmin() || $currentUser->isFinanceEnabled();
+AuthenticationManager::redirectHomeIfFalse($hasAccess, 'ConfirmReport');
 
 class PdfConfirmReport extends ChurchInfoReport
 {
