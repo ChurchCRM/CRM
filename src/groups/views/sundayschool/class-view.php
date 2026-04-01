@@ -105,7 +105,7 @@ if ($bCanManageGroups) {
     <div class="col-lg-8">
 
         <!-- Action Toolbar (ghost buttons — matches group view) -->
-        <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
+        <div id="ss-action-toolbar" class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <a class="btn btn-ghost-success" href="<?= $sRootPath ?>/groups/view/<?= $iGroupId ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Students') ?>
             </a>
@@ -122,19 +122,22 @@ if ($bCanManageGroups) {
             </a>
             <?php if ($canEmail): ?>
             <div class="dropdown">
-                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssEmailDropdownBtn">
                     <i class="fa-solid fa-paper-plane me-1"></i><?= gettext('Email') ?>
                 </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('All Members') ?></a>
-                    <?php foreach ($roleEmails as $roleName => $emails): ?>
-                    <a class="dropdown-item" href="mailto:<?= InputUtils::escapeAttribute(urlencode(rtrim($emails, ','))) ?>"><?= InputUtils::escapeHTML($roleName) ?></a>
-                    <?php endforeach; ?>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="mailto:?bcc=<?= InputUtils::escapeAttribute(mb_substr($sEmailLink, 0, -3)) ?>"><i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC All') ?></a>
+                <div class="dropdown-menu" id="ssEmailDropdownMenu">
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
                 </div>
             </div>
             <?php endif; ?>
+            <div class="dropdown">
+                <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" id="ssTextDropdownBtn">
+                    <i class="fa-solid fa-mobile-screen me-1"></i><?= gettext('Text') ?>
+                </button>
+                <div class="dropdown-menu" id="ssTextDropdownMenu">
+                    <div class="text-center py-2 text-muted"><i class="fa-solid fa-spinner fa-spin me-1"></i><?= gettext('Loading...') ?></div>
+                </div>
+            </div>
             <?php if ($bCanManageGroups): ?>
             <div class="dropdown ms-auto">
                 <button class="btn btn-ghost-secondary dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static">
