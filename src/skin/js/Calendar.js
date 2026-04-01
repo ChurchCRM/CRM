@@ -11,12 +11,13 @@ window.moveEventModal = {
   },
   modalCallBack: function (result) {
     if (result === true) {
+      var evt = window.moveEventModal.event;
       window.CRM.APIRequest({
         method: "POST",
-        path: "events/" + window.moveEventModal.event.id + "/time",
+        path: "events/" + evt.id + "/time",
         data: JSON.stringify({
-          startTime: window.moveEventModal.event.start.toISOString(),
-          endTime: window.moveEventModal.event.end.toISOString(),
+          startTime: evt.allDay ? evt.startStr : evt.start.toISOString(),
+          endTime: evt.end ? evt.end.toISOString() : null,
         }),
       });
     } else {
@@ -28,8 +29,8 @@ window.moveEventModal = {
     var revertFunc = info.revert;
     var originalStart = info.oldEvent.start
       ? info.oldEvent.start.toLocaleString()
-      : info.oldEvent.start.toISOString().split("T")[0];
-    var newStart = event.start ? event.start.toLocaleString() : event.start.toISOString().split("T")[0];
+      : info.oldEvent.startStr;
+    var newStart = event.start ? event.start.toLocaleString() : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -55,8 +56,8 @@ window.moveEventModal = {
     var revertFunc = info.revert;
     var originalEnd = info.oldEvent.end
       ? info.oldEvent.end.toLocaleString()
-      : info.oldEvent.end.toISOString().split("T")[0];
-    var newEnd = event.end ? event.end.toLocaleString() : event.end.toISOString().split("T")[0];
+      : info.oldEvent.endStr || info.oldEvent.startStr;
+    var newEnd = event.end ? event.end.toLocaleString() : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     bootbox.confirm({
@@ -473,11 +474,9 @@ function getCalendarFilterElement(calendar, type) {
     sourceId +
     '">' +
     '<div class="d-flex align-items-center">' +
-    '<span class="avatar avatar-sm rounded me-2" style="background-color:#' +
+    '<span class="d-inline-block rounded-circle flex-shrink-0 me-2" style="width:12px;height:12px;background-color:#' +
     calendar.BackgroundColor +
-    "; color:#" +
-    calendar.ForegroundColor +
-    '"><i class="fa-solid fa-calendar"></i></span>' +
+    '"></span>' +
     '<div class="flex-fill">' +
     '<div class="fw-medium small">' +
     calendar.Name +
