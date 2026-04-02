@@ -5041,36 +5041,8 @@ msgid "Notification for"
 msgstr "Oznámení pro"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "INFO"
-
-#: 
-msgid "NOTICE"
-msgstr "NOTICE"
-
-#: 
-msgid "WARNING"
-msgstr "WARNING"
-
-#: 
 msgid "ERROR"
 msgstr "ERROR"
-
-#: 
-msgid "CRITICAL"
-msgstr "CRITICAL"
-
-#: 
-msgid "ALERT"
-msgstr "ALERT"
-
-#: 
-msgid "EMERGENCY"
-msgstr "EMERGENCY"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7590,14 +7562,6 @@ msgid "Administrator privileges"
 msgstr "Práva administrátora"
 
 #: 
-msgid "All Files Verified"
-msgstr "Všechny soubory ověřeny"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Všechny systémové soubory odpovídají očekávaným podpisům."
-
-#: 
 msgid "Application Integrity"
 msgstr "Integrita aplikace"
 
@@ -7714,14 +7678,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Exportuje strukturu databáze a data. Menší velikost souboru."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Kontrola integrity souboru"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Zjištěny problémy s integritou souborů"
-
-#: 
 msgid "File Path"
 msgstr "Cesta k souboru"
 
@@ -7778,10 +7734,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Jednu kopii uchovávejte v ohnivzdorném trezoru na místě a druhou externě."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Nejnovější verze GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Načítání..."
 
@@ -7792,14 +7744,6 @@ msgstr "Spravovat osamocené soubory"
 #: 
 msgid "Menu options access"
 msgstr "Přístup k možnostem menu"
-
-#: 
-msgid "Missing Files"
-msgstr "Chybějící soubory"
-
-#: 
-msgid "Modified Files"
-msgstr "Změněné soubory"
 
 #: 
 msgid "Multiple Copies"
@@ -7840,14 +7784,6 @@ msgstr "Zkontrolujte záložní soubor a zkuste to znovu."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Vyberte záložní soubor, který chcete obnovit."
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Znovu stáhněte a znovu použijte aktuální verzi, aby se všechny soubory vrátily do svého oficiálního stavu."
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Doporučení: Před nebo po aktualizaci tyto soubory zkontrolujte a odstraňte."
 
 #: 
 msgid "Redirecting in"
@@ -7894,20 +7830,12 @@ msgid "Security Recommendation"
 msgstr "Doporučení zabezpečení"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Varování zabezpečení: Zjištěny osamocené soubory"
-
-#: 
 msgid "Select Backup File"
 msgstr "Vyberte soubor zálohy"
 
 #: 
 msgid "Supported formats:"
 msgstr "Podporované formáty:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Následující soubory se nacházejí na vašem serveru, ale NEJSOU součástí oficiální verze ChurchCRM. Mohou se jednat o zbytky z předchozích verzí, které mohou představovat bezpečnostní riziko."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7922,10 +7850,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Tyto soubory byly pravděpodobně součástí starší verze ChurchCRM a nebyly odstraněny během předchozí aktualizace. Jejich odstranění zvýší bezpečnost vašeho systému."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Tyto soubory byly pravděpodobně součástí starší verze ChurchCRM a nebyly odstraněny během předchozí aktualizace. Mohou obsahovat zastaralý kód s bezpečnostními zranitelnostmi."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Tuto akci nelze vrátit zpět. V případě potřeby si vytvořte zálohu aktuálních dat."
 
@@ -7936,10 +7860,6 @@ msgstr "U velkých databází to může trvat několik minut."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "U velkých databází to může trvat několik minut. Tuto stránku nezavírejte."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Aktuální verze se znovu stáhne a nainstaluje. Tím lze opravit poškozené nebo upravené soubory. Pokračovat?"
 
 #: 
 msgid "Upgrade Summary"

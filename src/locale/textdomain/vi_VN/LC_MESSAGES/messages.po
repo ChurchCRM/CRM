@@ -5061,36 +5061,8 @@ msgid "Notification for"
 msgstr "Thông báo cho"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "THÔNG TIN"
-
-#: 
-msgid "NOTICE"
-msgstr "LƯU Ý"
-
-#: 
-msgid "WARNING"
-msgstr "CẢNH BÁO"
-
-#: 
 msgid "ERROR"
 msgstr "XUẤT HIỆN LỖI"
-
-#: 
-msgid "CRITICAL"
-msgstr "BẠO KÍCH"
-
-#: 
-msgid "ALERT"
-msgstr "BÁO CÁO"
-
-#: 
-msgid "EMERGENCY"
-msgstr "TRƯỜNG HỢP KHẨN CẤP"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7602,14 +7574,6 @@ msgid "Administrator privileges"
 msgstr "Đặc quyền quản trị viên"
 
 #: 
-msgid "All Files Verified"
-msgstr "Tất cả tệp đã được xác minh"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Tất cả các tệp hệ thống đều khớp với chữ ký dự kiến."
-
-#: 
 msgid "Application Integrity"
 msgstr "Tính toàn vẹn của ứng dụng"
 
@@ -7726,14 +7690,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Xuất cấu trúc và dữ liệu CSDL. Kích thước tệp nhỏ hơn."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Kiểm tra tính toàn vẹn của tệp"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Phát hiện vấn đề về tính toàn vẹn của tệp"
-
-#: 
 msgid "File Path"
 msgstr "Đường dẫn tệp"
 
@@ -7790,10 +7746,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Giữ một bản sao trong két an toàn tại chỗ và một bản khác ở nơi khác."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Phiên bản GitHub mới nhất:"
-
-#: 
 msgid "Loading..."
 msgstr "Đang tải..."
 
@@ -7804,14 +7756,6 @@ msgstr "Quản lý tệp mồ côi"
 #: 
 msgid "Menu options access"
 msgstr "Truy cập tùy chọn menu"
-
-#: 
-msgid "Missing Files"
-msgstr "Tệp bị thiếu"
-
-#: 
-msgid "Modified Files"
-msgstr "Tệp đã thay đổi"
 
 #: 
 msgid "Multiple Copies"
@@ -7852,14 +7796,6 @@ msgstr "Vui lòng kiểm tra tệp sao lưu và thử lại."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Vui lòng chọn một tệp sao lưu để khôi phục"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Tải lại và áp dụng phiên bản hiện tại để khôi phục tất cả các tệp về trạng thái chính thức"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Khuyến nghị: Xem lại và xóa các tệp này trước hoặc sau khi nâng cấp."
 
 #: 
 msgid "Redirecting in"
@@ -7906,20 +7842,12 @@ msgid "Security Recommendation"
 msgstr "Khuyến nghị bảo mật"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Cảnh báo bảo mật: Phát hiện tệp mồ côi"
-
-#: 
 msgid "Select Backup File"
 msgstr "Chọn tệp sao lưu"
 
 #: 
 msgid "Supported formats:"
 msgstr "Định dạng hỗ trợ:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Các tệp sau tồn tại trên máy chủ nhưng KHÔNG thuộc bản phát hành chính thức."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7934,10 +7862,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Các tệp này có thể là phần thừa từ phiên bản cũ. Xóa chúng sẽ cải thiện bảo mật hệ thống."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Chúng có thể chứa mã lỗi thời với các lỗ hổng bảo mật."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Hành động này không thể hoàn tác. Đảm bảo bạn có bản sao lưu dữ liệu hiện tại nếu cần."
 
@@ -7948,10 +7872,6 @@ msgstr "Quá trình này có thể mất vài phút đối với các CSDL lớn
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Có thể mất vài phút. Vui lòng không đóng trang này."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Việc này sẽ tải lại và áp dụng phiên bản hiện tại. Tiếp tục?"
 
 #: 
 msgid "Upgrade Summary"

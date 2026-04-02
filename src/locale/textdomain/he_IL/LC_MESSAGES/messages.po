@@ -5048,36 +5048,8 @@ msgid "Notification for"
 msgstr "הודעה עבור"
 
 #: 
-msgid "DEBUG"
-msgstr "ניפוי שגיאות"
-
-#: 
-msgid "INFO"
-msgstr "מידע"
-
-#: 
-msgid "NOTICE"
-msgstr "הודעה"
-
-#: 
-msgid "WARNING"
-msgstr "אזהרה"
-
-#: 
 msgid "ERROR"
 msgstr "שגיאה"
-
-#: 
-msgid "CRITICAL"
-msgstr "קריטי"
-
-#: 
-msgid "ALERT"
-msgstr "התראה"
-
-#: 
-msgid "EMERGENCY"
-msgstr "חירום"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7597,14 +7569,6 @@ msgid "Administrator privileges"
 msgstr "הרשאות מנהל"
 
 #: 
-msgid "All Files Verified"
-msgstr "כל הקבצים אומתו"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "כל קבצי המערכת תואמים לחתימות הצפויות שלהם."
-
-#: 
 msgid "Application Integrity"
 msgstr "תקינות היישום"
 
@@ -7721,14 +7685,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "ייצוא מבנה ונתוני מסד הנתונים. קובץ קטן יותר."
 
 #: 
-msgid "File Integrity Check"
-msgstr "בדיקת תקינות קבצים"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "זוהו בעיות בתקינות הקבצים"
-
-#: 
 msgid "File Path"
 msgstr "נתיב קובץ"
 
@@ -7785,10 +7741,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "שמור עותק אחד בכספת חסינת אש באתר ועותק נוסף מחוץ לאתר."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "גרסת GitHub האחרונה:"
-
-#: 
 msgid "Loading..."
 msgstr "טוען..."
 
@@ -7799,14 +7751,6 @@ msgstr "נהל קבצים יתומים"
 #: 
 msgid "Menu options access"
 msgstr "גישה לאפשרויות תפריט"
-
-#: 
-msgid "Missing Files"
-msgstr "קבצים חסרים"
-
-#: 
-msgid "Modified Files"
-msgstr "קבצים ששונו"
 
 #: 
 msgid "Multiple Copies"
@@ -7847,14 +7791,6 @@ msgstr "נא לבדוק את קובץ הגיבוי ולנסות שוב."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "נא לבחור קובץ גיבוי לשחזור"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "הורד מחדש והחל את הגרסה הנוכחית כדי לשחזר את כל הקבצים למצבם הרשמי"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "המלצה: בדוק ומחק קבצים אלו לפני או אחרי השדרוג."
 
 #: 
 msgid "Redirecting in"
@@ -7901,20 +7837,12 @@ msgid "Security Recommendation"
 msgstr "המלצת אבטחה"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "אזהרת אבטחה: זוהו קבצים יתומים"
-
-#: 
 msgid "Select Backup File"
 msgstr "בחר קובץ גיבוי"
 
 #: 
 msgid "Supported formats:"
 msgstr "פורמטים נתמכים:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "הקבצים הבאים קיימים בשרת אך אינם חלק מהגרסה הרשמית. הם עלולים להוות סיכון אבטחה."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7929,10 +7857,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "סביר להניח שקבצים אלו היו חלק מגרסה ישנה ולא נוקו. מחיקתם תשפר את אבטחת המערכת."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "ייתכן שקבצים אלו מכילים קוד מיושן עם פרצות אבטחה."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "פעולה זו אינה ניתנת לביטול. ודא שיש לך גיבוי של הנתונים במידת הצורך."
 
@@ -7943,10 +7867,6 @@ msgstr "זה עשוי לקחת מספר דקות במסדי נתונים גדו�
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "זה עשוי לקחת כמה דקות. נא לא לסגור את הדף."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "פעולה זו תוריד ותתקין מחדש את הגרסה הנוכחית. זה יכול לתקן קבצים פגומים. להמשיך?"
 
 #: 
 msgid "Upgrade Summary"

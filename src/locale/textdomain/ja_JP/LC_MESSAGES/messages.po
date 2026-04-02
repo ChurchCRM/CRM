@@ -5013,36 +5013,8 @@ msgid "Notification for"
 msgstr "の通知"
 
 #: 
-msgid "DEBUG"
-msgstr "デバッグ"
-
-#: 
-msgid "INFO"
-msgstr "情報"
-
-#: 
-msgid "NOTICE"
-msgstr "通知"
-
-#: 
-msgid "WARNING"
-msgstr "警告"
-
-#: 
 msgid "ERROR"
 msgstr "エラー"
-
-#: 
-msgid "CRITICAL"
-msgstr "重大"
-
-#: 
-msgid "ALERT"
-msgstr "アラート"
-
-#: 
-msgid "EMERGENCY"
-msgstr "緊急"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7554,14 +7526,6 @@ msgid "Administrator privileges"
 msgstr "管理者権限"
 
 #: 
-msgid "All Files Verified"
-msgstr "すべてのファイルが検証されました"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "すべてのシステムファイルが期待される署名と一致しています。"
-
-#: 
 msgid "Application Integrity"
 msgstr "アプリケーション整合性"
 
@@ -7678,14 +7642,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "データベース構造とデータをエクスポートします。ファイルサイズが小さくなります。"
 
 #: 
-msgid "File Integrity Check"
-msgstr "ファイル整合性チェック"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "ファイル整合性の問題が検出されました"
-
-#: 
 msgid "File Path"
 msgstr "ファイルパス"
 
@@ -7742,10 +7698,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "1部は現地の耐火金庫に、もう1部は別の場所に保管してください。"
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "最新のGitHubバージョン："
-
-#: 
 msgid "Loading..."
 msgstr "読み込み中..."
 
@@ -7756,14 +7708,6 @@ msgstr "孤立ファイルの管理"
 #: 
 msgid "Menu options access"
 msgstr "メニューオプションアクセス"
-
-#: 
-msgid "Missing Files"
-msgstr "不足しているファイル"
-
-#: 
-msgid "Modified Files"
-msgstr "変更されたファイル"
 
 #: 
 msgid "Multiple Copies"
@@ -7804,14 +7748,6 @@ msgstr "バックアップファイルを確認して、もう一度お試しく
 #: 
 msgid "Please select a backup file to restore"
 msgstr "復元するバックアップファイルを選択してください"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "現在のバージョンを再ダウンロードして再適用し、すべてのファイルを公式の状態に復元します"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "推奨：アップグレードの前後にこれらのファイルを確認して削除してください。"
 
 #: 
 msgid "Redirecting in"
@@ -7858,20 +7794,12 @@ msgid "Security Recommendation"
 msgstr "セキュリティに関する推奨事項"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "セキュリティ警告：孤立ファイルが検出されました"
-
-#: 
 msgid "Select Backup File"
 msgstr "バックアップファイルを選択"
 
 #: 
 msgid "Supported formats:"
 msgstr "サポートされている形式："
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "以下のファイルはサーバー上に存在しますが、公式ChurchCRMリリースの一部ではありません。これらは以前のバージョンから残っている可能性があり、セキュリティリスクをもたらす可能性があります。"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7886,10 +7814,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "これらのファイルは古いChurchCRMバージョンの一部であった可能性があり、以前のアップグレード中にクリーンアップされませんでした。削除するとシステムセキュリティが向上します。"
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "これらのファイルは古いChurchCRMバージョンの一部であった可能性があり、以前のアップグレード中にクリーンアップされませんでした。セキュリティの脆弱性がある古いコードが含まれている可能性があります。"
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "この操作は元に戻せません。必要に応じて現在のデータのバックアップがあることを確認してください。"
 
@@ -7900,10 +7824,6 @@ msgstr "大きなデータベースの場合、数分かかる場合がありま
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "大きなデータベースの場合、数分かかる場合があります。このページを閉じないでください。"
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "現在のバージョンを再ダウンロードして再適用します。これにより、破損または変更されたファイルを修正できます。続行しますか？"
 
 #: 
 msgid "Upgrade Summary"

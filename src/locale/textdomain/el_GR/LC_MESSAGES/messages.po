@@ -5049,36 +5049,8 @@ msgid "Notification for"
 msgstr "Ειδοποίηση για"
 
 #: 
-msgid "DEBUG"
-msgstr "ΕΝΤΟΠΙΣΜΟΣ ΣΦΑΛΜΑΤΩΝ"
-
-#: 
-msgid "INFO"
-msgstr "ΠΛΗΡΟΦΟΡΙΕΣ"
-
-#: 
-msgid "NOTICE"
-msgstr "ΕΙΔΟΠΟΙΗΣΗ"
-
-#: 
-msgid "WARNING"
-msgstr "ΠΡΟΕΙΔΟΠΟΙΗΣΗ"
-
-#: 
 msgid "ERROR"
 msgstr "ΛΑΘΟΣ"
-
-#: 
-msgid "CRITICAL"
-msgstr "ΚΡΙΣΙΜΟΣ"
-
-#: 
-msgid "ALERT"
-msgstr "ΣΥΝΑΓΕΡΜΟΣ"
-
-#: 
-msgid "EMERGENCY"
-msgstr "ΕΠΕΙΓΟΝ"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7601,14 +7573,6 @@ msgid "Administrator privileges"
 msgstr "Προνόμια διαχειριστή"
 
 #: 
-msgid "All Files Verified"
-msgstr "Όλα τα αρχεία επαληθεύθηκαν"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Όλα τα αρχεία συστήματος ταιριάζουν με τις αναμενόμενες υπογραφές τους."
-
-#: 
 msgid "Application Integrity"
 msgstr "Ακεραιότητα Εφαρμογής"
 
@@ -7725,14 +7689,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Εξαγωγήs database structure and data. Smaller file size."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Έλεγχος ακεραιότητας αρχείων"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Εντοπίστηκαν προβλήματα ακεραιότητας αρχείων"
-
-#: 
 msgid "File Path"
 msgstr "Διαδρομή αρχείου"
 
@@ -7789,10 +7745,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Κρατήστε ένα αντίγραφο σε πυρασφαλές χρηματοκιβώτιο στον χώρο σας και ένα άλλο εκτός χώρου."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Τελευταία έκδοση στο GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Φόρτωση..."
 
@@ -7803,14 +7755,6 @@ msgstr "Διαχείριση ορφανών αρχείων"
 #: 
 msgid "Menu options access"
 msgstr "Πρόσβαση στις επιλογές μενού"
-
-#: 
-msgid "Missing Files"
-msgstr "Ελλιπή Αρχεία"
-
-#: 
-msgid "Modified Files"
-msgstr "Τροποποιημένα Αρχεία"
 
 #: 
 msgid "Multiple Copies"
@@ -7851,14 +7795,6 @@ msgstr "Παρακαλούμε ελέγξτε το αρχείο αντιγράφ
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Επιλέξτε αρχείο αντιγράφου ασφαλείας για επαναφορά"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Επαναφόρτωση και επανεφαρμογή της τρέχουσας έκδοσης για επαναφορά όλων των αρχείων στην επίσημη κατάσταση"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Σύσταση: Ελέγξτε και διαγράψτε αυτά τα αρχεία πριν ή μετά την αναβάθμιση."
 
 #: 
 msgid "Redirecting in"
@@ -7905,20 +7841,12 @@ msgid "Security Recommendation"
 msgstr "Σύσταση ασφαλείας"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Προειδοποίηση Ασφάλειας: Ανιχνεύθηκαν Ορφανά Αρχεία"
-
-#: 
 msgid "Select Backup File"
 msgstr "Επιλέξτε Αρχείο Αντιγράφου"
 
 #: 
 msgid "Supported formats:"
 msgstr "Υποστηριζόμενες μορφές:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Τα ακόλουθα αρχεία υπάρχουν στον διακομιστή σας αλλά ΔΕΝ ανήκουν στην επίσημη έκδοση. Μπορεί να αποτελούν κίνδυνο ασφαλείας."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7933,10 +7861,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Αυτά τα αρχεία πιθανότατα ανήκαν σε παλαιότερη έκδοση. Η διαγραφή τους θα βελτιώσει την ασφάλεια του συστήματος."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Αυτά τα αρχεία μπορεί να περιέχουν παρωχημένο κώδικα με κενά ασφαλείας."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Αυτή η ενέργεια δεν αναιρείται. Βεβαιωθείτε ότι έχετε αντίγραφο ασφαλείας αν χρειαστεί."
 
@@ -7947,10 +7871,6 @@ msgstr "Αυτό μπορεί να διαρκέσει λίγα λεπτά για
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Μην κλείσετε αυτή τη σελίδα. Μπορεί να διαρκέσει αρκετά λεπτά."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Αυτό θα κατεβάσει ξανά την τρέχουσα έκδοση. Μπορεί να διορθώσει κατεστραμμένα αρχεία. Συνέχεια;"
 
 #: 
 msgid "Upgrade Summary"

@@ -5043,36 +5043,8 @@ msgid "Notification for"
 msgstr "Njoftim për"
 
 #: 
-msgid "DEBUG"
-msgstr "KORRIGJIM"
-
-#: 
-msgid "INFO"
-msgstr "INFO"
-
-#: 
-msgid "NOTICE"
-msgstr "NJOFTIM"
-
-#: 
-msgid "WARNING"
-msgstr "PARALAJMËRIM"
-
-#: 
 msgid "ERROR"
 msgstr "GABIM"
-
-#: 
-msgid "CRITICAL"
-msgstr "KRITIK"
-
-#: 
-msgid "ALERT"
-msgstr "ALARM"
-
-#: 
-msgid "EMERGENCY"
-msgstr "EMERGJENCË"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7588,14 +7560,6 @@ msgid "Administrator privileges"
 msgstr "Privilegjet e administratorit"
 
 #: 
-msgid "All Files Verified"
-msgstr "Të gjithë skedarët u verifikuan"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Të gjithë skedarët e sistemit përputhen me nënshkrimet e pritshme."
-
-#: 
 msgid "Application Integrity"
 msgstr "Integriteti i Aplikacionit"
 
@@ -7712,14 +7676,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Eksporton strukturën dhe të dhënat e bazës së të dhënave. Madhësi më e vogël skedari."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Kontrolli i Integritetit të Skedarëve"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "U zbuluan probleme me integritetin e skedarëve"
-
-#: 
 msgid "File Path"
 msgstr "Shtegu i skedarit"
 
@@ -7776,10 +7732,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Mbani një kopje në një kasafortë rezistente ndaj zjarrit dhe një tjetër jashtë vendit të punës."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Versioni më i fundit në GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Duke u ngarkuar..."
 
@@ -7790,14 +7742,6 @@ msgstr "Menaxho skedarët jetimë"
 #: 
 msgid "Menu options access"
 msgstr "Aksesi në opsionet e menusë"
-
-#: 
-msgid "Missing Files"
-msgstr "Skedarët që mungojnë"
-
-#: 
-msgid "Modified Files"
-msgstr "Skedarët e modifikuar"
 
 #: 
 msgid "Multiple Copies"
@@ -7838,14 +7782,6 @@ msgstr "Ju lutem kontrolloni skedarin e kopjes rezervë dhe provoni përsëri."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Ju lutem zgjidhni një skedar kopjeje rezervë për t'u rikthyer"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Ri-shkarkoni dhe ri-aplikoni versionin aktual për të rikthyer të gjithë skedarët në gjendjen e tyre zyrtare"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Rekomandim: Rishikoni dhe fshini këta skedarë para ose pas përmirësimit."
 
 #: 
 msgid "Redirecting in"
@@ -7892,20 +7828,12 @@ msgid "Security Recommendation"
 msgstr "Rekomandimi i sigurisë"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Paralajmërim sigurie: U zbuluan skedarë jetimë"
-
-#: 
 msgid "Select Backup File"
 msgstr "Zgjidhni skedarin e kopjes rezervë"
 
 #: 
 msgid "Supported formats:"
 msgstr "Formatet e mbështetura:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Skedarët e mëposhtëm ekzistojnë në serverin tuaj por NUK janë pjesë e versionit zyrtar të ChurchCRM. Këta mund të jenë mbetje nga versionet e mëparshme dhe mund të paraqesin rreziqe sigurie."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7920,10 +7848,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Këta skedarë ka të ngjarë të ishin pjesë e një versioni më të vjetër të ChurchCRM dhe nuk u pastruan gjatë një përmirësimi të mëparshëm. Fshirja e tyre do të përmirësojë sigurinë e sistemit tuaj."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Këta skedarë ka të ngjarë të ishin pjesë e një versioni më të vjetër të ChurchCRM dhe nuk u pastruan gjatë një përmirësimi të mëparshëm. Ata mund të përmbajnë kod të vjetëruar me dobësi sigurie."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Ky veprim nuk mund të zhbëhet. Sigurohuni që keni një kopje rezervë të të dhënave aktuale nëse nevojitet."
 
@@ -7934,10 +7858,6 @@ msgstr "Kjo mund të marrë disa minuta për baza të mëdha të dhënash."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Kjo mund të marrë disa minuta për baza të mëdha të dhënash. Mos e mbyllni këtë faqje."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Kjo do të ri-shkarkojë dhe ri-aplikojë versionin aktual. Kjo mund të rregullojë skedarët e korruptuar ose të modifikuar. Vazhdoni?"
 
 #: 
 msgid "Upgrade Summary"

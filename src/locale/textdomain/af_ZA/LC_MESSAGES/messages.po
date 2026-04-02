@@ -5049,36 +5049,8 @@ msgid "Notification for"
 msgstr "Kennisgewing vir"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "INLIGTING"
-
-#: 
-msgid "NOTICE"
-msgstr "KENNISGEWING"
-
-#: 
-msgid "WARNING"
-msgstr "WAARSKUWING"
-
-#: 
 msgid "ERROR"
 msgstr "FOUT"
-
-#: 
-msgid "CRITICAL"
-msgstr "KRITIES"
-
-#: 
-msgid "ALERT"
-msgstr "WAARSKUWING"
-
-#: 
-msgid "EMERGENCY"
-msgstr "NOOD"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7602,14 +7574,6 @@ msgid "Administrator privileges"
 msgstr "Administrator-voorregte"
 
 #: 
-msgid "All Files Verified"
-msgstr "Alle Lêers Geverifieer"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Alle stelsellêers stem ooreen met hul verwagte handtekeninge."
-
-#: 
 msgid "Application Integrity"
 msgstr "Toepassingsintegriteit"
 
@@ -7726,14 +7690,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Uitvoers database structure and data. Smaller file size."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Lêer-integriteitstoets"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Lêer-integriteitsuitgawes Opgespoor"
-
-#: 
 msgid "File Path"
 msgstr "Lêer Pad"
 
@@ -7790,10 +7746,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Hou een kopie in 'n vuurvaste kluis ter plaatse en nog een buite."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Jongste GitHub-weergawe:"
-
-#: 
 msgid "Loading..."
 msgstr "Laai..."
 
@@ -7804,14 +7756,6 @@ msgstr "Bestuur Wees Lêers"
 #: 
 msgid "Menu options access"
 msgstr "Spyskaartopsies toegang"
-
-#: 
-msgid "Missing Files"
-msgstr "Ontbrekende Lêers"
-
-#: 
-msgid "Modified Files"
-msgstr "Gewysigde Lêers"
 
 #: 
 msgid "Multiple Copies"
@@ -7852,14 +7796,6 @@ msgstr "Kontroleer asseblief die rugsteunlêer en probeer weer."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Kies asseblief 'n rugsteunlêer om te herstel"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Laai en pas die huidige weergawe opnuut toe om al die lêers in hul amptelike staat te herstel"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Aanbeveling: Oorsien en verwyder hierdie lêers voor of na die opgradering."
 
 #: 
 msgid "Redirecting in"
@@ -7906,20 +7842,12 @@ msgid "Security Recommendation"
 msgstr "Sekuriteitsaanbeveling"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Sekuriteitswarning: Wees-Lêers Opgespoor"
-
-#: 
 msgid "Select Backup File"
 msgstr "Kies Rugsteun Lêer"
 
 #: 
 msgid "Supported formats:"
 msgstr "Ondersteunde formate:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Die volgende lêers bestaan op jou bediener maar is NIE deel van die amptelike ChurchCRM-vrylating nie. Dit mag oorblyfsel van vorige weergawes wees en kan sekuriteitsrisiko's pose."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7934,10 +7862,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Hierdie lêers was waarskynlik deel van 'n ouer ChurchCRM-weergawe en is nie skoongemaak tydens 'n vorige opgradering nie. Die uitwissing daarvan sal jou stelselsekuriteit verbeter."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Hierdie lêers was waarskynlik deel van 'n ouer ChurchCRM-weergawe en is nie skoongemaak tydens 'n vorige opgradering nie. Dit mag verouderde kode met sekuriteitsleemtes bevat."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Hierdie aksie kan nie ongedaan gemaak word nie. Maak seker dat jy 'n rugsteun van die huidge gegewens het as nodig."
 
@@ -7948,10 +7872,6 @@ msgstr "Dit kan 'n paar minute vat vir groot databases."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Dit kan verskeie minute vat vir groot databases. Moenie hierdie bladsy sluit nie."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Dit sal die huidge weergawe opnuut aflaai en toepas. Dit kan korrupte of gewysigde lêers regmaak. Gaan voort?"
 
 #: 
 msgid "Upgrade Summary"
