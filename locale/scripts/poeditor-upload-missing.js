@@ -27,7 +27,6 @@ const path = require('path');
 const https = require('https');
 const readline = require('readline');
 const { URLSearchParams } = require('url');
-const { spawnSync } = require('child_process');
 
 const localeConfig = require('./locale-config');
 
@@ -363,24 +362,10 @@ async function uploadTranslations(poEditorCode, terms) {
     };
 }
 
-/**
- * Runs the existing poeditor-downloader.js for one locale so we reuse
- * all its logic (JSON + PO + MO + missing-terms rebuild) without a second
- * independent API call.
- *
- * The downloader accepts "locale" format (e.g. "es_AR") but not POEditor dash
- * format (e.g. "es-AR"), so we pass the underscore locale code here.
- */
-function runDownloaderForLocale(localeCode) {
-    const downloaderScript = path.join(__dirname, 'poeditor-downloader.js');
-    const result = spawnSync(process.execPath, [downloaderScript, '--locale', localeCode], {
-        env: process.env,
-        stdio: 'inherit',
-    });
-    if (result.status !== 0) {
-        throw new Error(`Downloader exited with code ${result.status}`);
-    }
-}
+// NOTE: No longer calling the downloader here.
+// The download happens automatically via the GitHub Action workflow (locale-release).
+// This keeps the upload and download steps separate, reduces API calls, and ensures
+// a single source of truth for the final translations.
 
 // ── Display helpers ──────────────────────────────────────────────────────────
 
@@ -576,13 +561,8 @@ async function main() {
             continue;
         }
 
-        // ── Download (reuse existing downloader — no extra API cost) ─────────
-        console.log(`\n  ⬇️  Running locale downloader for "${poEditorCode}"...`);
-        try {
-            runDownloaderForLocale(localeCode);
-        } catch (err) {
-            console.warn(`  ⚠️  Download step failed: ${err.message}`);
-        }
+        // ── Upload complete, download via GH Action ──────────────────────────
+        console.log(`\n  ✨ Upload complete. Download will happen via GitHub Action (locale-release workflow).`);
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -593,6 +573,11 @@ async function main() {
 
     console.log(`\n${'═'.repeat(62)}`);
     console.log(`📊  Done — ${totalUploaded} term(s) uploaded, ${totalSkipped} locale(s) skipped`);
+    console.log(`\n📝  Next steps:`);
+    console.log(`  1. Share translations with POEditor reviewers`);
+    console.log(`  2. Wait for human approval in POEditor`);
+    console.log(`  3. GH Action will automatically download after release workflow runs`);
+    console.log(`  4. Merge the generated PR when ready`);
     console.log(`${'═'.repeat(62)}\n`);
 }
 

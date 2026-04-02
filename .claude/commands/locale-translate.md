@@ -8,24 +8,35 @@ Translate missing ChurchCRM UI terms across one or all locales using church-appr
 # List locales with missing terms
 /locale-translate --list
 
-# Translate a single locale
+# Translate a single locale (creates temp branch with auto-detected version)
 /locale-translate --locale <poEditorCode>
 # Example: /locale-translate --locale fr
 
-# Translate all locales with missing terms
+# Translate all locales with missing terms (auto-detected version)
 /locale-translate --all
+
+# Translate with explicit version (optional)
+/locale-translate --all --version 7.1.0
+# Only needed if version can't be auto-detected
 ```
 
 ## Overview
 
-This skill automates translation of untranslated terms by:
+This skill automates translation of untranslated terms with **automatic branch creation and per-locale pushes** to prevent data loss on cloud systems:
 
-1. **Reading** untranslated terms from `locale/terms/missing/{locale}/*.json`
-2. **Translating** with Claude, applying denomination-aware church vocabulary
-3. **Applying** translations back to batch files
-4. **Committing** after each locale (one commit per locale, every time)
+1. **Create temp branch** — `locale/{version}-{YYYY-MM-DD}` (e.g., `locale/7.1.0-2026-04-01`)
+2. **For each locale**:
+   - Read untranslated terms from `locale/terms/missing/{locale}/*.json`
+   - Translate with Claude, applying denomination-aware church vocabulary
+   - Apply translations back to batch files
+   - **Commit AND PUSH immediately** (one commit per locale)
+3. **Resume support** — If session times out, rerun `/locale-translate --all` to resume from next untranslated locale
 
-**Key principle:** Commit immediately after each locale is translated. Do not batch multiple locales into one commit.
+**Key principle:** 
+- ✅ One commit per locale (never batch)
+- ✅ **Push after every commit** (prevents data loss on cloud timeouts)
+- ✅ Branch prevents conflicts with main
+- ✅ Easy to merge when complete via single PR
 
 ---
 
@@ -119,16 +130,31 @@ The skill provides grammatically correct singular and plural forms per the targe
 
 ---
 
-## Commit Workflow
+## Branch & Commit Workflow
 
-**IMPORTANT:** Each locale gets its own commit. Never batch multiple locales.
+**IMPORTANT:** Each locale gets its own commit and push. Never batch multiple locales.
 
-After translating each locale, the skill:
+### Automatic Branch Creation
+
+When you run `/locale-translate --all` or `/locale-translate --locale <code>`, the skill:
+
+1. **Checks current branch** — if not on a locale branch, creates one:
+   ```bash
+   git checkout -b locale/{VERSION}-{YYYY-MM-DD}
+   git push -u origin locale/{VERSION}-{YYYY-MM-DD}
+   ```
+   Example: `locale/7.1.0-2026-04-01`
+
+2. **Reuses existing branch** — if you're already on a locale branch (from a resumed session), continues there
+
+### Per-Locale Commit & Push
+
+After translating each locale:
 
 ```bash
 git add locale/terms/missing/<locale>/
 git commit -m "locale: translate <code> (<language name>, <N> terms)"
-git push
+git push origin locale/{VERSION}-{YYYY-MM-DD}
 ```
 
 Example commits:
@@ -138,7 +164,26 @@ locale: translate de (German - Germany, 78 terms)
 locale: translate it (Italian - Italy, 70 terms)
 ```
 
-This creates safe save points — if a session is interrupted mid-way through `--all`, the next session can resume without losing completed work.
+**Why push after every commit:**
+- ✅ Safe against cloud timeouts — work is on remote
+- ✅ Easy to resume — next session checks what's already pushed
+- ✅ Progress visibility — can monitor branch on GitHub
+- ✅ No lost work — if session crashes, nothing is lost locally
+
+### Resume Support (Cloud Timeout Safety)
+
+If your cloud session times out mid-translation:
+
+1. **Rerun the command** — starts from the next untranslated locale
+   ```bash
+   /locale-translate --all
+   ```
+
+2. **Skill detects** — you're already on the locale branch → continues there
+
+3. **Skips completed locales** — resumes from next missing locale
+
+All previously pushed commits remain safe on the remote.
 
 ---
 
@@ -164,7 +209,9 @@ This is handled automatically by the skill and requires no user action.
 
 ## Helper Script Interface
 
-The skill uses the `locale/scripts/locale-translate.js` helper for file I/O:
+The skill uses two helpers:
+
+### File I/O — `locale/scripts/locale-translate.js`
 
 ```bash
 # List all locales with missing terms
@@ -182,16 +229,92 @@ node locale/scripts/locale-translate.js --apply \
   --translations '<json>'
 ```
 
+### Branch Management — `locale/scripts/locale-branch-manager.js`
+
+```bash
+# Initialize a locale translation branch (version auto-detected from package.json)
+node locale/scripts/locale-branch-manager.js --init
+# Output: { branch: "locale/7.1.0-2026-04-01" }
+
+# Initialize with explicit version (if auto-detect fails)
+node locale/scripts/locale-branch-manager.js --init --version 7.1.0
+# Output: { branch: "locale/7.1.0-2026-04-01" }
+
+# Get current branch
+node locale/scripts/locale-branch-manager.js --current
+# Output: { branch: "locale/7.1.0-2026-04-01" }
+
+# Check if on a locale branch
+node locale/scripts/locale-branch-manager.js --is-locale-branch
+# Output: { isLocaleBranch: true }
+
+# Extract version from current locale branch
+node locale/scripts/locale-branch-manager.js --get-version
+# Output: { version: "7.1.0" }
+
+# Commit and push a translated locale
+node locale/scripts/locale-branch-manager.js --commit-and-push \
+  --locale fr --language "French - France" --terms 154
+
+# Get list of already-translated locales on current branch
+node locale/scripts/locale-branch-manager.js --get-translated
+# Output: { translated: ["af", "sq", "am", "ar"] }
+```
+
 ---
 
-## After Translation
+## Complete Agent Workflow
 
-Once all desired locales are translated:
+When you run `/locale-translate --all`, here's what the Agent does:
 
-1. **Upload to POEditor** — Upload the filled batch files from `locale/terms/missing/` to POEditor
-2. **Notify reviewers** — Share the locale vocabulary rules with your POEditor translation team for human review
-3. **After approval** — Run `npm run locale:download` to pull approved translations into `src/locale/i18n/`
-4. **Final commit** — `git add src/locale/i18n/ && git commit -m "locale: download reviewed translations"`
+```
+1. Auto-detect version from package.json
+   → node locale/scripts/locale-branch-manager.js --init
+   → Auto-detects version 7.1.0 from package.json
+   → Creates locale/7.1.0-2026-04-01 branch (or reuses existing)
+
+2. For each untranslated locale:
+   a. Get remaining locales (skip already-translated)
+   b. Read untranslated terms from batch files
+   c. Translate with Claude + church vocabulary
+   d. Apply translations locally
+   e. Commit and push
+      → node locale/scripts/locale-branch-manager.js --commit-and-push \
+           --locale fr --language "French - France" --terms 154
+   f. Show progress (e.g., "locale/7.1.0-2026-04-01: 5/39 locales")
+
+3. After all locales:
+   → Branch is on remote with all commits
+   → User can proceed to upload phase
+```
+
+**Safety features:**
+- ✅ Every commit is pushed immediately (can't lose to timeout)
+- ✅ Can resume by running command again (skips completed locales)
+- ✅ All work is on `locale/{version}-{date}` branch (won't conflict with main)
+- ✅ Version auto-detected from package.json (no manual entry needed)
+
+---
+
+## After Translation (Simplified Workflow)
+
+Once all desired locales are translated and committed:
+
+1. **Push commits** — `git push` to publish translation commits
+2. **Upload to POEditor** — Run `npm run locale:upload:missing`
+   - Validates batch files (checks for real translations)
+   - Shows sample of each locale for confirmation
+   - Uploads to POEditor for human reviewer approval
+   - **Does NOT download** — download will happen via GitHub Action
+3. **Wait for POEditor approval** — Share locale vocabulary rules with your translation team
+4. **GH Action downloads** — The `locale-release` workflow automatically downloads reviewed translations
+   - Creates a new PR with `src/locale/i18n/` updates
+   - Review and merge when ready
+
+**Why this is simpler:**
+- No redundant download steps — one source of truth (GH Action)
+- Cleaner git history — translation commits separate from download commits
+- Reduced POEditor API calls — no double-fetch after upload
 
 ---
 
