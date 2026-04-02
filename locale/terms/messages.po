@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 10:27-0700\n"
+"POT-Creation-Date: 2026-04-02 10:45-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2094,7 +2094,7 @@ msgid "Connected to OpenLP! Version: %s"
 msgstr ""
 
 #, php-format
-msgid "Connected! Account balance: %.2f"
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
 msgstr ""
 
 msgid "Connection failed"
@@ -4113,7 +4113,7 @@ msgstr ""
 msgid "Find Registered students"
 msgstr ""
 
-msgid "Find family->"
+msgid "Find family"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
@@ -4283,6 +4283,9 @@ msgid "From"
 msgstr ""
 
 msgid "From Phone Number"
+msgstr ""
+
+msgid "From dashboard.vonage.com"
 msgstr ""
 
 msgid "Full Backup"
@@ -10208,6 +10211,12 @@ msgstr ""
 msgid "Volunteers"
 msgstr ""
 
+msgid "Vonage API Key"
+msgstr ""
+
+msgid "Vonage API Secret"
+msgstr ""
+
 #. plugin:vonage:link:0:label
 msgid "Vonage Dashboard"
 msgstr ""
@@ -10232,6 +10241,9 @@ msgstr ""
 
 #. plugin:vonage:section:6:content
 msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr ""
+
+msgid "Vonage server error. Please try again later."
 msgstr ""
 
 msgid "Voting Members"
@@ -10952,9 +10964,6 @@ msgid "select an option"
 msgstr ""
 
 msgid "selected family has no coordinates"
-msgstr ""
-
-msgid "server error. Please try again later."
 msgstr ""
 
 msgid "subscribers"
