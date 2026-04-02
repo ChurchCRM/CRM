@@ -1916,10 +1916,6 @@ msgid "Deposit closed"
 msgstr "Befizetés lezárva"
 
 #: 
-msgid "Find family->"
-msgstr "Keresse meg a családi->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Fizetési ütemezés"
 
@@ -2501,6 +2497,7 @@ msgstr "Hiba az API hívás során a következőhöz:"
 msgid "Error text"
 msgstr "Hiba szövege"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Vezérlőpult"
@@ -3103,10 +3100,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP szerver címe (mail.szerver.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Az SMTP szervere igényel hitelesítést (felhasználónév/jelszó)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP felhasználónév"
 
@@ -3135,20 +3128,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Állítsa Igazra a Házasságkötés Dátuma megadásának letiltásához a Családszerkesztőben. Állítsa Hamisra az engedélyezéséhez."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Állítsa Igazra a szélesség és hosszúság megadásának letiltásához a Családszerkesztőben. A keresés továbbra is lefut, csak nem jelenik meg."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Állítsa Igazra az adományborítékok használatának engedélyezéséhez"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Csekkek száma a Befizetési Bizonylat Jelentéshez"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Állítsa Igazra a szkennelt csekkek használatának engedélyezéséhez"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3157,10 +3138,6 @@ msgstr "A távolság mérésére használt mértékegység, mérföld vagy km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Nem levonható kifizetések engedélyezése"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Állítsa Igazra a családok önregisztrációjának engedélyezéséhez."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4893,10 +4870,6 @@ msgid "families"
 msgstr "családok"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Befizetési bizonylat típusa. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Pénzügyi beállítások"
 
@@ -5784,24 +5757,12 @@ msgid "Links"
 msgstr "Linkek"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Az iskolai baloldali menü engedélyezése vasárnap."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Pénzügyi menü engedélyezése"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Eseménytár menüjének engedélyezése."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Adománygyűjtési menü engedélyezése."
-
-#: 
-msgid "Enable Email menu."
-msgstr "E-mail menü engedélyezése."
 
 #: 
 msgid "Validation Error"
@@ -6064,10 +6025,6 @@ msgid "Unexpected Person Id"
 msgstr "Váratlan személy azonosítója"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "A rendszerfrissítések engedélyezése a GitHubon \"pre-release\" jelöléssé"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Naptár események keresése"
 
@@ -6119,10 +6076,6 @@ msgstr "Portugál - Portugália"
 #: 
 msgid "Holiday"
 msgstr "Ünnep"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7117,10 +7070,6 @@ msgid "This may take several minutes."
 msgstr "Ez több percig is eltarthat."
 
 #: 
-msgid "Update Package Details"
-msgstr "Frissítés csomag részletei"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Frissítés csomag sikeresen letöltve."
 
@@ -7145,24 +7094,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Frissítés információk frissítve. Oldal újratöltése..."
 
 #: 
-msgid "Version Information"
-msgstr "Verzió információ"
-
-#: 
 msgid "Warnings"
 msgstr "Figyelmeztetések"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "A biztonsági mentés kihagyása mellett döntött. Erősen ajánlott biztonsági másolat készítése a frissítés megkezdése előtt."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "A ChurchCRM telepítés sikeresen frissítve."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "A ChurchCRM telepítés a legújabb verziót futtatja."
 
 #: 
 msgid "2-50 characters"
@@ -7568,10 +7505,6 @@ msgid "Event Types"
 msgstr "Eseménytípusok"
 
 #: 
-msgid "Filter Events"
-msgstr "Események Szűrése"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Szűrés Eseménytípus Szerint"
 
@@ -7582,10 +7515,6 @@ msgstr "Szűrés Típus Szerint"
 #: 
 msgid "Head Count"
 msgstr "Személyek Száma"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "A Típus Eseményeinek Felsorolása"
 
 #: 
 msgid "Manage Check-ins"
@@ -7702,10 +7631,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d Árva Fájl Érzékelve"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d fájl módosítva lett vagy hiányzik. Az Force Re-install használatával állítsa vissza a hivatalos verziókat."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d fájl nem felelt meg az integritásellenőrzésnek."
 
@@ -7716,10 +7641,6 @@ msgstr "%d fájl véglegesen törlésre kerül."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d árva fájl észleltetett a kiszolgálón."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(frissítés a GitHubról)"
 
 #: 
 msgid "Access Denied"
@@ -10191,6 +10112,7 @@ msgstr "Hivatkozások kezelése"
 msgid "Manage Two-Factor Authentication"
 msgstr "Kétlépéses hitelesítés kezelése"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Manuális mentés"
@@ -12337,6 +12259,8 @@ msgstr "Beállítások"
 msgid "Other Members"
 msgstr "Egyéb tagok"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Áttekintés"

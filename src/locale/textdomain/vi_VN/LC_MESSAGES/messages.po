@@ -1887,10 +1887,6 @@ msgid "Deposit closed"
 msgstr "Tiền gửi đã đóng"
 
 #: 
-msgid "Find family->"
-msgstr "Tìm gia đình ->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Lịch trình thanh toán"
 
@@ -2452,6 +2448,7 @@ msgstr "Lỗi khi thực hiện lệnh gọi API tới"
 msgid "Error text"
 msgstr "Văn bản lỗi"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Bảng điều khiển"
@@ -3045,10 +3042,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Địa chỉ máy chủ SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Máy chủ SMTP của bạn có yêu cầu xác thực (tên người dùng / mật khẩu) không?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Tên người dùng SMTP"
 
@@ -3077,20 +3070,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Đặt true để tắt tính năng nhập Ngày cưới trong Family Editor. Đặt false để cho phép nhập Ngày cưới trong Family Editor."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Đặt true để tắt tính năng nhập Vĩ độ và Kinh độ trong Family Editor. Đặt false để cho phép nhập Vĩ độ và Kinh độ trong Family Editor. Việc tra cứu vẫn được thực hiện, chỉ là không hiển thị."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Đặt true để cho phép sử dụng phong bì quyên góp"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Số lượng séc cho Báo cáo nộp tiền"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Đặt true để cho phép sử dụng séc đã quét"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3099,10 +3080,6 @@ msgstr "Đơn vị dùng để đo khoảng cách, dặm hoặc km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Cho phép thanh toán không khấu trừ"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Đặt true để cho phép tự đăng ký gia đình."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4837,10 +4814,6 @@ msgid "families"
 msgstr "các gia đình"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Đặt cọc loại vé. QBDT - Sách nhanh"
-
-#: 
 msgid "Financial Settings"
 msgstr "Tài chính"
 
@@ -5734,24 +5707,12 @@ msgid "Links"
 msgstr "Liên kết"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Bật menu bên trái của Trường học Chủ nhật."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Bật menu Tài chính"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Bật menu Sự kiện."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Bật menu Gây quỹ."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Bật menu Email."
 
 #: 
 msgid "Validation Error"
@@ -6010,10 +5971,6 @@ msgid "Unexpected Person Id"
 msgstr "Id người không mong muốn"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Cho phép phát hành các bản nâng cấp hệ thống được đánh dấu là 'bản phát hành trước' trên GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Tìm kiếm sự kiện trên lịch"
 
@@ -6063,10 +6020,6 @@ msgstr "Tiếng Bồ Đào Nha - Bồ Đào Nha"
 #: 
 msgid "Holiday"
 msgstr "Ngày lễ"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7062,10 +7015,6 @@ msgid "This may take several minutes."
 msgstr "Quá trình này có thể mất vài phút."
 
 #: 
-msgid "Update Package Details"
-msgstr "Chi tiết gói cập nhật"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Đã tải xuống gói cập nhật thành công."
 
@@ -7090,24 +7039,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Thông tin nâng cấp đã làm mới. Đang tải lại trang..."
 
 #: 
-msgid "Version Information"
-msgstr "Thông tin phiên bản"
-
-#: 
 msgid "Warnings"
 msgstr "Cảnh báo"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Bạn đã chọn bỏ qua sao lưu. Chúng tôi khuyến nghị nên có bản sao lưu trước khi tiến hành nâng cấp."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Bản cài đặt ChurchCRM của bạn đã được nâng cấp thành công."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Bản cài đặt ChurchCRM của bạn đang chạy phiên bản mới nhất."
 
 #: 
 msgid "2-50 characters"
@@ -7512,10 +7449,6 @@ msgid "Event Types"
 msgstr "Loại sự kiện"
 
 #: 
-msgid "Filter Events"
-msgstr "Lọc sự kiện"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Lọc theo loại sự kiện"
 
@@ -7526,10 +7459,6 @@ msgstr "Lọc theo loại"
 #: 
 msgid "Head Count"
 msgstr "Số người tham dự"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Danh sách sự kiện loại"
 
 #: 
 msgid "Manage Check-ins"
@@ -7645,10 +7574,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "Phát hiện %d tệp mồ côi"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d tệp đã bị thay đổi hoặc bị thiếu. Sử dụng 'Buộc cài đặt lại' để khôi phục các phiên bản chính thức."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d tệp đã không vượt qua kiểm tra tính toàn vẹn."
 
@@ -7659,10 +7584,6 @@ msgstr "%d tệp sẽ bị xóa vĩnh viễn."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "Phát hiện %d tệp mồ côi trên máy chủ của bạn."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(làm mới từ GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10129,6 +10050,7 @@ msgstr "Quản lý liên kết"
 msgid "Manage Two-Factor Authentication"
 msgstr "Quản lý xác thực hai yếu tố"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Sao lưu thủ công"
@@ -12261,6 +12183,8 @@ msgstr "Tuy chon"
 msgid "Other Members"
 msgstr "Thanh vien khac"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Tong quan"

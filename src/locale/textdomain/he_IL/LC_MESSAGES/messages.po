@@ -1874,10 +1874,6 @@ msgid "Deposit closed"
 msgstr "ההפקדה נסגרה"
 
 #: 
-msgid "Find family->"
-msgstr "חפש משפחה->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "לוח זמנים לתשלומים"
 
@@ -2438,6 +2434,7 @@ msgstr "שגיאה בביצוע קריאת API אל"
 msgid "Error text"
 msgstr "טקסט שגיאה"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "לוח בקרה"
@@ -3029,10 +3026,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "כתובת שרת SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "האם שרת ה-SMTP שלך דורש אימות (שם משתמש/סיסמה)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "שם משתמש של SMTP"
 
@@ -3061,20 +3054,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "הגדר כ-true כדי להשבית הזנת תאריך נישואים בעורך המשפחה. הגדר כ-false כדי לאפשר הזנת תאריך נישואים בעורך המשפחה."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "הגדר כ-true כדי להשבית הזנת קו רוחב וקו אורך בעורך המשפחה. הגדר כ-false כדי לאפשר הזנת קו רוחב וקו אורך בעורך המשפחה. החיפושים עדיין מתבצעים, פשוט לא מוצגים."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "הגדר כ-true כדי לאפשר שימוש במעטפות תרומה"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "מספר הצ'קים לדוח שובר הפקדה"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "הגדר כ-true כדי לאפשר שימוש בצ'קים סרוקים"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3083,10 +3064,6 @@ msgstr "יחידת המידה למרחק, מיילים או ק\"מ"
 #: 
 msgid "Enable non-deductible payments"
 msgstr "אפשר תשלומים שאינם ניתנים לניכוי"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "הפעל כדי לאפשר רישום עצמי של משפחות"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4824,10 +4801,6 @@ msgid "families"
 msgstr "משפחות"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "סוג שובר הפקדה. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "הגדרות כספים"
 
@@ -5720,24 +5693,12 @@ msgid "Links"
 msgstr "קישורים"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "הפעל תפריט שמאלי של בית ספר ראשון."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "הפעל תפריט כספים"
 
 #: 
-msgid "Enable Events menu."
-msgstr "הפעל תפריט אירועים."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "הפעל תפריט גיוס כספים."
-
-#: 
-msgid "Enable Email menu."
-msgstr "הפעל את תפריט הדוא\"ל."
 
 #: 
 msgid "Validation Error"
@@ -6002,10 +5963,6 @@ msgid "Unexpected Person Id"
 msgstr "מזהה אדם בלתי צפוי"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "אפשר שדרוגי מערכת לגרסאות המסומנות כ'קדם-הפצה' ב-GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "חיפוש אירועי לוח שנה"
 
@@ -6057,10 +6014,6 @@ msgstr "פוטוגזית - פורטוגל"
 #: 
 msgid "Holiday"
 msgstr "חופשה"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7055,10 +7008,6 @@ msgid "This may take several minutes."
 msgstr "זה עשוי לקחת מספר דקות."
 
 #: 
-msgid "Update Package Details"
-msgstr "פרטי חבילת העדכון"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "חבילת העדכון הורדה בהצלחה."
 
@@ -7083,24 +7032,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "מידע השדרוג רוענן. טוען את הדף מחדש..."
 
 #: 
-msgid "Version Information"
-msgstr "מידע על הגרסה"
-
-#: 
 msgid "Warnings"
 msgstr "אזהרות"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "בחרת לדלג על הגיבוי. מומלץ מאוד לגבות לפני המשך השדרוג."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "התקנת ה-ChurchCRM שלך שודרגה בהצלחה."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "התקנת ה-ChurchCRM שלך מריצה את הגרסה האחרונה."
 
 #: 
 msgid "2-50 characters"
@@ -7506,10 +7443,6 @@ msgid "Event Types"
 msgstr "סוגי אירועים"
 
 #: 
-msgid "Filter Events"
-msgstr "סנן אירועים"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "סנן לפי סוג אירוע"
 
@@ -7520,10 +7453,6 @@ msgstr "סנן לפי סוג"
 #: 
 msgid "Head Count"
 msgstr "ספירת ראשים"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "מציג אירועים מסוג"
 
 #: 
 msgid "Manage Check-ins"
@@ -7640,10 +7569,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "זוהו %d קבצים יתומים"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d קבצים שונו או חסרים. השתמש ב'אלץ התקנה מחדש' כדי לשחזר גרסאות רשמיות."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d קבצים נכשלו באימות תקינות."
 
@@ -7654,10 +7579,6 @@ msgstr "%d קבצים יימחקו לצמיתות."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "זוהו %d קבצים יתומים בשרת שלך."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(רענן מ-GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10129,6 +10050,7 @@ msgstr "נהל קישורים"
 msgid "Manage Two-Factor Authentication"
 msgstr "נהל אימות דו-שלבי"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "גיבוי ידני"
@@ -12271,6 +12193,8 @@ msgstr "אפשרויות"
 msgid "Other Members"
 msgstr "חברים אחרים"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "סקירה כללית"

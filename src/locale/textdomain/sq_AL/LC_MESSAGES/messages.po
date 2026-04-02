@@ -1875,10 +1875,6 @@ msgid "Deposit closed"
 msgstr "Depozita u mbyll"
 
 #: 
-msgid "Find family->"
-msgstr "Gjej të familjes->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Orari Pagesa"
 
@@ -2442,6 +2438,7 @@ msgstr "Gabim gjatë thirrjes API te"
 msgid "Error text"
 msgstr "Teksti i gabimit"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Paneli i kontrollit"
@@ -3032,10 +3029,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Adresa e serverit SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "A kërkon serveri juaj SMTP autentifikim (përdorues/fjalëkalim)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Emri i përdoruesit SMTP"
 
@@ -3064,20 +3057,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Caktoni 'True' për të çaktivizuar futjen e datës së martesës në redaktorin e familjes. Caktoni 'False' për ta aktivizuar."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Caktoni 'True' për të çaktivizuar futjen e gjerësisë dhe gjatësisë gjeografike në redaktorin e familjes. Kërkimet do të kryhen ende, thjesht nuk do të shfaqen."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Caktoni 'True' për të aktivizuar përdorimin e zarfeve të donacionit"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Numri i çekëve për raportin e fletë-depozitës"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Caktoni 'True' për të aktivizuar përdorimin e çekëve të skanuar"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3086,10 +3067,6 @@ msgstr "Njësia e përdorur për të matur distancën, milje ose km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktivizoni pagesat jo të zbritshme"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Caktoni 'True' për të aktivizuar vetë-regjistrimin e familjes."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4822,10 +4799,6 @@ msgid "families"
 msgstr "familje"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Lloji i biletës së depozitimit. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Cilësimet Financiare"
 
@@ -5713,24 +5686,12 @@ msgid "Links"
 msgstr "Lidhje"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aktivizo menunë e majtë të Shkollës të së Dielës."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aktivizo menunë e Financave"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Aktivizo menunë e Ngjarjeve."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktivizo menunë e Mbledhjes së Fondeve."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aktivizo menunë e Email-it."
 
 #: 
 msgid "Validation Error"
@@ -5993,10 +5954,6 @@ msgid "Unexpected Person Id"
 msgstr "Id e papritur e personit"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Lejo përmirësimet e sistemit të shënuara si 'para-version' në GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Kërko ngjarjet e kalendarit"
 
@@ -6048,10 +6005,6 @@ msgstr "Portugalisht - Portugali"
 #: 
 msgid "Holiday"
 msgstr "Festë"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7046,10 +6999,6 @@ msgid "This may take several minutes."
 msgstr "Kjo mund të marrë disa minuta."
 
 #: 
-msgid "Update Package Details"
-msgstr "Detajet e paketës së përditësimit"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Paketa e përditësimit u shkarkua me sukses."
 
@@ -7074,24 +7023,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Informacioni i përmirësimit u rifreskua. Duke ringarkuar faqjen..."
 
 #: 
-msgid "Version Information"
-msgstr "Informacioni i versionit"
-
-#: 
 msgid "Warnings"
 msgstr "Paralajmërime"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Keni zgjedhur të anashkaloni kopjen rezervë. Rekomandohet fuqishëm të keni një kopje rezervë para se të vazhdoni me përmirësimin."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Instalimi juaj i ChurchCRM u përmirësua me sukses."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Instalimi juaj i ChurchCRM po ekzekuton versionin e fundit."
 
 #: 
 msgid "2-50 characters"
@@ -7497,10 +7434,6 @@ msgid "Event Types"
 msgstr "Llojet e ngjarjeve"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtro ngjarjet"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtro sipas llojit të ngjarjes"
 
@@ -7511,10 +7444,6 @@ msgstr "Filtro sipas llojit"
 #: 
 msgid "Head Count"
 msgstr "Numërimi i kokave"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Listimi i ngjarjeve të llojit"
 
 #: 
 msgid "Manage Check-ins"
@@ -7631,10 +7560,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "U zbuluan %d skedarë jetimë"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d skedarë janë modifikuar ose mungojnë. Përdorni ri-instalimin e detyruar për të rikthyer versionet zyrtare."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d skedarë kanë dështuar vërtetimin e integritetit."
 
@@ -7645,10 +7570,6 @@ msgstr "%d skedarë do të fshihen përgjithmonë."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d skedarë jetimë u zbuluan në serverin tuaj."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(rifresko nga GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10120,6 +10041,7 @@ msgstr "Menaxho Lidhjet"
 msgid "Manage Two-Factor Authentication"
 msgstr "Menaxho Vërtetimin me Dy Faktorë"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Rezervim Manual"
@@ -12266,6 +12188,8 @@ msgstr "Opsione"
 msgid "Other Members"
 msgstr "Anëtarë të Tjerë"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Vështrim i Përgjithshëm"

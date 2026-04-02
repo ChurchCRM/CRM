@@ -1875,10 +1875,6 @@ msgid "Deposit closed"
 msgstr "Depósito cerrado"
 
 #: 
-msgid "Find family->"
-msgstr "Encontrar familia ->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Agenda de pagos"
 
@@ -2440,6 +2436,7 @@ msgstr "Error realizando Llamada API a"
 msgid "Error text"
 msgstr "Texto de Error"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Escritorio"
@@ -3033,10 +3030,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Dirección de Servidor SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "¿Requiere su servidor SMTP autenticación (usuario/contraseña)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Usuario SMTP"
 
@@ -3066,20 +3059,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Colocar en verdadero para deshabilitar ingreso de Fecha de Matrimonio en Editor de familia. Colocar en falso para habilitar ingreso de Fecha de Matrimonio en Editor de familia."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Colocar en verdadero para deshabilitar ingreso de Latitud y Longitud en Editor de familia. Colocar en falso para habilitar ingreso de Latitud y Longitud en Editor de familia. Búsquedas inversas aún serán efectuadas, solamente que no mostradas."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Colocar en verdadero para habilitar uso de sobres de donación"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Número de cheques para Reporte de fichas de depósito"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Colocar en verdadero para habilitar el uso de cheques escaneados."
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3088,10 +3069,6 @@ msgstr "Unidad usada para medir distancias, millas o km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Activar pagos no deducibles"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Colocar en verdadero para activar el registro propio de familia."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4847,10 +4824,6 @@ msgid "families"
 msgstr "familias"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Tipo de ticket de depósito. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Ajustes Financieros"
 
@@ -5746,24 +5719,12 @@ msgid "Links"
 msgstr "Enlaces"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Activar menú izquierdo de escuela dominical."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Activar menú Financiero"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Activar menú de eventos."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Activar menú de recaudaciones."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Activar menú de correo electrónico"
 
 #: 
 msgid "Validation Error"
@@ -6030,10 +5991,6 @@ msgid "Unexpected Person Id"
 msgstr "Id de persona Inesperado"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Permitir actualizaciones de sistema marcadas como 'pre-release' en GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Buscar eventos de calendario"
 
@@ -6085,10 +6042,6 @@ msgstr "Portugués - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Día Festivo"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7084,10 +7037,6 @@ msgid "This may take several minutes."
 msgstr "Esto puede tardar varios minutos."
 
 #: 
-msgid "Update Package Details"
-msgstr "Actualizar detalles del paquete"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Paquete de actualización descargado exitosamente."
 
@@ -7112,24 +7061,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Información de actualización actualizada. Recargando página..."
 
 #: 
-msgid "Version Information"
-msgstr "Información de la versión"
-
-#: 
 msgid "Warnings"
 msgstr "Advertencias"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Ha optado por omitir la copia de seguridad. Se recomienda encarecidamente realizar una copia de seguridad antes de continuar con la actualización."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Su instalación de ChurchCRM se ha actualizado exitosamente."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Su instalación de ChurchCRM está ejecutando la última versión."
 
 #: 
 msgid "2-50 characters"
@@ -7536,10 +7473,6 @@ msgid "Event Types"
 msgstr "Tipos de eventos"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtrar eventos"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtrar por tipo de evento"
 
@@ -7550,10 +7483,6 @@ msgstr "Filtrar por tipo"
 #: 
 msgid "Head Count"
 msgstr "número de empleados"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Listing Events of Type"
 
 #: 
 msgid "Manage Check-ins"
@@ -7670,10 +7599,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d archivos huérfanos detectados"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "Faltan %d archivos o se han modificado. Use la reinstalación forzada para restaurar las versiones oficiales."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d archivos no han superado la validación de integridad."
 
@@ -7684,10 +7609,6 @@ msgstr "%d archivos serán eliminados permanentemente."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "Se detectaron %d archivos huérfanos en su servidor."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(actualizar desde GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10159,6 +10080,7 @@ msgstr "Gestionar enlaces"
 msgid "Manage Two-Factor Authentication"
 msgstr "Gestionar la autenticación de dos factores"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Copia de seguridad manual"
@@ -12297,6 +12219,8 @@ msgstr "Opciones"
 msgid "Other Members"
 msgstr "Otros fieles"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Resumen"
