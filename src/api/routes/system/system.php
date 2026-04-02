@@ -38,13 +38,14 @@ function getUiNotificationAPI(Request $request, Response $response, array $args)
         $title = $notification->title ?? '';
         $link = $notification->link ?? '';
         $message = $notification->message ?? '';
-        $title = $notification->title ?? '';
         $icon = $notification->icon ?? 'info-circle';
         $type = $notification->type ?? 'info';
         $timeout = $notification->timeout ?? 4000;
         $placement = $notification->placement ?? 'bottom';
         $align = $notification->align ?? 'right';
-        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $placement, $align);
+        $id = $notification->id ?? '';
+        $dismissSettingKey = $id !== '' ? 'notification.dismissed.' . $id : '';
+        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $placement, $align, $id, $dismissSettingKey);
         $notifications[] = $uiNotification;
     }
 

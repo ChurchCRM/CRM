@@ -186,13 +186,18 @@ function initializeApp() {
   // Load event counters once on page load (no polling needed - values only change at midnight)
   window.CRM.dashboard.loadEventCounters();
 
-  window.CRM.APIRequest({
-    path: "system/notification",
-  }).done((data) => {
-    data.notifications.forEach((item) => {
-      window.CRM.notify(item.title, {
-        delay: item.delay,
-        type: item.type,
+  // Initialize notification dismissal handlers
+  document.querySelectorAll(".js-dismiss-notification").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const alert = btn.closest("[data-notification-id]");
+      const dismissKey = alert?.dataset.dismissKey;
+      if (!dismissKey) {
+        return;
+      }
+      window.CRM.APIRequest({
+        path: `user/${window.CRM.currentPersonId}/setting/${encodeURIComponent(dismissKey)}`,
+        method: "POST",
+        data: JSON.stringify({ value: "true" }),
       });
     });
   });
