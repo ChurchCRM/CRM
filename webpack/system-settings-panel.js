@@ -215,7 +215,7 @@ import "../src/skin/scss/system-settings-panel.scss";
   // at render time so that i18next.t() runs after translations are loaded.
   // If it's already a string, return it as-is.
   function resolve(value) {
-    return typeof value === "function" ? value() : (value || "");
+    return typeof value === "function" ? value() : value || "";
   }
 
   // Month choices helper
@@ -697,29 +697,49 @@ import "../src/skin/scss/system-settings-panel.scss";
   // This function is never called — it exists solely for static extraction.
   // ---------------------------------------------------------------------------
   /* istanbul ignore next */
-  function _i18nKeys() { // eslint-disable-line no-unused-vars
+  function _i18nKeys() {
+    // eslint-disable-line no-unused-vars
     // Email settings panel (email/dashboard.php)
-    t("Enable Email"); t("SMTP Timeout"); t("Auto TLS");
-    t("SMTP Authentication"); t("BCC All Mail To"); t("Do Not Email Property");
+    t("Enable Email");
+    t("SMTP Timeout");
+    t("Auto TLS");
+    t("SMTP Authentication");
+    t("BCC All Mail To");
+    t("Do Not Email Property");
     // Text settings panel (text/dashboard.php)
     t("Do Not SMS Property");
     // Calendar settings panel (calendar/calendar.php)
-    t("Enable Events Menu"); t("Enable External Calendar API");
+    t("Enable Events Menu");
+    t("Enable External Calendar API");
     // Groups settings panel (groups/dashboard.php)
     t("Sunday School Module");
     // Map settings panel (map/map-view.php)
-    t("Default Map View"); t("Continent"); t("Neighborhood"); t("Street");
-    t("Hide Latitude/Longitude"); t("Hide Person Address");
+    t("Default Map View");
+    t("Continent");
+    t("Neighborhood");
+    t("Street");
+    t("Hide Latitude/Longitude");
+    t("Hide Person Address");
     // Logs settings panel (admin/logs.php)
     t("Log settings saved");
     // SettingDefinitions labels (defined as plain strings in this file)
-    t("Log Level"); t("First month of the fiscal year");
-    t("Deposit ticket type"); t("Number of checks for Deposit Slip Report");
-    t("Display bill counts on deposit slip"); t("Enable use of scanned checks");
-    t("Enable non-deductible payments"); t("Enable use of donation envelopes");
+    t("Log Level");
+    t("First month of the fiscal year");
+    t("Deposit ticket type");
+    t("Number of checks for Deposit Slip Report");
+    t("Display bill counts on deposit slip");
+    t("Enable use of scanned checks");
+    t("Enable non-deductible payments");
+    t("Enable use of donation envelopes");
     t("Finance permission query IDs");
-    t("Church Name"); t("Church Address"); t("Church City"); t("Church State");
-    t("Church Zip"); t("Church Phone"); t("Church Email");
-    t("Tax Report signer"); t("Pledge Reminder Signer");
+    t("Church Name");
+    t("Church Address");
+    t("Church City");
+    t("Church State");
+    t("Church Zip");
+    t("Church Phone");
+    t("Church Email");
+    t("Tax Report signer");
+    t("Pledge Reminder Signer");
   }
 })();
