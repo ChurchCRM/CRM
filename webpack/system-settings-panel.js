@@ -562,5 +562,4 @@ import "../src/skin/scss/system-settings-panel.scss";
   window.CRM = window.CRM || {};
   window.CRM.SettingsPanel = SettingsPanel;
   window.CRM.settingsPanel = new SettingsPanel();
-
 })();
