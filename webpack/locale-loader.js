@@ -156,9 +156,9 @@ async function loadLocaleFiles(localeConfig) {
     if (localeConfig.datePicker) {
       const dpPath = `${rootPath}/locale/vendor/bootstrap-datepicker/bootstrap-datepicker.${localeConfig.languageCode}.min.js`;
       promises.push(
-        loadScript(dpPath)
-          .then(() => console.log(`Loaded DatePicker locale: ${localeConfig.languageCode}`))
-          .catch((e) => console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e)),
+        loadScript(dpPath).catch((e) =>
+          console.warn(`Failed to load DatePicker locale ${localeConfig.languageCode}:`, e),
+        ),
       );
     }
 
@@ -170,9 +170,7 @@ async function loadLocaleFiles(localeConfig) {
       }
       const fcPath = `${rootPath}/locale/vendor/fullcalendar/${fcLocale}.js`;
       promises.push(
-        loadScript(fcPath)
-          .then(() => console.log(`Loaded FullCalendar locale: ${fcLocale}`))
-          .catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
+        loadScript(fcPath).catch((e) => console.warn(`Failed to load FullCalendar locale ${fcLocale}:`, e)),
       );
     }
 

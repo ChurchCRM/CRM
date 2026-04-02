@@ -19,7 +19,7 @@ describe("Standard Person", () => {
         cy.get("#Email").type("boby@example.com");
         cy.get("#Classification").select("1");
         // Click FAB save button
-        cy.get(".fab-save").click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
         cy.contains(name);
@@ -32,7 +32,7 @@ describe("Standard Person", () => {
         cy.get("#BirthYear").clear().type("1980");
         cy.get("#Email").clear().type(`bobby${uniqueSeed}@example.com`);
         // Click FAB save button
-        cy.get(".fab-save").click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
         cy.contains(name);
@@ -46,7 +46,7 @@ describe("Standard Person", () => {
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Hall");
         // Click FAB save button
-        cy.get(".fab-save").click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
         cy.contains(name);
@@ -58,7 +58,7 @@ describe("Standard Person", () => {
 
         cy.get("#Email").clear().type(`robby${uniqueSeed}@example.com`);
         // Click FAB save button
-        cy.get(".fab-save").click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", personViewPath);
         cy.contains(name);
@@ -81,7 +81,7 @@ describe("Standard Person", () => {
         cy.get("#FamilyRole").select("1", { force: true });
         
         // Click FAB save button
-        cy.get(".fab-save").click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         // Should redirect to PersonView without error
         cy.url().should("contain", personViewPath);
