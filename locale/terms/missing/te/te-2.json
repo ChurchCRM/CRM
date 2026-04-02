@@ -1,5 +1,4 @@
 {
-  "MailChimp, backups, and more": "",
   "Manage %s options": "",
   "Manage Envelopes": "",
   "Manage Sunday school classes, teachers, and student attendance": "",
@@ -25,7 +24,6 @@
   "Member Roles": "",
   "Members added to cart.": "",
   "Memberships": "",
-  "Minimum": "",
   "Modify family roles for group members": "",
   "Move Members": "",
   "Move Members to Group": "",
@@ -148,5 +146,7 @@
   "Showing members of: %s": "",
   "Sign in": "",
   "Since this is a fresh installation, restoring will simply load your backup data.": "",
-  "Skip — go to Admin Dashboard": ""
+  "Skip — go to Admin Dashboard": "",
+  "Start Fresh": "",
+  "Start Over": ""
 }

@@ -12130,6 +12130,10 @@ msgid "Key People"
 msgstr "Nyckelpersoner"
 
 #: 
+msgid "Kiosk"
+msgstr "Kioski"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk aktiverad"
 
@@ -12272,6 +12276,10 @@ msgstr "Medlemmar tillagda i urvalet."
 #: 
 msgid "Memberships"
 msgstr "Medlemskap"
+
+#: 
+msgid "Minimum"
+msgstr "Miinimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -13420,4 +13428,208 @@ msgstr "Uppdatering tillgänglig"
 #: 
 msgid "User must have Notes permission"
 msgstr "Användaren måste ha anteckningsbehörighet"
+
+#: 
+msgid "Address Defaults"
+msgstr "Čujuhusat adressa"
+
+#: 
+msgid "All Day"
+msgstr "Olles beaivvi"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Almmuhit geavaheaddji oasalastit ođđa dás"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Jus it dohko ceavvi go jatkat?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Jus it dohko ceavvi go vahkkat dás?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Álgejahki"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Kaleanteri sajádusat"
+
+#: 
+msgid "Calendars"
+msgstr "Kaleanterit"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Vállje ordinehallama maiddái"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Vállje nieida seavvi"
+
+#: 
+msgid "Church Identity"
+msgstr "Dieđus"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Dieđus vahkame"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Dieđus namma gálggá leat. Maŋŋel geažes Dieđus sektiovnna."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM sáhttá sáddet poastas direkkte."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "Clipboard API ii leat geasuheapmi. Maŋŋe vahkke URL almmusin."
+
+#: 
+msgid "Communication"
+msgstr "Oktavuođa"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Dárvvistá vahkárusša maŋŋel guokte jahki"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Sadji SMTP sajádusat maŋŋel sáddet poastas sisdolla."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Sadji Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Logal Mailchimp synkroniseret poasta listu newsletter ja kampanjii."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Vahkame clipboard"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Vahkke olles poastas"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Vahkke olles lohkut"
+
+#: 
+msgid "Copy from church address"
+msgstr "Vahkke Dieđus čujuhusat"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Vahkke clipboard"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Geažes seavvi"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Geažes ohcan"
+
+#: 
+msgid "Default Country"
+msgstr "Čujuhusat riikka"
+
+#: 
+msgid "Default State"
+msgstr "Čujuhusat stáhta"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Detalhiidja maŋŋel maŋŋel seavvi"
+
+#: 
+msgid "Distance Unit"
+msgstr "Maŋŋel gielda"
+
+#: 
+msgid "Duration"
+msgstr "Maŋŋel maŋŋel"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Poastas borratahtu"
+
+#: 
+msgid "Email Integrations"
+msgstr "Poastas vahkkahusat"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Poastas čujuhusat vahkame clipboard"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Poastas vahkkahusat leat maŋŋel vahkket. Maŋŋel maŋŋel vahkkahusat eai vahkka maŋŋel poastas vahkahuvvo:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "Poastas lea maŋŋel vahkket"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Poastas liŋka joavku ja seavvi boahtosiin"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Poastas listu synkroniseret Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Ahte poastas sajádusat panela maŋŋel, maŋŋel sadji SMTP serbvi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Loppu jahki"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Vahkke maŋŋel oassi: Namma, Gielda, Stáhta, Zip, Valdi telefona, Poastas, dahje Bargá Poastas."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "Sis Kaleanteri API vahkket"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Eai sáhte oažžut dieđuid"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Eai sáhte oažžut poastas čujuhusat"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Eai sáhte oažžut telefona lohkut"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Seavvi vahkka"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Ohcat olbmot geat eai dearbahan dás"
 

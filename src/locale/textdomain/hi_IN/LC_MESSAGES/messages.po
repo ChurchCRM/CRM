@@ -11973,7 +11973,7 @@ msgstr "प्रमुख व्यक्ति"
 
 #: 
 msgid "Kiosk"
-msgstr "कियोस्क"
+msgstr "किओस्क"
 
 #: 
 msgid "Kiosk Enabled"
@@ -13270,4 +13270,203 @@ msgstr "अपडेट उपलब्ध"
 #: 
 msgid "User must have Notes permission"
 msgstr "उपयोगकर्ता के पास नोट्स अनुमति होनी चाहिए"
+
+#: 
+msgid "Address Defaults"
+msgstr "पता डिफ़ॉल्ट"
+
+#: 
+msgid "All Day"
+msgstr "पूरे दिन"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "उपयोगकर्ता को नई घटना जोड़ने की अनुमति दें"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "क्या आप आगे बढ़ना सुनिश्चित हैं?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "क्या आप वाकई इस घटना को हटाना चाहते हैं?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "शुरुआत की तारीख"
+
+#: 
+msgid "Calendar Settings"
+msgstr "कैलेंडर सेटिंग्स"
+
+#: 
+msgid "Calendars"
+msgstr "कैलेंडर"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "एक स्वयंसेवक अवसर चुनें"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "व्यक्ति फ़ील्ड चुनें"
+
+#: 
+msgid "Church Identity"
+msgstr "चर्च की पहचान"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "चर्च की जानकारी सफलतापूर्वक सहेजी गई"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "चर्च का नाम आवश्यक है। कृपया ऊपर चर्च की पहचान अनुभाग को भरें।"
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM सीधे ईमेल भेज सकता है।"
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "क्लिपबोर्ड API उपलब्ध नहीं है। कृपया URL को मैनुअली कॉपी करें।"
+
+#: 
+msgid "Communication"
+msgstr "संचार"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "दो वित्तीय वर्षों के बीच प्रतिश्रुतियों की तुलना करें"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "सिस्टम से ईमेल भेजने के लिए नीचे दी गई सेटिंग्स में SMTP कॉन्फ़िगर करें।"
+
+#: 
+msgid "Configure Vonage"
+msgstr "Vonage कॉन्फ़िगर करें"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "न्यूजलेटर और अभियानों के लिए ईमेल सूचियों को सिंक करने के लिए Mailchimp से कनेक्ट करें।"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "क्लिपबोर्ड में कॉपी किया गया"
+
+#: 
+msgid "Copy All Emails"
+msgstr "सभी ईमेल कॉपी करें"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "सभी नंबर कॉपी करें"
+
+#: 
+msgid "Copy from church address"
+msgstr "चर्च के पते से कॉपी करें"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "क्लिपबोर्ड में कॉपी करें"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "कस्टम फ़ील्ड"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "कस्टम खोज"
+
+#: 
+msgid "Default Country"
+msgstr "डिफ़ॉल्ट देश"
+
+#: 
+msgid "Default State"
+msgstr "डिफ़ॉल्ट स्टेट"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Mailto: लिंक में ईमेल को अलग करने के लिए सीमांकक"
+
+#: 
+msgid "Distance Unit"
+msgstr "दूरी इकाई"
+
+#: 
+msgid "Duration"
+msgstr "अवधि"
+
+#: 
+msgid "Email Dashboard"
+msgstr "ईमेल डैशबोर्ड"
+
+#: 
+msgid "Email Integrations"
+msgstr "ईमेल एकीकरण"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "ईमेल पते क्लिपबोर्ड में कॉपी किए गए"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "ईमेल कार्यक्षमता वर्तमान में अक्षम है। जब तक ईमेल सक्षम न हो जाए तब तक निम्नलिखित सुविधाएं काम नहीं करेंगी:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "ईमेल अक्षम है"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "समूह और लोगों के विचार में ईमेल लिंक"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "ईमेल सूचियां Mailchimp के साथ सिंक की जाती हैं।"
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "नीचे दिए गए सेटिंग्स पैनल में ईमेल सक्षम करें, फिर अपने SMTP सर्वर को कॉन्फ़िगर करें।"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "समाप्ति तारीख"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "निम्नलिखित में से कोई भी भाग दर्ज करें: नाम, शहर, राज्य, ज़िप, गृह फ़ोन, ईमेल, या कार्य ईमेल।"
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "बाहरी कैलेंडर API अक्षम"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "डेटा प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "ईमेल पते प्राप्त करने में विफल"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "फ़ोन नंबर प्राप्त करने में विफल"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "फ़ील्ड मान"
 

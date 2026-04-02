@@ -483,17 +483,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aMiddleNames[$iCount] = $per_MiddleName;
             $aLastNames[$iCount] = $per_LastName;
             $aSuffix[$iCount] = $per_Suffix;
-            $aGenders[$iCount] = $per_Gender;
-            $aRoles[$iCount] = $per_fmr_ID;
-            $aBirthMonths[$iCount] = $per_BirthMonth;
-            $aBirthDays[$iCount] = $per_BirthDay;
+            $aGenders[$iCount] = (int)$per_Gender;
+            $aRoles[$iCount] = (int)$per_fmr_ID;
+            $aBirthMonths[$iCount] = (int)$per_BirthMonth;
+            $aBirthDays[$iCount] = (int)$per_BirthDay;
             if ($per_BirthYear > 0) {
-                $aBirthYears[$iCount] = $per_BirthYear;
+                $aBirthYears[$iCount] = (int)$per_BirthYear;
             } else {
                 $aBirthYears[$iCount] = '';
             }
-            $aClassification[$iCount] = $per_cls_ID;
-            $aPersonIDs[$iCount] = $per_ID;
+            $aClassification[$iCount] = (int)$per_cls_ID;
+            $aPersonIDs[$iCount] = (int)$per_ID;
             $aPerFlag[$iCount] = $per_Flags;
         }
     } else {
@@ -565,6 +565,14 @@ require_once __DIR__ . '/Include/Header.php';
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
+
+    <?php if ($bErrorFlag) { ?>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+        <i class="fa-solid fa-ban me-2"></i>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <?= gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') ?>
+    </div>
+    <?php } ?>
 
     <!-- Card 1: Family Info -->
     <div class="card clearfix">
@@ -938,47 +946,30 @@ require_once __DIR__ . '/Include/Header.php';
 
                     <input type="hidden" Name="UpdateBirthYear" value="<?= $UpdateBirthYear ?>">
 
-                    <!-- Hidden submit buttons for FAB -->
-                    <div class="d-none">
-                        <input type="submit" class="btn btn-primary" value="<?= gettext('Save') ?>" Name="FamilySubmit" id="FamilySubmitBottom">
+                    <!-- Form submit buttons -->
+                    <div class="d-flex gap-2 mt-4">
+                        <!-- Primary action: Save (green) -->
+                        <button type="submit" name="FamilySubmit" class="btn btn-success flex-grow-1">
+                            <i class="fa-solid fa-check me-2"></i><?= gettext('Save') ?>
+                        </button>
+                        <!-- Secondary action: Save and Add (blue) -->
                         <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-                        <input type="submit" class="btn btn-info" value="<?= gettext('Save and Add New Family') ?>" name="FamilySubmitAndAdd" id="FamilySubmitAndAddButton">
+                        <button type="submit" name="FamilySubmitAndAdd" class="btn btn-info flex-grow-1">
+                            <i class="fa-solid fa-people-roof me-2"></i><?= gettext('Save and Add New Family') ?>
+                        </button>
+                        <?php } ?>
+                        <!-- Tertiary action: Cancel (gray) -->
+                        <?php if ($iFamilyID > 0) { ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="btn btn-secondary">
+                            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+                        </a>
+                        <?php } else { ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="btn btn-secondary">
+                            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+                        </a>
                         <?php } ?>
                     </div>
                 </form>
-
-<!-- FAB Container -->
-<div id="fab-family-editor" class="fab-container fab-family-editor">
-    <?php if ($iFamilyID > 0) { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $iFamilyID ?>" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
-        <span class="fab-label"><?= gettext('Cancel') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-    </a>
-    <?php } else { ?>
-    <a href="<?= SystemURLs::getRootPath() ?>/v2/family" class="fab-button fab-cancel" aria-label="<?= gettext('Cancel') ?>">
-        <span class="fab-label"><?= gettext('Cancel') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-    </a>
-    <?php } ?>
-    <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-    <a href="#" class="fab-button fab-save-add" aria-label="<?= gettext('Save and Add New Family') ?>" onclick="document.getElementById('FamilySubmitAndAddButton').click(); return false;">
-        <span class="fab-label"><?= gettext('Save and Add New Family') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-people-roof"></i>
-        </div>
-    </a>
-    <?php } ?>
-    <a href="#" class="fab-button fab-save" aria-label="<?= gettext('Save') ?>" onclick="document.getElementById('FamilySubmitBottom').click(); return false;">
-        <span class="fab-label"><?= gettext('Save') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-check"></i>
-        </div>
-    </a>
-</div>
 
 <?php if ($iFamilyID < 0) {
     // Get family roles for JavaScript using Propel ORM

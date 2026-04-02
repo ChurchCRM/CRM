@@ -1,6 +1,4 @@
 {
-  "Start Fresh": "",
-  "Start Over": "",
   "Stay informed": "",
   "Step 1 — Upload CSV File": "",
   "Step 2 — Map Columns": "",
@@ -148,5 +146,7 @@
   "Refresh": "",
   "Register and manage kiosk devices for event check-in": "",
   "Review & Delete": "",
-  "SHA1 Hash": ""
+  "SHA1 Hash": "",
+  "Setup Instructions": "",
+  "Signature Mismatch": ""
 }

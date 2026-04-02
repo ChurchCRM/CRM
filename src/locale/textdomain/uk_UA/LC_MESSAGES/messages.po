@@ -13331,3 +13331,202 @@ msgstr "Доступне оновлення"
 msgid "User must have Notes permission"
 msgstr "Користувач повинен мати дозвіл на нотатки"
 
+#: 
+msgid "Address Defaults"
+msgstr "За замовчуванням адреси"
+
+#: 
+msgid "All Day"
+msgstr "Весь день"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Дозволити користувачу додавати нову подію"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Ви впевнені, що бажаєте продовжити?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Ви впевнені, що бажаєте видалити цю подію?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Дата початку"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Параметри календаря"
+
+#: 
+msgid "Calendars"
+msgstr "Календарі"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Виберіть можливість волонтерства"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Виберіть поле людини"
+
+#: 
+msgid "Church Identity"
+msgstr "Ідентичність церкви"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Інформація про церкву успішно збережена"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Назва церкви є обов'язковою. Будь ласка, заповніть розділ ідентичності церкви вище."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM може відправляти електронні листи безпосередньо."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API буфера обміну недоступна. Будь ласка, скопіюйте URL вручну."
+
+#: 
+msgid "Communication"
+msgstr "Комунікація"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Порівняйте обіцянки між двома фінансовими роками"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Налаштуйте SMTP у наведених нижче параметрах, щоб відправляти електронні листи з системи."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Налаштуйте Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Підключіть Mailchimp для синхронізації списків електронної пошти для розсилок і кампаній."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Скопійовано в буфер обміну"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Скопіювати всі електронні листи"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Скопіювати всі номери"
+
+#: 
+msgid "Copy from church address"
+msgstr "Скопіювати з адреси церкви"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Скопіювати в буфер обміну"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Користувацьке поле"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Користувацький пошук"
+
+#: 
+msgid "Default Country"
+msgstr "Країна за замовчуванням"
+
+#: 
+msgid "Default State"
+msgstr "Стан за замовчуванням"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Роздільник для розділення електронних листів у посиланнях mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Одиниця відстані"
+
+#: 
+msgid "Duration"
+msgstr "Тривалість"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Панель управління електронною поштою"
+
+#: 
+msgid "Email Integrations"
+msgstr "Інтеграція електронної пошти"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Адреси електронної пошти скопійовані в буфер обміну"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Функція електронної пошти наразі вимкнена. Наступні функції не працюватимуть, поки не буде увімкнена електронна пошта:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "Електронна пошта вимкнена"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Посилання на електронну пошту в групових і персональних поглядах"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Списки електронної пошти синхронізовані з Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Увімкніть електронну пошту на панелі параметрів нижче, а потім налаштуйте сервер SMTP."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Дата закінчення"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Введіть будь-яку частину з наступних: ім'я, місто, область, поштовий індекс, домашній телефон, електронна пошта або робоча електронна пошта."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "API зовнішнього календаря вимкнена"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Не вдалося отримати дані"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Не вдалося отримати адреси електронної пошти"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Не вдалося отримати номери телефонів"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Значення поля"
+

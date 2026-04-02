@@ -12012,7 +12012,7 @@ msgstr "Klíčové osoby"
 
 #: 
 msgid "Kiosk"
-msgstr "Kiosek"
+msgstr "Kiosks"
 
 #: 
 msgid "Kiosk Enabled"
@@ -13309,4 +13309,433 @@ msgstr "Aktualizace k dispozici"
 #: 
 msgid "User must have Notes permission"
 msgstr "Uživatel musí mít oprávnění pro poznámky"
+
+#: 
+msgid "Address Defaults"
+msgstr "Výchozí hodnoty adresy"
+
+#: 
+msgid "All Day"
+msgstr "Celodenní akce"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Povolte uživateli přidávat nové akce"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Chcete opravdu pokračovat?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Chcete opravdu smazat tuto akci?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Počáteční datum"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Nastavení kalendáře"
+
+#: 
+msgid "Calendars"
+msgstr "Kalendáře"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Vyberte příležitost dobrovolníka"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Zvolte pole osoby"
+
+#: 
+msgid "Church Identity"
+msgstr "Identita kostela"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Informace o kostele byly úspěšně uloženy"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Název kostela je vyžadován. Vyplňte prosím část Identita kostela výše."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM může odesílat e-maily přímo."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API schránky není k dispozici. Zkopírujte prosím adresu URL ručně."
+
+#: 
+msgid "Communication"
+msgstr "Komunikace"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Porovnání závěrů mezi dvěma finančními roky"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Nakonfigurujte SMTP v níže uvedeném nastavení, abyste mohli odesílat e-maily ze systému."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Konfigurovat Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Připojte Mailchimp k synchronizaci seznamů e-mailů pro zpravodaje a kampáně."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Zkopírováno do schránky"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Kopírovat všechny e-maily"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Kopírovat všechna čísla"
+
+#: 
+msgid "Copy from church address"
+msgstr "Kopírovat z adresy kostela"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Kopírovat do schránky"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Vlastní pole"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Vlastní hledání"
+
+#: 
+msgid "Default Country"
+msgstr "Výchozí země"
+
+#: 
+msgid "Default State"
+msgstr "Výchozí stav"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Oddělovač pro oddělení e-mailů v odkazech mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Jednotka vzdálenosti"
+
+#: 
+msgid "Duration"
+msgstr "Trvání"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Přístrojová deska e-mailu"
+
+#: 
+msgid "Email Integrations"
+msgstr "Integrace e-mailu"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "E-mailové adresy kopírovány do schránky"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Funkce e-mailu je aktuálně zakázána. Následující funkce nebudou fungovat, dokud není e-mail povolen:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "E-mail je zakázán"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Odkazy e-mailu v zobrazeních skupin a osob"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Seznamy e-mailů jsou synchronizovány s Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Povolte e-mail v níže uvedeném panelu nastavení a pak nakonfigurujte server SMTP."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Datum konce"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Zadejte libovolnou část následujícího: Jméno, Město, Stát, PSČ, Domácí telefon, E-mail nebo Pracovní e-mail."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "Externí API kalendáře je zakázáno"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Nepodařilo se načíst data"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Nepodařilo se načíst e-mailové adresy"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Nepodařilo se načíst telefonní čísla"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Hodnota pole"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Najděte členy sboru, kteří se neúčastnili akce"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Najděte členy sboru, kteří se zavázali jeden rok, ale ne druhý"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Najděte členy sboru s hodnotou vlastního pole"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Najděte dobrovolníky pro konkrétní příležitost"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Najděte dobrovolníky, kteří odpovídají dvěma konkrétním kódům příležitostí"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "První fiskální rok"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "První fiskální rok pro porovnání"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "První volba příležitosti dobrovolníka"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Přátelé, kteří se zaregistrovali v předchozích měsících"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Host"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Oznámení e-mailu o příchodu na kiosk"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp připojen"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp není nakonfigurován"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Spravujte nástroje a nastavení SMS/textových zpráv"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Spravujte akce, narozeniny a výročí"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Spárujte vlastní pole s touto hodnotou"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maximální věk"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Člen, běžný účastník atd."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Členové sboru, kteří se připojili v určitém měsíci"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Výročí členství"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Minimální věk"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Chybějící lidé"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Chybějící finanční závazky"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Měsíc"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Měsíce"
+
+#: 
+msgid "My Calendars"
+msgstr "Moje kalendáře"
+
+#: 
+msgid "New member notification emails"
+msgstr "E-maily s oznámením o novém členovi"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Žádný mobilní telefon v souboru"
+
+#: 
+msgid "No email addresses available"
+msgstr "Nejsou dostupné e-mailové adresy"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Nejsou dostupná telefonní čísla"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Neúčastník"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Neúčastník (personál)"
+
+#: 
+msgid "Not Classified"
+msgstr "Neklasifikováno"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Počet měsíců od stání se přítelem"
+
+#: 
+msgid "Parents"
+msgstr "Rodiče"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "E-maily pro obnovení hesla - uživatelé nemohou obnovit své účty"
+
+#: 
+msgid "People Settings"
+msgstr "Nastavení osob"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Lidé s narozeninami v určitém měsíci"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Osoba podle vlastnosti"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů SMS/textových zpráv"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Vlastnost osoby používaná k vyloučení členů sboru ze seznamů e-mailů"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Telefonní čísla zkopírována do schránky"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Telefonní čísla zkopírována - vložte do aplikace pro zasílání zpráv"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Prosím zadejte poslední datum pro výpočet celkového příspěvku každého člena sboru (tj. YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Prosím vyberte počáteční datum pro výpočet celkového příspěvku každého člena sboru (tj. YYYY-MM-DD). POZNÁMKA: Můžete vybrat pouze data, která obsahují příspěvky."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Porovnání finančních závazků"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Finanční závazek letos"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Stiskněte CTRL + C pro kopírování"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Vlastnost"
+
+#: 
+msgid "Public calendar"
+msgstr "Veřejný kalendář"
 
