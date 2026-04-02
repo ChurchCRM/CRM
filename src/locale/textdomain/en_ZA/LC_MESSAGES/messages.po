@@ -164,10 +164,6 @@ msgstr "Default Province - Must be 2-letter abbreviation!"
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Number of cheques for Deposit Slip Report"
 
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Set true to enable use of scanned cheques"
-
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"

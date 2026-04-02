@@ -1874,10 +1874,6 @@ msgid "Deposit closed"
 msgstr "입금 내역서가 마감되었습니다."
 
 #: 
-msgid "Find family->"
-msgstr "가족 찾기 ->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "헌금 주기"
 
@@ -2438,6 +2434,7 @@ msgstr "API 호출 중 오류가 발생했습니다:"
 msgid "Error text"
 msgstr "오류 메시지"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "대시보드"
@@ -3029,10 +3026,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP 서버 주소(mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "SMTP 서버에 인증(아이디/비밀번호)이 필요합니까?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP 아이디"
 
@@ -3061,20 +3054,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "True로 설정하면 가족 정보에서 결혼기념일 입력을 막습니다. False로 설정하면 입력할 수 있습니다."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "True로 설정하면 가족 정보에서 위도와 경도를 입력할 수 없습니다. False로 설정하면 입력과 표시가 활성화됩니다. 조회는 계속 수행됩니다."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "True로 설정하면 헌금봉투 기능을 사용합니다."
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "입금 내역서 보고서에 표시할 수표 수"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "True로 설정하면 스캔한 수표 기능을 사용합니다."
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3083,10 +3064,6 @@ msgstr "거리 단위(마일 또는 km)"
 #: 
 msgid "Enable non-deductible payments"
 msgstr "공제 불가 헌금 허용"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "True로 설정하면 가족 자가 등록을 허용합니다."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4821,10 +4798,6 @@ msgid "families"
 msgstr "가족"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "입금 내역서 유형(QBDT - QuickBooks)"
-
-#: 
 msgid "Financial Settings"
 msgstr "재정 설정"
 
@@ -5716,24 +5689,12 @@ msgid "Links"
 msgstr "링크"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "왼쪽 메뉴에 주일학교 메뉴 표시"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "재정 메뉴 표시"
 
 #: 
-msgid "Enable Events menu."
-msgstr "행사 메뉴 표시"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "모금 메뉴 표시"
-
-#: 
-msgid "Enable Email menu."
-msgstr "이메일 메뉴 표시"
 
 #: 
 msgid "Validation Error"
@@ -5998,10 +5959,6 @@ msgid "Unexpected Person Id"
 msgstr "예상치 못한 Person ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "GitHub에서 '사전 릴리스'로 표시된 버전으로 시스템 업그레이드를 허용"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "캘린더 행사 검색"
 
@@ -6051,10 +6008,6 @@ msgstr "포르투갈어 - 포르투갈"
 #: 
 msgid "Holiday"
 msgstr "공휴일"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7049,10 +7002,6 @@ msgid "This may take several minutes."
 msgstr "몇 분 정도 걸릴 수 있습니다."
 
 #: 
-msgid "Update Package Details"
-msgstr "업데이트 패키지 세부정보"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "업데이트 패키지가 다운로드되었습니다."
 
@@ -7077,24 +7026,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "업그레이드 정보가 새로고침되었습니다. 페이지를 다시 불러오는 중..."
 
 #: 
-msgid "Version Information"
-msgstr "버전 정보"
-
-#: 
 msgid "Warnings"
 msgstr "경고"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "백업을 건너뛰기로 선택하셨습니다. 업그레이드를 진행하기 전에 백업을 수행하실 것을 강력히 권장합니다."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "ChurchCRM 설치가 업그레이드되었습니다."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRM 설치가 최신 버전으로 실행되고 있습니다."
 
 #: 
 msgid "2-50 characters"
@@ -7499,10 +7436,6 @@ msgid "Event Types"
 msgstr "행사 유형"
 
 #: 
-msgid "Filter Events"
-msgstr "행사 필터링"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "행사 유형으로 필터링"
 
@@ -7513,10 +7446,6 @@ msgstr "유형으로 필터링"
 #: 
 msgid "Head Count"
 msgstr "인원수"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "유형별 행사 목록"
 
 #: 
 msgid "Manage Check-ins"
@@ -7632,10 +7561,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d개의 고아 파일 감지됨"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d개의 파일이 수정되었거나 누락되었습니다. 강제 재설치를 사용하여 공식 버전을 복원하세요."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d개의 파일이 무결성 검증에 실패했습니다."
 
@@ -7646,10 +7571,6 @@ msgstr "%d개의 파일이 영구적으로 삭제됩니다."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "서버에서 %d개의 고아 파일이 감지되었습니다."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(GitHub에서 새로고침)"
 
 #: 
 msgid "Access Denied"
@@ -10118,6 +10039,7 @@ msgstr "링크 관리"
 msgid "Manage Two-Factor Authentication"
 msgstr "2단계 인증 관리"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "수동 백업"
@@ -12254,6 +12176,8 @@ msgstr "옵션"
 msgid "Other Members"
 msgstr "기타 교인"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "개요"

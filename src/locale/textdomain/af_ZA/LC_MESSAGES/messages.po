@@ -1875,10 +1875,6 @@ msgid "Deposit closed"
 msgstr "Deposito gesluit"
 
 #: 
-msgid "Find family->"
-msgstr "Soek familie->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Betalingskedule"
 
@@ -2440,6 +2436,7 @@ msgstr "Kon nie API-oproep maak nie"
 msgid "Error text"
 msgstr "Foutteks"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Dashboard"
@@ -3033,10 +3030,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP-bedieneradres (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Benodig u SMTP-bediener verifikasie (gebruikersnaam / wagwoord)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP-gebruikersnaam"
 
@@ -3065,20 +3058,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Stel waar om die troudatum in die gesinsredakteur in te skakel. Stel onwaar om dit moontlik te maak om Troudatum in Gesinsredakteur in te voer."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Stel waar om die invoer van Latitude en Longitude in Family Editor uit te skakel. Stel vals om dit moontlik te maak om Latitude en Longitude in Family Editor in te voer. Ondersoeke word steeds uitgevoer, net nie vertoon nie."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Stel waar om die gebruik van donasie-koeverte moontlik te maak"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Aantal tjeks vir die depositostrokieverslag"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Stel waar om die gebruik van geskandeerde tjeks moontlik te maak"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3087,10 +3068,6 @@ msgstr "Eenheid wat gebruik word om afstand, kilometers of km te meet."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktiveer nie-aftrekbare betalings"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Stel waar om gesinsregistrasie moontlik te maak."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4825,10 +4802,6 @@ msgid "families"
 msgstr "gesinne"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Tipe depositokaartjie. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Finansiële instellings"
 
@@ -5722,24 +5695,12 @@ msgid "Links"
 msgstr "Skakels"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aktiveer Sondagskool se linkermenu."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aktiveer Finansies-kieslys"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Aktiveer Gebeurtenis-menu."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktiveer Fondsinsameling-kieslys."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aktiveer e-pos menu."
 
 #: 
 msgid "Validation Error"
@@ -6005,10 +5966,6 @@ msgid "Unexpected Person Id"
 msgstr "Onverwagte persoon ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Laat toe dat stelselopgraderings vrygestel word, gemerk as 'pre release' op GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Soek Kalendergebeurtenisse"
 
@@ -6060,10 +6017,6 @@ msgstr "Portugees - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Vakansie"
-
-#: 
-msgid "ChurchCRM"
-msgstr "KerkKDB"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7060,10 +7013,6 @@ msgid "This may take several minutes."
 msgstr "Dit kan verskeie minute neem."
 
 #: 
-msgid "Update Package Details"
-msgstr "Opdateringspakketbesonderhede"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Opdateringspakket suksesvol afgelaai."
 
@@ -7088,24 +7037,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Opgradering-inligting verfris. Laai bladsy..."
 
 #: 
-msgid "Version Information"
-msgstr "Weergaweinligting"
-
-#: 
 msgid "Warnings"
 msgstr "Waarskuwings"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "U het gekies om die rugsteun oor te slaan. Dit word sterk aanbeveel om 'n rugsteun te hê voordat u voortgaan met die opgradering."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "U ChurchCRM-installasie is suksesvol opgegradering."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "U ChurchCRM-installasie voer die nuutste weergawe uit."
 
 #: 
 msgid "2-50 characters"
@@ -7511,10 +7448,6 @@ msgid "Event Types"
 msgstr "Gebeurtenis Tipes"
 
 #: 
-msgid "Filter Events"
-msgstr "Filter Gelegenthede"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filter by Gelegentheidstipe"
 
@@ -7525,10 +7458,6 @@ msgstr "Filters Volgens Tipe"
 #: 
 msgid "Head Count"
 msgstr "Koptellingnomber"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Listing Gelegenthede of Type"
 
 #: 
 msgid "Manage Check-ins"
@@ -7645,10 +7574,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d Weeëlose Lêers Gespoor"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d lêers is gewysig of vermis. Gebruik Dwing Herinstalleer om amptelike weergawes te herstel."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d lêers het integriteitsvalidering gefaal."
 
@@ -7659,10 +7584,6 @@ msgstr "%d lêers sal permanent geskrap word."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d weeëlose lêers is op u bediener gespoor."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(verfris van GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10134,6 +10055,7 @@ msgstr "Bestuur skakels"
 msgid "Manage Two-Factor Authentication"
 msgstr "Bestuur tweefaktor-verifikasie"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Handmatige rugsteun"
@@ -12272,6 +12194,8 @@ msgstr "Opsies"
 msgid "Other Members"
 msgstr "Ander Geloofsgenote"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Oorsig"

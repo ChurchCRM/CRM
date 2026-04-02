@@ -1921,10 +1921,6 @@ msgid "Deposit closed"
 msgstr "Депозит закрыт"
 
 #: 
-msgid "Find family->"
-msgstr "Найти семью>"
-
-#: 
 msgid "Payment Schedule"
 msgstr "График оплаты"
 
@@ -2507,6 +2503,7 @@ msgstr "Ошибка при вызове API на"
 msgid "Error text"
 msgstr "Текст ошибки"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Панель Управления"
@@ -3112,10 +3109,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Адрес SMTP-сервера (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Требуется ли ваш SMTP-сервер аутентификация (имя пользователя / пароль)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Имя пользователя SMTP"
 
@@ -3144,20 +3137,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Установите true, чтобы запретить ввод даты свадьбы в редакторе семей. Установите false, чтобы разрешить."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Установите true, чтобы запретить ввод широты и долготы в редакторе семей. Установите false, чтобы разрешить. Поиск по-прежнему будет выполняться, но данные не будут отображаться."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Установите true, чтобы включить использование конвертов для пожертвований"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Количество чеков для отчета о депозите"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Установите верно, чтобы разрешить использование отсканированных чеков"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3166,10 +3147,6 @@ msgstr "Единица измерения расстояния, мили или 
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Разрешить невычитаемые платежи"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Установите значение true, чтобы разрешить саморегистрацию семьи."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4903,10 +4880,6 @@ msgid "families"
 msgstr "семьи"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Тип депозитного талона. QBDT — Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Финансовые настройки"
 
@@ -5794,24 +5767,12 @@ msgid "Links"
 msgstr "Ссылки"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Включить меню Воскресной школы слева."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Включить меню финансов"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Включить меню мероприятий."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Включить меню сбора средств."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Включить меню почты."
 
 #: 
 msgid "Validation Error"
@@ -6074,10 +6035,6 @@ msgid "Unexpected Person Id"
 msgstr "Непредусмотренный ID человека"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Разрешить обновление до версий, помеченных как 'предварительные' (pre-release) на GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Поиск событий календаря"
 
@@ -6133,10 +6090,6 @@ msgstr "Португальский - Португалия"
 #: 
 msgid "Holiday"
 msgstr "Праздник"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7132,10 +7085,6 @@ msgid "This may take several minutes."
 msgstr "Это может занять несколько минут."
 
 #: 
-msgid "Update Package Details"
-msgstr "Детали пакета обновления"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Пакет обновления успешно загружен."
 
@@ -7160,24 +7109,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Информация обновлена. Перезагрузка..."
 
 #: 
-msgid "Version Information"
-msgstr "Информация о версии"
-
-#: 
 msgid "Warnings"
 msgstr "Предупреждения"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Вы пропустили бэкап. Настоятельно рекомендуется его сделать перед обновлением."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Ваша система ChurchCRM была успешно обновлена."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Ваша система ChurchCRM уже последней версии."
 
 #: 
 msgid "2-50 characters"
@@ -7585,10 +7522,6 @@ msgid "Event Types"
 msgstr "Типы событий"
 
 #: 
-msgid "Filter Events"
-msgstr "Фильтр событий"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Фильтр по типу события"
 
@@ -7599,10 +7532,6 @@ msgstr "Фильтр по типу"
 #: 
 msgid "Head Count"
 msgstr "Количество присутствующих"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Список событий типа"
 
 #: 
 msgid "Manage Check-ins"
@@ -7721,10 +7650,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "Обнаружено %d бесхозных файлов"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d файлов изменены или отсутствуют. Используйте принудительную переустановку."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d файлов не прошли проверку целостности."
 
@@ -7735,10 +7660,6 @@ msgstr "%d файлов будут удалены безвозвратно."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "На сервере обнаружено %d бесхозных файлов."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(обновить из GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10220,6 +10141,7 @@ msgstr "Управление ссылками"
 msgid "Manage Two-Factor Authentication"
 msgstr "Управление двухфакторной аутентификацией"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Резервное копирование вручную"
@@ -12368,6 +12290,8 @@ msgstr "Параметры"
 msgid "Other Members"
 msgstr "Другие участники"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Обзор"

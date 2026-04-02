@@ -37,7 +37,6 @@
     "These are the family role numbers designated as head of house": "These are the family role numbers designated as head of household",
     "Default State - Must be 2-letter abbreviation!": "Default Province - Must be 2-letter abbreviation!",
     "Number of checks for Deposit Slip Report": "Number of cheques for Deposit Slip Report",
-    "Set true to enable use of scanned checks": "Set true to enable use of scanned cheques",
     "Zip Code": "Postcode",
     "Page not fond": "Page not found",
     "Make user-entered zip/postcodes UPPERCASE when saving to the database.": "Make user-entered zip/postcodes in UPPER-CASE when saving to the database.",

@@ -1928,10 +1928,6 @@ msgid "Deposit closed"
 msgstr "存款已關閉"
 
 #: 
-msgid "Find family->"
-msgstr "尋找家庭>"
-
-#: 
 msgid "Payment Schedule"
 msgstr "付款時間表"
 
@@ -2516,6 +2512,7 @@ msgstr "API調用出現錯誤"
 msgid "Error text"
 msgstr "文本錯誤"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "儀錶板"
@@ -3125,10 +3122,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP服務器地址（mail.server.com:25）"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "您的SMTP服務器是否需要身份驗證（用戶名/密碼）？"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP用戶名"
 
@@ -3157,20 +3150,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "設置為true(是)以禁用在家庭編輯器中輸入結婚日期。設置為false(否)以啟用在族編輯器中輸入結婚日期。"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "設置為true(是)以禁用在家庭編輯器中輸入緯度和經度。設置為false(否)以啟用在家庭編輯器中輸入緯度和經度。查詢仍然執行，只是沒有顯示。"
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "設置為true(是)以允許使用捐贈信封"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "存款單報告的支票數量"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "設置為true(是)以啟用掃描檢查"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3179,10 +3160,6 @@ msgstr "用於測量距離，英里或公里的單位。"
 #: 
 msgid "Enable non-deductible payments"
 msgstr "啟用不可抵扣的付款"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "設置為true(是)以啟用家庭自助註冊。"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4931,10 +4908,6 @@ msgid "families"
 msgstr "家庭"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "存款票類型。 QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "財務設置"
 
@@ -5836,24 +5809,12 @@ msgid "Links"
 msgstr "連接"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "啟用主日學校左側菜單。"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "啟用財務菜單"
 
 #: 
-msgid "Enable Events menu."
-msgstr "啟用事件菜單"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "啟用籌款人菜單"
-
-#: 
-msgid "Enable Email menu."
-msgstr "啟用郵件菜單"
 
 #: 
 msgid "Validation Error"
@@ -6143,11 +6104,6 @@ msgstr "不預期的人員代碼"
 
 #: 
 #, fuzzy
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "允許在GitHub上標記為預發佈的系統升級版本發佈"
-
-#: 
-#, fuzzy
 msgid "Search Calendar Events"
 msgstr "搜索日曆事件"
 
@@ -6208,11 +6164,6 @@ msgstr "葡萄牙語-葡萄牙"
 #, fuzzy
 msgid "Holiday"
 msgstr "假日"
-
-#: 
-#, fuzzy
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 #, fuzzy
@@ -7268,10 +7219,6 @@ msgid "This may take several minutes."
 msgstr "這可能需要幾分鐘。"
 
 #: 
-msgid "Update Package Details"
-msgstr "更新包詳情"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "更新包下載成功。"
 
@@ -7296,24 +7243,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "升級資訊已重新整理。正在重新載入頁面..."
 
 #: 
-msgid "Version Information"
-msgstr "版本資訊"
-
-#: 
 msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "您選擇了跳過備份。強烈建議在繼續升級之前進行備份。"
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "您的 ChurchCRM 安裝已成功升級。"
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "您的 ChurchCRM 安裝正在執行最新版本。"
 
 #: 
 msgid "2-50 characters"
@@ -7718,10 +7653,6 @@ msgid "Event Types"
 msgstr "活動類型"
 
 #: 
-msgid "Filter Events"
-msgstr "活動篩選"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "依活動類型篩選"
 
@@ -7732,10 +7663,6 @@ msgstr "依類型篩選"
 #: 
 msgid "Head Count"
 msgstr "人數統計"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "列出此類型的活動："
 
 #: 
 msgid "Manage Check-ins"
@@ -7851,10 +7778,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "偵測到 %d 個孤立檔案"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d 個檔案已被修改或遺失。使用強制重新安裝以恢復官方版本。"
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d 個檔案完整性驗證失敗。"
 
@@ -7865,10 +7788,6 @@ msgstr "%d 個檔案將被永久刪除。"
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "在您的伺服器上偵測到 %d 個孤立檔案。"
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "（從 GitHub 重新整理）"
 
 #: 
 msgid "Access Denied"
@@ -10335,6 +10254,7 @@ msgstr "管理連結"
 msgid "Manage Two-Factor Authentication"
 msgstr "管理兩步驗證"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "手動備份"
@@ -12475,6 +12395,8 @@ msgstr "選項"
 msgid "Other Members"
 msgstr "其他成員"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "總覽"

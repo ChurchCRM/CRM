@@ -1873,10 +1873,6 @@ msgid "Deposit closed"
 msgstr "الايداع مغلق"
 
 #: 
-msgid "Find family->"
-msgstr "بحت عن عائلة"
-
-#: 
 msgid "Payment Schedule"
 msgstr "جدول السداد"
 
@@ -2438,6 +2434,7 @@ msgstr "دعوة API صنع الخطأ"
 msgid "Error text"
 msgstr "نص الخطأ"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "لوحة المعلومات"
@@ -3031,10 +3028,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP عنوان الخادم (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "لا يتطلب خادم SMTP الخاص بك auththentication (اسم المستخدم / كلمة المرور)؟"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP اسم المستخدم"
 
@@ -3063,20 +3056,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "تعيين وفيا لتعطيل دخول تاريخ الزفاف في محرر الأسرة. مجموعة كاذبة لتمكين دخول تاريخ الزفاف في محرر الأسرة."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "تعيين وفيا لتعطيل دخول خطوط الطول والعرض في محرر الأسرة. مجموعة كاذبة لتمكين دخول خطوط الطول والعرض في محرر الأسرة. عمليات البحث لا تزال تجرى، ليس فقط عرضها."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "تعيين صحيح لتمكين استخدام المغلفات التبرع"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "عدد الشيكات لتقرير زلة الإيداع"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "تعيين صحيح لتمكين استخدام الشيكات التي تم مسحها ضوئيا"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3085,10 +3066,6 @@ msgstr "تستخدم وحدة لقياس المسافة، ميل أو كلم."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "تمكين المدفوعات غير قابلة للخصم"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "تعيين صحيح لتمكين التسجيل الذاتي الأسرة."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4823,10 +4800,6 @@ msgid "families"
 msgstr "أسر"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "إيداع نوع التذاكر. QBDT - قويكبووكس"
-
-#: 
 msgid "Financial Settings"
 msgstr "إعدادات المالية"
 
@@ -5720,24 +5693,12 @@ msgid "Links"
 msgstr "الروابط"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "تمكين مدرسة الأحد القائمة نقاط."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "تمكين القائمة المالية"
 
 #: 
-msgid "Enable Events menu."
-msgstr "تمكين القائمة الأحداث."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "تمكين القائمة لجمع التبرعات."
-
-#: 
-msgid "Enable Email menu."
-msgstr "تمكين القائمة البريد الإلكتروني."
 
 #: 
 msgid "Validation Error"
@@ -5996,10 +5957,6 @@ msgid "Unexpected Person Id"
 msgstr "غير متوقع شخص معرف"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "السماح ترقيات النظام لإطلاق سراح وضع علامة \"الإفراج المسبق\" على جيثب"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "بحث الأحداث"
 
@@ -6059,10 +6016,6 @@ msgstr "برتغالى - برتغال"
 #: 
 msgid "Holiday"
 msgstr "اجازة"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7058,10 +7011,6 @@ msgid "This may take several minutes."
 msgstr "قد يستغرق هذا عدة دقائق."
 
 #: 
-msgid "Update Package Details"
-msgstr "تفاصيل حزمة التحديث"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "تم تنزيل حزمة التحديث بنجاح."
 
@@ -7086,24 +7035,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "تم تحديث معلومات الترقية. جاري إعادة تحميل الصفحة..."
 
 #: 
-msgid "Version Information"
-msgstr "معلومات الإصدار"
-
-#: 
 msgid "Warnings"
 msgstr "تحذيرات"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "لقد اخترت تخطي النسخة الاحتياطية. يوصى بشدة بإنشاء نسخة احتياطية قبل المتابعة مع الترقية."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "تم ترقية تثبيت ChurchCRM الخاص بك بنجاح."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "يعمل تثبيت ChurchCRM الخاص بك على أحدث إصدار."
 
 #: 
 msgid "2-50 characters"
@@ -7513,10 +7450,6 @@ msgid "Event Types"
 msgstr "أنواع الأحداث"
 
 #: 
-msgid "Filter Events"
-msgstr "تصفية الأحداث"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "التصفية حسب نوع الحدث"
 
@@ -7527,10 +7460,6 @@ msgstr "التصفية حسب النوع"
 #: 
 msgid "Head Count"
 msgstr "العدد الإجمالي"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "قائمة الأحداث من النوع"
 
 #: 
 msgid "Manage Check-ins"
@@ -7651,10 +7580,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "تم اكتشاف %d ملفات يتيمة"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "تم تعديل أو فقدان %d ملف. استخدم إعادة التثبيت القسرية لاستعادة الإصدارات الرسمية."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "فشل %d ملفات في التحقق من السلامة."
 
@@ -7665,10 +7590,6 @@ msgstr "سيتم حذف %d ملفات بشكل دائم."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "تم اكتشاف %d ملفات يتيمة على الخادم الخاص بك."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(تحديث من GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10160,6 +10081,7 @@ msgstr "إدارة الروابط"
 msgid "Manage Two-Factor Authentication"
 msgstr "إدارة المصادقة الثنائية"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "نسخ احتياطي يدوي"
@@ -12310,6 +12232,8 @@ msgstr "خيارات"
 msgid "Other Members"
 msgstr "أعضاء آخرون"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "نظرة عامة"

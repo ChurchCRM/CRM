@@ -1856,10 +1856,6 @@ msgid "Deposit closed"
 msgstr "जमा बंद"
 
 #: 
-msgid "Find family->"
-msgstr "परिवार खोजें->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "भुगतान अनुसूची"
 
@@ -2420,6 +2416,7 @@ msgstr "API कॉल करने में त्रुटि: "
 msgid "Error text"
 msgstr "त्रुटि टेक्स्ट"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "डैशबोर्ड"
@@ -3005,10 +3002,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP सर्वर पता (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "क्या आपके SMTP सर्वर को प्रमाणीकरण (उपयोगकर्ता नाम/पासवर्ड) की आवश्यकता है?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP उपयोगकर्ता नाम"
 
@@ -3037,20 +3030,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "परिवार संपादक में शादी की तारीख दर्ज करने को अक्षम करने के लिए true सेट करें।"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "परिवार संपादक में अक्षांश और देशांतर दर्ज करने को अक्षम करने के लिए true सेट करें।"
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "दान लिफाफों के उपयोग को सक्षम करने के लिए true सेट करें"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "जमा पर्ची रिपोर्ट के लिए चेक की संख्या"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "स्कैन किए गए चेक के उपयोग को सक्षम करने के लिए true सेट करें"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3059,10 +3040,6 @@ msgstr "दूरी मापने के लिए प्रयुक्त �
 #: 
 msgid "Enable non-deductible payments"
 msgstr "गैर-कटौती योग्य भुगतान सक्षम करें"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "परिवार स्व-पंजीकरण सक्षम करने के लिए true सेट करें।"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4795,10 +4772,6 @@ msgid "families"
 msgstr "परिवार"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "जमा टिकट प्रकार। QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "वित्तीय सेटिंग"
 
@@ -5686,24 +5659,12 @@ msgid "Links"
 msgstr "लिंक"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "संडे स्कूल बायां मेनू सक्षम करें।"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "वित्त मेनू सक्षम करें"
 
 #: 
-msgid "Enable Events menu."
-msgstr "कार्यक्रम मेनू सक्षम करें।"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "धन उगाहने वाला मेनू सक्षम करें।"
-
-#: 
-msgid "Enable Email menu."
-msgstr "ईमेल मेनू सक्षम करें।"
 
 #: 
 msgid "Validation Error"
@@ -5962,10 +5923,6 @@ msgid "Unexpected Person Id"
 msgstr "अप्रत्याशित व्यक्ति आईडी"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "GitHub पर 'प्री-रिलीज़' के रूप में चिह्नित रिलीज़ के लिए सिस्टम अपग्रेड की अनुमति दें"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "कैलेंडर ईवेंट खोजें"
 
@@ -6017,10 +5974,6 @@ msgstr "पुर्तगाली - पुर्तगाल"
 #: 
 msgid "Holiday"
 msgstr "छुट्टी"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7015,10 +6968,6 @@ msgid "This may take several minutes."
 msgstr "इसमें कई मिनट लग सकते हैं।"
 
 #: 
-msgid "Update Package Details"
-msgstr "अपडेट पैकेज विवरण"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "अपडेट पैकेज सफलतापूर्वक डाउनलोड किया गया।"
 
@@ -7043,24 +6992,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "अपग्रेड जानकारी रिफ्रेश की गई। पेज पुनः लोड हो रहा है..."
 
 #: 
-msgid "Version Information"
-msgstr "संस्करण जानकारी"
-
-#: 
 msgid "Warnings"
 msgstr "चेतावनियाँ"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "आपने बैकअप छोड़ना चुना है। अपग्रेड के साथ आगे बढ़ने से पहले बैकअप लेने की दृढ़ता से अनुशंसा की जाती है।"
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "आपका ChurchCRM इंस्टालेशन सफलतापूर्वक अपग्रेड कर दिया गया है।"
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "आपका ChurchCRM इंस्टॉलेशन नवीनतम संस्करण चला रहा है।"
 
 #: 
 msgid "2-50 characters"
@@ -7466,10 +7403,6 @@ msgid "Event Types"
 msgstr "इवेंट प्रकार"
 
 #: 
-msgid "Filter Events"
-msgstr "इवेंट फ़िल्टर करें"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "इवेंट प्रकार द्वारा फ़िल्टर करें"
 
@@ -7480,10 +7413,6 @@ msgstr "प्रकार द्वारा फ़िल्टर करें
 #: 
 msgid "Head Count"
 msgstr "कुल संख्या"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "प्रकार के इवेंट की सूची"
 
 #: 
 msgid "Manage Check-ins"
@@ -7600,10 +7529,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d अनाथ फ़ाइलें पाई गईं"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d फ़ाइलें संशोधित या गायब हैं। आधिकारिक संस्करण पुनर्स्थापित करने के लिए फ़ोर्स रि-इंस्टॉल का उपयोग करें।"
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d फ़ाइलें अखंडता सत्यापन में विफल हुई हैं।"
 
@@ -7614,10 +7539,6 @@ msgstr "%d फ़ाइलें स्थायी रूप से हटा �
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "आपके सर्वर पर %d अनाथ फ़ाइलें पाई गईं।"
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(GitHub से रिफ्रेश करें)"
 
 #: 
 msgid "Access Denied"
@@ -10089,6 +10010,7 @@ msgstr "लिंक प्रबंधित करें"
 msgid "Manage Two-Factor Authentication"
 msgstr "द्वि-कारक प्रमाणीकरण प्रबंधित करें"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "मैनुअल बैकअप"
@@ -12231,6 +12153,8 @@ msgstr "विकल्प"
 msgid "Other Members"
 msgstr "अन्य सदस्य"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "अवलोकन"

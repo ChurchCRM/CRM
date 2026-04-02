@@ -1943,11 +1943,6 @@ msgstr "Innskudd lukket"
 
 #: 
 #, fuzzy
-msgid "Find family->"
-msgstr "familie"
-
-#: 
-#, fuzzy
 msgid "Payment Schedule"
 msgstr "Betalingsplan:"
 
@@ -2535,6 +2530,7 @@ msgstr "Feil ved API-kall til"
 msgid "Error text"
 msgstr "Feiltekst"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Dashbord"
@@ -3140,10 +3136,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP-serveradresse (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Krever SMTP-serveren din autentisering (brukernavn/passord)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP-brukernavn"
 
@@ -3172,20 +3164,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Sett til 'Sann' for å deaktivere inntasting av bryllupsdato i familieredigering. Sett til 'Usann' for å aktivere."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Sett til 'Sann' for å deaktivere inntasting av koordinater i familieredigering. Oppslag gjøres fortsatt, men vises ikke."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Sett til 'Sann' for å aktivere bruk av donasjonskonvolutter"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Antall sjekker for innskuddsblankett-rapport"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Sett til 'Sann' for å aktivere bruk av skannede sjekker"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3194,10 +3174,6 @@ msgstr "Enhet brukt for avstand, miles eller km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktiver ikke-fradragsberettigede betalinger"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Sett til 'Sann' for å aktivere selvregistrering for familier."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4930,10 +4906,6 @@ msgid "families"
 msgstr "familier"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Type innskuddsseddel. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Økonomiske innstillinger"
 
@@ -5821,24 +5793,12 @@ msgid "Links"
 msgstr "Lenker"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aktiver venstremeny for søndagsskole."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aktiver meny for økonomi"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Aktiver meny for hendelser."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktiver meny for innsamlinger."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aktiver meny for e-post."
 
 #: 
 msgid "Validation Error"
@@ -6096,10 +6056,6 @@ msgid "Unexpected Person Id"
 msgstr "Uventet person-ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Tillat systemoppgraderinger til versjoner merket som 'pre-release' på GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Søk i kalenderhendelser"
 
@@ -6151,10 +6107,6 @@ msgstr "Portugisisk - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Helligdag"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7149,10 +7101,6 @@ msgid "This may take several minutes."
 msgstr "Dette kan ta flere minutter."
 
 #: 
-msgid "Update Package Details"
-msgstr "Detaljer for oppdateringspakke"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Oppdateringspakke ble lastet ned."
 
@@ -7177,24 +7125,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Oppgraderingsinformasjon oppdatert. Laster siden på nytt..."
 
 #: 
-msgid "Version Information"
-msgstr "Versjonsinformasjon"
-
-#: 
 msgid "Warnings"
 msgstr "Advarsler"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Du har valgt å hoppe over sikkerhetskopiering. Det anbefales sterkt å ha en sikkerhetskopi før du fortsetter med oppgraderingen."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Din ChurchCRM-installasjon har blitt oppgradert."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Din ChurchCRM-installasjon kjører den nyeste versjonen."
 
 #: 
 msgid "2-50 characters"
@@ -7600,10 +7536,6 @@ msgid "Event Types"
 msgstr "Hendelsestyper"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtrer hendelser"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtrer etter hendelsestype"
 
@@ -7614,10 +7546,6 @@ msgstr "Filtrer etter type"
 #: 
 msgid "Head Count"
 msgstr "Antall personer"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Lister hendelser av type"
 
 #: 
 msgid "Manage Check-ins"
@@ -7734,10 +7662,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d foreldreløse filer funnet"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d filer har blitt endret eller mangler. Bruk 'Tving reinstallasjon' for å gjenopprette offisielle versjoner."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d filer feilet integritetsvalideringen."
 
@@ -7748,10 +7672,6 @@ msgstr "%d filer vil bli permanent slettet."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d foreldreløse filer ble funnet på serveren din."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(oppdater fra GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10223,6 +10143,7 @@ msgstr "Administrer lenker"
 msgid "Manage Two-Factor Authentication"
 msgstr "Administrer totrinnsbekreftelse"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Manuell sikkerhetskopi"
@@ -12349,6 +12270,8 @@ msgstr "Alternativer"
 msgid "Other Members"
 msgstr "Andre medlemmer"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Oversikt"

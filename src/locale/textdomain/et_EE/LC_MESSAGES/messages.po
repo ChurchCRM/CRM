@@ -1875,10 +1875,6 @@ msgid "Deposit closed"
 msgstr "Sissemaksed suletud"
 
 #: 
-msgid "Find family->"
-msgstr "Otsige pere->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Maksegraafik"
 
@@ -2440,6 +2436,7 @@ msgstr "Viga API-kõnele helistamisel"
 msgid "Error text"
 msgstr "Vea tekst"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Töölaud"
@@ -3032,10 +3029,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP-serveri aadress (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Kas teie SMTP-server nõuab autentimist (kasutajanimi / parool)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP kasutajanimi"
 
@@ -3064,20 +3057,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Kui valite Pereredaktoris pulmakuupäeva sisestamise, keelake see. Määrake vale, et lubada pereredaktorisse pulmakuupäeva sisestamine."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Määrake tõeline, et keelata Pereredaktoris laius- ja pikkuskraadide sisestamine. Valige Pereredaktorisse laius- ja pikkuskraadide sisestamise lubamiseks vale. Otsinguid tehakse endiselt, lihtsalt ei kuvata."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Annetusümbrike kasutamise lubamiseks määrake see tõene"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Sissemakse teatise kontrollide arv"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Luba skaneeritud tšekkide kasutamise lubamiseks tõene"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3086,10 +3067,6 @@ msgstr "Ühik, mida kasutatakse vahemaa, miili või km mõõtmiseks."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Mahaarvatavate maksete lubamine"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Määrake tõeline, et võimaldada perekonna enese registreerimist."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4824,10 +4801,6 @@ msgid "families"
 msgstr "peredele"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Sissemaksete tüüp. QBDT – Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Finantsseaded"
 
@@ -5721,24 +5694,12 @@ msgid "Links"
 msgstr "Lingid"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Luba pühapäevakool vasak menüü."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Luba menüü Finants"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Luba menüü Sündmused."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Luba raha kogumise menüü."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Luba menüü E-post."
 
 #: 
 msgid "Validation Error"
@@ -6004,10 +5965,6 @@ msgid "Unexpected Person Id"
 msgstr "Ootamatu inimese ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Luba süsteemiuuendustel GitHubis vabastada kui eelväljalase"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Otsi kalendrisündmusi"
 
@@ -6059,10 +6016,6 @@ msgstr "Portugali keel - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Püha"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7058,10 +7011,6 @@ msgid "This may take several minutes."
 msgstr "See võib võtta mitu minutit."
 
 #: 
-msgid "Update Package Details"
-msgstr "Värskenduspaketi üksikasjad"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Värskenduspakett on edukalt alla laaditud."
 
@@ -7086,24 +7035,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Täienduse teave on värskendatud. Lehe uuesti laadimine..."
 
 #: 
-msgid "Version Information"
-msgstr "Versiooni teave"
-
-#: 
 msgid "Warnings"
 msgstr "Hoiatused"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Te olete valinud varundamise vahele jätmise. Enne täiendamisega jätkamist on tugevalt soovitatav varukoopiа olemasolu."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Teie ChurchCRM paigaldus on edukalt täiendatud."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Teie ChurchCRM paigaldus käitab uusimat versiooni."
 
 #: 
 msgid "2-50 characters"
@@ -7509,10 +7446,6 @@ msgid "Event Types"
 msgstr "Sündmuste tüübid"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtreeri sündmusi"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtreeri sündmuse tüübi järgi"
 
@@ -7523,10 +7456,6 @@ msgstr "Filtreeri tüübi järgi"
 #: 
 msgid "Head Count"
 msgstr "Pea arv"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Tüübi sündmuste loetelu"
 
 #: 
 msgid "Manage Check-ins"
@@ -7643,10 +7572,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d vervatest failid leitud"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d failid on muudetud või puuduvad. Kasutage jõuga ümberpaigaldamist ametlike versioonide taastamiseks."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d failid on tervikluse valideerimise ebaõnnestunud."
 
@@ -7657,10 +7582,6 @@ msgstr "%d failid kustutatakse jäädavalt."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d vervatest failid leiti teie serveris."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(värskenda GitHub-ist)"
 
 #: 
 msgid "Access Denied"
@@ -10132,6 +10053,7 @@ msgstr "Halda Linke"
 msgid "Manage Two-Factor Authentication"
 msgstr "Halda Kahefaktorilist Autentimist"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Käsitsi Varundamine"
@@ -12278,6 +12200,8 @@ msgstr "Valikud"
 msgid "Other Members"
 msgstr "Teised liikmed"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Ülevaade"

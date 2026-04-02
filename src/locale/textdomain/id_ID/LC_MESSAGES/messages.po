@@ -1876,10 +1876,6 @@ msgid "Deposit closed"
 msgstr "Setoran ditutup"
 
 #: 
-msgid "Find family->"
-msgstr "Temukan keluarga->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Jadwal pembayaran"
 
@@ -2441,6 +2437,7 @@ msgstr "Kesalahan membuat Panggilan API ke"
 msgid "Error text"
 msgstr "Teks salah"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Dasbor"
@@ -3034,10 +3031,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Alamat Server SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Apakah server SMTP Anda memerlukan autentikasi (nama pengguna / kata sandi)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Nama Pengguna SMTP"
 
@@ -3066,20 +3059,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Set true untuk menonaktifkan memasukkan Tanggal Pernikahan di Editor Keluarga. Set false untuk mengaktifkan memasukkan Tanggal Pernikahan di Editor Keluarga."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Set true untuk menonaktifkan memasukkan Latitude dan Longitude di Family Editor. Set false untuk mengaktifkan memasukkan Latitude dan Longitude di Family Editor. Pencarian masih dilakukan, tidak ditampilkan."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Set true untuk mengaktifkan penggunaan amplop donasi"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Jumlah cek untuk Laporan Slip Setoran"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Set true untuk mengaktifkan penggunaan cek yang dipindai"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3088,10 +3069,6 @@ msgstr "Satuan yang digunakan untuk mengukur jarak, mil atau km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktifkan pembayaran yang tidak dapat dikurangkan"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Set true untuk mengaktifkan pendaftaran mandiri keluarga."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4826,10 +4803,6 @@ msgid "families"
 msgstr "keluarga"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Jenis tiket deposit. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Pengaturan Keuangan"
 
@@ -5723,24 +5696,12 @@ msgid "Links"
 msgstr "Tautan"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aktifkan menu kiri Sekolah Minggu."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aktifkan menu Keuangan"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Aktifkan menu Acara."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktifkan menu Penggalangan Dana."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aktifkan menu Email."
 
 #: 
 msgid "Validation Error"
@@ -5999,10 +5960,6 @@ msgid "Unexpected Person Id"
 msgstr "Id Orang Tidak Terduga"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Izinkan pembaruan sistem untuk dirilis ditandai sebagai 'pra rilis' di GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Cari Acara Kalender"
 
@@ -6052,10 +6009,6 @@ msgstr "Portugis - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Hari libur"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7051,10 +7004,6 @@ msgid "This may take several minutes."
 msgstr "Ini mungkin memakan waktu beberapa menit."
 
 #: 
-msgid "Update Package Details"
-msgstr "Detail Paket Pembaruan"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Paket pembaruan berhasil diunduh."
 
@@ -7079,24 +7028,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Info pembaruan diperbarui. Memuat ulang halaman..."
 
 #: 
-msgid "Version Information"
-msgstr "Informasi Versi"
-
-#: 
 msgid "Warnings"
 msgstr "Peringatan"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Anda memilih melewati pencadangan. Sangat disarankan untuk memiliki cadangan sebelum memperbarui."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Instalasi ChurchCRM Anda telah berhasil diperbarui."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRM Anda sudah menggunakan versi terbaru."
 
 #: 
 msgid "2-50 characters"
@@ -7501,10 +7438,6 @@ msgid "Event Types"
 msgstr "Tipe Kegiatan"
 
 #: 
-msgid "Filter Events"
-msgstr "Filter Kegiatan"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filter menurut Tipe Kegiatan"
 
@@ -7515,10 +7448,6 @@ msgstr "Filter menurut Tipe"
 #: 
 msgid "Head Count"
 msgstr "Hitung Kepala"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Daftar Kegiatan Tipe"
 
 #: 
 msgid "Manage Check-ins"
@@ -7634,10 +7563,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d File Yatim Terdeteksi"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d file telah diubah atau hilang. Gunakan Paksa Instal Ulang untuk memulihkan."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d file gagal validasi integritas."
 
@@ -7648,10 +7573,6 @@ msgstr "%d file akan dihapus secara permanen."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d file yatim terdeteksi di server Anda."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(segarkan dari GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10118,6 +10039,7 @@ msgstr "Kelola Tautan"
 msgid "Manage Two-Factor Authentication"
 msgstr "Kelola Autentikasi Dua Faktor"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Cadangan Manual"
@@ -12234,6 +12156,8 @@ msgstr "Opsi"
 msgid "Other Members"
 msgstr "Anggota Lain"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Ringkasan"
