@@ -92,7 +92,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#emailSettings',
-        title: i18next.t('Email Settings'),
+        title: () => i18next.t('Email Settings'),
         icon: 'fa-solid fa-envelope',
         presets: [
             {
@@ -121,28 +121,28 @@ $(document).ready(function() {
         settings: [
             {
                 name: 'bEnabledEmail',
-                label: i18next.t('Enable Email'),
+                label: () => i18next.t('Enable Email'),
                 type: 'boolean',
                 tooltip: <?= json_encode($emailSettingTooltips['bEnabledEmail'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'sSMTPHost',
-                label: i18next.t('SMTP Host'),
+                label: () => i18next.t('SMTP Host'),
                 type: 'text',
                 tooltip: <?= json_encode($emailSettingTooltips['sSMTPHost'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'iSMTPTimeout',
-                label: i18next.t('SMTP Timeout'),
+                label: () => i18next.t('SMTP Timeout'),
                 type: 'number',
                 tooltip: <?= json_encode($emailSettingTooltips['iSMTPTimeout'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'sPHPMailerSMTPSecure',
-                label: i18next.t('Encryption'),
+                label: () => i18next.t('Encryption'),
                 type: 'choice',
                 choices: [
-                    { value: ' ', label: i18next.t('None') },
+                    { value: ' ', label: () => i18next.t('None') },
                     { value: 'tls', label: 'TLS' },
                     { value: 'ssl', label: 'SSL' }
                 ],
@@ -150,37 +150,37 @@ $(document).ready(function() {
             },
             {
                 name: 'bPHPMailerAutoTLS',
-                label: i18next.t('Auto TLS'),
+                label: () => i18next.t('Auto TLS'),
                 type: 'boolean',
                 tooltip: <?= json_encode($emailSettingTooltips['bPHPMailerAutoTLS'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'bSMTPAuth',
-                label: i18next.t('SMTP Authentication'),
+                label: () => i18next.t('SMTP Authentication'),
                 type: 'boolean',
                 tooltip: <?= json_encode($emailSettingTooltips['bSMTPAuth'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'sSMTPUser',
-                label: i18next.t('SMTP Username'),
+                label: () => i18next.t('SMTP Username'),
                 type: 'text',
                 tooltip: <?= json_encode($emailSettingTooltips['sSMTPUser'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'sSMTPPass',
-                label: i18next.t('SMTP Password'),
+                label: () => i18next.t('SMTP Password'),
                 type: 'password',
                 tooltip: <?= json_encode($emailSettingTooltips['sSMTPPass'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'sToEmailAddress',
-                label: i18next.t('BCC All Mail To'),
+                label: () => i18next.t('BCC All Mail To'),
                 type: 'text',
                 tooltip: <?= json_encode($emailSettingTooltips['sToEmailAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'iDoNotEmailPropertyId',
-                label: i18next.t('Do Not Email Property'),
+                label: () => i18next.t('Do Not Email Property'),
                 type: 'ajax',
                 ajaxUrl: window.CRM.root + '/api/system/properties/person',
                 tooltip: <?= json_encode($emailSettingTooltips['iDoNotEmailPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>

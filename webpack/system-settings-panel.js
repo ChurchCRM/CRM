@@ -27,13 +27,12 @@ import "../src/skin/scss/system-settings-panel.scss";
   const SettingTypes = {
     boolean: {
       render: function (setting, value) {
-        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const isOn = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="form-label small fw-bold mb-1">
-                            ${setting.label}
-                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
+                            ${resolve(setting.label)}
+                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
                         </div>
                         <div class="form-selectgroup form-selectgroup-pills">
                             <label class="form-selectgroup-item">
@@ -69,16 +68,16 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${resolve(setting.label)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="number" class="form-control setting-input" 
+                        <input type="number" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="number"
-                               value="${value || ""}" 
+                               value="${value || ""}"
                                ${setting.min !== undefined ? `min="${setting.min}"` : ""}
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
                     </div>
                 `;
       },
@@ -91,15 +90,15 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${resolve(setting.label)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="text" class="form-control setting-input" 
+                        <input type="text" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="text"
                                value="${escapeHtml(value || "")}"
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
                     </div>
                 `;
       },
@@ -115,13 +114,13 @@ import "../src/skin/scss/system-settings-panel.scss";
             const optValue = typeof choice === "object" ? choice.value : choice;
             const optLabel = typeof choice === "object" ? choice.label : choice;
             const selected = String(value) === String(optValue) ? "selected" : "";
-            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(optLabel)}</option>`;
+            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(resolve(optLabel))}</option>`;
           });
         }
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${resolve(setting.label)}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <select class="form-select setting-input"
@@ -129,7 +128,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 data-type="choice">
                             ${optionsHtml}
                         </select>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
                     </div>
                 `;
       },
@@ -142,7 +141,6 @@ import "../src/skin/scss/system-settings-panel.scss";
     // Set setting.generate = true to add a "Generate" button that fills the field.
     password: {
       render: function (setting) {
-        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const generateBtn = setting.generate
           ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
                <i class="fa-solid fa-key me-1"></i>${t("Generate")}
@@ -151,7 +149,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${setting.label}
+                ${resolve(setting.label)}
               </label>
               <div class="input-group">
                 <input type="password" class="form-control setting-input"
@@ -161,7 +159,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                      placeholder="${t("Leave blank to keep existing")}">
                 ${generateBtn}
               </div>
-              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
             </div>
           `;
       },
@@ -175,15 +173,15 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${setting.label}
+                ${resolve(setting.label)}
               </label>
               <select class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
                       data-type="ajax"
                       data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
-                <option value="">${window.i18next ? i18next.t("Unassigned") : "Unassigned"}</option>
+                <option value="">${t("Unassigned")}</option>
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
             </div>
           `;
       },
@@ -199,6 +197,25 @@ import "../src/skin/scss/system-settings-panel.scss";
     const div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+  }
+
+  // Translate a key at call-time. Falls back to the raw key if i18next is not
+  // yet loaded or the key has no translation — so labels always show something
+  // meaningful instead of "undefined".
+  function t(key) {
+    if (!key) return key;
+    if (window.i18next && window.CRM && window.CRM.localesLoaded) {
+      const translated = i18next.t(key);
+      return translated !== undefined ? translated : key;
+    }
+    return key;
+  }
+
+  // Resolve a setting label or tooltip: if it's a function (thunk), call it
+  // at render time so that i18next.t() runs after translations are loaded.
+  // If it's already a string, return it as-is.
+  function resolve(value) {
+    return typeof value === "function" ? value() : (value || "");
   }
 
   // Month choices helper
@@ -358,6 +375,16 @@ import "../src/skin/scss/system-settings-panel.scss";
         return;
       }
 
+      // Defer rendering until translations are loaded so that i18next.t() calls
+      // in setting labels/tooltips return translated strings instead of undefined.
+      if (window.CRM && window.CRM.localesLoaded) {
+        this._doInit();
+      } else {
+        window.addEventListener("CRM.localesReady", () => this._doInit(), { once: true });
+      }
+    }
+
+    _doInit() {
       // Render structure immediately so the collapse container is never empty
       // when the user opens the panel. Values are fetched and applied afterwards
       // without replacing innerHTML (no animation interruption).
@@ -459,8 +486,6 @@ import "../src/skin/scss/system-settings-panel.scss";
         }
       });
 
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
-
       // Presets bar
       let presetsHtml = "";
       if (this.options.presets && this.options.presets.length > 0) {
@@ -484,7 +509,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                 <div class="card settings-panel-card">
                     <div class="card-header ${this.options.headerClass} py-2">
                         <h6 class="mb-0">
-                            <i class="${this.options.icon} me-1"></i>${this.options.title}
+                            <i class="${this.options.icon} me-1"></i>${resolve(this.options.title)}
                         </h6>
                     </div>
                     <div class="card-body">

@@ -66,12 +66,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#textSettings',
-        title: i18next.t('Text Settings'),
+        title: () => i18next.t('Text Settings'),
         icon: 'fa-solid fa-comment-sms',
         settings: [
             {
                 name: 'iDoNotSmsPropertyId',
-                label: i18next.t('Do Not SMS Property'),
+                label: () => i18next.t('Do Not SMS Property'),
                 type: 'ajax',
                 ajaxUrl: window.CRM.root + '/api/system/properties/person',
                 tooltip: <?= json_encode($textSettingTooltips['iDoNotSmsPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>

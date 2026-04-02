@@ -74,31 +74,31 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function() {
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
-            title: i18next.t('Map Settings'),
+            title: () => i18next.t('Map Settings'),
             icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',
-                    label: i18next.t('Default Map View'),
+                    label: () => i18next.t('Default Map View'),
                     type: 'choice',
                     choices: [
-                        { value: '3', label: i18next.t('Continent') },
-                        { value: '5', label: i18next.t('Country') },
-                        { value: '7', label: i18next.t('State') },
-                        { value: '10', label: i18next.t('City') },
-                        { value: '14', label: i18next.t('Neighborhood') },
-                        { value: '18', label: i18next.t('Street') }
+                        { value: '3', label: () => i18next.t('Continent') },
+                        { value: '5', label: () => i18next.t('Country') },
+                        { value: '7', label: () => i18next.t('State') },
+                        { value: '10', label: () => i18next.t('City') },
+                        { value: '14', label: () => i18next.t('Neighborhood') },
+                        { value: '18', label: () => i18next.t('Street') }
                     ]
                 },
                 {
                     name: 'bHideLatLon',
-                    label: i18next.t('Hide Latitude/Longitude'),
+                    label: () => i18next.t('Hide Latitude/Longitude'),
                     type: 'boolean',
                     tooltip: <?= json_encode($mapSettingTooltips['bHideLatLon'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
                 },
                 {
                     name: 'bHidePersonAddress',
-                    label: i18next.t('Hide Person Address'),
+                    label: () => i18next.t('Hide Person Address'),
                     type: 'boolean',
                     tooltip: <?= json_encode($mapSettingTooltips['bHidePersonAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
                 }
