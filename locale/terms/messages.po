@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 10:45-0700\n"
+"POT-Creation-Date: 2026-04-02 11:01-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2366,6 +2366,7 @@ msgid "Current Software Version"
 msgstr ""
 
 #. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
 msgid "Current Usage"
 msgstr ""
 
@@ -2786,9 +2787,6 @@ msgid "Deposit saved successfully"
 msgstr ""
 
 msgid "Deposit ticket type"
-msgstr ""
-
-msgid "Deposit ticket type.  QBDT - Quickbooks"
 msgstr ""
 
 msgid "Deposit(s)"
@@ -4795,6 +4793,7 @@ msgid "How did you learn of the church?"
 msgstr ""
 
 #. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
 msgid "How it works"
 msgstr ""
 
@@ -5035,7 +5034,7 @@ msgstr ""
 msgid "Information to Include"
 msgstr ""
 
-msgid "Initial zoom level when opening the map (3 = continent, 10 = city, 18 = street)"
+msgid "Initial zoom level when opening the map"
 msgstr ""
 
 msgid "Install a TLS/SSL certificate for secure connections"
@@ -6852,6 +6851,7 @@ msgid "Override system locale"
 msgstr ""
 
 #. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 msgid "Overview"
 msgstr ""
 
@@ -8549,6 +8549,7 @@ msgid "Settings saved successfully"
 msgstr ""
 
 #. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
 msgid "Setup"
 msgstr ""
 
