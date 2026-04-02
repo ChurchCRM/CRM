@@ -122,7 +122,7 @@ class AuthenticationManager
                 }
                 break;
             default:
-                $logger->critical('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
+                $logger->error('Unknown AuthenticationRequest type supplied', ['providedAuthenticationRequestClass' => $AuthenticationRequest::class]);
                 break;
         }
 

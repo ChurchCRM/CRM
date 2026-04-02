@@ -84,12 +84,11 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
             cy.get("#logSettings").within(() => {
                 cy.get("select[name='sLogLevel']").should("exist");
-                cy.get("select[name='sLogLevel'] option").should("have.length", 5);
+                cy.get("select[name='sLogLevel'] option").should("have.length", 4);
                 cy.get("select[name='sLogLevel']").contains("option", "DEBUG");
                 cy.get("select[name='sLogLevel']").contains("option", "INFO");
                 cy.get("select[name='sLogLevel']").contains("option", "WARNING");
                 cy.get("select[name='sLogLevel']").contains("option", "ERROR");
-                cy.get("select[name='sLogLevel']").contains("option", "CRITICAL");
             });
         });
     });

@@ -41,7 +41,6 @@ class   SystemConfig
                 'INFO:' . Level::Info->value,
                 'WARNING:' . Level::Warning->value,
                 'ERROR:' . Level::Error->value,
-                'CRITICAL:' . Level::Critical->value,
             ],
         ];
     }
