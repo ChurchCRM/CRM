@@ -13281,3 +13281,432 @@ msgstr "Actualización disponible"
 msgid "User must have Notes permission"
 msgstr "El usuario debe tener permiso de Notas"
 
+#: 
+msgid "Address Defaults"
+msgstr "Valores predeterminados de dirección"
+
+#: 
+msgid "All Day"
+msgstr "Todo el día"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Permitir al usuario agregar un nuevo evento"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "¿Estás seguro de que quieres continuar?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "¿Estás seguro de que quieres eliminar este evento?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Fecha de inicio"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Configuración del calendario"
+
+#: 
+msgid "Calendars"
+msgstr "Calendarios"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Elige una oportunidad de voluntariado"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Elegir el campo de persona"
+
+#: 
+msgid "Church Identity"
+msgstr "Identidad de la Iglesia"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Información de la Iglesia guardada con éxito"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "El nombre de la Iglesia es obligatorio. Por favor, rellena la sección Identidad de la Iglesia arriba."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM puede enviar correos electrónicos directamente."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API del portapapeles no disponible. Por favor, copia la URL manualmente."
+
+#: 
+msgid "Communication"
+msgstr "Comunicación"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Comparar promesas entre dos años fiscales"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Configura SMTP en la configuración siguiente para enviar correos electrónicos desde el sistema."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Configurar Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Conecta Mailchimp para sincronizar listas de correo electrónico para boletines y campañas."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Copiado al portapapeles"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Copiar todos los correos electrónicos"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Copiar todos los números"
+
+#: 
+msgid "Copy from church address"
+msgstr "Copiar de la dirección de la Iglesia"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Copiar al portapapeles"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Campo personalizado"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Búsqueda personalizada"
+
+#: 
+msgid "Default Country"
+msgstr "País predeterminado"
+
+#: 
+msgid "Default State"
+msgstr "Estado predeterminado"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Delimitador para separar correos electrónicos en enlaces mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Unidad de distancia"
+
+#: 
+msgid "Duration"
+msgstr "Duración"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Panel de correo electrónico"
+
+#: 
+msgid "Email Integrations"
+msgstr "Integraciones de correo electrónico"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Direcciones de correo electrónico copiadas al portapapeles"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "La funcionalidad de correo electrónico está actualmente deshabilitada. Las siguientes características no funcionarán hasta que se habilite el correo:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "El correo electrónico está deshabilitado"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Enlaces de correo electrónico en vistas de grupo y personas"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Las listas de correo electrónico se sincronizan con Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Habilita el correo electrónico en el panel de configuración inferior y luego configura tu servidor SMTP."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Fecha de finalización"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Ingresa cualquier parte de lo siguiente: Nombre, ciudad, estado, código postal, teléfono de casa, correo electrónico o correo electrónico de trabajo."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "API de calendario externo deshabilitada"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Error al recuperar datos"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Error al recuperar direcciones de correo electrónico"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Error al recuperar números de teléfono"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Valor del campo"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Encuentra miembros de la parroquia que no asistieron a un evento"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Encuentra miembros de la parroquia que se comprometieron un año pero no otro"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Encuentra miembros de la parroquia con un valor de campo personalizado"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Encuentra voluntarios para una oportunidad particular"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Encuentra voluntarios que coincidan con dos códigos de oportunidad específicos"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Primer año fiscal"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Primer año fiscal para comparación"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Primera opción de oportunidad de voluntariado"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Amigos que se inscribieron en meses anteriores"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Invitado"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Notificaciones de correo electrónico de registro del quiosco"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp conectado"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp no configurado"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Gestiona herramientas y configuración de SMS/mensajes de texto"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Gestiona eventos, cumpleaños y aniversarios"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Coincide con el campo personalizado para este valor"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Edad máxima"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Miembro de la parroquia, Asistente regular, etc."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Miembros de la parroquia que se unieron en un mes particular"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Aniversarios de membresía"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Edad mínima"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Personas faltantes"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Compromisos faltantes"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Mes"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Meses"
+
+#: 
+msgid "My Calendars"
+msgstr "Mis calendarios"
+
+#: 
+msgid "New member notification emails"
+msgstr "Notificaciones de correo electrónico de nuevo miembro"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Sin teléfono celular en archivo"
+
+#: 
+msgid "No email addresses available"
+msgstr "Sin direcciones de correo electrónico disponibles"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Sin números de teléfono disponibles"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "No asistente"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "No asistente (personal)"
+
+#: 
+msgid "Not Classified"
+msgstr "No clasificado"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Número de meses desde que se convirtió en amigo"
+
+#: 
+msgid "Parents"
+msgstr "Padres"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Correos electrónicos de restablecimiento de contraseña - los usuarios no pueden recuperar sus cuentas"
+
+#: 
+msgid "People Settings"
+msgstr "Configuración de personas"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Personas con cumpleaños en un mes particular"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Persona por propiedad"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Propiedad de persona utilizada para excluir miembros de la parroquia de listas SMS/texto"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Propiedad de persona utilizada para excluir miembros de la parroquia de listas de correo electrónico"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Números de teléfono copiados al portapapeles"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Números de teléfono copiados - pega en tu aplicación de mensajería"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Ingresa la última fecha para calcular las contribuciones totales de cada miembro de la parroquia (es decir, YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Selecciona la fecha de inicio para calcular las contribuciones totales de cada miembro de la parroquia (es decir, YYYY-MM-DD). NOTA: Solo puedes seleccionar fechas que contengan donaciones."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Comparación de compromisos financieros"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Comprometido este año"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Presiona CTRL + C para copiar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Propiedad"
+
+#: 
+msgid "Public calendar"
+msgstr "Calendario público"
+

@@ -13278,3 +13278,222 @@ msgstr "Pembaruan Tersedia"
 msgid "User must have Notes permission"
 msgstr "Pengguna harus memiliki izin Catatan"
 
+#: 
+msgid "Address Defaults"
+msgstr "Default Alamat"
+
+#: 
+msgid "All Day"
+msgstr "Sepanjang Hari"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Izinkan pengguna menambahkan acara baru"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Apakah Anda yakin ingin melanjutkan?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Apakah Anda yakin ingin menghapus acara ini?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Tanggal Mulai"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Pengaturan Kalender"
+
+#: 
+msgid "Calendars"
+msgstr "Kalender"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Pilih peluang sukarelawan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Pilih bidang orang"
+
+#: 
+msgid "Church Identity"
+msgstr "Identitas Gereja"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Informasi gereja berhasil disimpan"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Nama gereja diperlukan. Silakan isi bagian Identitas Gereja di atas."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM dapat mengirim email langsung."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API Clipboard tidak tersedia. Salin URL secara manual."
+
+#: 
+msgid "Communication"
+msgstr "Komunikasi"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Bandingkan komitmen antara dua tahun fiskal"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Konfigurasi SMTP di pengaturan di bawah untuk mengirim email dari sistem."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Konfigurasi Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Hubungkan Mailchimp untuk menyinkronkan daftar email untuk buletin dan kampanye."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Disalin ke papan klip"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Salin Semua Email"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Salin Semua Nomor"
+
+#: 
+msgid "Copy from church address"
+msgstr "Salin dari alamat gereja"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Salin ke papan klip"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Bidang khusus"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Pencarian Khusus"
+
+#: 
+msgid "Default Country"
+msgstr "Negara Default"
+
+#: 
+msgid "Default State"
+msgstr "Negara Default"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Pembatas untuk memisahkan email dalam tautan mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Unit Jarak"
+
+#: 
+msgid "Duration"
+msgstr "Durasi"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Dashboard Email"
+
+#: 
+msgid "Email Integrations"
+msgstr "Integrasi Email"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Alamat email disalin ke papan klip"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Fungsi email saat ini dinonaktifkan. Fitur berikut tidak akan berfungsi sampai email diaktifkan:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "Email Dinonaktifkan"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Tautan email dalam tampilan grup dan orang"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Daftar email disinkronkan dengan Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Aktifkan email di panel pengaturan di bawah, kemudian konfigurasikan server SMTP Anda."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Tanggal Akhir"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Masukkan bagian mana pun dari yang berikut: Nama, Kota, Negara, Kode Pos, Telepon Rumah, Email, atau Email Kerja."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "API Kalender Eksternal Dinonaktifkan"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Gagal mengambil data"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Gagal mengambil alamat email"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Gagal mengambil nomor telepon"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Nilai bidang"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Temukan orang yang tidak menghadiri acara"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Temukan orang yang berkomitmen satu tahun tetapi tidak tahun lain"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Temukan orang dengan nilai bidang khusus"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Temukan sukarelawan untuk peluang tertentu"
+

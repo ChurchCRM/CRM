@@ -13389,3 +13389,212 @@ msgstr "Actualizare disponibilă"
 msgid "User must have Notes permission"
 msgstr "Utilizatorul trebuie să aibă permisiunea pentru note"
 
+#: 
+msgid "Address Defaults"
+msgstr "Setări implicite adresă"
+
+#: 
+msgid "All Day"
+msgstr "Toată ziua"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Permiteți utilizatorului să adauge un nou eveniment"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Sunteti sigur ca doriti sa continuati?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Sunteti sigur ca doriti sa stergeti acest eveniment?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Data de început"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Setări calendar"
+
+#: 
+msgid "Calendars"
+msgstr "Calendare"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Alegeți o oportunitate de voluntariat"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Alegeți câmpul persoanei"
+
+#: 
+msgid "Church Identity"
+msgstr "Identitatea Bisericii"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Informațiile Bisericii au fost salvate cu succes"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Numele Bisericii este necesar. Completați secțiunea Identitatea Bisericii de mai sus."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM poate trimite e-mailuri direct."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "API Clipboard nu este disponibil. Copiaţi adresa URL manual."
+
+#: 
+msgid "Communication"
+msgstr "Comunicare"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Comparați angajamentele între doi ani fiscali"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Configurați SMTP în setările de mai jos pentru a trimite e-mailuri din sistem."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Configurați Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Conectați Mailchimp pentru a sincroniza listele de e-mailuri pentru buletine și campanii."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Copiat în clipboard"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Copiaţi toate e-mailurile"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Copiaţi toate numerele"
+
+#: 
+msgid "Copy from church address"
+msgstr "Copiaţi din adresa Bisericii"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Copiat în clipboard"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Câmp personalizat"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Căutare personalizată"
+
+#: 
+msgid "Default Country"
+msgstr "Țară implicită"
+
+#: 
+msgid "Default State"
+msgstr "Stare implicită"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Delimitator pentru separarea e-mailurilor în linkuri mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Unitate de distanță"
+
+#: 
+msgid "Duration"
+msgstr "Durata"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Tablou de bord e-mail"
+
+#: 
+msgid "Email Integrations"
+msgstr "Integrări e-mail"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Adresele de e-mail au fost copiate în clipboard"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Funcționalitatea e-mailului este în prezent dezactivată. Următoarele funcții nu vor funcționa până când e-mailul nu este activat:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "E-mailul este dezactivat"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Linkuri de e-mail în vizualizări de grup și persoane"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Listele de e-mailuri sunt sincronizate cu Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Activați e-mailul în panoul de setări de mai jos, apoi configurați serverul SMTP."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Data de încheiere"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Introduceți orice parte a următoarelor: Nume, Oraș, Stat, Cod poștal, Telefon acasă, E-mail sau E-mail de lucru."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "API Calendar extern dezactivat"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Eșec la preluarea datelor"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Eșec la preluarea adreselor de e-mail"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Eșec la preluarea numerelor de telefon"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Valoarea câmpului"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Găsiti persoanele care nu au participat la un eveniment"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Găsiti persoane care s-au angajat un an dar nu altul"
+

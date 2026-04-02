@@ -12230,6 +12230,10 @@ msgid "Memberships"
 msgstr "Tagságok"
 
 #: 
+msgid "Minimum"
+msgstr "Minimális"
+
+#: 
 msgid "Modify family roles for group members"
 msgstr "Családi szerepek módosítása csoporttagok számára"
 
@@ -13376,4 +13380,203 @@ msgstr "Frissítés elérhető"
 #: 
 msgid "User must have Notes permission"
 msgstr "A felhasználónak megjegyzés-jogosultsággal kell rendelkeznie"
+
+#: 
+msgid "Address Defaults"
+msgstr "Cím alapértelmezett beállítások"
+
+#: 
+msgid "All Day"
+msgstr "Egész nap"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Engedélyezze a felhasználónak új esemény hozzáadást"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Biztosan szeretné folytatni?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Biztosan szeretné törölni ezt az eseményt?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Kezdési dátum"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Naptár beállításai"
+
+#: 
+msgid "Calendars"
+msgstr "Naptárak"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Válasszon önkéntes lehetőséget"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Válassza ki a személy mező"
+
+#: 
+msgid "Church Identity"
+msgstr "Egyházi azonosság"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Az egyházi információk sikeresen mentve"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Az egyházi nevet kötelezően kitölteni. Kérjük, töltse ki a fenti Egyházi azonosság szakaszt."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "A ChurchCRM közvetlenül e-maileket küldhet."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "A vágólap API nem elérhető. Kérjük, manuálisan másolja az URL-t."
+
+#: 
+msgid "Communication"
+msgstr "Kommunikáció"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Összevetés az ígéretek között két pénzügyi év között"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Állítsa be az SMTP-t az alábbi beállításokban az e-mailek rendszerből való küldéséhez."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Vonage konfigurálása"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Csatlakoztassa a Mailchimpet az e-mail listák szinkronizálásához hírleveleknél és kampányoknál."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Vágólapra másolva"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Összes e-mail másolása"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Összes szám másolása"
+
+#: 
+msgid "Copy from church address"
+msgstr "Másolás az egyházi címről"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Másolás vágólapra"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Egyéni mező"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Egyéni keresés"
+
+#: 
+msgid "Default Country"
+msgstr "Alapértelmezett ország"
+
+#: 
+msgid "Default State"
+msgstr "Alapértelmezett állapot"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Elválasztó az e-mailek szétválasztásához a mailto: linkekben"
+
+#: 
+msgid "Distance Unit"
+msgstr "Távolság egység"
+
+#: 
+msgid "Duration"
+msgstr "Időtartam"
+
+#: 
+msgid "Email Dashboard"
+msgstr "E-mail műszerfal"
+
+#: 
+msgid "Email Integrations"
+msgstr "E-mail integrációk"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "E-mail címek vágólapra másolva"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Az e-mail funkció jelenleg letiltva. A következő funkciók nem fognak működni az e-mail engedélyezéséig:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "Az e-mail letiltva"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "E-mail linkek csoport- és személy nézetekben"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Az e-mail listák szinkronizálva vannak a Mailchimpel."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Engedélyezze az e-mailt az alábbi beállítások panelen, majd állítsa be az SMTP-kiszolgálót."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Befejezés dátuma"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Adjon meg bármilyen részt az alábbiak közül: Név, Város, Megye, Irányítószám, Otthoni telefon, E-mail vagy Munkahelyi e-mail."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "Külső naptár API letiltva"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Az adatok lekérése sikertelen"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Az e-mail címek lekérése sikertelen"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "A telefonszámok lekérése sikertelen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Mező értéke"
 

@@ -12013,7 +12013,7 @@ msgstr "Βασικά πρόσωπα"
 
 #: 
 msgid "Kiosk"
-msgstr "Κιόσκι"
+msgstr "Περίπτερο"
 
 #: 
 msgid "Kiosk Enabled"
@@ -13306,4 +13306,208 @@ msgstr "Διαθέσιμη ενημέρωση"
 #: 
 msgid "User must have Notes permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα σημειώσεων"
+
+#: 
+msgid "Address Defaults"
+msgstr "Προεπιλογές διευθύνσεων"
+
+#: 
+msgid "All Day"
+msgstr "Όλη την ημέρα"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "Να επιτρέψει στο χρήστη να προσθέσει νέο γεγονός"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "Είστε σίγουροι ότι θέλετε να συνεχίσετε;"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το γεγονός;"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "Ημερομηνία έναρξης"
+
+#: 
+msgid "Calendar Settings"
+msgstr "Ρυθμίσεις Ημερολογίου"
+
+#: 
+msgid "Calendars"
+msgstr "Ημερολόγια"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "Επιλέξτε μια ευκαιρία εθελοντισμού"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "Επιλέξτε πεδίο προσώπου"
+
+#: 
+msgid "Church Identity"
+msgstr "Ταυτότητα Εκκλησίας"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "Οι πληροφορίες της Εκκλησίας αποθηκεύθηκαν με επιτυχία"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "Το όνομα της Εκκλησίας είναι υποχρεωτικό. Παρακαλώ συμπληρώστε την ενότητα Ταυτότητα Εκκλησίας παραπάνω."
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "Το ChurchCRM μπορεί να στέλνει μηνύματα ηλεκτρονικής αλληλογραφίας απευθείας."
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "Το API του προχείρου δεν είναι διαθέσιμο. Αντιγράψτε το URL με το χέρι."
+
+#: 
+msgid "Communication"
+msgstr "Επικοινωνία"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "Συγκρίνετε τις υποσχέσεις μεταξύ δύο λογιστικών ετών"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "Διαμορφώστε το SMTP στις παρακάτω ρυθμίσεις για να στέλνετε μηνύματα ηλεκτρονικής αλληλογραφίας από το σύστημα."
+
+#: 
+msgid "Configure Vonage"
+msgstr "Διαμορφώστε το Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Συνδέστε το Mailchimp για να συγχρονίσετε τις λίστες ηλεκτρονικής αλληλογραφίας για ενημερωτικές δελτία και καμπάνιες."
+
+#: 
+msgid "Copied to clipboard"
+msgstr "Αντιγράφηκε στο πρόχειρο"
+
+#: 
+msgid "Copy All Emails"
+msgstr "Αντιγράψτε όλα τα μηνύματα ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "Αντιγράψτε όλους τους αριθμούς"
+
+#: 
+msgid "Copy from church address"
+msgstr "Αντιγραφή από διεύθυνση Εκκλησίας"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "Αντιγράψτε στο πρόχειρο"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "Προσαρμοσμένο πεδίο"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "Προσαρμοσμένη αναζήτηση"
+
+#: 
+msgid "Default Country"
+msgstr "Προεπιλεγμένη χώρα"
+
+#: 
+msgid "Default State"
+msgstr "Προεπιλεγμένη κατάσταση"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "Χαρακτήρας διαχωρισμού για διαχωρισμό μηνυμάτων ηλεκτρονικής αλληλογραφίας σε σύνδεσμους mailto:"
+
+#: 
+msgid "Distance Unit"
+msgstr "Μονάδα απόστασης"
+
+#: 
+msgid "Duration"
+msgstr "Διάρκεια"
+
+#: 
+msgid "Email Dashboard"
+msgstr "Πίνακας εργαλείων ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Email Integrations"
+msgstr "Ενσωματώσεις ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "Οι διευθύνσεις ηλεκτρονικής αλληλογραφίας αντιγράφηκαν στο πρόχειρο"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "Η λειτουργία ηλεκτρονικής αλληλογραφίας είναι σήμερα απενεργοποιημένη. Οι παρακάτω δυνατότητες δεν θα λειτουργήσουν έως ότου ενεργοποιηθεί η ηλεκτρονική αλληλογραφία:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "Η ηλεκτρονική αλληλογραφία είναι απενεργοποιημένη"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "Σύνδεσμοι ηλεκτρονικής αλληλογραφίας στις προβολές ομάδας και ανθρώπων"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "Οι λίστες ηλεκτρονικής αλληλογραφίας συγχρονίζονται με το Mailchimp."
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "Ενεργοποιήστε την ηλεκτρονική αλληλογραφία στο παρακάτω πάνελ ρυθμίσεων, στη συνέχεια διαμορφώστε τον διακομιστή SMTP σας."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "Ημερομηνία λήξης"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "Εισάγετε οποιοδήποτε μέρος των ακόλουθων: Όνομα, Πόλη, Κατάσταση, Ταχυδρομικός κώδικας, Σπίτι τηλέφωνο, Email ή Εργασία Email."
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "Το εξωτερικό API ημερολογίου είναι απενεργοποιημένο"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "Αποτυχία ανάκτησης δεδομένων"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "Αποτυχία ανάκτησης διευθύνσεων ηλεκτρονικής αλληλογραφίας"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "Αποτυχία ανάκτησης αριθμών τηλεφώνου"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "Τιμή πεδίου"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Βρείτε ανθρώπους που δεν παρακολούθησαν ένα γεγονός"
 

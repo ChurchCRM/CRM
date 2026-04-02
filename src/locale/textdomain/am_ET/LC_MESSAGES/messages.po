@@ -93,7 +93,7 @@ msgstr "የአያት ስም"
 
 #: 
 msgid "Required"
-msgstr "አስፈላጊ"
+msgstr "ያስፈልጋል"
 
 #: 
 msgid "First Name"
@@ -667,7 +667,7 @@ msgstr "ስም አስቀምጥ"
 
 #: 
 msgid "Recurrence Pattern"
-msgstr "የተደጋጋሚነት ንድፍ"
+msgstr "ተደጋጋሚ ንድፍ"
 
 #: 
 msgid "Attendance Counts"
@@ -872,7 +872,7 @@ msgstr "የመጨረሻ"
 
 #: 
 msgid "Role"
-msgstr "ሚና"
+msgstr "ስልክ"
 
 #: 
 msgid "Select Gender"
@@ -2389,7 +2389,7 @@ msgstr "ጸደይ"
 
 #: 
 msgid "Summer"
-msgstr "በጋ"
+msgstr "ክረምት"
 
 #: 
 msgid "Fall"
@@ -2950,7 +2950,7 @@ msgstr "እንቅስቃሴ-አልባ"
 
 #: 
 msgid "Start Time"
-msgstr "የመነሻ ጊዜ"
+msgstr "ጀመር ወቅት"
 
 #: 
 msgid "Filter by Fund"
@@ -4767,7 +4767,7 @@ msgstr "ሮማንያኛ"
 #. Context: locales
 #: 
 msgid "Russian"
-msgstr "ሩስያኛ"
+msgstr "ሩሲያኛ"
 
 #. Context: locales
 #: 
@@ -5170,7 +5170,7 @@ msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ማስፈንጠሪያ"
 
 #: 
 msgid "Reset Password"
-msgstr "የይለፍ ቃል ይቀይሩ"
+msgstr "ይለወጡት ኢሜይል"
 
 #: 
 msgid "Reset your password"
@@ -6217,7 +6217,7 @@ msgstr "ዕዳ"
 
 #: 
 msgid "Start Date"
-msgstr "የመጀመሪያ ቀን"
+msgstr "ጀመር ቀን"
 
 #: 
 msgid "End Date"
@@ -6229,12 +6229,11 @@ msgstr "የተወሰኑ የቀን መቁጠሪያዎች"
 
 #: 
 msgid "This field is required"
-msgstr "ይሄ ቦታ ይፈለጋል"
+msgstr "ይህ ሜዳ ያስፈልጋል"
 
 #: 
 msgid "Text"
-msgstr "\n"
-"ጽሑፍ"
+msgstr "ጽሁፍ"
 
 #: 
 msgid "Event Description"
@@ -7310,7 +7309,7 @@ msgstr "እባክዎን የሚሰረዙ ረድፎችን ይምረጡ"
 
 #: 
 msgid "Saving..."
-msgstr "በማስቀመጥ ላይ..."
+msgstr "በ አስቀምጥ..."
 
 #: 
 msgid "This action cannot be undone."
@@ -12031,7 +12030,7 @@ msgstr "ጠቃሪ ሰውነት"
 
 #: 
 msgid "Kiosk"
-msgstr "ኪዮስክ"
+msgstr "ክዮስክ"
 
 #: 
 msgid "Kiosk Enabled"
@@ -12551,7 +12550,7 @@ msgstr "ሚና አለም።"
 
 #: 
 msgid "Roles"
-msgstr "ሚና"
+msgstr "ስልክ"
 
 #: 
 msgid "Run"
@@ -12659,7 +12658,7 @@ msgstr "ተዋቅሮ ያስፈልግዋል"
 
 #: 
 msgid "Share"
-msgstr "ጋብ"
+msgstr "ማጋራት"
 
 #: 
 msgid "Showing members of: %s"
@@ -12711,7 +12710,7 @@ msgstr "ስርዓት ምርመራ መረጃ እና ዋና"
 
 #: 
 msgid "Tags"
-msgstr "ሌቤሎች"
+msgstr "ሌብለቶች"
 
 #: 
 msgid "Tax Statements"
@@ -13324,4 +13323,438 @@ msgstr "ወደ ታዋቅ ይገኛል"
 #: 
 msgid "User must have Notes permission"
 msgstr "ተጠቃሚ ማስታወሻ ፍቃድ ሊሆን ይገባ"
+
+#: 
+msgid "Address Defaults"
+msgstr "የአድራሻ ነባሮች"
+
+#: 
+msgid "All Day"
+msgstr "ሙሉ ቀን"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "ተጠቃሚ አዲስ ክስተት ለመጨመር ይፈቅድ"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "ይቀጥሉ ይፈልጋሉ?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "ይህን ክስተት መሰረዝ ይፈልጋሉ?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "የመጀመር ቀን"
+
+#: 
+msgid "Calendar Settings"
+msgstr "የቀን መቁጠሪያ ቅንብሮች"
+
+#: 
+msgid "Calendars"
+msgstr "ቀን መቁጠሪያ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "የስ্বেচ್ছাসেবกות ዕድሎት ይምረጡ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "ዛጋታዊ ግለሰብ መስክ ይምረጡ"
+
+#: 
+msgid "Church Identity"
+msgstr "የቤተ ክርስቲያን ማስታወሻ"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "የቤተ ክርስቲያን መረጃ በስኬት ተቀምጧል"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "የቤተ ክርስቲያን ስም ያስፈልጋል። ከላይ ያለውን የቤተ ክርስቲያን ማስታወሻ ክፍል ሙላ።"
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM ኢሜይል በቀጥታ መላክ ይችላል።"
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "Clipboard API አለም አቀፍ አይደለም። እባክዎ URL ን በእጅ ይቅዱ።"
+
+#: 
+msgid "Communication"
+msgstr "ግንኙነት"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "በሁለት የቤጀት ዓመታት መካከል ንግግሩን ያወዳድሩ"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "ከስርዓቱ ኢሜይል ለመላክ ከስር በቅንብር SMTP ውቅር።"
+
+#: 
+msgid "Configure Vonage"
+msgstr "Vonage ማቀናጀት"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "Mailchimp ለዜና ደብዳቤ እና ሙሙናት ኢሜይል ዝርዝር ለማመጣመስ ያገናኙ።"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "ወደ ክሊፕቦርድ ቅዳ"
+
+#: 
+msgid "Copy All Emails"
+msgstr "ሁሉንም ኢሜይሎች ይቅዱ"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "ሁሉንም ቁጥሮች ይቅዱ"
+
+#: 
+msgid "Copy from church address"
+msgstr "ከቤተ ክርስቲያን አድራሻ ይቅዱ"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "ወደ ክሊፕቦርድ ይቅዱ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "ብጁ ሜዳ"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "ብጁ ፍለጋ"
+
+#: 
+msgid "Default Country"
+msgstr "ነባር ሀገር"
+
+#: 
+msgid "Default State"
+msgstr "ነባር ስቴት"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "في mailto: linaك ኢሜይል ለመለያየት ምዘና"
+
+#: 
+msgid "Distance Unit"
+msgstr "የርቀት አሃድ"
+
+#: 
+msgid "Duration"
+msgstr "ግዜ"
+
+#: 
+msgid "Email Dashboard"
+msgstr "ኢሜይል ዳሽቦርድ"
+
+#: 
+msgid "Email Integrations"
+msgstr "ኢሜይል ውህደቶች"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "ኢሜይል አድራሻዎች ወደ ክሊፕቦርድ ቅዳ"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "ኢሜይል ተግባር በአሁኑ ጊዜ ተሰናክሏል። የሚከተሉት ባህሪያት ኢሜይል እስክ ይነቁ ድረስ አይሰራም:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "ኢሜይል ተሰናክሏል"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "በቡድን እና በሰዎች ዓሣ ውስጥ ኢሜይል ግንኙነት"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "ኢሜይል ዝርዝር ከ Mailchimp ጋር ተመሳሳይ ነው።"
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "ከስር በቅንብር ፓነል ውስጥ ኢሜይል ዋ, ከዚያ በሌላ SMTP ሰርቨር ያዋቅሩ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "ማብቂያ ቀን"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "ከዚህ በታች ማንኛውም ክፍል ያስገቡ: ስም, ከተማ, ስቴት, ዚፕ, የቤት ስልክ, ኢሜይል ወይም ሥራ ኢሜይል።"
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "ውጫዊ ቀን መቁጠሪያ API ተሰናክሏል"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "ውሂብ ያግኙ ወደ አልተሳካም"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "ኢሜይል አድራሻዎች ያግኙ ወደ አልተሳካም"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "ስልክ ቁጥሮች ያግኙ ወደ አልተሳካም"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "የመስክ እሴት"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ክስተት ያልተገኙ ሰዎች ያግኙ"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "አንድ ዓመት ግን ሌላ አልጋለበው ሰዎች ያግኙ"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "ብጁ ሜዳ እሴት ሰዎች ያግኙ"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "ለአንድ ነጠላ ዕድሎት ሰዓቶች ያግኙ"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "ሁለት ተወሰነ ዕድሎት ኮዶች ጋር ልክ እንደ ሰዓቶች ያግኙ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "የመጀመር የቤጀት ዓመት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "ለንጽጽር የመጀመር የቤጀት ዓመት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "የመጀመር ሰአት ዕድሎት ምረጥ"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "በቀድሞ ወራት ውስጥ ወደላ ገቦዊ ጥበቃ"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "እንግዳ"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "ክዮስክ ሙሙና ኢሜይል ማስታወሰ"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp ተገናኘ"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp ያልተዋቀረ"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS/ጽሁፍ ንግግር ነገሮች እና ቅንብር ያስተዳድሩ"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "ክስተቶች, ሞልድስ, እና የዓመት ዓመቱን ያስተዳድሩ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "ብጁ መስክ ከዚህ እሴት ጋር ያገናኙ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "ከፍተኛ ዕድሜ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "አባል, አሃዱ ተሳታፊ, ወዘተ"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "በአንድ ተወሰነ ወር ውስጥ ተጠቃሚዎች"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "አባልነት ዓመታዊ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "ዝቅተኛ ዕድሜ"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "ሰዎች ጠፍተዋል"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "ግለሠብ ጠፍተዋል"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "ወር"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "ወራት"
+
+#: 
+msgid "My Calendars"
+msgstr "የኔ ዓመታዊ"
+
+#: 
+msgid "New member notification emails"
+msgstr "አዲስ አባል ማስታወስ ኢሜይሎች"
+
+#: 
+msgid "No cell phone on file"
+msgstr "በ ፋይል ውስጥ ሞባይል ስልክ የለም"
+
+#: 
+msgid "No email addresses available"
+msgstr "ኢሜይል አድራሻዎች አይገኙም"
+
+#: 
+msgid "No phone numbers available"
+msgstr "ስልክ ቁጥሮች አይገኙም"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "ያልተገኘ"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "ያልተገኘ (ሠራተኛ)"
+
+#: 
+msgid "Not Classified"
+msgstr "ያልተመደበ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "ጥበቃ ከሆነ ወር ብዛት"
+
+#: 
+msgid "Parents"
+msgstr "ወላጆች"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "ይለወጡት ደጋግሞ ኢሜይሎች — ተጠቃሚዎች ሳንቱ ይመልሳል ማይወሱ"
+
+#: 
+msgid "People Settings"
+msgstr "ሰዎች ቅንብር"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "በአንድ ተወሰነ ወር ውስጥ ሞልድስ ያለ ሰዎች"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "ግለሠብ ንብረት ሕግ"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "ግለሠብ ንብረት አባላት ከ SMS/ጽሁፍ ዝርዝር ለማስቀር ጥቅም ላይ ይውላል"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "ግለሠብ ንብረት አባላት ከ ኢሜይል ዝርዝር ለማስቀር ጥቅም ላይ ይውላል"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "ስልክ ቁጥሮች ወደ ክሊፕቦርድ ቅዳ"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "ስልክ ቁጥሮች ቅዳ — ወደ ራእ ሙሙና ትግበራ ተንጺ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "እባክዎ ለእያንዳንዱ አባል አጠቃላይ ትብነት ለማስላት የመጨረሻ ቀን ያስገቡ (ማለት YYYY-MM-DD)።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "እባክዎ ለእያንዳንዱ አባል አጠቃላይ ትብነት ለማስላት የመጀመር ቀን ይምረጡ (ማለት YYYY-MM-DD)። ማስታወስ: ደሞ ወይም አገልግሎት ያለ ቀን ብቻ መምረጥ ይችላሉ።"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "ግለሠብ ንድነት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "ይህ ዓመት ግለሠብ"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "ለ ቅዳ CTRL + C ተጫን"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "ንብረት"
+
+#: 
+msgid "Public calendar"
+msgstr "ህዝብ ዓመታዊ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "ፍለጋ"
 
