@@ -263,10 +263,8 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Defer rendering until translations are loaded so that i18next.t() calls
       // in component-own strings (Yes/No/Save) return translated values.
-      // Fall back to immediate init when locale infrastructure is not present.
-      if (window.CRM && window.CRM.localesLoaded) {
-        this._doInit();
-      } else if (!window.CRM || !window.i18next) {
+      // If locale infrastructure is not present, init immediately.
+      if (!window.CRM || !window.i18next || window.CRM.localesLoaded) {
         this._doInit();
       } else {
         window.addEventListener("CRM.localesReady", () => this._doInit(), { once: true });
