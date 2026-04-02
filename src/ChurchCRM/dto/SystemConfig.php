@@ -378,8 +378,12 @@ class   SystemConfig
         if (!$item || !$item->getData()) {
             return [];
         }
-        $data = json_decode($item->getData(), true);
-        if (!isset($data['Choices'])) {
+        try {
+            $data = json_decode($item->getData(), true, 512, JSON_THROW_ON_ERROR);
+        } catch (\JsonException) {
+            return [];
+        }
+        if (!is_array($data) || !isset($data['Choices'])) {
             return [];
         }
         $choices = [];

@@ -292,35 +292,6 @@ node locale/scripts/locale-branch-manager.js --get-translated
 # Output: { translated: ["af", "sq", "am", "ar"] }
 ```
 
-### Term Exclusion — `locale/scripts/locale-exclude-terms.js`
-
-Removes terms that should NOT be localized from batch files before translation.
-
-```bash
-# Remove excluded terms from one locale (before translation)
-node locale/scripts/locale-exclude-terms.js --locale af
-# Output: af-1.json: removed 5 term(s)
-
-# Remove excluded terms from all locales
-node locale/scripts/locale-exclude-terms.js --all
-# Output: Done — 142 term(s) excluded from all locales
-```
-
-### Term Reversion — `locale/scripts/locale-revert-excluded-terms.js`
-
-Reverts incorrectly localized terms back to English (cleanup after translation).
-
-```bash
-# Revert excluded terms in one locale
-node locale/scripts/locale-revert-excluded-terms.js --locale af
-# Output: af-1.json: reverted 1 term(s)
-#   - "N/A" (was: "Nie van toepassing")
-
-# Revert excluded terms in all locales
-node locale/scripts/locale-revert-excluded-terms.js --all
-# Output: Done — 26 term(s) reverted to English
-```
-
 ---
 
 ## Complete Agent Workflow

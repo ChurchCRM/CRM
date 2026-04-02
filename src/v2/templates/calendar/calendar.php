@@ -69,21 +69,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#calendarSettings',
-        title: <?= json_encode(gettext('Calendar Settings')) ?>,
+        title: <?= json_encode(gettext('Calendar Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         icon: 'fa-solid fa-sliders',
         headerClass: 'bg-info-lt',
         settings: [
             {
                 name: 'bEnabledEvents',
                 type: 'boolean',
-                label: <?= json_encode(gettext('Enable Events Menu')) ?>,
-                tooltip: <?= json_encode(gettext('Show or hide the Events menu in the main navigation.')) ?>
+                label: <?= json_encode(gettext('Enable Events Menu'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(gettext('Show or hide the Events menu in the main navigation.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             },
             {
                 name: 'bEnableExternalCalendarAPI',
                 type: 'boolean',
-                label: <?= json_encode(gettext('Enable External Calendar API')) ?>,
-                tooltip: <?= json_encode(gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.')) ?>
+                label: <?= json_encode(gettext('Enable External Calendar API'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],
         showAllSettingsLink: false,

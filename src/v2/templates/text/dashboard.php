@@ -67,15 +67,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#textSettings',
-        title: <?= json_encode(gettext('Text Settings')) ?>,
+        title: <?= json_encode(gettext('Text Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         icon: 'fa-solid fa-comment-sms',
         settings: [
             {
                 name: 'iDoNotSmsPropertyId',
                 type: 'ajax',
-                label: <?= json_encode(gettext('Do Not SMS Property')) ?>,
+                label: <?= json_encode(gettext('Do Not SMS Property'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
                 ajaxUrl: '/api/system/properties/person',
-                tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotSmsPropertyId')) ?>
+                tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotSmsPropertyId'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
             }
         ],
         showAllSettingsLink: true

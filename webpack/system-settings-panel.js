@@ -34,7 +34,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="form-label small fw-bold mb-1">
-                            ${resolve(setting.label)}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
                         </div>
                         <div class="form-selectgroup form-selectgroup-pills">
@@ -71,7 +71,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${resolve(setting.label)}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="number" class="form-control setting-input"
@@ -80,7 +80,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                value="${value || ""}"
                                ${setting.min !== undefined ? `min="${setting.min}"` : ""}
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -93,7 +93,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${resolve(setting.label)}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <input type="text" class="form-control setting-input"
@@ -101,7 +101,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                data-type="text"
                                value="${escapeHtml(value || "")}"
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -123,7 +123,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${resolve(setting.label)}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <select class="form-select setting-input"
@@ -131,7 +131,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 data-type="choice">
                             ${optionsHtml}
                         </select>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -152,7 +152,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${resolve(setting.label)}
+                ${escapeHtml(resolve(setting.label))}
               </label>
               <div class="input-group">
                 <input type="password" class="form-control setting-input"
@@ -162,7 +162,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                      placeholder="${t("Leave blank to keep existing")}">
                 ${generateBtn}
               </div>
-              ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `;
       },
@@ -176,7 +176,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${resolve(setting.label)}
+                ${escapeHtml(resolve(setting.label))}
               </label>
               <select class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
@@ -184,7 +184,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                       data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
                 <option value="">${t("Unassigned")}</option>
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${resolve(setting.tooltip)}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `;
       },
@@ -262,8 +262,11 @@ import "../src/skin/scss/system-settings-panel.scss";
       }
 
       // Defer rendering until translations are loaded so that i18next.t() calls
-      // in setting labels/tooltips return translated strings instead of undefined.
+      // in component-own strings (Yes/No/Save) return translated values.
+      // Fall back to immediate init when locale infrastructure is not present.
       if (window.CRM && window.CRM.localesLoaded) {
+        this._doInit();
+      } else if (!window.CRM || !window.i18next) {
         this._doInit();
       } else {
         window.addEventListener("CRM.localesReady", () => this._doInit(), { once: true });
@@ -271,8 +274,8 @@ import "../src/skin/scss/system-settings-panel.scss";
     }
 
     _doInit() {
-      // Render structure immediately so the collapse container is never empty
-      // when the user opens the panel. Values are fetched and applied afterwards
+      // Render the panel structure so the collapse container is not empty
+      // when the user opens it. Values are fetched from the API afterwards
       // without replacing innerHTML (no animation interruption).
       this.render();
       this.bindEvents();
