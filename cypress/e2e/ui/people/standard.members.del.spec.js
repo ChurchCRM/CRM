@@ -10,7 +10,7 @@ describe("Standard Family", () => {
         cy.get("#LastName").type("TestPerson");
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get(".fab-save").first().click();
+        cy.get('button[name="PersonSubmit"]').click();
 
         cy.url().should("contain", "PersonView.php").then((url) => {
             const personId = new URL(url).searchParams.get("PersonID");
@@ -33,7 +33,7 @@ describe("Standard Family", () => {
         cy.get("#FamilyName").type("TempDelFamily");
         cy.get('input[name="FirstName1"]').type("TempDel");
         cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get(".fab-save").first().click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         cy.location("pathname").should("include", "/v2/family/").then((pathname) => {
             const familyId = pathname.split("/").pop();
