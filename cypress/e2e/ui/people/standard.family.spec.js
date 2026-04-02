@@ -61,7 +61,7 @@ describe("Standard Family", () => {
         cy.get('select[name="Classification6"]').select("2", { force: true });
 
         // Click FAB save button (on FamilyEditor page, not family view)
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         // Should redirect to family view page
         cy.location("pathname").should("include", "/v2/family/");
@@ -85,7 +85,7 @@ describe("Standard Family", () => {
         cy.get("#WeddingDate").clear();
 
         // Click FAB save button (on FamilyEditor page)
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         cy.location("pathname").should("include", "/v2/family/");
         cy.get('body').should('not.contain', 'mike@example.com');
