@@ -21,12 +21,6 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
 {
     $renderer = new PhpRenderer('templates/email/');
 
-    $emailSettingTooltips = [];
-    foreach (['bEnabledEmail', 'sSMTPHost', 'iSMTPTimeout', 'sPHPMailerSMTPSecure', 'bPHPMailerAutoTLS', 'bSMTPAuth', 'sSMTPUser', 'sSMTPPass', 'sToEmailAddress', 'iDoNotEmailPropertyId'] as $key) {
-        $item = SystemConfig::getConfigItem($key);
-        $emailSettingTooltips[$key] = $item?->getTooltip() ?? '';
-    }
-
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),
         'sPageTitle' => gettext('Email Dashboard'),
@@ -40,7 +34,6 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
             ['label' => gettext('Debug'), 'url' => '/admin/system/debug/email', 'icon' => 'fa-stethoscope', 'adminOnly' => true],
             ['label' => gettext('Email Settings'), 'collapse' => '#emailSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
-        'emailSettingTooltips' => $emailSettingTooltips,
         'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
         'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
         'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,

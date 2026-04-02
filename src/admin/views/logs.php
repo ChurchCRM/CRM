@@ -410,7 +410,16 @@ var logLevelMap = {
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#logSettings',
-        settings: [ 'sLogLevel' ],
+        title: <?= json_encode(gettext('Log Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+        settings: [
+            {
+                name: 'sLogLevel',
+                type: 'choice',
+                label: <?= json_encode(gettext('Log Level'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                tooltip: <?= json_encode(SystemConfig::getTooltip('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                choices: <?= json_encode(SystemConfig::getChoices('sLogLevel'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+            }
+        ],
         onSave: function() {
             window.CRM.notify(i18next.t('Log settings saved'), { type: 'success' });
             // Update the current log level display

@@ -76,11 +76,6 @@ function getMapView(Request $request, Response $response, array $args): Response
 
     $renderer = new PhpRenderer('templates/map/');
 
-    $mapSettingTooltips = [];
-    foreach (SystemConfig::getSettingsConfig(['bHideLatLon', 'bHidePersonAddress']) as $s) {
-        $mapSettingTooltips[$s['name']] = $s['tooltip'];
-    }
-
     $pageArgs = [
         'sRootPath'          => SystemURLs::getRootPath(),
         'sPageTitle'         => $groupName !== null ? gettext('Group Map') : gettext('Congregation Map'),
@@ -101,7 +96,6 @@ function getMapView(Request $request, Response $response, array $args): Response
             ['label' => gettext('Family Geographic'), 'url' => '/GeoPage.php', 'icon' => 'fa-globe', 'adminOnly' => false],
             ['label' => gettext('Map Settings'), 'collapse' => '#mapAdminSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
-        'mapSettingTooltips' => $mapSettingTooltips,
         'mapConfig'        => [
             'churchLat'    => (float) ChurchMetaData::getChurchLatitude(),
             'churchLng'    => (float) ChurchMetaData::getChurchLongitude(),

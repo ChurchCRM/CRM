@@ -8,12 +8,15 @@
  *    <script src="/skin/v2/system-settings-panel.min.js"></script>
  * (When rendering server-side you may prepend the application's root path.)
  * 3. Add container: <div id="settingsPanel"></div>
- * 4. Initialize:
+ * 4. Initialize (labels/types/choices are provided by the caller, not the component):
  *    window.CRM.settingsPanel.init({
  *        container: '#settingsPanel',
  *        title: 'Financial Settings',
  *        icon: 'fa-solid fa-sliders',
- *        settings: ['iFYMonth', 'bEnableNonDeductible', 'iChecksPerDepositForm'],
+ *        settings: [
+ *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
+ *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
+ *        ],
  *        onSave: function() { window.location.reload(); }
  *    });
  */
@@ -27,13 +30,12 @@ import "../src/skin/scss/system-settings-panel.scss";
   const SettingTypes = {
     boolean: {
       render: function (setting, value) {
-        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const isOn = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <div class="form-label small fw-bold mb-1">
-                            ${setting.label}
-                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(setting.tooltip)}"></i>` : ""}
+                            ${escapeHtml(resolve(setting.label))}
+                            ${setting.tooltip ? `<i class="fa-solid fa-circle-question text-muted ms-1" data-bs-toggle="tooltip" data-placement="top" title="${escapeHtml(resolve(setting.tooltip))}"></i>` : ""}
                         </div>
                         <div class="form-selectgroup form-selectgroup-pills">
                             <label class="form-selectgroup-item">
@@ -69,16 +71,16 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="number" class="form-control setting-input" 
+                        <input type="number" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="number"
-                               value="${value || ""}" 
+                               value="${value || ""}"
                                ${setting.min !== undefined ? `min="${setting.min}"` : ""}
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -91,15 +93,15 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-info ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
-                        <input type="text" class="form-control setting-input" 
+                        <input type="text" class="form-control setting-input"
                                id="${setting.name}" name="${setting.name}"
                                data-type="text"
                                value="${escapeHtml(value || "")}"
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -115,13 +117,13 @@ import "../src/skin/scss/system-settings-panel.scss";
             const optValue = typeof choice === "object" ? choice.value : choice;
             const optLabel = typeof choice === "object" ? choice.label : choice;
             const selected = String(value) === String(optValue) ? "selected" : "";
-            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(optLabel)}</option>`;
+            optionsHtml += `<option value="${escapeHtml(optValue)}" ${selected}>${escapeHtml(resolve(optLabel))}</option>`;
           });
         }
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                            ${setting.label}
+                            ${escapeHtml(resolve(setting.label))}
                             ${setting.helpLink ? `<a href="${setting.helpLink}" target="_blank" class="text-muted ms-1"><i class="fa-solid fa-circle-question"></i></a>` : ""}
                         </label>
                         <select class="form-select setting-input"
@@ -129,7 +131,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 data-type="choice">
                             ${optionsHtml}
                         </select>
-                        ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+                        ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
                 `;
       },
@@ -142,7 +144,6 @@ import "../src/skin/scss/system-settings-panel.scss";
     // Set setting.generate = true to add a "Generate" button that fills the field.
     password: {
       render: function (setting) {
-        const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
         const generateBtn = setting.generate
           ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
                <i class="fa-solid fa-key me-1"></i>${t("Generate")}
@@ -151,7 +152,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${setting.label}
+                ${escapeHtml(resolve(setting.label))}
               </label>
               <div class="input-group">
                 <input type="password" class="form-control setting-input"
@@ -161,7 +162,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                      placeholder="${t("Leave blank to keep existing")}">
                 ${generateBtn}
               </div>
-              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `;
       },
@@ -175,15 +176,15 @@ import "../src/skin/scss/system-settings-panel.scss";
         return `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
-                ${setting.label}
+                ${escapeHtml(resolve(setting.label))}
               </label>
               <select class="form-select setting-input"
                       id="${setting.name}" name="${setting.name}"
                       data-type="ajax"
                       data-ajax-url="${escapeHtml(setting.ajaxUrl || "")}">
-                <option value="">${window.i18next ? i18next.t("Unassigned") : "Unassigned"}</option>
+                <option value="">${t("Unassigned")}</option>
               </select>
-              ${setting.tooltip ? `<small class="form-text text-muted">${setting.tooltip}</small>` : ""}
+              ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
           `;
       },
@@ -201,121 +202,21 @@ import "../src/skin/scss/system-settings-panel.scss";
     return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
   }
 
-  // Month choices helper
-  function getMonthChoices() {
-    return [
-      { value: "1", label: window.i18next ? i18next.t("January") : "January" },
-      { value: "2", label: window.i18next ? i18next.t("February") : "February" },
-      { value: "3", label: window.i18next ? i18next.t("March") : "March" },
-      { value: "4", label: window.i18next ? i18next.t("April") : "April" },
-      { value: "5", label: window.i18next ? i18next.t("May") : "May" },
-      { value: "6", label: window.i18next ? i18next.t("June") : "June" },
-      { value: "7", label: window.i18next ? i18next.t("July") : "July" },
-      { value: "8", label: window.i18next ? i18next.t("August") : "August" },
-      { value: "9", label: window.i18next ? i18next.t("September") : "September" },
-      { value: "10", label: window.i18next ? i18next.t("October") : "October" },
-      { value: "11", label: window.i18next ? i18next.t("November") : "November" },
-      { value: "12", label: window.i18next ? i18next.t("December") : "December" },
-    ];
+  // Translate a key at call-time. Falls back to the raw key if i18next is not
+  // yet initialised — so labels always show something meaningful.
+  function t(key) {
+    if (!key) return key;
+    if (window.i18next) {
+      const translated = i18next.t(key);
+      return translated !== undefined ? translated : key;
+    }
+    return key;
   }
 
-  // Pre-defined setting configurations (from SystemConfig)
-  const SettingDefinitions = {
-    // System Settings
-    sLogLevel: {
-      type: "choice",
-      label: "Log Level",
-      tooltip: "Event log severity to write, used by ORM and App Logs",
-      choices: [
-        { value: "100", label: "DEBUG (100)" },
-        { value: "200", label: "INFO (200)" },
-        { value: "250", label: "NOTICE (250)" },
-        { value: "300", label: "WARNING (300)" },
-        { value: "400", label: "ERROR (400)" },
-        { value: "500", label: "CRITICAL (500)" },
-        { value: "550", label: "ALERT (550)" },
-        { value: "600", label: "EMERGENCY (600)" },
-      ],
-    },
-    // Financial Settings
-    iFYMonth: {
-      type: "choice",
-      label: "First month of the fiscal year",
-      choices: getMonthChoices,
-    },
-    sDepositSlipType: {
-      type: "choice",
-      label: "Deposit ticket type",
-      tooltip: "QBDT - QuickBooks Deposit Ticket",
-      choices: [{ value: "QBDT", label: "QBDT (QuickBooks)" }],
-    },
-    iChecksPerDepositForm: {
-      type: "number",
-      label: "Number of checks for Deposit Slip Report",
-      min: 1,
-      max: 100,
-    },
-    bDisplayBillCounts: {
-      type: "boolean",
-      label: "Display bill counts on deposit slip",
-    },
-    bUseScannedChecks: {
-      type: "boolean",
-      label: "Enable use of scanned checks",
-    },
-    bEnableNonDeductible: {
-      type: "boolean",
-      label: "Enable non-deductible payments",
-    },
-    bUseDonationEnvelopes: {
-      type: "boolean",
-      label: "Enable use of donation envelopes",
-    },
-    aFinanceQueries: {
-      type: "text",
-      label: "Finance permission query IDs",
-      tooltip: "Comma-separated query IDs requiring finance permissions",
-      placeholder: "30,31,32",
-    },
-    // Church Information
-    sChurchName: {
-      type: "text",
-      label: "Church Name",
-    },
-    sChurchAddress: {
-      type: "text",
-      label: "Church Address",
-    },
-    sChurchCity: {
-      type: "text",
-      label: "Church City",
-    },
-    sChurchState: {
-      type: "text",
-      label: "Church State",
-    },
-    sChurchZip: {
-      type: "text",
-      label: "Church Zip",
-    },
-    sChurchPhone: {
-      type: "text",
-      label: "Church Phone",
-    },
-    sChurchEmail: {
-      type: "text",
-      label: "Church Email",
-    },
-    // Report Settings
-    sTaxSigner: {
-      type: "text",
-      label: "Tax Report signer",
-    },
-    sReminderSigner: {
-      type: "text",
-      label: "Pledge Reminder Signer",
-    },
-  };
+  // Safely resolve a setting label or tooltip, returning "" for falsy values.
+  function resolve(value) {
+    return value || "";
+  }
 
   // Settings Panel Class
   class SettingsPanel {
@@ -347,6 +248,8 @@ import "../src/skin/scss/system-settings-panel.scss";
           settings: [],
           onSave: null,
           showAllSettingsLink: true,
+          allSettingsUrl: "/SystemSettings.php",
+          configApiPath: "/admin/api/system/config",
           headerClass: "bg-primary-lt",
         },
         options,
@@ -358,8 +261,19 @@ import "../src/skin/scss/system-settings-panel.scss";
         return;
       }
 
-      // Render structure immediately so the collapse container is never empty
-      // when the user opens the panel. Values are fetched and applied afterwards
+      // Defer rendering until translations are loaded so that i18next.t() calls
+      // in component-own strings (Yes/No/Save) return translated values.
+      // If locale infrastructure is not present, init immediately.
+      if (!window.CRM || !window.i18next || window.CRM.localesLoaded) {
+        this._doInit();
+      } else {
+        window.addEventListener("CRM.localesReady", () => this._doInit(), { once: true });
+      }
+    }
+
+    _doInit() {
+      // Render the panel structure so the collapse container is not empty
+      // when the user opens it. Values are fetched from the API afterwards
       // without replacing innerHTML (no animation interruption).
       this.render();
       this.bindEvents();
@@ -380,7 +294,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(window.CRM.root + "/admin/api/system/config/" + name)
+        fetch(window.CRM.root + self.options.configApiPath + "/" + name)
           .then((response) => response.json())
           .then((data) => {
             // For ajax selects, load options from the remote URL first
@@ -451,15 +365,9 @@ import "../src/skin/scss/system-settings-panel.scss";
 
         const renderer = SettingTypes[settingConfig.type];
         if (renderer) {
-          // Handle dynamic choices (functions)
-          if (typeof settingConfig.choices === "function") {
-            settingConfig.choices = settingConfig.choices();
-          }
           settingsHtml += renderer.render(settingConfig, "");
         }
       });
-
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
       // Presets bar
       let presetsHtml = "";
@@ -484,7 +392,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                 <div class="card settings-panel-card">
                     <div class="card-header ${this.options.headerClass} py-2">
                         <h6 class="mb-0">
-                            <i class="${this.options.icon} me-1"></i>${this.options.title}
+                            <i class="${this.options.icon} me-1"></i>${resolve(this.options.title)}
                         </h6>
                     </div>
                     <div class="card-body">
@@ -498,7 +406,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 ${
                                   this.options.showAllSettingsLink
                                     ? `
-                                <a href="${window.CRM.root}/SystemSettings.php" class="btn btn-outline-secondary btn-sm">
+                                <a href="${window.CRM.root}${this.options.allSettingsUrl}" class="btn btn-outline-secondary btn-sm">
                                     <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${t("All System Settings")}
                                 </a>
                                 `
@@ -516,13 +424,12 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.container.innerHTML = html;
     }
 
-    // Get merged setting configuration
+    // Get merged setting configuration from the caller-supplied object.
+    // Falls back to { type: "text", label: name } when no config is provided.
     getSettingConfig(setting) {
       const name = typeof setting === "string" ? setting : setting.name;
-      const baseConfig = SettingDefinitions[name] || { type: "text", label: name };
       const customConfig = typeof setting === "object" ? setting : {};
-
-      return Object.assign({ name: name }, baseConfig, customConfig);
+      return Object.assign({ name: name, type: "text", label: name }, customConfig);
     }
 
     // Bind event handlers
@@ -561,7 +468,6 @@ import "../src/skin/scss/system-settings-panel.scss";
           Object.keys(preset.values).forEach(function (key) {
             self.applyValue(key, preset.values[key]);
           });
-          const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
               type: "info",
@@ -596,7 +502,6 @@ import "../src/skin/scss/system-settings-panel.scss";
       const self = this;
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
       const originalHtml = saveBtn.innerHTML;
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
       // Disable button and show loading
       saveBtn.disabled = true;
@@ -617,7 +522,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Save each setting
       const promises = Object.keys(settings).map(function (key) {
-        return fetch(window.CRM.root + "/admin/api/system/config/" + key, {
+        return fetch(window.CRM.root + self.options.configApiPath + "/" + key, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -643,11 +548,6 @@ import "../src/skin/scss/system-settings-panel.scss";
           saveBtn.disabled = false;
           saveBtn.innerHTML = originalHtml;
         });
-    }
-
-    // Add a custom setting definition
-    static addSettingDefinition(name, config) {
-      SettingDefinitions[name] = config;
     }
 
     // Add a custom setting type renderer

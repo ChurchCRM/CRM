@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 // Use the page title set by the route; append a setup-required note if location is missing
@@ -74,33 +75,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function() {
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
-            title: i18next.t('Map Settings'),
+            title: <?= json_encode(gettext('Map Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
             icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',
-                    label: i18next.t('Default Map View'),
                     type: 'choice',
-                    choices: [
-                        { value: '3', label: i18next.t('Continent') },
-                        { value: '5', label: i18next.t('Country') },
-                        { value: '7', label: i18next.t('State') },
-                        { value: '10', label: i18next.t('City') },
-                        { value: '14', label: i18next.t('Neighborhood') },
-                        { value: '18', label: i18next.t('Street') }
-                    ]
+                    label: <?= json_encode(gettext('Default Map View'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                    choices: <?= json_encode(SystemConfig::getChoices('iMapZoom'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
                 },
                 {
                     name: 'bHideLatLon',
-                    label: i18next.t('Hide Latitude/Longitude'),
                     type: 'boolean',
-                    tooltip: <?= json_encode($mapSettingTooltips['bHideLatLon'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= json_encode(gettext('Hide Latitude/Longitude'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHideLatLon'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
                 },
                 {
                     name: 'bHidePersonAddress',
-                    label: i18next.t('Hide Person Address'),
                     type: 'boolean',
-                    tooltip: <?= json_encode($mapSettingTooltips['bHidePersonAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= json_encode(gettext('Hide Person Address'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
+                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHidePersonAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
                 }
             ],
             showAllSettingsLink: false

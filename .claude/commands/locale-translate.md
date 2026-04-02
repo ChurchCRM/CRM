@@ -73,6 +73,37 @@ Standard UI terms (Save, Cancel, Delete, Search, etc.) → use normal native-lan
 
 **Format specifiers** (`%d`, `%s`, `%1$s`) are preserved verbatim in all translations.
 
+### ⛔ DO NOT TRANSLATE These Terms
+
+The following terms must NEVER be localized — always leave them unchanged:
+
+**Universal Abbreviations & Symbols:**
+- `N/A` — Leave as `N/A` (not "Not Applicable")
+- `@` — Email symbol (e.g., `name@example.com`)
+- `SMS`, `SMTP`, `IMAP`, `POP3` — Communication protocols
+- `API`, `HTTP`, `HTTPS`, `OAuth`, `REST` — Web standards
+- `JSON`, `CSV`, `XML`, `HTML`, `CSS` — Data/markup formats
+- `URL`, `URI`, `UUID`, `RFC`, `ISO`, `UTC` — Technical abbreviations
+
+**Brand & Product Names:**
+- `ChurchCRM` — Our application name
+- `Vonage` — SMS/communication provider
+- `Mailchimp` — Email service
+- `GitHub` — Code repository platform
+- `Google Meet`, `Slack`, `Zoom` — Third-party services
+- `POEditor` — Translation platform
+
+**Technical Terms:**
+- `JavaScript`, `PHP`, `Python`, `SQL` — Programming languages
+- `MySQL`, `PostgreSQL` — Databases
+- `Docker`, `Kubernetes` — Infrastructure tools
+
+**Email/URL Examples:**
+- `name@example.com` — Placeholder email
+- Any URL or domain example
+
+If a batch file contains any of these terms with EMPTY translations, **leave them empty** — do not translate them.
+
 ### Denomination Context by Locale
 
 Translations use denomination-appropriate ecclesiastical vocabulary for each region:

@@ -478,20 +478,19 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
-    // Initialize the settings panel with financial settings
     window.CRM.settingsPanel.init({
         container: '#financialSettings',
-        title: i18next.t('Financial Settings'),
+        title: <?= json_encode(gettext('Financial Settings'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
-            'iFYMonth',
-            'sDepositSlipType',
-            'iChecksPerDepositForm',
-            'bDisplayBillCounts',
-            'bUseScannedChecks',
-            'bEnableNonDeductible',
-            'bUseDonationEnvelopes',
-            'aFinanceQueries'
+            { name: 'iFYMonth',          type: 'choice', label: <?= json_encode(gettext('First month of the fiscal year'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, choices: <?= json_encode(SystemConfig::getChoices('iFYMonth'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'sDepositSlipType',  type: 'choice', label: <?= json_encode(gettext('Deposit ticket type'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, tooltip: <?= json_encode(SystemConfig::getTooltip('sDepositSlipType'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, choices: <?= json_encode(SystemConfig::getChoices('sDepositSlipType'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'iChecksPerDepositForm', type: 'number',  label: <?= json_encode(gettext('Number of checks for Deposit Slip Report'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, min: 1, max: 100 },
+            { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= json_encode(gettext('Display bill counts on deposit slip'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'bUseScannedChecks',     type: 'boolean', label: <?= json_encode(gettext('Enable use of scanned checks'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= json_encode(gettext('Enable non-deductible payments'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= json_encode(gettext('Enable use of donation envelopes'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
+            { name: 'aFinanceQueries',       type: 'text',    label: <?= json_encode(gettext('Finance permission query IDs'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, placeholder: '30,31,32' }
         ],
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data

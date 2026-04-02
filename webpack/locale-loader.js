@@ -191,9 +191,9 @@ async function loadLocaleFiles(localeConfig) {
       // Detect browser locale and prompt user if different
       checkBrowserLocale();
 
-      // Dispatch event to signal that locales are ready
-      window.dispatchEvent(new Event("CRM.localesReady"));
+      // Set flag BEFORE dispatching so synchronous event listeners see it as true
       window.CRM.localesLoaded = true;
+      window.dispatchEvent(new Event("CRM.localesReady"));
     }
   } catch (error) {
     console.error("Error loading locale files:", error);

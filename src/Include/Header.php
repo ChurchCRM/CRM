@@ -172,11 +172,11 @@ $MenuFirst = 1;
       </button>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
-             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: gettext('ChurchCRM')) ?>"
+             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
              class="navbar-brand-image"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
-          <?= ChurchMetaData::getChurchName() ?: gettext('ChurchCRM') ?>
+          <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
         </span>
       </a>
       <div class="collapse navbar-collapse" id="sidebar-menu">

@@ -193,7 +193,7 @@ $(document).ready(function() {
     // Initialize the user settings panel
     window.CRM.settingsPanel.init({
         container: '#userSettingsPanel',
-        title: i18next.t('Quick Settings'),
+        title: <?= json_encode(gettext('Quick Settings')) ?>,
         icon: 'fa-solid fa-user-cog',
         headerClass: 'bg-primary',
         settings: <?= json_encode($userSettingsConfig, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,
