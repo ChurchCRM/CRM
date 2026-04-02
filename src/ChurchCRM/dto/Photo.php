@@ -189,7 +189,7 @@ class Photo
         // Validate file size (check against max upload size)
         $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
         if (strlen($fileData) > $maxSize) {
-            throw new \Exception('Image file size exceeds maximum allowed size');
+            throw new \Exception('Image file size exceeds maximum allowed size of ' . ini_get('upload_max_filesize'));
         }
         
         // Create GD image from uploaded data

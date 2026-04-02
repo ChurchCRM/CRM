@@ -242,9 +242,10 @@ describe("API Private Photo and Avatar - Person", () => {
                 "POST",
                 `/api/person/${testPersonId}/photo`,
                 JSON.stringify({ imgBase64: largeBase64 }),
-                400
+                [400, 413]
             ).then((response) => {
                 expect(response.body.success).to.eq(false);
+                expect(response.body).to.have.property("message");
             });
         });
     });

@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Token;
 use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -90,6 +91,21 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
         $input = $request->getParsedBody();
 
+        // Detect when PHP discarded the request body because post_max_size was exceeded
+        if (empty($input) || !isset($input['imgBase64'])) {
+            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+            $maxSize = SystemService::getMaxUploadFileSize(false);
+            if ($contentLength > 0 && $contentLength > $maxSize) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
+                    [],
+                    413
+                );
+            }
+            return SlimUtils::renderErrorJSON($response, gettext('Missing image data in request'), [], 400);
+        }
+
         try {
             $family->setImageFromBase64($input['imgBase64']);
             // Refresh photo status and return updated info
@@ -99,6 +115,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
             ]);
         } catch (\Throwable $e) {
+            if (str_contains($e->getMessage(), 'exceeds maximum allowed size')) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
+                    [],
+                    413,
+                    $e,
+                    $request
+                );
+            }
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload family photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);

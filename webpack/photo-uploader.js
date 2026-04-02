@@ -38,6 +38,11 @@ export function createPhotoUploader(config) {
   const maxFileSizeBytes =
     typeof config.maxFileSize === "string" ? parseInt(config.maxFileSize, 10) : config.maxFileSize || 5000000;
 
+  // Base64 encoding inflates file size by exactly 33% (4 bytes output per 3 bytes input,
+  // i.e. a 4/3 ratio). Use 0.75 (inverse of 4/3) so the encoded JSON body stays within
+  // PHP's post_max_size when the file is converted before being sent to the API.
+  const effectiveMaxFileSizeBytes = Math.floor(maxFileSizeBytes * 0.75);
+
   const photoWidth = typeof config.photoWidth === "string" ? parseInt(config.photoWidth, 10) : config.photoWidth || 800;
 
   const photoHeight =
@@ -48,7 +53,7 @@ export function createPhotoUploader(config) {
     autoProceed: false,
     restrictions: {
       maxNumberOfFiles: 1,
-      maxFileSize: maxFileSizeBytes, // Default 5MB
+      maxFileSize: effectiveMaxFileSizeBytes,
       allowedFileTypes: ["image/*"],
     },
   })
@@ -56,7 +61,7 @@ export function createPhotoUploader(config) {
       inline: false, // Use modal mode
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
-      note: `Max file size: ${Math.round(maxFileSizeBytes / 1000000)}MB`,
+      note: `Max file size: ${Math.round(effectiveMaxFileSizeBytes / 1000000)}MB`,
       closeModalOnClickOutside: true,
       locale: {
         strings: {
