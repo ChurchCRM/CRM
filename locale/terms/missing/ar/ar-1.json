@@ -2,7 +2,7 @@
   "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled.": "تظهر هذه الروابط في قائمة \"الروابط\" في شريط التنقل الجانبي عند تفعيل هذا المكون الإضافي.",
   "name@example.com": "name@example.com",
   "SHA1 Hash": "SHA1 Hash",
-  "N/A": "غير متاح",
+  "N/A": "N/A",
   "Recent friends": "الأصدقاء الأخيرين",
   "Regular Attender": "الحاضرون المنتظمون",
   "Returns person records which are assigned the given property.": "إرجاع سجلات الأشخاص المعينة للخاصية المحددة.",

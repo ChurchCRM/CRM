@@ -73,6 +73,37 @@ Standard UI terms (Save, Cancel, Delete, Search, etc.) → use normal native-lan
 
 **Format specifiers** (`%d`, `%s`, `%1$s`) are preserved verbatim in all translations.
 
+### ⛔ DO NOT TRANSLATE These Terms
+
+The following terms must NEVER be localized — always leave them unchanged:
+
+**Universal Abbreviations & Symbols:**
+- `N/A` — Leave as `N/A` (not "Not Applicable")
+- `@` — Email symbol (e.g., `name@example.com`)
+- `SMS`, `SMTP`, `IMAP`, `POP3` — Communication protocols
+- `API`, `HTTP`, `HTTPS`, `OAuth`, `REST` — Web standards
+- `JSON`, `CSV`, `XML`, `HTML`, `CSS` — Data/markup formats
+- `URL`, `URI`, `UUID`, `RFC`, `ISO`, `UTC` — Technical abbreviations
+
+**Brand & Product Names:**
+- `ChurchCRM` — Our application name
+- `Vonage` — SMS/communication provider
+- `Mailchimp` — Email service
+- `GitHub` — Code repository platform
+- `Google Meet`, `Slack`, `Zoom` — Third-party services
+- `POEditor` — Translation platform
+
+**Technical Terms:**
+- `JavaScript`, `PHP`, `Python`, `SQL` — Programming languages
+- `MySQL`, `PostgreSQL` — Databases
+- `Docker`, `Kubernetes` — Infrastructure tools
+
+**Email/URL Examples:**
+- `name@example.com` — Placeholder email
+- Any URL or domain example
+
+If a batch file contains any of these terms with EMPTY translations, **leave them empty** — do not translate them.
+
 ### Denomination Context by Locale
 
 Translations use denomination-appropriate ecclesiastical vocabulary for each region:
@@ -259,6 +290,35 @@ node locale/scripts/locale-branch-manager.js --commit-and-push \
 # Get list of already-translated locales on current branch
 node locale/scripts/locale-branch-manager.js --get-translated
 # Output: { translated: ["af", "sq", "am", "ar"] }
+```
+
+### Term Exclusion — `locale/scripts/locale-exclude-terms.js`
+
+Removes terms that should NOT be localized from batch files before translation.
+
+```bash
+# Remove excluded terms from one locale (before translation)
+node locale/scripts/locale-exclude-terms.js --locale af
+# Output: af-1.json: removed 5 term(s)
+
+# Remove excluded terms from all locales
+node locale/scripts/locale-exclude-terms.js --all
+# Output: Done — 142 term(s) excluded from all locales
+```
+
+### Term Reversion — `locale/scripts/locale-revert-excluded-terms.js`
+
+Reverts incorrectly localized terms back to English (cleanup after translation).
+
+```bash
+# Revert excluded terms in one locale
+node locale/scripts/locale-revert-excluded-terms.js --locale af
+# Output: af-1.json: reverted 1 term(s)
+#   - "N/A" (was: "Nie van toepassing")
+
+# Revert excluded terms in all locales
+node locale/scripts/locale-revert-excluded-terms.js --all
+# Output: Done — 26 term(s) reverted to English
 ```
 
 ---

@@ -1,7 +1,7 @@
 {
-  "name@example.com": "ስም@example.com",
+  "name@example.com": "name@example.com",
   "SHA1 Hash": "SHA1 ሃሽ",
-  "N/A": "ተገዳሊ አይደለም",
+  "N/A": "N/A",
   "Recent friends": "ከተወቅ ጉብኝ ጓደኞች",
   "Regular Attender": "ደጋግሞ የሚገኘ አባል",
   "Returns person records which are assigned the given property.": "ለተሰጠው ንብረት የተመደቡ የ ሰው ሪከርዶችን ይመልስ።",
