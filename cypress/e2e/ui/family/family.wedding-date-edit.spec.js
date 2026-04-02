@@ -26,7 +26,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         // NOTE: Do NOT fill in the Wedding Date field
 
         // Save the family
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         // Should redirect to family view page
         cy.location("pathname").should("include", "/v2/family/");
@@ -55,7 +55,7 @@ describe("Family Wedding Date Edit Workflow", () => {
         );
 
         // Save the changes
-        cy.get(".fab-save").click();
+        cy.get('button[name="FamilySubmit"]').click();
 
         // Should be back on family view page
         cy.location("pathname").should("include", "/v2/family/");
