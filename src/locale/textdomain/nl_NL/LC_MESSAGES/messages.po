@@ -183,12 +183,10 @@ msgid "Group Membership"
 msgstr "Groepslidmaatschap"
 
 #: 
-#, fuzzy
 msgid "From"
 msgstr "Van"
 
 #: 
-#, fuzzy
 msgid "To"
 msgstr "Aan"
 
@@ -377,7 +375,6 @@ msgid "Your cart contains"
 msgstr "Uw werkbestand bevat"
 
 #: 
-#, fuzzy
 msgid "people from"
 msgstr "personen van"
 
@@ -447,28 +444,24 @@ msgid "Convert All"
 msgstr "Convert Alle"
 
 #: 
-#, fuzzy
 msgid "Deposit Slip Number"
-msgstr "Stortings Strookje Nummer"
+msgstr "Nummer van de stortingsbon"
 
 #: 
-#, fuzzy
 msgid "Deposit Details"
 msgstr "Storting details"
 
 #: 
-#, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
-msgstr "Belangrijk gegeven: Mislukte transacties zijn permananent verwijderd na het afsluiten van het stortings strookje."
+msgstr "Belangrijk: Mislukte transacties zijn permanent verwijderd na het afsluiten van de stortingsbon."
 
 #: 
 msgid "Add Payment"
 msgstr "Voer Betaling in"
 
 #: 
-#, fuzzy
 msgid "Load Authorized"
-msgstr "Laad ge-autorizeerde Transacties"
+msgstr "Laad ge-autoriseerde transacties"
 
 #: 
 msgid "Run Transactions"
@@ -1036,9 +1029,8 @@ msgid "Financial Reports"
 msgstr "Financiele Rapportage"
 
 #: 
-#, fuzzy
 msgid "Report Type"
-msgstr "Rapportage per soort"
+msgstr "Rapportage soort"
 
 #: 
 msgid "Select Report Type"
@@ -1085,19 +1077,16 @@ msgid "Filter by Family"
 msgstr "Filter op gezin"
 
 #: 
-#, fuzzy
 msgid "Report Start Date"
-msgstr "Rapport Start Datum"
+msgstr "Rapportage Startdatum"
 
 #: 
-#, fuzzy
 msgid "Report End Date"
-msgstr "Einde Rapportage Datum"
+msgstr "Rapportage Einddatum"
 
 #: 
-#, fuzzy
 msgid "Apply Report Dates To"
-msgstr "Voer Rapportage Datums in Tot"
+msgstr "Rapportage Datums 'tot' toepassen"
 
 #: 
 msgid "Deposit Date (Default)"
@@ -1108,9 +1097,8 @@ msgid "Payment Date"
 msgstr "Betalings Datum"
 
 #: 
-#, fuzzy
 msgid "Filter by Deposit"
-msgstr "Filter op Bijdrage"
+msgstr "Filter op storting"
 
 #: 
 msgid "If deposit is selected, date criteria will be ignored."
@@ -1121,9 +1109,8 @@ msgid "All deposits within date range"
 msgstr "Alle Stortingen tussen datums"
 
 #: 
-#, fuzzy
 msgid "Filter by Payment Type"
-msgstr "Filter op type betaling"
+msgstr "Filter op betalingstype"
 
 #: 
 msgid "All Methods"
@@ -1226,7 +1213,6 @@ msgid "Deposit Listing"
 msgstr "Stortings Lijst"
 
 #: 
-#, fuzzy
 msgid "Deposits"
 msgstr "Stortingen"
 
@@ -1259,9 +1245,8 @@ msgid "Date End"
 msgstr "Eind Datum"
 
 #: 
-#, fuzzy
 msgid "Clear Filter"
-msgstr "Verwijder Filters"
+msgstr "Verwijder filters"
 
 #: 
 msgid "Number"
@@ -1316,12 +1301,10 @@ msgid "Family Geographic Utilities"
 msgstr "Gezinslocatie op de landkaart"
 
 #: 
-#, fuzzy
 msgid "Select Family"
-msgstr "Selecteer een gezin"
+msgstr "Selecteer gezin"
 
 #: 
-#, fuzzy
 msgid "Maximum number of neighbors"
 msgstr "Maximum aantal buren"
 
@@ -1330,7 +1313,6 @@ msgid "Maximum distance"
 msgstr "Maximale afstand"
 
 #: 
-#, fuzzy
 msgid "Data file format"
 msgstr "Gegevens bestandsformaat"
 
@@ -1343,9 +1325,8 @@ msgid "Street Atlas USA"
 msgstr "Street Atlas USA"
 
 #: 
-#, fuzzy
 msgid "Include families in the coordinate file"
-msgstr "Inclusief gezinnen in coördinaten bestand"
+msgstr "Neem gezinnen op in het coördinatenbestand"
 
 #: 
 msgid "Neighbor Families"
@@ -1416,9 +1397,8 @@ msgid "Select a group"
 msgstr "Selecteer een groep"
 
 #: 
-#, fuzzy
 msgid "Group Specific Properties"
-msgstr "Groepspecifieke eigenschappen"
+msgstr "Groepsspecifieke eigenschappen"
 
 #: 
 msgid "Enabled"
@@ -1473,9 +1453,8 @@ msgid "data for member"
 msgstr "Data for een Lid"
 
 #: 
-#, fuzzy
 msgid "Group-Specific Properties Form Editor"
-msgstr "Formulier - bewerk groepsspecifieke kenmerken"
+msgstr "Formulier bewerken voor groepsspecifieke kenmerken"
 
 #: 
 msgid "No properties have been added yet"
@@ -1872,10 +1851,6 @@ msgstr "Er is ruimte voor meer."
 #: 
 msgid "Deposit closed"
 msgstr "Betalingstermijn gesloten"
-
-#: 
-msgid "Find family->"
-msgstr "Vind familie->"
 
 #: 
 msgid "Payment Schedule"
@@ -2438,6 +2413,7 @@ msgstr "Fout bij het maken van API-aanroep"
 msgid "Error text"
 msgstr "Fout tekst"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Overzicht"
@@ -2575,14 +2551,12 @@ msgid "for funds "
 msgstr "Voor fondsen"
 
 #: 
-#, fuzzy
 msgid "Donated Items"
 msgstr "Geschonken items"
 
 #: 
-#, fuzzy
 msgid "Purchased Items"
-msgstr "Gekochte Artikelen"
+msgstr "Gekochte artikelen"
 
 #: 
 msgid "Total of all purchases: $"
@@ -2641,14 +2615,12 @@ msgid "Please mail you next gift to "
 msgstr "Mail alstublieft uw volgende gift naar"
 
 #: 
-#, fuzzy
 msgid "Gift Amount"
-msgstr "Gift Bedrag"
+msgstr "Gift bedrag"
 
 #: 
-#, fuzzy
 msgid "Gift Designation"
-msgstr "Benoeming van Gift"
+msgstr "Gift toewijzing"
 
 #: 
 msgid "Sunday School"
@@ -2937,9 +2909,8 @@ msgid "family"
 msgstr "Gezin"
 
 #: 
-#, fuzzy
 msgid "Date Entered"
-msgstr "Toegevoegde datum"
+msgstr "Datum opgevoerd"
 
 #: 
 msgid "There were "
@@ -2986,9 +2957,8 @@ msgid "Total $"
 msgstr "Totaal"
 
 #: 
-#, fuzzy
 msgid "with this property..."
-msgstr "Met dit kenmerk...."
+msgstr "Met dit kenmerk ..."
 
 #: 
 msgid "Include only these classifications in the directory, comma separated"
@@ -3031,10 +3001,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP Server Address (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Heeft uw SMTP-server authenticatie (gebruikersnaam / wachtwoord) nodig?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP-gebruikersnaam"
 
@@ -3064,21 +3030,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Zet aan om het invoeren van de huwelijksdatum in de Family Editor uit te schakelen. zet uit om het invoeren van de huwelijksdatum in de Family Editor mogelijk te maken."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Zet aan om het invoeren van breedte- en lengtegraad in Family Editor uit te schakelen. Zet uit om het invoeren van breedte- en lengtegraad in Family Editor mogelijk te maken. Er worden nog steeds zoekopdrachten uitgevoerd, alleen niet weergegeven."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "\"Aan\" instellen om het gebruik van de donatie enveloppen mogelijk te maken\n"
-""
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Aantal controles voor Borg Slip Report"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Als geldig te maken van gescande controle toe te"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3087,10 +3040,6 @@ msgstr "Eenheid die wordt gebruikt om de afstand, mijl of km meten."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Schakel niet-aftrekbare betalingen"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Instellen op \"aan\" om zelf registratie van een gezin mogelijk te maken."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4811,22 +4760,16 @@ msgid "Church Checking Account Number"
 msgstr "Kerk rekeningnummer controleren"
 
 #: 
-#, fuzzy
 msgid "Marked the Family as Inactive"
 msgstr "Gezin gedeactiveerd"
 
 #: 
-#, fuzzy
 msgid "Marked the Family as Active"
-msgstr "De familie geactiveerd"
+msgstr "Gezin geactiveerd"
 
 #: 
 msgid "families"
 msgstr "Gezinnen"
-
-#: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Type stortingsticket. QBDT - Quickbooks"
 
 #: 
 msgid "Financial Settings"
@@ -4845,7 +4788,6 @@ msgid "Profile Image uploaded"
 msgstr "Profielafbeelding geüpload"
 
 #: 
-#, fuzzy
 msgid "payment(s)?"
 msgstr "betalingen(en)?"
 
@@ -4866,18 +4808,16 @@ msgid "Please confirm activation of family"
 msgstr "Bevestig de activering van het gezin"
 
 #: 
-#, fuzzy
 msgid "Show neighbors with these classifications"
-msgstr "Buren met dezelfde kenmerken"
+msgstr "Toon buren met deze kenmerken"
 
 #: 
 msgid "Please select a Family."
 msgstr "Selecteer een gezin"
 
 #: 
-#, fuzzy
 msgid "Coordinate database file name"
-msgstr "Bestandsnaam coördinaatdatabase"
+msgstr "Bestandsnaam coördinaten database"
 
 #: 
 msgid "select an option"
@@ -5627,7 +5567,6 @@ msgid "Debug Email Connection"
 msgstr "Info e-mail connectie"
 
 #: 
-#, fuzzy
 msgid "This Family is Inactive"
 msgstr "Dit gezin is gedeactiveerd"
 
@@ -5652,7 +5591,6 @@ msgid "View User"
 msgstr "Weergave gebruiker"
 
 #: 
-#, fuzzy
 msgid "not found or user without an email"
 msgstr "Niets gevonden of gebruiker zonder e-mail"
 
@@ -5721,24 +5659,12 @@ msgid "Links"
 msgstr "Eigen schermen"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aanzetten van het linkermenu: catechisatie"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aanzetten: Financieel menu"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Activeren menu activiteiten"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aanzetten: giften menu"
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aanzetten: e-mail menu"
 
 #: 
 msgid "Validation Error"
@@ -5809,14 +5735,12 @@ msgid "HTML URL"
 msgstr "HTML URL"
 
 #: 
-#, fuzzy
 msgid "Latest People"
 msgstr "Nieuwste personen"
 
 #: 
-#, fuzzy
 msgid "Updated People"
-msgstr "Aantal gewijzigde personen"
+msgstr "Gewijzigde personen"
 
 #: 
 msgid "User must have Manage Groups permission"
@@ -6003,10 +5927,6 @@ msgid "Unexpected Person Id"
 msgstr "Onverwachte persoon-ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Toestaan dat systeemupgrades die op GitHub als 'pre-release' zijn gemarkeerd geïnstalleerd worden."
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Agenda-evenementen zoeken"
 
@@ -6058,10 +5978,6 @@ msgstr "Portugees - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Feestdag"
-
-#: 
-msgid "ChurchCRM"
-msgstr "KerkCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7057,10 +6973,6 @@ msgid "This may take several minutes."
 msgstr "Dit kan enkele minuten duren."
 
 #: 
-msgid "Update Package Details"
-msgstr "Updatepakketdetails"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Updatepakket succesvol gedownload."
 
@@ -7085,24 +6997,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Upgrade-informatie vernieuwd. Pagina herladen..."
 
 #: 
-msgid "Version Information"
-msgstr "Versie Informatie"
-
-#: 
 msgid "Warnings"
 msgstr "Waarschuwingen"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "U koos ervoor de backup over te slaan. We raden u sterk aan een backup te maken, voordat u verder gaat met de upgrade."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Uw ChurchCRM installatie is succesvol geüpdatet."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Uw ChurchCRM installatie is de meest recente versie"
 
 #: 
 msgid "2-50 characters"
@@ -7508,10 +7408,6 @@ msgid "Event Types"
 msgstr "Evenementtypen"
 
 #: 
-msgid "Filter Events"
-msgstr "Evenementen Filteren"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filteren op Evenementtype"
 
@@ -7522,10 +7418,6 @@ msgstr "Filteren op Type"
 #: 
 msgid "Head Count"
 msgstr "Aantal Aanwezigen"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Lijst met Evenementen van Type"
 
 #: 
 msgid "Manage Check-ins"
@@ -7642,10 +7534,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d Verweesde Bestanden Gedetecteerd"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d bestanden zijn gewijzigd of ontbreken. Gebruik Force Herinstallatie om officiële versies herstellen."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d bestanden zijn niet in integriteitvalidatie."
 
@@ -7656,10 +7544,6 @@ msgstr "%d bestanden worden permanent verwijderd."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d verweesde bestanden zijn op uw server gedetecteerd."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(vernieuwen vanaf GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10131,6 +10015,7 @@ msgstr "Links beheren"
 msgid "Manage Two-Factor Authentication"
 msgstr "Tweestapsverificatie beheren"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Handmatige back-up"
@@ -11218,6 +11103,10 @@ msgid "Auto-mapped"
 msgstr "Automatisch toegewezen"
 
 #: 
+msgid "BCC"
+msgstr "BCC"
+
+#: 
 msgid "BCC All"
 msgstr "BCC aan allen"
 
@@ -11934,6 +11823,10 @@ msgid "Key People"
 msgstr "Sleutelpersonen"
 
 #: 
+msgid "Kiosk"
+msgstr "Kioskmodus"
+
+#: 
 msgid "Kiosk Enabled"
 msgstr "Kiosk ingeschakeld"
 
@@ -12080,6 +11973,10 @@ msgstr "Leden toegevoegd aan winkelwagen."
 #: 
 msgid "Memberships"
 msgstr "Lidmaatschappen"
+
+#: 
+msgid "Minimum"
+msgstr "Minimum"
 
 #: 
 msgid "Modify family roles for group members"
@@ -12265,6 +12162,8 @@ msgstr "Opties"
 msgid "Other Members"
 msgstr "Andere leden"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Overzicht"
@@ -13551,6 +13450,10 @@ msgstr "Maanden"
 #: 
 msgid "My Calendars"
 msgstr "Mijn agenda's"
+
+#: 
+msgid "N/A"
+msgstr "NVT"
 
 #: 
 msgid "New member notification emails"

@@ -1875,10 +1875,6 @@ msgid "Deposit closed"
 msgstr "Depozito kapalı"
 
 #: 
-msgid "Find family->"
-msgstr "Aileyi Bul->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Ödeme planı"
 
@@ -2440,6 +2436,7 @@ msgstr "API çağrısı yapma hatası"
 msgid "Error text"
 msgstr "Hata metni"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Gösterge Paneli"
@@ -3033,10 +3030,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP Sunucu Adresi (Mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "SMTP sunucunuz kimlik doğrulaması (kullanıcı adı/şifre) gerektiriyor mu?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP Kullanıcı Adı"
 
@@ -3065,20 +3058,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Aile Editöründe Düğün Tarihini Giriş Dışı Bırakmak İçin True Ayarlayın. Aile Editörüne Düğün Tarihini Giriş Etkinlik için Yanlış Ayarlayın."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Aile düzenleyicisine enlem ve boylam girişi devre dışı bırakmak için true ayarlayın. Aile düzenleyicisine enlem ve boylamın girilmesini sağlamak için false ayarlayın. Aramalar hala gerçekleştirilmiştir, sadece görüntülenmez."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Bağış zarflarının kullanımını etkinleştirmek için true ayarlayın"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Yatırma Kayma Raporu için Çek Sayısı"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Taranan çeklerin kullanımını etkinleştirmek için true ayarlayın"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3087,10 +3068,6 @@ msgstr "Birim mesafe, mil veya km ölçmek için kullanılır."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "İndirilemez ödemeleri etkinleştirin"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Ailenin kendi kayıtlarını etkinleştirmek için true ayarlayın."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4825,10 +4802,6 @@ msgid "families"
 msgstr "aileler"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Depozito Bilet Türü. QBDT - QuickBooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Finansal Ayarlar"
 
@@ -5722,24 +5695,12 @@ msgid "Links"
 msgstr "Bağlar"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Pazar Okulu sol menüsünü etkinleştirin."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Finans menüsünü etkinleştir"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Olaylar menüsünü etkinleştir."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Bağış toplama menüsünü etkinleştirin."
-
-#: 
-msgid "Enable Email menu."
-msgstr "E -posta menüsünü etkinleştirin."
 
 #: 
 msgid "Validation Error"
@@ -6005,10 +5966,6 @@ msgid "Unexpected Person Id"
 msgstr "Beklenmedik kişi kimliği"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "GitHub'da 'Ön bırak' olarak işaretlenmiş Sistem Yükseltmelerinin Sürüm Yapmasına İzin Ver"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Arama Takvim Etkinlikleri"
 
@@ -6060,10 +6017,6 @@ msgstr "Portekizce - Portekiz"
 #: 
 msgid "Holiday"
 msgstr "Tatil"
-
-#: 
-msgid "ChurchCRM"
-msgstr "Churchcrm"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7059,10 +7012,6 @@ msgid "This may take several minutes."
 msgstr "Bu işlem birkaç dakika sürebilir."
 
 #: 
-msgid "Update Package Details"
-msgstr "Güncelleme Paketi Detayları"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Güncelleme paketi başarıyla indirildi."
 
@@ -7087,24 +7036,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Yükseltme bilgileri yenilendi. Sayfa yeniden yükleniyor..."
 
 #: 
-msgid "Version Information"
-msgstr "Sürüm Bilgileri"
-
-#: 
 msgid "Warnings"
 msgstr "Uyarılar"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Yedeklemeyi atlamayı seçtiniz. Yükseltme işlemine devam etmeden önce bir yedek almanız şiddetle tavsiye edilir."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "ChurchCRM kurulumunuz başarıyla yükseltildi."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRM kurulumunuz en son sürümü çalıştırıyor."
 
 #: 
 msgid "2-50 characters"
@@ -7510,10 +7447,6 @@ msgid "Event Types"
 msgstr "Etkinlik Türleri"
 
 #: 
-msgid "Filter Events"
-msgstr "Etkinlikleri Filtrele"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Etkinlik Türüne Göre Filtrele"
 
@@ -7524,10 +7457,6 @@ msgstr "Türe Göre Filtrele"
 #: 
 msgid "Head Count"
 msgstr "Kişi Sayısı"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Şu türdeki etkinlikler listeleniyor:"
 
 #: 
 msgid "Manage Check-ins"
@@ -7644,10 +7573,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d Sahipsiz Dosya Tespit Edildi"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d dosya değiştirilmiş veya eksik. Resmi sürümleri geri yüklemek için Zorunlu Yeniden Yükleme'yi kullanın."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d dosya bütünlük doğrulamasından geçemedi."
 
@@ -7658,10 +7583,6 @@ msgstr "%d dosya kalıcı olarak silinecek."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "Sunucunuzda %d sahipsiz dosya tespit edildi."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(GitHub'dan yenile)"
 
 #: 
 msgid "Access Denied"
@@ -10133,6 +10054,7 @@ msgstr "Bağlantıları Yönet"
 msgid "Manage Two-Factor Authentication"
 msgstr "İki Faktörlü Kimlik Doğrulamayı Yönet"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Manuel Yedekleme"
@@ -12275,6 +12197,8 @@ msgstr "Seçenekler"
 msgid "Other Members"
 msgstr "Diğer Üyeler"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Genel Bakış"

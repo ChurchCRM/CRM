@@ -1923,10 +1923,6 @@ msgid "Deposit closed"
 msgstr "Depozit închis"
 
 #: 
-msgid "Find family->"
-msgstr "Cauta familie->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Program de plata"
 
@@ -2507,6 +2503,7 @@ msgstr "Eroare apelare API către"
 msgid "Error text"
 msgstr "Text eroare"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Panou de bord"
@@ -3112,10 +3109,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Server SMTP"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Serverul SMTP necesită autentificare (utilizator/parola)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "utilizator SMTP"
 
@@ -3144,20 +3137,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Setați true pentru a dezactiva introducerea datei nunții în editorul familiei. Setați false pentru a permite introducerea datei nunții în Family Editor"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Setați true pentru a dezactiva introducerea Latitude și Longitudine în Family Editor. Setați false pentru a permite introducerea Latitude și Longitudine în Family Editor. Căutările sunt încă efectuate, pur și simplu nu sunt afișate."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Setează true pentru a permite folosirea donațiilor în plicuri"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Numărul de verifică pentru Raportul de depunere a depozitelor"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Setați opțiunea True pentru a permite verificarea scanată"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3166,10 +3147,6 @@ msgstr "Unități pentru distanță, mile sau km"
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Permite plățile nedeductibile"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Setați true pentru a permite auto înregistrarea"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4905,10 +4882,6 @@ msgid "families"
 msgstr "familii"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Tip thichet de depozit - QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Setări financiare"
 
@@ -5802,24 +5775,12 @@ msgid "Links"
 msgstr "Link-uri"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Activați meniul Școală Duminicală "
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Activați meniul Finanțte"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Activați meniul Evenimente"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Activați meniu Strângere de Fonduri"
-
-#: 
-msgid "Enable Email menu."
-msgstr "Activați meniu Email"
 
 #: 
 msgid "Validation Error"
@@ -6082,10 +6043,6 @@ msgid "Unexpected Person Id"
 msgstr "ID Persoană neașteptat"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Permiteți actualizări de sistem pentru lansările marcate ca 'pre-release' pe GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Căutare Evenimente din Calendar"
 
@@ -6139,10 +6096,6 @@ msgstr "Portugheză - Portugalia"
 #: 
 msgid "Holiday"
 msgstr "Vacanță"
-
-#: 
-msgid "ChurchCRM"
-msgstr "BisericaCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7137,10 +7090,6 @@ msgid "This may take several minutes."
 msgstr "Acest lucru poate dura câteva minute."
 
 #: 
-msgid "Update Package Details"
-msgstr "Detalii pachet actualizare"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Pachetul de actualizare a fost descărcat cu succes."
 
@@ -7165,24 +7114,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Informațiile de actualizare au fost reîmprospătate. Se reîncarcă pagina..."
 
 #: 
-msgid "Version Information"
-msgstr "Informații despre versiune"
-
-#: 
 msgid "Warnings"
 msgstr "Avertismente"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Ați ales să omiteți copia de rezervă. Este recomandat cu tărie să aveți o copie de rezervă înainte de a continua cu actualizarea."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Instalația dumneavoastră ChurchCRM a fost actualizată cu succes."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Instalația dumneavoastră ChurchCRM rulează cea mai recentă versiune."
 
 #: 
 msgid "2-50 characters"
@@ -7589,10 +7526,6 @@ msgid "Event Types"
 msgstr "Tipuri de evenimente"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtrează evenimentele"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtrează după tipul evenimentului"
 
@@ -7603,10 +7536,6 @@ msgstr "Filtrează după tip"
 #: 
 msgid "Head Count"
 msgstr "Număr de persoane"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Se afișează evenimentele de tipul"
 
 #: 
 msgid "Manage Check-ins"
@@ -7724,10 +7653,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d fișiere orfane detectate"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d fișiere au fost modificate sau lipsesc. Utilizați Reinstalare forțată pentru a restaura versiunile oficiale."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d fișiere au eșuat la validarea integrității."
 
@@ -7738,10 +7663,6 @@ msgstr "%d fișiere vor fi șterse definitiv."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d fișiere orfane au fost detectate pe server."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(reîmprospătare de pe GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10218,6 +10139,7 @@ msgstr "Gestionare Linkuri"
 msgid "Manage Two-Factor Authentication"
 msgstr "Gestionare Autentificare cu Doi Factori"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Copie de Rezervă Manuală"
@@ -12345,6 +12267,8 @@ msgstr "Opțiuni"
 msgid "Other Members"
 msgstr "Alți membri"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Prezentare generală"

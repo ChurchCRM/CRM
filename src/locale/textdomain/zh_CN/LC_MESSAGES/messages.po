@@ -1924,10 +1924,6 @@ msgid "Deposit closed"
 msgstr "存款已关闭"
 
 #: 
-msgid "Find family->"
-msgstr "寻找家庭>"
-
-#: 
 msgid "Payment Schedule"
 msgstr "付款时间表"
 
@@ -2511,6 +2507,7 @@ msgstr "API调用出现错误"
 msgid "Error text"
 msgstr "文本错误"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "仪表板"
@@ -3117,10 +3114,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP服务器地址（mail.server.com:25）"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "您的SMTP服务器是否需要身份验证（用户名/密码）？"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP用户名"
 
@@ -3149,20 +3142,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "设置为true(是)以禁用在家庭编辑器中输入结婚日期。设置为false(否)以启用在族编辑器中输入结婚日期。"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "设置为true(是)以禁用在家庭编辑器中输入纬度和经度。设置为false(否)以启用在家庭编辑器中输入纬度和经度。查询仍然执行，只是没有显示。"
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "设置为true(是)以允许使用捐赠信封"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "存款单报告的支票数量"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "设置为true(是)以启用扫描检查"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3171,10 +3152,6 @@ msgstr "用于测量距离，英里或公里的单位。"
 #: 
 msgid "Enable non-deductible payments"
 msgstr "启用不可抵扣的付款"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "设置为true(是)以启用家庭自助注册。"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4909,10 +4886,6 @@ msgid "families"
 msgstr "家庭"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "存款票类型。 QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "财务设置"
 
@@ -5809,24 +5782,12 @@ msgid "Links"
 msgstr "连接"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "启用主日学校左侧菜单。"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "启用财务菜单"
 
 #: 
-msgid "Enable Events menu."
-msgstr "启用事件菜单"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "启用筹款人菜单"
-
-#: 
-msgid "Enable Email menu."
-msgstr "启用邮件菜单"
 
 #: 
 msgid "Validation Error"
@@ -6092,10 +6053,6 @@ msgid "Unexpected Person Id"
 msgstr "意外的人ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "允许在GitHub上标记为``预发布''的系统升级版本发布"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "搜索日历活动"
 
@@ -6145,10 +6102,6 @@ msgstr "葡萄牙语-葡萄牙"
 #: 
 msgid "Holiday"
 msgstr "假期"
-
-#: 
-msgid "ChurchCRM"
-msgstr "教会客户关系管理"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7144,10 +7097,6 @@ msgid "This may take several minutes."
 msgstr "这可能需要几分钟。"
 
 #: 
-msgid "Update Package Details"
-msgstr "更新包详情"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "更新包下载成功。"
 
@@ -7172,24 +7121,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "升级信息已刷新。正在重新加载页面..."
 
 #: 
-msgid "Version Information"
-msgstr "版本信息"
-
-#: 
 msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "您选择了跳过备份。强烈建议在继续升级之前进行备份。"
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "您的 ChurchCRM 安装已成功升级。"
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "您的 ChurchCRM 安装正在运行最新版本。"
 
 #: 
 msgid "2-50 characters"
@@ -7594,10 +7531,6 @@ msgid "Event Types"
 msgstr "活动类型"
 
 #: 
-msgid "Filter Events"
-msgstr "活动筛选"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "按活动类型筛选"
 
@@ -7608,10 +7541,6 @@ msgstr "按类型筛选"
 #: 
 msgid "Head Count"
 msgstr "人数统计"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "列出此类型的活动："
 
 #: 
 msgid "Manage Check-ins"
@@ -7727,10 +7656,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "检测到 %d 个孤立文件"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d 个文件已被修改或丢失。使用强制重新安装以恢复官方版本。"
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d 个文件完整性验证失败。"
 
@@ -7741,10 +7666,6 @@ msgstr "%d 个文件将被永久删除。"
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "在您的服务器上检测到 %d 个孤立文件。"
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "（从 GitHub 刷新）"
 
 #: 
 msgid "Access Denied"
@@ -10211,6 +10132,7 @@ msgstr "管理链接"
 msgid "Manage Two-Factor Authentication"
 msgstr "管理两步验证"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "手动备份"
@@ -12356,6 +12278,8 @@ msgstr "选项"
 msgid "Other Members"
 msgstr "其他成员"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "概览"

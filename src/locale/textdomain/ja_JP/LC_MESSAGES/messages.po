@@ -1853,10 +1853,6 @@ msgid "Deposit closed"
 msgstr "入金完了"
 
 #: 
-msgid "Find family->"
-msgstr "世帯を検索->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "支払いスケジュール"
 
@@ -2417,6 +2413,7 @@ msgstr "API 呼び出しエラー:"
 msgid "Error text"
 msgstr "エラーテキスト"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "ダッシュボード"
@@ -3002,10 +2999,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTPサーバーアドレス (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "SMTPサーバーは認証(ユーザー名/パスワード)が必要ですか?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTPユーザー名"
 
@@ -3034,20 +3027,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "ファミリーエディタで結婚日の入力を無効にするにはtrueを設定します。ファミリーエディタで結婚日の入力を有効にするにはfalseを設定します。"
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "ファミリーエディタで緯度と経度の入力を無効にするにはtrueを設定します。ファミリーエディタで緯度と経度の入力を有効にするにはfalseを設定します。ルックアップは実行されますが、表示されません。"
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "寄付エンベロープの使用を有効にするにはtrueを設定します"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "預金伝票レポートのチェック数"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "スキャンされたチェックの使用を有効にするにはtrueを設定します"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3056,10 +3037,6 @@ msgstr "距離を測定するために使用される単位(マイルまたはkm
 #: 
 msgid "Enable non-deductible payments"
 msgstr "控除不可能な支払いを有効にします"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "家族のセルフ登録を有効にするにはtrueを設定します。"
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4792,10 +4769,6 @@ msgid "families"
 msgstr "家族"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "預金チケットタイプ。QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "財務設定"
 
@@ -5683,24 +5656,12 @@ msgid "Links"
 msgstr "リンク"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "日曜学校の左メニューを有効化。"
-
-#: 
 msgid "Enable Finance menu"
 msgstr "財務メニューを有効化"
 
 #: 
-msgid "Enable Events menu."
-msgstr "イベントメニューを有効化。"
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "募金活動メニューを有効化。"
-
-#: 
-msgid "Enable Email menu."
-msgstr "メールメニューを有効化。"
 
 #: 
 msgid "Validation Error"
@@ -5963,10 +5924,6 @@ msgid "Unexpected Person Id"
 msgstr "予期しない人物ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "GitHubで「プレリリース」としてマークされたリリースへのシステムアップグレードを許可"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "カレンダーイベントを検索"
 
@@ -6016,10 +5973,6 @@ msgstr "ポルトガル語 - ポルトガル"
 #: 
 msgid "Holiday"
 msgstr "祝日"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7014,10 +6967,6 @@ msgid "This may take several minutes."
 msgstr "これには数分かかる場合があります。"
 
 #: 
-msgid "Update Package Details"
-msgstr "更新パッケージの詳細"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "更新パッケージが正常にダウンロードされました。"
 
@@ -7042,24 +6991,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "アップグレード情報が更新されました。ページを再読み込み中..."
 
 #: 
-msgid "Version Information"
-msgstr "バージョン情報"
-
-#: 
 msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "バックアップをスキップすることを選択しました。アップグレードを続行する前にバックアップを取ることを強くお勧めします。"
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "ChurchCRMインストールが正常にアップグレードされました。"
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRMインストールは最新バージョンで実行されています。"
 
 #: 
 msgid "2-50 characters"
@@ -7464,10 +7401,6 @@ msgid "Event Types"
 msgstr "イベントタイプ"
 
 #: 
-msgid "Filter Events"
-msgstr "イベントをフィルター"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "イベントタイプでフィルター"
 
@@ -7478,10 +7411,6 @@ msgstr "タイプでフィルター"
 #: 
 msgid "Head Count"
 msgstr "人数"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "タイプのイベントを一覧表示"
 
 #: 
 msgid "Manage Check-ins"
@@ -7597,10 +7526,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d個の孤立ファイルが検出されました"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d個のファイルが変更されているか、見つかりません。強制再インストールを使用して公式バージョンを復元してください。"
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d個のファイルが整合性検証に失敗しました。"
 
@@ -7611,10 +7536,6 @@ msgstr "%d個のファイルが完全に削除されます。"
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "サーバーで%d個の孤立ファイルが検出されました。"
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "（GitHubから更新）"
 
 #: 
 msgid "Access Denied"
@@ -10081,6 +10002,7 @@ msgstr "リンクを管理する"
 msgid "Manage Two-Factor Authentication"
 msgstr "二要素認証を管理する"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "手動バックアップ"
@@ -12217,6 +12139,8 @@ msgstr "オプション"
 msgid "Other Members"
 msgstr "その他のメンバー"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "概要"

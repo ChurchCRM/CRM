@@ -1874,10 +1874,6 @@ msgid "Deposit closed"
 msgstr "Vklad uzavřen"
 
 #: 
-msgid "Find family->"
-msgstr "Najít rodinu->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Splátkový kalendář"
 
@@ -2438,6 +2434,7 @@ msgstr "Chyba při API volání na"
 msgid "Error text"
 msgstr "Chybový text"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Nástěnka"
@@ -3028,10 +3025,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Adresa SMTP serveru (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Vyžaduje váš server SMTP autentizaci (uživatelské jméno/heslo)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Uživatelské jméno SMTP"
 
@@ -3060,20 +3053,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Nastavením hodnoty true zakážete zadávání data svatby v Editoru rodiny.  Nastavením false povolíte zadávání data svatby v Editoru rodiny."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Nastavením hodnoty true zakážete zadávání zeměpisné šířky a délky v Editoru rodiny.  Nastavením false povolíte zadávání zeměpisné šířky a délky v Editoru rodin.  Vyhledávání se stále provádí, pouze se nezobrazuje."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Nastavením hodnoty true povolíte používání dárcovských obálek"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Počet šeků pro zprávu o vkladových listech"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Nastavením hodnoty true povolíte používání skenovaných šeků"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3082,10 +3063,6 @@ msgstr "Jednotka měření vzdálenosti, míle nebo km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Povolit neodečitatelné platby"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Nastavením hodnoty true povolíte vlastní registraci rodiny."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4818,10 +4795,6 @@ msgid "families"
 msgstr "rodiny"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Typ vkladového lístku.  QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Nastavení financí"
 
@@ -5711,24 +5684,12 @@ msgid "Links"
 msgstr "Odkazy"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Povolit levou nabídku nedělní školy."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Povolit nabídku Finance"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Povolit nabídku Události."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Povolit nabídku Fundraiser."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Povolit nabídku E-mail."
 
 #: 
 msgid "Validation Error"
@@ -5991,10 +5952,6 @@ msgid "Unexpected Person Id"
 msgstr "Neočekávané ID osoby"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Povolení aktualizace systému na verzi označenou jako 'pre release' na GitHubu"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Vyhledat události v kalendáří"
 
@@ -6048,10 +6005,6 @@ msgstr "Portugalština - Portugalsko"
 #: 
 msgid "Holiday"
 msgstr "Svátek"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7046,10 +6999,6 @@ msgid "This may take several minutes."
 msgstr "Může to trvat několik minut."
 
 #: 
-msgid "Update Package Details"
-msgstr "Podrobnosti o aktualizačním balíčku"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Aktualizační balíček byl úspěšně stažen."
 
@@ -7074,24 +7023,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Informace o aktualizaci byly obnoveny. Načítání stránky..."
 
 #: 
-msgid "Version Information"
-msgstr "Informace o verzi"
-
-#: 
 msgid "Warnings"
 msgstr "Chyby"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Rozhodli jste se přeskočit zálohu. Před pokračováním v aktualizaci důrazně doporučujeme provést zálohu."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Vaše instalace ChurchCRM byla úspěšně aktualizována."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Vaše instalace ChurchCRM používá nejnovější verzi."
 
 #: 
 msgid "2-50 characters"
@@ -7498,10 +7435,6 @@ msgid "Event Types"
 msgstr "Typy akcí"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtrovat akce"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtrovat podle typu akce"
 
@@ -7512,10 +7445,6 @@ msgstr "Filtrovat podle typu"
 #: 
 msgid "Head Count"
 msgstr "Počet osob"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Seznam událostí typu"
 
 #: 
 msgid "Manage Check-ins"
@@ -7633,10 +7562,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "Nalezeno %d osamocených souborů"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d souborů bylo změněno nebo chybí. Použijte funkci „Vynutit přeinstalaci“ k obnovení oficiálních verzí."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d souborů neprošlo ověřením integrity."
 
@@ -7647,10 +7572,6 @@ msgstr "%d souborů bude trvale smazáno."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "Na vašem serveru bylo nalezeno %d osamocených souborů."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(aktualizovat z GitHubu)"
 
 #: 
 msgid "Access Denied"
@@ -10127,6 +10048,7 @@ msgstr "Spravovat odkazy"
 msgid "Manage Two-Factor Authentication"
 msgstr "Spravovat dvoufaktorové ověřování"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Ruční záloha"
@@ -12270,6 +12192,8 @@ msgstr "Možnosti"
 msgid "Other Members"
 msgstr "Ostatní členové"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Přehled"

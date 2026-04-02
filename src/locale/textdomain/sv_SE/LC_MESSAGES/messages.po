@@ -1945,11 +1945,6 @@ msgstr "Insättning stängd"
 
 #: 
 #, fuzzy
-msgid "Find family->"
-msgstr " familj"
-
-#: 
-#, fuzzy
 msgid "Payment Schedule"
 msgstr "Betalningsschema:"
 
@@ -2538,6 +2533,7 @@ msgstr "Fel vid API-anrop till"
 msgid "Error text"
 msgstr "Feltext"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Instrumentbräda"
@@ -3147,10 +3143,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP-serveradress (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Kräver din SMTP-server godkännande (användarnamn / lösenord)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP-användarnamn"
 
@@ -3179,20 +3171,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Ställ in true för att inaktivera att ange bröllopsdatum i Family Editor. Ställ in falskt för att aktivera att ange bröllopsdatum i Family Editor."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Ställ in true för att inaktivera att ange Latitude och Longitud i Family Editor. Ställ in falskt för att aktivera att ange Latitude och Longitud i Family Editor. Sökningar utförs fortfarande, visas bara inte."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Ställ in true för att möjliggöra användning av donations kuvert"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Antal kontroller för insättningsrapport"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Ställ in true för att möjliggöra användning av skannade kontroller"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3201,10 +3181,6 @@ msgstr "Enhet som används för att mäta avstånd, miles eller km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Aktivera icke avdragsgilla betalningar"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Ställ in sant för att möjliggöra familjeregistrering."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4939,10 +4915,6 @@ msgid "families"
 msgstr "familjer"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Insättningsbiljettyp. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Ekonomiska inställningar"
 
@@ -5836,24 +5808,12 @@ msgid "Links"
 msgstr "Länkar"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Aktivera söndagsskolans vänstermeny."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Aktivera finansmenyn"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Aktivera händelsemenyn."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Aktivera Insamlingsmeny."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Aktivera e-postmenyn."
 
 #: 
 msgid "Validation Error"
@@ -6119,10 +6079,6 @@ msgid "Unexpected Person Id"
 msgstr "Oväntad person-ID"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Låt systemuppgraderingar släppas markerade som 'pre release' på GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Sök i kalenderhändelser"
 
@@ -6174,10 +6130,6 @@ msgstr "Portugisiska - Portugal"
 #: 
 msgid "Holiday"
 msgstr "Semester"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7173,10 +7125,6 @@ msgid "This may take several minutes."
 msgstr "Detta kan ta flera minuter."
 
 #: 
-msgid "Update Package Details"
-msgstr "Detaljer för uppdateringspaket"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Uppdateringspaketet har laddats ner."
 
@@ -7201,24 +7149,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Uppgraderingsinformationen har uppdaterats. Laddar om sida..."
 
 #: 
-msgid "Version Information"
-msgstr "Versionsinformation"
-
-#: 
 msgid "Warnings"
 msgstr "Varningar"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Du har valt att hoppa över säkerhetskopieringen. Det rekommenderas starkt att ha en säkerhetskopia innan du fortsätter med uppgraderingen."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "Din ChurchCRM-installation har uppgraderats."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "Din ChurchCRM-installation kör den senaste versionen."
 
 #: 
 msgid "2-50 characters"
@@ -7624,10 +7560,6 @@ msgid "Event Types"
 msgstr "Händelsetyper"
 
 #: 
-msgid "Filter Events"
-msgstr "Filtrera händelser"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Filtrera efter händelsetyp"
 
@@ -7638,10 +7570,6 @@ msgstr "Filtrera efter typ"
 #: 
 msgid "Head Count"
 msgstr "Antal personer"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Listar händelser av typen"
 
 #: 
 msgid "Manage Check-ins"
@@ -7758,10 +7686,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d föräldralösa filer upptäckta"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d filer har ändrats eller saknas. Använd tvingad ominstallation för att återställa officiella versioner."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d filer misslyckades i integritetsvalideringen."
 
@@ -7772,10 +7696,6 @@ msgstr "%d filer kommer att raderas permanent."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "%d föräldralösa filer upptäcktes på din server."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(uppdatera från GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10247,6 +10167,7 @@ msgstr "Hantera länkar"
 msgid "Manage Two-Factor Authentication"
 msgstr "Hantera tvåfaktorsautentisering"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Manuell säkerhetskopia"
@@ -12385,6 +12306,8 @@ msgstr "Alternativ"
 msgid "Other Members"
 msgstr "Övriga medlemmar"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Översikt"

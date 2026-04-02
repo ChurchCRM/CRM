@@ -1860,10 +1860,6 @@ msgid "Deposit closed"
 msgstr "Talletus suljettu"
 
 #: 
-msgid "Find family->"
-msgstr "Etsi perhe ->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Maksusuunnitelma"
 
@@ -2424,6 +2420,7 @@ msgstr "Virhe tehtäessä API-kutsua kohteeseen"
 msgid "Error text"
 msgstr "Virheteksti"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Hallintapaneeli"
@@ -3009,10 +3006,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "SMTP-palvelimen osoite (palvelin.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Vaatiiko SMTP-palvelimesi tunnistautumisen (käyttäjätunnus/salasana)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "SMTP-käyttäjätunnus"
 
@@ -3041,20 +3034,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Aseta 'Tosi' poistaaksesi hääpäivän syöttämisen käytöstä perhemuokkaimessa."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Aseta 'Tosi' poistaaksesi koordinaattien syöttämisen perhemuokkaimessa. Haku suoritetaan silti taustalla."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Aseta 'Tosi' salliaksesi lahjoituskuorien käytön"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Shekkien määrä talletusraportissa"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Aseta 'Tosi' salliaksesi skannattujen shekkien käytön"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3063,10 +3044,6 @@ msgstr "Etäisyyden mittayksikkö (mailit tai kilometrit)."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Ota käyttöön vähennyskelvottomat maksut"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Aseta 'Tosi' salliaksesi perheen itserekisteröitymisen."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4799,10 +4776,6 @@ msgid "families"
 msgstr "perheet"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Talletuslipukkeen tyyppi. QBDT - Quickbooks"
-
-#: 
 msgid "Financial Settings"
 msgstr "Talousasetukset"
 
@@ -5690,24 +5663,12 @@ msgid "Links"
 msgstr "Linkit"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Ota käyttöön pyhäkoulun vasen valikko."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Ota käyttöön talousvalikko"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Ota käyttöön tapahtumavalikko."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Ota käyttöön varainkeruuvalikko."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Ota käyttöön sähköpostivalikko."
 
 #: 
 msgid "Validation Error"
@@ -5965,10 +5926,6 @@ msgid "Unexpected Person Id"
 msgstr "Odottamaton henkilötunnus"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Salli järjestelmäpäivitykset 'pre-release'-merkittyihin versioihin GitHubissa"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Etsi kalenteritapahtumia"
 
@@ -6020,10 +5977,6 @@ msgstr "Portugali - Portugali"
 #: 
 msgid "Holiday"
 msgstr "Pyhäpäivä"
-
-#: 
-msgid "ChurchCRM"
-msgstr "ChurchCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7018,10 +6971,6 @@ msgid "This may take several minutes."
 msgstr "Tämä voi kestää useita minuutteja."
 
 #: 
-msgid "Update Package Details"
-msgstr "Päivityspaketin tiedot"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Päivityspaketti ladattu onnistuneesti."
 
@@ -7046,24 +6995,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Päivitystiedot päivitetty. Ladataan sivua uudelleen..."
 
 #: 
-msgid "Version Information"
-msgstr "Versiotiedot"
-
-#: 
 msgid "Warnings"
 msgstr "Varoitukset"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Olet valinnut ohittaa varmuuskopioinnin. Varmuuskopion tekeminen ennen päivitystä on erittäin suositeltavaa."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "ChurchCRM-asennuksesi on päivitetty onnistuneesti."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRM-asennuksesi on uusin versio."
 
 #: 
 msgid "2-50 characters"
@@ -7469,10 +7406,6 @@ msgid "Event Types"
 msgstr "Tapahtumatyypit"
 
 #: 
-msgid "Filter Events"
-msgstr "Suodata tapahtumat"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Suodata tapahtumatyypillä"
 
@@ -7483,10 +7416,6 @@ msgstr "Suodata tyypillä"
 #: 
 msgid "Head Count"
 msgstr "Henkilölukumäärä"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Tapahtumatyypin tapahtumat"
 
 #: 
 msgid "Manage Check-ins"
@@ -7603,10 +7532,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "%d jäänyttä tiedostoa havaittu"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "%d tiedostoa on muutettu tai puuttuu. Käytä Pakota uudelleenasennus virallisten versioiden palauttamiseksi."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "%d tiedostoa epäonnistui eheyden vahvistuksessa."
 
@@ -7617,10 +7542,6 @@ msgstr "%d tiedostoa poistetaan pysyvästi."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "palvelimellasi havaittiin %d jäänyttä tiedostoa."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(päivitä GitHubista)"
 
 #: 
 msgid "Access Denied"
@@ -10092,6 +10013,7 @@ msgstr "Hallinnoi linkkejä"
 msgid "Manage Two-Factor Authentication"
 msgstr "Hallinnoi kaksivaiheista todennusta"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Manuaalinen varmuuskopio"
@@ -12238,6 +12160,8 @@ msgstr "Vaihtoehdot"
 msgid "Other Members"
 msgstr "Muut jäsenet"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Yleiskatsaus"

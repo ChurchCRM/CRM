@@ -1874,10 +1874,6 @@ msgid "Deposit closed"
 msgstr "Amana imefungwa"
 
 #: 
-msgid "Find family->"
-msgstr "Tafuta familia->"
-
-#: 
 msgid "Payment Schedule"
 msgstr "Ratiba ya Malipo"
 
@@ -2438,6 +2434,7 @@ msgstr "Hitilafu katika kufanya Simu ya API kwa"
 msgid "Error text"
 msgstr "Maandishi ya hitilafu"
 
+#. plugin:mailchimp:section:2:title
 #: 
 msgid "Dashboard"
 msgstr "Dashibodi"
@@ -3029,10 +3026,6 @@ msgid "SMTP Server Address (mail.server.com:25)"
 msgstr "Anwani ya Seva ya SMTP (mail.server.com:25)"
 
 #: 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr "Je, seva yako ya SMTP inahitaji uthibitishaji (jina la mtumiaji/nenosiri)?"
-
-#: 
 msgid "SMTP Username"
 msgstr "Jina la mtumiaji la SMTP"
 
@@ -3061,20 +3054,8 @@ msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to
 msgstr "Weka kuwa kweli ili kuzima kuweka Tarehe ya Harusi katika Kihariri cha Familia. Weka sivyo ili kuwezesha kuweka Tarehe ya Harusi katika Kihariri cha Familia."
 
 #: 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr "Weka kweli ili kuzima kuingiza Latitudo na Longitude katika Kihariri cha Familia. Weka sivyo ili kuwezesha kuingiza Latitudo na Longitude katika Kihariri cha Familia. Utafutaji bado unafanywa, hauonyeshwa tu."
-
-#: 
-msgid "Set true to enable use of donation envelopes"
-msgstr "Weka kweli ili kuwezesha matumizi ya bahasha za michango"
-
-#: 
 msgid "Number of checks for Deposit Slip Report"
 msgstr "Idadi ya hundi kwa Ripoti ya Slip ya Amana"
-
-#: 
-msgid "Set true to enable use of scanned checks"
-msgstr "Weka kweli ili kuwezesha matumizi ya ukaguzi uliochanganuliwa"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3083,10 +3064,6 @@ msgstr "Kitengo kinachotumika kupima umbali, maili au km."
 #: 
 msgid "Enable non-deductible payments"
 msgstr "Washa malipo yasiyokatwa"
-
-#: 
-msgid "Set true to enable family self registration."
-msgstr "Weka kuwa kweli ili kuwezesha usajili wa familia."
 
 #: 
 msgid "Left Margin (1 = 1/100th inch)"
@@ -4821,10 +4798,6 @@ msgid "families"
 msgstr "familia"
 
 #: 
-msgid "Deposit ticket type.  QBDT - Quickbooks"
-msgstr "Aina ya tikiti ya amana. QBDT - Vitabu vya haraka"
-
-#: 
 msgid "Financial Settings"
 msgstr "Mipangilio ya Fedha"
 
@@ -5718,24 +5691,12 @@ msgid "Links"
 msgstr "Viungo"
 
 #: 
-msgid "Enable Sunday School left menu."
-msgstr "Washa menyu ya kushoto ya Shule ya Jumapili."
-
-#: 
 msgid "Enable Finance menu"
 msgstr "Washa menyu ya Fedha"
 
 #: 
-msgid "Enable Events menu."
-msgstr "Washa menyu ya Matukio."
-
-#: 
 msgid "Enable Fundraiser menu."
 msgstr "Washa menyu ya Kuchangisha pesa."
-
-#: 
-msgid "Enable Email menu."
-msgstr "Washa menyu ya Barua pepe."
 
 #: 
 msgid "Validation Error"
@@ -6000,10 +5961,6 @@ msgid "Unexpected Person Id"
 msgstr "Kitambulisho cha Mtu Asiyetarajiwa"
 
 #: 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
-msgstr "Ruhusu visasisho vya mfumo kutolewa vilivyotiwa alama kama 'kutolewa mapema' kwenye GitHub"
-
-#: 
 msgid "Search Calendar Events"
 msgstr "Tafuta Matukio ya Kalenda"
 
@@ -6055,10 +6012,6 @@ msgstr "Kireno - Ureno"
 #: 
 msgid "Holiday"
 msgstr "Sikukuu"
-
-#: 
-msgid "ChurchCRM"
-msgstr "KanisaCRM"
 
 #: 
 msgid "Specify the application name to be displayed in authenticator app"
@@ -7053,10 +7006,6 @@ msgid "This may take several minutes."
 msgstr "Hii inaweza kuchukua dakika kadhaa."
 
 #: 
-msgid "Update Package Details"
-msgstr "Maelezo ya Kifurushi cha Sasisho"
-
-#: 
 msgid "Update package downloaded successfully."
 msgstr "Kifurushi cha sasisho kimepakuliwa kwa mafanikio."
 
@@ -7081,24 +7030,12 @@ msgid "Upgrade information refreshed. Reloading page..."
 msgstr "Taarifa za sasisho zimehuishwa. Ukurasa unapakia upya..."
 
 #: 
-msgid "Version Information"
-msgstr "Taarifa za Toleo"
-
-#: 
 msgid "Warnings"
 msgstr "Maonyo"
 
 #: 
-msgid "You have chosen to skip the backup. It is strongly recommended to have a backup before proceeding with the upgrade."
-msgstr "Umechagua kuruka nakala. Inapendekezwa sana kuwa na nakala kabla ya kuendelea na sasisho."
-
-#: 
 msgid "Your ChurchCRM installation has been successfully upgraded."
 msgstr "ChurchCRM yako imesasishwa kwa mafanikio."
-
-#: 
-msgid "Your ChurchCRM installation is running the latest version."
-msgstr "ChurchCRM yako inatumia toleo la hivi karibuni."
 
 #: 
 msgid "2-50 characters"
@@ -7504,10 +7441,6 @@ msgid "Event Types"
 msgstr "Aina za Matukio"
 
 #: 
-msgid "Filter Events"
-msgstr "Chuja Matukio"
-
-#: 
 msgid "Filter by Event Type"
 msgstr "Chuja kwa Aina ya Tukio"
 
@@ -7518,10 +7451,6 @@ msgstr "Chuja kwa Aina"
 #: 
 msgid "Head Count"
 msgstr "Hesabu ya Watu"
-
-#: 
-msgid "Listing Events of Type"
-msgstr "Kuorodhesha Matukio ya Aina ya"
 
 #: 
 msgid "Manage Check-ins"
@@ -7638,10 +7567,6 @@ msgid "%d Orphaned Files Detected"
 msgstr "Faili %d Yatima Zimepatikana"
 
 #: 
-msgid "%d files have been modified or are missing. Use Force Re-install to restore official versions."
-msgstr "Faili %d zimebadilishwa au zinakosekana. Tumia 'Lazimisha Kusakinisha' ili kurejesha matoleo rasmi."
-
-#: 
 msgid "%d files have failed integrity validation."
 msgstr "Faili %d zimeshindwa uhakiki wa uadilifu."
 
@@ -7652,10 +7577,6 @@ msgstr "Faili %d zitafutwa kabisa."
 #: 
 msgid "%d orphaned files were detected on your server."
 msgstr "Faili %d yatima zimepatikana kwenye seva yako."
-
-#: 
-msgid "(refresh from GitHub)"
-msgstr "(huisha kutoka GitHub)"
 
 #: 
 msgid "Access Denied"
@@ -10127,6 +10048,7 @@ msgstr "Simamia Viungo"
 msgid "Manage Two-Factor Authentication"
 msgstr "Simamia Uthibitishaji wa Hatua Mbili"
 
+#. plugin:external-backup:section:3:title
 #: 
 msgid "Manual Backup"
 msgstr "Nakala Rudia ya Mkono"
@@ -12265,6 +12187,8 @@ msgstr "Chaguo"
 msgid "Other Members"
 msgstr "Washiriki Wengine"
 
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
 #: 
 msgid "Overview"
 msgstr "Muhtasari"
