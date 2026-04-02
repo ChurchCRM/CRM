@@ -37,11 +37,11 @@ class   SystemConfig
     {
         return [
             'Choices' => [
-                gettext('DEBUG') . ':' . Level::Debug->value,
-                gettext('INFO') . ':' . Level::Info->value,
-                gettext('WARNING') . ':' . Level::Warning->value,
-                gettext('ERROR') . ':' . Level::Error->value,
-                gettext('CRITICAL') . ':' . Level::Critical->value,
+                'DEBUG:' . Level::Debug->value,
+                'INFO:' . Level::Info->value,
+                'WARNING:' . Level::Warning->value,
+                'ERROR:' . Level::Error->value,
+                'CRITICAL:' . Level::Critical->value,
             ],
         ];
     }
