@@ -2914,6 +2914,120 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/groups/{groupID}/phones':
+    get:
+      tags:
+        - Groups
+      summary: 'Get cell phone numbers for group members (respects Do Not SMS)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Phone contact info for the group'
+          content:
+            application/json:
+              schema:
+                properties:
+                  phones: { description: 'Raw phone numbers', type: array, items: { type: string } }
+                  displayList: { description: 'Comma-separated display string', type: string }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/sundayschool/phones':
+    get:
+      tags:
+        - Groups
+      summary: 'Get cell phone numbers for a Sunday School class, segmented by role'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Phone contact info segmented by role (all/teachers/parents)'
+          content:
+            application/json:
+              schema:
+                properties:
+                  all: { type: object }
+                  teachers: { type: object }
+                  students: { type: object }
+                  parents: { type: object }
+                type: object
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/emails':
+    get:
+      tags:
+        - Groups
+      summary: 'Get email addresses for group members (respects Do Not Email)'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Email contact info for the group'
+      security:
+        -
+          ApiKeyAuth: []
+  '/groups/{groupID}/sundayschool/emails':
+    get:
+      tags:
+        - Groups
+      summary: 'Get email addresses for a Sunday School class, segmented by role'
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'Email contact info segmented by role (teachers/parents/kids)'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/sundayschool/export/email:
+    get:
+      tags:
+        - Groups
+      summary: 'Export people emails with group memberships as CSV'
+      responses:
+        '200':
+          description: 'CSV file with people emails and group role memberships'
+        '403':
+          description: 'ManageGroups role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /groups/sundayschool/export/classlist:
+    get:
+      tags:
+        - Groups
+      summary: 'Export Sunday School class roster as CSV'
+      responses:
+        '200':
+          description: 'CSV file with class members, parents, and contact info'
+        '403':
+          description: 'ManageGroups role required or Sunday School disabled'
+      security:
+        -
+          ApiKeyAuth: []
   '/groups/{groupID}/removeperson/{userID}':
     delete:
       tags:
@@ -2959,15 +3073,11 @@ paths:
           schema:
             type: integer
       requestBody:
-        required: true
+        required: false
         content:
           application/json:
             schema:
-              required:
-                - PersonID
               properties:
-                PersonID:
-                  type: integer
                 RoleID:
                   description: 'Defaults to group default role if omitted'
                   type: integer
@@ -3935,6 +4045,27 @@ paths:
       responses:
         '200':
           description: 'Array of id/value pairs for matching custom fields'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, value: { type: string } }
+                  type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /system/properties/person:
+    get:
+      tags:
+        - System
+      summary: 'Get person property definitions as id/value pairs for settings dropdowns (Admin role required)'
+      operationId: 252a37a07f5516b784a2534ddf4ddfa9
+      responses:
+        '200':
+          description: 'Array of id/value pairs for person properties'
           content:
             application/json:
               schema:
