@@ -78,16 +78,18 @@ describe("Settings Panel — Choice Dropdowns", () => {
     describe("Admin Logs — Log Level", () => {
         it("log level dropdown has severity options from SystemConfig", () => {
             cy.visit("admin/system/logs");
-            cy.contains("Settings").click();
+            // The header button labeled "Settings" toggles the #logSettings collapse
+            cy.get("[data-bs-target='#logSettings']").click();
             cy.get("#logSettings", { timeout: 10000 }).should("be.visible");
 
             cy.get("#logSettings").within(() => {
                 cy.get("select[name='sLogLevel']").should("exist");
-                cy.get("select[name='sLogLevel'] option").should("have.length.at.least", 7);
+                cy.get("select[name='sLogLevel'] option").should("have.length", 5);
                 cy.get("select[name='sLogLevel']").contains("option", "DEBUG");
                 cy.get("select[name='sLogLevel']").contains("option", "INFO");
                 cy.get("select[name='sLogLevel']").contains("option", "WARNING");
                 cy.get("select[name='sLogLevel']").contains("option", "ERROR");
+                cy.get("select[name='sLogLevel']").contains("option", "CRITICAL");
             });
         });
     });
