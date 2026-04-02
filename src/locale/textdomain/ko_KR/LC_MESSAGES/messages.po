@@ -6957,28 +6957,8 @@ msgid "Create Backup"
 msgstr "백업 생성"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "업데이트를 적용하기 전에 데이터베이스 백업을 생성하세요."
-
-#: 
-msgid "Current Version:"
-msgstr "현재 버전:"
-
-#: 
-msgid "Database Backup"
-msgstr "데이터베이스 백업"
-
-#: 
 msgid "Download & Apply"
 msgstr "다운로드 및 적용"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "시스템 업데이트 다운로드 및 적용"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "최신 릴리스를 다운로드하여 ChurchCRM 설치에 적용합니다."
 
 #: 
 msgid "Downloaded"
@@ -6993,10 +6973,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "로그인 이름을 입력하시면 비밀번호 재설정 링크를 이메일로 보내드립니다."
 
 #: 
-msgid "Expected Hash"
-msgstr "예상 해시"
-
-#: 
 msgid "Failed to create backup."
 msgstr "백업을 생성하지 못했습니다."
 
@@ -7009,32 +6985,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "GitHub에서 업그레이드 정보를 새로고침하지 못했습니다."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "업그레이드 정보를 새로고침하지 못했습니다. 다시 시도해 주세요."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "설정을 저장하지 못했습니다. 다시 시도해 주세요."
-
-#: 
 msgid "File Name"
 msgstr "파일 이름"
 
 #: 
-msgid "Files Missing"
-msgstr "파일 누락"
-
-#: 
-msgid "Files Modified"
-msgstr "파일 수정됨"
-
-#: 
 msgid "Go to Login"
 msgstr "로그인으로 이동"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "이해했습니다 - 계속"
 
 #: 
 msgid "Language updated to"
@@ -7065,22 +7021,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "이 창을 닫거나 페이지를 새로고침하지 마세요."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "업그레이드 전 작업 완료"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "업그레이드 전 경고"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "GitHub에서 새로고침"
-
-#: 
-msgid "Release Notes:"
-msgstr "릴리스 노트:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "비밀번호 재설정 요청"
 
@@ -7089,28 +7029,12 @@ msgid "Retry Download"
 msgstr "다운로드 재시도"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 해시:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "재설정 이메일 보내기"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "설정이 저장되었습니다. 페이지를 다시 불러오는 중..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "설정이 업데이트되었습니다"
-
-#: 
-msgid "Skip Backup"
-msgstr "백업 건너뛰기"
-
-#: 
-msgid "System Up to Date"
-msgstr "시스템 최신 상태"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7123,10 +7047,6 @@ msgstr "시스템 업그레이드가 완료되었습니다!"
 #: 
 msgid "This may take several minutes."
 msgstr "몇 분 정도 걸릴 수 있습니다."
-
-#: 
-msgid "Update Available!"
-msgstr "업데이트 가능!"
 
 #: 
 msgid "Update Package Details"
@@ -13492,4 +13412,454 @@ msgstr "전화번호 검색 실패"
 #: 
 msgid "Field value"
 msgstr "필드 값"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "행사에 참석하지 않은 사람 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "한 해에는 약속했지만 다른 해에는 약속하지 않은 사람을 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "사용자 정의 필드 값이 있는 사람 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "특정 기회를 위해 자원봉사자 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "두 가지 특정 기회 코드와 일치하는 자원봉사자 찾기"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "첫 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "비교할 첫 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "첫 번째 자원봉사 기회 선택"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "이전 달에 가입한 친구들"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "손님"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "키오스크 체크인 이메일 알림"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp 연결됨"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp 미구성"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS/문자 메시징 도구 및 설정 관리"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "이벤트, 생일 및 기념일 관리"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "사용자 정의 필드를 이 값으로 일치"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "최대 나이"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "회원, 정기 참석자 등"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "특정 달에 가입한 회원"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "회원 기념일"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "최소 나이"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "실종된 사람들"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "누락된 약속"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "달"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "개월"
+
+#: 
+msgid "My Calendars"
+msgstr "내 캘린더"
+
+#: 
+msgid "New member notification emails"
+msgstr "신규 회원 알림 이메일"
+
+#: 
+msgid "No cell phone on file"
+msgstr "파일에 휴대폰 없음"
+
+#: 
+msgid "No email addresses available"
+msgstr "사용 가능한 이메일 주소 없음"
+
+#: 
+msgid "No phone numbers available"
+msgstr "사용 가능한 전화번호 없음"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "미참석자"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "미참석자 (직원)"
+
+#: 
+msgid "Not Classified"
+msgstr "분류되지 않음"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "친구가 된 이후 개월 수"
+
+#: 
+msgid "Parents"
+msgstr "부모"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "비밀번호 재설정 이메일 - 사용자가 계정을 복구할 수 없음"
+
+#: 
+msgid "People Settings"
+msgstr "사람 설정"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "특정 달에 생일이 있는 사람"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "속성별 사람"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "SMS/텍스트 목록에서 회원을 제외하는 데 사용되는 사람 속성"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "이메일 목록에서 회원을 제외하는 데 사용되는 사람 속성"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "전화번호를 클립보드에 복사했습니다"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "전화번호를 복사했습니다 — 메시징 앱에 붙여넣기"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "각 회원의 총 기여도를 계산하기 위해 마지막 날짜를 입력하세요 (예: YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "각 회원의 총 기여도를 계산하기 위해 시작 날짜를 선택하세요 (예: YYYY-MM-DD). 참고: 기부금을 포함하는 날짜만 선택할 수 있습니다."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "약속 비교"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "올해 약속"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "CTRL + C를 눌러 복사"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "속성"
+
+#: 
+msgid "Public calendar"
+msgstr "공개 캘린더"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "최근 친구"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "정기 참석자"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "주어진 속성이 할당된 사람 레코드를 반환합니다."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS 통합"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS 메시지를 Vonage API를 통해 ChurchCRM에서 직접 보낼 수 있습니다."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP 구성됨"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP 미구성"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "검색"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "두 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "비교할 두 번째 회계 연도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "두 번째 자원봉사 기회 선택"
+
+#: 
+msgid "Select calendars..."
+msgstr "캘린더 선택..."
+
+#: 
+msgid "Select event type..."
+msgstr "이벤트 유형 선택..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "검색할 필드를 선택합니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "원하는 이벤트 선택"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "원하는 가족 역할을 선택합니다."
+
+#: 
+msgid "Send text message"
+msgstr "문자 메시지 보내기"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "일부 캘린더에는 액세스 토큰이 있지만 외부 캘린더 공유는 현재 비활성화되어 있습니다. 캘린더 설정을 통해 활성화하여 외부 앱이 캘린더를 구독할 수 있도록 허용하세요."
+
+#: 
+msgid "System Calendars"
+msgstr "시스템 캘린더"
+
+#: 
+msgid "System language for the church."
+msgstr "교회의 시스템 언어."
+
+#: 
+msgid "Text All"
+msgstr "모두에게 텍스트 보내기"
+
+#: 
+msgid "Text Dashboard"
+msgstr "텍스트 대시보드"
+
+#: 
+msgid "Text Settings"
+msgstr "텍스트 설정"
+
+#: 
+msgid "Text Tools"
+msgstr "텍스트 도구"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "문자 메시징 작업은 그룹 및 주일학교 반 보기에서 사용할 수 있습니다. \"텍스트\" 드롭다운을 사용하여 전화번호를 복사하거나 그룹 회원에게 SMS 메시지를 보냅니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "레코드를 반환하고 싶은 생일 월입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "데이터베이스를 검색할 원하는 성별입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "레코드를 반환하고 싶은 성별입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "레코드를 반환하고 싶은 최대 나이입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "레코드를 반환하고 싶은 회원 기념일 월입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "레코드를 반환하고 싶은 최소 나이입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "사람 레코드를 반환하고 싶은 속성입니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "레코드를 반환하고 싶은 주일학교 반입니다."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "이 값들은 새 가족을 만들 때 미리 채워집니다. 수동 입력을 요구하려면 비워두세요."
+
+#: 
+msgid "Time"
+msgstr "시간"
+
+#: 
+msgid "Timed"
+msgstr "시간 제한"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "클립보드에 복사할 수 없습니다. URL을 수동으로 복사하세요."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "거리를 측정하는 데 사용되는 단위입니다."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "디렉토리 생성 사용자 권한"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailto: 링크를 통해 이메일을 보낼 수 있는 사용자 권한"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "자원봉사 기회"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "자원봉사자"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS 연결됨"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS 미구성"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Vonage가 없으면 문자 작업은 기기의 기본 SMS 앱을 열거나 전화번호를 클립보드에 복사합니다."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "직장 이메일"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "하지만 올해는 아님"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "예: 주일 예배"
+
+#: 
+msgid "member"
+msgstr "회원"
 

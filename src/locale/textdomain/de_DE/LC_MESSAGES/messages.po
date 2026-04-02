@@ -7066,28 +7066,8 @@ msgid "Create Backup"
 msgstr "Sicherung erstellen"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Erstellen Sie eine Sicherung Ihrer Datenbank, bevor Sie das Update anwenden."
-
-#: 
-msgid "Current Version:"
-msgstr "Aktuelle Version:"
-
-#: 
-msgid "Database Backup"
-msgstr "Datenbank-Sicherung"
-
-#: 
 msgid "Download & Apply"
 msgstr "Herunterladen & Anwenden"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "System-Update herunterladen & anwenden"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Laden Sie die neueste Version herunter und wenden Sie sie auf Ihre ChurchCRM-Installation an."
 
 #: 
 msgid "Downloaded"
@@ -7102,10 +7082,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Geben Sie Ihren Anmeldenamen ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts."
 
 #: 
-msgid "Expected Hash"
-msgstr "Erwarteter Hash"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Sicherung konnte nicht erstellt werden."
 
@@ -7118,32 +7094,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Upgrade-Informationen konnten nicht von GitHub aktualisiert werden."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Upgrade-Informationen konnten nicht aktualisiert werden. Bitte versuchen Sie es erneut."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Einstellung konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
-
-#: 
 msgid "File Name"
 msgstr "Dateiname"
 
 #: 
-msgid "Files Missing"
-msgstr "Dateien fehlen"
-
-#: 
-msgid "Files Modified"
-msgstr "Dateien geändert"
-
-#: 
 msgid "Go to Login"
 msgstr "Zur Anmeldung gehen"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Ich verstehe - Fortfahren"
 
 #: 
 msgid "Language updated to"
@@ -7174,22 +7130,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Bitte schließen Sie dieses Fenster nicht und aktualisieren Sie die Seite nicht."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Vor-Upgrade-Aufgaben abgeschlossen"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Vor-Upgrade-Warnungen"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Von GitHub aktualisieren"
-
-#: 
-msgid "Release Notes:"
-msgstr "Versionshinweise:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Passwort-Zurücksetzen anfordern"
 
@@ -7198,28 +7138,12 @@ msgid "Retry Download"
 msgstr "Download wiederholen"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1-Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Zurücksetzen-E-Mail senden"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Einstellung gespeichert. Seite wird neu geladen..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Einstellung erfolgreich aktualisiert"
-
-#: 
-msgid "Skip Backup"
-msgstr "Sicherung überspringen"
-
-#: 
-msgid "System Up to Date"
-msgstr "System ist aktuell"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7232,10 +7156,6 @@ msgstr "System-Upgrade erfolgreich abgeschlossen!"
 #: 
 msgid "This may take several minutes."
 msgstr "Dies kann mehrere Minuten dauern."
-
-#: 
-msgid "Update Available!"
-msgstr "Update verfügbar!"
 
 #: 
 msgid "Update Package Details"
@@ -11876,7 +11796,7 @@ msgstr "ChurchCRM mit MailChimp, Sicherungen und mehr erweitern"
 
 #: 
 msgid "FY %s"
-msgstr "GJ %s"
+msgstr "FJ %s"
 
 #: 
 msgid "Failed to add members to cart. Please try again."
@@ -13831,8 +13751,223 @@ msgstr "Eigenschaft"
 msgid "Public calendar"
 msgstr "Öffentlicher Kalender"
 
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Aktuelle Freunde"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Regelmäßiger Besucher"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Gibt Personensätze zurück, denen die angegebene Eigenschaft zugewiesen ist."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS-Integration"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS-Nachrichten können direkt von ChurchCRM über die Vonage-API gesendet werden."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP konfiguriert"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP nicht konfiguriert"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Search"
-msgstr "Suche"
+msgstr "Suchen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Zweites Geschäftsjahr"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Zweites Geschäftsjahr zum Vergleich"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Zweite Freiwilligenauswahl"
+
+#: 
+msgid "Select calendars..."
+msgstr "Wählen Sie Kalender..."
+
+#: 
+msgid "Select event type..."
+msgstr "Ereignistyp wählen..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Wählen Sie ein Suchfeld."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Wählen Sie das gewünschte Ereignis"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Wählen Sie die gewünschte Familienrolle."
+
+#: 
+msgid "Send text message"
+msgstr "Textnachricht senden"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Einige Kalender haben Zugriffstokens, aber die externe Kalenderfreigabe ist derzeit deaktiviert. Aktivieren Sie sie in den Kalendereinstellungen, um externen Apps das Abonnement Ihrer Kalender zu ermöglichen."
+
+#: 
+msgid "System Calendars"
+msgstr "Systemkalender"
+
+#: 
+msgid "System language for the church."
+msgstr "Systemsprache für die Kirche."
+
+#: 
+msgid "Text All"
+msgstr "Text Alle"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Text-Dashboard"
+
+#: 
+msgid "Text Settings"
+msgstr "Texteinstellungen"
+
+#: 
+msgid "Text Tools"
+msgstr "Textwerkzeuge"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Textnachrichtenaktionen sind in den Ansichten Gruppe und Sonntagsschulklasse verfügbar. Verwenden Sie das Dropdown-Menü \"Text\", um Telefonnummern zu kopieren oder SMS-Nachrichten an Gruppenmitglieder zu senden."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Der Geburtsmonat, für den Sie Sätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Das gewünschte Geschlecht, um die Datenbank zu durchsuchen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Das Geschlecht, für das Sie Sätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Das maximale Alter, für das Sie Sätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Der Mitgliedschaftsjubiläumsmonat, für den Sie Sätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Das minimale Alter, für das Sie Sätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Die Eigenschaft, für die Sie Personensätze zurück haben möchten."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Die Sonntagsschulklasse, für die Sie Sätze zurück haben möchten."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Diese Werte werden beim Erstellen neuer Familien automatisch ausgefüllt. Lassen Sie leer, um die manuelle Eingabe zu erzwingen."
+
+#: 
+msgid "Time"
+msgstr "Zeit"
+
+#: 
+msgid "Timed"
+msgstr "Zeitlich begrenzt"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Kann nicht in die Zwischenablage kopieren. Bitte kopieren Sie die URL manuell."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Einheit zum Messen der Entfernung."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Benutzerberechtigung zum Erstellen von Verzeichnissen"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Benutzerberechtigung zum Senden von E-Mails über mailto: Links"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Freiwilligeneinsätze"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Freiwillige"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS verbunden"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS nicht konfiguriert"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Ohne Vonage öffnen Textnachrichtenaktionen die native SMS-App Ihres Geräts oder kopieren Telefonnummern in die Zwischenablage."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Geschäfts-E-Mail"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "aber nicht dieses Jahr"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "z. B. Sonntagsgottesdienst"
+
+#: 
+msgid "member"
+msgstr "Mitglied"
 

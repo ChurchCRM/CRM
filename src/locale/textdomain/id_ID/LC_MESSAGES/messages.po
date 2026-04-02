@@ -6959,28 +6959,8 @@ msgid "Create Backup"
 msgstr "Buat Cadangan"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Buat cadangan database sebelum menerapkan pembaruan."
-
-#: 
-msgid "Current Version:"
-msgstr "Versi Saat Ini:"
-
-#: 
-msgid "Database Backup"
-msgstr "Cadangan Database"
-
-#: 
 msgid "Download & Apply"
 msgstr "Unduh & Terapkan"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Unduh dan Terapkan Pembaruan Sistem"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Unduh rilis terbaru dan terapkan pada instalasi ChurchCRM Anda."
 
 #: 
 msgid "Downloaded"
@@ -6995,10 +6975,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Masukkan nama login Anda dan kami akan mengirimkan tautan atur ulang kata sandi."
 
 #: 
-msgid "Expected Hash"
-msgstr "Hash yang Diharapkan"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Gagal membuat cadangan."
 
@@ -7011,32 +6987,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Gagal memuat info pembaruan dari GitHub."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Gagal memuat info pembaruan. Silakan coba lagi."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Gagal menyimpan pengaturan. Silakan coba lagi."
-
-#: 
 msgid "File Name"
 msgstr "Nama File"
 
 #: 
-msgid "Files Missing"
-msgstr "File Hilang"
-
-#: 
-msgid "Files Modified"
-msgstr "File Diubah"
-
-#: 
 msgid "Go to Login"
 msgstr "Ke Halaman Login"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Saya Mengerti - Lanjutkan"
 
 #: 
 msgid "Language updated to"
@@ -7067,22 +7023,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Harap jangan tutup jendela ini atau menyegarkan halaman."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Tugas Pra-Pembaruan Selesai"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Peringatan Pra-Pembaruan"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Segarkan dari GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Catatan Rilis:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Minta Atur Ulang Kata Sandi"
 
@@ -7091,28 +7031,12 @@ msgid "Retry Download"
 msgstr "Coba Unduh Lagi"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "Hash SHA1:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Kirim Email Atur Ulang"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Pengaturan disimpan. Memuat ulang halaman..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Pengaturan berhasil diperbarui"
-
-#: 
-msgid "Skip Backup"
-msgstr "Lewati Pencadangan"
-
-#: 
-msgid "System Up to Date"
-msgstr "Sistem Sudah Terbaru"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7125,10 +7049,6 @@ msgstr "Pembaruan sistem berhasil diselesaikan!"
 #: 
 msgid "This may take several minutes."
 msgstr "Ini mungkin memakan waktu beberapa menit."
-
-#: 
-msgid "Update Available!"
-msgstr "Pembaruan Tersedia!"
 
 #: 
 msgid "Update Package Details"
@@ -13485,7 +13405,7 @@ msgstr "Temukan orang yang tidak menghadiri acara"
 #. Context: query_qry
 #: 
 msgid "Find people who pledged one year but not another"
-msgstr "Temukan orang yang berkomitmen satu tahun tetapi tidak tahun lain"
+msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
 
 #. Context: query_qry
 #: 
@@ -13496,4 +13416,434 @@ msgstr "Temukan orang dengan nilai bidang khusus"
 #: 
 msgid "Find volunteers for a particular opportunity"
 msgstr "Temukan sukarelawan untuk peluang tertentu"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Temukan sukarelawan yang cocok dengan dua kode peluang spesifik"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Tahun Fiskal Pertama"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Tahun fiskal pertama untuk perbandingan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Pilihan peluang sukarelawan pertama"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Teman yang mendaftar di bulan sebelumnya"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Tamu"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Pemberitahuan email check-in kiosk"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp Terhubung"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp Tidak Dikonfigurasi"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Kelola alat dan pengaturan pesan SMS/teks"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Kelola acara, ulang tahun, dan hari jadi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Cocokkan bidang khusus ke nilai ini"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Usia Maksimum"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Anggota, Peserta Biasa, dll"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Anggota yang bergabung di bulan tertentu"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Hari jadi keanggotaan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Usia Minimum"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Orang yang hilang"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Janji yang hilang"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Bulan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Bulan-bulan"
+
+#: 
+msgid "My Calendars"
+msgstr "Kalender Saya"
+
+#: 
+msgid "New member notification emails"
+msgstr "Email pemberitahuan anggota baru"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Tidak ada ponsel di file"
+
+#: 
+msgid "No email addresses available"
+msgstr "Tidak ada alamat email yang tersedia"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Tidak ada nomor telepon yang tersedia"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Bukan Peserta"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Bukan Peserta (staf)"
+
+#: 
+msgid "Not Classified"
+msgstr "Tidak Diklasifikasikan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Jumlah bulan sejak menjadi teman"
+
+#: 
+msgid "Parents"
+msgstr "Orang tua"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Email pengaturan ulang sandi — pengguna tidak dapat memulihkan akun mereka"
+
+#: 
+msgid "People Settings"
+msgstr "Pengaturan Orang"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Orang dengan ulang tahun di bulan tertentu"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Orang Menurut Properti"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Properti orang yang digunakan untuk mengecualikan anggota dari daftar SMS/teks"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Properti orang yang digunakan untuk mengecualikan anggota dari daftar email"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Nomor telepon disalin ke papan klip"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Nomor telepon disalin — tempel ke aplikasi pesan Anda"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Silakan masukkan tanggal terakhir untuk menghitung kontribusi total untuk setiap anggota (yaitu YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Silakan pilih tanggal awal untuk menghitung kontribusi total untuk setiap anggota (yaitu YYYY-MM-DD). CATATAN: Anda hanya dapat memilih tanggal yang berisi sumbangan."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Perbandingan janji"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Berjanji tahun ini"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Tekan CTRL + C untuk menyalin"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Properti"
+
+#: 
+msgid "Public calendar"
+msgstr "Kalender publik"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Teman terbaru"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Peserta Biasa"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Mengembalikan catatan orang yang diberikan properti yang diberikan."
+
+#: 
+msgid "SMS Integration"
+msgstr "Integrasi SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "Pesan SMS dapat dikirim langsung dari ChurchCRM melalui API Vonage."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP Dikonfigurasi"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP Tidak Dikonfigurasi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Pencarian"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Tahun Fiskal Kedua"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Tahun fiskal kedua untuk perbandingan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Pilihan peluang sukarelawan kedua"
+
+#: 
+msgid "Select calendars..."
+msgstr "Pilih kalender..."
+
+#: 
+msgid "Select event type..."
+msgstr "Pilih jenis acara..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Pilih bidang untuk dicari."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Pilih acara yang diinginkan"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Pilih peran keluarga yang diinginkan."
+
+#: 
+msgid "Send text message"
+msgstr "Kirim pesan teks"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Beberapa kalender memiliki token akses, tetapi berbagi kalender eksternal saat ini dinonaktifkan. Aktifkan melalui Pengaturan Kalender untuk memungkinkan aplikasi eksternal berlangganan kalender Anda."
+
+#: 
+msgid "System Calendars"
+msgstr "Kalender Sistem"
+
+#: 
+msgid "System language for the church."
+msgstr "Bahasa sistem untuk gereja."
+
+#: 
+msgid "Text All"
+msgstr "Kirimi Teks Semua"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Dasbor Teks"
+
+#: 
+msgid "Text Settings"
+msgstr "Pengaturan Teks"
+
+#: 
+msgid "Text Tools"
+msgstr "Alat Teks"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Tindakan pesan teks tersedia dari tampilan Group dan kelas Sunday School. Gunakan menu tarik turun \"Text\" untuk menyalin nomor telepon atau mengirim pesan SMS ke anggota grup."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Bulan ulang tahun tempat Anda ingin catatan dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Jenis kelamin yang diinginkan untuk mencari basis data."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Jenis kelamin tempat Anda ingin catatan dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Usia maksimum tempat Anda ingin catatan dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Bulan hari jadi keanggotaan tempat Anda ingin catatan dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Usia minimum tempat Anda ingin catatan dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Properti tempat Anda ingin catatan orang dikembalikan."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Kelas Sunday School tempat Anda ingin catatan dikembalikan."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Nilai-nilai ini diisi sebelumnya saat membuat keluarga baru. Biarkan kosong untuk memerlukan entri manual."
+
+#: 
+msgid "Time"
+msgstr "Waktu"
+
+#: 
+msgid "Timed"
+msgstr "Berjadwal"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Tidak dapat menyalin ke papan klip. Silakan salin URL secara manual."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Satuan yang digunakan untuk mengukur jarak."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Izin pengguna untuk membuat direktori"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Izin pengguna untuk mengirim email melalui tautan mailto:"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Peluang sukarelawan"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Sukarelawan"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS Terhubung"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS Tidak Dikonfigurasi"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Tanpa Vonage, tindakan teks akan membuka aplikasi SMS asli perangkat Anda atau menyalin nomor telepon ke papan klip."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Email Kerja"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "tetapi tidak tahun ini"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "misalnya Pelayanan Minggu"
+
+#: 
+msgid "member"
+msgstr "anggota"
 
