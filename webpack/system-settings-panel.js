@@ -685,4 +685,41 @@ import "../src/skin/scss/system-settings-panel.scss";
   window.CRM = window.CRM || {};
   window.CRM.SettingsPanel = SettingsPanel;
   window.CRM.settingsPanel = new SettingsPanel();
+
+  // ---------------------------------------------------------------------------
+  // i18n key registration
+  //
+  // The keys below are defined as i18next.t() thunks in PHP template <script>
+  // blocks, which the i18next extraction tool does not scan. Listing them here
+  // (in a file that IS scanned) ensures they appear in the extracted terms and
+  // reach POEditor for translation.
+  //
+  // This function is never called — it exists solely for static extraction.
+  // ---------------------------------------------------------------------------
+  /* istanbul ignore next */
+  function _i18nKeys() { // eslint-disable-line no-unused-vars
+    // Email settings panel (email/dashboard.php)
+    t("Enable Email"); t("SMTP Timeout"); t("Auto TLS");
+    t("SMTP Authentication"); t("BCC All Mail To"); t("Do Not Email Property");
+    // Text settings panel (text/dashboard.php)
+    t("Do Not SMS Property");
+    // Calendar settings panel (calendar/calendar.php)
+    t("Enable Events Menu"); t("Enable External Calendar API");
+    // Groups settings panel (groups/dashboard.php)
+    t("Sunday School Module");
+    // Map settings panel (map/map-view.php)
+    t("Default Map View"); t("Continent"); t("Neighborhood"); t("Street");
+    t("Hide Latitude/Longitude"); t("Hide Person Address");
+    // Logs settings panel (admin/logs.php)
+    t("Log settings saved");
+    // SettingDefinitions labels (defined as plain strings in this file)
+    t("Log Level"); t("First month of the fiscal year");
+    t("Deposit ticket type"); t("Number of checks for Deposit Slip Report");
+    t("Display bill counts on deposit slip"); t("Enable use of scanned checks");
+    t("Enable non-deductible payments"); t("Enable use of donation envelopes");
+    t("Finance permission query IDs");
+    t("Church Name"); t("Church Address"); t("Church City"); t("Church State");
+    t("Church Zip"); t("Church Phone"); t("Church Email");
+    t("Tax Report signer"); t("Pledge Reminder Signer");
+  }
 })();

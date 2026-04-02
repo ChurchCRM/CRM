@@ -27,7 +27,9 @@ class PluginHelpExtractor {
         this.pluginsDir = path.join(this.projectRoot, 'src/plugins');
         this.tempDir = path.join(config.temp.root, 'churchcrm-locale-plugin-help');
         this.outputFile = path.join(this.tempDir, 'plugin-help-terms.po');
-        this.terms = new Set();
+        // Map<text, context> — keyed by text so the same string from multiple
+        // plugins is deduplicated (duplicate msgids cause msgcat fatal errors).
+        this.terms = new Map();
     }
 
     /**
@@ -89,9 +91,11 @@ class PluginHelpExtractor {
 
         // Normalize whitespace but preserve newlines for multiline content
         const normalized = text.trim();
-        
-        if (normalized.length > 0) {
-            this.terms.add(JSON.stringify({ text: normalized, context }));
+
+        // Deduplicate by text — the same string appearing across multiple plugins
+        // must only produce one msgid entry, or msgcat will report fatal errors.
+        if (normalized.length > 0 && !this.terms.has(normalized)) {
+            this.terms.set(normalized, context);
         }
     }
 
@@ -163,23 +167,21 @@ msgstr ""
 `;
 
         const entries = [];
-        
-        for (const termJson of this.terms) {
-            const { text, context } = JSON.parse(termJson);
-            
+
+        for (const [text, context] of this.terms) {
             let entry = '';
-            
+
             // Add context as a comment
             if (context) {
                 entry += `#. ${context}\n`;
             }
-            
+
             // Handle multiline strings
             const escaped = this.escapePOString(text);
-            
+
             entry += `msgid "${escaped}"\n`;
             entry += `msgstr ""\n`;
-            
+
             entries.push(entry);
         }
 
