@@ -248,6 +248,8 @@ import "../src/skin/scss/system-settings-panel.scss";
           settings: [],
           onSave: null,
           showAllSettingsLink: true,
+          allSettingsUrl: "/SystemSettings.php",
+          configApiPath: "/admin/api/system/config",
           headerClass: "bg-primary-lt",
         },
         options,
@@ -291,7 +293,7 @@ import "../src/skin/scss/system-settings-panel.scss";
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(window.CRM.root + "/admin/api/system/config/" + name)
+        fetch(window.CRM.root + self.options.configApiPath + "/" + name)
           .then((response) => response.json())
           .then((data) => {
             // For ajax selects, load options from the remote URL first
@@ -403,7 +405,7 @@ import "../src/skin/scss/system-settings-panel.scss";
                                 ${
                                   this.options.showAllSettingsLink
                                     ? `
-                                <a href="${window.CRM.root}/SystemSettings.php" class="btn btn-outline-secondary btn-sm">
+                                <a href="${window.CRM.root}${this.options.allSettingsUrl}" class="btn btn-outline-secondary btn-sm">
                                     <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${t("All System Settings")}
                                 </a>
                                 `
@@ -519,7 +521,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Save each setting
       const promises = Object.keys(settings).map(function (key) {
-        return fetch(window.CRM.root + "/admin/api/system/config/" + key, {
+        return fetch(window.CRM.root + self.options.configApiPath + "/" + key, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
