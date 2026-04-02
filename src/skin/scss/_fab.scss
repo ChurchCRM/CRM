@@ -69,6 +69,39 @@
       box-shadow: 0 6px 20px rgba(47, 179, 68, 0.45);
     }
   }
+
+  // Save button — green/success (primary action)
+  &.fab-save {
+    background-color: var(--tblr-success);
+    box-shadow: 0 4px 12px rgba(47, 179, 68, 0.35);
+
+    &:hover {
+      background-color: #1f8c3b;
+      box-shadow: 0 6px 20px rgba(47, 179, 68, 0.45);
+    }
+  }
+
+  // Save and Add button — info/blue (secondary action)
+  &.fab-save-add {
+    background-color: var(--tblr-info);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.35);
+
+    &:hover {
+      background-color: #0c63e4;
+      box-shadow: 0 6px 20px rgba(13, 110, 253, 0.45);
+    }
+  }
+
+  // Cancel button — secondary/gray (destructive-intent: discard changes)
+  &.fab-cancel {
+    background-color: var(--tblr-secondary);
+    box-shadow: 0 4px 12px rgba(108, 117, 125, 0.35);
+
+    &:hover {
+      background-color: #5a6268;
+      box-shadow: 0 6px 20px rgba(108, 117, 125, 0.45);
+    }
+  }
 }
 
 // --- Menu toggle (sidebar open on mobile/tablet) -----------------

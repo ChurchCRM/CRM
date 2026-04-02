@@ -585,7 +585,7 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 ?>
-<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor">
+<form method="post" action="PersonEditor.php?PersonID=<?= $iPersonID ?>" name="PersonEditor" id="personEditor">
     <?php if ($bErrorFlag) {
         ?>
         <div class="alert alert-danger alert-dismissable">
@@ -1090,48 +1090,30 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
         </div>
     <?php } ?>
-    <!-- Hidden submit buttons for form submission -->
-    <div class="d-none">
-        <input type="submit" class="btn btn-primary" id="PersonSaveButton" value="<?= gettext('Save') ?>"
-               name="PersonSubmit">
-        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
-            echo '<input type="submit" class="btn btn-primary" id="PersonSaveAndAddButton" value="' . gettext('Save and Add') . '" name="PersonSubmitAndAdd">';
-        } ?>
+    <!-- Form submit buttons -->
+    <div class="d-flex gap-2 mt-4">
+        <!-- Primary action: Save (green) -->
+        <button type="submit" name="PersonSubmit" class="btn btn-success flex-grow-1">
+            <i class="fa-solid fa-check me-2"></i><?= gettext('Save') ?>
+        </button>
+        <!-- Secondary action: Save and Add (blue) -->
+        <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
+        <button type="submit" name="PersonSubmitAndAdd" class="btn btn-info flex-grow-1">
+            <i class="fa-solid fa-user-plus me-2"></i><?= gettext('Save and Add') ?>
+        </button>
+        <?php } ?>
+        <!-- Tertiary action: Cancel (gray) -->
+        <?php if ($iPersonID > 0) { ?>
+        <a href="PersonView.php?PersonID=<?= $iPersonID ?>" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+        </a>
+        <?php } else { ?>
+        <a href="v2/people" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark me-2"></i><?= gettext('Cancel') ?>
+        </a>
+        <?php } ?>
     </div>
 </form>
-
-<!-- FAB Container -->
-<div id="fab-person-editor" class="fab-container fab-person-editor">
-    <?php if ($iPersonID > 0) { ?>
-    <a href="PersonView.php?PersonID=<?= $iPersonID ?>" class="fab-button fab-cancel" title="<?= gettext('Cancel') ?>">
-        <span class="fab-label"><?= gettext('Cancel') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-    </a>
-    <?php } else { ?>
-    <a href="v2/people" class="fab-button fab-cancel" title="<?= gettext('Cancel') ?>">
-        <span class="fab-label"><?= gettext('Cancel') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-    </a>
-    <?php } ?>
-    <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-    <a href="#" class="fab-button fab-save-add" role="button" title="<?= gettext('Save and Add') ?>" onclick="document.getElementById('PersonSaveAndAddButton').click(); return false;">
-        <span class="fab-label"><?= gettext('Save and Add') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-user-plus"></i>
-        </div>
-    </a>
-    <?php } ?>
-    <a href="#" class="fab-button fab-save" role="button" title="<?= gettext('Save') ?>" onclick="document.getElementById('PersonSaveButton').click(); return false;">
-        <span class="fab-label"><?= gettext('Save') ?></span>
-        <div class="fab-icon">
-            <i class="fa-solid fa-check"></i>
-        </div>
-    </a>
-</div>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     $(function() {
