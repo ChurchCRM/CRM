@@ -30,6 +30,24 @@ Every new UI string added to ChurchCRM creates a translation gap in 45+ language
 
 ---
 
+## ⚡ RECOMMENDED: Use Copilot for Bulk Translation
+
+**For translating 10+ locales at once:** Use **Copilot (GitHub Copilot) with Haiku model** instead of Claude Code — it's significantly faster for high-volume batch work.
+
+**Why:**
+- Haiku is optimized for rapid, high-volume translation tasks
+- Copilot handles parallel processing better than sequential Claude Code agents
+- Prior testing shows 2-3x faster completion for full 39-locale runs
+
+**Process:**
+1. `npm run locale:download` to generate missing-terms batches
+2. Open Copilot chat and provide the same translation prompt as `/locale-translate --all`
+3. Copilot will batch-process all locales faster than Claude Code can orchestrate them
+4. Copy results back and verify with `npm run locale:audit`
+5. Upload to POEditor: `npm run locale:upload:missing`
+
+---
+
 ## Quick Start
 
 ```bash
@@ -185,4 +203,17 @@ This avoids shell escaping issues with single quotes inside translation values.
 
 ---
 
-Last updated: February 2026
+## Performance Notes <!-- learned: 2026-04-02 -->
+
+### Model Selection for Bulk Translation
+
+**Tested approaches (April 2026):**
+- **Claude Code (Opus)** with sequential agents: ⚠️ Slow — agents hit permission barriers, timeouts common
+- **Copilot (Haiku/Fast mode)**: ✅ **RECOMMENDED** — 2-3x faster for 36+ locale runs, parallel processing works better
+- **Manual batch scripts**: ⚠️ Slow — requires many Context windows to generate all translations
+
+**Decision:** For future bulk translations, route through Copilot instead of Claude Code agents. Copilot is optimized for high-volume parallel work.
+
+---
+
+Last updated: April 2026
