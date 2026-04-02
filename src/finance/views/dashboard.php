@@ -483,34 +483,8 @@ $(document).ready(function() {
         title: <?= json_encode(gettext('Financial Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
-            {
-                name: 'iFYMonth',
-                type: 'choice',
-                label: <?= json_encode(gettext('First month of the fiscal year')) ?>,
-                choices: [
-                    { value: '1',  label: <?= json_encode(gettext('January')) ?> },
-                    { value: '2',  label: <?= json_encode(gettext('February')) ?> },
-                    { value: '3',  label: <?= json_encode(gettext('March')) ?> },
-                    { value: '4',  label: <?= json_encode(gettext('April')) ?> },
-                    { value: '5',  label: <?= json_encode(gettext('May')) ?> },
-                    { value: '6',  label: <?= json_encode(gettext('June')) ?> },
-                    { value: '7',  label: <?= json_encode(gettext('July')) ?> },
-                    { value: '8',  label: <?= json_encode(gettext('August')) ?> },
-                    { value: '9',  label: <?= json_encode(gettext('September')) ?> },
-                    { value: '10', label: <?= json_encode(gettext('October')) ?> },
-                    { value: '11', label: <?= json_encode(gettext('November')) ?> },
-                    { value: '12', label: <?= json_encode(gettext('December')) ?> }
-                ]
-            },
-            {
-                name: 'sDepositSlipType',
-                type: 'choice',
-                label: <?= json_encode(gettext('Deposit ticket type')) ?>,
-                tooltip: 'QBDT - QuickBooks Deposit Ticket',
-                choices: [
-                    { value: 'QBDT', label: 'QBDT (QuickBooks)' }
-                ]
-            },
+            { name: 'iFYMonth',          type: 'choice', label: <?= json_encode(gettext('First month of the fiscal year')) ?>, choices: <?= json_encode(SystemConfig::getChoices('iFYMonth')) ?> },
+            { name: 'sDepositSlipType',  type: 'choice', label: <?= json_encode(gettext('Deposit ticket type')) ?>, tooltip: <?= json_encode(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= json_encode(SystemConfig::getChoices('sDepositSlipType')) ?> },
             { name: 'iChecksPerDepositForm', type: 'number',  label: <?= json_encode(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
             { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= json_encode(gettext('Display bill counts on deposit slip')) ?> },
             { name: 'bUseScannedChecks',     type: 'boolean', label: <?= json_encode(gettext('Enable use of scanned checks')) ?> },

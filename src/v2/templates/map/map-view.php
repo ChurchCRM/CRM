@@ -82,14 +82,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     name: 'iMapZoom',
                     type: 'choice',
                     label: <?= json_encode(gettext('Default Map View')) ?>,
-                    choices: [
-                        { value: '3',  label: <?= json_encode(gettext('Continent')) ?> },
-                        { value: '5',  label: <?= json_encode(gettext('Country')) ?> },
-                        { value: '7',  label: <?= json_encode(gettext('State')) ?> },
-                        { value: '10', label: <?= json_encode(gettext('City')) ?> },
-                        { value: '14', label: <?= json_encode(gettext('Neighborhood')) ?> },
-                        { value: '18', label: <?= json_encode(gettext('Street')) ?> }
-                    ]
+                    choices: <?= json_encode(SystemConfig::getChoices('iMapZoom')) ?>
                 },
                 {
                     name: 'bHideLatLon',

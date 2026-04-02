@@ -123,12 +123,7 @@ $(document).ready(function() {
             { name: 'bEnabledEmail',         type: 'boolean', label: <?= json_encode(gettext('Enable Email')) ?>,            tooltip: <?= json_encode(SystemConfig::getTooltip('bEnabledEmail')) ?> },
             { name: 'sSMTPHost',             type: 'text',    label: <?= json_encode(gettext('SMTP Host')) ?>,               tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPHost')) ?> },
             { name: 'iSMTPTimeout',          type: 'number',  label: <?= json_encode(gettext('SMTP Timeout')) ?>,            tooltip: <?= json_encode(SystemConfig::getTooltip('iSMTPTimeout')) ?> },
-            { name: 'sPHPMailerSMTPSecure',  type: 'choice',  label: <?= json_encode(gettext('Encryption')) ?>,             tooltip: <?= json_encode(SystemConfig::getTooltip('sPHPMailerSMTPSecure')) ?>,
-              choices: [
-                  { value: ' ', label: <?= json_encode(gettext('None')) ?> },
-                  { value: 'tls', label: 'TLS' },
-                  { value: 'ssl', label: 'SSL' }
-              ]},
+            { name: 'sPHPMailerSMTPSecure',  type: 'choice',  label: <?= json_encode(gettext('Encryption')) ?>,             tooltip: <?= json_encode(SystemConfig::getTooltip('sPHPMailerSMTPSecure')) ?>, choices: <?= json_encode(SystemConfig::getChoices('sPHPMailerSMTPSecure')) ?> },
             { name: 'bPHPMailerAutoTLS',     type: 'boolean', label: <?= json_encode(gettext('Auto TLS')) ?>,               tooltip: <?= json_encode(SystemConfig::getTooltip('bPHPMailerAutoTLS')) ?> },
             { name: 'bSMTPAuth',             type: 'boolean', label: <?= json_encode(gettext('SMTP Authentication')) ?>,    tooltip: <?= json_encode(SystemConfig::getTooltip('bSMTPAuth')) ?> },
             { name: 'sSMTPUser',             type: 'text',    label: <?= json_encode(gettext('SMTP Username')) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPUser')) ?> },

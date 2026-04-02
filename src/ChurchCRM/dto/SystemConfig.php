@@ -49,6 +49,33 @@ class   SystemConfig
         ];
     }
 
+    private static function getSmtpEncryptionChoices(): array
+    {
+        return ['Choices' => [gettext('None') . ': ', 'TLS:tls', 'SSL:ssl']];
+    }
+
+    private static function getMonthChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('January') . ':1', gettext('February') . ':2', gettext('March') . ':3',
+                gettext('April') . ':4', gettext('May') . ':5', gettext('June') . ':6',
+                gettext('July') . ':7', gettext('August') . ':8', gettext('September') . ':9',
+                gettext('October') . ':10', gettext('November') . ':11', gettext('December') . ':12',
+            ],
+        ];
+    }
+
+    private static function getMapZoomChoices(): array
+    {
+        return [
+            'Choices' => [
+                gettext('Continent') . ':3', gettext('Country') . ':5', gettext('State') . ':7',
+                gettext('City') . ':10', gettext('Neighborhood') . ':14', gettext('Street') . ':18',
+            ],
+        ];
+    }
+
     public static function getNameChoices(): array
     {
         return [
@@ -117,8 +144,8 @@ class   SystemConfig
             'sSMTPUser'                            => new ConfigItem(29, 'sSMTPUser', 'text', '', gettext('SMTP Username')),
             'sSMTPPass'                            => new ConfigItem(30, 'sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem(39, 'sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
-            'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
-            'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', gettext('Initial zoom level when opening the map (3 = continent, 10 = city, 18 = street)')),
+            'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', json_encode(SystemConfig::getMonthChoices(), JSON_THROW_ON_ERROR)),
+            'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'choice', '10', gettext('Initial zoom level when opening the map'), '', json_encode(SystemConfig::getMapZoomChoices(), JSON_THROW_ON_ERROR)),
             'iChurchLatitude'                      => new ConfigItem(45, 'iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem(46, 'iChurchLongitude', 'number', '', ''),
             'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('When enabled, hides the address field for people not assigned to a family')),
@@ -181,7 +208,7 @@ class   SystemConfig
             'sChurchCountry'                       => new ConfigItem(1047, 'sChurchCountry', 'choice', '', '', '', json_encode(['Choices' => Countries::getNames()], JSON_THROW_ON_ERROR)),
             'sConfirmSincerely'                    => new ConfigItem(1048, 'sConfirmSincerely', 'text', 'Sincerely', gettext('Used to end a letter before Signer')),
             'sDear'                                => new ConfigItem(1049, 'sDear', 'text', 'Dear', gettext('Text before name in emails/reports')),
-            'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type.  QBDT - Quickbooks'), '', '{"Choices":["QBDT"]}'),
+            'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type'), '', '{"Choices":["QBDT (QuickBooks):QBDT"]}'),
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
             'iPersonInitialStyle'                  => new ConfigItem(20201, 'iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
             'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
@@ -211,7 +238,7 @@ class   SystemConfig
             'iDoNotSmsPropertyId'                  => new ConfigItem(2043, 'iDoNotSmsPropertyId', 'ajax', '', gettext('Person property used to exclude members from SMS/text lists'), '', '/api/system/properties/person'),
             'bEnforceCSP'                          => new ConfigItem(20234, 'bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
             'bPHPMailerAutoTLS'                    => new ConfigItem(2045, 'bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
-            'sPHPMailerSMTPSecure'                 => new ConfigItem(2046, 'sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', '{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
+            'sPHPMailerSMTPSecure'                 => new ConfigItem(2046, 'sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', json_encode(SystemConfig::getSmtpEncryptionChoices(), JSON_THROW_ON_ERROR)),
             'bEnabledSundaySchool'                 => new ConfigItem(2051, 'bEnabledSundaySchool', 'boolean', '1', gettext('Show or hide the Sunday School module in the sidebar navigation')),
             'bEnabledFinance'                      => new ConfigItem(2052, 'bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
             'bEnabledEvents'                       => new ConfigItem(2053, 'bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
@@ -342,6 +369,33 @@ class   SystemConfig
     {
         $item = self::$configs[$name] ?? null;
         return $item ? $item->getTooltip() : '';
+    }
+
+    /**
+     * Return the choices for a 'choice' setting as [{value, label}, ...].
+     * Parses the ConfigItem data JSON (format: {"Choices":["Label:value",...]}).
+     * Returns an empty array if the setting has no choices.
+     */
+    public static function getChoices(string $name): array
+    {
+        $item = self::$configs[$name] ?? null;
+        if (!$item || !$item->getData()) {
+            return [];
+        }
+        $data = json_decode($item->getData(), true);
+        if (!isset($data['Choices'])) {
+            return [];
+        }
+        $choices = [];
+        foreach ($data['Choices'] as $entry) {
+            if (str_contains($entry, ':')) {
+                [$label, $value] = explode(':', $entry, 2);
+                $choices[] = ['value' => $value, 'label' => $label];
+            } else {
+                $choices[] = ['value' => $entry, 'label' => $entry];
+            }
+        }
+        return $choices;
     }
 
     /**

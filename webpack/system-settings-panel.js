@@ -8,12 +8,15 @@
  *    <script src="/skin/v2/system-settings-panel.min.js"></script>
  * (When rendering server-side you may prepend the application's root path.)
  * 3. Add container: <div id="settingsPanel"></div>
- * 4. Initialize:
+ * 4. Initialize (labels/types/choices are provided by the caller, not the component):
  *    window.CRM.settingsPanel.init({
  *        container: '#settingsPanel',
  *        title: 'Financial Settings',
  *        icon: 'fa-solid fa-sliders',
- *        settings: ['iFYMonth', 'bEnableNonDeductible', 'iChecksPerDepositForm'],
+ *        settings: [
+ *            { name: 'iFYMonth', type: 'choice', label: 'Fiscal Year Month', choices: [...] },
+ *            { name: 'bEnableNonDeductible', type: 'boolean', label: 'Non-deductible' }
+ *        ],
  *        onSave: function() { window.location.reload(); }
  *    });
  */
@@ -210,11 +213,9 @@ import "../src/skin/scss/system-settings-panel.scss";
     return key;
   }
 
-  // Resolve a setting label or tooltip: if it's a function (thunk), call it
-  // at render time so that i18next.t() runs after translations are loaded.
-  // If it's already a string, return it as-is.
+  // Safely resolve a setting label or tooltip, returning "" for falsy values.
   function resolve(value) {
-    return typeof value === "function" ? value() : value || "";
+    return value || "";
   }
 
   // Settings Panel Class
@@ -361,10 +362,6 @@ import "../src/skin/scss/system-settings-panel.scss";
 
         const renderer = SettingTypes[settingConfig.type];
         if (renderer) {
-          // Handle dynamic choices (functions)
-          if (typeof settingConfig.choices === "function") {
-            settingConfig.choices = settingConfig.choices();
-          }
           settingsHtml += renderer.render(settingConfig, "");
         }
       });
@@ -468,7 +465,6 @@ import "../src/skin/scss/system-settings-panel.scss";
           Object.keys(preset.values).forEach(function (key) {
             self.applyValue(key, preset.values[key]);
           });
-          const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
               type: "info",
@@ -503,7 +499,6 @@ import "../src/skin/scss/system-settings-panel.scss";
       const self = this;
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
       const originalHtml = saveBtn.innerHTML;
-      const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
       // Disable button and show loading
       saveBtn.disabled = true;

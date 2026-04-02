@@ -27,8 +27,9 @@ class PluginHelpExtractor {
         this.pluginsDir = path.join(this.projectRoot, 'src/plugins');
         this.tempDir = path.join(config.temp.root, 'churchcrm-locale-plugin-help');
         this.outputFile = path.join(this.tempDir, 'plugin-help-terms.po');
-        // Map<text, context> — keyed by text so the same string from multiple
+        // Map<text, string[]> — keyed by text so the same string from multiple
         // plugins is deduplicated (duplicate msgids cause msgcat fatal errors).
+        // All contexts are collected so translators see every usage.
         this.terms = new Map();
     }
 
@@ -94,8 +95,13 @@ class PluginHelpExtractor {
 
         // Deduplicate by text — the same string appearing across multiple plugins
         // must only produce one msgid entry, or msgcat will report fatal errors.
-        if (normalized.length > 0 && !this.terms.has(normalized)) {
-            this.terms.set(normalized, context);
+        // All contexts are collected so translators see every plugin that uses the term.
+        if (normalized.length > 0) {
+            if (!this.terms.has(normalized)) {
+                this.terms.set(normalized, [context]);
+            } else if (context) {
+                this.terms.get(normalized).push(context);
+            }
         }
     }
 
@@ -168,12 +174,14 @@ msgstr ""
 
         const entries = [];
 
-        for (const [text, context] of this.terms) {
+        for (const [text, contexts] of this.terms) {
             let entry = '';
 
-            // Add context as a comment
-            if (context) {
-                entry += `#. ${context}\n`;
+            // Add all contexts as comments
+            for (const ctx of contexts) {
+                if (ctx) {
+                    entry += `#. ${ctx}\n`;
+                }
             }
 
             // Handle multiline strings
