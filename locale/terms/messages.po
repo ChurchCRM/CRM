@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 11:01-0700\n"
+"POT-Creation-Date: 2026-04-02 22:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,9 +247,6 @@ msgid "A person does not need to belong to a family, but assigning one makes add
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
-msgstr ""
-
-msgid "ALERT"
 msgstr ""
 
 msgid "API Key is required."
@@ -1410,9 +1407,6 @@ msgstr ""
 msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
 msgstr ""
 
-msgid "CRITICAL"
-msgstr ""
-
 msgid "CRM Members Not Subscribed"
 msgstr ""
 
@@ -2325,10 +2319,6 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
-#. Context: query_qry
-msgid "Credit Card People"
-msgstr ""
-
 msgid "Critical Configuration Error"
 msgstr ""
 
@@ -2452,9 +2442,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Côte d’Ivoire"
-msgstr ""
-
-msgid "DEBUG"
 msgstr ""
 
 msgid "DSN"
@@ -3018,9 +3005,6 @@ msgstr ""
 msgid "E.164 Phone Number Format"
 msgstr ""
 
-msgid "EMERGENCY"
-msgstr ""
-
 msgid "ENE"
 msgstr ""
 
@@ -3509,6 +3493,7 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -3910,10 +3895,6 @@ msgstr ""
 msgid "Family Pledge Summary"
 msgstr ""
 
-#. Context: query_qry
-msgid "Family Pledge by Fiscal Year"
-msgstr ""
-
 msgid "Family Pledges"
 msgstr ""
 
@@ -4107,14 +4088,14 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
-#. Context: query_qry
-msgid "Find Registered students"
-msgstr ""
-
 msgid "Find family"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -4187,12 +4168,7 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Fiscal Year"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -4638,10 +4614,6 @@ msgstr ""
 msgid "Group not found"
 msgstr ""
 
-#. Context: queryparameters_qrp
-msgid "Group of registered students"
-msgstr ""
-
 msgid "Group removed from cart"
 msgstr ""
 
@@ -4815,9 +4787,6 @@ msgid "ICS URL"
 msgstr ""
 
 msgid "ID"
-msgstr ""
-
-msgid "INFO"
 msgstr ""
 
 msgid "IP Address"
@@ -6006,6 +5975,10 @@ msgid "Missing calendar access token"
 msgstr ""
 
 #. Context: query_qry
+msgid "Missing people"
+msgstr ""
+
+#. Context: query_qry
 msgid "Missing pledges"
 msgstr ""
 
@@ -6174,9 +6147,6 @@ msgid "NNE"
 msgstr ""
 
 msgid "NNW"
-msgstr ""
-
-msgid "NOTICE"
 msgstr ""
 
 msgid "NW"
@@ -7052,10 +7022,6 @@ msgid "People not in"
 msgstr ""
 
 #. Context: query_qry
-msgid "People who are configured to pay by credit card."
-msgstr ""
-
-#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
@@ -7450,10 +7416,6 @@ msgstr ""
 msgid "Pledge comparison"
 msgstr ""
 
-#. Context: query_qry
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr ""
-
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -7759,10 +7721,6 @@ msgid "Register and manage kiosk devices for event check-in"
 msgstr ""
 
 msgid "Register another family"
-msgstr ""
-
-#. Context: query_qry
-msgid "Registered students"
 msgstr ""
 
 msgid "Registration Error"
@@ -8382,6 +8340,10 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select start and end date/time"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired event"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -9947,10 +9909,6 @@ msgid "User permission to create directories"
 msgstr ""
 
 #. Context: userconfig_ucfg
-msgid "User permission to export CSV files"
-msgstr ""
-
-#. Context: userconfig_ucfg
 msgid "User permission to send email via mailto: links"
 msgstr ""
 
@@ -10254,9 +10212,6 @@ msgid "Voting members must have made a donation within this many years (0 to not
 msgstr ""
 
 msgid "W"
-msgstr ""
-
-msgid "WARNING"
 msgstr ""
 
 msgid "WARNING: This action can not be undone and may have legal implications!"
