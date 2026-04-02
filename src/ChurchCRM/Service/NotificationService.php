@@ -28,18 +28,46 @@ class NotificationService
         }
     }
 
+    /**
+     * Check if a version pattern matches the installed version.
+     * Supports wildcards: "7.1.*" matches 7.1.x, "7.*" matches 7.x.y, "*" matches all
+     */
+    private static function matchesVersionPattern(string $pattern, string $version): bool
+    {
+        if ($pattern === '*') {
+            return true;
+        }
+        // Convert glob-style pattern to regex: "7.1.*" → "^7\.1\.\d+$"
+        $regex = '/^' . str_replace(['.', '*'], ['\.', '\d+'], $pattern) . '$/';
+        return (bool) preg_match($regex, $version);
+    }
+
     /** retrieve active notifications from the session variable for display */
     public static function getNotifications(): array
     {
         $notifications = [];
-        if (isset($_SESSION['SystemNotifications'])) {
-            foreach ($_SESSION['SystemNotifications']->messages as $message) {
-                if ($message->targetVersion === $_SESSION['sSoftwareInstalledVersion']) {
-                    if (!$message->adminOnly || AuthenticationManager::getCurrentUser()->isAdmin()) {
-                        $notifications[] = $message;
-                    }
-                }
+        if (!isset($_SESSION['SystemNotifications'])) {
+            return $notifications;
+        }
+
+        $currentUser = AuthenticationManager::getCurrentUser();
+        $installedVersion = $_SESSION['sSoftwareInstalledVersion'];
+
+        foreach ($_SESSION['SystemNotifications']->messages as $message) {
+            // Support both new targetVersionPattern and old targetVersion (backward compat)
+            $pattern = $message->targetVersionPattern ?? $message->targetVersion ?? '';
+            if (!self::matchesVersionPattern($pattern, $installedVersion)) {
+                continue;
             }
+            if ($message->adminOnly && !$currentUser->isAdmin()) {
+                continue;
+            }
+            // Skip if user has dismissed this notification
+            $dismissKey = 'notification.dismissed.' . ($message->id ?? '');
+            if ($message->id && $currentUser->getSettingValue($dismissKey) === 'true') {
+                continue;
+            }
+            $notifications[] = $message;
         }
 
         return $notifications;

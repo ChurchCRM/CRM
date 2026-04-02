@@ -14,6 +14,8 @@ class UiNotification implements JsonSerializable
     private int $delay;
     private string $placement;
     private string $align;
+    private string $id;
+    private string $dismissSettingKey;
 
     public function __construct(
         string $title,
@@ -23,7 +25,9 @@ class UiNotification implements JsonSerializable
         string $type = 'info',
         int $delay = 4000,
         string $placement = 'top',
-        string $align = 'right'
+        string $align = 'right',
+        string $id = '',
+        string $dismissSettingKey = ''
     ) {
         $this->title = $title;
         $this->message = $message;
@@ -33,6 +37,8 @@ class UiNotification implements JsonSerializable
         $this->delay = $delay;
         $this->placement = $placement;
         $this->align = $align;
+        $this->id = $id;
+        $this->dismissSettingKey = $dismissSettingKey;
     }
 
     public function getTitle(): string

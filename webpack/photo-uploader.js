@@ -34,12 +34,21 @@ import Webcam from "@uppy/webcam";
  * @returns {PhotoUploaderInstance} - Photo uploader wrapper with show/hide methods
  */
 export function createPhotoUploader(config) {
+  // Ensure numeric config values are numbers (may come as strings from PHP)
+  const maxFileSizeBytes =
+    typeof config.maxFileSize === "string" ? parseInt(config.maxFileSize, 10) : config.maxFileSize || 5000000;
+
+  const photoWidth = typeof config.photoWidth === "string" ? parseInt(config.photoWidth, 10) : config.photoWidth || 800;
+
+  const photoHeight =
+    typeof config.photoHeight === "string" ? parseInt(config.photoHeight, 10) : config.photoHeight || 800;
+
   const uppy = new Uppy({
     id: "photo-uploader",
     autoProceed: false,
     restrictions: {
       maxNumberOfFiles: 1,
-      maxFileSize: config.maxFileSize || 5000000, // Default 5MB
+      maxFileSize: maxFileSizeBytes, // Default 5MB
       allowedFileTypes: ["image/*"],
     },
   })
@@ -47,7 +56,7 @@ export function createPhotoUploader(config) {
       inline: false, // Use modal mode
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
-      note: `Max file size: ${Math.round((config.maxFileSize || 5000000) / 1000000)}MB`,
+      note: `Max file size: ${Math.round(maxFileSizeBytes / 1000000)}MB`,
       closeModalOnClickOutside: true,
       locale: {
         strings: {
@@ -62,8 +71,8 @@ export function createPhotoUploader(config) {
       mirror: true,
       videoConstraints: {
         facingMode: "user",
-        width: { ideal: config.photoWidth || 800 },
-        height: { ideal: config.photoHeight || 800 },
+        width: { ideal: photoWidth },
+        height: { ideal: photoHeight },
       },
       preferredImageMimeType: "image/jpeg",
     });

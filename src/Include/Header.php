@@ -10,7 +10,9 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Utils\InputUtils;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
 
@@ -440,3 +442,40 @@ $MenuFirst = 1;
     <?php endif; ?>
     <div class="page-body">
       <div class="container-xl">
+<?php
+// Render system notifications as dismissible alerts
+if (NotificationService::isUpdateRequired()) {
+    NotificationService::updateNotifications();
+}
+foreach (NotificationService::getNotifications() as $notification) {
+    $notifId = $notification->id ?? '';
+    $notifType = $notification->type ?? 'info';
+    $notifIcon = $notification->icon ?? 'info-circle';
+    $notifTitle = $notification->title ?? '';
+    $notifMsg = $notification->message ?? '';
+    $notifLink = $notification->link ?? '';
+    $notifDismissKey = $notifId !== '' ? 'notification.dismissed.' . $notifId : '';
+?>
+      <div class="alert alert-<?= InputUtils::escapeHTML($notifType) ?> alert-dismissible"
+           role="alert"
+           <?= $notifId ? 'data-notification-id="' . InputUtils::escapeAttribute($notifId) . '"' : '' ?>
+           <?= $notifDismissKey ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notifDismissKey) . '"' : '' ?>>
+        <div class="d-flex">
+          <div><i class="ti ti-<?= InputUtils::escapeHTML($notifIcon) ?> me-2"></i></div>
+          <div>
+            <strong><?= InputUtils::escapeHTML($notifTitle) ?></strong>
+            <?php if ($notifMsg): ?>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($notifMsg) ?></div>
+            <?php endif; ?>
+            <?php if ($notifLink): ?>
+              <a href="<?= InputUtils::escapeAttribute($notifLink) ?>" class="alert-link">
+                <?= gettext('Learn more') ?>
+              </a>
+            <?php endif; ?>
+          </div>
+        </div>
+        <?php if ($notifDismissKey): ?>
+          <button type="button" class="btn-close js-dismiss-notification" aria-label="<?= gettext('Dismiss') ?>"></button>
+        <?php endif; ?>
+      </div>
+<?php } ?>

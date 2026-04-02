@@ -6922,28 +6922,8 @@ msgid "Create Backup"
 msgstr "バックアップを作成"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "更新を適用する前にデータベースのバックアップを作成してください。"
-
-#: 
-msgid "Current Version:"
-msgstr "現在のバージョン："
-
-#: 
-msgid "Database Backup"
-msgstr "データベースのバックアップ"
-
-#: 
 msgid "Download & Apply"
 msgstr "ダウンロードと適用"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "システム更新をダウンロードして適用"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "最新リリースをダウンロードしてChurchCRMインストールに適用します。"
 
 #: 
 msgid "Downloaded"
@@ -6958,10 +6938,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "ログイン名を入力すると、パスワードリセットリンクをメールでお送りします。"
 
 #: 
-msgid "Expected Hash"
-msgstr "期待されるハッシュ"
-
-#: 
 msgid "Failed to create backup."
 msgstr "バックアップの作成に失敗しました。"
 
@@ -6974,32 +6950,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "GitHubからのアップグレード情報の更新に失敗しました。"
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "アップグレード情報の更新に失敗しました。もう一度お試しください。"
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "設定の保存に失敗しました。もう一度お試しください。"
-
-#: 
 msgid "File Name"
 msgstr "ファイル名"
 
 #: 
-msgid "Files Missing"
-msgstr "ファイルがありません"
-
-#: 
-msgid "Files Modified"
-msgstr "変更されたファイル"
-
-#: 
 msgid "Go to Login"
 msgstr "ログインへ移動"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "理解しました - 続行"
 
 #: 
 msgid "Language updated to"
@@ -7030,22 +6986,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "このウィンドウを閉じたり、ページを更新したりしないでください。"
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "アップグレード前タスク完了"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "アップグレード前の警告"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "GitHubから更新"
-
-#: 
-msgid "Release Notes:"
-msgstr "リリースノート："
-
-#: 
 msgid "Request Password Reset"
 msgstr "パスワードリセットをリクエスト"
 
@@ -7054,28 +6994,12 @@ msgid "Retry Download"
 msgstr "ダウンロードを再試行"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1ハッシュ："
-
-#: 
 msgid "Send Reset Email"
 msgstr "リセットメールを送信"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "設定が保存されました。ページを再読み込み中..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "設定が正常に更新されました"
-
-#: 
-msgid "Skip Backup"
-msgstr "バックアップをスキップ"
-
-#: 
-msgid "System Up to Date"
-msgstr "システムが最新です"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7088,10 +7012,6 @@ msgstr "システムアップグレードが正常に完了しました!"
 #: 
 msgid "This may take several minutes."
 msgstr "これには数分かかる場合があります。"
-
-#: 
-msgid "Update Available!"
-msgstr "更新が利用可能です！"
 
 #: 
 msgid "Update Package Details"
@@ -13455,4 +13375,454 @@ msgstr "電話番号の取得に失敗しました"
 #: 
 msgid "Field value"
 msgstr "フィールド値"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "イベントに出席しなかった人を探す"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "ある年は誓約したが別の年は誓約しなかった人を探す"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "カスタムフィールド値を持つ人を探す"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "特定の機会のためにボランティアを見つける"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "2つの特定の機会コードに一致するボランティアを見つける"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "比較用の最初の会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "最初のボランティア機会の選択"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "前の月にサインアップした友達"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "ゲスト"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "キオスク チェックイン メール通知"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp接続済み"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimpが設定されていません"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS/テキストメッセージングツールと設定を管理する"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "イベント、誕生日、周年記念を管理する"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "カスタムフィールドをこの値に一致させる"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "最大年齢"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "メンバー、常連参加者など"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "特定の月に参加したメンバー"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "会員の周年記念"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "最小年齢"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "行方不明の人"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "誓約の欠落"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "月"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "月"
+
+#: 
+msgid "My Calendars"
+msgstr "マイカレンダー"
+
+#: 
+msgid "New member notification emails"
+msgstr "新メンバー通知メール"
+
+#: 
+msgid "No cell phone on file"
+msgstr "ファイルに携帯電話がありません"
+
+#: 
+msgid "No email addresses available"
+msgstr "利用可能なメールアドレスがありません"
+
+#: 
+msgid "No phone numbers available"
+msgstr "利用可能な電話番号がありません"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "非参加者"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "非参加者（スタッフ）"
+
+#: 
+msgid "Not Classified"
+msgstr "分類なし"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "友達になってからの月数"
+
+#: 
+msgid "Parents"
+msgstr "親"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "パスワードリセットメール—ユーザーはアカウントを復元できません"
+
+#: 
+msgid "People Settings"
+msgstr "ユーザー設定"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "特定の月に誕生日がある人"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "プロパティ別のユーザー"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "SMS/テキストリストからメンバーを除外するために使用されるユーザープロパティ"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "メールリストからメンバーを除外するために使用されるユーザープロパティ"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "電話番号がクリップボードにコピーされました"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "電話番号がコピーされました—メッセージングアプリに貼り付けます"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "各メンバーの総拠金を計算するための最後の日付を入力してください（例：YYYY-MM-DD）。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "各メンバーの総拠金を計算するための開始日を選択してください（例：YYYY-MM-DD）。注：寄付を含む日付のみを選択できます。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "誓約の比較"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "今年誓約した"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Ctrl + Cを押してコピーします"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "プロパティ"
+
+#: 
+msgid "Public calendar"
+msgstr "公開カレンダー"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "最近の友達"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "常連参加者"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "指定されたプロパティが割り当てられているユーザーレコードを返します。"
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS統合"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS メッセージは Vonage API 経由で ChurchCRM から直接送信できます。"
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP構成済み"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTPが構成されていません"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "検索"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "比較用の第2会計年度"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "第2のボランティア機会の選択"
+
+#: 
+msgid "Select calendars..."
+msgstr "カレンダーを選択..."
+
+#: 
+msgid "Select event type..."
+msgstr "イベントタイプを選択..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "検索するフィールドを選択します。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "目的のイベントを選択します"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "目的の家族の役割を選択します。"
+
+#: 
+msgid "Send text message"
+msgstr "テキストメッセージを送信する"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "一部のカレンダーにはアクセストークンがありますが、外部カレンダー共有は現在無効です。カレンダー設定で有効にして、外部アプリがカレンダーにサブスクライブできるようにしてください。"
+
+#: 
+msgid "System Calendars"
+msgstr "システムカレンダー"
+
+#: 
+msgid "System language for the church."
+msgstr "教会のシステム言語。"
+
+#: 
+msgid "Text All"
+msgstr "すべてにテキストを送信"
+
+#: 
+msgid "Text Dashboard"
+msgstr "テキストダッシュボード"
+
+#: 
+msgid "Text Settings"
+msgstr "テキスト設定"
+
+#: 
+msgid "Text Tools"
+msgstr "テキストツール"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "テキストメッセージングアクションは、グループと日曜学校のクラスビューから利用できます。 「テキスト」ドロップダウンを使用して、電話番号をコピーするか、グループメンバーにSMSメッセージを送信します。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "レコードを返してほしい誕生月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "データベースを検索するために望まれる性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "レコードを返してほしい性別。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "レコードを返してほしい最大年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "レコードを返してほしい会員周年記念月。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "レコードを返してほしい最小年齢。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "ユーザーレコードを返してほしいプロパティ。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "レコードを返してほしい日曜学校のクラス。"
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "これらの値は、新しい家族を作成するときに事前に入力されます。手動入力が必要な場合は空白のままにします。"
+
+#: 
+msgid "Time"
+msgstr "時間"
+
+#: 
+msgid "Timed"
+msgstr "時間制限あり"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "クリップボードにコピーできません。URLを手動でコピーしてください。"
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "距離を測定するために使用される単位。"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "ディレクトリを作成するためのユーザー権限"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "mailto：リンク経由でメールを送信するためのユーザー権限"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "ボランティアの機会"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "ボランティア"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS接続済み"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMSが設定されていません"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Vonageがない場合、テキストアクションはデバイスのネイティブSMSアプリを開くか、電話番号をクリップボードにコピーします。"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "仕事用メール"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "しかし今年はない"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "例えば日曜日のサービス"
+
+#: 
+msgid "member"
+msgstr "会員"
 

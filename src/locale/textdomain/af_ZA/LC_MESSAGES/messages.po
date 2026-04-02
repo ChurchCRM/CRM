@@ -6968,28 +6968,8 @@ msgid "Create Backup"
 msgstr "Skep Rugsteun"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Skep 'n rugsteun van u databasis voordat u die opdatering toepas."
-
-#: 
-msgid "Current Version:"
-msgstr "Huidige Weergawe:"
-
-#: 
-msgid "Database Backup"
-msgstr "Databasisbugsteun"
-
-#: 
 msgid "Download & Apply"
 msgstr "Aflaai en Pas Toe"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Laai Stelselsodatering Af en Pas Toe"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Laai die nuutste vrylating af en pas dit toe op u ChurchCRM-installasie."
 
 #: 
 msgid "Downloaded"
@@ -7004,10 +6984,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Voer u aanmeldingsnaam in en ons sal u 'n skakel stuur om u wagwoord te herlaai."
 
 #: 
-msgid "Expected Hash"
-msgstr "Verwagte Hash"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Kon nie rugsteun skep nie."
 
@@ -7020,32 +6996,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Kon nie opgradering-inligting van GitHub verfris nie."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Kon nie opgradering-inligting verfris nie. Probeer asseblief weer."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Kon nie instelling stoor nie. Probeer asseblief weer."
-
-#: 
 msgid "File Name"
 msgstr "Lêernaam"
 
 #: 
-msgid "Files Missing"
-msgstr "Lêers Afwesig"
-
-#: 
-msgid "Files Modified"
-msgstr "Lêers Gewysig"
-
-#: 
 msgid "Go to Login"
 msgstr "Gaan na Aanmelding"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Ek Verstaan - Gaan Voort"
 
 #: 
 msgid "Language updated to"
@@ -7076,22 +7032,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Moenie hierdie venster sluit of die bladsy verfris nie."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Voor-opgradering Take Voltooid"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Voor-opgradering Waarskuwings"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Verfris van GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Vrylatingopmerkings:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Versoek Wagwoord Herlaai"
 
@@ -7100,28 +7040,12 @@ msgid "Retry Download"
 msgstr "Herprobeer Aflaai"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Stuur Herlaai-e-pos"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Instelling gestoor. Laai bladsy...."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Instelling suksesvol opgedateer"
-
-#: 
-msgid "Skip Backup"
-msgstr "Slaan Rugsteun Oor"
-
-#: 
-msgid "System Up to Date"
-msgstr "Stelsel is Tans"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7134,10 +7058,6 @@ msgstr "Stelselsopgradering voltooid suksesvol!"
 #: 
 msgid "This may take several minutes."
 msgstr "Dit kan verskeie minute neem."
-
-#: 
-msgid "Update Available!"
-msgstr "Opdatering Beskikbaar!"
 
 #: 
 msgid "Update Package Details"

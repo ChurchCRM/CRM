@@ -6967,28 +6967,8 @@ msgid "Create Backup"
 msgstr "Δημιουργία Αντιγράφου"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Δημιουργήστε ένα αντίγραφο της βάσης δεδομένων σας πριν εφαρμόσετε την ενημέρωση."
-
-#: 
-msgid "Current Version:"
-msgstr "Τρέχουσα Έκδοση:"
-
-#: 
-msgid "Database Backup"
-msgstr "Αντίγραφο Βάσης Δεδομένων"
-
-#: 
 msgid "Download & Apply"
 msgstr "Λήψη & Εφαρμογή"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Λήψη και Εφαρμογή Ενημέρωσης Συστήματος"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Λήψη της τελευταίας έκδοσης και εφαρμογή της στην εγκατάσταση ChurchCRM σας."
 
 #: 
 msgid "Downloaded"
@@ -7003,10 +6983,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Εισάγετε το όνομα σύνδεσής σας και θα σας στείλουμε ένα email με σύνδεσμο για επαναφορά του κωδικού πρόσβασης."
 
 #: 
-msgid "Expected Hash"
-msgstr "Αναμονήed Hash"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Αποτυχία δημιουργίας αντιγράφου."
 
@@ -7019,32 +6995,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης από GitHub."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Αποτυχία ανανέωσης πληροφοριών αναβάθμισης. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Αποτυχία αποθήκευσης ρύθμισης. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
 msgid "File Name"
 msgstr "Όνομα Αρχείου"
 
 #: 
-msgid "Files Missing"
-msgstr "Αρχεία που λείπουν"
-
-#: 
-msgid "Files Modified"
-msgstr "Αρχεία Τροποποιημένα"
-
-#: 
 msgid "Go to Login"
 msgstr "Μεταβείτε σε Σύνδεση"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Καταλαβαίνω - Συνέχεια"
 
 #: 
 msgid "Language updated to"
@@ -7075,22 +7031,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Παρακαλούμε μην κλείσετε αυτό το παράθυρο και μην ανανεώσετε τη σελίδα."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Οι προπαρασκευαστικές εργασίες αναβάθμισης ολοκληρώθηκαν"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Προειδοποιήσεις πριν την αναβάθμιση"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Ανανέωση από το GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Σημειώσεις έκδοσης:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Αίτημα επαναφοράς κωδικού πρόσβασης"
 
@@ -7099,28 +7039,12 @@ msgid "Retry Download"
 msgstr "Δοκιμάστε ξανά τη λήψη"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Αποστολή email επαναφοράς"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Η ρύθμιση αποθηκεύτηκε. Γίνεται αναφόρτωση της σελίδας..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Η ρύθμιση ενημερώθηκε επιτυχώς"
-
-#: 
-msgid "Skip Backup"
-msgstr "Παράλειψη αντιγράφου ασφαλείας"
-
-#: 
-msgid "System Up to Date"
-msgstr "Το σύστημα είναι ενημερωμένο"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7133,10 +7057,6 @@ msgstr "Η αναβάθμιση του συστήματος ολοκληρώθη
 #: 
 msgid "This may take several minutes."
 msgstr "Αυτό μπορεί να διαρκέσει αρκετά λεπτά."
-
-#: 
-msgid "Update Available!"
-msgstr "Διαθέσιμη ενημέρωση!"
 
 #: 
 msgid "Update Package Details"
@@ -11777,7 +11697,7 @@ msgstr "Επεκτείνετε το ChurchCRM με MailChimp, αντίγραφα
 
 #: 
 msgid "FY %s"
-msgstr "ΟΕ %s"
+msgstr "ΔΕ %s"
 
 #: 
 msgid "Failed to add members to cart. Please try again."
@@ -13510,4 +13430,224 @@ msgstr "Τιμή πεδίου"
 #: 
 msgid "Find people who didn't attend an event"
 msgstr "Βρείτε ανθρώπους που δεν παρακολούθησαν ένα γεγονός"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Πρόσφατοι φίλοι"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Τακτικός επισκέπτης"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Επιστρέφει τις εγγραφές ατόμων που έχουν εκχωρηθεί στη δεδομένη ιδιότητα."
+
+#: 
+msgid "SMS Integration"
+msgstr "Ολοκλήρωση SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "Τα μηνύματα SMS μπορούν να αποσταλούν απευθείας από το ChurchCRM μέσω του Vonage API."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP ρυθμισμένο"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP δεν ρυθμίστηκε"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Αναζήτηση"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Δεύτερο Λογιστικό Έτος"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Δεύτερο λογιστικό έτος για σύγκριση"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Δεύτερη επιλογή ευκαιρίας εθελοντή"
+
+#: 
+msgid "Select calendars..."
+msgstr "Επιλέξτε ημερολόγια..."
+
+#: 
+msgid "Select event type..."
+msgstr "Επιλέξτε τύπο συμβάντος..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Επιλέξτε το πεδίο προς αναζήτηση."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Επιλέξτε το επιθυμητό συμβάν"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Επιλέξτε τον επιθυμητό οικογενειακό ρόλο."
+
+#: 
+msgid "Send text message"
+msgstr "Αποστολή μηνύματος κειμένου"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Ορισμένα ημερολόγια έχουν διακριτικά πρόσβασης, αλλά η κοινή χρήση ημερολογίου εξωτερικής πηγής είναι προς το παρόν απενεργοποιημένη. Ενεργοποιήστε το μέσω των Ρυθμίσεων ημερολογίου για να επιτρέψετε στις εξωτερικές εφαρμογές να εγγραφούν στα ημερολόγιά σας."
+
+#: 
+msgid "System Calendars"
+msgstr "Ημερολόγια συστήματος"
+
+#: 
+msgid "System language for the church."
+msgstr "Γλώσσα συστήματος για την εκκλησία."
+
+#: 
+msgid "Text All"
+msgstr "Κείμενο Όλα"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Ταμπλό κειμένου"
+
+#: 
+msgid "Text Settings"
+msgstr "Ρυθμίσεις κειμένου"
+
+#: 
+msgid "Text Tools"
+msgstr "Εργαλεία κειμένου"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Οι ενέργειες ανταλλαγής μηνυμάτων κειμένου είναι διαθέσιμες στις προβολές Group και Sunday School class. Χρησιμοποιήστε το αναπτυσσόμενο μενού \"Κείμενο\" για αντιγραφή αριθμών τηλεφώνου ή αποστολή μηνυμάτων SMS στα μέλη της ομάδας."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Ο μήνας γενεθλίων για τον οποίο θέλετε να επιστραφούν τα αρχεία."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Το επιθυμητό φύλο για αναζήτηση στη βάση δεδομένων."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Το φύλο για το οποίο θέλετε να επιστραφούν τα αρχεία."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Η μέγιστη ηλικία για την οποία θέλετε να επιστραφούν τα αρχεία."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Ο μήνας επετείου μέλους για τον οποίο θέλετε να επιστραφούν τα αρχεία."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Η ελάχιστη ηλικία για την οποία θέλετε να επιστραφούν τα αρχεία."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Η ιδιοκτησία για την οποία θέλετε να επιστραφούν τα αρχεία ατόμου."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Η τάξη κατηχήσεως για την οποία θέλετε να επιστραφούν τα αρχεία."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Αυτές οι τιμές προσυμπληρώνονται κατά τη δημιουργία νέων οικογενειών. Αφήστε κενό για να απαιτήσετε χειροκίνητη εισαγωγή."
+
+#: 
+msgid "Time"
+msgstr "Χρόνος"
+
+#: 
+msgid "Timed"
+msgstr "Χρονομετρημένο"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Δεν είναι δυνατή η αντιγραφή στο πρόχειρο. Αντιγράψτε το URL χειροκίνητα."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Μονάδα για τη μέτρηση της απόστασης."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Άδεια χρήστη για δημιουργία καταλόγων"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Άδεια χρήστη για αποστολή ηλεκτρονικού ταχυδρομείου μέσω συνδέσμων mailto:"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Ευκαιρίες εθελοντισμού"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Εθελοντές"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS συνδεδεμένο"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS δεν ρυθμίστηκε"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Χωρίς το Vonage, οι ενέργειες κειμένου θα ανοίξουν την εφαρμογή SMS της συσκευής σας ή θα αντιγράψουν αριθμούς τηλεφώνου στο πρόχειρο."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Εργασιακό ηλεκτρονικό ταχυδρομείο"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "αλλά όχι φέτος"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "π.χ. Κυριακάτική Λατρεία"
+
+#: 
+msgid "member"
+msgstr "μέλος"
 

@@ -6963,28 +6963,8 @@ msgid "Create Backup"
 msgstr "צור גיבוי"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "צור גיבוי של מסד הנתונים לפני החלת העדכון."
-
-#: 
-msgid "Current Version:"
-msgstr "גרסה נוכחית:"
-
-#: 
-msgid "Database Backup"
-msgstr "גיבוי מסד נתונים"
-
-#: 
 msgid "Download & Apply"
 msgstr "הורד והחל"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "הורד והחל עדכון מערכת"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "הורד את הגרסה האחרונה והחל אותה על התקנת ה-ChurchCRM שלך."
 
 #: 
 msgid "Downloaded"
@@ -6999,10 +6979,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "הזן את שם המשתמש שלך ונשלח לך קישור לאיפוס סיסמה."
 
 #: 
-msgid "Expected Hash"
-msgstr "Hash צפוי"
-
-#: 
 msgid "Failed to create backup."
 msgstr "יצירת הגיבוי נכשלה."
 
@@ -7015,32 +6991,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "רענון מידע השדרוג מ-GitHub נכשל."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "רענון מידע השדרוג נכשל. נסה שנית."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "שמירת ההגדרה נכשלה. נסה שנית."
-
-#: 
 msgid "File Name"
 msgstr "שם הקובץ"
 
 #: 
-msgid "Files Missing"
-msgstr "קבצים חסרים"
-
-#: 
-msgid "Files Modified"
-msgstr "קבצים ששונו"
-
-#: 
 msgid "Go to Login"
 msgstr "עבור להתחברות"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "אני מבין - המשך"
 
 #: 
 msgid "Language updated to"
@@ -7071,22 +7027,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "אנא אל תסגור חלון זה ואל תרענן את הדף."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "המשימות המקדימות לשדרוג הושלמו"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "אזהרות לפני שדרוג"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "רענן מ-GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "הערות גרסה:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "בקש איפוס סיסמה"
 
@@ -7095,28 +7035,12 @@ msgid "Retry Download"
 msgstr "נסה הורדה שנית"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "שלח אימייל לאיפוס"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "ההגדרה נשמרה. טוען את הדף מחדש..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "ההגדרה עודכנה בהצלחה"
-
-#: 
-msgid "Skip Backup"
-msgstr "דלג על גיבוי"
-
-#: 
-msgid "System Up to Date"
-msgstr "המערכת מעודכנת"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7129,10 +7053,6 @@ msgstr "שדרוג המערכת הושלם בהצלחה!"
 #: 
 msgid "This may take several minutes."
 msgstr "זה עשוי לקחת מספר דקות."
-
-#: 
-msgid "Update Available!"
-msgstr "עדכון זמין!"
 
 #: 
 msgid "Update Package Details"
@@ -13505,4 +13425,454 @@ msgstr "נכשל בשחזור מספרי טלפון"
 #: 
 msgid "Field value"
 msgstr "ערך שדה"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא בשנייה"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "מצא אנשים עם ערך שדה מותאם"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "מצא מתנדבים להזדמנות מסוימת"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "מצא מתנדבים החופפים לשני קודי הזדמנות ספציפיים"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "השנה הכספית הראשונה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "השנה הכספית הראשונה להשוואה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "בחירת הזדמנות התנדבות ראשונה"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "חברים שנרשמו בחודשים הקודמים"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "אורח"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "הודעות דוא\"ל של כניסה לקיוסק"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp מחובר"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp לא מוגדר"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "נהל כלים והגדרות של SMS/הודעות טקסט"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "ניהול אירועים, ימי הולדת ויום שנה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "תאם שדה מותאם לערך זה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "גיל מקסימלי"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "חבר, משתתף קבוע וכו'"
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "חברים שהצטרפו בחודש מסוים"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "יום שנה של חברות"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "גיל מינימלי"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "התחייבויות חסרות"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "חודש"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "חודשים"
+
+#: 
+msgid "My Calendars"
+msgstr "הלוחות השנתיים שלי"
+
+#: 
+msgid "New member notification emails"
+msgstr "הודעות דוא\"ל על חברים חדשים"
+
+#: 
+msgid "No cell phone on file"
+msgstr "אין טלפון סלולרי בקובץ"
+
+#: 
+msgid "No email addresses available"
+msgstr "אין כתובות דוא\"ל זמינות"
+
+#: 
+msgid "No phone numbers available"
+msgstr "אין מספרי טלפון זמינים"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "אדם שאינו משתתף"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "לא משתתף (צוות)"
+
+#: 
+msgid "Not Classified"
+msgstr "לא סווג"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "מספר החודשים מאז היותו חבר"
+
+#: 
+msgid "Parents"
+msgstr "הורים"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "הודעות דוא\"ל לאיפוס סיסמה — משתמשים לא יכולים לשחזר את חשבונותיהם"
+
+#: 
+msgid "People Settings"
+msgstr "הגדרות אנשים"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "אנשים עם ימי הולדת בחודש מסוים"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "אדם לפי רכוש"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "רכוש אדם המשמש להוצאת חברים מרשימות SMS / טקסט"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "רכוש אדם המשמש להוצאת חברים מרשימות דוא\"ל"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "מספרי טלפון הועתקו ללוח"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "מספרי טלפון הועתקו - הדבק לאפליקציית ההודעות שלך"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "אנא הזן את התאריך האחרון לחישוב סך ההשתתפויות של כל חבר (כלומר YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "אנא בחר את תאריך ההתחלה לחישוב סך ההשתתפויות של כל חבר (כלומר YYYY-MM-DD). הערה: אתה יכול לבחור רק תאריכים המכילים תרומות."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "השוואת התחייבות"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "התחייב השנה"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "לחץ על CTRL + C להעתקה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "רכוש"
+
+#: 
+msgid "Public calendar"
+msgstr "לוח שנה ציבורי"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "חברים אחרונים"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "משתתף קבוע"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "מחזיר רשומות אדם המוקצות לרכוש הנתון."
+
+#: 
+msgid "SMS Integration"
+msgstr "אינטגרציית SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "ניתן לשלוח הודעות SMS ישירות מ- ChurchCRM דרך ה- API של Vonage."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP מוגדר"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP לא מוגדר"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "חיפוש"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "השנה הכספית השנייה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "השנה הכספית השנייה להשוואה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "בחירת הזדמנות התנדבות שנייה"
+
+#: 
+msgid "Select calendars..."
+msgstr "בחר לוחות שנה..."
+
+#: 
+msgid "Select event type..."
+msgstr "בחר סוג אירוע..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "בחר שדה לחיפוש."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "בחר את תפקיד המשפחה הרצוי."
+
+#: 
+msgid "Send text message"
+msgstr "שלח הודעת טקסט"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "לחלק מהלוחות השנתיים יש אסימוני גישה, אך שיתוף לוח שנה חיצוני כרגע מבוטל. הפעל אותו דרך הגדרות לוח השנה כדי לאפשר לאפליקציות חיצוניות להירשם ללוחות השנתיים שלך."
+
+#: 
+msgid "System Calendars"
+msgstr "לוחות שנה של המערכת"
+
+#: 
+msgid "System language for the church."
+msgstr "שפת מערכת לכנסייה."
+
+#: 
+msgid "Text All"
+msgstr "הודעה לכולם"
+
+#: 
+msgid "Text Dashboard"
+msgstr "לוח בקרה של הודעות"
+
+#: 
+msgid "Text Settings"
+msgstr "הגדרות טקסט"
+
+#: 
+msgid "Text Tools"
+msgstr "כלי טקסט"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "פעולות ההודעות הטקסטואליות זמינות מתצוגות קבוצה וכיתה בבית הספר ביום ראשון. השתמש בתפריט הנפתח \"טקסט\" להעתקת מספרי טלפון או שליחת הודעות SMS לחברי הקבוצה."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "חודש ההולדת שעבורו תרצה להחזיר רשומות."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "המין הרצוי לחיפוש במסד הנתונים."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "המין שעבורו תרצה להחזיר רשומות."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "הגיל המקסימלי שעבורו תרצה להחזיר רשומות."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "חודש ההתחברות שעבורו תרצה להחזיר רשומות."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "הגיל המינימלי שעבורו תרצה להחזיר רשומות."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "הרכוש שעבורו תרצה להחזיר רשומות אדם."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "מחלקת בית הספר בתחילת השבוע שעבורה תרצה להחזיר רשומות."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "ערכים אלה מלאים מראש בעת יצירת משפחות חדשות. השאר ריק כדי לדרוש ערך ידני."
+
+#: 
+msgid "Time"
+msgstr "זמן"
+
+#: 
+msgid "Timed"
+msgstr "מתוזמן"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "לא ניתן להעתיק ללוח. אנא העתק את ה- URL באופן ידני."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "יחידה המשמשת למדידת מרחק."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "הרשאת משתמש ליצירת ספריות"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "הרשאת משתמש לשליחת דוא\"ל דרך קישורי mailto:"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "הזדמנויות התנדבות"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "מתנדבים"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS מחובר"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS לא מוגדר"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "ללא Vonage, פעולות טקסט יפתחו את אפליקציית ה- SMS המקורית של ההתקן שלך או יעתיקו מספרי טלפון ללוח."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "דוא\"ל עבודה"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "אך לא השנה"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "לדוגמה שירות ראשון"
+
+#: 
+msgid "member"
+msgstr "חבר"
 

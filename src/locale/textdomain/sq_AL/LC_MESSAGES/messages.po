@@ -6954,28 +6954,8 @@ msgid "Create Backup"
 msgstr "Krijo kopje rezervë"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Krijoni një kopje rezervë të bazës suaj të të dhënave para se të aplikoni përditësimin."
-
-#: 
-msgid "Current Version:"
-msgstr "Versioni aktual:"
-
-#: 
-msgid "Database Backup"
-msgstr "Kopja rezervë e bazës së të dhënave"
-
-#: 
 msgid "Download & Apply"
 msgstr "Shkarko dhe apliko"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Shkarko dhe apliko përditësimin e sistemit"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Shkarkoni versionin e fundit dhe aplikojeni në instalimin tuaj të ChurchCRM."
 
 #: 
 msgid "Downloaded"
@@ -6990,10 +6970,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Vendosni emrin tuaj të hyrjes dhe do t'ju dërgojmë me email një lidhje për të rivendosur fjalëkalimin tuaj."
 
 #: 
-msgid "Expected Hash"
-msgstr "Hash-i i pritur"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Dështoi krijimi i kopjes rezervë."
 
@@ -7006,32 +6982,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Dështoi rifreskimi i informacionit të përmirësimit nga GitHub."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Dështoi rifreskimi i informacionit të përmirësimit. Ju lutem provoni përsëri."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Dështoi ruajtja e cilësimit. Ju lutem provoni përsëri."
-
-#: 
 msgid "File Name"
 msgstr "Emri i skedarit"
 
 #: 
-msgid "Files Missing"
-msgstr "Skedarë që mungojnë"
-
-#: 
-msgid "Files Modified"
-msgstr "Skedarë të modifikuar"
-
-#: 
 msgid "Go to Login"
 msgstr "Shko në hyrje"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "E kuptoj - Vazhdo"
 
 #: 
 msgid "Language updated to"
@@ -7062,22 +7018,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Ju lutem mos e mbyllni këtë dritare ose rifreskoni faqjen."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Detyrat para-përmirësimit janë përfunduar"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Paralajmërimet para-përmirësimit"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Rifresko nga GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Shënimet e versionit:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Kërko rivendosjen e fjalëkalimit"
 
@@ -7086,28 +7026,12 @@ msgid "Retry Download"
 msgstr "Riprovo shkarkimin"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "Hash SHA1:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Dërgo email-in e rivendosjes"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Cilësimi u ruajt. Duke ringarkuar faqjen..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Cilësimi u përditësua me sukses"
-
-#: 
-msgid "Skip Backup"
-msgstr "Anashkalo kopjen rezervë"
-
-#: 
-msgid "System Up to Date"
-msgstr "Sistemi është i përditësuar"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7120,10 +7044,6 @@ msgstr "Përmirësimi i sistemit përfundoi me sukses!"
 #: 
 msgid "This may take several minutes."
 msgstr "Kjo mund të marrë disa minuta."
-
-#: 
-msgid "Update Available!"
-msgstr "Përditësim i disponueshëm!"
 
 #: 
 msgid "Update Package Details"

@@ -6961,28 +6961,8 @@ msgid "Create Backup"
 msgstr "Tengeneza Nakala"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Tengeneza nakala ya hifadhidata yako kabla ya kutumia sasisho."
-
-#: 
-msgid "Current Version:"
-msgstr "Toleo la Sasa:"
-
-#: 
-msgid "Database Backup"
-msgstr "Nakala ya Hifadhidata"
-
-#: 
 msgid "Download & Apply"
 msgstr "Pakua na Utumie"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Pakua na Utumie Sasisho la Mfumo"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Pakua toleo jipya na ulitumie kwenye mfumo wako wa ChurchCRM."
 
 #: 
 msgid "Downloaded"
@@ -6997,10 +6977,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Ingiza jina lako la kuingilia na tutakutumia kiungo cha kubadilisha nenosiri."
 
 #: 
-msgid "Expected Hash"
-msgstr "Hashi inayotarajiwa"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Imeshindikana kutengeneza nakala."
 
@@ -7013,32 +6989,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Imeshindikana kuhuisha taarifa za sasisho kutoka GitHub."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Imeshindikana kuhuisha taarifa za sasisho. Jaribu tena."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Imeshindikana kuhifadhi mpangilio. Jaribu tena."
-
-#: 
 msgid "File Name"
 msgstr "Jina la Faili"
 
 #: 
-msgid "Files Missing"
-msgstr "Faili Zinazokosekana"
-
-#: 
-msgid "Files Modified"
-msgstr "Faili Zilizobadilishwa"
-
-#: 
 msgid "Go to Login"
 msgstr "Nenda kwenye Kuingia"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Nimeelewa - Endelea"
 
 #: 
 msgid "Language updated to"
@@ -7069,22 +7025,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Tafadhali usifunge dirisha hili au kupakia upya ukurasa."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Kazi za kabla ya sasisho zimekamilika"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Onyo la kabla ya sasisho"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Huisha kutoka GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Maelezo ya Toleo:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Omba Kubadilisha Nenosiri"
 
@@ -7093,28 +7033,12 @@ msgid "Retry Download"
 msgstr "Jaribu tena kupakua"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Tuma Barua Pepe ya Kubadilisha"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Mpangilio umehifadhiwa. Ukurasa unapakia upya..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Mpangilio umesasishwa kwa mafanikio"
-
-#: 
-msgid "Skip Backup"
-msgstr "Ruka Nakala"
-
-#: 
-msgid "System Up to Date"
-msgstr "Mfumo una toleo la hivi karibuni"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7127,10 +7051,6 @@ msgstr "Sasisho la mfumo limekamilika kwa mafanikio!"
 #: 
 msgid "This may take several minutes."
 msgstr "Hii inaweza kuchukua dakika kadhaa."
-
-#: 
-msgid "Update Available!"
-msgstr "Sasisho Linapatikana!"
 
 #: 
 msgid "Update Package Details"
@@ -13507,4 +13427,454 @@ msgstr "Imeshindwa kupata namba za simu"
 #: 
 msgid "Field value"
 msgstr "Thamani ya Shamba"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Tafuta watu ambao waliamuon kwa mwaka mmoja lakini si mwingine"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Tafuta watu wenye thamani ya sehemu iliyobadilishwa"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Tafuta watalamuoni kwa furaha fulani"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Tafuta watalamuoni ambao wanambani nambari za furaha mbili maalum"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Mwaka wa Fedha wa Kwanza"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Mwaka wa fedha wa kwanza kwa kulinganisha"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Chaguzi la furaha la mtalamuoni la kwanza"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Rafiki ambao walijisajili miezi iliyopita"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Mgeni"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Ujumbe wa barua pepe wa kuingia kwa kiosk"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp iliyounganishwa"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp haijasanidiwa"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Dhibiti zana na mipango ya ujumbe wa SMS/maandishi"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Dhibiti matukio, siku za kuzaliwa, na maadhimisho"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Faatanisha sehemu iliyobadilishwa na thamani hii"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Umri wa Juu Zaidi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Mwanajamii, Mlipukaji wa kawaida, n.k."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Wanajamii ambao walijiunga katika mwezi fulani"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Maadhimisho ya uanachama"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Umri wa Chini Zaidi"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Watu walioondoka"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Ahadi zisizofaa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Mwezi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Miezi"
+
+#: 
+msgid "My Calendars"
+msgstr "Kalenda yangu"
+
+#: 
+msgid "New member notification emails"
+msgstr "Barua pepe za ujumbe wa wanajamii wapya"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Hakuna simu ya rununu kwenye faili"
+
+#: 
+msgid "No email addresses available"
+msgstr "Hakuna anwani za barua pepe zilizopo"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Hakuna nambari za simu zilizopo"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Mlipukaji si wa kawaida"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Mlipukaji si wa kawaida (waajiriwa)"
+
+#: 
+msgid "Not Classified"
+msgstr "Haijagawanywa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Nambari ya miezi tangu kuwa rafiki"
+
+#: 
+msgid "Parents"
+msgstr "Wazazi"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Barua pepe za kubadilusha nenosiri — watumiaji hawezi kurudisha akaunti zao"
+
+#: 
+msgid "People Settings"
+msgstr "Mipango ya Watu"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Watu wenye siku za kuzaliwa katika mwezi fulani"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Mtu kwa Umiliki"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za ujumbe wa SMS/maandishi"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Umiliki wa mtu unaotumika kuwatenga wanajamii kutoka sehemu za barua pepe"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Nambari za simu zimeinuliwa kwenye ubao la kunakili"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Nambari za simu zimeinuliwa — bandika kwenye programu yako ya ujumbe"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Tafadhali ingiza tarehe ya mwisho ili kuhesabu jumla ya michango kwa kila mwanajamii (yaani YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Tafadhali chagua tarehe ya kuanza ili kuhesabu jumla ya michango kwa kila mwanajamii (yaani YYYY-MM-DD). ONYO: Unaweza kuchagua tu tarehe ambazo zina zawadi."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Kulinganisha ahadi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Aliamuon mwaka huu"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Bonyeza CTRL + C kwa kunakili"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Umiliki"
+
+#: 
+msgid "Public calendar"
+msgstr "Kalenda ya umma"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Rafiki wa hivi karibuni"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Mlipukaji wa kawaida"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Kurudisha rekodi za mtu ambazo zimepewa umiliki uliotolewa."
+
+#: 
+msgid "SMS Integration"
+msgstr "Ujumumuzi wa SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "Ujumbe wa SMS unaweza kutumwa moja kwa moja kutoka ChurchCRM kupitia Vonage API."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP iliyosanidiwa"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP haijasanidiwa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Tafuta"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Mwaka wa Fedha wa Pili"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Mwaka wa fedha wa pili kwa kulinganisha"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Chaguzi la furaha la mtalamuoni la pili"
+
+#: 
+msgid "Select calendars..."
+msgstr "Chagua kalenda..."
+
+#: 
+msgid "Select event type..."
+msgstr "Chagua aina ya tukio..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Chagua sehemu ya kutafuta."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chagua tukio linalotaka"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Chagua jukumu la familia linalotaka."
+
+#: 
+msgid "Send text message"
+msgstr "Tuma ujumbe wa maandishi"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Baadhi ya kalenda zina alama za kufikia, lakini kugawanya kalenda ya nje sasa imezimwa. Wezeshe kwa kupitia Mipango ya Kalenda ili kuruhusu programu za nje kujiandikisha kwenye kalenda yako."
+
+#: 
+msgid "System Calendars"
+msgstr "Kalenda za Mfumo"
+
+#: 
+msgid "System language for the church."
+msgstr "Lugha ya mfumo kwa kanisa."
+
+#: 
+msgid "Text All"
+msgstr "Ujumbe Wote"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Dashibodi ya Ujumbe"
+
+#: 
+msgid "Text Settings"
+msgstr "Mipango ya Ujumbe"
+
+#: 
+msgid "Text Tools"
+msgstr "Zana za Ujumbe"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Hatua za ujumbe wa maandishi zipo katika matafsiri ya Kundi na Darasa la Shule ya Jumapili. Tumia kundi la \"Ujumbe\" kwa kunakili nambari za simu au kutuma ujumbe wa SMS kwa wanajamii wa kundi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Mwezi wa kuzaliwa ambao ungependa kurudisha rekodi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Jinsia inayotaka kutafuta katika hifadhidata."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Jinsia ambayo ungependa kurudisha rekodi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Umri wa juu zaidi ambao ungependa kurudisha rekodi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Mwezi wa maadhimisho ya uanachama ambao ungependa kurudisha rekodi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Umri wa chini zaidi ambao ungependa kurudisha rekodi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Umiliki ambao ungependa kurudisha rekodi za mtu."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Darasa la Shule ya Jumapili ambalo ungependa kurudisha rekodi."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Thamani hizi zinajazwa mapema wakati wa kutengeneza familia mpya. Acha tupu ili kuomba kuingizwa kwa mikono."
+
+#: 
+msgid "Time"
+msgstr "Wakati"
+
+#: 
+msgid "Timed"
+msgstr "Umewekwa wakati"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Haiwezi kunakili kwenye ubao la kunakili. Tafadhali nakili URL kwa mikono."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Kitengo kinachotumika kupima umbali."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Idhini ya watumiaji kutengeneza saraka"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Idhini ya watumiaji kutuma barua pepe kupitia viungo vya mailto:"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Furaha za kuwa mtalamuoni"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Watalamuoni"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS iliyounganishwa"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS haijasanidiwa"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Bila Vonage, hatua za ujumbe zitafungua programu ya SMS ya asili ya kifaa chako au kunakili nambari za simu kwenye ubao la kunakili."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Barua pepe ya Kazi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "lakini si mwaka huu"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "mfano Huduma ya Jumapili"
+
+#: 
+msgid "member"
+msgstr "mwanajamii"
 

@@ -6970,28 +6970,8 @@ msgid "Create Backup"
 msgstr "Tạo bản sao lưu"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Tạo bản sao lưu cơ sở dữ liệu của bạn trước khi áp dụng bản cập nhật."
-
-#: 
-msgid "Current Version:"
-msgstr "Phiên bản hiện tại:"
-
-#: 
-msgid "Database Backup"
-msgstr "Sao lưu cơ sở dữ liệu"
-
-#: 
 msgid "Download & Apply"
 msgstr "Tải về & Áp dụng"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Tải xuống và Áp dụng Cập nhật Hệ thống"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Tải xuống phiên bản mới nhất và áp dụng cho bản cài đặt ChurchCRM của bạn."
 
 #: 
 msgid "Downloaded"
@@ -7006,10 +6986,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Nhập tên đăng nhập của bạn và chúng tôi sẽ gửi email liên kết để đặt lại mật khẩu."
 
 #: 
-msgid "Expected Hash"
-msgstr "Mã Hash dự kiến"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Tạo bản sao lưu thất bại."
 
@@ -7022,32 +6998,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Cập nhật thông tin nâng cấp từ GitHub thất bại."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Cập nhật thông tin nâng cấp thất bại. Vui lòng thử lại."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Lưu cài đặt thất bại. Vui lòng thử lại."
-
-#: 
 msgid "File Name"
 msgstr "Tên tệp"
 
 #: 
-msgid "Files Missing"
-msgstr "Tệp bị thiếu"
-
-#: 
-msgid "Files Modified"
-msgstr "Tệp bị thay đổi"
-
-#: 
 msgid "Go to Login"
 msgstr "Đi tới Đăng nhập"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Tôi đã hiểu - Tiếp tục"
 
 #: 
 msgid "Language updated to"
@@ -7078,22 +7034,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Vui lòng không đóng cửa sổ này hoặc tải lại trang."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Các tác vụ trước nâng cấp đã hoàn tất"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Cảnh báo trước nâng cấp"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Làm mới từ GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Ghi chú phiên bản:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Yêu cầu cấp lại mật khẩu"
 
@@ -7102,28 +7042,12 @@ msgid "Retry Download"
 msgstr "Tử tải lại"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "Mã Hash SHA1:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Gửi Email đặt lại"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Cài đặt đã lưu. Đang tải lại trang..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Cập nhật cài đặt thành công"
-
-#: 
-msgid "Skip Backup"
-msgstr "Bỏ qua sao lưu"
-
-#: 
-msgid "System Up to Date"
-msgstr "Hệ thống đã mới nhất"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7136,10 +7060,6 @@ msgstr "Nâng cấp hệ thống hoàn tất thành công!"
 #: 
 msgid "This may take several minutes."
 msgstr "Quá trình này có thể mất vài phút."
-
-#: 
-msgid "Update Available!"
-msgstr "Có phiên bản cập nhật!"
 
 #: 
 msgid "Update Package Details"
@@ -13508,5 +13428,445 @@ msgstr "Tìm những người không tham dự sự kiện"
 #. Context: query_qry
 #: 
 msgid "Find people who pledged one year but not another"
-msgstr "Tìm những người cam kết một năm nhưng không những người khác"
+msgstr "Tìm những người đã cam kết một năm nhưng không phải là năm khác"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Tìm người có giá trị trường tùy chỉnh"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Tìm tình nguyện viên cho một cơ hội cụ thể"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Tìm tình nguyện viên phù hợp với hai mã cơ hội cụ thể"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Năm Tài chính Đầu tiên"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Năm tài chính đầu tiên để so sánh"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Lựa chọn cơ hội tình nguyện đầu tiên"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Bạn bè đã đăng ký trong các tháng trước"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Khách"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Thông báo email nhận dạng kiosk"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp Đã kết nối"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp Chưa được cấu hình"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Quản lý công cụ và cài đặt nhắn tin SMS/văn bản"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Quản lý sự kiện, sinh nhật và ngày kỷ niệm"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Khớp trường tùy chỉnh với giá trị này"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Tuổi Tối đa"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Thành viên, Người tham dự thường xuyên, v.v."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Các thành viên tham gia trong một tháng cụ thể"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Ngày kỷ niệm thành viên"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Tuổi Tối thiểu"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Những người mất tích"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Cam kết bị thiếu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Tháng"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Tháng"
+
+#: 
+msgid "My Calendars"
+msgstr "Lịch của tôi"
+
+#: 
+msgid "New member notification emails"
+msgstr "Email thông báo thành viên mới"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Không có điện thoại di động trong hồ sơ"
+
+#: 
+msgid "No email addresses available"
+msgstr "Không có địa chỉ email có sẵn"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Không có số điện thoại có sẵn"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Người không tham dự"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Người không tham dự (nhân viên)"
+
+#: 
+msgid "Not Classified"
+msgstr "Chưa được phân loại"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Số tháng kể từ khi trở thành bạn"
+
+#: 
+msgid "Parents"
+msgstr "Bố mẹ"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Email đặt lại mật khẩu — người dùng không thể khôi phục tài khoản của họ"
+
+#: 
+msgid "People Settings"
+msgstr "Cài đặt mọi người"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Những người có sinh nhật trong một tháng cụ thể"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Người theo Tài sản"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Tài sản người được sử dụng để loại trừ thành viên khỏi danh sách SMS/văn bản"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Tài sản người được sử dụng để loại trừ thành viên khỏi danh sách email"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Số điện thoại đã sao chép vào bộ nhớ tạm"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Số điện thoại đã sao chép — dán vào ứng dụng nhắn tin của bạn"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Vui lòng nhập ngày cuối cùng để tính tổng đóng góp cho mỗi thành viên (ví dụ YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Vui lòng chọn ngày bắt đầu để tính tổng đóng góp cho mỗi thành viên (ví dụ YYYY-MM-DD). LƯU Ý: Bạn chỉ có thể chọn các ngày chứa các khoản quyên góp."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "So sánh cam kết"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Cam kết năm nay"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Nhấn CTRL + C để sao chép"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Tài sản"
+
+#: 
+msgid "Public calendar"
+msgstr "Lịch công cộng"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Bạn bè gần đây"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Người tham dự thường xuyên"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Trả về các bản ghi người được gán tài sản đã cho."
+
+#: 
+msgid "SMS Integration"
+msgstr "Tích hợp SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "Tin nhắn SMS có thể được gửi trực tiếp từ ChurchCRM thông qua API Vonage."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP Đã cấu hình"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP Chưa được cấu hình"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Năm Tài chính Thứ hai"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Năm tài chính thứ hai để so sánh"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Lựa chọn cơ hội tình nguyện thứ hai"
+
+#: 
+msgid "Select calendars..."
+msgstr "Chọn lịch..."
+
+#: 
+msgid "Select event type..."
+msgstr "Chọn loại sự kiện..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Chọn trường để tìm kiếm."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Chọn vai trò gia đình mong muốn."
+
+#: 
+msgid "Send text message"
+msgstr "Gửi tin nhắn văn bản"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Một số lịch có mã thông báo truy cập, nhưng chia sẻ lịch bên ngoài hiện bị vô hiệu hóa. Bật nó qua Cài đặt lịch để cho phép ứng dụng bên ngoài đăng ký lịch của bạn."
+
+#: 
+msgid "System Calendars"
+msgstr "Lịch Hệ thống"
+
+#: 
+msgid "System language for the church."
+msgstr "Ngôn ngữ hệ thống cho nhà thờ."
+
+#: 
+msgid "Text All"
+msgstr "Văn bản Tất cả"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Bảng điều khiển văn bản"
+
+#: 
+msgid "Text Settings"
+msgstr "Cài đặt văn bản"
+
+#: 
+msgid "Text Tools"
+msgstr "Công cụ văn bản"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Các hành động nhắn tin văn bản có sẵn từ các chế độ xem Nhóm và lớp Trường Chủ nhật. Sử dụng menu thả xuống \"Văn bản\" để sao chép số điện thoại hoặc gửi tin nhắn SMS cho các thành viên nhóm."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Tháng sinh nhật mà bạn muốn trả lại bản ghi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Giới tính mong muốn để tìm kiếm trong cơ sở dữ liệu."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Giới tính mà bạn muốn trả lại bản ghi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Tuổi tối đa mà bạn muốn trả lại bản ghi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Tháng kỷ niệm thành viên mà bạn muốn trả lại bản ghi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Tuổi tối thiểu mà bạn muốn trả lại bản ghi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Tài sản mà bạn muốn trả lại bản ghi người."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Lớp Trường Chủ nhật mà bạn muốn trả lại bản ghi."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Các giá trị này được điền sẵn khi tạo gia đình mới. Để trống để yêu cầu nhập thủ công."
+
+#: 
+msgid "Time"
+msgstr "Thời gian"
+
+#: 
+msgid "Timed"
+msgstr "Được định thời"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Không thể sao chép vào bộ nhớ tạm. Vui lòng sao chép URL theo cách thủ công."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Đơn vị dùng để đo khoảng cách."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Quyền người dùng để tạo thư mục"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Quyền người dùng gửi email qua liên kết mailto:"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Cơ hội tình nguyện"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Các tình nguyện viên"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS Đã kết nối"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS Chưa được cấu hình"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Không có Vonage, các hành động văn bản sẽ mở ứng dụng SMS gốc của thiết bị hoặc sao chép số điện thoại vào bộ nhớ tạm."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Email công việc"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "nhưng không phải năm nay"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "ví dụ Dịch vụ Chủ nhật"
+
+#: 
+msgid "member"
+msgstr "thành viên"
 

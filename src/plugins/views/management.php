@@ -31,11 +31,11 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card-header d-flex align-items-center" style="cursor: pointer;" class="plugin-card-header">
             <h3 class="card-title">
                 <?php if ($hasError): ?>
-                    <i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>
+                    <i class="fa-solid fa-triangle-exclamation text-danger me-3"></i>
                 <?php elseif ($isActive): ?>
-                    <i class="fa-solid fa-circle-check text-success me-2"></i>
+                    <i class="fa-solid fa-circle-check text-success me-3"></i>
                 <?php else: ?>
-                    <i class="fa-solid fa-circle-xmark text-secondary me-2"></i>
+                    <i class="fa-solid fa-circle-xmark text-secondary me-3"></i>
                 <?php endif; ?>
                 <strong><?= htmlspecialchars($plugin['name']) ?></strong>
                 <span class="badge bg-info ms-2">v<?= htmlspecialchars($plugin['version']) ?></span>
@@ -185,16 +185,16 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                     <?php endforeach; ?>
                     <div class="btn-group" role="group">
                         <button type="submit" class="btn btn-primary btn-sm">
-                            <i class="fa-solid fa-floppy-disk me-1"></i><?= gettext('Save Settings') ?>
+                            <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save Settings') ?>
                         </button>
                         <?php if (!empty($plugin['hasTest'])): ?>
                         <button type="button" class="btn btn-outline-info btn-sm btn-test-settings"
                                 data-plugin-id="<?= $pluginId ?>">
-                            <i class="fa-solid fa-plug me-1"></i><?= gettext('Test Connection') ?>
+                            <i class="fa-solid fa-plug me-2"></i><?= gettext('Test Connection') ?>
                         </button>
                         <?php endif; ?>
                         <button type="button" class="btn btn-outline-danger btn-sm btn-reset-settings" data-plugin-id="<?= $pluginId ?>">
-                            <i class="fa-solid fa-undo me-1"></i><?= gettext('Reset') ?>
+                            <i class="fa-solid fa-undo me-2"></i><?= gettext('Reset') ?>
                         </button>
                     </div>
                     <?php if (!empty($plugin['hasTest'])): ?>
@@ -214,7 +214,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fa-solid fa-plug me-2"></i><?= gettext('Core Plugins') ?>
+                    <i class="fa-solid fa-plug me-3"></i><?= gettext('Core Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -235,7 +235,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card">
             <div class="card-header border-0">
                 <h3 class="card-title">
-                    <i class="fa-solid fa-puzzle-piece me-2"></i><?= gettext('Community Plugins') ?>
+                    <i class="fa-solid fa-puzzle-piece me-3"></i><?= gettext('Community Plugins') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -262,7 +262,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="card border border-info">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title">
-                    <i class="fa-solid fa-circle-info me-2"></i><?= gettext('Plugin Development') ?>
+                    <i class="fa-solid fa-circle-info me-3"></i><?= gettext('Plugin Development') ?>
                 </h3>
             </div>
             <div class="card-body">
@@ -285,7 +285,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
         <div class="modal-content">
             <div class="modal-header bg-info">
                 <h5 class="modal-title" id="pluginHelpModalLabel">
-                    <i class="fa-solid fa-circle-question me-2"></i>
+                    <i class="fa-solid fa-circle-question me-3"></i>
                     <span id="pluginHelpTitle"><?= gettext('Plugin Help') ?></span>
                 </h5>
                 <button type="button" class="close text-white" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>">

@@ -41,10 +41,6 @@ function checkBrowserLocale() {
   const browserLangCode = browserLocale.split("-")[0].split("_")[0];
   const crmLangCode = window.CRM.shortLocale || "";
 
-  console.log("[Locale Detection] Browser:", browserLocale, "->", browserLangCode);
-  console.log("[Locale Detection] CRM:", window.CRM.locale, "->", crmLangCode);
-  console.log("[Locale Detection] Match:", browserLangCode === crmLangCode);
-
   // Compare language codes only (ignore region variants)
   if (browserLangCode === crmLangCode) {
     return;
@@ -142,7 +138,6 @@ async function loadLocaleFiles(localeConfig) {
           .then(() => {
             if (typeof moment !== "undefined" && typeof moment.locale === "function") {
               moment.locale(localeConfig.momentLocale);
-              console.log(`Loaded moment locale: ${localeConfig.momentLocale}`);
             }
           })
           .catch((e) => console.warn(`Failed to load moment locale ${localeConfig.momentLocale}:`, e)),
@@ -176,7 +171,6 @@ async function loadLocaleFiles(localeConfig) {
 
     // Wait for all locale files to load
     await Promise.all(promises);
-    console.log(`All locale files loaded for: ${localeConfig.locale}`);
 
     // Initialize i18next after locale keys are loaded
     if (typeof i18next !== "undefined" && window.CRM.i18keys) {

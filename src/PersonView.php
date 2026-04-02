@@ -577,7 +577,7 @@ $bOkToEdit = (
                     <a href="<?= SystemURLs::getRootPath() ?>/v2/family/<?= $person->getFamId() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
             </div>
-            <div class="table-responsive">
+            <div style="overflow: visible;">
                 <table class="table table-vcenter card-table">
                     <thead>
                         <tr>

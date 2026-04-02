@@ -6954,28 +6954,8 @@ msgid "Create Backup"
 msgstr "Vytvořit zálohu"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Před provedením aktualizace vytvořte zálohu databáze."
-
-#: 
-msgid "Current Version:"
-msgstr "Současná verze:"
-
-#: 
-msgid "Database Backup"
-msgstr "Záloha databáze"
-
-#: 
 msgid "Download & Apply"
 msgstr "Stáhnout a provést aktualizaci"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Stáhnout a provést aktualizaci systému"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Stáhněte si nejnovější verzi a nainstalujte ji do svého systému ChurchCRM."
 
 #: 
 msgid "Downloaded"
@@ -6990,10 +6970,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Zadejte své přihlašovací jméno a my vám pošleme e-mail s odkazem pro resetování hesla."
 
 #: 
-msgid "Expected Hash"
-msgstr "Očekávaný hash"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Vytvoření zálohy se nezdařilo."
 
@@ -7006,32 +6982,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Nepodařilo se obnovit informace o aktualizaci z GitHubu."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Obnovení informací o aktualizaci se nezdařilo. Zkuste to znovu."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Nastavení se nepodařilo uložit. Zkuste to znovu."
-
-#: 
 msgid "File Name"
 msgstr "Název souboru"
 
 #: 
-msgid "Files Missing"
-msgstr "Soubor chybí"
-
-#: 
-msgid "Files Modified"
-msgstr "Soubory upraveny"
-
-#: 
 msgid "Go to Login"
 msgstr "Přejít na přihlášení"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Rozumím - pokračovat"
 
 #: 
 msgid "Language updated to"
@@ -7062,22 +7018,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Nezavírejte toto okno ani neobnovujte stránku."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Úkoly před aktualizací dokončeny"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Varování před aktualizací"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Aktualizovat z GitHubu"
-
-#: 
-msgid "Release Notes:"
-msgstr "Poznámky k vydání:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Žádost o obnovu hesla"
 
@@ -7086,28 +7026,12 @@ msgid "Retry Download"
 msgstr "Zkusit stahování znovu"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "Hash SHA1:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Odeslat e-mail pro obnovu hesla"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Nastavení uloženo. Načítání stránky..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Nastavení bylo úspěšně aktualizováno"
-
-#: 
-msgid "Skip Backup"
-msgstr "Přeskočit zálohu"
-
-#: 
-msgid "System Up to Date"
-msgstr "Systém je aktuální"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7120,10 +7044,6 @@ msgstr "Aktualizace systému byla úspěšně dokončena!"
 #: 
 msgid "This may take several minutes."
 msgstr "Může to trvat několik minut."
-
-#: 
-msgid "Update Available!"
-msgstr "Aktualizace k dispozici!"
 
 #: 
 msgid "Update Package Details"
@@ -12163,6 +12083,10 @@ msgid "Memberships"
 msgstr "Členství"
 
 #: 
+msgid "Minimum"
+msgstr "Minimální"
+
+#: 
 msgid "Modify family roles for group members"
 msgstr "Upravit rodinné role pro členy skupiny"
 
@@ -13738,4 +13662,224 @@ msgstr "Vlastnost"
 #: 
 msgid "Public calendar"
 msgstr "Veřejný kalendář"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Nedávní přátelé"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Pravidelný účastník"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Vrací záznamy osob, kterým je přiřazena daná vlastnost."
+
+#: 
+msgid "SMS Integration"
+msgstr "Integrace SMS"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS zprávy lze odesílat přímo z ChurchCRM přes Vonage API."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP nakonfigurován"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP není nakonfigurován"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Hledat"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Druhý účetní rok"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Druhý účetní rok pro srovnání"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Druhá volba příležitosti dobrovolníka"
+
+#: 
+msgid "Select calendars..."
+msgstr "Vyberte kalendáře..."
+
+#: 
+msgid "Select event type..."
+msgstr "Vyberte typ akce..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Vyberte pole k vyhledávání."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vyberte požadovanou akci"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Vyberte požadovanou roli rodiny."
+
+#: 
+msgid "Send text message"
+msgstr "Poslat textovou zprávu"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Některé kalendáře mají přístupové tokeny, ale sdílení externích kalendářů je v současné době zakázáno. Povolte to v Nastavení kalendáře, aby externí aplikace mohly odebírat vaše kalendáře."
+
+#: 
+msgid "System Calendars"
+msgstr "Systémové kalendáře"
+
+#: 
+msgid "System language for the church."
+msgstr "Systémový jazyk pro církev."
+
+#: 
+msgid "Text All"
+msgstr "Textovat vše"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Textový řídicí panel"
+
+#: 
+msgid "Text Settings"
+msgstr "Textová nastavení"
+
+#: 
+msgid "Text Tools"
+msgstr "Textové nástroje"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Akce textových zpráv jsou dostupné z zobrazení skupin a tříd nedělní školy. Pomocí rozevíracího seznamu \"Text\" zkopírujte telefonní čísla nebo odešlete SMS zprávy členům skupiny."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Měsíc narozenin, pro který chcete vrátit záznamy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Požadované pohlaví pro vyhledávání v databázi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Pohlaví, pro které chcete vrátit záznamy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Maximální věk, pro který chcete vrátit záznamy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Měsíc výročí členství, pro který chcete vrátit záznamy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Minimální věk, pro který chcete vrátit záznamy."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Vlastnost, pro kterou chcete vrátit záznamy osob."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Třída nedělní školy, pro kterou chcete vrátit záznamy."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Tyto hodnoty jsou předvyplněny při vytváření nových rodin. Nechejte prázdné, aby se vyžadoval ruční záznam."
+
+#: 
+msgid "Time"
+msgstr "Čas"
+
+#: 
+msgid "Timed"
+msgstr "Načasovaný"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Nelze kopírovat do schránky. Zkopírujte adresu URL ručně."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Jednotka používaná k měření vzdálenosti."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Uživatelské oprávnění k vytváření adresářů"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Uživatelské oprávnění k odesílání e-mailu přes mailto: odkazy"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Příležitosti pro dobrovolníky"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Dobrovolníci"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS připojen"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS není nakonfigurován"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Bez Vonage budou textové akce otevírat nativní aplikaci SMS vašeho zařízení nebo kopírovat telefonní čísla do schránky."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Pracovní e-mail"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "ale ne letos"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "např. Nedělní služba"
+
+#: 
+msgid "member"
+msgstr "člen"
 

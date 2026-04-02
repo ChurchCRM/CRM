@@ -6926,28 +6926,8 @@ msgid "Create Backup"
 msgstr "Luo varmuuskopio"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Luo varmuuskopio tietokannasta ennen päivitystä."
-
-#: 
-msgid "Current Version:"
-msgstr "Nykyinen versio:"
-
-#: 
-msgid "Database Backup"
-msgstr "Tietokannan varmuuskopio"
-
-#: 
 msgid "Download & Apply"
 msgstr "Lataa ja päivitä"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Lataa ja asenna järjestelmäpäivitys"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Lataa uusin julkaisu ja asenna se ChurchCRM-järjestelmääsi."
 
 #: 
 msgid "Downloaded"
@@ -6962,10 +6942,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Anna käyttäjätunnuksesi, niin lähetämme sinulle sähköpostitse linkin salasanan nollaamiseksi."
 
 #: 
-msgid "Expected Hash"
-msgstr "Odotettu tiiviste"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Varmuuskopion luominen epäonnistui."
 
@@ -6978,32 +6954,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Päivitystietojen haku GitHubista epäonnistui."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Päivitystietojen haku epäonnistui. Yritä uudelleen."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Asetuksen tallentaminen epäonnistui. Yritä uudelleen."
-
-#: 
 msgid "File Name"
 msgstr "Tiedoston nimi"
 
 #: 
-msgid "Files Missing"
-msgstr "Puuttuvat tiedostot"
-
-#: 
-msgid "Files Modified"
-msgstr "Muokatut tiedostot"
-
-#: 
 msgid "Go to Login"
 msgstr "Siirry kirjautumiseen"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Ymmärrän - Jatka"
 
 #: 
 msgid "Language updated to"
@@ -7034,22 +6990,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Älä sulje tätä ikkunaa tai lataa sivua uudelleen."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Päivitystä edeltävät tehtävät valmiit"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Päivitystä edeltävät varoitukset"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Päivitä GitHubista"
-
-#: 
-msgid "Release Notes:"
-msgstr "Julkaisutiedot:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Pyydä salasanan nollausta"
 
@@ -7058,28 +6998,12 @@ msgid "Retry Download"
 msgstr "Yritä latausta uudelleen"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1-tiiviste:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Lähetä nollaussähköposti"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Asetus tallennettu. Ladataan sivua uudelleen..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Asetus päivitetty onnistuneesti"
-
-#: 
-msgid "Skip Backup"
-msgstr "Ohita varmuuskopiointi"
-
-#: 
-msgid "System Up to Date"
-msgstr "Järjestelmä on ajan tasalla"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7092,10 +7016,6 @@ msgstr "Järjestelmän päivitys onnistui!"
 #: 
 msgid "This may take several minutes."
 msgstr "Tämä voi kestää useita minuutteja."
-
-#: 
-msgid "Update Available!"
-msgstr "Päivitys saatavilla!"
 
 #: 
 msgid "Update Package Details"
@@ -13224,7 +13144,7 @@ msgstr "Tarkista ja poista"
 
 #: 
 msgid "SHA1 Hash"
-msgstr "SHA1-tiiviste"
+msgstr "SHA1-sarja"
 
 #: 
 msgid "Setup Instructions"
@@ -13480,4 +13400,454 @@ msgstr "Puhelinnumeroiden noutaminen epäonnistui"
 #: 
 msgid "Field value"
 msgstr "Kentän arvo"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Etsi ihmisiä, jotka eivät osallistuneet tapahtumaan"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Etsi ihmisiä, jotka luvattivat yhtenä vuonna mutta eivät toisena"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Etsi ihmisiä, joilla on mukautetun kentän arvo"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Etsi vapaaehtoisia tietylle mahdollisuudelle"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Etsi vapaaehtoisia, jotka vastaavat kahta tiettyä mahdollisuuskoodia"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Ensimmäinen tilikausi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Ensimmäinen tilikausi vertailua varten"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Ensimmäinen vapaaehtoisen mahdollisuuden valinta"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Ystävät, jotka rekisteröityivät edellisillä kuukausilla"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Vieras"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Kioski-ilmoitusten sisäänkirjautumisilmoitukset"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp yhdistetty"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimpia ei ole konfiguroitu"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS/tekstiviestien hallinta ja asetukset"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Hallinnoi tapahtumia, syntymäpäiviä ja vuosipäiviä"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Sovita mukautettu kenttä tälle arvolle"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maksimikäyttäjä-ikä"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Jäsen, tavallinen osallistuja jne."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Jäsenet, jotka liittyivät tietyllä kuukaudella"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Jäsenyyden vuosipäivät"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Vähimmäisikä"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Kadonneita ihmisiä"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Puuttuvat lupaukset"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Kuukausi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Kuukaudet"
+
+#: 
+msgid "My Calendars"
+msgstr "Omat kalenterini"
+
+#: 
+msgid "New member notification emails"
+msgstr "Uusien jäsenten ilmoitusten sähköpostit"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Tiedostossa ei ole matkapuhelinta"
+
+#: 
+msgid "No email addresses available"
+msgstr "Sähköpostiosoitteita ei ole saatavilla"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Puhelinnumeroita ei ole saatavilla"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Ei-osallistuja"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Ei-osallistuja (henkilöstö)"
+
+#: 
+msgid "Not Classified"
+msgstr "Luokittelematon"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Kuukausien lukumäärä ystävänä olemisesta"
+
+#: 
+msgid "Parents"
+msgstr "Vanhemmat"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Salasanan nollauksähköpostit — käyttäjät eivät voi palauttaa tiliään"
+
+#: 
+msgid "People Settings"
+msgstr "Henkilöasetukset"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Ihmiset, joilla on syntymäpäivä tietyllä kuukaudella"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Henkilö omaisuuden mukaan"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen SMS/tekstiluetteloista"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Henkilön omaisuus, jota käytetään jäsenten poissulkemiseen sähköpostiluetteloista"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Puhelinnumerot kopioitu leikepöydälle"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Puhelinnumerot kopioitu — liitä viestisovellukseen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Syötä viimeinen päivämäärä kunkin jäsenen kokonaispanoksen laskemiseksi (esim. YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Valitse aloituspäivä kunkin jäsenen kokonaispanoksen laskemiseksi (esim. YYYY-MM-DD). HUOMAUTUS: Voit valita vain päivämääriä, jotka sisältävät lahjoituksia."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Lupausvertailu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Luvattu tänä vuonna"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Paina CTRL + C kopioida"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Omaisuus"
+
+#: 
+msgid "Public calendar"
+msgstr "Julkinen kalenteri"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Viimeaikaiset ystävät"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Tavallinen osallistuja"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Palauttaa henkilön tietueet, joille on määritetty annettu ominaisuus."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS-integraatio"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS-viestejä voidaan lähettää suoraan ChurchCRM:stä Vonage API:n kautta."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP-määritys"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP:tä ei ole konfiguroitu"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Haku"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Toinen tilikausi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Toinen tilikausi vertailua varten"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Toinen vapaaehtoisen mahdollisuuden valinta"
+
+#: 
+msgid "Select calendars..."
+msgstr "Valitse kalenterit..."
+
+#: 
+msgid "Select event type..."
+msgstr "Valitse tapahtuman tyyppi..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Valitse haun kenttä."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Valitse haluamasi tapahtuma"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Valitse haluamasi perherooli."
+
+#: 
+msgid "Send text message"
+msgstr "Lähetä tekstiviesti"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Joissakin kalentereissa on käyttöoikeustokenit, mutta ulkoisen kalenterin jakaminen on tällä hetkellä poistettu käytöstä. Ota se käyttöön kalenteriasetuksissa, jotta ulkoiset sovellukset voivat tilata kalentereitasi."
+
+#: 
+msgid "System Calendars"
+msgstr "Järjestelmän kalenterit"
+
+#: 
+msgid "System language for the church."
+msgstr "Kirkon järjestelmäkieli."
+
+#: 
+msgid "Text All"
+msgstr "Tekstaa kaikille"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Teksti-kojelauta"
+
+#: 
+msgid "Text Settings"
+msgstr "Teksti-asetukset"
+
+#: 
+msgid "Text Tools"
+msgstr "Tekstityökalut"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Tekstiviestien toiminnot ovat saatavilla ryhmä- ja pyhäkoulun luokka näkymissä. Kopioi puhelinnumerot tai lähetä tekstiviestejä ryhmän jäsenille \"Teksti\" -pudotusvalikossa."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Syntymäpäiväkuukausi, jolle haluat tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Haluamasi sukupuoli tietokannan etsimiseen."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Sukupuoli, jolle haluat tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Maksimikäyttäjä-ikä, jolle haluat tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Jäsenyyden vuosipäivän kuukausi, jolle haluat tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Vähimmäisikä, jolle haluat tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Omaisuus, jolle haluat henkilön tietueet palautetuksi."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Pyhäkoululuokka, jolle haluat tietueet palautetuksi."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Nämä arvot esitäytetään luotaessa uusia perheitä. Jätä tyhjäksi, jos haluat vaatia manuaalista merkintää."
+
+#: 
+msgid "Time"
+msgstr "Aika"
+
+#: 
+msgid "Timed"
+msgstr "Aikarajoitettu"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Ei voi kopioida leikepöydälle. Kopioi URL manuaalisesti."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Etäisyyden mittaamiseen käytetty yksikkö."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Käyttäjän oikeus luoda hakemistoja"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Käyttäjän oikeus lähettää sähköpostia mailto: linkien kautta"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Vapaaehtoisten mahdollisuudet"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Vapaaehtoiset"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS yhdistetty"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS:tä ei ole konfiguroitu"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Ilman Vonagea tekstintoiminnot avaavat laitteesi native SMS-sovelluksen tai kopioivat puhelinnumerot leikepöydälle."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Sähköpostiosoite"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "mutta ei tänä vuonna"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "esim. sunnuntain jumalanpalvelus"
+
+#: 
+msgid "member"
+msgstr "jäsen"
 
