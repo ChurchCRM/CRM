@@ -12217,7 +12217,7 @@ msgstr "關鍵人員"
 
 #: 
 msgid "Kiosk"
-msgstr "自助終端機"
+msgstr "資訊亭"
 
 #: 
 msgid "Kiosk Enabled"
@@ -12369,7 +12369,7 @@ msgstr "成員關係"
 
 #: 
 msgid "Minimum"
-msgstr "最小值"
+msgstr "最低限度"
 
 #: 
 msgid "Modify family roles for group members"
@@ -13514,4 +13514,203 @@ msgstr "有可用更新"
 #: 
 msgid "User must have Notes permission"
 msgstr "使用者必須擁有備註權限"
+
+#: 
+msgid "Address Defaults"
+msgstr "地址預設值"
+
+#: 
+msgid "All Day"
+msgstr "全天"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Allow user to add new event"
+msgstr "允許使用者新增事件"
+
+#: 
+msgid "Are you sure you want to continue?"
+msgstr "您確定要繼續嗎?"
+
+#: 
+msgid "Are you sure you want to delete this event?"
+msgstr "您確定要刪除此事件嗎?"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Beginning Date"
+msgstr "開始日期"
+
+#: 
+msgid "Calendar Settings"
+msgstr "行事曆設定"
+
+#: 
+msgid "Calendars"
+msgstr "行事曆"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose a volunteer opportunity"
+msgstr "選擇志工機會"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Choose customer person field"
+msgstr "選擇人員欄位"
+
+#: 
+msgid "Church Identity"
+msgstr "教會身份"
+
+#: 
+msgid "Church information saved successfully"
+msgstr "教會資訊已成功保存"
+
+#: 
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr "需要教會名稱。請填寫上方的教會身份部分。"
+
+#: 
+msgid "ChurchCRM can send emails directly."
+msgstr "ChurchCRM可以直接傳送電子郵件。"
+
+#: 
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr "剪貼簿API不可用。請手動複製URL。"
+
+#: 
+msgid "Communication"
+msgstr "通訊"
+
+#. Context: query_qry
+#: 
+msgid "Compare pledges between two fiscal years"
+msgstr "比較兩個會計年度之間的承諾"
+
+#: 
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr "在下方設定中設定SMTP以從系統傳送電子郵件。"
+
+#: 
+msgid "Configure Vonage"
+msgstr "設定Vonage"
+
+#: 
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr "連接Mailchimp以同步電子報和行銷活動的電子郵件清單。"
+
+#: 
+msgid "Copied to clipboard"
+msgstr "已複製到剪貼簿"
+
+#: 
+msgid "Copy All Emails"
+msgstr "複製所有電子郵件"
+
+#: 
+msgid "Copy All Numbers"
+msgstr "複製所有號碼"
+
+#: 
+msgid "Copy from church address"
+msgstr "從教會地址複製"
+
+#: 
+msgid "Copy to clipboard"
+msgstr "複製到剪貼簿"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Custom field"
+msgstr "自訂欄位"
+
+#. Context: query_qry
+#: 
+msgid "CustomSearch"
+msgstr "自訂搜尋"
+
+#: 
+msgid "Default Country"
+msgstr "預設國家"
+
+#: 
+msgid "Default State"
+msgstr "預設狀態"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "Delimiter to separate emails in mailto: links"
+msgstr "在mailto:連結中分隔電子郵件的分隔符"
+
+#: 
+msgid "Distance Unit"
+msgstr "距離單位"
+
+#: 
+msgid "Duration"
+msgstr "期間"
+
+#: 
+msgid "Email Dashboard"
+msgstr "電子郵件儀表板"
+
+#: 
+msgid "Email Integrations"
+msgstr "電子郵件整合"
+
+#: 
+msgid "Email addresses copied to clipboard"
+msgstr "電子郵件地址已複製到剪貼簿"
+
+#: 
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr "電子郵件功能目前已停用。在啟用電子郵件之前,下列功能將無法運作:"
+
+#: 
+msgid "Email is Disabled"
+msgstr "電子郵件已停用"
+
+#: 
+msgid "Email links in group and people views"
+msgstr "群組和人員檢視中的電子郵件連結"
+
+#: 
+msgid "Email lists are synced with Mailchimp."
+msgstr "電子郵件清單與Mailchimp同步。"
+
+#: 
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr "在下方的設定面板中啟用電子郵件,然後設定SMTP伺服器。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Ending Date"
+msgstr "結束日期"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr "輸入下列任何部分: 姓名、城市、州、郵遞區號、家庭電話、電子郵件或工作電子郵件。"
+
+#: 
+msgid "External Calendar API Disabled"
+msgstr "外部行事曆API已停用"
+
+#: 
+msgid "Failed to retrieve data"
+msgstr "無法擷取資料"
+
+#: 
+msgid "Failed to retrieve email addresses"
+msgstr "無法擷取電子郵件地址"
+
+#: 
+msgid "Failed to retrieve phone numbers"
+msgstr "無法擷取電話號碼"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Field value"
+msgstr "欄位值"
 
