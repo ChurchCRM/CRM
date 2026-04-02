@@ -87,13 +87,13 @@ class VonagePlugin extends AbstractPlugin
         return [
             [
                 'key'  => 'apiKey',
-                'label' => 'Vonage API Key',
+                'label' => gettext('Vonage API Key'),
                 'type' => 'text',
-                'help' => 'From dashboard.vonage.com',
+                'help' => gettext('From dashboard.vonage.com'),
             ],
             [
                 'key'  => 'apiSecret',
-                'label' => 'Vonage API Secret',
+                'label' => gettext('Vonage API Secret'),
                 'type' => 'password',
             ],
             [
@@ -194,7 +194,7 @@ class VonagePlugin extends AbstractPlugin
             return [
                 'success' => true,
                 'message' => sprintf(
-                    gettext('Connected! Account balance: €%.2f. Ready to send') . ' SMS.',
+                    gettext('Connected! Account balance: €%.2f. Ready to send SMS.'),
                     $balance->getBalance()
                 ),
                 'details' => [
@@ -216,7 +216,7 @@ class VonagePlugin extends AbstractPlugin
 
             return [
                 'success' => false,
-                'message' => 'Vonage ' . gettext('server error. Please try again later.'),
+                'message' => gettext('Vonage server error. Please try again later.'),
             ];
         } catch (\Throwable $e) {
             $this->log('Vonage settings validation failed: ' . $e->getMessage(), 'error');

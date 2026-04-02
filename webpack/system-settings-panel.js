@@ -200,11 +200,10 @@ import "../src/skin/scss/system-settings-panel.scss";
   }
 
   // Translate a key at call-time. Falls back to the raw key if i18next is not
-  // yet loaded or the key has no translation — so labels always show something
-  // meaningful instead of "undefined".
+  // yet initialised — so labels always show something meaningful.
   function t(key) {
     if (!key) return key;
-    if (window.i18next && window.CRM && window.CRM.localesLoaded) {
+    if (window.i18next) {
       const translated = i18next.t(key);
       return translated !== undefined ? translated : key;
     }
@@ -217,122 +216,6 @@ import "../src/skin/scss/system-settings-panel.scss";
   function resolve(value) {
     return typeof value === "function" ? value() : value || "";
   }
-
-  // Month choices helper
-  function getMonthChoices() {
-    return [
-      { value: "1", label: window.i18next ? i18next.t("January") : "January" },
-      { value: "2", label: window.i18next ? i18next.t("February") : "February" },
-      { value: "3", label: window.i18next ? i18next.t("March") : "March" },
-      { value: "4", label: window.i18next ? i18next.t("April") : "April" },
-      { value: "5", label: window.i18next ? i18next.t("May") : "May" },
-      { value: "6", label: window.i18next ? i18next.t("June") : "June" },
-      { value: "7", label: window.i18next ? i18next.t("July") : "July" },
-      { value: "8", label: window.i18next ? i18next.t("August") : "August" },
-      { value: "9", label: window.i18next ? i18next.t("September") : "September" },
-      { value: "10", label: window.i18next ? i18next.t("October") : "October" },
-      { value: "11", label: window.i18next ? i18next.t("November") : "November" },
-      { value: "12", label: window.i18next ? i18next.t("December") : "December" },
-    ];
-  }
-
-  // Pre-defined setting configurations (from SystemConfig)
-  const SettingDefinitions = {
-    // System Settings
-    sLogLevel: {
-      type: "choice",
-      label: "Log Level",
-      tooltip: "Event log severity to write, used by ORM and App Logs",
-      choices: [
-        { value: "100", label: "DEBUG (100)" },
-        { value: "200", label: "INFO (200)" },
-        { value: "250", label: "NOTICE (250)" },
-        { value: "300", label: "WARNING (300)" },
-        { value: "400", label: "ERROR (400)" },
-        { value: "500", label: "CRITICAL (500)" },
-        { value: "550", label: "ALERT (550)" },
-        { value: "600", label: "EMERGENCY (600)" },
-      ],
-    },
-    // Financial Settings
-    iFYMonth: {
-      type: "choice",
-      label: "First month of the fiscal year",
-      choices: getMonthChoices,
-    },
-    sDepositSlipType: {
-      type: "choice",
-      label: "Deposit ticket type",
-      tooltip: "QBDT - QuickBooks Deposit Ticket",
-      choices: [{ value: "QBDT", label: "QBDT (QuickBooks)" }],
-    },
-    iChecksPerDepositForm: {
-      type: "number",
-      label: "Number of checks for Deposit Slip Report",
-      min: 1,
-      max: 100,
-    },
-    bDisplayBillCounts: {
-      type: "boolean",
-      label: "Display bill counts on deposit slip",
-    },
-    bUseScannedChecks: {
-      type: "boolean",
-      label: "Enable use of scanned checks",
-    },
-    bEnableNonDeductible: {
-      type: "boolean",
-      label: "Enable non-deductible payments",
-    },
-    bUseDonationEnvelopes: {
-      type: "boolean",
-      label: "Enable use of donation envelopes",
-    },
-    aFinanceQueries: {
-      type: "text",
-      label: "Finance permission query IDs",
-      tooltip: "Comma-separated query IDs requiring finance permissions",
-      placeholder: "30,31,32",
-    },
-    // Church Information
-    sChurchName: {
-      type: "text",
-      label: "Church Name",
-    },
-    sChurchAddress: {
-      type: "text",
-      label: "Church Address",
-    },
-    sChurchCity: {
-      type: "text",
-      label: "Church City",
-    },
-    sChurchState: {
-      type: "text",
-      label: "Church State",
-    },
-    sChurchZip: {
-      type: "text",
-      label: "Church Zip",
-    },
-    sChurchPhone: {
-      type: "text",
-      label: "Church Phone",
-    },
-    sChurchEmail: {
-      type: "text",
-      label: "Church Email",
-    },
-    // Report Settings
-    sTaxSigner: {
-      type: "text",
-      label: "Tax Report signer",
-    },
-    sReminderSigner: {
-      type: "text",
-      label: "Pledge Reminder Signer",
-    },
-  };
 
   // Settings Panel Class
   class SettingsPanel {
@@ -541,13 +424,12 @@ import "../src/skin/scss/system-settings-panel.scss";
       this.container.innerHTML = html;
     }
 
-    // Get merged setting configuration
+    // Get merged setting configuration from the caller-supplied object.
+    // Falls back to { type: "text", label: name } when no config is provided.
     getSettingConfig(setting) {
       const name = typeof setting === "string" ? setting : setting.name;
-      const baseConfig = SettingDefinitions[name] || { type: "text", label: name };
       const customConfig = typeof setting === "object" ? setting : {};
-
-      return Object.assign({ name: name }, baseConfig, customConfig);
+      return Object.assign({ name: name, type: "text", label: name }, customConfig);
     }
 
     // Bind event handlers
@@ -670,11 +552,6 @@ import "../src/skin/scss/system-settings-panel.scss";
         });
     }
 
-    // Add a custom setting definition
-    static addSettingDefinition(name, config) {
-      SettingDefinitions[name] = config;
-    }
-
     // Add a custom setting type renderer
     static addSettingType(typeName, renderer) {
       SettingTypes[typeName] = renderer;
@@ -686,60 +563,4 @@ import "../src/skin/scss/system-settings-panel.scss";
   window.CRM.SettingsPanel = SettingsPanel;
   window.CRM.settingsPanel = new SettingsPanel();
 
-  // ---------------------------------------------------------------------------
-  // i18n key registration
-  //
-  // The keys below are defined as i18next.t() thunks in PHP template <script>
-  // blocks, which the i18next extraction tool does not scan. Listing them here
-  // (in a file that IS scanned) ensures they appear in the extracted terms and
-  // reach POEditor for translation.
-  //
-  // This function is never called — it exists solely for static extraction.
-  // ---------------------------------------------------------------------------
-  /* istanbul ignore next */
-  function _i18nKeys() {
-    // eslint-disable-line no-unused-vars
-    // Email settings panel (email/dashboard.php)
-    t("Enable Email");
-    t("SMTP Timeout");
-    t("Auto TLS");
-    t("SMTP Authentication");
-    t("BCC All Mail To");
-    t("Do Not Email Property");
-    // Text settings panel (text/dashboard.php)
-    t("Do Not SMS Property");
-    // Calendar settings panel (calendar/calendar.php)
-    t("Enable Events Menu");
-    t("Enable External Calendar API");
-    // Groups settings panel (groups/dashboard.php)
-    t("Sunday School Module");
-    // Map settings panel (map/map-view.php)
-    t("Default Map View");
-    t("Continent");
-    t("Neighborhood");
-    t("Street");
-    t("Hide Latitude/Longitude");
-    t("Hide Person Address");
-    // Logs settings panel (admin/logs.php)
-    t("Log settings saved");
-    // SettingDefinitions labels (defined as plain strings in this file)
-    t("Log Level");
-    t("First month of the fiscal year");
-    t("Deposit ticket type");
-    t("Number of checks for Deposit Slip Report");
-    t("Display bill counts on deposit slip");
-    t("Enable use of scanned checks");
-    t("Enable non-deductible payments");
-    t("Enable use of donation envelopes");
-    t("Finance permission query IDs");
-    t("Church Name");
-    t("Church Address");
-    t("Church City");
-    t("Church State");
-    t("Church Zip");
-    t("Church Phone");
-    t("Church Email");
-    t("Tax Report signer");
-    t("Pledge Reminder Signer");
-  }
 })();

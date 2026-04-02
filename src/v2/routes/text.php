@@ -19,12 +19,6 @@ function getTextDashboardMVC(Request $request, Response $response, array $args):
 {
     $renderer = new PhpRenderer('templates/text/');
 
-    $textSettingTooltips = [];
-    foreach (['iDoNotSmsPropertyId'] as $key) {
-        $item = SystemConfig::getConfigItem($key);
-        $textSettingTooltips[$key] = $item?->getTooltip() ?? '';
-    }
-
     $vonagePlugin = PluginManager::getPlugin('vonage');
     $vonageConfigured = $vonagePlugin !== null && $vonagePlugin->isConfigured();
 
@@ -40,7 +34,6 @@ function getTextDashboardMVC(Request $request, Response $response, array $args):
         'sPageHeaderButtons' => PageHeader::buttons([
             ['label' => gettext('Text Settings'), 'collapse' => '#textSettings', 'icon' => 'fa-sliders', 'adminOnly' => true],
         ]),
-        'textSettingTooltips' => $textSettingTooltips,
         'vonageConfigured' => $vonageConfigured,
     ];
 

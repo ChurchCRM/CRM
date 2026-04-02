@@ -478,20 +478,45 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 $(document).ready(function() {
-    // Initialize the settings panel with financial settings
     window.CRM.settingsPanel.init({
         container: '#financialSettings',
-        title: i18next.t('Financial Settings'),
+        title: <?= json_encode(gettext('Financial Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
-            'iFYMonth',
-            'sDepositSlipType',
-            'iChecksPerDepositForm',
-            'bDisplayBillCounts',
-            'bUseScannedChecks',
-            'bEnableNonDeductible',
-            'bUseDonationEnvelopes',
-            'aFinanceQueries'
+            {
+                name: 'iFYMonth',
+                type: 'choice',
+                label: <?= json_encode(gettext('First month of the fiscal year')) ?>,
+                choices: [
+                    { value: '1',  label: <?= json_encode(gettext('January')) ?> },
+                    { value: '2',  label: <?= json_encode(gettext('February')) ?> },
+                    { value: '3',  label: <?= json_encode(gettext('March')) ?> },
+                    { value: '4',  label: <?= json_encode(gettext('April')) ?> },
+                    { value: '5',  label: <?= json_encode(gettext('May')) ?> },
+                    { value: '6',  label: <?= json_encode(gettext('June')) ?> },
+                    { value: '7',  label: <?= json_encode(gettext('July')) ?> },
+                    { value: '8',  label: <?= json_encode(gettext('August')) ?> },
+                    { value: '9',  label: <?= json_encode(gettext('September')) ?> },
+                    { value: '10', label: <?= json_encode(gettext('October')) ?> },
+                    { value: '11', label: <?= json_encode(gettext('November')) ?> },
+                    { value: '12', label: <?= json_encode(gettext('December')) ?> }
+                ]
+            },
+            {
+                name: 'sDepositSlipType',
+                type: 'choice',
+                label: <?= json_encode(gettext('Deposit ticket type')) ?>,
+                tooltip: 'QBDT - QuickBooks Deposit Ticket',
+                choices: [
+                    { value: 'QBDT', label: 'QBDT (QuickBooks)' }
+                ]
+            },
+            { name: 'iChecksPerDepositForm', type: 'number',  label: <?= json_encode(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
+            { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= json_encode(gettext('Display bill counts on deposit slip')) ?> },
+            { name: 'bUseScannedChecks',     type: 'boolean', label: <?= json_encode(gettext('Enable use of scanned checks')) ?> },
+            { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= json_encode(gettext('Enable non-deductible payments')) ?> },
+            { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= json_encode(gettext('Enable use of donation envelopes')) ?> },
+            { name: 'aFinanceQueries',       type: 'text',    label: <?= json_encode(gettext('Finance permission query IDs')) ?>, placeholder: '30,31,32' }
         ],
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data

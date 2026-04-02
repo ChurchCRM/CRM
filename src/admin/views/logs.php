@@ -410,7 +410,24 @@ var logLevelMap = {
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#logSettings',
-        settings: [ 'sLogLevel' ],
+        title: <?= json_encode(gettext('Log Settings')) ?>,
+        settings: [
+            {
+                name: 'sLogLevel',
+                type: 'choice',
+                label: <?= json_encode(gettext('Log Level')) ?>,
+                choices: [
+                    { value: '100', label: 'DEBUG (100)' },
+                    { value: '200', label: 'INFO (200)' },
+                    { value: '250', label: 'NOTICE (250)' },
+                    { value: '300', label: 'WARNING (300)' },
+                    { value: '400', label: 'ERROR (400)' },
+                    { value: '500', label: 'CRITICAL (500)' },
+                    { value: '550', label: 'ALERT (550)' },
+                    { value: '600', label: 'EMERGENCY (600)' }
+                ]
+            }
+        ],
         onSave: function() {
             window.CRM.notify(i18next.t('Log settings saved'), { type: 'success' });
             // Update the current log level display

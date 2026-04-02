@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 10:03-0700\n"
+"POT-Creation-Date: 2026-04-02 10:27-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -701,10 +701,22 @@ msgstr ""
 msgid "All timezones match"
 msgstr ""
 
+msgid "Allow Pre-release Upgrades"
+msgstr ""
+
 msgid "Allow Self-Signed Certificates"
 msgstr ""
 
-msgid "Allow system upgrades to release marked as 'pre release' on GitHub"
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr ""
+
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr ""
+
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr ""
+
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
 msgstr ""
 
 msgid "Allow unauthenticated reads of events from the external calendar API"
@@ -712,6 +724,12 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "Allow user to add new event"
+msgstr ""
+
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr ""
+
+msgid "Allow visitors to self-register as new families."
 msgstr ""
 
 msgid "Almost there — review your details"
@@ -1702,12 +1720,6 @@ msgstr ""
 msgid "Church Checking Account Number"
 msgstr ""
 
-msgid "Church City"
-msgstr ""
-
-msgid "Church Email"
-msgstr ""
-
 msgid "Church Email not set, please visit the settings page"
 msgstr ""
 
@@ -1733,15 +1745,6 @@ msgid "Church Membership"
 msgstr ""
 
 msgid "Church Name"
-msgstr ""
-
-msgid "Church Phone"
-msgstr ""
-
-msgid "Church State"
-msgstr ""
-
-msgid "Church Zip"
 msgstr ""
 
 msgid "Church information saved successfully"
@@ -1907,6 +1910,9 @@ msgid "Comma Separated list of PersonIDs of people to notify when a new family o
 msgstr ""
 
 msgid "Comma separated list of classifications that should appear as inactive"
+msgstr ""
+
+msgid "Comma-separated query IDs that require finance permissions to view"
 msgstr ""
 
 msgid "Comment"
@@ -2088,7 +2094,7 @@ msgid "Connected to OpenLP! Version: %s"
 msgstr ""
 
 #, php-format
-msgid "Connected! Account balance: €%.2f. Ready to send"
+msgid "Connected! Account balance: %.2f"
 msgstr ""
 
 msgid "Connection failed"
@@ -2907,9 +2913,6 @@ msgstr ""
 msgid "Does not match system config"
 msgstr ""
 
-msgid "Does your SMTP server require auththentication (username/password)?"
-msgstr ""
-
 #. Context: countries
 msgid "Dominica"
 msgstr ""
@@ -3246,13 +3249,7 @@ msgstr ""
 msgid "Enable Email"
 msgstr ""
 
-msgid "Enable Email menu."
-msgstr ""
-
 msgid "Enable Events Menu"
-msgstr ""
-
-msgid "Enable Events menu."
 msgstr ""
 
 msgid "Enable External Backup Plugin"
@@ -3279,13 +3276,16 @@ msgstr ""
 msgid "Enable Plugins"
 msgstr ""
 
-msgid "Enable Sunday School left menu."
-msgstr ""
-
 msgid "Enable Two-Factor Authentication"
 msgstr ""
 
 msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr ""
+
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr ""
+
+msgid "Enable if your SMTP server requires a username and password"
 msgstr ""
 
 msgid "Enable new kiosk registration"
@@ -3294,7 +3294,13 @@ msgstr ""
 msgid "Enable non-deductible payments"
 msgstr ""
 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr ""
+
 msgid "Enable the MailChimp plugin to sync contacts"
+msgstr ""
+
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
 msgstr ""
 
 msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
@@ -4789,6 +4795,9 @@ msgstr ""
 msgid "How it works"
 msgstr ""
 
+msgid "How many checks to print per deposit slip page"
+msgstr ""
+
 msgid "How to Fix:"
 msgstr ""
 
@@ -5021,6 +5030,9 @@ msgid "Info"
 msgstr ""
 
 msgid "Information to Include"
+msgstr ""
+
+msgid "Initial zoom level when opening the map (3 = continent, 10 = city, 18 = street)"
 msgstr ""
 
 msgid "Install a TLS/SSL certificate for secure connections"
@@ -5540,7 +5552,7 @@ msgstr ""
 msgid "Log Level"
 msgstr ""
 
-msgid "Log settings saved"
+msgid "Log Settings"
 msgstr ""
 
 msgid "Login"
@@ -7628,9 +7640,6 @@ msgstr ""
 msgid "Quarterly"
 msgstr ""
 
-msgid "Queries for which user must have finance permissions to use"
-msgstr ""
-
 msgid "Query Listing"
 msgstr ""
 
@@ -7644,6 +7653,9 @@ msgid "Quick Actions"
 msgstr ""
 
 msgid "Quick Search"
+msgstr ""
+
+msgid "Quick Settings"
 msgstr ""
 
 msgid "Quick Setup"
@@ -8500,25 +8512,10 @@ msgstr ""
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr ""
 
-msgid "Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed."
-msgstr ""
-
 msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
 msgstr ""
 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr ""
-
 msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
-msgstr ""
-
-msgid "Set true to enable family self registration."
-msgstr ""
-
-msgid "Set true to enable use of donation envelopes"
-msgstr ""
-
-msgid "Set true to enable use of scanned checks"
 msgstr ""
 
 msgid "Set up"
@@ -8583,10 +8580,22 @@ msgstr ""
 msgid "Show Neighbors"
 msgstr ""
 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr ""
+
 msgid "Show in"
 msgstr ""
 
 msgid "Show neighbors with these classifications"
+msgstr ""
+
+msgid "Show or hide the Events menu in the main navigation."
+msgstr ""
+
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr ""
+
+msgid "Show or hide the Sunday School module in the sidebar navigation"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -9146,6 +9155,9 @@ msgstr ""
 
 #. Context: queryparameters_qrp
 msgid "The minimum age for which you want records returned."
+msgstr ""
+
+msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -9810,6 +9822,9 @@ msgstr ""
 msgid "Upgrade Complete!"
 msgstr ""
 
+msgid "Upgrade Settings"
+msgstr ""
+
 msgid "Upgrade failed."
 msgstr ""
 
@@ -10382,6 +10397,12 @@ msgstr ""
 
 #. plugin:openlp:section:1:content
 msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr ""
+
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr ""
+
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
 msgstr ""
 
 msgid "Which role is a child?"

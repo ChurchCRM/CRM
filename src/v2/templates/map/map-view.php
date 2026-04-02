@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 // Use the page title set by the route; append a setup-required note if location is missing
@@ -74,33 +75,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     $(document).ready(function() {
         window.CRM.settingsPanel.init({
             container: '#mapAdminSettings',
-            title: () => i18next.t('Map Settings'),
+            title: <?= json_encode(gettext('Map Settings')) ?>,
             icon: 'fa-solid fa-sliders',
             settings: [
                 {
                     name: 'iMapZoom',
-                    label: () => i18next.t('Default Map View'),
                     type: 'choice',
+                    label: <?= json_encode(gettext('Default Map View')) ?>,
                     choices: [
-                        { value: '3', label: () => i18next.t('Continent') },
-                        { value: '5', label: () => i18next.t('Country') },
-                        { value: '7', label: () => i18next.t('State') },
-                        { value: '10', label: () => i18next.t('City') },
-                        { value: '14', label: () => i18next.t('Neighborhood') },
-                        { value: '18', label: () => i18next.t('Street') }
+                        { value: '3',  label: <?= json_encode(gettext('Continent')) ?> },
+                        { value: '5',  label: <?= json_encode(gettext('Country')) ?> },
+                        { value: '7',  label: <?= json_encode(gettext('State')) ?> },
+                        { value: '10', label: <?= json_encode(gettext('City')) ?> },
+                        { value: '14', label: <?= json_encode(gettext('Neighborhood')) ?> },
+                        { value: '18', label: <?= json_encode(gettext('Street')) ?> }
                     ]
                 },
                 {
                     name: 'bHideLatLon',
-                    label: () => i18next.t('Hide Latitude/Longitude'),
                     type: 'boolean',
-                    tooltip: <?= json_encode($mapSettingTooltips['bHideLatLon'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= json_encode(gettext('Hide Latitude/Longitude')) ?>,
+                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHideLatLon')) ?>
                 },
                 {
                     name: 'bHidePersonAddress',
-                    label: () => i18next.t('Hide Person Address'),
                     type: 'boolean',
-                    tooltip: <?= json_encode($mapSettingTooltips['bHidePersonAddress'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                    label: <?= json_encode(gettext('Hide Person Address')) ?>,
+                    tooltip: <?= json_encode(SystemConfig::getTooltip('bHidePersonAddress')) ?>
                 }
             ],
             showAllSettingsLink: false

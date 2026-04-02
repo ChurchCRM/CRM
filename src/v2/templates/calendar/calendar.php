@@ -69,21 +69,21 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#calendarSettings',
-        title: () => i18next.t('Calendar Settings'),
+        title: <?= json_encode(gettext('Calendar Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         headerClass: 'bg-info-lt',
         settings: [
             {
                 name: 'bEnabledEvents',
-                label: () => i18next.t('Enable Events Menu'),
                 type: 'boolean',
-                tooltip: () => i18next.t('Show or hide the Events menu in the main navigation.')
+                label: <?= json_encode(gettext('Enable Events Menu')) ?>,
+                tooltip: <?= json_encode(gettext('Show or hide the Events menu in the main navigation.')) ?>
             },
             {
                 name: 'bEnableExternalCalendarAPI',
-                label: () => i18next.t('Enable External Calendar API'),
                 type: 'boolean',
-                tooltip: () => i18next.t('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.')
+                label: <?= json_encode(gettext('Enable External Calendar API')) ?>,
+                tooltip: <?= json_encode(gettext('Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps.')) ?>
             }
         ],
         showAllSettingsLink: false,

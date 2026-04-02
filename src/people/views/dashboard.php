@@ -370,14 +370,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function () {
     window.CRM.settingsPanel.init({
         container: '#peopleSettings',
-        title: () => i18next.t('People Settings'),
+        title: <?= json_encode(gettext('People Settings')) ?>,
         icon: 'fa-solid fa-sliders',
         settings: [
             {
                 name: 'bEnableSelfRegistration',
-                label: () => i18next.t('Self Registration'),
                 type: 'boolean',
-                tooltip: () => i18next.t('Allow visitors to self-register as new families.')
+                label: <?= json_encode(gettext('Self Registration')) ?>,
+                tooltip: <?= json_encode(gettext('Allow visitors to self-register as new families.')) ?>
             }
         ],
         onSave: function () {

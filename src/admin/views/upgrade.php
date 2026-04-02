@@ -292,9 +292,9 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#upgradeSettingsPanel',
-        title: i18next.t('Upgrade Settings'),
+        title: <?= json_encode(gettext('Upgrade Settings')) ?>,
         icon: 'fa-solid fa-sliders',
-        settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: i18next.t('Allow Pre-release Upgrades'), tooltip: i18next.t("Allow system upgrades to releases marked as 'pre release' on GitHub") }],
+        settings: [{ name: 'bAllowPrereleaseUpgrade', type: 'boolean', label: <?= json_encode(gettext('Allow Pre-release Upgrades')) ?>, tooltip: <?= json_encode(gettext("Allow system upgrades to releases marked as 'pre release' on GitHub")) ?> }],
         onSave: function() {
             window.CRM.notify(i18next.t('Settings saved. Refreshing upgrade info...'), { type: 'success', delay: 2000 });
             window.CRM.AdminAPIRequest({

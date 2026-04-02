@@ -101,7 +101,7 @@ class   SystemConfig
             'sDirRoleSpouse'                       => new ConfigItem(7, 'sDirRoleSpouse', 'choice', '2', gettext('These are the family role numbers designated as spouse'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'sDirRoleChild'                        => new ConfigItem(8, 'sDirRoleChild', 'choice', '3', gettext('These are the family role numbers designated as child'), '', json_encode(SystemConfig::getFamilyRoleChoices(), JSON_THROW_ON_ERROR)),
             'iSessionTimeout'                      => new ConfigItem(9, 'iSessionTimeout', 'number', '3600', gettext("Session timeout length in seconds\nSet to zero to disable session timeouts.")),
-            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '28,30', gettext('Queries for which user must have finance permissions to use') . ':'),
+            'aFinanceQueries'                      => new ConfigItem(10, 'aFinanceQueries', 'text', '28,30', gettext('Comma-separated query IDs that require finance permissions to view')),
             'iMinPasswordLength'                   => new ConfigItem(13, 'iMinPasswordLength', 'number', '6', gettext('Minimum length a user may set their password to')),
             'iMinPasswordChange'                   => new ConfigItem(14, 'iMinPasswordChange', 'number', '4', gettext("Minimum amount that a new password must differ from the old one (# of characters changed)\nSet to zero to disable this feature")),
             'aDisallowedPasswords'                 => new ConfigItem(15, 'aDisallowedPasswords', 'text', 'password,god,jesus,church,christian', gettext('A comma-separated list of disallowed (too obvious) passwords.')),
@@ -113,27 +113,27 @@ class   SystemConfig
             'sToEmailAddress'                      => new ConfigItem(26, 'sToEmailAddress', 'text', '', gettext('Default account for receiving a copy of all emails')),
             'iSMTPTimeout'                         => new ConfigItem(24, 'iSMTPTimeout', 'number', '10', gettext('SMTP Server timeout in sec')),
             'sSMTPHost'                            => new ConfigItem(27, 'sSMTPHost', 'text', '', gettext('SMTP Server Address (mail.server.com:25)')),
-            'bSMTPAuth'                            => new ConfigItem(28, 'bSMTPAuth', 'boolean', '0', gettext('Does your SMTP server require auththentication (username/password)?')),
+            'bSMTPAuth'                            => new ConfigItem(28, 'bSMTPAuth', 'boolean', '0', gettext('Enable if your SMTP server requires a username and password')),
             'sSMTPUser'                            => new ConfigItem(29, 'sSMTPUser', 'text', '', gettext('SMTP Username')),
             'sSMTPPass'                            => new ConfigItem(30, 'sSMTPPass', 'password', '', gettext('SMTP Password')),
             'sLanguage'                            => new ConfigItem(39, 'sLanguage', 'choice', 'en_US', gettext('Internationalization (I18n) support'), 'https://poeditor.com/join/project?hash=RABdnDSqAt', json_encode(SystemConfig::getSupportedLocales(), JSON_THROW_ON_ERROR)),
-            'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('First month of the fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
-            'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', ''),
+            'iFYMonth'                             => new ConfigItem(40, 'iFYMonth', 'choice', '1', gettext('The month that starts your organization\'s fiscal year'), '', '{"Choices":["1","2","3","4","5","6","7","8","9","10","11","12"]}'),
+            'iMapZoom'                             => new ConfigItem(10001, 'iMapZoom', 'number', '10', gettext('Initial zoom level when opening the map (3 = continent, 10 = city, 18 = street)')),
             'iChurchLatitude'                      => new ConfigItem(45, 'iChurchLatitude', 'number', '', ''),
             'iChurchLongitude'                     => new ConfigItem(46, 'iChurchLongitude', 'number', '', ''),
-            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment.')),
+            'bHidePersonAddress'                   => new ConfigItem(47, 'bHidePersonAddress', 'boolean', '1', gettext('When enabled, hides the address field for people not assigned to a family')),
             'bHideFriendDate'                      => new ConfigItem(48, 'bHideFriendDate', 'boolean', '0', gettext('Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor.')),
             'bHideFamilyNewsletter'                => new ConfigItem(49, 'bHideFamilyNewsletter', 'boolean', '0', gettext('Set true to disable management of newsletter subscriptions in the Family Editor.')),
             'bHideWeddingDate'                     => new ConfigItem(50, 'bHideWeddingDate', 'boolean', '0', gettext('Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor.')),
-            'bHideLatLon'                          => new ConfigItem(51, 'bHideLatLon', 'boolean', '0', gettext('Set true to disable entering Latitude and Longitude in Family Editor.  Set false to enable entering Latitude and Longitude in Family Editor.  Lookups are still performed, just not displayed.')),
-            'bUseDonationEnvelopes'                => new ConfigItem(52, 'bUseDonationEnvelopes', 'boolean', '0', gettext('Set true to enable use of donation envelopes')),
-            'iChecksPerDepositForm'                => new ConfigItem(57, 'iChecksPerDepositForm', 'number', '14', gettext('Number of checks for Deposit Slip Report')),
-            'bUseScannedChecks'                    => new ConfigItem(58, 'bUseScannedChecks', 'boolean', '0', gettext('Set true to enable use of scanned checks')),
+            'bHideLatLon'                          => new ConfigItem(51, 'bHideLatLon', 'boolean', '0', gettext('When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.')),
+            'bUseDonationEnvelopes'                => new ConfigItem(52, 'bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
+            'iChecksPerDepositForm'                => new ConfigItem(57, 'iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
+            'bUseScannedChecks'                    => new ConfigItem(58, 'bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
             'sDistanceUnit'                        => new ConfigItem(64, 'sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
             'sTimeZone'                            => new ConfigItem(65, 'sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()], JSON_THROW_ON_ERROR)),
             'bForceUppercaseZip'                   => new ConfigItem(67, 'bForceUppercaseZip', 'boolean', '0', gettext('Make user-entered zip/postcodes UPPERCASE when saving to the database.')),
-            'bEnableNonDeductible'                 => new ConfigItem(72, 'bEnableNonDeductible', 'boolean', '0', gettext('Enable non-deductible payments')),
-            'bEnableSelfRegistration'              => new ConfigItem(80, 'bEnableSelfRegistration', 'boolean', '0', gettext('Set true to enable family self registration.')),
+            'bEnableNonDeductible'                 => new ConfigItem(72, 'bEnableNonDeductible', 'boolean', '0', gettext('Allow recording of non-tax-deductible payments in the finance module')),
+            'bEnableSelfRegistration'              => new ConfigItem(80, 'bEnableSelfRegistration', 'boolean', '0', gettext('Allow visitors to create their own family record via the self-registration page')),
             'sPhoneFormat'                         => new ConfigItem(100, 'sPhoneFormat', 'text', '(999) 999-9999'),
             'sPhoneFormatWithExt'                  => new ConfigItem(101, 'sPhoneFormatWithExt', 'text', '(999) 999-9999 x99999'),
             'sPhoneFormatCell'                     => new ConfigItem(111, 'sPhoneFormatCell', 'text', '(999) 999-9999'),
@@ -184,7 +184,7 @@ class   SystemConfig
             'sDepositSlipType'                     => new ConfigItem(2001, 'sDepositSlipType', 'choice', 'QBDT', gettext('Deposit ticket type.  QBDT - Quickbooks'), '', '{"Choices":["QBDT"]}'),
             'iPersonNameStyle'                     => new ConfigItem(2020, 'iPersonNameStyle', 'choice', '4', '', '', json_encode(SystemConfig::getNameChoices(), JSON_THROW_ON_ERROR)),
             'iPersonInitialStyle'                  => new ConfigItem(20201, 'iPersonInitialStyle', 'choice', '0', '', '', json_encode(SystemConfig::getInitialStyleChoices(), JSON_THROW_ON_ERROR)),
-            'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Display bill counts on deposit slip')),
+            'bDisplayBillCounts'                   => new ConfigItem(2002, 'bDisplayBillCounts', 'boolean', '1', gettext('Show a breakdown of bill denominations on the deposit slip report')),
             'sKioskVisibilityTimestamp'            => new ConfigItem(2011, 'sKioskVisibilityTimestamp', 'text', '', gettext('KioskVisibilityTimestamp')),
             'bEnableLostPassword'                  => new ConfigItem(2004, 'bEnableLostPassword', 'boolean', '1', gettext('Show/Hide Lost Password Link on the login screen')),
             'sChurchWebSite'                       => new ConfigItem(2013, 'sChurchWebSite', 'text', '', ''),
@@ -212,17 +212,17 @@ class   SystemConfig
             'bEnforceCSP'                          => new ConfigItem(20234, 'bEnforceCSP', 'boolean', '0', gettext('Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported.')),
             'bPHPMailerAutoTLS'                    => new ConfigItem(2045, 'bPHPMailerAutoTLS', 'boolean', '0', gettext('Automatically enable SMTP encryption if offered by the relaying server.')),
             'sPHPMailerSMTPSecure'                 => new ConfigItem(2046, 'sPHPMailerSMTPSecure', 'choice', ' ', gettext('Set the encryption system to use - ssl (deprecated) or tls'), '', '{"Choices":["None: ","TLS:tls","SSL:ssl"]}'),
-            'bEnabledSundaySchool'                 => new ConfigItem(2051, 'bEnabledSundaySchool', 'boolean', '1', gettext('Enable Sunday School left menu.')),
+            'bEnabledSundaySchool'                 => new ConfigItem(2051, 'bEnabledSundaySchool', 'boolean', '1', gettext('Show or hide the Sunday School module in the sidebar navigation')),
             'bEnabledFinance'                      => new ConfigItem(2052, 'bEnabledFinance', 'boolean', '1', gettext('Enable Finance menu')),
-            'bEnabledEvents'                       => new ConfigItem(2053, 'bEnabledEvents', 'boolean', '1', gettext('Enable Events menu.')),
+            'bEnabledEvents'                       => new ConfigItem(2053, 'bEnabledEvents', 'boolean', '1', gettext('Show or hide the Events section in the main navigation menu')),
             'bEnabledFundraiser'                   => new ConfigItem(2055, 'bEnabledFundraiser', 'boolean', '1', gettext('Enable Fundraiser menu.')),
-            'bEnabledEmail'                        => new ConfigItem(2056, 'bEnabledEmail', 'boolean', '1', gettext('Enable Email menu.')),
+            'bEnabledEmail'                        => new ConfigItem(2056, 'bEnabledEmail', 'boolean', '1', gettext('Enable email sending from ChurchCRM. Required for password reset, notifications, and email links.')),
             'sNotificationsURL'                    => new ConfigItem(2057, 'sNotificationsURL', 'text', 'https://raw.githubusercontent.com/ChurchCRM/CRM/Notifications/notifications.json', gettext('ChurchCRM Central Notifications URL')),
             'sGreeterCustomMsg1'                   => new ConfigItem(2058, 'sGreeterCustomMsg1', 'text', '', gettext('Custom message for church greeter email 1, max 255 characters')),
             'sGreeterCustomMsg2'                   => new ConfigItem(2059, 'sGreeterCustomMsg2', 'text', '', gettext('Custom message for church greeter email 2, max 255 characters')),
             'IncludeDataInNewPersonNotifications'  => new ConfigItem(2060, 'IncludeDataInNewPersonNotifications', 'boolean', '0', gettext('Include contact and demographic data in new member email notification body')),
             'bSearchIncludeFamilyCustomProperties' => new ConfigItem(2061, 'bSearchIncludeFamilyCustomProperties', 'boolean', '0', gettext('Include family custom properties in global search.')),
-            'bAllowPrereleaseUpgrade'              => new ConfigItem(2065, 'bAllowPrereleaseUpgrade', 'boolean', '0', gettext("Allow system upgrades to release marked as 'pre release' on GitHub")),
+            'bAllowPrereleaseUpgrade'              => new ConfigItem(2065, 'bAllowPrereleaseUpgrade', 'boolean', '0', gettext("Allow system upgrades to releases marked as 'pre release' on GitHub")),
             'bSearchIncludeCalendarEvents'         => new ConfigItem(2066, 'bSearchIncludeCalendarEvents', 'boolean', '1', gettext('Search Calendar Events')),
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem(2067, 'bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
             'bRequire2FA'                          => new ConfigItem(2069, 'bRequire2FA', 'boolean', '0', gettext('Require all users to enroll in two-factor authentication')),
@@ -332,6 +332,16 @@ class   SystemConfig
     public static function getConfigItem(string $name)
     {
         return self::$configs[$name];
+    }
+
+    /**
+     * Return the tooltip string for a single setting, or '' if not found.
+     * Centralises tooltip retrieval so templates don't need per-route arrays.
+     */
+    public static function getTooltip(string $name): string
+    {
+        $item = self::$configs[$name] ?? null;
+        return $item ? $item->getTooltip() : '';
     }
 
     /**

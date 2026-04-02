@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -66,15 +67,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 $(document).ready(function() {
     window.CRM.settingsPanel.init({
         container: '#textSettings',
-        title: () => i18next.t('Text Settings'),
+        title: <?= json_encode(gettext('Text Settings')) ?>,
         icon: 'fa-solid fa-comment-sms',
         settings: [
             {
                 name: 'iDoNotSmsPropertyId',
-                label: () => i18next.t('Do Not SMS Property'),
                 type: 'ajax',
-                ajaxUrl: window.CRM.root + '/api/system/properties/person',
-                tooltip: <?= json_encode($textSettingTooltips['iDoNotSmsPropertyId'] ?? '', JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>
+                label: <?= json_encode(gettext('Do Not SMS Property')) ?>,
+                ajaxUrl: '/api/system/properties/person',
+                tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotSmsPropertyId')) ?>
             }
         ],
         showAllSettingsLink: true
