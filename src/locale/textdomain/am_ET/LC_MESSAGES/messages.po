@@ -6976,28 +6976,8 @@ msgid "Create Backup"
 msgstr "መጠባበቂያ ፍጠር"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "ማሻሻያውን ከመተግበርዎ በፊት የዳታቤዝ መጠባበቂያ ይፍጠሩ።"
-
-#: 
-msgid "Current Version:"
-msgstr "የአሁኑ ስሪት፡"
-
-#: 
-msgid "Database Backup"
-msgstr "የዳታቤዝ መጠባበቂያ"
-
-#: 
 msgid "Download & Apply"
 msgstr "አውርድና ተግብር"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "የሥርዓት ማሻሻያውን አውርድና ተግብር"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "የቅርብ ጊዜውን ልቀት ያውርዱ እና በChurchCRM ጭነትዎ ላይ ይተግብሩ።"
 
 #: 
 msgid "Downloaded"
@@ -7012,10 +6992,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "የመግቢያ ስምዎን ያስገቡ እና የይለፍ ቃልዎን እንደገና ለማስጀመር ሊንክ በኢሜይል እንልክልዎታለን።"
 
 #: 
-msgid "Expected Hash"
-msgstr "የሚጠበቅ ሃሽ"
-
-#: 
 msgid "Failed to create backup."
 msgstr "መጠባበቂያ መፍጠር አልተሳካም።"
 
@@ -7028,32 +7004,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "የማሻሻያ መረጃን ከGitHub ማደስ አልተሳካም።"
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "የማሻሻያ መረጃን ማደስ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "ቅንብሩን ማስቀመጥ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
-
-#: 
 msgid "File Name"
 msgstr "የፋይል ስም"
 
 #: 
-msgid "Files Missing"
-msgstr "ፋይሎች ጎድለዋል"
-
-#: 
-msgid "Files Modified"
-msgstr "ፋይሎች ተሻሽለዋል"
-
-#: 
 msgid "Go to Login"
 msgstr "ወደ መግቢያ ሂድ"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "ተረድቻለሁ - ቀጥል"
 
 #: 
 msgid "Language updated to"
@@ -7084,22 +7040,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "እባክዎን ይህንን መስኮት አይዝጉት ወይም ገጹን አያድሱት።"
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "ከማሻሻያ በፊት ያሉ ተግባራት ተጠናቀዋል"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "ከማሻሻያ በፊት ያሉ ማስጠንቀቂያዎች"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "ከGitHub አድስ"
-
-#: 
-msgid "Release Notes:"
-msgstr "የልቀት ማስታወሻዎች፡"
-
-#: 
 msgid "Request Password Reset"
 msgstr "የይለፍ ቃል ዳግም ማስጀመሪያ ጠይቅ"
 
@@ -7108,28 +7048,12 @@ msgid "Retry Download"
 msgstr "እንደገና ለማውረድ ሞክር"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "የዳግም ማስጀመሪያ ኢሜይል ላክ"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "ቅንብሩ ተቀምጧል። ገጹን በመጫን ላይ..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "ቅንብሩ በተሳካ ሁኔታ ተዘምኗል"
-
-#: 
-msgid "Skip Backup"
-msgstr "መጠባበቂያውን ዝለል"
-
-#: 
-msgid "System Up to Date"
-msgstr "ስርዓቱ ወቅታዊ ነው"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7142,10 +7066,6 @@ msgstr "የሥርዓት ማሻሻያ በተሳካ ሁኔታ ተጠናቅቋል!"
 #: 
 msgid "This may take several minutes."
 msgstr "ይህ ጥቂት ደቂቃዎችን ሊወስድ ይችላል።"
-
-#: 
-msgid "Update Available!"
-msgstr "ማሻሻያ አለ!"
 
 #: 
 msgid "Update Package Details"
@@ -13269,6 +13189,10 @@ msgid "Review & Delete"
 msgstr "ይተንትን እና ዝወር"
 
 #: 
+msgid "SHA1 Hash"
+msgstr "SHA1 ሃሽ"
+
+#: 
 msgid "Setup Instructions"
 msgstr "ተዋቅሮ ትዕዛዙ"
 
@@ -13753,8 +13677,223 @@ msgstr "ንብረት"
 msgid "Public calendar"
 msgstr "ህዝብ ዓመታዊ"
 
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "ከተወቅ ጉብኝ ጓደኞች"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "ደጋግሞ የሚገኘ አባል"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "ለተሰጠው ንብረት የተመደቡ የ ሰው ሪከርዶችን ይመልስ።"
+
+#: 
+msgid "SMS Integration"
+msgstr "ኤስ ኤም ኤስ ውህደት"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "ኤስ ኤም ኤስ 메ッセージ በ Vonage API በኩል ከ ChurchCRM በቀጥታ ሊተላለቁ ይችላሉ።"
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP የተዋቀረ"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP ያልተዋቀረ"
+
 #. Context: queryparameters_qrp
 #: 
 msgid "Search"
 msgstr "ፍለጋ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "ሁለተኛ ገቢ ዓመት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "ለንጽጽር ሁለተኛ ገቢ ዓመት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "ሁለተኛ ምሕረት ተ��ዋጩ ምርጫ"
+
+#: 
+msgid "Select calendars..."
+msgstr "የቀን መቁጠሪያ ይምረጡ..."
+
+#: 
+msgid "Select event type..."
+msgstr "የስብሰባ ዓይነት ይምረጡ..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "ለመፈለግ የመስክ ምርጫ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "የተፈለገውን ስብሰባ ይምረጡ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "የተፈለገውን የቤተሰብ ሚና ይምረጡ።"
+
+#: 
+msgid "Send text message"
+msgstr "የጽሑፍ መልዕክት ይላኩ"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "አንዳንድ የቀን መቁጠሪያዎች የመድረስ ቶከን አላቸው ነገር ግን ውጪ ያለ የቀን መቁጠሪያ ማጋራት በአሁኑ ጊዜ ተአማሚ ነው። ውጪ ያለ መተግበሪያዎች ወደ ቀን መቁጠሪያዎ ለመመዝገብ ይህንን በቀን መቁጠሪያ ቅንጅቶች ውስጥ ያስችሉ።"
+
+#: 
+msgid "System Calendars"
+msgstr "የስርዓት የቀን መቁጠሪያ"
+
+#: 
+msgid "System language for the church."
+msgstr "ለቤተ ክርስቲያን የስርዓት ቋንቋ።"
+
+#: 
+msgid "Text All"
+msgstr "ሁሉንም ጽሑፍ"
+
+#: 
+msgid "Text Dashboard"
+msgstr "ጽሑፍ ሳሙና"
+
+#: 
+msgid "Text Settings"
+msgstr "ጽሑፍ ቅንጅቶች"
+
+#: 
+msgid "Text Tools"
+msgstr "ጽሑፍ መሳሪያዎች"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "የጽሑፍ መልዕክት ድርጊቶች ከቡድን እና የቅዳሜ ት/ቤት ክፍል ዕይታ ይገኛሉ። \"ጽሑፍ\" ዝርዝርን ተጠቀም ስልክ ቁጥሮችን ለመቅዳት ወይም ለቡድን አባላት ኤስ ኤም ኤስ 메ッセージ ለመላክ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ብዕር ወር።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "ውሂብ ታሪኩ ውስጥ ለመፈለግ የተፈለገ ጾታ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ጾታ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ከፍተኛ ዕድሜ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "አባልነት ወለድ ወር ለመዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት ዝቅተኛ ዕድሜ።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "የሰው መዝገቦች ለመመለስ ይሚደለገው ንብረት።"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "መዝገቦች ዓይነተ ሊመለሱ ከሚሆነበት የቅዳሜ ት/ቤት ክፍል።"
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "እነዚህ ዋጋዎች ወደ ታዳሪ ቤተሰቦች ሲፈጠሩ አስቀድመው ተሞልተዋል። በእጅ ግቤት ለመፍለግ ባዶ ይተውት።"
+
+#: 
+msgid "Time"
+msgstr "ጊዜ"
+
+#: 
+msgid "Timed"
+msgstr "ግዜ ተወስኖታል"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "ወደ ብሎክ ቦርድ ለመቅዳት አልተቻለም። እባክዎ URL ን በእጅ ይቅዱ።"
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "ርቀት ለመለካት ያገለግለ ክፍል።"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "መረጃ ስሪት ለመፈጠር ተጠቃሚ ፍቃድ"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "በ mailto: ኈንጻዎች በኩል ኢሜል ለመላክ ተጠቃሚ ፍቃድ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "ምሕረት ተዋጩ �ዴነቶች"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "ምሕረት ተዋጩ"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS ተገናኘ"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS ያልተዋቀረ"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Vonage ምስክር፣ የጽሑፍ ድርጊቶች የእርስዎን መሳሪያ ዋና ኤስ ኤም ኤስ መተግበሪያ ይከፍታሉ ወይም ስልክ ቁጥሮችን ወደ ብሎክ ቦርድ ይቅዳሉ።"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "የሥራ ኢሜል"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "ነገር ግን በዚህ አመት አይደለም"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "ለምሳሌ ቅዳሜ ምግባር"
+
+#: 
+msgid "member"
+msgstr "አባል"
 

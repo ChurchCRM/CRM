@@ -7025,28 +7025,8 @@ msgid "Create Backup"
 msgstr "Biztonsági mentés létrehozása"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "A frissítés alkalmazása előtt készítsen biztonsági mentést az adatbázisról."
-
-#: 
-msgid "Current Version:"
-msgstr "Jelenlegi verzió:"
-
-#: 
-msgid "Database Backup"
-msgstr "Adatbázis biztonsági mentés"
-
-#: 
 msgid "Download & Apply"
 msgstr "Letöltés és alkalmazás"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Rendszerfrissítés letöltése és alkalmazása"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Töltse le a legújabb kiadást, és alkalmazza a ChurchCRM telepítésén."
 
 #: 
 msgid "Downloaded"
@@ -7061,10 +7041,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Adja meg bejelentkezési nevét, és e-mailben küldünk egy linket a jelszó visszaállításához."
 
 #: 
-msgid "Expected Hash"
-msgstr "Várt hash érték"
-
-#: 
 msgid "Failed to create backup."
 msgstr "A biztonsági mentés létrehozása sikertelen."
 
@@ -7077,32 +7053,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "A frissítési információk lekérése a GitHubról sikertelen."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "A frissítési információk frissítése sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "A beállítás mentése sikertelen. Kérjük, próbálja újra."
-
-#: 
 msgid "File Name"
 msgstr "Fájlnév"
 
 #: 
-msgid "Files Missing"
-msgstr "Hiányzó fájlok"
-
-#: 
-msgid "Files Modified"
-msgstr "Módosított fájlok"
-
-#: 
 msgid "Go to Login"
 msgstr "Ugrás a bejelentkezéshez"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Értem - Folytatás"
 
 #: 
 msgid "Language updated to"
@@ -7133,22 +7089,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Kérjük, ne zárja be ezt az ablakot, és ne frissítse az oldalt."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "A frissítés előtti feladatok befejeződtek"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Frissítés előtti figyelmeztetések"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Frissítés a GitHubról"
-
-#: 
-msgid "Release Notes:"
-msgstr "Kiadási megjegyzések:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Jelszó-visszaállítás kérése"
 
@@ -7157,28 +7097,12 @@ msgid "Retry Download"
 msgstr "Letöltés megismétlése"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "E-mail küldése a visszaállításhoz"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Beállítás mentve. Oldal újratöltése..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Beállítás sikeresen frissítve"
-
-#: 
-msgid "Skip Backup"
-msgstr "Biztonsági mentés kihagyása"
-
-#: 
-msgid "System Up to Date"
-msgstr "Rendszer naprakész"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7191,10 +7115,6 @@ msgstr "Rendszerfrissítés sikeresen befejezve!"
 #: 
 msgid "This may take several minutes."
 msgstr "Ez több percig is eltarthat."
-
-#: 
-msgid "Update Available!"
-msgstr "Frissítés elérhető!"
 
 #: 
 msgid "Update Package Details"
@@ -13579,4 +13499,454 @@ msgstr "A telefonszámok lekérése sikertelen"
 #: 
 msgid "Field value"
 msgstr "Mező értéke"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Keresse meg azokat az embereket, akik egy évben ígérkeztek, de a másikban nem"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Keressen személyeket egyéni mezőértékkel"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Keresse meg az önkénteseket egy adott lehetőséghez"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Keresse meg az önkénteseket, akik két konkrét lehetőségi kódot illesztenek"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Első pénzügyi év"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Első pénzügyi év az összehasonlításhoz"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Első önkéntes lehetőség választása"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Barátok, akik az előző hónapokban regisztráltak"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Vendég"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Kiosztós bejelentkezési e-mail értesítések"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp csatlakoztatva"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "A Mailchimp nincs konfigurálva"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS / szöveges üzenetkezelő eszközök és beállítások kezelése"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Események, születésnapok és évfordulók kezelése"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Egyéni mező egyeztetése ezzel az értékkel"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maximális életkor"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Tag, rendszeres látogató stb."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Tagok, akik egy adott hónapban csatlakoztak"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Tagsági évfordulók"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Minimális életkor"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Hiányzó emberek"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Hiányzó ígérkezések"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Hónap"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Hónapok"
+
+#: 
+msgid "My Calendars"
+msgstr "Naptárjaim"
+
+#: 
+msgid "New member notification emails"
+msgstr "Új tag értesítési e-mailek"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Nincs mobiltelefon az iratra"
+
+#: 
+msgid "No email addresses available"
+msgstr "Nincsenek elérhető e-mail-címek"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Nincsenek elérhető telefonszámok"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Nem-résztvevő"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Nem-résztvevő (dolgozók)"
+
+#: 
+msgid "Not Classified"
+msgstr "Nem osztályozott"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "A barát lesz óta eltelt hónapok száma"
+
+#: 
+msgid "Parents"
+msgstr "Szülők"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Jelszó-visszaállítási e-mailek – a felhasználók nem tudják helyreállítani fiókjaikat"
+
+#: 
+msgid "People Settings"
+msgstr "Személybeállítások"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Emberek, akiknek születésnapjuk van egy adott hónapban"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Személy tulajdonság szerint"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Személyes tulajdonság, amellyel kizárják a tagokat az SMS / szöveges listákból"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Személyes tulajdonság, amellyel kizárják a tagokat az e-mail listákról"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Telefonszámok a vágólapra másolva"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Telefonszámok másolva – illessze az üzenetkezelő alkalmazásba"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Kérjük, adja meg az utolsó dátumot az egyes tagok teljes hozzájárulásának kiszámításához (pl. YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Kérjük, válassza ki az egyes tagok teljes hozzájárulásának kiszámításához szükséges kezdő dátumot (pl. YYYY-MM-DD). MEGJEGYZÉS: Csak az adományokat tartalmazó dátumokat választhat."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Ígéret összehasonlítása"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Idén ígérkezve"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Másoláshoz nyomja meg a CTRL + C"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Tulajdonság"
+
+#: 
+msgid "Public calendar"
+msgstr "Nyilvános naptár"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Legutóbbi barátok"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Rendszeres látogató"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Azokat a személyek nyilvántartásait adja vissza, amelyekhez az adott tulajdonság hozzá van rendelve."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS integráció"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "Az SMS-üzeneteket közvetlenül a ChurchCRM-ből lehet elküldeni a Vonage API-n keresztül."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP konfigurálva"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "Az SMTP nincs konfigurálva"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Keresés"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Második pénzügyi év"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Második pénzügyi év az összehasonlításhoz"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Második önkéntes lehetőség választása"
+
+#: 
+msgid "Select calendars..."
+msgstr "Válasszon naptárakat..."
+
+#: 
+msgid "Select event type..."
+msgstr "Válassza ki az esemény típusát..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Válassz keresendő mezőt."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Válassza ki a kívánt eseményt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Válassza ki a kívánt családi szerepet."
+
+#: 
+msgid "Send text message"
+msgstr "Szöveges üzenet küldése"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Néhány naptárnak hozzáférési tokenei vannak, de a külső naptár megosztása jelenleg letiltott. Engedélyezze a Naptár beállítások segítségével, hogy a külső alkalmazások feliratkozzanak a naptárjára."
+
+#: 
+msgid "System Calendars"
+msgstr "Rendszer naptárak"
+
+#: 
+msgid "System language for the church."
+msgstr "Rendszer nyelve az egyházhoz."
+
+#: 
+msgid "Text All"
+msgstr "Szöveg Mindegyik"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Szöveg irányítópult"
+
+#: 
+msgid "Text Settings"
+msgstr "Szöveg beállítások"
+
+#: 
+msgid "Text Tools"
+msgstr "Szöveges eszközök"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Az üzenetkezelési műveletek a Csoport és a Vasárnapi Iskola osztály nézeteiből érhetők el. A \"Szöveg\" legördülő menü segítségével másolja a telefonszámokat, vagy küldjön SMS-üzeneteket a csoport tagjaira."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Az a születésnapos hónap, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "A kívánt nem az adatbázisban való kereséshez."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Az a nem, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "A maximális életkor, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "A tagsági évfordulós hónap, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "A minimális életkor, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Az a tulajdonság, amelyre vissza szeretné adni a személyes nyilvántartásokat."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "A vasárnapi iskolai osztály, amelyre vissza szeretné adni a nyilvántartásokat."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Ezek az értékek automatikusan kitöltésre kerülnek új családok létrehozásakor. Hagyja üresen, ha kézi bevitelre van szükség."
+
+#: 
+msgid "Time"
+msgstr "Idő"
+
+#: 
+msgid "Timed"
+msgstr "Időzített"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Nem sikerült másolni a vágólapra. Kérjük, másolja az URL-t manuálisan."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "A távolság mérésére használt egység."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Felhasználói engedély könyvtárak létrehozásához"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Felhasználói engedély e-mail küldéséhez mailto: hivatkozásokon keresztül"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Önkéntes lehetőségek"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Önkéntesek"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS csatlakoztatva"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "A Vonage SMS nincs konfigurálva"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Vonage nélkül a szöveges műveletek az eszköz natív SMS-alkalmazást nyitnak meg, vagy másolják a telefonszámokat a vágólapra."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Munkahelyi e-mail"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "de nem ebben az évben"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "például vasárnapi istentisztelet"
+
+#: 
+msgid "member"
+msgstr "tag"
 

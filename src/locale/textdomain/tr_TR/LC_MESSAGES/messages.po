@@ -6967,28 +6967,8 @@ msgid "Create Backup"
 msgstr "Yedek Oluştur"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Güncellemeyi uygulamadan önce veritabanınızın yedeğini oluşturun."
-
-#: 
-msgid "Current Version:"
-msgstr "Mevcut Sürüm:"
-
-#: 
-msgid "Database Backup"
-msgstr "Veritabanı Yedeği"
-
-#: 
 msgid "Download & Apply"
 msgstr "İndir ve Uygula"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Sistem Güncellemesini İndir ve Uygula"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "En son sürümü indirin ve ChurchCRM kurulumunuza uygulayın."
 
 #: 
 msgid "Downloaded"
@@ -7003,10 +6983,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Kullanıcı adınızı girin; size şifrenizi sıfırlamanız için bir bağlantı e-postası göndereceğiz."
 
 #: 
-msgid "Expected Hash"
-msgstr "Beklenen Karma (Hash)"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Yedek oluşturulamadı."
 
@@ -7019,32 +6995,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Yükseltme bilgileri GitHub'dan yenilenemedi."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Yükseltme bilgileri yenilenemedi. Lütfen tekrar deneyin."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Ayar kaydedilemedi. Lütfen tekrar deneyin."
-
-#: 
 msgid "File Name"
 msgstr "Dosya Adı"
 
 #: 
-msgid "Files Missing"
-msgstr "Eksik Dosyalar"
-
-#: 
-msgid "Files Modified"
-msgstr "Değiştirilmiş Dosyalar"
-
-#: 
 msgid "Go to Login"
 msgstr "Giriş Sayfasına Git"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Anlıyorum - Devam Et"
 
 #: 
 msgid "Language updated to"
@@ -7075,22 +7031,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Lütfen bu pencereyi kapatmayın veya sayfayı yenilemeyin."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Yükseltme Öncesi Görevler Tamamlandı"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Yükseltme Öncesi Uyarılar"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "GitHub'dan Yenile"
-
-#: 
-msgid "Release Notes:"
-msgstr "Sürüm Notları:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Şifre Sıfırlama İste"
 
@@ -7099,28 +7039,12 @@ msgid "Retry Download"
 msgstr "İndirmeyi Tekrar Dene"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1 Karması:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Sıfırlama E-postası Gönder"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Ayar kaydedildi. Sayfa yeniden yükleniyor..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Ayar başarıyla güncellendi"
-
-#: 
-msgid "Skip Backup"
-msgstr "Yedeklemeyi Atla"
-
-#: 
-msgid "System Up to Date"
-msgstr "Sistem Güncel"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7133,10 +7057,6 @@ msgstr "Sistem yükseltme başarıyla tamamlandı!"
 #: 
 msgid "This may take several minutes."
 msgstr "Bu işlem birkaç dakika sürebilir."
-
-#: 
-msgid "Update Available!"
-msgstr "Güncelleme Mevcut!"
 
 #: 
 msgid "Update Package Details"
@@ -13513,4 +13433,454 @@ msgstr "Telefon numaraları alınamadı"
 #: 
 msgid "Field value"
 msgstr "Alan Değeri"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Bir etkinliğe katılmayan kişileri bulun"
+
+#. Context: query_qry
+#: 
+msgid "Find people who pledged one year but not another"
+msgstr "Bir yıl söz veren ancak diğer bir yıl söz vermeyen kişileri bulun"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Özel bir alan değeri olan kişileri bulun"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Belirli bir fırsat için gönüllüler bulun"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "İki belirli fırsat koduna uygun gönüllüleri bulun"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "İlk Mali Yıl"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Karşılaştırma için ilk mali yıl"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "İlk gönüllü fırsat seçimi"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Önceki aylarda kaydolan arkadaşlar"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Misafir"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "Kiosk giriş e-posta bildirimleri"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp Bağlantılı"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp Yapılandırılmamış"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "SMS/kısa mesaj araçlarını ve ayarlarını yönetin"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Etkinlikleri, doğum günlerini ve yıldönümlerini yönetin"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Özel alanı bu değerle eşleştirin"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maksimum Yaş"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Üye, Düzenli Katılımcı vb."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Belirli bir ayda katılan üyeler"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Üyelik yıldönümleri"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Minimum Yaş"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Kayıp kişiler"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Eksik sözler"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Ay"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Aylar"
+
+#: 
+msgid "My Calendars"
+msgstr "Takvimlerim"
+
+#: 
+msgid "New member notification emails"
+msgstr "Yeni üye bildirim e-postaları"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Dosyada cep telefonu yok"
+
+#: 
+msgid "No email addresses available"
+msgstr "Kullanılabilir e-posta adresi yok"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Kullanılabilir telefon numarası yok"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Katılmayan Kişi"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Katılmayan Kişi (personel)"
+
+#: 
+msgid "Not Classified"
+msgstr "Sınıflandırılmamış"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Arkadaş olduğundan beri geçen ay sayısı"
+
+#: 
+msgid "Parents"
+msgstr "Ebeveynler"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "Parola sıfırlama e-postaları — kullanıcılar hesaplarını kurtaramaz"
+
+#: 
+msgid "People Settings"
+msgstr "Kişi Ayarları"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Belirli bir ayda doğum günü olan kişiler"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Mülkiyete Göre Kişi"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Üyeleri SMS/metin listelerinden hariç tutmak için kullanılan kişi özelliği"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Üyeleri e-posta listelerinden hariç tutmak için kullanılan kişi özelliği"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Telefon numaraları panoya kopyalandı"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Telefon numaraları kopyalandı — mesajlaşma uygulamanıza yapıştırın"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Her üyenin toplam katkılarını hesaplamak için lütfen son tarihi girin (ör. YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Her üyenin toplam katkılarını hesaplamak için lütfen başlangıç tarihini seçin (ör. YYYY-MM-DD). NOT: Yalnızca bağış içeren tarihleri seçebilirsiniz."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Söz karşılaştırması"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Bu yıl söz verildi"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Kopyalamak için CTRL + C tuşuna basın"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Mülkiyet"
+
+#: 
+msgid "Public calendar"
+msgstr "Genel takvim"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Son arkadaşlar"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Düzenli Katılımcı"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Belirtilen mülkiyete atanan kişi kayıtlarını döndürür."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS Entegrasyonu"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS mesajları ChurchCRM'den Vonage API aracılığıyla doğrudan gönderilebilir."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP Yapılandırılmış"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP Yapılandırılmamış"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Ara"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "İkinci Mali Yıl"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Karşılaştırma için ikinci mali yıl"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "İkinci gönüllü fırsat seçimi"
+
+#: 
+msgid "Select calendars..."
+msgstr "Takvim seçin..."
+
+#: 
+msgid "Select event type..."
+msgstr "Etkinlik türünü seçin..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Aranacak alanı seçin."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "İstediğiniz etkinliği seçin"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "İstediğiniz aile rolünü seçin."
+
+#: 
+msgid "Send text message"
+msgstr "Kısa mesaj gönder"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Bazı takvimlerde erişim belirteçleri vardır, ancak harici takvim paylaşımı şu anda devre dışıdır. Harici uygulamaların takvimlerinize abone olmasına izin vermek için Takvim Ayarları aracılığıyla etkinleştirin."
+
+#: 
+msgid "System Calendars"
+msgstr "Sistem Takvimleri"
+
+#: 
+msgid "System language for the church."
+msgstr "Kilise için sistem dili."
+
+#: 
+msgid "Text All"
+msgstr "Tüm Metni"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Metin Panosu"
+
+#: 
+msgid "Text Settings"
+msgstr "Metin Ayarları"
+
+#: 
+msgid "Text Tools"
+msgstr "Metin Araçları"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Kısa mesaj eylem Grup ve Pazar Okulu sınıf görünümlerinden mevcuttur. Telefon numaralarını kopyalamak veya grup üyelerine SMS mesajları göndermek için \"Metin\" açılır menüsünü kullanın."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz doğum ayı."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Veritabanında aranacak istenen cinsiyet."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz cinsiyet."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz maksimum yaş."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz üyelik yıldönümü ayı."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz minimum yaş."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Kişi kayıtlarının döndürülmesini istediğiniz mülkiyet."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Kayıtların döndürülmesini istediğiniz Pazar Okulu sınıfı."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Bu değerler yeni aileler oluşturulurken önceden doldurulur. Manuel giriş gerektirmek için boş bırakın."
+
+#: 
+msgid "Time"
+msgstr "Zaman"
+
+#: 
+msgid "Timed"
+msgstr "Zamanlı"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Panoya kopyalanamadı. Lütfen URL'yi manuel olarak kopyalayın."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Mesafeyi ölçmek için kullanılan birim."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Dizin oluşturmak için kullanıcı izni"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Mailto: bağlantıları aracılığıyla e-posta göndermek için kullanıcı izni"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Gönüllü fırsatları"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Gönüllüler"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS Bağlantılı"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS Yapılandırılmamış"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Vonage olmadan, metin eylemleri cihazınızın yerel SMS uygulamasını açar veya telefon numaralarını panoya kopyalar."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "İş E-postası"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "ama bu yıl değil"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "örneğin Pazar Servisi"
+
+#: 
+msgid "member"
+msgstr "üye"
 

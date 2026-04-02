@@ -7057,28 +7057,8 @@ msgid "Create Backup"
 msgstr "Opprett sikkerhetskopi"
 
 #: 
-msgid "Create a backup of your database before applying the update."
-msgstr "Opprett en sikkerhetskopi av databasen før du installerer oppdateringen."
-
-#: 
-msgid "Current Version:"
-msgstr "Gjeldende versjon:"
-
-#: 
-msgid "Database Backup"
-msgstr "Sikkerhetskopi av database"
-
-#: 
 msgid "Download & Apply"
 msgstr "Last ned og installer"
-
-#: 
-msgid "Download and Apply System Update"
-msgstr "Last ned og installer systemoppdatering"
-
-#: 
-msgid "Download the latest release and apply it to your ChurchCRM installation."
-msgstr "Last ned den siste utgivelsen og installer den på din ChurchCRM-installasjon."
 
 #: 
 msgid "Downloaded"
@@ -7093,10 +7073,6 @@ msgid "Enter your login name and we will email you a link to reset your password
 msgstr "Oppgi brukernavnet ditt, så sender vi deg en lenke for å tilbakestille passordet."
 
 #: 
-msgid "Expected Hash"
-msgstr "Forventet hash"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Kunne ikke opprette sikkerhetskopi."
 
@@ -7109,32 +7085,12 @@ msgid "Failed to refresh upgrade information from GitHub."
 msgstr "Kunne ikke oppdatere oppgraderingsinformasjon fra GitHub."
 
 #: 
-msgid "Failed to refresh upgrade information. Please try again."
-msgstr "Kunne ikke oppdatere oppgraderingsinformasjon. Vennligst prøv igjen."
-
-#: 
-msgid "Failed to save setting. Please try again."
-msgstr "Kunne ikke lagre innstilling. Vennligst prøv igjen."
-
-#: 
 msgid "File Name"
 msgstr "Filnavn"
 
 #: 
-msgid "Files Missing"
-msgstr "Filer mangler"
-
-#: 
-msgid "Files Modified"
-msgstr "Filer endret"
-
-#: 
 msgid "Go to Login"
 msgstr "Gå til innlogging"
-
-#: 
-msgid "I Understand - Continue"
-msgstr "Jeg forstår - fortsett"
 
 #: 
 msgid "Language updated to"
@@ -7165,22 +7121,6 @@ msgid "Please do not close this window or refresh the page."
 msgstr "Vennligst ikke lukk dette vinduet eller oppdater siden."
 
 #: 
-msgid "Pre-Upgrade Tasks Complete"
-msgstr "Oppgaver før oppgradering er ferdige"
-
-#: 
-msgid "Pre-Upgrade Warnings"
-msgstr "Advarsler før oppgradering"
-
-#: 
-msgid "Refresh from GitHub"
-msgstr "Oppdater fra GitHub"
-
-#: 
-msgid "Release Notes:"
-msgstr "Versjonsnotater:"
-
-#: 
 msgid "Request Password Reset"
 msgstr "Be om tilbakestilling av passord"
 
@@ -7189,28 +7129,12 @@ msgid "Retry Download"
 msgstr "Prøv nedlasting på nytt"
 
 #: 
-msgid "SHA1 Hash:"
-msgstr "SHA1-hash:"
-
-#: 
 msgid "Send Reset Email"
 msgstr "Send e-post for tilbakestilling"
 
 #: 
-msgid "Setting saved. Reloading page..."
-msgstr "Innstilling lagret. Laster siden på nytt..."
-
-#: 
 msgid "Setting updated successfully"
 msgstr "Innstillingen ble oppdatert"
-
-#: 
-msgid "Skip Backup"
-msgstr "Hopp over sikkerhetskopi"
-
-#: 
-msgid "System Up to Date"
-msgstr "Systemet er oppdatert"
 
 #: 
 msgid "System Upgrade Wizard"
@@ -7223,10 +7147,6 @@ msgstr "Systemoppgraderingen var vellykket!"
 #: 
 msgid "This may take several minutes."
 msgstr "Dette kan ta flere minutter."
-
-#: 
-msgid "Update Available!"
-msgstr "Oppdatering tilgjengelig!"
 
 #: 
 msgid "Update Package Details"
@@ -13595,10 +13515,450 @@ msgstr "Feltverdi"
 #. Context: query_qry
 #: 
 msgid "Find people who didn't attend an event"
-msgstr "Finn personer som ikke deltok i en arrangemen"
+msgstr "Finn personer som ikke møtte opp til en begivenhet"
 
 #. Context: query_qry
 #: 
 msgid "Find people who pledged one year but not another"
 msgstr "Finn personer som lovet ett år men ikke et annet"
+
+#. Context: query_qry
+#: 
+msgid "Find people with a custom field value"
+msgstr "Finn personer med en egendefinert feltverdi"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for a particular opportunity"
+msgstr "Finn frivillige for en bestemt mulighet"
+
+#. Context: query_qry
+#: 
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr "Finn frivillige som samsvarer med to spesifikke mulighetskoder"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First Fiscal Year"
+msgstr "Første regnskapsår"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First fiscal year for comparison"
+msgstr "Første regnskapsår for sammenligning"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "First volunteer opportunity choice"
+msgstr "Første valg for frivilligmulighet"
+
+#. Context: query_qry
+#: 
+msgid "Friends who signed up in previous months"
+msgstr "Venner som registrerte seg i tidligere måneder"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Guest"
+msgstr "Gjest"
+
+#: 
+msgid "Kiosk check-in email notifications"
+msgstr "E-postmeldinger om innsjekkingspunkt"
+
+#: 
+msgid "Mailchimp Connected"
+msgstr "Mailchimp tilkoblet"
+
+#: 
+msgid "Mailchimp Not Configured"
+msgstr "Mailchimp ikke konfigurert"
+
+#: 
+msgid "Manage SMS/text messaging tools and settings"
+msgstr "Administrer SMS/tekstmeldingsverktøy og innstillinger"
+
+#: 
+msgid "Manage events, birthdays, and anniversaries"
+msgstr "Administrer arrangementer, bursdager og jubilæer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Match custom field to this value"
+msgstr "Samsvar egendefinert felt med denne verdien"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Maximum Age"
+msgstr "Maksimal alder"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Member, Regular Attender, etc."
+msgstr "Medlem, vanlig deltaker osv."
+
+#. Context: query_qry
+#: 
+msgid "Members who joined in a particular month"
+msgstr "Medlemmer som ble med i en bestemt måned"
+
+#. Context: query_qry
+#: 
+msgid "Membership anniversaries"
+msgstr "Medlemskapsjubilæer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Minimum Age"
+msgstr "Minimumalder"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Forsvunnede personer"
+
+#. Context: query_qry
+#: 
+msgid "Missing pledges"
+msgstr "Manglende løfter"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Month"
+msgstr "Måned"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Months"
+msgstr "Måneder"
+
+#: 
+msgid "My Calendars"
+msgstr "Mine kalendere"
+
+#: 
+msgid "New member notification emails"
+msgstr "Nye medlemsmeldinger via e-post"
+
+#: 
+msgid "No cell phone on file"
+msgstr "Ingen mobiltelefon på fil"
+
+#: 
+msgid "No email addresses available"
+msgstr "Ingen e-postadresser tilgjengelig"
+
+#: 
+msgid "No phone numbers available"
+msgstr "Ingen telefonnumre tilgjengelig"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender"
+msgstr "Ikke-deltaker"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Non-Attender (staff)"
+msgstr "Ikke-deltaker (personale)"
+
+#: 
+msgid "Not Classified"
+msgstr "Ikke klassifisert"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Number of months since becoming a friend"
+msgstr "Antall måneder siden du ble venn"
+
+#: 
+msgid "Parents"
+msgstr "Foreldre"
+
+#: 
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr "E-poster for tilbakestilling av passord — brukere kan ikke gjenopprette kontoene sine"
+
+#: 
+msgid "People Settings"
+msgstr "Personinnstillinger"
+
+#. Context: query_qry
+#: 
+msgid "People with birthdays in a particular month"
+msgstr "Personer med bursdager i en bestemt måned"
+
+#. Context: query_qry
+#: 
+msgid "Person by Property"
+msgstr "Person etter eiendom"
+
+#: 
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr "Personegenskap som brukes for å utelukke medlemmer fra SMS/tekstlister"
+
+#: 
+msgid "Person property used to exclude members from email lists"
+msgstr "Personegenskap som brukes for å utelukke medlemmer fra e-postlister"
+
+#: 
+msgid "Phone numbers copied to clipboard"
+msgstr "Telefonnumre kopiert til utklippstavle"
+
+#: 
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr "Telefonnumre kopiert — lim inn i meldingsappen din"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr "Vennligst angi siste dato for å beregne totale bidrag for hvert medlem (f.eks. YYYY-MM-DD)."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr "Vennligst velg startdatoen for å beregne totale bidrag for hvert medlem (f.eks. YYYY-MM-DD). MERK: Du kan bare velge datoer som inneholder donasjoner."
+
+#. Context: query_qry
+#: 
+msgid "Pledge comparison"
+msgstr "Sammenligning av løfter"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Pledged this year"
+msgstr "Lovet i år"
+
+#: 
+msgid "Press CTRL + C to copy"
+msgstr "Trykk CTRL + C for å kopiere"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Property"
+msgstr "Eiendom"
+
+#: 
+msgid "Public calendar"
+msgstr "Offentlig kalender"
+
+#. Context: query_qry
+#: 
+msgid "Recent friends"
+msgstr "Nylige venner"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Regular Attender"
+msgstr "Vanlig deltaker"
+
+#. Context: query_qry
+#: 
+msgid "Returns person records which are assigned the given property."
+msgstr "Returnerer personposter som er tilordnet den gitte egenskapen."
+
+#: 
+msgid "SMS Integration"
+msgstr "SMS-integrasjon"
+
+#: 
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr "SMS-meldinger kan sendes direkte fra ChurchCRM via Vonage API."
+
+#: 
+msgid "SMTP Configured"
+msgstr "SMTP konfigurert"
+
+#: 
+msgid "SMTP Not Configured"
+msgstr "SMTP ikke konfigurert"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Search"
+msgstr "Søk"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second Fiscal Year"
+msgstr "Andre regnskapsår"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second fiscal year for comparison"
+msgstr "Andre regnskapsår for sammenligning"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Second volunteer opportunity choice"
+msgstr "Andre valg for frivilligmulighet"
+
+#: 
+msgid "Select calendars..."
+msgstr "Velg kalendere..."
+
+#: 
+msgid "Select event type..."
+msgstr "Velg arrangementtype..."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select field to search for."
+msgstr "Velg felt du vil søke i."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Velg ønsket arrangement"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired family role."
+msgstr "Velg ønsket familieroll."
+
+#: 
+msgid "Send text message"
+msgstr "Send tekstmelding"
+
+#: 
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr "Noen kalendere har tilgangstoken, men deling av ekstern kalender er for øyeblikket deaktivert. Aktiver det via kalenderinnstillinger for å tillate eksterne apper å abonnere på kalendarene dine."
+
+#: 
+msgid "System Calendars"
+msgstr "Systemkalendar"
+
+#: 
+msgid "System language for the church."
+msgstr "Systemspråk for kirken."
+
+#: 
+msgid "Text All"
+msgstr "Tekst alle"
+
+#: 
+msgid "Text Dashboard"
+msgstr "Tekstinstrumentpanel"
+
+#: 
+msgid "Text Settings"
+msgstr "Tekstinnstillinger"
+
+#: 
+msgid "Text Tools"
+msgstr "Tekstverktøy"
+
+#: 
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr "Tekstmeldingshandlinger er tilgjengelig fra gruppe- og søndagsskoleklassevisninger. Bruk rullegardinmenyen \"Tekst\" for å kopiere telefonnumre eller sende SMS-meldinger til gruppemedlemmer."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The birthday month for which you would like records returned."
+msgstr "Bursdagsmåneden du vil ha oppgjøringer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The desired gender to search the database for."
+msgstr "Ønsket kjønn for å søke i databasen etter."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The gender for which you would like records returned."
+msgstr "Kjønnet du vil ha oppgjøringer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The maximum age for which you want records returned."
+msgstr "Maksimalalderen du vil ha oppgjøringer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The membership anniversary month for which you would like records returned."
+msgstr "Medlemskapsjubilæumsmåneden du vil ha oppgjøringer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The minimum age for which you want records returned."
+msgstr "Minimalalalderen du vil ha oppgjøringer for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The property for which you would like person records returned."
+msgstr "Eiendommen du vil ha personposter for."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "The sunday school class for which you would like records returned."
+msgstr "Søndagsskoleklassen du vil ha oppgjøringer for."
+
+#: 
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr "Disse verdiene fylles inn på forhånd når du oppretter nye familier. La være tomt for å kreve manuell oppføring."
+
+#: 
+msgid "Time"
+msgstr "Tid"
+
+#: 
+msgid "Timed"
+msgstr "Tidsbestemt"
+
+#: 
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr "Kan ikke kopiere til utklippstavle. Kopier URL-en manuelt."
+
+#: 
+msgid "Unit used to measure distance."
+msgstr "Enhet som brukes for å måle avstand."
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to create directories"
+msgstr "Brukerrettighet for å opprette kataloger"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to send email via mailto: links"
+msgstr "Brukerrettighet for å sende e-post via mailto: lenker"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Volunteer opportunities"
+msgstr "Frivilligsjanser"
+
+#. Context: query_qry
+#: 
+msgid "Volunteers"
+msgstr "Frivillige"
+
+#: 
+msgid "Vonage SMS Connected"
+msgstr "Vonage SMS tilkoblet"
+
+#: 
+msgid "Vonage SMS Not Configured"
+msgstr "Vonage SMS ikke konfigurert"
+
+#: 
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr "Uten Vonage vil teksthandlinger åpne enhetens native SMS-app eller kopiere telefonnumre til utklippstavle."
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "WorkEmail"
+msgstr "Arbeidse-post"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "but not this year"
+msgstr "men ikke i år"
+
+#: 
+msgid "e.g. Sunday Service"
+msgstr "f.eks. gudstjeneste på søndag"
+
+#: 
+msgid "member"
+msgstr "medlem"
 
