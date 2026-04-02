@@ -5150,36 +5150,8 @@ msgid "Notification for"
 msgstr "Varsel for"
 
 #: 
-msgid "DEBUG"
-msgstr "FEILSØK"
-
-#: 
-msgid "INFO"
-msgstr "INFO"
-
-#: 
-msgid "NOTICE"
-msgstr "VARSEL"
-
-#: 
-msgid "WARNING"
-msgstr "ADVARSEL"
-
-#: 
 msgid "ERROR"
 msgstr "FEIL"
-
-#: 
-msgid "CRITICAL"
-msgstr "KRITISK"
-
-#: 
-msgid "ALERT"
-msgstr "ALARM"
-
-#: 
-msgid "EMERGENCY"
-msgstr "NØDSITUASJON"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7690,14 +7662,6 @@ msgid "Administrator privileges"
 msgstr "Administratorrettigheter"
 
 #: 
-msgid "All Files Verified"
-msgstr "Alle filer er verifisert"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Alle systemfiler samsvarer med forventede signaturer."
-
-#: 
 msgid "Application Integrity"
 msgstr "Applikasjonsintegritet"
 
@@ -7814,14 +7778,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Eksporterer databasestruktur og data. Mindre filstørrelse."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Integritetssjekk av filer"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Problemer med filintegritet funnet"
-
-#: 
 msgid "File Path"
 msgstr "Filsti"
 
@@ -7878,10 +7834,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Oppbevar én kopi i en brannsikker safe på stedet og en annen et annet sted."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Siste versjon på GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Laster..."
 
@@ -7892,14 +7844,6 @@ msgstr "Administrer foreldreløse filer"
 #: 
 msgid "Menu options access"
 msgstr "Tilgang til menyvalg"
-
-#: 
-msgid "Missing Files"
-msgstr "Manglende filer"
-
-#: 
-msgid "Modified Files"
-msgstr "Endrede filer"
 
 #: 
 msgid "Multiple Copies"
@@ -7940,14 +7884,6 @@ msgstr "Vennligst sjekk sikkerhetskopifilen og prøv igjen."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Vennligst velg en sikkerhetskopifil som skal gjenopprettes"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Last ned og påfør den gjeldende versjonen på nytt for å gjenopprette alle filer til sin offisielle tilstand"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Anbefaling: Se gjennom og slett disse filene før eller etter oppgraderingen."
 
 #: 
 msgid "Redirecting in"
@@ -7994,20 +7930,12 @@ msgid "Security Recommendation"
 msgstr "Sikkerhetsanbefaling"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Sikkerhetsadvarsel: Foreldreløse filer oppdaget"
-
-#: 
 msgid "Select Backup File"
 msgstr "Velg sikkerhetskopifil"
 
 #: 
 msgid "Supported formats:"
 msgstr "Støttede formater:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Følgende filer finnes på serveren din, men er IKKE en del av den offisielle ChurchCRM-utgivelsen. Disse kan være rester fra tidligere versjoner og kan utgjøre en sikkerhetsrisiko."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -8022,10 +7950,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Disse filene var sannsynligvis en del av en eldre ChurchCRM-versjon og ble ikke fjernet under en tidligere oppgradering. Sletting av dem vil forbedre systemsikkerheten."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Disse filene var sannsynligvis en del av en eldre ChurchCRM-versjon og ble ikke fjernet under en tidligere oppgradering. De kan inneholde utdatert kode med sikkerhetssårbarheter."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Denne handlingen kan ikke angres. Forsikre deg om at du har en sikkerhetskopi av nåværende data om nødvendig."
 
@@ -8036,10 +7960,6 @@ msgstr "Dette kan ta noen minutter for store databaser."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Dette kan ta flere minutter for store databaser. Ikke lukk denne siden."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Dette vil laste ned og påføre den gjeldende versjonen på nytt. Dette kan fikse ødelagte eller endrede filer. Fortsette?"
 
 #: 
 msgid "Upgrade Summary"

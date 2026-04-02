@@ -5129,36 +5129,8 @@ msgid "Notification for"
 msgstr "Notificări de la"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "INFO"
-
-#: 
-msgid "NOTICE"
-msgstr "NOTICE"
-
-#: 
-msgid "WARNING"
-msgstr "AVERTIZARE"
-
-#: 
 msgid "ERROR"
 msgstr "EROARE"
-
-#: 
-msgid "CRITICAL"
-msgstr "CRITIC"
-
-#: 
-msgid "ALERT"
-msgstr "ALERTĂ"
-
-#: 
-msgid "EMERGENCY"
-msgstr "URGENȚĂ"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7681,14 +7653,6 @@ msgid "Administrator privileges"
 msgstr "Privilegii de administrator"
 
 #: 
-msgid "All Files Verified"
-msgstr "Toate fișierele verificate"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Toate fișierele de sistem se potrivesc cu semnăturile așteptate."
-
-#: 
 msgid "Application Integrity"
 msgstr "Integritatea aplicației"
 
@@ -7805,14 +7769,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Exportă structura și datele bazei de date. Dimensiune mai mică a fișierului."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Verificarea integrității fișierelor"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "S-au detectat probleme de integritate a fișierelor"
-
-#: 
 msgid "File Path"
 msgstr "Calea fișierului"
 
@@ -7869,10 +7825,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Păstrați o copie într-un seif rezistent la foc la fața locului și alta în afara locației."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Ultima versiune GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Se încarcă..."
 
@@ -7883,14 +7835,6 @@ msgstr "Gestionare fișiere orfane"
 #: 
 msgid "Menu options access"
 msgstr "Acces opțiuni meniu"
-
-#: 
-msgid "Missing Files"
-msgstr "Fișiere lipsă"
-
-#: 
-msgid "Modified Files"
-msgstr "Fișiere modificate"
 
 #: 
 msgid "Multiple Copies"
@@ -7931,14 +7875,6 @@ msgstr "Vă rugăm să verificați fișierul de backup și să încercați din n
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Vă rugăm să selectați un fișier de backup pentru restaurare"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Descărcați și aplicați din nou versiunea curentă pentru a restaura toate fișierele la starea lor oficială"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Recomandare: Examinați și ștergeți aceste fișiere înainte sau după actualizare."
 
 #: 
 msgid "Redirecting in"
@@ -7985,20 +7921,12 @@ msgid "Security Recommendation"
 msgstr "Recomandare de securitate"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Avertisment de securitate: S-au detectat fișiere orfane"
-
-#: 
 msgid "Select Backup File"
 msgstr "Selectați fișierul de backup"
 
 #: 
 msgid "Supported formats:"
 msgstr "Formate acceptate:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Următoarele fișiere există pe serverul dvs., dar NU fac parte din versiunea oficială ChurchCRM. Acestea pot fi resturi din versiunile anterioare și pot prezenta riscuri de securitate."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -8013,10 +7941,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Aceste fișiere au făcut probabil parte dintr-o versiune ChurchCRM mai veche și nu au fost curățate în timpul unei actualizări anterioare. Ștergerea lor va îmbunătăți securitatea sistemului."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Aceste fișiere au făcut probabil parte dintr-o versiune ChurchCRM mai veche și nu au fost curățate în timpul unei actualizări anterioare. Ele pot conține cod învechit cu vulnerabilități de securitate."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Această acțiune nu poate fi anulată. Asigurați-vă că aveți un backup al datelor curente dacă este necesar."
 
@@ -8027,10 +7951,6 @@ msgstr "Acest lucru poate dura câteva minute pentru baze de date mari."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Acest lucru poate dura câteva minute pentru baze de date mari. Nu închideți această pagină."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Aceasta va descărca și aplica din nou versiunea curentă. Acest lucru poate repara fișierele corupte sau modificate. Continuați?"
 
 #: 
 msgid "Upgrade Summary"

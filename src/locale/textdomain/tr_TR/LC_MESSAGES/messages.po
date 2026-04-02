@@ -5049,36 +5049,8 @@ msgid "Notification for"
 msgstr "İçin bildirim"
 
 #: 
-msgid "DEBUG"
-msgstr "Ayıklamak"
-
-#: 
-msgid "INFO"
-msgstr "BİLGİ"
-
-#: 
-msgid "NOTICE"
-msgstr "FARK ETME"
-
-#: 
-msgid "WARNING"
-msgstr "UYARI"
-
-#: 
 msgid "ERROR"
 msgstr "HATA"
-
-#: 
-msgid "CRITICAL"
-msgstr "Eleştirel"
-
-#: 
-msgid "ALERT"
-msgstr "ALARM"
-
-#: 
-msgid "EMERGENCY"
-msgstr "ACİL DURUM"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7601,14 +7573,6 @@ msgid "Administrator privileges"
 msgstr "Yönetici ayrıcalıkları"
 
 #: 
-msgid "All Files Verified"
-msgstr "Tüm Dosyalar Doğrulandı"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Tüm sistem dosyaları beklenen imzalarıyla eşleşiyor."
-
-#: 
 msgid "Application Integrity"
 msgstr "Uygulama Bütünlüğü"
 
@@ -7725,14 +7689,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Veritabanı yapısını ve verileri dışa aktarır. Daha küçük dosya boyutu."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Dosya Bütünlük Kontrolü"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Dosya Bütünlüğü Sorunları Tespit Edildi"
-
-#: 
 msgid "File Path"
 msgstr "Dosya Yolu"
 
@@ -7789,10 +7745,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Bir kopyayı yerinde yangına dayanıklı bir kasada, diğerini ise saha dışında saklayın."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "En Son GitHub Sürümü:"
-
-#: 
 msgid "Loading..."
 msgstr "Yükleniyor..."
 
@@ -7803,14 +7755,6 @@ msgstr "Sahipsiz Dosyaları Yönet"
 #: 
 msgid "Menu options access"
 msgstr "Menü seçenekleri erişimi"
-
-#: 
-msgid "Missing Files"
-msgstr "Eksik Dosyalar"
-
-#: 
-msgid "Modified Files"
-msgstr "Değiştirilmiş Dosyalar"
 
 #: 
 msgid "Multiple Copies"
@@ -7851,14 +7795,6 @@ msgstr "Lütfen yedekleme dosyasını kontrol edin ve tekrar deneyin."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Lütfen geri yüklenecek bir yedekleme dosyası seçin"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Tüm dosyaları resmi durumlarına döndürmek için mevcut sürümü yeniden indirin ve yeniden uygulayın"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Öneri: Yükseltmeden önce veya sonra bu dosyaları inceleyin ve silin."
 
 #: 
 msgid "Redirecting in"
@@ -7905,20 +7841,12 @@ msgid "Security Recommendation"
 msgstr "Güvenlik Önerisi"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Güvenlik Uyarısı: Sahipsiz Dosyalar Tespit Edildi"
-
-#: 
 msgid "Select Backup File"
 msgstr "Yedekleme Dosyası Seçin"
 
 #: 
 msgid "Supported formats:"
 msgstr "Desteklenen formatlar:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Aşağıdaki dosyalar sunucunuzda mevcuttur ancak resmi ChurchCRM sürümünün parçası DEĞİLDİR. Bunlar önceki sürümlerden kalmış olabilir ve güvenlik riski oluşturabilir."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7933,10 +7861,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Bu dosyalar muhtemelen eski bir ChurchCRM sürümünün parçasıydı ve önceki bir yükseltme sırasında temizlenmedi. Bunları silmek sistem güvenliğinizi artıracaktır."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Bu dosyalar muhtemelen eski bir ChurchCRM sürümünün parçasıydı ve önceki bir yükseltme sırasında temizlenmedi. Güvenlik açıkları olan güncel olmayan kodlar içerebilirler."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Bu işlem geri alınamaz. Gerekirse mevcut verilerin yedeğine sahip olduğunuzdan emin olun."
 
@@ -7947,10 +7871,6 @@ msgstr "Bu işlem büyük veritabanları için birkaç dakika sürebilir."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Bu işlem büyük veritabanları için birkaç dakika sürebilir. Bu sayfayı kapatmayın."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Bu işlem mevcut sürümü yeniden indirecek ve yeniden uygulayacaktır. Bu, bozulmuş veya değiştirilmiş dosyaları düzeltebilir. Devam edilsin mi?"
 
 #: 
 msgid "Upgrade Summary"

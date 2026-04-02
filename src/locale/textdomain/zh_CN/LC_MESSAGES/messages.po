@@ -5133,36 +5133,8 @@ msgid "Notification for"
 msgstr "通知"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "信息"
-
-#: 
-msgid "NOTICE"
-msgstr "通知"
-
-#: 
-msgid "WARNING"
-msgstr "警告"
-
-#: 
 msgid "ERROR"
 msgstr "错误"
-
-#: 
-msgid "CRITICAL"
-msgstr "危急"
-
-#: 
-msgid "ALERT"
-msgstr "警报"
-
-#: 
-msgid "EMERGENCY"
-msgstr "紧急事件"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7684,14 +7656,6 @@ msgid "Administrator privileges"
 msgstr "管理员权限"
 
 #: 
-msgid "All Files Verified"
-msgstr "所有文件已验证"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "所有系统文件均符合预期签名。"
-
-#: 
 msgid "Application Integrity"
 msgstr "应用程序完整性"
 
@@ -7808,14 +7772,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "导出数据库结构和数据。文件体积较小。"
 
 #: 
-msgid "File Integrity Check"
-msgstr "文件完整性检查"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "检测到文件完整性问题"
-
-#: 
 msgid "File Path"
 msgstr "文件路径"
 
@@ -7872,10 +7828,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "在现场保留一份防火保险箱副本，另一份保留在异地。"
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "最新的 GitHub 版本："
-
-#: 
 msgid "Loading..."
 msgstr "加载中..."
 
@@ -7886,14 +7838,6 @@ msgstr "管理孤立文件"
 #: 
 msgid "Menu options access"
 msgstr "菜单选项权限"
-
-#: 
-msgid "Missing Files"
-msgstr "缺失文件"
-
-#: 
-msgid "Modified Files"
-msgstr "修改过的文件"
 
 #: 
 msgid "Multiple Copies"
@@ -7934,14 +7878,6 @@ msgstr "请检查备份文件并再试一次。"
 #: 
 msgid "Please select a backup file to restore"
 msgstr "请选择要还原的备份文件"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "重新下载并重新应用当前版本，以将所有文件恢复到官方状态"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "建议：在升级前或升级后检查并删除这些文件。"
 
 #: 
 msgid "Redirecting in"
@@ -7988,20 +7924,12 @@ msgid "Security Recommendation"
 msgstr "安全建议"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "安全警告：检测到孤立文件"
-
-#: 
 msgid "Select Backup File"
 msgstr "选择备份文件"
 
 #: 
 msgid "Supported formats:"
 msgstr "支持的格式："
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "以下文件存在于服务器上，但不属于官方 ChurchCRM 发布版本。这些可能是旧版本的遗留，可能会带来安全风险。"
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -8016,10 +7944,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "这些文件可能是旧版 ChurchCRM 的一部分，在之前的升级中未被清理。删除它们将提高您的系统安全性。"
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "这些文件可能是旧版 ChurchCRM 的一部分，在之前的升级中未被清理。它们可能包含带有安全漏洞的过时代码。"
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "此操作无法撤销。如果需要，请确保您有当前数据的备份。"
 
@@ -8030,10 +7954,6 @@ msgstr "对于大型数据库，这可能需要几分钟时间。"
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "对于大型数据库，这可能需要几分钟时间。请勿关闭此页面。"
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "这将重新下载并重新应用当前版本。这可以修复损坏或被修改的文件。是否继续？"
 
 #: 
 msgid "Upgrade Summary"

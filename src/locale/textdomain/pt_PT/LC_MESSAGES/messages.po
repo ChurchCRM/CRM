@@ -5193,36 +5193,8 @@ msgid "Notification for"
 msgstr "Notificação para"
 
 #: 
-msgid "DEBUG"
-msgstr "DEBUG"
-
-#: 
-msgid "INFO"
-msgstr "INFORMAÇÃO"
-
-#: 
-msgid "NOTICE"
-msgstr "NOTA"
-
-#: 
-msgid "WARNING"
-msgstr "AVISO"
-
-#: 
 msgid "ERROR"
 msgstr "ERRO"
-
-#: 
-msgid "CRITICAL"
-msgstr "CRÍTICO"
-
-#: 
-msgid "ALERT"
-msgstr "ALERTA"
-
-#: 
-msgid "EMERGENCY"
-msgstr "EMERGÊNCIA"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7748,14 +7720,6 @@ msgid "Administrator privileges"
 msgstr "Privilégios de administrador"
 
 #: 
-msgid "All Files Verified"
-msgstr "Todos os arquivos verificados"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Todos os arquivos do sistema correspondem às assinaturas esperadas."
-
-#: 
 msgid "Application Integrity"
 msgstr "Integridade da aplicação"
 
@@ -7872,14 +7836,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Exporta estrutura e dados do banco de dados. Tamanho de arquivo menor."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Verificação de integridade de arquivo"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Problemas de integridade de arquivo detectados"
-
-#: 
 msgid "File Path"
 msgstr "Caminho do arquivo"
 
@@ -7936,10 +7892,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Mantenha uma cópia em um cofre à prova de fogo no local e outra fora do local."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Versão mais recente do GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Carregando..."
 
@@ -7950,14 +7902,6 @@ msgstr "Gerenciar arquivos órfãos"
 #: 
 msgid "Menu options access"
 msgstr "Acesso a opções de menu"
-
-#: 
-msgid "Missing Files"
-msgstr "Arquivos faltando"
-
-#: 
-msgid "Modified Files"
-msgstr "Arquivos modificados"
 
 #: 
 msgid "Multiple Copies"
@@ -7998,14 +7942,6 @@ msgstr "Por favor, verifique o arquivo de backup e tente novamente."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Por favor, selecione um arquivo de backup para restaurar"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Baixe novamente e reaply a versão atual para restaurar todos os arquivos para seu estado oficial"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Recomendação: revise e exclua esses arquivos antes ou depois da atualização."
 
 #: 
 msgid "Redirecting in"
@@ -8052,20 +7988,12 @@ msgid "Security Recommendation"
 msgstr "Recomendação de segurança"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Aviso de segurança: arquivos órfãos detectados"
-
-#: 
 msgid "Select Backup File"
 msgstr "Selecionar arquivo de backup"
 
 #: 
 msgid "Supported formats:"
 msgstr "Formatos suportados:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Os arquivos a seguir existem em seu servidor, mas NÃO fazem parte da versão oficial do ChurchCRM. Podem ser restos de versões anteriores e podem representar riscos de segurança."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -8080,10 +8008,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Esses arquivos provavelmente faziam parte de uma versão anterior do ChurchCRM e não foram limpos durante uma atualização anterior. Excluí-los melhorará a segurança do sistema."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Esses arquivos provavelmente faziam parte de uma versão anterior do ChurchCRM e não foram limpos durante uma atualização anterior. Eles podem conter código desatualizado com vulnerabilidades de segurança."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Esta ação não pode ser desfeita. Certifique-se de ter um backup dos dados atuais se necessário."
 
@@ -8094,10 +8018,6 @@ msgstr "Isso pode levar alguns minutos para bancos de dados grandes."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Isso pode levar vários minutos para bancos de dados grandes. Não feche esta página."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Isso baixará novamente e reaplicará a versão atual. Isso pode corrigir arquivos corrompidos ou modificados. Continuar?"
 
 #: 
 msgid "Upgrade Summary"

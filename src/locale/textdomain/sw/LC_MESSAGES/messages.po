@@ -5045,36 +5045,8 @@ msgid "Notification for"
 msgstr "Taarifa kwa"
 
 #: 
-msgid "DEBUG"
-msgstr "TATUA"
-
-#: 
-msgid "INFO"
-msgstr "HABARI"
-
-#: 
-msgid "NOTICE"
-msgstr "TAARIFA"
-
-#: 
-msgid "WARNING"
-msgstr "ONYO"
-
-#: 
 msgid "ERROR"
 msgstr "HITILAFU"
-
-#: 
-msgid "CRITICAL"
-msgstr "MUHIMU"
-
-#: 
-msgid "ALERT"
-msgstr "TAHADHARI"
-
-#: 
-msgid "EMERGENCY"
-msgstr "DHARURA"
 
 #: 
 msgid "Title FirstName MiddleName LastName"
@@ -7595,14 +7567,6 @@ msgid "Administrator privileges"
 msgstr "Haki za msimamizi"
 
 #: 
-msgid "All Files Verified"
-msgstr "Faili Zote Zimethibitishwa"
-
-#: 
-msgid "All system files match their expected signatures."
-msgstr "Faili zote za mfumo zinalingana na sahihi zinazotarajiwa."
-
-#: 
 msgid "Application Integrity"
 msgstr "Uadilifu wa Programu"
 
@@ -7719,14 +7683,6 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr "Inatoa muundo wa hifadhidata na data. Ukubwa mdogo wa faili."
 
 #: 
-msgid "File Integrity Check"
-msgstr "Ukaguzi wa Uadilifu wa Faili"
-
-#: 
-msgid "File Integrity Issues Detected"
-msgstr "Matatizo ya Uadilifu wa Faili Yamepatikana"
-
-#: 
 msgid "File Path"
 msgstr "Njia ya Faili"
 
@@ -7783,10 +7739,6 @@ msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr "Weka nakala moja kwenye salama isiyoshika moto mahali hapa na nyingine nje ya eneo hili."
 
 #: 
-msgid "Latest GitHub Version:"
-msgstr "Toleo Jipya la GitHub:"
-
-#: 
 msgid "Loading..."
 msgstr "Inapakia..."
 
@@ -7797,14 +7749,6 @@ msgstr "Simamia Faili Yatima"
 #: 
 msgid "Menu options access"
 msgstr "Ufikiaji wa chaguzi za orodha"
-
-#: 
-msgid "Missing Files"
-msgstr "Faili Zinazokosekana"
-
-#: 
-msgid "Modified Files"
-msgstr "Faili Zilizobadilishwa"
 
 #: 
 msgid "Multiple Copies"
@@ -7845,14 +7789,6 @@ msgstr "Tafadhali kagua faili la nakala na ujaribu tena."
 #: 
 msgid "Please select a backup file to restore"
 msgstr "Tafadhali chagua faili la nakala la kurejesha"
-
-#: 
-msgid "Re-download and re-apply the current version to restore all files to their official state"
-msgstr "Pakua upya na utumie toleo la sasa ili kurejesha faili zote katika hali yake rasmi"
-
-#: 
-msgid "Recommendation: Review and delete these files before or after the upgrade."
-msgstr "Pendekezo: Kagua na ufute faili hizi kabla au baada ya sasisho."
 
 #: 
 msgid "Redirecting in"
@@ -7899,20 +7835,12 @@ msgid "Security Recommendation"
 msgstr "Pendekezo la Usalama"
 
 #: 
-msgid "Security Warning: Orphaned Files Detected"
-msgstr "Onyo la Usalama: Faili Yatima Zimepatikana"
-
-#: 
 msgid "Select Backup File"
 msgstr "Chagua Faili la Nakala"
 
 #: 
 msgid "Supported formats:"
 msgstr "Mifumo inayokubalika:"
-
-#: 
-msgid "The following files exist on your server but are NOT part of the official ChurchCRM release. These may be leftover from previous versions and could pose security risks."
-msgstr "Faili zifuatazo zipo kwenye seva yako lakini SI sehemu ya toleo rasmi la ChurchCRM."
 
 #: 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -7927,10 +7855,6 @@ msgid "These files were likely part of an older ChurchCRM version and were not c
 msgstr "Faili hizi labda zilikuwa sehemu ya toleo la zamani la ChurchCRM. Kuzifuta kutaboresha usalama wa mfumo wako."
 
 #: 
-msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. They may contain outdated code with security vulnerabilities."
-msgstr "Faili hizi zinaweza kuwa na nambari za zamani zenye udhaifu wa usalama."
-
-#: 
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr "Hatua hii haiwezi kutenguliwa. Hakikisha una nakala ya data za sasa ikiwa inahitajika."
 
@@ -7941,10 +7865,6 @@ msgstr "Hii inaweza kuchukua dakika chache kwa hifadhidata kubwa."
 #: 
 msgid "This may take several minutes for large databases. Do not close this page."
 msgstr "Hii inaweza kuchukua dakika kadhaa. Usifunge ukurasa huu."
-
-#: 
-msgid "This will re-download and re-apply the current version. This can fix corrupted or modified files. Continue?"
-msgstr "Hii itapakua upya na kutumia toleo la sasa. Hii inaweza kurekebisha faili zilizoharibika. Endelea?"
 
 #: 
 msgid "Upgrade Summary"
