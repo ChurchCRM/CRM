@@ -112,7 +112,9 @@ foreach ($eventTypes as $et) {
     
     // Convert 24-hour time to 12-hour AM/PM format for display
     $startTime = $et->getDefStartTime();
-    if ($startTime) {
+    if ($startTime instanceof \DateTime) {
+        $aDefStartTime[$row] = $startTime->format('g:i A');
+    } elseif (is_string($startTime) && $startTime !== '') {
         $dateTime = \DateTime::createFromFormat('H:i:s', $startTime);
         $aDefStartTime[$row] = $dateTime ? $dateTime->format('g:i A') : $startTime;
     } else {
