@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -14,7 +14,9 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
 if (SystemConfig::getValue('bUseScannedChecks')) { // Instantiate the MICR class
@@ -358,19 +360,19 @@ if (isset($_POST['PledgeSubmit']) || isset($_POST['PledgeSubmitAndAdd'])) {
                 }
                 if (!$sGroupKey) {
                     if ($iMethod === 'CHECK') {
-                        $sGroupKey = genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iCheckNo, $iFamily, $fun_id, $dDate);
                     } elseif ($iMethod === 'BANKDRAFT') {
                         if (!$iAutID) {
                             $iAutID = 'draft';
                         }
-                        $sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
                     } elseif ($iMethod === 'CREDITCARD') {
                         if (!$iAutID) {
                             $iAutID = 'credit';
                         }
-                        $sGroupKey = genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
+                        $sGroupKey = FunctionsUtils::genGroupKey($iAutID, $iFamily, $fun_id, $dDate);
                     } else {
-                        $sGroupKey = genGroupKey('cash', $iFamily, $fun_id, $dDate);
+                        $sGroupKey = FunctionsUtils::genGroupKey('cash', $iFamily, $fun_id, $dDate);
                     }
                 }
                 $pledge = new Pledge();
@@ -519,7 +521,7 @@ $sFamilyName = '';
 if ($iFamily) {
     $family = FamilyQuery::create()->findPk((int)$iFamily);
     if ($family !== null) {
-        $sFamilyName = $family->getName() . ' ' . FormatAddressLine($family->getAddress1(), $family->getCity(), $family->getState());
+        $sFamilyName = $family->getName() . ' ' . MiscUtils::formatAddressLine($family->getAddress1(), $family->getCity(), $family->getState());
     }
 }
 
@@ -574,7 +576,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <label for="Date"><?= gettext('Date') ?></label>
                         <input class="form-control" data-provide="datepicker" data-date-format='yyyy-mm-dd' type="text" name="Date" value="<?= $dDate ?>"><span class="text-danger"><?= $sDateError ?></span>
                         <label for="FYID"><?= gettext('Fiscal Year') ?></label>
-                        <?php PrintFYIDSelect('FYID', $iFYID) ?>
+                        <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID) ?>
 
                         <?php if ($dep_Type === 'Bank' && SystemConfig::getValue('bUseDonationEnvelopes')) {
                             ?>

@@ -1,11 +1,13 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfLabel;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\CsvExporter;
 
@@ -35,7 +37,7 @@ function GroupBySalutation(string $famID, $aAdultRole, $aChildRole)
 
     // Only get family members that are in the cart
     $sSQL = 'SELECT * FROM person_per WHERE per_fam_ID=' . $famID . ' AND per_ID IN ('
-    . convertCartToString($_SESSION['aPeopleCart']) . ') ORDER BY per_LastName, per_FirstName';
+    . Cart::getCartIdString() . ') ORDER BY per_LastName, per_FirstName';
 
     $rsMembers = RunQuery($sSQL);
     $numMembers = mysqli_num_rows($rsMembers);
@@ -570,7 +572,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
 
     $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ';
     $sSQL .= 'ON person_per.per_fam_ID = family_fam.fam_ID ';
-    $sSQL .= 'WHERE per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ') ';
+    $sSQL .= 'WHERE per_ID IN (' . Cart::getCartIdString() . ') ';
     $sSQL .= 'ORDER BY per_LastName, per_FirstName, fam_Zip';
     $rsCartItems = RunQuery($sSQL);
     $didFam = [];
@@ -602,7 +604,7 @@ function GenerateLabels(&$pdf, $mode, $iBulkMailPresort, $bToParents, $bOnlyComp
         if ($mode === 'fam') {
             $aName = GroupBySalutation($aRow['per_fam_ID'], $aAdultRole, $aChildRole);
         } else {
-            $sName = FormatFullName(
+            $sName = MiscUtils::formatFullName(
                 $aRow['per_Title'],
                 $aRow['per_FirstName'],
                 '',
@@ -716,7 +718,7 @@ setcookie('labeltype', $sLabelType, ['expires' => time() + 60 * 60 * 24 * 90, 'p
 
 $pdf = new PdfLabel($sLabelType, $startcol, $startrow);
 
-$sFontInfo = FontFromName($_GET['labelfont']);
+$sFontInfo = MiscUtils::fontFromName($_GET['labelfont']);
 setcookie('labelfont', $_GET['labelfont'], ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);
 $sFontSize = $_GET['labelfontsize'];
 setcookie('labelfontsize', $sFontSize, ['expires' => time() + 60 * 60 * 24 * 90, 'path' => '/']);

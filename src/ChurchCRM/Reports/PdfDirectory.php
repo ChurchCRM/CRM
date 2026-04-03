@@ -5,6 +5,7 @@ namespace ChurchCRM\Reports;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\MiscUtils;
 
 class PdfDirectory extends ChurchInfoReport
@@ -271,7 +272,7 @@ class PdfDirectory extends ChurchInfoReport
                 extract($rowCustomField);
                 $sCustom = 'bCustom' . $custom_Order;
                 if ($this->_Custom[$custom_Order]) {
-                    $currentFieldData = displayCustomField($type_ID, $aCustomData[$custom_Field], $custom_Special);
+                    $currentFieldData = CustomFieldUtils::display($type_ID, $aCustomData[$custom_Field], $custom_Special);
 
 //                    $currentFieldData = trim($aCustomData[$custom_Field]);
                     if ($currentFieldData !== '') {

@@ -1,12 +1,13 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Classification;
 use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -65,7 +66,7 @@ $sPerTable = 'person_per';
 
 // If our source is the cart contents, we don't need to build a WHERE filter string
 if ($sSource === 'cart') {
-    $sWhereExt = 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt = 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 } else {
     // If we're filtering by groups, include the p2g2r table
     if (!empty($_POST['GroupID'])) {
@@ -540,7 +541,7 @@ if ($sFormat === 'addtocart') {
                                     if ((int)$type_ID === 11) {
                                         $custom_Special = $sCountry;
                                     }
-                                    $row[] = displayCustomField($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
+                                    $row[] = CustomFieldUtils::display($type_ID, trim($aCustomData[$custom_Field]), $custom_Special);
                                 }
                             }
                         }
@@ -563,7 +564,7 @@ if ($sFormat === 'addtocart') {
                                 if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $row[] = CustomFieldUtils::display($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
                             }
                         }
                     }
@@ -587,7 +588,7 @@ if ($sFormat === 'addtocart') {
                                 if ((int)$type_ID === 11) {
                                     $fam_custom_Special = $sCountry;
                                 }
-                                $row[] = displayCustomField($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
+                                $row[] = CustomFieldUtils::display($type_ID, trim($aFamCustomData[$fam_custom_Field]), $fam_custom_Special);
                             }
                         }
                     }
