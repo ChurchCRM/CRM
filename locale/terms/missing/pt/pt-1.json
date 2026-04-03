@@ -1,9 +1,6 @@
 {
   "BCC": "",
-  "Manual": "Manual",
-  "Material": "Material",
-  "N/A": "",
-  "E.164 Phone Number Format": "Formato de Número de Telefone E.164",
-  "SMTP Authentication": "Autenticação SMTP",
-  "SMTP Timeout": "Tempo Limite SMTP"
+  "Manual": "",
+  "Material": "",
+  "N/A": ""
 }
