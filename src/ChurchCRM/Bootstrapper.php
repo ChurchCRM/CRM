@@ -443,14 +443,15 @@ class Bootstrapper
         // Configure secure session cookie options before starting the session.
         // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
         // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
-        // Secure is set only when the request is served over HTTPS (detected via HTTPS server var or
-        // X-Forwarded-Proto from a trusted reverse proxy — port 443 alone is not a reliable indicator).
-        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
-            || (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+        // Secure is set only when the web server signals an active TLS connection via $_SERVER['HTTPS'].
+        // Using only $_SERVER['HTTPS'] (not X-Forwarded-Proto) is consistent with the rest of the
+        // codebase and avoids relying on potentially spoofable proxy headers.
+        $isHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
 
-        // Use the application root path for the cookie scope so the cookie is sent for all
-        // ChurchCRM routes regardless of subdirectory installation. Fall back to '/' when the
-        // root path is empty (root-level install where getRootPath() returns '').
+        // The cookie path is scoped to the application root so the cookie is sent for all
+        // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php
+        // (e.g. '/churchcrm' for a subdirectory install, '' for a root install). Fall back to '/'
+        // for root-level installs where getRootPath() returns an empty string.
         $cookiePath = SystemURLs::getRootPath() ?: '/';
 
         session_set_cookie_params([
