@@ -308,3 +308,101 @@ PersonQuery::create()
     ->where('Family.DateDeactivated IS NULL')  // NULL family rows pass through correctly
     ->find();
 ```
+
+### Propel Temporal Getters Return DateTime Objects <!-- learned: 2026-04-03 -->
+
+Propel columns of type `TIMESTAMP`, `DATE`, or `TIME` return `DateTime` objects from
+their getters, not strings. This causes `TypeError` if you pass them to string functions
+like `DateTime::createFromFormat()`, `mb_substr()`, or string concatenation.
+
+```php
+// ❌ WRONG — getDefStartTime() returns DateTime, not string
+$startTime = $eventType->getDefStartTime();
+$dateTime = DateTime::createFromFormat('H:i:s', $startTime); // TypeError!
+
+// ❌ WRONG — getDefRecurDOY() returns DateTime, mb_substr expects string
+$doy = $eventType->getDefRecurDOY();
+$monthDay = mb_substr($doy, 5); // TypeError!
+
+// ✅ CORRECT — pass format string to get a string back
+$startTime = $eventType->getDefStartTime('H:i:s');
+
+// ✅ CORRECT — pass format to temporal getter
+$doy = $eventType->getDefRecurDOY('Y-m-d');
+$monthDay = mb_substr($doy, 5); // "MM-DD"
+
+// ✅ CORRECT — check instanceof when format may vary
+$startTime = $eventType->getDefStartTime();
+if ($startTime instanceof \DateTime) {
+    $display = $startTime->format('g:i A');
+} elseif (is_string($startTime) && $startTime !== '') {
+    $display = $startTime;
+} else {
+    $display = '';
+}
+```
+
+**Rule:** When converting raw SQL (`extract()` / `mysqli_fetch_array`) to ORM, always
+check the Base model's getter signature. Temporal columns accept an optional `$format`
+parameter — pass it to get a string, or handle the `DateTime` object explicitly.
+
+### Null Guards on ORM findOne Results <!-- learned: 2026-04-03 -->
+
+`findOneByXxx()` and `findOne()` return `null` when no row matches. Always guard
+before calling methods on the result, especially when IDs come from user input.
+
+```php
+// ❌ WRONG — fatal error if ID doesn't exist
+$propertyType = PropertyTypeQuery::create()->findOneByPrtId($id);
+$propertyType->setPrtName($name); // TypeError if null
+
+// ✅ CORRECT — null guard with redirect
+$propertyType = PropertyTypeQuery::create()->findOneByPrtId($id);
+if ($propertyType === null) {
+    RedirectUtils::redirect('PropertyTypeList.php');
+}
+$propertyType->setPrtName($name);
+```
+
+### DDL Statements Cannot Use ORM <!-- learned: 2026-04-03 -->
+
+`ALTER TABLE`, `CREATE TABLE`, and `DROP` statements cannot be parameterized or
+expressed through Propel ORM. When converting raw SQL to ORM, DDL must remain as
+`RunQuery()` calls. Protect interpolated values with:
+
+1. `(int)` cast for table name suffixes (e.g., `groupprop_` . (int)$groupId)
+2. Regex validation for column names (e.g., `/^c\d+$/` for custom field columns)
+
+```php
+// Column names in ChurchCRM custom field tables follow pattern: c1, c2, c3, ...
+if (!preg_match('/^c\d+$/', $sField)) {
+    RedirectUtils::redirect('PersonCustomFieldsEditor.php');
+    exit;
+}
+// Now safe to use in DDL
+$sSQL = 'ALTER TABLE `person_custom` DROP IF EXISTS `' . $sField . '`';
+RunQuery($sSQL);
+```
+
+### MySQL ENUM Columns Need Exact String Values <!-- learned: 2026-04-03 -->
+
+When a MySQL column uses `ENUM('Sunday','Monday',...)`, Propel setters require the
+exact enum string. HTML forms that post numeric values (1-7) must be mapped before
+calling the setter — MySQL's silent coercion of numbers to enum positions doesn't
+work through ORM.
+
+```php
+// ❌ WRONG — form posts "1", but column is ENUM('Sunday','Monday',...)
+$eventType->setDefRecurDOW($_POST['newEvtRecurDOW']); // Propel may reject "1"
+
+// ✅ CORRECT — map numeric form value to enum string
+$dayOfWeekMap = [
+    '1' => 'Sunday', '2' => 'Monday', '3' => 'Tuesday',
+    '4' => 'Wednesday', '5' => 'Thursday', '6' => 'Friday', '7' => 'Saturday',
+];
+$dowValue = $_POST['newEvtRecurDOW'];
+if (isset($dayOfWeekMap[$dowValue])) {
+    $dowValue = $dayOfWeekMap[$dowValue];
+}
+$eventType->setDefRecurDOW($dowValue);
+```
