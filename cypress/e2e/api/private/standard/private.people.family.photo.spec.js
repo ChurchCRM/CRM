@@ -203,10 +203,12 @@ describe("API Private Photo and Avatar - Family", () => {
             });
         });
 
-        it("should validate image size limits", () => {
-            // Create a large (but valid) image data - 10MB of zeros (will be rejected)
-            const largeBase64 = "data:image/png;base64," + "A".repeat(15000000);
-            
+        it("should reject uploads that exceed the server size limit", () => {
+            // Repeat a valid 1×1 PNG base64 payload to produce a body larger than most
+            // configured limits. The server rejects it with 413 (size) or 400 (invalid image).
+            const smallPngBase64 = "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==";
+            const largeBase64 = "data:image/png;base64," + smallPngBase64.repeat(200000);
+
             cy.makePrivateAdminAPICall(
                 "POST",
                 `/api/family/${testFamilyId}/photo`,

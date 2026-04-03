@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
@@ -114,17 +115,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $family->getPhoto()->hasUploadedPhoto()
             ]);
+        } catch (PhotoSizeException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
-            if (str_contains($e->getMessage(), 'exceeds maximum allowed size')) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
-                    [],
-                    413,
-                    $e,
-                    $request
-                );
-            }
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload family photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);

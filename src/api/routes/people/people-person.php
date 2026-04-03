@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
@@ -143,17 +144,9 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
             ]);
+        } catch (PhotoSizeException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
-            if (str_contains($e->getMessage(), 'exceeds maximum allowed size')) {
-                return SlimUtils::renderErrorJSON(
-                    $response,
-                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
-                    [],
-                    413,
-                    $e,
-                    $request
-                );
-            }
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
