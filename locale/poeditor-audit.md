@@ -10,11 +10,12 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `sq` | Albanian | 3452 | 99.94% | 🟢 Complete | ✅ Yes |
+| `af` | Afrikaans | 3451 | 99.91% | 🟢 Complete | ✅ Yes |
 | `nl` | Dutch | 3317 | 96.03% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 3317 | 96.03% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 3317 | 96.03% | 🟢 Complete | ✅ Yes |
 | `ta` | Tamil | 3317 | 96.03% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 3316 | 96% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 3316 | 96% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 3316 | 96% | 🟢 Complete | ✅ Yes |
 | `hu` | Hungarian | 3316 | 96% | 🟢 Complete | ✅ Yes |
@@ -23,7 +24,6 @@
 | `cs` | Czech | 3315 | 95.98% | 🟢 Complete | ✅ Yes |
 | `ru` | Russian | 3315 | 95.98% | 🟢 Complete | ✅ Yes |
 | `th` | Thai | 3315 | 95.98% | 🟢 Complete | ✅ Yes |
-| `af` | Afrikaans | 3314 | 95.95% | 🟢 Complete | ✅ Yes |
 | `ar` | Arabic | 3314 | 95.95% | 🟢 Complete | ✅ Yes |
 | `zh-tw` | Chinese (TW) | 3314 | 95.95% | 🟢 Complete | ✅ Yes |
 | `hi` | Hindi | 3314 | 95.95% | 🟢 Complete | ✅ Yes |
