@@ -1,5 +1,7 @@
 <?php
 
+use ChurchCRM\Utils\MiscUtils;
+
 // This file contains functions specifically related to address labels
 
 function FontSelect($fieldname): void
@@ -17,7 +19,7 @@ function FontSelect($fieldname): void
                 if (mb_substr($filename, 0, strlen($family)) != $family) {
                     $family = $filename;
                 }
-                $fontnames[] = FilenameToFontname($filename, $family);
+                $fontnames[] = MiscUtils::filenameToFontname($filename, $family);
             }
         }
     }

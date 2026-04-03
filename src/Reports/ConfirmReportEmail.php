@@ -3,11 +3,12 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\verify\FamilyVerificationEmail;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -172,7 +173,7 @@ foreach ($families as $family) {
     $pdf->SetFont('Times', 'B', 10);
     $pdf->writeAtCell(SystemConfig::getValue('leftX'), $curY, $dataCol - SystemConfig::getValue('leftX'), gettext('Anniversary Date'));
     $pdf->SetFont('Times', '', 10);
-    $pdf->writeAtCell($dataCol, $curY, $dataWid, FormatDate($fam_WeddingDate));
+    $pdf->writeAtCell($dataCol, $curY, $dataWid, DateTimeUtils::formatDate($fam_WeddingDate));
     $curY += SystemConfig::getValue('incrementY');
 
     $pdf->SetFont('Times', 'B', 10);
