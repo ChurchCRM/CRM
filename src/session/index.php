@@ -76,26 +76,24 @@ function endSession(Request $request, Response $response, array $args): Response
 function beginSession(Request $request, Response $response, array $args): Response
 {
     $queryParams = $request->getQueryParams();
-    $redirectPath = isset($queryParams['location']) ? urldecode($queryParams['location']) : null;
-    
+
     // Check for explicit username in query params (e.g., from password reset)
     $rawUserName = $queryParams['username'] ?? $request->getServerParams()['username'] ?? '';
     $prefilledUserName = InputUtils::sanitizeText($rawUserName);
-    
+
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL($redirectPath),
+        'localAuthNextStepURL' => SystemURLs::getRootPath() . '/session/begin',
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
         'prefilledUserName'    => $prefilledUserName,
     ];
 
     if ($request->getMethod() === 'POST') {
         $loginRequestBody = $request->getParsedBody();
-        
+
         $userPassRequest = new LocalUsernamePasswordRequest(
             $loginRequestBody['User'],
-            $loginRequestBody['Password'],
-            $redirectPath
+            $loginRequestBody['Password']
         );
         $authenticationResult = AuthenticationManager::authenticate($userPassRequest);
         $pageArgs['sErrorText'] = $authenticationResult->message;
