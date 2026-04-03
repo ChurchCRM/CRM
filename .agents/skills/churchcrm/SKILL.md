@@ -46,6 +46,7 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | [Webpack & TypeScript](./webpack-typescript.md) | Frontend bundling, React, asset management |
 | [i18n & Localization](./i18n-localization.md) | Adding UI text, translations |
 | [AI Locale Translation](./locale-ai-translation.md) | Translating missing terms via Claude AI before a release |
+| [Locale Stack Ranking](./locale-stack-ranking.md) | **NEW** — Prioritize translation effort by impact (TIER-1: 53% world pop, TIER-2: 80%, etc.) |
 
 ## Tabler Migration (Vision 2026)
 
