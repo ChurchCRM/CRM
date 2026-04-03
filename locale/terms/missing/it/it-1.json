@@ -1,6 +1,6 @@
 {
-  "BCC All Mail To": "",
-  "E.164 Phone Number Format": "",
-  "SMTP Authentication": "",
-  "SMTP Timeout": ""
+  "BCC All Mail To": "CCN Tutte le Email A",
+  "E.164 Phone Number Format": "Formato Numero di Telefono E.164",
+  "SMTP Authentication": "Autenticazione SMTP",
+  "SMTP Timeout": "Timeout SMTP"
 }

@@ -1,8 +1,8 @@
 {
-  "BCC All Mail To": "",
-  "Continent": "",
-  "E.164 Phone Number Format": "",
-  "SMTP Authentication": "",
-  "SMTP Timeout": "",
-  "Vonage Dashboard": ""
+  "BCC All Mail To": "BCC Alle E-mail Naar",
+  "Continent": "Continent",
+  "E.164 Phone Number Format": "E.164 Telefoonnummerformaat",
+  "SMTP Authentication": "SMTP-authenticatie",
+  "SMTP Timeout": "SMTP-time-out",
+  "Vonage Dashboard": "Vonage Dashboard"
 }
