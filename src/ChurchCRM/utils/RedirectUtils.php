@@ -81,12 +81,19 @@ class RedirectUtils
      */
     public static function stripAndValidatePath(string $uri, string $fallback = ''): string
     {
+        // Split path and query before stripping to avoid matching the root path inside a query string.
+        $path  = parse_url($uri, PHP_URL_PATH) ?? '';
+        $query = parse_url($uri, PHP_URL_QUERY) ?? '';
+
         $rootPath = SystemURLs::getRootPath();
-        if ($rootPath !== '' && str_starts_with($uri, $rootPath)) {
-            $uri = substr($uri, strlen($rootPath));
+        if ($rootPath !== '' && str_starts_with($path, $rootPath)) {
+            $path = substr($path, strlen($rootPath));
         }
 
-        return self::validateRedirectUrl($uri, $fallback);
+        // Reconstruct and validate the stripped URI.
+        $stripped = $query !== '' ? $path . '?' . $query : $path;
+
+        return self::validateRedirectUrl($stripped, $fallback);
     }
 
     /**
