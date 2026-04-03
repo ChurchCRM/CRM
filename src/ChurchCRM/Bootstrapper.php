@@ -440,6 +440,28 @@ class Bootstrapper
      */
     public static function initSession(): void
     {
+        // Configure secure session cookie options before starting the session.
+        // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
+        // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
+        // Secure flag is set when the connection is HTTPS — either directly via $_SERVER['HTTPS']
+        // or behind a TLS-terminating reverse proxy that sets X-Forwarded-Proto (common in
+        // Docker/Kubernetes deployments where the web server sees plain HTTP).
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
+
+        // The cookie path is scoped to the application root so the cookie is sent for all
+        // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php
+        // (e.g. '/churchcrm' for a subdirectory install, '' for a root install). Fall back to '/'
+        // for root-level installs where getRootPath() returns an empty string.
+        $cookiePath = SystemURLs::getRootPath() ?: '/';
+
+        session_set_cookie_params([
+            'httponly' => true,
+            'samesite' => 'Lax',
+            'secure'   => $isHttps,
+            'path'     => $cookiePath,
+        ]);
+
         // Initialize the session
         $sessionName = self::SESSION_PREFIX . hash("md5", SystemURLs::getDocumentRoot());
         session_cache_limiter('private_no_expire:');

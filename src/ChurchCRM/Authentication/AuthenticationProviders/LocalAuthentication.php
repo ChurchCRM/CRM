@@ -82,6 +82,12 @@ class LocalAuthentication implements IAuthenticationProvider
 
     private function prepareSuccessfulLoginOperations(): void
     {
+        // Regenerate session ID to prevent session fixation attacks.
+        // delete_old_session=true ensures the old session file is removed.
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_regenerate_id(true);
+        }
+
         // Set the LastLogin and Increment the LoginCount
         $date = new \DateTimeImmutable('now', DateTimeUtils::getConfiguredTimezone());
         $this->currentUser->setLastLogin($date->format('Y-m-d H:i:s'));
