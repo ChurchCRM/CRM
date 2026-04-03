@@ -383,19 +383,19 @@ $bOkToEdit = (
                         <?php if (strlen($per_Facebook) > 0) : ?>
                         <li class="mb-2">
                             <i class="fa-brands fa-facebook me-2 text-primary"></i>
-                            <a href="https://www.facebook.com/<?= InputUtils::sanitizeText($per_Facebook) ?>" target="_blank"><?= $per_Facebook ?></a>
+                            <a href="https://www.facebook.com/<?= InputUtils::escapeAttribute($per_Facebook) ?>" target="_blank"><?= InputUtils::escapeHTML($per_Facebook) ?></a>
                         </li>
                         <?php endif; ?>
                         <?php if (strlen($per_Twitter) > 0) : ?>
                         <li class="mb-2">
                             <i class="fa-brands fa-x-twitter me-2 text-dark"></i>
-                            <a href="https://www.twitter.com/<?= InputUtils::sanitizeText($per_Twitter) ?>" target="_blank">@<?= $per_Twitter ?></a>
+                            <a href="https://www.twitter.com/<?= InputUtils::escapeAttribute($per_Twitter) ?>" target="_blank">@<?= InputUtils::escapeHTML($per_Twitter) ?></a>
                         </li>
                         <?php endif; ?>
                         <?php if (strlen($per_LinkedIn) > 0) : ?>
                         <li class="mb-2">
                             <i class="fa-brands fa-linkedin me-2 text-info"></i>
-                            <a href="https://www.linkedin.com/in/<?= InputUtils::sanitizeText($per_LinkedIn) ?>" target="_blank"><?= $per_LinkedIn ?></a>
+                            <a href="https://www.linkedin.com/in/<?= InputUtils::escapeAttribute($per_LinkedIn) ?>" target="_blank"><?= InputUtils::escapeHTML($per_LinkedIn) ?></a>
                         </li>
                         <?php endif; ?>
                     </ul>

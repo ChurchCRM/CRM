@@ -793,7 +793,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('State') ?>:
                         <?= $bFamilyState ? '</span>' : '' ?>
                     </label>
-                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -819,7 +819,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
                     </select>
                 </div>
             </div>
@@ -859,7 +859,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="HomePhone" id="HomePhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
@@ -883,7 +883,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="CellPhone" id="CellPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatCell') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
@@ -907,7 +907,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="WorkPhone" id="WorkPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
