@@ -3,6 +3,9 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 
 /**
  * Utility class for custom field display, form rendering, validation, and SQL generation.
@@ -70,11 +73,9 @@ class CustomFieldUtils
                     return '';
                 }
 
-                $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $personId;
-                $rsTemp = FunctionsUtils::runQuery($sSQL);
-                extract(mysqli_fetch_array($rsTemp));
+                $person = PersonQuery::create()->findPk($personId);
 
-                return $per_FirstName . ' ' . $per_LastName;
+                return $person ? $person->getFullName() : '';
 
             case 11:
                 return $data;
@@ -85,12 +86,12 @@ class CustomFieldUtils
                     return '';
                 }
 
-                $listId = (int) $special;
-                $sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = $listId AND lst_OptionID = $optionId";
-                $rsTemp = FunctionsUtils::runQuery($sSQL);
-                extract(mysqli_fetch_array($rsTemp));
+                $option = ListOptionQuery::create()
+                    ->filterById((int) $special)
+                    ->filterByOptionId($optionId)
+                    ->findOne();
 
-                return $lst_OptionName;
+                return $option ? $option->getOptionName() : '';
 
             default:
                 return gettext('Invalid Editor ID!');
@@ -184,31 +185,23 @@ class CustomFieldUtils
 
             case 9:
                 $groupId = (int) $special;
-                $sSQL = 'SELECT person_per.per_ID, person_per.per_FirstName, person_per.per_LastName
-                            FROM person2group2role_p2g2r
-                            LEFT JOIN person_per ON person2group2role_p2g2r.p2g2r_per_ID = person_per.per_ID
-                            WHERE p2g2r_grp_ID = ' . $groupId . ' ORDER BY per_FirstName';
-
-                $rsGroupPeople = FunctionsUtils::runQuery($sSQL);
+                $groupPeople = Person2group2roleP2g2rQuery::create()
+                    ->filterByGroupId($groupId)
+                    ->usePersonQuery()
+                        ->orderByFirstName()
+                    ->endUse()
+                    ->joinWithPerson()
+                    ->find();
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-person-half-dress"></i></span>';
                 echo '<select id="' . $fieldname . '" name="' . $fieldname . '" class="form-select">';
-                echo '<option value="0"';
-                if ($data <= 0) {
-                    echo ' selected';
-                }
-                echo '>' . gettext('Unassigned') . '</option>';
+                echo '<option value="0"' . ($data <= 0 ? ' selected' : '') . '>' . gettext('Unassigned') . '</option>';
                 echo '<option value="" disabled>-----------------------</option>';
 
-                while ($aRow = mysqli_fetch_array($rsGroupPeople)) {
-                    extract($aRow);
-
-                    echo '<option value="' . $per_ID . '"';
-                    if ($data == $per_ID) {
-                        echo ' selected';
-                    }
-                    echo '>' . $per_FirstName . '&nbsp;' . $per_LastName . '</option>';
+                foreach ($groupPeople as $p2g2r) {
+                    $person = $p2g2r->getPerson();
+                    echo '<option value="' . $person->getId() . '"' . ($data == $person->getId() ? ' selected' : '') . '>' . $person->getFullName() . '</option>';
                 }
 
                 echo '</select></div>';
@@ -242,9 +235,10 @@ class CustomFieldUtils
                 break;
 
             case 12:
-                $specialListId = (int) $special;
-                $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $specialListId ORDER BY lst_OptionSequence";
-                $rsListOptions = FunctionsUtils::runQuery($sSQL);
+                $listOptions = ListOptionQuery::create()
+                    ->filterById((int) $special)
+                    ->orderByOptionSequence()
+                    ->find();
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-list"></i></span>';
@@ -252,13 +246,8 @@ class CustomFieldUtils
                 echo '<option value="0">' . gettext('Unassigned') . '</option>';
                 echo '<option value="" disabled>-----------------------</option>';
 
-                while ($aRow = mysqli_fetch_array($rsListOptions)) {
-                    extract($aRow);
-                    echo '<option value="' . $lst_OptionID . '"';
-                    if ($data == $lst_OptionID) {
-                        echo ' selected';
-                    }
-                    echo '>' . $lst_OptionName . '</option>';
+                foreach ($listOptions as $option) {
+                    echo '<option value="' . $option->getOptionId() . '"' . ($data == $option->getOptionId() ? ' selected' : '') . '>' . $option->getOptionName() . '</option>';
                 }
 
                 echo '</select></div>';
