@@ -1121,7 +1121,7 @@ msgstr "Se il deposito è selezionata, i criteri di data verrà ignorato."
 
 #: 
 msgid "All deposits within date range"
-msgstr "Tutti i depositi all&#39;interno di intervallo di date"
+msgstr "Tutti i depositi all'interno di intervallo di date"
 
 #: 
 #, fuzzy
@@ -1871,7 +1871,7 @@ msgstr "Devi specificare un numero di controllo diverso da zero"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Numero di controllo non valida per il pagamento &#39;CASH&#39;"
+msgstr "Numero di controllo non valida per il pagamento 'CASH'"
 
 #: 
 msgid " more entries will fit."
@@ -2056,7 +2056,7 @@ msgstr "Ripristina database"
 
 #: 
 msgid "All donations from this family have been moved to another family."
-msgstr "Tutte le donazioni di questa famiglia sono stati spostati in un&#39;altra famiglia."
+msgstr "Tutte le donazioni di questa famiglia sono stati spostati in un'altra famiglia."
 
 #: 
 msgid "Please confirm deletion of"
@@ -2072,11 +2072,11 @@ msgstr "Ritorna a Family View"
 
 #: 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "ATTENZIONE: Questa famiglia ha i record di donazioni e non può essere eliminato fino a quando queste donazioni sono associati a un&#39;altra famiglia."
+msgstr "ATTENZIONE: Questa famiglia ha i record di donazioni e non può essere eliminato fino a quando queste donazioni sono associati a un'altra famiglia."
 
 #: 
 msgid "Please select another family with whom to associate these donations:"
-msgstr "Si prega di selezionare un&#39;altra famiglia con cui associare queste donazioni:"
+msgstr "Si prega di selezionare un'altra famiglia con cui associare queste donazioni:"
 
 #: 
 msgid "WARNING: This action can not be undone and may have legal implications!"

@@ -822,6 +822,90 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 
 ---
 
+## POEditor Download/Upload Workflow <!-- learned: 2026-04-03 -->
+
+### Extracting and Uploading New Terms
+
+When adding new UI terms:
+
+```bash
+# 1. Extract all translatable strings (PHP, JS, DB)
+npm run locale:build
+# Output: locale/messages.po (master template)
+
+# 2. Upload messages.po to POEditor web dashboard
+# - Go to https://poeditor.com → ChurchCRM project
+# - Click "Import" or "Upload"
+# - Select locale/messages.po
+# - Choose "Override existing terms" (updates outdated terms)
+# - Confirm upload
+
+# 3. Download translations back to sync with POEditor
+npm run locale:download
+# Output: src/locale/i18n/*.json (all language files)
+# Also generates: locale/terms/missing/[LANGUAGE]/*.json (untranslated batches)
+
+# 4. Translate missing terms via POEditor or AI
+# (See "AI-Assisted Translation Instructions" section)
+
+# 5. Download again to get all translations
+npm run locale:download
+
+# 6. Commit
+git add src/locale/i18n/
+git commit -m "locale: download updated translations from POEditor"
+```
+
+### HTML Entity Corruption in Downloaded Translations <!-- learned: 2026-04-03 -->
+
+**Issue:** POEditor's web interface sometimes encodes apostrophes as HTML entities (`&#39;`) when translations are copy-pasted from HTML contexts. When downloaded, these appear as literal `&#39;` strings in JSON files, breaking UI text display.
+
+**Example of corrupted translations:**
+```json
+{
+  "Church Event Editor": "Gestionnaire d&#39;événement de l&#39;église",
+  "Email is Not Valid": "L&#39;adresse email n'est pas valide",
+  "Sunday School Dashboard": "Tableau de bord de l&#39;école du dimanche"
+}
+```
+
+**Root cause:** Translators or POEditor's import process copy text from web pages (which encode apostrophes as `&#39;`) without stripping HTML encoding before pasting into JSON.
+
+**Fix:** After downloading, replace all `&#39;` with plain apostrophes across all locale files:
+
+```bash
+# 1. Replace HTML entities in all locale files
+for file in src/locale/i18n/*.json; do
+  sed -i '' 's/&#39;/'\''/g' "$file"
+done
+
+# 2. Verify no remaining entities
+grep -r "&#39;" src/locale/i18n/
+
+# 3. Upload cleaned files back to POEditor
+# - This prevents re-downloading the broken versions
+# - Keeps POEditor as source of truth for future translators
+```
+
+**Prevention:** 
+1. After each `npm run locale:download`, audit for `&#39;` in locale files
+2. If found, apply the fix above and **upload corrected files back to POEditor**
+3. Train translators to use POEditor's interface directly (not copy-paste from external sources)
+4. Set up a pre-commit hook to catch `&#39;` before they reach the repo
+
+**Checking for the issue:**
+```bash
+# Count occurrences per locale
+for file in src/locale/i18n/*.json; do
+  count=$(grep -c "&#39;" "$file" 2>/dev/null || echo 0)
+  if [ "$count" -gt 0 ]; then
+    echo "$(basename $file): $count occurrences"
+  fi
+done
+```
+
+---
+
 ## Related Skills
 
 - [Git Workflow](./git-workflow.md) - Locale rebuild in pre-commit checklist
@@ -830,4 +914,4 @@ $localeInfo = Bootstrapper::getCurrentLocale();
 
 ---
 
-Last updated: March 1, 2026
+Last updated: April 3, 2026

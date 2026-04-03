@@ -212,13 +212,13 @@ $families = FamilyQuery::create()
             </div>
             <div class="mb-3">
                 <label for="NumNeighbors" class="form-label"><?= gettext('Maximum number of neighbors') ?>:</label>
-                <input type="text" class="form-control" name="NumNeighbors" value="<?= $iNumNeighbors ?>" style="max-width:120px">
+                <input type="text" class="form-control" name="NumNeighbors" value="<?= InputUtils::escapeAttribute((string)$iNumNeighbors) ?>" style="max-width:120px">
             </div>
             <div class="mb-3">
                 <label for="MaxDistance" class="form-label">
                     <?= gettext('Maximum distance') . ' (' . gettext(SystemConfig::getValue('sDistanceUnit')) . '):' ?>
                 </label>
-                <input type="text" class="form-control" name="MaxDistance" value="<?= $nMaxDistance ?>" style="max-width:120px">
+                <input type="text" class="form-control" name="MaxDistance" value="<?= InputUtils::escapeAttribute((string)$nMaxDistance) ?>" style="max-width:120px">
             </div>
             <div class="mb-3">
                 <label class="form-label"><?= gettext('Show neighbors with these classifications') ?>:</label>

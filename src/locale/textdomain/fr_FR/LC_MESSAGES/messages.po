@@ -447,19 +447,16 @@ msgid "Convert All"
 msgstr "Tout convertir"
 
 #: 
-#, fuzzy
 msgid "Deposit Slip Number"
-msgstr "Numéro de Bordereau d&#39;acompte"
+msgstr "Numéro de Bordereau d'acompte"
 
 #: 
-#, fuzzy
 msgid "Deposit Details"
-msgstr "Détails de l&#39;acompte : "
+msgstr "Détails de l'acompte : "
 
 #: 
-#, fuzzy
 msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
-msgstr "Note importante: quand un bordereau d&#39;acompte est fermé, les transactions non réussies sont définitivement supprimées."
+msgstr "Note importante: quand un bordereau d'acompte est fermé, les transactions non réussies sont définitivement supprimées."
 
 #: 
 msgid "Add Payment"
@@ -632,11 +629,11 @@ msgstr "Gestionnaire de la caisse de dons/Comptable"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
-msgstr "Champ ou sélection invalide. Les modifications n&#39;ont pas été enregistrées! Veuillez corriger et essayer à nouveau !"
+msgstr "Champ ou sélection invalide. Les modifications n'ont pas été enregistrées! Veuillez corriger et essayer à nouveau !"
 
 #: 
 msgid "No funds have been added yet"
-msgstr "Aucun capital n&#39;a été ajouté pour l&#39;instant"
+msgstr "Aucun capital n'a été ajouté pour l'instant"
 
 #: 
 msgid "Active"
@@ -648,19 +645,19 @@ msgstr "Enregistrer les modifications"
 
 #: 
 msgid "Church Event Editor"
-msgstr "Gestionnaire d&#39;événement de l&#39;église"
+msgstr "Gestionnaire d'événement de l'église"
 
 #: 
 msgid "Edit Event Types"
-msgstr "Modifier les types d&#39;événements"
+msgstr "Modifier les types d'événements"
 
 #: 
 msgid "Edit Event Type"
-msgstr "Modifier le type d&#39;événement"
+msgstr "Modifier le type d'événement"
 
 #: 
 msgid "Event Type"
-msgstr "Type d&#39;événement"
+msgstr "Type d'événement"
 
 #: 
 msgid "Save Name"
@@ -676,7 +673,7 @@ msgstr "Comptes de présence"
 
 #: 
 msgid "Return to Event Types"
-msgstr "Retourner aux types d&#39;événements"
+msgstr "Retourner aux types d'événements"
 
 #: 
 msgid "Family"
@@ -713,7 +710,7 @@ msgstr "Editer"
 
 #: 
 msgid "Event Title"
-msgstr "Titre de l&#39;événement"
+msgstr "Titre de l'événement"
 
 #: 
 msgid "Create Event"
@@ -729,11 +726,11 @@ msgstr " erreurs. Voir ci-dessous"
 
 #: 
 msgid "Select your event type"
-msgstr "Sélectionner votre type d&#39;événement"
+msgstr "Sélectionner votre type d'événement"
 
 #: 
 msgid "You must pick an event type."
-msgstr "Vous devez choisir un type d&#39;événement."
+msgstr "Vous devez choisir un type d'événement."
 
 #: 
 msgid "No Attendance counts recorded"
@@ -741,7 +738,7 @@ msgstr "Aucune présence enregistrée"
 
 #: 
 msgid "Event Status"
-msgstr "Statut de l&#39;événement"
+msgstr "Statut de l'événement"
 
 #: 
 msgid "Return to Events"
@@ -777,7 +774,7 @@ msgstr "Samedis"
 
 #: 
 msgid "Add Event Type"
-msgstr "Ajouter un type d&#39;événement"
+msgstr "Ajouter un type d'événement"
 
 #: 
 msgid "Custom Family Fields Editor"
@@ -789,7 +786,7 @@ msgstr "Option par défaut"
 
 #: 
 msgid "No custom Family fields have been added yet"
-msgstr "Aucun champ famille personnalisé n&#39;a été ajouté pour l&#39;instant"
+msgstr "Aucun champ famille personnalisé n'a été ajouté pour l'instant"
 
 #: 
 msgid "Special option"
@@ -837,7 +834,7 @@ msgstr "La date de mariage n'est pas valide"
 
 #: 
 msgid "Email is Not Valid"
-msgstr "L&#39;adresse email n'est pas valide"
+msgstr "L'adresse email n'est pas valide"
 
 #: 
 msgid "Family Info"
@@ -849,7 +846,7 @@ msgstr "Info sur le contact"
 
 #: 
 msgid "Envelope Info"
-msgstr "Enveloppe d&#39;info"
+msgstr "Enveloppe d'info"
 
 #: 
 msgid "Custom Fields"
@@ -1180,7 +1177,7 @@ msgstr "Graphique"
 
 #: 
 msgid "Church Address"
-msgstr "Adresse de l&#39;église"
+msgstr "Adresse de l'église"
 
 #: 
 msgid "Blank"
@@ -1443,7 +1440,7 @@ msgstr "Rôles du groupe"
 
 #: 
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Les modifications des noms de rôle du groupe sont enregistrées dès que la boîte de dialogue n&#39;est plus flou."
+msgstr "Les modifications des noms de rôle du groupe sont enregistrées dès que la boîte de dialogue n'est plus flou."
 
 #: 
 msgid "New Role"
@@ -1459,11 +1456,11 @@ msgstr "Gestionnaire des Propriétés des membres du groupe"
 
 #: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Ce groupe n&#39;a actuellement aucune propriété!  Vous pouvez en ajouter dans le gestionnaire de groupe."
+msgstr "Ce groupe n'a actuellement aucune propriété!  Vous pouvez en ajouter dans le gestionnaire de groupe."
 
 #: 
 msgid "Return to Person Record"
-msgstr "Retourner à l&#39;enregistrement de personne"
+msgstr "Retourner à l'enregistrement de personne"
 
 #: 
 msgid "Editing"
@@ -1480,7 +1477,7 @@ msgstr "Gestionnaire de formulaire des Propriétés spécifiques du groupe"
 
 #: 
 msgid "No properties have been added yet"
-msgstr "Aucune propriété n&#39;a été ajouté"
+msgstr "Aucune propriété n'a été ajouté"
 
 #: 
 msgid "Show in"
@@ -1544,7 +1541,7 @@ msgstr "Identifiant ou Mot de passe invalide"
 
 #: 
 msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
-msgstr "Trop d&#39;échecs d'authentification : votre compte a été verrouillé. Veuillez contacter un administrateur."
+msgstr "Trop d'échecs d'authentification : votre compte a été verrouillé. Veuillez contacter un administrateur."
 
 #: 
 msgid "Email/Username"
@@ -1560,7 +1557,7 @@ msgstr "Connexion"
 
 #: 
 msgid "Envelope Manager"
-msgstr "Gestionnaire d&#39;Enveloppes"
+msgstr "Gestionnaire d'Enveloppes"
 
 #: 
 msgid "Update Family Records"
@@ -1628,7 +1625,7 @@ msgstr "Personnes"
 
 #: 
 msgid "Sunday School Kids"
-msgstr "Les enfants de l&#39;école du dimanche"
+msgstr "Les enfants de l'école du dimanche"
 
 #: 
 msgid "Role / Gender"
@@ -1652,7 +1649,7 @@ msgstr "Filles"
 
 #: 
 msgid "Sunday School Classes"
-msgstr "Classes d&#39;école du dimanche"
+msgstr "Classes d'école du dimanche"
 
 #: 
 msgid "Deposit Tracking"
@@ -1804,7 +1801,7 @@ msgstr "Année de Naissance"
 
 #: 
 msgid "Hide Age"
-msgstr "Cacher l&#39;âge"
+msgstr "Cacher l'âge"
 
 #: 
 msgid "Create a new family (using last name)"
@@ -1868,7 +1865,7 @@ msgstr "Numéro de chèque non valide pour un paiement en espèce"
 
 #: 
 msgid " more entries will fit."
-msgstr " plus d&#39;entrées possible."
+msgstr " plus d'entrées possible."
 
 #: 
 msgid "Deposit closed"
@@ -2065,7 +2062,7 @@ msgstr "Retourner sur Voir la Famille"
 
 #: 
 msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
-msgstr "AVERTISSEMENT: Cette famille a des enregistrements de dons et ne peut pas être supprimé jusqu&#39;à ce que ces dons soient associés avec une autre famille."
+msgstr "AVERTISSEMENT: Cette famille a des enregistrements de dons et ne peut pas être supprimé jusqu'à ce que ces dons soient associés avec une autre famille."
 
 #: 
 msgid "Please select another family with whom to associate these donations:"
@@ -2278,7 +2275,7 @@ msgstr "Les notes \"Raison de la venue\" pour "
 
 #: 
 msgid "Why did you come to the church?"
-msgstr "Quelles sont les raisons de votre venue à l&#39;église ?"
+msgstr "Quelles sont les raisons de votre venue à l'église ?"
 
 #: 
 msgid "Why do you keep coming?"
@@ -2290,7 +2287,7 @@ msgstr "Avez-vous des suggestions à nous faire?"
 
 #: 
 msgid "How did you learn of the church?"
-msgstr "Comment avez-vous découvert l&#39;église ? (un membre, le site internet, etc ...)"
+msgstr "Comment avez-vous découvert l'église ? (un membre, le site internet, etc ...)"
 
 #: 
 msgid "Version"
@@ -2358,7 +2355,7 @@ msgstr "Groupe supprimé du Panier avec succès."
 
 #: 
 msgid "Selected record successfully removed from the Cart."
-msgstr "L&#39;enregistrement sélectionné a bien été supprimé du Panier."
+msgstr "L'enregistrement sélectionné a bien été supprimé du Panier."
 
 #: 
 msgid "Your cart has been successfully emptied"
@@ -2675,7 +2672,7 @@ msgstr "Adresse personnelle"
 
 #: 
 msgid "Sunday School Dashboard"
-msgstr "Tableau de bord de l&#39;école du dimanche"
+msgstr "Tableau de bord de l'école du dimanche"
 
 #: 
 msgid "Classes"
@@ -2711,7 +2708,7 @@ msgstr "Dernier dimanche"
 
 #: 
 msgid "No Sunday School"
-msgstr "Pas d&#39;école du dimanche"
+msgstr "Pas d'école du dimanche"
 
 #: 
 msgid "Extra Students"
@@ -2895,11 +2892,11 @@ msgstr "Commenter le dépôt"
 
 #: 
 msgid "Signature definition file signature failed validation"
-msgstr "La signature du fichier de définition de la signature n&#39;a pas été validé"
+msgstr "La signature du fichier de définition de la signature n'a pas été validé"
 
 #: 
 msgid "One or more files failed signature validation"
-msgstr "Un ou plusieurs fichiers n&#39;ont pas été signé"
+msgstr "Un ou plusieurs fichiers n'ont pas été signé"
 
 #: 
 msgid "item"
@@ -3043,7 +3040,7 @@ msgstr "Internationalisation de l'aide (I18n)"
 
 #: 
 msgid "First month of the fiscal year"
-msgstr "Premier mois de l&#39;année fiscale"
+msgstr "Premier mois de l'année fiscale"
 
 #: 
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
@@ -3123,7 +3120,7 @@ msgstr "Verbiage pour le répertoire"
 
 #: 
 msgid "Church Letterhead path and file"
-msgstr "Chemin et fichier de l&#39;En-tête de lettre de l&#39;église"
+msgstr "Chemin et fichier de l'En-tête de lettre de l'église"
 
 #: 
 msgid "QuickBooks Deposit Ticket Settings"
