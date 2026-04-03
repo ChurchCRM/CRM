@@ -1930,7 +1930,7 @@ msgstr "Må angi ikke-null sjekknummer"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling"
+msgstr "Sjekk nummeret ikke gyldig for 'Cash' betaling"
 
 #: 
 #, fuzzy

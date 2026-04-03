@@ -454,7 +454,7 @@
     "NonDeductible amount can't be greater than total amount.": "Quantia não deductivel não pode ser maior que a quantia total.",
     "At least one fund must have a non-zero amount.": "Pelo menos um fundo deve ter uma quantidade diferente de zero.",
     "Must specify non-zero check number": "Deve especificar um número de cheque",
-    "Check number not valid for 'CASH' payment": "Verifique o número não é válido para &#39;CAIXA&#39; pagamento",
+    "Check number not valid for 'CASH' payment": "Verifique o número não é válido para 'CAIXA' pagamento",
     " more entries will fit.": " pode registar outras entradas",
     "Deposit closed": "Depósitos Fechados",
     "Payment Schedule": "Agenda de Pagamentos:",
