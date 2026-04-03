@@ -35,6 +35,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             </a>
                         </div>
                     </div>
+
+                    <!-- Step 2 -->
+                    <div class="d-flex align-items-start mb-2">
+                        <div class="me-3 mt-1">
+                            <span class="badge bg-primary badge-pill" style="font-size:1rem;padding:.5em .75em;">2</span>
+                        </div>
+                        <div>
+                            <h6 class="mb-1"><?= gettext('Add People to the Family') ?></h6>
+                            <p class="text-muted mb-2">
+                                <?= gettext('Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child).') ?>
+                            </p>
+                            <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="btn btn-primary btn-sm">
+                                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add a Person') ?>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
