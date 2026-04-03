@@ -443,10 +443,11 @@ class Bootstrapper
         // Configure secure session cookie options before starting the session.
         // HttpOnly prevents client-side JavaScript from reading the cookie (mitigates XSS cookie theft).
         // SameSite=Lax blocks the cookie from being sent on cross-site POST requests (mitigates CSRF).
-        // Secure is set only when the web server signals an active TLS connection via $_SERVER['HTTPS'].
-        // Using only $_SERVER['HTTPS'] (not X-Forwarded-Proto) is consistent with the rest of the
-        // codebase and avoids relying on potentially spoofable proxy headers.
-        $isHttps = !empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off';
+        // Secure flag is set when the connection is HTTPS — either directly via $_SERVER['HTTPS']
+        // or behind a TLS-terminating reverse proxy that sets X-Forwarded-Proto (common in
+        // Docker/Kubernetes deployments where the web server sees plain HTTP).
+        $isHttps = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off')
+            || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https');
 
         // The cookie path is scoped to the application root so the cookie is sent for all
         // ChurchCRM routes. getRootPath() returns the admin-configured $sRootPath from Config.php
