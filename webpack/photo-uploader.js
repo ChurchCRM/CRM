@@ -42,6 +42,7 @@ export function createPhotoUploader(config) {
   // i.e. a 4/3 ratio). Use 0.75 (inverse of 4/3) so the encoded JSON body stays within
   // PHP's post_max_size when the file is converted before being sent to the API.
   const effectiveMaxFileSizeBytes = Math.floor(maxFileSizeBytes * 0.75);
+  const displayMaxSizeMB = (effectiveMaxFileSizeBytes / (1024 * 1024)).toFixed(1); // Match Uppy's binary MB display (MiB)
 
   const photoWidth = typeof config.photoWidth === "string" ? parseInt(config.photoWidth, 10) : config.photoWidth || 800;
 
@@ -61,7 +62,7 @@ export function createPhotoUploader(config) {
       inline: false, // Use modal mode
       trigger: null, // Don't auto-bind to a trigger
       proudlyDisplayPoweredByUppy: false,
-      note: `Max file size: ${Math.round(effectiveMaxFileSizeBytes / 1000000)}MB`,
+      note: `Max file size: ${displayMaxSizeMB}MB`,
       closeModalOnClickOutside: true,
       locale: {
         strings: {
@@ -82,8 +83,19 @@ export function createPhotoUploader(config) {
       preferredImageMimeType: "image/jpeg",
     });
 
+  // Handle file validation errors (size, type, etc) - show persistent error
+  uppy.on("restriction-failed", (file, error) => {
+    console.warn("File restriction failed:", error.message);
+    // Show error in Uppy's built-in notification (will auto-dismiss)
+    // But we'll also display it persistently below the modal
+    showPersistentError(`File size exceeds maximum of ${displayMaxSizeMB}MB. Please select a smaller file.`);
+  });
+
   // Custom upload handler that converts image to base64
   uppy.on("upload", (data) => {
+    // Clear any previous persistent errors when upload starts
+    clearPersistentError();
+
     // Get all files
     const files = Object.values(uppy.getState().files);
     if (!files || files.length === 0) {
@@ -106,6 +118,7 @@ export function createPhotoUploader(config) {
       if (!base64 || typeof base64 !== "string") {
         const error = new Error("Failed to read file: invalid data");
         console.error("FileReader error:", error);
+        showPersistentError("Failed to read the selected file. Please try again.");
         uppy.emit("upload-error", file, error);
         uppy.emit("complete", { successful: [], failed: [file] });
         return;
@@ -123,12 +136,15 @@ export function createPhotoUploader(config) {
       })
         .then((response) => {
           if (!response.ok) {
+            // Try to parse error response, with proper fallback
             return response
               .json()
-              .then((err) => {
-                throw new Error(err.message || `Upload failed: ${response.statusText}`);
+              .then((errorData) => {
+                const message = errorData.message || `Upload failed: ${response.statusText}`;
+                throw new Error(message);
               })
-              .catch(() => {
+              .catch((parseError) => {
+                // If JSON parsing fails, use the statusText
                 throw new Error(`Upload failed: ${response.statusText}`);
               });
           }
@@ -150,6 +166,7 @@ export function createPhotoUploader(config) {
           // v5+: Proper error type handling with meaningful messages
           const uploadError = error instanceof Error ? error : new Error(String(error));
           console.error("Upload error:", uploadError.message);
+          showPersistentError(uploadError.message);
           uppy.emit("upload-error", file, uploadError);
           uppy.emit("complete", { successful: [], failed: [file] });
         });
@@ -159,6 +176,7 @@ export function createPhotoUploader(config) {
       // v5+: file.data is now nullable - check before using
       const fileError = new Error("Failed to read file");
       console.error("FileReader error:", error || fileError);
+      showPersistentError("Failed to read the selected file. Please try again.");
       uppy.emit("upload-error", file, fileError);
       uppy.emit("complete", { successful: [], failed: [file] });
     };
@@ -167,6 +185,7 @@ export function createPhotoUploader(config) {
     if (file.data == null) {
       const error = new Error("File data is not available");
       console.error(error.message);
+      showPersistentError("File data is not available. Please select a file again.");
       uppy.emit("upload-error", file, error);
       uppy.emit("complete", { successful: [], failed: [file] });
       return;
@@ -195,7 +214,100 @@ export function createPhotoUploader(config) {
   /** @type {PhotoUploaderInstance} */
   return {
     uppy: uppy,
-    show: () => dashboard.openModal(),
+    show: () => {
+      clearPersistentError();
+      dashboard.openModal();
+    },
     hide: () => dashboard.closeModal(),
   };
+}
+
+/**
+ * Show a persistent error message near the Uppy modal
+ * @param {string} message - Error message to display
+ */
+function showPersistentError(message) {
+  clearPersistentError();
+
+  // Create error container if it doesn't exist
+  let errorContainer = document.getElementById("uppy-error-container");
+  if (!errorContainer) {
+    errorContainer = document.createElement("div");
+    errorContainer.id = "uppy-error-container";
+    errorContainer.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10000;
+      max-width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    `;
+    document.body.appendChild(errorContainer);
+  }
+
+  // Create error alert
+  const alertDiv = document.createElement("div");
+  alertDiv.className = "alert alert-danger alert-dismissible fade show";
+  alertDiv.role = "alert";
+  alertDiv.style.cssText = `
+    margin: 0;
+    padding: 12px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    animation: slideIn 0.3s ease-out;
+  `;
+
+  // Add animation
+  if (!document.getElementById("uppy-error-animation")) {
+    const style = document.createElement("style");
+    style.id = "uppy-error-animation";
+    style.textContent = `
+      @keyframes slideIn {
+        from {
+          transform: translateX(500px);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  alertDiv.innerHTML = `
+    <strong>Upload Error</strong>
+    <p style="margin-bottom: 0; margin-top: 4px; font-size: 0.95em;">${escapeHtml(message)}</p>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  `;
+
+  // Do NOT auto-dismiss - user must manually close to ensure they read the error
+  errorContainer.appendChild(alertDiv);
+}
+
+/**
+ * Clear any persistent error messages
+ */
+function clearPersistentError() {
+  const errorContainer = document.getElementById("uppy-error-container");
+  if (errorContainer) {
+    errorContainer.innerHTML = "";
+  }
+}
+
+/**
+ * Escape HTML to prevent XSS
+ * @param {string} text - Text to escape
+ * @returns {string} Escaped text
+ */
+function escapeHtml(text) {
+  const map = {
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;",
+  };
+  return text.replace(/[&<>"']/g, (char) => map[char]);
 }
