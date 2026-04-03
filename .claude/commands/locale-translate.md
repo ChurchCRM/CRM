@@ -2,23 +2,65 @@
 
 Translate missing ChurchCRM UI terms across one or all locales using church-appropriate ecclesiastical vocabulary.
 
-## Usage
+## CRITICAL: How This Skill Works
 
-```bash
-# List locales with missing terms
-/locale-translate --list
+**When you invoke `/locale-translate --all`, Claude Code will:**
+1. Recognize the `--all` flag
+2. Launch an autonomous Haiku translation agent
+3. Agent will process all untranslated locales without interruption
+4. Each locale gets one atomic commit + immediate push
+5. Work is committed continuously to prevent timeout data loss
 
-# Translate a single locale (creates temp branch with auto-detected version)
-/locale-translate --locale <poEditorCode>
-# Example: /locale-translate --locale fr
+**This is NOT a manual workflow.** The skill automatically spawns an agent. You do NOT need to run commands manually.
 
-# Translate all locales with missing terms (auto-detected version)
-/locale-translate --all
+---
 
-# Translate with explicit version (optional)
-/locale-translate --all --version 7.1.0
-# Only needed if version can't be auto-detected
+## Quick Start
+
+**Translate all remaining locales:**
 ```
+/locale-translate --all
+```
+
+This command:
+- ✅ Launches autonomous Haiku agent (no user interruptions)
+- ✅ Auto-detects version from package.json
+- ✅ Skips already-translated locales
+- ✅ Translates each with church vocabulary + denomination context
+- ✅ Commits + pushes one locale per commit (atomic, timeout-safe)
+- ✅ Resumes if session times out (rerun the command)
+- ✅ Reports final status when complete
+
+---
+
+## Command Reference
+
+| Command | Action |
+|---------|--------|
+| `/locale-translate --list` | Show all locales with untranslated term counts |
+| `/locale-translate --locale <code>` | Translate single locale (e.g., `fr`) |
+| `/locale-translate --all` | **Translate all remaining locales autonomously** |
+
+---
+
+## Implementation Details
+
+This skill uses a **Haiku-powered translation agent** that:
+
+1. **Branch Management:** Creates/resumes `locale/{version}-{YYYY-MM-DD}` branch
+2. **Per-Locale Processing:**
+   - Reads untranslated JSON batch files
+   - Translates with church vocabulary + denomination context
+   - Applies translations back to files
+   - Commits atomically (one per locale)
+   - Pushes immediately (timeout-safe)
+3. **Resume Support:** If session times out, rerun `/locale-translate --all` to continue from next untranslated locale
+
+**Key Principles:**
+- ✅ One commit per locale (clean git history)
+- ✅ Push after every commit (prevent timeout data loss)
+- ✅ Uses branch to avoid conflicts with main
+- ✅ No manual PR needed (easy to merge when done)
 
 ## Overview
 
