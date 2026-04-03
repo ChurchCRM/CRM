@@ -14472,6 +14472,11 @@ msgstr "Casos de Uso"
 msgid "User permission to export CSV files"
 msgstr "Permiso de usuario para exportar archivos CSV"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Panel de Vonage"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"

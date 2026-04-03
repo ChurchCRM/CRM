@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= _("Login Info") ?></h3>
                 <div class="card-tools ms-auto">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-pen"></i> <?= _("Edit") ?></a>
+                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-pen"></i><?= _("Edit") ?></a>
                 </div>
             </div>
             <div class="card-body">
@@ -32,7 +32,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="mb-3">
                     <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
                 </div>
-                <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i> <?= _("Regen API Key") ?></a>
+                <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i><?= _("Regen API Key") ?></a>
             </div>
         </div>
 

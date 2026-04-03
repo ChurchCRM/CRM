@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Routing\RouteCollectorProxy;
@@ -12,7 +13,7 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->get('/manage2fa', 'manage2fa');
     $group->get('/enroll2fa', 'manage2fa'); // backward compatibility
     $group->get('/changepassword', 'changepassword');
-    $group->post('/changepassword', 'changepassword');
+    $group->post('/changepassword', 'changepassword')->add(new CSRFMiddleware('user_change_password'));
 });
 
 function manage2fa(Request $request, Response $response, array $args): Response
