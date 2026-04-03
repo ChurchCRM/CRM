@@ -11,6 +11,8 @@
  *   CSP violations are reported to /api/public/csp-report (public endpoint).
  *
  * - X-Frame-Options: Prevents clickjacking attacks
+ * - X-Content-Type-Options: Prevents MIME-sniffing attacks
+ * - Referrer-Policy: Controls how much referrer information is sent
  */
 
 use ChurchCRM\dto\SystemConfig;
@@ -33,6 +35,8 @@ $csp = [
 ];
 
 header('X-Frame-Options: SAMEORIGIN');
+header('X-Content-Type-Options: nosniff');
+header('Referrer-Policy: strict-origin-when-cross-origin');
 // CSP can be in report-only mode (violations logged but not blocked) or enforcing mode (violations blocked)
 // The mode is controlled by the bEnforceCSP system configuration option
 if (SystemConfig::getBooleanValue('bEnforceCSP')) {

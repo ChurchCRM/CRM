@@ -14090,6 +14090,11 @@ msgstr "Eigenschaft 'Kein SMS'"
 msgid "Download OpenLP"
 msgstr "OpenLP herunterladen"
 
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164-Telefonnummernformat"
+
 #: 
 msgid "Enable Email"
 msgstr "E-Mail aktivieren"
@@ -14422,6 +14427,14 @@ msgstr "Schnelleinstellungen"
 #: 
 msgid "Registered students"
 msgstr "Angemeldete Schüler"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP-Authentifizierung"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP-Zeitüberschreitung"
 
 #. plugin:custom-links:section:3:title
 #: 

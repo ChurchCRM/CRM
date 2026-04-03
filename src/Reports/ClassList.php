@@ -3,7 +3,7 @@
 namespace ChurchCRM\Reports;
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\FinancialService;
@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\Base\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 
@@ -174,7 +175,7 @@ for ($i = 0; $i < $nGrps; $i++) {
             // Use main photo (Photo::PHOTO_WIDTH x Photo::PHOTO_HEIGHT PNG) - no thumbnail needed
             $imgName = $person->getPhoto()->getPhotoURI();
 
-            $birthdayStr = change_date_for_place_holder($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
+            $birthdayStr = DateTimeUtils::formatForDatePicker($person->getBirthYear() . '-' . $person->getBirthMonth() . '-' . $person->getBirthDay());
             $pdf->writeAt($birthdayX, $y, $birthdayStr);
 
             if ($withPictures) {
@@ -257,7 +258,7 @@ for ($i = 0; $i < $nGrps; $i++) {
     }
 
     $pdf->SetFont('Times', 'B', 12);
-    $pdf->writeAt($phoneX - 7, $y + 5, FormatDate(date('Y-m-d')));
+    $pdf->writeAt($phoneX - 7, $y + 5, DateTimeUtils::formatDate(date('Y-m-d')));
 }
 
 if (SystemConfig::getIntValue('iPDFOutputType') === 1) {

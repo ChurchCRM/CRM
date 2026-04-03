@@ -46,7 +46,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row">
                 <div class="col-12">
                     <button id="ClearFamilyFilter" type="button" class="btn btn-secondary w-100">
-                        <i class="fa-solid fa-times"></i> <?= gettext('Clear Filter') ?>
+                        <i class="fa-solid fa-times"></i><?= gettext('Clear Filter') ?>
                     </button>
                 </div>
             </div>

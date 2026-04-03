@@ -152,5 +152,32 @@
         "typescript": "^5.9.3",
         "webpack": "^5.105.4",
         "webpack-cli": "^7.0.2"
+    },
+    "overrides": {
+        "lodash": "4.18.1",
+        "lodash-es": "4.18.1",
+        "@xmldom/xmldom": "0.8.12",
+        "picomatch": "4.0.4",
+        "grunt": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "npm-run-all": {
+            "minimatch": "3.1.4",
+            "brace-expansion": "1.1.13"
+        },
+        "archiver": {
+            "archiver-utils": {
+                "glob": {
+                    "minimatch": "9.0.7"
+                }
+            },
+            "readdir-glob": {
+                "minimatch": "5.1.8"
+            }
+        },
+        "svgicons2svgfont": {
+            "brace-expansion": "5.0.5"
+        }
     }
 }
