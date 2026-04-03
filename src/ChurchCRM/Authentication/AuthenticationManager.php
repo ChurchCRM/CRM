@@ -135,13 +135,11 @@ class AuthenticationManager
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
             $redirectLocation = null;
-            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest && !empty($AuthenticationRequest->redirectPath)) {
-                $validated = RedirectUtils::validateRedirectUrl($AuthenticationRequest->redirectPath, '');
-                $redirectLocation = $validated !== '' ? $validated : null;
+            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
+                $redirectLocation = self::validateRedirectPath($AuthenticationRequest->redirectPath);
             }
             if ($redirectLocation === null && isset($_SESSION['location'])) {
-                $validated = RedirectUtils::validateRedirectUrl($_SESSION['location'], '');
-                $redirectLocation = $validated !== '' ? $validated : null;
+                $redirectLocation = self::validateRedirectPath($_SESSION['location']);
             }
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
             $redirectLocation ??= 'v2/dashboard';
@@ -204,12 +202,7 @@ class AuthenticationManager
 
                 // Store the originally requested URL in the session for post-login redirect.
                 // Using the session (server-side) prevents open-redirect attacks via a crafted query parameter.
-                $currentUri = $_SERVER['REQUEST_URI'] ?? '';
-                $rootPath = SystemURLs::getRootPath();
-                if ($rootPath !== '' && str_starts_with($currentUri, $rootPath)) {
-                    $currentUri = substr($currentUri, strlen($rootPath));
-                }
-                $safeUri = RedirectUtils::validateRedirectUrl($currentUri, '');
+                $safeUri = RedirectUtils::stripAndValidatePath($_SERVER['REQUEST_URI'] ?? '');
                 if ($safeUri !== '') {
                     $_SESSION['location'] = $safeUri;
                 }
@@ -261,6 +254,20 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
+    }
+
+    /**
+     * Validates a redirect URL and returns it, or null if it is invalid/empty.
+     * Used to consolidate the validate-then-nullify pattern for post-login redirects.
+     */
+    private static function validateRedirectPath(?string $url): ?string
+    {
+        if (empty($url)) {
+            return null;
+        }
+        $validated = RedirectUtils::validateRedirectUrl($url, '');
+
+        return $validated !== '' ? $validated : null;
     }
 
     /**

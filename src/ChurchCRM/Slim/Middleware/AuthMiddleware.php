@@ -102,14 +102,9 @@ class AuthMiddleware implements MiddlewareInterface
         $query = $request->getUri()->getQuery();
         $fullPath = $query !== '' ? $path . '?' . $query : $path;
 
-        // Strip the application root path so we store a root-relative path.
-        $rootPath = SystemURLs::getRootPath();
-        if ($rootPath !== '' && str_starts_with($fullPath, $rootPath)) {
-            $fullPath = substr($fullPath, strlen($rootPath));
-        }
-
         // Validate the path (empty string fallback means "don't store" on failure).
-        $safePath = RedirectUtils::validateRedirectUrl($fullPath, '');
+        // RedirectUtils::stripAndValidatePath() strips the root path and validates for safety.
+        $safePath = RedirectUtils::stripAndValidatePath($fullPath);
         if ($safePath !== '') {
             $_SESSION['location'] = $safePath;
         }
