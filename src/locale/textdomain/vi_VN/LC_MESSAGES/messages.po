@@ -13714,3 +13714,893 @@ msgstr "ví dụ Dịch vụ Chủ nhật"
 msgid "member"
 msgstr "thành viên"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Bảng điều khiển**: Xem tất cả danh sách MailChimp của bạn cùng thống kê người đăng ký\n"
+"- **Bảo trì danh sách**: Xác định người có trong MailChimp nhưng không có trong CRM và ngược lại\n"
+"- **Tích hợp liên hệ**: Xem trạng thái đăng ký MailChimp trên trang Cá nhân và Gia đình\n"
+"- **Đồng bộ tự động**: Kết nối với cập nhật cá nhân/gia đình để giữ MailChimp đồng bộ"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Tạo tài khoản Vonage tại https://dashboard.nexmo.com/sign-up (tài khoản mới bao gồm tín dụng dùng thử miễn phí)\n"
+"2. Tìm API Key và API Secret trên trang chủ Bảng điều khiển Vonage\n"
+"3. Vào Số > Mua số và mua số có khả năng SMS\n"
+"4. Ghi lại số theo định dạng E.164 (ví dụ: +14155551234)\n"
+"5. Trong ChurchCRM, bật plugin Vonage SMS và nhập thông tin đăng nhập của bạn"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Truy cập Google Analytics (analytics.google.com)\n"
+"2. Tạo thuộc tính hoặc chọn thuộc tính hiện có\n"
+"3. Vào Quản trị → Luồng dữ liệu → Web\n"
+"4. Sao chép ID đo lường (bắt đầu bằng G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Cài đặt OpenLP 3.0 hoặc mới hơn trên máy tính trình bày của bạn\n"
+"2. Bật plugin Remote trong OpenLP (Cài đặt → Cấu hình OpenLP → Plugins)\n"
+"3. Bật plugin Alerts trong OpenLP để hỗ trợ hiển thị cảnh báo\n"
+"4. Ghi lại địa chỉ IP của máy tính chạy OpenLP\n"
+"5. Nhập URL máy chủ theo định dạng: http://IP_ADDRESS:4316\n"
+"6. Nếu bạn đã cấu hình xác thực trong OpenLP, hãy nhập tên người dùng và mật khẩu"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Truy cập Bảng điều khiển MailChimp từ menu Email. Bảng điều khiển hiển thị:\n"
+"\n"
+"- Số lượng thành viên cho mỗi danh sách\n"
+"- Thống kê chiến dịch\n"
+"- Số lượt hủy đăng ký\n"
+"- Công cụ bảo trì danh sách"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Thêm liên kết"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Tất cả các liên kết đã cấu hình được hiển thị trong bảng. Bạn có thể:\n"
+"- Xem tên liên kết và URL\n"
+"- Nhấp vào URL để kiểm tra xem có mở đúng không\n"
+"- Xóa các liên kết không còn cần thiết\n"
+"\n"
+"Các liên kết xuất hiện theo thứ tự được thêm vào trong menu điều hướng."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Cho phép nâng cấp phiên bản thử nghiệm"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Cho phép ghi lại các khoản thanh toán không được khấu trừ thuế trong mô-đun tài chính"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Cho phép đính kèm hình ảnh séc đã quét vào hồ sơ tiền gửi"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Cho phép nâng cấp hệ thống lên các phiên bản được đánh dấu là 'phát hành thử' trên GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Cho phép truy cập không xác thực vào các sự kiện lịch qua URL HTML, ICS và JSON công khai. Cần thiết để chia sẻ lịch với các ứng dụng bên ngoài."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Cho phép khách truy cập tạo hồ sơ gia đình của riêng họ qua trang tự đăng ký"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Cho phép khách truy cập tự đăng ký là gia đình mới."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Bất kỳ dịch vụ tương thích WebDAV nào đều hoạt động với plugin này:\n"
+"\n"
+"- Nextcloud (khuyến nghị)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (với WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx với mô-đun WebDAV\n"
+"\n"
+"Lưu ý: Một số dịch vụ yêu cầu mật khẩu dành riêng cho ứng dụng để truy cập WebDAV."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Xác thực"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Xác thực là bắt buộc đối với API v2 nếu bạn đã bật nó trong cài đặt plugin Remote của OpenLP. Plugin sử dụng Xác thực cơ bản HTTP. Hầu hết các cài đặt mạng nội bộ không yêu cầu xác thực, nhưng được khuyến nghị vì lý do bảo mật."
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS tự động"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Sao lưu tự động"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC tất cả email đến"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Trước khi tin tưởng vào sao lưu ngoài, hãy kiểm tra kết nối của bạn:\n"
+"1. Vào Plugin > Sao lưu ngoài\n"
+"2. Nhấp vào 'Kiểm tra kết nối WebDAV'\n"
+"3. Xác minh bạn thấy thông báo thành công\n"
+"\n"
+"Vấn đề thường gặp:\n"
+"- Lỗi 401/403: Kiểm tra tên người dùng và mật khẩu\n"
+"- Hết thời gian kết nối: Xác minh URL endpoint có đúng không\n"
+"- Lỗi chứng chỉ: Đảm bảo máy chủ WebDAV có chứng chỉ SSL hợp lệ"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Chọn nội dung hiển thị khi không có Gravatar:\n"
+"• Người bí ẩn - Hình bóng màu xám\n"
+"• Identicon - Mẫu hình học dựa trên email\n"
+"• MonsterID - Khuôn mặt quái vật được tạo ngẫu nhiên\n"
+"• Wavatar - Khuôn mặt trừu tượng được tạo\n"
+"• Retro - Nghệ thuật pixel phong cách arcade 8-bit\n"
+"• RoboHash - Robot được tạo ngẫu nhiên\n"
+"• Trống - Trong suốt (dự phòng về chữ cái đầu)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "ID truy vấn phân cách bằng dấu phẩy yêu cầu quyền tài chính để xem"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Các cách sử dụng phổ biến cho liên kết tùy chỉnh:\n"
+"- Trang web hội thánh\n"
+"- Cổng dâng hiến trực tuyến\n"
+"- Biểu mẫu đăng ký tình nguyện viên\n"
+"- Tài nguyên hệ phái\n"
+"- Trang web tổ chức đối tác\n"
+"- Thư mục lưu trữ đám mây\n"
+"- Trang đăng ký sự kiện"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#: 
+msgid "Continent"
+msgstr "Châu lục"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Chi phí"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Người thanh toán bằng thẻ tín dụng"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Mức sử dụng hiện tại"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Kiểu hình ảnh mặc định"
+
+#: 
+msgid "Default Map View"
+msgstr "Chế độ xem bản đồ mặc định"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Loại phiếu tiền gửi"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Thuộc tính không gửi email"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Thuộc tính không gửi SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Tải xuống OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Định dạng số điện thoại E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Bật email"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Bật menu sự kiện"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Bật API lịch bên ngoài"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Bật gửi email từ ChurchCRM. Cần thiết để đặt lại mật khẩu, thông báo và liên kết email."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Bật nếu máy chủ SMTP của bạn yêu cầu tên người dùng và mật khẩu"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Bật hoặc tắt mô-đun Trường Chúa nhật và menu thanh bên."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Bật sử dụng phong bì dâng hiến có số để theo dõi đóng góp"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Bật sử dụng phong bì dâng hiến"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Bật sử dụng séc đã quét"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Cam kết gia đình theo năm tài chính"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Tính năng"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "ID truy vấn quyền tài chính"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Tìm học viên đã đăng ký"
+
+#: 
+msgid "Find family"
+msgstr "Tìm gia đình"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Tìm URL máy chủ của bạn"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Năm tài chính."
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Vì lý do bảo mật:\n"
+"- Chỉ quản trị viên mới có thể thêm hoặc xóa liên kết\n"
+"- Tùy chọn 'Quản lý liên kết' chỉ xuất hiện cho quản trị viên\n"
+"- Liên kết phải sử dụng giao thức http:// hoặc https://\n"
+"- Thẻ HTML không được phép trong tên hoặc URL\n"
+"- Tất cả đầu vào đều được xác thực và làm sạch"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Hướng dẫn cài đặt GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Bắt đầu"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Lấy ID đo lường GA4 của bạn"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) theo dõi cách người dùng tương tác với ChurchCRM, cung cấp thông tin về lượt xem trang, mức độ tương tác của người dùng và việc sử dụng tính năng."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Trợ giúp Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics thu thập dữ liệu sử dụng ẩn danh. Không có thông tin cá nhân nào từ hồ sơ ChurchCRM được gửi cho Google. Hãy cân nhắc thêm thông báo quyền riêng tư vào chính sách dữ liệu của hội thánh bạn."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Hình đại diện được công nhận toàn cầu) hiển thị ảnh hồ sơ từ gravatar.com cho các thành viên chưa tải ảnh lên ChurchCRM."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Tùy chọn hình ảnh Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Trang web Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email thành hàm băm (MD5). Địa chỉ email thực tế không bao giờ được gửi đến máy chủ của Gravatar - chỉ hàm băm được sử dụng để tra cứu hình ảnh."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Nhóm học viên đã đăng ký"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ẩn vĩ độ/kinh độ"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ẩn địa chỉ cá nhân"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Cách hoạt động"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Số séc cần in trên mỗi trang phiếu tiền gửi"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Nếu tin nhắn SMS không được gửi:\n"
+"1. Xác minh API Key và Secret có đúng không (không có khoảng trắng thừa)\n"
+"2. Kiểm tra Số gửi là số Vonage hợp lệ bạn sở hữu\n"
+"3. Đảm bảo số điện thoại người nhận có mã quốc gia\n"
+"4. Kiểm tra số dư tài khoản Vonage của bạn\n"
+"5. Xem lại Bảng điều khiển Vonage > SMS > Nhật ký để biết trạng thái gửi"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Nếu cảnh báo không xuất hiện:\n"
+"1. Xác minh OpenLP đang chạy và plugin Remote đang hoạt động\n"
+"2. Đảm bảo plugin Alerts được bật trong OpenLP\n"
+"3. Kiểm tra URL máy chủ có đúng không (thử truy cập trong trình duyệt)\n"
+"4. Xác minh cài đặt tường lửa cho phép kết nối trên cổng 4316\n"
+"5. Nếu sử dụng xác thực, hãy xác minh thông tin đăng nhập có đúng không"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Nếu tin nhắn được gửi nhưng không nhận được:\n"
+"1. Kiểm tra Bảng điều khiển Vonage > SMS > Nhật ký để biết trạng thái gửi\n"
+"2. Xác minh số người nhận có đúng và có thể nhận SMS không\n"
+"3. Một số nhà mạng có thể chặn tin nhắn từ số không xác định\n"
+"4. Kiểm tra xem quốc gia đích có hạn chế SMS không"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Nếu bạn nhận được lỗi ID người gửi không hợp lệ:\n"
+"1. Sử dụng số điện thoại bạn đã mua từ Vonage\n"
+"2. Định dạng số theo định dạng E.164 (+14155551234)\n"
+"3. Lưu ý: ID người gửi dạng chữ số có thể bị hạn chế ở một số quốc gia"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Lưu ý bảo mật quan trọng:\n"
+"\n"
+"1. Luôn sử dụng endpoint HTTPS để mã hóa bản sao lưu trong quá trình truyền\n"
+"2. Sử dụng mật khẩu dành riêng cho ứng dụng khi có (Nextcloud, ownCloud)\n"
+"3. Lưu trữ bản sao lưu trong thư mục có quyền truy cập hạn chế\n"
+"4. Định kỳ tải xuống và xác minh bản sao lưu của bạn có hợp lệ không\n"
+"5. Cân nhắc mã hóa các bản sao lưu nhạy cảm bằng công cụ bên ngoài trước khi tải lên"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Mức thu phóng ban đầu khi mở bản đồ"
+
+#: 
+msgid "Learn more"
+msgstr "Tìm hiểu thêm"
+
+#: 
+msgid "Log Settings"
+msgstr "Cài đặt nhật ký"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Tích hợp MailChimp cho phép đồng bộ hóa giữa các liên hệ ChurchCRM và danh sách email marketing MailChimp của bạn."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Quản lý liên kết"
+
+#: 
+msgid "Neighborhood"
+msgstr "Khu phố"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Nguồn API v2 OpenLP"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Tài liệu OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Trang web OpenLP"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP là phần mềm trình bày miễn phí, nguồn mở được thiết kế cho các hội thánh. Plugin này cho phép ChurchCRM gửi thông báo và cảnh báo trực tiếp đến màn hình OpenLP của bạn."
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Những người được cấu hình để thanh toán bằng thẻ tín dụng."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Tích hợp Cá nhân/Gia đình"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Định dạng số điện thoại"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Số điện thoại phải theo định dạng E.164: mã quốc gia + số. Ví dụ:\n"
+"- Mỹ: +14155551234\n"
+"- Anh: +447700900123\n"
+"- Úc: +61412345678\n"
+"\n"
+"Số điện thoại người nhận trong hồ sơ thành viên ChurchCRM phải bao gồm mã quốc gia để SMS hoạt động đúng."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Tóm tắt cam kết theo tên gia đình cho từng quỹ trong năm tài chính đã chọn"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Quyền riêng tư & Tuân thủ"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Cân nhắc quyền riêng tư"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Lưu ý về quyền riêng tư"
+
+#: 
+msgid "Quick Settings"
+msgstr "Cài đặt nhanh"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Học viên đã đăng ký"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Xác thực SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Hết thời gian SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Bảo mật"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Cân nhắc bảo mật"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Thiết lập"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Hiển thị phân tích mệnh giá tiền trên báo cáo phiếu tiền gửi"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Hiển thị hoặc ẩn menu Sự kiện trong điều hướng chính."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Hiển thị hoặc ẩn phần Sự kiện trong menu điều hướng chính"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Hiển thị hoặc ẩn mô-đun Trường Chúa nhật trong điều hướng thanh bên"
+
+#: 
+msgid "Street"
+msgstr "Đường phố"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Mô-đun Trường Chúa nhật"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Dịch vụ được hỗ trợ"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Kiểm tra kết nối"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin Liên kết menu tùy chỉnh cho phép quản trị viên thêm liên kết bên ngoài vào menu điều hướng. Khi được bật, menu 'Liên kết' xuất hiện trong thanh bên chứa tất cả các liên kết đã cấu hình."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin Sao lưu ngoài cho phép bạn tự động sao lưu cơ sở dữ liệu ChurchCRM vào các dịch vụ lưu trữ đám mây tương thích WebDAV. Điều này bao gồm các dịch vụ phổ biến như Nextcloud, ownCloud hoặc bất kỳ máy chủ nào hỗ trợ giao thức WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Cổng OpenLP mặc định là 4316. URL máy chủ của bạn thường là: http://192.168.x.x:4316, trong đó 192.168.x.x là địa chỉ IP của máy tính chạy OpenLP. Bạn có thể tìm thấy điều này trong OpenLP tại Công cụ → Mở Trình quản lý dịch vụ."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Tháng bắt đầu năm tài chính của tổ chức bạn"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Plugin này hiện được sử dụng cho Thông báo check-in Kiosk. Khi một đứa trẻ check-in vào lớp Trường Chúa nhật qua hệ thống kiosk, SMS có thể được gửi để thông báo cho cha mẹ hoặc người giám hộ."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Plugin này hiện được sử dụng cho Thông báo check-in Kiosk. Khi một đứa trẻ check-in vào lớp Trường Chúa nhật qua hệ thống kiosk, cảnh báo có thể được gửi đến màn hình máy chiếu OpenLP để thông báo cho cha mẹ hoặc tình nguyện viên."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Plugin này truyền địa chỉ email đến máy chủ MailChimp. Đảm bảo bạn có sự đồng ý phù hợp từ các thành viên trước khi đồng bộ thông tin của họ với các dịch vụ bên thứ ba như MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Để thêm liên kết mới:\n"
+"1. Vào menu Liên kết trong thanh bên và nhấp vào 'Quản lý liên kết'\n"
+"2. Nhập tên hiển thị (2-50 ký tự)\n"
+"3. Nhập URL đầy đủ (phải bắt đầu bằng http:// hoặc https://)\n"
+"4. Nhấp vào 'Thêm liên kết'\n"
+"\n"
+"Liên kết sẽ ngay lập tức xuất hiện trong menu Liên kết."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Để cấu hình sao lưu ngoài:\n"
+"1. Vào Quản trị > Plugin và tìm 'Sao lưu ngoài (WebDAV)'\n"
+"2. Nhấp vào biểu tượng cài đặt để mở rộng bảng cấu hình\n"
+"3. Nhập URL endpoint WebDAV của bạn (ví dụ: https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Nhập tên người dùng và mật khẩu\n"
+"5. Tùy chọn đặt khoảng thời gian tự động sao lưu theo giờ\n"
+"6. Lưu cài đặt của bạn"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Để sử dụng Tích hợp MailChimp, bạn cần tài khoản MailChimp và API key.\n"
+"\n"
+"1. Đăng nhập vào tài khoản MailChimp của bạn\n"
+"2. Vào Tài khoản > Phụ thêm > API Keys\n"
+"3. Tạo API key mới hoặc sao chép API key hiện có\n"
+"4. Nhập API key vào cài đặt plugin"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Khắc phục sự cố"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Khắc phục sự cố - ID người gửi không hợp lệ"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Khắc phục sự cố - Tin nhắn không được gửi"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Khắc phục sự cố - SMS không gửi được"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Cài đặt nâng cấp"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Trường hợp sử dụng"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Quyền người dùng để xuất tệp CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Bảng điều khiển Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Bảng giá Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Tài liệu API SMS Vonage"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS cho phép thông báo tin nhắn văn bản cho ChurchCRM bằng API Vonage (trước đây là Nexmo). Gửi cảnh báo SMS cho cha mẹ khi con của họ check-in qua hệ thống kiosk."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage tính phí theo mỗi SMS được gửi. Giá cả khác nhau tùy theo quốc gia đích. Xem trang bảng giá Vonage để biết mức giá hiện tại. Tài khoản mới nhận được tín dụng dùng thử miễn phí để kiểm tra."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Những gì được theo dõi"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Khi MailChimp được cấu hình, tab 'MailChimp' xuất hiện trên trang xem Cá nhân hiển thị:\n"
+"\n"
+"- Trạng thái đăng ký email trên tất cả các danh sách\n"
+"- Những danh sách người đó đã đăng ký\n"
+"- Thống kê đăng ký"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Khi thành viên không có ảnh đã tải lên, ChurchCRM kiểm tra xem họ có Gravatar liên kết với địa chỉ email của mình không. Nếu có Gravatar, ảnh đó sẽ được hiển thị. Nếu không, kiểu hình ảnh mặc định đã cấu hình sẽ được sử dụng."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Khi sao lưu tự động được bật (khoảng thời gian > 0 giờ), ChurchCRM sẽ tự động tạo và tải lên bản sao lưu đầy đủ cơ sở dữ liệu theo khoảng thời gian đã chỉ định. Sao lưu chạy như một phần của tải trang bình thường, vì vậy hệ thống phải có hoạt động người dùng thường xuyên để kích hoạt sao lưu.\n"
+"\n"
+"Khoảng thời gian được khuyến nghị:\n"
+"- Sao lưu hàng ngày: 24 giờ\n"
+"- Hai lần mỗi ngày: 12 giờ\n"
+"- Hàng tuần: 168 giờ"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Khi được bật và cấu hình, ChurchCRM gửi thông báo cảnh báo đến máy chủ OpenLP của bạn bằng endpoint API v2 (POST /api/v2/plugins/alerts). Những cảnh báo này xuất hiện dưới dạng thông báo lớp phủ trên màn hình chiếu của bạn."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Khi được bật, ẩn trường địa chỉ cho những người chưa được gán vào một gia đình"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Khi được bật, ẩn các trường vĩ độ/kinh độ trong Trình soạn thảo gia đình. Mã hóa địa lý vẫn chạy ở nền."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Bạn cũng có thể kích hoạt sao lưu thủ công bất cứ lúc nào:\n"
+"1. Vào trang cài đặt Sao lưu ngoài (Plugin > Sao lưu ngoài)\n"
+"2. Chọn loại sao lưu (Chỉ cơ sở dữ liệu hoặc Sao lưu đầy đủ)\n"
+"3. Nhấp vào 'Sao lưu vào WebDAV ngay'\n"
+"\n"
+"Sao lưu chỉ cơ sở dữ liệu nhỏ hơn và nhanh hơn. Sao lưu đầy đủ bao gồm ảnh đã tải lên."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Lượt xem trang và mẫu điều hướng\n"
+"• Thời lượng phiên và mức độ tương tác\n"
+"• Thống kê nhân khẩu học người dùng (nếu được bật trong GA4)\n"
+"• Thông tin thiết bị và trình duyệt"
+

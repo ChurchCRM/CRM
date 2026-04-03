@@ -4,7 +4,7 @@ $sPageTitle = gettext('Event Checkin');
 $sPageSubtitle = gettext('Check in attendees for church events and activities');
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
