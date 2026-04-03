@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
@@ -10,6 +10,8 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -239,7 +241,7 @@ $bOkToEdit = (
                             <li class="mb-1"><i class="fa-solid fa-users me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext($sFamRole) ?></li>
                             <?php endif; ?>
                             <?php if ($per_MembershipDate) : ?>
-                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= FormatDate($per_MembershipDate, false) ?></li>
+                            <li class="mb-1"><i class="fa-solid fa-calendar-check me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Since') ?> <?= DateTimeUtils::formatDate($per_MembershipDate, false) ?></li>
                             <?php endif; ?>
                             <?php if ($sEnvelope !== gettext('Not assigned')) : ?>
                             <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-muted" style="width: 1rem; text-align: center;"></i><?= gettext('Envelope') ?> #<?= $sEnvelope ?></li>
@@ -285,7 +287,7 @@ $bOkToEdit = (
                         <?php if (!SystemConfig::getValue('bHideFriendDate') && $per_FriendDate !== '') : ?>
                         <li class="mb-2">
                             <i class="fa-solid fa-handshake me-2 text-muted"></i>
-                            <?= gettext('Friend Date') ?>: <?= FormatDate($per_FriendDate, false) ?>
+                            <?= gettext('Friend Date') ?>: <?= DateTimeUtils::formatDate($per_FriendDate, false) ?>
                         </li>
                         <?php endif; ?>
                     </ul>
@@ -424,7 +426,7 @@ $bOkToEdit = (
                         }
                         $customFieldsHtml .= '<li class="mb-2">';
                         $customFieldsHtml .= '<i class="' . $displayIcon . ' me-2 text-muted"></i>';
-                        $temp_string = nl2br(displayCustomField($type_ID, $currentData, $custom_Special));
+                        $temp_string = nl2br(CustomFieldUtils::display($type_ID, $currentData, $custom_Special));
                         if ($displayLink) {
                             $customFieldsHtml .= '<strong>' . InputUtils::escapeHTML($custom_Name) . ':</strong> <a href="' . InputUtils::escapeAttribute($displayLink) . '">' . $temp_string . '</a>';
                         } else {
@@ -796,7 +798,7 @@ $bOkToEdit = (
                                                             if ((int)$type_ID === 11) {
                                                                 $prop_Special = null;
                                                             }
-                                                            echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . displayCustomField($type_ID, $currentData, $prop_Special) . '</small>';
+                                                            echo '<br><small class="text-muted"><strong>' . $prop_Name . '</strong>: ' . CustomFieldUtils::display($type_ID, $currentData, $prop_Special) . '</small>';
                                                         }
                                                     }
                                                 } ?>

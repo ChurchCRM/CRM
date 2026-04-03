@@ -13707,3 +13707,893 @@ msgstr "예: 주일 예배"
 msgid "member"
 msgstr "회원"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **대시보드**: 구독자 통계와 함께 모든 MailChimp 목록 보기\n"
+"- **목록 관리**: MailChimp에는 있지만 CRM에는 없는 사람, 또는 그 반대 확인\n"
+"- **연락처 통합**: 개인 및 가족 페이지에서 MailChimp 구독 상태 확인\n"
+"- **자동 동기화**: 개인/가족 업데이트 시 MailChimp와 동기화 유지"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. https://dashboard.nexmo.com/sign-up 에서 Vonage 계정 생성 (신규 계정에는 무료 체험 크레딧 포함)\n"
+"2. Vonage 대시보드 홈페이지에서 API 키와 API 시크릿 확인\n"
+"3. 번호 > 번호 구매로 이동하여 SMS 기능이 있는 번호 구매\n"
+"4. E.164 형식의 번호 기록 (예: +14155551234)\n"
+"5. ChurchCRM에서 Vonage SMS 플러그인 활성화 후 자격 증명 입력"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Google Analytics (analytics.google.com) 접속\n"
+"2. 속성을 생성하거나 기존 속성 선택\n"
+"3. 관리 → 데이터 스트림 → 웹으로 이동\n"
+"4. 측정 ID(G-로 시작) 복사"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. 프레젠테이션 컴퓨터에 OpenLP 3.0 이상 설치\n"
+"2. OpenLP에서 원격 플러그인 활성화 (설정 → OpenLP 구성 → 플러그인)\n"
+"3. 알림 표시를 위해 OpenLP에서 알림 플러그인 활성화\n"
+"4. OpenLP 컴퓨터의 IP 주소 기록\n"
+"5. http://IP_ADDRESS:4316 형식으로 서버 URL 입력\n"
+"6. OpenLP에서 인증을 구성한 경우 사용자 이름과 비밀번호 입력"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "이메일 메뉴에서 MailChimp 대시보드에 접근합니다. 대시보드에 표시되는 내용:\n"
+"\n"
+"- 각 목록의 회원 수\n"
+"- 캠페인 통계\n"
+"- 구독 해제 수\n"
+"- 목록 관리 도구"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "링크 추가"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "설정된 모든 링크가 표에 표시됩니다. 가능한 작업:\n"
+"- 링크 이름과 URL 확인\n"
+"- URL을 클릭하여 올바르게 열리는지 테스트\n"
+"- 더 이상 필요 없는 링크 삭제\n"
+"\n"
+"링크는 탐색 메뉴에 추가된 순서로 표시됩니다."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "프리릴리즈 버전 업그레이드 허용"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "재정 모듈에서 비세금 공제 가능한 납부금 기록 허용"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "스캔한 수표 이미지를 입금 기록에 첨부 허용"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "GitHub에서 '프리릴리즈'로 표시된 릴리즈로의 시스템 업그레이드 허용"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "공개 HTML, ICS, JSON URL을 통해 캘린더 이벤트에 비인증 접근 허용합니다. 외부 앱과 캘린더를 공유할 때 필요합니다."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "방문자가 자기 등록 페이지를 통해 자신의 가족 기록을 생성하도록 허용"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "방문자가 새 가족으로 자기 등록하도록 허용합니다."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "WebDAV 호환 서비스라면 이 플러그인과 함께 사용 가능합니다:\n"
+"\n"
+"- Nextcloud (권장)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (WebDAV 사용)\n"
+"- Apache mod_dav\n"
+"- nginx (WebDAV 모듈 사용)\n"
+"\n"
+"참고: 일부 서비스는 WebDAV 접근을 위해 앱 전용 비밀번호가 필요합니다."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "인증"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "OpenLP의 원격 플러그인 설정에서 활성화한 경우 API v2에 인증이 필요합니다. 플러그인은 HTTP 기본 인증을 사용합니다. 대부분의 로컬 네트워크 설정에는 인증이 필요하지 않지만 보안을 위해 권장됩니다."
+
+#: 
+msgid "Auto TLS"
+msgstr "자동 TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "자동 백업"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "모든 메일 BCC 수신자"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "외부 백업에 의존하기 전에 연결을 테스트하세요:\n"
+"1. 플러그인 > 외부 백업으로 이동\n"
+"2. 'WebDAV 연결 테스트' 클릭\n"
+"3. 성공 메시지가 표시되는지 확인\n"
+"\n"
+"일반적인 문제:\n"
+"- 401/403 오류: 사용자 이름과 비밀번호 확인\n"
+"- 연결 시간 초과: 엔드포인트 URL이 올바른지 확인\n"
+"- 인증서 오류: WebDAV 서버에 유효한 SSL 인증서가 있는지 확인"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Gravatar가 없을 때 표시할 항목 선택:\n"
+"• 수수께끼 인물 - 회색 실루엣 윤곽\n"
+"• Identicon - 이메일 기반 기하학적 패턴\n"
+"• MonsterID - 고유 생성 몬스터 얼굴\n"
+"• Wavatar - 추상적으로 생성된 얼굴\n"
+"• 레트로 - 8비트 아케이드 스타일 픽셀 아트\n"
+"• RoboHash - 고유 생성 로봇\n"
+"• 공백 - 투명 (이니셜로 대체)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "재정 권한이 필요한 쿼리 ID (쉼표로 구분)"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "사용자 정의 링크의 일반적인 용도:\n"
+"- 교회 웹사이트\n"
+"- 온라인 헌금 포털\n"
+"- 자원봉사자 신청 양식\n"
+"- 교단 자료\n"
+"- 협력 단체 사이트\n"
+"- 클라우드 스토리지 폴더\n"
+"- 이벤트 등록 페이지"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "설정"
+
+#: 
+msgid "Continent"
+msgstr "대륙"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "비용"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "신용카드 납부자"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "현재 사용량"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "기본 이미지 스타일"
+
+#: 
+msgid "Default Map View"
+msgstr "기본 지도 보기"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "입금 전표 유형"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "이메일 발송 안 함 속성"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "SMS 발송 안 함 속성"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "OpenLP 다운로드"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 전화번호 형식"
+
+#: 
+msgid "Enable Email"
+msgstr "이메일 활성화"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "이벤트 메뉴 활성화"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "외부 캘린더 API 활성화"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "ChurchCRM에서 이메일 발송을 활성화합니다. 비밀번호 재설정, 알림, 이메일 링크에 필요합니다."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "SMTP 서버에 사용자 이름과 비밀번호가 필요한 경우 활성화"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "주일학교 모듈과 사이드바 메뉴를 활성화하거나 비활성화합니다."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "헌금 추적을 위한 번호 매긴 헌금 봉투 사용 활성화"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "헌금 봉투 사용 활성화"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "스캔한 수표 사용 활성화"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "회계연도별 가족 서약"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "기능"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "재정 권한 쿼리 ID"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "등록된 학생 검색"
+
+#: 
+msgid "Find family"
+msgstr "가족 검색"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "서버 URL 확인 방법"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "회계연도."
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "보안을 위해:\n"
+"- 링크 추가 및 제거는 관리자만 가능\n"
+"- '링크 관리' 옵션은 관리자에게만 표시\n"
+"- 링크는 http:// 또는 https:// 프로토콜을 사용해야 함\n"
+"- 이름이나 URL에 HTML 태그 사용 불가\n"
+"- 모든 입력이 검증 및 정제됩니다"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 설정 가이드"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "시작하기"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "GA4 측정 ID 가져오기"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4)는 사용자가 ChurchCRM과 어떻게 상호 작용하는지 추적하여 페이지 뷰, 사용자 참여, 기능 사용에 대한 인사이트를 제공합니다."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics 도움말"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics는 익명화된 사용 데이터를 수집합니다. ChurchCRM 기록의 개인 정보는 Google에 전송되지 않습니다. 교회의 데이터 정책에 개인정보 보호 공지를 추가하는 것을 고려하세요."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar(전 세계적으로 인식되는 아바타)는 ChurchCRM에 사진을 업로드하지 않은 회원에게 gravatar.com의 프로필 사진을 표시합니다."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar 이미지 옵션"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar 웹사이트"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니다. 실제 이메일 주소는 Gravatar 서버로 전송되지 않으며, 이미지 조회에는 해시만 사용됩니다."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "등록된 학생 그룹"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "위도/경도 숨기기"
+
+#: 
+msgid "Hide Person Address"
+msgstr "개인 주소 숨기기"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "작동 방식"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "입금 전표 페이지당 인쇄할 수표 수"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "SMS 메시지가 전송되지 않는 경우:\n"
+"1. API 키와 시크릿이 올바른지 확인 (여분의 공백 없이)\n"
+"2. 발신 번호가 소유한 유효한 Vonage 번호인지 확인\n"
+"3. 수신자 전화번호에 국가 코드가 포함되어 있는지 확인\n"
+"4. Vonage 계정 잔액 확인\n"
+"5. Vonage 대시보드 > SMS > 로그에서 전달 상태 확인"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "알림이 표시되지 않는 경우:\n"
+"1. OpenLP가 실행 중이고 원격 플러그인이 활성화되어 있는지 확인\n"
+"2. OpenLP에서 알림 플러그인이 활성화되어 있는지 확인\n"
+"3. 서버 URL이 올바른지 확인 (브라우저에서 접근 시도)\n"
+"4. 방화벽 설정이 포트 4316에서의 연결을 허용하는지 확인\n"
+"5. 인증을 사용하는 경우 자격 증명이 올바른지 확인"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "메시지가 전송되었지만 수신되지 않는 경우:\n"
+"1. Vonage 대시보드 > SMS > 로그에서 전달 상태 확인\n"
+"2. 수신자 번호가 올바르고 SMS를 수신할 수 있는지 확인\n"
+"3. 일부 이동통신사는 알 수 없는 번호의 메시지를 차단할 수 있습니다\n"
+"4. 대상 국가에 SMS 제한이 있는지 확인"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "유효하지 않은 발신자 ID 오류가 발생하는 경우:\n"
+"1. Vonage에서 구매한 전화번호 사용\n"
+"2. E.164 형식으로 번호 입력 (+14155551234)\n"
+"3. 참고: 영숫자 발신자 ID는 일부 국가에서 제한될 수 있습니다"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "중요한 보안 사항:\n"
+"\n"
+"1. 전송 중 백업 암호화를 위해 항상 HTTPS 엔드포인트 사용\n"
+"2. 가능한 경우 앱 전용 비밀번호 사용 (Nextcloud, ownCloud)\n"
+"3. 접근이 제한된 폴더에 백업 저장\n"
+"4. 백업을 주기적으로 다운로드하여 유효한지 확인\n"
+"5. 업로드 전 외부 도구를 사용하여 민감한 백업 암호화 고려"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "지도를 열 때 초기 확대 수준"
+
+#: 
+msgid "Learn more"
+msgstr "자세히 알아보기"
+
+#: 
+msgid "Log Settings"
+msgstr "로그 설정"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp 통합을 통해 ChurchCRM 연락처와 MailChimp 이메일 마케팅 목록을 동기화할 수 있습니다."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "링크 관리"
+
+#: 
+msgid "Neighborhood"
+msgstr "이웃/지역"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 소스"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP 문서"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP 웹사이트"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP은 교회를 위해 설계된 무료 오픈 소스 프레젠테이션 소프트웨어입니다. 이 플러그인을 통해 ChurchCRM에서 OpenLP 디스플레이로 알림과 경고를 직접 전송할 수 있습니다."
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "신용카드로 결제하도록 설정된 회원입니다."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "개인/가족 통합"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "전화번호 형식"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "전화번호는 E.164 형식이어야 합니다: 국가 코드 + 번호. 예시:\n"
+"- 미국: +14155551234\n"
+"- 영국: +447700900123\n"
+"- 호주: +61412345678\n"
+"\n"
+"SMS가 올바르게 작동하려면 ChurchCRM 회원 프로필의 수신자 전화번호에 국가 코드가 포함되어야 합니다."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "선택한 회계연도의 각 기금에 대한 가족 이름별 서약 요약"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "개인정보 및 컴플라이언스"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "개인정보 고려사항"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "개인정보 공지"
+
+#: 
+msgid "Quick Settings"
+msgstr "빠른 설정"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "등록된 학생"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP 인증"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP 시간 초과"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "보안"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "보안 고려사항"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "설정"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "입금 전표 보고서에 지폐 권종 내역 표시"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "기본 탐색의 이벤트 메뉴를 표시하거나 숨깁니다."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "기본 탐색 메뉴의 이벤트 섹션 표시 또는 숨기기"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "사이드바 탐색의 주일학교 모듈 표시 또는 숨기기"
+
+#: 
+msgid "Street"
+msgstr "도로"
+
+#: 
+msgid "Sunday School Module"
+msgstr "주일학교 모듈"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "지원 서비스"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "연결 테스트"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "사용자 정의 메뉴 링크 플러그인을 통해 관리자는 탐색 메뉴에 외부 링크를 추가할 수 있습니다. 활성화하면 설정된 모든 링크가 포함된 '링크' 메뉴가 사이드바에 표시됩니다."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "외부 백업 플러그인을 통해 ChurchCRM 데이터베이스를 WebDAV 호환 클라우드 저장소 서비스에 자동으로 백업할 수 있습니다. Nextcloud, ownCloud 등의 인기 서비스나 WebDAV 프로토콜을 지원하는 서버가 포함됩니다."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "기본 OpenLP 포트는 4316입니다. 서버 URL은 일반적으로 http://192.168.x.x:4316 형식이며, 192.168.x.x는 OpenLP를 실행하는 컴퓨터의 IP 주소입니다. OpenLP의 도구 → 서비스 관리자 열기에서 확인할 수 있습니다."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "조직의 회계연도가 시작하는 달"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "이 플러그인은 현재 키오스크 체크인 알림에 사용됩니다. 키오스크 시스템을 통해 어린이가 주일학교 반에 체크인하면 부모나 보호자에게 SMS를 전송할 수 있습니다."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "이 플러그인은 현재 키오스크 체크인 알림에 사용됩니다. 키오스크 시스템을 통해 어린이가 주일학교 반에 체크인하면 부모나 자원봉사자에게 알리기 위해 OpenLP 프로젝터 디스플레이에 알림을 전송할 수 있습니다."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "이 플러그인은 이메일 주소를 MailChimp 서버로 전송합니다. MailChimp와 같은 서드파티 서비스에 정보를 동기화하기 전에 회원의 적절한 동의를 받았는지 확인하세요."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "새 링크를 추가하려면:\n"
+"1. 사이드바의 링크 메뉴로 이동하여 '링크 관리' 클릭\n"
+"2. 표시 이름 입력 (2-50자)\n"
+"3. 전체 URL 입력 (http:// 또는 https://로 시작해야 함)\n"
+"4. '링크 추가' 클릭\n"
+"\n"
+"링크가 즉시 링크 메뉴에 표시됩니다."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "외부 백업을 구성하려면:\n"
+"1. 관리 > 플러그인으로 이동하여 '외부 백업 (WebDAV)' 찾기\n"
+"2. 설정 아이콘을 클릭하여 구성 패널 열기\n"
+"3. WebDAV 엔드포인트 URL 입력 (예: https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. 사용자 이름과 비밀번호 입력\n"
+"5. 선택적으로 자동 백업 간격(시간 단위) 설정\n"
+"6. 설정 저장"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "MailChimp 통합을 사용하려면 MailChimp 계정과 API 키가 필요합니다.\n"
+"\n"
+"1. MailChimp 계정에 로그인\n"
+"2. 계정 > 추가 기능 > API 키로 이동\n"
+"3. 새 API 키를 만들거나 기존 키 복사\n"
+"4. 플러그인 설정에 API 키 입력"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "문제 해결"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "문제 해결 - 유효하지 않은 발신자 ID"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "문제 해결 - 메시지 미전달"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "문제 해결 - SMS 전송 안 됨"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "업그레이드 설정"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "사용 사례"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV 파일 내보내기에 대한 사용자 권한"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage 대시보드"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage 요금"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API 문서"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS는 Vonage API(구 Nexmo)를 사용하여 ChurchCRM에서 문자 메시지 알림을 활성화합니다. 키오스크 시스템을 통해 자녀가 체크인하면 부모에게 SMS 알림을 전송합니다."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage는 전송된 SMS당 요금을 부과합니다. 요금은 대상 국가에 따라 다릅니다. 현재 요금은 Vonage 요금 페이지를 참조하세요. 신규 계정에는 테스트를 위한 무료 체험 크레딧이 제공됩니다."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "추적되는 항목"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "MailChimp가 구성되면 개인 보기 페이지에 'MailChimp' 탭이 나타나 다음을 표시합니다:\n"
+"\n"
+"- 모든 목록의 이메일 구독 상태\n"
+"- 해당 사람이 구독한 목록\n"
+"- 구독 통계"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "회원이 업로드한 사진이 없는 경우, ChurchCRM은 이메일 주소와 연결된 Gravatar가 있는지 확인합니다. Gravatar가 있으면 해당 이미지를 표시하고, 없으면 설정된 기본 이미지 스타일이 사용됩니다."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "자동 백업이 활성화되면 (간격 > 0시간), ChurchCRM은 지정된 간격으로 자동으로 전체 데이터베이스 백업을 생성하고 업로드합니다. 백업은 일반 페이지 로드의 일부로 실행되므로 백업을 트리거하려면 정기적인 사용자 활동이 필요합니다.\n"
+"\n"
+"권장 간격:\n"
+"- 매일 백업: 24시간\n"
+"- 하루 2회: 12시간\n"
+"- 매주: 168시간"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "활성화되고 구성되면, ChurchCRM은 API v2 엔드포인트(POST /api/v2/plugins/alerts)를 사용하여 OpenLP 서버에 알림 메시지를 전송합니다. 이러한 알림은 프로젝터 디스플레이에 오버레이 알림으로 나타납니다."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "활성화하면 가족에 배정되지 않은 사람의 주소 필드를 숨깁니다"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "활성화하면 가족 편집기에서 위도/경도 필드를 숨깁니다. 지오코딩은 여전히 백그라운드에서 실행됩니다."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "언제든지 수동 백업을 트리거할 수 있습니다:\n"
+"1. 외부 백업 설정 페이지로 이동 (플러그인 > 외부 백업)\n"
+"2. 백업 유형 선택 (데이터베이스만 또는 전체 백업)\n"
+"3. '지금 WebDAV에 백업' 클릭\n"
+"\n"
+"데이터베이스만 백업은 더 작고 빠릅니다. 전체 백업에는 업로드된 사진이 포함됩니다."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• 페이지 조회수와 탐색 패턴\n"
+"• 세션 시간 및 참여도\n"
+"• 사용자 인구 통계 (GA4에서 활성화된 경우)\n"
+"• 기기 및 브라우저 정보"
+

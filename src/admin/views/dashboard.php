@@ -321,7 +321,7 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                 <div class="card-body">
                     <p class="small text-muted mb-3"><?= gettext('Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!') ?></p>
                     <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-primary w-100">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> <?= gettext('Register Now') ?>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i><?= gettext('Register Now') ?>
                     </a>
                     <p class="small text-muted mt-3 mb-0"><i class="fa-solid fa-shield-alt"></i> <?= gettext('Your privacy is important. We never share your information with third parties.') ?></p>
                 </div>
@@ -347,10 +347,10 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </div>
                     <div class="btn-group d-flex mb-2" role="group">
                         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/backup" class="btn btn-sm btn-outline-info flex-fill">
-                            <i class="fa-solid fa-download"></i> <?= gettext('Backup') ?>
+                            <i class="fa-solid fa-download"></i><?= gettext('Backup') ?>
                         </a>
                         <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="btn btn-sm btn-outline-info flex-fill">
-                            <i class="fa-solid fa-arrow-up"></i> <?= gettext('Upgrade') ?>
+                            <i class="fa-solid fa-arrow-up"></i><?= gettext('Upgrade') ?>
                         </a>
                     </div>
                 </div>
@@ -392,11 +392,11 @@ $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCri
                     </div>
                     <?php if ($hasOrphanedFiles): ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/orphaned-files" class="btn btn-sm btn-outline-danger w-100 mb-2">
-                        <i class="fa-solid fa-trash"></i> <?= gettext('Clean Up Files') ?>
+                        <i class="fa-solid fa-trash"></i><?= gettext('Clean Up Files') ?>
                     </a>
                     <?php endif; ?>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug" class="btn btn-sm btn-outline-secondary w-100">
-                        <i class="fa-solid fa-bug"></i> <?= gettext('Debug Info') ?>
+                        <i class="fa-solid fa-bug"></i><?= gettext('Debug Info') ?>
                     </a>
                 </div>
             </div>

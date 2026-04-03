@@ -17,7 +17,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </nav>
         <div class="btn-group btn-group-sm ms-2">
             <a href="https://login.mailchimp.com/" target="_blank" class="btn btn-outline-warning" title="<?= gettext('Open MailChimp') ?>">
-                <i class="fa-brands fa-mailchimp fa-fw"></i> <?= gettext('Open MailChimp') ?>
+                <i class="fa-brands fa-mailchimp fa-fw"></i><?= gettext('Open MailChimp') ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/plugins/management/mailchimp" class="btn btn-outline-secondary" title="<?= gettext('Plugin Settings') ?>">
                 <i class="fa-solid fa-cog fa-fw"></i>

@@ -1,18 +1,21 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\Utils\CSRFUtils;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security: user must be administrator to use this page
 AuthenticationManager::redirectHomeIfNotAdmin();
+
+$aPropTypes = CustomFieldUtils::getPropTypes();
 
 $sPageTitle = gettext('Custom Person Fields Editor');
 $sPageSubtitle = gettext('Define custom fields to collect additional person data');

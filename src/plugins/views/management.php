@@ -66,14 +66,14 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                 data-action="disable" data-plugin-id="<?= $pluginId ?>"
                                 title="<?= gettext('Disable Plugin') ?>"
                                 onclick="event.stopPropagation();">
-                            <i class="fa-solid fa-power-off"></i> <?= gettext('Disable') ?>
+                            <i class="fa-solid fa-power-off"></i><?= gettext('Disable') ?>
                         </button>
                     <?php else: ?>
                         <button type="button" class="btn btn-tool btn-plugin-toggle text-success"
                                 data-action="enable" data-plugin-id="<?= $pluginId ?>"
                                 title="<?= gettext('Enable Plugin') ?>"
                                 onclick="event.stopPropagation();">
-                            <i class="fa-solid fa-play"></i> <?= gettext('Enable') ?>
+                            <i class="fa-solid fa-play"></i><?= gettext('Enable') ?>
                         </button>
                     <?php endif; ?>
                 <?php endif; ?>

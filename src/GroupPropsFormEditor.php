@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -13,6 +14,8 @@ use ChurchCRM\view\PageHeader;
 
 // Security: user must be allowed to edit records to use this page.
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isManageGroupsEnabled(), 'ManageGroups');
+
+$aPropTypes = CustomFieldUtils::getPropTypes();
 
 // Initialize logger for error tracking
 $logger = LoggerUtils::getAppLogger();
