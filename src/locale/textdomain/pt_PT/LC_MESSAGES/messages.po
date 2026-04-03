@@ -1932,7 +1932,7 @@ msgstr "Deve especificar um número de cheque"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Verifique o número não é válido para &#39;CAIXA&#39; pagamento"
+msgstr "Verifique o número não é válido para 'CAIXA' pagamento"
 
 #: 
 msgid " more entries will fit."

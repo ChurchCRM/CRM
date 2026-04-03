@@ -454,7 +454,7 @@
     "NonDeductible amount can't be greater than total amount.": "Nondeductible beløpet kan ikke være større enn totalbeløpet.",
     "At least one fund must have a non-zero amount.": "Minst ett fond må ha en ikke-null verdi.",
     "Must specify non-zero check number": "Må angi ikke-null sjekknummer",
-    "Check number not valid for 'CASH' payment": "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling",
+    "Check number not valid for 'CASH' payment": "Sjekk nummeret ikke gyldig for 'Cash' betaling",
     " more entries will fit.": "flere kontroller vil passe.",
     "Deposit closed": "Innskudd lukket",
     "Payment Schedule": "Betalingsplan:",

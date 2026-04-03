@@ -530,4 +530,105 @@ $("#printPerson").on("click", function () { window.print(); });
 
 ---
 
-Last updated: March 28, 2026
+### Always Escape SystemConfig Values in HTML Attributes <!-- learned: 2026-04-03 -->
+
+`SystemConfig::getValue()` returns raw strings from the database. When rendered into
+HTML attributes (`data-*`, `value=`, `href=`), they must be escaped — even though they
+come from "trusted" admin config, a stored XSS in the config table propagates to every
+page that renders the value.
+
+```php
+// ❌ WRONG — unescaped config in attribute
+data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>"
+data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'
+
+// ✅ CORRECT — escape for attribute context
+data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>"
+data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'
+```
+
+### sanitizeText() Is Not Sufficient for HTML Attributes <!-- learned: 2026-04-03 -->
+
+`InputUtils::sanitizeText()` only calls `strip_tags()` — it does NOT escape HTML
+entities. A payload like `" onclick="alert(1)` passes through `sanitizeText()` intact
+and breaks out of an attribute context. Always use `escapeAttribute()` for `href=`
+and `escapeHTML()` for link text.
+
+```php
+// ❌ WRONG — sanitizeText doesn't escape quotes
+<a href="https://facebook.com/<?= InputUtils::sanitizeText($per_Facebook) ?>">
+    <?= $per_Facebook ?>
+</a>
+
+// ✅ CORRECT — escapeAttribute for href, escapeHTML for text
+<a href="https://facebook.com/<?= InputUtils::escapeAttribute($per_Facebook) ?>">
+    <?= InputUtils::escapeHTML($per_Facebook) ?>
+</a>
+```
+
+### API Routes Need Explicit Auth Middleware <!-- learned: 2026-04-03 -->
+
+Group-level middleware (e.g., `FamilyMiddleware`) only validates the entity exists —
+it does NOT check user permissions. Each route that modifies data must explicitly add
+the appropriate auth middleware. Check for this pattern when reviewing API routes:
+
+```php
+// ❌ WRONG — only entity existence check (any authenticated user can call)
+$group->post('/verify', function (...) {
+    $family->sendVerifyEmail();
+    return SlimUtils::renderSuccessJSON($response);
+});
+// Group-level FamilyMiddleware only checks family exists
+
+// ✅ CORRECT — add permission middleware per route
+$group->post('/verify', function (...) {
+    $family->sendVerifyEmail();
+    return SlimUtils::renderSuccessJSON($response);
+})->add(EditRecordsRoleAuthMiddleware::class);
+```
+
+### Command Injection: execFileSync Over execSync <!-- learned: 2026-04-03 -->
+
+Node.js `execSync(cmd)` passes the string through a shell, enabling injection via
+metacharacters (`; | && $()` etc.). Use `execFileSync(program, args[])` which bypasses
+the shell entirely.
+
+```js
+// ❌ WRONG — shell string injection risk
+const { execSync } = require('child_process');
+execSync(`git commit -m "${message}"`); // message could contain "; rm -rf /"
+
+// ✅ CORRECT — array args, no shell
+const { execFileSync } = require('child_process');
+execFileSync('git', ['commit', '-m', message]); // message is a single argument
+```
+
+### Clone ORM Records: Copy All NOT NULL Columns <!-- learned: 2026-04-03 -->
+
+When cloning a Propel record to create a copy for another user/context, check the
+schema for `NOT NULL` columns. Missing a required column causes a silent database
+error. Common miss: `ucfg_cat` on `UserConfig`.
+
+```php
+// ❌ WRONG — misses ucfg_cat (NOT NULL column)
+$userConfig = new UserConfig();
+$userConfig->setPeronId($userId)->setId($id)
+    ->setName($default->getName())
+    ->setValue($default->getValue());
+$userConfig->save(); // Fails: ucfg_cat cannot be null
+
+// ✅ CORRECT — copy all NOT NULL columns
+$userConfig = new UserConfig();
+$userConfig->setPeronId($userId)->setId($id)
+    ->setName($default->getName())
+    ->setValue($default->getValue())
+    ->setType($default->getType())
+    ->setCat($default->getCat())          // NOT NULL — don't forget!
+    ->setTooltip($default->getTooltip())
+    ->setPermission($default->getPermission());
+$userConfig->save();
+```
+
+---
+
+Last updated: April 3, 2026
