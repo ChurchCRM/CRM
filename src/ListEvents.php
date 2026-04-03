@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
@@ -398,7 +398,7 @@ foreach ($allMonths as $mVal) {
                 <?php endif; ?>
               </td>
               <td>
-                <span class="small"><?= FormatDate($event['start'], 1) ?></span>
+                <span class="small"><?= DateTimeUtils::formatDate($event['start'], 1) ?></span>
               </td>
               <td class="text-center">
                 <?php if ($event['inactive']): ?>

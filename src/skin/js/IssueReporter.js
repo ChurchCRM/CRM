@@ -58,19 +58,19 @@ function initializeIssueReporter() {
         window.open(gitHubTemplateURL, "github");
 
         // Success feedback before closing
-        $btn.html('<i class="ti ti-check me-1"></i> Opened!');
+        $btn.html('<i class="ti ti-check me-1"></i>Opened!');
         setTimeout(function () {
           $("#IssueReportModal").modal("hide");
         }, 800);
       })
       .fail(function () {
-        $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
+        $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i>Open GitHub Issue');
         alert("Could not gather system info. Please try again.");
       })
       .always(function () {
         // Reset button and textarea when modal is fully hidden
         $("#IssueReportModal").one("hidden.bs.modal", function () {
-          $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i> Open GitHub Issue');
+          $btn.prop("disabled", false).html('<i class="ti ti-brand-github me-1"></i>Open GitHub Issue');
           $("#issueDescription").val("");
         });
       });

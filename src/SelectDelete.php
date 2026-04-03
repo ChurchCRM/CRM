@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
@@ -9,6 +9,7 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -171,7 +172,7 @@ require_once __DIR__ . '/Include/Header.php';
                 if ($fam_ID == $iFamilyID) {
                     echo ' -- ' . gettext('CURRENT FAMILY WITH DONATIONS');
                 } else {
-                    echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+                    echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
                 }
             }
             echo '</select><br><br>';

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
@@ -16,7 +16,10 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -192,7 +195,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     // Validate Wedding Date if one was entered
-    $dateString = parseAndValidateDate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
+    $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
     if ((strlen($dWeddingDate) > 0) && $dateString === false) {
         $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';
@@ -203,7 +206,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (checkEmail($sEmail) === false) {
+        if (MiscUtils::checkEmail($sEmail) === false) {
             $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
@@ -218,7 +221,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
         $currentFieldData = InputUtils::legacyFilterInput($_POST[$fam_custom_Field]);
 
-        $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
+        $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $fam_custom_Field, $aCustomErrors);
 
         // assign processed value locally to $aPersonProps so we can use it to generate the form later
         $aCustomData[$fam_custom_Field] = $currentFieldData;
@@ -404,7 +407,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                 if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
-                    sqlCustomField($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
+                    CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $fam_custom_Field, $sCountry);
                 }
             }
 
@@ -599,7 +602,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
-                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= change_date_for_place_holder($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
                     <span class="text-danger small"><?= $sWeddingDateError ?></span>
@@ -772,7 +775,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 
-                        formCustomField($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
+                        CustomFieldUtils::renderForm($type_ID, $fam_custom_Field, $currentFieldData, $fam_custom_Special, !isset($_POST['FamilySubmit']));
                         if (!empty($aCustomErrors[$fam_custom_Field])) {
                             echo '<span class="text-danger small">' . $aCustomErrors[$fam_custom_Field] . '</span>';
                         }
@@ -936,7 +939,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php if ($iFamilyID < 0) { ?>
                                 <div class="mt-3">
                                     <button type="button" class="btn btn-outline-primary btn-sm" id="addFamilyMemberRow">
-                                        <i class="fa-solid fa-plus"></i> <?= gettext('Add Another Family Member') ?>
+                                        <i class="fa-solid fa-plus"></i><?= gettext('Add Another Family Member') ?>
                                     </button>
                                 </div>
                                 <?php } ?>

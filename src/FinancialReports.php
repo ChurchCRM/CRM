@@ -1,11 +1,13 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
@@ -159,7 +161,7 @@ if ($sReportType === '') {
               if (array_key_exists($fam_ID, $aHead)) {
                   echo ', ' . InputUtils::escapeHTML($aHead[$fam_ID]);
               }
-              echo ' ' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+              echo ' ' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
           } ?>
         </select>
         <div class="d-flex gap-2 mt-2">
@@ -207,7 +209,7 @@ if ($sReportType === '') {
     <?php if (in_array($sReportType, ['Pledge Summary', 'Pledge Reminders', 'Pledge Family Summary', 'Voting Members'])) : ?>
       <div class="mb-3">
         <label class="form-label" for="FYID"><?= gettext('Fiscal Year') ?>:</label>
-        <?php PrintFYIDSelect('FYID', $iFYID); ?>
+        <?php FiscalYearUtils::renderYearSelect('FYID', $iFYID); ?>
       </div>
     <?php endif; ?>
 

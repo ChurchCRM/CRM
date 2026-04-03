@@ -13917,6 +13917,10 @@ msgstr "TLS Automatico"
 msgid "Auto-Backup"
 msgstr "Backup Automatico"
 
+#: 
+msgid "BCC All Mail To"
+msgstr "CCN Tutte le Email A"
+
 #. plugin:external-backup:section:4:content
 #: 
 msgid "Before relying on external backups, test your connection:\n"
@@ -14030,6 +14034,11 @@ msgstr "Proprietà Non Inviare SMS"
 #: 
 msgid "Download OpenLP"
 msgstr "Scarica OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Formato Numero di Telefono E.164"
 
 #: 
 msgid "Enable Email"
@@ -14363,6 +14372,14 @@ msgstr "Impostazioni Rapide"
 #: 
 msgid "Registered students"
 msgstr "Studenti registrati"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Autenticazione SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Timeout SMTP"
 
 #. plugin:custom-links:section:3:title
 #: 

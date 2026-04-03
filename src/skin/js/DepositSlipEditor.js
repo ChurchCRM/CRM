@@ -99,7 +99,7 @@ function initPaymentTable() {
         return (
           '<a class="btn btn-sm btn-info" href="PledgeDetails.php?PledgeID=' +
           data +
-          '"><i class="fa-solid fa-circle-info"></i> Details</a>'
+          '"><i class="fa-solid fa-circle-info"></i>Details</a>'
         );
       },
     });
@@ -243,7 +243,7 @@ function initDepositSlipEditor() {
     // Show loading indicator
     var submitBtn = $(this).find('button[type="submit"]');
     var originalText = submitBtn.html();
-    submitBtn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i> ' + i18next.t("Saving..."));
+    submitBtn.prop("disabled", true).html('<i class="fa-solid fa-spinner fa-spin"></i>' + i18next.t("Saving..."));
 
     var formData = {
       depositDate: $("#DepositDate").val(),
@@ -320,12 +320,12 @@ function initDepositSlipEditor() {
 
     if (selectedRows > 0) {
       deleteBtn
-        .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete") + " (" + selectedRows + ")")
+        .html('<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete") + " (" + selectedRows + ")")
         .removeClass("btn-outline-danger")
         .addClass("btn-danger");
     } else {
       deleteBtn
-        .html('<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"))
+        .html('<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete"))
         .removeClass("btn-danger")
         .addClass("btn-outline-danger");
     }
@@ -358,7 +358,7 @@ function initDepositSlipEditor() {
           className: "btn-secondary",
         },
         confirm: {
-          label: '<i class="fa-solid fa-trash-can"></i> ' + i18next.t("Delete"),
+          label: '<i class="fa-solid fa-trash-can"></i>' + i18next.t("Delete"),
           className: "btn-danger",
         },
       },
