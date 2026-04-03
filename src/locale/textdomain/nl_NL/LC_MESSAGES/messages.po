@@ -13858,6 +13858,10 @@ msgstr "Automatische TLS"
 msgid "Auto-Backup"
 msgstr "Automatische back-up"
 
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC Alle E-mail Naar"
+
 #. plugin:external-backup:section:4:content
 #: 
 msgid "Before relying on external backups, test your connection:\n"
@@ -13967,6 +13971,11 @@ msgstr "Eigenschap 'Geen SMS'"
 #: 
 msgid "Download OpenLP"
 msgstr "OpenLP downloaden"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 Telefoonnummerformaat"
 
 #: 
 msgid "Enable Email"
@@ -14300,6 +14309,14 @@ msgstr "Snelle instellingen"
 #: 
 msgid "Registered students"
 msgstr "Geregistreerde leerlingen"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP-authenticatie"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP-time-out"
 
 #. plugin:custom-links:section:3:title
 #: 
