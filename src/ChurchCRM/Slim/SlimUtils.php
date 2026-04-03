@@ -210,8 +210,10 @@ class SlimUtils
             Request   $request,
             Throwable $exception,
             bool $displayErrorDetails,
-            bool $logErrors,       // required by Slim's error handler signature
-            bool $logErrorDetails  // required by Slim's error handler signature
+            // $logErrors and $logErrorDetails are required by Slim's error handler signature
+            // but are unused here — logging is handled by LoggerUtils via our own level/format rules
+            bool $logErrors,
+            bool $logErrorDetails
         ) use ($dashboardUrl, $dashboardText) {
             $logger = LoggerUtils::getAppLogger();
 
@@ -315,8 +317,10 @@ class SlimUtils
             Request $request,
             Throwable $exception,
             bool $displayErrorDetails,
-            bool $logErrors,       // required by Slim's error handler signature
-            bool $logErrorDetails  // required by Slim's error handler signature
+            // $logErrors and $logErrorDetails are required by Slim's error handler signature
+            // but are unused here — logging is handled by LoggerUtils via our own level/format rules
+            bool $logErrors,
+            bool $logErrorDetails
         ) use ($logger) {
             // Log full error details to disk for debugging (includes sensitive info)
             // This is only visible to administrators, not to users

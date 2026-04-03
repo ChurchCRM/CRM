@@ -16,7 +16,10 @@ $statusIcon = match ($statusCode) {
     default => 'ti-alert-circle',
 };
 
-$statusColor = ($statusCode >= 500) ? 'text-danger' : 'text-warning';
+$statusColor = match (true) {
+    $statusCode >= 500 => 'text-danger',
+    default            => 'text-warning',
+};
 
 $sPageTitle = $statusTitle;
 
