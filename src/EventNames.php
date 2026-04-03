@@ -58,7 +58,12 @@ if (isset($_POST['Action'])) {
                 $eventType->setDefRecurType(InputUtils::legacyFilterInput($eRecur));
             }
             if (!empty($eDOW)) {
-                $eventType->setDefRecurDOW(InputUtils::legacyFilterInput($eDOW));
+                $dayOfWeekMap = ['1' => 'Sunday', '2' => 'Monday', '3' => 'Tuesday', '4' => 'Wednesday', '5' => 'Thursday', '6' => 'Friday', '7' => 'Saturday'];
+                $dowValue = InputUtils::legacyFilterInput($eDOW);
+                if (isset($dayOfWeekMap[$dowValue])) {
+                    $dowValue = $dayOfWeekMap[$dowValue];
+                }
+                $eventType->setDefRecurDOW($dowValue);
             }
             if (!empty($eDOM)) {
                 $eventType->setDefRecurDOM(InputUtils::legacyFilterInput($eDOM));

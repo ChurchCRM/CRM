@@ -56,6 +56,7 @@ if (isset($_POST['save'])) {
                     ->setName($defaultConfig->getName())
                     ->setValue($defaultConfig->getValue())
                     ->setType($defaultConfig->getType())
+                    ->setCat($defaultConfig->getCat())
                     ->setTooltip($defaultConfig->getTooltip())
                     ->setPermission($defaultConfig->getPermission());
                 $userConfig->save();

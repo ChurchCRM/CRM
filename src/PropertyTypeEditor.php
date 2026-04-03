@@ -43,6 +43,9 @@ if (isset($_POST['Submit'])) {
             $propertyType = new PropertyType();
         } else {
             $propertyType = PropertyTypeQuery::create()->findOneByPrtId($iPropertyTypeID);
+            if ($propertyType === null) {
+                RedirectUtils::redirect('PropertyTypeList.php');
+            }
         }
 
         $propertyType->setPrtClass($sClass);
@@ -56,6 +59,9 @@ if (isset($_POST['Submit'])) {
 } elseif ($iPropertyTypeID > 0) {
     // Get the data on this property
     $propertyType = PropertyTypeQuery::create()->findOneByPrtId($iPropertyTypeID);
+    if ($propertyType === null) {
+        RedirectUtils::redirect('PropertyTypeList.php');
+    }
 
     // Assign values locally
     $sName = $propertyType->getPrtName();
