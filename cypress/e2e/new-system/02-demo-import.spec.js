@@ -243,17 +243,26 @@ describe('02 - Demo Data Import', () => {
 
             cy.visit('/plugins/management');
 
-            // Find the Google Analytics plugin card
-            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 }).should('be.visible');
+            // Wait for plugin cards to load
+            cy.get('.card[data-plugin-id]', { timeout: 10000 }).should('have.length.greaterThan', 0);
 
-            // Click the disable button and wait for the disable request/reload flow to complete
-            cy.get('[data-action="disable"][data-plugin-id="google-analytics"]').click();
-            cy.wait('@disableGoogleAnalytics')
+            // Find the Google Analytics plugin card and scroll into view
+            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
+                .scrollIntoView()
+                .should('be.visible');
+
+            // Find and click the disable button within the Google Analytics card
+            cy.get('.card[data-plugin-id="google-analytics"]')
+                .find('[data-action="disable"]')
+                .should('be.visible')
+                .click();
+
+            // Wait for the disable API request to complete
+            cy.wait('@disableGoogleAnalytics', { timeout: 30000 })
                 .its('response.statusCode')
                 .should('be.oneOf', [200, 204]);
 
-            // Verify the reloaded page shows the plugin as disabled
-            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 }).should('be.visible');
+            // Verify the plugin is now disabled — badge should reflect disabled state
             cy.get('.card[data-plugin-id="google-analytics"]')
                 .find('.badge')
                 .should('contain', 'Disabled');
