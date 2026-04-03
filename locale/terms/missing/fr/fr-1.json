@@ -1,15 +1,15 @@
 {
-  "Confession": "",
-  "Format": "",
-  "Minimum": "",
-  "Options": "",
-  "Photo": "",
-  "options": "",
-  "page": "",
-  "Communication": "",
+  "Confession": "Confession",
+  "Format": "Format",
+  "Minimum": "Minimum",
+  "Options": "Options",
+  "Photo": "Photo",
+  "options": "options",
+  "page": "page",
+  "Communication": "Communication",
   "N/A": "",
-  "Parents": "",
+  "Parents": "Parents",
   "Auto TLS": "TLS automatique",
-  "Configuration": "",
-  "Continent": ""
+  "Configuration": "Configuration",
+  "Continent": "Continent"
 }
