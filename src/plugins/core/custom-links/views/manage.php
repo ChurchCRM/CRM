@@ -48,7 +48,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-success" id="add-link">
-                            <i class="fa-solid fa-plus"></i> <?= gettext('Add Link') ?>
+                            <i class="fa-solid fa-plus"></i><?= gettext('Add Link') ?>
                         </button>
                     </div>
         </form>
@@ -219,7 +219,7 @@ $(document).ready(function() {
         // Disable button during submission
         $button.prop('disabled', true);
         var originalText = $button.html();
-        $button.html('<i class="fa-solid fa-spinner fa-spin"></i> ' + i18next.t('Adding...'));
+        $button.html('<i class="fa-solid fa-spinner fa-spin"></i>' + i18next.t('Adding...'));
         
         fetch(window.CRM.root + '/plugins/custom-links/api/links', {
             method: 'POST',

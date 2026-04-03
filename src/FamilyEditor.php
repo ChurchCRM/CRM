@@ -939,7 +939,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <?php if ($iFamilyID < 0) { ?>
                                 <div class="mt-3">
                                     <button type="button" class="btn btn-outline-primary btn-sm" id="addFamilyMemberRow">
-                                        <i class="fa-solid fa-plus"></i> <?= gettext('Add Another Family Member') ?>
+                                        <i class="fa-solid fa-plus"></i><?= gettext('Add Another Family Member') ?>
                                     </button>
                                 </div>
                                 <?php } ?>

@@ -193,7 +193,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <span class="badge bg-warning text-dark"><?= $openDeposits ?> <?= gettext('open') ?></span>
                                 <?php endif; ?>
                                 <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-2">
-                                    <i class="fa-solid fa-eye"></i> <?= gettext('View') ?>
+                                    <i class="fa-solid fa-eye"></i><?= gettext('View') ?>
                                 </a>
                             </div>
                         </div>
@@ -214,7 +214,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
                                 <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
-                                    <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
+                                    <i class="fa-solid fa-cog"></i><?= gettext('Edit') ?>
                                 </a>
                             </div>
                         </div>
@@ -238,7 +238,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             <div>
                                 <?php if ($isAdmin): ?>
                                 <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
-                                    <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
+                                    <i class="fa-solid fa-cog"></i><?= gettext('Settings') ?>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -255,7 +255,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
-                                    <i class="fa-solid fa-pen-to-square"></i> <?= gettext('Edit') ?>
+                                    <i class="fa-solid fa-pen-to-square"></i><?= gettext('Edit') ?>
                                 </a>
                             </div>
                         </div>
@@ -271,7 +271,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <a href="<?= SystemURLs::getRootPath() ?>/finance/reports" class="btn btn-sm btn-primary">
-                                    <i class="fa-solid fa-play"></i> <?= gettext('Generate') ?>
+                                    <i class="fa-solid fa-play"></i><?= gettext('Generate') ?>
                                 </a>
                             </div>
                         </div>
@@ -333,7 +333,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <i class="fa-solid fa-inbox fa-3x text-muted mb-3"></i>
                         <p class="text-muted"><?= gettext('No deposits found.') ?></p>
                         <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-primary">
-                            <i class="fa-solid fa-plus"></i> <?= gettext('Create First Deposit') ?>
+                            <i class="fa-solid fa-plus"></i><?= gettext('Create First Deposit') ?>
                         </a>
                     </div>
                     <?php endif; ?>
@@ -378,7 +378,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <small class="text-muted"><?= gettext('Total Amount') ?></small>
                     </div>
                     <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
-                        <i class="fa-solid fa-pen-to-square"></i> <?= gettext('Edit Deposit') ?>
+                        <i class="fa-solid fa-pen-to-square"></i><?= gettext('Edit Deposit') ?>
                     </a>
                 </div>
             </div>
@@ -393,7 +393,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <i class="fa-solid fa-circle-plus fa-3x text-muted mb-3"></i>
                     <p class="text-muted"><?= gettext('Create or select a deposit to get started.') ?></p>
                     <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-success">
-                        <i class="fa-solid fa-plus"></i> <?= gettext('Create Deposit') ?>
+                        <i class="fa-solid fa-plus"></i><?= gettext('Create Deposit') ?>
                     </a>
                 </div>
             </div>
@@ -461,7 +461,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                     <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
                     <div class="card-footer bg-light">
                         <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary w-100">
-                            <i class="fa-solid fa-cog"></i> <?= gettext('Manage Funds') ?>
+                            <i class="fa-solid fa-cog"></i><?= gettext('Manage Funds') ?>
                         </a>
                     </div>
                     <?php endif; ?>

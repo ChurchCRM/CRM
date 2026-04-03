@@ -428,7 +428,7 @@ require_once __DIR__ . '/Include/Header.php';
         <div class="card-body">
           <p><?= gettext('Export all people data in ChMeetings format for import into external systems.') ?></p>
           <button type="button" class="btn btn-primary" id="exportChMeetingsBtn">
-            <i class="fa-solid fa-download"></i> <?= gettext('Export to ChMeetings CSV') ?>
+            <i class="fa-solid fa-download"></i><?= gettext('Export to ChMeetings CSV') ?>
           </button>
         </div>
       </div>
@@ -444,7 +444,7 @@ document.getElementById('exportChMeetingsBtn').addEventListener('click', functio
     
     // Show loading state
     btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <?= gettext("Exporting...") ?>';
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><?= gettext("Exporting...") ?>';
     
     var downloadUrl = window.CRM.root + '/admin/api/database/people/export/chmeetings';
     

@@ -31,23 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <?= gettext('A family represents a household. It holds the shared address and home phone number for all family members living together.') ?>
                             </p>
                             <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="btn btn-success btn-sm">
-                                <i class="fa-solid fa-house-circle-plus me-1"></i> <?= gettext('Add First Family') ?>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="d-flex align-items-start mb-2">
-                        <div class="me-3 mt-1">
-                            <span class="badge bg-primary badge-pill" style="font-size:1rem;padding:.5em .75em;">2</span>
-                        </div>
-                        <div>
-                            <h6 class="mb-1"><?= gettext('Add People to the Family') ?></h6>
-                            <p class="text-muted mb-2">
-                                <?= gettext('Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child).') ?>
-                            </p>
-                            <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="btn btn-primary btn-sm">
-                                <i class="fa-solid fa-user-plus me-1"></i> <?= gettext('Add a Person') ?>
+                                <i class="fa-solid fa-house-circle-plus me-1"></i><?= gettext('Add First Family') ?>
                             </a>
                         </div>
                     </div>
@@ -94,17 +78,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <div class="row">
                         <div class="col-sm-4 mb-2 mb-sm-0">
                             <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php" class="btn btn-success w-100">
-                                <i class="fa-solid fa-house-circle-plus me-1"></i> <?= gettext('Add First Family') ?>
+                                <i class="fa-solid fa-house-circle-plus me-1"></i><?= gettext('Add First Family') ?>
                             </a>
                         </div>
                         <div class="col-sm-4 mb-2 mb-sm-0">
                             <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php" class="btn btn-primary w-100">
-                                <i class="fa-solid fa-user-plus me-1"></i> <?= gettext('Add a Person') ?>
+                                <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add a Person') ?>
                             </a>
                         </div>
                         <div class="col-sm-4">
                             <a href="<?= SystemURLs::getRootPath() ?>/admin/get-started" class="btn btn-outline-secondary w-100">
-                                <i class="fa-solid fa-arrow-left me-1"></i> <?= gettext('Back to Get Started') ?>
+                                <i class="fa-solid fa-arrow-left me-1"></i><?= gettext('Back to Get Started') ?>
                             </a>
                         </div>
                     </div>
@@ -149,7 +133,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <?= gettext('If you have many records in a spreadsheet, the CSV import may be faster than entering data manually.') ?>
                     </p>
                     <a href="<?= SystemURLs::getRootPath() ?>/admin/import/csv" class="btn btn-outline-info btn-sm w-100">
-                        <i class="fa-solid fa-upload me-1"></i> <?= gettext('Import from CSV') ?>
+                        <i class="fa-solid fa-upload me-1"></i><?= gettext('Import from CSV') ?>
                     </a>
                 </div>
             </div>
