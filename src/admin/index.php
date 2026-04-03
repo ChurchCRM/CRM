@@ -9,7 +9,6 @@ use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\dto\SystemURLs;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -53,25 +52,31 @@ $errorMiddleware->setDefaultErrorHandler(function (
 ) use ($app) {
     $logger = LoggerUtils::getAppLogger();
     
+    // Determine HTTP status code
+    $statusCode = 500;
     if ($exception instanceof HttpNotFoundException) {
-        $logger->info('Admin 404 redirect', ['path' => $request->getUri()->getPath()]);
-        $response = $app->getResponseFactory()->createResponse(302);
-        return $response->withHeader('Location', SystemURLs::getRootPath() . '/');
+        $statusCode = 404;
     }
     
-    $logger->error('Admin error', [
-        'exception' => $exception::class,
-        'message' => $exception->getMessage(),
-        'file' => $exception->getFile(),
-        'line' => $exception->getLine(),
-        'trace' => $exception->getTraceAsString()
-    ]);
+    // Log with appropriate level
+    if ($statusCode >= 500) {
+        $logger->error('Admin error', [
+            'exception' => $exception::class,
+            'message' => $exception->getMessage(),
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine(),
+            'trace' => $exception->getTraceAsString()
+        ]);
+    } else {
+        $logger->info('Admin HTTP ' . $statusCode, ['path' => $request->getUri()->getPath()]);
+    }
     
-    // Render error page using PHP template
+    // Render error page using PHP template (handles 404, 500, etc.)
     $renderer = new PhpRenderer(__DIR__ . '/views/');
-    $response = $app->getResponseFactory()->createResponse(500);
+    $response = $app->getResponseFactory()->createResponse($statusCode);
     
     return $renderer->render($response, 'error.php', [
+        'statusCode' => $statusCode,
         'errorDetails' => [
             'message' => SlimUtils::sanitizeErrorMessage($exception),
             'displayErrorDetails' => $displayErrorDetails

@@ -20,7 +20,11 @@ $app->setBasePath($basePath);
 // Add Slim error middleware for proper error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::setupErrorLogger($errorMiddleware);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+SlimUtils::registerDefaultHtmlErrorHandler(
+    $errorMiddleware,
+    SlimUtils::getBasePath('/v2') . '/dashboard',
+    gettext('Return to Dashboard')
+);
 
 // CRITICAL: Middleware order matters in Slim 4 (LIFO - Last In, First Out)
 // Middleware are added in reverse execution order: added last runs first.

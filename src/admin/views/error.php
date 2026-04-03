@@ -2,6 +2,24 @@
 
 use ChurchCRM\dto\SystemURLs;
 
+$statusCode = $statusCode ?? 500;
+
+$statusTitle = match ($statusCode) {
+    404     => gettext('Page Not Found'),
+    403     => gettext('Access Denied'),
+    default => gettext('An Error Occurred'),
+};
+
+$statusIcon = match ($statusCode) {
+    404     => 'ti-map-pin-off',
+    403     => 'ti-lock',
+    default => 'ti-alert-circle',
+};
+
+$statusColor = ($statusCode >= 500) ? 'text-danger' : 'text-warning';
+
+$sPageTitle = $statusTitle;
+
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -12,12 +30,12 @@ include SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="card shadow-sm">
           <div class="card-body text-center py-5">
             <div class="mb-3">
-              <span class="h1 fw-bold text-danger">500</span>
+              <span class="h1 fw-bold <?= $statusColor ?>"><?= htmlspecialchars((string) $statusCode) ?></span>
             </div>
             <div class="mb-3">
-              <i class="ti ti-alert-circle" style="font-size:3rem;"></i>
+              <i class="ti <?= $statusIcon ?>" style="font-size:3rem;"></i>
             </div>
-            <h3 class="mb-2"><?= gettext('An Error Occurred') ?></h3>
+            <h3 class="mb-2"><?= htmlspecialchars($statusTitle) ?></h3>
             <p class="text-muted mb-4"><?= gettext('An unexpected error occurred while processing your request. Please contact your administrator for assistance.') ?></p>
 
             <?php if (!empty($errorDetails) && ($errorDetails['displayErrorDetails'] ?? false)): ?>
