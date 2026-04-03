@@ -134,11 +134,9 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = null;
-            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
-                $redirectLocation = $AuthenticationRequest->redirectPath;
-            }
-            $redirectLocation ??= $_SESSION['location'] ?? 'v2/dashboard';
+            $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
+            unset($_SESSION['location']); // clear post-login redirect (one-time use)
+            $redirectLocation ??= 'v2/dashboard';
             NotificationService::updateNotifications();
             
             // Check for system updates once on login for admin users
@@ -196,26 +194,18 @@ class AuthenticationManager
                     'Session not authenticated.  Redirecting to login page'
                 );
 
-                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
-                $loginUrl = self::getSessionBeginURL();
-                if (!empty($redirectPath)) {
-                    $queryParams = http_build_query([
-                        'location' => $redirectPath,
-                    ]);
-                    $loginUrl .= '?' . $queryParams;
+                // Store the originally requested URL in the session for post-login redirect.
+                // Using the session (server-side) prevents open-redirect attacks via a crafted query parameter.
+                $safeUri = RedirectUtils::stripAndValidatePath($_SERVER['REQUEST_URI'] ?? '');
+                if ($safeUri !== '') {
+                    $_SESSION['location'] = $safeUri;
                 }
-                RedirectUtils::redirect($loginUrl);
+
+                RedirectUtils::redirect(self::getSessionBeginURL());
             } elseif (null !== $result->nextStepURL) {
                 LoggerUtils::getAuthLogger()->debug(
                     'Session authenticated, but redirect requested by authentication provider.'
                 );
-                $redirectPath = $_GET['location'] ?? $_SESSION['location'] ?? null;
-                if (!empty($redirectPath)) {
-                    $queryParams = http_build_query([
-                        'location' => $redirectPath,
-                    ]);
-                    $result->nextStepURL .= '?' . $queryParams;
-                }
                 RedirectUtils::redirect($result->nextStepURL);
             }
             LoggerUtils::getAuthLogger()->debug('Session valid');
@@ -228,14 +218,9 @@ class AuthenticationManager
         }
     }
 
-    public static function getSessionBeginURL(?string $redirectPath = null): string
+    public static function getSessionBeginURL(): string
     {
-        $url = SystemURLs::getRootPath() . '/session/begin';
-        if (!empty($redirectPath)) {
-            $url .= '?location=' . urlencode($redirectPath);
-        }
-
-        return $url;
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getForgotPasswordURL(): string
@@ -258,6 +243,20 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
+    }
+
+    /**
+     * Validates a redirect URL and returns it, or null if it is invalid/empty.
+     * Used to consolidate the validate-then-nullify pattern for post-login redirects.
+     */
+    private static function validateRedirectPath(?string $url): ?string
+    {
+        if (empty($url)) {
+            return null;
+        }
+        $validated = RedirectUtils::validateRedirectUrl($url, '');
+
+        return $validated !== '' ? $validated : null;
     }
 
     /**
