@@ -3353,5 +3353,8 @@
     "WorkEmail": "Pracovní e-mail",
     "but not this year": "ale ne letos",
     "e.g. Sunday Service": "např. Nedělní služba",
-    "member": "člen"
+    "member": "člen",
+    "Auto TLS": "Automatické TLS",
+    "Security": "Bezpečnost",
+    "Setup": "Nastavení"
 }

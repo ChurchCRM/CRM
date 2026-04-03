@@ -13821,3 +13821,12 @@ msgstr "например, воскресное богослужение"
 msgid "member"
 msgstr "участник"
 
+#: 
+msgid "Auto TLS"
+msgstr "Автоматический TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Безопасность"
+

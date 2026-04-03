@@ -13495,3 +13495,12 @@ msgstr "π.χ. Κυριακάτική Λατρεία"
 msgid "member"
 msgstr "μέλος"
 
+#: 
+msgid "Auto TLS"
+msgstr "Αυτόματο TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Ασφάλεια"
+
