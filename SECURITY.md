@@ -1,5 +1,20 @@
 # Security Policy
 
+## Stay Informed & Where to Ask
+
+Security patch announcements, CVE disclosures, and dependency update notices are posted in the **#security** channel on our Discord server.
+
+> 👉 **Join Discord:** https://discord.gg/XGppbeTw — then follow **#security** for announcements.
+
+**Please do not:**
+- DM maintainers directly about security issues
+- Post vulnerability details in any other Discord channel
+- Ask about undisclosed vulnerabilities in public channels
+
+The **#security** channel is read-only for announcements. To report an issue, use the private GitHub Advisory process described below.
+
+---
+
 ## Reporting a Vulnerability vs. Filing a Bug
 
 ### When to Use a Security Advisory (Private Disclosure)
@@ -78,4 +93,8 @@ For developers contributing to ChurchCRM, see the [Developer Security Guide](htt
 
 ## Community
 
-Have questions or want to chat with the team in real time? Join us on Discord: https://discord.gg/XGppbeTw
+Join us on Discord: https://discord.gg/XGppbeTw
+
+- **#security** — Security announcements only (patches, CVEs, advisories). Do not post vulnerability reports or tag maintainers here.
+- **#bugs** — Non-security bug reports and general troubleshooting
+- General chat, feature requests, and questions in their respective channels
