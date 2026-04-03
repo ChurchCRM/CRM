@@ -134,13 +134,7 @@ class AuthenticationManager
         }
 
         if ($result->isAuthenticated && !$result->preventRedirect) {
-            $redirectLocation = null;
-            if ($AuthenticationRequest instanceof LocalUsernamePasswordRequest) {
-                $redirectLocation = self::validateRedirectPath($AuthenticationRequest->redirectPath);
-            }
-            if ($redirectLocation === null && isset($_SESSION['location'])) {
-                $redirectLocation = self::validateRedirectPath($_SESSION['location']);
-            }
+            $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
             $redirectLocation ??= 'v2/dashboard';
             NotificationService::updateNotifications();
@@ -224,14 +218,9 @@ class AuthenticationManager
         }
     }
 
-    public static function getSessionBeginURL(?string $redirectPath = null): string
+    public static function getSessionBeginURL(): string
     {
-        $url = SystemURLs::getRootPath() . '/session/begin';
-        if (!empty($redirectPath)) {
-            $url .= '?location=' . urlencode($redirectPath);
-        }
-
-        return $url;
+        return SystemURLs::getRootPath() . '/session/begin';
     }
 
     public static function getForgotPasswordURL(): string

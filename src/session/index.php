@@ -83,7 +83,7 @@ function beginSession(Request $request, Response $response, array $args): Respon
 
     $pageArgs = [
         'sRootPath'            => SystemURLs::getRootPath(),
-        'localAuthNextStepURL' => SystemURLs::getRootPath() . '/session/begin',
+        'localAuthNextStepURL' => AuthenticationManager::getSessionBeginURL(),
         'forgotPasswordURL'    => AuthenticationManager::getForgotPasswordURL(),
         'prefilledUserName'    => $prefilledUserName,
     ];

@@ -86,7 +86,7 @@ class RedirectUtils
         $query = parse_url($uri, PHP_URL_QUERY) ?? '';
 
         $rootPath = SystemURLs::getRootPath();
-        if ($rootPath !== '' && str_starts_with($path, $rootPath)) {
+        if ($rootPath !== '' && ($path === $rootPath || str_starts_with($path, $rootPath . '/'))) {
             $path = substr($path, strlen($rootPath));
         }
 
