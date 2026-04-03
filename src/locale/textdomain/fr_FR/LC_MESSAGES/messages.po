@@ -13848,6 +13848,10 @@ msgstr "Authentification"
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr "L'authentification est requise pour API v2 si vous l'avez activée dans les paramètres du plugin Remote d'OpenLP. Le plugin utilise HTTP Basic Authentication. La plupart des configurations de réseau local ne nécessitent pas d'authentification, mais c'est recommandé pour la sécurité."
 
+#: 
+msgid "Auto TLS"
+msgstr "TLS automatique"
+
 #. plugin:external-backup:section:2:title
 #: 
 msgid "Auto-Backup"

@@ -13803,3 +13803,12 @@ msgstr "np. nabożeństwo niedzielne"
 msgid "member"
 msgstr "członek"
 
+#: 
+msgid "Auto TLS"
+msgstr "Automatyczne TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Bezpieczeństwo"
+

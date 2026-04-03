@@ -13926,3 +13926,12 @@ msgstr "例如主日崇拜"
 msgid "member"
 msgstr "成員"
 
+#: 
+msgid "Auto TLS"
+msgstr "自動TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "安全性"
+

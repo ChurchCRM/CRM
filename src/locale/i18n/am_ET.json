@@ -3343,5 +3343,9 @@
     "WorkEmail": "የሥራ ኢሜል",
     "but not this year": "ነገር ግን በዚህ አመት አይደለም",
     "e.g. Sunday Service": "ለምሳሌ ቅዳሜ ምግባር",
-    "member": "አባል"
+    "member": "አባል",
+    "Auto TLS": "ራስ ሰር TLS",
+    "Security": "ደህንነት",
+    "Setup": "ማጠናቀቅ",
+    "Testing Connection": "ግንኙነት መሞከር"
 }

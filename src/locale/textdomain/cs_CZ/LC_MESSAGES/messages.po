@@ -13727,3 +13727,18 @@ msgstr "např. Nedělní služba"
 msgid "member"
 msgstr "člen"
 
+#: 
+msgid "Auto TLS"
+msgstr "Automatické TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Bezpečnost"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Nastavení"
+

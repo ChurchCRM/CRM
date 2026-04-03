@@ -13741,3 +13741,23 @@ msgstr "ለምሳሌ ቅዳሜ ምግባር"
 msgid "member"
 msgstr "አባል"
 
+#: 
+msgid "Auto TLS"
+msgstr "ራስ ሰር TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "ደህንነት"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "ማጠናቀቅ"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "ግንኙነት መሞከር"
+
