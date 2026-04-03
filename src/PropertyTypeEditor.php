@@ -4,6 +4,8 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\model\ChurchCRM\PropertyType;
+use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -37,29 +39,28 @@ if (isset($_POST['Submit'])) {
 
     // If no errors, let's update
     if (!$bError) {
-        // Vary the SQL depending on if we're adding or editing
         if ($iPropertyTypeID === 0) {
-            $sSQL ="INSERT INTO propertytype_prt (prt_Class,prt_Name,prt_Description) VALUES ('" . $sClass ."','" . $sName ."','" . $sDescription ."')";
+            $propertyType = new PropertyType();
         } else {
-            $sSQL ="UPDATE propertytype_prt SET prt_Class = '" . $sClass ."', prt_Name = '" . $sName ."', prt_Description = '" . $sDescription ."' WHERE prt_ID =" . $iPropertyTypeID;
+            $propertyType = PropertyTypeQuery::create()->findOneByPrtId($iPropertyTypeID);
         }
 
-        // Execute the SQL
-        RunQuery($sSQL);
+        $propertyType->setPrtClass($sClass);
+        $propertyType->setPrtName($sName);
+        $propertyType->setPrtDescription($sDescription);
+        $propertyType->save();
 
         // Route back to the list
         RedirectUtils::redirect('PropertyTypeList.php');
     }
 } elseif ($iPropertyTypeID > 0) {
     // Get the data on this property
-    $sSQL = 'SELECT * FROM propertytype_prt WHERE prt_ID = ' . $iPropertyTypeID;
-    $rsProperty = mysqli_fetch_array(RunQuery($sSQL));
-    extract($rsProperty);
+    $propertyType = PropertyTypeQuery::create()->findOneByPrtId($iPropertyTypeID);
 
     // Assign values locally
-    $sName = $prt_Name;
-    $sDescription = $prt_Description;
-    $sClass = $prt_Class;
+    $sName = $propertyType->getPrtName();
+    $sDescription = $propertyType->getPrtDescription();
+    $sClass = $propertyType->getPrtClass();
 } else {
     $sName = '';
     $sDescription = '';

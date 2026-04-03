@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\UserConfig;
+use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -33,36 +34,30 @@ if (isset($_POST['save'])) {
                 $value = '1';
             }
         }
+        $id = (int)$id;
         // We can't update unless values already exist.
-        $sSQL = 'SELECT * FROM userconfig_ucfg '
-            ."WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID";
-        $bRowExists = true;
-        $iNumRows = mysqli_num_rows(RunQuery($sSQL));
-        if ($iNumRows === 0) {
-            $bRowExists = false;
-        }
+        $userConfig = UserConfigQuery::create()
+            ->filterById($id)
+            ->filterByPeronId($iPersonID)
+            ->findOne();
 
-        if (!$bRowExists) { // If Row does not exist then insert default values.
-            // Defaults will be replaced in the following Update
-            $sSQL = 'SELECT * FROM userconfig_ucfg '
-                ."WHERE ucfg_id=$id AND ucfg_per_id=0";
-            $rsDefault = RunQuery($sSQL);
-            $aDefaultRow = mysqli_fetch_row($rsDefault);
-            if ($aDefaultRow) {
-                list(
-                    $ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type,
-                    $ucfg_tooltip, $ucfg_permission
-                ) = $aDefaultRow;
+        if ($userConfig === null) {
+            // Row does not exist — clone defaults for this user
+            $defaultConfig = UserConfigQuery::create()
+                ->filterById($id)
+                ->filterByPeronId(0)
+                ->findOne();
 
+            if ($defaultConfig) {
                 $userConfig = new UserConfig();
                 $userConfig
                     ->setPeronId($iPersonID)
                     ->setId($id)
-                    ->setName($ucfg_name)
-                    ->setValue($ucfg_value)
-                    ->setType($ucfg_type)
-                    ->setTooltip($ucfg_tooltip)
-                    ->setPermission($ucfg_permission);
+                    ->setName($defaultConfig->getName())
+                    ->setValue($defaultConfig->getValue())
+                    ->setType($defaultConfig->getType())
+                    ->setTooltip($defaultConfig->getTooltip())
+                    ->setPermission($defaultConfig->getPermission());
                 $userConfig->save();
             } else {
                 echo '<BR> Error: Software BUG 3216';
@@ -71,10 +66,8 @@ if (isset($_POST['save'])) {
         }
 
         // Save new setting
-        $sSQL = 'UPDATE userconfig_ucfg '
-            ."SET ucfg_value='$value'"
-            ."WHERE ucfg_id=$id AND ucfg_per_id=$iPersonID";
-        $rsUpdate = RunQuery($sSQL);
+        $userConfig->setValue($value);
+        $userConfig->save();
         next($type);
     }
 
@@ -89,9 +82,10 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 // Get settings
-$sSQL = 'SELECT * FROM userconfig_ucfg WHERE ucfg_per_id=' . $iPersonID
-    . ' ORDER BY ucfg_id';
-$rsConfigs = RunQuery($sSQL);
+$configs = UserConfigQuery::create()
+    ->filterByPeronId($iPersonID)
+    ->orderById()
+    ->find();
 ?>
 <div class="card">
   <div class="card-body">
@@ -108,7 +102,13 @@ $rsConfigs = RunQuery($sSQL);
           <tbody>
           <?php
           $r = 1;
-          while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
+          foreach ($configs as $config) {
+              $ucfg_id = $config->getId();
+              $ucfg_name = $config->getName();
+              $ucfg_value = $config->getValue();
+              $ucfg_type = $config->getType();
+              $ucfg_tooltip = $config->getTooltip();
+              $ucfg_permission = $config->getPermission();
               if (!($ucfg_permission === 'TRUE' || AuthenticationManager::getCurrentUser()->isAdmin())) {
                   continue;
               }
@@ -137,7 +137,7 @@ $rsConfigs = RunQuery($sSQL);
               // Notes
               echo '<td>' . gettext($ucfg_tooltip) . '</td></tr>';
               $r++;
-          }
+          } // end foreach
           ?>
           </tbody>
         </table>
