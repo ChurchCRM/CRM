@@ -18,14 +18,14 @@ use ChurchCRM\dto\SystemURLs;
 
 $csp = [
     "default-src 'self'",
-    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org",
+    "script-src 'self' 'nonce-" . SystemURLs::getCSPNonce() . "' 'unsafe-eval' browser-update.org https://www.googletagmanager.com",
     "object-src 'none'",
     "style-src 'self' 'unsafe-inline' fonts.googleapis.com",
     "img-src 'self' data: https://secure.gravatar.com https://tile.openstreetmap.org https://*.tile.openstreetmap.org",
     "media-src 'self'",
     "frame-src 'self'",
     "font-src 'self' data: fonts.gstatic.com",
-    "connect-src 'self'",
+    "connect-src 'self' https://www.google-analytics.com",
     "base-uri 'self'",
     "form-action 'self'",
     "frame-ancestors 'self'",
