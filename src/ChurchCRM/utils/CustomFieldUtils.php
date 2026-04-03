@@ -65,29 +65,32 @@ class CustomFieldUtils
                 return ucfirst($data);
 
             case 9:
-                if ($data > 0) {
-                    $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID =' . $data;
-                    $rsTemp = FunctionsUtils::runQuery($sSQL);
-                    extract(mysqli_fetch_array($rsTemp));
-
-                    return $per_FirstName . ' ' . $per_LastName;
-                } else {
+                $personId = (int) $data;
+                if ($personId <= 0) {
                     return '';
                 }
+
+                $sSQL = 'SELECT per_FirstName, per_LastName FROM person_per WHERE per_ID = ' . $personId;
+                $rsTemp = FunctionsUtils::runQuery($sSQL);
+                extract(mysqli_fetch_array($rsTemp));
+
+                return $per_FirstName . ' ' . $per_LastName;
 
             case 11:
                 return $data;
 
             case 12:
-                if ($data > 0) {
-                    $sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = $special AND lst_OptionID = $data";
-                    $rsTemp = FunctionsUtils::runQuery($sSQL);
-                    extract(mysqli_fetch_array($rsTemp));
-
-                    return $lst_OptionName;
-                } else {
+                $optionId = (int) $data;
+                if ($optionId <= 0) {
                     return '';
                 }
+
+                $listId = (int) $special;
+                $sSQL = "SELECT lst_OptionName FROM list_lst WHERE lst_ID = $listId AND lst_OptionID = $optionId";
+                $rsTemp = FunctionsUtils::runQuery($sSQL);
+                extract(mysqli_fetch_array($rsTemp));
+
+                return $lst_OptionName;
 
             default:
                 return gettext('Invalid Editor ID!');
@@ -180,10 +183,11 @@ class CustomFieldUtils
                 break;
 
             case 9:
+                $groupId = (int) $special;
                 $sSQL = 'SELECT person_per.per_ID, person_per.per_FirstName, person_per.per_LastName
                             FROM person2group2role_p2g2r
                             LEFT JOIN person_per ON person2group2role_p2g2r.p2g2r_per_ID = person_per.per_ID
-                            WHERE p2g2r_grp_ID = ' . $special . ' ORDER BY per_FirstName';
+                            WHERE p2g2r_grp_ID = ' . $groupId . ' ORDER BY per_FirstName';
 
                 $rsGroupPeople = FunctionsUtils::runQuery($sSQL);
 
@@ -238,7 +242,8 @@ class CustomFieldUtils
                 break;
 
             case 12:
-                $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $special ORDER BY lst_OptionSequence";
+                $specialListId = (int) $special;
+                $sSQL = "SELECT * FROM list_lst WHERE lst_ID = $specialListId ORDER BY lst_OptionSequence";
                 $rsListOptions = FunctionsUtils::runQuery($sSQL);
 
                 echo '<div class="input-group">';

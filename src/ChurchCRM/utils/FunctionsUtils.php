@@ -41,10 +41,13 @@ class FunctionsUtils
      */
     public static function genGroupKey(string $methodSpecificID, string $famID, string $fundIDs, string $date)
     {
+        global $cnInfoCentral;
+
         $uniqueNum = 0;
         while (1) {
             $GroupKey = $methodSpecificID . '|' . $uniqueNum . '|' . $famID . '|' . $fundIDs . '|' . $date;
-            $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $GroupKey . "'";
+            $escapedGroupKey = mysqli_real_escape_string($cnInfoCentral, $GroupKey);
+            $sSQL = "SELECT COUNT(plg_GroupKey) FROM pledge_plg WHERE plg_PledgeOrPayment='Payment' AND plg_GroupKey='" . $escapedGroupKey . "'";
             $rsResults = self::runQuery($sSQL);
             [$numGroupKeys] = mysqli_fetch_row($rsResults);
             if ($numGroupKeys) {
