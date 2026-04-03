@@ -5,6 +5,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -42,10 +43,15 @@ if (isset($_POST['save'])) {
         }
 
         // Save new setting
-        $sSQL = 'UPDATE userconfig_ucfg '
-            ."SET ucfg_value='$value', ucfg_permission='$permission'"
-            ."WHERE ucfg_id='$id' AND ucfg_per_id='0'";
-        $rsUpdate = RunQuery($sSQL);
+        $userConfig = UserConfigQuery::create()
+            ->filterById((int)$id)
+            ->filterByPeronId(0)
+            ->findOne();
+        if ($userConfig !== null) {
+            $userConfig->setValue($value);
+            $userConfig->setPermission($permission);
+            $userConfig->save();
+        }
         next($type);
     }
 }
@@ -59,8 +65,10 @@ $aBreadcrumbs = PageHeader::breadcrumbs([
 require_once __DIR__ . '/Include/Header.php';
 
 // Get settings
-$sSQL ="SELECT * FROM userconfig_ucfg WHERE ucfg_per_id='0' ORDER BY ucfg_id";
-$rsConfigs = RunQuery($sSQL);
+$configs = UserConfigQuery::create()
+    ->filterByPeronId(0)
+    ->orderById()
+    ->find();
 ?>
 <div class="card">
     <div class="card-body">
@@ -78,7 +86,14 @@ $rsConfigs = RunQuery($sSQL);
                     </thead>
                     <tbody>
                     <?php
-                    while (list($ucfg_per_id, $ucfg_id, $ucfg_name, $ucfg_value, $ucfg_type, $ucfg_tooltip, $ucfg_permission) = mysqli_fetch_row($rsConfigs)) {
+                    foreach ($configs as $config) {
+                        $ucfg_id = $config->getId();
+                        $ucfg_name = $config->getName();
+                        $ucfg_value = $config->getValue();
+                        $ucfg_type = $config->getType();
+                        $ucfg_tooltip = $config->getTooltip();
+                        $ucfg_permission = $config->getPermission();
+
                         $sel1 = $sel2 = '';
                         if ($ucfg_permission == 'TRUE') {
                             $sel2 = 'selected';

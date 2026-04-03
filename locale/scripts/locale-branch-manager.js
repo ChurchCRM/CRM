@@ -16,14 +16,14 @@
  *   node locale/scripts/locale-branch-manager.js --get-version
  */
 
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
 // Helpers
-function run(cmd, options = {}) {
+function run(program, args = [], options = {}) {
     try {
-        const out = execSync(cmd, { encoding: 'utf8', ...options });
+        const out = execFileSync(program, args, { encoding: 'utf8', ...options });
         return out.trim();
     } catch (err) {
         if (options.allowFail) return null;
@@ -63,7 +63,7 @@ function getAutoVersion() {
 
     // Try git describe (if in a tag)
     try {
-        const tag = run('git describe --tags --abbrev=0', { allowFail: true });
+        const tag = run('git', ['describe', '--tags', '--abbrev=0'], { allowFail: true });
         if (tag && /^\d+\.\d+\.\d+/.test(tag)) {
             return tag.replace(/^v/, '').split('-')[0]; // strip 'v' prefix and '-*' suffixes
         }
@@ -106,7 +106,7 @@ function extractVersionFromBranch(branchName) {
  * Get current branch name
  */
 function getCurrentBranch() {
-    return run('git rev-parse --abbrev-ref HEAD', { allowFail: true }) || 'master';
+    return run('git', ['rev-parse', '--abbrev-ref', 'HEAD'], { allowFail: true }) || 'master';
 }
 
 /**
@@ -131,18 +131,18 @@ function initBranch(version) {
     const branchName = buildBranchName(version);
 
     // Branch already exists on remote?
-    const existsRemote = run(`git ls-remote --heads origin ${branchName}`, { allowFail: true });
+    const existsRemote = run('git', ['ls-remote', '--heads', 'origin', branchName], { allowFail: true });
     if (existsRemote) {
         console.log(`✅ Checking out existing branch: ${branchName}`);
-        run(`git fetch origin ${branchName}`);
-        run(`git checkout -b ${branchName} origin/${branchName}`, { allowFail: true });
+        run('git', ['fetch', 'origin', branchName]);
+        run('git', ['checkout', '-b', branchName, `origin/${branchName}`], { allowFail: true });
         return branchName;
     }
 
     // Create new branch
     console.log(`🌿 Creating new locale branch: ${branchName}`);
-    run(`git checkout -b ${branchName}`);
-    run(`git push -u origin ${branchName}`);
+    run('git', ['checkout', '-b', branchName]);
+    run('git', ['push', '-u', 'origin', branchName]);
     return branchName;
 }
 
@@ -154,11 +154,11 @@ function commitAndPush(localeCode, languageName, termCount) {
     const message = `locale: translate ${localeCode} (${languageName}, ${termCount} terms)`;
 
     console.log(`\n  📝 Committing to ${branch}...`);
-    run(`git add locale/terms/missing/${localeCode}/`);
-    run(`git commit -m "${message}"`);
+    run('git', ['add', `locale/terms/missing/${localeCode}/`]);
+    run('git', ['commit', '-m', message]);
 
     console.log(`  ⬆️  Pushing to origin/${branch}...`);
-    run(`git push origin ${branch}`);
+    run('git', ['push', 'origin', branch]);
 
     console.log(`  ✅ Committed and pushed\n`);
 }
@@ -173,7 +173,7 @@ function getTranslatedLocales() {
 
     // Get commits unique to this branch vs master
     const commits = run(
-        `git log origin/master..origin/${branch} --pretty=format:%B`,
+        'git', ['log', `origin/master..origin/${branch}`, '--pretty=format:%B'],
         { allowFail: true }
     );
     if (!commits) return [];

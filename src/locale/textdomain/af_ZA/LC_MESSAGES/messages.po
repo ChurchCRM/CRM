@@ -7959,7 +7959,7 @@ msgstr "Alle Stelstelstellings"
 
 #: 
 msgid "An unexpected error occurred. Please contact your administrator."
-msgstr "&#39;n Onverwagte fout het voorgekom. Kontak asseblief jou administrateur."
+msgstr "'n Onverwagte fout het voorgekom. Kontak asseblief jou administrateur."
 
 #: 
 msgid "Apr"
@@ -7971,7 +7971,7 @@ msgstr "Aug"
 
 #: 
 msgid "Back to Deposits"
-msgstr "Terug na Deposito&#39;s"
+msgstr "Terug na Deposito's"
 
 #: 
 msgid "Back to Families"
@@ -8823,7 +8823,7 @@ msgstr "Jou verifikasie-aanvraag is ontvang. Dankie dat jy jou inligting tydsakt
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
-msgstr "&#39;n Fout het voorgekom. Kontak asseblief jou stelseladministrateur."
+msgstr "'n Fout het voorgekom. Kontak asseblief jou stelseladministrateur."
 
 #: 
 msgid "Backup failed"

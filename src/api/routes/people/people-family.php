@@ -248,7 +248,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Error sending email(s)') , [], 500, $e, $request);
         }
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
      * @OA\Get(
@@ -276,7 +276,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family->createTimeLineNote('verify-URL');
 
         return SlimUtils::renderJSON($response, ['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
      * @OA\Post(
@@ -294,7 +294,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family->verify();
 
         return SlimUtils::renderSuccessJSON($response);
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
      * @OA\Post(
@@ -355,7 +355,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
      * @OA\Post(
@@ -398,5 +398,5 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         ];
 
         return SlimUtils::renderJSON($response, $result, $success ? 200 : 400);
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 })->add(FamilyMiddleware::class);
