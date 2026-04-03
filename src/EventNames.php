@@ -123,7 +123,7 @@ foreach ($eventTypes as $et) {
 
     $aDefRecurDOW[$row] = $et->getDefRecurDOW();
     $aDefRecurDOM[$row] = $et->getDefRecurDOM();
-    $aDefRecurDOY[$row] = $et->getDefRecurDOY();
+    $aDefRecurDOY[$row] = $et->getDefRecurDOY('Y-m-d');
     $aDefRecurType[$row] = $et->getDefRecurType();
 
     switch ($aDefRecurType[$row]) {
@@ -134,7 +134,7 @@ foreach ($eventTypes as $et) {
                   $recur[$row] = gettext('Weekly on') . ' ' . gettext($aDefRecurDOW[$row] . 's');
             break;
         case 'monthly':
-            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
+            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, (int)$aDefRecurDOM[$row], 2000));
             break;
         case 'yearly':
             $recur[$row] = gettext('Yearly on') . ' ' . mb_substr($aDefRecurDOY[$row], 5);
