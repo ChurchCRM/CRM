@@ -59,16 +59,23 @@ Thank you for your understanding and cooperation in making ChurchCRM a more secu
 
 ## Supported Versions
 
+Only the latest release branch receives security fixes.
+
 | Version     | Supported          | PHP Version |
 |-------------| ------------------ |-------------|
-| 7.0 +       | :white_check_mark: | >=8.3      |
-| 6.0 - 6.x   | :x:                | >=8.2      |
-| 5.3 +       | :x:                | >=8.1      |
-| 5.0 - 5.2.x | :x:                | 8.1        |
+| 7.1 +       | :white_check_mark: | >=8.4       |
+| 7.0.x       | :x:                | >=8.3       |
+| 6.0 - 6.x   | :x:                | >=8.2       |
+| 5.3 +       | :x:                | >=8.1       |
+| 5.0 - 5.2.x | :x:                | 8.1         |
 | 4.0.x       | :x:                | 7.2.x 7.3.x |
-| 3.0.x       | :x:                | 7.x        |
+| 3.0.x       | :x:                | 7.x         |
 | 2.0.x       | :x:                | 5.6 7.0 7.1 |
 
 ## Developer Security
 
 For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security) which covers security best practices including Content Security Policy (CSP) compliance.
+
+## Community
+
+Have questions or want to chat with the team in real time? Join us on Discord: https://discord.gg/XGppbeTw
