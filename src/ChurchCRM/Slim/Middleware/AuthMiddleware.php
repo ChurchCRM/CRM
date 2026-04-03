@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Requests\APITokenAuthenticationRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\RedirectUtils;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
@@ -67,7 +68,7 @@ class AuthMiddleware implements MiddlewareInterface
 
                 // Check if this is a browser request - redirect to login instead of JSON error
                 if ($this->isBrowserRequest($request)) {
-                    return $this->redirectToLogin();
+                    return $this->redirectToLogin($request);
                 }
 
                 $response = new Response();
@@ -89,10 +90,25 @@ class AuthMiddleware implements MiddlewareInterface
     }
 
     /**
-     * Redirect to the login page
+     * Redirect to the login page, storing the originally requested path in the session
+     * so the user can be returned there after successful login.
+     * The return path is stored server-side (session) to prevent open-redirect attacks
+     * via a crafted query parameter.
      */
-    private function redirectToLogin(): ResponseInterface
+    private function redirectToLogin(ServerRequestInterface $request): ResponseInterface
     {
+        // Capture the originally requested path (with query string) for post-login redirect.
+        $path = $request->getUri()->getPath();
+        $query = $request->getUri()->getQuery();
+        $fullPath = $query !== '' ? $path . '?' . $query : $path;
+
+        // Validate the path (empty string fallback means "don't store" on failure).
+        // RedirectUtils::stripAndValidatePath() strips the root path and validates for safety.
+        $safePath = RedirectUtils::stripAndValidatePath($fullPath);
+        if ($safePath !== '') {
+            $_SESSION['location'] = $safePath;
+        }
+
         $response = new Response();
         $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
 

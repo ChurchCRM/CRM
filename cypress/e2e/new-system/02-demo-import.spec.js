@@ -232,4 +232,27 @@ describe('02 - Demo Data Import', () => {
         });
 
     });
+
+    describe('Disable Google Analytics Plugin', () => {
+        beforeEach(() => {
+            loginAsAdmin();
+        });
+
+        it('should disable the Google Analytics plugin from plugin management', () => {
+            // Disable via API directly — avoids flaky jQuery click-handler timing
+            cy.request({
+                method: 'POST',
+                url: '/plugins/api/plugins/google-analytics/disable',
+                timeout: 30000
+            }).then((response) => {
+                expect(response.status).to.be.oneOf([200, 204]);
+            });
+
+            // Verify the plugin shows as disabled on the management page
+            cy.visit('/plugins/management');
+            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 })
+                .find('.badge')
+                .should('contain', 'Disabled');
+        });
+    });
 });
