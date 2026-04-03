@@ -239,15 +239,21 @@ describe('02 - Demo Data Import', () => {
         });
 
         it('should disable the Google Analytics plugin from plugin management', () => {
+            cy.intercept('POST', '/plugins/api/plugins/google-analytics/disable').as('disableGoogleAnalytics');
+
             cy.visit('/plugins/management');
 
             // Find the Google Analytics plugin card
             cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 }).should('be.visible');
 
-            // Click the disable button
+            // Click the disable button and wait for the disable request/reload flow to complete
             cy.get('[data-action="disable"][data-plugin-id="google-analytics"]').click();
+            cy.wait('@disableGoogleAnalytics')
+                .its('response.statusCode')
+                .should('be.oneOf', [200, 204]);
 
-            // Verify the plugin is now disabled — badge should change to "Disabled"
+            // Verify the reloaded page shows the plugin as disabled
+            cy.get('.card[data-plugin-id="google-analytics"]', { timeout: 10000 }).should('be.visible');
             cy.get('.card[data-plugin-id="google-analytics"]')
                 .find('.badge')
                 .should('contain', 'Disabled');
