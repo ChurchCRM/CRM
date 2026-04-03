@@ -13744,3 +13744,12 @@ msgstr "наприклад Недільна служба"
 msgid "member"
 msgstr "член"
 
+#: 
+msgid "Auto TLS"
+msgstr "Автоматичний TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Безпека"
+

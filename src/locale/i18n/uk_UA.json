@@ -3361,5 +3361,7 @@
     "WorkEmail": "Рабоча електронна пошта",
     "but not this year": "але не цього року",
     "e.g. Sunday Service": "наприклад Недільна служба",
-    "member": "член"
+    "member": "член",
+    "Auto TLS": "Автоматичний TLS",
+    "Security": "Безпека"
 }

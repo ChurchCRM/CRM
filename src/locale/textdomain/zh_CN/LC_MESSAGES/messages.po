@@ -13809,3 +13809,12 @@ msgstr "例如主日崇拜"
 msgid "member"
 msgstr "成员"
 
+#: 
+msgid "Auto TLS"
+msgstr "自动TLS"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "安全性"
+

@@ -13871,6 +13871,10 @@ msgstr "Vërtetimi"
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr "Vërtetimi kërkohet për API v2 nëse e keni aktivizuar në cilësimet e shtojcës Remote të OpenLP. Shtojca përdor HTTP Basic Authentication. Shumica e konfigurimeve të rrjetit lokal nuk kërkojnë vërtetim, por rekomandohet për siguri."
 
+#: 
+msgid "Auto TLS"
+msgstr "TLS Automatik"
+
 #. plugin:external-backup:section:2:title
 #: 
 msgid "Auto-Backup"
