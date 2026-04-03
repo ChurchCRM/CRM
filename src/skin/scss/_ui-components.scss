@@ -5,9 +5,33 @@
  * Only includes styles that are not available in the base frameworks.
  */
 
-// Fix dropdown icon spacing for split buttons
-.dropdown-toggle.dropdown-icon::after {
-  margin-left: 0;
+// Fix icon-text spacing in buttons sitewide (BS5/Tabler migration).
+// Buttons containing <i class="fa-..."></i>Label rendered with the icon
+// touching the text because no trailing whitespace or gap existed.
+// Using inline-flex + gap ensures consistent spacing between icon and label
+// for ALL button variants (primary, outline, ghost, dropdown toggle, etc.).
+// The margin reset on <i>/<svg> overrides Bootstrap me-*/ms-* utilities
+// (higher specificity .btn > i beats .me-* even with !important) so the
+// gap value is the single source of truth — no double-spacing for buttons
+// that previously relied on me-* utility classes for icon spacing.
+// Icon-only buttons are unaffected: gap only applies between multiple items.
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+
+  > i,
+  > svg {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  // Dropdown caret (::after pseudo-element) becomes a flex item inside the
+  // flex container. Reset Bootstrap's built-in margin-left so that only the
+  // gap value provides the spacing before the caret.
+  &.dropdown-toggle::after {
+    margin-left: 0;
+  }
 }
 
 /* Dashboard Stat Card Icons
