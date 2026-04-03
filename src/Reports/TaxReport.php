@@ -16,6 +16,20 @@ use ChurchCRM\Utils\RedirectUtils;
 // Security
 AuthenticationManager::redirectHomeIfFalse(AuthenticationManager::getCurrentUser()->isFinanceEnabled(), 'Finance');
 
+// Support direct GET links from family profile: ?familyId=X&year=YYYY
+if (isset($_GET['familyId']) && isset($_GET['year'])) {
+    $gFamId = (int) InputUtils::legacyFilterInput($_GET['familyId'], 'int');
+    $gYear  = (int) InputUtils::legacyFilterInput($_GET['year'], 'int');
+    if ($gFamId > 0 && $gYear > 1990 && $gYear <= (int) date('Y')) {
+        $_POST['family']     = [$gFamId];
+        $_POST['DateStart']  = $gYear . '-01-01';
+        $_POST['DateEnd']    = $gYear . '-12-31';
+        $_POST['output']     = 'pdf';
+        $_POST['letterhead'] = 'address';
+        $_POST['remittance'] = 'no';
+    }
+}
+
 // Filter values
 $letterhead = InputUtils::legacyFilterInput($_POST['letterhead']);
 $remittance = InputUtils::legacyFilterInput($_POST['remittance']);
@@ -129,6 +143,7 @@ if ($output === 'pdf') {
         $bottom_border2 = 250;
     }
 
+    // Instantiate the report class and build the report.
     class PdfTaxReport extends ChurchInfoReport
     {
         // Constructor
@@ -187,7 +202,7 @@ if ($output === 'pdf') {
                 $curX = 60;
                 $this->writeAt($curX, $curY, gettext('Please detach this slip and mail with your next gift.'));
                 $curY += (1.5 * SystemConfig::getValue('incrementY'));
-                $church_mailing = gettext('Please mail you next gift to ') . SystemConfig::getValue('sChurchName') . ', '
+                $church_mailing = gettext('Please mail your next gift to ') . SystemConfig::getValue('sChurchName') . ', '
                     . SystemConfig::getValue('sChurchAddress') . ', ' . SystemConfig::getValue('sChurchCity') . ', ' . SystemConfig::getValue('sChurchState') . '  '
                     . SystemConfig::getValue('sChurchZip') . ', ' . gettext('Phone') . ': ' . SystemConfig::getValue('sChurchPhone');
                 $this->SetFont('Times', 'I', 10);
@@ -236,7 +251,6 @@ if ($output === 'pdf') {
         }
     }
 
-    // Instantiate the directory class and build the report.
     $pdf = new PdfTaxReport();
 
     // Loop through result array

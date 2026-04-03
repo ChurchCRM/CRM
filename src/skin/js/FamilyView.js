@@ -205,6 +205,48 @@ function initializeFamilyView() {
     };
     $.extend(dataTableConfig, window.CRM.plugin.dataTable);
 
+    // Update the YTD badge and summary row from current DataTable rows
+    function updateGivingSummary(table) {
+      let totalPledged = 0;
+      let totalPaid = 0;
+      table
+        .rows({ filter: "applied" })
+        .data()
+        .each(function (row) {
+          let amt = parseFloat(row.Amount) || 0;
+          if (row.PledgeOrPayment === "Pledge") {
+            totalPledged += amt;
+          } else {
+            totalPaid += amt;
+          }
+        });
+
+      // Summary row
+      let hasSomeData = totalPledged > 0 || totalPaid > 0;
+      if (hasSomeData) {
+        $("#giving-total-pledged").text("$" + totalPledged.toFixed(2));
+        $("#giving-total-paid").text("$" + totalPaid.toFixed(2));
+        $("#giving-summary-row").removeClass("d-none");
+      } else {
+        $("#giving-summary-row").addClass("d-none");
+      }
+    }
+
+    // Update YTD badge from full dataset (always current-FY payments)
+    function updateYTDBadge(allData, currentFY) {
+      let ytdTotal = 0;
+      allData.each(function (row) {
+        if (row.PledgeOrPayment === "Payment" && row.FormattedFY === currentFY) {
+          ytdTotal += parseFloat(row.Amount) || 0;
+        }
+      });
+      if (ytdTotal > 0) {
+        $("#ytd-total-badge")
+          .text(i18next.t("YTD") + " $" + ytdTotal.toFixed(2))
+          .removeClass("d-none");
+      }
+    }
+
     // Force both types visible in API, then init DataTable
     Promise.all([
       window.CRM.APIRequest({
@@ -222,7 +264,21 @@ function initializeFamilyView() {
     ])
       .catch(function () {}) // ignore errors
       .then(function () {
+        // Capture active FY once; used in both initComplete and pill click handlers (closure)
+        let currentFY = $(".pledge-fy-pill.active").data("fy") || "";
+
+        dataTableConfig.initComplete = function () {
+          let table = $("#pledge-payment-v2-table").DataTable();
+          updateYTDBadge(table.rows().data(), currentFY);
+          updateGivingSummary(table);
+        };
+
         let pledgeTable = $("#pledge-payment-v2-table").DataTable(dataTableConfig);
+
+        // Re-calculate summary on every draw (filter/sort change)
+        pledgeTable.on("draw", function () {
+          updateGivingSummary(pledgeTable);
+        });
 
         // Type filter pills: client-side column 0 (Type) search
         $(".pledge-type-pill").on("click", function (e) {
@@ -247,9 +303,8 @@ function initializeFamilyView() {
         });
 
         // Apply default FY filter (Current FY pill is active by default)
-        let defaultFY = $(".pledge-fy-pill.active").data("fy") || "";
-        if (defaultFY) {
-          pledgeTable.column(4).search(defaultFY).draw();
+        if (currentFY) {
+          pledgeTable.column(4).search(currentFY).draw();
         }
       });
   }

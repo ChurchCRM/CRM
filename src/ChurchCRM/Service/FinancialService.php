@@ -810,4 +810,43 @@ class FinancialService
             'currentDepositId' => $this->getCurrentDepositId(),
         ];
     }
+
+    /**
+     * Get distinct calendar years with payments for a specific family.
+     *
+     * Returns years in descending order (most recent first), limited to $maxYears.
+     * Pass 0 for $maxYears for no limit.
+     *
+     * @param int $familyId
+     * @param int $maxYears Maximum years to return (0 = no limit)
+     * @return int[] Array of 4-digit calendar years
+     */
+    public function getFamilyPaymentYears(int $familyId, int $maxYears = 5): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $dates = PledgeQuery::create()
+            ->filterByFamId($familyId)
+            ->filterByPledgeOrPayment('Payment')
+            ->filterByDate(null, Criteria::ISNOTNULL)
+            ->select(['Date'])
+            ->orderByDate(Criteria::DESC)
+            ->find()
+            ->getArrayCopy();
+
+        $years = [];
+        foreach ($dates as $date) {
+            if (!empty($date)) {
+                $year = (int) substr((string) $date, 0, 4);
+                if ($year > 1990 && !in_array($year, $years, true)) {
+                    $years[] = $year;
+                    if ($maxYears > 0 && count($years) >= $maxYears) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        return $years;
+    }
 }
