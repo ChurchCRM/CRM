@@ -22,14 +22,19 @@ Translate by impact, not alphabetically. This maximizes user coverage if rolling
 
 ---
 
-## TIER-1: Highest Impact (3 hours, 11 locales)
+## TIER-1: Highest Impact (3.25 hours, 11 locales)
 
-```
-zh-CN  es  hi  fr  ru  pt-br  id  es-MX  de  ja  ar
-```
+**Group variant locales together — they share 90%+ vocabulary**
+
+| Group | Locales | Terms | Time |
+|-------|---------|-------|------|
+| Spanish | es, es-MX, es-AR, es-CO, es-SV | 705 | 1h |
+| Chinese | zh-CN, zh-TW | 279 | 45m |
+| Portuguese | pt-br, pt | 278 | 30m |
+| Big singles | hi, fr, ru, id, de, ja, ar | 1,004 | 1.5h |
 
 **Covers:** 3.8B speakers (53% of world)  
-**Batch:** All 1,553 terms in one Copilot session
+**How:** Translate each group in separate Haiku session, commit each locale atomically
 
 ---
 
@@ -64,11 +69,12 @@ et
 
 ## Implementation
 
-1. **Use Copilot (Haiku)** — batch entire tier together, 2-3x faster than Claude Code agents
-2. **Spanish variants:** Translate `es` first, then `es-MX`, `es-AR`, `es-CO`, `es-SV` (95% shared vocab)
-3. **Chinese variants:** Translate `zh-CN` first, then `zh-TW` (90% shared vocab)
-4. **Telugu (te):** 5 batch files — confirm all processed
-5. **Greek (el):** 2 batch files — confirm both processed
+1. **Use Haiku agent** — process variant groups together (tested: 705 Spanish terms in 1h, 147 French in 15m)
+2. **Variant groups:** One agent session per language family (Spanish bloc, Chinese bloc, etc.) → consistent vocabulary
+3. **Commit per locale:** Each locale gets separate commit (atomic history)
+4. **Multi-file locales:**
+   - Telugu (te): 5 batch files (673 terms) — confirm all 5 processed
+   - Greek (el): 2 batch files (191 terms) — confirm both processed
 
 ---
 
