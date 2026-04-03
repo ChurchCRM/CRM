@@ -1,12 +1,12 @@
 {
-  "Administrator": "",
+  "Administrator": "Administrator",
   "BCC": "",
-  "Format": "",
-  "Kiosk": "",
-  "Material": "",
-  "Minimum": "",
-  "E.164 Phone Number Format": "",
-  "SMTP Authentication": "",
-  "SMTP Timeout": "",
-  "Vonage Dashboard": ""
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Material": "Material",
+  "Minimum": "Minimum",
+  "E.164 Phone Number Format": "E.164-Telefonnummernformat",
+  "SMTP Authentication": "SMTP-Authentifizierung",
+  "SMTP Timeout": "SMTP-Zeitüberschreitung",
+  "Vonage Dashboard": "Vonage Dashboard"
 }
