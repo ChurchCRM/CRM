@@ -3452,5 +3452,7 @@
     "When enabled, hides the address field for people not assigned to a family": "เมื่อเปิดใช้งาน จะซ่อนช่องที่อยู่สำหรับบุคคลที่ไม่ได้รับมอบหมายให้ครอบครัว",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "เมื่อเปิดใช้งาน จะซ่อนช่องละติจูด/ลองจิจูดในตัวแก้ไขครอบครัว การเข้ารหัสพิกัดยังคงทำงานในพื้นหลัง",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "คุณสามารถเรียกใช้การสำรองข้อมูลด้วยตนเองได้ตลอดเวลา:\n1. ไปที่หน้าการตั้งค่า External Backup (ปลั๊กอิน > External Backup)\n2. เลือกประเภทการสำรองข้อมูล (เฉพาะฐานข้อมูลหรือสำรองข้อมูลเต็มรูปแบบ)\n3. คลิก 'สำรองข้อมูลไปยัง WebDAV ทันที'\n\nการสำรองข้อมูลเฉพาะฐานข้อมูลมีขนาดเล็กกว่าและเร็วกว่า การสำรองข้อมูลเต็มรูปแบบรวมถึงรูปถ่ายที่อัปโหลด",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• การดูหน้าและรูปแบบการนำทาง\n• ระยะเวลาเซสชันและการมีส่วนร่วม\n• ข้อมูลประชากรผู้ใช้ (หากเปิดใช้งานใน GA4)\n• ข้อมูลอุปกรณ์และเบราว์เซอร์"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• การดูหน้าและรูปแบบการนำทาง\n• ระยะเวลาเซสชันและการมีส่วนร่วม\n• ข้อมูลประชากรผู้ใช้ (หากเปิดใช้งานใน GA4)\n• ข้อมูลอุปกรณ์และเบราว์เซอร์",
+    "File size exceeds the server limit of %s": "ขนาดไฟล์เกินขีดจำกัดของเซิร์ฟเวอร์ %s",
+    "Missing image data in request": "ไม่พบข้อมูลรูปภาพในคำขอ"
 }

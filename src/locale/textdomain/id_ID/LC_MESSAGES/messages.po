@@ -14506,3 +14506,11 @@ msgstr "• Tampilan halaman dan pola navigasi\n"
 "• Demografi pengguna (jika diaktifkan di GA4)\n"
 "• Informasi perangkat dan browser"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Ukuran file melebihi batas server sebesar %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Data gambar tidak ditemukan dalam permintaan"
+

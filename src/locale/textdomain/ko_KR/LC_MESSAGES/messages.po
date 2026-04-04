@@ -14521,3 +14521,11 @@ msgstr "• 페이지 조회수와 탐색 패턴\n"
 "• 사용자 인구 통계 (GA4에서 활성화된 경우)\n"
 "• 기기 및 브라우저 정보"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "파일 크기가 서버 제한 %s를 초과합니다"
+
+#: 
+msgid "Missing image data in request"
+msgstr "요청에 이미지 데이터가 없습니다"
+

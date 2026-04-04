@@ -14529,3 +14529,11 @@ msgstr "• Lượt xem trang và mẫu điều hướng\n"
 "• Thống kê nhân khẩu học người dùng (nếu được bật trong GA4)\n"
 "• Thông tin thiết bị và trình duyệt"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Kích thước tệp vượt quá giới hạn máy chủ %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Thiếu dữ liệu hình ảnh trong yêu cầu"
+

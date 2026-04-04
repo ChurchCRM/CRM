@@ -14624,3 +14624,11 @@ msgstr "• 页面浏览量和导航模式\n"
 "• 用户人口统计（如果在GA4中启用）\n"
 "• 设备和浏览器信息"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "文件大小超过服务器限制 %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "请求中缺少图片数据"
+

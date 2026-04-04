@@ -109,7 +109,7 @@ msgstr "Code postal"
 
 #: 
 msgid "Envelope"
-msgstr "Enveloppe"
+msgstr "Enveloppe de dons"
 
 #: 
 msgid "Work/Other Email"
@@ -846,7 +846,7 @@ msgstr "Info sur le contact"
 
 #: 
 msgid "Envelope Info"
-msgstr "Informations de l'enveloppe"
+msgstr "Informations de l'enveloppe de dons"
 
 #: 
 msgid "Custom Fields"
@@ -942,7 +942,7 @@ msgstr "Créé"
 
 #: 
 msgid "Envelope Number"
-msgstr "Numéro de l'enveloppe"
+msgstr "Numéro de l'enveloppe de dons"
 
 #: 
 msgid "Upload Photo"
@@ -1557,7 +1557,7 @@ msgstr "Connexion"
 
 #: 
 msgid "Envelope Manager"
-msgstr "Gestionnaire d'Enveloppes"
+msgstr "Gestionnaire d'Enveloppes de dons"
 
 #: 
 msgid "Update Family Records"
@@ -1565,7 +1565,7 @@ msgstr "Mettre à jour les enregistrements de la famille"
 
 #: 
 msgid "Update Envelopes"
-msgstr "Mise à jour des enveloppes"
+msgstr "Mise à jour des enveloppes de dons"
 
 #: 
 msgid "Confirm"
@@ -2070,7 +2070,7 @@ msgstr "Veuillez sélectionner une famille à qui attribuer ces dons:"
 
 #: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "AVERTISSEMENT: Cette action ne peut pas être annulée et pourrait avoir des implications juridiques!"
+msgstr "AVERTISSEMENT: Cette action ne peut pas être annulée et pourrait avoir des implications juridiques !"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
@@ -2367,7 +2367,7 @@ msgstr "Sélectionner l'année fiscale"
 
 #: 
 msgid "Invalid Editor ID!"
-msgstr "Identifiant de Gestionnaire invalide!"
+msgstr "Identifiant de Gestionnaire invalide !"
 
 #: 
 msgid "Select Season"
@@ -2391,7 +2391,7 @@ msgstr "Automne"
 
 #: 
 msgid "Error: Invalid Editor ID!"
-msgstr "Erreur: Identifiant de Gestionnaire invalide!"
+msgstr "Erreur: Identifiant de Gestionnaire invalide !"
 
 #: 
 msgid "Not a valid date"
@@ -2524,7 +2524,7 @@ msgstr "Membre/Ami"
 
 #: 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Cette option nécessite au moins la version 3.22 de MySQL! Cliquer sur le bouton retour du navigateur pour revenir à ChurchCRM."
+msgstr "Cette option nécessite au moins la version 3.22 de MySQL ! Cliquez sur le bouton retour du navigateur pour revenir à ChurchCRM."
 
 #: 
 msgid "Work"
@@ -2768,7 +2768,7 @@ msgstr "Cette action effacera également les paiements associés au dépôt"
 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
-msgstr "Cette action est IRRÉVERSIBLE, et peut entraîner des implications juridiques!"
+msgstr "Cette action est IRRÉVERSIBLE, et peut entraîner des implications juridiques !"
 
 #: 
 msgid "Please ensure this what you want to do."
@@ -2784,7 +2784,7 @@ msgstr "Date de dépôt"
 
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
-msgstr "Cette action va écraser le nombre d'enveloppe par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
+msgstr "Cette action va écraser le nombre d'enveloppe de dons par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
 
 #: 
 msgid "Family Select"
@@ -11772,7 +11772,7 @@ msgstr "Gérer les options %s"
 
 #: 
 msgid "Manage Envelopes"
-msgstr "Gérer les enveloppes"
+msgstr "Gérer les enveloppes de dons"
 
 #: 
 msgid "Manage Sunday school classes, teachers, and student attendance"
@@ -14502,4 +14502,12 @@ msgstr "• Vues de pages et modèles de navigation\n"
 "• Durée de session et engagement\n"
 "• Données démographiques des utilisateurs (si activé dans GA4)\n"
 "• Informations sur l'appareil et le navigateur"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "La taille du fichier dépasse la limite du serveur de %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Données d'image manquantes dans la requête"
 

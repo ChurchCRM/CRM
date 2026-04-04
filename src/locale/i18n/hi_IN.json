@@ -3461,5 +3461,7 @@
     "When enabled, hides the address field for people not assigned to a family": "सक्षम होने पर, किसी परिवार को नहीं सौंपे गए लोगों के लिए पता फ़ील्ड छुपाता है",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "सक्षम होने पर, परिवार संपादक में अक्षांश/देशांतर फ़ील्ड छुपाता है। जियोकोडिंग पृष्ठभूमि में चलती रहती है।",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "आप किसी भी समय मैन्युअल बैकअप ट्रिगर कर सकते हैं:\n1. बाहरी बैकअप सेटिंग्स पृष्ठ पर जाएं (प्लगिन > बाहरी बैकअप)\n2. बैकअप प्रकार चुनें (केवल डेटाबेस या पूर्ण बैकअप)\n3. 'अभी WebDAV पर बैकअप करें' क्लिक करें\n\nकेवल डेटाबेस बैकअप छोटे और तेज़ होते हैं। पूर्ण बैकअप में अपलोड की गई तस्वीरें शामिल होती हैं।",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• पृष्ठ दृश्य और नेविगेशन पैटर्न\n• सत्र अवधि और संलग्नता\n• उपयोगकर्ता जनसांख्यिकी (यदि GA4 में सक्षम हो)\n• डिवाइस और ब्राउज़र जानकारी"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• पृष्ठ दृश्य और नेविगेशन पैटर्न\n• सत्र अवधि और संलग्नता\n• उपयोगकर्ता जनसांख्यिकी (यदि GA4 में सक्षम हो)\n• डिवाइस और ब्राउज़र जानकारी",
+    "File size exceeds the server limit of %s": "फ़ाइल का आकार सर्वर की सीमा %s से अधिक है",
+    "Missing image data in request": "अनुरोध में छवि डेटा अनुपस्थित है"
 }
