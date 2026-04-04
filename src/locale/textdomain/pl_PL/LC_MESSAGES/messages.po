@@ -7950,10 +7950,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Nie zamykaj tej strony. To może potrwać kilka minut."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Podsumowanie aktualizacji"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Używaj zewnętrznych narzędzi do szyfrowania kopii przed wysyłką poza budynek."
 
@@ -8726,10 +8722,6 @@ msgid "Save the file and refresh this page"
 msgstr "Zapisz plik i odśwież stronę"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Ustaw na true, by wyłączyć adresy dla osób nieprzypisanych do rodziny."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Zaczyna się od <strong>http://</strong> lub <strong>https://</strong>"
 
@@ -9199,10 +9191,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Tak, usuń to zadanie"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Zapytania wymagające uprawnień finansowych"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fundusz(e)"
 
@@ -9488,10 +9476,6 @@ msgstr "Nadchodzące urodziny"
 #: 
 msgid "Waiting to Check In"
 msgstr "Oczekiwanie na zameldowanie"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Po włączeniu nowe urządzenia kioskowe mogą się rejestrować przez 30 sekund."
 
 #: 
 msgid "Your child"
@@ -10658,20 +10642,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Automatycznie wykryj współrzędne na podstawie adresu"
 
 #: 
-msgid "Basic Information"
-msgstr "Informacje podstawowe"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informacje o parafii zostały zapisane pomyślnie."
-
-#: 
 msgid "Church name is required."
 msgstr "Nazwa parafii jest wymagana."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Nazwa parafii jest wymagana. Proszę wypełnić zakładkę Informacje podstawowe."
 
 #: 
 msgid "City is required."
@@ -10730,22 +10702,6 @@ msgid "Language & Localization"
 msgstr "Język i lokalizacja"
 
 #: 
-msgid "Location & Map"
-msgstr "Lokalizacja i mapa"
-
-#: 
-msgid "Location Information"
-msgstr "Informacje o lokalizacji"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Główny adres e-mail do komunikacji parafii."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Główny numer telefonu parafii."
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10796,10 +10752,6 @@ msgstr "Adres jest wymagany."
 #: 
 msgid "Student Information"
 msgstr "Informacje o uczniu"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Język systemu parafii. Wpływa na formaty dat, telefonów i inne lokalizacje."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11171,10 +11123,6 @@ msgstr "Utwórz kopię zapasową na zewnętrznym dysku teraz"
 #: 
 msgid "Browse all available plugins"
 msgstr "Przeglądaj wszystkie dostępne wtyczki"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Przeglądaj wszystkie wydarzenia i działania parafialne"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11611,10 +11559,6 @@ msgstr "Rozwiń"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Eksploruj z danymi demonstracyjnymi"
-
-#: 
-msgid "Export"
-msgstr "Eksportuj"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12559,10 +12503,6 @@ msgid "The property is successfully removed."
 msgstr "Właściwość została pomyślnie usunięta."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Te łącza pojawiają się w menu \"Łącza\" na pasku nawigacji bocznej, gdy ta wtyczka jest włączona."
-
-#: 
 msgid "To Family"
 msgstr "Do rodziny"
 
@@ -13355,11 +13295,6 @@ msgstr "Wartość pola"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Znajdź osoby, które nie uczestniczyły w imprezie"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Znajdź osoby, które złożyły przyrzeczenie w jednym roku, ale nie w innym"
 
@@ -13452,11 +13387,6 @@ msgstr "Rocznice członkowstwa"
 #: 
 msgid "Minimum Age"
 msgstr "Minimalny wiek"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Zaginione osoby"
 
 #. Context: query_qry
 #: 
@@ -13649,11 +13579,6 @@ msgstr "Wybierz pole do wyszukiwania."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Wybierz żądaną imprezę"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Wybierz żądaną rolę rodziny."
 
@@ -13803,12 +13728,367 @@ msgstr "np. nabożeństwo niedzielne"
 msgid "member"
 msgstr "członek"
 
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Dodawanie linków"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Zezwól na aktualizacje przedpremierowe"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Zezwól odwiedzającym na samodzielną rejestrację jako nowe rodziny."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Uwierzytelnienie"
+
 #: 
 msgid "Auto TLS"
-msgstr "Automatyczne TLS"
+msgstr "Automatyczny TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Automatyczna kopia zapasowa"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "UDW do wszystkich wiadomości"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfiguracja"
+
+#: 
+msgid "Continent"
+msgstr "Kontynent"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Koszty"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Osoby z kartą kredytową"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Bieżące użycie"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Domyślne style obrazów"
+
+#: 
+msgid "Default Map View"
+msgstr "Domyślny widok mapy"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Typ biletu depozytowego"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Właściwość Nie wysyłaj e-mail"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Właściwość Nie wysyłaj SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Pobierz OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Format numeru telefonu E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Włącz e-mail"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Włącz menu Wydarzenia"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Włącz zewnętrzne API kalendarza"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Włącz używanie kopert datków"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Włącz używanie skanowanych czeków"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Zobowiązanie rodziny według roku obrotowego"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funkcje"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Identyfikatory zapytań o uprawnienia finansowe"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Znajdź zarejestrowanych uczniów"
+
+#: 
+msgid "Find family"
+msgstr "Znajdź rodzinę"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Znajdowanie adresu URL serwera"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Rok obrotowy."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Przewodnik konfiguracji GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Pierwsze kroki"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Uzyskiwanie identyfikatora pomiaru GA4"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Pomoc Google Analytics"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Opcje obrazu Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Strona internetowa Gravatar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupa zarejestrowanych uczniów"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ukryj szerokość/długość geograficzną"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ukryj adres osoby"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Jak to działa"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Ile czeków wydrukować na stronie potwierdzenia wpłaty"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Początkowy poziom powiększenia przy otwieraniu mapy"
+
+#: 
+msgid "Learn more"
+msgstr "Dowiedz się więcej"
+
+#: 
+msgid "Log Settings"
+msgstr "Ustawienia dziennika"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Zarządzanie linkami"
+
+#: 
+msgid "Neighborhood"
+msgstr "Dzielnica"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Źródło OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Dokumentacja OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Strona internetowa OpenLP"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Osoby skonfigurowane do płatności kartą kredytową."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Integracja osoby/rodziny"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Format numeru telefonu"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Prywatność i zgodność"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Kwestie prywatności"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Uwaga dotycząca prywatności"
+
+#: 
+msgid "Quick Settings"
+msgstr "Szybkie ustawienia"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Zarejestrowani uczniowie"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Uwierzytelnienie SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Limit czasu SMTP"
 
 #. plugin:custom-links:section:3:title
 #: 
 msgid "Security"
 msgstr "Bezpieczeństwo"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Kwestie bezpieczeństwa"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Konfiguracja"
+
+#: 
+msgid "Street"
+msgstr "Ulica"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Moduł szkoły niedzielnej"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Obsługiwane usługi"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Testowanie połączenia"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Rozwiązywanie problemów"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Rozwiązywanie problemów – Nieprawidłowy identyfikator nadawcy"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Rozwiązywanie problemów – Wiadomości nie zostały dostarczone"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Rozwiązywanie problemów – SMS nie jest wysyłany"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Ustawienia aktualizacji"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Przypadki użycia"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Uprawnienia użytkownika do eksportu plików CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Pulpit Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Cennik Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Dokumentacja Vonage SMS API"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Co jest śledzone"
 

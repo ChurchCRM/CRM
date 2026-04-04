@@ -7931,10 +7931,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Ez több percet vehet igénybe nagy adatbázisok esetében. Ne zárja be ezt az oldalt."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Frissítési Összegzés"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Külső eszközök (GPG, 7-Zip) segítségével titkosítsa a biztonsági másolatokat a helyszínen kívüli tárolás előtt."
 
@@ -8707,10 +8703,6 @@ msgid "Save the file and refresh this page"
 msgstr "Mentse el a fájlt, és frissítse ezt az oldalt"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Állítsa true értékre a nem affilált személyek személyes címeinek megadásának letiltásához a Szerkesztőben. Állítsa false értékre a család-hozzárendelés nélküli személyek címeinek megadásának engedélyezéséhez."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "<strong>http://</strong> vagy <strong>https://</strong> kezdődik"
 
@@ -9177,10 +9169,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Igen, törölje ezt a lehetőséget"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Lekérdezések, amelyek használatához a felhasználónak pénzügyi jogosultságokkal kell rendelkeznie"
-
-#: 
 msgid "Fund(s)"
 msgstr "Alap(ok)"
 
@@ -9465,10 +9453,6 @@ msgstr "Közelgő születésnapok"
 #: 
 msgid "Waiting to Check In"
 msgstr "Bejelentkezésre vár"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Ha engedélyezve van, az új kiosk eszközök 30 másodpercig regisztrálhatnak."
 
 #: 
 msgid "Your child"
@@ -10634,20 +10618,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Koordináták automatikus felismerése cím alapján"
 
 #: 
-msgid "Basic Information"
-msgstr "Alapinformációk"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "A gyülekezet adatai sikeresen mentve."
-
-#: 
 msgid "Church name is required."
 msgstr "A gyülekezet neve kötelező."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "A gyülekezet neve kötelező. Töltse ki az Alapinformációk lapot."
 
 #: 
 msgid "City is required."
@@ -10706,22 +10678,6 @@ msgid "Language & Localization"
 msgstr "Nyelv és lokalizáció"
 
 #: 
-msgid "Location & Map"
-msgstr "Helyszín és térkép"
-
-#: 
-msgid "Location Information"
-msgstr "Helyszíni adatok"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Fő kapcsolattartó e-mail a gyülekezet kommunikációjához."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "A gyülekezet fő kapcsolattartó telefonszáma."
-
-#: 
 msgid "Map"
 msgstr "Térkép"
 
@@ -10772,10 +10728,6 @@ msgstr "Az utcacím megadása kötelező."
 #: 
 msgid "Student Information"
 msgstr "Tanuló adatai"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "A gyülekezet rendszerének nyelve. Befolyásolja a dátum-, telefonszám- és egyéb formátumokat."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11150,10 +11102,6 @@ msgstr "Biztonsági mentés külső tárhelyre most"
 #: 
 msgid "Browse all available plugins"
 msgstr "Összes elérhető bővítmény böngészése"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Összes gyülekezeti esemény és tevékenység böngészése"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11590,10 +11538,6 @@ msgstr "Kibontás"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Felfedezés demó adatokkal"
-
-#: 
-msgid "Export"
-msgstr "Exportálás"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12550,10 +12494,6 @@ msgid "The property is successfully removed."
 msgstr "A tulajdonság sikeresen eltávolítva."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Ezek a hivatkozások a navigációs oldalsáv \"Hivatkozások\" menüjében jelennek meg, ha ez a bővítmény engedélyezve van."
-
-#: 
 msgid "To Family"
 msgstr "Családhoz"
 
@@ -13346,11 +13286,6 @@ msgstr "Mező értéke"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Keresse meg azokat az embereket, akik nem vettek részt egy eseményen"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Keresse meg azokat az embereket, akik egy évben ígérkeztek, de a másikban nem"
 
@@ -13443,11 +13378,6 @@ msgstr "Tagsági évfordulók"
 #: 
 msgid "Minimum Age"
 msgstr "Minimális életkor"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Hiányzó emberek"
 
 #. Context: query_qry
 #: 
@@ -13640,11 +13570,6 @@ msgstr "Válassz keresendő mezőt."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Válassza ki a kívánt eseményt"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Válassza ki a kívánt családi szerepet."
 
@@ -13793,4 +13718,368 @@ msgstr "például vasárnapi istentisztelet"
 #: 
 msgid "member"
 msgstr "tag"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Hivatkozások hozzáadása"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Előzetes kiadású frissítések engedélyezése"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Engedje meg a látogatóknak, hogy új családként regisztráljanak."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Hitelesítés"
+
+#: 
+msgid "Auto TLS"
+msgstr "Automatikus TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Automatikus biztonsági mentés"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC minden levél ide"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfiguráció"
+
+#: 
+msgid "Continent"
+msgstr "Kontinens"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Költségek"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Hitelkártyás személyek"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Jelenlegi használat"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Alapértelmezett képstílusok"
+
+#: 
+msgid "Default Map View"
+msgstr "Alapértelmezett térképnézet"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Betéti bizonylat típusa"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Ne küldjön e-mailt tulajdonság"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Ne küldjön SMS-t tulajdonság"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "OpenLP letöltése"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 telefonszám-formátum"
+
+#: 
+msgid "Enable Email"
+msgstr "E-mail engedélyezése"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Eseménymenü engedélyezése"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Külső naptár API engedélyezése"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Adományborítékok használatának engedélyezése"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Szkennelt csekkek használatának engedélyezése"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Családi ígérvény pénzügyi év szerint"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funkciók"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Pénzügyi jogosultsági lekérdezési azonosítók"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Regisztrált tanulók keresése"
+
+#: 
+msgid "Find family"
+msgstr "Család keresése"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "A szerver URL-jének megkeresése"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Pénzügyi év."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 beállítási útmutató"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Első lépések"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "GA4 mérési azonosító megszerzése"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics súgó"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar képbeállítások"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar weboldal"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Regisztrált tanulók csoportja"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Szélesség/Hosszúság elrejtése"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Személy címének elrejtése"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Hogyan működik"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Hány csekket kell nyomtatni betéti bizonylat oldalanként"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Kezdeti nagyítási szint a térkép megnyitásakor"
+
+#: 
+msgid "Learn more"
+msgstr "Tudjon meg többet"
+
+#: 
+msgid "Log Settings"
+msgstr "Napló beállítások"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Hivatkozások kezelése"
+
+#: 
+msgid "Neighborhood"
+msgstr "Városrész"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 forrás"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP dokumentáció"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP weboldal"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Hitelkártyás fizetésre beállított személyek."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Személy/Család integráció"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Telefonszám-formátum"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Adatvédelem és megfelelőség"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Adatvédelmi szempontok"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Adatvédelmi megjegyzés"
+
+#: 
+msgid "Quick Settings"
+msgstr "Gyorsbeállítások"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Regisztrált tanulók"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP hitelesítés"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP időtúllépés"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Biztonság"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Biztonsági szempontok"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Beállítás"
+
+#: 
+msgid "Street"
+msgstr "Utca"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Vasárnapi iskola modul"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Támogatott szolgáltatások"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Kapcsolat tesztelése"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Hibaelhárítás"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Hibaelhárítás – Érvénytelen feladó-azonosító"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Hibaelhárítás – Az üzenetek nem kerültek kézbesítésre"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Hibaelhárítás – SMS nem küldődik"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Frissítési beállítások"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Felhasználási esetek"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Felhasználói jogosultság CSV-fájlok exportálásához"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage irányítópult"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage árazás"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API dokumentáció"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Mi kerül nyomon követésre"
 

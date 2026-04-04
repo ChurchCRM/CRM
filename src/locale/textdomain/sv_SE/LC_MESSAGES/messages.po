@@ -7986,10 +7986,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Detta kan ta flera minuter för stora databaser. Stäng inte denna sida."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Sammanfattning av uppgradering"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Använd externa verktyg (GPG, 7-Zip) för att kryptera säkerhetskopior innan de förvaras på annan plats."
 
@@ -8762,10 +8758,6 @@ msgid "Save the file and refresh this page"
 msgstr "Spara filen och uppdatera denna sida"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Ställ in på sant för att inaktivera inmatning av personliga adresser för obundna personer i personredigeraren. Ställ in på falskt för att aktivera inmatning av adresser för personer utan familjetillhörighet."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Börjar med <strong>http://</strong> eller <strong>https://</strong>"
 
@@ -9232,10 +9224,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ja, radera denna möjlighet"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Interogationer som kräver ekonomibehörighet för att användas"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fond(er)"
 
@@ -9520,10 +9508,6 @@ msgstr "Kommande födelsedagar"
 #: 
 msgid "Waiting to Check In"
 msgstr "Väntar på incheckning"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "När aktiverat kan nya kioskenheter registreras i 30 sekunder."
 
 #: 
 msgid "Your child"
@@ -10689,20 +10673,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Detektera koordinater automatiskt med adress"
 
 #: 
-msgid "Basic Information"
-msgstr "Grundinformation"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Församlingsinformation sparad."
-
-#: 
 msgid "Church name is required."
 msgstr "Församlingsnamn är obligatoriskt."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Församlingsnamn är obligatoriskt. Fyll i fliken Grundinformation."
 
 #: 
 msgid "City is required."
@@ -10761,22 +10733,6 @@ msgid "Language & Localization"
 msgstr "Språk och lokalisering"
 
 #: 
-msgid "Location & Map"
-msgstr "Plats och karta"
-
-#: 
-msgid "Location Information"
-msgstr "Platsinformation"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Primär kontakt-e-post för församlingskommunikation."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Primärt telefonnummer för församlingen."
-
-#: 
 msgid "Map"
 msgstr "Karta"
 
@@ -10827,10 +10783,6 @@ msgstr "Gatuadress är obligatorisk."
 #: 
 msgid "Student Information"
 msgstr "Elevinfo"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Systemspråk för församlingen. Påverkar datumformat, telefonformat och andra lokaliseringar."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11205,10 +11157,6 @@ msgstr "Säkerhetskopiera till extern lagring nu"
 #: 
 msgid "Browse all available plugins"
 msgstr "Bläddra bland alla tillgängliga tillägg"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Bläddra bland alla kyrkans evenemang och aktiviteter"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11645,10 +11593,6 @@ msgstr "Expandera"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Utforska med demodata"
-
-#: 
-msgid "Export"
-msgstr "Exportera"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12597,10 +12541,6 @@ msgid "The property is successfully removed."
 msgstr "Egenskapen har tagits bort."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Dessa länkar visas i menyn \"Länkar\" i navigeringssidofältet när detta tillägg är aktiverat."
-
-#: 
 msgid "To Family"
 msgstr "Till familj"
 
@@ -13393,11 +13333,6 @@ msgstr "Seavvi vahkka"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Hitta personer som inte deltog i ett evenemang"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Hitta personer som lovade ett år men inte ett annat"
 
@@ -13490,11 +13425,6 @@ msgstr "Medlemskapsjubileer"
 #: 
 msgid "Minimum Age"
 msgstr "Minimiålder"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Saknade personer"
 
 #. Context: query_qry
 #: 
@@ -13687,11 +13617,6 @@ msgstr "Välj fält att söka i."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Välj önskad händelse"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Välj önskad familjeroll."
 
@@ -13840,4 +13765,363 @@ msgstr "t.ex. söndagstjänst"
 #: 
 msgid "member"
 msgstr "medlem"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Lägga till länkar"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Tillåt förhandsuppdateringar"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Tillåt besökare att registrera sig som nya familjer."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Autentisering"
+
+#: 
+msgid "Auto TLS"
+msgstr "Automatisk TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Automatisk säkerhetskopiering"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC alla e-post till"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: 
+msgid "Continent"
+msgstr "Kontinent"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Kostnader"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Kreditkortspersoner"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Nuvarande användning"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Standardbildstilar"
+
+#: 
+msgid "Default Map View"
+msgstr "Standardkartvyn"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Typ av insättningskvitto"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Skicka inte e-post egenskap"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Skicka inte SMS egenskap"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Ladda ned OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 telefonnummerformat"
+
+#: 
+msgid "Enable Email"
+msgstr "Aktivera e-post"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Aktivera händelsemeny"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Aktivera externt kalender-API"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Aktivera användning av gåvokuvert"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Aktivera användning av skannade checkar"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Familjelöfte efter räkenskapsår"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funktioner"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "ID för ekonomibehörighetsfrågor"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Hitta registrerade elever"
+
+#: 
+msgid "Find family"
+msgstr "Hitta familj"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Hitta din server-URL"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Räkenskapsår."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Guide för GA4-inställning"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Komma igång"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Hämta ditt GA4-mätnings-ID"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics hjälp"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar bildalternativ"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar webbplats"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupp av registrerade elever"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Dölj latitud/longitud"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Dölj personadress"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Hur det fungerar"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Hur många checkar som ska skrivas ut per insättningskvittosida"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Inledande zoomnivå vid öppning av kartan"
+
+#: 
+msgid "Learn more"
+msgstr "Läs mer"
+
+#: 
+msgid "Log Settings"
+msgstr "Logginställningar"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Hantera länkar"
+
+#: 
+msgid "Neighborhood"
+msgstr "Stadsdel"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 källa"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP dokumentation"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP webbplats"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personer som är inställda på att betala med kreditkort."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Person/familjeintegration"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Telefonnummerformat"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Integritet och efterlevnad"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Integritetsöverväganden"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Integritetsmeddelande"
+
+#: 
+msgid "Quick Settings"
+msgstr "Snabbinställningar"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Registrerade elever"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP-autentisering"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP-timeout"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Säkerhet"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Säkerhetsöverväganden"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Installation"
+
+#: 
+msgid "Street"
+msgstr "Gata"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Söndagsskolemodul"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Tjänster som stöds"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Testar anslutning"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Felsökning"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Felsökning – Ogiltigt avsändar-ID"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Felsökning – Meddelanden levererades inte"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Felsökning – SMS skickas inte"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Uppgraderingsinställningar"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Användningsfall"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Användarbehörighet för export av CSV-filer"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage priser"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API dokumentation"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Vad spåras"
 

@@ -7873,10 +7873,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Bu işlem büyük veritabanları için birkaç dakika sürebilir. Bu sayfayı kapatmayın."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Yükseltme Özeti"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Yedekleri saha dışında saklamadan önce şifrelemek için harici araçlar (GPG, 7-Zip) kullanın."
 
@@ -8649,10 +8645,6 @@ msgid "Save the file and refresh this page"
 msgstr "Dosyayı kaydedin ve bu sayfayı yenileyin"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Kişi Düzenleyici'de bir aileye bağlı olmayan kişiler için kişisel adres girişini devre dışı bırakmak için true olarak ayarlayın. Bir aile ataması olmayan kişiler için adres girişini etkinleştirmek için false olarak ayarlayın."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "<strong>http://</strong> veya <strong>https://</strong> ile başlar"
 
@@ -9119,10 +9111,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Evet, bu Fırsatı sil"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Kullanıcının kullanmak için finans izinlerine sahip olması gereken sorgular"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fon(lar)"
 
@@ -9407,10 +9395,6 @@ msgstr "Yaklaşan Doğum Günleri"
 #: 
 msgid "Waiting to Check In"
 msgstr "Giriş Bekliyor"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Etkinleştirildiğinde, yeni kiosk cihazları 30 saniye boyunca kayıt olabilir."
 
 #: 
 msgid "Your child"
@@ -10576,20 +10560,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Adres kullanarak koordinatları otomatik algıla"
 
 #: 
-msgid "Basic Information"
-msgstr "Temel Bilgiler"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Kilise bilgileri başarıyla kaydedildi."
-
-#: 
 msgid "Church name is required."
 msgstr "Kilise adı zorunludur."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Kilise adı zorunludur. Lütfen Temel Bilgiler sekmesini tamamlayın."
 
 #: 
 msgid "City is required."
@@ -10648,22 +10620,6 @@ msgid "Language & Localization"
 msgstr "Dil ve Yerelleştirme"
 
 #: 
-msgid "Location & Map"
-msgstr "Konum ve Harita"
-
-#: 
-msgid "Location Information"
-msgstr "Konum Bilgisi"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Kilise iletişimi için ana iletişim e-postası."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Kilisenin ana iletişim telefon numarası."
-
-#: 
 msgid "Map"
 msgstr "Harita"
 
@@ -10714,10 +10670,6 @@ msgstr "Sokak adresi zorunludur."
 #: 
 msgid "Student Information"
 msgstr "Öğrenci Bilgisi"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Kilise için sistem dili. Tarih biçimlerini, telefon biçimlerini ve diğer yerelleştirmeleri etkiler."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11092,10 +11044,6 @@ msgstr "Şimdi Harici Depolamaya Yedekle"
 #: 
 msgid "Browse all available plugins"
 msgstr "Tüm mevcut eklentilere göz at"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Tüm kilise etkinliklerine ve faaliyetlerine göz at"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11532,10 +11480,6 @@ msgstr "Genişlet"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Demo Verileriyle Keşfet"
-
-#: 
-msgid "Export"
-msgstr "Dışa Aktar"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12488,10 +12432,6 @@ msgid "The property is successfully removed."
 msgstr "Özellik başarıyla kaldırıldı."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Bu bağlantılar, bu eklenti etkinleştirildiğinde gezinme kenar çubuğundaki \"Bağlantılar\" menüsünde görünür."
-
-#: 
 msgid "To Family"
 msgstr "Aileye"
 
@@ -13280,11 +13220,6 @@ msgstr "Alan Değeri"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Bir etkinliğe katılmayan kişileri bulun"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Bir yıl söz veren ancak diğer bir yıl söz vermeyen kişileri bulun"
 
@@ -13377,11 +13312,6 @@ msgstr "Üyelik yıldönümleri"
 #: 
 msgid "Minimum Age"
 msgstr "Minimum Yaş"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Kayıp kişiler"
 
 #. Context: query_qry
 #: 
@@ -13574,11 +13504,6 @@ msgstr "Aranacak alanı seçin."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "İstediğiniz etkinliği seçin"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "İstediğiniz aile rolünü seçin."
 
@@ -13727,4 +13652,368 @@ msgstr "örneğin Pazar Servisi"
 #: 
 msgid "member"
 msgstr "üye"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Bağlantı Ekleme"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Ön Sürüm Yükseltmelerine İzin Ver"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Ziyaretçilerin yeni aileler olarak kendi kendine kaydolmasına izin verin."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Kimlik Doğrulama"
+
+#: 
+msgid "Auto TLS"
+msgstr "Otomatik TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Otomatik Yedekleme"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "Tüm Postaları BCC'ye Gönder"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: 
+msgid "Continent"
+msgstr "Kıta"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Maliyetler"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Kredi Kartlı Kişiler"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Mevcut Kullanım"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Varsayılan Resim Stilleri"
+
+#: 
+msgid "Default Map View"
+msgstr "Varsayılan Harita Görünümü"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Depozito makbuzu türü"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "E-posta Gönderme Özelliği"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "SMS Gönderme Özelliği"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "OpenLP İndir"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 Telefon Numarası Biçimi"
+
+#: 
+msgid "Enable Email"
+msgstr "E-postayı Etkinleştir"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Etkinlikler Menüsünü Etkinleştir"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Harici Takvim API'sini Etkinleştir"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Bağış zarfları kullanımını etkinleştir"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Taranan çek kullanımını etkinleştir"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Mali Yıla Göre Aile Taahhüdü"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Özellikler"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Finans izni sorgu kimlikleri"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Kayıtlı öğrencileri bul"
+
+#: 
+msgid "Find family"
+msgstr "Aile bul"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Sunucu URL'nizi Bulma"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Mali Yıl."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 Kurulum Kılavuzu"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Başlarken"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "GA4 Ölçüm Kimliğinizi Alma"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics Yardım"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar Resim Seçenekleri"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar Web Sitesi"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Kayıtlı öğrenci grubu"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Enlemi/Boylamı Gizle"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Kişi Adresini Gizle"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Nasıl çalışır"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Depozito makbuzu sayfasına kaç çek yazdırılacak"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Harita açılırken başlangıç yakınlaştırma düzeyi"
+
+#: 
+msgid "Learn more"
+msgstr "Daha fazla bilgi"
+
+#: 
+msgid "Log Settings"
+msgstr "Günlük Ayarları"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Bağlantıları Yönetme"
+
+#: 
+msgid "Neighborhood"
+msgstr "Mahalle"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 Kaynağı"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP Belgeleri"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP Web Sitesi"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Kredi kartıyla ödeme yapacak şekilde yapılandırılmış kişiler."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Kişi/Aile Entegrasyonu"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Telefon Numarası Biçimi"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Gizlilik ve Uyumluluk"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Gizlilik Konuları"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Gizlilik Notu"
+
+#: 
+msgid "Quick Settings"
+msgstr "Hızlı Ayarlar"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Kayıtlı öğrenciler"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP Kimlik Doğrulama"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP Zaman Aşımı"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Güvenlik"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Güvenlik Konuları"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Kurulum"
+
+#: 
+msgid "Street"
+msgstr "Cadde"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Pazar Okulu Modülü"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Desteklenen Hizmetler"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Bağlantı Testi"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Sorun Giderme"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Sorun Giderme – Geçersiz Gönderen Kimliği"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Sorun Giderme – Mesajlar Teslim Edilmedi"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Sorun Giderme – SMS Gönderilmiyor"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Yükseltme Ayarları"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Kullanım Senaryoları"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Panosu"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage Fiyatlandırma"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API Belgeleri"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Ne İzleniyor"
 

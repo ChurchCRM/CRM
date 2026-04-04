@@ -7861,10 +7861,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "대용량 데이터베이스의 경우 몇 분 정도 걸릴 수 있습니다. 이 페이지를 닫지 마세요."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "업그레이드 요약"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "외부에 저장하기 전에 외부 도구(GPG, 7-Zip)를 사용하여 백업을 암호화하세요."
 
@@ -8638,11 +8634,6 @@ msgid "Save the file and refresh this page"
 msgstr "파일을 저장하고 이 페이지를 새로고침하세요"
 
 #: 
-#, fuzzy
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Person Editor에서 소속되지 않은 사람의 개인 주소 입력을 비활성화하려면 true로 설정하세요. 가족 할당이 없는 사람의 주소 입력을 활성화하려면 false로 설정하세요."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "<strong>http://</strong> 또는 <strong>https://</strong>로 시작"
 
@@ -9106,10 +9097,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "예, 이 기회 삭제"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "사용자가 사용하기 위해 재무 권한이 있어야 하는 쿼리"
-
-#: 
 msgid "Fund(s)"
 msgstr "펀드"
 
@@ -9393,10 +9380,6 @@ msgstr "다가오는 생일"
 #: 
 msgid "Waiting to Check In"
 msgstr "체크인 대기 중"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "활성화하면 새 키오스크 장치가 30초 동안 등록할 수 있습니다."
 
 #: 
 msgid "Your child"
@@ -10561,20 +10544,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "주소를 사용하여 좌표 자동 감지"
 
 #: 
-msgid "Basic Information"
-msgstr "기본 정보"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "교회 정보가 성공적으로 저장되었습니다."
-
-#: 
 msgid "Church name is required."
 msgstr "교회 이름은 필수입니다."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "교회 이름은 필수입니다. 기본 정보 탭을 완성해 주세요."
 
 #: 
 msgid "City is required."
@@ -10633,22 +10604,6 @@ msgid "Language & Localization"
 msgstr "언어 및 지역화"
 
 #: 
-msgid "Location & Map"
-msgstr "위치 및 지도"
-
-#: 
-msgid "Location Information"
-msgstr "위치 정보"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "교회 소통을 위한 주요 연락 이메일."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "교회의 주요 연락 전화번호."
-
-#: 
 msgid "Map"
 msgstr "지도"
 
@@ -10699,10 +10654,6 @@ msgstr "주소는 필수입니다."
 #: 
 msgid "Student Information"
 msgstr "학생 정보"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "교회의 시스템 언어. 날짜 형식, 전화 형식 및 기타 지역화에 영향을 줍니다."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11067,10 +11018,6 @@ msgstr "지금 외부 저장소에 백업"
 #: 
 msgid "Browse all available plugins"
 msgstr "사용 가능한 모든 플러그인 찾아보기"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "모든 교회 행사 및 활동 찾아보기"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11507,10 +11454,6 @@ msgstr "펼치기"
 #: 
 msgid "Explore with Demo Data"
 msgstr "데모 데이터로 탐색"
-
-#: 
-msgid "Export"
-msgstr "내보내기"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12467,10 +12410,6 @@ msgid "The property is successfully removed."
 msgstr "속성이 성공적으로 제거되었습니다."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "이 플러그인이 활성화되면 이 링크가 탐색 사이드바의 \"링크\" 메뉴에 표시됩니다."
-
-#: 
 msgid "To Family"
 msgstr "가족으로"
 
@@ -13259,11 +13198,6 @@ msgstr "필드 값"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "행사에 참석하지 않은 사람 찾기"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "한 해에는 약속했지만 다른 해에는 약속하지 않은 사람을 찾기"
 
@@ -13356,11 +13290,6 @@ msgstr "회원 기념일"
 #: 
 msgid "Minimum Age"
 msgstr "최소 나이"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "실종된 사람들"
 
 #. Context: query_qry
 #: 
@@ -13550,11 +13479,6 @@ msgstr "이벤트 유형 선택..."
 #: 
 msgid "Select field to search for."
 msgstr "검색할 필드를 선택합니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "원하는 이벤트 선택"
 
 #. Context: queryparameters_qrp
 #: 

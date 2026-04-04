@@ -7826,10 +7826,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "大きなデータベースの場合、数分かかる場合があります。このページを閉じないでください。"
 
 #: 
-msgid "Upgrade Summary"
-msgstr "アップグレードの概要"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "外部ツール（GPG、7-Zip）を使用して、オフサイトに保存する前にバックアップを暗号化してください。"
 
@@ -8602,10 +8598,6 @@ msgid "Save the file and refresh this page"
 msgstr "ファイルを保存してこのページを更新"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Person Editorで未所属の人の個人住所の入力を無効にするにはtrueに設定します。家族の割り当てがない人の住所入力を有効にするにはfalseに設定します。"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "<strong>http://</strong>または<strong>https://</strong>で始まる"
 
@@ -9069,10 +9061,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "はい、この機会を削除します"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "使用するためにユーザーが財務権限を必要とするクエリ"
-
-#: 
 msgid "Fund(s)"
 msgstr "基金"
 
@@ -9356,10 +9344,6 @@ msgstr "近日中の誕生日"
 #: 
 msgid "Waiting to Check In"
 msgstr "チェックイン待ち"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "有効にすると、新しいキオスクデバイスは30秒間登録できます。"
 
 #: 
 msgid "Your child"
@@ -10524,20 +10508,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "住所を使用して座標を自動検出"
 
 #: 
-msgid "Basic Information"
-msgstr "基本情報"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "教会情報を正常に保存しました。"
-
-#: 
 msgid "Church name is required."
 msgstr "教会名は必須です。"
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "教会名は必須です。基本情報タブを完成させてください。"
 
 #: 
 msgid "City is required."
@@ -10596,22 +10568,6 @@ msgid "Language & Localization"
 msgstr "言語とローカライゼーション"
 
 #: 
-msgid "Location & Map"
-msgstr "場所と地図"
-
-#: 
-msgid "Location Information"
-msgstr "場所情報"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "教会の連絡用メインメールアドレス。"
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "教会のメイン連絡先電話番号。"
-
-#: 
 msgid "Map"
 msgstr "地図"
 
@@ -10662,10 +10618,6 @@ msgstr "住所は必須です。"
 #: 
 msgid "Student Information"
 msgstr "生徒情報"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "教会のシステム言語。日付形式、電話形式、その他のローカライゼーションに影響します。"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11030,10 +10982,6 @@ msgstr "今すぐ外部ストレージにバックアップ"
 #: 
 msgid "Browse all available plugins"
 msgstr "利用可能なすべてのプラグインを閲覧"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "すべての教会イベントと活動を閲覧"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11470,10 +11418,6 @@ msgstr "展開"
 #: 
 msgid "Explore with Demo Data"
 msgstr "デモデータで試す"
-
-#: 
-msgid "Export"
-msgstr "エクスポート"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12430,10 +12374,6 @@ msgid "The property is successfully removed."
 msgstr "プロパティが正常に削除されました。"
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "これらのリンクは、このプラグインが有効な場合、ナビゲーションサイドバーの「リンク」メニューに表示されます。"
-
-#: 
 msgid "To Family"
 msgstr "家族へ"
 
@@ -13222,11 +13162,6 @@ msgstr "フィールド値"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "イベントに出席しなかった人を探す"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "ある年は誓約したが別の年は誓約しなかった人を探す"
 
@@ -13319,11 +13254,6 @@ msgstr "会員の周年記念"
 #: 
 msgid "Minimum Age"
 msgstr "最小年齢"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "行方不明の人"
 
 #. Context: query_qry
 #: 
@@ -13513,11 +13443,6 @@ msgstr "イベントタイプを選択..."
 #: 
 msgid "Select field to search for."
 msgstr "検索するフィールドを選択します。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "目的のイベントを選択します"
 
 #. Context: queryparameters_qrp
 #: 

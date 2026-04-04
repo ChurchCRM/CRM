@@ -8078,10 +8078,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "對於大型資料庫，這可能需要幾分鐘時間。請勿關閉此頁面。"
 
 #: 
-msgid "Upgrade Summary"
-msgstr "升級摘要"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "在異地存儲之前，使用外部工具（如 GPG, 7-Zip）加密備份。"
 
@@ -8854,10 +8850,6 @@ msgid "Save the file and refresh this page"
 msgstr "儲存檔案並重新整理此頁面"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "設定為 true 可在個人編輯器中禁用無隸屬關係人員的個人地址輸入。設定為 false 可啟用無家庭分配人員的地址輸入。"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 開始"
 
@@ -9321,10 +9313,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "是，刪除此機會"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "使用者必須具備財務權限才能使用的查詢"
-
-#: 
 msgid "Fund(s)"
 msgstr "基金"
 
@@ -9608,10 +9596,6 @@ msgstr "即將到來的生日"
 #: 
 msgid "Waiting to Check In"
 msgstr "等待簽到"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "啟用後，新的自助終端裝置可以在30秒內完成註冊。"
 
 #: 
 msgid "Your child"
@@ -10776,20 +10760,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "使用地址自動偵測座標"
 
 #: 
-msgid "Basic Information"
-msgstr "基本資訊"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "教會資訊已成功儲存。"
-
-#: 
 msgid "Church name is required."
 msgstr "教會名稱為必填欄位。"
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "教會名稱為必填欄位。請完成基本資訊標籤。"
 
 #: 
 msgid "City is required."
@@ -10848,22 +10820,6 @@ msgid "Language & Localization"
 msgstr "語言與本地化"
 
 #: 
-msgid "Location & Map"
-msgstr "位置與地圖"
-
-#: 
-msgid "Location Information"
-msgstr "位置資訊"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "教會通訊的主要聯絡電子郵件。"
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "教會主要聯絡電話。"
-
-#: 
 msgid "Map"
 msgstr "地圖"
 
@@ -10914,10 +10870,6 @@ msgstr "街道地址為必填欄位。"
 #: 
 msgid "Student Information"
 msgstr "學生資訊"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "教會的系統語言。影響日期格式、電話格式和其他本地化設定。"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11286,10 +11238,6 @@ msgstr "立即備份至外部儲存"
 #: 
 msgid "Browse all available plugins"
 msgstr "瀏覽所有可用的外掛"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "瀏覽所有教會活動"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11726,10 +11674,6 @@ msgstr "展開"
 #: 
 msgid "Explore with Demo Data"
 msgstr "使用示範資料探索"
-
-#: 
-msgid "Export"
-msgstr "匯出"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12686,10 +12630,6 @@ msgid "The property is successfully removed."
 msgstr "屬性已成功移除。"
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "啟用此外掛後，這些連結將出現在導覽側欄的「連結」選單中。"
-
-#: 
 msgid "To Family"
 msgstr "到家庭"
 
@@ -13478,11 +13418,6 @@ msgstr "欄位值"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "找出沒有參加某個活動的人"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
 
@@ -13575,11 +13510,6 @@ msgstr "會員週年紀念"
 #: 
 msgid "Minimum Age"
 msgstr "最小年齡"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "失蹤人員"
 
 #. Context: query_qry
 #: 
@@ -13769,11 +13699,6 @@ msgstr "選擇活動類型..."
 #: 
 msgid "Select field to search for."
 msgstr "選擇要搜尋的欄位。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "選擇所需的活動"
 
 #. Context: queryparameters_qrp
 #: 
