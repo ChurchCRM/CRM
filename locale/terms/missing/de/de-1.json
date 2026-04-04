@@ -5,5 +5,7 @@
   "Kiosk": "",
   "Material": "",
   "Minimum": "",
-  "Vonage Dashboard": ""
+  "Vonage Dashboard": "",
+  "File size exceeds the server limit of %s": "",
+  "Missing image data in request": ""
 }

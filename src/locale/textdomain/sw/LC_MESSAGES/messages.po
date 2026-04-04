@@ -7867,10 +7867,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Hii inaweza kuchukua dakika kadhaa. Usifunge ukurasa huu."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Muhtasari wa Sasisho"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Tumia zana za nje kusimba nakala kabla ya kuzihifadhi nje ya eneo."
 
@@ -8643,10 +8639,6 @@ msgid "Save the file and refresh this page"
 msgstr "Hifadhi faili na uuhuishe ukurasa huu"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Weka 'true' ili kuzuia kuingiza anwani za kibinafsi kwa watu wasio na familia."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Inaanza na <strong>http://</strong> au <strong>https://</strong>"
 
@@ -9113,10 +9105,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ndiyo, futa Fursa hii"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Hoja ambazo mtumiaji lazima awe na ruhusa ya fedha kuzitumia"
-
-#: 
 msgid "Fund(s)"
 msgstr "Mifuko"
 
@@ -9401,10 +9389,6 @@ msgstr "Siku za Kuzaliwa Zinazokuja"
 #: 
 msgid "Waiting to Check In"
 msgstr "Inasubiri Kuingia"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Inapowezeshwa, vifaa vipya vya kiosk vinaweza kusajiliwa kwa sekunde 30."
 
 #: 
 msgid "Your child"
@@ -10570,20 +10554,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Gundua kuratibu kiotomatiki kwa kutumia anwani"
 
 #: 
-msgid "Basic Information"
-msgstr "Taarifa za Msingi"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Taarifa za kanisa zimehifadhiwa kwa mafanikio."
-
-#: 
 msgid "Church name is required."
 msgstr "Jina la kanisa linahitajika."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Jina la kanisa linahitajika. Tafadhali kamilisha kichupo cha Taarifa za Msingi."
 
 #: 
 msgid "City is required."
@@ -10642,22 +10614,6 @@ msgid "Language & Localization"
 msgstr "Lugha na Ujanibishaji"
 
 #: 
-msgid "Location & Map"
-msgstr "Mahali na Ramani"
-
-#: 
-msgid "Location Information"
-msgstr "Taarifa za Mahali"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Barua pepe kuu ya mawasiliano ya kanisa."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Nambari kuu ya simu ya kanisa."
-
-#: 
 msgid "Map"
 msgstr "Ramani"
 
@@ -10708,10 +10664,6 @@ msgstr "Anwani ya mtaa inahitajika."
 #: 
 msgid "Student Information"
 msgstr "Taarifa za Mwanafunzi"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Lugha ya mfumo kwa kanisa. Inaathiri miundo ya tarehe, miundo ya simu na ujanibishaji mwingine."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11082,10 +11034,6 @@ msgstr "Hifadhi Nakala kwenye Hifadhi ya Nje Sasa"
 #: 
 msgid "Browse all available plugins"
 msgstr "Vinjari programu-jalizi zote zinazopatikana"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Vinjari matukio na shughuli zote za kanisa"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11522,10 +11470,6 @@ msgstr "Panua"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Chunguza kwa Data ya Maonyesho"
-
-#: 
-msgid "Export"
-msgstr "Hamisha"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12478,10 +12422,6 @@ msgid "The property is successfully removed."
 msgstr "Sifa imeondolewa kwa mafanikio."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" katika upau wa urambazaji programu-jalizi hii inapowezeshwa."
-
-#: 
 msgid "To Family"
 msgstr "Kwa Familia"
 
@@ -13274,11 +13214,6 @@ msgstr "Thamani ya Shamba"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Tafuta watu ambao hawakuhudhuria tukio"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tafuta watu ambao waliamuon kwa mwaka mmoja lakini si mwingine"
 
@@ -13371,11 +13306,6 @@ msgstr "Maadhimisho ya uanachama"
 #: 
 msgid "Minimum Age"
 msgstr "Umri wa Chini Zaidi"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Watu walioondoka"
 
 #. Context: query_qry
 #: 
@@ -13568,11 +13498,6 @@ msgstr "Chagua sehemu ya kutafuta."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Chagua tukio linalotaka"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Chagua jukumu la familia linalotaka."
 
@@ -13721,4 +13646,368 @@ msgstr "mfano Huduma ya Jumapili"
 #: 
 msgid "member"
 msgstr "mwanajamii"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Kuongeza viungo"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Ruhusu uboreshaji wa kabla ya kutolewa"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Ruhusu wageni kujisajili kama familia mpya."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Uthibitishaji"
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS otomatiki"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Nakala rudufu otomatiki"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC barua pepe zote kwa"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Usanidi"
+
+#: 
+msgid "Continent"
+msgstr "Bara"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Gharama"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Watu wa kadi ya mkopo"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Matumizi ya sasa"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Mitindo ya picha chaguo-msingi"
+
+#: 
+msgid "Default Map View"
+msgstr "Mtazamo wa ramani chaguo-msingi"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Aina ya tiketi ya amana"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Sifa ya Usitume barua pepe"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Sifa ya Usitume SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Pakua OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Muundo wa nambari ya simu E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Wezesha barua pepe"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Wezesha menyu ya matukio"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Wezesha API ya kalenda ya nje"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Wezesha matumizi ya bahasha za michango"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Wezesha matumizi ya hundi zilizoskanwa"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Ahadi ya familia kwa mwaka wa fedha"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Vipengele"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Vitambulisho vya hoja ya ruhusa ya fedha"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Tafuta wanafunzi waliojisajili"
+
+#: 
+msgid "Find family"
+msgstr "Tafuta familia"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Kupata URL ya seva yako"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Mwaka wa fedha."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Mwongozo wa usanidi wa GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Kuanza"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Kupata Kitambulisho cha Kipimo cha GA4"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Msaada wa Google Analytics"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Chaguo za picha za Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Tovuti ya Gravatar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Kikundi cha wanafunzi waliojisajili"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ficha latitudo/longitudo"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ficha anwani ya mtu"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Jinsi inavyofanya kazi"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Ni hundi ngapi za kuchapisha kwa ukurasa wa stakabadhi ya amana"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Kiwango cha kukuza cha awali unapofungua ramani"
+
+#: 
+msgid "Learn more"
+msgstr "Jifunze zaidi"
+
+#: 
+msgid "Log Settings"
+msgstr "Mipangilio ya kumbukumbu"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Kusimamia viungo"
+
+#: 
+msgid "Neighborhood"
+msgstr "Mtaa"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Chanzo cha OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Nyaraka za OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Tovuti ya OpenLP"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Watu waliowekwa kulipa kwa kadi ya mkopo."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Ujumuishaji wa mtu/familia"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Muundo wa nambari ya simu"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Faragha na Uzingatifu"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Mambo ya kuzingatia kuhusu faragha"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Dokezo la faragha"
+
+#: 
+msgid "Quick Settings"
+msgstr "Mipangilio ya haraka"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Wanafunzi waliojisajili"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Uthibitishaji wa SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Muda wa kuisha wa SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Usalama"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Mambo ya kuzingatia kuhusu usalama"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Usanidi"
+
+#: 
+msgid "Street"
+msgstr "Barabara"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Moduli ya Shule ya Jumapili"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Huduma zinazotumika"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Kupima muunganisho"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Utatuzi wa matatizo"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Utatuzi – Kitambulisho cha mtumaji kisicho halali"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Utatuzi – Ujumbe haukutolewa"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Utatuzi – SMS haitumwi"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Mipangilio ya uboreshaji"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Matumizi"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Ruhusa ya mtumiaji kuhamisha faili za CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Dashibodi ya Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Bei za Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Nyaraka za Vonage SMS API"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Kinachofuatiliwa"
 

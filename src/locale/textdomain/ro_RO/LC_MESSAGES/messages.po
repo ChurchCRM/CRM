@@ -7953,10 +7953,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Acest lucru poate dura câteva minute pentru baze de date mari. Nu închideți această pagină."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Rezumat actualizare"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Utilizați instrumente externe (GPG, 7-Zip) pentru a cripta backup-urile înainte de a le stoca în afara locației."
 
@@ -8729,10 +8725,6 @@ msgid "Save the file and refresh this page"
 msgstr "Salvați fișierul și reîmprospătați pagina"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Setați pe true pentru a dezactiva introducerea adreselor personale pentru persoanele neafiliate în Editorul de persoane. Setați pe false pentru a activa introducerea adreselor pentru persoanele fără o familie atribuită."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Începe cu <strong>http://</strong> sau <strong>https://</strong>"
 
@@ -9202,10 +9194,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Da, șterge această oportunitate"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Interogări pentru care utilizatorul trebuie să aibă permisiuni de finanțe pentru a le utiliza"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fonduri"
 
@@ -9491,10 +9479,6 @@ msgstr "Zile de Naștere Viitoare"
 #: 
 msgid "Waiting to Check In"
 msgstr "În Așteptare pentru Check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Când este activat, noile dispozitive chioșc se pot înregistra timp de 30 de secunde."
 
 #: 
 msgid "Your child"
@@ -10661,20 +10645,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Detectați automat coordonatele folosind adresa"
 
 #: 
-msgid "Basic Information"
-msgstr "Informații de bază"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informațiile parohiei au fost salvate cu succes."
-
-#: 
 msgid "Church name is required."
 msgstr "Numele parohiei este obligatoriu."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Numele parohiei este obligatoriu. Completați fila Informații de bază."
 
 #: 
 msgid "City is required."
@@ -10733,22 +10705,6 @@ msgid "Language & Localization"
 msgstr "Limbă și localizare"
 
 #: 
-msgid "Location & Map"
-msgstr "Locație și hartă"
-
-#: 
-msgid "Location Information"
-msgstr "Informații de locație"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "E-mail de contact principal pentru comunicările parohiei."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Numărul de telefon principal al parohiei."
-
-#: 
 msgid "Map"
 msgstr "Hartă"
 
@@ -10799,10 +10755,6 @@ msgstr "Adresa este obligatorie."
 #: 
 msgid "Student Information"
 msgstr "Informații student"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Limba sistemului pentru parohie. Afectează formatele de dată, telefon și alte localizări."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11170,10 +11122,6 @@ msgstr "Copie de siguranță pe stocarea externă acum"
 #: 
 msgid "Browse all available plugins"
 msgstr "Răsfoiți toate pluginurile disponibile"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Răsfoiți toate evenimentele și activitățile parohiei"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11610,10 +11558,6 @@ msgstr "Extinde"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Explorează cu date demonstrative"
-
-#: 
-msgid "Export"
-msgstr "Exportă"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12558,10 +12502,6 @@ msgid "The property is successfully removed."
 msgstr "Proprietatea a fost eliminată cu succes."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Aceste linkuri apar în meniul \"Linkuri\" din bara laterală de navigare când acest plugin este activat."
-
-#: 
 msgid "To Family"
 msgstr "Către familie"
 
@@ -13354,11 +13294,6 @@ msgstr "Valoarea câmpului"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Găsiți persoane care nu au participat la un eveniment"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Găsiți persoane care s-au angajat un an, dar nu altul"
 
@@ -13451,11 +13386,6 @@ msgstr "Aniversări de membri"
 #: 
 msgid "Minimum Age"
 msgstr "Vârstă minimă"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Persoane lipsă"
 
 #. Context: query_qry
 #: 
@@ -13648,11 +13578,6 @@ msgstr "Selectați câmpul de căutat."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Selectați evenimentul dorit"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Selectați rolul familiar dorit."
 
@@ -13801,4 +13726,364 @@ msgstr "de exemplu, Serviciul de duminică"
 #: 
 msgid "member"
 msgstr "membru"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Adăugare linkuri"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Permite actualizări pre-lansare"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Permite vizitatorilor să se auto-înregistreze ca familii noi."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Autentificare"
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS automat"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Backup automat"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC pentru toate e-mailurile la"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Configurare"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Costuri"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Persoane cu card de credit"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Utilizare curentă"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Stiluri de imagine implicite"
+
+#: 
+msgid "Default Map View"
+msgstr "Vizualizare hartă implicită"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Tip bon de depozit"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Proprietate Nu trimite e-mail"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Proprietate Nu trimite SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Descarcă OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Format număr de telefon E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Activează e-mail"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Activează meniu Evenimente"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Activează API calendar extern"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Activează utilizarea plicurilor de donații"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Activează utilizarea cecurilor scanate"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Angajament familial pe an fiscal"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funcționalități"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "ID-uri interogări permisiuni finanțe"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Găsește elevi înregistrați"
+
+#: 
+msgid "Find family"
+msgstr "Găsește familie"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Găsirea URL-ului serverului dvs."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "An fiscal."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Ghid configurare GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Noțiuni de bază"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Obținerea ID-ului de măsurare GA4"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Ajutor Google Analytics"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Opțiuni imagine Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Site web Gravatar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grup de elevi înregistrați"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ascunde latitudine/longitudine"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ascunde adresa persoanei"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Cum funcționează"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Câte cecuri se imprimă pe pagina bonului de depozit"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Nivel de zoom inițial la deschiderea hărții"
+
+#: 
+msgid "Learn more"
+msgstr "Află mai multe"
+
+#: 
+msgid "Log Settings"
+msgstr "Setări jurnal"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Gestionarea linkurilor"
+
+#: 
+msgid "Neighborhood"
+msgstr "Cartier"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Sursă OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Documentație OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Site web OpenLP"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Persoane configurate să plătească cu cardul de credit."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Integrare persoană/familie"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Format număr de telefon"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Confidențialitate și conformitate"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Considerații privind confidențialitatea"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Notă de confidențialitate"
+
+#: 
+msgid "Quick Settings"
+msgstr "Setări rapide"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Elevi înregistrați"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Autentificare SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Timeout SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Securitate"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Considerații de securitate"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Configurare"
+
+#: 
+msgid "Street"
+msgstr "Stradă"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Modul Școala Duminicală"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Servicii suportate"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Testare conexiune"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Depanare"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Depanare – ID expeditor invalid"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Depanare – Mesaje nelivrate"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Depanare – SMS nu se trimite"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Setări actualizare"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Cazuri de utilizare"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Permisiune utilizator pentru exportul fișierelor CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Tablou de bord Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Prețuri Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Documentație Vonage SMS API"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Ce este urmărit"
 

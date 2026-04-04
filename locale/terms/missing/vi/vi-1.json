@@ -5,5 +5,7 @@
   "BCC": "",
   "Email BCC": "",
   "name@example.com": "",
-  "N/A": ""
+  "N/A": "",
+  "File size exceeds the server limit of %s": "",
+  "Missing image data in request": ""
 }

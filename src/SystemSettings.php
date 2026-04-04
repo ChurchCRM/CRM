@@ -36,7 +36,7 @@ if (isset($_POST['save'])) {
             $value = InputUtils::filterDate($new_value[$id]);
         } elseif ($current_type == 'json') {
             $raw = $new_value[$id];
-            // Only store if the submitted value is valid JSON; otherwise skip
+            // Only store if the submitted value is valid JSON; otherwise keep the existing value
             json_decode($raw);
             if (json_last_error() === JSON_ERROR_NONE) {
                 $value = $raw;

@@ -71,6 +71,7 @@ jobs:
             --arg sev_name    "Severity" \
             --arg sev_val     "${SEV_EMOJI} ${SEVERITY^}" \
           '{
+            allowed_mentions: { parse: [] },
             embeds: [{
               title:       $title,
               description: $description,
@@ -107,6 +108,7 @@ jobs:
             --arg label_name  "Labeled by" \
             --arg label_val   "$LABEL_BY" \
           '{
+            allowed_mentions: { parse: [] },
             embeds: [{
               title:       $title,
               description: $description,

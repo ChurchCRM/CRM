@@ -7874,10 +7874,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Có thể mất vài phút. Vui lòng không đóng trang này."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Tóm tắt nâng cấp"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Sử dụng các công cụ bên ngoài để mã hóa bản sao lưu trước khi lưu trữ bên ngoài."
 
@@ -8650,10 +8646,6 @@ msgid "Save the file and refresh this page"
 msgstr "Lưu tệp và tải lại trang này"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Đặt true để tắt nhập địa chỉ cá nhân cho những người không thuộc gia đình."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Bắt đầu bằng <strong>http://</strong> hoặc <strong>https://</strong>"
 
@@ -9117,10 +9109,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Có, xóa cơ hội này"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Các truy vấn mà người dùng phải có quyền tài chính mới được sử dụng"
-
-#: 
 msgid "Fund(s)"
 msgstr "Quỹ"
 
@@ -9404,10 +9392,6 @@ msgstr "Sinh nhật sắp tới"
 #: 
 msgid "Waiting to Check In"
 msgstr "Đang chờ check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Khi bật, các thiết bị ki-ốt mới có thể đăng ký trong 30 giây."
 
 #: 
 msgid "Your child"
@@ -10572,20 +10556,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Tự động phát hiện tọa độ từ địa chỉ"
 
 #: 
-msgid "Basic Information"
-msgstr "Thông tin cơ bản"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Thông tin hội thánh đã được lưu thành công."
-
-#: 
 msgid "Church name is required."
 msgstr "Tên hội thánh là bắt buộc."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Tên hội thánh là bắt buộc. Vui lòng hoàn thành tab Thông tin cơ bản."
 
 #: 
 msgid "City is required."
@@ -10644,22 +10616,6 @@ msgid "Language & Localization"
 msgstr "Ngôn ngữ & Bản địa hóa"
 
 #: 
-msgid "Location & Map"
-msgstr "Vị trí & Bản đồ"
-
-#: 
-msgid "Location Information"
-msgstr "Thông tin vị trí"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Email liên hệ chính cho các thông tin liên lạc của hội thánh."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Số điện thoại liên hệ chính của hội thánh."
-
-#: 
 msgid "Map"
 msgstr "Bản đồ"
 
@@ -10710,10 +10666,6 @@ msgstr "Địa chỉ là bắt buộc."
 #: 
 msgid "Student Information"
 msgstr "Thông tin học sinh"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Ngôn ngữ hệ thống cho hội thánh. Ảnh hưởng đến định dạng ngày, định dạng điện thoại và các bản địa hóa khác."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11078,10 +11030,6 @@ msgstr "Sao luu ra bo nho ngoai ngay bay gio"
 #: 
 msgid "Browse all available plugins"
 msgstr "Duyet tat ca cac plugin co san"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Duyet tat ca cac su kien va hoat dong giao hoi"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11514,10 +11462,6 @@ msgstr "Mo rong"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Kham pha voi du lieu mau"
-
-#: 
-msgid "Export"
-msgstr "Xuat"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12474,10 +12418,6 @@ msgid "The property is successfully removed."
 msgstr "Da go bo thuoc tinh thanh cong."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Cac lien ket nay xuat hien trong menu \"Lien ket\" o thanh dieu huong ben khi plugin nay duoc bat."
-
-#: 
 msgid "To Family"
 msgstr "Den gia dinh"
 
@@ -13266,11 +13206,6 @@ msgstr "Giá trị trường"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Tìm những người không tham dự sự kiện"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tìm những người đã cam kết một năm nhưng không phải là năm khác"
 
@@ -13363,11 +13298,6 @@ msgstr "Ngày kỷ niệm thành viên"
 #: 
 msgid "Minimum Age"
 msgstr "Tuổi Tối thiểu"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Những người mất tích"
 
 #. Context: query_qry
 #: 
@@ -13557,11 +13487,6 @@ msgstr "Chọn loại sự kiện..."
 #: 
 msgid "Select field to search for."
 msgstr "Chọn trường để tìm kiếm."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Chọn sự kiện mong muốn"
 
 #. Context: queryparameters_qrp
 #: 

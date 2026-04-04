@@ -7863,10 +7863,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Ini mungkin memakan waktu beberapa menit. Jangan tutup halaman ini."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Ringkasan Pembaruan"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di luar lokasi."
 
@@ -8639,10 +8635,6 @@ msgid "Save the file and refresh this page"
 msgstr "Simpan file dan segarkan halaman ini"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Atur true untuk menonaktifkan alamat bagi orang tanpa keluarga."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Dimulai dengan <strong>http://</strong> atau <strong>https://</strong>"
 
@@ -9106,10 +9098,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ya, hapus Pelayanan ini"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Permintaan yang memerlukan izin keuangan untuk digunakan"
-
-#: 
 msgid "Fund(s)"
 msgstr "Dana"
 
@@ -9393,10 +9381,6 @@ msgstr "Ulang Tahun Mendatang"
 #: 
 msgid "Waiting to Check In"
 msgstr "Menunggu Check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Saat diaktifkan, perangkat kiosk baru dapat mendaftar selama 30 detik."
 
 #: 
 msgid "Your child"
@@ -10561,20 +10545,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Deteksi koordinat otomatis menggunakan alamat"
 
 #: 
-msgid "Basic Information"
-msgstr "Informasi Dasar"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informasi jemaat berhasil disimpan."
-
-#: 
 msgid "Church name is required."
 msgstr "Nama jemaat wajib diisi."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Nama jemaat wajib diisi. Lengkapi tab Informasi Dasar."
 
 #: 
 msgid "City is required."
@@ -10633,22 +10605,6 @@ msgid "Language & Localization"
 msgstr "Bahasa & Lokalisasi"
 
 #: 
-msgid "Location & Map"
-msgstr "Lokasi & Peta"
-
-#: 
-msgid "Location Information"
-msgstr "Informasi Lokasi"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Email kontak utama untuk komunikasi jemaat."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Nomor telepon utama jemaat."
-
-#: 
 msgid "Map"
 msgstr "Peta"
 
@@ -10699,10 +10655,6 @@ msgstr "Alamat wajib diisi."
 #: 
 msgid "Student Information"
 msgstr "Informasi Siswa"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Bahasa sistem untuk jemaat. Memengaruhi format tanggal, format telepon, dan lokalisasi lainnya."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11063,10 +11015,6 @@ msgstr "Cadangkan ke Penyimpanan Eksternal Sekarang"
 #: 
 msgid "Browse all available plugins"
 msgstr "Jelajahi semua plugin yang tersedia"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Jelajahi semua acara dan kegiatan gereja"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11499,10 +11447,6 @@ msgstr "Perluas"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Jelajahi dengan Data Demo"
-
-#: 
-msgid "Export"
-msgstr "Ekspor"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12447,10 +12391,6 @@ msgid "The property is successfully removed."
 msgstr "Properti berhasil dihapus."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
-
-#: 
 msgid "To Family"
 msgstr "Ke Keluarga"
 
@@ -13243,11 +13183,6 @@ msgstr "Nilai bidang"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Temukan orang yang tidak menghadiri acara"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
 
@@ -13340,11 +13275,6 @@ msgstr "Hari jadi keanggotaan"
 #: 
 msgid "Minimum Age"
 msgstr "Usia Minimum"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Orang yang hilang"
 
 #. Context: query_qry
 #: 
@@ -13534,11 +13464,6 @@ msgstr "Pilih jenis acara..."
 #: 
 msgid "Select field to search for."
 msgstr "Pilih bidang untuk dicari."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Pilih acara yang diinginkan"
 
 #. Context: queryparameters_qrp
 #: 

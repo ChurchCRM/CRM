@@ -16,7 +16,7 @@ $sPageTitle = gettext('Create New Fund Raiser');
 // Check if linkBack was explicitly provided (not the fallback)
 $linkBackProvided = isset($_GET['linkBack']) && $_GET['linkBack'] !== '';
 $linkBack = RedirectUtils::getLinkBackFromRequest('FindFundRaiser.php');
-$iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID');
+$iFundRaiserID = InputUtils::legacyFilterInputArr($_GET, 'FundRaiserID', 'int');
 
 $fundraiser = null;
 if ($iFundRaiserID > 0) {
