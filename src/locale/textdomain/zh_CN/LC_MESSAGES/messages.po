@@ -11091,10 +11091,6 @@ msgid "Auto-mapped"
 msgstr "自动映射"
 
 #: 
-msgid "BCC"
-msgstr "密送"
-
-#: 
 msgid "BCC All"
 msgstr "全部密送"
 

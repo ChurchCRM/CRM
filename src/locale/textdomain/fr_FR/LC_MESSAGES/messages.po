@@ -11011,10 +11011,6 @@ msgid "Auto-mapped"
 msgstr "Mappé automatiquement"
 
 #: 
-msgid "BCC"
-msgstr "CCI"
-
-#: 
 msgid "BCC All"
 msgstr "CCI à tous"
 
@@ -12679,10 +12675,6 @@ msgstr "fonds"
 #: 
 msgid "members"
 msgstr "fidèles"
-
-#: 
-msgid "name@example.com"
-msgstr "nom@exemple.fr"
 
 #: 
 msgid "opportunities"

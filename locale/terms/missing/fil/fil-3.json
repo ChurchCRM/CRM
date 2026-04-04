@@ -1,0 +1,116 @@
+{
+  "Latvia (Latvija)": "",
+  "URL": "",
+  "PDF": "",
+  "Verification URL": "",
+  "%d month old": {
+    "one": "%d buwang gulang",
+    "other": ""
+  },
+  "%d year old": {
+    "one": "%d taong gulang",
+    "other": ""
+  },
+  "Mailchimp": "",
+  "Web Server": "",
+  "Afrikaans": "",
+  "Api Key": "",
+  "Amharic - Ethiopia": "",
+  "Hindi - India": "",
+  "Tamil - India": "",
+  "Swahili": "",
+  "Telugu - India": "",
+  "Log File": "",
+  "Error": "",
+  "Email Address": "",
+  "Email address": "",
+  "System Upgrade Wizard": "",
+  "Base URL": "",
+  "ChurchCRM Installation": "",
+  "DSN": "",
+  "Document Root": "",
+  "Hostname": "",
+  "IP Address": "",
+  "Platform": "",
+  "Root Path": "",
+  "SMTP Host": "",
+  "Software": "",
+  "Tip:": "",
+  "%d event in %s": {
+    "one": "%d kaganapan sa %s",
+    "other": ""
+  },
+  "Check-in": "",
+  "person": {
+    "one": "tao",
+    "other": ""
+  },
+  "Encryption": "",
+  "Admin Dashboard": "",
+  "Cart": "",
+  "Database:": "",
+  "ID": "",
+  "Jr., Sr.": "",
+  "Mar": "",
+  "PDF/CSV": "",
+  "Social Media": "",
+  "Error:": "",
+  "Newsletter": "",
+  "Personal": "",
+  "Two-Factor Authentication": "",
+  "%d Person added to the Cart.": {
+    "one": "%d Tao ay naidagdag sa Cart.",
+    "other": ""
+  },
+  "%d Person successfully added to selected Family.": {
+    "one": "%d Tao ay matagumpay na naidagdag sa napiling Pamilya.",
+    "other": ""
+  },
+  "%d Person successfully added to selected Group.": {
+    "one": "%d Tao ay matagumpay na naidagdag sa napiling Grupo.",
+    "other": ""
+  },
+  "%d person": {
+    "one": "%d tao",
+    "other": ""
+  },
+  "Tip": "",
+  "Baseline": "",
+  "Browser": "",
+  "%d hour": {
+    "one": "%d oras",
+    "other": ""
+  },
+  "GA4 Measurement ID": "",
+  "Id": "",
+  "MailChimp": "",
+  "MailChimp API Key": "",
+  "MailChimp Dashboard": "",
+  "One-Time Code": "",
+  "Vonage API Key": "",
+  "Vonage API Secret": "",
+  "manifest.": "",
+  "2FA": "",
+  "Discord Chat": "",
+  "Time Zone": "",
+  "Website": "",
+  "%d result for \"%s\"": {
+    "one": "%d resulta para sa \"%s\"",
+    "other": ""
+  },
+  "Administrator": "",
+  "Email BCC": "",
+  "FY %s": "",
+  "Format": "",
+  "Kiosk": "",
+  "Manual": "",
+  "Minimum": "",
+  "Pre-flight": "",
+  "SHA1 Hash": "",
+  "Text Dashboard": "",
+  "Authentication": "",
+  "Auto TLS": "",
+  "Auto-Backup": "",
+  "Setup": "",
+  "Vonage Dashboard": ""
+}
