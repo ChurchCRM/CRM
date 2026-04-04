@@ -84,34 +84,37 @@ function LabelGroupSelect($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('Label Grouping') . '</td>';
     echo '<td class="TextColumn">';
-    echo "<input name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
+    echo '<label class="form-check">';
+    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] != 'fam') {
         echo 'checked';
     }
 
-    echo '>' . gettext('All Individuals') . '<br>';
-    echo "<input name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
+    echo '>' . gettext('All Individuals') . '</label>';
+    echo '<label class="form-check">';
+    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] === 'fam') {
         echo 'checked';
     }
 
-    echo '>' . gettext('Grouped by Family') . '<br></td></tr>';
+    echo '>' . gettext('Grouped by Family') . '</label></td></tr>';
 }
 
 function ToParentsOfCheckBox($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('To the parents of') . ':</td>';
     echo '<td class="TextColumn">';
-    echo "<input name=\"$fieldname\" type=\"checkbox\" ";
+    echo '<label class="form-check">';
+    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"checkbox\" ";
     echo 'id="ToParent" value="1" ';
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname]) {
         echo 'checked';
     }
 
-    echo '><br></td></tr>';
+    echo '></label></td></tr>';
 }
 
 function StartRowStartColumn(): void
@@ -140,7 +143,7 @@ function IgnoreIncompleteAddresses(): void
     <td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
     </td>
     <td class="TextColumn">
-    <input type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
+    <label class="form-check"><input class="form-check-input" type="checkbox" name="onlyfull" id="onlyfull" value="1" checked></label>
     </td>
     </tr>';
 }

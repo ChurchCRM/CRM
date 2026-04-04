@@ -56,113 +56,157 @@ require_once __DIR__ . '/Include/Header.php';
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Title') ?>:</label>
-            <input type="checkbox" name="Title" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Title" value="1">
+              <?= gettext('Title') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('First Name') ?>:</label>
-            <input type="checkbox" name="FirstName" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="FirstName" value="1" checked>
+              <?= gettext('First Name') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Middle Name') ?>:</label>
-            <input type="checkbox" name="MiddleName" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="MiddleName" value="1">
+              <?= gettext('Middle Name') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Suffix') ?>:</label>
-            <input type="checkbox" name="Suffix" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Suffix" value="1">
+              <?= gettext('Suffix') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Address') ?> 1:</label>
-            <input type="checkbox" name="Address1" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Address1" value="1" checked>
+              <?= gettext('Address') ?> 1
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Address') ?> 2:</label>
-            <input type="checkbox" name="Address2" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Address2" value="1" checked>
+              <?= gettext('Address') ?> 2
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('City') ?>:</label>
-            <input type="checkbox" name="City" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="City" value="1" checked>
+              <?= gettext('City') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('State') ?>:</label>
-            <input type="checkbox" name="State" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="State" value="1" checked>
+              <?= gettext('State') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Zip') ?>:</label>
-            <input type="checkbox" name="Zip" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Zip" value="1" checked>
+              <?= gettext('Zip') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Envelope') ?>:</label>
-            <input type="checkbox" name="Envelope" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Envelope" value="1">
+              <?= gettext('Envelope') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Country') ?>:</label>
-            <input type="checkbox" name="Country" value="1" checked>
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Country" value="1" checked>
+              <?= gettext('Country') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Home Phone') ?>:</label>
-            <input type="checkbox" name="HomePhone" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="HomePhone" value="1">
+              <?= gettext('Home Phone') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Work Phone') ?>:</label>
-            <input type="checkbox" name="WorkPhone" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="WorkPhone" value="1">
+              <?= gettext('Work Phone') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Mobile Phone') ?>:</label>
-            <input type="checkbox" name="CellPhone" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="CellPhone" value="1">
+              <?= gettext('Mobile Phone') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Email') ?>:</label>
-            <input type="checkbox" name="Email" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Email" value="1">
+              <?= gettext('Email') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Work/Other Email') ?>:</label>
-            <input type="checkbox" name="WorkEmail" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="WorkEmail" value="1">
+              <?= gettext('Work/Other Email') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Membership Date') ?>:</label>
-            <input type="checkbox" name="MembershipDate" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="MembershipDate" value="1">
+              <?= gettext('Membership Date') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label>* <?= gettext('Birth Date') . ' / ' . gettext('Anniversary Date') ?>:</label>
-            <input type="checkbox" name="BirthdayDate" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="BirthdayDate" value="1">
+              * <?= gettext('Birth Date') . ' / ' . gettext('Anniversary Date') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label>* <?= gettext('Age / Years Married') ?>:</label>
-            <input type="checkbox" name="Age" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="Age" value="1">
+              * <?= gettext('Age / Years Married') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Classification') ?>:</label>
-            <input type="checkbox" name="PrintMembershipStatus" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="PrintMembershipStatus" value="1">
+              <?= gettext('Classification') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Family Role') ?>:</label>
-            <input type="checkbox" name="PrintFamilyRole" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="PrintFamilyRole" value="1">
+              <?= gettext('Family Role') ?>
+            </label>
           </div>
 
           <div class="col-md-4">
-            <label><?= gettext('Gender') ?>:</label>
-            <input type="checkbox" name="PrintGender" value="1">
+            <label class="form-check">
+              <input class="form-check-input" type="checkbox" name="PrintGender" value="1">
+              <?= gettext('Gender') ?>
+            </label>
           </div>
 
           <div class="col-md-12">
