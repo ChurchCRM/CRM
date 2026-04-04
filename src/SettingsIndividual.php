@@ -66,6 +66,12 @@ if (isset($_POST['save'])) {
             }
         }
 
+        // Enforce permission: non-admin users cannot save admin-only settings
+        if (!AuthenticationManager::getCurrentUser()->isAdmin() && $userConfig->getPermission() !== 'TRUE') {
+            next($type);
+            continue;
+        }
+
         // Save new setting
         $userConfig->setValue($value);
         $userConfig->save();

@@ -35,7 +35,14 @@ if (isset($_POST['save'])) {
         } elseif ($current_type == 'date') {
             $value = InputUtils::filterDate($new_value[$id]);
         } elseif ($current_type == 'json') {
-            $value = $new_value[$id];
+            $raw = $new_value[$id];
+            // Only store if the submitted value is valid JSON; otherwise keep the existing value
+            if (json_decode($raw) !== null || $raw === 'null') {
+                $value = $raw;
+            } else {
+                next($type);
+                continue;
+            }
         } elseif ($current_type == 'choice') {
             $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'ajax') {
