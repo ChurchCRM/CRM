@@ -455,10 +455,7 @@ $pledgeDepositId = $isEdit ? ($pledge['depositId'] ?? 0) : $depositId;
         dateEl.addEventListener('change', function () {
             const d = new Date(this.value);
             if (isNaN(d.getTime())) return;
-            const year  = d.getFullYear();
-            const month = d.getMonth() + 1; // 1-based
-            // FY IDs: year - 1996, adjusted for FY start month (iFYMonth)
-            // We resolve via API to respect server config
+            // Resolve fiscal year from server to respect iFYMonth config
             fetch(ROOT + '/api/fiscalyear?date=' + encodeURIComponent(this.value))
                 .then(function (res) { return res.ok ? res.json() : null; })
                 .then(function (data) {

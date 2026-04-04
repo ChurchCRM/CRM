@@ -113,8 +113,8 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         // Fiscal years for dropdown
         $currentFyId = FiscalYearUtils::getCurrentFiscalYearId();
         $fiscalYears = [];
-        for ($fy = 1; $fy <= $currentFyId + 1; $fy++) {
-            $fiscalYears[$fy] = \ChurchCRM\Service\FinancialService::formatFiscalYear($fy);
+        for ($fyId = 1; $fyId <= $currentFyId + 1; $fyId++) {
+            $fiscalYears[$fyId] = \ChurchCRM\Service\FinancialService::formatFiscalYear($fyId);
         }
 
         // Pre-populate family name if familyId given
@@ -223,8 +223,8 @@ $app->group('/pledge', function (RouteCollectorProxy $group): void {
         // Fiscal years for dropdown
         $currentFyId = FiscalYearUtils::getCurrentFiscalYearId();
         $fiscalYears = [];
-        for ($fy = 1; $fy <= $currentFyId + 1; $fy++) {
-            $fiscalYears[$fy] = \ChurchCRM\Service\FinancialService::formatFiscalYear($fy);
+        for ($fyId = 1; $fyId <= $currentFyId + 1; $fyId++) {
+            $fiscalYears[$fyId] = \ChurchCRM\Service\FinancialService::formatFiscalYear($fyId);
         }
 
         $enableNonDeductible = SystemConfig::getBooleanValue('bEnableNonDeductible');

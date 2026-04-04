@@ -250,7 +250,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      * @OA\Delete(
      *     path="/payments/{groupKey}",
      *     summary="Delete a payment by group key (Finance role required)",
-     *     description="Deletes all pledge_plg rows sharing the given GroupKey (multi-fund aware).",
+     *     description="Deletes the pledge or payment group and all associated fund allocations.",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(
