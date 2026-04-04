@@ -11034,10 +11034,6 @@ msgid "Auto-mapped"
 msgstr "Автоматично змаповано"
 
 #: 
-msgid "BCC"
-msgstr "Прихована копія"
-
-#: 
 msgid "BCC All"
 msgstr "BCC всім"
 
@@ -13673,23 +13669,153 @@ msgstr "наприклад Недільна служба"
 msgid "member"
 msgstr "член"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Панель керування**: Перегляд усіх списків MailChimp зі статистикою підписників\n"
+"- **Обслуговування списків**: Виявлення осіб у MailChimp, яких немає в CRM, і навпаки\n"
+"- **Інтеграція контактів**: Перегляд статусу підписки MailChimp на сторінках осіб і сімей\n"
+"- **Автоматична синхронізація**: Підключається до оновлень осіб/сімей для підтримки синхронізації з MailChimp"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Створіть обліковий запис Vonage на https://dashboard.nexmo.com/sign-up (нові облікові записи включають безкоштовний пробний кредит)\n"
+"2. Знайдіть ваш API Key та API Secret на головній сторінці панелі Vonage\n"
+"3. Перейдіть до Numbers > Buy Numbers і придбайте номер з підтримкою SMS\n"
+"4. Запишіть номер у форматі E.164 (наприклад, +14155551234)\n"
+"5. У ChurchCRM увімкніть плагін Vonage SMS і введіть ваші облікові дані"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Перейдіть до Google Analytics (analytics.google.com)\n"
+"2. Створіть ресурс або виберіть існуючий\n"
+"3. Перейдіть до Адміністратор → Потоки даних → Веб\n"
+"4. Скопіюйте ідентифікатор вимірювання (починається з G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Встановіть OpenLP 3.0 або новішу версію на вашому презентаційному комп'ютері\n"
+"2. Увімкніть плагін Remote в OpenLP (Налаштування → Налаштування OpenLP → Плагіни)\n"
+"3. Увімкніть плагін Сповіщень в OpenLP для підтримки відображення сповіщень\n"
+"4. Запишіть IP-адресу комп'ютера з OpenLP\n"
+"5. Введіть URL сервера у форматі: http://IP_ADDRESS:4316\n"
+"6. Якщо в OpenLP налаштовано автентифікацію, введіть ім'я користувача та пароль"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Доступ до панелі MailChimp через меню Електронна пошта. Панель відображає:\n"
+"\n"
+"- Кількість членів для кожного списку\n"
+"- Статистику кампаній\n"
+"- Кількість відписок\n"
+"- Інструменти обслуговування списків"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Додавання посилань"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Усі налаштовані посилання відображаються в таблиці. Ви можете:\n"
+"- Переглядати назву посилання та URL\n"
+"- Натиснути URL, щоб перевірити його коректне відкриття\n"
+"- Видалити посилання, які більше не потрібні\n"
+"\n"
+"Посилання відображаються в порядку їх додавання в навігаційному меню."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Дозволити передвипускні оновлення"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Дозволити запис платежів, що не підлягають податковому вирахуванню, у фінансовому модулі"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Дозволити прикріплення відсканованих зображень чеків до записів депозитів"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Дозволити оновлення системи до версій, позначених як 'pre release' на GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Дозволити неавтентифікований доступ до подій календаря через публічні HTML, ICS та JSON URL-адреси. Необхідно для спільного використання календарів із зовнішніми програмами."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Дозволити відвідувачам створювати власний запис сім'ї через сторінку самореєстрації"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Дозвольте відвідувачам самостійно реєструватися як нові сім'ї."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Будь-який сервіс, сумісний з WebDAV, працює з цим плагіном:\n"
+"\n"
+"- Nextcloud (рекомендовано)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (з WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx з модулем WebDAV\n"
+"\n"
+"Примітка: Деякі сервіси вимагають паролі, специфічні для програм, для доступу через WebDAV."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Автентифікація"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Автентифікація необхідна для API v2, якщо ви її увімкнули в налаштуваннях плагіна Remote в OpenLP. Плагін використовує HTTP Basic Authentication. Більшість локальних мережевих конфігурацій не вимагають автентифікації, але вона рекомендована з міркувань безпеки."
 
 #: 
 msgid "Auto TLS"
@@ -13703,6 +13829,69 @@ msgstr "Автоматичне резервне копіювання"
 #: 
 msgid "BCC All Mail To"
 msgstr "BCC усієї пошти на"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Перед використанням зовнішніх резервних копій перевірте з'єднання:\n"
+"1. Перейдіть до Плагіни > Зовнішнє резервне копіювання\n"
+"2. Натисніть «Перевірити з'єднання WebDAV»\n"
+"3. Переконайтеся, що бачите повідомлення про успіх\n"
+"\n"
+"Поширені проблеми:\n"
+"- Помилки 401/403: Перевірте ім'я користувача та пароль\n"
+"- Тайм-аут з'єднання: Перевірте правильність URL кінцевої точки\n"
+"- Помилки сертифіката: Переконайтеся, що сервер WebDAV має дійсний SSL-сертифікат"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Виберіть, що відображається, якщо Gravatar відсутній:\n"
+"• Mystery Person — сіра силуетна обводка\n"
+"• Identicon — геометричний візерунок на основі електронної пошти\n"
+"• MonsterID — унікальне згенероване обличчя монстра\n"
+"• Wavatar — абстрактне згенероване обличчя\n"
+"• Retro — піксельна графіка у стилі 8-бітної аркади\n"
+"• RoboHash — унікальний згенерований робот\n"
+"• Blank — прозорий (відображаються ініціали)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Ідентифікатори запитів, розділені комами, для перегляду яких необхідні фінансові права"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Поширені випадки використання власних посилань:\n"
+"- Веб-сайт парафії\n"
+"- Портал онлайн-пожертвувань\n"
+"- Форми реєстрації волонтерів\n"
+"- Ресурси єпархії\n"
+"- Сайти організацій-партнерів\n"
+"- Папки хмарного сховища\n"
+"- Сторінки реєстрації на заходи"
 
 #. plugin:external-backup:section:1:title
 #: 
@@ -13773,6 +13962,22 @@ msgid "Enable External Calendar API"
 msgstr "Увімкнути зовнішній API календаря"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Увімкнути надсилання електронних листів із ChurchCRM. Необхідно для скидання паролю, сповіщень та посилань електронної пошти."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Увімкніть, якщо ваш SMTP-сервер вимагає ім'я користувача та пароль"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Увімкнути або вимкнути модуль Недільної школи та бічне меню."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Увімкнути використання пронумерованих конвертів для пожертвувань для відстеження внесків"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Увімкнути використання конвертів для пожертвувань"
 
@@ -13813,6 +14018,21 @@ msgstr "Пошук URL-адреси вашого сервера"
 msgid "Fiscal Year."
 msgstr "Фінансовий рік."
 
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "З міркувань безпеки:\n"
+"- Лише адміністратори можуть додавати або видаляти посилання\n"
+"- Параметр «Керувати посиланнями» відображається лише для адміністраторів\n"
+"- Посилання повинні використовувати протоколи http:// або https://\n"
+"- HTML-теги не допускаються в назвах або URL-адресах\n"
+"- Усі введені дані перевіряються та очищаються"
+
 #. plugin:google-analytics:link:1:label
 #: 
 msgid "GA4 Setup Guide"
@@ -13828,10 +14048,25 @@ msgstr "Початок роботи"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Отримання ідентифікатора вимірювання GA4"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) відстежує взаємодію користувачів із ChurchCRM, надаючи інформацію про перегляди сторінок, залученість користувачів та використання функцій."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Довідка Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics збирає анонімізовані дані про використання. Жодна особиста інформація із записів ChurchCRM не надсилається до Google. Розгляньте можливість додавання повідомлення про конфіденційність до політики обробки даних вашої парафії."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) відображає фотографії профілю з gravatar.com для членів, у яких немає завантажених фотографій у ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13842,6 +14077,11 @@ msgstr "Параметри зображення Gravatar"
 #: 
 msgid "Gravatar Website"
 msgstr "Вебсайт Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar працює шляхом перетворення електронних адрес у хеш (MD5). Фактична електронна адреса ніколи не надсилається на сервери Gravatar — для пошуку зображення використовується лише хеш."
 
 #. Context: queryparameters_qrp
 #: 
@@ -13866,6 +14106,77 @@ msgstr "Як це працює"
 msgid "How many checks to print per deposit slip page"
 msgstr "Скільки чеків друкувати на сторінці квитанції про депозит"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Якщо SMS-повідомлення не надсилаються:\n"
+"1. Перевірте правильність API Key та Secret (без зайвих пробілів)\n"
+"2. Переконайтеся, що номер відправника є дійсним номером Vonage, який вам належить\n"
+"3. Переконайтеся, що номери телефонів одержувачів містять код країни\n"
+"4. Перевірте баланс вашого облікового запису Vonage\n"
+"5. Перегляньте Vonage Dashboard > SMS > Logs для перевірки статусу доставки"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Якщо сповіщення не відображаються:\n"
+"1. Переконайтеся, що OpenLP запущено і плагін Remote активний\n"
+"2. Переконайтеся, що плагін Сповіщень увімкнено в OpenLP\n"
+"3. Перевірте правильність URL сервера (спробуйте відкрити його в браузері)\n"
+"4. Переконайтеся, що налаштування брандмауера дозволяють з'єднання на порту 4316\n"
+"5. Якщо використовується автентифікація, перевірте правильність облікових даних"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Якщо повідомлення надсилаються, але не отримуються:\n"
+"1. Перевірте Vonage Dashboard > SMS > Logs для отримання статусу доставки\n"
+"2. Переконайтеся, що номер одержувача правильний і може отримувати SMS\n"
+"3. Деякі оператори можуть блокувати повідомлення з невідомих номерів\n"
+"4. Перевірте, чи є обмеження на SMS у країні призначення"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Якщо ви отримуєте помилки недійсного ідентифікатора відправника:\n"
+"1. Використовуйте номер телефону, придбаний у Vonage\n"
+"2. Відформатуйте номер у форматі E.164 (+14155551234)\n"
+"3. Примітка: Буквено-цифрові ідентифікатори відправника можуть бути обмежені в деяких країнах"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Важливі примітки щодо безпеки:\n"
+"\n"
+"1. Завжди використовуйте HTTPS кінцеві точки для шифрування резервних копій під час передачі\n"
+"2. Використовуйте паролі, специфічні для програм, якщо вони доступні (Nextcloud, ownCloud)\n"
+"3. Зберігайте резервні копії в папці з обмеженим доступом\n"
+"4. Періодично завантажуйте та перевіряйте дійсність ваших резервних копій\n"
+"5. Розгляньте шифрування конфіденційних резервних копій зовнішніми інструментами перед завантаженням"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Початковий рівень масштабування під час відкриття карти"
@@ -13877,6 +14188,11 @@ msgstr "Дізнатися більше"
 #: 
 msgid "Log Settings"
 msgstr "Налаштування журналу"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Інтеграція з MailChimp забезпечує синхронізацію між контактами ChurchCRM та вашими списками email-маркетингу MailChimp."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13902,6 +14218,11 @@ msgstr "Документація OpenLP"
 msgid "OpenLP Website"
 msgstr "Вебсайт OpenLP"
 
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP — безкоштовне програмне забезпечення з відкритим кодом для презентацій, розроблене для церков. Цей плагін дозволяє ChurchCRM надсилати сповіщення та попередження безпосередньо на ваш дисплей OpenLP."
+
 #. Context: query_qry
 #: 
 msgid "People who are configured to pay by credit card."
@@ -13916,6 +14237,26 @@ msgstr "Інтеграція особи/сім'ї"
 #: 
 msgid "Phone Number Format"
 msgstr "Формат номера телефону"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Номери телефонів мають бути у форматі E.164: код країни + номер. Приклади:\n"
+"- США: +14155551234\n"
+"- Великобританія: +447700900123\n"
+"- Австралія: +61412345678\n"
+"\n"
+"Номери телефонів одержувачів у профілях членів ChurchCRM повинні містити код країни для коректної роботи SMS."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Зведення зобов'язань за назвою сім'ї для кожного фонду за вибраний фінансовий рік"
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13966,6 +14307,22 @@ msgid "Setup"
 msgstr "Налаштування"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Показати розбивку номіналів банкнот у звіті про депозитний квиток"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Показати або приховати меню Заходи в головній навігації."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Показати або приховати розділ Заходи в головному навігаційному меню"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Показати або приховати модуль Недільної школи в бічній навігації"
+
+#: 
 msgid "Street"
 msgstr "Вулиця"
 
@@ -13982,6 +14339,89 @@ msgstr "Підтримувані служби"
 #: 
 msgid "Testing Connection"
 msgstr "Перевірка з'єднання"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Плагін «Власні посилання меню» дозволяє адміністраторам додавати зовнішні посилання до навігаційного меню. Після увімкнення в бічній панелі з'являється меню «Посилання», що містить усі налаштовані посилання."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Плагін «Зовнішнє резервне копіювання» дозволяє автоматично створювати резервні копії бази даних ChurchCRM у хмарних сховищах, сумісних з WebDAV. Це включає популярні сервіси, такі як Nextcloud, ownCloud або будь-який сервер з підтримкою протоколу WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Стандартний порт OpenLP — 4316. URL вашого сервера зазвичай матиме вигляд: http://192.168.x.x:4316, де 192.168.x.x — IP-адреса комп'ютера, на якому запущено OpenLP. Це можна знайти в OpenLP у меню Інструменти → Відкрити менеджер служб."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Місяць, з якого починається фінансовий рік вашої організації"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Цей плагін наразі використовується для сповіщень про реєстрацію на кіоску. Коли дитина реєструється на заняттях Недільної школи через систему кіоску, SMS може бути надіслане для сповіщення батьків або опікунів."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Цей плагін наразі використовується для сповіщень про реєстрацію на кіоску. Коли дитина реєструється на заняттях Недільної школи через систему кіоску, сповіщення може бути надіслане на проекторний дисплей OpenLP для інформування батьків або волонтерів."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Цей плагін передає електронні адреси на сервери MailChimp. Переконайтеся, що ви отримали відповідну згоду від ваших членів перед синхронізацією їхньої інформації зі сторонніми сервісами, такими як MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Щоб додати нове посилання:\n"
+"1. Перейдіть до меню Посилання в бічній панелі та натисніть «Керувати посиланнями»\n"
+"2. Введіть відображувану назву (2-50 символів)\n"
+"3. Введіть повний URL (має починатися з http:// або https://)\n"
+"4. Натисніть «Додати посилання»\n"
+"\n"
+"Посилання одразу з'явиться в меню Посилання."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Щоб налаштувати зовнішнє резервне копіювання:\n"
+"1. Перейдіть до Адміністратор > Плагіни та знайдіть «Зовнішнє резервне копіювання (WebDAV)»\n"
+"2. Натисніть значок налаштувань, щоб розгорнути панель конфігурації\n"
+"3. Введіть URL кінцевої точки WebDAV (наприклад, https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Введіть ім'я користувача та пароль\n"
+"5. За бажанням встановіть інтервал автоматичного резервного копіювання в годинах\n"
+"6. Збережіть налаштування"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Для використання інтеграції з MailChimp вам потрібен обліковий запис MailChimp та API-ключ.\n"
+"\n"
+"1. Увійдіть до вашого облікового запису MailChimp\n"
+"2. Перейдіть до Обліковий запис > Додатково > API-ключі\n"
+"3. Створіть новий API-ключ або скопіюйте існуючий\n"
+"4. Введіть API-ключ у налаштуваннях плагіна"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14032,8 +14472,98 @@ msgstr "Ціни Vonage"
 msgid "Vonage SMS API Documentation"
 msgstr "Документація Vonage SMS API"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS забезпечує сповіщення текстовими повідомленнями для ChurchCRM з використанням Vonage API (раніше Nexmo). Надсилайте SMS-сповіщення батькам, коли їхня дитина реєструється через систему кіоску."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage стягує плату за кожне надіслане SMS. Ціни залежать від країни призначення. Актуальні тарифи дивіться на сторінці цін Vonage. Нові облікові записи отримують безкоштовний пробний кредит для тестування."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Що відстежується"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Після налаштування MailChimp на сторінках перегляду особи з'являється вкладка «MailChimp», що відображає:\n"
+"\n"
+"- Статус підписки на електронну пошту у всіх списках\n"
+"- Списки, на які підписана особа\n"
+"- Статистику підписок"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Коли у члена немає завантаженої фотографії, ChurchCRM перевіряє, чи є у нього Gravatar, пов'язаний з його електронною адресою. Якщо Gravatar існує, відображається це зображення. Якщо ні, використовується налаштований стиль зображення за замовчуванням."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Коли автоматичне резервне копіювання увімкнено (інтервал > 0 годин), ChurchCRM автоматично створюватиме та завантажуватиме повну резервну копію бази даних із вказаним інтервалом. Резервне копіювання виконується під час звичайних завантажень сторінок, тому система повинна мати регулярну активність користувачів для запуску резервного копіювання.\n"
+"\n"
+"Рекомендовані інтервали:\n"
+"- Щоденне резервне копіювання: 24 години\n"
+"- Двічі на день: 12 годин\n"
+"- Щотижня: 168 годин"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Після увімкнення та налаштування ChurchCRM надсилає повідомлення-сповіщення на ваш сервер OpenLP за допомогою кінцевої точки API v2 (POST /api/v2/plugins/alerts). Ці сповіщення відображаються як накладені сповіщення на вашому проекційному дисплеї."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Після увімкнення приховує поле адреси для осіб, не прикріплених до сім'ї"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Після увімкнення приховує поля широти/довготи в редакторі сім'ї. Геокодування продовжує виконуватися у фоновому режимі."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Ви також можете ініціювати ручне резервне копіювання в будь-який час:\n"
+"1. Перейдіть на сторінку налаштувань зовнішнього резервного копіювання (Плагіни > Зовнішнє резервне копіювання)\n"
+"2. Виберіть тип резервної копії (лише база даних або повна резервна копія)\n"
+"3. Натисніть «Створити резервну копію на WebDAV зараз»\n"
+"\n"
+"Резервні копії лише бази даних менші та швидші. Повні резервні копії включають завантажені фотографії."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Перегляди сторінок та навігаційні патерни\n"
+"• Тривалість сесії та залученість\n"
+"• Демографічні дані користувачів (якщо увімкнено в GA4)\n"
+"• Інформація про пристрій та браузер"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Розмір файлу перевищує ліміт сервера %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "У запиті відсутні дані зображення"
 
