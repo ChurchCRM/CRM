@@ -33,7 +33,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
           <i class="fa-solid fa-paper-plane me-2"></i><?= gettext('Email') ?>
         </a>
         <a href="mailto:?bcc=<?= InputUtils::escapeAttribute($sEmailLink) ?>" class="btn btn-outline-secondary" title="<?= gettext('Email with hidden recipients') ?>" target="_blank" rel="noopener noreferrer">
-          <i class="fa-solid fa-user-secret me-2"></i><?= gettext('BCC') ?>
+          <i class="fa-solid fa-user-secret me-2"></i>BCC
         </a>
       </div>
     <?php } ?>
