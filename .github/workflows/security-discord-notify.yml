@@ -77,6 +77,7 @@ jobs:
             --arg status_name "Status" \
             --arg status_val  "$LABEL" \
           '{
+            allowed_mentions: { parse: [] },
             embeds: [{
               title:       $title,
               description: $description,
@@ -117,6 +118,7 @@ jobs:
             --arg label_name  "Labeled by" \
             --arg label_val   "$LABEL_BY" \
           '{
+            allowed_mentions: { parse: [] },
             embeds: [{
               title:       $title,
               description: $description,
