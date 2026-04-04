@@ -330,7 +330,7 @@ class Menu
         $menu->addSubMenu(new MenuItem(gettext('System Users'), 'admin/system/users', $isAdmin, 'fa-user-gear'));
         $menu->addSubMenu(new MenuItem(gettext('System Settings'), 'SystemSettings.php', $isAdmin, 'fa-gear'));
         $menu->addSubMenu(new MenuItem(gettext('Plugins'), 'plugins/management', $isAdmin, 'fa-plug'));
-        $menu->addSubMenu(new MenuItem(gettext('CSV Export Records'), 'CSVExport.php', $isAdmin, 'fa-file-export'));
+        $menu->addSubMenu(new MenuItem(gettext('Export'), 'admin/export', $isAdmin, 'fa-file-export'));
 
         return $menu;
     }

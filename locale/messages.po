@@ -572,6 +572,9 @@ msgstr ""
 msgid "Advanced Deposit Report"
 msgstr ""
 
+msgid "Advanced filtering by group, classification, and role"
+msgstr ""
+
 msgid "Advanced Operations"
 msgstr ""
 
@@ -614,6 +617,9 @@ msgid "All Checks Passed"
 msgstr ""
 
 msgid "All Classifications"
+msgstr ""
+
+msgid "All congregation members included"
 msgstr ""
 
 msgid "All Data"
@@ -1556,6 +1562,12 @@ msgstr ""
 msgid "ChMeetings Export"
 msgstr ""
 
+msgid "ChMeetings export completed successfully"
+msgstr ""
+
+msgid "ChMeetings-compatible column format"
+msgstr ""
+
 #. Context: countries
 msgid "Chad (Tchad)"
 msgstr ""
@@ -2115,6 +2127,9 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
+msgid "Contact info, family roles, and key dates"
+msgstr ""
+
 msgid "Contact us"
 msgstr ""
 
@@ -2263,6 +2278,9 @@ msgid "Create a backup of your church database"
 msgstr ""
 
 msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr ""
+
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
 msgstr ""
 
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
@@ -2461,6 +2479,9 @@ msgid "Data file format"
 msgstr ""
 
 msgid "Data/Reports"
+msgstr ""
+
+msgid "Database Backup"
 msgstr ""
 
 msgid "Database Only"
@@ -3593,13 +3614,25 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr ""
+
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
 msgstr ""
 
 msgid "Export data to CSV format for external applications"
 msgstr ""
 
 msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr ""
+
+msgid "Export your church data to various formats"
 msgstr ""
 
 msgid "Exporting..."
@@ -3615,6 +3648,9 @@ msgid "External Backup"
 msgstr ""
 
 msgid "External Backup (WebDAV)"
+msgstr ""
+
+msgid "External (WebDAV) backup via plugin"
 msgstr ""
 
 msgid "External Backup Settings"
@@ -3739,6 +3775,9 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to export ChMeetings CSV"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -3930,6 +3969,9 @@ msgid "Family Verification"
 msgstr ""
 
 msgid "Family Work Phone"
+msgstr ""
+
+msgid "Family or individual record layout"
 msgstr ""
 
 msgid "Family added to cart"
@@ -4173,6 +4215,9 @@ msgid "FirstName MiddleName LastName"
 msgstr ""
 
 msgid "Fiscal Year"
+msgstr ""
+
+msgid "Flexible field selection"
 msgstr ""
 
 msgid "Focus"
@@ -4482,6 +4527,9 @@ msgid "Go"
 msgstr ""
 
 msgid "Go to Dashboard"
+msgstr ""
+
+msgid "Go to Database Backup"
 msgstr ""
 
 msgid "Go to Login"
@@ -6724,6 +6772,9 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
+msgid "Open CSV Export"
+msgstr ""
+
 msgid "Open Deposits:"
 msgstr ""
 
@@ -7894,6 +7945,9 @@ msgid "Restore failed. Please check the backup file and try again."
 msgstr ""
 
 msgid "Restore from a backup file. Erases existing data."
+msgstr ""
+
+msgid "Restore from the System Backup page"
 msgstr ""
 
 msgid "Restore in progress, please wait..."
