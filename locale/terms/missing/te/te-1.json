@@ -66,7 +66,6 @@
   "Your backup will be automatically upgraded to the latest database schema if needed.": "",
   "Your previous session timed out. Please login again.": "",
   "Your registration has been received. Our team will be in touch soon to personally welcome you.": "",
-  "name@example.com": "",
   "Accept the device, then assign it to an event to begin check-in.": "",
   "Back up modified files before upgrading if you want to keep your changes.": "",
   "Click the registration toggle above to open a 30-second registration window.": "",
@@ -88,7 +87,6 @@
   "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled.": "",
   "This will re-download and re-apply the current version. It can fix corrupted or modified files.": "",
   "Toggle the switch below to open a 30-second window for new kiosk devices to register.": "",
-  "N/A": "",
   "Password reset emails — users cannot recover their accounts": "",
   "Person property used to exclude members from SMS/text lists": "",
   "Person property used to exclude members from email lists": "",
@@ -148,5 +146,7 @@
   "Show or hide the Events menu in the main navigation.": "",
   "Show or hide the Events section in the main navigation menu": "",
   "Show or hide the Sunday School module in the sidebar navigation": "",
-  "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links.": ""
+  "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links.": "",
+  "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol.": "",
+  "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager.": ""
 }

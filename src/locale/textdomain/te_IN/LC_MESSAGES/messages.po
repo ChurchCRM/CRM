@@ -10983,10 +10983,6 @@ msgid "Auto-mapped"
 msgstr "స్వయంచాలక-మ్యాపిడ్"
 
 #: 
-msgid "BCC"
-msgstr "రహస్య నకల"
-
-#: 
 msgid "BCC All"
 msgstr "అందరికి BCC"
 
