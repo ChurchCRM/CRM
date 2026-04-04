@@ -141,7 +141,7 @@ require_once __DIR__ . '/Include/Header.php';
             $rsFamilies = RunQuery($sSQL);
             // Build Criteria for Head of Household
 
-            $head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
+            $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '1');
             // If more than one role assigned to Head of Household, add OR
             $head_criteria = str_replace(',', ' OR per_fmr_ID = ', $head_criteria);
             // Add Spouse to criteria
