@@ -180,9 +180,9 @@
     "locale": "tl_PH",
     "languageCode": "tl",
     "countryCode": "PH",
-    "dataTables": "tl",
+    "dataTables": "fil",
     "fullCalendar": true,
-    "fullCalendarLocale": "tl",
+    "fullCalendarLocale": "fil",
     "datePicker": true,
     "momentLocale": "tl-ph",
     "isRTL": false
