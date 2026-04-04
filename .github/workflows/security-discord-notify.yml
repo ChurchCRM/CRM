@@ -12,7 +12,7 @@ name: Security Discord Notifications
 
 on:
   repository_advisory:
-    types: [reported, published, updated, resolved, dismissed, withdrawn, reopened]
+    types: [reported, published, updated, resolved, dismissed, withdrawn]
   issues:
     types: [labeled]
 
