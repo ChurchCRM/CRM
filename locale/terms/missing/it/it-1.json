@@ -1,4 +1,4 @@
 {
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "La dimensione del file supera il limite del server di %s",
+  "Missing image data in request": "Dati immagine mancanti nella richiesta"
 }

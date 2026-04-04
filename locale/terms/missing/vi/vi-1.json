@@ -1,11 +1,11 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d kết quả cho \"%s\""
   },
   "BCC": "",
-  "Email BCC": "",
+  "Email BCC": "Email BCC",
   "name@example.com": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "Kích thước tệp vượt quá giới hạn máy chủ %s",
+  "Missing image data in request": "Thiếu dữ liệu hình ảnh trong yêu cầu"
 }
