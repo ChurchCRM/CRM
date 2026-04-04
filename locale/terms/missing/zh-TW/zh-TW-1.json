@@ -1,7 +1,6 @@
 {
-  "%d result for \"%s\"": {
-    "other": "找到 %d 個「%s」的結果"
-  },
+  "N/A": "",
   "name@example.com": "",
-  "N/A": ""
+  "Missing image data in request": "",
+  "File size exceeds the server limit of %s": ""
 }

@@ -7899,10 +7899,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Esto puede tardar varios minutos en bases de datos grandes. No cierre esta página."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Resumen de la actualización"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Utilice herramientas externas (GPG, 7-Zip) para cifrar las copias de seguridad antes de almacenarlas fuera del sitio."
 
@@ -8675,10 +8671,6 @@ msgid "Save the file and refresh this page"
 msgstr "Guarde el archivo y actualice esta página"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Establecer verdadero para deshabilitar la entrada de direcciones personales para personas no afiliadas en Person Editor. Establezca falso para habilitar el ingreso de direcciones para personas sin asignación familiar."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Comienza con <strong>http://</strong> o <strong>https://</strong>"
 
@@ -9145,10 +9137,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Sí, eliminar esta oportunidad"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Consultas para las cuales el usuario debe tener permisos de finanzas para usar"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fondo(s)"
 
@@ -9433,10 +9421,6 @@ msgstr "Próximos cumpleaños"
 #: 
 msgid "Waiting to Check In"
 msgstr "Esperando para registrar entrada"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Cuando está habilitado, los nuevos dispositivos de quiosco pueden registrarse durante 30 segundos."
 
 #: 
 msgid "Your child"
@@ -10602,20 +10586,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Detectar coordenadas automáticamente usando la dirección"
 
 #: 
-msgid "Basic Information"
-msgstr "Información básica"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Información de la parroquia guardada con éxito."
-
-#: 
 msgid "Church name is required."
 msgstr "El nombre de la parroquia es obligatorio."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "El nombre de la parroquia es obligatorio. Por favor, complete la pestaña Información básica."
 
 #: 
 msgid "City is required."
@@ -10674,22 +10646,6 @@ msgid "Language & Localization"
 msgstr "Idioma y localización"
 
 #: 
-msgid "Location & Map"
-msgstr "Ubicación y mapa"
-
-#: 
-msgid "Location Information"
-msgstr "Información de ubicación"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Correo electrónico de contacto principal para comunicaciones de la parroquia."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Número de teléfono principal de la parroquia."
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10740,10 +10696,6 @@ msgstr "La dirección es obligatoria."
 #: 
 msgid "Student Information"
 msgstr "Información del estudiante"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Idioma del sistema para la parroquia. Afecta formatos de fecha, teléfono y otras localizaciones."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11118,10 +11070,6 @@ msgstr "Realizar copia de seguridad en almacenamiento externo ahora"
 #: 
 msgid "Browse all available plugins"
 msgstr "Ver todos los complementos disponibles"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Ver todos los eventos y actividades parroquiales"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11558,10 +11506,6 @@ msgstr "Expandir"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Explorar con datos de demostración"
-
-#: 
-msgid "Export"
-msgstr "Exportar"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12506,10 +12450,6 @@ msgid "The property is successfully removed."
 msgstr "La propiedad se ha eliminado correctamente."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Estos enlaces aparecen en el menú \"Enlaces\" de la barra lateral de navegación cuando este complemento está activado."
-
-#: 
 msgid "To Family"
 msgstr "A familia"
 
@@ -13302,11 +13242,6 @@ msgstr "Valor del campo"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Encuentra miembros de la parroquia que no asistieron a un evento"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Encuentra miembros de la parroquia que se comprometieron un año pero no otro"
 
@@ -13399,11 +13334,6 @@ msgstr "Aniversarios de membresía"
 #: 
 msgid "Minimum Age"
 msgstr "Edad mínima"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Personas faltantes"
 
 #. Context: query_qry
 #: 
@@ -13593,11 +13523,6 @@ msgstr "Seleccione el tipo de evento..."
 #: 
 msgid "Select field to search for."
 msgstr "Seleccione el campo a buscar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Seleccione el evento deseado"
 
 #. Context: queryparameters_qrp
 #: 

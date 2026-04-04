@@ -1,12 +1,6 @@
 {
-  "%d result for \"%s\"": {
-    "other": "%d hasil untuk \"%s\""
-  },
-  "Administrator": "Administrator",
-  "BCC": "",
-  "Email BCC": "Email BCC",
-  "Format": "Format",
-  "Manual": "Manual",
-  "Minimum": "Minimum",
-  "N/A": ""
+  "N/A": "",
+  "Missing image data in request": "",
+  "File size exceeds the server limit of %s": "",
+  "BCC": ""
 }

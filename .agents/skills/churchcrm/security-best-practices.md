@@ -603,6 +603,60 @@ const { execFileSync } = require('child_process');
 execFileSync('git', ['commit', '-m', message]); // message is a single argument
 ```
 
+### Session Values and extract() Results in SQL Need Explicit int Cast <!-- learned: 2026-04-03 -->
+
+`$_SESSION` values and variables produced by `extract($row)` are strings, not integers.
+When interpolated into SQL without quotes they are directly injectable. Always cast to `(int)` at the point of use.
+
+```php
+// ❌ WRONG — session value uncast, injectable in unquoted integer context
+$id = $_SESSION['iCurrentFundraiser'];
+$sql = 'WHERE fr_ID = ' . $id;
+
+// ✅ CORRECT — cast at read time
+$id = (int)$_SESSION['iCurrentFundraiser'];
+
+// ❌ WRONG — extract() result used bare in SQL
+extract($row);  // sets $pn_per_ID as string
+$sql = '... AND di_donor_id = ' . $pn_per_ID;
+
+// ✅ CORRECT — cast at point of use (or before heredoc where inline cast is not possible)
+$iPnPerID = (int)$pn_per_ID;
+$sql = '... AND di_donor_id = ' . (int)$pn_per_ID;
+```
+
+---
+
+### Permission Checks Must Appear on Both Display and Save <!-- learned: 2026-04-03 -->
+
+Hiding a form field is not a security control — a user can POST to the save handler directly.
+Any permission check applied to the display loop (`if permission != 'TRUE' → skip row`) must
+also be applied in the save loop (`if permission != 'TRUE' → skip update`).
+
+```php
+// ❌ WRONG — check only on display, not on save
+foreach ($configs as $config) {
+    if (!($config->getPermission() === 'TRUE' || $user->isAdmin())) continue; // display gate
+    // ... render field
+}
+// save loop has no equivalent check — non-admin can POST arbitrary IDs
+
+// ✅ CORRECT — mirror the same check in the save loop
+while ($current_type = current($type)) {
+    // ... filter value ...
+    $userConfig = UserConfigQuery::create()->filterById($id)->filterByPeronId($userId)->findOne();
+    // Enforce same permission gate as display
+    if (!$user->isAdmin() && $userConfig->getPermission() !== 'TRUE') {
+        next($type);
+        continue;
+    }
+    $userConfig->setValue($value)->save();
+    next($type);
+}
+```
+
+---
+
 ### Clone ORM Records: Copy All NOT NULL Columns <!-- learned: 2026-04-03 -->
 
 When cloning a Propel record to create a copy for another user/context, check the

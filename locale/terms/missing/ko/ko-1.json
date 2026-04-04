@@ -1,8 +1,7 @@
 {
-  "%d result for \"%s\"": {
-    "other": "\"%s\"에 대한 검색 결과 %d개"
-  },
-  "BCC": "",
+  "N/A": "",
   "name@example.com": "",
-  "N/A": ""
+  "Missing image data in request": "",
+  "File size exceeds the server limit of %s": "",
+  "BCC": ""
 }

@@ -1,14 +1,5 @@
 {
-  "Confession": "Confession",
-  "Format": "Format",
-  "Minimum": "Minimum",
-  "Options": "Options",
-  "Photo": "Photo",
-  "options": "options",
-  "page": "page",
-  "Communication": "Communication",
   "N/A": "",
-  "Parents": "Parents",
-  "Configuration": "Configuration",
-  "Continent": "Continent"
+  "Missing image data in request": "",
+  "File size exceeds the server limit of %s": ""
 }

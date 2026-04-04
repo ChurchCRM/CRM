@@ -9,7 +9,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\InputUtils;
 
 $iPaddleNumID = InputUtils::legacyFilterInputArr($_GET, 'PaddleNumID', 'int');
-$iFundRaiserID = $_SESSION['iCurrentFundraiser'];
+$iFundRaiserID = (int)$_SESSION['iCurrentFundraiser'];
 
 // Get the paddlenum records for this fundraiser
 if ($iPaddleNumID > 0) {
@@ -100,7 +100,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
                         b.fam_homephone as buyerPhone
                         FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_buyer_id
                                             LEFT JOIN family_fam b on a.per_fam_id = b.fam_id
-                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . $pn_per_ID;
+                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_donor_id = ' . (int)$pn_per_ID;
         $rsDonatedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -144,7 +144,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
                         b.fam_homePhone as donorPhone
                         FROM donateditem_di LEFT JOIN person_per a on a.per_ID = di_donor_id
                                             LEFT JOIN family_fam b on a.per_fam_id=b.fam_id
-                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_buyer_id = ' . $pn_per_ID;
+                        WHERE di_FR_ID = ' . $iFundRaiserID . ' AND di_buyer_id = ' . (int)$pn_per_ID;
         $rsPurchasedItems = RunQuery($sSQL);
 
         $pdf->SetXY(SystemConfig::getValue('leftX'), $curY);
@@ -175,6 +175,7 @@ while ($row = mysqli_fetch_array($rsPaddleNums)) {
         }
 
         // Get multibuy items for this buyer
+        $iPnPerID = (int)$pn_per_ID;
         $sqlMultiBuy = <<<SQL
 SELECT
     mb_count,
@@ -189,7 +190,7 @@ FROM multibuy_mb
 LEFT JOIN donateditem_di b ON mb_item_ID=b.di_ID
 LEFT JOIN person_per a ON b.di_donor_id=a.per_ID
 LEFT JOIN family_fam c ON a.per_fam_id = c.fam_ID
-WHERE b.di_FR_ID=$iFundRaiserID AND mb_per_ID=$pn_per_ID;
+WHERE b.di_FR_ID=$iFundRaiserID AND mb_per_ID=$iPnPerID;
 SQL;
         $rsMultiBuy = RunQuery($sqlMultiBuy);
         while ($mbRow = mysqli_fetch_array($rsMultiBuy)) {

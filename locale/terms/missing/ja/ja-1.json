@@ -1,8 +1,7 @@
 {
-  "%d result for \"%s\"": {
-    "other": "\"%s\" の検索結果 %d 件"
-  },
-  "BCC": "",
+  "N/A": "",
   "name@example.com": "",
-  "N/A": ""
+  "Missing image data in request": "",
+  "File size exceeds the server limit of %s": "",
+  "BCC": ""
 }

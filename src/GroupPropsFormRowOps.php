@@ -17,6 +17,12 @@ $iPropID = InputUtils::legacyFilterInput($_GET['PropID'], 'int');
 $sField = InputUtils::legacyFilterInput($_GET['Field']);
 $sAction = InputUtils::legacyFilterInput($_GET['Action']);
 
+// Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
+if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
+    RedirectUtils::redirect('GroupPropsFormEditor.php?GroupID=' . $iGroupID);
+    exit;
+}
+
 // Get the group information
 $group = GroupQuery::create()->findOneById($iGroupID);
 

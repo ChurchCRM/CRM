@@ -7880,10 +7880,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "قد يستغرق هذا عدة دقائق لقواعس البيانات الكبيرة. لا تغلق هذه الصفحة."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "ملخص الترقية"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "استخدم أدوات خارجية (GPG و7-Zip) لتشفير النسخ الاحتياطية قبل تخزينها خارج الموقع."
 
@@ -8656,10 +8652,6 @@ msgid "Save the file and refresh this page"
 msgstr "احفظ الملف وحدث هذه الصفحة"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "عيّن true لتعطيل إدخال عناوين شخصية للأشخاص غير المرتبطين في محرر الأشخاص. عيّن false لتفعيل إدخال العناوين للأشخاص بدون تكليف عائلة."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "يبدأ بـ <strong>http://</strong> أو <strong>https://</strong>"
 
@@ -9138,10 +9130,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "نعم، احذف هذه الفرصة"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "الاستعلامات التي يجب أن يكون للمستخدم أذونات مالية لاستخدامها"
-
-#: 
 msgid "Fund(s)"
 msgstr "صندوق (أصناديق)"
 
@@ -9430,10 +9418,6 @@ msgstr "أعياد الميلاد القادمة"
 #: 
 msgid "Waiting to Check In"
 msgstr "في انتظار تسجيل الدخول"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "عند التمكين، يمكن لأجهزة الكشك الجديدة التسجيل لمدة 30 ثانية."
 
 #: 
 msgid "Your child"
@@ -10603,20 +10587,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "اكتشاف الإحداثيات تلقائياً باستخدام العنوان"
 
 #: 
-msgid "Basic Information"
-msgstr "المعلومات الأساسية"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "تم حفظ معلومات الكنيسة بنجاح."
-
-#: 
 msgid "Church name is required."
 msgstr "اسم الكنيسة مطلوب."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "اسم الكنيسة مطلوب. يرجى إكمال تبويب المعلومات الأساسية."
 
 #: 
 msgid "City is required."
@@ -10675,22 +10647,6 @@ msgid "Language & Localization"
 msgstr "اللغة والتعريب"
 
 #: 
-msgid "Location & Map"
-msgstr "الموقع والخريطة"
-
-#: 
-msgid "Location Information"
-msgstr "معلومات الموقع"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "البريد الإلكتروني الرئيسي للتواصل مع الكنيسة."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "رقم الهاتف الرئيسي للكنيسة."
-
-#: 
 msgid "Map"
 msgstr "خريطة"
 
@@ -10741,10 +10697,6 @@ msgstr "عنوان الشارع مطلوب."
 #: 
 msgid "Student Information"
 msgstr "معلومات الطالب"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "لغة النظام للكنيسة. تؤثر على تنسيقات التاريخ والهاتف وغيرها من التعريبات."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11123,10 +11075,6 @@ msgstr "عمل نسخة احتياطية للتخزين الخارجي الآن"
 #: 
 msgid "Browse all available plugins"
 msgstr "تصفح جميع المكونات الإضافية المتاحة"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "تصفح جميع أحداث وأنشطة الكنيسة"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11563,10 +11511,6 @@ msgstr "توسيع"
 #: 
 msgid "Explore with Demo Data"
 msgstr "استكشف باستخدام بيانات العرض التوضيحي"
-
-#: 
-msgid "Export"
-msgstr "تصدير"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12523,10 +12467,6 @@ msgid "The property is successfully removed."
 msgstr "تم إزالة الخاصية بنجاح."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "تظهر هذه الروابط في قائمة \"الروابط\" في شريط التنقل الجانبي عند تفعيل هذا المكون الإضافي."
-
-#: 
 msgid "To Family"
 msgstr "للعائلة"
 
@@ -13311,11 +13251,6 @@ msgstr "قيمة الحقل"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "ابحث عن أعضاء الكنيسة الذين لم يحضروا الحدث"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "ابحث عن أعضاء الكنيسة الذين التزموا في سنة واحدة ولم يلتزموا في سنة أخرى"
 
@@ -13408,11 +13343,6 @@ msgstr "الذكريات السنوية للعضوية"
 #: 
 msgid "Minimum Age"
 msgstr "الحد الأدنى للعمر"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "أشخاص مفقودون"
 
 #. Context: query_qry
 #: 
@@ -13602,11 +13532,6 @@ msgstr "اختر نوع الحدث..."
 #: 
 msgid "Select field to search for."
 msgstr "اختر الحقل للبحث عنه."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "اختر الحدث المطلوب"
 
 #. Context: queryparameters_qrp
 #: 
