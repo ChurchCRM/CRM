@@ -456,6 +456,31 @@ class   SystemConfig
         return self::$configs[$name]->getValue();
     }
 
+    /**
+     * Returns the config value escaped for use in HTML attributes (value="...", placeholder="...", data-*="...").
+     */
+    public static function getValueForAttr(string $name): string
+    {
+        return InputUtils::escapeAttribute(self::getValue($name));
+    }
+
+    /**
+     * Returns the config value safely encoded for use in JavaScript literals or JSON blobs.
+     * Output includes surrounding quotes, e.g.: "United States"
+     */
+    public static function getValueForJs(string $name): string
+    {
+        return json_encode(self::getValue($name));
+    }
+
+    /**
+     * Returns the config value escaped for use in HTML text content (textarea body, labels, etc.).
+     */
+    public static function getValueForHtml(string $name): string
+    {
+        return InputUtils::escapeHTML(self::getValue($name));
+    }
+
     public static function getBooleanValue(string $name): bool
     {
         if (!isset(self::$configs[$name])) {

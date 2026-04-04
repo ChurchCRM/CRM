@@ -530,22 +530,46 @@ $("#printPerson").on("click", function () { window.print(); });
 
 ---
 
-### Always Escape SystemConfig Values in HTML Attributes <!-- learned: 2026-04-03 -->
+### Always Escape SystemConfig Values in Output — Use Context-Specific Getters <!-- learned: 2026-04-03, updated: 2026-04-03 -->
 
-`SystemConfig::getValue()` returns raw strings from the database. When rendered into
-HTML attributes (`data-*`, `value=`, `href=`), they must be escaped — even though they
-come from "trusted" admin config, a stored XSS in the config table propagates to every
-page that renders the value.
+`SystemConfig::getValue()` returns raw strings from the database. **Never use it directly
+in HTML or JavaScript output.** Use the context-specific helper methods instead — they
+encode correctly for the target context and prevent double-escaping:
+
+| Method | Use for | Encoding |
+|--------|---------|----------|
+| `SystemConfig::getValueForAttr($name)` | HTML attributes: `value=`, `placeholder=`, `data-*=` | `htmlspecialchars()` |
+| `SystemConfig::getValueForHtml($name)` | HTML text content: textarea body, labels | `htmlspecialchars()` |
+| `SystemConfig::getValueForJs($name)` | JavaScript literals, JSON blobs in `<script>` | `json_encode()` (includes surrounding quotes) |
 
 ```php
-// ❌ WRONG — unescaped config in attribute
+// ❌ WRONG — raw config value in HTML attribute
 data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>"
-data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'
 
-// ✅ CORRECT — escape for attribute context
+// ❌ WRONG — manual wrapping (verbose, easy to miss)
 data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>"
-data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'
+
+// ✅ CORRECT — use context getter
+data-system-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>"
+data-phone-mask='{"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"}'
+
+// ✅ CORRECT — JS literal (getValueForJs() includes surrounding quotes — do NOT add "")
+timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
+churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
+
+// ✅ CORRECT — textarea / HTML text content
+<textarea><?= SystemConfig::getValueForHtml('sDirectoryDisclaimer1') ?></textarea>
 ```
+
+**Files where this pattern is enforced** (src/ChurchCRM/dto/SystemConfig.php defines the helpers):
+- [src/Include/Header.php](../../../src/Include/Header.php) — `window.CRM` JS literals
+- [src/Include/HeaderNotLoggedIn.php](../../../src/Include/HeaderNotLoggedIn.php) — `churchWebSite` JS literal
+- [src/FamilyEditor.php](../../../src/FamilyEditor.php) — `data-system-default`, `data-phone-mask`, `placeholder`
+- [src/PersonEditor.php](../../../src/PersonEditor.php) — date picker `placeholder`
+- [src/CartToFamily.php](../../../src/CartToFamily.php) — `data-inputmask` phone format
+- [src/ChurchCRM/utils/CustomFieldUtils.php](../../../src/ChurchCRM/utils/CustomFieldUtils.php) — `placeholder`, `data-phone-mask`
+- [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
+- [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs
 
 ### sanitizeText() Is Not Sufficient for HTML Attributes <!-- learned: 2026-04-03 -->
 
@@ -627,6 +651,41 @@ $userConfig->setPeronId($userId)->setId($id)
     ->setTooltip($default->getTooltip())
     ->setPermission($default->getPermission());
 $userConfig->save();
+```
+
+### Use Typed Config Getters — Never getValue() for Boolean/Int Contexts <!-- learned: 2026-04-03 -->
+
+Always match the getter to the config key prefix and usage context:
+
+| Key prefix | Correct getter | Wrong getter |
+|-----------|---------------|--------------|
+| `bXxx` in `if()` condition | `getBooleanValue('bXxx')` | `getValue('bXxx')` |
+| `iXxx` in arithmetic / ORM `limit()` | `getIntValue('iXxx')` | `getValue('iXxx')` |
+| `(int) getValue('iXxx')` anywhere | `getIntValue('iXxx')` | manual cast |
+
+```php
+// ❌ WRONG — getValue() returns string, PHP silently coerces
+if (SystemConfig::getValue('bUseScannedChecks')) { ... }
+->limit(SystemConfig::getValue('bSearchIncludePersonsMax'))
+
+// ✅ CORRECT
+if (SystemConfig::getBooleanValue('bUseScannedChecks')) { ... }
+->limit(SystemConfig::getIntValue('bSearchIncludePersonsMax'))
+```
+
+Note: `iChurchLatitude` / `iChurchLongitude` are named with `i` prefix but store float values — use `(float) getValue()` for these two keys, not `getIntValue()`.
+
+### Operator Precedence Trap with getValue() in Ternary <!-- learned: 2026-04-03 -->
+
+PHP's `.` (concatenation) operator has higher precedence than `?:`. Mixing them without parentheses silently produces wrong logic:
+
+```php
+// ❌ BUG — evaluates as: (' per_fmr_ID = ' . getValue()) ?: '1'
+// The entire LHS is truthy, so the fallback '1' is never used
+$head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
+
+// ✅ CORRECT — parentheses force ternary to apply only to the config value
+$head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '1');
 ```
 
 ---

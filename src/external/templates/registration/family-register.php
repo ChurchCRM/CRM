@@ -15,9 +15,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
         churchWebSite:"<?= SystemURLs::getRootPath() ?>/",
         churchName:"<?= ChurchMetaData::getChurchName() ?>",
         phoneFormats: {
-            home:"<?= SystemConfig::getValue('sPhoneFormat') ?>",
-            cell:"<?= SystemConfig::getValue('sPhoneFormatCell') ?>",
-            work:"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"
+            home:<?= SystemConfig::getValueForJs('sPhoneFormat') ?>,
+            cell:<?= SystemConfig::getValueForJs('sPhoneFormatCell') ?>,
+            work:<?= SystemConfig::getValueForJs('sPhoneFormatWithExt') ?>
         }
     };
 </script>
@@ -79,13 +79,13 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="familyCity"><?= gettext('City') ?> <span class="text-danger">*</span></label>
-                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValue('sDefaultCity') ?>">
+                                <input id="familyCity" name="familyCity" class="form-control" placeholder="<?= gettext('City') ?>" required value="<?= SystemConfig::getValueForAttr('sDefaultCity') ?>">
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="familyState"><?= gettext('State') ?></label>
                                 <div id="familyStateContainer">
-                                    <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValue('sDefaultState') ?>" data-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                                    <input id="familyState" name="familyState" class="form-control" placeholder="<?= gettext('State') ?>" value="<?= SystemConfig::getValueForAttr('sDefaultState') ?>" data-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>">
                                 </div>
                             </div>
                         </div>
@@ -93,12 +93,12 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="familyZip"><?= gettext('Zip Code') ?> <span class="text-danger">*</span></label>
-                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValue('sDefaultZip') ?>" required>
+                                <input id="familyZip" name="familyZip" class="form-control" placeholder="<?= gettext('Zip') ?>" value="<?= SystemConfig::getValueForAttr('sDefaultZip') ?>" required>
                                 <div class="invalid-feedback"></div>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="familyCountry"><?= gettext('Country') ?></label>
-                                <select id="familyCountry" name="familyCountry" class="form-select" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                                <select id="familyCountry" name="familyCountry" class="form-select" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
                                 </select>
                             </div>
                         </div>
@@ -107,7 +107,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                             <label for="familyHomePhone"><?= gettext('Home Phone') ?> <span class="text-danger">*</span></label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
-                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask required>
+                                <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask required>
                                 <span class="input-group-text">
                                     <div class="form-check mb-0">
                                         <input type="checkbox" class="form-check-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
@@ -205,7 +205,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                             <label><?= gettext('Phone Number') ?></label>
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
-                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValue('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValue('sPhoneFormatCell') ?>">
+                                                <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValueForAttr('sPhoneFormatCell') ?>">
                                                 <span class="input-group-text">
                                                     <div class="form-check mb-0">
                                                         <input type="checkbox" class="form-check-input member-phone-noformat" id="member-phone-noformat" name="member-phone-noformat" value="1">
