@@ -12659,10 +12659,6 @@ msgid "members"
 msgstr "anggota"
 
 #: 
-msgid "name@example.com"
-msgstr "nama@contoh.com"
-
-#: 
 msgid "opportunities"
 msgstr "peluang"
 

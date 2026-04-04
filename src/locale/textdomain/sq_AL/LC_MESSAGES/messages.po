@@ -11001,10 +11001,6 @@ msgid "Auto-mapped"
 msgstr "Hartuese automatike"
 
 #: 
-msgid "BCC"
-msgstr "Kopja e Fshehur"
-
-#: 
 msgid "BCC All"
 msgstr "Kopja e Fshehur e Të Gjithëve"
 
@@ -12689,10 +12685,6 @@ msgstr "fondet"
 #: 
 msgid "members"
 msgstr "anëtarë"
-
-#: 
-msgid "name@example.com"
-msgstr "emri@shembull.com"
 
 #: 
 msgid "opportunities"
@@ -14537,4 +14529,12 @@ msgstr "• Shikimet e faqeve dhe modelet e navigimit\n"
 "• Kohëzgjatja e seancës dhe angazhimi\n"
 "• Demografitë e përdoruesve (nëse aktivizohet në GA4)\n"
 "• Informacioni i pajisjes dhe shfletuesit"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Madhësia e skedarit tejkalon kufirin e serverit prej %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Të dhënat e imazhit mungojnë në kërkesë"
 

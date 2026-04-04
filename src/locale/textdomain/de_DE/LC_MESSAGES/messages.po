@@ -12779,10 +12779,6 @@ msgid "members"
 msgstr "Mitglieder"
 
 #: 
-msgid "name@example.com"
-msgstr "name@beispiel.de"
-
-#: 
 msgid "opportunities"
 msgstr "Möglichkeiten"
 
@@ -13414,10 +13410,6 @@ msgstr "Monate"
 #: 
 msgid "My Calendars"
 msgstr "Meine Kalender"
-
-#: 
-msgid "N/A"
-msgstr "N/V"
 
 #: 
 msgid "New member notification emails"

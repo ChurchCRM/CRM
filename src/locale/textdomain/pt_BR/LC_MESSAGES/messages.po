@@ -10973,10 +10973,6 @@ msgid "Auto-mapped"
 msgstr "Mapeado automaticamente"
 
 #: 
-msgid "BCC"
-msgstr "CCO"
-
-#: 
 msgid "BCC All"
 msgstr "BCC para Todos"
 
@@ -12663,10 +12659,6 @@ msgid "members"
 msgstr "fiéis"
 
 #: 
-msgid "name@example.com"
-msgstr "nome@exemplo.pt"
-
-#: 
 msgid "opportunities"
 msgstr "oportunidades"
 
@@ -13298,10 +13290,6 @@ msgstr "Meses"
 #: 
 msgid "My Calendars"
 msgstr "Meus calendários"
-
-#: 
-msgid "N/A"
-msgstr "N/D"
 
 #: 
 msgid "New member notification emails"
