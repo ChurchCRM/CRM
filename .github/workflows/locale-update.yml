@@ -136,7 +136,7 @@ jobs:
           Message: $TRIGGER_COMMIT_MSG
 
           ## Changes
-          - Updated \`locale/terms/messages.po\` with new/modified translatable strings
+          - Updated \`locale/messages.po\` with new/modified translatable strings
           - Updated JSON locale keys
 
           ## Next Steps
