@@ -7862,10 +7862,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "U velkých databází to může trvat několik minut. Tuto stránku nezavírejte."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Souhrn upgradu"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Před uložením mimo pracoviště zašifrujte zálohy pomocí externích nástrojů (GPG, 7-Zip)."
 
@@ -8638,10 +8634,6 @@ msgid "Save the file and refresh this page"
 msgstr "Uložte soubor a obnovte tuto stránku"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Nastavte hodnotu true, chcete-li v editoru osob zakázat zadávání osobních adres pro osoby, které nejsou členy rodiny. Nastavte hodnotu false, chcete-li povolit zadávání adres pro osoby bez přiřazení k rodině."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Začíná na <strong>http://</strong> nebo <strong>https://</strong>"
 
@@ -9111,10 +9103,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ano, odstranit tuto příležitost"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Dotazy, pro které musí mít uživatel oprávnění finančích"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fond(y)"
 
@@ -9400,10 +9388,6 @@ msgstr "Nadcházející narozeniny"
 #: 
 msgid "Waiting to Check In"
 msgstr "Čekání na přihlášení"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Pokud je povoleno, nová kiosk zařízení se mohou registrovat po dobu 30 sekund."
 
 #: 
 msgid "Your child"
@@ -10570,20 +10554,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Automaticky zjistit souřadnice pomocí adresy"
 
 #: 
-msgid "Basic Information"
-msgstr "Základní informace"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informace o sboru byly úspěšně uloženy."
-
-#: 
 msgid "Church name is required."
 msgstr "Název sboru je povinný."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Název sboru je povinný. Vyplňte záložku Základní informace."
 
 #: 
 msgid "City is required."
@@ -10642,22 +10614,6 @@ msgid "Language & Localization"
 msgstr "Jazyk a lokalizace"
 
 #: 
-msgid "Location & Map"
-msgstr "Umístění a mapa"
-
-#: 
-msgid "Location Information"
-msgstr "Informace o umístění"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Hlavní kontaktní e-mail pro komunikaci sboru."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Hlavní kontaktní telefon sboru."
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10708,10 +10664,6 @@ msgstr "Adresa je povinná."
 #: 
 msgid "Student Information"
 msgstr "Informace o žákovi"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Jazyk systému pro sbor. Ovlivňuje formáty dat, telefonů a dalších lokalizací."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11087,10 +11039,6 @@ msgstr "Zálohovat na externí úložiště nyní"
 #: 
 msgid "Browse all available plugins"
 msgstr "Procházet všechny dostupné pluginy"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Procházet všechny církevní události a aktivity"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11529,16 +11477,16 @@ msgid "Explore with Demo Data"
 msgstr "Prozkoumat s ukázkovými daty"
 
 #: 
-msgid "Export"
-msgstr "Exportovat"
-
-#: 
 msgid "Export data to CSV format for external applications"
 msgstr "Exportovat data do formátu CSV pro externí aplikace"
 
 #: 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr "Rozšiřte ChurchCRM o MailChimp, zálohy a další"
+
+#: 
+msgid "FY %s"
+msgstr "RR %s"
 
 #: 
 msgid "Failed to add members to cart. Please try again."
@@ -12483,10 +12431,6 @@ msgid "The property is successfully removed."
 msgstr "Vlastnost byla úspěšně odebrána."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Tyto odkazy se zobrazí v nabídce „Odkazy\" v navigačním panelu, když je tento plugin povolen."
-
-#: 
 msgid "To Family"
 msgstr "K rodině"
 
@@ -13279,11 +13223,6 @@ msgstr "Hodnota pole"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Najděte členy sboru, kteří se neúčastnili akce"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Najděte členy sboru, kteří se zavázali jeden rok, ale ne druhý"
 
@@ -13376,11 +13315,6 @@ msgstr "Výročí členství"
 #: 
 msgid "Minimum Age"
 msgstr "Minimální věk"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Chybějící lidé"
 
 #. Context: query_qry
 #: 
@@ -13573,11 +13507,6 @@ msgstr "Vyberte pole k vyhledávání."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Vyberte požadovanou akci"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Vyberte požadovanou roli rodiny."
 
@@ -13726,4 +13655,363 @@ msgstr "např. Nedělní služba"
 #: 
 msgid "member"
 msgstr "člen"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Přidávání odkazů"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Povolit předběžné aktualizace"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Povolte návštěvníkům registrovat se jako nové rodiny."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Ověřování"
+
+#: 
+msgid "Auto TLS"
+msgstr "Automatické TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Automatická záloha"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "Skrytá kopie všech zpráv na"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfigurace"
+
+#: 
+msgid "Continent"
+msgstr "Kontinent"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Náklady"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Lidé s kreditní kartou"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Aktuální využití"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Výchozí styly obrázků"
+
+#: 
+msgid "Default Map View"
+msgstr "Výchozí zobrazení mapy"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Typ příjmového dokladu"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Vlastnost Neodesílat e-mail"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Vlastnost Neodesílat SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Stáhnout OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Formát telefonního čísla E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Povolit e-mail"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Povolit nabídku Události"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Povolit externí API kalendáře"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Povolit použití obálek darů"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Povolit použití skenovaných šeků"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Závazek rodiny podle fiskálního roku"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funkce"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "ID dotazů pro finanční oprávnění"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Najít registrované studenty"
+
+#: 
+msgid "Find family"
+msgstr "Najít rodinu"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Nalezení URL vašeho serveru"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Fiskální rok."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Průvodce nastavením GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Začínáme"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Získání měřicího ID GA4"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Nápověda Google Analytics"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Možnosti obrázku Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Web Gravatar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Skupina registrovaných studentů"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Skrýt zeměpisnou šířku/délku"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Skrýt adresu osoby"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Jak to funguje"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Kolik šeků vytisknout na stránce vkladového dokladu"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Počáteční úroveň přiblížení při otevření mapy"
+
+#: 
+msgid "Learn more"
+msgstr "Zjistit více"
+
+#: 
+msgid "Log Settings"
+msgstr "Nastavení protokolů"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Správa odkazů"
+
+#: 
+msgid "Neighborhood"
+msgstr "Čtvrť"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Zdroj OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Dokumentace OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Web OpenLP"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Lidé nakonfigurovaní k platbě kreditní kartou."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Integrace osoby/rodiny"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Formát telefonního čísla"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Ochrana soukromí a soulad s předpisy"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Aspekty ochrany soukromí"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Poznámka k ochraně soukromí"
+
+#: 
+msgid "Quick Settings"
+msgstr "Rychlá nastavení"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Registrovaní studenti"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Ověřování SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Časový limit SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Bezpečnost"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Aspekty zabezpečení"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Nastavení"
+
+#: 
+msgid "Street"
+msgstr "Ulice"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Modul nedělní školy"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Podporované služby"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Testování připojení"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Řešení problémů"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Řešení problémů – Neplatné ID odesílatele"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Řešení problémů – Zprávy nedoručeny"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Řešení problémů – SMS se neodesílá"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Nastavení aktualizací"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Případy použití"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Oprávnění uživatele k exportu souborů CSV"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Ceny Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Dokumentace Vonage SMS API"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Co se sleduje"
 

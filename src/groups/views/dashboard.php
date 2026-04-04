@@ -127,7 +127,7 @@ $totalMemberships = Person2group2roleP2g2rQuery::create()->count();
                         </div>
                         <div class="col-12 col-md-3">
                             <button type="button" class="btn btn-primary w-100" id="addNewGroup">
-                                <i class="fa fa-plus"></i> <?= gettext('Add Group') ?>
+                                <i class="fa fa-plus"></i><?= gettext('Add Group') ?>
                             </button>
                         </div>
                     </div>

@@ -1932,7 +1932,7 @@ msgstr "Deve especificar um número de cheque"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Verifique o número não é válido para &#39;CAIXA&#39; pagamento"
+msgstr "Verifique o número não é válido para 'CAIXA' pagamento"
 
 #: 
 msgid " more entries will fit."
@@ -8020,10 +8020,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Isso pode levar vários minutos para bancos de dados grandes. Não feche esta página."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Resumo da atualização"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Use ferramentas externas (GPG, 7-Zip) para criptografar backups antes de armazenar fora do local."
 
@@ -8796,10 +8792,6 @@ msgid "Save the file and refresh this page"
 msgstr "Salve o arquivo e atualize esta página"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Defina como verdadeiro para desabilitar a entrada de endereços pessoais para pessoas não afiliadas no Person Editor. Defina como falso para habilitar a entrada de endereços para pessoas sem atribuição de família."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Começa com <strong>http://</strong> ou <strong>https://</strong>"
 
@@ -9266,10 +9258,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Sim, excluir esta Oportunidade"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Consultas para as quais o usuário deve ter permissões de finanças para usar"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fundo(s)"
 
@@ -9554,10 +9542,6 @@ msgstr "Próximos aniversários"
 #: 
 msgid "Waiting to Check In"
 msgstr "A aguardar check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Quando ativado, os novos dispositivos de quiosque podem registar-se durante 30 segundos."
 
 #: 
 msgid "Your child"
@@ -10723,20 +10707,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Detetar coordenadas automaticamente pelo endereço"
 
 #: 
-msgid "Basic Information"
-msgstr "Informação básica"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informação da paróquia guardada com sucesso."
-
-#: 
 msgid "Church name is required."
 msgstr "O nome da paróquia é obrigatório."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "O nome da paróquia é obrigatório. Por favor, preencha o separador Informação básica."
 
 #: 
 msgid "City is required."
@@ -10795,22 +10767,6 @@ msgid "Language & Localization"
 msgstr "Idioma e localização"
 
 #: 
-msgid "Location & Map"
-msgstr "Localização e mapa"
-
-#: 
-msgid "Location Information"
-msgstr "Informação de localização"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "E-mail de contacto principal para comunicações da paróquia."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Número de telefone principal da paróquia."
-
-#: 
 msgid "Map"
 msgstr "Mapa"
 
@@ -10861,10 +10817,6 @@ msgstr "A morada é obrigatória."
 #: 
 msgid "Student Information"
 msgstr "Informação do estudante"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Idioma do sistema para a paróquia. Afeta formatos de data, telefone e outras localizações."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11235,10 +11187,6 @@ msgstr "Fazer Cópia de Segurança para Armazenamento Externo Agora"
 #: 
 msgid "Browse all available plugins"
 msgstr "Explorar todos os plugins disponíveis"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Explorar todos os eventos e atividades da paróquia"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11675,10 +11623,6 @@ msgstr "Expandir"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Explorar com Dados de Demonstração"
-
-#: 
-msgid "Export"
-msgstr "Exportar"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12627,10 +12571,6 @@ msgid "The property is successfully removed."
 msgstr "A propriedade foi removida com sucesso."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Estas ligações aparecem no menu \"Ligações\" na barra lateral de navegação quando este plugin está ativado."
-
-#: 
 msgid "To Family"
 msgstr "Para Família"
 
@@ -13423,11 +13363,6 @@ msgstr "Valor do campo"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Encontre membros da paróquia que não compareceram a um evento"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Encontre membros da paróquia que se comprometeram em um ano, mas não em outro"
 
@@ -13520,11 +13455,6 @@ msgstr "Aniversários de adesão"
 #: 
 msgid "Minimum Age"
 msgstr "Idade mínima"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Pessoas desaparecidas"
 
 #. Context: query_qry
 #: 
@@ -13717,11 +13647,6 @@ msgstr "Seleccione o campo a pesquisar."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Seleccione o evento desejado"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Seleccione a função familiar desejada."
 
@@ -13870,4 +13795,894 @@ msgstr "por exemplo, Culto de Domingo"
 #: 
 msgid "member"
 msgstr "membro"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Painel de Controlo**: Veja todas as suas listas do MailChimp com estatísticas de subscritores\n"
+"- **Manutenção de Listas**: Identifique pessoas no MailChimp mas não no CRM, e vice-versa\n"
+"- **Integração de Contactos**: Veja o estado de subscrição do MailChimp nas páginas de Pessoa e Família\n"
+"- **Sincronização Automática**: Liga-se às atualizações de pessoa/família para manter o MailChimp sincronizado"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Crie uma conta Vonage em https://dashboard.nexmo.com/sign-up (novas contas incluem crédito de teste gratuito)\n"
+"2. Encontre a sua Chave de API e Segredo de API na página inicial do Painel Vonage\n"
+"3. Vá a Números > Comprar Números e adquira um número com capacidade de SMS\n"
+"4. Anote o número no formato E.164 (ex.: +14155551234)\n"
+"5. No ChurchCRM, ative o plugin SMS Vonage e introduza as suas credenciais"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Aceda ao Google Analytics (analytics.google.com)\n"
+"2. Crie uma propriedade ou selecione uma existente\n"
+"3. Vá a Admin → Fluxos de Dados → Web\n"
+"4. Copie o ID de Medição (começa com G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Instale o OpenLP 3.0 ou posterior no seu computador de apresentação\n"
+"2. Ative o plugin Remoto no OpenLP (Definições → Configurar OpenLP → Plugins)\n"
+"3. Ative o plugin de Alertas no OpenLP para suporte de exibição de alertas\n"
+"4. Anote o endereço IP do computador OpenLP\n"
+"5. Introduza o URL do servidor no formato: http://ENDEREÇO_IP:4316\n"
+"6. Se configurou autenticação no OpenLP, introduza o nome de utilizador e a palavra-passe"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Aceda ao Painel de Controlo MailChimp a partir do menu de Email. O painel mostra:\n"
+"\n"
+"- Contagem de membros de cada lista\n"
+"- Estatísticas de campanhas\n"
+"- Contagem de cancelamentos de subscrição\n"
+"- Ferramentas de manutenção de listas"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Adicionar Ligações"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Todos os links configurados são apresentados numa tabela. Pode:\n"
+"- Ver o nome do link e o URL\n"
+"- Clicar no URL para verificar se abre corretamente\n"
+"- Eliminar links de que já não necessita\n"
+"\n"
+"Os links aparecem pela ordem em que foram adicionados no menu de navegação."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Permitir Atualizações de Pré-lançamento"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Permitir o registo de pagamentos não dedutíveis fiscalmente no módulo financeiro"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Permitir que imagens de cheques digitalizados sejam anexadas aos registos de depósito"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Permitir atualizações do sistema para versões marcadas como 'pre release' no GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Permitir acesso não autenticado a eventos do calendário através de URLs públicos HTML, ICS e JSON. Necessário para partilhar calendários com aplicações externas."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Permitir que visitantes criem o seu próprio registo de família através da página de auto-registo"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Permitir que visitantes se auto-registem como novas famílias."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Qualquer serviço compatível com WebDAV funciona com este plugin:\n"
+"\n"
+"- Nextcloud (recomendado)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (com WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx com módulo WebDAV\n"
+"\n"
+"Nota: Alguns serviços requerem palavras-passe específicas de aplicação para acesso WebDAV."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Autenticação"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "A autenticação é necessária para a API v2 se a tiver ativado nas definições do plugin Remoto do OpenLP. O plugin utiliza autenticação HTTP Basic. A maioria das configurações de rede local não requer autenticação, mas é recomendada por segurança."
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS Automático"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Backup Automático"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC de Todo o Correio Para"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Antes de depender de backups externos, teste a sua ligação:\n"
+"1. Vá a Plugins > Backup Externo\n"
+"2. Clique em 'Testar Ligação WebDAV'\n"
+"3. Verifique se vê uma mensagem de sucesso\n"
+"\n"
+"Problemas comuns:\n"
+"- Erros 401/403: Verifique o nome de utilizador e a palavra-passe\n"
+"- Tempo limite de ligação: Verifique se o URL do endpoint está correto\n"
+"- Erros de certificado: Certifique-se de que o servidor WebDAV tem um certificado SSL válido"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Escolha o que aparece quando não existe Gravatar:\n"
+"• Mystery Person - Silhueta cinzenta\n"
+"• Identicon - Padrão geométrico baseado no email\n"
+"• MonsterID - Rosto de monstro gerado exclusivamente\n"
+"• Wavatar - Rosto abstrato gerado\n"
+"• Retro - Arte pixel estilo arcade de 8 bits\n"
+"• RoboHash - Robô gerado exclusivamente\n"
+"• Blank - Transparente (reverte para iniciais)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "IDs de consulta separados por vírgula que requerem permissões financeiras para visualizar"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Utilizações comuns para links personalizados:\n"
+"- Website da igreja\n"
+"- Portal de doações online\n"
+"- Formulários de inscrição de voluntários\n"
+"- Recursos da denominação\n"
+"- Sites de organizações parceiras\n"
+"- Pastas de armazenamento na nuvem\n"
+"- Páginas de inscrição em eventos"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Configuração"
+
+#: 
+msgid "Continent"
+msgstr "Continente"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Custos"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Pessoas com Cartão de Crédito"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Utilização Atual"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Estilos de Imagem Predefinidos"
+
+#: 
+msgid "Default Map View"
+msgstr "Vista de Mapa Predefinida"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Tipo de Comprovativo de Depósito"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Propriedade Não Enviar Email"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Propriedade Não Enviar SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Descarregar OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Formato de Número de Telefone E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Ativar Email"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Ativar Menu de Eventos"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Ativar API de Calendário Externo"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Ativar o envio de email a partir do ChurchCRM. Necessário para redefinição de palavra-passe, notificações e links de email."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Ativar se o seu servidor SMTP requer um nome de utilizador e palavra-passe"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Ativar ou desativar o módulo de Escola Dominical e o menu lateral."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Ativar o uso de envelopes de doação numerados para rastrear contribuições"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Ativar uso de envelopes de doação"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Ativar uso de cheques digitalizados"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Promessa de Família por Ano Fiscal"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funcionalidades"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "IDs de consulta de permissão financeira"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Encontrar Alunos Registados"
+
+#: 
+msgid "Find family"
+msgstr "Encontrar Família"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Encontrar o URL do Seu Servidor"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Ano Fiscal."
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Por segurança:\n"
+"- Apenas os administradores podem adicionar ou remover links\n"
+"- A opção 'Gerir Links' só aparece para administradores\n"
+"- Os links devem utilizar os protocolos http:// ou https://\n"
+"- Tags HTML não são permitidas em nomes ou URLs\n"
+"- Toda a introdução de dados é validada e saneada"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Guia de Configuração do GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Primeiros Passos"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Obter o ID de Medição do GA4"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "O Google Analytics 4 (GA4) monitoriza como os utilizadores interagem com o ChurchCRM, fornecendo informações sobre visualizações de páginas, envolvimento do utilizador e utilização de funcionalidades."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Ajuda do Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "O Google Analytics recolhe dados de utilização anonimizados. Nenhuma informação pessoal dos registos do ChurchCRM é enviada ao Google. Considere adicionar um aviso de privacidade à política de dados da sua igreja."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) apresenta fotos de perfil de gravatar.com para membros que não têm fotos carregadas no ChurchCRM."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Opções de Imagem Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Website Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "O Gravatar funciona convertendo endereços de email em hash (MD5). O endereço de email real nunca é enviado aos servidores do Gravatar - apenas o hash é utilizado para procurar a imagem."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Grupo de alunos registados"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ocultar Latitude/Longitude"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ocultar Endereço da Pessoa"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Como funciona"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Quantos cheques imprimir por página de comprovativo de depósito"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Se as mensagens SMS não estiverem a ser enviadas:\n"
+"1. Verifique se a Chave de API e o Segredo estão corretos (sem espaços extra)\n"
+"2. Verifique se o Número de Origem é um número Vonage válido que possui\n"
+"3. Certifique-se de que os números de telefone dos destinatários incluem o código do país\n"
+"4. Verifique o saldo da sua conta Vonage\n"
+"5. Consulte o Painel Vonage > SMS > Registos para verificar o estado de entrega"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Se os alertas não estiverem a aparecer:\n"
+"1. Verifique se o OpenLP está em execução e o plugin Remoto está ativo\n"
+"2. Certifique-se de que o plugin de Alertas está ativado no OpenLP\n"
+"3. Verifique se o URL do servidor está correto (tente aceder ao mesmo num browser)\n"
+"4. Verifique se as definições de firewall permitem ligações na porta 4316\n"
+"5. Se utilizar autenticação, verifique se as credenciais estão corretas"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Se as mensagens são enviadas mas não recebidas:\n"
+"1. Verifique o Painel Vonage > SMS > Registos para verificar o estado de entrega\n"
+"2. Verifique se o número do destinatário está correto e pode receber SMS\n"
+"3. Algumas operadoras podem bloquear mensagens de números desconhecidos\n"
+"4. Verifique se o país de destino tem restrições de SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Se receber erros de ID de remetente inválido:\n"
+"1. Utilize um número de telefone que adquiriu da Vonage\n"
+"2. Formate o número no formato E.164 (+14155551234)\n"
+"3. Nota: IDs de remetente alfanuméricos podem ser restringidos em alguns países"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Notas importantes de segurança:\n"
+"\n"
+"1. Utilize sempre endpoints HTTPS para encriptar os backups em trânsito\n"
+"2. Utilize palavras-passe específicas de aplicação quando disponíveis (Nextcloud, ownCloud)\n"
+"3. Armazene os backups numa pasta com acesso restrito\n"
+"4. Descarregue e verifique periodicamente se os seus backups são válidos\n"
+"5. Considere encriptar backups sensíveis com ferramentas externas antes de carregar"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Nível de zoom inicial ao abrir o mapa"
+
+#: 
+msgid "Learn more"
+msgstr "Saber mais"
+
+#: 
+msgid "Log Settings"
+msgstr "Definições de Registo"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "A Integração MailChimp permite a sincronização entre os contactos do ChurchCRM e as suas listas de email marketing do MailChimp."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Gerir Links"
+
+#: 
+msgid "Neighborhood"
+msgstr "Bairro"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Fonte da API v2 do OpenLP"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Documentação do OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Website do OpenLP"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "O OpenLP é um software de apresentação gratuito e de código aberto concebido para igrejas. Este plugin permite ao ChurchCRM enviar notificações e alertas diretamente para o seu ecrã OpenLP."
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Pessoas configuradas para pagar com cartão de crédito."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Integração Pessoa/Família"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Formato de Número de Telefone"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Os números de telefone devem estar no formato E.164: código do país + número. Exemplos:\n"
+"- EUA: +14155551234\n"
+"- Reino Unido: +447700900123\n"
+"- Austrália: +61412345678\n"
+"\n"
+"Os números de telefone dos destinatários nos perfis de membro do ChurchCRM devem incluir o código do país para que o SMS funcione corretamente."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Resumo de promessas por nome de família para cada fundo do ano fiscal selecionado"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Privacidade e Conformidade"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Considerações de Privacidade"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Nota de Privacidade"
+
+#: 
+msgid "Quick Settings"
+msgstr "Definições Rápidas"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Alunos Registados"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Autenticação SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Tempo Limite SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Segurança"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Considerações de Segurança"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Configuração"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Mostrar um resumo das denominações de notas no relatório de comprovativo de depósito"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Mostrar ou ocultar o menu de Eventos na navegação principal."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Mostrar ou ocultar a secção de Eventos no menu de navegação principal"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Mostrar ou ocultar o módulo de Escola Dominical na navegação lateral"
+
+#: 
+msgid "Street"
+msgstr "Rua"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Módulo de Escola Dominical"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Serviços Suportados"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Testar Ligação"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "O plugin Links de Menu Personalizados permite aos administradores adicionar links externos ao menu de navegação. Quando ativado, um menu 'Links' aparece na barra lateral contendo todos os links configurados."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "O plugin de Backup Externo permite-lhe fazer backup automático da sua base de dados ChurchCRM para serviços de armazenamento na nuvem compatíveis com WebDAV. Isto inclui serviços populares como Nextcloud, ownCloud, ou qualquer servidor que suporte o protocolo WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "A porta padrão do OpenLP é 4316. O URL do seu servidor será normalmente: http://192.168.x.x:4316 onde 192.168.x.x é o endereço IP do computador que executa o OpenLP. Pode encontrá-lo no OpenLP em Ferramentas → Abrir Gestor de Serviços."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "O mês que inicia o ano fiscal da sua organização"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Este plugin é atualmente utilizado para Notificações de Check-in por Quiosque. Quando uma criança faz check-in numa aula de Escola Dominical através do sistema de quiosque, pode ser enviado um SMS para notificar pais ou tutores."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Este plugin é atualmente utilizado para Notificações de Check-in por Quiosque. Quando uma criança faz check-in numa aula de Escola Dominical através do sistema de quiosque, pode ser enviado um alerta para o ecrã do projetor OpenLP para notificar pais ou voluntários."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Este plugin transmite endereços de email para os servidores do MailChimp. Certifique-se de que tem o consentimento adequado dos seus membros antes de sincronizar as suas informações com serviços de terceiros como o MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Para adicionar um novo link:\n"
+"1. Vá ao menu Links na barra lateral e clique em 'Gerir Links'\n"
+"2. Introduza um nome para exibição (2-50 caracteres)\n"
+"3. Introduza o URL completo (deve começar com http:// ou https://)\n"
+"4. Clique em 'Adicionar Link'\n"
+"\n"
+"O link aparecerá imediatamente no menu Links."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Para configurar backups externos:\n"
+"1. Vá a Admin > Plugins e encontre 'Backup Externo (WebDAV)'\n"
+"2. Clique no ícone de definições para expandir o painel de configuração\n"
+"3. Introduza o URL do endpoint WebDAV (ex.: https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Introduza o seu nome de utilizador e palavra-passe\n"
+"5. Opcionalmente defina um intervalo de backup automático em horas\n"
+"6. Guarde as suas definições"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Para utilizar a Integração MailChimp, precisa de uma conta MailChimp e de uma chave de API.\n"
+"\n"
+"1. Inicie sessão na sua conta MailChimp\n"
+"2. Vá a Conta > Extras > Chaves de API\n"
+"3. Crie uma nova chave de API ou copie uma existente\n"
+"4. Introduza a chave de API nas definições do plugin"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Resolução de Problemas"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Resolução de Problemas - ID de Remetente Inválido"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Resolução de Problemas - Mensagens Não Entregues"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Resolução de Problemas - SMS Não Enviado"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Definições de Atualização"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Casos de Uso"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Permissão do utilizador para exportar ficheiros CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Painel Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Preços Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Documentação da API SMS Vonage"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "O Vonage SMS permite notificações por mensagem de texto para o ChurchCRM utilizando a API Vonage (anteriormente Nexmo). Envie alertas SMS para pais quando o seu filho faz check-in através do sistema de quiosque."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "A Vonage cobra por SMS enviado. Os preços variam consoante o país de destino. Consulte a página de preços da Vonage para as tarifas atuais. As novas contas recebem crédito de teste gratuito para testes."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "O Que É Rastreado"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Quando o MailChimp está configurado, um separador 'MailChimp' aparece nas páginas de visualização de Pessoa mostrando:\n"
+"\n"
+"- Estado de subscrição de email em todas as listas\n"
+"- Quais listas a pessoa está subscrita\n"
+"- Estatísticas de subscrição"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Quando um membro não tem uma foto carregada, o ChurchCRM verifica se tem um Gravatar associado ao seu endereço de email. Se existir um Gravatar, essa imagem é apresentada. Caso contrário, o estilo de imagem predefinido configurado é utilizado."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Quando o backup automático está ativado (intervalo > 0 horas), o ChurchCRM cria e carrega automaticamente um backup completo da base de dados no intervalo especificado. O backup é executado como parte dos carregamentos de página normais, pelo que o sistema deve ter atividade regular de utilizadores para acionar os backups.\n"
+"\n"
+"Intervalos recomendados:\n"
+"- Backup diário: 24 horas\n"
+"- Duas vezes ao dia: 12 horas\n"
+"- Semanal: 168 horas"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Quando ativado e configurado, o ChurchCRM envia mensagens de alerta para o seu servidor OpenLP utilizando o endpoint da API v2 (POST /api/v2/plugins/alerts). Estes alertas aparecem como notificações sobrepostas na sua apresentação projetada."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Quando ativado, oculta o campo de endereço para pessoas não atribuídas a uma família"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Quando ativado, oculta os campos de latitude/longitude no Editor de Família. A geocodificação continua a ser executada em segundo plano."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Também pode acionar um backup manual a qualquer momento:\n"
+"1. Vá à página de definições de Backup Externo (Plugins > Backup Externo)\n"
+"2. Selecione o tipo de backup (Apenas Base de Dados ou Backup Completo)\n"
+"3. Clique em 'Fazer Backup para WebDAV Agora'\n"
+"\n"
+"Os backups de Apenas Base de Dados são menores e mais rápidos. Os backups completos incluem fotos carregadas."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Visualizações de páginas e padrões de navegação\n"
+"• Duração de sessão e envolvimento\n"
+"• Dados demográficos do utilizador (se ativado no GA4)\n"
+"• Informações sobre dispositivo e browser"
 

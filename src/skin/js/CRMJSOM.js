@@ -631,8 +631,8 @@ window.CRM.renderFamilyActionMenu = function (familyId, _familyName, options) {
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
         buttons: {
-          cancel: { label: '<i class="ti ti-x"></i> ' + i18next.t("Cancel") },
-          confirm: { label: '<i class="ti ti-trash"></i> ' + i18next.t("Delete"), className: "btn-danger" },
+          cancel: { label: '<i class="ti ti-x"></i>' + i18next.t("Cancel") },
+          confirm: { label: '<i class="ti ti-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
         },
         callback: function (result) {
           if (result) {

@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 $sPageTitle = gettext('Self Registrations');
 require_once __DIR__ . '/../Include/Header.php';

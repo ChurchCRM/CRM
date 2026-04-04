@@ -148,19 +148,6 @@ class DatabaseTermExtractor {
         
         // Write PO file
         this.writePoFile(poFile, entries);
-        
-        // Also save a copy into locale/terms/base for review
-        try {
-            const termsBaseDir = config.terms.base;
-            if (!fs.existsSync(termsBaseDir)) {
-                fs.mkdirSync(termsBaseDir, { recursive: true });
-            }
-            const dest = config.termsOutput.databasePo;
-            fs.copyFileSync(poFile, dest);
-            console.log(`${dest} created (copy of database terms)`);
-        } catch (err) {
-            console.error('Failed to copy database terms to terms/base:', err.message);
-        }
         return poFile;
     }
     

@@ -1,5 +1,20 @@
 # Security Policy
 
+## Stay Informed & Where to Ask
+
+Security patch announcements, CVE disclosures, and dependency update notices are posted in the **#security** channel on our Discord server.
+
+> 👉 **Join Discord:** https://discord.gg/XGppbeTw — then follow **#security** for announcements.
+
+**Please do not:**
+- DM maintainers directly about security issues
+- Post vulnerability details in any other Discord channel
+- Ask about undisclosed vulnerabilities in public channels
+
+The **#security** channel is read-only for announcements. To report an issue, use the private GitHub Advisory process described below.
+
+---
+
 ## Reporting a Vulnerability vs. Filing a Bug
 
 ### When to Use a Security Advisory (Private Disclosure)
@@ -59,16 +74,27 @@ Thank you for your understanding and cooperation in making ChurchCRM a more secu
 
 ## Supported Versions
 
+Only the latest release branch receives security fixes.
+
 | Version     | Supported          | PHP Version |
 |-------------| ------------------ |-------------|
-| 7.0 +       | :white_check_mark: | >=8.3      |
-| 6.0 - 6.x   | :x:                | >=8.2      |
-| 5.3 +       | :x:                | >=8.1      |
-| 5.0 - 5.2.x | :x:                | 8.1        |
+| 7.1 +       | :white_check_mark: | >=8.4       |
+| 7.0.x       | :x:                | >=8.3       |
+| 6.0 - 6.x   | :x:                | >=8.2       |
+| 5.3 +       | :x:                | >=8.1       |
+| 5.0 - 5.2.x | :x:                | 8.1         |
 | 4.0.x       | :x:                | 7.2.x 7.3.x |
-| 3.0.x       | :x:                | 7.x        |
+| 3.0.x       | :x:                | 7.x         |
 | 2.0.x       | :x:                | 5.6 7.0 7.1 |
 
 ## Developer Security
 
 For developers contributing to ChurchCRM, see the [Developer Security Guide](https://github.com/ChurchCRM/CRM/wiki/Developer-Security) which covers security best practices including Content Security Policy (CSP) compliance.
+
+## Community
+
+Join us on Discord: https://discord.gg/XGppbeTw
+
+- **#security** — Security announcements only (patches, CVEs, advisories). Do not post vulnerability reports or tag maintainers here.
+- **#bugs** — Non-security bug reports and general troubleshooting
+- General chat, feature requests, and questions in their respective channels

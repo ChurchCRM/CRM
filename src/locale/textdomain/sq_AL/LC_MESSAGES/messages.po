@@ -7860,10 +7860,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Kjo mund të marrë disa minuta për baza të mëdha të dhënash. Mos e mbyllni këtë faqje."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Përmbledhja e përmirësimit"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Përdorni mjete të jashtme (GPG, 7-Zip) për të enkriptuar kopjet rezervë para se t'i ruani jashtë vendit."
 
@@ -8636,10 +8632,6 @@ msgid "Save the file and refresh this page"
 msgstr "Ruani skedarin dhe rifreskoni këtë faqe"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Vendoseni 'true' për të çaktivizuar futjen e adresave personale për personat e palidhur. Vendoseni 'false' për të aktivizuar futjen e adresave për personat pa familje."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Fillon me <strong>http://</strong> ose <strong>https://</strong>"
 
@@ -9106,10 +9098,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Po, fshije këtë mundësi"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Kërkesat (Queries) për të cilat përdoruesi duhet të ketë leje finance"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fond(et)"
 
@@ -9394,10 +9382,6 @@ msgstr "Ditëlindjet e Ardhshme"
 #: 
 msgid "Waiting to Check In"
 msgstr "Duke Pritur për t'u Regjistruar"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Kur aktivizohet, pajisjet e reja kiosk mund të regjistrohen për 30 sekonda."
 
 #: 
 msgid "Your child"
@@ -10563,20 +10547,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Zbullo automatikisht koordinatat duke përdorur adresën"
 
 #: 
-msgid "Basic Information"
-msgstr "Informacioni bazë"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informacioni i kishës u ruajt me sukses."
-
-#: 
 msgid "Church name is required."
 msgstr "Emri i kishës është i detyrueshëm."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Emri i kishës është i detyrueshëm. Ju lutemi plotësoni skedën Informacioni bazë."
 
 #: 
 msgid "City is required."
@@ -10635,22 +10607,6 @@ msgid "Language & Localization"
 msgstr "Gjuha dhe lokalizimi"
 
 #: 
-msgid "Location & Map"
-msgstr "Vendndodhja dhe harta"
-
-#: 
-msgid "Location Information"
-msgstr "Informacioni i vendndodhjes"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Email kryesor i kontaktit për komunikimet e kishës."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Numri kryesor i telefonit të kishës."
-
-#: 
 msgid "Map"
 msgstr "Hartë"
 
@@ -10701,10 +10657,6 @@ msgstr "Adresa rrugore është e detyrueshme."
 #: 
 msgid "Student Information"
 msgstr "Informacioni i studentit"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Gjuha e sistemit për kishën. Ndikon formatet e datës, telefonit dhe lokalizimeve të tjera."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11079,10 +11031,6 @@ msgstr "Bëj Rezervën në Ruajtjen e Jashtme Tani"
 #: 
 msgid "Browse all available plugins"
 msgstr "Shfleto të gjithë shtojcat e disponueshme"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Shfleto të gjitha ngjarjet dhe aktivitetet e kishës"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11519,10 +11467,6 @@ msgstr "Zgjero"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Eksploro me Të Dhënat Demo"
-
-#: 
-msgid "Export"
-msgstr "Eksporto"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12479,10 +12423,6 @@ msgid "The property is successfully removed."
 msgstr "Vetia u hoq me sukses."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Këto lidhje shfaqen në menynë \"Lidhje\" në shiritin anësor të navigimit kur ky shtojcë është aktivizuar."
-
-#: 
 msgid "To Family"
 msgstr "Te Familja"
 
@@ -13275,11 +13215,6 @@ msgstr "Vlera e fushës"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Gjeni anëtarët e komunitetit të besimtarëve që nuk kanë qenë në një ngjarje"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Gjeni anëtarët e komunitetit të besimtarëve që premtuan një vit por jo tjetrin"
 
@@ -13372,11 +13307,6 @@ msgstr "Përvjetorët e anëtarësimit"
 #: 
 msgid "Minimum Age"
 msgstr "Mosha Minimale"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Njerëzit që mungojnë"
 
 #. Context: query_qry
 #: 
@@ -13566,11 +13496,6 @@ msgstr "Zgjedh llojin e ngjarjes..."
 #: 
 msgid "Select field to search for."
 msgstr "Zgjedh fushën për të kërkuar."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Zgjedh ngjarjen e dëshiruar"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13870,6 +13795,10 @@ msgstr "Vërtetimi"
 #: 
 msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
 msgstr "Vërtetimi kërkohet për API v2 nëse e keni aktivizuar në cilësimet e shtojcës Remote të OpenLP. Shtojca përdor HTTP Basic Authentication. Shumica e konfigurimeve të rrjetit lokal nuk kërkojnë vërtetim, por rekomandohet për siguri."
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS Automatik"
 
 #. plugin:external-backup:section:2:title
 #: 

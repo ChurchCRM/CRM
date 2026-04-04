@@ -7956,10 +7956,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "对于大型数据库，这可能需要几分钟时间。请勿关闭此页面。"
 
 #: 
-msgid "Upgrade Summary"
-msgstr "升级摘要"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "在异地存储之前，使用外部工具（如 GPG, 7-Zip）加密备份。"
 
@@ -8732,10 +8728,6 @@ msgid "Save the file and refresh this page"
 msgstr "保存文件并刷新此页面"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "设置为 true 可在个人编辑器中禁用无隶属关系人员的个人地址输入。设置为 false 可启用无家庭分配人员的地址输入。"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 开始"
 
@@ -9199,10 +9191,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "是，删除此机会"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "用户必须具备财务权限才能使用的查询"
-
-#: 
 msgid "Fund(s)"
 msgstr "基金"
 
@@ -9486,10 +9474,6 @@ msgstr "即将到来的生日"
 #: 
 msgid "Waiting to Check In"
 msgstr "等待签到"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "启用后，新的自助终端设备可以在30秒内完成注册。"
 
 #: 
 msgid "Your child"
@@ -10654,20 +10638,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "使用地址自动检测坐标"
 
 #: 
-msgid "Basic Information"
-msgstr "基本信息"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "教会信息已成功保存。"
-
-#: 
 msgid "Church name is required."
 msgstr "教会名称为必填项。"
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "教会名称为必填项。请完成基本信息标签页。"
 
 #: 
 msgid "City is required."
@@ -10726,22 +10698,6 @@ msgid "Language & Localization"
 msgstr "语言和本地化"
 
 #: 
-msgid "Location & Map"
-msgstr "位置和地图"
-
-#: 
-msgid "Location Information"
-msgstr "位置信息"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "教会通讯的主要联系电子邮件。"
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "教会主要联系电话。"
-
-#: 
 msgid "Map"
 msgstr "地图"
 
@@ -10792,10 +10748,6 @@ msgstr "街道地址为必填项。"
 #: 
 msgid "Student Information"
 msgstr "学生信息"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "教会的系统语言。影响日期格式、电话格式和其他本地化设置。"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11169,10 +11121,6 @@ msgstr "立即备份到外部存储"
 #: 
 msgid "Browse all available plugins"
 msgstr "浏览所有可用的插件"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "浏览所有教会事件和活动"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11609,10 +11557,6 @@ msgstr "展开"
 #: 
 msgid "Explore with Demo Data"
 msgstr "使用演示数据探索"
-
-#: 
-msgid "Export"
-msgstr "导出"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12569,10 +12513,6 @@ msgid "The property is successfully removed."
 msgstr "属性已成功移除。"
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "启用此插件后，这些链接将出现在导航侧栏的\"链接\"菜单中。"
-
-#: 
 msgid "To Family"
 msgstr "到家庭"
 
@@ -13361,11 +13301,6 @@ msgstr "字段值"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "找出没有参加某个活动的人"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
 
@@ -13458,11 +13393,6 @@ msgstr "会员周年纪念"
 #: 
 msgid "Minimum Age"
 msgstr "最小年龄"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "失踪人员"
 
 #. Context: query_qry
 #: 
@@ -13655,11 +13585,6 @@ msgstr "选择要搜索的字段。"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "选择所需的活动"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "选择所需的家庭角色。"
 
@@ -13808,4 +13733,894 @@ msgstr "例如主日崇拜"
 #: 
 msgid "member"
 msgstr "成员"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **仪表板**：查看所有MailChimp列表及订阅者统计信息\n"
+"- **列表维护**：识别在MailChimp中但不在CRM中的联系人，反之亦然\n"
+"- **联系人集成**：在成员和家庭页面查看MailChimp订阅状态\n"
+"- **自动同步**：与成员/家庭更新挂钩，保持MailChimp同步"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. 在 https://dashboard.nexmo.com/sign-up 创建Vonage账户（新账户包含免费试用额度）\n"
+"2. 在Vonage仪表板首页找到您的API密钥和API密码\n"
+"3. 前往号码 > 购买号码，购买具有短信功能的号码\n"
+"4. 以E.164格式记录号码（例如 +14155551234）\n"
+"5. 在ChurchCRM中启用Vonage SMS插件并输入您的凭据"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. 前往Google Analytics（analytics.google.com）\n"
+"2. 创建媒体资源或选择现有资源\n"
+"3. 前往管理 → 数据流 → 网站\n"
+"4. 复制衡量ID（以G-开头）"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. 在演示计算机上安装OpenLP 3.0或更高版本\n"
+"2. 在OpenLP中启用Remote插件（设置 → 配置OpenLP → 插件）\n"
+"3. 在OpenLP中启用警报插件以支持警报显示\n"
+"4. 记录运行OpenLP的计算机IP地址\n"
+"5. 以以下格式输入服务器URL：http://IP_ADDRESS:4316\n"
+"6. 如果您在OpenLP中配置了身份验证，请输入用户名和密码"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "从邮件菜单访问MailChimp仪表板。仪表板显示：\n"
+"\n"
+"- 每个列表的成员数量\n"
+"- 营销活动统计信息\n"
+"- 退订数量\n"
+"- 列表维护工具"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "添加链接"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "所有已配置的链接显示在表格中。您可以：\n"
+"- 查看链接名称和URL\n"
+"- 点击URL测试是否能正确打开\n"
+"- 删除不再需要的链接\n"
+"\n"
+"链接按添加顺序显示在导航菜单中。"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "允许预发布版本升级"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "允许在财务模块中记录不可抵税的付款"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "允许将扫描的支票图像附加到存款记录"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "允许系统升级到GitHub上标记为「预发布」的版本"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "允许通过公共HTML、ICS和JSON URL未经身份验证访问日历事件。与外部应用共享日历时需要此设置。"
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "允许访客通过自助注册页面创建自己的家庭记录"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "允许访客自助注册为新家庭。"
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "任何WebDAV兼容的服务都可以与此插件配合使用：\n"
+"\n"
+"- Nextcloud（推荐）\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com（使用WebDAV）\n"
+"- Apache mod_dav\n"
+"- 带WebDAV模块的nginx\n"
+"\n"
+"注意：某些服务需要应用专用密码才能访问WebDAV。"
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "身份验证"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "如果您在OpenLP的Remote插件设置中启用了身份验证，则API v2需要身份验证。该插件使用HTTP基本身份验证。大多数本地网络设置不需要身份验证，但建议出于安全考虑启用。"
+
+#: 
+msgid "Auto TLS"
+msgstr "自动TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "自动备份"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "抄送所有邮件至"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "在依赖外部备份之前，请测试您的连接：\n"
+"1. 前往插件 > 外部备份\n"
+"2. 点击「测试WebDAV连接」\n"
+"3. 验证是否看到成功消息\n"
+"\n"
+"常见问题：\n"
+"- 401/403错误：检查用户名和密码\n"
+"- 连接超时：验证端点URL是否正确\n"
+"- 证书错误：确保WebDAV服务器具有有效的SSL证书"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "选择当Gravatar不存在时显示的内容：\n"
+"• Mystery Person - 灰色剪影轮廓\n"
+"• Identicon - 基于电子邮件的几何图案\n"
+"• MonsterID - 独特生成的怪物脸\n"
+"• Wavatar - 抽象生成的脸\n"
+"• Retro - 8位街机风格像素艺术\n"
+"• RoboHash - 独特生成的机器人\n"
+"• Blank - 透明（回退到首字母）"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "需要财务权限才能查看的查询ID（用逗号分隔）"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "自定义链接的常见用途：\n"
+"- 教会网站\n"
+"- 在线奉献门户\n"
+"- 志愿者报名表单\n"
+"- 宗派资源\n"
+"- 合作机构网站\n"
+"- 云存储文件夹\n"
+"- 活动报名页面"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "配置"
+
+#: 
+msgid "Continent"
+msgstr "洲"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "费用"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "信用卡付款人员"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "当前使用情况"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "默认图像样式"
+
+#: 
+msgid "Default Map View"
+msgstr "默认地图视图"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "存款单类型"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "不发送电子邮件属性"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "不发送短信属性"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "下载OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164电话号码格式"
+
+#: 
+msgid "Enable Email"
+msgstr "启用电子邮件"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "启用活动菜单"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "启用外部日历API"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "启用从ChurchCRM发送电子邮件。重置密码、通知和电子邮件链接需要此设置。"
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "如果您的SMTP服务器需要用户名和密码，请启用此选项"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "启用或禁用主日学模块和侧边栏菜单。"
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "启用编号奉献信封以跟踪贡献"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "启用奉献信封"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "启用扫描支票"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "按财年划分的家庭承诺"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "功能"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "财务权限查询ID"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "查找已注册学生"
+
+#: 
+msgid "Find family"
+msgstr "查找家庭"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "查找服务器URL"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "财政年度。"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "为了安全：\n"
+"- 只有管理员可以添加或删除链接\n"
+"- 「管理链接」选项只对管理员显示\n"
+"- 链接必须使用http://或https://协议\n"
+"- 名称或URL中不允许使用HTML标签\n"
+"- 所有输入均经过验证和清理"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4设置指南"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "快速入门"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "获取GA4衡量ID"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) 跟踪用户如何与ChurchCRM互动，提供页面浏览量、用户参与度和功能使用情况的洞察。"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics帮助"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics收集匿名使用数据。ChurchCRM记录中的个人信息不会发送给Google。建议在教会的数据政策中添加隐私声明。"
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar（全球公认头像）为ChurchCRM中没有上传照片的成员显示来自gravatar.com的个人资料照片。"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar图像选项"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar网站"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作。实际电子邮件地址永远不会发送到Gravatar服务器——只使用哈希值来查找图像。"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "已注册学生群组"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "隐藏经纬度"
+
+#: 
+msgid "Hide Person Address"
+msgstr "隐藏成员地址"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "工作原理"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "每页存款单打印多少张支票"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "如果短信未发送：\n"
+"1. 验证API密钥和密码是否正确（无多余空格）\n"
+"2. 检查发件号码是否为您拥有的有效Vonage号码\n"
+"3. 确保收件人电话号码包含国家/地区代码\n"
+"4. 检查您的Vonage账户余额\n"
+"5. 查看Vonage仪表板 > 短信 > 日志了解发送状态"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "如果警报未显示：\n"
+"1. 验证OpenLP是否正在运行且Remote插件已激活\n"
+"2. 确保OpenLP中的警报插件已启用\n"
+"3. 检查服务器URL是否正确（尝试在浏览器中访问）\n"
+"4. 验证防火墙设置允许端口4316上的连接\n"
+"5. 如果使用身份验证，请验证凭据是否正确"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "如果消息已发送但未收到：\n"
+"1. 检查Vonage仪表板 > 短信 > 日志了解发送状态\n"
+"2. 验证收件人号码是否正确且可以接收短信\n"
+"3. 某些运营商可能会屏蔽来自未知号码的消息\n"
+"4. 检查目标国家/地区是否对短信有限制"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "如果收到无效发件人ID错误：\n"
+"1. 使用您从Vonage购买的电话号码\n"
+"2. 将号码格式设置为E.164格式（+14155551234）\n"
+"3. 注意：字母数字发件人ID在某些国家/地区可能受到限制"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "重要安全注意事项：\n"
+"\n"
+"1. 始终使用HTTPS端点加密传输中的备份\n"
+"2. 可用时使用应用专用密码（Nextcloud、ownCloud）\n"
+"3. 将备份存储在访问受限的文件夹中\n"
+"4. 定期下载并验证备份是否有效\n"
+"5. 考虑在上传前使用外部工具加密敏感备份"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "打开地图时的初始缩放级别"
+
+#: 
+msgid "Learn more"
+msgstr "了解更多"
+
+#: 
+msgid "Log Settings"
+msgstr "日志设置"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp集成允许ChurchCRM联系人与MailChimp电子邮件营销列表之间进行同步。"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "管理链接"
+
+#: 
+msgid "Neighborhood"
+msgstr "社区"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2来源"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP文档"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP网站"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP是为教会设计的免费开源演示软件。此插件允许ChurchCRM直接向OpenLP显示器发送通知和警报。"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "配置为使用信用卡付款的人员。"
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "成员/家庭集成"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "电话号码格式"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "电话号码应采用E.164格式：国家/地区代码 + 号码。示例：\n"
+"- 美国：+14155551234\n"
+"- 英国：+447700900123\n"
+"- 澳大利亚：+61412345678\n"
+"\n"
+"ChurchCRM成员资料中的收件人电话号码应包含国家/地区代码，以确保短信正常发送。"
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "所选财年各基金的家庭姓名奉献承诺摘要"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "隐私与合规"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "隐私注意事项"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "隐私声明"
+
+#: 
+msgid "Quick Settings"
+msgstr "快速设置"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "已注册学生"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP身份验证"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP超时"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "安全性"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "安全注意事项"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "设置"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "在存款单报告中显示票面金额明细"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "在主导航中显示或隐藏活动菜单。"
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "在主导航菜单中显示或隐藏活动部分"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "在侧边栏导航中显示或隐藏主日学模块"
+
+#: 
+msgid "Street"
+msgstr "街道"
+
+#: 
+msgid "Sunday School Module"
+msgstr "主日学模块"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "支持的服务"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "测试连接"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "自定义菜单链接插件允许管理员向导航菜单添加外部链接。启用后，侧边栏中会出现包含所有已配置链接的「链接」菜单。"
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "外部备份插件允许您自动将ChurchCRM数据库备份到兼容WebDAV的云存储服务。包括Nextcloud、ownCloud等流行服务或任何支持WebDAV协议的服务器。"
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "默认OpenLP端口为4316。您的服务器URL通常为：http://192.168.x.x:4316，其中192.168.x.x是运行OpenLP的计算机IP地址。您可以在OpenLP的工具 → 打开服务管理器中找到此信息。"
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "组织财年开始的月份"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "此插件目前用于信息亭签到通知。当孩子通过信息亭系统签到主日学班级时，可以发送短信通知家长或监护人。"
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "此插件目前用于信息亭签到通知。当孩子通过信息亭系统签到主日学班级时，可以向OpenLP投影仪显示器发送警报以通知家长或志愿者。"
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "此插件将电子邮件地址传输到MailChimp服务器。在将成员信息同步到MailChimp等第三方服务之前，请确保获得成员的适当同意。"
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "添加新链接：\n"
+"1. 前往侧边栏中的链接菜单，点击「管理链接」\n"
+"2. 输入显示名称（2-50个字符）\n"
+"3. 输入完整URL（必须以http://或https://开头）\n"
+"4. 点击「添加链接」\n"
+"\n"
+"链接将立即出现在链接菜单中。"
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "配置外部备份：\n"
+"1. 前往管理 > 插件，找到「外部备份（WebDAV）」\n"
+"2. 点击设置图标展开配置面板\n"
+"3. 输入WebDAV端点URL（例如 https://cloud.example.com/remote.php/dav/files/username/backups/）\n"
+"4. 输入用户名和密码\n"
+"5. 可选择以小时为单位设置自动备份间隔\n"
+"6. 保存设置"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "要使用MailChimp集成，您需要MailChimp账户和API密钥。\n"
+"\n"
+"1. 登录您的MailChimp账户\n"
+"2. 前往账户 > 附加功能 > API密钥\n"
+"3. 创建新的API密钥或复制现有密钥\n"
+"4. 在插件设置中输入API密钥"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "故障排除"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "故障排除 - 无效发件人ID"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "故障排除 - 消息未送达"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "故障排除 - 短信未发送"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "升级设置"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "使用场景"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "用户导出CSV文件的权限"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage仪表板"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage定价"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage短信API文档"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS使用Vonage API（前称Nexmo）为ChurchCRM提供短信通知功能。当孩子通过信息亭系统签到时，向家长发送短信提醒。"
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage按发送的每条短信收费。价格因目标国家/地区而异。请访问Vonage定价页面了解当前费率。新账户可获得免费试用额度用于测试。"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "跟踪哪些内容"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "配置MailChimp后，成员查看页面上会出现「MailChimp」选项卡，显示：\n"
+"\n"
+"- 所有列表的电子邮件订阅状态\n"
+"- 该成员订阅了哪些列表\n"
+"- 订阅统计信息"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "当成员没有上传照片时，ChurchCRM会检查其电子邮件地址是否关联了Gravatar。如果存在Gravatar，则显示该图像；否则使用配置的默认图像样式。"
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "启用自动备份（间隔 > 0小时）后，ChurchCRM将按指定间隔自动创建并上传完整数据库备份。备份作为正常页面加载的一部分运行，因此系统必须有定期用户活动才能触发备份。\n"
+"\n"
+"推荐间隔：\n"
+"- 每日备份：24小时\n"
+"- 每天两次：12小时\n"
+"- 每周：168小时"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "启用并配置后，ChurchCRM使用API v2端点（POST /api/v2/plugins/alerts）向OpenLP服务器发送警报消息。这些警报以覆盖通知的形式出现在投影显示器上。"
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "启用后，隐藏未分配到家庭的成员的地址字段"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "启用后，在家庭编辑器中隐藏纬度/经度字段。地理编码仍在后台运行。"
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "您也可以随时触发手动备份：\n"
+"1. 前往外部备份设置页面（插件 > 外部备份）\n"
+"2. 选择备份类型（仅数据库或完整备份）\n"
+"3. 点击「立即备份到WebDAV」\n"
+"\n"
+"仅数据库备份更小更快。完整备份包括上传的照片。"
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• 页面浏览量和导航模式\n"
+"• 会话时长和参与度\n"
+"• 用户人口统计（如果在GA4中启用）\n"
+"• 设备和浏览器信息"
 

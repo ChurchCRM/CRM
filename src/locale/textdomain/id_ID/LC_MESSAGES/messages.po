@@ -7863,10 +7863,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Ini mungkin memakan waktu beberapa menit. Jangan tutup halaman ini."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Ringkasan Pembaruan"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Gunakan alat eksternal untuk mengenkripsi cadangan sebelum disimpan di luar lokasi."
 
@@ -8639,10 +8635,6 @@ msgid "Save the file and refresh this page"
 msgstr "Simpan file dan segarkan halaman ini"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Atur true untuk menonaktifkan alamat bagi orang tanpa keluarga."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Dimulai dengan <strong>http://</strong> atau <strong>https://</strong>"
 
@@ -9106,10 +9098,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ya, hapus Pelayanan ini"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Permintaan yang memerlukan izin keuangan untuk digunakan"
-
-#: 
 msgid "Fund(s)"
 msgstr "Dana"
 
@@ -9393,10 +9381,6 @@ msgstr "Ulang Tahun Mendatang"
 #: 
 msgid "Waiting to Check In"
 msgstr "Menunggu Check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Saat diaktifkan, perangkat kiosk baru dapat mendaftar selama 30 detik."
 
 #: 
 msgid "Your child"
@@ -10561,20 +10545,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Deteksi koordinat otomatis menggunakan alamat"
 
 #: 
-msgid "Basic Information"
-msgstr "Informasi Dasar"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informasi jemaat berhasil disimpan."
-
-#: 
 msgid "Church name is required."
 msgstr "Nama jemaat wajib diisi."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Nama jemaat wajib diisi. Lengkapi tab Informasi Dasar."
 
 #: 
 msgid "City is required."
@@ -10633,22 +10605,6 @@ msgid "Language & Localization"
 msgstr "Bahasa & Lokalisasi"
 
 #: 
-msgid "Location & Map"
-msgstr "Lokasi & Peta"
-
-#: 
-msgid "Location Information"
-msgstr "Informasi Lokasi"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Email kontak utama untuk komunikasi jemaat."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Nomor telepon utama jemaat."
-
-#: 
 msgid "Map"
 msgstr "Peta"
 
@@ -10699,10 +10655,6 @@ msgstr "Alamat wajib diisi."
 #: 
 msgid "Student Information"
 msgstr "Informasi Siswa"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Bahasa sistem untuk jemaat. Memengaruhi format tanggal, format telepon, dan lokalisasi lainnya."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11063,10 +11015,6 @@ msgstr "Cadangkan ke Penyimpanan Eksternal Sekarang"
 #: 
 msgid "Browse all available plugins"
 msgstr "Jelajahi semua plugin yang tersedia"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Jelajahi semua acara dan kegiatan gereja"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11499,10 +11447,6 @@ msgstr "Perluas"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Jelajahi dengan Data Demo"
-
-#: 
-msgid "Export"
-msgstr "Ekspor"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12447,10 +12391,6 @@ msgid "The property is successfully removed."
 msgstr "Properti berhasil dihapus."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Tautan ini muncul di menu \"Tautan\" di sidebar navigasi saat plugin ini diaktifkan."
-
-#: 
 msgid "To Family"
 msgstr "Ke Keluarga"
 
@@ -13243,11 +13183,6 @@ msgstr "Nilai bidang"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Temukan orang yang tidak menghadiri acara"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Temukan orang yang berjanji satu tahun tetapi tidak tahun lain"
 
@@ -13340,11 +13275,6 @@ msgstr "Hari jadi keanggotaan"
 #: 
 msgid "Minimum Age"
 msgstr "Usia Minimum"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Orang yang hilang"
 
 #. Context: query_qry
 #: 
@@ -13537,11 +13467,6 @@ msgstr "Pilih bidang untuk dicari."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Pilih acara yang diinginkan"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Pilih peran keluarga yang diinginkan."
 
@@ -13690,4 +13615,894 @@ msgstr "misalnya Pelayanan Minggu"
 #: 
 msgid "member"
 msgstr "anggota"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Dasbor**: Lihat semua daftar MailChimp Anda beserta statistik pelanggan\n"
+"- **Pemeliharaan Daftar**: Identifikasi orang yang ada di MailChimp tapi tidak di CRM, dan sebaliknya\n"
+"- **Integrasi Kontak**: Lihat status langganan MailChimp di halaman Orang dan Keluarga\n"
+"- **Sinkronisasi Otomatis**: Terhubung ke pembaruan orang/keluarga untuk menjaga MailChimp tetap sinkron"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Buat akun Vonage di https://dashboard.nexmo.com/sign-up (akun baru termasuk kredit uji coba gratis)\n"
+"2. Temukan API Key dan API Secret Anda di beranda Dasbor Vonage\n"
+"3. Pergi ke Nomor > Beli Nomor dan beli nomor dengan kemampuan SMS\n"
+"4. Catat nomor dalam format E.164 (mis., +14155551234)\n"
+"5. Di ChurchCRM, aktifkan plugin Vonage SMS dan masukkan kredensial Anda"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Buka Google Analytics (analytics.google.com)\n"
+"2. Buat properti atau pilih yang sudah ada\n"
+"3. Pergi ke Admin → Aliran Data → Web\n"
+"4. Salin ID Pengukuran (dimulai dengan G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Instal OpenLP 3.0 atau lebih baru di komputer presentasi Anda\n"
+"2. Aktifkan plugin Remote di OpenLP (Pengaturan → Konfigurasikan OpenLP → Plugin)\n"
+"3. Aktifkan plugin Alerts di OpenLP untuk dukungan tampilan peringatan\n"
+"4. Catat alamat IP komputer OpenLP\n"
+"5. Masukkan URL server dalam format: http://IP_ADDRESS:4316\n"
+"6. Jika Anda telah mengonfigurasi autentikasi di OpenLP, masukkan nama pengguna dan kata sandi"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Akses Dasbor MailChimp dari menu Email. Dasbor menampilkan:\n"
+"\n"
+"- Jumlah anggota untuk setiap daftar\n"
+"- Statistik kampanye\n"
+"- Jumlah berhenti berlangganan\n"
+"- Alat pemeliharaan daftar"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Menambahkan Tautan"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Semua tautan yang dikonfigurasi ditampilkan dalam tabel. Anda dapat:\n"
+"- Melihat nama tautan dan URL\n"
+"- Klik URL untuk menguji apakah terbuka dengan benar\n"
+"- Hapus tautan yang tidak lagi diperlukan\n"
+"\n"
+"Tautan muncul sesuai urutan penambahannya di menu navigasi."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Izinkan Peningkatan Versi Pra-rilis"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Izinkan pencatatan pembayaran yang tidak dapat dikurangi pajak di modul keuangan"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Izinkan gambar cek yang dipindai dilampirkan ke catatan setoran"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Izinkan peningkatan sistem ke rilis yang ditandai sebagai 'pra rilis' di GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Izinkan akses tidak terautentikasi ke acara kalender melalui URL HTML, ICS, dan JSON publik. Diperlukan untuk berbagi kalender dengan aplikasi eksternal."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Izinkan pengunjung membuat catatan keluarga mereka sendiri melalui halaman pendaftaran mandiri"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Izinkan pengunjung mendaftar sendiri sebagai keluarga baru."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Layanan apa pun yang kompatibel dengan WebDAV bekerja dengan plugin ini:\n"
+"\n"
+"- Nextcloud (direkomendasikan)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (dengan WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx dengan modul WebDAV\n"
+"\n"
+"Catatan: Beberapa layanan memerlukan kata sandi khusus aplikasi untuk akses WebDAV."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Autentikasi"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentikasi diperlukan untuk API v2 jika Anda telah mengaktifkannya di pengaturan plugin Remote OpenLP. Plugin menggunakan Autentikasi Dasar HTTP. Sebagian besar pengaturan jaringan lokal tidak memerlukan autentikasi, tetapi direkomendasikan untuk keamanan."
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS Otomatis"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Pencadangan Otomatis"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC Semua Email Ke"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Sebelum mengandalkan pencadangan eksternal, uji koneksi Anda:\n"
+"1. Pergi ke Plugin > Pencadangan Eksternal\n"
+"2. Klik 'Uji Koneksi WebDAV'\n"
+"3. Pastikan Anda melihat pesan sukses\n"
+"\n"
+"Masalah umum:\n"
+"- Kesalahan 401/403: Periksa nama pengguna dan kata sandi\n"
+"- Batas waktu koneksi: Pastikan URL endpoint sudah benar\n"
+"- Kesalahan sertifikat: Pastikan server WebDAV memiliki sertifikat SSL yang valid"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Pilih apa yang muncul saat tidak ada Gravatar:\n"
+"• Orang Misterius - Siluet abu-abu\n"
+"• Identicon - Pola geometris berdasarkan email\n"
+"• MonsterID - Wajah monster yang dibuat unik\n"
+"• Wavatar - Wajah abstrak yang dibuat\n"
+"• Retro - Seni piksel gaya arkade 8-bit\n"
+"• RoboHash - Robot yang dibuat unik\n"
+"• Kosong - Transparan (kembali ke inisial)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "ID kueri yang dipisahkan koma yang memerlukan izin keuangan untuk dilihat"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Penggunaan umum untuk tautan kustom:\n"
+"- Situs web gereja\n"
+"- Portal persembahan online\n"
+"- Formulir pendaftaran sukarelawan\n"
+"- Sumber daya denominasi\n"
+"- Situs organisasi mitra\n"
+"- Folder penyimpanan cloud\n"
+"- Halaman pendaftaran acara"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfigurasi"
+
+#: 
+msgid "Continent"
+msgstr "Benua"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Biaya"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Anggota Pembayar Kartu Kredit"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Penggunaan Saat Ini"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Gaya Gambar Default"
+
+#: 
+msgid "Default Map View"
+msgstr "Tampilan Peta Default"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Jenis tiket setoran"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Properti Jangan Kirim Email"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Properti Jangan Kirim SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Unduh OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Format Nomor Telepon E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Aktifkan Email"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Aktifkan Menu Acara"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Aktifkan API Kalender Eksternal"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Aktifkan pengiriman email dari ChurchCRM. Diperlukan untuk pengaturan ulang kata sandi, notifikasi, dan tautan email."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktifkan jika server SMTP Anda memerlukan nama pengguna dan kata sandi"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Aktifkan atau nonaktifkan modul Sekolah Minggu dan menu bilah samping."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Aktifkan penggunaan amplop persembahan bernomor untuk melacak kontribusi"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Aktifkan penggunaan amplop persembahan"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Aktifkan penggunaan cek yang dipindai"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Janji Keluarga per Tahun Fiskal"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Fitur"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "ID kueri izin keuangan"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Cari siswa terdaftar"
+
+#: 
+msgid "Find family"
+msgstr "Cari keluarga"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Menemukan URL Server Anda"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Tahun Fiskal."
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Untuk keamanan:\n"
+"- Hanya administrator yang dapat menambah atau menghapus tautan\n"
+"- Opsi 'Kelola Tautan' hanya muncul untuk administrator\n"
+"- Tautan harus menggunakan protokol http:// atau https://\n"
+"- Tag HTML tidak diizinkan dalam nama atau URL\n"
+"- Semua input divalidasi dan dibersihkan"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Panduan Pengaturan GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Memulai"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Mendapatkan ID Pengukuran GA4 Anda"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) melacak cara pengguna berinteraksi dengan ChurchCRM, memberikan wawasan tentang tampilan halaman, keterlibatan pengguna, dan penggunaan fitur."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Bantuan Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics mengumpulkan data penggunaan yang dianonimkan. Tidak ada informasi pribadi dari catatan ChurchCRM yang dikirim ke Google. Pertimbangkan untuk menambahkan pemberitahuan privasi ke kebijakan data gereja Anda."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Avatar yang Dikenal Secara Global) menampilkan foto profil dari gravatar.com untuk anggota yang tidak memiliki foto yang diunggah di ChurchCRM."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Opsi Gambar Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Situs Web Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar bekerja dengan mengonversi alamat email menjadi hash (MD5). Alamat email sebenarnya tidak pernah dikirim ke server Gravatar - hanya hash yang digunakan untuk mencari gambar."
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Kelompok siswa terdaftar"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Sembunyikan Lintang/Bujur"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Sembunyikan Alamat Orang"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Cara kerjanya"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Berapa banyak cek yang dicetak per halaman slip setoran"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Jika pesan SMS tidak terkirim:\n"
+"1. Pastikan API Key dan Secret sudah benar (tidak ada spasi ekstra)\n"
+"2. Periksa bahwa Nomor Pengirim adalah nomor Vonage yang valid yang Anda miliki\n"
+"3. Pastikan nomor telepon penerima mencakup kode negara\n"
+"4. Periksa saldo akun Vonage Anda\n"
+"5. Tinjau Dasbor Vonage > SMS > Log untuk status pengiriman"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Jika peringatan tidak muncul:\n"
+"1. Pastikan OpenLP berjalan dan plugin Remote aktif\n"
+"2. Pastikan plugin Alerts diaktifkan di OpenLP\n"
+"3. Periksa bahwa URL server sudah benar (coba akses di browser)\n"
+"4. Pastikan pengaturan firewall mengizinkan koneksi di port 4316\n"
+"5. Jika menggunakan autentikasi, pastikan kredensial sudah benar"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Jika pesan terkirim tetapi tidak diterima:\n"
+"1. Periksa Dasbor Vonage > SMS > Log untuk status pengiriman\n"
+"2. Pastikan nomor penerima sudah benar dan dapat menerima SMS\n"
+"3. Beberapa operator mungkin memblokir pesan dari nomor tidak dikenal\n"
+"4. Periksa apakah negara tujuan memiliki pembatasan SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Jika Anda menerima kesalahan ID pengirim tidak valid:\n"
+"1. Gunakan nomor telepon yang telah Anda beli dari Vonage\n"
+"2. Format nomor dalam format E.164 (+14155551234)\n"
+"3. Catatan: ID pengirim alfanumerik mungkin dibatasi di beberapa negara"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Catatan keamanan penting:\n"
+"\n"
+"1. Selalu gunakan endpoint HTTPS untuk mengenkripsi cadangan dalam transit\n"
+"2. Gunakan kata sandi khusus aplikasi bila tersedia (Nextcloud, ownCloud)\n"
+"3. Simpan cadangan di folder dengan akses terbatas\n"
+"4. Unduh dan verifikasi cadangan Anda secara berkala\n"
+"5. Pertimbangkan untuk mengenkripsi cadangan sensitif dengan alat eksternal sebelum mengunggah"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Tingkat zoom awal saat membuka peta"
+
+#: 
+msgid "Learn more"
+msgstr "Pelajari lebih lanjut"
+
+#: 
+msgid "Log Settings"
+msgstr "Pengaturan Log"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Integrasi MailChimp memungkinkan sinkronisasi antara kontak ChurchCRM dan daftar pemasaran email MailChimp Anda."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Mengelola Tautan"
+
+#: 
+msgid "Neighborhood"
+msgstr "Lingkungan"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Sumber API v2 OpenLP"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Dokumentasi OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Situs Web OpenLP"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP adalah perangkat lunak presentasi gratis dan sumber terbuka yang dirancang untuk gereja. Plugin ini memungkinkan ChurchCRM mengirim notifikasi dan peringatan langsung ke tampilan OpenLP Anda."
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Orang yang dikonfigurasi untuk membayar dengan kartu kredit."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Integrasi Orang/Keluarga"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Format Nomor Telepon"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Nomor telepon harus dalam format E.164: kode negara + nomor. Contoh:\n"
+"- AS: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Nomor telepon penerima dalam profil anggota ChurchCRM harus menyertakan kode negara agar SMS berfungsi dengan benar."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Ringkasan janji berdasarkan nama keluarga untuk setiap dana untuk tahun fiskal yang dipilih"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Privasi & Kepatuhan"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Pertimbangan Privasi"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Catatan Privasi"
+
+#: 
+msgid "Quick Settings"
+msgstr "Pengaturan Cepat"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Siswa terdaftar"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Autentikasi SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Batas Waktu SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Keamanan"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Pertimbangan Keamanan"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Pengaturan"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Tampilkan rincian denominasi uang kertas pada laporan slip setoran"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Tampilkan atau sembunyikan menu Acara di navigasi utama."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Tampilkan atau sembunyikan bagian Acara di menu navigasi utama"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Tampilkan atau sembunyikan modul Sekolah Minggu di navigasi bilah samping"
+
+#: 
+msgid "Street"
+msgstr "Jalan"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Modul Sekolah Minggu"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Layanan yang Didukung"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Menguji Koneksi"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin Tautan Menu Kustom memungkinkan administrator menambahkan tautan eksternal ke menu navigasi. Saat diaktifkan, menu 'Tautan' muncul di bilah samping yang berisi semua tautan yang dikonfigurasi."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin Pencadangan Eksternal memungkinkan Anda mencadangkan basis data ChurchCRM secara otomatis ke layanan penyimpanan cloud yang kompatibel dengan WebDAV. Ini termasuk layanan populer seperti Nextcloud, ownCloud, atau server apa pun yang mendukung protokol WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Port OpenLP default adalah 4316. URL server Anda biasanya adalah: http://192.168.x.x:4316 di mana 192.168.x.x adalah alamat IP komputer yang menjalankan OpenLP. Anda dapat menemukannya di OpenLP di bawah Alat → Buka Manajer Layanan."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Bulan yang memulai tahun fiskal organisasi Anda"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Plugin ini saat ini digunakan untuk Notifikasi Check-in Kiosk. Ketika seorang anak melakukan check-in ke kelas Sekolah Minggu melalui sistem kiosk, SMS dapat dikirim untuk memberi tahu orang tua atau wali."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Plugin ini saat ini digunakan untuk Notifikasi Check-in Kiosk. Ketika seorang anak melakukan check-in ke kelas Sekolah Minggu melalui sistem kiosk, peringatan dapat dikirim ke tampilan proyektor OpenLP untuk memberi tahu orang tua atau sukarelawan."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Plugin ini mengirimkan alamat email ke server MailChimp. Pastikan Anda memiliki persetujuan yang sesuai dari anggota Anda sebelum menyinkronkan informasi mereka ke layanan pihak ketiga seperti MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Untuk menambahkan tautan baru:\n"
+"1. Buka menu Tautan di bilah samping dan klik 'Kelola Tautan'\n"
+"2. Masukkan nama tampilan (2-50 karakter)\n"
+"3. Masukkan URL lengkap (harus dimulai dengan http:// atau https://)\n"
+"4. Klik 'Tambah Tautan'\n"
+"\n"
+"Tautan akan segera muncul di menu Tautan."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Untuk mengonfigurasi pencadangan eksternal:\n"
+"1. Pergi ke Admin > Plugin dan temukan 'Pencadangan Eksternal (WebDAV)'\n"
+"2. Klik ikon pengaturan untuk memperluas panel konfigurasi\n"
+"3. Masukkan URL endpoint WebDAV Anda (mis., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Masukkan nama pengguna dan kata sandi Anda\n"
+"5. Secara opsional atur interval pencadangan otomatis dalam jam\n"
+"6. Simpan pengaturan Anda"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Untuk menggunakan Integrasi MailChimp, Anda memerlukan akun MailChimp dan kunci API.\n"
+"\n"
+"1. Masuk ke akun MailChimp Anda\n"
+"2. Pergi ke Akun > Ekstra > Kunci API\n"
+"3. Buat kunci API baru atau salin yang sudah ada\n"
+"4. Masukkan kunci API di pengaturan plugin"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Pemecahan Masalah"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Pemecahan Masalah - ID Pengirim Tidak Valid"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Pemecahan Masalah - Pesan Tidak Terkirim"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Pemecahan Masalah - SMS Tidak Terkirim"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Pengaturan Peningkatan"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Kasus Penggunaan"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Izin pengguna untuk mengekspor file CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Dasbor Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Harga Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Dokumentasi API SMS Vonage"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS mengaktifkan notifikasi pesan teks untuk ChurchCRM menggunakan API Vonage (sebelumnya Nexmo). Kirim peringatan SMS kepada orang tua ketika anak mereka check-in melalui sistem kiosk."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage mengenakan biaya per SMS yang dikirim. Harga bervariasi menurut negara tujuan. Lihat halaman harga Vonage untuk tarif saat ini. Akun baru menerima kredit uji coba gratis untuk pengujian."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Apa yang Dilacak"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Ketika MailChimp dikonfigurasi, tab 'MailChimp' muncul di halaman tampilan Orang yang menampilkan:\n"
+"\n"
+"- Status langganan email di semua daftar\n"
+"- Daftar mana yang diikuti oleh orang tersebut\n"
+"- Statistik langganan"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Ketika anggota tidak memiliki foto yang diunggah, ChurchCRM memeriksa apakah mereka memiliki Gravatar yang terkait dengan alamat email mereka. Jika Gravatar ada, gambar itu ditampilkan. Jika tidak, gaya gambar default yang dikonfigurasi akan digunakan."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Ketika pencadangan otomatis diaktifkan (interval > 0 jam), ChurchCRM akan secara otomatis membuat dan mengunggah pencadangan basis data penuh pada interval yang ditentukan. Pencadangan berjalan sebagai bagian dari pemuatan halaman normal, sehingga sistem harus memiliki aktivitas pengguna yang teratur untuk memicu pencadangan.\n"
+"\n"
+"Interval yang direkomendasikan:\n"
+"- Pencadangan harian: 24 jam\n"
+"- Dua kali sehari: 12 jam\n"
+"- Mingguan: 168 jam"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Ketika diaktifkan dan dikonfigurasi, ChurchCRM mengirim pesan peringatan ke server OpenLP Anda menggunakan endpoint API v2 (POST /api/v2/plugins/alerts). Peringatan ini muncul sebagai notifikasi overlay pada tampilan proyeksi Anda."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Saat diaktifkan, menyembunyikan kolom alamat untuk orang yang tidak ditetapkan ke keluarga"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Saat diaktifkan, menyembunyikan kolom lintang/bujur di Editor Keluarga. Geokoderasi tetap berjalan di latar belakang."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Anda juga dapat memicu pencadangan manual kapan saja:\n"
+"1. Buka halaman pengaturan Pencadangan Eksternal (Plugin > Pencadangan Eksternal)\n"
+"2. Pilih jenis pencadangan (Hanya Basis Data atau Pencadangan Penuh)\n"
+"3. Klik 'Cadangkan ke WebDAV Sekarang'\n"
+"\n"
+"Pencadangan Hanya Basis Data lebih kecil dan lebih cepat. Pencadangan penuh menyertakan foto yang diunggah."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Tampilan halaman dan pola navigasi\n"
+"• Durasi sesi dan keterlibatan\n"
+"• Demografi pengguna (jika diaktifkan di GA4)\n"
+"• Informasi perangkat dan browser"
 

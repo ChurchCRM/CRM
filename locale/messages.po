@@ -1,0 +1,10999 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-04 01:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "                                        Signature ________________________________________________________________"
+msgstr ""
+
+msgid " Bold"
+msgstr ""
+
+msgid " Bold Italic"
+msgstr ""
+
+msgid " Deposit #"
+msgstr ""
+
+msgid " Italic"
+msgstr ""
+
+msgid " by that name already exists."
+msgstr ""
+
+msgid " characters long"
+msgstr ""
+
+msgid " errors. Please see below"
+msgstr ""
+
+msgid " for all funds"
+msgstr ""
+
+msgid " for fund "
+msgstr ""
+
+msgid " more entries will fit."
+msgstr ""
+
+msgid " of the"
+msgstr ""
+
+msgid " record(s) returned"
+msgstr ""
+
+msgid "\"Why Came\" Notes"
+msgstr ""
+
+msgid "\"Why Came\" notes for "
+msgstr ""
+
+#, php-format
+msgid "%d Orphaned Files Detected"
+msgstr ""
+
+#, php-format
+msgid "%d Person added to the Cart."
+msgid_plural "%d People added to the Cart."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d Person successfully added to selected Family."
+msgid_plural "%d People successfully added to selected Family."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d Person successfully added to selected Group."
+msgid_plural "%d People successfully added to selected Group."
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d event in %s"
+msgid_plural "%d events in %s"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d files have failed integrity validation."
+msgstr ""
+
+#, php-format
+msgid "%d files will be permanently deleted."
+msgstr ""
+
+#, php-format
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d missing classification"
+msgstr ""
+
+#, php-format
+msgid "%d missing gender"
+msgstr ""
+
+#, php-format
+msgid "%d missing role"
+msgstr ""
+
+#, php-format
+msgid "%d month old"
+msgid_plural "%d months old"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d orphaned files were detected on your server."
+msgstr ""
+
+#, php-format
+msgid "%d person"
+msgid_plural "%d people"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d result for \"%s\""
+msgid_plural "%d results for \"%s\""
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d year old"
+msgid_plural "%d years old"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "(Edit own family only.)"
+msgstr ""
+
+msgid "(Enter state/province for countries without predefined states)"
+msgstr ""
+
+msgid "(Grants all privileges.)"
+msgstr ""
+
+msgid "(No assigned family)"
+msgstr ""
+
+msgid "(optional — leave blank to include all roles)"
+msgstr ""
+
+msgid "(this action cannot be undone)"
+msgstr ""
+
+#. plugin:mailchimp:section:1:content
+msgid ""
+"- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr ""
+
+msgid "-----------------------------------------------------------------------------------------------------------------------------------------------"
+msgstr ""
+
+msgid "0 - No Minimum"
+msgstr ""
+
+#. plugin:vonage:section:1:content
+msgid ""
+"1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr ""
+
+#. plugin:google-analytics:section:0:content
+msgid ""
+"1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr ""
+
+#. plugin:openlp:section:2:content
+msgid ""
+"1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr ""
+
+msgid "2-50 characters"
+msgstr ""
+
+msgid "2FA"
+msgstr ""
+
+msgid "2FA Enabled"
+msgstr ""
+
+msgid "A"
+msgstr ""
+
+msgid "A "
+msgstr ""
+
+msgid "A Calendar access token has been generated and saved."
+msgstr ""
+
+msgid "A ChurchCRM account was created for you"
+msgstr ""
+
+msgid "A comma-separated list of disallowed (too obvious) passwords."
+msgstr ""
+
+msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
+msgstr ""
+
+msgid "A household. Stores the shared mailing address and home phone."
+msgstr ""
+
+msgid "A map will appear here once a street address is saved. Coordinates are detected automatically — no manual entry required."
+msgstr ""
+
+msgid "A new password has been generated and sent to your email address."
+msgstr ""
+
+msgid "A payment is an actual donation received. It will be added to the current deposit."
+msgstr ""
+
+msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr ""
+
+msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr ""
+
+msgid "API Key is required."
+msgstr ""
+
+msgid "About"
+msgstr ""
+
+msgid "About WebDAV Backups"
+msgstr ""
+
+msgid "Accept the device, then assign it to an event to begin check-in."
+msgstr ""
+
+msgid "Accepted format: .csv"
+msgstr ""
+
+msgid "Access Denied"
+msgstr ""
+
+msgid "Access Token"
+msgstr ""
+
+#. plugin:mailchimp:section:2:content
+msgid ""
+"Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr ""
+
+msgid "Account Locked"
+msgstr ""
+
+msgid "Account Recovery"
+msgstr ""
+
+msgid "Account Unlocked"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Action Confirmation"
+msgstr ""
+
+msgid "Actions"
+msgstr ""
+
+msgid "Activate"
+msgstr ""
+
+msgid "Activate the boxed layout"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Active Events"
+msgstr ""
+
+msgid "Active Groups"
+msgstr ""
+
+msgid "Active Kiosks"
+msgstr ""
+
+msgid "Active Users"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Add A Group Name"
+msgstr ""
+
+msgid "Add All Classes"
+msgstr ""
+
+msgid "Add All Families"
+msgstr ""
+
+msgid "Add All Funds"
+msgstr ""
+
+msgid "Add All to Cart"
+msgstr ""
+
+msgid "Add Another Family Member"
+msgstr ""
+
+msgid "Add Buyer"
+msgstr ""
+
+msgid "Add Cart to Event"
+msgstr ""
+
+msgid "Add Cart to Family"
+msgstr ""
+
+msgid "Add Cart to Group"
+msgstr ""
+
+msgid "Add Church Event"
+msgstr ""
+
+msgid "Add Donated Item"
+msgstr ""
+
+msgid "Add Donors to Buyer List"
+msgstr ""
+
+msgid "Add Event"
+msgstr ""
+
+msgid "Add Event Type"
+msgstr ""
+
+msgid "Add Family"
+msgstr ""
+
+msgid "Add Family Member"
+msgstr ""
+
+msgid "Add First Family"
+msgstr ""
+
+msgid "Add Group"
+msgstr ""
+
+msgid "Add Individuals to Cart"
+msgstr ""
+
+msgid "Add Link"
+msgstr ""
+
+msgid "Add Member"
+msgstr ""
+
+msgid "Add New"
+msgstr ""
+
+msgid "Add New Class"
+msgstr ""
+
+msgid "Add New Group"
+msgstr ""
+
+msgid "Add Note"
+msgstr ""
+
+msgid "Add Payment"
+msgstr ""
+
+msgid "Add People to the Family"
+msgstr ""
+
+msgid "Add Person"
+msgstr ""
+
+msgid "Add Pledge"
+msgstr ""
+
+msgid "Add Property Type"
+msgstr ""
+
+msgid "Add Records"
+msgstr ""
+
+msgid "Add Results to Cart"
+msgstr ""
+
+msgid "Add Students"
+msgstr ""
+
+msgid "Add Students to Cart"
+msgstr ""
+
+msgid "Add Teachers to Cart"
+msgstr ""
+
+msgid "Add User"
+msgstr ""
+
+msgid "Add Your Data"
+msgstr ""
+
+msgid "Add Your First Family"
+msgstr ""
+
+msgid "Add Your First Property"
+msgstr ""
+
+msgid "Add Your First Property Type"
+msgstr ""
+
+msgid "Add a Person"
+msgstr ""
+
+msgid "Add a new pledge"
+msgstr ""
+
+msgid "Add a payment to current deposit"
+msgstr ""
+
+msgid "Add all cart items to a group"
+msgstr ""
+
+msgid "Add all to Cart"
+msgstr ""
+
+msgid "Add an extra layer of security to your account"
+msgstr ""
+
+msgid "Add any additional notes about this deposit"
+msgstr ""
+
+msgid "Add cart items to a family"
+msgstr ""
+
+msgid "Add custom external links to the navigation menu."
+msgstr ""
+
+msgid "Add event permission"
+msgstr ""
+
+msgid "Add everyone in your household — adults and children alike."
+msgstr ""
+
+msgid "Add families and individuals one by one directly in ChurchCRM. Great for smaller congregations or topping up imported data."
+msgstr ""
+
+msgid "Add first family"
+msgstr ""
+
+msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
+msgstr ""
+
+msgid "Add or edit individual person records"
+msgstr ""
+
+msgid "Add or edit items donated for fundraising events"
+msgstr ""
+
+msgid "Add or edit notes for people and families"
+msgstr ""
+
+msgid "Add records permission"
+msgstr ""
+
+msgid "Add staff and volunteers"
+msgstr ""
+
+msgid "Add staff or volunteers as system users"
+msgstr ""
+
+msgid "Add to Cart"
+msgstr ""
+
+msgid "Add to Family"
+msgstr ""
+
+msgid "Add to Group"
+msgstr ""
+
+msgid "Added"
+msgstr ""
+
+msgid "Added to cart successfully"
+msgstr ""
+
+msgid "Added to group"
+msgstr ""
+
+#. plugin:custom-links:section:1:title
+msgid "Adding Links"
+msgstr ""
+
+msgid "Additional Information"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Address Defaults"
+msgstr ""
+
+msgid "Address Status"
+msgstr ""
+
+msgid "Address entered but coordinates not yet set"
+msgstr ""
+
+msgid "Address has been geocoded (coordinates stored)"
+msgstr ""
+
+msgid "Address is required"
+msgstr ""
+
+msgid "Admin"
+msgstr ""
+
+msgid "Admin Dashboard"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Administrator privileges"
+msgstr ""
+
+msgid "Adult Checking Out Person"
+msgstr ""
+
+msgid "Adult/Child"
+msgstr ""
+
+msgid "Adults"
+msgstr ""
+
+msgid "Advanced Deposit Report"
+msgstr ""
+
+msgid "Advanced Operations"
+msgstr ""
+
+msgid "Affected Files"
+msgstr ""
+
+#. Context: countries
+msgid "Afghanistan (‫افغانستان‬‎)"
+msgstr ""
+
+#. Context: locales
+msgid "Afrikaans"
+msgstr ""
+
+msgid "Age"
+msgstr ""
+
+msgid "Age / Years Married"
+msgstr ""
+
+msgid "Age Distribution"
+msgstr ""
+
+#. Context: countries
+msgid "Albania (Shqipëri)"
+msgstr ""
+
+#. Context: locales
+msgid "Albanian"
+msgstr ""
+
+#. Context: countries
+msgid "Algeria (‫الجزائر‬‎)"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "All Checks Passed"
+msgstr ""
+
+msgid "All Classifications"
+msgstr ""
+
+msgid "All Data"
+msgstr ""
+
+msgid "All Day"
+msgstr ""
+
+msgid "All Event Types"
+msgstr ""
+
+msgid "All Families"
+msgstr ""
+
+msgid "All Funds"
+msgstr ""
+
+msgid "All Individuals"
+msgstr ""
+
+msgid "All Members"
+msgstr ""
+
+msgid "All Methods"
+msgstr ""
+
+msgid "All Payments"
+msgstr ""
+
+msgid "All People"
+msgstr ""
+
+msgid "All Roles"
+msgstr ""
+
+msgid "All System Settings"
+msgstr ""
+
+msgid "All Time"
+msgstr ""
+
+msgid "All Types"
+msgstr ""
+
+#. plugin:custom-links:section:2:content
+msgid ""
+"All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr ""
+
+msgid "All deposits within date range"
+msgstr ""
+
+msgid "All donations from this family have been moved to another family."
+msgstr ""
+
+msgid "All group membership and properties will be destroyed.  The group members themselves will not be altered."
+msgstr ""
+
+msgid "All information is correct"
+msgstr ""
+
+msgid "All members already in cart"
+msgstr ""
+
+msgid "All rights reserved"
+msgstr ""
+
+msgid "All roles"
+msgstr ""
+
+msgid "All system file signatures match the expected values."
+msgstr ""
+
+msgid "All system files have passed integrity validation."
+msgstr ""
+
+msgid "All timezones match"
+msgstr ""
+
+msgid "Allow Pre-release Upgrades"
+msgstr ""
+
+msgid "Allow Self-Signed Certificates"
+msgstr ""
+
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr ""
+
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr ""
+
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr ""
+
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr ""
+
+msgid "Allow unauthenticated reads of events from the external calendar API"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Allow user to add new event"
+msgstr ""
+
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr ""
+
+msgid "Allow visitors to self-register as new families."
+msgstr ""
+
+msgid "Almost there — review your details"
+msgstr ""
+
+msgid "Already in a family"
+msgstr ""
+
+msgid "Also runs automatically via WebDAV based on your configured interval."
+msgstr ""
+
+#. Context: countries
+msgid "American Samoa"
+msgstr ""
+
+#. Context: locales
+msgid "Amharic - Ethiopia"
+msgstr ""
+
+msgid "Amount"
+msgstr ""
+
+msgid "Amount exceeds maximum allowed value (999999.99)."
+msgstr ""
+
+msgid "Amount paid: ________________"
+msgstr ""
+
+msgid "An Error Occurred"
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
+msgstr ""
+
+msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
+msgstr ""
+
+msgid "An error occurred during demo data import"
+msgstr ""
+
+msgid "An error occurred processing the plugin request"
+msgstr ""
+
+msgid "An error occurred. Please contact your system administrator."
+msgstr ""
+
+msgid "An individual church member. Stores name, birthday, personal email, and mobile."
+msgstr ""
+
+msgid "An invalid configuration id has been requested"
+msgstr ""
+
+msgid "An invalid configuration name has been requested"
+msgstr ""
+
+msgid "An unexpected error occurred while processing your request. Please contact your administrator for assistance."
+msgstr ""
+
+msgid "An unexpected error occurred."
+msgstr ""
+
+msgid "An unexpected error occurred. Please contact your administrator."
+msgstr ""
+
+#. Context: countries
+msgid "Andorra"
+msgstr ""
+
+#. Context: countries
+msgid "Angola"
+msgstr ""
+
+#. Context: countries
+msgid "Anguilla"
+msgstr ""
+
+msgid "Anniversaries"
+msgstr ""
+
+msgid "Anniversary"
+msgstr ""
+
+msgid "Anniversary Date"
+msgstr ""
+
+msgid "Anonymous"
+msgstr ""
+
+#. Context: countries
+msgid "Antarctica"
+msgstr ""
+
+#. Context: countries
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#. plugin:external-backup:section:5:content
+msgid ""
+"Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr ""
+
+msgid "Api Key"
+msgstr ""
+
+msgid "Application Integrity"
+msgstr ""
+
+msgid "Application Prerequisites"
+msgstr ""
+
+msgid "Application files updated to latest version"
+msgstr ""
+
+msgid "Applied preset"
+msgstr ""
+
+msgid "Apply Filters"
+msgstr ""
+
+msgid "Apply Report Dates To"
+msgstr ""
+
+msgid "Apply Update Now"
+msgstr ""
+
+msgid "Applying System Update..."
+msgstr ""
+
+msgid "Applying..."
+msgstr ""
+
+msgid "Apr"
+msgstr ""
+
+msgid "April"
+msgstr ""
+
+#. Context: locales
+msgid "Arabic - Egypt"
+msgstr ""
+
+msgid "Are you sure you want to continue?"
+msgstr ""
+
+msgid "Are you sure you want to delete"
+msgstr ""
+
+msgid "Are you sure you want to delete all orphaned files?"
+msgstr ""
+
+msgid "Are you sure you want to delete the selected"
+msgstr ""
+
+msgid "Are you sure you want to delete this check-in record?"
+msgstr ""
+
+msgid "Are you sure you want to delete this deposit?"
+msgstr ""
+
+msgid "Are you sure you want to delete this event?"
+msgstr ""
+
+msgid "Are you sure you want to delete this fundraiser?"
+msgstr ""
+
+msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
+msgstr ""
+
+msgid "Are you sure you want to move"
+msgstr ""
+
+msgid "Are you sure you want to permanently delete this pledge record?"
+msgstr ""
+
+msgid "Are you sure you want to remove"
+msgstr ""
+
+msgid "Are you sure you want to remove the group-specific person properties?  All group member properties data will be lost!"
+msgstr ""
+
+msgid "Are you sure you want to unassign this property?"
+msgstr ""
+
+#. Context: countries
+msgid "Argentina"
+msgstr ""
+
+#. Context: countries
+msgid "Armenia (Հայաստան)"
+msgstr ""
+
+#. Context: countries
+msgid "Aruba"
+msgstr ""
+
+msgid "As part of the restore, external backups have been disabled. If you wish to continue automatic backups, re-enable the External Backup plugin in Admin > Plugins."
+msgstr ""
+
+#. Context: countries
+msgid "Ascension Island"
+msgstr ""
+
+msgid "Assign"
+msgstr ""
+
+msgid "Assign New Group"
+msgstr ""
+
+msgid "Assign Opportunities"
+msgstr ""
+
+msgid "Assign Role"
+msgstr ""
+
+msgid "Assign a New Property"
+msgstr ""
+
+msgid "Assign a New Volunteer Opportunity"
+msgstr ""
+
+msgid "Assign and manage donation envelope numbers"
+msgstr ""
+
+msgid "Assign and manage fundraiser buyer numbers"
+msgstr ""
+
+msgid "Assign cart items to a family record"
+msgstr ""
+
+msgid "Assign cart items to a group"
+msgstr ""
+
+msgid "Assign cart items to an event"
+msgstr ""
+
+msgid "Assign starting at #"
+msgstr ""
+
+msgid "Assign to a Group"
+msgstr ""
+
+msgid "Assigned Kiosk"
+msgstr ""
+
+msgid "At least one fund must have a non-zero amount."
+msgstr ""
+
+msgid "At least one group must be selected to make class lists or attendance sheets."
+msgstr ""
+
+msgid "Attendance"
+msgstr ""
+
+msgid "Attendance Count Categories"
+msgstr ""
+
+msgid "Attendance Counts"
+msgstr ""
+
+msgid "Attendance Notes"
+msgstr ""
+
+msgid "Audience not in the ChurchCRM"
+msgstr ""
+
+msgid "Audiences"
+msgstr ""
+
+msgid "Aug"
+msgstr ""
+
+msgid "August"
+msgstr ""
+
+#. Context: countries
+msgid "Australia"
+msgstr ""
+
+#. Context: countries
+msgid "Austria (Österreich)"
+msgstr ""
+
+#. plugin:openlp:section:4:title
+msgid "Authentication"
+msgstr ""
+
+msgid "Authentication Code"
+msgstr ""
+
+msgid "Authentication failed. Please check username and password."
+msgstr ""
+
+#. plugin:openlp:section:4:content
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr ""
+
+msgid "Auto TLS"
+msgstr ""
+
+#. plugin:external-backup:section:2:title
+msgid "Auto-Backup"
+msgstr ""
+
+msgid "Auto-Backup Interval"
+msgstr ""
+
+msgid "Auto-calculated from counts above"
+msgstr ""
+
+msgid "Auto-mapped"
+msgstr ""
+
+msgid "Automatically backup your ChurchCRM database to external cloud storage via WebDAV."
+msgstr ""
+
+msgid "Automatically detect coordinates using address"
+msgstr ""
+
+msgid "Automatically enable SMTP encryption if offered by the relaying server."
+msgstr ""
+
+msgid "Avg Click Rate"
+msgstr ""
+
+msgid "Avg Open Rate"
+msgstr ""
+
+#. Context: countries
+msgid "Azerbaijan (Azərbaycan)"
+msgstr ""
+
+msgid "BCC"
+msgstr ""
+
+msgid "BCC All"
+msgstr ""
+
+msgid "BCC All Mail To"
+msgstr ""
+
+msgid "Back"
+msgstr ""
+
+msgid "Back to Admin Dashboard"
+msgstr ""
+
+msgid "Back to Dashboard"
+msgstr ""
+
+msgid "Back to Debug Info"
+msgstr ""
+
+msgid "Back to Deposits"
+msgstr ""
+
+msgid "Back to Families"
+msgstr ""
+
+msgid "Back to Get Started"
+msgstr ""
+
+msgid "Back to Group List"
+msgstr ""
+
+msgid "Back to Home"
+msgstr ""
+
+msgid "Back to Login"
+msgstr ""
+
+msgid "Back to Menu"
+msgstr ""
+
+msgid "Back to login"
+msgstr ""
+
+msgid "Back up modified files before upgrading if you want to keep your changes."
+msgstr ""
+
+msgid "Background Color"
+msgstr ""
+
+msgid "Backs up to WebDAV cloud storage automatically on a configurable interval."
+msgstr ""
+
+msgid "Backup"
+msgstr ""
+
+msgid "Backup Best Practices"
+msgstr ""
+
+msgid "Backup Complete"
+msgstr ""
+
+msgid "Backup Database"
+msgstr ""
+
+msgid "Backup Downloaded, Copy on server removed"
+msgstr ""
+
+msgid "Backup Skipped"
+msgstr ""
+
+msgid "Backup Status"
+msgstr ""
+
+msgid "Backup Type"
+msgstr ""
+
+msgid "Backup archive does not contain a database"
+msgstr ""
+
+msgid "Backup complete! Click below to download."
+msgstr ""
+
+msgid "Backup completed successfully!"
+msgstr ""
+
+msgid "Backup created but failed to copy to remote server"
+msgstr ""
+
+msgid "Backup downloaded. Server copy removed."
+msgstr ""
+
+msgid "Backup failed"
+msgstr ""
+
+msgid "Backup failed. Please try again."
+msgstr ""
+
+msgid "Backup generated and copied to remote server"
+msgstr ""
+
+msgid "Backup in progress, please wait..."
+msgstr ""
+
+msgid "Backup to External Storage Now"
+msgstr ""
+
+msgid "Backup to WebDAV Now"
+msgstr ""
+
+#. Context: countries
+msgid "Bahamas"
+msgstr ""
+
+#. Context: countries
+msgid "Bahrain (‫البحرين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Bangladesh (বাংলাদেশ)"
+msgstr ""
+
+msgid "Bank"
+msgstr ""
+
+msgid "Bank Draft"
+msgstr ""
+
+#. Context: countries
+msgid "Barbados"
+msgstr ""
+
+msgid "Base URL"
+msgstr ""
+
+msgid "Base URL configuration is invalid. Please check your Config.php file."
+msgstr ""
+
+msgid "Base URL is not configured in Config.php"
+msgstr ""
+
+msgid "Based on filters below.."
+msgstr ""
+
+msgid "Baseline"
+msgstr ""
+
+msgid "Batch Winner Entry"
+msgstr ""
+
+msgid "Before You Start"
+msgstr ""
+
+#. plugin:external-backup:section:4:content
+msgid ""
+"Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Beginning Date"
+msgstr ""
+
+#. Context: countries
+msgid "Belarus (Беларусь)"
+msgstr ""
+
+#. Context: countries
+msgid "Belgium (België)"
+msgstr ""
+
+#. Context: countries
+msgid "Belize"
+msgstr ""
+
+#. Context: countries
+msgid "Benin (Bénin)"
+msgstr ""
+
+#. Context: countries
+msgid "Bermuda"
+msgstr ""
+
+#. Context: countries
+msgid "Bhutan (འབྲུག)"
+msgstr ""
+
+msgid "Bid"
+msgstr ""
+
+msgid "Birth & Family"
+msgstr ""
+
+msgid "Birth Date"
+msgstr ""
+
+msgid "Birth Day"
+msgstr ""
+
+msgid "Birth Month"
+msgstr ""
+
+msgid "Birth Year"
+msgstr ""
+
+msgid "Birthday"
+msgstr ""
+
+#. Context: query_qry
+msgid "Birthdays"
+msgstr ""
+
+msgid "Birthdays by Month"
+msgstr ""
+
+msgid "Blank"
+msgstr ""
+
+#. Context: countries
+msgid "Bolivia"
+msgstr ""
+
+#. Context: countries
+msgid "Bosnia and Herzegovina (Босна и Херцеговина)"
+msgstr ""
+
+#. Context: countries
+msgid "Botswana"
+msgstr ""
+
+#. Context: countries
+msgid "Bouvet Island"
+msgstr ""
+
+msgid "Boxed Layout"
+msgstr ""
+
+msgid "Boys"
+msgstr ""
+
+#. Context: countries
+msgid "Brazil (Brasil)"
+msgstr ""
+
+#. Context: countries
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#. Context: countries
+msgid "British Virgin Islands"
+msgstr ""
+
+msgid "Browse all available plugins"
+msgstr ""
+
+msgid "Browse all people in your congregation with filtering and search"
+msgstr ""
+
+msgid "Browse all plugins"
+msgstr ""
+
+msgid "Browse and search all families in your congregation"
+msgstr ""
+
+msgid "Browse and search fundraiser campaigns"
+msgstr ""
+
+msgid "Browse photos of congregation members"
+msgstr ""
+
+msgid "Browser"
+msgstr ""
+
+msgid "Browser differs from system config - dates may display incorrectly for this user."
+msgstr ""
+
+msgid "Browser language preference detected"
+msgstr ""
+
+#. Context: countries
+msgid "Brunei"
+msgstr ""
+
+#. Context: countries
+msgid "Bulgaria (България)"
+msgstr ""
+
+msgid "Bulk Mail Presort"
+msgstr ""
+
+#. Context: countries
+msgid "Burkina Faso"
+msgstr ""
+
+#. Context: countries
+msgid "Burundi (Uburundi)"
+msgstr ""
+
+msgid "Buyer"
+msgstr ""
+
+msgid "Buyer # "
+msgstr ""
+
+msgid "Buyer Number"
+msgstr ""
+
+msgid "Buyer Number Editor"
+msgstr ""
+
+msgid "Buyers"
+msgstr ""
+
+msgid "Buyers for this fundraiser:"
+msgstr ""
+
+msgid "By deleting this field, you will irrevocably lose all family data assigned for this field!"
+msgstr ""
+
+msgid "By deleting this field, you will irrevocably lose all group member data assigned for this field!"
+msgstr ""
+
+msgid "By deleting this field, you will irrevocably lose all person data assigned for this field!"
+msgstr ""
+
+msgid "By deleting this fund, you may affect historical donation records!"
+msgstr ""
+
+msgid "CAUTION: Restoring a backup will completely erase the existing database and replace it with the backup data."
+msgstr ""
+
+msgid "CRM Members Not Subscribed"
+msgstr ""
+
+msgid "CSV"
+msgstr ""
+
+msgid "CSV Column"
+msgstr ""
+
+msgid "CSV Combine Families"
+msgstr ""
+
+msgid "CSV Export"
+msgstr ""
+
+msgid "CSV Export Records"
+msgstr ""
+
+msgid "CSV Individual Records"
+msgstr ""
+
+msgid "CSV template not found"
+msgstr ""
+
+msgid "CURRENT FAMILY WITH DONATIONS"
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "Calendar Name"
+msgstr ""
+
+msgid "Calendar Settings"
+msgstr ""
+
+msgid "Calendar Year"
+msgstr ""
+
+msgid "Calendar access token not found"
+msgstr ""
+
+msgid "Calendar not found"
+msgstr ""
+
+msgid "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly."
+msgstr ""
+
+msgid "Calendars"
+msgstr ""
+
+msgid "Call"
+msgstr ""
+
+#. Context: countries
+msgid "Cambodia (កម្ពុជា)"
+msgstr ""
+
+#. Context: countries
+msgid "Cameroon (Cameroun)"
+msgstr ""
+
+msgid "Campaigns Sent"
+msgstr ""
+
+msgid "Can't delete yourself"
+msgstr ""
+
+msgid "Can't scan?"
+msgstr ""
+
+#. Context: countries
+msgid "Canada"
+msgstr ""
+
+#. Context: countries
+msgid "Canary Islands (islas Canarias)"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Cancel and Return to Family View"
+msgstr ""
+
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Check the server URL and that OpenLP is running."
+msgstr ""
+
+#, php-format
+msgid "Cannot connect to OpenLP at %s. Server returned HTTP %d."
+msgstr ""
+
+msgid "Cannot execute query."
+msgstr ""
+
+msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
+msgstr ""
+
+#. Context: countries
+msgid "Cape Verde (Kabu Verdi)"
+msgstr ""
+
+#. Context: countries
+msgid "Caribbean Netherlands"
+msgstr ""
+
+msgid "Cart"
+msgstr ""
+
+msgid "Cart Functions"
+msgstr ""
+
+msgid "Cart emptied successfully"
+msgstr ""
+
+msgid "Cart emptied to group successfully"
+msgstr ""
+
+msgid "Cash"
+msgstr ""
+
+msgid "Category Name"
+msgstr ""
+
+#. Context: countries
+msgid "Cayman Islands"
+msgstr ""
+
+msgid "Cell"
+msgstr ""
+
+msgid "Cell Phone"
+msgstr ""
+
+#. Context: countries
+msgid "Central African Republic (République centrafricaine)"
+msgstr ""
+
+msgid "Certificate of Ownership"
+msgstr ""
+
+#. Context: countries
+msgid "Ceuta and Melilla (Ceuta y Melilla)"
+msgstr ""
+
+msgid "ChMeetings Export"
+msgstr ""
+
+#. Context: countries
+msgid "Chad (Tchad)"
+msgstr ""
+
+msgid "Change Event"
+msgstr ""
+
+msgid "Change Family Role"
+msgstr ""
+
+msgid "Change Password"
+msgstr ""
+
+msgid "Change Role"
+msgstr ""
+
+msgid "Change Settings"
+msgstr ""
+
+msgid "Change Your Locale"
+msgstr ""
+
+msgid "Change role"
+msgstr ""
+
+msgid "Change the initial page length (number of rows per page)"
+msgstr ""
+
+msgid "Change this in System Settings."
+msgstr ""
+
+msgid "Changes not saved! Please correct and try again!"
+msgstr ""
+
+msgid "Check"
+msgstr ""
+
+msgid "Check In"
+msgstr ""
+
+msgid "Check In Person"
+msgstr ""
+
+msgid "Check In to Event"
+msgstr ""
+
+msgid "Check Number"
+msgstr ""
+
+msgid "Check Out"
+msgstr ""
+
+msgid "Check Out Person"
+msgstr ""
+
+msgid "Check for updates and upgrade your ChurchCRM installation"
+msgstr ""
+
+msgid "Check in attendees for church events and activities"
+msgstr ""
+
+msgid "Check in to an event"
+msgstr ""
+
+msgid "Check number not valid for 'CASH' payment"
+msgstr ""
+
+msgid "Check-in"
+msgstr ""
+
+msgid "Check-in and Check-out"
+msgstr ""
+
+msgid "Check-ins"
+msgstr ""
+
+msgid "Checked In"
+msgstr ""
+
+msgid "Checked In By"
+msgstr ""
+
+msgid "Checked In Time"
+msgstr ""
+
+msgid "Checked Out"
+msgstr ""
+
+msgid "Checked Out By"
+msgstr ""
+
+msgid "Checked Out Time"
+msgstr ""
+
+msgid "Checks"
+msgstr ""
+
+msgid "Children"
+msgstr ""
+
+#. Context: countries
+msgid "Chile"
+msgstr ""
+
+#. Context: countries
+msgid "China (中国)"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - China"
+msgstr ""
+
+#. Context: locales
+msgid "Chinese - Taiwan"
+msgstr ""
+
+msgid "Choose a property..."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose a volunteer opportunity"
+msgstr ""
+
+msgid "Choose an event..."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Choose customer person field"
+msgstr ""
+
+msgid "Choose how you'd like to populate your database. You can always use a different method later."
+msgstr ""
+
+msgid "Choose opportunities..."
+msgstr ""
+
+#. plugin:gravatar:section:1:content
+msgid ""
+"Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr ""
+
+#. Context: countries
+msgid "Christmas Island"
+msgstr ""
+
+msgid "Church Address"
+msgstr ""
+
+msgid "Church Checking Account Number"
+msgstr ""
+
+msgid "Church Email not set, please visit the settings page"
+msgstr ""
+
+msgid "Church Event Editor"
+msgstr ""
+
+msgid "Church Greeter"
+msgstr ""
+
+msgid "Church Identity"
+msgstr ""
+
+msgid "Church Info"
+msgstr ""
+
+msgid "Church Information"
+msgstr ""
+
+msgid "Church Letterhead path and file"
+msgstr ""
+
+msgid "Church Membership"
+msgstr ""
+
+msgid "Church Name"
+msgstr ""
+
+msgid "Church information saved successfully"
+msgstr ""
+
+msgid "Church name is required."
+msgstr ""
+
+msgid "Church name is required. Please fill in the Church Identity section above."
+msgstr ""
+
+msgid "ChurchCRM Central Notifications URL"
+msgstr ""
+
+msgid "ChurchCRM Installation"
+msgstr ""
+
+msgid "ChurchCRM Supported Locales"
+msgstr ""
+
+msgid "ChurchCRM can send emails directly."
+msgstr ""
+
+msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "City"
+msgstr ""
+
+msgid "City is required"
+msgstr ""
+
+msgid "City is required."
+msgstr ""
+
+msgid "City, State, Zip"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Class"
+msgstr ""
+
+msgid "Class / Group"
+msgstr ""
+
+msgid "Class List Export"
+msgstr ""
+
+msgid "Classes"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Classification"
+msgstr ""
+
+msgid "Clean Up Files"
+msgstr ""
+
+msgid "Cleaned"
+msgstr ""
+
+msgid "Clear"
+msgstr ""
+
+msgid "Clear All Classes"
+msgstr ""
+
+msgid "Clear All Families"
+msgstr ""
+
+msgid "Clear All Funds"
+msgstr ""
+
+msgid "Clear Filter"
+msgstr ""
+
+msgid "Clear Filters"
+msgstr ""
+
+msgid "Clear all"
+msgstr ""
+
+msgid "Clear all data and start fresh"
+msgstr ""
+
+msgid "Clear all data and start fresh. Cannot be undone."
+msgstr ""
+
+msgid "Clear all items from cart"
+msgstr ""
+
+msgid "Clear filter"
+msgstr ""
+
+msgid "Click Save to apply."
+msgstr ""
+
+msgid "Click a bar to filter payments"
+msgstr ""
+
+msgid "Click the button below to test your WebDAV connection settings."
+msgstr ""
+
+msgid "Click the registration toggle above to open a 30-second registration window."
+msgstr ""
+
+msgid "Click to upload photo"
+msgstr ""
+
+msgid "Clicking \"Open GitHub Issue\" will open a new tab with your system info pre-filled. No personally identifiable information will be included unless you add it."
+msgstr ""
+
+msgid "Clipboard API not available. Please copy the URL manually."
+msgstr ""
+
+#. Context: countries
+msgid "Clipperton Island"
+msgstr ""
+
+msgid "Clone roles"
+msgstr ""
+
+msgid "Close"
+msgstr ""
+
+msgid "Close & Refresh"
+msgstr ""
+
+msgid "Close All Deposits"
+msgstr ""
+
+msgid "Closed"
+msgstr ""
+
+msgid "Closed Deposits:"
+msgstr ""
+
+msgid "Closed vs Total"
+msgstr ""
+
+#. Context: countries
+msgid "Cocos (Keeling) Islands (Kepulauan Cocos (Keeling))"
+msgstr ""
+
+msgid "Code incomplete"
+msgstr ""
+
+msgid "Code is invalid"
+msgstr ""
+
+#. Context: countries
+msgid "Colombia"
+msgstr ""
+
+msgid "Column was automatically matched to a ChurchCRM field."
+msgstr ""
+
+msgid "Coming soon"
+msgstr ""
+
+msgid "Comma Separated list of PersonIDs of people to notify when a new family or person is added"
+msgstr ""
+
+msgid "Comma separated list of classifications that should appear as inactive"
+msgstr ""
+
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr ""
+
+msgid "Comment"
+msgstr ""
+
+#. plugin:custom-links:section:4:content
+msgid ""
+"Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr ""
+
+msgid "Communication"
+msgstr ""
+
+msgid "Community Management Platform"
+msgstr ""
+
+msgid "Community Plugins"
+msgstr ""
+
+msgid "Community plugins"
+msgstr ""
+
+#. Context: countries
+msgid "Comoros (‫جزر القمر‬‎)"
+msgstr ""
+
+#. Context: query_qry
+msgid "Compare pledges between two fiscal years"
+msgstr ""
+
+msgid "Comparing timezones..."
+msgstr ""
+
+msgid "Compatible with Excel, Google Sheets, or any CSV export."
+msgstr ""
+
+msgid "Complete"
+msgstr ""
+
+msgid "Complete these in any order to get ChurchCRM ready for your congregation."
+msgstr ""
+
+msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
+msgstr ""
+
+msgid "Confession"
+msgstr ""
+
+#. plugin:external-backup:section:1:title
+msgid "Configuration"
+msgstr ""
+
+msgid "Configuration item not found"
+msgstr ""
+
+msgid "Configuration:"
+msgstr ""
+
+msgid "Configure Email"
+msgstr ""
+
+msgid "Configure External Backup"
+msgstr ""
+
+msgid "Configure MailChimp"
+msgstr ""
+
+msgid "Configure SMTP in the settings below to send emails from the system."
+msgstr ""
+
+msgid "Configure Vonage"
+msgstr ""
+
+msgid "Configure global system settings and preferences"
+msgstr ""
+
+msgid "Configure group settings, roles, and properties"
+msgstr ""
+
+msgid "Configure these settings in the"
+msgstr ""
+
+msgid "Configure this plugin to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services like Nextcloud, ownCloud, or any WebDAV server. Backups are encrypted during transfer using HTTPS."
+msgstr ""
+
+msgid "Configured"
+msgstr ""
+
+msgid "Confirm"
+msgstr ""
+
+msgid "Confirm Activation"
+msgstr ""
+
+msgid "Confirm Deactivation"
+msgstr ""
+
+msgid "Confirm Delete"
+msgstr ""
+
+msgid "Confirm Delete Group"
+msgstr ""
+
+msgid "Confirm Deletion"
+msgstr ""
+
+msgid "Confirm Disable Group Specific Properties"
+msgstr ""
+
+msgid "Confirm Enable Group Specific Properties"
+msgstr ""
+
+msgid "Confirm Family Information"
+msgstr ""
+
+msgid "Confirm New Password"
+msgstr ""
+
+msgid "Confirm Property Deletion"
+msgstr ""
+
+msgid "Confirm Volunteer Opportunity Deletion"
+msgstr ""
+
+msgid "Confirm data labels"
+msgstr ""
+
+msgid "Confirm family information"
+msgstr ""
+
+msgid "Confirm with a code from your authenticator app"
+msgstr ""
+
+msgid "Confirm your new password"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (DRC) (Jamhuri ya Kidemokrasia ya Kongo)"
+msgstr ""
+
+#. Context: countries
+msgid "Congo (Republic) (Congo-Brazzaville)"
+msgstr ""
+
+msgid "Congregation Map"
+msgstr ""
+
+msgid "Connect Mailchimp to sync email lists for newsletters and campaigns."
+msgstr ""
+
+msgid "Connect an SMTP server so ChurchCRM can send emails"
+msgstr ""
+
+msgid "Connect to your server via SSH, FTP, or your hosting control panel"
+msgstr ""
+
+msgid "Connect with others"
+msgstr ""
+
+msgid "Connected"
+msgstr ""
+
+#, php-format
+msgid "Connected to MailChimp! Account: %s (%d subscribers)"
+msgstr ""
+
+msgid "Connected to OpenLP server successfully."
+msgstr ""
+
+#, php-format
+msgid "Connected to OpenLP! Version: %s"
+msgstr ""
+
+#, php-format
+msgid "Connected! Account balance: €%.2f. Ready to send SMS."
+msgstr ""
+
+msgid "Connection failed"
+msgstr ""
+
+msgid "Connection failed with HTTP code"
+msgstr ""
+
+msgid "Connection successful! WebDAV endpoint is accessible."
+msgstr ""
+
+msgid "Connection test failed"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Contact & Personal Info"
+msgstr ""
+
+msgid "Contact Info"
+msgstr ""
+
+msgid "Contact Information"
+msgstr ""
+
+msgid "Contact us"
+msgstr ""
+
+msgid "Continent"
+msgstr ""
+
+msgid "Continue"
+msgstr ""
+
+msgid "Continue to Dashboard"
+msgstr ""
+
+msgid "Contributing"
+msgstr ""
+
+msgid "Convert All"
+msgstr ""
+
+msgid "Convert Individuals to Families"
+msgstr ""
+
+msgid "Convert Next"
+msgstr ""
+
+msgid "Convert individual records into family units"
+msgstr ""
+
+msgid "Convert to Family"
+msgstr ""
+
+#. Context: countries
+msgid "Cook Islands"
+msgstr ""
+
+msgid "Coordinate database file name"
+msgstr ""
+
+msgid "Copied"
+msgstr ""
+
+msgid "Copied to clipboard"
+msgstr ""
+
+msgid "Copied!"
+msgstr ""
+
+msgid "Copy"
+msgstr ""
+
+msgid "Copy All Emails"
+msgstr ""
+
+msgid "Copy All Numbers"
+msgstr ""
+
+msgid "Copy Members to Group"
+msgstr ""
+
+msgid "Copy from church address"
+msgstr ""
+
+msgid "Copy to Group"
+msgstr ""
+
+msgid "Copy to clipboard"
+msgstr ""
+
+msgid "Copyright"
+msgstr ""
+
+msgid "Core Plugins"
+msgstr ""
+
+msgid "Core plugins"
+msgstr ""
+
+#. Context: countries
+msgid "Costa Rica"
+msgstr ""
+
+#. plugin:vonage:section:6:title
+msgid "Costs"
+msgstr ""
+
+msgid "Could not connect to MailChimp. Please check your API key."
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Country"
+msgstr ""
+
+msgid "Country is required."
+msgstr ""
+
+msgid "Create Attendance Sheet"
+msgstr ""
+
+msgid "Create Backup"
+msgstr ""
+
+msgid "Create Class List"
+msgstr ""
+
+msgid "Create Deposit"
+msgstr ""
+
+msgid "Create Directory"
+msgstr ""
+
+msgid "Create Event"
+msgstr ""
+
+msgid "Create File"
+msgstr ""
+
+msgid "Create First Deposit"
+msgstr ""
+
+msgid "Create First Event"
+msgstr ""
+
+msgid "Create Group + ADD Cart"
+msgstr ""
+
+msgid "Create New Event"
+msgstr ""
+
+msgid "Create New Fund Raiser"
+msgstr ""
+
+msgid "Create New Fundraiser"
+msgstr ""
+
+msgid "Create PhotoBook"
+msgstr ""
+
+msgid "Create Report"
+msgstr ""
+
+msgid "Create a backup now and upload it to your WebDAV server."
+msgstr ""
+
+msgid "Create a backup of your church database"
+msgstr ""
+
+msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr ""
+
+msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
+msgstr ""
+
+msgid "Create a new Event"
+msgstr ""
+
+msgid "Create a new deposit"
+msgstr ""
+
+msgid "Create a new family (using last name)"
+msgstr ""
+
+msgid "Create an Audience in MailChimp"
+msgstr ""
+
+msgid "Create an event type to get started."
+msgstr ""
+
+msgid "Create and edit family information and relationships"
+msgstr ""
+
+msgid "Create and manage church events and activities"
+msgstr ""
+
+msgid "Create directory permission"
+msgstr ""
+
+msgid "Create new family"
+msgstr ""
+
+msgid "Create or edit property type categories"
+msgstr ""
+
+msgid "Create or edit volunteer positions"
+msgstr ""
+
+msgid "Create or open a deposit first"
+msgstr ""
+
+msgid "Create or select a deposit to get started."
+msgstr ""
+
+msgid "Created"
+msgstr ""
+
+msgid "Created via Family"
+msgstr ""
+
+msgid "Creating Backup..."
+msgstr ""
+
+msgid "Credit Card"
+msgstr ""
+
+msgid "Critical Configuration Error"
+msgstr ""
+
+#. Context: countries
+msgid "Croatia (Hrvatska)"
+msgstr ""
+
+#. Context: countries
+msgid "Cuba"
+msgstr ""
+
+#. Context: countries
+msgid "Curaçao"
+msgstr ""
+
+msgid "Current $URL[0] value:"
+msgstr ""
+
+msgid "Current DB Version"
+msgstr ""
+
+msgid "Current Deposit"
+msgstr ""
+
+msgid "Current Fiscal Year"
+msgstr ""
+
+msgid "Current Password"
+msgstr ""
+
+msgid "Current Role"
+msgstr ""
+
+msgid "Current Software Version"
+msgstr ""
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+msgid "Current Usage"
+msgstr ""
+
+msgid "Current Value"
+msgstr ""
+
+msgid "Current fiscal year"
+msgstr ""
+
+msgid "Current person"
+msgstr ""
+
+msgid "Custom"
+msgstr ""
+
+msgid "Custom Drop-Down List"
+msgstr ""
+
+msgid "Custom Family Fields"
+msgstr ""
+
+msgid "Custom Family Fields Editor"
+msgstr ""
+
+msgid "Custom Field Selection"
+msgstr ""
+
+msgid "Custom Fields"
+msgstr ""
+
+msgid "Custom List Option"
+msgstr ""
+
+msgid "Custom List Options"
+msgstr ""
+
+msgid "Custom List Options Editor"
+msgstr ""
+
+msgid "Custom Menu Links"
+msgstr ""
+
+msgid "Custom Person Fields"
+msgstr ""
+
+msgid "Custom Person Fields Editor"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Custom field"
+msgstr ""
+
+msgid "Custom message for church greeter email 1, max 255 characters"
+msgstr ""
+
+msgid "Custom message for church greeter email 2, max 255 characters"
+msgstr ""
+
+msgid "Custom port:"
+msgstr ""
+
+#. Context: query_qry
+msgid "CustomSearch"
+msgstr ""
+
+msgid "Customizable report with filtering by date, fund, family, and payment method."
+msgstr ""
+
+msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr ""
+
+#. Context: countries
+msgid "Cyprus (Κύπρος)"
+msgstr ""
+
+#. Context: locales
+msgid "Czech"
+msgstr ""
+
+#. Context: countries
+msgid "Czech Republic (Česká republika)"
+msgstr ""
+
+#. Context: countries
+msgid "Côte d’Ivoire"
+msgstr ""
+
+msgid "DSN"
+msgstr ""
+
+#. plugin:mailchimp:section:2:title
+msgid "Dashboard"
+msgstr ""
+
+msgid "Data & Reports"
+msgstr ""
+
+msgid "Data Quality:"
+msgstr ""
+
+msgid "Data file format"
+msgstr ""
+
+msgid "Data/Reports"
+msgstr ""
+
+msgid "Database Only"
+msgstr ""
+
+msgid "Database Reset"
+msgstr ""
+
+msgid "Database Reset Functions"
+msgstr ""
+
+msgid "Database Restored Successfully!"
+msgstr ""
+
+msgid "Database Server"
+msgstr ""
+
+msgid "Database Upgrade Failed"
+msgstr ""
+
+msgid "Database Version"
+msgstr ""
+
+msgid "Database information confirmation and correction report signer"
+msgstr ""
+
+msgid "Database reset failed"
+msgstr ""
+
+msgid "Database restore failed"
+msgstr ""
+
+msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database:"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Date & Time"
+msgstr ""
+
+msgid "Date End"
+msgstr ""
+
+msgid "Date Entered"
+msgstr ""
+
+msgid "Date Start"
+msgstr ""
+
+msgid "Date Updated"
+msgstr ""
+
+msgid "Day"
+msgstr ""
+
+msgid "Dear Friend"
+msgstr ""
+
+msgid "Debug"
+msgstr ""
+
+msgid "Debug Email Connection"
+msgstr ""
+
+msgid "Debug Info"
+msgstr ""
+
+msgid "Dec"
+msgstr ""
+
+msgid "December"
+msgstr ""
+
+msgid "Default"
+msgstr ""
+
+msgid "Default / Notes"
+msgstr ""
+
+msgid "Default City"
+msgstr ""
+
+msgid "Default Country"
+msgstr ""
+
+msgid "Default Image Style"
+msgstr ""
+
+#. plugin:gravatar:section:1:title
+msgid "Default Image Styles"
+msgstr ""
+
+msgid "Default List ID"
+msgstr ""
+
+msgid "Default Map View"
+msgstr ""
+
+msgid "Default Name Group"
+msgstr ""
+
+msgid "Default Option"
+msgstr ""
+
+msgid "Default Role"
+msgstr ""
+
+msgid "Default Start Time"
+msgstr ""
+
+msgid "Default State"
+msgstr ""
+
+msgid "Default State - Must be 2-letter abbreviation!"
+msgstr ""
+
+msgid "Default User Settings"
+msgstr ""
+
+msgid "Default Zip"
+msgstr ""
+
+msgid "Default account for receiving a copy of all emails"
+msgstr ""
+
+msgid "Default role updated."
+msgstr ""
+
+msgid "Define custom fields to collect additional family data"
+msgstr ""
+
+msgid "Define custom fields to collect additional person data"
+msgstr ""
+
+msgid "Define custom properties for tracking data"
+msgstr ""
+
+msgid "Define custom properties that can be assigned to"
+msgstr ""
+
+msgid "Define group-specific properties for members"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Delete (will delete all associated records)"
+msgstr ""
+
+msgid "Delete All"
+msgstr ""
+
+msgid "Delete All Files"
+msgstr ""
+
+msgid "Delete All Orphaned Files"
+msgstr ""
+
+msgid "Delete Calendar"
+msgstr ""
+
+msgid "Delete Check-in Entry"
+msgstr ""
+
+msgid "Delete Confirmation"
+msgstr ""
+
+msgid "Delete Event"
+msgstr ""
+
+msgid "Delete Family"
+msgstr ""
+
+msgid "Delete Family Record AND Family Members"
+msgstr ""
+
+msgid "Delete Family Record ONLY"
+msgstr ""
+
+msgid "Delete Group"
+msgstr ""
+
+msgid "Delete Person"
+msgstr ""
+
+msgid "Delete Photo"
+msgstr ""
+
+msgid "Delete Pledge"
+msgstr ""
+
+msgid "Delete Records"
+msgstr ""
+
+msgid "Delete Selected"
+msgstr ""
+
+msgid "Delete Selected Rows"
+msgstr ""
+
+msgid "Delete User"
+msgstr ""
+
+msgid "Delete records permission"
+msgstr ""
+
+msgid "Delete this person?"
+msgstr ""
+
+msgid "Deleted"
+msgstr ""
+
+#, php-format
+msgid "Deleted %d files, %d failed"
+msgstr ""
+
+msgid "Deleted from group"
+msgstr ""
+
+msgid "Deleting an event will also delete all attendance counts. Delete this event?"
+msgstr ""
+
+msgid "Deleting this event will also delete all attendance records. Are you sure?"
+msgstr ""
+
+msgid "Deleting this property will also remove all its assignments from any People, Family, or Group records."
+msgstr ""
+
+msgid "Deletion Results"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "Delimiter to separate emails in mailto: links"
+msgstr ""
+
+msgid "Demo data import failed"
+msgstr ""
+
+msgid "Demo data import is only available on fresh installations with exactly 1 person"
+msgstr ""
+
+msgid "Demo data imported successfully"
+msgstr ""
+
+msgid "Demo data loaded successfully"
+msgstr ""
+
+#. Context: countries
+msgid "Denmark (Danmark)"
+msgstr ""
+
+msgid "Depends whether using person or family output method"
+msgstr ""
+
+msgid "Deposit"
+msgstr ""
+
+msgid "Deposit Comment"
+msgstr ""
+
+msgid "Deposit Date"
+msgstr ""
+
+msgid "Deposit Date (Default)"
+msgstr ""
+
+msgid "Deposit Details"
+msgstr ""
+
+msgid "Deposit ID"
+msgstr ""
+
+msgid "Deposit Listing"
+msgstr ""
+
+msgid "Deposit Navigation"
+msgstr ""
+
+msgid "Deposit Reports"
+msgstr ""
+
+msgid "Deposit Slip Number"
+msgstr ""
+
+msgid "Deposit Statistics"
+msgstr ""
+
+msgid "Deposit Total"
+msgstr ""
+
+msgid "Deposit Tracking"
+msgstr ""
+
+msgid "Deposit Type"
+msgstr ""
+
+msgid "Deposit Value"
+msgstr ""
+
+msgid "Deposit closed"
+msgstr ""
+
+msgid "Deposit not found"
+msgstr ""
+
+msgid "Deposit saved successfully"
+msgstr ""
+
+msgid "Deposit ticket type"
+msgstr ""
+
+msgid "Deposit(s)"
+msgstr ""
+
+msgid "Deposits"
+msgstr ""
+
+msgid "Describe the issue"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Destination directory does not exist. Please verify ChurchCRM is installed correctly."
+msgstr ""
+
+msgid "Detailed breakdown of a single deposit slip."
+msgstr ""
+
+msgid "Detailed breakdown of pledges and payments by family."
+msgstr ""
+
+msgid "Details"
+msgstr ""
+
+#. Context: countries
+msgid "Diego Garcia"
+msgstr ""
+
+msgid "Direct me"
+msgstr ""
+
+msgid "Direction"
+msgstr ""
+
+msgid "Directions"
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Directory Reports"
+msgstr ""
+
+msgid "Directory reports"
+msgstr ""
+
+msgid "Disable"
+msgstr ""
+
+msgid "Disable 2FA"
+msgstr ""
+
+msgid "Disable Group Specific Properties"
+msgstr ""
+
+msgid "Disable Plugin"
+msgstr ""
+
+msgid "Disable Two-Factor Authentication"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Disabled in settings"
+msgstr ""
+
+msgid "Disclaimer"
+msgstr ""
+
+msgid "Discord Chat"
+msgstr ""
+
+msgid "Dismiss"
+msgstr ""
+
+msgid "Display Preview"
+msgstr ""
+
+msgid "Display bill counts on deposit slip"
+msgstr ""
+
+msgid "Distance"
+msgstr ""
+
+msgid "Distance Unit"
+msgstr ""
+
+#. Context: countries
+msgid "Djibouti"
+msgstr ""
+
+msgid "Do Not Email Property"
+msgstr ""
+
+msgid "Do Not SMS Property"
+msgstr ""
+
+msgid "Do not auto-format"
+msgstr ""
+
+msgid "Do you have any suggestions for us?"
+msgstr ""
+
+msgid "Do you want to delete this person?  This cannot be undone."
+msgstr ""
+
+msgid "Do you want to proceed?"
+msgstr ""
+
+msgid "Do you want to remove"
+msgstr ""
+
+msgid "Document Root"
+msgstr ""
+
+msgid "Documentation"
+msgstr ""
+
+msgid "Does not match system config"
+msgstr ""
+
+#. Context: countries
+msgid "Dominica"
+msgstr ""
+
+#. Context: countries
+msgid "Dominican Republic (República Dominicana)"
+msgstr ""
+
+msgid "Don't Filter"
+msgstr ""
+
+msgid "Donated Item"
+msgstr ""
+
+msgid "Donated Item Editor"
+msgstr ""
+
+msgid "Donated Items"
+msgstr ""
+
+msgid "Donated by "
+msgstr ""
+
+msgid "Donated items for this fundraiser"
+msgstr ""
+
+msgid "Donation Fund Editor"
+msgstr ""
+
+msgid "Donation Funds"
+msgstr ""
+
+msgid "Donations and giving records are tracked at the family level. If you plan to record giving for an individual who lives alone, create a single-person family for them."
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Donor"
+msgstr ""
+
+msgid "Donor Families"
+msgstr ""
+
+msgid "Download"
+msgstr ""
+
+msgid "Download & Apply"
+msgstr ""
+
+msgid "Download Backup & Continue"
+msgstr ""
+
+msgid "Download CSV Template"
+msgstr ""
+
+#. plugin:openlp:link:3:label
+msgid "Download OpenLP"
+msgstr ""
+
+msgid "Download failed"
+msgstr ""
+
+msgid "Download the latest release and apply it to your installation."
+msgstr ""
+
+msgid "Download the template to see the expected column format."
+msgstr ""
+
+msgid "Downloaded"
+msgstr ""
+
+msgid "Downloaded release file is empty. This may be due to network issues or GitHub rate limiting. Please try again later."
+msgstr ""
+
+msgid "Downloading latest release from GitHub..."
+msgstr ""
+
+msgid "Drag and drop your CSV file here"
+msgstr ""
+
+msgid "Drag and drop your backup file here"
+msgstr ""
+
+msgid "Duplicate Emails"
+msgstr ""
+
+msgid "Duplicate name found."
+msgstr ""
+
+msgid "Duplicates"
+msgstr ""
+
+msgid "Duration"
+msgstr ""
+
+#. Context: locales
+msgid "Dutch - Netherlands"
+msgstr ""
+
+msgid "E"
+msgstr ""
+
+#. plugin:vonage:link:3:label
+msgid "E.164 Phone Number Format"
+msgstr ""
+
+msgid "ENE"
+msgstr ""
+
+msgid "ERROR"
+msgstr ""
+
+msgid "ESE"
+msgstr ""
+
+msgid "Each person can have their own email and mobile number."
+msgstr ""
+
+msgid "Each plugin requires a"
+msgstr ""
+
+msgid "Each row is one person. Members of the same family share a FamilyID."
+msgstr ""
+
+msgid "Each time you sign in, you'll need to confirm with a code from your authenticator app"
+msgstr ""
+
+msgid "Easy registration"
+msgstr ""
+
+#. Context: countries
+msgid "Ecuador"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit Class"
+msgstr ""
+
+msgid "Edit Deposit"
+msgstr ""
+
+msgid "Edit Deposit Slip"
+msgstr ""
+
+msgid "Edit Event"
+msgstr ""
+
+msgid "Edit Event Type"
+msgstr ""
+
+msgid "Edit Event Types"
+msgstr ""
+
+msgid "Edit Family"
+msgstr ""
+
+msgid "Edit Form"
+msgstr ""
+
+msgid "Edit Fundraiser"
+msgstr ""
+
+msgid "Edit Group"
+msgstr ""
+
+msgid "Edit Group-Specific Properties Form"
+msgstr ""
+
+msgid "Edit JSON Settings"
+msgstr ""
+
+msgid "Edit List Options"
+msgstr ""
+
+msgid "Edit Member Properties Form"
+msgstr ""
+
+msgid "Edit Payment"
+msgstr ""
+
+msgid "Edit Person"
+msgstr ""
+
+msgid "Edit Property"
+msgstr ""
+
+msgid "Edit Property Type"
+msgstr ""
+
+msgid "Edit Records"
+msgstr ""
+
+msgid "Edit Self"
+msgstr ""
+
+msgid "Edit Settings"
+msgstr ""
+
+msgid "Edit User"
+msgstr ""
+
+msgid "Edit Value"
+msgstr ""
+
+msgid "Edit custom properties for a group member"
+msgstr ""
+
+msgid "Edit records permission"
+msgstr ""
+
+msgid "Edited"
+msgstr ""
+
+msgid "Editing"
+msgstr ""
+
+msgid "Editing Event"
+msgstr ""
+
+#. Context: countries
+msgid "Egypt (‫مصر‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "El Salvador"
+msgstr ""
+
+msgid "Electronic Transaction Details"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Email"
+msgstr ""
+
+msgid "Email Address"
+msgstr ""
+
+msgid "Email Addresses"
+msgstr ""
+
+msgid "Email All"
+msgstr ""
+
+msgid "Email BCC"
+msgstr ""
+
+msgid "Email Configuration"
+msgstr ""
+
+msgid "Email Dashboard"
+msgstr ""
+
+msgid "Email Debug Info"
+msgstr ""
+
+msgid "Email Export"
+msgstr ""
+
+msgid "Email Families"
+msgstr ""
+
+msgid "Email Integrations"
+msgstr ""
+
+msgid "Email PDF"
+msgstr ""
+
+msgid "Email Settings"
+msgstr ""
+
+msgid "Email Tools"
+msgstr ""
+
+msgid "Email address"
+msgstr ""
+
+msgid "Email address is required."
+msgstr ""
+
+msgid "Email addresses copied to clipboard"
+msgstr ""
+
+msgid "Email cart items"
+msgstr ""
+
+msgid "Email functionality is currently disabled. The following features will not work until email is enabled:"
+msgstr ""
+
+msgid "Email is Disabled"
+msgstr ""
+
+msgid "Email is Not Valid"
+msgstr ""
+
+msgid "Email links in group and people views"
+msgstr ""
+
+msgid "Email lists are synced with Mailchimp."
+msgstr ""
+
+msgid "Email with hidden recipients"
+msgstr ""
+
+msgid "Email/Username"
+msgstr ""
+
+msgid "Emptied into Event"
+msgstr ""
+
+msgid "Empty"
+msgstr ""
+
+msgid "Empty Cart"
+msgstr ""
+
+msgid "Empty Cart to Family"
+msgstr ""
+
+msgid "Empty Cart to Group"
+msgstr ""
+
+msgid "Empty your entire cart?"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Enable Email"
+msgstr ""
+
+msgid "Enable Events Menu"
+msgstr ""
+
+msgid "Enable External Backup Plugin"
+msgstr ""
+
+msgid "Enable External Calendar API"
+msgstr ""
+
+msgid "Enable Finance menu"
+msgstr ""
+
+msgid "Enable Fundraiser menu."
+msgstr ""
+
+msgid "Enable Group Specific Properties"
+msgstr ""
+
+msgid "Enable HTTPS"
+msgstr ""
+
+msgid "Enable Plugin"
+msgstr ""
+
+msgid "Enable Plugins"
+msgstr ""
+
+msgid "Enable Two-Factor Authentication"
+msgstr ""
+
+msgid "Enable email in the settings panel below, then configure your SMTP server."
+msgstr ""
+
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr ""
+
+msgid "Enable if your SMTP server requires a username and password"
+msgstr ""
+
+msgid "Enable new kiosk registration"
+msgstr ""
+
+msgid "Enable non-deductible payments"
+msgstr ""
+
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr ""
+
+msgid "Enable the MailChimp plugin to sync contacts"
+msgstr ""
+
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr ""
+
+msgid "Enable this only for local network servers with self-signed SSL certificates. Disables certificate verification."
+msgstr ""
+
+msgid "Enable use of donation envelopes"
+msgstr ""
+
+msgid "Enable use of scanned checks"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Encryption key for storing 2FA secret keys in the database"
+msgstr ""
+
+msgid "End Date"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Ending Date"
+msgstr ""
+
+msgid "Endpoint URL"
+msgstr ""
+
+msgid "Ends with a <strong>trailing slash</strong> (/)"
+msgstr ""
+
+msgid "Enforce Content Security Policy (CSP) to help protect against cross-site scripting. When disabled, CSP violations are only reported."
+msgstr ""
+
+#. Context: locales
+msgid "English - Australia"
+msgstr ""
+
+#. Context: locales
+msgid "English - Canada"
+msgstr ""
+
+#. Context: locales
+msgid "English - Great Britain"
+msgstr ""
+
+#. Context: locales
+msgid "English - Jamaica"
+msgstr ""
+
+#. Context: locales
+msgid "English - South Africa"
+msgstr ""
+
+#. Context: locales
+msgid "English - United States"
+msgstr ""
+
+msgid "Enrolled"
+msgstr ""
+
+msgid "Ensure all deposits for the tax year are closed before generating statements."
+msgstr ""
+
+msgid "Enter Data Manually"
+msgstr ""
+
+msgid "Enter Name"
+msgstr ""
+
+msgid "Enter Winners"
+msgstr ""
+
+msgid "Enter a search term"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Enter any part of the following: Name, City, State, Zip, Home Phone, Email, or Work Email."
+msgstr ""
+
+msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
+msgstr ""
+
+msgid "Enter event description..."
+msgstr ""
+
+msgid "Enter event title..."
+msgstr ""
+
+msgid "Enter family name"
+msgstr ""
+
+msgid "Enter group name"
+msgstr ""
+
+msgid "Enter new user password. Administratively set passwords are not subject to length or complexity requirements"
+msgstr ""
+
+msgid "Enter note text here..."
+msgstr ""
+
+msgid "Enter sermon notes or event text..."
+msgstr ""
+
+msgid "Enter the 6-digit code from your authenticator app"
+msgstr ""
+
+msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr ""
+
+msgid "Enter your current password"
+msgstr ""
+
+msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr ""
+
+msgid "Enter your login name"
+msgstr ""
+
+msgid "Enter your login name and we will email you a link to reset your password."
+msgstr ""
+
+msgid "Enter your new password"
+msgstr ""
+
+msgid "Enter your password"
+msgstr ""
+
+msgid "Enter your username and password as usual"
+msgstr ""
+
+msgid "Entering a Prompt value will allow the association of a free-form value."
+msgstr ""
+
+msgid "Envelope"
+msgstr ""
+
+msgid "Envelope Info"
+msgstr ""
+
+msgid "Envelope Manager"
+msgstr ""
+
+msgid "Envelope Number"
+msgstr ""
+
+#. Context: countries
+msgid "Equatorial Guinea (Guinea Ecuatorial)"
+msgstr ""
+
+#. Context: countries
+msgid "Eritrea"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Error decoding signature definition file"
+msgstr ""
+
+msgid "Error deleting payments"
+msgstr ""
+
+msgid "Error loading payments"
+msgstr ""
+
+msgid "Error making API Call to"
+msgstr ""
+
+msgid "Error saving deposit"
+msgstr ""
+
+msgid "Error sending email(s)"
+msgstr ""
+
+msgid "Error text"
+msgstr ""
+
+msgid "Error:"
+msgstr ""
+
+msgid "Error: Duplicate"
+msgstr ""
+
+msgid "Error: Invalid Editor ID!"
+msgstr ""
+
+msgid "Est. Value"
+msgstr ""
+
+msgid "Estimated Price"
+msgstr ""
+
+msgid "Estimated value "
+msgstr ""
+
+#. Context: countries
+msgid "Estonia (Eesti)"
+msgstr ""
+
+#. Context: locales
+msgid "Estonian"
+msgstr ""
+
+#. Context: countries
+msgid "Ethiopia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Event"
+msgstr ""
+
+msgid "Event Checkin"
+msgstr ""
+
+msgid "Event Description"
+msgstr ""
+
+msgid "Event ID"
+msgstr ""
+
+msgid "Event Log severity to write, used by ORM and App Logs"
+msgstr ""
+
+msgid "Event Status"
+msgstr ""
+
+msgid "Event Title"
+msgstr ""
+
+msgid "Event Type"
+msgstr ""
+
+msgid "Event Type Name"
+msgstr ""
+
+msgid "Event Types"
+msgstr ""
+
+msgid "Event not found"
+msgstr ""
+
+msgid "Events"
+msgstr ""
+
+msgid "Events Dashboard"
+msgstr ""
+
+msgid "Events This Year"
+msgstr ""
+
+msgid "Events Today"
+msgstr ""
+
+msgid "Everyone"
+msgstr ""
+
+msgid "Exclude Inactive Families"
+msgstr ""
+
+msgid "Exclude from Email Export"
+msgstr ""
+
+msgid "Excluded"
+msgstr ""
+
+msgid "Execute Query"
+msgstr ""
+
+msgid "Existing"
+msgstr ""
+
+msgid "Existing Custom Family Fields"
+msgstr ""
+
+msgid "Existing Custom Person Fields"
+msgstr ""
+
+msgid "Existing Donation Funds"
+msgstr ""
+
+msgid "Existing Group Properties"
+msgstr ""
+
+msgid "Existing Volunteer Opportunities"
+msgstr ""
+
+msgid "Exit"
+msgstr ""
+
+msgid "Expand"
+msgstr ""
+
+msgid "Expected"
+msgstr ""
+
+msgid "Explore with Demo Data"
+msgstr ""
+
+msgid "Export Options"
+msgstr ""
+
+msgid "Export Selected Rows (CSV)"
+msgstr ""
+
+msgid "Export Selected Rows (OFX)"
+msgstr ""
+
+msgid "Export all people data in ChMeetings format for import into external systems."
+msgstr ""
+
+msgid "Export data to CSV format for external applications"
+msgstr ""
+
+msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Exporting..."
+msgstr ""
+
+msgid "Exports database structure and data. Smaller file size."
+msgstr ""
+
+msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr ""
+
+msgid "External Backup"
+msgstr ""
+
+msgid "External Backup (WebDAV)"
+msgstr ""
+
+msgid "External Backup Settings"
+msgstr ""
+
+msgid "External Backup plugin is not configured. Please configure WebDAV settings in the plugin."
+msgstr ""
+
+msgid "External Backup plugin is not enabled. Please enable and configure it in Plugin Management."
+msgstr ""
+
+msgid "External Calendar API Disabled"
+msgstr ""
+
+msgid "External Calendar API is disabled"
+msgstr ""
+
+msgid "Extra Students"
+msgstr ""
+
+msgid "Extra Teachers"
+msgstr ""
+
+msgid "Extraction completed but upgrade files not found. The upgrade archive may be corrupted."
+msgstr ""
+
+msgid "F"
+msgstr ""
+
+#, php-format
+msgid "FY %s"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Failed Login"
+msgstr ""
+
+msgid "Failed Logins"
+msgstr ""
+
+msgid "Failed generate a new API Key"
+msgstr ""
+
+msgid "Failed to add family to cart"
+msgstr ""
+
+msgid "Failed to add group to cart"
+msgstr ""
+
+msgid "Failed to add members to cart. Please try again."
+msgstr ""
+
+msgid "Failed to add role. Please try again."
+msgstr ""
+
+msgid "Failed to add to cart"
+msgstr ""
+
+msgid "Failed to apply upgrade. Please check the server logs for details."
+msgstr ""
+
+msgid "Failed to connect to OpenLP server."
+msgstr ""
+
+msgid "Failed to copy URL"
+msgstr ""
+
+msgid "Failed to create Upgrade directory. Please check file permissions."
+msgstr ""
+
+msgid "Failed to create backup."
+msgstr ""
+
+msgid "Failed to create group. Please try again."
+msgstr ""
+
+msgid "Failed to create link"
+msgstr ""
+
+msgid "Failed to delete class. Please try again."
+msgstr ""
+
+msgid "Failed to delete group. Please try again."
+msgstr ""
+
+msgid "Failed to delete kiosk"
+msgstr ""
+
+msgid "Failed to delete link"
+msgstr ""
+
+msgid "Failed to delete note"
+msgstr ""
+
+msgid "Failed to delete orphaned files"
+msgstr ""
+
+msgid "Failed to delete role. Please try again."
+msgstr ""
+
+msgid "Failed to disable plugin"
+msgstr ""
+
+msgid "Failed to download latest release"
+msgstr ""
+
+msgid "Failed to download the release file from GitHub after multiple attempts. Please check your server's internet connection and try again."
+msgstr ""
+
+msgid "Failed to download update package."
+msgstr ""
+
+msgid "Failed to email PDF to family members."
+msgstr ""
+
+msgid "Failed to empty cart"
+msgstr ""
+
+msgid "Failed to empty cart to group"
+msgstr ""
+
+msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
+msgstr ""
+
+msgid "Failed to get plugin details"
+msgstr ""
+
+msgid "Failed to list plugins"
+msgstr ""
+
+msgid "Failed to load cart status."
+msgstr ""
+
+msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
+msgstr ""
+
+msgid "Failed to refresh upgrade information"
+msgstr ""
+
+msgid "Failed to refresh upgrade information from GitHub."
+msgstr ""
+
+msgid "Failed to remove family from cart"
+msgstr ""
+
+msgid "Failed to remove from cart"
+msgstr ""
+
+msgid "Failed to remove from class. Please try again."
+msgstr ""
+
+msgid "Failed to remove group"
+msgstr ""
+
+msgid "Failed to reset settings"
+msgstr ""
+
+msgid "Failed to retrieve data"
+msgstr ""
+
+msgid "Failed to retrieve email addresses"
+msgstr ""
+
+msgid "Failed to retrieve phone numbers"
+msgstr ""
+
+msgid "Failed to save settings"
+msgstr ""
+
+msgid "Failed to save the downloaded release file. Please check disk space and permissions."
+msgstr ""
+
+msgid "Failed to set default role. Please try again."
+msgstr ""
+
+msgid "Failed to update group. Please try again."
+msgstr ""
+
+msgid "Failed to update properties. Please try again."
+msgstr ""
+
+msgid "Failed to update role name. Please try again."
+msgstr ""
+
+msgid "Failed to update role. Please try again."
+msgstr ""
+
+msgid "Failed to upload family photo"
+msgstr ""
+
+msgid "Failed to upload person photo"
+msgstr ""
+
+#. Context: countries
+msgid "Falkland Islands (Islas Malvinas)"
+msgstr ""
+
+msgid "Fall"
+msgstr ""
+
+msgid "False"
+msgstr ""
+
+msgid "Families"
+msgstr ""
+
+msgid "Families share an address and phone number."
+msgstr ""
+
+msgid "Family"
+msgstr ""
+
+msgid "Family Cell Phone"
+msgstr ""
+
+msgid "Family Custom Fields"
+msgstr ""
+
+msgid "Family Custom List Option"
+msgstr ""
+
+msgid "Family Custom List Options"
+msgstr ""
+
+msgid "Family Custom List Options Editor"
+msgstr ""
+
+msgid "Family Data Verified"
+msgstr ""
+
+msgid "Family Editor"
+msgstr ""
+
+msgid "Family Email"
+msgstr ""
+
+msgid "Family Geographic"
+msgstr ""
+
+msgid "Family Geographic Utilities"
+msgstr ""
+
+msgid "Family Home Phone"
+msgstr ""
+
+msgid "Family Info"
+msgstr ""
+
+msgid "Family List"
+msgstr ""
+
+msgid "Family Listing"
+msgstr ""
+
+msgid "Family Map"
+msgstr ""
+
+msgid "Family Members"
+msgstr ""
+
+msgid "Family Members:"
+msgstr ""
+
+msgid "Family Name"
+msgstr ""
+
+msgid "Family Navigation"
+msgstr ""
+
+msgid "Family Pledge Summary"
+msgstr ""
+
+msgid "Family Pledges"
+msgstr ""
+
+msgid "Family Profile"
+msgstr ""
+
+msgid "Family Properties"
+msgstr ""
+
+msgid "Family Property Unassignment"
+msgstr ""
+
+msgid "Family Registration"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Family Role"
+msgstr ""
+
+msgid "Family Roles"
+msgstr ""
+
+msgid "Family Roles Editor"
+msgstr ""
+
+msgid "Family Select"
+msgstr ""
+
+msgid "Family Status"
+msgstr ""
+
+msgid "Family Verification"
+msgstr ""
+
+msgid "Family Work Phone"
+msgstr ""
+
+msgid "Family added to cart"
+msgstr ""
+
+msgid "Family has no emails to use"
+msgstr ""
+
+msgid "Family has no street address to geocode"
+msgstr ""
+
+msgid "Family name is required"
+msgstr ""
+
+msgid "Family name must be at least 2 characters"
+msgstr ""
+
+msgid "Family not found"
+msgstr ""
+
+msgid "Family removed from cart"
+msgstr ""
+
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr ""
+
+msgid "Family vs Person"
+msgstr ""
+
+msgid "FamilyID for Cart must be numeric"
+msgstr ""
+
+#. Context: countries
+msgid "Faroe Islands (Føroyar)"
+msgstr ""
+
+msgid "Father"
+msgstr ""
+
+#. plugin:mailchimp:section:1:title
+msgid "Features"
+msgstr ""
+
+msgid "Feb"
+msgstr ""
+
+msgid "February"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Female"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field"
+msgstr ""
+
+msgid "Field Selection"
+msgstr ""
+
+msgid "Field deleted successfully"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Field value"
+msgstr ""
+
+msgid "Field where Father Of Confession is listed, must be a people of group type"
+msgstr ""
+
+msgid "Field where last Confession is stored, must be a date type"
+msgstr ""
+
+msgid "Fields to Include"
+msgstr ""
+
+#. Context: countries
+msgid "Fiji"
+msgstr ""
+
+msgid "File Integrity:"
+msgstr ""
+
+msgid "File Name"
+msgstr ""
+
+msgid "File Path"
+msgstr ""
+
+msgid "File Type"
+msgstr ""
+
+msgid "File signatures match the official release."
+msgstr ""
+
+#, php-format
+msgid "File size exceeds the server limit of %s"
+msgstr ""
+
+msgid "File upload error"
+msgstr ""
+
+msgid "Files may be modified or missing. Consider re-deploying from an official release."
+msgstr ""
+
+msgid "Files not part of the official release were found on your server."
+msgstr ""
+
+msgid "Filesystem Permissions"
+msgstr ""
+
+msgid "Filter by Class"
+msgstr ""
+
+msgid "Filter by Deposit"
+msgstr ""
+
+msgid "Filter by Event Type"
+msgstr ""
+
+msgid "Filter by Family"
+msgstr ""
+
+msgid "Filter by Fund"
+msgstr ""
+
+msgid "Filter by Payment Type"
+msgstr ""
+
+msgid "Filter by Type"
+msgstr ""
+
+msgid "Filter by log level:"
+msgstr ""
+
+msgid "Filtering"
+msgstr ""
+
+msgid "Filters"
+msgstr ""
+
+msgid "Final Price"
+msgstr ""
+
+msgid "Finance"
+msgstr ""
+
+msgid "Finance Dashboard"
+msgstr ""
+
+msgid "Finance access"
+msgstr ""
+
+msgid "Finance permission query IDs"
+msgstr ""
+
+msgid "Financial Reports"
+msgstr ""
+
+msgid "Financial Settings"
+msgstr ""
+
+msgid "Find family"
+msgstr ""
+
+msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who didn't attend an event"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people who pledged one year but not another"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find people with a custom field value"
+msgstr ""
+
+msgid "Find the line:"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for a particular opportunity"
+msgstr ""
+
+#. Context: query_qry
+msgid "Find volunteers for who match two specific opportunity codes"
+msgstr ""
+
+#. plugin:openlp:section:3:title
+msgid "Finding Your Server URL"
+msgstr ""
+
+#. Context: countries
+msgid "Finland (Suomi)"
+msgstr ""
+
+#. Context: locales
+msgid "Finnish"
+msgstr ""
+
+msgid "First"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First Fiscal Year"
+msgstr ""
+
+msgid "First Name"
+msgstr ""
+
+msgid "First Sunday"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First fiscal year for comparison"
+msgstr ""
+
+msgid "First month of the fiscal year"
+msgstr ""
+
+msgid "First name"
+msgstr ""
+
+msgid "First name is required"
+msgstr ""
+
+msgid "First name must be at least 2 characters"
+msgstr ""
+
+msgid "First name must be entered"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "First volunteer opportunity choice"
+msgstr ""
+
+msgid "FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Fiscal Year"
+msgstr ""
+
+msgid "Focus"
+msgstr ""
+
+msgid "Follow these two steps to add your church members quickly and correctly."
+msgstr ""
+
+msgid "Font"
+msgstr ""
+
+msgid "Font Size"
+msgstr ""
+
+msgid "For defining the date in Date-Picker, per default : Y-m-d, In French : d/m/Y for example."
+msgstr ""
+
+msgid "For defining the date in Date-Picker, per default : yyyy-mm-dd, In French : dd/mm/yyyy for example."
+msgstr ""
+
+#. plugin:custom-links:section:3:content
+msgid ""
+"For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr ""
+
+msgid "Force Import"
+msgstr ""
+
+msgid "Force Import will retry and may create duplicate data."
+msgstr ""
+
+msgid "Force Re-install"
+msgstr ""
+
+msgid "Force Re-install?"
+msgstr ""
+
+msgid "Force re-install initiated. Please backup your database before applying."
+msgstr ""
+
+msgid "Foreground Color"
+msgstr ""
+
+msgid "Forgot password?"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+#. Context: countries
+msgid "France"
+msgstr ""
+
+#. Context: locales
+msgid "French - France"
+msgstr ""
+
+#. Context: countries
+msgid "French Guiana (Guyane française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Polynesia (Polynésie française)"
+msgstr ""
+
+#. Context: countries
+msgid "French Southern Territories (Terres australes françaises)"
+msgstr ""
+
+msgid "Fridays"
+msgstr ""
+
+msgid "Friend Date"
+msgstr ""
+
+#. Context: query_qry
+msgid "Friends who signed up in previous months"
+msgstr ""
+
+msgid "From"
+msgstr ""
+
+msgid "From Phone Number"
+msgstr ""
+
+msgid "From dashboard.vonage.com"
+msgstr ""
+
+msgid "Full Backup"
+msgstr ""
+
+msgid "Full Group View"
+msgstr ""
+
+msgid "Full Path"
+msgstr ""
+
+msgid "Functions"
+msgstr ""
+
+msgid "Fund"
+msgstr ""
+
+msgid "Fund Allocation"
+msgstr ""
+
+msgid "Fund Name"
+msgstr ""
+
+msgid "Fund deleted successfully"
+msgstr ""
+
+msgid "Fund(s)"
+msgstr ""
+
+msgid "Fundraiser"
+msgstr ""
+
+msgid "Fundraiser Listing"
+msgstr ""
+
+msgid "Funds"
+msgstr ""
+
+msgid "GA4 Measurement ID"
+msgstr ""
+
+#. plugin:google-analytics:link:1:label
+msgid "GA4 Setup Guide"
+msgstr ""
+
+msgid "GPS Visualizer"
+msgstr ""
+
+#. Context: countries
+msgid "Gabon"
+msgstr ""
+
+#. Context: countries
+msgid "Gambia"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Gender"
+msgstr ""
+
+msgid "Gender Demographics"
+msgstr ""
+
+msgid "Generate"
+msgstr ""
+
+msgid "Generate & Download Backup"
+msgstr ""
+
+msgid "Generate Bid Sheets"
+msgstr ""
+
+msgid "Generate Catalog"
+msgstr ""
+
+msgid "Generate Certificates"
+msgstr ""
+
+msgid "Generate Deposit Slip for Selected Rows (PDF)"
+msgstr ""
+
+msgid "Generate Report"
+msgstr ""
+
+msgid "Generate Statement"
+msgstr ""
+
+msgid "Generate Statements for Selected"
+msgstr ""
+
+msgid "Generate Tax Statements"
+msgstr ""
+
+msgid "Generate and download confirmation letters"
+msgstr ""
+
+msgid "Generate annual giving statements for donors and identify giving patterns."
+msgstr ""
+
+msgid "Generate annual giving statements for tax purposes"
+msgstr ""
+
+msgid "Generate annual tax-deductible giving statements for donors. Can be printed or emailed."
+msgstr ""
+
+msgid "Generate class lists, attendance sheets, and photo books"
+msgstr ""
+
+msgid "Generate detailed reports for individual deposits or date ranges."
+msgstr ""
+
+msgid "Generate directory listings and printed materials"
+msgstr ""
+
+msgid "Generate financial reports"
+msgstr ""
+
+msgid "Generate financial statements and giving reports"
+msgstr ""
+
+msgid "Generate letters and mailing labels"
+msgstr ""
+
+msgid "Generate mailing labels and form letters"
+msgstr ""
+
+msgid "Generate new code"
+msgstr ""
+
+msgid "Generate phone directory"
+msgstr ""
+
+msgid "Generate pledge reminder letters"
+msgstr ""
+
+msgid "Generate reminder letters for families with outstanding pledges."
+msgstr ""
+
+msgid "Generate reports for tax statements, pledge tracking, and financial analysis."
+msgstr ""
+
+msgid "Generate reports on group membership and activities"
+msgstr ""
+
+msgid "Generate tax statement documents for donors"
+msgstr ""
+
+msgid "Geocoded"
+msgstr ""
+
+msgid "Geocoded coordinates:"
+msgstr ""
+
+msgid "Geocoding failed"
+msgstr ""
+
+msgid "Geocoding successful"
+msgstr ""
+
+msgid "Geographic Utilities"
+msgstr ""
+
+#. Context: countries
+msgid "Georgia (საქართველო)"
+msgstr ""
+
+#. Context: locales
+msgid "German - Germany"
+msgstr ""
+
+#. Context: countries
+msgid "Germany (Deutschland)"
+msgstr ""
+
+msgid "Get Directions"
+msgstr ""
+
+msgid "Get Started"
+msgstr ""
+
+msgid "Get Your Data Into ChurchCRM"
+msgstr ""
+
+msgid "Get your API key from MailChimp: Account Settings > Extras > API Keys"
+msgstr ""
+
+#. plugin:mailchimp:section:0:title
+msgid "Getting Started"
+msgstr ""
+
+#. plugin:google-analytics:section:0:title
+msgid "Getting Your GA4 Measurement ID"
+msgstr ""
+
+#. Context: countries
+msgid "Ghana (Gaana)"
+msgstr ""
+
+#. Context: countries
+msgid "Gibraltar"
+msgstr ""
+
+msgid "Gift Amount"
+msgstr ""
+
+msgid "Gift Designation"
+msgstr ""
+
+msgid "Girls"
+msgstr ""
+
+msgid "Giving Report (Tax Statements)"
+msgstr ""
+
+msgid "Go"
+msgstr ""
+
+msgid "Go to Dashboard"
+msgstr ""
+
+msgid "Go to Login"
+msgstr ""
+
+msgid "Go to homepage"
+msgstr ""
+
+#. plugin:google-analytics:summary
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr ""
+
+#. plugin:google-analytics:link:0:label
+msgid "Google Analytics Help"
+msgstr ""
+
+#. plugin:google-analytics:section:2:content
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr ""
+
+msgid "Graphic"
+msgstr ""
+
+#. plugin:gravatar:summary
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr ""
+
+#. plugin:gravatar:link:1:label
+msgid "Gravatar Image Options"
+msgstr ""
+
+#. plugin:gravatar:link:0:label
+msgid "Gravatar Website"
+msgstr ""
+
+#. plugin:gravatar:section:2:content
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr ""
+
+msgid "Great choice! Here's how to add your church members."
+msgstr ""
+
+#. Context: countries
+msgid "Greece (Ελλάδα)"
+msgstr ""
+
+#. Context: locales
+msgid "Greek"
+msgstr ""
+
+#. Context: countries
+msgid "Greenland (Kalaallit Nunaat)"
+msgstr ""
+
+#. Context: countries
+msgid "Grenada"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Group Directory"
+msgstr ""
+
+msgid "Group Editor"
+msgstr ""
+
+msgid "Group Listing"
+msgstr ""
+
+msgid "Group Map"
+msgstr ""
+
+msgid "Group Member Properties Editor"
+msgstr ""
+
+msgid "Group Member Role"
+msgstr ""
+
+msgid "Group Member Roles"
+msgstr ""
+
+msgid "Group Member Roles Editor"
+msgstr ""
+
+msgid "Group Membership"
+msgstr ""
+
+msgid "Group Memberships"
+msgstr ""
+
+msgid "Group Name"
+msgstr ""
+
+msgid "Group Properties"
+msgstr ""
+
+msgid "Group Reports"
+msgstr ""
+
+msgid "Group Role"
+msgstr ""
+
+msgid "Group Roles"
+msgstr ""
+
+msgid "Group Settings"
+msgstr ""
+
+msgid "Group Specific Properties"
+msgstr ""
+
+msgid "Group Type"
+msgstr ""
+
+msgid "Group Types"
+msgstr ""
+
+msgid "Group Types Editor"
+msgstr ""
+
+msgid "Group View"
+msgstr ""
+
+msgid "Group added to cart"
+msgstr ""
+
+msgid "Group deleted successfully."
+msgstr ""
+
+msgid "Group management access"
+msgstr ""
+
+msgid "Group not found"
+msgstr ""
+
+msgid "Group removed from cart"
+msgstr ""
+
+msgid "Group role name changes are saved as soon as the box loses focus"
+msgstr ""
+
+msgid "Group successfully added to the Cart."
+msgstr ""
+
+msgid "Group successfully removed from the Cart."
+msgstr ""
+
+msgid "Group-Specific Properties"
+msgstr ""
+
+msgid "Group-Specific Properties Form Editor"
+msgstr ""
+
+msgid "GroupID for Cart must be numeric"
+msgstr ""
+
+msgid "GroupID required for role selection prompt"
+msgstr ""
+
+msgid "Grouped by Family"
+msgstr ""
+
+msgid "Groups"
+msgstr ""
+
+#. Context: countries
+msgid "Guadeloupe"
+msgstr ""
+
+#. Context: countries
+msgid "Guam"
+msgstr ""
+
+msgid "Guardian(s) of"
+msgstr ""
+
+#. Context: countries
+msgid "Guatemala"
+msgstr ""
+
+#. Context: countries
+msgid "Guernsey"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Guest"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea (Guinée)"
+msgstr ""
+
+#. Context: countries
+msgid "Guinea-Bissau (Guiné Bissau)"
+msgstr ""
+
+#. Context: countries
+msgid "Guyana"
+msgstr ""
+
+msgid "HTML URL"
+msgstr ""
+
+#. Context: countries
+msgid "Haiti"
+msgstr ""
+
+msgid "Have Existing Data?"
+msgstr ""
+
+msgid "Have your authenticator app ready (Google Authenticator, Microsoft Authenticator, Authy, etc.)"
+msgstr ""
+
+msgid "Head Count"
+msgstr ""
+
+#. Context: countries
+msgid "Heard & McDonald Islands"
+msgstr ""
+
+#. Context: locales
+msgid "Hebrew"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Help on types.."
+msgstr ""
+
+msgid "Help translate this project"
+msgstr ""
+
+msgid "Here"
+msgstr ""
+
+msgid "Hide Age"
+msgstr ""
+
+msgid "Hide Latitude/Longitude"
+msgstr ""
+
+msgid "Hide Person Address"
+msgstr ""
+
+#. Context: locales
+msgid "Hindi - India"
+msgstr ""
+
+msgid "Holiday"
+msgstr ""
+
+msgid "Holidays"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Home Address"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Home Phone"
+msgstr ""
+
+msgid "Home phone is required"
+msgstr ""
+
+msgid "Home phone number"
+msgstr ""
+
+#. Context: countries
+msgid "Honduras"
+msgstr ""
+
+#. Context: countries
+msgid "Hong Kong (香港)"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "How did you learn of the church?"
+msgstr ""
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+msgid "How it works"
+msgstr ""
+
+msgid "How many checks to print per deposit slip page"
+msgstr ""
+
+msgid "How to Fix:"
+msgstr ""
+
+#. Context: locales
+msgid "Hungarian"
+msgstr ""
+
+#. Context: countries
+msgid "Hungary (Magyarország)"
+msgstr ""
+
+msgid "ICS URL"
+msgstr ""
+
+msgid "ID"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+#. Context: countries
+msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "Id"
+msgstr ""
+
+msgid "Identify members who have not made any donations within a date range."
+msgstr ""
+
+#. plugin:vonage:section:3:content
+msgid ""
+"If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr ""
+
+msgid "If adding a new family, enter data below."
+msgstr ""
+
+#. plugin:openlp:section:5:content
+msgid ""
+"If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr ""
+
+msgid "If deposit is selected, date criteria will be ignored."
+msgstr ""
+
+#. plugin:vonage:section:5:content
+msgid ""
+"If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr ""
+
+msgid "If that doesn't work, copy and paste the following link in your browser"
+msgstr ""
+
+msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr ""
+
+msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
+msgstr ""
+
+#. plugin:vonage:section:4:content
+msgid ""
+"If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr ""
+
+msgid "If you upload a backup from ChurchInfo or a previous version of ChurchCRM, it will be automatically upgraded to the current database schema."
+msgstr ""
+
+msgid "Ignore Incomplete<br>Addresses"
+msgstr ""
+
+msgid "Ignored"
+msgstr ""
+
+msgid "Image shown when no Gravatar exists for the email address"
+msgstr ""
+
+msgid "Images Root"
+msgstr ""
+
+msgid "Import Another File"
+msgstr ""
+
+msgid "Import CSV"
+msgstr ""
+
+msgid "Import Complete"
+msgstr ""
+
+msgid "Import Data"
+msgstr ""
+
+msgid "Import Demo Data"
+msgstr ""
+
+msgid "Import contacts from your MailChimp audiences"
+msgstr ""
+
+msgid "Import failed"
+msgstr ""
+
+msgid "Import failed. Please try again."
+msgstr ""
+
+msgid "Import failed: "
+msgstr ""
+
+msgid "Import from CSV"
+msgstr ""
+
+msgid "Import from Spreadsheet"
+msgstr ""
+
+msgid "Import from a Spreadsheet"
+msgstr ""
+
+msgid "Import, restore, or enter manually"
+msgstr ""
+
+msgid "Import, restore, or manually enter your congregation"
+msgstr ""
+
+msgid "Important"
+msgstr ""
+
+msgid "Important Warning"
+msgstr ""
+
+#. plugin:external-backup:section:6:content
+msgid ""
+"Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr ""
+
+msgid "Important: Failed transactions will be deleted permanently when the deposit slip is closed."
+msgstr ""
+
+msgid "Importing..."
+msgstr ""
+
+msgid "In Use"
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Inactive Groups"
+msgstr ""
+
+msgid "Include"
+msgstr ""
+
+msgid "Include Sunday School classes and enrollments"
+msgstr ""
+
+msgid "Include contact and demographic data in new member email notification body"
+msgstr ""
+
+msgid "Include country code, e.g. +14155551234 (US) or +447911123456 (UK)"
+msgstr ""
+
+msgid "Include events and calendars"
+msgstr ""
+
+msgid "Include families in the coordinate file"
+msgstr ""
+
+msgid "Include family custom properties in global search."
+msgstr ""
+
+msgid "Include financial data (donation funds, pledges)"
+msgstr ""
+
+msgid "Include in Email Export"
+msgstr ""
+
+msgid "Include only these classifications in the directory, comma separated"
+msgstr ""
+
+msgid "Included"
+msgstr ""
+
+msgid "Includes database and all uploaded photos. Larger file size."
+msgstr ""
+
+msgid "Incorrect password supplied for current user"
+msgstr ""
+
+#. Context: countries
+msgid "India (भारत)"
+msgstr ""
+
+msgid "Individual Deposit Report"
+msgstr ""
+
+#. Context: countries
+msgid "Indonesia"
+msgstr ""
+
+#. Context: locales
+msgid "Indonesian - Indonesia"
+msgstr ""
+
+msgid "Info"
+msgstr ""
+
+msgid "Information to Include"
+msgstr ""
+
+msgid "Initial zoom level when opening the map"
+msgstr ""
+
+msgid "Install a TLS/SSL certificate for secure connections"
+msgstr ""
+
+msgid "Install plugins by placing them in"
+msgstr ""
+
+msgid "Installed"
+msgstr ""
+
+msgid "Installed Software Version"
+msgstr ""
+
+msgid "Internationalization (I18n) support"
+msgstr ""
+
+msgid "Intersect with Cart"
+msgstr ""
+
+msgid "Invalid API credentials. Please verify your API Key and API Secret."
+msgstr ""
+
+msgid "Invalid API key"
+msgstr ""
+
+msgid "Invalid API key format. Check your MailChimp API key."
+msgstr ""
+
+msgid "Invalid Birth Date."
+msgstr ""
+
+msgid "Invalid Birth Date: Missing birth month and day."
+msgstr ""
+
+msgid "Invalid Birth Date: Missing birth month or day."
+msgstr ""
+
+msgid "Invalid CSRF token"
+msgstr ""
+
+msgid "Invalid Editor ID!"
+msgstr ""
+
+msgid "Invalid Entry"
+msgstr ""
+
+msgid "Invalid JSON provided for configuration"
+msgstr ""
+
+msgid "Invalid List id"
+msgstr ""
+
+msgid "Invalid Number"
+msgstr ""
+
+msgid "Invalid User/Password"
+msgstr ""
+
+msgid "Invalid Year"
+msgstr ""
+
+msgid "Invalid assignment type"
+msgstr ""
+
+msgid "Invalid code. Please try again."
+msgstr ""
+
+msgid "Invalid country name supplied"
+msgstr ""
+
+msgid "Invalid date format in start parameter"
+msgstr ""
+
+msgid "Invalid endpoint URL. Must be a full URL starting with https://"
+msgstr ""
+
+msgid "Invalid endpoint URL. Must be a full URL starting with https:// (e.g., https://cloud.example.com/remote.php/dav/files/user/backups/)"
+msgstr ""
+
+msgid "Invalid fields or selections."
+msgstr ""
+
+msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
+msgstr ""
+
+msgid "Invalid format"
+msgstr ""
+
+msgid "Invalid import request"
+msgstr ""
+
+msgid "Invalid login or password"
+msgstr ""
+
+msgid "Invalid person ID"
+msgstr ""
+
+msgid "Invalid request data"
+msgstr ""
+
+msgid "Invalid server URL format."
+msgstr ""
+
+msgid "Invalid status"
+msgstr ""
+
+#, php-format
+msgid "Invalid\"From Number\":\"%s\". Include the country code, e.g. +14155551234 (US) or +447911123456 (UK)."
+msgstr ""
+
+msgid "Invite Your Team"
+msgstr ""
+
+#. Context: countries
+msgid "Iran (‫ایران‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Iraq (‫العراق‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Ireland"
+msgstr ""
+
+#. Context: countries
+msgid "Isle of Man"
+msgstr ""
+
+#. Context: countries
+msgid "Israel (‫ישראל‬‎)"
+msgstr ""
+
+msgid "It is strongly recommended to have a backup before proceeding."
+msgstr ""
+
+#. Context: locales
+msgid "Italian - Italy"
+msgstr ""
+
+#. Context: countries
+msgid "Italy (Italia)"
+msgstr ""
+
+msgid "Item"
+msgstr ""
+
+msgid "Item deleted successfully"
+msgstr ""
+
+#. Context: countries
+msgid "Jamaica"
+msgstr ""
+
+msgid "Jan"
+msgstr ""
+
+msgid "January"
+msgstr ""
+
+#. Context: countries
+msgid "Japan (日本)"
+msgstr ""
+
+#. Context: locales
+msgid "Japanese"
+msgstr ""
+
+#. Context: countries
+msgid "Jersey"
+msgstr ""
+
+msgid "Join our community and stay connected with"
+msgstr ""
+
+msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
+msgstr ""
+
+#. Context: countries
+msgid "Jordan (‫الأردن‬‎)"
+msgstr ""
+
+msgid "Jr., Sr."
+msgstr ""
+
+msgid "Jul"
+msgstr ""
+
+msgid "July"
+msgstr ""
+
+msgid "Jump to any setup step:"
+msgstr ""
+
+msgid "Jun"
+msgstr ""
+
+msgid "June"
+msgstr ""
+
+#. Context: countries
+msgid "Kazakhstan (Казахстан)"
+msgstr ""
+
+msgid "Keep one copy in a fire-proof safe on-site and another off-site."
+msgstr ""
+
+#. Context: countries
+msgid "Kenya"
+msgstr ""
+
+msgid "Key People"
+msgstr ""
+
+msgid "Kiosk"
+msgstr ""
+
+msgid "Kiosk Enabled"
+msgstr ""
+
+msgid "Kiosk Manager"
+msgstr ""
+
+msgid "Kiosk Registration"
+msgstr ""
+
+msgid "Kiosk Registration Disabled"
+msgstr ""
+
+msgid "Kiosk check-in email notifications"
+msgstr ""
+
+msgid "Kiosk device not found"
+msgstr ""
+
+msgid "Kiosk not found"
+msgstr ""
+
+msgid "KioskVisibilityTimestamp"
+msgstr ""
+
+#. Context: countries
+msgid "Kiribati"
+msgstr ""
+
+#. Context: locales
+msgid "Korean"
+msgstr ""
+
+#. Context: countries
+msgid "Kosovo (Kosovë)"
+msgstr ""
+
+#. Context: countries
+msgid "Kuwait (‫الكويت‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Kyrgyzstan (Кыргызстан)"
+msgstr ""
+
+msgid "Label Grouping"
+msgstr ""
+
+msgid "Label Type"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Language & Localization"
+msgstr ""
+
+msgid "Language updated to"
+msgstr ""
+
+#. Context: countries
+msgid "Laos (ລາວ)"
+msgstr ""
+
+msgid "Last"
+msgstr ""
+
+msgid "Last Backup"
+msgstr ""
+
+msgid "Last Campaign"
+msgstr ""
+
+msgid "Last Login"
+msgstr ""
+
+msgid "Last Modified"
+msgstr ""
+
+msgid "Last Name"
+msgstr ""
+
+msgid "Last Subscriber"
+msgstr ""
+
+msgid "Last Successful Backup"
+msgstr ""
+
+msgid "Last Sunday"
+msgstr ""
+
+msgid "Last campaign"
+msgstr ""
+
+msgid "Last name"
+msgstr ""
+
+msgid "Last name is required"
+msgstr ""
+
+msgid "Last name must be at least 2 characters"
+msgstr ""
+
+msgid "LastName FirstName"
+msgstr ""
+
+msgid "LastName, FirstName MiddleName"
+msgstr ""
+
+msgid "LastName, Title FirstName"
+msgstr ""
+
+msgid "LastName, Title FirstName MiddleInitial"
+msgstr ""
+
+msgid "LastName, Title FirstName MiddleName"
+msgstr ""
+
+msgid "Latest"
+msgstr ""
+
+msgid "Latest Families"
+msgstr ""
+
+msgid "Latest People"
+msgstr ""
+
+msgid "Latest version unknown"
+msgstr ""
+
+msgid "Latitude"
+msgstr ""
+
+#. Context: countries
+msgid "Latvia (Latvija)"
+msgstr ""
+
+msgid "Learn more"
+msgstr ""
+
+msgid "Leave blank to keep existing"
+msgstr ""
+
+msgid "Leave blank to keep existing password"
+msgstr ""
+
+#. Context: countries
+msgid "Lebanon (‫لبنان‬‎)"
+msgstr ""
+
+msgid "Left Margin (1 = 1/100th inch)"
+msgstr ""
+
+msgid "Legend"
+msgstr ""
+
+#. Context: countries
+msgid "Lesotho"
+msgstr ""
+
+msgid "Let's get your system set up and ready to use"
+msgstr ""
+
+msgid "Let's restore your previous ChurchCRM data."
+msgstr ""
+
+msgid "Letters"
+msgstr ""
+
+msgid "Letters & Mailing Labels"
+msgstr ""
+
+msgid "Letters and Labels"
+msgstr ""
+
+msgid "Letters and Mailing Labels"
+msgstr ""
+
+msgid "Liaison"
+msgstr ""
+
+#. Context: countries
+msgid "Liberia"
+msgstr ""
+
+#. Context: countries
+msgid "Libya (‫ليبيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Liechtenstein"
+msgstr ""
+
+msgid "Line Thickness (1 = 1/100th inch"
+msgstr ""
+
+msgid "Link Name"
+msgstr ""
+
+msgid "Link address cannot contain HTML tags"
+msgstr ""
+
+msgid "Link address is required"
+msgstr ""
+
+msgid "Link must be a valid URL"
+msgstr ""
+
+msgid "Link must start with http:// or https://"
+msgstr ""
+
+msgid "Link not found"
+msgstr ""
+
+msgid "Link this event to a group for Kiosk check-in functionality. The group members will appear on the kiosk."
+msgstr ""
+
+msgid "Linked Group"
+msgstr ""
+
+msgid "Links"
+msgstr ""
+
+msgid "List Event Types"
+msgstr ""
+
+msgid "List all Roles (unchecked will list Teacher/Student roles only)"
+msgstr ""
+
+msgid "List families created via self registration"
+msgstr ""
+
+msgid "List members eligible to vote based on giving history and membership criteria."
+msgstr ""
+
+msgid "List not found"
+msgstr ""
+
+msgid "Listing"
+msgstr ""
+
+msgid "Lists"
+msgstr ""
+
+#. Context: countries
+msgid "Lithuania (Lietuva)"
+msgstr ""
+
+msgid "Load Authorized"
+msgstr ""
+
+msgid "Load demo data"
+msgstr ""
+
+msgid "Load sample families, people, groups, and giving records. The safest way to learn ChurchCRM before committing your real data."
+msgstr ""
+
+msgid "Loading"
+msgstr ""
+
+msgid "Loading log file..."
+msgstr ""
+
+msgid "Loading recovery codes"
+msgstr ""
+
+msgid "Loading..."
+msgstr ""
+
+msgid "Local development:"
+msgstr ""
+
+msgid "Locale"
+msgstr ""
+
+msgid "Locale Support"
+msgstr ""
+
+msgid "Localization"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Location & Contact Information"
+msgstr ""
+
+msgid "Locked Users"
+msgstr ""
+
+msgid "Log File"
+msgstr ""
+
+msgid "Log File Viewer"
+msgstr ""
+
+msgid "Log Files"
+msgstr ""
+
+msgid "Log Level"
+msgstr ""
+
+msgid "Log Settings"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Login Count"
+msgstr ""
+
+msgid "Login Info"
+msgstr ""
+
+msgid "Login Name"
+msgstr ""
+
+msgid "Login Name is required"
+msgstr ""
+
+msgid "Login to your account"
+msgstr ""
+
+msgid "Longitude"
+msgstr ""
+
+#. Context: countries
+msgid "Luxembourg"
+msgstr ""
+
+msgid "M"
+msgstr ""
+
+msgid "M/F"
+msgstr ""
+
+#. Context: countries
+msgid "Macau (澳門)"
+msgstr ""
+
+#. Context: countries
+msgid "Macedonia (FYROM) (Македонија)"
+msgstr ""
+
+#. Context: countries
+msgid "Madagascar (Madagasikara)"
+msgstr ""
+
+msgid "MailChimp"
+msgstr ""
+
+msgid "MailChimp API Key"
+msgstr ""
+
+msgid "MailChimp Dashboard"
+msgstr ""
+
+#. plugin:mailchimp:summary
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr ""
+
+msgid "MailChimp connection failed."
+msgstr ""
+
+msgid "MailChimp is not configured"
+msgstr ""
+
+msgid "MailChimp, backups, and more"
+msgstr ""
+
+msgid "Mailchimp"
+msgstr ""
+
+msgid "Mailchimp Connected"
+msgstr ""
+
+msgid "Mailchimp Not Configured"
+msgstr ""
+
+msgid "Mailchimp is not active"
+msgstr ""
+
+msgid "Make Data File"
+msgstr ""
+
+msgid "Make Default"
+msgstr ""
+
+msgid "Make User"
+msgstr ""
+
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr ""
+
+#. Context: countries
+msgid "Malawi"
+msgstr ""
+
+#. Context: countries
+msgid "Malaysia"
+msgstr ""
+
+#. Context: countries
+msgid "Maldives"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Male"
+msgstr ""
+
+#. Context: countries
+msgid "Mali"
+msgstr ""
+
+#. Context: countries
+msgid "Malta"
+msgstr ""
+
+msgid "Manage"
+msgstr ""
+
+#, php-format
+msgid "Manage %s options"
+msgstr ""
+
+msgid "Manage Check-ins"
+msgstr ""
+
+msgid "Manage Donations and Finance"
+msgstr ""
+
+msgid "Manage Envelopes"
+msgstr ""
+
+msgid "Manage Event Types"
+msgstr ""
+
+msgid "Manage Funds"
+msgstr ""
+
+msgid "Manage Groups and Roles"
+msgstr ""
+
+msgid "Manage Links"
+msgstr ""
+
+msgid "Manage Notes"
+msgstr ""
+
+msgid "Manage Orphaned Files"
+msgstr ""
+
+msgid "Manage Properties and Classifications"
+msgstr ""
+
+msgid "Manage SMS/text messaging tools and settings"
+msgstr ""
+
+msgid "Manage Sunday school classes, teachers, and student attendance"
+msgstr ""
+
+msgid "Manage Two-Factor Authentication"
+msgstr ""
+
+msgid "Manage classification lists, roles, and group types"
+msgstr ""
+
+msgid "Manage donation funds for financial tracking"
+msgstr ""
+
+msgid "Manage donations, pledges, and financial records"
+msgstr ""
+
+msgid "Manage email tools and SMTP configuration"
+msgstr ""
+
+msgid "Manage event names and categories"
+msgstr ""
+
+msgid "Manage event type categories"
+msgstr ""
+
+msgid "Manage events, birthdays, and anniversaries"
+msgstr ""
+
+msgid "Manage families, people, and demographic information"
+msgstr ""
+
+msgid "Manage people in your cart"
+msgstr ""
+
+msgid "Manage person, family, and group property types"
+msgstr ""
+
+msgid "Manage properties from the"
+msgstr ""
+
+msgid "Manage system users, permissions, and two-factor authentication settings"
+msgstr ""
+
+msgid "Manage user account details and permissions"
+msgstr ""
+
+msgid "Manage volunteer opportunities and assign members"
+msgstr ""
+
+msgid "Manage your personal preferences and account settings"
+msgstr ""
+
+#. plugin:custom-links:section:2:title
+msgid "Managing Links"
+msgstr ""
+
+msgid "Manual"
+msgstr ""
+
+#. plugin:external-backup:section:3:title
+msgid "Manual Backup"
+msgstr ""
+
+msgid "Map"
+msgstr ""
+
+msgid "Map Cart"
+msgstr ""
+
+msgid "Map Settings"
+msgstr ""
+
+msgid "Map cart items"
+msgstr ""
+
+msgid "Map to Field"
+msgstr ""
+
+msgid "Mar"
+msgstr ""
+
+msgid "March"
+msgstr ""
+
+msgid "Marked the Family as Active"
+msgstr ""
+
+msgid "Marked the Family as Inactive"
+msgstr ""
+
+#. Context: countries
+msgid "Marshall Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Martinique"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Match custom field to this value"
+msgstr ""
+
+msgid "Material"
+msgstr ""
+
+msgid "Material Value"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritania (‫موريتانيا‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Mauritius (Moris)"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Maximum Age"
+msgstr ""
+
+msgid "Maximum distance"
+msgstr ""
+
+msgid "Maximum length is"
+msgstr ""
+
+msgid "Maximum number of Addresses"
+msgstr ""
+
+msgid "Maximum number of Calendar Events"
+msgstr ""
+
+msgid "Maximum number of Deposits"
+msgstr ""
+
+msgid "Maximum number of Families"
+msgstr ""
+
+msgid "Maximum number of Family H.O.H Names"
+msgstr ""
+
+msgid "Maximum number of Groups"
+msgstr ""
+
+msgid "Maximum number of Payments"
+msgstr ""
+
+msgid "Maximum number of People"
+msgstr ""
+
+msgid ""
+"Maximum number of failed logins to allow before a user account is locked.\n"
+"Once the maximum has been reached, an administrator must re-enable the account.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr ""
+
+msgid "Maximum number of neighbors"
+msgstr ""
+
+msgid "Maximum upload size"
+msgstr ""
+
+msgid "May"
+msgstr ""
+
+#. Context: countries
+msgid "Mayotte"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Member"
+msgstr ""
+
+msgid "Member Name"
+msgstr ""
+
+msgid "Member Properties"
+msgstr ""
+
+msgid "Member Role Change"
+msgstr ""
+
+msgid "Member Roles"
+msgstr ""
+
+msgid "Member's Name"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Member, Regular Attender, etc."
+msgstr ""
+
+msgid "Member/Friend"
+msgstr ""
+
+msgid "Members"
+msgstr ""
+
+msgid "Members added to cart."
+msgstr ""
+
+#. Context: query_qry
+msgid "Members who joined in a particular month"
+msgstr ""
+
+msgid "Members, Visitors, Children"
+msgstr ""
+
+msgid "Membership Date"
+msgstr ""
+
+msgid "Membership Reports"
+msgstr ""
+
+#. Context: query_qry
+msgid "Membership anniversaries"
+msgstr ""
+
+msgid "Memberships"
+msgstr ""
+
+msgid "Menu Links"
+msgstr ""
+
+msgid "Menu name cannot contain HTML tags"
+msgstr ""
+
+msgid "Menu name is required"
+msgstr ""
+
+msgid "Menu name must be 50 characters or less"
+msgstr ""
+
+msgid "Menu name must be at least 2 characters"
+msgstr ""
+
+msgid "Menu options access"
+msgstr ""
+
+msgid "Method"
+msgstr ""
+
+#. Context: countries
+msgid "Mexico (México)"
+msgstr ""
+
+#. Context: countries
+msgid "Micronesia"
+msgstr ""
+
+msgid "Middle"
+msgstr ""
+
+msgid "Middle Name"
+msgstr ""
+
+msgid "Minimum"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Minimum Age"
+msgstr ""
+
+msgid "Minimum Price"
+msgstr ""
+
+msgid "Minimum Total Amount:"
+msgstr ""
+
+msgid ""
+"Minimum amount that a new password must differ from the old one (# of characters changed)\n"
+"Set to zero to disable this feature"
+msgstr ""
+
+msgid "Minimum bid "
+msgstr ""
+
+msgid "Minimum length a user may set their password to"
+msgstr ""
+
+msgid "Minimum length is"
+msgstr ""
+
+msgid "Mismatch"
+msgstr ""
+
+msgid "Missing"
+msgstr ""
+
+msgid "Missing PHP ZipArchive"
+msgstr ""
+
+msgid "Missing calendar access token"
+msgstr ""
+
+msgid "Missing image data in request"
+msgstr ""
+
+#. Context: query_qry
+msgid "Missing people"
+msgstr ""
+
+#. Context: query_qry
+msgid "Missing pledges"
+msgstr ""
+
+#, php-format
+msgid "Missing required settings: %s"
+msgstr ""
+
+msgid "Mobile"
+msgstr ""
+
+msgid "Mobile Phone"
+msgstr ""
+
+msgid "Moderate Detail"
+msgstr ""
+
+msgid "Modified files will be reverted to the official version."
+msgstr ""
+
+msgid "Modify family roles for group members"
+msgstr ""
+
+#. Context: countries
+msgid "Moldova (Republica Moldova)"
+msgstr ""
+
+#. Context: countries
+msgid "Monaco"
+msgstr ""
+
+msgid "Mondays"
+msgstr ""
+
+msgid "Money"
+msgstr ""
+
+msgid "Money amount too large. Maximum is $999999999.99"
+msgstr ""
+
+#. Context: countries
+msgid "Mongolia (Монгол)"
+msgstr ""
+
+#. Context: countries
+msgid "Montenegro (Crna Gora)"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Month"
+msgstr ""
+
+msgid "Monthly"
+msgstr ""
+
+msgid "Monthly Averages"
+msgstr ""
+
+msgid "Monthly on"
+msgstr ""
+
+msgid "Monthly on the"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Months"
+msgstr ""
+
+#. Context: countries
+msgid "Montserrat"
+msgstr ""
+
+#. Context: countries
+msgid "Morocco (‫المغرب‬‎)"
+msgstr ""
+
+msgid "Most reports can be exported as PDF for printing or CSV for spreadsheet analysis."
+msgstr ""
+
+msgid "Mother"
+msgstr ""
+
+msgid "Move"
+msgstr ""
+
+msgid "Move Donations to Selected Family"
+msgstr ""
+
+msgid "Move Members"
+msgstr ""
+
+msgid "Move Members to Group"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move to Group"
+msgstr ""
+
+msgid "Move up"
+msgstr ""
+
+msgid "Moving from an existing ChurchCRM or ChurchInfo installation? Upload your backup file and we'll restore your data automatically."
+msgstr ""
+
+#. Context: countries
+msgid "Mozambique (Moçambique)"
+msgstr ""
+
+msgid "Mr., Mrs., Dr."
+msgstr ""
+
+msgid "Multiple"
+msgstr ""
+
+msgid "Multiple Copies"
+msgstr ""
+
+msgid "Multiple groups will have a Page Break between Groups"
+msgstr ""
+
+msgid "Multiple items"
+msgstr ""
+
+msgid "Must be a valid URL starting with http:// or https://"
+msgstr ""
+
+msgid "Must be a valid URL starting with http:// or https:// (e.g., http://localhost or https://domain.com)"
+msgstr ""
+
+msgid "Must be a valid port number (e.g., 3306)"
+msgstr ""
+
+msgid "Must specify non-zero check number"
+msgstr ""
+
+msgid "Must start with / if not empty; no trailing slash. Only letters, numbers, underscore, dash, dot and / allowed."
+msgstr ""
+
+msgid "Must start with http:// or https://"
+msgstr ""
+
+msgid "My Calendars"
+msgstr ""
+
+msgid "My Settings"
+msgstr ""
+
+msgid "My User Settings"
+msgstr ""
+
+#. Context: countries
+msgid "Myanmar (Burma) (မြန်မာ)"
+msgstr ""
+
+msgid "N"
+msgstr ""
+
+msgid "N/A"
+msgstr ""
+
+msgid "NE"
+msgstr ""
+
+msgid "NNE"
+msgstr ""
+
+msgid "NNW"
+msgstr ""
+
+msgid "NW"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Name"
+msgstr ""
+
+msgid "Name & Identity"
+msgstr ""
+
+msgid "Name changes require saving. Reorder and delete actions in the action menu take effect immediately."
+msgstr ""
+
+msgid "Name for New"
+msgstr ""
+
+msgid "Name, address, contact details"
+msgstr ""
+
+#. Context: countries
+msgid "Namibia (Namibië)"
+msgstr ""
+
+#. Context: countries
+msgid "Nauru"
+msgstr ""
+
+msgid "Need help?"
+msgstr ""
+
+msgid "Need to remove this data later?"
+msgstr ""
+
+msgid "Needs Configuration"
+msgstr ""
+
+msgid "Neighbor Families"
+msgstr ""
+
+msgid "Neighborhood"
+msgstr ""
+
+#. Context: countries
+msgid "Nepal (नेपाल)"
+msgstr ""
+
+#. Context: countries
+msgid "Netherlands (Nederland)"
+msgstr ""
+
+msgid "Never"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "New Access Token"
+msgstr ""
+
+#. Context: countries
+msgid "New Caledonia (Nouvelle-Calédonie)"
+msgstr ""
+
+msgid "New Calendar"
+msgstr ""
+
+msgid "New Deposit Will Be Created"
+msgstr ""
+
+msgid "New Family"
+msgstr ""
+
+msgid "New Family Added"
+msgstr ""
+
+msgid "New Family Notification Email Error"
+msgstr ""
+
+msgid "New Group"
+msgstr ""
+
+msgid "New Members & Greeting"
+msgstr ""
+
+msgid "New Password"
+msgstr ""
+
+msgid "New Payment"
+msgstr ""
+
+msgid "New Person"
+msgstr ""
+
+msgid "New Person Added"
+msgstr ""
+
+msgid "New Person Notification Email Error"
+msgstr ""
+
+msgid "New Pledge"
+msgstr ""
+
+msgid "New Release"
+msgstr ""
+
+msgid "New Role"
+msgstr ""
+
+#. Context: countries
+msgid "New Zealand"
+msgstr ""
+
+msgid "New kiosk device registration is currently disabled. Please contact your system administrator to enable kiosk registration."
+msgstr ""
+
+msgid "New member notification emails"
+msgstr ""
+
+msgid "New to"
+msgstr ""
+
+msgid "Newsletter"
+msgstr ""
+
+msgid "Newsletter labels"
+msgstr ""
+
+msgid "Next"
+msgstr ""
+
+msgid "Next Member"
+msgstr ""
+
+#. Context: countries
+msgid "Nicaragua"
+msgstr ""
+
+#. Context: countries
+msgid "Niger (Nijar)"
+msgstr ""
+
+#. Context: countries
+msgid "Nigeria"
+msgstr ""
+
+#. Context: countries
+msgid "Niue"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "No Active Deposit"
+msgstr ""
+
+msgid "No Anniversaries"
+msgstr ""
+
+msgid "No Attendance counts recorded"
+msgstr ""
+
+msgid "No Audiences Found"
+msgstr ""
+
+msgid "No Birthdays"
+msgstr ""
+
+msgid "No Cash"
+msgstr ""
+
+msgid "No Changes"
+msgstr ""
+
+msgid "No Check-ins"
+msgstr ""
+
+msgid "No Checks"
+msgstr ""
+
+msgid "No Data Found"
+msgstr ""
+
+msgid "No Deposit Tracking"
+msgstr ""
+
+msgid "No Deposits"
+msgstr ""
+
+msgid "No Events Found"
+msgstr ""
+
+msgid "No Group (Select for Kiosk Check-in)"
+msgstr ""
+
+msgid "No Group Selected"
+msgstr ""
+
+msgid "No Orphaned Files Found"
+msgstr ""
+
+msgid "No Payments on this Deposit"
+msgstr ""
+
+msgid "No Sunday School"
+msgstr ""
+
+msgid "No active funds configured."
+msgstr ""
+
+msgid "No anniversaries in the past or next 7 days"
+msgstr ""
+
+msgid "No backups recorded"
+msgstr ""
+
+msgid "No birthdays in the past or next 7 days"
+msgstr ""
+
+msgid "No cell phone on file"
+msgstr ""
+
+msgid "No community plugins installed"
+msgstr ""
+
+msgid "No core plugins found"
+msgstr ""
+
+msgid "No custom Family fields have been added yet"
+msgstr ""
+
+msgid "No custom person fields have been added yet"
+msgstr ""
+
+msgid "No deposit data available yet"
+msgstr ""
+
+msgid "No deposits found."
+msgstr ""
+
+msgid "No description set."
+msgstr ""
+
+msgid "No email address on file"
+msgstr ""
+
+msgid "No email addresses available"
+msgstr ""
+
+msgid "No email passed in"
+msgstr ""
+
+msgid "No event types defined yet."
+msgstr ""
+
+#, php-format
+msgid "No events found for %s."
+msgstr ""
+
+msgid "No events linked to this class."
+msgstr ""
+
+msgid "No family name entered!"
+msgstr ""
+
+msgid "No file uploaded"
+msgstr ""
+
+msgid "No format"
+msgstr ""
+
+msgid "No funds have been added yet"
+msgstr ""
+
+msgid "No group assignments yet."
+msgstr ""
+
+msgid "No issues found. You may proceed with the upgrade."
+msgstr ""
+
+msgid "No locales configured"
+msgstr ""
+
+msgid "No log files found."
+msgstr ""
+
+msgid "No logged in user"
+msgstr ""
+
+msgid "No match found — select a field or leave as Ignore."
+msgstr ""
+
+#, php-format
+msgid "No matches for \"%s\". Try a different search term."
+msgstr ""
+
+msgid "No member properties defined."
+msgstr ""
+
+msgid "No members found for this role."
+msgstr ""
+
+msgid "No one checked in yet"
+msgstr ""
+
+msgid "No payments on this deposit"
+msgstr ""
+
+msgid "No payments yet. Click \"Add Payment\" to get started."
+msgstr ""
+
+msgid "No people found"
+msgstr ""
+
+msgid "No people match your current filters."
+msgstr ""
+
+msgid "No phone number on file"
+msgstr ""
+
+msgid "No phone numbers available"
+msgstr ""
+
+msgid "No pledges found for the selected fiscal year"
+msgstr ""
+
+msgid "No properties assigned."
+msgstr ""
+
+msgid "No properties defined yet"
+msgstr ""
+
+msgid "No properties have been added yet"
+msgstr ""
+
+msgid "No property types found"
+msgstr ""
+
+msgid "No records were returned from the previous report. Please adjust your filters or date range and try again."
+msgstr ""
+
+msgid "No results found"
+msgstr ""
+
+msgid "No settings provided"
+msgstr ""
+
+msgid "No timeline events yet."
+msgstr ""
+
+msgid "No volunteer opportunities have been added yet"
+msgstr ""
+
+msgid "No volunteer opportunity assignments yet."
+msgstr ""
+
+msgid "No, cancel this deletion"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Non-Attender (staff)"
+msgstr ""
+
+msgid "Non-deductible amount"
+msgstr ""
+
+msgid "NonDeductible amount can't be greater than total amount."
+msgstr ""
+
+msgid "NonDeductible amount exceeds maximum allowed value (999999.99)."
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "None (one-time event)"
+msgstr ""
+
+#. Context: countries
+msgid "Norfolk Island"
+msgstr ""
+
+#. Context: countries
+msgid "North Korea (조선 민주주의 인민 공화국)"
+msgstr ""
+
+#. Context: countries
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Norway (Norge)"
+msgstr ""
+
+#. Context: locales
+msgid "Norwegian"
+msgstr ""
+
+msgid "Not Classified"
+msgstr ""
+
+msgid "Not Configured"
+msgstr ""
+
+msgid "Not Found"
+msgstr ""
+
+msgid "Not Subscribed"
+msgstr ""
+
+msgid "Not a valid Friend Date"
+msgstr ""
+
+msgid "Not a valid Membership Date"
+msgstr ""
+
+msgid "Not a valid Wedding Date"
+msgstr ""
+
+msgid "Not a valid date"
+msgstr ""
+
+msgid "Not assigned"
+msgstr ""
+
+msgid "Not configured"
+msgstr ""
+
+msgid "Not in CRM"
+msgstr ""
+
+msgid "Not ready yet?"
+msgstr ""
+
+msgid "Not set"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Note Editor"
+msgstr ""
+
+msgid "Note not found"
+msgstr ""
+
+msgid "Note text is required"
+msgstr ""
+
+msgid "Note: Changes will not take effect until next logon."
+msgstr ""
+
+msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr ""
+
+msgid "Notes"
+msgstr ""
+
+msgid "Notes access"
+msgstr ""
+
+msgid "Notification for"
+msgstr ""
+
+msgid "Nov"
+msgstr ""
+
+msgid "November"
+msgstr ""
+
+msgid "Number"
+msgstr ""
+
+msgid "Number of Columns"
+msgstr ""
+
+msgid "Number of checks for Deposit Slip Report"
+msgstr ""
+
+msgid "Number of lines to display:"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Number of months since becoming a friend"
+msgstr ""
+
+msgid "Number of records using this property type"
+msgstr ""
+
+msgid "Number too large. Must be between -2147483648 and 2147483647"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "OR"
+msgstr ""
+
+msgid "OR Create a Group and add the CART in ONE ACTION"
+msgstr ""
+
+msgid "Oct"
+msgstr ""
+
+msgid "October"
+msgstr ""
+
+msgid "Old Password"
+msgstr ""
+
+#. Context: countries
+msgid "Oman (‫عُمان‬‎)"
+msgstr ""
+
+msgid "On the kiosk device (tablet, laptop, etc.), open a browser and navigate to:"
+msgstr ""
+
+msgid "Once"
+msgstr ""
+
+msgid "Once you have a family, add each household member as a person. Assign them a family role (e.g. Head of Household, Spouse, Child)."
+msgstr ""
+
+msgid "Once you receive the email, you can log in with your temporary password and change it to something you prefer."
+msgstr ""
+
+msgid "Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes."
+msgstr ""
+
+msgid "One character from FirstName and one character from LastName"
+msgstr ""
+
+msgid "One or more files failed signature validation"
+msgstr ""
+
+msgid "One-Time Code"
+msgstr ""
+
+msgid "Online Verification"
+msgstr ""
+
+msgid "Only .csv files are accepted"
+msgstr ""
+
+msgid "Only Families with unpaid pledges"
+msgstr ""
+
+msgid "Only Payments with Pledges"
+msgstr ""
+
+msgid "Only the new data below"
+msgstr ""
+
+msgid "Only the note author or an admin may delete this note"
+msgstr ""
+
+msgid "Only the note author or an admin may edit this note"
+msgstr ""
+
+msgid "Oops! Page not found."
+msgstr ""
+
+msgid "Open"
+msgstr ""
+
+msgid "Open Deposits:"
+msgstr ""
+
+msgid "Open GitHub Issue"
+msgstr ""
+
+msgid "Open MailChimp"
+msgstr ""
+
+msgid "Open in New Tab"
+msgstr ""
+
+msgid "Open user menu"
+msgstr ""
+
+msgid "Open your authenticator app and scan this QR code"
+msgstr ""
+
+#. plugin:openlp:link:2:label
+msgid "OpenLP API v2 Source"
+msgstr ""
+
+#. plugin:openlp:link:1:label
+msgid "OpenLP Documentation"
+msgstr ""
+
+msgid "OpenLP Server URL"
+msgstr ""
+
+#. plugin:openlp:link:0:label
+msgid "OpenLP Website"
+msgstr ""
+
+#. plugin:openlp:summary
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr ""
+
+msgid "Opportunity"
+msgstr ""
+
+msgid "Option"
+msgstr ""
+
+msgid "Optional - Add sermon notes or additional event details"
+msgstr ""
+
+msgid "Optional - leave blank if not tracking"
+msgstr ""
+
+msgid "Optional - only required if OpenLP authentication is enabled"
+msgstr ""
+
+msgid "Optional Data to Include"
+msgstr ""
+
+msgid "Optional detailed description of this property type"
+msgstr ""
+
+msgid "Optional notes about attendance..."
+msgstr ""
+
+msgid "Optional. URL for your church website."
+msgstr ""
+
+msgid "Options"
+msgstr ""
+
+msgid "Order"
+msgstr ""
+
+msgid "Orphaned Files"
+msgstr ""
+
+msgid "Orphaned Files Management"
+msgstr ""
+
+msgid "Orphaned Files:"
+msgstr ""
+
+msgid "Orphaned files are PHP or JavaScript files that exist on your server but are not part of the official ChurchCRM release. These files may be leftover from previous versions and could pose security risks if they contain outdated code with vulnerabilities."
+msgstr ""
+
+msgid "Orphaned files from previous versions cleaned up"
+msgstr ""
+
+msgid "Other"
+msgstr ""
+
+msgid "Other Email"
+msgstr ""
+
+msgid "Other Members"
+msgstr ""
+
+msgid "Other Settings"
+msgstr ""
+
+msgid "Output Method:"
+msgstr ""
+
+msgid "Override system locale"
+msgstr ""
+
+#. plugin:custom-links:section:0:title
+#. plugin:external-backup:section:0:title
+msgid "Overview"
+msgstr ""
+
+msgid "Overview of church events, attendance, and activity"
+msgstr ""
+
+msgid "Owe"
+msgstr ""
+
+msgid "PDF"
+msgstr ""
+
+msgid ""
+"PDF handling mode.\n"
+"1 = Save File dialog\n"
+"2 = Open in current browser window"
+msgstr ""
+
+msgid "PDF successfully emailed to family members."
+msgstr ""
+
+msgid "PDF/CSV"
+msgstr ""
+
+#, php-format
+msgid "PDFs successfully emailed to %s families."
+msgstr ""
+
+msgid "PHP & Server Requirements"
+msgstr ""
+
+msgid "PHP Active"
+msgstr ""
+
+msgid "PHP Configuration"
+msgstr ""
+
+msgid "Paddle"
+msgstr ""
+
+msgid "Page"
+msgstr ""
+
+msgid "Page length"
+msgstr ""
+
+msgid "Page not fond"
+msgstr ""
+
+msgid "Paid"
+msgstr ""
+
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr ""
+
+#. Context: countries
+msgid "Pakistan (‫پاکستان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Palau"
+msgstr ""
+
+#. Context: countries
+msgid "Palestine (‫فلسطين‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Panama (Panamá)"
+msgstr ""
+
+msgid "Paper Size"
+msgstr ""
+
+#. Context: countries
+msgid "Papua New Guinea"
+msgstr ""
+
+#. Context: countries
+msgid "Paraguay"
+msgstr ""
+
+msgid "Parents"
+msgstr ""
+
+msgid "Parents/Guardians"
+msgstr ""
+
+msgid "Part"
+msgstr ""
+
+msgid "Passed"
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid "Password Change Required"
+msgstr ""
+
+msgid "Password Change Successful"
+msgstr ""
+
+msgid "Password Changed"
+msgstr ""
+
+msgid "Password Recovery"
+msgstr ""
+
+msgid "Password Reset"
+msgstr ""
+
+msgid "Password Reset Error"
+msgstr ""
+
+msgid "Password Reset Link"
+msgstr ""
+
+msgid "Password Reset Successful"
+msgstr ""
+
+msgid "Password reset emails — users cannot recover their accounts"
+msgstr ""
+
+msgid "Password reset for"
+msgstr ""
+
+msgid "Password reset not available.  Please contact your system administrator"
+msgstr ""
+
+msgid "Passwords do not match"
+msgstr ""
+
+msgid "Passwords must be at least"
+msgstr ""
+
+msgid "Past & next 7 days"
+msgstr ""
+
+msgid "Payment"
+msgstr ""
+
+msgid "Payment Date"
+msgstr ""
+
+msgid "Payment Schedule"
+msgstr ""
+
+msgid "Payment by"
+msgstr ""
+
+msgid "Payments"
+msgstr ""
+
+msgid "Payments deleted successfully"
+msgstr ""
+
+msgid "Pending Self Verify"
+msgstr ""
+
+msgid "People"
+msgstr ""
+
+msgid "People Checked In"
+msgstr ""
+
+msgid "People Dashboard"
+msgstr ""
+
+msgid "People Directory"
+msgstr ""
+
+msgid "People List"
+msgstr ""
+
+msgid "People Reports"
+msgstr ""
+
+msgid "People Settings"
+msgstr ""
+
+msgid "People Verify Dashboard"
+msgstr ""
+
+msgid "People Without Emails"
+msgstr ""
+
+msgid "People by Classification"
+msgstr ""
+
+msgid "People in Cart"
+msgstr ""
+
+msgid "People in Cart (filters ignored)"
+msgstr ""
+
+msgid "People not in"
+msgstr ""
+
+#. Context: query_qry
+msgid "People with birthdays in a particular month"
+msgstr ""
+
+msgid "People with no personal or work email on record"
+msgstr ""
+
+msgid "Percentage"
+msgstr ""
+
+msgid "Permission"
+msgstr ""
+
+msgid "Permission Required"
+msgstr ""
+
+msgid "Permissions"
+msgstr ""
+
+msgid "Person"
+msgstr ""
+
+msgid "Person Checking In"
+msgstr ""
+
+msgid "Person Classification"
+msgstr ""
+
+msgid "Person Classifications"
+msgstr ""
+
+msgid "Person Classifications Editor"
+msgstr ""
+
+msgid "Person Custom Fields"
+msgstr ""
+
+msgid "Person Custom List Option"
+msgstr ""
+
+msgid "Person Custom List Options"
+msgstr ""
+
+msgid "Person Custom List Options Editor"
+msgstr ""
+
+msgid "Person Editor"
+msgstr ""
+
+msgid "Person Listing"
+msgstr ""
+
+msgid "Person Name"
+msgstr ""
+
+msgid "Person Profile"
+msgstr ""
+
+msgid "Person Properties"
+msgstr ""
+
+msgid "Person View"
+msgstr ""
+
+msgid "Person already in cart"
+msgstr ""
+
+#. Context: query_qry
+msgid "Person by Property"
+msgstr ""
+
+msgid "Person from Group"
+msgstr ""
+
+msgid "Person has been already checked in for this event"
+msgstr ""
+
+msgid "Person has no family"
+msgstr ""
+
+msgid "Person not found"
+msgstr ""
+
+msgid "Person property used to exclude members from SMS/text lists"
+msgstr ""
+
+msgid "Person property used to exclude members from email lists"
+msgstr ""
+
+msgid "Person removed from class."
+msgstr ""
+
+msgid "Person to Make User"
+msgstr ""
+
+msgid "Person(s) removed from cart"
+msgstr ""
+
+#. plugin:mailchimp:section:3:title
+msgid "Person/Family Integration"
+msgstr ""
+
+msgid "PersonID for Cart must be numeric"
+msgstr ""
+
+msgid "Personal"
+msgstr ""
+
+msgid "Personal Cell Phone"
+msgstr ""
+
+msgid "Personal Email"
+msgstr ""
+
+msgid "Personal Home Phone"
+msgstr ""
+
+msgid "Personal Work Phone"
+msgstr ""
+
+msgid "Personal Work/Other Email"
+msgstr ""
+
+#. Context: countries
+msgid "Peru (Perú)"
+msgstr ""
+
+#. Context: countries
+msgid "Philippines"
+msgstr ""
+
+msgid "Phone"
+msgstr ""
+
+msgid "Phone Number"
+msgstr ""
+
+#. plugin:vonage:section:2:title
+msgid "Phone Number Format"
+msgstr ""
+
+msgid "Phone Type"
+msgstr ""
+
+msgid "Phone number"
+msgstr ""
+
+msgid "Phone number is required."
+msgstr ""
+
+msgid "Phone numbers copied to clipboard"
+msgstr ""
+
+msgid "Phone numbers copied — paste into your messaging app"
+msgstr ""
+
+#. plugin:vonage:section:2:content
+msgid ""
+"Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr ""
+
+msgid "Photo"
+msgstr ""
+
+msgid "Photo Directory"
+msgstr ""
+
+msgid "PhotoBook"
+msgstr ""
+
+msgid "Photos"
+msgstr ""
+
+msgid "Photos only"
+msgstr ""
+
+msgid "Pick a path to get started"
+msgstr ""
+
+msgid "Pickup Request"
+msgstr ""
+
+msgid "Picture URL"
+msgstr ""
+
+msgid "Pinned Calendars"
+msgstr ""
+
+#. Context: countries
+msgid "Pitcairn Islands"
+msgstr ""
+
+msgid "Platform"
+msgstr ""
+
+msgid "Please add at least one family member."
+msgstr ""
+
+msgid "Please check everything looks right before submitting."
+msgstr ""
+
+msgid "Please check logs for more information"
+msgstr ""
+
+msgid "Please check the backup file and try again."
+msgstr ""
+
+msgid "Please check your email (including spam/junk folder) for your temporary password."
+msgstr ""
+
+msgid "Please configure endpoint, username, and password first."
+msgstr ""
+
+msgid "Please configure the WebDAV settings before creating a remote backup."
+msgstr ""
+
+msgid "Please configure the WebDAV settings before testing the connection."
+msgstr ""
+
+msgid "Please configure your MailChimp API key to use this integration."
+msgstr ""
+
+msgid "Please confirm activation of family"
+msgstr ""
+
+msgid "Please confirm deactivation of family"
+msgstr ""
+
+msgid "Please confirm deletion of"
+msgstr ""
+
+msgid "Please confirm deletion of this Property Type"
+msgstr ""
+
+msgid "Please confirm deletion of this family record:"
+msgstr ""
+
+msgid "Please confirm deletion of this group record"
+msgstr ""
+
+msgid "Please confirm deletion of this note"
+msgstr ""
+
+msgid "Please confirm disabling 2 Factor Auth for this user"
+msgstr ""
+
+msgid "Please confirm removal of user status from"
+msgstr ""
+
+msgid "Please confirm reset failed login count"
+msgstr ""
+
+msgid "Please confirm the password reset of this user"
+msgstr ""
+
+msgid "Please confirm your family information:"
+msgstr ""
+
+msgid "Please correct the errors below."
+msgstr ""
+
+msgid "Please detach this slip and mail with your next gift."
+msgstr ""
+
+msgid "Please do not close this window or refresh the page."
+msgstr ""
+
+msgid "Please ensure this what you want to do."
+msgstr ""
+
+msgid "Please enter a group name."
+msgstr ""
+
+msgid "Please enter a link name (2-50 characters)"
+msgstr ""
+
+msgid "Please enter a valid URL"
+msgstr ""
+
+msgid "Please enter a valid URL starting with http:// or https://"
+msgstr ""
+
+msgid "Please enter a valid email address"
+msgstr ""
+
+msgid "Please enter a valid email address (e.g., name@example.com)"
+msgstr ""
+
+msgid "Please enter a valid number"
+msgstr ""
+
+msgid "Please enter a valid phone number"
+msgstr ""
+
+msgid "Please enter the following to start your family's verification"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please enter the last date to calculate total contributions for each member (i.e. YYYY-MM-DD)."
+msgstr ""
+
+msgid "Please fill in all required fields correctly."
+msgstr ""
+
+msgid "Please mail you next gift to "
+msgstr ""
+
+msgid "Please map at least one column before importing"
+msgstr ""
+
+msgid "Please proceed to the classroom as soon as possible."
+msgstr ""
+
+msgid "Please select a CSV file"
+msgstr ""
+
+msgid "Please select a Family."
+msgstr ""
+
+msgid "Please select a backup file to restore"
+msgstr ""
+
+msgid "Please select a date"
+msgstr ""
+
+msgid "Please select another family with whom to associate these donations:"
+msgstr ""
+
+msgid "Please select rows to delete"
+msgstr ""
+
+msgid "Please select target Role for members"
+msgstr ""
+
+msgid "Please select target group for members"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Please select the beginning date to calculate total contributions for each member (i.e. YYYY-MM-DD). NOTE: You can only choose dates that contain donations."
+msgstr ""
+
+msgid "Please try again"
+msgstr ""
+
+msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
+msgstr ""
+
+msgid "Please update our records with corrections"
+msgstr ""
+
+msgid "Please upgrade ChurchCRM to version"
+msgstr ""
+
+msgid "Please verify your family's information"
+msgstr ""
+
+msgid "Pledge"
+msgstr ""
+
+msgid "Pledge Amount"
+msgstr ""
+
+msgid "Pledge Dashboard"
+msgstr ""
+
+msgid "Pledge Family Summary"
+msgstr ""
+
+msgid "Pledge Reminder Report"
+msgstr ""
+
+msgid "Pledge Reminder Signer"
+msgstr ""
+
+msgid "Pledge Reminders"
+msgstr ""
+
+msgid "Pledge Reports"
+msgstr ""
+
+msgid "Pledge Summary"
+msgstr ""
+
+msgid "Pledge Summary By Family"
+msgstr ""
+
+#. Context: query_qry
+msgid "Pledge comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Pledged this year"
+msgstr ""
+
+msgid "Pledges"
+msgstr ""
+
+msgid "Pledges and Payments"
+msgstr ""
+
+msgid "Plugin Development"
+msgstr ""
+
+msgid "Plugin Help"
+msgstr ""
+
+msgid "Plugin Management"
+msgstr ""
+
+msgid "Plugin Settings"
+msgstr ""
+
+msgid "Plugin cannot be disabled because other plugins depend on it"
+msgstr ""
+
+msgid "Plugin cannot be enabled due to dependency or version requirements"
+msgstr ""
+
+msgid "Plugin disabled successfully"
+msgstr ""
+
+msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
+msgstr ""
+
+msgid "Plugin enabled successfully"
+msgstr ""
+
+msgid "Plugin failed to load"
+msgstr ""
+
+msgid "Plugin not found"
+msgstr ""
+
+msgid "Plugin not found or not active"
+msgstr ""
+
+msgid "Plugins"
+msgstr ""
+
+#. Context: countries
+msgid "Poland (Polska)"
+msgstr ""
+
+#. Context: locales
+msgid "Polish"
+msgstr ""
+
+#. Context: countries
+msgid "Portugal"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Brazil"
+msgstr ""
+
+#. Context: locales
+msgid "Portuguese - Portugal"
+msgstr ""
+
+msgid "Pre-flight"
+msgstr ""
+
+msgid "Press ? to focus search"
+msgstr ""
+
+msgid "Press CTRL + C to copy"
+msgstr ""
+
+msgid "Prev"
+msgstr ""
+
+msgid "Previous"
+msgstr ""
+
+msgid "Price"
+msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Print name tags"
+msgstr ""
+
+msgid "Print or email annual giving statements to all donors."
+msgstr ""
+
+msgid "Printable directory of all people, grouped by family"
+msgstr ""
+
+#. plugin:mailchimp:section:4:title
+msgid "Privacy & Compliance"
+msgstr ""
+
+#. plugin:google-analytics:section:2:title
+msgid "Privacy Considerations"
+msgstr ""
+
+#. plugin:gravatar:section:2:title
+msgid "Privacy Note"
+msgstr ""
+
+msgid "Private"
+msgstr ""
+
+msgid "Private Calendar"
+msgstr ""
+
+msgid "Profile"
+msgstr ""
+
+msgid "Profile Image Deleted"
+msgstr ""
+
+msgid "Profile Image uploaded"
+msgstr ""
+
+msgid "Prompt"
+msgstr ""
+
+msgid "Properties"
+msgstr ""
+
+msgid "Properties Form"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Property"
+msgstr ""
+
+msgid "Property Editor"
+msgstr ""
+
+msgid "Property List"
+msgstr ""
+
+msgid "Property Type"
+msgstr ""
+
+msgid "Property Type List"
+msgstr ""
+
+msgid "Property Types"
+msgstr ""
+
+msgid "Property assignment not found."
+msgstr ""
+
+msgid "Property deleted successfully."
+msgstr ""
+
+msgid "Property not found"
+msgstr ""
+
+msgid "Property not found."
+msgstr ""
+
+msgid "Provide any corrections or additional information here..."
+msgstr ""
+
+msgid "Public Calendar"
+msgstr ""
+
+msgid "Public calendar"
+msgstr ""
+
+#. Context: countries
+msgid "Puerto Rico"
+msgstr ""
+
+msgid "Purchased Items"
+msgstr ""
+
+#. Context: countries
+msgid "Qatar (‫قطر‬‎)"
+msgstr ""
+
+msgid "Quarterly"
+msgstr ""
+
+msgid "Query Listing"
+msgstr ""
+
+msgid "Query Menu"
+msgstr ""
+
+msgid "Query View"
+msgstr ""
+
+msgid "Quick Actions"
+msgstr ""
+
+msgid "Quick Search"
+msgstr ""
+
+msgid "Quick Settings"
+msgstr ""
+
+msgid "Quick Setup"
+msgstr ""
+
+msgid "Quick Start"
+msgstr ""
+
+msgid "Quick Tips"
+msgstr ""
+
+msgid "QuickBooks Deposit Ticket Settings"
+msgstr ""
+
+msgid "Quiet Presort"
+msgstr ""
+
+msgid "Re-install"
+msgstr ""
+
+msgid "Ready to back up"
+msgstr ""
+
+msgid "Ready to restore"
+msgstr ""
+
+msgid "Recent Deposits"
+msgstr ""
+
+#. Context: query_qry
+msgid "Recent friends"
+msgstr ""
+
+msgid "Recipient Naming Method"
+msgstr ""
+
+msgid "Recommended Order"
+msgstr ""
+
+msgid "Record"
+msgstr ""
+
+msgid "Record multiple fundraiser drawing winners at once"
+msgstr ""
+
+msgid "Record new pledges and payments"
+msgstr ""
+
+msgid "Record why attendees visited your church"
+msgstr ""
+
+msgid "Recording a Payment"
+msgstr ""
+
+msgid "Recording a Pledge"
+msgstr ""
+
+msgid "Records"
+msgstr ""
+
+msgid "Records to export"
+msgstr ""
+
+msgid "Recovery Codes"
+msgstr ""
+
+msgid "Recurrence"
+msgstr ""
+
+msgid "Recurrence Pattern"
+msgstr ""
+
+msgid "Redirecting in"
+msgstr ""
+
+msgid "Refresh"
+msgstr ""
+
+msgid "Refresh Coordinates"
+msgstr ""
+
+msgid "Refresh List"
+msgstr ""
+
+msgid "Regen API Key"
+msgstr ""
+
+msgid "Register Now"
+msgstr ""
+
+msgid "Register Your Church"
+msgstr ""
+
+msgid "Register Your Family"
+msgstr ""
+
+msgid "Register and manage kiosk devices for event check-in"
+msgstr ""
+
+msgid "Register another family"
+msgstr ""
+
+msgid "Registration Error"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Regular Attender"
+msgstr ""
+
+msgid "Regular Backups"
+msgstr ""
+
+msgid "Release Notes"
+msgstr ""
+
+msgid "Remaining"
+msgstr ""
+
+msgid "Remittance Slip:"
+msgstr ""
+
+msgid "Remote backup failed"
+msgstr ""
+
+msgid "Remote backup failed. Check server logs for details."
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove All from Cart"
+msgstr ""
+
+msgid "Remove Property"
+msgstr ""
+
+msgid "Remove Results from Cart"
+msgstr ""
+
+msgid "Remove all from Cart"
+msgstr ""
+
+msgid "Remove from Cart"
+msgstr ""
+
+msgid "Remove from Class"
+msgstr ""
+
+msgid "Remove this attendance count?"
+msgstr ""
+
+msgid "Remove this family from cart?"
+msgstr ""
+
+msgid "Remove this group from cart?"
+msgstr ""
+
+msgid "Remove this person from cart?"
+msgstr ""
+
+msgid "Removed from cart successfully"
+msgstr ""
+
+msgid "Replicate item"
+msgstr ""
+
+msgid "Report Details"
+msgstr ""
+
+msgid "Report End Date"
+msgstr ""
+
+msgid "Report Heading:"
+msgstr ""
+
+msgid "Report Settings"
+msgstr ""
+
+msgid "Report Start Date"
+msgstr ""
+
+msgid "Report Tips"
+msgstr ""
+
+msgid "Report Type"
+msgstr ""
+
+msgid "Report an Issue"
+msgstr ""
+
+msgid "Report an issue"
+msgstr ""
+
+msgid "Reports"
+msgstr ""
+
+msgid "Reports related to member voting eligibility and organization governance."
+msgstr ""
+
+msgid "Request Family Info Verification"
+msgstr ""
+
+msgid "Request Password Reset"
+msgstr ""
+
+msgid "Require all users to enroll in two-factor authentication"
+msgstr ""
+
+msgid "Required"
+msgstr ""
+
+msgid "Required Permission"
+msgstr ""
+
+msgid "Required fields"
+msgstr ""
+
+msgid "Required permission"
+msgstr ""
+
+msgid "Required. Used on all reports and communications."
+msgstr ""
+
+msgid "Reset"
+msgstr ""
+
+msgid "Reset Database"
+msgstr ""
+
+msgid "Reset Failed Logins"
+msgstr ""
+
+msgid "Reset Filters"
+msgstr ""
+
+msgid "Reset Password"
+msgstr ""
+
+msgid "Reset Password via Email"
+msgstr ""
+
+msgid "Reset your password"
+msgstr ""
+
+msgid "Restore"
+msgstr ""
+
+msgid "Restore Database"
+msgstr ""
+
+msgid "Restore Status"
+msgstr ""
+
+msgid "Restore a Backup"
+msgstr ""
+
+msgid "Restore backup"
+msgstr ""
+
+msgid "Restore failed."
+msgstr ""
+
+msgid "Restore failed. Please check the backup file and try again."
+msgstr ""
+
+msgid "Restore from a backup file. Erases existing data."
+msgstr ""
+
+msgid "Restore in progress, please wait..."
+msgstr ""
+
+msgid "Restore your church database from a backup file"
+msgstr ""
+
+msgid "Retry Download"
+msgstr ""
+
+msgid "Return to Dashboard"
+msgstr ""
+
+msgid "Return to Event Types"
+msgstr ""
+
+msgid "Return to Events"
+msgstr ""
+
+msgid "Return to Families"
+msgstr ""
+
+msgid "Return to Family View"
+msgstr ""
+
+msgid "Return to Groups"
+msgstr ""
+
+msgid "Return to People"
+msgstr ""
+
+msgid "Return to Person Record"
+msgstr ""
+
+#. Context: query_qry
+msgid "Returns person records which are assigned the given property."
+msgstr ""
+
+msgid "Review"
+msgstr ""
+
+msgid "Review & Delete"
+msgstr ""
+
+msgid "Review Donation Funds"
+msgstr ""
+
+msgid "Review and clean up files not associated with any record"
+msgstr ""
+
+msgid "Review the files below and delete them to improve security."
+msgstr ""
+
+msgid "Role"
+msgstr ""
+
+msgid "Role / Gender"
+msgstr ""
+
+msgid "Role Name"
+msgstr ""
+
+msgid "Role added successfully."
+msgstr ""
+
+msgid "Role deleted successfully."
+msgstr ""
+
+msgid "Role in Family"
+msgstr ""
+
+msgid "Role name updated."
+msgstr ""
+
+msgid "Role not found."
+msgstr ""
+
+msgid "Roles"
+msgstr ""
+
+#. Context: countries
+msgid "Romania (România)"
+msgstr ""
+
+#. Context: locales
+msgid "Romanian - Romania"
+msgstr ""
+
+msgid "Root Path"
+msgstr ""
+
+msgid "Run"
+msgstr ""
+
+msgid "Run Query Again"
+msgstr ""
+
+msgid "Run Transactions"
+msgstr ""
+
+#. Context: countries
+msgid "Russia (Россия)"
+msgstr ""
+
+#. Context: locales
+msgid "Russian"
+msgstr ""
+
+#. Context: countries
+msgid "Rwanda"
+msgstr ""
+
+#. Context: countries
+msgid "Réunion (La Réunion)"
+msgstr ""
+
+msgid "S"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "SHA1 Hash"
+msgstr ""
+
+msgid "SMS Integration"
+msgstr ""
+
+msgid "SMS messages can be sent directly from ChurchCRM via the Vonage API."
+msgstr ""
+
+msgid "SMTP Authentication"
+msgstr ""
+
+msgid "SMTP Configured"
+msgstr ""
+
+msgid "SMTP Host"
+msgstr ""
+
+msgid "SMTP Host is not setup, please visit the settings page"
+msgstr ""
+
+msgid "SMTP Not Configured"
+msgstr ""
+
+msgid "SMTP Password"
+msgstr ""
+
+msgid "SMTP Server Address (mail.server.com:25)"
+msgstr ""
+
+msgid "SMTP Server timeout in sec"
+msgstr ""
+
+msgid "SMTP Timeout"
+msgstr ""
+
+msgid "SMTP Username"
+msgstr ""
+
+msgid "SMTP server for sending emails"
+msgstr ""
+
+msgid "SSE"
+msgstr ""
+
+msgid "SSW"
+msgstr ""
+
+msgid "SW"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Barthélemy (Saint-Barthélemy)"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Helena"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Lucia"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Martin (Saint-Martin (partie française))"
+msgstr ""
+
+#. Context: countries
+msgid "Saint Pierre and Miquelon (Saint-Pierre-et-Miquelon)"
+msgstr ""
+
+msgid "Sale Price"
+msgstr ""
+
+msgid "Salutation Utility"
+msgstr ""
+
+#. Context: locales
+msgid "Sami (Northern) (Sweden)"
+msgstr ""
+
+#. Context: countries
+msgid "Samoa"
+msgstr ""
+
+msgid "Sample Data"
+msgstr ""
+
+#. Context: countries
+msgid "San Marino"
+msgstr ""
+
+msgid "Saturdays"
+msgstr ""
+
+#. Context: countries
+msgid "Saudi Arabia (‫المملكة العربية السعودية‬‎)"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save Changes"
+msgstr ""
+
+msgid "Save Church Information"
+msgstr ""
+
+msgid "Save Event Type"
+msgstr ""
+
+msgid "Save Name"
+msgstr ""
+
+msgid "Save Settings"
+msgstr ""
+
+msgid "Save and Add"
+msgstr ""
+
+msgid "Save and Add New Family"
+msgstr ""
+
+msgid "Save the file and refresh this page"
+msgstr ""
+
+msgid "Save these recovery codes in a safe location. You can use them to access your account if you lose access to your authenticator app."
+msgstr ""
+
+msgid "Saving..."
+msgstr ""
+
+msgid "Scan QR Code"
+msgstr ""
+
+msgid "Scan check"
+msgstr ""
+
+msgid "Schedule"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Search"
+msgstr ""
+
+msgid "Search Addresses"
+msgstr ""
+
+msgid "Search Calendar Events"
+msgstr ""
+
+msgid "Search Deposits"
+msgstr ""
+
+msgid "Search Family"
+msgstr ""
+
+msgid "Search Groups"
+msgstr ""
+
+msgid "Search Payments"
+msgstr ""
+
+msgid "Search People"
+msgstr ""
+
+msgid "Search Results"
+msgstr ""
+
+msgid "Search across people, families, groups, addresses, and more."
+msgstr ""
+
+msgid "Search and view deposit slip records"
+msgstr ""
+
+msgid "Search by name or email..."
+msgstr ""
+
+msgid "Search for adult..."
+msgstr ""
+
+msgid "Search for supervisor..."
+msgstr ""
+
+msgid "Search groups..."
+msgstr ""
+
+msgid "Search or select..."
+msgstr ""
+
+msgid "Search people, families, groups…"
+msgstr ""
+
+msgid "Season"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second fiscal year for comparison"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Second volunteer opportunity choice"
+msgstr ""
+
+msgid "Secure"
+msgstr ""
+
+#. plugin:custom-links:section:3:title
+msgid "Security"
+msgstr ""
+
+#. plugin:external-backup:section:6:title
+msgid "Security Considerations"
+msgstr ""
+
+msgid "Security First"
+msgstr ""
+
+msgid "Security Group"
+msgstr ""
+
+msgid "Security Groups"
+msgstr ""
+
+msgid "Security Groups Editor"
+msgstr ""
+
+msgid "Security Option"
+msgstr ""
+
+msgid "Security Recommendation"
+msgstr ""
+
+msgid "Select"
+msgstr ""
+
+msgid "Select Backup File"
+msgstr ""
+
+msgid "Select Event"
+msgstr ""
+
+msgid "Select Event for Check-In"
+msgstr ""
+
+msgid "Select Family"
+msgstr ""
+
+msgid "Select Fields"
+msgstr ""
+
+msgid "Select Fields to Include"
+msgstr ""
+
+msgid "Select Fiscal Year"
+msgstr ""
+
+msgid "Select Gender"
+msgstr ""
+
+msgid "Select Group"
+msgstr ""
+
+msgid "Select Group and Role"
+msgstr ""
+
+msgid "Select Opportunities"
+msgstr ""
+
+msgid "Select Property Type"
+msgstr ""
+
+msgid "Select Report Type"
+msgstr ""
+
+msgid "Select Role"
+msgstr ""
+
+msgid "Select Schedule"
+msgstr ""
+
+msgid "Select Season"
+msgstr ""
+
+msgid "Select a backup file and click Restore Database."
+msgstr ""
+
+msgid "Select a family"
+msgstr ""
+
+msgid "Select a group"
+msgstr ""
+
+msgid "Select all"
+msgstr ""
+
+msgid "Select calendars..."
+msgstr ""
+
+msgid "Select classifications to include"
+msgstr ""
+
+msgid "Select date"
+msgstr ""
+
+msgid "Select event"
+msgstr ""
+
+msgid "Select event type..."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select field to search for."
+msgstr ""
+
+msgid "Select how do you want to request the family information to be verified"
+msgstr ""
+
+msgid "Select none"
+msgstr ""
+
+msgid "Select start and end date/time"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired event"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Select the desired family role."
+msgstr ""
+
+msgid "Select the event to check in your cart members"
+msgstr ""
+
+msgid "Select the group to which you would like to add your cart"
+msgstr ""
+
+msgid "Select the type of record this property applies to"
+msgstr ""
+
+msgid "Select your event type"
+msgstr ""
+
+msgid "Select your options above and click a backup button."
+msgstr ""
+
+msgid "Selected record successfully removed from the Cart."
+msgstr ""
+
+msgid "Self Registration"
+msgstr ""
+
+msgid "Self Registration Report"
+msgstr ""
+
+msgid "Self Registrations"
+msgstr ""
+
+msgid "Self Verification"
+msgstr ""
+
+msgid "Self Verify"
+msgstr ""
+
+msgid "Sell to everyone"
+msgstr ""
+
+msgid "Send Newsletter"
+msgstr ""
+
+msgid "Send Reset Email"
+msgstr ""
+
+msgid "Send an email notifying users when their account has been deleted"
+msgstr ""
+
+msgid "Send email to families"
+msgstr ""
+
+msgid "Send text message"
+msgstr ""
+
+#. Context: countries
+msgid "Senegal (Sénégal)"
+msgstr ""
+
+msgid "Sep"
+msgstr ""
+
+msgid "September"
+msgstr ""
+
+msgid "Sequence"
+msgstr ""
+
+#. Context: countries
+msgid "Serbia (Србија)"
+msgstr ""
+
+msgid "Sermon / Event Text"
+msgstr ""
+
+msgid "Sermon Text"
+msgstr ""
+
+msgid "Server Error"
+msgstr ""
+
+msgid "Server Information"
+msgstr ""
+
+msgid "Server URL is required."
+msgstr ""
+
+msgid "Server error"
+msgstr ""
+
+msgid "Server returned an unexpected response. Please try again."
+msgstr ""
+
+msgid ""
+"Session timeout length in seconds\n"
+"Set to zero to disable session timeouts."
+msgstr ""
+
+msgid "Set Active"
+msgstr ""
+
+msgid "Set Inactive"
+msgstr ""
+
+msgid "Set New Password"
+msgstr ""
+
+msgid "Set Permission True to give new users the ability to change their current value."
+msgstr ""
+
+msgid "Set Permission True to give this user the ability to change their current value."
+msgstr ""
+
+msgid "Set Up Authenticator"
+msgstr ""
+
+msgid "Set an admin user email so you can reset passwords and receive notifications"
+msgstr ""
+
+msgid "Set default check account number for family"
+msgstr ""
+
+msgid "Set default preferences for new user accounts"
+msgstr ""
+
+msgid "Set the encryption system to use - ssl (deprecated) or tls"
+msgstr ""
+
+msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
+msgstr ""
+
+msgid "Set true to disable entering Wedding Date in Family Editor.  Set false to enable entering Wedding Date in Family Editor."
+msgstr ""
+
+msgid "Set true to disable management of newsletter subscriptions in the Family Editor."
+msgstr ""
+
+msgid "Set up"
+msgstr ""
+
+msgid "Set up a new fundraiser campaign or event"
+msgstr ""
+
+msgid "Set your church name, address, and contact details"
+msgstr ""
+
+msgid "Set your church name, address, and contact email"
+msgstr ""
+
+msgid "Setting saved"
+msgstr ""
+
+msgid "Setting updated successfully"
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Settings reset successfully"
+msgstr ""
+
+msgid "Settings saved successfully"
+msgstr ""
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+msgid "Setup"
+msgstr ""
+
+msgid "Setup Complete"
+msgstr ""
+
+msgid "Setup Instructions"
+msgstr ""
+
+msgid "Setup Progress"
+msgstr ""
+
+msgid "Setup Required"
+msgstr ""
+
+#. Context: countries
+msgid "Seychelles"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "Share this URL with family members to verify their information"
+msgstr ""
+
+msgid "Shipped with ChurchCRM."
+msgstr ""
+
+msgid "Show Family Head of House Names"
+msgstr ""
+
+msgid "Show Neighbors"
+msgstr ""
+
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr ""
+
+msgid "Show in"
+msgstr ""
+
+msgid "Show neighbors with these classifications"
+msgstr ""
+
+msgid "Show or hide the Events menu in the main navigation."
+msgstr ""
+
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr ""
+
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr ""
+
+msgid "Show/Hide Lost Password Link on the login screen"
+msgstr ""
+
+#, php-format
+msgid "Showing members of: %s"
+msgstr ""
+
+msgid "Showing students with birthdays in"
+msgstr ""
+
+#. Context: countries
+msgid "Sierra Leone"
+msgstr ""
+
+msgid "Sign In"
+msgstr ""
+
+msgid "Sign in"
+msgstr ""
+
+msgid "Sign out"
+msgstr ""
+
+msgid "Signature Mismatch"
+msgstr ""
+
+msgid "Signature definition file exists but is not readable. Check file permissions."
+msgstr ""
+
+#, php-format
+msgid "Signature definition file is missing at %s. Run the packaging task or deploy an official release to regenerate signatures."
+msgstr ""
+
+msgid "Signature definition file signature failed validation"
+msgstr ""
+
+msgid "Since"
+msgstr ""
+
+msgid "Since this is a fresh installation, restoring will simply load your backup data."
+msgstr ""
+
+#. Context: countries
+msgid "Singapore"
+msgstr ""
+
+#. Context: countries
+msgid "Sint Maarten"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Skip records with incomplete mail address"
+msgstr ""
+
+msgid "Skip — go to Admin Dashboard"
+msgstr ""
+
+msgid "Skip, Continue Without Backup"
+msgstr ""
+
+msgid "Skipped"
+msgstr ""
+
+#. Context: countries
+msgid "Slovakia (Slovensko)"
+msgstr ""
+
+#. Context: countries
+msgid "Slovenia (Slovenija)"
+msgstr ""
+
+msgid "Social Media"
+msgstr ""
+
+msgid "Software"
+msgstr ""
+
+msgid "Software Update Required"
+msgstr ""
+
+msgid "Software Version"
+msgstr ""
+
+#. Context: countries
+msgid "Solomon Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Somalia (Soomaaliya)"
+msgstr ""
+
+msgid "Some application prerequisites are not met"
+msgstr ""
+
+msgid "Some calendars have access tokens, but external calendar sharing is currently disabled. Enable it via Calendar Settings to allow external apps to subscribe to your calendars."
+msgstr ""
+
+msgid "Some settings could not be reset"
+msgstr ""
+
+msgid "Some settings could not be saved"
+msgstr ""
+
+msgid "Sorry, there are records of donations from this family. This family may not be deleted."
+msgstr ""
+
+msgid "Sorry, we are unable to process your request at this point in time."
+msgstr ""
+
+msgid "Sort Data by:"
+msgstr ""
+
+msgid "Sort by"
+msgstr ""
+
+msgid "Source directory does not exist. The upgrade archive may not have extracted correctly. Please check file permissions and disk space."
+msgstr ""
+
+#. Context: countries
+msgid "South Africa"
+msgstr ""
+
+#. Context: countries
+msgid "South Georgia & South Sandwich Islands"
+msgstr ""
+
+#. Context: countries
+msgid "South Korea (대한민국)"
+msgstr ""
+
+#. Context: countries
+msgid "South Sudan (‫جنوب السودان‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Spain (España)"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Argentina"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Colombia"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - El Salvador"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Mexico"
+msgstr ""
+
+#. Context: locales
+msgid "Spanish - Spain"
+msgstr ""
+
+msgid "Special Group Settings : Sunday School Type"
+msgstr ""
+
+msgid "Special option"
+msgstr ""
+
+msgid "Specify the application name to be displayed in authenticator app"
+msgstr ""
+
+msgid "Spring"
+msgstr ""
+
+#. Context: countries
+msgid "Sri Lanka (ශ්‍රී ලංකාව)"
+msgstr ""
+
+#. Context: countries
+msgid "St. Vincent & Grenadines"
+msgstr ""
+
+msgid "Start Column"
+msgstr ""
+
+msgid "Start Date"
+msgstr ""
+
+msgid "Start Fresh"
+msgstr ""
+
+msgid "Start Over"
+msgstr ""
+
+msgid "Start Row"
+msgstr ""
+
+msgid "Start Time"
+msgstr ""
+
+msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "State"
+msgstr ""
+
+msgid "State (Other)"
+msgstr ""
+
+msgid "State is required."
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Status:"
+msgstr ""
+
+msgid "Stay informed"
+msgstr ""
+
+msgid "Step 1 — Upload CSV File"
+msgstr ""
+
+msgid "Step 2 — Map Columns"
+msgstr ""
+
+msgid "Street"
+msgstr ""
+
+msgid "Street Address"
+msgstr ""
+
+msgid "Street Atlas USA"
+msgstr ""
+
+msgid "Street address"
+msgstr ""
+
+msgid "Street address is required."
+msgstr ""
+
+msgid "Student Information"
+msgstr ""
+
+msgid "Students"
+msgstr ""
+
+msgid "Students not in a Sunday School Class"
+msgstr ""
+
+msgid "Style"
+msgstr ""
+
+msgid "Submit Registration"
+msgstr ""
+
+msgid "Submit Verification"
+msgstr ""
+
+msgid "Submitting..."
+msgstr ""
+
+msgid "Subscribers"
+msgstr ""
+
+msgid "Subscribers Not in CRM"
+msgstr ""
+
+#. Context: countries
+msgid "Sudan (‫السودان‬‎)"
+msgstr ""
+
+msgid "Suffix"
+msgstr ""
+
+msgid "Summary Data"
+msgstr ""
+
+msgid "Summary of pledges vs payments by fund for the fiscal year."
+msgstr ""
+
+msgid "Summer"
+msgstr ""
+
+msgid "Sunday School"
+msgstr ""
+
+msgid "Sunday School Classes"
+msgstr ""
+
+msgid "Sunday School Dashboard"
+msgstr ""
+
+msgid "Sunday School Kids"
+msgstr ""
+
+msgid "Sunday School Module"
+msgstr ""
+
+msgid "Sunday School Reports"
+msgstr ""
+
+msgid "Sunday School group can't be modified, only in this two cases :"
+msgstr ""
+
+msgid "Sunday School is disabled"
+msgstr ""
+
+msgid "Sundays"
+msgstr ""
+
+#. plugin:external-backup:section:5:title
+msgid "Supported Services"
+msgstr ""
+
+msgid "Supported formats:"
+msgstr ""
+
+msgid "Supports backups from ChurchCRM and ChurchInfo."
+msgstr ""
+
+#. Context: countries
+msgid "Suriname"
+msgstr ""
+
+#. Context: countries
+msgid "Svalbard and Jan Mayen (Svalbard og Jan Mayen)"
+msgstr ""
+
+#. Context: locales
+msgid "Swahili"
+msgstr ""
+
+#. Context: countries
+msgid "Swaziland"
+msgstr ""
+
+#. Context: countries
+msgid "Sweden (Sverige)"
+msgstr ""
+
+#. Context: countries
+msgid "Switzerland (Schweiz)"
+msgstr ""
+
+#. Context: countries
+msgid "Syria (‫سوريا‬‎)"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "System & Configuration"
+msgstr ""
+
+msgid "System Calendars"
+msgstr ""
+
+msgid "System Config"
+msgstr ""
+
+msgid "System Configuration:"
+msgstr ""
+
+msgid "System Health"
+msgstr ""
+
+msgid "System Info"
+msgstr ""
+
+msgid "System Locale Support"
+msgstr ""
+
+msgid "System Logs"
+msgstr ""
+
+msgid "System Settings"
+msgstr ""
+
+msgid "System Upgrade"
+msgstr ""
+
+msgid "System Upgrade Wizard"
+msgstr ""
+
+msgid "System Users"
+msgstr ""
+
+msgid "System diagnostic information and configuration"
+msgstr ""
+
+msgid "System language for the church."
+msgstr ""
+
+msgid "System upgrade completed successfully!"
+msgstr ""
+
+#. Context: countries
+msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
+msgstr ""
+
+msgid "Tables Settings"
+msgstr ""
+
+msgid "Tags"
+msgstr ""
+
+#. Context: countries
+msgid "Taiwan (台灣)"
+msgstr ""
+
+#. Context: countries
+msgid "Tajikistan"
+msgstr ""
+
+#. Context: locales
+msgid "Tamil - India"
+msgstr ""
+
+#. Context: countries
+msgid "Tanzania"
+msgstr ""
+
+msgid "Tax & Giving Reports"
+msgstr ""
+
+msgid "Tax Report"
+msgstr ""
+
+msgid "Tax Report Verbiage"
+msgstr ""
+
+msgid "Tax Report signer"
+msgstr ""
+
+msgid "Tax Statements"
+msgstr ""
+
+msgid "Tax Statements (Giving Report)"
+msgstr ""
+
+msgid "Tax Year Reporting Checklist"
+msgstr ""
+
+msgid "Teacher"
+msgstr ""
+
+msgid "Teachers"
+msgstr ""
+
+msgid "Technical Details"
+msgstr ""
+
+msgid "Tell us about your family"
+msgstr ""
+
+#. Context: locales
+msgid "Telugu - India"
+msgstr ""
+
+msgid "Test Connection"
+msgstr ""
+
+msgid "Test WebDAV Connection"
+msgstr ""
+
+#. plugin:external-backup:section:4:title
+msgid "Testing Connection"
+msgstr ""
+
+msgid "Text"
+msgstr ""
+
+msgid "Text All"
+msgstr ""
+
+msgid "Text Dashboard"
+msgstr ""
+
+msgid "Text Field (100 char)"
+msgstr ""
+
+msgid "Text Field (50 char)"
+msgstr ""
+
+msgid "Text Field (long)"
+msgstr ""
+
+msgid "Text Settings"
+msgstr ""
+
+msgid "Text Tools"
+msgstr ""
+
+msgid "Text before name in emails/reports"
+msgstr ""
+
+msgid "Text messaging actions are available from Group and Sunday School class views. Use the \"Text\" dropdown to copy phone numbers or send SMS messages to group members."
+msgstr ""
+
+#. Context: locales
+msgid "Thai"
+msgstr ""
+
+#. Context: countries
+msgid "Thailand (ไทย)"
+msgstr ""
+
+msgid "Thank You!"
+msgstr ""
+
+msgid "That field name already exists."
+msgstr ""
+
+msgid "That fund name already exists."
+msgstr ""
+
+#. plugin:custom-links:section:0:content
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr ""
+
+#. plugin:external-backup:section:0:content
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The birthday month for which you would like records returned."
+msgstr ""
+
+msgid "The database has been cleared."
+msgstr ""
+
+#. plugin:openlp:section:3:content
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The desired gender to search the database for."
+msgstr ""
+
+msgid "The device will register itself and appear in the table below as \"Pending\"."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The gender for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The maximum age for which you want records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The membership anniversary month for which you would like records returned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The minimum age for which you want records returned."
+msgstr ""
+
+msgid "The month that starts your organization's fiscal year"
+msgstr ""
+
+msgid "The page you tried to visit requires special permissions that your account does not currently have."
+msgstr ""
+
+#, php-format
+msgid "The password for %s has been updated."
+msgstr ""
+
+msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr ""
+
+msgid "The property could not be assigned."
+msgstr ""
+
+msgid "The property could not be removed."
+msgstr ""
+
+msgid "The property could not be unassigned."
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The property for which you would like person records returned."
+msgstr ""
+
+msgid "The property is already assigned."
+msgstr ""
+
+msgid "The property is successfully assigned."
+msgstr ""
+
+msgid "The property is successfully removed."
+msgstr ""
+
+msgid "The property is successfully unassigned."
+msgstr ""
+
+msgid "The record could not be found."
+msgstr ""
+
+msgid "The role could not be assigned."
+msgstr ""
+
+msgid "The role could not be found."
+msgstr ""
+
+msgid "The role is already assigned."
+msgstr ""
+
+msgid "The role is successfully assigned."
+msgstr ""
+
+msgid "The selected file exceeds this servers maximum upload size of"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "The sunday school class for which you would like records returned."
+msgstr ""
+
+msgid "The teacher sent this alert at"
+msgstr ""
+
+msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
+msgstr ""
+
+msgid "There was a problem retrieving the requested object"
+msgstr ""
+
+msgid "There were "
+msgstr ""
+
+msgid "These are the family role numbers designated as child"
+msgstr ""
+
+msgid "These are the family role numbers designated as head of house"
+msgstr ""
+
+msgid "These are the family role numbers designated as spouse"
+msgstr ""
+
+msgid "These files are not part of the official release and may pose security risks."
+msgstr ""
+
+msgid "These files were likely part of an older ChurchCRM version and were not cleaned up during a previous upgrade. Deleting them will improve your system security."
+msgstr ""
+
+msgid "These links appear in the \"Links\" menu in the navigation sidebar when this plugin is enabled."
+msgstr ""
+
+msgid "These people are subscribed to your MailChimp audience but do not exist in ChurchCRM. Consider adding them to your database or removing them from MailChimp."
+msgstr ""
+
+msgid "These people exist in ChurchCRM with email addresses but are not subscribed to this MailChimp audience. Consider inviting them to subscribe."
+msgstr ""
+
+msgid "These values are pre-filled when creating new families. Leave blank to require manual entry."
+msgstr ""
+
+msgid "Third-party extensions."
+msgstr ""
+
+msgid "This Family is Inactive"
+msgstr ""
+
+msgid "This action CANNOT be undone, and may have legal implications!"
+msgstr ""
+
+msgid "This action cannot be undone."
+msgstr ""
+
+msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
+msgstr ""
+
+msgid "This field is required"
+msgstr ""
+
+msgid "This group currently has no properties!  You can add them in the Group Editor."
+msgstr ""
+
+msgid "This is how your church information will appear on reports and directories."
+msgstr ""
+
+msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr ""
+
+msgid "This may take a few minutes for large databases."
+msgstr ""
+
+msgid "This may take several minutes for large databases. Do not close this page."
+msgstr ""
+
+msgid "This may take several minutes."
+msgstr ""
+
+msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
+msgstr ""
+
+msgid "This plugin does not support connection testing."
+msgstr ""
+
+#. plugin:vonage:section:0:content
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr ""
+
+#. plugin:openlp:section:0:content
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr ""
+
+#. plugin:mailchimp:section:4:content
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr ""
+
+msgid "This property type is still being used by at least one property."
+msgstr ""
+
+msgid "This value cannot be less than "
+msgstr ""
+
+msgid "This value cannot be more than "
+msgstr ""
+
+msgid "This value is required."
+msgstr ""
+
+msgid "This value must be at least "
+msgstr ""
+
+msgid "This value must be numeric."
+msgstr ""
+
+msgid "This will also delete all Roles and Group-Specific Property data associated with this Group record."
+msgstr ""
+
+msgid "This will also delete all payments associated with this deposit"
+msgstr ""
+
+msgid "This will create a group-specific properties table for this group.  You should then add needed properties with the Group-Specific Properties Form Editor."
+msgstr ""
+
+msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
+msgstr ""
+
+msgid "This will re-download and re-apply the current version. It can fix corrupted or modified files."
+msgstr ""
+
+msgid "This will remove it from all people currently assigned to it."
+msgstr ""
+
+msgid "This will replace any previously enrolled 2FA methods"
+msgstr ""
+
+msgid "This will reset the system data and will restart the system as a new install."
+msgstr ""
+
+msgid "Thursdays"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "Time Zone"
+msgstr ""
+
+msgid "Time zone"
+msgstr ""
+
+msgid "Timed"
+msgstr ""
+
+msgid "Timeline"
+msgstr ""
+
+msgid "Timezone Information"
+msgstr ""
+
+msgid "Timezone mismatch detected"
+msgstr ""
+
+#. Context: countries
+msgid "Timor-Leste"
+msgstr ""
+
+msgid "Tip"
+msgstr ""
+
+msgid "Tip:"
+msgstr ""
+
+msgid "Title"
+msgstr ""
+
+msgid "Title FirstName LastName"
+msgstr ""
+
+msgid "Title FirstName MiddleInitial. LastName"
+msgstr ""
+
+msgid "Title FirstName MiddleName LastName"
+msgstr ""
+
+msgid "Title page"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "To Family"
+msgstr ""
+
+msgid "To Group"
+msgstr ""
+
+#. plugin:custom-links:section:1:content
+msgid ""
+"To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr ""
+
+#. plugin:external-backup:section:1:content
+msgid ""
+"To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr ""
+
+msgid "To set up a kiosk device, follow these steps:"
+msgstr ""
+
+msgid "To stop receiving these emails, you can email"
+msgstr ""
+
+msgid "To the parents of"
+msgstr ""
+
+#. plugin:mailchimp:section:0:content
+msgid ""
+"To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr ""
+
+msgid "Today"
+msgstr ""
+
+msgid "Today's Birthdays"
+msgstr ""
+
+msgid "Today's Wedding Anniversaries"
+msgstr ""
+
+msgid "Toggle Sidebar"
+msgstr ""
+
+msgid "Toggle navigation"
+msgstr ""
+
+msgid "Toggle the left sidebar's state (open or collapse)"
+msgstr ""
+
+msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
+msgstr ""
+
+#. Context: countries
+msgid "Togo"
+msgstr ""
+
+#. Context: countries
+msgid "Tokelau"
+msgstr ""
+
+#. Context: countries
+msgid "Tonga"
+msgstr ""
+
+msgid "Too many failed logins: your account has been locked.  Please contact an administrator."
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Total $"
+msgstr ""
+
+msgid "Total Amount"
+msgstr ""
+
+msgid "Total Campaigns"
+msgstr ""
+
+msgid "Total Check-ins"
+msgstr ""
+
+msgid "Total Deposit"
+msgstr ""
+
+msgid "Total Deposits:"
+msgstr ""
+
+msgid "Total Groups"
+msgstr ""
+
+msgid "Total Payments"
+msgstr ""
+
+msgid "Total Pledges"
+msgstr ""
+
+msgid "Total Size"
+msgstr ""
+
+msgid "Total Subscribers"
+msgstr ""
+
+msgid "Total Users"
+msgstr ""
+
+msgid "Total of all purchases: $"
+msgstr ""
+
+msgid "Total purchases: $"
+msgstr ""
+
+msgid "Totals"
+msgstr ""
+
+msgid "Track and manage pledge commitments by family and fund"
+msgstr ""
+
+msgid "Track family pledges and fund contributions by fiscal year"
+msgstr ""
+
+msgid "Track pledges and payment progress for campaigns and fiscal year budgeting."
+msgstr ""
+
+msgid "Transaction Details"
+msgstr ""
+
+msgid "Translation incomplete"
+msgstr ""
+
+#. Context: countries
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#. Context: countries
+msgid "Tristan da Cunha"
+msgstr ""
+
+#. plugin:openlp:section:5:title
+msgid "Troubleshooting"
+msgstr ""
+
+#. plugin:vonage:section:4:title
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr ""
+
+#. plugin:vonage:section:5:title
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr ""
+
+#. plugin:vonage:section:3:title
+msgid "Troubleshooting - SMS Not Sending"
+msgstr ""
+
+msgid "True"
+msgstr ""
+
+msgid "True / False"
+msgstr ""
+
+msgid "Try Again"
+msgstr ""
+
+msgid "Try selecting a different event type or year."
+msgstr ""
+
+msgid "Tuesdays"
+msgstr ""
+
+#. Context: countries
+msgid "Tunisia (‫تونس‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "Turkey (Türkiye)"
+msgstr ""
+
+#. Context: locales
+msgid "Turkish"
+msgstr ""
+
+#. Context: countries
+msgid "Turkmenistan"
+msgstr ""
+
+#. Context: countries
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#. Context: countries
+msgid "Tuvalu"
+msgstr ""
+
+msgid "Two Factor Enrollment Error"
+msgstr ""
+
+msgid "Two characters from FirstName"
+msgstr ""
+
+msgid "Two-Factor Authentication"
+msgstr ""
+
+msgid "Two-factor authentication has been disabled"
+msgstr ""
+
+msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Type of Group"
+msgstr ""
+
+msgid "Type:"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Outlying Islands"
+msgstr ""
+
+#. Context: countries
+msgid "U.S. Virgin Islands"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "URL does not contain a valid hostname"
+msgstr ""
+
+msgid "URL hostname is not valid"
+msgstr ""
+
+msgid "URL is not in valid format"
+msgstr ""
+
+msgid "URL must end with a trailing slash (/)"
+msgstr ""
+
+msgid "URL must start with http:// or https://"
+msgstr ""
+
+msgid "URL to your OpenLP server (e.g., http://192.168.1.100:4316)"
+msgstr ""
+
+#. Context: countries
+msgid "Uganda"
+msgstr ""
+
+#. Context: countries
+msgid "Ukraine (Україна)"
+msgstr ""
+
+#. Context: locales
+msgid "Ukrainian"
+msgstr ""
+
+msgid "Unable to copy to clipboard. Please copy the URL manually."
+msgstr ""
+
+msgid "Unable to display map: church address has not been geocoded yet."
+msgstr ""
+
+msgid "Unable to load"
+msgstr ""
+
+msgid "Unable to load state list. Please check your network connection or try again later."
+msgstr ""
+
+msgid "Unable to load verification info"
+msgstr ""
+
+msgid "Unable to open file"
+msgstr ""
+
+msgid "Unable to re-encode JSON for configuration"
+msgstr ""
+
+msgid "Unassigned"
+msgstr ""
+
+msgid "Unclassified"
+msgstr ""
+
+msgid "Unexpected Person Id"
+msgstr ""
+
+msgid "Unfocus"
+msgstr ""
+
+msgid "Unit used to measure distance, miles or km."
+msgstr ""
+
+msgid "Unit used to measure distance."
+msgstr ""
+
+#. Context: countries
+msgid "United Arab Emirates (‫الإمارات العربية المتحدة‬‎)"
+msgstr ""
+
+#. Context: countries
+msgid "United Kingdom"
+msgstr ""
+
+#. Context: countries
+msgid "United States"
+msgstr ""
+
+msgid "Unk"
+msgstr ""
+
+msgid "Unknown"
+msgstr ""
+
+msgid "Unknown Type"
+msgstr ""
+
+msgid "Unknown error"
+msgstr ""
+
+msgid "Unmapped"
+msgstr ""
+
+msgid "Unmet Prerequisites"
+msgstr ""
+
+msgid "Unpinned Events"
+msgstr ""
+
+msgid "Unsubscribed"
+msgstr ""
+
+msgid "Unsuccessful API Key authentication attempt"
+msgstr ""
+
+msgid "Unverified"
+msgstr ""
+
+msgid "Unverified Addresses"
+msgstr ""
+
+msgid "Up to Date"
+msgstr ""
+
+msgid "Upcoming Birthdays"
+msgstr ""
+
+msgid "Upcoming Sunday School Events"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Update Admin Contact"
+msgstr ""
+
+msgid "Update Available"
+msgstr ""
+
+msgid "Update Envelopes"
+msgstr ""
+
+msgid "Update Family Records"
+msgstr ""
+
+msgid "Update Properties"
+msgstr ""
+
+msgid "Update church address in Settings."
+msgstr ""
+
+msgid "Update it to a valid URL that:"
+msgstr ""
+
+msgid "Update package downloaded successfully."
+msgstr ""
+
+msgid "Updated"
+msgstr ""
+
+msgid "Updated By"
+msgstr ""
+
+msgid "Updated Families"
+msgstr ""
+
+msgid "Updated People"
+msgstr ""
+
+msgid "Updated automatically on every save."
+msgstr ""
+
+msgid "Updated via Family"
+msgstr ""
+
+msgid "Upgrade"
+msgstr ""
+
+msgid "Upgrade Complete!"
+msgstr ""
+
+msgid "Upgrade Settings"
+msgstr ""
+
+msgid "Upgrade failed."
+msgstr ""
+
+msgid "Upgrade failed. Please check the logs."
+msgstr ""
+
+msgid "Upgrade information refreshed successfully"
+msgstr ""
+
+msgid "Upgrade information refreshed. Reloading page..."
+msgstr ""
+
+msgid "Upload CSV"
+msgstr ""
+
+msgid "Upload Photo"
+msgstr ""
+
+msgid "Upload a CSV file to import families and people into ChurchCRM."
+msgstr ""
+
+msgid "Upload a CSV from Excel, Google Sheets, or your previous church management system and map columns to ChurchCRM fields."
+msgstr ""
+
+msgid "Upload failed."
+msgstr ""
+
+msgid "Upload failed. Please check the file and try again."
+msgstr ""
+
+msgid "Upload session expired. Please upload the file again."
+msgstr ""
+
+msgid "Uploading, please wait..."
+msgstr ""
+
+#. Context: countries
+msgid "Uruguay"
+msgstr ""
+
+#. plugin:custom-links:section:4:title
+msgid "Use Cases"
+msgstr ""
+
+msgid "Use Ctrl Key to select multiple"
+msgstr ""
+
+msgid "Use Title Page"
+msgstr ""
+
+msgid "Use a different account"
+msgstr ""
+
+msgid "Use address/contact data from"
+msgstr ""
+
+msgid "Use classification and family filters to generate reports for specific groups of donors."
+msgstr ""
+
+msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
+msgstr ""
+
+msgid "Used for scheduling events and reporting times."
+msgstr ""
+
+msgid "Used to end a letter before Signer"
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "User Delete Confirmation"
+msgstr ""
+
+msgid "User Editor"
+msgstr ""
+
+msgid "User Interface"
+msgstr ""
+
+msgid "User authenticated via API Key: "
+msgstr ""
+
+msgid "User authentication"
+msgstr ""
+
+msgid "User must be an Admin"
+msgstr ""
+
+msgid "User must be an Admin or have Finance permission"
+msgstr ""
+
+msgid "User must have Add Event permission"
+msgstr ""
+
+msgid "User must have Delete Records permission"
+msgstr ""
+
+msgid "User must have Edit Records permission"
+msgstr ""
+
+msgid "User must have Manage Groups permission"
+msgstr ""
+
+msgid "User must have Menu Options permission"
+msgstr ""
+
+msgid "User must have Notes permission"
+msgstr ""
+
+msgid "User not found"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to create directories"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to send email via mailto: links"
+msgstr ""
+
+msgid "UserName not set"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "Username and password are required."
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+#. Context: countries
+msgid "Uzbekistan (Oʻzbekiston)"
+msgstr ""
+
+msgid "Valid Examples:"
+msgstr ""
+
+msgid "Valid Settings"
+msgstr ""
+
+msgid "Validation Error"
+msgstr ""
+
+#, php-format
+msgid "Validation failed: %s"
+msgstr ""
+
+msgid "Validation pending"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Value is configured"
+msgstr ""
+
+msgid "Value is set - leave blank to keep current"
+msgstr ""
+
+#. Context: countries
+msgid "Vanuatu"
+msgstr ""
+
+msgid "Variable name"
+msgstr ""
+
+#. Context: countries
+msgid "Vatican City (Città del Vaticano)"
+msgstr ""
+
+#. Context: countries
+msgid "Venezuela"
+msgstr ""
+
+msgid "Verbage for bottom line of tax report."
+msgstr ""
+
+msgid "Verbage for the database information confirmation and correction report"
+msgstr ""
+
+msgid "Verbage for the directory report"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report - No record of a pledge"
+msgstr ""
+
+msgid "Verbage for the pledge reminder report - No record of payments"
+msgstr ""
+
+msgid "Verbage for the pledge summary report"
+msgstr ""
+
+msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
+msgstr ""
+
+msgid "Verification URL"
+msgstr ""
+
+msgid "Verification URL created"
+msgstr ""
+
+msgid "Verification email sent"
+msgstr ""
+
+msgid "Verification recorded"
+msgstr ""
+
+msgid "Verified In Person"
+msgstr ""
+
+msgid "Verify"
+msgstr ""
+
+msgid "Verify & Sign In"
+msgstr ""
+
+msgid "Verify Code"
+msgstr ""
+
+msgid "Verify Info"
+msgstr ""
+
+msgid "Verify People"
+msgstr ""
+
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr ""
+
+msgid "Verify fund names and descriptions are accurate for statements."
+msgstr ""
+
+msgid "Verify your identity"
+msgstr ""
+
+msgid "Verifying"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "Version Mismatch"
+msgstr ""
+
+msgid "Version:"
+msgstr ""
+
+#. Context: countries
+msgid "Vietnam (Việt Nam)"
+msgstr ""
+
+#. Context: locales
+msgid "Vietnamese"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "View All Deposits"
+msgstr ""
+
+msgid "View Buyers"
+msgstr ""
+
+msgid "View Cart"
+msgstr ""
+
+msgid "View Details"
+msgstr ""
+
+msgid "View Family"
+msgstr ""
+
+msgid "View Family Page"
+msgstr ""
+
+msgid "View Group"
+msgstr ""
+
+msgid "View Logs"
+msgstr ""
+
+msgid "View People"
+msgstr ""
+
+msgid "View Person Page"
+msgstr ""
+
+msgid "View Photo"
+msgstr ""
+
+msgid "View Profile"
+msgstr ""
+
+msgid "View Properties"
+msgstr ""
+
+msgid "View User"
+msgstr ""
+
+msgid "View all families on an interactive map"
+msgstr ""
+
+msgid "View all results"
+msgstr ""
+
+msgid "View and manage all groups in your congregation"
+msgstr ""
+
+msgid "View and manage deposit slip payments"
+msgstr ""
+
+msgid "View and manage family location data"
+msgstr ""
+
+msgid "View and manage system log files for debugging"
+msgstr ""
+
+msgid "View and manage system log files for debugging."
+msgstr ""
+
+msgid "View and run saved database queries"
+msgstr ""
+
+msgid "View buyer numbers and paddle assignments"
+msgstr ""
+
+msgid "View class roster, teacher assignments, and contact information"
+msgstr ""
+
+msgid "View family details, members, and timeline"
+msgstr ""
+
+msgid "View family pledge summaries and fund allocations"
+msgstr ""
+
+msgid "View group members, roles, and properties"
+msgstr ""
+
+msgid "View pledge dashboard"
+msgstr ""
+
+msgid "View query results"
+msgstr ""
+
+msgid "View transaction details for a pledge payment"
+msgstr ""
+
+msgid "View, Add and Edit Notes"
+msgstr ""
+
+msgid "Visit Our Website"
+msgstr ""
+
+msgid "Volunteer"
+msgstr ""
+
+msgid "Volunteer Opportunities"
+msgstr ""
+
+msgid "Volunteer Opportunity"
+msgstr ""
+
+msgid "Volunteer Opportunity Editor"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Volunteer opportunities"
+msgstr ""
+
+#. Context: query_qry
+msgid "Volunteers"
+msgstr ""
+
+msgid "Vonage API Key"
+msgstr ""
+
+msgid "Vonage API Secret"
+msgstr ""
+
+#. plugin:vonage:link:0:label
+msgid "Vonage Dashboard"
+msgstr ""
+
+#. plugin:vonage:link:2:label
+msgid "Vonage Pricing"
+msgstr ""
+
+#. plugin:vonage:link:1:label
+msgid "Vonage SMS API Documentation"
+msgstr ""
+
+msgid "Vonage SMS Connected"
+msgstr ""
+
+msgid "Vonage SMS Not Configured"
+msgstr ""
+
+#. plugin:vonage:summary
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr ""
+
+#. plugin:vonage:section:6:content
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr ""
+
+msgid "Vonage server error. Please try again later."
+msgstr ""
+
+msgid "Voting Members"
+msgstr ""
+
+msgid "Voting members must have made a donation within this many years (0 to not require a donation)"
+msgstr ""
+
+msgid "W"
+msgstr ""
+
+msgid "WARNING: This action can not be undone and may have legal implications!"
+msgstr ""
+
+msgid "WARNING: This family has records of donations and may NOT be deleted until these donations are associated with another family."
+msgstr ""
+
+msgid "WNW"
+msgstr ""
+
+msgid "WSW"
+msgstr ""
+
+msgid "Waiting to Check In"
+msgstr ""
+
+#. Context: countries
+msgid "Wallis and Futuna"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Warning:"
+msgstr ""
+
+msgid "Warnings"
+msgstr ""
+
+msgid "We could not find the family you were looking for."
+msgstr ""
+
+msgid "We could not find the group you were looking for."
+msgstr ""
+
+msgid "We could not find the person you were looking for."
+msgstr ""
+
+msgid "We could not find the record you were looking for."
+msgstr ""
+
+msgid "We encountered an error processing your verification. Please try again or contact us directly."
+msgstr ""
+
+msgid "We were unable to process your password reset request."
+msgstr ""
+
+msgid "We'll use this to keep in touch and send church updates."
+msgstr ""
+
+msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgstr ""
+
+msgid "We're so glad your family has joined us!"
+msgstr ""
+
+msgid "Web Server"
+msgstr ""
+
+msgid "WebDAV Configuration"
+msgstr ""
+
+msgid "WebDAV Connection"
+msgstr ""
+
+msgid "WebDAV Endpoint URL is required."
+msgstr ""
+
+msgid "WebDAV backups are not correctly configured. Please ensure endpoint, username, and password are set."
+msgstr ""
+
+msgid "WebDAV endpoint URL is required."
+msgstr ""
+
+msgid "WebDAV password is required."
+msgstr ""
+
+msgid "WebDAV username is required."
+msgstr ""
+
+msgid "Website"
+msgstr ""
+
+msgid "Wedding"
+msgstr ""
+
+msgid "Wedding Date"
+msgstr ""
+
+msgid "Wednesdays"
+msgstr ""
+
+msgid "Weekly"
+msgstr ""
+
+msgid "Weekly on"
+msgstr ""
+
+msgid "Welcome Back!"
+msgstr ""
+
+msgid "Welcome back! Please enter your details to continue"
+msgstr ""
+
+msgid "Welcome to"
+msgstr ""
+
+msgid "Welcome to the Family!"
+msgstr ""
+
+#. Context: countries
+msgid "Western Sahara (‫الصحراء الغربية‬‎)"
+msgstr ""
+
+#. plugin:google-analytics:section:1:title
+msgid "What Gets Tracked"
+msgstr ""
+
+msgid "What are Orphaned Files?"
+msgstr ""
+
+msgid "What happens next?"
+msgstr ""
+
+msgid "What went wrong? What did you expect to happen?"
+msgstr ""
+
+#. plugin:mailchimp:section:3:content
+msgid ""
+"When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr ""
+
+#. plugin:gravatar:section:0:content
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr ""
+
+#. plugin:external-backup:section:2:content
+msgid ""
+"When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr ""
+
+#. plugin:openlp:section:1:content
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr ""
+
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr ""
+
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr ""
+
+msgid "Which role is a child?"
+msgstr ""
+
+msgid "Which role is the head of household?"
+msgstr ""
+
+msgid "Which role is the spouse?"
+msgstr ""
+
+msgid "Who is in your family?"
+msgstr ""
+
+msgid "Why Came"
+msgstr ""
+
+msgid "Why did you come to the church?"
+msgstr ""
+
+msgid "Why do you keep coming?"
+msgstr ""
+
+msgid "Winner"
+msgstr ""
+
+msgid "Winter"
+msgstr ""
+
+msgid "With Photos"
+msgstr ""
+
+msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
+msgstr ""
+
+msgid "Work"
+msgstr ""
+
+msgid "Work / Other Email"
+msgstr ""
+
+msgid "Work Email is Not Valid"
+msgstr ""
+
+msgid "Work Phone"
+msgstr ""
+
+msgid "Work/Other Email"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "WorkEmail"
+msgstr ""
+
+msgid "YTD Payments"
+msgstr ""
+
+msgid "YTD Pledges"
+msgstr ""
+
+msgid "Year"
+msgstr ""
+
+msgid "Yearly on"
+msgstr ""
+
+#. Context: countries
+msgid "Yemen (‫اليمن‬‎)"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Yes, Empty Cart"
+msgstr ""
+
+msgid "Yes, Remove"
+msgstr ""
+
+msgid "Yes, delete"
+msgstr ""
+
+msgid "Yes, delete this Opportunity"
+msgstr ""
+
+msgid "Yes, delete this record"
+msgstr ""
+
+msgid "You are about to add a new deposit without a comment"
+msgstr ""
+
+msgid "You are about to delete the profile photo, this procedure is irreversible."
+msgstr ""
+
+msgid "You are about to email copy of the family information to the following emails"
+msgstr ""
+
+#. plugin:external-backup:section:3:content
+msgid ""
+"You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr ""
+
+msgid "You can also use backup recovery codes if you lose access to your app"
+msgstr ""
+
+msgid "You can always import more data later via CSV."
+msgstr ""
+
+msgid "You can create/delete sunday school group."
+msgstr ""
+
+msgid "You can now use your authenticator app to sign in. Each code is valid for 30 seconds."
+msgstr ""
+
+msgid "You can reset your ChurchCRM password by clicking this link"
+msgstr ""
+
+msgid "You do not have finance permissions to view deposits."
+msgstr ""
+
+msgid "You have no items in your cart."
+msgstr ""
+
+msgid "You may create family members now or add them later. All entries will become new person records."
+msgstr ""
+
+msgid "You must enter a Last Name."
+msgstr ""
+
+msgid "You must enter a name"
+msgstr ""
+
+msgid "You must enter the same password in both boxes"
+msgstr ""
+
+msgid "You must pick an event type."
+msgstr ""
+
+msgid "You must select a group."
+msgstr ""
+
+msgid "You must select a type"
+msgstr ""
+
+msgid "You must set a new password before continuing."
+msgstr ""
+
+msgid "You received this email because we received a request for activity on your account. If you didn't request this you can safely delete this email."
+msgstr ""
+
+msgid "You will be logged out and redirected to the login page."
+msgstr ""
+
+msgid "You'll receive backup codes that can be used if you lose access to your app"
+msgstr ""
+
+msgid "Your Account was Deleted"
+msgstr ""
+
+msgid "Your Cart is Empty"
+msgstr ""
+
+msgid "Your ChurchCRM Account was Deleted."
+msgstr ""
+
+msgid "Your ChurchCRM account was locked."
+msgstr ""
+
+msgid "Your ChurchCRM account was unlocked."
+msgstr ""
+
+msgid "Your ChurchCRM installation has been successfully upgraded."
+msgstr ""
+
+msgid "Your ChurchCRM installation is clean. All files on the server match the official release."
+msgstr ""
+
+msgid "Your ChurchCRM password has been changed"
+msgstr ""
+
+msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
+msgstr ""
+
+msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr ""
+
+msgid "Your New Account"
+msgstr ""
+
+msgid "Your account is now protected"
+msgstr ""
+
+msgid "Your account is protected"
+msgstr ""
+
+msgid "Your authenticator app has been successfully enrolled"
+msgstr ""
+
+msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
+msgstr ""
+
+msgid "Your backup will be automatically upgraded to the latest database schema if needed."
+msgstr ""
+
+msgid "Your browser language preference differs from your ChurchCRM locale"
+msgstr ""
+
+msgid "Your cart contains"
+msgstr ""
+
+msgid "Your cart has been successfully emptied"
+msgstr ""
+
+msgid "Your cart is empty"
+msgstr ""
+
+msgid "Your cart is empty!"
+msgstr ""
+
+msgid "Your child"
+msgstr ""
+
+msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
+msgstr ""
+
+msgid "Your fiscal year starts in month"
+msgstr ""
+
+msgid "Your new password is too similar to your old one."
+msgstr ""
+
+msgid "Your new password must be at least"
+msgstr ""
+
+msgid "Your new password must not match your old one."
+msgstr ""
+
+msgid "Your password choice is too obvious. Please choose something else."
+msgstr ""
+
+msgid "Your password has been updated successfully."
+msgstr ""
+
+msgid "Your previous session timed out. Please login again."
+msgstr ""
+
+msgid "Your privacy is important. We never share your information with third parties."
+msgstr ""
+
+msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr ""
+
+msgid "Your verification request has been received. Thank you for keeping your information up to date."
+msgstr ""
+
+msgid "ZIP code is required."
+msgstr ""
+
+#. Context: countries
+msgid "Zambia"
+msgstr ""
+
+msgid "Zero"
+msgstr ""
+
+msgid "Zero Givers"
+msgstr ""
+
+#. Context: countries
+msgid "Zimbabwe"
+msgstr ""
+
+msgid "Zip"
+msgstr ""
+
+#. Context: queryparameteroptions_qpo
+msgid "Zip Code"
+msgstr ""
+
+msgid "Zip code is required"
+msgstr ""
+
+msgid "ZipArchive extension required for upgrades"
+msgstr ""
+
+msgid "active"
+msgstr ""
+
+msgid "added"
+msgstr ""
+
+msgid "added to this event"
+msgstr ""
+
+msgid "ago"
+msgstr ""
+
+msgid "all members"
+msgstr ""
+
+msgid "already in cart"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "are not allowed."
+msgstr ""
+
+msgid "assigned"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "but not this year"
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "characters"
+msgstr ""
+
+msgid "characters in length."
+msgstr ""
+
+msgid "complete"
+msgstr ""
+
+msgid "data for member"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "deposit(s) with no payments"
+msgstr ""
+
+msgid "e.g. Sunday Service"
+msgstr ""
+
+msgid "e.g., Church Website"
+msgstr ""
+
+msgid "e.g., Sunday School, Bible Study..."
+msgstr ""
+
+msgid "e.g., Visitors, Children"
+msgstr ""
+
+msgid "families"
+msgstr ""
+
+msgid "family"
+msgstr ""
+
+msgid "fields"
+msgstr ""
+
+msgid "find family from check account #"
+msgstr ""
+
+msgid "for funds "
+msgstr ""
+
+msgid "found"
+msgstr ""
+
+msgid "from group"
+msgstr ""
+
+msgid "from this class?"
+msgstr ""
+
+msgid "from this group?"
+msgstr ""
+
+msgid "full group view"
+msgstr ""
+
+msgid "funds"
+msgstr ""
+
+msgid "in"
+msgstr ""
+
+msgid "in cart"
+msgstr ""
+
+msgid "invalid calendar pinning"
+msgstr ""
+
+msgid "invalid event type id"
+msgstr ""
+
+msgid "invalid export value"
+msgstr ""
+
+msgid "invalid group request"
+msgstr ""
+
+msgid "invalid status value"
+msgstr ""
+
+msgid "is disabled"
+msgstr ""
+
+msgid "issues"
+msgstr ""
+
+msgid "item"
+msgstr ""
+
+msgid "items"
+msgstr ""
+
+msgid "kilometers"
+msgstr ""
+
+msgid "loading"
+msgstr ""
+
+msgid "manifest."
+msgstr ""
+
+msgid "member"
+msgstr ""
+
+msgid "members"
+msgstr ""
+
+msgid "members. Already had"
+msgstr ""
+
+msgid "miles"
+msgstr ""
+
+msgid "mismatch detected"
+msgstr ""
+
+msgid "mismatches detected"
+msgstr ""
+
+msgid "name@example.com"
+msgstr ""
+
+msgid "needs to be picked up from"
+msgstr ""
+
+msgid "not found"
+msgstr ""
+
+msgid "not found or user without an email"
+msgstr ""
+
+msgid "of"
+msgstr ""
+
+msgid "of pledges"
+msgstr ""
+
+msgid "open"
+msgstr ""
+
+msgid "open rate"
+msgstr ""
+
+msgid "opportunities"
+msgstr ""
+
+msgid "optional"
+msgstr ""
+
+msgid "options"
+msgstr ""
+
+msgid "or click to browse"
+msgstr ""
+
+msgid "or connect an external service"
+msgstr ""
+
+msgid "or later to continue."
+msgstr ""
+
+msgid "our church"
+msgstr ""
+
+msgid "page"
+msgstr ""
+
+msgid "payment(s)?"
+msgstr ""
+
+msgid "payments(s)?"
+msgstr ""
+
+msgid "people added to cart"
+msgstr ""
+
+msgid "people already in cart"
+msgstr ""
+
+msgid "people from"
+msgstr ""
+
+msgid "people from cart"
+msgstr ""
+
+msgid "people removed from cart"
+msgstr ""
+
+msgid "person"
+msgid_plural "people"
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "properties"
+msgstr ""
+
+msgid "property"
+msgstr ""
+
+msgid "records"
+msgstr ""
+
+msgid "records(s) successfully added to selected Group."
+msgstr ""
+
+msgid "records(s) successfully deleted from the selected Group."
+msgstr ""
+
+msgid "s"
+msgstr ""
+
+msgid "seconds..."
+msgstr ""
+
+msgid "select an option"
+msgstr ""
+
+msgid "selected family has no coordinates"
+msgstr ""
+
+msgid "subscribers"
+msgstr ""
+
+msgid "system user changed password"
+msgstr ""
+
+msgid "system user created"
+msgstr ""
+
+msgid "system user deleted"
+msgstr ""
+
+msgid "system user login reset"
+msgstr ""
+
+msgid "system user password changed by admin"
+msgstr ""
+
+msgid "system user password reset"
+msgstr ""
+
+msgid "system user updated"
+msgstr ""
+
+msgid "their classroom"
+msgstr ""
+
+msgid "to another group?"
+msgstr ""
+
+msgid "total"
+msgstr ""
+
+msgid "with at least one:"
+msgstr ""
+
+msgid "with this property..."
+msgstr ""
+
+msgid "years"
+msgstr ""
+
+#. Context: countries
+msgid "Åland Islands (Åland)"
+msgstr ""
+
+msgid "— Ignore —"
+msgstr ""
+
+msgid "— Select Country —"
+msgstr ""
+
+msgid "— Select State —"
+msgstr ""
+
+msgid "— Select a group —"
+msgstr ""
+
+msgid "— Select type (optional) —"
+msgstr ""
+
+#. plugin:google-analytics:section:1:content
+msgid ""
+"• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr ""

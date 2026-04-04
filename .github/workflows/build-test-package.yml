@@ -12,6 +12,12 @@ on:
       - 'LICENSE'
       - '.gitignore'
       - '.ddev/**'
+      - '.agents/**'
+      - '.claude/**'
+      - '.claudecode/**'
+      - 'locale/terms/**'
+      - 'locale/scripts/**'
+      - 'CLAUDE.md'
   push:
     branches:
       - master
@@ -23,6 +29,12 @@ on:
       - 'LICENSE'
       - '.gitignore'
       - '.ddev/**'
+      - '.agents/**'
+      - '.claude/**'
+      - '.claudecode/**'
+      - 'locale/terms/**'
+      - 'locale/scripts/**'
+      - 'CLAUDE.md'
 
 jobs:
   # Determine which PHP versions to test based on trigger

@@ -524,7 +524,7 @@ $otherPeople = $family->getOtherPeople();
                 <div class="card-body">
                     <div id="family-property-loading" class="w-100 text-center">
                         <i class="btn btn-secondary ajax">
-                            <i class="fa-solid fa-spinner fa-spin"></i>&nbsp; <?= gettext("Loading") ?>
+                            <i class="fa-solid fa-spinner fa-spin"></i><?= gettext("Loading") ?>
                         </i>
                     </div>
 
@@ -691,20 +691,20 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning"><i
-                            class="fa-solid fa-envelope"></i> <?= gettext("Online Verification") ?>
+                            class="fa-solid fa-envelope"></i><?= gettext("Online Verification") ?>
                     </button>
                     <button type="button" id="verifyEmailPDF"
                             class="btn btn-warning"><i
-                            class="fa-solid fa-file-pdf"></i> <?= gettext("Email PDF") ?>
+                            class="fa-solid fa-file-pdf"></i><?= gettext("Email PDF") ?>
                     </button>
                     <?php
                 } ?>
                 <button type="button" id="verifyURL"
-                        class="btn btn-secondary"><i class="fa-solid fa-link"></i> <?= gettext("URL") ?></button>
+                        class="btn btn-secondary"><i class="fa-solid fa-link"></i><?= gettext("URL") ?></button>
                 <button type="button" id="verifyDownloadPDF"
-                        class="btn btn-info"><i class="fa-solid fa-download"></i> <?= gettext("PDF") ?></button>
+                        class="btn btn-info"><i class="fa-solid fa-download"></i><?= gettext("PDF") ?></button>
                 <button type="button" id="verifyNow"
-                        class="btn btn-success"><i class="fa-solid fa-check"></i> <?= gettext("Verified In Person") ?>
+                        class="btn btn-success"><i class="fa-solid fa-check"></i><?= gettext("Verified In Person") ?>
                 </button>
             </div>
         </div>

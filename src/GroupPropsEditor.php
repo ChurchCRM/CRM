@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -59,7 +60,7 @@ if (isset($_POST['GroupPropSubmit'])) {
 
         $currentFieldData = InputUtils::legacyFilterInput($_POST[$prop_Field]);
 
-        $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
+        $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $prop_Field, $aPropErrors);
 
         // assign processed value locally to $aPersonProps so we can use it to generate the form later
         $aPersonProps[$prop_Field] = $currentFieldData;
@@ -75,7 +76,7 @@ if (isset($_POST['GroupPropSubmit'])) {
             extract($rowPropList);
             $currentFieldData = trim((string) ($aPersonProps[$prop_Field] ?? ''));
 
-            sqlCustomField($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
+            CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $prop_Field, $sPhoneCountry);
         }
 
         // chop off the last 2 characters (comma and space) added in the last while loop iteration.
@@ -179,7 +180,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
                                     $prop_Special = null;
                                 }  // ugh.. an argument with special cases!
 
-                                formCustomField($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
+                                CustomFieldUtils::renderForm($type_ID, $prop_Field, $currentFieldData, $prop_Special, !isset($_POST['GroupPropSubmit']));
 
                                 if (array_key_exists($prop_Field, $aPropErrors)) {
                                     echo '<span class="text-error">' . InputUtils::escapeHTML($aPropErrors[$prop_Field]) . '</span>';

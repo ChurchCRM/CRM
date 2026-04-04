@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
@@ -13,8 +13,11 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
+use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
@@ -264,7 +267,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Friend Date if one was entered
     if (strlen($dFriendDate) > 0) {
-        $dateString = parseAndValidateDate($dFriendDate, 'US', 'past');
+        $dateString = DateTimeUtils::parseAndValidate($dFriendDate, 'US', 'past');
         if ($dateString === false) {
             $sFriendDateError = '<span class="text-danger">'
                 . gettext('Not a valid Friend Date') . '</span>';
@@ -276,7 +279,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Membership Date if one was entered
     if (strlen($dMembershipDate) > 0) {
-        $dMembershipDate = parseAndValidateDate($dMembershipDate, 'US', 'past');
+        $dMembershipDate = DateTimeUtils::parseAndValidate($dMembershipDate, 'US', 'past');
         if ($dMembershipDate === false) {
             $sMembershipDateError = '<span class="text-danger">'
                 . gettext('Not a valid Membership Date') . '</span>';
@@ -286,7 +289,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (!checkEmail($sEmail)) {
+        if (!MiscUtils::checkEmail($sEmail)) {
             $sEmailError = '<span class="text-danger">'
                 . gettext('Email is Not Valid') . '</span>';
             $bErrorFlag = true;
@@ -295,7 +298,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
-        if (!checkEmail($sWorkEmail)) {
+        if (!MiscUtils::checkEmail($sWorkEmail)) {
             $sWorkEmailError = '<span class="text-danger">'
                 . gettext('Work Email is Not Valid') . '</span>';
             $bErrorFlag = true;
@@ -310,7 +313,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
             $currentFieldData = InputUtils::legacyFilterInput($_POST[$custom_Field]);
 
-            $bErrorFlag |= !validateCustomField($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
+            $bErrorFlag |= !CustomFieldUtils::validate($type_ID, $currentFieldData, $custom_Field, $aCustomErrors);
 
             // assign processed value locally to $aPersonProps so we can use it to generate the form later
             $aCustomData[$custom_Field] = $currentFieldData;
@@ -452,7 +455,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
                 extract($rowCustomField);
                 if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {
                     $currentFieldData = trim($aCustomData[$custom_Field]);
-                    sqlCustomField($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
+                    CustomFieldUtils::buildSql($sSQL, $type_ID, $currentFieldData, $custom_Field, $sPhoneCountry);
                 }
             }
 
@@ -718,7 +721,7 @@ require_once __DIR__ . '/Include/Header.php';
                             if ($iFamily === $fam_ID || $queryParamFamilyId === $fam_ID) {
                                 echo ' selected';
                             }
-                            echo '>' . InputUtils::escapeHTML($fam_Name) . '&nbsp;' . InputUtils::escapeHTML(FormatAddressLine($fam_Address1, $fam_City, $fam_State));
+                            echo '>' . InputUtils::escapeHTML($fam_Name) . '&nbsp;' . InputUtils::escapeHTML(MiscUtils::formatAddressLine($fam_Address1, $fam_City, $fam_State));
                         } ?>
                     </select>
                 </div>
@@ -790,7 +793,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('State') ?>:
                         <?= $bFamilyState ? '</span>' : '' ?>
                     </label>
-                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -816,7 +819,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?= gettext('Country') ?>:
                         <?= $bFamilyCountry ? '</span>' : '' ?>
                     </label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultCountry')) ?>">
                     </select>
                 </div>
             </div>
@@ -856,7 +859,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="HomePhone" id="HomePhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
@@ -880,7 +883,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="CellPhone" id="CellPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatCell') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
@@ -904,7 +907,7 @@ require_once __DIR__ . '/Include/Header.php';
                             <input type="tel" name="WorkPhone" id="WorkPhone"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
-                                   data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormatWithExt') ?>"}'>
+                                   data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
                             <div class="input-group-text">
                                 <div class="form-check mb-0">
                                     <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
@@ -1029,7 +1032,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
-                               value="<?= change_date_for_place_holder($dMembershipDate) ?>" maxlength="10"
+                               value="<?= DateTimeUtils::formatForDatePicker($dMembershipDate) ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
@@ -1042,7 +1045,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
-                               value="<?= change_date_for_place_holder($dFriendDate) ?>" maxlength="10"
+                               value="<?= DateTimeUtils::formatForDatePicker($dFriendDate) ?>" maxlength="10"
                                placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
@@ -1078,7 +1081,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 $customPhoneFields[] = ['checkboxName' => $custom_Field . 'noformat', 'inputName' => $custom_Field];
                             }
 
-                            formCustomField($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
+                            CustomFieldUtils::renderForm($type_ID, $custom_Field, $currentFieldData, $custom_Special, !isset($_POST['PersonSubmit']));
                             if (isset($aCustomErrors[$custom_Field]) && !empty($aCustomErrors[$custom_Field])) {
                                 echo '<span class="text-danger small">' . $aCustomErrors[$custom_Field] . '</span>';
                             }

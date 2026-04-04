@@ -1,10 +1,14 @@
 <?php
 
 require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/Functions.php';
+require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventCountName;
+use ChurchCRM\model\ChurchCRM\EventCountNameQuery;
+use ChurchCRM\model\ChurchCRM\EventType;
+use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -45,78 +49,82 @@ if (isset($_POST['Action'])) {
             $eCntNum = count($eCntArray);
             $theID = $_POST['theID'];
 
-            $insert ="INSERT INTO event_types (type_name";
-            $values =" VALUES ('" . InputUtils::legacyFilterInput($eName) ."'";
+            $eventType = new EventType();
+            $eventType->setName(InputUtils::legacyFilterInput($eName));
             if (!empty($eTime)) {
-                $insert .=", type_defstarttime";
-                $values .=",'" . InputUtils::legacyFilterInput($eTime) ."'";
+                $eventType->setDefStartTime(InputUtils::legacyFilterInput($eTime));
             }
             if (!empty($eRecur)) {
-                $insert .=", type_defrecurtype";
-                $values .=",'" . InputUtils::legacyFilterInput($eRecur) ."'";
+                $eventType->setDefRecurType(InputUtils::legacyFilterInput($eRecur));
             }
             if (!empty($eDOW)) {
-                $insert .=", type_defrecurDOW";
-                $values .=",'" . InputUtils::legacyFilterInput($eDOW) ."'";
+                $dayOfWeekMap = ['1' => 'Sunday', '2' => 'Monday', '3' => 'Tuesday', '4' => 'Wednesday', '5' => 'Thursday', '6' => 'Friday', '7' => 'Saturday'];
+                $dowValue = InputUtils::legacyFilterInput($eDOW);
+                if (isset($dayOfWeekMap[$dowValue])) {
+                    $dowValue = $dayOfWeekMap[$dowValue];
+                }
+                $eventType->setDefRecurDOW($dowValue);
             }
             if (!empty($eDOM)) {
-                $insert .=", type_defrecurDOM";
-                $values .=",'" . InputUtils::legacyFilterInput($eDOM) ."'";
+                $eventType->setDefRecurDOM(InputUtils::legacyFilterInput($eDOM));
             }
             if (!empty($eDOY)) {
-                $insert .=", type_defrecurDOY";
-                $values .=",'" . InputUtils::legacyFilterInput($eDOY) ."'";
+                $eventType->setDefRecurDOY(InputUtils::legacyFilterInput($eDOY));
             }
-            $insert .=")";
-            $values .=")";
-
-            $sSQL = $insert . $values;
-            RunQuery($sSQL);
-            $theID = mysqli_insert_id($cnInfoCentral);
+            $eventType->save();
+            $theID = $eventType->getId();
 
             for ($j = 0; $j < $eCntNum; $j++) {
-                $cCnt = ltrim(rtrim($eCntArray[$j]));
-                $sSQL ="INSERT eventcountnames_evctnm (evctnm_eventtypeid, evctnm_countname) VALUES ('" . InputUtils::legacyFilterInput($theID) ."','" . InputUtils::legacyFilterInput($cCnt) ."') ON DUPLICATE KEY UPDATE evctnm_countname='$cCnt'";
-                RunQuery($sSQL);
+                $cCnt = trim($eCntArray[$j]);
+                $existing = EventCountNameQuery::create()
+                    ->filterByTypeId((int)$theID)
+                    ->filterByName($cCnt)
+                    ->findOne();
+                if ($existing === null) {
+                    $countName = new EventCountName();
+                    $countName->setTypeId((int)$theID);
+                    $countName->setName($cCnt);
+                    $countName->save();
+                }
             }
             RedirectUtils::redirect('EventNames.php');
             break;
 
         case 'DELETE':
-            $theID = $_POST['theID'];
-            $sSQL ="DELETE FROM event_types WHERE type_id='" . InputUtils::legacyFilterInput($theID) ."' LIMIT 1";
-            RunQuery($sSQL);
-            $sSQL ="DELETE FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='" . InputUtils::legacyFilterInput($theID) ."'";
-            RunQuery($sSQL);
+            $theID = (int)$_POST['theID'];
+            EventTypeQuery::create()->filterById($theID)->delete();
+            EventCountNameQuery::create()->filterByTypeId($theID)->delete();
             $theID = '';
             $_POST['Action'] = '';
             break;
     }
 }
 
-$sSQL = 'SELECT * FROM event_types ORDER BY type_id';
-$rsOpps = RunQuery($sSQL);
-$numRows = mysqli_num_rows($rsOpps);
+$eventTypes = EventTypeQuery::create()->orderById()->find();
+$numRows = count($eventTypes);
 
-for ($row = 1; $row <= $numRows; $row++) {
-    $aRow = mysqli_fetch_array($rsOpps, MYSQLI_BOTH);
-    extract($aRow);
+$row = 0;
+foreach ($eventTypes as $et) {
+    $row++;
 
-    $aTypeID[$row] = $type_id;
-    $aTypeName[$row] = $type_name;
+    $aTypeID[$row] = $et->getId();
+    $aTypeName[$row] = $et->getName();
     
     // Convert 24-hour time to 12-hour AM/PM format for display
-    if ($type_defstarttime) {
-        $dateTime = \DateTime::createFromFormat('H:i:s', $type_defstarttime);
-        $aDefStartTime[$row] = $dateTime ? $dateTime->format('g:i A') : $type_defstarttime;
+    $startTime = $et->getDefStartTime();
+    if ($startTime instanceof \DateTime) {
+        $aDefStartTime[$row] = $startTime->format('g:i A');
+    } elseif (is_string($startTime) && $startTime !== '') {
+        $dateTime = \DateTime::createFromFormat('H:i:s', $startTime);
+        $aDefStartTime[$row] = $dateTime ? $dateTime->format('g:i A') : $startTime;
     } else {
         $aDefStartTime[$row] = '';
     }
-    
-    $aDefRecurDOW[$row] = $type_defrecurDOW;
-    $aDefRecurDOM[$row] = $type_defrecurDOM;
-    $aDefRecurDOY[$row] = $type_defrecurDOY;
-    $aDefRecurType[$row] = $type_defrecurtype;
+
+    $aDefRecurDOW[$row] = $et->getDefRecurDOW();
+    $aDefRecurDOM[$row] = $et->getDefRecurDOM();
+    $aDefRecurDOY[$row] = $et->getDefRecurDOY('Y-m-d');
+    $aDefRecurType[$row] = $et->getDefRecurType();
 
     switch ($aDefRecurType[$row]) {
         case 'none':
@@ -126,7 +134,7 @@ for ($row = 1; $row <= $numRows; $row++) {
                   $recur[$row] = gettext('Weekly on') . ' ' . gettext($aDefRecurDOW[$row] . 's');
             break;
         case 'monthly':
-            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, $aDefRecurDOM[$row], 2000));
+            $recur[$row] = gettext('Monthly on') . ' ' . date('dS', mktime(0, 0, 0, 1, (int)$aDefRecurDOM[$row], 2000));
             break;
         case 'yearly':
             $recur[$row] = gettext('Yearly on') . ' ' . mb_substr($aDefRecurDOY[$row], 5);
@@ -138,16 +146,14 @@ for ($row = 1; $row <= $numRows; $row++) {
     // repeats on DOW, DOM or DOY
     //
     // new - check the count definitions table for a list of count fields
-    $cSQL ="SELECT evctnm_countid, evctnm_countname FROM eventcountnames_evctnm WHERE evctnm_eventtypeid='$aTypeID[$row]' ORDER BY evctnm_countid";
-    $cOpps = RunQuery($cSQL);
-    $numCounts = mysqli_num_rows($cOpps);
-    if ($numCounts) {
+    $countNames = EventCountNameQuery::create()
+        ->filterByTypeId((int)$aTypeID[$row])
+        ->orderById()
+        ->find();
+    if (count($countNames) > 0) {
         $cCountName = [];
-        for ($c = 1; $c <= $numCounts; $c++) {
-            $cRow = mysqli_fetch_array($cOpps, MYSQLI_BOTH);
-            extract($cRow);
-            $cCountID[$c] = $evctnm_countid;
-            $cCountName[$c] = $evctnm_countname;
+        foreach ($countNames as $cn) {
+            $cCountName[] = $cn->getName();
         }
         $cCountList[$row] = implode(', ', $cCountName);
     } else {

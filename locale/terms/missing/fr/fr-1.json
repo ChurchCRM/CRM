@@ -1,15 +1,16 @@
 {
-  "Confession": "Confession",
-  "Format": "Format",
-  "Minimum": "Minimum",
-  "Options": "Options",
-  "Photo": "Photo",
-  "options": "options",
-  "page": "page",
-  "Communication": "Communication",
+  "Confession": "",
+  "Format": "",
+  "Minimum": "",
+  "Options": "",
+  "Photo": "",
+  "options": "",
+  "page": "",
+  "Communication": "",
   "N/A": "",
-  "Parents": "Parents",
-  "Auto TLS": "TLS automatique",
-  "Configuration": "Configuration",
-  "Continent": "Continent"
+  "Parents": "",
+  "Configuration": "",
+  "Continent": "",
+  "File size exceeds the server limit of %s": "",
+  "Missing image data in request": ""
 }

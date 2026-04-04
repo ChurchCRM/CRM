@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/../Include/Config.php';
-require_once __DIR__ . '/../Include/Functions.php';
+require_once __DIR__ . '/../Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Reports\PdfDirectory;
+use ChurchCRM\dto\Cart;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -135,7 +136,7 @@ if ($bExcludeInactive) {
 }
 
 if (array_key_exists('cartdir', $_POST)) {
-    $sWhereExt .= 'AND per_ID IN (' . convertCartToString($_SESSION['aPeopleCart']) . ')';
+    $sWhereExt .= 'AND per_ID IN (' . Cart::getCartIdString() . ')';
 }
 
 $mysqlinfo = mysqli_get_server_info($cnInfoCentral);

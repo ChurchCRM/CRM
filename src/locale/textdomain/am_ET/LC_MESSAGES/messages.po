@@ -7882,10 +7882,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "ይህ ለትላልቅ ዳታቤዞች በርካታ ደቂቃዎችን ሊወስድ ይችላል። ይህንን ገጽ አይዝጉ።"
 
 #: 
-msgid "Upgrade Summary"
-msgstr "የማሻሻያ ማጠቃለያ"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "መጠባበቂያዎችን ከግቢ ውጭ ከማስቀመጥዎ በፊት በውጭ መሳሪያዎች (GPG, 7-Zip) ያመስጥሯቸው።"
 
@@ -8658,10 +8654,6 @@ msgid "Save the file and refresh this page"
 msgstr "ፋይሉን ያስቀምጡ እና ይህንን ገጽ ያድሱ"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "በሰው ማረሚያ ላይ ቤተሰብ ለሌላቸው ሰዎች የግል አድራሻ እንዳይገባ ለመከልከል 'true' ያድርጉ። ለመፍቀድ ደግሞ 'false' ያድርጉ።"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "በ <strong>http://</strong> ወይም <strong>https://</strong> ይጀምራል"
 
@@ -9128,10 +9120,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "አዎ፣ ይህንን ዕድል ሰርዝ"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "ተጠቃሚው ለመጠቀም የፋይናንስ ፈቃድ ሊኖረው የሚገቡ መጠይቆች"
-
-#: 
 msgid "Fund(s)"
 msgstr "ፈንድ(ዶች)"
 
@@ -9416,10 +9404,6 @@ msgstr "የሚመጡ የልደት ቀናት"
 #: 
 msgid "Waiting to Check In"
 msgstr "ለቼክ-ኢን እየጠበቀ"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "ሲነቃ፣ አዲስ የኪዮስክ መሳሪያዎች ለ30 ሰኮንዶች መመዝገብ ይችላሉ።"
 
 #: 
 msgid "Your child"
@@ -10585,20 +10569,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "አድራሻ ተጠቅሞ መጋጠሚያዎቹን በራስ-ሰር ለይ"
 
 #: 
-msgid "Basic Information"
-msgstr "መሰረታዊ መረጃ"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "የቤተክርስቲያን መረጃ በተሳካ ሁኔታ ተቀምጧል።"
-
-#: 
 msgid "Church name is required."
 msgstr "የቤተክርስቲያን ስም ያስፈልጋል።"
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "የቤተክርስቲያን ስም ያስፈልጋል። እባክዎ መሰረታዊ መረጃ ትሩን ያጠናቅቁ።"
 
 #: 
 msgid "City is required."
@@ -10657,22 +10629,6 @@ msgid "Language & Localization"
 msgstr "ቋንቋ እና ስፍራ ማስተካከያ"
 
 #: 
-msgid "Location & Map"
-msgstr "ቦታ እና ካርታ"
-
-#: 
-msgid "Location Information"
-msgstr "የቦታ መረጃ"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "ለቤተክርስቲያን ግንኙነቶች ዋና የዕውቂያ ኢሜይል።"
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "የቤተክርስቲያን ዋና የዕውቂያ ስልክ ቁጥር።"
-
-#: 
 msgid "Map"
 msgstr "ካርታ"
 
@@ -10723,10 +10679,6 @@ msgstr "የጎዳና አድራሻ ያስፈልጋል።"
 #: 
 msgid "Student Information"
 msgstr "የተማሪ መረጃ"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "ለቤተክርስቲያን የስርዓት ቋንቋ። የቀን ቅርፀቶች፣ የስልክ ቅርፀቶች እና ሌሎች ስፍራ ማስተካከያዎችን ይነካል።"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11101,10 +11053,6 @@ msgstr "ወደ ውጪ ሞቃዣ ሊወሰን አሁን ስ"
 #: 
 msgid "Browse all available plugins"
 msgstr "ሁሉም ተገኙ ኢንፕሊ መርምርኩ"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "ሁሉም ቅዱስ ክስተቶች የ አንቀሳቃሽ መርምርኩ"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11541,10 +11489,6 @@ msgstr "ዘርግ"
 #: 
 msgid "Explore with Demo Data"
 msgstr "ምሳሌ መረጃ ጋር ዳሰስ"
-
-#: 
-msgid "Export"
-msgstr "ላከት"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12501,10 +12445,6 @@ msgid "The property is successfully removed."
 msgstr "ምንጭ በስኖ ዝወረ።"
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "ይህ ዝር ገጹ ክርክር \"Links\" ምንጫ ውስጥ ይታያል ተራ ስርዓት ነቅል ሲሆን።"
-
-#: 
 msgid "To Family"
 msgstr "ወደ ቤተሰብ"
 
@@ -13293,11 +13233,6 @@ msgstr "የመስክ እሴት"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "ክስተት ያልተገኙ ሰዎች ያግኙ"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "አንድ ዓመት ግን ሌላ አልጋለበው ሰዎች ያግኙ"
 
@@ -13390,11 +13325,6 @@ msgstr "አባልነት ዓመታዊ"
 #: 
 msgid "Minimum Age"
 msgstr "ዝቅተኛ ዕድሜ"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "ሰዎች ጠፍተዋል"
 
 #. Context: query_qry
 #: 
@@ -13587,11 +13517,6 @@ msgstr "ለመፈለግ የመስክ ምርጫ።"
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "የተፈለገውን ስብሰባ ይምረጡ"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "የተፈለገውን የቤተሰብ ሚና ይምረጡ።"
 
@@ -13740,4 +13665,368 @@ msgstr "ለምሳሌ ቅዳሜ ምግባር"
 #: 
 msgid "member"
 msgstr "አባል"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "ሊንኮችን ማከል"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "ቅድመ-ይፋ ዝመናዎችን ፍቀድ"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "ጎብኝዎች እራሳቸውን እንደ አዲስ ቤተሰቦች እንዲያስመዘግቡ ፍቀድ"
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "ማረጋገጫ"
+
+#: 
+msgid "Auto TLS"
+msgstr "ራስ ሰር TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "ራስ-ሰር ምትኬ"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "ሁሉንም ደብዳቤ ወደ BCC ላክ"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "ውቅር"
+
+#: 
+msgid "Continent"
+msgstr "አህጉር"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "ወጪዎች"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "የክሬዲት ካርድ ሰዎች"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "የአሁን አጠቃቀም"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "ነባሪ የምስል ቅጦች"
+
+#: 
+msgid "Default Map View"
+msgstr "ነባሪ የካርታ እይታ"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "የክፍያ ቲኬት አይነት"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "ኢሜይል አትላክ ባህሪ"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "ኤስኤምኤስ አትላክ ባህሪ"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "OpenLP አውርድ"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 የስልክ ቁጥር ቅርጸት"
+
+#: 
+msgid "Enable Email"
+msgstr "ኢሜይልን አንቃ"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "የክስተቶች ምናሌ አንቃ"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "የውጭ ቀን መቁጠሪያ API አንቃ"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "ለስጦታ ፖስታዎች አጠቃቀም አንቃ"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "የተቃኙ ቼኮችን አጠቃቀም አንቃ"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "ቤተሰብ ቃል ኪዳን በበጀት ዓመት"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "ባህሪያት"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "የፋይናንስ ፈቃድ ጥያቄ መታወቂያዎች"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "የተመዘገቡ ተማሪዎችን ፈልግ"
+
+#: 
+msgid "Find family"
+msgstr "ቤተሰብ ፈልግ"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "የሰርቨርህ URL ማግኘት"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "የበጀት ዓመት"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 ማዋቀር መመሪያ"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "ጅምር"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "GA4 የልኬት መታወቂያ ማግኘት"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics እገዛ"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "የ Gravatar ምስል አማራጮች"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar ድረ-ገጽ"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "የተመዘገቡ ተማሪዎች ቡድን"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "ኬክሮስ/ኦሮምን ደብቅ"
+
+#: 
+msgid "Hide Person Address"
+msgstr "የሰው አድራሻ ደብቅ"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "እንዴት እንደሚሰራ"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "በእያንዳንዱ ቅምሻ ወረቀት ለማተም ቼኮች ብዛት"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "ካርታ ሲከፈት የመጀመሪያ ማጉያ ደረጃ"
+
+#: 
+msgid "Learn more"
+msgstr "ተጨማሪ ይወቁ"
+
+#: 
+msgid "Log Settings"
+msgstr "የምዝግብ ቅንጅቶች"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "ሊንኮችን ማስተዳደር"
+
+#: 
+msgid "Neighborhood"
+msgstr "ሰፈር"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 ምንጭ"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP ሰነዶች"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP ድረ-ገጽ"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "በክሬዲት ካርድ ለመክፈል የተዋቀሩ ሰዎች"
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "የሰው/ቤተሰብ ውህደት"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "የስልክ ቁጥር ቅርጸት"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "ግላዊነት እና ተጣጣሚነት"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "የግላዊነት ግምቶች"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "የግላዊነት ማስታወሻ"
+
+#: 
+msgid "Quick Settings"
+msgstr "ፈጣን ቅንጅቶች"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "የተመዘገቡ ተማሪዎች"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP ማረጋገጫ"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP ጊዜ ማብቃት"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "ደህንነት"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "የደህንነት ግምቶች"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "ማጠናቀቅ"
+
+#: 
+msgid "Street"
+msgstr "ጎዳና"
+
+#: 
+msgid "Sunday School Module"
+msgstr "የሰንበት ትምህርት ቤት ሞዱል"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "የሚደገፉ አገልግሎቶች"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "ግንኙነት መሞከር"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "ችግር ፈቺ"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "ችግር ፈቺ - ልክ ያልሆነ ልኳ መታወቂያ"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "ችግር ፈቺ - መልዕክቶች አልተላኩም"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "ችግር ፈቺ - ኤስኤምኤስ አይልክም"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "ዝመና ቅንጅቶች"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "አጠቃቀም ሁኔታዎች"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "CSV ፋይሎችን ለመላክ የተጠቃሚ ፈቃድ"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage ዳሽቦርድ"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage ዋጋ"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API ሰነዶች"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "ምን እንደሚከታተል"
 

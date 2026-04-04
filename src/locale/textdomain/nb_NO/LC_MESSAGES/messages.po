@@ -1930,7 +1930,7 @@ msgstr "Må angi ikke-null sjekknummer"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Sjekk nummeret ikke gyldig for &#39;Cash&#39; betaling"
+msgstr "Sjekk nummeret ikke gyldig for 'Cash' betaling"
 
 #: 
 #, fuzzy
@@ -7962,10 +7962,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Dette kan ta flere minutter for store databaser. Ikke lukk denne siden."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Oppgraderingssammendrag"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Bruk eksterne verktøy (GPG, 7-Zip) for å kryptere sikkerhetskopier før de lagres utenfor huset."
 
@@ -8738,10 +8734,6 @@ msgid "Save the file and refresh this page"
 msgstr "Lagre filen og oppdater denne siden"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Sett til 'true' for å deaktivere inntasting av personadresser for uavhengige personer i personredigeringen. Sett til 'false' for å aktivere inntasting av adresser for personer uten familietilknytning."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Starter med <strong>http://</strong> eller <strong>https://</strong>"
 
@@ -9208,10 +9200,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ja, slett denne muligheten"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Spørringer som brukeren må ha økonomitillatelse for å bruke"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fond"
 
@@ -9496,10 +9484,6 @@ msgstr "Kommende bursdager"
 #: 
 msgid "Waiting to Check In"
 msgstr "Venter på innsjekk"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Når aktivert kan nye kioskenheter registrere seg i 30 sekunder."
 
 #: 
 msgid "Your child"
@@ -10665,20 +10649,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Finn koordinater automatisk fra adresse"
 
 #: 
-msgid "Basic Information"
-msgstr "Grunnleggende informasjon"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Menighetsinformasjon lagret."
-
-#: 
 msgid "Church name is required."
 msgstr "Menighetsnavn er påkrevd."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Menighetsnavn er påkrevd. Fyll ut fanen Grunnleggende informasjon."
 
 #: 
 msgid "City is required."
@@ -10737,22 +10709,6 @@ msgid "Language & Localization"
 msgstr "Språk og lokalisering"
 
 #: 
-msgid "Location & Map"
-msgstr "Sted og kart"
-
-#: 
-msgid "Location Information"
-msgstr "Stedsinformasjon"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Hoved kontakt-e-post for menighetskommunikasjon."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Hovedtelefonnummer for menigheten."
-
-#: 
 msgid "Map"
 msgstr "Kart"
 
@@ -10803,10 +10759,6 @@ msgstr "Gateadresse er påkrevd."
 #: 
 msgid "Student Information"
 msgstr "Elevinfo"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Systemspråk for menigheten. Påvirker datoformat, telefonformat og andre lokaliseringer."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11173,10 +11125,6 @@ msgstr "Sikkerhetskopier til ekstern lagring nå"
 #: 
 msgid "Browse all available plugins"
 msgstr "Bla gjennom alle tilgjengelige tillegg"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Bla gjennom alle kirkens arrangementer og aktiviteter"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11613,10 +11561,6 @@ msgstr "Utvid"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Utforsk med demodata"
-
-#: 
-msgid "Export"
-msgstr "Eksporter"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12561,10 +12505,6 @@ msgid "The property is successfully removed."
 msgstr "Egenskapen er fjernet."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Disse lenkene vises i \"Lenker\"-menyen i navigasjonssidefeltet når dette tillegget er aktivert."
-
-#: 
 msgid "To Family"
 msgstr "Til familie"
 
@@ -13357,11 +13297,6 @@ msgstr "Feltverdi"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Finn personer som ikke møtte opp til en begivenhet"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Finn personer som lovet ett år men ikke et annet"
 
@@ -13454,11 +13389,6 @@ msgstr "Medlemskapsjubilæer"
 #: 
 msgid "Minimum Age"
 msgstr "Minimumalder"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Forsvunnede personer"
 
 #. Context: query_qry
 #: 
@@ -13651,11 +13581,6 @@ msgstr "Velg felt du vil søke i."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Velg ønsket arrangement"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Velg ønsket familieroll."
 
@@ -13804,4 +13729,363 @@ msgstr "f.eks. gudstjeneste på søndag"
 #: 
 msgid "member"
 msgstr "medlem"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Legge til lenker"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Tillat forhåndsversjonsoppgraderinger"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Tillat besøkende å registrere seg som nye familier."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Autentisering"
+
+#: 
+msgid "Auto TLS"
+msgstr "Automatisk TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Automatisk sikkerhetskopiering"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC all post til"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Konfigurasjon"
+
+#: 
+msgid "Continent"
+msgstr "Kontinent"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Kostnader"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "Kredittkortpersoner"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Nåværende bruk"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Standard bildestiler"
+
+#: 
+msgid "Default Map View"
+msgstr "Standard kartvisning"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Type innskuddskvittering"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Ikke send e-post egenskap"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Ikke send SMS egenskap"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Last ned OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 telefonnummerformat"
+
+#: 
+msgid "Enable Email"
+msgstr "Aktiver e-post"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Aktiver hendelsesmeny"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Aktiver ekstern kalender-API"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Aktiver bruk av gavekuverter"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Aktiver bruk av skannede sjekker"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "Familieløfte etter regnskapsår"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Funksjoner"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Finansieringstillatelse spørre-ID-er"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "Finn registrerte studenter"
+
+#: 
+msgid "Find family"
+msgstr "Finn familie"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Finne server-URL-en din"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "Regnskapsår."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 oppsettsveiledning"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Komme i gang"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Hente GA4 målings-ID"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics-hjelp"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar bildealternativer"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar nettsted"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "Gruppe av registrerte studenter"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Skjul bredde-/lengdegrad"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Skjul personadresse"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Slik fungerer det"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Hvor mange sjekker som skal skrives ut per innskuddskvitteringsside"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Innledende zoomnivå ved åpning av kartet"
+
+#: 
+msgid "Learn more"
+msgstr "Finn ut mer"
+
+#: 
+msgid "Log Settings"
+msgstr "Logginnstillinger"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Administrere lenker"
+
+#: 
+msgid "Neighborhood"
+msgstr "Nabolag"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 kilde"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP dokumentasjon"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP nettsted"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "Personer som er konfigurert til å betale med kredittkort."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Person/familie-integrasjon"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Telefonnummerformat"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Personvern og etterlevelse"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Personvernhensyn"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Personvernmerknad"
+
+#: 
+msgid "Quick Settings"
+msgstr "Hurtiginnstillinger"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "Registrerte studenter"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP-autentisering"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP tidsavbrudd"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Sikkerhet"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Sikkerhetshensyn"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Oppsett"
+
+#: 
+msgid "Street"
+msgstr "Gate"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Søndagsskole-modul"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Støttede tjenester"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Teste tilkobling"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Feilsøking"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Feilsøking – Ugyldig avsender-ID"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Feilsøking – Meldinger ikke levert"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Feilsøking – SMS sendes ikke"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Oppgraderingsinnstillinger"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Brukstilfeller"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "Brukertillatelse til å eksportere CSV-filer"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage priser"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API dokumentasjon"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Hva spores"
 
