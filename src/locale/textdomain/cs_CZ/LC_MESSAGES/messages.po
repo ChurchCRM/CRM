@@ -11009,10 +11009,6 @@ msgid "Auto-mapped"
 msgstr "Automaticky přiřazeno"
 
 #: 
-msgid "BCC"
-msgstr "Skrytá kopie"
-
-#: 
 msgid "BCC All"
 msgstr "Skrytá kopie všem"
 
@@ -12699,10 +12695,6 @@ msgid "members"
 msgstr "členové"
 
 #: 
-msgid "name@example.com"
-msgstr "jmeno@priklad.cz"
-
-#: 
 msgid "opportunities"
 msgstr "příležitosti"
 
@@ -13656,23 +13648,153 @@ msgstr "např. Nedělní služba"
 msgid "member"
 msgstr "člen"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Přehled**: Zobrazit všechny vaše seznamy MailChimp se statistikami odběratelů\n"
+"- **Správa seznamů**: Identifikovat osoby v MailChimp, ale ne v CRM, a naopak\n"
+"- **Integrace kontaktů**: Zobrazit stav odběru MailChimp na stránkách osoby a rodiny\n"
+"- **Automatická synchronizace**: Propojení s aktualizacemi osob/rodin pro udržování MailChimp v synchronizaci"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Vytvořte účet Vonage na https://dashboard.nexmo.com/sign-up (nové účty zahrnují bezplatný zkušební kredit)\n"
+"2. Najděte svůj klíč API a tajný klíč API na domovské stránce řídicího panelu Vonage\n"
+"3. Přejděte na Čísla > Koupit čísla a zakupte číslo s možností SMS\n"
+"4. Poznamenejte si číslo ve formátu E.164 (např. +420123456789)\n"
+"5. V ChurchCRM aktivujte plugin Vonage SMS a zadejte své přihlašovací údaje"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Přejděte na Google Analytics (analytics.google.com)\n"
+"2. Vytvořte vlastnost nebo vyberte stávající\n"
+"3. Přejděte na Správce → Datové toky → Web\n"
+"4. Zkopírujte ID měření (začíná G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Nainstalujte OpenLP 3.0 nebo novější na váš prezentační počítač\n"
+"2. Aktivujte plugin Remote v OpenLP (Nastavení → Konfigurovat OpenLP → Pluginy)\n"
+"3. Aktivujte plugin Upozornění v OpenLP pro podporu zobrazení upozornění\n"
+"4. Poznamenejte si IP adresu počítače s OpenLP\n"
+"5. Zadejte adresu URL serveru ve formátu: http://IP_ADRESA:4316\n"
+"6. Pokud jste v OpenLP nakonfigurovali ověřování, zadejte uživatelské jméno a heslo"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Přístup k řídicímu panelu MailChimp z nabídky E-mail. Řídicí panel zobrazuje:\n"
+"\n"
+"- Počet členů pro každý seznam\n"
+"- Statistiky kampaní\n"
+"- Počty odhlášení\n"
+"- Nástroje pro správu seznamů"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Přidávání odkazů"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Všechny nakonfigurované odkazy jsou zobrazeny v tabulce. Můžete:\n"
+"- Zobrazit název odkazu a URL\n"
+"- Kliknout na URL a ověřit, že se správně otevírá\n"
+"- Odstranit odkazy, které již nepotřebujete\n"
+"\n"
+"Odkazy se zobrazují v pořadí, ve kterém byly přidány do navigační nabídky."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Povolit předběžné aktualizace"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Umožnit zaznamenávání daňově neuznatelných plateb ve finančním modulu"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Umožnit připojení naskenovaných obrázků šeků k záznamům vkladů"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Umožnit aktualizace systému na verze označené jako 'předběžné vydání' na GitHubu"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Umožnit neověřený přístup ke kalendářovým událostem prostřednictvím veřejných URL adres ve formátu HTML, ICS a JSON. Vyžadováno pro sdílení kalendářů s externími aplikacemi."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Umožnit návštěvníkům vytvořit vlastní rodinný záznam prostřednictvím stránky pro vlastní registraci"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Povolte návštěvníkům registrovat se jako nové rodiny."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "S tímto pluginem funguje libovolná služba kompatibilní s WebDAV:\n"
+"\n"
+"- Nextcloud (doporučeno)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (s WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx s modulem WebDAV\n"
+"\n"
+"Poznámka: Některé služby vyžadují pro přístup přes WebDAV hesla specifická pro aplikaci."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Ověřování"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Ověřování je vyžadováno pro API v2, pokud jste jej aktivovali v nastavení pluginu Remote v OpenLP. Plugin používá HTTP Basic Authentication. Většina nastavení lokální sítě nevyžaduje ověřování, ale z bezpečnostních důvodů je doporučeno."
 
 #: 
 msgid "Auto TLS"
@@ -13686,6 +13808,69 @@ msgstr "Automatická záloha"
 #: 
 msgid "BCC All Mail To"
 msgstr "Skrytá kopie všech zpráv na"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Před spoléháním na externí zálohy otestujte připojení:\n"
+"1. Přejděte na Pluginy > Externí záloha\n"
+"2. Klikněte na 'Otestovat připojení WebDAV'\n"
+"3. Ověřte, že se zobrazí zpráva o úspěchu\n"
+"\n"
+"Časté problémy:\n"
+"- Chyby 401/403: Zkontrolujte uživatelské jméno a heslo\n"
+"- Časový limit připojení: Ověřte správnost adresy URL koncového bodu\n"
+"- Chyby certifikátu: Ujistěte se, že server WebDAV má platný certifikát SSL"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Zvolte, co se zobrazí, pokud Gravatar neexistuje:\n"
+"• Mystery Person – šedý obrys siluety\n"
+"• Identicon – geometrický vzor na základě e-mailu\n"
+"• MonsterID – jedinečně vygenerovaný obličej monstra\n"
+"• Wavatar – abstraktně vygenerovaný obličej\n"
+"• Retro – pixelová grafika ve stylu 8-bit arcade\n"
+"• RoboHash – jedinečně vygenerovaný robot\n"
+"• Blank – průhledný (nahrazen iniciálami)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "ID dotazů oddělená čárkami, která vyžadují finanční oprávnění k zobrazení"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Běžné použití vlastních odkazů:\n"
+"- Webové stránky církve\n"
+"- Portál pro online dary\n"
+"- Formuláře pro přihlášení dobrovolníků\n"
+"- Zdroje denominace\n"
+"- Stránky partnerských organizací\n"
+"- Složky cloudového úložiště\n"
+"- Stránky pro registraci na události"
 
 #. plugin:external-backup:section:1:title
 #: 
@@ -13756,6 +13941,22 @@ msgid "Enable External Calendar API"
 msgstr "Povolit externí API kalendáře"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Povolit odesílání e-mailů z ChurchCRM. Vyžadováno pro obnovu hesla, oznámení a e-mailové odkazy."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktivujte, pokud váš SMTP server vyžaduje uživatelské jméno a heslo"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Povolit nebo zakázat modul nedělní školy a boční nabídku."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Povolit používání číslovaných obálek pro dary ke sledování příspěvků"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Povolit použití obálek darů"
 
@@ -13796,6 +13997,21 @@ msgstr "Nalezení URL vašeho serveru"
 msgid "Fiscal Year."
 msgstr "Fiskální rok."
 
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Z bezpečnostních důvodů:\n"
+"- Pouze správci mohou přidávat nebo odebírat odkazy\n"
+"- Možnost 'Spravovat odkazy' se zobrazuje pouze správcům\n"
+"- Odkazy musí používat protokol http:// nebo https://\n"
+"- HTML značky nejsou v názvech ani URL povoleny\n"
+"- Veškerý vstup je ověřen a ošetřen"
+
 #. plugin:google-analytics:link:1:label
 #: 
 msgid "GA4 Setup Guide"
@@ -13811,10 +14027,25 @@ msgstr "Začínáme"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Získání měřicího ID GA4"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) sleduje, jak uživatelé pracují s ChurchCRM, a poskytuje přehled o zobrazení stránek, zapojení uživatelů a využívání funkcí."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Nápověda Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics shromažďuje anonymizovaná data o používání. Do Google nejsou odesílány žádné osobní informace ze záznamů ChurchCRM. Zvažte přidání oznámení o ochraně soukromí do zásad ochrany dat vaší církve."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (globálně uznávaný avatar) zobrazuje profilové fotografie z gravatar.com pro členy, kteří nemají v ChurchCRM nahraté vlastní fotografie."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13825,6 +14056,11 @@ msgstr "Možnosti obrázku Gravatar"
 #: 
 msgid "Gravatar Website"
 msgstr "Web Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Skutečná e-mailová adresa není nikdy odeslána na servery Gravatar – k vyhledání obrázku se používá pouze hash."
 
 #. Context: queryparameters_qrp
 #: 
@@ -13849,6 +14085,77 @@ msgstr "Jak to funguje"
 msgid "How many checks to print per deposit slip page"
 msgstr "Kolik šeků vytisknout na stránce vkladového dokladu"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Pokud SMS zprávy nejsou odesílány:\n"
+"1. Ověřte, že klíč API a tajný klíč jsou správné (bez mezer navíc)\n"
+"2. Zkontrolujte, že odesílací číslo je platné číslo Vonage, které vlastníte\n"
+"3. Ujistěte se, že telefonní čísla příjemců obsahují mezinárodní předvolbu\n"
+"4. Zkontrolujte zůstatek na účtu Vonage\n"
+"5. Zkontrolujte stav doručení v Řídicí panel Vonage > SMS > Protokoly"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Pokud se upozornění nezobrazují:\n"
+"1. Ověřte, že OpenLP běží a plugin Remote je aktivní\n"
+"2. Ujistěte se, že plugin Upozornění je v OpenLP aktivován\n"
+"3. Zkontrolujte, zda je adresa URL serveru správná (zkuste ji otevřít v prohlížeči)\n"
+"4. Ověřte, zda nastavení brány firewall povoluje připojení na portu 4316\n"
+"5. Pokud používáte ověřování, ověřte správnost přihlašovacích údajů"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Pokud jsou zprávy odeslány, ale nepřijaty:\n"
+"1. Zkontrolujte stav doručení v Řídicí panel Vonage > SMS > Protokoly\n"
+"2. Ověřte, že číslo příjemce je správné a může přijímat SMS\n"
+"3. Někteří operátoři mohou blokovat zprávy z neznámých čísel\n"
+"4. Zkontrolujte, zda cílová země nemá omezení pro SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Pokud obdržíte chyby neplatného ID odesílatele:\n"
+"1. Použijte telefonní číslo zakoupené od Vonage\n"
+"2. Zadejte číslo ve formátu E.164 (+420123456789)\n"
+"3. Poznámka: Alfanumerická ID odesílatele mohou být v některých zemích omezena"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Důležité bezpečnostní poznámky:\n"
+"\n"
+"1. Vždy používejte HTTPS koncové body pro šifrování záloh při přenosu\n"
+"2. Používejte hesla specifická pro aplikaci, jsou-li k dispozici (Nextcloud, ownCloud)\n"
+"3. Ukládejte zálohy do složky s omezeným přístupem\n"
+"4. Pravidelně stahujte zálohy a ověřujte jejich platnost\n"
+"5. Zvažte šifrování citlivých záloh externími nástroji před nahráním"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Počáteční úroveň přiblížení při otevření mapy"
@@ -13860,6 +14167,11 @@ msgstr "Zjistit více"
 #: 
 msgid "Log Settings"
 msgstr "Nastavení protokolů"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Integrace MailChimp umožňuje synchronizaci mezi kontakty ChurchCRM a vašimi e-mailingovými seznamy MailChimp."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13885,6 +14197,11 @@ msgstr "Dokumentace OpenLP"
 msgid "OpenLP Website"
 msgstr "Web OpenLP"
 
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP je bezplatný open-source prezentační software určený pro církve. Tento plugin umožňuje ChurchCRM odesílat oznámení a upozornění přímo na váš OpenLP displej."
+
 #. Context: query_qry
 #: 
 msgid "People who are configured to pay by credit card."
@@ -13899,6 +14216,26 @@ msgstr "Integrace osoby/rodiny"
 #: 
 msgid "Phone Number Format"
 msgstr "Formát telefonního čísla"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefonní čísla by měla být ve formátu E.164: mezinárodní předvolba + číslo. Příklady:\n"
+"- ČR: +420123456789\n"
+"- SK: +421123456789\n"
+"- USA: +14155551234\n"
+"\n"
+"Telefonní čísla příjemců v profilech členů ChurchCRM by měla obsahovat mezinárodní předvolbu, aby SMS fungovaly správně."
+
+#. Context: query_qry
+#: 
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr "Přehled závazků podle jména rodiny pro každý fond za vybraný fiskální rok"
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13949,6 +14286,22 @@ msgid "Setup"
 msgstr "Nastavení"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Zobrazit přehled nominálních hodnot bankovek v přehledu vkladového dokladu"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Zobrazit nebo skrýt nabídku Události v hlavní navigaci."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Zobrazit nebo skrýt sekci Události v hlavní navigační nabídce"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Zobrazit nebo skrýt modul nedělní školy v boční navigaci"
+
+#: 
 msgid "Street"
 msgstr "Ulice"
 
@@ -13965,6 +14318,89 @@ msgstr "Podporované služby"
 #: 
 msgid "Testing Connection"
 msgstr "Testování připojení"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin Vlastní odkazy nabídky umožňuje správcům přidávat externí odkazy do navigační nabídky. Po aktivaci se v postranním panelu zobrazí nabídka 'Odkazy' obsahující všechny nakonfigurované odkazy."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin Externí záloha umožňuje automaticky zálohovat databázi ChurchCRM do cloudových úložišť kompatibilních s WebDAV. To zahrnuje oblíbené služby jako Nextcloud, ownCloud nebo jakýkoli server podporující protokol WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Výchozí port OpenLP je 4316. Adresa URL serveru bude obvykle: http://192.168.x.x:4316, kde 192.168.x.x je IP adresa počítače, na kterém běží OpenLP. Tuto adresu najdete v OpenLP v části Nástroje → Správce služeb."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Měsíc, ve kterém začíná fiskální rok vaší organizace"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Tento plugin se aktuálně používá pro oznámení přihlášení přes kiosek. Když se dítě přihlásí do hodiny nedělní školy prostřednictvím kiosku, lze rodičům nebo zákonným zástupcům odeslat SMS zprávu."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Tento plugin se aktuálně používá pro oznámení přihlášení přes kiosek. Když se dítě přihlásí do hodiny nedělní školy prostřednictvím kiosku, lze na projektor OpenLP odeslat upozornění k informování rodičů nebo dobrovolníků."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Tento plugin odesílá e-mailové adresy na servery MailChimp. Před synchronizací informací vašich členů se službami třetích stran, jako je MailChimp, se ujistěte, že máte příslušný souhlas."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Přidání nového odkazu:\n"
+"1. Přejděte do nabídky Odkazy v postranním panelu a klikněte na 'Spravovat odkazy'\n"
+"2. Zadejte zobrazovaný název (2–50 znaků)\n"
+"3. Zadejte úplnou URL adresu (musí začínat http:// nebo https://)\n"
+"4. Klikněte na 'Přidat odkaz'\n"
+"\n"
+"Odkaz se okamžitě zobrazí v nabídce Odkazy."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Konfigurace externích záloh:\n"
+"1. Přejděte na Správce > Pluginy a najděte 'Externí záloha (WebDAV)'\n"
+"2. Klikněte na ikonu nastavení pro rozbalení konfiguračního panelu\n"
+"3. Zadejte adresu URL koncového bodu WebDAV (např. https://cloud.example.com/remote.php/dav/files/uzivatel/zalohy/)\n"
+"4. Zadejte uživatelské jméno a heslo\n"
+"5. Volitelně nastavte interval automatického zálohování v hodinách\n"
+"6. Uložte nastavení"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Pro použití integrace MailChimp potřebujete účet MailChimp a klíč API.\n"
+"\n"
+"1. Přihlaste se ke svému účtu MailChimp\n"
+"2. Přejděte na Účet > Doplňky > Klíče API\n"
+"3. Vytvořte nový klíč API nebo zkopírujte stávající\n"
+"4. Zadejte klíč API do nastavení pluginu"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14000,6 +14436,11 @@ msgstr "Případy použití"
 msgid "User permission to export CSV files"
 msgstr "Oprávnění uživatele k exportu souborů CSV"
 
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Řídicí panel Vonage"
+
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14010,8 +14451,98 @@ msgstr "Ceny Vonage"
 msgid "Vonage SMS API Documentation"
 msgstr "Dokumentace Vonage SMS API"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS umožňuje odesílání textových oznámení pro ChurchCRM pomocí rozhraní Vonage API (dříve Nexmo). Odesílejte SMS upozornění rodičům, když se jejich dítě přihlásí prostřednictvím kiosku."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage účtuje poplatek za každou odeslanou SMS. Ceny se liší podle cílové země. Aktuální ceny naleznete na stránce Vonage s cenami. Nové účty obdrží bezplatný zkušební kredit pro testování."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Co se sleduje"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Když je MailChimp nakonfigurován, zobrazí se na stránkách zobrazení osoby záložka 'MailChimp' s informacemi:\n"
+"\n"
+"- Stav odběru e-mailu ve všech seznamech\n"
+"- Které seznamy osoba odebírá\n"
+"- Statistiky odběrů"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Pokud člen nemá nahranou vlastní fotografii, ChurchCRM zkontroluje, zda má Gravatar přidružený k jeho e-mailové adrese. Pokud Gravatar existuje, zobrazí tento obrázek. Pokud ne, použije se nakonfigurovaný výchozí styl obrázku."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Když je automatické zálohování aktivováno (interval > 0 hodin), ChurchCRM automaticky vytvoří a nahraje úplnou zálohu databáze v zadaném intervalu. Zálohování probíhá jako součást normálního načítání stránek, takže systém musí mít pravidelnou aktivitu uživatelů, aby zálohu spustil.\n"
+"\n"
+"Doporučené intervaly:\n"
+"- Denní záloha: 24 hodin\n"
+"- Dvakrát denně: 12 hodin\n"
+"- Týdenní: 168 hodin"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Po aktivaci a konfiguraci odesílá ChurchCRM zprávy upozornění na váš server OpenLP pomocí koncového bodu API v2 (POST /api/v2/plugins/alerts). Tato upozornění se zobrazují jako překryvná oznámení na vašem promítaném displeji."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Po aktivaci skryje pole adresy pro osoby nepřiřazené k rodině"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Po aktivaci skryje pole zeměpisné šířky/délky v editoru rodiny. Geokódování stále probíhá na pozadí."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Ruční zálohu můžete spustit také kdykoli:\n"
+"1. Přejděte na stránku nastavení Externí zálohy (Pluginy > Externí záloha)\n"
+"2. Vyberte typ zálohy (Pouze databáze nebo Úplná záloha)\n"
+"3. Klikněte na 'Zálohovat do WebDAV nyní'\n"
+"\n"
+"Zálohy pouze databáze jsou menší a rychlejší. Úplné zálohy zahrnují nahrané fotografie."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Zobrazení stránek a vzory navigace\n"
+"• Délka relace a zapojení\n"
+"• Demografické údaje uživatelů (pokud je aktivováno v GA4)\n"
+"• Informace o zařízení a prohlížeči"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Velikost souboru překračuje limit serveru %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "V požadavku chybí data obrázku"
 
