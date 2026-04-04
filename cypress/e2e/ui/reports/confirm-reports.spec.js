@@ -119,27 +119,29 @@ describe("Confirmation Reports - MVC Routes", () => {
                 win.location.href = `${win.CRM.root}/v2/people/report/verify?familyId=${invalidFamilyId}`;
             });
 
-            // Should return 200 (empty report) or error — no crash
+            // Should return 200 with an empty (but valid) PDF — no family found but no crash
             cy.wait("@invalidFamily", { timeout: 15000 }).then((interception) => {
-                expect([200, 302, 500]).to.include(interception.response.statusCode);
+                expect(interception.response.statusCode).to.equal(200);
+                const contentType = interception.response.headers["content-type"] || "";
+                expect(contentType).to.include("application/pdf");
             });
         });
     });
 
     describe("MVC route - Email PDF (GET /v2/people/report/verify/email)", () => {
-        it("should redirect after email attempt (no crash)", () => {
+        it("should redirect after email attempt (success or SMTP error redirect)", () => {
             cy.intercept("GET", "**/v2/people/report/verify/email**").as("emailRoute");
 
             cy.window().then((win) => {
                 // Use familyId=1 so only one family is processed; the email
-                // will likely fail in a CI environment without SMTP, which is
-                // acceptable — we only check that the request completes cleanly.
+                // will likely fail in a CI environment without SMTP, which redirects
+                // to /v2/people/verify?EmailsError=true — that is the expected behaviour.
                 win.location.href = `${win.CRM.root}/v2/people/report/verify/email?familyId=1`;
             });
 
             cy.wait("@emailRoute", { timeout: 20000 }).then((interception) => {
-                // Either a redirect (302) or success/error HTML (200/500)
-                expect([200, 302, 500]).to.include(interception.response.statusCode);
+                // The route always redirects: success → verify page, SMTP error → verify?EmailsError=true
+                expect([200, 302]).to.include(interception.response.statusCode);
                 const body = interception.response.body;
                 if (typeof body === "string") {
                     expect(body).to.not.include("Fatal error");

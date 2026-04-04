@@ -75,12 +75,15 @@ function generateVerifyReport(Request $request, Response $response, array $args)
 
     try {
         $service = new ConfirmReportService();
-        $pdfBytes = $service->generateDownloadPDF($familyId);
+        $result = $service->generateDownloadPDF($familyId);
 
-        $response->getBody()->write($pdfBytes);
-        return $response->withHeader('Content-Type', 'application/pdf');
+        $response->getBody()->write($result['bytes']);
+        return $response
+            ->withHeader('Content-Type', 'application/pdf')
+            ->withHeader('Content-Disposition', 'inline; filename="' . $result['filename'] . '"');
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('generateVerifyReport error: ' . $e->getMessage(), ['exception' => $e]);
+        $response->getBody()->write('Error generating PDF: ' . htmlspecialchars($e->getMessage()));
         return $response->withStatus(500)->withHeader('Content-Type', 'text/plain');
     }
 }

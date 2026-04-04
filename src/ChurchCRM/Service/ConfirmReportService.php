@@ -149,20 +149,18 @@ class ConfirmReportService
      * Generate a combined download PDF for all families (or one specific family).
      *
      * @param int|null $familyId If set, only include that one family.
-     * @return string Raw PDF bytes ready to stream to the browser.
+     * @return array{bytes: string, filename: string} PDF bytes and suggested filename.
      */
-    public function generateDownloadPDF(?int $familyId): string
+    public function generateDownloadPDF(?int $familyId): array
     {
         $pdf = new ConfirmDownloadPdf();
         $filename = 'ConfirmReport' . date(SystemConfig::getValue('sDateFilenameFormat')) . '.pdf';
 
         $customFields = PersonCustomMasterQuery::create()->orderByOrder()->find();
-        $numCustomFields = count($customFields);
 
         $familyQuery = FamilyQuery::create()->orderByName();
         if ($familyId !== null) {
             $familyQuery->filterById($familyId);
-            $filename = 'ConfirmReport-' . ($familyQuery->findOne()?->getName() ?? (string)$familyId) . '.pdf';
         }
         $families = $familyQuery->find();
 
@@ -379,7 +377,12 @@ class ConfirmReportService
             $pdf->finishPage($curY);
         }
 
-        return $pdf->Output($filename, 'S');
+        // FPDF requires at least one page; add a blank page when no families were found
+        if (count($families) === 0) {
+            $pdf->AddPage();
+        }
+
+        return ['bytes' => $pdf->Output($filename, 'S'), 'filename' => $filename];
     }
 
     /**
@@ -513,7 +516,7 @@ class ConfirmReportService
                 $sFamRole = $member->getFamilyRoleName();
 
                 // New page if not enough room for custom fields + trailer
-                if (($curY + $numFamilyMembers * SystemConfig::getValue('incrementY')) > 260) {
+                if (($curY + count($customFields) * SystemConfig::getValue('incrementY')) > 260) {
                     $curY = $pdf->startLetterPage($famId, $famName, $addr1, $addr2, $city, $state, $zip, $country);
                     $pdf->SetFont('Times', 'B', 10);
                     $pdf->writeAtCell($XName, $curY, $XGender - $XName, gettext('Member Name'));
