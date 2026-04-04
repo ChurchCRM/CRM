@@ -1,6 +1,5 @@
 <?php
 
-use ChurchCRM\dto\Notification\UiNotification;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Slim\SlimUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -14,7 +13,8 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
 /**
  * @OA\Get(
  *     path="/system/notification",
- *     summary="Get current UI notifications (update alerts, system messages)",
+ *     summary="Get current UI notifications",
+ *     description="**Deprecated** — use `GET /admin/api/notification` instead. Retained for backward compatibility.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of UI notification objects",
@@ -27,27 +27,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
  *         )))
  *     )
  * )
+ * @deprecated Use GET /admin/api/notification instead.
  */
 function getUiNotificationAPI(Request $request, Response $response, array $args): Response
 {
-    if (NotificationService::isUpdateRequired()) {
-        NotificationService::updateNotifications();
-    }
-    $notifications = [];
-    foreach (NotificationService::getNotifications() as $notification) {
-        $title = $notification->title ?? '';
-        $link = $notification->link ?? '';
-        $message = $notification->message ?? '';
-        $icon = $notification->icon ?? 'info-circle';
-        $type = $notification->type ?? 'info';
-        $timeout = $notification->timeout ?? 4000;
-        $placement = $notification->placement ?? 'bottom';
-        $align = $notification->align ?? 'right';
-        $id = $notification->id ?? '';
-        $dismissSettingKey = $id !== '' ? 'notification.dismissed.' . $id : '';
-        $uiNotification = new UiNotification($title, $icon, $link, $message, $type, $timeout, $placement, $align, $id, $dismissSettingKey);
-        $notifications[] = $uiNotification;
-    }
-
-    return SlimUtils::renderJSON($response, ['notifications' => $notifications]);
+    return SlimUtils::renderJSON($response, [
+        'notifications' => NotificationService::toUiNotifications(NotificationService::getNotifications()),
+    ]);
 }

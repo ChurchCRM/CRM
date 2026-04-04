@@ -3,71 +3,55 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\dto\Notification\UiNotification;
 
 class NotificationService
 {
-    public static function updateNotifications(): void
-    {
-        /** Get the latest notifications from the source.  Store in session variable */
-        try {
-            $notificationFileContents = file_get_contents(SystemConfig::getValue('sNotificationsURL'));
-            MiscUtils::throwIfFailed($notificationFileContents);
-            $tempNotifications = json_decode($notificationFileContents, null, 512, JSON_THROW_ON_ERROR);
-            if (isset($tempNotifications->TTL)) {
-                $_SESSION['SystemNotifications'] = $tempNotifications;
-                $expires = (new \DateTimeImmutable())
-                    ->add(new \DateInterval('PT' . $_SESSION['SystemNotifications']->TTL . 'S'));
-                $_SESSION['SystemNotifications']->expires = $expires;
-            }
-        } catch (\Exception $ex) {
-            //a failure here should never prevent the page from loading.
-            //Possibly log an exception when a unified logger is implemented.
-            //for now, do nothing.
-        }
-    }
-
     /**
-     * Check if a version pattern matches the installed version.
-     * Supports wildcards: "7.1.*" matches 7.1.x, "7.*" matches 7.x.y, "*" matches all
+     * Generate in-app system notifications based on current system state.
+     *
+     * Notifications are derived entirely from in-app data (session, system config, etc.)
+     * rather than polling an external URL. Returns an array of stdClass objects
+     * with the following fields (all optional except title):
+     *   - id: string — unique identifier used for per-user dismiss state
+     *   - title: string
+     *   - message: string
+     *   - icon: string — Tabler icon name (e.g. "refresh", "alert-circle")
+     *   - type: string — Bootstrap alert type: "info"|"warning"|"danger"|"success"
+     *   - link: string — optional URL for a "Learn more" anchor
+     *   - adminOnly: bool
      */
-    private static function matchesVersionPattern(string $pattern, string $version): bool
-    {
-        if ($pattern === '*') {
-            return true;
-        }
-        // Convert glob-style pattern to regex: "7.1.*" → "^7\.1\.\d+$"
-        $regex = '/^' . str_replace(['.', '*'], ['\.', '\d+'], $pattern) . '$/';
-        return (bool) preg_match($regex, $version);
-    }
-
-    /** retrieve active notifications from the session variable for display */
     public static function getNotifications(): array
     {
         $notifications = [];
-        if (!isset($_SESSION['SystemNotifications'])) {
-            return $notifications;
-        }
-
         $currentUser = AuthenticationManager::getCurrentUser();
-        $installedVersion = $_SESSION['sSoftwareInstalledVersion'];
 
-        foreach ($_SESSION['SystemNotifications']->messages as $message) {
-            // Support both new targetVersionPattern and old targetVersion (backward compat)
-            $pattern = $message->targetVersionPattern ?? $message->targetVersion ?? '';
-            if (!self::matchesVersionPattern($pattern, $installedVersion)) {
-                continue;
+        // System update available (admin-only)
+        if (
+            $currentUser->isAdmin()
+            && isset($_SESSION['systemUpdateAvailable'])
+            && $_SESSION['systemUpdateAvailable'] === true
+        ) {
+            $availableVersion = (isset($_SESSION['systemUpdateVersion']) && $_SESSION['systemUpdateVersion'] !== null)
+                ? (string) $_SESSION['systemUpdateVersion']
+                : '';
+
+            $notification = new \stdClass();
+            $notification->id        = 'system-update-available';
+            $notification->title     = gettext('System Update Available');
+            $notification->message   = $availableVersion !== ''
+                ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $availableVersion)
+                : gettext('A system update is available. Please upgrade your installation.');
+            $notification->icon      = 'refresh';
+            $notification->type      = 'warning';
+            $notification->link      = '/admin/system/upgrade';
+            $notification->adminOnly = true;
+
+            // Skip if admin has dismissed this notification
+            $dismissKey = 'notification.dismissed.' . $notification->id;
+            if ($currentUser->getSettingValue($dismissKey) !== 'true') {
+                $notifications[] = $notification;
             }
-            if ($message->adminOnly && !$currentUser->isAdmin()) {
-                continue;
-            }
-            // Skip if user has dismissed this notification
-            $dismissKey = 'notification.dismissed.' . ($message->id ?? '');
-            if ($message->id && $currentUser->getSettingValue($dismissKey) === 'true') {
-                continue;
-            }
-            $notifications[] = $message;
         }
 
         return $notifications;
@@ -75,15 +59,34 @@ class NotificationService
 
     public static function hasActiveNotifications(): bool
     {
-        return count(NotificationService::getNotifications()) > 0;
+        return count(self::getNotifications()) > 0;
     }
 
     /**
-     * If session does not contain notifications, or if the notification TTL has expired, return true
-     * otherwise return false.
+     * Transform raw notification stdClass objects into UiNotification DTOs ready for JSON output.
+     *
+     * @param \stdClass[] $notifications
+     * @return UiNotification[]
      */
-    public static function isUpdateRequired(): bool
+    public static function toUiNotifications(array $notifications): array
     {
-        return !isset($_SESSION['SystemNotifications']) || $_SESSION['SystemNotifications']->expires < new \DateTimeImmutable();
+        $result = [];
+        foreach ($notifications as $notification) {
+            $id               = $notification->id ?? '';
+            $dismissSettingKey = $id !== '' ? 'notification.dismissed.' . $id : '';
+            $result[] = new UiNotification(
+                $notification->title ?? '',
+                $notification->icon ?? 'info-circle',
+                $notification->link ?? '',
+                $notification->message ?? '',
+                $notification->type ?? 'info',
+                $notification->timeout ?? 4000,
+                $notification->placement ?? 'bottom',
+                $notification->align ?? 'right',
+                $id,
+                $dismissSettingKey,
+            );
+        }
+        return $result;
     }
 }
