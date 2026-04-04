@@ -37,7 +37,8 @@ if (isset($_POST['save'])) {
         } elseif ($current_type == 'json') {
             $raw = $new_value[$id];
             // Only store if the submitted value is valid JSON; otherwise keep the existing value
-            if (json_decode($raw) !== null || $raw === 'null') {
+            json_decode($raw);
+            if (json_last_error() === JSON_ERROR_NONE) {
                 $value = $raw;
             } else {
                 next($type);
