@@ -745,7 +745,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 
     <!-- Card 2: Address -->
-    <?php if (!SystemConfig::getValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
+    <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Address') ?></h3>
@@ -1033,7 +1033,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dMembershipDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1046,7 +1046,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dFriendDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>

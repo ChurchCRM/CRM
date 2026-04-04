@@ -23,7 +23,7 @@ class FiscalYearUtils
     {
         $yearNow = (int) date('Y');
         $monthNow = (int) date('m');
-        $fyMonth = (int) SystemConfig::getValue('iFYMonth');
+        $fyMonth = SystemConfig::getIntValue('iFYMonth');
         
         $fyid = $yearNow - 1996;
         if ($monthNow >= $fyMonth && $fyMonth > 1) {

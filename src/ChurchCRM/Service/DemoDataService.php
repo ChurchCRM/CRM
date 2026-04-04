@@ -1104,7 +1104,7 @@ class DemoDataService
      */
     private function computeFiscalYearId(int $year, int $month): int
     {
-        $fyMonth = (int) SystemConfig::getValue('iFYMonth');
+        $fyMonth = SystemConfig::getIntValue('iFYMonth');
         $fyId    = $year - 1996;
         if ($month >= $fyMonth && $fyMonth > 1) {
             $fyId += 1;

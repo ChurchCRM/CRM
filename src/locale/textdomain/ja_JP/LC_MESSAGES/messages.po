@@ -14485,3 +14485,11 @@ msgstr "• ページビューとナビゲーションパターン\n"
 "• ユーザーの属性（GA4 で有効にした場合）\n"
 "• デバイスとブラウザ情報"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "ファイルサイズがサーバー制限（%s）を超えています"
+
+#: 
+msgid "Missing image data in request"
+msgstr "リクエストに画像データがありません"
+

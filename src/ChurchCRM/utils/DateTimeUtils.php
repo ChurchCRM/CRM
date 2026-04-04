@@ -179,6 +179,29 @@ class DateTimeUtils
     }
 
     /**
+     * Returns the system datetime format converted to Moment.js syntax,
+     * JSON-encoded and ready for embedding in a JavaScript literal.
+     *
+     * Example output: "MM/DD/YYYY h:mm a"
+     */
+    public static function getDateTimeFormatForJs(): string
+    {
+        static $phpToMoment = [
+            'd' => 'DD',   'D' => 'ddd',  'j' => 'D',    'l' => 'dddd',
+            'N' => 'E',    'S' => 'o',    'w' => 'e',    'z' => 'DDD',
+            'W' => 'W',    'F' => 'MMMM', 'm' => 'MM',   'M' => 'MMM',
+            'n' => 'M',    't' => '',     'L' => '',     'o' => 'YYYY',
+            'Y' => 'YYYY', 'y' => 'YY',   'a' => 'a',    'A' => 'A',
+            'B' => '',     'g' => 'h',    'G' => 'H',    'h' => 'hh',
+            'H' => 'HH',   'i' => 'mm',   's' => 'ss',   'u' => 'SSS',
+            'I' => '',     'O' => '',     'P' => '',     'T' => '',
+            'Z' => '',     'c' => '',     'r' => '',     'U' => 'X',
+        ];
+
+        return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
+    }
+
+    /**
      * Converts a date string to the system-configured date picker format.
      * Migrated from change_date_for_place_holder() in Functions.php.
      */

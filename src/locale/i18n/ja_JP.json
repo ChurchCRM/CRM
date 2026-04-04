@@ -3448,5 +3448,7 @@
     "When enabled, hides the address field for people not assigned to a family": "有効にすると、家族に割り当てられていないメンバーの住所フィールドを非表示にします",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "有効にすると、家族エディタの緯度・経度フィールドを非表示にします。ジオコーディングは引き続きバックグラウンドで実行されます。",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "手動バックアップはいつでもトリガーできます：\n1. 外部バックアップ設定ページに移動（プラグイン > 外部バックアップ）\n2. バックアップタイプを選択（データベースのみ、またはフルバックアップ）\n3. 「今すぐ WebDAV にバックアップ」をクリック\n\nデータベースのみのバックアップは小さくて高速です。フルバックアップにはアップロードした写真が含まれます。",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• ページビューとナビゲーションパターン\n• セッション時間とエンゲージメント\n• ユーザーの属性（GA4 で有効にした場合）\n• デバイスとブラウザ情報"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• ページビューとナビゲーションパターン\n• セッション時間とエンゲージメント\n• ユーザーの属性（GA4 で有効にした場合）\n• デバイスとブラウザ情報",
+    "File size exceeds the server limit of %s": "ファイルサイズがサーバー制限（%s）を超えています",
+    "Missing image data in request": "リクエストに画像データがありません"
 }

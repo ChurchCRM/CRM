@@ -101,7 +101,7 @@ function getMapView(Request $request, Response $response, array $args): Response
             'churchLng'    => (float) ChurchMetaData::getChurchLongitude(),
             'churchName'   => ChurchMetaData::getChurchName(),
             'hasLocation'  => ChurchMetaData::getChurchLatitude() !== '',
-            'zoom'         => max(1, (int) SystemConfig::getValue('iMapZoom') ?: 10),
+            'zoom'         => max(1, SystemConfig::getIntValue('iMapZoom') ?: 10),
             'groupId'      => $groupId,
             'groupName'    => $groupName,
             'legendType'   => $legendType,

@@ -3449,5 +3449,7 @@
     "When enabled, hides the address field for people not assigned to a family": "啟用後，隱藏未分配到家庭的成員的地址欄位",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "啟用後，在家庭編輯器中隱藏緯度／經度欄位。地理編碼仍在背景執行。",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "您也可以隨時觸發手動備份：\n1. 前往外部備份設定頁面（插件 > 外部備份）\n2. 選擇備份類型（僅資料庫或完整備份）\n3. 點擊「立即備份至 WebDAV」\n\n僅資料庫備份較小且速度較快。完整備份包含已上傳的照片。",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• 頁面瀏覽和導覽模式\n• 工作階段時長和參與度\n• 使用者人口統計資料（如果在 GA4 中啟用）\n• 裝置和瀏覽器資訊"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• 頁面瀏覽和導覽模式\n• 工作階段時長和參與度\n• 使用者人口統計資料（如果在 GA4 中啟用）\n• 裝置和瀏覽器資訊",
+    "File size exceeds the server limit of %s": "檔案大小超過伺服器限制 %s",
+    "Missing image data in request": "請求中缺少圖片資料"
 }

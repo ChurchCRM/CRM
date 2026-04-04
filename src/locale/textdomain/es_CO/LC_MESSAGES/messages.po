@@ -12210,6 +12210,10 @@ msgid "Role not found."
 msgstr "Rol no encontrado."
 
 #: 
+msgid "Roles"
+msgstr "Funciones"
+
+#: 
 msgid "Run"
 msgstr "Ejecutar"
 
@@ -14508,4 +14512,12 @@ msgstr "• Vistas de página y patrones de navegación\n"
 "• Duración de la sesión y participación\n"
 "• Demografía de usuarios (si está habilitado en GA4)\n"
 "• Información sobre dispositivos y navegadores"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "El tamaño del archivo supera el límite del servidor de %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Faltan datos de imagen en la solicitud"
 

@@ -434,11 +434,11 @@ if ($EventID > 0) {
                                 <?php } ?>
                                 <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a>
                             </td>
-                            <td><?= $per->getCheckinDate() ? date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat')) : '' ?></td>
+                            <td><?= $per->getCheckinDate() ? InputUtils::escapeHTML(date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat'))) : '' ?></td>
                             <td><?= $sCheckinby ?></td>
                             <td>
                                 <?php if ($isCheckedOut): ?>
-                                    <?= date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat')) ?>
+                                    <?= InputUtils::escapeHTML(date_format($per->getCheckoutDate(), SystemConfig::getValue('sDateTimeFormat'))) ?>
                                 <?php endif; ?>
                             </td>
                             <td><?= $sCheckoutby ?></td>
