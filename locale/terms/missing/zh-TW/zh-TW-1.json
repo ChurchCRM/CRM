@@ -1,9 +1,9 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d 個「%s」的搜尋結果"
   },
   "name@example.com": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "檔案大小超過伺服器限制 %s",
+  "Missing image data in request": "請求中缺少圖片資料"
 }

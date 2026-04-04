@@ -2,6 +2,6 @@
   "name@example.com": "",
   "SHA1 Hash": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "حجم الملف يتجاوز حد الخادم %s",
+  "Missing image data in request": "بيانات الصورة مفقودة في الطلب"
 }

@@ -1,6 +1,6 @@
 {
   "name@example.com": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "Размер файла превышает ограничение сервера %s",
+  "Missing image data in request": "Данные изображения отсутствуют в запросе"
 }

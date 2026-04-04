@@ -1,8 +1,8 @@
 {
-  "Manual": "",
-  "Material": "",
-  "Roles": "",
+  "Manual": "Manual",
+  "Material": "Material",
+  "Roles": "Funciones",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "El tamaño del archivo supera el límite del servidor de %s",
+  "Missing image data in request": "Faltan datos de imagen en la solicitud"
 }

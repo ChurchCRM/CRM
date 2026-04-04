@@ -1,10 +1,10 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "「%s」の%d件の結果"
   },
   "BCC": "",
   "name@example.com": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "ファイルサイズがサーバー制限（%s）を超えています",
+  "Missing image data in request": "リクエストに画像データがありません"
 }

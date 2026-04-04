@@ -1,14 +1,14 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d hasil untuk \"%s\""
   },
-  "Administrator": "",
+  "Administrator": "Administrator",
   "BCC": "",
-  "Email BCC": "",
-  "Format": "",
-  "Manual": "",
-  "Minimum": "",
+  "Email BCC": "Email BCC",
+  "Format": "Format",
+  "Manual": "Manual",
+  "Minimum": "Minimum",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "Ukuran file melebihi batas server sebesar %s",
+  "Missing image data in request": "Data gambar tidak ditemukan dalam permintaan"
 }

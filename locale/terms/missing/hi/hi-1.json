@@ -2,6 +2,6 @@
   "BCC": "",
   "name@example.com": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "फ़ाइल का आकार सर्वर की सीमा %s से अधिक है",
+  "Missing image data in request": "अनुरोध में छवि डेटा अनुपस्थित है"
 }

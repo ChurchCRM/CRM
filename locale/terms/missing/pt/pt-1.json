@@ -1,8 +1,8 @@
 {
   "BCC": "",
-  "Manual": "",
-  "Material": "",
+  "Manual": "Manual",
+  "Material": "Material",
   "N/A": "",
-  "File size exceeds the server limit of %s": "",
-  "Missing image data in request": ""
+  "File size exceeds the server limit of %s": "O tamanho do ficheiro excede o limite do servidor de %s",
+  "Missing image data in request": "Dados de imagem em falta no pedido"
 }
