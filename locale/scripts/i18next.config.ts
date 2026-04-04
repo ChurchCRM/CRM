@@ -8,7 +8,7 @@ export default defineConfig({
       'webpack/*.js',
       'react/**/*.tsx'
     ],
-    output: 'locale/locales/{{language}}/{{namespace}}.json',
+    output: 'locale/.work/locales/{{language}}/{{namespace}}.json',
     defaultNS: 'translation',
     defaultValue: '',
     keySeparator: false,

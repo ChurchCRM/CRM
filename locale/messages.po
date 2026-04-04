@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-02 22:40+0000\n"
+"POT-Creation-Date: 2026-04-03 17:31-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2319,6 +2319,10 @@ msgstr ""
 msgid "Credit Card"
 msgstr ""
 
+#. Context: query_qry
+msgid "Credit Card People"
+msgstr ""
+
 msgid "Critical Configuration Error"
 msgstr ""
 
@@ -3493,7 +3497,6 @@ msgstr ""
 msgid "Ethiopia"
 msgstr ""
 
-#. Context: queryparameters_qrp
 msgid "Event"
 msgstr ""
 
@@ -3895,6 +3898,10 @@ msgstr ""
 msgid "Family Pledge Summary"
 msgstr ""
 
+#. Context: query_qry
+msgid "Family Pledge by Fiscal Year"
+msgstr ""
+
 msgid "Family Pledges"
 msgstr ""
 
@@ -4025,6 +4032,10 @@ msgstr ""
 msgid "File signatures match the official release."
 msgstr ""
 
+#, php-format
+msgid "File size exceeds the server limit of %s"
+msgstr ""
+
 msgid "File upload error"
 msgstr ""
 
@@ -4088,14 +4099,14 @@ msgstr ""
 msgid "Financial Settings"
 msgstr ""
 
+#. Context: query_qry
+msgid "Find Registered students"
+msgstr ""
+
 msgid "Find family"
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
-msgstr ""
-
-#. Context: query_qry
-msgid "Find people who didn't attend an event"
 msgstr ""
 
 #. Context: query_qry
@@ -4168,7 +4179,12 @@ msgstr ""
 msgid "FirstName MiddleName LastName"
 msgstr ""
 
+#. Context: queryparameters_qrp
 msgid "Fiscal Year"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Fiscal Year."
 msgstr ""
 
 msgid "Focus"
@@ -4612,6 +4628,10 @@ msgid "Group management access"
 msgstr ""
 
 msgid "Group not found"
+msgstr ""
+
+#. Context: queryparameters_qrp
+msgid "Group of registered students"
 msgstr ""
 
 msgid "Group removed from cart"
@@ -5974,8 +5994,7 @@ msgstr ""
 msgid "Missing calendar access token"
 msgstr ""
 
-#. Context: query_qry
-msgid "Missing people"
+msgid "Missing image data in request"
 msgstr ""
 
 #. Context: query_qry
@@ -7022,6 +7041,10 @@ msgid "People not in"
 msgstr ""
 
 #. Context: query_qry
+msgid "People who are configured to pay by credit card."
+msgstr ""
+
+#. Context: query_qry
 msgid "People with birthdays in a particular month"
 msgstr ""
 
@@ -7416,6 +7439,10 @@ msgstr ""
 msgid "Pledge comparison"
 msgstr ""
 
+#. Context: query_qry
+msgid "Pledge summary by family name for each fund for the selected fiscal year"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Pledged this year"
 msgstr ""
@@ -7721,6 +7748,10 @@ msgid "Register and manage kiosk devices for event check-in"
 msgstr ""
 
 msgid "Register another family"
+msgstr ""
+
+#. Context: query_qry
+msgid "Registered students"
 msgstr ""
 
 msgid "Registration Error"
@@ -8340,10 +8371,6 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select start and end date/time"
-msgstr ""
-
-#. Context: queryparameters_qrp
-msgid "Select the desired event"
 msgstr ""
 
 #. Context: queryparameters_qrp
@@ -9906,6 +9933,10 @@ msgstr ""
 
 #. Context: userconfig_ucfg
 msgid "User permission to create directories"
+msgstr ""
+
+#. Context: userconfig_ucfg
+msgid "User permission to export CSV files"
 msgstr ""
 
 #. Context: userconfig_ucfg

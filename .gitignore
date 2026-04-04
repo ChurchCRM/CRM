@@ -12,8 +12,8 @@ vendor
 node_modules
 temp
 
-# Locale build artifacts
-locale/terms/base
+# Locale build artifacts (all intermediate build output in one place)
+locale/.work
 
 # Uploaded Images
 src/Images/Family/*

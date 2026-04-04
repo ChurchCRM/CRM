@@ -1,0 +1,133 @@
+name: Security Discord Notifications
+
+# =============================================================================
+# PURPOSE: Post to Discord #security channel when:
+#   1. A repository security advisory is created, published, resolved, etc.
+#   2. An issue is labeled with the "security" label
+#
+# REQUIRED SECRET: DISCORD_SECURITY_WEBHOOK
+#   Set in: Settings → Secrets and variables → Actions
+#   Value: Discord webhook URL for the #security channel
+# =============================================================================
+
+on:
+  repository_advisory:
+    types: [reported, published, updated, resolved, dismissed, withdrawn, reopened]
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  notify-discord:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    # Skip issue events unless the triggering label is "security"
+    if: >
+      github.event_name == 'repository_advisory' ||
+      (github.event_name == 'issues' && github.event.label.name == 'security')
+
+    steps:
+      # -----------------------------------------------------------------------
+      # Security advisory notification
+      # -----------------------------------------------------------------------
+      - name: Notify Discord — security advisory
+        if: github.event_name == 'repository_advisory'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_SECURITY_WEBHOOK }}
+          GHSA_ID:    ${{ github.event.repository_advisory.ghsa_id }}
+          SUMMARY:    ${{ github.event.repository_advisory.summary }}
+          HTML_URL:   ${{ github.event.repository_advisory.html_url }}
+          SEVERITY:   ${{ github.event.repository_advisory.severity }}
+          ACTION:     ${{ github.event.action }}
+        run: |
+          # Map action → human label and embed colour
+          case "$ACTION" in
+            reported)   LABEL="Reported";   COLOR=16744272 ;;  # orange
+            published)  LABEL="Published";  COLOR=16711680 ;;  # red
+            updated)    LABEL="Updated";    COLOR=3447003  ;;  # blue
+            resolved)   LABEL="Resolved";   COLOR=3066993  ;;  # green
+            dismissed)  LABEL="Dismissed";  COLOR=8421504  ;;  # grey
+            withdrawn)  LABEL="Withdrawn";  COLOR=8421504  ;;  # grey
+            reopened)   LABEL="Reopened";   COLOR=16744272 ;;  # orange
+            *)          LABEL="$ACTION";    COLOR=3447003  ;;
+          esac
+
+          # Severity → emoji
+          case "${SEVERITY,,}" in
+            critical) SEV_EMOJI="🔴" ;;
+            high)     SEV_EMOJI="🟠" ;;
+            medium)   SEV_EMOJI="🟡" ;;
+            low)      SEV_EMOJI="🟢" ;;
+            *)        SEV_EMOJI="⚪" ;;
+          esac
+
+          TITLE="🔒 Advisory ${LABEL}: ${GHSA_ID}"
+          DESCRIPTION="${SUMMARY}"
+
+          jq -n \
+            --arg title       "$TITLE" \
+            --arg description "$DESCRIPTION" \
+            --arg url         "$HTML_URL" \
+            --argjson color   "$COLOR" \
+            --arg sev_name    "Severity" \
+            --arg sev_val     "${SEV_EMOJI} ${SEVERITY^}" \
+            --arg status_name "Status" \
+            --arg status_val  "$LABEL" \
+          '{
+            embeds: [{
+              title:       $title,
+              description: $description,
+              color:       $color,
+              url:         $url,
+              fields: [
+                { name: $sev_name,    value: $sev_val,    inline: true },
+                { name: $status_name, value: $status_val, inline: true }
+              ],
+              footer: { text: "ChurchCRM Security · github.com/ChurchCRM/CRM/security/advisories" }
+            }]
+          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+                  -H "Content-Type: application/json" \
+                  -d @-
+
+      # -----------------------------------------------------------------------
+      # Issue labeled "security" notification
+      # -----------------------------------------------------------------------
+      - name: Notify Discord — issue labeled security
+        if: github.event_name == 'issues'
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_SECURITY_WEBHOOK }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE:  ${{ github.event.issue.title }}
+          ISSUE_URL:    ${{ github.event.issue.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          LABEL_BY:     ${{ github.event.sender.login }}
+        run: |
+          TITLE="🏷️ Issue #${ISSUE_NUMBER} tagged [security]"
+          DESCRIPTION="${ISSUE_TITLE}"
+
+          jq -n \
+            --arg title       "$TITLE" \
+            --arg description "$DESCRIPTION" \
+            --arg url         "$ISSUE_URL" \
+            --arg author_name "Opened by" \
+            --arg author_val  "$ISSUE_AUTHOR" \
+            --arg label_name  "Labeled by" \
+            --arg label_val   "$LABEL_BY" \
+          '{
+            embeds: [{
+              title:       $title,
+              description: $description,
+              color:       16744272,
+              url:         $url,
+              fields: [
+                { name: $author_name, value: $author_val, inline: true },
+                { name: $label_name,  value: $label_val,  inline: true }
+              ],
+              footer: { text: "ChurchCRM Security · To report privately: github.com/ChurchCRM/CRM/security/advisories/new" }
+            }]
+          }' | curl -sf -X POST "$DISCORD_WEBHOOK" \
+                  -H "Content-Type: application/json" \
+                  -d @-
