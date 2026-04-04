@@ -1,12 +1,12 @@
 {
   "%d result for \"%s\"": {
-    "other": "%d hasil untuk \"%s\""
+    "other": ""
   },
-  "Administrator": "Administrator",
+  "Administrator": "",
   "BCC": "",
-  "Email BCC": "Email BCC",
-  "Format": "Format",
-  "Manual": "Manual",
-  "Minimum": "Minimum",
+  "Email BCC": "",
+  "Format": "",
+  "Manual": "",
+  "Minimum": "",
   "N/A": ""
 }

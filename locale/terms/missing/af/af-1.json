@@ -1,7 +1,7 @@
 {
-  "Kiosk": "Kiosk",
-  "Minimum": "Minimum",
+  "Kiosk": "",
+  "Minimum": "",
   "N/A": "",
-  "File size exceeds the server limit of %s": "Lêergrootte oorskry die bediener se limiet van %s",
-  "Missing image data in request": "Beelddata ontbreek in versoek"
+  "File size exceeds the server limit of %s": "",
+  "Missing image data in request": ""
 }
