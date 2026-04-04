@@ -10,6 +10,7 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
+| `ta` | Tamil | 3438 | 100% | 🟢 Complete | ✅ Yes |
 | `it` | Italian | 3436 | 99.94% | 🟢 Complete | ✅ Yes |
 | `pt-br` | Portuguese (BR) | 3436 | 99.94% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 3435 | 99.91% | 🟢 Complete | ✅ Yes |
@@ -33,7 +34,6 @@
 | `de` | German | 3429 | 99.74% | 🟢 Complete | ✅ Yes |
 | `id` | Indonesian | 3428 | 99.71% | 🟢 Complete | ✅ Yes |
 | `fr` | French | 3424 | 99.59% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 3377 | 98.23% | 🟢 Complete | ✅ Yes |
 | `hu` | Hungarian | 3376 | 98.2% | 🟢 Complete | ✅ Yes |
 | `am` | Amharic | 3375 | 98.17% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3375 | 98.17% | 🟢 Complete | ✅ Yes |

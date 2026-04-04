@@ -265,7 +265,7 @@ msgstr "Classification"
 
 #: 
 msgid "Add Cart to Event"
-msgstr "Ajouter Panier à Événement"
+msgstr "Ajouter le Panier à l'évènement"
 
 #: 
 msgid "OR"
@@ -273,11 +273,11 @@ msgstr "OU"
 
 #: 
 msgid "Your cart is empty!"
-msgstr "Votre panier est vide!"
+msgstr "Votre panier est vide !"
 
 #: 
 msgid "No family name entered!"
-msgstr "Pas de nom de famille saisi!"
+msgstr "Pas de nom de famille saisi !"
 
 #: 
 msgid "Add Cart to Family"
@@ -629,7 +629,7 @@ msgstr "Gestionnaire de la caisse de dons/Comptable"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
-msgstr "Champ ou sélection invalide. Les modifications n'ont pas été enregistrées! Veuillez corriger et essayer à nouveau !"
+msgstr "Champ ou sélection invalide. Les modifications n'ont pas été enregistrées ! Veuillez corriger et essayer à nouveau !"
 
 #: 
 msgid "No funds have been added yet"
@@ -846,7 +846,7 @@ msgstr "Info sur le contact"
 
 #: 
 msgid "Envelope Info"
-msgstr "Enveloppe d'info"
+msgstr "Informations de l'enveloppe"
 
 #: 
 msgid "Custom Fields"
@@ -1440,7 +1440,7 @@ msgstr "Rôles du groupe"
 
 #: 
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Les modifications des noms de rôle du groupe sont enregistrées dès que la boîte de dialogue n'est plus flou."
+msgstr "Les modifications apportées au nom du rôle du groupe sont enregistrées dès que la boîte perd le focus"
 
 #: 
 msgid "New Role"
@@ -1456,7 +1456,7 @@ msgstr "Gestionnaire des Propriétés des membres du groupe"
 
 #: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Ce groupe n'a actuellement aucune propriété!  Vous pouvez en ajouter dans le gestionnaire de groupe."
+msgstr "Ce groupe n'a actuellement aucune propriété !  Vous pouvez en ajouter dans le gestionnaire de groupe."
 
 #: 
 msgid "Return to Person Record"
@@ -1477,7 +1477,7 @@ msgstr "Gestionnaire de formulaire des Propriétés spécifiques du groupe"
 
 #: 
 msgid "No properties have been added yet"
-msgstr "Aucune propriété n'a été ajouté"
+msgstr "Aucune propriété n'a été ajoutée"
 
 #: 
 msgid "Show in"
