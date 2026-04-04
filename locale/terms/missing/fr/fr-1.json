@@ -10,5 +10,7 @@
   "N/A": "",
   "Parents": "",
   "Configuration": "",
-  "Continent": ""
+  "Continent": "",
+  "File size exceeds the server limit of %s": "",
+  "Missing image data in request": ""
 }

@@ -7834,10 +7834,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Dit kan enkele minuten duren voor grote databases. Sluit deze pagina niet."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Samenvatting van Upgrade"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Gebruik externe tools (GPG, 7-Zip) om back-ups te versleutelen voordat u deze offsite opslaat."
 
@@ -8610,10 +8606,6 @@ msgid "Save the file and refresh this page"
 msgstr "Sla het bestand op en vernieuw deze pagina"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Stel in op true om het invoeren van persoonlijke adressen voor niet-gelieerde personen in Persooneditor uit te schakelen. Stel in op false om het invoeren van adressen voor personen zonder familietoewijzing in te schakelen."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Begint met <strong>http://</strong> of <strong>https://</strong>"
 
@@ -9080,10 +9072,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ja, verwijder deze Mogelijkheid"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Query's waarvoor de gebruiker financiële machtigingen moet hebben om te gebruiken"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fonds(en)"
 
@@ -9368,10 +9356,6 @@ msgstr "Aankomende verjaardagen"
 #: 
 msgid "Waiting to Check In"
 msgstr "Wachten op inchecken"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Wanneer ingeschakeld, kunnen nieuwe kiosk apparaten zich gedurende 30 seconden registreren."
 
 #: 
 msgid "Your child"
@@ -10537,20 +10521,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Coördinaten automatisch detecteren via adres"
 
 #: 
-msgid "Basic Information"
-msgstr "Basisinformatie"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Gemeenteinformatie succesvol opgeslagen."
-
-#: 
 msgid "Church name is required."
 msgstr "De naam van de gemeente is verplicht."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "De naam van de gemeente is verplicht. Vul het tabblad Basisinformatie in."
 
 #: 
 msgid "City is required."
@@ -10609,22 +10581,6 @@ msgid "Language & Localization"
 msgstr "Taal en lokalisatie"
 
 #: 
-msgid "Location & Map"
-msgstr "Locatie en kaart"
-
-#: 
-msgid "Location Information"
-msgstr "Locatie-informatie"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Hoofd contact e-mail voor gemeentecommunicatie."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Hoofd telefoonnummer van de gemeente."
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -10675,10 +10631,6 @@ msgstr "Het straatadres is verplicht."
 #: 
 msgid "Student Information"
 msgstr "Leerlinginformatie"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Systeemtaal voor de gemeente. Beïnvloedt datumnotaties, telefoonnummers en andere lokalisaties."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11053,10 +11005,6 @@ msgstr "Nu back-up maken naar externe opslag"
 #: 
 msgid "Browse all available plugins"
 msgstr "Alle beschikbare plug-ins bekijken"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Alle kerkelijke evenementen en activiteiten bekijken"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11493,10 +11441,6 @@ msgstr "Uitvouwen"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Verkennen met demogegevens"
-
-#: 
-msgid "Export"
-msgstr "Exporteren"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12453,10 +12397,6 @@ msgid "The property is successfully removed."
 msgstr "De eigenschap is succesvol verwijderd."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Deze links verschijnen in het menu \"Koppelingen\" in de navigatiebalk wanneer deze plug-in is ingeschakeld."
-
-#: 
 msgid "To Family"
 msgstr "Naar gezin"
 
@@ -13249,11 +13189,6 @@ msgstr "Veldwaarde"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Zoek mensen die geen deelnemer van een evenement zijn"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Zoek mensen die het ene jaar hebben beloofd maar niet het andere"
 
@@ -13346,11 +13281,6 @@ msgstr "Jubileumverjaardagen van lidmaatschap"
 #: 
 msgid "Minimum Age"
 msgstr "Minimale leeftijd"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Vermiste mensen"
 
 #. Context: query_qry
 #: 
@@ -13544,11 +13474,6 @@ msgstr "Selecteer type evenement..."
 #: 
 msgid "Select field to search for."
 msgstr "Selecteer veld om in te zoeken."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Selecteer het gewenste evenement"
 
 #. Context: queryparameters_qrp
 #: 

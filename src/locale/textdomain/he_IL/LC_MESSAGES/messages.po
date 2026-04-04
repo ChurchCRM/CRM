@@ -7869,10 +7869,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "זה עשוי לקחת כמה דקות. נא לא לסגור את הדף."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "סיכום שדרוג"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "השתמש בכלים חיצוניים להצפנת גיבויים לפני אחסונם מחוץ לאתר."
 
@@ -8645,10 +8641,6 @@ msgid "Save the file and refresh this page"
 msgstr "שמור את הקובץ ורענן את הדף"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "בחר True לביטול הזנת כתובות לאנשים ללא משפחה."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "מתחיל ב-<strong>http://</strong> או <strong>https://</strong>"
 
@@ -9115,10 +9107,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "כן, מחק הזדמנות זו"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "שאילתות הדורשות הרשאות כספים"
-
-#: 
 msgid "Fund(s)"
 msgstr "קרנות"
 
@@ -9403,10 +9391,6 @@ msgstr "ימי הולדת קרובים"
 #: 
 msgid "Waiting to Check In"
 msgstr "ממתין לצ'ק-אין"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "כאשר מופעל, מכשירי קיוסק חדשים יכולים להירשם למשך 30 שניות."
 
 #: 
 msgid "Your child"
@@ -10572,20 +10556,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "זהה קואורדינטות אוטומטית לפי כתובת"
 
 #: 
-msgid "Basic Information"
-msgstr "מידע בסיסי"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "פרטי הקהילה נשמרו בהצלחה."
-
-#: 
 msgid "Church name is required."
 msgstr "שם הקהילה נדרש."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "שם הקהילה נדרש. אנא מלא את לשונית המידע הבסיסי."
 
 #: 
 msgid "City is required."
@@ -10644,22 +10616,6 @@ msgid "Language & Localization"
 msgstr "שפה ולוקליזציה"
 
 #: 
-msgid "Location & Map"
-msgstr "מיקום ומפה"
-
-#: 
-msgid "Location Information"
-msgstr "פרטי מיקום"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "דוא\"ל איש קשר ראשי לתקשורת הקהילה."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "מספר טלפון ראשי של הקהילה."
-
-#: 
 msgid "Map"
 msgstr "מפה"
 
@@ -10710,10 +10666,6 @@ msgstr "כתובת נדרשת."
 #: 
 msgid "Student Information"
 msgstr "פרטי תלמיד"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "שפת המערכת לקהילה. משפיעה על פורמטי תאריך, טלפון ולוקליזציות אחרות."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11084,10 +11036,6 @@ msgstr "גיבוי לאחסון חיצוני כעת"
 #: 
 msgid "Browse all available plugins"
 msgstr "עיון בכל התוספים הזמינים"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "עיון בכל האירועים והפעילויות של הקהילה"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11524,10 +11472,6 @@ msgstr "הרחבה"
 #: 
 msgid "Explore with Demo Data"
 msgstr "חקירה עם נתוני הדגמה"
-
-#: 
-msgid "Export"
-msgstr "ייצוא"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12484,10 +12428,6 @@ msgid "The property is successfully removed."
 msgstr "המאפיין הוסר בהצלחה."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "קישורים אלו מופיעים בתפריט «קישורים» בסרגל הצד של הניווט כאשר תוסף זה מופעל."
-
-#: 
 msgid "To Family"
 msgstr "למשפחה"
 
@@ -13272,11 +13212,6 @@ msgstr "ערך שדה"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "מצא אנשים שלא השתתפו באירוע"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "מצא אנשים שהתחייבו בשנה אחת אך לא בשנייה"
 
@@ -13369,11 +13304,6 @@ msgstr "יום שנה של חברות"
 #: 
 msgid "Minimum Age"
 msgstr "גיל מינימלי"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "אנשים חסרים"
 
 #. Context: query_qry
 #: 
@@ -13566,11 +13496,6 @@ msgstr "בחר שדה לחיפוש."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "בחר את האירוע הרצוי"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "בחר את תפקיד המשפחה הרצוי."
 
@@ -13719,4 +13644,368 @@ msgstr "לדוגמה שירות ראשון"
 #: 
 msgid "member"
 msgstr "חבר"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "הוספת קישורים"
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "אפשר שדרוגי גרסה מקדימה"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "אפשר למבקרים להירשם בעצמם כמשפחות חדשות."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "אימות"
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS אוטומטי"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "גיבוי אוטומטי"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "העתק נסתר לכל הדואר ל"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "תצורה"
+
+#: 
+msgid "Continent"
+msgstr "יבשת"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "עלויות"
+
+#. Context: query_qry
+#: 
+msgid "Credit Card People"
+msgstr "אנשים עם כרטיס אשראי"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "שימוש נוכחי"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "סגנונות תמונה ברירת מחדל"
+
+#: 
+msgid "Default Map View"
+msgstr "תצוגת מפה ברירת מחדל"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "סוג כרטיס הפקדה"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "מאפיין אל תשלח דואר אלקטרוני"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "מאפיין אל תשלח SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "הורד OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "פורמט מספר טלפון E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "אפשר דואר אלקטרוני"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "אפשר תפריט אירועים"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "אפשר API לוח שנה חיצוני"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "אפשר שימוש במעטפות תרומות"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "אפשר שימוש בצ'קים סרוקים"
+
+#. Context: query_qry
+#: 
+msgid "Family Pledge by Fiscal Year"
+msgstr "התחייבות משפחתית לפי שנת כספים"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "תכונות"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "מזהי שאילתת הרשאת כספים"
+
+#. Context: query_qry
+#: 
+msgid "Find Registered students"
+msgstr "מצא תלמידים רשומים"
+
+#: 
+msgid "Find family"
+msgstr "מצא משפחה"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "מציאת כתובת URL של השרת שלך"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Fiscal Year."
+msgstr "שנת כספים."
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "מדריך הגדרת GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "תחילת עבודה"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "קבלת מזהה המדידה של GA4"
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "עזרה ב-Google Analytics"
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "אפשרויות תמונת Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "אתר Gravatar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Group of registered students"
+msgstr "קבוצת תלמידים רשומים"
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "הסתר קו רוחב/קו אורך"
+
+#: 
+msgid "Hide Person Address"
+msgstr "הסתר כתובת אדם"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "כיצד זה עובד"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "כמה צ'קים להדפיס בכל עמוד שובר הפקדה"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "רמת הזום הראשונית בעת פתיחת המפה"
+
+#: 
+msgid "Learn more"
+msgstr "למד עוד"
+
+#: 
+msgid "Log Settings"
+msgstr "הגדרות יומן"
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "ניהול קישורים"
+
+#: 
+msgid "Neighborhood"
+msgstr "שכונה"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "מקור OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "תיעוד OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "אתר OpenLP"
+
+#. Context: query_qry
+#: 
+msgid "People who are configured to pay by credit card."
+msgstr "אנשים שהוגדרו לשלם בכרטיס אשראי."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "אינטגרציה אדם/משפחה"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "פורמט מספר טלפון"
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "פרטיות ותאימות"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "שיקולי פרטיות"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "הערת פרטיות"
+
+#: 
+msgid "Quick Settings"
+msgstr "הגדרות מהירות"
+
+#. Context: query_qry
+#: 
+msgid "Registered students"
+msgstr "תלמידים רשומים"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "אימות SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "פסק זמן SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "אבטחה"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "שיקולי אבטחה"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "הגדרה"
+
+#: 
+msgid "Street"
+msgstr "רחוב"
+
+#: 
+msgid "Sunday School Module"
+msgstr "מודול בית ספר לשבת"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "שירותים נתמכים"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "בדיקת חיבור"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "פתרון תקלות"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "פתרון תקלות – מזהה שולח לא חוקי"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "פתרון תקלות – הודעות לא נמסרו"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "פתרון תקלות – SMS לא נשלח"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "הגדרות שדרוג"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "מקרי שימוש"
+
+#. Context: userconfig_ucfg
+#: 
+msgid "User permission to export CSV files"
+msgstr "הרשאת משתמש לייצוא קבצי CSV"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "לוח המחוונים של Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "תמחור Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "תיעוד Vonage SMS API"
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "מה נעקב"
 
