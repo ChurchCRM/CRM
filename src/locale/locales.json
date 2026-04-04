@@ -175,6 +175,18 @@
     "momentLocale": "et",
     "isRTL": false
   },
+  "Filipino - Philippines": {
+    "poEditor": "fil",
+    "locale": "tl_PH",
+    "languageCode": "tl",
+    "countryCode": "PH",
+    "dataTables": "tl",
+    "fullCalendar": true,
+    "fullCalendarLocale": "tl",
+    "datePicker": true,
+    "momentLocale": "tl-ph",
+    "isRTL": false
+  },
   "Finnish": {
     "poEditor": "fi",
     "locale": "fi_FI",

@@ -10,11 +10,13 @@
  *
  * Usage:
  *   node locale/scripts/poeditor-upload-missing.js           # all locales
+ *   node locale/scripts/poeditor-upload-missing.js te        # positional locale (like downloader)
  *   node locale/scripts/poeditor-upload-missing.js --locale es-co,uk,hi
  *   node locale/scripts/poeditor-upload-missing.js --dry-run
  *   node locale/scripts/poeditor-upload-missing.js --yes     # skip confirmation prompts
  *   npm run locale:upload:missing
  *   npm run locale:upload:missing -- --locale uk
+ *   npm run locale:upload:missing -- te
  *
  * Requires:
  *   POEDITOR_TOKEN environment variable (from .env or shell)
@@ -40,7 +42,7 @@ const SAMPLE_SIZE = 5;
 // Pause between processing locales to stay well under POEditor rate limits.
 // The downloader itself already adds ~1.5 s of inter-format delay, so this
 // extra gap gives the API time to breathe before the next upload.
-const BETWEEN_LOCALES_DELAY_MS = 18_000;
+const BETWEEN_LOCALES_DELAY_MS = 10_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
 const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
@@ -325,6 +327,7 @@ async function uploadTranslations(poEditorCode, terms) {
         updating: 'translations',
         overwrite: '1',
         sync_terms: '0',
+        type: 'key_value_json',
     };
 
     const MAX_UPLOAD_RETRIES = 5;
@@ -414,10 +417,15 @@ async function main() {
     const dryRun = args.includes('--dry-run');
     const autoYes = args.includes('--yes') || args.includes('-y');
     const localeFilter = (() => {
-        const idx = args.indexOf('--locale');
-        if (idx === -1) return null;
-        // Support comma-separated list: --locale hi,ko,uk
-        return new Set(args[idx + 1].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+        // Support: --locale hi,ko,uk  OR positional: node script.js te
+        for (let i = 0; i < args.length; i++) {
+            if (args[i] === '--locale' && args[i + 1]) {
+                return new Set(args[i + 1].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+            } else if (!args[i].startsWith('-')) {
+                return new Set(args[i].toLowerCase().split(',').map(s => s.trim()).filter(Boolean));
+            }
+        }
+        return null;
     })();
 
     const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
