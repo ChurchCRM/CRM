@@ -116,7 +116,7 @@ class CustomFieldUtils
             case 2:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
-                '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . DateTimeUtils::formatForDatePicker($data) . '" placeholder="' . SystemConfig::getValue("sDatePickerPlaceHolder") . '"> ' .
+                '<input class="form-control date-picker" type="text" id="' . $fieldname . '" name="' . $fieldname . '" value="' . DateTimeUtils::formatForDatePicker($data) . '" placeholder="' . SystemConfig::getValueForAttr("sDatePickerPlaceHolder") . '"> ' .
                 '</div>';
                 break;
 
@@ -224,7 +224,7 @@ class CustomFieldUtils
 
                 echo '<div class="input-group">';
                 echo '<span class="input-group-text"><i class="fa-solid fa-phone"></i></span>';
-                echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValue('sPhoneFormat') . '"}\'>';
+                echo '<input class="form-control" type="text" id="' . $fieldname . '" name="' . $fieldname . '" maxlength="30" value="' . InputUtils::escapeAttribute($data) . '" data-phone-mask=\'{"mask": "' . SystemConfig::getValueForAttr('sPhoneFormat') . '"}\'>';
                 echo '<div class="input-group-text">';
                 echo '<div class="form-check mb-0">';
                 echo '<input type="checkbox" class="form-check-input" id="' . $fieldname . 'noformat" name="' . $fieldname . 'noformat" value="1"';

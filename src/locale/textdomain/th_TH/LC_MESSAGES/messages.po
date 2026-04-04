@@ -10973,10 +10973,6 @@ msgid "Auto-mapped"
 msgstr "จับคู่อัตโนมัติ"
 
 #: 
-msgid "BCC"
-msgstr "สำเนาลับ"
-
-#: 
 msgid "BCC All"
 msgstr "BCC ทั้งหมด"
 

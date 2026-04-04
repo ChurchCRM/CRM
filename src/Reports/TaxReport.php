@@ -145,7 +145,7 @@ if ($output === 'pdf') {
         {
             global $letterhead, $sDateStart, $sDateEnd, $iDepID;
             $curY = $this->startLetterPage($fam_ID, $fam_Name, $fam_Address1, $fam_Address2, $fam_City, $fam_State, $fam_Zip, $fam_Country, $letterhead);
-            if (SystemConfig::getValue('bUseDonationEnvelopes')) {
+            if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')) {
                 $this->writeAt(SystemConfig::getValue('leftX'), $curY, gettext('Envelope') . ': ' . $fam_envelope);
                 $curY += SystemConfig::getValue('incrementY');
             }

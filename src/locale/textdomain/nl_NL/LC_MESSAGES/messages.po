@@ -10975,10 +10975,6 @@ msgid "Auto-mapped"
 msgstr "Automatisch toegewezen"
 
 #: 
-msgid "BCC"
-msgstr "BCC"
-
-#: 
 msgid "BCC All"
 msgstr "BCC aan allen"
 
@@ -12665,10 +12661,6 @@ msgid "members"
 msgstr "leden"
 
 #: 
-msgid "name@example.com"
-msgstr "naam@voorbeeld.nl"
-
-#: 
 msgid "opportunities"
 msgstr "mogelijkheden"
 
@@ -13300,10 +13292,6 @@ msgstr "Maanden"
 #: 
 msgid "My Calendars"
 msgstr "Mijn agenda's"
-
-#: 
-msgid "N/A"
-msgstr "NVT"
 
 #: 
 msgid "New member notification emails"

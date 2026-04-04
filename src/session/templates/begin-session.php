@@ -50,7 +50,7 @@ $hasSelfReg = SystemConfig::getBooleanValue('bEnableSelfRegistration');
         <form method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
           <div class="mb-3">
             <label for="UserBox" class="form-label"><?= gettext('Email address') ?></label>
-            <input type="text" id="UserBox" name="User" class="form-control" placeholder="name@example.com" value="<?= htmlspecialchars($prefilledUserName) ?>" required autofocus>
+            <input type="text" id="UserBox" name="User" class="form-control" placeholder="<?= gettext('name@example.com') ?>" value="<?= htmlspecialchars($prefilledUserName) ?>" required autofocus>
           </div>
 
           <div class="mb-3">

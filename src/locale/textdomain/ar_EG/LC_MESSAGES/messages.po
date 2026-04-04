@@ -11045,10 +11045,6 @@ msgid "Auto-mapped"
 msgstr "تم الرسم التلقائي"
 
 #: 
-msgid "BCC"
-msgstr "نسخة محجوبة"
-
-#: 
 msgid "BCC All"
 msgstr "BCC الكل"
 

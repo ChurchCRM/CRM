@@ -11020,10 +11020,6 @@ msgid "Auto-mapped"
 msgstr "தானியங்கு-வரைபடம்"
 
 #: 
-msgid "BCC"
-msgstr "மறை நகல் (BCC)"
-
-#: 
 msgid "BCC All"
 msgstr "அனைவருக்கும் BCC"
 
@@ -12710,10 +12706,6 @@ msgid "members"
 msgstr "உறுப்பினர்கள்"
 
 #: 
-msgid "name@example.com"
-msgstr "பெயர்@உதாரணம்.com"
-
-#: 
 msgid "opportunities"
 msgstr "வாய்ப்புகள்"
 
@@ -13345,10 +13337,6 @@ msgstr "மாதங்கள்"
 #: 
 msgid "My Calendars"
 msgstr "என் நாட்காட்டிகள்"
-
-#: 
-msgid "N/A"
-msgstr "N/A பொருந்தாது"
 
 #: 
 msgid "New member notification emails"

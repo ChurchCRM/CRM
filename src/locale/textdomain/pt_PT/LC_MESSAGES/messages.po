@@ -12839,10 +12839,6 @@ msgid "members"
 msgstr "fiéis"
 
 #: 
-msgid "name@example.com"
-msgstr "nome@exemplo.pt"
-
-#: 
 msgid "opportunities"
 msgstr "oportunidades"
 

@@ -11,7 +11,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\view\MenuRenderer;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Service\NotificationService;
-use ChurchCRM\Utils\PHPToMomentJSConverter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $localeInfo = Bootstrapper::getCurrentLocale();
@@ -99,13 +99,13 @@ $MenuFirst = 1;
           systemLocale:"<?= $localeInfo->getSystemLocale() ?>",
           locale:"<?= $localeInfo->getLocale() ?>",
           shortLocale:"<?= $localeInfo->getShortLocale() ?>",
-          timeZone:"<?= SystemConfig::getValue('sTimeZone') ?>",
+          timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
           maxUploadSize:"<?= SystemService::getMaxUploadFileSize(true) ?>",
           maxUploadSizeBytes:"<?= SystemService::getMaxUploadFileSize(false) ?>",
-          datePickerformat:"<?= SystemConfig::getValue('sDatePickerPlaceHolder') ?>",
-          churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>",
+          datePickerformat:<?= SystemConfig::getValueForJs('sDatePickerPlaceHolder') ?>,
+          churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
           systemConfigs: {
-            sDateTimeFormat:"<?= PHPToMomentJSConverter::convertFormatString(SystemConfig::getValue('sDateTimeFormat'))?>",
+            sDateTimeFormat:<?= DateTimeUtils::getDateTimeFormatForJs() ?>,
           },
           comm: {
             smtpConfigured: <?= json_encode(SystemConfig::hasValidMailServerSettings()) ?>,

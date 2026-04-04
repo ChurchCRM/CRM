@@ -38,7 +38,7 @@ class CalendarEventSearchResultProvider extends BaseSearchResultProvider
                 ->filterByText("%$SearchQuery%", Criteria::LIKE)
                 ->_or()
                 ->filterByDesc("%$SearchQuery%", Criteria::LIKE)
-                ->limit(SystemConfig::getValue('bSearchIncludeGroupsMax'))
+                ->limit(SystemConfig::getIntValue('bSearchIncludeGroupsMax'))
                 ->find();
             if ($events->count() > 0) {
                 $id++;
