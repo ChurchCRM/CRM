@@ -227,7 +227,10 @@ $fam_Longitude      = (float) ($personData['fam_Longitude'] ?? 0);
                         $displayLink = "";
                         if ((int)$type_ID === 9) {
                             $displayIcon = "fa-solid fa-person-half-dress";
-                            $displayLink = SystemURLs::getRootPath() . '/people/view/' . $currentData;
+                            $linkedPersonId = (int) $currentData;
+                            if ($linkedPersonId > 0) {
+                                $displayLink = SystemURLs::getRootPath() . '/people/view/' . $linkedPersonId;
+                            }
                         } elseif ((int)$type_ID === 11) {
                             $custom_Special = null;
                             $displayIcon = "fa-solid fa-phone";
