@@ -2997,6 +2997,7 @@
     "Return to People": "Volver a personas",
     "Review and clean up files not associated with any record": "Revisar y eliminar archivos no asociados a ningún registro",
     "Role not found.": "Rol no encontrado.",
+    "Roles": "Funciones",
     "Run": "Ejecutar",
     "SMTP server for sending emails": "Servidor SMTP para el envío de correos electrónicos",
     "Sample Data": "Datos de muestra",
@@ -3470,5 +3471,7 @@
     "When enabled, hides the address field for people not assigned to a family": "Cuando está habilitado, oculta el campo de dirección para las personas no asignadas a una familia",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "Cuando está habilitado, oculta los campos de latitud/longitud en el Editor de Familia. La geocodificación sigue ejecutándose en segundo plano.",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "También puede activar una copia de seguridad manual en cualquier momento:\n1. Vaya a la página de configuración de External Backup (Complementos > External Backup)\n2. Seleccione el tipo de copia de seguridad (Solo Base de Datos o Copia de Seguridad Completa)\n3. Haga clic en 'Backup to WebDAV Now'\n\nLas copias de seguridad Solo Base de Datos son más pequeñas y rápidas. Las copias de seguridad completas incluyen fotos cargadas.",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Vistas de página y patrones de navegación\n• Duración de la sesión y participación\n• Demografía de usuarios (si está habilitado en GA4)\n• Información sobre dispositivos y navegadores"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Vistas de página y patrones de navegación\n• Duración de la sesión y participación\n• Demografía de usuarios (si está habilitado en GA4)\n• Información sobre dispositivos y navegadores",
+    "File size exceeds the server limit of %s": "El tamaño del archivo supera el límite del servidor de %s",
+    "Missing image data in request": "Faltan datos de imagen en la solicitud"
 }

@@ -3448,5 +3448,7 @@
     "When enabled, hides the address field for people not assigned to a family": "활성화하면 가족에 배정되지 않은 사람의 주소 필드를 숨깁니다",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "활성화하면 가족 편집기에서 위도/경도 필드를 숨깁니다. 지오코딩은 여전히 백그라운드에서 실행됩니다.",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "언제든지 수동 백업을 트리거할 수 있습니다:\n1. 외부 백업 설정 페이지로 이동 (플러그인 > 외부 백업)\n2. 백업 유형 선택 (데이터베이스만 또는 전체 백업)\n3. '지금 WebDAV에 백업' 클릭\n\n데이터베이스만 백업은 더 작고 빠릅니다. 전체 백업에는 업로드된 사진이 포함됩니다.",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• 페이지 조회수와 탐색 패턴\n• 세션 시간 및 참여도\n• 사용자 인구 통계 (GA4에서 활성화된 경우)\n• 기기 및 브라우저 정보"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• 페이지 조회수와 탐색 패턴\n• 세션 시간 및 참여도\n• 사용자 인구 통계 (GA4에서 활성화된 경우)\n• 기기 및 브라우저 정보",
+    "File size exceeds the server limit of %s": "파일 크기가 서버 제한 %s를 초과합니다",
+    "Missing image data in request": "요청에 이미지 데이터가 없습니다"
 }

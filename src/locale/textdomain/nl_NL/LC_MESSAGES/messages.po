@@ -14507,3 +14507,11 @@ msgstr "• Paginaweergaven en navigatiepatronen\n"
 "• Gebruikersdemografie (indien ingeschakeld in GA4)\n"
 "• Apparaat- en browserinformatie"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Bestandsgrootte overschrijdt de serverlimiet van %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Ontbrekende afbeeldingsgegevens in het verzoek"
+

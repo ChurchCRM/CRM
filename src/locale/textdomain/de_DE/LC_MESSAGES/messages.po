@@ -14625,3 +14625,11 @@ msgstr "• Seitenaufrufe und Navigationsmuster\n"
 "• Benutzerdemografie (sofern in GA4 aktiviert)\n"
 "• Geräte- und Browserinformationen"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Die Dateigröße überschreitet das Serverlimit von %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Fehlende Bilddaten in der Anfrage"
+

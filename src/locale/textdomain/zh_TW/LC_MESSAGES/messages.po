@@ -14741,3 +14741,11 @@ msgstr "• 頁面瀏覽和導覽模式\n"
 "• 使用者人口統計資料（如果在 GA4 中啟用）\n"
 "• 裝置和瀏覽器資訊"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "檔案大小超過伺服器限制 %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "請求中缺少圖片資料"
+

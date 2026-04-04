@@ -14574,3 +14574,11 @@ msgstr "• مشاهدات الصفحات وأنماط التنقل\n"
 "• بيانات المستخدمين الديموغرافية (إذا كانت مفعّلة في GA4)\n"
 "• معلومات الجهاز والمتصفح"
 
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "حجم الملف يتجاوز حد الخادم %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "بيانات الصورة مفقودة في الطلب"
+
