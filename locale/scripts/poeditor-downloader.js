@@ -35,7 +35,7 @@ const POEDITOR_API = 'https://api.poeditor.com/v2/projects/export';
 
 // Use centralized locale config for missing-terms paths and settings
 const localeConfig = require('./locale-config');
-const MISSING_OUTPUT_DIR = localeConfig.terms.missingNew;
+const MISSING_OUTPUT_DIR = localeConfig.terms.missing;
 const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
 const MIN_MISSING_TERMS = 0; // never skip missing terms
 
