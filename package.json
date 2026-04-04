@@ -66,7 +66,7 @@
         "format:web": "biome format --write .",
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
-        "locale:download": "node locale/scripts/poeditor-downloader.js && npm run locale:audit",
+        "locale:download": "node locale/scripts/poeditor-downloader.js",
         "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",
         "lint": "biome check react/",

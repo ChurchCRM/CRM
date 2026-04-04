@@ -25,7 +25,7 @@ class PluginHelpExtractor {
     constructor() {
         this.projectRoot = config.projectRoot;
         this.pluginsDir = path.join(this.projectRoot, 'src/plugins');
-        this.tempDir = path.join(config.temp.root, 'churchcrm-locale-plugin-help');
+        this.tempDir = config.temp.pluginHelp;
         this.outputFile = path.join(this.tempDir, 'plugin-help-terms.po');
         // Map<text, string[]> — keyed by text so the same string from multiple
         // plugins is deduplicated (duplicate msgids cause msgcat fatal errors).
@@ -214,8 +214,6 @@ msgstr ""
             console.log(this.tempDir);
             return;
         }
-
-        this.log('🔌', 'Extracting plugin help terms...');
 
         this.ensureTempDir();
 

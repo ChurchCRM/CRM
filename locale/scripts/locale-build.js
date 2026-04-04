@@ -5,18 +5,19 @@
  * 
  * Extracts all translatable terms from ChurchCRM for POEditor upload:
  * 1. Database terms extraction
- * 2. Static data (countries/locales) extraction  
- * 3. PHP source code extraction
- * 4. JavaScript/React terms extraction
- * 5. Merging all translation files
- * 6. Cleanup of temporary files
- * 
+ * 2. Static data (countries/locales) extraction
+ * 3. Plugin help (help.json) extraction
+ * 4. PHP source code extraction
+ * 5. JavaScript/React terms extraction
+ * 6. Merging all translation files
+ * 7. Cleanup of temporary files (locale/.work/)
+ *
  * Output: locale/messages.po file ready for POEditor upload
  */
 
 const fs = require('fs');
 const path = require('path');
-const { execSync, spawn } = require('child_process');
+const { execSync, spawn, spawnSync } = require('child_process');
 const config = require('./locale-config');
 
 class TermExtractor {
@@ -110,18 +111,11 @@ class TermExtractor {
     }
 
     /**
-     * Merge PO files using msgcat
+     * Merge PO files using msgcat — throws on failure so callers always exit cleanly.
      */
     mergePOFiles(file1, file2, output) {
-        try {
-            this.exec(`msgcat --use-first --no-wrap --sort-output "${file1}" "${file2}" -o "${output}.tmp"`);
-            this.exec(`mv "${output}.tmp" "${output}"`);
-            return true;
-        } catch (error) {
-            console.error('Failed to merge PO files:', error.message);
-            // Don't continue with a failed merge - the static data won't be included
-            return false;
-        }
+        this.exec(`msgcat --use-first --no-wrap --sort-output "${file1}" "${file2}" -o "${output}.tmp"`);
+        this.exec(`mv "${output}.tmp" "${output}"`);
     }
 
     /**
@@ -234,13 +228,25 @@ class TermExtractor {
             ).trim().split('\n').filter(f => f);
 
             if (phpFiles.length > 0) {
-                const filesArg = phpFiles.join(' ');
                 // Use absolute path to ensure PHP terms merge into the correct file
                 const outputPath = this.messagesFile;
-                execSync(
-                    `xgettext --no-location --no-wrap --join-existing --from-code=UTF-8 -o "${outputPath}" -L PHP ${filesArg}`,
-                    { cwd: srcDir, stdio: 'inherit' }
+                // Capture stderr to filter known cosmetic xgettext best-practice warnings
+                // about embedded URLs/emails in translatable strings (non-errors).
+                const result = spawnSync(
+                    'xgettext',
+                    ['--no-location', '--no-wrap', '--join-existing', '--from-code=UTF-8',
+                     '-o', outputPath, '-L', 'PHP', ...phpFiles],
+                    { cwd: srcDir, encoding: 'utf8', stdio: ['inherit', 'inherit', 'pipe'] }
                 );
+                if (result.stderr) {
+                    const filtered = result.stderr.split('\n')
+                        .filter(l => !l.includes('warning: Message contains an embedded'))
+                        .join('\n').trimEnd();
+                    if (filtered) process.stderr.write(filtered + '\n');
+                }
+                if (result.status !== 0) {
+                    throw new Error(`xgettext failed with exit code ${result.status}`);
+                }
             }
         } catch (error) {
             console.error('PHP extraction failed:', error.message);
@@ -267,19 +273,21 @@ class TermExtractor {
 
             // Run i18next-cli extract (successor to i18next-parser)
             try {
-                this.exec('npx i18next-cli extract --config locale/scripts/i18next.config.ts');
+                this.exec('npx i18next-cli extract --quiet --config locale/scripts/i18next.config.ts');
             } catch (error) {
                 console.error('i18next-cli extraction failed:', error.message);
                 throw error;
             }
 
-            // Convert JSON to PO if translation files were created
-            const translationJson = path.join(this.localeDir, 'locales/en/translation.json');
-            const translationPo = path.join(this.localeDir, 'locales/en/translation.po');
+            // Paths derived from central config (output dir: locale/.work/locales/)
+            const translationJson = path.join(config.localesDir, 'en/translation.json');
+            const translationPo = path.join(config.localesDir, 'en/translation.po');
+            const translationJsonRel = path.relative(this.projectRoot, translationJson);
+            const translationPoRel = path.relative(this.projectRoot, translationPo);
 
             if (this.fileExists(translationJson)) {
                 try {
-                    this.exec('npx i18next-conv -l en -s locale/locales/en/translation.json -t locale/locales/en/translation.po');
+                    this.exec(`npx i18next-conv --quiet -l en -s "${translationJsonRel}" -t "${translationPoRel}"`);
                 } catch (error) {
                     console.error('i18next-conv conversion failed:', error.message);
                     throw error;
@@ -294,7 +302,7 @@ class TermExtractor {
 
             // Cleanup temporary files
             this.log('🧹', 'Cleaning up temporary files...');
-            this.exec('rm -f locale/locales/en/translation.*');
+            this.exec(`rm -f "${translationJsonRel}" "${translationPoRel}"`);
 
         } catch (error) {
             console.error('❌ JavaScript term extraction failed:', error.message);
@@ -337,10 +345,7 @@ class TermExtractor {
             // 5. Merge static data
             if (staticTermsFile && this.fileExists(staticTermsFile)) {
                 this.log('🔗', 'Merging static data (countries and locales)...');
-                const mergeSuccess = this.mergePOFiles(this.messagesFile, staticTermsFile, this.messagesFile);
-                if (!mergeSuccess) {
-                    throw new Error('Failed to merge static data - countries and locales will be missing');
-                }
+                this.mergePOFiles(this.messagesFile, staticTermsFile, this.messagesFile);
             } else {
                 this.log('⚠️', 'No static terms file found');
             }
@@ -367,26 +372,8 @@ class TermExtractor {
             this.exec(`msgcat --no-wrap --sort-output "${this.messagesFile}" -o "${this.messagesFile}.tmp"`);
             this.exec(`mv "${this.messagesFile}.tmp" "${this.messagesFile}"`);
 
-            // Save a copy of the generated base term files into locale/terms/base
-            try {
-                const termsBaseDir = config.terms.base;
-                if (!fs.existsSync(termsBaseDir)) {
-                    fs.mkdirSync(termsBaseDir, { recursive: true });
-                }
-                // Use stable filenames (no timestamps) so review pipelines can reference them
-                this.copyFile(this.messagesFile, config.termsOutput.messagesPo);
-
-                const translationJsonPath = path.join(config.localesDir, 'en', 'translation.json');
-                if (this.fileExists(translationJsonPath)) {
-                    this.copyFile(translationJsonPath, config.termsOutput.translationJson);
-                }
-            } catch (err) {
-                console.error('Failed to save terms/base copies:', err.message);
-            }
-            // 10. Cleanup temporary directories
-            this.cleanup(dbTempDir);
-            this.cleanup(staticTempDir);
-            this.cleanup(pluginHelpTempDir);
+            // 10. Cleanup — wipe the entire .work/ tree at once
+            this.cleanup(config.temp.root);
 
             this.log('✅', 'Term extraction completed!');
 
