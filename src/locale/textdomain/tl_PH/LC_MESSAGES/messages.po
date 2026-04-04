@@ -1,14 +1,9 @@
-# ChurchCRM Filipino - Philippines Translation
-# Language: Filipino - Philippines (tl)
-# Locale: tl_PH
-# Generated: 2026-04-04T16:37:12.720Z
-
 msgid ""
 msgstr ""
-"Language: tl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: POEditor.com\n"
+"Project-Id-Version: ChurchCRM\n"
+"Language: tl\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-# Add translations below
