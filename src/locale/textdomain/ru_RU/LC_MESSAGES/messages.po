@@ -11103,10 +11103,6 @@ msgid "Auto-mapped"
 msgstr "Автоматически сопоставлено"
 
 #: 
-msgid "BCC"
-msgstr "Скрытая копия"
-
-#: 
 msgid "BCC All"
 msgstr "Скрытая копия всем"
 

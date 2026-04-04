@@ -2681,7 +2681,6 @@
     "Assign to a Group": "Aan 'n Ministerie Toeken",
     "Authentication Code": "Verifikasiekode",
     "Auto-mapped": "Outomaties gekarteer",
-    "BCC": "Verborge Kaksieking",
     "BCC All": "Alles Verborge Kaksieking",
     "Back to Admin Dashboard": "Terug na Beheerder-paneelbord",
     "Back to Get Started": "Terug na Kom aan die Gang",
@@ -3101,7 +3100,6 @@
     "full group view": "volledige ministerie-aansig",
     "funds": "fondse",
     "members": "geloofsgenote",
-    "name@example.com": "naam@voorbeeld.com",
     "opportunities": "geleenthede",
     "options": "opsies",
     "or connect an external service": "of verbind 'n eksterne diens",
@@ -3461,5 +3459,7 @@
     "When enabled, hides the address field for people not assigned to a family": "Wanneer geaktiveer, versteek dit die adresveld vir mense wat nie aan 'n gesin toegewys is nie",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "Wanneer geaktiveer, versteek dit die breedtegraad-/lengtegraadvelde in die Gesinsredigeerder. Geokoding loop steeds in die agtergrond.",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "Jy kan ook te eniger tyd 'n handmatige rugsteun aktiveer:\n1. Gaan na die Eksterne Rugsteun-instellingsbladsy (Inproppe > Eksterne Rugsteun)\n2. Kies rugsteuntipe (Slegs Databasis of Volle Rugsteun)\n3. Klik 'Rugsteun na WebDAV Nou'\n\nSlegs Databasis-rugsteune is kleiner en vinniger. Volle rugsteune sluit opgelaaide foto's in.",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Bladsybesoeke en navigasiepatrone\n• Sessieduur en betrokkenheid\n• Gebruikersdemografie (indien geaktiveer in GA4)\n• Toestel- en blaaierinligting"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Bladsybesoeke en navigasiepatrone\n• Sessieduur en betrokkenheid\n• Gebruikersdemografie (indien geaktiveer in GA4)\n• Toestel- en blaaierinligting",
+    "File size exceeds the server limit of %s": "Lêergrootte oorskry die bediener se limiet van %s",
+    "Missing image data in request": "Beelddata ontbreek in versoek"
 }

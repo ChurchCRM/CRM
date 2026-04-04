@@ -12690,10 +12690,6 @@ msgid "members"
 msgstr "washiriki"
 
 #: 
-msgid "name@example.com"
-msgstr "jina@mfano.com"
-
-#: 
 msgid "opportunities"
 msgstr "fursa"
 

@@ -11208,10 +11208,6 @@ msgid "Auto-mapped"
 msgstr "自動對應"
 
 #: 
-msgid "BCC"
-msgstr "密件副本"
-
-#: 
 msgid "BCC All"
 msgstr "全部密件副本"
 
