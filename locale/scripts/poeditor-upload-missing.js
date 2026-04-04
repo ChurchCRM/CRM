@@ -42,7 +42,7 @@ const SAMPLE_SIZE = 5;
 // Pause between processing locales to stay well under POEditor rate limits.
 // The downloader itself already adds ~1.5 s of inter-format delay, so this
 // extra gap gives the API time to breathe before the next upload.
-const BETWEEN_LOCALES_DELAY_MS = 10_000;
+const BETWEEN_LOCALES_DELAY_MS = 18_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
 const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');

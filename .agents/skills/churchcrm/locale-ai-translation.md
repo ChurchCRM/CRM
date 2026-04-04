@@ -22,24 +22,26 @@ npm run locale:translate:list
 
 ---
 
-## ⚡ Recommended: Use Copilot (Faster)
+## ⚡ Recommended: Parallel Sub-Agents (Fastest) <!-- learned: 2026-04-04 -->
 
-**For 10+ locales:** Use Copilot with Haiku → 2-3x faster than Claude Code agents
+**For 10+ locales:** Use the `/locale-translate` skill with parallel `general-purpose` sub-agents
 
-1. `npm run locale:download` (generates missing-terms batches)
-2. Open Copilot chat, copy entire Copilot translation prompt, paste all locales needing translation
-3. Copilot batch-processes all locales
-4. Copy results back, verify with `npm run locale:audit`
-5. Upload: `npm run locale:upload:missing`
+1. **Run** `/locale-translate --all` (or give the problem statement below)
+2. **Small locales (≤10 terms):** Agent handles inline — all at once, one commit
+3. **Large locales (>10 terms):** Agent dispatches 4 parallel `general-purpose` sub-agents
+4. **Each sub-agent:** Reads → translates → applies (must apply before returning)
+5. **Commit:** Use `report_progress` after each batch (never `--commit-and-push` script)
+
+**Tested result:** 28 locales / 665 terms in ~30 minutes (April 2026)
 
 ---
 
-## Alternative: Use Claude Code
+## Alternative: Manual locale-by-locale
 
-For single locales or when you prefer control:
+For single locales or debugging:
 
 ```
-/locale-translate --all
+/locale-translate --locale fr
 ```
 
 ---
@@ -100,16 +102,39 @@ See [Locale Stack Ranking](./locale-stack-ranking.md) for TIER-1 (53% coverage, 
 
 ---
 
-## Performance Notes <!-- learned: 2026-04-02 -->
+## Performance Notes <!-- learned: 2026-04-04 -->
 
-### Model Selection for Bulk Translation
+### Proven Strategy: Parallel Sub-Agents (April 2026 live run)
 
-**Tested approaches (April 2026):**
-- **Claude Code (Opus)** with sequential agents: ⚠️ Slow — agents hit permission barriers, timeouts common
-- **Copilot (Haiku/Fast mode)**: ✅ **RECOMMENDED** — 2-3x faster for 36+ locale runs, parallel processing works better
-- **Manual batch scripts**: ⚠️ Slow — requires many Context windows to generate all translations
+**Tested in production — April 4 2026: translated 28 locales / 665 terms in one session.**
 
-**Decision:** For future bulk translations, route through Copilot instead of Claude Code agents. Copilot is optimized for high-volume parallel work.
+**What worked:**
+
+| Approach | Result |
+|----------|--------|
+| **Small locales (≤10 terms) inline** | ✅ Fastest — process all at once, one commit |
+| **Large locales via parallel `general-purpose` sub-agents** | ✅ 4-6x throughput — 4 agents at a time, each gets own language |
+| **`report_progress` tool for commit+push** | ✅ Only way that works — `--commit-and-push` script fails with 403 |
+
+**What failed / pain points:**
+
+| Problem | Fix |
+|---------|-----|
+| `locale-branch-manager.js --commit-and-push` → 403 on push | Use `report_progress` tool instead |
+| `locale-branch-manager.js --init` → 403 on push (but branch created OK) | Ignore the error, branch exists locally |
+| Sub-agent that generates translations but doesn't apply → lost work | Sub-agent prompt must include the `--apply` step and verify output before returning |
+| Sub-agent timeout before apply completes | Keep sub-agent prompts focused; one locale per agent for locales >100 terms |
+
+### Optimal Batch Size
+
+- **Run 4 sub-agents in parallel** — more than 4 can cause context pressure
+- **Telugu (te) and Amharic (am)** — do separately (>100 terms each)
+- **Variant groups (es/es-MX/es-AR...)** — process in one agent (shared vocab, trivial diff)
+
+### Commit Strategy
+
+1. **All small locales** (≤10 terms) → one `report_progress` commit
+2. **Each large locale** (>10 terms) → one `report_progress` commit after sub-agents confirm apply
 
 ---
 
