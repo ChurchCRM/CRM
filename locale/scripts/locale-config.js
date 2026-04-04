@@ -1,11 +1,8 @@
 /**
  * ChurchCRM Locale Build System Configuration
  *
- * Centralized configuration for all locale build scripts to ensure
- * consistent paths and settings across the build system.
- *
- * Configuration is now loaded via environment variables (.env file).
- * See .env.example for required variables.
+ * Defines shared static paths and build settings used by all locale
+ * build scripts to ensure consistency across the build system.
  */
 
 const path = require('path');

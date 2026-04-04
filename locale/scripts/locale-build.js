@@ -249,7 +249,7 @@ class TermExtractor {
                 }
             }
         } catch (error) {
-            console.error('PHP extraction failed:', error.message);
+            throw new Error(`PHP extraction failed: ${error.message}`);
         }
     }
 
@@ -273,7 +273,8 @@ class TermExtractor {
 
             // Run i18next-cli extract (successor to i18next-parser)
             try {
-                this.exec('npx i18next-cli extract --quiet --config locale/scripts/i18next.config.ts');
+                const i18nextConfigRel = path.relative(this.projectRoot, config.i18nextConfig);
+                this.exec(`npx i18next-cli extract --quiet --config "${i18nextConfigRel}"`);
             } catch (error) {
                 console.error('i18next-cli extraction failed:', error.message);
                 throw error;

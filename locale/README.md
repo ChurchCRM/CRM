@@ -85,12 +85,11 @@ locale/
 ├── messages.po                   # Master translation template (upload to POEditor)
 ├── messages.json                 # Master term list (downloaded from POEditor)
 ├── poeditor-audit.md             # Generated completeness report
-└── .work/                        # Build-time temp files (git-ignored)
+└── .work/                        # Build-time temp files (git-ignored, wiped after each build)
     ├── db-strings/               # DB extraction temp
     ├── static-strings/           # Static data extraction temp
     ├── plugin-help/              # Plugin help extraction temp
-    ├── locales/en/               # JS/React i18next extraction temp
-    └── base/                     # Intermediate review copies (database-terms.po, etc.)
+    └── locales/en/               # JS/React i18next extraction temp
 ```
 
 ---
