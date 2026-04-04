@@ -1,14 +1,14 @@
 {
-  "Confession": "",
-  "Format": "",
-  "Minimum": "",
-  "Options": "",
-  "Photo": "",
-  "options": "",
-  "page": "",
-  "Communication": "",
+  "Confession": "Confession",
+  "Format": "Format",
+  "Minimum": "Minimum",
+  "Options": "Options",
+  "Photo": "Photo",
+  "options": "options",
+  "page": "page",
+  "Communication": "Communication",
   "N/A": "",
-  "Parents": "",
-  "Configuration": "",
-  "Continent": ""
+  "Parents": "Parents",
+  "Configuration": "Configuration",
+  "Continent": "Continent"
 }

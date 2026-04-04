@@ -1,6 +1,6 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "\"%s\"에 대한 검색 결과 %d개"
   },
   "BCC": "",
   "name@example.com": "",

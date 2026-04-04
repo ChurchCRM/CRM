@@ -1,6 +1,6 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "找到 %d 個「%s」的結果"
   },
   "name@example.com": "",
   "N/A": ""
