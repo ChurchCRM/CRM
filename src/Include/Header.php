@@ -345,7 +345,7 @@ $MenuFirst = 1;
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $currentUser->getPersonId() ?>"
+            <a href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $currentUser->getPersonId() ?>"
                class="dropdown-item">
               <i class="ti ti-user me-2"></i><?= gettext("Profile") ?>
             </a>

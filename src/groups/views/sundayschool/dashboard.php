@@ -263,7 +263,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     ?>
                     <tr>
                         <td>
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                            <a href="<?= $sRootPath ?>/people/view/<?= $kidId ?>">
                                 <?= InputUtils::escapeHTML($firstName) ?>
                             </a><?= $photoIcon ?>
                         </td>
@@ -277,7 +277,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <i class="ti ti-dots-vertical"></i>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-end">
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $kidId ?>">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/people/view/<?= $kidId ?>">
                                         <i class="ti ti-eye me-2"></i><?= gettext('View') ?>
                                     </a>
                                     <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">

@@ -93,7 +93,7 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $this->getId();
+        return SystemURLs::getRootPath() . '/people/view/' . $this->getId();
     }
 
     public function getFamilyRole()

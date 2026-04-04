@@ -78,13 +78,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                     'latitude'         => (float) $latLng['Latitude'],
                     'longitude'        => (float) $latLng['Longitude'],
                     'classificationId' => (int) $person->getClsId(),
-                    'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
-                    'directionsUrl'    => $person->getDirectionsUrl(),
-                    'phone'            => $person->getBestPhone(),
-                ];
-            }
-        }
-    } elseif ($groupId !== null && $groupId > 0) {
+                    'profileUrl'       => SystemURLs::getRootPath() . '/people/view/' . $person->getId(),
         // Build person → role map for this group (single query)
         $roleMap = [];
         foreach (Person2group2roleP2g2rQuery::create()->filterByGroupId($groupId)->find() as $p2g2r) {
@@ -113,12 +107,7 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'longitude'        => (float) $latLng['Longitude'],
                 'classificationId' => (int) $person->getClsId(),
                 'roleId'           => $roleMap[(int) $person->getId()] ?? 0,
-                'profileUrl'       => SystemURLs::getRootPath() . '/PersonView.php?PersonID=' . $person->getId(),
-                'directionsUrl'    => $person->getDirectionsUrl(),
-                'phone'            => $person->getBestPhone(),
-            ];
-        }
-    } else {
+                'profileUrl'       => SystemURLs::getRootPath() . '/people/view/' . $person->getId(),
         // Return all active families that have been geocoded
         $families = FamilyQuery::create()
             ->filterByDateDeactivated(null)

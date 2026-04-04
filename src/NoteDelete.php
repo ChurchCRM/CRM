@@ -22,7 +22,7 @@ $note = NoteQuery::create()->findOneById($iNoteID);
 
 // If deleting a note for a person, set the PersonView page as the redirect
 if ($note->getPerId() > 0) {
-    $sReroute = 'PersonView.php?PersonID=' . $note->getPerId();
+    $sReroute = 'people/view/' . $note->getPerId();
 } elseif ($note->getFamId() > 0) {
     // If deleting a note for a family, set the FamilyView page as the redirect
     $sReroute = 'v2/family/' . $note->getFamId();

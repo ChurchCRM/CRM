@@ -32,7 +32,7 @@ if (isset($_GET['FamilyID'])) {
 
 // To which page do we send the user if they cancel?
 if ($iPersonID > 0) {
-    $sBackPage = 'PersonView.php?PersonID=' . $iPersonID;
+    $sBackPage = 'people/view/' . $iPersonID;
 } else {
     $sBackPage = 'v2/family/' . $iFamilyID;
 }
