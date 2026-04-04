@@ -145,6 +145,8 @@ class ConfirmEmailPdf extends ChurchInfoReport
  */
 class ConfirmReportService
 {
+    /** Regex pattern matching valid person_custom column names (c1, c2, …). */
+    private const CUSTOM_FIELD_PATTERN = '/^c\d+$/';
     /**
      * Generate a combined download PDF for all families (or one specific family).
      *
@@ -179,11 +181,11 @@ class ConfirmReportService
             $addField = function (string $label, ?string $value, float $x, float $y, float $width = 85.0) use ($pdf): float {
                 $pdf->SetFont('Times', 'B', 10);
                 $pdf->SetXY($x, $y);
-                $pdf->Cell((int)$width, 4, $label . ':', 0, 1, 'L');
+                $pdf->Cell($width, 4, $label . ':', 0, 1, 'L');
 
                 $pdf->SetFont('Times', '', 10);
                 $pdf->SetXY($x + 2, $pdf->GetY());
-                $pdf->MultiCell((int)($width - 4), 4, (string)$value, 0, 'L');
+                $pdf->MultiCell($width - 4, 4, (string)$value, 0, 'L');
 
                 return $pdf->GetY();
             };
@@ -561,7 +563,7 @@ class ConfirmReportService
                     // Fetch custom field data for this person
                     $rawQry = PersonCustomQuery::create();
                     foreach ($customFields as $field) {
-                        if (preg_match('/^c\d+$/', (string)$field->getId())) {
+                        if (preg_match(self::CUSTOM_FIELD_PATTERN, (string)$field->getId())) {
                             $rawQry->withColumn($field->getId());
                         }
                     }
@@ -572,7 +574,7 @@ class ConfirmReportService
                     foreach ($customFields as $field) {
                         $fieldId = (string)$field->getId();
                         $currentFieldData = '';
-                        if (preg_match('/^c\d+$/', $fieldId)) {
+                        if (preg_match(self::CUSTOM_FIELD_PATTERN, $fieldId)) {
                             $currentFieldData = trim((string)($virtualCols[$fieldId] ?? ''));
                         }
 
