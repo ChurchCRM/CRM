@@ -2681,7 +2681,6 @@
     "Assign to a Group": "Cakto në një Grupmesion",
     "Authentication Code": "Kodi i Autentifikimit",
     "Auto-mapped": "Hartuese automatike",
-    "BCC": "Kopja e Fshehur",
     "BCC All": "Kopja e Fshehur e Të Gjithëve",
     "Back to Admin Dashboard": "Kthehu në Panelin e Administratorit",
     "Back to Get Started": "Kthehu në Fillim",
@@ -3103,7 +3102,6 @@
     "full group view": "pamja e plotë e grupmesionit",
     "funds": "fondet",
     "members": "anëtarë",
-    "name@example.com": "emri@shembull.com",
     "opportunities": "mundësitë",
     "options": "opsionet",
     "or connect an external service": "ose lidhu një shërbim të jashtëm",
@@ -3463,5 +3461,7 @@
     "When enabled, hides the address field for people not assigned to a family": "Kur aktivizohet, fsheh fushën e adresës për personat që nuk janë caktuar në një familje",
     "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background.": "Kur aktivizohet, fsheh fushat e gjerësisë/gjatësisë gjeografike në Redaktorin e Familjes. Gjeokodiimi vazhdon të ekzekutohet në sfond.",
     "You can also trigger a manual backup at any time:\n1. Go to the External Backup settings page (Plugins > External Backup)\n2. Select backup type (Database Only or Full Backup)\n3. Click 'Backup to WebDAV Now'\n\nDatabase Only backups are smaller and faster. Full backups include uploaded photos.": "Gjithashtu mund të aktivizoni një kopje manuale sigurie në çdo kohë:\n1. Shkoni te faqja e cilësimeve të Kopjes së Jashtme të Sigurisë (Shtojcat > Kopje e Jashtme Sigurie)\n2. Zgjidhni llojin e kopjes së sigurisë (Vetëm Baza e të Dhënave ose Kopje e Plotë Sigurie)\n3. Klikoni 'Kopje Sigurie në WebDAV Tani'\n\nKopjet e sigurisë vetëm të bazës së të dhënave janë më të vogla dhe më të shpejta. Kopjet e plota të sigurisë përfshijnë fotot e ngarkuara.",
-    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Shikimet e faqeve dhe modelet e navigimit\n• Kohëzgjatja e seancës dhe angazhimi\n• Demografitë e përdoruesve (nëse aktivizohet në GA4)\n• Informacioni i pajisjes dhe shfletuesit"
+    "• Page views and navigation patterns\n• Session duration and engagement\n• User demographics (if enabled in GA4)\n• Device and browser information": "• Shikimet e faqeve dhe modelet e navigimit\n• Kohëzgjatja e seancës dhe angazhimi\n• Demografitë e përdoruesve (nëse aktivizohet në GA4)\n• Informacioni i pajisjes dhe shfletuesit",
+    "File size exceeds the server limit of %s": "Madhësia e skedarit tejkalon kufirin e serverit prej %s",
+    "Missing image data in request": "Të dhënat e imazhit mungojnë në kërkesë"
 }

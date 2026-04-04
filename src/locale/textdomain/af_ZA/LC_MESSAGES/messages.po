@@ -11015,10 +11015,6 @@ msgid "Auto-mapped"
 msgstr "Outomaties gekarteer"
 
 #: 
-msgid "BCC"
-msgstr "Verborge Kaksieking"
-
-#: 
 msgid "BCC All"
 msgstr "Alles Verborge Kaksieking"
 
@@ -12695,10 +12691,6 @@ msgstr "fondse"
 #: 
 msgid "members"
 msgstr "geloofsgenote"
-
-#: 
-msgid "name@example.com"
-msgstr "naam@voorbeeld.com"
 
 #: 
 msgid "opportunities"
@@ -14543,4 +14535,12 @@ msgstr "• Bladsybesoeke en navigasiepatrone\n"
 "• Sessieduur en betrokkenheid\n"
 "• Gebruikersdemografie (indien geaktiveer in GA4)\n"
 "• Toestel- en blaaierinligting"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Lêergrootte oorskry die bediener se limiet van %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Beelddata ontbreek in versoek"
 

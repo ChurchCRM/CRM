@@ -1,0 +1,14 @@
+# ChurchCRM Malayalam - India Translation
+# Language: Malayalam - India (ml)
+# Locale: ml_IN
+# Generated: 2026-04-04T16:36:04.984Z
+
+msgid ""
+msgstr ""
+"Language: ml\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+# Add translations below

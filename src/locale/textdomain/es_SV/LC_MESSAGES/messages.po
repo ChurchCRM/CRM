@@ -10972,10 +10972,6 @@ msgid "Auto-mapped"
 msgstr "Asignado automáticamente"
 
 #: 
-msgid "BCC"
-msgstr "CCO"
-
-#: 
 msgid "BCC All"
 msgstr "CCO a todos"
 
@@ -12652,10 +12648,6 @@ msgstr "fondos"
 #: 
 msgid "members"
 msgstr "fieles"
-
-#: 
-msgid "name@example.com"
-msgstr "nombre@ejemplo.com"
 
 #: 
 msgid "opportunities"
