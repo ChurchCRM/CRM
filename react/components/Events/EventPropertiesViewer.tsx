@@ -5,7 +5,7 @@ import type CRMEvent from "../../interfaces/CRMEvent";
 import type EventType from "../../interfaces/EventType";
 
 const formatDate = (date: Date | undefined, allDay: boolean): string => {
-  if (!date) return window.i18next.t("N/A");
+  if (!date) return "N/A";
   if (allDay) return date.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
   return date.toLocaleString(undefined, {
     year: "numeric",
