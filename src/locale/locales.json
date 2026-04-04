@@ -184,6 +184,7 @@
         "fullCalendar": true,
         "fullCalendarLocale": "tl",
         "datePicker": true,
+        "momentLocale": "tl-ph",
         "isRTL": false
     },
     "Finnish": {
