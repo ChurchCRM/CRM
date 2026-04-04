@@ -908,7 +908,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                             if ($aClassification[$iCount] == $lst_OptionID) {
                                                                 echo ' selected';
                                                             }
-                                                            echo ">$lst_OptionName</option>";
+                                                            echo '>' . InputUtils::escapeHTML($lst_OptionName) . '</option>';
                                                         }
                                                         ?>
                                                     </select>

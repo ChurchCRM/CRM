@@ -470,7 +470,7 @@ class   SystemConfig
      */
     public static function getValueForJs(string $name): string
     {
-        return json_encode(self::getValue($name));
+        return json_encode(self::getValue($name), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_THROW_ON_ERROR);
     }
 
     /**
