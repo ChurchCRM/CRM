@@ -83,8 +83,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <script>
 document.getElementById('exportChMeetingsBtn').addEventListener('click', function () {
-    var btn = this;
-    var originalHtml = btn.innerHTML;
+    const btn = this;
+    const originalHtml = btn.innerHTML;
 
     btn.disabled = true;
     btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i><?= gettext('Exporting...') ?>';
@@ -97,8 +97,8 @@ document.getElementById('exportChMeetingsBtn').addEventListener('click', functio
             return res.blob();
         })
         .then(function (blob) {
-            var url = window.URL.createObjectURL(blob);
-            var a = document.createElement('a');
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
             a.href = url;
             a.download = 'ChMeetings-' + new Date().toISOString().split('T')[0] + '.csv';
             document.body.appendChild(a);

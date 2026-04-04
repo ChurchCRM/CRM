@@ -1562,6 +1562,9 @@ msgstr ""
 msgid "ChMeetings Export"
 msgstr ""
 
+msgid "ChMeetings export completed successfully"
+msgstr ""
+
 msgid "ChMeetings-compatible column format"
 msgstr ""
 
@@ -3772,6 +3775,9 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
+msgstr ""
+
+msgid "Failed to export ChMeetings CSV"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
