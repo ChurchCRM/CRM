@@ -13869,11 +13869,6 @@ msgstr "대륙"
 msgid "Costs"
 msgstr "비용"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "신용카드 납부자"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13947,11 +13942,6 @@ msgstr "헌금 봉투 사용 활성화"
 msgid "Enable use of scanned checks"
 msgstr "스캔한 수표 사용 활성화"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "회계연도별 가족 서약"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13961,11 +13951,6 @@ msgstr "기능"
 msgid "Finance permission query IDs"
 msgstr "재정 권한 쿼리 ID"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "등록된 학생 검색"
-
 #: 
 msgid "Find family"
 msgstr "가족 검색"
@@ -13974,11 +13959,6 @@ msgstr "가족 검색"
 #: 
 msgid "Finding Your Server URL"
 msgstr "서버 URL 확인 방법"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "회계연도."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14044,11 +14024,6 @@ msgstr "Gravatar 웹사이트"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar는 이메일 주소를 해시(MD5)로 변환하여 작동합니다. 실제 이메일 주소는 Gravatar 서버로 전송되지 않으며, 이미지 조회에는 해시만 사용됩니다."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "등록된 학생 그룹"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14185,11 +14160,6 @@ msgstr "OpenLP 웹사이트"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP은 교회를 위해 설계된 무료 오픈 소스 프레젠테이션 소프트웨어입니다. 이 플러그인을 통해 ChurchCRM에서 OpenLP 디스플레이로 알림과 경고를 직접 전송할 수 있습니다."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "신용카드로 결제하도록 설정된 회원입니다."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14215,11 +14185,6 @@ msgstr "전화번호는 E.164 형식이어야 합니다: 국가 코드 + 번호.
 "\n"
 "SMS가 올바르게 작동하려면 ChurchCRM 회원 프로필의 수신자 전화번호에 국가 코드가 포함되어야 합니다."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "선택한 회계연도의 각 기금에 대한 가족 이름별 서약 요약"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14238,11 +14203,6 @@ msgstr "개인정보 공지"
 #: 
 msgid "Quick Settings"
 msgstr "빠른 설정"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "등록된 학생"
 
 #: 
 msgid "SMTP Authentication"
@@ -14413,11 +14373,6 @@ msgstr "업그레이드 설정"
 #: 
 msgid "Use Cases"
 msgstr "사용 사례"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSV 파일 내보내기에 대한 사용자 권한"
 
 #. plugin:vonage:link:0:label
 #: 

@@ -13850,11 +13850,6 @@ msgstr "Manner"
 msgid "Costs"
 msgstr "Kustannukset"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Luottokorttihenkilöt"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13928,11 +13923,6 @@ msgstr "Ota lahjakuorten käyttö käyttöön"
 msgid "Enable use of scanned checks"
 msgstr "Ota skannattujen shekkien käyttö käyttöön"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Perheen lupaus tilivuoden mukaan"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13942,11 +13932,6 @@ msgstr "Ominaisuudet"
 msgid "Finance permission query IDs"
 msgstr "Taloushallinnon lupa-kyselyjen tunnukset"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Etsi rekisteröityjä oppilaita"
-
 #: 
 msgid "Find family"
 msgstr "Etsi perhe"
@@ -13955,11 +13940,6 @@ msgstr "Etsi perhe"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Palvelimen URL:n löytäminen"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Tilivuosi."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14025,11 +14005,6 @@ msgstr "Gravatar-verkkosivusto"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar toimii muuntamalla sähköpostiosoitteet tiivisteeksi (MD5). Varsinaista sähköpostiosoitetta ei koskaan lähetetä Gravatarin palvelimille – vain tiivistettä käytetään kuvan hakemiseen."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Rekisteröityjen oppilaiden ryhmä"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14166,11 +14141,6 @@ msgstr "OpenLP-verkkosivusto"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP on ilmainen, avoimen lähdekoodin esitysohjelmisto, joka on suunniteltu seurakunnille. Tämä lisäosa mahdollistaa ilmoitusten ja hälytysten lähettämisen suoraan ChurchCRM:stä OpenLP-näytöllesi."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Henkilöt, jotka on määritetty maksamaan luottokortilla."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14196,11 +14166,6 @@ msgstr "Puhelinnumeroiden tulee olla E.164-muodossa: maasuunta + numero. Esimerk
 "\n"
 "Vastaanottajien puhelinnumeroiden ChurchCRM-jäsenprofiileissa tulee sisältää maasuunta, jotta SMS toimii oikein."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Sitoumusyhteenveto perheen nimen mukaan kullekin rahastolle valitulle tilikaudelle"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14219,11 +14184,6 @@ msgstr "Tietosuojahuomio"
 #: 
 msgid "Quick Settings"
 msgstr "Pika-asetukset"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Rekisteröityneet oppilaat"
 
 #: 
 msgid "SMTP Authentication"
@@ -14394,11 +14354,6 @@ msgstr "Päivitysasetukset"
 #: 
 msgid "Use Cases"
 msgstr "Käyttötapaukset"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Käyttäjän oikeus viedä CSV-tiedostoja"
 
 #. plugin:vonage:link:0:label
 #: 

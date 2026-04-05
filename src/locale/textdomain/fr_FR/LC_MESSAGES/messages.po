@@ -13843,11 +13843,6 @@ msgstr "Utilisations courantes des liens personnalisés :\n"
 msgid "Costs"
 msgstr "Coûts"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Personnes avec carte de crédit"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13921,11 +13916,6 @@ msgstr "Activer l'utilisation d'enveloppes de dons"
 msgid "Enable use of scanned checks"
 msgstr "Activer l'utilisation de chèques numérisés"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Engagement de famille par exercice fiscal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13935,11 +13925,6 @@ msgstr "Fonctionnalités"
 msgid "Finance permission query IDs"
 msgstr "IDs de requête d'autorisation de finance"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Trouver des étudiants inscrits"
-
 #: 
 msgid "Find family"
 msgstr "Trouver la famille"
@@ -13948,11 +13933,6 @@ msgstr "Trouver la famille"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Trouver votre URL de serveur"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Exercice fiscal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14018,11 +13998,6 @@ msgstr "Site Web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar fonctionne en convertissant les adresses e-mail en un hash (MD5). L'adresse e-mail réelle n'est jamais envoyée aux serveurs de Gravatar - seul le hash est utilisé pour rechercher l'image."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groupe d'étudiants inscrits"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14159,11 +14134,6 @@ msgstr "Site Web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP est un logiciel de présentation libre et open-source conçu pour les églises. Ce plugin permet à ChurchCRM d'envoyer des notifications et des alertes directement à votre affichage OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personnes configurées pour payer par carte de crédit."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14189,11 +14159,6 @@ msgstr "Les numéros de téléphone doivent être au format E.164 : code du pays
 "\n"
 "Les numéros de téléphone des destinataires dans les profils des membres ChurchCRM doivent inclure le code du pays pour que le SMS fonctionne correctement."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Résumé des engagements par nom de famille pour chaque fonds pour l'exercice fiscal sélectionné"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14212,11 +14177,6 @@ msgstr "Remarque relative à la confidentialité"
 #: 
 msgid "Quick Settings"
 msgstr "Paramètres rapides"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Étudiants inscrits"
 
 #: 
 msgid "SMTP Authentication"
@@ -14387,11 +14347,6 @@ msgstr "Paramètres de mise à niveau"
 #: 
 msgid "Use Cases"
 msgstr "Cas d'utilisation"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Autorisation utilisateur pour exporter des fichiers CSV"
 
 #. plugin:vonage:link:0:label
 #: 

@@ -13958,11 +13958,6 @@ msgstr "Kontynent"
 msgid "Costs"
 msgstr "Koszty"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Osoby z kartą kredytową"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14036,11 +14031,6 @@ msgstr "Włącz używanie kopert datków"
 msgid "Enable use of scanned checks"
 msgstr "Włącz używanie skanowanych czeków"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Zobowiązanie rodziny według roku obrotowego"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14050,11 +14040,6 @@ msgstr "Funkcje"
 msgid "Finance permission query IDs"
 msgstr "Identyfikatory zapytań o uprawnienia finansowe"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Znajdź zarejestrowanych uczniów"
-
 #: 
 msgid "Find family"
 msgstr "Znajdź rodzinę"
@@ -14063,11 +14048,6 @@ msgstr "Znajdź rodzinę"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Znajdowanie adresu URL serwera"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Rok obrotowy."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14133,11 +14113,6 @@ msgstr "Strona internetowa Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar działa poprzez konwersję adresów e-mail na skrót (MD5). Rzeczywisty adres e-mail nigdy nie jest wysyłany na serwery Gravatar – tylko skrót jest używany do wyszukiwania obrazu."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupa zarejestrowanych uczniów"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14274,11 +14249,6 @@ msgstr "Strona internetowa OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP to bezpłatne oprogramowanie do prezentacji o otwartym kodzie źródłowym zaprojektowane dla kościołów. Ta wtyczka umożliwia ChurchCRM wysyłanie powiadomień i alertów bezpośrednio na wyświetlacz OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Osoby skonfigurowane do płatności kartą kredytową."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14304,11 +14274,6 @@ msgstr "Numery telefonów powinny być w formacie E.164: kod kraju + numer. Przy
 "\n"
 "Numery telefonów odbiorców w profilach wiernych ChurchCRM powinny zawierać kod kraju, aby wiadomości SMS działały poprawnie."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Podsumowanie zobowiązań finansowych według nazwy rodziny dla każdego funduszu w wybranym roku obrachunkowym"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14327,11 +14292,6 @@ msgstr "Uwaga dotycząca prywatności"
 #: 
 msgid "Quick Settings"
 msgstr "Szybkie ustawienia"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Zarejestrowani uczniowie"
 
 #: 
 msgid "SMTP Authentication"
@@ -14502,11 +14462,6 @@ msgstr "Ustawienia aktualizacji"
 #: 
 msgid "Use Cases"
 msgstr "Przypadki użycia"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Uprawnienia użytkownika do eksportu plików CSV"
 
 #. plugin:vonage:link:0:label
 #: 
