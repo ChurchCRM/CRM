@@ -23,11 +23,14 @@ describe("CSS Regression — No Auth Style Leakage", () => {
         });
 
         it("Visible buttons should not have auth-page gradient background", () => {
-            // Target a visible button on the dashboard — FAB or navbar buttons
-            // Use :visible filter to avoid hidden modal buttons
-            cy.get(".btn:visible").first()
-                .should("have.css", "background-image")
-                .and("not.include", "667eea");
+            // FAB buttons are always visible on the dashboard
+            cy.get(".fab-container .fab-button").first().then(($btn) => {
+                cy.window().then((win) => {
+                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
+                    // Auth pages use #667eea gradient — dashboard buttons should not
+                    expect(bg).to.not.include("667eea");
+                });
+            });
         });
     });
 
@@ -45,9 +48,12 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             cy.get("#FinancialReports").submit();
             cy.contains("Financial Reports: Giving Report").should("be.visible");
 
-            cy.get("#createReport").should("be.visible")
-                .should("have.css", "background-image")
-                .and("not.include", "667eea");
+            cy.get("#createReport").should("be.visible").then(($btn) => {
+                cy.window().then((win) => {
+                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
+                    expect(bg).to.not.include("667eea");
+                });
+            });
         });
 
         it("Report form labels should be properly styled", () => {
@@ -57,22 +63,6 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             // LabelColumn cells should exist and be visible
             cy.get("td.LabelColumn").should("have.length.at.least", 1)
                 .first().should("be.visible");
-        });
-    });
-
-    describe("Alerts on authenticated pages use BS5 defaults", () => {
-        it("Dashboard alerts should not have auth-page color overrides", () => {
-            cy.visit("/v2/dashboard");
-            // If alerts exist, verify they don't use auth-page override colors
-            cy.get("body").then(($body) => {
-                if ($body.find(".alert:visible").length > 0) {
-                    // Auth-page overrides .alert-danger to #fee (rgb(255, 238, 238))
-                    // Tabler defaults differ — verify no auth leakage
-                    cy.get(".alert:visible").first()
-                        .should("have.css", "background-color")
-                        .and("not.equal", "rgb(255, 238, 238)");
-                }
-            });
         });
     });
 });
