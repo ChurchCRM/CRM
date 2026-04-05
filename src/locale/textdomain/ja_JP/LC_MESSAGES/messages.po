@@ -14448,3 +14448,90 @@ msgstr "ファイルサイズがサーバー制限（%s）を超えています"
 msgid "Missing image data in request"
 msgstr "リクエストに画像データがありません"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "イベントに参加しなかった人を検索"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "未参加者"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "対象イベントを選択"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "グループ、分類、役割による詳細フィルタリング"
+
+#: 
+msgid "All congregation members included"
+msgstr "すべての会衆を含む"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings へのエクスポートが完了しました"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 対応の列フォーマット"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "連絡先情報、家族の役割、重要な日付"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "教会データベースの完全バックアップを作成します。データベースのみの SQL ファイル、またはアップロードされた写真を含む完全なアーカイブをダウンロードできます。"
+
+#: 
+msgid "Database Backup"
+msgstr "データベースバックアップ"
+
+#: 
+msgid "Export"
+msgstr "エクスポート"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "会衆データを CSV 形式でエクスポートします。含めるフィールドを選択し、分類、グループ、性別などでフィルタリングできます。"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ChMeetings が求めるフォーマットですべての人物データをエクスポートし、会衆データを ChMeetings プラットフォームと簡単に同期できます。"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "教会データをさまざまな形式でエクスポート"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "プラグインによる外部（WebDAV）バックアップ"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV のエクスポートに失敗しました"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "家族または個人のレコード形式"
+
+#: 
+msgid "Flexible field selection"
+msgstr "柔軟なフィールド選択"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "データベースバックアップへ移動"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV エクスポートを開く"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "システムバックアップページから復元"
+

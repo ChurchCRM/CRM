@@ -3,27 +3,6 @@
     "other": ""
   },
   "BCC": "",
-  "Find people who didn't attend an event": "",
-  "Missing people": "",
   "N/A": "",
-  "Select the desired event": "",
-  "name@example.com": "",
-  "Advanced filtering by group, classification, and role": "",
-  "All congregation members included": "",
-  "ChMeetings export completed successfully": "",
-  "ChMeetings-compatible column format": "",
-  "Contact info, family roles, and key dates": "",
-  "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos.": "",
-  "Database Backup": "",
-  "Export": "",
-  "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more.": "",
-  "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform.": "",
-  "Export your church data to various formats": "",
-  "External (WebDAV) backup via plugin": "",
-  "Failed to export ChMeetings CSV": "",
-  "Family or individual record layout": "",
-  "Flexible field selection": "",
-  "Go to Database Backup": "",
-  "Open CSV Export": "",
-  "Restore from the System Backup page": ""
+  "name@example.com": ""
 }

@@ -14465,3 +14465,90 @@ msgstr "ขนาดไฟล์เกินขีดจำกัดของเ
 msgid "Missing image data in request"
 msgstr "ไม่พบข้อมูลรูปภาพในคำขอ"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ค้นหาสมาชิกที่ไม่ได้เข้าร่วมกิจกรรม"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "สมาชิกที่ขาดหาย"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "เลือกกิจกรรมที่ต้องการ"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "กรองขั้นสูงตามกลุ่ม ประเภท และบทบาท"
+
+#: 
+msgid "All congregation members included"
+msgstr "รวมสมาชิกคริสตจักรทั้งหมด"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ส่งออกข้อมูล ChMeetings สำเร็จแล้ว"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "รูปแบบคอลัมน์ที่เข้ากันได้กับ ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "ข้อมูลติดต่อ บทบาทในครอบครัว และวันสำคัญ"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "สร้างการสำรองข้อมูลฐานข้อมูลคริสตจักรของคุณอย่างสมบูรณ์ ดาวน์โหลดไฟล์ SQL เฉพาะฐานข้อมูล หรือไฟล์เก็บถาวรทั้งหมดรวมถึงรูปภาพที่อัปโหลด"
+
+#: 
+msgid "Database Backup"
+msgstr "การสำรองข้อมูลฐานข้อมูล"
+
+#: 
+msgid "Export"
+msgstr "ส่งออก"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "ส่งออกข้อมูลสมาชิกคริสตจักรในรูปแบบ CSV เลือกฟิลด์ที่ต้องการรวม และกรองตามประเภท กลุ่ม เพศ และอื่น ๆ"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ส่งออกข้อมูลสมาชิกทั้งหมดในรูปแบบที่ ChMeetings ต้องการ เพื่อให้การซิงค์ข้อมูลสมาชิกคริสตจักรกับแพลตฟอร์ม ChMeetings เป็นเรื่องง่าย"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "ส่งออกข้อมูลคริสตจักรของคุณในรูปแบบต่าง ๆ"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "การสำรองข้อมูลภายนอก (WebDAV) ผ่านปลั๊กอิน"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ไม่สามารถส่งออกข้อมูล ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "รูปแบบบันทึกแบบครอบครัวหรือรายบุคคล"
+
+#: 
+msgid "Flexible field selection"
+msgstr "การเลือกฟิลด์ที่ยืดหยุ่น"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "ไปที่การสำรองข้อมูลฐานข้อมูล"
+
+#: 
+msgid "Open CSV Export"
+msgstr "เปิดการส่งออก CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "กู้คืนจากหน้าสำรองข้อมูลระบบ"
+

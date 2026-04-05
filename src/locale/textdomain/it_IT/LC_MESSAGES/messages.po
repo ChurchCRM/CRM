@@ -14526,3 +14526,90 @@ msgstr "La dimensione del file supera il limite del server di %s"
 msgid "Missing image data in request"
 msgstr "Dati immagine mancanti nella richiesta"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Trova persone che non hanno partecipato a un evento"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persone assenti"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Seleziona l'evento desiderato"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtro avanzato per gruppo, classificazione e ruolo"
+
+#: 
+msgid "All congregation members included"
+msgstr "Tutti i membri della congregazione inclusi"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Esportazione ChMeetings completata con successo"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formato colonne compatibile con ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informazioni di contatto, ruoli familiari e date importanti"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Crea un backup completo del database della tua parrocchia. Scarica un file SQL solo database o un archivio completo con le foto caricate."
+
+#: 
+msgid "Database Backup"
+msgstr "Backup del database"
+
+#: 
+msgid "Export"
+msgstr "Esporta"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Esporta i dati della congregazione in formato CSV. Scegli i campi da includere e filtra per classificazione, gruppo, genere e altro."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Esporta tutti i fedeli nel formato richiesto da ChMeetings, per sincronizzare facilmente i dati della congregazione con la piattaforma ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Esporta i dati della tua parrocchia in vari formati"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Backup esterno (WebDAV) tramite plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Esportazione CSV ChMeetings non riuscita"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Layout del record familiare o individuale"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Selezione flessibile dei campi"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Vai a Backup del database"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Apri esportazione CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Ripristina dalla pagina Backup di sistema"
+

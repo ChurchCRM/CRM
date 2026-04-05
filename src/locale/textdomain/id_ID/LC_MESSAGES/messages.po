@@ -14465,3 +14465,90 @@ msgstr "Ukuran file melebihi batas server sebesar %s"
 msgid "Missing image data in request"
 msgstr "Data gambar tidak ditemukan dalam permintaan"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Temukan orang yang tidak hadir di suatu acara"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Orang yang tidak hadir"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Pilih acara yang diinginkan"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filter lanjutan berdasarkan kelompok, klasifikasi, dan peran"
+
+#: 
+msgid "All congregation members included"
+msgstr "Semua jemaat disertakan"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Ekspor ChMeetings berhasil diselesaikan"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format kolom yang kompatibel dengan ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Info kontak, peran keluarga, dan tanggal penting"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Buat cadangan lengkap basis data gereja Anda. Unduh file SQL khusus basis data atau arsip lengkap termasuk foto yang diunggah."
+
+#: 
+msgid "Database Backup"
+msgstr "Cadangan Basis Data"
+
+#: 
+msgid "Export"
+msgstr "Ekspor"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Ekspor data jemaat ke format CSV. Pilih bidang yang akan disertakan dan filter berdasarkan klasifikasi, kelompok, jenis kelamin, dan lainnya."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Ekspor semua jemaat dalam format yang diharapkan oleh ChMeetings, sehingga memudahkan sinkronisasi data jemaat Anda dengan platform ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Ekspor data gereja Anda ke berbagai format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Cadangan eksternal (WebDAV) melalui plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Gagal mengekspor CSV ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Tata letak rekaman keluarga atau individu"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Pemilihan bidang yang fleksibel"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Buka Cadangan Basis Data"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Buka Ekspor CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Pulihkan dari halaman Cadangan Sistem"
+

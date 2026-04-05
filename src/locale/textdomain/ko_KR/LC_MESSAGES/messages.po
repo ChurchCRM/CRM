@@ -14484,3 +14484,90 @@ msgstr "파일 크기가 서버 제한 %s를 초과합니다"
 msgid "Missing image data in request"
 msgstr "요청에 이미지 데이터가 없습니다"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "이벤트에 참석하지 않은 성도 찾기"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "누락된 성도"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "원하는 이벤트 선택"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "소그룹, 분류 및 역할별 고급 필터링"
+
+#: 
+msgid "All congregation members included"
+msgstr "모든 회중 포함"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 내보내기가 완료되었습니다"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 호환 열 형식"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "연락처 정보, 가족 역할 및 주요 날짜"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "교회 데이터베이스의 전체 백업을 생성합니다. 데이터베이스 전용 SQL 파일 또는 업로드된 사진이 포함된 전체 아카이브를 다운로드하세요."
+
+#: 
+msgid "Database Backup"
+msgstr "데이터베이스 백업"
+
+#: 
+msgid "Export"
+msgstr "내보내기"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "회중 데이터를 CSV 형식으로 내보냅니다. 포함할 필드를 선택하고 분류, 소그룹, 성별 등으로 필터링하세요."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ChMeetings에서 요구하는 형식으로 모든 성도를 내보내어 ChMeetings 플랫폼과 회중 데이터를 쉽게 동기화할 수 있습니다."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "교회 데이터를 다양한 형식으로 내보내기"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "플러그인을 통한 외부(WebDAV) 백업"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV 내보내기에 실패했습니다"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "가족 또는 개인 레코드 레이아웃"
+
+#: 
+msgid "Flexible field selection"
+msgstr "유연한 필드 선택"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "데이터베이스 백업으로 이동"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV 내보내기 열기"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "시스템 백업 페이지에서 복원"
+

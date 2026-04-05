@@ -14492,3 +14492,90 @@ msgstr "Kích thước tệp vượt quá giới hạn máy chủ %s"
 msgid "Missing image data in request"
 msgstr "Thiếu dữ liệu hình ảnh trong yêu cầu"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tìm giáo dân chưa tham dự một sự kiện"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Giáo dân vắng mặt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Lọc nâng cao theo nhóm, phân loại và chức vụ"
+
+#: 
+msgid "All congregation members included"
+msgstr "Bao gồm tất cả thành viên giáo đoàn"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Xuất ChMeetings hoàn tất thành công"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Định dạng cột tương thích với ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Thông tin liên lạc, vai trò gia đình và các ngày quan trọng"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Tạo bản sao lưu đầy đủ cơ sở dữ liệu nhà thờ của bạn. Tải xuống tệp SQL chỉ chứa cơ sở dữ liệu hoặc lưu trữ hoàn chỉnh bao gồm cả ảnh đã tải lên."
+
+#: 
+msgid "Database Backup"
+msgstr "Sao lưu Cơ sở Dữ liệu"
+
+#: 
+msgid "Export"
+msgstr "Xuất dữ liệu"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Xuất dữ liệu giáo đoàn sang định dạng CSV. Chọn các trường cần đưa vào và lọc theo phân loại, nhóm, giới tính và nhiều tiêu chí khác."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Xuất tất cả giáo dân theo định dạng yêu cầu của ChMeetings, giúp đồng bộ dữ liệu giáo đoàn với nền tảng ChMeetings một cách dễ dàng."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Xuất dữ liệu nhà thờ của bạn sang nhiều định dạng khác nhau"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Sao lưu ngoài (WebDAV) qua plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Xuất CSV ChMeetings thất bại"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Bố cục hồ sơ gia đình hoặc cá nhân"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Lựa chọn trường linh hoạt"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Đến trang Sao lưu Cơ sở Dữ liệu"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Mở Xuất CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Khôi phục từ trang Sao lưu Hệ thống"
+
