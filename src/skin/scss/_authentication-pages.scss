@@ -6,6 +6,23 @@
  * Component-specific - no Bootstrap duplicates.
  */
 
+// --- Two-Factor Authentication Enrollment (merged from _two-factor-enrollment.scss) ---
+#TwoFAEnrollmentSteps div.col-lg-4 {
+  text-align: center;
+}
+
+#TwoFAEnrollmentSteps div.col-lg-4 i {
+  font-size: 100px;
+}
+
+#TwoFAEnrollmentSteps button.btn-success {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 40%;
+  min-height: 60px;
+}
+
 // Background setup with image and overlay — scoped to auth pages only
 body.page-auth {
   background: url('/Images/login-photo.png') center/cover no-repeat fixed;
