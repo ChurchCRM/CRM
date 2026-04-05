@@ -257,23 +257,17 @@ function loadRoster(eventId) {
 
       // Show roster, relabel walk-in card
       $container.removeClass("d-none");
-      $("#walkinCardTitle").text(
-        i18next.t("Add Walk-in / Visitor"),
-      );
+      $("#walkinCardTitle").text(i18next.t("Add Walk-in / Visitor"));
 
       // Update group name
       var groupNames = data.groups.map(function (g) {
         return g.name;
       });
-      $("#rosterGroupName").text(
-        groupNames.length > 0 ? "— " + groupNames.join(", ") : "",
-      );
+      $("#rosterGroupName").text(groupNames.length > 0 ? "— " + groupNames.join(", ") : "");
 
       // Update stats
       var stats = data.stats;
-      $("#rosterStats").text(
-        stats.checkedIn + " / " + stats.total + " " + i18next.t("checked in"),
-      );
+      $("#rosterStats").text(stats.checkedIn + " / " + stats.total + " " + i18next.t("checked in"));
 
       // Render member lists
       var $notCheckedIn = $("#notCheckedInList").empty();
@@ -297,10 +291,7 @@ function loadRoster(eventId) {
       $("#checkedInCount").text(checkedInCount);
 
       // Toggle empty states
-      $("#notCheckedInEmpty").toggleClass(
-        "d-none",
-        notCheckedInCount > 0,
-      );
+      $("#notCheckedInEmpty").toggleClass("d-none", notCheckedInCount > 0);
       $("#checkedInEmpty").toggleClass("d-none", checkedInCount > 0);
 
       // Show the grid, hide loading
@@ -321,20 +312,12 @@ function loadRoster(eventId) {
  */
 function buildMemberCard(member, eventId) {
   var isCheckedIn = member.status === "checked_in";
-  var btnClass = isCheckedIn
-    ? "btn-outline-secondary"
-    : "btn-success";
+  var btnClass = isCheckedIn ? "btn-outline-secondary" : "btn-success";
   var btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
-  var btnText = isCheckedIn
-    ? i18next.t("Check Out")
-    : i18next.t("Check In");
+  var btnText = isCheckedIn ? i18next.t("Check Out") : i18next.t("Check In");
   var action = isCheckedIn ? "checkout" : "checkin";
 
-  var roleBadge = member.role
-    ? '<span class="badge bg-blue-lt ms-2">' +
-      escapeHtml(member.role) +
-      "</span>"
-    : "";
+  var roleBadge = member.role ? '<span class="badge bg-blue-lt ms-2">' + escapeHtml(member.role) + "</span>" : "";
 
   var photoHtml = member.hasPhoto
     ? '<span class="avatar avatar-sm me-2" style="background-image: url(' +
@@ -346,10 +329,7 @@ function buildMemberCard(member, eventId) {
 
   var timeInfo = "";
   if (isCheckedIn && member.checkinTime) {
-    timeInfo =
-      '<small class="text-secondary ms-2">' +
-      escapeHtml(member.checkinTime) +
-      "</small>";
+    timeInfo = '<small class="text-secondary ms-2">' + escapeHtml(member.checkinTime) + "</small>";
   }
 
   var html =
@@ -393,14 +373,11 @@ $(document).on("click", ".roster-action-btn", function () {
 
   $btn.prop("disabled", true);
 
-  fetch(
-    window.CRM.root + "/api/events/" + eventId + "/" + action,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ personId: personId }),
-    },
-  )
+  fetch(window.CRM.root + "/api/events/" + eventId + "/" + action, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ personId: personId }),
+  })
     .then(function (res) {
       return res.json();
     })

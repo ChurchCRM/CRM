@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const groupId = $btn.data("group-id");
     const groupName = $btn.data("group-name");
 
-    $btn.prop("disabled", true).html(
-      '<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Loading..."),
-    );
+    $btn
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Loading..."));
 
     try {
       // Find an event type linked to this group, or use a generic one
