@@ -12043,11 +12043,6 @@ msgstr "Kontinente"
 msgid "Costs"
 msgstr "Mga Gastos"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Mga Taong Gumagamit ng Credit Card"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -12121,11 +12116,6 @@ msgstr "Paganahin ang paggamit ng mga sobre ng donasyon"
 msgid "Enable use of scanned checks"
 msgstr "Paganahin ang paggamit ng mga na-scan na tseke"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Pangako ng Pamilya ayon sa Taong Piskal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -12135,11 +12125,6 @@ msgstr "Mga Tampok"
 msgid "Finance permission query IDs"
 msgstr "Mga ID ng query ng pahintulot sa pananalapi"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hanapin ang mga Nakarehistrong Estudyante"
-
 #: 
 msgid "Find family"
 msgstr "Hanapin ang pamilya"
@@ -12148,11 +12133,6 @@ msgstr "Hanapin ang pamilya"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Paghahanap ng URL ng Iyong Server"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Taong Piskal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -12218,11 +12198,6 @@ msgstr "Website ng Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gumagana ang Gravatar sa pamamagitan ng pag-convert ng mga email address sa isang hash (MD5). Ang aktwal na email address ay hindi ipinapadala sa mga server ng Gravatar - ang hash lamang ang ginagamit para hanapin ang larawan."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupo ng mga nakarehistrong estudyante"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -12359,11 +12334,6 @@ msgstr "Website ng OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "Ang OpenLP ay libreng, open-source na software sa pagtatanghal na idinisenyo para sa mga simbahan. Ang plugin na ito ay nagpapahintulot sa ChurchCRM na magpadala ng mga abiso at alerto nang direkta sa iyong OpenLP display."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Mga taong na-configure para magbayad gamit ang credit card."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -12389,11 +12359,6 @@ msgstr "Ang mga numero ng telepono ay dapat nasa format na E.164: country code +
 "\n"
 "Ang mga numero ng telepono ng tatanggap sa mga profile ng miyembro ng ChurchCRM ay dapat may kasamang country code para gumana nang tama ang SMS."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Buod ng pangako ayon sa pangalan ng pamilya para sa bawat pondo para sa napiling taong piskal"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -12412,11 +12377,6 @@ msgstr "Tala sa Privacy"
 #: 
 msgid "Quick Settings"
 msgstr "Mga Mabilis na Setting"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Mga nakarehistrong estudyante"
 
 #: 
 msgid "SMTP Authentication"
@@ -12581,11 +12541,6 @@ msgstr "Mga Setting ng Upgrade"
 #: 
 msgid "Use Cases"
 msgstr "Mga Use Case"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Pahintulot ng user para mag-export ng mga CSV file"
 
 #. plugin:vonage:link:2:label
 #: 

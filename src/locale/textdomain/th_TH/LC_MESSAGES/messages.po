@@ -13850,11 +13850,6 @@ msgstr "ทวีป"
 msgid "Costs"
 msgstr "ค่าใช้จ่าย"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "สมาชิกที่ชำระด้วยบัตรเครดิต"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13928,11 +13923,6 @@ msgstr "เปิดใช้งานซองบริจาค"
 msgid "Enable use of scanned checks"
 msgstr "เปิดใช้งานการใช้เช็คที่สแกนแล้ว"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "คำมั่นสัญญาของครอบครัวตามปีงบประมาณ"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13942,11 +13932,6 @@ msgstr "คุณสมบัติ"
 msgid "Finance permission query IDs"
 msgstr "ID คิวรีสิทธิ์ทางการเงิน"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "ค้นหานักเรียนที่ลงทะเบียน"
-
 #: 
 msgid "Find family"
 msgstr "ค้นหาครอบครัว"
@@ -13955,11 +13940,6 @@ msgstr "ค้นหาครอบครัว"
 #: 
 msgid "Finding Your Server URL"
 msgstr "การค้นหา URL เซิร์ฟเวอร์ของคุณ"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "ปีงบประมาณ"
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14025,11 +14005,6 @@ msgstr "เว็บไซต์ Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar ทำงานโดยการแปลงที่อยู่อีเมลเป็นแฮช (MD5) ที่อยู่อีเมลจริงจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ของ Gravatar โดยใช้แฮชเพื่อค้นหารูปภาพเท่านั้น"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "กลุ่มนักเรียนที่ลงทะเบียน"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14166,11 +14141,6 @@ msgstr "เว็บไซต์ OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP เป็นซอฟต์แวร์นำเสนอแบบโอเพนซอร์สฟรีที่ออกแบบมาสำหรับโบสถ์ ปลั๊กอินนี้ช่วยให้ ChurchCRM ส่งการแจ้งเตือนและการแจ้งเตือนโดยตรงไปยังจอแสดงผล OpenLP ของคุณ"
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "บุคคลที่กำหนดค่าให้ชำระเงินด้วยบัตรเครดิต"
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14196,11 +14166,6 @@ msgstr "หมายเลขโทรศัพท์ควรอยู่ใน
 "\n"
 "หมายเลขโทรศัพท์ผู้รับในโปรไฟล์สมาชิก ChurchCRM ควรรวมรหัสประเทศเพื่อให้ SMS ทำงานได้อย่างถูกต้อง"
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "สรุปคำมั่นสัญญาตามชื่อครอบครัวสำหรับแต่ละกองทุนสำหรับปีงบประมาณที่เลือก"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14219,11 +14184,6 @@ msgstr "หมายเหตุความเป็นส่วนตัว"
 #: 
 msgid "Quick Settings"
 msgstr "การตั้งค่าด่วน"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "นักเรียนที่ลงทะเบียน"
 
 #: 
 msgid "SMTP Authentication"
@@ -14394,11 +14354,6 @@ msgstr "การตั้งค่าการอัปเกรด"
 #: 
 msgid "Use Cases"
 msgstr "กรณีการใช้งาน"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "สิทธิ์ผู้ใช้ในการส่งออกไฟล์ CSV"
 
 #. plugin:vonage:link:0:label
 #: 

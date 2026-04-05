@@ -13949,11 +13949,6 @@ msgstr "Kontinens"
 msgid "Costs"
 msgstr "Költségek"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Hitelkártyás személyek"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14027,11 +14022,6 @@ msgstr "Adományborítékok használatának engedélyezése"
 msgid "Enable use of scanned checks"
 msgstr "Szkennelt csekkek használatának engedélyezése"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Családi ígérvény pénzügyi év szerint"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14041,11 +14031,6 @@ msgstr "Funkciók"
 msgid "Finance permission query IDs"
 msgstr "Pénzügyi jogosultsági lekérdezési azonosítók"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Regisztrált tanulók keresése"
-
 #: 
 msgid "Find family"
 msgstr "Család keresése"
@@ -14054,11 +14039,6 @@ msgstr "Család keresése"
 #: 
 msgid "Finding Your Server URL"
 msgstr "A szerver URL-jének megkeresése"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Pénzügyi év."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14124,11 +14104,6 @@ msgstr "Gravatar weboldal"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5) alakítja. A tényleges e-mail-cím soha nem kerül a Gravatar szervereire – a képkereséshez csak a hash értéket használja."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Regisztrált tanulók csoportja"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14265,11 +14240,6 @@ msgstr "OpenLP weboldal"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "Az OpenLP egy ingyenes, nyílt forráskódú prezentációs szoftver, amelyet gyülekezetek számára terveztek. Ez a bővítmény lehetővé teszi, hogy a ChurchCRM értesítéseket és riasztásokat küldjön közvetlenül az OpenLP kijelzőjére."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Hitelkártyás fizetésre beállított személyek."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14295,11 +14265,6 @@ msgstr "A telefonszámokat E.164 formátumban kell megadni: országkód + szám.
 "\n"
 "A ChurchCRM-tagprofilokban lévő fogadói telefonszámoknak tartalmazniuk kell az országkódot az SMS helyes működéséhez."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Fogadalomösszesítő családnév szerint, alaponként, a kiválasztott pénzügyi évre"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14318,11 +14283,6 @@ msgstr "Adatvédelmi megjegyzés"
 #: 
 msgid "Quick Settings"
 msgstr "Gyorsbeállítások"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Regisztrált tanulók"
 
 #: 
 msgid "SMTP Authentication"
@@ -14493,11 +14453,6 @@ msgstr "Frissítési beállítások"
 #: 
 msgid "Use Cases"
 msgstr "Felhasználási esetek"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Felhasználói jogosultság CSV-fájlok exportálásához"
 
 #. plugin:vonage:link:0:label
 #: 
