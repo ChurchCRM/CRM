@@ -181,7 +181,7 @@ if ($bCanManageGroups) {
                 <div class="list-group-item p-3 ss-member" data-person-id="<?= $teacher->getId() ?>" data-role="Teacher">
                     <div class="row align-items-center">
                         <div class="col-auto">
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                            <a href="<?= $sRootPath ?>/people/view/<?= $teacher->getId() ?>">
                                 <span class="avatar avatar-md">
                                     <img data-image-entity-type="person" data-image-entity-id="<?= $teacher->getId() ?>"
                                          alt="<?= InputUtils::escapeAttribute($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?>" />
@@ -189,7 +189,7 @@ if ($bCanManageGroups) {
                             </a>
                         </div>
                         <div class="col">
-                            <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $teacher->getId() ?>">
+                            <a href="<?= $sRootPath ?>/people/view/<?= $teacher->getId() ?>">
                                 <strong><?= InputUtils::escapeHTML($teacher->getFirstName() . ' ' . $teacher->getLastName()) ?></strong>
                             </a>
                             <div class="text-muted small"><?= gettext('Teacher') ?></div>
@@ -246,13 +246,13 @@ if ($bCanManageGroups) {
                             <tr class="ss-member" data-person-id="<?= (int) $child['kidId'] ?>" data-role="Student">
                                 <td>
                                     <div class="d-flex align-items-center gap-2">
-                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                        <a href="<?= $sRootPath ?>/people/view/<?= $child['kidId'] ?>">
                                             <span class="avatar avatar-sm">
                                                 <img data-image-entity-type="person" data-image-entity-id="<?= (int) $child['kidId'] ?>"
                                                      alt="<?= InputUtils::escapeAttribute($child['firstName'] . ' ' . $child['LastName']) ?>" />
                                             </span>
                                         </a>
-                                        <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>">
+                                        <a href="<?= $sRootPath ?>/people/view/<?= $child['kidId'] ?>">
                                             <strong><?= InputUtils::escapeHTML($child['LastName'] . ', ' . $child['firstName']) ?></strong>
                                         </a>
                                     </div>
@@ -274,7 +274,7 @@ if ($bCanManageGroups) {
                                 </td>
                                 <td>
                                     <?php if ($child['dadFirstName']): ?>
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['dadId'] ?>">
+                                    <a href="<?= $sRootPath ?>/people/view/<?= (int) $child['dadId'] ?>">
                                         <?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?>
                                     </a>
                                     <?php if ($child['dadCellPhone']): ?>
@@ -286,7 +286,7 @@ if ($bCanManageGroups) {
                                 </td>
                                 <td>
                                     <?php if ($child['momFirstName']): ?>
-                                    <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['momId'] ?>">
+                                    <a href="<?= $sRootPath ?>/people/view/<?= (int) $child['momId'] ?>">
                                         <?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?>
                                     </a>
                                     <?php if ($child['momCellPhone']): ?>
@@ -302,7 +302,7 @@ if ($bCanManageGroups) {
                                             <i class="ti ti-dots-vertical"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end">
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/view/<?= $child['kidId'] ?>"><i class="ti ti-eye me-2"></i><?= gettext('View') ?></a>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?></a>
                                             <?php if ($child['fam_id']): ?>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/v2/family/<?= (int) $child['fam_id'] ?>"><i class="ti ti-users me-2"></i><?= gettext('View Family') ?></a>
@@ -371,7 +371,7 @@ if ($bCanManageGroups) {
                                             <?php if ($child['dadFirstName']): ?>
                                             <dt class="col-sm-5"><?= gettext('Father') ?>:</dt>
                                             <dd class="col-sm-7">
-                                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['dadId'] ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
+                                                <a href="<?= $sRootPath ?>/people/view/<?= (int) $child['dadId'] ?>"><?= InputUtils::escapeHTML($child['dadFirstName'] . ' ' . $child['dadLastName']) ?></a>
                                                 <?php if ($child['dadCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['dadCellPhone']) ?>"><?= InputUtils::escapeHTML($child['dadCellPhone']) ?></a></small><?php endif; ?>
                                                 <?php if ($child['dadEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['dadEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['dadEmail']) ?></a></small><?php endif; ?>
                                             </dd>
@@ -379,7 +379,7 @@ if ($bCanManageGroups) {
                                             <?php if ($child['momFirstName']): ?>
                                             <dt class="col-sm-5"><?= gettext('Mother') ?>:</dt>
                                             <dd class="col-sm-7">
-                                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= (int) $child['momId'] ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
+                                                <a href="<?= $sRootPath ?>/people/view/<?= (int) $child['momId'] ?>"><?= InputUtils::escapeHTML($child['momFirstName'] . ' ' . $child['momLastName']) ?></a>
                                                 <?php if ($child['momCellPhone']): ?><br><small><a href="tel:<?= urlencode($child['momCellPhone']) ?>"><?= InputUtils::escapeHTML($child['momCellPhone']) ?></a></small><?php endif; ?>
                                                 <?php if ($child['momEmail']): ?><br><small><a href="mailto:<?= InputUtils::escapeAttribute($child['momEmail']) ?>" target="_blank" rel="noopener noreferrer"><?= InputUtils::escapeHTML($child['momEmail']) ?></a></small><?php endif; ?>
                                             </dd>
@@ -392,7 +392,7 @@ if ($bCanManageGroups) {
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a href="<?= $sRootPath ?>/PersonView.php?PersonID=<?= $child['kidId'] ?>" class="btn btn-primary"><i class="fa-solid fa-user me-1"></i><?= gettext('View Profile') ?></a>
+                                <a href="<?= $sRootPath ?>/people/view/<?= $child['kidId'] ?>" class="btn btn-primary"><i class="fa-solid fa-user me-1"></i><?= gettext('View Profile') ?></a>
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?= gettext('Close') ?></button>
                             </div>
                         </div>

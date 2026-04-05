@@ -47,7 +47,7 @@ if (isset($_POST['Submit'])) {
     if ($iReturn) {
         RedirectUtils::redirect('groups/view/' . $iGroupID);
     } else {
-        RedirectUtils::redirect('PersonView.php?PersonID=' . $iPersonID);
+        RedirectUtils::redirect('people/view/' . $iPersonID);
     }
 }
 
@@ -125,7 +125,7 @@ require_once __DIR__ . '/Include/Header.php'
             if ($iReturn) {
                 echo ' <a href="' . SystemURLs::getRootPath() . '/groups/view/' . $iGroupID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             } else {
-                echo ' <a href="PersonView.php?PersonID=' . $iPersonID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
+                echo ' <a href="' . SystemURLs::getRootPath() . '/people/view/' . $iPersonID . '" class="btn btn-secondary ms-2">' . gettext('Cancel') . '</a>';
             }
             ?>
         </div>

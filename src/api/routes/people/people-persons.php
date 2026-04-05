@@ -86,7 +86,7 @@ $app->group('/persons', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="id", type="integer"),
      *             @OA\Property(property="objid", type="integer"),
      *             @OA\Property(property="text", type="string", example="John Smith"),
-     *             @OA\Property(property="uri", type="string", example="/PersonView.php?PersonID=42")
+     *             @OA\Property(property="uri", type="string", example="/people/view/42")
      *         ))
      *     ),
      *     @OA\Response(response=401, description="Unauthorized")
