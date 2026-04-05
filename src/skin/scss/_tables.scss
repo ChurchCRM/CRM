@@ -4,22 +4,9 @@
  * Custom styles for table layouts and formatting.
  * Extends Bootstrap table functionality with ChurchCRM-specific enhancements.
  * Component-specific - no Bootstrap duplicates.
+ *
+ * NOTE: All previous custom classes (horizontal-scroll, table-simple-padding,
+ * td-shrink) were unused and removed. Use BS5 .table-responsive for
+ * horizontal scrolling. This file is kept as a placeholder for future
+ * table-specific styles.
  */
-
-// Make tables scrollable in x-direction
-table.horizontal-scroll {
-  display: block;
-  overflow-x: scroll;
-}
-
-.table-simple-padding {
-  td:not(:first-child) {
-    padding-left: 5px;
-  }
-}
-
-// Shrink-to-fit column: as narrow as content allows, no text wrapping
-.td-shrink {
-  width: 1%;
-  white-space: nowrap;
-}

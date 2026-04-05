@@ -47,32 +47,4 @@ img[data-image-entity-type].error {
 */
 
 
-/* =========================
-   Photo Gallery Styles
-   ========================= */
-.photo-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #dee2e6;
-}
-.photo-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.photo-container {
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #f8f9fa;
-}
-
-photo-thumbnail { max-height: 140px; max-width: 100%; object-fit: cover; }
-
 /* Avatar/profile placeholders moved to _avatars.scss */
-
-@media (max-width: 576px) {
-  .photo-container { height: 120px; }
-  .photo-thumbnail { max-height: 110px; }
-}
