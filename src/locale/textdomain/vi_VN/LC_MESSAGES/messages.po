@@ -13877,11 +13877,6 @@ msgstr "Châu lục"
 msgid "Costs"
 msgstr "Chi phí"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Người thanh toán bằng thẻ tín dụng"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13955,11 +13950,6 @@ msgstr "Bật sử dụng phong bì dâng hiến"
 msgid "Enable use of scanned checks"
 msgstr "Bật sử dụng séc đã quét"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Cam kết gia đình theo năm tài chính"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13969,11 +13959,6 @@ msgstr "Tính năng"
 msgid "Finance permission query IDs"
 msgstr "ID truy vấn quyền tài chính"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tìm học viên đã đăng ký"
-
 #: 
 msgid "Find family"
 msgstr "Tìm gia đình"
@@ -13982,11 +13967,6 @@ msgstr "Tìm gia đình"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Tìm URL máy chủ của bạn"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Năm tài chính."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14052,11 +14032,6 @@ msgstr "Trang web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email thành hàm băm (MD5). Địa chỉ email thực tế không bao giờ được gửi đến máy chủ của Gravatar - chỉ hàm băm được sử dụng để tra cứu hình ảnh."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Nhóm học viên đã đăng ký"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14193,11 +14168,6 @@ msgstr "Trang web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP là phần mềm trình bày miễn phí, nguồn mở được thiết kế cho các hội thánh. Plugin này cho phép ChurchCRM gửi thông báo và cảnh báo trực tiếp đến màn hình OpenLP của bạn."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được cấu hình để thanh toán bằng thẻ tín dụng."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14223,11 +14193,6 @@ msgstr "Số điện thoại phải theo định dạng E.164: mã quốc gia + 
 "\n"
 "Số điện thoại người nhận trong hồ sơ thành viên ChurchCRM phải bao gồm mã quốc gia để SMS hoạt động đúng."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Tóm tắt cam kết theo tên gia đình cho từng quỹ trong năm tài chính đã chọn"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14246,11 +14211,6 @@ msgstr "Lưu ý về quyền riêng tư"
 #: 
 msgid "Quick Settings"
 msgstr "Cài đặt nhanh"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Học viên đã đăng ký"
 
 #: 
 msgid "SMTP Authentication"
@@ -14421,11 +14381,6 @@ msgstr "Cài đặt nâng cấp"
 #: 
 msgid "Use Cases"
 msgstr "Trường hợp sử dụng"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Quyền người dùng để xuất tệp CSV"
 
 #. plugin:vonage:link:0:label
 #: 

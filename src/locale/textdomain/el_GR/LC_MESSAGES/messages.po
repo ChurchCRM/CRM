@@ -13887,11 +13887,6 @@ msgstr "Ήπειρος"
 msgid "Costs"
 msgstr "Κόστη"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Άτομα με Πιστωτική Κάρτα"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13965,11 +13960,6 @@ msgstr "Ενεργοποίηση χρήσης φακέλων δωρεών"
 msgid "Enable use of scanned checks"
 msgstr "Ενεργοποίηση χρήσης σαρωμένων επιταγών"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Οικογενειακή Υπόσχεση ανά Οικονομικό Έτος"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13979,11 +13969,6 @@ msgstr "Χαρακτηριστικά"
 msgid "Finance permission query IDs"
 msgstr "Αναγνωριστικά ερωτημάτων οικονομικής άδειας"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Εύρεση Εγγεγραμμένων Μαθητών"
-
 #: 
 msgid "Find family"
 msgstr "Εύρεση οικογένειας"
@@ -13992,11 +13977,6 @@ msgstr "Εύρεση οικογένειας"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Εύρεση URL Διακομιστή σας"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Οικονομικό Έτος."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14062,11 +14042,6 @@ msgstr "Ιστότοπος Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Το Gravatar λειτουργεί μετατρέποντας διευθύνσεις email σε κωδικό hash (MD5). Η πραγματική διεύθυνση email δεν αποστέλλεται ποτέ στους διακομιστές του Gravatar — μόνο το hash χρησιμοποιείται για αναζήτηση εικόνας."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Ομάδα εγγεγραμμένων μαθητών"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14203,11 +14178,6 @@ msgstr "Ιστότοπος OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "Το OpenLP είναι ελεύθερο λογισμικό παρουσίασης ανοιχτού κώδικα σχεδιασμένο για εκκλησίες. Αυτό το πρόσθετο επιτρέπει στο ChurchCRM να αποστέλλει ειδοποιήσεις απευθείας στην οθόνη OpenLP σας."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Άτομα που έχουν ρυθμιστεί να πληρώνουν με πιστωτική κάρτα."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14233,11 +14203,6 @@ msgstr "Οι αριθμοί τηλεφώνου πρέπει να είναι σε
 "\n"
 "Οι αριθμοί τηλεφώνου παραληπτών στα προφίλ μελών του ChurchCRM πρέπει να περιλαμβάνουν τον κωδικό χώρας για να λειτουργεί σωστά το SMS."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Περίληψη οικονομικών δεσμεύσεων ανά οικογενειακό όνομα για κάθε ταμείο του επιλεγμένου οικονομικού έτους"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14256,11 +14221,6 @@ msgstr "Σημείωση Απορρήτου"
 #: 
 msgid "Quick Settings"
 msgstr "Γρήγορες Ρυθμίσεις"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Εγγεγραμμένοι Μαθητές"
 
 #: 
 msgid "SMTP Authentication"
@@ -14431,11 +14391,6 @@ msgstr "Ρυθμίσεις Αναβάθμισης"
 #: 
 msgid "Use Cases"
 msgstr "Περιπτώσεις Χρήσης"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Άδεια χρήστη για εξαγωγή αρχείων CSV"
 
 #. plugin:vonage:link:0:label
 #: 

@@ -13887,11 +13887,6 @@ msgstr "Kıta"
 msgid "Costs"
 msgstr "Maliyetler"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredi Kartlı Kişiler"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13965,11 +13960,6 @@ msgstr "Bağış zarfları kullanımını etkinleştir"
 msgid "Enable use of scanned checks"
 msgstr "Taranan çek kullanımını etkinleştir"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Mali Yıla Göre Aile Taahhüdü"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13979,11 +13969,6 @@ msgstr "Özellikler"
 msgid "Finance permission query IDs"
 msgstr "Finans izni sorgu kimlikleri"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Kayıtlı öğrencileri bul"
-
 #: 
 msgid "Find family"
 msgstr "Aile bul"
@@ -13992,11 +13977,6 @@ msgstr "Aile bul"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Sunucu URL'nizi Bulma"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Mali Yıl."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14062,11 +14042,6 @@ msgstr "Gravatar Web Sitesi"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar, e-posta adreslerini bir karma değerine (MD5) dönüştürerek çalışır. Gerçek e-posta adresi asla Gravatar sunucularına gönderilmez; yalnızca karma değeri görüntüyü aramak için kullanılır."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Kayıtlı öğrenci grubu"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14203,11 +14178,6 @@ msgstr "OpenLP Web Sitesi"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP, kiliseler için tasarlanmış ücretsiz, açık kaynaklı bir sunum yazılımıdır. Bu eklenti, ChurchCRM'nin OpenLP ekranınıza doğrudan bildirim ve uyarı göndermesine olanak tanır."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Kredi kartıyla ödeme yapacak şekilde yapılandırılmış kişiler."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14233,11 +14203,6 @@ msgstr "Telefon numaraları E.164 formatında olmalıdır: ülke kodu + numara. 
 "\n"
 "SMS'in doğru çalışması için ChurchCRM üye profillerindeki alıcı telefon numaraları ülke kodunu içermelidir."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Seçili mali yıl için her fon bazında aile adına göre adak özeti"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14256,11 +14221,6 @@ msgstr "Gizlilik Notu"
 #: 
 msgid "Quick Settings"
 msgstr "Hızlı Ayarlar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Kayıtlı öğrenciler"
 
 #: 
 msgid "SMTP Authentication"
@@ -14431,11 +14391,6 @@ msgstr "Yükseltme Ayarları"
 #: 
 msgid "Use Cases"
 msgstr "Kullanım Senaryoları"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "CSV dosyalarını dışa aktarmak için kullanıcı izni"
 
 #. plugin:vonage:link:0:label
 #: 
