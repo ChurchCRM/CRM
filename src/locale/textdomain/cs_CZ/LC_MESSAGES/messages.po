@@ -14501,3 +14501,86 @@ msgstr "Velikost souboru překračuje limit serveru %s"
 msgid "Missing image data in request"
 msgstr "V požadavku chybí data obrázku"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Najít osoby, které se nezúčastnily události"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Chybějící osoby"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vyberte požadovanou událost"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Pokročilé filtrování podle skupiny, klasifikace a role"
+
+#: 
+msgid "All congregation members included"
+msgstr "Zahrnuti všichni farníci"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Export do ChMeetings byl úspěšně dokončen"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formát sloupců kompatibilní s ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktní informace, rodinné role a klíčová data"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Vytvořte úplnou zálohu databáze vaší farnosti. Stáhněte soubor SQL pouze s databází nebo kompletní archiv včetně nahraných fotografií."
+
+#: 
+msgid "Database Backup"
+msgstr "Záloha databáze"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportujte data farníků do formátu CSV. Vyberte, která pole zahrnout, a filtrujte podle klasifikace, skupiny, pohlaví a dalších kritérií."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportujte všechny farníky ve formátu očekávaném platformou ChMeetings, což usnadňuje synchronizaci dat farnosti s platformou ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportujte data vaší farnosti do různých formátů"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Externí záloha (WebDAV) prostřednictvím zásuvného modulu"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Export CSV pro ChMeetings se nezdařil"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Rozložení záznamu rodiny nebo jednotlivce"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibilní výběr polí"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Přejít na zálohu databáze"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Otevřít export CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Obnovit ze stránky Systémová záloha"
+

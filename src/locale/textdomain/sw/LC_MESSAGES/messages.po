@@ -14496,3 +14496,90 @@ msgstr "Ukubwa wa faili unazidi kiwango cha seva cha %s"
 msgid "Missing image data in request"
 msgstr "Data ya picha haipo katika ombi"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Watu waliokosekana"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chagua tukio unalotaka"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Uchujaji wa hali ya juu kwa kikundi, uainishaji, na jukumu"
+
+#: 
+msgid "All congregation members included"
+msgstr "Waumini wote wa kanisa wamejumuishwa"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Uhamishaji wa ChMeetings umekamilika kwa mafanikio"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Muundo wa safu wima unaooana na ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Maelezo ya mawasiliano, majukumu ya familia, na tarehe muhimu"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Unda nakala kamili ya hifadhidata ya kanisa lako. Pakua faili la SQL la hifadhidata peke yake au kumbukumbu kamili ikijumuisha picha zilizopakiwa."
+
+#: 
+msgid "Database Backup"
+msgstr "Nakala ya Hifadhidata"
+
+#: 
+msgid "Export"
+msgstr "Hamisha"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Hamisha data ya waumini wa kanisa kwenda muundo wa CSV. Chagua ni sehemu zipi za kujumuisha na uchuje kwa uainishaji, kikundi, jinsia, na zaidi."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Hamisha watu wote katika muundo unaotarajiwa na ChMeetings, na kurahisisha usawazishaji wa data ya waumini wako na jukwaa la ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Hamisha data ya kanisa lako kwenda miundo mbalimbali"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Nakala ya nje (WebDAV) kupitia programu-jalizi"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Imeshindwa kuhamisha CSV ya ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Mpangilio wa rekodi ya familia au mtu binafsi"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Uchaguzi wa sehemu wenye kubadilika"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Nenda kwenye Nakala ya Hifadhidata"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Fungua Uhamishaji wa CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Rejesha kutoka ukurasa wa Nakala ya Mfumo"
+

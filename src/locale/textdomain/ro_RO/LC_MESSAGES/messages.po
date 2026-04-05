@@ -14572,3 +14572,86 @@ msgstr "Dimensiunea fișierului depășește limita serverului de %s"
 msgid "Missing image data in request"
 msgstr "Date imagine lipsă în cerere"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Găsiți persoane care nu au participat la un eveniment"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persoane absente"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selectați evenimentul dorit"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtrare avansată după grup, clasificare și rol"
+
+#: 
+msgid "All congregation members included"
+msgstr "Toți enoriașii sunt incluși"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportul ChMeetings a fost finalizat cu succes"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format de coloane compatibil cu ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informații de contact, roluri familiale și date importante"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Creați o copie de rezervă completă a bazei de date a bisericii. Descărcați un fișier SQL cu baza de date sau o arhivă completă care include fotografiile încărcate."
+
+#: 
+msgid "Database Backup"
+msgstr "Copie de rezervă a bazei de date"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportați datele enoriașilor în format CSV. Alegeți câmpurile de inclus și filtrați după clasificare, grup, gen și altele."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportați toți enoriașii în formatul așteptat de ChMeetings, facilitând sincronizarea datelor parohiei cu platforma ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportați datele bisericii în diverse formate"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Copie de rezervă externă (WebDAV) prin plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exportul CSV ChMeetings a eșuat"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Structură de înregistrare familială sau individuală"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Selecție flexibilă a câmpurilor"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Mergeți la Copia de rezervă a bazei de date"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Deschideți Exportul CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Restaurați din pagina de Copie de rezervă a sistemului"
+

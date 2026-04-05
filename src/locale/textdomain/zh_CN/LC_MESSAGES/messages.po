@@ -14583,3 +14583,90 @@ msgstr "文件大小超过服务器限制 %s"
 msgid "Missing image data in request"
 msgstr "请求中缺少图片数据"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未出席活动的会众"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人员"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "选择所需活动"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "按小组、分类和角色进行高级筛选"
+
+#: 
+msgid "All congregation members included"
+msgstr "包含所有会众成员"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 导出成功"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 兼容的列格式"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "联系信息、家庭角色和重要日期"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "创建教会数据库的完整备份。下载仅含数据库的 SQL 文件，或包含已上传照片的完整压缩包。"
+
+#: 
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: 
+msgid "Export"
+msgstr "导出"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "将会众数据导出为 CSV 格式。选择要包含的字段，并按分类、小组、性别等条件进行筛选。"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "按 ChMeetings 所需格式导出所有人员信息，便于将会众数据同步至 ChMeetings 平台。"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "将教会数据导出为多种格式"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "通过插件进行外部（WebDAV）备份"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV 导出失败"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "家庭或个人记录布局"
+
+#: 
+msgid "Flexible field selection"
+msgstr "灵活的字段选择"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "前往数据库备份"
+
+#: 
+msgid "Open CSV Export"
+msgstr "打开 CSV 导出"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "从系统备份页面恢复"
+

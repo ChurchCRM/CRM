@@ -14462,3 +14462,90 @@ msgstr "फ़ाइल का आकार सर्वर की सीमा 
 msgid "Missing image data in request"
 msgstr "अनुरोध में छवि डेटा अनुपस्थित है"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "वे लोग खोजें जो किसी कार्यक्रम में उपस्थित नहीं थे"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "अनुपस्थित सदस्य"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "इच्छित कार्यक्रम चुनें"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "समूह, वर्गीकरण और भूमिका के अनुसार उन्नत फ़िल्टरिंग"
+
+#: 
+msgid "All congregation members included"
+msgstr "सभी मण्डली के सदस्य शामिल"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings निर्यात सफलतापूर्वक पूर्ण हुआ"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-संगत कॉलम प्रारूप"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "संपर्क जानकारी, पारिवारिक भूमिकाएँ और महत्वपूर्ण तिथियाँ"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "अपने चर्च डेटाबेस का पूर्ण बैकअप बनाएँ। केवल डेटाबेस SQL फ़ाइल या अपलोड की गई तस्वीरों सहित पूर्ण संग्रह डाउनलोड करें।"
+
+#: 
+msgid "Database Backup"
+msgstr "डेटाबेस बैकअप"
+
+#: 
+msgid "Export"
+msgstr "निर्यात"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "मण्डली का डेटा CSV प्रारूप में निर्यात करें। कौन से फ़ील्ड शामिल करने हैं यह चुनें और वर्गीकरण, समूह, लिंग आदि के अनुसार फ़िल्टर करें।"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ChMeetings द्वारा अपेक्षित प्रारूप में सभी लोगों को निर्यात करें, जिससे आपके मण्डली डेटा को ChMeetings प्लेटफ़ॉर्म के साथ समन्वयित करना आसान हो।"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "अपना चर्च डेटा विभिन्न प्रारूपों में निर्यात करें"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "प्लगइन के माध्यम से बाहरी (WebDAV) बैकअप"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV निर्यात विफल"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "पारिवारिक या व्यक्तिगत रिकॉर्ड लेआउट"
+
+#: 
+msgid "Flexible field selection"
+msgstr "लचीला फ़ील्ड चयन"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "डेटाबेस बैकअप पर जाएँ"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV निर्यात खोलें"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "सिस्टम बैकअप पेज से पुनर्स्थापित करें"
+

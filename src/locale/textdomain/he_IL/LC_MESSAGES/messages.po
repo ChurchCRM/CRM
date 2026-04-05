@@ -14498,3 +14498,90 @@ msgstr "גודל הקובץ חורג ממגבלת השרת של %s"
 msgid "Missing image data in request"
 msgstr "נתוני תמונה חסרים בבקשה"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "סינון מתקדם לפי קבוצה, סיווג ותפקיד"
+
+#: 
+msgid "All congregation members included"
+msgstr "כל חברי הקהילה כלולים"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ייצוא ChMeetings הושלם בהצלחה"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "פורמט עמודות תואם ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "פרטי קשר, תפקידים משפחתיים ותאריכים מרכזיים"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "צור גיבוי מלא של מסד הנתונים של הקהילה. הורד קובץ SQL של מסד הנתונים בלבד, או ארכיון מלא הכולל תמונות שהועלו."
+
+#: 
+msgid "Database Backup"
+msgstr "גיבוי מסד נתונים"
+
+#: 
+msgid "Export"
+msgstr "ייצוא"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "ייצא נתוני קהילה לפורמט CSV. בחר אילו שדות לכלול וסנן לפי סיווג, קבוצה, מגדר ועוד."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ייצא את כל האנשים בפורמט הנדרש על ידי ChMeetings, מה שמאפשר סנכרון קל של נתוני הקהילה עם פלטפורמת ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "ייצא את נתוני הקהילה לפורמטים שונים"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "גיבוי חיצוני (WebDAV) באמצעות תוסף"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ייצוא CSV ל-ChMeetings נכשל"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "פריסת רשומה משפחתית או אישית"
+
+#: 
+msgid "Flexible field selection"
+msgstr "בחירת שדות גמישה"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "עבור לגיבוי מסד נתונים"
+
+#: 
+msgid "Open CSV Export"
+msgstr "פתח ייצוא CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "שחזר מדף גיבוי המערכת"
+
