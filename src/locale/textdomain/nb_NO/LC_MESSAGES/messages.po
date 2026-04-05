@@ -13964,11 +13964,6 @@ msgstr "Kontinent"
 msgid "Costs"
 msgstr "Kostnader"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredittkortpersoner"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14042,11 +14037,6 @@ msgstr "Aktiver bruk av gavekuverter"
 msgid "Enable use of scanned checks"
 msgstr "Aktiver bruk av skannede sjekker"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familieløfte etter regnskapsår"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14056,11 +14046,6 @@ msgstr "Funksjoner"
 msgid "Finance permission query IDs"
 msgstr "Finansieringstillatelse spørre-ID-er"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Finn registrerte studenter"
-
 #: 
 msgid "Find family"
 msgstr "Finn familie"
@@ -14069,11 +14054,6 @@ msgstr "Finn familie"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Finne server-URL-en din"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Regnskapsår."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14139,11 +14119,6 @@ msgstr "Gravatar nettsted"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar fungerer ved å konvertere e-postadresser til en hash (MD5). Den faktiske e-postadressen sendes aldri til Gravatars servere – kun hashen brukes til å slå opp bildet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Gruppe av registrerte studenter"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14280,11 +14255,6 @@ msgstr "OpenLP nettsted"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP er gratis presentasjonsverktøy med åpen kildekode designet for kirker. Denne plugin-en lar ChurchCRM sende varsler og meldinger direkte til OpenLP-skjermen."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som er konfigurert til å betale med kredittkort."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14310,11 +14280,6 @@ msgstr "Telefonnumre bør være i E.164-format: landkode + nummer. Eksempler:\n"
 "\n"
 "Mottakerens telefonnumre i ChurchCRM-medlemsprofiler bør inkludere landkode for at SMS skal fungere korrekt."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Sammendrag av finansielle bidrag per familienavn for hvert fond for valgt regnskapsår"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14333,11 +14298,6 @@ msgstr "Personvernmerknad"
 #: 
 msgid "Quick Settings"
 msgstr "Hurtiginnstillinger"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerte studenter"
 
 #: 
 msgid "SMTP Authentication"
@@ -14508,11 +14468,6 @@ msgstr "Oppgraderingsinnstillinger"
 #: 
 msgid "Use Cases"
 msgstr "Brukstilfeller"
-
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Brukertillatelse til å eksportere CSV-filer"
 
 #. plugin:vonage:link:2:label
 #: 

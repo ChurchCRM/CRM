@@ -13907,11 +13907,6 @@ msgstr "Континент"
 msgid "Costs"
 msgstr "Витрати"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Люди з кредитною карткою"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13985,11 +13980,6 @@ msgstr "Увімкнути використання конвертів для п
 msgid "Enable use of scanned checks"
 msgstr "Увімкнути використання сканованих чеків"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Сімейне зобов'язання за фінансовим роком"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13999,11 +13989,6 @@ msgstr "Функції"
 msgid "Finance permission query IDs"
 msgstr "Ідентифікатори запитів дозволів фінансів"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Знайти зареєстрованих учнів"
-
 #: 
 msgid "Find family"
 msgstr "Знайти сім'ю"
@@ -14012,11 +13997,6 @@ msgstr "Знайти сім'ю"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Пошук URL-адреси вашого сервера"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Фінансовий рік."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14082,11 +14062,6 @@ msgstr "Вебсайт Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar працює шляхом перетворення електронних адрес у хеш (MD5). Фактична електронна адреса ніколи не надсилається на сервери Gravatar — для пошуку зображення використовується лише хеш."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Група зареєстрованих учнів"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14223,11 +14198,6 @@ msgstr "Вебсайт OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP — безкоштовне програмне забезпечення з відкритим кодом для презентацій, розроблене для церков. Цей плагін дозволяє ChurchCRM надсилати сповіщення та попередження безпосередньо на ваш дисплей OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Люди, налаштовані для оплати кредитною карткою."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14253,11 +14223,6 @@ msgstr "Номери телефонів мають бути у форматі E.
 "\n"
 "Номери телефонів одержувачів у профілях членів ChurchCRM повинні містити код країни для коректної роботи SMS."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Зведення зобов'язань за назвою сім'ї для кожного фонду за вибраний фінансовий рік"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14276,11 +14241,6 @@ msgstr "Примітка щодо конфіденційності"
 #: 
 msgid "Quick Settings"
 msgstr "Швидкі налаштування"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Зареєстровані учні"
 
 #: 
 msgid "SMTP Authentication"
@@ -14452,11 +14412,6 @@ msgstr "Налаштування оновлення"
 msgid "Use Cases"
 msgstr "Випадки використання"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Дозвіл користувача на експорт файлів CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14566,4 +14521,91 @@ msgstr "Розмір файлу перевищує ліміт сервера %s"
 #: 
 msgid "Missing image data in request"
 msgstr "У запиті відсутні дані зображення"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Знайти людей, які не відвідали захід"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Відсутні парафіяни"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Оберіть потрібний захід"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Розширена фільтрація за групою, категорією та роллю"
+
+#: 
+msgid "All congregation members included"
+msgstr "Включено всіх членів громади"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Експорт до ChMeetings успішно завершено"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Формат стовпців, сумісний із ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Контактна інформація, сімейні ролі та ключові дати"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Створіть повну резервну копію бази даних вашої парафії. Завантажте файл SQL лише з базою даних або повний архів, включно з завантаженими фотографіями."
+
+#: 
+msgid "Database Backup"
+msgstr "Резервне копіювання бази даних"
+
+#: 
+msgid "Export"
+msgstr "Експорт"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Експортуйте дані громади у форматі CSV. Виберіть поля для включення та фільтруйте за категорією, групою, статтю тощо."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Експортуйте всіх парафіян у форматі, очікуваному ChMeetings, що дозволяє легко синхронізувати дані громади з платформою ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Експортуйте дані вашої парафії у різні формати"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Зовнішнє резервне копіювання (WebDAV) через плагін"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Не вдалося експортувати CSV для ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Макет запису родини або особи"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Гнучкий вибір полів"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Перейти до резервного копіювання бази даних"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Відкрити CSV-експорт"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Відновлення зі сторінки системного резервного копіювання"
 

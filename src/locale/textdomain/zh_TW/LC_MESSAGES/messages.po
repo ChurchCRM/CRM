@@ -14085,11 +14085,6 @@ msgstr "洲"
 msgid "Costs"
 msgstr "費用"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡付款者"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14163,11 +14158,6 @@ msgstr "啟用奉獻信封"
 msgid "Enable use of scanned checks"
 msgstr "啟用掃描支票功能"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "依財政年度的家庭認捐"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14177,11 +14167,6 @@ msgstr "功能"
 msgid "Finance permission query IDs"
 msgstr "財務權限查詢 ID"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "尋找已登記學生"
-
 #: 
 msgid "Find family"
 msgstr "尋找家庭"
@@ -14190,11 +14175,6 @@ msgstr "尋找家庭"
 #: 
 msgid "Finding Your Server URL"
 msgstr "尋找您的伺服器 URL"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "財政年度。"
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14260,11 +14240,6 @@ msgstr "Gravatar 網站"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar 通過將電子郵件地址轉換為雜湊值（MD5）來運作。實際的電子郵件地址從不傳送到 Gravatar 的伺服器——只有雜湊值用於查找圖片。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "已登記學生群組"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14401,11 +14376,6 @@ msgstr "OpenLP 網站"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP 是專為教會設計的免費開源簡報軟體。此插件允許 ChurchCRM 直接向您的 OpenLP 顯示器發送通知和警報。"
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "設定以信用卡付款的成員。"
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14431,11 +14401,6 @@ msgstr "電話號碼應採用 E.164 格式：國家代碼 + 號碼。範例：\n
 "\n"
 "ChurchCRM 成員個人資料中的收件人電話號碼應包含國家代碼，才能正確發送 SMS。"
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "所選財政年度每個基金按家庭名稱的認捐摘要"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14454,11 +14419,6 @@ msgstr "隱私聲明"
 #: 
 msgid "Quick Settings"
 msgstr "快速設定"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "已登記學生"
 
 #: 
 msgid "SMTP Authentication"
@@ -14630,11 +14590,6 @@ msgstr "升級設定"
 msgid "Use Cases"
 msgstr "使用案例"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "使用者匯出 CSV 檔案的權限"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14744,4 +14699,91 @@ msgstr "檔案大小超過伺服器限制 %s"
 #: 
 msgid "Missing image data in request"
 msgstr "請求中缺少圖片資料"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "尋找未參加活動的人員"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人員"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "選擇所需活動"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "依小組、分類及角色進行進階篩選"
+
+#: 
+msgid "All congregation members included"
+msgstr "包含所有會眾"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 匯出成功完成"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 相容欄位格式"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "聯絡資訊、家庭角色及重要日期"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "建立教會資料庫的完整備份。下載純資料庫 SQL 檔案，或包含已上傳照片的完整壓縮檔。"
+
+#: 
+msgid "Database Backup"
+msgstr "資料庫備份"
+
+#: 
+msgid "Export"
+msgstr "匯出"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "將會眾資料匯出為 CSV 格式。選擇要包含的欄位，並依分類、小組、性別等進行篩選。"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "以 ChMeetings 所需格式匯出所有人員資料，輕鬆將您的會眾資料與 ChMeetings 平台同步。"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "將您的教會資料匯出為多種格式"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "透過外掛程式進行外部（WebDAV）備份"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "匯出 ChMeetings CSV 失敗"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "家庭或個人記錄版面"
+
+#: 
+msgid "Flexible field selection"
+msgstr "彈性欄位選擇"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "前往資料庫備份"
+
+#: 
+msgid "Open CSV Export"
+msgstr "開啟 CSV 匯出"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "從系統備份頁面還原"
 

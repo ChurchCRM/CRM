@@ -13949,11 +13949,6 @@ msgstr "Kontinens"
 msgid "Costs"
 msgstr "Költségek"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Hitelkártyás személyek"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14027,11 +14022,6 @@ msgstr "Adományborítékok használatának engedélyezése"
 msgid "Enable use of scanned checks"
 msgstr "Szkennelt csekkek használatának engedélyezése"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Családi ígérvény pénzügyi év szerint"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14041,11 +14031,6 @@ msgstr "Funkciók"
 msgid "Finance permission query IDs"
 msgstr "Pénzügyi jogosultsági lekérdezési azonosítók"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Regisztrált tanulók keresése"
-
 #: 
 msgid "Find family"
 msgstr "Család keresése"
@@ -14054,11 +14039,6 @@ msgstr "Család keresése"
 #: 
 msgid "Finding Your Server URL"
 msgstr "A szerver URL-jének megkeresése"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Pénzügyi év."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14124,11 +14104,6 @@ msgstr "Gravatar weboldal"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "A Gravatar úgy működik, hogy az e-mail-címeket hash értékké (MD5) alakítja. A tényleges e-mail-cím soha nem kerül a Gravatar szervereire – a képkereséshez csak a hash értéket használja."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Regisztrált tanulók csoportja"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14265,11 +14240,6 @@ msgstr "OpenLP weboldal"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "Az OpenLP egy ingyenes, nyílt forráskódú prezentációs szoftver, amelyet gyülekezetek számára terveztek. Ez a bővítmény lehetővé teszi, hogy a ChurchCRM értesítéseket és riasztásokat küldjön közvetlenül az OpenLP kijelzőjére."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Hitelkártyás fizetésre beállított személyek."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14295,11 +14265,6 @@ msgstr "A telefonszámokat E.164 formátumban kell megadni: országkód + szám.
 "\n"
 "A ChurchCRM-tagprofilokban lévő fogadói telefonszámoknak tartalmazniuk kell az országkódot az SMS helyes működéséhez."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Fogadalomösszesítő családnév szerint, alaponként, a kiválasztott pénzügyi évre"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14318,11 +14283,6 @@ msgstr "Adatvédelmi megjegyzés"
 #: 
 msgid "Quick Settings"
 msgstr "Gyorsbeállítások"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Regisztrált tanulók"
 
 #: 
 msgid "SMTP Authentication"
@@ -14494,11 +14454,6 @@ msgstr "Frissítési beállítások"
 msgid "Use Cases"
 msgstr "Felhasználási esetek"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Felhasználói jogosultság CSV-fájlok exportálásához"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14608,4 +14563,91 @@ msgstr "A fájlméret meghaladja a kiszolgáló %s korlátját"
 #: 
 msgid "Missing image data in request"
 msgstr "Hiányzó képadatok a kérésben"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Azok keresése, akik nem vettek részt egy eseményen"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Hiányzó személyek"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Válassza ki a kívánt eseményt"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Speciális szűrés csoport, besorolás és szerep szerint"
+
+#: 
+msgid "All congregation members included"
+msgstr "Az összes gyülekezeti tag belefoglalva"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "A ChMeetings exportálás sikeresen befejeződött"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibilis oszlopformátum"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kapcsolattartási adatok, családi szerepek és kulcsdátumok"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Készítsen teljes biztonsági másolatot az egyházi adatbázisáról. Töltsön le csak az adatbázist tartalmazó SQL-fájlt, vagy egy teljes archívumot a feltöltött fényképekkel együtt."
+
+#: 
+msgid "Database Backup"
+msgstr "Adatbázis biztonsági mentés"
+
+#: 
+msgid "Export"
+msgstr "Exportálás"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportálja a gyülekezeti adatokat CSV formátumba. Válassza ki, mely mezőket tartalmazza, és szűrjön besorolás, csoport, nem és egyéb szempontok szerint."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportálja az összes személyt a ChMeetings által elvárt formátumban, így könnyen szinkronizálhatja a gyülekezeti adatait a ChMeetings platformmal."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportálja az egyházi adatait különböző formátumokba"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Külső (WebDAV) biztonsági mentés bővítményen keresztül"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Nem sikerült exportálni a ChMeetings CSV-t"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Családi vagy egyéni rekord elrendezés"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Rugalmas mezőkiválasztás"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Ugrás az adatbázis biztonsági mentéshez"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV exportálás megnyitása"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Visszaállítás a Rendszer biztonsági mentés oldalról"
 

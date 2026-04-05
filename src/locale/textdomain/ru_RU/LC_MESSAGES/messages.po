@@ -13980,11 +13980,6 @@ msgstr "Континент"
 msgid "Costs"
 msgstr "Стоимость"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Плательщики кредитными картами"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14058,11 +14053,6 @@ msgstr "Включить использование конвертов для п
 msgid "Enable use of scanned checks"
 msgstr "Включить использование отсканированных чеков"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Обязательство семьи по финансовому году"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14072,11 +14062,6 @@ msgstr "Возможности"
 msgid "Finance permission query IDs"
 msgstr "Идентификаторы запросов с финансовыми правами"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Найти зарегистрированных учеников"
-
 #: 
 msgid "Find family"
 msgstr "Найти семью"
@@ -14085,11 +14070,6 @@ msgstr "Найти семью"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Как найти URL сервера"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Финансовый год."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14155,11 +14135,6 @@ msgstr "Сайт Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar работает, преобразуя адреса электронной почты в хэш (MD5). Фактический адрес электронной почты никогда не отправляется на серверы Gravatar — для поиска изображения используется только хэш."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Группа зарегистрированных учеников"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14296,11 +14271,6 @@ msgstr "Сайт OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP — бесплатное программное обеспечение с открытым исходным кодом для презентаций, предназначенное для церквей. Этот плагин позволяет ChurchCRM отправлять уведомления и оповещения прямо на экран OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Люди, настроенные для оплаты кредитной картой."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14326,11 +14296,6 @@ msgstr "Номера телефонов должны быть в формате 
 "\n"
 "Номера телефонов получателей в профилях членов ChurchCRM должны включать код страны для корректной работы SMS."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Сводка обязательств по имени семьи для каждого фонда за выбранный финансовый год"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14349,11 +14314,6 @@ msgstr "Примечание о конфиденциальности"
 #: 
 msgid "Quick Settings"
 msgstr "Быстрые настройки"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Зарегистрированные ученики"
 
 #: 
 msgid "SMTP Authentication"
@@ -14525,11 +14485,6 @@ msgstr "Настройки обновления"
 msgid "Use Cases"
 msgstr "Варианты использования"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Разрешение пользователя на экспорт CSV-файлов"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14639,4 +14594,91 @@ msgstr "Размер файла превышает ограничение сер
 #: 
 msgid "Missing image data in request"
 msgstr "Данные изображения отсутствуют в запросе"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Найти прихожан, не посетивших мероприятие"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Отсутствующие прихожане"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Выберите нужное мероприятие"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Расширенная фильтрация по группе, классификации и роли"
+
+#: 
+msgid "All congregation members included"
+msgstr "Включены все члены прихода"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Экспорт ChMeetings успешно завершён"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Формат столбцов, совместимый с ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Контактная информация, семейные роли и ключевые даты"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Создайте полную резервную копию базы данных вашего прихода. Скачайте файл SQL только с базой данных или полный архив, включая загруженные фотографии."
+
+#: 
+msgid "Database Backup"
+msgstr "Резервное копирование базы данных"
+
+#: 
+msgid "Export"
+msgstr "Экспорт"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Экспортируйте данные прихода в формат CSV. Выберите поля для включения и фильтруйте по классификации, группе, полу и другим параметрам."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Экспортируйте всех прихожан в формате, поддерживаемом ChMeetings, для удобной синхронизации данных прихода с платформой ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Экспортируйте данные вашего прихода в различные форматы"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Внешнее резервное копирование (WebDAV) через плагин"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Не удалось экспортировать CSV для ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Формат записи для семьи или отдельного прихожанина"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Гибкий выбор полей"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Перейти к резервному копированию базы данных"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Открыть экспорт CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Восстановить со страницы резервного копирования системы"
 

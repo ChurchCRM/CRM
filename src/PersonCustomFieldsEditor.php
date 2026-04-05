@@ -88,7 +88,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                     $customField
                         ->setName($aNameFields[$iFieldID])
                         ->setSpecial($aSpecialFields[$iFieldID])
-                        ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                        ->setFieldSecurity((int)$aFieldSecurity[$iFieldID])
                         ->save();
                 }
             }

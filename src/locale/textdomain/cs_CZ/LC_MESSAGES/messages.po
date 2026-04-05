@@ -13886,11 +13886,6 @@ msgstr "Kontinent"
 msgid "Costs"
 msgstr "Náklady"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Lidé s kreditní kartou"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13964,11 +13959,6 @@ msgstr "Povolit použití obálek darů"
 msgid "Enable use of scanned checks"
 msgstr "Povolit použití skenovaných šeků"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Závazek rodiny podle fiskálního roku"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13978,11 +13968,6 @@ msgstr "Funkce"
 msgid "Finance permission query IDs"
 msgstr "ID dotazů pro finanční oprávnění"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Najít registrované studenty"
-
 #: 
 msgid "Find family"
 msgstr "Najít rodinu"
@@ -13991,11 +13976,6 @@ msgstr "Najít rodinu"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Nalezení URL vašeho serveru"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskální rok."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14061,11 +14041,6 @@ msgstr "Web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar funguje tak, že převádí e-mailové adresy na hash (MD5). Skutečná e-mailová adresa není nikdy odeslána na servery Gravatar – k vyhledání obrázku se používá pouze hash."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Skupina registrovaných studentů"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14202,11 +14177,6 @@ msgstr "Web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP je bezplatný open-source prezentační software určený pro církve. Tento plugin umožňuje ChurchCRM odesílat oznámení a upozornění přímo na váš OpenLP displej."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Lidé nakonfigurovaní k platbě kreditní kartou."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14232,11 +14202,6 @@ msgstr "Telefonní čísla by měla být ve formátu E.164: mezinárodní předv
 "\n"
 "Telefonní čísla příjemců v profilech členů ChurchCRM by měla obsahovat mezinárodní předvolbu, aby SMS fungovaly správně."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Přehled závazků podle jména rodiny pro každý fond za vybraný fiskální rok"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14255,11 +14220,6 @@ msgstr "Poznámka k ochraně soukromí"
 #: 
 msgid "Quick Settings"
 msgstr "Rychlá nastavení"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrovaní studenti"
 
 #: 
 msgid "SMTP Authentication"
@@ -14431,11 +14391,6 @@ msgstr "Nastavení aktualizací"
 msgid "Use Cases"
 msgstr "Případy použití"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Oprávnění uživatele k exportu souborů CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14545,4 +14500,87 @@ msgstr "Velikost souboru překračuje limit serveru %s"
 #: 
 msgid "Missing image data in request"
 msgstr "V požadavku chybí data obrázku"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Najít osoby, které se nezúčastnily události"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Chybějící osoby"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Vyberte požadovanou událost"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Pokročilé filtrování podle skupiny, klasifikace a role"
+
+#: 
+msgid "All congregation members included"
+msgstr "Zahrnuti všichni farníci"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Export do ChMeetings byl úspěšně dokončen"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formát sloupců kompatibilní s ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktní informace, rodinné role a klíčová data"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Vytvořte úplnou zálohu databáze vaší farnosti. Stáhněte soubor SQL pouze s databází nebo kompletní archiv včetně nahraných fotografií."
+
+#: 
+msgid "Database Backup"
+msgstr "Záloha databáze"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportujte data farníků do formátu CSV. Vyberte, která pole zahrnout, a filtrujte podle klasifikace, skupiny, pohlaví a dalších kritérií."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportujte všechny farníky ve formátu očekávaném platformou ChMeetings, což usnadňuje synchronizaci dat farnosti s platformou ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportujte data vaší farnosti do různých formátů"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Externí záloha (WebDAV) prostřednictvím zásuvného modulu"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Export CSV pro ChMeetings se nezdařil"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Rozložení záznamu rodiny nebo jednotlivce"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibilní výběr polí"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Přejít na zálohu databáze"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Otevřít export CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Obnovit ze stránky Systémová záloha"
 

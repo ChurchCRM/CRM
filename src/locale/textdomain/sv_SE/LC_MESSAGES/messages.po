@@ -13996,11 +13996,6 @@ msgstr "Kontinent"
 msgid "Costs"
 msgstr "Kostnader"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kreditkortspersoner"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14074,11 +14069,6 @@ msgstr "Aktivera användning av gåvokuvert"
 msgid "Enable use of scanned checks"
 msgstr "Aktivera användning av skannade checkar"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familjelöfte efter räkenskapsår"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14088,11 +14078,6 @@ msgstr "Funktioner"
 msgid "Finance permission query IDs"
 msgstr "ID för ekonomibehörighetsfrågor"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hitta registrerade elever"
-
 #: 
 msgid "Find family"
 msgstr "Hitta familj"
@@ -14101,11 +14086,6 @@ msgstr "Hitta familj"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Hitta din server-URL"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14171,11 +14151,6 @@ msgstr "Gravatar webbplats"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5). Den faktiska e-postadressen skickas aldrig till Gravatars servrar – endast hashen används för att slå upp bilden."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grupp av registrerade elever"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14312,11 +14287,6 @@ msgstr "OpenLP webbplats"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP är ett gratis presentationsprogram med öppen källkod utformat för kyrkor. Detta plugin låter ChurchCRM skicka aviseringar och larm direkt till din OpenLP-skärm."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som är inställda på att betala med kreditkort."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14342,11 +14312,6 @@ msgstr "Telefonnummer ska vara i E.164-format: landskod + nummer. Exempel:\n"
 "\n"
 "Mottagarens telefonnummer i ChurchCRM-medlemsprofiler bör inkludera landskoden för att SMS ska fungera korrekt."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Åtagandesammanfattning per familjenamn för varje fond för det valda räkenskapsåret"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14365,11 +14330,6 @@ msgstr "Integritetsmeddelande"
 #: 
 msgid "Quick Settings"
 msgstr "Snabbinställningar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerade elever"
 
 #: 
 msgid "SMTP Authentication"
@@ -14541,11 +14501,6 @@ msgstr "Uppgraderingsinställningar"
 msgid "Use Cases"
 msgstr "Användningsfall"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Användarbehörighet för export av CSV-filer"
-
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14650,4 +14605,91 @@ msgstr "Filstorleken överskrider serverns gräns på %s"
 #: 
 msgid "Missing image data in request"
 msgstr "Bilddata saknas i begäran"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hitta personer som inte deltog i ett evenemang"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Saknade personer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Välj önskat evenemang"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Avancerad filtrering efter grupp, klassificering och roll"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alla församlingsmedlemmar inkluderade"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-export slutförd"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibelt kolumnformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktinformation, familjeroller och viktiga datum"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Skapa en fullständig säkerhetskopia av din kyrkodatabas. Ladda ner en SQL-fil med enbart databasen eller ett komplett arkiv inklusive uppladdade foton."
+
+#: 
+msgid "Database Backup"
+msgstr "Databassäkerhetskopiering"
+
+#: 
+msgid "Export"
+msgstr "Exportera"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportera församlingsdata till CSV-format. Välj vilka fält som ska inkluderas och filtrera efter klassificering, grupp, kön med mera."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportera alla personer i det format som ChMeetings förväntar sig, vilket gör det enkelt att synkronisera din församlingsdata med ChMeetings-plattformen."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportera din kyrkdata till olika format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Extern säkerhetskopiering (WebDAV) via insticksprogram"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Misslyckades med att exportera ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familje- eller individuell postlayout"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibelt fältval"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gå till databassäkerhetskopiering"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Öppna CSV-export"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Återställ från sidan för systemsäkerhetskopiering"
 

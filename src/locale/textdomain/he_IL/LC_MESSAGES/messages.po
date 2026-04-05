@@ -13883,11 +13883,6 @@ msgstr "יבשת"
 msgid "Costs"
 msgstr "עלויות"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "אנשים עם כרטיס אשראי"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -13961,11 +13956,6 @@ msgstr "אפשר שימוש במעטפות תרומות"
 msgid "Enable use of scanned checks"
 msgstr "אפשר שימוש בצ'קים סרוקים"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "התחייבות משפחתית לפי שנת כספים"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -13975,11 +13965,6 @@ msgstr "תכונות"
 msgid "Finance permission query IDs"
 msgstr "מזהי שאילתת הרשאת כספים"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "מצא תלמידים רשומים"
-
 #: 
 msgid "Find family"
 msgstr "מצא משפחה"
@@ -13988,11 +13973,6 @@ msgstr "מצא משפחה"
 #: 
 msgid "Finding Your Server URL"
 msgstr "מציאת כתובת URL של השרת שלך"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "שנת כספים."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14058,11 +14038,6 @@ msgstr "אתר Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar פועל על ידי המרת כתובות דוא\"ל לגיבוב (MD5). כתובת הדוא\"ל בפועל אינה נשלחת לשרתי Gravatar - רק הגיבוב משמש לחיפוש התמונה."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "קבוצת תלמידים רשומים"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14199,11 +14174,6 @@ msgstr "אתר OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP היא תוכנת מצגות חינמית ופתוחה שתוכננה לכנסיות. תוסף זה מאפשר ל-ChurchCRM לשלוח התראות ישירות לתצוגת ה-OpenLP שלך."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "אנשים שהוגדרו לשלם בכרטיס אשראי."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14229,11 +14199,6 @@ msgstr "מספרי טלפון צריכים להיות בפורמט E.164: קוד
 "\n"
 "מספרי הטלפון בפרופילי חברי ChurchCRM צריכים לכלול את קוד המדינה כדי ש-SMS יפעל כראוי."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "סיכום התחייבויות כספיות לפי שם משפחה עבור כל קרן לשנת הכספים הנבחרת"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14252,11 +14217,6 @@ msgstr "הערת פרטיות"
 #: 
 msgid "Quick Settings"
 msgstr "הגדרות מהירות"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "תלמידים רשומים"
 
 #: 
 msgid "SMTP Authentication"
@@ -14428,11 +14388,6 @@ msgstr "הגדרות שדרוג"
 msgid "Use Cases"
 msgstr "מקרי שימוש"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "הרשאת משתמש לייצוא קבצי CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14542,4 +14497,91 @@ msgstr "גודל הקובץ חורג ממגבלת השרת של %s"
 #: 
 msgid "Missing image data in request"
 msgstr "נתוני תמונה חסרים בבקשה"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "מצא אנשים שלא השתתפו באירוע"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "אנשים חסרים"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "בחר את האירוע הרצוי"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "סינון מתקדם לפי קבוצה, סיווג ותפקיד"
+
+#: 
+msgid "All congregation members included"
+msgstr "כל חברי הקהילה כלולים"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ייצוא ChMeetings הושלם בהצלחה"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "פורמט עמודות תואם ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "פרטי קשר, תפקידים משפחתיים ותאריכים מרכזיים"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "צור גיבוי מלא של מסד הנתונים של הקהילה. הורד קובץ SQL של מסד הנתונים בלבד, או ארכיון מלא הכולל תמונות שהועלו."
+
+#: 
+msgid "Database Backup"
+msgstr "גיבוי מסד נתונים"
+
+#: 
+msgid "Export"
+msgstr "ייצוא"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "ייצא נתוני קהילה לפורמט CSV. בחר אילו שדות לכלול וסנן לפי סיווג, קבוצה, מגדר ועוד."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ייצא את כל האנשים בפורמט הנדרש על ידי ChMeetings, מה שמאפשר סנכרון קל של נתוני הקהילה עם פלטפורמת ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "ייצא את נתוני הקהילה לפורמטים שונים"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "גיבוי חיצוני (WebDAV) באמצעות תוסף"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ייצוא CSV ל-ChMeetings נכשל"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "פריסת רשומה משפחתית או אישית"
+
+#: 
+msgid "Flexible field selection"
+msgstr "בחירת שדות גמישה"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "עבור לגיבוי מסד נתונים"
+
+#: 
+msgid "Open CSV Export"
+msgstr "פתח ייצוא CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "שחזר מדף גיבוי המערכת"
 

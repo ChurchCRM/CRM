@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-04 01:13+0000\n"
+"POT-Creation-Date: 2026-04-04 22:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -572,10 +572,10 @@ msgstr ""
 msgid "Advanced Deposit Report"
 msgstr ""
 
-msgid "Advanced filtering by group, classification, and role"
+msgid "Advanced Operations"
 msgstr ""
 
-msgid "Advanced Operations"
+msgid "Advanced filtering by group, classification, and role"
 msgstr ""
 
 msgid "Affected Files"
@@ -617,9 +617,6 @@ msgid "All Checks Passed"
 msgstr ""
 
 msgid "All Classifications"
-msgstr ""
-
-msgid "All congregation members included"
 msgstr ""
 
 msgid "All Data"
@@ -672,6 +669,9 @@ msgid ""
 "- Delete links you no longer need\n"
 "\n"
 "Links appear in the order they were added in the navigation menu."
+msgstr ""
+
+msgid "All congregation members included"
 msgstr ""
 
 msgid "All deposits within date range"
@@ -1074,9 +1074,6 @@ msgstr ""
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
-msgid "BCC"
-msgstr ""
-
 msgid "BCC All"
 msgstr ""
 
@@ -1428,9 +1425,6 @@ msgstr ""
 msgid "CSV Export"
 msgstr ""
 
-msgid "CSV Export Records"
-msgstr ""
-
 msgid "CSV Individual Records"
 msgstr ""
 
@@ -1560,9 +1554,6 @@ msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr ""
 
 msgid "ChMeetings Export"
-msgstr ""
-
-msgid "ChMeetings export completed successfully"
 msgstr ""
 
 msgid "ChMeetings-compatible column format"
@@ -2515,6 +2506,9 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr ""
 
 msgid "Database:"
@@ -3605,6 +3599,9 @@ msgstr ""
 msgid "Explore with Demo Data"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Export Options"
 msgstr ""
 
@@ -3614,10 +3611,10 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
-msgid "Export"
+msgid "Export all people data in ChMeetings format for import into external systems."
 msgstr ""
 
-msgid "Export all people data in ChMeetings format for import into external systems."
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
 msgstr ""
 
 msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
@@ -3627,9 +3624,6 @@ msgid "Export data to CSV format for external applications"
 msgstr ""
 
 msgid "Export to ChMeetings CSV"
-msgstr ""
-
-msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
 msgstr ""
 
 msgid "Export your church data to various formats"
@@ -3644,13 +3638,13 @@ msgstr ""
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
 msgstr ""
 
+msgid "External (WebDAV) backup via plugin"
+msgstr ""
+
 msgid "External Backup"
 msgstr ""
 
 msgid "External Backup (WebDAV)"
-msgstr ""
-
-msgid "External (WebDAV) backup via plugin"
 msgstr ""
 
 msgid "External Backup Settings"
@@ -3775,9 +3769,6 @@ msgid "Failed to empty cart to group"
 msgstr ""
 
 msgid "Failed to enable plugin"
-msgstr ""
-
-msgid "Failed to export ChMeetings CSV"
 msgstr ""
 
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
@@ -3971,9 +3962,6 @@ msgstr ""
 msgid "Family Work Phone"
 msgstr ""
 
-msgid "Family or individual record layout"
-msgstr ""
-
 msgid "Family added to cart"
 msgstr ""
 
@@ -3990,6 +3978,9 @@ msgid "Family name must be at least 2 characters"
 msgstr ""
 
 msgid "Family not found"
+msgstr ""
+
+msgid "Family or individual record layout"
 msgstr ""
 
 msgid "Family removed from cart"
@@ -4081,6 +4072,10 @@ msgid "Files not part of the official release were found on your server."
 msgstr ""
 
 msgid "Filesystem Permissions"
+msgstr ""
+
+#. Context: locales
+msgid "Filipino - Philippines"
 msgstr ""
 
 msgid "Filter by Class"
@@ -5106,6 +5101,9 @@ msgstr ""
 msgid "Invalid JSON provided for configuration"
 msgstr ""
 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr ""
+
 msgid "Invalid List id"
 msgstr ""
 
@@ -5671,6 +5669,10 @@ msgstr ""
 msgid "Malawi"
 msgstr ""
 
+#. Context: locales
+msgid "Malayalam - India"
+msgstr ""
+
 #. Context: countries
 msgid "Malaysia"
 msgstr ""
@@ -6190,9 +6192,6 @@ msgid "Myanmar (Burma) (မြန်မာ)"
 msgstr ""
 
 msgid "N"
-msgstr ""
-
-msgid "N/A"
 msgstr ""
 
 msgid "NE"

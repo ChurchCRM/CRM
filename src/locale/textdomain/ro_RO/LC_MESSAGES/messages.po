@@ -13957,11 +13957,6 @@ msgstr "Configurare"
 msgid "Costs"
 msgstr "Costuri"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Persoane cu card de credit"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14035,11 +14030,6 @@ msgstr "Activează utilizarea plicurilor de donații"
 msgid "Enable use of scanned checks"
 msgstr "Activează utilizarea cecurilor scanate"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Angajament familial pe an fiscal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14049,11 +14039,6 @@ msgstr "Funcționalități"
 msgid "Finance permission query IDs"
 msgstr "ID-uri interogări permisiuni finanțe"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Găsește elevi înregistrați"
-
 #: 
 msgid "Find family"
 msgstr "Găsește familie"
@@ -14062,11 +14047,6 @@ msgstr "Găsește familie"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Găsirea URL-ului serverului dvs."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "An fiscal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14132,11 +14112,6 @@ msgstr "Site web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar funcționează prin convertirea adreselor de e-mail într-un hash (MD5). Adresa de e-mail reală nu este niciodată trimisă serverelor Gravatar - doar hash-ul este utilizat pentru căutarea imaginii."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Grup de elevi înregistrați"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14273,11 +14248,6 @@ msgstr "Site web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP este un software de prezentare gratuit și open-source conceput pentru parohii. Acest plugin permite ChurchCRM să trimită notificări și alerte direct pe ecranul OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Persoane configurate să plătească cu cardul de credit."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14303,11 +14273,6 @@ msgstr "Numerele de telefon trebuie să fie în format E.164: cod de țară + nu
 "\n"
 "Numerele de telefon ale destinatarilor din profilurile membrilor comunității ChurchCRM trebuie să includă codul de țară pentru ca SMS-ul să funcționeze corect."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Rezumatul angajamentelor financiare pe nume de familie pentru fiecare fond în anul fiscal selectat"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14326,11 +14291,6 @@ msgstr "Notă de confidențialitate"
 #: 
 msgid "Quick Settings"
 msgstr "Setări rapide"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Elevi înregistrați"
 
 #: 
 msgid "SMTP Authentication"
@@ -14502,11 +14462,6 @@ msgstr "Setări actualizare"
 msgid "Use Cases"
 msgstr "Cazuri de utilizare"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Permisiune utilizator pentru exportul fișierelor CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14616,4 +14571,87 @@ msgstr "Dimensiunea fișierului depășește limita serverului de %s"
 #: 
 msgid "Missing image data in request"
 msgstr "Date imagine lipsă în cerere"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Găsiți persoane care nu au participat la un eveniment"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persoane absente"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Selectați evenimentul dorit"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtrare avansată după grup, clasificare și rol"
+
+#: 
+msgid "All congregation members included"
+msgstr "Toți enoriașii sunt incluși"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportul ChMeetings a fost finalizat cu succes"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format de coloane compatibil cu ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informații de contact, roluri familiale și date importante"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Creați o copie de rezervă completă a bazei de date a bisericii. Descărcați un fișier SQL cu baza de date sau o arhivă completă care include fotografiile încărcate."
+
+#: 
+msgid "Database Backup"
+msgstr "Copie de rezervă a bazei de date"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportați datele enoriașilor în format CSV. Alegeți câmpurile de inclus și filtrați după clasificare, grup, gen și altele."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportați toți enoriașii în formatul așteptat de ChMeetings, facilitând sincronizarea datelor parohiei cu platforma ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportați datele bisericii în diverse formate"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Copie de rezervă externă (WebDAV) prin plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Exportul CSV ChMeetings a eșuat"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Structură de înregistrare familială sau individuală"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Selecție flexibilă a câmpurilor"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Mergeți la Copia de rezervă a bazei de date"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Deschideți Exportul CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Restaurați din pagina de Copie de rezervă a sistemului"
 
