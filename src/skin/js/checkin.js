@@ -184,3 +184,232 @@ function escapeHtml(text) {
   div.textContent = text;
   return div.innerHTML;
 }
+
+// =============================================================================
+// Roster-Based Check-in (for group-linked events)
+// =============================================================================
+
+$(function () {
+  var $rosterContainer = $("#rosterCheckin");
+  if ($rosterContainer.length === 0) return;
+
+  var eventId = $rosterContainer.data("event-id");
+  if (!eventId) return;
+
+  loadRoster(eventId);
+
+  // Batch check-in all
+  $("#checkinAllBtn").on("click", function () {
+    var $btn = $(this);
+    $btn.prop("disabled", true);
+    fetch(window.CRM.root + "/api/events/" + eventId + "/checkin-all", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function () {
+        loadRoster(eventId);
+      })
+      .finally(function () {
+        $btn.prop("disabled", false);
+      });
+  });
+
+  // Batch check-out all
+  $("#checkoutAllBtn").on("click", function () {
+    var $btn = $(this);
+    $btn.prop("disabled", true);
+    fetch(window.CRM.root + "/api/events/" + eventId + "/checkout-all", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function () {
+        loadRoster(eventId);
+      })
+      .finally(function () {
+        $btn.prop("disabled", false);
+      });
+  });
+});
+
+/**
+ * Load the event roster from the API and render the two-column UI
+ * @param {number} eventId
+ */
+function loadRoster(eventId) {
+  fetch(window.CRM.root + "/api/events/" + eventId + "/roster")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      var $container = $("#rosterCheckin");
+
+      // If no group members, hide roster and keep the walk-in form as primary
+      if (!data.members || data.members.length === 0) {
+        $container.addClass("d-none");
+        return;
+      }
+
+      // Show roster, relabel walk-in card
+      $container.removeClass("d-none");
+      $("#walkinCardTitle").text(
+        i18next.t("Add Walk-in / Visitor"),
+      );
+
+      // Update group name
+      var groupNames = data.groups.map(function (g) {
+        return g.name;
+      });
+      $("#rosterGroupName").text(
+        groupNames.length > 0 ? "— " + groupNames.join(", ") : "",
+      );
+
+      // Update stats
+      var stats = data.stats;
+      $("#rosterStats").text(
+        stats.checkedIn + " / " + stats.total + " " + i18next.t("checked in"),
+      );
+
+      // Render member lists
+      var $notCheckedIn = $("#notCheckedInList").empty();
+      var $checkedIn = $("#checkedInList").empty();
+      var notCheckedInCount = 0;
+      var checkedInCount = 0;
+
+      data.members.forEach(function (member) {
+        var card = buildMemberCard(member, eventId);
+        if (member.status === "checked_in") {
+          $checkedIn.append(card);
+          checkedInCount++;
+        } else {
+          $notCheckedIn.append(card);
+          notCheckedInCount++;
+        }
+      });
+
+      // Update counts
+      $("#notCheckedInCount").text(notCheckedInCount);
+      $("#checkedInCount").text(checkedInCount);
+
+      // Toggle empty states
+      $("#notCheckedInEmpty").toggleClass(
+        "d-none",
+        notCheckedInCount > 0,
+      );
+      $("#checkedInEmpty").toggleClass("d-none", checkedInCount > 0);
+
+      // Show the grid, hide loading
+      $("#rosterLoading").addClass("d-none");
+      $("#rosterGrid").removeClass("d-none");
+    })
+    .catch(function (err) {
+      console.error("Failed to load roster:", err);
+      $("#rosterCheckin").addClass("d-none");
+    });
+}
+
+/**
+ * Build a member card element for the roster
+ * @param {Object} member - Member data from the roster API
+ * @param {number} eventId
+ * @returns {string} HTML string
+ */
+function buildMemberCard(member, eventId) {
+  var isCheckedIn = member.status === "checked_in";
+  var btnClass = isCheckedIn
+    ? "btn-outline-secondary"
+    : "btn-success";
+  var btnIcon = isCheckedIn ? "ti-door-exit" : "ti-check";
+  var btnText = isCheckedIn
+    ? i18next.t("Check Out")
+    : i18next.t("Check In");
+  var action = isCheckedIn ? "checkout" : "checkin";
+
+  var roleBadge = member.role
+    ? '<span class="badge bg-blue-lt ms-2">' +
+      escapeHtml(member.role) +
+      "</span>"
+    : "";
+
+  var photoHtml = member.hasPhoto
+    ? '<span class="avatar avatar-sm me-2" style="background-image: url(' +
+      window.CRM.root +
+      "/api/person/" +
+      member.personId +
+      '/photo)"></span>'
+    : '<span class="avatar avatar-sm me-2 bg-primary-lt"><i class="ti ti-user"></i></span>';
+
+  var timeInfo = "";
+  if (isCheckedIn && member.checkinTime) {
+    timeInfo =
+      '<small class="text-secondary ms-2">' +
+      escapeHtml(member.checkinTime) +
+      "</small>";
+  }
+
+  var html =
+    '<div class="d-flex align-items-center justify-content-between p-2 border rounded roster-member" data-person-id="' +
+    member.personId +
+    '">' +
+    '<div class="d-flex align-items-center">' +
+    photoHtml +
+    '<span class="fw-medium">' +
+    escapeHtml(member.firstName + " " + member.lastName) +
+    "</span>" +
+    roleBadge +
+    timeInfo +
+    "</div>" +
+    '<button type="button" class="btn btn-sm ' +
+    btnClass +
+    ' roster-action-btn" ' +
+    'data-action="' +
+    action +
+    '" data-person-id="' +
+    member.personId +
+    '" data-event-id="' +
+    eventId +
+    '">' +
+    '<i class="ti ' +
+    btnIcon +
+    ' me-1"></i>' +
+    btnText +
+    "</button>" +
+    "</div>";
+
+  return html;
+}
+
+// Delegate click handler for roster action buttons
+$(document).on("click", ".roster-action-btn", function () {
+  var $btn = $(this);
+  var action = $btn.data("action");
+  var personId = $btn.data("person-id");
+  var eventId = $btn.data("event-id");
+
+  $btn.prop("disabled", true);
+
+  fetch(
+    window.CRM.root + "/api/events/" + eventId + "/" + action,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ personId: personId }),
+    },
+  )
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function () {
+      // Reload roster to reflect changes
+      loadRoster(eventId);
+    })
+    .catch(function (err) {
+      console.error("Check-in/out failed:", err);
+      $btn.prop("disabled", false);
+    });
+});
