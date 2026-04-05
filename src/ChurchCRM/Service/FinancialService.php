@@ -146,7 +146,108 @@ class FinancialService
 
     public function getPaymentViewURI(string $groupKey): string
     {
-        return SystemURLs::getRootPath() . '/PledgeEditor.php?GroupKey=' . $groupKey;
+        return SystemURLs::getRootPath() . '/finance/pledge/' . urlencode($groupKey);
+    }
+
+    /**
+     * Return all pledge rows for a given GroupKey as a structured array.
+     *
+     * Includes family info, fund name, per-row amounts, and deposit association.
+     *
+     * @param string $groupKey
+     * @return array{
+     *   groupKey: string,
+     *   familyId: int,
+     *   familyName: string,
+     *   date: string,
+     *   fyId: int,
+     *   method: string,
+     *   checkNo: string|null,
+     *   depositId: int|null,
+     *   pledgeOrPayment: string,
+     *   schedule: string|null,
+     *   total: float,
+     *   funds: list<array{
+     *     fundId: int, fundName: string, amount: float,
+     *     nonDeductible: float, comment: string
+     *   }>
+     * }
+     * @throws \InvalidArgumentException when the group key does not exist
+     */
+    public function getPledgesByGroupKey(string $groupKey): array
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $pledges = PledgeQuery::create()
+            ->filterByGroupKey($groupKey)
+            ->joinWithDonationFund()
+            ->joinWithFamily()
+            ->find();
+
+        if ($pledges->count() === 0) {
+            throw new \InvalidArgumentException('Pledge group not found');
+        }
+
+        $funds = [];
+        $total = 0.0;
+        $header = null;
+
+        foreach ($pledges as $pledge) {
+            if ($header === null) {
+                $family = $pledge->getFamily();
+                $header = [
+                    'groupKey'        => $pledge->getGroupKey(),
+                    'familyId'        => (int) $pledge->getFamId(),
+                    'familyName'      => $family ? $family->getFamilyString() : '',
+                    'date'            => $pledge->getDate('Y-m-d'),
+                    'fyId'            => (int) $pledge->getFyId(),
+                    'method'          => $pledge->getMethod() ?? '',
+                    'checkNo'         => $pledge->getCheckNo(),
+                    'depositId'       => $pledge->getDepId() ? (int) $pledge->getDepId() : null,
+                    'pledgeOrPayment' => $pledge->getPledgeOrPayment() ?? '',
+                    'schedule'        => $pledge->getSchedule(),
+                ];
+            }
+
+            $fund = $pledge->getDonationFund();
+            $amount = (float) $pledge->getAmount();
+            $total += $amount;
+
+            $funds[] = [
+                'fundId'       => (int) $pledge->getFundId(),
+                'fundName'     => $fund ? $fund->getName() : '',
+                'amount'       => $amount,
+                'nonDeductible' => (float) $pledge->getNondeductible(),
+                'comment'      => $pledge->getComment() ?? '',
+            ];
+        }
+
+        $header['total'] = $total;
+        $header['funds'] = $funds;
+
+        return $header;
+    }
+
+    /**
+     * Delete ALL pledge rows sharing a GroupKey (multi-fund aware).
+     *
+     * Unlike deletePayment() which only removes the first match, this method
+     * deletes every row with the given GroupKey.
+     *
+     * @param string $groupKey
+     * @throws \InvalidArgumentException when the group key does not exist
+     */
+    public function deletePledgeGroup(string $groupKey): void
+    {
+        AuthService::requireUserGroupMembership('bFinance');
+
+        $count = PledgeQuery::create()
+            ->filterByGroupKey($groupKey)
+            ->delete();
+
+        if ($count === 0) {
+            throw new \InvalidArgumentException('Pledge group not found');
+        }
     }
 
     public function getViewURI(string $Id): string
