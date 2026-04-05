@@ -143,7 +143,7 @@ echo $sError;
                 $sRoleOptionsHTML .= sprintf(
                     '<option value="%s">%s</option>',
                     $roleOption->getOptionId(),
-                    $roleOption->getOptionName()
+                    InputUtils::escapeHTML($roleOption->getOptionName())
                 );
             }
 
