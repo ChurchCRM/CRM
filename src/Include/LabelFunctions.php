@@ -84,29 +84,29 @@ function LabelGroupSelect($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('Label Grouping') . '</td>';
     echo '<td class="TextColumn">';
-    echo '<label class="form-check">';
-    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"indiv\" ";
+    echo '<div class="form-check">';
+    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"indiv\" id=\"{$fieldname}_indiv\" ";
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] != 'fam') {
         echo 'checked';
     }
 
-    echo '>' . gettext('All Individuals') . '</label>';
-    echo '<label class="form-check">';
-    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"fam\" ";
+    echo '><label class="form-check-label" for="' . $fieldname . '_indiv">' . gettext('All Individuals') . '</label></div>';
+    echo '<div class="form-check">';
+    echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"radio\" value=\"fam\" id=\"{$fieldname}_fam\" ";
 
     if (array_key_exists($fieldname, $_COOKIE) && $_COOKIE[$fieldname] === 'fam') {
         echo 'checked';
     }
 
-    echo '>' . gettext('Grouped by Family') . '</label></td></tr>';
+    echo '><label class="form-check-label" for="' . $fieldname . '_fam">' . gettext('Grouped by Family') . '</label></div></td></tr>';
 }
 
 function ToParentsOfCheckBox($fieldname): void
 {
     echo '<tr><td class="LabelColumn">' . gettext('To the parents of') . ':</td>';
     echo '<td class="TextColumn">';
-    echo '<label class="form-check">';
+    echo '<div class="form-check">';
     echo "<input class=\"form-check-input\" name=\"$fieldname\" type=\"checkbox\" ";
     echo 'id="ToParent" value="1" ';
 
@@ -114,7 +114,7 @@ function ToParentsOfCheckBox($fieldname): void
         echo 'checked';
     }
 
-    echo '></label></td></tr>';
+    echo '></div></td></tr>';
 }
 
 function StartRowStartColumn(): void
@@ -143,7 +143,7 @@ function IgnoreIncompleteAddresses(): void
     <td class="LabelColumn">' . gettext('Ignore Incomplete<br>Addresses') . ':
     </td>
     <td class="TextColumn">
-    <label class="form-check"><input class="form-check-input" type="checkbox" name="onlyfull" id="onlyfull" value="1" checked></label>
+    <input class="form-check-input" type="checkbox" name="onlyfull" id="onlyfull" value="1" checked>
     </td>
     </tr>';
 }

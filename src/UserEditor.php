@@ -406,64 +406,52 @@ require_once __DIR__ . '/Include/Header.php';
                     </tr>
                     <tr>
                         <td><?= gettext('Admin') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="Admin" id="Admin" value="1" <?php if ($usr_Admin) {
-                                                                                            echo ' checked';
-                                                                                        } ?>>&nbsp;<span class="SmallText"><?= gettext('(Grants all privileges.)') ?></span></label></td>
+                        <td>
+                            <input class="form-check-input" type="checkbox" name="Admin" id="Admin" value="1" <?php if ($usr_Admin) { echo ' checked'; } ?>>
+                            <small class="text-secondary"><?= gettext('(Grants all privileges.)') ?></small>
+                        </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Add Records') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1" <?php if ($usr_AddRecords) {
-                                                                                                    echo ' checked';
-                                                                                                } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="AddRecords" id="AddRecords" value="1" <?php if ($usr_AddRecords) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Records') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1" <?php if ($usr_EditRecords) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="EditRecords" id="EditRecords" value="1" <?php if ($usr_EditRecords) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Delete Records') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1" <?php if ($usr_DeleteRecords) {
-                                                                                                            echo ' checked';
-                                                                                                        } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="DeleteRecords" id="DeleteRecords" value="1" <?php if ($usr_DeleteRecords) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Properties and Classifications') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="MenuOptions" id="MenuOptions" value="1" <?php if ($usr_MenuOptions) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="MenuOptions" id="MenuOptions" value="1" <?php if ($usr_MenuOptions) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Groups and Roles') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="ManageGroups" id="ManageGroups" value="1" <?php if ($usr_ManageGroups) {
-                                                                                                        echo ' checked';
-                                                                                                    } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="ManageGroups" id="ManageGroups" value="1" <?php if ($usr_ManageGroups) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Manage Donations and Finance') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="Finance" id="Finance" value="1" <?php if ($usr_Finance) {
-                                                                                                echo ' checked';
-                                                                                            } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="Finance" id="Finance" value="1" <?php if ($usr_Finance) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('View, Add and Edit Notes') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="Notes" id="Notes" value="1" <?php if ($usr_Notes) {
-                                                                                            echo ' checked';
-                                                                                        } ?>></label></td>
+                        <td><input class="form-check-input" type="checkbox" name="Notes" id="Notes" value="1" <?php if ($usr_Notes) { echo ' checked'; } ?>></td>
                     </tr>
 
                     <tr>
                         <td><?= gettext('Edit Self') ?>:</td>
-                        <td><label class="form-check"><input class="form-check-input" type="checkbox" name="EditSelf" id="EditSelf" value="1" <?php if ($usr_EditSelf) {
-                                                                                                echo ' checked';
-                                                                                            } ?>>&nbsp;<span class="SmallText"><?= gettext('(Edit own family only.)') ?></span></label></td>
+                        <td>
+                            <input class="form-check-input" type="checkbox" name="EditSelf" id="EditSelf" value="1" <?php if ($usr_EditSelf) { echo ' checked'; } ?>>
+                            <small class="text-secondary"><?= gettext('(Edit own family only.)') ?></small>
+                        </td>
                     </tr>
                     <tr>
                         <td><?= gettext('Style') ?>:</td>

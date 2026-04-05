@@ -158,20 +158,20 @@ if (isset($_POST['PrintReport'])) {
         ?>
         </select>
         <input type="submit" class="btn btn-secondary" value="<?= gettext('Sort by') ?>" name="Sort">
-        <label class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SortBy" value="name"
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="SortBy" value="name" id="sortByName"
             <?php if ($sSortBy === 'name') {
                 echo ' checked';
             } ?>>
-            <?= gettext('Last Name') ?>
-        </label>
-        <label class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="SortBy" value="envelope"
+            <label class="form-check-label" for="sortByName"><?= gettext('Last Name') ?></label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="SortBy" value="envelope" id="sortByEnvelope"
             <?php if ($sSortBy === 'envelope') {
                 echo ' checked';
             } ?>>
-            <?= gettext('Envelope Number') ?>
-        </label>
+            <label class="form-check-label" for="sortByEnvelope"><?= gettext('Envelope Number') ?></label>
+        </div>
     </th>
     <th>
         <b>Envelope</b>
