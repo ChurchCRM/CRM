@@ -205,7 +205,7 @@ if (mysqli_num_rows($rsPropList) === 0) {
 <?php
 }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     // Initialize all phone mask toggles for custom fields (guarded)
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.initializeAllPhoneMaskToggles === 'function') {
