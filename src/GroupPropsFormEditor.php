@@ -433,7 +433,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                 } ?>
                             </td>
                             <td class="text-center">
-                                <input type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
+                                <input class="form-check-input" type="checkbox" name="<?= $row ?>show" value="1" <?php if ($aPersonDisplayFields[$row]) {
                                     echo ' checked';
                                 } ?>>
                             </td>

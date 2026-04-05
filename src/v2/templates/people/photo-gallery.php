@@ -57,13 +57,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <!-- Photos Only Toggle -->
             <div class="col-auto">
-                <label class="form-check form-switch mb-0">
+                <div class="form-check form-switch mb-0">
                     <input type="checkbox" class="form-check-input" id="photosOnly-toggle"
                            <?= $showOnlyWithPhotos ? 'checked' : '' ?>>
-                    <span class="form-check-label text-nowrap">
+                    <label class="form-check-label text-nowrap" for="photosOnly-toggle">
                         <i class="ti ti-camera me-1"></i><?= gettext('Photos only') ?>
-                    </span>
-                </label>
+                    </label>
+                </div>
             </div>
 
             <!-- Per-page selector -->

@@ -15,10 +15,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </h4>
         <p class="text-secondary mb-3"><?= gettext('Toggle the switch below to open a 30-second window for new kiosk devices to register.') ?></p>
         <div class="d-flex align-items-center gap-3">
-          <label class="form-check form-switch mb-0">
+          <div class="form-check form-switch mb-0">
             <input class="form-check-input" type="checkbox" id="isNewKioskRegistrationActive">
-            <span class="form-check-label visually-hidden"><?= gettext('Enable new kiosk registration') ?></span>
-          </label>
+            <label class="form-check-label visually-hidden" for="isNewKioskRegistrationActive"><?= gettext('Enable new kiosk registration') ?></label>
+          </div>
           <span id="kioskRegistrationStatus" class="badge bg-secondary-lt text-secondary"><?= gettext('Inactive') ?></span>
         </div>
       </div>

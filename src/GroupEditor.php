@@ -122,8 +122,10 @@ require_once __DIR__ . '/Include/Header.php';
                 ?>
               <b><?= gettext('Group Member Roles') ?>:</b>
 
-                <?= gettext('Clone roles') ?>:
-              <input type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="cloneGroupRole" id="cloneGroupRole" value="1">
+                <label class="form-check-label" for="cloneGroupRole"><?= gettext('Clone roles') ?></label>
+              </div>
             </div>
             <div class="col-sm-3" id="selectGroupIDDiv">
                 <?= gettext('from group') ?>:

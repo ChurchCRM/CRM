@@ -214,8 +214,8 @@ body.page-auth {
   }
 }
 
-// Form fields
-.mb-3 {
+// Form fields — scoped to auth pages only to avoid polluting the main app
+body.page-auth .mb-3 {
   margin-bottom: 18px;
 
   label {
@@ -227,7 +227,7 @@ body.page-auth {
     letter-spacing: 0.2px;
   }
 
-  input {
+  > input:not([type="checkbox"]):not([type="radio"]) {
     width: 100%;
     padding: 12px 14px;
     border: 1.5px solid #e0e0e0;
@@ -261,25 +261,6 @@ body.page-auth {
   text-align: center !important;
   font-weight: 300 !important;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Courier New', monospace;
-}
-
-// Form checkbox
-.form-check {
-  display: flex;
-  align-items: center;
-  margin-bottom: 13px;
-
-  input {
-    margin: 0;
-    margin-right: 8px;
-    width: auto;
-  }
-
-  label {
-    margin: 0;
-    font-size: 13px;
-    cursor: pointer;
-  }
 }
 
 // Form footer with links
@@ -779,7 +760,7 @@ body.page-auth {
     font-size: 13px;
   }
 
-  .mb-3 input {
+  body.page-auth .mb-3 > input:not([type="checkbox"]):not([type="radio"]) {
     padding: 11px 12px;
     font-size: 16px; // Larger font to prevent iOS zoom on focus
   }
