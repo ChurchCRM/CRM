@@ -918,7 +918,8 @@ function checkoutAll(Request $request, Response $response, array $args): Respons
  *         @OA\Property(property="eventTypeId", type="integer", example=5),
  *         @OA\Property(property="startDate", type="string", format="date", example="2026-04-05"),
  *         @OA\Property(property="endDate", type="string", format="date", example="2026-06-28"),
- *         @OA\Property(property="skipExisting", type="boolean", example=true, description="Skip dates that already have an event of this type")
+ *         @OA\Property(property="skipExisting", type="boolean", example=true, description="Skip dates that already have an event of this type"),
+ *         @OA\Property(property="pinnedCalendars", type="array", @OA\Items(type="integer"), example={1}, description="Calendar IDs to pin generated events to")
  *     )),
  *     @OA\Response(response=200, description="Events generated",
  *         @OA\JsonContent(
@@ -943,6 +944,7 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
     $startDate = $input['startDate'] ?? '';
     $endDate = $input['endDate'] ?? '';
     $skipExisting = (bool) ($input['skipExisting'] ?? true);
+    $pinnedCalendarIds = $input['pinnedCalendars'] ?? [];
 
     if ($eventTypeId <= 0) {
         return SlimUtils::renderErrorJSON($response, gettext('Event type ID is required'), [], 400);
@@ -1045,6 +1047,14 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
         $startTimeStr = $defStartTime->format('H:i:s');
     }
 
+    // Resolve pinned calendars if provided
+    $calendars = null;
+    if (!empty($pinnedCalendarIds) && is_array($pinnedCalendarIds)) {
+        $calendars = CalendarQuery::create()
+            ->filterById($pinnedCalendarIds, Criteria::IN)
+            ->find();
+    }
+
     $createdEvents = [];
     $skippedCount = 0;
 
@@ -1076,6 +1086,9 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
         $event->setStart($eventStart);
         $event->setEnd($eventEnd);
         $event->setInActive(0);
+        if ($calendars !== null) {
+            $event->setCalendars($calendars);
+        }
         $event->save();
 
         if ($groupId > 0) {
