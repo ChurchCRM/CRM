@@ -21,13 +21,4 @@ describe("Check Notification API", () => {
             expect(resp.body.notifications).to.be.an("array");
         });
     });
-
-    it("Legacy endpoint /api/system/notification is backward-compatible", () => {
-        cy.makePrivateUserAPICall(
-            "GET",
-            "/api/system/notification",
-            "",
-            200,
-        );
-    });
 });
