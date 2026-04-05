@@ -256,7 +256,7 @@
   "pre-7.1.0": {
     "versions": ["7.0.2", "7.0.3", "7.0.4", "7.0.5"],
     "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
-    "dbVersion": "7.0.5"
+    "dbVersion": "7.1.0"
   },
   "current": {
     "versions": ["7.1.0"],
