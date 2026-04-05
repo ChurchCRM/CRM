@@ -82,13 +82,13 @@ if (isset($_POST['SaveChanges'])) {
         for ($iFieldID = 1; $iFieldID <= $numRows; $iFieldID++) {
             // Use Propel ORM instead of raw SQL to prevent time-based blind SQL injection (GHSA-47q3-c874-mqvp)
             $customField = FamilyCustomMasterQuery::create()
-                ->findOneById($aFieldFields[$iFieldID]);
-            
+                ->findOneByField($aFieldFields[$iFieldID]);
+
             if ($customField !== null) {
                 $customField
                     ->setName($aNameFields[$iFieldID])
-                    ->setSpecial($aSpecialFields[$iFieldID])
-                    ->setFieldSec((int)$aFieldSecurity[$iFieldID])
+                    ->setCustomSpecial($aSpecialFields[$iFieldID])
+                    ->setFieldSecurity((int)$aFieldSecurity[$iFieldID])
                     ->save();
             }
         }

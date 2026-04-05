@@ -11013,10 +11013,6 @@ msgid "Auto-mapped"
 msgstr "Automaatselt seostatud"
 
 #: 
-msgid "BCC"
-msgstr "Pimekoopia"
-
-#: 
 msgid "BCC All"
 msgstr "Pimekoopia kõigile"
 
@@ -12703,10 +12699,6 @@ msgid "members"
 msgstr "liikmed"
 
 #: 
-msgid "name@example.com"
-msgstr "nimi@näide.ee"
-
-#: 
 msgid "opportunities"
 msgstr "võimalused"
 
@@ -13660,23 +13652,153 @@ msgstr "nt pühapäevane teenistus"
 msgid "member"
 msgstr "liige"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Armatuurlaud**: Vaadake kõiki oma MailChimp loendeid koos tellijate statistikaga\n"
+"- **Loendi hooldus**: Tuvastage isikuid, kes on MailChimpis, kuid mitte CRMis, ja vastupidi\n"
+"- **Kontakti integreerimine**: Vaadake MailChimpi tellimuse olekut isiku- ja perekonnalehtedel\n"
+"- **Automaatne sünkroonimine**: Ühendub isiku/perekonna värskendustega, et hoida MailChimp sünkroonis"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Looge Vonage konto aadressil https://dashboard.nexmo.com/sign-up (uued kontod sisaldavad tasuta proovikreedit)\n"
+"2. Leidke oma API-võti ja API-saladus Vonage'i armatuurlaua avalehelt\n"
+"3. Minge jaotisse Numbers > Buy Numbers ja ostke SMS-võimekusega number\n"
+"4. Märkige üles number E.164-formaadis (nt +14155551234)\n"
+"5. Lubage ChurchCRMis Vonage SMS-pistikprogramm ja sisestage oma mandaadid"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Minge Google Analyticsisse (analytics.google.com)\n"
+"2. Looge atribuut või valige olemasolev\n"
+"3. Minge jaotisse Admin → Andmevood → Veeb\n"
+"4. Kopeerige mõõtmise ID (algab G-ga)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Installige OpenLP 3.0 või uuem oma esitlusarvutisse\n"
+"2. Lubage OpenLPis Remote-pistikprogramm (Seaded → Seadista OpenLP → Pistikprogrammid)\n"
+"3. Lubage OpenLPis Alerts-pistikprogramm teatiste kuvamise toetamiseks\n"
+"4. Märkige üles OpenLP-arvuti IP-aadress\n"
+"5. Sisestage serveri URL formaadis: http://IP_AADRESS:4316\n"
+"6. Kui olete OpenLPis autentimise seadistanud, sisestage kasutajanimi ja parool"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Avage MailChimpi armatuurlaud menüüst E-post. Armatuurlaud näitab:\n"
+"\n"
+"- Liikmete arvu iga loendi kohta\n"
+"- Kampaania statistikat\n"
+"- Tellimusest loobumiste arvu\n"
+"- Loendi hoolduse tööriistu"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Linkide lisamine"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Kõik seadistatud lingid on näidatud tabelis. Saate:\n"
+"- Vaadata lingi nime ja URL-i\n"
+"- Klõpsata URL-il, et kontrollida, kas see avaneb korrektselt\n"
+"- Kustutada lingid, mida enam ei vajata\n"
+"\n"
+"Lingid ilmuvad navigeerimismenüüs lisamise järjekorras."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Luba eelväljaande uuendused"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Luba maksusoodustuseta maksete registreerimine finantsimoodulis"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Luba skaneeritud tšekkide piltide lisamine sissemaksete kirjetele"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Luba süsteemi uuendamine GitHubis 'pre release' (eelversioon) tähistatud väljaannetele"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Luba autentimata juurdepääs kalendrisündmustele avalike HTML-, ICS- ja JSON-URL-ide kaudu. Vajalik kalendrite jagamiseks väliste rakendustega."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Luba külastajatel luua oma perekonnakirje iseteeninduse lehel"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Luba külastajatel registreeruda uute peredena."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Kõik WebDAV-ühilduvad teenused töötavad selle pistikprogrammiga:\n"
+"\n"
+"- Nextcloud (soovitatav)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (WebDAV-iga)\n"
+"- Apache mod_dav\n"
+"- nginx koos WebDAV-mooduliga\n"
+"\n"
+"Märkus: Mõned teenused nõuavad WebDAV-juurdepääsuks rakendusepõhiseid paroole."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Autentimine"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentimine on API v2 jaoks nõutav, kui olete selle OpenLP Remote-pistikprogrammi seadetes lubanud. Pistikprogramm kasutab HTTP-põhiautentimist. Enamik kohalike võrgu seadistusi ei nõua autentimist, kuid see on soovitatav turvalisuse tagamiseks."
 
 #: 
 msgid "Auto TLS"
@@ -13691,6 +13813,69 @@ msgstr "Automaatne varukoopia"
 msgid "BCC All Mail To"
 msgstr "BCC kõik kirjad aadressile"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Enne väliste varukoopiate kasutamist testige ühendust:\n"
+"1. Minge Pistikprogrammid > Väline varukoopia\n"
+"2. Klõpsake 'Testi WebDAV-ühendust'\n"
+"3. Veenduge, et näete eduteadet\n"
+"\n"
+"Levinud probleemid:\n"
+"- 401/403 vead: Kontrollige kasutajanime ja parooli\n"
+"- Ühenduse ajalõpp: Veenduge, et lõpp-punkti URL on õige\n"
+"- Sertifikaadi vead: Veenduge, et WebDAV-serveril on kehtiv SSL-sertifikaat"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Valige, mida kuvatakse, kui Gravatarit ei ole:\n"
+"• Mystery Person – Hall siluett\n"
+"• Identicon – E-postil põhinev geomeetriline muster\n"
+"• MonsterID – Unikaalselt genereeritud koletisekujutis\n"
+"• Wavatar – Abstraktselt genereeritud nägu\n"
+"• Retro – 8-bitine arkaadistiilis pikselkunst\n"
+"• RoboHash – Unikaalselt genereeritud robot\n"
+"• Blank – Läbipaistev (kukub tagasi initsiaalidele)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Komadega eraldatud päringu ID-d, mille vaatamiseks on vaja finantsõigusi"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Kohandatud linkide levinud kasutused:\n"
+"- Koguduse veebisait\n"
+"- Veebiannete portaal\n"
+"- Vabatahtlike registreerimisvormid\n"
+"- Konfessiooni ressursid\n"
+"- Partnerorganisatsioonide saidid\n"
+"- Pilvemälu kaustad\n"
+"- Ürituste registreerimislehed"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13704,11 +13889,6 @@ msgstr "Manner"
 #: 
 msgid "Costs"
 msgstr "Kulud"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Krediitkaardiinimesed"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13760,17 +13940,28 @@ msgid "Enable External Calendar API"
 msgstr "Luba väline kalendri API"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Luba e-posti saatmine ChurchCRMist. Vajalik parooli lähtestamiseks, teatiste saatmiseks ja e-posti linkide kasutamiseks."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Luba, kui teie SMTP-server nõuab kasutajanime ja parooli"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Luba või keela pühapäevakooli moodul ja külgriba menüü."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Luba nummerdatud annetuseümbrikute kasutamine annetuste jälgimiseks"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Luba annetusümbrike kasutamine"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Luba skannitud tšekkide kasutamine"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Perekonna lubadus eelarveaasta järgi"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13781,11 +13972,6 @@ msgstr "Funktsioonid"
 msgid "Finance permission query IDs"
 msgstr "Finantsloa päringu ID-d"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Leia registreeritud õpilasi"
-
 #: 
 msgid "Find family"
 msgstr "Leia perekond"
@@ -13795,10 +13981,20 @@ msgstr "Leia perekond"
 msgid "Finding Your Server URL"
 msgstr "Serveri URL-i leidmine"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Eelarveaasta."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Turvalisuse tagamiseks:\n"
+"- Ainult administraatorid saavad linke lisada või eemaldada\n"
+"- Suvand 'Halda linke' kuvatakse ainult administraatoritele\n"
+"- Lingid peavad kasutama http:// või https:// protokolle\n"
+"- HTML-sildid ei ole nimedes ega URL-ides lubatud\n"
+"- Kõik sisendid valideeritakse ja puhastatakse"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13815,10 +14011,25 @@ msgstr "Alustamine"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "GA4 mõõtmise ID hankimine"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) jälgib, kuidas kasutajad ChurchCRMiga suhtlevad, pakkudes ülevaadet lehevaadetest, kasutajate kaasatusest ja funktsionaalsuse kasutamisest."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analyticsi abi"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics kogub anonüümitud kasutuseandmeid. Google'ile ei saadeta ChurchCRMi kirjetest isikuandmeid. Kaaluge privaatsusteate lisamist oma koguduse andmepoliitikasse."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) kuvab gravatar.com-i profiilipilte liikmetele, kellel puuduvad üleslaaditud fotod ChurchCRMis."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13830,10 +14041,10 @@ msgstr "Gravatar pildi valikud"
 msgid "Gravatar Website"
 msgstr "Gravatar veebisait"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Registreeritud õpilaste rühm"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar toimib e-posti aadresside räsiks (MD5) teisendamise teel. Tegelikku e-posti aadressi ei saadeta kunagi Gravatari serveritele – pildi otsimiseks kasutatakse ainult räsi."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13853,6 +14064,77 @@ msgstr "Kuidas see toimib"
 msgid "How many checks to print per deposit slip page"
 msgstr "Mitu tšekki trükkida deposiidilehe lehele"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Kui SMS-sõnumeid ei saadeta:\n"
+"1. Veenduge, et API-võti ja -saladus on õiged (ilma lisatühikuteta)\n"
+"2. Kontrollige, et saatjanumber on teie omandis olev kehtiv Vonage'i number\n"
+"3. Veenduge, et saajate telefoninumbrid sisaldavad riigi suunakoodi\n"
+"4. Kontrollige oma Vonage'i konto saldot\n"
+"5. Vaadake üle Vonage'i armatuurlaud > SMS > Logid tarnimise oleku jaoks"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Kui teatised ei ilmu:\n"
+"1. Veenduge, et OpenLP töötab ja Remote-pistikprogramm on aktiivne\n"
+"2. Veenduge, et Alerts-pistikprogramm on OpenLPis lubatud\n"
+"3. Kontrollige, et serveri URL on õige (proovige sellele brauserist juurde pääseda)\n"
+"4. Veenduge, et tulemüüri seaded lubavad ühendusi pordil 4316\n"
+"5. Kui kasutate autentimist, veenduge, et mandaadid on õiged"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Kui sõnumid saadetakse, kuid neid ei võeta vastu:\n"
+"1. Kontrollige tarnimise olekut jaotisest Vonage'i armatuurlaud > SMS > Logid\n"
+"2. Veenduge, et saaja number on õige ja saab SMS-e vastu võtta\n"
+"3. Mõned operaatorid võivad tundmatutest numbritest saadetud sõnumeid blokeerida\n"
+"4. Kontrollige, kas sihtriigil on SMS-piiranguid"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Kui saate vigase saatja ID tõrke:\n"
+"1. Kasutage Vonage'ilt ostetud telefoninumbrit\n"
+"2. Vormindage number E.164-formaadis (+14155551234)\n"
+"3. Märkus: Tähtnumbrilised saatja ID-d võivad mõnes riigis olla piiratud"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Olulised turvamärkused:\n"
+"\n"
+"1. Kasutage alati HTTPS-lõpp-punkte varukoopiate krüpteerimiseks edastuse ajal\n"
+"2. Kasutage rakendusepõhiseid paroole, kui need on saadaval (Nextcloud, ownCloud)\n"
+"3. Salvestage varukoopiad piiratud juurdepääsuga kausta\n"
+"4. Laadige aeg-ajalt alla ja kontrollige, et teie varukoopiad on kehtivad\n"
+"5. Kaaluge tundlike varukoopiate krüpteerimist väliste tööriistadega enne üleslaadimist"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Kaardi avamisel esialgne suumitase"
@@ -13864,6 +14146,11 @@ msgstr "Lisateave"
 #: 
 msgid "Log Settings"
 msgstr "Logi seaded"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimpi integreerimine võimaldab sünkroonimist ChurchCRMi kontaktide ja teie MailChimpi e-turunduse loendite vahel."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13889,10 +14176,10 @@ msgstr "OpenLP dokumentatsioon"
 msgid "OpenLP Website"
 msgstr "OpenLP veebisait"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Inimesed, kes on seadistatud maksma krediitkaardiga."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP on tasuta avatud lähtekoodiga esitlustarkvara, mis on loodud kirikutele. See pistikprogramm võimaldab ChurchCRMil saata teatisi ja hoiatusi otse teie OpenLP ekraanile."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -13903,6 +14190,21 @@ msgstr "Isiku/perekonna integreerimine"
 #: 
 msgid "Phone Number Format"
 msgstr "Telefoninumbri vorming"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefoninumbrid peavad olema E.164-formaadis: riigisuunakood + number. Näited:\n"
+"- USA: +14155551234\n"
+"- Ühendkuningriik: +447700900123\n"
+"- Austraalia: +61412345678\n"
+"\n"
+"ChurchCRMi liikmete profiilides olevad saajate telefoninumbrid peavad sisaldama riigisuunakoodi, et SMS töötaks korrektselt."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -13922,11 +14224,6 @@ msgstr "Privaatsusmärkus"
 #: 
 msgid "Quick Settings"
 msgstr "Kiirseaded"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registreeritud õpilased"
 
 #: 
 msgid "SMTP Authentication"
@@ -13953,6 +14250,22 @@ msgid "Setup"
 msgstr "Seadistamine"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Näita rahatähtede nimiväärtuste jaotust sissemaksekviitungi aruandel"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Näita või peida sündmuste menüü põhinavigatsioonis."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Näita või peida sündmuste jaotis põhinavigatsiooni menüüs"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Näita või peida pühapäevakooli moodul külgriba navigatsioonis"
+
+#: 
 msgid "Street"
 msgstr "Tänav"
 
@@ -13969,6 +14282,89 @@ msgstr "Toetatud teenused"
 #: 
 msgid "Testing Connection"
 msgstr "Ühenduse testimine"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Kohandatud menüülinkide pistikprogramm võimaldab administraatoritel lisada navigeerimismenüüsse väliseid linke. Kui see on lubatud, ilmub külgribal menüü 'Lingid', mis sisaldab kõiki seadistatud linke."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Välise varukoopiapistikprogramm võimaldab teil automaatselt varundada oma ChurchCRMi andmebaasi WebDAV-ühilduvatesse pilvemäloteenustesse. See hõlmab populaarseid teenuseid nagu Nextcloud, ownCloud või mis tahes WebDAV-protokolli toetav server."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "OpenLP vaikimisi port on 4316. Teie serveri URL on tavaliselt: http://192.168.x.x:4316, kus 192.168.x.x on OpenLP-i käitava arvuti IP-aadress. Selle leiate OpenLPist jaotisest Tööriistad → Ava teenusehaldur."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Kuu, millest algab teie organisatsiooni majandusaasta"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Seda pistikprogrammi kasutatakse praegu kioski registreerimisteatiste jaoks. Kui laps registreeritakse kioskisüsteemi kaudu pühapäevakooli tundi, saab lapsevanematele või hooldajatele SMS-i saata."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Seda pistikprogrammi kasutatakse praegu kioski registreerimisteatiste jaoks. Kui laps registreeritakse kioskisüsteemi kaudu pühapäevakooli tundi, saab OpenLP projektori ekraanile saata teatise, et teavitada vanemaid või vabatahtlikke."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "See pistikprogramm edastab e-posti aadresse MailChimpi serveritele. Veenduge, et teil on liikmetelt asjakohane nõusolek enne nende andmete sünkroonimist kolmandate osapoolte teenustega, nagu MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Uue lingi lisamiseks:\n"
+"1. Minge külgribas menüüsse Lingid ja klõpsake 'Halda linke'\n"
+"2. Sisestage kuvatav nimi (2–50 tähemärki)\n"
+"3. Sisestage täielik URL (peab algama http:// või https://-ga)\n"
+"4. Klõpsake 'Lisa link'\n"
+"\n"
+"Link ilmub kohe menüüsse Lingid."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Väliste varukoopiate seadistamiseks:\n"
+"1. Minge Admin > Pistikprogrammid ja leidke 'Väline varukoopia (WebDAV)'\n"
+"2. Klõpsake seadete ikooni, et avada seadistuspaneel\n"
+"3. Sisestage oma WebDAV-lõpp-punkti URL (nt https://cloud.example.com/remote.php/dav/files/kasutajanimi/varukoopiad/)\n"
+"4. Sisestage oma kasutajanimi ja parool\n"
+"5. Soovi korral määrake automaatse varundamise intervall tundides\n"
+"6. Salvestage seaded"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "MailChimpi integratsiooni kasutamiseks vajate MailChimpi kontot ja API-võtit.\n"
+"\n"
+"1. Logige sisse oma MailChimpi kontole\n"
+"2. Minge jaotisse Konto > Lisad > API-võtmed\n"
+"3. Looge uus API-võti või kopeerige olemasolev\n"
+"4. Sisestage API-võti pistikprogrammi seadetesse"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -13999,10 +14395,10 @@ msgstr "Uuenduse seaded"
 msgid "Use Cases"
 msgstr "Kasutusjuhud"
 
-#. Context: userconfig_ucfg
+#. plugin:vonage:link:0:label
 #: 
-msgid "User permission to export CSV files"
-msgstr "Kasutaja õigus CSV-failide eksportimiseks"
+msgid "Vonage Dashboard"
+msgstr "Vonage'i armatuurlaud"
 
 #. plugin:vonage:link:2:label
 #: 
@@ -14014,8 +14410,98 @@ msgstr "Vonage hinnad"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API dokumentatsioon"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS võimaldab ChurchCRMis tekstsõnumiteatiseid kasutades Vonage'i API-t (endine Nexmo). Saatke vanematele SMS-teatisi, kui nende laps registreeritakse kioskisüsteemi kaudu."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage võtab tasu iga saadetud SMS-i eest. Hinnad varieeruvad sihtriigi järgi. Kehtivate hindade saamiseks vaadake Vonage'i hinnakirja lehte. Uued kontod saavad testimiseks tasuta proovikreedit."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Mida jälgitakse"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "Kui MailChimp on seadistatud, ilmub isikuvaate lehtedele vahekaart 'MailChimp', mis näitab:\n"
+"\n"
+"- E-posti tellimuse olekut kõigis loendites\n"
+"- Milliseid loendeid isik on tellinud\n"
+"- Tellimise statistikat"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Kui liikmel puudub üleslaaditud foto, kontrollib ChurchCRM, kas neil on oma e-posti aadressiga seotud Gravatar. Kui Gravatar on olemas, kuvatakse see pilt. Kui mitte, kasutatakse seadistatud vaikimisi pildistiili."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Kui automaatne varundamine on lubatud (intervall > 0 tundi), loob ja laadib ChurchCRM automaatselt üles täieliku andmebaasi varukoopiа määratud intervalliga. Varundamine toimub tavaliste lehelaadimiste osana, seega peab süsteemil olema regulaarne kasutajate aktiivsus varukoopiate käivitamiseks.\n"
+"\n"
+"Soovitatavad intervallid:\n"
+"- Igapäevane varukoopia: 24 tundi\n"
+"- Kaks korda päevas: 12 tundi\n"
+"- Iganädalane: 168 tundi"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Kui lubatud ja seadistatud, saadab ChurchCRM hoiatussõnumeid teie OpenLP serverile kasutades API v2 lõpp-punkti (POST /api/v2/plugins/alerts). Need hoiatused ilmuvad ülekatteteadetena teie projitseeritud ekraanil."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Kui lubatud, peidetakse aadressiväli inimestele, kes ei ole perekonnale määratud"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Kui lubatud, peidetakse laiuskraadi/pikkuskraadi väljad perekonnaeditoris. Geokodeerimine töötab endiselt taustal."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Saate käivitada käsitsi varundamise igal ajal:\n"
+"1. Minge välise varukoopiа seadete lehele (Pistikprogrammid > Väline varukoopia)\n"
+"2. Valige varundamise tüüp (ainult andmebaas või täielik varukoopia)\n"
+"3. Klõpsake 'Varunda WebDAVi kohe'\n"
+"\n"
+"Ainult andmebaasi varukoopiad on väiksemad ja kiiremad. Täielikud varukoopiad sisaldavad üleslaaditud fotosid."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Lehevaated ja navigeerimismustrid\n"
+"• Seansi kestus ja kaasatus\n"
+"• Kasutajate demograafia (kui lubatud GA4-s)\n"
+"• Seadme ja brauseri teave"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Faili suurus ületab serveri piirangut %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Päringus puuduvad pildandmed"
 

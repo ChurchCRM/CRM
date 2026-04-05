@@ -38,6 +38,7 @@ $sPageTitle = gettext('CSV Export');
 $sPageSubtitle = gettext('Export data to CSV format for external applications');
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Admin'), '/admin/'],
+    [gettext('Export'), '/admin/export'],
     [gettext('CSV Export')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
