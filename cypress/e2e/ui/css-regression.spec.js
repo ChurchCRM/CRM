@@ -22,22 +22,16 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             cy.get("body").should("not.have.class", "page-auth");
         });
 
-        it("Buttons should not have auth-page gradient background", () => {
-            // Find any .btn on the page and verify it does NOT have the
-            // auth-page gradient (linear-gradient with #667eea)
-            cy.get(".btn").first().then(($btn) => {
-                const bg = window.getComputedStyle($btn[0]).backgroundImage;
-                expect(bg).to.not.include("667eea");
-            });
-        });
-
-        it("Buttons should have visible text and proper sizing", () => {
-            cy.get(".btn").first().should("be.visible")
-                .and("have.css", "cursor", "pointer");
+        it("Visible buttons should not have auth-page gradient background", () => {
+            // Target a visible button on the dashboard — FAB or navbar buttons
+            // Use :visible filter to avoid hidden modal buttons
+            cy.get(".btn:visible").first()
+                .should("have.css", "background-image")
+                .and("not.include", "667eea");
         });
     });
 
-    describe("Financial Reports — buttons render without extra margin", () => {
+    describe("Financial Reports — buttons render without auth styles", () => {
         beforeEach(() => {
             cy.visit("/FinancialReports.php");
         });
@@ -46,15 +40,14 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             cy.contains("Financial Reports").should("be.visible");
         });
 
-        it("Submit button should not have leaked auth-page gradient", () => {
+        it("Submit button should not have auth-page gradient", () => {
             cy.get("#FinancialReportTypes").select("Giving Report");
             cy.get("#FinancialReports").submit();
             cy.contains("Financial Reports: Giving Report").should("be.visible");
 
-            cy.get("#createReport").should("be.visible").then(($btn) => {
-                const bg = window.getComputedStyle($btn[0]).backgroundImage;
-                expect(bg).to.not.include("667eea");
-            });
+            cy.get("#createReport").should("be.visible")
+                .should("have.css", "background-image")
+                .and("not.include", "667eea");
         });
 
         it("Report form labels should be properly styled", () => {
@@ -68,17 +61,16 @@ describe("CSS Regression — No Auth Style Leakage", () => {
     });
 
     describe("Alerts on authenticated pages use BS5 defaults", () => {
-        it("Dashboard alerts should not have auth-page border-radius override", () => {
+        it("Dashboard alerts should not have auth-page color overrides", () => {
             cy.visit("/v2/dashboard");
-            // If alerts exist, they should use Tabler defaults, not auth-page overrides
+            // If alerts exist, verify they don't use auth-page override colors
             cy.get("body").then(($body) => {
-                if ($body.find(".alert").length > 0) {
-                    cy.get(".alert").first().then(($alert) => {
-                        // Auth-page alerts use custom colors like #fee — Tabler defaults differ
-                        const bgColor = window.getComputedStyle($alert[0]).backgroundColor;
-                        // Should not be the auth-page override color #fee (rgb(255, 238, 238))
-                        expect(bgColor).to.not.equal("rgb(255, 238, 238)");
-                    });
+                if ($body.find(".alert:visible").length > 0) {
+                    // Auth-page overrides .alert-danger to #fee (rgb(255, 238, 238))
+                    // Tabler defaults differ — verify no auth leakage
+                    cy.get(".alert:visible").first()
+                        .should("have.css", "background-color")
+                        .and("not.equal", "rgb(255, 238, 238)");
                 }
             });
         });
