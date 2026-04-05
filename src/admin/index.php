@@ -26,6 +26,7 @@ require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/get-started.php';
 require __DIR__ . '/routes/api/demo.php';
 require __DIR__ . '/routes/api/database.php';
+require __DIR__ . '/routes/api/notification.php';
 require __DIR__ . '/routes/api/orphaned-files.php';
 require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-logs.php';

@@ -11,7 +11,6 @@ use ChurchCRM\Authentication\Requests\LocalTwoFactorTokenRequest;
 use ChurchCRM\Authentication\Requests\LocalUsernamePasswordRequest;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -137,7 +136,6 @@ class AuthenticationManager
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
             $redirectLocation ??= 'v2/dashboard';
-            NotificationService::updateNotifications();
             
             // Check for system updates once on login for admin users
             self::checkSystemUpdates();

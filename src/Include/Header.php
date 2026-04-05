@@ -444,9 +444,6 @@ $MenuFirst = 1;
       <div class="container-xl">
 <?php
 // Render system notifications as dismissible alerts
-if (NotificationService::isUpdateRequired()) {
-    NotificationService::updateNotifications();
-}
 foreach (NotificationService::getNotifications() as $notification) {
     $notifId = $notification->id ?? '';
     $notifType = $notification->type ?? 'info';
