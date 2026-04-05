@@ -1,11 +1,11 @@
 {
-  "Administrator": "",
-  "Format": "",
-  "Manual": "",
-  "Material": "",
-  "Continent": "",
+  "Administrator": "Administrator",
+  "Format": "Format",
+  "Manual": "Manual",
+  "Material": "Material",
+  "Continent": "Continent",
   "BCC": "",
   "N/A": "",
   "name@example.com": "",
-  "Export": ""
+  "Export": "Export"
 }

@@ -1,8 +1,10 @@
-{
+import json
+
+t1 = {
   "CSV": "CSV",
   "Street Atlas USA": "Street Atlas USA",
   "-----------------------------------------------------------------------------------------------------------------------------------------------": "-----------------------------------------------------------------------------------------------------------------------------------------------",
-  "Côte d’Ivoire": "",
+  "Côte d'Ivoire": "Côte d'Ivoire",
   "English - United States": "ഇംഗ്ലീഷ് - അമേരിക്ക",
   "English - Canada": "ഇംഗ്ലീഷ് - കാനഡ",
   "English - Australia": "ഇംഗ്ലീഷ് - ഓസ്ട്രേലിയ",
@@ -32,14 +34,8 @@
   "Estonian": "എസ്റ്റോണിയൻ",
   "URL": "URL",
   "PDF": "PDF",
-  "%d month old": {
-    "one": "%d മാസം പ്രായം",
-    "other": "%d മാസം പ്രായം"
-  },
-  "%d year old": {
-    "one": "%d വയസ്സ്",
-    "other": "%d വയസ്സ്"
-  },
+  "%d month old": {"one": "%d മാസം പ്രായം", "other": "%d മാസം പ്രായം"},
+  "%d year old": {"one": "%d വയസ്സ്", "other": "%d വയസ്സ്"},
   "Portuguese - Portugal": "പോർച്ചുഗീസ് - പോർച്ചുഗൽ",
   "Mailchimp": "Mailchimp",
   "Hebrew": "ഹീബ്രു",
@@ -59,40 +55,19 @@
   "Telugu - India": "തെലുഗു - ഇന്ത്യ",
   "Korean": "കൊറിയൻ",
   "DSN": "DSN",
-  "%d event in %s": {
-    "one": "%d ഇവന്റ് %s-ൽ",
-    "other": "%d ഇവന്റുകൾ %s-ൽ"
-  },
-  "person": {
-    "one": "വ്യക്തി",
-    "other": "ആളുകൾ"
-  },
+  "%d event in %s": {"one": "%d ഇവന്റ് %s-ൽ", "other": "%d ഇവന്റുകൾ %s-ൽ"},
+  "person": {"one": "വ്യക്തി", "other": "ആളുകൾ"},
   "ID": "ID",
   "PDF/CSV": "PDF/CSV",
-  "%d Person added to the Cart.": {
-    "one": "%d വ്യക്തിയെ തിരഞ്ഞെടുക്കലിൽ ചേർത്തു.",
-    "other": "%d ആളുകളെ തിരഞ്ഞെടുക്കലിൽ ചേർത്തു."
-  },
-  "%d Person successfully added to selected Family.": {
-    "one": "%d വ്യക്തിയെ തിരഞ്ഞെടുത്ത കുടുംബത്തിൽ ചേർത്തു.",
-    "other": "%d ആളുകളെ തിരഞ്ഞെടുത്ത കുടുംബത്തിൽ ചേർത്തു."
-  },
-  "%d Person successfully added to selected Group.": {
-    "one": "%d വ്യക്തിയെ തിരഞ്ഞെടുത്ത ഗ്രൂപ്പിൽ ചേർത്തു.",
-    "other": "%d ആളുകളെ തിരഞ്ഞെടുത്ത ഗ്രൂപ്പിൽ ചേർത്തു."
-  },
+  "%d Person added to the Cart.": {"one": "%d വ്യക്തിയെ തിരഞ്ഞെടുക്കലിൽ ചേർത്തു.", "other": "%d ആളുകളെ തിരഞ്ഞെടുക്കലിൽ ചേർത്തു."},
+  "%d Person successfully added to selected Family.": {"one": "%d വ്യക്തിയെ തിരഞ്ഞെടുത്ത കുടുംബത്തിൽ ചേർത്തു.", "other": "%d ആളുകളെ തിരഞ്ഞെടുത്ത കുടുംബത്തിൽ ചേർത്തു."},
+  "%d Person successfully added to selected Group.": {"one": "%d വ്യക്തിയെ തിരഞ്ഞെടുത്ത ഗ്രൂപ്പിൽ ചേർത്തു.", "other": "%d ആളുകളെ തിരഞ്ഞെടുത്ത ഗ്രൂപ്പിൽ ചേർത്തു."},
   "Spanish - Argentina": "സ്പാനിഷ് - അർജന്റീന",
   "Spanish - Colombia": "സ്പാനിഷ് - കൊളംബിയ",
   "Spanish - El Salvador": "സ്പാനിഷ് - എൽ സാൽവദോർ",
   "Spanish - Mexico": "സ്പാനിഷ് - മെക്സിക്കോ",
-  "%d person": {
-    "one": "%d വ്യക്തി",
-    "other": "%d ആളുകൾ"
-  },
-  "%d hour": {
-    "one": "%d മണിക്കൂർ",
-    "other": "%d മണിക്കൂറുകൾ"
-  },
+  "%d person": {"one": "%d വ്യക്തി", "other": "%d ആളുകൾ"},
+  "%d hour": {"one": "%d മണിക്കൂർ", "other": "%d മണിക്കൂറുകൾ"},
   "GA4 Measurement ID": "GA4 Measurement ID",
   "MailChimp": "MailChimp",
   "MailChimp API Key": "MailChimp API Key",
@@ -102,10 +77,7 @@
   "2FA": "2FA",
   "Discord Chat": "Discord ചാറ്റ്",
   "Display Preview": "ഡിസ്‌പ്ലേ പ്രിവ്യൂ",
-  "%d result for \"%s\"": {
-    "one": "\"%s\"-ന് %d ഫലം",
-    "other": "\"%s\"-ന് %d ഫലങ്ങൾ"
-  },
+  "%d result for \"%s\"": {"one": "\"%s\"-ന് %d ഫലം", "other": "\"%s\"-ന് %d ഫലങ്ങൾ"},
   "Copied": "പകർത്തി",
   "Copy Members to Group": "അംഗങ്ങളെ ഗ്രൂപ്പിലേക്ക് പകർത്തുക",
   "Copy to Group": "ഗ്രൂപ്പിലേക്ക് പകർത്തുക",
@@ -178,6 +150,9 @@
   "Export data to CSV format for external applications": "ബാഹ്യ ആപ്ലിക്കേഷനുകൾക്കായി ഡാറ്റ CSV ഫോർമാറ്റിൽ എക്‌സ്‌പോർട്ട് ചെയ്യുക",
   "Extend ChurchCRM with MailChimp, backups, and more": "MailChimp, ബാക്കപ്പുകൾ, കൂടുതൽ ഉപയോഗിച്ച് ChurchCRM വിപുലീകരിക്കുക",
   "FY %s": "FY %s",
-  "Failed to add members to cart. Please try again.": "അംഗങ്ങളെ തിരഞ്ഞെടുക്കലിൽ ചേർക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
-  "Côte d'Ivoire": "Côte d'Ivoire"
+  "Failed to add members to cart. Please try again.": "അംഗങ്ങളെ തിരഞ്ഞെടുക്കലിൽ ചേർക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക."
 }
+
+with open('locale/terms/missing/ml/ml-1-trans.json', 'w', encoding='utf-8') as f:
+    json.dump(t1, f, ensure_ascii=False, indent=2)
+print("ml-1-trans.json written successfully")

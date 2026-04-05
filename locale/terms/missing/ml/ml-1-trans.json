@@ -2,7 +2,7 @@
   "CSV": "CSV",
   "Street Atlas USA": "Street Atlas USA",
   "-----------------------------------------------------------------------------------------------------------------------------------------------": "-----------------------------------------------------------------------------------------------------------------------------------------------",
-  "Côte d’Ivoire": "",
+  "Côte d'Ivoire": "Côte d'Ivoire",
   "English - United States": "ഇംഗ്ലീഷ് - അമേരിക്ക",
   "English - Canada": "ഇംഗ്ലീഷ് - കാനഡ",
   "English - Australia": "ഇംഗ്ലീഷ് - ഓസ്ട്രേലിയ",
@@ -178,6 +178,5 @@
   "Export data to CSV format for external applications": "ബാഹ്യ ആപ്ലിക്കേഷനുകൾക്കായി ഡാറ്റ CSV ഫോർമാറ്റിൽ എക്‌സ്‌പോർട്ട് ചെയ്യുക",
   "Extend ChurchCRM with MailChimp, backups, and more": "MailChimp, ബാക്കപ്പുകൾ, കൂടുതൽ ഉപയോഗിച്ച് ChurchCRM വിപുലീകരിക്കുക",
   "FY %s": "FY %s",
-  "Failed to add members to cart. Please try again.": "അംഗങ്ങളെ തിരഞ്ഞെടുക്കലിൽ ചേർക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
-  "Côte d'Ivoire": "Côte d'Ivoire"
+  "Failed to add members to cart. Please try again.": "അംഗങ്ങളെ തിരഞ്ഞെടുക്കലിൽ ചേർക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക."
 }

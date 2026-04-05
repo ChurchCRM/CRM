@@ -1,4 +1,6 @@
-{
+import json
+
+t2 = {
   "Failed to delete class. Please try again.": "ക്ലാസ് ഇല്ലാതാക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
   "Failed to delete group. Please try again.": "ഗ്രൂപ്പ് ഇല്ലാതാക്കാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
   "Failed to remove from class. Please try again.": "ക്ലാസിൽ നിന്ന് നീക്കം ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി വീണ്ടും ശ്രമിക്കുക.",
@@ -150,3 +152,7 @@
   "Photo": "ഫോട്ടോ",
   "Photos only": "ഫോട്ടോകൾ മാത്രം"
 }
+
+with open('locale/terms/missing/ml/ml-2-trans.json', 'w', encoding='utf-8') as f:
+    json.dump(t2, f, ensure_ascii=False, indent=2)
+print("ml-2-trans.json written")

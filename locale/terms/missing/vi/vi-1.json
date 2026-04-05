@@ -1,8 +1,8 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d kết quả cho \"%s\""
   },
-  "Email BCC": "",
+  "Email BCC": "Email BCC",
   "BCC": "",
   "N/A": "",
   "name@example.com": ""

@@ -1,6 +1,6 @@
 {
   "%d result for \"%s\"": {
-    "other": ""
+    "other": "%d 個「%s」的結果"
   },
   "BCC": "",
   "N/A": "",

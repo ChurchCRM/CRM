@@ -1,10 +1,10 @@
 {
-  "Administrator": "",
-  "Format": "",
-  "Kiosk": "",
-  "Material": "",
-  "Minimum": "",
-  "Vonage Dashboard": "",
+  "Administrator": "Administrator",
+  "Format": "Format",
+  "Kiosk": "Kiosk",
+  "Material": "Material",
+  "Minimum": "Minimum",
+  "Vonage Dashboard": "Vonage Dashboard",
   "BCC": "",
   "N/A": "",
   "name@example.com": ""
