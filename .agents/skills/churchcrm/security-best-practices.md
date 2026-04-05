@@ -770,4 +770,28 @@ getter, or user-supplied input.
 
 ---
 
+### ListOption::getOptionName() Must Be Escaped in HTML Contexts <!-- learned: 2026-04-05 -->
+
+`getOptionName()` returns raw database strings — admin-entered values that can contain
+`<`, `>`, or `"`. Always wrap with `InputUtils::escapeHTML()` when rendering inside
+HTML elements. Affects group roles, family roles, group types, custom field options,
+classifications, and any other ListOption values rendered to the DOM.
+
+```php
+// ❌ WRONG — raw getOptionName() in <option> or <td>
+echo '<option value="' . $role->getOptionId() . '">' . $role->getOptionName() . '</option>';
+
+// ✅ CORRECT — escape before output
+echo '<option value="' . $role->getOptionId() . '">' . InputUtils::escapeHTML($role->getOptionName()) . '</option>';
+
+// ✅ CORRECT — when wrapped in gettext()
+echo InputUtils::escapeHTML(gettext($role->getOptionName()));
+```
+
+Fixed in GHSA-j9gv-26c7-3qrh (CVE-2025-67876) across 6 files: MemberRoleChange.php,
+CartToFamily.php, GroupEditor.php, CartToEvent.php, CustomFieldUtils.php,
+external/templates/registration/family-register.php.
+
+---
+
 Last updated: April 5, 2026

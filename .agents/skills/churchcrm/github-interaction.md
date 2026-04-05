@@ -103,6 +103,17 @@ gh pr close 1 --repo {owner}/{repo}-ghsa-{id}
 - **Closed → published requires draft step**: Direct `closed → published` fails; always go `closed → draft → published`.
 - **Empty ecosystem blocks publishing**: If the existing vulnerability entry has an empty `ecosystem`/`name`, PATCH the vulnerabilities array to fix it before attempting to publish.
 - **Empty `{}` CVE response is success**: GitHub returns `{}` when a CVE request is accepted — it is not an error.
+- **Batch publishing — sort by `created_at` ascending**: Always publish the oldest report first. If two reports cover the same vulnerability, the earliest one should receive the CVE. Publishing in the wrong order means the later duplicate gets the CVE and the original doesn't.
+
+### Handling duplicate advisories <!-- learned: 2026-04-05 -->
+
+When two advisories describe the same root cause:
+
+1. **Identify the original** — check `created_at` timestamp: `gh api /repos/ChurchCRM/CRM/security-advisories/{ghsa_id} --jq '.created_at'`
+2. **Publish the original first** — so it gets the CVE
+3. **If the duplicate already has a CVE** — contact GitHub Security at security@github.com, explain the duplication (include both GHSA IDs and creation timestamps), and request that the duplicate CVE be marked `REJECTED`. GitHub is the CNA for these CVEs and can reject duplicates.
+4. **Request CVE for the original** — `gh api --method POST /repos/{owner}/{repo}/security-advisories/{original_ghsa}/cve`
+5. **CVEs cannot be "un-assigned"** — only marked `REJECTED` by the CNA. Once a CVE is rejected, the NVD record shows `REJECTED` status and references the canonical CVE.
 
 ### Notifying reporters via GitHub Discussion <!-- learned: 2026-04-05 -->
 
