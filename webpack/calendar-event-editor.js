@@ -98,8 +98,24 @@ let tsCalendars = null;
 
 function cleanup() {
   if (currentModal) {
-    currentModal.dispose();
+    // Remove the modal element from DOM first to prevent transition callbacks
+    // from accessing null properties during dispose
+    const modalEl = document.getElementById("eventEditorModal");
+    if (modalEl) {
+      modalEl.classList.remove("show");
+      modalEl.removeAttribute("role");
+    }
+    try {
+      currentModal.dispose();
+    } catch (_e) {
+      // dispose() can throw if called during a show/hide transition
+    }
     currentModal = null;
+    // Remove any leftover backdrop
+    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+    document.body.classList.remove("modal-open");
+    document.body.style.removeProperty("overflow");
+    document.body.style.removeProperty("padding-right");
   }
   // Destroy TomSelect instances
   if (tsEventType) {
@@ -395,10 +411,8 @@ function initEditMode(event) {
     validateForm(event);
     // Show/hide validation
     const fb = document.getElementById("calendarsFeedback");
-    if (event.PinnedCalendars.length === 0) {
-      fb.style.display = "block";
-    } else {
-      fb.style.display = "none";
+    if (fb) {
+      fb.style.display = event.PinnedCalendars.length === 0 ? "block" : "none";
     }
   });
 
