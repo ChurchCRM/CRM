@@ -29,8 +29,6 @@ if (version_compare($phpVersion, $requiredPhp, '<')) {
     exit;
 }
 
-header('CRM: would redirect');
-
 if (file_exists('Include/Config.php')) {
     require_once __DIR__ . '/Include/Config.php';
 } else {
@@ -43,7 +41,29 @@ mb_internal_encoding('UTF-8');
 // Get the current request path and convert it into a magic filename
 // e.g. /list-events => /ListEvents.php
 $shortName = str_replace(SystemURLs::getRootPath() . '/', '', $_SERVER['REQUEST_URI']);
+// Strip query string from shortName so file lookups work correctly
+$shortName = explode('?', $shortName)[0];
 $fileName = MiscUtils::dashesToCamelCase($shortName, true) . '.php';
+
+// Guard against redirect loops when a reverse proxy (e.g. FrankenPHP without a
+// custom Caddyfile) forwards Slim sub-application requests to this file instead of
+// the sub-app's own index.php.  Without this check, an unauthenticated request for
+// /session/begin would cause ensureAuthentication() to redirect back to /session/begin
+// indefinitely ("too many redirects").
+//
+// Strategy: if the first path segment resolves to a directory that contains its own
+// index.php entry point, delegate to that entry point instead of running the legacy
+// router.  This automatically covers all current and future sub-apps without a
+// hard-coded allow-list that must be kept in sync.
+$firstSegment = explode('/', trim($shortName, '/'))[0] ?? '';
+if ($firstSegment !== '') {
+    $subAppIndex = __DIR__ . '/' . $firstSegment . '/index.php';
+    if (is_dir(__DIR__ . '/' . $firstSegment) && file_exists($subAppIndex)) {
+        // Delegate to the sub-app's Slim entry point — it manages its own auth.
+        require $subAppIndex;
+        exit;
+    }
+}
 
 // First, ensure that the user is authenticated.
 AuthenticationManager::ensureAuthentication();

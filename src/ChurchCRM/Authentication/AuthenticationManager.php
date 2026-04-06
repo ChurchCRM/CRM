@@ -130,6 +130,7 @@ class AuthenticationManager
 
         if (null !== $result->nextStepURL) {
             $logger->debug('Authentication requires additional step: ' . $result->nextStepURL);
+            self::writeSessionBeforeRedirect();
             RedirectUtils::redirect($result->nextStepURL);
         }
 
@@ -145,6 +146,10 @@ class AuthenticationManager
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
             );
+            // Flush session data to storage before exit() so that FrankenPHP worker
+            // mode (where exit() is intercepted rather than terminating the process)
+            // reliably persists the newly-authenticated session.
+            self::writeSessionBeforeRedirect();
             RedirectUtils::redirect($redirectLocation);
         }
 
@@ -257,6 +262,24 @@ class AuthenticationManager
         $validated = RedirectUtils::validateRedirectUrl($url, '');
 
         return $validated !== '' ? $validated : null;
+    }
+
+    /**
+     * Flush session data to persistent storage before a redirect.
+     *
+     * In FrankenPHP worker mode, exit() is intercepted by the runtime rather than
+     * terminating the PHP process, so PHP's normal request-shutdown session-write
+     * hook may not fire.  Calling session_write_close() here ensures the newly
+     * authenticated session (including the regenerated ID written by
+     * prepareSuccessfulLoginOperations()) is persisted before the browser follows
+     * the Location redirect — otherwise the next request starts with an empty
+     * session and the user appears unauthenticated.
+     */
+    private static function writeSessionBeforeRedirect(): void
+    {
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            session_write_close();
+        }
     }
 
     /**

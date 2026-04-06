@@ -65,10 +65,33 @@ function processTwoFactorPost(Request $request, Response $response, array $args)
 
 function endSession(Request $request, Response $response, array $args): Response
 {
+    // Capture cookie name/params before session is destroyed, so the expiry
+    // Set-Cookie header matches the attributes of the original session cookie.
+    $cookieName   = session_name();
+    $cookieParams = session_get_cookie_params();
+    $cookiePath   = $cookieParams['path']     ?? '/';
+    $cookieDomain = $cookieParams['domain']   ?? '';
+    $cookieSecure = $cookieParams['secure']   ?? false;
+    $cookieHttp   = $cookieParams['httponly'] ?? true;
+    $cookieSame   = $cookieParams['samesite'] ?? 'Lax';
+
     AuthenticationManager::endSession(true);
-    
+
+    // Expire the session cookie in the browser so FrankenPHP (and other servers that
+    // do not automatically clear cookies on session_destroy()) won't resend a stale
+    // session ID on subsequent requests, which can cause redirect loops.
+    $expiredCookie = $cookieName . '=; Path=' . $cookiePath
+        . '; Expires=Thu, 01 Jan 1970 00:00:01 GMT'
+        . ($cookieHttp               ? '; HttpOnly'                     : '')
+        . ($cookieSame !== ''        ? '; SameSite=' . $cookieSame      : '')
+        . ($cookieDomain !== ''      ? '; Domain=' . $cookieDomain      : '')
+        . ($cookieSecure             ? '; Secure'                       : '');
+
     $redirectUrl = SystemURLs::getRootPath() . '/session/begin';
-    $response = $response->withHeader('Location', $redirectUrl)->withStatus(302);
+    $response = $response
+        ->withHeader('Set-Cookie', $expiredCookie)
+        ->withHeader('Location', $redirectUrl)
+        ->withStatus(302);
     $response->getBody()->write('');
     return $response;
 }

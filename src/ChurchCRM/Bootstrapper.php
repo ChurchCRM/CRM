@@ -464,7 +464,7 @@ class Bootstrapper
 
         // Initialize the session
         $sessionName = self::SESSION_PREFIX . hash("md5", SystemURLs::getDocumentRoot());
-        session_cache_limiter('private_no_expire:');
+        session_cache_limiter('private_no_expire');
         session_name($sessionName);
         session_start();
         self::$bootStrapLogger->debug("Session initialized: " . $sessionName);
