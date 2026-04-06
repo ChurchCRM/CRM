@@ -195,7 +195,7 @@ function initializeApp() {
         return;
       }
       window.CRM.APIRequest({
-        path: `user/${window.CRM.currentPersonId}/setting/${encodeURIComponent(dismissKey)}`,
+        path: `user/${window.CRM.userId}/setting/${encodeURIComponent(dismissKey)}`,
         method: "POST",
         data: JSON.stringify({ value: "true" }),
       });
