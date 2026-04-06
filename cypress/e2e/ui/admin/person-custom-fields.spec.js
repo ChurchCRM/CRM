@@ -85,10 +85,12 @@ describe("Person Custom Fields — Delete button (CSP regression #8520)", () => 
     });
 
     it("Delete button has data-field-name/data-field-id attrs and no onclick", () => {
-        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
-            .should("exist")
-            .and("have.attr", "data-field-id")
-            .and("not.have.attr", "onclick");
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`).then(
+            ($btn) => {
+                expect($btn).to.have.attr("data-field-id");
+                expect($btn).to.not.have.attr("onclick");
+            },
+        );
     });
 
     it("clicking Delete opens bootbox; Cancel leaves field intact", () => {
@@ -141,10 +143,12 @@ describe("Family Custom Fields — Delete button (CSP regression #8520)", () => 
     });
 
     it("Delete button has data-field-name/data-field-id attrs and no onclick", () => {
-        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
-            .should("exist")
-            .and("have.attr", "data-field-id")
-            .and("not.have.attr", "onclick");
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`).then(
+            ($btn) => {
+                expect($btn).to.have.attr("data-field-id");
+                expect($btn).to.not.have.attr("onclick");
+            },
+        );
     });
 
     it("clicking Delete opens bootbox; Cancel leaves field intact", () => {
