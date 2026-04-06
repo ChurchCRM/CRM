@@ -394,15 +394,15 @@ $sRootPath = SystemURLs::getRootPath();
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span><?= gettext('Total Deposits') ?></span>
+                        <span><?= gettext('Total Deposits:') ?></span>
                         <strong><?= $totalDeposits ?></strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span><?= gettext('Open Deposits') ?></span>
+                        <span><?= gettext('Open Deposits:') ?></span>
                         <span class="badge bg-warning text-dark"><?= $openDeposits ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span><?= gettext('Closed Deposits') ?></span>
+                        <span><?= gettext('Closed Deposits:') ?></span>
                         <span class="badge bg-green-lt text-green"><?= $closedDeposits ?></span>
                     </div>
 
