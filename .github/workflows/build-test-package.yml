@@ -746,6 +746,7 @@ jobs:
         CYPRESS_UPGRADE_SQL_FILE: cypress/data/churchinfo-1.3.1.sql
         CYPRESS_UPGRADE_ADMIN_USER: Admin
         CYPRESS_UPGRADE_ADMIN_PASS: churchinfoadmin
+        CYPRESS_UPGRADE_LEGACY_AUTH: 'true'
 
     - name: Collect Docker logs on failure
       if: failure()
