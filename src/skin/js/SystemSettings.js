@@ -157,7 +157,6 @@ function collectSettings($container) {
 function doSave(settings) {
   var keys = Object.keys(settings);
   if (keys.length === 0) {
-    _isSaving = true;
     window.location.reload();
     return;
   }
@@ -265,7 +264,6 @@ $(document).on("click", "a[href]", function (e) {
   if (!isAnyDirty()) return;
 
   e.preventDefault();
-  var targetUrl = href;
   bootbox.confirm({
     title: t("Unsaved Changes"),
     message: t("You have unsaved changes. Are you sure you want to leave without saving?"),
@@ -276,7 +274,7 @@ $(document).on("click", "a[href]", function (e) {
     callback: function (result) {
       if (result) {
         _isSaving = true; // suppress beforeunload
-        window.location.href = targetUrl;
+        window.location.href = href;
       }
     },
   });
