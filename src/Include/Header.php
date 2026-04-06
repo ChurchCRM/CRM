@@ -200,6 +200,7 @@ $MenuFirst = 1;
 
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+              aria-controls="navbar-menu" aria-expanded="false"
               aria-label="<?= gettext('Toggle search') ?>">
         <i class="ti ti-search"></i>
       </button>

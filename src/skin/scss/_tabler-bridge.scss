@@ -214,11 +214,13 @@ select {
     }
   }
 
-  // Page header buttons: icon-only on mobile to save space
+  // Page header buttons: icon-only on mobile to save space.
+  // Only hide text when the button contains an icon; label-only
+  // buttons (no icon) stay readable.
   .page-header .btn-list {
     gap: 0.25rem;
 
-    .btn {
+    .btn:has(i, .fa-solid) {
       font-size: 0;       // hide text
       padding: 0.375rem;
 
@@ -250,9 +252,10 @@ select {
     -webkit-overflow-scrolling: touch;
   }
 
-  // Remove inline hardcoded column widths that cause overflow
-  .table th[style*="width"],
-  .table td[style*="width"] {
+  // Remove inline hardcoded column widths that cause overflow.
+  // Exclude DataTables — it manages its own column widths.
+  .table:not(.dataTable) th[style*="width"],
+  .table:not(.dataTable) td[style*="width"] {
     width: auto !important;
     min-width: 0 !important;
   }
