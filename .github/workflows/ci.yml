@@ -48,7 +48,7 @@ jobs:
       - name: Format check (biome)
         run: npx biome format .
       - name: Lint check (biome)
-        run: npx biome check react/
+        run: npx biome check webpack/calendar-event-editor.js webpack/two-factor-enrollment.js webpack/skin-core-css.js
 
   format-fix:
     name: Apply format fixes
@@ -74,7 +74,7 @@ jobs:
       - name: Apply Biome format
         run: npx biome format --write .
       - name: Apply Biome lint fixes
-        run: npx biome check --write react/
+        run: npx biome check --write webpack/calendar-event-editor.js webpack/two-factor-enrollment.js webpack/skin-core-css.js
       - name: Commit format changes
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
