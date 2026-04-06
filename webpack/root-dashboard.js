@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Photo viewer click handlers
-  $(document).on("click", ".view-person-photo", function (e) {
+  $(document).on("click", ".view-person-photo", (e) => {
     var personId = $(e.currentTarget).data("person-id");
     if (window.CRM && window.CRM.showPhotoLightbox) {
       window.CRM.showPhotoLightbox("person", personId);
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation();
   });
 
-  $(document).on("click", ".view-family-photo", function (e) {
+  $(document).on("click", ".view-family-photo", (e) => {
     var familyId = $(e.currentTarget).data("family-id");
     if (window.CRM && window.CRM.showPhotoLightbox) {
       window.CRM.showPhotoLightbox("family", familyId);

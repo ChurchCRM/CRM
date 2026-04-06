@@ -15,7 +15,7 @@ import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 import { initGroupManager } from "./person-group-manager";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Map initialisation
   const config = window.CRM && window.CRM.personMapConfig;
   if (config) {
@@ -44,10 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "https://nominatim.openstreetmap.org/search?q=" + encodeURIComponent(config.address) + "&format=json&limit=1",
         { headers: { "Accept-Language": "en", Accept: "application/json" } },
       )
-        .then(function (r) {
-          return r.json();
-        })
-        .then(function (data) {
+        .then((r) => r.json())
+        .then((data) => {
           if (!data.length) {
             return;
           }

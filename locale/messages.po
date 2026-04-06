@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-04 22:21+0000\n"
+"POT-Creation-Date: 2026-04-06 22:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -247,6 +247,9 @@ msgid "A person does not need to belong to a family, but assigning one makes add
 msgstr ""
 
 msgid "A pledge is a commitment to give. It is not tied to a deposit slip."
+msgstr ""
+
+msgid "A system update is available. Please upgrade your installation."
 msgstr ""
 
 msgid "API Key is required."
@@ -3404,6 +3407,9 @@ msgstr ""
 msgid "Enter sermon notes or event text..."
 msgstr ""
 
+msgid "Enter text here..."
+msgstr ""
+
 msgid "Enter the 6-digit code from your authenticator app"
 msgstr ""
 
@@ -3611,9 +3617,6 @@ msgstr ""
 msgid "Export Selected Rows (OFX)"
 msgstr ""
 
-msgid "Export all people data in ChMeetings format for import into external systems."
-msgstr ""
-
 msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
 msgstr ""
 
@@ -3708,6 +3711,9 @@ msgstr ""
 msgid "Failed to apply upgrade. Please check the server logs for details."
 msgstr ""
 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr ""
+
 msgid "Failed to connect to OpenLP server."
 msgstr ""
 
@@ -3729,6 +3735,9 @@ msgstr ""
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete event. Please try again."
+msgstr ""
+
 msgid "Failed to delete group. Please try again."
 msgstr ""
 
@@ -3748,6 +3757,9 @@ msgid "Failed to delete role. Please try again."
 msgstr ""
 
 msgid "Failed to disable plugin"
+msgstr ""
+
+msgid "Failed to disable two-factor authentication. Please try again."
 msgstr ""
 
 msgid "Failed to download latest release"
@@ -3774,16 +3786,28 @@ msgstr ""
 msgid "Failed to extract upgrade archive. Please check disk space and file permissions."
 msgstr ""
 
+msgid "Failed to generate QR code. Please try again."
+msgstr ""
+
 msgid "Failed to get plugin details"
 msgstr ""
 
 msgid "Failed to list plugins"
 msgstr ""
 
+msgid "Failed to load calendar data. Please try again."
+msgstr ""
+
 msgid "Failed to load cart status."
 msgstr ""
 
+msgid "Failed to load event. Please try again."
+msgstr ""
+
 msgid "Failed to load groups. Please refresh the page."
+msgstr ""
+
+msgid "Failed to load recovery codes. Please refresh the page."
 msgstr ""
 
 msgid "Failed to open upgrade archive. The downloaded file may be corrupted."
@@ -3817,6 +3841,9 @@ msgid "Failed to retrieve email addresses"
 msgstr ""
 
 msgid "Failed to retrieve phone numbers"
+msgstr ""
+
+msgid "Failed to save event. Please try again."
 msgstr ""
 
 msgid "Failed to save settings"
@@ -9003,6 +9030,9 @@ msgstr ""
 msgid "System Settings"
 msgstr ""
 
+msgid "System Update Available"
+msgstr ""
+
 msgid "System Upgrade"
 msgstr ""
 
@@ -9379,9 +9409,6 @@ msgid "This will reset the system data and will restart the system as a new inst
 msgstr ""
 
 msgid "Thursdays"
-msgstr ""
-
-msgid "Time"
 msgstr ""
 
 msgid "Time Zone"
@@ -10061,6 +10088,9 @@ msgstr ""
 msgid "Verification email sent"
 msgstr ""
 
+msgid "Verification failed. Please try again."
+msgstr ""
+
 msgid "Verification recorded"
 msgstr ""
 
@@ -10095,6 +10125,10 @@ msgid "Verifying"
 msgstr ""
 
 msgid "Version"
+msgstr ""
+
+#, php-format
+msgid "Version %s is available. Please upgrade your installation."
 msgstr ""
 
 msgid "Version Mismatch"

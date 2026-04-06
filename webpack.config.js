@@ -6,8 +6,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
-    'calendar-event-editor': './react/calendar-event-editor.tsx',
-    'two-factor-enrollment': './react/two-factor-enrollment.tsx',
+    'calendar-event-editor': './webpack/calendar-event-editor.js',
+    'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
@@ -60,13 +60,6 @@ module.exports = {
     moduleIds: 'deterministic',
     chunkIds: 'deterministic',
   },
-  // Silence react-datepicker dynamic require warning while keeping other warnings visible
-  ignoreWarnings: [
-    {
-      module: /react-datepicker/,
-      message: /Critical dependency: the request of a dependency is an expression/,
-    },
-  ],
   module: {
     rules: [
       {

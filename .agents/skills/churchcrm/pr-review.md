@@ -252,7 +252,7 @@ For each type of change, determine what docs need updating:
 
 ```bash
 # Has the feature touched user-facing UI text, settings, or API contracts?
-git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'react/**/*.tsx'
+git diff origin/master...origin/<branch> -- 'src/**/*.php' 'src/**/*.js' 'webpack/**/*.js'
 
 # Are there new routes?
 git diff origin/master...origin/<branch> -- 'src/api/routes/' 'src/admin/routes/'

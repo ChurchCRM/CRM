@@ -59,7 +59,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
-<div id="calendar-event-react-app"></div>
+<div id="calendar-event-app"></div>
 
 <!-- System Settings Panel Component -->
 <?php if ($isAdmin): ?>
