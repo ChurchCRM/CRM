@@ -178,136 +178,6 @@ class SlimUtils
     }
 
     /**
-     * Determines whether the given request is an API/JSON request.
-     * Returns true when the Accept header prefers JSON or the path contains /api/.
-     */
-    private static function isApiRequest(Request $request): bool
-    {
-        $acceptHeader = $request->getHeaderLine('Accept');
-        $path         = $request->getUri()->getPath();
-        return stripos($acceptHeader, 'application/json') !== false
-            || preg_match('#(^|/)api(/|$)#i', $path) === 1;
-    }
-
-    /**
-     * Registers a default Slim4 error handler that returns Tabler-styled HTML error pages
-     * (with the standard nav shell) for browser requests, and JSON for API/JSON requests.
-     *
-     * Requires the shared template at: {docRoot}/v2/templates/common/error-page.php
-     * and the standard Header/Footer includes. Do not move those files without updating
-     * the require paths in this method.
-     *
-     * @param mixed  $errorMiddleware Slim error middleware instance
-     * @param string $dashboardUrl    URL for the primary "Return to …" action button
-     * @param string $dashboardText   Label text for the primary action button
-     */
-    public static function registerDefaultHtmlErrorHandler(
-        $errorMiddleware,
-        string $dashboardUrl = '',
-        string $dashboardText = ''
-    ): void {
-        $errorMiddleware->setDefaultErrorHandler(function (
-            Request   $request,
-            Throwable $exception,
-            bool $displayErrorDetails,
-            // $logErrors and $logErrorDetails are required by Slim's error handler signature
-            // but are unused here — logging is handled by LoggerUtils via our own level/format rules
-            bool $logErrors,
-            bool $logErrorDetails
-        ) use ($dashboardUrl, $dashboardText) {
-            $logger = LoggerUtils::getAppLogger();
-
-            // Determine HTTP status code
-            $statusCode = 500;
-            if ($exception instanceof HttpNotFoundException) {
-                $statusCode = 404;
-            } elseif ($exception instanceof HttpMethodNotAllowedException) {
-                $statusCode = 405;
-            }
-
-            $path = $request->getUri()->getPath();
-
-            // Log with appropriate level — 5xx are errors, 4xx are informational
-            if ($statusCode >= 500) {
-                $logger->error('HTTP ' . $statusCode . ' error', [
-                    'exception' => $exception::class,
-                    'message'   => $exception->getMessage(),
-                    'file'      => $exception->getFile(),
-                    'line'      => $exception->getLine(),
-                    'path'      => $path,
-                ]);
-            } else {
-                $logger->info('HTTP ' . $statusCode, ['path' => $path]);
-            }
-
-            $response = new Psr7Response();
-
-            // For API sub-paths or JSON Accept header, return JSON
-            if (self::isApiRequest($request)) {
-                $sanitizedMessage = self::sanitizeErrorMessage($exception);
-                $payload = json_encode([
-                    'error'   => $sanitizedMessage,
-                    'code'    => $exception->getCode(),
-                    'request' => ['method' => $request->getMethod(), 'path' => $path],
-                ], JSON_THROW_ON_ERROR);
-                $response->getBody()->write($payload);
-                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
-            }
-
-            // Render Tabler-styled full HTML page with nav shell (Header + error partial + Footer)
-            $rootPath   = SystemURLs::getRootPath();
-            $returnUrl  = $dashboardUrl ?: ($rootPath . '/v2/dashboard');
-            $returnText = $dashboardText ?: gettext('Return to Dashboard');
-
-            $code    = $statusCode;
-            $title   = match ($statusCode) {
-                404     => gettext('Page Not Found'),
-                405     => gettext('Method Not Allowed'),
-                default => gettext('Server Error'),
-            };
-            $message = match ($statusCode) {
-                404     => gettext('The page you were looking for could not be found.'),
-                405     => gettext('The HTTP method used is not allowed for this route.'),
-                default => gettext('An unexpected error occurred. Please contact your administrator.'),
-            };
-
-            $extraHtml = '';
-            if ($displayErrorDetails && $statusCode >= 500) {
-                $sanitizedMessage = self::sanitizeErrorMessage($exception);
-                $extraHtml = '<details class="card card-outline border-secondary mt-3 text-start">'
-                    . '<summary class="card-header cursor-pointer"><i class="ti ti-code me-1"></i>'
-                    . gettext('Technical Details') . ' (' . gettext('Development Mode') . ')</summary>'
-                    . '<div class="card-body"><pre class="mb-0"><code>'
-                    . htmlspecialchars($sanitizedMessage)
-                    . '</code></pre></div></details>';
-            }
-
-            // $sPageTitle is read by Header.php via variable scope (extract/include)
-            $sPageTitle = $title;
-            $docRoot    = SystemURLs::getDocumentRoot();
-
-            try {
-                ob_start();
-                require $docRoot . '/Include/Header.php';
-                require $docRoot . '/v2/templates/common/error-page.php';
-                require $docRoot . '/Include/Footer.php';
-                $html = ob_get_clean();
-                $response->getBody()->write($html);
-                return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
-            } catch (Throwable $renderEx) {
-                // If page rendering fails, fall back to JSON so the client gets a response
-                if (ob_get_level() > 0) {
-                    ob_end_clean();
-                }
-                $logger->error('Failed to render HTML error page', ['exception' => $renderEx::class]);
-                $payload = json_encode(['error' => 'An error occurred while rendering the error page.'], JSON_THROW_ON_ERROR);
-                $response->getBody()->write($payload);
-                return $response->withStatus(500)->withHeader('Content-Type', 'application/json');
-            }
-        });
-    }
-
-    /**
      * Registers a default Slim4 error handler that returns JSON error details
      */
     public static function registerDefaultJsonErrorHandler($errorMiddleware)
@@ -317,8 +187,6 @@ class SlimUtils
             Request $request,
             Throwable $exception,
             bool $displayErrorDetails,
-            // $logErrors and $logErrorDetails are required by Slim's error handler signature
-            // but are unused here — logging is handled by LoggerUtils via our own level/format rules
             bool $logErrors,
             bool $logErrorDetails
         ) use ($logger) {
@@ -348,6 +216,7 @@ class SlimUtils
             $sanitizedMessage = self::sanitizeErrorMessage($exception);
 
             $path = $request->getUri()->getPath();
+
             if (self::isApiRequest($request)) {
                 // Include HTTP method and path in error response for debugging
                 $errorResponse = [
@@ -393,8 +262,137 @@ class SlimUtils
     }
 
     /**
-     * Render an array as JSON response
+     * Detect whether a request expects a JSON (API) response.
+     * Checks Accept header for application/json, X-Requested-With for AJAX,
+     * and path for /api/ segments.
      */
+    private static function isApiRequest(Request $request): bool
+    {
+        $accept = $request->getHeaderLine('Accept');
+        if (stripos($accept, 'application/json') !== false) {
+            return true;
+        }
+        if ($request->getHeaderLine('X-Requested-With') === 'XMLHttpRequest') {
+            return true;
+        }
+        $path = $request->getUri()->getPath();
+        return (bool) preg_match('#(^|/)api(/|$)#i', $path);
+    }
+
+    /**
+     * Register a default error handler for HTML-serving MVC modules.
+     *
+     * Browser requests render a full Tabler-styled error page (Header + shared
+     * error-page.php partial + Footer).  API / AJAX requests fall back to JSON.
+     *
+     * @param object $errorMiddleware  Slim ErrorMiddleware instance
+     * @param string $dashboardUrl     Absolute URL for the "go back" button (relative to root)
+     * @param string $dashboardText    Label for the "go back" button
+     */
+    public static function registerDefaultHtmlErrorHandler(
+        $errorMiddleware,
+        string $dashboardUrl,
+        string $dashboardText
+    ): void {
+        $logger = LoggerUtils::getAppLogger();
+
+        $errorMiddleware->setDefaultErrorHandler(function (
+            Request $request,
+            Throwable $exception,
+            bool $displayErrorDetails,
+            bool $logErrors,
+            bool $logErrorDetails
+        ) use ($logger, $dashboardUrl, $dashboardText) {
+            // Determine HTTP status code
+            $statusCode = 500;
+            if ($exception instanceof HttpNotFoundException) {
+                $statusCode = 404;
+            } elseif ($exception instanceof HttpMethodNotAllowedException) {
+                $statusCode = 405;
+            } elseif ($exception instanceof \Slim\Exception\HttpForbiddenException) {
+                $statusCode = 403;
+            }
+
+            // Log: info for 4xx, error for 5xx
+            $logContext = [
+                'exception' => $exception::class,
+                'message' => $exception->getMessage(),
+                'file' => $exception->getFile(),
+                'line' => $exception->getLine(),
+                'path' => $request->getUri()->getPath(),
+                'method' => $request->getMethod(),
+            ];
+            if ($statusCode >= 500) {
+                $logContext['trace'] = $exception->getTraceAsString();
+                $logger->error('MVC error', $logContext);
+            } else {
+                $logger->info('MVC ' . $statusCode, $logContext);
+            }
+
+            $response = new Psr7Response();
+
+            // API / AJAX requests get JSON
+            if (self::isApiRequest($request)) {
+                $errorResponse = [
+                    'error' => self::sanitizeErrorMessage($exception),
+                    'code' => $statusCode,
+                    'request' => [
+                        'method' => $request->getMethod(),
+                        'path' => $request->getUri()->getPath(),
+                    ],
+                ];
+                $response->getBody()->write(json_encode($errorResponse));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+
+            // Browser requests get full Tabler HTML error page
+            try {
+                $code = $statusCode;
+                $title = match (true) {
+                    $statusCode === 404 => gettext('Page Not Found'),
+                    $statusCode === 403 => gettext('Permission Required'),
+                    $statusCode === 405 => gettext('Method Not Allowed'),
+                    $statusCode >= 500 => gettext('Server Error'),
+                    default => gettext('Error'),
+                };
+                $message = self::sanitizeErrorMessage($exception);
+                $returnUrl = SystemURLs::getRootPath() . $dashboardUrl;
+                $returnText = $dashboardText;
+                $extraHtml = '';
+
+                // Dev-mode technical details
+                if ($displayErrorDetails && $statusCode >= 500) {
+                    $escaped = htmlspecialchars($exception->getMessage());
+                    $extraHtml = '<div class="mb-4"><details class="card card-outline border-secondary">'
+                        . '<summary class="card-header cursor-pointer"><i class="ti ti-code"></i> '
+                        . gettext('Technical Details') . ' (Development Mode)</summary>'
+                        . '<div class="card-body"><pre class="mb-0"><code>' . $escaped . '</code></pre></div>'
+                        . '</details></div>';
+                }
+
+                $sPageTitle = $title;
+
+                ob_start();
+                require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+                require SystemURLs::getDocumentRoot() . '/v2/templates/common/error-page.php';
+                require SystemURLs::getDocumentRoot() . '/Include/Footer.php';
+                $html = ob_get_clean();
+
+                $response->getBody()->write($html);
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'text/html');
+            } catch (Throwable $renderEx) {
+                // If HTML rendering fails, fall back to JSON
+                $logger->error('Error page render failed', [
+                    'render_error' => $renderEx->getMessage(),
+                    'original_error' => $exception->getMessage(),
+                ]);
+                $fallback = ['error' => 'An error occurred.', 'code' => $statusCode];
+                $response->getBody()->write(json_encode($fallback));
+                return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
+            }
+        });
+    }
+
     /**
      * Render an array as JSON response (canonical camel-case)
      */
