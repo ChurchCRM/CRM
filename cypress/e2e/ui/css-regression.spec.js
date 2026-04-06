@@ -60,8 +60,8 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             cy.get("#FinancialReportTypes").select("Giving Report");
             cy.get("#FinancialReports").submit();
 
-            // LabelColumn cells should exist and be visible
-            cy.get("td.LabelColumn").should("have.length.at.least", 1)
+            // Form labels should exist and be visible on the Giving Report filter page
+            cy.get("label.form-label").should("have.length.at.least", 1)
                 .first().should("be.visible");
         });
     });
