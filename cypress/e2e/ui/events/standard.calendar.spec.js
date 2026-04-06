@@ -79,13 +79,13 @@ describe("Standard Calendar", () => {
         cy.get("#eventStartDate").should("have.attr", "type", "date");
         cy.get("#eventEndDate").should("have.attr", "type", "date");
 
-        // Switch to timed
-        cy.get('input[name="eventDayType"][value="timed"]').check({ force: true });
+        // Switch to timed (click parent label — Tabler hides the actual radio input)
+        cy.get('input[name="eventDayType"][value="timed"]').parent("label").click();
         cy.get("#eventStartDate").should("have.attr", "type", "datetime-local");
         cy.get("#eventEndDate").should("have.attr", "type", "datetime-local");
 
         // Switch back to all-day
-        cy.get('input[name="eventDayType"][value="allday"]').check({ force: true });
+        cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
         cy.get("#eventStartDate").should("have.attr", "type", "date");
         cy.get("#eventEndDate").should("have.attr", "type", "date");
     });
@@ -107,7 +107,7 @@ describe("Standard Calendar", () => {
         cy.get("#event-title-input").should("be.visible");
 
         // Click Cancel — modal should close and be removed from DOM
-        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
+        cy.get("#eventCancelBtn").click();
         cy.get("#eventEditorModal").should("not.exist");
     });
 
@@ -118,7 +118,7 @@ describe("Standard Calendar", () => {
         cy.get("#event-title-input").should("be.visible");
 
         // Close the modal
-        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
+        cy.get("#eventCancelBtn").click();
 
         // Modal element should be fully removed from DOM after hidden transition
         cy.get("#eventEditorModal").should("not.exist");

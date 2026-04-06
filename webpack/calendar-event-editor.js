@@ -168,7 +168,7 @@ function createAndShowModal() {
               <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
               ${t("Loading...")}
             </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>
+            <button type="button" class="btn-close" id="eventCloseXBtn" aria-label="${t("Close")}"></button>
           </div>
           <div class="modal-body" id="eventModalBody"></div>
           <div class="modal-footer d-flex justify-content-between d-none" id="eventModalFooter"></div>
@@ -185,6 +185,7 @@ function createAndShowModal() {
   });
 
   currentModal.show();
+  bindCloseHandlers();
 }
 
 // ---------------------------------------------------------------------------
@@ -336,7 +337,7 @@ function showViewContent(event, calendars, eventTypes) {
 
   header.innerHTML = `
     <h5 class="modal-title">${escapeHtml(event.Title || "")}</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+    <button type="button" class="btn-close" id="eventCloseXBtn" aria-label="${t("Close")}"></button>`;
   header.className = "modal-header";
 
   body.innerHTML = renderViewer(event, calendars, eventTypes);
@@ -347,7 +348,7 @@ function showViewContent(event, calendars, eventTypes) {
     <button type="button" class="btn btn-ghost-danger" id="eventDeleteBtn">
       <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
     <div class="d-flex gap-2">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Close")}</button>
+      <button type="button" class="btn btn-secondary" id="eventCancelBtn">${t("Close")}</button>
       <button type="button" class="btn btn-primary" id="eventEditBtn">
         <i class="fas fa-pencil me-1"></i>${t("Edit")}</button>
     </div>`;
@@ -358,6 +359,7 @@ function showViewContent(event, calendars, eventTypes) {
     showEditContent(event, calendars, eventTypes);
   });
 
+  bindCloseHandlers();
   bindDeleteHandler(event);
 }
 
@@ -382,7 +384,7 @@ function showEditContent(event, calendars, eventTypes) {
         class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
       <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
     </div>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+    <button type="button" class="btn-close" id="eventCloseXBtn" aria-label="${t("Close")}"></button>`;
   header.className = "modal-header pb-0 border-bottom-0";
 
   body.innerHTML = renderEditor(event, calendars, eventTypes, allDay);
@@ -393,14 +395,27 @@ function showEditContent(event, calendars, eventTypes) {
     <button type="button" class="btn btn-ghost-danger" id="eventDeleteBtn">
       <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
     <div class="d-flex gap-2">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Cancel")}</button>
+      <button type="button" class="btn btn-secondary" id="eventCancelBtn">${t("Cancel")}</button>
       <button type="button" class="btn btn-primary" id="eventSaveBtn" disabled>
         <i class="fas fa-save me-1"></i>${t("Save")}</button>
     </div>`;
   footer.className = "modal-footer d-flex justify-content-between";
 
+  bindCloseHandlers();
   initEditMode(event);
   bindDeleteHandler(event);
+}
+
+// ---------------------------------------------------------------------------
+// Close/Cancel handlers — explicit hide() instead of data-bs-dismiss
+// (Bootstrap's delegated dismiss doesn't reliably fire on swapped content)
+// ---------------------------------------------------------------------------
+
+function bindCloseHandlers() {
+  const xBtn = document.getElementById("eventCloseXBtn");
+  if (xBtn) xBtn.addEventListener("click", () => currentModal.hide());
+  const cancelBtn = document.getElementById("eventCancelBtn");
+  if (cancelBtn) cancelBtn.addEventListener("click", () => currentModal.hide());
 }
 
 // ---------------------------------------------------------------------------
@@ -610,7 +625,7 @@ function showErrorContent(message) {
 
   header.innerHTML = `
     <h5 class="modal-title text-danger"><i class="fas fa-exclamation-triangle me-2"></i>${t("Error")}</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+    <button type="button" class="btn-close" id="eventCloseXBtn" aria-label="${t("Close")}"></button>`;
   header.className = "modal-header";
 
   body.innerHTML = `<div class="alert alert-danger mb-0">${escapeHtml(message)}</div>`;
@@ -619,8 +634,10 @@ function showErrorContent(message) {
 
   footer.innerHTML = `
     <div></div>
-    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Close")}</button>`;
+    <button type="button" class="btn btn-secondary" id="eventCancelBtn">${t("Close")}</button>`;
   footer.className = "modal-footer d-flex justify-content-between";
+
+  bindCloseHandlers();
 }
 
 // ---------------------------------------------------------------------------
