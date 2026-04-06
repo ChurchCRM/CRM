@@ -106,9 +106,9 @@ describe("Standard Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
 
-        // Click Cancel — modal should close (scope to our modal to avoid matching settings panel)
+        // Click Cancel — modal should close and be removed from DOM
         cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
-        cy.get("#eventEditorModal").should("not.be.visible");
+        cy.get("#eventEditorModal").should("not.exist");
     });
 
     it("Modal cleanup removes element and restores body state", () => {
