@@ -108,7 +108,7 @@
         "fullcalendar": "^6.1.20",
         "i18next": "^25.8.18",
         "inputmask": "^5.0.9",
-        "jquery": "^3.7.1",
+        "jquery": "^4.0.0",
         "just-validate": "^4.3.0",
         "leaflet": "^1.9.4",
         "marked": "^17.0.5",
@@ -126,7 +126,7 @@
     "devDependencies": {
         "@biomejs/biome": "^2.4.8",
         "@types/dompurify": "^3.0.5",
-        "@types/jquery": "^3.5.33",
+        "@types/jquery": "^4.0.0",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
         "archiver": "^7.0.1",
