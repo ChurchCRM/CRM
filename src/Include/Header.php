@@ -445,33 +445,26 @@ $MenuFirst = 1;
 <?php
 // Render system notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {
-    $notifId = $notification->id ?? '';
-    $notifType = $notification->type ?? 'info';
-    $notifIcon = $notification->icon ?? 'info-circle';
-    $notifTitle = $notification->title ?? '';
-    $notifMsg = $notification->message ?? '';
-    $notifLink = $notification->link ?? '';
-    $notifDismissKey = $notifId !== '' ? 'notification.dismissed.' . $notifId : '';
 ?>
-      <div class="alert alert-<?= InputUtils::escapeHTML($notifType) ?> alert-dismissible"
+      <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible"
            role="alert"
-           <?= $notifId ? 'data-notification-id="' . InputUtils::escapeAttribute($notifId) . '"' : '' ?>
-           <?= $notifDismissKey ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notifDismissKey) . '"' : '' ?>>
+           <?= $notification->getId() ? 'data-notification-id="' . InputUtils::escapeAttribute($notification->getId()) . '"' : '' ?>
+           <?= $notification->getDismissSettingKey() ? 'data-dismiss-key="' . InputUtils::escapeAttribute($notification->getDismissSettingKey()) . '"' : '' ?>>
         <div class="d-flex">
-          <div><i class="ti ti-<?= InputUtils::escapeHTML($notifIcon) ?> me-2"></i></div>
+          <div><i class="ti ti-<?= InputUtils::escapeHTML($notification->getIcon()) ?> me-2"></i></div>
           <div>
-            <strong><?= InputUtils::escapeHTML($notifTitle) ?></strong>
-            <?php if ($notifMsg): ?>
-              <div class="text-secondary"><?= InputUtils::escapeHTML($notifMsg) ?></div>
+            <strong><?= InputUtils::escapeHTML($notification->getTitle()) ?></strong>
+            <?php if ($notification->getMessage()): ?>
+              <div class="text-secondary"><?= InputUtils::escapeHTML($notification->getMessage()) ?></div>
             <?php endif; ?>
-            <?php if ($notifLink): ?>
-              <a href="<?= InputUtils::escapeAttribute($notifLink) ?>" class="alert-link">
+            <?php if ($notification->getUrl()): ?>
+              <a href="<?= InputUtils::escapeAttribute($notification->getUrl()) ?>" class="alert-link">
                 <?= gettext('Learn more') ?>
               </a>
             <?php endif; ?>
           </div>
         </div>
-        <?php if ($notifDismissKey): ?>
+        <?php if ($notification->getDismissSettingKey()): ?>
           <button type="button" class="btn-close js-dismiss-notification" aria-label="<?= gettext('Dismiss') ?>"></button>
         <?php endif; ?>
       </div>

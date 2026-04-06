@@ -39,7 +39,7 @@ $app->group('/api/notification', function (RouteCollectorProxy $group): void {
      */
     $group->get('', function (Request $request, Response $response, array $args): Response {
         return SlimUtils::renderJSON($response, [
-            'notifications' => NotificationService::toUiNotifications(NotificationService::getNotifications()),
+            'notifications' => NotificationService::getNotifications(),
         ]);
     });
 });
