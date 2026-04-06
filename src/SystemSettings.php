@@ -147,7 +147,9 @@ function categoryId(string $category): string {
         </div>
         <hr class="my-2">
         <div class="d-grid">
-          <input type="submit" class="btn btn-primary btn-sm" name="save" id="save" value="<?= gettext('Save Settings') ?>">
+          <input type="submit" class="btn btn-primary btn-sm" name="save" id="save"
+                 data-save-scope="all"
+                 value="<?= gettext('Save Settings') ?>">
         </div>
       </div>
     </div>
@@ -188,7 +190,9 @@ function categoryId(string $category): string {
                 </td>
                 <td>
                   <?php if ($setting->getType() === 'choice') : ?>
-                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox">
+                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox"
+                            data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                            data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>">
                       <?php foreach (json_decode($setting->getData())->Choices as $choice) :
                           if (strpos($choice, ':') === false) {
                               $choiceText = $choice;
@@ -203,25 +207,36 @@ function categoryId(string $category): string {
                     </select>
 
                   <?php elseif ($setting->getType() === 'text') : ?>
-                    <input type="text" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="text" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>"
+                           data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                           data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>">
 
                   <?php elseif ($setting->getType() === 'password') : ?>
-                    <input type="password" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" placeholder="<?= gettext('Leave blank to keep existing password') ?>">
+                    <input type="password" maxlength="255" class="form-control" name="new_value[<?= $setting->getId() ?>]" placeholder="<?= gettext('Leave blank to keep existing password') ?>"
+                           data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>">
 
                   <?php elseif ($setting->getType() === 'textarea') : ?>
-                    <textarea rows="4" class="form-control" name="new_value[<?= $setting->getId() ?>]"><?= InputUtils::escapeHTML($setting->getValue()) ?></textarea>
+                    <textarea rows="4" class="form-control" name="new_value[<?= $setting->getId() ?>]"
+                              data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                              data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>"><?= InputUtils::escapeHTML($setting->getValue()) ?></textarea>
 
                   <?php elseif ($setting->getType() === 'number' || $setting->getType() === 'date') : ?>
-                    <input type="text" maxlength="15" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="text" maxlength="15" class="form-control" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>"
+                           data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                           data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>">
 
                   <?php elseif ($setting->getType() === 'boolean') : ?>
-                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox">
+                    <select name="new_value[<?= $setting->getId() ?>]" class="form-select choiceSelectBox"
+                            data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                            data-initial-value="<?= $setting->getValue() ? '1' : '0' ?>">
                       <option value="0" <?= !$setting->getValue() ? 'selected' : '' ?>><?= gettext('False') ?></option>
                       <option value="1" <?= $setting->getValue() ? 'selected' : '' ?>><?= gettext('True') ?></option>
                     </select>
 
                   <?php elseif ($setting->getType() === 'json') : ?>
-                    <input type="hidden" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>">
+                    <input type="hidden" name="new_value[<?= $setting->getId() ?>]" value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>"
+                           data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                           data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>">
                     <button type="button" class="btn btn-outline-primary btn-sm jsonSettingsEdit"
                             id="set_value<?= $setting->getId() ?>"
                             data-cfgid="<?= $setting->getId() ?>">
@@ -233,7 +248,9 @@ function categoryId(string $category): string {
                             name="new_value[<?= $setting->getId() ?>]"
                             data-url="<?= InputUtils::escapeAttribute($setting->getData()) ?>"
                             data-value="<?= InputUtils::escapeAttribute($setting->getValue()) ?>"
-                            class="form-select choiceSelectBox">
+                            class="form-select choiceSelectBox"
+                            data-setting-name="<?= InputUtils::escapeAttribute($setting->getName()) ?>"
+                            data-initial-value="<?= InputUtils::escapeAttribute($setting->getValue() ?? '') ?>">
                       <option value=""><?= gettext('Unassigned') ?></option>
                     </select>
 
@@ -268,7 +285,9 @@ function categoryId(string $category): string {
             </table>
           </div>
           <div class="card-footer text-end">
-            <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
+            <input type="submit" class="btn btn-primary" name="save"
+                   data-save-scope="section"
+                   value="<?= gettext('Save Settings') ?>">
           </div>
         </div>
       </div>
