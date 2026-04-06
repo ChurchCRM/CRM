@@ -11,7 +11,7 @@ import TomSelect from "tom-select";
 window.TomSelect = TomSelect;
 
 // Expose a global initializer for server-rendered variables
-window.initializePeopleListFromServer = function (serverVars) {
+window.initializePeopleListFromServer = (serverVars) => {
   const {
     RoleList,
     PropertyList,

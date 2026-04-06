@@ -39,7 +39,7 @@ export function initializeQuillEditor(selector, options = {}) {
   const mergedOptions = { ...defaultOptions, ...options };
 
   // Create container if it doesn't exist
-  let container = document.querySelector(selector);
+  const container = document.querySelector(selector);
   if (!container) {
     console.error(`Quill editor container not found: ${selector}`);
     return null;

@@ -10,7 +10,7 @@
 import L from "leaflet";
 import { initRefreshCoordinatesBtn } from "./geo-refresh";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Initialize map if coordinates exist
   const config = window.CRM && window.CRM.familyMapConfig;
   if (config && config.lat !== undefined && config.lng !== undefined) {

@@ -18,43 +18,42 @@ export function initRefreshCoordinatesBtn() {
   const t = window.i18next ? i18next.t.bind(i18next) : (s) => s;
 
   refreshBtn.addEventListener("click", async function () {
-    const btn = this;
-    const originalText = btn.innerHTML;
+    const originalText = this.innerHTML;
 
     try {
-      btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i>${t("Refreshing...")}`;
+      this.disabled = true;
+      this.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1"></i>${t("Refreshing...")}`;
 
       const result = await fetchAPIJSON(`family/${familyId}/geocode`, {
         method: "POST",
       });
 
       if (result.success) {
-        btn.classList.remove("btn-outline-success");
-        btn.classList.add("btn-outline-primary");
-        btn.innerHTML = `<i class="fa-solid fa-check mr-1"></i>${t("Coordinates Updated")}`;
+        this.classList.remove("btn-outline-success");
+        this.classList.add("btn-outline-primary");
+        this.innerHTML = `<i class="fa-solid fa-check mr-1"></i>${t("Coordinates Updated")}`;
         setTimeout(() => location.reload(), 1500);
       } else {
-        btn.classList.remove("btn-outline-success");
-        btn.classList.add("btn-outline-danger");
-        btn.innerHTML = `<i class="fa-solid fa-exclamation-triangle mr-1"></i>${t("Failed to geocode")}`;
-        btn.disabled = false;
+        this.classList.remove("btn-outline-success");
+        this.classList.add("btn-outline-danger");
+        this.innerHTML = `<i class="fa-solid fa-exclamation-triangle mr-1"></i>${t("Failed to geocode")}`;
+        this.disabled = false;
         setTimeout(() => {
-          btn.classList.remove("btn-outline-danger");
-          btn.classList.add("btn-outline-success");
-          btn.innerHTML = originalText;
+          this.classList.remove("btn-outline-danger");
+          this.classList.add("btn-outline-success");
+          this.innerHTML = originalText;
         }, 3000);
       }
     } catch (error) {
-      btn.classList.remove("btn-outline-success");
-      btn.classList.add("btn-outline-danger");
-      btn.innerHTML = `<i class="fa-solid fa-network-wired"></i> ${t("Error")}`;
-      btn.disabled = false;
+      this.classList.remove("btn-outline-success");
+      this.classList.add("btn-outline-danger");
+      this.innerHTML = `<i class="fa-solid fa-network-wired"></i> ${t("Error")}`;
+      this.disabled = false;
       console.error("Geocoding error:", error);
       setTimeout(() => {
-        btn.classList.remove("btn-outline-danger");
-        btn.classList.add("btn-outline-success");
-        btn.innerHTML = originalText;
+        this.classList.remove("btn-outline-danger");
+        this.classList.add("btn-outline-success");
+        this.innerHTML = originalText;
       }, 3000);
     }
   });
