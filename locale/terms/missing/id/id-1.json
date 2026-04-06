@@ -3,10 +3,11 @@
     "other": ""
   },
   "Administrator": "",
-  "BCC": "",
   "Email BCC": "",
   "Format": "",
   "Manual": "",
   "Minimum": "",
-  "N/A": ""
+  "BCC": "",
+  "N/A": "",
+  "name@example.com": ""
 }

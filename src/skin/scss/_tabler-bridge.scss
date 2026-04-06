@@ -41,6 +41,12 @@
 
 // --- Tom Select — Tabler skin overrides --------------------------------
 .ts-wrapper {
+  // Multi-select items use primary brand color
+  &.multi .ts-control .item {
+    background-color: var(--tblr-primary);
+    color: #fff;
+  }
+
   &.single .ts-control {
     border: 1px solid var(--tblr-border-color);
     border-radius: var(--tblr-border-radius);
@@ -126,6 +132,11 @@ body > .ts-dropdown {
 .navbar-vertical .badge.bg-info,
 .navbar-vertical .badge.bg-light {
   color: #333 !important;
+}
+
+// --- Form elements — match Tabler body color ----------------------------
+select {
+  color: var(--tblr-body-color, #555);
 }
 
 // --- Topbar search — remove double border with adjacent button --------

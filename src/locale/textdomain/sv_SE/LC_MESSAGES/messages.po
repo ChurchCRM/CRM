@@ -11127,10 +11127,6 @@ msgid "Auto-mapped"
 msgstr "Automatiskt mappat"
 
 #: 
-msgid "BCC"
-msgstr "Hemlig kopia"
-
-#: 
 msgid "BCC All"
 msgstr "Hemlig kopia till alla"
 
@@ -12809,10 +12805,6 @@ msgid "members"
 msgstr "medlemmar"
 
 #: 
-msgid "name@example.com"
-msgstr "namn@exempel.se"
-
-#: 
 msgid "opportunities"
 msgstr "möjligheter"
 
@@ -13766,23 +13758,153 @@ msgstr "t.ex. söndagstjänst"
 msgid "member"
 msgstr "medlem"
 
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Instrumentpanel**: Visa alla dina MailChimp-listor med prenumerantstatistik\n"
+"- **Listunderhåll**: Identifiera personer i MailChimp men inte i CRM, och vice versa\n"
+"- **Kontaktintegration**: Visa MailChimp-prenumerationsstatus på person- och familjesidor\n"
+"- **Automatisk synkronisering**: Kopplas in i person-/familjeoppdateringar för att hålla MailChimp synkroniserat"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Skapa ett Vonage-konto på https://dashboard.nexmo.com/sign-up (nya konton inkluderar gratis testkrediter)\n"
+"2. Hitta din API-nyckel och API-hemlighet på Vonage Dashboard-startsidan\n"
+"3. Gå till Numbers > Buy Numbers och köp ett nummer med SMS-kapacitet\n"
+"4. Notera numret i E.164-format (t.ex. +14155551234)\n"
+"5. I ChurchCRM, aktivera Vonage SMS-pluginet och ange dina uppgifter"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Gå till Google Analytics (analytics.google.com)\n"
+"2. Skapa en egenskap eller välj en befintlig\n"
+"3. Gå till Admin → Dataströmmar → Webb\n"
+"4. Kopiera mätnings-ID:t (börjar med G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Installera OpenLP 3.0 eller senare på din presentationsdator\n"
+"2. Aktivera Remote-pluginet i OpenLP (Inställningar → Konfigurera OpenLP → Plugin-program)\n"
+"3. Aktivera Aviseringar-pluginet i OpenLP för stöd för aviseringsvisning\n"
+"4. Notera IP-adressen för OpenLP-datorn\n"
+"5. Ange server-URL:en i formatet: http://IP_ADDRESS:4316\n"
+"6. Om du har konfigurerat autentisering i OpenLP, ange användarnamn och lösenord"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Öppna MailChimp-instrumentpanelen från E-post-menyn. Instrumentpanelen visar:\n"
+"\n"
+"- Medlemsantal för varje lista\n"
+"- Kampanjstatistik\n"
+"- Antal avprenumerationer\n"
+"- Listunderhållsverktyg"
+
 #. plugin:custom-links:section:1:title
 #: 
 msgid "Adding Links"
 msgstr "Lägga till länkar"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Alla konfigurerade länkar visas i en tabell. Du kan:\n"
+"- Visa länknamnet och URL:en\n"
+"- Klicka på URL:en för att testa att den öppnas korrekt\n"
+"- Ta bort länkar du inte längre behöver\n"
+"\n"
+"Länkar visas i den ordning de lades till i navigeringsmenyn."
 
 #: 
 msgid "Allow Pre-release Upgrades"
 msgstr "Tillåt förhandsuppdateringar"
 
 #: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Tillåt registrering av betalningar som inte är skattemässigt avdragsgilla i finansmodulen"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Tillåt att skannade checkbilder bifogas insättningsposter"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Tillåt systemuppdateringar till versioner märkta som 'pre release' på GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Tillåt oautentiserad åtkomst till kalenderhändelser via offentliga HTML-, ICS- och JSON-URL:er. Krävs för att dela kalendrar med externa appar."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Tillåt besökare att skapa sin egen familjepost via självregistreringssidan"
+
+#: 
 msgid "Allow visitors to self-register as new families."
 msgstr "Tillåt besökare att registrera sig som nya familjer."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Alla WebDAV-kompatibla tjänster fungerar med detta plugin:\n"
+"\n"
+"- Nextcloud (rekommenderas)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (med WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx med WebDAV-modul\n"
+"\n"
+"Obs: Vissa tjänster kräver appspecifika lösenord för WebDAV-åtkomst."
 
 #. plugin:openlp:section:4:title
 #: 
 msgid "Authentication"
 msgstr "Autentisering"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Autentisering krävs för API v2 om du har aktiverat det i OpenLP:s Remote plugin-inställningar. Pluginet använder HTTP Basic Authentication. De flesta lokala nätverkskonfigurationer kräver inte autentisering, men det rekommenderas för säkerheten."
 
 #: 
 msgid "Auto TLS"
@@ -13797,6 +13919,69 @@ msgstr "Automatisk säkerhetskopiering"
 msgid "BCC All Mail To"
 msgstr "BCC alla e-post till"
 
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Innan du förlitar dig på externa säkerhetskopior, testa din anslutning:\n"
+"1. Gå till Plugin-program > Extern säkerhetskopia\n"
+"2. Klicka på 'Testa WebDAV-anslutning'\n"
+"3. Verifiera att du ser ett lyckat meddelande\n"
+"\n"
+"Vanliga problem:\n"
+"- 401/403-fel: Kontrollera användarnamn och lösenord\n"
+"- Anslutningstimeout: Verifiera att slutpunktens URL är korrekt\n"
+"- Certifikatfel: Se till att WebDAV-servern har ett giltigt SSL-certifikat"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Välj vad som visas när ingen Gravatar finns:\n"
+"• Mystery Person - Grå siluettkontur\n"
+"• Identicon - Geometriskt mönster baserat på e-post\n"
+"• MonsterID - Unikt genererat monsterbild\n"
+"• Wavatar - Abstrakt genererat ansikte\n"
+"• Retro - 8-bitars arkadspels-pixelkonst\n"
+"• RoboHash - Unik genererad robot\n"
+"• Blank - Transparent (återgår till initialer)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Kommaseparerade fråge-ID:n som kräver ekonomibehörighet för att visa"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Vanliga användningar för anpassade länkar:\n"
+"- Kyrkowebbplats\n"
+"- Portal för onlinegåvor\n"
+"- Anmälningsformulär för volontärer\n"
+"- Resurser från kyrkoorganisationen\n"
+"- Partnerorganisationers webbplatser\n"
+"- Molnlagringsmappar\n"
+"- Evenemangsregistreringssidor"
+
 #. plugin:external-backup:section:1:title
 #: 
 msgid "Configuration"
@@ -13810,11 +13995,6 @@ msgstr "Kontinent"
 #: 
 msgid "Costs"
 msgstr "Kostnader"
-
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kreditkortspersoner"
 
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
@@ -13866,17 +14046,28 @@ msgid "Enable External Calendar API"
 msgstr "Aktivera externt kalender-API"
 
 #: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Aktivera e-postutskick från ChurchCRM. Krävs för lösenordsåterställning, aviseringar och e-postlänkar."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Aktivera om din SMTP-server kräver användarnamn och lösenord"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Aktivera eller inaktivera söndagsskolemodulens och sidofältets meny."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Aktivera användning av numrerade givarekuvert för att spåra bidrag"
+
+#: 
 msgid "Enable use of donation envelopes"
 msgstr "Aktivera användning av gåvokuvert"
 
 #: 
 msgid "Enable use of scanned checks"
 msgstr "Aktivera användning av skannade checkar"
-
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familjelöfte efter räkenskapsår"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -13887,11 +14078,6 @@ msgstr "Funktioner"
 msgid "Finance permission query IDs"
 msgstr "ID för ekonomibehörighetsfrågor"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Hitta registrerade elever"
-
 #: 
 msgid "Find family"
 msgstr "Hitta familj"
@@ -13901,10 +14087,20 @@ msgstr "Hitta familj"
 msgid "Finding Your Server URL"
 msgstr "Hitta din server-URL"
 
-#. Context: queryparameters_qrp
+#. plugin:custom-links:section:3:content
 #: 
-msgid "Fiscal Year."
-msgstr "Räkenskapsår."
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "För säkerheten:\n"
+"- Endast administratörer kan lägga till eller ta bort länkar\n"
+"- Alternativet 'Hantera länkar' visas bara för administratörer\n"
+"- Länkar måste använda http:// eller https://-protokoll\n"
+"- HTML-taggar är inte tillåtna i namn eller URL:er\n"
+"- All inmatning valideras och rensas"
 
 #. plugin:google-analytics:link:1:label
 #: 
@@ -13921,10 +14117,25 @@ msgstr "Komma igång"
 msgid "Getting Your GA4 Measurement ID"
 msgstr "Hämta ditt GA4-mätnings-ID"
 
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) spårar hur användare interagerar med ChurchCRM och ger insikter om sidvisningar, användarengagemang och funktionsanvändning."
+
 #. plugin:google-analytics:link:0:label
 #: 
 msgid "Google Analytics Help"
 msgstr "Google Analytics hjälp"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics samlar in anonymiserade användningsdata. Ingen personlig information från ChurchCRM-poster skickas till Google. Överväg att lägga till en sekretessnotering i din kyrkas datapolicy."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Globally Recognized Avatar) visar profilfoton från gravatar.com för medlemmar som inte har uppladdade foton i ChurchCRM."
 
 #. plugin:gravatar:link:1:label
 #: 
@@ -13936,10 +14147,10 @@ msgstr "Gravatar bildalternativ"
 msgid "Gravatar Website"
 msgstr "Gravatar webbplats"
 
-#. Context: queryparameters_qrp
+#. plugin:gravatar:section:2:content
 #: 
-msgid "Group of registered students"
-msgstr "Grupp av registrerade elever"
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar fungerar genom att konvertera e-postadresser till en hash (MD5). Den faktiska e-postadressen skickas aldrig till Gravatars servrar – endast hashen används för att slå upp bilden."
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -13959,6 +14170,77 @@ msgstr "Hur det fungerar"
 msgid "How many checks to print per deposit slip page"
 msgstr "Hur många checkar som ska skrivas ut per insättningskvittosida"
 
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Om SMS-meddelanden inte skickas:\n"
+"1. Verifiera att API-nyckel och hemlighet är korrekta (inga extra mellanslag)\n"
+"2. Kontrollera att Från-numret är ett giltigt Vonage-nummer du äger\n"
+"3. Se till att mottagarens telefonnummer inkluderar landskod\n"
+"4. Kontrollera ditt Vonage-kontosaldo\n"
+"5. Granska Vonage Dashboard > SMS > Loggar för leveransstatus"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Om aviseringar inte visas:\n"
+"1. Verifiera att OpenLP körs och att Remote-pluginet är aktivt\n"
+"2. Se till att Aviseringar-pluginet är aktiverat i OpenLP\n"
+"3. Kontrollera att server-URL:en är korrekt (försök att öppna den i en webbläsare)\n"
+"4. Verifiera att brandväggsinställningarna tillåter anslutningar på port 4316\n"
+"5. Om du använder autentisering, verifiera att inloggningsuppgifterna är korrekta"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Om meddelanden skickas men inte tas emot:\n"
+"1. Kontrollera Vonage Dashboard > SMS > Loggar för leveransstatus\n"
+"2. Verifiera att mottagarens nummer är korrekt och kan ta emot SMS\n"
+"3. Vissa operatörer kan blockera meddelanden från okända nummer\n"
+"4. Kontrollera om destinationslandet har SMS-begränsningar"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Om du får felmeddelanden om ogiltigt avsändar-ID:\n"
+"1. Använd ett telefonnummer du har köpt från Vonage\n"
+"2. Formatera numret i E.164-format (+14155551234)\n"
+"3. Obs: Alfanumeriska avsändar-ID:n kan vara begränsade i vissa länder"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Viktiga säkerhetsnoteringar:\n"
+"\n"
+"1. Använd alltid HTTPS-slutpunkter för att kryptera säkerhetskopior under överföring\n"
+"2. Använd appspecifika lösenord när det är möjligt (Nextcloud, ownCloud)\n"
+"3. Lagra säkerhetskopior i en mapp med begränsad åtkomst\n"
+"4. Ladda regelbundet ned och verifiera att dina säkerhetskopior är giltiga\n"
+"5. Överväg att kryptera känsliga säkerhetskopior med externa verktyg innan uppladdning"
+
 #: 
 msgid "Initial zoom level when opening the map"
 msgstr "Inledande zoomnivå vid öppning av kartan"
@@ -13970,6 +14252,11 @@ msgstr "Läs mer"
 #: 
 msgid "Log Settings"
 msgstr "Logginställningar"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp-integration möjliggör synkronisering mellan ChurchCRM-kontakter och dina MailChimp-e-postmarknadsföringslistor."
 
 #. plugin:custom-links:section:2:title
 #: 
@@ -13995,10 +14282,10 @@ msgstr "OpenLP dokumentation"
 msgid "OpenLP Website"
 msgstr "OpenLP webbplats"
 
-#. Context: query_qry
+#. plugin:openlp:summary
 #: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personer som är inställda på att betala med kreditkort."
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP är ett gratis presentationsprogram med öppen källkod utformat för kyrkor. Detta plugin låter ChurchCRM skicka aviseringar och larm direkt till din OpenLP-skärm."
 
 #. plugin:mailchimp:section:3:title
 #: 
@@ -14009,6 +14296,21 @@ msgstr "Person/familjeintegration"
 #: 
 msgid "Phone Number Format"
 msgstr "Telefonnummerformat"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefonnummer ska vara i E.164-format: landskod + nummer. Exempel:\n"
+"- USA: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australien: +61412345678\n"
+"\n"
+"Mottagarens telefonnummer i ChurchCRM-medlemsprofiler bör inkludera landskoden för att SMS ska fungera korrekt."
 
 #. plugin:mailchimp:section:4:title
 #: 
@@ -14028,11 +14330,6 @@ msgstr "Integritetsmeddelande"
 #: 
 msgid "Quick Settings"
 msgstr "Snabbinställningar"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Registrerade elever"
 
 #: 
 msgid "SMTP Authentication"
@@ -14059,6 +14356,22 @@ msgid "Setup"
 msgstr "Installation"
 
 #: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Visa en uppdelning av sedlar och mynt på insättningssedelsrapporten"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Visa eller dölj händelsemenyn i huvudnavigeringen."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Visa eller dölj händelseavsnittet i huvudnavigeringsmenyn"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Visa eller dölj söndagsskolemodulens i sidofältets navigering"
+
+#: 
 msgid "Street"
 msgstr "Gata"
 
@@ -14075,6 +14388,89 @@ msgstr "Tjänster som stöds"
 #: 
 msgid "Testing Connection"
 msgstr "Testar anslutning"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Plugin-programmet Anpassade menylänkar låter administratörer lägga till externa länkar i navigeringsmenyn. När det är aktiverat visas en 'Länkar'-meny i sidofältet med alla konfigurerade länkar."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Plugin-programmet Extern säkerhetskopia låter dig automatiskt säkerhetskopiera din ChurchCRM-databas till WebDAV-kompatibla molnlagringstjänster. Detta inkluderar populära tjänster som Nextcloud, ownCloud eller alla servrar som stöder WebDAV-protokollet."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Standard-OpenLP-porten är 4316. Din server-URL kommer vanligtvis att vara: http://192.168.x.x:4316 där 192.168.x.x är IP-adressen på datorn som kör OpenLP. Du hittar detta i OpenLP under Verktyg → Öppna tjänstehanteraren."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Månaden som startar din organisations räkenskapsår"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Detta plugin används för närvarande för kioskincheckning-aviseringar. När ett barn checkas in i en söndagsskoleklass via kiosksystemet kan ett SMS skickas för att meddela föräldrar eller vårdnadshavare."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Detta plugin används för närvarande för kioskincheckning-aviseringar. När ett barn checkas in i en söndagsskoleklass via kiosksystemet kan en avisering skickas till OpenLP-projektordisplayen för att meddela föräldrar eller volontärer."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Detta plugin överför e-postadresser till MailChimps servrar. Se till att du har lämpligt samtycke från dina medlemmar innan du synkroniserar deras information till tredjepartstjänster som MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Så här lägger du till en ny länk:\n"
+"1. Gå till Länkar-menyn i sidofältet och klicka på 'Hantera länkar'\n"
+"2. Ange ett visningsnamn (2–50 tecken)\n"
+"3. Ange den fullständiga URL:en (måste börja med http:// eller https://)\n"
+"4. Klicka på 'Lägg till länk'\n"
+"\n"
+"Länken visas omedelbart i Länkar-menyn."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Så här konfigurerar du externa säkerhetskopior:\n"
+"1. Gå till Admin > Plugin-program och hitta 'Extern säkerhetskopia (WebDAV)'\n"
+"2. Klicka på inställningsikonen för att expandera konfigurationspanelen\n"
+"3. Ange din WebDAV-slutpunkts-URL (t.ex. https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Ange ditt användarnamn och lösenord\n"
+"5. Ange eventuellt ett intervall för automatisk säkerhetskopiering i timmar\n"
+"6. Spara dina inställningar"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "För att använda MailChimp-integration behöver du ett MailChimp-konto och en API-nyckel.\n"
+"\n"
+"1. Logga in på ditt MailChimp-konto\n"
+"2. Gå till Konto > Extras > API-nycklar\n"
+"3. Skapa en ny API-nyckel eller kopiera en befintlig\n"
+"4. Ange API-nyckeln i plugin-inställningarna"
 
 #. plugin:openlp:section:5:title
 #: 
@@ -14105,11 +14501,6 @@ msgstr "Uppgraderingsinställningar"
 msgid "Use Cases"
 msgstr "Användningsfall"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Användarbehörighet för export av CSV-filer"
-
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14120,8 +14511,185 @@ msgstr "Vonage priser"
 msgid "Vonage SMS API Documentation"
 msgstr "Vonage SMS API dokumentation"
 
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS möjliggör SMS-aviseringar för ChurchCRM med hjälp av Vonage API (tidigare Nexmo). Skicka SMS-larm till föräldrar när deras barn checkar in via kiosksystemet."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage debiterar per skickat SMS. Prissättningen varierar beroende på destinationsland. Se Vonages prissida för aktuella priser. Nya konton får gratis testkrediter för testning."
+
 #. plugin:google-analytics:section:1:title
 #: 
 msgid "What Gets Tracked"
 msgstr "Vad spåras"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "När MailChimp är konfigurerat visas en 'MailChimp'-flik på personvisningssidor som visar:\n"
+"\n"
+"- E-postprenumerationsstatus för alla listor\n"
+"- Vilka listor personen prenumererar på\n"
+"- Prenumerationsstatistik"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "När en medlem inte har ett uppladdad foto kontrollerar ChurchCRM om de har en Gravatar kopplad till sin e-postadress. Om en Gravatar finns visas den bilden. Om inte, används den konfigurerade standardbildstilen."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "När automatisk säkerhetskopiering är aktiverad (intervall > 0 timmar) kommer ChurchCRM automatiskt att skapa och ladda upp en fullständig databassäkerhetskopia med angivet intervall. Säkerhetskopian körs som en del av normala sidinläsningar, så systemet måste ha regelbunden användaraktivitet för att utlösa säkerhetskopior.\n"
+"\n"
+"Rekommenderade intervall:\n"
+"- Daglig säkerhetskopia: 24 timmar\n"
+"- Två gånger dagligen: 12 timmar\n"
+"- Veckovis: 168 timmar"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "När det är aktiverat och konfigurerat skickar ChurchCRM aviseringsmeddelanden till din OpenLP-server med hjälp av API v2-slutpunkten (POST /api/v2/plugins/alerts). Dessa aviseringar visas som överlägg på din projicerade skärm."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "När det är aktiverat döljs adressfältet för personer som inte är tilldelade till en familj"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "När det är aktiverat döljs latitud-/longitudfälten i familjeredigeraren. Geokodning körs fortfarande i bakgrunden."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Du kan också utlösa en manuell säkerhetskopia när som helst:\n"
+"1. Gå till sidan för Extern säkerhetskopia (Plugin-program > Extern säkerhetskopia)\n"
+"2. Välj säkerhetskopieringstyp (Endast databas eller Fullständig säkerhetskopia)\n"
+"3. Klicka på 'Säkerhetskopiera till WebDAV nu'\n"
+"\n"
+"Säkerhetskopior av typen 'Endast databas' är mindre och snabbare. Fullständiga säkerhetskopior inkluderar uppladdade foton."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Sidvisningar och navigeringsmönster\n"
+"• Sessionlängd och engagemang\n"
+"• Användardemografi (om aktiverat i GA4)\n"
+"• Enhets- och webbläsarinformation"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Filstorleken överskrider serverns gräns på %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Bilddata saknas i begäran"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Hitta personer som inte deltog i ett evenemang"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Saknade personer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Välj önskat evenemang"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Avancerad filtrering efter grupp, klassificering och roll"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alla församlingsmedlemmar inkluderade"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-export slutförd"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibelt kolumnformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktinformation, familjeroller och viktiga datum"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Skapa en fullständig säkerhetskopia av din kyrkodatabas. Ladda ner en SQL-fil med enbart databasen eller ett komplett arkiv inklusive uppladdade foton."
+
+#: 
+msgid "Database Backup"
+msgstr "Databassäkerhetskopiering"
+
+#: 
+msgid "Export"
+msgstr "Exportera"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportera församlingsdata till CSV-format. Välj vilka fält som ska inkluderas och filtrera efter klassificering, grupp, kön med mera."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportera alla personer i det format som ChMeetings förväntar sig, vilket gör det enkelt att synkronisera din församlingsdata med ChMeetings-plattformen."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportera din kyrkdata till olika format"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Extern säkerhetskopiering (WebDAV) via insticksprogram"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Misslyckades med att exportera ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familje- eller individuell postlayout"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexibelt fältval"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gå till databassäkerhetskopiering"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Öppna CSV-export"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Återställ från sidan för systemsäkerhetskopiering"
 

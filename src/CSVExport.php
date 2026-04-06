@@ -3,6 +3,7 @@
 require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
+use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 // Get Classifications for the drop-down
@@ -38,6 +39,7 @@ $sPageTitle = gettext('CSV Export');
 $sPageSubtitle = gettext('Export data to CSV format for external applications');
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Admin'), '/admin/'],
+    [gettext('Export'), '/admin/export'],
     [gettext('CSV Export')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -50,123 +52,102 @@ require_once __DIR__ . '/Include/Header.php';
           <h3 class="card-title"><?= gettext('Field Selection') ?></h3>
         </div>
         <div class="card-body">
-          <div class="col-md-4">
-            <label><?= gettext('Last Name') ?>:</label>
-            <?= gettext('Required') ?>
+          <div class="mb-3">
+            <span class="badge bg-blue-lt"><?= gettext('Last Name') ?></span>
+            <span class="text-secondary small"><?= gettext('Required') ?></span>
           </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Title') ?>:</label>
-            <input type="checkbox" name="Title" value="1">
+          <div class="form-selectgroup form-selectgroup-pills">
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Title" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Title') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="FirstName" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('First Name') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="MiddleName" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Middle Name') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Suffix" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Suffix') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Address1" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('Address') ?> 1</span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Address2" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('Address') ?> 2</span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="City" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('City') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="State" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('State') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Zip" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('Zip') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Envelope" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Envelope') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Country" value="1" checked>
+              <span class="form-selectgroup-label"><?= gettext('Country') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="HomePhone" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Home Phone') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="WorkPhone" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Work Phone') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="CellPhone" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Mobile Phone') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Email" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Email') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="WorkEmail" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Work/Other Email') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="MembershipDate" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Membership Date') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="BirthdayDate" value="1">
+              <span class="form-selectgroup-label">* <?= gettext('Birth Date') . ' / ' . gettext('Anniversary Date') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="Age" value="1">
+              <span class="form-selectgroup-label">* <?= gettext('Age / Years Married') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="PrintMembershipStatus" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Classification') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="PrintFamilyRole" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Family Role') ?></span>
+            </label>
+            <label class="form-selectgroup-item">
+              <input type="checkbox" class="form-selectgroup-input" name="PrintGender" value="1">
+              <span class="form-selectgroup-label"><?= gettext('Gender') ?></span>
+            </label>
           </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('First Name') ?>:</label>
-            <input type="checkbox" name="FirstName" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Middle Name') ?>:</label>
-            <input type="checkbox" name="MiddleName" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Suffix') ?>:</label>
-            <input type="checkbox" name="Suffix" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Address') ?> 1:</label>
-            <input type="checkbox" name="Address1" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Address') ?> 2:</label>
-            <input type="checkbox" name="Address2" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('City') ?>:</label>
-            <input type="checkbox" name="City" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('State') ?>:</label>
-            <input type="checkbox" name="State" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Zip') ?>:</label>
-            <input type="checkbox" name="Zip" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Envelope') ?>:</label>
-            <input type="checkbox" name="Envelope" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Country') ?>:</label>
-            <input type="checkbox" name="Country" value="1" checked>
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Home Phone') ?>:</label>
-            <input type="checkbox" name="HomePhone" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Work Phone') ?>:</label>
-            <input type="checkbox" name="WorkPhone" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Mobile Phone') ?>:</label>
-            <input type="checkbox" name="CellPhone" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Email') ?>:</label>
-            <input type="checkbox" name="Email" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Work/Other Email') ?>:</label>
-            <input type="checkbox" name="WorkEmail" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Membership Date') ?>:</label>
-            <input type="checkbox" name="MembershipDate" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label>* <?= gettext('Birth Date') . ' / ' . gettext('Anniversary Date') ?>:</label>
-            <input type="checkbox" name="BirthdayDate" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label>* <?= gettext('Age / Years Married') ?>:</label>
-            <input type="checkbox" name="Age" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Classification') ?>:</label>
-            <input type="checkbox" name="PrintMembershipStatus" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Family Role') ?>:</label>
-            <input type="checkbox" name="PrintFamilyRole" value="1">
-          </div>
-
-          <div class="col-md-4">
-            <label><?= gettext('Gender') ?>:</label>
-            <input type="checkbox" name="PrintGender" value="1">
-          </div>
-
-          <div class="col-md-12">
-            * <?= gettext('Depends whether using person or family output method') ?>
+          <div class="mt-2">
+            <span class="text-secondary small">* <?= gettext('Depends whether using person or family output method') ?></span>
           </div>
 
         </div>
@@ -185,33 +166,29 @@ require_once __DIR__ . '/Include/Header.php';
           </div>
           <div class="card-body">
             <?php if ($numCustomFields > 0): ?>
-              <h5><?= gettext('Custom Person Fields') ?></h5>
-              <div class="row g-2 mb-3">
+              <label class="form-label fw-medium"><?= gettext('Custom Person Fields') ?></label>
+              <div class="form-selectgroup form-selectgroup-pills mb-3">
                 <?php while ($Row = mysqli_fetch_array($rsCustomFields)) {
                     extract($Row);
                     if ($aSecurityType[$custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$custom_FieldSec]]) { ?>
-                  <div class="col-md-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="<?= InputUtils::escapeAttribute($custom_Field) ?>" value="1" id="cf_<?= InputUtils::escapeAttribute($custom_Field) ?>">
-                      <label class="form-check-label" for="cf_<?= InputUtils::escapeAttribute($custom_Field) ?>"><?= InputUtils::escapeHTML($custom_Name) ?></label>
-                    </div>
-                  </div>
+                    <label class="form-selectgroup-item">
+                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($custom_Field) ?>" value="1">
+                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($custom_Name) ?></span>
+                    </label>
                 <?php }
                 } ?>
               </div>
             <?php endif; ?>
             <?php if ($numFamCustomFields > 0): ?>
-              <h5><?= gettext('Custom Family Fields') ?></h5>
-              <div class="row g-2">
+              <label class="form-label fw-medium"><?= gettext('Custom Family Fields') ?></label>
+              <div class="form-selectgroup form-selectgroup-pills">
                 <?php while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
                     extract($Row);
                     if ($aSecurityType[$fam_custom_FieldSec] == 'bAll' || $_SESSION[$aSecurityType[$fam_custom_FieldSec]]) { ?>
-                  <div class="col-md-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>" value="1" id="fcf_<?= InputUtils::escapeAttribute($fam_custom_Field) ?>">
-                      <label class="form-check-label" for="fcf_<?= InputUtils::escapeAttribute($fam_custom_Field) ?>"><?= InputUtils::escapeHTML($fam_custom_Name) ?></label>
-                    </div>
-                  </div>
+                    <label class="form-selectgroup-item">
+                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>" value="1">
+                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($fam_custom_Name) ?></span>
+                    </label>
                 <?php }
                 } ?>
               </div>
@@ -230,164 +207,115 @@ require_once __DIR__ . '/Include/Header.php';
           <h3 class="card-title"><?= gettext('Filters') ?></h3>
         </div>
         <div class="card-body">
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Records to export') ?>:</h3>
-              </div>
-              <div class="card-body p-0">
-                <select name="Source">
-                  <option value="filters"><?= gettext('Based on filters below..') ?></option>
-                  <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
-                        echo 'selected';
-                                       } ?>><?= gettext('People in Cart (filters ignored)') ?></option>
-                </select>
+          <div class="row g-3">
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Records to export') ?></label>
+              <select name="Source" class="form-select">
+                <option value="filters"><?= gettext('Based on filters below..') ?></option>
+                <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
+                    echo 'selected';
+                } ?>><?= gettext('People in Cart (filters ignored)') ?></option>
+              </select>
+            </div>
+
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Classification') ?></label>
+              <select name="Classification[]" size="5" multiple class="form-select">
+                <?php
+                while ($aRow = mysqli_fetch_array($rsClassifications)) {
+                    extract($aRow); ?>
+                  <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
+                <?php } ?>
+              </select>
+              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+            </div>
+
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Family Role') ?></label>
+              <select name="FamilyRole[]" size="5" multiple class="form-select">
+                <?php
+                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
+                    extract($aRow); ?>
+                  <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
+                <?php } ?>
+              </select>
+              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+            </div>
+
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Gender') ?></label>
+              <select name="Gender" class="form-select">
+                <option value="0"><?= gettext("Don't Filter") ?></option>
+                <option value="1"><?= gettext('Male') ?></option>
+                <option value="2"><?= gettext('Female') ?></option>
+              </select>
+            </div>
+
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Group Membership') ?></label>
+              <select name="GroupID[]" size="5" multiple class="form-select">
+                <?php
+                while ($aRow = mysqli_fetch_array($rsGroups)) {
+                    extract($aRow);
+                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
+                } ?>
+              </select>
+              <small class="form-hint"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+            </div>
+
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Membership Date') ?></label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('From') ?></label>
+                  <input id="MembershipDate1" class="form-control date-picker" type="text" name="MembershipDate1" maxlength="10">
+                </div>
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('To') ?></label>
+                  <input id="MembershipDate2" class="form-control date-picker" type="text" name="MembershipDate2" maxlength="10" value="<?= date('Y-m-d') ?>">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Classification') ?>:</h3>
-              </div>
-              <div class="card-body p-0">
-                <select name="Classification[]" size="5" multiple class="form-select">
-                  <?php
-                    while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                        extract($aRow); ?>
-                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                <small class="text-muted"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Birth Date') ?></label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('From') ?></label>
+                  <input type="text" name="BirthDate1" class="form-control date-picker" maxlength="10" id="BirthdayDate1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('To') ?></label>
+                  <input type="text" name="BirthDate2" class="form-control date-picker" maxlength="10" value="<?= date('Y-m-d') ?>" id="BirthdayDate2">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Family Role') ?>:</h3>
-              </div>
-              <div class="card-body p-0">
-                <select name="FamilyRole[]" size="5" multiple class="form-select">
-                  <?php
-                    while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                        extract($aRow); ?>
-                    <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
-                        <?php
-                    }
-                    ?>
-                </select>
-                <small class="text-muted"><?= gettext('Use Ctrl Key to select multiple') ?></small>
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Anniversary Date') ?></label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('From') ?></label>
+                  <input type="text" class="form-control date-picker" name="AnniversaryDate1" maxlength="10" id="AnniversaryDate1">
+                </div>
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('To') ?></label>
+                  <input type="text" class="form-control date-picker" name="AnniversaryDate2" maxlength="10" value="<?= date('Y-m-d') ?>" id="AnniversaryDate2">
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Gender') ?>:</h3>
-              </div>
-              <div class="card-body p-0">
-                <select name="Gender" class="form-select">
-                  <option value="0"><?= gettext("Don't Filter") ?></option>
-                  <option value="1"><?= gettext('Male') ?></option>
-                  <option value="2"><?= gettext('Female') ?></option>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Group Membership') ?>:</h3>
-              </div>
-              <div class="card-body p-0">
-                <small class="text-muted"><?= gettext('Use Ctrl Key to select multiple') ?></small>
-                <select name="GroupID[]" size="5" multiple class="form-select">
-                  <?php
-                    while ($aRow = mysqli_fetch_array($rsGroups)) {
-                        extract($aRow);
-                        echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
-                    }
-                    ?>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Membership Date') ?>:</h3>
-              </div>
-                <div class="card-body">
-                  <div class="mb-2">
-                    <label class="form-label"><?= gettext('From') ?>:</label>
-                    <input id="MembershipDate1" class="form-control date-picker" type="text" name="MembershipDate1" maxlength="10">
-                  </div>
-                  <div>
-                    <label class="form-label"><?= gettext('To') ?>:</label>
-                    <input id="MembershipDate2" class="form-control date-picker" type="text" name="MembershipDate2" maxlength="10" value="<?= date('Y-m-d') ?>">
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Birth Date') ?>:</h3>
-              </div>
-                <div class="card-body">
-                  <div class="mb-2">
-                    <label class="form-label"><?= gettext('From') ?>:</label>
-                    <input type="text" name="BirthDate1" class="form-control date-picker" maxlength="10" id="BirthdayDate1">
-                  </div>
-                  <div>
-                    <label class="form-label"><?= gettext('To') ?>:</label>
-                    <input type="text" name="BirthDate2" class="form-control date-picker" maxlength="10" value="<?= date('Y-m-d') ?>" id="BirthdayDate2">
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Anniversary Date') ?>:</h3>
-              </div>
-                <div class="card-body">
-                  <div class="mb-2">
-                    <label class="form-label"><?= gettext('From') ?>:</label>
-                    <input type="text" class="form-control date-picker" name="AnniversaryDate1" maxlength="10" id="AnniversaryDate1">
-                  </div>
-                  <div>
-                    <label class="form-label"><?= gettext('To') ?>:</label>
-                    <input type="text" class="form-control date-picker" name="AnniversaryDate2" maxlength="10" value="<?= date('Y-m-d') ?>" id="AnniversaryDate2">
-                  </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4">
-            <div class="card border-top border-danger border-3">
-              <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= gettext('Date Entered') ?>:</h3>
-              </div>
-                <div class="card-body">
-                  <div class="mb-2">
-                    <label class="form-label"><?= gettext('From') ?>:</label>
-                    <input id="EnterDate1" type="text" name="EnterDate1" maxlength="10" class="form-control date-picker">
-                  </div>
-                  <div>
-                    <label class="form-label"><?= gettext('To') ?>:</label>
-                    <input id="EnterDate2" type="text" name="EnterDate2" maxlength="10" value="<?= date('Y-m-d') ?>" class="form-control date-picker">
-                  </div>
+            <div class="col-lg-4">
+              <label class="form-label"><?= gettext('Date Entered') ?></label>
+              <div class="row g-2">
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('From') ?></label>
+                  <input id="EnterDate1" type="text" name="EnterDate1" maxlength="10" class="form-control date-picker">
+                </div>
+                <div class="col-6">
+                  <label class="form-label small text-secondary"><?= gettext('To') ?></label>
+                  <input id="EnterDate2" type="text" name="EnterDate2" maxlength="10" value="<?= date('Y-m-d') ?>" class="form-control date-picker">
+                </div>
               </div>
             </div>
           </div>
@@ -419,78 +347,8 @@ require_once __DIR__ . '/Include/Header.php';
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="card">
-        <div class="card-header d-flex align-items-center">
-          <h3 class="card-title"><?= gettext('ChMeetings Export') ?></h3>
-        </div>
-        <div class="card-body">
-          <p><?= gettext('Export all people data in ChMeetings format for import into external systems.') ?></p>
-          <button type="button" class="btn btn-primary" id="exportChMeetingsBtn">
-            <i class="fa-solid fa-download"></i><?= gettext('Export to ChMeetings CSV') ?>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </form>
-
-<script>
-document.getElementById('exportChMeetingsBtn').addEventListener('click', function() {
-    var btn = this;
-    var originalText = btn.innerHTML;
-    
-    // Show loading state
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i><?= gettext("Exporting...") ?>';
-    
-    var downloadUrl = window.CRM.root + '/admin/api/database/people/export/chmeetings';
-    
-    fetch(downloadUrl)
-        .then(function(response) {
-            if (!response.ok) {
-                throw new Error(response.statusText);
-            }
-            return response.blob();
-        })
-        .then(function(blob) {
-            // Trigger file download
-            var blobUrl = window.URL.createObjectURL(blob);
-            var link = document.createElement('a');
-            link.href = blobUrl;
-            link.download = 'ChMeetings-' + new Date().toISOString().split('T')[0] + '.csv';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(blobUrl);
-            
-            // Restore button state
-            btn.disabled = false;
-            btn.innerHTML = originalText;
-            
-            // Show success notification
-            window.CRM.notify(i18next.t('ChMeetings export completed successfully'), {
-                type: 'success',
-                delay: 3000
-            });
-        })
-        .catch(function(error) {
-            console.error('Export failed:', error);
-            
-            // Restore button state
-            btn.disabled = false;
-            btn.innerHTML = originalText;
-            
-            // Show error notification
-            window.CRM.notify(i18next.t('Failed to export ChMeetings CSV'), {
-                type: 'error',
-                delay: 3000
-            });
-        });
-});
-</script>
 
 <?php
 require_once __DIR__ . '/Include/Footer.php';

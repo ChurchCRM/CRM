@@ -689,12 +689,10 @@ require_once __DIR__ . '/Include/Header.php';
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
                         <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"}'>
-                        <div class="input-group-text">
-                            <div class="form-check mb-0">
-                                <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                            </div>
-                        </div>
+                        <span class="input-group-text gap-2">
+                            <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                        </span>
                     </div>
                 </div>
                 <div class="mb-3 col-md-6">
@@ -977,7 +975,7 @@ require_once __DIR__ . '/Include/Header.php';
         $classificationsJS[] = ['id' => $classification->getOptionId(), 'name' => $classification->getOptionName()];
     }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
     window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
     window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;

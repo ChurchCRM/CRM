@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-04 01:13+0000\n"
+"POT-Creation-Date: 2026-04-04 22:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -575,6 +575,9 @@ msgstr ""
 msgid "Advanced Operations"
 msgstr ""
 
+msgid "Advanced filtering by group, classification, and role"
+msgstr ""
+
 msgid "Affected Files"
 msgstr ""
 
@@ -666,6 +669,9 @@ msgid ""
 "- Delete links you no longer need\n"
 "\n"
 "Links appear in the order they were added in the navigation menu."
+msgstr ""
+
+msgid "All congregation members included"
 msgstr ""
 
 msgid "All deposits within date range"
@@ -1068,9 +1074,6 @@ msgstr ""
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
-msgid "BCC"
-msgstr ""
-
 msgid "BCC All"
 msgstr ""
 
@@ -1422,9 +1425,6 @@ msgstr ""
 msgid "CSV Export"
 msgstr ""
 
-msgid "CSV Export Records"
-msgstr ""
-
 msgid "CSV Individual Records"
 msgstr ""
 
@@ -1554,6 +1554,9 @@ msgid "Ceuta and Melilla (Ceuta y Melilla)"
 msgstr ""
 
 msgid "ChMeetings Export"
+msgstr ""
+
+msgid "ChMeetings-compatible column format"
 msgstr ""
 
 #. Context: countries
@@ -2115,6 +2118,9 @@ msgstr ""
 msgid "Contact Information"
 msgstr ""
 
+msgid "Contact info, family roles, and key dates"
+msgstr ""
+
 msgid "Contact us"
 msgstr ""
 
@@ -2263,6 +2269,9 @@ msgid "Create a backup of your church database"
 msgstr ""
 
 msgid "Create a database backup before applying the update. This is strongly recommended."
+msgstr ""
+
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
 msgstr ""
 
 msgid "Create a manual backup at least once a week, or enable the External Backup plugin for automatic WebDAV backups on a schedule."
@@ -2463,6 +2472,9 @@ msgstr ""
 msgid "Data/Reports"
 msgstr ""
 
+msgid "Database Backup"
+msgstr ""
+
 msgid "Database Only"
 msgstr ""
 
@@ -2494,6 +2506,9 @@ msgid "Database restore failed"
 msgstr ""
 
 msgid "Database schema upgraded automatically"
+msgstr ""
+
+msgid "Database-only (.sql) or full archive (.tar.gz)"
 msgstr ""
 
 msgid "Database:"
@@ -3584,6 +3599,9 @@ msgstr ""
 msgid "Explore with Demo Data"
 msgstr ""
 
+msgid "Export"
+msgstr ""
+
 msgid "Export Options"
 msgstr ""
 
@@ -3596,10 +3614,19 @@ msgstr ""
 msgid "Export all people data in ChMeetings format for import into external systems."
 msgstr ""
 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr ""
+
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr ""
+
 msgid "Export data to CSV format for external applications"
 msgstr ""
 
 msgid "Export to ChMeetings CSV"
+msgstr ""
+
+msgid "Export your church data to various formats"
 msgstr ""
 
 msgid "Exporting..."
@@ -3609,6 +3636,9 @@ msgid "Exports database structure and data. Smaller file size."
 msgstr ""
 
 msgid "Extend ChurchCRM with MailChimp, backups, and more"
+msgstr ""
+
+msgid "External (WebDAV) backup via plugin"
 msgstr ""
 
 msgid "External Backup"
@@ -3950,6 +3980,9 @@ msgstr ""
 msgid "Family not found"
 msgstr ""
 
+msgid "Family or individual record layout"
+msgstr ""
+
 msgid "Family removed from cart"
 msgstr ""
 
@@ -4039,6 +4072,10 @@ msgid "Files not part of the official release were found on your server."
 msgstr ""
 
 msgid "Filesystem Permissions"
+msgstr ""
+
+#. Context: locales
+msgid "Filipino - Philippines"
 msgstr ""
 
 msgid "Filter by Class"
@@ -4173,6 +4210,9 @@ msgid "FirstName MiddleName LastName"
 msgstr ""
 
 msgid "Fiscal Year"
+msgstr ""
+
+msgid "Flexible field selection"
 msgstr ""
 
 msgid "Focus"
@@ -4482,6 +4522,9 @@ msgid "Go"
 msgstr ""
 
 msgid "Go to Dashboard"
+msgstr ""
+
+msgid "Go to Database Backup"
 msgstr ""
 
 msgid "Go to Login"
@@ -5058,6 +5101,9 @@ msgstr ""
 msgid "Invalid JSON provided for configuration"
 msgstr ""
 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr ""
+
 msgid "Invalid List id"
 msgstr ""
 
@@ -5623,6 +5669,10 @@ msgstr ""
 msgid "Malawi"
 msgstr ""
 
+#. Context: locales
+msgid "Malayalam - India"
+msgstr ""
+
 #. Context: countries
 msgid "Malaysia"
 msgstr ""
@@ -6142,9 +6192,6 @@ msgid "Myanmar (Burma) (မြန်မာ)"
 msgstr ""
 
 msgid "N"
-msgstr ""
-
-msgid "N/A"
 msgstr ""
 
 msgid "NE"
@@ -6722,6 +6769,9 @@ msgid "Oops! Page not found."
 msgstr ""
 
 msgid "Open"
+msgstr ""
+
+msgid "Open CSV Export"
 msgstr ""
 
 msgid "Open Deposits:"
@@ -7894,6 +7944,9 @@ msgid "Restore failed. Please check the backup file and try again."
 msgstr ""
 
 msgid "Restore from a backup file. Erases existing data."
+msgstr ""
+
+msgid "Restore from the System Backup page"
 msgstr ""
 
 msgid "Restore in progress, please wait..."

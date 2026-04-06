@@ -110,7 +110,7 @@ async function updateDBVersion(dbFileName, newVersion, oldVersion) {
             const existing = data[preName];
             existing.versions = Array.from(new Set([...(existing.versions || []), ...(current.versions || [])]));
             existing.scripts = Array.from(new Set([...(existing.scripts || []), ...(current.scripts || [])]));
-            existing.dbVersion = existing.dbVersion || current.dbVersion;
+            existing.dbVersion = current.dbVersion; // Always authoritative: pre-X.Y.Z.dbVersion must equal X.Y.Z
             console.log(`Merged current block into existing ${preName}`);
         }
 

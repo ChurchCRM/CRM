@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
@@ -108,11 +109,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                 <input id="familyHomePhone" name="familyHomePhone" class="form-control" placeholder="<?= gettext('Home phone number') ?>" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask required>
-                                <span class="input-group-text">
-                                    <div class="form-check mb-0">
-                                        <input type="checkbox" class="form-check-input" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
-                                        <label class="form-check-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
-                                    </div>
+                                <span class="input-group-text gap-2">
+                                    <input class="form-check-input mt-0" type="checkbox" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
+                                    <label class="form-check-label" for="NoFormat_familyHomePhone"><?= gettext('No format') ?></label>
                                 </span>
                             </div>
                             <div class="invalid-feedback"></div>
@@ -178,7 +177,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                             <label><?= gettext('Role in Family') ?></label>
                                             <select class="form-select member-role">
                                                 <?php foreach ($familyRoles as $role) { ?>
-                                                    <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
+                                                    <option value="<?= $role->getOptionId() ?>"><?= InputUtils::escapeHTML($role->getOptionName()) ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
@@ -206,11 +205,9 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                             <div class="input-group">
                                                 <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
                                                 <input class="form-control member-phone" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask placeholder="<?= gettext('Phone number') ?>" data-phone-format-home="<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>" data-phone-format-cell="<?= SystemConfig::getValueForAttr('sPhoneFormatCell') ?>">
-                                                <span class="input-group-text">
-                                                    <div class="form-check mb-0">
-                                                        <input type="checkbox" class="form-check-input member-phone-noformat" id="member-phone-noformat" name="member-phone-noformat" value="1">
-                                                        <label class="form-check-label member-phone-noformat-label" for="member-phone-noformat"><?= gettext('No format') ?></label>
-                                                    </div>
+                                                <span class="input-group-text gap-2">
+                                                    <input class="form-check-input mt-0 member-phone-noformat" type="checkbox" id="member-phone-noformat" name="member-phone-noformat" value="1">
+                                                    <label class="form-check-label member-phone-noformat-label" for="member-phone-noformat"><?= gettext('No format') ?></label>
                                                 </span>
                                             </div>
                                             <div class="invalid-feedback"></div>

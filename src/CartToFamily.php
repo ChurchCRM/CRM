@@ -143,7 +143,7 @@ echo $sError;
                 $sRoleOptionsHTML .= sprintf(
                     '<option value="%s">%s</option>',
                     $roleOption->getOptionId(),
-                    $roleOption->getOptionName()
+                    InputUtils::escapeHTML($roleOption->getOptionName())
                 );
             }
 
@@ -279,7 +279,7 @@ echo $sError;
 <script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.togglePhoneMask === 'function') {
             try {
