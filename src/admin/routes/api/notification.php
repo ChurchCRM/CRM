@@ -10,7 +10,7 @@ $app->group('/api/notification', function (RouteCollectorProxy $group): void {
 
     /**
      * @OA\Get(
-     *     path="/admin/api/notification",
+     *     path="/api/notification",
      *     operationId="getAdminNotifications",
      *     summary="Get current in-app system notifications (admin only)",
      *     description="Returns active in-app notifications derived from system state (e.g. update available). Admin role required.",
@@ -22,13 +22,13 @@ $app->group('/api/notification', function (RouteCollectorProxy $group): void {
      *         @OA\JsonContent(type="object",
      *             @OA\Property(property="notifications", type="array",
      *                 @OA\Items(type="object",
-     *                     @OA\Property(property="title", type="string"),
-     *                     @OA\Property(property="icon", type="string"),
-     *                     @OA\Property(property="type", type="string"),
-     *                     @OA\Property(property="message", type="string"),
-     *                     @OA\Property(property="link", type="string"),
      *                     @OA\Property(property="id", type="string"),
-     *                     @OA\Property(property="dismissSettingKey", type="string")
+     *                     @OA\Property(property="dismissSettingKey", type="string"),
+     *                     @OA\Property(property="title", type="string"),
+     *                     @OA\Property(property="message", type="string"),
+     *                     @OA\Property(property="url", type="string"),
+     *                     @OA\Property(property="type", type="string"),
+     *                     @OA\Property(property="icon", type="string")
      *                 )
      *             )
      *         )

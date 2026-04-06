@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Notification\UiNotification;
+use ChurchCRM\dto\SystemURLs;
 
 class NotificationService
 {
@@ -41,7 +42,7 @@ class NotificationService
                     $availableVersion !== ''
                         ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $availableVersion)
                         : gettext('A system update is available. Please upgrade your installation.'),
-                    '/admin/system/upgrade',
+                    SystemURLs::getRootPath() . '/admin/system/upgrade',
                     'warning',
                     'refresh',
                 );
