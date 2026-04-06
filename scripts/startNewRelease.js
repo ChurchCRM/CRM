@@ -80,16 +80,6 @@ async function updateDBVersion(dbFileName, newVersion, oldVersion) {
 
     console.log(`Current DB version: ${current.dbVersion}`);
 
-    // Detect whether there are SQL/PHP upgrade scripts for the new version
-    let scriptExists = false;
-    try {
-        const upgradeDir = "src/mysql/upgrade";
-        const files = await fs.readdir(upgradeDir);
-        scriptExists = files.some((f) => f.startsWith(newVersion));
-    } catch (err) {
-        console.log(`Could not read upgrade directory for detection: ${err.message}`);
-    }
-
     // If the current block contains upgrade scripts, this means the current
     // release introduced DB changes. Rename the current block to
     // `pre-<current.dbVersion>` and create a fresh `current` block with no scripts
@@ -128,27 +118,7 @@ async function updateDBVersion(dbFileName, newVersion, oldVersion) {
         return;
     }
 
-    // If there are no new upgrade scripts and this is the first release after a
-    // DB-change (oldVersion equals current DB), create a pre-<newVersion> block
-    // with no scripts so the release stands alone.
-    if (!scriptExists && oldVersion === current.dbVersion) {
-        const blockName = `pre-${newVersion}`;
-        if (!data[blockName]) {
-            data[blockName] = {
-                versions: [oldVersion],
-                scripts: [],
-                dbVersion: newVersion,
-            };
-            await saveJSONFile(dbFileName, data);
-            console.log(`Created ${blockName} block (no SQL) for version: ${newVersion}`);
-            console.log(`   Line endings preserved for ${dbFileName}`);
-            return;
-        } else {
-            console.log(`${blockName} already exists, skipping creation.`);
-        }
-    }
-
-    // Default behavior: add the old version into the current block and bump dbVersion
+    // Default behavior: no DB changes — add the old version into current.versions and bump dbVersion
     current.dbVersion = newVersion;
     if (!current.versions.includes(oldVersion)) {
         current.versions.push(oldVersion);
@@ -305,6 +275,20 @@ async function main() {
 
     await updateDBVersion("src/mysql/upgrade.json", newVersion, oldVersion);
     await updateDBDemoSQL(newVersion, oldVersion);
+
+
+    // Format all modified JSON files to match project standards (Biome)
+    console.log("Formatting modified files with Biome...");
+    try {
+        const { stdout, stderr } = await exec(
+            "npx biome format --write package.json src/composer.json src/mysql/upgrade.json",
+        );
+        if (stdout) console.log(stdout);
+        if (stderr) console.error(stderr);
+        console.log("✅ Formatting complete.");
+    } catch (error) {
+        console.error("Warning: Biome formatting failed:", error.message);
+    }
 }
 
 main();
