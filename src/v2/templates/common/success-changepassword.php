@@ -5,6 +5,7 @@ use ChurchCRM\dto\SystemURLs;
 $isForced = $isForced ?? false;
 $sPageTitle = gettext("Change Password") .":" . $user->getFullName();
 if ($isForced) {
+    $sBodyClass = 'page-auth page-login';
     require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 } else {
     require SystemURLs::getDocumentRoot() . '/Include/Header.php';
