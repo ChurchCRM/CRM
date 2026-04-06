@@ -4255,24 +4255,6 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /system/notification:
-    get:
-      tags:
-        - System
-      summary: 'Get current UI notifications (update alerts, system messages)'
-      operationId: d67011aae959ed9fd77c417c9bd9bd09
-      responses:
-        '200':
-          description: 'Array of UI notification objects'
-          content:
-            application/json:
-              schema:
-                properties:
-                  notifications: { type: array, items: { properties: { title: { type: string }, icon: { type: string }, type: { type: string }, message: { type: string }, link: { type: string } }, type: object } }
-                type: object
-      security:
-        -
-          ApiKeyAuth: []
   /user/current/refresh2fasecret:
     post:
       tags:
