@@ -183,7 +183,62 @@ if ($EventID > 0) {
 </form> <!-- end selectEvent form -->
 <?php endif; ?>
 
-<!-- Add Attendees Form -->
+<!-- Roster-Based Check-in (for group-linked events) -->
+<?php if (!$CheckoutOrDelete && $EventID > 0): ?>
+<div id="rosterCheckin" class="d-none" data-event-id="<?= $EventID ?>">
+    <div class="card">
+        <div class="card-status-top bg-primary"></div>
+        <div class="card-header">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <h3 class="card-title mb-0">
+                    <i class="ti ti-users me-2"></i><?= gettext('Group Roster') ?>
+                    <span id="rosterGroupName" class="text-secondary"></span>
+                </h3>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="badge bg-primary" id="rosterStats"></span>
+                    <button type="button" class="btn btn-sm btn-success" id="checkinAllBtn">
+                        <i class="ti ti-checks me-1"></i><?= gettext('Check In All') ?>
+                    </button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary" id="checkoutAllBtn">
+                        <i class="ti ti-door-exit me-1"></i><?= gettext('Check Out All') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div id="rosterLoading" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status"></div>
+            </div>
+            <div id="rosterGrid" class="row g-0 p-3 d-none">
+                <!-- Left: Not Checked In -->
+                <div class="col-md-6 pe-md-2">
+                    <h4 class="text-secondary mb-2">
+                        <i class="ti ti-clock me-1"></i><?= gettext('Waiting to Check In') ?>
+                        <span class="badge bg-secondary ms-1" id="notCheckedInCount">0</span>
+                    </h4>
+                    <div id="notCheckedInList" class="d-flex flex-column gap-1"></div>
+                    <div id="notCheckedInEmpty" class="text-center text-success py-3 d-none">
+                        <i class="ti ti-circle-check me-1"></i><?= gettext('Everyone is checked in!') ?>
+                    </div>
+                </div>
+                <!-- Right: Checked In -->
+                <div class="col-md-6 ps-md-2 mt-3 mt-md-0">
+                    <h4 class="text-secondary mb-2">
+                        <i class="ti ti-circle-check me-1"></i><?= gettext('Checked In') ?>
+                        <span class="badge bg-success ms-1" id="checkedInCount">0</span>
+                    </h4>
+                    <div id="checkedInList" class="d-flex flex-column gap-1"></div>
+                    <div id="checkedInEmpty" class="text-center text-secondary py-3 d-none">
+                        <i class="ti ti-mood-sad me-1"></i><?= gettext('No one checked in yet') ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
+<!-- Add Attendees Form (walk-in search, also shown when no group roster) -->
 <?php
 // If event is known, then show 2 text boxes, person being checked in and the person checking them in.
 // Show a verify button and a button to add new visitor in dbase.
@@ -195,10 +250,10 @@ if (!$CheckoutOrDelete &&  $EventID > 0) {
         <input type="hidden" id="child-id" name="child-id">
         <input type="hidden" id="adult-id" name="adult-id">
 
-        <div class="card">
+        <div class="card" id="walkinCheckinCard">
             <div class="card-status-top bg-primary"></div>
             <div class="card-header">
-                <h3 class="card-title"><?= gettext('Check In Person'); ?></h3>
+                <h3 class="card-title" id="walkinCardTitle"><?= gettext('Check In Person'); ?></h3>
             </div>
             <div class="card-body">
                 <!-- Two-column layout for check-in form -->

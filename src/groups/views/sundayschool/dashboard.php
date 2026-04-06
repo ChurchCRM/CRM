@@ -169,6 +169,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         <td><?= $class['teachers'] ?></td>
                         <td><?= $class['kids'] ?></td>
                         <td class="w-1">
+                            <div class="d-flex gap-1 align-items-center">
+                            <button type="button" class="btn btn-sm btn-success start-checkin-btn"
+                                data-group-id="<?= $class['id'] ?>"
+                                data-group-name="<?= InputUtils::escapeAttribute($class['name']) ?>"
+                                title="<?= gettext('Start Check-in') ?>">
+                                <i class="ti ti-clipboard-check me-1"></i><?= gettext('Check In') ?>
+                            </button>
                             <div class="dropdown">
                                 <button class="btn btn-sm btn-ghost-secondary" type="button" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
                                     <i class="ti ti-dots-vertical"></i>
@@ -210,6 +217,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
                                     </button>
                                 </div>
+                            </div>
                             </div>
                         </td>
                     </tr>
