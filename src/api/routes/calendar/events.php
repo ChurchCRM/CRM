@@ -517,6 +517,12 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     if ($eventTypeId > 0) {
         $existingQuery->filterByType($eventTypeId);
     }
+    if ($groupId > 0 && $eventTypeId <= 0) {
+        // When looking by group only (no type), match events linked to this group
+        $existingQuery->useEventAudienceQuery()
+            ->filterByGroupId($groupId)
+        ->endUse();
+    }
     $existing = $existingQuery->findOne();
 
     if ($existing !== null) {
