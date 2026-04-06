@@ -102,7 +102,7 @@ if (count($_SESSION['aPeopleCart']) > 0) {
                                                 </a>
                                             </div>
                                         </td>
-                                        <td><?= $person->getClsid() ? $person->getClassification()->getOptionName() : '<em class="text-muted">' . gettext('Unclassified') . '</em>' ?></td>
+                                        <td><?= $person->getClsid() ? InputUtils::escapeHTML($person->getClassification()->getOptionName()) : '<em class="text-muted">' . gettext('Unclassified') . '</em>' ?></td>
                                     </tr>
                                 <?php } ?>
                             </tbody>

@@ -246,7 +246,7 @@ class CustomFieldUtils
                 echo '<option value="" disabled>-----------------------</option>';
 
                 foreach ($listOptions as $option) {
-                    echo '<option value="' . $option->getOptionId() . '"' . ($data == $option->getOptionId() ? ' selected' : '') . '>' . $option->getOptionName() . '</option>';
+                    echo '<option value="' . $option->getOptionId() . '"' . ($data == $option->getOptionId() ? ' selected' : '') . '>' . InputUtils::escapeHTML($option->getOptionName()) . '</option>';
                 }
 
                 echo '</select></div>';
