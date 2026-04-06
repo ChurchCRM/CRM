@@ -2,7 +2,9 @@
  * Calendar Event Editor
  *
  * Bootstrap 5 modal for viewing/editing/creating calendar events.
- * Uses TomSelect, native datetime inputs, and the shared Quill editor.
+ * Uses a single modal instance with content swapping to avoid Bootstrap
+ * transition race conditions. TomSelect for dropdowns, native datetime
+ * inputs, and the shared Quill editor for rich text.
  */
 
 import DOMPurify from "dompurify";
@@ -34,12 +36,10 @@ function escapeHtml(str) {
  *  local (not UTC) to avoid off-by-one day shifts in non-UTC timezones. */
 function parseInputDate(value) {
   if (!value) return undefined;
-  // date-only: "YYYY-MM-DD" — construct as local
   const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (dateOnly) {
     return new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]));
   }
-  // datetime-local: "YYYY-MM-DDTHH:mm" — already parsed as local by Date()
   return new Date(value);
 }
 
@@ -47,13 +47,11 @@ function formatDateForInput(date, allDay) {
   if (!date) return "";
   const d = new Date(date);
   if (allDay) {
-    // yyyy-MM-dd
     const y = d.getFullYear();
     const m = String(d.getMonth() + 1).padStart(2, "0");
     const day = String(d.getDate()).padStart(2, "0");
     return `${y}-${m}-${day}`;
   }
-  // yyyy-MM-ddTHH:mm (for datetime-local)
   const y = d.getFullYear();
   const mo = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
@@ -91,33 +89,18 @@ function isAllDay(event) {
 // ---------------------------------------------------------------------------
 
 let currentModal = null;
+let modalEl = null;
 let quillDesc = null;
 let quillText = null;
 let tsEventType = null;
 let tsCalendars = null;
+let activeRequestId = 0;
 
-function cleanup() {
-  if (currentModal) {
-    // Remove the modal element from DOM first to prevent transition callbacks
-    // from accessing null properties during dispose
-    const modalEl = document.getElementById("eventEditorModal");
-    if (modalEl) {
-      modalEl.classList.remove("show");
-      modalEl.removeAttribute("role");
-    }
-    try {
-      currentModal.dispose();
-    } catch (_e) {
-      // dispose() can throw if called during a show/hide transition
-    }
-    currentModal = null;
-    // Remove any leftover backdrop
-    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
-    document.body.classList.remove("modal-open");
-    document.body.style.removeProperty("overflow");
-    document.body.style.removeProperty("padding-right");
-  }
-  // Destroy TomSelect instances
+// ---------------------------------------------------------------------------
+// Widget cleanup (TomSelect, Quill) — called before content swap
+// ---------------------------------------------------------------------------
+
+function destroyWidgets() {
   if (tsEventType) {
     tsEventType.destroy();
     tsEventType = null;
@@ -126,20 +109,86 @@ function cleanup() {
     tsCalendars.destroy();
     tsCalendars = null;
   }
-  // Clean up Quill instances from global registry
   if (window.quillEditors) {
     delete window.quillEditors["quill-Desc"];
     delete window.quillEditors["quill-Text"];
   }
   quillDesc = null;
   quillText = null;
+}
+
+// ---------------------------------------------------------------------------
+// Full cleanup — destroys modal instance and clears container
+// ---------------------------------------------------------------------------
+
+function cleanup() {
+  destroyWidgets();
+
+  if (currentModal) {
+    // Remove fade class to prevent Bootstrap transition callbacks from firing
+    // after dispose() nulls the internal element reference.
+    if (modalEl) {
+      modalEl.classList.remove("fade", "show");
+      modalEl.removeAttribute("role");
+    }
+    try {
+      currentModal.dispose();
+    } catch (_e) {
+      // dispose() can throw if called during a show/hide transition
+    }
+    currentModal = null;
+  }
+
+  modalEl = null;
+
+  // Remove any leftover backdrop and body overrides
+  document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+  document.body.classList.remove("modal-open");
+  document.body.style.removeProperty("overflow");
+  document.body.style.removeProperty("padding-right");
 
   const container = document.getElementById("calendar-event-app");
   if (container) container.innerHTML = "";
 }
 
 // ---------------------------------------------------------------------------
-// Viewer (read-only mode)
+// Modal shell — created once per interaction, content swapped in place
+// ---------------------------------------------------------------------------
+
+function createAndShowModal() {
+  const container = document.getElementById("calendar-event-app");
+  if (!container) return;
+
+  container.innerHTML = `
+    <div class="modal fade" id="eventEditorModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header" id="eventModalHeader">
+            <h5 class="modal-title">
+              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+              ${t("Loading...")}
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>
+          </div>
+          <div class="modal-body" id="eventModalBody"></div>
+          <div class="modal-footer d-flex justify-content-between d-none" id="eventModalFooter"></div>
+        </div>
+      </div>
+    </div>`;
+
+  modalEl = document.getElementById("eventEditorModal");
+  currentModal = new window.bootstrap.Modal(modalEl, { backdrop: "static" });
+
+  modalEl.addEventListener("hidden.bs.modal", () => {
+    cleanup();
+    window.CRM.refreshAllFullCalendarSources();
+  });
+
+  currentModal.show();
+}
+
+// ---------------------------------------------------------------------------
+// Viewer (read-only body content)
 // ---------------------------------------------------------------------------
 
 function renderViewer(event, calendars, eventTypes) {
@@ -206,7 +255,7 @@ function renderViewer(event, calendars, eventTypes) {
 }
 
 // ---------------------------------------------------------------------------
-// Editor (edit mode)
+// Editor (edit-mode body content)
 // ---------------------------------------------------------------------------
 
 function renderEditor(event, calendars, eventTypes, allDay) {
@@ -274,113 +323,120 @@ function renderEditor(event, calendars, eventTypes, allDay) {
 }
 
 // ---------------------------------------------------------------------------
-// Modal orchestration
+// Content swap — viewer mode
 // ---------------------------------------------------------------------------
 
-function buildModal(event, calendars, eventTypes, isEditMode) {
-  const container = document.getElementById("calendar-event-app");
-  if (!container) return;
+function showViewContent(event, calendars, eventTypes) {
+  if (!modalEl) return;
+  destroyWidgets();
 
-  const allDay = isAllDay(event);
+  const header = modalEl.querySelector("#eventModalHeader");
+  const body = modalEl.querySelector("#eventModalBody");
+  const footer = modalEl.querySelector("#eventModalFooter");
 
-  // Build header
-  let headerContent;
-  if (isEditMode) {
-    headerContent = `
-      <div class="w-100 me-3 pt-1">
-        <label class="form-label text-muted small mb-1" for="event-title-input">${t("Event Title")}</label>
-        <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
-          placeholder="${t("e.g. Sunday Service")}"
-          class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
-        <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
-      </div>`;
-  } else {
-    headerContent = `<h5 class="modal-title">${escapeHtml(event.Title || "")}</h5>`;
-  }
+  header.innerHTML = `
+    <h5 class="modal-title">${escapeHtml(event.Title || "")}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+  header.className = "modal-header";
 
-  // Build body
-  const bodyContent = isEditMode
-    ? renderEditor(event, calendars, eventTypes, allDay)
-    : renderViewer(event, calendars, eventTypes);
+  body.innerHTML = renderViewer(event, calendars, eventTypes);
+  body.className = "modal-body";
+  body.removeAttribute("style");
 
-  // Build footer
-  const deleteBtn = `<button type="button" class="btn btn-ghost-danger" id="eventDeleteBtn">
-    <i class="fas fa-trash me-1"></i>${t("Delete")}</button>`;
-
-  let rightBtns;
-  if (isEditMode) {
-    rightBtns = `<div class="d-flex gap-2">
-      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Cancel")}</button>
-      <button type="button" class="btn btn-primary" id="eventSaveBtn" disabled>
-        <i class="fas fa-save me-1"></i>${t("Save")}</button>
-    </div>`;
-  } else {
-    rightBtns = `<div class="d-flex gap-2">
+  footer.innerHTML = `
+    <button type="button" class="btn btn-ghost-danger" id="eventDeleteBtn">
+      <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
+    <div class="d-flex gap-2">
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Close")}</button>
       <button type="button" class="btn btn-primary" id="eventEditBtn">
         <i class="fas fa-pencil me-1"></i>${t("Edit")}</button>
     </div>`;
-  }
+  footer.className = "modal-footer d-flex justify-content-between";
 
-  container.innerHTML = `
-    <div class="modal fade" id="eventEditorModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-header ${isEditMode ? "pb-0 border-bottom-0" : ""}">
-            ${headerContent}
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>
-          </div>
-          <div class="modal-body ${isEditMode ? "pt-3" : ""}" ${isEditMode ? 'style="overflow:visible"' : ""}>
-            ${bodyContent}
-          </div>
-          <div class="modal-footer d-flex justify-content-between">
-            ${deleteBtn}
-            ${rightBtns}
-          </div>
-        </div>
-      </div>
-    </div>`;
-
-  const modalEl = document.getElementById("eventEditorModal");
-  currentModal = new window.bootstrap.Modal(modalEl, { backdrop: "static" });
-
-  // On hidden, clean up
-  modalEl.addEventListener("hidden.bs.modal", () => {
-    cleanup();
-    window.CRM.refreshAllFullCalendarSources();
+  // Edit button switches to edit mode (same modal, content swap)
+  document.getElementById("eventEditBtn").addEventListener("click", () => {
+    showEditContent(event, calendars, eventTypes);
   });
 
-  // Delete handler
-  const deleteBtnEl = document.getElementById("eventDeleteBtn");
-  if (deleteBtnEl) {
-    deleteBtnEl.addEventListener("click", () => {
-      if (!window.confirm(t("Are you sure you want to delete this event?"))) return;
-      fetch(`${CRMRoot}/api/events/${event.Id}`, {
-        credentials: "include",
-        method: "DELETE",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-      })
-        .then((r) => {
-          if (!r.ok) throw new Error(`HTTP ${r.status}`);
-          currentModal.hide();
-        })
-        .catch(() => {
-          if (window.CRM?.notify) window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
-        });
-    });
-  }
-
-  if (isEditMode) {
-    initEditMode(event);
-  } else {
-    document.getElementById("eventEditBtn").addEventListener("click", () => {
-      cleanup();
-      buildModal(event, calendars, eventTypes, true);
-    });
-  }
-
-  currentModal.show();
+  bindDeleteHandler(event);
 }
+
+// ---------------------------------------------------------------------------
+// Content swap — editor mode
+// ---------------------------------------------------------------------------
+
+function showEditContent(event, calendars, eventTypes) {
+  if (!modalEl) return;
+  destroyWidgets();
+
+  const allDay = isAllDay(event);
+  const header = modalEl.querySelector("#eventModalHeader");
+  const body = modalEl.querySelector("#eventModalBody");
+  const footer = modalEl.querySelector("#eventModalFooter");
+
+  header.innerHTML = `
+    <div class="w-100 me-3 pt-1">
+      <label class="form-label text-muted small mb-1" for="event-title-input">${t("Event Title")}</label>
+      <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
+        placeholder="${t("e.g. Sunday Service")}"
+        class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
+      <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+  header.className = "modal-header pb-0 border-bottom-0";
+
+  body.innerHTML = renderEditor(event, calendars, eventTypes, allDay);
+  body.className = "modal-body pt-3";
+  body.style.overflow = "visible";
+
+  footer.innerHTML = `
+    <button type="button" class="btn btn-ghost-danger" id="eventDeleteBtn">
+      <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
+    <div class="d-flex gap-2">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Cancel")}</button>
+      <button type="button" class="btn btn-primary" id="eventSaveBtn" disabled>
+        <i class="fas fa-save me-1"></i>${t("Save")}</button>
+    </div>`;
+  footer.className = "modal-footer d-flex justify-content-between";
+
+  initEditMode(event);
+  bindDeleteHandler(event);
+}
+
+// ---------------------------------------------------------------------------
+// Shared delete handler
+// ---------------------------------------------------------------------------
+
+function bindDeleteHandler(event) {
+  const deleteBtn = document.getElementById("eventDeleteBtn");
+  if (!deleteBtn) return;
+
+  // Hide delete button for new (unsaved) events
+  if (event.Id === 0) {
+    deleteBtn.classList.add("d-none");
+    return;
+  }
+
+  deleteBtn.addEventListener("click", () => {
+    if (!window.confirm(t("Are you sure you want to delete this event?"))) return;
+    fetch(`${CRMRoot}/api/events/${event.Id}`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+    })
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        currentModal.hide();
+      })
+      .catch(() => {
+        if (window.CRM?.notify) window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+      });
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Edit mode — wire up all form handlers
+// ---------------------------------------------------------------------------
 
 function initEditMode(event) {
   // Title input
@@ -409,7 +465,6 @@ function initEditMode(event) {
   tsCalendars.on("change", () => {
     event.PinnedCalendars = tsCalendars.getValue().map((v) => Number.parseInt(v, 10));
     validateForm(event);
-    // Show/hide validation
     const fb = document.getElementById("calendarsFeedback");
     if (fb) {
       fb.style.display = event.PinnedCalendars.length === 0 ? "block" : "none";
@@ -512,6 +567,10 @@ function initEditMode(event) {
   validateForm(event);
 }
 
+// ---------------------------------------------------------------------------
+// Form validation
+// ---------------------------------------------------------------------------
+
 function validateForm(event) {
   const saveBtn = document.getElementById("eventSaveBtn");
   if (!saveBtn) return;
@@ -528,7 +587,6 @@ function validateForm(event) {
 
   saveBtn.disabled = !valid;
 
-  // Show title validation feedback
   if (titleInput && titleFb) {
     if (event.Title !== undefined && event.Title.length === 0) {
       titleFb.style.display = "block";
@@ -539,35 +597,30 @@ function validateForm(event) {
 }
 
 // ---------------------------------------------------------------------------
-// Loading modal
+// Error display inside modal
 // ---------------------------------------------------------------------------
 
-function showLoadingModal() {
-  const container = document.getElementById("calendar-event-app");
-  if (!container) return;
+function showErrorContent(message) {
+  if (!modalEl) return;
+  destroyWidgets();
 
-  container.innerHTML = `
-    <div class="modal fade" id="eventEditorModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">
-              <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-              ${t("Loading...")}
-            </h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>
-          </div>
-        </div>
-      </div>
-    </div>`;
+  const header = modalEl.querySelector("#eventModalHeader");
+  const body = modalEl.querySelector("#eventModalBody");
+  const footer = modalEl.querySelector("#eventModalFooter");
 
-  const modalEl = document.getElementById("eventEditorModal");
-  currentModal = new window.bootstrap.Modal(modalEl, { backdrop: "static" });
-  modalEl.addEventListener("hidden.bs.modal", () => {
-    cleanup();
-    window.CRM.refreshAllFullCalendarSources();
-  });
-  currentModal.show();
+  header.innerHTML = `
+    <h5 class="modal-title text-danger"><i class="fas fa-exclamation-triangle me-2"></i>${t("Error")}</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="${t("Close")}"></button>`;
+  header.className = "modal-header";
+
+  body.innerHTML = `<div class="alert alert-danger mb-0">${escapeHtml(message)}</div>`;
+  body.className = "modal-body";
+  body.removeAttribute("style");
+
+  footer.innerHTML = `
+    <div></div>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${t("Close")}</button>`;
+  footer.className = "modal-footer d-flex justify-content-between";
 }
 
 // ---------------------------------------------------------------------------
@@ -576,25 +629,34 @@ function showLoadingModal() {
 
 window.showEventForm = (eventArg) => {
   cleanup();
-  showLoadingModal();
+  createAndShowModal();
+
+  const thisRequest = ++activeRequestId;
 
   Promise.all([
     fetchJSON(`${CRMRoot}/api/events/${eventArg.id}`),
     fetchJSON(`${CRMRoot}/api/calendars`),
     fetchJSON(`${CRMRoot}/api/events/types`),
-  ]).then(([eventData, calData, typeData]) => {
-    const event = eventData;
-    if (event.Start) event.Start = new Date(event.Start);
-    if (event.End) event.End = new Date(event.End);
-
-    cleanup();
-    buildModal(event, calData.Calendars, typeData.EventTypes, false);
-  });
+  ])
+    .then(([eventData, calData, typeData]) => {
+      if (thisRequest !== activeRequestId) return;
+      const event = eventData;
+      if (event.Start) event.Start = new Date(event.Start);
+      if (event.End) event.End = new Date(event.End);
+      showViewContent(event, calData.Calendars, typeData.EventTypes);
+    })
+    .catch((err) => {
+      if (thisRequest !== activeRequestId) return;
+      showErrorContent(t("Failed to load event. Please try again."));
+      console.error("showEventForm error:", err);
+    });
 };
 
 window.showNewEventForm = (info) => {
   cleanup();
-  showLoadingModal();
+  createAndShowModal();
+
+  const thisRequest = ++activeRequestId;
 
   const event = {
     Id: 0,
@@ -605,10 +667,14 @@ window.showNewEventForm = (info) => {
     End: info.end,
   };
 
-  Promise.all([fetchJSON(`${CRMRoot}/api/calendars`), fetchJSON(`${CRMRoot}/api/events/types`)]).then(
-    ([calData, typeData]) => {
-      cleanup();
-      buildModal(event, calData.Calendars, typeData.EventTypes, true);
-    },
-  );
+  Promise.all([fetchJSON(`${CRMRoot}/api/calendars`), fetchJSON(`${CRMRoot}/api/events/types`)])
+    .then(([calData, typeData]) => {
+      if (thisRequest !== activeRequestId) return;
+      showEditContent(event, calData.Calendars, typeData.EventTypes);
+    })
+    .catch((err) => {
+      if (thisRequest !== activeRequestId) return;
+      showErrorContent(t("Failed to load calendar data. Please try again."));
+      console.error("showNewEventForm error:", err);
+    });
 };
