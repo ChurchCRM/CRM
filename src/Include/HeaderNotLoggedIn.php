@@ -44,7 +44,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     </style>
 
 </head>
-<body class="antialiased page-auth">
+<body class="antialiased <?= $sBodyClass ?? 'page-auth' ?>">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles
