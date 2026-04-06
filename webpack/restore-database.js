@@ -139,7 +139,7 @@ function handleRestoreSubmit($form) {
     .done(function (data) {
       // Show any messages from the restore process in the modal
       if (data.Messages && data.Messages.length > 0) {
-        var $messages = $("#restoreModalMessages");
+        const $messages = $("#restoreModalMessages");
         $messages.empty();
         $.each(data.Messages, function (index, value) {
           $("<div>")

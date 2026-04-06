@@ -12,15 +12,18 @@
 
 // Import jQuery and expose it globally for legacy code compatibility
 import $ from "jquery";
+
 window.jQuery = window.$ = $;
 
 // Import ApexCharts - Tabler-recommended charting library (replacing Chart.js)
 import ApexCharts from "apexcharts";
+
 window.ApexCharts = ApexCharts;
 
 // Import Tabler JS (Bootstrap 5 + Popper bundled) — replaces AdminLTE JS
 // Must come after jQuery so legacy jQuery plugins can still work
 import * as tabler from "@tabler/core";
+
 window.bootstrap = tabler.bootstrap;
 
 // Import all shared CSS (icons, DataTables, TomSelect, DatePicker, etc.)
@@ -38,7 +41,7 @@ import "../src/skin/js/cart.js";
 import "./avatar-loader";
 
 // Import photo utilities (lightbox and delete functions for Person/Family views)
-import { showPhotoLightbox, deletePhoto } from "./photo-utils";
+import { deletePhoto, showPhotoLightbox } from "./photo-utils";
 
 // Import form utilities (phone mask toggles, etc.)
 import "../src/skin/js/form-utils.js";

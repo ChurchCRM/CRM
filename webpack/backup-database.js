@@ -69,7 +69,7 @@ function doBackup(isRemote) {
         $("#statusCompleteMessage").text(i18next.t("Backup generated and copied to remote server"));
       } else {
         $("#statusCompleteMessage").text(i18next.t("Backup complete! Click below to download."));
-        var downloadButton =
+        const downloadButton =
           '<button class="btn btn-success btn-lg" id="downloadbutton" onclick="window.BackupDatabase.downloadBackup(\'' +
           data.BackupDownloadFileName +
           "')\">" +
