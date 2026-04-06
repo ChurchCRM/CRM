@@ -226,9 +226,7 @@ $(document).on("click", "[data-save-scope='section']", function (e) {
   if (dirtyOtherTabs.length > 0) {
     bootbox.confirm({
       title: t("Unsaved Changes"),
-      message: t(
-        "You have unsaved changes on this page. They will be lost when the page reloads. Continue?"
-      ),
+      message: t("You have unsaved changes on this page. They will be lost when the page reloads. Continue?"),
       buttons: {
         cancel: { label: t("Cancel"), className: "btn-secondary" },
         confirm: { label: t("Continue"), className: "btn-primary" },
