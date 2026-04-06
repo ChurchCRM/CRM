@@ -641,8 +641,12 @@ npm run test:api -- --spec "cypress/e2e/api/private/admin/private.admin.system.c
 # Setup wizard tests
 npm run test:new-system
 
-# ⚠️ DO NOT use direct npx cypress run — always use the npm scripts above
-# The npm scripts handle config and environment setup correctly
+# Direct single-spec run (headless, default config)
+npx cypress run --spec "cypress/e2e/ui/events/standard.calendar.spec.js" --headless
+
+# ℹ️ Prefer this direct style for quick single-spec validation.
+# The npm scripts (test:ui, test:api) are wrappers that set config/env —
+# for single-spec runs, direct npx with --headless is simpler and equivalent.
 ```
 
 ### Running Tests in Docker (Required Workflow)
@@ -661,8 +665,8 @@ npm run test                          # full suite
 npm run test:ui                       # UI tests only
 npm run test:api                      # API tests only
 
-# 3. Single spec
-npx cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/user/standard.user.password.spec.js"
+# 3. Single spec (headless)
+npx cypress run --spec "cypress/e2e/ui/user/standard.user.password.spec.js" --headless
 
 # 4. View logs after failures
 npm run docker:test:logs
@@ -840,6 +844,50 @@ cy.contains('Email').type('test@example.com');  // Wrong element
 
 // ❌ WRONG - Deep CSS selectors (break with style changes)
 cy.get('div.container div.row div.col-md-6 form input[type="email"]');
+```
+
+### Modal Testing Patterns <!-- learned: 2026-04-06 -->
+
+For dynamically loaded modals (content swapped after API fetch), use specific ID
+selectors and `not.exist` (not `not.be.visible`) since cleanup removes the element:
+
+```javascript
+// ✅ CORRECT — wait for dynamic content, use element IDs
+cy.get("#event-title-input").should("be.visible").type("My Event");
+cy.get("#eventCancelBtn").click();
+cy.get("#eventEditorModal").should("not.exist");  // cleanup removes element
+
+// ❌ WRONG — fragile selector, wrong close assertion
+cy.get(".modal-header input").type("My Event");          // matches ANY input
+cy.get(".modal-footer .btn-secondary").click();           // matches settings panel too
+cy.get("#eventEditorModal").should("not.be.visible");     // element is removed, not hidden
+```
+
+### Tabler Form-Selectgroup (Radio/Checkbox Pills) <!-- learned: 2026-04-06 -->
+
+Tabler hides the actual `<input>` inside `form-selectgroup-item`. Click the parent
+`<label>`, not the input:
+
+```javascript
+// ✅ CORRECT — click the visible label wrapper
+cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
+
+// ❌ WRONG — input is hidden, check() doesn't reliably fire change event
+cy.get('input[name="eventDayType"][value="allday"]').check({ force: true });
+```
+
+### Don't Assume Initial Form State from FullCalendar <!-- learned: 2026-04-06 -->
+
+FullCalendar's `select` callback may provide non-midnight times depending on the
+view mode. Don't assume the initial all-day/timed state — explicitly set it first:
+
+```javascript
+// ✅ CORRECT — set known state, then verify toggle
+cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
+cy.get("#eventStartDate").should("have.attr", "type", "date");
+
+// ❌ WRONG — assumes day-click always gives midnight (all-day)
+cy.get("#eventStartDate").should("have.attr", "type", "date"); // may be datetime-local
 ```
 
 ## Cross-Spec Environment Variable Persistence <!-- learned: 2026-03-15 -->

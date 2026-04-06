@@ -5,7 +5,7 @@
 import Uppy from "@uppy/core";
 import XHRUpload from "@uppy/xhr-upload";
 
-$(document).ready(function () {
+$(document).ready(() => {
   const $dropzone = $("#dropzone");
   const $fileInput = $("#csvFile");
   const $fileInfo = $("#fileInfo");
@@ -41,7 +41,7 @@ $(document).ready(function () {
   });
 
   // --- Dropzone ---
-  $dropzone.on("click", function (e) {
+  $dropzone.on("click", (e) => {
     if (e.target !== $fileInput[0]) $fileInput[0].click();
   });
   $fileInput.on("click", (e) => e.stopPropagation());
@@ -80,7 +80,7 @@ $(document).ready(function () {
   }
 
   // --- Submit ---
-  $("#csv-import-form").on("submit", function (e) {
+  $("#csv-import-form").on("submit", (e) => {
     e.preventDefault();
     const file = $fileInput[0].files[0];
     if (!file) {
@@ -118,7 +118,7 @@ $(document).ready(function () {
       contentType: "application/json",
       data: JSON.stringify({ token, mapping }),
     })
-      .done(function (data) {
+      .done((data) => {
         $("#mapping-card").addClass("d-none");
         setStatus("idle");
         $("#summary-imported").text(data.imported);
@@ -126,7 +126,7 @@ $(document).ready(function () {
         $("#summary-skipped").text(data.skipped ?? 0);
         $("#summary-card").removeClass("d-none");
       })
-      .fail(function (xhr) {
+      .fail((xhr) => {
         const msg = xhr.responseJSON?.message || i18next.t("Import failed. Please try again.");
         window.CRM.notify(msg, { type: "error", delay: 5000 });
         $btn.prop("disabled", false).html(`<i class="fa-solid fa-file-import mr-2"></i>${i18next.t("Import Data")}`);
@@ -210,7 +210,7 @@ function formatSize(bytes) {
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB", "GB"];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
-  return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
+  return parseFloat((bytes / k ** i).toFixed(2)) + " " + sizes[i];
 }
 
 function setStatus(status, errorMessage) {

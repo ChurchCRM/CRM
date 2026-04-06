@@ -17,7 +17,7 @@ This skill covers setup, build processes, Docker management, testing workflows, 
 - **Perpl ORM** - Database layer (actively maintained fork of Propel2)
 - **Slim 4** - API routes and modern MVC
 - **Tabler + Bootstrap 5.3.x** - Primary UI framework
-- **React + TypeScript** - Modern frontend components
+- **Vanilla JS + TypeScript** - Frontend modules (no React)
 - **Webpack** - Build system for frontend assets
 - **Cypress** - End-to-end testing
 
@@ -210,7 +210,6 @@ $buttonLabel = gettext('Add New Fund');
 | `src/Include/` | Utility functions, helpers, Config.php |
 | `src/locale/` | i18n/translation strings |
 | `src/skin/v2/` | Compiled CSS/JS from Webpack |
-| `react/` | React TSX components |
 | `webpack/` | Webpack entry points |
 | `cypress/e2e/api/` | API test suites |
 | `cypress/e2e/ui/` | UI test suites |

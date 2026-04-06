@@ -196,7 +196,7 @@ class AvatarLoader {
    */
   private updateViewPhotoButton(img: HTMLImageElement, hasPhoto: boolean): void {
     // Try to find the button - look up to the image-container's parent and search for the button
-    let imageContainer = img.closest(".image-container");
+    const imageContainer = img.closest(".image-container");
     let viewBtn = imageContainer?.querySelector("#view-larger-image-btn") as HTMLElement;
 
     // If not found, try looking in parent containers

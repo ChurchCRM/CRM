@@ -154,7 +154,7 @@ When fixing a failed test:
 
 - `cypress-testing.md` — API patterns, session setup, data handling
 - `database-operations.md` — ORM query patterns
-- `webpack-typescript.md` — React/component patterns
+- `webpack-typescript.md` — JS/TS module patterns
 - `code-standards.md` — General best practices
 
 **Remember: Skills get documented the moment you learn something. Never defer skill updates.**

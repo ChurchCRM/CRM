@@ -5,14 +5,14 @@
 
 import "./family-verify.css";
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
   // Handle avatar display - show/hide initials based on photo presence
-  document.querySelectorAll(".avatar-placeholder").forEach(function (container) {
+  document.querySelectorAll(".avatar-placeholder").forEach((container) => {
     const img = container.querySelector(".avatar-img");
     const initials = container.querySelector(".initials");
 
     if (img && img.src) {
-      img.addEventListener("load", function () {
+      img.addEventListener("load", () => {
         // Image loaded, hide initials
         if (initials) {
           initials.style.display = "none";
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         img.style.display = "block";
       });
 
-      img.addEventListener("error", function () {
+      img.addEventListener("error", () => {
         // Image failed, show initials
         img.style.display = "none";
         if (initials) {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Photo viewer click handlers
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", (e) => {
     const photoElement = e.target.closest(".view-person-photo");
     if (photoElement) {
       const personId = photoElement.getAttribute("data-person-id");
