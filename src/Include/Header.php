@@ -468,7 +468,7 @@ foreach (NotificationService::getNotifications() as $notification) {
           </div>
         </div>
         <?php if ($notification->getDismissSettingKey()): ?>
-          <button type="button" class="btn-close js-dismiss-notification" aria-label="<?= gettext('Dismiss') ?>"></button>
+          <button type="button" class="btn-close js-dismiss-notification" data-bs-dismiss="alert" aria-label="<?= gettext('Dismiss') ?>"></button>
         <?php endif; ?>
       </div>
 <?php } ?>
