@@ -353,3 +353,86 @@ describe("UI: Property Definition Delete (PropertyList.php)", () => {
         });
     });
 });
+
+// ------------------------------------------------------------------ //
+// GroupPropsFormEditor Delete button — CSP regression (#8520)
+// Uses the first available group (via API) to test the form field
+// delete button has data-* attributes and triggers bootbox correctly.
+// ------------------------------------------------------------------ //
+
+describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => {
+    const fieldName = "Cypress Group Delete Test";
+    let groupID = null;
+
+    before(() => {
+        // Find a group to use for the test
+        cy.makePrivateAdminAPICall("GET", "/api/groups", null, 200).then((resp) => {
+            if (!resp.body.length) {
+                cy.log("No groups exist — skipping GroupPropsFormEditor tests");
+                return;
+            }
+            groupID = resp.body[0].id ?? resp.body[0].grp_ID;
+        });
+
+        // Create a test form field via UI form (must be after API setup)
+        freshAdminLogin();
+
+        cy.then(() => {
+            if (!groupID) return;
+            cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
+            cy.get("select#newFieldType").select("1");
+            cy.get("input#newFieldName").clear().type(fieldName);
+            cy.get('button[name="AddField"]').click();
+            cy.get(`input[value="${fieldName}"]`).should("exist");
+        });
+    });
+
+    beforeEach(() => {
+        if (!groupID) return;
+        freshAdminLogin();
+        cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
+    });
+
+    it("Delete button has data-field-name/data-prop-id/data-field-id attrs and no onclick", () => {
+        if (!groupID) return cy.log("No group available — skipping");
+
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
+            .should("exist")
+            .and("have.attr", "data-prop-id")
+            .and("have.attr", "data-field-id")
+            .and("not.have.attr", "onclick");
+    });
+
+    it("clicking Delete opens bootbox; Cancel leaves field intact", () => {
+        if (!groupID) return cy.log("No group available — skipping");
+
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
+            .closest(".dropdown")
+            .find("[data-bs-toggle='dropdown']")
+            .click();
+
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`).click();
+
+        cy.get(".bootbox").should("be.visible");
+        cy.get(".bootbox .btn-secondary").click({ force: true });
+
+        cy.get(`input[value="${fieldName}"]`).should("exist");
+    });
+
+    it("confirming Delete navigates away and field is removed", () => {
+        if (!groupID) return cy.log("No group available — skipping");
+
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`)
+            .closest(".dropdown")
+            .find("[data-bs-toggle='dropdown']")
+            .click();
+
+        cy.get(`.js-delete-field[data-field-name="${fieldName}"]`).click();
+
+        cy.get(".bootbox-accept").should("be.visible").click();
+
+        // GroupPropsFormEditor redirects via window.location.href after confirm
+        cy.url().should("include", "GroupPropsFormEditor.php");
+        cy.get(`input[value="${fieldName}"]`).should("not.exist");
+    });
+});
