@@ -478,11 +478,13 @@
   color: green;
 }
 
-#event {
-  display: none;
-}
-
-#noEvent {
+// Initial hidden state for elements toggled by jQuery .show()/.hide().
+// Do NOT use Bootstrap d-none here — .show() cannot override !important.
+#event,
+#noEvent,
+#alertAllBtn,
+#checkoutAllBtn,
+#birthdayBanner {
   display: none;
 }
 

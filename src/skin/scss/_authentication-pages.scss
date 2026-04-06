@@ -23,13 +23,18 @@
   min-height: 60px;
 }
 
-// Background setup with image and overlay — scoped to auth pages only
+// Base layout for all non-admin public pages (login, kiosk, external, etc.)
 body.page-auth {
-  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+// Login background photo + dark overlay — only for login/auth flow pages.
+// Templates that need this must set $sBodyClass = 'page-auth page-login'.
+body.page-login {
+  background: url('/Images/login-photo.png') center/cover no-repeat fixed;
 
   &::before {
     content: '';
