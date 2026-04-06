@@ -89,7 +89,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
 
-        <script>
+        <script nonce="<?= SystemURLs::getCSPNonce() ?>">
         (function () {
             var base = '<?= $sRootPath ?>/v2/people/photos';
 

@@ -975,7 +975,7 @@ require_once __DIR__ . '/Include/Header.php';
         $classificationsJS[] = ['id' => $classification->getOptionId(), 'name' => $classification->getOptionName()];
     }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
     window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
     window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;
