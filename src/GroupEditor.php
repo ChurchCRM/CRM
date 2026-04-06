@@ -94,7 +94,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if ($thisGroup->getType() == $groupType->getOptionId()) {
                         echo ' selected';
                     }
-                    echo '>' . $groupType->getOptionName() . '</option>';
+                    echo '>' . InputUtils::escapeHTML($groupType->getOptionName()) . '</option>';
                 } ?>
             </select>
             <?php

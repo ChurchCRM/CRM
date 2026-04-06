@@ -453,10 +453,6 @@
 // Legacy Kiosk Styles (for backward compatibility)
 // =============================================================================
 
-.widget-user-2 .widget-user-header {
-  padding: 5px;
-}
-
 #eventDetails {
   display: block;
   width: 100%;
@@ -482,11 +478,13 @@
   color: green;
 }
 
-#event {
-  display: none;
-}
-
-#noEvent {
+// Initial hidden state for elements toggled by jQuery .show()/.hide().
+// Do NOT use Bootstrap d-none here — .show() cannot override !important.
+#event,
+#noEvent,
+#alertAllBtn,
+#checkoutAllBtn,
+#birthdayBanner {
   display: none;
 }
 

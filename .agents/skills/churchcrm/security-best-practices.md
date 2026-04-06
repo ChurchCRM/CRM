@@ -744,4 +744,54 @@ $head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '
 
 ---
 
-Last updated: April 3, 2026
+### data-* Attributes Require escapeAttribute() — Not Just escapeHTML() <!-- learned: 2026-04-05 -->
+
+`data-*` HTML attributes are attribute contexts, not body text contexts. Always use
+`InputUtils::escapeAttribute()` for `data-*` values. Using `escapeHTML()` or no escaping
+at all still allows attribute-breakout XSS (e.g. a value containing `"` terminates the
+attribute and injects new ones).
+
+Real-world example: `PersonView.php` line 816 — `data-groupname` was unescaped, fixed
+as part of GHSA-44j4-jjw2-wcr6:
+
+```php
+// ❌ WRONG — unescaped data attribute (XSS via attribute breakout)
+data-groupname="<?= $grp_Name ?>"
+
+// ❌ ALSO WRONG — escapeHTML() is for body text, not attributes
+data-groupname="<?= InputUtils::escapeHTML($grp_Name) ?>"
+
+// ✅ CORRECT — escapeAttribute() for any attribute value, including data-*
+data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"
+```
+
+This applies to ALL `data-*` attributes whether the source is a database field, ORM
+getter, or user-supplied input.
+
+---
+
+### ListOption::getOptionName() Must Be Escaped in HTML Contexts <!-- learned: 2026-04-05 -->
+
+`getOptionName()` returns raw database strings — admin-entered values that can contain
+`<`, `>`, or `"`. Always wrap with `InputUtils::escapeHTML()` when rendering inside
+HTML elements. Affects group roles, family roles, group types, custom field options,
+classifications, and any other ListOption values rendered to the DOM.
+
+```php
+// ❌ WRONG — raw getOptionName() in <option> or <td>
+echo '<option value="' . $role->getOptionId() . '">' . $role->getOptionName() . '</option>';
+
+// ✅ CORRECT — escape before output
+echo '<option value="' . $role->getOptionId() . '">' . InputUtils::escapeHTML($role->getOptionName()) . '</option>';
+
+// ✅ CORRECT — when wrapped in gettext()
+echo InputUtils::escapeHTML(gettext($role->getOptionName()));
+```
+
+Fixed in GHSA-j9gv-26c7-3qrh (CVE-2025-67876) across 6 files: MemberRoleChange.php,
+CartToFamily.php, GroupEditor.php, CartToEvent.php, CustomFieldUtils.php,
+external/templates/registration/family-register.php.
+
+---
+
+Last updated: April 5, 2026

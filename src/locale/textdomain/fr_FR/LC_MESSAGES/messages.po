@@ -5580,7 +5580,7 @@ msgstr "La base de données a été effacée."
 
 #: 
 msgid "Anniversaries"
-msgstr "Anniversaires"
+msgstr "Anniversaires de Mariage"
 
 #: 
 msgid "New Family Notification Email Error"

@@ -813,7 +813,7 @@ $bOkToEdit = (
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/GroupPropsEditor.php?GroupID=<?= $grp_ID ?>&PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
                                                     <?php } ?>
                                                     <div class="dropdown-divider"></div>
-                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= $grp_Name ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
+                                                    <button class="dropdown-item text-danger groupRemove" data-groupid="<?= $grp_ID ?>" data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"><i class="fa-solid fa-trash-can me-2"></i><?= gettext('Remove') ?></button>
                                                 </div>
                                             </div>
                                             <?php } ?>

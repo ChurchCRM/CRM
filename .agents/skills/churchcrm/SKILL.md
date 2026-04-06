@@ -67,7 +67,8 @@ Project-specific skills for AI agents and developers working on ChurchCRM. Each 
 | Skill | When to Use |
 |-------|------------|
 | [Authorization & Security](./authorization-security.md) | Permission checks, authentication |
-| [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations |
+| [Security Best Practices](./security-best-practices.md) | Security features, sensitive operations, output escaping (incl. data-* attributes) |
+| [GitHub Interaction](./github-interaction.md) | Security Advisory lifecycle: draft → publish → CVE request, notifying reporters |
 
 ## Plugins
 
@@ -189,6 +190,7 @@ Follow these steps to run Cypress tests locally and generate machine-readable re
 - **Add plugin**: `plugin-system.md` → `plugin-development.md` → `api-development.md` → `git-workflow.md`
 - **Optimize queries**: `performance-optimization.md` → `database-operations.md` → `service-layer.md`
 - **Add UI text**: `i18n-localization.md` → `frontend-development.md` → `git-workflow.md`
+- **Manage security advisory** (publish GHSA, request CVE, notify reporters): `github-interaction.md` (Security Advisory Management section) → `security-best-practices.md`
 - **Write release notes**: `release-notes.md` → `github-interaction.md`
 - **Publish a release**: `release-notes.md` → `social-media-release.md` → `github-interaction.md`
 - **Review a PR**: `pr-review.md` → `code-standards.md` → `security-best-practices.md` → `wiki-documentation.md`
