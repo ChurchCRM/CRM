@@ -126,7 +126,7 @@ $sRootPath = SystemURLs::getRootPath();
             </div>
         </div>
         <div class="card-body">
-            <div class="d-flex flex-wrap" style="gap: .5rem;">
+            <div class="d-flex flex-wrap gap-2">
                 <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
                     <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('Create Deposit') ?>
                 </a>

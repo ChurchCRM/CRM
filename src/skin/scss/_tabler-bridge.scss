@@ -242,10 +242,10 @@ select {
 
 // Extra-small (375px phone) specific overrides
 @media (max-width: 575.98px) {
-  // Force table-responsive behavior on all card tables
-  .card-body > .table,
-  .card > .table {
-    display: block;
+  // Make card table containers scrollable (not the table itself,
+  // which would break table layout and DataTables column sizing).
+  .card-body,
+  .card > .table-responsive {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
