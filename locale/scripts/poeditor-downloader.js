@@ -35,7 +35,7 @@ const POEDITOR_API = 'https://api.poeditor.com/v2/projects/export';
 
 // Use centralized locale config for missing-terms paths and settings
 const localeConfig = require('./locale-config');
-const MISSING_OUTPUT_DIR = localeConfig.terms.missingNew;
+const MISSING_OUTPUT_DIR = localeConfig.terms.missing;
 const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
 const MIN_MISSING_TERMS = 0; // never skip missing terms
 
@@ -451,25 +451,28 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
 }
 
 /**
- * Parse command-line arguments for locale parameter
+ * Parse command-line arguments for locale parameter.
+ * Returns an array of locale strings, or null (meaning "all locales").
+ * Supports comma-separated values: --locale am,cs,et  or positional: node script.js am,cs,et
  */
 function parseArguments() {
     const args = process.argv.slice(2);
-    let targetLocale = null;
+    let raw = null;
 
     // Handle both formats: node script.js fi  and npm script -- --locale fi
     for (let i = 0; i < args.length; i++) {
         if (args[i] === '--locale' && args[i + 1]) {
-            targetLocale = args[i + 1].toLowerCase();
+            raw = args[i + 1].toLowerCase();
             break;
-        } else if (!args[i].startsWith('-') && !targetLocale) {
+        } else if (!args[i].startsWith('-') && !raw) {
             // First non-flag argument is the locale
-            targetLocale = args[i].toLowerCase();
+            raw = args[i].toLowerCase();
             break;
         }
     }
 
-    return targetLocale;
+    if (!raw) return null;
+    return raw.split(',').map(s => s.trim()).filter(Boolean);
 }
 
 /**
@@ -533,12 +536,18 @@ async function main() {
     let totalToDownload = downloadableLocales.length;
     let localestoProcess = localesConfig;
 
-    // If a specific locale is requested, validate and filter to just that locale
+    // If specific locales are requested, validate and filter to just those
     if (targetLocale) {
-        const [matchKey, matchConfig] = validateLocale(targetLocale);
-        console.log(`🎯 Single locale mode: ${matchConfig.locale}\n`);
-        localestoProcess = { [matchKey]: matchConfig };
-        totalToDownload = 1;
+        localestoProcess = {};
+        for (const code of targetLocale) {
+            const [matchKey, matchConfig] = validateLocale(code);
+            localestoProcess[matchKey] = matchConfig;
+        }
+        totalToDownload = Object.keys(localestoProcess).length;
+        const label = totalToDownload === 1
+            ? `Single locale mode: ${Object.values(localestoProcess)[0].locale}`
+            : `Multi-locale mode: ${Object.values(localestoProcess).map(c => c.locale).join(', ')}`;
+        console.log(`🎯 ${label}\n`);
     }
     
     const localeEntries = Object.entries(localestoProcess);

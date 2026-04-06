@@ -10,6 +10,8 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.1.1](./changelog/7.1.1.md) | April 2026 | Stored XSS fix, CSP hardening, notification system redesign, CSS cleanup |
+| [7.1.0](./changelog/7.1.0.md) | April 2026 | Tabler/BS5 UI overhaul, 46 locales, security hardening, export hub, Functions.php removal |
 | [7.0.5](./changelog/7.0.5.md) | March 2026 | Effortless upgrades, mapping precision, 100% translations |
 | [7.0.4](./changelog/7.0.4.md) | March 2026 | Smoother upgrades, standardized logging, geocoding refinements |
 | [7.0.3](./changelog/7.0.3.md) | March 2026 | Maps improvements, Church Info page, FrankenPHP support |

@@ -7874,10 +7874,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Có thể mất vài phút. Vui lòng không đóng trang này."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Tóm tắt nâng cấp"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Sử dụng các công cụ bên ngoài để mã hóa bản sao lưu trước khi lưu trữ bên ngoài."
 
@@ -8650,10 +8646,6 @@ msgid "Save the file and refresh this page"
 msgstr "Lưu tệp và tải lại trang này"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Đặt true để tắt nhập địa chỉ cá nhân cho những người không thuộc gia đình."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Bắt đầu bằng <strong>http://</strong> hoặc <strong>https://</strong>"
 
@@ -9117,10 +9109,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Có, xóa cơ hội này"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Các truy vấn mà người dùng phải có quyền tài chính mới được sử dụng"
-
-#: 
 msgid "Fund(s)"
 msgstr "Quỹ"
 
@@ -9404,10 +9392,6 @@ msgstr "Sinh nhật sắp tới"
 #: 
 msgid "Waiting to Check In"
 msgstr "Đang chờ check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Khi bật, các thiết bị ki-ốt mới có thể đăng ký trong 30 giây."
 
 #: 
 msgid "Your child"
@@ -10572,20 +10556,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Tự động phát hiện tọa độ từ địa chỉ"
 
 #: 
-msgid "Basic Information"
-msgstr "Thông tin cơ bản"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Thông tin hội thánh đã được lưu thành công."
-
-#: 
 msgid "Church name is required."
 msgstr "Tên hội thánh là bắt buộc."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Tên hội thánh là bắt buộc. Vui lòng hoàn thành tab Thông tin cơ bản."
 
 #: 
 msgid "City is required."
@@ -10644,22 +10616,6 @@ msgid "Language & Localization"
 msgstr "Ngôn ngữ & Bản địa hóa"
 
 #: 
-msgid "Location & Map"
-msgstr "Vị trí & Bản đồ"
-
-#: 
-msgid "Location Information"
-msgstr "Thông tin vị trí"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Email liên hệ chính cho các thông tin liên lạc của hội thánh."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Số điện thoại liên hệ chính của hội thánh."
-
-#: 
 msgid "Map"
 msgstr "Bản đồ"
 
@@ -10710,10 +10666,6 @@ msgstr "Địa chỉ là bắt buộc."
 #: 
 msgid "Student Information"
 msgstr "Thông tin học sinh"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Ngôn ngữ hệ thống cho hội thánh. Ảnh hưởng đến định dạng ngày, định dạng điện thoại và các bản địa hóa khác."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11078,10 +11030,6 @@ msgstr "Sao luu ra bo nho ngoai ngay bay gio"
 #: 
 msgid "Browse all available plugins"
 msgstr "Duyet tat ca cac plugin co san"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Duyet tat ca cac su kien va hoat dong giao hoi"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11514,10 +11462,6 @@ msgstr "Mo rong"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Kham pha voi du lieu mau"
-
-#: 
-msgid "Export"
-msgstr "Xuat"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12474,10 +12418,6 @@ msgid "The property is successfully removed."
 msgstr "Da go bo thuoc tinh thanh cong."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Cac lien ket nay xuat hien trong menu \"Lien ket\" o thanh dieu huong ben khi plugin nay duoc bat."
-
-#: 
 msgid "To Family"
 msgstr "Den gia dinh"
 
@@ -13266,11 +13206,6 @@ msgstr "Giá trị trường"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Tìm những người không tham dự sự kiện"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tìm những người đã cam kết một năm nhưng không phải là năm khác"
 
@@ -13363,11 +13298,6 @@ msgstr "Ngày kỷ niệm thành viên"
 #: 
 msgid "Minimum Age"
 msgstr "Tuổi Tối thiểu"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Những người mất tích"
 
 #. Context: query_qry
 #: 
@@ -13557,11 +13487,6 @@ msgstr "Chọn loại sự kiện..."
 #: 
 msgid "Select field to search for."
 msgstr "Chọn trường để tìm kiếm."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Chọn sự kiện mong muốn"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13952,11 +13877,6 @@ msgstr "Châu lục"
 msgid "Costs"
 msgstr "Chi phí"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Người thanh toán bằng thẻ tín dụng"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14030,11 +13950,6 @@ msgstr "Bật sử dụng phong bì dâng hiến"
 msgid "Enable use of scanned checks"
 msgstr "Bật sử dụng séc đã quét"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Cam kết gia đình theo năm tài chính"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14044,11 +13959,6 @@ msgstr "Tính năng"
 msgid "Finance permission query IDs"
 msgstr "ID truy vấn quyền tài chính"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Tìm học viên đã đăng ký"
-
 #: 
 msgid "Find family"
 msgstr "Tìm gia đình"
@@ -14057,11 +13967,6 @@ msgstr "Tìm gia đình"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Tìm URL máy chủ của bạn"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Năm tài chính."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14127,11 +14032,6 @@ msgstr "Trang web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar hoạt động bằng cách chuyển đổi địa chỉ email thành hàm băm (MD5). Địa chỉ email thực tế không bao giờ được gửi đến máy chủ của Gravatar - chỉ hàm băm được sử dụng để tra cứu hình ảnh."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Nhóm học viên đã đăng ký"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14268,11 +14168,6 @@ msgstr "Trang web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP là phần mềm trình bày miễn phí, nguồn mở được thiết kế cho các hội thánh. Plugin này cho phép ChurchCRM gửi thông báo và cảnh báo trực tiếp đến màn hình OpenLP của bạn."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Những người được cấu hình để thanh toán bằng thẻ tín dụng."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14298,11 +14193,6 @@ msgstr "Số điện thoại phải theo định dạng E.164: mã quốc gia + 
 "\n"
 "Số điện thoại người nhận trong hồ sơ thành viên ChurchCRM phải bao gồm mã quốc gia để SMS hoạt động đúng."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Tóm tắt cam kết theo tên gia đình cho từng quỹ trong năm tài chính đã chọn"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14321,11 +14211,6 @@ msgstr "Lưu ý về quyền riêng tư"
 #: 
 msgid "Quick Settings"
 msgstr "Cài đặt nhanh"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Học viên đã đăng ký"
 
 #: 
 msgid "SMTP Authentication"
@@ -14497,11 +14382,6 @@ msgstr "Cài đặt nâng cấp"
 msgid "Use Cases"
 msgstr "Trường hợp sử dụng"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Quyền người dùng để xuất tệp CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14603,4 +14483,99 @@ msgstr "• Lượt xem trang và mẫu điều hướng\n"
 "• Thời lượng phiên và mức độ tương tác\n"
 "• Thống kê nhân khẩu học người dùng (nếu được bật trong GA4)\n"
 "• Thông tin thiết bị và trình duyệt"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Kích thước tệp vượt quá giới hạn máy chủ %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Thiếu dữ liệu hình ảnh trong yêu cầu"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tìm giáo dân chưa tham dự một sự kiện"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Giáo dân vắng mặt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chọn sự kiện mong muốn"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Lọc nâng cao theo nhóm, phân loại và chức vụ"
+
+#: 
+msgid "All congregation members included"
+msgstr "Bao gồm tất cả thành viên giáo đoàn"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Xuất ChMeetings hoàn tất thành công"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Định dạng cột tương thích với ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Thông tin liên lạc, vai trò gia đình và các ngày quan trọng"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Tạo bản sao lưu đầy đủ cơ sở dữ liệu nhà thờ của bạn. Tải xuống tệp SQL chỉ chứa cơ sở dữ liệu hoặc lưu trữ hoàn chỉnh bao gồm cả ảnh đã tải lên."
+
+#: 
+msgid "Database Backup"
+msgstr "Sao lưu Cơ sở Dữ liệu"
+
+#: 
+msgid "Export"
+msgstr "Xuất dữ liệu"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Xuất dữ liệu giáo đoàn sang định dạng CSV. Chọn các trường cần đưa vào và lọc theo phân loại, nhóm, giới tính và nhiều tiêu chí khác."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Xuất tất cả giáo dân theo định dạng yêu cầu của ChMeetings, giúp đồng bộ dữ liệu giáo đoàn với nền tảng ChMeetings một cách dễ dàng."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Xuất dữ liệu nhà thờ của bạn sang nhiều định dạng khác nhau"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Sao lưu ngoài (WebDAV) qua plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Xuất CSV ChMeetings thất bại"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Bố cục hồ sơ gia đình hoặc cá nhân"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Lựa chọn trường linh hoạt"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Đến trang Sao lưu Cơ sở Dữ liệu"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Mở Xuất CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Khôi phục từ trang Sao lưu Hệ thống"
 

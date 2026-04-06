@@ -3,6 +3,7 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
 
@@ -44,7 +45,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     </style>
 
 </head>
-<body class="antialiased page-auth">
+<body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles
@@ -55,6 +56,6 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     // Extend window.CRM with server-side configuration (preserving existing properties like notify)
     Object.assign(window.CRM, {
       root:"<?= SystemURLs::getRootPath() ?>",
-      churchWebSite:"<?= SystemConfig::getValue('sChurchWebSite') ?>"
+      churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>
     });
   </script>

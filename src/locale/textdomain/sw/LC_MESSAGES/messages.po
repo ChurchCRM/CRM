@@ -7867,10 +7867,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Hii inaweza kuchukua dakika kadhaa. Usifunge ukurasa huu."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Muhtasari wa Sasisho"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Tumia zana za nje kusimba nakala kabla ya kuzihifadhi nje ya eneo."
 
@@ -8643,10 +8639,6 @@ msgid "Save the file and refresh this page"
 msgstr "Hifadhi faili na uuhuishe ukurasa huu"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Weka 'true' ili kuzuia kuingiza anwani za kibinafsi kwa watu wasio na familia."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Inaanza na <strong>http://</strong> au <strong>https://</strong>"
 
@@ -9113,10 +9105,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ndiyo, futa Fursa hii"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Hoja ambazo mtumiaji lazima awe na ruhusa ya fedha kuzitumia"
-
-#: 
 msgid "Fund(s)"
 msgstr "Mifuko"
 
@@ -9401,10 +9389,6 @@ msgstr "Siku za Kuzaliwa Zinazokuja"
 #: 
 msgid "Waiting to Check In"
 msgstr "Inasubiri Kuingia"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Inapowezeshwa, vifaa vipya vya kiosk vinaweza kusajiliwa kwa sekunde 30."
 
 #: 
 msgid "Your child"
@@ -10570,20 +10554,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Gundua kuratibu kiotomatiki kwa kutumia anwani"
 
 #: 
-msgid "Basic Information"
-msgstr "Taarifa za Msingi"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Taarifa za kanisa zimehifadhiwa kwa mafanikio."
-
-#: 
 msgid "Church name is required."
 msgstr "Jina la kanisa linahitajika."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Jina la kanisa linahitajika. Tafadhali kamilisha kichupo cha Taarifa za Msingi."
 
 #: 
 msgid "City is required."
@@ -10642,22 +10614,6 @@ msgid "Language & Localization"
 msgstr "Lugha na Ujanibishaji"
 
 #: 
-msgid "Location & Map"
-msgstr "Mahali na Ramani"
-
-#: 
-msgid "Location Information"
-msgstr "Taarifa za Mahali"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Barua pepe kuu ya mawasiliano ya kanisa."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Nambari kuu ya simu ya kanisa."
-
-#: 
 msgid "Map"
 msgstr "Ramani"
 
@@ -10708,10 +10664,6 @@ msgstr "Anwani ya mtaa inahitajika."
 #: 
 msgid "Student Information"
 msgstr "Taarifa za Mwanafunzi"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Lugha ya mfumo kwa kanisa. Inaathiri miundo ya tarehe, miundo ya simu na ujanibishaji mwingine."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11082,10 +11034,6 @@ msgstr "Hifadhi Nakala kwenye Hifadhi ya Nje Sasa"
 #: 
 msgid "Browse all available plugins"
 msgstr "Vinjari programu-jalizi zote zinazopatikana"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Vinjari matukio na shughuli zote za kanisa"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11522,10 +11470,6 @@ msgstr "Panua"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Chunguza kwa Data ya Maonyesho"
-
-#: 
-msgid "Export"
-msgstr "Hamisha"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12478,10 +12422,6 @@ msgid "The property is successfully removed."
 msgstr "Sifa imeondolewa kwa mafanikio."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Viungo hivi vinaonekana katika menyu ya \"Viungo\" katika upau wa urambazaji programu-jalizi hii inapowezeshwa."
-
-#: 
 msgid "To Family"
 msgstr "Kwa Familia"
 
@@ -12748,10 +12688,6 @@ msgstr "mifuko"
 #: 
 msgid "members"
 msgstr "washiriki"
-
-#: 
-msgid "name@example.com"
-msgstr "jina@mfano.com"
 
 #: 
 msgid "opportunities"
@@ -13274,11 +13210,6 @@ msgstr "Thamani ya Shamba"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Tafuta watu ambao hawakuhudhuria tukio"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Tafuta watu ambao waliamuon kwa mwaka mmoja lakini si mwingine"
 
@@ -13371,11 +13302,6 @@ msgstr "Maadhimisho ya uanachama"
 #: 
 msgid "Minimum Age"
 msgstr "Umri wa Chini Zaidi"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Watu walioondoka"
 
 #. Context: query_qry
 #: 
@@ -13568,11 +13494,6 @@ msgstr "Chagua sehemu ya kutafuta."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "Chagua tukio linalotaka"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "Chagua jukumu la familia linalotaka."
 
@@ -13721,4 +13642,944 @@ msgstr "mfano Huduma ya Jumapili"
 #: 
 msgid "member"
 msgstr "mwanajamii"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Dashibodi**: Angalia orodha zako zote za MailChimp na takwimu za waandikisho\n"
+"- **Matengenezo ya Orodha**: Tambua watu walioko MailChimp lakini si kwenye CRM, na kinyume chake\n"
+"- **Muunganisho wa Mawasiliano**: Angalia hali ya kuandikisha MailChimp kwenye kurasa za Mtu na Familia\n"
+"- **Usawazishaji wa Kiotomatiki**: Imeunganishwa na masasisho ya mtu/familia ili kuendelea kusawazisha MailChimp"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. Fungua akaunti ya Vonage kwenye https://dashboard.nexmo.com/sign-up (akaunti mpya zinajumuisha mkopo wa majaribio bila malipo)\n"
+"2. Pata Ufunguo wako wa API na Siri ya API kwenye ukurasa mkuu wa Vonage Dashboard\n"
+"3. Nenda Nambari > Nunua Nambari na ununue nambari yenye uwezo wa SMS\n"
+"4. Kumbuka nambari katika muundo wa E.164 (mfano, +14155551234)\n"
+"5. Katika ChurchCRM, wezesha programu-jalizi ya Vonage SMS na uweke maelezo yako"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Nenda kwenye Google Analytics (analytics.google.com)\n"
+"2. Unda mali au chagua iliyopo\n"
+"3. Nenda kwa Msimamizi → Mtiririko wa Data → Wavuti\n"
+"4. Nakili Kitambulisho cha Kipimo (kinaanza na G-)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Sakinisha OpenLP 3.0 au zaidi kwenye kompyuta yako ya mawasilisho\n"
+"2. Wezesha programu-jalizi ya Mbali katika OpenLP (Mipangilio → Sanidi OpenLP → Programu-jalizi)\n"
+"3. Wezesha programu-jalizi ya Tahadhari katika OpenLP kwa msaada wa kuonyesha tahadhari\n"
+"4. Kumbuka anwani ya IP ya kompyuta ya OpenLP\n"
+"5. Weka URL ya seva katika muundo: http://ANWANI_YA_IP:4316\n"
+"6. Ikiwa umesanidi uthibitishaji katika OpenLP, weka jina la mtumiaji na nenosiri"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "Fikia Dashibodi ya MailChimp kutoka menyu ya Barua pepe. Dashibodi inaonyesha:\n"
+"\n"
+"- Idadi ya wanachama kwa kila orodha\n"
+"- Takwimu za kampeni\n"
+"- Idadi ya kufuta kuandikisha\n"
+"- Zana za matengenezo ya orodha"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Kuongeza viungo"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Viungo vyote vilivyosanidiwa vinaonyeshwa kwenye jedwali. Unaweza:\n"
+"- Angalia jina la kiungo na URL\n"
+"- Bonyeza URL ili kupima ikiwa inafunguka vizuri\n"
+"- Futa viungo usivyohitaji tena\n"
+"\n"
+"Viungo vinaonekana kwa mpangilio ambavyo viliongezwa kwenye menyu ya urambazaji."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Ruhusu uboreshaji wa kabla ya kutolewa"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Ruhusu kurekodi malipo yasiyostahili kupunguzwa kwa kodi katika moduli ya fedha"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Ruhusu picha za hundi zilizoskanishwa kuambatishwa kwenye rekodi za amana"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "Ruhusu uboreshaji wa mfumo kwa kutolewa kulikowekwa alama ya 'pre release' kwenye GitHub"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Ruhusu ufikiaji usiohitaji uthibitishaji kwa matukio ya kalenda kupitia URL za HTML, ICS, na JSON za umma. Inahitajika kwa kushiriki kalenda na programu za nje."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Ruhusu wageni kuunda rekodi yao ya familia kupitia ukurasa wa kujiandikisha"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Ruhusu wageni kujisajili kama familia mpya."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "Huduma yoyote inayooana na WebDAV inafanya kazi na programu-jalizi hii:\n"
+"\n"
+"- Nextcloud (inayopendekezwa)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (na WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx na moduli ya WebDAV\n"
+"\n"
+"Kumbuka: Baadhi ya huduma zinahitaji manenosiri mahususi ya programu kwa ufikiaji wa WebDAV."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Uthibitishaji"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "Uthibitishaji unahitajika kwa API v2 ikiwa umewezesha katika mipangilio ya programu-jalizi ya Mbali ya OpenLP. Programu-jalizi hutumia HTTP Basic Authentication. Mipangilio mingi ya mtandao wa ndani haihitaji uthibitishaji, lakini inashauriwa kwa usalama."
+
+#: 
+msgid "Auto TLS"
+msgstr "TLS otomatiki"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Nakala rudufu otomatiki"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "BCC barua pepe zote kwa"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Kabla ya kutegemea nakala rudufu za nje, jaribu muunganisho wako:\n"
+"1. Nenda kwa Programu-jalizi > Nakala Rudufu za Nje\n"
+"2. Bonyeza 'Jaribu Muunganisho wa WebDAV'\n"
+"3. Thibitisha unaona ujumbe wa mafanikio\n"
+"\n"
+"Matatizo ya kawaida:\n"
+"- Makosa ya 401/403: Angalia jina la mtumiaji na nenosiri\n"
+"- Muda wa kuunganika umekwisha: Thibitisha URL ya mwisho ni sahihi\n"
+"- Makosa ya cheti: Hakikisha seva ya WebDAV ina cheti halali cha SSL"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Chagua kinachoonekana wakati Gravatar haipo:\n"
+"• Mtu wa Siri - Muhtasari wa kijivu\n"
+"• Identicon - Mchoro wa kijiometri kulingana na barua pepe\n"
+"• MonsterID - Uso wa monster uliozalishwa kwa kipekee\n"
+"• Wavatar - Uso wa kufikirika uliozalishwa\n"
+"• Retro - Sanaa ya pikseli ya mchezo wa 8-bit\n"
+"• RoboHash - Roboti iliyozalishwa kwa kipekee\n"
+"• Tupu - Uwazi (inashuka kwa herufi za awali)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Vitambulisho vya hoja vilivyotenganishwa na koma vinavyohitaji ruhusa za fedha ili kuona"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Matumizi ya kawaida ya viungo maalum:\n"
+"- Tovuti ya kanisa\n"
+"- Lango la kutoa sadaka mtandaoni\n"
+"- Fomu za kujiandikisha kwa kujitolea\n"
+"- Rasilimali za madhehebu\n"
+"- Tovuti za mashirika washirika\n"
+"- Folda za uhifadhi wa wingu\n"
+"- Kurasa za kujiandikisha kwa matukio"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Usanidi"
+
+#: 
+msgid "Continent"
+msgstr "Bara"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Gharama"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Matumizi ya sasa"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Mitindo ya picha chaguo-msingi"
+
+#: 
+msgid "Default Map View"
+msgstr "Mtazamo wa ramani chaguo-msingi"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Aina ya tiketi ya amana"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "Sifa ya Usitume barua pepe"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "Sifa ya Usitume SMS"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "Pakua OpenLP"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "Muundo wa nambari ya simu E.164"
+
+#: 
+msgid "Enable Email"
+msgstr "Wezesha barua pepe"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Wezesha menyu ya matukio"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Wezesha API ya kalenda ya nje"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "Wezesha utumaji wa barua pepe kutoka ChurchCRM. Inahitajika kwa kuweka upya nenosiri, arifa, na viungo vya barua pepe."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "Wezesha ikiwa seva yako ya SMTP inahitaji jina la mtumiaji na nenosiri"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Wezesha au zima moduli ya Shule ya Jumapili na menyu ya upande."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Wezesha matumizi ya bahasha za sadaka zenye nambari kwa kufuatilia michango"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Wezesha matumizi ya bahasha za michango"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Wezesha matumizi ya hundi zilizoskanwa"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Vipengele"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Vitambulisho vya hoja ya ruhusa ya fedha"
+
+#: 
+msgid "Find family"
+msgstr "Tafuta familia"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Kupata URL ya seva yako"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Kwa usalama:\n"
+"- Wasimamizi tu ndio wanaweza kuongeza au kuondoa viungo\n"
+"- Chaguo la 'Dhibiti Viungo' linaonekana tu kwa wasimamizi\n"
+"- Viungo lazima vitumie itifaki za http:// au https://\n"
+"- Vitambulisho vya HTML haviruhusiwi katika majina au URL\n"
+"- Maingizo yote yanathaminishwa na kusafishwa"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "Mwongozo wa usanidi wa GA4"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Kuanza"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "Kupata Kitambulisho cha Kipimo cha GA4"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4) hufuatilia jinsi watumiaji wanavyoingiliana na ChurchCRM, ikitoa maarifa kuhusu maoni ya ukurasa, ushirikiano wa mtumiaji, na matumizi ya kipengele."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Msaada wa Google Analytics"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics hukusanya data ya matumizi iliyofanywa isiyoweza kutambuliwa. Hakuna taarifa za kibinafsi kutoka kwenye rekodi za ChurchCRM zinazotumwa kwa Google. Fikiria kuongeza ilani ya faragha kwenye sera ya data ya kanisa lako."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Avatar Inayotambuliwa Ulimwenguni) huonyesha picha za wasifu kutoka gravatar.com kwa wanachama wasio na picha zilizopakiwa katika ChurchCRM."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Chaguo za picha za Gravatar"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Tovuti ya Gravatar"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar hufanya kazi kwa kubadilisha anwani za barua pepe kuwa hash (MD5). Anwani halisi ya barua pepe haitumiwi kamwe kwa seva za Gravatar - hash tu ndiyo inatumika kutafuta picha."
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Ficha latitudo/longitudo"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Ficha anwani ya mtu"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Jinsi inavyofanya kazi"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Ni hundi ngapi za kuchapisha kwa ukurasa wa stakabadhi ya amana"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "Ikiwa ujumbe wa SMS haujatumwa:\n"
+"1. Thibitisha Ufunguo wa API na Siri ni sahihi (bila nafasi za ziada)\n"
+"2. Angalia Nambari ya Kutoka ni nambari halali ya Vonage unayomiliki\n"
+"3. Hakikisha nambari za simu za wapokeaji zinajumuisha msimbo wa nchi\n"
+"4. Angalia salio la akaunti yako ya Vonage\n"
+"5. Kagua Vonage Dashboard > SMS > Kumbukumbu kwa hali ya uwasilishaji"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Ikiwa tahadhari hazionyeshwi:\n"
+"1. Thibitisha OpenLP inaendeshwa na programu-jalizi ya Mbali iko hai\n"
+"2. Hakikisha programu-jalizi ya Tahadhari imewezeshwa katika OpenLP\n"
+"3. Angalia URL ya seva ni sahihi (jaribu kufikia kwenye kivinjari)\n"
+"4. Thibitisha mipangilio ya ngome ya moto inaruhusu muunganisho kwenye bandari 4316\n"
+"5. Ikiwa unatumia uthibitishaji, thibitisha maelezo yako ni sahihi"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Ikiwa ujumbe umetumwa lakini haujapokelewa:\n"
+"1. Angalia Vonage Dashboard > SMS > Kumbukumbu kwa hali ya uwasilishaji\n"
+"2. Thibitisha nambari ya mpokeaji ni sahihi na inaweza kupokea SMS\n"
+"3. Watoa huduma wengine wanaweza kuzuia ujumbe kutoka nambari zisizojulikana\n"
+"4. Angalia ikiwa nchi ya marudio ina vizuizi vya SMS"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Ikiwa unapokea makosa ya kitambulisho cha mtumaji batili:\n"
+"1. Tumia nambari ya simu uliyonunua kutoka Vonage\n"
+"2. Panga nambari katika muundo wa E.164 (+14155551234)\n"
+"3. Kumbuka: Vitambulisho vya mtumaji vya herufi-nambari vinaweza kuzuiwa katika nchi fulani"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Maelezo muhimu ya usalama:\n"
+"\n"
+"1. Daima tumia mwisho wa HTTPS ili kusimba nakala rudufu wakati wa usafirishaji\n"
+"2. Tumia manenosiri mahususi ya programu yanapowezekana (Nextcloud, ownCloud)\n"
+"3. Hifadhi nakala rudufu katika folda yenye ufikiaji uliozuiwa\n"
+"4. Pakua mara kwa mara na thibitisha nakala rudufu zako ni halali\n"
+"5. Fikiria kusimba nakala rudufu nyeti na zana za nje kabla ya kupakia"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Kiwango cha kukuza cha awali unapofungua ramani"
+
+#: 
+msgid "Learn more"
+msgstr "Jifunze zaidi"
+
+#: 
+msgid "Log Settings"
+msgstr "Mipangilio ya kumbukumbu"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "Muunganisho wa MailChimp huwezesha usawazishaji kati ya mawasiliano ya ChurchCRM na orodha zako za masoko ya barua pepe za MailChimp."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Kusimamia viungo"
+
+#: 
+msgid "Neighborhood"
+msgstr "Mtaa"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "Chanzo cha OpenLP API v2"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "Nyaraka za OpenLP"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "Tovuti ya OpenLP"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP ni programu ya mawasilisho ya bure na chanzo-wazi iliyoundwa kwa makanisa. Programu-jalizi hii inaruhusu ChurchCRM kutuma arifa na tahadhari moja kwa moja kwa onyesho lako la OpenLP."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Ujumuishaji wa mtu/familia"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Muundo wa nambari ya simu"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Nambari za simu zinapaswa kuwa katika muundo wa E.164: msimbo wa nchi + nambari. Mifano:\n"
+"- Marekani: +14155551234\n"
+"- Uingereza: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Nambari za simu za wanachama katika maelezo yao ya ChurchCRM zinapaswa kujumuisha msimbo wa nchi ili SMS ifanye kazi vizuri."
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Faragha na Uzingatifu"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Mambo ya kuzingatia kuhusu faragha"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Dokezo la faragha"
+
+#: 
+msgid "Quick Settings"
+msgstr "Mipangilio ya haraka"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "Uthibitishaji wa SMTP"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "Muda wa kuisha wa SMTP"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Usalama"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Mambo ya kuzingatia kuhusu usalama"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Usanidi"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Onyesha muundo wa thamani za noti kwenye ripoti ya stakabadhi ya amana"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Onyesha au uficha menyu ya Matukio katika urambazaji mkuu."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Onyesha au uficha sehemu ya Matukio katika menyu ya urambazaji mkuu"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Onyesha au uficha moduli ya Shule ya Jumapili katika urambazaji wa upande"
+
+#: 
+msgid "Street"
+msgstr "Barabara"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Moduli ya Shule ya Jumapili"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Huduma zinazotumika"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Kupima muunganisho"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Programu-jalizi ya Viungo vya Menyu Maalum inaruhusu wasimamizi kuongeza viungo vya nje kwenye menyu ya urambazaji. Inapowezeshwa, menyu ya 'Viungo' inaonekana kwenye upande ikijumuisha viungo vyote vilivyosanidiwa."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Programu-jalizi ya Nakala Rudufu za Nje inakuruhusu kufanya nakala rudufu ya hifadhidata ya ChurchCRM kiotomatiki kwa huduma za uhifadhi wa wingu zinazooana na WebDAV. Hii inajumuisha huduma maarufu kama Nextcloud, ownCloud, au seva yoyote inayounga mkono itifaki ya WebDAV."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Bandari ya chaguo-msingi ya OpenLP ni 4316. URL yako ya seva kwa kawaida itakuwa: http://192.168.x.x:4316 ambapo 192.168.x.x ni anwani ya IP ya kompyuta inayoendesha OpenLP. Unaweza kupata hii katika OpenLP chini ya Zana → Fungua Msimamizi wa Huduma."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Mwezi unaoanzisha mwaka wa fedha wa shirika lako"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Programu-jalizi hii kwa sasa inatumika kwa Arifa za Kuingia kwa Kiosk. Wakati mtoto anaingia katika darasa la Shule ya Jumapili kupitia mfumo wa kiosk, SMS inaweza kutumwa kumwarifu mzazi au mlezi."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Programu-jalizi hii kwa sasa inatumika kwa Arifa za Kuingia kwa Kiosk. Wakati mtoto anaingia katika darasa la Shule ya Jumapili kupitia mfumo wa kiosk, tahadhari inaweza kutumwa kwa onyesho la projekta ya OpenLP kumwarifu mzazi au mwanaojitolea."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Programu-jalizi hii hutuma anwani za barua pepe kwa seva za MailChimp. Hakikisha una idhini inayofaa kutoka kwa wanachama wako kabla ya kusawazisha taarifa zao na huduma za wahusika wengine kama MailChimp."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Kuongeza kiungo kipya:\n"
+"1. Nenda menyu ya Viungo kwenye upande na ubonyeze 'Dhibiti Viungo'\n"
+"2. Weka jina la kuonyesha (herufi 2-50)\n"
+"3. Weka URL kamili (lazima ianze na http:// au https://)\n"
+"4. Bonyeza 'Ongeza Kiungo'\n"
+"\n"
+"Kiungo kitaonekana mara moja kwenye menyu ya Viungo."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Kusanidi nakala rudufu za nje:\n"
+"1. Nenda Msimamizi > Programu-jalizi na upate 'Nakala Rudufu za Nje (WebDAV)'\n"
+"2. Bonyeza ikoni ya mipangilio ili kupanua paneli ya usanidi\n"
+"3. Weka URL ya mwisho wa WebDAV (mfano, https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Weka jina lako la mtumiaji na nenosiri\n"
+"5. Kwa hiari weka muda wa nakala rudufu za kiotomatiki katika masaa\n"
+"6. Hifadhi mipangilio yako"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "Kutumia Muunganisho wa MailChimp, unahitaji akaunti ya MailChimp na ufunguo wa API.\n"
+"\n"
+"1. Ingia kwenye akaunti yako ya MailChimp\n"
+"2. Nenda Akaunti > Ziada > Funguo za API\n"
+"3. Unda ufunguo mpya wa API au nakili uliopo\n"
+"4. Weka ufunguo wa API katika mipangilio ya programu-jalizi"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Utatuzi wa matatizo"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Utatuzi – Kitambulisho cha mtumaji kisicho halali"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Utatuzi – Ujumbe haukutolewa"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Utatuzi – SMS haitumwi"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Mipangilio ya uboreshaji"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Matumizi"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Dashibodi ya Vonage"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Bei za Vonage"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Nyaraka za Vonage SMS API"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS inaruhusu arifa za ujumbe wa maandishi kwa ChurchCRM kwa kutumia API ya Vonage (iliyokuwa Nexmo). Tuma tahadhari za SMS kwa wazazi wakati mtoto wao anaingia kupitia mfumo wa kiosk."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage huchargia kwa kila SMS iliyotumwa. Bei hutofautiana kulingana na nchi lengwa. Angalia ukurasa wa bei wa Vonage kwa viwango vya sasa. Akaunti mpya zinapokea mkopo wa majaribio bila malipo kwa upimaji."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Kinachofuatiliwa"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "MailChimp ikisanidiwa, kichupo cha 'MailChimp' kinaonekana kwenye kurasa za kuona Mtu kikioonyesha:\n"
+"\n"
+"- Hali ya kuandikisha kwa barua pepe katika orodha zote\n"
+"- Orodha ambazo mtu ameandikishwa\n"
+"- Takwimu za kuandikisha"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Wakati mwanachama hana picha iliyopakiwa, ChurchCRM huangalia kama wana Gravatar inayohusiana na anwani yao ya barua pepe. Ikiwa Gravatar ipo, inaonyesha picha hiyo. Ikiwa la, mtindo wa picha ya chaguo-msingi uliowekwa utatumika."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Nakala rudufu za kiotomatiki zikiwezeshwa (muda > masaa 0), ChurchCRM itaunda na kupakia nakala rudufu kamili ya hifadhidata kwa muda uliowekwa. Nakala rudufu hufanya kazi kama sehemu ya upakiaji wa kawaida wa ukurasa, kwa hivyo mfumo lazima uwe na shughuli za kawaida za mtumiaji ili kuchochea nakala rudufu.\n"
+"\n"
+"Muda uliopendekezwa:\n"
+"- Nakala rudufu ya kila siku: Masaa 24\n"
+"- Mara mbili kwa siku: Masaa 12\n"
+"- Kila wiki: Masaa 168"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Ikiwezeshwa na kusanidiwa, ChurchCRM hutuma ujumbe wa tahadhari kwa seva yako ya OpenLP kwa kutumia mwisho wa API v2 (POST /api/v2/plugins/alerts). Tahadhari hizi zinaonekana kama arifa za safu kwenye onyesho lako la kuwasilisho."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Ikiwezeshwa, huficha uga wa anwani kwa watu ambao hawakupewa familia"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Ikiwezeshwa, huficha mashamba ya latitudo/longitudo katika Kihariri cha Familia. Uorodheshaji wa kijiografia unaendelea kufanya kazi nyuma ya skrini."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "Unaweza pia kuchochea nakala rudufu ya mkono wakati wowote:\n"
+"1. Nenda ukurasa wa mipangilio ya Nakala Rudufu za Nje (Programu-jalizi > Nakala Rudufu za Nje)\n"
+"2. Chagua aina ya nakala rudufu (Hifadhidata Peke Yake au Nakala Rudufu Kamili)\n"
+"3. Bonyeza 'Hifadhi kwenye WebDAV Sasa'\n"
+"\n"
+"Nakala rudufu za Hifadhidata Peke Yake ni ndogo zaidi na haraka zaidi. Nakala rudufu kamili zinajumuisha picha zilizopakiwa."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Maoni ya ukurasa na mifumo ya urambazaji\n"
+"• Muda wa kikao na ushirikiano\n"
+"• Takwimu za mtumiaji (ikiwa zimewezeshwa katika GA4)\n"
+"• Taarifa za kifaa na kivinjari"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Ukubwa wa faili unazidi kiwango cha seva cha %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Data ya picha haipo katika ombi"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Tafuta watu ambao hawakuhudhuria tukio"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Watu waliokosekana"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Chagua tukio unalotaka"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Uchujaji wa hali ya juu kwa kikundi, uainishaji, na jukumu"
+
+#: 
+msgid "All congregation members included"
+msgstr "Waumini wote wa kanisa wamejumuishwa"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Uhamishaji wa ChMeetings umekamilika kwa mafanikio"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Muundo wa safu wima unaooana na ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Maelezo ya mawasiliano, majukumu ya familia, na tarehe muhimu"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Unda nakala kamili ya hifadhidata ya kanisa lako. Pakua faili la SQL la hifadhidata peke yake au kumbukumbu kamili ikijumuisha picha zilizopakiwa."
+
+#: 
+msgid "Database Backup"
+msgstr "Nakala ya Hifadhidata"
+
+#: 
+msgid "Export"
+msgstr "Hamisha"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Hamisha data ya waumini wa kanisa kwenda muundo wa CSV. Chagua ni sehemu zipi za kujumuisha na uchuje kwa uainishaji, kikundi, jinsia, na zaidi."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Hamisha watu wote katika muundo unaotarajiwa na ChMeetings, na kurahisisha usawazishaji wa data ya waumini wako na jukwaa la ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Hamisha data ya kanisa lako kwenda miundo mbalimbali"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Nakala ya nje (WebDAV) kupitia programu-jalizi"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Imeshindwa kuhamisha CSV ya ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Mpangilio wa rekodi ya familia au mtu binafsi"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Uchaguzi wa sehemu wenye kubadilika"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Nenda kwenye Nakala ya Hifadhidata"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Fungua Uhamishaji wa CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Rejesha kutoka ukurasa wa Nakala ya Mfumo"
 

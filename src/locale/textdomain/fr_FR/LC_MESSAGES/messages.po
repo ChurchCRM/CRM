@@ -109,7 +109,7 @@ msgstr "Code postal"
 
 #: 
 msgid "Envelope"
-msgstr "Enveloppe"
+msgstr "Enveloppe de dons"
 
 #: 
 msgid "Work/Other Email"
@@ -265,7 +265,7 @@ msgstr "Classification"
 
 #: 
 msgid "Add Cart to Event"
-msgstr "Ajouter Panier à Événement"
+msgstr "Ajouter le Panier à l'évènement"
 
 #: 
 msgid "OR"
@@ -273,11 +273,11 @@ msgstr "OU"
 
 #: 
 msgid "Your cart is empty!"
-msgstr "Votre panier est vide!"
+msgstr "Votre panier est vide !"
 
 #: 
 msgid "No family name entered!"
-msgstr "Pas de nom de famille saisi!"
+msgstr "Pas de nom de famille saisi !"
 
 #: 
 msgid "Add Cart to Family"
@@ -629,7 +629,7 @@ msgstr "Gestionnaire de la caisse de dons/Comptable"
 
 #: 
 msgid "Invalid fields or selections. Changes not saved! Please correct and try again!"
-msgstr "Champ ou sélection invalide. Les modifications n'ont pas été enregistrées! Veuillez corriger et essayer à nouveau !"
+msgstr "Champ ou sélection invalide. Les modifications n'ont pas été enregistrées ! Veuillez corriger et essayer à nouveau !"
 
 #: 
 msgid "No funds have been added yet"
@@ -846,7 +846,7 @@ msgstr "Info sur le contact"
 
 #: 
 msgid "Envelope Info"
-msgstr "Enveloppe d'info"
+msgstr "Informations de l'enveloppe de dons"
 
 #: 
 msgid "Custom Fields"
@@ -942,7 +942,7 @@ msgstr "Créé"
 
 #: 
 msgid "Envelope Number"
-msgstr "Numéro de l'enveloppe"
+msgstr "Numéro de l'enveloppe de dons"
 
 #: 
 msgid "Upload Photo"
@@ -1440,7 +1440,7 @@ msgstr "Rôles du groupe"
 
 #: 
 msgid "Group role name changes are saved as soon as the box loses focus"
-msgstr "Les modifications des noms de rôle du groupe sont enregistrées dès que la boîte de dialogue n'est plus flou."
+msgstr "Les modifications apportées au nom du rôle du groupe sont enregistrées dès que la boîte perd le focus"
 
 #: 
 msgid "New Role"
@@ -1456,7 +1456,7 @@ msgstr "Gestionnaire des Propriétés des membres du groupe"
 
 #: 
 msgid "This group currently has no properties!  You can add them in the Group Editor."
-msgstr "Ce groupe n'a actuellement aucune propriété!  Vous pouvez en ajouter dans le gestionnaire de groupe."
+msgstr "Ce groupe n'a actuellement aucune propriété !  Vous pouvez en ajouter dans le gestionnaire de groupe."
 
 #: 
 msgid "Return to Person Record"
@@ -1477,7 +1477,7 @@ msgstr "Gestionnaire de formulaire des Propriétés spécifiques du groupe"
 
 #: 
 msgid "No properties have been added yet"
-msgstr "Aucune propriété n'a été ajouté"
+msgstr "Aucune propriété n'a été ajoutée"
 
 #: 
 msgid "Show in"
@@ -1557,7 +1557,7 @@ msgstr "Connexion"
 
 #: 
 msgid "Envelope Manager"
-msgstr "Gestionnaire d'Enveloppes"
+msgstr "Gestionnaire d'Enveloppes de dons"
 
 #: 
 msgid "Update Family Records"
@@ -1565,7 +1565,7 @@ msgstr "Mettre à jour les enregistrements de la famille"
 
 #: 
 msgid "Update Envelopes"
-msgstr "Mise à jour des enveloppes"
+msgstr "Mise à jour des enveloppes de dons"
 
 #: 
 msgid "Confirm"
@@ -2070,7 +2070,7 @@ msgstr "Veuillez sélectionner une famille à qui attribuer ces dons:"
 
 #: 
 msgid "WARNING: This action can not be undone and may have legal implications!"
-msgstr "AVERTISSEMENT: Cette action ne peut pas être annulée et pourrait avoir des implications juridiques!"
+msgstr "AVERTISSEMENT: Cette action ne peut pas être annulée et pourrait avoir des implications juridiques !"
 
 #: 
 msgid "CURRENT FAMILY WITH DONATIONS"
@@ -2367,7 +2367,7 @@ msgstr "Sélectionner l'année fiscale"
 
 #: 
 msgid "Invalid Editor ID!"
-msgstr "Identifiant de Gestionnaire invalide!"
+msgstr "Identifiant de Gestionnaire invalide !"
 
 #: 
 msgid "Select Season"
@@ -2391,7 +2391,7 @@ msgstr "Automne"
 
 #: 
 msgid "Error: Invalid Editor ID!"
-msgstr "Erreur: Identifiant de Gestionnaire invalide!"
+msgstr "Erreur: Identifiant de Gestionnaire invalide !"
 
 #: 
 msgid "Not a valid date"
@@ -2524,7 +2524,7 @@ msgstr "Membre/Ami"
 
 #: 
 msgid "This option requires at least version 3.22 of MySQL!  Hit browser back button to return to ChurchCRM."
-msgstr "Cette option nécessite au moins la version 3.22 de MySQL! Cliquer sur le bouton retour du navigateur pour revenir à ChurchCRM."
+msgstr "Cette option nécessite au moins la version 3.22 de MySQL ! Cliquez sur le bouton retour du navigateur pour revenir à ChurchCRM."
 
 #: 
 msgid "Work"
@@ -2768,7 +2768,7 @@ msgstr "Cette action effacera également les paiements associés au dépôt"
 
 #: 
 msgid "This action CANNOT be undone, and may have legal implications!"
-msgstr "Cette action est IRRÉVERSIBLE, et peut entraîner des implications juridiques!"
+msgstr "Cette action est IRRÉVERSIBLE, et peut entraîner des implications juridiques !"
 
 #: 
 msgid "Please ensure this what you want to do."
@@ -2784,7 +2784,7 @@ msgstr "Date de dépôt"
 
 #: 
 msgid "This will overwrite the family envelope numbers in the database with those selected on this page.  Continue?"
-msgstr "Cette action va écraser le nombre d'enveloppe par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
+msgstr "Cette action va écraser le nombre d'enveloppe de dons par famille au niveau de la base de données, avec ceux sélectionnés dans cette page. Voulez-vous continuer ?"
 
 #: 
 msgid "Family Select"
@@ -5580,7 +5580,7 @@ msgstr "La base de données a été effacée."
 
 #: 
 msgid "Anniversaries"
-msgstr "Anniversaires"
+msgstr "Anniversaires de Mariage"
 
 #: 
 msgid "New Family Notification Email Error"
@@ -7870,10 +7870,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Cela peut prendre plusieurs minutes pour les grandes bases de données. Ne fermez pas cette page."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Résumé de la mise à niveau"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Utilisez des outils externes (GPG, 7-Zip) pour chiffrer les sauvegardes avant de les stocker hors site."
 
@@ -8646,10 +8642,6 @@ msgid "Save the file and refresh this page"
 msgstr "Enregistrez le fichier et actualisez cette page"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Définissez true pour désactiver l'entrée d'adresses personnelles pour les personnes non affiliées dans l'Éditeur de personne. Définissez false pour activer l'entrée d'adresses pour les personnes sans assignation familiale."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Commence par <strong>http://</strong> ou <strong>https://</strong>"
 
@@ -9116,10 +9108,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Oui, supprimez cette opportunité"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Les requêtes pour lesquelles l'utilisateur doit avoir les autorisations de finances pour utiliser"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fonds"
 
@@ -9404,10 +9392,6 @@ msgstr "Anniversaires à venir"
 #: 
 msgid "Waiting to Check In"
 msgstr "En attente d'enregistrement"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Lorsqu'activé, les nouveaux appareils kiosque peuvent s'enregistrer pendant 30 secondes."
 
 #: 
 msgid "Your child"
@@ -10573,20 +10557,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Détecter automatiquement les coordonnées via l'adresse"
 
 #: 
-msgid "Basic Information"
-msgstr "Informations générales"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Informations de la paroisse enregistrées avec succès."
-
-#: 
 msgid "Church name is required."
 msgstr "Le nom de la paroisse est obligatoire."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Le nom de la paroisse est obligatoire. Veuillez compléter l'onglet Informations générales."
 
 #: 
 msgid "City is required."
@@ -10645,22 +10617,6 @@ msgid "Language & Localization"
 msgstr "Langue et localisation"
 
 #: 
-msgid "Location & Map"
-msgstr "Emplacement et carte"
-
-#: 
-msgid "Location Information"
-msgstr "Informations de localisation"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "E-mail de contact principal pour les communications de la paroisse."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Numéro de téléphone principal de la paroisse."
-
-#: 
 msgid "Map"
 msgstr "Carte"
 
@@ -10711,10 +10667,6 @@ msgstr "L'adresse postale est obligatoire."
 #: 
 msgid "Student Information"
 msgstr "Informations sur l'étudiant"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Langue du système pour la paroisse. Affecte les formats de date, de téléphone et d'autres localisations."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11059,10 +11011,6 @@ msgid "Auto-mapped"
 msgstr "Mappé automatiquement"
 
 #: 
-msgid "BCC"
-msgstr "CCI"
-
-#: 
 msgid "BCC All"
 msgstr "CCI à tous"
 
@@ -11089,10 +11037,6 @@ msgstr "Sauvegarder vers le stockage externe maintenant"
 #: 
 msgid "Browse all available plugins"
 msgstr "Parcourir tous les plugins disponibles"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Parcourir tous les événements et activités de la paroisse"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11527,10 +11471,6 @@ msgid "Explore with Demo Data"
 msgstr "Explorer avec des données de démonstration"
 
 #: 
-msgid "Export"
-msgstr "Exporter"
-
-#: 
 msgid "Export data to CSV format for external applications"
 msgstr "Exporter les données au format CSV pour des applications externes"
 
@@ -11828,7 +11768,7 @@ msgstr "Gérer les options %s"
 
 #: 
 msgid "Manage Envelopes"
-msgstr "Gérer les enveloppes"
+msgstr "Gérer les enveloppes de dons"
 
 #: 
 msgid "Manage Sunday school classes, teachers, and student attendance"
@@ -12469,10 +12409,6 @@ msgid "The property is successfully removed."
 msgstr "La propriété a été supprimée avec succès."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Ces liens apparaissent dans le menu « Liens » de la barre de navigation latérale lorsque ce plugin est activé."
-
-#: 
 msgid "To Family"
 msgstr "Vers la famille"
 
@@ -12739,10 +12675,6 @@ msgstr "fonds"
 #: 
 msgid "members"
 msgstr "fidèles"
-
-#: 
-msgid "name@example.com"
-msgstr "nom@exemple.fr"
 
 #: 
 msgid "opportunities"
@@ -13253,11 +13185,6 @@ msgstr "Valeur de champ"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Trouver les personnes qui n'ont pas assisté à un événement"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Trouver les personnes qui se sont engagées une année mais pas l'autre"
 
@@ -13350,11 +13277,6 @@ msgstr "Anniversaires d'adhésion"
 #: 
 msgid "Minimum Age"
 msgstr "Âge minimum"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Personnes manquantes"
 
 #. Context: query_qry
 #: 
@@ -13540,11 +13462,6 @@ msgstr "Sélectionnez le type d'événement..."
 #: 
 msgid "Select field to search for."
 msgstr "Sélectionnez le champ de recherche."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Sélectionnez l'événement souhaité"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13926,11 +13843,6 @@ msgstr "Utilisations courantes des liens personnalisés :\n"
 msgid "Costs"
 msgstr "Coûts"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Personnes avec carte de crédit"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14004,11 +13916,6 @@ msgstr "Activer l'utilisation d'enveloppes de dons"
 msgid "Enable use of scanned checks"
 msgstr "Activer l'utilisation de chèques numérisés"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Engagement de famille par exercice fiscal"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14018,11 +13925,6 @@ msgstr "Fonctionnalités"
 msgid "Finance permission query IDs"
 msgstr "IDs de requête d'autorisation de finance"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Trouver des étudiants inscrits"
-
 #: 
 msgid "Find family"
 msgstr "Trouver la famille"
@@ -14031,11 +13933,6 @@ msgstr "Trouver la famille"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Trouver votre URL de serveur"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Exercice fiscal."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14101,11 +13998,6 @@ msgstr "Site Web Gravatar"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar fonctionne en convertissant les adresses e-mail en un hash (MD5). L'adresse e-mail réelle n'est jamais envoyée aux serveurs de Gravatar - seul le hash est utilisé pour rechercher l'image."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groupe d'étudiants inscrits"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14242,11 +14134,6 @@ msgstr "Site Web OpenLP"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP est un logiciel de présentation libre et open-source conçu pour les églises. Ce plugin permet à ChurchCRM d'envoyer des notifications et des alertes directement à votre affichage OpenLP."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Personnes configurées pour payer par carte de crédit."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14272,11 +14159,6 @@ msgstr "Les numéros de téléphone doivent être au format E.164 : code du pays
 "\n"
 "Les numéros de téléphone des destinataires dans les profils des membres ChurchCRM doivent inclure le code du pays pour que le SMS fonctionne correctement."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Résumé des engagements par nom de famille pour chaque fonds pour l'exercice fiscal sélectionné"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14295,11 +14177,6 @@ msgstr "Remarque relative à la confidentialité"
 #: 
 msgid "Quick Settings"
 msgstr "Paramètres rapides"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Étudiants inscrits"
 
 #: 
 msgid "SMTP Authentication"
@@ -14471,11 +14348,6 @@ msgstr "Paramètres de mise à niveau"
 msgid "Use Cases"
 msgstr "Cas d'utilisation"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Autorisation utilisateur pour exporter des fichiers CSV"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14577,4 +14449,99 @@ msgstr "• Vues de pages et modèles de navigation\n"
 "• Durée de session et engagement\n"
 "• Données démographiques des utilisateurs (si activé dans GA4)\n"
 "• Informations sur l'appareil et le navigateur"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "La taille du fichier dépasse la limite du serveur de %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Données d'image manquantes dans la requête"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Trouver les personnes n'ayant pas participé à un événement"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Personnes manquantes"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Sélectionner l'événement souhaité"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtrage avancé par groupe, classification et rôle"
+
+#: 
+msgid "All congregation members included"
+msgstr "Tous les membres de la congrégation inclus"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Exportation ChMeetings effectuée avec succès"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Format de colonnes compatible ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informations de contact, rôles familiaux et dates clés"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Créez une sauvegarde complète de la base de données de votre paroisse. Téléchargez un fichier SQL contenant uniquement la base de données ou une archive complète incluant les photos téléversées."
+
+#: 
+msgid "Database Backup"
+msgstr "Sauvegarde de la base de données"
+
+#: 
+msgid "Export"
+msgstr "Exporter"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Exportez les données de la congrégation au format CSV. Choisissez les champs à inclure et filtrez par classification, groupe, sexe et bien plus encore."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Exportez toutes les personnes dans le format attendu par ChMeetings, facilitant ainsi la synchronisation des données de votre congrégation avec la plateforme ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Exportez les données de votre paroisse dans différents formats"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Sauvegarde externe (WebDAV) via plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Échec de l'exportation du CSV ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Disposition par famille ou par individu"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Sélection flexible des champs"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Accéder à la sauvegarde de la base de données"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Ouvrir l'exportation CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Restaurer depuis la page de sauvegarde système"
 

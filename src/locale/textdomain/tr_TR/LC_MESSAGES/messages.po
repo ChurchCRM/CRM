@@ -7873,10 +7873,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Bu işlem büyük veritabanları için birkaç dakika sürebilir. Bu sayfayı kapatmayın."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Yükseltme Özeti"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Yedekleri saha dışında saklamadan önce şifrelemek için harici araçlar (GPG, 7-Zip) kullanın."
 
@@ -8649,10 +8645,6 @@ msgid "Save the file and refresh this page"
 msgstr "Dosyayı kaydedin ve bu sayfayı yenileyin"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Kişi Düzenleyici'de bir aileye bağlı olmayan kişiler için kişisel adres girişini devre dışı bırakmak için true olarak ayarlayın. Bir aile ataması olmayan kişiler için adres girişini etkinleştirmek için false olarak ayarlayın."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "<strong>http://</strong> veya <strong>https://</strong> ile başlar"
 
@@ -9119,10 +9111,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Evet, bu Fırsatı sil"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Kullanıcının kullanmak için finans izinlerine sahip olması gereken sorgular"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fon(lar)"
 
@@ -9407,10 +9395,6 @@ msgstr "Yaklaşan Doğum Günleri"
 #: 
 msgid "Waiting to Check In"
 msgstr "Giriş Bekliyor"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Etkinleştirildiğinde, yeni kiosk cihazları 30 saniye boyunca kayıt olabilir."
 
 #: 
 msgid "Your child"
@@ -10576,20 +10560,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Adres kullanarak koordinatları otomatik algıla"
 
 #: 
-msgid "Basic Information"
-msgstr "Temel Bilgiler"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Kilise bilgileri başarıyla kaydedildi."
-
-#: 
 msgid "Church name is required."
 msgstr "Kilise adı zorunludur."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Kilise adı zorunludur. Lütfen Temel Bilgiler sekmesini tamamlayın."
 
 #: 
 msgid "City is required."
@@ -10648,22 +10620,6 @@ msgid "Language & Localization"
 msgstr "Dil ve Yerelleştirme"
 
 #: 
-msgid "Location & Map"
-msgstr "Konum ve Harita"
-
-#: 
-msgid "Location Information"
-msgstr "Konum Bilgisi"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Kilise iletişimi için ana iletişim e-postası."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Kilisenin ana iletişim telefon numarası."
-
-#: 
 msgid "Map"
 msgstr "Harita"
 
@@ -10714,10 +10670,6 @@ msgstr "Sokak adresi zorunludur."
 #: 
 msgid "Student Information"
 msgstr "Öğrenci Bilgisi"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Kilise için sistem dili. Tarih biçimlerini, telefon biçimlerini ve diğer yerelleştirmeleri etkiler."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11062,10 +11014,6 @@ msgid "Auto-mapped"
 msgstr "Otomatik eşlendi"
 
 #: 
-msgid "BCC"
-msgstr "GBK"
-
-#: 
 msgid "BCC All"
 msgstr "Tümüne GBK"
 
@@ -11092,10 +11040,6 @@ msgstr "Şimdi Harici Depolamaya Yedekle"
 #: 
 msgid "Browse all available plugins"
 msgstr "Tüm mevcut eklentilere göz at"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Tüm kilise etkinliklerine ve faaliyetlerine göz at"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11532,10 +11476,6 @@ msgstr "Genişlet"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Demo Verileriyle Keşfet"
-
-#: 
-msgid "Export"
-msgstr "Dışa Aktar"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12488,10 +12428,6 @@ msgid "The property is successfully removed."
 msgstr "Özellik başarıyla kaldırıldı."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Bu bağlantılar, bu eklenti etkinleştirildiğinde gezinme kenar çubuğundaki \"Bağlantılar\" menüsünde görünür."
-
-#: 
 msgid "To Family"
 msgstr "Aileye"
 
@@ -13280,11 +13216,6 @@ msgstr "Alan Değeri"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Bir etkinliğe katılmayan kişileri bulun"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Bir yıl söz veren ancak diğer bir yıl söz vermeyen kişileri bulun"
 
@@ -13377,11 +13308,6 @@ msgstr "Üyelik yıldönümleri"
 #: 
 msgid "Minimum Age"
 msgstr "Minimum Yaş"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Kayıp kişiler"
 
 #. Context: query_qry
 #: 
@@ -13574,11 +13500,6 @@ msgstr "Aranacak alanı seçin."
 
 #. Context: queryparameters_qrp
 #: 
-msgid "Select the desired event"
-msgstr "İstediğiniz etkinliği seçin"
-
-#. Context: queryparameters_qrp
-#: 
 msgid "Select the desired family role."
 msgstr "İstediğiniz aile rolünü seçin."
 
@@ -13727,4 +13648,857 @@ msgstr "örneğin Pazar Servisi"
 #: 
 msgid "member"
 msgstr "üye"
+
+#. plugin:mailchimp:section:1:content
+#: 
+msgid "- **Dashboard**: View all your MailChimp lists with subscriber statistics\n"
+"- **List Maintenance**: Identify people in MailChimp but not in CRM, and vice versa\n"
+"- **Contact Integration**: View MailChimp subscription status on Person and Family pages\n"
+"- **Automatic Sync**: Hooks into person/family updates to keep MailChimp in sync"
+msgstr "- **Gösterge Paneli**: Abone istatistikleriyle tüm MailChimp listelerinizi görüntüleyin\n"
+"- **Liste Bakımı**: MailChimp'te olup CRM'de olmayan kişileri ve tam tersini tespit edin\n"
+"- **İletişim Entegrasyonu**: Kişi ve Aile sayfalarında MailChimp abonelik durumunu görüntüleyin\n"
+"- **Otomatik Senkronizasyon**: MailChimp'i güncel tutmak için kişi/aile güncellemelerine bağlanır"
+
+#. plugin:vonage:section:1:content
+#: 
+msgid "1. Create a Vonage account at https://dashboard.nexmo.com/sign-up (new accounts include free trial credit)\n"
+"2. Find your API Key and API Secret on the Vonage Dashboard homepage\n"
+"3. Go to Numbers > Buy Numbers and purchase a number with SMS capability\n"
+"4. Note the number in E.164 format (e.g., +14155551234)\n"
+"5. In ChurchCRM, enable the Vonage SMS plugin and enter your credentials"
+msgstr "1. https://dashboard.nexmo.com/sign-up adresinden bir Vonage hesabı oluşturun (yeni hesaplara ücretsiz deneme kredisi verilir)\n"
+"2. Vonage Gösterge Paneli ana sayfasında API Anahtarınızı ve API Gizli Anahtarınızı bulun\n"
+"3. Numaralar > Numara Satın Al bölümüne gidip SMS özellikli bir numara satın alın\n"
+"4. Numarayı E.164 formatında not edin (örn. +905551234567)\n"
+"5. ChurchCRM'de Vonage SMS eklentisini etkinleştirin ve kimlik bilgilerinizi girin"
+
+#. plugin:google-analytics:section:0:content
+#: 
+msgid "1. Go to Google Analytics (analytics.google.com)\n"
+"2. Create a property or select an existing one\n"
+"3. Go to Admin → Data Streams → Web\n"
+"4. Copy the Measurement ID (starts with G-)"
+msgstr "1. Google Analytics'e gidin (analytics.google.com)\n"
+"2. Bir mülk oluşturun veya mevcut bir mülkü seçin\n"
+"3. Yönetici → Veri Akışları → Web bölümüne gidin\n"
+"4. Ölçüm Kimliğini kopyalayın (G- ile başlar)"
+
+#. plugin:openlp:section:2:content
+#: 
+msgid "1. Install OpenLP 3.0 or later on your presentation computer\n"
+"2. Enable the Remote plugin in OpenLP (Settings → Configure OpenLP → Plugins)\n"
+"3. Enable the Alerts plugin in OpenLP for alert display support\n"
+"4. Note the IP address of the OpenLP computer\n"
+"5. Enter the server URL in the format: http://IP_ADDRESS:4316\n"
+"6. If you've configured authentication in OpenLP, enter the username and password"
+msgstr "1. Sunum bilgisayarınıza OpenLP 3.0 veya üstünü yükleyin\n"
+"2. OpenLP'de Uzak eklentiyi etkinleştirin (Ayarlar → OpenLP'yi Yapılandır → Eklentiler)\n"
+"3. Uyarı gösterimi için OpenLP'de Uyarılar eklentisini etkinleştirin\n"
+"4. OpenLP bilgisayarının IP adresini not edin\n"
+"5. Sunucu URL'sini şu biçimde girin: http://IP_ADRESI:4316\n"
+"6. OpenLP'de kimlik doğrulama yapılandırdıysanız kullanıcı adı ve parolayı girin"
+
+#. plugin:mailchimp:section:2:content
+#: 
+msgid "Access the MailChimp Dashboard from the Email menu. The dashboard shows:\n"
+"\n"
+"- Member count for each list\n"
+"- Campaign statistics\n"
+"- Unsubscribe counts\n"
+"- List maintenance tools"
+msgstr "MailChimp Gösterge Paneline E-posta menüsünden erişin. Gösterge paneli şunları gösterir:\n"
+"\n"
+"- Her liste için üye sayısı\n"
+"- Kampanya istatistikleri\n"
+"- Abonelik iptali sayıları\n"
+"- Liste bakım araçları"
+
+#. plugin:custom-links:section:1:title
+#: 
+msgid "Adding Links"
+msgstr "Bağlantı Ekleme"
+
+#. plugin:custom-links:section:2:content
+#: 
+msgid "All configured links are shown in a table. You can:\n"
+"- View the link name and URL\n"
+"- Click the URL to test it opens correctly\n"
+"- Delete links you no longer need\n"
+"\n"
+"Links appear in the order they were added in the navigation menu."
+msgstr "Tüm yapılandırılmış bağlantılar bir tabloda gösterilir. Yapabilecekleriniz:\n"
+"- Bağlantı adını ve URL'yi görüntüleyin\n"
+"- URL'ye tıklayarak doğru açılıp açılmadığını test edin\n"
+"- Artık ihtiyaç duymadığınız bağlantıları silin\n"
+"\n"
+"Bağlantılar, gezinti menüsünde eklendikleri sırayla görünür."
+
+#: 
+msgid "Allow Pre-release Upgrades"
+msgstr "Ön Sürüm Yükseltmelerine İzin Ver"
+
+#: 
+msgid "Allow recording of non-tax-deductible payments in the finance module"
+msgstr "Finans modülünde vergiden düşülemeyen ödemelerin kaydedilmesine izin ver"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Taranmış çek görsellerinin depozito kayıtlarına eklenmesine izin ver"
+
+#: 
+msgid "Allow system upgrades to releases marked as 'pre release' on GitHub"
+msgstr "GitHub'da 'ön sürüm' olarak işaretlenmiş sürümlere sistem yükseltmesine izin ver"
+
+#: 
+msgid "Allow unauthenticated access to calendar events via public HTML, ICS, and JSON URLs. Required for sharing calendars with external apps."
+msgstr "Takvim etkinliklerine genel HTML, ICS ve JSON URL'leri aracılığıyla kimlik doğrulamasız erişime izin ver. Takvimleri harici uygulamalarla paylaşmak için gereklidir."
+
+#: 
+msgid "Allow visitors to create their own family record via the self-registration page"
+msgstr "Ziyaretçilerin kendi kendine kayıt sayfası aracılığıyla aile kaydı oluşturmasına izin ver"
+
+#: 
+msgid "Allow visitors to self-register as new families."
+msgstr "Ziyaretçilerin yeni aileler olarak kendi kendine kaydolmasına izin verin."
+
+#. plugin:external-backup:section:5:content
+#: 
+msgid "Any WebDAV-compatible service works with this plugin:\n"
+"\n"
+"- Nextcloud (recommended)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (with WebDAV)\n"
+"- Apache mod_dav\n"
+"- nginx with WebDAV module\n"
+"\n"
+"Note: Some services require app-specific passwords for WebDAV access."
+msgstr "WebDAV uyumlu herhangi bir hizmet bu eklentiyle çalışır:\n"
+"\n"
+"- Nextcloud (önerilir)\n"
+"- ownCloud\n"
+"- Synology NAS\n"
+"- QNAP NAS\n"
+"- Box.com (WebDAV ile)\n"
+"- Apache mod_dav\n"
+"- nginx (WebDAV modülü ile)\n"
+"\n"
+"Not: Bazı hizmetler WebDAV erişimi için uygulamaya özel parolalar gerektirir."
+
+#. plugin:openlp:section:4:title
+#: 
+msgid "Authentication"
+msgstr "Kimlik Doğrulama"
+
+#. plugin:openlp:section:4:content
+#: 
+msgid "Authentication is required for API v2 if you've enabled it in OpenLP's Remote plugin settings. The plugin uses HTTP Basic Authentication. Most local network setups don't require authentication, but it's recommended for security."
+msgstr "OpenLP'nin Uzak eklenti ayarlarında etkinleştirdiyseniz API v2 için kimlik doğrulama gereklidir. Eklenti HTTP Temel Kimlik Doğrulaması kullanır. Çoğu yerel ağ kurulumu kimlik doğrulama gerektirmez, ancak güvenlik için önerilir."
+
+#: 
+msgid "Auto TLS"
+msgstr "Otomatik TLS"
+
+#. plugin:external-backup:section:2:title
+#: 
+msgid "Auto-Backup"
+msgstr "Otomatik Yedekleme"
+
+#: 
+msgid "BCC All Mail To"
+msgstr "Tüm Postaları BCC'ye Gönder"
+
+#. plugin:external-backup:section:4:content
+#: 
+msgid "Before relying on external backups, test your connection:\n"
+"1. Go to Plugins > External Backup\n"
+"2. Click 'Test WebDAV Connection'\n"
+"3. Verify you see a success message\n"
+"\n"
+"Common issues:\n"
+"- 401/403 errors: Check username and password\n"
+"- Connection timeout: Verify the endpoint URL is correct\n"
+"- Certificate errors: Ensure the WebDAV server has a valid SSL certificate"
+msgstr "Harici yedeklemelere güvenmeden önce bağlantınızı test edin:\n"
+"1. Eklentiler > Harici Yedekleme bölümüne gidin\n"
+"2. 'WebDAV Bağlantısını Test Et' düğmesine tıklayın\n"
+"3. Başarı mesajı gördüğünüzü doğrulayın\n"
+"\n"
+"Yaygın sorunlar:\n"
+"- 401/403 hataları: Kullanıcı adı ve parolayı kontrol edin\n"
+"- Bağlantı zaman aşımı: Uç nokta URL'sinin doğru olduğunu doğrulayın\n"
+"- Sertifika hataları: WebDAV sunucusunun geçerli bir SSL sertifikasına sahip olduğundan emin olun"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Gravatar mevcut olmadığında neyin görüneceğini seçin:\n"
+"• Mystery Person - Gri silüet taslağı\n"
+"• Identicon - E-postaya dayalı geometrik desen\n"
+"• MonsterID - Benzersiz üretilmiş canavar yüzü\n"
+"• Wavatar - Soyut üretilmiş yüz\n"
+"• Retro - 8-bit atari tarzı piksel sanatı\n"
+"• RoboHash - Benzersiz üretilmiş robot\n"
+"• Boş - Şeffaf (baş harflere döner)"
+
+#: 
+msgid "Comma-separated query IDs that require finance permissions to view"
+msgstr "Görüntülemek için finans izni gerektiren virgülle ayrılmış sorgu kimlikleri"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Özel bağlantılar için yaygın kullanımlar:\n"
+"- Kilise web sitesi\n"
+"- Çevrimiçi bağış portalı\n"
+"- Gönüllü kayıt formları\n"
+"- Kilise kaynakları\n"
+"- Ortak kuruluş siteleri\n"
+"- Bulut depolama klasörleri\n"
+"- Etkinlik kayıt sayfaları"
+
+#. plugin:external-backup:section:1:title
+#: 
+msgid "Configuration"
+msgstr "Yapılandırma"
+
+#: 
+msgid "Continent"
+msgstr "Kıta"
+
+#. plugin:vonage:section:6:title
+#: 
+msgid "Costs"
+msgstr "Maliyetler"
+
+#. plugin:openlp:section:0:title
+#. plugin:vonage:section:0:title
+#: 
+msgid "Current Usage"
+msgstr "Mevcut Kullanım"
+
+#. plugin:gravatar:section:1:title
+#: 
+msgid "Default Image Styles"
+msgstr "Varsayılan Resim Stilleri"
+
+#: 
+msgid "Default Map View"
+msgstr "Varsayılan Harita Görünümü"
+
+#: 
+msgid "Deposit ticket type"
+msgstr "Depozito makbuzu türü"
+
+#: 
+msgid "Do Not Email Property"
+msgstr "E-posta Gönderme Özelliği"
+
+#: 
+msgid "Do Not SMS Property"
+msgstr "SMS Gönderme Özelliği"
+
+#. plugin:openlp:link:3:label
+#: 
+msgid "Download OpenLP"
+msgstr "OpenLP İndir"
+
+#. plugin:vonage:link:3:label
+#: 
+msgid "E.164 Phone Number Format"
+msgstr "E.164 Telefon Numarası Biçimi"
+
+#: 
+msgid "Enable Email"
+msgstr "E-postayı Etkinleştir"
+
+#: 
+msgid "Enable Events Menu"
+msgstr "Etkinlikler Menüsünü Etkinleştir"
+
+#: 
+msgid "Enable External Calendar API"
+msgstr "Harici Takvim API'sini Etkinleştir"
+
+#: 
+msgid "Enable email sending from ChurchCRM. Required for password reset, notifications, and email links."
+msgstr "ChurchCRM'den e-posta göndermeyi etkinleştir. Parola sıfırlama, bildirimler ve e-posta bağlantıları için gereklidir."
+
+#: 
+msgid "Enable if your SMTP server requires a username and password"
+msgstr "SMTP sunucunuz kullanıcı adı ve parola gerektiriyorsa etkinleştirin"
+
+#: 
+msgid "Enable or disable the Sunday School module and sidebar menu."
+msgstr "Pazar Okulu modülünü ve kenar çubuğu menüsünü etkinleştirin veya devre dışı bırakın."
+
+#: 
+msgid "Enable the use of numbered donation envelopes for tracking contributions"
+msgstr "Bağışları takip etmek için numaralı bağış zarflarının kullanımını etkinleştir"
+
+#: 
+msgid "Enable use of donation envelopes"
+msgstr "Bağış zarfları kullanımını etkinleştir"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Taranan çek kullanımını etkinleştir"
+
+#. plugin:mailchimp:section:1:title
+#: 
+msgid "Features"
+msgstr "Özellikler"
+
+#: 
+msgid "Finance permission query IDs"
+msgstr "Finans izni sorgu kimlikleri"
+
+#: 
+msgid "Find family"
+msgstr "Aile bul"
+
+#. plugin:openlp:section:3:title
+#: 
+msgid "Finding Your Server URL"
+msgstr "Sunucu URL'nizi Bulma"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "Güvenlik için:\n"
+"- Yalnızca yöneticiler bağlantı ekleyebilir veya kaldırabilir\n"
+"- 'Bağlantıları Yönet' seçeneği yalnızca yöneticiler için görünür\n"
+"- Bağlantılar http:// veya https:// protokollerini kullanmalıdır\n"
+"- Adlarda veya URL'lerde HTML etiketlerine izin verilmez\n"
+"- Tüm giriş doğrulanır ve temizlenir"
+
+#. plugin:google-analytics:link:1:label
+#: 
+msgid "GA4 Setup Guide"
+msgstr "GA4 Kurulum Kılavuzu"
+
+#. plugin:mailchimp:section:0:title
+#: 
+msgid "Getting Started"
+msgstr "Başlarken"
+
+#. plugin:google-analytics:section:0:title
+#: 
+msgid "Getting Your GA4 Measurement ID"
+msgstr "GA4 Ölçüm Kimliğinizi Alma"
+
+#. plugin:google-analytics:summary
+#: 
+msgid "Google Analytics 4 (GA4) tracks how users interact with ChurchCRM, providing insights into page views, user engagement, and feature usage."
+msgstr "Google Analytics 4 (GA4), kullanıcıların ChurchCRM ile nasıl etkileşim kurduğunu izleyerek sayfa görüntülemeleri, kullanıcı etkileşimi ve özellik kullanımı hakkında bilgiler sağlar."
+
+#. plugin:google-analytics:link:0:label
+#: 
+msgid "Google Analytics Help"
+msgstr "Google Analytics Yardım"
+
+#. plugin:google-analytics:section:2:content
+#: 
+msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
+msgstr "Google Analytics anonimleştirilmiş kullanım verileri toplar. ChurchCRM kayıtlarından hiçbir kişisel bilgi Google'a gönderilmez. Kilisenizin veri politikasına bir gizlilik bildirimi eklemeyi düşünün."
+
+#. plugin:gravatar:summary
+#: 
+msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+msgstr "Gravatar (Küresel Olarak Tanınan Avatar), ChurchCRM'de yüklenmiş fotoğrafı olmayan üyeler için gravatar.com'dan profil fotoğraflarını görüntüler."
+
+#. plugin:gravatar:link:1:label
+#: 
+msgid "Gravatar Image Options"
+msgstr "Gravatar Resim Seçenekleri"
+
+#. plugin:gravatar:link:0:label
+#: 
+msgid "Gravatar Website"
+msgstr "Gravatar Web Sitesi"
+
+#. plugin:gravatar:section:2:content
+#: 
+msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
+msgstr "Gravatar, e-posta adreslerini bir karma değerine (MD5) dönüştürerek çalışır. Gerçek e-posta adresi asla Gravatar sunucularına gönderilmez; yalnızca karma değeri görüntüyü aramak için kullanılır."
+
+#: 
+msgid "Hide Latitude/Longitude"
+msgstr "Enlemi/Boylamı Gizle"
+
+#: 
+msgid "Hide Person Address"
+msgstr "Kişi Adresini Gizle"
+
+#. plugin:gravatar:section:0:title
+#. plugin:openlp:section:1:title
+#: 
+msgid "How it works"
+msgstr "Nasıl çalışır"
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "Depozito makbuzu sayfasına kaç çek yazdırılacak"
+
+#. plugin:vonage:section:3:content
+#: 
+msgid "If SMS messages aren't being sent:\n"
+"1. Verify API Key and Secret are correct (no extra spaces)\n"
+"2. Check that the From Number is a valid Vonage number you own\n"
+"3. Ensure recipient phone numbers include country code\n"
+"4. Check your Vonage account balance\n"
+"5. Review the Vonage Dashboard > SMS > Logs for delivery status"
+msgstr "SMS mesajları gönderilmiyorsa:\n"
+"1. API Anahtarı ve Gizli Anahtarın doğru olduğunu doğrulayın (fazladan boşluk olmamalı)\n"
+"2. Gönderen Numaranın sahip olduğunuz geçerli bir Vonage numarası olduğunu kontrol edin\n"
+"3. Alıcı telefon numaralarının ülke kodunu içerdiğinden emin olun\n"
+"4. Vonage hesap bakiyenizi kontrol edin\n"
+"5. Teslimat durumu için Vonage Gösterge Paneli > SMS > Günlükler bölümünü inceleyin"
+
+#. plugin:openlp:section:5:content
+#: 
+msgid "If alerts aren't appearing:\n"
+"1. Verify OpenLP is running and the Remote plugin is active\n"
+"2. Ensure the Alerts plugin is enabled in OpenLP\n"
+"3. Check that the server URL is correct (try accessing it in a browser)\n"
+"4. Verify firewall settings allow connections on port 4316\n"
+"5. If using authentication, verify credentials are correct"
+msgstr "Uyarılar görünmüyorsa:\n"
+"1. OpenLP'nin çalıştığını ve Uzak eklentinin etkin olduğunu doğrulayın\n"
+"2. OpenLP'de Uyarılar eklentisinin etkin olduğundan emin olun\n"
+"3. Sunucu URL'sinin doğru olduğunu kontrol edin (bir tarayıcıda erişmeyi deneyin)\n"
+"4. Güvenlik duvarı ayarlarının 4316 numaralı bağlantı noktasında bağlantılara izin verdiğini doğrulayın\n"
+"5. Kimlik doğrulama kullanılıyorsa kimlik bilgilerinin doğru olduğunu doğrulayın"
+
+#. plugin:vonage:section:5:content
+#: 
+msgid "If messages are sent but not received:\n"
+"1. Check Vonage Dashboard > SMS > Logs for delivery status\n"
+"2. Verify the recipient number is correct and can receive SMS\n"
+"3. Some carriers may block messages from unknown numbers\n"
+"4. Check if the destination country has SMS restrictions"
+msgstr "Mesajlar gönderildi ancak alınmadıysa:\n"
+"1. Teslimat durumu için Vonage Gösterge Paneli > SMS > Günlükler bölümünü kontrol edin\n"
+"2. Alıcı numarasının doğru olduğunu ve SMS alabileceğini doğrulayın\n"
+"3. Bazı operatörler bilinmeyen numaralardan gelen mesajları engelleyebilir\n"
+"4. Hedef ülkenin SMS kısıtlamaları olup olmadığını kontrol edin"
+
+#. plugin:vonage:section:4:content
+#: 
+msgid "If you receive invalid sender ID errors:\n"
+"1. Use a phone number you've purchased from Vonage\n"
+"2. Format the number in E.164 format (+14155551234)\n"
+"3. Note: Alphanumeric sender IDs may be restricted in some countries"
+msgstr "Geçersiz gönderici kimliği hataları alıyorsanız:\n"
+"1. Vonage'dan satın aldığınız bir telefon numarası kullanın\n"
+"2. Numarayı E.164 formatında biçimlendirin (+905551234567)\n"
+"3. Not: Alfanümerik gönderici kimlikleri bazı ülkelerde kısıtlanmış olabilir"
+
+#. plugin:external-backup:section:6:content
+#: 
+msgid "Important security notes:\n"
+"\n"
+"1. Always use HTTPS endpoints to encrypt backups in transit\n"
+"2. Use app-specific passwords when available (Nextcloud, ownCloud)\n"
+"3. Store backups in a folder with restricted access\n"
+"4. Periodically download and verify your backups are valid\n"
+"5. Consider encrypting sensitive backups with external tools before uploading"
+msgstr "Önemli güvenlik notları:\n"
+"\n"
+"1. Aktarım sırasında yedeklemeleri şifrelemek için her zaman HTTPS uç noktaları kullanın\n"
+"2. Mevcut olduğunda uygulamaya özel parolalar kullanın (Nextcloud, ownCloud)\n"
+"3. Yedeklemeleri kısıtlı erişime sahip bir klasörde saklayın\n"
+"4. Yedeklemelerinizin geçerli olduğunu periyodik olarak indirip doğrulayın\n"
+"5. Hassas yedeklemeleri yüklemeden önce harici araçlarla şifrelemeyi düşünün"
+
+#: 
+msgid "Initial zoom level when opening the map"
+msgstr "Harita açılırken başlangıç yakınlaştırma düzeyi"
+
+#: 
+msgid "Learn more"
+msgstr "Daha fazla bilgi"
+
+#: 
+msgid "Log Settings"
+msgstr "Günlük Ayarları"
+
+#. plugin:mailchimp:summary
+#: 
+msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
+msgstr "MailChimp Entegrasyonu, ChurchCRM kişileri ile MailChimp e-posta pazarlama listeleri arasında senkronizasyonu etkinleştirir."
+
+#. plugin:custom-links:section:2:title
+#: 
+msgid "Managing Links"
+msgstr "Bağlantıları Yönetme"
+
+#: 
+msgid "Neighborhood"
+msgstr "Mahalle"
+
+#. plugin:openlp:link:2:label
+#: 
+msgid "OpenLP API v2 Source"
+msgstr "OpenLP API v2 Kaynağı"
+
+#. plugin:openlp:link:1:label
+#: 
+msgid "OpenLP Documentation"
+msgstr "OpenLP Belgeleri"
+
+#. plugin:openlp:link:0:label
+#: 
+msgid "OpenLP Website"
+msgstr "OpenLP Web Sitesi"
+
+#. plugin:openlp:summary
+#: 
+msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
+msgstr "OpenLP, kiliseler için tasarlanmış ücretsiz, açık kaynaklı bir sunum yazılımıdır. Bu eklenti, ChurchCRM'nin OpenLP ekranınıza doğrudan bildirim ve uyarı göndermesine olanak tanır."
+
+#. plugin:mailchimp:section:3:title
+#: 
+msgid "Person/Family Integration"
+msgstr "Kişi/Aile Entegrasyonu"
+
+#. plugin:vonage:section:2:title
+#: 
+msgid "Phone Number Format"
+msgstr "Telefon Numarası Biçimi"
+
+#. plugin:vonage:section:2:content
+#: 
+msgid "Phone numbers should be in E.164 format: country code + number. Examples:\n"
+"- US: +14155551234\n"
+"- UK: +447700900123\n"
+"- Australia: +61412345678\n"
+"\n"
+"Recipient phone numbers in ChurchCRM member profiles should include the country code for SMS to work correctly."
+msgstr "Telefon numaraları E.164 formatında olmalıdır: ülke kodu + numara. Örnekler:\n"
+"- Türkiye: +905551234567\n"
+"- ABD: +14155551234\n"
+"- İngiltere: +447700900123\n"
+"\n"
+"SMS'in doğru çalışması için ChurchCRM üye profillerindeki alıcı telefon numaraları ülke kodunu içermelidir."
+
+#. plugin:mailchimp:section:4:title
+#: 
+msgid "Privacy & Compliance"
+msgstr "Gizlilik ve Uyumluluk"
+
+#. plugin:google-analytics:section:2:title
+#: 
+msgid "Privacy Considerations"
+msgstr "Gizlilik Konuları"
+
+#. plugin:gravatar:section:2:title
+#: 
+msgid "Privacy Note"
+msgstr "Gizlilik Notu"
+
+#: 
+msgid "Quick Settings"
+msgstr "Hızlı Ayarlar"
+
+#: 
+msgid "SMTP Authentication"
+msgstr "SMTP Kimlik Doğrulama"
+
+#: 
+msgid "SMTP Timeout"
+msgstr "SMTP Zaman Aşımı"
+
+#. plugin:custom-links:section:3:title
+#: 
+msgid "Security"
+msgstr "Güvenlik"
+
+#. plugin:external-backup:section:6:title
+#: 
+msgid "Security Considerations"
+msgstr "Güvenlik Konuları"
+
+#. plugin:openlp:section:2:title
+#. plugin:vonage:section:1:title
+#: 
+msgid "Setup"
+msgstr "Kurulum"
+
+#: 
+msgid "Show a breakdown of bill denominations on the deposit slip report"
+msgstr "Depozito makbuzu raporunda banknot kupürü dökümünü göster"
+
+#: 
+msgid "Show or hide the Events menu in the main navigation."
+msgstr "Ana navigasyonda Etkinlikler menüsünü göster veya gizle."
+
+#: 
+msgid "Show or hide the Events section in the main navigation menu"
+msgstr "Ana navigasyon menüsünde Etkinlikler bölümünü göster veya gizle"
+
+#: 
+msgid "Show or hide the Sunday School module in the sidebar navigation"
+msgstr "Kenar çubuğu navigasyonunda Pazar Okulu modülünü göster veya gizle"
+
+#: 
+msgid "Street"
+msgstr "Cadde"
+
+#: 
+msgid "Sunday School Module"
+msgstr "Pazar Okulu Modülü"
+
+#. plugin:external-backup:section:5:title
+#: 
+msgid "Supported Services"
+msgstr "Desteklenen Hizmetler"
+
+#. plugin:external-backup:section:4:title
+#: 
+msgid "Testing Connection"
+msgstr "Bağlantı Testi"
+
+#. plugin:custom-links:section:0:content
+#: 
+msgid "The Custom Menu Links plugin allows administrators to add external links to the navigation menu. When enabled, a 'Links' menu appears in the sidebar containing all configured links."
+msgstr "Özel Menü Bağlantıları eklentisi, yöneticilerin gezinti menüsüne harici bağlantılar eklemesine olanak tanır. Etkinleştirildiğinde, kenar çubuğunda tüm yapılandırılmış bağlantıları içeren bir 'Bağlantılar' menüsü görünür."
+
+#. plugin:external-backup:section:0:content
+#: 
+msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
+msgstr "Harici Yedekleme eklentisi, ChurchCRM veritabanınızı WebDAV uyumlu bulut depolama hizmetlerine otomatik olarak yedeklemenize olanak tanır. Bu, Nextcloud, ownCloud veya WebDAV protokolünü destekleyen herhangi bir sunucu gibi popüler hizmetleri içerir."
+
+#. plugin:openlp:section:3:content
+#: 
+msgid "The default OpenLP port is 4316. Your server URL will typically be: http://192.168.x.x:4316 where 192.168.x.x is the IP address of the computer running OpenLP. You can find this in OpenLP under Tools → Open Service Manager."
+msgstr "Varsayılan OpenLP bağlantı noktası 4316'dır. Sunucu URL'niz genellikle şöyle olur: http://192.168.x.x:4316; burada 192.168.x.x, OpenLP'nin çalıştığı bilgisayarın IP adresidir. Bunu OpenLP'de Araçlar → Hizmet Yöneticisini Aç bölümünde bulabilirsiniz."
+
+#: 
+msgid "The month that starts your organization's fiscal year"
+msgstr "Kuruluşunuzun mali yılının başladığı ay"
+
+#. plugin:vonage:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an SMS can be sent to notify parents or guardians."
+msgstr "Bu eklenti şu anda Kiosk Giriş Bildirimleri için kullanılmaktadır. Bir çocuk kiosk sistemi aracılığıyla Pazar Okulu sınıfına giriş yaptığında, ebeveynleri veya vasileri bilgilendirmek için SMS gönderilebilir."
+
+#. plugin:openlp:section:0:content
+#: 
+msgid "This plugin is currently used for Kiosk Check-in Notifications. When a child is checked into a Sunday School class via the kiosk system, an alert can be sent to the OpenLP projector display to notify parents or volunteers."
+msgstr "Bu eklenti şu anda Kiosk Giriş Bildirimleri için kullanılmaktadır. Bir çocuk kiosk sistemi aracılığıyla Pazar Okulu sınıfına giriş yaptığında, ebeveynleri veya gönüllüleri bilgilendirmek için OpenLP projektör ekranına uyarı gönderilebilir."
+
+#. plugin:mailchimp:section:4:content
+#: 
+msgid "This plugin transmits email addresses to MailChimp servers. Ensure you have appropriate consent from your members before syncing their information to third-party services like MailChimp."
+msgstr "Bu eklenti e-posta adreslerini MailChimp sunucularına iletir. Üyelerinizin bilgilerini MailChimp gibi üçüncü taraf hizmetlerle senkronize etmeden önce onlardan uygun onayı aldığınızdan emin olun."
+
+#. plugin:custom-links:section:1:content
+#: 
+msgid "To add a new link:\n"
+"1. Go to the Links menu in the sidebar and click 'Manage Links'\n"
+"2. Enter a display name (2-50 characters)\n"
+"3. Enter the full URL (must start with http:// or https://)\n"
+"4. Click 'Add Link'\n"
+"\n"
+"The link will immediately appear in the Links menu."
+msgstr "Yeni bir bağlantı eklemek için:\n"
+"1. Kenar çubuğundaki Bağlantılar menüsüne gidin ve 'Bağlantıları Yönet'e tıklayın\n"
+"2. Görünen ad girin (2-50 karakter)\n"
+"3. Tam URL'yi girin (http:// veya https:// ile başlamalıdır)\n"
+"4. 'Bağlantı Ekle'ye tıklayın\n"
+"\n"
+"Bağlantı hemen Bağlantılar menüsünde görünecektir."
+
+#. plugin:external-backup:section:1:content
+#: 
+msgid "To configure external backups:\n"
+"1. Go to Admin > Plugins and find 'External Backup (WebDAV)'\n"
+"2. Click the settings icon to expand the configuration panel\n"
+"3. Enter your WebDAV endpoint URL (e.g., https://cloud.example.com/remote.php/dav/files/username/backups/)\n"
+"4. Enter your username and password\n"
+"5. Optionally set an auto-backup interval in hours\n"
+"6. Save your settings"
+msgstr "Harici yedeklemeleri yapılandırmak için:\n"
+"1. Yönetici > Eklentiler bölümüne gidin ve 'Harici Yedekleme (WebDAV)' seçeneğini bulun\n"
+"2. Yapılandırma panelini genişletmek için ayarlar simgesine tıklayın\n"
+"3. WebDAV uç nokta URL'nizi girin (örn. https://cloud.example.com/remote.php/dav/files/kullanici/yedekler/)\n"
+"4. Kullanıcı adı ve parolanızı girin\n"
+"5. İsteğe bağlı olarak saat cinsinden otomatik yedekleme aralığı ayarlayın\n"
+"6. Ayarlarınızı kaydedin"
+
+#. plugin:mailchimp:section:0:content
+#: 
+msgid "To use MailChimp Integration, you need a MailChimp account and an API key.\n"
+"\n"
+"1. Log in to your MailChimp account\n"
+"2. Go to Account > Extras > API Keys\n"
+"3. Create a new API key or copy an existing one\n"
+"4. Enter the API key in the plugin settings"
+msgstr "MailChimp Entegrasyonunu kullanmak için bir MailChimp hesabına ve API anahtarına ihtiyacınız vardır.\n"
+"\n"
+"1. MailChimp hesabınıza giriş yapın\n"
+"2. Hesap > Ekstralar > API Anahtarları bölümüne gidin\n"
+"3. Yeni bir API anahtarı oluşturun veya mevcut birini kopyalayın\n"
+"4. API anahtarını eklenti ayarlarına girin"
+
+#. plugin:openlp:section:5:title
+#: 
+msgid "Troubleshooting"
+msgstr "Sorun Giderme"
+
+#. plugin:vonage:section:4:title
+#: 
+msgid "Troubleshooting - Invalid Sender ID"
+msgstr "Sorun Giderme – Geçersiz Gönderen Kimliği"
+
+#. plugin:vonage:section:5:title
+#: 
+msgid "Troubleshooting - Messages Not Delivered"
+msgstr "Sorun Giderme – Mesajlar Teslim Edilmedi"
+
+#. plugin:vonage:section:3:title
+#: 
+msgid "Troubleshooting - SMS Not Sending"
+msgstr "Sorun Giderme – SMS Gönderilmiyor"
+
+#: 
+msgid "Upgrade Settings"
+msgstr "Yükseltme Ayarları"
+
+#. plugin:custom-links:section:4:title
+#: 
+msgid "Use Cases"
+msgstr "Kullanım Senaryoları"
+
+#. plugin:vonage:link:0:label
+#: 
+msgid "Vonage Dashboard"
+msgstr "Vonage Panosu"
+
+#. plugin:vonage:link:2:label
+#: 
+msgid "Vonage Pricing"
+msgstr "Vonage Fiyatlandırma"
+
+#. plugin:vonage:link:1:label
+#: 
+msgid "Vonage SMS API Documentation"
+msgstr "Vonage SMS API Belgeleri"
+
+#. plugin:vonage:summary
+#: 
+msgid "Vonage SMS enables text message notifications for ChurchCRM using the Vonage API (formerly Nexmo). Send SMS alerts to parents when their child checks in via the kiosk system."
+msgstr "Vonage SMS, Vonage API'sini (eski adıyla Nexmo) kullanarak ChurchCRM için kısa mesaj bildirimleri etkinleştirir. Çocukları kiosk sistemi aracılığıyla giriş yaptığında ebeveynlere SMS uyarısı gönderin."
+
+#. plugin:vonage:section:6:content
+#: 
+msgid "Vonage charges per SMS sent. Pricing varies by destination country. See the Vonage pricing page for current rates. New accounts receive free trial credit for testing."
+msgstr "Vonage, gönderilen her SMS için ücret alır. Fiyatlandırma hedef ülkeye göre değişir. Güncel fiyatlar için Vonage fiyatlandırma sayfasına bakın. Yeni hesaplar test için ücretsiz deneme kredisi alır."
+
+#. plugin:google-analytics:section:1:title
+#: 
+msgid "What Gets Tracked"
+msgstr "Ne İzleniyor"
+
+#. plugin:mailchimp:section:3:content
+#: 
+msgid "When MailChimp is configured, a 'MailChimp' tab appears on Person view pages showing:\n"
+"\n"
+"- Email subscription status across all lists\n"
+"- Which lists the person is subscribed to\n"
+"- Subscription statistics"
+msgstr "MailChimp yapılandırıldığında, Kişi görünüm sayfalarında bir 'MailChimp' sekmesi görünür ve şunları gösterir:\n"
+"\n"
+"- Tüm listelerdeki e-posta abonelik durumu\n"
+"- Kişinin hangi listelere abone olduğu\n"
+"- Abonelik istatistikleri"
+
+#. plugin:gravatar:section:0:content
+#: 
+msgid "When a member doesn't have an uploaded photo, ChurchCRM checks if they have a Gravatar associated with their email address. If a Gravatar exists, it displays that image. If not, the configured default image style is used."
+msgstr "Bir üyenin yüklenmiş fotoğrafı olmadığında, ChurchCRM e-posta adresiyle ilişkili bir Gravatar'ı olup olmadığını kontrol eder. Gravatar mevcutsa o görüntüyü gösterir. Değilse yapılandırılmış varsayılan görüntü stili kullanılır."
+
+#. plugin:external-backup:section:2:content
+#: 
+msgid "When auto-backup is enabled (interval > 0 hours), ChurchCRM will automatically create and upload a full database backup at the specified interval. The backup runs as part of normal page loads, so the system must have regular user activity to trigger backups.\n"
+"\n"
+"Recommended intervals:\n"
+"- Daily backup: 24 hours\n"
+"- Twice daily: 12 hours\n"
+"- Weekly: 168 hours"
+msgstr "Otomatik yedekleme etkinleştirildiğinde (aralık > 0 saat), ChurchCRM belirtilen aralıkta otomatik olarak tam bir veritabanı yedeklemesi oluşturur ve yükler. Yedekleme normal sayfa yüklemelerinin bir parçası olarak çalışır, bu nedenle yedeklemeleri tetiklemek için sistemde düzenli kullanıcı etkinliği olmalıdır.\n"
+"\n"
+"Önerilen aralıklar:\n"
+"- Günlük yedekleme: 24 saat\n"
+"- Günde iki kez: 12 saat\n"
+"- Haftalık: 168 saat"
+
+#. plugin:openlp:section:1:content
+#: 
+msgid "When enabled and configured, ChurchCRM sends alert messages to your OpenLP server using the API v2 endpoint (POST /api/v2/plugins/alerts). These alerts appear as overlay notifications on your projected display."
+msgstr "Etkinleştirilip yapılandırıldığında, ChurchCRM API v2 uç noktasını (POST /api/v2/plugins/alerts) kullanarak OpenLP sunucunuza uyarı mesajları gönderir. Bu uyarılar, yansıtılan ekranınızda katman bildirimleri olarak görünür."
+
+#: 
+msgid "When enabled, hides the address field for people not assigned to a family"
+msgstr "Etkinleştirildiğinde, bir aileye atanmamış kişiler için adres alanını gizler"
+
+#: 
+msgid "When enabled, hides the latitude/longitude fields in the Family Editor. Geocoding still runs in the background."
+msgstr "Etkinleştirildiğinde, Aile Düzenleyicisinde enlem/boylam alanlarını gizler. Coğrafi kodlama arka planda çalışmaya devam eder."
+
+#. plugin:external-backup:section:3:content
+#: 
+msgid "You can also trigger a manual backup at any time:\n"
+"1. Go to the External Backup settings page (Plugins > External Backup)\n"
+"2. Select backup type (Database Only or Full Backup)\n"
+"3. Click 'Backup to WebDAV Now'\n"
+"\n"
+"Database Only backups are smaller and faster. Full backups include uploaded photos."
+msgstr "İstediğiniz zaman manuel yedekleme de başlatabilirsiniz:\n"
+"1. Harici Yedekleme ayarları sayfasına gidin (Eklentiler > Harici Yedekleme)\n"
+"2. Yedekleme türünü seçin (Yalnızca Veritabanı veya Tam Yedekleme)\n"
+"3. 'Şimdi WebDAV'a Yedekle'ye tıklayın\n"
+"\n"
+"Yalnızca Veritabanı yedeklemeleri daha küçük ve hızlıdır. Tam yedeklemeler yüklenen fotoğrafları içerir."
+
+#. plugin:google-analytics:section:1:content
+#: 
+msgid "• Page views and navigation patterns\n"
+"• Session duration and engagement\n"
+"• User demographics (if enabled in GA4)\n"
+"• Device and browser information"
+msgstr "• Sayfa görüntülemeleri ve gezinti kalıpları\n"
+"• Oturum süresi ve etkileşim\n"
+"• Kullanıcı demografisi (GA4'te etkinleştirilmişse)\n"
+"• Cihaz ve tarayıcı bilgileri"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Dosya boyutu sunucunun %s sınırını aşıyor"
+
+#: 
+msgid "Missing image data in request"
+msgstr "İstekte görüntü verisi eksik"
 

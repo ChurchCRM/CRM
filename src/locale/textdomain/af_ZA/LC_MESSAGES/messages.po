@@ -7874,10 +7874,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Dit kan verskeie minute vat vir groot databases. Moenie hierdie bladsy sluit nie."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Opgradering Opsomming"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Gebruik eksterne gereedskap (GPG, 7-Zip) om rugsteune te enkripteer voordat jy af-ter-plekke stoor."
 
@@ -8650,10 +8646,6 @@ msgid "Save the file and refresh this page"
 msgstr "Stoor die lêer en verfris hierdie bladsy"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Set true to disable entering personal addresses for unaffiliated people in Person Redigeeror. Set false to enable entering addresses for people without a family assignment."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Begin met <strong>http://</strong> of <strong>https://</strong>"
 
@@ -9120,10 +9112,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ja, verwyder hierdie Geleentheid"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Navrae waarvoor gebruiker finansietoestemmings moet hê om te gebruik"
-
-#: 
 msgid "Fund(s)"
 msgstr "Fonds(se)"
 
@@ -9408,10 +9396,6 @@ msgstr "Komende verjaardae"
 #: 
 msgid "Waiting to Check In"
 msgstr "Wag om in te boek"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Wanneer geaktiveer, kan nuwe kiosk-toestelle vir 30 sekondes registreer."
 
 #: 
 msgid "Your child"
@@ -10577,20 +10561,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Koördinate outomaties opspoor via adres"
 
 #: 
-msgid "Basic Information"
-msgstr "Basiese Inligting"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Kerkinligting suksesvol gestoor."
-
-#: 
 msgid "Church name is required."
 msgstr "Kerknaam is verpligtend."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Kerknaam is verpligtend. Voltooi asseblief die Basiese Inligting-oortjie."
 
 #: 
 msgid "City is required."
@@ -10649,22 +10621,6 @@ msgid "Language & Localization"
 msgstr "Taal en Lokalisering"
 
 #: 
-msgid "Location & Map"
-msgstr "Ligging en Kaart"
-
-#: 
-msgid "Location Information"
-msgstr "Liggingsinligting"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Hoofkontak-e-pos vir kerkkommunikasie."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Hoofkontaknommer vir die kerk."
-
-#: 
 msgid "Map"
 msgstr "Kaart"
 
@@ -10715,10 +10671,6 @@ msgstr "Straatadres is verpligtend."
 #: 
 msgid "Student Information"
 msgstr "Leerlinginligting"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Sisteemtaal vir die kerk. Beïnvloed datumformate, telefoonformate en ander lokaliserings."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11063,10 +11015,6 @@ msgid "Auto-mapped"
 msgstr "Outomaties gekarteer"
 
 #: 
-msgid "BCC"
-msgstr "Verborge Kaksieking"
-
-#: 
 msgid "BCC All"
 msgstr "Alles Verborge Kaksieking"
 
@@ -11093,10 +11041,6 @@ msgstr "Steun nou tot Eksterne Berging"
 #: 
 msgid "Browse all available plugins"
 msgstr "Blaai deur alle beskikbare inproppe"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Blaai deur alle kerkgebeurtenisse en aktiwiteite"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11533,10 +11477,6 @@ msgstr "Brei Uit"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Verken met Demo-Gegewens"
-
-#: 
-msgid "Export"
-msgstr "Uitvoer"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12485,10 +12425,6 @@ msgid "The property is successfully removed."
 msgstr "Die eienskap is suksesvol verwyder."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Hierdie skakels verskyn in die \"Skakels\"-kieslys in die navigasie-sybalk wanneer hierdie inprop geaktiveer is."
-
-#: 
 msgid "To Family"
 msgstr "Na Gesin"
 
@@ -12755,10 +12691,6 @@ msgstr "fondse"
 #: 
 msgid "members"
 msgstr "geloofsgenote"
-
-#: 
-msgid "name@example.com"
-msgstr "naam@voorbeeld.com"
 
 #: 
 msgid "opportunities"
@@ -13281,11 +13213,6 @@ msgstr "Veld waarde"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Soek mense wat nie 'n geleentheid bygewoon het nie"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Soek mense wat een jaar verbind het maar nie 'n ander nie"
 
@@ -13378,11 +13305,6 @@ msgstr "Lidmaatskap herdenking dae"
 #: 
 msgid "Minimum Age"
 msgstr "Minimum Ouderdom"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "Vermiste mense"
 
 #. Context: query_qry
 #: 
@@ -13572,11 +13494,6 @@ msgstr "Kies geleentheid tipe..."
 #: 
 msgid "Select field to search for."
 msgstr "Kies veld om na te soek."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Kies die gewenste geleentheid"
 
 #. Context: queryparameters_qrp
 #: 
@@ -13967,11 +13884,6 @@ msgstr "Kontinent"
 msgid "Costs"
 msgstr "Kostes"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Kredietkaart-gemeentelede"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14045,11 +13957,6 @@ msgstr "Aktiveer gebruik van offergawe-koeverte"
 msgid "Enable use of scanned checks"
 msgstr "Aktiveer gebruik van geskandeerde tjekke"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Gesinsbelofte per Fiskale Jaar"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14059,11 +13966,6 @@ msgstr "Kenmerke"
 msgid "Finance permission query IDs"
 msgstr "Finansiële toestemming navraag-ID's"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Vind Geregistreerde leerlinge"
-
 #: 
 msgid "Find family"
 msgstr "Vind gesin"
@@ -14072,11 +13974,6 @@ msgstr "Vind gesin"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Vind Jou Bediener-URL"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Fiskale Jaar."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14142,11 +14039,6 @@ msgstr "Gravatar-webwerf"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar werk deur e-posadresse na 'n hash (MD5) om te skakel. Die werklike e-posadres word nooit na Gravatar se bedieners gestuur nie — slegs die hash word gebruik om die beeld op te soek."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Groep van geregistreerde leerlinge"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14283,11 +14175,6 @@ msgstr "OpenLP-webwerf"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP is gratis, oopbron-aanbiedings-sagteware ontwerp vir kerke. Hierdie inprop laat ChurchCRM toe om kennisgewings en waarskuwings direk na jou OpenLP-skerm te stuur."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Gemeentelede wat opgestel is om per kredietkaart te betaal."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14313,11 +14200,6 @@ msgstr "Telefoonnommers moet in E.164-formaat wees: landkode + nommer. Voorbeeld
 "\n"
 "Ontvanger-telefoonnommers in ChurchCRM-gemeentelidprofiele moet die landkode insluit sodat SMS korrek werk."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Belofteopsomming per gesinsnaam vir elke fonds vir die geselekteerde fiskale jaar"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14336,11 +14218,6 @@ msgstr "Privaatheidnota"
 #: 
 msgid "Quick Settings"
 msgstr "Vinnige Instellings"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Geregistreerde leerlinge"
 
 #: 
 msgid "SMTP Authentication"
@@ -14512,11 +14389,6 @@ msgstr "Opgradeerinstellings"
 msgid "Use Cases"
 msgstr "Gebruiksgevalle"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Gebruikerstoestemming om CSV-lêers uit te voer"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14618,4 +14490,12 @@ msgstr "• Bladsybesoeke en navigasiepatrone\n"
 "• Sessieduur en betrokkenheid\n"
 "• Gebruikersdemografie (indien geaktiveer in GA4)\n"
 "• Toestel- en blaaierinligting"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Lêergrootte oorskry die bediener se limiet van %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Beelddata ontbreek in versoek"
 

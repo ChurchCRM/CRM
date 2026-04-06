@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         show: false,
       },
       events: {
-        click: function (event, chartContext, opts) {
+        click: (event, chartContext, opts) => {
           if (opts.dataPointIndex !== undefined) {
             applyBirthdayFilter(barLabels[opts.dataPointIndex]);
           }

@@ -75,7 +75,7 @@ class FinancialService
 
     public function getMemberByScanString(string $tScanString): array
     {
-        if (!SystemConfig::getValue('bUseScannedChecks')) {
+        if (!SystemConfig::getBooleanValue('bUseScannedChecks')) {
             throw new \Exception('Scanned Checks is disabled');
         }
 
@@ -178,7 +178,7 @@ class FinancialService
                 if ($fund->Amount > 0) {
                     $nonZeroFundAmountEntered++;
                 }
-                if (SystemConfig::getValue('bEnableNonDeductible') && isset($fund->NonDeductible)) {
+                if (SystemConfig::getBooleanValue('bEnableNonDeductible') && isset($fund->NonDeductible)) {
                     //Validate the NonDeductible Amount
                     if ($fund->NonDeductible > $fund->Amount) { //Validate the NonDeductible Amount
                         throw new \Exception(gettext("NonDeductible amount can't be greater than total amount."));

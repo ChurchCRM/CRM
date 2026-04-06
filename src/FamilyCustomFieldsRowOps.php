@@ -16,6 +16,12 @@ $iOrderID = InputUtils::legacyFilterInput($_GET['OrderID'] ?? $_POST['OrderID'] 
 $sField = InputUtils::legacyFilterInput($_GET['Field'] ?? $_POST['Field'] ?? '');
 $sAction = $_GET['Action'] ?? $_POST['Action'] ?? '';
 
+// Validate field name to prevent DDL injection (column names follow pattern c1, c2, etc.)
+if ($sField !== '' && !preg_match('/^c\d+$/', $sField)) {
+    RedirectUtils::redirect('FamilyCustomFieldsEditor.php');
+    exit;
+}
+
 switch ($sAction) {
     // Move a field up: Swap the fam_custom_Order (ordering) of the selected row and the one above it
     case 'up':

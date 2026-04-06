@@ -1,6 +1,6 @@
 import $ from "jquery";
 
-$(document).ready(function () {
+$(document).ready(() => {
   // Handle photo viewing
   $(document).on("click", ".view-family-photo", function (e) {
     e.preventDefault();

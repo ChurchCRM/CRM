@@ -36,13 +36,13 @@ export function showPhotoLightbox(entityType: string, entityId: number | string)
 
   // Close on background click or close button (not on image)
   const closeLightbox = () => lightbox.remove();
-  lightbox.addEventListener("click", function (e) {
+  lightbox.addEventListener("click", (e) => {
     if (e.target === lightbox) closeLightbox();
   });
   closeBtn.addEventListener("click", closeLightbox);
 
   // Prevent image clicks from bubbling to lightbox
-  img.addEventListener("click", function (e) {
+  img.addEventListener("click", (e) => {
     e.stopPropagation();
   });
 
@@ -65,7 +65,7 @@ export function deletePhoto(entityType: string, entityId: number | string): void
   (window as any).CRM.APIRequest({
     method: "DELETE",
     path: `${entityType}/${entityId}/photo`,
-  }).done(function () {
+  }).done(() => {
     location.reload();
   });
 }

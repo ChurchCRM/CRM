@@ -8,7 +8,7 @@ tags: ["frontend", "tabler", "tables", "dropdowns", "cart", "ux"]
 
 ## Rule
 
-Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates, JS-rendered DataTables columns, and React tables alike.
+Every table row that has per-row actions **must** use the standard Tabler action dropdown. No exceptions. This applies to PHP templates and JS-rendered DataTables columns alike.
 
 ---
 

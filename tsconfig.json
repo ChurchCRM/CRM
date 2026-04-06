@@ -3,7 +3,6 @@
     "target": "es2020",
     "lib": ["es2020", "dom", "dom.iterable"],
     "sourceMap": true,
-    "jsx": "react-jsx",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

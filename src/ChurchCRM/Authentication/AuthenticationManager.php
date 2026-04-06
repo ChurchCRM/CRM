@@ -137,11 +137,11 @@ class AuthenticationManager
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
             $redirectLocation ??= 'v2/dashboard';
-            NotificationService::updateNotifications();
             
-            // Check for system updates once on login for admin users
+            // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
-            
+            NotificationService::fetchRemoteNotifications();
+
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
             );
@@ -260,8 +260,9 @@ class AuthenticationManager
     }
 
     /**
-     * Check for system updates and store result in session
-     * Only runs for admin users on login
+     * Check for system updates and store result in session.
+     * Only runs for admin users on login. The upgrade notification is
+     * rendered on page load by NotificationService::loadSessionNotifications().
      */
     private static function checkSystemUpdates(): void
     {

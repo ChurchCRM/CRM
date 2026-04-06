@@ -530,22 +530,46 @@ $("#printPerson").on("click", function () { window.print(); });
 
 ---
 
-### Always Escape SystemConfig Values in HTML Attributes <!-- learned: 2026-04-03 -->
+### Always Escape SystemConfig Values in Output — Use Context-Specific Getters <!-- learned: 2026-04-03, updated: 2026-04-03 -->
 
-`SystemConfig::getValue()` returns raw strings from the database. When rendered into
-HTML attributes (`data-*`, `value=`, `href=`), they must be escaped — even though they
-come from "trusted" admin config, a stored XSS in the config table propagates to every
-page that renders the value.
+`SystemConfig::getValue()` returns raw strings from the database. **Never use it directly
+in HTML or JavaScript output.** Use the context-specific helper methods instead — they
+encode correctly for the target context and prevent double-escaping:
+
+| Method | Use for | Encoding |
+|--------|---------|----------|
+| `SystemConfig::getValueForAttr($name)` | HTML attributes: `value=`, `placeholder=`, `data-*=` | `htmlspecialchars()` |
+| `SystemConfig::getValueForHtml($name)` | HTML text content: textarea body, labels | `htmlspecialchars()` |
+| `SystemConfig::getValueForJs($name)` | JavaScript literals, JSON blobs in `<script>` | `json_encode()` (includes surrounding quotes) |
 
 ```php
-// ❌ WRONG — unescaped config in attribute
+// ❌ WRONG — raw config value in HTML attribute
 data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>"
-data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'
 
-// ✅ CORRECT — escape for attribute context
+// ❌ WRONG — manual wrapping (verbose, easy to miss)
 data-system-default="<?= InputUtils::escapeAttribute(SystemConfig::getValue('sDefaultState')) ?>"
-data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'
+
+// ✅ CORRECT — use context getter
+data-system-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>"
+data-phone-mask='{"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"}'
+
+// ✅ CORRECT — JS literal (getValueForJs() includes surrounding quotes — do NOT add "")
+timeZone:<?= SystemConfig::getValueForJs('sTimeZone') ?>,
+churchWebSite:<?= SystemConfig::getValueForJs('sChurchWebSite') ?>,
+
+// ✅ CORRECT — textarea / HTML text content
+<textarea><?= SystemConfig::getValueForHtml('sDirectoryDisclaimer1') ?></textarea>
 ```
+
+**Files where this pattern is enforced** (src/ChurchCRM/dto/SystemConfig.php defines the helpers):
+- [src/Include/Header.php](../../../src/Include/Header.php) — `window.CRM` JS literals
+- [src/Include/HeaderNotLoggedIn.php](../../../src/Include/HeaderNotLoggedIn.php) — `churchWebSite` JS literal
+- [src/FamilyEditor.php](../../../src/FamilyEditor.php) — `data-system-default`, `data-phone-mask`, `placeholder`
+- [src/PersonEditor.php](../../../src/PersonEditor.php) — date picker `placeholder`
+- [src/CartToFamily.php](../../../src/CartToFamily.php) — `data-inputmask` phone format
+- [src/ChurchCRM/utils/CustomFieldUtils.php](../../../src/ChurchCRM/utils/CustomFieldUtils.php) — `placeholder`, `data-phone-mask`
+- [src/DirectoryReports.php](../../../src/DirectoryReports.php) — form `value=`, textarea content
+- [src/external/templates/registration/family-register.php](../../../src/external/templates/registration/family-register.php) — JS literals, address/phone inputs
 
 ### sanitizeText() Is Not Sufficient for HTML Attributes <!-- learned: 2026-04-03 -->
 
@@ -603,6 +627,60 @@ const { execFileSync } = require('child_process');
 execFileSync('git', ['commit', '-m', message]); // message is a single argument
 ```
 
+### Session Values and extract() Results in SQL Need Explicit int Cast <!-- learned: 2026-04-03 -->
+
+`$_SESSION` values and variables produced by `extract($row)` are strings, not integers.
+When interpolated into SQL without quotes they are directly injectable. Always cast to `(int)` at the point of use.
+
+```php
+// ❌ WRONG — session value uncast, injectable in unquoted integer context
+$id = $_SESSION['iCurrentFundraiser'];
+$sql = 'WHERE fr_ID = ' . $id;
+
+// ✅ CORRECT — cast at read time
+$id = (int)$_SESSION['iCurrentFundraiser'];
+
+// ❌ WRONG — extract() result used bare in SQL
+extract($row);  // sets $pn_per_ID as string
+$sql = '... AND di_donor_id = ' . $pn_per_ID;
+
+// ✅ CORRECT — cast at point of use (or before heredoc where inline cast is not possible)
+$iPnPerID = (int)$pn_per_ID;
+$sql = '... AND di_donor_id = ' . (int)$pn_per_ID;
+```
+
+---
+
+### Permission Checks Must Appear on Both Display and Save <!-- learned: 2026-04-03 -->
+
+Hiding a form field is not a security control — a user can POST to the save handler directly.
+Any permission check applied to the display loop (`if permission != 'TRUE' → skip row`) must
+also be applied in the save loop (`if permission != 'TRUE' → skip update`).
+
+```php
+// ❌ WRONG — check only on display, not on save
+foreach ($configs as $config) {
+    if (!($config->getPermission() === 'TRUE' || $user->isAdmin())) continue; // display gate
+    // ... render field
+}
+// save loop has no equivalent check — non-admin can POST arbitrary IDs
+
+// ✅ CORRECT — mirror the same check in the save loop
+while ($current_type = current($type)) {
+    // ... filter value ...
+    $userConfig = UserConfigQuery::create()->filterById($id)->filterByPeronId($userId)->findOne();
+    // Enforce same permission gate as display
+    if (!$user->isAdmin() && $userConfig->getPermission() !== 'TRUE') {
+        next($type);
+        continue;
+    }
+    $userConfig->setValue($value)->save();
+    next($type);
+}
+```
+
+---
+
 ### Clone ORM Records: Copy All NOT NULL Columns <!-- learned: 2026-04-03 -->
 
 When cloning a Propel record to create a copy for another user/context, check the
@@ -629,6 +707,91 @@ $userConfig->setPeronId($userId)->setId($id)
 $userConfig->save();
 ```
 
+### Use Typed Config Getters — Never getValue() for Boolean/Int Contexts <!-- learned: 2026-04-03 -->
+
+Always match the getter to the config key prefix and usage context:
+
+| Key prefix | Correct getter | Wrong getter |
+|-----------|---------------|--------------|
+| `bXxx` in `if()` condition | `getBooleanValue('bXxx')` | `getValue('bXxx')` |
+| `iXxx` in arithmetic / ORM `limit()` | `getIntValue('iXxx')` | `getValue('iXxx')` |
+| `(int) getValue('iXxx')` anywhere | `getIntValue('iXxx')` | manual cast |
+
+```php
+// ❌ WRONG — getValue() returns string, PHP silently coerces
+if (SystemConfig::getValue('bUseScannedChecks')) { ... }
+->limit(SystemConfig::getValue('bSearchIncludePersonsMax'))
+
+// ✅ CORRECT
+if (SystemConfig::getBooleanValue('bUseScannedChecks')) { ... }
+->limit(SystemConfig::getIntValue('bSearchIncludePersonsMax'))
+```
+
+Note: `iChurchLatitude` / `iChurchLongitude` are named with `i` prefix but store float values — use `(float) getValue()` for these two keys, not `getIntValue()`.
+
+### Operator Precedence Trap with getValue() in Ternary <!-- learned: 2026-04-03 -->
+
+PHP's `.` (concatenation) operator has higher precedence than `?:`. Mixing them without parentheses silently produces wrong logic:
+
+```php
+// ❌ BUG — evaluates as: (' per_fmr_ID = ' . getValue()) ?: '1'
+// The entire LHS is truthy, so the fallback '1' is never used
+$head_criteria = ' per_fmr_ID = ' . SystemConfig::getValue('sDirRoleHead') ? SystemConfig::getValue('sDirRoleHead') : '1';
+
+// ✅ CORRECT — parentheses force ternary to apply only to the config value
+$head_criteria = ' per_fmr_ID = ' . (SystemConfig::getValue('sDirRoleHead') ?: '1');
+```
+
 ---
 
-Last updated: April 3, 2026
+### data-* Attributes Require escapeAttribute() — Not Just escapeHTML() <!-- learned: 2026-04-05 -->
+
+`data-*` HTML attributes are attribute contexts, not body text contexts. Always use
+`InputUtils::escapeAttribute()` for `data-*` values. Using `escapeHTML()` or no escaping
+at all still allows attribute-breakout XSS (e.g. a value containing `"` terminates the
+attribute and injects new ones).
+
+Real-world example: `PersonView.php` line 816 — `data-groupname` was unescaped, fixed
+as part of GHSA-44j4-jjw2-wcr6:
+
+```php
+// ❌ WRONG — unescaped data attribute (XSS via attribute breakout)
+data-groupname="<?= $grp_Name ?>"
+
+// ❌ ALSO WRONG — escapeHTML() is for body text, not attributes
+data-groupname="<?= InputUtils::escapeHTML($grp_Name) ?>"
+
+// ✅ CORRECT — escapeAttribute() for any attribute value, including data-*
+data-groupname="<?= InputUtils::escapeAttribute($grp_Name) ?>"
+```
+
+This applies to ALL `data-*` attributes whether the source is a database field, ORM
+getter, or user-supplied input.
+
+---
+
+### ListOption::getOptionName() Must Be Escaped in HTML Contexts <!-- learned: 2026-04-05 -->
+
+`getOptionName()` returns raw database strings — admin-entered values that can contain
+`<`, `>`, or `"`. Always wrap with `InputUtils::escapeHTML()` when rendering inside
+HTML elements. Affects group roles, family roles, group types, custom field options,
+classifications, and any other ListOption values rendered to the DOM.
+
+```php
+// ❌ WRONG — raw getOptionName() in <option> or <td>
+echo '<option value="' . $role->getOptionId() . '">' . $role->getOptionName() . '</option>';
+
+// ✅ CORRECT — escape before output
+echo '<option value="' . $role->getOptionId() . '">' . InputUtils::escapeHTML($role->getOptionName()) . '</option>';
+
+// ✅ CORRECT — when wrapped in gettext()
+echo InputUtils::escapeHTML(gettext($role->getOptionName()));
+```
+
+Fixed in GHSA-j9gv-26c7-3qrh (CVE-2025-67876) across 6 files: MemberRoleChange.php,
+CartToFamily.php, GroupEditor.php, CartToEvent.php, CustomFieldUtils.php,
+external/templates/registration/family-register.php.
+
+---
+
+Last updated: April 5, 2026

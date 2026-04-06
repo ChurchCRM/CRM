@@ -705,7 +705,6 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="HideAge"><?= gettext('Hide Age') ?></label>
                     <div class="form-check mt-2">
                         <input type="checkbox" class="form-check-input" id="HideAge" name="HideAge" value="1" <?= $bHideAge ? 'checked' : '' ?>>
-                        <label class="form-check-label" for="HideAge">&nbsp;</label>
                     </div>
                 </div>
                 <div class="mb-3 col-md-4">
@@ -745,7 +744,7 @@ require_once __DIR__ . '/Include/Header.php';
     </div>
 
     <!-- Card 2: Address -->
-    <?php if (!SystemConfig::getValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
+    <?php if (!SystemConfig::getBooleanValue('bHidePersonAddress') && $iFamily === 0) { /* Only show address for unaffiliated persons - General Settings */ ?>
     <div class="card clearfix">
         <div class="card-header d-flex align-items-center">
             <h3 class="card-title"><?= gettext('Address') ?></h3>
@@ -860,12 +859,10 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sHomePhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormat')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -884,12 +881,10 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sCellPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatCell')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_CellPhone" name="NoFormat_CellPhone" value="1" <?= $bNoFormat_CellPhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_CellPhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -908,12 +903,10 @@ require_once __DIR__ . '/Include/Header.php';
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sWorkPhone)) ?>"
                                    maxlength="30" class="form-control"
                                    data-phone-mask='{"mask":"<?= InputUtils::escapeAttribute(SystemConfig::getValue('sPhoneFormatWithExt')) ?>"}'>
-                            <div class="input-group-text">
-                                <div class="form-check mb-0">
-                                    <input type="checkbox" class="form-check-input" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
-                                    <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
-                                </div>
-                            </div>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_WorkPhone" name="NoFormat_WorkPhone" value="1" <?= $bNoFormat_WorkPhone ? 'checked' : '' ?>>
+                                <label class="form-check-label" for="NoFormat_WorkPhone"><?= gettext('No format') ?></label>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -1033,7 +1026,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dMembershipDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1046,7 +1039,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= DateTimeUtils::formatForDatePicker($dFriendDate) ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValue("sDatePickerFormat") ?>">
+                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>

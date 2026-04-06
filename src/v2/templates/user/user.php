@@ -104,7 +104,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
     </div>
 </div>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>

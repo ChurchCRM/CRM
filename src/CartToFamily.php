@@ -143,7 +143,7 @@ echo $sError;
                 $sRoleOptionsHTML .= sprintf(
                     '<option value="%s">%s</option>',
                     $roleOption->getOptionId(),
-                    $roleOption->getOptionName()
+                    InputUtils::escapeHTML($roleOption->getOptionName())
                 );
             }
 
@@ -254,7 +254,7 @@ echo $sError;
         </div>
         <div class="mb-3">
             <label class="form-label"><?= gettext('Home Phone') ?>:</label>
-            <input type="text" class="form-control" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone ?? '') ?>" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"' data-mask>
+            <input type="text" class="form-control" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone ?? '') ?>" maxlength="30" data-inputmask='"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"' data-mask>
             <div class="form-check mt-1">
                 <input class="form-check-input" type="checkbox" name="NoFormat_HomePhone" value="1" id="NoFormat_HomePhone" <?= (!empty($bNoFormat_HomePhone)) ? 'checked' : '' ?>>
                 <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('Do not auto-format') ?></label>
@@ -279,7 +279,7 @@ echo $sError;
 <script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.togglePhoneMask === 'function') {
             try {

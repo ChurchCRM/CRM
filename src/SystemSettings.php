@@ -35,7 +35,16 @@ if (isset($_POST['save'])) {
         } elseif ($current_type == 'date') {
             $value = InputUtils::filterDate($new_value[$id]);
         } elseif ($current_type == 'json') {
-            $value = $new_value[$id];
+            $raw = $new_value[$id];
+            json_decode($raw);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $value = $raw;
+            } else {
+                $_SESSION['sGlobalMessage'] = gettext('Invalid JSON value — setting was not saved. Please correct it and try again.');
+                $_SESSION['sGlobalMessageClass'] = 'danger';
+                RedirectUtils::redirect('SystemSettings.php');
+                exit;
+            }
         } elseif ($current_type == 'choice') {
             $value = InputUtils::sanitizeText($new_value[$id]);
         } elseif ($current_type == 'ajax') {

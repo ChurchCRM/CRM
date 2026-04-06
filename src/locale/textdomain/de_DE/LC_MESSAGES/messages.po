@@ -7972,10 +7972,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "Dies kann bei großen Datenbanken mehrere Minuten dauern. Schließen Sie diese Seite nicht."
 
 #: 
-msgid "Upgrade Summary"
-msgstr "Upgrade-Zusammenfassung"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "Verwenden Sie externe Tools (GPG, 7-Zip), um Sicherungen vor dem Speichern extern zu verschlüsseln."
 
@@ -8748,10 +8744,6 @@ msgid "Save the file and refresh this page"
 msgstr "Speichern Sie die Datei und aktualisieren Sie diese Seite"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "Legen Sie true fest, um die Eingabe persönlicher Adressen für nicht verbundene Personen im Person Editor zu deaktivieren. Legen Sie false fest, um die Eingabe von Adressen für Personen ohne Familienzuordnung zu aktivieren."
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "Beginnt mit <strong>http://</strong> oder <strong>https://</strong>"
 
@@ -9218,10 +9210,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "Ja, diese Chance löschen"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "Abfragen, für die der Benutzer Finanzberechtigung haben muss, um sie zu verwenden"
-
-#: 
 msgid "Fund(s)"
 msgstr "Geldmittel"
 
@@ -9506,10 +9494,6 @@ msgstr "Bevorstehende Geburtstage"
 #: 
 msgid "Waiting to Check In"
 msgstr "Warten auf Check-in"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "Wenn aktiviert, können sich neue Kiosk-Geräte 30 Sekunden lang registrieren."
 
 #: 
 msgid "Your child"
@@ -10675,20 +10659,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "Koordinaten automatisch anhand der Adresse ermitteln"
 
 #: 
-msgid "Basic Information"
-msgstr "Grundinformationen"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "Gemeindeinformationen erfolgreich gespeichert."
-
-#: 
 msgid "Church name is required."
 msgstr "Der Gemeindename ist erforderlich."
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "Der Gemeindename ist erforderlich. Bitte füllen Sie die Registerkarte Grundinformationen aus."
 
 #: 
 msgid "City is required."
@@ -10747,22 +10719,6 @@ msgid "Language & Localization"
 msgstr "Sprache und Lokalisierung"
 
 #: 
-msgid "Location & Map"
-msgstr "Standort und Karte"
-
-#: 
-msgid "Location Information"
-msgstr "Standortinformationen"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "Haupt-E-Mail für Gemeindekommunikation."
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "Haupttelefonnummer der Gemeinde."
-
-#: 
 msgid "Map"
 msgstr "Karte"
 
@@ -10813,10 +10769,6 @@ msgstr "Die Straßenadresse ist erforderlich."
 #: 
 msgid "Student Information"
 msgstr "Schülerinformationen"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "Systemsprache für die Gemeinde. Beeinflusst Datumsformate, Telefonnummernformate und andere Lokalisierungen."
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11183,10 +11135,6 @@ msgstr "Jetzt auf externem Speicher sichern"
 #: 
 msgid "Browse all available plugins"
 msgstr "Alle verfügbaren Plugins durchsuchen"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "Alle Gemeindeveranstaltungen und Aktivitäten durchsuchen"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11623,10 +11571,6 @@ msgstr "Erweitern"
 #: 
 msgid "Explore with Demo Data"
 msgstr "Mit Demodaten erkunden"
-
-#: 
-msgid "Export"
-msgstr "Exportieren"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12567,10 +12511,6 @@ msgid "The property is successfully removed."
 msgstr "Die Eigenschaft wurde erfolgreich entfernt."
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "Diese Links erscheinen im Menü \"Links\" in der Navigationsleiste, wenn dieses Plugin aktiviert ist."
-
-#: 
 msgid "To Family"
 msgstr "Zur Familie"
 
@@ -12837,10 +12777,6 @@ msgstr "Fonds"
 #: 
 msgid "members"
 msgstr "Mitglieder"
-
-#: 
-msgid "name@example.com"
-msgstr "name@beispiel.de"
 
 #: 
 msgid "opportunities"
@@ -13363,11 +13299,6 @@ msgstr "Feldwert"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "Personen finden, die an einem Ereignis nicht teilgenommen haben"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "Personen finden, die ein Jahr verpflichtet haben, aber nicht das andere"
 
@@ -13463,11 +13394,6 @@ msgstr "Mindestalter"
 
 #. Context: query_qry
 #: 
-msgid "Missing people"
-msgstr "Vermisste Personen"
-
-#. Context: query_qry
-#: 
 msgid "Missing pledges"
 msgstr "Fehlende Zusagen"
 
@@ -13484,10 +13410,6 @@ msgstr "Monate"
 #: 
 msgid "My Calendars"
 msgstr "Meine Kalender"
-
-#: 
-msgid "N/A"
-msgstr "N/V"
 
 #: 
 msgid "New member notification emails"
@@ -13658,11 +13580,6 @@ msgstr "Ereignistyp wählen..."
 #: 
 msgid "Select field to search for."
 msgstr "Wählen Sie ein Suchfeld."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "Wählen Sie das gewünschte Ereignis"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14053,11 +13970,6 @@ msgstr "Kontinent"
 msgid "Costs"
 msgstr "Kosten"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "Gemeindemitglieder mit Kreditkartenzahlung"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14131,11 +14043,6 @@ msgstr "Spendenumschläge verwenden"
 msgid "Enable use of scanned checks"
 msgstr "Eingescannte Schecks verwenden"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "Familienzusagen nach Haushaltsjahr"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14145,11 +14052,6 @@ msgstr "Funktionen"
 msgid "Finance permission query IDs"
 msgstr "Abfrage-IDs für Finanzberechtigungen"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "Angemeldete Schüler suchen"
-
 #: 
 msgid "Find family"
 msgstr "Familie suchen"
@@ -14158,11 +14060,6 @@ msgstr "Familie suchen"
 #: 
 msgid "Finding Your Server URL"
 msgstr "Ihre Server-URL ermitteln"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "Haushaltsjahr."
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14228,11 +14125,6 @@ msgstr "Gravatar-Website"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar funktioniert, indem E-Mail-Adressen in einen Hash (MD5) umgewandelt werden. Die eigentliche E-Mail-Adresse wird niemals an die Gravatar-Server gesendet – nur der Hash wird zur Suche nach dem Bild verwendet."
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "Gruppe angemeldeter Schüler"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14369,11 +14261,6 @@ msgstr "OpenLP-Website"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP ist kostenlose, quelloffene Präsentationssoftware für Kirchen. Dieses Plugin ermöglicht es ChurchCRM, Benachrichtigungen und Warnmeldungen direkt an Ihre OpenLP-Anzeige zu senden."
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "Gemeindemitglieder, die für die Kreditkartenzahlung konfiguriert sind."
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14399,11 +14286,6 @@ msgstr "Telefonnummern sollten im E.164-Format vorliegen: Ländervorwahl + Numme
 "\n"
 "Telefonnummern der Empfänger in ChurchCRM-Mitgliedsprofilen sollten die Ländervorwahl enthalten, damit SMS korrekt funktioniert."
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "Zusagenzusammenfassung nach Familienname für jeden Fonds für das ausgewählte Haushaltsjahr"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14422,11 +14304,6 @@ msgstr "Datenschutzhinweis"
 #: 
 msgid "Quick Settings"
 msgstr "Schnelleinstellungen"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "Angemeldete Schüler"
 
 #: 
 msgid "SMTP Authentication"
@@ -14598,11 +14475,6 @@ msgstr "Update-Einstellungen"
 msgid "Use Cases"
 msgstr "Anwendungsfälle"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "Benutzerberechtigung zum Exportieren von CSV-Dateien"
-
 #. plugin:vonage:link:2:label
 #: 
 msgid "Vonage Pricing"
@@ -14699,4 +14571,99 @@ msgstr "• Seitenaufrufe und Navigationsmuster\n"
 "• Sitzungsdauer und Engagement\n"
 "• Benutzerdemografie (sofern in GA4 aktiviert)\n"
 "• Geräte- und Browserinformationen"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "Die Dateigröße überschreitet das Serverlimit von %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "Fehlende Bilddaten in der Anfrage"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Personen finden, die an einer Veranstaltung nicht teilgenommen haben"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Fehlende Personen"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Gewünschte Veranstaltung auswählen"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Erweiterte Filterung nach Gruppe, Klassifikation und Rolle"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alle Gemeindeglieder einbezogen"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-Export erfolgreich abgeschlossen"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibles Spaltenformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktdaten, Familienrollen und wichtige Termine"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Erstellen Sie eine vollständige Sicherung Ihrer Kirchendatenbank. Laden Sie eine reine SQL-Datei oder ein vollständiges Archiv einschließlich hochgeladener Fotos herunter."
+
+#: 
+msgid "Database Backup"
+msgstr "Datenbanksicherung"
+
+#: 
+msgid "Export"
+msgstr "Exportieren"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Gemeindegliederdaten in das CSV-Format exportieren. Wählen Sie aus, welche Felder einbezogen werden sollen, und filtern Sie nach Klassifikation, Gruppe, Geschlecht und mehr."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Alle Personen im von ChMeetings erwarteten Format exportieren, um Ihre Gemeindegliederdaten einfach mit der ChMeetings-Plattform zu synchronisieren."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Kirchendaten in verschiedene Formate exportieren"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Externe Sicherung (WebDAV) über Plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings-CSV-Export fehlgeschlagen"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familien- oder Einzelpersonenformat"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Flexible Feldauswahl"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Zur Datenbanksicherung"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV-Export öffnen"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Über die Systemsicherungsseite wiederherstellen"
 

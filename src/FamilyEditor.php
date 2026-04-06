@@ -37,7 +37,7 @@ if (array_key_exists('FamilyID', $_GET)) {
 // Security: User must have Add or Edit Records permission to use this form in those manners
 // Clean error handling: (such as somebody typing an incorrect URL ?PersonID= manually)
 if ($iFamilyID > 0) {
-    if (!(AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId()))) {
+    if (!( AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() || AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iFamilyID == AuthenticationManager::getCurrentUser()->getPerson()->getFamId())) {
         RedirectUtils::securityRedirect('EditRecords');
     }
 
@@ -94,11 +94,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     $sCountry = InputUtils::legacyFilterInput($_POST['Country']);
     $iFamilyMemberRows = InputUtils::legacyFilterInput($_POST['FamCount']);
 
-    if ($_POST['stateType'] =="dropDown") {
-        $sState = InputUtils::legacyFilterInput($_POST['State']);
-    } else {
-        $sState = InputUtils::legacyFilterInput($_POST['StateTextbox']);
-    }
+    $sState = InputUtils::legacyFilterInput($_POST[$_POST['stateType'] === 'dropDown' ? 'State' : 'StateTextbox']);
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
     $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
@@ -126,15 +122,10 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $nEnvelope = InputUtils::legacyFilterInput($_POST['Envelope'], 'int');
     }
 
-    if (is_numeric($nEnvelope)) { // Only integers are allowed as Envelope Numbers
-        if (intval($nEnvelope) == floatval($nEnvelope)) {
-            $nEnvelope ="'" . intval($nEnvelope) ."'";
-        } else {
-            $nEnvelope ="'0'";
-        }
-    } else {
-        $nEnvelope ="'0'";
-    }
+    // Only integers are allowed as Envelope Numbers
+    $nEnvelope = is_numeric($nEnvelope) && intval($nEnvelope) == floatval($nEnvelope)
+        ? "'" . intval($nEnvelope) . "'"
+        : "'0'";
 
     $iPropertyID = 0;
     if (array_key_exists('PropertyID', $_POST)) {
@@ -147,17 +138,17 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     //Loop through the Family Member 'quick entry' form fields
     for ($iCount = 1; $iCount <= $iFamilyMemberRows; $iCount++) {
         // Assign everything to arrays
-        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST['FirstName' . $iCount]);
-        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST['MiddleName' . $iCount]);
-        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST['LastName' . $iCount]);
-        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST['Suffix' . $iCount]);
-        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST['Role' . $iCount], 'int');
-        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST['Gender' . $iCount], 'int');
-        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST['BirthDay' . $iCount], 'int');
-        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST['BirthMonth' . $iCount], 'int');
-        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST['BirthYear' . $iCount], 'int');
-        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST['Classification' . $iCount], 'int');
-        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST['PersonID' . $iCount], 'int');
+        $aFirstNames[$iCount] = InputUtils::legacyFilterInput($_POST["FirstName$iCount"]);
+        $aMiddleNames[$iCount] = InputUtils::legacyFilterInput($_POST["MiddleName$iCount"]);
+        $aLastNames[$iCount] = InputUtils::legacyFilterInput($_POST["LastName$iCount"]);
+        $aSuffix[$iCount] = InputUtils::legacyFilterInput($_POST["Suffix$iCount"]);
+        $aRoles[$iCount] = InputUtils::legacyFilterInput($_POST["Role$iCount"], 'int');
+        $aGenders[$iCount] = InputUtils::legacyFilterInput($_POST["Gender$iCount"], 'int');
+        $aBirthDays[$iCount] = InputUtils::legacyFilterInput($_POST["BirthDay$iCount"], 'int');
+        $aBirthMonths[$iCount] = InputUtils::legacyFilterInput($_POST["BirthMonth$iCount"], 'int');
+        $aBirthYears[$iCount] = InputUtils::legacyFilterInput($_POST["BirthYear$iCount"], 'int');
+        $aClassification[$iCount] = InputUtils::legacyFilterInput($_POST["Classification$iCount"], 'int');
+        $aPersonIDs[$iCount] = InputUtils::legacyFilterInput($_POST["PersonID$iCount"], 'int');
         $aUpdateBirthYear[$iCount] = InputUtils::legacyFilterInput($_POST['UpdateBirthYear'], 'int');
 
         // Make sure first names were entered if editing existing family
@@ -175,7 +166,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         } elseif (strlen($aBirthYears[$iCount]) > 0 && $aBirthMonths[$iCount] === 0 && $aBirthDays[$iCount] === 0) {
             $aBirthDateError[$iCount] = gettext('Invalid Birth Date: Missing birth month and day.');
             $bErrorFlag = true;
-        } elseif ((strlen($aFirstNames[$iCount]) > 0) && (strlen($aBirthYears[$iCount]) > 0)) {
+        } elseif (strlen($aFirstNames[$iCount]) > 0 && strlen($aBirthYears[$iCount]) > 0) {
             if ($aBirthYears[$iCount] < 0) {
                 $aBirthDateError[$iCount] = gettext('Invalid Year');
                 $bErrorFlag = true;
@@ -196,7 +187,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
 
     // Validate Wedding Date if one was entered
     $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
-    if ((strlen($dWeddingDate) > 0) && $dateString === false) {
+    if (strlen($dWeddingDate) > 0 && $dateString === false) {
         $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';
         $bErrorFlag = true;
@@ -270,8 +261,8 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         // Update Lat/Long if address changes
         if (
             $addressChanged
-            && (!$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
-                && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE))
+            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
+            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE)
         ) {
             $family->setLatitude(null);
             $family->setLongitude(null);
@@ -289,7 +280,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //If the user added a new record, we need to key back to the route to the FamilyView page
         if ($iFamilyID < 1) {
             $iFamilyID = $family->getId();
-            $sSQL ="INSERT INTO `family_custom` (`fam_ID`) VALUES ('" . $iFamilyID ."')";
+            $sSQL = "INSERT INTO `family_custom` (`fam_ID`) VALUES ('$iFamilyID')";
             RunQuery($sSQL);
 
             // Add property if assigned
@@ -306,11 +297,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     }
 
                     //If no last name is entered for a member, use the family name.
-                    if (strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName) {
-                        $sLastNameToEnter = $aLastNames[$iCount];
-                    } else {
-                        $sLastNameToEnter = $sName;
-                    }
+                    $sLastNameToEnter = strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName
+                        ? $aLastNames[$iCount]
+                        : $sName;
 
                     $person = new Person();
                     $person
@@ -337,8 +326,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
                     $note->save();
                     RunQuery('LOCK TABLES person_custom WRITE');
-                    $sSQL = 'INSERT INTO person_custom (per_ID) VALUES ('
-                        . $dbPersonId . ')';
+                    $sSQL = "INSERT INTO person_custom (per_ID) VALUES ($dbPersonId)";
                     RunQuery($sSQL);
                     RunQuery('UNLOCK TABLES');
                 }
@@ -361,11 +349,9 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
                     }
 
                     //If no last name is entered for a member, use the family name.
-                    if (strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName) {
-                        $sLastNameToEnter = $aLastNames[$iCount];
-                    } else {
-                        $sLastNameToEnter = $sName;
-                    }
+                    $sLastNameToEnter = strlen($aLastNames[$iCount]) && $aLastNames[$iCount] != $sName
+                        ? $aLastNames[$iCount]
+                        : $sName;
                     //RunQuery("LOCK TABLES person_per WRITE, person_custom WRITE");
                     $person = PersonQuery::create()->findOneById($aPersonIDs[$iCount]);
                     $person
@@ -414,7 +400,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             // chop off the last 2 characters (comma and space) added in the last while loop iteration.
             $sSQL = mb_substr($sSQL, 0, -2);
 
-            $sSQL .= ', fam_ID = ' . $iFamilyID;
+            $sSQL .= ", fam_ID = $iFamilyID";
 
             //Execute the SQL
             RunQuery($sSQL);
@@ -423,7 +409,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         //Which submit button did they press?
         if (isset($_POST['FamilySubmit'])) {
             //Send to the view of this person
-            RedirectUtils::redirect('v2/family/' . $iFamilyID);
+            RedirectUtils::redirect("v2/family/$iFamilyID");
         } else {
             //Reload to editor to add another record
             RedirectUtils::redirect('FamilyEditor.php');
@@ -435,7 +421,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     if ($family) {
         //Editing....
         //Get the information on this family
-        $sSQL = 'SELECT * FROM family_fam WHERE fam_ID = ' . $iFamilyID;
+        $sSQL = "SELECT * FROM family_fam WHERE fam_ID = $iFamilyID";
         $rsFamily = RunQuery($sSQL);
         extract(mysqli_fetch_array($rsFamily));
 
@@ -461,7 +447,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         // If field is empty: checkbox unchecked, mask applied
         $bNoFormat_HomePhone = !empty($sHomePhone);
 
-        $sSQL = 'SELECT * FROM family_custom WHERE fam_ID = ' . $iFamilyID;
+        $sSQL = "SELECT * FROM family_custom WHERE fam_ID = $iFamilyID";
         $rsCustomData = RunQuery($sSQL);
         $aCustomData = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH);
 
@@ -474,7 +460,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             }
         }
 
-        $sSQL = 'SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID =' . $iFamilyID . ' ORDER BY per_fmr_ID';
+        $sSQL = "SELECT * FROM person_per LEFT JOIN family_fam ON per_fam_ID = fam_ID WHERE per_fam_ID = $iFamilyID ORDER BY per_fmr_ID";
         $rsMembers = RunQuery($sSQL);
         $iCount = 0;
         $iFamilyMemberRows = 0;
@@ -490,11 +476,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             $aRoles[$iCount] = (int)$per_fmr_ID;
             $aBirthMonths[$iCount] = (int)$per_BirthMonth;
             $aBirthDays[$iCount] = (int)$per_BirthDay;
-            if ($per_BirthYear > 0) {
-                $aBirthYears[$iCount] = (int)$per_BirthYear;
-            } else {
-                $aBirthYears[$iCount] = '';
-            }
+            $aBirthYears[$iCount] = $per_BirthYear > 0 ? (int)$per_BirthYear : '';
             $aClassification[$iCount] = (int)$per_cls_ID;
             $aPersonIDs[$iCount] = (int)$per_ID;
             $aPerFlag[$iCount] = $per_Flags;
@@ -594,7 +576,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sNameError ?></span>
                     <?php } ?>
                 </div>
-                <?php if (!SystemConfig::getValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
+                <?php if (!SystemConfig::getBooleanValue('bHideWeddingDate')) { /* Wedding Date can be hidden - General Settings */
                     if (empty($dWeddingDate)) {
                         $dWeddingDate = '';
                     } ?>
@@ -602,7 +584,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
-                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValue("sDatePickerPlaceHolder") ?>">
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValueForAttr("sDatePickerPlaceHolder") ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
                     <span class="text-danger small"><?= $sWeddingDateError ?></span>
@@ -651,7 +633,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div id="stateOptionDiv" class="mb-3 col-md-3">
                     <label for="State"><?= gettext('State') ?>:</label>
-                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultState') ?>">
+                    <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>">
                     </select>
                 </div>
                 <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
@@ -668,11 +650,11 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="mb-3 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
-                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValue('sDefaultCountry') ?>">
+                    <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
                     </select>
                 </div>
             </div>
-            <?php if (!SystemConfig::getValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
+            <?php if (!SystemConfig::getBooleanValue('bHideLatLon')) { /* Lat/Lon can be hidden - General Settings */
                 if (!$bHaveXML) { // No point entering if values will just be overwritten
                     ?>
                     <div class="row">
@@ -706,13 +688,11 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="HomePhone"><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
-                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValue('sPhoneFormat') ?>"}'>
-                        <div class="input-group-text">
-                            <div class="form-check mb-0">
-                                <input type="checkbox" class="form-check-input" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
-                                <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
-                            </div>
-                        </div>
+                        <input type="text" id="HomePhone" name="HomePhone" value="<?= InputUtils::escapeAttribute($sHomePhone) ?>" maxlength="30" class="form-control" data-phone-mask='{"mask":"<?= SystemConfig::getValueForAttr('sPhoneFormat') ?>"}'>
+                        <span class="input-group-text gap-2">
+                            <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="NoFormat_HomePhone" value="1" <?= $bNoFormat_HomePhone ? 'checked' : '' ?>>
+                            <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
+                        </span>
                     </div>
                 </div>
                 <div class="mb-3 col-md-6">
@@ -726,7 +706,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <?php } ?>
                 </div>
             </div>
-            <?php if (!SystemConfig::getValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
+            <?php if (!SystemConfig::getBooleanValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
             <div class="row">
                 <div class="mb-3 col-md-6">
                     <div class="form-check">
@@ -738,7 +718,7 @@ require_once __DIR__ . '/Include/Header.php';
             <?php } ?>
         </div>
     </div>
-    <?php if (SystemConfig::getValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
+    <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')) { /* Donation envelopes can be hidden - General Settings */ ?>
         <div class="card clearfix">
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><?= gettext('Envelope Info') ?></h3>
@@ -893,7 +873,7 @@ require_once __DIR__ . '/Include/Header.php';
                                                     <select name="BirthDay<?= $iCount ?>" class="form-select form-select-sm">
                                                         <option value="0"><?= gettext('Unk') ?></option>
                                                         <?php for ($x = 1; $x < 32; $x++) {
-                                                            $sDay = $x < 10 ? '0' . $x : $x;
+                                                            $sDay = $x < 10 ? "0$x" : $x;
                                                             ?>
                                                             <option value="<?= $sDay ?>" <?= $aBirthDays[$iCount] === $x ? 'selected' : '' ?>><?= $x ?></option>
                                                         <?php } ?>
@@ -922,11 +902,11 @@ require_once __DIR__ . '/Include/Header.php';
                                                         //Display Classifications
                                                         while ($aRow = mysqli_fetch_array($rsClassifications)) {
                                                             extract($aRow);
-                                                            echo '<option value="' . $lst_OptionID . '"';
+                                                            echo "<option value=\"$lst_OptionID\"";
                                                             if ($aClassification[$iCount] == $lst_OptionID) {
                                                                 echo ' selected';
                                                             }
-                                                            echo '>' . $lst_OptionName . '</option>';
+                                                            echo '>' . InputUtils::escapeHTML($lst_OptionName) . '</option>';
                                                         }
                                                         ?>
                                                     </select>
@@ -995,7 +975,7 @@ require_once __DIR__ . '/Include/Header.php';
         $classificationsJS[] = ['id' => $classification->getOptionId(), 'name' => $classification->getOptionName()];
     }
 ?>
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.familyRoles = <?= json_encode($familyRolesJS) ?>;
     window.CRM.classifications = <?= json_encode($classificationsJS) ?>;
     window.CRM.customPhoneFields = <?= json_encode($customPhoneFields ?? []) ?>;

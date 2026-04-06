@@ -36,21 +36,13 @@
 // UI Components - Custom ChurchCRM UI elements
 @include meta.load-css("scss/ui-components");
 
-@include meta.load-css("scss/dropdowns");
 @include meta.load-css("scss/events");
-@include meta.load-css("scss/forms");
-@include meta.load-css("scss/tables");
 @include meta.load-css("scss/financial-reports");
 @include meta.load-css("scss/images");
 @include meta.load-css("scss/avatars");
-// Short config moved into the system-settings-panel component stylesheet.
-@include meta.load-css("scss/imageOverlay");
 @include meta.load-css("scss/maps");
-@include meta.load-css("scss/SystemNotifications");
 @include meta.load-css("scss/cart");
 @include meta.load-css("scss/calendars");
-@include meta.load-css("scss/react-datepicker");
-@include meta.load-css("scss/_two-factor-enrollment");
 @include meta.load-css("scss/_authentication-pages");
 @include meta.load-css("scss/kiosk");
 @include meta.load-css("scss/groups");

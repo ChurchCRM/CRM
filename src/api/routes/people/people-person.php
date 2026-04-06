@@ -3,7 +3,9 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\PersonMiddleware;
@@ -118,7 +120,22 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $input = $request->getParsedBody();
-        
+
+        // Detect when PHP discarded the request body because post_max_size was exceeded
+        if (empty($input) || !isset($input['imgBase64'])) {
+            $contentLength = (int)($request->getServerParams()['CONTENT_LENGTH'] ?? 0);
+            $maxSize = SystemService::getMaxUploadFileSize(false);
+            if ($contentLength > 0 && $contentLength > $maxSize) {
+                return SlimUtils::renderErrorJSON(
+                    $response,
+                    sprintf(gettext('File size exceeds the server limit of %s'), SystemService::getMaxUploadFileSize(true)),
+                    [],
+                    413
+                );
+            }
+            return SlimUtils::renderErrorJSON($response, gettext('Missing image data in request'), [], 400);
+        }
+
         try {
             $person->setImageFromBase64($input['imgBase64']);
             // Refresh photo status and return updated info
@@ -127,6 +144,8 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
                 'success' => true,
                 'hasPhoto' => $person->getPhoto()->hasUploadedPhoto()
             ]);
+        } catch (PhotoSizeException $e) {
+            return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 413, $e, $request);
         } catch (\Throwable $e) {
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }

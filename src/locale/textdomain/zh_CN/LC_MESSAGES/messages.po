@@ -7956,10 +7956,6 @@ msgid "This may take several minutes for large databases. Do not close this page
 msgstr "对于大型数据库，这可能需要几分钟时间。请勿关闭此页面。"
 
 #: 
-msgid "Upgrade Summary"
-msgstr "升级摘要"
-
-#: 
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr "在异地存储之前，使用外部工具（如 GPG, 7-Zip）加密备份。"
 
@@ -8732,10 +8728,6 @@ msgid "Save the file and refresh this page"
 msgstr "保存文件并刷新此页面"
 
 #: 
-msgid "Set true to disable entering personal addresses for unaffiliated people in Person Editor. Set false to enable entering addresses for people without a family assignment."
-msgstr "设置为 true 可在个人编辑器中禁用无隶属关系人员的个人地址输入。设置为 false 可启用无家庭分配人员的地址输入。"
-
-#: 
 msgid "Starts with <strong>http://</strong> or <strong>https://</strong>"
 msgstr "以 <strong>http://</strong> 或 <strong>https://</strong> 开始"
 
@@ -9199,10 +9191,6 @@ msgid "Yes, delete this Opportunity"
 msgstr "是，删除此机会"
 
 #: 
-msgid "Queries for which user must have finance permissions to use"
-msgstr "用户必须具备财务权限才能使用的查询"
-
-#: 
 msgid "Fund(s)"
 msgstr "基金"
 
@@ -9486,10 +9474,6 @@ msgstr "即将到来的生日"
 #: 
 msgid "Waiting to Check In"
 msgstr "等待签到"
-
-#: 
-msgid "When enabled, new kiosk devices can register for 30 seconds."
-msgstr "启用后，新的自助终端设备可以在30秒内完成注册。"
 
 #: 
 msgid "Your child"
@@ -10654,20 +10638,8 @@ msgid "Automatically detect coordinates using address"
 msgstr "使用地址自动检测坐标"
 
 #: 
-msgid "Basic Information"
-msgstr "基本信息"
-
-#: 
-msgid "Church information saved successfully."
-msgstr "教会信息已成功保存。"
-
-#: 
 msgid "Church name is required."
 msgstr "教会名称为必填项。"
-
-#: 
-msgid "Church name is required. Please complete the Basic Information tab."
-msgstr "教会名称为必填项。请完成基本信息标签页。"
 
 #: 
 msgid "City is required."
@@ -10726,22 +10698,6 @@ msgid "Language & Localization"
 msgstr "语言和本地化"
 
 #: 
-msgid "Location & Map"
-msgstr "位置和地图"
-
-#: 
-msgid "Location Information"
-msgstr "位置信息"
-
-#: 
-msgid "Main contact email for church communications."
-msgstr "教会通讯的主要联系电子邮件。"
-
-#: 
-msgid "Main contact phone number for the church."
-msgstr "教会主要联系电话。"
-
-#: 
 msgid "Map"
 msgstr "地图"
 
@@ -10792,10 +10748,6 @@ msgstr "街道地址为必填项。"
 #: 
 msgid "Student Information"
 msgstr "学生信息"
-
-#: 
-msgid "System language for the church. Affects date formats, phone formats, and other localizations."
-msgstr "教会的系统语言。影响日期格式、电话格式和其他本地化设置。"
 
 #: 
 msgid "This is how your church information will appear on reports and directories."
@@ -11139,10 +11091,6 @@ msgid "Auto-mapped"
 msgstr "自动映射"
 
 #: 
-msgid "BCC"
-msgstr "密送"
-
-#: 
 msgid "BCC All"
 msgstr "全部密送"
 
@@ -11169,10 +11117,6 @@ msgstr "立即备份到外部存储"
 #: 
 msgid "Browse all available plugins"
 msgstr "浏览所有可用的插件"
-
-#: 
-msgid "Browse all church events and activities"
-msgstr "浏览所有教会事件和活动"
 
 #: 
 msgid "Browse all people in your congregation with filtering and search"
@@ -11609,10 +11553,6 @@ msgstr "展开"
 #: 
 msgid "Explore with Demo Data"
 msgstr "使用演示数据探索"
-
-#: 
-msgid "Export"
-msgstr "导出"
 
 #: 
 msgid "Export data to CSV format for external applications"
@@ -12569,10 +12509,6 @@ msgid "The property is successfully removed."
 msgstr "属性已成功移除。"
 
 #: 
-msgid "These links appear in the\"Links\" menu in the navigation sidebar when this plugin is enabled."
-msgstr "启用此插件后，这些链接将出现在导航侧栏的\"链接\"菜单中。"
-
-#: 
 msgid "To Family"
 msgstr "到家庭"
 
@@ -13361,11 +13297,6 @@ msgstr "字段值"
 
 #. Context: query_qry
 #: 
-msgid "Find people who didn't attend an event"
-msgstr "找出没有参加某个活动的人"
-
-#. Context: query_qry
-#: 
 msgid "Find people who pledged one year but not another"
 msgstr "找出有志在某一年但不是另一年的人"
 
@@ -13458,11 +13389,6 @@ msgstr "会员周年纪念"
 #: 
 msgid "Minimum Age"
 msgstr "最小年龄"
-
-#. Context: query_qry
-#: 
-msgid "Missing people"
-msgstr "失踪人员"
 
 #. Context: query_qry
 #: 
@@ -13652,11 +13578,6 @@ msgstr "选择活动类型..."
 #: 
 msgid "Select field to search for."
 msgstr "选择要搜索的字段。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Select the desired event"
-msgstr "选择所需的活动"
 
 #. Context: queryparameters_qrp
 #: 
@@ -14047,11 +13968,6 @@ msgstr "洲"
 msgid "Costs"
 msgstr "费用"
 
-#. Context: query_qry
-#: 
-msgid "Credit Card People"
-msgstr "信用卡付款人员"
-
 #. plugin:openlp:section:0:title
 #. plugin:vonage:section:0:title
 #: 
@@ -14125,11 +14041,6 @@ msgstr "启用奉献信封"
 msgid "Enable use of scanned checks"
 msgstr "启用扫描支票"
 
-#. Context: query_qry
-#: 
-msgid "Family Pledge by Fiscal Year"
-msgstr "按财年划分的家庭承诺"
-
 #. plugin:mailchimp:section:1:title
 #: 
 msgid "Features"
@@ -14139,11 +14050,6 @@ msgstr "功能"
 msgid "Finance permission query IDs"
 msgstr "财务权限查询ID"
 
-#. Context: query_qry
-#: 
-msgid "Find Registered students"
-msgstr "查找已注册学生"
-
 #: 
 msgid "Find family"
 msgstr "查找家庭"
@@ -14152,11 +14058,6 @@ msgstr "查找家庭"
 #: 
 msgid "Finding Your Server URL"
 msgstr "查找服务器URL"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Fiscal Year."
-msgstr "财政年度。"
 
 #. plugin:custom-links:section:3:content
 #: 
@@ -14222,11 +14123,6 @@ msgstr "Gravatar网站"
 #: 
 msgid "Gravatar works by converting email addresses into a hash (MD5). The actual email address is never sent to Gravatar's servers - only the hash is used to look up the image."
 msgstr "Gravatar通过将电子邮件地址转换为哈希值（MD5）来工作。实际电子邮件地址永远不会发送到Gravatar服务器——只使用哈希值来查找图像。"
-
-#. Context: queryparameters_qrp
-#: 
-msgid "Group of registered students"
-msgstr "已注册学生群组"
 
 #: 
 msgid "Hide Latitude/Longitude"
@@ -14363,11 +14259,6 @@ msgstr "OpenLP网站"
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr "OpenLP是为教会设计的免费开源演示软件。此插件允许ChurchCRM直接向OpenLP显示器发送通知和警报。"
 
-#. Context: query_qry
-#: 
-msgid "People who are configured to pay by credit card."
-msgstr "配置为使用信用卡付款的人员。"
-
 #. plugin:mailchimp:section:3:title
 #: 
 msgid "Person/Family Integration"
@@ -14393,11 +14284,6 @@ msgstr "电话号码应采用E.164格式：国家/地区代码 + 号码。示例
 "\n"
 "ChurchCRM成员资料中的收件人电话号码应包含国家/地区代码，以确保短信正常发送。"
 
-#. Context: query_qry
-#: 
-msgid "Pledge summary by family name for each fund for the selected fiscal year"
-msgstr "所选财年各基金的家庭姓名奉献承诺摘要"
-
 #. plugin:mailchimp:section:4:title
 #: 
 msgid "Privacy & Compliance"
@@ -14416,11 +14302,6 @@ msgstr "隐私声明"
 #: 
 msgid "Quick Settings"
 msgstr "快速设置"
-
-#. Context: query_qry
-#: 
-msgid "Registered students"
-msgstr "已注册学生"
 
 #: 
 msgid "SMTP Authentication"
@@ -14592,11 +14473,6 @@ msgstr "升级设置"
 msgid "Use Cases"
 msgstr "使用场景"
 
-#. Context: userconfig_ucfg
-#: 
-msgid "User permission to export CSV files"
-msgstr "用户导出CSV文件的权限"
-
 #. plugin:vonage:link:0:label
 #: 
 msgid "Vonage Dashboard"
@@ -14698,4 +14574,99 @@ msgstr "• 页面浏览量和导航模式\n"
 "• 会话时长和参与度\n"
 "• 用户人口统计（如果在GA4中启用）\n"
 "• 设备和浏览器信息"
+
+#: 
+msgid "File size exceeds the server limit of %s"
+msgstr "文件大小超过服务器限制 %s"
+
+#: 
+msgid "Missing image data in request"
+msgstr "请求中缺少图片数据"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "查找未出席活动的会众"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "缺席人员"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "选择所需活动"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "按小组、分类和角色进行高级筛选"
+
+#: 
+msgid "All congregation members included"
+msgstr "包含所有会众成员"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings 导出成功"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings 兼容的列格式"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "联系信息、家庭角色和重要日期"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "创建教会数据库的完整备份。下载仅含数据库的 SQL 文件，或包含已上传照片的完整压缩包。"
+
+#: 
+msgid "Database Backup"
+msgstr "数据库备份"
+
+#: 
+msgid "Export"
+msgstr "导出"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "将会众数据导出为 CSV 格式。选择要包含的字段，并按分类、小组、性别等条件进行筛选。"
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "按 ChMeetings 所需格式导出所有人员信息，便于将会众数据同步至 ChMeetings 平台。"
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "将教会数据导出为多种格式"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "通过插件进行外部（WebDAV）备份"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV 导出失败"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "家庭或个人记录布局"
+
+#: 
+msgid "Flexible field selection"
+msgstr "灵活的字段选择"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "前往数据库备份"
+
+#: 
+msgid "Open CSV Export"
+msgstr "打开 CSV 导出"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "从系统备份页面恢复"
 

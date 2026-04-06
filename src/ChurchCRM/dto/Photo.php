@@ -2,8 +2,10 @@
 
 namespace ChurchCRM\dto;
 
+use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\SystemService;
 
 /**
  * Photo class handles uploaded photos for Person and Family entities.
@@ -186,10 +188,12 @@ class Photo
             throw new \Exception('Invalid image type. Only JPEG, PNG, GIF, and WebP images are allowed.');
         }
         
-        // Validate file size (check against max upload size)
-        $maxSize = $this->parseSize(ini_get('upload_max_filesize'));
+        // Validate file size against the effective server limit (min of upload/post/memory)
+        $maxSize = SystemService::getMaxUploadFileSize(false);
         if (strlen($fileData) > $maxSize) {
-            throw new \Exception('Image file size exceeds maximum allowed size');
+            throw new PhotoSizeException(
+                sprintf('Image file size exceeds maximum allowed size of %s', SystemService::getMaxUploadFileSize(true))
+            );
         }
         
         // Create GD image from uploaded data
