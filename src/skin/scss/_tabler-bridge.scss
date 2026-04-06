@@ -214,12 +214,18 @@ select {
     }
   }
 
-  // Page header buttons: keep compact and right-aligned on mobile
-  .page-header .row {
-    .col-auto.ms-auto {
-      .btn {
-        font-size: 0.8125rem;
-        padding: 0.375rem 0.75rem;
+  // Page header buttons: icon-only on mobile to save space
+  .page-header .btn-list {
+    gap: 0.25rem;
+
+    .btn {
+      font-size: 0;       // hide text
+      padding: 0.375rem;
+
+      i,
+      .fa-solid {
+        font-size: 0.875rem; // show icon at normal size
+        margin: 0 !important;
       }
     }
   }
