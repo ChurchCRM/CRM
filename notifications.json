@@ -2,12 +2,12 @@
     "TTL": 300,
     "messages": [
         {
-            "id": "7.1.1-feedback",
+            "id": "7.1.*-feedback",
             "title": "How do you like the new look?",
-            "message": "ChurchCRM 7.1.1 shipped a redesigned UI — we'd love your feedback.",
+            "message": "ChurchCRM 7.1.x shipped a redesigned UI — we'd love your feedback.",
             "icon": "message-circle",
             "type": "info",
-            "link": "https://github.com/ChurchCRM/CRM/discussions",
+            "link": "https://github.com/ChurchCRM/CRM/discussions/8522",
             "adminOnly": false,
             "targetVersionPattern": "7.1.*",
             "timeout": 8000,
