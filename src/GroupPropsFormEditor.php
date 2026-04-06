@@ -444,8 +444,8 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     </button>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <?php
-                                        $fieldNameJs = json_encode($aNameFields[$row]);
-                                        $fieldIdJs = json_encode($aFieldFields[$row]);
+                                        $fieldNameJs = htmlspecialchars(json_encode($aNameFields[$row]), ENT_QUOTES, 'UTF-8');
+                                        $fieldIdJs = htmlspecialchars(json_encode($aFieldFields[$row]), ENT_QUOTES, 'UTF-8');
                                         ?>
                                         <button type="button" class="dropdown-item text-danger" onclick="confirmDeleteField(<?= $fieldNameJs ?>, <?= $row ?>, <?= $fieldIdJs ?>)">
                                             <i class="ti ti-trash me-2"></i><?= gettext('Delete') ?>
