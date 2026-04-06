@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 </div>
 
-<script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
 document.getElementById('exportChMeetingsBtn').addEventListener('click', function () {
     const btn = this;
     const originalHtml = btn.innerHTML;
