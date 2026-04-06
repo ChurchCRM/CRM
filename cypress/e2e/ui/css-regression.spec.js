@@ -24,13 +24,11 @@ describe("CSS Regression — No Auth Style Leakage", () => {
 
         it("Visible buttons should not have auth-page gradient background", () => {
             // FAB buttons are always visible on the dashboard
-            cy.get(".fab-container .fab-button").first().then(($btn) => {
-                cy.window().then((win) => {
-                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
-                    // Auth pages use #667eea gradient — dashboard buttons should not
-                    expect(bg).to.not.include("667eea");
-                });
-            });
+            cy.get(".fab-container .fab-button").first()
+                .should("be.visible")
+                .invoke("css", "background-image")
+                // Auth pages use #667eea gradient — dashboard buttons should not
+                .should("not.include", "667eea");
         });
     });
 
@@ -48,12 +46,9 @@ describe("CSS Regression — No Auth Style Leakage", () => {
             cy.get("#FinancialReports").submit();
             cy.contains("Financial Reports: Giving Report").should("be.visible");
 
-            cy.get("#createReport").should("be.visible").then(($btn) => {
-                cy.window().then((win) => {
-                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
-                    expect(bg).to.not.include("667eea");
-                });
-            });
+            cy.get("#createReport").should("be.visible")
+                .invoke("css", "background-image")
+                .should("not.include", "667eea");
         });
 
         it("Report form labels should be properly styled", () => {

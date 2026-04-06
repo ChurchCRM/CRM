@@ -23,12 +23,9 @@ describe("Auth Page CSS Regression", () => {
         });
 
         it("Should render sign-in button with auth-specific gradient styling", () => {
-            cy.get(".btn-sign-in").should("be.visible").then(($btn) => {
-                cy.window().then((win) => {
-                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
-                    expect(bg).to.include("gradient");
-                });
-            });
+            cy.get(".btn-sign-in").should("be.visible")
+                .invoke("css", "background-image")
+                .should("include", "gradient");
         });
 
         it("Should render form inputs inside login form", () => {
@@ -56,12 +53,9 @@ describe("Auth Page CSS Regression", () => {
         });
 
         it("Should render reset button with auth-specific gradient styling", () => {
-            cy.get(".btn-reset").should("be.visible").then(($btn) => {
-                cy.window().then((win) => {
-                    const bg = win.getComputedStyle($btn[0]).backgroundImage;
-                    expect(bg).to.include("gradient");
-                });
-            });
+            cy.get(".btn-reset").should("be.visible")
+                .invoke("css", "background-image")
+                .should("include", "gradient");
         });
     });
 
