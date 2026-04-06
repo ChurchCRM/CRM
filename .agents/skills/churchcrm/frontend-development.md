@@ -264,6 +264,48 @@ $('#myModal').on('hidden.bs.modal', function() {
 });
 ```
 
+### Dynamic Content Modals (Single-Instance Pattern) <!-- learned: 2026-04-06 -->
+
+When building modals with dynamically loaded/swapped content (e.g., loading spinner → form),
+use **one Bootstrap Modal instance** and swap `innerHTML` of header/body/footer. Never
+destroy and recreate the Modal instance — Bootstrap's transition callbacks fire on the
+disposed element (`null.style` TypeError).
+
+```javascript
+// ✅ CORRECT — single modal, content swap
+function createAndShowModal() {
+  container.innerHTML = `<div class="modal fade" id="myModal">...</div>`;
+  modalEl = document.getElementById("myModal");
+  modal = new bootstrap.Modal(modalEl, { backdrop: "static" });
+  modal.show();
+}
+function swapContent(html) {
+  modalEl.querySelector(".modal-body").innerHTML = html;
+}
+
+// ❌ WRONG — dispose + recreate causes transition race
+cleanup();          // dispose() mid-transition
+buildNewModal();    // new Modal instance → TypeError
+```
+
+**Close/dismiss gotcha:** `data-bs-dismiss="modal"` does NOT reliably fire on
+dynamically swapped buttons. Use explicit click handlers:
+
+```javascript
+// ✅ CORRECT — explicit close handler
+function closeModal() {
+  cleanup();   // dispose + remove element from DOM
+  refreshData();
+}
+document.getElementById("cancelBtn").addEventListener("click", closeModal);
+
+// ❌ WRONG — data-bs-dismiss silently fails on swapped content
+<button data-bs-dismiss="modal">Cancel</button>
+```
+
+**Widget cleanup before swap:** Destroy TomSelect/Quill instances BEFORE replacing
+innerHTML, otherwise they hold references to removed DOM nodes.
+
 ## Internationalization (i18n)
 
 **CRITICAL: Always wrap user-facing text for translation.**
