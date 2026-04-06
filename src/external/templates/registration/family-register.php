@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Family Registration");
 require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
@@ -176,7 +177,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                                             <label><?= gettext('Role in Family') ?></label>
                                             <select class="form-select member-role">
                                                 <?php foreach ($familyRoles as $role) { ?>
-                                                    <option value="<?= $role->getOptionId() ?>"><?= $role->getOptionName() ?></option>
+                                                    <option value="<?= $role->getOptionId() ?>"><?= InputUtils::escapeHTML($role->getOptionName()) ?></option>
                                                 <?php } ?>
                                             </select>
                                         </div>
