@@ -1,9 +1,8 @@
 /**
- * Two-Factor Authentication Enrollment — vanilla JS replacement for the React
- * two-factor-enrollment entry point.
+ * Two-Factor Authentication Enrollment
  *
  * Multi-step wizard: loading → intro → scan QR → success / status-enabled.
- * Uses Bootstrap 5 cards and vanilla fetch against the existing 2FA API.
+ * Uses Bootstrap 5 cards and vanilla fetch against the 2FA API.
  */
 
 const CRMRoot = window.CRM.root;
@@ -28,7 +27,7 @@ const state = {
 };
 
 function getContainer() {
-  return document.getElementById("two-factor-enrollment-react-app");
+  return document.getElementById("two-factor-enrollment-app");
 }
 
 // ---------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 /**
- * Calendar Event Editor — vanilla JS replacement for the React calendar-event-editor.
+ * Calendar Event Editor
  *
- * Uses Bootstrap 5 modals, TomSelect, native datetime inputs, and the shared
- * Quill editor initializer already bundled in skin-core.
+ * Bootstrap 5 modal for viewing/editing/creating calendar events.
+ * Uses TomSelect, native datetime inputs, and the shared Quill editor.
  */
 
 import DOMPurify from "dompurify";
@@ -94,7 +94,7 @@ function cleanup() {
   quillDesc = null;
   quillText = null;
 
-  const container = document.getElementById("calendar-event-react-app");
+  const container = document.getElementById("calendar-event-app");
   if (container) container.innerHTML = "";
 }
 
@@ -235,7 +235,7 @@ function renderEditor(event, calendars, eventTypes, allDay) {
 // ---------------------------------------------------------------------------
 
 function buildModal(event, calendars, eventTypes, isEditMode) {
-  const container = document.getElementById("calendar-event-react-app");
+  const container = document.getElementById("calendar-event-app");
   if (!container) return;
 
   const allDay = isAllDay(event);
@@ -485,7 +485,7 @@ function validateForm(event) {
 // ---------------------------------------------------------------------------
 
 function showLoadingModal() {
-  const container = document.getElementById("calendar-event-react-app");
+  const container = document.getElementById("calendar-event-app");
   if (!container) return;
 
   container.innerHTML = `
@@ -513,7 +513,7 @@ function showLoadingModal() {
 }
 
 // ---------------------------------------------------------------------------
-// Public API (matches the React version's window functions)
+// Public API
 // ---------------------------------------------------------------------------
 
 window.showEventForm = (eventArg) => {
