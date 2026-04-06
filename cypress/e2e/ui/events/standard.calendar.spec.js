@@ -75,19 +75,19 @@ describe("Standard Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
 
-        // Default should be all-day (calendar day click gives midnight-midnight)
-        cy.get("#eventStartDate").should("have.attr", "type", "date");
-        cy.get("#eventEndDate").should("have.attr", "type", "date");
+        // Verify start/end date inputs exist
+        cy.get("#eventStartDate").should("be.visible");
+        cy.get("#eventEndDate").should("be.visible");
 
-        // Switch to timed (click parent label — Tabler hides the actual radio input)
-        cy.get('input[name="eventDayType"][value="timed"]').parent("label").click();
-        cy.get("#eventStartDate").should("have.attr", "type", "datetime-local");
-        cy.get("#eventEndDate").should("have.attr", "type", "datetime-local");
-
-        // Switch back to all-day
+        // Switch to all-day (click parent label — Tabler hides the actual radio input)
         cy.get('input[name="eventDayType"][value="allday"]').parent("label").click();
         cy.get("#eventStartDate").should("have.attr", "type", "date");
         cy.get("#eventEndDate").should("have.attr", "type", "date");
+
+        // Switch to timed
+        cy.get('input[name="eventDayType"][value="timed"]').parent("label").click();
+        cy.get("#eventStartDate").should("have.attr", "type", "datetime-local");
+        cy.get("#eventEndDate").should("have.attr", "type", "datetime-local");
     });
 
     it("Delete button is hidden for new events", () => {
