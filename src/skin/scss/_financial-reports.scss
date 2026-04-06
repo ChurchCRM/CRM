@@ -1,14 +1,7 @@
-/* Styles moved from inline in src/FinancialReports.php
-   Purpose: improve spacing and responsive behavior for legacy table-based report forms
-   
-   Note (2026-03-23): Removed max-width: 980px constraint. Modern tables use table-responsive 
-   for mobile responsiveness and should expand to full width. Legacy form tables that need width 
-   constraints should use explicit .form-table class instead.
+/* Styles for financial report forms (src/FinancialReports.php).
+   TODO: Scope these under a parent class (e.g. .financial-report) to avoid
+   global element selectors leaking into other pages.
 */
-
-.form-table {
-  width: 100%;
-}
 
 td.LabelColumn {
   width: 220px;
@@ -17,8 +10,7 @@ td.LabelColumn {
   font-weight: 600;
 }
 
-td.TextColumn,
-td.TextColumnWithBottomBorder {
+td.TextColumn {
   padding-bottom: 14px;
 }
 
@@ -35,9 +27,6 @@ select#family {
   width: 100%;
 }
 
-.btn {
-  margin-right: 6px;
-}
 
 select[multiple] {
   min-height: 90px;
@@ -54,8 +43,7 @@ input.date-picker {
     width: 100%;
     padding-top: 6px;
   }
-  td.TextColumn,
-  td.TextColumnWithBottomBorder {
+  td.TextColumn {
     display: block;
     width: 100%;
   }
