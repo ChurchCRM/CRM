@@ -9,7 +9,24 @@ const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 function fetchJSON(url, opts = {}) {
-  return fetch(url, { credentials: "include", ...opts }).then((r) => r.json());
+  return fetch(url, { credentials: "include", ...opts }).then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    if (r.status === 204) return {};
+    return r.json();
+  });
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+function notifyError(message) {
+  if (window.CRM?.notify) {
+    window.CRM.notify(message, { type: "danger" });
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -143,7 +160,7 @@ function renderQRCode() {
             <div class="row justify-content-center">
               <div class="col-sm-8">
                 <input id="totp-input" type="text" maxlength="6" class="form-control form-control-lg text-center"
-                  value="${state.currentTwoFAPin}" placeholder="000000" autocomplete="off"
+                  placeholder="000000" autocomplete="off"
                   style="font-size:1.75em;letter-spacing:0.5em;font-weight:500;font-family:monospace;border-width:2px;border-color:${state.currentTwoFAPinStatus === "invalid" ? "#dc3545" : "#ced4da"}">
               </div>
             </div>
@@ -168,7 +185,7 @@ function renderSuccess() {
   if (state.TwoFARecoveryCodes.length) {
     codesHtml = state.TwoFARecoveryCodes.map(
       (code, i) =>
-        `<div><span class="text-muted me-2">${String(i + 1).padStart(2, "0")}.</span><code>${code}</code></div>`,
+        `<div><span class="text-muted me-2">${String(i + 1).padStart(2, "0")}.</span><code>${escapeHtml(code)}</code></div>`,
     ).join("");
   } else {
     codesHtml = `<p class="text-muted text-center mb-0">${t("Loading recovery codes")}...</p>`;
@@ -301,10 +318,15 @@ function bindEvents() {
     cancelBtn.addEventListener("click", () => remove2FA());
   }
 
-  // QR screen: TOTP input
+  // QR screen: TOTP input — set value via DOM (not interpolation) to prevent XSS
   const totpInput = document.getElementById("totp-input");
   if (totpInput) {
+    totpInput.value = state.currentTwoFAPin;
     totpInput.addEventListener("input", (e) => handlePinChange(e.target.value));
+    // Restore focus after re-render if the user was typing
+    if (state.currentTwoFAPinStatus === "invalid" || state.currentTwoFAPinStatus === "incomplete") {
+      totpInput.focus();
+    }
   }
 
   // Success: print button
@@ -351,73 +373,94 @@ function requestNewBarcode() {
   fetchJSON(`${CRMRoot}/api/user/current/refresh2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then((data) => {
-    state.TwoFAQRCodeDataUri = data.TwoFAQRCodeDataUri;
-    // Update only the QR image if we're on the right screen
-    const img = document.getElementById("2faQrCodeDataUri");
-    if (img) {
-      img.src = data.TwoFAQRCodeDataUri;
-    }
-  });
+  })
+    .then((data) => {
+      state.TwoFAQRCodeDataUri = data.TwoFAQRCodeDataUri;
+      // Update only the QR image if we're on the right screen
+      const img = document.getElementById("2faQrCodeDataUri");
+      if (img) {
+        img.src = data.TwoFAQRCodeDataUri;
+      }
+    })
+    .catch(() => notifyError(t("Failed to generate QR code. Please try again.")));
 }
 
 function requestRecoveryCodes() {
   fetchJSON(`${CRMRoot}/api/user/current/refresh2farecoverycodes`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then((data) => {
-    state.TwoFARecoveryCodes = data.TwoFARecoveryCodes;
-    render();
-  });
+  })
+    .then((data) => {
+      state.TwoFARecoveryCodes = data.TwoFARecoveryCodes;
+      render();
+    })
+    .catch(() => notifyError(t("Failed to load recovery codes. Please refresh the page.")));
 }
 
 function remove2FA() {
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then(() => {
-    state.TwoFAQRCodeDataUri = "";
-    state.currentView = "intro";
-    render();
-  });
+  })
+    .then(() => {
+      state.TwoFAQRCodeDataUri = "";
+      state.currentView = "intro";
+      render();
+    })
+    .catch(() => notifyError(t("Failed to cancel enrollment. Please try again.")));
 }
 
 function disable2FA() {
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
-  }).then(() => {
-    state.is2FAEnabled = false;
-    state.currentView = "intro";
-    render();
-    if (window.CRM?.notify) {
-      window.CRM.notify(t("Two-factor authentication has been disabled"), { type: "success" });
-    }
-  });
+  })
+    .then(() => {
+      state.is2FAEnabled = false;
+      state.currentView = "intro";
+      render();
+      if (window.CRM?.notify) {
+        window.CRM.notify(t("Two-factor authentication has been disabled"), { type: "success" });
+      }
+    })
+    .catch(() => notifyError(t("Failed to disable two-factor authentication. Please try again.")));
 }
+
+let pendingPinVerification = "";
 
 function handlePinChange(value) {
   state.currentTwoFAPin = value;
   if (value.length === 6) {
     state.currentTwoFAPinStatus = "pending";
+    pendingPinVerification = value;
     render();
     fetchJSON(`${CRMRoot}/api/user/current/test2FAEnrollmentCode`, {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify({ enrollmentCode: value }),
-    }).then((data) => {
-      if (data.IsEnrollmentCodeValid) {
-        requestRecoveryCodes();
-        state.is2FAEnabled = true;
-        state.currentView = "success";
-        render();
-      } else {
+    })
+      .then((data) => {
+        // Ignore stale responses if the user changed the code while request was pending
+        if (pendingPinVerification !== value) return;
+        if (data.IsEnrollmentCodeValid) {
+          requestRecoveryCodes();
+          state.is2FAEnabled = true;
+          state.currentView = "success";
+          render();
+        } else {
+          state.currentTwoFAPinStatus = "invalid";
+          render();
+        }
+      })
+      .catch(() => {
+        if (pendingPinVerification !== value) return;
         state.currentTwoFAPinStatus = "invalid";
         render();
-      }
-    });
+        notifyError(t("Verification failed. Please try again."));
+      });
   } else {
     state.currentTwoFAPinStatus = "incomplete";
+    render();
   }
 }
 

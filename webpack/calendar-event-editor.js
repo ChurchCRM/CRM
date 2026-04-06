@@ -16,7 +16,31 @@ const CRMRoot = window.CRM.root;
 const t = (key) => (window.i18next ? window.i18next.t(key) : key);
 
 function fetchJSON(url, opts = {}) {
-  return fetch(url, { credentials: "include", ...opts }).then((r) => r.json());
+  return fetch(url, { credentials: "include", ...opts }).then((r) => {
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    if (r.status === 204) return {};
+    return r.json();
+  });
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML.replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+
+/** Parse an input value as a local date. date-only "YYYY-MM-DD" is parsed as
+ *  local (not UTC) to avoid off-by-one day shifts in non-UTC timezones. */
+function parseInputDate(value) {
+  if (!value) return undefined;
+  // date-only: "YYYY-MM-DD" — construct as local
+  const dateOnly = value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (dateOnly) {
+    return new Date(Number(dateOnly[1]), Number(dateOnly[2]) - 1, Number(dateOnly[3]));
+  }
+  // datetime-local: "YYYY-MM-DDTHH:mm" — already parsed as local by Date()
+  return new Date(value);
 }
 
 function formatDateForInput(date, allDay) {
@@ -88,8 +112,8 @@ function cleanup() {
   }
   // Clean up Quill instances from global registry
   if (window.quillEditors) {
-    delete window.quillEditors.Desc;
-    delete window.quillEditors.Text;
+    delete window.quillEditors["quill-Desc"];
+    delete window.quillEditors["quill-Text"];
   }
   quillDesc = null;
   quillText = null;
@@ -113,13 +137,13 @@ function renderViewer(event, calendars, eventTypes) {
   for (const cal of pinnedCals) {
     calBadges += `<span class="badge border me-1" style="background-color:#${cal.BackgroundColor};color:#${cal.ForegroundColor};border-color:#${cal.BackgroundColor}">
       <span class="d-inline-block rounded-circle me-1" style="width:8px;height:8px;background-color:#${cal.ForegroundColor};opacity:0.7"></span>
-      ${cal.Name}</span>`;
+      ${escapeHtml(cal.Name)}</span>`;
   }
 
   let metaRows = "";
   if (matchedType) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Event Type")}</dt>
-      <dd class="col-sm-9"><span class="badge bg-blue-lt text-blue">${matchedType.Name}</span></dd>`;
+      <dd class="col-sm-9"><span class="badge bg-blue-lt text-blue">${escapeHtml(matchedType.Name)}</span></dd>`;
   }
   if (allDay) {
     metaRows += `<dt class="col-sm-3 text-muted">${t("Duration")}</dt>
@@ -171,10 +195,13 @@ function renderViewer(event, calendars, eventTypes) {
 
 function renderEditor(event, calendars, eventTypes, allDay) {
   const calOptions = calendars
-    .map((c) => `<option value="${c.Id}" ${event.PinnedCalendars?.includes(c.Id) ? "selected" : ""}>${c.Name}</option>`)
+    .map(
+      (c) =>
+        `<option value="${c.Id}" ${event.PinnedCalendars?.includes(c.Id) ? "selected" : ""}>${escapeHtml(c.Name)}</option>`,
+    )
     .join("");
   const typeOptions = eventTypes
-    .map((et) => `<option value="${et.Id}" ${event.Type === et.Id ? "selected" : ""}>${et.Name}</option>`)
+    .map((et) => `<option value="${et.Id}" ${event.Type === et.Id ? "selected" : ""}>${escapeHtml(et.Name)}</option>`)
     .join("");
 
   const inputType = allDay ? "date" : "datetime-local";
@@ -246,13 +273,13 @@ function buildModal(event, calendars, eventTypes, isEditMode) {
     headerContent = `
       <div class="w-100 me-3 pt-1">
         <label class="form-label text-muted small mb-1" for="event-title-input">${t("Event Title")}</label>
-        <input id="event-title-input" name="Title" value="${(event.Title || "").replace(/"/g, "&quot;")}"
+        <input id="event-title-input" name="Title" value="${escapeHtml(event.Title || "")}"
           placeholder="${t("e.g. Sunday Service")}"
           class="form-control form-control-lg fw-bold border-0 border-bottom rounded-0 px-0" style="box-shadow:none">
         <div class="invalid-feedback" id="titleFeedback"><i class="fas fa-exclamation-circle me-1"></i>${t("This field is required")}</div>
       </div>`;
   } else {
-    headerContent = `<h5 class="modal-title">${event.Title || ""}</h5>`;
+    headerContent = `<h5 class="modal-title">${escapeHtml(event.Title || "")}</h5>`;
   }
 
   // Build body
@@ -308,14 +335,24 @@ function buildModal(event, calendars, eventTypes, isEditMode) {
   });
 
   // Delete handler
-  document.getElementById("eventDeleteBtn").addEventListener("click", () => {
-    if (!window.confirm(t("Are you sure you want to delete this event?"))) return;
-    fetch(`${CRMRoot}/api/events/${event.Id}`, {
-      credentials: "include",
-      method: "DELETE",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-    }).then(() => currentModal.hide());
-  });
+  const deleteBtnEl = document.getElementById("eventDeleteBtn");
+  if (deleteBtnEl) {
+    deleteBtnEl.addEventListener("click", () => {
+      if (!window.confirm(t("Are you sure you want to delete this event?"))) return;
+      fetch(`${CRMRoot}/api/events/${event.Id}`, {
+        credentials: "include",
+        method: "DELETE",
+        headers: { Accept: "application/json", "Content-Type": "application/json" },
+      })
+        .then((r) => {
+          if (!r.ok) throw new Error(`HTTP ${r.status}`);
+          currentModal.hide();
+        })
+        .catch(() => {
+          if (window.CRM?.notify) window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
+        });
+    });
+  }
 
   if (isEditMode) {
     initEditMode(event);
@@ -394,6 +431,7 @@ function initEditMode(event) {
       endInput.type = nowAllDay ? "date" : "datetime-local";
       startInput.value = formatDateForInput(event.Start, nowAllDay);
       endInput.value = formatDateForInput(event.End, nowAllDay);
+      endInput.min = startInput.value || "";
       validateForm(event);
     });
   }
@@ -402,12 +440,12 @@ function initEditMode(event) {
   const startInput = document.getElementById("eventStartDate");
   const endInput = document.getElementById("eventEndDate");
   startInput.addEventListener("change", () => {
-    event.Start = startInput.value ? new Date(startInput.value) : undefined;
+    event.Start = startInput.value ? parseInputDate(startInput.value) : undefined;
     endInput.min = startInput.value || "";
     validateForm(event);
   });
   endInput.addEventListener("change", () => {
-    event.End = endInput.value ? new Date(endInput.value) : undefined;
+    event.End = endInput.value ? parseInputDate(endInput.value) : undefined;
     validateForm(event);
   });
 
@@ -435,10 +473,9 @@ function initEditMode(event) {
   // Save handler
   document.getElementById("eventSaveBtn").addEventListener("click", () => {
     const url = `${CRMRoot}/api/events${event.Id !== 0 ? `/${event.Id}` : ""}`;
-    const body = JSON.stringify(event, (key, value) => {
-      if (event[key] instanceof Date) {
-        const d = event[key];
-        return window.moment ? window.moment(d).format() : d.toISOString();
+    const body = JSON.stringify(event, (_key, value) => {
+      if (value instanceof Date) {
+        return window.moment ? window.moment(value).format() : value.toISOString();
       }
       return value;
     });
@@ -447,7 +484,14 @@ function initEditMode(event) {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body,
-    }).then(() => currentModal.hide());
+    })
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        currentModal.hide();
+      })
+      .catch(() => {
+        if (window.CRM?.notify) window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
+      });
   });
 
   // Initial validation

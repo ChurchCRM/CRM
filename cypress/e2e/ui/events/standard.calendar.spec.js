@@ -12,22 +12,18 @@ describe("Standard Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
         
         cy.get(".modal-header input").type(title);
-        cy.typeInQuill("Desc", "New adult Service");
-        cy.typeInQuill("Text", "Come join us");
+        cy.typeInQuill("quill-Desc", "New adult Service");
+        cy.typeInQuill("quill-Text", "Come join us");
        
     });
 
     /**
-     * Regression: QuillEditor toolbar duplication on re-render.
-     * When the user interacted with any other form field (e.g. Event Type dropdown),
-     * the React parent re-rendered which changed the inline onChange reference,
-     * causing the Quill useEffect to tear down and re-mount — appending an extra
-     * toolbar to the same DOM node on every interaction.
-     *
-     * After the fix (useEffect with [] + onChangeRef), each editor must have
-     * exactly one .ql-toolbar even after multiple parent re-renders.
+     * Regression: QuillEditor toolbar duplication.
+     * Verifies that interacting with other form fields (title, event type dropdown)
+     * does not cause Quill to re-initialize and duplicate toolbars.
+     * Each editor must have exactly one .ql-toolbar at all times.
      */
-    it("Quill toolbars do not duplicate after parent re-renders", () => {
+    it("Quill toolbars do not duplicate after form interactions", () => {
         cy.visit("v2/calendar");
         cy.url().should("include", "v2/calendar");
 
@@ -43,8 +39,8 @@ describe("Standard Calendar", () => {
         // Toolbar count must still be exactly 2 (one per editor)
         cy.get(".ql-toolbar").should("have.length", 2);
 
-        // Opening the Event Type dropdown re-renders the form again
-        cy.get("#EventType").click();
+        // Opening the Event Type dropdown (TomSelect wraps the original select)
+        cy.get("#eventTypeSelect").siblings(".ts-wrapper").find(".ts-control").click();
 
         // Toolbar count must still be exactly 2
         cy.get(".ql-toolbar").should("have.length", 2);
