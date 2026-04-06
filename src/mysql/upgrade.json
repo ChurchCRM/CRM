@@ -258,11 +258,6 @@
     "scripts": ["/mysql/upgrade/7.1.0-config.sql"],
     "dbVersion": "7.1.0"
   },
-  "pre-7.1.2": {
-    "versions": ["7.1.1"],
-    "scripts": [],
-    "dbVersion": "7.1.2"
-  },
   "current": {
     "versions": ["7.1.0"],
     "scripts": [],
