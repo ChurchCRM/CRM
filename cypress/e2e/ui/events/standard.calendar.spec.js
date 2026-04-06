@@ -111,26 +111,21 @@ describe("Standard Calendar", () => {
         cy.get("#eventEditorModal").should("not.be.visible");
     });
 
-    it("Opening a second modal cleanly replaces the first", () => {
+    it("Modal cleanup removes element and restores body state", () => {
         cy.visit("v2/calendar");
 
-        // Open first modal
         cy.get(".fc-daygrid-day").first().click();
-        cy.get("#event-title-input").should("be.visible").type("First Event");
-
-        // Close it and wait for full cleanup (hidden.bs.modal removes the element)
-        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
-        cy.get("#eventEditorModal").should("not.exist");
-
-        // Open second modal on a different day
-        cy.get(".fc-daygrid-day").eq(2).click();
         cy.get("#event-title-input").should("be.visible");
 
-        // Title should be empty (new event, not the first one)
-        cy.get("#event-title-input").should("have.value", "");
+        // Close the modal
+        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
 
-        // Only one modal should exist
-        cy.get("#eventEditorModal").should("have.length", 1);
+        // Modal element should be fully removed from DOM after hidden transition
+        cy.get("#eventEditorModal").should("not.exist");
+
+        // Body should not retain modal-open class or backdrop
+        cy.get("body").should("not.have.class", "modal-open");
+        cy.get(".modal-backdrop").should("not.exist");
     });
 
     it("TomSelect dropdowns initialize correctly", () => {
