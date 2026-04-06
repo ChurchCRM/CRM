@@ -40,51 +40,6 @@
 }
 
 /* ============================================
-   CUSTOM COMPONENT STYLES
-   ============================================ */
-
-/* Profile-related styles moved to _avatars.scss */
-
-/* Registration form styles */
-.register-box-margin {
-  margin: 72px auto 0;
-}
-
-.register-box-600 {
-  width: 600px;
-}
-
-.register-box-75pct {
-  width: 75%;
-}
-
-.register-logo-margin {
-  margin: 72px auto 0;
-}
-
-.register-box-flex {
-  width: 100%;
-  margin-top: 5px;
-}
-
-/* Textarea and canvas custom heights */
-.textarea-120px {
-  height: 120px;
-}
-
-.canvas-250px {
-  height: 250px;
-}
-
-.canvas-250px-donut {
-  height: 250px;
-}
-
-.canvas-flex {
-  height: 250px;
-}
-
-/* ============================================
    CUSTOM TYPOGRAPHY & SPACING
    ============================================ */
 
@@ -93,7 +48,7 @@
   line-height: 1.2;
 }
 
-/* Line-height utilities (Bootstrap 4 doesn't include lh-* utilities) */
+/* Line-height override: BS5 lh-lg uses 2.0 — keep as-is for consistency */
 .lh-lg {
   line-height: 2;
 }
@@ -102,9 +57,10 @@
    DEPRECATED/LEGACY CLASSES (Backward Compatibility)
    ============================================ */
 
-/* Used in password change forms for inline validation errors */
+/* Used in password change forms for inline validation errors.
+   Consider migrating to BS5 .text-danger in templates. */
 .form-field-error {
-  color: red;
+  color: var(--tblr-danger, #d63939);
 }
 
 /* ============================================
