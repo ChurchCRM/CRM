@@ -443,7 +443,10 @@ $MenuFirst = 1;
     <div class="page-body">
       <div class="container-xl">
 <?php
-// Render system notifications as dismissible alerts
+// Hydrate registry from session-cached remote notifications (no HTTP calls)
+NotificationService::loadSessionNotifications();
+
+// Render all active notifications as dismissible alerts
 foreach (NotificationService::getNotifications() as $notification) {
 ?>
       <div class="alert alert-<?= InputUtils::escapeHTML($notification->getType()) ?> alert-dismissible"
