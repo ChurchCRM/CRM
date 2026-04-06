@@ -186,9 +186,9 @@ function updateMemberCounts(): void {
 
   // Show/hide Checkout All button based on checked-in count
   if (checkedIn > 0) {
-    $("#checkoutAllBtn").show();
+    $("#checkoutAllBtn").removeClass("d-none");
   } else {
-    $("#checkoutAllBtn").hide();
+    $("#checkoutAllBtn").addClass("d-none");
   }
 
   // Show/hide Alert All button based on checked-in count, notifications enabled, and members with families
@@ -201,9 +201,9 @@ function updateMemberCounts(): void {
   });
 
   if (kioskState.notificationsEnabled && checkedInWithFamilies > 0) {
-    $("#alertAllBtn").show();
+    $("#alertAllBtn").removeClass("d-none");
   } else {
-    $("#alertAllBtn").hide();
+    $("#alertAllBtn").addClass("d-none");
   }
 
   // Show/hide empty state messages
@@ -241,14 +241,14 @@ function renderBirthdaySection(birthdayPeople: ClassMember[]): void {
 
   if (!birthdayPeople || birthdayPeople.length === 0) {
     // Hide banner when no birthdays
-    birthdayBanner.hide();
+    birthdayBanner.addClass("d-none");
     $(".kiosk-section").removeClass("has-birthday-banner");
     $("#birthdayCount").text("0");
     return;
   }
 
   // Show banner and adjust section heights
-  birthdayBanner.show();
+  birthdayBanner.removeClass("d-none");
   $(".kiosk-section").addClass("has-birthday-banner");
 
   // Sort by birthday (upcoming first, then recent)
@@ -514,8 +514,8 @@ function heartbeat(): void {
 
     if (data.Commands === "Identify") {
       clearInterval(kioskState.kioskEventLoop);
-      $("#event").hide();
-      $("#noEvent").show();
+      $("#event").addClass("d-none");
+      $("#noEvent").removeClass("d-none");
       $("#noEvent").html(renderStatusCard("info", "fa-tablet-alt", "Kiosk Identification", data.Name, null));
       setTimeout(() => {
         location.reload();
@@ -536,23 +536,23 @@ function heartbeat(): void {
 
         if (now.isBefore(eventStart)) {
           // Event hasn't started yet - show countdown
-          $("#noEvent").hide();
-          $("#event").show();
+          $("#noEvent").addClass("d-none");
+          $("#event").removeClass("d-none");
           $("#classMemberContainer").html(renderCountdown(eventStart, Assignment.Event.Title));
           startCountdown(eventStart);
         } else if (now.isAfter(eventEnd)) {
           // Event has ended
-          $("#noEvent").hide();
-          $("#event").show();
+          $("#noEvent").addClass("d-none");
+          $("#event").removeClass("d-none");
           $("#classMemberContainer").html(renderEventEnded(Assignment.Event.Title));
         } else {
           // Event is active - show class members
           updateActiveClassMembers();
-          $("#noEvent").hide();
-          $("#event").show();
+          $("#noEvent").addClass("d-none");
+          $("#event").removeClass("d-none");
         }
       } else {
-        $("#noEvent").show();
+        $("#noEvent").removeClass("d-none");
         $("#noEvent").html(
           renderStatusCard(
             "success",
@@ -569,10 +569,10 @@ function heartbeat(): void {
               "</ol></div>",
           ),
         );
-        $("#event").hide();
+        $("#event").addClass("d-none");
       }
     } else {
-      $("#noEvent").show();
+      $("#noEvent").removeClass("d-none");
       $("#noEvent").html(
         renderStatusCard(
           "pending",
@@ -595,7 +595,7 @@ function heartbeat(): void {
             "</div>",
         ),
       );
-      $("#event").hide();
+      $("#event").addClass("d-none");
     }
   });
 }
