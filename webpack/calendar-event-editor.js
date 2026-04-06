@@ -407,15 +407,20 @@ function showEditContent(event, calendars, eventTypes) {
 }
 
 // ---------------------------------------------------------------------------
-// Close/Cancel handlers — explicit hide() instead of data-bs-dismiss
-// (Bootstrap's delegated dismiss doesn't reliably fire on swapped content)
+// Close modal — bypasses Bootstrap's hide animation (which doesn't reliably
+// complete on dynamically swapped content) and removes the element directly.
 // ---------------------------------------------------------------------------
+
+function closeModal() {
+  cleanup();
+  window.CRM.refreshAllFullCalendarSources();
+}
 
 function bindCloseHandlers() {
   const xBtn = document.getElementById("eventCloseXBtn");
-  if (xBtn) xBtn.addEventListener("click", () => currentModal.hide());
+  if (xBtn) xBtn.addEventListener("click", closeModal);
   const cancelBtn = document.getElementById("eventCancelBtn");
-  if (cancelBtn) cancelBtn.addEventListener("click", () => currentModal.hide());
+  if (cancelBtn) cancelBtn.addEventListener("click", closeModal);
 }
 
 // ---------------------------------------------------------------------------
@@ -441,7 +446,7 @@ function bindDeleteHandler(event) {
     })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        currentModal.hide();
+        closeModal();
       })
       .catch(() => {
         if (window.CRM?.notify) window.CRM.notify(t("Failed to delete event. Please try again."), { type: "danger" });
@@ -571,7 +576,7 @@ function initEditMode(event) {
     })
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        currentModal.hide();
+        closeModal();
       })
       .catch(() => {
         if (window.CRM?.notify) window.CRM.notify(t("Failed to save event. Please try again."), { type: "danger" });
