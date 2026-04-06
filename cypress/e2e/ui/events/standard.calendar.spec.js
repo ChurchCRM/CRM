@@ -106,8 +106,8 @@ describe("Standard Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible");
 
-        // Click Cancel — modal should close
-        cy.get(".modal-footer .btn-secondary").click();
+        // Click Cancel — modal should close (scope to our modal to avoid matching settings panel)
+        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
         cy.get("#eventEditorModal").should("not.be.visible");
     });
 
@@ -118,9 +118,9 @@ describe("Standard Calendar", () => {
         cy.get(".fc-daygrid-day").first().click();
         cy.get("#event-title-input").should("be.visible").type("First Event");
 
-        // Close it
-        cy.get(".modal-footer .btn-secondary").click();
-        cy.get("#eventEditorModal").should("not.be.visible");
+        // Close it and wait for full cleanup (hidden.bs.modal removes the element)
+        cy.get("#eventEditorModal .modal-footer .btn-secondary").click();
+        cy.get("#eventEditorModal").should("not.exist");
 
         // Open second modal on a different day
         cy.get(".fc-daygrid-day").eq(2).click();
