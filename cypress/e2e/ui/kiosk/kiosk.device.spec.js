@@ -6,17 +6,23 @@
  * End-to-end flow: visit /kiosk when disabled, enable registration via admin,
  * register a new kiosk device, and verify the "Awaiting Acceptance" screen.
  *
- * Cleans up the created kiosk device in after() to leave the DB tidy.
+ * Cleans up the created kiosk device in afterEach() to leave the DB tidy.
  */
 
 describe("Kiosk Device UI", () => {
     let createdKioskId = null;
 
     afterEach(() => {
+        // Reset registration window so subsequent specs see it as closed
+        cy.setupAdminSession();
+        cy.request({
+            method: "POST",
+            url: "/admin/api/system/config/sKioskVisibilityTimestamp",
+            body: { value: "2000-01-01 00:00:00" },
+        });
+
         // Clean up any kiosk device created during the test
         if (createdKioskId) {
-            cy.clearCookies();
-            cy.setupAdminSession({ forceLogin: true });
             cy.request({
                 method: "DELETE",
                 url: `/kiosk/api/devices/${createdKioskId}`,
@@ -40,17 +46,9 @@ describe("Kiosk Device UI", () => {
     });
 
     it("should register a new kiosk and show Awaiting Acceptance", () => {
-        // Step 1: Enable kiosk registration via admin API
         cy.setupAdminSession();
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/allowRegistration",
-        }).then((regResponse) => {
-            expect(regResponse.status).to.equal(200);
-            expect(regResponse.body).to.have.property("visibleUntil");
-        });
 
-        // Snapshot existing kiosk IDs before registration
+        // Snapshot existing kiosk IDs BEFORE opening the registration window
         cy.request({
             method: "GET",
             url: "/kiosk/api/devices",
@@ -58,6 +56,15 @@ describe("Kiosk Device UI", () => {
             const existingIds = new Set(
                 (beforeResponse.body.KioskDevices || []).map((k) => k.Id),
             );
+
+            // Step 1: Enable kiosk registration via admin API
+            cy.request({
+                method: "POST",
+                url: "/kiosk/api/allowRegistration",
+            }).then((regResponse) => {
+                expect(regResponse.status).to.equal(200);
+                expect(regResponse.body).to.have.property("visibleUntil");
+            });
 
             // Step 2: Clear cookies and visit /kiosk/ as a new device
             cy.clearCookies();
@@ -90,13 +97,9 @@ describe("Kiosk Device UI", () => {
     });
 
     it("should show pending kiosk in admin Kiosk Manager", () => {
-        // Setup: create a kiosk device via API flow
         cy.setupAdminSession();
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/allowRegistration",
-        });
 
+        // Snapshot existing kiosk IDs BEFORE opening the registration window
         cy.request({
             method: "GET",
             url: "/kiosk/api/devices",
@@ -104,6 +107,11 @@ describe("Kiosk Device UI", () => {
             const existingIds = new Set(
                 (beforeResponse.body.KioskDevices || []).map((k) => k.Id),
             );
+
+            cy.request({
+                method: "POST",
+                url: "/kiosk/api/allowRegistration",
+            });
 
             // Register a new device
             cy.clearCookies();
@@ -146,13 +154,9 @@ describe("Kiosk Device UI", () => {
     });
 
     it("should not show login background image on kiosk device page", () => {
-        // Enable registration and visit kiosk page
         cy.setupAdminSession();
-        cy.request({
-            method: "POST",
-            url: "/kiosk/api/allowRegistration",
-        });
 
+        // Snapshot existing kiosk IDs BEFORE opening the registration window
         cy.request({
             method: "GET",
             url: "/kiosk/api/devices",
@@ -160,6 +164,11 @@ describe("Kiosk Device UI", () => {
             const existingIds = new Set(
                 (beforeResponse.body.KioskDevices || []).map((k) => k.Id),
             );
+
+            cy.request({
+                method: "POST",
+                url: "/kiosk/api/allowRegistration",
+            });
 
             cy.clearCookies();
             cy.visit("/kiosk/", { failOnStatusCode: false });

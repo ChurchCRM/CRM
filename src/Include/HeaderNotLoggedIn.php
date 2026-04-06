@@ -3,6 +3,7 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
 
@@ -44,7 +45,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     </style>
 
 </head>
-<body class="antialiased <?= $sBodyClass ?? 'page-auth' ?>">
+<body class="antialiased <?= InputUtils::escapeAttribute($sBodyClass ?? 'page-auth') ?>">
 
   <script nonce="<?= SystemURLs::getCSPNonce() ?>"  >
     // Initialize window.CRM if not already created by webpack bundles
