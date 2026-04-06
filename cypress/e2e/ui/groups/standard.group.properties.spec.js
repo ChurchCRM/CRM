@@ -365,6 +365,15 @@ describe("UI: GroupPropsFormEditor Delete button (CSP regression #8520)", () => 
     const groupID = 1;
 
     before(() => {
+        // Enable group-specific properties via API (required for the form editor)
+        cy.makePrivateAdminAPICall(
+            "POST",
+            `/api/groups/${groupID}/setGroupSpecificPropertyStatus`,
+            { GroupSpecificPropertyStatus: true },
+            [200, 500],
+        );
+
+        // Now login and create a test field via UI
         freshAdminLogin();
         cy.visit(`GroupPropsFormEditor.php?GroupID=${groupID}`);
         cy.get("select#newFieldType").select("1");
