@@ -8,7 +8,7 @@
     "noUnusedParameters": true,
     "moduleResolution": "bundler",
     "skipLibCheck": true,
-    "types": ["jquery", "node"],
+    "types": ["jquery", "node", "react", "react-dom"],
     "typeRoots": ["./node_modules/@types", "./webpack/types"]
   },
   "exclude": [
