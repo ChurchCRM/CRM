@@ -39,122 +39,118 @@ $currentDepositId = $dashboardData['currentDepositId'];
 
 $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 
+$sRootPath = SystemURLs::getRootPath();
 ?>
 
 <div class="container-fluid">
-    <!-- Fiscal Year Info -->
-    <div class="row mb-3">
-        <div class="col-12">
-            <p class="text-muted mb-0">
-                <i class="fa-solid fa-calendar-days me-1"></i>
-                <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong>
-                (<?= date('M j, Y', strtotime($fyStartDate)) ?> - <?= date('M j, Y', strtotime($fyEndDate)) ?>)
-            </p>
-        </div>
-    </div>
 
-    <!-- Overview Card -->
-    <div class="card border border-success mb-3">
-        <div class="card-header d-flex align-items-center">
-            <h3 class="card-title"><i class="fa-solid fa-circle-dollar-to-slot"></i> <?= gettext('Overview') ?></h3>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                                <div class="row align-items-center mb-3">
-                                    <div class="col-auto">
-                                        <span class="bg-success text-white avatar rounded-circle">
-                                            <i class="fa-solid fa-hand-holding-dollar icon"></i>
-                                        </span>
-                                    </div>
-                                    <div class="col">
-                                        <div class="fw-medium">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
-                                        <div class="h6 text-muted mb-0"><?= gettext('YTD Payments') ?></div>
-                                    </div>
-                                </div>
+    <!-- Stat Cards Row -->
+    <div class="row mb-3">
+        <div class="col-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-success text-white avatar rounded-circle">
+                                <i class="fa-solid fa-hand-holding-dollar icon"></i>
+                            </span>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="row align-items-center mb-3">
-                                <div class="col-auto">
-                                    <span class="bg-primary text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-file-signature icon"></i>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="fw-medium">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
-                                    <div class="h6 text-muted mb-0"><?= gettext('YTD Pledges') ?></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="row align-items-center mb-3">
-                                <div class="col-auto">
-                                    <span class="bg-secondary text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-people-roof icon"></i>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="fw-medium"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
-                                    <div class="h6 text-muted mb-0"><?= gettext('Donor Families') ?></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
-                    <div class="card-sm h-100">
-                        <div class="card-body d-flex flex-column">
-                            <div class="row align-items-center mb-3">
-                                <div class="col-auto">
-                                    <span class="bg-info text-white avatar rounded-circle">
-                                        <i class="fa-solid fa-receipt icon"></i>
-                                    </span>
-                                </div>
-                                <div class="col">
-                                    <div class="fw-medium"><?= number_format($ytdPaymentCount) ?></div>
-                                    <div class="h6 text-muted mb-0"><?= gettext('Total Payments') ?></div>
-                                </div>
-                            </div>
+                        <div class="col">
+                            <div class="fw-medium">$<?= number_format($ytdPaymentTotal ?? 0, 2) ?></div>
+                            <div class="text-muted"><?= gettext('YTD Payments') ?></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="col-12">
-                    <div class="btn-group flex-wrap" role="group">
-                        <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-outline-success" title="<?= gettext('Create a new deposit') ?>">
-                            <i class="fa-solid fa-circle-plus me-2"></i><?= gettext('Create Deposit') ?>
-                        </a>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-outline-warning" title="<?= gettext('Add a new pledge') ?>">
-                            <i class="fa-solid fa-file-signature me-2"></i><?= gettext('Add Pledge') ?>
-                        </a>
-                        <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-outline-primary" title="<?= gettext('Add a payment to current deposit') ?>">
-                            <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Payment') ?>
-                        </a>
-                        <?php else: ?>
-                        <button type="button" class="btn btn-outline-secondary disabled" title="<?= gettext('Create or open a deposit first') ?>">
-                            <i class="fa-solid fa-hand-holding-dollar me-2"></i><?= gettext('Add Payment') ?>
-                        </button>
-                        <?php endif; ?>
-                        <a href="<?= SystemURLs::getRootPath() ?>/finance/reports" class="btn btn-outline-info" title="<?= gettext('Generate financial reports') ?>">
-                            <i class="fa-solid fa-file-invoice-dollar me-2"></i><?= gettext('Reports') ?>
-                        </a>
-                        <a href="<?= SystemURLs::getRootPath() ?>/finance/pledge/dashboard" class="btn btn-outline-primary" title="<?= gettext('View pledge dashboard') ?>">
-                            <i class="fa-solid fa-handshake me-2"></i><?= gettext('Pledges') ?>
-                        </a>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-primary text-white avatar rounded-circle">
+                                <i class="fa-solid fa-file-signature icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium">$<?= number_format($ytdPledgeTotal ?? 0, 2) ?></div>
+                            <div class="text-muted"><?= gettext('YTD Pledges') ?></div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-secondary text-white avatar rounded-circle">
+                                <i class="fa-solid fa-people-roof icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium"><?= number_format($ytdDonorFamilies ?? 0) ?></div>
+                            <div class="text-muted"><?= gettext('Donor Families') ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6 col-lg-3">
+            <div class="card card-sm">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <span class="bg-info text-white avatar rounded-circle">
+                                <i class="fa-solid fa-receipt icon"></i>
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="fw-medium"><?= number_format($ytdPaymentCount) ?></div>
+                            <div class="text-muted"><?= gettext('Total Payments') ?></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
+            <div class="ms-auto text-muted small">
+                <i class="fa-solid fa-calendar-days me-1"></i>
+                <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-wrap" style="gap: .5rem;">
+                <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
+                    <i class="fa-solid fa-circle-plus me-1"></i><?= gettext('Create Deposit') ?>
+                </a>
+                <a href="<?= $sRootPath ?>/PledgeEditor.php?PledgeOrPayment=Pledge" class="btn btn-primary">
+                    <i class="fa-solid fa-file-signature me-1"></i><?= gettext('Add Pledge') ?>
+                </a>
+                <?php if ($currentDeposit && !$currentDeposit->getClosed()): ?>
+                <a href="<?= $sRootPath ?>/PledgeEditor.php?CurrentDeposit=<?= $currentDepositId ?>&PledgeOrPayment=Payment" class="btn btn-secondary">
+                    <i class="fa-solid fa-hand-holding-dollar me-1"></i><?= gettext('Add Payment') ?>
+                </a>
+                <?php else: ?>
+                <button type="button" class="btn btn-outline-secondary disabled" title="<?= gettext('Create or open a deposit first') ?>">
+                    <i class="fa-solid fa-hand-holding-dollar me-1"></i><?= gettext('Add Payment') ?>
+                </button>
+                <?php endif; ?>
+                <a href="<?= $sRootPath ?>/finance/reports" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-file-invoice-dollar me-1"></i><?= gettext('Reports') ?>
+                </a>
+                <a href="<?= $sRootPath ?>/finance/pledge/dashboard" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-handshake me-1"></i><?= gettext('Pledges') ?>
+                </a>
+                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-piggy-bank me-1"></i><?= gettext('Manage Funds') ?>
+                </a>
             </div>
         </div>
     </div>
@@ -163,17 +159,15 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         <!-- Main Content Column -->
         <div class="col-lg-8">
             <!-- Tax Year Checklist -->
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-warning py-2">
-                    <h5 class="mb-0 text-dark">
-                        <i class="fa-solid fa-clipboard-check"></i> <?= gettext('Tax Year Reporting Checklist') ?>
-                    </h5>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-clipboard-check me-2"></i><?= gettext('Tax Year Reporting Checklist') ?></h3>
                 </div>
                 <div class="card-body">
                     <p class="text-muted small mb-3">
                         <?= gettext('Complete these tasks to ensure accurate year-end tax reporting for your donors.') ?>
                     </p>
-                    
+
                     <div class="list-group list-group-flush">
                         <!-- Close All Deposits -->
                         <div class="list-group-item d-flex align-items-center px-0">
@@ -192,8 +186,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <?php if ($openDeposits > 0): ?>
                                 <span class="badge bg-warning text-dark"><?= $openDeposits ?> <?= gettext('open') ?></span>
                                 <?php endif; ?>
-                                <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-2">
-                                    <i class="fa-solid fa-eye"></i><?= gettext('View') ?>
+                                <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                    <i class="fa-solid fa-eye"></i> <?= gettext('View') ?>
                                 </a>
                             </div>
                         </div>
@@ -213,8 +207,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <span class="badge bg-blue-lt text-blue"><?= $activeFundCount ?> <?= gettext('active') ?></span>
-                                <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
-                                    <i class="fa-solid fa-cog"></i><?= gettext('Edit') ?>
+                                <a href="<?= $sRootPath ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary ms-2">
+                                    <i class="fa-solid fa-cog"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
                         </div>
@@ -222,7 +216,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <!-- Update Church Info -->
                         <div class="list-group-item d-flex align-items-center px-0">
                             <div class="me-3">
-                                <?php 
+                                <?php
                                 $hasChurchInfo = !empty(SystemConfig::getValue('sChurchName')) && !empty(SystemConfig::getValue('sChurchAddress'));
                                 ?>
                                 <?php if ($hasChurchInfo): ?>
@@ -237,8 +231,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                             </div>
                             <div>
                                 <?php if ($isAdmin): ?>
-                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
-                                    <i class="fa-solid fa-cog"></i><?= gettext('Settings') ?>
+                                <a href="<?= $sRootPath ?>/admin/system/church-info" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa-solid fa-cog"></i> <?= gettext('Settings') ?>
                                 </a>
                                 <?php endif; ?>
                             </div>
@@ -254,14 +248,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <p class="mb-0 small text-muted"><?= gettext('Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc).') ?></p>
                             </div>
                             <div>
-                                <a href="<?= SystemURLs::getRootPath() ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
-                                    <i class="fa-solid fa-pen-to-square"></i><?= gettext('Edit') ?>
+                                <a href="<?= $sRootPath ?>/SystemSettings.php" class="btn btn-sm btn-outline-secondary">
+                                    <i class="fa-solid fa-pen-to-square"></i> <?= gettext('Edit') ?>
                                 </a>
                             </div>
                         </div>
 
                         <!-- Generate Tax Statements -->
-                        <div class="list-group-item d-flex align-items-center px-0 bg-light">
+                        <div class="list-group-item d-flex align-items-center px-0">
                             <div class="me-3">
                                 <span class="badge bg-primary rounded-circle p-2"><i class="fa-solid fa-file-invoice-dollar"></i></span>
                             </div>
@@ -270,8 +264,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <p class="mb-0 small text-muted"><?= gettext('Print or email annual giving statements to all donors.') ?></p>
                             </div>
                             <div>
-                                <a href="<?= SystemURLs::getRootPath() ?>/finance/reports" class="btn btn-sm btn-primary">
-                                    <i class="fa-solid fa-play"></i><?= gettext('Generate') ?>
+                                <a href="<?= $sRootPath ?>/finance/reports" class="btn btn-sm btn-primary">
+                                    <i class="fa-solid fa-play"></i> <?= gettext('Generate') ?>
                                 </a>
                             </div>
                         </div>
@@ -280,20 +274,17 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
             </div>
 
             <!-- Recent Deposits -->
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-status-top bg-secondary"></div>
-                <div class="card-header py-2 d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-clock-rotate-left"></i> <?= gettext('Recent Deposits') ?>
-                    </h5>
-                    <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-light">
-                        <i class="fa-solid fa-list me-1"></i><?= gettext('View All Deposits') ?>
+            <div class="card mb-3">
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
+                    <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-sm btn-outline-secondary ms-auto">
+                        <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
                     </a>
                 </div>
                 <div class="card-body p-0">
                     <?php if ($recentDeposits->count() > 0): ?>
                     <div class="table-responsive">
-                        <table class="table table-hover mb-0">
+                        <table class="table table-hover table-vcenter mb-0">
                             <thead>
                                 <tr>
                                     <th><?= gettext('ID') ?></th>
@@ -308,7 +299,7 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                                 <?php foreach ($recentDeposits as $deposit): ?>
                                 <tr class="<?= ($deposit->getId() === $currentDepositId) ? 'table-active' : '' ?>">
                                     <td>
-                                        <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $deposit->getId() ?>">
+                                        <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $deposit->getId() ?>">
                                             #<?= $deposit->getId() ?>
                                         </a>
                                     </td>
@@ -329,11 +320,11 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         </table>
                     </div>
                     <?php else: ?>
-                    <div class="text-center py-4">
-                        <i class="fa-solid fa-inbox fa-3x text-muted mb-3"></i>
-                        <p class="text-muted"><?= gettext('No deposits found.') ?></p>
-                        <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-primary">
-                            <i class="fa-solid fa-plus"></i><?= gettext('Create First Deposit') ?>
+                    <div class="empty">
+                        <div class="empty-icon"><i class="fa-solid fa-inbox fa-3x text-muted"></i></div>
+                        <p class="empty-title"><?= gettext('No deposits found.') ?></p>
+                        <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-primary">
+                            <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Deposit') ?>
                         </a>
                     </div>
                     <?php endif; ?>
@@ -345,11 +336,14 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
         <div class="col-lg-4">
             <!-- Current Deposit Card -->
             <?php if ($currentDeposit): ?>
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header <?= $currentDeposit->getClosed() ? 'bg-secondary' : 'bg-success' ?> text-white py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-file-invoice"></i> <?= gettext('Current Deposit') ?>
-                    </h5>
+            <div class="card mb-3">
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="card-title"><i class="fa-solid fa-file-invoice me-2"></i><?= gettext('Current Deposit') ?></h3>
+                    <?php if (!$currentDeposit->getClosed()): ?>
+                    <span class="badge bg-azure-lt text-azure ms-auto"><?= gettext('Open') ?></span>
+                    <?php else: ?>
+                    <span class="badge bg-green-lt text-green ms-auto"><?= gettext('Closed') ?></span>
+                    <?php endif; ?>
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
@@ -361,68 +355,57 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <span><?= $currentDeposit->getDate('M j, Y') ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Type:') ?></span>
-                        <span class="badge bg-info"><?= $currentDeposit->getType() ?></span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                        <span class="text-muted"><?= gettext('Status:') ?></span>
-                        <?php if ($currentDeposit->getClosed()): ?>
-                        <span class="badge bg-green-lt text-green"><?= gettext('Closed') ?></span>
-                        <?php else: ?>
-                        <span class="badge bg-azure-lt text-azure"><?= gettext('Open') ?></span>
-                        <?php endif; ?>
+                        <span class="text-muted"><?= gettext('Type') ?>:</span>
+                        <span class="badge bg-blue-lt text-blue"><?= $currentDeposit->getType() ?></span>
                     </div>
                     <hr>
                     <div class="text-center mb-3">
                         <div class="h3 text-success mb-0">$<?= number_format($currentDeposit->getVirtualColumn('totalAmount') ?? 0, 2) ?></div>
                         <small class="text-muted"><?= gettext('Total Amount') ?></small>
                     </div>
-                    <a href="<?= SystemURLs::getRootPath() ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
-                        <i class="fa-solid fa-pen-to-square"></i><?= gettext('Edit Deposit') ?>
+                    <a href="<?= $sRootPath ?>/DepositSlipEditor.php?DepositSlipID=<?= $currentDeposit->getId() ?>" class="btn btn-primary w-100">
+                        <i class="fa-solid fa-pen-to-square me-1"></i><?= gettext('Edit Deposit') ?>
                     </a>
                 </div>
             </div>
             <?php else: ?>
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-light py-2">
-                    <h5 class="mb-0 text-muted">
-                        <i class="fa-solid fa-file-invoice"></i> <?= gettext('No Active Deposit') ?>
-                    </h5>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="card-title text-muted"><i class="fa-solid fa-file-invoice me-2"></i><?= gettext('No Active Deposit') ?></h3>
                 </div>
-                <div class="card-body text-center py-4">
-                    <i class="fa-solid fa-circle-plus fa-3x text-muted mb-3"></i>
-                    <p class="text-muted"><?= gettext('Create or select a deposit to get started.') ?></p>
-                    <a href="<?= SystemURLs::getRootPath() ?>/FindDepositSlip.php" class="btn btn-success">
-                        <i class="fa-solid fa-plus"></i><?= gettext('Create Deposit') ?>
-                    </a>
+                <div class="card-body">
+                    <div class="empty">
+                        <div class="empty-icon"><i class="fa-solid fa-circle-plus fa-3x text-muted"></i></div>
+                        <p class="empty-title"><?= gettext('Create or select a deposit to get started.') ?></p>
+                        <a href="<?= $sRootPath ?>/FindDepositSlip.php" class="btn btn-success">
+                            <i class="fa-solid fa-plus me-1"></i><?= gettext('Create Deposit') ?>
+                        </a>
+                    </div>
                 </div>
             </div>
             <?php endif; ?>
 
             <!-- Deposit Statistics -->
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-status-top bg-info"></div>
-                <div class="card-header py-2">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-chart-pie"></i> <?= gettext('Deposit Statistics') ?>
-                    </h5>
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fa-solid fa-chart-pie me-2"></i><?= gettext('Deposit Statistics') ?></h3>
                 </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between mb-2">
-                        <span><?= gettext('Total Deposits:') ?></span>
+                        <span><?= gettext('Total Deposits') ?></span>
                         <strong><?= $totalDeposits ?></strong>
                     </div>
                     <div class="d-flex justify-content-between mb-2">
-                        <span><?= gettext('Open Deposits:') ?></span>
+                        <span><?= gettext('Open Deposits') ?></span>
                         <span class="badge bg-warning text-dark"><?= $openDeposits ?></span>
                     </div>
                     <div class="d-flex justify-content-between mb-3">
-                        <span><?= gettext('Closed Deposits:') ?></span>
+                        <span><?= gettext('Closed Deposits') ?></span>
                         <span class="badge bg-green-lt text-green"><?= $closedDeposits ?></span>
                     </div>
-                    
+
                     <?php if ($totalDeposits > 0): ?>
-                    <div class="progress finance-progress">
+                    <div class="progress" style="height: 20px;">
                         <div class="progress-bar bg-success" role="progressbar" style="width: <?= ($closedDeposits / $totalDeposits) * 100 ?>%">
                             <?= round(($closedDeposits / $totalDeposits) * 100) ?>%
                         </div>
@@ -433,12 +416,10 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
             </div>
 
             <!-- Active Funds -->
-            <div class="card finance-card shadow-sm border-0 mb-4">
-                <div class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">
-                        <i class="fa-solid fa-piggy-bank"></i> <?= gettext('Donation Funds') ?>
-                    </h5>
-                    <span class="badge bg-light text-dark"><?= $activeFundCount ?></span>
+            <div class="card mb-3">
+                <div class="card-header d-flex align-items-center">
+                    <h3 class="card-title"><i class="fa-solid fa-piggy-bank me-2"></i><?= gettext('Donation Funds') ?></h3>
+                    <span class="badge bg-blue-lt text-blue ms-auto"><?= $activeFundCount ?></span>
                 </div>
                 <div class="card-body p-0">
                     <?php if ($activeFunds->count() > 0): ?>
@@ -453,16 +434,8 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
                         <?php endforeach; ?>
                     </ul>
                     <?php else: ?>
-                    <div class="text-center py-3">
-                        <p class="text-muted mb-0"><?= gettext('No active funds configured.') ?></p>
-                    </div>
-                    <?php endif; ?>
-                    
-                    <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
-                    <div class="card-footer bg-light">
-                        <a href="<?= SystemURLs::getRootPath() ?>/DonationFundEditor.php" class="btn btn-sm btn-outline-secondary w-100">
-                            <i class="fa-solid fa-cog"></i><?= gettext('Manage Funds') ?>
-                        </a>
+                    <div class="empty py-3">
+                        <p class="empty-title"><?= gettext('No active funds configured.') ?></p>
                     </div>
                     <?php endif; ?>
                 </div>
