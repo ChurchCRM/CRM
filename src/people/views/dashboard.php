@@ -12,7 +12,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
     <!-- Stat Cards Row -->
     <div class="row mb-3">
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
         </div>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -47,7 +47,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
         <?php if (SystemConfig::getValue('bEnabledSundaySchool')) { ?>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
@@ -65,7 +65,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
         <?php } ?>
-        <div class="col-sm-6 col-lg-3">
+        <div class="col-6 col-lg-3">
             <div class="card card-sm">
                 <div class="card-body">
                     <div class="row align-items-center">
