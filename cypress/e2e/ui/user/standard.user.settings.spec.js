@@ -11,20 +11,20 @@ describe("Standard User Settings Page", () => {
         cy.get('#settingsNav a[href="#tab-account"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-appearance"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-localization"]').should("be.visible");
+        cy.get('#settingsNav a[href="#tab-api"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-permissions"]').should("be.visible");
 
         // Account tab is active by default
         cy.get("#tab-account").should("be.visible");
     });
 
-    it("Shows account info on My Account tab", () => {
+    it("Shows profile and security on My Account tab", () => {
         cy.visit("/v2/user/3");
         cy.get("#tab-account").within(() => {
             cy.contains("My Account");
-            cy.contains("API Access");
-            cy.get("#apiKey").should("exist");
-            cy.get("#regenApiKey").should("exist");
+            cy.get("#uploadPhotoBtn").should("exist");
             cy.contains("Security");
+            cy.get("#editSettings").should("exist");
         });
     });
 
@@ -46,6 +46,7 @@ describe("Standard User Settings Page", () => {
         // Layout controls
         cy.get("#boxedLayout").should("exist");
         cy.get("#toggleSidebar").should("exist");
+        cy.get("#navbarOverlap").should("exist");
 
         // Table settings
         cy.get("#tablePageLength").should("exist");
@@ -61,6 +62,16 @@ describe("Standard User Settings Page", () => {
         cy.get("#tab-localization")
             .find('a[href*="poeditor.com"]')
             .should("exist");
+    });
+
+    it("Navigates to API Access tab and shows API key", () => {
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-api"]').click();
+        cy.get("#tab-api").should("be.visible");
+
+        cy.get("#apiKey").should("exist");
+        cy.get("#regenApiKey").should("exist");
+        cy.get("#tab-api").contains("x-api-key");
     });
 
     it("Navigates to Permissions tab and shows permissions", () => {
@@ -95,4 +106,10 @@ describe("Standard User Settings Page", () => {
         cy.get("html").should("not.have.attr", "data-bs-theme-primary");
     });
 
+    it("Advanced Settings link goes to legacy settings page", () => {
+        cy.visit("/v2/user/3");
+        cy.get("#editSettings")
+            .should("have.attr", "href")
+            .and("contain", "SettingsIndividual.php");
+    });
 });

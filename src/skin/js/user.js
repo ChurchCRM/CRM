@@ -170,4 +170,24 @@ $(document).ready(function () {
       $("#tablePageLength").val(data.value);
     }
   });
+
+  // Photo uploader
+  if (typeof window._CRM_createPhotoUploader === "function") {
+    window.CRM.createPhotoUploader = window._CRM_createPhotoUploader;
+  }
+  if (typeof window.CRM.createPhotoUploader === "function") {
+    window.CRM.photoUploader = window.CRM.createPhotoUploader({
+      uploadUrl: window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
+      maxFileSize: window.CRM.maxUploadSizeBytes,
+      onComplete: function () {
+        window.location.reload();
+      },
+    });
+    $("#uploadPhotoBtn").on("click", function (e) {
+      e.preventDefault();
+      if (window.CRM.photoUploader) {
+        window.CRM.photoUploader.show();
+      }
+    });
+  }
 });

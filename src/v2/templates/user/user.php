@@ -2,11 +2,17 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
 $isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
+$personId = $user->getPersonId();
+$person = $user->getPerson();
+$photo = new Photo('Person', $personId);
+$hasUploadedPhoto = $photo->hasUploadedPhoto();
+$avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -25,6 +31,9 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <a href="#tab-localization" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="ti ti-language me-2"></i><?= gettext("Localization") ?>
           </a>
+          <a href="#tab-api" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="ti ti-api me-2"></i><?= gettext("API Access") ?>
+          </a>
           <a href="#tab-permissions" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
             <i class="ti ti-shield-lock me-2"></i><?= gettext("Permissions") ?>
           </a>
@@ -40,12 +49,53 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== MY ACCOUNT =============== -->
           <div class="tab-pane active show" id="tab-account">
             <h3 class="card-title"><?= gettext("My Account") ?></h3>
-            <p class="text-muted"><?= gettext("Account information and security") ?></p>
+            <p class="text-muted"><?= gettext("Profile, security, and API access") ?></p>
 
-            <div class="row mb-3">
-              <label class="col-sm-3 col-form-label"><?= gettext("Username") ?></label>
+            <!-- Profile -->
+            <div class="row mb-4">
+              <div class="col-sm-3 text-center">
+                <?php if ($hasUploadedPhoto): ?>
+                <img id="userAvatar" src="<?= $avatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= htmlspecialchars($user->getFullName()) ?>">
+                <?php else: ?>
+                <?php
+                $nameParts = preg_split('/\s+/', trim($user->getFullName()));
+                $initials = count($nameParts) >= 2
+                    ? mb_strtoupper(mb_substr($nameParts[0], 0, 1) . mb_substr(end($nameParts), 0, 1))
+                    : mb_strtoupper(mb_substr($nameParts[0] ?? '', 0, 2));
+                ?>
+                <span id="userAvatar" class="avatar avatar-xl rounded-circle mb-2" style="font-size: 1.5rem;"><?= htmlspecialchars($initials) ?></span>
+                <?php endif; ?>
+                <div>
+                  <button id="uploadPhotoBtn" class="btn btn-sm btn-outline-primary">
+                    <i class="ti ti-camera me-1"></i><?= gettext("Change Photo") ?>
+                  </button>
+                </div>
+              </div>
               <div class="col-sm-9">
-                <input type="text" class="form-control" value="<?= htmlspecialchars($user->getUserName()) ?>" readonly>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"><?= gettext("Username") ?></label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getUserName()) ?>" readonly>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"><?= gettext("Name") ?></label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getFullName()) ?>" readonly>
+                    <small class="form-hint">
+                      <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>"><?= gettext("Edit on profile page") ?></a>
+                    </small>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-4 col-form-label"><?= gettext("Email") ?></label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getEmail() ?? '') ?>" readonly>
+                    <small class="form-hint">
+                      <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>"><?= gettext("Edit on profile page") ?></a>
+                    </small>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -65,17 +115,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <hr>
 
-            <h4 class="mb-3"><?= gettext("API Access") ?></h4>
             <div class="row mb-3">
-              <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
-              <div class="col-sm-9">
-                <div class="input-group">
-                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= htmlspecialchars($user->getApiKey()) ?>" readonly>
-                  <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
-                    <i class="ti ti-refresh me-1"></i><?= gettext("Regenerate") ?>
-                  </button>
-                </div>
-                <small class="form-hint"><?= gettext("Use this key for API authentication. Regenerating will invalidate the current key.") ?></small>
+              <div class="col-sm-9 offset-sm-3">
+                <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
+                  <i class="ti ti-settings me-1"></i><?= gettext("Advanced Settings") ?>
+                </a>
+                <small class="form-hint mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
               </div>
             </div>
           </div>
@@ -164,6 +209,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </label>
               </div>
             </div>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="navbarOverlap"><?= gettext("Navbar Overlap") ?></label>
+              <div class="col-sm-9">
+                <label class="form-check form-switch">
+                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="navbarOverlap" data-layout="navbar-overlap" data-css=".page-wrapper > header.navbar" data-setting-name="ui.navbar.overlap">
+                  <span class="form-check-label"><?= gettext("Extend the top navbar color into the page header area") ?></span>
+                </label>
+              </div>
+            </div>
 
             <hr>
 
@@ -249,6 +303,32 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
           </div>
 
+          <!-- =============== API ACCESS =============== -->
+          <div class="tab-pane" id="tab-api">
+            <h3 class="card-title"><?= gettext("API Access") ?></h3>
+            <p class="text-muted"><?= gettext("Manage your API key for external integrations") ?></p>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= htmlspecialchars($user->getApiKey()) ?>" readonly>
+                  <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
+                    <i class="ti ti-refresh me-1"></i><?= gettext("Regenerate") ?>
+                  </button>
+                </div>
+                <small class="form-hint"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
+              </div>
+            </div>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Usage") ?></h4>
+            <p class="text-muted"><?= gettext("Include your API key in requests using the x-api-key header:") ?></p>
+            <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= htmlspecialchars(substr($user->getApiKey(), 0, 8)) ?>..." \
+     <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
+          </div>
+
           <!-- =============== PERMISSIONS =============== -->
           <div class="tab-pane" id="tab-permissions">
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
@@ -286,8 +366,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 
+<!-- Photo Uploader -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
+    window.CRM.viewPersonId = <?= $personId ?>;
 </script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
 <?php
