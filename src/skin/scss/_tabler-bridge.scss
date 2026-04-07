@@ -151,3 +151,134 @@ select {
     padding: 0.625rem 1rem;
   }
 }
+
+// --- Mobile responsive fixes (375px–768px) ---------------------------
+
+// Card header tabs: full-width row below title on mobile.
+// Tabler's .card-header-tabs uses negative margins to span the card,
+// but our tabs sit inside .card-options which constrains them.
+// Fix: break card-options onto its own line and reset tab margins.
+@media (max-width: 767.98px) {
+  .card-header {
+    flex-wrap: wrap;
+
+    .card-options {
+      flex: 0 0 100%;
+      width: 100%;
+      margin-left: 0 !important; // override ms-auto
+      margin-top: 0;
+    }
+
+    .card-header-tabs {
+      // Reset Tabler's negative margins — they only work when tabs
+      // are a direct child of card-header spanning its full width.
+      margin: 0 !important;
+      padding: 0;
+      flex-wrap: nowrap;
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-radius: 0;
+
+      .nav-item {
+        flex: 1 1 0;
+        text-align: center;
+      }
+
+      .nav-link {
+        white-space: nowrap;
+        padding: 0.5rem 0.5rem;
+        font-size: 0.8125rem;
+      }
+    }
+  }
+
+  // DataTables: compact layout on mobile
+  .dataTables_wrapper {
+    .dt-layout-row {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .dt-search input {
+      width: 100%;
+    }
+  }
+
+  // Tables: allow wrapping and reduce padding on mobile
+  .table:not(.table-nowrap) {
+    th,
+    td {
+      padding: 0.5rem 0.375rem;
+      font-size: 0.8125rem;
+    }
+  }
+
+  // Page header buttons: icon-only on mobile to save space.
+  // Only hide text when the button contains an icon; label-only
+  // buttons (no icon) stay readable.
+  .page-header .btn-list {
+    gap: 0.25rem;
+
+    .btn:has(i, .fa-solid) {
+      font-size: 0;       // hide text
+      padding: 0.375rem;
+
+      i,
+      .fa-solid {
+        font-size: 0.875rem; // show icon at normal size
+        margin: 0 !important;
+      }
+    }
+  }
+
+  // Topbar nav items: tighter spacing on mobile
+  .navbar-nav.flex-row.order-md-last {
+    gap: 0.125rem;
+
+    .nav-link {
+      padding: 0.25rem 0.375rem;
+    }
+  }
+}
+
+// Extra-small (375px phone) specific overrides
+@media (max-width: 575.98px) {
+  // Make card table containers scrollable (not the table itself,
+  // which would break table layout and DataTables column sizing).
+  .card-body,
+  .card > .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // Remove inline hardcoded column widths that cause overflow.
+  // Exclude DataTables — it manages its own column widths.
+  .table:not(.dataTable) th[style*="width"],
+  .table:not(.dataTable) td[style*="width"] {
+    width: auto !important;
+    min-width: 0 !important;
+  }
+
+  // Breadcrumbs: smaller text
+  .breadcrumb {
+    font-size: 0.75rem;
+  }
+
+  // Page title: smaller on phones
+  .page-title {
+    font-size: 1.25rem;
+  }
+
+  // Forms: ensure inputs/selects never exceed viewport
+  input[style*="width"],
+  select[style*="width"],
+  textarea[style*="width"] {
+    max-width: 100% !important;
+  }
+
+  // Flex containers with fixed-width children: allow wrapping
+  .d-flex[style*="max-width"] {
+    max-width: 100% !important;
+  }
+}
