@@ -5,9 +5,13 @@
 // ================================================================
 
 // --- ChurchCRM brand color overrides for Tabler CSS variables ----
-:root {
+// Scoped so theme attributes (data-bs-theme-primary, etc.) can override.
+:root:not([data-bs-theme-primary]) {
   --tblr-primary:         #206bc4;
   --tblr-primary-lt:      #d7e8f7;
+}
+
+:root {
   --tblr-success:         #2fb344;
   --tblr-success-lt:      #d3f2d8;
   --tblr-danger:          #d63939;
@@ -142,6 +146,22 @@ select {
 // --- Topbar search — remove double border with adjacent button --------
 .navbar-search-btn {
   border-left: 0;
+}
+
+// --- Color swatch picker (user settings) --------------------------------
+.btn-color-swatch {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 2px solid var(--tblr-border-color) !important;
+
+  &:hover {
+    transform: scale(1.15);
+  }
+
+  &.active {
+    box-shadow: 0 0 0 3px var(--tblr-primary);
+    border-color: var(--tblr-primary) !important;
+    transform: scale(1.15);
+  }
 }
 
 // --- Volunteer persona: large touch targets on mobile ----------------

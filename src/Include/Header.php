@@ -25,11 +25,31 @@ require_once __DIR__ . '/Header-Security.php';
 $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
+// Resolve theme attributes from user settings
+$_themeUser = AuthenticationManager::getCurrentUser();
+$_themeAttrs = '';
+$_themeStyle = $_themeUser->getSettingValue('ui.style');
+if ($_themeStyle === 'dark') {
+    $_themeAttrs .= ' data-bs-theme="dark"';
+}
+$_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
+if ($_themePrimary !== '') {
+    $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
+}
+$_themeBase = $_themeUser->getSettingValue('ui.theme.base');
+if ($_themeBase !== '') {
+    $_themeAttrs .= ' data-bs-theme-base="' . htmlspecialchars($_themeBase) . '"';
+}
+$_themeRadius = $_themeUser->getSettingValue('ui.theme.radius');
+if ($_themeRadius !== '') {
+    $_themeAttrs .= ' data-bs-theme-radius="' . htmlspecialchars($_themeRadius) . '"';
+}
+
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">

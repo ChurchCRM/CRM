@@ -1,109 +1,332 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 
-$sPageTitle = gettext("User") ." -" . $user->getFullName();
+$sPageTitle = gettext("Settings");
+$sPageSubtitle = $user->getFullName();
+$isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
-<div class="row">
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Login Info") ?></h3>
-                <div class="card-tools ms-auto">
-                    <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-primary btn-sm"><i class="fa-solid fa-user-pen"></i><?= _("Edit") ?></a>
-                </div>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><strong><?= gettext("Username") ?>:</strong> <?= $user->getUserName() ?></li>
-                    <li><strong><?= gettext("Login Count") ?>:</strong> <?= $user->getLoginCount() ?></li>
-                    <li><strong><?= gettext("Failed Login") ?>:</strong> <?= $user->getFailedLogins() ?></li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Api Key") ?></h3>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <input id="apiKey" class="form-control" type="text" readonly value="<?= $user->getApiKey() ?>"/>
-                </div>
-                <a id="regenApiKey" class="btn btn-warning"><i class="fa-solid fa-repeat"></i><?= _("Regen API Key") ?></a>
-            </div>
+<div class="card">
+  <div class="row g-0">
+    <!-- Left nav tabs -->
+    <div class="col-12 col-md-3 d-md-block border-end">
+      <div class="card-body">
+        <div class="list-group list-group-transparent" id="settingsNav">
+          <a href="#tab-account" class="list-group-item list-group-item-action d-flex align-items-center active" data-bs-toggle="list">
+            <i class="ti ti-user me-2"></i><?= gettext("My Account") ?>
+          </a>
+          <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="ti ti-palette me-2"></i><?= gettext("Appearance") ?>
+          </a>
+          <a href="#tab-localization" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="ti ti-language me-2"></i><?= gettext("Localization") ?>
+          </a>
+          <a href="#tab-permissions" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="ti ti-shield-lock me-2"></i><?= gettext("Permissions") ?>
+          </a>
         </div>
-
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("User Interface") ?></h3>
-            </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
-                        <label class="form-check-label" for="boxedLayout"><strong><?= _("Boxed Layout") ?></strong></label>
-                    </div>
-                    <small class="form-text text-muted"><?= _("Activate the boxed layout") ?></small>
-                </div>
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
-                        <label class="form-check-label" for="toggleSidebar"><strong><?= _("Toggle Sidebar") ?></strong></label>
-                    </div>
-                    <small class="form-text text-muted"><?= _("Toggle the left sidebar's state (open or collapse)") ?></small>
-                </div>
-                <div class="mb-3">
-                    <label for="user-locale-setting"><strong><?= _("Locale") ?></strong></label>
-                    <select id="user-locale-setting" class="form-select user-setting-select" data-setting-name="ui.locale" data-reload="true">
-                    </select>
-                    <small class="form-text text-muted"><?= _("Override system locale") ?>: <?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></small>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
-    <div class="col-lg-6">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Permissions") ?></h3>
-            </div>
-            <div class="card-body">
-                <ul class="list-unstyled">
-                    <li><strong><?= gettext("Admin") ?>:</strong> <?= $user->isAdmin() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Add Records") ?>:</strong> <?= $user->isAdmin() || $user->isAddRecords() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Edit Records") ?>:</strong> <?= $user->isAdmin() || $user->isEditRecords() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Delete Records") ?>:</strong> <?= $user->isAdmin() || $user->isDeleteRecords() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Manage Properties and Classifications") ?>:</strong> <?= $user->isAdmin() || $user->isMenuOptions() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Manage Groups and Roles") ?>:</strong> <?= $user->isAdmin() || $user->isManageGroups() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Manage Donations and Finance") ?>:</strong> <?= $user->isAdmin() || $user->isFinance() ? _("Yes") : _("No") ?></li>
-                    <li><strong><?= gettext("Manage Notes") ?>:</strong> <?= $user->isAdmin() || $user->isNotes() ? _("Yes") : _("No") ?></li>
-                </ul>
-            </div>
-        </div>
+    <!-- Right content panes -->
+    <div class="col-12 col-md-9">
+      <div class="card-body">
+        <div class="tab-content">
 
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><?= _("Tables Settings") ?></h3>
+          <!-- =============== MY ACCOUNT =============== -->
+          <div class="tab-pane active show" id="tab-account">
+            <h3 class="card-title"><?= gettext("My Account") ?></h3>
+            <p class="text-muted"><?= gettext("Account information and security") ?></p>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("Username") ?></label>
+              <div class="col-sm-9">
+                <input type="text" class="form-control" value="<?= htmlspecialchars($user->getUserName()) ?>" readonly>
+              </div>
             </div>
-            <div class="card-body">
-                <div class="mb-3">
-                    <label for="tablePageLength"><strong><?= _("Page length") ?></strong></label>
-                    <select id="tablePageLength" class="form-select user-setting-select" data-setting-name="ui.table.size">
-                        <option value="10">10</option>
-                        <option value="25">25</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        <option value="-1">All</option>
-                    </select>
-                    <small class="form-text text-muted"><?= _("Change the initial page length (number of rows per page)") ?></small>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Security") ?></h4>
+            <div class="row mb-3">
+              <div class="col-sm-9 offset-sm-3">
+                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="btn btn-outline-primary me-2">
+                  <i class="ti ti-key me-1"></i><?= gettext("Change Password") ?>
+                </a>
+                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="btn btn-outline-primary">
+                  <i class="ti ti-shield me-1"></i><?= gettext("Two-Factor Authentication") ?>
+                </a>
+              </div>
+            </div>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("API Access") ?></h4>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= htmlspecialchars($user->getApiKey()) ?>" readonly>
+                  <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
+                    <i class="ti ti-refresh me-1"></i><?= gettext("Regenerate") ?>
+                  </button>
                 </div>
+                <small class="form-hint"><?= gettext("Use this key for API authentication. Regenerating will invalidate the current key.") ?></small>
+              </div>
             </div>
-        </div>
+          </div>
+
+          <!-- =============== APPEARANCE =============== -->
+          <div class="tab-pane" id="tab-appearance">
+            <h3 class="card-title"><?= gettext("Appearance") ?></h3>
+            <p class="text-muted"><?= gettext("Customize the look and feel of the application") ?></p>
+
+            <!-- Theme Mode -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Theme Mode") ?></label>
+              <div class="col-sm-9">
+                <div class="form-selectgroup">
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight">
+                    <span class="form-selectgroup-label">
+                      <i class="ti ti-sun me-1"></i><?= gettext("Light") ?>
+                    </span>
+                  </label>
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark">
+                    <span class="form-selectgroup-label">
+                      <i class="ti ti-moon me-1"></i><?= gettext("Dark") ?>
+                    </span>
+                  </label>
+                </div>
+                <small class="form-hint"><?= gettext("Choose between light and dark color scheme") ?></small>
+              </div>
+            </div>
+
+            <!-- Primary Color -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Primary Color") ?></label>
+              <div class="col-sm-9">
+                <div class="d-flex flex-wrap gap-2" id="primaryColorPicker">
+                  <?php
+                  $colors = [
+                      '' => ['label' => 'Default', 'hex' => '#066fd1'],
+                      'blue' => ['label' => 'Blue', 'hex' => '#066fd1'],
+                      'azure' => ['label' => 'Azure', 'hex' => '#4299e1'],
+                      'indigo' => ['label' => 'Indigo', 'hex' => '#4263eb'],
+                      'purple' => ['label' => 'Purple', 'hex' => '#ae3ec9'],
+                      'pink' => ['label' => 'Pink', 'hex' => '#d6336c'],
+                      'red' => ['label' => 'Red', 'hex' => '#d63939'],
+                      'orange' => ['label' => 'Orange', 'hex' => '#f76707'],
+                      'yellow' => ['label' => 'Yellow', 'hex' => '#f59f00'],
+                      'lime' => ['label' => 'Lime', 'hex' => '#74b816'],
+                      'green' => ['label' => 'Green', 'hex' => '#2fb344'],
+                      'teal' => ['label' => 'Teal', 'hex' => '#0ca678'],
+                      'cyan' => ['label' => 'Cyan', 'hex' => '#17a2b8'],
+                  ];
+                  foreach ($colors as $value => $info):
+                  ?>
+                  <button type="button"
+                          class="btn-color-swatch rounded-circle border"
+                          data-color="<?= $value ?>"
+                          style="width: 2rem; height: 2rem; background-color: <?= $info['hex'] ?>; cursor: pointer; position: relative;"
+                          title="<?= gettext($info['label']) ?>">
+                  </button>
+                  <?php endforeach; ?>
+                </div>
+                <small class="form-hint"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
+              </div>
+            </div>
+
+            <!-- Base Palette -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Base Palette") ?></label>
+              <div class="col-sm-9">
+                <select id="basePalette" class="form-select">
+                  <option value=""><?= gettext("Default (Gray)") ?></option>
+                  <option value="slate"><?= gettext("Slate") ?></option>
+                  <option value="zinc"><?= gettext("Zinc") ?></option>
+                  <option value="neutral"><?= gettext("Neutral") ?></option>
+                  <option value="stone"><?= gettext("Stone") ?></option>
+                </select>
+                <small class="form-hint"><?= gettext("Choose the neutral color palette used for backgrounds and borders") ?></small>
+              </div>
+            </div>
+
+            <!-- Border Radius -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Border Radius") ?></label>
+              <div class="col-sm-9">
+                <div class="form-selectgroup">
+                  <?php
+                  $radii = [
+                      '' => 'Default',
+                      '0' => 'None',
+                      '0.5' => 'Small',
+                      '1' => 'Medium',
+                      '1.5' => 'Large',
+                      '2' => 'Extra Large',
+                  ];
+                  foreach ($radii as $val => $label):
+                  ?>
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="borderRadius" value="<?= $val ?>" class="form-selectgroup-input">
+                    <span class="form-selectgroup-label"><?= gettext($label) ?></span>
+                  </label>
+                  <?php endforeach; ?>
+                </div>
+                <small class="form-hint"><?= gettext("Control the roundness of corners throughout the interface") ?></small>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Layout -->
+            <h4 class="mb-3"><?= gettext("Layout") ?></h4>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="boxedLayout"><?= gettext("Boxed Layout") ?></label>
+              <div class="col-sm-9">
+                <label class="form-check form-switch">
+                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
+                  <span class="form-check-label"><?= gettext("Constrain the page width to a centered container") ?></span>
+                </label>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="toggleSidebar"><?= gettext("Collapse Sidebar") ?></label>
+              <div class="col-sm-9">
+                <label class="form-check form-switch">
+                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
+                  <span class="form-check-label"><?= gettext("Minimize the left sidebar by default") ?></span>
+                </label>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Tables -->
+            <h4 class="mb-3"><?= gettext("Tables") ?></h4>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="tablePageLength"><?= gettext("Rows per page") ?></label>
+              <div class="col-sm-9">
+                <select id="tablePageLength" class="form-select">
+                  <option value="10">10</option>
+                  <option value="25">25</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="-1"><?= gettext("All") ?></option>
+                </select>
+                <small class="form-hint"><?= gettext("Default number of rows shown in data tables") ?></small>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============== LOCALIZATION =============== -->
+          <div class="tab-pane" id="tab-localization">
+            <h3 class="card-title"><?= gettext("Localization") ?></h3>
+            <p class="text-muted"><?= gettext("Language and regional settings") ?></p>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="user-locale-setting"><?= gettext("Language") ?></label>
+              <div class="col-sm-9">
+                <select id="user-locale-setting" class="form-select">
+                </select>
+                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></strong></small>
+              </div>
+            </div>
+
+            <?php if ($localeInfo->shouldShowTranslationPercentage()): ?>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
+              <div class="col-sm-9">
+                <div class="progress mb-2" style="height: 1.25rem;">
+                  <div class="progress-bar bg-<?= $localeInfo->getTranslationPercentage() >= 90 ? 'success' : ($localeInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
+                       role="progressbar"
+                       style="width: <?= $localeInfo->getTranslationPercentage() ?>%"
+                       aria-valuenow="<?= $localeInfo->getTranslationPercentage() ?>"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                    <?= $localeInfo->getTranslationPercentage() ?>%
+                  </div>
+                </div>
+                <small class="form-hint"><?= gettext("Percentage of strings translated for your current language") ?></small>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Help Improve Translations") ?></h4>
+            <div class="alert alert-info">
+              <div class="d-flex">
+                <div><i class="ti ti-info-circle me-2 mt-1"></i></div>
+                <div>
+                  <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
+                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by:") ?></p>
+                  <ul class="mb-2">
+                    <li><?= gettext("Fixing incorrect or awkward translations in your language") ?></li>
+                    <li><?= gettext("Translating missing strings to improve coverage") ?></li>
+                    <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
+                  </ul>
+                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" class="btn btn-outline-info btn-sm">
+                    <i class="ti ti-external-link me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-warning">
+              <div class="d-flex">
+                <div><i class="ti ti-alert-triangle me-2 mt-1"></i></div>
+                <div>
+                  <h4 class="alert-title"><?= gettext("Found a bug with translations?") ?></h4>
+                  <p class="mb-0"><?= gettext("If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone.") ?></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============== PERMISSIONS =============== -->
+          <div class="tab-pane" id="tab-permissions">
+            <h3 class="card-title"><?= gettext("Permissions") ?></h3>
+            <p class="text-muted"><?= gettext("Your current access levels (read-only)") ?></p>
+
+            <?php
+            $permissions = [
+                ['label' => gettext("Administrator"), 'granted' => $user->isAdmin()],
+                ['label' => gettext("Add Records"), 'granted' => $user->isAdmin() || $user->isAddRecords()],
+                ['label' => gettext("Edit Records"), 'granted' => $user->isAdmin() || $user->isEditRecords()],
+                ['label' => gettext("Delete Records"), 'granted' => $user->isAdmin() || $user->isDeleteRecords()],
+                ['label' => gettext("Manage Properties and Classifications"), 'granted' => $user->isAdmin() || $user->isMenuOptions()],
+                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isAdmin() || $user->isManageGroups()],
+                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isAdmin() || $user->isFinance()],
+                ['label' => gettext("Manage Notes"), 'granted' => $user->isAdmin() || $user->isNotes()],
+            ];
+            foreach ($permissions as $perm):
+            ?>
+            <div class="row mb-2">
+              <div class="col-sm-6"><?= $perm['label'] ?></div>
+              <div class="col-sm-6">
+                <?php if ($perm['granted']): ?>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-check me-1"></i><?= gettext("Yes") ?></span>
+                <?php else: ?>
+                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-x me-1"></i><?= gettext("No") ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <?php endforeach; ?>
+          </div>
+
+        </div><!-- /.tab-content -->
+      </div>
     </div>
+  </div>
 </div>
+
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     window.CRM.viewUserId = <?= $user->getId() ?>;
 </script>
