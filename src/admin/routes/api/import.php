@@ -288,7 +288,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     if ($ts !== false) $person->setMembershipDate(date('Y-m-d', $ts));
                 }
 
-                // Classification: resolve name → ID
+                // Classification: resolve name → ID (valid for any person, with or without family)
                 if (!empty($data['Classification'])) {
                     $clsKey = strtolower($data['Classification']);
                     if (isset($classificationMap[$clsKey])) {
@@ -296,16 +296,16 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                     }
                 }
 
-                // Family role: resolve name → ID
-                if (!empty($data['FamilyRole'])) {
-                    $roleKey = strtolower($data['FamilyRole']);
-                    if (isset($familyRoleMap[$roleKey])) {
-                        $person->setFmrId($familyRoleMap[$roleKey]);
-                    }
-                }
-
                 if ($family !== null) {
                     $person->setFamId($family->getId());
+
+                    // Family role is only meaningful when the person belongs to a family
+                    if (!empty($data['FamilyRole'])) {
+                        $roleKey = strtolower($data['FamilyRole']);
+                        if (isset($familyRoleMap[$roleKey])) {
+                            $person->setFmrId($familyRoleMap[$roleKey]);
+                        }
+                    }
                 }
 
                 $person->setDateEntered(date('YmdHis'));
