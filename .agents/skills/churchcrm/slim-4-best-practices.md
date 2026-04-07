@@ -15,30 +15,52 @@ ChurchCRM uses Slim 4 for API routes and modern MVC features. This skill covers 
 
 ## Application Setup Pattern
 
+### MVC Modules — Use MvcAppFactory <!-- learned: 2026-04-07 -->
+
+All HTML-serving Slim apps (admin, finance, groups, people, v2) **must** use
+`MvcAppFactory::create()`. This centralises base path, body parsing, routing,
+error handling (Tabler-styled HTML pages), and the standard middleware stack.
+
 ```php
-// Entry point: src/api/index.php or src/finance/index.php
-use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
-use DI\Container;
+// ✅ CORRECT — MVC entry points
+use ChurchCRM\Slim\MvcAppFactory;
+use ChurchCRM\Slim\Middleware\Request\Auth\FinanceRoleAuthMiddleware;
 
-$container = new Container();
-$container->set('view', fn() => new PhpRenderer($viewDir));
-AppFactory::setContainer($container);
-$app = AppFactory::create();
+$app = MvcAppFactory::create('/finance', [
+    'dashboardUrl'  => '/finance/',
+    'dashboardText' => gettext('Back to Finance Dashboard'),
+    'roleMiddleware' => FinanceRoleAuthMiddleware::class, // optional
+]);
 
-// Middleware (LIFO order - last added runs FIRST!)
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-$app->add(new CorsMiddleware());         // Last added, runs first
-$app->add(new AuthMiddleware());
-$app->add(new VersionMiddleware());      // First added, runs last
-
-// Routes
-$app->group('/api', function(RouteCollectorProxy $group) {
-    $group->get('/endpoint', fn($req, $res) => $res->withJson($data));
-});
-
+require __DIR__ . '/routes/dashboard.php';
 $app->run();
+
+// ❌ WRONG — Don't copy-paste AppFactory + middleware + error handler
+$app = AppFactory::create();
+$app->setBasePath(...);
+// ... 50+ lines of boilerplate ...
+```
+
+Config options:
+- `dashboardUrl` — path (relative to root) for error page "go back" button
+- `dashboardText` — label for the button
+- `roleMiddleware` — FQCN of role-auth middleware (omit for no role check)
+
+`MvcAppFactory` does NOT include `VersionMiddleware` (only useful for API
+response headers, invisible in browser).
+
+### API Module — Direct AppFactory
+
+`api/index.php` is the only entry point that uses `AppFactory` directly
+with `registerDefaultJsonErrorHandler()`. It includes `VersionMiddleware`.
+
+```php
+// API entry point — NOT MvcAppFactory
+$app = AppFactory::create();
+$app->setBasePath(SlimUtils::getBasePath('/api'));
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+// ... middleware, routes, run
 ```
 
 ## Middleware Order (CRITICAL)
@@ -248,6 +270,47 @@ echo $notification?->title ?? 'No Title';
 // ❌ WRONG - TypeError if null
 echo $notification->title;
 ```
+
+## Error Handler Architecture <!-- learned: 2026-04-07 -->
+
+ChurchCRM has two error handler registration methods in `SlimUtils`:
+
+| Method | Used by | Renders |
+|--------|---------|---------|
+| `registerDefaultHtmlErrorHandler()` | `MvcAppFactory` (all MVC modules) | Tabler HTML page (Header + error-page.php + Footer) for browsers, JSON for AJAX/API |
+| `registerDefaultJsonErrorHandler()` | `api/index.php` | JSON for API requests, HTML partial for browser requests |
+
+Both methods:
+- Call `setDefaultErrorHandler()` on the error middleware — **only one handler can exist**
+- Log via `LoggerUtils::getAppLogger()` (not a separate Monolog logger)
+- Sanitize messages via `sanitizeErrorMessage()`
+- Map exceptions to proper HTTP status (404, 403, 405, 500)
+- Detect API vs browser via `isApiRequest()` (Accept header, X-Requested-With, /api/ path)
+
+### Never rethrow in error handlers <!-- learned: 2026-04-07 -->
+
+Slim 4's `setDefaultErrorHandler` does NOT chain handlers — calling it
+twice overwrites the first. But if the first handler **rethrows**, the
+rethrown exception may bypass the replacement handler entirely and surface
+as a raw 500.
+
+```php
+// ❌ WRONG — rethrow causes 500 even if a real handler is registered after
+$errorMiddleware->setDefaultErrorHandler(function (...) use ($logger) {
+    $logger->error($exception->getMessage());
+    throw $exception; // ← THIS BREAKS EVERYTHING
+});
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware); // overwritten but too late
+
+// ✅ CORRECT — only one handler, no rethrow
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+```
+
+**`setupErrorLogger()` has been removed** — it was dead code that set a
+rethrowing handler always overwritten by the real handler. All logging is
+handled inside `registerDefaultHtmlErrorHandler` and
+`registerDefaultJsonErrorHandler`.
 
 ## API Error Handling (Critical)
 
