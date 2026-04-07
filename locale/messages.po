@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-04-06 22:38+0000\n"
+"POT-Creation-Date: 2026-04-07 20:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -145,13 +145,7 @@ msgid_plural "%d years old"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "(Edit own family only.)"
-msgstr ""
-
 msgid "(Enter state/province for countries without predefined states)"
-msgstr ""
-
-msgid "(Grants all privileges.)"
 msgstr ""
 
 msgid "(No assigned family)"
@@ -252,7 +246,16 @@ msgstr ""
 msgid "A system update is available. Please upgrade your installation."
 msgstr ""
 
+msgid "API Access"
+msgstr ""
+
+msgid "API Key"
+msgstr ""
+
 msgid "API Key is required."
+msgstr ""
+
+msgid "API key regenerated"
 msgstr ""
 
 msgid "About"
@@ -283,6 +286,9 @@ msgid ""
 "- List maintenance tools"
 msgstr ""
 
+msgid "Account"
+msgstr ""
+
 msgid "Account Locked"
 msgstr ""
 
@@ -302,9 +308,6 @@ msgid "Actions"
 msgstr ""
 
 msgid "Activate"
-msgstr ""
-
-msgid "Activate the boxed layout"
 msgstr ""
 
 msgid "Active"
@@ -451,12 +454,6 @@ msgstr ""
 msgid "Add a Person"
 msgstr ""
 
-msgid "Add a new pledge"
-msgstr ""
-
-msgid "Add a payment to current deposit"
-msgstr ""
-
 msgid "Add all cart items to a group"
 msgstr ""
 
@@ -576,6 +573,9 @@ msgid "Advanced Deposit Report"
 msgstr ""
 
 msgid "Advanced Operations"
+msgstr ""
+
+msgid "Advanced Settings"
 msgstr ""
 
 msgid "Advanced filtering by group, classification, and role"
@@ -779,6 +779,9 @@ msgstr ""
 msgid "An error occurred processing the plugin request"
 msgstr ""
 
+msgid "An error occurred."
+msgstr ""
+
 msgid "An error occurred. Please contact your system administrator."
 msgstr ""
 
@@ -847,7 +850,7 @@ msgid ""
 "Note: Some services require app-specific passwords for WebDAV access."
 msgstr ""
 
-msgid "Api Key"
+msgid "Appearance"
 msgstr ""
 
 msgid "Application Integrity"
@@ -1077,6 +1080,9 @@ msgstr ""
 msgid "Azerbaijan (Azərbaycan)"
 msgstr ""
 
+msgid "Azure"
+msgstr ""
+
 msgid "BCC All"
 msgstr ""
 
@@ -1101,10 +1107,16 @@ msgstr ""
 msgid "Back to Families"
 msgstr ""
 
+msgid "Back to Finance Dashboard"
+msgstr ""
+
 msgid "Back to Get Started"
 msgstr ""
 
 msgid "Back to Group List"
+msgstr ""
+
+msgid "Back to Groups Dashboard"
 msgstr ""
 
 msgid "Back to Home"
@@ -1114,6 +1126,9 @@ msgid "Back to Login"
 msgstr ""
 
 msgid "Back to Menu"
+msgstr ""
+
+msgid "Back to People Dashboard"
 msgstr ""
 
 msgid "Back to login"
@@ -1300,6 +1315,9 @@ msgstr ""
 msgid "Blank"
 msgstr ""
 
+msgid "Blue"
+msgstr ""
+
 #. Context: countries
 msgid "Bolivia"
 msgstr ""
@@ -1314,9 +1332,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Bouvet Island"
-msgstr ""
-
-msgid "Boxed Layout"
 msgstr ""
 
 msgid "Boys"
@@ -1575,6 +1590,9 @@ msgstr ""
 msgid "Change Password"
 msgstr ""
 
+msgid "Change Photo"
+msgstr ""
+
 msgid "Change Role"
 msgstr ""
 
@@ -1587,13 +1605,13 @@ msgstr ""
 msgid "Change role"
 msgstr ""
 
-msgid "Change the initial page length (number of rows per page)"
-msgstr ""
-
 msgid "Change this in System Settings."
 msgstr ""
 
 msgid "Changes not saved! Please correct and try again!"
+msgstr ""
+
+msgid "Changes will not take effect until next logon."
 msgstr ""
 
 msgid "Check"
@@ -1688,6 +1706,9 @@ msgstr ""
 msgid "Choose an event..."
 msgstr ""
 
+msgid "Choose between light and dark color scheme"
+msgstr ""
+
 #. Context: queryparameters_qrp
 msgid "Choose customer person field"
 msgstr ""
@@ -1769,6 +1790,9 @@ msgid "ChurchCRM can send emails directly."
 msgstr ""
 
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
+msgstr ""
+
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
 msgstr ""
 
 #. Context: queryparameteroptions_qpo
@@ -2283,9 +2307,6 @@ msgstr ""
 msgid "Create a new Event"
 msgstr ""
 
-msgid "Create a new deposit"
-msgstr ""
-
 msgid "Create a new family (using last name)"
 msgstr ""
 
@@ -2437,7 +2458,13 @@ msgstr ""
 msgid "Customizable report with filtering by date, fund, family, and payment method."
 msgstr ""
 
+msgid "Customize the look and feel of the application"
+msgstr ""
+
 msgid "Customize the text that appears on tax statements (sTaxReport1, sTaxReport2, etc)."
+msgstr ""
+
+msgid "Cyan"
 msgstr ""
 
 #. Context: countries
@@ -2457,6 +2484,9 @@ msgid "Côte d’Ivoire"
 msgstr ""
 
 msgid "DSN"
+msgstr ""
+
+msgid "Dark"
 msgstr ""
 
 #. plugin:mailchimp:section:2:title
@@ -2606,6 +2636,9 @@ msgid "Default Zip"
 msgstr ""
 
 msgid "Default account for receiving a copy of all emails"
+msgstr ""
+
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
 msgstr ""
 
 msgid "Default role updated."
@@ -3124,6 +3157,9 @@ msgid "Edit Value"
 msgstr ""
 
 msgid "Edit custom properties for a group member"
+msgstr ""
+
+msgid "Edit own family only"
 msgstr ""
 
 msgid "Edit records permission"
@@ -3684,13 +3720,7 @@ msgstr ""
 msgid "Failed"
 msgstr ""
 
-msgid "Failed Login"
-msgstr ""
-
 msgid "Failed Logins"
-msgstr ""
-
-msgid "Failed generate a new API Key"
 msgstr ""
 
 msgid "Failed to add family to cart"
@@ -3844,6 +3874,9 @@ msgid "Failed to retrieve phone numbers"
 msgstr ""
 
 msgid "Failed to save event. Please try again."
+msgstr ""
+
+msgid "Failed to save setting"
 msgstr ""
 
 msgid "Failed to save settings"
@@ -4239,6 +4272,9 @@ msgstr ""
 msgid "Fiscal Year"
 msgstr ""
 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr ""
+
 msgid "Flexible field selection"
 msgstr ""
 
@@ -4292,6 +4328,9 @@ msgid "Forgot password?"
 msgstr ""
 
 msgid "Format"
+msgstr ""
+
+msgid "Found a bug with translations?"
 msgstr ""
 
 #. Context: countries
@@ -4445,9 +4484,6 @@ msgstr ""
 msgid "Generate directory listings and printed materials"
 msgstr ""
 
-msgid "Generate financial reports"
-msgstr ""
-
 msgid "Generate financial statements and giving reports"
 msgstr ""
 
@@ -4572,6 +4608,9 @@ msgstr ""
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr ""
 
+msgid "Grants all privileges"
+msgstr ""
+
 msgid "Graphic"
 msgstr ""
 
@@ -4600,6 +4639,9 @@ msgstr ""
 
 #. Context: locales
 msgid "Greek"
+msgstr ""
+
+msgid "Green"
 msgstr ""
 
 #. Context: countries
@@ -4780,6 +4822,9 @@ msgstr ""
 msgid "Help"
 msgstr ""
 
+msgid "Help Improve Translations"
+msgstr ""
+
 msgid "Help on types.."
 msgstr ""
 
@@ -4920,6 +4965,9 @@ msgstr ""
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
 msgstr ""
 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr ""
+
 #. plugin:vonage:section:4:content
 msgid ""
 "If you receive invalid sender ID errors:\n"
@@ -5047,6 +5095,9 @@ msgstr ""
 msgid "Include only these classifications in the directory, comma separated"
 msgstr ""
 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr ""
+
 msgid "Included"
 msgstr ""
 
@@ -5058,6 +5109,9 @@ msgstr ""
 
 #. Context: countries
 msgid "India (भारत)"
+msgstr ""
+
+msgid "Indigo"
 msgstr ""
 
 msgid "Individual Deposit Report"
@@ -5260,6 +5314,9 @@ msgstr ""
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
 msgstr ""
 
+msgid "Join the Translation Project on POEditor"
+msgstr ""
+
 #. Context: countries
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
@@ -5353,6 +5410,9 @@ msgid "Language"
 msgstr ""
 
 msgid "Language & Localization"
+msgstr ""
+
+msgid "Language and regional settings"
 msgstr ""
 
 msgid "Language updated to"
@@ -5491,6 +5551,12 @@ msgstr ""
 msgid "Liechtenstein"
 msgstr ""
 
+msgid "Light"
+msgstr ""
+
+msgid "Lime"
+msgstr ""
+
 msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
@@ -5570,9 +5636,6 @@ msgstr ""
 msgid "Local development:"
 msgstr ""
 
-msgid "Locale"
-msgstr ""
-
 msgid "Locale Support"
 msgstr ""
 
@@ -5604,12 +5667,6 @@ msgid "Log Settings"
 msgstr ""
 
 msgid "Login"
-msgstr ""
-
-msgid "Login Count"
-msgstr ""
-
-msgid "Login Info"
 msgstr ""
 
 msgid "Login Name"
@@ -5727,6 +5784,9 @@ msgstr ""
 msgid "Manage %s options"
 msgstr ""
 
+msgid "Manage 2FA"
+msgstr ""
+
 msgid "Manage Check-ins"
 msgstr ""
 
@@ -5764,6 +5824,9 @@ msgid "Manage Sunday school classes, teachers, and student attendance"
 msgstr ""
 
 msgid "Manage Two-Factor Authentication"
+msgstr ""
+
+msgid "Manage additional preferences like email delimiters and display options"
 msgstr ""
 
 msgid "Manage classification lists, roles, and group types"
@@ -5806,6 +5869,9 @@ msgid "Manage user account details and permissions"
 msgstr ""
 
 msgid "Manage volunteer opportunities and assign members"
+msgstr ""
+
+msgid "Manage your API key for external integrations"
 msgstr ""
 
 msgid "Manage your personal preferences and account settings"
@@ -6002,6 +6068,9 @@ msgstr ""
 msgid "Method"
 msgstr ""
 
+msgid "Method Not Allowed"
+msgstr ""
+
 #. Context: countries
 msgid "Mexico (México)"
 msgstr ""
@@ -6056,6 +6125,9 @@ msgid "Missing calendar access token"
 msgstr ""
 
 msgid "Missing image data in request"
+msgstr ""
+
+msgid "Missing or incorrect translations?"
 msgstr ""
 
 #. Context: query_qry
@@ -6203,6 +6275,9 @@ msgid "Must start with / if not empty; no trailing slash. Only letters, numbers,
 msgstr ""
 
 msgid "Must start with http:// or https://"
+msgstr ""
+
+msgid "My Account"
 msgstr ""
 
 msgid "My Calendars"
@@ -6682,9 +6757,6 @@ msgstr ""
 msgid "Note text is required"
 msgstr ""
 
-msgid "Note: Changes will not take effect until next logon."
-msgstr ""
-
 msgid "Note: This will also delete all Notes associated with this Family record."
 msgstr ""
 
@@ -6868,6 +6940,9 @@ msgstr ""
 msgid "Options"
 msgstr ""
 
+msgid "Orange"
+msgstr ""
+
 msgid "Order"
 msgstr ""
 
@@ -6901,7 +6976,7 @@ msgstr ""
 msgid "Output Method:"
 msgstr ""
 
-msgid "Override system locale"
+msgid "Override the system default locale"
 msgstr ""
 
 #. plugin:custom-links:section:0:title
@@ -6949,7 +7024,7 @@ msgstr ""
 msgid "Page"
 msgstr ""
 
-msgid "Page length"
+msgid "Page Not Found"
 msgstr ""
 
 msgid "Page not fond"
@@ -7115,6 +7190,9 @@ msgstr ""
 msgid "Percentage"
 msgstr ""
 
+msgid "Percentage of strings translated for your current language"
+msgstr ""
+
 msgid "Permission"
 msgstr ""
 
@@ -7195,9 +7273,6 @@ msgid "Person property used to exclude members from email lists"
 msgstr ""
 
 msgid "Person removed from class."
-msgstr ""
-
-msgid "Person to Make User"
 msgstr ""
 
 msgid "Person(s) removed from cart"
@@ -7293,6 +7368,9 @@ msgid "Pickup Request"
 msgstr ""
 
 msgid "Picture URL"
+msgstr ""
+
+msgid "Pink"
 msgstr ""
 
 msgid "Pinned Calendars"
@@ -7587,6 +7665,9 @@ msgstr ""
 msgid "Price"
 msgstr ""
 
+msgid "Primary Color"
+msgstr ""
+
 msgid "Print"
 msgstr ""
 
@@ -7624,6 +7705,9 @@ msgid "Profile Image Deleted"
 msgstr ""
 
 msgid "Profile Image uploaded"
+msgstr ""
+
+msgid "Profile and security"
 msgstr ""
 
 msgid "Prompt"
@@ -7680,6 +7764,9 @@ msgid "Puerto Rico"
 msgstr ""
 
 msgid "Purchased Items"
+msgstr ""
+
+msgid "Purple"
 msgstr ""
 
 #. Context: countries
@@ -7777,6 +7864,9 @@ msgstr ""
 msgid "Recurrence Pattern"
 msgstr ""
 
+msgid "Red"
+msgstr ""
+
 msgid "Redirecting in"
 msgstr ""
 
@@ -7789,7 +7879,7 @@ msgstr ""
 msgid "Refresh List"
 msgstr ""
 
-msgid "Regen API Key"
+msgid "Regenerate"
 msgstr ""
 
 msgid "Register Now"
@@ -8064,6 +8154,9 @@ msgid "Romanian - Romania"
 msgstr ""
 
 msgid "Root Path"
+msgstr ""
+
+msgid "Rows per page"
 msgstr ""
 
 msgid "Run"
@@ -8543,7 +8636,7 @@ msgstr ""
 msgid "Set Permission True to give new users the ability to change their current value."
 msgstr ""
 
-msgid "Set Permission True to give this user the ability to change their current value."
+msgid "Set Permission to True to allow this user to change the setting themselves."
 msgstr ""
 
 msgid "Set Up Authenticator"
@@ -8556,6 +8649,9 @@ msgid "Set default check account number for family"
 msgstr ""
 
 msgid "Set default preferences for new user accounts"
+msgstr ""
+
+msgid "Set the accent color used for buttons, links, and active elements"
 msgstr ""
 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
@@ -8865,9 +8961,6 @@ msgstr ""
 msgid "Status"
 msgstr ""
 
-msgid "Status:"
-msgstr ""
-
 msgid "Stay informed"
 msgstr ""
 
@@ -8901,9 +8994,6 @@ msgstr ""
 msgid "Students not in a Sunday School Class"
 msgstr ""
 
-msgid "Style"
-msgstr ""
-
 msgid "Submit Registration"
 msgstr ""
 
@@ -8924,6 +9014,9 @@ msgid "Sudan (‫السودان‬‎)"
 msgstr ""
 
 msgid "Suffix"
+msgstr ""
+
+msgid "Suggesting better phrasing for existing translations"
 msgstr ""
 
 msgid "Summary Data"
@@ -9055,7 +9148,7 @@ msgstr ""
 msgid "São Tomé and Príncipe (São Tomé e Príncipe)"
 msgstr ""
 
-msgid "Tables Settings"
+msgid "Tables"
 msgstr ""
 
 msgid "Tags"
@@ -9102,6 +9195,9 @@ msgid "Teacher"
 msgstr ""
 
 msgid "Teachers"
+msgstr ""
+
+msgid "Teal"
 msgstr ""
 
 msgid "Technical Details"
@@ -9274,6 +9370,9 @@ msgid "The sunday school class for which you would like records returned."
 msgstr ""
 
 msgid "The teacher sent this alert at"
+msgstr ""
+
+msgid "Theme Mode"
 msgstr ""
 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign:"
@@ -9513,13 +9612,10 @@ msgstr ""
 msgid "Today's Wedding Anniversaries"
 msgstr ""
 
-msgid "Toggle Sidebar"
-msgstr ""
-
 msgid "Toggle navigation"
 msgstr ""
 
-msgid "Toggle the left sidebar's state (open or collapse)"
+msgid "Toggle search"
 msgstr ""
 
 msgid "Toggle the switch below to open a 30-second window for new kiosk devices to register."
@@ -9598,6 +9694,12 @@ msgid "Track pledges and payment progress for campaigns and fiscal year budgetin
 msgstr ""
 
 msgid "Transaction Details"
+msgstr ""
+
+msgid "Translating missing strings to improve coverage"
+msgstr ""
+
+msgid "Translation Progress"
 msgstr ""
 
 msgid "Translation incomplete"
@@ -9685,9 +9787,6 @@ msgid "Type"
 msgstr ""
 
 msgid "Type of Group"
-msgstr ""
-
-msgid "Type:"
 msgstr ""
 
 #. Context: countries
@@ -9918,6 +10017,9 @@ msgstr ""
 msgid "Uruguay"
 msgstr ""
 
+msgid "Usage"
+msgstr ""
+
 #. plugin:custom-links:section:4:title
 msgid "Use Cases"
 msgstr ""
@@ -9940,6 +10042,9 @@ msgstr ""
 msgid "Use external tools (GPG, 7-Zip) to encrypt backups before storing off-site."
 msgstr ""
 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr ""
+
 msgid "Used for scheduling events and reporting times."
 msgstr ""
 
@@ -9949,13 +10054,13 @@ msgstr ""
 msgid "User"
 msgstr ""
 
+msgid "User Config"
+msgstr ""
+
 msgid "User Delete Confirmation"
 msgstr ""
 
 msgid "User Editor"
-msgstr ""
-
-msgid "User Interface"
 msgstr ""
 
 msgid "User authenticated via API Key: "
@@ -10148,6 +10253,9 @@ msgstr ""
 msgid "View"
 msgstr ""
 
+msgid "View All"
+msgstr ""
+
 msgid "View All Deposits"
 msgstr ""
 
@@ -10227,9 +10335,6 @@ msgid "View family pledge summaries and fund allocations"
 msgstr ""
 
 msgid "View group members, roles, and properties"
-msgstr ""
-
-msgid "View pledge dashboard"
 msgstr ""
 
 msgid "View query results"
@@ -10531,6 +10636,9 @@ msgstr ""
 msgid "Yearly on"
 msgstr ""
 
+msgid "Yellow"
+msgstr ""
+
 #. Context: countries
 msgid "Yemen (‫اليمن‬‎)"
 msgstr ""
@@ -10690,6 +10798,9 @@ msgid "Your cart is empty!"
 msgstr ""
 
 msgid "Your child"
+msgstr ""
+
+msgid "Your current access levels (read-only)"
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
