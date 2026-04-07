@@ -14,6 +14,7 @@ describe("Admin Calendar", () => {
         cy.get('[data-bs-target="#calendarSidebar"]').click();
         cy.get("#calendarSidebar").should("be.visible");
         cy.get("#addCalendarBtn").click();
+        cy.get(".modal").should("be.visible");
 
         cy.get("#calendarName").click().type(title);
         // type="color" inputs require invoke/trigger — .type() does not work
