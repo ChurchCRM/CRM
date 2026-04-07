@@ -7,14 +7,12 @@ describe("Standard User Settings Page", () => {
         cy.visit("/v2/user/3");
         cy.contains("Settings");
 
-        // Verify all nav tabs exist
         cy.get('#settingsNav a[href="#tab-account"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-appearance"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-localization"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-api"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-permissions"]').should("be.visible");
 
-        // Account tab is active by default
         cy.get("#tab-account").should("be.visible");
     });
 
@@ -22,9 +20,15 @@ describe("Standard User Settings Page", () => {
         cy.visit("/v2/user/3");
         cy.get("#tab-account").within(() => {
             cy.contains("My Account");
+            cy.get("#userAvatar").should("exist");
             cy.get("#uploadPhotoBtn").should("exist");
+            cy.contains("Username");
+            cy.contains("Name");
+            cy.contains("Email");
             cy.contains("Security");
-            cy.get("#editSettings").should("exist");
+            cy.get("#editSettings")
+                .should("have.attr", "href")
+                .and("contain", "SettingsIndividual.php");
         });
     });
 
@@ -33,19 +37,15 @@ describe("Standard User Settings Page", () => {
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tab-appearance").should("be.visible");
 
-        // Theme mode radios
         cy.get("#themeModeLight").should("exist");
         cy.get("#themeModeDark").should("exist");
 
-        // Primary color swatches
         cy.get("#primaryColorPicker .btn-color-swatch").should(
             "have.length.gte",
             10,
         );
 
-        // Layout controls
         cy.get("#boxedLayout").should("exist");
-        // Table settings
         cy.get("#tablePageLength").should("exist");
     });
 
@@ -78,35 +78,55 @@ describe("Standard User Settings Page", () => {
         cy.get("#tab-permissions").contains("Permissions");
     });
 
-    it("Can toggle dark mode", () => {
+    it("Can toggle dark mode and it applies live", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
-        // Enable dark mode
         cy.get("#themeModeDark").check({ force: true });
         cy.get("html").should("have.attr", "data-bs-theme", "dark");
 
-        // Switch back to light
         cy.get("#themeModeLight").check({ force: true });
         cy.get("html").should("not.have.attr", "data-bs-theme");
     });
 
-    it("Can select a primary color", () => {
+    it("Can select a primary color and it applies live", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         cy.get('#primaryColorPicker .btn-color-swatch[data-color="purple"]').click();
         cy.get("html").should("have.attr", "data-bs-theme-primary", "purple");
+        cy.get('#primaryColorPicker .btn-color-swatch[data-color="purple"]').should(
+            "have.class",
+            "active",
+        );
 
         // Reset to default
         cy.get('#primaryColorPicker .btn-color-swatch[data-color=""]').click();
         cy.get("html").should("not.have.attr", "data-bs-theme-primary");
     });
 
-    it("Advanced Settings link goes to legacy settings page", () => {
+    it("Can toggle boxed layout and it applies live", () => {
         cy.visit("/v2/user/3");
-        cy.get("#editSettings")
-            .should("have.attr", "href")
-            .and("contain", "SettingsIndividual.php");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+
+        cy.get("#boxedLayout").check({ force: true });
+        cy.get("body").should("have.class", "layout-boxed");
+
+        cy.get("#boxedLayout").uncheck({ force: true });
+        cy.get("body").should("not.have.class", "layout-boxed");
+    });
+
+    it("Can change table page length", () => {
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+
+        cy.get("#tablePageLength").select("50");
+        // Setting is saved via API — verify the select value persists on reload
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+        cy.get("#tablePageLength").should("have.value", "50");
+
+        // Reset to default
+        cy.get("#tablePageLength").select("10");
     });
 });

@@ -49,7 +49,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           <!-- =============== MY ACCOUNT =============== -->
           <div class="tab-pane active show" id="tab-account">
             <h3 class="card-title"><?= gettext("My Account") ?></h3>
-            <p class="text-muted"><?= gettext("Profile, security, and API access") ?></p>
+            <p class="text-muted"><?= gettext("Profile and security") ?></p>
 
             <!-- Profile -->
             <div class="row mb-4">
