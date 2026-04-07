@@ -72,28 +72,22 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
               </div>
               <div class="col-sm-9">
-                <div class="row mb-3">
-                  <label class="col-sm-4 col-form-label"><?= gettext("Username") ?></label>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-muted"><?= gettext("Username") ?></div>
+                  <div class="col-sm-8"><?= htmlspecialchars($user->getUserName()) ?></div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-muted"><?= gettext("Name") ?></div>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getUserName()) ?>" readonly>
+                    <?= htmlspecialchars($user->getFullName()) ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
-                <div class="row mb-3">
-                  <label class="col-sm-4 col-form-label"><?= gettext("Name") ?></label>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-muted"><?= gettext("Email") ?></div>
                   <div class="col-sm-8">
-                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getFullName()) ?>" readonly>
-                    <small class="form-hint">
-                      <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>"><?= gettext("Edit on profile page") ?></a>
-                    </small>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <label class="col-sm-4 col-form-label"><?= gettext("Email") ?></label>
-                  <div class="col-sm-8">
-                    <input type="text" class="form-control" value="<?= htmlspecialchars($user->getEmail() ?? '') ?>" readonly>
-                    <small class="form-hint">
-                      <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>"><?= gettext("Edit on profile page") ?></a>
-                    </small>
+                    <?= htmlspecialchars($user->getEmail() ?? '') ?: '<span class="text-muted">' . gettext("Not set") . '</span>' ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
               </div>
@@ -102,13 +96,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <hr>
 
             <h4 class="mb-3"><?= gettext("Security") ?></h4>
-            <div class="row mb-3">
+            <div class="row mb-2">
+              <div class="col-sm-3 text-muted"><?= gettext("Two-Factor Authentication") ?></div>
+              <div class="col-sm-9">
+                <?php if ($user->is2FactorAuthEnabled()): ?>
+                <span class="badge bg-success-lt text-success"><i class="ti ti-shield-check me-1"></i><?= gettext("Active") ?></span>
+                <?php else: ?>
+                <span class="badge bg-secondary-lt text-secondary"><i class="ti ti-shield-off me-1"></i><?= gettext("Inactive") ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-3 mt-3">
               <div class="col-sm-9 offset-sm-3">
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="btn btn-outline-primary me-2">
                   <i class="ti ti-key me-1"></i><?= gettext("Change Password") ?>
                 </a>
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="btn btn-outline-primary">
-                  <i class="ti ti-shield me-1"></i><?= gettext("Two-Factor Authentication") ?>
+                  <i class="ti ti-shield me-1"></i><?= gettext("Manage 2FA") ?>
                 </a>
               </div>
             </div>

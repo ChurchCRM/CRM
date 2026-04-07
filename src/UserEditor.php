@@ -111,8 +111,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         } else {
             $Admin = 0;
         }
-        $Style = InputUtils::legacyFilterInput($_POST['Style']);
-
         // Initialize error flag
         $bErrorFlag = false;
 
@@ -138,7 +136,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setFinance($Finance)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
-                        ->setUserStyle($Style)
                         ->setDefaultFY($defaultFY)
                         ->setUserName($sUserName)
                         ->setEditSelf($EditSelf);
@@ -167,7 +164,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                         ->setFinance($Finance)
                         ->setNotes($Notes)
                         ->setAdmin($Admin)
-                        ->setUserStyle($Style)
                         ->setUserName($sUserName)
                         ->setEditSelf($EditSelf);
                     $user->save();
@@ -202,7 +198,6 @@ if (isset($_POST['save']) && $iPersonID > 0) {
                 $usr_Notes = $user->getNotes();
                 $usr_Admin = $user->getAdmin();
                 $usr_EditSelf = $user->getEditSelf();
-                $usr_Style = $user->getUserStyle();
                 $sAction = 'edit';
             }
         } else {
@@ -225,8 +220,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_Notes = 0;
             $usr_Admin = 0;
             $usr_EditSelf = 1;
-            $usr_Style = '';
-        }
+            }
 
         // New user without person selected yet
     } else {
@@ -243,24 +237,11 @@ if (isset($_POST['save']) && $iPersonID > 0) {
         $usr_Admin = 0;
         $usr_EditSelf = 1;
         $sUserName = '';
-        $usr_Style = '';
         $vNewUser = 'true';
 
         // Get all the people who are NOT currently users
         $sSQL = 'SELECT * FROM person_per LEFT JOIN user_usr ON person_per.per_ID = user_usr.usr_per_ID WHERE usr_per_ID IS NULL ORDER BY per_LastName';
         $rsPeople = RunQuery($sSQL);
-    }
-}
-
-// Style sheet (CSS) file selection options (legacy field — kept for data compatibility)
-function StyleSheetOptions($currentStyle)
-{
-    foreach (['default', 'dark'] as $stylename) {
-        echo '<option value="' . $stylename . '"';
-        if ($stylename == $currentStyle || ($currentStyle === '' && $stylename === 'default')) {
-            echo ' selected';
-        }
-        echo '>' . $stylename . '</option>';
     }
 }
 
@@ -451,14 +432,6 @@ require_once __DIR__ . '/Include/Header.php';
                         <td>
                             <input class="form-check-input" type="checkbox" name="EditSelf" id="EditSelf" value="1" <?php if ($usr_EditSelf) { echo ' checked'; } ?>>
                             <small class="text-secondary"><?= gettext('(Edit own family only.)') ?></small>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><?= gettext('Style') ?>:</td>
-                        <td>
-                            <select class="form-select" name="Style" id="Style">
-                                <?php StyleSheetOptions($usr_Style); ?>
-                            </select>
                         </td>
                     </tr>
                     <tr>
