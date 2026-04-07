@@ -216,7 +216,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <option value="100">100</option>
                   <option value="-1"><?= gettext("All") ?></option>
                 </select>
-                <small class="form-hint"><?= gettext("Default number of rows shown in data tables") ?></small>
+                <small class="form-hint"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
               </div>
             </div>
           </div>
