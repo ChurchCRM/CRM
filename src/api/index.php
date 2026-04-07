@@ -19,12 +19,10 @@ $app->setBasePath($basePath);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-// Error middleware must be added AFTER routing middleware (LIFO execution order)
-// so it wraps the routing layer and can catch HttpNotFoundException / 404s.
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
-// Add CORS middleware for browser API access
 $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);

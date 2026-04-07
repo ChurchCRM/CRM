@@ -45,7 +45,7 @@ class MvcAppFactory
         $app->addBodyParsingMiddleware();
         $app->addRoutingMiddleware();
 
-        // Error middleware — must be added BEFORE other middleware (LIFO execution order)
+        // Error middleware — added AFTER routing so it wraps routing in LIFO order
         $errorMiddleware = $app->addErrorMiddleware(true, true, true);
         SlimUtils::registerDefaultHtmlErrorHandler($errorMiddleware, $dashboardUrl, $dashboardText);
 

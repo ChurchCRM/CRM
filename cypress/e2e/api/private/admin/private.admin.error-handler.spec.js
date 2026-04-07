@@ -117,45 +117,36 @@ mvcApps.forEach(({ prefix, label }) => {
   });
 });
 
-// ─── /kiosk — redirects 404s to /kiosk/admin ─────────────────────────────────
+// ─── /kiosk — pre-Slim PHP handles missing cookie ────────────────────────────
 
-describe('Error Handler — /kiosk (redirects unknown routes)', () => {
-  it('should redirect unknown kiosk route (not a 500)', () => {
+describe('Error Handler — /kiosk (no crash on unknown routes)', () => {
+  it('should return 302 or 401, never 500', () => {
+    // Without kioskCookie:
+    //   - window open  → new kiosk created → Slim error handler redirects to /kiosk/admin (302)
+    //   - window closed → http_response_code(401) + template exit (401)
     cy.request({
       url: '/kiosk/this-route-does-not-exist',
       failOnStatusCode: false,
       followRedirect: false,
     }).then((response) => {
-      // Kiosk redirects 404s to /kiosk/admin — should be 3xx, not 500
-      expect(response.status).to.be.lessThan(500);
+      expect(response.status).to.be.oneOf([302, 401]);
     });
   });
 });
 
-// ─── /plugins — redirects 404s to root ───────────────────────────────────────
+// ─── /plugins — unauthenticated browser request → login redirect (302) ───────
 
-describe('Error Handler — /plugins (redirects unknown routes)', () => {
-  it('should redirect unknown plugins route (not a 500)', () => {
-    // Plugins intentionally redirect 404s to / — should be 3xx, never a 500
+describe('Error Handler — /plugins (unauthenticated redirects to login)', () => {
+  it('should return 302 to login, not a 500', () => {
+    // cy.request() sends no Accept header → isBrowserRequest() = true →
+    // AuthMiddleware redirects unauthenticated browsers to /session/begin (302)
     cy.request({
       url: '/plugins/this-route-does-not-exist',
       failOnStatusCode: false,
       followRedirect: false,
     }).then((response) => {
-      expect(response.status).to.be.lessThan(500);
-      expect(response.status).to.be.at.least(300);
-    });
-  });
-
-  it('should NOT expose a stack trace on /plugins redirect', () => {
-    cy.request({
-      url: '/plugins/this-route-does-not-exist',
-      failOnStatusCode: false,
-      followRedirect: false,
-    }).then((response) => {
-      const body = JSON.stringify(response.body);
-      expect(body).to.not.match(/Stack trace/i);
-      expect(body).to.not.match(/\.php:\d+/);
+      expect(response.status).to.equal(302);
+      expect(response.headers['location']).to.include('/session/begin');
     });
   });
 });

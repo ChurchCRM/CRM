@@ -58,28 +58,52 @@ with `registerDefaultJsonErrorHandler()`. It includes `VersionMiddleware`.
 // API entry point — NOT MvcAppFactory
 $app = AppFactory::create();
 $app->setBasePath(SlimUtils::getBasePath('/api'));
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+// Error middleware AFTER routing — Slim 4 LIFO means it wraps routing and catches HttpNotFoundException
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-// ... middleware, routes, run
+// ... custom middleware, routes, run
 ```
 
-## Middleware Order (CRITICAL)
+## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
-Slim 4 uses **Last In, First Out (LIFO)** ordering. Middleware added LAST executes FIRST:
+Slim 4 uses **Last In, First Out (LIFO)** ordering. Middleware added LAST executes FIRST.
+
+### The #1 Rule: Error middleware AFTER routing
+
+`addErrorMiddleware()` **MUST** be called **AFTER** `addRoutingMiddleware()`. This is because
+LIFO means it then wraps routing and catches `HttpNotFoundException` / `HttpMethodNotAllowedException`.
+If error middleware is added BEFORE routing, routing exceptions escape uncaught → **raw PHP 500**.
+
+```php
+// ✅ CORRECT — error middleware wraps routing (LIFO)
+$app->addBodyParsingMiddleware();  // 1st added → innermost
+$app->addRoutingMiddleware();      // 2nd added → wraps body parsing
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // 3rd added → wraps routing (outermost of these 3)
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);   // or registerDefaultHtmlErrorHandler()
+
+// Then custom middleware (added after error middleware, so they run BEFORE error handling)
+$app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
+
+// ❌ WRONG — error middleware BEFORE routing → 404s become raw 500s
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // Added first
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();  // Added after → routing exceptions NOT caught by error middleware
+```
+
+### Full execution order (request flows top-to-bottom)
 
 ```
-Order Added               Execution Order
-1. addBodyParsingMiddleware()   → 4th (processes body after routing)
-2. addRoutingMiddleware()       → 3rd (routes request)
-3. add(CorsMiddleware)          → 1st (first middleware to run)
-4. add(AuthMiddleware)          → 2nd (runs after CORS)
-5. add(VersionMiddleware)       → Last added, runs last
+Code order (add)          LIFO execution order (request)
+─────────────────         ──────────────────────────────
+1. addBodyParsing()       5th — innermost (parses body)
+2. addRouting()           4th — matches route or throws HttpNotFoundException
+3. addErrorMiddleware()   3rd — catches exceptions from routing + inner middleware
+4. add(CorsMiddleware)    2nd — CORS headers
+5. add(AuthMiddleware)    1st — outermost, runs first on request
 ```
-
-**Why it matters:**
-- Auth should run before routes (check permissions)
-- CORS should run first (allow/deny early)
-- Body parsing last (only needed after routing)
 
 ### Documenting Execution Order in Code <!-- learned: 2026-03-15 -->
 

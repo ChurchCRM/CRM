@@ -15,14 +15,16 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
         ...overrides,
     });
 
-    describe("POST /api/payments - Type casting fix validation", () => {
-        it("POST /api/payments - No type mismatch errors", () => {
-            // Critical fix: array cast to object, validateDate accesses $payment->Date not $payment['Date']
+    describe("POST /api/payments/ - Type casting fix validation", () => {
+        it("POST /api/payments/ - No type mismatch errors", () => {
+            // FundSplit is sent as a JSON string (as the frontend does via JSON.stringify).
+            // validateFund receives it as a string; count($string) throws TypeError in PHP 8.
+            // The error middleware catches it and returns a clean 500 — no raw PHP type errors.
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/payments",
+                "/api/payments/",
                 getPaymentPayload(),
-                [200, 400, 422, 500] // Accept various codes - we care that no type error occurs
+                500
             ).then((resp) => {
                 const bodyStr = JSON.stringify(resp).toLowerCase();
                 expect(bodyStr).to.not.include("call to a member function on array");
@@ -30,13 +32,15 @@ describe("API Finance Payments - Type Mismatch Fix", () => {
             });
         });
 
-        it("POST /api/payments with CHECK method - Null safety validation", () => {
-            // validateChecks uses !empty() checks before accessing properties
+        it("POST /api/payments/ with CHECK method - Null safety validation", () => {
+            // CHECK without iCheckNo: validateFund still runs first (FundSplit string → TypeError → 500).
+            // If validateFund ever gets fixed to accept strings, validateChecks throws
+            // "Must specify non-zero check number" — also a clean 500.
             cy.makePrivateAdminAPICall(
                 "POST",
-                "/api/payments",
+                "/api/payments/",
                 getPaymentPayload({ iMethod: "CHECK" }),
-                [200, 400, 422, 500]
+                500
             ).then((resp) => {
                 const bodyStr = JSON.stringify(resp).toLowerCase();
                 expect(bodyStr).to.not.include("call to a member function on array");

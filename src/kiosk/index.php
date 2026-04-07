@@ -81,8 +81,7 @@ $app->setBasePath($basePath);
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
 
-// Error middleware must be added AFTER routing (LIFO) so it wraps the routing
-// layer and can catch HttpNotFoundException as a proper 404 response.
+// Error middleware must be added AFTER routing (Slim 4 LIFO: last added = first executed)
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 // Custom error handler

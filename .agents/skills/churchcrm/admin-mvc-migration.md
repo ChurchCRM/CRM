@@ -204,44 +204,26 @@ public function getUserSettingsConfig(): array
 <?php endforeach; ?>
 ```
 
-## Middleware Order (CRITICAL)
+## Middleware Order (CRITICAL) <!-- learned: 2026-04-07 -->
 
-Slim 4 uses LIFO (Last In, First Out) for middleware:
+> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+
+For MVC modules, use `MvcAppFactory::create()` which handles all ordering automatically:
 
 ```php
-$app->addBodyParsingMiddleware();       // Parse request body
-$app->addRoutingMiddleware();           // Match routes
-$app->add(new AdminRoleAuthMiddleware()); // Check admin permission (runs FIRST)
+$app = MvcAppFactory::create('/admin', [
+    'dashboardUrl'  => '/admin/',
+    'dashboardText' => gettext('Return to Admin Dashboard'),
+    'roleMiddleware' => AdminRoleAuthMiddleware::class,
+]);
 ```
 
 ## Entry Point Error Handling
 
-For Slim entry points (plugins, admin modules), configure error middleware properly:
+> **Full reference:** [`slim-4-best-practices.md` → Error Handler Architecture](./slim-4-best-practices.md)
 
-```php
-// CORRECT - Config-driven error display
-$displayErrors = SystemConfig::debugEnabled();
-$app->addErrorMiddleware($displayErrors, true, true)
-    ->setDefaultErrorHandler(function (Request $request, Throwable $exception) use ($app): Response {
-        $response = $app->getResponseFactory()->createResponse();
-        return SlimUtils::renderErrorJSON(
-            $response, 
-            gettext('An error occurred'), 
-            [], 
-            500, 
-            $exception, 
-            $request
-        );
-    });
-
-// WRONG - Always exposes error details (security risk in production)
-$app->addErrorMiddleware(true, true, true);  // ❌ Hardcoded true
-```
-
-**Guidelines:**
-- **Use `SystemConfig::debugEnabled()`** to control `displayErrorDetails` parameter
-- **Set custom error handler** that uses `SlimUtils::renderErrorJSON()` for sanitized responses
-- **Never throw HTTP exceptions in API routes** - always catch and return sanitized JSON errors
+For MVC modules use `MvcAppFactory`. For non-MVC entry points (API, external, session),
+add error middleware manually — always AFTER `addRoutingMiddleware()`.
 
 ## Admin Dashboard Setup Checklist Pattern <!-- learned: 2026-03-19 -->
 

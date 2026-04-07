@@ -141,14 +141,19 @@ return SlimUtils::renderErrorJSON($response, gettext('Upload failed'), [], 400, 
 var errorText = error.message || error.error || error.msg || i18next.t("Unknown error");
 ```
 
-## Middleware Order (CRITICAL - Slim 4 uses LIFO)
+## Middleware Order (CRITICAL - Slim 4 uses LIFO) <!-- learned: 2026-04-07 -->
+
+> **Full reference:** [`slim-4-best-practices.md` → Middleware Order](./slim-4-best-practices.md)
+
+**TL;DR:** `addErrorMiddleware()` MUST be called AFTER `addRoutingMiddleware()`. Wrong order → raw 500 on 404s.
 
 ```php
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
-$app->add(CorsMiddleware::class);          // Last added, runs FIRST
-$app->add(AuthMiddleware::class);          // Runs SECOND
-$app->add(VersionMiddleware::class);       // First added, runs LAST
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);  // AFTER routing
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
+$app->add(new CorsMiddleware());
+$app->add(AuthMiddleware::class);
 ```
 
 ## HTTP Headers (RFC 7230)

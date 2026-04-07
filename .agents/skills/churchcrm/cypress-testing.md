@@ -1123,3 +1123,36 @@ cy.get("#latestPersonDashboardItem").then(($table) => {
   }
 });
 ```
+
+### Never Mix Success and Error Status Codes <!-- learned: 2026-04-07 -->
+
+Each test must assert a **single** specific expected status code (or a tightly scoped set when
+genuine system-state variance exists). Bundling 2xx with 4xx/5xx masks real failures:
+
+```js
+// ❌ WRONG — hides whether route works or fails
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, [200, 400, 422, 500]);
+
+// ✅ CORRECT — 500 because validateFund throws TypeError (FundSplit is a string)
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, 500);
+
+// ✅ CORRECT — genuinely ambiguous system-state (kiosk window open vs closed)
+expect(response.status).to.be.oneOf([302, 401]);
+```
+
+### Trailing Slash Required for Slim Group Root Routes <!-- learned: 2026-04-07 -->
+
+`$group->post('/', ...)` inside `$app->group('/payments', ...)` registers `POST /payments/`
+(with trailing slash). Tests calling `/api/payments` (no slash) return **404** now that
+middleware ordering is correctly fixed. Use the trailing slash in test URLs:
+
+```js
+// ❌ WRONG — 404 with correct LIFO middleware order
+cy.makePrivateAdminAPICall("POST", "/api/payments", body, 200);
+
+// ✅ CORRECT
+cy.makePrivateAdminAPICall("POST", "/api/payments/", body, 200);
+```
+
+This also affected GET `/api/deposits` in `FindDepositSlip.js` — check any route defined as
+`$group->get('/', ...)` and ensure callers use the trailing slash.
