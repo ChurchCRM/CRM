@@ -14588,3 +14588,333 @@ msgstr "打开 CSV 导出"
 msgid "Restore from the System Backup page"
 msgstr "从系统备份页面恢复"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "系统有可用更新。请升级您的安装。"
+
+#: 
+msgid "API Access"
+msgstr "API 访问"
+
+#: 
+msgid "API Key"
+msgstr "API 密钥"
+
+#: 
+msgid "API key regenerated"
+msgstr "API 密钥已重新生成"
+
+#: 
+msgid "Account"
+msgstr "账户"
+
+#: 
+msgid "Advanced Settings"
+msgstr "高级设置"
+
+#: 
+msgid "An error occurred."
+msgstr "发生错误。"
+
+#: 
+msgid "Appearance"
+msgstr "外观"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "返回财务仪表板"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "返回事工仪表板"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "返回成员仪表板"
+
+#: 
+msgid "Blue"
+msgstr "蓝色"
+
+#: 
+msgid "Change Photo"
+msgstr "更改照片"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "更改将在下次登录后生效。"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "选择浅色或深色主题"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理。您可以通过以下方式提供帮助："
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "自定义应用程序的外观与感觉"
+
+#: 
+msgid "Cyan"
+msgstr "青色"
+
+#: 
+msgid "Dark"
+msgstr "深色"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "仅数据库（.sql）或完整存档（.tar.gz）"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "数据表中默认显示的行数。在下次页面加载时生效。"
+
+#: 
+msgid "Edit own family only"
+msgstr "仅编辑自己的家庭信息"
+
+#: 
+msgid "Enter text here..."
+msgstr "请在此输入文字..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "取消登记失败。请重试。"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "删除活动失败。请重试。"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "禁用双重认证失败。请重试。"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "生成二维码失败。请重试。"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "加载日历数据失败。请重试。"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "加载活动失败。请重试。"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "加载恢复码失败。请刷新页面。"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "保存活动失败。请重试。"
+
+#: 
+msgid "Failed to save setting"
+msgstr "保存设置失败"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "菲律宾语 - 菲律宾"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "修正您语言中不正确或不自然的翻译"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "发现翻译错误？"
+
+#: 
+msgid "Grants all privileges"
+msgstr "授予所有权限"
+
+#: 
+msgid "Green"
+msgstr "绿色"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "帮助改善翻译"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "如果您发现乱码、HTML 实体以文字形式出现，或翻译导致页面布局问题，请在 GitHub 上报告，以便为所有人修复。"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "在请求中使用 x-api-key 标头包含您的 API 密钥："
+
+#: 
+msgid "Indigo"
+msgstr "靛蓝色"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "JSON 值无效——设置未保存。请更正后重试。"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "加入 POEditor 上的翻译项目"
+
+#: 
+msgid "Language and regional settings"
+msgstr "语言和区域设置"
+
+#: 
+msgid "Light"
+msgstr "浅色"
+
+#: 
+msgid "Lime"
+msgstr "柠檬绿"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "马拉雅拉姆语 - 印度"
+
+#: 
+msgid "Manage 2FA"
+msgstr "管理双重认证"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "管理其他偏好设置，例如邮件分隔符和显示选项"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "管理用于外部集成的 API 密钥"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "方法不允许"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "翻译缺失或不正确？"
+
+#: 
+msgid "My Account"
+msgstr "我的账户"
+
+#: 
+msgid "Orange"
+msgstr "橙色"
+
+#: 
+msgid "Override the system default locale"
+msgstr "覆盖系统默认语言区域"
+
+#: 
+msgid "Page Not Found"
+msgstr "页面未找到"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "当前语言的字符串翻译百分比"
+
+#: 
+msgid "Pink"
+msgstr "粉红色"
+
+#: 
+msgid "Primary Color"
+msgstr "主题颜色"
+
+#: 
+msgid "Profile and security"
+msgstr "个人资料与安全"
+
+#: 
+msgid "Purple"
+msgstr "紫色"
+
+#: 
+msgid "Red"
+msgstr "红色"
+
+#: 
+msgid "Regenerate"
+msgstr "重新生成"
+
+#: 
+msgid "Rows per page"
+msgstr "每页行数"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "将权限设为「是」，以允许该用户自行更改此设置。"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "设置用于按钮、链接和活动元素的强调色"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "为现有翻译建议更好的措辞"
+
+#: 
+msgid "System Update Available"
+msgstr "系统更新可用"
+
+#: 
+msgid "Tables"
+msgstr "表格"
+
+#: 
+msgid "Teal"
+msgstr "蓝绿色"
+
+#: 
+msgid "Theme Mode"
+msgstr "主题模式"
+
+#: 
+msgid "Toggle search"
+msgstr "切换搜索"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "翻译缺失字符串以提高覆盖率"
+
+#: 
+msgid "Translation Progress"
+msgstr "翻译进度"
+
+#: 
+msgid "Usage"
+msgstr "使用方法"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "使用此密钥验证 API 请求。重新生成将使当前密钥失效。"
+
+#: 
+msgid "User Config"
+msgstr "用户配置"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "验证失败。请重试。"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "版本 %s 已可用。请升级您的安装。"
+
+#: 
+msgid "View All"
+msgstr "查看全部"
+
+#: 
+msgid "Yellow"
+msgstr "黄色"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "您当前的访问级别（只读）"
+

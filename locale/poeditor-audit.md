@@ -10,42 +10,42 @@
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `ta` | Tamil | 3430 | 97.64% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil | 3510 | 99.91% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese (BR) | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 3509 | 99.89% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese (TW) | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 3508 | 99.86% | 🟢 Complete | ✅ Yes |
+| `it` | Italian | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 3507 | 99.83% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish (AR) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish (CO) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish (MX) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish (SV) | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 3506 | 99.8% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 3505 | 99.77% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch | 3504 | 99.74% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 3503 | 99.72% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian | 3502 | 99.69% | 🟢 Complete | ✅ Yes |
+| `de` | German | 3500 | 99.63% | 🟢 Complete | ✅ Yes |
+| `fr` | French | 3494 | 99.46% | 🟢 Complete | ✅ Yes |
 | `hu` | Hungarian | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 3427 | 97.55% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
 | `cs` | Czech | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
 | `he` | Hebrew | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 3426 | 97.52% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 3425 | 97.5% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 3424 | 97.47% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 3423 | 97.44% | 🟢 Complete | ✅ Yes |
-| `de` | German | 3421 | 97.38% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 3421 | 97.38% | 🟢 Complete | ✅ Yes |
 | `ro` | Romanian | 3421 | 97.38% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 3416 | 97.24% | 🟢 Complete | ✅ Yes |
 | `sq` | Albanian | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
 | `et` | Estonian | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
 | `fi` | Finnish | 3406 | 96.95% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 3405 | 96.93% | 🟢 Complete | ✅ Yes |
 | `tr` | Turkish | 3405 | 96.93% | 🟢 Complete | ✅ Yes |
 | `af` | Afrikaans | 3404 | 96.9% | 🟢 Complete | ✅ Yes |
 | `nb` | Norwegian Bokmål | 3401 | 96.81% | 🟢 Complete | ✅ Yes |
