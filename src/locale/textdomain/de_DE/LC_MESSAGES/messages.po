@@ -2212,15 +2212,6 @@ msgid "User Editor"
 msgstr "Benutzer Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Notiz: Änderungen werden erst bei dem nächsten Login wirksam."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Personen zu Benutzern machen"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Benutzer"
@@ -2270,26 +2261,9 @@ msgid "Edit Self"
 msgstr "Kann eigene Daten verändern"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Nur eigene Familie ändern.)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Adminstrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Hat alle Rechte)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Darstellung der Datenfelder"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Setzen Sie die Berechtigungen, um diesem Benutzer die Möglichkeit zu geben, seinen aktuellen Wert zu ändern."
 
 #: 
 msgid "Last Login"
@@ -3273,10 +3247,6 @@ msgstr "Daten/Berichte"
 #: 
 msgid "Query Menu"
 msgstr "Anfragenmenü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV Export"
 
 #: 
 msgid "Family Properties"
@@ -6192,28 +6162,12 @@ msgid "open rate"
 msgstr "offener Tarif"
 
 #: 
-msgid "Login Info"
-msgstr "Anmeldeinfo‘s"
-
-#: 
-msgid "Login Count"
-msgstr "Anzahl der Anmeldungen"
-
-#: 
-msgid "Failed Login"
-msgstr "Fehlgeschlagene Anmeldung(en)"
-
-#: 
 msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: 
 msgid "Manage Notes"
 msgstr "Notizen verwalten"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Generierung eines neuen API-Schlüssels fehlgeschlagen"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6285,14 +6239,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Heutige Hochzeitstage"
 
 #: 
-msgid "Api Key"
-msgstr "API Schlüssel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerations-API-Schlüssel"
-
-#: 
 msgid "View Family Page"
 msgstr "Familienseite anzeigen"
 
@@ -6307,34 +6253,6 @@ msgstr "Verifizieren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Boxed Layout"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivieren Sie das Boxed Layout"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Seitenleiste umklappen"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Tabelleneinstellungen"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellen"
-
-#: 
-msgid "Page length"
-msgstr "Länge der Seite"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ändern Sie die anfängliche Seitenlänge (Anzahl der Zeilen pro Seite)"
 
 #: 
 msgid "User Interface"
@@ -14666,4 +14584,322 @@ msgstr "CSV-Export öffnen"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "Über die Systemsicherungsseite wiederherstellen"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Eine Systemaktualisierung ist verfügbar. Bitte aktualisieren Sie Ihre Installation."
+
+#: 
+msgid "API Access"
+msgstr "API-Zugang"
+
+#: 
+msgid "API Key"
+msgstr "API-Schlüssel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-Schlüssel wurde erneuert"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Erweiterte Einstellungen"
+
+#: 
+msgid "An error occurred."
+msgstr "Ein Fehler ist aufgetreten."
+
+#: 
+msgid "Appearance"
+msgstr "Erscheinungsbild"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Zurück zum Finanz-Dashboard"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Zurück zum Gruppen-Dashboard"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Zurück zum Personen-Dashboard"
+
+#: 
+msgid "Blue"
+msgstr "Blau"
+
+#: 
+msgid "Change Photo"
+msgstr "Foto ändern"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Änderungen werden erst nach der nächsten Anmeldung wirksam."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Wählen Sie zwischen hellem und dunklem Farbschema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-Übersetzungen werden von der Gemeinschaft auf POEditor verwaltet. Sie können helfen, indem Sie:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Passen Sie das Erscheinungsbild und die Bedienung der Anwendung an"
+
+#: 
+msgid "Dark"
+msgstr "Dunkel"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Nur Datenbank (.sql) oder vollständiges Archiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standardanzahl der angezeigten Zeilen in Datentabellen. Wird beim nächsten Seitenaufruf wirksam."
+
+#: 
+msgid "Edit own family only"
+msgstr "Nur eigene Familie bearbeiten"
+
+#: 
+msgid "Enter text here..."
+msgstr "Text hier eingeben..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Abmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Ereignis konnte nicht gelöscht werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Zwei-Faktor-Authentifizierung konnte nicht deaktiviert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR-Code konnte nicht erstellt werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kalenderdaten konnten nicht geladen werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Ereignis konnte nicht geladen werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Wiederherstellungscodes konnten nicht geladen werden. Bitte aktualisieren Sie die Seite."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Ereignis konnte nicht gespeichert werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Einstellung konnte nicht gespeichert werden"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipinisch – Philippinen"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Fehlerhafte oder unpassende Übersetzungen in Ihrer Sprache korrigieren"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Einen Fehler in den Übersetzungen gefunden?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Gewährt alle Berechtigungen"
+
+#: 
+msgid "Green"
+msgstr "Grün"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Helfen Sie, Übersetzungen zu verbessern"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Wenn Sie unleserliche Zeichen, HTML-Entitäten als Text oder Übersetzungen bemerken, die das Seitenlayout beeinträchtigen, melden Sie das Problem bitte auf GitHub, damit es für alle behoben werden kann."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Fügen Sie Ihren API-Schlüssel in Anfragen mit dem x-api-key-Header ein:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ungültiger JSON-Wert – die Einstellung wurde nicht gespeichert. Bitte korrigieren Sie den Wert und versuchen Sie es erneut."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Am Übersetzungsprojekt auf POEditor teilnehmen"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Sprach- und Regionaleinstellungen"
+
+#: 
+msgid "Light"
+msgstr "Hell"
+
+#: 
+msgid "Lime"
+msgstr "Limette"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam – Indien"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Zwei-Faktor-Authentifizierung verwalten"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Zusätzliche Einstellungen wie E-Mail-Trennzeichen und Anzeigeoptionen verwalten"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Ihren API-Schlüssel für externe Integrationen verwalten"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Methode nicht erlaubt"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Fehlende oder fehlerhafte Übersetzungen?"
+
+#: 
+msgid "My Account"
+msgstr "Mein Konto"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Standard-Spracheinstellung des Systems überschreiben"
+
+#: 
+msgid "Page Not Found"
+msgstr "Seite nicht gefunden"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Prozentsatz der übersetzten Texte für Ihre aktuelle Sprache"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Primärfarbe"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil und Sicherheit"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Rot"
+
+#: 
+msgid "Regenerate"
+msgstr "Neu generieren"
+
+#: 
+msgid "Rows per page"
+msgstr "Zeilen pro Seite"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Berechtigung auf Wahr setzen, damit dieser Benutzer die Einstellung selbst ändern kann."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Akzentfarbe für Schaltflächen, Links und aktive Elemente festlegen"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Bessere Formulierungen für vorhandene Übersetzungen vorschlagen"
+
+#: 
+msgid "System Update Available"
+msgstr "Systemaktualisierung verfügbar"
+
+#: 
+msgid "Tables"
+msgstr "Tabellen"
+
+#: 
+msgid "Teal"
+msgstr "Petrol"
+
+#: 
+msgid "Theme Mode"
+msgstr "Designmodus"
+
+#: 
+msgid "Toggle search"
+msgstr "Suche ein-/ausblenden"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Fehlende Texte übersetzen, um die Abdeckung zu verbessern"
+
+#: 
+msgid "Translation Progress"
+msgstr "Übersetzungsfortschritt"
+
+#: 
+msgid "Usage"
+msgstr "Verwendung"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Verwenden Sie diesen Schlüssel, um API-Anfragen zu authentifizieren. Bei einer Neuerstellung wird der aktuelle Schlüssel ungültig."
+
+#: 
+msgid "User Config"
+msgstr "Benutzerkonfiguration"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Überprüfung fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Version %s ist verfügbar. Bitte aktualisieren Sie Ihre Installation."
+
+#: 
+msgid "View All"
+msgstr "Alle anzeigen"
+
+#: 
+msgid "Yellow"
+msgstr "Gelb"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Ihre aktuellen Zugriffsebenen (nur lesen)"
 

@@ -251,26 +251,21 @@ src/finance/
 ### Patterns
 
 **Entry Point (index.php):**
+
+All MVC modules now use `MvcAppFactory` — see [`slim-4-best-practices.md`](./slim-4-best-practices.md) for middleware ordering rules.
+
 ```php
 <?php
 // src/finance/index.php
-use Slim\Factory\AppFactory;
-use Slim\Views\PhpRenderer;
+use ChurchCRM\Slim\MvcAppFactory;
 
-$app = AppFactory::create();
-$container = $app->getContainer();
-
-// Register services
-$container->set('FinanceService', new FinanceService());
-
-// Add middleware
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-$app->add(new FinanceRoleAuthMiddleware());
+$app = MvcAppFactory::create('/finance', [
+    'roleMiddleware' => FinanceRoleAuthMiddleware::class,
+]);
 
 // Load routes
-$app->group('', require __DIR__ . '/routes/dashboard.php');
-$app->group('', require __DIR__ . '/routes/reports.php');
+require __DIR__ . '/routes/dashboard.php';
+require __DIR__ . '/routes/reports.php';
 
 $app->run();
 ```

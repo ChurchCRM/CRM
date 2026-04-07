@@ -2126,14 +2126,6 @@ msgid "User Editor"
 msgstr "ユーザーエディター"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "注意: 変更は次回のログインまで反映されません。"
-
-#: 
-msgid "Person to Make User"
-msgstr "ユーザーにする対象者"
-
-#: 
 msgid "User"
 msgstr "ユーザー"
 
@@ -2174,24 +2166,8 @@ msgid "Edit Self"
 msgstr "自分の情報を編集"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(自分の世帯のみ編集可能)"
-
-#: 
 msgid "Admin"
 msgstr "管理者"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(すべての特権を付与)"
-
-#: 
-msgid "Style"
-msgstr "スタイル"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "このユーザーに現在の値を変更する権限を与えるには、権限を True に設定してください。"
 
 #: 
 msgid "Last Login"
@@ -3145,10 +3121,6 @@ msgstr "データ/レポート"
 #: 
 msgid "Query Menu"
 msgstr "クエリメニュー"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSVレコードをエクスポート"
 
 #: 
 msgid "Family Properties"
@@ -6048,28 +6020,12 @@ msgid "open rate"
 msgstr "開封率"
 
 #: 
-msgid "Login Info"
-msgstr "ログイン情報"
-
-#: 
-msgid "Login Count"
-msgstr "ログイン回数"
-
-#: 
-msgid "Failed Login"
-msgstr "ログインに失敗"
-
-#: 
 msgid "Permissions"
 msgstr "権限"
 
 #: 
 msgid "Manage Notes"
 msgstr "メモの管理"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "新しいAPIキーの生成に失敗しました"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6141,14 +6097,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "今日の結婚記念日"
 
 #: 
-msgid "Api Key"
-msgstr "APIキー"
-
-#: 
-msgid "Regen API Key"
-msgstr "APIを再作成する"
-
-#: 
 msgid "View Family Page"
 msgstr "家族ページを表示"
 
@@ -6163,34 +6111,6 @@ msgstr "確認"
 #: 
 msgid "Family has no emails to use"
 msgstr "家族には使用できるメールがありません"
-
-#: 
-msgid "Boxed Layout"
-msgstr "ボックスレイアウト"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "ボックスレイアウトを有効化"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "サイドバーを切り替え"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "左サイドバーの状態を切り替え（展開または折りたたみ）"
-
-#: 
-msgid "Tables Settings"
-msgstr "テーブル設定"
-
-#: 
-msgid "Page length"
-msgstr "ページ長"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "初期ページ長　ページあたりの行数　を変更します"
 
 #: 
 msgid "User Interface"
@@ -14534,4 +14454,334 @@ msgstr "CSV エクスポートを開く"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "システムバックアップページから復元"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "システムのアップデートが利用可能です。インストールをアップグレードしてください。"
+
+#: 
+msgid "API Access"
+msgstr "APIアクセス"
+
+#: 
+msgid "API Key"
+msgstr "APIキー"
+
+#: 
+msgid "API key regenerated"
+msgstr "APIキーが再生成されました"
+
+#: 
+msgid "Account"
+msgstr "アカウント"
+
+#: 
+msgid "Advanced Settings"
+msgstr "詳細設定"
+
+#: 
+msgid "An error occurred."
+msgstr "エラーが発生しました。"
+
+#: 
+msgid "Appearance"
+msgstr "外観"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "財務ダッシュボードに戻る"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "グループダッシュボードに戻る"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "メンバーダッシュボードに戻る"
+
+#: 
+msgid "Blue"
+msgstr "青"
+
+#: 
+msgid "Change Photo"
+msgstr "写真を変更"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "変更は次回ログイン時に有効になります。"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "ライトまたはダークのカラースキームを選択してください"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRMの翻訳はPOEditorのコミュニティによって管理されています。以下の方法でご協力いただけます："
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "アプリケーションの外観をカスタマイズする"
+
+#: 
+msgid "Cyan"
+msgstr "シアン"
+
+#: 
+msgid "Dark"
+msgstr "ダーク"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "データベースのみ（.sql）またはフルアーカイブ（.tar.gz）"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "データテーブルに表示されるデフォルトの行数。次回のページ読み込み時に有効になります。"
+
+#: 
+msgid "Edit own family only"
+msgstr "自分の家族のみ編集"
+
+#: 
+msgid "Enter text here..."
+msgstr "テキストをここに入力..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "登録のキャンセルに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "イベントの削除に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "二段階認証の無効化に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QRコードの生成に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "カレンダーデータの読み込みに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "イベントの読み込みに失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "回復コードの読み込みに失敗しました。ページを更新してください。"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "イベントの保存に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Failed to save setting"
+msgstr "設定の保存に失敗しました"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "フィリピン語（フィリピン）"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "お使いの言語の不正確または不自然な翻訳の修正"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "翻訳にバグを見つけましたか？"
+
+#: 
+msgid "Grants all privileges"
+msgstr "すべての権限を付与"
+
+#: 
+msgid "Green"
+msgstr "緑"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "翻訳の改善にご協力ください"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "文字化け、テキストとして表示されるHTMLエンティティ、またはページレイアウトを崩す翻訳に気づいた場合は、GitHubで問題を報告してください。皆さんのために修正されます。"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "x-api-keyヘッダーを使用してリクエストにAPIキーを含めてください："
+
+#: 
+msgid "Indigo"
+msgstr "インディゴ"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "無効なJSON値 — 設定が保存されませんでした。修正してもう一度お試しください。"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "POEditorの翻訳プロジェクトに参加する"
+
+#: 
+msgid "Language and regional settings"
+msgstr "言語および地域設定"
+
+#: 
+msgid "Light"
+msgstr "ライト"
+
+#: 
+msgid "Lime"
+msgstr "ライム"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "マラヤーラム語（インド）"
+
+#: 
+msgid "Manage 2FA"
+msgstr "二段階認証を管理"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "メール区切り文字や表示オプションなどの追加設定を管理"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "外部連携用のAPIキーを管理"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "メソッドが許可されていません"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "翻訳が欠けているか、不正確ですか？"
+
+#: 
+msgid "My Account"
+msgstr "マイアカウント"
+
+#: 
+msgid "Orange"
+msgstr "オレンジ"
+
+#: 
+msgid "Override the system default locale"
+msgstr "システムのデフォルトロケールを上書き"
+
+#: 
+msgid "Page Not Found"
+msgstr "ページが見つかりません"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "現在の言語で翻訳された文字列の割合"
+
+#: 
+msgid "Pink"
+msgstr "ピンク"
+
+#: 
+msgid "Primary Color"
+msgstr "メインカラー"
+
+#: 
+msgid "Profile and security"
+msgstr "プロフィールとセキュリティ"
+
+#: 
+msgid "Purple"
+msgstr "紫"
+
+#: 
+msgid "Red"
+msgstr "赤"
+
+#: 
+msgid "Regenerate"
+msgstr "再生成"
+
+#: 
+msgid "Rows per page"
+msgstr "1ページあたりの行数"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "このユーザーが設定を自分で変更できるようにするには、権限をTrueに設定してください。"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "ボタン、リンク、アクティブ要素に使用されるアクセントカラーを設定する"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "既存の翻訳のより良い表現を提案する"
+
+#: 
+msgid "System Update Available"
+msgstr "システムアップデートが利用可能"
+
+#: 
+msgid "Tables"
+msgstr "テーブル"
+
+#: 
+msgid "Teal"
+msgstr "ティール"
+
+#: 
+msgid "Theme Mode"
+msgstr "テーマモード"
+
+#: 
+msgid "Toggle search"
+msgstr "検索の切り替え"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "カバレッジを向上させるための未翻訳文字列の翻訳"
+
+#: 
+msgid "Translation Progress"
+msgstr "翻訳の進捗状況"
+
+#: 
+msgid "Usage"
+msgstr "使用方法"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "このキーを使用してAPIリクエストを認証してください。再生成すると現在のキーは無効になります。"
+
+#: 
+msgid "User Config"
+msgstr "ユーザー設定"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "確認に失敗しました。もう一度お試しください。"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "バージョン%sが利用可能です。インストールをアップグレードしてください。"
+
+#: 
+msgid "View All"
+msgstr "すべて表示"
+
+#: 
+msgid "Yellow"
+msgstr "黄"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "現在のアクセスレベル（読み取り専用）"
 

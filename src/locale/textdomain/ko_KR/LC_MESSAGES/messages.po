@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "사용자 편집"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "참고: 변경 사항은 다음 로그인부터 적용됩니다."
-
-#: 
-msgid "Person to Make User"
-msgstr "계정을 생성할 개인"
-
-#: 
 msgid "User"
 msgstr "사용자"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "본인 정보 수정"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(본인 가족만 수정 가능)"
-
-#: 
 msgid "Admin"
 msgstr "관리자"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(모든 권한 부여)"
-
-#: 
-msgid "Style"
-msgstr "스타일"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "허용을 선택하면 이 사용자가 해당 값을 수정할 수 있습니다."
 
 #: 
 msgid "Last Login"
@@ -3172,10 +3148,6 @@ msgstr "데이터/보고서"
 #: 
 msgid "Query Menu"
 msgstr "쿼리 메뉴"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV 내보내기 기록"
 
 #: 
 msgid "Family Properties"
@@ -6083,28 +6055,12 @@ msgid "open rate"
 msgstr "오픈율"
 
 #: 
-msgid "Login Info"
-msgstr "로그인 정보"
-
-#: 
-msgid "Login Count"
-msgstr "로그인 횟수"
-
-#: 
-msgid "Failed Login"
-msgstr "실패한 로그인"
-
-#: 
 msgid "Permissions"
 msgstr "권한"
 
 #: 
 msgid "Manage Notes"
 msgstr "메모 관리"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "새 API 키 생성에 실패했습니다"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6176,14 +6132,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "오늘의 결혼기념일"
 
 #: 
-msgid "Api Key"
-msgstr "API 키"
-
-#: 
-msgid "Regen API Key"
-msgstr "API 키 재생성"
-
-#: 
 msgid "View Family Page"
 msgstr "가족 페이지 보기"
 
@@ -6198,34 +6146,6 @@ msgstr "확인"
 #: 
 msgid "Family has no emails to use"
 msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
-msgid "Boxed Layout"
-msgstr "박스 레이아웃"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "박스 레이아웃 활성화"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "사이드바 토글"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "왼쪽 사이드바를 열거나 접습니다"
-
-#: 
-msgid "Tables Settings"
-msgstr "테이블 설정"
-
-#: 
-msgid "Page length"
-msgstr "페이지 길이"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "처음 표시할 페이지 길이(페이지당 행 수)를 변경합니다"
 
 #: 
 msgid "User Interface"
@@ -14570,4 +14490,334 @@ msgstr "CSV 내보내기 열기"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "시스템 백업 페이지에서 복원"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "시스템 업데이트가 있습니다. 설치를 업그레이드해 주세요."
+
+#: 
+msgid "API Access"
+msgstr "API 접근"
+
+#: 
+msgid "API Key"
+msgstr "API 키"
+
+#: 
+msgid "API key regenerated"
+msgstr "API 키가 재생성되었습니다"
+
+#: 
+msgid "Account"
+msgstr "계정"
+
+#: 
+msgid "Advanced Settings"
+msgstr "고급 설정"
+
+#: 
+msgid "An error occurred."
+msgstr "오류가 발생했습니다."
+
+#: 
+msgid "Appearance"
+msgstr "외관"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "재정 대시보드로 돌아가기"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "소그룹 대시보드로 돌아가기"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "교인 대시보드로 돌아가기"
+
+#: 
+msgid "Blue"
+msgstr "파랑"
+
+#: 
+msgid "Change Photo"
+msgstr "사진 변경"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "변경 사항은 다음 로그인 시 적용됩니다."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "밝은 테마와 어두운 테마 중 선택"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM 번역은 POEditor에서 커뮤니티가 관리합니다. 다음과 같이 도움을 주실 수 있습니다:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "애플리케이션의 외관과 느낌을 사용자 정의하세요"
+
+#: 
+msgid "Cyan"
+msgstr "청록"
+
+#: 
+msgid "Dark"
+msgstr "어두운"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "데이터베이스 전용 (.sql) 또는 전체 아카이브 (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "데이터 표에 표시되는 기본 행 수입니다. 다음 페이지 로드 시 적용됩니다."
+
+#: 
+msgid "Edit own family only"
+msgstr "본인 가족만 편집"
+
+#: 
+msgid "Enter text here..."
+msgstr "여기에 텍스트를 입력하세요..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "등록 취소에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "일정 삭제에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "이중 인증 비활성화에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR 코드 생성에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "캘린더 데이터 로드에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "일정 로드에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "복구 코드 로드에 실패했습니다. 페이지를 새로 고침해 주세요."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "일정 저장에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Failed to save setting"
+msgstr "설정 저장에 실패했습니다"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "필리핀어 - 필리핀"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "해당 언어의 잘못되거나 어색한 번역 수정"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "번역에서 버그를 발견하셨나요?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "모든 권한 부여"
+
+#: 
+msgid "Green"
+msgstr "초록"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "번역 개선에 참여하세요"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "문자가 깨지거나, HTML 엔티티가 텍스트로 표시되거나, 번역으로 인해 페이지 레이아웃이 깨지는 경우 GitHub에 문제를 보고해 주시면 모든 사용자를 위해 수정될 것입니다."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "x-api-key 헤더를 사용하여 요청에 API 키를 포함하세요:"
+
+#: 
+msgid "Indigo"
+msgstr "남색"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "유효하지 않은 JSON 값입니다 — 설정이 저장되지 않았습니다. 수정 후 다시 시도해 주세요."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "POEditor에서 번역 프로젝트에 참여하세요"
+
+#: 
+msgid "Language and regional settings"
+msgstr "언어 및 지역 설정"
+
+#: 
+msgid "Light"
+msgstr "밝은"
+
+#: 
+msgid "Lime"
+msgstr "연두"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "말라얄람어 - 인도"
+
+#: 
+msgid "Manage 2FA"
+msgstr "이중 인증 관리"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "이메일 구분자 및 표시 옵션과 같은 추가 환경 설정 관리"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "외부 연동을 위한 API 키 관리"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "허용되지 않는 메서드"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "번역이 누락되거나 잘못되었나요?"
+
+#: 
+msgid "My Account"
+msgstr "내 계정"
+
+#: 
+msgid "Orange"
+msgstr "주황"
+
+#: 
+msgid "Override the system default locale"
+msgstr "시스템 기본 로케일 재정의"
+
+#: 
+msgid "Page Not Found"
+msgstr "페이지를 찾을 수 없습니다"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "현재 언어에 대한 번역된 문자열의 비율"
+
+#: 
+msgid "Pink"
+msgstr "분홍"
+
+#: 
+msgid "Primary Color"
+msgstr "주요 색상"
+
+#: 
+msgid "Profile and security"
+msgstr "프로필 및 보안"
+
+#: 
+msgid "Purple"
+msgstr "보라"
+
+#: 
+msgid "Red"
+msgstr "빨강"
+
+#: 
+msgid "Regenerate"
+msgstr "재생성"
+
+#: 
+msgid "Rows per page"
+msgstr "페이지당 행 수"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "이 사용자가 설정을 직접 변경할 수 있도록 권한을 참으로 설정하세요."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "버튼, 링크 및 활성 요소에 사용되는 강조 색상을 설정하세요"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "기존 번역에 더 나은 표현 제안"
+
+#: 
+msgid "System Update Available"
+msgstr "시스템 업데이트 가능"
+
+#: 
+msgid "Tables"
+msgstr "표"
+
+#: 
+msgid "Teal"
+msgstr "청록색"
+
+#: 
+msgid "Theme Mode"
+msgstr "테마 모드"
+
+#: 
+msgid "Toggle search"
+msgstr "검색 전환"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "커버리지 향상을 위한 누락된 문자열 번역"
+
+#: 
+msgid "Translation Progress"
+msgstr "번역 진행률"
+
+#: 
+msgid "Usage"
+msgstr "사용법"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "이 키를 사용하여 API 요청을 인증하세요. 재생성하면 현재 키가 무효화됩니다."
+
+#: 
+msgid "User Config"
+msgstr "사용자 설정"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "인증에 실패했습니다. 다시 시도해 주세요."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "버전 %s을(를) 사용할 수 있습니다. 설치를 업그레이드해 주세요."
+
+#: 
+msgid "View All"
+msgstr "모두 보기"
+
+#: 
+msgid "Yellow"
+msgstr "노랑"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "현재 접근 수준 (읽기 전용)"
 

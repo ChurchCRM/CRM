@@ -115,7 +115,7 @@ export function createPhotoUploader(config) {
 
     const reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = (e) => {
       // v5+: file.data is now nullable, so check e.target.result
       const base64 = e.target?.result;
       if (!base64 || typeof base64 !== "string") {
@@ -175,7 +175,7 @@ export function createPhotoUploader(config) {
         });
     };
 
-    reader.onerror = function (error) {
+    reader.onerror = (error) => {
       const fileError = new Error("Failed to read file");
       console.error("FileReader error:", error || fileError);
       showPersistentError(fileError.message);

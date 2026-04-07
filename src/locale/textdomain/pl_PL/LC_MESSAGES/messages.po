@@ -2200,15 +2200,6 @@ msgid "User Editor"
 msgstr "Edytor Użytkowników"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Uwaga: Zmiany zaczną funkcjonować dopiero po kolejnym logowaniu."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Utwórz Użytkownika z Osoby"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Użytkownik"
@@ -2259,26 +2250,9 @@ msgid "Edit Self"
 msgstr "Edytuj Swoje Dane"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edytuj dane Swojej Rodziny)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Administrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Pełne uprawnienia)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Wygląd"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Ustaw True aby zezwolić użytkownikowi na zmianę wartości danego pola."
 
 #: 
 msgid "Last Login"
@@ -3255,10 +3229,6 @@ msgstr "Dane/Raporty"
 #: 
 msgid "Query Menu"
 msgstr "Menu zapytań"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Rekordy eksportu CSV"
 
 #: 
 msgid "Family Properties"
@@ -6168,28 +6138,12 @@ msgid "open rate"
 msgstr "wskaźnik otwarć"
 
 #: 
-msgid "Login Info"
-msgstr "Informacje Logowania"
-
-#: 
-msgid "Login Count"
-msgstr "Liczba Logowań"
-
-#: 
-msgid "Failed Login"
-msgstr "Błąd Logowania"
-
-#: 
 msgid "Permissions"
 msgstr "Uprawnienia"
 
 #: 
 msgid "Manage Notes"
 msgstr "Zarządzaj Notatkami"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Bład tworzenia klucza API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6261,14 +6215,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Dzisiejsze rocznice ślubu"
 
 #: 
-msgid "Api Key"
-msgstr "Klucz API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Wygeneruj ponownie klucz API"
-
-#: 
 msgid "View Family Page"
 msgstr "Zobacz stronę rodziny"
 
@@ -6283,34 +6229,6 @@ msgstr "Zweryfikuj"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodzina nie ma adresów e-mail"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Układ pudełkowy"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktywuj układ pudełkowy"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Przełącz pasek boczny"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Przełącz stan paska bocznego (rozwiń lub zwiń)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Ustawienia tabel"
-
-#: 
-msgid "Page length"
-msgstr "Długość strony"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Zmień początkową liczbę wierszy na stronę"
 
 #: 
 msgid "User Interface"
@@ -14659,4 +14577,334 @@ msgstr "Otwórz eksport CSV"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "Przywróć ze strony kopii zapasowej systemu"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Dostępna jest aktualizacja systemu. Proszę zaktualizować instalację."
+
+#: 
+msgid "API Access"
+msgstr "Dostęp do API"
+
+#: 
+msgid "API Key"
+msgstr "Klucz API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Klucz API został zregenerowany"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Ustawienia zaawansowane"
+
+#: 
+msgid "An error occurred."
+msgstr "Wystąpił błąd."
+
+#: 
+msgid "Appearance"
+msgstr "Wygląd"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Powrót do pulpitu ofiar"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Powrót do pulpitu posług"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Powrót do pulpitu wiernych"
+
+#: 
+msgid "Blue"
+msgstr "Niebieski"
+
+#: 
+msgid "Change Photo"
+msgstr "Zmień zdjęcie"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Zmiany wejdą w życie przy następnym logowaniu."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Wybierz między jasnym a ciemnym schematem kolorów"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Tłumaczenia ChurchCRM są zarządzane przez społeczność na POEditor. Możesz pomóc przez:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Dostosuj wygląd i działanie aplikacji"
+
+#: 
+msgid "Cyan"
+msgstr "Cyjan"
+
+#: 
+msgid "Dark"
+msgstr "Ciemny"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Tylko baza danych (.sql) lub pełne archiwum (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Domyślna liczba wierszy wyświetlanych w tabelach danych. Zaczyna obowiązywać po następnym załadowaniu strony."
+
+#: 
+msgid "Edit own family only"
+msgstr "Edytuj tylko własną rodzinę"
+
+#: 
+msgid "Enter text here..."
+msgstr "Wpisz tekst tutaj..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Nie udało się anulować zapisu. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Nie udało się usunąć wydarzenia. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Nie udało się wyłączyć uwierzytelniania dwuskładnikowego. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Nie udało się wygenerować kodu QR. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Nie udało się załadować danych kalendarza. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Nie udało się załadować wydarzenia. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Nie udało się załadować kodów odzyskiwania. Proszę odświeżyć stronę."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Nie udało się zapisać wydarzenia. Proszę spróbować ponownie."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Nie udało się zapisać ustawienia"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipiński - Filipiny"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Poprawianie nieprawidłowych lub niezręcznych tłumaczeń w swoim języku"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Znalazłeś błąd w tłumaczeniach?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Przyznaje wszystkie uprawnienia"
+
+#: 
+msgid "Green"
+msgstr "Zielony"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Pomóż ulepszyć tłumaczenia"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Jeśli zauważysz zniekształcone znaki, encje HTML wyświetlane jako tekst lub tłumaczenia psujące układ strony, zgłoś problem na GitHub, aby można było to naprawić dla wszystkich."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Dołącz klucz API do żądań używając nagłówka x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Indygo"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Nieprawidłowa wartość JSON — ustawienie nie zostało zapisane. Proszę poprawić i spróbować ponownie."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Dołącz do projektu tłumaczenia na POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Ustawienia języka i regionalnych preferencji"
+
+#: 
+msgid "Light"
+msgstr "Jasny"
+
+#: 
+msgid "Lime"
+msgstr "Limonkowy"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajalam - Indie"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Zarządzaj 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Zarządzaj dodatkowymi preferencjami, takimi jak separatory e-mail i opcje wyświetlania"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Zarządzaj kluczem API do integracji zewnętrznych"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoda niedozwolona"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Brakujące lub nieprawidłowe tłumaczenia?"
+
+#: 
+msgid "My Account"
+msgstr "Moje konto"
+
+#: 
+msgid "Orange"
+msgstr "Pomarańczowy"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Zastąp domyślne ustawienia regionalne systemu"
+
+#: 
+msgid "Page Not Found"
+msgstr "Strona nie znaleziona"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procent przetłumaczonych ciągów dla bieżącego języka"
+
+#: 
+msgid "Pink"
+msgstr "Różowy"
+
+#: 
+msgid "Primary Color"
+msgstr "Kolor główny"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil i bezpieczeństwo"
+
+#: 
+msgid "Purple"
+msgstr "Fioletowy"
+
+#: 
+msgid "Red"
+msgstr "Czerwony"
+
+#: 
+msgid "Regenerate"
+msgstr "Zregeneruj"
+
+#: 
+msgid "Rows per page"
+msgstr "Wierszy na stronę"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Ustaw uprawnienie na Prawda, aby umożliwić temu użytkownikowi samodzielną zmianę ustawienia."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Ustaw kolor akcentu używany dla przycisków, łączy i aktywnych elementów"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugerowanie lepszego sformułowania dla istniejących tłumaczeń"
+
+#: 
+msgid "System Update Available"
+msgstr "Dostępna aktualizacja systemu"
+
+#: 
+msgid "Tables"
+msgstr "Tabele"
+
+#: 
+msgid "Teal"
+msgstr "Zielonomodry"
+
+#: 
+msgid "Theme Mode"
+msgstr "Tryb motywu"
+
+#: 
+msgid "Toggle search"
+msgstr "Przełącz wyszukiwanie"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Tłumaczenie brakujących ciągów w celu poprawy pokrycia"
+
+#: 
+msgid "Translation Progress"
+msgstr "Postęp tłumaczenia"
+
+#: 
+msgid "Usage"
+msgstr "Użycie"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Użyj tego klucza do uwierzytelniania żądań API. Zregenerowanie unieważni bieżący klucz."
+
+#: 
+msgid "User Config"
+msgstr "Konfiguracja użytkownika"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Weryfikacja nie powiodła się. Proszę spróbować ponownie."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Wersja %s jest dostępna. Proszę zaktualizować instalację."
+
+#: 
+msgid "View All"
+msgstr "Pokaż wszystkie"
+
+#: 
+msgid "Yellow"
+msgstr "Żółty"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Twoje bieżące poziomy dostępu (tylko do odczytu)"
 

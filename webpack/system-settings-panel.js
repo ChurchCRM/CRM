@@ -23,13 +23,11 @@
 
 import "../src/skin/scss/system-settings-panel.scss";
 
-(function () {
-  "use strict";
-
+(() => {
   // Setting type definitions with rendering and value extraction
   const SettingTypes = {
     boolean: {
-      render: function (setting, value) {
+      render: (setting, value) => {
         const isOn = value === "1" || value === "true" || value === true;
         return `
                     <div class="col-md-6 col-lg-4 mb-3">
@@ -60,15 +58,14 @@ import "../src/skin/scss/system-settings-panel.scss";
                     </div>
                 `;
       },
-      getValue: function (el) {
+      getValue: (el) => {
         // Radio inputs: only the checked one returns a value; unchecked returns null (skipped in save)
         if (el.type === "radio") return el.checked ? el.value : null;
         return el.checked ? "1" : "0";
       },
     },
     number: {
-      render: function (setting, value) {
-        return `
+      render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${escapeHtml(resolve(setting.label))}
@@ -82,15 +79,11 @@ import "../src/skin/scss/system-settings-panel.scss";
                                ${setting.max !== undefined ? `max="${setting.max}"` : ""}>
                         ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
-                `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+                `,
+      getValue: (el) => el.value,
     },
     text: {
-      render: function (setting, value) {
-        return `
+      render: (setting, value) => `
                     <div class="col-md-6 col-lg-4 mb-3">
                         <label for="${setting.name}" class="form-label small fw-bold mb-1">
                             ${escapeHtml(resolve(setting.label))}
@@ -103,17 +96,14 @@ import "../src/skin/scss/system-settings-panel.scss";
                                ${setting.placeholder ? `placeholder="${setting.placeholder}"` : ""}>
                         ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
                     </div>
-                `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+                `,
+      getValue: (el) => el.value,
     },
     choice: {
-      render: function (setting, value) {
+      render: (setting, value) => {
         let optionsHtml = "";
         if (setting.choices) {
-          setting.choices.forEach(function (choice) {
+          setting.choices.forEach((choice) => {
             const optValue = typeof choice === "object" ? choice.value : choice;
             const optLabel = typeof choice === "object" ? choice.label : choice;
             const selected = String(value) === String(optValue) ? "selected" : "";
@@ -135,15 +125,13 @@ import "../src/skin/scss/system-settings-panel.scss";
                     </div>
                 `;
       },
-      getValue: function (el) {
-        return el.value;
-      },
+      getValue: (el) => el.value,
     },
     // Password fields never fetch or display the current value.
     // Leave blank to keep the existing value; type a new value to change it.
     // Set setting.generate = true to add a "Generate" button that fills the field.
     password: {
-      render: function (setting) {
+      render: (setting) => {
         const generateBtn = setting.generate
           ? `<button type="button" class="btn btn-outline-secondary btn-sm generate-password-btn" data-target="${setting.name}">
                <i class="fa-solid fa-key me-1"></i>${t("Generate")}
@@ -166,14 +154,13 @@ import "../src/skin/scss/system-settings-panel.scss";
             </div>
           `;
       },
-      getValue: function (el) {
+      getValue: (el) => {
         // Return null for empty passwords so they are skipped in the bulk save
         return el.value || null;
       },
     },
     ajax: {
-      render: function (setting) {
-        return `
+      render: (setting) => `
             <div class="col-md-6 col-lg-4 mb-3">
               <label for="${setting.name}" class="form-label small fw-bold mb-1">
                 ${escapeHtml(resolve(setting.label))}
@@ -186,11 +173,8 @@ import "../src/skin/scss/system-settings-panel.scss";
               </select>
               ${setting.tooltip ? `<small class="form-text text-muted">${escapeHtml(resolve(setting.tooltip))}</small>` : ""}
             </div>
-          `;
-      },
-      getValue: function (el) {
-        return el.value;
-      },
+          `,
+      getValue: (el) => el.value,
     },
   };
 
@@ -283,7 +267,6 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Fetch current values from API and update each input individually
     fetchAndApplyValues() {
-      const self = this;
       // Password fields never show their current value
       const settingsToFetch = this.options.settings.filter((s) => {
         const cfg = this.getSettingConfig(s);
@@ -294,14 +277,14 @@ import "../src/skin/scss/system-settings-panel.scss";
         const name = typeof s === "string" ? s : s.name;
         const cfg = this.getSettingConfig(s);
 
-        fetch(window.CRM.root + self.options.configApiPath + "/" + name)
+        fetch(window.CRM.root + this.options.configApiPath + "/" + name)
           .then((response) => response.json())
           .then((data) => {
             // For ajax selects, load options from the remote URL first
             if (cfg.type === "ajax" && cfg.ajaxUrl) {
-              self.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
+              this.loadAjaxOptions(name, cfg.ajaxUrl, data.value);
             } else {
-              self.applyValue(name, data.value);
+              this.applyValue(name, data.value);
             }
           })
           .catch(() => {
@@ -341,7 +324,7 @@ import "../src/skin/scss/system-settings-panel.scss";
       if (inputs.length > 1) {
         // Radio group (boolean pills): check the radio whose value matches
         const normalized = value === "1" || value === true || value === "true" ? "1" : "0";
-        inputs.forEach(function (input) {
+        inputs.forEach((input) => {
           input.checked = input.value === normalized;
         });
         return;
@@ -434,8 +417,6 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Bind event handlers
     bindEvents() {
-      const self = this;
-
       // Initialize Bootstrap tooltips on help icons
       if (window.$ && $.fn.tooltip) {
         $(this.container).find('[data-bs-toggle="tooltip"]').tooltip();
@@ -444,14 +425,14 @@ import "../src/skin/scss/system-settings-panel.scss";
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
 
       if (saveBtn) {
-        saveBtn.addEventListener("click", function () {
-          self.save();
+        saveBtn.addEventListener("click", () => {
+          this.save();
         });
       }
 
       // Generate button for password fields — fills the input with a random key
-      this.container.querySelectorAll(".generate-password-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
+      this.container.querySelectorAll(".generate-password-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
           const input = document.getElementById(btn.dataset.target);
           if (input) {
             input.value = SettingsPanel.generateSecretHex();
@@ -460,13 +441,13 @@ import "../src/skin/scss/system-settings-panel.scss";
       });
 
       // Preset buttons — fill form fields with predefined values
-      this.container.querySelectorAll(".preset-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
+      this.container.querySelectorAll(".preset-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
           const idx = parseInt(btn.dataset.presetIndex, 10);
-          const preset = self.options.presets && self.options.presets[idx];
+          const preset = this.options.presets && this.options.presets[idx];
           if (!preset || !preset.values) return;
-          Object.keys(preset.values).forEach(function (key) {
-            self.applyValue(key, preset.values[key]);
+          Object.keys(preset.values).forEach((key) => {
+            this.applyValue(key, preset.values[key]);
           });
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Applied preset") + ": " + preset.label + ". " + t("Click Save to apply."), {
@@ -481,8 +462,8 @@ import "../src/skin/scss/system-settings-panel.scss";
       if (this.options.toggleButton) {
         const toggleBtn = document.querySelector(this.options.toggleButton);
         if (toggleBtn) {
-          toggleBtn.addEventListener("click", function () {
-            $(self.container).collapse("toggle");
+          toggleBtn.addEventListener("click", () => {
+            $(this.container).collapse("toggle");
           });
         }
       }
@@ -499,7 +480,6 @@ import "../src/skin/scss/system-settings-panel.scss";
 
     // Save all settings
     save() {
-      const self = this;
       const saveBtn = this.container.querySelector("#settingsPanelSaveBtn");
       const originalHtml = saveBtn.innerHTML;
 
@@ -509,7 +489,7 @@ import "../src/skin/scss/system-settings-panel.scss";
 
       // Collect all setting values (empty passwords return null from getValue and are skipped)
       const settings = {};
-      this.container.querySelectorAll(".setting-input").forEach(function (input) {
+      this.container.querySelectorAll(".setting-input").forEach((input) => {
         const type = input.dataset.type;
         const renderer = SettingTypes[type];
         if (renderer) {
@@ -521,27 +501,27 @@ import "../src/skin/scss/system-settings-panel.scss";
       });
 
       // Save each setting
-      const promises = Object.keys(settings).map(function (key) {
-        return fetch(window.CRM.root + self.options.configApiPath + "/" + key, {
+      const promises = Object.keys(settings).map((key) =>
+        fetch(window.CRM.root + this.options.configApiPath + "/" + key, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ value: settings[key] }),
-        });
-      });
+        }),
+      );
 
       Promise.all(promises)
-        .then(function () {
+        .then(() => {
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Settings saved successfully"), { type: "success", delay: 2000 });
           }
 
-          if (typeof self.options.onSave === "function") {
-            self.options.onSave();
+          if (typeof this.options.onSave === "function") {
+            this.options.onSave();
           }
         })
-        .catch(function (error) {
+        .catch((error) => {
           if (window.CRM && window.CRM.notify) {
             window.CRM.notify(t("Failed to save settings"), { type: "error", delay: 5000 });
           }

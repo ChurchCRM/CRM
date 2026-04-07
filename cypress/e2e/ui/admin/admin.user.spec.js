@@ -32,9 +32,6 @@ describe("Admin User Password", () => {
         // Check that the form has pre-populated the UserName field with a value
         cy.get('#UserName').invoke('val').should('not.be.empty');
         
-        // Select a style
-        cy.get('#Style').select('dark');
-        
         // Click Save button to submit the form
         cy.get('#SaveButton').click();
         

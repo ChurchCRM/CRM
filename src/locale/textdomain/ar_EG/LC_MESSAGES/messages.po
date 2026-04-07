@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "محرر المستخدم"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "ملاحظة: التغييرات لن تصبح نافذة المفعول حتى تسجيل الدخول التالي."
-
-#: 
-msgid "Person to Make User"
-msgstr "شخص لجعل العضو"
-
-#: 
 msgid "User"
 msgstr "مستخدم"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "تحرير الذات"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(تحرير الأسرة الخاصة فقط.)"
-
-#: 
 msgid "Admin"
 msgstr "ادمن"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(منح جميع الامتيازات)."
-
-#: 
-msgid "Style"
-msgstr "أسلوب"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "تعيين إذن صحيح لإعطاء هذا المستخدم القدرة على تغيير قيمتها الحالية."
 
 #: 
 msgid "Last Login"
@@ -3174,10 +3150,6 @@ msgstr "بيانات / تقارير"
 #: 
 msgid "Query Menu"
 msgstr "القائمة الاستعلام"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV تصدير السجلات"
 
 #: 
 msgid "Family Properties"
@@ -6092,28 +6064,12 @@ msgid "open rate"
 msgstr "معدل مفتوح"
 
 #: 
-msgid "Login Info"
-msgstr "معلومات تسجيل الدخول"
-
-#: 
-msgid "Login Count"
-msgstr "حساب تسجيل الدخول"
-
-#: 
-msgid "Failed Login"
-msgstr "الدخول الفاشلة"
-
-#: 
 msgid "Permissions"
 msgstr "أذونات"
 
 #: 
 msgid "Manage Notes"
 msgstr "إدارة الملاحظات"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "فشل إنشاء مفتاح API جديد"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6185,14 +6141,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "مناسبات الزفاف اليوم"
 
 #: 
-msgid "Api Key"
-msgstr "مفتاح API"
-
-#: 
-msgid "Regen API Key"
-msgstr "مفتاح Regen API"
-
-#: 
 msgid "View Family Page"
 msgstr "عرض صفحة العائلة"
 
@@ -6207,34 +6155,6 @@ msgstr "تحقق"
 #: 
 msgid "Family has no emails to use"
 msgstr "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها"
-
-#: 
-msgid "Boxed Layout"
-msgstr "تخطيط محاصر"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "تنشيط التخطيط المعبأ"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "تبديل الشريط الجانبي"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "تبديل حالة الشريط الجانبي الأيسر (فتح أو تصغير)"
-
-#: 
-msgid "Tables Settings"
-msgstr "جدول الإعدادات"
-
-#: 
-msgid "Page length"
-msgstr "طول الصفحة"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "تغيير طول الصفحة البدائي (عدد الأسطر بكل صفحة)."
 
 #: 
 msgid "User Interface"
@@ -14619,4 +14539,334 @@ msgstr "فتح تصدير CSV"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "استعادة من صفحة النسخ الاحتياطي للنظام"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "يتوفر تحديث للنظام. يُرجى تحديث التثبيت."
+
+#: 
+msgid "API Access"
+msgstr "الوصول إلى واجهة برمجة التطبيقات"
+
+#: 
+msgid "API Key"
+msgstr "مفتاح واجهة برمجة التطبيقات"
+
+#: 
+msgid "API key regenerated"
+msgstr "تم إعادة توليد مفتاح واجهة برمجة التطبيقات"
+
+#: 
+msgid "Account"
+msgstr "الحساب"
+
+#: 
+msgid "Advanced Settings"
+msgstr "الإعدادات المتقدمة"
+
+#: 
+msgid "An error occurred."
+msgstr "حدث خطأ."
+
+#: 
+msgid "Appearance"
+msgstr "المظهر"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "العودة إلى لوحة المالية"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "العودة إلى لوحة المجموعات"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "العودة إلى لوحة المؤمنين"
+
+#: 
+msgid "Blue"
+msgstr "أزرق"
+
+#: 
+msgid "Change Photo"
+msgstr "تغيير الصورة"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "لن تسري التغييرات حتى تسجيل الدخول التالي."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "اختر بين نظام الألوان الفاتح والداكن"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "تتم إدارة ترجمات ChurchCRM من قِبل المجتمع على POEditor. يمكنك المساعدة بـ:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "تخصيص مظهر التطبيق وأسلوب عرضه"
+
+#: 
+msgid "Cyan"
+msgstr "سماوي"
+
+#: 
+msgid "Dark"
+msgstr "داكن"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "قاعدة البيانات فقط (.sql) أو الأرشيف الكامل (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "العدد الافتراضي للصفوف المعروضة في جداول البيانات. يسري عند تحميل الصفحة التالية."
+
+#: 
+msgid "Edit own family only"
+msgstr "تعديل العائلة الخاصة فقط"
+
+#: 
+msgid "Enter text here..."
+msgstr "أدخل النص هنا..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "فشل إلغاء التسجيل. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "فشل حذف الحدث. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "فشل تعطيل المصادقة الثنائية. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "فشل توليد رمز QR. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "فشل تحميل بيانات التقويم. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "فشل تحميل الحدث. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "فشل تحميل رموز الاسترداد. يُرجى تحديث الصفحة."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "فشل حفظ الحدث. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Failed to save setting"
+msgstr "فشل حفظ الإعداد"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "الفلبينية - الفلبين"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "تصحيح الترجمات الخاطئة أو غير الملائمة في لغتك"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "هل وجدت خطأً في الترجمات؟"
+
+#: 
+msgid "Grants all privileges"
+msgstr "منح جميع الصلاحيات"
+
+#: 
+msgid "Green"
+msgstr "أخضر"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "المساعدة في تحسين الترجمات"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "إذا لاحظت أحرفًا مشوهة، أو كيانات HTML تظهر كنص، أو ترجمات تُفسد تخطيط الصفحة، يُرجى الإبلاغ عن المشكلة على GitHub لتصحيحها للجميع."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "أدرج مفتاح واجهة برمجة التطبيقات في الطلبات باستخدام رأس x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "نيلي"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "قيمة JSON غير صالحة — لم يتم حفظ الإعداد. يُرجى تصحيحه والمحاولة مرة أخرى."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "انضم إلى مشروع الترجمة على POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "إعدادات اللغة والمنطقة"
+
+#: 
+msgid "Light"
+msgstr "فاتح"
+
+#: 
+msgid "Lime"
+msgstr "ليموني"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "المالايالامية - الهند"
+
+#: 
+msgid "Manage 2FA"
+msgstr "إدارة المصادقة الثنائية"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "إدارة التفضيلات الإضافية مثل محددات البريد الإلكتروني وخيارات العرض"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "إدارة مفتاح واجهة برمجة التطبيقات للتكاملات الخارجية"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "الطريقة غير مسموح بها"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "هل هناك ترجمات مفقودة أو غير صحيحة؟"
+
+#: 
+msgid "My Account"
+msgstr "حسابي"
+
+#: 
+msgid "Orange"
+msgstr "برتقالي"
+
+#: 
+msgid "Override the system default locale"
+msgstr "تجاوز اللغة الافتراضية للنظام"
+
+#: 
+msgid "Page Not Found"
+msgstr "الصفحة غير موجودة"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "نسبة النصوص المترجمة للغتك الحالية"
+
+#: 
+msgid "Pink"
+msgstr "وردي"
+
+#: 
+msgid "Primary Color"
+msgstr "اللون الأساسي"
+
+#: 
+msgid "Profile and security"
+msgstr "الملف الشخصي والأمان"
+
+#: 
+msgid "Purple"
+msgstr "بنفسجي"
+
+#: 
+msgid "Red"
+msgstr "أحمر"
+
+#: 
+msgid "Regenerate"
+msgstr "إعادة التوليد"
+
+#: 
+msgid "Rows per page"
+msgstr "صفوف لكل صفحة"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "اضبط الإذن على \"صحيح\" للسماح لهذا المستخدم بتغيير الإعداد بنفسه."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "تعيين لون التمييز المستخدم للأزرار والروابط والعناصر النشطة"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "اقتراح صياغة أفضل للترجمات الحالية"
+
+#: 
+msgid "System Update Available"
+msgstr "يتوفر تحديث للنظام"
+
+#: 
+msgid "Tables"
+msgstr "الجداول"
+
+#: 
+msgid "Teal"
+msgstr "أخضر مزرق"
+
+#: 
+msgid "Theme Mode"
+msgstr "وضع السمة"
+
+#: 
+msgid "Toggle search"
+msgstr "تبديل البحث"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "ترجمة النصوص المفقودة لتحسين التغطية"
+
+#: 
+msgid "Translation Progress"
+msgstr "تقدم الترجمة"
+
+#: 
+msgid "Usage"
+msgstr "الاستخدام"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "استخدم هذا المفتاح للمصادقة على طلبات واجهة برمجة التطبيقات. ستؤدي إعادة التوليد إلى إبطال المفتاح الحالي."
+
+#: 
+msgid "User Config"
+msgstr "إعدادات المستخدم"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "فشل التحقق. يُرجى المحاولة مرة أخرى."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "الإصدار %s متاح. يُرجى تحديث التثبيت."
+
+#: 
+msgid "View All"
+msgstr "عرض الكل"
+
+#: 
+msgid "Yellow"
+msgstr "أصفر"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "مستويات الوصول الحالية (للقراءة فقط)"
 

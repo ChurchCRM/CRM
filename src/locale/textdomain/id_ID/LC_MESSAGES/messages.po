@@ -2150,14 +2150,6 @@ msgid "User Editor"
 msgstr "Editor Pengguna"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Catatan: Perubahan tidak akan berlaku hingga masuk berikutnya."
-
-#: 
-msgid "Person to Make User"
-msgstr "Orang untuk Membuat Pengguna"
-
-#: 
 msgid "User"
 msgstr "Pengguna"
 
@@ -2198,24 +2190,8 @@ msgid "Edit Self"
 msgstr "Edit Diri"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit keluarga sendiri saja.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Berikan semua hak istimewa.)"
-
-#: 
-msgid "Style"
-msgstr "Gaya"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Tetapkan Izin Benar untuk memberi pengguna ini kemampuan untuk mengubah nilai mereka saat ini."
 
 #: 
 msgid "Last Login"
@@ -3177,10 +3153,6 @@ msgstr "Data / Laporan"
 #: 
 msgid "Query Menu"
 msgstr "Menu Permintaan"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Catatan Ekspor CSV"
 
 #: 
 msgid "Family Properties"
@@ -6085,28 +6057,12 @@ msgid "open rate"
 msgstr "Buka Kurs"
 
 #: 
-msgid "Login Info"
-msgstr "Info Masuk"
-
-#: 
-msgid "Login Count"
-msgstr "Jumlah Masuk"
-
-#: 
-msgid "Failed Login"
-msgstr "Gagal Masuk"
-
-#: 
 msgid "Permissions"
 msgstr "Izin"
 
 #: 
 msgid "Manage Notes"
 msgstr "Kelola Catatan"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Gagal membuat Kunci API baru"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6178,14 +6134,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Ulang Tahun Pernikahan Hari Ini"
 
 #: 
-msgid "Api Key"
-msgstr "Api Key"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regen API Key"
-
-#: 
 msgid "View Family Page"
 msgstr "Lihat Halaman Keluarga"
 
@@ -6200,34 +6148,6 @@ msgstr "Verifikasi"
 #: 
 msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Tampilan Kotak"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktifkan Tampilan Kotak"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Alihkan Sidebar"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Alihkan status sidebar kiri (terbuka atau tertutup)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Pengaturan Tabel"
-
-#: 
-msgid "Page length"
-msgstr "Panjang halaman"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ubah panjang halaman awal (jumlah baris per halaman)"
 
 #: 
 msgid "User Interface"
@@ -14551,4 +14471,329 @@ msgstr "Buka Ekspor CSV"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "Pulihkan dari halaman Cadangan Sistem"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Pembaruan sistem tersedia. Silakan perbarui instalasi Anda."
+
+#: 
+msgid "API Access"
+msgstr "Akses API"
+
+#: 
+msgid "API Key"
+msgstr "Kunci API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Kunci API telah diperbarui"
+
+#: 
+msgid "Account"
+msgstr "Akun"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Pengaturan Lanjutan"
+
+#: 
+msgid "An error occurred."
+msgstr "Terjadi kesalahan."
+
+#: 
+msgid "Appearance"
+msgstr "Tampilan"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Kembali ke Dasbor Keuangan"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Kembali ke Dasbor Kelompok"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Kembali ke Dasbor Jemaat"
+
+#: 
+msgid "Blue"
+msgstr "Biru"
+
+#: 
+msgid "Change Photo"
+msgstr "Ganti Foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Perubahan tidak akan berlaku hingga masuk berikutnya."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Pilih antara skema warna terang dan gelap"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Sesuaikan tampilan dan nuansa aplikasi"
+
+#: 
+msgid "Cyan"
+msgstr "Sian"
+
+#: 
+msgid "Dark"
+msgstr "Gelap"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Hanya basis data (.sql) atau arsip lengkap (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Jumlah baris default yang ditampilkan dalam tabel data. Berlaku pada pemuatan halaman berikutnya."
+
+#: 
+msgid "Edit own family only"
+msgstr "Edit keluarga sendiri saja"
+
+#: 
+msgid "Enter text here..."
+msgstr "Masukkan teks di sini..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Gagal membatalkan pendaftaran. Silakan coba lagi."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Gagal menghapus acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Gagal menonaktifkan autentikasi dua faktor. Silakan coba lagi."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Gagal membuat kode QR. Silakan coba lagi."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Gagal memuat data kalender. Silakan coba lagi."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Gagal memuat acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Gagal memuat kode pemulihan. Silakan segarkan halaman."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Gagal menyimpan acara. Silakan coba lagi."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Gagal menyimpan pengaturan"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filipina"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Memperbaiki terjemahan yang salah atau canggung dalam bahasa Anda"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Menemukan bug pada terjemahan?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Memberikan semua hak akses"
+
+#: 
+msgid "Green"
+msgstr "Hijau"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Bantu Tingkatkan Terjemahan"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Jika Anda menemukan karakter rusak, entitas HTML yang muncul sebagai teks, atau terjemahan yang merusak tata letak halaman, laporkan masalah ini di GitHub agar dapat diperbaiki untuk semua orang."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Sertakan kunci API Anda dalam permintaan menggunakan header x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Nila"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Bergabunglah dengan Proyek Terjemahan di POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Pengaturan bahasa dan regional"
+
+#: 
+msgid "Light"
+msgstr "Terang"
+
+#: 
+msgid "Lime"
+msgstr "Hijau Muda"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Kelola 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Kelola preferensi tambahan seperti pembatas email dan opsi tampilan"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Kelola kunci API Anda untuk integrasi eksternal"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metode Tidak Diizinkan"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Terjemahan yang hilang atau salah?"
+
+#: 
+msgid "My Account"
+msgstr "Akun Saya"
+
+#: 
+msgid "Orange"
+msgstr "Oranye"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Timpa pengaturan lokal sistem default"
+
+#: 
+msgid "Page Not Found"
+msgstr "Halaman Tidak Ditemukan"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Persentase string yang diterjemahkan untuk bahasa Anda saat ini"
+
+#: 
+msgid "Pink"
+msgstr "Merah Muda"
+
+#: 
+msgid "Primary Color"
+msgstr "Warna Utama"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil dan keamanan"
+
+#: 
+msgid "Purple"
+msgstr "Ungu"
+
+#: 
+msgid "Red"
+msgstr "Merah"
+
+#: 
+msgid "Regenerate"
+msgstr "Perbarui"
+
+#: 
+msgid "Rows per page"
+msgstr "Baris per halaman"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Atur Izin ke True untuk memungkinkan pengguna ini mengubah pengaturan sendiri."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Atur warna aksen yang digunakan untuk tombol, tautan, dan elemen aktif"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Menyarankan susunan kata yang lebih baik untuk terjemahan yang ada"
+
+#: 
+msgid "System Update Available"
+msgstr "Pembaruan Sistem Tersedia"
+
+#: 
+msgid "Tables"
+msgstr "Tabel"
+
+#: 
+msgid "Teal"
+msgstr "Hijau Teal"
+
+#: 
+msgid "Theme Mode"
+msgstr "Mode Tema"
+
+#: 
+msgid "Toggle search"
+msgstr "Aktifkan/Nonaktifkan pencarian"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Menerjemahkan string yang hilang untuk meningkatkan cakupan"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progres Terjemahan"
+
+#: 
+msgid "Usage"
+msgstr "Penggunaan"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gunakan kunci ini untuk mengautentikasi permintaan API. Memperbarui akan membatalkan kunci saat ini."
+
+#: 
+msgid "User Config"
+msgstr "Konfigurasi Pengguna"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifikasi gagal. Silakan coba lagi."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versi %s tersedia. Silakan perbarui instalasi Anda."
+
+#: 
+msgid "View All"
+msgstr "Lihat Semua"
+
+#: 
+msgid "Yellow"
+msgstr "Kuning"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Tingkat akses Anda saat ini (hanya baca)"
 

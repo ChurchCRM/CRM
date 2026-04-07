@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "עורך משתמשים"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "הערה: השינויים יכנסו לתוקף בכניסה הבאה למערכת"
-
-#: 
-msgid "Person to Make User"
-msgstr "אדם להפוך למשתמש"
-
-#: 
 msgid "User"
 msgstr "משתמש"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "ערוך את עצמך"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(ערוך משפחה עצמית בלבד)"
-
-#: 
 msgid "Admin"
 msgstr "מנהל"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(מעניק את כל ההרשאות)"
-
-#: 
-msgid "Style"
-msgstr "סגנון"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "הגדר הרשאה כ'אמת' כדי לאפשר למשתמש זה לשנות את הערך הנוכחי שלו."
 
 #: 
 msgid "Last Login"
@@ -3172,10 +3148,6 @@ msgstr "נתונים/דוחות"
 #: 
 msgid "Query Menu"
 msgstr "תפריט שאילתות"
-
-#: 
-msgid "CSV Export Records"
-msgstr "רשומות ייצוא CSV"
 
 #: 
 msgid "Family Properties"
@@ -6089,28 +6061,12 @@ msgid "open rate"
 msgstr "שיעור פתיחה"
 
 #: 
-msgid "Login Info"
-msgstr "פרטי התחברות"
-
-#: 
-msgid "Login Count"
-msgstr "מספר התחברויות"
-
-#: 
-msgid "Failed Login"
-msgstr "כניסה נכשלה"
-
-#: 
 msgid "Permissions"
 msgstr "הרשאות"
 
 #: 
 msgid "Manage Notes"
 msgstr "נהל הערות"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "נכשלה יצירת מפתח API חדש"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6182,14 +6138,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "יום השנה לנישואים היום"
 
 #: 
-msgid "Api Key"
-msgstr "מפתח API"
-
-#: 
-msgid "Regen API Key"
-msgstr "יצירה מחדש של מפתח API"
-
-#: 
 msgid "View Family Page"
 msgstr "צפה בדף משפחה"
 
@@ -6204,34 +6152,6 @@ msgstr "אמת"
 #: 
 msgid "Family has no emails to use"
 msgstr "אין כתובת דוא\"ל לשימוש"
-
-#: 
-msgid "Boxed Layout"
-msgstr "פריסה בקופסה"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "הפעל את הפריסה המסומנת"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "הפעלה/כיבוי סרגל צד"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "החלף את מצב סרגל הצד השמאלי (פתוח או מכווץ)"
-
-#: 
-msgid "Tables Settings"
-msgstr "הגדרות של טבלאות"
-
-#: 
-msgid "Page length"
-msgstr "אורך העמוד"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "שינוי מספר השורות בעמוד"
 
 #: 
 msgid "User Interface"

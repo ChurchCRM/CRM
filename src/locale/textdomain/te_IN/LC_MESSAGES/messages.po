@@ -2138,14 +2138,6 @@ msgid "User Editor"
 msgstr "వినియోగదారు ఎడిటర్"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "గమనిక: మార్పులు తదుపరి లాగిన్ వరకు అమలులోకి రావు."
-
-#: 
-msgid "Person to Make User"
-msgstr "వినియోగదారుగా చేయవలసిన వ్యక్తి"
-
-#: 
 msgid "User"
 msgstr "వినియోగదారు"
 
@@ -2186,24 +2178,8 @@ msgid "Edit Self"
 msgstr "స్వయంగా సవరించండి"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(సొంత కుటుంబాన్ని మాత్రమే సవరించండి.)"
-
-#: 
 msgid "Admin"
 msgstr "అడ్మిన్"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(అన్ని అధికారాలను మంజూరు చేస్తుంది.)"
-
-#: 
-msgid "Style"
-msgstr "శైలి"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "ఈ వినియోగదారుకు వారి ప్రస్తుత విలువను మార్చే సామర్థ్యాన్ని ఇవ్వడానికి అనుమతిని ట్రూ చేయండి."
 
 #: 
 msgid "Last Login"
@@ -3157,10 +3133,6 @@ msgstr "డేటా/నివేదికలు"
 #: 
 msgid "Query Menu"
 msgstr "క్వరీ మెనూ"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV ఎగుమతి రికార్డులు"
 
 #: 
 msgid "Family Properties"
@@ -6062,28 +6034,12 @@ msgid "open rate"
 msgstr "ఓపెన్ రేటు"
 
 #: 
-msgid "Login Info"
-msgstr "లాగిన్ సమాచారం"
-
-#: 
-msgid "Login Count"
-msgstr "లాగిన్ కౌంట్"
-
-#: 
-msgid "Failed Login"
-msgstr "లాగిన్ విఫలమైంది"
-
-#: 
 msgid "Permissions"
 msgstr "అనుమతులు"
 
 #: 
 msgid "Manage Notes"
 msgstr "నోట్స్ నిర్వహించు"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "కొత్త API కీని రూపొందించడంలో విఫలమైంది"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6155,14 +6111,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "ఈరోజు వివాహ వార్షికోత్సవాలు"
 
 #: 
-msgid "Api Key"
-msgstr "API కీ"
-
-#: 
-msgid "Regen API Key"
-msgstr "API కీని పునరుత్పత్తి చేయండి"
-
-#: 
 msgid "View Family Page"
 msgstr "కుటుంబ పేజీని వీక్షించండి"
 
@@ -6177,34 +6125,6 @@ msgstr "ధృవీకరించండి"
 #: 
 msgid "Family has no emails to use"
 msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
-
-#: 
-msgid "Boxed Layout"
-msgstr "బాక్స్డ్ లేఅవుట్"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "బాక్స్డ్ లేఅవుట్‌ను సక్రియం చేయండి"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "సైడ్‌బార్‌ను టోగుల్ చేయండి"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "ఎడమ సైడ్‌బార్ స్థితిని టోగుల్ చేయండి (తెరవండి లేదా కుదించండి)"
-
-#: 
-msgid "Tables Settings"
-msgstr "టేబుల్స్ సెట్టింగులు"
-
-#: 
-msgid "Page length"
-msgstr "పేజీ పొడవు"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "ప్రారంభ పేజీ పొడవును మార్చండి (పేజీకి అడ్డు వరుసల సంఖ్య)"
 
 #: 
 msgid "User Interface"
@@ -14470,4 +14390,421 @@ msgstr "ఫైల్ పరిమాణం సర్వర్ పరిమిత
 #: 
 msgid "Missing image data in request"
 msgstr "అభ్యర్థనలో చిత్ర డేటా లేదు"
+
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "ఒక కార్యక్రమానికి హాజరు కాని వ్యక్తులను కనుగొనండి"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "తప్పిపోయిన సభ్యులు"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "కావలసిన కార్యక్రమాన్ని ఎంచుకోండి"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "పరిచర్య, వర్గీకరణ మరియు పాత్ర ద్వారా అధునాతన వడపోత"
+
+#: 
+msgid "All congregation members included"
+msgstr "సంఘంలోని సభ్యులందరూ చేర్చబడ్డారు"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings ఎగుమతి విజయవంతంగా పూర్తయింది"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-అనుకూల నిలువు వరుస ఆకృతి"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "సంప్రదింపు సమాచారం, కుటుంబ పాత్రలు మరియు ముఖ్యమైన తేదీలు"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "మీ సంఘం డేటాబేస్ యొక్క పూర్తి బ్యాకప్ తయారు చేయండి. డేటాబేస్-మాత్రమే SQL ఫైల్ లేదా అప్‌లోడ్ చేసిన ఫోటోలతో సహా పూర్తి ఆర్కైవ్ డౌన్‌లోడ్ చేయండి."
+
+#: 
+msgid "Database Backup"
+msgstr "డేటాబేస్ బ్యాకప్"
+
+#: 
+msgid "Export"
+msgstr "ఎగుమతి"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "సంఘ డేటాను CSV ఆకృతిలో ఎగుమతి చేయండి. ఏ ఫీల్డ్‌లను చేర్చాలో ఎంచుకోండి మరియు వర్గీకరణ, పరిచర్య, లింగం మరియు మరిన్ని ద్వారా వడపోయండి."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "ChMeetings ఆశించే ఆకృతిలో అందరినీ ఎగుమతి చేయండి, మీ సంఘ డేటాను ChMeetings వేదికతో సమకాలీకరించడం సులభం చేయండి."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "మీ సంఘ డేటాను వివిధ ఆకృతులలో ఎగుమతి చేయండి"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "ప్లగిన్ ద్వారా బాహ్య (WebDAV) బ్యాకప్"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV ఎగుమతి విఫలమైంది"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "కుటుంబ లేదా వ్యక్తిగత రికార్డు అమరిక"
+
+#: 
+msgid "Flexible field selection"
+msgstr "సౌకర్యవంతమైన ఫీల్డ్ ఎంపిక"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "డేటాబేస్ బ్యాకప్‌కు వెళ్ళండి"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV ఎగుమతి తెరవండి"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "సిస్టమ్ బ్యాకప్ పేజీ నుండి పునరుద్ధరించండి"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "సిస్టమ్ అప్‌డేట్ అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి."
+
+#: 
+msgid "API Access"
+msgstr "API యాక్సెస్"
+
+#: 
+msgid "API Key"
+msgstr "API కీ"
+
+#: 
+msgid "API key regenerated"
+msgstr "API కీ పునర్జనించబడింది"
+
+#: 
+msgid "Account"
+msgstr "ఖాతా"
+
+#: 
+msgid "Advanced Settings"
+msgstr "అధునాతన సెట్టింగులు"
+
+#: 
+msgid "An error occurred."
+msgstr "లోపం సంభవించింది."
+
+#: 
+msgid "Appearance"
+msgstr "రూపం"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "ఆర్థిక డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "పరిచర్యల డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "సభ్యుల డాష్‌బోర్డ్‌కు తిరిగి వెళ్ళు"
+
+#: 
+msgid "Blue"
+msgstr "నీలం"
+
+#: 
+msgid "Change Photo"
+msgstr "ఫోటో మార్చండి"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "తదుపరి లాగిన్ వరకు మార్పులు అమలు కావు."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "లైట్ మరియు డార్క్ కలర్ స్కీమ్ మధ్య ఎంచుకోండి"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM అనువాదాలు POEditor లో సమాజం ద్వారా నిర్వహించబడతాయి. మీరు సహాయపడవచ్చు:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "అప్లికేషన్ రూపాన్ని మరియు అనుభవాన్ని అనుకూలీకరించండి"
+
+#: 
+msgid "Cyan"
+msgstr "సైయన్"
+
+#: 
+msgid "Dark"
+msgstr "డార్క్"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "డేటాబేస్-మాత్రమే (.sql) లేదా పూర్తి ఆర్కైవ్ (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "డేటా టేబుల్‌లలో చూపించే అడ్డు వరుసల డిఫాల్ట్ సంఖ్య. తదుపరి పేజీ లోడ్‌లో అమలు అవుతుంది."
+
+#: 
+msgid "Edit own family only"
+msgstr "స్వంత కుటుంబాన్ని మాత్రమే సవరించు"
+
+#: 
+msgid "Enter text here..."
+msgstr "ఇక్కడ వచనం నమోదు చేయండి..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "నమోదు రద్దు విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "కార్యక్రమాన్ని తొలగించడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "రెండు-కారకాల ప్రమాణీకరణను నిలిపివేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR కోడ్ జనరేట్ చేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "క్యాలెండర్ డేటా లోడ్ చేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "కార్యక్రమాన్ని లోడ్ చేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "రికవరీ కోడ్‌లు లోడ్ చేయడం విఫలమైంది. దయచేసి పేజీని రిఫ్రెష్ చేయండి."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "కార్యక్రమాన్ని సేవ్ చేయడం విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Failed to save setting"
+msgstr "సెట్టింగ్ సేవ్ చేయడం విఫలమైంది"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "ఫిలిపినో - ఫిలిప్పీన్స్"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "మీ భాషలో తప్పుడు లేదా అసౌకర్యమైన అనువాదాలను సరిదిద్దడం"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "అనువాదాలలో బగ్ కనుగొన్నారా?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "అన్ని అధికారాలు మంజూరు చేయడం"
+
+#: 
+msgid "Green"
+msgstr "ఆకుపచ్చ"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "అనువాదాలు మెరుగుపరచడంలో సహాయపడండి"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "మీరు గందరగోళ అక్షరాలు, వచనంగా కనిపించే HTML ఎంటిటీలు, లేదా పేజీ లేఅవుట్‌ను దెబ్బతీసే అనువాదాలు గమనిస్తే, దయచేసి GitHub లో సమస్యను నివేదించండి తద్వారా అందరికీ పరిష్కరించవచ్చు."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "x-api-key హెడర్ ఉపయోగించి అభ్యర్థనలలో మీ API కీని చేర్చండి:"
+
+#: 
+msgid "Indigo"
+msgstr "నీలిరంగు"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "చెల్లని JSON విలువ — సెట్టింగ్ సేవ్ చేయబడలేదు. దయచేసి దాన్ని సరిదిద్దండి మరియు మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "POEditor లో అనువాద ప్రాజెక్ట్‌లో చేరండి"
+
+#: 
+msgid "Language and regional settings"
+msgstr "భాష మరియు ప్రాంతీయ సెట్టింగులు"
+
+#: 
+msgid "Light"
+msgstr "లైట్"
+
+#: 
+msgid "Lime"
+msgstr "లైమ్"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "మలయాళం - భారతదేశం"
+
+#: 
+msgid "Manage 2FA"
+msgstr "2FA నిర్వహించండి"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "ఇమెయిల్ డిలిమిటర్లు మరియు ప్రదర్శన ఎంపికలు వంటి అదనపు ప్రాధాన్యతలను నిర్వహించండి"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "బాహ్య ఏకీకరణల కోసం మీ API కీని నిర్వహించండి"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "పద్ధతి అనుమతించబడలేదు"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "అనువాదాలు తప్పిపోయాయా లేదా తప్పుగా ఉన్నాయా?"
+
+#: 
+msgid "My Account"
+msgstr "నా ఖాతా"
+
+#: 
+msgid "Orange"
+msgstr "నారింజ రంగు"
+
+#: 
+msgid "Override the system default locale"
+msgstr "సిస్టమ్ డిఫాల్ట్ లొకేల్‌ను భర్తీ చేయండి"
+
+#: 
+msgid "Page Not Found"
+msgstr "పేజీ కనుగొనబడలేదు"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "మీ ప్రస్తుత భాషకు అనువదించిన స్ట్రింగుల శాతం"
+
+#: 
+msgid "Pink"
+msgstr "గులాబీ రంగు"
+
+#: 
+msgid "Primary Color"
+msgstr "ప్రాథమిక రంగు"
+
+#: 
+msgid "Profile and security"
+msgstr "ప్రొఫైల్ మరియు భద్రత"
+
+#: 
+msgid "Purple"
+msgstr "ఊదా రంగు"
+
+#: 
+msgid "Red"
+msgstr "ఎరుపు"
+
+#: 
+msgid "Regenerate"
+msgstr "పునర్జనించు"
+
+#: 
+msgid "Rows per page"
+msgstr "పేజీకి అడ్డు వరుసలు"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "ఈ వినియోగదారు స్వయంగా సెట్టింగ్ మార్చడానికి అనుమతించడానికి అనుమతిని True కు సెట్ చేయండి."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "బటన్లు, లింక్‌లు మరియు క్రియాశీల అంశాలకు ఉపయోగించే యాక్సెంట్ రంగు సెట్ చేయండి"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "ప్రస్తుత అనువాదాలకు మెరుగైన పదప్రయోగం సూచించడం"
+
+#: 
+msgid "System Update Available"
+msgstr "సిస్టమ్ అప్‌డేట్ అందుబాటులో ఉంది"
+
+#: 
+msgid "Tables"
+msgstr "పట్టికలు"
+
+#: 
+msgid "Teal"
+msgstr "టీల్ రంగు"
+
+#: 
+msgid "Theme Mode"
+msgstr "థీమ్ మోడ్"
+
+#: 
+msgid "Toggle search"
+msgstr "శోధనను టోగుల్ చేయండి"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "కవరేజ్ మెరుగుపరచడానికి తప్పిపోయిన స్ట్రింగులను అనువదించడం"
+
+#: 
+msgid "Translation Progress"
+msgstr "అనువాద పురోగతి"
+
+#: 
+msgid "Usage"
+msgstr "వినియోగం"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "API అభ్యర్థనలను ప్రమాణీకరించడానికి ఈ కీని ఉపయోగించండి. పునర్జనించడం ప్రస్తుత కీని చెల్లకుండా చేస్తుంది."
+
+#: 
+msgid "User Config"
+msgstr "వినియోగదారు కాన్ఫిగ్"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "ధృవీకరణ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "వెర్షన్ %s అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి."
+
+#: 
+msgid "View All"
+msgstr "అన్నీ చూడండి"
+
+#: 
+msgid "Yellow"
+msgstr "పసుపు రంగు"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "మీ ప్రస్తుత యాక్సెస్ స్థాయిలు (చదవడం మాత్రమే)"
 

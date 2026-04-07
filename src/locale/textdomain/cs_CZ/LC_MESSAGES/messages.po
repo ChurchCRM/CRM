@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "Editor uživatelů"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Poznámka: Změny se projeví při dalším přihlášení."
-
-#: 
-msgid "Person to Make User"
-msgstr "Osoba, která se má stát uživatelem"
-
-#: 
 msgid "User"
 msgstr "Uživatel"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "Upravovat sám sebe"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Upravovat pouze svou rodinu.)"
-
-#: 
 msgid "Admin"
 msgstr "Správce"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Udělit všechna práva.)"
-
-#: 
-msgid "Style"
-msgstr "Styl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Nastavte oprávnění na True, abyste tomuto uživateli umožnili změnit jejich aktuální hodnotu."
 
 #: 
 msgid "Last Login"
@@ -3171,10 +3147,6 @@ msgstr "Data/Sestavy"
 #: 
 msgid "Query Menu"
 msgstr "Nabídka dotazů"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Export do CSV"
 
 #: 
 msgid "Family Properties"
@@ -6080,28 +6052,12 @@ msgid "open rate"
 msgstr "míra otevření"
 
 #: 
-msgid "Login Info"
-msgstr "Info o přihlášení"
-
-#: 
-msgid "Login Count"
-msgstr "Počet přihlášení"
-
-#: 
-msgid "Failed Login"
-msgstr "Neúspěšné přihlášení"
-
-#: 
 msgid "Permissions"
 msgstr "Oprávnění"
 
 #: 
 msgid "Manage Notes"
 msgstr "Spravovat poznámky"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Nepodařilo se vygenerovat nový klíč API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6173,14 +6129,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Dnešní výročí svatby"
 
 #: 
-msgid "Api Key"
-msgstr "Klíč API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Znovu generovat klíč API"
-
-#: 
 msgid "View Family Page"
 msgstr "Zobrazit stránku rodiny"
 
@@ -6195,34 +6143,6 @@ msgstr "Ověřit"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodina nemá zadán e-mail"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Čtvercové rozhraní"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivovat čtvercové rozhraní"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Přepnout boční panel"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Přepnout stav bočního panelu (otevřený nebo skrytý)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Nastavení tabulek"
-
-#: 
-msgid "Page length"
-msgstr "Délka stránky"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Změna výchozí délky stránky (počtu řádků na stránku)"
 
 #: 
 msgid "User Interface"

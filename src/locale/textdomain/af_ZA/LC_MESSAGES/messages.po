@@ -2149,14 +2149,6 @@ msgid "User Editor"
 msgstr "Gebruikersredakteur"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Opmerking: veranderinge tree eers in werking op die volgende aanmelding."
-
-#: 
-msgid "Person to Make User"
-msgstr "Persoon om gebruiker te maak"
-
-#: 
 msgid "User"
 msgstr "Gebruiker"
 
@@ -2197,24 +2189,8 @@ msgid "Edit Self"
 msgstr "Wysig self"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Wysig slegs eie gesin.)"
-
-#: 
 msgid "Admin"
 msgstr "admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Verleen alle voorregte.)"
-
-#: 
-msgid "Style"
-msgstr "Styl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Stel toestemming waar om hierdie gebruiker die moontlikheid te gee om hul huidige waarde te verander."
 
 #: 
 msgid "Last Login"
@@ -3176,10 +3152,6 @@ msgstr "Data / verslae"
 #: 
 msgid "Query Menu"
 msgstr "Navraag-menu"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV-uitvoerrekords"
 
 #: 
 msgid "Family Properties"
@@ -6093,28 +6065,12 @@ msgid "open rate"
 msgstr "oop tarief"
 
 #: 
-msgid "Login Info"
-msgstr "Inteken informasie"
-
-#: 
-msgid "Login Count"
-msgstr "Inteken getal"
-
-#: 
-msgid "Failed Login"
-msgstr "Mislukte inteken"
-
-#: 
 msgid "Permissions"
 msgstr "Toestemming"
 
 #: 
 msgid "Manage Notes"
 msgstr "Bestuur notas"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Kon nie 'n nuwe API-sleutel genereer nie"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6186,14 +6142,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Vandag se Huweliksherdenkings"
 
 #: 
-msgid "Api Key"
-msgstr "API-sleutel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Hergenereer API-sleutel"
-
-#: 
 msgid "View Family Page"
 msgstr "Sien familiebladsy"
 
@@ -6208,34 +6156,6 @@ msgstr "Verifieer"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gesin het geen e-posse om te gebruik nie"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Boksuitleg"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktiveer die boksuitleg"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Wissel Sybalk"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Wissel die linker kantbalk se toestand (oop of invou)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabelle-instellings"
-
-#: 
-msgid "Page length"
-msgstr "Bladsy lengte"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Verander die aanvanklike bladsylengte (aantal rye per bladsy)"
 
 #: 
 msgid "User Interface"

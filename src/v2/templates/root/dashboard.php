@@ -8,7 +8,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 <!-- Stat Cards Row -->
 <div class="row mb-3">
-    <div class="col-sm-6 col-lg">
+    <div class="col-6 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -25,7 +25,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg">
+    <div class="col-6 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -42,7 +42,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg">
+    <div class="col-6 col-lg">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -59,7 +59,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg">
+    <div class="col-6 col-lg">
         <div class="card card-sm<?= $sundaySchoolEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-sm-6 col-lg">
+    <div class="col-6 col-lg">
         <div class="card card-sm<?= $eventsEnabled ? '' : ' opacity-50' ?>">
             <div class="card-body">
                 <div class="row align-items-center">

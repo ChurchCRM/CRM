@@ -2149,14 +2149,6 @@ msgid "User Editor"
 msgstr "Kasutaja muutja"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Märkus. Muudatused ei jõustu enne järgmist sisselogimist."
-
-#: 
-msgid "Person to Make User"
-msgstr "Kasutajaks muutmise isik"
-
-#: 
 msgid "User"
 msgstr "Kasutaja"
 
@@ -2197,24 +2189,8 @@ msgid "Edit Self"
 msgstr "Redigeeri iseennast"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Redigeeri ainult oma perekonda.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Annab kõik privileegid.)"
-
-#: 
-msgid "Style"
-msgstr "Stiil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Määrake luba True, et anda sellele kasutajale võimalus muuta oma praegust väärtust."
 
 #: 
 msgid "Last Login"
@@ -3175,10 +3151,6 @@ msgstr "Andmed / aruanded"
 #: 
 msgid "Query Menu"
 msgstr "Päringumenüü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV ekspordikirjed"
 
 #: 
 msgid "Family Properties"
@@ -6092,28 +6064,12 @@ msgid "open rate"
 msgstr "avatud määr"
 
 #: 
-msgid "Login Info"
-msgstr "Sisselogimisinfo"
-
-#: 
-msgid "Login Count"
-msgstr "Sisselogimiste arv"
-
-#: 
-msgid "Failed Login"
-msgstr "Ebaõnnestunud sisselogimine"
-
-#: 
 msgid "Permissions"
 msgstr "Õigused"
 
 #: 
 msgid "Manage Notes"
 msgstr "Halda märkmeid"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Uue API-võtme loomine ebaõnnestus"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6185,14 +6141,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Täna on pulmaaastapäev"
 
 #: 
-msgid "Api Key"
-msgstr "Api võti"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenereeri API võti"
-
-#: 
 msgid "View Family Page"
 msgstr "Vaata perelehte"
 
@@ -6207,34 +6155,6 @@ msgstr "Kinnitage"
 #: 
 msgid "Family has no emails to use"
 msgstr "Perel pole kasutada e-kirju"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Kastiga paigutus"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktiveerige kastiga paigutus"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Külgriba sisse- ja väljalülitamine"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Vasaku külgriba oleku sisse- ja väljalülitamine (avatud või ahendatud)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabelite seaded"
-
-#: 
-msgid "Page length"
-msgstr "Lehekülje pikkus"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Muutke algset lehe pikkust (ridade arv lehel)"
 
 #: 
 msgid "User Interface"

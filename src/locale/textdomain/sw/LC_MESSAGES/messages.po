@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "Mhariri wa Mtumiaji"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Kumbuka: Mabadiliko hayatafanya kazi hadi nembo inayofuata."
-
-#: 
-msgid "Person to Make User"
-msgstr "Mtu wa Kufanya Mtumiaji"
-
-#: 
 msgid "User"
 msgstr "Mtumiaji"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "Hariri Binafsi"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Hariri familia yako pekee.)"
-
-#: 
 msgid "Admin"
 msgstr "Msimamizi"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Hutoa mapendeleo yote.)"
-
-#: 
-msgid "Style"
-msgstr "Mtindo"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Weka Ruhusa kuwa Kweli ili kumpa mtumiaji huyu uwezo wa kubadilisha thamani yake ya sasa."
 
 #: 
 msgid "Last Login"
@@ -3172,10 +3148,6 @@ msgstr "Data/Ripoti"
 #: 
 msgid "Query Menu"
 msgstr "Menyu ya Maswali"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Rekodi za Usafirishaji wa CSV"
 
 #: 
 msgid "Family Properties"
@@ -6087,28 +6059,12 @@ msgid "open rate"
 msgstr "kiwango cha wazi"
 
 #: 
-msgid "Login Info"
-msgstr "Ingia Info"
-
-#: 
-msgid "Login Count"
-msgstr "Hesabu ya Kuingia"
-
-#: 
-msgid "Failed Login"
-msgstr "Imeshindwa Kuingia"
-
-#: 
 msgid "Permissions"
 msgstr "Ruhusa"
 
 #: 
 msgid "Manage Notes"
 msgstr "Dhibiti Vidokezo"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Imeshindwa kuzalisha Ufunguo mpya wa API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6180,14 +6136,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Maadhimisho ya Harusi ya Leo"
 
 #: 
-msgid "Api Key"
-msgstr "Ufunguo wa Api"
-
-#: 
-msgid "Regen API Key"
-msgstr "Ufunguo wa API ya Regen"
-
-#: 
 msgid "View Family Page"
 msgstr "Tazama Ukurasa wa Familia"
 
@@ -6202,34 +6150,6 @@ msgstr "Thibitisha"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia haina barua pepe za kutumia"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Mpangilio wa Sanduku"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Amilisha mpangilio wa sanduku"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Geuza Upau wa kando"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Geuza hali ya utepe wa kushoto (fungua au ukunje)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Mipangilio ya Majedwali"
-
-#: 
-msgid "Page length"
-msgstr "Urefu wa ukurasa"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Badilisha urefu wa ukurasa wa mwanzo (idadi ya safu kwa kila ukurasa)"
 
 #: 
 msgid "User Interface"
@@ -14582,4 +14502,325 @@ msgstr "Fungua Uhamishaji wa CSV"
 #: 
 msgid "Restore from the System Backup page"
 msgstr "Rejesha kutoka ukurasa wa Nakala ya Mfumo"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Sasisho la mfumo linapatikana. Tafadhali sasisha usakinishaji wako."
+
+#: 
+msgid "API Access"
+msgstr "Ufikiaji wa API"
+
+#: 
+msgid "API Key"
+msgstr "Ufunguo wa API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Ufunguo wa API umezalishwa upya"
+
+#: 
+msgid "Account"
+msgstr "Akaunti"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Mipangilio ya Hali ya Juu"
+
+#: 
+msgid "An error occurred."
+msgstr "Hitilafu imetokea."
+
+#: 
+msgid "Appearance"
+msgstr "Mwonekano"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Fedha"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Vikundi"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Rudi kwenye Dashibodi ya Watu"
+
+#: 
+msgid "Blue"
+msgstr "Buluu"
+
+#: 
+msgid "Change Photo"
+msgstr "Badilisha Picha"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Mabadiliko hayatafanya kazi hadi kuingia tena."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Chagua kati ya mpango wa rangi nyepesi au nyeusi"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Tafsiri za ChurchCRM zinasimamiwa na jamii kwenye POEditor. Unaweza kusaidia kwa:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Badilisha muonekano na hisia ya programu"
+
+#: 
+msgid "Cyan"
+msgstr "Siani"
+
+#: 
+msgid "Dark"
+msgstr "Giza"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Hifadhidata peke yake (.sql) au kumbukumbu kamili (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Idadi ya kawaida ya safu zinazoonyeshwa kwenye jedwali la data. Itafanya kazi ukurasa ujao unapopakiwa."
+
+#: 
+msgid "Edit own family only"
+msgstr "Hariri familia yako peke yako"
+
+#: 
+msgid "Enter text here..."
+msgstr "Ingiza maandishi hapa..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Imeshindwa kufuta usajili. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Imeshindwa kufuta tukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Imeshindwa kuzima uthibitishaji wa hatua mbili. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Imeshindwa kutoa nambari ya QR. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Imeshindwa kupakia data ya kalenda. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Imeshindwa kupakia tukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Imeshindwa kupakia nambari za uokoaji. Tafadhali onyesha upya ukurasa."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Imeshindwa kuhifadhi tukio. Tafadhali jaribu tena."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Imeshindwa kuhifadhi mipangilio"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Ufilipino"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Kurekebisha tafsiri zisizo sahihi au ngumu katika lugha yako"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Umegundua hitilafu katika tafsiri?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Inakupa mamlaka yote"
+
+#: 
+msgid "Green"
+msgstr "Kijani"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Saidia Kuboresha Tafsiri"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Ikiwa unaona herufi zilizopotoka, vipengele vya HTML vinavyoonekana kama maandishi, au tafsiri zinazovunja muundo wa ukurasa, tafadhali ripoti tatizo hilo kwenye GitHub ili liweze kurekebishwa kwa wote."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Jumuisha ufunguo wako wa API katika maombi kwa kutumia kichwa cha x-api-key:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Thamani batili ya JSON — mipangilio haikuhifadhiwa. Tafadhali irekebisha na ujaribu tena."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Jiunge na Mradi wa Tafsiri kwenye POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Mipangilio ya lugha na eneo"
+
+#: 
+msgid "Light"
+msgstr "Nyepesi"
+
+#: 
+msgid "Lime"
+msgstr "Rangi ya Limao"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Simamia 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Simamia mapendeleo ya ziada kama vitenganishi vya barua pepe na chaguo za kuonyesha"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Simamia ufunguo wako wa API kwa muunganiko wa nje"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Njia Hairuhusiwi"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Tafsiri zinazokosekana au zisizo sahihi?"
+
+#: 
+msgid "My Account"
+msgstr "Akaunti Yangu"
+
+#: 
+msgid "Orange"
+msgstr "Rangi ya Chungwa"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Badilisha lugha ya msingi ya mfumo"
+
+#: 
+msgid "Page Not Found"
+msgstr "Ukurasa Haukupatikana"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Asilimia ya maneno yaliyotafsiriwa kwa lugha yako ya sasa"
+
+#: 
+msgid "Pink"
+msgstr "Waridi"
+
+#: 
+msgid "Primary Color"
+msgstr "Rangi Kuu"
+
+#: 
+msgid "Profile and security"
+msgstr "Wasifu na usalama"
+
+#: 
+msgid "Purple"
+msgstr "Zambarau"
+
+#: 
+msgid "Red"
+msgstr "Nyekundu"
+
+#: 
+msgid "Regenerate"
+msgstr "Zalisha upya"
+
+#: 
+msgid "Rows per page"
+msgstr "Safu kwa ukurasa"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Weka Ruhusa kuwa Kweli ili kumruhusu mtumiaji huyu kubadilisha mipangilio wenyewe."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Weka rangi ya msisitizo inayotumiwa kwa vitufe, viungo, na vipengele hai"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Kupendekeza maneno bora kwa tafsiri zilizopo"
+
+#: 
+msgid "System Update Available"
+msgstr "Sasisho la Mfumo Linapatikana"
+
+#: 
+msgid "Tables"
+msgstr "Majedwali"
+
+#: 
+msgid "Teal"
+msgstr "Bluu-kijani"
+
+#: 
+msgid "Theme Mode"
+msgstr "Hali ya Mandhari"
+
+#: 
+msgid "Toggle search"
+msgstr "Washa/Zima utafutaji"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Kutafsiri maneno yanayokosekana ili kuboresha usimamizi"
+
+#: 
+msgid "Translation Progress"
+msgstr "Maendeleo ya Tafsiri"
+
+#: 
+msgid "Usage"
+msgstr "Matumizi"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Tumia ufunguo huu kuthibitisha maombi ya API. Kuzalisha upya kutabatilisha ufunguo wa sasa."
+
+#: 
+msgid "User Config"
+msgstr "Usanidi wa Mtumiaji"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Uthibitishaji umeshindwa. Tafadhali jaribu tena."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Toleo %s linapatikana. Tafadhali sasisha usakinishaji wako."
+
+#: 
+msgid "View All"
+msgstr "Ona Yote"
+
+#: 
+msgid "Yellow"
+msgstr "Njano"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Viwango vyako vya ufikiaji vya sasa (kusoma tu)"
 

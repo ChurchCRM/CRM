@@ -25,11 +25,22 @@ require_once __DIR__ . '/Header-Security.php';
 $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
+// Resolve theme attributes from user settings
+$_themeUser = AuthenticationManager::getCurrentUser();
+$_themeAttrs = '';
+$_themeStyle = $_themeUser->getSettingValue('ui.style');
+if ($_themeStyle === 'dark') {
+    $_themeAttrs .= ' data-bs-theme="dark"';
+}
+$_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
+if ($_themePrimary !== '') {
+    $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
+}
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?>>
+<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -170,10 +181,10 @@ $MenuFirst = 1;
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
-             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
@@ -199,8 +210,10 @@ $MenuFirst = 1;
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
+              data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+              aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="<?= gettext('Toggle search') ?>">
+        <i class="ti ti-search"></i>
       </button>
 
       <!-- Right-side nav items -->
