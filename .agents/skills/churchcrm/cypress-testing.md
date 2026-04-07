@@ -432,6 +432,142 @@ cy.intercept("GET", "/api/people/properties/definition/*").as("getDef");
 
 **Note:** This does NOT apply to `cy.visit()` or `cy.request()` — those use `baseUrl` from config and handle the prefix automatically. Only `cy.intercept()` needs the `**` glob because it matches against the full request URL.
 
+## Preventing Flaky Tests (Timing & State) <!-- learned: 2026-04-07 -->
+
+Flaky tests almost always come from one of four root causes. Each has a mandatory fix pattern.
+
+---
+
+### 1. `cy.intercept()` Must Be Registered BEFORE the Triggering Action
+
+`cy.intercept()` only captures requests that fire **after** it is registered. If you register it after the action (even a line after), the network call may already be in flight and the alias never resolves — `cy.wait()` hangs until timeout.
+
+**Rule:** Place all `cy.intercept()` calls **before `cy.visit()`**, or at minimum before the element interaction that sends the request.
+
+```javascript
+// ✅ CORRECT — intercept registered before the interaction
+it("Can change table page length", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").select("50");
+    cy.wait("@saveTableSize");
+});
+
+// ❌ WRONG — intercept registered after click; request may have already fired
+it("Can change table page length", () => {
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize"); // too late
+    cy.get("#tablePageLength").select("50");
+    cy.wait("@saveTableSize"); // TIMEOUT — alias was never matched
+});
+```
+
+---
+
+### 2. Always `cy.wait()` for API Calls That Mutate Server State
+
+Any test that changes server state (POST, PUT, PATCH, DELETE) **must** wait for the call to complete before ending. If it doesn't, the mutation may be in-flight when the next test starts, corrupting shared state in the test DB.
+
+This applies even when the test doesn't verify persistence — waiting prevents cross-test state pollution.
+
+```javascript
+// ✅ CORRECT — wait ensures state is committed before test ends
+it("Can toggle dark mode", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.style").as("saveStyle");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+
+    cy.get("#themeModeDark").check({ force: true });
+    cy.wait("@saveStyle");
+
+    // Reset — also wait so the next test starts with clean state
+    cy.intercept("POST", "**/api/user/*/setting/ui.style").as("resetStyle");
+    cy.get("#themeModeLight").check({ force: true });
+    cy.wait("@resetStyle");
+});
+
+// ❌ WRONG — test ends with an in-flight POST; next test may see stale or dirty state
+it("Can toggle dark mode", () => {
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#themeModeDark").check({ force: true }); // fires POST, never awaited
+    cy.get("#themeModeLight").check({ force: true }); // fires POST, never awaited
+});
+```
+
+---
+
+### 3. Selecting the Current Value Does Not Fire a `change` Event
+
+`<select>` elements only emit `change` when the selected option actually changes. If a previous failed run left the element at `"50"` and the test selects `"50"` again, no event fires — so no API call is made — and `cy.wait("@alias")` times out.
+
+**Rule:** Before selecting a new value, always force a known starting value that differs from the target.
+
+```javascript
+// ✅ CORRECT — always select a different baseline first (or reset via API beforehand)
+it("Can change table page length", () => {
+    // Reset to known baseline (10) before the test selects 50
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("resetSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").then(($sel) => {
+        if ($sel.val() !== "10") {
+            cy.wrap($sel).select("10");
+            cy.wait("@resetSize");
+        }
+    });
+
+    // Now safely select 50 — guaranteed to be a change
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveSize");
+    cy.wrap($sel).select("50");   // ← or re-query #tablePageLength
+    cy.wait("@saveSize");
+});
+
+// ❌ WRONG — if DB already holds "50" from a previous failed run, no change event fires
+it("Can change table page length", () => {
+    cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize");
+    cy.visit("/v2/user/3");
+    cy.get('#settingsNav a[href="#tab-appearance"]').click();
+    cy.get("#tablePageLength").select("50"); // no-op if already "50"
+    cy.wait("@saveTableSize"); // TIMEOUT
+});
+```
+
+---
+
+### 4. `cy.contains()` Without a Scope Matches Sidebar Nav Text
+
+`cy.contains("Settings")` searches the entire DOM, including Tabler's collapsed sidebar nav links. It resolves on the first match — which may be a hidden nav item, not the page heading — making the assertion unreliable.
+
+**Rule:** Always scope `cy.contains()` to a stable container ID, or use a specific element tag.
+
+```javascript
+// ✅ CORRECT — scoped to the page heading element
+cy.get("h2.page-title").contains("Settings");
+
+// ✅ CORRECT — scoped to a known container
+cy.get("#page-content").contains("Settings");
+
+// ❌ WRONG — may match a sidebar nav link before the heading is rendered
+cy.contains("Settings");
+```
+
+---
+
+### Flakiness Prevention Checklist (for every new test that saves/loads state)
+
+Before marking a test complete, verify:
+
+- [ ] All `cy.intercept()` calls are placed **before** `cy.visit()` or the element interaction
+- [ ] Every state-mutating action (POST/PUT/DELETE) has a matching `cy.wait("@alias")`
+- [ ] Tests that reset a value after the assertion also `cy.wait()` on the reset call
+- [ ] `select()` tests ensure the starting value differs from the target value
+- [ ] `cy.contains()` is scoped to a container, not used globally
+
+---
+
 ## UI Test Best Practices
 
 ### Using Element IDs for Test Selectors

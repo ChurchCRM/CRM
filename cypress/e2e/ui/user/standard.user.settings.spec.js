@@ -5,7 +5,7 @@ describe("Standard User Settings Page", () => {
 
     it("Loads settings page with all tabs", () => {
         cy.visit("/v2/user/3");
-        cy.contains("Settings");
+        cy.get("h2.page-title").contains("Settings");
 
         cy.get('#settingsNav a[href="#tab-account"]').should("be.visible");
         cy.get('#settingsNav a[href="#tab-appearance"]').should("be.visible");
@@ -78,13 +78,17 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Can toggle dark mode and it applies live", () => {
+        cy.intercept("POST", "**/api/user/*/setting/ui.style").as("saveStyle");
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         cy.get("#themeModeDark").check({ force: true });
+        cy.wait("@saveStyle");
         cy.get("html").should("have.attr", "data-bs-theme", "dark");
 
+        cy.intercept("POST", "**/api/user/*/setting/ui.style").as("resetStyle");
         cy.get("#themeModeLight").check({ force: true });
+        cy.wait("@resetStyle");
         cy.get("html").should("not.have.attr", "data-bs-theme");
     });
 
@@ -117,10 +121,12 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Can select a primary color and it applies live", () => {
+        cy.intercept("POST", "**/api/user/*/setting/ui.theme.primary").as("saveColor");
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         cy.get('#primaryColorPicker .btn-color-swatch[data-color="purple"]').click();
+        cy.wait("@saveColor");
         cy.get("html").should("have.attr", "data-bs-theme-primary", "purple");
         cy.get('#primaryColorPicker .btn-color-swatch[data-color="purple"]').should(
             "have.class",
@@ -128,18 +134,27 @@ describe("Standard User Settings Page", () => {
         );
 
         // Reset to default
+        cy.intercept("POST", "**/api/user/*/setting/ui.theme.primary").as("resetColor");
         cy.get('#primaryColorPicker .btn-color-swatch[data-color=""]').click();
+        cy.wait("@resetColor");
         cy.get("html").should("not.have.attr", "data-bs-theme-primary");
     });
 
     it("Can change table page length", () => {
+        // Intercepts before cy.visit() so no request can be missed
+        cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("baselineSize");
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
-        // Intercept the settings API call so we can wait for it
-        cy.intercept("POST", "/api/user/*/setting/ui.table.size").as(
-            "saveTableSize",
-        );
+        // Ensure we start from "10" so selecting "50" always fires a change event
+        cy.get("#tablePageLength").then(($sel) => {
+            if ($sel.val() !== "10") {
+                cy.wrap($sel).select("10");
+                cy.wait("@baselineSize");
+            }
+        });
+
+        cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("saveTableSize");
         cy.get("#tablePageLength").select("50");
         cy.wait("@saveTableSize");
 
@@ -148,10 +163,8 @@ describe("Standard User Settings Page", () => {
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tablePageLength").should("have.value", "50");
 
-        // Reset
-        cy.intercept("POST", "/api/user/*/setting/ui.table.size").as(
-            "resetTableSize",
-        );
+        // Reset — must also wait so the next test starts from a clean state
+        cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("resetTableSize");
         cy.get("#tablePageLength").select("10");
         cy.wait("@resetTableSize");
     });
