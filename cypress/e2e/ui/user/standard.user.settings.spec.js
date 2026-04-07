@@ -88,6 +88,34 @@ describe("Standard User Settings Page", () => {
         cy.get("html").should("not.have.attr", "data-bs-theme");
     });
 
+    it("Persists dark mode selection after reload", () => {
+        cy.intercept("POST", "/api/user/*/setting/ui.style").as("saveStyle");
+
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+
+        // Switch to dark and wait for the API call to complete
+        cy.get("#themeModeDark").check({ force: true });
+        cy.wait("@saveStyle");
+
+        // Reload and verify dark is still selected
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+        cy.get("#themeModeDark").should("be.checked");
+        cy.get("#themeModeLight").should("not.be.checked");
+
+        // Reset to light and wait for save
+        cy.intercept("POST", "/api/user/*/setting/ui.style").as("resetStyle");
+        cy.get("#themeModeLight").check({ force: true });
+        cy.wait("@resetStyle");
+
+        // Reload and verify light is restored
+        cy.visit("/v2/user/3");
+        cy.get('#settingsNav a[href="#tab-appearance"]').click();
+        cy.get("#themeModeLight").should("be.checked");
+        cy.get("#themeModeDark").should("not.be.checked");
+    });
+
     it("Can select a primary color and it applies live", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
