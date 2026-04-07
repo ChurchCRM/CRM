@@ -2161,14 +2161,6 @@ msgid "User Editor"
 msgstr "Trình chỉnh sửa người dùng"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Lưu ý: Các thay đổi sẽ không có hiệu lực cho đến lần đăng nhập tiếp theo."
-
-#: 
-msgid "Person to Make User"
-msgstr "Người làm người dùng"
-
-#: 
 msgid "User"
 msgstr "Thành viên"
 
@@ -2209,24 +2201,8 @@ msgid "Edit Self"
 msgstr "Chỉnh sửa bản thân"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Chỉ chỉnh sửa gia đình riêng.)"
-
-#: 
 msgid "Admin"
 msgstr "Quản trị"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Cấp tất cả các đặc quyền.)"
-
-#: 
-msgid "Style"
-msgstr "Phong cách"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Thiết lập quyền đúng sẽ cho phép thành viên mới có khả năng thay đổi giá trị hiện tại của họ."
 
 #: 
 msgid "Last Login"
@@ -3188,10 +3164,6 @@ msgstr "Dữ liệu/Báo cáo"
 #: 
 msgid "Query Menu"
 msgstr "Menu truy vấn"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Xuất CSV"
 
 #: 
 msgid "Family Properties"
@@ -6096,28 +6068,12 @@ msgid "open rate"
 msgstr "tỉ lệ mở"
 
 #: 
-msgid "Login Info"
-msgstr "Thông tin đăng nhập"
-
-#: 
-msgid "Login Count"
-msgstr "Số lượt đăng nhập"
-
-#: 
-msgid "Failed Login"
-msgstr "Đăng nhập không thành công"
-
-#: 
 msgid "Permissions"
 msgstr "Quyền"
 
 #: 
 msgid "Manage Notes"
 msgstr "Quản lý ghi chú"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Không tạo được khóa API mới"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6189,14 +6145,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Ngày kỷ niệm đám cưới hôm nay"
 
 #: 
-msgid "Api Key"
-msgstr "Mã API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Khóa API Regen"
-
-#: 
 msgid "View Family Page"
 msgstr "Xem trang gia đình"
 
@@ -6211,34 +6159,6 @@ msgstr "Kiểm chứng"
 #: 
 msgid "Family has no emails to use"
 msgstr "Gia đình không có email nào để sử dụng"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Bố cục đóng hộp"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Kích hoạt bố cục đóng hộp"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Chuyển đổi thanh bên"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Chuyển đổi trạng thái của thanh bên trái (mở hoặc thu gọn)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Cài đặt bảng"
-
-#: 
-msgid "Page length"
-msgstr "Độ dài trang"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Thay đổi độ dài trang ban đầu (số hàng trên mỗi trang)"
 
 #: 
 msgid "User Interface"

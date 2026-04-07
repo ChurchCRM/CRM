@@ -2126,14 +2126,6 @@ msgid "User Editor"
 msgstr "Gebruikers"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Let op: Wijzigingen worden pas effectief na opnieuw inloggen."
-
-#: 
-msgid "Person to Make User"
-msgstr "Persoon die Gebruiker wordt"
-
-#: 
 msgid "User"
 msgstr "Gebruiker"
 
@@ -2174,24 +2166,8 @@ msgid "Edit Self"
 msgstr "Bewerk Eigen Gegevens"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Bewerk alleen uw eigen gezin)"
-
-#: 
 msgid "Admin"
 msgstr "Instellingen"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Geeft alle rechten.)"
-
-#: 
-msgid "Style"
-msgstr "Stijl"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Geef deze gebruiker de mogelijkheid te geven om zijn huidige gegevens te wijzigen."
 
 #: 
 msgid "Last Login"
@@ -3148,10 +3124,6 @@ msgstr "Data & prints"
 #: 
 msgid "Query Menu"
 msgstr "Rapporten"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV Export Records"
 
 #: 
 msgid "Family Properties"
@@ -6053,28 +6025,12 @@ msgid "open rate"
 msgstr "open ratio"
 
 #: 
-msgid "Login Info"
-msgstr "Login Info"
-
-#: 
-msgid "Login Count"
-msgstr "Aantal aanmeldingen"
-
-#: 
-msgid "Failed Login"
-msgstr "Inloggen mislukt"
-
-#: 
 msgid "Permissions"
 msgstr "Rechten"
 
 #: 
 msgid "Manage Notes"
 msgstr "Notities beheren"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Kan geen nieuwe API-sleutel genereren"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6146,14 +6102,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Huwelijksjubilea van vandaag"
 
 #: 
-msgid "Api Key"
-msgstr "API sleutel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Genereer API Key opnieuw"
-
-#: 
 msgid "View Family Page"
 msgstr "Familiepagina bekijken"
 
@@ -6168,34 +6116,6 @@ msgstr "Verifiëren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familie heeft geen e-mails om te gebruiken"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Layout blokken"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Activeer de blokken layout"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Schakel zijbalk in"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "De status van de linkerzijbalk wisselen (openen of samenvouwen)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellen Instellingen"
-
-#: 
-msgid "Page length"
-msgstr "Paginalengte"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Wijzig de initiële paginalengte (aantal rijen per pagina)"
 
 #: 
 msgid "User Interface"

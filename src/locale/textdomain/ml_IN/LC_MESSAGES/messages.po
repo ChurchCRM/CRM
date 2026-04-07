@@ -2118,14 +2118,6 @@ msgid "User Editor"
 msgstr "ഉപയോക്തൃ എഡിറ്റർ"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "കുറിപ്പ്: അടുത്ത ലോഗ്-ഇൻ വരെ മാറ്റങ്ങൾ ബാധകമാകില്ല."
-
-#: 
-msgid "Person to Make User"
-msgstr "ഉപയോക്താവ് ആക്കേണ്ട വ്യക്തി"
-
-#: 
 msgid "User"
 msgstr "ഉപയോക്താവ്"
 
@@ -2166,24 +2158,8 @@ msgid "Edit Self"
 msgstr "സ്വയം എഡിറ്റ് ചെയ്യുക"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(സ്വന്തം കുടുംബം മാത്രം എഡിറ്റ് ചെയ്യുക.)"
-
-#: 
 msgid "Admin"
 msgstr "അഡ്‌മിൻ"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(എല്ലാ അവകാശങ്ങളും നൽകുന്നു.)"
-
-#: 
-msgid "Style"
-msgstr "ശൈലി"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "ഈ ഉപയോക്താവിന് നിലവിലെ മൂല്യം മാറ്റാനുള്ള കഴിവ് നൽകാൻ അനുമതി ശരിയാക്കുക."
 
 #: 
 msgid "Last Login"
@@ -3133,10 +3109,6 @@ msgstr "ഡേറ്റ/റിപ്പോർട്ടുകൾ"
 #: 
 msgid "Query Menu"
 msgstr "ക്വറി മെനു"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV കയറ്റുമതി റെക്കോർഡുകൾ"
 
 #: 
 msgid "Family Properties"
@@ -5867,28 +5839,12 @@ msgid "open rate"
 msgstr "ഓപ്പൺ നിരക്ക്"
 
 #: 
-msgid "Login Info"
-msgstr "ലോഗിൻ വിവരം"
-
-#: 
-msgid "Login Count"
-msgstr "ലോഗിൻ എണ്ണം"
-
-#: 
-msgid "Failed Login"
-msgstr "പരാജയപ്പെട്ട ലോഗിൻ"
-
-#: 
 msgid "Permissions"
 msgstr "അനുമതികൾ"
 
 #: 
 msgid "Manage Notes"
 msgstr "കുറിപ്പുകൾ മാനേജ് ചെയ്യുക"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "പുതിയ API Key ഉണ്ടാക്കൽ പരാജയപ്പെട്ടു"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -5955,14 +5911,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "ഇന്നത്തെ വിവാഹ വാർഷികങ്ങൾ"
 
 #: 
-msgid "Api Key"
-msgstr "API Key"
-
-#: 
-msgid "Regen API Key"
-msgstr "API Key പുനരുൽപ്പാദിപ്പിക്കുക"
-
-#: 
 msgid "View Family Page"
 msgstr "കുടുംബ പേജ് കാണുക"
 
@@ -5977,34 +5925,6 @@ msgstr "സ്ഥിരീകരിക്കുക"
 #: 
 msgid "Family has no emails to use"
 msgstr "കുടുംബത്തിന് ഉപയോഗിക്കാൻ ഇമെയിൽ ഇല്ല"
-
-#: 
-msgid "Boxed Layout"
-msgstr "ബോക്‌സ്ഡ് ലേഔട്ട്"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "ബോക്‌സ്ഡ് ലേഔട്ട് സജീവമാക്കുക"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "സൈഡ്ബാർ ടോഗിൾ ചെയ്യുക"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "ഇടത് സൈഡ്ബാറിന്റെ സ്ഥിതി (തുറക്കുക അല്ലെങ്കിൽ ചുരുക്കുക) ടോഗിൾ ചെയ്യുക"
-
-#: 
-msgid "Tables Settings"
-msgstr "ടേബിൾ ക്രമീകരണങ്ങൾ"
-
-#: 
-msgid "Page length"
-msgstr "പേജ് ദൈർഘ്യം"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "ആദ്യ പേജ് ദൈർഘ്യം (പ്രതി പേജ് വരികളുടെ എണ്ണം) മാറ്റുക"
 
 #: 
 msgid "User Interface"

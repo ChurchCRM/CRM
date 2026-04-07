@@ -2129,14 +2129,6 @@ msgid "User Editor"
 msgstr "उपयोगकर्ता संपादक"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "नोट: परिवर्तन अगले लॉगिन तक प्रभावी नहीं होंगे।"
-
-#: 
-msgid "Person to Make User"
-msgstr "उपयोगकर्ता बनाने के लिए व्यक्ति"
-
-#: 
 msgid "User"
 msgstr "उपयोगकर्ता"
 
@@ -2177,24 +2169,8 @@ msgid "Edit Self"
 msgstr "स्वयं को संपादित करें"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(केवल अपने परिवार को संपादित करें।)"
-
-#: 
 msgid "Admin"
 msgstr "एडमिन"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(सभी विशेषाधिकार प्रदान करता है।)"
-
-#: 
-msgid "Style"
-msgstr "शैली"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "इस उपयोगकर्ता को अपना वर्तमान मान बदलने की क्षमता देने के लिए अनुमति को 'True' पर सेट करें।"
 
 #: 
 msgid "Last Login"
@@ -3148,10 +3124,6 @@ msgstr "डेटा/रिपोर्ट"
 #: 
 msgid "Query Menu"
 msgstr "क्वेरी मेनू"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV निर्यात रिकॉर्ड"
 
 #: 
 msgid "Family Properties"
@@ -6049,28 +6021,12 @@ msgid "open rate"
 msgstr "खुलने की दर"
 
 #: 
-msgid "Login Info"
-msgstr "लॉगिन जानकारी"
-
-#: 
-msgid "Login Count"
-msgstr "लॉगिन गणना"
-
-#: 
-msgid "Failed Login"
-msgstr "विफल लॉगिन"
-
-#: 
 msgid "Permissions"
 msgstr "अनुमतियां"
 
 #: 
 msgid "Manage Notes"
 msgstr "नोट्स प्रबंधित करें"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "नई API कुंजी जनरेट करने में विफल रहा।"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6142,14 +6098,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "आज की शादी की सालगिरहें"
 
 #: 
-msgid "Api Key"
-msgstr "एपीआई कुंजी"
-
-#: 
-msgid "Regen API Key"
-msgstr "एपीआई कुंजी पुनः उत्पन्न करें"
-
-#: 
 msgid "View Family Page"
 msgstr "परिवार पृष्ठ देखें"
 
@@ -6164,34 +6112,6 @@ msgstr "सत्यापित करें"
 #: 
 msgid "Family has no emails to use"
 msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
-
-#: 
-msgid "Boxed Layout"
-msgstr "बॉक्स्ड लेआउट"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "बॉक्स्ड लेआउट सक्रिय करें"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "साइडबार टॉगल करें"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "बाएँ साइडबार की स्थिति टॉगल करें (खोलें या संक्षिप्त करें)"
-
-#: 
-msgid "Tables Settings"
-msgstr "तालिका सेटिंग्स"
-
-#: 
-msgid "Page length"
-msgstr "पृष्ठ लंबाई"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "प्रारंभिक पृष्ठ लंबाई बदलें (प्रति पृष्ठ पंक्तियों की संख्या)"
 
 #: 
 msgid "User Interface"

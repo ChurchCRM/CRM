@@ -2156,14 +2156,6 @@ msgid "User Editor"
 msgstr "Modifica utente"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Nota: Le modifiche non avranno effetto fino al prossimo riavvio."
-
-#: 
-msgid "Person to Make User"
-msgstr "Persona da Rendere Utente"
-
-#: 
 msgid "User"
 msgstr "Utente"
 
@@ -2204,24 +2196,8 @@ msgid "Edit Self"
 msgstr "Modifica Te Stesso"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Modifica famiglia solo.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(garantisci tutti i privilegi.)"
-
-#: 
-msgid "Style"
-msgstr "Stile"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Imposta l'autorizzazione Vero per consentire a questo utente di modificare il valore corrente."
 
 #: 
 msgid "Last Login"
@@ -3187,10 +3163,6 @@ msgstr "Dati / Report"
 #: 
 msgid "Query Menu"
 msgstr "Menu di query"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Esportazione CSV"
 
 #: 
 msgid "Family Properties"
@@ -6113,28 +6085,12 @@ msgid "open rate"
 msgstr "tasso di apertura"
 
 #: 
-msgid "Login Info"
-msgstr "Informazioni di accesso"
-
-#: 
-msgid "Login Count"
-msgstr "Conteggio accessi"
-
-#: 
-msgid "Failed Login"
-msgstr "Accessi falliti"
-
-#: 
 msgid "Permissions"
 msgstr "Permessi"
 
 #: 
 msgid "Manage Notes"
 msgstr "Gestisci note"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Impossibile generare una nuova chiave API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6206,14 +6162,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Gli anniversari di matrimonio di oggi"
 
 #: 
-msgid "Api Key"
-msgstr "Chiave API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Chiave API di rigenerazione"
-
-#: 
 msgid "View Family Page"
 msgstr "Visualizza la pagina della famiglia"
 
@@ -6228,34 +6176,6 @@ msgstr "Verificare"
 #: 
 msgid "Family has no emails to use"
 msgstr "La famiglia non ha email da usare"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Layout in scatola"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Attiva il layout in scatola"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Attiva/disattiva barra laterale"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Attiva/disattiva lo stato della barra laterale sinistra (apri o comprimi)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Impostazioni tabelle"
-
-#: 
-msgid "Page length"
-msgstr "Lunghezza pagina"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Modificare la lunghezza della pagina iniziale (numero di righe per pagina)"
 
 #: 
 msgid "User Interface"

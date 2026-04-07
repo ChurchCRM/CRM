@@ -2133,14 +2133,6 @@ msgid "User Editor"
 msgstr "Käyttäjien muokkaus"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Huom: Muutokset tulevat voimaan vasta seuraavalla kirjautumisella."
-
-#: 
-msgid "Person to Make User"
-msgstr "Henkilö, josta luodaan käyttäjä"
-
-#: 
 msgid "User"
 msgstr "Käyttäjä"
 
@@ -2181,24 +2173,8 @@ msgid "Edit Self"
 msgstr "Muokkaa itseään"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Muokkaa vain omaa perhettään.)"
-
-#: 
 msgid "Admin"
 msgstr "Ylläpitäjä"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Myöntää kaikki oikeudet.)"
-
-#: 
-msgid "Style"
-msgstr "Tyyli"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Aseta luvaksi 'Tosi', jotta käyttäjä voi muuttaa nykyistä arvoaan."
 
 #: 
 msgid "Last Login"
@@ -3152,10 +3128,6 @@ msgstr "Tiedot/Raportit"
 #: 
 msgid "Query Menu"
 msgstr "Kyselyvalikko"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Vie tietueet CSV-muotoon"
 
 #: 
 msgid "Family Properties"
@@ -6052,28 +6024,12 @@ msgid "open rate"
 msgstr "avausprosentti"
 
 #: 
-msgid "Login Info"
-msgstr "Kirjautumistiedot"
-
-#: 
-msgid "Login Count"
-msgstr "Kirjautumiskerrat"
-
-#: 
-msgid "Failed Login"
-msgstr "Epäonnistunut kirjautuminen"
-
-#: 
 msgid "Permissions"
 msgstr "Käyttöoikeudet"
 
 #: 
 msgid "Manage Notes"
 msgstr "Hallitse muistiinpanoja"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Uuden API-avaimen luominen epäonnistui"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6145,14 +6101,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Tämän päivän hääpäivät"
 
 #: 
-msgid "Api Key"
-msgstr "API-avain"
-
-#: 
-msgid "Regen API Key"
-msgstr "Luo API-avain uudelleen"
-
-#: 
 msgid "View Family Page"
 msgstr "Näytä perhesivu"
 
@@ -6167,34 +6115,6 @@ msgstr "Vahvista"
 #: 
 msgid "Family has no emails to use"
 msgstr "Perheellä ei ole sähköpostiosoitteita käytettäväksi"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Laatikkomuotoinen asettelu"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Ota laatikkomuotoinen asettelu käyttöön"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Pienennä/laajenna sivupalkki"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Vaihda vasemman sivupalkin tilaa"
-
-#: 
-msgid "Tables Settings"
-msgstr "Taulukoiden asetukset"
-
-#: 
-msgid "Page length"
-msgstr "Sivun pituus"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Muuta sivulla näytettävien rivien määrää"
 
 #: 
 msgid "User Interface"

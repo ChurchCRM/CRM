@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "Mhariri wa Mtumiaji"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Kumbuka: Mabadiliko hayatafanya kazi hadi nembo inayofuata."
-
-#: 
-msgid "Person to Make User"
-msgstr "Mtu wa Kufanya Mtumiaji"
-
-#: 
 msgid "User"
 msgstr "Mtumiaji"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "Hariri Binafsi"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Hariri familia yako pekee.)"
-
-#: 
 msgid "Admin"
 msgstr "Msimamizi"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Hutoa mapendeleo yote.)"
-
-#: 
-msgid "Style"
-msgstr "Mtindo"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Weka Ruhusa kuwa Kweli ili kumpa mtumiaji huyu uwezo wa kubadilisha thamani yake ya sasa."
 
 #: 
 msgid "Last Login"
@@ -3172,10 +3148,6 @@ msgstr "Data/Ripoti"
 #: 
 msgid "Query Menu"
 msgstr "Menyu ya Maswali"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Rekodi za Usafirishaji wa CSV"
 
 #: 
 msgid "Family Properties"
@@ -6087,28 +6059,12 @@ msgid "open rate"
 msgstr "kiwango cha wazi"
 
 #: 
-msgid "Login Info"
-msgstr "Ingia Info"
-
-#: 
-msgid "Login Count"
-msgstr "Hesabu ya Kuingia"
-
-#: 
-msgid "Failed Login"
-msgstr "Imeshindwa Kuingia"
-
-#: 
 msgid "Permissions"
 msgstr "Ruhusa"
 
 #: 
 msgid "Manage Notes"
 msgstr "Dhibiti Vidokezo"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Imeshindwa kuzalisha Ufunguo mpya wa API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6180,14 +6136,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Maadhimisho ya Harusi ya Leo"
 
 #: 
-msgid "Api Key"
-msgstr "Ufunguo wa Api"
-
-#: 
-msgid "Regen API Key"
-msgstr "Ufunguo wa API ya Regen"
-
-#: 
 msgid "View Family Page"
 msgstr "Tazama Ukurasa wa Familia"
 
@@ -6202,34 +6150,6 @@ msgstr "Thibitisha"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia haina barua pepe za kutumia"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Mpangilio wa Sanduku"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Amilisha mpangilio wa sanduku"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Geuza Upau wa kando"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Geuza hali ya utepe wa kushoto (fungua au ukunje)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Mipangilio ya Majedwali"
-
-#: 
-msgid "Page length"
-msgstr "Urefu wa ukurasa"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Badilisha urefu wa ukurasa wa mwanzo (idadi ya safu kwa kila ukurasa)"
 
 #: 
 msgid "User Interface"

@@ -2126,14 +2126,6 @@ msgid "User Editor"
 msgstr "ユーザーエディター"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "注意: 変更は次回のログインまで反映されません。"
-
-#: 
-msgid "Person to Make User"
-msgstr "ユーザーにする対象者"
-
-#: 
 msgid "User"
 msgstr "ユーザー"
 
@@ -2174,24 +2166,8 @@ msgid "Edit Self"
 msgstr "自分の情報を編集"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(自分の世帯のみ編集可能)"
-
-#: 
 msgid "Admin"
 msgstr "管理者"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(すべての特権を付与)"
-
-#: 
-msgid "Style"
-msgstr "スタイル"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "このユーザーに現在の値を変更する権限を与えるには、権限を True に設定してください。"
 
 #: 
 msgid "Last Login"
@@ -3145,10 +3121,6 @@ msgstr "データ/レポート"
 #: 
 msgid "Query Menu"
 msgstr "クエリメニュー"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSVレコードをエクスポート"
 
 #: 
 msgid "Family Properties"
@@ -6048,28 +6020,12 @@ msgid "open rate"
 msgstr "開封率"
 
 #: 
-msgid "Login Info"
-msgstr "ログイン情報"
-
-#: 
-msgid "Login Count"
-msgstr "ログイン回数"
-
-#: 
-msgid "Failed Login"
-msgstr "ログインに失敗"
-
-#: 
 msgid "Permissions"
 msgstr "権限"
 
 #: 
 msgid "Manage Notes"
 msgstr "メモの管理"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "新しいAPIキーの生成に失敗しました"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6141,14 +6097,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "今日の結婚記念日"
 
 #: 
-msgid "Api Key"
-msgstr "APIキー"
-
-#: 
-msgid "Regen API Key"
-msgstr "APIを再作成する"
-
-#: 
 msgid "View Family Page"
 msgstr "家族ページを表示"
 
@@ -6163,34 +6111,6 @@ msgstr "確認"
 #: 
 msgid "Family has no emails to use"
 msgstr "家族には使用できるメールがありません"
-
-#: 
-msgid "Boxed Layout"
-msgstr "ボックスレイアウト"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "ボックスレイアウトを有効化"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "サイドバーを切り替え"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "左サイドバーの状態を切り替え（展開または折りたたみ）"
-
-#: 
-msgid "Tables Settings"
-msgstr "テーブル設定"
-
-#: 
-msgid "Page length"
-msgstr "ページ長"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "初期ページ長　ページあたりの行数　を変更します"
 
 #: 
 msgid "User Interface"

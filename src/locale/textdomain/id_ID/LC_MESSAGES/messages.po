@@ -2150,14 +2150,6 @@ msgid "User Editor"
 msgstr "Editor Pengguna"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Catatan: Perubahan tidak akan berlaku hingga masuk berikutnya."
-
-#: 
-msgid "Person to Make User"
-msgstr "Orang untuk Membuat Pengguna"
-
-#: 
 msgid "User"
 msgstr "Pengguna"
 
@@ -2198,24 +2190,8 @@ msgid "Edit Self"
 msgstr "Edit Diri"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit keluarga sendiri saja.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Berikan semua hak istimewa.)"
-
-#: 
-msgid "Style"
-msgstr "Gaya"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Tetapkan Izin Benar untuk memberi pengguna ini kemampuan untuk mengubah nilai mereka saat ini."
 
 #: 
 msgid "Last Login"
@@ -3177,10 +3153,6 @@ msgstr "Data / Laporan"
 #: 
 msgid "Query Menu"
 msgstr "Menu Permintaan"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Catatan Ekspor CSV"
 
 #: 
 msgid "Family Properties"
@@ -6085,28 +6057,12 @@ msgid "open rate"
 msgstr "Buka Kurs"
 
 #: 
-msgid "Login Info"
-msgstr "Info Masuk"
-
-#: 
-msgid "Login Count"
-msgstr "Jumlah Masuk"
-
-#: 
-msgid "Failed Login"
-msgstr "Gagal Masuk"
-
-#: 
 msgid "Permissions"
 msgstr "Izin"
 
 #: 
 msgid "Manage Notes"
 msgstr "Kelola Catatan"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Gagal membuat Kunci API baru"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6178,14 +6134,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Ulang Tahun Pernikahan Hari Ini"
 
 #: 
-msgid "Api Key"
-msgstr "Api Key"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regen API Key"
-
-#: 
 msgid "View Family Page"
 msgstr "Lihat Halaman Keluarga"
 
@@ -6200,34 +6148,6 @@ msgstr "Verifikasi"
 #: 
 msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Tampilan Kotak"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktifkan Tampilan Kotak"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Alihkan Sidebar"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Alihkan status sidebar kiri (terbuka atau tertutup)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Pengaturan Tabel"
-
-#: 
-msgid "Page length"
-msgstr "Panjang halaman"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ubah panjang halaman awal (jumlah baris per halaman)"
 
 #: 
 msgid "User Interface"

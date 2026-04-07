@@ -2227,15 +2227,6 @@ msgid "User Editor"
 msgstr "Bruker Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Merk: Endringer vil ikke tre i kraft før neste pålogging."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Person til å gjøre Bruker"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Bruker"
@@ -2285,25 +2276,8 @@ msgid "Edit Self"
 msgstr "Rediger deg selv"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Rediger egen familie bare.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Grants alle privilegier.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Sett tillatelse til 'Sann' for å gi denne brukeren muligheten til å endre sin gjeldende verdi."
 
 #: 
 msgid "Last Login"
@@ -3282,10 +3256,6 @@ msgstr "Data/Rapporter"
 #: 
 msgid "Query Menu"
 msgstr "Spørringsmeny"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV-eksport av poster"
 
 #: 
 msgid "Family Properties"
@@ -6182,28 +6152,12 @@ msgid "open rate"
 msgstr "åpningsrate"
 
 #: 
-msgid "Login Info"
-msgstr "Innloggingsinformasjon"
-
-#: 
-msgid "Login Count"
-msgstr "Antall pålogginger"
-
-#: 
-msgid "Failed Login"
-msgstr "Mislykket pålogging"
-
-#: 
 msgid "Permissions"
 msgstr "Tillatelser"
 
 #: 
 msgid "Manage Notes"
 msgstr "Administrer notater"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Kunne ikke generere ny API-nøkkel"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6275,14 +6229,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Bryllupsdager i dag"
 
 #: 
-msgid "Api Key"
-msgstr "API-nøkkel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerer API-nøkkel"
-
-#: 
 msgid "View Family Page"
 msgstr "Vis familieside"
 
@@ -6297,34 +6243,6 @@ msgstr "Verifiser"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familien har ingen e-postadresser"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Boksoppsett"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktiver boksoppsett"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Veksle sidefelt"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Endre sidestolpens tilstand (åpen eller sammenslått)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellinnstillinger"
-
-#: 
-msgid "Page length"
-msgstr "Sidelengde"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Endre den opprinnelige sidelengden (antall rader per side)"
 
 #: 
 msgid "User Interface"

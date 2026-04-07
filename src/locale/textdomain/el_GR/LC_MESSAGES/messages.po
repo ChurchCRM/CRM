@@ -2149,14 +2149,6 @@ msgid "User Editor"
 msgstr "Επεξεργαστής χρήστη"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Σημείωση: Οι αλλαγές δεν θα τεθούν σε ισχύ μέχρι την επόμενη σύνδεση."
-
-#: 
-msgid "Person to Make User"
-msgstr "Πρόσωπο για να γίνει χρήστης"
-
-#: 
 msgid "User"
 msgstr "Χρήστης"
 
@@ -2197,24 +2189,8 @@ msgid "Edit Self"
 msgstr "Επεξεργασία εαυτού"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Επεξεργασία μόνο της οικογένειας.)"
-
-#: 
 msgid "Admin"
 msgstr "Διαχειριστής"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Χορηγεί όλα τα προνόμια.)"
-
-#: 
-msgid "Style"
-msgstr "Στυλ"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Ορίστε το Permission True για να δώσετε σε αυτόν τον χρήστη τη δυνατότητα να αλλάξει την τρέχουσα τιμή του."
 
 #: 
 msgid "Last Login"
@@ -3176,10 +3152,6 @@ msgstr "Δεδομένα/Αναφορές"
 #: 
 msgid "Query Menu"
 msgstr "Μενού ερωτήματος"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Εγγραφές εξαγωγής CSV"
 
 #: 
 msgid "Family Properties"
@@ -6093,28 +6065,12 @@ msgid "open rate"
 msgstr "ανοικτό ποσοστό"
 
 #: 
-msgid "Login Info"
-msgstr "Πληροφορίες σύνδεσης"
-
-#: 
-msgid "Login Count"
-msgstr "Καταμέτρηση σύνδεσης"
-
-#: 
-msgid "Failed Login"
-msgstr "Αποτυχία σύνδεσης"
-
-#: 
 msgid "Permissions"
 msgstr "Άδειες"
 
 #: 
 msgid "Manage Notes"
 msgstr "Διαχείριση σημειώσεων"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Αποτυχία δημιουργίας νέου κλειδιού API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6186,14 +6142,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Επέτειοι γάμου σήμερα"
 
 #: 
-msgid "Api Key"
-msgstr "Api Key"
-
-#: 
-msgid "Regen API Key"
-msgstr "Κλειδί API Regen"
-
-#: 
 msgid "View Family Page"
 msgstr "Προβολή οικογενειακής σελίδας"
 
@@ -6208,34 +6156,6 @@ msgstr "Επαληθεύω"
 #: 
 msgid "Family has no emails to use"
 msgstr "Η οικογένεια δεν έχει email για χρήση"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Διάταξη σε κουτί"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Ενεργοποιήστε τη διάταξη του κουτιού"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Εναλλαγή πλευρικής γραμμής"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Εναλλαγή της κατάστασης της αριστερής πλαϊνής γραμμής (άνοιγμα ή σύμπτυξη)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Ρυθμίσεις πινάκων"
-
-#: 
-msgid "Page length"
-msgstr "Μήκος σελίδας"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Αλλαγή του αρχικού μήκους σελίδας (αριθμός σειρών ανά σελίδα)"
 
 #: 
 msgid "User Interface"

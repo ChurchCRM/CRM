@@ -2148,14 +2148,6 @@ msgid "User Editor"
 msgstr "የተጠቃሚ ማረሚያ"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "ማስታወሻ፡ ለውጦች ቀጥለው እስኪከፍቱ ድረስ አይተገበሩም"
-
-#: 
-msgid "Person to Make User"
-msgstr "ተጠቃሚ የሚደረግ ሰው"
-
-#: 
 msgid "User"
 msgstr "ተጠቃሚ"
 
@@ -2196,24 +2188,8 @@ msgid "Edit Self"
 msgstr "ራስህን አርም"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(የራስን ቤተሰብ ብቻ ያርሙ)"
-
-#: 
 msgid "Admin"
 msgstr "አስተዳደር"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "ሁሉንም ልዩ መብቶችን ይስጡ"
-
-#: 
-msgid "Style"
-msgstr "ዘይቤ"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "ለዚህ ተጠቃሚ የአሁኑን ዋጋ የመቀየር ችሎታ ለመስጠት ፈቃድ እውነት ያዘጋጁ። "
 
 #: 
 msgid "Last Login"
@@ -3176,10 +3152,6 @@ msgstr "ውሂብ/ሪፖርቶች"
 #: 
 msgid "Query Menu"
 msgstr "የጥያቄ ምናሌ"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV ወደ ውጪ መላክ መዝገቦች"
 
 #: 
 msgid "Family Properties"
@@ -6101,28 +6073,12 @@ msgid "open rate"
 msgstr "የመክፍት ፍጥነት"
 
 #: 
-msgid "Login Info"
-msgstr "የመግቢያ መረጃ"
-
-#: 
-msgid "Login Count"
-msgstr "የመግቢያ ብዛት"
-
-#: 
-msgid "Failed Login"
-msgstr "ያልተሣካ መግባት"
-
-#: 
 msgid "Permissions"
 msgstr "ፈቃዶች"
 
 #: 
 msgid "Manage Notes"
 msgstr "ማስታወሻዎችን ያስተካክሉ"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "አዲስ የኤፒአይ ቁልፍ ማመንጨት አልተሳካም።"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6195,14 +6151,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "የዛሬው የሰርግ በዓላት"
 
 #: 
-msgid "Api Key"
-msgstr "አፒ ቁልፍ"
-
-#: 
-msgid "Regen API Key"
-msgstr "የሬገን ኤፒአይ ቁልፍ"
-
-#: 
 msgid "View Family Page"
 msgstr "የቤተሰብ ገጽን ይመልከቱ"
 
@@ -6217,34 +6165,6 @@ msgstr "አረጋገጥ"
 #: 
 msgid "Family has no emails to use"
 msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
-
-#: 
-msgid "Boxed Layout"
-msgstr "የሳጥኑ አቀማመጥ"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "የሳጥኑ አቀማመጥ"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "የሳጥን አቀማመጥን ያግብሩ"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "የግራ የጎን አሞሌን ሁኔታ ቀይር (ክፍት ወይም ሰብስብ)"
-
-#: 
-msgid "Tables Settings"
-msgstr "የጠረጴዛዎች ቅንብር"
-
-#: 
-msgid "Page length"
-msgstr "የገጽ ርዝመት"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "የመጀመሪያውን ገጽ ርዝመት (በገጽ የረድፎች ብዛት) ርዝመት ይቀይሩ"
 
 #: 
 msgid "User Interface"
