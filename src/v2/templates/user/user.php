@@ -209,15 +209,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </label>
               </div>
             </div>
-            <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="navbarOverlap"><?= gettext("Navbar Overlap") ?></label>
-              <div class="col-sm-9">
-                <label class="form-check form-switch">
-                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="navbarOverlap" data-layout="navbar-overlap" data-css=".page-wrapper > header.navbar" data-setting-name="ui.navbar.overlap">
-                  <span class="form-check-label"><?= gettext("Extend the top navbar color into the page header area") ?></span>
-                </label>
-              </div>
-            </div>
 
             <hr>
 
