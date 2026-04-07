@@ -43,7 +43,6 @@ const POEDITOR_API_BASE = 'https://api.poeditor.com/v2';
 const PROJECT_ID = '77079';
 const MISSING_DIR = localeConfig.terms.missing;
 const LOCALES_FILE = localeConfig.localesJson;
-const SAMPLE_SIZE = 5;
 // Pause between processing locales to stay well under POEditor rate limits.
 // The downloader itself already adds ~1.5 s of inter-format delay, so this
 // extra gap gives the API time to breathe before the next upload.
@@ -484,46 +483,6 @@ async function refreshMissingTerms(poEditorCode) {
     return termCount;
 }
 
-// ── Display helpers ──────────────────────────────────────────────────────────
-
-function displaySample(localizedTerms, sampleSize) {
-    const entries = Object.entries(localizedTerms);
-    const sample = entries.slice(0, sampleSize);
-
-    console.log(`\n  📝 Sample translations (showing ${sample.length} of ${entries.length}):\n`);
-
-    for (const [term, value] of sample) {
-        const shortTerm = term.length > 55 ? term.slice(0, 52) + '...' : term;
-
-        if (typeof value === 'string') {
-            console.log(`    Key:  "${shortTerm}"`);
-            console.log(`    Val:  "${value}"`);
-        } else {
-            const filledForms = Object.entries(value)
-                .filter(([, v]) => v && v.trim())
-                .map(([k, v]) => `${k}: "${v}"`)
-                .join(', ');
-            console.log(`    Key:  "${shortTerm}"`);
-            console.log(`    Val:  { ${filledForms} }`);
-        }
-        console.log();
-    }
-}
-
-function displaySuspects(suspectTerms) {
-    const count = Object.keys(suspectTerms).length;
-    if (count === 0) return;
-
-    console.log(`  ⚠️  Skipping ${count} term(s) where translation is identical to the source key:`);
-    const preview = Object.keys(suspectTerms).slice(0, 3);
-    for (const term of preview) {
-        const shortTerm = term.length > 60 ? term.slice(0, 57) + '...' : term;
-        console.log(`     - "${shortTerm}"`);
-    }
-    if (count > 3) console.log(`     ... and ${count - 3} more`);
-    console.log();
-}
-
 // ── Main ─────────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -642,10 +601,6 @@ async function main() {
             totalSkipped++;
             continue;
         }
-
-        // Show sample and suspect warnings
-        displaySample(allLocalized, SAMPLE_SIZE);
-        displaySuspects(allSuspect);
 
         // Prompt the user — Enter alone defaults to yes; --yes skips the prompt
         if (!autoYes) {
