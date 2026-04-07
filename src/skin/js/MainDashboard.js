@@ -604,7 +604,7 @@ export function initializeMainDashboard() {
           data: "title",
           render: function (data, type, row) {
             return (
-              '<a href="' + window.CRM.root + "/Checkin.php?EventID=" + row.id + '"><strong>' + data + "</strong></a>"
+              '<a href="' + window.CRM.root + "/Checkin.php?EventID=" + row.id + '"><strong>' + window.CRM.escapeHtml(data) + "</strong></a>"
             );
           },
         },
@@ -614,7 +614,7 @@ export function initializeMainDashboard() {
           data: "typeName",
           render: function (data) {
             if (!data) return "";
-            return '<span class="badge bg-blue-lt">' + data + "</span>";
+            return '<span class="badge bg-blue-lt">' + window.CRM.escapeHtml(data) + "</span>";
           },
         },
         {

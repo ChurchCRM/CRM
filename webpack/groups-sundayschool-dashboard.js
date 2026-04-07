@@ -82,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
   $(document).on("click", ".start-checkin-btn", async function () {
     const $btn = $(this);
     const groupId = $btn.data("group-id");
-    const groupName = $btn.data("group-name");
 
     $btn
       .prop("disabled", true)

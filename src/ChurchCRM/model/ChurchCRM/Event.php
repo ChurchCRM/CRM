@@ -41,7 +41,7 @@ class Event extends BaseEvent
         $this->editable = $editable;
     }
 
-    public function checkInPerson($PersonId): array
+    public function checkInPerson($PersonId, $CheckedInById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -51,13 +51,18 @@ class Event extends BaseEvent
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
         ->setCheckinDate(date('Y-m-d H:i:s'))
-        ->setCheckoutDate(null)
-        ->save();
+        ->setCheckoutDate(null);
+
+        if ($CheckedInById !== null) {
+            $AttendanceRecord->setCheckinId($CheckedInById);
+        }
+
+        $AttendanceRecord->save();
 
         return ['status' => 'success'];
     }
 
-    public function checkOutPerson($PersonId): array
+    public function checkOutPerson($PersonId, $CheckedOutById = null): array
     {
         $AttendanceRecord = EventAttendQuery::create()
             ->filterByEvent($this)
@@ -65,10 +70,19 @@ class Event extends BaseEvent
             ->filterByCheckinDate(null, Criteria::NOT_EQUAL)
             ->findOne();
 
+        if ($AttendanceRecord === null) {
+            return ['status' => 'not_checked_in'];
+        }
+
         $AttendanceRecord->setEvent($this)
         ->setPersonId($PersonId)
-        ->setCheckoutDate(date('Y-m-d H:i:s'))
-        ->save();
+        ->setCheckoutDate(date('Y-m-d H:i:s'));
+
+        if ($CheckedOutById !== null) {
+            $AttendanceRecord->setCheckoutId($CheckedOutById);
+        }
+
+        $AttendanceRecord->save();
 
         return ['status' => 'success'];
     }

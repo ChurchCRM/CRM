@@ -44,8 +44,8 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->post('', 'newEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware());
     $group->post('/{id}', 'updateEvent')->add(new InputSanitizationMiddleware(['Title' => 'text', 'Desc' => 'html', 'Text' => 'html']))->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/time', 'setEventTime')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
-    $group->post('/{id}/checkin', 'checkinPerson')->add(new EventsMiddleware());
-    $group->post('/{id}/checkout', 'checkoutPerson')->add(new EventsMiddleware());
+    $group->post('/{id}/checkin', 'checkinPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->post('/{id}/checkout', 'checkoutPerson')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkin-all', 'checkinAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
     $group->post('/{id}/checkout-all', 'checkoutAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
@@ -480,8 +480,17 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
 {
     $input = $request->getParsedBody();
     $eventTypeId = InputUtils::filterInt($input['eventTypeId'] ?? 0);
-    $date = $input['date'] ?? date('Y-m-d');
     $groupId = InputUtils::filterInt($input['groupId'] ?? 0);
+
+    // Validate date input (defaults to today)
+    $date = date('Y-m-d');
+    if (!empty($input['date'])) {
+        $parsedDate = \DateTimeImmutable::createFromFormat('!Y-m-d', (string) $input['date']);
+        if ($parsedDate === false || $parsedDate->format('Y-m-d') !== (string) $input['date']) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid date; expected format YYYY-MM-DD'), [], 400);
+        }
+        $date = $parsedDate->format('Y-m-d');
+    }
 
     $eventType = null;
     if ($eventTypeId > 0) {
@@ -516,6 +525,12 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
         ->filterByInActive(0);
     if ($eventTypeId > 0) {
         $existingQuery->filterByType($eventTypeId);
+    }
+    if ($groupId > 0) {
+        $existingQuery
+            ->useEventAudienceQuery()
+                ->filterByGroupId($groupId)
+            ->endUse();
     }
     $existing = $existingQuery->findOne();
 
@@ -780,7 +795,7 @@ function checkinPerson(Request $request, Response $response, array $args): Respo
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
-    $result = $event->checkInPerson($personId);
+    $event->checkInPerson($personId);
 
     return SlimUtils::renderJSON($response, [
         'success' => true,
@@ -817,7 +832,7 @@ function checkoutPerson(Request $request, Response $response, array $args): Resp
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
-    $result = $event->checkOutPerson($personId);
+    $event->checkOutPerson($personId);
 
     return SlimUtils::renderJSON($response, [
         'success' => true,
@@ -851,13 +866,22 @@ function checkinAll(Request $request, Response $response, array $args): Response
     $event = $request->getAttribute('event');
     $groups = $event->getGroups();
 
-    $checkedInCount = 0;
+    // Deduplicate: a person may belong to multiple linked groups
+    $uniquePersonIds = [];
     foreach ($groups as $group) {
         $members = $group->getPerson2group2roleP2g2rs();
         foreach ($members as $member) {
-            $event->checkInPerson($member->getPersonId());
-            $checkedInCount++;
+            $personId = (int) $member->getPersonId();
+            if ($personId > 0) {
+                $uniquePersonIds[$personId] = true;
+            }
         }
+    }
+
+    $checkedInCount = 0;
+    foreach (array_keys($uniquePersonIds) as $personId) {
+        $event->checkInPerson($personId);
+        $checkedInCount++;
     }
 
     return SlimUtils::renderJSON($response, [

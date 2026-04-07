@@ -71,8 +71,20 @@ export interface AjaxOptions {
   contentType?: string;
 }
 
+export interface FamilyMember {
+  Id: number;
+  FirstName: string;
+  LastName: string;
+  hasPhoto: boolean;
+}
+
+export interface FamilyMembersResponse {
+  members: FamilyMember[];
+}
+
 export interface KioskJSOM {
   notificationsEnabled: boolean;
+  checkinByEnabled: boolean;
   kioskEventLoop?: ReturnType<typeof setInterval>;
   escapeHtml: (text: string | null | undefined) => string;
   APIRequest: (options: AjaxOptions) => JQuery.jqXHR;
@@ -108,4 +120,7 @@ export interface KioskJSOM {
   displayPersonInfo: (personId: number) => void;
   startEventLoop: () => void;
   stopEventLoop: () => void;
+  setCheckinByEnabled: (enabled: boolean) => void;
+  resolveCheckinByModal: (checkedByPersonId: number | null) => void;
+  cancelCheckinByModal: () => void;
 }

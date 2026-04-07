@@ -58,11 +58,11 @@ function initializePersonSearchFields() {
           });
       },
       render: {
-        option: function (data, escape) {
-          return "<div>" + escape(data.text) + "</div>";
+        option: function (data, escapeHtmlTs) {
+          return "<div>" + escapeHtmlTs(data.text) + "</div>";
         },
-        item: function (data, escape) {
-          return "<div>" + escape(data.text) + "</div>";
+        item: function (data, escapeHtmlTs) {
+          return "<div>" + escapeHtmlTs(data.text) + "</div>";
         },
       },
       onChange: function (value) {
@@ -85,7 +85,7 @@ function bindPersonSearchEvents() {
     .off("tomselect:change")
     .on("tomselect:change", function (e, value, tsInstance) {
       if (value) {
-        var selectedData = tsInstance.options[value];
+        const selectedData = tsInstance.options[value];
         $("#child-id").val(selectedData.objid);
         displayPersonDetails($("#childDetails"), selectedData);
       } else {
@@ -99,7 +99,7 @@ function bindPersonSearchEvents() {
     .off("tomselect:change")
     .on("tomselect:change", function (e, value, tsInstance) {
       if (value) {
-        var selectedData = tsInstance.options[value];
+        const selectedData = tsInstance.options[value];
         $("#adult-id").val(selectedData.objid);
         displayPersonDetails($("#adultDetails"), selectedData);
       } else {
@@ -113,7 +113,7 @@ function bindPersonSearchEvents() {
     .off("tomselect:change")
     .on("tomselect:change", function (e, value, tsInstance) {
       if (value) {
-        var selectedData = tsInstance.options[value];
+        const selectedData = tsInstance.options[value];
         $("#adultout-id").val(selectedData.objid);
       } else {
         $("#adultout-id").val("");
@@ -153,12 +153,12 @@ function displayPersonDetails(element, person) {
   }
 
   if (person && person.objid) {
-    var personViewUrl = "PersonView.php?PersonID=" + person.objid;
+    const personViewUrl = "PersonView.php?PersonID=" + person.objid;
 
     // Compact inline display with name and check icon
-    var html =
+    const html =
       '<div class="d-inline-flex align-items-center p-2 border border-success rounded" style="background-color: #d4edda;">' +
-      '<i class="fa-solid fa-circle-check text-success mr-2"></i>' +
+      '<i class="fa-solid fa-circle-check text-success me-2"></i>' +
       '<a href="' +
       personViewUrl +
       '" class="text-dark fw-bold" target="_blank">' +
@@ -207,10 +207,14 @@ $(function () {
       headers: { "Content-Type": "application/json" },
     })
       .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
       .then(function () {
         loadRoster(eventId);
+      })
+      .catch(function () {
+        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-in failed. Please try again."));
       })
       .finally(function () {
         $btn.prop("disabled", false);
@@ -226,10 +230,14 @@ $(function () {
       headers: { "Content-Type": "application/json" },
     })
       .then(function (res) {
+        if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       })
       .then(function () {
         loadRoster(eventId);
+      })
+      .catch(function () {
+        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-out failed. Please try again."));
       })
       .finally(function () {
         $btn.prop("disabled", false);
@@ -244,6 +252,7 @@ $(function () {
 function loadRoster(eventId) {
   fetch(window.CRM.root + "/api/events/" + eventId + "/roster")
     .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     })
     .then(function (data) {
@@ -379,6 +388,7 @@ $(document).on("click", ".roster-action-btn", function () {
     body: JSON.stringify({ personId: personId }),
   })
     .then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     })
     .then(function () {
