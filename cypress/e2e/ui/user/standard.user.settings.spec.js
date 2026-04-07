@@ -43,12 +43,6 @@ describe("Standard User Settings Page", () => {
             10,
         );
 
-        // Base palette select
-        cy.get("#basePalette").should("exist");
-
-        // Border radius radios
-        cy.get('input[name="borderRadius"]').should("have.length.gte", 5);
-
         // Layout controls
         cy.get("#boxedLayout").should("exist");
         cy.get("#toggleSidebar").should("exist");
@@ -101,27 +95,4 @@ describe("Standard User Settings Page", () => {
         cy.get("html").should("not.have.attr", "data-bs-theme-primary");
     });
 
-    it("Can change base palette", () => {
-        cy.visit("/v2/user/3");
-        cy.get('#settingsNav a[href="#tab-appearance"]').click();
-
-        cy.get("#basePalette").select("slate");
-        cy.get("html").should("have.attr", "data-bs-theme-base", "slate");
-
-        // Reset
-        cy.get("#basePalette").select("");
-        cy.get("html").should("not.have.attr", "data-bs-theme-base");
-    });
-
-    it("Can change border radius", () => {
-        cy.visit("/v2/user/3");
-        cy.get('#settingsNav a[href="#tab-appearance"]').click();
-
-        cy.get('input[name="borderRadius"][value="2"]').check({ force: true });
-        cy.get("html").should("have.attr", "data-bs-theme-radius", "2");
-
-        // Reset
-        cy.get('input[name="borderRadius"][value=""]').check({ force: true });
-        cy.get("html").should("not.have.attr", "data-bs-theme-radius");
-    });
 });

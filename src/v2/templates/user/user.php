@@ -142,47 +142,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               </div>
             </div>
 
-            <!-- Base Palette -->
-            <div class="row mb-4">
-              <label class="col-sm-3 col-form-label"><?= gettext("Base Palette") ?></label>
-              <div class="col-sm-9">
-                <select id="basePalette" class="form-select">
-                  <option value=""><?= gettext("Default (Gray)") ?></option>
-                  <option value="slate"><?= gettext("Slate") ?></option>
-                  <option value="zinc"><?= gettext("Zinc") ?></option>
-                  <option value="neutral"><?= gettext("Neutral") ?></option>
-                  <option value="stone"><?= gettext("Stone") ?></option>
-                </select>
-                <small class="form-hint"><?= gettext("Choose the neutral color palette used for backgrounds and borders") ?></small>
-              </div>
-            </div>
-
-            <!-- Border Radius -->
-            <div class="row mb-4">
-              <label class="col-sm-3 col-form-label"><?= gettext("Border Radius") ?></label>
-              <div class="col-sm-9">
-                <div class="form-selectgroup">
-                  <?php
-                  $radii = [
-                      '' => 'Default',
-                      '0' => 'None',
-                      '0.5' => 'Small',
-                      '1' => 'Medium',
-                      '1.5' => 'Large',
-                      '2' => 'Extra Large',
-                  ];
-                  foreach ($radii as $val => $label):
-                  ?>
-                  <label class="form-selectgroup-item">
-                    <input type="radio" name="borderRadius" value="<?= $val ?>" class="form-selectgroup-input">
-                    <span class="form-selectgroup-label"><?= gettext($label) ?></span>
-                  </label>
-                  <?php endforeach; ?>
-                </div>
-                <small class="form-hint"><?= gettext("Control the roundness of corners throughout the interface") ?></small>
-              </div>
-            </div>
-
             <hr>
 
             <!-- Layout -->

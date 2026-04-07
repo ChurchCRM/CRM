@@ -18,14 +18,6 @@ $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
     $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
 }
-$_themeBase = $_themeUser->getSettingValue('ui.theme.base');
-if ($_themeBase !== '') {
-    $_themeAttrs .= ' data-bs-theme-base="' . htmlspecialchars($_themeBase) . '"';
-}
-$_themeRadius = $_themeUser->getSettingValue('ui.theme.radius');
-if ($_themeRadius !== '') {
-    $_themeAttrs .= ' data-bs-theme-radius="' . htmlspecialchars($_themeRadius) . '"';
-}
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>

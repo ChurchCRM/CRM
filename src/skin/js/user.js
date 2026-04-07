@@ -71,32 +71,6 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
   });
 });
 
-// ── Base Palette ─────────────────────────────────────────────────
-$("#basePalette").on("change", function () {
-  let value = $(this).val();
-  saveUserSetting("ui.theme.base", value).done(function () {
-    if (value) {
-      document.documentElement.setAttribute("data-bs-theme-base", value);
-    } else {
-      document.documentElement.removeAttribute("data-bs-theme-base");
-    }
-    notifySuccess();
-  });
-});
-
-// ── Border Radius ────────────────────────────────────────────────
-$('input[name="borderRadius"]').on("change", function () {
-  let value = $(this).val();
-  saveUserSetting("ui.theme.radius", value).done(function () {
-    if (value) {
-      document.documentElement.setAttribute("data-bs-theme-radius", value);
-    } else {
-      document.documentElement.removeAttribute("data-bs-theme-radius");
-    }
-    notifySuccess();
-  });
-});
-
 // ── Layout checkboxes (Boxed / Sidebar) ──────────────────────────
 $(".user-setting-checkbox").on("click", function () {
   let thisCheckbox = $(this);
@@ -186,19 +160,6 @@ $(document).ready(function () {
     $(
       '#primaryColorPicker .btn-color-swatch[data-color="' + color + '"]',
     ).addClass("active");
-  });
-
-  // Base palette
-  getUserSetting("ui.theme.base").done(function (data) {
-    if (data.value) {
-      $("#basePalette").val(data.value);
-    }
-  });
-
-  // Border radius
-  getUserSetting("ui.theme.radius").done(function (data) {
-    let val = data.value || "";
-    $('input[name="borderRadius"][value="' + val + '"]').prop("checked", true);
   });
 
   // Checkbox settings (boxed, sidebar)
