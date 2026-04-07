@@ -14,9 +14,14 @@
  *   node locale/scripts/poeditor-upload-missing.js --locale es-co,uk,hi
  *   node locale/scripts/poeditor-upload-missing.js --dry-run
  *   node locale/scripts/poeditor-upload-missing.js --yes     # skip confirmation prompts
+ *   node locale/scripts/poeditor-upload-missing.js --no-download  # skip post-upload refresh
  *   npm run locale:upload:missing
  *   npm run locale:upload:missing -- --locale uk
  *   npm run locale:upload:missing -- te
+ *
+ * After each upload, the script re-fetches missing (untranslated) terms from
+ * POEditor and updates the local batch files so you can see what's left.
+ * Use --no-download to skip this step.
  *
  * Requires:
  *   POEDITOR_TOKEN environment variable (from .env or shell)
@@ -365,10 +370,119 @@ async function uploadTranslations(poEditorCode, terms) {
     };
 }
 
-// NOTE: No longer calling the downloader here.
-// The download happens automatically via the GitHub Action workflow (locale-release).
-// This keeps the upload and download steps separate, reduces API calls, and ensures
-// a single source of truth for the final translations.
+// ── Post-upload missing-terms refresh ───────────────────────────────────────
+
+const POEDITOR_EXPORT_API = `${POEDITOR_API_BASE}/projects/export`;
+const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
+
+/**
+ * Fetch untranslated (missing) terms for a POEditor locale.
+ * Returns an object mapping term → empty string.
+ */
+async function fetchUntranslatedTerms(poEditorCode) {
+    const postData = new URLSearchParams({
+        api_token: apiToken,
+        id: PROJECT_ID,
+        language: poEditorCode,
+        type: 'key_value_json',
+        filters: 'untranslated',
+    }).toString();
+
+    const response = await makeRequest(POEDITOR_EXPORT_API, postData);
+    const result = JSON.parse(response.data);
+
+    if (result.response.status !== 'success') {
+        throw new Error(result.response.message || 'Unknown POEditor error');
+    }
+
+    const downloadUrl = result.result.url;
+
+    return new Promise((resolve, reject) => {
+        https.get(downloadUrl, (res) => {
+            let data = '';
+            res.on('data', (d) => { data += d; });
+            res.on('end', () => {
+                if (res.statusCode < 200 || res.statusCode >= 300) {
+                    reject(new Error(`Download failed: HTTP ${res.statusCode}`));
+                    return;
+                }
+                const trimmed = (data || '').trim();
+                if (trimmed.length === 0) { resolve({}); return; }
+                try { resolve(JSON.parse(data)); }
+                catch (err) { reject(new Error(`JSON parse error: ${err.message}`)); }
+            });
+        }).on('error', reject);
+    });
+}
+
+/**
+ * Save missing terms in batched JSON files under MISSING_DIR/{poEditorCode}/
+ * Clears existing batch files first for a clean rebuild.
+ */
+function saveBatchedMissingTerms(poEditorCode, missingTerms) {
+    const localeOutDir = path.join(MISSING_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) fs.mkdirSync(localeOutDir, { recursive: true });
+
+    // Remove existing batch files
+    try {
+        fs.readdirSync(localeOutDir).filter(f => f.endsWith('.json'))
+            .forEach(f => { try { fs.unlinkSync(path.join(localeOutDir, f)); } catch (_) {} });
+    } catch (_) {}
+
+    const entries = Object.entries(missingTerms);
+    const files = [];
+    let batchNumber = 1;
+
+    for (let i = 0; i < entries.length; i += TERMS_PER_FILE) {
+        const batch = Object.fromEntries(entries.slice(i, i + TERMS_PER_FILE));
+        const filename = path.join(localeOutDir, `${poEditorCode}-${batchNumber}.json`);
+        fs.writeFileSync(filename, JSON.stringify(batch, null, 2) + '\n');
+        files.push(filename);
+        batchNumber++;
+    }
+
+    return files;
+}
+
+/**
+ * Remove stale missing-term batch files when a locale has 0 remaining.
+ */
+function removeBatchedMissingTerms(poEditorCode) {
+    const localeOutDir = path.join(MISSING_DIR, poEditorCode);
+    if (!fs.existsSync(localeOutDir)) return 0;
+
+    const existing = fs.readdirSync(localeOutDir).filter(f => f.endsWith('.json'));
+    let removed = 0;
+    for (const f of existing) {
+        try { fs.unlinkSync(path.join(localeOutDir, f)); removed++; } catch (_) {}
+    }
+    try {
+        if (fs.readdirSync(localeOutDir).length === 0) fs.rmdirSync(localeOutDir);
+    } catch (_) {}
+    return removed;
+}
+
+/**
+ * After upload, re-fetch missing terms from POEditor and update local batch files.
+ */
+async function refreshMissingTerms(poEditorCode) {
+    const missing = await fetchUntranslatedTerms(poEditorCode);
+    const termCount = Object.keys(missing).length;
+
+    if (termCount === 0) {
+        const removed = removeBatchedMissingTerms(poEditorCode);
+        if (removed > 0) {
+            console.log(`  🧹 0 missing terms remaining — removed ${removed} stale batch file(s)`);
+        } else {
+            console.log(`  ✅ 0 missing terms remaining — locale fully translated!`);
+        }
+    } else {
+        const written = saveBatchedMissingTerms(poEditorCode, missing);
+        console.log(`  📄 ${termCount} missing term(s) remaining → ${written.length} file(s) updated`);
+    }
+
+    return termCount;
+}
 
 // ── Display helpers ──────────────────────────────────────────────────────────
 
@@ -416,6 +530,7 @@ async function main() {
     const args = process.argv.slice(2);
     const dryRun = args.includes('--dry-run');
     const autoYes = args.includes('--yes') || args.includes('-y');
+    const skipDownload = args.includes('--no-download');
     const localeFilter = (() => {
         // Support: --locale hi,ko,uk  OR positional: node script.js te
         for (let i = 0; i < args.length; i++) {
@@ -569,8 +684,18 @@ async function main() {
             continue;
         }
 
-        // ── Upload complete, download via GH Action ──────────────────────────
-        console.log(`\n  ✨ Upload complete. Download will happen via GitHub Action (locale-release workflow).`);
+        // ── Refresh missing terms ────────────────────────────────────────────
+        if (!skipDownload) {
+            console.log(`\n  ⬇️  Refreshing missing terms from POEditor...`);
+            try {
+                await sleep(3000); // brief pause before download to let POEditor process
+                await refreshMissingTerms(poEditorCode);
+            } catch (err) {
+                console.warn(`  ⚠️  Failed to refresh missing terms: ${sanitize(err.message)}`);
+            }
+        } else {
+            console.log(`\n  ⏭️  Skipping download (--no-download)`);
+        }
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -581,11 +706,13 @@ async function main() {
 
     console.log(`\n${'═'.repeat(62)}`);
     console.log(`📊  Done — ${totalUploaded} term(s) uploaded, ${totalSkipped} locale(s) skipped`);
+    if (!skipDownload) {
+        console.log(`\n📝  Missing-terms files have been refreshed locally.`);
+        console.log(`    Run "node locale/scripts/locale-translate.js --list" to see what's left.`);
+    }
     console.log(`\n📝  Next steps:`);
     console.log(`  1. Share translations with POEditor reviewers`);
-    console.log(`  2. Wait for human approval in POEditor`);
-    console.log(`  3. GH Action will automatically download after release workflow runs`);
-    console.log(`  4. Merge the generated PR when ready`);
+    console.log(`  2. Run locale-release workflow to download full translations (JSON + PO/MO)`);
     console.log(`${'═'.repeat(62)}\n`);
 }
 
