@@ -71,24 +71,6 @@ $("#primaryColorPicker .btn-color-swatch").on("click", function () {
   });
 });
 
-// ── Layout checkboxes (Boxed / Sidebar) ──────────────────────────
-$(".user-setting-checkbox").on("click", function () {
-  let thisCheckbox = $(this);
-  let setting = thisCheckbox.data("setting-name");
-  let cssClass = thisCheckbox.data("layout");
-  let targetCSS = thisCheckbox.data("css");
-  let enabled = thisCheckbox.prop("checked") ? cssClass : "";
-
-  saveUserSetting(setting, enabled).done(function () {
-    if (enabled !== "") {
-      $(targetCSS).addClass(cssClass);
-    } else {
-      $(targetCSS).removeClass(cssClass);
-    }
-    notifySuccess();
-  });
-});
-
 // ── Table Page Length ─────────────────────────────────────────────
 $("#tablePageLength").on("change", function () {
   let value = $(this).val();
@@ -151,17 +133,6 @@ $(document).ready(function () {
   getUserSetting("ui.theme.primary").done(function (data) {
     let color = data.value || "";
     $('#primaryColorPicker .btn-color-swatch[data-color="' + color + '"]').addClass("active");
-  });
-
-  // Checkbox settings (boxed, sidebar)
-  $(".user-setting-checkbox").each(function () {
-    let thisCheckbox = $(this);
-    let setting = thisCheckbox.data("setting-name");
-    getUserSetting(setting).done(function (data) {
-      if (data.value !== "") {
-        thisCheckbox.prop("checked", true);
-      }
-    });
   });
 
   // Table page length

@@ -45,7 +45,6 @@ describe("Standard User Settings Page", () => {
             10,
         );
 
-        cy.get("#boxedLayout").should("exist");
         cy.get("#tablePageLength").should("exist");
     });
 
@@ -103,17 +102,6 @@ describe("Standard User Settings Page", () => {
         // Reset to default
         cy.get('#primaryColorPicker .btn-color-swatch[data-color=""]').click();
         cy.get("html").should("not.have.attr", "data-bs-theme-primary");
-    });
-
-    it("Can toggle boxed layout and it applies live", () => {
-        cy.visit("/v2/user/3");
-        cy.get('#settingsNav a[href="#tab-appearance"]').click();
-
-        cy.get("#boxedLayout").check({ force: true });
-        cy.get("body").should("have.class", "layout-boxed");
-
-        cy.get("#boxedLayout").uncheck({ force: true });
-        cy.get("body").should("not.have.class", "layout-boxed");
     });
 
     it("Can change table page length", () => {

@@ -193,21 +193,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <hr>
 
-            <!-- Layout -->
-            <h4 class="mb-3"><?= gettext("Layout") ?></h4>
-            <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="boxedLayout"><?= gettext("Boxed Layout") ?></label>
-              <div class="col-sm-9">
-                <label class="form-check form-switch">
-                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="boxedLayout" data-layout="layout-boxed" data-css="body" data-setting-name="ui.boxed">
-                  <span class="form-check-label"><?= gettext("Constrain the page width to a centered container") ?></span>
-                </label>
-              </div>
-            </div>
-
-
-            <hr>
-
             <!-- Tables -->
             <h4 class="mb-3"><?= gettext("Tables") ?></h4>
             <div class="row mb-3">

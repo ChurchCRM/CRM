@@ -36,12 +36,6 @@ $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
     $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
 }
-$_bodyClasses = 'antialiased';
-$_boxed = $_themeUser->getSettingValue('ui.boxed');
-if ($_boxed !== '') {
-    $_bodyClasses .= ' layout-boxed';
-}
-
 // Top level menu index counter
 $MenuFirst = 1;
 ?>
@@ -54,7 +48,7 @@ $MenuFirst = 1;
   <?= PluginManager::getPluginHeadContent() ?>
 </head>
 
-<body class="<?= $_bodyClasses ?>">
+<body class="antialiased">
 <div class="page">
 
   <!-- Issue Report Modal -->
