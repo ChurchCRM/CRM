@@ -201,6 +201,18 @@ $text = InputUtils::sanitizeText($_POST['comment']);
 echo InputUtils::escapeHTML($text);
 ```
 
+### External Links: `rel="noopener noreferrer"` <!-- learned: 2026-04-07 -->
+
+All `target="_blank"` links MUST include `rel="noopener noreferrer"` to prevent reverse-tabnabbing (the opened page can redirect the opener via `window.opener`).
+
+```php
+// ✅ CORRECT
+<a href="https://example.com" target="_blank" rel="noopener noreferrer">Link</a>
+
+// ❌ WRONG — allows tabnabbing
+<a href="https://example.com" target="_blank">Link</a>
+```
+
 ---
 
 ## SQL Injection Prevention

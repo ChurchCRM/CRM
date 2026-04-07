@@ -349,6 +349,24 @@ cat src/logs/$(date +%Y-%m-%d)-app.log
 - **Clean State**: Reset application state between tests to ensure consistency.
 - **Descriptive Names**: Use clear and descriptive test names to indicate the purpose of each test.
 
+### Timing-Based Flakiness (REQUIRED) <!-- learned: 2026-04-07 -->
+
+Four patterns cause most timing-related flaky failures. Full detail and code examples are in `cypress-testing.md` under **Preventing Flaky Tests (Timing & State)**. Summary:
+
+| Pattern | Rule |
+|---------|------|
+| `cy.intercept()` placement | Register **before** `cy.visit()` or the triggering action — never after |
+| Missing `cy.wait()` on mutations | Every POST/PUT/DELETE must be awaited, including reset/cleanup calls |
+| `select()` on current value | Force a different baseline value first — same-value `select()` fires no `change` event |
+| Unscoped `cy.contains()` | Always scope to a container ID — bare `cy.contains("text")` matches sidebar nav |
+
+**Checklist for every new test that saves/loads state:**
+- [ ] All `cy.intercept()` before `cy.visit()` or the interaction
+- [ ] Every mutation has a `cy.wait("@alias")`
+- [ ] Reset calls also have `cy.wait()`
+- [ ] `select()` tests start from a known different value
+- [ ] `cy.contains()` scoped to a container
+
 ### Running Tests
 
 - Use the following command to run specific tests:
