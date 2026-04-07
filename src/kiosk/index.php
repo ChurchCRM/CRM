@@ -78,7 +78,11 @@ $getKioskFromCookie = function () use ($Kiosk): ?KioskDevice {
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (LIFO) so it wraps the routing
+// layer and can catch HttpNotFoundException as a proper 404 response.
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 
 // Custom error handler
@@ -114,9 +118,6 @@ $errorMiddleware->setDefaultErrorHandler(function (
         'error'   => gettext('An unexpected error occurred. Please contact your administrator.'),
     ]);
 });
-
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
 
 $app->add(new CorsMiddleware());
 $app->add(VersionMiddleware::class);

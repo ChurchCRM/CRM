@@ -16,12 +16,13 @@ $basePath = SlimUtils::getBasePath('/external');
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling and logging
-$errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
-
 $app->addBodyParsingMiddleware();
 $app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing (LIFO) so it wraps the routing
+// layer and can catch HttpNotFoundException as a proper 404 response.
+$errorMiddleware = $app->addErrorMiddleware(true, true, true);
+SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 $app->add(VersionMiddleware::class);
 $app->add(new CorsMiddleware());

@@ -16,14 +16,15 @@ $basePath = SlimUtils::getBasePath('/api');
 $app = AppFactory::create();
 $app->setBasePath($basePath);
 
-// Add Slim error middleware for proper error handling
+$app->addBodyParsingMiddleware();
+$app->addRoutingMiddleware();
+
+// Error middleware must be added AFTER routing middleware (LIFO execution order)
+// so it wraps the routing layer and can catch HttpNotFoundException / 404s.
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // Add CORS middleware for browser API access
-$app->addBodyParsingMiddleware();
-$app->addRoutingMiddleware();
-
 $app->add(new CorsMiddleware());
 $app->add(AuthMiddleware::class);
 $app->add(VersionMiddleware::class);
