@@ -545,14 +545,18 @@ async function main() {
     // Per-locale results for final report
     const results = [];
 
-    for (const folder of localeFolders) {
+    const totalLocales = localeFolders.length;
+
+    for (let localeIdx = 0; localeIdx < totalLocales; localeIdx++) {
+        const folder = localeFolders[localeIdx];
         if (abortAll) break;
 
+        const localeNum = localeIdx + 1;
         const folderKey = folder.toLowerCase();
         const localeEntry = localeMap[folderKey];
 
         if (!localeEntry) {
-            console.warn(`\n  ⚠️  Folder "${folder}" does not match any locale in locales.json — skipping.`);
+            console.warn(`\n  ⚠️  [${localeNum}/${totalLocales}] Folder "${folder}" does not match any locale in locales.json — skipping.`);
             results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?' });
             totalSkipped++;
             continue;
@@ -561,7 +565,7 @@ async function main() {
         const { poEditorCode, locale: localeCode, name: localeName } = localeEntry;
 
         console.log(`\n${'─'.repeat(62)}`);
-        console.log(`📂  ${localeName}  (${poEditorCode})`);
+        console.log(`📂  [${localeNum}/${totalLocales}]  ${localeName}  (${poEditorCode})`);
         console.log(`${'─'.repeat(62)}`);
 
         const folderPath = path.join(MISSING_DIR, folder);
