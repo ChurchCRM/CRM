@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -36,6 +37,8 @@ const CSV_FIELD_ALIASES = [
     'BirthDate'      => ['birthdate', 'birth_date', 'birth date', 'birthday', 'dob', 'date_of_birth', 'date of birth'],
     'MembershipDate' => ['membershipdate', 'membership_date', 'membership date', 'joined', 'join_date', 'join date'],
     'WeddingDate'    => ['weddingdate', 'wedding_date', 'wedding date', 'anniversary'],
+    'Classification' => ['classification', 'class', 'member_type', 'member type', 'membertype', 'membership_type', 'membership type'],
+    'FamilyRole'     => ['familyrole', 'family_role', 'family role', 'role', 'household_role', 'household role'],
 ];
 
 function autoMapHeader(string $header): ?string
@@ -184,6 +187,18 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // Cache families created during this import keyed by FamilyID from CSV
         $familyCache = [];
 
+        // Build classification name → ID lookup (list ID 1)
+        $classificationMap = [];
+        foreach (ListOptionQuery::create()->filterById(1)->find() as $cls) {
+            $classificationMap[strtolower($cls->getOptionName())] = $cls->getOptionId();
+        }
+
+        // Build family role name → ID lookup (list ID 2)
+        $familyRoleMap = [];
+        foreach (ListOptionQuery::create()->filterById(2)->find() as $role) {
+            $familyRoleMap[strtolower($role->getOptionName())] = $role->getOptionId();
+        }
+
         try {
             foreach ($csv->getRecords() as $row) {
                 // Map CSV row to a flat key=>value array using the column mapping
@@ -271,6 +286,22 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 if (!empty($data['MembershipDate'])) {
                     $ts = strtotime($data['MembershipDate']);
                     if ($ts !== false) $person->setMembershipDate(date('Y-m-d', $ts));
+                }
+
+                // Classification: resolve name → ID
+                if (!empty($data['Classification'])) {
+                    $clsKey = strtolower($data['Classification']);
+                    if (isset($classificationMap[$clsKey])) {
+                        $person->setClsId($classificationMap[$clsKey]);
+                    }
+                }
+
+                // Family role: resolve name → ID
+                if (!empty($data['FamilyRole'])) {
+                    $roleKey = strtolower($data['FamilyRole']);
+                    if (isset($familyRoleMap[$roleKey])) {
+                        $person->setFmrId($familyRoleMap[$roleKey]);
+                    }
                 }
 
                 if ($family !== null) {
