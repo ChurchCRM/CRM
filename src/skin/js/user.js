@@ -103,22 +103,15 @@ function initLocaleDropdown() {
     let userLocale = settingResult[0]?.value || "";
 
     $.each(locales, function (localeName, localeData) {
-      let isSelected = userLocale
-        ? localeData.locale === userLocale
-        : localeData.locale === window.CRM.systemLocale;
-      dropdown.append(
-        new Option(localeName, localeData.locale, false, isSelected),
-      );
+      let isSelected = userLocale ? localeData.locale === userLocale : localeData.locale === window.CRM.systemLocale;
+      dropdown.append(new Option(localeName, localeData.locale, false, isSelected));
     });
 
     dropdown.on("change", function () {
       let selected = $(this).find("option:selected");
       saveUserSetting("ui.locale", selected.val())
         .done(function () {
-          window.CRM.notify(
-            i18next.t("Language updated to") + " " + selected.text(),
-            { type: "success", delay: 3000 },
-          );
+          window.CRM.notify(i18next.t("Language updated to") + " " + selected.text(), { type: "success", delay: 3000 });
           setTimeout(function () {
             window.location.reload();
           }, 3000);
@@ -138,8 +131,7 @@ $(document).ready(function () {
   }
   if (typeof window.CRM.createPhotoUploader === "function") {
     window.CRM.photoUploader = window.CRM.createPhotoUploader({
-      uploadUrl:
-        window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
+      uploadUrl: window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
       maxFileSize: window.CRM.maxUploadSizeBytes,
       onComplete: function () {
         window.location.reload();
