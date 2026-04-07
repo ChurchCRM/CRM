@@ -45,7 +45,6 @@ describe("Standard User Settings Page", () => {
 
         // Layout controls
         cy.get("#boxedLayout").should("exist");
-        cy.get("#toggleSidebar").should("exist");
         // Table settings
         cy.get("#tablePageLength").should("exist");
     });

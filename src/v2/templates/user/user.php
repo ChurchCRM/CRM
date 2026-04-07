@@ -200,15 +200,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </label>
               </div>
             </div>
-            <div class="row mb-3">
-              <label class="col-sm-3 col-form-label" for="toggleSidebar"><?= gettext("Collapse Sidebar") ?></label>
-              <div class="col-sm-9">
-                <label class="form-check form-switch">
-                  <input type="checkbox" class="form-check-input user-setting-checkbox" id="toggleSidebar" data-layout="sidebar-collapse" data-css="body" data-setting-name="ui.sidebar">
-                  <span class="form-check-label"><?= gettext("Minimize the left sidebar by default") ?></span>
-                </label>
-              </div>
-            </div>
+
 
             <hr>
 
