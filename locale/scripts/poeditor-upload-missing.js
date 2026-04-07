@@ -580,6 +580,9 @@ async function main() {
     let totalSkipped = 0;
     let abortAll = false;
 
+    // Per-locale results for final report
+    const results = [];
+
     for (const folder of localeFolders) {
         if (abortAll) break;
 
@@ -588,6 +591,7 @@ async function main() {
 
         if (!localeEntry) {
             console.warn(`\n  ⚠️  Folder "${folder}" does not match any locale in locales.json — skipping.`);
+            results.push({ locale: folder, name: folder, status: 'no-match', uploaded: 0, empty: 0, remaining: '?' });
             totalSkipped++;
             continue;
         }
@@ -605,6 +609,7 @@ async function main() {
 
         if (jsonFiles.length === 0) {
             console.log('  No JSON batch files found, skipping.\n');
+            results.push({ locale: poEditorCode, name: localeName, status: 'no-files', uploaded: 0, empty: 0, remaining: '?' });
             continue;
         }
 
@@ -633,6 +638,7 @@ async function main() {
 
         if (localizedCount === 0) {
             console.log('  No valid translated terms found — nothing to upload.\n');
+            results.push({ locale: poEditorCode, name: localeName, status: 'nothing-to-upload', uploaded: 0, empty: totalEmpty, remaining: '?' });
             totalSkipped++;
             continue;
         }
@@ -657,6 +663,7 @@ async function main() {
 
             if (choice !== '' && choice !== 'y' && choice !== 'yes') {
                 console.log('  ⏭️  Skipped.');
+                results.push({ locale: poEditorCode, name: localeName, status: 'user-skipped', uploaded: 0, empty: totalEmpty, remaining: '?' });
                 totalSkipped++;
                 continue;
             }
@@ -664,6 +671,7 @@ async function main() {
 
         if (dryRun) {
             console.log(`  🔸 DRY RUN: would upload ${localizedCount} term(s) to "${poEditorCode}"`);
+            results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: '(dry run)' });
             totalUploaded += localizedCount;
             continue;
         }
@@ -680,22 +688,26 @@ async function main() {
             totalUploaded += localizedCount;
         } catch (err) {
             console.error(`  ❌ Upload failed: ${sanitize(err.message)}`);
+            results.push({ locale: poEditorCode, name: localeName, status: 'upload-failed', uploaded: 0, empty: totalEmpty, remaining: '?' });
             totalSkipped++;
             continue;
         }
 
         // ── Refresh missing terms ────────────────────────────────────────────
+        let remainingCount = '?';
         if (!skipDownload) {
             console.log(`\n  ⬇️  Refreshing missing terms from POEditor...`);
             try {
                 await sleep(3000); // brief pause before download to let POEditor process
-                await refreshMissingTerms(poEditorCode);
+                remainingCount = await refreshMissingTerms(poEditorCode);
             } catch (err) {
                 console.warn(`  ⚠️  Failed to refresh missing terms: ${sanitize(err.message)}`);
             }
         } else {
             console.log(`\n  ⏭️  Skipping download (--no-download)`);
         }
+
+        results.push({ locale: poEditorCode, name: localeName, status: 'uploaded', uploaded: localizedCount, empty: totalEmpty, remaining: remainingCount });
 
         // ── Rate-limit guard ─────────────────────────────────────────────────
         console.log(`  ⏱️  Waiting ${BETWEEN_LOCALES_DELAY_MS / 1000}s before next locale...`);
@@ -704,8 +716,58 @@ async function main() {
 
     rl.close();
 
-    console.log(`\n${'═'.repeat(62)}`);
-    console.log(`📊  Done — ${totalUploaded} term(s) uploaded, ${totalSkipped} locale(s) skipped`);
+    // ── Final report ─────────────────────────────────────────────────────────
+    console.log(`\n${'═'.repeat(72)}`);
+    console.log(`📊  Final Report — ${results.length} locale(s) processed`);
+    console.log(`${'═'.repeat(72)}`);
+
+    if (results.length > 0) {
+        // Table header
+        const colLocale = 18;
+        const colStatus = 18;
+        const colUp = 10;
+        const colEmpty = 8;
+        const colLeft = 10;
+        const header =
+            'Locale'.padEnd(colLocale) +
+            'Status'.padEnd(colStatus) +
+            'Uploaded'.padStart(colUp) +
+            'Empty'.padStart(colEmpty) +
+            'Remaining'.padStart(colLeft);
+        console.log(`\n  ${header}`);
+        console.log(`  ${'─'.repeat(header.length)}`);
+
+        const statusIcon = {
+            'uploaded':           '✅ uploaded',
+            'upload-failed':     '❌ failed',
+            'nothing-to-upload': '⚪ no terms',
+            'user-skipped':      '⏭️  skipped',
+            'no-match':          '⚠️  no match',
+            'no-files':          '⚪ no files',
+        };
+
+        for (const r of results) {
+            const label = `${r.name} (${r.locale})`.slice(0, colLocale - 1);
+            const status = (statusIcon[r.status] || r.status).slice(0, colStatus - 1);
+            const up = String(r.uploaded).padStart(colUp);
+            const empty = String(r.empty).padStart(colEmpty);
+            const left = String(r.remaining).padStart(colLeft);
+            console.log(`  ${label.padEnd(colLocale)}${status.padEnd(colStatus)}${up}${empty}${left}`);
+        }
+
+        console.log(`  ${'─'.repeat(header.length)}`);
+
+        // Totals
+        const totalUp = results.reduce((s, r) => s + r.uploaded, 0);
+        const successCount = results.filter(r => r.status === 'uploaded').length;
+        const failCount = results.filter(r => r.status === 'upload-failed').length;
+        const skipCount = results.filter(r => r.status !== 'uploaded' && r.status !== 'upload-failed').length;
+
+        console.log(`\n  Total uploaded: ${totalUp} term(s) across ${successCount} locale(s)`);
+        if (failCount > 0) console.log(`  Failed: ${failCount} locale(s)`);
+        if (skipCount > 0) console.log(`  Skipped: ${skipCount} locale(s)`);
+    }
+
     if (!skipDownload) {
         console.log(`\n📝  Missing-terms files have been refreshed locally.`);
         console.log(`    Run "node locale/scripts/locale-translate.js --list" to see what's left.`);
@@ -713,7 +775,7 @@ async function main() {
     console.log(`\n📝  Next steps:`);
     console.log(`  1. Share translations with POEditor reviewers`);
     console.log(`  2. Run locale-release workflow to download full translations (JSON + PO/MO)`);
-    console.log(`${'═'.repeat(62)}\n`);
+    console.log(`${'═'.repeat(72)}\n`);
 }
 
 main().catch((err) => {
