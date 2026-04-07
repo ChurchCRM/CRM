@@ -2046,14 +2046,6 @@ msgid "User Editor"
 msgstr "Editor ng User"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Tandaan: Ang mga pagbabago ay hindi magkakabisa hanggang sa susunod na pag-login."
-
-#: 
-msgid "Person to Make User"
-msgstr "Tao na Gagawing User"
-
-#: 
 msgid "Login Name"
 msgstr "Pangalan sa Login"
 
@@ -2088,22 +2080,6 @@ msgstr "Tingnan, Magdagdag at Mag-edit ng mga Tala"
 #: 
 msgid "Edit Self"
 msgstr "I-edit ang Sarili"
-
-#: 
-msgid "(Edit own family only.)"
-msgstr "(I-edit ang sariling pamilya lamang.)"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Nagbibigay ng lahat ng pribilehiyo.)"
-
-#: 
-msgid "Style"
-msgstr "Estilo"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Itakda ang Pahintulot bilang Totoo upang bigyan ang user na ito ng kakayahang baguhin ang kanilang kasalukuyang halaga."
 
 #: 
 msgid "Last Login"
@@ -2988,10 +2964,6 @@ msgstr "Data/Mga Ulat"
 #: 
 msgid "Query Menu"
 msgstr "Menu ng Query"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Mga Rekord ng CSV Export"
 
 #: 
 msgid "Family Properties"
@@ -4565,28 +4537,12 @@ msgid "open rate"
 msgstr "rate ng pagbubukas"
 
 #: 
-msgid "Login Info"
-msgstr "Impormasyon ng Login"
-
-#: 
-msgid "Login Count"
-msgstr "Bilang ng Login"
-
-#: 
-msgid "Failed Login"
-msgstr "Bagsak na Login"
-
-#: 
 msgid "Permissions"
 msgstr "Mga Pahintulot"
 
 #: 
 msgid "Manage Notes"
 msgstr "Pamahalaan ang mga Tala"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Nabigo ang paglikha ng bagong API Key"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -4653,10 +4609,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Mga Anibersaryo ng Kasal Ngayon"
 
 #: 
-msgid "Regen API Key"
-msgstr "Muling Gumawa ng API Key"
-
-#: 
 msgid "View Family Page"
 msgstr "Tingnan ang Pahina ng Pamilya"
 
@@ -4671,34 +4623,6 @@ msgstr "I-verify"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ang pamilya ay walang mga email na magagamit"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Naka-box na Layout"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "I-activate ang naka-box na layout"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "I-toggle ang Sidebar"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "I-toggle ang estado ng kaliwang sidebar (bukas o nakabaluktot)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Mga Setting ng Talahanayan"
-
-#: 
-msgid "Page length"
-msgstr "Haba ng Pahina"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Baguhin ang paunang haba ng pahina (bilang ng mga row bawat pahina)"
 
 #: 
 msgid "User Interface"

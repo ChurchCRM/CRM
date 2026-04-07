@@ -2150,14 +2150,6 @@ msgid "User Editor"
 msgstr "User Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Shënim: Ndryshimet nuk do të hyjë në fuqi deri në logon e ardhshëm."
-
-#: 
-msgid "Person to Make User"
-msgstr "Person të Bëni Përdorues"
-
-#: 
 msgid "User"
 msgstr "Përdoruesi"
 
@@ -2198,24 +2190,8 @@ msgid "Edit Self"
 msgstr "Edit Vetë"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit familjen e vet vetëm.)"
-
-#: 
 msgid "Admin"
 msgstr "Admin"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Grantet gjitha privilegjet.)"
-
-#: 
-msgid "Style"
-msgstr "Stili"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Caktoni lejen në 'E vërtetë' (True) për t'i dhënë këtij përdoruesi mundësinë për të ndryshuar vlerën e tij aktuale."
 
 #: 
 msgid "Last Login"
@@ -3175,10 +3151,6 @@ msgstr "Të dhëna/Raporte"
 #: 
 msgid "Query Menu"
 msgstr "Menuja e kërkesave"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Rekordet e eksportit CSV"
 
 #: 
 msgid "Family Properties"
@@ -6080,28 +6052,12 @@ msgid "open rate"
 msgstr "shkalla e hapjes"
 
 #: 
-msgid "Login Info"
-msgstr "Informacioni i hyrjes"
-
-#: 
-msgid "Login Count"
-msgstr "Numri i hyrjeve"
-
-#: 
-msgid "Failed Login"
-msgstr "Hyrje e dështuar"
-
-#: 
 msgid "Permissions"
 msgstr "Lejet"
 
 #: 
 msgid "Manage Notes"
 msgstr "Menaxho shënimet"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Dështoi gjenerimi i një çelësi të ri API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6173,14 +6129,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Përvjetorët e martesës së sotme"
 
 #: 
-msgid "Api Key"
-msgstr "Çelësi API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Rigjenero çelësin API"
-
-#: 
 msgid "View Family Page"
 msgstr "Shiko faqjen e familjes"
 
@@ -6195,34 +6143,6 @@ msgstr "Verifiko"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familja nuk ka email për t'u përdorur"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Paraqitja e kutizuar"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivizo paraqitjen e kutizuar"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Aktivizo/Çaktivizo shiritin anësor"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Aktivizo/Çaktivizo gjendjen e shiritit anësor të majtë (hap ose mbylle)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Cilësimet e tabelave"
-
-#: 
-msgid "Page length"
-msgstr "Gjatësia e faqjes"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ndrysho gjatësinë fillestare të faqjes (numrin e rreshtave për faqje)"
 
 #: 
 msgid "User Interface"

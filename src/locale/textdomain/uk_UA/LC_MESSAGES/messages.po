@@ -2149,14 +2149,6 @@ msgid "User Editor"
 msgstr "Редактор користувача"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Примітка: Зміни почнуть діяти до наступного входу в систему."
-
-#: 
-msgid "Person to Make User"
-msgstr "Особа, яка робить користувача"
-
-#: 
 msgid "User"
 msgstr "Користувач"
 
@@ -2197,24 +2189,8 @@ msgid "Edit Self"
 msgstr "Редагувати себе"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Редагувати лише власну сім’ю.)"
-
-#: 
 msgid "Admin"
 msgstr "Адміністратор"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Надає всі привілеї.)"
-
-#: 
-msgid "Style"
-msgstr "Стиль"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Встановіть Permission True, щоб надати цьому користувачеві можливість змінювати своє поточне значення."
 
 #: 
 msgid "Last Login"
@@ -3176,10 +3152,6 @@ msgstr "Дані / Звіти"
 #: 
 msgid "Query Menu"
 msgstr "Меню запитів"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Записи експорту CSV"
 
 #: 
 msgid "Family Properties"
@@ -6097,28 +6069,12 @@ msgid "open rate"
 msgstr "відкрита ставка"
 
 #: 
-msgid "Login Info"
-msgstr "Інформація для входу"
-
-#: 
-msgid "Login Count"
-msgstr "Кількість входів"
-
-#: 
-msgid "Failed Login"
-msgstr "Помилка входу"
-
-#: 
 msgid "Permissions"
 msgstr "Дозволи"
 
 #: 
 msgid "Manage Notes"
 msgstr "Керування нотатками"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Не вдалося створити новий ключ API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6190,14 +6146,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Сьогоднішні річниці весілля"
 
 #: 
-msgid "Api Key"
-msgstr "Ключ Api"
-
-#: 
-msgid "Regen API Key"
-msgstr "Ключ API Regen"
-
-#: 
 msgid "View Family Page"
 msgstr "Переглянути сімейну сторінку"
 
@@ -6212,34 +6160,6 @@ msgstr "Перевірити"
 #: 
 msgid "Family has no emails to use"
 msgstr "Сім'я не має електронних листів для використання"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Макет у коробці"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Активуйте розмітку в коробці"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Перемкнути бічну панель"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Переключити стан лівої бічної панелі (відкрити або згорнути)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Налаштування таблиць"
-
-#: 
-msgid "Page length"
-msgstr "Довжина сторінки"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Змінення початкової довжини сторінки (кількість рядків на сторінці)"
 
 #: 
 msgid "User Interface"

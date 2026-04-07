@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "사용자 편집"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "참고: 변경 사항은 다음 로그인부터 적용됩니다."
-
-#: 
-msgid "Person to Make User"
-msgstr "계정을 생성할 개인"
-
-#: 
 msgid "User"
 msgstr "사용자"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "본인 정보 수정"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(본인 가족만 수정 가능)"
-
-#: 
 msgid "Admin"
 msgstr "관리자"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(모든 권한 부여)"
-
-#: 
-msgid "Style"
-msgstr "스타일"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "허용을 선택하면 이 사용자가 해당 값을 수정할 수 있습니다."
 
 #: 
 msgid "Last Login"
@@ -3172,10 +3148,6 @@ msgstr "데이터/보고서"
 #: 
 msgid "Query Menu"
 msgstr "쿼리 메뉴"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV 내보내기 기록"
 
 #: 
 msgid "Family Properties"
@@ -6083,28 +6055,12 @@ msgid "open rate"
 msgstr "오픈율"
 
 #: 
-msgid "Login Info"
-msgstr "로그인 정보"
-
-#: 
-msgid "Login Count"
-msgstr "로그인 횟수"
-
-#: 
-msgid "Failed Login"
-msgstr "실패한 로그인"
-
-#: 
 msgid "Permissions"
 msgstr "권한"
 
 #: 
 msgid "Manage Notes"
 msgstr "메모 관리"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "새 API 키 생성에 실패했습니다"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6176,14 +6132,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "오늘의 결혼기념일"
 
 #: 
-msgid "Api Key"
-msgstr "API 키"
-
-#: 
-msgid "Regen API Key"
-msgstr "API 키 재생성"
-
-#: 
 msgid "View Family Page"
 msgstr "가족 페이지 보기"
 
@@ -6198,34 +6146,6 @@ msgstr "확인"
 #: 
 msgid "Family has no emails to use"
 msgstr "해당 가족에 사용할 이메일이 없습니다"
-
-#: 
-msgid "Boxed Layout"
-msgstr "박스 레이아웃"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "박스 레이아웃 활성화"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "사이드바 토글"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "왼쪽 사이드바를 열거나 접습니다"
-
-#: 
-msgid "Tables Settings"
-msgstr "테이블 설정"
-
-#: 
-msgid "Page length"
-msgstr "페이지 길이"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "처음 표시할 페이지 길이(페이지당 행 수)를 변경합니다"
 
 #: 
 msgid "User Interface"

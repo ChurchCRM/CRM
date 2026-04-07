@@ -2126,14 +2126,6 @@ msgid "User Editor"
 msgstr "Editor de Usuários"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Nota: As alterações não terão efeito até próximo logon."
-
-#: 
-msgid "Person to Make User"
-msgstr "Pessoa para tornar usuário"
-
-#: 
 msgid "User"
 msgstr "Usuário"
 
@@ -2174,24 +2166,8 @@ msgid "Edit Self"
 msgstr "Editar"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Editar própria família apenas.)"
-
-#: 
 msgid "Admin"
 msgstr "Configurações"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Conceder todos os privilégios.)"
-
-#: 
-msgid "Style"
-msgstr "Estilo"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Definir permissão verdadeira para dar novos usuários a capacidade de alterar o seu valor atual."
 
 #: 
 msgid "Last Login"
@@ -3146,10 +3122,6 @@ msgstr "Dados/Relatórios"
 #: 
 msgid "Query Menu"
 msgstr "Menu de consulta"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Exportar Registros em CSV"
 
 #: 
 msgid "Family Properties"
@@ -6052,28 +6024,12 @@ msgid "open rate"
 msgstr "Taxa livre"
 
 #: 
-msgid "Login Info"
-msgstr "Informação de login"
-
-#: 
-msgid "Login Count"
-msgstr "Contagem de login"
-
-#: 
-msgid "Failed Login"
-msgstr "Falha no login"
-
-#: 
 msgid "Permissions"
 msgstr "Permissões"
 
 #: 
 msgid "Manage Notes"
 msgstr "Editar Notas"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Falha ao gerar uma nova chave de API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6145,14 +6101,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Aniversários de Casamento"
 
 #: 
-msgid "Api Key"
-msgstr "Chave de API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Recriar Chave de API"
-
-#: 
 msgid "View Family Page"
 msgstr "Ver Página da Família"
 
@@ -6167,34 +6115,6 @@ msgstr "Verificar"
 #: 
 msgid "Family has no emails to use"
 msgstr "A família não tem e-mails para usar"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Layout em Caixa"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Ativar Layout em Caixa"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Alternar Barra Lateral"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Alternar a barra lateral esquerda (aberta ou encolhida)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Configuração das Tabelas"
-
-#: 
-msgid "Page length"
-msgstr "Comprimento da Página"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Alterar o comprimento da página inicial (número de linhas por página)"
 
 #: 
 msgid "User Interface"

@@ -2194,15 +2194,6 @@ msgid "User Editor"
 msgstr "Felhasználó szerkesztő"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Megjegyzés: A változások nem lépnek életbe, amíg a következő bejelentkezéskor."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Személy készítsünk User"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Felhasználó"
@@ -2252,25 +2243,8 @@ msgid "Edit Self"
 msgstr "Szerkesztés Self"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Szerkesztés saját családja csak.)"
-
-#: 
 msgid "Admin"
 msgstr "Adminisztrátor"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Ad minden jogosultságokat.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stílus"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Állítsa az engedélyt Igazra, hogy a felhasználó módosíthassa az aktuális értéket."
 
 #: 
 msgid "Last Login"
@@ -3246,10 +3220,6 @@ msgstr "Adatok/Jelentések"
 #: 
 msgid "Query Menu"
 msgstr "Lekérdezés menü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV export rekordok"
 
 #: 
 msgid "Family Properties"
@@ -6151,28 +6121,12 @@ msgid "open rate"
 msgstr "megnyitási arány"
 
 #: 
-msgid "Login Info"
-msgstr "Bejelentkezési adatok"
-
-#: 
-msgid "Login Count"
-msgstr "Bejelentkezések száma"
-
-#: 
-msgid "Failed Login"
-msgstr "Sikertelen bejelentkezés"
-
-#: 
 msgid "Permissions"
 msgstr "Jogosultságok"
 
 #: 
 msgid "Manage Notes"
 msgstr "Jegyzetek kezelése"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Az új API-kulcs létrehozása sikertelen"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6244,14 +6198,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "A mai házassági évfordulók"
 
 #: 
-msgid "Api Key"
-msgstr "API kulcs"
-
-#: 
-msgid "Regen API Key"
-msgstr "API kulcs újragenerálása"
-
-#: 
 msgid "View Family Page"
 msgstr "Család oldal megtekintése"
 
@@ -6266,34 +6212,6 @@ msgstr "Ellenőrzés"
 #: 
 msgid "Family has no emails to use"
 msgstr "A család nem rendelkezik e-mailekhez"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Doboz elrendezés"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Az doboz elrendezés aktiválása"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Oldalsáv váltása"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Az oldalsáv állapotának váltása (nyitott vagy összecsukott)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Táblázatok beállítások"
-
-#: 
-msgid "Page length"
-msgstr "Oldal hossza"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Az oldal kezdeti hosszának módosítása (sorok száma oldalanként)"
 
 #: 
 msgid "User Interface"

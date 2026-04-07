@@ -2207,15 +2207,6 @@ msgid "User Editor"
 msgstr "用戶編輯器"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "注：更改將不會生效，直到下一次登錄。"
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "人，使用戶"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "用戶名"
@@ -2265,26 +2256,9 @@ msgid "Edit Self"
 msgstr "編輯自"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "（編輯自己的家庭。）"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "管理員："
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "（授予所有權限）。"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "風格"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "設置Permission True以使該用戶能夠更改其當前值。"
 
 #: 
 msgid "Last Login"
@@ -3276,10 +3250,6 @@ msgstr "數據/報告"
 #: 
 msgid "Query Menu"
 msgstr "查詢菜單"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV匯出記錄"
 
 #: 
 #, fuzzy
@@ -6248,21 +6218,6 @@ msgstr "開放率"
 
 #: 
 #, fuzzy
-msgid "Login Info"
-msgstr "登錄信息"
-
-#: 
-#, fuzzy
-msgid "Login Count"
-msgstr "登錄次數"
-
-#: 
-#, fuzzy
-msgid "Failed Login"
-msgstr "登錄失敗"
-
-#: 
-#, fuzzy
 msgid "Permissions"
 msgstr "許可權"
 
@@ -6270,11 +6225,6 @@ msgstr "許可權"
 #, fuzzy
 msgid "Manage Notes"
 msgstr "管理筆記"
-
-#: 
-#, fuzzy
-msgid "Failed generate a new API Key"
-msgstr "生成新的API密鑰失敗"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6363,16 +6313,6 @@ msgstr "今天結婚週年紀念日"
 
 #: 
 #, fuzzy
-msgid "Api Key"
-msgstr "API金鑰"
-
-#: 
-#, fuzzy
-msgid "Regen API Key"
-msgstr "再生API金鑰"
-
-#: 
-#, fuzzy
 msgid "View Family Page"
 msgstr "查看家庭頁面"
 
@@ -6390,41 +6330,6 @@ msgstr "確認"
 #, fuzzy
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
-
-#: 
-#, fuzzy
-msgid "Boxed Layout"
-msgstr "盒裝布局"
-
-#: 
-#, fuzzy
-msgid "Activate the boxed layout"
-msgstr "啟動盒裝布局"
-
-#: 
-#, fuzzy
-msgid "Toggle Sidebar"
-msgstr "切換邊欄"
-
-#: 
-#, fuzzy
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "切換左側邊欄的狀態為(打開或折疊)"
-
-#: 
-#, fuzzy
-msgid "Tables Settings"
-msgstr "表格設定"
-
-#: 
-#, fuzzy
-msgid "Page length"
-msgstr "頁面長度"
-
-#: 
-#, fuzzy
-msgid "Change the initial page length (number of rows per page)"
-msgstr "更改初始頁面長度(每頁的行數)"
 
 #: 
 #, fuzzy

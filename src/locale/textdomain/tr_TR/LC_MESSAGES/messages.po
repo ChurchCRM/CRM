@@ -2149,14 +2149,6 @@ msgid "User Editor"
 msgstr "Kullanıcı editörü"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Not: Bir sonraki oturum açana kadar değişiklikler yürürlüğe girmez."
-
-#: 
-msgid "Person to Make User"
-msgstr "Kullanıcı yapmak için kişi"
-
-#: 
 msgid "User"
 msgstr "Kullanıcı"
 
@@ -2197,24 +2189,8 @@ msgid "Edit Self"
 msgstr "Kendini düzenle"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Yalnızca kendi ailesini düzenleyin.)"
-
-#: 
 msgid "Admin"
 msgstr "Yönetici"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Tüm ayrıcalıkları verir.)"
-
-#: 
-msgid "Style"
-msgstr "Stil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Bu kullanıcıya geçerli değerlerini değiştirme yeteneği vermek için izni doğru ayarlayın."
 
 #: 
 msgid "Last Login"
@@ -3176,10 +3152,6 @@ msgstr "Veri/Raporlar"
 #: 
 msgid "Query Menu"
 msgstr "Sorgu Menüsü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV Dışa Aktarma Kayıtları"
 
 #: 
 msgid "Family Properties"
@@ -6093,28 +6065,12 @@ msgid "open rate"
 msgstr "açık oran"
 
 #: 
-msgid "Login Info"
-msgstr "Giriş Bilgileri"
-
-#: 
-msgid "Login Count"
-msgstr "Giriş sayımı"
-
-#: 
-msgid "Failed Login"
-msgstr "Başarısız oturum açma"
-
-#: 
 msgid "Permissions"
 msgstr "İzin"
 
 #: 
 msgid "Manage Notes"
 msgstr "Notları Yönetin"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Başarısız yeni bir API anahtarı oluşturun"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6186,14 +6142,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Bugünün evlilik yıldönümleri"
 
 #: 
-msgid "Api Key"
-msgstr "API Anahtarı"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regen API Anahtarı"
-
-#: 
 msgid "View Family Page"
 msgstr "Aile Sayfasını Görüntüle"
 
@@ -6208,34 +6156,6 @@ msgstr "Doğrulayın"
 #: 
 msgid "Family has no emails to use"
 msgstr "Ailenin kullanılacak e -postaları yok"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Kutulu düzen"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Kutulu düzeni etkinleştirin"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Kenar çubuğu"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Sol kenar çubuğunun durumunu değiştirin (açık veya çökme)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tablo Ayarları"
-
-#: 
-msgid "Page length"
-msgstr "Sayfa uzunluğu"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "İlk sayfa uzunluğunu değiştirin (sayfa başına satır sayısı)"
 
 #: 
 msgid "User Interface"

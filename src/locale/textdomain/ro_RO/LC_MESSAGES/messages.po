@@ -2201,15 +2201,6 @@ msgid "User Editor"
 msgstr "Utilizator Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Notă: Modificările nu vor avea efect până la următoarea conectare."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Persoana pentru a face Utilizator"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Utilizator"
@@ -2259,25 +2250,8 @@ msgid "Edit Self"
 msgstr "Editare Auto"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Editare propria familie numai.)"
-
-#: 
 msgid "Admin"
 msgstr "Administrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Granturi toate privilegiile.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Stil"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Alege permisiuni DA pentru a permite acestui utilizatori să schimbe valoarea curentă"
 
 #: 
 msgid "Last Login"
@@ -3255,10 +3229,6 @@ msgstr "Dată/Rapoarte"
 #: 
 msgid "Query Menu"
 msgstr "Meniu întrebări"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Înregistrări eport CSV"
 
 #: 
 msgid "Family Properties"
@@ -6171,28 +6141,12 @@ msgid "open rate"
 msgstr "Rata de deschidere"
 
 #: 
-msgid "Login Info"
-msgstr "Informații autentificare"
-
-#: 
-msgid "Login Count"
-msgstr "Număr de autentificări"
-
-#: 
-msgid "Failed Login"
-msgstr "Autentificare eșuată"
-
-#: 
 msgid "Permissions"
 msgstr "Permisiuni"
 
 #: 
 msgid "Manage Notes"
 msgstr "Administrați notițele"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Generarea unei noi chei API a eșuat"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6264,14 +6218,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Aniversările de nuntă de astăzi"
 
 #: 
-msgid "Api Key"
-msgstr "Cheia API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerați Cheia API"
-
-#: 
 msgid "View Family Page"
 msgstr "Vizualizați pagina familiei"
 
@@ -6286,34 +6232,6 @@ msgstr "Verifică"
 #: 
 msgid "Family has no emails to use"
 msgstr "Familia nu are adrese de email de utilizat"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Aspect cu casetă"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Activați aspectul cu casetă"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Comutați starea panoului lateral"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Comutați starea panoului lateral stânga (deschis sau pliat)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Setări Tabele"
-
-#: 
-msgid "Page length"
-msgstr "Lungimea paginii"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Schimbați lungimea paginii inițiale (numărul de rânduri per pagină)"
 
 #: 
 msgid "User Interface"
