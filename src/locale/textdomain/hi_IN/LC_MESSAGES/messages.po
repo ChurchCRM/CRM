@@ -14469,3 +14469,333 @@ msgstr "CSV निर्यात खोलें"
 msgid "Restore from the System Backup page"
 msgstr "सिस्टम बैकअप पेज से पुनर्स्थापित करें"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "एक सिस्टम अपडेट उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।"
+
+#: 
+msgid "API Access"
+msgstr "API पहुँच"
+
+#: 
+msgid "API Key"
+msgstr "API कुंजी"
+
+#: 
+msgid "API key regenerated"
+msgstr "API कुंजी पुनः उत्पन्न की गई"
+
+#: 
+msgid "Account"
+msgstr "खाता"
+
+#: 
+msgid "Advanced Settings"
+msgstr "उन्नत सेटिंग्स"
+
+#: 
+msgid "An error occurred."
+msgstr "एक त्रुटि उत्पन्न हुई।"
+
+#: 
+msgid "Appearance"
+msgstr "स्वरूप"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "वित्त डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "समूह डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "लोग डैशबोर्ड पर वापस जाएं"
+
+#: 
+msgid "Blue"
+msgstr "नीला"
+
+#: 
+msgid "Change Photo"
+msgstr "फ़ोटो बदलें"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "परिवर्तन अगले लॉगऑन तक प्रभावी नहीं होंगे।"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "हल्की और गहरी रंग योजना के बीच चुनें"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "एप्लिकेशन का रूप और अनुभव अनुकूलित करें"
+
+#: 
+msgid "Cyan"
+msgstr "सियान"
+
+#: 
+msgid "Dark"
+msgstr "गहरा"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "केवल डेटाबेस (.sql) या पूर्ण संग्रह (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "डेटा तालिकाओं में दिखाई जाने वाली पंक्तियों की डिफ़ॉल्ट संख्या। अगले पृष्ठ लोड पर प्रभावी होगी।"
+
+#: 
+msgid "Edit own family only"
+msgstr "केवल अपना परिवार संपादित करें"
+
+#: 
+msgid "Enter text here..."
+msgstr "यहाँ टेक्स्ट दर्ज करें..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "नामांकन रद्द करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "कार्यक्रम हटाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "दो-कारक प्रमाणीकरण अक्षम करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR कोड बनाने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "कैलेंडर डेटा लोड करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "कार्यक्रम लोड करने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "पुनर्प्राप्ति कोड लोड करने में विफल। कृपया पृष्ठ को रीफ्रेश करें।"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "कार्यक्रम सहेजने में विफल। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Failed to save setting"
+msgstr "सेटिंग सहेजने में विफल"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "फिलिपिनो - फिलीपींस"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "अपनी भाषा में गलत या अटपटे अनुवादों को ठीक करना"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "अनुवाद में कोई त्रुटि मिली?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "सभी विशेषाधिकार प्रदान करता है"
+
+#: 
+msgid "Green"
+msgstr "हरा"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "अनुवाद सुधारने में सहायता करें"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "यदि आप गड़बड़ अक्षर, टेक्स्ट के रूप में दिखने वाली HTML एंटिटी, या ऐसे अनुवाद देखें जो पृष्ठ का लेआउट तोड़ते हैं, तो कृपया GitHub पर समस्या रिपोर्ट करें ताकि इसे सभी के लिए ठीक किया जा सके।"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "x-api-key हेडर का उपयोग करके अनुरोधों में अपनी API कुंजी शामिल करें:"
+
+#: 
+msgid "Indigo"
+msgstr "इंडिगो"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "अमान्य JSON मान — सेटिंग सहेजी नहीं गई। कृपया इसे सुधारें और पुनः प्रयास करें।"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "POEditor पर अनुवाद परियोजना में शामिल हों"
+
+#: 
+msgid "Language and regional settings"
+msgstr "भाषा और क्षेत्रीय सेटिंग्स"
+
+#: 
+msgid "Light"
+msgstr "हल्का"
+
+#: 
+msgid "Lime"
+msgstr "नींबू हरा"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "मलयालम - भारत"
+
+#: 
+msgid "Manage 2FA"
+msgstr "2FA प्रबंधित करें"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "ईमेल सीमांकक और प्रदर्शन विकल्पों जैसी अतिरिक्त प्राथमिकताएं प्रबंधित करें"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "बाह्य एकीकरण के लिए अपनी API कुंजी प्रबंधित करें"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "विधि की अनुमति नहीं"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "अनुवाद गायब हैं या गलत हैं?"
+
+#: 
+msgid "My Account"
+msgstr "मेरा खाता"
+
+#: 
+msgid "Orange"
+msgstr "नारंगी"
+
+#: 
+msgid "Override the system default locale"
+msgstr "सिस्टम की डिफ़ॉल्ट लोकेल को ओवरराइड करें"
+
+#: 
+msgid "Page Not Found"
+msgstr "पृष्ठ नहीं मिला"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "आपकी वर्तमान भाषा के लिए अनुवादित स्ट्रिंग का प्रतिशत"
+
+#: 
+msgid "Pink"
+msgstr "गुलाबी"
+
+#: 
+msgid "Primary Color"
+msgstr "प्राथमिक रंग"
+
+#: 
+msgid "Profile and security"
+msgstr "प्रोफ़ाइल और सुरक्षा"
+
+#: 
+msgid "Purple"
+msgstr "बैंगनी"
+
+#: 
+msgid "Red"
+msgstr "लाल"
+
+#: 
+msgid "Regenerate"
+msgstr "पुनः उत्पन्न करें"
+
+#: 
+msgid "Rows per page"
+msgstr "प्रति पृष्ठ पंक्तियाँ"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "इस उपयोगकर्ता को स्वयं सेटिंग बदलने की अनुमति देने के लिए अनुमति को True पर सेट करें।"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "बटनों, लिंक और सक्रिय तत्वों के लिए उपयोग किया जाने वाला एक्सेंट रंग सेट करें"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "मौजूदा अनुवादों के लिए बेहतर वाक्यांश सुझाना"
+
+#: 
+msgid "System Update Available"
+msgstr "सिस्टम अपडेट उपलब्ध"
+
+#: 
+msgid "Tables"
+msgstr "तालिकाएं"
+
+#: 
+msgid "Teal"
+msgstr "टील"
+
+#: 
+msgid "Theme Mode"
+msgstr "थीम मोड"
+
+#: 
+msgid "Toggle search"
+msgstr "खोज टॉगल करें"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "कवरेज बेहतर करने के लिए गायब स्ट्रिंग का अनुवाद करना"
+
+#: 
+msgid "Translation Progress"
+msgstr "अनुवाद प्रगति"
+
+#: 
+msgid "Usage"
+msgstr "उपयोग"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "API अनुरोधों को प्रमाणित करने के लिए इस कुंजी का उपयोग करें। पुनः उत्पन्न करने से वर्तमान कुंजी अमान्य हो जाएगी।"
+
+#: 
+msgid "User Config"
+msgstr "उपयोगकर्ता कॉन्फ़िगरेशन"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "सत्यापन विफल हुआ। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "संस्करण %s उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।"
+
+#: 
+msgid "View All"
+msgstr "सभी देखें"
+
+#: 
+msgid "Yellow"
+msgstr "पीला"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "आपके वर्तमान पहुँच स्तर (केवल-पठन)"
+

@@ -14573,3 +14573,329 @@ msgstr "Deschideți Exportul CSV"
 msgid "Restore from the System Backup page"
 msgstr "Restaurați din pagina de Copie de rezervă a sistemului"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "O actualizare de sistem este disponibilă. Vă rugăm să actualizați instalarea."
+
+#: 
+msgid "API Access"
+msgstr "Acces API"
+
+#: 
+msgid "API Key"
+msgstr "Cheie API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Cheia API a fost regenerată"
+
+#: 
+msgid "Account"
+msgstr "Cont"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Setări avansate"
+
+#: 
+msgid "An error occurred."
+msgstr "A apărut o eroare."
+
+#: 
+msgid "Appearance"
+msgstr "Aspect"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Înapoi la panoul financiar"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Înapoi la panoul grupurilor"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Înapoi la panoul enoriașilor"
+
+#: 
+msgid "Blue"
+msgstr "Albastru"
+
+#: 
+msgid "Change Photo"
+msgstr "Schimbă fotografia"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Modificările nu vor intra în vigoare până la următoarea autentificare."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Alegeți între schema de culori deschisă și cea întunecată"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteți contribui:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Personalizați aspectul și comportamentul aplicației"
+
+#: 
+msgid "Cyan"
+msgstr "Azuriu"
+
+#: 
+msgid "Dark"
+msgstr "Întunecat"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Doar baza de date (.sql) sau arhivă completă (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Numărul implicit de rânduri afișate în tabelele de date. Intră în vigoare la următoarea încărcare a paginii."
+
+#: 
+msgid "Edit own family only"
+msgstr "Editați doar propria familie"
+
+#: 
+msgid "Enter text here..."
+msgstr "Introduceți textul aici..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Anularea înscrierii a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Ștergerea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Dezactivarea autentificării în doi pași a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Generarea codului QR a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Încărcarea datelor calendarului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Încărcarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Încărcarea codurilor de recuperare a eșuat. Vă rugăm să reîmprospătați pagina."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Salvarea evenimentului a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Salvarea setării a eșuat"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipineză - Filipine"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Corectarea traducerilor incorecte sau necorespunzătoare în limba dvs."
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Ați găsit o eroare în traduceri?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Acordă toate privilegiile"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Ajutați la îmbunătățirea traducerilor"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Dacă observați caractere corupte, entități HTML afișate ca text sau traduceri care strică aspectul paginii, vă rugăm să raportați problema pe GitHub pentru a fi corectată pentru toată lumea."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Includeți cheia API în cereri folosind antetul x-api-key:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Valoare JSON invalidă — setarea nu a fost salvată. Vă rugăm să o corectați și să încercați din nou."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Alăturați-vă proiectului de traducere pe POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Setări de limbă și regionale"
+
+#: 
+msgid "Light"
+msgstr "Deschis"
+
+#: 
+msgid "Lime"
+msgstr "Galben-verde"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalamă - India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Gestionați 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Gestionați preferințe suplimentare, cum ar fi delimitatorii de e-mail și opțiunile de afișare"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Gestionați cheia API pentru integrări externe"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metodă nepermisă"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Traduceri lipsă sau incorecte?"
+
+#: 
+msgid "My Account"
+msgstr "Contul meu"
+
+#: 
+msgid "Orange"
+msgstr "Portocaliu"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Suprascrieți localizarea implicită a sistemului"
+
+#: 
+msgid "Page Not Found"
+msgstr "Pagina nu a fost găsită"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procentajul șirurilor traduse pentru limba dvs. curentă"
+
+#: 
+msgid "Pink"
+msgstr "Roz"
+
+#: 
+msgid "Primary Color"
+msgstr "Culoare principală"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil și securitate"
+
+#: 
+msgid "Purple"
+msgstr "Violet"
+
+#: 
+msgid "Red"
+msgstr "Roșu"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerare"
+
+#: 
+msgid "Rows per page"
+msgstr "Rânduri pe pagină"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Setați Permisiunea la Adevărat pentru a permite acestui utilizator să modifice setarea singur."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Setați culoarea de accent utilizată pentru butoane, linkuri și elemente active"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugerarea unor formulări mai bune pentru traducerile existente"
+
+#: 
+msgid "System Update Available"
+msgstr "Actualizare de sistem disponibilă"
+
+#: 
+msgid "Tables"
+msgstr "Tabele"
+
+#: 
+msgid "Teal"
+msgstr "Verde-albăstrui"
+
+#: 
+msgid "Theme Mode"
+msgstr "Modul temei"
+
+#: 
+msgid "Toggle search"
+msgstr "Activați/dezactivați căutarea"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Traducerea șirurilor lipsă pentru a îmbunătăți acoperirea"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progresul traducerii"
+
+#: 
+msgid "Usage"
+msgstr "Utilizare"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Utilizați această cheie pentru a autentifica cererile API. Regenerarea va invalida cheia curentă."
+
+#: 
+msgid "User Config"
+msgstr "Configurare utilizator"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificarea a eșuat. Vă rugăm să încercați din nou."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea."
+
+#: 
+msgid "View All"
+msgstr "Vizualizați toate"
+
+#: 
+msgid "Yellow"
+msgstr "Galben"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Nivelurile dvs. actuale de acces (doar citire)"
+

@@ -14492,3 +14492,403 @@ msgstr "Filstørrelsen overskrider servergrensen på %s"
 msgid "Missing image data in request"
 msgstr "Manglende bildedata i forespørselen"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Finn personer som ikke deltok på et arrangement"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Manglende personer"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Velg ønsket arrangement"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Avansert filtrering etter gruppe, klassifikasjon og rolle"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alle menighetsmedlemmer inkludert"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-eksport fullført"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-kompatibelt kolonneformat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontaktinformasjon, familieroller og viktige datoer"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Opprett en fullstendig sikkerhetskopi av kirkens database. Last ned en database-kun SQL-fil eller et komplett arkiv inkludert opplastede bilder."
+
+#: 
+msgid "Database Backup"
+msgstr "Databasesikkerhetskopi"
+
+#: 
+msgid "Export"
+msgstr "Eksporter"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Eksporter menighetsdata til CSV-format. Velg hvilke felt som skal inkluderes og filtrer etter klassifikasjon, gruppe, kjønn og mer."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Eksporter alle personer i formatet forventet av ChMeetings, noe som gjør det enkelt å synkronisere menighetsdata med ChMeetings-plattformen."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Eksporter kirkens data til ulike formater"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Ekstern (WebDAV) sikkerhetskopi via plugin"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Kunne ikke eksportere ChMeetings CSV"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Familie- eller individuell postoppsett"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Fleksibelt feltvalg"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gå til databasesikkerhetskopi"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Åpne CSV-eksport"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Gjenopprett fra systemsikkerhetskopi-siden"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "En systemoppdatering er tilgjengelig. Vennligst oppgrader installasjonen din."
+
+#: 
+msgid "API Access"
+msgstr "API-tilgang"
+
+#: 
+msgid "API Key"
+msgstr "API-nøkkel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-nøkkel regenerert"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Avanserte innstillinger"
+
+#: 
+msgid "An error occurred."
+msgstr "Det oppstod en feil."
+
+#: 
+msgid "Appearance"
+msgstr "Utseende"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Tilbake til finansoversikt"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Tilbake til gruppeoversikt"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Tilbake til personeroversikt"
+
+#: 
+msgid "Blue"
+msgstr "Blå"
+
+#: 
+msgid "Change Photo"
+msgstr "Endre bilde"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Endringer trer ikke i kraft før neste innlogging."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Velg mellom lyst og mørkt fargetema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du kan hjelpe ved å:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Tilpass utseendet og opplevelsen av applikasjonen"
+
+#: 
+msgid "Dark"
+msgstr "Mørk"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Kun database (.sql) eller fullstendig arkiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standard antall rader vist i datatabeller. Trer i kraft ved neste sideinnlasting."
+
+#: 
+msgid "Edit own family only"
+msgstr "Rediger kun egen familie"
+
+#: 
+msgid "Enter text here..."
+msgstr "Skriv inn tekst her..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Kunne ikke avbryte påmeldingen. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Kunne ikke slette arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kunne ikke deaktivere tofaktorautentisering. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Kunne ikke generere QR-kode. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kunne ikke laste inn kalenderdata. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Kunne ikke laste inn arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Kunne ikke laste inn gjenopprettingskoder. Vennligst oppdater siden."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Kunne ikke lagre arrangementet. Vennligst prøv igjen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Kunne ikke lagre innstilling"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipinsk - Filippinene"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Rette feilaktige eller klønete oversettelser på ditt språk"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Fant en feil med oversettelser?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Gir alle rettigheter"
+
+#: 
+msgid "Green"
+msgstr "Grønn"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Hjelp til å forbedre oversettelser"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Hvis du legger merke til forvrengte tegn, HTML-enheter som vises som tekst, eller oversettelser som ødelegger sideoppsettet, vennligst rapporter problemet på GitHub slik at det kan rettes for alle."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Inkluder API-nøkkelen din i forespørsler ved hjelp av x-api-key-hodet:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ugyldig JSON-verdi — innstillingen ble ikke lagret. Vennligst korriger den og prøv igjen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Bli med i oversettelsesprosjektet på POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Språk- og regionsinnstillinger"
+
+#: 
+msgid "Light"
+msgstr "Lys"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Administrer 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Administrer tilleggsinnstillinger som e-postdelimitere og visningsalternativer"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Administrer API-nøkkelen din for eksterne integrasjoner"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metode ikke tillatt"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Manglende eller feilaktige oversettelser?"
+
+#: 
+msgid "My Account"
+msgstr "Min konto"
+
+#: 
+msgid "Orange"
+msgstr "Oransje"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Overstyr systemets standardspråk"
+
+#: 
+msgid "Page Not Found"
+msgstr "Side ikke funnet"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Prosentandel av strenger oversatt for ditt nåværende språk"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Primærfarge"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil og sikkerhet"
+
+#: 
+msgid "Purple"
+msgstr "Lilla"
+
+#: 
+msgid "Red"
+msgstr "Rød"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerer"
+
+#: 
+msgid "Rows per page"
+msgstr "Rader per side"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Sett tillatelse til Sann for å tillate denne brukeren å endre innstillingen selv."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Angi aksentsfargen brukt for knapper, lenker og aktive elementer"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Foreslå bedre formuleringer for eksisterende oversettelser"
+
+#: 
+msgid "System Update Available"
+msgstr "Systemoppdatering tilgjengelig"
+
+#: 
+msgid "Tables"
+msgstr "Tabeller"
+
+#: 
+msgid "Teal"
+msgstr "Blågrønn"
+
+#: 
+msgid "Theme Mode"
+msgstr "Temainnstilling"
+
+#: 
+msgid "Toggle search"
+msgstr "Slå av/på søk"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Oversette manglende strenger for å forbedre dekning"
+
+#: 
+msgid "Translation Progress"
+msgstr "Oversettelsesframgang"
+
+#: 
+msgid "Usage"
+msgstr "Bruk"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Bruk denne nøkkelen til å autentisere API-forespørsler. Regenerering vil ugyldiggjøre den gjeldende nøkkelen."
+
+#: 
+msgid "User Config"
+msgstr "Brukerkonfigurasjon"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifisering mislyktes. Vennligst prøv igjen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versjon %s er tilgjengelig. Vennligst oppgrader installasjonen din."
+
+#: 
+msgid "View All"
+msgstr "Vis alle"
+
+#: 
+msgid "Yellow"
+msgstr "Gul"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Dine nåværende tilgangsnivåer (skrivebeskyttet)"
+

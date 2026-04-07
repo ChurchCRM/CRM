@@ -14419,3 +14419,416 @@ msgstr "Lêergrootte oorskry die bediener se limiet van %s"
 msgid "Missing image data in request"
 msgstr "Beelddata ontbreek in versoek"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Vind mense wat nie 'n geleentheid bygewoon het nie"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Ontbrekende persone"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Kies die gewenste geleentheid"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Gevorderde filtrering per groep, klassifikasie en rol"
+
+#: 
+msgid "All congregation members included"
+msgstr "Alle gemeentelede ingesluit"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-uitvoer suksesvol voltooi"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-versoenbare kolomformaat"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Kontakbesonderhede, gesinsrolle en sleuteldatums"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Skep 'n volledige rugsteun van u kerklêer. Laai 'n slegs-databasis-SQL-lêer of 'n volledige argief insluitend opgelaaide foto's af."
+
+#: 
+msgid "Database Backup"
+msgstr "Databasis Rugsteun"
+
+#: 
+msgid "Export"
+msgstr "Uitvoer"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Voer gemeentedata uit na CSV-formaat. Kies watter velde om in te sluit en filtreer per klassifikasie, groep, geslag en meer."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Voer alle persone uit in die formaat wat deur ChMeetings verwag word, sodat u gemeentedata maklik met die ChMeetings-platform gesinkroniseer kan word."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Voer u kerkdata uit na verskeie formate"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Eksterne (WebDAV) rugsteun via inprop"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Kon nie ChMeetings CSV uitvoer nie"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Gesin- of individuele rekorduitleg"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Buigsame veldkeuse"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Gaan na Databasis Rugsteun"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Maak CSV-uitvoer oop"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Herstel vanaf die Stelsel Rugsteunbladsy"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "'n Stelselverwerkingsopgradering is beskikbaar. Gradeer asseblief u installasie op."
+
+#: 
+msgid "API Access"
+msgstr "API-toegang"
+
+#: 
+msgid "API Key"
+msgstr "API-sleutel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-sleutel hergenereer"
+
+#: 
+msgid "Account"
+msgstr "Rekening"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Gevorderde Instellings"
+
+#: 
+msgid "An error occurred."
+msgstr "'n Fout het voorgekom."
+
+#: 
+msgid "Appearance"
+msgstr "Voorkoms"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Terug na Finansiële Dashboard"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Terug na Groepe Dashboard"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Terug na Mense Dashboard"
+
+#: 
+msgid "Blue"
+msgstr "Blou"
+
+#: 
+msgid "Change Photo"
+msgstr "Verander Foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Veranderinge sal nie van krag word tot die volgende aanmelding nie."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Kies tussen ligte en donker kleurskema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-vertalings word deur die gemeenskap op POEditor bestuur. U kan help deur:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Pasmaak die voorkoms en gevoel van die toepassing"
+
+#: 
+msgid "Cyan"
+msgstr "Siaan"
+
+#: 
+msgid "Dark"
+msgstr "Donker"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Slegs databasis (.sql) of volledige argief (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Verstekgetal rye wat in datatabelle gewys word. Tree in werking by volgende bladsylading."
+
+#: 
+msgid "Edit own family only"
+msgstr "Wysig slegs eie gesin"
+
+#: 
+msgid "Enter text here..."
+msgstr "Voer teks hier in..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Kon nie inskrywing kanselleer nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Kon nie geleentheid uitvee nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kon nie twee-faktor-verifikasie deaktiveer nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Kon nie QR-kode genereer nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kon nie kalenderdata laai nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Kon nie geleentheid laai nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Kon nie herstelling-kodes laai nie. Verfris asseblief die bladsy."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Kon nie geleentheid stoor nie. Probeer asseblief weer."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Kon nie instelling stoor nie"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipyns - Filippyne"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Regmaak van verkeerde of onhandige vertalings in u taal"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Het u 'n fout in vertalings gevind?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Verleen alle voorregte"
+
+#: 
+msgid "Green"
+msgstr "Groen"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Help om Vertalings te Verbeter"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "As u deurmekaar karakters, HTML-entiteite wat as teks verskyn, of vertalings wat die bladsyuitleg verbreek opmerk, rapporteer die probleem asseblief op GitHub sodat dit vir almal reggemaak kan word."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Sluit u API-sleutel in versoeke in deur die x-api-key-koptekst te gebruik:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ongeldige JSON-waarde — instelling is nie gestoor nie. Korrigeer dit asseblief en probeer weer."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Sluit aan by die Vertaalprojek op POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Taal- en streeksinstellings"
+
+#: 
+msgid "Light"
+msgstr "Lig"
+
+#: 
+msgid "Lime"
+msgstr "Limoen"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - Indië"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Bestuur 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Bestuur addisionele voorkeure soos e-pos-afgrensers en vertoonopsies"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Bestuur u API-sleutel vir eksterne integrasies"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metode Nie Toegelaat Nie"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Ontbrekende of verkeerde vertalings?"
+
+#: 
+msgid "My Account"
+msgstr "My Rekening"
+
+#: 
+msgid "Orange"
+msgstr "Oranje"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Oorskryf die stelsel se verstekinstellings"
+
+#: 
+msgid "Page Not Found"
+msgstr "Bladsy Nie Gevind Nie"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Persentasie strings vertaal vir u huidige taal"
+
+#: 
+msgid "Pink"
+msgstr "Pienk"
+
+#: 
+msgid "Primary Color"
+msgstr "Primêre Kleur"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiel en sekuriteit"
+
+#: 
+msgid "Purple"
+msgstr "Pers"
+
+#: 
+msgid "Red"
+msgstr "Rooi"
+
+#: 
+msgid "Regenerate"
+msgstr "Hergenereer"
+
+#: 
+msgid "Rows per page"
+msgstr "Rye per bladsy"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Stel Toestemming op Waar om hierdie gebruiker toe te laat om die instelling self te verander."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Stel die aksentkleur in wat gebruik word vir knoppies, skakels en aktiewe elemente"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Stel beter bewoording voor vir bestaande vertalings"
+
+#: 
+msgid "System Update Available"
+msgstr "Stelselverwerkingsopgradering Beskikbaar"
+
+#: 
+msgid "Tables"
+msgstr "Tabelle"
+
+#: 
+msgid "Teal"
+msgstr "Tiaalgroen"
+
+#: 
+msgid "Theme Mode"
+msgstr "Temamodus"
+
+#: 
+msgid "Toggle search"
+msgstr "Wissel soektog"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Vertaal ontbrekende strings om dekking te verbeter"
+
+#: 
+msgid "Translation Progress"
+msgstr "Vertaalvordering"
+
+#: 
+msgid "Usage"
+msgstr "Gebruik"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gebruik hierdie sleutel om API-versoeke te verifieer. Hergenerering sal die huidige sleutel ongeldig maak."
+
+#: 
+msgid "User Config"
+msgstr "Gebruikersinstellings"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifikasie misluk. Probeer asseblief weer."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Weergawe %s is beskikbaar. Gradeer asseblief u installasie op."
+
+#: 
+msgid "View All"
+msgstr "Sien Alles"
+
+#: 
+msgid "Yellow"
+msgstr "Geel"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "U huidige toegangsvlakke (leesalleen)"
+

@@ -14413,3 +14413,416 @@ msgstr "Madhësia e skedarit tejkalon kufirin e serverit prej %s"
 msgid "Missing image data in request"
 msgstr "Të dhënat e imazhit mungojnë në kërkesë"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Gjej njerëzit që nuk morën pjesë në një ngjarje"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Persona të munguar"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Zgjidhni ngjarjen e dëshiruar"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Filtrimi i avancuar sipas grupit, klasifikimit dhe rolit"
+
+#: 
+msgid "All congregation members included"
+msgstr "Të gjithë anëtarët e kongregacionit janë përfshirë"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "Eksporti i ChMeetings u krye me sukses"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "Formati i kolonave i përputhshëm me ChMeetings"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Informacioni i kontaktit, rolet familjare dhe datat kryesore"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Krijoni një kopje rezervë të plotë të bazës së të dhënave të kishës suaj. Shkarkoni një skedar SQL vetëm për bazën e të dhënave ose një arkiv të plotë duke përfshirë fotot e ngarkuara."
+
+#: 
+msgid "Database Backup"
+msgstr "Kopje rezervë e bazës së të dhënave"
+
+#: 
+msgid "Export"
+msgstr "Eksporto"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Eksportoni të dhënat e kongregacionit në format CSV. Zgjidhni cilat fusha të përfshini dhe filtroni sipas klasifikimit, grupit, gjinisë dhe më shumë."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Eksportoni të gjithë personat në formatin e pritur nga ChMeetings, duke e bërë të lehtë sinkronizimin e të dhënave të kongregacionit tuaj me platformën ChMeetings."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Eksportoni të dhënat e kishës suaj në formate të ndryshme"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Kopje rezervë e jashtme (WebDAV) nëpërmjet shtojcës"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "Dështoi eksporti i CSV të ChMeetings"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Paraqitja e rekordit familjar ose individual"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Zgjedhje fleksibël e fushave"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Shko te Kopja rezervë e bazës së të dhënave"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Hap Eksportin CSV"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Rivendos nga faqja e Kopjes rezervë të sistemit"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Është i disponueshëm një përditësim i sistemit. Ju lutemi përditësoni instalimin tuaj."
+
+#: 
+msgid "API Access"
+msgstr "Qasja API"
+
+#: 
+msgid "API Key"
+msgstr "Çelësi API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Çelësi API u rigjenerua"
+
+#: 
+msgid "Account"
+msgstr "Llogaria"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Cilësimet e avancuara"
+
+#: 
+msgid "An error occurred."
+msgstr "Ndodhi një gabim."
+
+#: 
+msgid "Appearance"
+msgstr "Pamja"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Kthehu te Paneli i Financave"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Kthehu te Paneli i Grupeve"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Kthehu te Paneli i Personave"
+
+#: 
+msgid "Blue"
+msgstr "Kaltër"
+
+#: 
+msgid "Change Photo"
+msgstr "Ndrysho Foton"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Ndryshimet nuk do të hyjnë në fuqi deri në hyrjen tjetër."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Zgjidhni ndërmjet skemës së ngjyrave të çelët dhe të errët"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Përkthimet e ChurchCRM menaxhohen nga komuniteti në POEditor. Mund të ndihmoni duke:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Personalizoni pamjen dhe ndjeshmërinë e aplikacionit"
+
+#: 
+msgid "Cyan"
+msgstr "Cian"
+
+#: 
+msgid "Dark"
+msgstr "E errët"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Vetëm baza e të dhënave (.sql) ose arkiv i plotë (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Numri i parazgjedhur i rreshtave të shfaqura në tabelat e të dhënave. Hyn në fuqi me ngarkimin e faqes tjetër."
+
+#: 
+msgid "Edit own family only"
+msgstr "Ndrysho vetëm familjen tënde"
+
+#: 
+msgid "Enter text here..."
+msgstr "Shkruani tekstin këtu..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Dështoi anulimi i regjistrimit. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Dështoi fshirja e ngjarjes. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Dështoi çaktivizimi i vërtetimit me dy faktorë. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Dështoi gjenerimi i kodit QR. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Dështoi ngarkimi i të dhënave të kalendarit. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Dështoi ngarkimi i ngjarjes. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Dështoi ngarkimi i kodeve të rikuperimit. Ju lutemi rifreskoni faqen."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Dështoi ruajtja e ngjarjes. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Dështoi ruajtja e cilësimit"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipinez - Filipine"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Korrigjoni përkthimet e pasakta ose të vështira në gjuhën tuaj"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Gjetët një defekt me përkthimet?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Jep të gjitha privilegjet"
+
+#: 
+msgid "Green"
+msgstr "Gjelbër"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Ndihmoni të Përmirësohen Përkthimet"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Nëse vëreni karaktere të çrregullta, entitete HTML që shfaqen si tekst, ose përkthime që prishin paraqitjen e faqes, ju lutemi raportoni problemin në GitHub që të mund të rregullohet për të gjithë."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Përfshini çelësin tuaj API në kërkesat duke përdorur kokën x-api-key:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Vlerë JSON e pavlefshme — cilësimi nuk u ruajt. Ju lutemi korrigjoni dhe provoni përsëri."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Bashkohuni me Projektin e Përkthimit në POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Cilësimet e gjuhës dhe rajonit"
+
+#: 
+msgid "Light"
+msgstr "E çelët"
+
+#: 
+msgid "Lime"
+msgstr "Gëlbazë"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajalam - Indi"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Menaxho 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Menaxhoni preferencat shtesë si ndarësit e emailit dhe opsionet e shfaqjes"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Menaxhoni çelësin tuaj API për integrimet e jashtme"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoda Nuk Lejohet"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Përkthime të mungësuara ose të pasakta?"
+
+#: 
+msgid "My Account"
+msgstr "Llogaria Ime"
+
+#: 
+msgid "Orange"
+msgstr "Portokalli"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Anashkaloni lokalin e parazgjedhur të sistemit"
+
+#: 
+msgid "Page Not Found"
+msgstr "Faqja Nuk U Gjet"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Përqindja e vargjeve të përkthyera për gjuhën tuaj aktuale"
+
+#: 
+msgid "Pink"
+msgstr "Rozë"
+
+#: 
+msgid "Primary Color"
+msgstr "Ngjyra Kryesore"
+
+#: 
+msgid "Profile and security"
+msgstr "Profili dhe siguria"
+
+#: 
+msgid "Purple"
+msgstr "Vjollcë"
+
+#: 
+msgid "Red"
+msgstr "Kuq"
+
+#: 
+msgid "Regenerate"
+msgstr "Rigjeneroj"
+
+#: 
+msgid "Rows per page"
+msgstr "Rreshta për faqe"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Vendosni Lejen në E vërtetë për të lejuar këtë përdorues të ndryshojë vetë cilësimin."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Vendosni ngjyrën e akcentit të përdorur për butonat, lidhjet dhe elementet aktive"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugjeroni formulime më të mira për përkthimet ekzistuese"
+
+#: 
+msgid "System Update Available"
+msgstr "Përditësim i Sistemit i Disponueshëm"
+
+#: 
+msgid "Tables"
+msgstr "Tabelat"
+
+#: 
+msgid "Teal"
+msgstr "Xhamurd"
+
+#: 
+msgid "Theme Mode"
+msgstr "Modaliteti i Temës"
+
+#: 
+msgid "Toggle search"
+msgstr "Aktivizo/çaktivizo kërkimin"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Përktheni vargjet e mungësuara për të përmirësuar mbulimin"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progresi i Përkthimit"
+
+#: 
+msgid "Usage"
+msgstr "Përdorimi"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Përdorni këtë çelës për të vërtetuar kërkesat API. Rigjenerimi do të bëjë të pavlefshëm çelësin aktual."
+
+#: 
+msgid "User Config"
+msgstr "Konfigurimi i Përdoruesit"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifikimi dështoi. Ju lutemi provoni përsëri."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versioni %s është i disponueshëm. Ju lutemi përditësoni instalimin tuaj."
+
+#: 
+msgid "View All"
+msgstr "Shiko Të Gjitha"
+
+#: 
+msgid "Yellow"
+msgstr "Verdhë"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Nivelet tuaja aktuale të aksesit (vetëm lexim)"
+

@@ -14465,3 +14465,320 @@ msgstr "Open CSV-export"
 msgid "Restore from the System Backup page"
 msgstr "Herstellen via de systeemback-uppagina"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Er is een systeemupdate beschikbaar. Werk uw installatie bij."
+
+#: 
+msgid "API Access"
+msgstr "API-toegang"
+
+#: 
+msgid "API Key"
+msgstr "API-sleutel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-sleutel opnieuw gegenereerd"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Geavanceerde instellingen"
+
+#: 
+msgid "An error occurred."
+msgstr "Er is een fout opgetreden."
+
+#: 
+msgid "Appearance"
+msgstr "Weergave"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Terug naar financieel overzicht"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Terug naar groepenoverzicht"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Terug naar personenoverzicht"
+
+#: 
+msgid "Blue"
+msgstr "Blauw"
+
+#: 
+msgid "Change Photo"
+msgstr "Foto wijzigen"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Wijzigingen worden pas van kracht bij de volgende aanmelding."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Kies tussen licht en donker kleurenschema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-vertalingen worden beheerd door de community op POEditor. U kunt helpen door:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Pas het uiterlijk van de applicatie aan"
+
+#: 
+msgid "Cyan"
+msgstr "Cyaan"
+
+#: 
+msgid "Dark"
+msgstr "Donker"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Alleen database (.sql) of volledig archief (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standaard aantal rijen weergegeven in datatabellen. Van kracht bij het laden van de volgende pagina."
+
+#: 
+msgid "Edit own family only"
+msgstr "Alleen eigen gezin bewerken"
+
+#: 
+msgid "Enter text here..."
+msgstr "Voer hier tekst in..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Annuleren van inschrijving mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Verwijderen van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Uitschakelen van tweefactorauthenticatie mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Genereren van QR-code mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Laden van kalendergegevens mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Laden van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Laden van herstelcodes mislukt. Vernieuw de pagina."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Opslaan van evenement mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Instelling opslaan mislukt"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipijns - Filipijnen"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Onjuiste of onhandige vertalingen in uw taal corrigeren"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Een fout gevonden in de vertalingen?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Verleent alle rechten"
+
+#: 
+msgid "Green"
+msgstr "Groen"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Help vertalingen te verbeteren"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Als u verminkte tekens, HTML-entiteiten als tekst of vertalingen die de pagina-indeling verstoren opmerkt, meld het probleem dan op GitHub zodat het voor iedereen kan worden opgelost."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Neem uw API-sleutel op in verzoeken via de x-api-key header:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ongeldige JSON-waarde — instelling is niet opgeslagen. Corrigeer het en probeer het opnieuw."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Doe mee aan het vertaalproject op POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Taal- en regionale instellingen"
+
+#: 
+msgid "Light"
+msgstr "Licht"
+
+#: 
+msgid "Lime"
+msgstr "Limoengroen"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Tweefactorauthenticatie beheren"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Aanvullende voorkeuren beheren zoals e-mailscheidingstekens en weergaveopties"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Beheer uw API-sleutel voor externe integraties"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Methode niet toegestaan"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Ontbrekende of onjuiste vertalingen?"
+
+#: 
+msgid "My Account"
+msgstr "Mijn account"
+
+#: 
+msgid "Orange"
+msgstr "Oranje"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Standaardlocale van het systeem overschrijven"
+
+#: 
+msgid "Page Not Found"
+msgstr "Pagina niet gevonden"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Percentage vertaalde teksten voor uw huidige taal"
+
+#: 
+msgid "Pink"
+msgstr "Roze"
+
+#: 
+msgid "Primary Color"
+msgstr "Primaire kleur"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiel en beveiliging"
+
+#: 
+msgid "Purple"
+msgstr "Paars"
+
+#: 
+msgid "Red"
+msgstr "Rood"
+
+#: 
+msgid "Regenerate"
+msgstr "Opnieuw genereren"
+
+#: 
+msgid "Rows per page"
+msgstr "Rijen per pagina"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Stel toestemming in op Waar om deze gebruiker de instelling zelf te laten wijzigen."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Stel de accentkleur in voor knoppen, links en actieve elementen"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Betere formuleringen voorstellen voor bestaande vertalingen"
+
+#: 
+msgid "System Update Available"
+msgstr "Systeemupdate beschikbaar"
+
+#: 
+msgid "Tables"
+msgstr "Tabellen"
+
+#: 
+msgid "Teal"
+msgstr "Petrol"
+
+#: 
+msgid "Theme Mode"
+msgstr "Thema-modus"
+
+#: 
+msgid "Toggle search"
+msgstr "Zoeken in-/uitschakelen"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Ontbrekende teksten vertalen om dekking te verbeteren"
+
+#: 
+msgid "Translation Progress"
+msgstr "Voortgang van vertalingen"
+
+#: 
+msgid "Usage"
+msgstr "Gebruik"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Gebruik deze sleutel om API-verzoeken te verifiëren. Opnieuw genereren maakt de huidige sleutel ongeldig."
+
+#: 
+msgid "User Config"
+msgstr "Gebruikersconfiguratie"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verificatie mislukt. Probeer het opnieuw."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versie %s is beschikbaar. Werk uw installatie bij."
+
+#: 
+msgid "View All"
+msgstr "Alles weergeven"
+
+#: 
+msgid "Yellow"
+msgstr "Geel"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Uw huidige toegangsniveaus (alleen-lezen)"
+

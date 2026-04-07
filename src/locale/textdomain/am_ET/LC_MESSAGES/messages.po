@@ -14522,3 +14522,333 @@ msgstr "CSV ወደ ውጭ ማውጫ ክፈት"
 msgid "Restore from the System Backup page"
 msgstr "ከስርዓቱ ምትኬ ገጽ ወደ ነበረበት መለስ"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "የስርዓት ዝማኔ አለ። እባክዎ ጭነቱን ያዘምኑ።"
+
+#: 
+msgid "API Access"
+msgstr "የ API መዳረሻ"
+
+#: 
+msgid "API Key"
+msgstr "የ API ቁልፍ"
+
+#: 
+msgid "API key regenerated"
+msgstr "የ API ቁልፍ እንደገና ተፈጥሯል"
+
+#: 
+msgid "Account"
+msgstr "መለያ"
+
+#: 
+msgid "Advanced Settings"
+msgstr "የላቀ ቅንብሮች"
+
+#: 
+msgid "An error occurred."
+msgstr "ስህተት ተከስቷል።"
+
+#: 
+msgid "Appearance"
+msgstr "መልክ"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "ወደ ፋይናንስ ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "ወደ አገልግሎቶች ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "ወደ ሰዎች ዳሽቦርድ ተመለስ"
+
+#: 
+msgid "Blue"
+msgstr "ሰማያዊ"
+
+#: 
+msgid "Change Photo"
+msgstr "ፎቶ ቀይር"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "ለውጦቹ እስከሚቀጥለው ግባ ድረስ ተፈጻሚ አይሆኑም።"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "ብርሃን ወይም ጨለማ የቀለም ሥርዓት ይምረጡ"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "የ ChurchCRM ትርጉሞች በማህበረሰቡ በ POEditor ይተዳደራሉ። እንዲህ ማገዝ ይችላሉ፦"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "የፕሮግራሙን መልክና ስሜት ያብጁ"
+
+#: 
+msgid "Cyan"
+msgstr "ሳይያን"
+
+#: 
+msgid "Dark"
+msgstr "ጨለማ"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "ዳታቤዝ ብቻ (.sql) ወይም ሙሉ መዝገብ (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "በዳታ ሰንጠረዦች ውስጥ የሚታዩ ነባሪ የረድፎች ቁጥር። በሚቀጥለው ገፅ ጭነት ተፈጻሚ ይሆናል።"
+
+#: 
+msgid "Edit own family only"
+msgstr "የራስ ቤተሰብ ብቻ አርትዕ"
+
+#: 
+msgid "Enter text here..."
+msgstr "ጽሑፍ ያስገቡ..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "ምዝገባን መሰረዝ አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "ዝግጅቱን መሰረዝ አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "ሁለት-ደረጃ ማረጋገጫን ማሰናከል አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR ኮድ ማፍጠን አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "የቀን መቁጠሪያ ዳታ መጫን አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "ዝግጅቱን መጫን አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "የማስገኛ ኮዶችን መጫን አልተቻለም። እባክዎ ገፁን ያድሱ።"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "ዝግጅቱን ማስቀመጥ አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Failed to save setting"
+msgstr "ቅንብሩን ማስቀመጥ አልተቻለም"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "ፊሊፒኖ - ፊሊፒንስ"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "በቋንቋዎ ትክክለኛ ያልሆኑ ወይም ጎጂ ትርጉሞችን ማስተካከል"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "በትርጉሞች ላይ ችግር አገኙ?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "ሁሉንም መብቶች ይሰጣል"
+
+#: 
+msgid "Green"
+msgstr "አረንጓዴ"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "ትርጉሞችን ለማሻሻል ይርዱ"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "ትርጉም ያልተደረጉ ቁምፊዎች፣ እንደ ጽሑፍ የሚታዩ HTML አካላት ወይም የገፅ አቀማመጥ የሚያበሳጩ ትርጉሞች ካስተዋሉ፣ ለሁሉም ይስተካከሉ ዘንድ ችግሩን በ GitHub ሪፖርት ያድርጉ።"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "በጥያቄዎቹ ውስጥ የ API ቁልፍዎን በ x-api-key ጭብጥ ያካትቱ፦"
+
+#: 
+msgid "Indigo"
+msgstr "ኢንዲጎ"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "ልክ ያልሆነ JSON ዋጋ — ቅንብሩ አልተቀመጠም። እባክዎ ያስተካክሉ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "በ POEditor ላይ የትርጉም ፕሮጀክቱን ይቀላቀሉ"
+
+#: 
+msgid "Language and regional settings"
+msgstr "የቋንቋ እና የክልል ቅንብሮች"
+
+#: 
+msgid "Light"
+msgstr "ብርሃን"
+
+#: 
+msgid "Lime"
+msgstr "ሎሚ አረንጓዴ"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "ማላያላም - ህንድ"
+
+#: 
+msgid "Manage 2FA"
+msgstr "2FA ያስተዳድሩ"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "እንደ ኢሜይል ማብቂያዎችና ማሳያ አማራጮች ያሉ ተጨማሪ ምርጫዎችን ያስተዳድሩ"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "ለውጫዊ ውህደቶች የ API ቁልፍዎን ያስተዳድሩ"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "ዘዴው አልተፈቀደም"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "የጠፉ ወይም ትክክለኛ ያልሆኑ ትርጉሞች?"
+
+#: 
+msgid "My Account"
+msgstr "የኔ መለያ"
+
+#: 
+msgid "Orange"
+msgstr "ብርቱካናማ"
+
+#: 
+msgid "Override the system default locale"
+msgstr "የስርዓቱን ነባሪ ቋንቋ ቅንብር ተካ"
+
+#: 
+msgid "Page Not Found"
+msgstr "ገፁ አልተገኘም"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "ለአሁን ቋንቋዎ የተተረጎሙ ሐረጎች መቶኛ"
+
+#: 
+msgid "Pink"
+msgstr "ሮዝ"
+
+#: 
+msgid "Primary Color"
+msgstr "ዋና ቀለም"
+
+#: 
+msgid "Profile and security"
+msgstr "መገለጫ እና ደህንነት"
+
+#: 
+msgid "Purple"
+msgstr "ሐምራዊ"
+
+#: 
+msgid "Red"
+msgstr "ቀይ"
+
+#: 
+msgid "Regenerate"
+msgstr "እንደገና አፍጥን"
+
+#: 
+msgid "Rows per page"
+msgstr "በገፅ ያሉ ረድፎች"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "ይህ ተጠቃሚ ቅንብሩን ለማስተካከል እንዲፈቀድለት ፈቃዱን እውነት ያድርጉ።"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "ለቁልፎች፣ ለሊንኮች እና ለነቃ አካላት የሚጠቀም ማጉያ ቀለምን ያዋቅሩ"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "ለነባር ትርጉሞች የተሻሻሉ ሐረጎችን መጠቆም"
+
+#: 
+msgid "System Update Available"
+msgstr "የስርዓት ዝማኔ አለ"
+
+#: 
+msgid "Tables"
+msgstr "ሰንጠረዦች"
+
+#: 
+msgid "Teal"
+msgstr "ሰማያዊ-አረንጓዴ"
+
+#: 
+msgid "Theme Mode"
+msgstr "የገጽ አቀማመጥ ሁናቴ"
+
+#: 
+msgid "Toggle search"
+msgstr "ፍለጋ ቀያይር"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "ሽፋንን ለማሻሻል የጠፉ ሐረጎችን መተርጎም"
+
+#: 
+msgid "Translation Progress"
+msgstr "የትርጉም ሂደት"
+
+#: 
+msgid "Usage"
+msgstr "አጠቃቀም"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "የ API ጥያቄዎችን ለማረጋገጥ ይህን ቁልፍ ይጠቀሙ። እንደገና ማፍጠን ያሁኑን ቁልፍ ያሰናክላል።"
+
+#: 
+msgid "User Config"
+msgstr "የተጠቃሚ ቅንብር"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "ማረጋገጥ አልተሳካም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "ስሪት %s አለ። እባክዎ ጭነቱን ያዘምኑ።"
+
+#: 
+msgid "View All"
+msgstr "ሁሉንም ይመልከቱ"
+
+#: 
+msgid "Yellow"
+msgstr "ቢጫ"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "የአሁን የመዳረሻ ደረጃዎችዎ (ለማንበብ ብቻ)"
+

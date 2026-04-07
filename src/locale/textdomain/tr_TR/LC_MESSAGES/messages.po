@@ -14422,3 +14422,415 @@ msgstr "Dosya boyutu sunucunun %s sınırını aşıyor"
 msgid "Missing image data in request"
 msgstr "İstekte görüntü verisi eksik"
 
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Eksik kişiler"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "İstediğiniz etkinliği seçin"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Grup, sınıflandırma ve role göre gelişmiş filtreleme"
+
+#: 
+msgid "All congregation members included"
+msgstr "Tüm cemaat üyeleri dahil"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings dışa aktarma başarıyla tamamlandı"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings uyumlu sütun biçimi"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "İletişim bilgileri, aile rolleri ve önemli tarihler"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Kilise veritabanınızın tam yedeğini oluşturun. Yalnızca veritabanı SQL dosyası veya yüklenen fotoğrafları içeren tam bir arşiv indirin."
+
+#: 
+msgid "Database Backup"
+msgstr "Veritabanı Yedekleme"
+
+#: 
+msgid "Export"
+msgstr "Dışa Aktar"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Cemaat verilerini CSV biçimine aktarın. Hangi alanların dahil edileceğini seçin; sınıflandırma, grup, cinsiyet ve daha fazlasına göre filtreleyin."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Tüm kişileri ChMeetings tarafından beklenen biçimde dışa aktarın; cemaat verilerinizi ChMeetings platformuyla kolayca senkronize edin."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Kilise verilerinizi çeşitli biçimlere aktarın"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Eklenti aracılığıyla harici (WebDAV) yedekleme"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV dışa aktarma başarısız oldu"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Aile veya bireysel kayıt düzeni"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Esnek alan seçimi"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Veritabanı Yedeklemeye Git"
+
+#: 
+msgid "Open CSV Export"
+msgstr "CSV Dışa Aktarmayı Aç"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Sistem Yedekleme sayfasından geri yükleyin"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Bir sistem güncellemesi mevcut. Lütfen kurulumunuzu güncelleyin."
+
+#: 
+msgid "API Access"
+msgstr "API Erişimi"
+
+#: 
+msgid "API Key"
+msgstr "API Anahtarı"
+
+#: 
+msgid "API key regenerated"
+msgstr "API anahtarı yeniden oluşturuldu"
+
+#: 
+msgid "Account"
+msgstr "Hesap"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Gelişmiş Ayarlar"
+
+#: 
+msgid "An error occurred."
+msgstr "Bir hata oluştu."
+
+#: 
+msgid "Appearance"
+msgstr "Görünüm"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Finans Panosuna Geri Dön"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Gruplar Panosuna Geri Dön"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Kişiler Panosuna Geri Dön"
+
+#: 
+msgid "Blue"
+msgstr "Mavi"
+
+#: 
+msgid "Change Photo"
+msgstr "Fotoğrafı Değiştir"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Değişiklikler bir sonraki girişe kadar geçerli olmayacak."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Açık ve koyu renk şeması arasında seçim yapın"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM çevirileri topluluk tarafından POEditor'da yönetilmektedir. Şu şekillerde yardımcı olabilirsiniz:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Uygulamanın görünümünü ve hissini özelleştirin"
+
+#: 
+msgid "Cyan"
+msgstr "Camgöbeği"
+
+#: 
+msgid "Dark"
+msgstr "Koyu"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Yalnızca veritabanı (.sql) veya tam arşiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Veri tablolarında gösterilen varsayılan satır sayısı. Bir sonraki sayfa yüklemesinde geçerli olur."
+
+#: 
+msgid "Edit own family only"
+msgstr "Yalnızca kendi ailesini düzenle"
+
+#: 
+msgid "Enter text here..."
+msgstr "Metni buraya girin..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Kayıt iptal edilemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Etkinlik silinemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "İki faktörlü kimlik doğrulama devre dışı bırakılamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR kodu oluşturulamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Takvim verileri yüklenemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Etkinlik yüklenemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Kurtarma kodları yüklenemedi. Lütfen sayfayı yenileyin."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Etkinlik kaydedilemedi. Lütfen tekrar deneyin."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Ayar kaydedilemedi"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipince - Filipinler"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Dilinizdeki yanlış veya garip çevirileri düzeltme"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Çevirilerde bir hata mı buldunuz?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Tüm ayrıcalıkları verir"
+
+#: 
+msgid "Green"
+msgstr "Yeşil"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Çevirileri İyileştirmeye Yardım Edin"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Bozuk karakterler, metin olarak görünen HTML varlıkları veya sayfa düzenini bozan çeviriler fark ederseniz, lütfen sorunu GitHub'da bildirin; böylece herkes için düzeltilebilir."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "İsteklere x-api-key başlığını kullanarak API anahtarınızı ekleyin:"
+
+#: 
+msgid "Indigo"
+msgstr "İndigo"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Geçersiz JSON değeri — ayar kaydedilmedi. Lütfen düzeltin ve tekrar deneyin."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "POEditor'daki Çeviri Projesine Katılın"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Dil ve bölgesel ayarlar"
+
+#: 
+msgid "Light"
+msgstr "Açık"
+
+#: 
+msgid "Lime"
+msgstr "Limon Yeşili"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalamca - Hindistan"
+
+#: 
+msgid "Manage 2FA"
+msgstr "2FA'yı Yönet"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "E-posta sınırlayıcılar ve görüntüleme seçenekleri gibi ek tercihleri yönetin"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Harici entegrasyonlar için API anahtarınızı yönetin"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Yöntem İzin Verilmiyor"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Eksik veya hatalı çeviriler mi?"
+
+#: 
+msgid "My Account"
+msgstr "Hesabım"
+
+#: 
+msgid "Orange"
+msgstr "Turuncu"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Sistem varsayılan yerel ayarını geçersiz kıl"
+
+#: 
+msgid "Page Not Found"
+msgstr "Sayfa Bulunamadı"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Mevcut diliniz için çevrilen dizelerin yüzdesi"
+
+#: 
+msgid "Pink"
+msgstr "Pembe"
+
+#: 
+msgid "Primary Color"
+msgstr "Ana Renk"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil ve güvenlik"
+
+#: 
+msgid "Purple"
+msgstr "Mor"
+
+#: 
+msgid "Red"
+msgstr "Kırmızı"
+
+#: 
+msgid "Regenerate"
+msgstr "Yeniden Oluştur"
+
+#: 
+msgid "Rows per page"
+msgstr "Sayfa başına satır"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Bu kullanıcının ayarı kendisi değiştirebilmesi için İzni Doğru olarak ayarlayın."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Düğmeler, bağlantılar ve etkin öğeler için kullanılan vurgu rengini ayarlayın"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Mevcut çeviriler için daha iyi ifadeler önerme"
+
+#: 
+msgid "System Update Available"
+msgstr "Sistem Güncellemesi Mevcut"
+
+#: 
+msgid "Tables"
+msgstr "Tablolar"
+
+#: 
+msgid "Teal"
+msgstr "Deniz Mavisi"
+
+#: 
+msgid "Theme Mode"
+msgstr "Tema Modu"
+
+#: 
+msgid "Toggle search"
+msgstr "Aramayı aç/kapat"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Kapsamı artırmak için eksik dizeleri çevirme"
+
+#: 
+msgid "Translation Progress"
+msgstr "Çeviri İlerlemesi"
+
+#: 
+msgid "Usage"
+msgstr "Kullanım"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "API isteklerini doğrulamak için bu anahtarı kullanın. Yeniden oluşturma mevcut anahtarı geçersiz kılar."
+
+#: 
+msgid "User Config"
+msgstr "Kullanıcı Yapılandırması"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Doğrulama başarısız oldu. Lütfen tekrar deneyin."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin."
+
+#: 
+msgid "View All"
+msgstr "Tümünü Görüntüle"
+
+#: 
+msgid "Yellow"
+msgstr "Sarı"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Mevcut erişim seviyeleriniz (salt okunur)"
+
