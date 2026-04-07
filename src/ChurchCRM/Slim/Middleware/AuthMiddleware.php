@@ -33,7 +33,11 @@ class AuthMiddleware implements MiddlewareInterface
                 ]);
                 $authenticationResult = AuthenticationManager::authenticate(new APITokenAuthenticationRequest($apiKey[0]));
                 if (!$authenticationResult->isAuthenticated) {
-                    AuthenticationManager::endSession(true);
+                    try {
+                        AuthenticationManager::endSession(true);
+                    } catch (\Exception $e) {
+                        $logger->debug('Error ending session during failed API auth', ['exception' => $e]);
+                    }
                     $logger->warning('Invalid API key authentication attempt', [
                         'path' => $request->getUri()->getPath(),
                         'method' => $request->getMethod()
