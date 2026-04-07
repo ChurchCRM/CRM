@@ -31,7 +31,7 @@ describe("Family Verification Page", () => {
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
         cy.get("#UpdateNeeded").click();
-        // Click textarea first to ensure it has focus after modal animation settles
+        // Click textarea first to ensure focus after modal animation settles
         cy.get("#confirm-info-data").should("be.visible").click().type("Update needed");
         cy.get("#confirm-info-data").invoke("val").should("include", "Update");
     });
