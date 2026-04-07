@@ -187,15 +187,19 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         // Cache families created during this import keyed by FamilyID from CSV
         $familyCache = [];
 
-        // Build classification name → ID lookup (list ID 1)
+        // List IDs are stable schema constants: 1 = Classifications, 2 = Family Roles
+        $classificationListId = 1;
+        $familyRoleListId     = 2;
+
+        // Build classification name → ID lookup
         $classificationMap = [];
-        foreach (ListOptionQuery::create()->filterById(1)->find() as $cls) {
+        foreach (ListOptionQuery::create()->filterById($classificationListId)->find() as $cls) {
             $classificationMap[strtolower($cls->getOptionName())] = $cls->getOptionId();
         }
 
-        // Build family role name → ID lookup (list ID 2)
+        // Build family role name → ID lookup
         $familyRoleMap = [];
-        foreach (ListOptionQuery::create()->filterById(2)->find() as $role) {
+        foreach (ListOptionQuery::create()->filterById($familyRoleListId)->find() as $role) {
             $familyRoleMap[strtolower($role->getOptionName())] = $role->getOptionId();
         }
 
