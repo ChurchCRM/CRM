@@ -2138,14 +2138,6 @@ msgid "User Editor"
 msgstr "వినియోగదారు ఎడిటర్"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "గమనిక: మార్పులు తదుపరి లాగిన్ వరకు అమలులోకి రావు."
-
-#: 
-msgid "Person to Make User"
-msgstr "వినియోగదారుగా చేయవలసిన వ్యక్తి"
-
-#: 
 msgid "User"
 msgstr "వినియోగదారు"
 
@@ -2186,24 +2178,8 @@ msgid "Edit Self"
 msgstr "స్వయంగా సవరించండి"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(సొంత కుటుంబాన్ని మాత్రమే సవరించండి.)"
-
-#: 
 msgid "Admin"
 msgstr "అడ్మిన్"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(అన్ని అధికారాలను మంజూరు చేస్తుంది.)"
-
-#: 
-msgid "Style"
-msgstr "శైలి"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "ఈ వినియోగదారుకు వారి ప్రస్తుత విలువను మార్చే సామర్థ్యాన్ని ఇవ్వడానికి అనుమతిని ట్రూ చేయండి."
 
 #: 
 msgid "Last Login"
@@ -3157,10 +3133,6 @@ msgstr "డేటా/నివేదికలు"
 #: 
 msgid "Query Menu"
 msgstr "క్వరీ మెనూ"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV ఎగుమతి రికార్డులు"
 
 #: 
 msgid "Family Properties"
@@ -6062,28 +6034,12 @@ msgid "open rate"
 msgstr "ఓపెన్ రేటు"
 
 #: 
-msgid "Login Info"
-msgstr "లాగిన్ సమాచారం"
-
-#: 
-msgid "Login Count"
-msgstr "లాగిన్ కౌంట్"
-
-#: 
-msgid "Failed Login"
-msgstr "లాగిన్ విఫలమైంది"
-
-#: 
 msgid "Permissions"
 msgstr "అనుమతులు"
 
 #: 
 msgid "Manage Notes"
 msgstr "నోట్స్ నిర్వహించు"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "కొత్త API కీని రూపొందించడంలో విఫలమైంది"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6155,14 +6111,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "ఈరోజు వివాహ వార్షికోత్సవాలు"
 
 #: 
-msgid "Api Key"
-msgstr "API కీ"
-
-#: 
-msgid "Regen API Key"
-msgstr "API కీని పునరుత్పత్తి చేయండి"
-
-#: 
 msgid "View Family Page"
 msgstr "కుటుంబ పేజీని వీక్షించండి"
 
@@ -6177,34 +6125,6 @@ msgstr "ధృవీకరించండి"
 #: 
 msgid "Family has no emails to use"
 msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
-
-#: 
-msgid "Boxed Layout"
-msgstr "బాక్స్డ్ లేఅవుట్"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "బాక్స్డ్ లేఅవుట్‌ను సక్రియం చేయండి"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "సైడ్‌బార్‌ను టోగుల్ చేయండి"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "ఎడమ సైడ్‌బార్ స్థితిని టోగుల్ చేయండి (తెరవండి లేదా కుదించండి)"
-
-#: 
-msgid "Tables Settings"
-msgstr "టేబుల్స్ సెట్టింగులు"
-
-#: 
-msgid "Page length"
-msgstr "పేజీ పొడవు"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "ప్రారంభ పేజీ పొడవును మార్చండి (పేజీకి అడ్డు వరుసల సంఖ్య)"
 
 #: 
 msgid "User Interface"

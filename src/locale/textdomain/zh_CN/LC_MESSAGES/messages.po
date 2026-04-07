@@ -2202,15 +2202,6 @@ msgid "User Editor"
 msgstr "用户编辑器"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "注：更改将不会生效，直到下一次登录。"
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "人，使用户"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "用户名"
@@ -2261,26 +2252,9 @@ msgid "Edit Self"
 msgstr "编辑自"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "（编辑自己的家庭。）"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "管理员："
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "（授予所有权限）。"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "风格"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "设置Permission True以使该用户能够更改其当前值。"
 
 #: 
 msgid "Last Login"
@@ -3260,10 +3234,6 @@ msgstr "数据/报告"
 #: 
 msgid "Query Menu"
 msgstr "查询菜单"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV汇出记录"
 
 #: 
 msgid "Family Properties"
@@ -6178,28 +6148,12 @@ msgid "open rate"
 msgstr "开放率"
 
 #: 
-msgid "Login Info"
-msgstr "登录信息"
-
-#: 
-msgid "Login Count"
-msgstr "登录数"
-
-#: 
-msgid "Failed Login"
-msgstr "登录失败"
-
-#: 
 msgid "Permissions"
 msgstr "权限"
 
 #: 
 msgid "Manage Notes"
 msgstr "管理笔记"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "生成新的API密钥失败"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6271,14 +6225,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "今天的结婚周年纪念日"
 
 #: 
-msgid "Api Key"
-msgstr "api键"
-
-#: 
-msgid "Regen API Key"
-msgstr "再生API密钥"
-
-#: 
 msgid "View Family Page"
 msgstr "查看家庭页面"
 
@@ -6293,34 +6239,6 @@ msgstr "核实"
 #: 
 msgid "Family has no emails to use"
 msgstr "家庭没有电子邮件可以使用"
-
-#: 
-msgid "Boxed Layout"
-msgstr "盒装版式"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "激活盒装版式"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "切换边栏"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "切换左侧边栏的状态（打开或折叠）"
-
-#: 
-msgid "Tables Settings"
-msgstr "表格设定"
-
-#: 
-msgid "Page length"
-msgstr "页长"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "更改初始页面长度（每页的行数）"
 
 #: 
 msgid "User Interface"

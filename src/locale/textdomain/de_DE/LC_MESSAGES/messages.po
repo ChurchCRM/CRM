@@ -2212,15 +2212,6 @@ msgid "User Editor"
 msgstr "Benutzer Editor"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Notiz: Änderungen werden erst bei dem nächsten Login wirksam."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Personen zu Benutzern machen"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Benutzer"
@@ -2270,26 +2261,9 @@ msgid "Edit Self"
 msgstr "Kann eigene Daten verändern"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Nur eigene Familie ändern.)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Adminstrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Hat alle Rechte)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Darstellung der Datenfelder"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Setzen Sie die Berechtigungen, um diesem Benutzer die Möglichkeit zu geben, seinen aktuellen Wert zu ändern."
 
 #: 
 msgid "Last Login"
@@ -3273,10 +3247,6 @@ msgstr "Daten/Berichte"
 #: 
 msgid "Query Menu"
 msgstr "Anfragenmenü"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV Export"
 
 #: 
 msgid "Family Properties"
@@ -6192,28 +6162,12 @@ msgid "open rate"
 msgstr "offener Tarif"
 
 #: 
-msgid "Login Info"
-msgstr "Anmeldeinfo‘s"
-
-#: 
-msgid "Login Count"
-msgstr "Anzahl der Anmeldungen"
-
-#: 
-msgid "Failed Login"
-msgstr "Fehlgeschlagene Anmeldung(en)"
-
-#: 
 msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: 
 msgid "Manage Notes"
 msgstr "Notizen verwalten"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Generierung eines neuen API-Schlüssels fehlgeschlagen"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6285,14 +6239,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Heutige Hochzeitstage"
 
 #: 
-msgid "Api Key"
-msgstr "API Schlüssel"
-
-#: 
-msgid "Regen API Key"
-msgstr "Regenerations-API-Schlüssel"
-
-#: 
 msgid "View Family Page"
 msgstr "Familienseite anzeigen"
 
@@ -6307,34 +6253,6 @@ msgstr "Verifizieren"
 #: 
 msgid "Family has no emails to use"
 msgstr "Die Familie hat keine E-Mailadresse"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Boxed Layout"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktivieren Sie das Boxed Layout"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Seitenleiste umklappen"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Tabelleneinstellungen"
-
-#: 
-msgid "Tables Settings"
-msgstr "Tabellen"
-
-#: 
-msgid "Page length"
-msgstr "Länge der Seite"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Ändern Sie die anfängliche Seitenlänge (Anzahl der Zeilen pro Seite)"
 
 #: 
 msgid "User Interface"

@@ -2147,14 +2147,6 @@ msgid "User Editor"
 msgstr "محرر المستخدم"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "ملاحظة: التغييرات لن تصبح نافذة المفعول حتى تسجيل الدخول التالي."
-
-#: 
-msgid "Person to Make User"
-msgstr "شخص لجعل العضو"
-
-#: 
 msgid "User"
 msgstr "مستخدم"
 
@@ -2195,24 +2187,8 @@ msgid "Edit Self"
 msgstr "تحرير الذات"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(تحرير الأسرة الخاصة فقط.)"
-
-#: 
 msgid "Admin"
 msgstr "ادمن"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(منح جميع الامتيازات)."
-
-#: 
-msgid "Style"
-msgstr "أسلوب"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "تعيين إذن صحيح لإعطاء هذا المستخدم القدرة على تغيير قيمتها الحالية."
 
 #: 
 msgid "Last Login"
@@ -3174,10 +3150,6 @@ msgstr "بيانات / تقارير"
 #: 
 msgid "Query Menu"
 msgstr "القائمة الاستعلام"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV تصدير السجلات"
 
 #: 
 msgid "Family Properties"
@@ -6092,28 +6064,12 @@ msgid "open rate"
 msgstr "معدل مفتوح"
 
 #: 
-msgid "Login Info"
-msgstr "معلومات تسجيل الدخول"
-
-#: 
-msgid "Login Count"
-msgstr "حساب تسجيل الدخول"
-
-#: 
-msgid "Failed Login"
-msgstr "الدخول الفاشلة"
-
-#: 
 msgid "Permissions"
 msgstr "أذونات"
 
 #: 
 msgid "Manage Notes"
 msgstr "إدارة الملاحظات"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "فشل إنشاء مفتاح API جديد"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6185,14 +6141,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "مناسبات الزفاف اليوم"
 
 #: 
-msgid "Api Key"
-msgstr "مفتاح API"
-
-#: 
-msgid "Regen API Key"
-msgstr "مفتاح Regen API"
-
-#: 
 msgid "View Family Page"
 msgstr "عرض صفحة العائلة"
 
@@ -6207,34 +6155,6 @@ msgstr "تحقق"
 #: 
 msgid "Family has no emails to use"
 msgstr "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها"
-
-#: 
-msgid "Boxed Layout"
-msgstr "تخطيط محاصر"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "تنشيط التخطيط المعبأ"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "تبديل الشريط الجانبي"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "تبديل حالة الشريط الجانبي الأيسر (فتح أو تصغير)"
-
-#: 
-msgid "Tables Settings"
-msgstr "جدول الإعدادات"
-
-#: 
-msgid "Page length"
-msgstr "طول الصفحة"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "تغيير طول الصفحة البدائي (عدد الأسطر بكل صفحة)."
 
 #: 
 msgid "User Interface"

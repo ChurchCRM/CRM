@@ -2200,15 +2200,6 @@ msgid "User Editor"
 msgstr "Edytor Użytkowników"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Uwaga: Zmiany zaczną funkcjonować dopiero po kolejnym logowaniu."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Utwórz Użytkownika z Osoby"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Użytkownik"
@@ -2259,26 +2250,9 @@ msgid "Edit Self"
 msgstr "Edytuj Swoje Dane"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edytuj dane Swojej Rodziny)"
-
-#: 
 #, fuzzy
 msgid "Admin"
 msgstr "Administrator"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Pełne uprawnienia)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Wygląd"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Ustaw True aby zezwolić użytkownikowi na zmianę wartości danego pola."
 
 #: 
 msgid "Last Login"
@@ -3255,10 +3229,6 @@ msgstr "Dane/Raporty"
 #: 
 msgid "Query Menu"
 msgstr "Menu zapytań"
-
-#: 
-msgid "CSV Export Records"
-msgstr "Rekordy eksportu CSV"
 
 #: 
 msgid "Family Properties"
@@ -6168,28 +6138,12 @@ msgid "open rate"
 msgstr "wskaźnik otwarć"
 
 #: 
-msgid "Login Info"
-msgstr "Informacje Logowania"
-
-#: 
-msgid "Login Count"
-msgstr "Liczba Logowań"
-
-#: 
-msgid "Failed Login"
-msgstr "Błąd Logowania"
-
-#: 
 msgid "Permissions"
 msgstr "Uprawnienia"
 
 #: 
 msgid "Manage Notes"
 msgstr "Zarządzaj Notatkami"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Bład tworzenia klucza API"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6261,14 +6215,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Dzisiejsze rocznice ślubu"
 
 #: 
-msgid "Api Key"
-msgstr "Klucz API"
-
-#: 
-msgid "Regen API Key"
-msgstr "Wygeneruj ponownie klucz API"
-
-#: 
 msgid "View Family Page"
 msgstr "Zobacz stronę rodziny"
 
@@ -6283,34 +6229,6 @@ msgstr "Zweryfikuj"
 #: 
 msgid "Family has no emails to use"
 msgstr "Rodzina nie ma adresów e-mail"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Układ pudełkowy"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Aktywuj układ pudełkowy"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Przełącz pasek boczny"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Przełącz stan paska bocznego (rozwiń lub zwiń)"
-
-#: 
-msgid "Tables Settings"
-msgstr "Ustawienia tabel"
-
-#: 
-msgid "Page length"
-msgstr "Długość strony"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Zmień początkową liczbę wierszy na stronę"
 
 #: 
 msgid "User Interface"

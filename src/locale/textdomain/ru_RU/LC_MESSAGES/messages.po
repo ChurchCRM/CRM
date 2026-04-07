@@ -2199,15 +2199,6 @@ msgid "User Editor"
 msgstr "Редактор Пользователь"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "Примечание: Изменения не вступят в силу до следующего входа в систему."
-
-#: 
-#, fuzzy
-msgid "Person to Make User"
-msgstr "Человек сделать Пользователь"
-
-#: 
 #, fuzzy
 msgid "User"
 msgstr "Пользователь"
@@ -2258,25 +2249,8 @@ msgid "Edit Self"
 msgstr "Изменить себя"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(Edit собственную семью только.)"
-
-#: 
 msgid "Admin"
 msgstr "Администратор"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(Гранты все права.)"
-
-#: 
-#, fuzzy
-msgid "Style"
-msgstr "Стиль"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "Установите Permission True, чтобы дать этому пользователю возможность изменять свое текущее значение."
 
 #: 
 msgid "Last Login"
@@ -3255,10 +3229,6 @@ msgstr "Данные / отчеты"
 #: 
 msgid "Query Menu"
 msgstr "Меню запросов"
-
-#: 
-msgid "CSV Export Records"
-msgstr "CSV экспортные записи"
 
 #: 
 msgid "Family Properties"
@@ -6166,28 +6136,12 @@ msgid "open rate"
 msgstr "процент открытий"
 
 #: 
-msgid "Login Info"
-msgstr "Сведения входа в систему"
-
-#: 
-msgid "Login Count"
-msgstr "Кол-во входов в систему"
-
-#: 
-msgid "Failed Login"
-msgstr "Неудачная попытка входа в систему"
-
-#: 
 msgid "Permissions"
 msgstr "Разрешения"
 
 #: 
 msgid "Manage Notes"
 msgstr "Управление заметками"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "Не удалось создать новый API-ключ"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6259,14 +6213,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "Годовщины свадеб сегодня"
 
 #: 
-msgid "Api Key"
-msgstr "Ключ Api"
-
-#: 
-msgid "Regen API Key"
-msgstr "Повторная генерация ключа API"
-
-#: 
 msgid "View Family Page"
 msgstr "Перейти к странице семьи"
 
@@ -6281,34 +6227,6 @@ msgstr "Проверить"
 #: 
 msgid "Family has no emails to use"
 msgstr "У семьи нет адресов электронной почты"
-
-#: 
-msgid "Boxed Layout"
-msgstr "Макет в рамке"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "Активировать макет в рамке"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "Свернуть/развернуть боковую панель"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "Переключить состояние левой панели"
-
-#: 
-msgid "Tables Settings"
-msgstr "Настройки таблиц"
-
-#: 
-msgid "Page length"
-msgstr "Размер страницы"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "Изменить изначальный размер страницы (количество строк на странице)"
 
 #: 
 msgid "User Interface"

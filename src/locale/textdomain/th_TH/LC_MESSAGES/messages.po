@@ -2138,14 +2138,6 @@ msgid "User Editor"
 msgstr "ตัวแก้ไขผู้ใช้"
 
 #: 
-msgid "Note: Changes will not take effect until next logon."
-msgstr "หมายเหตุ: การเปลี่ยนแปลงจะไม่มีผลจนกว่าจะเข้าสู่ระบบครั้งถัดไป"
-
-#: 
-msgid "Person to Make User"
-msgstr "บุคคลที่จะสร้างเป็นผู้ใช้"
-
-#: 
 msgid "User"
 msgstr "ผู้ใช้"
 
@@ -2186,24 +2178,8 @@ msgid "Edit Self"
 msgstr "แก้ไขตนเอง"
 
 #: 
-msgid "(Edit own family only.)"
-msgstr "(แก้ไขครอบครัวของตนเองเท่านั้น)"
-
-#: 
 msgid "Admin"
 msgstr "ผู้ดูแลระบบ"
-
-#: 
-msgid "(Grants all privileges.)"
-msgstr "(ให้สิทธิ์ทั้งหมด)"
-
-#: 
-msgid "Style"
-msgstr "สไตล์"
-
-#: 
-msgid "Set Permission True to give this user the ability to change their current value."
-msgstr "ตั้งค่าสิทธิ์เป็นจริงเพื่อให้ผู้ใช้นี้สามารถเปลี่ยนค่าปัจจุบันได้"
 
 #: 
 msgid "Last Login"
@@ -3157,10 +3133,6 @@ msgstr "ข้อมูล/รายงาน"
 #: 
 msgid "Query Menu"
 msgstr "เมนูคิวรี"
-
-#: 
-msgid "CSV Export Records"
-msgstr "ส่งออกระเบียน CSV"
 
 #: 
 msgid "Family Properties"
@@ -6060,28 +6032,12 @@ msgid "open rate"
 msgstr "อัตราการเปิด"
 
 #: 
-msgid "Login Info"
-msgstr "ข้อมูลการเข้าสู่ระบบ"
-
-#: 
-msgid "Login Count"
-msgstr "จำนวนการเข้าสู่ระบบ"
-
-#: 
-msgid "Failed Login"
-msgstr "การเข้าสู่ระบบล้มเหลว"
-
-#: 
 msgid "Permissions"
 msgstr "สิทธิ์"
 
 #: 
 msgid "Manage Notes"
 msgstr "จัดการบันทึก"
-
-#: 
-msgid "Failed generate a new API Key"
-msgstr "สร้างคีย์ API ใหม่ล้มเหลว"
 
 #: 
 msgid "Pledge Summary By Family"
@@ -6153,14 +6109,6 @@ msgid "Today's Wedding Anniversaries"
 msgstr "วันครบรอบแต่งงานวันนี้"
 
 #: 
-msgid "Api Key"
-msgstr "คีย์ API"
-
-#: 
-msgid "Regen API Key"
-msgstr "สร้างคีย์ API ใหม่"
-
-#: 
 msgid "View Family Page"
 msgstr "ดูหน้าครอบครัว"
 
@@ -6175,34 +6123,6 @@ msgstr "ยืนยัน"
 #: 
 msgid "Family has no emails to use"
 msgstr "ครอบครัวไม่มีอีเมลให้ใช้"
-
-#: 
-msgid "Boxed Layout"
-msgstr "เค้าโครงกล่อง"
-
-#: 
-msgid "Activate the boxed layout"
-msgstr "เปิดใช้งานเค้าโครงกล่อง"
-
-#: 
-msgid "Toggle Sidebar"
-msgstr "สลับแถบด้านข้าง"
-
-#: 
-msgid "Toggle the left sidebar's state (open or collapse)"
-msgstr "สลับสถานะแถบด้านข้างซ้าย (เปิดหรือยุบ)"
-
-#: 
-msgid "Tables Settings"
-msgstr "การตั้งค่าตาราง"
-
-#: 
-msgid "Page length"
-msgstr "ความยาวหน้า"
-
-#: 
-msgid "Change the initial page length (number of rows per page)"
-msgstr "เปลี่ยนความยาวหน้าเริ่มต้น (จำนวนแถวต่อหน้า)"
 
 #: 
 msgid "User Interface"
