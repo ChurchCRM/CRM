@@ -358,7 +358,7 @@ class SlimUtils
                     'render_error' => $renderEx->getMessage(),
                     'original_error' => $exception->getMessage(),
                 ]);
-                $fallback = ['error' => 'An error occurred.', 'code' => $statusCode];
+                $fallback = ['error' => gettext('An error occurred.'), 'code' => $statusCode];
                 $response->getBody()->write(json_encode($fallback));
                 return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
             }
