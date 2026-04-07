@@ -14385,3 +14385,420 @@ msgstr "Tiedostokoko ylittää palvelimen rajan %s"
 msgid "Missing image data in request"
 msgstr "Kuvadata puuttuu pyynnöstä"
 
+#. Context: query_qry
+#: 
+msgid "Find people who didn't attend an event"
+msgstr "Etsi henkilöitä, jotka eivät osallistuneet tapahtumaan"
+
+#. Context: query_qry
+#: 
+msgid "Missing people"
+msgstr "Puuttuvat henkilöt"
+
+#. Context: queryparameters_qrp
+#: 
+msgid "Select the desired event"
+msgstr "Valitse haluttu tapahtuma"
+
+#: 
+msgid "Advanced filtering by group, classification, and role"
+msgstr "Edistynyt suodatus ryhmän, luokituksen ja roolin mukaan"
+
+#: 
+msgid "All congregation members included"
+msgstr "Kaikki seurakuntalaiset mukana"
+
+#: 
+msgid "ChMeetings export completed successfully"
+msgstr "ChMeetings-vienti onnistui"
+
+#: 
+msgid "ChMeetings-compatible column format"
+msgstr "ChMeetings-yhteensopiva sarakemuoto"
+
+#: 
+msgid "Contact info, family roles, and key dates"
+msgstr "Yhteystiedot, perheen roolit ja tärkeät päivämäärät"
+
+#: 
+msgid "Create a full backup of your church database. Download a database-only SQL file or a complete archive including uploaded photos."
+msgstr "Luo täydellinen varmuuskopio seurakunnan tietokannasta. Lataa pelkkä tietokanta SQL-tiedostona tai täydellinen arkisto sisältäen ladatut kuvat."
+
+#: 
+msgid "Database Backup"
+msgstr "Tietokannan varmuuskopiointi"
+
+#: 
+msgid "Export"
+msgstr "Vie"
+
+#: 
+msgid "Export congregation data to CSV format. Choose which fields to include and filter by classification, group, gender, and more."
+msgstr "Vie seurakunnan tiedot CSV-muotoon. Valitse sisällytettävät kentät ja suodata luokituksen, ryhmän, sukupuolen ja muiden perusteella."
+
+#: 
+msgid "Export all people in the format expected by ChMeetings, making it easy to sync your congregation data with the ChMeetings platform."
+msgstr "Vie kaikki henkilöt ChMeetings-alustalle sopivassa muodossa, jolloin seurakuntatietojen synkronointi ChMeetings-alustalle on helppoa."
+
+#: 
+msgid "Export your church data to various formats"
+msgstr "Vie seurakunnan tiedot eri muotoihin"
+
+#: 
+msgid "External (WebDAV) backup via plugin"
+msgstr "Ulkoinen (WebDAV) varmuuskopio liitännäisen kautta"
+
+#: 
+msgid "Failed to export ChMeetings CSV"
+msgstr "ChMeetings CSV -vienti epäonnistui"
+
+#: 
+msgid "Family or individual record layout"
+msgstr "Perhe- tai henkilökohtainen tietuerakenne"
+
+#: 
+msgid "Flexible field selection"
+msgstr "Joustava kenttävalinta"
+
+#: 
+msgid "Go to Database Backup"
+msgstr "Siirry tietokannan varmuuskopiointiin"
+
+#: 
+msgid "Open CSV Export"
+msgstr "Avaa CSV-vienti"
+
+#: 
+msgid "Restore from the System Backup page"
+msgstr "Palauta järjestelmän varmuuskopiointisivulta"
+
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Järjestelmäpäivitys on saatavilla. Päivitä asennuksesi."
+
+#: 
+msgid "API Access"
+msgstr "API-käyttöoikeus"
+
+#: 
+msgid "API Key"
+msgstr "API-avain"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-avain uudelleenluotu"
+
+#: 
+msgid "Account"
+msgstr "Tili"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Lisäasetukset"
+
+#: 
+msgid "An error occurred."
+msgstr "Tapahtui virhe."
+
+#: 
+msgid "Appearance"
+msgstr "Ulkoasu"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Takaisin talouden hallintapaneeliin"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Takaisin ryhmien hallintapaneeliin"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Takaisin henkilöiden hallintapaneeliin"
+
+#: 
+msgid "Blue"
+msgstr "Sininen"
+
+#: 
+msgid "Change Photo"
+msgstr "Vaihda kuva"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Muutokset tulevat voimaan vasta seuraavalla kirjautumiskerralla."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Valitse vaalea tai tumma väriteema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-käännöksiä hallinnoidaan yhteisön toimesta POEditorissa. Voit auttaa:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Mukauta sovelluksen ulkoasua"
+
+#: 
+msgid "Cyan"
+msgstr "Syaani"
+
+#: 
+msgid "Dark"
+msgstr "Tumma"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Pelkkä tietokanta (.sql) tai täydellinen arkisto (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Oletusmäärä rivejä tietotauluissa. Tulee voimaan seuraavalla sivun latauksella."
+
+#: 
+msgid "Edit own family only"
+msgstr "Muokkaa vain omaa perhettä"
+
+#: 
+msgid "Enter text here..."
+msgstr "Kirjoita teksti tähän..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Ilmoittautumisen peruuttaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Tapahtuman poistaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Kaksivaiheisen todennuksen poistaminen käytöstä epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "QR-koodin luominen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Kalenteritietojen lataaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Tapahtuman lataaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Palautuskoodien lataaminen epäonnistui. Päivitä sivu."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Tapahtuman tallentaminen epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Asetuksen tallentaminen epäonnistui"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filippiinit"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Virheellisten tai kömpelöiden käännösten korjaaminen omalla kielelläsi"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Löysitkö virheen käännöksissä?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Myöntää kaikki käyttöoikeudet"
+
+#: 
+msgid "Green"
+msgstr "Vihreä"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Auta parantamaan käännöksiä"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Jos huomaat vääristyneitä merkkejä, HTML-entiteettejä tekstinä tai käännöksiä, jotka rikkovat sivun asettelun, ilmoita asiasta GitHubissa, jotta se voidaan korjata kaikille."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Sisällytä API-avaimesi pyyntöihin x-api-key-otsakkeella:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigonsininen"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Virheellinen JSON-arvo — asetusta ei tallennettu. Korjaa se ja yritä uudelleen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Liity käännösprojektiin POEditorissa"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Kieli- ja aluekohtaiset asetukset"
+
+#: 
+msgid "Light"
+msgstr "Vaalea"
+
+#: 
+msgid "Lime"
+msgstr "Limetinvihreä"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - Intia"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Hallinnoi kaksivaiheista todennusta"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Hallinnoi lisäasetuksia, kuten sähköpostin erottimet ja näyttöasetukset"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Hallinnoi API-avaintasi ulkoisia integraatioita varten"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Menetelmä ei ole sallittu"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Puuttuuko tai onko käännöksissä virheitä?"
+
+#: 
+msgid "My Account"
+msgstr "Oma tili"
+
+#: 
+msgid "Orange"
+msgstr "Oranssi"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Ohita järjestelmän oletuskielialue"
+
+#: 
+msgid "Page Not Found"
+msgstr "Sivua ei löydy"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Käännettyjen merkkijonojen prosenttiosuus nykyiselle kielellesi"
+
+#: 
+msgid "Pink"
+msgstr "Vaaleanpunainen"
+
+#: 
+msgid "Primary Color"
+msgstr "Pääväri"
+
+#: 
+msgid "Profile and security"
+msgstr "Profiili ja tietoturva"
+
+#: 
+msgid "Purple"
+msgstr "Violetti"
+
+#: 
+msgid "Red"
+msgstr "Punainen"
+
+#: 
+msgid "Regenerate"
+msgstr "Luo uudelleen"
+
+#: 
+msgid "Rows per page"
+msgstr "Rivejä sivulla"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Aseta oikeus arvoon Tosi salliaksesi tämän käyttäjän muuttaa asetuksen itse."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Aseta korostusväri, jota käytetään painikkeissa, linkeissä ja aktiivisissa elementeissä"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Paremman sanamuodon ehdottaminen olemassa oleville käännöksille"
+
+#: 
+msgid "System Update Available"
+msgstr "Järjestelmäpäivitys saatavilla"
+
+#: 
+msgid "Tables"
+msgstr "Taulukot"
+
+#: 
+msgid "Teal"
+msgstr "Sinivihreä"
+
+#: 
+msgid "Theme Mode"
+msgstr "Teematila"
+
+#: 
+msgid "Toggle search"
+msgstr "Vaihda hakua"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Puuttuvien merkkijonojen kääntäminen kattavuuden parantamiseksi"
+
+#: 
+msgid "Translation Progress"
+msgstr "Käännösten edistyminen"
+
+#: 
+msgid "Usage"
+msgstr "Käyttö"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Käytä tätä avainta API-pyyntöjen todentamiseen. Uudelleenluominen mitätöi nykyisen avaimen."
+
+#: 
+msgid "User Config"
+msgstr "Käyttäjän asetukset"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Vahvistus epäonnistui. Yritä uudelleen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Versio %s on saatavilla. Päivitä asennuksesi."
+
+#: 
+msgid "View All"
+msgstr "Näytä kaikki"
+
+#: 
+msgid "Yellow"
+msgstr "Keltainen"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Nykyiset käyttöoikeutesi (vain luku)"
+
