@@ -67,10 +67,12 @@ describe("Standard People", () => {
 
         // Apply gender filter using TomSelect
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown").should("be.visible");
         cy.get(".filter-Gender").siblings(".ts-wrapper").find(".ts-dropdown .ts-dropdown-content .option").contains("Female").click();
 
         // Apply classification filter using TomSelect
         cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-control").click();
+        cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown").should("be.visible");
         cy.get(".filter-Classification").siblings(".ts-wrapper").find(".ts-dropdown .ts-dropdown-content .option").contains("Member").click();
 
         // Table should show filtered results

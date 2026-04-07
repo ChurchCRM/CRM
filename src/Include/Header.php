@@ -199,8 +199,10 @@ $MenuFirst = 1;
     <div class="container-xl">
 
       <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbar-menu">
-        <span class="navbar-toggler-icon"></span>
+              data-bs-toggle="collapse" data-bs-target="#navbar-menu"
+              aria-controls="navbar-menu" aria-expanded="false"
+              aria-label="<?= gettext('Toggle search') ?>">
+        <i class="ti ti-search"></i>
       </button>
 
       <!-- Right-side nav items -->
