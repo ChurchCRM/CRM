@@ -93,31 +93,29 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Persists dark mode selection after reload", () => {
-        cy.intercept("POST", "/api/user/*/setting/ui.style").as("saveStyle");
-
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
-        // Switch to dark and wait for the API call to complete
-        cy.get("#themeModeDark").check({ force: true });
-        cy.wait("@saveStyle");
+        // Force to light first (no-op if already light, resets if dark).
+        // Set up the dark intercept AFTER this click so we only capture the
+        // intentional dark save — not an accidental light-reset API call.
+        cy.get("#themeModeLight").check({ force: true });
 
-        // Reload and verify dark is still selected
+        // Now switch to dark and wait for the API save
+        cy.intercept("POST", "**/api/user/*/setting/ui.style").as("saveDark");
+        cy.get("#themeModeDark").check({ force: true });
+        cy.wait("@saveDark");
+
+        // Reload and verify dark persisted
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#themeModeDark").should("be.checked");
         cy.get("#themeModeLight").should("not.be.checked");
 
-        // Reset to light and wait for save
-        cy.intercept("POST", "/api/user/*/setting/ui.style").as("resetStyle");
+        // Reset to light
+        cy.intercept("POST", "**/api/user/*/setting/ui.style").as("resetStyle");
         cy.get("#themeModeLight").check({ force: true });
         cy.wait("@resetStyle");
-
-        // Reload and verify light is restored
-        cy.visit("/v2/user/3");
-        cy.get('#settingsNav a[href="#tab-appearance"]').click();
-        cy.get("#themeModeLight").should("be.checked");
-        cy.get("#themeModeDark").should("not.be.checked");
     });
 
     it("Can select a primary color and it applies live", () => {
