@@ -43,10 +43,13 @@ const POEDITOR_API_BASE = 'https://api.poeditor.com/v2';
 const PROJECT_ID = '77079';
 const MISSING_DIR = localeConfig.terms.missing;
 const LOCALES_FILE = localeConfig.localesJson;
-// Pause between processing locales to stay well under POEditor rate limits.
-// The downloader itself already adds ~1.5 s of inter-format delay, so this
-// extra gap gives the API time to breathe before the next upload.
-const BETWEEN_LOCALES_DELAY_MS = 18_000;
+// POEditor rate limits (free tier):
+//   - Uploads: 1 request per 20 seconds
+//   - General: 100 requests/min, 2000 requests/hour
+//   - Paid tier: uploads 1 per 10s, 200 req/min, 6000 req/hour
+// Per-locale cycle: upload (1 req) + 3s pause + refresh export (1 req) = 2 API calls
+// 22s gap between locales keeps uploads ≥20s apart on free tier.
+const BETWEEN_LOCALES_DELAY_MS = 22_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
 const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
@@ -335,7 +338,7 @@ async function uploadTranslations(poEditorCode, terms) {
     };
 
     const MAX_UPLOAD_RETRIES = 5;
-    const UPLOAD_BASE_DELAY_MS = 15_000; // 15 s base, doubles each attempt (15, 30, 60, 120, 120 s)
+    const UPLOAD_BASE_DELAY_MS = 20_000; // 20s base (matches free-tier upload limit), doubles: 20, 40, 80, 120, 120s
 
     let result;
     for (let attempt = 1; attempt <= MAX_UPLOAD_RETRIES; attempt++) {
