@@ -2,7 +2,7 @@
 function saveUserSetting(settingName, value) {
   return window.CRM.APIRequest({
     method: "POST",
-    path: "user/" + window.CRM.userId + "/setting/" + settingName,
+    path: "user/" + window.CRM.viewUserId + "/setting/" + settingName,
     dataType: "json",
     data: JSON.stringify({ value: value }),
   });
@@ -11,7 +11,7 @@ function saveUserSetting(settingName, value) {
 function getUserSetting(settingName) {
   return window.CRM.APIRequest({
     method: "GET",
-    path: "user/" + window.CRM.userId + "/setting/" + settingName,
+    path: "user/" + window.CRM.viewUserId + "/setting/" + settingName,
   });
 }
 
@@ -35,16 +35,12 @@ $("#regenApiKey").on("click", function () {
     type: "POST",
     url: window.CRM.root + "/api/user/" + window.CRM.viewUserId + "/apikey/regen",
   })
-    .done(function (data, textStatus, xhr) {
-      if (xhr.status === 200) {
-        $("#apiKey").val(data.apiKey);
-        window.CRM.notify(i18next.t("API key regenerated"), {
-          type: "success",
-          delay: 3000,
-        });
-      } else {
-        notifyError();
-      }
+    .done(function (data) {
+      $("#apiKey").val(data.apiKey);
+      window.CRM.notify(i18next.t("API key regenerated"), {
+        type: "success",
+        delay: 3000,
+      });
     })
     .fail(notifyError);
 });

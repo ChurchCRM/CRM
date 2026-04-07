@@ -8,6 +8,7 @@ use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
+$isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
 $personId = $user->getPersonId();
 $photo = new Photo('Person', $personId);
 $hasUploadedPhoto = $photo->hasUploadedPhoto();
@@ -112,6 +113,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <?php endif; ?>
               </div>
             </div>
+            <?php if ($isOwnProfile): ?>
             <div class="row mb-3 mt-3">
               <div class="col-sm-9 offset-sm-3">
                 <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="btn btn-outline-primary me-2">
@@ -122,6 +124,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </a>
               </div>
             </div>
+            <?php endif; ?>
 
             <hr>
 
@@ -259,7 +262,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <li><?= gettext("Translating missing strings to improve coverage") ?></li>
                     <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
                   </ul>
-                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" class="btn btn-outline-info btn-sm">
+                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
                     <i class="ti ti-external-link me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
                   </a>
                 </div>
