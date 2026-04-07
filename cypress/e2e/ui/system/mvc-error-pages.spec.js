@@ -90,12 +90,14 @@ describe('MVC Error Pages', () => {
 
   describe('API 404 — unknown route', () => {
     it('should return JSON with status 404', () => {
-      // Use /api/public/ path which bypasses AuthMiddleware, so this tests
-      // the error handler in isolation without needing an API key or session.
+      // Use API key auth (same as all other API tests) to bypass session issues.
       cy.request({
-        url: '/api/public/this-route-does-not-exist',
+        url: '/api/this-route-does-not-exist',
         failOnStatusCode: false,
-        headers: { 'Accept': 'application/json' },
+        headers: {
+          'Accept': 'application/json',
+          'x-api-key': Cypress.env('admin.api.key'),
+        },
       }).then((response) => {
           expect(response.status).to.equal(404);
           expect(response.headers['content-type']).to.match(/application\/json/i);
@@ -105,9 +107,12 @@ describe('MVC Error Pages', () => {
 
     it('should NOT include a stack trace in the JSON response', () => {
       cy.request({
-        url: '/api/public/this-route-does-not-exist',
+        url: '/api/this-route-does-not-exist',
         failOnStatusCode: false,
-        headers: { 'Accept': 'application/json' },
+        headers: {
+          'Accept': 'application/json',
+          'x-api-key': Cypress.env('admin.api.key'),
+        },
       }).then((response) => {
           const body = JSON.stringify(response.body);
           expect(body).to.not.match(/Stack trace/i);
