@@ -13,24 +13,26 @@ describe("Finance Deposits", () => {
 
     it("Navigate to deposits from Finance Dashboard", () => {
         cy.visit("/finance/");
-        cy.contains("Finance Dashboard");
-        
+        cy.contains("Finance Dashboard", { timeout: 10000 });
+
         // Click Create Deposit from Quick Actions
-        cy.contains("a", "Create Deposit").click();
+        cy.get(".card").contains("Quick Actions").parents(".card")
+            .find("a").contains("Create Deposit").click();
         cy.url().should("contain", "FindDepositSlip.php");
         cy.contains("Deposit Listing");
     });
 
     it("Navigate to deposits from Finance Menu", () => {
         cy.visit("/finance/");
-        
-        // Use the View All link in Recent Deposits section
-        cy.contains("Recent Deposits")
+        cy.contains("Finance Dashboard", { timeout: 10000 });
+
+        // Use the View All link in Recent Deposits card header
+        cy.contains(".card-title", "Recent Deposits")
             .parents(".card")
             .find("a")
             .contains("View All")
             .click();
-            
+
         cy.url().should("contain", "FindDepositSlip.php");
         cy.contains("Deposit Listing");
     });

@@ -29,6 +29,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
     describe("Finance Dashboard — Settings Panel", () => {
         it("admin can open financial settings panel", () => {
             cy.visit("/finance/");
+            cy.contains("Finance Dashboard", { timeout: 10000 });
             cy.contains("Financial Settings").click();
             cy.get("#financialSettings", { timeout: 10000 }).should("be.visible");
 
@@ -42,6 +43,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
         it("fiscal year month dropdown has 12 month options", () => {
             cy.visit("/finance/");
+            cy.contains("Finance Dashboard", { timeout: 10000 });
             cy.contains("Financial Settings").click();
             cy.get("#financialSettings", { timeout: 10000 }).should("be.visible");
 
@@ -53,6 +55,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
         it("deposit slip type dropdown has QBDT option", () => {
             cy.visit("/finance/");
+            cy.contains("Finance Dashboard", { timeout: 10000 });
             cy.contains("Financial Settings").click();
             cy.get("#financialSettings", { timeout: 10000 }).should("be.visible");
 
@@ -64,6 +67,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
 
         it("boolean settings render as Yes/No pill toggles", () => {
             cy.visit("/finance/");
+            cy.contains("Finance Dashboard", { timeout: 10000 });
             cy.contains("Financial Settings").click();
             cy.get("#financialSettings", { timeout: 10000 }).should("be.visible");
 

@@ -19,12 +19,15 @@ describe("Finance Dashboard", () => {
 
     it("should load the finance dashboard", () => {
         cy.visit("/finance/");
-        cy.contains("Finance Dashboard");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
         cy.contains("Fiscal Year");
     });
 
     it("should display YTD metrics cards", () => {
         cy.visit("/finance/");
+
+        // Wait for the dashboard to fully render before checking metric cards
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         // Check for the 4 metric cards
         cy.contains("YTD Payments");
@@ -35,6 +38,7 @@ describe("Finance Dashboard", () => {
 
     it("should display action buttons", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         cy.contains("Create Deposit");
         cy.contains("Reports");
@@ -42,24 +46,29 @@ describe("Finance Dashboard", () => {
 
     it("should navigate to deposits page from Create Deposit button", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
-        // Find and click the Create Deposit button
-        cy.contains("a", "Create Deposit").click();
+        // Find and click the Create Deposit button in Quick Actions
+        cy.get(".card").contains("Quick Actions").parents(".card")
+            .find("a").contains("Create Deposit").click();
         cy.url().should("contain", "FindDepositSlip.php");
         cy.contains("Deposit Listing");
     });
 
     it("should navigate to reports page from Reports button", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
-        // Find and click the Reports button
-        cy.contains("a", "Reports").click();
+        // Find and click the Reports button in Quick Actions
+        cy.get(".card").contains("Quick Actions").parents(".card")
+            .find("a").contains("Reports").click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });
 
     it("should display Tax Year Reporting Checklist", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         cy.contains("Tax Year Reporting Checklist");
         cy.contains("Close All Deposits");
@@ -71,6 +80,7 @@ describe("Finance Dashboard", () => {
 
     it("should display Recent Deposits section", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         cy.contains("Recent Deposits");
         cy.contains("View All");
@@ -88,6 +98,7 @@ describe("Finance Dashboard", () => {
 
     it("should display Deposit Statistics sidebar", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         cy.contains("Deposit Statistics");
         cy.contains("Total Deposits:");
@@ -97,20 +108,24 @@ describe("Finance Dashboard", () => {
 
     it("should display Donation Funds sidebar", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         cy.contains("Donation Funds");
     });
 
     it("should link to Donation Fund Editor from Manage Funds button", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
-        // Admin should see Manage Funds link
-        cy.contains("a", "Manage Funds").click();
+        // Admin should see Manage Funds link in Quick Actions
+        cy.get(".card").contains("Quick Actions").parents(".card")
+            .find("a").contains("Manage Funds").click();
         cy.url().should("contain", "DonationFundEditor.php");
     });
 
     it("should navigate to settings from Church Information checklist item", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         // Find the Settings button in the Church Information checklist row
         cy.contains(".list-group-item", "Church Information")
@@ -123,6 +138,7 @@ describe("Finance Dashboard", () => {
 
     it("should link deposits checklist to FindDepositSlip", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         // Find the View button in the Close All Deposits row
         cy.contains("Close All Deposits")
@@ -145,14 +161,15 @@ describe("Finance Dashboard - Standard User Access", () => {
         cy.visit("/finance/");
 
         // Should be able to see the dashboard (page title is in h2.page-title from Tabler layout)
-        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+        cy.get("h2.page-title", { timeout: 10000 }).should("contain", "Finance Dashboard");
 
-        // Metrics should be visible (overview card with stat cards)
+        // Metrics should be visible (stat cards in the dashboard)
         cy.contains("YTD Payments").should("exist");
     });
 
     it("should not show the Church Information settings link to non-admin users", () => {
         cy.visit("/finance/");
+        cy.contains("Finance Dashboard", { timeout: 10000 });
 
         // The Church Information checklist row should be visible (badge/status)
         cy.contains(".list-group-item", "Church Information").should("exist");
