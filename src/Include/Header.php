@@ -34,7 +34,7 @@ if ($_themeStyle === 'dark') {
 }
 $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
-    $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
+    $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
 }
 // Top level menu index counter
 $MenuFirst = 1;

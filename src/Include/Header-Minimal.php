@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
 
@@ -16,7 +17,7 @@ if ($_themeStyle === 'dark') {
 }
 $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
-    $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
+    $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
 }
 ?>
 <!DOCTYPE html>

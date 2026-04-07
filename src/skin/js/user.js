@@ -22,61 +22,71 @@ function notifySuccess() {
   });
 }
 
+function notifyError() {
+  window.CRM.notify(i18next.t("Failed to save setting"), {
+    type: "danger",
+    delay: 5000,
+  });
+}
+
 // ── API Key Regeneration ──────────────────────────────────────────
 $("#regenApiKey").on("click", function () {
   $.ajax({
     type: "POST",
     url: window.CRM.root + "/api/user/" + window.CRM.viewUserId + "/apikey/regen",
-  }).done(function (data, textStatus, xhr) {
-    if (xhr.status === 200) {
-      $("#apiKey").val(data.apiKey);
-      window.CRM.notify(i18next.t("API key regenerated"), {
-        type: "success",
-        delay: 3000,
-      });
-    } else {
-      window.CRM.notify(i18next.t("Failed generate a new API Key"), {
-        type: "danger",
-      });
-    }
-  });
+  })
+    .done(function (data, textStatus, xhr) {
+      if (xhr.status === 200) {
+        $("#apiKey").val(data.apiKey);
+        window.CRM.notify(i18next.t("API key regenerated"), {
+          type: "success",
+          delay: 3000,
+        });
+      } else {
+        notifyError();
+      }
+    })
+    .fail(notifyError);
 });
 
 // ── Theme Mode (Light / Dark) ────────────────────────────────────
 $('input[name="themeMode"]').on("change", function () {
   let value = $(this).val();
-  saveUserSetting("ui.style", value).done(function () {
-    if (value === "dark") {
-      document.documentElement.setAttribute("data-bs-theme", "dark");
-    } else {
-      document.documentElement.removeAttribute("data-bs-theme");
-    }
-    notifySuccess();
-  });
+  saveUserSetting("ui.style", value)
+    .done(function () {
+      if (value === "dark") {
+        document.documentElement.setAttribute("data-bs-theme", "dark");
+      } else {
+        document.documentElement.removeAttribute("data-bs-theme");
+      }
+      notifySuccess();
+    })
+    .fail(notifyError);
 });
 
 // ── Primary Color Picker ─────────────────────────────────────────
 $("#primaryColorPicker .btn-color-swatch").on("click", function () {
-  let color = $(this).data("color");
-  $("#primaryColorPicker .btn-color-swatch").removeClass("active");
-  $(this).addClass("active");
+  let swatch = $(this);
+  let color = swatch.data("color");
 
-  saveUserSetting("ui.theme.primary", color).done(function () {
-    if (color) {
-      document.documentElement.setAttribute("data-bs-theme-primary", color);
-    } else {
-      document.documentElement.removeAttribute("data-bs-theme-primary");
-    }
-    notifySuccess();
-  });
+  saveUserSetting("ui.theme.primary", color)
+    .done(function () {
+      $("#primaryColorPicker .btn-color-swatch").removeClass("active");
+      swatch.addClass("active");
+      if (color) {
+        document.documentElement.setAttribute("data-bs-theme-primary", color);
+      } else {
+        document.documentElement.removeAttribute("data-bs-theme-primary");
+      }
+      notifySuccess();
+    })
+    .fail(notifyError);
 });
 
 // ── Table Page Length ─────────────────────────────────────────────
 $("#tablePageLength").on("change", function () {
   let value = $(this).val();
-  saveUserSetting("ui.table.size", value).done(function () {
-    notifySuccess();
-  });
+  saveUserSetting("ui.table.size", value).done(notifySuccess).fail(notifyError);
 });
 
 // ── Locale ───────────────────────────────────────────────────────
@@ -85,7 +95,6 @@ $("#tablePageLength").on("change", function () {
 function initLocaleDropdown() {
   let dropdown = $("#user-locale-setting");
 
-  // 1. Load available locales and user's saved locale in parallel
   let localeList = $.ajax({
     url: window.CRM.root + "/locale/locales.json",
     dataType: "json",
@@ -93,54 +102,39 @@ function initLocaleDropdown() {
   });
   let savedLocale = getUserSetting("ui.locale");
 
-  // 2. When both are ready, populate and select
   $.when(localeList, savedLocale).done(function (listResult, settingResult) {
     let locales = listResult[0];
     let userLocale = settingResult[0]?.value || "";
 
     $.each(locales, function (localeName, localeData) {
-      let isSelected = userLocale ? localeData.locale === userLocale : localeData.locale === window.CRM.systemLocale;
-      dropdown.append(new Option(localeName, localeData.locale, false, isSelected));
+      let isSelected = userLocale
+        ? localeData.locale === userLocale
+        : localeData.locale === window.CRM.systemLocale;
+      dropdown.append(
+        new Option(localeName, localeData.locale, false, isSelected),
+      );
     });
 
-    // 3. Bind change handler only after initial value is set
     dropdown.on("change", function () {
       let selected = $(this).find("option:selected");
-      saveUserSetting("ui.locale", selected.val()).done(function () {
-        window.CRM.notify(i18next.t("Language updated to") + " " + selected.text(), { type: "success", delay: 3000 });
-        setTimeout(function () {
-          window.location.reload();
-        }, 3000);
-      });
+      saveUserSetting("ui.locale", selected.val())
+        .done(function () {
+          window.CRM.notify(
+            i18next.t("Language updated to") + " " + selected.text(),
+            { type: "success", delay: 3000 },
+          );
+          setTimeout(function () {
+            window.location.reload();
+          }, 3000);
+        })
+        .fail(notifyError);
     });
   });
 }
 
-// ── Initialize all settings on page load ─────────────────────────
+// ── Initialize on page load ──────────────────────────────────────
 $(document).ready(function () {
   initLocaleDropdown();
-
-  // Theme mode
-  getUserSetting("ui.style").done(function (data) {
-    if (data.value === "dark") {
-      $("#themeModeDark").prop("checked", true);
-    } else {
-      $("#themeModeLight").prop("checked", true);
-    }
-  });
-
-  // Primary color
-  getUserSetting("ui.theme.primary").done(function (data) {
-    let color = data.value || "";
-    $('#primaryColorPicker .btn-color-swatch[data-color="' + color + '"]').addClass("active");
-  });
-
-  // Table page length
-  getUserSetting("ui.table.size").done(function (data) {
-    if (data.value !== "") {
-      $("#tablePageLength").val(data.value);
-    }
-  });
 
   // Photo uploader
   if (typeof window._CRM_createPhotoUploader === "function") {
@@ -148,7 +142,8 @@ $(document).ready(function () {
   }
   if (typeof window.CRM.createPhotoUploader === "function") {
     window.CRM.photoUploader = window.CRM.createPhotoUploader({
-      uploadUrl: window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
+      uploadUrl:
+        window.CRM.root + "/api/person/" + window.CRM.viewPersonId + "/photo",
       maxFileSize: window.CRM.maxUploadSizeBytes,
       onComplete: function () {
         window.location.reload();

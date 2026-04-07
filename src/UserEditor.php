@@ -220,7 +220,7 @@ if (isset($_POST['save']) && $iPersonID > 0) {
             $usr_Notes = 0;
             $usr_Admin = 0;
             $usr_EditSelf = 1;
-            }
+        }
 
         // New user without person selected yet
     } else {

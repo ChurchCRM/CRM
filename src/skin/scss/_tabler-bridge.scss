@@ -150,6 +150,9 @@ select {
 
 // --- Color swatch picker (user settings) --------------------------------
 .btn-color-swatch {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   border: 2px solid var(--tblr-border-color) !important;
 

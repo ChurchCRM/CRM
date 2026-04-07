@@ -4,15 +4,21 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 $sPageTitle = gettext("Settings");
 $sPageSubtitle = $user->getFullName();
-$isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
 $personId = $user->getPersonId();
-$person = $user->getPerson();
 $photo = new Photo('Person', $personId);
 $hasUploadedPhoto = $photo->hasUploadedPhoto();
 $avatarApiUrl = SystemURLs::getRootPath() . '/api/person/' . $personId . '/photo';
+$localeInfo = Bootstrapper::getCurrentLocale();
+
+// Read user settings server-side so controls are pre-populated without JS API calls
+$_userStyle = $user->getSettingValue('ui.style');
+$_userPrimary = $user->getSettingValue('ui.theme.primary');
+$_userTableSize = $user->getSettingValue('ui.table.size');
+
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
@@ -55,7 +61,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-4">
               <div class="col-sm-3 text-center">
                 <?php if ($hasUploadedPhoto): ?>
-                <img id="userAvatar" src="<?= $avatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= htmlspecialchars($user->getFullName()) ?>">
+                <img id="userAvatar" src="<?= $avatarApiUrl ?>" class="avatar avatar-xl rounded-circle mb-2" alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
                 <?php else: ?>
                 <?php
                 $nameParts = preg_split('/\s+/', trim($user->getFullName()));
@@ -63,7 +69,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     ? mb_strtoupper(mb_substr($nameParts[0], 0, 1) . mb_substr(end($nameParts), 0, 1))
                     : mb_strtoupper(mb_substr($nameParts[0] ?? '', 0, 2));
                 ?>
-                <span id="userAvatar" class="avatar avatar-xl rounded-circle mb-2" style="font-size: 1.5rem;"><?= htmlspecialchars($initials) ?></span>
+                <span id="userAvatar" class="avatar avatar-xl rounded-circle mb-2" style="font-size: 1.5rem;"><?= InputUtils::escapeHTML($initials) ?></span>
                 <?php endif; ?>
                 <div>
                   <button id="uploadPhotoBtn" class="btn btn-sm btn-outline-primary">
@@ -74,20 +80,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <div class="row mb-2">
                   <div class="col-sm-4 text-muted"><?= gettext("Username") ?></div>
-                  <div class="col-sm-8"><?= htmlspecialchars($user->getUserName()) ?></div>
+                  <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-muted"><?= gettext("Name") ?></div>
                   <div class="col-sm-8">
-                    <?= htmlspecialchars($user->getFullName()) ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small"><i class="ti ti-pencil"></i></a>
+                    <?= InputUtils::escapeHTML($user->getFullName()) ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-muted"><?= gettext("Email") ?></div>
                   <div class="col-sm-8">
-                    <?= htmlspecialchars($user->getEmail() ?? '') ?: '<span class="text-muted">' . gettext("Not set") . '</span>' ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonView.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small"><i class="ti ti-pencil"></i></a>
+                    <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-muted">' . gettext("Not set") . '</span>' ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>" class="ms-2 text-muted small" title="<?= gettext("Edit") ?>"><i class="ti ti-pencil"></i></a>
                   </div>
                 </div>
               </div>
@@ -140,13 +146,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <div class="form-selectgroup">
                   <label class="form-selectgroup-item">
-                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight">
+                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight"<?= $_userStyle !== 'dark' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
                       <i class="ti ti-sun me-1"></i><?= gettext("Light") ?>
                     </span>
                   </label>
                   <label class="form-selectgroup-item">
-                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark">
+                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark"<?= $_userStyle === 'dark' ? ' checked' : '' ?>>
                     <span class="form-selectgroup-label">
                       <i class="ti ti-moon me-1"></i><?= gettext("Dark") ?>
                     </span>
@@ -179,12 +185,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   ];
                   foreach ($colors as $value => $info):
                   ?>
-                  <button type="button"
-                          class="btn-color-swatch rounded-circle border"
-                          data-color="<?= $value ?>"
-                          style="width: 2rem; height: 2rem; background-color: <?= $info['hex'] ?>; cursor: pointer; position: relative;"
-                          title="<?= gettext($info['label']) ?>">
-                  </button>
+                  <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= gettext($info['label']) ?>"></button>
                   <?php endforeach; ?>
                 </div>
                 <small class="form-hint"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
@@ -198,12 +199,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="row mb-3">
               <label class="col-sm-3 col-form-label" for="tablePageLength"><?= gettext("Rows per page") ?></label>
               <div class="col-sm-9">
+                <?php $tableVal = $_userTableSize !== '' ? $_userTableSize : '10'; ?>
                 <select id="tablePageLength" class="form-select">
-                  <option value="10">10</option>
-                  <option value="25">25</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                  <option value="-1"><?= gettext("All") ?></option>
+                  <option value="10"<?= $tableVal === '10' ? ' selected' : '' ?>>10</option>
+                  <option value="25"<?= $tableVal === '25' ? ' selected' : '' ?>>25</option>
+                  <option value="50"<?= $tableVal === '50' ? ' selected' : '' ?>>50</option>
+                  <option value="100"<?= $tableVal === '100' ? ' selected' : '' ?>>100</option>
+                  <option value="-1"<?= $tableVal === '-1' ? ' selected' : '' ?>><?= gettext("All") ?></option>
                 </select>
                 <small class="form-hint"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
               </div>
@@ -220,7 +222,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <div class="col-sm-9">
                 <select id="user-locale-setting" class="form-select">
                 </select>
-                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= Bootstrapper::getCurrentLocale()->getSystemLocale() ?></strong></small>
+                <small class="form-hint"><?= gettext("Override the system default locale") ?>: <strong><?= $localeInfo->getSystemLocale() ?></strong></small>
               </div>
             </div>
 
@@ -284,7 +286,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
               <div class="col-sm-9">
                 <div class="input-group">
-                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= htmlspecialchars($user->getApiKey()) ?>" readonly>
+                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= InputUtils::escapeAttribute($user->getApiKey()) ?>" readonly>
                   <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
                     <i class="ti ti-refresh me-1"></i><?= gettext("Regenerate") ?>
                   </button>
@@ -297,7 +299,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
             <h4 class="mb-3"><?= gettext("Usage") ?></h4>
             <p class="text-muted"><?= gettext("Include your API key in requests using the x-api-key header:") ?></p>
-            <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= htmlspecialchars(substr($user->getApiKey(), 0, 8)) ?>..." \
+            <pre class="p-3 bg-light rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
      <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
           </div>
 
