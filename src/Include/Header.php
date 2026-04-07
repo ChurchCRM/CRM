@@ -181,10 +181,10 @@ $MenuFirst = 1;
               aria-label="<?= gettext('Toggle navigation') ?>">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand navbar-brand-autodark py-2">
+      <a href="<?= SystemURLs::getRootPath() ?>/v2/dashboard" class="navbar-brand py-2">
         <img src="<?= SystemURLs::getRootPath() ?>/Images/CRM_50x50.png"
-             alt="<?= htmlspecialchars(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
-             class="navbar-brand-image"
+             alt="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?>"
+             class="navbar-brand-image rounded"
              style="height: 42px; width: auto;">
         <span class="navbar-brand-text ps-2 fs-4 fw-bold">
           <?= ChurchMetaData::getChurchName() ?: 'ChurchCRM' ?>
