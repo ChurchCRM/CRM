@@ -80,7 +80,6 @@ $app->setBasePath($basePath);
 
 // Add Slim error middleware for proper error handling and logging
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 
 // Custom error handler
 $errorMiddleware->setDefaultErrorHandler(function (

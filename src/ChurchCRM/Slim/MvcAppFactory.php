@@ -47,7 +47,6 @@ class MvcAppFactory
 
         // Error middleware — must be added BEFORE other middleware (LIFO execution order)
         $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-        SlimUtils::setupErrorLogger($errorMiddleware);
         SlimUtils::registerDefaultHtmlErrorHandler($errorMiddleware, $dashboardUrl, $dashboardText);
 
         // Standard middleware stack (LIFO — last added runs first)

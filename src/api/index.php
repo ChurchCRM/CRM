@@ -18,7 +18,6 @@ $app->setBasePath($basePath);
 
 // Add Slim error middleware for proper error handling
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-SlimUtils::setupErrorLogger($errorMiddleware);
 SlimUtils::registerDefaultJsonErrorHandler($errorMiddleware);
 
 // Add CORS middleware for browser API access

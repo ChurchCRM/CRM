@@ -5,9 +5,6 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\LoggerUtils;
 use Exception;
-use Monolog\Handler\RotatingFileHandler;
-use Monolog\Level;
-use Monolog\Logger;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Exception\HttpMethodNotAllowedException;
@@ -102,31 +99,6 @@ class SlimUtils
             ->withHeader('Allow', implode(', ', $methods))
             ->withHeader('Content-type', 'text/html')
             ->write('Method must be one of: ' . implode(', ', $methods)));
-    }
-
-    /**
-     * Setup Monolog error handler for Slim error middleware
-     */
-    public static function setupErrorLogger($errorMiddleware)
-    {
-        $logger = new Logger('slim');
-        // Slim errors should be logged at WARNING level minimum to capture all errors
-        // regardless of system log level configuration
-        $logLevel = max(LoggerUtils::getLogLevel()->value, Level::Warning->value);
-        $handler = new RotatingFileHandler(LoggerUtils::buildRotatingLogBasePath('slim-error'), LoggerUtils::LOG_RETENTION_DAYS, $logLevel);
-        $handler->setFilenameFormat('{date}-{filename}', 'Y-m-d');
-        $handler->setFormatter(LoggerUtils::createFormatter());
-        $logger->pushHandler($handler);
-        $errorMiddleware->setDefaultErrorHandler(function (
-            Request $request,
-            Throwable $exception,
-            bool $displayErrorDetails,
-            bool $logErrors,
-            bool $logErrorDetails
-        ) use ($logger) {
-            $logger->error($exception->getMessage(), ['exception' => $exception]);
-            throw $exception;
-        });
     }
 
     /**
