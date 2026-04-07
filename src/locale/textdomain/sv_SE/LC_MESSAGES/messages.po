@@ -14611,3 +14611,321 @@ msgstr "Öppna CSV-export"
 msgid "Restore from the System Backup page"
 msgstr "Återställ från sidan för systemsäkerhetskopiering"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "En systemuppdatering är tillgänglig. Vänligen uppgradera din installation."
+
+#: 
+msgid "API Access"
+msgstr "API-åtkomst"
+
+#: 
+msgid "API Key"
+msgstr "API-nyckel"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-nyckel genererades om"
+
+#: 
+msgid "Account"
+msgstr "Konto"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Avancerade inställningar"
+
+#: 
+msgid "An error occurred."
+msgstr "Ett fel uppstod."
+
+#: 
+msgid "Appearance"
+msgstr "Utseende"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Tillbaka till ekonomiöversikt"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Tillbaka till gruppsöversikt"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Tillbaka till personöversikt"
+
+#: 
+msgid "Blue"
+msgstr "Blå"
+
+#: 
+msgid "Change Photo"
+msgstr "Ändra foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Ändringar träder inte i kraft förrän nästa inloggning."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Välj mellan ljust och mörkt färgschema"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Anpassa utseendet och känslan i programmet"
+
+#: 
+msgid "Dark"
+msgstr "Mörkt"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Endast databas (.sql) eller fullständigt arkiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Standardantalet rader som visas i datatabeller. Träder i kraft vid nästa sidinläsning."
+
+#: 
+msgid "Edit own family only"
+msgstr "Redigera endast den egna familjen"
+
+#: 
+msgid "Enter text here..."
+msgstr "Ange text här..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Det gick inte att avbryta registreringen. Försök igen."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Det gick inte att ta bort händelsen. Försök igen."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Det gick inte att inaktivera tvåfaktorsautentisering. Försök igen."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Det gick inte att generera QR-kod. Försök igen."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Det gick inte att läsa in kalenderdata. Försök igen."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Det gick inte att läsa in händelsen. Försök igen."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Det gick inte att läsa in återställningskoder. Vänligen uppdatera sidan."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Det gick inte att spara händelsen. Försök igen."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Det gick inte att spara inställningen"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filippinska - Filippinerna"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Korrigera felaktiga eller klumpiga översättningar på ditt språk"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Hittade du ett fel med översättningarna?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Ger alla behörigheter"
+
+#: 
+msgid "Green"
+msgstr "Grön"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Hjälp till att förbättra översättningar"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Om du märker förvrängda tecken, HTML-entiteter som visas som text, eller översättningar som bryter sidlayouten, vänligen rapportera problemet på GitHub så att det kan åtgärdas för alla."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Inkludera din API-nyckel i förfrågningar med hjälp av x-api-key-headern:"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Gå med i översättningsprojektet på POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Språk- och regioninställningar"
+
+#: 
+msgid "Light"
+msgstr "Ljust"
+
+#: 
+msgid "Lime"
+msgstr "Limegrön"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malayalam - Indien"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Hantera 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Hantera ytterligare inställningar som e-postavgränsare och visningsalternativ"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Hantera din API-nyckel för externa integrationer"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoden är inte tillåten"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Saknade eller felaktiga översättningar?"
+
+#: 
+msgid "My Account"
+msgstr "Mitt konto"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Åsidosätt systemets standardspråk"
+
+#: 
+msgid "Page Not Found"
+msgstr "Sidan hittades inte"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procentandel av strängar översatta för ditt nuvarande språk"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Primärfärg"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil och säkerhet"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Röd"
+
+#: 
+msgid "Regenerate"
+msgstr "Generera om"
+
+#: 
+msgid "Rows per page"
+msgstr "Rader per sida"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Ange behörighet till Sant för att tillåta denna användare att ändra inställningen själv."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Ange accentfärgen som används för knappar, länkar och aktiva element"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Föreslå bättre formuleringar för befintliga översättningar"
+
+#: 
+msgid "System Update Available"
+msgstr "Systemuppdatering tillgänglig"
+
+#: 
+msgid "Tables"
+msgstr "Tabeller"
+
+#: 
+msgid "Teal"
+msgstr "Blågrön"
+
+#: 
+msgid "Theme Mode"
+msgstr "Temaläge"
+
+#: 
+msgid "Toggle search"
+msgstr "Växla sökning"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Översätta saknade strängar för att förbättra täckningen"
+
+#: 
+msgid "Translation Progress"
+msgstr "Översättningsframsteg"
+
+#: 
+msgid "Usage"
+msgstr "Användning"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Använd denna nyckel för att autentisera API-förfrågningar. En omgenerering ogiltigförklarar den nuvarande nyckeln."
+
+#: 
+msgid "User Config"
+msgstr "Användarkonfiguration"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Verifieringen misslyckades. Försök igen."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Version %s är tillgänglig. Vänligen uppgradera din installation."
+
+#: 
+msgid "View All"
+msgstr "Visa alla"
+
+#: 
+msgid "Yellow"
+msgstr "Gul"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Dina nuvarande åtkomstnivåer (skrivskyddad)"
+

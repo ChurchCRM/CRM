@@ -14529,3 +14529,333 @@ msgstr "Відкрити CSV-експорт"
 msgid "Restore from the System Backup page"
 msgstr "Відновлення зі сторінки системного резервного копіювання"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Доступне оновлення системи. Будь ласка, оновіть вашу інсталяцію."
+
+#: 
+msgid "API Access"
+msgstr "Доступ до API"
+
+#: 
+msgid "API Key"
+msgstr "Ключ API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Ключ API оновлено"
+
+#: 
+msgid "Account"
+msgstr "Обліковий запис"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Розширені налаштування"
+
+#: 
+msgid "An error occurred."
+msgstr "Сталася помилка."
+
+#: 
+msgid "Appearance"
+msgstr "Зовнішній вигляд"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Повернутися до панелі фінансів"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Повернутися до панелі служінь"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Повернутися до панелі парафіян"
+
+#: 
+msgid "Blue"
+msgstr "Синій"
+
+#: 
+msgid "Change Photo"
+msgstr "Змінити фото"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Зміни набудуть чинності після наступного входу в систему."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Оберіть між світлою та темною кольоровою схемою"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Переклади ChurchCRM управляються спільнотою на POEditor. Ви можете допомогти:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Налаштуйте зовнішній вигляд та відчуття програми"
+
+#: 
+msgid "Cyan"
+msgstr "Блакитний"
+
+#: 
+msgid "Dark"
+msgstr "Темна"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Лише база даних (.sql) або повний архів (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Кількість рядків за замовчуванням у таблицях даних. Набуває чинності при наступному завантаженні сторінки."
+
+#: 
+msgid "Edit own family only"
+msgstr "Редагувати лише власну родину"
+
+#: 
+msgid "Enter text here..."
+msgstr "Введіть текст тут..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Не вдалося скасувати реєстрацію. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Не вдалося видалити подію. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Не вдалося вимкнути двофакторну автентифікацію. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Не вдалося згенерувати QR-код. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Не вдалося завантажити дані календаря. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Не вдалося завантажити подію. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Не вдалося завантажити коди відновлення. Будь ласка, оновіть сторінку."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Не вдалося зберегти подію. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Не вдалося зберегти налаштування"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Філіппінська — Філіппіни"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Виправлення неточних або незручних перекладів вашою мовою"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Знайшли помилку в перекладах?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Надає всі привілеї"
+
+#: 
+msgid "Green"
+msgstr "Зелений"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Допоможіть покращити переклади"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Якщо ви помітили спотворені символи, HTML-сутності у вигляді тексту або переклади, що порушують макет сторінки, будь ласка, повідомте про проблему на GitHub, щоб її можна було виправити для всіх."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Включіть ваш ключ API у запити, використовуючи заголовок x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Індиго"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Недійсне значення JSON — налаштування не збережено. Будь ласка, виправте та спробуйте ще раз."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Приєднайтеся до проекту перекладу на POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Мовні та регіональні налаштування"
+
+#: 
+msgid "Light"
+msgstr "Світла"
+
+#: 
+msgid "Lime"
+msgstr "Лаймовий"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Малаялам — Індія"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Управління двофакторною автентифікацією"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Управління додатковими налаштуваннями, такими як роздільники електронної пошти та параметри відображення"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Управляйте вашим ключем API для зовнішніх інтеграцій"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Метод не дозволено"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Відсутні або неправильні переклади?"
+
+#: 
+msgid "My Account"
+msgstr "Мій обліковий запис"
+
+#: 
+msgid "Orange"
+msgstr "Помаранчевий"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Замінити стандартну мову системи"
+
+#: 
+msgid "Page Not Found"
+msgstr "Сторінку не знайдено"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Відсоток перекладених рядків для вашої поточної мови"
+
+#: 
+msgid "Pink"
+msgstr "Рожевий"
+
+#: 
+msgid "Primary Color"
+msgstr "Основний колір"
+
+#: 
+msgid "Profile and security"
+msgstr "Профіль і безпека"
+
+#: 
+msgid "Purple"
+msgstr "Фіолетовий"
+
+#: 
+msgid "Red"
+msgstr "Червоний"
+
+#: 
+msgid "Regenerate"
+msgstr "Оновити"
+
+#: 
+msgid "Rows per page"
+msgstr "Рядків на сторінці"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Встановіть дозвіл на значення «Так», щоб цей користувач міг змінювати налаштування самостійно."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Встановіть акцентний колір для кнопок, посилань та активних елементів"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Пропонування кращих формулювань для наявних перекладів"
+
+#: 
+msgid "System Update Available"
+msgstr "Доступне оновлення системи"
+
+#: 
+msgid "Tables"
+msgstr "Таблиці"
+
+#: 
+msgid "Teal"
+msgstr "Бірюзовий"
+
+#: 
+msgid "Theme Mode"
+msgstr "Режим теми"
+
+#: 
+msgid "Toggle search"
+msgstr "Перемкнути пошук"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Переклад відсутніх рядків для покращення охоплення"
+
+#: 
+msgid "Translation Progress"
+msgstr "Прогрес перекладу"
+
+#: 
+msgid "Usage"
+msgstr "Використання"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Використовуйте цей ключ для автентифікації API-запитів. Оновлення ключа зробить поточний ключ недійсним."
+
+#: 
+msgid "User Config"
+msgstr "Конфігурація користувача"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Перевірку не пройдено. Будь ласка, спробуйте ще раз."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Версія %s доступна. Будь ласка, оновіть вашу інсталяцію."
+
+#: 
+msgid "View All"
+msgstr "Переглянути все"
+
+#: 
+msgid "Yellow"
+msgstr "Жовтий"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Ваші поточні рівні доступу (лише для читання)"
+

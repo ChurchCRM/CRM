@@ -14600,3 +14600,333 @@ msgstr "Открыть экспорт CSV"
 msgid "Restore from the System Backup page"
 msgstr "Восстановить со страницы резервного копирования системы"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Доступно обновление системы. Пожалуйста, обновите вашу установку."
+
+#: 
+msgid "API Access"
+msgstr "Доступ к API"
+
+#: 
+msgid "API Key"
+msgstr "Ключ API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Ключ API перегенерирован"
+
+#: 
+msgid "Account"
+msgstr "Учётная запись"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Расширенные настройки"
+
+#: 
+msgid "An error occurred."
+msgstr "Произошла ошибка."
+
+#: 
+msgid "Appearance"
+msgstr "Внешний вид"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Вернуться к панели финансов"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Вернуться к панели служений"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Вернуться к панели прихожан"
+
+#: 
+msgid "Blue"
+msgstr "Синий"
+
+#: 
+msgid "Change Photo"
+msgstr "Изменить фото"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Изменения вступят в силу при следующем входе."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Выберите между светлой и тёмной цветовой схемой"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Переводы ChurchCRM управляются сообществом на POEditor. Вы можете помочь:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Настройте внешний вид приложения"
+
+#: 
+msgid "Cyan"
+msgstr "Голубой"
+
+#: 
+msgid "Dark"
+msgstr "Тёмная"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Только база данных (.sql) или полный архив (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Количество строк по умолчанию в таблицах данных. Вступает в силу при следующей загрузке страницы."
+
+#: 
+msgid "Edit own family only"
+msgstr "Редактировать только собственную семью"
+
+#: 
+msgid "Enter text here..."
+msgstr "Введите текст здесь..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Не удалось отменить запись. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Не удалось удалить событие. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Не удалось отключить двухфакторную аутентификацию. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Не удалось создать QR-код. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Не удалось загрузить данные календаря. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Не удалось загрузить событие. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Не удалось загрузить коды восстановления. Пожалуйста, обновите страницу."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Не удалось сохранить событие. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Не удалось сохранить настройку"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Филиппинский — Филиппины"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Исправление некорректных или неудобных переводов на вашем языке"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Обнаружили ошибку в переводах?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Предоставляет все привилегии"
+
+#: 
+msgid "Green"
+msgstr "Зелёный"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Помогите улучшить переводы"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Если вы заметили искажённые символы, HTML-сущности, отображаемые как текст, или переводы, нарушающие макет страницы, пожалуйста, сообщите об этом на GitHub, чтобы это можно было исправить для всех."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Включите ваш ключ API в запросы с помощью заголовка x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Индиго"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Недопустимое значение JSON — настройка не была сохранена. Пожалуйста, исправьте и попробуйте снова."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Присоединитесь к проекту перевода на POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Языковые и региональные настройки"
+
+#: 
+msgid "Light"
+msgstr "Светлая"
+
+#: 
+msgid "Lime"
+msgstr "Лаймовый"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Малаялам — Индия"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Управление двухфакторной аутентификацией"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Управление дополнительными настройками, такими как разделители электронной почты и параметры отображения"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Управляйте вашим ключом API для внешних интеграций"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Метод не разрешён"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Отсутствующие или некорректные переводы?"
+
+#: 
+msgid "My Account"
+msgstr "Моя учётная запись"
+
+#: 
+msgid "Orange"
+msgstr "Оранжевый"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Переопределить системный язык по умолчанию"
+
+#: 
+msgid "Page Not Found"
+msgstr "Страница не найдена"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Процент переведённых строк для вашего текущего языка"
+
+#: 
+msgid "Pink"
+msgstr "Розовый"
+
+#: 
+msgid "Primary Color"
+msgstr "Основной цвет"
+
+#: 
+msgid "Profile and security"
+msgstr "Профиль и безопасность"
+
+#: 
+msgid "Purple"
+msgstr "Фиолетовый"
+
+#: 
+msgid "Red"
+msgstr "Красный"
+
+#: 
+msgid "Regenerate"
+msgstr "Перегенерировать"
+
+#: 
+msgid "Rows per page"
+msgstr "Строк на странице"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Установите разрешение в значение True, чтобы пользователь мог самостоятельно изменить этот параметр."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Установите акцентный цвет для кнопок, ссылок и активных элементов"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Предложение более точных формулировок для существующих переводов"
+
+#: 
+msgid "System Update Available"
+msgstr "Доступно обновление системы"
+
+#: 
+msgid "Tables"
+msgstr "Таблицы"
+
+#: 
+msgid "Teal"
+msgstr "Бирюзовый"
+
+#: 
+msgid "Theme Mode"
+msgstr "Режим темы"
+
+#: 
+msgid "Toggle search"
+msgstr "Переключить поиск"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Перевод отсутствующих строк для улучшения охвата"
+
+#: 
+msgid "Translation Progress"
+msgstr "Прогресс перевода"
+
+#: 
+msgid "Usage"
+msgstr "Использование"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Используйте этот ключ для аутентификации запросов API. Перегенерация сделает текущий ключ недействительным."
+
+#: 
+msgid "User Config"
+msgstr "Настройки пользователя"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Проверка не пройдена. Пожалуйста, попробуйте снова."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Версия %s доступна. Пожалуйста, обновите вашу установку."
+
+#: 
+msgid "View All"
+msgstr "Просмотреть все"
+
+#: 
+msgid "Yellow"
+msgstr "Жёлтый"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Ваши текущие уровни доступа (только чтение)"
+

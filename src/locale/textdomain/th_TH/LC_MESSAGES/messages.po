@@ -14472,3 +14472,333 @@ msgstr "เปิดการส่งออก CSV"
 msgid "Restore from the System Backup page"
 msgstr "กู้คืนจากหน้าสำรองข้อมูลระบบ"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "มีการอัปเดตระบบ กรุณาอัปเกรดการติดตั้งของคุณ"
+
+#: 
+msgid "API Access"
+msgstr "การเข้าถึง API"
+
+#: 
+msgid "API Key"
+msgstr "คีย์ API"
+
+#: 
+msgid "API key regenerated"
+msgstr "สร้างคีย์ API ใหม่แล้ว"
+
+#: 
+msgid "Account"
+msgstr "บัญชี"
+
+#: 
+msgid "Advanced Settings"
+msgstr "การตั้งค่าขั้นสูง"
+
+#: 
+msgid "An error occurred."
+msgstr "เกิดข้อผิดพลาด"
+
+#: 
+msgid "Appearance"
+msgstr "ลักษณะที่ปรากฏ"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "กลับไปยังแดชบอร์ดการเงิน"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "กลับไปยังแดชบอร์ดกลุ่ม"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "กลับไปยังแดชบอร์ดผู้คน"
+
+#: 
+msgid "Blue"
+msgstr "สีน้ำเงิน"
+
+#: 
+msgid "Change Photo"
+msgstr "เปลี่ยนรูปภาพ"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "การเปลี่ยนแปลงจะมีผลเมื่อเข้าสู่ระบบครั้งถัดไป"
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "เลือกระหว่างโทนสีสว่างและโทนสีเข้ม"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "การแปลภาษา ChurchCRM ได้รับการจัดการโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "ปรับแต่งรูปแบบและการใช้งานของแอปพลิเคชัน"
+
+#: 
+msgid "Cyan"
+msgstr "สีฟ้าอมเขียว"
+
+#: 
+msgid "Dark"
+msgstr "โทนสีเข้ม"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "ฐานข้อมูลเท่านั้น (.sql) หรือไฟล์เก็บถาวรทั้งหมด (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "จำนวนแถวเริ่มต้นที่แสดงในตารางข้อมูล มีผลเมื่อโหลดหน้าถัดไป"
+
+#: 
+msgid "Edit own family only"
+msgstr "แก้ไขเฉพาะครอบครัวของตนเอง"
+
+#: 
+msgid "Enter text here..."
+msgstr "กรอกข้อความที่นี่..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "ไม่สามารถยกเลิกการลงทะเบียนได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "ไม่สามารถลบกิจกรรมได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "ไม่สามารถปิดการยืนยันตัวตนสองขั้นตอนได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "ไม่สามารถสร้าง QR code ได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "ไม่สามารถโหลดข้อมูลปฏิทินได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "ไม่สามารถโหลดกิจกรรมได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "ไม่สามารถโหลดรหัสกู้คืนได้ กรุณารีเฟรชหน้า"
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "ไม่สามารถบันทึกกิจกรรมได้ กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Failed to save setting"
+msgstr "ไม่สามารถบันทึกการตั้งค่าได้"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "ภาษาฟิลิปปินส์ - ฟิลิปปินส์"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "แก้ไขการแปลที่ไม่ถูกต้องหรือไม่เป็นธรรมชาติในภาษาของคุณ"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "พบข้อผิดพลาดเกี่ยวกับการแปล?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "ให้สิทธิ์ทั้งหมด"
+
+#: 
+msgid "Green"
+msgstr "สีเขียว"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "ช่วยปรับปรุงการแปล"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "หากคุณพบอักขระที่แสดงผิดปกติ HTML entities ที่ปรากฏเป็นข้อความ หรือการแปลที่ทำให้เลย์เอาต์หน้าผิดพลาด กรุณารายงานปัญหาบน GitHub เพื่อให้แก้ไขได้สำหรับทุกคน"
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "ใส่คีย์ API ของคุณในคำขอโดยใช้ header x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "สีคราม"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "เข้าร่วมโครงการแปลบน POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "การตั้งค่าภาษาและภูมิภาค"
+
+#: 
+msgid "Light"
+msgstr "โทนสีสว่าง"
+
+#: 
+msgid "Lime"
+msgstr "สีเขียวมะนาว"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "ภาษามาลายาลัม - อินเดีย"
+
+#: 
+msgid "Manage 2FA"
+msgstr "จัดการการยืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "จัดการการตั้งค่าเพิ่มเติม เช่น ตัวคั่นอีเมลและตัวเลือกการแสดงผล"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "จัดการคีย์ API ของคุณสำหรับการเชื่อมต่อภายนอก"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "ไม่อนุญาตให้ใช้วิธีนี้"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "การแปลที่หายไปหรือไม่ถูกต้อง?"
+
+#: 
+msgid "My Account"
+msgstr "บัญชีของฉัน"
+
+#: 
+msgid "Orange"
+msgstr "สีส้ม"
+
+#: 
+msgid "Override the system default locale"
+msgstr "แทนที่การตั้งค่าภาษาเริ่มต้นของระบบ"
+
+#: 
+msgid "Page Not Found"
+msgstr "ไม่พบหน้า"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "เปอร์เซ็นต์ของสตริงที่แปลแล้วสำหรับภาษาปัจจุบันของคุณ"
+
+#: 
+msgid "Pink"
+msgstr "สีชมพู"
+
+#: 
+msgid "Primary Color"
+msgstr "สีหลัก"
+
+#: 
+msgid "Profile and security"
+msgstr "โปรไฟล์และความปลอดภัย"
+
+#: 
+msgid "Purple"
+msgstr "สีม่วง"
+
+#: 
+msgid "Red"
+msgstr "สีแดง"
+
+#: 
+msgid "Regenerate"
+msgstr "สร้างใหม่"
+
+#: 
+msgid "Rows per page"
+msgstr "แถวต่อหน้า"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "ตั้งค่าสิทธิ์เป็น True เพื่อให้ผู้ใช้นี้สามารถเปลี่ยนการตั้งค่าได้ด้วยตนเอง"
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "ตั้งค่าสีเน้นที่ใช้สำหรับปุ่ม ลิงก์ และองค์ประกอบที่ใช้งานอยู่"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "เสนอถ้อยคำที่ดีกว่าสำหรับการแปลที่มีอยู่"
+
+#: 
+msgid "System Update Available"
+msgstr "มีการอัปเดตระบบ"
+
+#: 
+msgid "Tables"
+msgstr "ตาราง"
+
+#: 
+msgid "Teal"
+msgstr "สีน้ำเงินอมเขียว"
+
+#: 
+msgid "Theme Mode"
+msgstr "โหมดธีม"
+
+#: 
+msgid "Toggle search"
+msgstr "สลับการค้นหา"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "แปลสตริงที่หายไปเพื่อเพิ่มความครอบคลุม"
+
+#: 
+msgid "Translation Progress"
+msgstr "ความคืบหน้าการแปล"
+
+#: 
+msgid "Usage"
+msgstr "การใช้งาน"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "ใช้คีย์นี้เพื่อยืนยันตัวตนสำหรับคำขอ API การสร้างใหม่จะทำให้คีย์ปัจจุบันใช้งานไม่ได้"
+
+#: 
+msgid "User Config"
+msgstr "การกำหนดค่าผู้ใช้"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "การยืนยันล้มเหลว กรุณาลองอีกครั้ง"
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ"
+
+#: 
+msgid "View All"
+msgstr "ดูทั้งหมด"
+
+#: 
+msgid "Yellow"
+msgstr "สีเหลือง"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "ระดับการเข้าถึงปัจจุบันของคุณ (อ่านอย่างเดียว)"
+

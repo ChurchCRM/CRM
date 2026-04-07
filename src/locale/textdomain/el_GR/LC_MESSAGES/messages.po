@@ -14509,3 +14509,333 @@ msgstr "Άνοιγμα Εξαγωγής CSV"
 msgid "Restore from the System Backup page"
 msgstr "Επαναφορά από τη σελίδα Αντιγράφου Ασφαλείας Συστήματος"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Υπάρχει διαθέσιμη ενημέρωση συστήματος. Παρακαλώ αναβαθμίστε την εγκατάστασή σας."
+
+#: 
+msgid "API Access"
+msgstr "Πρόσβαση API"
+
+#: 
+msgid "API Key"
+msgstr "Κλειδί API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Το κλειδί API αναδημιουργήθηκε"
+
+#: 
+msgid "Account"
+msgstr "Λογαριασμός"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Προχωρημένες Ρυθμίσεις"
+
+#: 
+msgid "An error occurred."
+msgstr "Παρουσιάστηκε σφάλμα."
+
+#: 
+msgid "Appearance"
+msgstr "Εμφάνιση"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Επιστροφή στον Πίνακα Οικονομικών"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Επιστροφή στον Πίνακα Διακονιών"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Επιστροφή στον Πίνακα Ενοριτών"
+
+#: 
+msgid "Blue"
+msgstr "Μπλε"
+
+#: 
+msgid "Change Photo"
+msgstr "Αλλαγή Φωτογραφίας"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Οι αλλαγές θα εφαρμοστούν κατά την επόμενη σύνδεση."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Επιλέξτε μεταξύ ανοιχτού και σκούρου χρωματικού θέματος"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Οι μεταφράσεις του ChurchCRM διαχειρίζονται από την κοινότητα στο POEditor. Μπορείτε να βοηθήσετε:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Προσαρμόστε την εμφάνιση και τη λειτουργία της εφαρμογής"
+
+#: 
+msgid "Cyan"
+msgstr "Κυανό"
+
+#: 
+msgid "Dark"
+msgstr "Σκούρο"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Μόνο βάση δεδομένων (.sql) ή πλήρες αρχείο (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Προεπιλεγμένος αριθμός γραμμών στους πίνακες δεδομένων. Εφαρμόζεται κατά την επόμενη φόρτωση σελίδας."
+
+#: 
+msgid "Edit own family only"
+msgstr "Επεξεργασία μόνο της δικής σας οικογένειας"
+
+#: 
+msgid "Enter text here..."
+msgstr "Εισάγετε κείμενο εδώ..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Η ακύρωση εγγραφής απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Η διαγραφή εκδήλωσης απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Η απενεργοποίηση του ελέγχου ταυτότητας δύο παραγόντων απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Η δημιουργία κωδικού QR απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Η φόρτωση δεδομένων ημερολογίου απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Η φόρτωση της εκδήλωσης απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Η φόρτωση κωδικών ανάκτησης απέτυχε. Παρακαλώ ανανεώστε τη σελίδα."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Η αποθήκευση της εκδήλωσης απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Η αποθήκευση της ρύθμισης απέτυχε"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Φιλιππινέζικα - Φιλιππίνες"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Διόρθωση λανθασμένων ή αδέξιων μεταφράσεων στη γλώσσα σας"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Βρήκατε σφάλμα στις μεταφράσεις;"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Παρέχει όλα τα προνόμια"
+
+#: 
+msgid "Green"
+msgstr "Πράσινο"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Βοηθήστε στη Βελτίωση των Μεταφράσεων"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Εάν παρατηρήσετε κατεστραμμένους χαρακτήρες, οντότητες HTML που εμφανίζονται ως κείμενο, ή μεταφράσεις που επηρεάζουν τη διάταξη σελίδας, παρακαλώ αναφέρετε το πρόβλημα στο GitHub ώστε να διορθωθεί για όλους."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Συμπεριλάβετε το κλειδί API στις αιτήσεις χρησιμοποιώντας την κεφαλίδα x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Ινδικό Μπλε"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Μη έγκυρη τιμή JSON — η ρύθμιση δεν αποθηκεύτηκε. Παρακαλώ διορθώστε την και προσπαθήστε ξανά."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Συμμετέχετε στο Έργο Μετάφρασης στο POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Ρυθμίσεις γλώσσας και περιοχής"
+
+#: 
+msgid "Light"
+msgstr "Ανοιχτό"
+
+#: 
+msgid "Lime"
+msgstr "Λαχανί"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Μαλαγιαλαμικά - Ινδία"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Διαχείριση 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Διαχείριση πρόσθετων προτιμήσεων όπως διαχωριστικά email και επιλογές εμφάνισης"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Διαχειριστείτε το κλειδί API σας για εξωτερικές ενσωματώσεις"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Η Μέθοδος Δεν Επιτρέπεται"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Λείπουν ή είναι λανθασμένες οι μεταφράσεις;"
+
+#: 
+msgid "My Account"
+msgstr "Ο Λογαριασμός Μου"
+
+#: 
+msgid "Orange"
+msgstr "Πορτοκαλί"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Παράκαμψη της προεπιλεγμένης τοπικής ρύθμισης συστήματος"
+
+#: 
+msgid "Page Not Found"
+msgstr "Η Σελίδα Δεν Βρέθηκε"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Ποσοστό συμβολοσειρών που έχουν μεταφραστεί για την τρέχουσα γλώσσα σας"
+
+#: 
+msgid "Pink"
+msgstr "Ροζ"
+
+#: 
+msgid "Primary Color"
+msgstr "Κύριο Χρώμα"
+
+#: 
+msgid "Profile and security"
+msgstr "Προφίλ και ασφάλεια"
+
+#: 
+msgid "Purple"
+msgstr "Μωβ"
+
+#: 
+msgid "Red"
+msgstr "Κόκκινο"
+
+#: 
+msgid "Regenerate"
+msgstr "Αναδημιουργία"
+
+#: 
+msgid "Rows per page"
+msgstr "Γραμμές ανά σελίδα"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Ορίστε την Άδεια σε Αληθές για να επιτρέψετε στον χρήστη να αλλάξει τη ρύθμιση μόνος του."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Ορίστε το χρώμα τόνισης που χρησιμοποιείται για κουμπιά, συνδέσμους και ενεργά στοιχεία"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Πρόταση καλύτερης διατύπωσης για υπάρχουσες μεταφράσεις"
+
+#: 
+msgid "System Update Available"
+msgstr "Διαθέσιμη Ενημέρωση Συστήματος"
+
+#: 
+msgid "Tables"
+msgstr "Πίνακες"
+
+#: 
+msgid "Teal"
+msgstr "Πετρόλ"
+
+#: 
+msgid "Theme Mode"
+msgstr "Λειτουργία Θέματος"
+
+#: 
+msgid "Toggle search"
+msgstr "Εναλλαγή αναζήτησης"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Μετάφραση ελλιπών συμβολοσειρών για βελτίωση κάλυψης"
+
+#: 
+msgid "Translation Progress"
+msgstr "Πρόοδος Μετάφρασης"
+
+#: 
+msgid "Usage"
+msgstr "Χρήση"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Χρησιμοποιήστε αυτό το κλειδί για την πιστοποίηση αιτήσεων API. Η αναδημιουργία θα ακυρώσει το τρέχον κλειδί."
+
+#: 
+msgid "User Config"
+msgstr "Διαμόρφωση Χρήστη"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Η επαλήθευση απέτυχε. Παρακαλώ προσπαθήστε ξανά."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Η έκδοση %s είναι διαθέσιμη. Παρακαλώ αναβαθμίστε την εγκατάστασή σας."
+
+#: 
+msgid "View All"
+msgstr "Προβολή Όλων"
+
+#: 
+msgid "Yellow"
+msgstr "Κίτρινο"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Τα τρέχοντα επίπεδα πρόσβασής σας (μόνο ανάγνωση)"
+

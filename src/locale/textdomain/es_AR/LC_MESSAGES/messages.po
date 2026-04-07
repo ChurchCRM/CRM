@@ -14465,3 +14465,328 @@ msgstr "Abrir exportación CSV"
 msgid "Restore from the System Backup page"
 msgstr "Restaurar desde la página de Copia de seguridad del sistema"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Hay una actualización del sistema disponible. Por favor, actualizá tu instalación."
+
+#: 
+msgid "API Access"
+msgstr "Acceso a la API"
+
+#: 
+msgid "API Key"
+msgstr "Clave de API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Clave de API regenerada"
+
+#: 
+msgid "Account"
+msgstr "Cuenta"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Configuración avanzada"
+
+#: 
+msgid "An error occurred."
+msgstr "Ocurrió un error."
+
+#: 
+msgid "Appearance"
+msgstr "Apariencia"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Volver al Panel de Finanzas"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Volver al Panel de Ministerios"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Volver al Panel de Personas"
+
+#: 
+msgid "Blue"
+msgstr "Azul"
+
+#: 
+msgid "Change Photo"
+msgstr "Cambiar foto"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Los cambios no tendrán efecto hasta el próximo inicio de sesión."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Elegí entre esquema de colores claro u oscuro"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Las traducciones de ChurchCRM son gestionadas por la comunidad en POEditor. Podés ayudar:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Personalizá el aspecto y la apariencia de la aplicación"
+
+#: 
+msgid "Cyan"
+msgstr "Cian"
+
+#: 
+msgid "Dark"
+msgstr "Oscuro"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Solo base de datos (.sql) o archivo completo (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Número predeterminado de filas mostradas en las tablas de datos. Tiene efecto en la próxima carga de página."
+
+#: 
+msgid "Edit own family only"
+msgstr "Editar solo la propia familia"
+
+#: 
+msgid "Enter text here..."
+msgstr "Ingresá el texto aquí..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "No se pudo cancelar la inscripción. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "No se pudo eliminar el evento. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "No se pudo deshabilitar la autenticación de dos factores. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "No se pudo generar el código QR. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "No se pudieron cargar los datos del calendario. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "No se pudo cargar el evento. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "No se pudieron cargar los códigos de recuperación. Por favor, actualizá la página."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "No se pudo guardar el evento. Por favor, intentá de nuevo."
+
+#: 
+msgid "Failed to save setting"
+msgstr "No se pudo guardar la configuración"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipino - Filipinas"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Corrigiendo traducciones incorrectas o poco naturales en tu idioma"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "¿Encontraste un error en las traducciones?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Otorga todos los privilegios"
+
+#: 
+msgid "Green"
+msgstr "Verde"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Ayudá a mejorar las traducciones"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Si notás caracteres ilegibles, entidades HTML que aparecen como texto, o traducciones que rompen el diseño de la página, por favor reportá el problema en GitHub para que pueda ser corregido para todos."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Incluí tu clave de API en las solicitudes usando el encabezado x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Índigo"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Valor JSON inválido — la configuración no fue guardada. Por favor, corregílo e intentá de nuevo."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Unite al proyecto de traducción en POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Configuración de idioma y región"
+
+#: 
+msgid "Light"
+msgstr "Claro"
+
+#: 
+msgid "Lime"
+msgstr "Lima"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Gestionar 2FA"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Gestioná preferencias adicionales como delimitadores de correo electrónico y opciones de visualización"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Gestioná tu clave de API para integraciones externas"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Método no permitido"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "¿Faltan traducciones o están incorrectas?"
+
+#: 
+msgid "My Account"
+msgstr "Mi cuenta"
+
+#: 
+msgid "Orange"
+msgstr "Naranja"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Reemplazar la configuración regional predeterminada del sistema"
+
+#: 
+msgid "Page Not Found"
+msgstr "Página no encontrada"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Porcentaje de cadenas traducidas para tu idioma actual"
+
+#: 
+msgid "Pink"
+msgstr "Rosa"
+
+#: 
+msgid "Primary Color"
+msgstr "Color primario"
+
+#: 
+msgid "Profile and security"
+msgstr "Perfil y seguridad"
+
+#: 
+msgid "Purple"
+msgstr "Violeta"
+
+#: 
+msgid "Red"
+msgstr "Rojo"
+
+#: 
+msgid "Regenerate"
+msgstr "Regenerar"
+
+#: 
+msgid "Rows per page"
+msgstr "Filas por página"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Establecé el permiso en Verdadero para permitir que este usuario cambie la configuración por sí mismo."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Establecé el color de acento usado para botones, enlaces y elementos activos"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Sugiriendo una mejor redacción para las traducciones existentes"
+
+#: 
+msgid "System Update Available"
+msgstr "Actualización del sistema disponible"
+
+#: 
+msgid "Tables"
+msgstr "Tablas"
+
+#: 
+msgid "Teal"
+msgstr "Verde azulado"
+
+#: 
+msgid "Theme Mode"
+msgstr "Modo de tema"
+
+#: 
+msgid "Toggle search"
+msgstr "Activar/desactivar búsqueda"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Traduciendo cadenas faltantes para mejorar la cobertura"
+
+#: 
+msgid "Translation Progress"
+msgstr "Progreso de traducción"
+
+#: 
+msgid "Usage"
+msgstr "Uso"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Usá esta clave para autenticar solicitudes de la API. Regenerarla invalidará la clave actual."
+
+#: 
+msgid "User Config"
+msgstr "Configuración de usuario"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "La verificación falló. Por favor, intentá de nuevo."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "La versión %s está disponible. Por favor, actualizá tu instalación."
+
+#: 
+msgid "View All"
+msgstr "Ver todo"
+
+#: 
+msgid "Yellow"
+msgstr "Amarillo"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Tus niveles de acceso actuales (solo lectura)"
+

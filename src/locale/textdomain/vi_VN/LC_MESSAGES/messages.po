@@ -14499,3 +14499,333 @@ msgstr "Mở Xuất CSV"
 msgid "Restore from the System Backup page"
 msgstr "Khôi phục từ trang Sao lưu Hệ thống"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Có bản cập nhật hệ thống. Vui lòng nâng cấp cài đặt của bạn."
+
+#: 
+msgid "API Access"
+msgstr "Truy cập API"
+
+#: 
+msgid "API Key"
+msgstr "Khóa API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Khóa API đã được tạo lại"
+
+#: 
+msgid "Account"
+msgstr "Tài khoản"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Cài đặt nâng cao"
+
+#: 
+msgid "An error occurred."
+msgstr "Đã xảy ra lỗi."
+
+#: 
+msgid "Appearance"
+msgstr "Giao diện"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Quay lại Bảng điều khiển Tài chính"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Quay lại Bảng điều khiển Thừa tác vụ"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Quay lại Bảng điều khiển Giáo dân"
+
+#: 
+msgid "Blue"
+msgstr "Xanh lam"
+
+#: 
+msgid "Change Photo"
+msgstr "Thay đổi ảnh"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Thay đổi sẽ không có hiệu lực cho đến lần đăng nhập tiếp theo."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Chọn giữa giao diện sáng và tối"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Tùy chỉnh giao diện và trải nghiệm của ứng dụng"
+
+#: 
+msgid "Cyan"
+msgstr "Xanh lơ"
+
+#: 
+msgid "Dark"
+msgstr "Tối"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Chỉ cơ sở dữ liệu (.sql) hoặc lưu trữ đầy đủ (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Số hàng mặc định hiển thị trong bảng dữ liệu. Có hiệu lực khi tải trang tiếp theo."
+
+#: 
+msgid "Edit own family only"
+msgstr "Chỉ chỉnh sửa gia đình của mình"
+
+#: 
+msgid "Enter text here..."
+msgstr "Nhập văn bản tại đây..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Hủy đăng ký thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Xóa sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Tắt xác thực hai yếu tố thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Tạo mã QR thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Tải dữ liệu lịch thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Tải sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Tải mã khôi phục thất bại. Vui lòng làm mới trang."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Lưu sự kiện thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Lưu cài đặt thất bại"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Tiếng Filipino - Philippines"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Sửa các bản dịch không chính xác hoặc lạ trong ngôn ngữ của bạn"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Phát hiện lỗi trong bản dịch?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Cấp tất cả quyền hạn"
+
+#: 
+msgid "Green"
+msgstr "Xanh lá"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Giúp cải thiện bản dịch"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Nếu bạn nhận thấy ký tự bị lỗi, thực thể HTML hiển thị dưới dạng văn bản, hoặc bản dịch làm hỏng bố cục trang, vui lòng báo cáo sự cố trên GitHub để có thể được sửa cho tất cả mọi người."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Bao gồm khóa API của bạn trong các yêu cầu bằng tiêu đề x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Chàm"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Giá trị JSON không hợp lệ — cài đặt chưa được lưu. Vui lòng sửa và thử lại."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Tham gia Dự án Dịch thuật trên POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Cài đặt ngôn ngữ và khu vực"
+
+#: 
+msgid "Light"
+msgstr "Sáng"
+
+#: 
+msgid "Lime"
+msgstr "Xanh vàng"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Tiếng Malayalam - Ấn Độ"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Quản lý xác thực 2 yếu tố"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Quản lý các tùy chọn bổ sung như dấu phân cách email và tùy chọn hiển thị"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Quản lý khóa API của bạn cho các tích hợp bên ngoài"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Phương thức không được phép"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Bản dịch bị thiếu hoặc không chính xác?"
+
+#: 
+msgid "My Account"
+msgstr "Tài khoản của tôi"
+
+#: 
+msgid "Orange"
+msgstr "Cam"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Ghi đè ngôn ngữ mặc định của hệ thống"
+
+#: 
+msgid "Page Not Found"
+msgstr "Không tìm thấy trang"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Tỷ lệ phần trăm chuỗi đã dịch cho ngôn ngữ hiện tại của bạn"
+
+#: 
+msgid "Pink"
+msgstr "Hồng"
+
+#: 
+msgid "Primary Color"
+msgstr "Màu chủ đạo"
+
+#: 
+msgid "Profile and security"
+msgstr "Hồ sơ và bảo mật"
+
+#: 
+msgid "Purple"
+msgstr "Tím"
+
+#: 
+msgid "Red"
+msgstr "Đỏ"
+
+#: 
+msgid "Regenerate"
+msgstr "Tạo lại"
+
+#: 
+msgid "Rows per page"
+msgstr "Hàng mỗi trang"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Đặt Quyền thành True để cho phép người dùng này tự thay đổi cài đặt."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Đặt màu nhấn dùng cho các nút, liên kết và các phần tử đang hoạt động"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Đề xuất cách diễn đạt tốt hơn cho các bản dịch hiện có"
+
+#: 
+msgid "System Update Available"
+msgstr "Có bản cập nhật hệ thống"
+
+#: 
+msgid "Tables"
+msgstr "Bảng"
+
+#: 
+msgid "Teal"
+msgstr "Xanh mòng két"
+
+#: 
+msgid "Theme Mode"
+msgstr "Chế độ giao diện"
+
+#: 
+msgid "Toggle search"
+msgstr "Bật/tắt tìm kiếm"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Dịch các chuỗi còn thiếu để cải thiện độ bao phủ"
+
+#: 
+msgid "Translation Progress"
+msgstr "Tiến độ dịch thuật"
+
+#: 
+msgid "Usage"
+msgstr "Cách sử dụng"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Sử dụng khóa này để xác thực các yêu cầu API. Tạo lại sẽ vô hiệu hóa khóa hiện tại."
+
+#: 
+msgid "User Config"
+msgstr "Cấu hình người dùng"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Xác minh thất bại. Vui lòng thử lại."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn."
+
+#: 
+msgid "View All"
+msgstr "Xem tất cả"
+
+#: 
+msgid "Yellow"
+msgstr "Vàng"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)"
+
