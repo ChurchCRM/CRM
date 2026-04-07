@@ -18,6 +18,11 @@ $_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
     $_themeAttrs .= ' data-bs-theme-primary="' . htmlspecialchars($_themePrimary) . '"';
 }
+$_bodyClasses = '';
+$_boxed = $_themeUser->getSettingValue('ui.boxed');
+if ($_boxed !== '') {
+    $_bodyClasses .= 'layout-boxed';
+}
 ?>
 <!DOCTYPE html>
 <html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?>>
@@ -29,4 +34,4 @@ if ($_themePrimary !== '') {
   <?php require_once __DIR__ . '/Header-HTML-Scripts.php'; ?>
 </head>
 
-<body>
+<body<?= $_bodyClasses !== '' ? ' class="' . $_bodyClasses . '"' : '' ?>>
