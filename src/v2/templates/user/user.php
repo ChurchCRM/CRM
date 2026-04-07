@@ -172,23 +172,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="d-flex flex-wrap gap-2" id="primaryColorPicker">
                   <?php
                   $colors = [
-                      '' => ['label' => 'Default', 'hex' => '#066fd1'],
-                      'blue' => ['label' => 'Blue', 'hex' => '#066fd1'],
-                      'azure' => ['label' => 'Azure', 'hex' => '#4299e1'],
-                      'indigo' => ['label' => 'Indigo', 'hex' => '#4263eb'],
-                      'purple' => ['label' => 'Purple', 'hex' => '#ae3ec9'],
-                      'pink' => ['label' => 'Pink', 'hex' => '#d6336c'],
-                      'red' => ['label' => 'Red', 'hex' => '#d63939'],
-                      'orange' => ['label' => 'Orange', 'hex' => '#f76707'],
-                      'yellow' => ['label' => 'Yellow', 'hex' => '#f59f00'],
-                      'lime' => ['label' => 'Lime', 'hex' => '#74b816'],
-                      'green' => ['label' => 'Green', 'hex' => '#2fb344'],
-                      'teal' => ['label' => 'Teal', 'hex' => '#0ca678'],
-                      'cyan' => ['label' => 'Cyan', 'hex' => '#17a2b8'],
+                      '' => ['label' => gettext('Default'), 'hex' => '#066fd1'],
+                      'blue' => ['label' => gettext('Blue'), 'hex' => '#066fd1'],
+                      'azure' => ['label' => gettext('Azure'), 'hex' => '#4299e1'],
+                      'indigo' => ['label' => gettext('Indigo'), 'hex' => '#4263eb'],
+                      'purple' => ['label' => gettext('Purple'), 'hex' => '#ae3ec9'],
+                      'pink' => ['label' => gettext('Pink'), 'hex' => '#d6336c'],
+                      'red' => ['label' => gettext('Red'), 'hex' => '#d63939'],
+                      'orange' => ['label' => gettext('Orange'), 'hex' => '#f76707'],
+                      'yellow' => ['label' => gettext('Yellow'), 'hex' => '#f59f00'],
+                      'lime' => ['label' => gettext('Lime'), 'hex' => '#74b816'],
+                      'green' => ['label' => gettext('Green'), 'hex' => '#2fb344'],
+                      'teal' => ['label' => gettext('Teal'), 'hex' => '#0ca678'],
+                      'cyan' => ['label' => gettext('Cyan'), 'hex' => '#17a2b8'],
                   ];
                   foreach ($colors as $value => $info):
                   ?>
-                  <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= gettext($info['label']) ?>"></button>
+                  <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= $info['label'] ?>" aria-label="<?= $info['label'] ?>"></button>
                   <?php endforeach; ?>
                 </div>
                 <small class="form-hint"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>

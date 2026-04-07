@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\UserConfig;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
 use ChurchCRM\Utils\InputUtils;

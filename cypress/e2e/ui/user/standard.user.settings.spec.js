@@ -108,13 +108,23 @@ describe("Standard User Settings Page", () => {
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
+        // Intercept the settings API call so we can wait for it
+        cy.intercept("POST", "/api/user/*/setting/ui.table.size").as(
+            "saveTableSize",
+        );
         cy.get("#tablePageLength").select("50");
-        // Setting is saved via API — verify the select value persists on reload
+        cy.wait("@saveTableSize");
+
+        // Verify the select value persists on reload
         cy.visit("/v2/user/3");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tablePageLength").should("have.value", "50");
 
-        // Reset to default
+        // Reset
+        cy.intercept("POST", "/api/user/*/setting/ui.table.size").as(
+            "resetTableSize",
+        );
         cy.get("#tablePageLength").select("10");
+        cy.wait("@resetTableSize");
     });
 });
