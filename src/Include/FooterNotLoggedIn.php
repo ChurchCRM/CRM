@@ -2,6 +2,7 @@
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 ?>
@@ -51,6 +52,6 @@ use ChurchCRM\Service\SystemService;
         }
     })();
   </script>
-  <?= \ChurchCRM\Plugin\PluginManager::getPluginFooterContent() ?>
+  <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
