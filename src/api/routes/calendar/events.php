@@ -55,6 +55,10 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->delete('/{id}/attendance/{personId}', 'deleteAttendance')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
     $group->post('/{id}/status', 'setEventStatus')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+
+    // Audit endpoints — find and clean up "stuck" events
+    $group->get('/audit/stuck', 'getStuckEvents');
+    $group->post('/audit/close', 'closeStuckEvents')->add(new AddEventsRoleAuthMiddleware());
 });
 
 /**
@@ -1360,5 +1364,127 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
         'created' => count($createdEvents),
         'skipped' => $skippedCount,
         'events' => $createdEvents,
+    ]);
+}
+
+/**
+ * @OA\Get(
+ *     path="/events/audit/stuck",
+ *     operationId="getStuckEvents",
+ *     summary="List past events that are still active and have un-checked-out attendees",
+ *     description="Returns events whose end date has passed but which are still marked active AND have at least one attendee with no checkout timestamp. Useful for auditing forgotten check-outs and inactive cleanup.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="List of stuck events with stats")
+ * )
+ */
+function getStuckEvents(Request $request, Response $response, array $args): Response
+{
+    $now = date('Y-m-d H:i:s');
+
+    // Find all active events whose end is in the past
+    $candidates = EventQuery::create()
+        ->filterByInActive(0)
+        ->filterByEnd($now, Criteria::LESS_THAN)
+        ->orderByEnd(Criteria::DESC)
+        ->limit(500)
+        ->find();
+
+    $stuck = [];
+    foreach ($candidates as $event) {
+        $eventId = (int) $event->getId();
+
+        // Count attendees who checked in but never checked out
+        $stillCheckedIn = EventAttendQuery::create()
+            ->filterByEventId($eventId)
+            ->filterByCheckinDate(null, Criteria::ISNOTNULL)
+            ->filterByCheckoutDate(null, Criteria::ISNULL)
+            ->count();
+
+        if ($stillCheckedIn === 0) {
+            continue;
+        }
+
+        $stuck[] = [
+            'id'             => $eventId,
+            'title'          => $event->getTitle(),
+            'typeName'       => $event->getEventType() ? $event->getEventType()->getName() : '',
+            'start'          => $event->getStart('Y-m-d H:i:s'),
+            'end'            => $event->getEnd('Y-m-d H:i:s'),
+            'stillCheckedIn' => $stillCheckedIn,
+        ];
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'count'  => count($stuck),
+        'events' => $stuck,
+    ]);
+}
+
+/**
+ * @OA\Post(
+ *     path="/events/audit/close",
+ *     operationId="closeStuckEvents",
+ *     summary="Batch close stuck events",
+ *     description="For each event id provided, checks out anyone still checked in and marks the event inactive. Idempotent — events that are already closed/empty are skipped.",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(
+ *         required={"eventIds"},
+ *         @OA\Property(property="eventIds", type="array", @OA\Items(type="integer"), example={42,43,44}),
+ *         @OA\Property(property="checkoutPeople", type="boolean", example=true, description="Auto check-out anyone still checked in (defaults to true)"),
+ *         @OA\Property(property="deactivate", type="boolean", example=true, description="Mark the event inactive after closing (defaults to true)")
+ *     )),
+ *     @OA\Response(response=200, description="Summary of close operation")
+ * )
+ */
+function closeStuckEvents(Request $request, Response $response, array $args): Response
+{
+    $input = $request->getParsedBody();
+    $eventIds = $input['eventIds'] ?? [];
+    if (!is_array($eventIds) || empty($eventIds)) {
+        return SlimUtils::renderErrorJSON($response, gettext('eventIds must be a non-empty array'), [], 400);
+    }
+    $checkoutPeople = !isset($input['checkoutPeople']) || $input['checkoutPeople'];
+    $deactivate = !isset($input['deactivate']) || $input['deactivate'];
+
+    $eventsClosed = 0;
+    $peopleCheckedOut = 0;
+
+    foreach ($eventIds as $rawId) {
+        $eventId = (int) $rawId;
+        if ($eventId <= 0) {
+            continue;
+        }
+
+        $event = EventQuery::create()->findOneById($eventId);
+        if ($event === null) {
+            continue;
+        }
+
+        if ($checkoutPeople) {
+            $stillIn = EventAttendQuery::create()
+                ->filterByEventId($eventId)
+                ->filterByCheckinDate(null, Criteria::ISNOTNULL)
+                ->filterByCheckoutDate(null, Criteria::ISNULL)
+                ->find();
+
+            foreach ($stillIn as $att) {
+                $event->checkOutPerson($att->getPersonId());
+                $peopleCheckedOut++;
+            }
+        }
+
+        if ($deactivate && (int) $event->getInActive() === 0) {
+            $event->setInActive(1);
+            $event->save();
+            $eventsClosed++;
+        }
+    }
+
+    return SlimUtils::renderJSON($response, [
+        'success'          => true,
+        'eventsClosed'     => $eventsClosed,
+        'peopleCheckedOut' => $peopleCheckedOut,
     ]);
 }

@@ -186,6 +186,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'aBreadcrumbs'           => PageHeader::breadcrumbs([[gettext('Events')]]),
         'sPageHeaderButtons'     => $canEditEvents ? PageHeader::buttons([
             ['label' => gettext('Manage Event Types'), 'url' => '/event/types', 'icon' => 'fa-tags', 'adminOnly' => false],
+            ['label' => gettext('Audit Events'), 'url' => '/event/audit', 'icon' => 'fa-triangle-exclamation', 'adminOnly' => false],
         ]) : '',
         'canEditEvents'          => $canEditEvents,
         'eType'                  => $eType,
