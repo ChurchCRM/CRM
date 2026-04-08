@@ -17,5 +17,6 @@ require __DIR__ . '/routes/checkin.php';
 require __DIR__ . '/routes/repeat-editor.php';
 require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/list-events.php';
+require __DIR__ . '/routes/types.php';
 
 $app->run();

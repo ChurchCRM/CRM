@@ -7,7 +7,7 @@ describe("Admin Event", () => {
     });
 
     it("Create New Event Type", () => {
-        cy.visit("EventNames.php");
+        cy.visit("event/types");
         cy.contains("Edit Event Types");
         cy.contains("Add Event Type");
     });

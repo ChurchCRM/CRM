@@ -14,7 +14,7 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should pre-fill event type when navigating from EventNames', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         // Click the Repeat button for the first event type
         cy.get('#eventNames tbody tr').first().within(() => {
             cy.get('a.btn-outline-success').click();
@@ -56,7 +56,7 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should create weekly repeat events and redirect to list', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
 
         // Navigate to repeat editor from first event type
         cy.get('#eventNames tbody tr').first().within(() => {
@@ -102,7 +102,7 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should show Repeat button on EventNames page', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.get('a[href*="RepeatEventEditor.php"]').should('exist');
     });
 });

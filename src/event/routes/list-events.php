@@ -189,7 +189,7 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         'sPageSubtitle'          => gettext('Overview of church events, attendance, and activity'),
         'aBreadcrumbs'           => PageHeader::breadcrumbs([[gettext('Events')]]),
         'sPageHeaderButtons'     => $canEditEvents ? PageHeader::buttons([
-            ['label' => gettext('Manage Event Types'), 'url' => '/EventNames.php', 'icon' => 'fa-tags', 'adminOnly' => false],
+            ['label' => gettext('Manage Event Types'), 'url' => '/event/types', 'icon' => 'fa-tags', 'adminOnly' => false],
         ]) : '',
         'canEditEvents'          => $canEditEvents,
         'eType'                  => $eType,

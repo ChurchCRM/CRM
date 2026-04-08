@@ -8,7 +8,7 @@ describe('Event Editor', () => {
      * button on the first row of the EventNames table.
      */
     function createEventFromFirstType() {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.get('#eventNames tbody tr').first().within(() => {
             cy.get('button[data-bs-toggle="dropdown"]').click();
         });
@@ -114,7 +114,7 @@ describe('Event Editor', () => {
 
     it('should handle events without attendance counts', () => {
         // Create an event type with no attendance counts first
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.contains('button', 'Add Event Type').click();
 
         const eventTypeName = 'No Counts ' + Date.now();
@@ -124,7 +124,7 @@ describe('Event Editor', () => {
         cy.contains('button', 'Save Event Type').click();
 
         // Verify successful creation
-        cy.url().should('include', '/EventNames.php');
+        cy.url().should('include', '/event/types');
         cy.url().should('not.include', 'Action=NEW');
 
         // Create event from any type via dropdown

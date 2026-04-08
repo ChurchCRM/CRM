@@ -4,7 +4,7 @@ describe('Event Type Management', () => {
     });
 
     it('should display event types with 12-hour time format', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         
         // Verify page and table structure
         cy.contains('Event Types').should('exist');
@@ -19,7 +19,7 @@ describe('Event Type Management', () => {
     });
 
     it('should have 3-dropdown time picker (no auto-submit)', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.contains('button', 'Add Event Type').click();
         
         // Verify 3-dropdown time picker exists
@@ -44,7 +44,7 @@ describe('Event Type Management', () => {
     });
 
     it('should create event type with midnight and noon times', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         
         // Test midnight (12:00 AM)
         cy.contains('button', 'Add Event Type').click();
@@ -68,7 +68,7 @@ describe('Event Type Management', () => {
     });
 
     it('should create event type without auto "Total" attendance count', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.contains('button', 'Add Event Type').click();
         
         const eventTypeName = 'NoAutoTotal ' + Date.now();
@@ -77,7 +77,7 @@ describe('Event Type Management', () => {
         cy.contains('button', 'Save Event Type').click();
         
         // Verify redirect back to list (successful creation)
-        cy.url().should('include', '/EventNames.php');
+        cy.url().should('include', '/event/types');
         cy.url().should('not.include', 'Action=NEW');
         
         // Verify attendance counts by checking first event type's edit page
@@ -92,7 +92,7 @@ describe('Event Type Management', () => {
     });
 
     it('should enable recurrence pattern dropdowns correctly', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         cy.contains('button', 'Add Event Type').click();
         
         // Initially all disabled
@@ -122,7 +122,7 @@ describe('Event Type Management', () => {
     });
 
     it('should display EditEventTypes page with modern styling', () => {
-        cy.visit('/EventNames.php');
+        cy.visit('/event/types');
         
         // Navigate to edit page
         cy.get('#eventNames tbody tr').first().within(() => {
