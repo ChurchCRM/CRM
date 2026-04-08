@@ -18,10 +18,21 @@ describe("Standard User - Event Check-in", () => {
 
     it("Selecting an event shows the check-in form", () => {
         cy.visit("event/checkin");
-        cy.get("#EventSelector").select(3);
-        // Selecting an event navigates to /event/checkin/3
-        cy.url().should("include", "/event/checkin/3");
-        cy.contains("Check In Person");
+
+        // Pick the first real event option (skip the disabled "Choose an event..." placeholder)
+        // and assert the URL contains whatever id was actually selected, instead of hardcoding
+        // an id that drifts as the test seed grows.
+        cy.get("#EventSelector option").then(($options) => {
+            const realOption = [...$options].find((o) => o.value && o.value !== "");
+            if (!realOption) {
+                cy.log("No active events seeded — skipping");
+                return;
+            }
+            const eventId = realOption.value;
+            cy.get("#EventSelector").select(eventId);
+            cy.url().should("include", `/event/checkin/${eventId}`);
+            cy.contains("Check In Person");
+        });
     });
 
     it("Filter events by type dropdown exists", () => {

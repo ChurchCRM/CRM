@@ -104,7 +104,10 @@ describe('Event Editor', () => {
         });
 
         // Select event status (Active)
-        cy.get('input[name="EventStatus"][value="0"]').check();
+        // EventStatus radio is wrapped in .event-editor-advanced (collapsed by default
+        // for new events). Use force:true to set the underlying value without expanding
+        // the UI — these tests aren't testing the toggle, just need the field set.
+        cy.get('input[name="EventStatus"][value="0"]').check({ force: true });
 
         // Save event
         cy.get('button[name="SaveChanges"]').click();
@@ -140,7 +143,10 @@ describe('Event Editor', () => {
 
         const eventTitle = 'TestEvent' + Date.now();
         cy.get('input[name="EventTitle"]').clear().type(eventTitle);
-        cy.get('input[name="EventStatus"][value="0"]').check();
+        // EventStatus radio is wrapped in .event-editor-advanced (collapsed by default
+        // for new events). Use force:true to set the underlying value without expanding
+        // the UI — these tests aren't testing the toggle, just need the field set.
+        cy.get('input[name="EventStatus"][value="0"]').check({ force: true });
         cy.get('button[name="SaveChanges"]').click();
 
         // Verify redirect to event list (successful save)
@@ -172,7 +178,10 @@ describe('Event Editor', () => {
 
         const originalTitle = 'OriginalEvent' + Date.now();
         cy.get('input[name="EventTitle"]').clear().type(originalTitle);
-        cy.get('input[name="EventStatus"][value="0"]').check();
+        // EventStatus radio is wrapped in .event-editor-advanced (collapsed by default
+        // for new events). Use force:true to set the underlying value without expanding
+        // the UI — these tests aren't testing the toggle, just need the field set.
+        cy.get('input[name="EventStatus"][value="0"]').check({ force: true });
         cy.get('button[name="SaveChanges"]').click();
 
         // Verify redirect to event list
@@ -229,7 +238,10 @@ describe('Event Editor', () => {
             cy.wrap($input).clear().type('15');
         });
 
-        cy.get('input[name="EventStatus"][value="0"]').check();
+        // EventStatus radio is wrapped in .event-editor-advanced (collapsed by default
+        // for new events). Use force:true to set the underlying value without expanding
+        // the UI — these tests aren't testing the toggle, just need the field set.
+        cy.get('input[name="EventStatus"][value="0"]').check({ force: true });
         cy.get('button[name="SaveChanges"]').click();
 
         cy.url().should('include', '/event/dashboard');
@@ -309,10 +321,13 @@ describe('Event Editor', () => {
             const eventTitle = 'Date Validation Test ' + Date.now();
             cy.get('input[name="EventTitle"]').clear().type(eventTitle);
 
-            // Set an invalid range: end before start
+            // Set an invalid range: end before start. Click body to dismiss the
+            // daterangepicker dropdown so its .drp-buttons overlay doesn't cover
+            // the SaveChanges button when we click it next.
             cy.get('#EventDateRange').clear().type('2026-12-31 09:00 AM - 2026-01-01 10:00 AM', { force: true });
+            cy.get('body').click(0, 0);
 
-            cy.get('button[name="SaveChanges"]').click();
+            cy.get('button[name="SaveChanges"]').click({ force: true });
 
             // Should NOT have redirected to dashboard (blocked by client-side validation)
             cy.url().should('include', '/event/editor');

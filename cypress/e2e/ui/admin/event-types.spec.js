@@ -133,9 +133,11 @@ describe('Event Type Management', () => {
         // Verify edit page elements
         cy.contains('Edit Event Type').should('exist');
         cy.get('#newEvtName').should('exist');
-        cy.get('#EventHour').should('exist');
-        cy.get('#EventMinute').should('exist');
-        cy.get('#EventPeriod').should('exist');
+
+        // The 3-dropdown time picker (#EventHour / #EventMinute / #EventPeriod) was
+        // replaced with a single native <input type="time" id="newEvtStartTime"> +
+        // explicit Save button. See commit 46fefb453.
+        cy.get('#newEvtStartTime').should('exist').and('have.attr', 'type', 'time');
 
         // Attendance count rows
         cy.get('[data-cy="attendance-count-row"]').should('exist');

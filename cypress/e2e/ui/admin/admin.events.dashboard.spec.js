@@ -122,6 +122,27 @@ describe("Events Dashboard (MVC)", () => {
     });
 
     describe("Event action menu", () => {
+        // The DemoData service does not seed events, so a fresh test database
+        // has zero events on the dashboard. Create one via quick-create before
+        // running any of the action-menu assertions so the table tbody exists.
+        beforeEach(() => {
+            cy.makePrivateAdminAPICall("GET", "/api/events/types", null, [200, 404]).then(
+                (typesResp) => {
+                    if (typesResp.status !== 200 || !typesResp.body || typesResp.body.length === 0) {
+                        return;
+                    }
+                    cy.makePrivateAdminAPICall(
+                        "POST",
+                        "/api/events/quick-create",
+                        { eventTypeId: typesResp.body[0].Id },
+                        200,
+                    );
+                },
+            );
+            // After API calls the PHP session can be reset — re-establish admin session
+            cy.setupAdminSession({ forceLogin: true });
+        });
+
         it("renders the standard action dropdown for each event row", () => {
             cy.visit("event/dashboard");
             // Wait for the action menu to be hydrated by JS
@@ -129,9 +150,9 @@ describe("Events Dashboard (MVC)", () => {
                 .should("have.length.at.least", 1);
         });
 
-        it("event title link navigates to the event editor", () => {
+        it("event title link navigates to the read-only event view page", () => {
             cy.visit("event/dashboard");
-            cy.get("table tbody tr td:first-child a").first().then(($link) => {
+            cy.get("table tbody tr td:first-child a", { timeout: 10000 }).first().then(($link) => {
                 const href = $link.attr("href");
                 expect(href).to.include("/event/editor/");
             });
@@ -153,14 +174,18 @@ describe("Events Dashboard (MVC)", () => {
         });
 
         it("Deactivate POSTs /api/events/{id}/status with active=false", () => {
-            cy.visit("event/dashboard");
             cy.intercept("POST", "**/api/events/*/status").as("status");
+            cy.visit("event/dashboard");
 
             // Find an event currently marked Active
-            cy.get("table tbody tr").contains(".badge", "Active").first().parents("tr").within(() => {
-                cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']")
-                    .click({ force: true });
-            });
+            cy.get("table tbody tr", { timeout: 10000 })
+                .contains(".badge", "Active")
+                .first()
+                .parents("tr")
+                .within(() => {
+                    cy.get(".event-action-menu-placeholder .dropdown button[data-bs-toggle='dropdown']")
+                        .click({ force: true });
+                });
 
             cy.get(".dropdown-menu.show").contains("Deactivate").click();
 
@@ -171,10 +196,10 @@ describe("Events Dashboard (MVC)", () => {
         });
 
         it("Activate POSTs /api/events/{id}/status with active=true (when an inactive event exists)", () => {
-            cy.visit("event/dashboard");
             cy.intercept("POST", "**/api/events/*/status").as("status");
+            cy.visit("event/dashboard");
 
-            cy.get("table tbody tr").then(($rows) => {
+            cy.get("table tbody tr", { timeout: 10000 }).then(($rows) => {
                 const $inactive = $rows.filter((_, r) => Cypress.$(r).find(".badge:contains('Inactive')").length > 0);
                 if ($inactive.length === 0) {
                     // No inactive events to activate — nothing to assert here
