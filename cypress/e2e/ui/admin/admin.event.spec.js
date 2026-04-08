@@ -6,10 +6,17 @@ describe("Admin Event", () => {
         cy.setupAdminSession();
     });
 
-    it("Create New Event Type", () => {
+    it("Event Types page loads", () => {
         cy.visit("event/types");
-        cy.contains("Edit Event Types");
+        cy.contains("Event Types");
         cy.contains("Add Event Type");
+    });
+
+    it("Add new event type form loads", () => {
+        cy.visit("event/types/new");
+        cy.contains("Add New");
+        cy.get("#newEvtName").should("exist");
+        cy.get('input[name="newEvtTypeRecur"]').should("have.length.at.least", 4);
     });
 
     it("Events Dashboard", () => {

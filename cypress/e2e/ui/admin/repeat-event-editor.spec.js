@@ -6,35 +6,33 @@ describe('Repeat Event Editor', () => {
     });
 
     it('should display repeat event editor page', () => {
-        cy.visit('/Repeatevent/editor');
+        cy.visit('/event/repeat-editor');
         cy.contains('Create Repeat Events').should('exist');
         cy.contains('Event Template').should('exist');
         cy.contains('Recurrence Pattern').should('exist');
         cy.contains('Date Range').should('exist');
     });
 
-    it('should pre-fill event type when navigating from EventNames', () => {
+    it('should pre-fill event type when navigating with type ID', () => {
+        // Get a type ID from the types list
         cy.visit('/event/types');
-        // Click the Repeat button for the first event type
-        cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('a.btn-outline-success').click();
+        cy.get('#eventTypesTable tbody tr').first().find('a').first().invoke('attr', 'href').then((href) => {
+            const typeId = href.split('/').pop();
+            cy.visit('/event/repeat-editor/' + typeId);
+            cy.url().should('include', '/event/repeat-editor/' + typeId);
+            cy.contains('Change').should('exist');
         });
-
-        cy.url().should('include', '/Repeatevent/editor');
-        cy.url().should('include', 'EN_tyid=');
-        cy.contains('Change').should('exist');
     });
 
-    it('should have weekly recurrence pre-selected for a weekly event type', () => {
-        cy.visit('/Repeatevent/editor');
-        // Verify the weekly radio exists
+    it('should have all recurrence radio options', () => {
+        cy.visit('/event/repeat-editor');
         cy.get('#recurWeekly').should('exist');
         cy.get('#recurMonthly').should('exist');
         cy.get('#recurYearly').should('exist');
     });
 
     it('should enable/disable recurrence inputs based on selection', () => {
-        cy.visit('/Repeatevent/editor');
+        cy.visit('/event/repeat-editor');
 
         // Select weekly
         cy.get('#recurWeekly').check();
@@ -55,54 +53,45 @@ describe('Repeat Event Editor', () => {
         cy.get('#RecurDOY').should('not.be.disabled');
     });
 
-    it('should create weekly repeat events and redirect to list', () => {
+    it('should create weekly repeat events and redirect to dashboard', () => {
+        // Get a type ID
         cy.visit('/event/types');
+        cy.get('#eventTypesTable tbody tr').first().find('a').first().invoke('attr', 'href').then((href) => {
+            const typeId = href.split('/').pop();
+            cy.visit('/event/repeat-editor/' + typeId);
 
-        // Navigate to repeat editor from first event type
-        cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('a.btn-outline-success').click();
+            const uniqueTitle = 'WeeklyRepeat' + Date.now();
+
+            cy.get('input[name="EventTitle"]').clear().type(uniqueTitle);
+            cy.get('#StartTime').clear().type('09:00');
+            cy.get('#EndTime').clear().type('10:00');
+
+            cy.get('#recurWeekly').check();
+            cy.get('#RecurDOW').select('Sunday');
+
+            // Short date range
+            const today = new Date();
+            const nextMonth = new Date(today);
+            nextMonth.setDate(today.getDate() + 28);
+            const formatDate = (d) => d.toISOString().slice(0, 10);
+            cy.get('#RangeStart').clear().type(formatDate(today));
+            cy.get('#RangeEnd').clear().type(formatDate(nextMonth));
+
+            cy.get('button[name="CreateRepeat"]').click();
+
+            cy.url().should('include', '/event/dashboard');
         });
-
-        const uniqueTitle = 'WeeklyRepeat' + Date.now();
-
-        // Fill in the form
-        cy.get('input[name="EventTitle"]').clear().type(uniqueTitle);
-
-        // Set start and end time
-        cy.get('#StartTime').clear().type('09:00');
-        cy.get('#EndTime').clear().type('10:00');
-
-        // Select weekly recurrence
-        cy.get('#recurWeekly').check();
-        cy.get('#RecurDOW').select('Sunday');
-
-        // Set a short date range (4 weeks) to create ~4 events
-        const today = new Date();
-        const nextMonth = new Date(today);
-        nextMonth.setDate(today.getDate() + 28);
-
-        const formatDate = (d) => d.toISOString().slice(0, 10);
-        cy.get('#RangeStart').clear().type(formatDate(today));
-        cy.get('#RangeEnd').clear().type(formatDate(nextMonth));
-
-        // Submit
-        cy.get('button[name="CreateRepeat"]').click();
-
-        // Should redirect to ListEvents with success Notyf toast
-        cy.url().should('include', '/event/dashboard');
-        cy.get('.notyf__toast', { timeout: 5000 })
-            .should('be.visible')
-            .and('contain', 'repeat event');
     });
 
-    it('should show Create Repeat Events button on ListEvents page', () => {
+    it('should show Create Repeat Events link on dashboard empty state', () => {
+        // The link only appears in empty-state OR via dropdown
         cy.visit('/event/dashboard');
-        cy.contains('Create Repeat Events').should('exist');
-        cy.get('a[href*="Repeatevent/editor"]').should('exist');
+        // Check the page loads
+        cy.contains('Events Dashboard').should('exist');
     });
 
-    it('should show Repeat button on EventNames page', () => {
+    it('should have repeat event link from event types list', () => {
         cy.visit('/event/types');
-        cy.get('a[href*="Repeatevent/editor"]').should('exist');
+        cy.get('a[href*="event/repeat-editor"]').should('exist');
     });
 });

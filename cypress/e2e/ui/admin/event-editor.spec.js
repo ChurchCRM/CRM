@@ -4,16 +4,17 @@ describe('Event Editor', () => {
     });
 
     /**
-     * Helper: navigate to EventEditor by clicking the dropdown "Create Event"
-     * button on the first row of the EventNames table.
+     * Helper: navigate to EventEditor by getting the first event type's ID
+     * and visiting /event/editor?EN_tyid={id} directly.
      */
     function createEventFromFirstType() {
         cy.visit('/event/types');
-        cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button[data-bs-toggle="dropdown"]').click();
+        // Click first edit link to get a type ID, then go to editor with that type
+        cy.get('#eventTypesTable tbody tr').first().find('a').first().invoke('attr', 'href').then((href) => {
+            // href is like /event/types/3
+            const typeId = href.split('/').pop();
+            cy.visit('/event/editor?EN_tyid=' + typeId);
         });
-        // The dropdown item is outside the <tr> in DOM flow, so query from body
-        cy.get('.dropdown-menu.show .dropdown-item').contains('Create Event').click();
     }
 
     it('should display event editor page', () => {
@@ -114,8 +115,7 @@ describe('Event Editor', () => {
 
     it('should handle events without attendance counts', () => {
         // Create an event type with no attendance counts first
-        cy.visit('/event/types');
-        cy.contains('button', 'Add Event Type').click();
+        cy.visit('/event/types/new');
 
         const eventTypeName = 'No Counts ' + Date.now();
         cy.get('#newEvtName').type(eventTypeName);
@@ -125,13 +125,10 @@ describe('Event Editor', () => {
 
         // Verify successful creation
         cy.url().should('include', '/event/types');
-        cy.url().should('not.include', 'Action=NEW');
+        cy.url().should('not.include', '/new');
 
-        // Create event from any type via dropdown
-        cy.get('#eventNames tbody tr').first().within(() => {
-            cy.get('button[data-bs-toggle="dropdown"]').click();
-        });
-        cy.get('.dropdown-menu.show .dropdown-item').contains('Create Event').click();
+        // Navigate to event editor for any type
+        createEventFromFirstType();
 
         // Verify event editor loads without errors
         cy.contains('Create a new Event').should('exist');

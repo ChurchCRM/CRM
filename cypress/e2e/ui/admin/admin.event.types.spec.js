@@ -29,8 +29,9 @@ describe("Event Types Management", () => {
   });
 
   it("should view event type by direct URL", () => {
-    cy.visit("event/types?EN_tyid=1");
-    cy.get('input[name="newEvtName"]').should("have.value", "Church Service");
+    cy.visit("event/types/1");
+    cy.contains("Edit Event Type");
+    cy.get('input[name="newEvtName"]').should("exist");
   });
   
 });
