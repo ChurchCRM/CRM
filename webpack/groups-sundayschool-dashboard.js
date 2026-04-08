@@ -78,6 +78,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Start Check-in: quick-create event for this group and redirect to check-in page
+  $(document).on("click", ".start-checkin-btn", async function () {
+    const $btn = $(this);
+    const groupId = $btn.data("group-id");
+
+    $btn
+      .prop("disabled", true)
+      .html('<span class="spinner-border spinner-border-sm me-1"></span>' + i18next.t("Loading..."));
+
+    try {
+      // Find an event type linked to this group, or use a generic one
+      const typesRes = await fetch(buildAPIUrl("events/types"));
+      if (!typesRes.ok) throw new Error(`HTTP ${typesRes.status}`);
+      const types = await typesRes.json();
+
+      // Try to find an event type linked to this group (type_grpid match)
+      // If not found, use quick-create with just the groupId
+      let eventTypeId = 0;
+      if (Array.isArray(types)) {
+        const linkedType = types.find((t) => t.GroupId === groupId);
+        if (linkedType) {
+          eventTypeId = linkedType.Id;
+        }
+      }
+
+      // Quick-create the event
+      const createRes = await fetch(buildAPIUrl("events/quick-create"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eventTypeId: eventTypeId > 0 ? eventTypeId : null,
+          groupId: groupId,
+        }),
+      });
+
+      if (!createRes.ok) {
+        // If quick-create fails (e.g., no event type), fall back to check-in page
+        window.location.href = `${window.CRM.root}/Checkin.php`;
+        return;
+      }
+
+      const data = await createRes.json();
+      window.location.href = `${window.CRM.root}/Checkin.php?EventID=${data.eventId}`;
+    } catch (error) {
+      console.error("Failed to start check-in:", error);
+      // Fall back to check-in page
+      window.location.href = `${window.CRM.root}/Checkin.php`;
+    }
+  });
+
   // Delete Sunday School class
   $(document).on("click", ".delete-ss-class", function () {
     const groupId = $(this).data("group-id");

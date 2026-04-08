@@ -9,6 +9,8 @@ import type {
   ActiveClassMembersResponse,
   AjaxOptions,
   ClassMember,
+  FamilyMember,
+  FamilyMembersResponse,
   HeartbeatResponse,
   KioskAssignment,
   KioskJSOM,
@@ -18,6 +20,19 @@ import type {
 // Declare moment as global (loaded via CDN in header)
 declare const moment: typeof import("moment");
 
+// Declare bootstrap on window (set by skin-core.js via @tabler/core)
+declare global {
+  interface Window {
+    bootstrap: {
+      Modal: {
+        getOrCreateInstance(el: Element): { show(): void; hide(): void };
+        getInstance(el: Element): { show(): void; hide(): void } | null;
+        new (el: Element, options?: Record<string, unknown>): { show(): void; hide(): void };
+      };
+    };
+  }
+}
+
 // Helper to access window.CRM safely
 function getCRM(): any {
   return (window as any).CRM || {};
@@ -26,10 +41,14 @@ function getCRM(): any {
 // Module-level state (avoids global window.CRM pollution)
 const kioskState = {
   notificationsEnabled: false,
+  checkinByEnabled: false,
   kioskAssignmentId: undefined as KioskAssignment | undefined,
   kioskEventLoop: undefined as ReturnType<typeof setInterval> | undefined,
   countdownInterval: undefined as ReturnType<typeof setInterval> | undefined,
 };
+
+// Pending callback for the "Check-in By" modal
+let pendingCheckinByCallback: ((checkedByPersonId: number | null) => void) | null = null;
 
 /**
  * HTML escape helper to prevent XSS
@@ -760,10 +779,27 @@ function renderStatusCard(
  * Check in a person
  */
 function checkInPerson(personId: number): void {
+  if (kioskState.checkinByEnabled) {
+    const $personDiv = $("#personId-" + personId);
+    const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
+    showCheckinByModal(personId, "checkin", personName);
+  } else {
+    performCheckin(personId, null);
+  }
+}
+
+/**
+ * Perform the actual check-in API call
+ */
+function performCheckin(personId: number, checkedInById: number | null): void {
+  const payload: { PersonId: number; CheckedInById?: number } = { PersonId: personId };
+  if (checkedInById !== null) {
+    payload.CheckedInById = checkedInById;
+  }
   APIRequest({
     path: "checkin",
     method: "POST",
-    data: JSON.stringify({ PersonId: personId }),
+    data: JSON.stringify(payload),
   }).done(() => {
     setCheckedIn(personId);
   });
@@ -773,13 +809,134 @@ function checkInPerson(personId: number): void {
  * Check out a person
  */
 function checkOutPerson(personId: number): void {
+  if (kioskState.checkinByEnabled) {
+    const $personDiv = $("#personId-" + personId);
+    const personName = $personDiv.find(".kiosk-member-name").text().trim() || "this person";
+    showCheckinByModal(personId, "checkout", personName);
+  } else {
+    performCheckout(personId, null);
+  }
+}
+
+/**
+ * Perform the actual check-out API call
+ */
+function performCheckout(personId: number, checkedOutById: number | null): void {
+  const payload: { PersonId: number; CheckedOutById?: number } = { PersonId: personId };
+  if (checkedOutById !== null) {
+    payload.CheckedOutById = checkedOutById;
+  }
   APIRequest({
     path: "checkout",
     method: "POST",
-    data: JSON.stringify({ PersonId: personId }),
+    data: JSON.stringify(payload),
   }).done(() => {
     setCheckedOut(personId);
   });
+}
+
+/**
+ * Enable or disable the "Check-in By" feature
+ */
+function setCheckinByEnabled(enabled: boolean): void {
+  kioskState.checkinByEnabled = enabled;
+}
+
+/**
+ * Render family member selection buttons for the "Check-in By" modal
+ */
+function renderFamilyMemberOptions(members: FamilyMember[]): string {
+  let html = '<div class="checkin-by-members">';
+  for (const member of members) {
+    const photoHtml = member.hasPhoto
+      ? '<img src="' + getPhotoUrl(member.Id) + '" alt="' + escapeHtml(member.FirstName) + '" class="checkin-by-photo">'
+      : '<i class="fa-solid fa-user fa-2x"></i>';
+    html +=
+      '<button type="button" class="checkin-by-member-btn checkinByMemberBtn" data-memberid="' +
+      member.Id +
+      '">' +
+      photoHtml +
+      '<span class="checkin-by-name">' +
+      escapeHtml(member.FirstName + " " + member.LastName) +
+      "</span>" +
+      "</button>";
+  }
+  html += "</div>";
+  return html;
+}
+
+/**
+ * Show the "Check-in By" modal for selecting who is checking a person in/out
+ */
+function showCheckinByModal(personId: number, action: "checkin" | "checkout", personName: string): void {
+  const isCheckin = action === "checkin";
+  const title = isCheckin ? "Who is bringing in " + personName + "?" : "Who is picking up " + personName + "?";
+
+  // Set modal title
+  $("#checkinByModalTitle").text(title);
+
+  // Show loading state
+  $("#checkinByModalBody").html(
+    '<div class="text-center py-4"><i class="fa-solid fa-spinner fa-spin fa-2x text-primary"></i><p class="mt-2 text-muted">Loading family members...</p></div>',
+  );
+
+  // Store the callback to invoke after selection
+  pendingCheckinByCallback = (checkedByPersonId) => {
+    if (action === "checkin") {
+      performCheckin(personId, checkedByPersonId);
+    } else {
+      performCheckout(personId, checkedByPersonId);
+    }
+  };
+
+  // Show modal
+  window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).show();
+
+  // Fetch family members
+  APIRequest({
+    path: "activeClassMember/" + personId + "/family",
+  })
+    .done((data: FamilyMembersResponse) => {
+      // Guard against unexpected API responses (defensive check for empty/malformed members array)
+      if (!data.members || data.members.length === 0) {
+        // No family members found — close modal and proceed without a checker
+        window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+        const cb = pendingCheckinByCallback;
+        pendingCheckinByCallback = null;
+        if (cb) {
+          cb(null);
+        }
+        return;
+      }
+      $("#checkinByModalBody").html(renderFamilyMemberOptions(data.members));
+    })
+    .fail(() => {
+      // On API failure close modal and proceed without a checker
+      window.bootstrap.Modal.getOrCreateInstance(document.getElementById("checkinByModal")!).hide();
+      const cb = pendingCheckinByCallback;
+      pendingCheckinByCallback = null;
+      if (cb) {
+        cb(null);
+      }
+    });
+}
+
+/**
+ * Resolve the "Check-in By" modal with the selected person (or null for skip)
+ */
+function resolveCheckinByModal(checkedByPersonId: number | null): void {
+  if (pendingCheckinByCallback) {
+    const cb = pendingCheckinByCallback;
+    pendingCheckinByCallback = null;
+    cb(checkedByPersonId);
+  }
+}
+
+/**
+ * Cancel the "Check-in By" modal without performing a check-in/out
+ */
+function cancelCheckinByModal(): void {
+  pendingCheckinByCallback = null;
 }
 
 /**
@@ -1097,6 +1254,9 @@ export const kiosk: KioskJSOM = {
   get notificationsEnabled() {
     return kioskState.notificationsEnabled;
   },
+  get checkinByEnabled() {
+    return kioskState.checkinByEnabled;
+  },
   escapeHtml,
   APIRequest,
   getPhotoUrl,
@@ -1125,6 +1285,9 @@ export const kiosk: KioskJSOM = {
   displayPersonInfo,
   startEventLoop,
   stopEventLoop,
+  setCheckinByEnabled,
+  resolveCheckinByModal,
+  cancelCheckinByModal,
 };
 
 // Attach to window.CRM.kiosk for global access (for external use)

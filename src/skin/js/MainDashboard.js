@@ -572,6 +572,106 @@ export function initializeMainDashboard() {
     return "";
   }
 
+  // Today's Events widget
+  if ($("#todayEventsDashboardItem").length > 0) {
+    let todayEventsConfig = {
+      ajax: {
+        url: window.CRM.root + "/api/events/today",
+        dataSrc: function (json) {
+          if (!json.events || json.events.length === 0) {
+            $("#todayEventsDashboardItem")
+              .closest(".card-body")
+              .html(
+                '<div class="empty py-4">' +
+                  '<div class="empty-icon"><i class="fa-solid fa-calendar-day fa-2x text-muted"></i></div>' +
+                  '<p class="empty-title">' +
+                  i18next.t("No Events Today") +
+                  "</p>" +
+                  '<p class="empty-subtitle text-muted">' +
+                  i18next.t("There are no events scheduled for today") +
+                  "</p>" +
+                  "</div>",
+              );
+            return [];
+          }
+          return json.events;
+        },
+      },
+      columns: [
+        {
+          width: "35%",
+          title: i18next.t("Event"),
+          data: "title",
+          render: function (data, type, row) {
+            return (
+              '<a href="' +
+              window.CRM.root +
+              "/Checkin.php?EventID=" +
+              row.id +
+              '"><strong>' +
+              window.CRM.escapeHtml(data) +
+              "</strong></a>"
+            );
+          },
+        },
+        {
+          width: "15%",
+          title: i18next.t("Type"),
+          data: "typeName",
+          render: function (data) {
+            if (!data) return "";
+            return '<span class="badge bg-blue-lt">' + window.CRM.escapeHtml(data) + "</span>";
+          },
+        },
+        {
+          width: "15%",
+          title: i18next.t("Time"),
+          data: "start",
+          render: function (data) {
+            if (!data) return "";
+            return '<small class="text-muted">' + moment(data).format("h:mm A") + "</small>";
+          },
+        },
+        {
+          width: "15%",
+          title: i18next.t("Attendance"),
+          data: "checkedIn",
+          render: function (data, type, row) {
+            let total = row.totalAttendees || 0;
+            let checked = data || 0;
+            if (total === 0 && checked === 0) {
+              return '<span class="text-muted">—</span>';
+            }
+            let badgeClass = checked > 0 ? "bg-green-lt" : "bg-secondary-lt";
+            return '<span class="badge ' + badgeClass + '">' + checked + " / " + total + "</span>";
+          },
+        },
+        {
+          width: "20%",
+          title: i18next.t("Action"),
+          data: "id",
+          orderable: false,
+          className: "no-export",
+          render: function (data) {
+            return (
+              '<a href="' +
+              window.CRM.root +
+              "/Checkin.php?EventID=" +
+              data +
+              '" class="btn btn-sm btn-outline-success">' +
+              '<i class="fa-solid fa-clipboard-check me-1"></i>' +
+              i18next.t("Check-in") +
+              "</a>"
+            );
+          },
+        },
+      ],
+    };
+    $.extend(todayEventsConfig, window.CRM.plugin.dataTable);
+    $.extend(todayEventsConfig, dataTableDashboardDefaults);
+    $("#todayEventsDashboardItem").DataTable(todayEventsConfig);
+  }
+
   if ($("#depositChartRow").is(":visible")) {
     window.CRM.APIRequest({
       method: "GET",
