@@ -78,10 +78,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       </div>
     <?php else: ?>
       <div class="text-center text-muted py-5">
-        <i class="fa-solid fa-calendar-days fa-3x mb-3"></i>
+        <i class="ti ti-calendar mb-3" style="font-size: 3rem;"></i>
         <p><?= gettext('No event types defined yet.') ?></p>
         <a href="<?= $sRootPath ?>/event/types/new" class="btn btn-primary">
-          <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event Type') ?>
+          <i class="ti ti-plus me-1"></i><?= gettext('Add Event Type') ?>
         </a>
       </div>
     <?php endif; ?>

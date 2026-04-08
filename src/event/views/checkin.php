@@ -19,17 +19,20 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <?php endif; ?>
 
 <?php if ($directEventAccess && $event !== null): ?>
-<!-- Direct Event Access - Show event info bar with option to change -->
+<!-- Direct Event Access - Show event info bar with option to view, edit, or change -->
 <div class="card card-sm mb-3">
     <div class="card-body">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span>
                 <i class="ti ti-calendar-check me-2 text-primary"></i>
                 <strong><?= gettext('Event') ?>:</strong> <?= InputUtils::escapeHTML($event->getTitle()) ?>
                 <span class="text-secondary">(<?= $event->getStart('M j, Y') ?>)</span>
             </span>
-            <div>
-                <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-sm btn-outline-primary me-2">
+            <div class="btn-group">
+                <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="btn btn-sm btn-outline-secondary">
+                    <i class="ti ti-eye me-1"></i><?= gettext('View Event') ?>
+                </a>
+                <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="btn btn-sm btn-outline-secondary">
                     <i class="ti ti-pencil me-1"></i><?= gettext('Edit Event') ?>
                 </a>
                 <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-sm btn-outline-secondary">

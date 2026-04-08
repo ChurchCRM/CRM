@@ -89,14 +89,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="d-flex flex-wrap gap-2">
           <?php if ($canEditEvents): ?>
             <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary btn-sm">
-              <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
+              <i class="ti ti-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
           <?php endif; ?>
-          <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-info btn-sm">
-            <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
+          <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-secondary btn-sm">
+            <i class="ti ti-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
           <a href="<?= $sRootPath ?>/event/calendars" class="btn btn-outline-secondary btn-sm">
-            <i class="fa-regular fa-calendar me-1"></i><?= gettext('Calendar') ?>
+            <i class="ti ti-calendar me-1"></i><?= gettext('Calendar') ?>
           </a>
         </div>
       </div>
@@ -107,11 +107,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 <!-- Filters -->
 <div class="card mb-3">
   <div class="card-body py-2">
-    <form name="EventFilterForm" method="GET" action="<?= $sRootPath ?>/event/dashboard">
+    <form id="eventFilterForm" name="EventFilterForm" method="GET" action="<?= $sRootPath ?>/event/dashboard">
       <div class="row align-items-end">
         <div class="col-md-5">
           <label for="WhichType" class="form-label mb-1"><?= gettext('Event Type') ?></label>
-          <select name="WhichType" id="WhichType" onchange="this.form.submit()" class="form-select form-select-sm">
+          <select name="WhichType" id="WhichType" class="form-select form-select-sm">
             <option value="All"><?= gettext('All Types') ?></option>
             <?php foreach ($eventTypesWithEvents as $type): ?>
               <option value="<?= InputUtils::escapeAttribute($type->getId()) ?>" <?= ($type->getId() == $eType) ? 'selected' : '' ?>>
@@ -122,7 +122,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="col-md-5">
           <label for="WhichYear" class="form-label mb-1"><?= gettext('Year') ?></label>
-          <select name="WhichYear" id="WhichYear" onchange="this.form.submit()" class="form-select form-select-sm">
+          <select name="WhichYear" id="WhichYear" class="form-select form-select-sm">
             <?php foreach ($availableYears as $year): ?>
               <option value="<?= InputUtils::escapeAttribute($year) ?>" <?= ($year == $EventYear) ? 'selected' : '' ?>>
                 <?= InputUtils::escapeHTML($year) ?>
@@ -154,7 +154,7 @@ foreach ($monthlyData as $monthData):
 <div class="card mb-3">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
-      <i class="fa-regular fa-calendar-days me-2 text-muted"></i>
+      <i class="ti ti-calendar me-2 text-muted"></i>
       <?= sprintf(ngettext('%d event in %s', '%d events in %s', $numRows), $numRows, gettext($monthName)) ?>
     </h3>
     <span class="badge bg-blue-lt ms-auto"><?= (int) $EventYear ?></span>
@@ -197,9 +197,9 @@ foreach ($monthlyData as $monthData):
               </td>
               <td class="text-center">
                 <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
-                  <i class="fa-solid fa-clipboard-check me-1"></i>
+                  <i class="ti ti-clipboard-check me-1"></i>
                   <?php if ($event['attendee_count'] > 0): ?>
-                    <span class="badge bg-info"><?= $event['attendee_count'] ?></span>
+                    <span class="badge bg-primary text-white"><?= $event['attendee_count'] ?></span>
                   <?php else: ?>
                     <span class="text-muted">0</span>
                   <?php endif; ?>
@@ -272,7 +272,7 @@ foreach ($monthlyData as $monthData):
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
-      <i class="fa-solid fa-calendar-xmark fa-3x text-muted"></i>
+      <i class="ti ti-calendar-off text-muted" style="font-size: 3rem;"></i>
     </div>
     <h3 class="text-muted"><?= gettext('No Events Found') ?></h3>
     <p class="text-muted mb-3">
@@ -283,7 +283,7 @@ foreach ($monthlyData as $monthData):
     </p>
     <?php if ($canEditEvents): ?>
       <a href="<?= $sRootPath ?>/event/editor" class="btn btn-primary me-2">
-        <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
+        <i class="ti ti-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
       <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary">
         <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
@@ -294,6 +294,14 @@ foreach ($monthlyData as $monthData):
 <?php endif; ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  // Auto-submit the filter form when the user picks a type or year.
+  // (Replaces the previous inline onchange="this.form.submit()" which CSP blocks.)
+  document.querySelectorAll('#eventFilterForm select').forEach(function (sel) {
+    sel.addEventListener('change', function () {
+      document.getElementById('eventFilterForm').submit();
+    });
+  });
+
   // Hydrate the placeholder cells with the standard event action menu.
   // The renderer + global click handlers live in src/skin/js/CRMJSOM.js.
   (function hydrateEventActionMenus() {
