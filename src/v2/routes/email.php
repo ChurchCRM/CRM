@@ -37,6 +37,8 @@ function getEmailDashboardMVC(Request $request, Response $response, array $args)
         'bEmailEnabled' => SystemConfig::getBooleanValue('bEnabledEmail'),
         'bSmtpConfigured' => SystemConfig::hasValidMailServerSettings(),
         'bMailchimpConfigured' => PluginManager::getPlugin('mailchimp')?->isConfigured() ?? false,
+        'bBirthdayEmailsEnabled' => SystemConfig::getBooleanValue('bSendBirthdayEmails'),
+        'sLastBirthdayEmailDate' => SystemConfig::getValue('sLastBirthdayEmailDate'),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

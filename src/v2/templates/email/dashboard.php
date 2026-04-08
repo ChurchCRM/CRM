@@ -3,6 +3,7 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\DateTimeUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -21,6 +22,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <li><?= gettext('New member notification emails') ?></li>
             <li><?= gettext('Email links in group and people views') ?></li>
             <li><?= gettext('Kiosk check-in email notifications') ?></li>
+            <li><?= gettext('Birthday greeting emails to members') ?></li>
         </ul>
         <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
         <p class="text-secondary mb-0"><?= gettext('Enable email in the settings panel below, then configure your SMTP server.') ?></p>
@@ -86,6 +88,37 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<!-- Birthday Emails Card -->
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title"><i class="fa-solid fa-cake-candles me-2"></i><?= gettext('Birthday Emails') ?></h3>
+    </div>
+    <div class="card-body">
+        <div class="alert <?= $bBirthdayEmailsEnabled ? 'alert-success' : 'alert-secondary' ?> mb-3">
+            <div class="d-flex align-items-center">
+                <i class="fa-solid <?= $bBirthdayEmailsEnabled ? 'fa-circle-check' : 'fa-circle-info' ?> me-2 fs-3"></i>
+                <div>
+                    <h4 class="alert-title mb-0">
+                        <?= $bBirthdayEmailsEnabled ? gettext('Birthday Emails Enabled') : gettext('Birthday Emails Disabled') ?>
+                    </h4>
+                    <div class="text-secondary">
+                        <?php if ($bBirthdayEmailsEnabled): ?>
+                            <?= gettext('Members with a valid email address will automatically receive a birthday greeting on their birthday.') ?>
+                            <?php if (!empty($sLastBirthdayEmailDate)): ?>
+                                <?= gettext('Last sent:') ?> <strong><?= htmlspecialchars(DateTimeUtils::formatDate($sLastBirthdayEmailDate)) ?></strong>
+                            <?php else: ?>
+                                <?= gettext('Birthday emails have not been sent yet.') ?>
+                            <?php endif; ?>
+                        <?php else: ?>
+                            <?= gettext('Enable this feature in Email Settings to automatically send birthday greetings to members.') ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php if (AuthenticationManager::getCurrentUser()->isAdmin()): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
@@ -129,7 +162,8 @@ $(document).ready(function() {
             { name: 'sSMTPUser',             type: 'text',    label: <?= json_encode(gettext('SMTP Username'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPUser'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
             { name: 'sSMTPPass',             type: 'password',label: <?= json_encode(gettext('SMTP Password'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,          tooltip: <?= json_encode(SystemConfig::getTooltip('sSMTPPass'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
             { name: 'sToEmailAddress',       type: 'text',    label: <?= json_encode(gettext('BCC All Mail To'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,        tooltip: <?= json_encode(SystemConfig::getTooltip('sToEmailAddress'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> },
-            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= json_encode(gettext('Do Not Email Property'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,  tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotEmailPropertyId'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, ajaxUrl: '/api/system/properties/person' }
+            { name: 'iDoNotEmailPropertyId', type: 'ajax',    label: <?= json_encode(gettext('Do Not Email Property'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,  tooltip: <?= json_encode(SystemConfig::getTooltip('iDoNotEmailPropertyId'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>, ajaxUrl: '/api/system/properties/person' },
+            { name: 'bSendBirthdayEmails',   type: 'boolean', label: <?= json_encode(gettext('Send Birthday Emails'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?>,   tooltip: <?= json_encode(SystemConfig::getTooltip('bSendBirthdayEmails'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) ?> }
         ],
         showAllSettingsLink: true
     });

@@ -5,11 +5,14 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Emails\BirthdayEmail;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Plugins\ExternalBackup\ExternalBackupPlugin;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use PDO;
+use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
 
 require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
@@ -88,7 +91,59 @@ class SystemService
             LoggerUtils::getAppLogger()->warning('Failure executing backup job: ' . $exc->getMessage());
         }
 
+        // Send birthday emails if feature is enabled
+        try {
+            self::sendBirthdayEmails();
+        } catch (\Exception $exc) {
+            LoggerUtils::getAppLogger()->warning('Failure executing birthday email job: ' . $exc->getMessage());
+        }
+
         LoggerUtils::getAppLogger()->debug('Finished background job processing');
+    }
+
+    private static function sendBirthdayEmails(): void
+    {
+        if (!SystemConfig::getBooleanValue('bSendBirthdayEmails')) {
+            return;
+        }
+
+        $tz = DateTimeUtils::getConfiguredTimezone();
+        $today = new \DateTime('now', $tz);
+        $todayStr = $today->format('Y-m-d');
+        $lastSentDate = SystemConfig::getValue('sLastBirthdayEmailDate');
+
+        // Only send once per day
+        if ($lastSentDate === $todayStr) {
+            return;
+        }
+
+        $todayMonth = (int)$today->format('m');
+        $todayDay = (int)$today->format('d');
+
+        $peopleWithBirthdayToday = PersonQuery::create()
+            ->filterByBirthMonth($todayMonth)
+            ->filterByBirthDay($todayDay)
+            ->filterByEmail(null, Criteria::NOT_EQUAL)
+            ->find();
+
+        $sentCount = 0;
+        foreach ($peopleWithBirthdayToday as $person) {
+            $email = $person->getEmail();
+            if (empty($email)) {
+                continue;
+            }
+            $birthdayEmail = new BirthdayEmail($person);
+            if ($birthdayEmail->send()) {
+                $sentCount++;
+            } else {
+                LoggerUtils::getAppLogger()->warning(
+                    'Failed to send birthday email to person ID ' . $person->getId() . ': ' . $birthdayEmail->getError()
+                );
+            }
+        }
+
+        SystemConfig::setValue('sLastBirthdayEmailDate', $todayStr);
+        LoggerUtils::getAppLogger()->info("Birthday emails sent: {$sentCount}");
     }
 
     // Returns a file size limit in bytes based on the PHP upload_max_filesize
