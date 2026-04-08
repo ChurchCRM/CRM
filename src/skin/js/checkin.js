@@ -388,3 +388,137 @@ $(document).on("click", ".roster-action-btn", function () {
       $btn.prop("disabled", false);
     });
 });
+
+// =============================================================================
+// API-Driven Walk-in Check-in, Check-out, Delete
+// =============================================================================
+
+$(() => {
+  const eventId = window.CRM.checkinEventId;
+  if (!eventId) return;
+
+  // Event selector navigation
+  $("#EventSelector").on("change", function () {
+    const id = $(this).val();
+    if (id) {
+      window.location.href = `${window.CRM.root}/event/checkin/${id}`;
+    }
+  });
+
+  // Event type filter navigation
+  $("#EventTypeFilter").on("change", function () {
+    window.location.href = `${window.CRM.root}/event/checkin?EventTypeID=${this.value}`;
+  });
+
+  // Walk-in check-in button (API call, no form POST)
+  $("#checkinBtn").on("click", () => {
+    const personId = $("#child-id").val();
+    const checkedInById = $("#adult-id").val() || null;
+
+    if (!personId) {
+      window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Please select a person to check in."));
+      return;
+    }
+
+    const payload = { personId: parseInt(personId, 10) };
+    if (checkedInById) {
+      payload.checkedInById = parseInt(checkedInById, 10);
+    }
+
+    fetch(`${window.CRM.root}/api/events/${eventId}/checkin`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((d) => Promise.reject(d));
+        return res.json();
+      })
+      .then(() => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        const msg = err?.message || i18next.t("Check-in failed. Please try again.");
+        window.CRM.DisplayAlert(i18next.t("Error"), msg);
+      });
+  });
+
+  // Clear button
+  $("#clearBtn").on("click", () => {
+    ["#child", "#adult"].forEach((sel) => {
+      const el = document.querySelector(sel);
+      if (el?.tomselect) {
+        el.tomselect.clear(true);
+        el.tomselect.clearOptions();
+      }
+    });
+    $("#child-id, #adult-id").val("");
+    $("#childDetails, #adultDetails").html("").hide();
+  });
+
+  // Inline check-out via dropdown action (no intermediate page)
+  $(document).on("click", ".checkout-btn", function () {
+    const personId = $(this).data("person-id");
+
+    fetch(`${window.CRM.root}/api/events/${eventId}/checkout`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ personId }),
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((d) => Promise.reject(d));
+        return res.json();
+      })
+      .then((data) => {
+        // Update the row in-place
+        const $row = $(`tr[data-person-id="${personId}"]`);
+        $row.find(".checkout-date").text(data.checkoutTime || i18next.t("Just now"));
+        $row
+          .find(".checkout-btn")
+          .replaceWith(
+            `<span class="dropdown-item disabled text-success"><i class="ti ti-check me-2"></i>${i18next.t("Checked Out")}</span>`,
+          );
+        window.CRM.notify(i18next.t("Person checked out."), { type: "success", delay: 3000 });
+
+        // Refresh roster if visible
+        if ($("#rosterCheckin").length > 0) {
+          loadRoster(eventId);
+        }
+      })
+      .catch((err) => {
+        const msg = err?.message || i18next.t("Check-out failed. Please try again.");
+        window.CRM.DisplayAlert(i18next.t("Error"), msg);
+      });
+  });
+
+  // Delete attendance via dropdown action (confirm first)
+  $(document).on("click", ".delete-attendance-btn", function () {
+    const personId = $(this).data("person-id");
+    const personName = $(this).data("person-name");
+
+    if (!confirm(i18next.t("Delete check-in record for") + " " + personName + "?")) {
+      return;
+    }
+
+    fetch(`${window.CRM.root}/api/events/${eventId}/attendance/${personId}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(() => {
+        $(`tr[data-person-id="${personId}"]`).fadeOut(300, function () {
+          $(this).remove();
+        });
+        window.CRM.notify(i18next.t("Attendance record deleted."), { type: "success", delay: 3000 });
+
+        if ($("#rosterCheckin").length > 0) {
+          loadRoster(eventId);
+        }
+      })
+      .catch(() => {
+        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Failed to delete. Please try again."));
+      });
+  });
+});

@@ -3,11 +3,9 @@
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\EventAttend;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -73,26 +71,25 @@ $app->post('/cart-to-event', function (Request $request, Response $response) {
 
     if (!empty($body['Submit']) && !empty($_SESSION['aPeopleCart']) && !empty($body['EventID'])) {
         $iEventID = (int) $body['EventID'];
+        $event = EventQuery::create()->findPk($iEventID);
         $iCount = 0;
 
-        foreach ($_SESSION['aPeopleCart'] as $element) {
-            try {
-                $eventAttend = new EventAttend();
-                $eventAttend
-                    ->setEventId($iEventID)
-                    ->setPersonId((int) $element);
-                $eventAttend->save();
-                $iCount++;
-            } catch (\Throwable $ex) {
-                $logger = LoggerUtils::getAppLogger();
-                $logger->error('An error occurred when saving event attendance', ['exception' => $ex]);
+        if ($event !== null) {
+            foreach ($_SESSION['aPeopleCart'] as $element) {
+                try {
+                    $event->checkInPerson((int) $element);
+                    $iCount++;
+                } catch (\Throwable $ex) {
+                    $logger = LoggerUtils::getAppLogger();
+                    $logger->error('An error occurred when saving event attendance', ['exception' => $ex]);
+                }
             }
         }
 
         Cart::emptyAll();
 
         return $response
-            ->withHeader('Location', SystemURLs::getRootPath() . '/Checkin.php?EventID=' . $iEventID . '&AddedCount=' . $iCount)
+            ->withHeader('Location', SystemURLs::getRootPath() . '/event/checkin/' . $iEventID . '?AddedCount=' . $iCount)
             ->withStatus(302);
     }
 

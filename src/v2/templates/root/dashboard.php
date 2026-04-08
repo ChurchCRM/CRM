@@ -112,7 +112,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <div class="card-header d-flex align-items-center">
                 <h3 class="card-title"><i class="fa-solid fa-calendar-day me-2"></i><?= gettext("Today's Events") ?></h3>
                 <div class="ms-auto">
-                    <a href="<?= SystemURLs::getRootPath() ?>/Checkin.php" class="btn btn-sm btn-outline-primary">
+                    <a href="<?= SystemURLs::getRootPath() ?>/event/checkin" class="btn btn-sm btn-outline-primary">
                         <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check-in') ?>
                     </a>
                 </div>

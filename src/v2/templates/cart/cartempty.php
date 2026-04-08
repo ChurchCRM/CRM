@@ -23,7 +23,7 @@ if ($sMessage === null) {
       $eventTitle = $event ? InputUtils::escapeHTML($event->getTitle()) : '';
   ?>
       <p class="text-center alert alert-info"><?= $iCount . ' ' . ($iCount === 1 ? gettext('Record') : gettext('Records')) . ' ' . gettext("Emptied into Event") . ':' ?>
-        <a href="<?= SystemURLs::getRootPath() ?>/Checkin.php?eventId=<?= $iEID ?>"><?= $eventTitle ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/event/checkin/<?= $iEID ?>"><?= $eventTitle ?></a>
       </p>
 <?php
       break;

@@ -598,7 +598,7 @@ export function initializeMainDashboard() {
           render: (data, type, row) =>
             '<a href="' +
             window.CRM.root +
-            "/Checkin.php?EventID=" +
+            "/event/checkin/" +
             row.id +
             '"><strong>' +
             window.CRM.escapeHtml(data) +
@@ -645,7 +645,7 @@ export function initializeMainDashboard() {
           render: (data) =>
             '<a href="' +
             window.CRM.root +
-            "/Checkin.php?EventID=" +
+            "/event/checkin/" +
             data +
             '" class="btn btn-sm btn-outline-success">' +
             '<i class="fa-solid fa-clipboard-check me-1"></i>' +

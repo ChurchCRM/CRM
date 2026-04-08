@@ -114,15 +114,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (!createRes.ok) {
         // If quick-create fails (e.g., no event type), fall back to check-in page
-        window.location.href = `${window.CRM.root}/Checkin.php`;
+        window.location.href = `${window.CRM.root}/event/checkin`;
         return;
       }
 
       const data = await createRes.json();
-      window.location.href = `${window.CRM.root}/Checkin.php?EventID=${data.eventId}`;
+      window.location.href = `${window.CRM.root}/event/checkin?EventID=${data.eventId}`;
     } catch (error) {
       // Fall back to check-in page
-      window.location.href = `${window.CRM.root}/Checkin.php`;
+      window.location.href = `${window.CRM.root}/event/checkin`;
     }
   });
 

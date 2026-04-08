@@ -198,7 +198,7 @@ $availableYears = $yearQuery
               <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
           <?php endif; ?>
-          <a href="Checkin.php" class="btn btn-outline-info btn-sm">
+          <a href="event/checkin" class="btn btn-outline-info btn-sm">
             <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
           <a href="v2/calendar" class="btn btn-outline-secondary btn-sm">
@@ -369,7 +369,7 @@ foreach ($allMonths as $mVal) {
                 <span class="badge bg-azure-lt"><?= InputUtils::escapeHTML($event['type_name']) ?></span>
               </td>
               <td class="text-center">
-                <a href="Checkin.php?EventID=<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
+                <a href="event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
                   <i class="fa-solid fa-clipboard-check me-1"></i>
                   <?php if ($event['attendee_count'] > 0): ?>
                     <span class="badge bg-info"><?= $event['attendee_count'] ?></span>
@@ -414,7 +414,7 @@ foreach ($allMonths as $mVal) {
                       <i class="ti ti-dots-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                      <a class="dropdown-item" href="Checkin.php?EventID=<?= $eventId ?>">
+                      <a class="dropdown-item" href="event/checkin/<?= $eventId ?>">
                         <i class="ti ti-clipboard-check me-2"></i><?= gettext('Check-in') ?>
                       </a>
                       <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">

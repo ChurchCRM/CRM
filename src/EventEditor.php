@@ -509,7 +509,7 @@ if (!empty($iTypeID)) {
     </a>
     <?php if ($EventExists && $iEventID > 0): ?>
     <div>
-        <a href="Checkin.php?EventID=<?= $iEventID ?>" class="btn btn-info me-2">
+        <a href="event/checkin/<?= $iEventID ?>" class="btn btn-info me-2">
             <i class="fa-solid fa-clipboard-check me-1"></i>
             <?= gettext('Manage Check-ins') ?>
         </a>

@@ -247,7 +247,7 @@ class Menu
         $eventsMenu = new MenuItem(gettext('Events'), '', SystemConfig::getBooleanValue('bEnabledEvents'), 'fa-ticket');
         $eventsMenu->addSubMenu(new MenuItem(gettext('Events Dashboard'), 'ListEvents.php', true, 'fa-gauge'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('Add Church Event'), 'EventEditor.php', $isAddEventEnabled, 'fa-circle-plus'));
-        $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'Checkin.php', true, 'fa-user-check'));
+        $eventsMenu->addSubMenu(new MenuItem(gettext('Check-in and Check-out'), 'event/checkin', true, 'fa-user-check'));
         $eventsMenu->addSubMenu(new MenuItem(gettext('List Event Types'), 'EventNames.php', $isAddEventEnabled, 'fa-tags'));
 
         return $eventsMenu;

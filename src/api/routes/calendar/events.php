@@ -51,6 +51,7 @@ $app->group('/events', function (RouteCollectorProxy $group): void {
     $group->post('/{id}/checkout-all', 'checkoutAll')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 
     $group->delete('/{id}', 'deleteEvent')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
+    $group->delete('/{id}/attendance/{personId}', 'deleteAttendance')->add(new AddEventsRoleAuthMiddleware())->add(new EventsMiddleware());
 });
 
 /**
@@ -856,7 +857,8 @@ function getEventRoster(Request $request, Response $response, array $args): Resp
  *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"personId"},
- *         @OA\Property(property="personId", type="integer", example=101)
+ *         @OA\Property(property="personId", type="integer", example=101),
+ *         @OA\Property(property="checkedInById", type="integer", nullable=true, example=55, description="Person ID of whoever is checking this person in (e.g., parent dropping off child)")
  *     )),
  *     @OA\Response(response=200, description="Person checked in"),
  *     @OA\Response(response=400, description="Invalid person ID"),
@@ -871,10 +873,11 @@ function checkinPerson(Request $request, Response $response, array $args): Respo
     if ($personId <= 0) {
         return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
     }
+    $checkedInById = InputUtils::filterInt($input['checkedInById'] ?? 0) ?: null;
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
-    $event->checkInPerson($personId);
+    $event->checkInPerson($personId, $checkedInById);
 
     return SlimUtils::renderJSON($response, [
         'success' => true,
@@ -893,7 +896,8 @@ function checkinPerson(Request $request, Response $response, array $args): Respo
  *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\RequestBody(required=true, @OA\JsonContent(
  *         required={"personId"},
- *         @OA\Property(property="personId", type="integer", example=101)
+ *         @OA\Property(property="personId", type="integer", example=101),
+ *         @OA\Property(property="checkedOutById", type="integer", nullable=true, example=55, description="Person ID of whoever is checking this person out (e.g., parent picking up child)")
  *     )),
  *     @OA\Response(response=200, description="Person checked out"),
  *     @OA\Response(response=400, description="Invalid person ID"),
@@ -908,10 +912,15 @@ function checkoutPerson(Request $request, Response $response, array $args): Resp
     if ($personId <= 0) {
         return SlimUtils::renderErrorJSON($response, gettext('Invalid person ID'), [], 400);
     }
+    $checkedOutById = InputUtils::filterInt($input['checkedOutById'] ?? 0) ?: null;
 
     /** @var Event $event */
     $event = $request->getAttribute('event');
-    $event->checkOutPerson($personId);
+    $result = $event->checkOutPerson($personId, $checkedOutById);
+
+    if ($result['status'] === 'not_checked_in') {
+        return SlimUtils::renderErrorJSON($response, gettext('Person is not checked in'), [], 400);
+    }
 
     return SlimUtils::renderJSON($response, [
         'success' => true,
@@ -1005,6 +1014,45 @@ function checkoutAll(Request $request, Response $response, array $args): Respons
     return SlimUtils::renderJSON($response, [
         'success' => true,
         'checkedOut' => $checkedOutCount,
+    ]);
+}
+
+/**
+ * @OA\Delete(
+ *     path="/events/{id}/attendance/{personId}",
+ *     operationId="deleteAttendance",
+ *     summary="Delete a person's attendance record from an event",
+ *     tags={"Calendar"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Parameter(name="id", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
+ *     @OA\Response(response=200, description="Attendance deleted"),
+ *     @OA\Response(response=404, description="Event or attendance record not found"),
+ *     @OA\Response(response=401, description="Unauthorized"),
+ *     @OA\Response(response=403, description="AddEvents role required")
+ * )
+ */
+function deleteAttendance(Request $request, Response $response, array $args): Response
+{
+    $personId = (int) $args['personId'];
+
+    /** @var Event $event */
+    $event = $request->getAttribute('event');
+
+    $attendance = EventAttendQuery::create()
+        ->filterByEvent($event)
+        ->filterByPersonId($personId)
+        ->findOne();
+
+    if ($attendance === null) {
+        throw new HttpNotFoundException($request);
+    }
+
+    $attendance->delete();
+
+    return SlimUtils::renderJSON($response, [
+        'success' => true,
+        'status' => 'deleted',
     ]);
 }
 
