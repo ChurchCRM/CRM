@@ -48,12 +48,8 @@ $app->get('/dashboard', function (Request $request, Response $response) {
         ->filterByInActive(0)
         ->count();
 
-    $totalEventTypes = EventTypeQuery::create()
-        ->useEventTypeQuery()
-            ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-        ->endUse()
-        ->distinct()
-        ->count();
+    // Total number of event types defined in the system (not filtered by year).
+    $totalEventTypes = EventTypeQuery::create()->count();
 
     // Event types that have events
     $eventTypesWithEvents = EventTypeQuery::create()

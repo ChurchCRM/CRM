@@ -72,16 +72,17 @@ function initializePersonSearchFields() {
  * Bind event handlers for person search fields
  */
 function bindPersonSearchEvents() {
-  // Handle person selection for child field - update hidden field and show details
+  // TomSelect keeps the underlying <select>'s value attribute in sync with the
+  // selected option key (which is the person id). Read it via $("#child").val()
+  // — no separate hidden input needed.
+
+  // Handle person selection for child field — show details
   $("#child")
     .off("tomselect:change")
     .on("tomselect:change", (_e, value, tsInstance) => {
       if (value) {
-        const selectedData = tsInstance.options[value];
-        $("#child-id").val(selectedData.objid);
-        displayPersonDetails($("#childDetails"), selectedData);
+        displayPersonDetails($("#childDetails"), tsInstance.options[value]);
       } else {
-        $("#child-id").val("");
         displayPersonDetails($("#childDetails"), null);
       }
     });
@@ -91,24 +92,9 @@ function bindPersonSearchEvents() {
     .off("tomselect:change")
     .on("tomselect:change", (_e, value, tsInstance) => {
       if (value) {
-        const selectedData = tsInstance.options[value];
-        $("#adult-id").val(selectedData.objid);
-        displayPersonDetails($("#adultDetails"), selectedData);
+        displayPersonDetails($("#adultDetails"), tsInstance.options[value]);
       } else {
-        $("#adult-id").val("");
         displayPersonDetails($("#adultDetails"), null);
-      }
-    });
-
-  // Handle person selection for adultout field (checkout form)
-  $("#adultout")
-    .off("tomselect:change")
-    .on("tomselect:change", (_e, value, tsInstance) => {
-      if (value) {
-        const selectedData = tsInstance.options[value];
-        $("#adultout-id").val(selectedData.objid);
-      } else {
-        $("#adultout-id").val("");
       }
     });
 
@@ -125,8 +111,6 @@ function bindPersonSearchEvents() {
             el.tomselect.clearOptions();
           }
         });
-        $("#child-id").val("");
-        $("#adult-id").val("");
         displayPersonDetails($("#childDetails"), null);
         displayPersonDetails($("#adultDetails"), null);
       }, 0);
@@ -412,8 +396,8 @@ $(() => {
 
   // Walk-in check-in button (API call, no form POST)
   $("#checkinBtn").on("click", () => {
-    const personId = $("#child-id").val();
-    const checkedInById = $("#adult-id").val() || null;
+    const personId = $("#child").val();
+    const checkedInById = $("#adult").val() || null;
 
     if (!personId) {
       window.CRM.notify(i18next.t("Please select a person to check in."), { type: "warning", delay: 5000 });
@@ -452,7 +436,6 @@ $(() => {
         el.tomselect.clearOptions();
       }
     });
-    $("#child-id, #adult-id").val("");
     $("#childDetails, #adultDetails").html("").hide();
   });
 

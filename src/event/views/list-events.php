@@ -181,8 +181,13 @@ foreach ($monthlyData as $monthData):
             <tr>
               <td>
                 <div class="fw-medium"><?= InputUtils::escapeHTML($event['title']) ?></div>
-                <?php if (!empty($event['desc'])): ?>
-                  <small class="text-muted"><?= InputUtils::escapeHTML($event['desc']) ?></small>
+                <?php
+                  // Quill leaves "<p><br /></p>" when the description is empty —
+                  // strip tags and trim before deciding whether to show anything.
+                  $descText = trim(strip_tags((string) ($event['desc'] ?? '')));
+                ?>
+                <?php if ($descText !== ''): ?>
+                  <small class="text-muted"><?= InputUtils::escapeHTML($descText) ?></small>
                 <?php endif; ?>
               </td>
               <td>
