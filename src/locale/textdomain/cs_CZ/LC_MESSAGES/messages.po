@@ -14504,3 +14504,333 @@ msgstr "Otevřít export CSV"
 msgid "Restore from the System Backup page"
 msgstr "Obnovit ze stránky Systémová záloha"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Je dostupná aktualizace systému. Aktualizujte svou instalaci."
+
+#: 
+msgid "API Access"
+msgstr "Přístup k API"
+
+#: 
+msgid "API Key"
+msgstr "Klíč API"
+
+#: 
+msgid "API key regenerated"
+msgstr "Klíč API byl obnoven"
+
+#: 
+msgid "Account"
+msgstr "Účet"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Pokročilá nastavení"
+
+#: 
+msgid "An error occurred."
+msgstr "Došlo k chybě."
+
+#: 
+msgid "Appearance"
+msgstr "Vzhled"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Zpět na přehled financí"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Zpět na přehled skupin"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Zpět na přehled farníků"
+
+#: 
+msgid "Blue"
+msgstr "Modrá"
+
+#: 
+msgid "Change Photo"
+msgstr "Změnit fotku"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "Změny se projeví až po příštím přihlášení."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Vyberte mezi světlým a tmavým barevným schématem"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "Překlady ChurchCRM jsou spravovány komunitou na POEditor. Můžete pomoci:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Přizpůsobte vzhled a dojem aplikace"
+
+#: 
+msgid "Cyan"
+msgstr "Azurová"
+
+#: 
+msgid "Dark"
+msgstr "Tmavý"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Pouze databáze (.sql) nebo úplný archiv (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Výchozí počet řádků zobrazených v datových tabulkách. Projeví se při příštím načtení stránky."
+
+#: 
+msgid "Edit own family only"
+msgstr "Upravovat pouze vlastní rodinu"
+
+#: 
+msgid "Enter text here..."
+msgstr "Zadejte text zde..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Nepodařilo se zrušit registraci. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Nepodařilo se smazat událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "Nepodařilo se deaktivovat dvoufaktorové ověření. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "Nepodařilo se vygenerovat QR kód. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "Nepodařilo se načíst data kalendáře. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Nepodařilo se načíst událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "Nepodařilo se načíst obnovovací kódy. Obnovte prosím stránku."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Nepodařilo se uložit událost. Zkuste to prosím znovu."
+
+#: 
+msgid "Failed to save setting"
+msgstr "Nepodařilo se uložit nastavení"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filipínština – Filipíny"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Opravování nesprávných nebo neobratných překladů ve vašem jazyce"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Našli jste chybu v překladech?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Uděluje všechna oprávnění"
+
+#: 
+msgid "Green"
+msgstr "Zelená"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Pomozte zlepšit překlady"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Pokud zaznamenáte poškozené znaky, HTML entity zobrazené jako text nebo překlady narušující rozložení stránky, nahlaste problém na GitHub, aby mohl být opraven pro všechny."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Zahrňte svůj klíč API do požadavků pomocí hlavičky x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigová"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Neplatná hodnota JSON — nastavení nebylo uloženo. Opravte ji prosím a zkuste to znovu."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Připojte se k projektu překladu na POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Jazyková a regionální nastavení"
+
+#: 
+msgid "Light"
+msgstr "Světlý"
+
+#: 
+msgid "Lime"
+msgstr "Limetková"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajálamština – Indie"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Správa dvoufaktorového ověření"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Spravujte další předvolby, jako jsou oddělovače e-mailů a možnosti zobrazení"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Spravujte svůj klíč API pro externí integrace"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "Metoda není povolena"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Chybějící nebo nesprávné překlady?"
+
+#: 
+msgid "My Account"
+msgstr "Můj účet"
+
+#: 
+msgid "Orange"
+msgstr "Oranžová"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Přepsat výchozí jazyk systému"
+
+#: 
+msgid "Page Not Found"
+msgstr "Stránka nenalezena"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "Procento přeložených řetězců pro váš aktuální jazyk"
+
+#: 
+msgid "Pink"
+msgstr "Růžová"
+
+#: 
+msgid "Primary Color"
+msgstr "Primární barva"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil a zabezpečení"
+
+#: 
+msgid "Purple"
+msgstr "Fialová"
+
+#: 
+msgid "Red"
+msgstr "Červená"
+
+#: 
+msgid "Regenerate"
+msgstr "Obnovit"
+
+#: 
+msgid "Rows per page"
+msgstr "Řádků na stránku"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Nastavte oprávnění na Pravda, aby mohl tento uživatel sám změnit toto nastavení."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Nastavte barvu zvýraznění pro tlačítka, odkazy a aktivní prvky"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Navrhování lepšího znění stávajících překladů"
+
+#: 
+msgid "System Update Available"
+msgstr "Je dostupná aktualizace systému"
+
+#: 
+msgid "Tables"
+msgstr "Tabulky"
+
+#: 
+msgid "Teal"
+msgstr "Modrozelená"
+
+#: 
+msgid "Theme Mode"
+msgstr "Režim motivu"
+
+#: 
+msgid "Toggle search"
+msgstr "Přepnout vyhledávání"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Překlad chybějících řetězců pro zlepšení pokrytí"
+
+#: 
+msgid "Translation Progress"
+msgstr "Průběh překladu"
+
+#: 
+msgid "Usage"
+msgstr "Použití"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Použijte tento klíč k ověřování požadavků API. Obnova klíče zneplatní aktuální klíč."
+
+#: 
+msgid "User Config"
+msgstr "Konfigurace uživatele"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Ověření selhalo. Zkuste to prosím znovu."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
+
+#: 
+msgid "View All"
+msgstr "Zobrazit vše"
+
+#: 
+msgid "Yellow"
+msgstr "Žlutá"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Vaše aktuální úrovně přístupu (pouze pro čtení)"
+

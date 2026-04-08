@@ -14569,3 +14569,333 @@ msgstr "CSV exportálás megnyitása"
 msgid "Restore from the System Backup page"
 msgstr "Visszaállítás a Rendszer biztonsági mentés oldalról"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "Rendszerfrissítés érhető el. Kérjük, frissítse a telepítést."
+
+#: 
+msgid "API Access"
+msgstr "API-hozzáférés"
+
+#: 
+msgid "API Key"
+msgstr "API-kulcs"
+
+#: 
+msgid "API key regenerated"
+msgstr "API-kulcs újragenerálva"
+
+#: 
+msgid "Account"
+msgstr "Fiók"
+
+#: 
+msgid "Advanced Settings"
+msgstr "Speciális beállítások"
+
+#: 
+msgid "An error occurred."
+msgstr "Hiba történt."
+
+#: 
+msgid "Appearance"
+msgstr "Megjelenés"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "Vissza a Pénzügy vezérlőpulthoz"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "Vissza a Csoportok vezérlőpulthoz"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "Vissza a Személyek vezérlőpulthoz"
+
+#: 
+msgid "Blue"
+msgstr "Kék"
+
+#: 
+msgid "Change Photo"
+msgstr "Fotó módosítása"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "A módosítások a következő bejelentkezésig nem lépnek életbe."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "Válasszon világos vagy sötét színséma között"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "A ChurchCRM fordításait a közösség kezeli a POEditor-on. Segíthet a következőképpen:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "Szabja testre az alkalmazás megjelenését és működését"
+
+#: 
+msgid "Cyan"
+msgstr "Ciánkék"
+
+#: 
+msgid "Dark"
+msgstr "Sötét"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "Csak adatbázis (.sql) vagy teljes archívum (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "Az adattáblákban megjelenített alapértelmezett sorok száma. A következő oldalletöltéskor lép életbe."
+
+#: 
+msgid "Edit own family only"
+msgstr "Csak saját család szerkesztése"
+
+#: 
+msgid "Enter text here..."
+msgstr "Írjon szöveget ide..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Az iratkozás lemondása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "Az esemény törlése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "A kétlépéses hitelesítés letiltása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "A QR-kód generálása sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "A naptáradatok betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "Az esemény betöltése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "A helyreállítási kódok betöltése sikertelen. Kérjük, frissítse az oldalt."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "Az esemény mentése sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Failed to save setting"
+msgstr "A beállítás mentése sikertelen"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "Filippínó - Fülöp-szigetek"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "Helytelen vagy ügyetlen fordítások javítása az Ön nyelvén"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "Hibát talált a fordításokban?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "Minden jogosultságot megad"
+
+#: 
+msgid "Green"
+msgstr "Zöld"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "Segítsen a fordítások javításában"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "Ha olvashatatlan karaktereket, szövegként megjelenő HTML-entitásokat, vagy az oldal elrendezését megrontó fordításokat észlel, kérjük, jelezze a problémát a GitHub-on, hogy mindenki számára javítható legyen."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "Adja meg az API-kulcsát a kérésekben az x-api-key fejléc használatával:"
+
+#: 
+msgid "Indigo"
+msgstr "Indigókék"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "Érvénytelen JSON-érték – a beállítás nem lett mentve. Kérjük, javítsa ki, és próbálja újra."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "Csatlakozzon a fordítási projekthez a POEditor-on"
+
+#: 
+msgid "Language and regional settings"
+msgstr "Nyelvi és regionális beállítások"
+
+#: 
+msgid "Light"
+msgstr "Világos"
+
+#: 
+msgid "Lime"
+msgstr "Limezöld"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "Malajálam - India"
+
+#: 
+msgid "Manage 2FA"
+msgstr "Kétlépéses hitelesítés kezelése"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "Kezelje a további beállításokat, például az e-mail elválasztókat és a megjelenítési opciókat"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "Kezelje az API-kulcsát a külső integrációkhoz"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "A metódus nem engedélyezett"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "Hiányzó vagy helytelen fordítások?"
+
+#: 
+msgid "My Account"
+msgstr "Saját fiók"
+
+#: 
+msgid "Orange"
+msgstr "Narancssárga"
+
+#: 
+msgid "Override the system default locale"
+msgstr "Felülbírálja a rendszer alapértelmezett területi beállítását"
+
+#: 
+msgid "Page Not Found"
+msgstr "Az oldal nem található"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "A jelenlegi nyelvéhez lefordított szövegek százalékaránya"
+
+#: 
+msgid "Pink"
+msgstr "Rózsaszín"
+
+#: 
+msgid "Primary Color"
+msgstr "Elsődleges szín"
+
+#: 
+msgid "Profile and security"
+msgstr "Profil és biztonság"
+
+#: 
+msgid "Purple"
+msgstr "Lila"
+
+#: 
+msgid "Red"
+msgstr "Piros"
+
+#: 
+msgid "Regenerate"
+msgstr "Újragenerálás"
+
+#: 
+msgid "Rows per page"
+msgstr "Sorok oldalanként"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "Állítsa az engedélyt Igaz értékre, hogy a felhasználó maga módosíthassa a beállítást."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "Állítsa be a gomboknál, hivatkozásoknál és aktív elemknél használt kiemelési színt"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "Jobb megfogalmazás javaslata a meglévő fordításokhoz"
+
+#: 
+msgid "System Update Available"
+msgstr "Rendszerfrissítés elérhető"
+
+#: 
+msgid "Tables"
+msgstr "Táblázatok"
+
+#: 
+msgid "Teal"
+msgstr "Pávakék"
+
+#: 
+msgid "Theme Mode"
+msgstr "Téma mód"
+
+#: 
+msgid "Toggle search"
+msgstr "Keresés be-/kikapcsolása"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "Hiányzó szövegek lefordítása a lefedettség javítása érdekében"
+
+#: 
+msgid "Translation Progress"
+msgstr "Fordítási előrehaladás"
+
+#: 
+msgid "Usage"
+msgstr "Használat"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "Használja ezt a kulcsot az API-kérések hitelesítéséhez. Az újragenerálás érvényteleníti az aktuális kulcsot."
+
+#: 
+msgid "User Config"
+msgstr "Felhasználói konfiguráció"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "Az ellenőrzés sikertelen. Kérjük, próbálja újra."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést."
+
+#: 
+msgid "View All"
+msgstr "Összes megtekintése"
+
+#: 
+msgid "Yellow"
+msgstr "Sárga"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "Jelenlegi hozzáférési szintjei (csak olvasható)"
+

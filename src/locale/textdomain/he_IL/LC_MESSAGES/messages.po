@@ -14505,3 +14505,333 @@ msgstr "פתח ייצוא CSV"
 msgid "Restore from the System Backup page"
 msgstr "שחזר מדף גיבוי המערכת"
 
+#: 
+msgid "A system update is available. Please upgrade your installation."
+msgstr "עדכון מערכת זמין. אנא שדרג את ההתקנה שלך."
+
+#: 
+msgid "API Access"
+msgstr "גישת API"
+
+#: 
+msgid "API Key"
+msgstr "מפתח API"
+
+#: 
+msgid "API key regenerated"
+msgstr "מפתח API נוצר מחדש"
+
+#: 
+msgid "Account"
+msgstr "חשבון"
+
+#: 
+msgid "Advanced Settings"
+msgstr "הגדרות מתקדמות"
+
+#: 
+msgid "An error occurred."
+msgstr "אירעה שגיאה."
+
+#: 
+msgid "Appearance"
+msgstr "מראה"
+
+#: 
+msgid "Back to Finance Dashboard"
+msgstr "חזרה ללוח הבקרה הפיננסי"
+
+#: 
+msgid "Back to Groups Dashboard"
+msgstr "חזרה ללוח הבקרה של קבוצות"
+
+#: 
+msgid "Back to People Dashboard"
+msgstr "חזרה ללוח הבקרה של אנשים"
+
+#: 
+msgid "Blue"
+msgstr "כחול"
+
+#: 
+msgid "Change Photo"
+msgstr "שנה תמונה"
+
+#: 
+msgid "Changes will not take effect until next logon."
+msgstr "השינויים ייכנסו לתוקף בכניסה הבאה."
+
+#: 
+msgid "Choose between light and dark color scheme"
+msgstr "בחר בין ערכת צבעים בהירה לכהה"
+
+#: 
+msgid "ChurchCRM translations are managed by the community on POEditor. You can help by:"
+msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי:"
+
+#: 
+msgid "Customize the look and feel of the application"
+msgstr "התאם אישית את מראה היישום ותחושתו"
+
+#: 
+msgid "Cyan"
+msgstr "ציאן"
+
+#: 
+msgid "Dark"
+msgstr "כהה"
+
+#: 
+msgid "Database-only (.sql) or full archive (.tar.gz)"
+msgstr "בסיס נתונים בלבד (.sql) או ארכיון מלא (.tar.gz)"
+
+#: 
+msgid "Default number of rows shown in data tables. Takes effect on next page load."
+msgstr "מספר השורות המוצגות כברירת מחדל בטבלאות נתונים. ייכנס לתוקף בטעינת הדף הבאה."
+
+#: 
+msgid "Edit own family only"
+msgstr "עריכת המשפחה שלי בלבד"
+
+#: 
+msgid "Enter text here..."
+msgstr "הכנס טקסט כאן..."
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
+
+#: 
+msgid "Failed to delete event. Please try again."
+msgstr "מחיקת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to disable two-factor authentication. Please try again."
+msgstr "השבתת אימות דו-שלבי נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to generate QR code. Please try again."
+msgstr "יצירת קוד QR נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load calendar data. Please try again."
+msgstr "טעינת נתוני לוח השנה נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load event. Please try again."
+msgstr "טעינת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to load recovery codes. Please refresh the page."
+msgstr "טעינת קודי השחזור נכשלה. אנא רענן את הדף."
+
+#: 
+msgid "Failed to save event. Please try again."
+msgstr "שמירת האירוע נכשלה. אנא נסה שוב."
+
+#: 
+msgid "Failed to save setting"
+msgstr "שמירת ההגדרה נכשלה"
+
+#. Context: locales
+#: 
+msgid "Filipino - Philippines"
+msgstr "פיליפינית - פיליפינים"
+
+#: 
+msgid "Fixing incorrect or awkward translations in your language"
+msgstr "תיקון תרגומים שגויים או מסורבלים בשפתך"
+
+#: 
+msgid "Found a bug with translations?"
+msgstr "מצאת באג בתרגומים?"
+
+#: 
+msgid "Grants all privileges"
+msgstr "מעניק את כל ההרשאות"
+
+#: 
+msgid "Green"
+msgstr "ירוק"
+
+#: 
+msgid "Help Improve Translations"
+msgstr "עזור לשפר תרגומים"
+
+#: 
+msgid "If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone."
+msgstr "אם אתה מבחין בתווים מקולקלים, ישויות HTML המופיעות כטקסט, או תרגומים הפוגעים בפריסת הדף, אנא דווח על הבעיה ב-GitHub כדי שניתן יהיה לתקנה עבור כולם."
+
+#: 
+msgid "Include your API key in requests using the x-api-key header:"
+msgstr "כלול את מפתח ה-API שלך בבקשות באמצעות כותרת x-api-key:"
+
+#: 
+msgid "Indigo"
+msgstr "אינדיגו"
+
+#: 
+msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
+msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
+
+#: 
+msgid "Join the Translation Project on POEditor"
+msgstr "הצטרף לפרויקט התרגום ב-POEditor"
+
+#: 
+msgid "Language and regional settings"
+msgstr "הגדרות שפה ואזור"
+
+#: 
+msgid "Light"
+msgstr "בהיר"
+
+#: 
+msgid "Lime"
+msgstr "ליים"
+
+#. Context: locales
+#: 
+msgid "Malayalam - India"
+msgstr "מלאיאלאם - הודו"
+
+#: 
+msgid "Manage 2FA"
+msgstr "נהל אימות דו-שלבי"
+
+#: 
+msgid "Manage additional preferences like email delimiters and display options"
+msgstr "נהל העדפות נוספות כגון מפרידי דואר אלקטרוני ואפשרויות תצוגה"
+
+#: 
+msgid "Manage your API key for external integrations"
+msgstr "נהל את מפתח ה-API שלך לאינטגרציות חיצוניות"
+
+#: 
+msgid "Method Not Allowed"
+msgstr "שיטה אינה מורשית"
+
+#: 
+msgid "Missing or incorrect translations?"
+msgstr "תרגומים חסרים או שגויים?"
+
+#: 
+msgid "My Account"
+msgstr "החשבון שלי"
+
+#: 
+msgid "Orange"
+msgstr "כתום"
+
+#: 
+msgid "Override the system default locale"
+msgstr "עקוף את שפת ברירת המחדל של המערכת"
+
+#: 
+msgid "Page Not Found"
+msgstr "הדף לא נמצא"
+
+#: 
+msgid "Percentage of strings translated for your current language"
+msgstr "אחוז המחרוזות המתורגמות לשפה הנוכחית שלך"
+
+#: 
+msgid "Pink"
+msgstr "ורוד"
+
+#: 
+msgid "Primary Color"
+msgstr "צבע ראשי"
+
+#: 
+msgid "Profile and security"
+msgstr "פרופיל ואבטחה"
+
+#: 
+msgid "Purple"
+msgstr "סגול"
+
+#: 
+msgid "Red"
+msgstr "אדום"
+
+#: 
+msgid "Regenerate"
+msgstr "צור מחדש"
+
+#: 
+msgid "Rows per page"
+msgstr "שורות לדף"
+
+#: 
+msgid "Set Permission to True to allow this user to change the setting themselves."
+msgstr "הגדר הרשאה לאמת כדי לאפשר למשתמש זה לשנות את ההגדרה בעצמו."
+
+#: 
+msgid "Set the accent color used for buttons, links, and active elements"
+msgstr "הגדר את צבע ההדגשה המשמש לכפתורים, קישורים ואלמנטים פעילים"
+
+#: 
+msgid "Suggesting better phrasing for existing translations"
+msgstr "הצעת ניסוח טוב יותר לתרגומים קיימים"
+
+#: 
+msgid "System Update Available"
+msgstr "עדכון מערכת זמין"
+
+#: 
+msgid "Tables"
+msgstr "טבלאות"
+
+#: 
+msgid "Teal"
+msgstr "טיל"
+
+#: 
+msgid "Theme Mode"
+msgstr "מצב ערכת נושא"
+
+#: 
+msgid "Toggle search"
+msgstr "הפעל/כבה חיפוש"
+
+#: 
+msgid "Translating missing strings to improve coverage"
+msgstr "תרגום מחרוזות חסרות לשיפור הכיסוי"
+
+#: 
+msgid "Translation Progress"
+msgstr "התקדמות תרגום"
+
+#: 
+msgid "Usage"
+msgstr "שימוש"
+
+#: 
+msgid "Use this key to authenticate API requests. Regenerating will invalidate the current key."
+msgstr "השתמש במפתח זה לאימות בקשות API. יצירה מחדש תבטל את המפתח הנוכחי."
+
+#: 
+msgid "User Config"
+msgstr "הגדרות משתמש"
+
+#: 
+msgid "Verification failed. Please try again."
+msgstr "האימות נכשל. אנא נסה שוב."
+
+#: 
+msgid "Version %s is available. Please upgrade your installation."
+msgstr "גרסה %s זמינה. אנא שדרג את ההתקנה שלך."
+
+#: 
+msgid "View All"
+msgstr "הצג הכל"
+
+#: 
+msgid "Yellow"
+msgstr "צהוב"
+
+#: 
+msgid "Your current access levels (read-only)"
+msgstr "רמות הגישה הנוכחיות שלך (לקריאה בלבד)"
+
