@@ -112,6 +112,10 @@ describe("Mobile UX — Authenticated Pages", () => {
     it("root dashboard fits mobile viewport without horizontal scroll", () => {
         cy.visit("/v2/dashboard");
         cy.get(".page-body").should("be.visible");
+        // Wait for DataTables to finish initializing (async AJAX + render)
+        // before checking overflow, otherwise columns may still be resizing.
+        cy.get("#latestFamiliesDashboardItem_wrapper", { timeout: 15000 })
+            .should("be.visible");
         assertNoHorizontalOverflow();
     });
 
@@ -130,6 +134,9 @@ describe("Mobile UX — Authenticated Pages", () => {
         cy.get("#groupsTable")
             .parents(".table-responsive")
             .should("exist");
+        // Wait for DataTables to finish drawing so overflow reflects
+        // the final rendered width.
+        cy.get("#groupsTable_wrapper", { timeout: 15000 }).should("be.visible");
         assertNoHorizontalOverflow();
     });
 

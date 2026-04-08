@@ -24,10 +24,19 @@
   margin: 0 -30px 30px -30px;
 }
 
-/* Stepper label: hide text on very small screens, show only circle */
+/* Stepper label: visually hide text on very small screens while keeping it
+   in the accessibility tree for screen readers */
 @media (max-width: 400px) {
   .bs-stepper-label {
-    display: none;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 }
 
@@ -454,10 +463,18 @@
     font-size: 0.9rem;
   }
 
-  /* Phone input: stack "No format" checkbox below on mobile */
+  /* Phone input: stack "No format" checkbox on its own row below the input */
+  .member-card .input-group {
+    flex-wrap: wrap;
+  }
+
   .member-card .input-group > .input-group-text:last-child {
+    flex: 0 0 100%;
+    width: 100%;
     border-top: 1px solid #ced4da;
     border-left: 1px solid #ced4da;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
     font-size: 0.8rem;
   }
 
