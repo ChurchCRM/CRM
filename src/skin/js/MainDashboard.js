@@ -412,7 +412,8 @@ export function initializeMainDashboard() {
     title: i18next.t("Action"),
     data: "PersonId",
     className: "no-export",
-    render: (data, type, row) => window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName, {
+    render: (data, type, row) =>
+      window.CRM.renderPersonActionMenu(row.PersonId, row.FirstName + " " + row.LastName, {
         familyId: row.FamilyId || null,
       }),
     searchable: false,
@@ -594,15 +595,14 @@ export function initializeMainDashboard() {
           width: "35%",
           title: i18next.t("Event"),
           data: "title",
-          render: (data, type, row) => (
-              '<a href="' +
-              window.CRM.root +
-              "/Checkin.php?EventID=" +
-              row.id +
-              '"><strong>' +
-              window.CRM.escapeHtml(data) +
-              "</strong></a>"
-            ),
+          render: (data, type, row) =>
+            '<a href="' +
+            window.CRM.root +
+            "/Checkin.php?EventID=" +
+            row.id +
+            '"><strong>' +
+            window.CRM.escapeHtml(data) +
+            "</strong></a>",
         },
         {
           width: "15%",
@@ -642,16 +642,15 @@ export function initializeMainDashboard() {
           data: "id",
           orderable: false,
           className: "no-export",
-          render: (data) => (
-              '<a href="' +
-              window.CRM.root +
-              "/Checkin.php?EventID=" +
-              data +
-              '" class="btn btn-sm btn-outline-success">' +
-              '<i class="fa-solid fa-clipboard-check me-1"></i>' +
-              i18next.t("Check-in") +
-              "</a>"
-            ),
+          render: (data) =>
+            '<a href="' +
+            window.CRM.root +
+            "/Checkin.php?EventID=" +
+            data +
+            '" class="btn btn-sm btn-outline-success">' +
+            '<i class="fa-solid fa-clipboard-check me-1"></i>' +
+            i18next.t("Check-in") +
+            "</a>",
         },
       ],
     };

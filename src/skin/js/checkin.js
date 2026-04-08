@@ -43,10 +43,10 @@ function initializePersonSearchFields() {
           .then((data) => {
             callback(
               data.map((person) => ({
-                  objid: person.objid,
-                  text: person.text,
-                  uri: person.uri,
-                })),
+                objid: person.objid,
+                text: person.text,
+                uri: person.uri,
+              })),
             );
           })
           .catch(() => {
