@@ -23,7 +23,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
       if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
         <a href="<?= SystemURLs::getRootPath() ?>/CartToFamily.php" class="btn btn-outline-success" title="<?= gettext('Add cart items to a family') ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext('To Family') ?></a>
       <?php } ?>
-      <a href="<?= SystemURLs::getRootPath() ?>/CartToEvent.php" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
+      <a href="<?= SystemURLs::getRootPath() ?>/event/cart-to-event" class="btn btn-outline-info" title="<?= gettext('Check in to an event') ?>"><i class="fa-solid fa-ticket-alt me-2"></i><?= gettext('Check In') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/v2/map?groupId=0" class="btn btn-outline-info" title="<?= gettext('Map cart items') ?>"><i class="fa-solid fa-map-marker me-2"></i><?= gettext('Map') ?></a>
       <a href="<?= SystemURLs::getRootPath() ?>/Reports/NameTags.php?labeltype=74536&labelfont=times&labelfontsize=36" class="btn btn-outline-secondary" title="<?= gettext('Print name tags') ?>"><i class="fa-solid fa-file-pdf me-2"></i><?= gettext('Tags') ?></a>
     </div>

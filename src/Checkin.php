@@ -32,7 +32,7 @@ $iChildID = 0;
 $iAdultID = 0;
 $directEventAccess = false;
 
-// Check for AddedCount notification from CartToEvent redirect
+// Check for AddedCount notification from cart-to-event redirect
 $iAddedCount = isset($_GET['AddedCount']) ? (int)$_GET['AddedCount'] : 0;
 
 // Check GET parameter for eventId (from ListEvents or cart links)
