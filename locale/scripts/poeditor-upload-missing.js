@@ -52,7 +52,8 @@ const LOCALES_FILE = localeConfig.localesJson;
 const BETWEEN_LOCALES_DELAY_MS = 22_000;
 
 // Sanitize untrusted strings before logging to prevent log injection
-const sanitize = (str) => String(str).replace(/[\r\n]/g, ' ');
+// eslint-disable-next-line no-control-regex
+const sanitize = (str) => String(str).replace(/[\x00-\x1f\x7f]/g, ' ').slice(0, 200);
 
 const apiToken = process.env.POEDITOR_TOKEN;
 if (!apiToken) {
