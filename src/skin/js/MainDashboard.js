@@ -592,20 +592,20 @@ export function initializeMainDashboard() {
       },
       columns: [
         {
-          width: "35%",
+          width: "40%",
           title: i18next.t("Event"),
           data: "title",
           render: (data, type, row) =>
             '<a href="' +
             window.CRM.root +
-            "/event/checkin/" +
+            "/event/view/" +
             row.id +
             '"><strong>' +
             window.CRM.escapeHtml(data) +
             "</strong></a>",
         },
         {
-          width: "15%",
+          width: "20%",
           title: i18next.t("Type"),
           data: "typeName",
           render: (data) => {
@@ -637,20 +637,14 @@ export function initializeMainDashboard() {
           },
         },
         {
-          width: "20%",
+          width: "10%",
           title: i18next.t("Action"),
           data: "id",
           orderable: false,
           className: "no-export",
-          render: (data) =>
-            '<a href="' +
-            window.CRM.root +
-            "/event/checkin/" +
-            data +
-            '" class="btn btn-sm btn-outline-success">' +
-            '<i class="fa-solid fa-clipboard-check me-1"></i>' +
-            i18next.t("Check-in") +
-            "</a>",
+          // Today's Events only returns active events (filterByInActive(0))
+          // so inactive is always false here.
+          render: (data, type, row) => window.CRM.renderEventActionMenu(data, row.title, { inactive: false }),
         },
       ],
     };
