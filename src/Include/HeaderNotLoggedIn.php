@@ -3,9 +3,14 @@
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Utils\InputUtils;
 
 require_once __DIR__ . '/Header-Security.php';
+
+// Initialize plugin system so active plugins (e.g. GA4) can inject head content
+$pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
+PluginManager::init($pluginsPath);
 
 $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo object
 ?>
@@ -28,6 +33,8 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     <script src="<?= SystemURLs::assetVersioned('/skin/external/moment/moment.min.js') ?>"></script>
 
     <title>ChurchCRM: <?= $sPageTitle ?></title>
+
+    <?= PluginManager::getPluginHeadContent() ?>
 
     <style>
       html, body {

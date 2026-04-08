@@ -2,6 +2,7 @@
 
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\SystemService;
 
 ?>
@@ -51,12 +52,6 @@ use ChurchCRM\Service\SystemService;
         }
     })();
   </script>
-  <?php
-
-    //If this is a first-run setup, do not include google analytics code.
-    if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
-        include_once('analyticstracking.php');
-    }
-    ?>
+  <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
