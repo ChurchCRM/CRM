@@ -566,7 +566,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="FamilyName"><?= gettext('Family Name') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-people-roof"></i></span>
@@ -580,7 +580,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if (empty($dWeddingDate)) {
                         $dWeddingDate = '';
                     } ?>
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
@@ -608,14 +608,14 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="Address1"><?= gettext('Address') ?> 1:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
                         <input type="text" id="Address1" name="Address1" value="<?= InputUtils::escapeAttribute($sAddress1) ?>" maxlength="250" class="form-control">
                     </div>
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="Address2"><?= gettext('Address') ?> 2:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
@@ -624,23 +624,23 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="mb-3 col-md-4">
+                <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="City"><?= gettext('City') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-city"></i></span>
                         <input type="text" id="City" name="City" value="<?= InputUtils::escapeAttribute($sCity) ?>" maxlength="50" class="form-control">
                     </div>
                 </div>
-                <div id="stateOptionDiv" class="mb-3 col-md-3">
+                <div id="stateOptionDiv" class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="State"><?= gettext('State') ?>:</label>
                     <select id="State" name="State" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sState) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultState') ?>">
                     </select>
                 </div>
-                <div id="stateInputDiv" class="mb-3 col-md-3 d-none">
+                <div id="stateInputDiv" class="mb-3 col-12 col-sm-6 col-md-3 d-none">
                     <label for="StateTextbox"><?= gettext('State') ?>:</label>
                     <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= InputUtils::escapeAttribute($sState) ?>" maxlength="30">
                 </div>
-                <div class="mb-3 col-md-2">
+                <div class="mb-3 col-6 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
                     <input type="text" id="Zip" name="Zip" class="form-control" <?php
                     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {
@@ -648,7 +648,7 @@ require_once __DIR__ . '/Include/Header.php';
                     }
                     echo 'value="' . InputUtils::escapeAttribute($sZip) . '" '; ?> maxlength="10">
                 </div>
-                <div class="mb-3 col-md-3">
+                <div class="mb-3 col-12 col-sm-6 col-md-3">
                     <label for="Country"><?= gettext('Country') ?>:</label>
                     <select id="Country" name="Country" class="form-select" data-user-selected="<?= InputUtils::escapeAttribute($sCountry) ?>" data-system-default="<?= SystemConfig::getValueForAttr('sDefaultCountry') ?>">
                     </select>
@@ -658,14 +658,14 @@ require_once __DIR__ . '/Include/Header.php';
                 if (!$bHaveXML) { // No point entering if values will just be overwritten
                     ?>
                     <div class="row">
-                        <div class="mb-3 col-md-3">
+                        <div class="mb-3 col-12 col-sm-6 col-md-3">
                             <label for="Latitude"><?= gettext('Latitude') ?>:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
                                 <input type="text" class="form-control" id="Latitude" name="Latitude" value="<?= $nLatitude && $nLatitude !== 0 ? $nLatitude : '' ?>" maxlength="50">
                             </div>
                         </div>
-                        <div class="mb-3 col-md-3">
+                        <div class="mb-3 col-12 col-sm-6 col-md-3">
                             <label for="Longitude"><?= gettext('Longitude') ?>:</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fa-solid fa-globe"></i></span>
@@ -684,7 +684,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
             </div>
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="HomePhone"><?= gettext('Home Phone') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
@@ -695,7 +695,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </span>
                     </div>
                 </div>
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <label for="Email"><?= gettext('Email') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
@@ -708,7 +708,7 @@ require_once __DIR__ . '/Include/Header.php';
             </div>
             <?php if (!SystemConfig::getBooleanValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>
             <div class="row">
-                <div class="mb-3 col-md-6">
+                <div class="mb-3 col-12 col-md-6">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" id="SendNewsLetter" name="SendNewsLetter" value="1" <?= $bSendNewsLetter ? 'checked' : '' ?>>
                         <label class="form-check-label" for="SendNewsLetter"><?= gettext('Send Newsletter') ?></label>
@@ -724,7 +724,7 @@ require_once __DIR__ . '/Include/Header.php';
                 <h3 class="card-title"><?= gettext('Envelope Info') ?></h3>
             <div class="card-body">
                 <div class="row">
-                    <div class="mb-3 col-md-4">
+                    <div class="mb-3 col-12 col-sm-6 col-md-4">
                         <label for="Envelope"><?= gettext('Envelope Number') ?>:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-envelope-open-text"></i></span>
@@ -751,7 +751,7 @@ require_once __DIR__ . '/Include/Header.php';
                     if (AuthenticationManager::getCurrentUser()->isEnabledSecurity($aSecurityType[$fam_custom_FieldSec])) {
                         ?>
                         <div class="row">
-                            <div class="mb-3 col-md-6">
+                            <div class="mb-3 col-12 col-md-6">
                                 <label for="<?= $fam_custom_Field ?>"><?= $fam_custom_Name ?></label>
                         <?php $currentFieldData = trim($aCustomData[$fam_custom_Field]);
 

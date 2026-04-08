@@ -44,7 +44,7 @@ $otherPeople = $family->getOtherPeople();
 
 <div class="row">
     <!-- LEFT COLUMN: Actions, Members, Timeline -->
-    <div class="col-lg-8">
+    <div class="col-12 col-lg-8">
         <!-- Family Action Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
@@ -144,7 +144,7 @@ $otherPeople = $family->getOtherPeople();
             if (empty($members)) { return; } ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -218,7 +218,7 @@ $otherPeople = $family->getOtherPeople();
         ?>
             <div class="mb-1">
                 <?php renderSectionHeader($label, $icon, $color, count($members)); ?>
-                <div style="overflow: visible;">
+                <div class="table-responsive">
                     <table class="table table-vcenter card-table mb-0">
                         <thead>
                             <tr>
@@ -353,7 +353,7 @@ $otherPeople = $family->getOtherPeople();
     </div>
 
     <!-- RIGHT COLUMN: Navigation, Photo, Address, Contact, Properties -->
-    <div class="col-lg-4">
+    <div class="col-12 col-lg-4">
         <!-- Family Navigation -->
         <div class="d-flex justify-content-between align-items-center mb-3">
             <a href="<?= SystemURLs::getRootPath()?>/v2/family" class="btn btn-outline-secondary btn-sm">
@@ -569,7 +569,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     </ul>
                 </div>
             </div>
-            <div class="table-responsive" style="overflow: visible;">
+            <div class="table-responsive">
                 <table id="pledge-payment-v2-table" class="table table-vcenter card-table" style="width: 100%;">
                     <tbody></tbody>
                 </table>

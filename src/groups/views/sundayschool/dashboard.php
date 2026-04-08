@@ -10,8 +10,8 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <!-- Stat Cards Row -->
-<div class="row mb-3">
-    <div class="col-6 col-lg-2">
+<div class="row row-cards mb-3 g-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -28,7 +28,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -45,7 +45,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -62,7 +62,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -79,7 +79,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
@@ -96,7 +96,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
         </div>
     </div>
-    <div class="col-6 col-lg-2">
+    <div class="col-6 col-md-4 col-lg-2">
         <div class="card card-sm">
             <div class="card-body">
                 <div class="row align-items-center">
