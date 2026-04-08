@@ -206,7 +206,7 @@ $(() => {
         loadRoster(eventId);
       })
       .catch(() => {
-        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-in failed. Please try again."));
+        window.CRM.notify(i18next.t("Check-in failed. Please try again."), { type: "danger", delay: 5000 });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -229,7 +229,7 @@ $(() => {
         loadRoster(eventId);
       })
       .catch(() => {
-        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Check-out failed. Please try again."));
+        window.CRM.notify(i18next.t("Check-out failed. Please try again."), { type: "danger", delay: 5000 });
       })
       .finally(() => {
         $btn.prop("disabled", false);
@@ -416,7 +416,7 @@ $(() => {
     const checkedInById = $("#adult-id").val() || null;
 
     if (!personId) {
-      window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Please select a person to check in."));
+      window.CRM.notify(i18next.t("Please select a person to check in."), { type: "warning", delay: 5000 });
       return;
     }
 
@@ -439,7 +439,7 @@ $(() => {
       })
       .catch((err) => {
         const msg = err?.message || i18next.t("Check-in failed. Please try again.");
-        window.CRM.DisplayAlert(i18next.t("Error"), msg);
+        window.CRM.notify(msg, { type: "danger", delay: 5000 });
       });
   });
 
@@ -487,7 +487,7 @@ $(() => {
       })
       .catch((err) => {
         const msg = err?.message || i18next.t("Check-out failed. Please try again.");
-        window.CRM.DisplayAlert(i18next.t("Error"), msg);
+        window.CRM.notify(msg, { type: "danger", delay: 5000 });
       });
   });
 
@@ -518,7 +518,7 @@ $(() => {
         }
       })
       .catch(() => {
-        window.CRM.DisplayAlert(i18next.t("Error"), i18next.t("Failed to delete. Please try again."));
+        window.CRM.notify(i18next.t("Failed to delete. Please try again."), { type: "danger", delay: 5000 });
       });
   });
 });
