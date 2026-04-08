@@ -126,15 +126,24 @@ describe("Events Dashboard (MVC)", () => {
         // has zero events on the dashboard. Create one via quick-create before
         // running any of the action-menu assertions so the table tbody exists.
         beforeEach(() => {
+            // /api/events/types returns a Propel ObjectCollection serialized as
+            // an OBJECT keyed by index ("0", "1", ...) — not a true JS array.
+            // Normalize via Object.values() before reading [0].Id.
             cy.makePrivateAdminAPICall("GET", "/api/events/types", null, [200, 404]).then(
                 (typesResp) => {
-                    if (typesResp.status !== 200 || !typesResp.body || typesResp.body.length === 0) {
+                    if (typesResp.status !== 200 || !typesResp.body) {
+                        return;
+                    }
+                    const types = Array.isArray(typesResp.body)
+                        ? typesResp.body
+                        : Object.values(typesResp.body);
+                    if (types.length === 0 || !types[0] || !types[0].Id) {
                         return;
                     }
                     cy.makePrivateAdminAPICall(
                         "POST",
                         "/api/events/quick-create",
-                        { eventTypeId: typesResp.body[0].Id },
+                        { eventTypeId: types[0].Id },
                         200,
                     );
                 },
@@ -154,7 +163,7 @@ describe("Events Dashboard (MVC)", () => {
             cy.visit("event/dashboard");
             cy.get("table tbody tr td:first-child a", { timeout: 10000 }).first().then(($link) => {
                 const href = $link.attr("href");
-                expect(href).to.include("/event/editor/");
+                expect(href).to.include("/event/view/");
             });
         });
 

@@ -15,7 +15,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <strong><?= gettext('What does this find?') ?></strong>
         </p>
         <p class="mb-0 text-secondary">
-            <?= gettext("This report lists past events that are still marked Active and still have at least one person who was checked in but never checked out. Common causes: a volunteer forgot to tap 'Check Out', the event was created and abandoned, or the kiosk lost connectivity. Closing an event from this report will check everyone out (using the current time) and mark the event Inactive.") ?>
+            <?= gettext("This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive.") ?>
         </p>
     </div>
 </div>
@@ -40,7 +40,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     <div id="auditEmpty" class="card-body text-center text-muted py-5 d-none">
         <i class="ti ti-mood-happy mb-2 d-block" style="font-size: 3rem;"></i>
         <h3 class="text-muted"><?= gettext('All clear!') ?></h3>
-        <p class="text-muted mb-0"><?= gettext('No past events have un-checked-out attendees.') ?></p>
+        <p class="text-muted mb-0"><?= gettext('No past events are still marked Active.') ?></p>
     </div>
 
     <div id="auditLoading" class="card-body text-center text-muted py-5">
@@ -92,12 +92,17 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 }
                 $tbody.empty();
                 events.forEach(function (e) {
+                    // Highlight rows where someone is still mid-check-in (warning)
+                    // vs old stale rows with zero un-checked-out people (muted).
+                    var checkedInBadge = e.stillCheckedIn > 0
+                        ? '<span class="badge bg-warning text-dark">' + e.stillCheckedIn + '</span>'
+                        : '<span class="badge bg-light text-dark">0</span>';
                     var row =
                         '<tr data-event-id="' + e.id + '">' +
                         '<td><a href="' + window.CRM.root + '/event/view/' + e.id + '">' + escapeHtml(e.title) + '</a></td>' +
                         '<td><span class="badge bg-azure-lt">' + escapeHtml(e.typeName) + '</span></td>' +
                         '<td class="text-secondary small">' + escapeHtml(e.end) + '</td>' +
-                        '<td class="text-center"><span class="badge bg-warning text-dark">' + e.stillCheckedIn + '</span></td>' +
+                        '<td class="text-center">' + checkedInBadge + '</td>' +
                         '<td class="text-end">' +
                         '<button type="button" class="btn btn-sm btn-warning audit-close-one" data-event-id="' + e.id + '">' +
                         '<i class="ti ti-circle-check me-1"></i>' + i18next.t('Close') +

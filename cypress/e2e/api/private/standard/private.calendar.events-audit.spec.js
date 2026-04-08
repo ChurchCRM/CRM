@@ -20,7 +20,9 @@ describe("API Event Audit Endpoints", () => {
                     expect(response.body).to.have.property("events");
                     expect(response.body.events).to.be.an("array");
 
-                    // If any results, each must have the expected shape
+                    // If any results, each must have the expected shape.
+                    // stillCheckedIn can be 0 (old stale active events) or
+                    // positive (someone forgot to check out) — both qualify.
                     if (response.body.events.length > 0) {
                         const e = response.body.events[0];
                         expect(e).to.have.all.keys(
@@ -31,7 +33,7 @@ describe("API Event Audit Endpoints", () => {
                             "end",
                             "stillCheckedIn",
                         );
-                        expect(e.stillCheckedIn).to.be.greaterThan(0);
+                        expect(e.stillCheckedIn).to.be.a("number").and.be.at.least(0);
                     }
                 },
             );
@@ -52,14 +54,25 @@ describe("API Event Audit Endpoints", () => {
             cy.makePrivateAdminAPICall("POST", "/api/events/audit/close", {}, 400);
         });
 
-        it("closes a stuck event end-to-end (create → check in → audit → close)", () => {
-            // 1. Find an event type to use
+        it("closes a stuck event end-to-end (create → check in → audit → close)", function () {
+            // 1. Find an event type to use. The /api/events/types endpoint returns
+            // a Propel ObjectCollection serialized as an OBJECT keyed by index
+            // ("0", "1", ...) — not a true JS array. Normalize to an array of values
+            // and skip the test gracefully if no types are seeded.
             cy.makePrivateAdminAPICall("GET", "/api/events/types", null, [200, 404]).then(
                 (typesResp) => {
-                    if (typesResp.status !== 200 || !typesResp.body || typesResp.body.length === 0) {
+                    if (typesResp.status !== 200 || !typesResp.body) {
+                        this.skip();
                         return;
                     }
-                    const eventTypeId = typesResp.body[0].Id;
+                    const types = Array.isArray(typesResp.body)
+                        ? typesResp.body
+                        : Object.values(typesResp.body);
+                    if (types.length === 0 || !types[0] || !types[0].Id) {
+                        this.skip();
+                        return;
+                    }
+                    const eventTypeId = types[0].Id;
 
                     // 2. Create a fresh event in the past
                     const past = new Date(Date.now() - 24 * 60 * 60 * 1000); // 24h ago

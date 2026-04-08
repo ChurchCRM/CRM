@@ -180,7 +180,7 @@ foreach ($monthlyData as $monthData):
             <?php $eventId = (int) $event['id']; ?>
             <tr>
               <td>
-                <a href="<?= $sRootPath ?>/event/editor/<?= $eventId ?>" class="fw-medium text-reset text-decoration-none">
+                <a href="<?= $sRootPath ?>/event/view/<?= $eventId ?>" class="fw-medium text-reset text-decoration-none">
                   <?= InputUtils::escapeHTML($event['title']) ?>
                 </a>
                 <?php

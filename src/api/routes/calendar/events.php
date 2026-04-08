@@ -1371,8 +1371,8 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
  * @OA\Get(
  *     path="/events/audit/stuck",
  *     operationId="getStuckEvents",
- *     summary="List past events that are still active and have un-checked-out attendees",
- *     description="Returns events whose end date has passed but which are still marked active AND have at least one attendee with no checkout timestamp. Useful for auditing forgotten check-outs and inactive cleanup.",
+ *     summary="List past events that are still marked active",
+ *     description="Returns every event whose end date has passed but which is still marked Active. Each row includes the count of attendees still checked in (no checkout). This is the audit set — anything in this list represents an event that was never properly closed, regardless of whether anyone forgot to check out.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="List of stuck events with stats")
@@ -1382,7 +1382,9 @@ function getStuckEvents(Request $request, Response $response, array $args): Resp
 {
     $now = date('Y-m-d H:i:s');
 
-    // Find all active events whose end is in the past
+    // Find all active events whose end is in the past. We don't filter by
+    // "still checked in" — a 2016 event marked Active with zero un-checked-out
+    // people is still a stale row that should be flagged for cleanup.
     $candidates = EventQuery::create()
         ->filterByInActive(0)
         ->filterByEnd($now, Criteria::LESS_THAN)
@@ -1394,16 +1396,13 @@ function getStuckEvents(Request $request, Response $response, array $args): Resp
     foreach ($candidates as $event) {
         $eventId = (int) $event->getId();
 
-        // Count attendees who checked in but never checked out
+        // Count attendees who checked in but never checked out (informational
+        // — does not affect inclusion in the result set).
         $stillCheckedIn = EventAttendQuery::create()
             ->filterByEventId($eventId)
             ->filterByCheckinDate(null, Criteria::ISNOTNULL)
             ->filterByCheckoutDate(null, Criteria::ISNULL)
             ->count();
-
-        if ($stillCheckedIn === 0) {
-            continue;
-        }
 
         $stuck[] = [
             'id'             => $eventId,

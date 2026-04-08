@@ -13,12 +13,18 @@ describe("API Repeat Events", () => {
         let eventTypeId;
 
         before(() => {
-            // Fetch an event type to use in tests
+            // Fetch an event type to use in tests. /api/events/types returns a
+            // Propel ObjectCollection serialized as an OBJECT keyed by index
+            // ("0", "1", ...), not a true JS array — normalize via Object.values.
             cy.setupAdminSession();
             cy.makePrivateAdminAPICall("GET", "/api/events/types", null, [200, 404]).then(
                 (response) => {
-                    if (response.status === 200 && response.body.length > 0) {
-                        eventTypeId = response.body[0].Id;
+                    if (response.status !== 200 || !response.body) return;
+                    const types = Array.isArray(response.body)
+                        ? response.body
+                        : Object.values(response.body);
+                    if (types.length > 0 && types[0] && types[0].Id) {
+                        eventTypeId = types[0].Id;
                     }
                 },
             );
