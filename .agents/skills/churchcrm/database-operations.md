@@ -421,3 +421,47 @@ if (isset($dayOfWeekMap[$dowValue])) {
 }
 $eventType->setDefRecurDOW($dowValue);
 ```
+
+### Replacing INSERT...ON DUPLICATE KEY UPDATE with findPk + Create-If-Missing <!-- learned: 2026-04-08 -->
+
+Propel has no direct equivalent to `INSERT ... ON DUPLICATE KEY UPDATE`. When migrating raw
+SQL upserts to ORM, use `findPk()` with the composite primary key and create the record if
+missing — do not hunt for a single "upsert" method.
+
+```php
+// ❌ Raw SQL
+// INSERT eventcounts_evtcnt (evtcnt_eventid, evtcnt_countid, evtcnt_countcount)
+// VALUES (1, 2, 5)
+// ON DUPLICATE KEY UPDATE evtcnt_countcount=5;
+
+// ✅ Propel ORM (works with composite primary keys)
+$eventCount = EventCountsQuery::create()->findPk([$eventId, $countId]);
+if ($eventCount === null) {
+    $eventCount = new EventCounts();
+    $eventCount->setEvtcntEventid($eventId);
+    $eventCount->setEvtcntCountid($countId);
+}
+$eventCount->setEvtcntCountcount($value);
+$eventCount->save();
+```
+
+`findPk()` accepts an array for composite keys in the exact order declared in the schema.
+
+### Replacing MONTH() / YEAR() SQL with Propel Date Range <!-- learned: 2026-04-08 -->
+
+Don't try to translate `WHERE MONTH(date) = 4 AND YEAR(date) = 2026` directly — Propel has
+no helper for SQL date functions. Use a full date-range filter with `cal_days_in_month()` for
+the inclusive upper bound.
+
+```php
+$daysInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+$monthMin = sprintf('%04d-%02d-01 00:00:00', $year, $month);
+$monthMax = sprintf('%04d-%02d-%02d 23:59:59', $year, $month, $daysInMonth);
+
+EventQuery::create()
+    ->filterByStart(['min' => $monthMin, 'max' => $monthMax])
+    ->find();
+```
+
+Always use full `HH:MM:SS` timestamps on the boundaries — see "Datetime Year-Range Filters"
+above for why a bare `YYYY-MM-DD` max silently drops same-day afternoon records.

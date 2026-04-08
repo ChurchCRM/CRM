@@ -467,6 +467,31 @@ return $response;
 
 **Feature-flag middleware on export routes** — Only add `SundaySchoolEnabledMiddleware` (or similar) to routes whose content is *exclusively* about that feature. General exports that merely enrich data with SS info should NOT be gated — block only the SS-specific logic inside the handler when the feature is off.
 
+### Route All Check-in/Check-out Through the Event Model <!-- learned: 2026-04-08 -->
+
+When migrating legacy pages, refactor **all** code paths to use the same model method
+instead of copy-pasting the persistence logic. For event check-in, the canonical entry
+points are `Event::checkInPerson()` and `Event::checkOutPerson()` — they set consistent
+timestamps, create the timeline Note (`type='event'`), and fire hooks.
+
+Even cart-to-event bulk check-in — which historically created `EventAttend` rows directly —
+should call the model method so every path produces identical side effects.
+
+```php
+// ❌ Direct ORM bypasses model logic (no timeline note, inconsistent timestamps)
+$ea = new EventAttend();
+$ea->setEventId($eventId)->setPersonId($personId)->save();
+
+// ✅ Use model method — sets timestamps, writes timeline note, fires hooks
+$event = EventQuery::create()->findPk($eventId);
+if ($event !== null) {
+    $event->checkInPerson($personId);
+}
+```
+
+Same rule applies anywhere a "canonical" mutator method exists on a model — prefer the
+model method over hand-rolling the same sequence of ORM calls.
+
 ### Note Privacy: nte_Private Stores personId, Not a Boolean <!-- learned: 2026-03-29 -->
 
 `nte_Private` is **not** a boolean flag. It stores either `0` (public) or the author's `personId` (private). `Note::isVisible($personId)` checks `getPrivate() === $personId`, so storing `1` instead of a real personId means only person with ID=1 can see the note.
