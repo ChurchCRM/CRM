@@ -650,7 +650,7 @@ window.CRM.renderEventActionMenu = function (eventId, eventTitle, options) {
     '<div class="dropdown-menu dropdown-menu-end">' +
     '<a class="dropdown-item" href="' +
     root +
-    "/event/editor/" +
+    "/event/view/" +
     eventId +
     '">' +
     '<i class="ti ti-eye me-2"></i>' +

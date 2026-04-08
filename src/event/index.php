@@ -23,5 +23,6 @@ require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/list-events.php';
 require __DIR__ . '/routes/types.php';
 require __DIR__ . '/routes/editor.php';
+require __DIR__ . '/routes/view.php';
 
 $app->run();

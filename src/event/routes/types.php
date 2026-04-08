@@ -265,8 +265,11 @@ $app->post('/types/{id}', function (Request $request, Response $response, array 
             break;
 
         case 'TIME':
-            $eTime = $body['newEvtStartTime'] ?? '';
-            $dt = \DateTime::createFromFormat('g:i A', $eTime);
+            $eTime = trim((string) ($body['newEvtStartTime'] ?? ''));
+            // Accept both 24-hour ("09:00") from native <input type="time"> and
+            // legacy 12-hour ("9:00 AM") for backward compatibility.
+            $dt = \DateTime::createFromFormat('H:i', $eTime)
+                ?: \DateTime::createFromFormat('g:i A', $eTime);
             if ($dt) {
                 $eventType->setDefStartTime($dt->format('H:i:s'));
                 $eventType->save();

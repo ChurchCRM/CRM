@@ -378,8 +378,8 @@ $(document).on("click", ".roster-action-btn", function () {
 // =============================================================================
 
 $(() => {
-  const eventId = window.CRM.checkinEventId;
-  if (!eventId) return;
+  // These selectors live on the "select an event" landing page (when no
+  // eventId is set), so they must be bound BEFORE the eventId guard below.
 
   // Event selector navigation
   $("#EventSelector").on("change", function () {
@@ -393,6 +393,10 @@ $(() => {
   $("#EventTypeFilter").on("change", function () {
     window.location.href = `${window.CRM.root}/event/checkin?EventTypeID=${this.value}`;
   });
+
+  // Everything below requires an active event context
+  const eventId = window.CRM.checkinEventId;
+  if (!eventId) return;
 
   // Walk-in check-in button (API call, no form POST)
   $("#checkinBtn").on("click", () => {

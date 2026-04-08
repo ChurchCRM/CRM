@@ -131,16 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
       $(".event-recurrence-patterns select, .event-recurrence-patterns input[type=text]").prop("disabled", true);
       $(this).closest(".form-check").find("select, input[type=text]").prop("disabled", false);
     });
-  } else if (cfg.mode === "edit") {
-    const currentTime = cfg.currentTime || "9:00 AM";
-    window.CRM.EventUtils.initializeTimePicker(currentTime, "EventHour", "EventMinute", "EventPeriod");
-    window.CRM.EventUtils.setupTimePickerAutoSubmit(
-      'form[name="EventTypeEditForm"]',
-      "EventHour",
-      "EventMinute",
-      "EventPeriod",
-      "newEvtStartTime",
-      currentTime,
-    );
   }
+  // edit mode now uses a native <input type="time"> + Save button —
+  // no JS time picker initialization needed.
 });

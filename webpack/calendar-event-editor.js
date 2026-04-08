@@ -349,6 +349,9 @@ function showViewContent(event, calendars, eventTypes) {
       <i class="fas fa-trash me-1"></i>${t("Delete")}</button>
     <div class="d-flex gap-2">
       <button type="button" class="btn btn-secondary" id="eventCancelBtn">${t("Close")}</button>
+      <a class="btn btn-outline-primary" id="eventCheckinBtn"
+         href="${(window.CRM && window.CRM.root) || ""}/event/checkin/${event.Id}">
+        <i class="fas fa-clipboard-check me-1"></i>${t("Check-in")}</a>
       <button type="button" class="btn btn-primary" id="eventEditBtn">
         <i class="fas fa-pencil me-1"></i>${t("Edit")}</button>
     </div>`;

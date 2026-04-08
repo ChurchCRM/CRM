@@ -29,6 +29,23 @@ describe("Standard User - Event Check-in", () => {
         cy.get("#EventTypeFilter").should("exist");
     });
 
+    /**
+     * Regression: the EventTypeFilter change handler used to be bound INSIDE
+     * an `if (!eventId) return;` guard, which meant it never fired on the
+     * landing page (where the filter is the most useful). Selecting a type
+     * should navigate the page and apply the URL param.
+     */
+    it("Selecting an event type filter navigates with EventTypeID param", () => {
+        cy.visit("event/checkin");
+        // Pick the first non-zero option (= a real event type)
+        cy.get("#EventTypeFilter option").then(($options) => {
+            const realType = [...$options].find((o) => o.value && o.value !== "0");
+            if (!realType) return; // no event types seeded — nothing to test
+            cy.get("#EventTypeFilter").select(realType.value);
+            cy.url().should("include", `EventTypeID=${realType.value}`);
+        });
+    });
+
     it("Walk-in check-in form has child and adult selectors", () => {
         cy.visit("event/checkin/3");
         cy.get("#child").should("exist");

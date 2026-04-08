@@ -72,29 +72,34 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 
     <!-- Time Form -->
+    <?php
+      // Convert "9:00 AM" → "09:00" for the native time input
+      $start24h = '09:00';
+      $dtParse = \DateTime::createFromFormat('g:i A', $startTimeDisplay);
+      if ($dtParse) {
+          $start24h = $dtParse->format('H:i');
+      }
+    ?>
     <form method="POST" action="<?= $sRootPath ?>/event/types/<?= (int) $eventType->getId() ?>" name="EventTypeEditForm">
       <input type="hidden" name="Action" value="TIME">
       <div class="mb-3">
-        <label class="form-label fw-bold"><?= gettext('Default Start Time') ?></label>
-        <div class="d-flex align-items-center" style="gap: 5px; max-width: 250px;">
-          <select class="form-select" id="EventHour" name="EventHour" style="width: 70px;">
-            <?php for ($h = 1; $h <= 12; $h++): ?>
-              <option value="<?= $h ?>"><?= $h ?></option>
-            <?php endfor; ?>
-          </select>
-          <span>:</span>
-          <select class="form-select" id="EventMinute" name="EventMinute" style="width: 70px;">
-            <?php for ($m = 0; $m < 60; $m += 15):
-                $min = str_pad($m, 2, '0', STR_PAD_LEFT); ?>
-              <option value="<?= $min ?>"><?= $min ?></option>
-            <?php endfor; ?>
-          </select>
-          <select class="form-select" id="EventPeriod" name="EventPeriod" style="width: 70px;">
-            <option value="AM">AM</option>
-            <option value="PM">PM</option>
-          </select>
+        <label class="form-label fw-bold" for="newEvtStartTime"><?= gettext('Default Start Time') ?></label>
+        <div class="row g-2 align-items-center">
+          <div class="col-auto">
+            <input type="time"
+                   class="form-control"
+                   id="newEvtStartTime"
+                   name="newEvtStartTime"
+                   value="<?= InputUtils::escapeAttribute($start24h) ?>"
+                   style="max-width: 160px;" />
+          </div>
+          <div class="col-auto">
+            <button type="submit" class="btn btn-primary">
+              <i class="ti ti-device-floppy me-1"></i><?= gettext('Save Time') ?>
+            </button>
+          </div>
         </div>
-        <input type="hidden" name="newEvtStartTime" id="newEvtStartTime" value="<?= InputUtils::escapeAttribute($startTimeDisplay) ?>">
+        <small class="text-muted"><?= gettext('Used as the default start time when creating events of this type.') ?></small>
       </div>
     </form>
 
