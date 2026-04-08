@@ -72,7 +72,9 @@ function initFamilyCheckin() {
     const eventId = $select.val();
     if (!eventId || !cfg.familyPersonIds?.length) return;
 
-    $submit.prop("disabled", true).html(`<span class="spinner-border spinner-border-sm me-1"></span>${t("Working...")}`);
+    $submit
+      .prop("disabled", true)
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${t("Working...")}`);
 
     fetch(`${window.CRM.root}/api/events/${eventId}/checkin-people`, {
       method: "POST",
@@ -85,7 +87,10 @@ function initFamilyCheckin() {
       })
       .then((data) => {
         window.bootstrap.Modal.getInstance(document.getElementById("familyCheckinModal"))?.hide();
-        const msg = t("Checked in {{count}} people.").replace("{{count}}", data.checkedIn || cfg.familyPersonIds.length);
+        const msg = t("Checked in {{count}} people.").replace(
+          "{{count}}",
+          data.checkedIn || cfg.familyPersonIds.length,
+        );
         window.CRM.notify(msg, { type: "success", delay: 4000 });
       })
       .catch((err) => {
