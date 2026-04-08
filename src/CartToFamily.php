@@ -165,12 +165,10 @@ echo $sError;
 
                 echo '<tr>';
                 echo '<td class="text-center">' . $count++ . '</td>';
-                $personPhoto = new \ChurchCRM\dto\Photo('person', $cartPerson->getId());
-                $photoIcon = '';
-                if ($personPhoto->hasUploadedPhoto()) {
-                    $photoIcon = ' <button class="btn btn-sm btn-outline-secondary view-person-photo" data-person-id="' . $cartPerson->getId() . '" title="' . gettext('View Photo') . '"><i class="fa-solid fa-camera"></i></button>';
-                }
-                echo '<td><a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . $cartPerson->getFullName() . '</a>' . $photoIcon . '</td>';
+                echo '<td><div class="d-flex align-items-center">';
+                echo '<img data-image-entity-type="person" data-image-entity-id="' . $cartPerson->getId() . '" class="avatar avatar-sm rounded-circle me-2" alt="" />';
+                echo '<a href="PersonView.php?PersonID=' . $cartPerson->getId() . '">' . $cartPerson->getFullName() . '</a>';
+                echo '</div></td>';
 
                 echo '<td class="text-center">';
                 if ($cartPerson->getFamId() === 0) {
@@ -277,8 +275,6 @@ echo $sError;
 
 <script src="<?= SystemURLs::assetVersioned('/skin/js/DropdownManager.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/js/CartToFamily.js') ?>"></script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
-
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
     document.addEventListener('DOMContentLoaded', function() {
         if (window.CRM && window.CRM.formUtils && typeof window.CRM.formUtils.togglePhoneMask === 'function') {

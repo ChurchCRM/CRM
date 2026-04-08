@@ -118,7 +118,6 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
     $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);

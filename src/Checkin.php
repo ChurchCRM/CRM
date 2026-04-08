@@ -424,15 +424,10 @@ if ($EventID > 0) {
                     ?>
                         <tr>
                             <td>
-                                <?php
-                                $personPhoto = new \ChurchCRM\dto\Photo('person', $per->getPersonId());
-                                if ($personPhoto->hasUploadedPhoto()) {
-                                ?>
-                                    <button class="btn btn-sm btn-ghost-secondary view-person-photo me-1" data-person-id="<?= $per->getPersonId() ?>" title="<?= gettext('View Photo') ?>">
-                                        <i class="ti ti-camera"></i>
-                                    </button>
-                                <?php } ?>
-                                <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a>
+                                <div class="d-flex align-items-center">
+                                    <img data-image-entity-type="person" data-image-entity-id="<?= $per->getPersonId() ?>" class="avatar avatar-sm rounded-circle me-2" alt="" />
+                                    <a href="PersonView.php?PersonID=<?= $per->getPersonId() ?>"><?= $sPerson ?></a>
+                                </div>
                             </td>
                             <td><?= $per->getCheckinDate() ? InputUtils::escapeHTML(date_format($per->getCheckinDate(), SystemConfig::getValue('sDateTimeFormat'))) : '' ?></td>
                             <td><?= $sCheckinby ?></td>
@@ -517,7 +512,6 @@ function filterByType(typeId) {
     window.location.href = 'Checkin.php?EventTypeID=' + typeId;
 }
 </script>
-<script src="<?= SystemURLs::assetVersioned('/skin/js/cart-photo-viewer.js') ?>"></script>
 <script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/js/checkin.js') ?>"></script>
 
 <?php require_once __DIR__ . '/Include/Footer.php';
@@ -541,13 +535,8 @@ function loadPerson($iPersonID)
         $familyRole = gettext('(No assigned family)');
     }
 
-    $personPhoto = new \ChurchCRM\dto\Photo('person', $iPersonID);
     $html = '<div class="d-flex align-items-center">';
-    if ($personPhoto->hasUploadedPhoto()) {
-        $html .= '<span class="avatar avatar-md me-3" style="background-image: url(' . SystemURLs::getRootPath() . '/api/person/' . $iPersonID . '/photo)"></span>';
-    } else {
-        $html .= '<span class="avatar avatar-md me-3 bg-primary-lt"><i class="ti ti-user"></i></span>';
-    }
+    $html .= '<img data-image-entity-type="person" data-image-entity-id="' . $iPersonID . '" class="avatar avatar-md rounded-circle me-3" alt="" />';
     $html .= '<div>';
     $html .= '<a href="PersonView.php?PersonID=' . $iPersonID . '" class="fw-bold">' . InputUtils::escapeHTML($person->getTitle() . ' ' . $person->getFullName()) . '</a>';
     $html .= '<div class="text-secondary small">' . $familyRole . '</div>';
