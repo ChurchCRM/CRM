@@ -32,6 +32,7 @@ module.exports = {
     'people-person-view': './webpack/people/person-view',
     'groups-sundayschool-dashboard': './webpack/groups-sundayschool-dashboard',
     'groups-sundayschool-class-view': './webpack/groups-sundayschool-class-view',
+    'repeat-event-editor': './webpack/repeat-event-editor',
   },
   output: {
     path: path.resolve('./src/skin/v2'),

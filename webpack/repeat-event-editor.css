@@ -1,0 +1,24 @@
+/* Repeat Event Editor page styles */
+
+/* Recurrence pattern labels – fixed width so controls line up */
+.recur-label {
+  min-width: 120px;
+}
+
+/* Recurrence controls – fixed widths */
+.recur-select-dow {
+  width: 160px;
+}
+
+.recur-select-dom {
+  width: 100px;
+}
+
+.recur-input-doy {
+  width: 120px;
+}
+
+/* Pre-selected event-type badge */
+.event-type-badge {
+  font-size: 1rem;
+}

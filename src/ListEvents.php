@@ -504,8 +504,11 @@ if (!$hasEvents): ?>
       <?php endif; ?>
     </p>
     <?php if ($canEditEvents): ?>
-      <a href="EventEditor.php" class="btn btn-primary">
+      <a href="EventEditor.php" class="btn btn-primary me-2">
         <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
+      </a>
+      <a href="RepeatEventEditor.php" class="btn btn-outline-primary">
+        <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
       </a>
     <?php endif; ?>
   </div>
