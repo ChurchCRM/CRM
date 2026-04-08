@@ -169,3 +169,33 @@ After all locales are done:
 node locale/scripts/locale-translate.js --list
 # Should show "Total: 0 locales, 0 terms" or only N/A entries
 ```
+
+---
+
+## English-OK allowlist <!-- learned: 2026-04-08 -->
+
+Some terms have `value = key` intentionally — country names, brand names, and universal tech terms
+that stay in English regardless of locale (e.g. `"Australia": "Australia"` in Filipino).
+
+The upload script (`poeditor-upload-missing.js`) normally skips these as "suspect" (identical to source key).
+To mark them as safe to upload, add them to `locale/terms/english-ok.json`:
+
+```json
+{
+  "fil": ["Australia", "Admin", "Dashboard", "Email/Username", ...],
+  "id": ["Australia", ...]
+}
+```
+
+When translating a locale with country names (e.g. fil), set `value = key` for countries and then
+add ALL those country/tech/brand terms to the `english-ok.json` allowlist so the uploader treats
+them as valid translations, not untranslated suspects.
+
+To review which terms would be allowlisted for a locale:
+```bash
+python3 -c "
+import json
+d = json.load(open('locale/terms/english-ok.json'))
+print(f\"fil: {len(d.get('fil', []))} terms\")
+"
+```
