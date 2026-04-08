@@ -51,12 +51,6 @@ use ChurchCRM\Service\SystemService;
         }
     })();
   </script>
-  <?php
-
-    //If this is a first-run setup, do not include google analytics code.
-    if ($_SERVER['SCRIPT_NAME'] != '/setup/index.php') {
-        include_once('analyticstracking.php');
-    }
-    ?>
+  <?= \ChurchCRM\Plugin\PluginManager::getPluginFooterContent() ?>
 </body>
 </html>
