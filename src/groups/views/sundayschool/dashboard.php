@@ -115,6 +115,65 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<!-- How Sunday School works (collapsible explainer) -->
+<div class="card mb-3" id="ssExplainerCard">
+    <div class="card-status-top bg-blue"></div>
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="ti ti-info-circle me-2 text-blue"></i><?= gettext('How Sunday School + Events + Kiosks fit together') ?>
+        </h3>
+        <button class="btn btn-sm btn-ghost-secondary ms-auto" type="button"
+                data-bs-toggle="collapse" data-bs-target="#ssExplainerBody"
+                aria-expanded="false" aria-controls="ssExplainerBody">
+            <i class="ti ti-chevron-down"></i>
+        </button>
+    </div>
+    <div class="collapse" id="ssExplainerBody">
+        <div class="card-body">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-users me-1 text-blue"></i><?= gettext('1. Sunday School Class') ?>
+                    </div>
+                    <div class="small text-muted">
+                        <?= gettext("A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles).") ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-tags me-1 text-orange"></i><?= gettext('2. Event Type') ?>
+                    </div>
+                    <div class="small text-muted">
+                        <?= gettext('An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience.') ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-calendar me-1 text-green"></i><?= gettext('3. Event') ?>
+                    </div>
+                    <div class="small text-muted">
+                        <?= gettext("A specific occurrence (e.g. \"Preschool — Apr 12\"). Inherits defaults from the type and is linked to the class group via the audience. This is what volunteers take attendance against.") ?>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-secondary fw-bold mb-1">
+                        <i class="ti ti-device-ipad me-1 text-purple"></i><?= gettext('4. Kiosk') ?>
+                    </div>
+                    <div class="small text-muted">
+                        <?= gettext('A tablet assigned to one event. The kiosk pulls the event\'s linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display.') ?>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="alert alert-info mb-0">
+                <i class="ti ti-rocket me-1"></i>
+                <strong><?= gettext('Fastest workflow:') ?></strong>
+                <?= gettext("Open a class → click \"Create Today's Event\" — the event is created and linked to the class in one shot, then you land on the check-in page ready for a kiosk or walk-in attendance.") ?>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Quick Actions -->
 <div class="card mb-3">
     <div class="card-header">
