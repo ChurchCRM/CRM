@@ -4,8 +4,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Utils\InputUtils;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 $sPageTitle = InputUtils::escapeHTML($family->getName());
 $sPageSubtitle = gettext('Family Profile') . ' — ID: ' . $family->getId();
@@ -17,6 +19,31 @@ $memberCount = count($family->getPeople());
 
 // Get unique family emails for the verification modal
 $familyEmails = $family->getEmails();
+
+// Build active events list for the family check-in modal (#6838)
+$eventsEnabled = SystemConfig::getBooleanValue('bEnabledEvents');
+$canAddEvent = AuthenticationManager::getCurrentUser()->isAddEvent();
+$showFamilyCheckin = $eventsEnabled && $canAddEvent;
+$activeEventsForCheckin = [];
+$familyPersonIds = [];
+if ($showFamilyCheckin) {
+    foreach ($family->getPeople() as $member) {
+        $familyPersonIds[] = (int) $member->getId();
+    }
+    $activeEvents = EventQuery::create()
+        ->filterByInActive(1, Criteria::NOT_EQUAL)
+        ->filterByStart(['min' => date('Y-m-d 00:00:00', strtotime('-1 day'))])
+        ->orderByStart()
+        ->limit(50)
+        ->find();
+    foreach ($activeEvents as $evt) {
+        $activeEventsForCheckin[] = [
+            'id' => (int) $evt->getId(),
+            'title' => $evt->getTitle(),
+            'date' => $evt->getStart('M j, Y g:i A'),
+        ];
+    }
+}
 
 // Store family email for JavaScript (used by MailChimp plugin if active)
 $familyEmailMD5 = $family->getEmail() ? md5(strtolower($family->getEmail())) : '';
@@ -36,6 +63,12 @@ $otherPeople = $family->getOtherPeople();
     window.CRM.currentFamilyView = 2;
     window.CRM.familyEmail ="<?= InputUtils::escapeAttribute($family->getEmail() ?? '') ?>";
     window.CRM.familyEmailMD5 ="<?= $familyEmailMD5 ?>";
+    <?php if ($showFamilyCheckin): ?>
+    window.CRM.familyCheckin = {
+        familyPersonIds: <?= json_encode($familyPersonIds) ?>,
+        activeEvents: <?= json_encode($activeEventsForCheckin) ?>
+    };
+    <?php endif; ?>
 </script>
 
 <div id="family-deactivated" class="alert alert-warning d-none">
@@ -67,6 +100,11 @@ $otherPeople = $family->getOtherPeople();
             <a class="btn btn-ghost-secondary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
                 <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
             </a>
+            <?php } ?>
+            <?php if ($showFamilyCheckin && $memberCount > 0) { ?>
+            <button class="btn btn-ghost-success" id="checkInFamilyBtn" data-bs-toggle="modal" data-bs-target="#familyCheckinModal">
+                <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Check In Family') ?>
+            </button>
             <?php } ?>
             <?php if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             <div class="dropdown">
@@ -587,6 +625,45 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
     window.CRM.familyMapConfig = <?= json_encode(['lat' => (float) $family->getLatitude(), 'lng' => (float) $family->getLongitude()]) ?>;
 </script>
 <?php endif; ?>
+<?php if ($showFamilyCheckin): ?>
+<!-- Family Check-In Modal (#6838) -->
+<div class="modal fade" id="familyCheckinModal" tabindex="-1" aria-labelledby="familyCheckinModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="familyCheckinModalLabel">
+                    <i class="fa-solid fa-clipboard-check me-2 text-success"></i>
+                    <?= gettext('Check In Family') ?>
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-secondary">
+                    <?= sprintf(gettext('Check in all %d family members to a single event.'), $memberCount) ?>
+                </p>
+                <div class="mb-3">
+                    <label for="familyCheckinEventSelect" class="form-label fw-bold"><?= gettext('Select Event') ?></label>
+                    <select class="form-select" id="familyCheckinEventSelect">
+                        <option value=""><?= gettext('Choose an event...') ?></option>
+                    </select>
+                </div>
+                <div id="familyCheckinNoEvents" class="alert alert-warning d-none">
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i>
+                    <?= gettext('No active events found.') ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/event/editor"><?= gettext('Create one now') ?></a>.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+                <button type="button" class="btn btn-success" id="familyCheckinSubmit" disabled>
+                    <i class="fa-solid fa-check me-1"></i><?= gettext('Check In') ?>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
+
 <script src="<?= SystemURLs::assetVersioned('/skin/external/leaflet/leaflet.js') ?>"></script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/people-family-view.min.js') ?>"></script>
 
