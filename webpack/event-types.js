@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Recurrence pattern radio handling: enable only the matching control
     $(".event-recurrence-patterns input[type=radio]").on("change", function () {
-      $('.event-recurrence-patterns select, .event-recurrence-patterns input[type=text]').prop("disabled", true);
+      $(".event-recurrence-patterns select, .event-recurrence-patterns input[type=text]").prop("disabled", true);
       $(this).closest(".form-check").find("select, input[type=text]").prop("disabled", false);
     });
   } else if (cfg.mode === "edit") {

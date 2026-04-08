@@ -54,16 +54,14 @@ document.addEventListener("DOMContentLoaded", () => {
   $("#toggleAdvancedBtn").on("click", () => {
     advancedShown = !advancedShown;
     $(".event-editor-advanced").toggle(advancedShown);
-    $("#toggleAdvancedIcon")
-      .toggleClass("ti-chevron-down", !advancedShown)
-      .toggleClass("ti-chevron-up", advancedShown);
+    $("#toggleAdvancedIcon").toggleClass("ti-chevron-down", !advancedShown).toggleClass("ti-chevron-up", advancedShown);
     $("#toggleAdvancedLabel").text(advancedShown ? t("Hide Advanced Options") : t("Show More Options"));
   });
 
   // ---------------------------------------------------------------------------
   // Client-side date order validation (#6629) — block submit if end < start
   // ---------------------------------------------------------------------------
-  $('form[name="EventsEditor"]').on("submit", function (e) {
+  $('form[name="EventsEditor"]').on("submit", (e) => {
     const range = $("#EventDateRange").val() || "";
     const parts = range.split(" - ");
     if (parts.length !== 2) return;
