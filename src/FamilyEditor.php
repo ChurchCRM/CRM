@@ -640,7 +640,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="StateTextbox"><?= gettext('State') ?>:</label>
                     <input id="StateTextbox" type="text" class="form-control" name="StateTextbox" value="<?= InputUtils::escapeAttribute($sState) ?>" maxlength="30">
                 </div>
-                <div class="mb-3 col-6 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip"><?= gettext('Zip') ?>:</label>
                     <input type="text" id="Zip" name="Zip" class="form-control" <?php
                     if (SystemConfig::getBooleanValue('bForceUppercaseZip')) {

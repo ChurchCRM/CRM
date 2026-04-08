@@ -604,7 +604,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-6 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Title"><?= gettext('Title') ?>:</label>
                     <input type="text" name="Title" id="Title"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sTitle)) ?>"
@@ -619,7 +619,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sFirstNameError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-6 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="MiddleName"><?= gettext('Middle') ?>:</label>
                     <input type="text" name="MiddleName" id="MiddleName"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sMiddleName)) ?>"
@@ -637,13 +637,13 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sLastNameError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-4 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Suffix"><?= gettext('Suffix') ?>:</label>
                     <input type="text" name="Suffix" id="Suffix"
                            value="<?= InputUtils::escapeAttribute(stripslashes($sSuffix)) ?>"
                            placeholder="<?= gettext('Jr., Sr.') ?>" class="form-control">
                 </div>
-                <div class="mb-3 col-4 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="Gender"><?= gettext('Gender') ?>:</label>
                     <select id="Gender" name="Gender" class="form-select">
                         <option value="0">-</option>
@@ -662,7 +662,7 @@ require_once __DIR__ . '/Include/Header.php';
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="mb-3 col-6 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="BirthMonth"><?= gettext('Birth Month') ?>:</label>
                     <select id="BirthMonth" name="BirthMonth" class="form-select">
                         <option value="0" <?= $iBirthMonth === 0 ? 'selected' : '' ?>>-</option>
@@ -680,7 +680,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <option value="12" <?= $iBirthMonth === 12 ? 'selected' : '' ?>><?= gettext('Dec') ?></option>
                     </select>
                 </div>
-                <div class="mb-3 col-4 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="BirthDay"><?= gettext('Day') ?>:</label>
                     <select id="BirthDay" name="BirthDay" class="form-select">
                         <option value="0">-</option>
@@ -690,7 +690,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <?php } ?>
                     </select>
                 </div>
-                <div class="mb-3 col-4 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="BirthYear"><?= gettext('Year') ?>:</label>
                     <input type="text" id="BirthYear" name="BirthYear" value="<?= $iBirthYear ?>"
                            maxlength="4" placeholder="YYYY" class="form-control">
@@ -701,7 +701,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="text-danger small"><?= $sBirthDateError ?></span>
                     <?php } ?>
                 </div>
-                <div class="mb-3 col-4 col-md-1">
+                <div class="mb-3 col-6 col-sm-4 col-md-1">
                     <label for="HideAge"><?= gettext('Hide Age') ?></label>
                     <div class="form-check mt-2">
                         <input type="checkbox" class="form-check-input" id="HideAge" name="HideAge" value="1" <?= $bHideAge ? 'checked' : '' ?>>
@@ -801,7 +801,7 @@ require_once __DIR__ . '/Include/Header.php';
                            value="<?= InputUtils::escapeAttribute(stripslashes($sState)) ?>"
                            maxlength="30" class="form-control">
                 </div>
-                <div class="mb-3 col-6 col-md-2">
+                <div class="mb-3 col-12 col-sm-6 col-md-2">
                     <label for="Zip">
                         <?= $bFamilyZip ? '<span class="text-danger">' : '' ?>
                         <?= gettext('Zip Code') ?>:
