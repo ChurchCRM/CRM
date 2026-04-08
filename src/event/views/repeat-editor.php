@@ -247,7 +247,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             </div>
 
             <div class="d-flex justify-content-between">
-                <a href="<?= $sRootPath ?>/ListEvents.php" class="btn btn-outline-secondary">
+                <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-outline-secondary">
                     <i class="ti ti-x me-1"></i><?= gettext('Cancel') ?>
                 </a>
                 <button type="submit" name="CreateRepeat" value="1" class="btn btn-primary btn-lg">

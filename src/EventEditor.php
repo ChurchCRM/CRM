@@ -29,7 +29,7 @@ $sPageTitle = gettext('Church Event Editor');
 $sPageSubtitle = gettext('Create and manage church events and activities');
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Events'), '/event/dashboard'],
     [gettext('Edit Event')],
 ]);
 require_once __DIR__ . '/Include/Header.php';
@@ -469,7 +469,7 @@ if ($sAction === 'Create Event' && !empty($tyid)) {
             }
         }
         $EventExists = 1;
-        RedirectUtils::redirect('ListEvents.php');
+        RedirectUtils::redirect('event/dashboard');
     }
 }
 ?>
@@ -503,7 +503,7 @@ if (!empty($iTypeID)) {
 ?>
 
 <div class="mb-3 d-flex justify-content-between align-items-center">
-    <a href="ListEvents.php" class="btn btn-outline-secondary">
+    <a href="event/dashboard" class="btn btn-outline-secondary">
         <i class="fa-solid fa-chevron-left me-1"></i>
         <?= gettext('Return to Events') ?>
     </a>
@@ -513,7 +513,7 @@ if (!empty($iTypeID)) {
             <i class="fa-solid fa-clipboard-check me-1"></i>
             <?= gettext('Manage Check-ins') ?>
         </a>
-        <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
+        <form method="POST" action="event/dashboard" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting this event will also delete all attendance records. Are you sure?') ?>');">
             <input type="hidden" name="EID" value="<?= $iEventID ?>">
             <button type="submit" name="Action" value="Delete" class="btn btn-outline-danger">
                 <i class="fa-solid fa-trash me-1"></i>

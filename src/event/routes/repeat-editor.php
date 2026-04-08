@@ -70,7 +70,7 @@ $app->get('/repeat-editor[/{typeId}]', function (Request $request, Response $res
         'sPageTitle'      => gettext('Create Repeat Events'),
         'sPageSubtitle'   => gettext('Bulk-create a series of recurring events'),
         'aBreadcrumbs'    => PageHeader::breadcrumbs([
-            [gettext('Events'), '/ListEvents.php'],
+            [gettext('Events'), '/event/dashboard'],
             [gettext('Create Repeat Events')],
         ]),
         'typeId'          => $typeId,
@@ -170,6 +170,6 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     }
 
     return $response
-        ->withHeader('Location', SystemURLs::getRootPath() . '/ListEvents.php')
+        ->withHeader('Location', SystemURLs::getRootPath() . '/event/dashboard')
         ->withStatus(302);
 });

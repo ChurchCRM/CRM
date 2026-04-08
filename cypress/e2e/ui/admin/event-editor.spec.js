@@ -109,7 +109,7 @@ describe('Event Editor', () => {
         cy.get('button[name="SaveChanges"]').click();
 
         // Verify redirect to event list
-        cy.url().should('include', '/ListEvents.php');
+        cy.url().should('include', '/event/dashboard');
     });
 
     it('should handle events without attendance counts', () => {
@@ -147,7 +147,7 @@ describe('Event Editor', () => {
         cy.get('button[name="SaveChanges"]').click();
 
         // Verify redirect to event list (successful save)
-        cy.url().should('include', '/ListEvents.php');
+        cy.url().should('include', '/event/dashboard');
     });
 
     it('should validate Propel ORM data retrieval (no duplicates)', () => {
@@ -179,7 +179,7 @@ describe('Event Editor', () => {
         cy.get('button[name="SaveChanges"]').click();
 
         // Verify redirect to event list
-        cy.url().should('include', '/ListEvents.php');
+        cy.url().should('include', '/event/dashboard');
 
         // Step 2: Get the event ID via API and navigate directly to edit
         cy.request('/api/events').then((response) => {
@@ -205,7 +205,7 @@ describe('Event Editor', () => {
             cy.get('button[name="SaveChanges"]').click();
 
             // Step 7: Verify redirect to event list
-            cy.url().should('include', '/ListEvents.php');
+            cy.url().should('include', '/event/dashboard');
 
             // Step 8: Verify the update via API
             cy.request('/api/events').then((updateResponse) => {
@@ -235,7 +235,7 @@ describe('Event Editor', () => {
         cy.get('input[name="EventStatus"][value="0"]').check();
         cy.get('button[name="SaveChanges"]').click();
 
-        cy.url().should('include', '/ListEvents.php');
+        cy.url().should('include', '/event/dashboard');
 
         // Get event ID via API and navigate directly
         cy.request('/api/events').then((response) => {

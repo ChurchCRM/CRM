@@ -49,7 +49,7 @@ $app->get('/cart-to-event', function (Request $request, Response $response) {
         'sPageTitle'        => gettext('Add Cart to Event'),
         'sPageSubtitle'     => gettext('Assign cart items to an event'),
         'aBreadcrumbs'      => PageHeader::breadcrumbs([
-            [gettext('Events'), '/ListEvents.php'],
+            [gettext('Events'), '/event/dashboard'],
             [gettext('Add Cart to Event')],
         ]),
         'aPeopleInCart'     => $aPeopleInCart,

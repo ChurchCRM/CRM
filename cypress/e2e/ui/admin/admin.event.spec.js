@@ -13,7 +13,7 @@ describe("Admin Event", () => {
     });
 
     it("Events Dashboard", () => {
-        cy.visit("ListEvents.php");
+        cy.visit("event/dashboard");
         cy.contains("Events Dashboard");
         cy.contains("Event Type");
         cy.contains("Add Event");

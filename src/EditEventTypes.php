@@ -17,7 +17,7 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 $sPageTitle = gettext('Edit Event Types');
 $sPageSubtitle = gettext('Manage event type categories');
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Events'), '/ListEvents.php'],
+    [gettext('Events'), '/event/dashboard'],
     [gettext('Event Types')],
 ]);
 require_once __DIR__ . '/Include/Header.php';

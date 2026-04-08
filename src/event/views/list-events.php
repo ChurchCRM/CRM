@@ -1,120 +1,14 @@
 <?php
 
-require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/PageInit.php';
-
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\model\ChurchCRM\EventAttendQuery;
-use ChurchCRM\model\ChurchCRM\EventQuery;
-use ChurchCRM\model\ChurchCRM\EventTypeQuery;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\view\PageHeader;
-use Propel\Runtime\ActiveQuery\Criteria;
 
-$canEditEvents = AuthenticationManager::getCurrentUser()->isAddEvent();
+$sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 
-$eType = 'All';
-if (isset($_POST['WhichType']) && $_POST['WhichType'] !== 'All') {
-    $eType = InputUtils::filterInt($_POST['WhichType']);
-}
-
-// Retrieve the year selector
-if (isset($_POST['WhichYear'])) {
-    $EventYear = InputUtils::legacyFilterInput($_POST['WhichYear'], 'int');
-} else {
-    $EventYear = DateTimeUtils::getCurrentYear();
-}
-
-// Page header setup
-$sPageTitle = gettext('Events Dashboard');
-$sPageSubtitle = gettext('Overview of church events, attendance, and activity');
-
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Events')],
-]);
-
-// Admin header button for Event Types
-if ($canEditEvents) {
-    $sPageHeaderButtons = PageHeader::buttons([
-        [
-            'label' => gettext('Manage Event Types'),
-            'url' => '/EventNames.php',
-            'icon' => 'fa-tags',
-            'adminOnly' => false,
-        ],
-    ]);
-}
-
-require_once __DIR__ . '/Include/Header.php';
-
-// Handle delete action
-if (isset($_POST['Action']) && isset($_POST['EID']) && $canEditEvents) {
-    $eID = InputUtils::legacyFilterInput($_POST['EID'], 'int');
-    $action = InputUtils::legacyFilterInput($_POST['Action']);
-    if ($action == 'Delete' && $eID) {
-        $event = EventQuery::create()->findOneById((int) $eID);
-        if ($event !== null) {
-            $event->delete();
-        }
-    } elseif ($action == 'Activate' && $eID) {
-        $event = EventQuery::create()->findOneById((int) $eID);
-        if ($event !== null) {
-            $event->setInActive(0);
-            $event->save();
-        }
-    }
-}
-
-// --- Dashboard Stats ---
-$yearMin = $EventYear . '-01-01 00:00:00';
-$yearMax = $EventYear . '-12-31 23:59:59';
-
-$totalEventsThisYear = EventQuery::create()
-    ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-    ->count();
-
-$totalCheckInsThisYear = EventAttendQuery::create()
-    ->useEventQuery()
-        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-    ->endUse()
-    ->filterByCheckinDate(null, Criteria::ISNOTNULL)
-    ->count();
-
-$activeEventsThisYear = EventQuery::create()
-    ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-    ->filterByInActive(0)
-    ->count();
-
-$totalEventTypes = EventTypeQuery::create()
-    ->useEventTypeQuery()
-        ->filterByStart(['min' => $yearMin, 'max' => $yearMax])
-    ->endUse()
-    ->distinct()
-    ->count();
-
-// Get event types that have events (using ORM)
-$eventTypesWithEvents = EventTypeQuery::create()
-    ->useEventTypeQuery()
-    ->endUse()
-    ->distinct()
-    ->orderById()
-    ->find();
-
-// Get available years using ORM
-$yearQuery = EventQuery::create()
-    ->withColumn('YEAR(event_start)', 'EventYear')
-    ->select(['EventYear']);
-if ($eType !== 'All') {
-    $yearQuery->filterByType((int) $eType);
-}
-$availableYears = $yearQuery
-    ->groupBy('EventYear')
-    ->orderBy('EventYear', Criteria::DESC)
-    ->find()
-    ->toArray();
-
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
+
 <!-- Stat Cards -->
 <div class="row mb-3">
   <div class="col-6 col-lg-3">
@@ -194,14 +88,14 @@ $availableYears = $yearQuery
       <div class="card-body py-2">
         <div class="d-flex flex-wrap gap-2">
           <?php if ($canEditEvents): ?>
-            <a href="EventEditor.php" class="btn btn-primary btn-sm">
+            <a href="<?= $sRootPath ?>/EventEditor.php" class="btn btn-primary btn-sm">
               <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Event') ?>
             </a>
           <?php endif; ?>
-          <a href="event/checkin" class="btn btn-outline-info btn-sm">
+          <a href="<?= $sRootPath ?>/event/checkin" class="btn btn-outline-info btn-sm">
             <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
-          <a href="event/calendars" class="btn btn-outline-secondary btn-sm">
+          <a href="<?= $sRootPath ?>/event/calendars" class="btn btn-outline-secondary btn-sm">
             <i class="fa-regular fa-calendar me-1"></i><?= gettext('Calendar') ?>
           </a>
         </div>
@@ -213,7 +107,7 @@ $availableYears = $yearQuery
 <!-- Filters -->
 <div class="card mb-3">
   <div class="card-body py-2">
-    <form name="EventFilterForm" method="POST" action="ListEvents.php">
+    <form name="EventFilterForm" method="GET" action="<?= $sRootPath ?>/event/dashboard">
       <div class="row align-items-end">
         <div class="col-md-5">
           <label for="WhichType" class="form-label mb-1"><?= gettext('Event Type') ?></label>
@@ -238,7 +132,7 @@ $availableYears = $yearQuery
         </div>
         <div class="col-md-2 text-end">
           <?php if ($eType !== 'All'): ?>
-            <a href="ListEvents.php" class="btn btn-sm btn-ghost-secondary">
+            <a href="<?= $sRootPath ?>/event/dashboard" class="btn btn-sm btn-ghost-secondary">
               <i class="ti ti-x me-1"></i><?= gettext('Clear Filter') ?>
             </a>
           <?php endif; ?>
@@ -249,83 +143,14 @@ $availableYears = $yearQuery
 </div>
 
 <?php
+$hasEvents = !empty($monthlyData);
 
-// Get all events for the selected year and type
-$allMonths = ['12', '11', '10', '9', '8', '7', '6', '5', '4', '3', '2', '1'];
-
-if ($eType === 'All') {
-    $eTypeSQL = '';
-} else {
-    $eTypeSQL = ' AND t1.event_type=' . (int) $eType;
-}
-
-$hasEvents = false;
-
-foreach ($allMonths as $mVal) {
-    $sSQL = 'SELECT t1.*, t2.type_name FROM events_event as t1, event_types as t2
-             WHERE t1.event_type = t2.type_id' . $eTypeSQL . '
-             AND MONTH(t1.event_start) = ' . (int) $mVal . '
-             AND YEAR(t1.event_start) = ' . (int) $EventYear . '
-             ORDER BY t1.event_start';
-
-    $rsOpps = RunQuery($sSQL);
-    $numRows = mysqli_num_rows($rsOpps);
-
-    if ($numRows === 0) {
-        continue;
-    }
-
-    $hasEvents = true;
-
-    // Collect events for this month
-    $events = [];
-    while ($row = mysqli_fetch_assoc($rsOpps)) {
-        $eventId = (int) $row['event_id'];
-
-        // Get attendance count
-        $attendSQL = 'SELECT COUNT(*) as cnt FROM event_attend WHERE event_id=' . $eventId;
-        $attendResult = RunQuery($attendSQL);
-        $attendRow = mysqli_fetch_assoc($attendResult);
-        $attendeeCount = $attendRow ? (int) $attendRow['cnt'] : 0;
-
-        // Get checked in count (people who checked in but haven't checked out)
-        $checkedInSQL = 'SELECT COUNT(*) as cnt FROM event_attend WHERE event_id=' . $eventId . ' AND checkout_date IS NULL';
-        $checkedInResult = RunQuery($checkedInSQL);
-        $checkedInRow = mysqli_fetch_assoc($checkedInResult);
-        $checkedInCount = $checkedInRow ? (int) $checkedInRow['cnt'] : 0;
-
-        // Get checked out count (people who have checked out)
-        $checkedOutSQL = 'SELECT COUNT(*) as cnt FROM event_attend WHERE event_id=' . $eventId . ' AND checkout_date IS NOT NULL';
-        $checkedOutResult = RunQuery($checkedOutSQL);
-        $checkedOutRow = mysqli_fetch_assoc($checkedOutResult);
-        $checkedOutCount = $checkedOutRow ? (int) $checkedOutRow['cnt'] : 0;
-
-        // Get event counts
-        $countSQL = 'SELECT * FROM eventcounts_evtcnt WHERE evtcnt_eventid=' . $eventId . ' ORDER BY evtcnt_countid ASC';
-        $countResult = RunQuery($countSQL);
-        $eventCounts = [];
-        while ($countRow = mysqli_fetch_assoc($countResult)) {
-            $eventCounts[] = $countRow;
-        }
-
-        $events[] = [
-            'id' => $eventId,
-            'type_name' => $row['type_name'],
-            'title' => InputUtils::sanitizeText($row['event_title']),
-            'desc' => InputUtils::sanitizeText($row['event_desc']),
-            'text' => $row['event_text'],
-            'start' => $row['event_start'],
-            'end' => $row['event_end'],
-            'inactive' => (int) $row['inactive'],
-            'attendee_count' => $attendeeCount,
-            'checked_in_count' => $checkedInCount,
-            'checked_out_count' => $checkedOutCount,
-            'counts' => $eventCounts,
-        ];
-    }
-
-    $monthName = date('F', mktime(0, 0, 0, (int) $mVal, 1, (int) $EventYear));
-    ?>
+foreach ($monthlyData as $monthData):
+    $events = $monthData['events'];
+    $numRows = $monthData['count'];
+    $monthName = $monthData['monthName'];
+    $averages = $monthData['averages'];
+?>
 <div class="card mb-3">
   <div class="card-header d-flex align-items-center">
     <h3 class="card-title mb-0">
@@ -352,24 +177,19 @@ foreach ($allMonths as $mVal) {
         </thead>
         <tbody>
           <?php foreach ($events as $event): ?>
-            <?php $eventId = InputUtils::escapeAttribute($event['id']); ?>
+            <?php $eventId = (int) $event['id']; ?>
             <tr>
               <td>
                 <div class="fw-medium"><?= InputUtils::escapeHTML($event['title']) ?></div>
                 <?php if (!empty($event['desc'])): ?>
                   <small class="text-muted"><?= InputUtils::escapeHTML($event['desc']) ?></small>
                 <?php endif; ?>
-                <?php if (!empty($event['text'])): ?>
-                  <br><a href="javascript:popUp('GetText.php?EID=<?= $eventId ?>')" class="text-primary small">
-                    <i class="fa-solid fa-file-lines me-1"></i><?= gettext('Sermon Text') ?>
-                  </a>
-                <?php endif; ?>
               </td>
               <td>
                 <span class="badge bg-azure-lt"><?= InputUtils::escapeHTML($event['type_name']) ?></span>
               </td>
               <td class="text-center">
-                <a href="event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
+                <a href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Manage Check-ins') ?>">
                   <i class="fa-solid fa-clipboard-check me-1"></i>
                   <?php if ($event['attendee_count'] > 0): ?>
                     <span class="badge bg-info"><?= $event['attendee_count'] ?></span>
@@ -385,15 +205,11 @@ foreach ($allMonths as $mVal) {
                   <?php
                   $countParts = [];
                   foreach ($event['counts'] as $count) {
-                      if ((int) $count['evtcnt_countcount'] > 0) {
-                          $countParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($count['evtcnt_countname']) . '</span> ' . (int) $count['evtcnt_countcount'];
+                      if ($count['count'] > 0) {
+                          $countParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($count['name']) . '</span> ' . $count['count'];
                       }
                   }
-                  if (!empty($countParts)) {
-                      echo implode('<br>', $countParts);
-                  } else {
-                      echo '<span class="text-muted">—</span>';
-                  }
+                  echo !empty($countParts) ? implode('<br>', $countParts) : '<span class="text-muted">—</span>';
                   ?>
                 <?php endif; ?>
               </td>
@@ -414,14 +230,14 @@ foreach ($allMonths as $mVal) {
                       <i class="ti ti-dots-vertical"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                      <a class="dropdown-item" href="event/checkin/<?= $eventId ?>">
+                      <a class="dropdown-item" href="<?= $sRootPath ?>/event/checkin/<?= $eventId ?>">
                         <i class="ti ti-clipboard-check me-2"></i><?= gettext('Check-in') ?>
                       </a>
-                      <a class="dropdown-item" href="EventEditor.php?EID=<?= $eventId ?>">
+                      <a class="dropdown-item" href="<?= $sRootPath ?>/EventEditor.php?EID=<?= $eventId ?>">
                         <i class="ti ti-pencil me-2"></i><?= gettext('Edit') ?>
                       </a>
                       <?php if ($event['inactive']): ?>
-                        <form method="POST" action="ListEvents.php" class="d-inline">
+                        <form method="POST" action="<?= $sRootPath ?>/event/dashboard" class="d-inline">
                           <input type="hidden" name="EID" value="<?= $eventId ?>">
                           <input type="hidden" name="WhichType" value="<?= InputUtils::escapeAttribute($eType) ?>">
                           <input type="hidden" name="WhichYear" value="<?= InputUtils::escapeAttribute($EventYear) ?>">
@@ -431,7 +247,7 @@ foreach ($allMonths as $mVal) {
                         </form>
                       <?php endif; ?>
                       <div class="dropdown-divider"></div>
-                      <form method="POST" action="ListEvents.php" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
+                      <form method="POST" action="<?= $sRootPath ?>/event/dashboard" class="d-inline" onsubmit="return confirm('<?= gettext('Deleting an event will also delete all attendance counts. Delete this event?') ?>')">
                         <input type="hidden" name="EID" value="<?= $eventId ?>">
                         <input type="hidden" name="WhichType" value="<?= InputUtils::escapeAttribute($eType) ?>">
                         <input type="hidden" name="WhichYear" value="<?= InputUtils::escapeAttribute($EventYear) ?>">
@@ -446,23 +262,7 @@ foreach ($allMonths as $mVal) {
             </tr>
           <?php endforeach; ?>
 
-          <?php
-          // Monthly averages when filtering by type
-          if ($eType !== 'All' && !empty($events[0]['counts'])):
-              $avgSQL = "SELECT evtcnt_countname, AVG(evtcnt_countcount) as avg_count
-                        FROM eventcounts_evtcnt, events_event
-                        WHERE eventcounts_evtcnt.evtcnt_eventid = events_event.event_id
-                        AND events_event.event_type =" . (int) $eType . "
-                        AND MONTH(events_event.event_start) =" . (int) $mVal . "
-                        AND YEAR(events_event.event_start) =" . (int) $EventYear . "
-                        GROUP BY evtcnt_countid ORDER BY evtcnt_countid ASC";
-              $avgResult = RunQuery($avgSQL);
-              $averages = [];
-              while ($avgRow = mysqli_fetch_assoc($avgResult)) {
-                  $averages[] = $avgRow;
-              }
-              if (!empty($averages)):
-                  ?>
+          <?php if (!empty($averages)): ?>
             <tr class="table-light">
               <td><strong><?= gettext('Monthly Averages') ?></strong></td>
               <td></td>
@@ -471,7 +271,7 @@ foreach ($allMonths as $mVal) {
                 <?php
                 $avgParts = [];
                 foreach ($averages as $avg) {
-                    $avgParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($avg['evtcnt_countname']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
+                    $avgParts[] = '<span class="text-muted small">' . InputUtils::escapeHTML($avg['name']) . '</span> ' . sprintf('%.1f', $avg['avg_count']);
                 }
                 echo implode('<br>', $avgParts);
                 ?>
@@ -479,18 +279,15 @@ foreach ($allMonths as $mVal) {
               <td colspan="2"></td>
               <?php if ($canEditEvents): ?><td></td><?php endif; ?>
             </tr>
-              <?php endif; ?>
           <?php endif; ?>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-    <?php
-}
+<?php endforeach; ?>
 
-// Empty state when no events found
-if (!$hasEvents): ?>
+<?php if (!$hasEvents): ?>
 <div class="card">
   <div class="card-body text-center py-5">
     <div class="mb-3">
@@ -504,10 +301,10 @@ if (!$hasEvents): ?>
       <?php endif; ?>
     </p>
     <?php if ($canEditEvents): ?>
-      <a href="EventEditor.php" class="btn btn-primary me-2">
+      <a href="<?= $sRootPath ?>/EventEditor.php" class="btn btn-primary me-2">
         <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
-      <a href="event/repeat-editor" class="btn btn-outline-primary">
+      <a href="<?= $sRootPath ?>/event/repeat-editor" class="btn btn-outline-primary">
         <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
       </a>
     <?php endif; ?>
@@ -516,4 +313,4 @@ if (!$hasEvents): ?>
 <?php endif; ?>
 
 <?php
-require_once __DIR__ . '/Include/Footer.php';
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

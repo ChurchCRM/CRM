@@ -92,7 +92,7 @@ $app->get('/checkin[/{eventId}]', function (Request $request, Response $response
         'sPageTitle'        => gettext('Event Check-in'),
         'sPageSubtitle'     => gettext('Check in attendees for church events and activities'),
         'aBreadcrumbs'      => PageHeader::breadcrumbs([
-            [gettext('Events'), '/ListEvents.php'],
+            [gettext('Events'), '/event/dashboard'],
             [gettext('Check-in')],
         ]),
         'eventId'           => $eventId,
