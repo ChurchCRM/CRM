@@ -326,7 +326,7 @@ if (InputUtils::legacyFilterInput($_POST['Action']) === 'NEW') {
                         <button type="button" class="dropdown-item" onclick="submitNewEvent(<?= (int)$aTypeID[$row] ?>)">
                             <i class="ti ti-plus me-2"></i><?= gettext('Create Event') ?>
                         </button>
-                        <a class="dropdown-item" href="RepeatEventEditor.php?EN_tyid=<?= (int)$aTypeID[$row] ?>">
+                        <a class="dropdown-item" href="event/repeat-editor/<?= (int)$aTypeID[$row] ?>">
                             <i class="ti ti-repeat me-2"></i><?= gettext('Create Repeat Events') ?>
                         </a>
                         <a class="dropdown-item" href="EditEventTypes.php?EN_tyid=<?= (int)$aTypeID[$row] ?>">

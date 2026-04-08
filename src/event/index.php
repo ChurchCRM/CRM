@@ -14,5 +14,7 @@ $app = MvcAppFactory::create('/event', [
 // Register routes
 require __DIR__ . '/routes/event.php';
 require __DIR__ . '/routes/checkin.php';
+require __DIR__ . '/routes/repeat-editor.php';
+require __DIR__ . '/routes/calendar.php';
 
 $app->run();

@@ -5,8 +5,8 @@ describe("Mobile Calendar", () => {
 
     it("Should display calendar on mobile viewport", () => {
         cy.viewport(375, 812);
-        cy.visit("v2/calendar");
-        cy.url().should("include", "v2/calendar");
+        cy.visit("event/calendars");
+        cy.url().should("include", "event/calendars");
 
         // Calendar should be visible
         cy.get("#calendar").should("be.visible");
@@ -29,7 +29,7 @@ describe("Mobile Calendar", () => {
 
     it("Should show Calendars offcanvas button on mobile", () => {
         cy.viewport(375, 812);
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         // Calendar is now full-width with an offcanvas panel for the sidebar
         cy.get(".card #calendar").should("be.visible");
@@ -46,8 +46,8 @@ describe("Mobile Calendar", () => {
 
     it("Should display calendar on tablet viewport", () => {
         cy.viewport(768, 1024);
-        cy.visit("v2/calendar");
-        cy.url().should("include", "v2/calendar");
+        cy.visit("event/calendars");
+        cy.url().should("include", "event/calendars");
 
         // Calendar is full-width with offcanvas sidebar — no split columns
         cy.get(".card #calendar").should("be.visible");
@@ -62,7 +62,7 @@ describe("Mobile Calendar", () => {
 
     it("Should switch to desktop toolbar after rotating to landscape", () => {
         cy.viewport(375, 812); // portrait — mobile toolbar
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
         cy.get(".fc-footer-toolbar").should("be.visible");
 
         // Rotate to landscape past the 768px breakpoint
@@ -76,7 +76,7 @@ describe("Mobile Calendar", () => {
     it("Should open event creation modal on mobile", () => {
         const title = "Mobile Event - " + Cypress._.random(0, 1e6);
         cy.viewport(375, 812);
-        cy.visit("v2/calendar");
+        cy.visit("event/calendars");
 
         cy.get(".fc-daygrid-day").first().click();
 

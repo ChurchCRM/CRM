@@ -201,7 +201,7 @@ $availableYears = $yearQuery
           <a href="event/checkin" class="btn btn-outline-info btn-sm">
             <i class="fa-solid fa-user-check me-1"></i><?= gettext('Check-in') ?>
           </a>
-          <a href="v2/calendar" class="btn btn-outline-secondary btn-sm">
+          <a href="event/calendars" class="btn btn-outline-secondary btn-sm">
             <i class="fa-regular fa-calendar me-1"></i><?= gettext('Calendar') ?>
           </a>
         </div>
@@ -507,7 +507,7 @@ if (!$hasEvents): ?>
       <a href="EventEditor.php" class="btn btn-primary me-2">
         <i class="fa-solid fa-plus me-1"></i><?= gettext('Create First Event') ?>
       </a>
-      <a href="RepeatEventEditor.php" class="btn btn-outline-primary">
+      <a href="event/repeat-editor" class="btn btn-outline-primary">
         <i class="ti ti-repeat me-1"></i><?= gettext('Create Repeat Events') ?>
       </a>
     <?php endif; ?>

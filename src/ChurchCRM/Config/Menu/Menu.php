@@ -71,7 +71,7 @@ class Menu
 
     private static function getCalendarMenu(): MenuItem
     {
-        $calendarMenu = new MenuItem(gettext('Calendar'), 'v2/calendar', true, 'fa-calendar');
+        $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', true, 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
         $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
